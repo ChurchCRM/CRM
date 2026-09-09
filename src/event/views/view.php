@@ -74,26 +74,26 @@ $inactive = (int) $event->getInActive() === 1;
       </div>
       <div class="card-footer d-flex justify-content-between">
         <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-outline-secondary">
-          <i class="ti ti-chevron-left me-1"></i><?= gettext('Back to Events') ?>
+          <i class="fa-solid fa-chevron-left me-1"></i><?= gettext('Back to Events') ?>
         </a>
         <div class="d-flex gap-2">
           <?php if (!$inactive && !$eventEnded): ?>
             <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>" class="btn btn-outline-primary">
-              <i class="ti ti-clipboard-check me-1"></i><?= gettext('Check-in') ?>
+              <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
             </a>
           <?php endif; ?>
           <?php if ($canEditEvents): ?>
             <?php if ($inactive): ?>
               <button type="button" class="btn btn-outline-success activate-event" data-event_id="<?= $eventId ?>">
-                <i class="ti ti-circle-check me-1"></i><?= gettext('Activate') ?>
+                <i class="fa-solid fa-circle-check me-1"></i><?= gettext('Activate') ?>
               </button>
             <?php else: ?>
               <button type="button" class="btn btn-outline-secondary deactivate-event" data-event_id="<?= $eventId ?>">
-                <i class="ti ti-circle-x me-1"></i><?= gettext('Deactivate') ?>
+                <i class="fa-solid fa-circle-xmark me-1"></i><?= gettext('Deactivate') ?>
               </button>
             <?php endif; ?>
             <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>" class="btn btn-primary">
-              <i class="ti ti-pencil me-1"></i><?= gettext('Edit') ?>
+              <i class="fa-solid fa-pencil me-1"></i><?= gettext('Edit') ?>
             </a>
           <?php endif; ?>
         </div>
@@ -110,14 +110,14 @@ $inactive = (int) $event->getInActive() === 1;
         <?php if ($eventEnded && !empty($linkedGroups)): ?>
           <div class="card-options">
             <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print()">
-              <i class="ti ti-printer me-1"></i><?= gettext('Print') ?>
+              <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
             </button>
           </div>
         <?php endif; ?>
       </div>
       <?php if (empty($attendees)): ?>
         <div class="card-body text-center text-body-secondary py-4">
-          <i class="ti ti-users-off fs-3 d-block mb-2"></i>
+          <i class="fa-solid fa-users-off fs-3 d-block mb-2"></i>
           <?= gettext('No one has been checked in to this event yet.') ?>
         </div>
       <?php else: ?>
@@ -174,7 +174,7 @@ $inactive = (int) $event->getInActive() === 1;
               <?php if ($emailEnabled && $nonAttendeeEmails !== ''): ?>
                 <a href="mailto:?bcc=<?= htmlspecialchars($nonAttendeeEmails, ENT_QUOTES, 'UTF-8') ?>&amp;subject=<?= rawurlencode($eventTitle) ?>"
                    class="btn btn-sm btn-outline-primary">
-                  <i class="ti ti-mail me-1"></i><?= gettext('Email All') ?>
+                  <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
                 </a>
               <?php endif; ?>
             </div>
@@ -182,7 +182,7 @@ $inactive = (int) $event->getInActive() === 1;
         </div>
         <?php if (empty($nonAttendees)): ?>
           <div class="card-body text-center text-body-secondary py-4">
-            <i class="ti ti-circle-check fs-3 d-block mb-2 text-green"></i>
+            <i class="fa-solid fa-circle-check fs-3 d-block mb-2 text-green"></i>
             <?= gettext('Everyone from linked groups checked in!') ?>
           </div>
         <?php else: ?>

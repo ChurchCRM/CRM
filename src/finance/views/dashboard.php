@@ -39,6 +39,7 @@ $currentDeposit = $dashboardData['currentDeposit'];
 $currentDepositId = $dashboardData['currentDepositId'];
 
 $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
+$isFinanceEnabled = AuthenticationManager::getCurrentUser()->isFinanceEnabled();
 
 $sRootPath = SystemURLs::getRootPath();
 ?>
@@ -128,7 +129,7 @@ $sRootPath = SystemURLs::getRootPath();
         </div>
         <div class="card-body">
             <div class="d-flex flex-wrap gap-2">
-                <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-success">
+                <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-success">
                     <i class="fa-solid fa-circle-plus me-1"></i><?= gettext('Create Deposit') ?>
                 </a>
                 <a href="<?= $sRootPath ?>/finance/pledge/new?type=Pledge" class="btn btn-primary">
@@ -149,11 +150,13 @@ $sRootPath = SystemURLs::getRootPath();
                 <a href="<?= $sRootPath ?>/finance/pledge/dashboard" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-handshake me-1"></i><?= gettext('Pledges') ?>
                 </a>
+                <?php if (SystemConfig::getBooleanValue('bEnabledFundraiser')): ?>
                 <a href="<?= $sRootPath ?>/fundraiser/" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-gavel me-1"></i><?= gettext('Fundraisers') ?>
                 </a>
-                <?php if ($isAdmin): ?>
-                <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-outline-secondary">
+                <?php endif; ?>
+                <?php if ($isFinanceEnabled): ?>
+                <a href="<?= $sRootPath ?>/finance/funds" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-piggy-bank me-1"></i><?= gettext('Manage Funds') ?>
                 </a>
                 <?php endif; ?>
@@ -192,7 +195,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <?php if ($openDeposits > 0): ?>
                                 <span class="badge bg-warning text-dark"><?= $openDeposits ?> <?= gettext('open') ?></span>
                                 <?php endif; ?>
-                                <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-secondary ms-2">
+                                <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-sm btn-outline-secondary ms-2">
                                     <i class="fa-solid fa-eye"></i> <?= gettext('View') ?>
                                 </a>
                             </div>
@@ -204,7 +207,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <?php if ($activeFundCount > 0): ?>
                                 <span class="badge bg-green-lt text-green rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
+                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-xmark"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">
@@ -213,7 +216,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div>
                                 <span class="badge bg-blue-lt text-blue"><?= $activeFundCount ?> <?= gettext('active') ?></span>
-                                <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary ms-2">
+                                <a href="<?= $sRootPath ?>/finance/funds" class="btn btn-sm btn-outline-secondary ms-2">
                                     <i class="fa-solid fa-cog"></i> <?= gettext('Edit') ?>
                                 </a>
                             </div>
@@ -228,7 +231,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <?php if ($hasChurchInfo): ?>
                                 <span class="badge bg-green-lt text-green rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
+                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-xmark"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">
@@ -240,7 +243,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <a href="<?= $sRootPath ?>/admin/system/church-info" class="btn btn-sm btn-outline-secondary">
                                     <i class="fa-solid fa-cog"></i> <?= gettext('Settings') ?>
                                 </a>
-                                <?php endif; ?>
+                                <?php endif; ?><!-- Only admins can edit church info (system-level config) -->
                             </div>
                         </div>
 
@@ -283,7 +286,7 @@ $sRootPath = SystemURLs::getRootPath();
             <div class="card mb-3">
                 <div class="card-header d-flex align-items-center">
                     <h3 class="card-title"><i class="fa-solid fa-clock-rotate-left me-2"></i><?= gettext('Recent Deposits') ?></h3>
-                    <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-secondary ms-auto">
+                    <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-sm btn-outline-secondary ms-auto">
                         <i class="fa-solid fa-list me-1"></i><?= gettext('View All') ?>
                     </a>
                 </div>
@@ -329,7 +332,7 @@ $sRootPath = SystemURLs::getRootPath();
                     <div class="empty">
                         <div class="empty-icon"><i class="fa-solid fa-inbox fa-3x text-body-secondary"></i></div>
                         <p class="empty-title"><?= gettext('No deposits found.') ?></p>
-                        <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-primary">
+                        <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-primary">
                             <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Deposit') ?>
                         </a>
                     </div>
@@ -383,7 +386,7 @@ $sRootPath = SystemURLs::getRootPath();
                     <div class="empty">
                         <div class="empty-icon"><i class="fa-solid fa-circle-plus fa-3x text-body-secondary"></i></div>
                         <p class="empty-title"><?= gettext('Create or select a deposit to get started.') ?></p>
-                        <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-success">
+                        <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-success">
                             <i class="fa-solid fa-plus me-1"></i><?= gettext('Create Deposit') ?>
                         </a>
                     </div>
@@ -432,7 +435,9 @@ $sRootPath = SystemURLs::getRootPath();
                     <ul class="list-group list-group-flush">
                         <?php foreach ($activeFunds as $fund): ?>
                         <li class="list-group-item d-flex justify-content-between align-items-center py-2">
-                            <span><?= InputUtils::escapeHTML($fund->getName()) ?></span>
+                            <a href="<?= InputUtils::escapeAttribute($sRootPath) ?>/finance/fund/<?= (int) $fund->getId() ?>/contributors" class="text-decoration-none">
+                                <?= InputUtils::escapeHTML($fund->getName()) ?>
+                            </a>
                             <span class="badge bg-green-lt text-green">
                                 <i class="fa-solid fa-check"></i>
                             </span>
@@ -452,7 +457,6 @@ $sRootPath = SystemURLs::getRootPath();
 </div>
 
 <?php if ($isAdmin): ?>
-<!-- System Settings Panel Component -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

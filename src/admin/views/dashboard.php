@@ -135,7 +135,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
         <div class="card-body">
             <div class="d-flex align-items-start gap-3">
                 <div class="pt-1">
-                    <i class="ti ti-chart-bar fs-2 text-info"></i>
+                    <i class="fa-solid fa-chart-bar fs-2 text-info"></i>
                 </div>
                 <div class="flex-grow-1">
                     <h5 class="mb-1"><?= gettext('Help improve ChurchCRM') ?></h5>
@@ -147,10 +147,10 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     </p>
                     <div class="d-flex gap-2 flex-wrap">
                         <button type="button" class="btn btn-info js-telemetry-consent" data-level="full">
-                            <i class="ti ti-check me-1"></i><?= gettext('Enable (full)') ?>
+                            <i class="fa-solid fa-check me-1"></i><?= gettext('Enable (full)') ?>
                         </button>
                         <button type="button" class="btn btn-ghost-info js-telemetry-consent" data-level="errors">
-                            <i class="ti ti-alert-circle me-1"></i><?= gettext('Errors only') ?>
+                            <i class="fa-solid fa-circle-exclamation me-1"></i><?= gettext('Errors only') ?>
                         </button>
                         <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="none">
                             <?= gettext('No thanks') ?>
@@ -376,7 +376,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i><?= gettext('Register Now') ?>
                     </a>
-                    <p class="small text-body-secondary mt-3 mb-0"><i class="fa-solid fa-shield-alt"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
+                    <p class="small text-body-secondary mt-3 mb-0"><i class="fa-solid fa-shield-halved"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
                 </div>
             </div>
 
@@ -415,7 +415,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                 <div class="card-status-top <?= $healthStatus ? 'bg-success' : 'bg-warning' ?>"></div>
                 <div class="card-header py-2">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-heartbeat"></i> <?= gettext('System Health') ?>
+                        <i class="fa-solid fa-heart-pulse"></i> <?= gettext('System Health') ?>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -424,7 +424,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                         <?php if ($integrityPassed): ?>
                             <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php else: ?>
-                            <span class="badge bg-danger-lt text-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
+                            <span class="badge bg-danger-lt text-danger"><i class="fa-solid fa-xmark"></i> <?= gettext('Failed') ?></span>
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2">

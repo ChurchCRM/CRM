@@ -607,7 +607,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $exporter = new CsvExporter();
         $exporter->insertHeaders($headers);
 
-        foreach ($personService->getPeopleEmailsAndGroups() as $person) {
+        // Cache the result to avoid reloading if called multiple times
+        $allPeopleWithGroups = $personService->getPeopleEmailsAndGroups();
+        foreach ($allPeopleWithGroups as $person) {
             $row = [
                 $person['id'],
                 $person['firstName'],

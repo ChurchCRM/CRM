@@ -94,7 +94,7 @@ class AppIntegrityService
             try {
                 $signatureFileContents = file_get_contents($signatureFile);
                 MiscUtils::throwIfFailed($signatureFileContents);
-                $signatureData = json_decode($signatureFileContents, null, 512, JSON_THROW_ON_ERROR);
+                $signatureData = json_decode($signatureFileContents, null, 512);
             } catch (\Exception $e) {
                 $logger->warning("Error decoding signature definition file: {signatureFile}", [
                     'signatureFile' => $signatureFile,
@@ -352,7 +352,7 @@ class AppIntegrityService
             try {
                 $signatureFileContents = file_get_contents($signatureFile);
                 MiscUtils::throwIfFailed($signatureFileContents);
-                $signatureData = json_decode($signatureFileContents, null, 512, JSON_THROW_ON_ERROR);
+                $signatureData = json_decode($signatureFileContents, null, 512);
                 if (isset($signatureData->files) && is_array($signatureData->files)) {
                     foreach ($signatureData->files as $file) {
                         $validFiles[$file->filename] = true;

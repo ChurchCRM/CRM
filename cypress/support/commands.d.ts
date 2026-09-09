@@ -73,6 +73,18 @@ declare namespace Cypress {
      * Used to test that fundraiser pages correctly deny access to users without ManageFundraisers permission
      */
     setupNoManageFundraisersSession(options?: { forceLogin?: boolean }): Chainable<void>;
+    /**
+     * Ensure a Finance-only (non-admin) user session is active.
+     * finance.only user (id=904): Finance=1, Admin=0.
+     * Used to verify Finance role can access fund CRUD and dashboard features without Admin.
+     */
+    setupFinanceOnlySession(options?: { forceLogin?: boolean }): Chainable<void>;
+    /**
+     * Ensure a ManageGroups-only (non-admin) user session is active.
+     * managegroups.only user (id=905): ManageGroups=1, Admin=0.
+     * Used to verify ManageGroups role can access Kiosk Manager without Admin.
+     */
+    setupManageGroupsOnlySession(options?: { forceLogin?: boolean }): Chainable<void>;
 
     /**
      * Wait for page to be fully loaded
@@ -174,6 +186,20 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * MenuOptions-only user (id=902): usr_MenuOptions=1, all other perm flags 0,
+     * non-admin, non-EditSelf. Used to verify the EditRecords gate on person/family
+     * property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but is
+     * blocked by EditRecordsRoleAuthMiddleware — expects 403 on record-level routes.
+     */
+    makePrivateMenuOptionsAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number,
+      timeoutMs?: number
+    ): Chainable<any>;
+
+    /**
      * Regression sentinel: EditSelf+Notes user (user 100, Lena Black, family 20).
      * Post-PR#9016 the user is blocked by AuthMiddleware (403). Once EditSelf
      * exclusivity is relaxed, avatar/nav/photo should assert 200 (FamilyReadMiddleware)
@@ -200,6 +226,28 @@ declare namespace Cypress {
       url: string,
       body?: any,
       expectedStatus?: number
+    ): Chainable<any>;
+
+    /**
+     * Make API request as Finance-only user (grace.financeonly, Finance=1, Admin=0).
+     * Used to verify Finance-role-but-not-Admin can access /finance/api/funds CRUD.
+     */
+    makePrivateFinanceOnlyAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number | number[]
+    ): Chainable<any>;
+
+    /**
+     * Make API request as ManageGroups-only user (kyle.kioskonly, ManageGroups=1, Admin=0).
+     * Used to verify ManageGroups-role can access /kiosk/api/* endpoints.
+     */
+    makePrivateManageGroupsOnlyAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number | number[]
     ): Chainable<any>;
 
     /**
@@ -238,5 +286,17 @@ declare namespace Cypress {
      * @param options - Optional config { timeout: 5000 }
      */
     waitForNotification(expectedText: string, options?: { timeout?: number }): Chainable<void>;
+
+    /**
+     * Set the locale-admin user's ui.locale preference to localeValue and establish
+     * an authenticated browser session for that user.
+     *
+     * localeValue must be the locale field from src/locale/locales.json
+     * (e.g. 'ar_EG', 'zh_CN', 'de_DE' — NOT the poEditor code).
+     *
+     * Designed for locale smoke tests only; never touches system-wide sLanguage config.
+     * @param localeValue - The locale field value from locales.json
+     */
+    setupLocaleAdminSession(localeValue: string): Chainable<void>;
   }
 }

@@ -116,7 +116,7 @@ class NotificationService
 
                 return;
             }
-            $data = json_decode($contents, null, 512, JSON_THROW_ON_ERROR);
+            $data = json_decode($contents, null, 512);
             if (isset($data->TTL)) {
                 $_SESSION['SystemNotifications'] = $data;
             }
@@ -156,7 +156,7 @@ class NotificationService
                 $message->message ?? '',
                 $message->link ?? '',
                 $message->type ?? 'info',
-                $message->icon ?? 'info-circle',
+                $message->icon ?? 'circle-info',
             ));
         }
     }

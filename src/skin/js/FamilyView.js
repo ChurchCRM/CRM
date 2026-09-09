@@ -116,7 +116,12 @@ function initializeFamilyView() {
           type: "num",
           data: "Amount",
           className: "text-end",
-          render: (data) => "$" + parseFloat(data).toFixed(2),
+          render: (data, type) => {
+            if (type === "display") {
+              return window.CRM.currency.format(data);
+            }
+            return parseFloat(data || 0);
+          },
         },
         { title: i18next.t("Fiscal Year"), data: "FormattedFY" },
         { title: i18next.t("Method"), data: "Method" },

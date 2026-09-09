@@ -8,6 +8,7 @@ use ChurchCRM\Utils\FileSystemUtils;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\ImageSupportUtils;
 use Exception;
 use PharData;
 use Propel\Runtime\Propel;
@@ -175,15 +176,6 @@ class RestoreJob extends JobBase
      */
     private function validateExtractedImages(string $dir): void
     {
-        // Aligned with Photo.php allowed types — no SVG (XSS risk) or BMP
-        $allowedMimeTypes = [
-            'image/jpeg',
-            'image/jpg',
-            'image/png',
-            'image/gif',
-            'image/webp',
-        ];
-
         // Executable extensions that must never be copied to the webroot
         $dangerousExtensions = ['php', 'phtml', 'php3', 'php4', 'php5', 'php7', 'phps', 'phar', 'shtml'];
 
@@ -209,9 +201,9 @@ class RestoreJob extends JobBase
                 throw new Exception('Restore aborted: backup archive contains a potentially dangerous file (' . $file->getFilename() . '). This may indicate a compromised backup.');
             }
 
-            // Check MIME type for all other files — remove non-images
+            // Check MIME type for all other files — remove non-images (see ImageSupportUtils for allowed types)
             $mimeType = $finfo->file($filePath);
-            if (!\in_array($mimeType, $allowedMimeTypes, true)) {
+            if (!ImageSupportUtils::isAllowedMimeType($mimeType)) {
                 LoggerUtils::getAppLogger()->warning('Restore: removing non-image file from backup: ' . $filePath . ' (MIME: ' . $mimeType . ')');
                 if (!unlink($filePath)) {
                     // Cannot remove non-image file — abort to prevent it reaching the webroot

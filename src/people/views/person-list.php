@@ -27,7 +27,7 @@ function emptyOrUnassigned($stuff)
  */
 function emptyOrUnassignedJSON($stuff): string
 {
-    return empty($stuff) ? 'Unassigned' : InputUtils::escapeHTML(json_encode($stuff, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
+    return empty($stuff) ? 'Unassigned' : InputUtils::escapeHTML(json_encode($stuff, JSON_UNESCAPED_UNICODE));
 }
 
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');
@@ -61,6 +61,19 @@ foreach ($ListItem as $element) {
 $option_name = fn (string $t1, string $t2): string => $t1 . ':' . $t2;
 
 $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
+
+// Build ordered, security-filtered custom field list for export columns.
+// Each entry becomes its own DataTables column (real name as header, formatted value as cell)
+// in the CSV and Print/PDF export.  The existing single 'Custom' filter column is marked
+// no-export so the raw JSON name-list no longer pollutes the export output.
+// We reuse the already-fetched $allPersonCustomFields collection (sorted in PHP) to avoid
+// an extra DB round-trip.
+$exportCustomFields = iterator_to_array($allPersonCustomFields, false);
+usort($exportCustomFields, fn($a, $b) => $a->getOrder() <=> $b->getOrder());
+$exportCustomFields = array_values(array_filter(
+    $exportCustomFields,
+    fn($cf) => AuthenticationManager::getCurrentUser()->isEnabledSecurity($cf->getFieldSecurity())
+));
 
 // Person custom list
 $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity', 'Id', 'TypeId', 'Special'])->find();
@@ -156,7 +169,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
 <div class="card mb-3">
     <div class="card-header">
-        <h3 class="card-title"><i class="ti ti-filter me-1"></i> <span id="filters-title"></span></h3>
+        <h3 class="card-title"><i class="fa-solid fa-filter me-1"></i> <span id="filters-title"></span></h3>
     </div>
     <div class="card-body">
         <div class="row g-3">
@@ -207,7 +220,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
         </div>
         <div class="mt-3">
             <button id="ClearFilter" type="button" class="btn btn-secondary w-100">
-                <i class="ti ti-x me-1"></i> <span id="clear-filter-text"></span>
+                <i class="fa-solid fa-xmark me-1"></i> <span id="clear-filter-text"></span>
             </button>
         </div>
     </div>
@@ -215,7 +228,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title"><i class="ti ti-users me-1"></i> <span id="people-title"></span></h3>
+        <h3 class="card-title"><i class="fa-solid fa-users me-1"></i> <span id="people-title"></span></h3>
     </div>
     <div class="card-body">
         <table id="members" class="table table-vcenter table-hover data-table mb-0">
@@ -242,7 +255,19 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     foreach ($personListColumns as $column) {
                         // Output all columns - DataTables JS config controls visibility
                         $localizedHeader = $htmlColumnTitleMap[$column->name] ?? $column->name;
-                        echo '<th>' . $localizedHeader . '</th>';
+                        // The 'Custom' column holds filter JSON (field names), not user data;
+                        // exclude it from export and add per-field columns below instead.
+                        if ($column->name === 'Custom') {
+                            echo '<th class="no-export">' . $localizedHeader . '</th>';
+                        } else {
+                            echo '<th>' . $localizedHeader . '</th>';
+                        }
+                    }
+                    // Export columns: one <th> per accessible custom field with real name as header.
+                    // These are hidden on-screen (DataTables visibility config below) but included
+                    // in CSV/Print export so users see actual field values, not the filter JSON.
+                    foreach ($exportCustomFields as $cf) {
+                        echo '<th>' . InputUtils::escapeHTML($cf->getName()) . '</th>';
                     } ?>
                     <th class="no-export w-1"><?= gettext('Actions') ?></th>
                 </tr>
@@ -256,6 +281,18 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             <tr>
                 <?php
                 $columns = $personListColumns;
+                // Fetch custom-field data once per person (single DB round-trip):
+                // returns both the filter name-list (for the hidden 'Custom' column)
+                // and the per-field formatted values (for the export columns).
+                $customFieldsResult  = $person->getCustomFieldsAll(
+                    $allPersonCustomFields,
+                    $CustomMapping,
+                    $CustomList,
+                    $option_name,
+                    $exportCustomFields
+                );
+                $customFilterNames   = $customFieldsResult['filterNames'];
+                $customExportValues  = $customFieldsResult['exportValues'];
                 foreach ($columns as $column) {
                     // Output ALL columns - DataTables JS config controls visibility
                     
@@ -284,7 +321,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         // Skip method call for Family Status column (handled separately below)
                         if (!isset($column->isFamilyStatus) || $column->isFamilyStatus !== true) {
                             if ($column->displayFunction === 'getCustomFields') {
-                                $columnData = [$person, $column->displayFunction]($allPersonCustomFields, $CustomMapping, $CustomList, $option_name);
+                                // Use pre-fetched result from getCustomFieldsAll (no extra DB query)
+                                $columnData = $customFilterNames;
                             } else {
                                 $columnData = [$person, $column->displayFunction]();
                             }
@@ -347,7 +385,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                     echo '<span class="badge bg-info-lt text-info me-1">' . InputUtils::escapeHTML($group) . '</span>';
                                 }
                                 // Add hidden span with JSON for DataTables filtering
-                                echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR)) . '</span>';
+                                echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE)) . '</span>';
                             } else {
                                 echo '<span class="text-body-secondary">—</span>';
                             }
@@ -376,7 +414,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         elseif ($column->displayFunction === 'getPropertiesString') {
                             if (is_array($columnData) && !empty($columnData)) {
                                 // Output as JSON for quote-based filter matching (HTML-escaped to prevent XSS)
-                                echo InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
+                                echo InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE));
                             } else {
                                 echo 'Unassigned';
                             }
@@ -385,7 +423,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         elseif ($column->displayFunction === 'getCustomFields') {
                             if (is_array($columnData) && !empty($columnData)) {
                                 // Output as JSON for quote-based filter matching (HTML-escaped to prevent XSS)
-                                echo InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
+                                echo InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE));
                             } else {
                                 echo 'Unassigned';
                             }
@@ -404,23 +442,31 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     echo '</td>';
                 }
                 ?>
+                <?php
+                // Export columns: per-custom-field values for CSV/Print export.
+                // One <td> per accessible custom field, with the field's real formatted value.
+                // Values come from getCustomFieldsAll() called above (no extra DB query).
+                foreach ($exportCustomFields as $cf) {
+                    echo '<td>' . InputUtils::escapeHTML($customExportValues[$cf->getId()] ?? '') . '</td>';
+                }
+                ?>
                 <td>
                     <div class="dropdown">
                         <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                            <i class="ti ti-dots-vertical"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="<?= $person->getViewURI() ?>">
-                                <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                             </a>
                             <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getId() ?>">
-                                <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                             </a>
                             <?php endif; ?>
                             <?php if ($person->getFamId()): ?>
                             <a class="dropdown-item" href="<?= Family::getFamilyViewURIForId((int) $person->getFamId()) ?>">
-                                <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                <i class="fa-solid fa-users me-2"></i><?= gettext('View Family') ?>
                             </a>
                             <?php endif; ?>
                             <div class="dropdown-divider"></div>
@@ -431,7 +477,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 data-cart-type="person"
                                 data-label-add="<?= gettext('Add to Cart') ?>"
                                 data-label-remove="<?= gettext('Remove from Cart') ?>">
-                                <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                <i class="<?= $inCart ? 'fa-solid fa-trash' : 'fa-solid fa-cart-plus' ?> me-2"></i>
                                 <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                             </button>
                             <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
@@ -440,7 +486,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 class="dropdown-item text-danger delete-person"
                                 data-person_id="<?= $person->getId() ?>"
                                 data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>">
-                                <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                             </button>
                             <?php endif; ?>
                         </div>
@@ -507,6 +553,11 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         echo"{ targets:" . $columnId .", visible: false },\n";
                     }
                 }
+                // Export custom-field columns are hidden on-screen but included in the export
+                foreach ($exportCustomFields as $cf) {
+                    $columnId++;
+                    echo "{ targets:" . $columnId . ", visible: false },\n";
+                }
                 ?>
             ],
             columns: [
@@ -545,6 +596,12 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         }
                     }
                     echo json_encode($columnTitle) .",\n";
+                }
+                // Export custom-field columns: one title entry per accessible custom field.
+                // These columns are hidden on-screen (see columnDefs above) but exported.
+                foreach ($exportCustomFields as $cf) {
+                    $columnId++;
+                    echo json_encode(['title' => $cf->getName()]) . ",\n";
                 }
                 ?>
                 {
@@ -661,16 +718,16 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
         // Call webpack initializer to populate other filter lists
         var serverVars = {
-            RoleList: <?= json_encode($RoleList, JSON_THROW_ON_ERROR) ?>,
-            PropertyList: <?= json_encode($PropertyList, JSON_THROW_ON_ERROR) ?>,
-            CustomList: <?= json_encode($CustomList, JSON_THROW_ON_ERROR) ?>,
-            GroupList: <?= json_encode($GroupList, JSON_THROW_ON_ERROR) ?>,
-            ClassificationList: <?= json_encode($ClassificationList, JSON_THROW_ON_ERROR) ?>,
-            FamilyStatusList: <?= json_encode([gettext('Active'), gettext('Inactive')], JSON_THROW_ON_ERROR) ?>,
-            filterByGender: <?= json_encode($filterByGender, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
-            filterByClsId: <?= json_encode($filterByClsOptionId, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
-            filterByFmrId: <?= json_encode($filterByFmrOptionId, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
-            familyActiveStatus: <?= json_encode($familyActiveStatus, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
+            RoleList: <?= InputUtils::jsonEncodeForScript($RoleList) ?>,
+            PropertyList: <?= InputUtils::jsonEncodeForScript($PropertyList) ?>,
+            CustomList: <?= InputUtils::jsonEncodeForScript($CustomList) ?>,
+            GroupList: <?= InputUtils::jsonEncodeForScript($GroupList) ?>,
+            ClassificationList: <?= InputUtils::jsonEncodeForScript($ClassificationList) ?>,
+            FamilyStatusList: <?= InputUtils::jsonEncodeForScript([gettext('Active'), gettext('Inactive')]) ?>,
+            filterByGender: <?= InputUtils::jsonEncodeForScript($filterByGender) ?>,
+            filterByClsId: <?= InputUtils::jsonEncodeForScript($filterByClsOptionId) ?>,
+            filterByFmrId: <?= InputUtils::jsonEncodeForScript($filterByFmrOptionId) ?>,
+            familyActiveStatus: <?= InputUtils::jsonEncodeForScript($familyActiveStatus) ?>
         };
         if (window.initializePeopleListFromServer) {
             window.initializePeopleListFromServer(serverVars);

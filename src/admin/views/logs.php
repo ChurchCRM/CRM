@@ -138,18 +138,18 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                                     <td class="text-center w-1">
                                         <div class="dropdown">
                                             <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                                <i class="ti ti-dots-vertical"></i>
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <a class="dropdown-item view-log" href="#" data-log-name="<?= InputUtils::escapeHTML($logFile['name']) ?>">
-                                                    <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                                    <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                                                 </a>
                                                 <a class="dropdown-item download-log" href="#" data-log-name="<?= InputUtils::escapeHTML($logFile['name']) ?>">
-                                                    <i class="ti ti-download me-2"></i><?= gettext('Download') ?>
+                                                    <i class="fa-solid fa-download me-2"></i><?= gettext('Download') ?>
                                                 </a>
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item text-danger delete-log" href="#" data-log-name="<?= InputUtils::escapeHTML($logFile['name']) ?>">
-                                                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                                    <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                                 </a>
                                             </div>
                                         </div>
@@ -410,14 +410,14 @@ var logLevelMap = {
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#logSettings',
-        title: <?= json_encode(gettext('Log Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        title: <?= InputUtils::jsonEncodeForScript(gettext('Log Settings')) ?>,
         settings: [
             {
                 name: 'sLogLevel',
                 type: 'choice',
-                label: <?= json_encode(gettext('Log Level'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                tooltip: <?= json_encode(SystemConfig::getTooltip('sLogLevel'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                choices: <?= json_encode(SystemConfig::getChoices('sLogLevel'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Log Level')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sLogLevel')) ?>,
+                choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('sLogLevel')) ?>
             }
         ],
         onSave: function() {

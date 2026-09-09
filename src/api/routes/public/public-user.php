@@ -54,7 +54,7 @@ $app->group('/public/user', function (RouteCollectorProxy $group): void {
 function userLogin(Request $request, Response $response, array $args): Response
 {
     $logger = LoggerUtils::getAuthLogger();
-    $body = json_decode($request->getBody(), true, 512, JSON_THROW_ON_ERROR);
+    $body = json_decode($request->getBody(), true, 512);
 
     // Use a generic error message to prevent username enumeration
     $genericError = gettext('Invalid login or password');
@@ -108,6 +108,16 @@ function userLogin(Request $request, Response $response, array $args): Response
         $recoveryValid = !$otpValid && $user->isTwoFaRecoveryCodeValid($otp);
 
         if (!$otpValid && !$recoveryValid) {
+            // Count OTP failures toward account lockout, mirroring the wrong-password branch.
+            // Without this, an attacker with a valid password can brute-force the 6-digit
+            // TOTP space without limit (GHSA-f2fq-4rmp-9x8c).
+            $user->setFailedLogins($user->getFailedLogins() + 1);
+            $user->save();
+            if ($user->isLocked() && !empty($user->getEmail())) {
+                $logger->warning('API login: account locked after too many 2FA failures', ['username' => $user->getUserName()]);
+                $lockedEmail = new LockedEmail($user);
+                $lockedEmail->send();
+            }
             $logger->warning('API login: invalid 2FA code', ['username' => $user->getUserName()]);
             throw new HttpUnauthorizedException($request, $genericError);
         }
@@ -151,7 +161,7 @@ function passwordResetRequest(Request $request, Response $response, array $args)
 {
     $logger = LoggerUtils::getAppLogger();
 
-    $body = json_decode($request->getBody(), true, 512, JSON_THROW_ON_ERROR);
+    $body = json_decode($request->getBody(), true, 512);
     $userName = trim($body['userName'] ?? '');
 
     if (empty($userName)) {

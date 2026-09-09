@@ -94,17 +94,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="d-flex flex-wrap gap-2">
           <?php if ($canEditEvents): ?>
             <a href="<?= $sRootPath ?>/event/editor" class="btn btn-primary btn-sm">
-              <i class="ti ti-plus me-1"></i><?= gettext('Add Event') ?>
+              <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Event') ?>
             </a>
             <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-outline-primary btn-sm">
-              <i class="ti ti-repeat me-1"></i><?= gettext('Add Recurring Event') ?>
+              <i class="fa-solid fa-repeat me-1"></i><?= gettext('Add Recurring Event') ?>
             </a>
           <?php endif; ?>
           <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-outline-secondary btn-sm">
-            <i class="ti ti-user-check me-1"></i><?= gettext('Check-in') ?>
+            <i class="fa-solid fa-user-check me-1"></i><?= gettext('Check-in') ?>
           </a>
           <a href="<?= $sRootPath ?>/event/calendars" class="btn btn-outline-secondary btn-sm">
-            <i class="ti ti-calendar me-1"></i><?= gettext('Calendar') ?>
+            <i class="fa-solid fa-calendar me-1"></i><?= gettext('Calendar') ?>
           </a>
         </div>
       </div>
@@ -116,19 +116,30 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="card mb-3">
   <div class="card-body py-2">
     <form id="eventFilterForm" name="EventFilterForm" method="GET" action="<?= $sRootPath ?>/event/dashboard">
-      <div class="row align-items-end">
-        <div class="col-md-5">
+      <div class="row g-2 align-items-end">
+        <div class="col-12 col-md-4">
           <label for="type" class="form-label mb-1"><?= gettext('Event Type') ?></label>
           <select name="type" id="type" class="form-select form-select-sm">
             <option value="All"><?= gettext('All Types') ?></option>
             <?php foreach ($eventTypesWithEvents as $type): ?>
-              <option value="<?= InputUtils::escapeAttribute($type->getId()) ?>" <?= ($type->getId() == $eType) ? 'selected' : '' ?>>
+              <option value="<?= (int)$type->getId() ?>" <?= ($type->getId() == $eType) ? 'selected' : '' ?>>
                 <?= InputUtils::escapeHTML($type->getName()) ?>
               </option>
             <?php endforeach; ?>
           </select>
         </div>
-        <div class="col-md-5">
+        <div class="col-12 col-md-3">
+          <label for="month" class="form-label mb-1"><?= gettext('Month') ?></label>
+          <select name="month" id="month" class="form-select form-select-sm">
+            <option value="All" <?= ($EventMonth === null) ? 'selected' : '' ?>><?= gettext('All Months') ?></option>
+            <?php for ($m = 1; $m <= 12; $m++): ?>
+              <option value="<?= (int) $m ?>" <?= ($EventMonth === $m) ? 'selected' : '' ?>>
+                <?= InputUtils::escapeHTML(gettext(date('F', mktime(0, 0, 0, $m, 1)))) ?>
+              </option>
+            <?php endfor; ?>
+          </select>
+        </div>
+        <div class="col-12 col-md-3">
           <label for="year" class="form-label mb-1"><?= gettext('Year') ?></label>
           <select name="year" id="year" class="form-select form-select-sm">
             <?php foreach ($availableYears as $year): ?>
@@ -138,10 +149,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <?php endforeach; ?>
           </select>
         </div>
-        <div class="col-md-2 text-end">
-          <?php if ($eType !== 'All'): ?>
+        <div class="col-12 col-md-2 text-md-end">
+          <?php if ($eType !== 'All' || $EventMonth !== null): ?>
             <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-sm btn-ghost-secondary">
-              <i class="ti ti-x me-1"></i><?= gettext('Clear Filter') ?>
+              <i class="fa-solid fa-xmark me-1"></i><?= gettext('Clear Filter') ?>
             </a>
           <?php endif; ?>
         </div>
@@ -177,7 +188,7 @@ foreach ($monthlyData as $monthData):
 <div class="card mb-3" id="month-<?= $monthNum ?>">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title mb-0">
-      <i class="ti ti-calendar me-2 text-body-secondary"></i>
+      <i class="fa-solid fa-calendar me-2 text-body-secondary"></i>
       <?= sprintf(ngettext('%d event in %s', '%d events in %s', $numRows), $numRows, gettext($monthName)) ?>
     </h3>
     <span class="badge bg-blue-lt ms-auto"><?= (int) $EventYear ?></span>
@@ -220,8 +231,8 @@ foreach ($monthlyData as $monthData):
                 aria-expanded="<?= $autoExpand ? 'true' : 'false' ?>"
                 aria-controls="<?= $collapseId ?>"
               >
-                <i class="ti ti-chevron-right me-1 past-events-chevron"></i>
-                <i class="ti ti-archive me-1 text-body-secondary"></i>
+                <i class="fa-solid fa-chevron-right me-1 past-events-chevron"></i>
+                <i class="fa-solid fa-archive me-1 text-body-secondary"></i>
                 <?= sprintf(
                     ngettext('%d past event', '%d past events', $pastCount),
                     $pastCount
@@ -288,7 +299,7 @@ foreach ($monthlyData as $monthData):
 </div>
 <?php endforeach; ?>
 
-<?php if ($hasEvents && $EventYear === (int) date('Y')): ?>
+<?php if ($hasEvents && $EventMonth === null && $EventYear === (int) date('Y')): ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   document.addEventListener('DOMContentLoaded', function () {
     var m = document.getElementById('month-<?= (int) date('n') ?>');
@@ -301,21 +312,25 @@ foreach ($monthlyData as $monthData):
 <div class="card">
   <div class="card-body text-center py-5">
     <div class="mb-3">
-      <i class="ti ti-calendar-off text-body-secondary" style="font-size: 3rem;"></i>
+      <i class="fa-solid fa-calendar-off text-body-secondary" style="font-size: 3rem;"></i>
     </div>
     <h3 class="text-body-secondary"><?= gettext('No Events Found') ?></h3>
     <p class="text-body-secondary mb-3">
-      <?= sprintf(gettext('No events found for %s.'), (int) $EventYear) ?>
-      <?php if ($eType !== 'All'): ?>
-        <?= gettext('Try selecting a different event type or year.') ?>
+      <?php if ($EventMonth !== null): ?>
+        <?= sprintf(gettext('No events found for %s %d.'), InputUtils::escapeHTML(gettext(date('F', mktime(0, 0, 0, $EventMonth, 1)))), (int) $EventYear) ?>
+      <?php else: ?>
+        <?= sprintf(gettext('No events found for %s.'), (int) $EventYear) ?>
+      <?php endif; ?>
+      <?php if ($eType !== 'All' || $EventMonth !== null): ?>
+        <?= gettext('Try selecting a different event type, month, or year.') ?>
       <?php endif; ?>
     </p>
     <?php if ($canEditEvents): ?>
       <a href="<?= $sRootPath ?>/event/editor" class="btn btn-primary me-2">
-        <i class="ti ti-plus me-1"></i><?= gettext('Create First Event') ?>
+        <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Event') ?>
       </a>
       <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-outline-primary">
-        <i class="ti ti-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
+        <i class="fa-solid fa-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
       </a>
     <?php endif; ?>
   </div>

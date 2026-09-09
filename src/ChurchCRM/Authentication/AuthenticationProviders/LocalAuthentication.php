@@ -163,6 +163,20 @@ class LocalAuthentication implements IAuthenticationProvider
                 LoggerUtils::getAuthLogger()->info('User successfully logged in without 2FA', $logCtx);
             }
         } elseif ($AuthenticationRequest instanceof LocalTwoFactorTokenRequest && $this->bPendingTwoFactorAuth) {
+            // Guard: if the account is already locked (e.g. from a prior OTP failure in
+            // this session), reject without incrementing the counter or re-sending email.
+            if ($this->currentUser->isLocked()) {
+                // Clear the pending-2FA state so the session cannot resume OTP
+                // brute-forcing after an admin resets usr_FailedLogins.
+                // validateUserSessionIsActive() calls currentUser->reload(), which
+                // would pick up the fresh DB state and make isLocked() return false
+                // again — clearing these flags closes that re-entry window.
+                $this->bPendingTwoFactorAuth = false;
+                $this->currentUser = null;
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                return $authenticationResult;
+            }
             if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
@@ -174,10 +188,29 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->bPendingTwoFactorAuth = false;
                 LoggerUtils::getAuthLogger()->info('User successfully logged in with 2FA Recovery Code', $logCtx);
             } else {
+                // Count OTP failures toward account lockout, mirroring the wrong-password branch.
+                // Without this, an attacker with a valid password can brute-force the 6-digit
+                // TOTP space without limit (GHSA-f2fq-4rmp-9x8c).
+                $this->currentUser->setFailedLogins($this->currentUser->getFailedLogins() + 1);
+                $this->currentUser->save();
+                if (!empty($this->currentUser->getEmail()) && $this->currentUser->isLocked()) {
+                    LoggerUtils::getAuthLogger()->warning('Too many failed 2FA attempts. The account has been locked', $logCtx);
+                    $lockedEmail = new LockedEmail($this->currentUser);
+                    $lockedEmail->send();
+                }
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
-                $recoveryParam = $AuthenticationRequest->isRecoveryMode ? '&recovery' : '';
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1' . $recoveryParam;
+                if ($this->currentUser->isLocked()) {
+                    // Account is now locked — clear the pending-2FA state so the session
+                    // cannot resume OTP brute-forcing after an admin counter reset,
+                    // then redirect back to login.
+                    $this->bPendingTwoFactorAuth = false;
+                    $this->currentUser = null;
+                    $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                } else {
+                    $recoveryParam = $AuthenticationRequest->isRecoveryMode ? '&recovery' : '';
+                    $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1' . $recoveryParam;
+                }
             }
         }
 

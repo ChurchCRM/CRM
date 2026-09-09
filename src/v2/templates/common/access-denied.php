@@ -34,7 +34,7 @@ $extraHtml = '';
 if (!empty($missingRole)) {
     $escaped = InputUtils::escapeHTML($roleDescription);
     $extraHtml = "<div class=\"callout callout-warning text-start mt-3\">" .
-                 "<h5><i class=\"ti ti-key me-2\"></i> " . gettext('Required Permission') . "</h5>" .
+                 "<h5><i class=\"fa-solid fa-key me-2\"></i> " . gettext('Required Permission') . "</h5>" .
                  "<p class=\"mb-0\"><strong>$escaped</strong></p>" .
                  "</div>";
 }

@@ -582,16 +582,8 @@ msgid "Picture URL"
 msgstr "图片 URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "捐赠基金的编辑"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "无效的字段或选择。更改未保存！请更正，然后再试一次！"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "目前没有资金已"
 
 #: 
 msgid "Active"
@@ -1122,25 +1114,9 @@ msgid "Create Report"
 msgstr "创建报告"
 
 #: 
-msgid "Deposit Listing"
-msgstr "存款上市"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "存款"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "删除选定的行"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "删除选定的行（OFX）"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "删除选定的行（CSV）"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1211,48 +1187,9 @@ msgid "Minimum Price"
 msgstr "最低价格"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "家庭地理公用事业"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "选择家庭"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "邻居的最大数量"
-
-#: 
-msgid "Maximum distance"
-msgstr "最大距离"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "数据文件格式"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS可视化"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "包括家庭中的坐标文件"
-
-#: 
-msgid "Neighbor Families"
-msgstr "邻居的家庭"
-
-#: 
-msgid "Make Data File"
-msgstr "数据文件"
-
-#: 
-msgid "Show Neighbors"
-msgstr "显示邻居"
 
 #: 
 msgid "Distance"
@@ -1273,10 +1210,6 @@ msgstr "经度"
 #: 
 msgid "Add to Cart"
 msgstr "添加到购物车"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "相交的购物车"
 
 #: 
 msgid "Remove from Cart"
@@ -1307,10 +1240,6 @@ msgstr "群组特定属性"
 #: 
 msgid "Enabled"
 msgstr "应用"
-
-#: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "编辑组特定的属性表"
 
 #: 
 msgid "Disabled"
@@ -1366,14 +1295,6 @@ msgstr "组特定的属性表编辑器"
 #: 
 msgid "No properties have been added yet"
 msgstr "尚未添加任何属性"
-
-#: 
-msgid "Show in"
-msgstr "显示在"
-
-#: 
-msgid "Person View"
-msgstr "人称视角"
 
 #: 
 msgid "Other Email"
@@ -1474,10 +1395,6 @@ msgstr "电邮所有人"
 #: 
 msgid "Family Roles"
 msgstr "家庭各式"
-
-#: 
-msgid "Family Geographic"
-msgstr "家庭地理位置"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -2258,14 +2175,6 @@ msgstr "捐赠的物品"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "购买的物品"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "所有购买总计："
-
-#: 
-msgid "Total purchases: $"
-msgstr "采购总额：$"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4365,26 +4274,8 @@ msgid "Profile Image uploaded"
 msgstr "个人资料图片已上传"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "显示具有以下类别的邻居"
-
-#: 
-msgid "Please select a Family."
-msgstr "请选择一个家庭。"
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "协调数据库文件名"
-
-#: 
 msgid "select an option"
 msgstr "选择一个项目"
-
-#: 
-msgid "Direct me"
-msgstr "指导我"
 
 #: 
 msgid "Your cart is empty"
@@ -4943,10 +4834,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "将加密系统设置为使用 - ssl（不建议使用）或tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "为选定的行生成存款单（PDF）"
-
-#: 
 msgid "Add All to Cart"
 msgstr "全部添加至购物车"
 
@@ -5243,10 +5130,6 @@ msgstr "PDF格式"
 #: 
 msgid "Error sending email(s)"
 msgstr "发送电子邮件时出错"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "请检查日志以获取更多信息"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5635,10 +5518,6 @@ msgstr "家庭已从购物车移除"
 #: 
 msgid "Add Group"
 msgstr "添加团体"
-
-#: 
-msgid "Back to Group List"
-msgstr "返回团体列表"
 
 #: 
 msgid "Edit Group"
@@ -7415,10 +7294,6 @@ msgid "Order"
 msgstr "顺序"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF 已成功发送至 %s 个家庭。"
-
-#: 
 msgid "Percentage"
 msgstr "百分比"
 
@@ -7457,10 +7332,6 @@ msgstr "添加您的第一个属性类型"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "删除此字段后，您将永久丢失分配给此字段的所有小组成员数据！"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "删除此基金可能会影响历史捐赠记录！"
 
 #: 
 msgid "Category Name"
@@ -7515,10 +7386,6 @@ msgid "Filter by Class"
 msgstr "按类别筛选"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "基金删除成功"
-
-#: 
 msgid "In Use"
 msgstr "使用中"
 
@@ -7565,10 +7432,6 @@ msgstr "删除此出席计数？"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "选择此属性适用的记录类型"
-
-#: 
-msgid "That fund name already exists."
-msgstr "该基金名称已存在。"
 
 #: 
 msgid "Total Pledges"
@@ -9539,10 +9402,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "为奉献者生成税务报表文件"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "地理工具"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "将您的数据导入 ChurchCRM"
 
@@ -10057,10 +9916,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "搜索人员、家庭、小组、地址等。"
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "搜索和查看奉献存款单记录"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "搜索人员、家庭、小组…"
 
@@ -10275,10 +10130,6 @@ msgstr "查看和管理教会中的所有小组"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "查看和管理奉献存款单"
-
-#: 
-msgid "View and manage family location data"
-msgstr "查看和管理家庭位置数据"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -10621,10 +10472,6 @@ msgid "Total Check-ins"
 msgstr "签到总数"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "请尝试选择不同的活动类型或年份。"
-
-#: 
 msgid "Up to Date"
 msgstr "已是最新"
 
@@ -10713,11 +10560,6 @@ msgstr "复制到剪贴板"
 msgid "Custom field"
 msgstr "自定义字段"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "自定义搜索"
-
 #: 
 msgid "Default Country"
 msgstr "默认国家"
@@ -10779,11 +10621,6 @@ msgstr "字段值"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "找出有志在某一年但不是另一年的人"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "找出具有自定义字段值的人"
 
 #. Context: query_qry
 #: 
@@ -12046,10 +11883,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "更改将在下次登录后生效。"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "选择浅色或深色主题"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "自定义应用程序的外观与感觉"
 
@@ -12803,10 +12636,6 @@ msgstr "纬度和经度必须同时提供（或同时留空以进行自动检测
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "教会信息已保存，但无法自动定位地址。请在「地图坐标」下手动输入纬度和经度。"
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "坐标将在保存时通过 OpenStreetMap 从您的地址自动检测。您也可以在下方手动输入——手动值始终优先于自动检测。两者均留空可让系统根据地址进行地理编码。"
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -14065,10 +13894,6 @@ msgid "Are you sure you want to continue?"
 msgstr "您确定要继续吗?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "您确定要删除此存款吗？"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "您确定要删除此事件类型吗？此操作无法撤销。"
 
@@ -14319,10 +14144,6 @@ msgstr "演示数据通常仅在全新安装时加载。现在导入将在现有
 #: 
 msgid "Deposit ID"
 msgstr "存款 ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "存款总额"
 
 #: 
 msgid "Deposit Value"
@@ -14636,10 +14457,6 @@ msgstr "小组已成功删除。"
 #: 
 msgid "Group removed from cart"
 msgstr "团体已从购物车移除"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "角色选择提示需要GroupID"
 
 #: 
 msgid "HTML URL"
@@ -15019,20 +14836,8 @@ msgid "Please select a role."
 msgstr "请选择一个角色。"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "请同时选择一个事工组和一个角色。"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "请选择要删除的行"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "请为会员选择目标角色"
-
-#: 
-msgid "Please select target group for members"
-msgstr "请为会员选择目标群组"
 
 #: 
 msgid "Please try again"
@@ -15927,24 +15732,12 @@ msgid "Account status"
 msgstr "账户状态"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "高级：选择特定目标版本"
-
-#: 
 msgid "Bug Fix"
 msgstr "错误修复"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "默认情况下，向导会下载下一个推荐版本。您也可以在下方选择任意可用版本。"
-
-#: 
 msgid "Change required"
 msgstr "需要更改"
-
-#: 
-msgid "Changelog"
-msgstr "更新日志"
 
 #: 
 msgid "Continue Anyway"
@@ -15953,10 +15746,6 @@ msgstr "仍然继续"
 #: 
 msgid "Could not load release information."
 msgstr "无法加载版本信息。"
-
-#: 
-msgid "Download & Install"
-msgstr "下载并安装"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15985,10 +15774,6 @@ msgstr "完整更新日志"
 #: 
 msgid "Install stable {{version}}"
 msgstr "安装稳定版 {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "正在安装下一个版本"
 
 #: 
 msgid "Invalid file path"
@@ -16059,10 +15844,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "显示完整升级路径"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "最新稳定版本为 {{version}}。您可以在下方重新安装。"
 
@@ -16089,10 +15870,6 @@ msgstr "查看发行说明"
 #: 
 msgid "What's New"
 msgstr "新增内容"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} 新增内容"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16181,6 +15958,16 @@ msgstr "此人员已拥有用户账户。"
 #: 
 msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "用户必须是管理员或具有管理募款活动的权限"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d 个已归档的募款活动"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "已成功将 %d 人添加到所选家庭。"
 
 #: 
 msgid "%s Fundraisers"
@@ -16699,10 +16486,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "电子邮件功能当前已禁用。以下功能在启用电子邮件之前将无法使用"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "估计价值 $%s。"
-
-#: 
 msgid "Fastest workflow"
 msgstr "最快工作流程"
 
@@ -16745,10 +16528,6 @@ msgstr "本地开发"
 #: 
 msgid "Minimum Total Amount"
 msgstr "最低总金额"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "最低出价 $%s。"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17051,10 +16830,6 @@ msgid "Working..."
 msgstr "处理中……"
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "您落后了 {{releaseCount}} 个版本，以下是您将获得的更新"
-
-#: 
 msgid "click to expand"
 msgstr "点击展开"
 
@@ -17157,4 +16932,968 @@ msgstr "请在下方审核来自公开注册表单的新注册信息。未填写
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "确认删除义工机会"
+
+#: 
+msgid "# Payments"
+msgstr "# 奉献记录"
+
+#: 
+msgid "# Pledges"
+msgstr "# 承诺奉献"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "奉献是已收到的实际捐款，将添加到所选的存款记录中。"
+
+#: 
+msgid "Add Fund"
+msgstr "添加基金"
+
+#: 
+msgid "Amount ($)"
+msgstr "金额（$）"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "金额超过最大允许值（999999.99）"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "保存时发生错误，请重试。"
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "匿名遥测"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "匿名遥测级别。控制与 ChurchCRM 团队共享的匿名诊断数据量。不会发送任何教会名称、会众数据或个人信息。"
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "您确定要永久删除此奉献记录吗？"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "至少需要一个基金分配"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "至少一个基金的金额不能为零"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "在会众生日当天自动发送生日祝福电子邮件"
+
+#: 
+msgid "Back to Finance"
+msgstr "返回财务"
+
+#: 
+msgid "Back to Group"
+msgstr "返回小组"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "无法准备查询。"
+
+#: 
+msgid "Catch JS errors"
+msgstr "捕获 JS 错误"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "捕获重复错误"
+
+#: 
+msgid "Check #"
+msgstr "支票号码"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "教会名称、地址或联系方式"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM 版本"
+
+#: 
+msgid "Collection level"
+msgstr "采集级别"
+
+#: 
+msgid "Count unique installs"
+msgstr "统计唯一安装数"
+
+#: 
+msgid "Data"
+msgstr "数据"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "数据由 PostHog 在欧盟基础设施上处理。"
+
+#: 
+msgid "Date is required"
+msgstr "日期为必填项"
+
+#: 
+msgid "Deleted successfully"
+msgstr "删除成功"
+
+#: 
+msgid "Deposit Slip"
+msgstr "存款单"
+
+#: 
+msgid "Edit Pledge"
+msgstr "编辑承诺奉献"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "编辑现有承诺奉献或奉献记录"
+
+#: 
+msgid "Editing a Payment"
+msgstr "编辑奉献记录"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "编辑承诺奉献"
+
+#: 
+msgid "Enable (full)"
+msgstr "启用（完整）"
+
+#: 
+msgid "Errors only"
+msgstr "仅错误"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "错误——服务器错误和 JS 异常"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "创建承诺奉献失败"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "删除承诺奉献失败"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "获取承诺奉献失败"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "更新承诺奉献失败"
+
+#: 
+msgid "Financial data"
+msgstr "财务数据"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "完整——以上所有内容及页面访问"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "完整——页面访问、警告、错误和 JS 异常"
+
+#: 
+msgid "Fund Summary"
+msgstr "基金汇总"
+
+#: 
+msgid "Group key is required"
+msgstr "小组键为必填项"
+
+#: 
+msgid "Happy Birthday"
+msgstr "生日快乐"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "帮助改进 ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "IP 地址"
+
+#: 
+msgid "Installation UUID"
+msgstr "安装 UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "按基金显示承诺奉献与实际奉献的交互式汇总，支持排序、搜索和导出。"
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "内部：上次发送生日邮件的日期（YYYY-MM-DD）。请勿手动编辑。"
+
+#: 
+msgid "JS exceptions"
+msgstr "JS 异常"
+
+#: 
+msgid "Log level + message"
+msgstr "日志级别 + 消息"
+
+#: 
+msgid "Member or family records"
+msgstr "会众或家庭记录"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "修改此小组成员的角色"
+
+#: 
+msgid "Network error, please try again"
+msgstr "网络错误，请重试"
+
+#: 
+msgid "Never sent"
+msgstr "从未发送"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "无存款 / 新建存款"
+
+#: 
+msgid "No pledge"
+msgstr "无承诺奉献"
+
+#: 
+msgid "No thanks"
+msgstr "不，谢谢"
+
+#: 
+msgid "Non-Deductible"
+msgstr "不可抵税"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "不可抵税金额（$）"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "不可抵税金额不能超过基金金额"
+
+#: 
+msgid "None (disabled)"
+msgstr "无（已禁用）"
+
+#: 
+msgid "OS family"
+msgstr "操作系统类型"
+
+#: 
+msgid "Overpaid"
+msgstr "超额奉献"
+
+#: 
+msgid "PHP version"
+msgstr "PHP 版本"
+
+#: 
+msgid "Page route"
+msgstr "页面路由"
+
+#: 
+msgid "Payment Details"
+msgstr "奉献详情"
+
+#: 
+msgid "Payment Method"
+msgstr "奉献方式"
+
+#: 
+msgid "Plan runtime support"
+msgstr "计划运行时支持"
+
+#: 
+msgid "Please enter a date"
+msgstr "请输入日期"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "请为所有行选择基金"
+
+#: 
+msgid "Pledge Details"
+msgstr "承诺奉献详情"
+
+#: 
+msgid "Pledge group not found"
+msgstr "未找到承诺奉献组"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "承诺奉献与实际奉献"
+
+#: 
+msgid "Prioritise translations"
+msgstr "优先处理翻译"
+
+#: 
+msgid "Purpose"
+msgstr "用途"
+
+#: 
+msgid "Save and Add Another"
+msgstr "保存并继续添加"
+
+#: 
+msgid "Save failed"
+msgstr "保存失败"
+
+#: 
+msgid "Saved successfully"
+msgstr "保存成功"
+
+#: 
+msgid "Select a fund"
+msgstr "选择基金"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "向自己发送测试生日邮件"
+
+#: 
+msgid "Sending to"
+msgstr "正在发送至"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "与 ChurchCRM 团队共享匿名使用统计数据，以便我们了解应优先改进哪些功能和语言。不会发送任何教会名称、会众数据或个人信息。"
+
+#: 
+msgid "Test email sent to"
+msgstr "测试邮件已发送至"
+
+#: 
+msgid "Track adoption"
+msgstr "追踪使用率"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "类型必须为“承诺奉献”或“奉献记录”"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "带查询字符串的 URL（已去除记录 ID）"
+
+#: 
+msgid "Underpaid"
+msgstr "奉献不足"
+
+#: 
+msgid "Understand deployments"
+msgstr "了解部署情况"
+
+#: 
+msgid "Understand feature usage"
+msgstr "了解功能使用情况"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "用户名、电子邮件或角色"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "查看承诺奉献或奉献详情"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "警告——警告、错误和 JS 异常"
+
+#: 
+msgid "What is sent"
+msgstr "发送内容"
+
+#: 
+msgid "What we collect"
+msgstr "我们收集的内容"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "祝您%d岁生日快乐！"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "祝您生日快乐！"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "您的账户尚未绑定电子邮件地址。请在个人资料中添加一个以发送测试邮件。"
+
+#: 
+msgid "errors+"
+msgstr "错误+"
+
+#: 
+msgid "full only"
+msgstr "仅完整"
+
+#: 
+msgid "is thinking of you today."
+msgstr "今天在想念您。"
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "页面路由、当前语言环境、CRM 版本、PHP 版本、操作系统类型及随机安装 ID。仅此而已。数据存储于欧盟。"
+
+#: 
+msgid "% Paid"
+msgstr "已付百分比"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s：请核实您家庭的信息"
+
+#: 
+msgid "Add Role"
+msgstr "添加角色"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "为此小组添加自定义属性"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "自上次设置坐标以来，地址已更改。"
+
+#: 
+msgid "All Tellers"
+msgstr "所有收款员"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "所有邮件发送均失败。请在系统设置中检查您的SMTP设置。"
+
+#: 
+msgid "Amount Max"
+msgstr "最大金额"
+
+#: 
+msgid "Amount Min"
+msgstr "最小金额"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "发送邮件时发生意外错误。请检查您的SMTP设置和服务器日志。"
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "您确定要删除角色\"{{name}}\"吗？"
+
+#: 
+msgid "Auto"
+msgstr "自动"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "自动跟随操作系统或浏览器设置；浅色和深色模式可覆盖此设置"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "返回奉献承诺仪表板"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "点击\"生成坐标\"以查找上方地址的地图位置，或手动输入经纬度。如果留空，保存表单时也会自动检测坐标。"
+
+#: 
+msgid "Contributor"
+msgstr "奉献者"
+
+#: 
+msgid "Contributors"
+msgstr "奉献者"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "无法找到该地址的坐标。请尝试手动输入。"
+
+#: 
+msgid "Custom properties for this group"
+msgstr "此小组的自定义属性"
+
+#: 
+msgid "Delete role"
+msgstr "删除角色"
+
+#: 
+msgid "Email Error"
+msgstr "邮件错误"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "邮件未配置。请在系统设置中配置SMTP设置。"
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "已向 %d 个家庭发送电子邮件。"
+
+#: 
+msgid "Enter a street address first."
+msgstr "请先输入街道地址。"
+
+#: 
+msgid "Enter role name"
+msgstr "输入角色名称"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "创建收款记录失败"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "加载邮件预览失败"
+
+#: 
+msgid "From Date"
+msgstr "开始日期"
+
+#: 
+msgid "Fund Total"
+msgstr "基金总额"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "按财年显示基金奉献承诺汇总"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "募款功能已禁用"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "生成坐标"
+
+#: 
+msgid "Generating..."
+msgstr "生成中……"
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "地理编码请求失败。请重试。"
+
+#: 
+msgid "Manage Events"
+msgstr "管理活动"
+
+#: 
+msgid "N/A"
+msgstr "不适用"
+
+#: 
+msgid "New Deposit"
+msgstr "新建收款记录"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "在所选财年内，未找到此基金的奉献者"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "未找到有邮件地址的家庭。未发送任何邮件。"
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "所选收款记录中未找到付款记录"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "未提供有效的收款记录ID"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF 已成功发送至 %d 个家庭。"
+
+#: 
+msgid "Partial Send"
+msgstr "部分发送"
+
+#: 
+msgid "Payments only"
+msgstr "仅付款"
+
+#: 
+msgid "Pledged Amount"
+msgstr "承诺奉献金额"
+
+#: 
+msgid "Preview"
+msgstr "预览"
+
+#: 
+msgid "Retry"
+msgstr "重试"
+
+#: 
+msgid "Search"
+msgstr "搜索"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "搜索和管理收款凭条记录"
+
+#: 
+msgid "Select All"
+msgstr "全选"
+
+#: 
+msgid "Send Emails"
+msgstr "发送邮件"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "发送家庭信息核实邮件"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "已发送 %1$d／%2$d 封——%3$d 个家庭无法送达。"
+
+#: 
+msgid "Show in Profile"
+msgstr "在个人资料中显示"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "仅显示所选基金的总额"
+
+#: 
+msgid "Teller"
+msgstr "收款员"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "这是此小组中唯一的角色。"
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "此角色无法删除。"
+
+#: 
+msgid "To Date"
+msgstr "结束日期"
+
+#: 
+msgid "Total Pledged"
+msgstr "承诺奉献总额"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "发送邮件时发生意外错误。请检查日志。"
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "使用上方的街道地址通过OpenStreetMap查找坐标。"
+
+#: 
+msgid "View Payment"
+msgstr "查看付款"
+
+#: 
+msgid "View Pledge"
+msgstr "查看奉献承诺"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "勾选后，此属性将与小组一起显示在成员个人资料页的小组列表中。"
+
+#: 
+msgid "[Family Name]"
+msgstr "【家庭姓名】"
+
+#: 
+msgid "row selected"
+msgstr "行已选中"
+
+#: 
+msgid "rows selected"
+msgstr "行已选中"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "生日与周年纪念"
+
+#: 
+msgid "Estimated value %s."
+msgstr "估计价值 %s。"
+
+#: 
+msgid "Minimum bid %s."
+msgstr "最低出价 %s。"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "某月有生日或结婚周年纪念的成员"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "您希望查询生日和周年纪念日的月份。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "您希望查询结婚周年纪念日记录的月份。"
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "所有购买总计：%s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "购买总额：%s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "结婚周年纪念"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "某月有结婚周年纪念的成员"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "发生错误，请重试。"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "您确定要删除此奉献基金吗？"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "无法删除：该基金存在关联的奉献承诺"
+
+#: 
+msgid "Delete Fund"
+msgstr "删除基金"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "方向必须为\"up\"或\"down\"。"
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "编辑奉献基金"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "重新排序奉献基金失败"
+
+#: 
+msgid "Fund added successfully."
+msgstr "基金已成功添加。"
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "基金已成功删除。"
+
+#: 
+msgid "Fund name"
+msgstr "基金名称"
+
+#: 
+msgid "Fund name is required."
+msgstr "基金名称为必填项。"
+
+#: 
+msgid "Fund order updated."
+msgstr "基金排序已更新。"
+
+#: 
+msgid "Fund saved successfully."
+msgstr "基金已成功保存。"
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "尚未添加任何基金。请使用上方表单添加第一个基金。"
+
+#: 
+msgid "Optional description"
+msgstr "可选说明"
+
+#: 
+msgid "Private Calendar"
+msgstr "私人日历"
+
+#: 
+msgid "Public Calendar"
+msgstr "公共日历"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "高级：改为安装指定版本"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "默认情况下，向导将升级到最新版本。您也可以在下方选择特定版本。"
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "无法编辑已关闭存款中的付款记录"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "下载并应用 {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "每个 ChurchCRM 版本均包含安全修复。我们强烈建议始终升级到最新版本。"
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "解析付款请求失败"
+
+#: 
+msgid "Full release notes"
+msgstr "完整发行说明"
+
+#: 
+msgid "Invalid payment data"
+msgstr "无效的付款数据"
+
+#: 
+msgid "No release notes available."
+msgstr "暂无发行说明。"
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "警告：{{chosen}} 缺少 {{latest}} 中包含的安全修复。仅在有特定原因时才继续操作。"
+
+#: 
+msgid "What you'll gain"
+msgstr "您将获得的改进"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "获取存款数量失败"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "周年纪念：%s"
+
+#: 
+msgid "Church"
+msgstr "教会"
+
+#: 
+msgid "Classifications"
+msgstr "分类"
+
+#: 
+msgid "Closest"
+msgstr "最近"
+
+#: 
+msgid "Deposit #%d"
+msgstr "存款 #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "获取募款活动数量失败"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "加载邻居失败。"
+
+#: 
+msgid "Farther"
+msgstr "更远"
+
+#: 
+msgid "Farthest"
+msgstr "最远"
+
+#: 
+msgid "Find Neighbors"
+msgstr "查找邻居"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "查找附近的家庭并添加到购物车"
+
+#: 
+msgid "Map centered on"
+msgstr "地图以此为中心"
+
+#: 
+msgid "Max distance"
+msgstr "最大距离"
+
+#: 
+msgid "Max neighbors"
+msgstr "最大邻居数"
+
+#: 
+msgid "Near"
+msgstr "附近"
+
+#: 
+msgid "Please select a family."
+msgstr "请选择一个家庭。"
+
+#: 
+msgid "Results"
+msgstr "结果"
+
+#: 
+msgid "Same location"
+msgstr "相同位置"
+
+#: 
+msgid "Search Neighbors"
+msgstr "搜索邻居"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "选择一个家庭，然后单击查找邻居以查看结果。"
+
+#: 
+msgid "Selected family"
+msgstr "已选家庭"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "此值必须是有效的字段名称。"
+
+#: 
+msgid "Could not load data"
+msgstr "无法加载数据"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "请刷新页面或稍后重试。"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "请先添加相关记录。"
+
+#: 
+msgid "All Months"
+msgstr "所有月份"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "尚未定义任何\"%s\"选项。"
+
+#: 
+msgid "No events found for %s %d."
+msgstr "未找到 %s %d 的任何活动。"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "请尝试选择不同的活动类型、月份或年份。"
 

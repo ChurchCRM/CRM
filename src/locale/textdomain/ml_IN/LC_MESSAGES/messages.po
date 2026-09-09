@@ -552,16 +552,8 @@ msgid "Picture URL"
 msgstr "ചിത്ര URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "സംഭാവന ഫണ്ട് എഡിറ്റർ"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "അസാധുവായ ഫീൽഡുകൾ അല്ലെങ്കിൽ തിരഞ്ഞെടുപ്പുകൾ. മാറ്റങ്ങൾ സംരക്ഷിച്ചില്ല! ദയവായി ശരിയാക്കി വീണ്ടും ശ്രമിക്കുക!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "ഇതുവരെ ഫണ്ടുകൾ ഒന്നും ചേർത്തിട്ടില്ല"
 
 #: 
 msgid "Active"
@@ -1081,24 +1073,8 @@ msgid "Create Report"
 msgstr "റിപ്പോർട്ട് ഉണ്ടാക്കുക"
 
 #: 
-msgid "Deposit Listing"
-msgstr "ഡിപ്പോസിറ്റ് ലിസ്‌റ്റ്"
-
-#: 
 msgid "Deposits"
 msgstr "ഡിപ്പോസിറ്റുകൾ"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "തിരഞ്ഞെടുത്ത വരികൾ ഇല്ലാതാക്കുക"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "തിരഞ്ഞെടുത്ത വരികൾ കയറ്റുമതി ചെയ്യുക (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "തിരഞ്ഞെടുത്ത വരികൾ കയറ്റുമതി ചെയ്യുക (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1165,44 +1141,8 @@ msgid "Minimum Price"
 msgstr "ഏറ്റവും കുറഞ്ഞ വില"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "കുടുംബ ഭൂമിശാസ്ത്ര ഉപകരണങ്ങൾ"
-
-#: 
 msgid "Select Family"
 msgstr "കുടുംബം തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "ഏറ്റവും കൂടിയ അയൽക്കാരുടെ എണ്ണം"
-
-#: 
-msgid "Maximum distance"
-msgstr "ഏറ്റവും കൂടിയ ദൂരം"
-
-#: 
-msgid "Data file format"
-msgstr "ഡേറ്റ ഫയൽ ഫോർമാറ്റ്"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS വിഷ്വലൈസർ"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "കോർഡിനേറ്റ് ഫയലിൽ കുടുംബങ്ങൾ ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Neighbor Families"
-msgstr "അയൽ കുടുംബങ്ങൾ"
-
-#: 
-msgid "Make Data File"
-msgstr "ഡേറ്റ ഫയൽ ഉണ്ടാക്കുക"
-
-#: 
-msgid "Show Neighbors"
-msgstr "അയൽക്കാരെ കാണിക്കുക"
 
 #: 
 msgid "Distance"
@@ -1223,10 +1163,6 @@ msgstr "രേഖാംശം"
 #: 
 msgid "Add to Cart"
 msgstr "കാർട്ടിൽ ചേർക്കുക"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "കാർട്ടുമായി വിഭജിക്കുക"
 
 #: 
 msgid "Remove from Cart"
@@ -1255,10 +1191,6 @@ msgstr "ഗ്രൂപ്പ് പ്രത്യേക സ്വഭാവങ�
 #: 
 msgid "Enabled"
 msgstr "പ്രവർത്തനക്ഷമം"
-
-#: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "ഗ്രൂപ്പ് പ്രത്യേക സ്വഭാവ ഫോം എഡിറ്റ് ചെയ്യുക"
 
 #: 
 msgid "Disabled"
@@ -1311,14 +1243,6 @@ msgstr "ഗ്രൂപ്പ് പ്രത്യേക സ്വഭാവ ഫ
 #: 
 msgid "No properties have been added yet"
 msgstr "ഇതുവരെ സ്വഭാവങ്ങൾ ഒന്നും ചേർത്തിട്ടില്ല"
-
-#: 
-msgid "Show in"
-msgstr "ഇതിൽ കാണിക്കുക"
-
-#: 
-msgid "Person View"
-msgstr "വ്യക്തി കാഴ്ച"
 
 #: 
 msgid "Other Email"
@@ -1415,10 +1339,6 @@ msgstr "എല്ലാവർക്കും ഇമെയിൽ"
 #: 
 msgid "Family Roles"
 msgstr "കുടുംബ പങ്കുകൾ"
-
-#: 
-msgid "Family Geographic"
-msgstr "കുടുംബ ഭൂമിശാസ്ത്രം"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -2173,14 +2093,6 @@ msgstr "സംഭാവന ചെയ്ത വസ്തുക്കൾ"
 #: 
 msgid "Purchased Items"
 msgstr "വാങ്ങിയ വസ്തുക്കൾ"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "എല്ലാ വാങ്ങലുകളുടെ ആകെ: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "ആകെ വാങ്ങലുകൾ: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4267,24 +4179,8 @@ msgid "Profile Image uploaded"
 msgstr "പ്രൊഫൈൽ ചിത്രം അപ്‌ലോഡ് ചെയ്തു"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "ഈ വർഗ്ഗീകരണങ്ങളുള്ള അയൽക്കാരെ കാണിക്കുക"
-
-#: 
-msgid "Please select a Family."
-msgstr "ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "കോർഡിനേറ്റ് ഡേറ്റാബേസ് ഫയൽ നാമം"
-
-#: 
 msgid "select an option"
 msgstr "ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Direct me"
-msgstr "എന്നെ നയിക്കൂ"
 
 #: 
 msgid "Your cart is empty"
@@ -4839,10 +4735,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "ഉപയോഗിക്കേണ്ട എൻക്രിപ്ഷൻ സിസ്റ്റം ക്രമീകരിക്കുക - ssl (പഴഞ്ചൻ) അല്ലെങ്കിൽ tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "തിരഞ്ഞെടുത്ത വരികൾക്ക് ഡിപ്പോസിറ്റ് സ്ലിപ്പ് ഉണ്ടാക്കുക (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "എല്ലാം കാർട്ടിൽ ചേർക്കുക"
 
@@ -5134,10 +5026,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "ഇമെയിൽ(കൾ) അയക്കുന്നതിൽ പിശക്"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "കൂടുതൽ വിവരത്തിന് ലോഗ് പരിശോധിക്കുക"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5527,10 +5415,6 @@ msgstr "കുടുംബം കാർട്ടിൽ നിന്ന് നീ
 #: 
 msgid "Add Group"
 msgstr "ഗ്രൂപ്പ് ചേർക്കുക"
-
-#: 
-msgid "Back to Group List"
-msgstr "ഗ്രൂപ്പ് ലിസ്‌റ്റിലേക്ക് മടങ്ങുക"
 
 #: 
 msgid "Edit Group"
@@ -7311,10 +7195,6 @@ msgid "Order"
 msgstr "ക്രമം"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF %s കുടുംബങ്ങൾക്ക് ഇമെയിൽ ചെയ്തു."
-
-#: 
 msgid "Percentage"
 msgstr "ശതമാനം"
 
@@ -7353,10 +7233,6 @@ msgstr "നിങ്ങളുടെ ആദ്യ സ്വഭാവ തരം �
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "ഈ ഫീൽഡ് ഇല്ലാതാക്കിയാൽ ഈ ഫീൽഡിന് നൽകിയ ഗ്രൂപ്പ് അംഗ ഡേറ്റ നഷ്ടമാകും!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "ഈ ഫണ്ട് ഇല്ലാതാക്കിയാൽ ചരിത്ര സംഭാവന രേഖകളെ ബാധിക്കാം!"
 
 #: 
 msgid "Category Name"
@@ -7411,10 +7287,6 @@ msgid "Filter by Class"
 msgstr "ക്ലാസ് അനുസരിച്ച് ഫിൽട്ടർ"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "ഫണ്ട് വിജയകരമായി ഇല്ലാതാക്കി"
-
-#: 
 msgid "In Use"
 msgstr "ഉപയോഗത്തിൽ"
 
@@ -7461,10 +7333,6 @@ msgstr "ഈ ഹാജർ എണ്ണം നീക്കണോ?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "ഈ സ്വഭാവം ബാധകമാകുന്ന റെക്കോർഡ് തരം തിരഞ്ഞെടുക്കൂ"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ആ ഫണ്ട് നാമം ഇതിനകം നിലവിലുണ്ട്."
 
 #: 
 msgid "Total Pledges"
@@ -9438,10 +9306,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "ദാതാക്കൾക്ക് നികുതി പ്രസ്താവന രേഖകൾ സൃഷ്ടിക്കുക"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "ഭൂമിശാസ്ത്ര ഉപകരണങ്ങൾ"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "നിങ്ങളുടെ ഡേറ്റ ChurchCRM-ലേക്ക് നൽകുക"
 
@@ -9956,10 +9820,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "വ്യക്തികൾ, കുടുംബങ്ങൾ, ഗ്രൂപ്പുകൾ, വിലാസങ്ങൾ, കൂടുതൽ ഇവ ഉടനീളം തിരയുക."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "നിക്ഷേപ സ്ലിപ്പ് രേഖകൾ തിരയുകയും കാണുകയും ചെയ്യുക"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "വ്യക്തികൾ, കുടുംബങ്ങൾ, ഗ്രൂപ്പുകൾ തിരയുക..."
 
@@ -10174,10 +10034,6 @@ msgstr "നിങ്ങളുടെ വിശ്വാസി സമൂഹത്�
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "നിക്ഷേപ സ്ലിപ്പ് പേമെന്റുകൾ കാണുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക"
-
-#: 
-msgid "View and manage family location data"
-msgstr "കുടുംബ ലൊക്കേഷൻ ഡേറ്റ കാണുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -10520,10 +10376,6 @@ msgid "Total Check-ins"
 msgstr "ആകെ ചെക്ക്-ഇനുകൾ"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "ഒരു വ്യത്യസ്ത ഇവന്റ് തരം അല്ലെങ്കിൽ വർഷം തിരഞ്ഞെടുക്കാൻ ശ്രമിക്കുക."
-
-#: 
 msgid "Up to Date"
 msgstr "അദ്യതനം"
 
@@ -10612,11 +10464,6 @@ msgstr "ക്ലിപ്‌ബോർഡിലേക്ക് പകർത്�
 msgid "Custom field"
 msgstr "ഇഷ്ടാനുസൃത ഫീൽഡ്"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "ഇഷ്ടാനുസൃത തിരയൽ"
-
 #: 
 msgid "Default Country"
 msgstr "ഡിഫോൾട്ട് രാജ്യം"
@@ -10678,11 +10525,6 @@ msgstr "ഫീൽഡ് മൂല്യം"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "ഒരു വർഷം സാമ്പത്തിക പ്രതിബദ്ധത ഉണ്ടായിരുന്നെങ്കിലും മറ്റൊരു വർഷം ഇല്ലാത്ത ആളുകളെ കണ്ടെത്തുക"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "ഒരു ഇഷ്ടാനുസൃത ഫീൽഡ് മൂല്യമുള്ള ആളുകളെ കണ്ടെത്തുക"
 
 #. Context: query_qry
 #: 
@@ -11945,10 +11787,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "അടുത്ത logon വരെ മാറ്റങ്ങൾ പ്രാബല്യത്തിൽ വരില്ല."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Light, dark color scheme-ൽ ഒന്ന് തിരഞ്ഞെടുക്കുക"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Application-ന്റെ look and feel customize ചെയ്യുക"
 
@@ -12703,10 +12541,6 @@ msgstr "അക്ഷാംശവും രേഖാംശവും ഒരുമ�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "സഭ വിവരങ്ങൾ സേവ് ചെയ്തു, പക്ഷേ വിലാസം സ്വയം കണ്ടെത്താനായില്ല. ദയവായി ഭൂപട നിർദ്ദേശാംകങ്ങൾ കൈകൊണ്ട് ടൈപ്പ് ചെയ്യുക."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "സേവ് ചെയ്യുമ്പോൾ (OpenStreetMap വഴി) നിർദ്ദേശാംകങ്ങൾ നിങ്ങളുടെ വിലാസത്തിൽ നിന്ന് സ്വയം കണ്ടെത്തുന്നു. താഴെ ഇവ കൈകൊണ്ടും ടൈപ്പ് ചെയ്യാം — കൈകൊണ്ട് ടൈപ്പ് ചെയ്ത മൂല്യങ്ങൾ എല്ലായ്‌പ്പോഴും സ്വയം കണ്ടെത്തലിനേക്കാൾ മുൻഗണന നൽകുന്നു. വിലാസത്തിൽ നിന്ന് ജിയോകോഡ് ചെയ്യാൻ സിസ്റ്റം ഉപേക്ഷിക്കാൻ ഇരണ്ടും ശൂന്യമായി ഇടുക."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13965,10 +13799,6 @@ msgid "Are you sure you want to continue?"
 msgstr "നിങ്ങൾ തുടരാൻ ആഗ്രഹിക്കുന്നുണ്ടോ?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "ഈ ഡിപ്പോസിറ്റ് ഇല്ലാതാക്കണോ?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "ഈ ഇവന്റ് തരം ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ? ഇത് പഴയപടിയാക്കാൻ കഴിയില്ല."
 
@@ -14219,10 +14049,6 @@ msgstr "ഡെമോ ഡേറ്റ സാധാരണ പുതിയ ഇൻ�
 #: 
 msgid "Deposit ID"
 msgstr "ഡിപ്പോസിറ്റ് ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "ഡിപ്പോസിറ്റ് ആകെ"
 
 #: 
 msgid "Deposit Value"
@@ -14536,10 +14362,6 @@ msgstr "ഗ്രൂപ്പ് വിജയകരമായി ഇല്ലാ�
 #: 
 msgid "Group removed from cart"
 msgstr "ഗ്രൂപ്പ് കാർട്ടിൽ നിന്ന് നീക്കി"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "പങ്ക് തിരഞ്ഞെടുക്കൽ പ്രോംപ്റ്റിന് GroupID ആവശ്യമാണ്"
 
 #: 
 msgid "HTML URL"
@@ -14919,20 +14741,8 @@ msgid "Please select a role."
 msgstr "ദയവായി ഒരു റോൾ തിരഞ്ഞെടുക്കുക."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "ദയവായി ഒരു ഗ്രൂപ്പും ഒരു റോളും തിരഞ്ഞെടുക്കുക."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "ഇല്ലാതാക്കേണ്ട വരികൾ തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "അംഗങ്ങൾക്കായി ലക്ഷ്യ പങ്ക് തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Please select target group for members"
-msgstr "അംഗങ്ങൾക്കായി ലക്ഷ്യ ഗ്രൂപ്പ് തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Please try again"
@@ -15828,24 +15638,12 @@ msgid "Account status"
 msgstr "അക്കൗണ്ട് സ്ഥിതി"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "വിപുലം: ഒരു നിർദ്ദിഷ്ട ടാർഗെറ്റ് പതിപ്പ് തിരഞ്ഞെടുക്കുക"
-
-#: 
 msgid "Bug Fix"
 msgstr "ബഗ് പരിഹാരം"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "സ്ഥിരസ്ഥിതിയായി, വിസാർഡ് ശുപാർശ ചെയ്ത അടുത്ത റിലീസ് ഡൗൺലോഡ് ചെയ്യുന്നു. പകരം നിങ്ങൾക്ക് ചുവടെ ലഭ്യമായ ഏതെങ്കിലും പതിപ്പ് തിരഞ്ഞെടുക്കാം."
-
-#: 
 msgid "Change required"
 msgstr "മാറ്റം ആവശ്യമാണ്"
-
-#: 
-msgid "Changelog"
-msgstr "മാറ്റ ലോഗ്"
 
 #: 
 msgid "Continue Anyway"
@@ -15854,10 +15652,6 @@ msgstr "എന്തായാലും തുടരുക"
 #: 
 msgid "Could not load release information."
 msgstr "റിലീസ് വിവരങ്ങൾ ലോഡ് ചെയ്യാനായില്ല."
-
-#: 
-msgid "Download & Install"
-msgstr "ഡൗൺലോഡ് ചെയ്ത് ഇൻസ്റ്റാൾ ചെയ്യുക"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15886,10 +15680,6 @@ msgstr "പൂർണ്ണ മാറ്റ ലോഗ്"
 #: 
 msgid "Install stable {{version}}"
 msgstr "സ്ഥിരമായ {{version}} ഇൻസ്റ്റാൾ ചെയ്യുക"
-
-#: 
-msgid "Installing next release"
-msgstr "അടുത്ത റിലീസ് ഇൻസ്റ്റാൾ ചെയ്യുന്നു"
 
 #: 
 msgid "Invalid file path"
@@ -15960,10 +15750,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "പൂർണ്ണ അപ്ഗ്രേഡ് പാത കാണിക്കുക"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "ഏറ്റവും പുതിയ സ്ഥിര റിലീസ് {{version}} ആണ്. നിങ്ങൾക്ക് ചുവടെ അത് വീണ്ടും ഇൻസ്റ്റാൾ ചെയ്യാം."
 
@@ -15990,10 +15776,6 @@ msgstr "റിലീസ് കുറിപ്പുകൾ കാണുക"
 #: 
 msgid "What's New"
 msgstr "എന്താണ് പുതിയത്"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}}-ൽ എന്താണ് പുതിയത്"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16612,10 +16394,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ഇ-മെയിൽ പ്രവർത്തനം നിലവിൽ അപ്രാപ്‌തമാക്കിയിരിക്കുന്നു. ഇ-മെയിൽ പ്രാപ്‌തമാക്കുന്നതുവരേ ഇനിപ്പറയുന്ന സവിശേഷതകൾ പ്രവർത്തിക്കില്‍"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "ഏകദേശ മൂല്യം $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "ഏറ്റവും വേഗമേറിയ വർക്ക്ഫ്ലോ"
 
@@ -16658,10 +16436,6 @@ msgstr "പ്രാദേശിക വികസനം"
 #: 
 msgid "Minimum Total Amount"
 msgstr "കുറഞ്ഞ മൊത്തം തുക"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "കുറഞ്ഞ ലേലം $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16964,10 +16738,6 @@ msgid "Working..."
 msgstr "പ്രവർത്തിക്കുന്നു..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "നിങ്ങൾ {{releaseCount}} റിലീസുകൾ പിനിലാണ്. നിങ്ങൾക്ക് ലഭിക്കുന്നത്"
-
-#: 
 msgid "click to expand"
 msgstr "വിപുലീകരിക്കാൻ ക്ലിക്ക് ചെയ്യുക"
 
@@ -17070,4 +16840,958 @@ msgstr "ചുവടെ നിങ്ങളുടെ പൊതു രജിസ്
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "സന്നദ്ധ അവസരം ഇല്ലാതാക്കൽ സ്ഥിരീകരണം"
+
+#: 
+msgid "# Payments"
+msgstr "# പേമെന്റുകൾ"
+
+#: 
+msgid "# Pledges"
+msgstr "# പ്രതിജ്ഞകൾ"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "ഒരു പേമെന്റ് യഥാർഥത്തിൽ ലഭിച്ച സംഭാവനയാണ്. ഇത് തിരഞ്ഞെടുത്ത നിക്ഷേപത്തിൽ ചേർക്കപ്പെടും."
+
+#: 
+msgid "Add Fund"
+msgstr "ഫണ്ട് ചേർക്കുക"
+
+#: 
+msgid "Amount ($)"
+msgstr "തുക ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "തുക അനുവദനീയമായ പരമാവധി (999999.99) കവിയുന്നു"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "സംരക്ഷിക്കുന്നതിനിടെ ഒരു പിശക് സംഭവിച്ചു. ദയവായി വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "അജ്ഞാത ടെലിമെട്രി"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "അജ്ഞാത ടെലിമെട്രി തലം. ChurchCRM ടീമുമായി എത്രമാത്രം അജ്ഞാത ഡയഗ്‌നോസ്റ്റിക് ഡേറ്റ പങ്കിടുന്നു എന്ന് നിയന്ത്രിക്കുന്നു. സഭയുടെ പേര്, അംഗ ഡേറ്റ, അല്ലെങ്കിൽ വ്യക്തിഗത വിവരങ്ങൾ ഒരിക്കലും അയക്കില്ല."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "ഈ പേമെന്റ് രേഖ സ്ഥിരമായി ഇല്ലാതാക്കണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പുണ്ടോ?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "കുറഞ്ഞത് ഒരു ഫണ്ട് അനുവദനം ആവശ്യമാണ്"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "കുറഞ്ഞത് ഒരു ഫണ്ടിന് പൂജ്യമല്ലാത്ത തുക ഉണ്ടായിരിക്കണം"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "ആളുകളുടെ ജന്മദിനത്തിൽ ആശംസ ഇമെയിൽ സ്വയം അയക്കുക"
+
+#: 
+msgid "Back to Finance"
+msgstr "ധനകാര്യത്തിലേക്ക് തിരികെ"
+
+#: 
+msgid "Back to Group"
+msgstr "ഗ്രൂപ്പിലേക്ക് തിരികെ"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "ക്വറി തയ്യാറാക്കാൻ കഴിയുന്നില്ല."
+
+#: 
+msgid "Catch JS errors"
+msgstr "JS പിശകുകൾ പിടിക്കുക"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "ആവർത്തിക്കുന്ന പിശകുകൾ പിടിക്കുക"
+
+#: 
+msgid "Check #"
+msgstr "ചെക്ക് #"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "സഭയുടെ പേര്, വിലാസം, അല്ലെങ്കിൽ ബന്ധപ്പെടാനുള്ള വിവരങ്ങൾ"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "ChurchCRM പതിപ്പ്"
+
+#: 
+msgid "Collection level"
+msgstr "ശേഖരണ തലം"
+
+#: 
+msgid "Count unique installs"
+msgstr "അദ്വിതീയ ഇൻസ്റ്റലേഷനുകൾ എണ്ണുക"
+
+#: 
+msgid "Data"
+msgstr "ഡേറ്റ"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "EU ഇൻഫ്രാസ്ട്രക്ചറിൽ PostHog ഡേറ്റ പ്രോസസ്സ് ചെയ്യുന്നു."
+
+#: 
+msgid "Date is required"
+msgstr "തീയതി ആവശ്യമാണ്"
+
+#: 
+msgid "Deleted successfully"
+msgstr "വിജയകരമായി ഇല്ലാതാക്കി"
+
+#: 
+msgid "Deposit Slip"
+msgstr "നിക്ഷേപ സ്ലിപ്പ്"
+
+#: 
+msgid "Edit Pledge"
+msgstr "പ്രതിജ്ഞ എഡിറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "നിലവിലുള്ള പ്രതിജ്ഞ അല്ലെങ്കിൽ പേമെന്റ് എഡിറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Editing a Payment"
+msgstr "ഒരു പേമെന്റ് എഡിറ്റ് ചെയ്യുന്നു"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "ഒരു പ്രതിജ്ഞ എഡിറ്റ് ചെയ്യുന്നു"
+
+#: 
+msgid "Enable (full)"
+msgstr "പ്രവർത്തനക്ഷമമാക്കുക (പൂർണ്ണം)"
+
+#: 
+msgid "Errors only"
+msgstr "പിശകുകൾ മാത്രം"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "പിശകുകൾ — സെർവർ പിശകുകളും JS അപവാദങ്ങളും"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "പ്രതിജ്ഞ സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "പ്രതിജ്ഞ ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "പ്രതിജ്ഞ വീണ്ടെടുക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "പ്രതിജ്ഞ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Financial data"
+msgstr "സാമ്പത്തിക ഡേറ്റ"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "പൂർണ്ണം — മുകളിലുള്ളതെല്ലാം കൂടാതെ പേജ് വ്യൂകളും"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "പൂർണ്ണം — പേജ് വ്യൂകൾ, മുന്നറിയിപ്പുകൾ, പിശകുകൾ, JS അപവാദങ്ങൾ"
+
+#: 
+msgid "Fund Summary"
+msgstr "ഫണ്ട് സംഗ്രഹം"
+
+#: 
+msgid "Group key is required"
+msgstr "ഗ്രൂപ്പ് കീ ആവശ്യമാണ്"
+
+#: 
+msgid "Happy Birthday"
+msgstr "ജന്മദിനാശംസകൾ"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "ChurchCRM മെച്ചപ്പെടുത്താൻ സഹായിക്കുക"
+
+#: 
+msgid "IP addresses"
+msgstr "IP വിലാസങ്ങൾ"
+
+#: 
+msgid "Installation UUID"
+msgstr "ഇൻസ്റ്റലേഷൻ UUID"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "ക്രമീകരിക്കൽ, തിരയൽ, കയറ്റുമതി എന്നിവ സഹിതം ഫണ്ട് അനുസരിച്ചുള്ള ഇന്ററാക്ടീവ് പ്രതിജ്ഞ-വേർസസ്-പേമെന്റ് സംഗ്രഹം."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "ആന്തരികം: ജന്മദിന ഇമെയിലുകൾ അവസാനമായി അയച്ച തീയതി (YYYY-MM-DD). സ്വമേധയാ എഡിറ്റ് ചെയ്യരുത്."
+
+#: 
+msgid "JS exceptions"
+msgstr "JS അപവാദങ്ങൾ"
+
+#: 
+msgid "Log level + message"
+msgstr "ലോഗ് ലെവൽ + സന്ദേശം"
+
+#: 
+msgid "Member or family records"
+msgstr "അംഗ അല്ലെങ്കിൽ കുടുംബ രേഖകൾ"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "ഈ ഗ്രൂപ്പ് അംഗത്തിന്റെ റോൾ മാറ്റുക"
+
+#: 
+msgid "Network error, please try again"
+msgstr "നെറ്റ്‌വർക്ക് പിശക്, ദയവായി വീണ്ടും ശ്രമിക്കുക"
+
+#: 
+msgid "Never sent"
+msgstr "ഒരിക്കലും അയച്ചിട്ടില്ല"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "നിക്ഷേപം ഇല്ല / പുതിയ നിക്ഷേപം സൃഷ്ടിക്കുക"
+
+#: 
+msgid "No pledge"
+msgstr "പ്രതിജ്ഞ ഇല്ല"
+
+#: 
+msgid "No thanks"
+msgstr "വേണ്ട, നന്ദി"
+
+#: 
+msgid "Non-Deductible"
+msgstr "കിഴിവ് ബാധകമല്ലാത്തത്"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "കിഴിവ് ബാധകമല്ലാത്തത് ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "കിഴിവ് ബാധകമല്ലാത്ത തുക ഫണ്ട് തുകയേക്കാൾ കൂടാൻ പാടില്ല"
+
+#: 
+msgid "None (disabled)"
+msgstr "ഒന്നുമില്ല (പ്രവർത്തനരഹിതം)"
+
+#: 
+msgid "OS family"
+msgstr "OS കുടുംബം"
+
+#: 
+msgid "Overpaid"
+msgstr "അധിക നൽകിയത്"
+
+#: 
+msgid "PHP version"
+msgstr "PHP പതിപ്പ്"
+
+#: 
+msgid "Page route"
+msgstr "പേജ് റൂട്ട്"
+
+#: 
+msgid "Payment Details"
+msgstr "പേമെന്റ് വിശദാംശങ്ങൾ"
+
+#: 
+msgid "Payment Method"
+msgstr "പേമെന്റ് രീതി"
+
+#: 
+msgid "Plan runtime support"
+msgstr "റൺടൈം പിന്തുണ ആസൂത്രണം ചെയ്യുക"
+
+#: 
+msgid "Please enter a date"
+msgstr "ദയവായി ഒരു തീയതി നൽകുക"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "ദയവായി എല്ലാ വരികൾക്കും ഒരു ഫണ്ട് തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Pledge Details"
+msgstr "പ്രതിജ്ഞ വിശദാംശങ്ങൾ"
+
+#: 
+msgid "Pledge group not found"
+msgstr "പ്രതിജ്ഞ ഗ്രൂപ്പ് കണ്ടെത്തിയില്ല"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "പ്രതിജ്ഞകളും പേമെന്റുകളും"
+
+#: 
+msgid "Prioritise translations"
+msgstr "വിവർത്തനങ്ങൾക്ക് മുൻഗണന നൽകുക"
+
+#: 
+msgid "Purpose"
+msgstr "ഉദ്ദേശ്യം"
+
+#: 
+msgid "Save and Add Another"
+msgstr "സംരക്ഷിച്ച് മറ്റൊന്ന് ചേർക്കുക"
+
+#: 
+msgid "Save failed"
+msgstr "സംരക്ഷിക്കൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Saved successfully"
+msgstr "വിജയകരമായി സംരക്ഷിച്ചു"
+
+#: 
+msgid "Select a fund"
+msgstr "ഒരു ഫണ്ട് തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "എനിക്ക് ടെസ്റ്റ് ജന്മദിന ഇമെയിൽ അയക്കുക"
+
+#: 
+msgid "Sending to"
+msgstr "അയക്കുന്നത്"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "ChurchCRM ടീമുമായി അജ്ഞാത ഉപയോഗ സ്ഥിതിവിവരക്കണക്കുകൾ പങ്കിടുക, അങ്ങനെ ഏതൊക്കെ ഫീച്ചറുകൾക്കും ഭാഷകൾക്കും മുൻഗണന നൽകണമെന്ന് ഞങ്ങൾക്ക് അറിയാം. സഭയുടെ പേര്, അംഗ ഡേറ്റ, അല്ലെങ്കിൽ വ്യക്തിഗത വിവരങ്ങൾ ഒരിക്കലും അയക്കില്ല."
+
+#: 
+msgid "Test email sent to"
+msgstr "ടെസ്റ്റ് ഇമെയിൽ അയച്ചത്"
+
+#: 
+msgid "Track adoption"
+msgstr "ഉപഭോഗം ട്രാക്ക് ചെയ്യുക"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "തരം 'Pledge' അല്ലെങ്കിൽ 'Payment' ആയിരിക്കണം"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "ക്വറി സ്ട്രിംഗുകൾ ഉള്ള URL-കൾ (റെക്കോർഡ് ID-കൾ നീക്കം ചെയ്യും)"
+
+#: 
+msgid "Underpaid"
+msgstr "കുറഞ്ഞ് നൽകിയത്"
+
+#: 
+msgid "Understand deployments"
+msgstr "ഡിപ്ലോയ്‌മെന്റുകൾ മനസ്സിലാക്കുക"
+
+#: 
+msgid "Understand feature usage"
+msgstr "ഫീച്ചർ ഉപയോഗം മനസ്സിലാക്കുക"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "ഉപയോക്തൃ നാമങ്ങൾ, ഇമെയിലുകൾ, അല്ലെങ്കിൽ റോളുകൾ"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "പ്രതിജ്ഞ അല്ലെങ്കിൽ പേമെന്റ് വിശദാംശങ്ങൾ കാണുക"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "മുന്നറിയിപ്പുകൾ — മുന്നറിയിപ്പുകൾ, പിശകുകൾ, JS അപവാദങ്ങൾ"
+
+#: 
+msgid "What is sent"
+msgstr "എന്ത് അയക്കുന്നു"
+
+#: 
+msgid "What we collect"
+msgstr "ഞങ്ങൾ ശേഖരിക്കുന്നത്"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "നിങ്ങൾക്ക് ഒരു അദ്ഭുതകരമായ %d-ാം ജന്മദിനാശംസകൾ!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "നിങ്ങൾക്ക് ഒരു അദ്ഭുതകരമായ ജന്മദിനാശംസകൾ!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "നിങ്ങളുടെ അക്കൗണ്ടിൽ ഒരു ഇമെയിൽ വിലാസവും ഇല്ല. ഒരു ടെസ്റ്റ് അയക്കാൻ നിങ്ങളുടെ പ്രൊഫൈലിൽ ഒന്ന് ചേർക്കുക."
+
+#: 
+msgid "errors+"
+msgstr "പിശകുകൾ+"
+
+#: 
+msgid "full only"
+msgstr "പൂർണ്ണം മാത്രം"
+
+#: 
+msgid "is thinking of you today."
+msgstr "ഇന്ന് നിങ്ങളെ ഓർക്കുന്നു."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "പേജ് റൂട്ടുകൾ, സജീവ ലൊക്കേൽ, CRM പതിപ്പ്, PHP പതിപ്പ്, OS കുടുംബം, ഒരു ക്രമരഹിത ഇൻസ്റ്റലേഷൻ ID. മറ്റൊന്നുമില്ല. ഡേറ്റ EU-ൽ സൂക്ഷിക്കുന്നു."
+
+#: 
+msgid "% Paid"
+msgstr "% അടച്ചു"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: നിങ്ങളുടെ കുടുംബ വിവരങ്ങൾ സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Add Role"
+msgstr "റോൾ ചേർക്കുക"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "ഈ ഗ്രൂപ്പിന് പ്രത്യേകമായ ഇഷ്ടാനുസൃത ഗുണങ്ങൾ ചേർക്കുക"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "കോർഡിനേറ്റുകൾ അവസാനമായി സജ്ജമാക്കിയതിന് ശേഷം വിലാസം മാറി."
+
+#: 
+msgid "All Tellers"
+msgstr "എല്ലാ ടെല്ലർമാരും"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "എല്ലാ ഇമെയിൽ അയക്കലുകളും പരാജയപ്പെട്ടു. സിസ്റ്റം ക്രമീകരണങ്ങളിലെ SMTP ക്രമീകരണങ്ങൾ പരിശോധിക്കുക."
+
+#: 
+msgid "Amount Max"
+msgstr "തുക പരമാവധി"
+
+#: 
+msgid "Amount Min"
+msgstr "തുക കുറഞ്ഞത്"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "ഇമെയിൽ അയക്കുമ്പോൾ അപ്രതീക്ഷിത പിശക് സംഭവിച്ചു. നിങ്ങളുടെ SMTP ക്രമീകരണങ്ങളും സെർവർ ലോഗുകളും പരിശോധിക്കുക."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "'{{name}}' എന്ന റോൾ നീക്കം ചെയ്യണമെന്ന് ഉറപ്പാണോ?"
+
+#: 
+msgid "Auto"
+msgstr "ഓട്ടോ"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "ഓട്ടോ നിങ്ങളുടെ OS അല്ലെങ്കിൽ ബ്രൗസർ ക്രമീകരണം പിന്തുടരുന്നു; ലൈറ്റും ഡാർക്കും അത് മറികടക്കുന്നു"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "പ്രതിജ്ഞ ഡാഷ്‌ബോർഡിലേക്ക് മടങ്ങുക"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "മുകളിലെ വിലാസത്തിന്റെ ഭൂപട സ്ഥാനം കണ്ടെത്താൻ \"കോർഡിനേറ്റുകൾ സൃഷ്ടിക്കുക\" ക്ലിക്ക് ചെയ്യുക, അല്ലെങ്കിൽ അക്ഷാംശം/രേഖാംശം സ്വമേധയാ നൽകുക. ശൂന്യമായി വിട്ടാൽ, ഫോം സംരക്ഷിക്കുമ്പോൾ കോർഡിനേറ്റുകൾ സ്വയം കണ്ടെത്തും."
+
+#: 
+msgid "Contributor"
+msgstr "സംഭാവകൻ"
+
+#: 
+msgid "Contributors"
+msgstr "സംഭാവകർ"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "ആ വിലാസത്തിന്റെ കോർഡിനേറ്റുകൾ കണ്ടെത്താനായില്ല. സ്വമേധയാ നൽകാൻ ശ്രമിക്കുക."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "ഈ ഗ്രൂപ്പിനുള്ള ഇഷ്ടാനുസൃത ഗുണങ്ങൾ"
+
+#: 
+msgid "Delete role"
+msgstr "റോൾ ഇല്ലാതാക്കുക"
+
+#: 
+msgid "Email Error"
+msgstr "ഇമെയിൽ പിശക്"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "ഇമെയിൽ കോൺഫിഗർ ചെയ്തിട്ടില്ല. സിസ്റ്റം ക്രമീകരണങ്ങളിൽ SMTP ക്രമീകരണങ്ങൾ കോൺഫിഗർ ചെയ്യുക."
+
+#: 
+msgid "Enter a street address first."
+msgstr "ആദ്യം ഒരു തെരുവ് വിലാസം നൽകുക."
+
+#: 
+msgid "Enter role name"
+msgstr "റോളിന്റെ പേര് നൽകുക"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "നിക്ഷേപം സൃഷ്ടിക്കുന്നതിൽ പരാജയം"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "ഇമെയിൽ പ്രിവ്യൂ ലോഡ് ചെയ്യുന്നതിൽ പരാജയം"
+
+#: 
+msgid "From Date"
+msgstr "തീയതി മുതൽ"
+
+#: 
+msgid "Fund Total"
+msgstr "ഫണ്ട് ആകെ"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "സാമ്പത്തിക വർഷം അനുസരിച്ച് ഫണ്ട് സംഭാവകരുടെ പ്രതിജ്ഞ സംഗ്രഹം"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "ഫണ്ട്ശേഖരണം പ്രവർത്തനരഹിതമാക്കിയിരിക്കുന്നു"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "കോർഡിനേറ്റുകൾ സൃഷ്ടിക്കുക"
+
+#: 
+msgid "Generating..."
+msgstr "സൃഷ്ടിക്കുന്നു..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "ജിയോകോഡിങ് അഭ്യർത്ഥന പരാജയപ്പെട്ടു. വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Manage Events"
+msgstr "ഇവന്റുകൾ നിയന്ത്രിക്കുക"
+
+#: 
+msgid "N/A"
+msgstr "ബാധകമില്ല"
+
+#: 
+msgid "New Deposit"
+msgstr "പുതിയ നിക്ഷേപം"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "തിരഞ്ഞെടുത്ത സാമ്പത്തിക വർഷത്തിൽ ഈ ഫണ്ടിൽ സംഭാവകരെ കണ്ടെത്തിയില്ല"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "ഇമെയിൽ വിലാസമുള്ള കുടുംബങ്ങളെ കണ്ടെത്തിയില്ല. ഒന്നും അയച്ചിട്ടില്ല."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "തിരഞ്ഞെടുത്ത നിക്ഷേപങ്ങൾക്ക് പേയ്‌മെന്റുകളൊന്നും കണ്ടെത്തിയില്ല"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "സാധുതയുള്ള നിക്ഷേപ ഐഡികളൊന്നും നൽകിയിട്ടില്ല"
+
+#: 
+msgid "Partial Send"
+msgstr "ഭാഗിക അയക്കൽ"
+
+#: 
+msgid "Payments only"
+msgstr "പേയ്‌മെന്റുകൾ മാത്രം"
+
+#: 
+msgid "Pledged Amount"
+msgstr "പ്രതിജ്ഞ തുക"
+
+#: 
+msgid "Preview"
+msgstr "പ്രിവ്യൂ"
+
+#: 
+msgid "Retry"
+msgstr "വീണ്ടും ശ്രമിക്കുക"
+
+#: 
+msgid "Search"
+msgstr "തിരയുക"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "നിക്ഷേപ സ്ലിപ്പ് രേഖകൾ തിരയുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക"
+
+#: 
+msgid "Select All"
+msgstr "എല്ലാം തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Send Emails"
+msgstr "ഇമെയിലുകൾ അയക്കുക"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "കുടുംബ സ്ഥിരീകരണ ഇമെയിലുകൾ അയക്കുക"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d ൽ %1$d അയച്ചു — %3$d കുടുംബങ്ങളെ ബന്ധപ്പെടാനായില്ല."
+
+#: 
+msgid "Show in Profile"
+msgstr "പ്രൊഫൈലിൽ കാണിക്കുക"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "തിരഞ്ഞെടുത്ത ഫണ്ടിന്റെ മാത്രം ആകെ കാണിക്കുന്നു"
+
+#: 
+msgid "Teller"
+msgstr "ടെല്ലർ"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "ഈ ഗ്രൂപ്പിലെ ഏകൈക റോൾ ഇതാണ്."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "ഈ റോൾ ഇല്ലാതാക്കാൻ കഴിയില്ല."
+
+#: 
+msgid "To Date"
+msgstr "തീയതി വരെ"
+
+#: 
+msgid "Total Pledged"
+msgstr "ആകെ പ്രതിജ്ഞ"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "ഇമെയിൽ അയക്കുമ്പോൾ അപ്രതീക്ഷിത പിശക്. ലോഗുകൾ പരിശോധിക്കുക."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "OpenStreetMap വഴി കോർഡിനേറ്റുകൾ കണ്ടെത്താൻ മുകളിലെ നിങ്ങളുടെ തെരുവ് വിലാസം ഉപയോഗിക്കുന്നു."
+
+#: 
+msgid "View Payment"
+msgstr "പേയ്‌മെന്റ് കാണുക"
+
+#: 
+msgid "View Pledge"
+msgstr "പ്രതിജ്ഞ കാണുക"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "അടയാളപ്പെടുത്തിയാൽ, ഈ ഗുണം പ്രൊഫൈൽ പേജിലെ ഗ്രൂപ്പ് പട്ടികയിൽ ഗ്രൂപ്പിനോടൊപ്പം പ്രദർശിപ്പിക്കും."
+
+#: 
+msgid "[Family Name]"
+msgstr "[കുടുംബ നാമം]"
+
+#: 
+msgid "row selected"
+msgstr "വരി തിരഞ്ഞെടുത്തു"
+
+#: 
+msgid "rows selected"
+msgstr "വരികൾ തിരഞ്ഞെടുത്തു"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "ജന്മദിനങ്ങളും വാർഷികങ്ങളും"
+
+#: 
+msgid "Estimated value %s."
+msgstr "കണക്കാക്കിയ മൂല്യം %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "കുറഞ്ഞ ലേലം %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "ഒരു പ്രത്യേക മാസത്തിൽ ജന്മദിനമോ വിവാഹ വാർഷികമോ ഉള്ള ആളുകൾ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "ജന്മദിനങ്ങളും വാർഷികങ്ങളും ലഭിക്കാൻ ആഗ്രഹിക്കുന്ന മാസം."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "വിവാഹ വാർഷിക രേഖകൾ ലഭിക്കാൻ ആഗ്രഹിക്കുന്ന മാസം."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "എല്ലാ വാങ്ങലുകളുടെയും ആകെ: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "മൊത്തം വാങ്ങലുകൾ: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "വിവാഹ വാർഷികങ്ങൾ"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "ഒരു പ്രത്യേക മാസത്തിൽ വിവാഹ വാർഷികം ആഘോഷിക്കുന്ന ആളുകൾ"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "ഒരു പിശക് സംഭവിച്ചു. ദയവായി വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "ഈ ഫണ്ട് ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "ഇല്ലാതാക്കാൻ കഴിയില്ല: ഫണ്ടിന് ബന്ധപ്പെട്ട പ്രതിജ്ഞകൾ ഉണ്ട്"
+
+#: 
+msgid "Delete Fund"
+msgstr "ഫണ്ട് ഇല്ലാതാക്കുക"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "ദിശ 'up' അല്ലെങ്കിൽ 'down' ആയിരിക്കണം."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "സംഭാവന ഫണ്ട് എഡിറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "സംഭാവന ഫണ്ട് പുനഃക്രമീകരിക്കാൻ കഴിഞ്ഞില്ല"
+
+#: 
+msgid "Fund added successfully."
+msgstr "ഫണ്ട് വിജയകരമായി ചേർത്തു."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "ഫണ്ട് വിജയകരമായി ഇല്ലാതാക്കി."
+
+#: 
+msgid "Fund name"
+msgstr "ഫണ്ടിന്റെ പേര്"
+
+#: 
+msgid "Fund name is required."
+msgstr "ഫണ്ടിന്റെ പേര് ആവശ്യമാണ്."
+
+#: 
+msgid "Fund order updated."
+msgstr "ഫണ്ട് ക്രമം അപ്‌ഡേറ്റ് ചെയ്തു."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "ഫണ്ട് വിജയകരമായി സേവ് ചെയ്തു."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "ഇതുവരെ ഫണ്ടുകളൊന്നും ചേർത്തിട്ടില്ല. ആദ്യത്തെ ഫണ്ട് ചേർക്കാൻ മുകളിലുള്ള ഫോം ഉപയോഗിക്കുക."
+
+#: 
+msgid "Optional description"
+msgstr "ഐച്ഛിക വിവരണം"
+
+#: 
+msgid "Private Calendar"
+msgstr "സ്വകാര്യ കലണ്ടർ"
+
+#: 
+msgid "Public Calendar"
+msgstr "പൊതു കലണ്ടർ"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "വിപുലം: പകരം ഒരു പ്രത്യേക പതിപ്പ് ഇൻസ്റ്റാൾ ചെയ്യുക"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "സ്ഥിരസ്ഥിതിയായി, വിസാർഡ് ഏറ്റവും പുതിയ പതിപ്പിലേക്ക് അപ്‌ഗ്രേഡ് ചെയ്യുന്നു. പകരം ചുവടെ ഒരു പ്രത്യേക പതിപ്പ് തിരഞ്ഞെടുക്കാം."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "അടഞ്ഞ നിക്ഷേപത്തിലെ ഒരു പേയ്‌മെന്റ് എഡിറ്റ് ചെയ്യാൻ കഴിയില്ല"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "{{version}} ഡൗൺലോഡ് ചെയ്ത് പ്രയോഗിക്കുക"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "ChurchCRM-ന്റെ ഓരോ റിലീസിലും സുരക്ഷാ പരിഹാരങ്ങൾ ഉൾപ്പെടുന്നു. ഏറ്റവും പുതിയ പതിപ്പിലേക്ക് എല്ലായ്‌പ്പോഴും അപ്‌ഗ്രേഡ് ചെയ്യാൻ ഞങ്ങൾ ശക്തമായി ശുപാർശ ചെയ്യുന്നു."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "പേയ്‌മെന്റ് അഭ്യർത്ഥന ഡീകോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല"
+
+#: 
+msgid "Full release notes"
+msgstr "പൂർണ്ണ റിലീസ് കുറിപ്പുകൾ"
+
+#: 
+msgid "Invalid payment data"
+msgstr "അസാധുവായ പേയ്‌മെന്റ് ഡാറ്റ"
+
+#: 
+msgid "No release notes available."
+msgstr "റിലീസ് കുറിപ്പുകളൊന്നും ലഭ്യമല്ല."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "മുന്നറിയിപ്പ്: {{latest}}-ൽ ഉൾപ്പെടുത്തിയ സുരക്ഷാ പരിഹാരങ്ങൾ {{chosen}}-ൽ ഇല്ല. നിർദ്ദിഷ്ട കാരണം ഉണ്ടെങ്കിൽ മാത്രം തുടരുക."
+
+#: 
+msgid "What you'll gain"
+msgstr "നിങ്ങൾക്ക് ലഭിക്കുന്നത്"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "നിക്ഷേപ എണ്ണം ലഭ്യമായില്ല"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "വാർഷികം: %s"
+
+#: 
+msgid "Church"
+msgstr "പള്ളി"
+
+#: 
+msgid "Classifications"
+msgstr "വർഗ്ഗീകരണങ്ങൾ"
+
+#: 
+msgid "Closest"
+msgstr "ഏറ്റവും അടുത്ത്"
+
+#: 
+msgid "Deposit #%d"
+msgstr "നിക്ഷേപം #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "ഫണ്ട്‌ സ്വരൂപണ എണ്ണം ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "അയൽക്കാരെ ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു."
+
+#: 
+msgid "Farther"
+msgstr "കൂടുതൽ അകലെ"
+
+#: 
+msgid "Farthest"
+msgstr "ഏറ്റവും അകലെ"
+
+#: 
+msgid "Find Neighbors"
+msgstr "അയൽക്കാരെ കണ്ടെത്തുക"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "അടുത്തുള്ള കുടുംബങ്ങളെ കണ്ടെത്തി കാർട്ടിൽ ചേർക്കുക"
+
+#: 
+msgid "Map centered on"
+msgstr "ഭൂപടം കേന്ദ്രീകരിച്ചിരിക്കുന്നത്:"
+
+#: 
+msgid "Max distance"
+msgstr "പരമാവധി ദൂരം"
+
+#: 
+msgid "Max neighbors"
+msgstr "പരമാവധി അയൽക്കാർ"
+
+#: 
+msgid "Near"
+msgstr "അടുത്ത്"
+
+#: 
+msgid "Please select a family."
+msgstr "ദയവായി ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Results"
+msgstr "ഫലങ്ങൾ"
+
+#: 
+msgid "Same location"
+msgstr "ഒരേ സ്ഥലം"
+
+#: 
+msgid "Search Neighbors"
+msgstr "അയൽക്കാരെ തിരയുക"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "ഒരു കുടുംബം തിരഞ്ഞെടുത്ത് ഫലങ്ങൾ കാണാൻ അയൽക്കാരെ കണ്ടെത്തുക ക്ലിക്ക് ചെയ്യുക."
+
+#: 
+msgid "Selected family"
+msgstr "തിരഞ്ഞെടുത്ത കുടുംബം"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "ഈ മൂല്യം സാധുവായ ഒരു ഫീൽഡ് നാമം ആയിരിക്കണം."
+
+#: 
+msgid "Could not load data"
+msgstr "ഡാറ്റ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "ദയവായി പേജ് പുതുക്കുക അല്ലെങ്കിൽ പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "ആദ്യം ബന്ധപ്പെട്ട രേഖകൾ ചേർക്കുക."
+
+#: 
+msgid "All Months"
+msgstr "എല്ലാ മാസങ്ങളും"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "\"%s\" ഓപ്ഷനുകൾ ഇതുവരെ നിർവ്വചിച്ചിട്ടില്ല."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d-നായി ഒരു ഇവന്റും കണ്ടെത്തിയില്ല."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "മറ്റൊരു ഇവന്റ് തരം, മാസം അല്ലെങ്കിൽ വർഷം തിരഞ്ഞെടുക്കാൻ ശ്രമിക്കുക."
 

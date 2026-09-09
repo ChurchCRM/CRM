@@ -162,14 +162,14 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 $(document).ready(function () {
     window.CRM.settingsPanel.init({
         container: '#groupSettings',
-        title: <?= json_encode(gettext('Group Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        title: <?= InputUtils::jsonEncodeForScript(gettext('Group Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
             {
                 name: 'bEnabledSundaySchool',
                 type: 'boolean',
-                label: <?= json_encode(gettext('Sunday School Module'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                tooltip: <?= json_encode(gettext('Enable or disable the Sunday School module and sidebar menu.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Sunday School Module')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Enable or disable the Sunday School module and sidebar menu.')) ?>
             }
         ],
         onSave: function () {

@@ -31,7 +31,7 @@ class LocaleInfo
         // Load locales.json - throw exception if missing (broken installation)
         $localesPath = SystemURLs::getDocumentRoot() . '/locale/locales.json';
         $localesFile = file_get_contents($localesPath);
-        $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
+        $locales = json_decode($localesFile, true, 512);
         
         foreach ($locales as $key => $value) {
             if ($value['locale'] == $this->locale) {
@@ -199,7 +199,7 @@ class LocaleInfo
         // Load poeditor.json - throw exception if missing (broken installation)
         $poeditorPath = SystemURLs::getDocumentRoot() . '/locale/poeditor.json';
         $poLocalesFile = file_get_contents($poeditorPath);
-        $poLocales = json_decode($poLocalesFile, true, 512, JSON_THROW_ON_ERROR);
+        $poLocales = json_decode($poLocalesFile, true, 512);
 
         if (!isset($poLocales['result']['languages']) || !is_array($poLocales['result']['languages'])) {
             self::$translationDataCache = [];

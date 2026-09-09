@@ -316,7 +316,7 @@ describe("API Event Check-in Endpoints", () => {
 
             // Regression: the check-in/out flow now optionally records WHO
             // checked the person out (parent picking up child, etc.) via the
-            // checkedOutById field. The bootbox prompt in event-checkin.js
+            // checkedOutById field. The native BS5 modal in event-checkin.js
             // sends this; verify the API persists it on the EventAttend row.
             it("Records checkedOutById when supplied", () => {
                 expect(testEventId, "before() must have populated testEventId").to.be.a("number");

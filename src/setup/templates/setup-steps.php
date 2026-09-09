@@ -126,7 +126,7 @@ require_once __DIR__ . '/header.php';
                     <div class="check-card">
                         <div class="check-header user-select-none" data-bs-toggle="collapse" data-bs-target="#integrity-collapse">
                             <div class="check-title">
-                                <i class="fa-solid fa-shield-alt check-icon"></i>
+                                <i class="fa-solid fa-shield-halved check-icon"></i>
                                 <span>File Integrity</span>
                             </div>
                             <div class="check-status" id="integrity-status">

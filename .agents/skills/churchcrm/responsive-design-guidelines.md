@@ -242,7 +242,7 @@ and long labels on desktop:
 
 ```html
 <a class="nav-link" ...>
-    <i class="ti ti-home-plus me-1"></i>
+    <i class="fa-solid fa-house-plus me-1"></i>
     <span class="d-none d-xl-inline"><?= gettext('Latest Families') ?></span>
     <span class="d-xl-none"><?= gettext('New') ?></span>
 </a>

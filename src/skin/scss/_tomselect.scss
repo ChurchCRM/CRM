@@ -1,0 +1,75 @@
+// ================================================================
+// TomSelect — ChurchCRM theme skin
+//
+// All TomSelect styling lives here, not in _tabler-bridge.scss.
+// Rule: component-specific styles must have their own partial;
+// _tabler-bridge.scss is reserved for global Tabler CSS-variable
+// overrides and framework-level patches only.
+// ================================================================
+
+// --- Scoped styles (inside a .ts-wrapper parent) -----------------
+.ts-wrapper {
+  // Multi-select items use primary brand color
+  &.multi .ts-control .item {
+    background-color: var(--tblr-primary);
+    color: #fff;
+  }
+
+  &.single .ts-control {
+    border: 1px solid var(--tblr-border-color);
+    border-radius: var(--tblr-border-radius);
+    background-color: var(--tblr-bg-forms);
+    color: var(--tblr-body-color);
+    padding: 0.375rem 0.75rem;
+  }
+
+  &.focus .ts-control {
+    border-color: var(--tblr-primary);
+    box-shadow: 0 0 0 0.2rem rgba(32, 107, 196, 0.15);
+  }
+
+  .ts-dropdown {
+    background-color: var(--tblr-bg-surface);
+    border: 1px solid var(--tblr-border-color);
+    border-radius: var(--tblr-border-radius);
+    box-shadow: 0 4px 16px rgba(24, 35, 58, 0.12);
+    color: var(--tblr-body-color);
+
+    .option {
+      color: var(--tblr-body-color);
+
+      &:hover,
+      &.active {
+        background-color: var(--tblr-primary-lt);
+        color: var(--tblr-primary);
+      }
+    }
+  }
+}
+
+// --- Unscoped dropdown (dropdownParent: "body") -------------------
+// When TomSelect is created with dropdownParent:"body" (required for dropdowns
+// inside modals so they aren't clipped by overflow:hidden), it appends
+// .ts-dropdown directly to <body>, outside any .ts-wrapper ancestor.
+// The scoped rules above do not apply in that case, so we repeat them here.
+//
+// z-index: 1060 slots between Bootstrap 5's modal (1055) and popover (1070),
+// making the dropdown fully clickable when opened from inside a modal.
+body > .ts-dropdown {
+  z-index: 1060;
+  background-color: var(--tblr-bg-surface);
+  border: 1px solid var(--tblr-border-color);
+  border-radius: var(--tblr-border-radius);
+  box-shadow: 0 4px 16px rgba(24, 35, 58, 0.12);
+  color: var(--tblr-body-color);
+
+  .option {
+    color: var(--tblr-body-color);
+
+    &:hover,
+    &.active {
+      background-color: var(--tblr-primary-lt);
+      color: var(--tblr-primary);
+    }
+  }
+}

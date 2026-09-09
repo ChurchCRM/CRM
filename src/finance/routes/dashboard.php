@@ -19,9 +19,13 @@ $app->get('/', function (Request $request, Response $response) {
         ]),
         'sSettingsCollapseId' => 'financialSettings',
         'sPageHeaderButtons' => PageHeader::buttons([
+            // Finance role users can reach this dashboard (FinanceRoleAuthMiddleware),
+            // so all finance-management buttons are available to them — no Admin required.
+            // Financial Settings panel content is still Admin-only (backend API requires Admin),
+            // so this button stays adminOnly: true (default) to hide it from Finance-only users.
             ['label' => gettext('Financial Settings'), 'icon' => 'fa-cog', 'collapse' => '#financialSettings'],
-            ['label' => gettext('Donation Funds'), 'url' => '/DonationFundEditor.php', 'icon' => 'fa-hand-holding-dollar'],
-            ['label' => gettext('Manage Envelopes'), 'url' => '/ManageEnvelopes.php', 'icon' => 'fa-envelope'],
+            ['label' => gettext('Donation Funds'), 'url' => '/finance/funds', 'icon' => 'fa-hand-holding-dollar', 'adminOnly' => false],
+            ['label' => gettext('Manage Envelopes'), 'url' => '/ManageEnvelopes.php', 'icon' => 'fa-envelope', 'adminOnly' => false],
         ]),
     ];
 

@@ -127,9 +127,9 @@ describe("Photo Gallery Action Icons", () => {
         cy.visit("people/photos?photosOnly=0");
         cy.get("#photo-grid .card", { timeout: 10000 }).first().within(() => {
             // All 3 icons should be present (some may be disabled)
-            cy.get(".ti-phone").should("exist");
-            cy.get(".ti-message").should("exist");
-            cy.get(".ti-mail").should("exist");
+            cy.get(".fa-phone").should("exist");
+            cy.get(".fa-envelope").should("exist");
+            cy.get(".fa-envelope").should("exist");
         });
     });
 

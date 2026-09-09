@@ -5,7 +5,7 @@ use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use ChurchCRM\Slim\Middleware\Api\KioskDeviceMiddleware;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -14,7 +14,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-// Kiosk API routes - requires authentication and admin role
+// Kiosk API routes - requires authentication and ManageGroups role
 $app->group('/api', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
@@ -37,7 +37,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required")
+     *     @OA\Response(response=403, description="Forbidden — ManageGroups role required")
      * )
      */
     $group->get('/devices', function (Request $request, Response $response): Response {
@@ -76,7 +76,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required")
+     *     @OA\Response(response=403, description="Forbidden — ManageGroups role required")
      * )
      */
     $group->post('/allowRegistration', function (Request $request, Response $response): Response {
@@ -97,7 +97,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      *     @OA\Parameter(name="kioskId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Kiosk reload triggered"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=403, description="Forbidden — ManageGroups role required"),
      *     @OA\Response(response=404, description="Kiosk not found")
      * )
      */
@@ -117,7 +117,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      *     @OA\Parameter(name="kioskId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Identification triggered"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=403, description="Forbidden — ManageGroups role required"),
      *     @OA\Response(response=404, description="Kiosk not found")
      * )
      */
@@ -137,7 +137,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      *     @OA\Parameter(name="kioskId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Kiosk accepted"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=403, description="Forbidden — ManageGroups role required"),
      *     @OA\Response(response=404, description="Kiosk not found")
      * )
      */
@@ -166,7 +166,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=200, description="Assignment updated"),
      *     @OA\Response(response=400, description="Invalid assignment type"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=403, description="Forbidden — ManageGroups role required"),
      *     @OA\Response(response=404, description="Kiosk not found")
      * )
      */
@@ -200,7 +200,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      *     @OA\Parameter(name="kioskId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Kiosk deleted"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=403, description="Forbidden — ManageGroups role required"),
      *     @OA\Response(response=404, description="Kiosk not found"),
      *     @OA\Response(response=500, description="Error deleting kiosk")
      * )
@@ -246,7 +246,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=200, description="Kiosk renamed"),
      *     @OA\Response(response=400, description="Invalid request"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=403, description="Forbidden — ManageGroups role required"),
      *     @OA\Response(response=404, description="Kiosk not found")
      * )
      */
@@ -267,4 +267,4 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(KioskDeviceMiddleware::class);
-})->add(AdminRoleAuthMiddleware::class)->add(AuthMiddleware::class);
+})->add(ManageGroupRoleAuthMiddleware::class)->add(AuthMiddleware::class);

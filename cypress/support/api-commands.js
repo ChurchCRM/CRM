@@ -38,6 +38,38 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+    "makePrivateFinanceOnlyAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // grace.financeonly (id=904): Finance=1, non-admin.
+        // Used to verify Finance-role (not Admin) can access /finance/api/funds CRUD.
+        return cy.makePrivateAPICall(
+            Cypress.env("finance.only.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
+    "makePrivateManageGroupsOnlyAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // kyle.kioskonly (id=905): ManageGroups=1, non-admin.
+        // Used to verify ManageGroups-role can access /kiosk/api/* endpoints.
+        return cy.makePrivateAPICall(
+            Cypress.env("managegroups.only.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
     "makePrivateNoFinanceAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
         return cy.makePrivateAPICall(
@@ -157,6 +189,24 @@ Cypress.Commands.add(
         // return 200 to authenticated users but strip note items (e.g. timeline).
         return cy.makePrivateAPICall(
             Cypress.env("editrecords.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
+    "makePrivateMenuOptionsAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // menuoptions.user (id=902): usr_MenuOptions=1, all other permission flags 0,
+        // non-admin, non-EditSelf. Used to verify EditRecords gate on person/family
+        // property routes (GHSA-4wmp-3v34-g7q8). Passes MenuOptions middleware but
+        // is blocked by EditRecordsRoleAuthMiddleware (expects 403 on record routes).
+        return cy.makePrivateAPICall(
+            Cypress.env("menuoptions.api.key"),
             method,
             url,
             body,

@@ -13,8 +13,9 @@ function initPaymentTable() {
         var familyName = data && data.trim() ? data : '<em class="text-muted">' + i18next.t("Anonymous") + "</em>";
         var icon = isDepositClosed ? '<i class="fa-solid fa-magnifying-glass"></i>' : '<i class="fa-solid fa-pen"></i>';
         var linkBack = encodeURIComponent("/DepositSlipEditor.php?DepositSlipID=" + depositSlipID);
-        var editUrl =
-          window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey) + "/edit?linkBack=" + linkBack;
+        var editUrl = isDepositClosed
+          ? window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey)
+          : window.CRM.root + "/finance/pledge/" + encodeURIComponent(full.GroupKey) + "/edit?linkBack=" + linkBack;
         return (
           '<a class="btn btn-sm btn-outline-primary" href="' +
           editUrl +
@@ -51,7 +52,7 @@ function initPaymentTable() {
         // For display, split multiple funds and show as individual badges
         var funds = data.split(", ");
         var badges = funds.map(
-          (fund) => '<span class="badge badge-info text-white mr-1 mb-1">' + fund.trim() + "</span>",
+          (fund) => '<span class="badge bg-info-lt text-info me-1 mb-1">' + fund.trim() + "</span>",
         );
         return '<div class="d-flex flex-wrap">' + badges.join("") + "</div>";
       },
@@ -62,7 +63,7 @@ function initPaymentTable() {
       data: "sumAmount",
       render: (data, type, full, meta) => {
         if (type === "display") {
-          return '<strong class="text-end d-block">$' + parseFloat(data || 0).toFixed(2) + "</strong>";
+          return '<strong class="text-end d-block">' + window.CRM.currency.format(data) + "</strong>";
         }
         return parseFloat(data || 0);
       },
@@ -72,16 +73,16 @@ function initPaymentTable() {
       title: i18next.t("Method"),
       data: "Method",
       render: (data, type, full, meta) => {
-        var badgeClass = "badge-secondary";
+        var badgeClass = "bg-secondary";
         var icon = "";
         if (data === "CHECK") {
-          badgeClass = "badge-primary";
+          badgeClass = "bg-primary";
           icon = '<i class="fa-solid fa-check-double"></i> ';
         } else if (data === "CASH") {
-          badgeClass = "badge-success";
+          badgeClass = "bg-success";
           icon = '<i class="fa-solid fa-money-bill"></i> ';
         } else if (data === "CREDITCARD") {
-          badgeClass = "badge-warning";
+          badgeClass = "bg-warning text-dark";
           icon = '<i class="fa-solid fa-credit-card"></i> ';
         }
         return '<span class="badge ' + badgeClass + '">' + icon + data + "</span>";
@@ -441,19 +442,16 @@ function initCharts(pledgeLabels, pledgeChartData, fundLabels, fundChartData) {
     // Use ApexCharts default color palette (distributed: true assigns one per bar)
     xaxis: {
       categories: fundLabels,
-      tickFormatter: (value) =>
-        "$" +
-        parseFloat(value).toLocaleString("en-US", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        }),
+      labels: {
+        formatter: (value) => window.CRM.currency.format(value),
+      },
     },
     yaxis: {
       tickFormatter: (value) => value,
     },
     tooltip: {
       y: {
-        formatter: (value) => "$" + parseFloat(value).toFixed(2),
+        formatter: (value) => window.CRM.currency.format(value),
       },
     },
     states: {

@@ -14,7 +14,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
     window.CRM = {
         root:"<?= SystemURLs::getRootPath() ?>",
         churchWebSite:"<?= SystemURLs::getRootPath() ?>/",
-        churchName:"<?= ChurchMetaData::getChurchName() ?>",
+        churchName:<?= json_encode(ChurchMetaData::getChurchName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
         phoneFormats: {
             home:<?= SystemConfig::getValueForJs('sPhoneFormat') ?>,
             cell:<?= SystemConfig::getValueForJs('sPhoneFormatCell') ?>,
@@ -24,7 +24,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 </script>
 <div class="register-box" style="max-width: 900px;">
     <div class="register-logo text-center mb-4">
-        <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= ChurchMetaData::getChurchName() ?></a>
+        <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></a>
         <p class="text-body-secondary mt-2"><?= gettext("We're so glad you're here! Register your family in just 3 easy steps.") ?></p>
     </div>
     <div class="card registration-card">

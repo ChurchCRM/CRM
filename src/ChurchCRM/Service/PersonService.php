@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
@@ -61,34 +62,96 @@ class PersonService
      */
     public function getPeopleEmailsAndGroups(): array
     {
-        // Get people with emails
+        // Step 1: Load people with emails and their group memberships.
+        // Use LEFT JOIN so that people with an email but no group memberships are NOT silently
+        // excluded (an INNER JOIN would drop them).
+        // Group is NOT a direct relation of Person (it goes through Person2group2roleP2g2r),
+        // so it cannot be joined here; groups are batch-loaded separately below.
         $people = PersonQuery::create()
             ->filterByEmail('', Criteria::NOT_EQUAL)
+            ->leftJoinWithPerson2group2roleP2g2r()
             ->orderById()
+            ->distinct()
             ->find();
 
-        $result = [];
+        // Step 2: Collect all group IDs referenced by any membership.
+        $allGroupIds = [];
         foreach ($people as $person) {
+            foreach ($person->getPerson2group2roleP2g2rs() as $membership) {
+                $gid = $membership->getGroupId();
+                if ($gid !== null && $gid > 0) {
+                    $allGroupIds[$gid] = true;
+                }
+            }
+        }
+
+        // Step 3: Batch-load all needed Group rows (single query — avoids N+1 on getGroup() calls).
+        $groupMap = [];
+        if (!empty($allGroupIds)) {
+            $groups = GroupQuery::create()->findPks(array_keys($allGroupIds));
+            foreach ($groups as $g) {
+                $groupMap[$g->getId()] = $g;
+            }
+        }
+
+        // Step 4: Collect all unique (listId, optionId) pairs needed for role names.
+        $roleLookupsNeeded = [];
+        foreach ($people as $person) {
+            foreach ($person->getPerson2group2roleP2g2rs() as $membership) {
+                $group = $groupMap[$membership->getGroupId()] ?? null;
+                if ($group !== null) {
+                    $listId = $group->getRoleListId();
+                    $optionId = $membership->getRoleId();
+                    if (!isset($roleLookupsNeeded[$listId])) {
+                        $roleLookupsNeeded[$listId] = [];
+                    }
+                    $roleLookupsNeeded[$listId][$optionId] = true;
+                }
+            }
+        }
+
+        // Batch-load all ListOption rows needed for role names: [listId][optionId] => optionName
+        $roleNameMap = [];
+        if (!empty($roleLookupsNeeded)) {
+            foreach ($roleLookupsNeeded as $listId => $optionIds) {
+                $optionIdArray = array_keys($optionIds);
+                $roles = ListOptionQuery::create()
+                    ->filterById($listId)
+                    ->filterByOptionId($optionIdArray)
+                    ->find();
+
+                if (!isset($roleNameMap[$listId])) {
+                    $roleNameMap[$listId] = [];
+                }
+                foreach ($roles as $role) {
+                    $roleNameMap[$listId][$role->getOptionId()] = $role->getOptionName();
+                }
+            }
+        }
+
+        // Build result using pre-loaded data (no N+1 queries)
+        $result = [];
+        $processedPersonIds = [];
+        foreach ($people as $person) {
+            $personId = $person->getId();
+            if (isset($processedPersonIds[$personId])) {
+                continue;
+            }
+            $processedPersonIds[$personId] = true;
+
             $personData = [
-                'id' => $person->getId(),
+                'id' => $personId,
                 'email' => $person->getEmail(),
                 'firstName' => $person->getFirstName(),
                 'lastName' => $person->getLastName(),
             ];
 
-            // Get group memberships for this person
-            $groupMemberships = $person->getPerson2group2roleP2g2rs();
-            foreach ($groupMemberships as $membership) {
-                $group = $membership->getGroup();
+            foreach ($person->getPerson2group2roleP2g2rs() as $membership) {
+                $group = $groupMap[$membership->getGroupId()] ?? null;
                 if ($group !== null) {
-                    $roleName = '';
-                    $roleList = ListOptionQuery::create()
-                        ->filterById($group->getRoleListId())
-                        ->filterByOptionId($membership->getRoleId())
-                        ->findOne();
-                    if ($roleList !== null) {
-                        $roleName = $roleList->getOptionName();
-                    }
+                    $listId = $group->getRoleListId();
+                    $optionId = $membership->getRoleId();
+                    $roleName = $roleNameMap[$listId][$optionId] ?? '';
                     $personData[$group->getName()] = $roleName;
                 }
             }

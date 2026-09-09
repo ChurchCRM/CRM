@@ -292,8 +292,8 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     (function () {
-        var lat = <?= json_encode((float) $family->getLatitude()) ?>;
-        var lng = <?= json_encode((float) $family->getLongitude()) ?>;
+        var lat = <?= InputUtils::jsonEncodeForScript((float) $family->getLatitude()) ?>;
+        var lng = <?= InputUtils::jsonEncodeForScript((float) $family->getLongitude()) ?>;
         var map = L.map('map1', { scrollWheelZoom: false, dragging: false, zoomControl: false })
             .setView([lat, lng], 14);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {

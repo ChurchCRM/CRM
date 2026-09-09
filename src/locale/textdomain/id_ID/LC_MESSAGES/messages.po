@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "URL dari Gambar"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Sunting Donatur Dana"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ekspresi ataupun pemilihan tidak valid. Perubahan tidak disimpan! Tolong perbaiki dan coba lagi!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Belum ada dana yang ditambahkan."
 
 #: 
 msgid "Active"
@@ -1095,25 +1087,9 @@ msgid "Create Report"
 msgstr "Buat laporan"
 
 #: 
-msgid "Deposit Listing"
-msgstr "Daftar deposit"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "Simpanan"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "Hapus Baris yang Dipilih"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "Ekspor Baris Dipilih (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "Ekspor Baris Dipilih (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1181,48 +1157,9 @@ msgid "Minimum Price"
 msgstr "Harga Minimum"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Utilitas Geografis Keluarga"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Pilih Keluarga"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Jumlah tetangga maksimum"
-
-#: 
-msgid "Maximum distance"
-msgstr "Jarak maksimum"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Format file data"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Sertakan keluarga dalam file koordinat"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Keluarga Tetangga"
-
-#: 
-msgid "Make Data File"
-msgstr "Buat File Data"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Tunjukkan Tetangga"
 
 #: 
 msgid "Distance"
@@ -1243,10 +1180,6 @@ msgstr "Garis bujur"
 #: 
 msgid "Add to Cart"
 msgstr "Masukkan ke keranjang"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Intersect with Cart"
 
 #: 
 msgid "Remove from Cart"
@@ -1276,10 +1209,6 @@ msgstr "Properti Spesifik Kelompok"
 #: 
 msgid "Enabled"
 msgstr "Diaktifkan"
-
-#: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "Edit Formulir Properti Khusus Grup"
 
 #: 
 msgid "Disabled"
@@ -1333,14 +1262,6 @@ msgstr "Editor Formulir Properti Spesifik Kelompok"
 #: 
 msgid "No properties have been added yet"
 msgstr "Belum ada properti yang ditambahkan"
-
-#: 
-msgid "Show in"
-msgstr "Tampilkan di"
-
-#: 
-msgid "Person View"
-msgstr "Tampilan Perorangan"
 
 #: 
 msgid "Other Email"
@@ -1437,10 +1358,6 @@ msgstr "Email Semua"
 #: 
 msgid "Family Roles"
 msgstr "Peran Keluarga"
-
-#: 
-msgid "Family Geographic"
-msgstr "Lokasi geografis keluarga"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -2197,14 +2114,6 @@ msgstr "Item yang disumbangkan"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Barang yang dibeli"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Total semua pembelian: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Total pembelian: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4299,26 +4208,8 @@ msgid "Profile Image uploaded"
 msgstr "Gambar Profil diunggah"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Tunjukkan tetangga dengan klasifikasi ini"
-
-#: 
-msgid "Please select a Family."
-msgstr "Silakan pilih Keluarga."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Mengkoordinasikan nama file basis data"
-
-#: 
 msgid "select an option"
 msgstr "pilih satu opsi"
-
-#: 
-msgid "Direct me"
-msgstr "Arahkan saya"
 
 #: 
 msgid "Your cart is empty"
@@ -4874,10 +4765,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Setel sistem enkripsi untuk menggunakan - ssl (usang) atau tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "Hasilkan Slip Setoran untuk Baris Terpilih (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Tambahkan Semua ke Troli"
 
@@ -5167,10 +5054,6 @@ msgstr "PDF"
 #: 
 msgid "Error sending email(s)"
 msgstr "Kesalahan mengirim email"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "Silakan periksa log untuk informasi lebih lanjut"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5559,10 +5442,6 @@ msgstr "Keluarga dihapus dari keranjang"
 #: 
 msgid "Add Group"
 msgstr "Tambah Grup"
-
-#: 
-msgid "Back to Group List"
-msgstr "Kembali ke Daftar Grup"
 
 #: 
 msgid "Edit Group"
@@ -7339,10 +7218,6 @@ msgid "Order"
 msgstr "Urutan"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF berhasil dikirim ke %s keluarga."
-
-#: 
 msgid "Percentage"
 msgstr "Persentase"
 
@@ -7381,10 +7256,6 @@ msgstr "Tambahkan Jenis Properti Pertama Anda"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Dengan menghapus bidang ini, Anda akan kehilangan semua data anggota grup yang ditetapkan untuk bidang ini secara permanen!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Dengan menghapus dana ini, Anda mungkin mempengaruhi catatan donasi historis!"
 
 #: 
 msgid "Category Name"
@@ -7439,10 +7310,6 @@ msgid "Filter by Class"
 msgstr "Filter berdasarkan Kelas"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Dana berhasil dihapus"
-
-#: 
 msgid "In Use"
 msgstr "Sedang Digunakan"
 
@@ -7489,10 +7356,6 @@ msgstr "Hapus hitungan kehadiran ini?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Pilih jenis catatan yang berlaku untuk properti ini"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Nama dana tersebut sudah ada."
 
 #: 
 msgid "Total Pledges"
@@ -9463,10 +9326,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Buat dokumen laporan pajak untuk donatur"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Utilitas Geografis"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Masukkan Data Anda ke ChurchCRM"
 
@@ -9981,10 +9840,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "Cari di seluruh orang, keluarga, grup, alamat, dan lainnya."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "Cari dan lihat catatan slip setoran"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "Cari orang, keluarga, grup…"
 
@@ -10199,10 +10054,6 @@ msgstr "Lihat dan kelola semua grup di jemaat Anda"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "Lihat dan kelola pembayaran slip setoran"
-
-#: 
-msgid "View and manage family location data"
-msgstr "Lihat dan kelola data lokasi keluarga"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -10545,10 +10396,6 @@ msgid "Total Check-ins"
 msgstr "Total Check-in"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Coba pilih tipe acara atau tahun yang berbeda."
-
-#: 
 msgid "Up to Date"
 msgstr "Terkini"
 
@@ -10637,11 +10484,6 @@ msgstr "Salin ke papan klip"
 msgid "Custom field"
 msgstr "Bidang khusus"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Pencarian Khusus"
-
 #: 
 msgid "Default Country"
 msgstr "Negara Default"
@@ -10703,11 +10545,6 @@ msgstr "Nilai bidang"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Temukan orang yang berjanji satu tahun tetapi tidak tahun lain"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Temukan orang dengan nilai bidang khusus"
 
 #. Context: query_qry
 #: 
@@ -11970,10 +11807,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "Perubahan tidak akan berlaku hingga masuk berikutnya."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "Pilih antara skema warna terang dan gelap"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "Sesuaikan tampilan dan nuansa aplikasi"
 
@@ -12727,10 +12560,6 @@ msgstr "Lintang dan bujur harus diberikan bersama (atau keduanya dibiarkan koson
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "Informasi gereja tersimpan, tetapi alamat tidak dapat dilokasi secara otomatis. Silakan masukkan lintang dan bujur secara manual di bawah Koordinat Peta."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "Koordinat terdeteksi otomatis dari alamat Anda saat disimpan (melalui OpenStreetMap). Anda juga dapat memasukkannya secara manual di bawah — nilai manual selalu lebih diutamakan daripada deteksi otomatis. Biarkan keduanya kosong agar sistem melakukan geokode dari alamat."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -13989,10 +13818,6 @@ msgid "Are you sure you want to continue?"
 msgstr "Apakah Anda yakin ingin melanjutkan?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Apakah Anda yakin ingin menghapus setoran ini?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "Apakah Anda yakin ingin menghapus jenis acara ini? Tindakan ini tidak dapat dibatalkan."
 
@@ -14243,10 +14068,6 @@ msgstr "Data demo biasanya hanya dimuat pada instalasi baru. Mengimpor sekarang 
 #: 
 msgid "Deposit ID"
 msgstr "ID Deposit"
-
-#: 
-msgid "Deposit Total"
-msgstr "Total Deposit"
 
 #: 
 msgid "Deposit Value"
@@ -14560,10 +14381,6 @@ msgstr "Grup berhasil dihapus."
 #: 
 msgid "Group removed from cart"
 msgstr "Grup dihapus dari keranjang"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID diperlukan untuk prompt pemilihan peran"
 
 #: 
 msgid "HTML URL"
@@ -14943,20 +14760,8 @@ msgid "Please select a role."
 msgstr "Silakan pilih peran."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Silakan pilih pelayanan dan peran."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Harap pilih baris yang akan dihapus"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Silakan pilih Peran target untuk anggota"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Silakan pilih grup target untuk anggota"
 
 #: 
 msgid "Please try again"
@@ -15851,24 +15656,12 @@ msgid "Account status"
 msgstr "Status akun"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Lanjutan: pilih versi target tertentu"
-
-#: 
 msgid "Bug Fix"
 msgstr "Perbaikan Bug"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Secara default, panduan mengunduh rilis berikutnya yang direkomendasikan. Anda dapat memilih versi lain yang tersedia di bawah ini."
-
-#: 
 msgid "Change required"
 msgstr "Perubahan diperlukan"
-
-#: 
-msgid "Changelog"
-msgstr "Catatan Perubahan"
 
 #: 
 msgid "Continue Anyway"
@@ -15877,10 +15670,6 @@ msgstr "Lanjutkan Saja"
 #: 
 msgid "Could not load release information."
 msgstr "Tidak dapat memuat informasi rilis."
-
-#: 
-msgid "Download & Install"
-msgstr "Unduh & Pasang"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15909,10 +15698,6 @@ msgstr "Catatan perubahan lengkap"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Pasang versi stabil {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Memasang rilis berikutnya"
 
 #: 
 msgid "Invalid file path"
@@ -15983,10 +15768,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Tampilkan jalur pembaruan lengkap"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Rilis stabil terbaru adalah {{version}}. Anda dapat memasangnya kembali di bawah ini."
 
@@ -16013,10 +15794,6 @@ msgstr "Lihat catatan rilis"
 #: 
 msgid "What's New"
 msgstr "Yang Baru"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Yang Baru di {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16633,10 +16410,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Fungsi email saat ini dinonaktifkan. Fitur-fitur berikut tidak akan berfungsi hingga email diaktifkan"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Nilai perkiraan $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Alur kerja tercepat"
 
@@ -16679,10 +16452,6 @@ msgstr "Pengembangan lokal"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Jumlah Total Minimum"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Penawaran minimum $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16985,10 +16754,6 @@ msgid "Working..."
 msgstr "Memproses..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Anda tertinggal {{releaseCount}} rilis. Inilah yang akan Anda dapatkan"
-
-#: 
 msgid "click to expand"
 msgstr "klik untuk perluas"
 
@@ -17091,4 +16856,964 @@ msgstr "Tinjau pendaftaran baru dari formulir pendaftaran publik Anda di bawah i
 #: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Konfirmasi Penghapusan Kesempatan Sukarela"
+
+#: 
+msgid "# Payments"
+msgstr "# Pembayaran"
+
+#: 
+msgid "# Pledges"
+msgstr "# Janji Persembahan"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the selected deposit."
+msgstr "Pembayaran adalah donasi aktual yang diterima. Ini akan ditambahkan ke setoran yang dipilih."
+
+#: 
+msgid "Add Fund"
+msgstr "Tambah Dana"
+
+#: 
+msgid "Amount ($)"
+msgstr "Jumlah ($)"
+
+#: 
+msgid "Amount exceeds maximum allowed (999999.99)"
+msgstr "Jumlah melebihi batas maksimum yang diizinkan (999999.99)"
+
+#: 
+msgid "An error occurred while saving. Please try again."
+msgstr "Terjadi kesalahan saat menyimpan. Silakan coba lagi."
+
+#: 
+msgid "Anonymous Telemetry"
+msgstr "Telemetri Anonim"
+
+#: 
+msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
+msgstr "Tingkat telemetri anonim. Mengontrol seberapa banyak data diagnostik anonim yang dibagikan kepada tim ChurchCRM. Nama gereja, data jemaat, atau informasi pribadi tidak pernah dikirimkan."
+
+#: 
+msgid "Are you sure you want to permanently delete this payment record?"
+msgstr "Apakah Anda yakin ingin menghapus catatan pembayaran ini secara permanen?"
+
+#: 
+msgid "At least one fund allocation is required"
+msgstr "Diperlukan setidaknya satu alokasi dana"
+
+#: 
+msgid "At least one fund must have a non-zero amount"
+msgstr "Setidaknya satu dana harus memiliki jumlah yang tidak nol"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday"
+msgstr "Secara otomatis kirim email ucapan ulang tahun kepada jemaat pada hari ulang tahun mereka"
+
+#: 
+msgid "Back to Finance"
+msgstr "Kembali ke Keuangan"
+
+#: 
+msgid "Back to Group"
+msgstr "Kembali ke Kelompok"
+
+#: 
+msgid "Cannot prepare query."
+msgstr "Tidak dapat menyiapkan kueri."
+
+#: 
+msgid "Catch JS errors"
+msgstr "Tangkap kesalahan JS"
+
+#: 
+msgid "Catch recurring errors"
+msgstr "Tangkap kesalahan berulang"
+
+#: 
+msgid "Check #"
+msgstr "No. Cek"
+
+#: 
+msgid "Church name, address, or contact details"
+msgstr "Nama gereja, alamat, atau detail kontak"
+
+#: 
+msgid "ChurchCRM version"
+msgstr "Versi ChurchCRM"
+
+#: 
+msgid "Collection level"
+msgstr "Tingkat pengumpulan"
+
+#: 
+msgid "Count unique installs"
+msgstr "Hitung instalasi unik"
+
+#: 
+msgid "Data is processed by PostHog on EU infrastructure."
+msgstr "Data diproses oleh PostHog pada infrastruktur EU."
+
+#: 
+msgid "Date is required"
+msgstr "Tanggal wajib diisi"
+
+#: 
+msgid "Deleted successfully"
+msgstr "Berhasil dihapus"
+
+#: 
+msgid "Deposit Slip"
+msgstr "Slip Setoran"
+
+#: 
+msgid "Edit Pledge"
+msgstr "Edit Janji Persembahan"
+
+#: 
+msgid "Edit existing pledge or payment"
+msgstr "Edit janji persembahan atau pembayaran yang ada"
+
+#: 
+msgid "Editing a Payment"
+msgstr "Mengedit Pembayaran"
+
+#: 
+msgid "Editing a Pledge"
+msgstr "Mengedit Janji Persembahan"
+
+#: 
+msgid "Enable (full)"
+msgstr "Aktifkan (penuh)"
+
+#: 
+msgid "Errors only"
+msgstr "Hanya kesalahan"
+
+#: 
+msgid "Errors — server errors and JS exceptions"
+msgstr "Kesalahan — kesalahan server dan pengecualian JS"
+
+#: 
+msgid "Failed to create pledge"
+msgstr "Gagal membuat janji persembahan"
+
+#: 
+msgid "Failed to delete pledge"
+msgstr "Gagal menghapus janji persembahan"
+
+#: 
+msgid "Failed to retrieve pledge"
+msgstr "Gagal mengambil janji persembahan"
+
+#: 
+msgid "Failed to update pledge"
+msgstr "Gagal memperbarui janji persembahan"
+
+#: 
+msgid "Financial data"
+msgstr "Data keuangan"
+
+#: 
+msgid "Full — all of the above plus page views"
+msgstr "Penuh — semua di atas ditambah kunjungan halaman"
+
+#: 
+msgid "Full — page views, warnings, errors, and JS exceptions"
+msgstr "Penuh — kunjungan halaman, peringatan, kesalahan, dan pengecualian JS"
+
+#: 
+msgid "Fund Summary"
+msgstr "Ringkasan Dana"
+
+#: 
+msgid "Group key is required"
+msgstr "Kunci kelompok wajib diisi"
+
+#: 
+msgid "Happy Birthday"
+msgstr "Selamat Ulang Tahun"
+
+#: 
+msgid "Help improve ChurchCRM"
+msgstr "Bantu tingkatkan ChurchCRM"
+
+#: 
+msgid "IP addresses"
+msgstr "Alamat IP"
+
+#: 
+msgid "Installation UUID"
+msgstr "UUID Instalasi"
+
+#: 
+msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
+msgstr "Ringkasan interaktif janji persembahan vs pembayaran per dana dengan pengurutan, pencarian, dan ekspor."
+
+#: 
+msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
+msgstr "Internal: tanggal terakhir email ulang tahun dikirim (YYYY-MM-DD). Jangan edit secara manual."
+
+#: 
+msgid "JS exceptions"
+msgstr "Pengecualian JS"
+
+#: 
+msgid "Log level + message"
+msgstr "Tingkat log + pesan"
+
+#: 
+msgid "Member or family records"
+msgstr "Catatan jemaat atau keluarga"
+
+#: 
+msgid "Modify the role for this group member"
+msgstr "Ubah peran untuk anggota kelompok ini"
+
+#: 
+msgid "Network error, please try again"
+msgstr "Kesalahan jaringan, silakan coba lagi"
+
+#: 
+msgid "Never sent"
+msgstr "Belum pernah dikirim"
+
+#: 
+msgid "No deposit / create new deposit"
+msgstr "Tanpa setoran / buat setoran baru"
+
+#: 
+msgid "No pledge"
+msgstr "Tanpa janji persembahan"
+
+#: 
+msgid "No thanks"
+msgstr "Tidak, terima kasih"
+
+#: 
+msgid "Non-Deductible"
+msgstr "Tidak Dapat Dikurangkan"
+
+#: 
+msgid "Non-Deductible ($)"
+msgstr "Tidak Dapat Dikurangkan ($)"
+
+#: 
+msgid "Non-deductible amount can't exceed fund amount"
+msgstr "Jumlah tidak dapat dikurangkan tidak boleh melebihi jumlah dana"
+
+#: 
+msgid "None (disabled)"
+msgstr "Tidak ada (dinonaktifkan)"
+
+#: 
+msgid "OS family"
+msgstr "Keluarga OS"
+
+#: 
+msgid "Overpaid"
+msgstr "Kelebihan Bayar"
+
+#: 
+msgid "PHP version"
+msgstr "Versi PHP"
+
+#: 
+msgid "Page route"
+msgstr "Rute halaman"
+
+#: 
+msgid "Payment Details"
+msgstr "Detail Pembayaran"
+
+#: 
+msgid "Payment Method"
+msgstr "Metode Pembayaran"
+
+#: 
+msgid "Plan runtime support"
+msgstr "Rencanakan dukungan waktu proses"
+
+#: 
+msgid "Please enter a date"
+msgstr "Silakan masukkan tanggal"
+
+#: 
+msgid "Please select a fund for all rows"
+msgstr "Silakan pilih dana untuk semua baris"
+
+#: 
+msgid "Pledge Details"
+msgstr "Detail Janji Persembahan"
+
+#: 
+msgid "Pledge group not found"
+msgstr "Grup janji persembahan tidak ditemukan"
+
+#: 
+msgid "Pledges & Payments"
+msgstr "Janji Persembahan & Pembayaran"
+
+#: 
+msgid "Prioritise translations"
+msgstr "Prioritaskan terjemahan"
+
+#: 
+msgid "Purpose"
+msgstr "Tujuan"
+
+#: 
+msgid "Save and Add Another"
+msgstr "Simpan dan Tambah Lagi"
+
+#: 
+msgid "Save failed"
+msgstr "Gagal menyimpan"
+
+#: 
+msgid "Saved successfully"
+msgstr "Berhasil disimpan"
+
+#: 
+msgid "Select a fund"
+msgstr "Pilih dana"
+
+#: 
+msgid "Send Test Birthday Email to Myself"
+msgstr "Kirim Email Ulang Tahun Percobaan ke Diri Sendiri"
+
+#: 
+msgid "Sending to"
+msgstr "Mengirim ke"
+
+#: 
+msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
+msgstr "Bagikan statistik penggunaan anonim dengan tim ChurchCRM agar kami mengetahui fitur dan bahasa mana yang perlu diprioritaskan. Nama gereja, data jemaat, atau informasi pribadi tidak pernah dikirimkan."
+
+#: 
+msgid "Test email sent to"
+msgstr "Email percobaan dikirim ke"
+
+#: 
+msgid "Track adoption"
+msgstr "Lacak adopsi"
+
+#: 
+msgid "Type must be 'Pledge' or 'Payment'"
+msgstr "Tipe harus 'Pledge' atau 'Payment'"
+
+#: 
+msgid "URLs with query strings (record IDs are stripped)"
+msgstr "URL dengan string kueri (ID rekaman dihapus)"
+
+#: 
+msgid "Underpaid"
+msgstr "Kekurangan Bayar"
+
+#: 
+msgid "Understand deployments"
+msgstr "Pahami penerapan"
+
+#: 
+msgid "Understand feature usage"
+msgstr "Pahami penggunaan fitur"
+
+#: 
+msgid "User names, emails, or roles"
+msgstr "Nama pengguna, email, atau peran"
+
+#: 
+msgid "View pledge or payment details"
+msgstr "Lihat detail janji persembahan atau pembayaran"
+
+#: 
+msgid "Warnings — warnings, errors, and JS exceptions"
+msgstr "Peringatan — peringatan, kesalahan, dan pengecualian JS"
+
+#: 
+msgid "What is sent"
+msgstr "Apa yang dikirimkan"
+
+#: 
+msgid "What we collect"
+msgstr "Apa yang kami kumpulkan"
+
+#: 
+msgid "Wishing you a wonderful %d year birthday!"
+msgstr "Selamat ulang tahun yang ke-%d yang luar biasa!"
+
+#: 
+msgid "Wishing you a wonderful birthday!"
+msgstr "Selamat ulang tahun yang luar biasa!"
+
+#: 
+msgid "Your account has no email address on file. Add one to your profile to send a test."
+msgstr "Akun Anda tidak memiliki alamat email yang tersimpan. Tambahkan ke profil Anda untuk mengirim percobaan."
+
+#: 
+msgid "errors+"
+msgstr "kesalahan+"
+
+#: 
+msgid "full only"
+msgstr "penuh saja"
+
+#: 
+msgid "is thinking of you today."
+msgstr "sedang memikirkan Anda hari ini."
+
+#: 
+msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
+msgstr "rute halaman, lokal aktif, versi CRM, versi PHP, keluarga OS, dan ID instalasi acak. Tidak ada yang lain. Data disimpan di EU."
+
+#: 
+msgid "% Paid"
+msgstr "% Dibayar"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: Harap verifikasi informasi keluarga Anda"
+
+#: 
+msgid "Add Role"
+msgstr "Tambah Peran"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "Tambahkan properti khusus untuk kelompok ini"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "Alamat telah berubah sejak koordinat terakhir ditetapkan."
+
+#: 
+msgid "All Tellers"
+msgstr "Semua Kasir"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "Semua pengiriman email gagal. Harap periksa pengaturan SMTP Anda di Pengaturan Sistem."
+
+#: 
+msgid "Amount Max"
+msgstr "Jumlah Maksimum"
+
+#: 
+msgid "Amount Min"
+msgstr "Jumlah Minimum"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "Terjadi kesalahan tak terduga saat mengirim email. Harap periksa pengaturan SMTP dan log server Anda."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "Apakah Anda yakin ingin menghapus peran '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Otomatis"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "Otomatis mengikuti pengaturan OS atau browser Anda; Terang dan Gelap akan menimpanya"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "Kembali ke Dasbor Janji Persembahan"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "Klik \"Hasilkan Koordinat\" untuk mencari lokasi peta untuk alamat di atas, atau masukkan lintang/bujur secara manual. Jika dibiarkan kosong, koordinat juga akan terdeteksi otomatis saat Anda menyimpan formulir."
+
+#: 
+msgid "Contributor"
+msgstr "Penyumbang"
+
+#: 
+msgid "Contributors"
+msgstr "Para Penyumbang"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "Tidak dapat menemukan koordinat untuk alamat tersebut. Coba masukkan secara manual."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "Properti khusus untuk kelompok ini"
+
+#: 
+msgid "Delete role"
+msgstr "Hapus peran"
+
+#: 
+msgid "Email Error"
+msgstr "Kesalahan Email"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "Email belum dikonfigurasi. Harap konfigurasikan pengaturan SMTP di Pengaturan Sistem."
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Email terkirim ke %d keluarga."
+
+#: 
+msgid "Enter a street address first."
+msgstr "Masukkan alamat jalan terlebih dahulu."
+
+#: 
+msgid "Enter role name"
+msgstr "Masukkan nama peran"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "Gagal membuat setoran"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "Gagal memuat pratinjau email"
+
+#: 
+msgid "From Date"
+msgstr "Dari Tanggal"
+
+#: 
+msgid "Fund Total"
+msgstr "Total Dana"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "Ringkasan janji persembahan penyumbang dana per tahun fiskal"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "Penggalangan dana dinonaktifkan"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "Hasilkan Koordinat"
+
+#: 
+msgid "Generating..."
+msgstr "Menghasilkan..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "Permintaan geocoding gagal. Silakan coba lagi."
+
+#: 
+msgid "Manage Events"
+msgstr "Kelola Acara"
+
+#: 
+msgid "N/A"
+msgstr "T/A"
+
+#: 
+msgid "New Deposit"
+msgstr "Setoran Baru"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "Tidak ditemukan penyumbang untuk dana ini pada tahun fiskal yang dipilih"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "Tidak ditemukan keluarga dengan alamat email. Tidak ada yang dikirim."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "Tidak ditemukan pembayaran untuk setoran yang dipilih"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "Tidak ada ID setoran yang valid yang diberikan"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF berhasil dikirim melalui email ke %d keluarga."
+
+#: 
+msgid "Partial Send"
+msgstr "Pengiriman Sebagian"
+
+#: 
+msgid "Payments only"
+msgstr "Hanya pembayaran"
+
+#: 
+msgid "Pledged Amount"
+msgstr "Jumlah yang Dijanjikan"
+
+#: 
+msgid "Preview"
+msgstr "Pratinjau"
+
+#: 
+msgid "Retry"
+msgstr "Coba Lagi"
+
+#: 
+msgid "Search"
+msgstr "Cari"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "Cari dan kelola catatan slip setoran"
+
+#: 
+msgid "Select All"
+msgstr "Pilih Semua"
+
+#: 
+msgid "Send Emails"
+msgstr "Kirim Email"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "Kirim Email Verifikasi Keluarga"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "Terkirim %1$d dari %2$d — %3$d keluarga tidak dapat dihubungi."
+
+#: 
+msgid "Show in Profile"
+msgstr "Tampilkan di Profil"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "Menampilkan total untuk dana yang dipilih saja"
+
+#: 
+msgid "Teller"
+msgstr "Kasir"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "Ini adalah satu-satunya peran dalam kelompok ini."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "Peran ini tidak dapat dihapus."
+
+#: 
+msgid "To Date"
+msgstr "Sampai Tanggal"
+
+#: 
+msgid "Total Pledged"
+msgstr "Total yang Dijanjikan"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "Kesalahan tak terduga saat mengirim email. Harap periksa log."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "Menggunakan alamat jalan Anda di atas untuk mencari koordinat melalui OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "Lihat Pembayaran"
+
+#: 
+msgid "View Pledge"
+msgstr "Lihat Janji Persembahan"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "Jika dicentang, properti ini akan ditampilkan bersama kelompok dalam daftar kelompok orang tersebut di halaman profil mereka."
+
+#: 
+msgid "[Family Name]"
+msgstr "[Nama Keluarga]"
+
+#: 
+msgid "row selected"
+msgstr "baris dipilih"
+
+#: 
+msgid "rows selected"
+msgstr "baris dipilih"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Ulang Tahun & Anniversari"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Perkiraan nilai %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Penawaran minimum %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Orang-orang yang berulang tahun atau merayakan anniversari pernikahan pada bulan tertentu"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Bulan yang ingin Anda tampilkan ulang tahun dan anniversarinya."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Bulan anniversari pernikahan yang ingin Anda tampilkan catatannya."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Total semua pembelian: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Total pembelian: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Anniversari Pernikahan"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Orang-orang yang merayakan anniversari pernikahan pada bulan tertentu"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Terjadi kesalahan. Silakan coba lagi."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Apakah Anda yakin ingin menghapus dana ini?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Tidak dapat dihapus: dana memiliki komitmen persembahan yang terkait"
+
+#: 
+msgid "Delete Fund"
+msgstr "Hapus Dana"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Arah harus 'up' atau 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Edit Dana Persembahan"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Gagal mengurutkan ulang dana persembahan"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Dana berhasil ditambahkan."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Dana berhasil dihapus."
+
+#: 
+msgid "Fund name"
+msgstr "Nama dana"
+
+#: 
+msgid "Fund name is required."
+msgstr "Nama dana wajib diisi."
+
+#: 
+msgid "Fund order updated."
+msgstr "Urutan dana diperbarui."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Dana berhasil disimpan."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Belum ada dana yang ditambahkan. Gunakan formulir di atas untuk menambahkan dana pertama."
+
+#: 
+msgid "Optional description"
+msgstr "Deskripsi opsional"
+
+#: 
+msgid "Private Calendar"
+msgstr "Kalender Pribadi"
+
+#: 
+msgid "Public Calendar"
+msgstr "Kalender Publik"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Lanjutan: Instal versi tertentu"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Secara default, panduan akan memperbarui ke versi terbaru. Anda dapat memilih versi tertentu di bawah ini."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Tidak dapat mengedit pembayaran dalam setoran yang sudah ditutup"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Unduh & Terapkan {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Setiap rilis ChurchCRM menyertakan perbaikan keamanan. Kami sangat menyarankan untuk selalu memperbarui ke versi terbaru."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Gagal mendekode permintaan pembayaran"
+
+#: 
+msgid "Full release notes"
+msgstr "Catatan rilis lengkap"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Data pembayaran tidak valid"
+
+#: 
+msgid "No release notes available."
+msgstr "Tidak ada catatan rilis yang tersedia."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Peringatan: {{chosen}} tidak memiliki perbaikan keamanan yang terdapat di {{latest}}. Lanjutkan hanya jika Anda memiliki alasan tertentu."
+
+#: 
+msgid "What you'll gain"
+msgstr "Apa yang akan Anda dapatkan"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Gagal mendapatkan jumlah setoran"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Hari Jadi: %s"
+
+#: 
+msgid "Church"
+msgstr "Gereja"
+
+#: 
+msgid "Classifications"
+msgstr "Klasifikasi"
+
+#: 
+msgid "Closest"
+msgstr "Terdekat"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Setoran #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Gagal mendapatkan jumlah penggalangan dana"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Gagal memuat tetangga."
+
+#: 
+msgid "Farther"
+msgstr "Lebih jauh"
+
+#: 
+msgid "Farthest"
+msgstr "Paling jauh"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Temukan Tetangga"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Temukan keluarga terdekat dan tambahkan ke keranjang"
+
+#: 
+msgid "Map centered on"
+msgstr "Peta berpusat pada"
+
+#: 
+msgid "Max distance"
+msgstr "Jarak maksimal"
+
+#: 
+msgid "Max neighbors"
+msgstr "Jumlah tetangga maksimal"
+
+#: 
+msgid "Near"
+msgstr "Dekat"
+
+#: 
+msgid "Please select a family."
+msgstr "Silakan pilih keluarga."
+
+#: 
+msgid "Results"
+msgstr "Hasil"
+
+#: 
+msgid "Same location"
+msgstr "Lokasi sama"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Cari Tetangga"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Pilih keluarga dan klik Temukan Tetangga untuk melihat hasilnya."
+
+#: 
+msgid "Selected family"
+msgstr "Keluarga yang dipilih"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Nilai ini harus berupa nama bidang yang valid."
+
+#: 
+msgid "Could not load data"
+msgstr "Tidak dapat memuat data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Harap segarkan halaman atau coba lagi nanti."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Tambahkan catatan yang relevan terlebih dahulu."
+
+#: 
+msgid "All Months"
+msgstr "Semua Bulan"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Belum ada pilihan \"%s\" yang ditentukan."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Tidak ada acara yang ditemukan untuk %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Coba pilih jenis acara, bulan, atau tahun yang berbeda."
 

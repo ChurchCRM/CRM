@@ -87,7 +87,7 @@ class SlimUtils
             ];
             return $container->get('response')->withStatus(500)
                 ->withHeader('Content-Type', 'application/json')
-                ->write(json_encode($data, JSON_THROW_ON_ERROR));
+                ->write(json_encode($data));
         });
 
         // Not found handler: returns HTML 404
@@ -349,9 +349,9 @@ class SlimUtils
                     $nonce = SystemURLs::getCSPNonce();
                     $extraHtml = '<div class="mb-4"><details class="card card-outline border-secondary">'
                         . '<summary class="card-header cursor-pointer d-flex justify-content-between align-items-center">'
-                        . '<span><i class="ti ti-code"></i> ' . gettext('Technical Details') . ' (Development Mode)</span>'
+                        . '<span><i class="fa-solid fa-code"></i> ' . gettext('Technical Details') . ' (Development Mode)</span>'
                         . '<button type="button" class="btn btn-sm btn-outline-secondary copy-error-btn" style="border: none; padding: 0.25rem 0.5rem;" title="' . gettext('Copy error message') . '">'
-                        . '<i class="ti ti-copy"></i></button></summary>'
+                        . '<i class="fa-solid fa-copy"></i></button></summary>'
                         . '<div class="card-body"><pre class="mb-0"><code id="errorMessage">' . $escaped . '</code></pre></div>'
                         . '</details></div>'
                         . '<script nonce="' . $nonce . '">'
@@ -361,7 +361,7 @@ class SlimUtils
                         . 'navigator.clipboard.writeText(errorText).then(() => {'
                         . 'const btn = this;'
                         . 'const originalHTML = btn.innerHTML;'
-                        . 'btn.innerHTML = \'<i class="ti ti-check"></i>\';'
+                        . 'btn.innerHTML = \'<i class="fa-solid fa-check"></i>\';'
                         . 'setTimeout(() => {btn.innerHTML = originalHTML;}, 2000);'
                         . '}).catch(() => { /* clipboard unavailable — no-op */ });'
                         . '});'
@@ -396,7 +396,7 @@ class SlimUtils
      */
     public static function renderJSON(Response $response, array $obj, int $status = 200): Response
     {
-        return self::renderStringJSON($response, json_encode($obj, JSON_THROW_ON_ERROR), $status);
+        return self::renderStringJSON($response, json_encode($obj), $status);
     }
 
     /**

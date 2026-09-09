@@ -45,7 +45,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="mb-4">
               <details class="card card-outline border-secondary">
                 <summary class="card-header cursor-pointer">
-                  <i class="ti ti-code"></i>
+                  <i class="fa-solid fa-code"></i>
                   <?= gettext('Technical Details') ?> (Development Mode)
                 </summary>
                 <div class="card-body">

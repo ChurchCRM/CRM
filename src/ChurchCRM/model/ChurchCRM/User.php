@@ -56,7 +56,44 @@ class User extends BaseUser
     // The naming convention is `isXxxEnabled()` for all permissions,
     // regardless of which storage layer backs the raw flag.
     //
-    // See #8667, #8458 for the consolidation rationale.
+    // ── Two-tier storage architecture ───────────────────────────────
+    //
+    // Permissions are stored in two places:
+    //
+    //   TIER 1 — user_usr boolean columns (fast, indexed, ORM-generated getters):
+    //     usr_Admin, usr_EditSelf, usr_AddRecords, usr_EditRecords,
+    //     usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups,
+    //     usr_Finance, usr_ManageFundraisers, usr_Notes.
+    //     These are the "core" record permissions accessible via isXxx() getters
+    //     (e.g. isAddRecords(), isFinance()) or the corresponding isXxxEnabled()
+    //     helper that applies the admin bypass and the EditSelf-exclusive guard.
+    //
+    //   TIER 2 — userconfig_ucfg rows (per-user config table, name/value pairs):
+    //     bAddEvent    → isAddEventEnabled() / canManageEvents()
+    //     bEmailMailto → isEmailEnabled()
+    //     These are read via isEnabledSecurity('bXxx') which scans the user's
+    //     UserConfig collection. They appear in the UserEditor under the
+    //     Permissions card (AddEvent) or the User Config table (bEmailMailto).
+    //
+    // ── EditSelf-exclusive invariant ────────────────────────────────
+    //
+    // EditSelf is an exclusive mode. When isEditSelfExclusive() is true
+    // (non-admin + EditSelf=1), ALL module permissions — both Tier 1 and
+    // Tier 2 — evaluate to false, regardless of stored flags. This invariant
+    // is enforced at three layers:
+    //   1. DB write-time: UserService::normalizeAccessMode() (server) and
+    //      user-editor.js (client) zero all module perms before saving.
+    //   2. Read-time: every isXxxEnabled() method short-circuits on
+    //      isEditSelfExclusive() before checking the stored flag.
+    //   3. Entry gate: AuthMiddleware and PageInit redirect EditSelf-exclusive
+    //      users to /external/limited-access before any route runs.
+    //
+    // Zero-permission users (all flags 0, EditSelf=0) are NOT blocked at the
+    // entry gate — they retain read-only access under the read-default policy
+    // (#9003). Writes are denied by per-page/per-route role middleware.
+    //
+    // See #8667, #8458 for the consolidation rationale; #9003 for read-default;
+    // #9079 for the EditSelf-exclusive enforcement.
     // ─────────────────────────────────────────────────────────────────
 
     // -- Per-user permissions (backed by user_usr columns) --
@@ -137,15 +174,15 @@ class User extends BaseUser
     }
 
     // -- Module-gated permissions (backed by userconfig_ucfg) --
-    //    These additionally require a system-wide feature flag to be ON
-    //    for non-admin users. Admins bypass the feature flag.
+    //    These require a system-wide feature flag to be ON for all users,
+    //    regardless of role or admin status. The flag gates access; permissions gate specific features.
 
     public function isFinanceEnabled(): bool
     {
         if ($this->isEditSelfExclusive()) {
             return false;
         }
-        return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFinance') && $this->isFinance());
+        return SystemConfig::getBooleanValue('bEnabledFinance') && ($this->isAdmin() || $this->isFinance());
     }
 
     public function isManageFundraisersEnabled(): bool
@@ -153,7 +190,7 @@ class User extends BaseUser
         if ($this->isEditSelfExclusive()) {
             return false;
         }
-        return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFundraiser') && $this->isManageFundraisers());
+        return SystemConfig::getBooleanValue('bEnabledFundraiser') && ($this->isAdmin() || $this->isManageFundraisers());
     }
 
     public function isAddEventEnabled(): bool
@@ -223,33 +260,6 @@ class User extends BaseUser
             'canViewEvents'       => $this->canViewEvents(),
             'canManageEvents'     => $this->canManageEvents(),
         ];
-    }
-
-    /**
-     * Check if the user lacks all functional admin permissions.
-     * Users with no permissions (or only EditSelf) cannot use the admin interface
-     * and should be redirected to a self-service flow or blocked.
-     *
-     * @see https://github.com/ChurchCRM/CRM/issues/8617
-     */
-    public function hasNoAdminPermissions(): bool
-    {
-        if ($this->isAdmin()) {
-            return false;
-        }
-        if ($this->isEditSelf()) {
-            // EditSelf is exclusive — no module permissions apply
-            return true;
-        }
-
-        return !$this->isAddRecords()
-            && !$this->isEditRecords()
-            && !$this->isDeleteRecords()
-            && !$this->isMenuOptions()
-            && !$this->isManageGroups()
-            && !$this->isFinance()
-            && !$this->isManageFundraisers()
-            && !$this->isNotes();
     }
 
     /**
@@ -388,10 +398,14 @@ class User extends BaseUser
 
     /**
      * Update password using secure bcrypt hashing.
+     * Also rotates the API key so that any previously-stolen key is revoked
+     * (GHSA-f2fq-4rmp-9x8c: password reset must invalidate compromised API keys).
+     * Callers are responsible for calling save() to persist both changes.
      */
     public function updatePassword(string $password): void
     {
         $this->setPassword($this->hashPassword($password));
+        $this->setApiKey(self::randomApiKey());
     }
 
     /**
@@ -643,6 +657,30 @@ class User extends BaseUser
         }
 
         return null;
+    }
+
+    /**
+     * Returns the effective theme mode for this user.
+     *
+     * Maps the raw ui.style setting to a canonical value:
+     *   '' (unset) => 'auto'  — users who never chose a theme default to system preference
+     *   'auto'     => 'auto'
+     *   'default'  => 'default' (explicit light)
+     *   'dark'     => 'dark'
+     *
+     * @return string 'auto' | 'default' | 'dark'
+     */
+    public function getThemeMode(): string
+    {
+        $raw = $this->getSettingValue(UserSetting::UI_STYLE);
+        if ($raw === null || $raw === '' || $raw === 'auto') {
+            return 'auto';
+        }
+        if ($raw === 'dark') {
+            return 'dark';
+        }
+
+        return 'default';
     }
 
     public function getStyle(): string

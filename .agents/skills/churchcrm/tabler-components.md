@@ -858,7 +858,7 @@ For modals that contain a form or collect user input before triggering an action
       <form name="actionForm">
         <div class="modal-header">
           <h5 class="modal-title">
-            <i class="ti ti-bug me-2"></i><?= gettext('Report an Issue') ?>
+            <i class="fa-solid fa-bug me-2"></i><?= gettext('Report an Issue') ?>
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"
                   aria-label="<?= gettext('Close') ?>"></button>
@@ -1084,23 +1084,25 @@ Settings saved via `POST /api/user/{userId}/setting/{settingName}` with `{value:
 <i class="ti ti-logout"></i>      <!-- Sign out -->
 <i class="ti ti-key"></i>         <!-- Password -->
 <i class="ti ti-shield"></i>      <!-- Security/2FA -->
-<i class="ti ti-bug"></i>         <!-- Report issue -->
-<i class="ti ti-book"></i>        <!-- Documentation -->
-<i class="ti ti-headset"></i>     <!-- Support -->
+<i class="fa-solid fa-bug"></i>       <!-- Report issue (FA: ti-bug fails post-7.6.0, see #9441) -->
+<i class="fa-solid fa-book"></i>      <!-- Documentation (FA: ti-book fails post-7.6.0, see #9441) -->
+<i class="fa-solid fa-headset"></i>   <!-- Support (FA: ti-headset fails post-7.6.0, see #9441) -->
+<i class="fa-solid fa-file-csv"></i>  <!-- DataTables CSV export (FA: ti-table-export fails post-7.6.0, see #9441) -->
+<i class="fa-solid fa-print"></i>     <!-- DataTables print (FA: ti-printer fails post-7.6.0, see #9441) -->
 <i class="ti ti-confetti"></i>    <!-- New release -->
 <i class="ti ti-users"></i>       <!-- Group/team -->
 ```
 
-### Domain Entities → FontAwesome 7 Duotone
+### Domain Entities → FontAwesome 7 Solid
 
 ```html
-<i class="fa-duotone fa-solid fa-user"></i>           <!-- Person -->
-<i class="fa-duotone fa-solid fa-house-user"></i>     <!-- Family -->
-<i class="fa-duotone fa-solid fa-people-group"></i>   <!-- Group -->
-<i class="fa-duotone fa-solid fa-circle-dollar"></i>  <!-- Finance -->
-<i class="fa-duotone fa-solid fa-calendar-days"></i>  <!-- Event -->
-<i class="fa-duotone fa-solid fa-cart-shopping"></i>   <!-- Cart -->
-<i class="fa-duotone fa-solid fa-clipboard-check"></i> <!-- Check-in -->
+<i class="fa-solid fa-user"></i>                       <!-- Person -->
+<i class="fa-solid fa-house-user"></i>                 <!-- Family -->
+<i class="fa-solid fa-people-group"></i>               <!-- Group -->
+<i class="fa-solid fa-circle-dollar-to-slot"></i>      <!-- Finance -->
+<i class="fa-solid fa-calendar-days"></i>              <!-- Event -->
+<i class="fa-solid fa-cart-shopping"></i>              <!-- Cart -->
+<i class="fa-solid fa-clipboard-check"></i>            <!-- Check-in -->
 ```
 
 ### CSS for Tabler Icons (add to Header-HTML-Scripts.php)
@@ -1119,6 +1121,29 @@ npm install @tabler/icons-webfont
 
 ---
 
+### Navbar/Toolbar Icon Reliability: Use FA Solid for These Specific Glyphs <!-- learned: 2026-08-15 -->
+
+Post-7.6.0 (issue #9441): `ti-bug`, `ti-book`, `ti-headset`, `ti-table-export`, and `ti-printer`
+failed to render (empty squares) for affected users in the top navbar while every surrounding
+FA icon rendered correctly. Root cause is glyph-specific Tabler webfont rendering failure in
+certain upgrade/cache states. PR #9442 incomplete — only fixed `fa-duotone` → `fa-solid`
+for the cart; the ti→fa swaps it described were not landed.
+
+**Rule:** Use `fa-solid` for these five icons in navbar/toolbar contexts — never `ti`:
+
+| Ti icon (avoid) | FA solid replacement |
+|-----------------|---------------------|
+| `ti ti-bug` | `fa-solid fa-bug` |
+| `ti ti-book` | `fa-solid fa-book` |
+| `ti ti-headset` | `fa-solid fa-headset` |
+| `ti ti-table-export` | `fa-solid fa-file-csv` |
+| `ti ti-printer` | `fa-solid fa-print` |
+
+All FA-free v7.3.1 solid glyphs confirmed present. No webpack rebuild needed — both font
+families are already bundled in `churchcrm.min.css`.
+
+---
+
 ## 10. Topbar Navbar — Exact Tabler Pattern <!-- learned: 2026-03-22 -->
 
 Match `docs.tabler.io/ui/layout/navbars` exactly for the topbar:
@@ -1134,7 +1159,7 @@ Match `docs.tabler.io/ui/layout/navbars` exactly for the topbar:
       <!-- Icon dropdowns — all need dropdown-menu-arrow -->
       <div class="nav-item dropdown ms-1">
         <a class="nav-link px-0" data-bs-toggle="dropdown" href="#">
-          <i class="ti ti-headset"></i>
+          <i class="fa-solid fa-headset"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
           ...

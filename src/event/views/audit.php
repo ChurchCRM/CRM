@@ -11,7 +11,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-status-top bg-orange"></div>
     <div class="card-body">
         <p class="mb-2">
-            <i class="ti ti-info-circle me-1 text-info"></i>
+            <i class="fa-solid fa-circle-info me-1 text-info"></i>
             <strong><?= gettext('What does this find?') ?></strong>
         </p>
         <p class="mb-0 text-secondary">
@@ -23,22 +23,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="card">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title m-0">
-            <i class="ti ti-alert-triangle me-1 text-warning"></i>
+            <i class="fa-solid fa-triangle-exclamation me-1 text-warning"></i>
             <?= gettext('Stuck Events') ?>
         </h3>
         <span id="auditCount" class="badge bg-warning-lt text-warning ms-2"><?= gettext('Loading...') ?></span>
         <div class="ms-auto d-flex gap-2">
             <button id="auditRefreshBtn" type="button" class="btn btn-sm btn-outline-secondary">
-                <i class="ti ti-refresh me-1"></i><?= gettext('Refresh') ?>
+                <i class="fa-solid fa-arrows-rotate me-1"></i><?= gettext('Refresh') ?>
             </button>
             <button id="auditCloseAllBtn" type="button" class="btn btn-sm btn-warning d-none">
-                <i class="ti ti-circle-check me-1"></i><?= gettext('Close All Stuck Events') ?>
+                <i class="fa-solid fa-circle-check me-1"></i><?= gettext('Close All Stuck Events') ?>
             </button>
         </div>
     </div>
 
     <div id="auditEmpty" class="card-body text-center text-body-secondary py-5 d-none">
-        <i class="ti ti-mood-happy mb-2 d-block" style="font-size: 3rem;"></i>
+        <i class="fa-solid fa-smile mb-2 d-block" style="font-size: 3rem;"></i>
         <h3 class="text-body-secondary"><?= gettext('All clear!') ?></h3>
         <p class="text-body-secondary mb-0"><?= gettext('No past events are still marked Active.') ?></p>
     </div>
@@ -105,7 +105,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         '<td class="text-center">' + checkedInBadge + '</td>' +
                         '<td class="text-end">' +
                         '<button type="button" class="btn btn-sm btn-warning audit-close-one" data-event-id="' + e.id + '">' +
-                        '<i class="ti ti-circle-check me-1"></i>' + i18next.t('Close') +
+                        '<i class="fa-solid fa-circle-check me-1"></i>' + i18next.t('Close') +
                         '</button></td>' +
                         '</tr>';
                     $tbody.append(row);
@@ -125,8 +125,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             title: i18next.t('Close stuck events?'),
             message: message,
             buttons: {
-                cancel: { label: '<i class="ti ti-x"></i> ' + i18next.t('Cancel') },
-                confirm: { label: '<i class="ti ti-circle-check"></i> ' + i18next.t('Close'), className: 'btn-warning' },
+                cancel: { label: '<i class="fa-solid fa-xmark"></i> ' + i18next.t('Cancel') },
+                confirm: { label: '<i class="fa-solid fa-circle-check"></i> ' + i18next.t('Close'), className: 'btn-warning' },
             },
             callback: function (confirmed) {
                 if (!confirmed) return;

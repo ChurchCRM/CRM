@@ -28,15 +28,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     });
 
     function confirmDeleteField(fieldName, propId, fieldId) {
-        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + window.CRM.escapeHtml(fieldName) + '"?';
-        msg += '<br><br><strong>' + <?= json_encode(gettext('Warning')) ?> + ':</strong> ';
-        msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all group member data assigned for this field!')) ?>;
+        var msg = <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to delete')) ?> + '"' + window.CRM.escapeHtml(fieldName) + '"?';
+        msg += '<br><br><strong>' + <?= InputUtils::jsonEncodeForScript(gettext('Warning')) ?> + ':</strong> ';
+        msg += <?= InputUtils::jsonEncodeForScript(gettext('By deleting this field, you will irrevocably lose all group member data assigned for this field!')) ?>;
         bootbox.confirm({
-            title: <?= json_encode(gettext('Delete Confirmation')) ?>,
+            title: <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
             message: msg,
             buttons: {
-                cancel:  { label: <?= json_encode(gettext('Cancel')) ?>, className: 'btn-secondary' },
-                confirm: { label: <?= json_encode(gettext('Delete')) ?>, className: 'btn-danger' }
+                cancel:  { label: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?>, className: 'btn-secondary' },
+                confirm: { label: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, className: 'btn-danger' }
             },
             callback: function(result) {
                 if (result) {
@@ -58,6 +58,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $(document).on('click', '.js-delete-field', function () {
         var btn = $(this);
         confirmDeleteField(btn.data('field-name'), btn.data('prop-id'), btn.data('field-id'));
+    });
+
+    $(function () {
+        $('[data-bs-toggle="tooltip"]').tooltip();
     });
 </script>
 
@@ -142,7 +146,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <th><?= gettext('Name') ?></th>
                             <th><?= gettext('Description') ?></th>
                             <th><?= gettext('Special option') ?></th>
-                            <th class="text-center"><?= gettext('Show in') ?><br><?= gettext('Person View') ?></th>
+                            <th class="text-center">
+                                <?= gettext('Show in Profile') ?>
+                                <i class="fa-solid fa-circle-question text-body-secondary ms-1"
+                                   data-bs-toggle="tooltip"
+                                   title="<?= htmlspecialchars(gettext('When checked, this property will be displayed alongside the group in the person\'s group list on their profile page.'), ENT_QUOTES, 'UTF-8') ?>"
+                                ></i>
+                            </th>
                             <th class="no-export"><?= gettext('Actions') ?></th>
                         </tr>
                     </thead>
@@ -184,20 +194,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        <i class="ti ti-dots-vertical"></i>
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <button type="button" class="dropdown-item text-danger js-delete-field"
                                             data-field-name="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>"
                                             data-prop-id="<?= $row ?>"
                                             data-field-id="<?= InputUtils::escapeAttribute($aFieldFields[$row]) ?>">
-                                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                            <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                         </button>
                                         <?php if ($row != 1): ?>
-                                            <a href="#" class="dropdown-item js-reorder-field" data-prop-id="<?= $row ?>" data-direction="up"><i class="ti ti-arrow-up me-2"></i><?= gettext('Move up') ?></a>
+                                            <a href="#" class="dropdown-item js-reorder-field" data-prop-id="<?= $row ?>" data-direction="up"><i class="fa-solid fa-arrow-up me-2"></i><?= gettext('Move up') ?></a>
                                         <?php endif; ?>
                                         <?php if ($row < $numRows): ?>
-                                            <a href="#" class="dropdown-item js-reorder-field" data-prop-id="<?= $row ?>" data-direction="down"><i class="ti ti-arrow-down me-2"></i><?= gettext('Move down') ?></a>
+                                            <a href="#" class="dropdown-item js-reorder-field" data-prop-id="<?= $row ?>" data-direction="down"><i class="fa-solid fa-arrow-down me-2"></i><?= gettext('Move down') ?></a>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -208,13 +218,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </table>
             </div>
         </div>
-        <div class="d-flex justify-content-center my-3">
+    <?php endif; ?>
+
+    <div class="d-flex justify-content-center gap-2 my-3">
+        <a href="<?= $sRootPath ?>/groups/view/<?= $iGroupID ?>" class="btn btn-secondary">
+            <i class="fa-solid fa-arrow-left me-1"></i>
+            <?= gettext('Back to Group') ?>
+        </a>
+        <?php if ($numRows !== 0): ?>
             <button type="submit" class="btn btn-primary" name="SaveChanges">
                 <i class="fa-solid fa-floppy-disk"></i>
                 <?= gettext('Save Changes') ?>
             </button>
-        </div>
-    <?php endif; ?>
+        <?php endif; ?>
+    </div>
 </form>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

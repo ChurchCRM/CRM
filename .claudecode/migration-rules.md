@@ -134,7 +134,7 @@ Every migrated page must use this layout structure:
 | Context | Icon System | Syntax |
 |---------|-------------|--------|
 | UI Actions (Edit, Save, Delete, Close, Search, Filter, Toggle) | Tabler Icons | `<i class="ti ti-[name]"></i>` |
-| Domain Entities (Person, Family, Group, Money, Church, Calendar) | FontAwesome 7 Duotone | `<i class="fa-duotone fa-solid fa-[name]"></i>` |
+| Domain Entities (Person, Family, Group, Money, Church, Calendar) | FontAwesome 7 Solid | `<i class="fa-solid fa-[name]"></i>` |
 | Brand/Social | FontAwesome 7 Brands | `<i class="fa-brands fa-[name]"></i>` |
 
 ### Common Mappings
@@ -154,14 +154,14 @@ Every migrated page must use this layout structure:
 | Fullscreen | `fa-expand-arrows-alt` | `ti ti-maximize` |
 | Bars/Menu | `fa-bars` | `ti ti-menu-2` |
 
-| Purpose | Domain Icon (FA7 Duotone) |
+| Purpose | Domain Icon (FA7 Solid) |
 |---------|--------------------------|
-| Person / Member | `fa-duotone fa-solid fa-user` |
-| Family / Household | `fa-duotone fa-solid fa-house-user` |
-| Group / Ministry | `fa-duotone fa-solid fa-people-group` |
-| Finance / Pledge | `fa-duotone fa-solid fa-circle-dollar` |
-| Event / Calendar | `fa-duotone fa-solid fa-calendar-days` |
-| Check-in | `fa-duotone fa-solid fa-clipboard-check` |
+| Person / Member | `fa-solid fa-user` |
+| Family / Household | `fa-solid fa-house-user` |
+| Group / Ministry | `fa-solid fa-people-group` |
+| Finance / Pledge | `fa-solid fa-circle-dollar-to-slot` |
+| Event / Calendar | `fa-solid fa-calendar-days` |
+| Check-in | `fa-solid fa-clipboard-check` |
 
 ---
 
@@ -266,7 +266,7 @@ Include breadcrumbs in the `page-header` when `$sBreadcrumb` is set:
 3. [ ] Replace `data-toggle/dismiss/target` with `data-bs-*` equivalents
 4. [ ] Replace all Bootstrap 4 spacing/flex utilities with BS5 equivalents
 5. [ ] Replace UI action icons with Tabler Icons (`ti-`)
-6. [ ] Verify domain entity icons use FA7 Duotone
+6. [ ] Verify domain entity icons use `fa-solid fa-[name]` (not `fa-duotone` — FA7 Free only)
 7. [ ] Test DataTables.net still initializes (no changes needed, just CSS skin)
 8. [ ] Test jQuery plugins still fire (Select2, InputMask, DatePicker)
 9. [ ] Check responsive behaviour at `< md` (volunteer persona)

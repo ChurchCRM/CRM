@@ -15,6 +15,9 @@
     "node_modules",
     "src/vendor",
     "tests/vendor",
-    "cypress/configs/*"
+    "cypress/configs/*",
+    "cypress/e2e/**",
+    "cypress/fixtures/**",
+    "playwright/**"
   ]
 }

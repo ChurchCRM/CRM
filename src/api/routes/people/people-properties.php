@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordProperty;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
@@ -22,19 +23,21 @@ $app->group('/people/properties', function (RouteCollectorProxy $group): void {
     $familyPropertyAPIMiddleware = new PropertyMiddleware('f');
     $familyAPIMiddleware = new FamilyMiddleware();
     $group->get('/person', 'getAllPersonProperties');
-    $group->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware);
+    $group->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware)->add(EditRecordsRoleAuthMiddleware::class);
     $group->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')
         ->add(new InputSanitizationMiddleware(['value' => 'text']))
         ->add($personAPIMiddleware)
-        ->add($personPropertyAPIMiddleware);
-    $group->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
+        ->add($personPropertyAPIMiddleware)
+        ->add(EditRecordsRoleAuthMiddleware::class);
+    $group->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware)->add(EditRecordsRoleAuthMiddleware::class);
     $group->get('/family', 'getAllFamilyProperties');
-    $group->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware);
+    $group->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware)->add(EditRecordsRoleAuthMiddleware::class);
     $group->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')
         ->add(new InputSanitizationMiddleware(['value' => 'text']))
         ->add($familyAPIMiddleware)
-        ->add($familyPropertyAPIMiddleware);
-    $group->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
+        ->add($familyPropertyAPIMiddleware)
+        ->add(EditRecordsRoleAuthMiddleware::class);
+    $group->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware)->add(EditRecordsRoleAuthMiddleware::class);
 
     $group->delete('/definition/{propertyId}', 'deletePropertyDefinition');
 })->add(MenuOptionsRoleAuthMiddleware::class);
@@ -61,7 +64,7 @@ function getAllPersonProperties(Request $request, Response $response, array $arg
 /**
  * @OA\Post(
  *     path="/people/properties/person/{personId}/{propertyId}",
- *     summary="Add or update a property on a person (MenuOptions role required)",
+ *     summary="Add or update a property on a person (EditRecords role required)",
  *     tags={"Properties"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
@@ -70,7 +73,7 @@ function getAllPersonProperties(Request $request, Response $response, array $arg
  *         @OA\JsonContent(@OA\Property(property="value", type="string", description="Property value (required only when property has a prompt)"))
  *     ),
  *     @OA\Response(response=200, description="Property assigned successfully"),
- *     @OA\Response(response=403, description="MenuOptions role required")
+ *     @OA\Response(response=403, description="EditRecords role required")
  * )
  */
 function addPropertyToPerson(Request $request, Response $response, array $args): Response
@@ -83,14 +86,14 @@ function addPropertyToPerson(Request $request, Response $response, array $args):
 /**
  * @OA\Delete(
  *     path="/people/properties/person/{personId}/{propertyId}",
- *     summary="Remove a property from a person (MenuOptions role required)",
+ *     summary="Remove a property from a person (EditRecords role required)",
  *     tags={"Properties"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="propertyId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=200, description="Property removed successfully"),
  *     @OA\Response(response=404, description="Record not found"),
- *     @OA\Response(response=403, description="MenuOptions role required")
+ *     @OA\Response(response=403, description="EditRecords role required")
  * )
  */
 function removePropertyFromPerson(Request $request, Response $response, array $args): Response
@@ -135,7 +138,7 @@ function getAllFamilyProperties(Request $request, Response $response, array $arg
  *             @OA\Property(property="allowDelete", type="boolean")
  *         ))
  *     ),
- *     @OA\Response(response=403, description="MenuOptions role required")
+ *     @OA\Response(response=403, description="EditRecords role required")
  * )
  */
 function getPersonProperties(Request $request, Response $response, array $args): Response
@@ -161,7 +164,7 @@ function getPersonProperties(Request $request, Response $response, array $args):
  *             @OA\Property(property="allowDelete", type="boolean")
  *         ))
  *     ),
- *     @OA\Response(response=403, description="MenuOptions role required")
+ *     @OA\Response(response=403, description="EditRecords role required")
  * )
  */
 function getFamilyProperties(Request $request, Response $response, array $args): Response
@@ -203,7 +206,7 @@ function getProperties(Response $response, string $type, int $id): Response
 /**
  * @OA\Post(
  *     path="/people/properties/family/{familyId}/{propertyId}",
- *     summary="Add or update a property on a family (MenuOptions role required)",
+ *     summary="Add or update a property on a family (EditRecords role required)",
  *     tags={"Properties"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
@@ -212,7 +215,7 @@ function getProperties(Response $response, string $type, int $id): Response
  *         @OA\JsonContent(@OA\Property(property="value", type="string", description="Property value (required only when property has a prompt)"))
  *     ),
  *     @OA\Response(response=200, description="Property assigned successfully"),
- *     @OA\Response(response=403, description="MenuOptions role required")
+ *     @OA\Response(response=403, description="EditRecords role required")
  * )
  */
 function addPropertyToFamily(Request $request, Response $response, array $args): Response
@@ -225,14 +228,14 @@ function addPropertyToFamily(Request $request, Response $response, array $args):
 /**
  * @OA\Delete(
  *     path="/people/properties/family/{familyId}/{propertyId}",
- *     summary="Remove a property from a family (MenuOptions role required)",
+ *     summary="Remove a property from a family (EditRecords role required)",
  *     tags={"Properties"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="propertyId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=200, description="Property removed successfully"),
  *     @OA\Response(response=404, description="Record not found"),
- *     @OA\Response(response=403, description="MenuOptions role required")
+ *     @OA\Response(response=403, description="EditRecords role required")
  * )
  */
 function removePropertyFromFamily(Request $request, Response $response, array $args): Response

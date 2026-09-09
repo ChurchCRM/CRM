@@ -5,11 +5,18 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\model\ChurchCRM\PredefinedReportsQuery;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Query Listing');
 $sPageSubtitle = gettext('View and run saved database queries');
+
+// GHSA-6rgg-mrx3-92w7: QueryList/QueryView are deprecated. Gate behind admin.
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::securityRedirect('Admin');
+    exit;
+}
 
 $queries = PredefinedReportsQuery::create()->orderByQryName()->find();
 

@@ -49,7 +49,8 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         cy.intercept("POST", "**/api/payments/pledges").as("submitPayment");
 
         // Create a new deposit
-        cy.visit("FindDepositSlip.php");
+        cy.visit("/finance/deposit/search");
+        cy.get("[data-bs-target='#newDepositModal']").click();
         cy.contains("Add New Deposit");
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
@@ -94,7 +95,8 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         cy.intercept("POST", "**/api/payments/pledges").as("submitCheckPayment");
 
         // Create a new deposit
-        cy.visit("FindDepositSlip.php");
+        cy.visit("/finance/deposit/search");
+        cy.get("[data-bs-target='#newDepositModal']").click();
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
         cy.location("pathname").should("include", "DepositSlipEditor.php");
@@ -140,7 +142,8 @@ describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
         cy.intercept("POST", "**/api/payments/pledges").as("submitSplitPayment");
 
         // Create a new deposit
-        cy.visit("FindDepositSlip.php");
+        cy.visit("/finance/deposit/search");
+        cy.get("[data-bs-target='#newDepositModal']").click();
         cy.get("#depositComment").type(depositComment);
         cy.get("#addNewDeposit").click();
         cy.location("pathname").should("include", "DepositSlipEditor.php");

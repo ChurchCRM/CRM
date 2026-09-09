@@ -5,6 +5,7 @@ namespace ChurchCRM\dto;
 use ChurchCRM\Emails\notifications\NotificationEmail;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Utils\LoggerUtils;
 
 class Notification
 {
@@ -102,8 +103,14 @@ class Notification
             $sendEmail = false;
             try {
                 $sendEmail = $this->sendEmail();
-            } catch (\Throwable) {
-                // do nothing
+            } catch (\Throwable $t) {
+                LoggerUtils::getAppLogger()->error('Notification send failed: Email', [
+                    'personId' => $this->person?->getId(),
+                    'personName' => $this->person?->getFullName(),
+                    'eventName' => $this->eventName,
+                    'recipientCount' => count($this->recipients),
+                    'error' => $t->getMessage(),
+                ]);
             }
             $methods[] = 'email: ' . $sendEmail;
         }
@@ -114,8 +121,14 @@ class Notification
             $sendSms = false;
             try {
                 $sendSms = $this->sendSMS();
-            } catch (\Throwable) {
-                // do nothing
+            } catch (\Throwable $t) {
+                LoggerUtils::getAppLogger()->error('Notification send failed: SMS', [
+                    'personId' => $this->person?->getId(),
+                    'personName' => $this->person?->getFullName(),
+                    'eventName' => $this->eventName,
+                    'recipientCount' => count($this->recipients),
+                    'error' => $t->getMessage(),
+                ]);
             }
             $methods[] = 'sms: ' . $sendSms;
         }
@@ -126,8 +139,14 @@ class Notification
             $sendOpenLp = false;
             try {
                 $sendOpenLp = (bool) $this->sendProjector();
-            } catch (\Throwable) {
-                // do nothing
+            } catch (\Throwable $t) {
+                LoggerUtils::getAppLogger()->error('Notification send failed: Projector/OpenLP', [
+                    'personId' => $this->person?->getId(),
+                    'personName' => $this->person?->getFullName(),
+                    'eventName' => $this->eventName,
+                    'projectorText' => $this->projectorText,
+                    'error' => $t->getMessage(),
+                ]);
             }
             $methods[] = 'projector: ' . $sendOpenLp;
         }

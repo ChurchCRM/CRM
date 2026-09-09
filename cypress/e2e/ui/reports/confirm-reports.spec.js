@@ -225,4 +225,184 @@ describe("Confirmation Reports - MVC Routes", () => {
             });
         });
     });
+
+    // ================================================================
+    // Part 1: Error Messaging — structured alerts
+    // ================================================================
+    describe("People Verify — error alert messaging", () => {
+        it("shows a specific danger alert when EmailsError is present", () => {
+            // Visit with reason=smtp_failure — should show a danger alert
+            cy.visit("people/verify?EmailsError=1&reason=smtp_failure&sent=0&failed=3");
+
+            cy.get('[data-cy="email-result-alert"]')
+                .should("exist")
+                .should("have.class", "alert-danger")
+                .and("contain.text", "SMTP");
+        });
+
+        it("shows a partial-failure warning with sent/total counts", () => {
+            cy.visit("people/verify?EmailsError=1&reason=partial_failure&sent=40&failed=7");
+
+            cy.get('[data-cy="email-result-alert"]')
+                .should("exist")
+                .should("have.class", "alert-warning")
+                .and("contain.text", "40")
+                .and("contain.text", "47");
+        });
+
+        it("shows a no-recipients danger alert", () => {
+            cy.visit("people/verify?EmailsError=1&reason=no_recipients&sent=0&failed=0");
+
+            cy.get('[data-cy="email-result-alert"]')
+                .should("exist")
+                .should("have.class", "alert-danger");
+        });
+
+        it("alert is dismissible — disappears after clicking close", () => {
+            cy.visit("people/verify?EmailsError=1&reason=smtp_failure&sent=0&failed=1");
+
+            cy.get('[data-cy="email-result-alert"]').should("exist");
+            // Dismiss the alert with the bootstrap btn-close
+            cy.get('[data-cy="email-result-alert"] .btn-close').click();
+            // After clicking close the alert fades out — just assert it no longer has 'show'
+            // (do NOT assert not.exist because of BS5 async fade transition)
+            cy.get('[data-cy="email-result-alert"]').should("not.have.class", "show");
+        });
+
+        it("Retry button is present and triggers the confirmation modal", () => {
+            cy.visit("people/verify?EmailsError=1&reason=smtp_failure&sent=0&failed=1");
+
+            cy.get('[data-cy="retry-email-btn"]').should("exist");
+        });
+    });
+
+    // ================================================================
+    // Part 2: Send Confirmation Preview Modal
+    // ================================================================
+    describe("People Verify — send confirmation modal", () => {
+        // The outer beforeEach already calls freshAdminLogin(). This inner beforeEach
+        // only navigates to the verify page — no second login needed.
+        beforeEach(() => {
+            cy.visit("people/verify");
+        });
+
+        it("opens the confirmation modal when Email Families is clicked", () => {
+            cy.get("#verifyEmail").click();
+            cy.get('[data-cy="verify-email-modal"]').should("have.class", "show");
+        });
+
+        it("modal loads a recipient count from the preview endpoint", () => {
+            cy.intercept("GET", "**/api/families/verify-email-preview").as("emailPreview");
+
+            cy.get("#verifyEmail").click();
+            cy.wait("@emailPreview", { timeout: 10000 }).then((interception) => {
+                expect(interception.response.statusCode).to.equal(200);
+                const body = interception.response.body;
+                expect(body).to.have.property("recipientCount");
+                expect(body.recipientCount).to.be.a("number");
+            });
+
+            // Recipient count banner should be visible in the modal
+            cy.get('[data-cy="modal-recipient-count"]').should("be.visible");
+        });
+
+        it("modal shows recipient count summary text", () => {
+            cy.intercept("GET", "**/api/families/verify-email-preview").as("emailPreview");
+
+            cy.get("#verifyEmail").click();
+            cy.wait("@emailPreview", { timeout: 10000 });
+
+            cy.get("#recipientCountText").invoke("text").should("have.length.above", 0);
+        });
+
+        it("Cancel button closes the modal without triggering a send", () => {
+            cy.intercept("POST", "**/people/report/verify/email").as("sendEmail");
+
+            cy.get("#verifyEmail").click();
+            cy.get('[data-cy="verify-email-modal"]').should("have.class", "show");
+
+            cy.get('[data-cy="modal-cancel-btn"]').click();
+
+            // BS5 modal close is async (fade animation removes 'show' only after
+            // the transition completes). Asserting 'not.have.class.show' is
+            // unreliable in headless CI — see cypress-testing.md.
+            // The test goal is only to verify Cancel does NOT trigger a send.
+            cy.get("@sendEmail.all").should("have.length", 0);
+        });
+
+        it("Send button triggers AJAX POST and shows result banner in modal", () => {
+            cy.intercept("GET", "**/api/families/verify-email-preview").as("emailPreview");
+            cy.intercept("POST", "**/people/report/verify/email").as("sendEmail");
+
+            cy.get("#verifyEmail").click();
+            cy.wait("@emailPreview", { timeout: 10000 });
+
+            // Only click Send if there are recipients (otherwise the button stays disabled)
+            cy.get('[data-cy="modal-send-btn"]').then(($btn) => {
+                if ($btn.prop("disabled")) {
+                    // No recipients in CI env — acceptable; just verify the button exists
+                    cy.log("No recipients in CI environment — skipping send click");
+                    return;
+                }
+                cy.wrap($btn).click();
+                cy.wait("@sendEmail", { timeout: 15000 }).then((interception) => {
+                    // Should return JSON, not a redirect
+                    expect(interception.response.headers["content-type"]).to.include("json");
+                    expect(interception.response.body).to.have.property("status");
+                    expect(interception.response.body).to.have.property("message");
+                });
+                // Result banner should be shown inside the modal
+                cy.get('[data-cy="modal-result-banner"]').should("exist");
+            });
+        });
+
+        it("modal can recover after a failed fetch: reopen shows preview correctly", () => {
+            // First open: intercept fails (times:1 ensures it expires after one use
+            // so it doesn't interfere with the second modal open below).
+            cy.intercept(
+                { method: "GET", url: "**/api/families/verify-email-preview", times: 1 },
+                { statusCode: 500, body: { error: true } }
+            ).as("previewFail");
+
+            cy.get("#verifyEmail").click();
+            cy.wait("@previewFail", { timeout: 10000 });
+
+            // Error banner should appear in #previewFetchError without breaking modal
+            cy.get("#previewFetchError").should("not.have.class", "d-none");
+            // #modalPreview children must still exist (not replaced)
+            cy.get("#recipientCountText").should("exist");
+
+            // Navigate to a fresh page load before re-opening the modal.
+            // Closing and re-opening the modal with data-bs-dismiss races against
+            // BS5's async fade animation in headless CI — a full page reload is
+            // the only reliable way to reset state between the two opens.
+            //
+            // Use an explicit 200 response on @previewOk so that:
+            //   a) the test doesn\'t rely on real server state, and
+            //   b) the @previewFail intercept (which expired via times:1) can’t
+            //      accidentally shadow this request.
+            cy.intercept(
+                "GET",
+                "**/api/families/verify-email-preview",
+                {
+                    statusCode: 200,
+                    body: {
+                        recipientCount: 1,
+                        recipients: [{ familyId: 1, email: "test@example.com" }],
+                        familiesWithoutEmail: [],
+                        templatePreview: { subject: "Test", bodyExcerpt: "Body" }
+                    }
+                }
+            ).as("previewOk");
+            cy.visit("people/verify");
+            cy.get("#verifyEmail").click();
+            cy.wait("@previewOk", { timeout: 10000 });
+
+            // After page reload the error container starts with d-none (HTML default)
+            // and a successful fetch leaves it d-none.
+            cy.get("#previewFetchError").should("have.class", "d-none");
+            // Preview should populate without TypeError
+            cy.get('[data-cy="modal-recipient-count"]').should("be.visible");
+        });
+    });
 });

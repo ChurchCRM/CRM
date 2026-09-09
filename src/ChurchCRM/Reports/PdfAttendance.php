@@ -3,6 +3,7 @@
 namespace ChurchCRM\Reports;
 
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\ImageSupportUtils;
 
 class PdfAttendance extends ChurchInfoReport
 {
@@ -145,12 +146,13 @@ class PdfAttendance extends ChurchInfoReport
                         $nw = $width * $factor;
                         $nh = $yIncrement;
 
-                        // Detect image type from file extension (now supports PNG)
-                        $imageType = strtoupper(pathinfo($imgList[$row], PATHINFO_EXTENSION));
-                        if (!in_array($imageType, ['JPG', 'JPEG', 'PNG'])) {
-                            $imageType = 'PNG'; // Default to PNG
-                        }
-                        
+                        // Detect image type from file extension; FPDF only supports JPG and PNG
+                        // (GIF and WebP are downgraded to PNG by ImageSupportUtils)
+                        $ext = pathinfo($imgList[$row], PATHINFO_EXTENSION);
+                        $imageType = ImageSupportUtils::getFpdfTypeForMimeType(
+                            ImageSupportUtils::getMimeTypeForExtension($ext) ?? 'image/png'
+                        );
+
                         $this->Image($imgList[$row], $nameX - $nw, $y, $nw, $nh, $imageType);
                     }
                 }

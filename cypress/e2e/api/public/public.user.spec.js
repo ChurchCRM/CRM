@@ -110,6 +110,72 @@ describe("API Public User", () => {
                 expect(resp.body.error).to.eq("Invalid login or password");
             });
         });
+
+        // Regression test for GHSA-f2fq-4rmp-9x8c: repeated wrong OTP codes
+        // must count toward usr_FailedLogins and eventually lock the account.
+        // Uses dedicated `twofa_lockout_user` (password "changeme", 2FA enrolled)
+        // so the shared `twofa_user` fixture is not corrupted for other tests.
+        describe("2FA OTP brute-force lockout (GHSA-f2fq-4rmp-9x8c)", () => {
+            const LOCKOUT_USER = "twofa_lockout_user";
+            const LOCKOUT_PASS = "changeme";
+            const MAX_FAILURES = 5; // must match iMaxFailedLogins in SystemConfig
+
+            before(() => {
+                // Reset twofa_lockout_user's FailedLogins to 0 so re-runs against
+                // the same DB don't silently pass via the top-level isLocked() gate
+                // instead of exercising the OTP-failure counter code path.
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    "/admin/api/user/903/login/reset",
+                    null,
+                    200,
+                );
+                // Guard: assert the server's iMaxFailedLogins matches MAX_FAILURES.
+                // If this assertion fails, the loop below may trigger lockout at the
+                // password gate before exhausting OTP failures, silently testing the
+                // wrong code path.
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    "/admin/api/system/config/iMaxFailedLogins",
+                    null,
+                    200,
+                ).then((resp) => {
+                    expect(
+                        Number(resp.body.value),
+                        "iMaxFailedLogins must equal MAX_FAILURES so the OTP-lockout code path is exercised",
+                    ).to.eq(MAX_FAILURES);
+                });
+            });
+
+            it("Account is locked after iMaxFailedLogins wrong OTP submissions", () => {
+                // Submit MAX_FAILURES wrong OTP codes — each should increment usr_FailedLogins
+                for (let i = 0; i < MAX_FAILURES; i++) {
+                    cy.apiRequest({
+                        method: "POST",
+                        url: "/api/public/user/login",
+                        headers: { "content-type": "application/json" },
+                        body: { userName: LOCKOUT_USER, password: LOCKOUT_PASS, otp: String(i).padStart(6, "0") },
+                        failOnStatusCode: false,
+                    }).then((resp) => {
+                        expect(resp.status).to.eq(401);
+                    });
+                }
+
+                // After MAX_FAILURES wrong OTPs the account should be locked.
+                // A fresh login with the correct password (which would normally return 202
+                // requiresOTP) must now return 401 because isLocked() fires first.
+                cy.apiRequest({
+                    method: "POST",
+                    url: "/api/public/user/login",
+                    headers: { "content-type": "application/json" },
+                    body: { userName: LOCKOUT_USER, password: LOCKOUT_PASS },
+                    failOnStatusCode: false,
+                }).then((resp) => {
+                    expect(resp.status).to.eq(401);
+                    expect(resp.body.error).to.eq("Invalid login or password");
+                });
+            });
+        });
     });
 
     // Lockout tests

@@ -1378,7 +1378,7 @@ updateCalendarsEmptyHint(); // initial sync
 Hint markup:
 ```html
 <div class="form-text text-warning d-none" id="calendarsEmptyHint">
-  <i class="ti ti-info-circle me-1"></i>No calendar selected — this event will be saved but won't appear on any calendar view.
+  <i class="fa-solid fa-circle-info me-1"></i>No calendar selected — this event will be saved but won't appear on any calendar view.
 </div>
 ```
 

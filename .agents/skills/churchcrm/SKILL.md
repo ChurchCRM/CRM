@@ -40,12 +40,12 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 
 | Skill | When to Use |
 |-------|------------|
+| [Icon Management](./icon-management.md) | **Font Awesome only** — icon patterns, free tier compliance (no paid variants), Tabler→FA migration reference, common substitutions, accessibility |
 | [Table Action Menu](./table-action-menu.md) | **Required for every table with row-level actions** — dropdown pattern, overflow fix, cart buttons, checklist |
 | [Frontend Development](./frontend-development.md) | **Settings Panel (gold-standard pattern), UI changes, Bootstrap 5, i18n, notifications, confirmations, modals, asset management** |
 | [Timezone Handling](./timezone-handling.md) | **Required for any datetime-aware change** — wall-clock-in-sTimeZone storage, FullCalendar marker quirks, Propel space format Chrome misparse, kiosk timing, cross-tz banner. Read before touching event-form.js, event-calendars.js, calendar-event-editor.js, kiosk-jsom.ts, KioskDevice::heartbeat(), or events.php API |
 | [Responsive Design Guidelines](./responsive-design-guidelines.md) | **Canonical mobile / tablet / laptop form factors, breakpoints, grid patterns, touch targets — read before any page layout or responsive bug fix** |
-| [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts, icons |
-| [Bootstrap 5 Migration](./bootstrap-5-migration.md) | Complete BS4→BS5 migration reference: data attributes, class renames, JS API, components |
+| [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts |
 | [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, vanilla JS/TS modules, asset management |
 | [i18n & Localization](./i18n-localization.md) | Adding UI text, translations |
 | [AI Locale Translation](./locale-ai-translation.md) | Translating missing terms via Claude AI before a release |
@@ -56,10 +56,9 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 
 | Skill | When to Use |
 |-------|------------|
-| [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts, icons — the new UI reference |
+| [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts — the new UI reference |
 | [Library Replacement Guide](./tabler-library-replacement.md) | Which 3rd-party libs to swap (Select2→Tom Select, etc.), npm/webpack/Grunt changes |
 | [Migration Playbook](./tabler-migration-playbook.md) | Per-page migration steps, full codebase audit inventory, phased execution plan |
-| [Bootstrap 5 Migration](./bootstrap-5-migration.md) | Data attribute renames, CSS class mapping, JS API changes (shared with Frontend section) |
 | [Error Reporting & Issue Filing](./error-reporting.md) | Shared Tabler-styled error pages (4xx/5xx), consistent UX, wiring to Issue Reporter modal, and E2E testing patterns |
 
 **Agent-only skill file**: `.claudecode/migration-rules.md` — strict rules for the Tabler shell, personas, iconography, and legacy bridge.
@@ -93,6 +92,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Testing](./testing.md) | Writing tests, debugging, test suites |
 | [Cypress Testing](./cypress-testing.md) | E2E tests, CI/CD testing, API test patterns |
 | [Testing Migration & E2E](./testing-migration-e2e.md) | Testing strategy for migrations |
+| [Marketing Visual-Media Pipeline](./marketing-visuals-pipeline.md) | Playwright-based screenshot/video capture for marketing (`playwright/`) — separate from Cypress E2E |
 
 ### Running Cypress Locally
 
@@ -186,7 +186,7 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 | [PR Description Guidelines](../pr-description-guidelines.md) | Ensure PR bodies are written in Markdown with required sections (Summary, Changes, Files Changed, Validation, Testing) |
 | [Development Workflows](./development-workflows.md) | Setup, build, Docker management |
 | [Code Standards](./code-standards.md) | General coding, quality checks, PR reviews |
-| [Wiki Documentation](./wiki-documentation.md) | Complex documentation, admin guides |
+| [Documentation Architecture & Wiki](./wiki-documentation.md) | Which doc home to use (end user / 3rd-party dev / core dev), MDX gotchas, wiki article structure |
 | [Release Notes](./release-notes.md) | Authoring GitHub release notes for any version type |
 | [Social Media Release](./social-media-release.md) | Generating platform posts for X, Facebook, Instagram, LinkedIn |
 
