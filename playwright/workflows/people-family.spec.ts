@@ -6,25 +6,37 @@ import { humanClick, humanPause, humanSelect, humanType } from '../support/human
 test.describe('People & Families', () => {
   test('people-family-overview', async ({ page }, testInfo) => {
     // A church user browsing People & Families: open the family list, then
-    // drill into one family's profile. Demo data includes inactive families
-    // too (shown with an "Inactive" badge right in the row) — skip those,
-    // since that's not a good look for a marketing screenshot.
+    // drill into one family's profile. Deliberately the Scott family (see
+    // src/admin/demo/people.json), not just the first active row — every
+    // one of its 6 members has a real demo photo file, and its Raytown, MO
+    // address has real lat/lng, so the profile shows a full set of member
+    // photos and a properly geocoded map instead of placeholder avatars or
+    // an empty/default map view.
     await page.goto('/people/family');
 
     const rows = page.locator('#families tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
     await humanPause(page, 500);
 
-    const activeRow = rows.filter({ hasNotText: 'Inactive' }).first();
-    await expect(activeRow).toBeVisible({ timeout: 15000 });
-    await humanClick(activeRow.locator('td').first().locator('a').first());
+    // DataTables paginates (src/people/views/family-list.php) — with 62
+    // demo families, "Scott" isn't on the default first page, so search
+    // for it instead of filtering whatever rows happen to be rendered.
+    await humanType(page.locator('#families_filter input'), 'Scott');
+    await humanPause(page, 500);
+    const scottRow = rows.filter({ hasText: 'Scott' }).first();
+    await expect(scottRow).toBeVisible({ timeout: 15000 });
+    await humanClick(scottRow.locator('td').first().locator('a').first());
     await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
     await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
-    await humanPause(page, 500);
+    // Let the map tiles and member photo thumbnails finish loading —
+    // captureScreen's own networkidle wait covers in-flight XHRs, but
+    // Leaflet's tile images and photo <img> tags aren't always caught by
+    // that if they're still queued.
+    await humanPause(page, 1000);
 
     await captureScreen(page, testInfo, {
       name: 'people-family-overview',
-      purpose: 'Show how ChurchCRM organizes people and families',
+      purpose: 'Show how ChurchCRM organizes people and families, with member photos and a geocoded map',
     });
   });
 
@@ -60,6 +72,41 @@ test.describe('People & Families', () => {
     await captureScreen(page, testInfo, {
       name: 'people-family-new-family',
       purpose: 'Show creating a new family and its resulting profile page',
+    });
+  });
+
+  test('people-map-overview', async ({ page }, testInfo) => {
+    // A church user viewing the family map: pins are plotted from each
+    // family's geocoded address (see src/admin/demo/people.json), so this
+    // relies on the same demo data that gives people-family-overview a
+    // real, non-empty map — no address selection needed here, the page
+    // just needs enough seeded families with valid lat/lng to render a
+    // full map instead of a single dot or an empty view.
+    await page.goto('/people/map');
+    await expect(page.locator('#map')).toBeVisible({ timeout: 15000 });
+    // Leaflet loads tiles and pins asynchronously after the container
+    // itself is visible — give them time to paint before capturing.
+    await humanPause(page, 1500);
+
+    await captureScreen(page, testInfo, {
+      name: 'people-map-overview',
+      purpose: 'Show the family map with geocoded pins across the congregation',
+    });
+  });
+
+  test('people-photo-gallery', async ({ page }, testInfo) => {
+    // A church user browsing the photo directory: a grid of member photos
+    // (route: src/people/routes/people.php's /photos, function
+    // viewPeoplePhotoGallery). Defaults to "photos only" already
+    // (showOnlyWithPhotos defaults true), so no extra filtering needed to
+    // avoid a grid full of placeholder avatars.
+    await page.goto('/people/photos');
+    await expect(page.locator('#photo-grid')).toBeVisible({ timeout: 15000 });
+    await humanPause(page, 800);
+
+    await captureScreen(page, testInfo, {
+      name: 'people-photo-gallery',
+      purpose: 'Show the photo directory — a grid of congregation member photos',
     });
   });
 

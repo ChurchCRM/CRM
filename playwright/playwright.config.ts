@@ -106,6 +106,22 @@ export default defineConfig({
       },
     },
     {
+      // Additional recorded workflows beyond the core bootstrap videos
+      // (setup wizard, demo import) — e.g. the public self-registration
+      // flow. Same high-quality video treatment as 'setup', kept as its
+      // own project instead of appended to bootstrap.setup.ts so that
+      // file stays scoped to system bootstrap only.
+      name: 'videos',
+      testMatch: /videos\/.*\.video\.ts/,
+      dependencies: ['setup'],
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: browserChannel,
+        viewport: { width: 1440, height: 900 },
+        video: { mode: 'on', size: { width: 1440, height: 900 } },
+      },
+    },
+    {
       // Screenshot tests run once per test, capturing all viewports (desktop/tablet/mobile)
       // in a single page load. Tests manually resize viewport between captures.
       // This is 3x faster than running separate desktop/tablet/mobile projects.

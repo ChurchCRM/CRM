@@ -51,6 +51,11 @@ const VIEWPORTS: ViewportConfig[] = [
   { device: 'mobile', width: 430, height: 932 },
 ];
 
+// Playwright project names (see playwright.config.ts) that record video at
+// a single fixed viewport instead of the desktop/tablet/mobile screenshot
+// sweep — used as both the capture-mode switch and the artifact device dir.
+const VIDEO_ONLY_PROJECTS = new Set(['setup', 'videos']);
+
 export async function captureScreen(page: Page, testInfo: TestInfo, opts: CaptureOptions): Promise<void> {
   if (testInfo.title !== opts.name) {
     throw new Error(
@@ -59,8 +64,10 @@ export async function captureScreen(page: Page, testInfo: TestInfo, opts: Captur
     );
   }
 
-  // For setup tests, capture once at the configured viewport
-  if (testInfo.project.name === 'setup') {
+  // Video-only projects (the bootstrap 'setup' recordings, plus any other
+  // standalone recorded workflow like the self-registration video) capture
+  // once at their configured viewport — no viewport-resize loop, no PNG.
+  if (VIDEO_ONLY_PROJECTS.has(testInfo.project.name)) {
     await captureAtViewport(page, testInfo, opts, testInfo.project.name);
     return;
   }
@@ -94,7 +101,7 @@ async function captureAtViewport(
   await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => undefined);
 
   let screenshotPath: string | null = null;
-  if (device !== 'setup') {
+  if (!VIDEO_ONLY_PROJECTS.has(device)) {
     const screenshotDir = path.join(ARTIFACTS_ROOT, 'screenshots', device);
     fs.mkdirSync(screenshotDir, { recursive: true });
     screenshotPath = path.join(screenshotDir, `${opts.name}.png`);
