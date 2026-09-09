@@ -118,10 +118,8 @@ jobs:
       - name: Create Pull Request
         id: pr
         uses: actions/github-script@v9
-        env:
-          MARKETING_TOKEN: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
         with:
-          github-token: ${{ env.MARKETING_TOKEN }}
+          github-token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
             const path = require('path');
@@ -197,10 +195,8 @@ Generated from ChurchCRM/CRM run [${{ github.run_id }}](https://github.com/${{ g
       - name: Comment on PR
         if: steps.pr.outputs.pr_created == 'true'
         uses: actions/github-script@v9
-        env:
-          MARKETING_TOKEN: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
         with:
-          github-token: ${{ env.MARKETING_TOKEN }}
+          github-token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
           script: |
             const marketingRepo = '${{ github.event.inputs.marketing_repo || "ChurchCRM/marketing" }}';
             const [owner, repo] = marketingRepo.split('/');
