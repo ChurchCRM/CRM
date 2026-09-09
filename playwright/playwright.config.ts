@@ -60,14 +60,50 @@ export default defineConfig({
     // ChurchCRM/ChurchCRM.io#100 viewport-framing fix lives.
     screenshot: { mode: 'only-on-failure', fullPage: false },
   },
+  // Add visual cursor indicator for videos (injected on every page load)
+  async addInitScript() {
+    // Create a visual cursor indicator circle
+    const cursor = document.createElement('div');
+    cursor.id = '__playwright_cursor__';
+    cursor.style.cssText = `
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ff0000;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999999;
+      display: none;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    `;
+    document.documentElement.appendChild(cursor);
+
+    // Track mouse position and update cursor indicator
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.display = 'block';
+      cursor.style.left = (e.clientX - 10) + 'px';
+      cursor.style.top = (e.clientY - 10) + 'px';
+    });
+
+    // Hide cursor indicator when mouse leaves the window
+    document.addEventListener('mouseleave', () => {
+      cursor.style.display = 'none';
+    });
+  },
   projects: [
     {
       // Setup wizard, church info, and demo data import — real recorded
       // tests (not Playwright's globalSetup, which is never video-recorded),
       // run once, before every other project. See setup/bootstrap.setup.ts.
+      // Video cursor is enhanced via high-quality recording.
       name: 'setup',
       testMatch: /setup\/.*\.setup\.ts/,
-      use: { ...devices['Desktop Chrome'], channel: browserChannel, viewport: { width: 1440, height: 900 }, video: 'on' },
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: browserChannel,
+        viewport: { width: 1440, height: 900 },
+        video: { mode: 'on', size: { width: 1440, height: 900 } },
+      },
     },
     {
       // Screenshot tests run once per test, capturing all viewports (desktop/tablet/mobile)
