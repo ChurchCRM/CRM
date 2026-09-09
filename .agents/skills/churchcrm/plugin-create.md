@@ -409,6 +409,10 @@ directory, so the delete step is required.
 
 ## 10. Keeping a plugin approved
 
+### Shipping persistent schema and models <!-- learned: 2026-09-08 -->
+
+Follow [community database migrations](../../../docs/plugins/database-migrations.md) when a plugin owns tables. Declare a plugin-local migration manifest and `db.migrate` in both plugin.json and the approved registry, with high risk/two reviews. Generate Perpl models during the plugin build and distribute them; installation never generates models. Append immutable SQL migrations, test upgrade and uninstall/reinstall retention, and pin the reviewed feature commit as a development dependency until an upstream release actually contains this API; then declare that minimumCRMVersion. Runtime database access still uses Propel.
+
 - **Every version bump is re-reviewed from scratch.** An older
   version's review does not carry forward.
 - **Update the `sha256` in your PR** every release — it is the only

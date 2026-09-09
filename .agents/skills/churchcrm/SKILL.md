@@ -82,6 +82,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Plugin Development](./plugin-development.md) | Plugin authors | Building a plugin end-to-end. **Start here, and read the security-scan preamble at the top before writing code.** Covers allowed/forbidden capabilities, hooks, sandboxed config, and plugin-local translations. |
 | [Plugin Create (Community)](./plugin-create.md) | Community plugin authors | Quickstart + submission flow: scaffold a community plugin, run the security scan against your own tree, build a reproducible zip, and open the `approved-plugins.json` PR |
 | [Plugin Migration (Core only)](./plugin-migration.md) | Core plugin maintainers | Checklist when a core API change affects `src/plugins/core/*`. **Not for community plugins** — they follow `plugin-create.md` instead |
+| [Community Database Migrations](../../../docs/plugins/database-migrations.md) | Plugin authors and core maintainers | Forward-only approved plugin DDL, persistent ledger, shipped Perpl models, uninstall retention and integration tests |
 | [Plugin Security Scan](./plugin-security-scan.md) | ChurchCRM maintainers | **Required** review checklist before approving a community plugin for `src/plugins/approved-plugins.json`. Covers intake, static analysis, risk classification, and the 2026 plugin standards reference. |
 | [Plugin Compliance (Admin Audit)](./plugin-compliance.md) | Site admins | Monthly/quarterly scans of already-installed community plugins. Read the approved list, verify on-disk state, re-run the orphan scan, respond to revoked plugins. |
 
@@ -92,6 +93,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Testing](./testing.md) | Writing tests, debugging, test suites |
 | [Cypress Testing](./cypress-testing.md) | E2E tests, CI/CD testing, API test patterns |
 | [Testing Migration & E2E](./testing-migration-e2e.md) | Testing strategy for migrations |
+| [Plugin Migration Integration Tests](../../../tests/plugin-migrations/README.md) | Isolated MySQL/MariaDB tests for plugin lifecycle, DDL failures, concurrency and generated models |
 
 ### Running Cypress Locally
 

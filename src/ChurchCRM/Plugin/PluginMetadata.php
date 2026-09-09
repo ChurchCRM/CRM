@@ -25,6 +25,9 @@ class PluginMetadata
     private array $help;
     private ?string $routesFile;
     private bool $hasTest;
+    private ?string $migrations;
+    /** @var list<string> */
+    private array $permissions;
 
     public function __construct(array $data, string $path)
     {
@@ -46,6 +49,23 @@ class PluginMetadata
         $this->help = $data['help'] ?? [];
         $this->routesFile = $data['routesFile'] ?? null;
         $this->hasTest = (bool) ($data['hasTest'] ?? false);
+        if (isset($data['migrations']) && (!is_string($data['migrations']) || $data['migrations'] === '')) {
+            throw new PluginMigrationException('The migrations declaration must be a nonempty relative JSON path.');
+        }
+        $permissions = $data['permissions'] ?? [];
+        if (!is_array($permissions) || !array_is_list($permissions)) {
+            throw new PluginMigrationException('Plugin permissions must be an array of known capability names.');
+        }
+        $this->migrations = $data['migrations'] ?? null;
+        $this->permissions = $permissions;
+        foreach ($this->permissions as $permission) {
+            if (!is_string($permission) || !in_array($permission, ApprovedPluginRegistry::KNOWN_PERMISSIONS, true)) {
+                throw new PluginMigrationException('Plugin permissions contain an unknown capability.');
+            }
+        }
+        if ($this->migrations !== null && !in_array('db.migrate', $this->permissions, true)) {
+            throw new PluginMigrationException('A migration manifest requires an explicit db.migrate permission.');
+        }
     }
 
     /**
@@ -152,6 +172,17 @@ class PluginMetadata
         return $this->hasTest;
     }
 
+    public function getMigrations(): ?string
+    {
+        return $this->migrations;
+    }
+
+    /** @return list<string> */
+    public function getPermissions(): array
+    {
+        return $this->permissions;
+    }
+
     public function getHelp(): array
     {
         // Try to load from help.json file first
@@ -207,6 +238,8 @@ class PluginMetadata
             'hooks' => $this->hooks,
             'settingsUrl' => $this->settingsUrl,
             'routesFile' => $this->routesFile,
+            'migrations' => $this->migrations,
+            'permissions' => $this->permissions,
             'help' => $this->help,
         ];
     }

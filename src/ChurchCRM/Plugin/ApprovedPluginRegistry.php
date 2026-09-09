@@ -42,6 +42,7 @@ class ApprovedPluginRegistry
         'network.inbound',    // plugin exposes new HTTP routes
         'db.read',            // plugin reads from ChurchCRM tables
         'db.write',           // plugin writes to ChurchCRM tables
+        'db.migrate',         // core executes reviewed plugin-owned schema migrations
         'fs.read',            // plugin reads from the filesystem outside its own dir
         'fs.write',           // plugin writes to the filesystem outside its own dir
         'secrets.store',      // plugin stores credentials / API keys in its config
@@ -224,6 +225,12 @@ class ApprovedPluginRegistry
                     return false;
                 }
             }
+        }
+
+        if (in_array('db.migrate', $entry['permissions'] ?? [], true) && strtolower($entry['risk']) !== 'high') {
+            LoggerUtils::getAppLogger()->warning('Plugins with db.migrate must declare high risk', ['entry' => $entry['id']]);
+
+            return false;
         }
 
         return true;

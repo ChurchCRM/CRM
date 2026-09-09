@@ -17,6 +17,17 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- Core ledger fixture. Production uninstall does not reset this table.
+DROP TABLE IF EXISTS `plugin_migration_pmg`;
+CREATE TABLE `plugin_migration_pmg` (
+  `pmg_PluginId` varchar(40) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+  `pmg_MigrationId` varchar(95) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+  `pmg_Checksum` char(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+  `pmg_StartedAt` datetime NOT NULL,
+  `pmg_AppliedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`pmg_PluginId`, `pmg_MigrationId`)
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 --
 -- Table structure for table `calendars`
 --

@@ -5,7 +5,9 @@ use ChurchCRM\Plugin\ApprovedPluginRegistry;
 use ChurchCRM\Plugin\PluginAlreadyInstalledException;
 use ChurchCRM\Plugin\PluginInstaller;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Plugin\PluginMigrationException;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -127,11 +129,22 @@ $group->get('/plugins/{pluginId}', function (Request $request, Response $respons
  *     @OA\Response(response=200, description="Plugin enabled"),
  *     @OA\Response(response=400, description="Plugin cannot be enabled (dependency or version issue)"),
  *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role and browser CSRF token required"),
+ *     @OA\Response(response=409, description="Migration blocked — review the returned recovery guidance"),
  *     @OA\Response(response=500, description="Error enabling plugin")
  * )
  */
 $group->post('/plugins/{pluginId}/enable', function (Request $request, Response $response, array $args): Response {
+    // The global AuthMiddleware validates API keys before this handler. Browser
+    // enables must carry a session CSRF token, including schema-changing enables.
+    if ($request->getHeaderLine('X-API-Key') === '') {
+        $body = $request->getParsedBody();
+        $token = $request->getHeaderLine('X-CSRF-Token');
+        if (!CSRFUtils::validateToken($token)
+            && !(is_array($body) && CSRFUtils::verifyRequest($body))) {
+            return SlimUtils::renderJSON($response, ['success' => false, 'message' => gettext('Invalid or missing CSRF token')], 403);
+        }
+    }
     try {
         $pluginId = $args['pluginId'];
         $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
@@ -143,6 +156,10 @@ $group->post('/plugins/{pluginId}/enable', function (Request $request, Response 
             'success' => true,
             'message' => gettext('Plugin enabled successfully'),
         ]);
+    } catch (PluginMigrationException $e) {
+        // These messages contain migration IDs and recovery guidance, not SQL.
+        LoggerUtils::getAppLogger()->warning('Plugin migration blocked', ['plugin' => $args['pluginId'], 'exception' => $e]);
+        return SlimUtils::renderJSON($response, ['success' => false, 'message' => $e->getMessage()], 409);
     } catch (\RuntimeException $e) {
         // Dependency or version errors - use generic message
         return SlimUtils::renderErrorJSON(
@@ -623,7 +640,7 @@ $group->post('/plugins/install-url', function (Request $request, Response $respo
  *     path="/plugins/api/plugins/{pluginId}",
  *     operationId="uninstallPlugin",
  *     summary="Delete a community plugin from disk",
- *     description="Disables the plugin, calls its uninstall() lifecycle hook, deletes the community directory, and clears every plugin.{id}.* config key. Refuses to touch core plugins.",
+ *     description="Deletes the community directory and plugin.{id}.* settings. Migration plugins retain application tables and history and skip destructive lifecycle callbacks; legacy plugins still receive uninstall(). Refuses core plugins and serializes with migrations.",
  *     tags={"Plugins"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="pluginId", in="path", required=true, @OA\Schema(type="string")),

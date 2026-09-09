@@ -13,6 +13,8 @@ This skill covers writing and running Cypress tests for API endpoints and UI wor
 
 ## Test Structure
 
+**Plugin database migrations** <!-- learned: 2026-09-08 --> have [isolated PHP integration tests](../../../tests/plugin-migrations/README.md) in `tests/plugin-migrations/`. They use the real runner, approved ZIP validator, Slim enable route, generated fixture models and a disposable MySQL/MariaDB database; no browser or manual ledger edits are needed. The workflow tests both database families, including real PHP restarts and concurrent lifecycle locks.
+
 - **API Tests**: `cypress/e2e/api/private/[feature]/[endpoint].spec.js`
 - **UI Tests**: `cypress/e2e/ui/[feature]/`
 - **Configuration**: `cypress/configs/docker.config.ts` (standard runner used by `npm run test` / `test:open` / `test:api` / `test:ui` / the `test-root` + `test-subdir` CI jobs) and `cypress/configs/new-system.config.ts` (setup-wizard / fresh-install runner used by `npm run test:new-system` and the `test-new-system` CI job)
@@ -388,6 +390,8 @@ Four patterns cause most timing-related flaky failures. Full detail and code exa
   ```
 
 ## Files
+
+**Migration process-death and recovery tests** <!-- learned: 2026-09-08 -->: use `tests/plugin-migrations/run.php` against the explicitly guarded disposable database. Its test-only connection barrier plus terminated subprocess proves durable attempt state and named-lock exclusion across DDL; caught exceptions alone do not establish crash behavior. Full recovery uses the core SQL importer and empty-schema restore. The production dependency check removes Generator/Command, not all Generator classes: Perpl runtime still needs Generator/Model/PropelTypes.
 
 **API Tests:** `cypress/e2e/api/`
 **UI Tests:** `cypress/e2e/ui/`

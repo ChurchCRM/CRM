@@ -153,6 +153,7 @@ PR — do not quietly reclassify the behaviour.
 | `network.inbound`   |       |                      |       |
 | `db.read`           |       |                      |       |
 | `db.write`          |       |                      |       |
+| `db.migrate`        |       |                      | High risk; reviewed schema changes executed by core |
 | `fs.read`           |       |                      |       |
 | `fs.write`          |       |                      |       |
 | `secrets.store`     |       |                      |       |
@@ -171,6 +172,8 @@ upcoming plugin-security validation in WP 7.2. Any capability the plugin
 uses that is not listed in the table is grounds for rejection.
 
 ### 4a. Risk classification rubric
+
+**Schema migrations** <!-- learned: 2026-09-08 -->: `db.migrate` always requires **high** risk and two maintainer reviews, independently of `db.write`. Require it in plugin.json and the registry for packages shipping SQL. Follow [the migration contract](../../../docs/plugins/database-migrations.md): inspect every manifest/SQL/model diff, table ownership, immutable history, MySQL/MariaDB compatibility, backup/recovery instructions and uninstall retention. `scripts/plugin-scan.php` validates declared resources without executing them and flags raw SQL sinks; the plugin's runtime handlers must still use Propel. Unverified migration packages cannot install or run migrations.
 
 Every approved entry **must** set a `risk` value (`low` | `medium` | `high`)
 and a one-sentence `riskSummary`. The install screen surfaces both to
