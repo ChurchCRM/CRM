@@ -10,8 +10,11 @@ back to a stale or placeholder artifact.
 
 ## How to run
 
+Requires Google Chrome installed on the machine (the pipeline drives it via
+Playwright's `channel: 'chrome'`, not Playwright's own bundled Chromium — see
+"Known limitations" below for why).
+
 ```bash
-npm run marketing:visuals:install   # once per machine — installs the Chromium browser
 npm run marketing:visuals           # start a fresh instance, seed it, run all workflows
 npm run docker:ci:new-system:down   # tear down the instance when you're done
 ```
@@ -54,12 +57,16 @@ inspect it — `docker:ci:new-system:down` tears it down explicitly.
   fixtures from `src/admin/demo/`. It is not re-seeded per screenshot; it
   runs once, in the `setup` project, for the whole pipeline.
 - **Workflows**: `playwright/setup/bootstrap.setup.ts` (setup/church-info,
-  demo data import) and `playwright/workflows/*.spec.ts` (People & Families,
-  Groups & Ministry, Events & Attendance). Each test describes what a church
-  user is doing (e.g. "locate a family, open its profile"), not just a
-  sequence of clicks — and skips records that would look bad in marketing
-  material (an inactive group/family from the demo data, say) rather than
-  blindly taking whatever's first in a list.
+  demo data import) and `playwright/workflows/*.spec.ts` — Dashboard (hero),
+  People & Families (incl. the optional person directory list), Groups &
+  Ministry, Events & Attendance, Communication, Giving (deposit entry + pledge
+  report), and Settings (user permissions, nice-to-have). Each test describes
+  what a church user is doing (e.g. "locate a family, open its profile"), not
+  just a sequence of clicks — and skips records that would look bad in
+  marketing material (an inactive group/family from the demo data, say)
+  rather than blindly taking whatever's first in a list. This set maps
+  directly to the marketing screenshot shot list — see the "Shot list
+  coverage" section below.
 - **Marketing-clean, not just functional**: `playwright/support/marketing-clean.ts`
   dismisses the "System Update Available" banner once (persisted per-user),
   and `playwright.config.ts` sets a matching `timezoneId` so the "Browser
@@ -135,15 +142,49 @@ and lives in `playwright/workflows/people-family.spec.ts`.
 - **Port 8081 already in use** — another `ci-new-system` instance (or a
   previous run's containers) is still up; `npm run docker:ci:new-system:down`
   before retrying.
-- **Network policy blocks (`403` / "no matching allow rule") installing
-  Playwright's browser or building the Docker image** — in a sandboxed
-  environment, this needs `cdn.playwright.dev` (browser download) and
-  `deb.debian.org` (the Docker image's `apt-get update`) explicitly allowed.
-  Not a bug in this pipeline.
+- **Network policy blocks (`403` / "no matching allow rule") building the
+  Docker image** — in a sandboxed environment, this needs `deb.debian.org`
+  (the Docker image's `apt-get update`) explicitly allowed. Not a bug in
+  this pipeline.
+- **No Chrome found / launch fails** — the pipeline uses the machine's
+  installed Google Chrome (`channel: 'chrome'` in `playwright.config.ts`),
+  not Playwright's bundled Chromium. Install Chrome normally
+  (https://www.google.com/chrome/) — no `playwright install` step needed.
+
+## Shot list coverage
+
+Each device project (`desktop` = 1440×900 @2×, `tablet` = 834×1194 @2×,
+`mobile` = 390×844 @2×) produces the full set of screenshots below.
+
+| Shot | Test |
+| --- | --- |
+| Hero — dashboard | `dashboard-hero` |
+| People — family record | `people-family-overview` |
+| People — person list/search (optional) | `people-directory-list` |
+| Groups — group manager | `groups-ministry-overview` |
+| Events — calendar month view | `events-calendar-overview` |
+| Attendance — check-in/attendance grid | `events-attendance-overview` |
+| Communication — email/mailing list | `communication-mailing-list` |
+| Giving — deposit entry | `finance-deposit-entry` |
+| Giving — fund/pledge report | `finance-pledge-report` |
+| Settings — user permissions (nice-to-have) | `settings-user-permissions` |
+| Mobile — one panel cropped | any of the above from the `mobile` project |
+
+**Not automated** — pick these from the generated artifacts by hand:
+- **UI detail texture crop** (a single card/table-header/form-field group) —
+  a post-production crop of an existing screenshot, not a distinct page.
+- **No modals/toasts in frame** — `captureScreen()` waits for network-idle
+  plus a human pause before shooting, which is normally enough for a
+  `window.CRM.notify()` toast to have already faded; spot-check the actual
+  PNG for any still-visible toast before using it.
 
 ## Known limitations (first milestone)
 
-- Chromium only, one fixed viewport per form factor (no touch/UA emulation).
+- Runs on the machine's installed Google Chrome (`channel: 'chrome'`), not
+  Playwright's bundled Chromium — `playwright install`'s download from
+  cdn.playwright.dev/storage.googleapis.com hangs indefinitely on some
+  sandboxed/restricted networks, so this sidesteps it entirely. One fixed
+  viewport per form factor (no touch/UA emulation).
 - English locale only.
 - Root-path install only (no subdirectory variant).
 - Not wired into CI yet — this is local-only for now.
