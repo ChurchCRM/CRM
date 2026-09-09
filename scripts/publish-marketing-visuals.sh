@@ -59,27 +59,31 @@ if [ -d "$ARTIFACTS_DIR/metadata" ]; then
 fi
 
 # ─────────────────────────────────────────────────────────────
-# ChurchCRM.io documentation: images/screenshots, images/videos
+# ChurchCRM.io documentation: static/images/screenshots, static/images/videos
+# Hugo's staticDir defaults to static/ (no override in hugo.toml) — anything
+# outside static/ is never copied into public/ at build time and never
+# ships to the live site. See README.md "Screenshots are stored in
+# static/images/ and static/images/screenshots/".
 # ─────────────────────────────────────────────────────────────
 echo ""
 echo "📁 Publishing to ChurchCRM.io docs..."
-mkdir -p "$CHURCHCRM_IO_DIR/images/screenshots"
-mkdir -p "$CHURCHCRM_IO_DIR/images/videos"
-mkdir -p "$CHURCHCRM_IO_DIR/images/metadata"
+mkdir -p "$CHURCHCRM_IO_DIR/static/images/screenshots"
+mkdir -p "$CHURCHCRM_IO_DIR/static/images/videos"
+mkdir -p "$CHURCHCRM_IO_DIR/static/images/metadata"
 
 if [ -d "$ARTIFACTS_DIR/screenshots" ]; then
-  cp -r "$ARTIFACTS_DIR/screenshots"/* "$CHURCHCRM_IO_DIR/images/screenshots/" 2>/dev/null || true
-  echo "   ✓ Screenshots → images/screenshots/"
+  cp -r "$ARTIFACTS_DIR/screenshots"/* "$CHURCHCRM_IO_DIR/static/images/screenshots/" 2>/dev/null || true
+  echo "   ✓ Screenshots → static/images/screenshots/"
 fi
 
 if [ -d "$ARTIFACTS_DIR/videos" ]; then
-  cp -r "$ARTIFACTS_DIR/videos"/* "$CHURCHCRM_IO_DIR/images/videos/" 2>/dev/null || true
-  echo "   ✓ Videos → images/videos/"
+  cp -r "$ARTIFACTS_DIR/videos"/* "$CHURCHCRM_IO_DIR/static/images/videos/" 2>/dev/null || true
+  echo "   ✓ Videos → static/images/videos/"
 fi
 
 if [ -d "$ARTIFACTS_DIR/metadata" ]; then
-  cp -r "$ARTIFACTS_DIR/metadata"/* "$CHURCHCRM_IO_DIR/images/metadata/" 2>/dev/null || true
-  echo "   ✓ Metadata → images/metadata/"
+  cp -r "$ARTIFACTS_DIR/metadata"/* "$CHURCHCRM_IO_DIR/static/images/metadata/" 2>/dev/null || true
+  echo "   ✓ Metadata → static/images/metadata/"
 fi
 
 echo ""
@@ -94,6 +98,6 @@ echo "     4. git push"
 echo ""
 echo "   ChurchCRM.io docs:"
 echo "     1. cd $CHURCHCRM_IO_DIR"
-echo "     2. git add images/screenshots images/videos images/metadata"
+echo "     2. git add static/images/screenshots static/images/videos static/images/metadata"
 echo "     3. git commit -m 'chore: update product screenshots and videos'"
 echo "     4. git push"
