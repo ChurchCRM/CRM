@@ -155,7 +155,7 @@ jobs:
             const marketingRepoToken = '${{ secrets.MARKETING_REPO_TOKEN }}';
             const token = marketingRepoToken || '${{ secrets.GITHUB_TOKEN }}';
             const octokit = github.getOctokit(token);
-            const marketingRepo = '${{ github.event.inputs.marketing_repo || "ChurchCRM/marketing" }}';
+            const marketingRepo = '${{ github.event.inputs.marketing_repo }}' || 'ChurchCRM/marketing';
             const [owner, repo] = marketingRepo.split('/');
 
             try {
@@ -193,7 +193,7 @@ jobs:
         uses: actions/github-script@v9
         with:
           script: |
-            const marketingRepo = '${{ github.event.inputs.marketing_repo || "ChurchCRM/marketing" }}';
+            const marketingRepo = '${{ github.event.inputs.marketing_repo }}' || 'ChurchCRM/marketing';
             const [owner, repo] = marketingRepo.split('/');
             const prNumber = parseInt('${{ steps.pr.outputs.pr_number }}');
 
