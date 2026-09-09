@@ -21,9 +21,19 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await page.goto('/');
   await expect(page).toHaveURL(/\/setup/);
   await expect(page.locator('.setup-logo')).toBeVisible();
+  // Let the viewer actually see the welcome screen before the system-check
+  // busy-state takes over — otherwise the video jumps straight into
+  // "checking system requirements" with no chance to read it.
+  await humanPause(page, 3000);
 
   const prereqNext = page.locator('#prerequisites-next-btn');
   await prereqNext.waitFor({ state: 'visible', timeout: 30000 });
+  // Stays disabled until the page's own async system-check AJAX calls
+  // finish ("Checking system requirements...") — visible isn't enough, and
+  // that check can take well past the 15s action timeout under load.
+  // System checks may take 2+ minutes on slower systems, matching the
+  // database setup migration timeout.
+  await expect(prereqNext).toBeEnabled({ timeout: 120000 });
   await humanPause(page, 600);
   await humanClick(prereqNext);
 
@@ -43,7 +53,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await page.locator('#setup-success').waitFor({ state: 'visible', timeout: 120000 });
   await humanPause(page, 800);
   await humanClick(page.locator('#continue-to-login'));
-  await page.waitForURL(/\/session\/begin/, { timeout: 10000 });
+  await page.waitForURL(/\/session\/begin/, { timeout: 30000 });
 
   // First admin login — forced password change.
   await page.goto('/login');
@@ -51,7 +61,10 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await humanType(page.locator('input[name=Password]'), ADMIN_INITIAL_PASSWORD);
   await humanPause(page, 300);
   await page.locator('input[name=Password]').press('Enter');
-  await page.waitForURL(/\/changepassword/, { timeout: 15000 });
+  // waitForURL (not waitForNavigation, which only fires on the first
+  // navigation event) correctly handles the /login -> /changepassword
+  // redirect regardless of how many hops it takes.
+  await page.waitForURL(/\/changepassword/, { timeout: 30000 });
 
   await humanType(page.locator('#OldPassword'), ADMIN_INITIAL_PASSWORD);
   await humanType(page.locator('#NewPassword1'), ADMIN_WORKING_PASSWORD);
@@ -82,7 +95,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
 
   await humanPause(page, 500);
   await humanClick(page.locator('#church-info-form button[type=submit]'));
-  await page.getByText('Church information saved successfully').waitFor({ state: 'visible', timeout: 10000 });
+  await page.getByText('Church information saved successfully').first().waitFor({ state: 'visible', timeout: 10000 });
   await humanPause(page, 800);
 
   await captureScreen(page, testInfo, {
@@ -119,9 +132,11 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   await page.locator('#demoImportSpinnerOverlay:not(.show)').waitFor({ state: 'attached', timeout: 120000 });
   await humanPause(page, 800);
 
-  // Show the payoff, not just the click — the imported data itself.
-  await page.goto('/people/family');
-  await page.locator('#families tbody tr').first().waitFor({ state: 'visible', timeout: 15000 });
+  // Show the payoff, not just the click — end on the People (members)
+  // dashboard, populated by the import, rather than leaving the video on
+  // the get-started page.
+  await page.goto('/people/dashboard');
+  await page.locator('h2').waitFor({ state: 'visible', timeout: 15000 });
   await humanPause(page, 600);
 
   await captureScreen(page, testInfo, {

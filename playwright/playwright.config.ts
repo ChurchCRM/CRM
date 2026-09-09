@@ -9,9 +9,24 @@ const STORAGE_STATE_PATH = path.join(__dirname, '.auth', 'admin.json');
 // (Mobile < 768px, Tablet 768-1199.98px, Laptop/Desktop >= 1200px), using
 // one representative viewport per factor rather than full device emulation
 // (no touch/UA overrides) to keep automation simple and robust for a first
-// milestone. All four projects use the Chromium engine.
+// milestone. All four projects use Playwright's bundled Chromium (installed
+// via `npm run marketing:visuals:install`) — a `channel: 'chrome'` variant
+// was tried to sidestep a browser-download hang in one sandboxed
+// environment, but that requires Google Chrome to actually be installed on
+// whatever machine runs this, which isn't a safe assumption (confirmed
+// broken in a fresh environment with only Playwright's own Chromium
+// present). If the bundled-Chromium download hangs for you, allow
+// `cdn.playwright.dev` in your network policy first — that fixed it in
+// every case actually observed.
 export default defineConfig({
   testDir: '.',
+  // Playwright's default (30s) is far shorter than setup-church-info's own
+  // sequential waits can add up to: up to 120s for the prerequisites check,
+  // up to 120s for the #setup-success DB migration wait, plus several
+  // shorter waitForURL calls after — worst case sum comfortably exceeds
+  // 150s, so this is sized with real headroom above that worst case rather
+  // than just the single longest step.
+  timeout: 300000,
   globalSetup: require.resolve('./global-setup'),
   // Deliberately outside artifacts/ — Playwright wipes and recreates this
   // directory at the start of every run, which raced with our own
@@ -38,6 +53,12 @@ export default defineConfig({
     // screenshots are marketing material, not test evidence, and that
     // banner has no business being in either.
     timezoneId: 'America/Chicago',
+    // This only controls Playwright's own automatic on-failure screenshot
+    // attachment (for debugging a failed run), not the marketing
+    // screenshots themselves — those are explicit page.screenshot() calls
+    // in support/capture.ts, which is where the actual
+    // ChurchCRM/ChurchCRM.io#100 viewport-framing fix lives.
+    screenshot: { mode: 'only-on-failure', fullPage: false },
   },
   projects: [
     {
@@ -52,19 +73,37 @@ export default defineConfig({
       name: 'desktop',
       testMatch: /workflows\/.*\.spec\.ts/,
       dependencies: ['setup'],
-      use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 }, storageState: STORAGE_STATE_PATH },
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1440, height: 900 },
+        // Retina (shot list prep: "1440×900 browser at 2×").
+        deviceScaleFactor: 2,
+        storageState: STORAGE_STATE_PATH,
+      },
     },
     {
       name: 'tablet',
       testMatch: /workflows\/.*\.spec\.ts/,
       dependencies: ['setup'],
-      use: { ...devices['Desktop Chrome'], viewport: { width: 834, height: 1194 }, storageState: STORAGE_STATE_PATH },
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 834, height: 1194 },
+        deviceScaleFactor: 2,
+        storageState: STORAGE_STATE_PATH,
+      },
     },
     {
       name: 'mobile',
       testMatch: /workflows\/.*\.spec\.ts/,
       dependencies: ['setup'],
-      use: { ...devices['Desktop Chrome'], viewport: { width: 375, height: 812 }, storageState: STORAGE_STATE_PATH },
+      use: {
+        ...devices['Desktop Chrome'],
+        // 390×844 matches the shot list's "Mobile — one panel cropped" spec
+        // (still comfortably inside the <768px mobile breakpoint).
+        viewport: { width: 390, height: 844 },
+        deviceScaleFactor: 2,
+        storageState: STORAGE_STATE_PATH,
+      },
     },
   ],
 });
