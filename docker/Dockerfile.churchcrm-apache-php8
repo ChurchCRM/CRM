@@ -1,15 +1,22 @@
-# Multi-stage Dockerfile for ChurchCRM
-# Build with: docker build --target dev|test -t churchcrm/crm:php8-debian-[dev|test] .
+# Production Apache Dockerfile for ChurchCRM
+# Includes compiled ChurchCRM release code (no rebuild needed)
+#
+# Build with: docker build --target prod -f Dockerfile.churchcrm-apache-php8 -t churchcrm/crm:7.7.0-php8-apache .
+#
+# The release code is copied into the image during build.
+# When container starts, ChurchCRM is ready to serve.
 
 ARG PHP_VERSION=8.4
+
+# Base stage: Apache + PHP runtime
 FROM php:${PHP_VERSION}-apache AS base
-LABEL maintainer="george@dawouds.com"
+LABEL maintainer="ChurchCRM"
 
 EXPOSE 80
 
-# Install common PHP dependencies
+# Install common PHP dependencies and Apache
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
         libxml2-dev \
         gettext \
         locales \
@@ -21,32 +28,74 @@ RUN apt-get update && \
         git \
     && rm -rf /var/lib/apt/lists/*
 
-# Install and configure PHP extensions
+# Install and configure PHP extensions (compiled against this image's PHP
+# build — do NOT install php-* packages via apt, which pull in a separate
+# Debian-packaged PHP instead of extending this one)
 RUN docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) gd
 
-# Configure Apache
-COPY ./apache/default.conf /etc/apache2/apache2.conf
-RUN a2enmod rewrite
+# Configure Apache modules and settings
+RUN a2enmod rewrite && \
+    mkdir -p /run/apache2 && \
+    mkdir -p /var/www/html
 
-# Configure PHP settings
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+# Configure PHP settings for production
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" 2>/dev/null || true && \
     sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2M/g' $PHP_INI_DIR/php.ini && \
     sed -i 's/^post_max_size.*$/post_max_size = 2G/g' $PHP_INI_DIR/php.ini && \
     sed -i 's/^memory_limit.*$/memory_limit = 2G/g' $PHP_INI_DIR/php.ini && \
-    sed -i 's/^max_execution_time.*$/max_execution_time = 120/g' $PHP_INI_DIR/php.ini
+    sed -i 's/^max_execution_time.*$/max_execution_time = 120/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^display_errors.*$/display_errors = Off/g' $PHP_INI_DIR/php.ini
 
-# Create non-root user
-RUN groupadd -r www && useradd -r -g www www
+# Copy Apache configuration
+COPY apache/default.conf /etc/apache2/apache2.conf
 
 
-# Test stage - minimal runtime environment for CI/CD
+# Production stage: minimal runtime with compiled ChurchCRM
+FROM base AS prod
+LABEL maintainer="ChurchCRM" \
+      org.opencontainers.image.description="ChurchCRM with Apache (production-ready, includes release code)"
+
+WORKDIR /var/www/html
+
+# Copy ChurchCRM release code (provided from release artifact during docker build)
+COPY . .
+
+# Set proper ownership (www-data is Apache user in Debian)
+RUN chown -R www-data:www-data /var/www/html
+
+
+# Test stage: includes dev tools for CI testing
 FROM base AS test
-# Note: Apache binding to port 80 requires root privileges, so USER directive is omitted
+
+# Install development dependencies
+RUN apt-get update && \
+    apt-get install -y \
+        make \
+        python3 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Xdebug for testing
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+# Install Composer with checksum verification
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php -r "if (hash_file('sha384', 'composer-setup.php') === trim(file_get_contents('https://composer.github.io/installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); }" && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    rm composer-setup.php
+
+# Install NVM and Node.js 24 (aligned with CI and package.json engines)
+RUN curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
+    chmod a+x /opt/node-install.sh && \
+    /opt/node-install.sh && \
+    rm /opt/node-install.sh && \
+    /bin/bash -c "source /root/.nvm/nvm.sh && nvm install 24 && npm install -g node-gyp"
+
+WORKDIR /var/www/html
 
 
-# Dev stage - full development environment with build tools
+# Dev stage: includes build tools (for developers, not production)
 FROM base AS dev
 
 # Install development dependencies
@@ -65,9 +114,11 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
     rm composer-setup.php
 
-# Install NVM and Node.js 24 (aligned with CI and package.json engines)
+# Install NVM and Node.js 24
 RUN curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
     chmod a+x /opt/node-install.sh && \
     /opt/node-install.sh && \
     rm /opt/node-install.sh && \
     /bin/bash -c "source /root/.nvm/nvm.sh && nvm install 24 && npm install -g node-gyp"
+
+WORKDIR /var/www/html
