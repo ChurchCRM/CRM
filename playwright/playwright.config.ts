@@ -111,7 +111,11 @@ export default defineConfig({
       // flow. Same high-quality video treatment as 'setup', kept as its
       // own project instead of appended to bootstrap.setup.ts so that
       // file stays scoped to system bootstrap only.
-      name: 'videos',
+      // Named 'recordings', not 'videos' — capture.ts writes each
+      // video-only project's output to artifacts/videos/<project-name>/,
+      // and a project literally named 'videos' collided with that parent
+      // folder (artifacts/videos/videos/...).
+      name: 'recordings',
       testMatch: /videos\/.*\.video\.ts/,
       dependencies: ['setup'],
       use: {

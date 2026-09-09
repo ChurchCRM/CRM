@@ -54,7 +54,7 @@ const VIEWPORTS: ViewportConfig[] = [
 // Playwright project names (see playwright.config.ts) that record video at
 // a single fixed viewport instead of the desktop/tablet/mobile screenshot
 // sweep — used as both the capture-mode switch and the artifact device dir.
-const VIDEO_ONLY_PROJECTS = new Set(['setup', 'videos']);
+const VIDEO_ONLY_PROJECTS = new Set(['setup', 'recordings']);
 
 export async function captureScreen(page: Page, testInfo: TestInfo, opts: CaptureOptions): Promise<void> {
   if (testInfo.title !== opts.name) {
