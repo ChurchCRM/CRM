@@ -162,24 +162,19 @@ jobs:
               const pr = await octokit.rest.pulls.create({
                 owner,
                 repo,
-                title: `chore: update marketing visuals from CRM run #${{ github.run_id }}`,
+                title: 'chore: update marketing visuals from CRM run #${{ github.run_id }}',
                 head: branch,
                 base: 'main',
-                body: `## Marketing Visuals Update
-
-Generated from ChurchCRM/CRM run [${{ github.run_id }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
-
-**Changes:**
-- Screenshots (all devices)
-- Videos (all workflows)
-- Metadata files
-
-**Source Commit:** [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
-
-**Triggered by:** @${{ github.actor }}
-
----
-> 📦 Once approved and merged, these assets will be deployed to the static Hugo site.`,
+                body: '## Marketing Visuals Update\n\n' +
+                      'Generated from ChurchCRM/CRM run [${{ github.run_id }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n\n' +
+                      '**Changes:**\n' +
+                      '- Screenshots (all devices)\n' +
+                      '- Videos (all workflows)\n' +
+                      '- Metadata files\n\n' +
+                      '**Source Commit:** [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n\n' +
+                      '**Triggered by:** @${{ github.actor }}\n\n' +
+                      '---\n' +
+                      '> 📦 Once approved and merged, these assets will be deployed to the static Hugo site.',
                 labels: ['visuals', 'automated']
               });
 
