@@ -5,7 +5,7 @@ evt-past-youth,Youth,Youth Group Night,"Games, worship, small groups (grades 6-1
 evt-past-outreach,Outreach,Neighborhood Food Drive,Volunteer food collection and distribution,<p>Community outreach event.</p>,-14,09:00:00,240,Boys Scouts;Girl Scouts,0.5,false,
 evt-today-prayer,Prayer,Midweek Prayer Meeting,Midday prayer,<p>Come as you are.</p>,0,12:00:00,45,,0,false,
 evt-today-study,Study,Adult Bible Study,"Book of Romans, week 3",<p>Small-group discussion.</p>,0,19:00:00,90,Church Board,0,false,
-evt-future-service,Church Service,Sunday Worship Service,Weekly worship and sermon,"<h2>Upcoming Sermon</h2><p>Join us this Sunday.</p>",+4,10:30:00,90,Worship Service,0,false,
+evt-future-service,Church Service,Sunday Worship Service (Upcoming),Weekly worship and sermon,"<h2>Upcoming Sermon</h2><p>Join us this Sunday.</p>",+4,10:30:00,90,Worship Service,0,false,
 evt-future-choir,Music,Choir Rehearsal,Practice for Sunday service,<p>All voices welcome.</p>,+5,19:00:00,120,,0,false,
 evt-future-outreach,Outreach,Community Outreach Day,Volunteer outreach and food drive,<p>Serving our neighbors.</p>,+10,09:00:00,240,Boys Scouts;Girl Scouts,0,false,
 evt-future-board,Meeting,Church Board Meeting,Monthly leadership meeting,<p>Agenda circulated in advance.</p>,+12,19:00:00,120,Church Board;Clergy,0,false,
