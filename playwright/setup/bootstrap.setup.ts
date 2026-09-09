@@ -21,6 +21,10 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await page.goto('/');
   await expect(page).toHaveURL(/\/setup/);
   await expect(page.locator('.setup-logo')).toBeVisible();
+  // Let the viewer actually see the welcome screen before the system-check
+  // busy-state takes over — otherwise the video jumps straight into
+  // "checking system requirements" with no chance to read it.
+  await humanPause(page, 3000);
 
   const prereqNext = page.locator('#prerequisites-next-btn');
   await prereqNext.waitFor({ state: 'visible', timeout: 30000 });
@@ -128,9 +132,11 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   await page.locator('#demoImportSpinnerOverlay:not(.show)').waitFor({ state: 'attached', timeout: 120000 });
   await humanPause(page, 800);
 
-  // Show the payoff, not just the click — the imported data itself.
-  await page.goto('/people/family');
-  await page.locator('#families tbody tr').first().waitFor({ state: 'visible', timeout: 15000 });
+  // Show the payoff, not just the click — end on the People (members)
+  // dashboard, populated by the import, rather than leaving the video on
+  // the get-started page.
+  await page.goto('/people/dashboard');
+  await page.locator('h2').waitFor({ state: 'visible', timeout: 15000 });
   await humanPause(page, 600);
 
   await captureScreen(page, testInfo, {

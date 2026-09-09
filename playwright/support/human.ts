@@ -12,7 +12,7 @@ function jitter(baseMs: number, spreadMs: number): number {
   return baseMs + Math.random() * spreadMs;
 }
 
-export async function humanPause(page: Page, ms = 400): Promise<void> {
+export async function humanPause(page: Page, ms = 600): Promise<void> {
   await page.waitForTimeout(ms);
 }
 
@@ -20,7 +20,7 @@ export async function humanPause(page: Page, ms = 400): Promise<void> {
 export async function humanClick(locator: Locator): Promise<void> {
   await locator.scrollIntoViewIfNeeded();
   await locator.hover();
-  await locator.page().waitForTimeout(jitter(150, 150));
+  await locator.page().waitForTimeout(jitter(350, 250));
   await locator.click();
 }
 
@@ -33,7 +33,7 @@ export async function humanClick(locator: Locator): Promise<void> {
 export async function humanType(locator: Locator, text: string): Promise<void> {
   await locator.click();
   await locator.clear();
-  await locator.pressSequentially(text, { delay: jitter(40, 60) });
+  await locator.pressSequentially(text, { delay: jitter(90, 70) });
 }
 
 /**
@@ -41,12 +41,15 @@ export async function humanType(locator: Locator, text: string): Promise<void> {
  * step here (unlike humanClick): several <select> fields in this app (e.g.
  * #sChurchState) are TomSelect-enhanced, which hides the native <select>
  * behind its own widget, so hovering the underlying element fails even
- * though selectOption() itself works fine on it.
+ * though selectOption() itself works fine on it. A pause after selecting
+ * too, so the widget's visual update is actually visible in the recording
+ * before the next action starts.
  */
 export async function humanSelect(
   locator: Locator,
   value: string | { label: string } | { index: number }
 ): Promise<void> {
-  await locator.page().waitForTimeout(jitter(150, 100));
+  await locator.page().waitForTimeout(jitter(350, 150));
   await locator.selectOption(value);
+  await locator.page().waitForTimeout(jitter(350, 150));
 }

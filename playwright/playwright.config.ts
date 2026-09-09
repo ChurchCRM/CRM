@@ -53,8 +53,11 @@ export default defineConfig({
     // screenshots are marketing material, not test evidence, and that
     // banner has no business being in either.
     timezoneId: 'America/Chicago',
-    // Capture only the visible viewport, not full-page scroll
-    // (see https://github.com/ChurchCRM/ChurchCRM.io/issues/100)
+    // This only controls Playwright's own automatic on-failure screenshot
+    // attachment (for debugging a failed run), not the marketing
+    // screenshots themselves — those are explicit page.screenshot() calls
+    // in support/capture.ts, which is where the actual
+    // ChurchCRM/ChurchCRM.io#100 viewport-framing fix lives.
     screenshot: { mode: 'only-on-failure', fullPage: false },
   },
   projects: [

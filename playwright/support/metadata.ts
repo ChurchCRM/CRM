@@ -28,7 +28,8 @@ export interface ArtifactMetadata {
   purpose: string;
   device: string;
   viewport: { width: number; height: number };
-  screenshot: string;
+  /** Null for video-only captures (currently just the `setup` project). */
+  screenshot: string | null;
   video: string | null;
 }
 
@@ -49,7 +50,7 @@ export function writeMetadata(destination: string, data: ArtifactMetadata): void
     viewport: data.viewport,
     timestamp: new Date().toISOString(),
     seed: SEED_VERSION,
-    artifact: path.basename(data.screenshot),
+    artifact: data.screenshot ? path.basename(data.screenshot) : null,
     video: data.video ? path.basename(data.video) : null,
   };
 
