@@ -62,6 +62,23 @@ jobs:
         run: npm run marketing:visuals
         timeout-minutes: 45
 
+      - name: Capture Docker logs on failure
+        if: failure()
+        run: |
+          mkdir -p logs
+          docker-compose -f docker-compose.yml logs > logs/docker-compose.log 2>&1 || true
+          docker logs crm-app > logs/crm-app.log 2>&1 || true
+          docker logs crm-db > logs/crm-db.log 2>&1 || true
+          ls -la logs/
+
+      - name: Upload Docker logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: debug-logs-${{ github.run_id }}
+          path: logs/
+          retention-days: 30
+
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v7
