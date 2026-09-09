@@ -70,40 +70,16 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], channel: browserChannel, viewport: { width: 1440, height: 900 }, video: 'on' },
     },
     {
-      name: 'desktop',
+      // Screenshot tests run once per test, capturing all viewports (desktop/tablet/mobile)
+      // in a single page load. Tests manually resize viewport between captures.
+      // This is 3x faster than running separate desktop/tablet/mobile projects.
+      name: 'screenshots',
       testMatch: /workflows\/.*\.spec\.ts/,
       dependencies: ['setup'],
       use: {
         ...devices['Desktop Chrome'],
         channel: browserChannel,
         viewport: { width: 1440, height: 900 },
-        // Retina (shot list prep: "1440×900 browser at 2×").
-        deviceScaleFactor: 2,
-        storageState: STORAGE_STATE_PATH,
-      },
-    },
-    {
-      name: 'tablet',
-      testMatch: /workflows\/.*\.spec\.ts/,
-      dependencies: ['setup'],
-      use: {
-        ...devices['Desktop Chrome'],
-        channel: browserChannel,
-        viewport: { width: 834, height: 1194 },
-        deviceScaleFactor: 2,
-        storageState: STORAGE_STATE_PATH,
-      },
-    },
-    {
-      name: 'mobile',
-      testMatch: /workflows\/.*\.spec\.ts/,
-      dependencies: ['setup'],
-      use: {
-        ...devices['Desktop Chrome'],
-        channel: browserChannel,
-        // 390×844 matches the shot list's "Mobile — one panel cropped" spec
-        // (still comfortably inside the <768px mobile breakpoint).
-        viewport: { width: 390, height: 844 },
         deviceScaleFactor: 2,
         storageState: STORAGE_STATE_PATH,
       },

@@ -39,6 +39,18 @@ export interface CaptureOptions {
  * attachment back to the deterministic path claimed here by test title +
  * project name.
  */
+interface ViewportConfig {
+  device: 'desktop' | 'tablet' | 'mobile';
+  width: number;
+  height: number;
+}
+
+const VIEWPORTS: ViewportConfig[] = [
+  { device: 'desktop', width: 1440, height: 900 },
+  { device: 'tablet', width: 834, height: 1194 },
+  { device: 'mobile', width: 390, height: 844 },
+];
+
 export async function captureScreen(page: Page, testInfo: TestInfo, opts: CaptureOptions): Promise<void> {
   if (testInfo.title !== opts.name) {
     throw new Error(
@@ -47,7 +59,25 @@ export async function captureScreen(page: Page, testInfo: TestInfo, opts: Captur
     );
   }
 
-  const device = testInfo.project.name;
+  // For setup tests, capture once at the configured viewport
+  if (testInfo.project.name === 'setup') {
+    await captureAtViewport(page, testInfo, opts, testInfo.project.name);
+    return;
+  }
+
+  // For screenshot tests, capture all viewports in a single test run (3x faster)
+  for (const vp of VIEWPORTS) {
+    await page.setViewportSize({ width: vp.width, height: vp.height });
+    await captureAtViewport(page, testInfo, opts, vp.device);
+  }
+}
+
+async function captureAtViewport(
+  page: Page,
+  testInfo: TestInfo,
+  opts: CaptureOptions,
+  device: string
+): Promise<void> {
   const viewport = page.viewportSize();
   if (!viewport) {
     throw new Error(`No viewport configured for project "${device}"`);
