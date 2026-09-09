@@ -44,7 +44,7 @@ export default defineConfig({
   reporter: [['list'], ['json', { outputFile: path.join(__dirname, 'artifacts', 'report.json') }]],
   use: {
     baseURL: BASE_URL,
-    video: 'on',
+    video: 'off',
     trace: 'retain-on-failure',
     actionTimeout: 15000,
     navigationTimeout: 30000,
@@ -67,7 +67,7 @@ export default defineConfig({
       // run once, before every other project. See setup/bootstrap.setup.ts.
       name: 'setup',
       testMatch: /setup\/.*\.setup\.ts/,
-      use: { ...devices['Desktop Chrome'], channel: browserChannel, viewport: { width: 1440, height: 900 } },
+      use: { ...devices['Desktop Chrome'], channel: browserChannel, viewport: { width: 1440, height: 900 }, video: 'on' },
     },
     {
       name: 'desktop',

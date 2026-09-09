@@ -58,8 +58,8 @@ jobs:
           echo "✗ App failed to start"
           exit 1
 
-      - name: Generate Marketing Visuals
-        run: npm run marketing:visuals
+      - name: Generate Screenshots & Setup Videos
+        run: npm run marketing
         timeout-minutes: 45
 
       - name: Capture Docker logs on failure
