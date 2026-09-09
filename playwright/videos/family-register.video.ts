@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanType } from '../support/human';
+import { humanClick, humanPause, humanSelect, humanType } from '../support/human';
 
 /**
  * A visitor self-registering their family — no login, no staff involvement.
@@ -20,7 +20,11 @@ test('family-self-register', async ({ page }, testInfo) => {
   await humanType(page.locator('#familyName'), 'Whitfield');
   await humanType(page.locator('#familyAddress1'), '245 Willow Creek Rd');
   await humanType(page.locator('#familyCity'), 'Springfield');
-  await humanType(page.locator('#familyState'), 'IL');
+  // DropdownManager.initializeFamilyRegisterCountryState() (FamilyRegister.js)
+  // replaces this input with a TomSelect-enhanced <select> of state codes at
+  // runtime — humanType's click is blocked by TomSelect's overlay, same as
+  // #State/#sChurchState elsewhere in this pipeline.
+  await humanSelect(page.locator('#familyState'), 'IL');
   await humanType(page.locator('#familyZip'), '62704');
   await humanType(page.locator('#familyHomePhone'), '(555) 010-1000');
   await humanPause(page, 600);
