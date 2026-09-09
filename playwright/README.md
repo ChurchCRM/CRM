@@ -164,7 +164,7 @@ Each device project (`desktop` = 1440×900 @2×, `tablet` = 834×1194 @2×,
 | Groups — group manager | `groups-ministry-overview` |
 | Events — calendar month view | `events-calendar-overview` |
 | Attendance — check-in/attendance grid | `events-attendance-overview` |
-| Communication — email/mailing list | `communication-email-dashboard` |
+| Communication — email/mailing list | `communication-mailing-list` |
 | Giving — deposit entry | `finance-deposit-entry` |
 | Giving — fund/pledge report | `finance-pledge-report` |
 | Settings — user permissions (nice-to-have) | `settings-user-permissions` |

@@ -20,11 +20,13 @@ const STORAGE_STATE_PATH = path.join(__dirname, '.auth', 'admin.json');
 // every case actually observed.
 export default defineConfig({
   testDir: '.',
-  // Playwright's default (30s) is shorter than setup-church-info's own
-  // explicit wait for the DB migration to finish (up to 120s, see
-  // #setup-success in setup/bootstrap.setup.ts) — without this, the whole
-  // test gets killed by the global timeout before that wait can complete.
-  timeout: 150000,
+  // Playwright's default (30s) is far shorter than setup-church-info's own
+  // sequential waits can add up to: up to 120s for the prerequisites check,
+  // up to 120s for the #setup-success DB migration wait, plus several
+  // shorter waitForURL calls after — worst case sum comfortably exceeds
+  // 150s, so this is sized with real headroom above that worst case rather
+  // than just the single longest step.
+  timeout: 300000,
   globalSetup: require.resolve('./global-setup'),
   // Deliberately outside artifacts/ — Playwright wipes and recreates this
   // directory at the start of every run, which raced with our own
