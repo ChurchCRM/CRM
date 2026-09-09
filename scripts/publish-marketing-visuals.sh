@@ -37,11 +37,17 @@ echo ""
 
 # ─────────────────────────────────────────────────────────────
 # Marketing repository: assets/screenshots, assets/videos
+#
+# Metadata JSON sidecars (playwright/artifacts/metadata/) are deliberately
+# NOT published — nothing in either destination repo reads them. Hugo can't
+# load JSON sidecars per-image at template time without extra plumbing, so
+# screenshots/single.html hand-copies each shot's title/purpose instead
+# (see that file's own comment). They stay CRM-local for pipeline
+# debugging only.
 # ─────────────────────────────────────────────────────────────
 echo "📁 Publishing to Marketing repo..."
 mkdir -p "$MARKETING_DIR/assets/screenshots"
 mkdir -p "$MARKETING_DIR/assets/videos"
-mkdir -p "$MARKETING_DIR/assets/metadata"
 
 if [ -d "$ARTIFACTS_DIR/screenshots" ]; then
   cp -r "$ARTIFACTS_DIR/screenshots"/* "$MARKETING_DIR/assets/screenshots/" 2>/dev/null || true
@@ -51,11 +57,6 @@ fi
 if [ -d "$ARTIFACTS_DIR/videos" ]; then
   cp -r "$ARTIFACTS_DIR/videos"/* "$MARKETING_DIR/assets/videos/" 2>/dev/null || true
   echo "   ✓ Videos → assets/videos/"
-fi
-
-if [ -d "$ARTIFACTS_DIR/metadata" ]; then
-  cp -r "$ARTIFACTS_DIR/metadata"/* "$MARKETING_DIR/assets/metadata/" 2>/dev/null || true
-  echo "   ✓ Metadata → assets/metadata/"
 fi
 
 # ─────────────────────────────────────────────────────────────
@@ -69,7 +70,6 @@ echo ""
 echo "📁 Publishing to ChurchCRM.io docs..."
 mkdir -p "$CHURCHCRM_IO_DIR/static/images/screenshots"
 mkdir -p "$CHURCHCRM_IO_DIR/static/images/videos"
-mkdir -p "$CHURCHCRM_IO_DIR/static/images/metadata"
 
 if [ -d "$ARTIFACTS_DIR/screenshots" ]; then
   cp -r "$ARTIFACTS_DIR/screenshots"/* "$CHURCHCRM_IO_DIR/static/images/screenshots/" 2>/dev/null || true
@@ -81,23 +81,18 @@ if [ -d "$ARTIFACTS_DIR/videos" ]; then
   echo "   ✓ Videos → static/images/videos/"
 fi
 
-if [ -d "$ARTIFACTS_DIR/metadata" ]; then
-  cp -r "$ARTIFACTS_DIR/metadata"/* "$CHURCHCRM_IO_DIR/static/images/metadata/" 2>/dev/null || true
-  echo "   ✓ Metadata → static/images/metadata/"
-fi
-
 echo ""
 echo "✅ Marketing visuals published to both repositories!"
 echo ""
 echo "Next steps:"
 echo "   Marketing repo:"
 echo "     1. cd $MARKETING_DIR"
-echo "     2. git add assets/screenshots assets/videos assets/metadata"
+echo "     2. git add assets/screenshots assets/videos"
 echo "     3. git commit -m 'chore: update marketing visuals from CRM'"
 echo "     4. git push"
 echo ""
 echo "   ChurchCRM.io docs:"
 echo "     1. cd $CHURCHCRM_IO_DIR"
-echo "     2. git add static/images/screenshots static/images/videos static/images/metadata"
+echo "     2. git add static/images/screenshots static/images/videos"
 echo "     3. git commit -m 'chore: update product screenshots and videos'"
 echo "     4. git push"
