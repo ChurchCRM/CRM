@@ -1,0 +1,244 @@
+name: Marketing Visuals - Generate and Update
+
+on:
+  workflow_dispatch:
+    inputs:
+      marketing_repo:
+        description: 'Marketing repo to push to (owner/repo)'
+        required: false
+        default: 'ChurchCRM/marketing'
+      marketing_branch:
+        description: 'Branch to push artifacts to'
+        required: false
+        default: 'screenshots'
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: write
+
+jobs:
+  generate-visuals:
+    name: Generate Screenshots & Videos
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout CRM
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Install npm dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Start ChurchCRM Docker instance
+        run: npm run docker:ci:new-system:start
+        timeout-minutes: 10
+
+      - name: Wait for app to be ready
+        run: |
+          for i in {1..30}; do
+            if curl -s http://127.0.0.1:8081/ -o /dev/null -w "%{http_code}" | grep -qE "200|302"; then
+              echo "✓ App is ready"
+              exit 0
+            fi
+            echo "Waiting for app... ($i/30)"
+            sleep 5
+          done
+          echo "✗ App failed to start"
+          exit 1
+
+      - name: Generate Marketing Visuals
+        run: npm run marketing:visuals
+        timeout-minutes: 45
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: marketing-visuals-${{ github.run_id }}
+          path: playwright/artifacts/
+          retention-days: 30
+
+      - name: Cleanup Docker
+        if: always()
+        run: npm run docker:ci:new-system:down
+        continue-on-error: true
+
+  push-to-marketing:
+    name: Create PR on Marketing Repo
+    needs: generate-visuals
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v7
+        with:
+          name: marketing-visuals-${{ github.run_id }}
+          path: artifacts/
+
+      - name: Checkout marketing repo
+        uses: actions/checkout@v7
+        with:
+          repository: ${{ github.event.inputs.marketing_repo || 'ChurchCRM/marketing' }}
+          token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+          path: marketing-repo
+          fetch-depth: 0
+
+      - name: Copy artifacts to marketing repo
+        run: |
+          # Create directory structure if needed
+          mkdir -p marketing-repo/static/screenshots
+          mkdir -p marketing-repo/static/videos
+
+          # Copy screenshots and videos
+          if [ -d "artifacts/screenshots" ]; then
+            cp -r artifacts/screenshots/* marketing-repo/static/screenshots/ || true
+          fi
+
+          if [ -d "artifacts/videos" ]; then
+            cp -r artifacts/videos/* marketing-repo/static/videos/ || true
+          fi
+
+          # Copy metadata for reference
+          if [ -d "artifacts/metadata" ]; then
+            mkdir -p marketing-repo/static/metadata
+            cp -r artifacts/metadata/* marketing-repo/static/metadata/ || true
+          fi
+
+      - name: Create Pull Request
+        id: pr
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const { execSync } = require('child_process');
+
+            // Change to marketing repo directory
+            process.chdir('./marketing-repo');
+
+            // Configure git
+            execSync('git config user.name "github-actions[bot]"');
+            execSync('git config user.email "github-actions[bot]@users.noreply.github.com"');
+
+            // Check if there are changes
+            const changes = execSync('git status --porcelain', { encoding: 'utf-8' });
+
+            if (!changes.trim()) {
+              console.log('No changes to commit');
+              core.setOutput('pr_created', 'false');
+              return;
+            }
+
+            // Create feature branch
+            const branch = `visuals/crm-${{ github.run_id }}`;
+            execSync(`git checkout -b ${branch}`);
+
+            // Commit changes
+            execSync('git add .');
+            execSync(`git commit -m "chore: update marketing visuals from CRM run #${{ github.run_id }}\n\nCommit: ${{ github.sha }}\nTriggered by: ${{ github.actor }}"`);
+
+            // Push to remote
+            execSync(`git push origin ${branch}`);
+
+            // Create pull request
+            const marketingRepoToken = '${{ secrets.MARKETING_REPO_TOKEN }}';
+            const token = marketingRepoToken || '${{ secrets.GITHUB_TOKEN }}';
+            const octokit = github.getOctokit(token);
+            const marketingRepo = '${{ github.event.inputs.marketing_repo }}' || 'ChurchCRM/marketing';
+            const [owner, repo] = marketingRepo.split('/');
+
+            try {
+              const pr = await octokit.rest.pulls.create({
+                owner,
+                repo,
+                title: 'chore: update marketing visuals from CRM run #${{ github.run_id }}',
+                head: branch,
+                base: 'main',
+                body: '## Marketing Visuals Update\n\n' +
+                      'Generated from ChurchCRM/CRM run [${{ github.run_id }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n\n' +
+                      '**Changes:**\n' +
+                      '- Screenshots (all devices)\n' +
+                      '- Videos (all workflows)\n' +
+                      '- Metadata files\n\n' +
+                      '**Source Commit:** [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n\n' +
+                      '**Triggered by:** @${{ github.actor }}\n\n' +
+                      '---\n' +
+                      '> 📦 Once approved and merged, these assets will be deployed to the static Hugo site.',
+                labels: ['visuals', 'automated']
+              });
+
+              console.log(`✓ Pull request created: ${pr.data.html_url}`);
+              core.setOutput('pr_created', 'true');
+              core.setOutput('pr_number', pr.data.number);
+              core.setOutput('pr_url', pr.data.html_url);
+            } catch (error) {
+              console.error('Failed to create PR:', error);
+              throw error;
+            }
+
+      - name: Comment on PR
+        if: steps.pr.outputs.pr_created == 'true'
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ secrets.MARKETING_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+          script: |
+            const marketingRepo = '${{ github.event.inputs.marketing_repo }}' || 'ChurchCRM/marketing';
+            const [owner, repo] = marketingRepo.split('/');
+            const prNumber = parseInt('${{ steps.pr.outputs.pr_number }}');
+
+            const marketingRepoToken = '${{ secrets.MARKETING_REPO_TOKEN }}';
+            const token = marketingRepoToken || '${{ secrets.GITHUB_TOKEN }}';
+            const octokit = github.getOctokit(token);
+
+            await octokit.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: prNumber,
+              body: `### ✅ Visuals Generated\n\n` +
+                    `Generated from CRM commit: [\`${{ github.sha }}\`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\n\n` +
+                    `**Preview available in artifacts:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`
+            });
+
+  notify-completion:
+    name: Notify Completion
+    needs: [ generate-visuals, push-to-marketing ]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Check job status
+        run: |
+          if [ "${{ needs.generate-visuals.result }}" = "failure" ]; then
+            echo "❌ Visual generation failed"
+            exit 1
+          fi
+
+          if [ "${{ needs.push-to-marketing.result }}" = "failure" ]; then
+            echo "❌ PR creation failed"
+            exit 1
+          fi
+
+          echo "✅ Marketing visuals workflow completed successfully"
+
+      - name: Summary
+        run: |
+          echo "## Marketing Visuals Update" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Screenshots & videos generated" >> $GITHUB_STEP_SUMMARY
+          echo "✅ PR created on marketing repo" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Next Step:** Review and approve PR to deploy to Hugo site" >> $GITHUB_STEP_SUMMARY

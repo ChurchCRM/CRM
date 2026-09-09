@@ -49,4 +49,16 @@ if ! npm run --silent build:php:validate; then
 fi
 
 echo "✓ pre-commit: PHP syntax check passed."
+
+echo "→ pre-commit: validating YAML files (node scripts/validate-yaml.js)…"
+
+if ! node scripts/validate-yaml.js; then
+    echo ""
+    echo "✘ pre-commit: YAML validation failed in changed files."
+    echo "  Fix the YAML errors above and re-stage, or bypass in an emergency with:"
+    echo "  git commit --no-verify (justify in PR)."
+    exit 1
+fi
+
+echo "✓ pre-commit: YAML validation passed."
 exit 0
