@@ -175,6 +175,11 @@ class SundaySchoolService
             $person = $membership->getPerson();
             $pid = $person->getId();
 
+            // Skip deceased students
+            if ($person->isDeceased()) {
+                continue;
+            }
+
             // Deduplicate students enrolled in multiple classes
             if (isset($seenPersonIds[$pid])) {
                 continue;
@@ -228,7 +233,10 @@ class SundaySchoolService
 
         $members = [];
         foreach ($memberships as $membership) {
-            $members[] = $membership->getPerson();
+            $person = $membership->getPerson();
+            if ($person !== null && !$person->isDeceased()) {
+                $members[] = $person;
+            }
         }
 
         return $members;

@@ -1001,6 +1001,7 @@ function getEventRoster(Request $request, Response $response, array $args): Resp
         ->addAsColumn('CheckinDate', 'event_attend.checkin_date')
         ->addAsColumn('CheckoutDate', 'event_attend.checkout_date')
         ->addAsColumn('AttendStatus', '(CASE WHEN event_attend.event_id IS NOT NULL AND event_attend.checkout_date IS NULL AND event_attend.checkin_date IS NOT NULL THEN \'checked_in\' WHEN event_attend.checkout_date IS NOT NULL THEN \'checked_out\' ELSE \'not_checked_in\' END)')
+        ->filterByLiving()
         ->orderByLastName()
         ->orderByFirstName()
         ->find();
@@ -1175,7 +1176,22 @@ function checkinAll(Request $request, Response $response, array $args): Response
     }
 
     $checkedInCount = 0;
+    // Filter out deceased persons in one batch query — they cannot be checked in
+    if (!empty($uniquePersonIds)) {
+        $livingIds = PersonQuery::create()
+            ->filterById(array_keys($uniquePersonIds), Criteria::IN)
+            ->filterByLiving()
+            ->select(['Id'])
+            ->find()
+            ->toArray();
+        $livingIdSet = array_flip(array_map('intval', $livingIds));
+    } else {
+        $livingIdSet = [];
+    }
     foreach (array_keys($uniquePersonIds) as $personId) {
+        if (!isset($livingIdSet[$personId])) {
+            continue;
+        }
         $event->checkInPerson($personId);
         $checkedInCount++;
     }

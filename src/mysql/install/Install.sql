@@ -514,6 +514,7 @@ CREATE TABLE `person_per` (
   `per_BirthDay` tinyint(3) unsigned NOT NULL default '0',
   `per_BirthYear` smallint(4) unsigned default NULL,
   `per_MembershipDate` date default NULL,
+  `per_DateDeceased` date default NULL,
   `per_Gender` tinyint(1) unsigned NOT NULL default '0',
   `per_fmr_ID` tinyint(3) unsigned NOT NULL default '0',
   `per_cls_ID` tinyint(3) unsigned NOT NULL default '0',

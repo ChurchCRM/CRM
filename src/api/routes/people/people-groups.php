@@ -322,6 +322,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                 if ($person === null) {
                     continue;
                 }
+                if ($person->isDeceased()) {
+                    continue;
+                }
                 $personId = (int) $person->getId();
                 if (isset($doNotSmsSet[$personId])) {
                     continue;

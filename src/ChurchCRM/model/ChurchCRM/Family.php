@@ -129,6 +129,22 @@ class Family extends BaseFamily implements PhotoInterface
         return array_merge($familyMembersParents, $familyMembersChildren, $familyMembersOther);
     }
 
+    /**
+     * Returns only living (non-deceased) family members.
+     *
+     * @return Person[]
+     */
+    public function getLivingPeople(): array
+    {
+        $living = [];
+        foreach ($this->getPeople() as $person) {
+            if (!$person->isDeceased()) {
+                $living[] = $person;
+            }
+        }
+        return $living;
+    }
+
     public function getHeadPeople(): array
     {
         return $this->getPeopleByRole('sDirRoleHead');
