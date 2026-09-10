@@ -21,6 +21,43 @@ ChurchCRM uses a centralized `SystemConfig` class for:
 
 ---
 
+## HARD RULE — no new keys on the System Settings page <!-- learned: 2026-09-10 -->
+
+**Do not add a new key to `SystemConfig::buildCategories()`.** The big
+`/SystemSettings.php` list is frozen — it is already an overwhelming wall of
+toggles, and every addition makes it worse. New admin-editable settings go on
+the **dashboard `settingsPanel`** for the area they belong to, next to the
+data they affect:
+
+| Area | Dashboard | Settings container |
+|------|-----------|--------------------|
+| People / directory / self-registration | `/people/dashboard` | `#peopleSettings` |
+| Groups | `/groups/dashboard` | `#groupsSettings` |
+| Finance | `/finance/dashboard` | (add a panel if none) |
+| System-wide only (SSL, session timeout, updates) | `/admin` | still the System Settings page |
+
+**How to add a dashboard setting:**
+
+1. Define the `ConfigItem` in `SystemConfig::getConfigItems()` as usual — this
+   is what makes the value persist. **Do NOT** list its key in
+   `buildCategories()`.
+2. Add an entry to that dashboard view's `window.CRM.settingsPanel.init({ settings: [...] })`
+   array (`{ name, type: 'boolean'|'text'|'number'|'choice', label, tooltip }`).
+   The panel saves through `POST /admin/api/system/config/{key}` automatically.
+3. `label`/`tooltip` live in the JS config (wrapped in `gettext()` via
+   `InputUtils::jsonEncodeForScript()`), not in the `ConfigItem`.
+
+`bEnableSelfRegistration` and `bHideDeceasedFromDirectory` are the reference
+examples — both are `ConfigItem`s absent from `buildCategories()`, surfaced on
+`#peopleSettings`.
+
+**Moving an existing key off the System Settings page:** delete it from its
+`buildCategories()` array and add it to the relevant dashboard panel. The
+`ConfigItem` and every `getBooleanValue()` / `getValue()` call site stay
+untouched.
+
+---
+
 ## SystemConfig Basics
 
 ### Location
