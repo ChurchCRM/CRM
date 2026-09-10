@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-10 18:00+0000\n"
+"POT-Creation-Date: 2026-09-10 20:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,6 +156,10 @@ msgstr ""
 
 #, php-format
 msgid "%s of %s goal raised"
+msgstr ""
+
+#, php-format
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
 msgstr ""
 
 #, php-format
@@ -3274,6 +3278,9 @@ msgstr ""
 msgid "Dec"
 msgstr ""
 
+msgid "Deceased"
+msgstr ""
+
 msgid "December"
 msgstr ""
 
@@ -4447,6 +4454,9 @@ msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other charac
 msgstr ""
 
 msgid "Exclude Inactive Families"
+msgstr ""
+
+msgid "Exclude deceased members from the printed directory and CSV exports."
 msgstr ""
 
 msgid "Exclude from Email Export"
@@ -5927,6 +5937,9 @@ msgstr ""
 msgid "Head Count"
 msgstr ""
 
+msgid "Head of Household Update Needed"
+msgstr ""
+
 #. Context: countries
 msgid "Heard & McDonald Islands"
 msgstr ""
@@ -5953,6 +5966,9 @@ msgstr ""
 msgid "Hide Age"
 msgstr ""
 
+msgid "Hide Deceased from Directory"
+msgstr ""
+
 msgid "Hide Latitude/Longitude"
 msgstr ""
 
@@ -5960,6 +5976,9 @@ msgid "Hide Person Address"
 msgstr ""
 
 msgid "Hide advanced options"
+msgstr ""
+
+msgid "Hide deceased members from the printed directory and CSV exports."
 msgstr ""
 
 msgid "Highest Sale"
@@ -6906,6 +6925,9 @@ msgid "Lithuania (Lietuva)"
 msgstr ""
 
 msgid "Live Preview"
+msgstr ""
+
+msgid "Living"
 msgstr ""
 
 msgid "Load Authorized"
@@ -8224,6 +8246,9 @@ msgid "Not a valid Wedding Date"
 msgstr ""
 
 msgid "Not a valid date"
+msgstr ""
+
+msgid "Not a valid date of death"
 msgstr ""
 
 msgid "Not a valid end date"
@@ -11494,6 +11519,9 @@ msgstr ""
 msgid "This person already has a user account."
 msgstr ""
 
+msgid "This person is deceased"
+msgstr ""
+
 msgid "This plugin does not support connection testing."
 msgstr ""
 
@@ -13276,6 +13304,9 @@ msgid "day"
 msgstr ""
 
 msgid "days"
+msgstr ""
+
+msgid "deceased"
 msgstr ""
 
 msgid "deposit(s) with no payments"
