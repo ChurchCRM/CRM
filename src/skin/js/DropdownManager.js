@@ -9,7 +9,7 @@
  * These are fixed enumerations the user picks from by scrolling, not searchable
  * datasets, so every option has to be rendered. See issue #9677.
  */
-const FULL_LIST_TOM_SELECT_OPTIONS = { maxOptions: null };
+const FULL_LIST_TOM_SELECT_OPTIONS = Object.freeze({ maxOptions: null });
 
 class DropdownManager {
   /**
