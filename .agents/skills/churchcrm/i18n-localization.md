@@ -396,6 +396,44 @@ grep -rn "gettext('State')\|gettext('State / Province')" src webpack
 ```
 Not every `"X / Y"` label is a duplicate — some legitimately combine two distinct data concepts into one compound column header or checkbox (e.g. `"Class / Group"` in `kiosk/views/manager.php` covers rows that are either a class or a group; `"Role / Gender"` in `people/views/dashboard.php` covers two separate stat columns; `"Age / Years Married"` in `CSVExport.php` is a CSV column that means Age for a person row and Years Married for a couple row). Only merge when both sides genuinely label the *same single field*.
 
+### Regional English Spelling Overrides (en-GB / en-AU / en-CA) — Never Hand-Edit the Generated Files <!-- learned: 2026-09-10 -->
+
+Source strings use **US** spelling (`behavior`, `color`, `neighbor`, `enroll`, `catalog`, `centered`, `-ize`). British/Australian/Canadian spellings are delivered as *translations* of the `en` POEditor language and its `en-au` / `en-ca` variants.
+
+The files the app actually reads —
+
+```
+src/locale/i18n/en_GB.json          src/locale/textdomain/en_GB/LC_MESSAGES/messages.{po,mo}
+src/locale/i18n/en_AU.json           src/locale/textdomain/en_AU/LC_MESSAGES/messages.{po,mo}
+src/locale/i18n/en_CA.json           src/locale/textdomain/en_CA/LC_MESSAGES/messages.{po,mo}
+```
+
+— are **regenerated wholesale by `poeditor-downloader.js`** on every POEditor sync (commits titled `locale: update translations from POEditor`). Hand edits there are silently overwritten on the next sync. `msgfmt`-ing the `.mo` by hand is likewise pointless.
+
+**Correct workflow** — same async pipeline as every other translation:
+
+1. Fix the source string to US spelling (one canonical string per concept).
+2. Add the regional spelling to the missing-terms batch files, keyed by the **exact** US source string:
+   ```
+   locale/terms/missing/en/en-1.json        # poEditor code "en"  = English - Great Britain
+   locale/terms/missing/en-au/en-au-1.json   # poEditor code "en-au"
+   locale/terms/missing/en-ca/en-ca-1.json   # poEditor code "en-ca"
+   ```
+   (poEditor codes come from `src/locale/locales.json`; these three English variants are `skip_audit: true`, so the downloader never auto-creates the folders — create them by hand.)
+   ```jsonc
+   {
+     "Map centered on": "Map centred on",
+     "Two Factor Enrollment Error": "Two Factor Enrolment Error",
+     "Two-factor authentication is required. You have %d day to enroll.": {
+       "one":   "Two-factor authentication is required. You have %d day to enrol.",
+       "other": "Two-factor authentication is required. You have %d days to enrol."
+     }
+   }
+   ```
+3. A maintainer with `POEDITOR_TOKEN` runs `npm run locale:upload:missing -- --locale en,en-au,en-ca`; the download job then opens the sync PR that updates the generated files.
+
+**Canadian English is not British** — `en-ca` keeps `-ize` endings and `Recognized`/`organized`/`synchronized`, but takes `-our` (`colour`, `behaviour`, `neighbour`, `honour`), `-re` (`centre`, `centred`), `cheque`, `catalogue`, and `enrolment`. Only include the terms that actually differ for that variant.
+
 ### Pattern: Status Messages
 
 ```php

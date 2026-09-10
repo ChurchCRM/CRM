@@ -29,7 +29,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         ? (int) $params['year']
         : (int) DateTimeUtils::getCurrentYear();
 
-    // Month filter — null means "all months" (full-year view, default behaviour).
+    // Month filter — null means "all months" (full-year view, default behavior).
     // Clamp to 1-12; ignore out-of-range values.
     $EventMonth = null;
     if (!empty($params['month']) && $params['month'] !== 'All') {

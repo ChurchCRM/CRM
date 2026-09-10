@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-01 17:01+0000\n"
+"POT-Creation-Date: 2026-09-10 17:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -271,6 +271,9 @@ msgid "A downloadUrl is required to install a plugin."
 msgstr ""
 
 msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr ""
+
+msgid "A geocoding error occurred — try again later"
 msgstr ""
 
 msgid "A household. Stores the shared mailing address and home phone."
@@ -689,6 +692,9 @@ msgstr ""
 msgid "Address has been geocoded (coordinates stored)"
 msgstr ""
 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr ""
+
 msgid "Address is required"
 msgstr ""
 
@@ -850,6 +856,9 @@ msgid "All email sends failed. Please check your SMTP settings in System Setting
 msgstr ""
 
 msgid "All events and attendance records"
+msgstr ""
+
+msgid "All families already have coordinates."
 msgstr ""
 
 msgid "All financial data (pledges, payments, deposits)"
@@ -4840,7 +4849,13 @@ msgstr ""
 msgid "Failed to uninstall plugin"
 msgstr ""
 
+msgid "Failed to update coordinates"
+msgstr ""
+
 msgid "Failed to update donation fund"
+msgstr ""
+
+msgid "Failed to update family coordinates"
 msgstr ""
 
 msgid "Failed to update fundraiser"
@@ -5582,13 +5597,28 @@ msgstr ""
 msgid "Geocoded"
 msgstr ""
 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr ""
+
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr ""
+
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr ""
+
 msgid "Geocoding failed"
+msgstr ""
+
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
 msgstr ""
 
 msgid "Geocoding request failed. Please try again."
 msgstr ""
 
 msgid "Geocoding successful"
+msgstr ""
+
+msgid "Geocoding…"
 msgstr ""
 
 #. Context: countries
@@ -7910,6 +7940,9 @@ msgstr ""
 msgid "No active funds configured."
 msgstr ""
 
+msgid "No address on file"
+msgstr ""
+
 msgid "No anniversaries in the past or next 7 days"
 msgstr ""
 
@@ -8015,6 +8048,9 @@ msgid "No log files found."
 msgstr ""
 
 msgid "No logged in user"
+msgstr ""
+
+msgid "No match found — check the street address, city, and ZIP"
 msgstr ""
 
 msgid "No match found — select a field or leave as Ignore."
@@ -8266,6 +8302,9 @@ msgstr ""
 msgid "Number of checks for Deposit Slip Report"
 msgstr ""
 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr ""
+
 msgid "Number of lines to display"
 msgstr ""
 
@@ -8368,6 +8407,9 @@ msgid "Open MailChimp"
 msgstr ""
 
 msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr ""
+
+msgid "Open a family to fix its address, then run this again."
 msgstr ""
 
 msgid "Open in Apple Maps"
@@ -10498,6 +10540,9 @@ msgstr ""
 msgid "Set up a new fundraiser campaign or event"
 msgstr ""
 
+msgid "Set up now"
+msgstr ""
+
 msgid "Set your church name, address, and contact details"
 msgstr ""
 
@@ -11186,7 +11231,7 @@ msgstr ""
 msgid "That name already exists."
 msgstr ""
 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr ""
 
 #. plugin:custom-links:section:0:content
@@ -11397,6 +11442,9 @@ msgid "This event type is used by"
 msgstr ""
 
 msgid "This field is required"
+msgstr ""
+
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
 msgstr ""
 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
@@ -11866,6 +11914,12 @@ msgstr ""
 msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
 msgstr ""
 
+#, php-format
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Type"
 msgstr ""
 
@@ -12009,6 +12063,9 @@ msgstr ""
 msgid "Unknown error"
 msgstr ""
 
+msgid "Unknown family"
+msgstr ""
+
 msgid "Unmapped"
 msgstr ""
 
@@ -12051,7 +12108,16 @@ msgstr ""
 msgid "Update Admin Contact"
 msgstr ""
 
+msgid "Update All Coordinates"
+msgstr ""
+
+msgid "Update All Family Coordinates"
+msgstr ""
+
 msgid "Update Available"
+msgstr ""
+
+msgid "Update Coordinates"
 msgstr ""
 
 msgid "Update Envelopes"
@@ -13543,6 +13609,14 @@ msgid "yrs"
 msgstr ""
 
 msgctxt "one"
+msgid "{{count}} families could not be geocoded"
+msgstr ""
+
+msgctxt "other"
+msgid "{{count}} families could not be geocoded"
+msgstr ""
+
+msgctxt "one"
 msgid "{{count}} min left"
 msgstr ""
 
@@ -13563,4 +13637,12 @@ msgid ""
 "• Session duration and engagement\n"
 "• User demographics (if enabled in GA4)\n"
 "• Device and browser information"
+msgstr ""
+
+msgctxt "one"
+msgid "…and {{count}} more. Run again to see the rest."
+msgstr ""
+
+msgctxt "other"
+msgid "…and {{count}} more. Run again to see the rest."
 msgstr ""

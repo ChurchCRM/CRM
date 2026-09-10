@@ -103,7 +103,7 @@ describe("Finance Deposits", () => {
 
         // Create the deposit directly via the API to test server-side sanitization.
         // Using cy.request() here is intentional: the test targets the POST /api/deposits
-        // endpoint's sanitization behaviour, not the modal UI itself.  Typing the raw
+        // endpoint's sanitization behavior, not the modal UI itself.  Typing the raw
         // XSS payload (<script>…</script>) through a Bootstrap modal input is fragile
         // because Bootstrap's transition management can interrupt Cypress keystroke
         // delivery, causing only part of the value to be committed.
