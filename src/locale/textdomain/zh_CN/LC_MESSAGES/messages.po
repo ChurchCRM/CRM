@@ -13582,7 +13582,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 必须为 64 位十六进制字符串。"
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM 维护者尚未审核此插件。您对此处安装的任何内容的安全性和行为负全责。请尽可能使用“浏览已审核插件”流程。"
 
 #: 

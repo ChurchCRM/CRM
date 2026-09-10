@@ -3203,7 +3203,7 @@
   "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins.": "启用前请检查磁盘上的插件文件。未验证的插件与已审核的插件具有相同的权限运行。",
   "SHA-256 checksum": "SHA-256 校验和",
   "SHA-256 must be a 64-character hex string.": "SHA-256 必须为 64 位十六进制字符串。",
-  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.": "ChurchCRM 维护者尚未审核此插件。您对此处安装的任何内容的安全性和行为负全责。请尽可能使用“浏览已审核插件”流程。",
+  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.": "ChurchCRM 维护者尚未审核此插件。您对此处安装的任何内容的安全性和行为负全责。请尽可能使用“浏览已审核插件”流程。",
   "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet.": "已审核插件列表为空。目前尚无第三方插件可通过验证安装程序获取。",
   "The plugin was automatically disabled after a runtime failure.": "插件在运行时失败后已自动禁用。",
   "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically.": "这些插件已经 ChurchCRM 维护者审核并批准。点击“安装”下载并安装——插件不会自动启用。",

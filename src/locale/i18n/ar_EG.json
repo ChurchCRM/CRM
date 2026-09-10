@@ -3253,7 +3253,7 @@
   "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins.": "راجع ملفات الإضافة على القرص قبل التفعيل. تعمل الإضافات غير الموثقة بنفس صلاحيات الإضافات المعتمدة.",
   "SHA-256 checksum": "مجموع التحقق SHA-256",
   "SHA-256 must be a 64-character hex string.": "يجب أن يكون SHA-256 سلسلة سداسية عشرية مكونة من 64 حرفًا.",
-  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.": "لم يراجعه مشرفو ChurchCRM. أنت مسؤول عن أمان وسلوك كل ما تثبته هنا. يُفضَّل استخدام تدفق تصفح المعتمدة كلما أمكن.",
+  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.": "لم يراجعه مشرفو ChurchCRM. أنت مسؤول عن أمان وسلوك كل ما تثبته هنا. يُفضَّل استخدام تدفق تصفح المعتمدة كلما أمكن.",
   "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet.": "قائمة الإضافات المعتمدة فارغة. لا توجد إضافات خارجية متاحة عبر المثبّت الموثق بعد.",
   "The plugin was automatically disabled after a runtime failure.": "تم تعطيل الإضافة تلقائيًا بعد فشل وقت التشغيل.",
   "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically.": "تمت مراجعة هذه الإضافات والموافقة عليها من قِبَل مشرفي ChurchCRM. انقر على تثبيت للتنزيل والتثبيت — لن يتم تفعيل الإضافة تلقائيًا.",
