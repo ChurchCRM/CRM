@@ -27,6 +27,10 @@ This skill covers creating, managing, and extending ChurchCRM using the WordPres
 
 ## Plugin Architecture
 
+### Persistent community plugin data <!-- learned: 2026-09-08 -->
+
+Use the [community database migration API](../../../docs/plugins/database-migrations.md) for plugin tables: declare `"migrations": "migrations/migrations.json"` and `db.migrate`, obtain high-risk registry approval, and ship immutable forward SQL plus generated namespaced Perpl classes. Core migrates before loading/activating the plugin; never create tables in `activate()` or request handlers. Register generated table maps with `Propel::getServiceContainer()->initDatabaseMaps()` in `boot()` before ORM queries. Uninstall retains application tables/history and skips destructive callbacks; `plugin.{id}.*` settings still disappear.
+
 ChurchCRM uses a WordPress-style plugin architecture for extensibility. Plugins can add functionality without modifying core code.
 
 ### Core Files (`src/ChurchCRM/Plugin/`)
@@ -240,6 +244,7 @@ this list, open an issue before shipping.
 | Expose new HTTP routes via `routes/routes.php` | `network.inbound` |
 | Read rows via Propel queries (e.g. `PersonQuery::create()->find()`) | `db.read` |
 | Write rows via Propel (`->save()`, `doUpdate`, `doDelete`) | `db.write` |
+| Declare reviewed forward schema migrations executed by core | `db.migrate` (high risk; does not replace `db.read`/`db.write`) |
 | Store an API key or secret in its own config | `secrets.store` |
 | Inject HTML/JS/CSS into core pages via `getHeadContent()` / `getFooterContent()` | `ui.inject` |
 | Register a cron handler on `Hooks::CRON_RUN` | `cron` |

@@ -1,0 +1,5 @@
+{
+    "migrations": [
+        {"id": "0001_create_entries", "file": "migrations/0001_create_entries.sql"}
+    ]
+}

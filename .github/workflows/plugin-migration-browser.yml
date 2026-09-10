@@ -1,0 +1,97 @@
+name: CI — Plugin Migration Browser
+
+on:
+  pull_request:
+    paths:
+      - 'src/ChurchCRM/Plugin/**'
+      - 'src/plugins/**'
+      - 'tests/plugin-migrations/**'
+      - 'tests/fixtures/plugins/**'
+      - 'cypress/configs/plugin-migrations.config.ts'
+      - '.github/workflows/plugin-migration-browser.yml'
+  push:
+    branches: [feature/community-plugin-migrations]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      database:
+        image: mariadb:10.11
+        env:
+          MYSQL_ROOT_PASSWORD: browser-tests
+          MYSQL_DATABASE: churchcrm_plugin_migrations_browser_test
+        ports:
+          - 3306/tcp
+        options: >-
+          --health-cmd="mysqladmin ping --host=127.0.0.1 --protocol=tcp --silent -pbrowser-tests"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=30
+    env:
+      PLUGIN_MIGRATION_BROWSER_TEST: '1'
+      PLUGIN_BROWSER_DB_HOST: '127.0.0.1'
+      PLUGIN_BROWSER_DB_USER: root
+      PLUGIN_BROWSER_DB_PASSWORD: browser-tests
+      CYPRESS_BASE_URL: 'http://127.0.0.1:8097/'
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath
+          coverage: none
+      - name: Install locked dependencies and build real CRM assets
+        run: |
+          git rev-parse HEAD
+          php --version
+          npm ci
+          composer install --working-dir=src --no-dev --no-interaction --prefer-dist
+          npm run build:js
+          npm run build:signatures
+      - name: Initialize guarded synthetic database and real application
+        run: |
+          echo "PLUGIN_BROWSER_DB_PORT=${{ job.services.database.ports[3306] }}" >> "$GITHUB_ENV"
+          echo "PLUGIN_BROWSER_SESSION_DIR=$RUNNER_TEMP/plugin-browser-sessions" >> "$GITHUB_ENV"
+          mkdir -p "$RUNNER_TEMP/plugin-browser-sessions"
+      - name: Start loopback web server
+        run: |
+          php -d memory_limit=512M tests/plugin-migrations/browser/fixture.php initialize
+          php -d memory_limit=512M -S 127.0.0.1:8097 -t src tests/plugin-migrations/browser/router.php > "$RUNNER_TEMP/plugin-browser-server.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/plugin-browser-server.pid"
+          for attempt in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:8097/api/public/echo; then exit 0; fi
+            sleep 1
+          done
+          cat "$RUNNER_TEMP/plugin-browser-server.log"
+          exit 1
+      - name: Cypress real login, migration states and retained data
+        run: npx cypress run --config-file cypress/configs/plugin-migrations.config.ts --headless --browser electron --reporter junit --reporter-options 'mochaFile=cypress/reports/plugin-migrations-[hash].xml'
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: plugin-migration-browser-${{ github.run_id }}
+          path: |
+            cypress/reports/
+            cypress/screenshots/
+            src/logs/
+            ${{ runner.temp }}/plugin-browser-server.log
+          retention-days: 7
+      - name: Stop test server
+        if: always()
+        run: |
+          if test -f "$RUNNER_TEMP/plugin-browser-server.pid"; then
+            kill "$(cat "$RUNNER_TEMP/plugin-browser-server.pid")" || true
+          fi

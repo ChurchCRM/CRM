@@ -2,8 +2,11 @@
 
 namespace ChurchCRM\Plugin;
 
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\VersionUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Installs, uninstalls, and quarantines community plugins.
@@ -195,6 +198,13 @@ HTACCESS;
                     throw new \RuntimeException('Zip did not contain a top-level directory named ' . $pluginId);
                 }
 
+                $metadata = PluginMetadata::fromJsonFile($stagedDir . '/plugin.json');
+                if ($metadata === null) {
+                    throw new PluginMigrationException('The plugin manifest could not be read.');
+                }
+                PluginMigrationManager::validateApproval($metadata, $entry);
+                $migrationFingerprint = PluginMigrationManifest::fingerprint(PluginMigrationManifest::read($metadata));
+
                 self::ensureDir(dirname($destDir));
                 self::moveStagedToDest($stagedDir, $destDir);
 
@@ -210,6 +220,7 @@ HTACCESS;
                     'sha256' => $expectedSha,
                     'version' => $expectedVersion,
                     'installedAt' => date('c'),
+                    'migrationFingerprint' => $migrationFingerprint,
                 ]);
                 self::clearUnverifiedFlag($pluginId);
                 self::clearQuarantine($pluginId);
@@ -353,6 +364,9 @@ HTACCESS;
                 $manifestPath = $stagedDir . '/plugin.json';
                 $manifest = json_decode((string) @file_get_contents($manifestPath), true);
                 $installedVersion = is_array($manifest) ? (string) ($manifest['version'] ?? 'unknown') : 'unknown';
+                if (isset($manifest['migrations'])) {
+                    throw new PluginMigrationException('Migration packages must be installed from the approved registry.');
+                }
 
                 self::ensureDir(dirname($destDir));
                 self::moveStagedToDest($stagedDir, $destDir);
@@ -397,11 +411,9 @@ HTACCESS;
      * Steps, in order:
      *   1. Refuse if the plugin id is empty, reserved, or points at a
      *      core plugin directory. Core plugins are never deleted.
-     *   2. Disable the plugin (calls deactivate() + clears
-     *      plugin.{id}.enabled).
-     *   3. Call the plugin's uninstall() lifecycle hook so it can clean
-     *      up any external state (webhooks it registered with a
-     *      third-party service, for example).
+     *   2. Serialize removal with enable/migration operations.
+     *   3. For plugins without migrations/history, call deactivate() and
+     *      uninstall(). Migration plugins skip these destructive callbacks.
      *   4. Recursively delete src/plugins/community/{id}.
      *   5. Clear every plugin.{id}.* key from SystemConfig — this is
      *      what removes stored credentials, enablement state, and any
@@ -412,6 +424,12 @@ HTACCESS;
      * @return array{pluginId: string, removedKeys: list<string>}
      */
     public static function uninstall(string $pluginsPath, string $pluginId): array
+    {
+        return PluginMigrationManager::withLock($pluginId, static fn (): array => self::uninstallUnlocked($pluginsPath, $pluginId));
+    }
+
+    /** @return array{pluginId: string, removedKeys: list<string>} */
+    private static function uninstallUnlocked(string $pluginsPath, string $pluginId): array
     {
         $logger = LoggerUtils::getAppLogger();
         $pluginsPath = rtrim($pluginsPath, '/');
@@ -432,33 +450,45 @@ HTACCESS;
         // It's OK for the directory to be missing — config keys may
         // still need cleanup if a previous uninstall was interrupted.
 
-        // Call the lifecycle hooks if the plugin can still be loaded.
-        try {
-            $plugin = PluginManager::getPlugin($pluginId);
-            if ($plugin !== null) {
-                try {
-                    $plugin->deactivate();
-                } catch (\Throwable $e) {
-                    $logger->warning('Plugin deactivate() threw during uninstall', [
-                        'plugin' => $pluginId,
-                        'error' => $e->getMessage(),
-                    ]);
+        // Migration plugins retain all application data. Do not invoke legacy
+        // destructive uninstall/deactivate callbacks, even after a declaration
+        // was removed or the directory is missing. Configuration is separate.
+        $metadata = PluginManager::getPluginMetadata($pluginId);
+        $retainData = $metadata?->getMigrations() !== null || PluginMigrationManager::hasHistory($pluginId);
+        if ($retainData) {
+            // Persist disabled state before filesystem removal; failures must
+            // not leave a partially removed package operational on the next request.
+            SystemConfig::setValue("plugin.{$pluginId}.enabled", '0');
+            PluginManager::unloadPlugin($pluginId);
+        }
+        if (!$retainData) {
+            try {
+                $plugin = PluginManager::getPlugin($pluginId);
+                if ($plugin !== null) {
+                    try {
+                        $plugin->deactivate();
+                    } catch (\Throwable $e) {
+                        $logger->warning('Plugin deactivate() threw during uninstall', [
+                            'plugin' => $pluginId,
+                            'error' => $e->getMessage(),
+                        ]);
+                    }
+                    try {
+                        $plugin->uninstall();
+                    } catch (\Throwable $e) {
+                        $logger->warning('Plugin uninstall() threw; continuing', [
+                            'plugin' => $pluginId,
+                            'error' => $e->getMessage(),
+                        ]);
+                    }
                 }
-                try {
-                    $plugin->uninstall();
-                } catch (\Throwable $e) {
-                    $logger->warning('Plugin uninstall() threw; continuing', [
-                        'plugin' => $pluginId,
-                        'error' => $e->getMessage(),
-                    ]);
-                }
+            } catch (\Throwable $e) {
+                // Plugin load itself failed — still continue with removal.
+                $logger->warning('Could not load plugin during uninstall', [
+                    'plugin' => $pluginId,
+                    'error' => $e->getMessage(),
+                ]);
             }
-        } catch (\Throwable $e) {
-            // Plugin load itself failed — still continue with removal.
-            $logger->warning('Could not load plugin during uninstall', [
-                'plugin' => $pluginId,
-                'error' => $e->getMessage(),
-            ]);
         }
 
         // Delete on-disk files.
@@ -491,7 +521,7 @@ HTACCESS;
     private static function recordProvenance(string $pluginId, array $data): void
     {
         try {
-            \ChurchCRM\dto\SystemConfig::setValue(
+            SystemConfig::setValue(
                 "plugin.{$pluginId}.provenance",
                 (string) json_encode($data)
             );
@@ -506,7 +536,7 @@ HTACCESS;
     private static function setUnverifiedFlag(string $pluginId): void
     {
         try {
-            \ChurchCRM\dto\SystemConfig::setValue("plugin.{$pluginId}.unverified", '1');
+            SystemConfig::setValue("plugin.{$pluginId}.unverified", '1');
         } catch (\Throwable $e) {
             LoggerUtils::getAppLogger()->warning('Could not set unverified flag', [
                 'plugin' => $pluginId,
@@ -518,7 +548,7 @@ HTACCESS;
     private static function clearUnverifiedFlag(string $pluginId): void
     {
         try {
-            \ChurchCRM\dto\SystemConfig::setValue("plugin.{$pluginId}.unverified", '0');
+            SystemConfig::setValue("plugin.{$pluginId}.unverified", '0');
         } catch (\Throwable $e) {
             // Non-fatal — unverified state is advisory.
         }
@@ -527,8 +557,8 @@ HTACCESS;
     private static function clearQuarantine(string $pluginId): void
     {
         try {
-            \ChurchCRM\dto\SystemConfig::setValue("plugin.{$pluginId}.quarantined", '');
-            \ChurchCRM\dto\SystemConfig::setValue("plugin.{$pluginId}.quarantineReason", '');
+            SystemConfig::setValue("plugin.{$pluginId}.quarantined", '');
+            SystemConfig::setValue("plugin.{$pluginId}.quarantineReason", '');
         } catch (\Throwable $e) {
             // Non-fatal.
         }
@@ -552,8 +582,8 @@ HTACCESS;
             // config_cfg.cfg_name is exposed as `Name` via Propel
             // (phpName="Name" in orm/schema.xml). Use filterByName with
             // Criteria::LIKE for the prefix match.
-            $rows = \ChurchCRM\model\ChurchCRM\ConfigQuery::create()
-                ->filterByName($prefix . '%', \Propel\Runtime\ActiveQuery\Criteria::LIKE)
+            $rows = ConfigQuery::create()
+                ->filterByName($prefix . '%', Criteria::LIKE)
                 ->find();
 
             foreach ($rows as $row) {
@@ -781,6 +811,8 @@ HTACCESS;
         // A future ZipArchive change or a quirk in a non-Unix-host zip
         // could otherwise sneak past the in-zip mode check.
         self::assertNoSymlinksUnder($destRoot . '/' . $pluginId);
+        $metadata = new PluginMetadata($manifest, $destRoot . '/' . $pluginId);
+        PluginMigrationManifest::read($metadata);
     }
 
     /**

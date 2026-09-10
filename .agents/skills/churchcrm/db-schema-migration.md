@@ -100,6 +100,8 @@ Register the cleanup script in `upgrade.json` `current` block using the two-bloc
 
 `src/mysql/install/Install.sql` is the canonical schema for **new installs**. Whenever you add an upgrade SQL that alters a table (charset, new column, dropped column, index change), you **must also apply the same change in Install.sql** so fresh installations are identical to upgraded ones.
 
+**Community plugin tables** <!-- learned: 2026-09-08 --> follow the [plugin migration contract](../../../docs/plugins/database-migrations.md). Only the core-owned `plugin_migration_pmg` ledger belongs in core schema/install/upgrade SQL; community tables belong in approved plugin-local SQL manifests. Do not place plugin migration history in configuration or create tables inside `activate()`.
+
 **Always update Install.sql. Ask the user before editing seed.sql** — it contains Cypress test data that may need regeneration.
 
 Checklist for any `ALTER TABLE` migration:

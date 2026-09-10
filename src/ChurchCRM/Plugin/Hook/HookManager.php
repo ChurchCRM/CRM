@@ -32,6 +32,34 @@ use ChurchCRM\Utils\LoggerUtils;
  */
 class HookManager
 {
+    private static ?string $registrationOwner = null;
+    /** @var array<string, list<array{string, string, callable, int}>> */
+    private static array $ownedCallbacks = [];
+
+    /** Capture lifecycle hook registrations so core can detach without plugin code. */
+    public static function forPlugin(string $pluginId, callable $operation): void
+    {
+        $previous = self::$registrationOwner;
+        self::$registrationOwner = $pluginId;
+        try {
+            $operation();
+        } finally {
+            self::$registrationOwner = $previous;
+        }
+    }
+
+    public static function removePluginCallbacks(string $pluginId): void
+    {
+        foreach (self::$ownedCallbacks[$pluginId] ?? [] as [$kind, $name, $callback, $priority]) {
+            if ($kind === 'action') {
+                self::removeAction($name, $callback, $priority);
+            } else {
+                self::removeFilter($name, $callback, $priority);
+            }
+        }
+        unset(self::$ownedCallbacks[$pluginId]);
+    }
+
     /**
      * Registered action callbacks.
      *
@@ -76,6 +104,9 @@ class HookManager
             self::$actions[$hookName][$priority] = [];
         }
         self::$actions[$hookName][$priority][] = $callback;
+        if (self::$registrationOwner !== null) {
+            self::$ownedCallbacks[self::$registrationOwner][] = ['action', $hookName, $callback, $priority];
+        }
     }
 
     /**
@@ -157,6 +188,9 @@ class HookManager
             self::$filters[$hookName][$priority] = [];
         }
         self::$filters[$hookName][$priority][] = $callback;
+        if (self::$registrationOwner !== null) {
+            self::$ownedCallbacks[self::$registrationOwner][] = ['filter', $hookName, $callback, $priority];
+        }
     }
 
     /**
@@ -284,6 +318,8 @@ class HookManager
      */
     public static function reset(): void
     {
+        self::$registrationOwner = null;
+        self::$ownedCallbacks = [];
         self::$actions = [];
         self::$filters = [];
         self::$actionCounts = [];

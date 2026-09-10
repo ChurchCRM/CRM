@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" namespace="ChurchCRM\Plugins\MigrationExample\Model" package="Model" defaultIdMethod="native">
+    <table name="plugin_migration_example__entries" phpName="Entry">
+        <column name="id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="label" phpName="Label" type="VARCHAR" size="100" required="true"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+</database>

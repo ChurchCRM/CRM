@@ -2,7 +2,9 @@
 
 namespace ChurchCRM\Plugin;
 
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
@@ -34,6 +36,8 @@ class PluginManager
      * @var array<string, PluginInterface>
      */
     private static array $loadedPlugins = [];
+    /** @var array<string, string> Schema readiness failures shown in plugin management. */
+    private static array $migrationErrors = [];
 
     /**
      * Whether the manager has been initialized.
@@ -90,7 +94,14 @@ class PluginManager
                     $manifestPath = $dir->getPathname() . '/plugin.json';
                     $metadata = PluginMetadata::fromJsonFile($manifestPath);
 
+                    if ($metadata !== null && ($metadata->getType() !== $type || $metadata->getId() !== $dir->getFilename())) {
+                        throw new \RuntimeException('Plugin identity and type must match its installation directory.');
+                    }
+
                     if ($metadata !== null && $metadata->isValid()) {
+                        if (isset(self::$discoveredPlugins[$metadata->getId()])) {
+                            throw new \RuntimeException('Plugin identity is already reserved by another installed plugin.');
+                        }
                         self::$discoveredPlugins[$metadata->getId()] = $metadata;
 
                         LoggerUtils::getAppLogger()->debug("Discovered plugin: {$metadata->getId()}", [
@@ -117,6 +128,8 @@ class PluginManager
             if (self::isPluginActive($pluginId)) {
                 try {
                     self::loadPlugin($pluginId);
+                } catch (PluginMigrationException $e) {
+                    self::$migrationErrors[$pluginId] = $e->getMessage();
                 } catch (\Throwable $e) {
                     LoggerUtils::getAppLogger()->error(
                         "Failed to load plugin: $pluginId",
@@ -161,6 +174,11 @@ class PluginManager
             return null;
         }
 
+        // Validate schema before autoloading even the plugin's main class.
+        if ($metadata->getType() === 'community') {
+            PluginMigrationManager::assertCurrent($metadata);
+        }
+
         // Register plugin autoloader
         self::registerPluginAutoloader($metadata);
 
@@ -187,7 +205,16 @@ class PluginManager
         }
 
         // Boot the plugin
-        $plugin->boot();
+        if ($metadata->getMigrations() !== null) {
+            try {
+                HookManager::forPlugin($pluginId, fn () => $plugin->boot());
+            } catch (\Throwable $e) {
+                HookManager::removePluginCallbacks($pluginId);
+                throw $e;
+            }
+        } else {
+            $plugin->boot();
+        }
 
         self::$loadedPlugins[$pluginId] = $plugin;
 
@@ -238,6 +265,9 @@ class PluginManager
      */
     public static function isPluginActive(string $pluginId): bool
     {
+        if (isset(self::$migrationErrors[$pluginId])) {
+            return false;
+        }
         if (self::isPluginQuarantined($pluginId)) {
             return false;
         }
@@ -297,7 +327,7 @@ class PluginManager
             ]);
         }
 
-        unset(self::$loadedPlugins[$pluginId]);
+        self::unloadPlugin($pluginId);
 
         LoggerUtils::getAppLogger()->warning('Plugin quarantined', [
             'plugin' => $pluginId,
@@ -427,6 +457,25 @@ class PluginManager
     public static function enablePlugin(string $pluginId): bool
     {
         $metadata = self::$discoveredPlugins[$pluginId] ?? null;
+        if ($metadata !== null && $metadata->getType() === 'community'
+            && ($metadata->getMigrations() !== null || PluginMigrationManager::hasHistory($pluginId))) {
+            return PluginMigrationManager::withLock($pluginId, static function () use ($pluginId): bool {
+                try {
+                    return self::enablePluginUnlocked($pluginId);
+                } catch (PluginMigrationException $e) {
+                    self::$migrationErrors[$pluginId] = $e->getMessage();
+                    self::unloadPlugin($pluginId);
+                    throw $e;
+                }
+            });
+        }
+
+        return self::enablePluginUnlocked($pluginId);
+    }
+
+    private static function enablePluginUnlocked(string $pluginId): bool
+    {
+        $metadata = self::$discoveredPlugins[$pluginId] ?? null;
         if ($metadata === null) {
             throw new \RuntimeException("Plugin not found: $pluginId");
         }
@@ -457,6 +506,12 @@ class PluginManager
             );
         }
 
+        // Apply reviewed schema changes during explicit enable, never at boot.
+        if ($metadata->getType() === 'community') {
+            PluginMigrationManager::migrate($metadata);
+            unset(self::$migrationErrors[$pluginId]);
+        }
+
         // Load the plugin
         $plugin = self::loadPlugin($pluginId);
         if ($plugin === null) {
@@ -464,7 +519,16 @@ class PluginManager
         }
 
         // Call activate hook
-        $plugin->activate();
+        if ($metadata->getMigrations() !== null) {
+            try {
+                HookManager::forPlugin($pluginId, fn () => $plugin->activate());
+            } catch (\Throwable $e) {
+                self::unloadPlugin($pluginId);
+                throw $e;
+            }
+        } else {
+            $plugin->activate();
+        }
 
         // Save state to SystemConfig
         $enabledKey = "plugin.{$pluginId}.enabled";
@@ -481,6 +545,16 @@ class PluginManager
      * @throws \RuntimeException If plugin not found or if other plugins depend on this one
      */
     public static function disablePlugin(string $pluginId): bool
+    {
+        $metadata = self::$discoveredPlugins[$pluginId] ?? null;
+        if ($metadata !== null && $metadata->getType() === 'community'
+            && ($metadata->getMigrations() !== null || PluginMigrationManager::hasHistory($pluginId))) {
+            return PluginMigrationManager::withLock($pluginId, static fn (): bool => self::disablePluginUnlocked($pluginId));
+        }
+        return self::disablePluginUnlocked($pluginId);
+    }
+
+    private static function disablePluginUnlocked(string $pluginId): bool
     {
         // Verify the plugin exists
         $metadata = self::$discoveredPlugins[$pluginId] ?? null;
@@ -503,7 +577,7 @@ class PluginManager
         }
 
         // Remove from loaded plugins
-        unset(self::$loadedPlugins[$pluginId]);
+        self::unloadPlugin($pluginId);
 
         // Save state to SystemConfig
         $enabledKey = "plugin.{$pluginId}.enabled";
@@ -540,6 +614,13 @@ class PluginManager
         return self::$loadedPlugins[$pluginId] ?? null;
     }
 
+    /** Detach core-managed runtime state without invoking destructive callbacks. @internal */
+    public static function unloadPlugin(string $pluginId): void
+    {
+        HookManager::removePluginCallbacks($pluginId);
+        unset(self::$loadedPlugins[$pluginId]);
+    }
+
     /**
      * Get metadata for a discovered plugin.
      */
@@ -571,7 +652,7 @@ class PluginManager
             try {
                 $plugin = self::$loadedPlugins[$id] ?? null;
                 $isActive = self::isPluginActive($id);
-                $configError = $plugin?->getConfigurationError();
+                $configError = self::$migrationErrors[$id] ?? $plugin?->getConfigurationError();
                 $verification = self::getVerificationStatus($id);
                 $quarantineReason = self::getQuarantineReason($id);
                 $registryEntry = $metadata->getType() === 'community'
@@ -594,6 +675,7 @@ class PluginManager
                     'hasTest' => $metadata->hasTest(),
                     'hasError' => $configError !== null,
                     'errorMessage' => $configError,
+                    'migrationError' => isset(self::$migrationErrors[$id]),
                     // Verification + quarantine fields.
                     'verified' => $verification['verified'],
                     'verificationSource' => $verification['source'],
@@ -605,6 +687,7 @@ class PluginManager
                     'risk' => $registryEntry['risk'] ?? null,
                     'riskSummary' => $registryEntry['riskSummary'] ?? null,
                     'permissions' => $registryEntry['permissions'] ?? null,
+                    'migrations' => $metadata->getMigrations(),
                     // Admin-only: can this entry be deleted from disk?
                     'canUninstall' => $metadata->getType() === 'community',
                 ];
@@ -703,8 +786,12 @@ class PluginManager
      */
     public static function reset(): void
     {
+        foreach (array_keys(self::$loadedPlugins) as $pluginId) {
+            self::unloadPlugin($pluginId);
+        }
         self::$discoveredPlugins = [];
         self::$loadedPlugins = [];
+        self::$migrationErrors = [];
         self::$initialized = false;
     }
 
@@ -900,7 +987,7 @@ class PluginManager
         // Resources end up at window.CRM.plugins.{pluginId}.i18n — the
         // frontend does NOT need any changes to locale-loader.js.
         try {
-            $localeInfo = \ChurchCRM\Bootstrapper::getCurrentLocale();
+            $localeInfo = Bootstrapper::getCurrentLocale();
             $currentLocale = $localeInfo->getLocale() ?: 'en_US';
         } catch (\Throwable $e) {
             $currentLocale = 'en_US';
@@ -991,7 +1078,13 @@ class PluginManager
                 }
 
                 // Include the routes file - it has access to $app
-                require $routesPath;
+                if ($metadata->getMigrations() !== null) {
+                    HookManager::forPlugin($pluginId, static function () use ($routesPath, $app): void {
+                        require $routesPath;
+                    });
+                } else {
+                    require $routesPath;
+                }
 
                 LoggerUtils::getAppLogger()->debug(
                     "Loaded plugin routes: $pluginId",

@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -115,7 +115,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                         <i class="fa-solid fa-circle-question"></i>
                     </button>
                 <?php endif; ?>
-                <?php if (!$hasError): ?>
+                <?php if (!$hasError || !empty($plugin['migrationError'])): ?>
                     <?php if ($isActive): ?>
                         <button type="button" class="btn btn-tool btn-plugin-toggle text-danger"
                                 data-action="disable" data-plugin-id="<?= $pluginId ?>"
@@ -166,7 +166,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                         <i class="fa-solid fa-shield-halved me-2"></i><?= gettext('Unverified plugin') ?>
                     </h4>
                     <p class="mb-1"><?= htmlspecialchars((string) ($verificationReason ?? gettext('This plugin is not on the ChurchCRM approved plugin list.'))) ?></p>
-                    <p class="mb-0 small"><?= gettext('Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins.') ?></p>
+                    <p class="mb-0 small"><?= gettext('Review the plugin files on disk before enabling. Database migrations require an approved plugin release.') ?></p>
                 </div>
             <?php endif; ?>
             <?php if ($isCommunity && $isVerified && $riskSummary !== null): ?>
@@ -180,6 +180,11 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($plugin['migrations'])): ?>
+                <div class="alert alert-warning mb-3" role="alert">
+                    <?= gettext('Enabling this plugin applies database schema changes. Back up the database first. Uninstalling preserves its application tables and migration history.') ?>
                 </div>
             <?php endif; ?>
             <p class="text-body-secondary mb-2"><?= htmlspecialchars($plugin['description']) ?></p>
@@ -671,6 +676,7 @@ $(document).ready(function() {
         $.ajax({
             url: window.CRM.root + '/plugins/api/plugins/' + pluginId + '/' + action,
             method: 'POST',
+            headers: { 'X-CSRF-Token': <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken()) ?> },
             dataType: 'json',
             contentType: 'application/json'
         })

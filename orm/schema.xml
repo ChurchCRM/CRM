@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore" nameSpace="ChurchCRM\model\ChurchCRM">
 
+    <table name="plugin_migration_pmg" idMethod="none" phpName="PluginMigration" description="Persistent plugin migration history; null AppliedAt indicates an interrupted or failed attempt">
+        <column name="pmg_PluginId" phpName="PluginId" type="VARCHAR" size="40" primaryKey="true" required="true">
+            <vendor type="mysql"><parameter name="Charset" value="ascii"/><parameter name="Collation" value="ascii_bin"/></vendor>
+        </column>
+        <column name="pmg_MigrationId" phpName="MigrationId" type="VARCHAR" size="95" primaryKey="true" required="true">
+            <vendor type="mysql"><parameter name="Charset" value="ascii"/><parameter name="Collation" value="ascii_bin"/></vendor>
+        </column>
+        <column name="pmg_Checksum" phpName="Checksum" type="CHAR" size="64" required="true">
+            <vendor type="mysql"><parameter name="Charset" value="ascii"/><parameter name="Collation" value="ascii_bin"/></vendor>
+        </column>
+        <column name="pmg_StartedAt" phpName="StartedAt" type="TIMESTAMP" required="true"/>
+        <column name="pmg_AppliedAt" phpName="AppliedAt" type="TIMESTAMP"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+            <parameter name="Charset" value="utf8mb4"/>
+            <parameter name="Collate" value="utf8mb4_unicode_ci"/>
+        </vendor>
+    </table>
+
     <table name="version_ver" idMethod="native" phpName="Version" description="History of all version upgrades applied to this database">
         <column name="ver_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>

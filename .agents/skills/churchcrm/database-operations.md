@@ -20,6 +20,10 @@ This skill covers all database access patterns using Perpl ORM (actively maintai
 
 ## Perpl ORM Critical Differences from Propel
 
+### Community plugin model distribution <!-- learned: 2026-09-08 -->
+
+Plugin-owned tables use the [community migration API](../../../docs/plugins/database-migrations.md), not raw SQL in plugin runtime code. Generate namespaced Perpl models during the plugin build and ship Base/Map/model/query classes under its existing namespace autoloader. Register generated table maps with `Propel::getServiceContainer()->initDatabaseMaps(['default' => [EntryTableMap::class]])` in plugin boot; autoloading alone does not register Perpl 2.6 maps. Core ledger model additions also need `src/Include/LoadDatabaseMap.php`, alongside schema and SQL updates.
+
 ChurchCRM uses **Perpl ORM** (`perplorm/perpl`), an actively maintained fork of Propel2 with PHP 8.4+ support and 30-50% faster query building. All Propel patterns still apply, but note these **critical differences**:
 
 ### withColumn() - Use TableMap Constants (REQUIRED)

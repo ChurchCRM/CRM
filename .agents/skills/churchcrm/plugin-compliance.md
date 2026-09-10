@@ -193,6 +193,8 @@ If you find writes outside the plugin's sandboxed config methods
 `permissions` list includes `db.write`. If it doesn't, the plugin is
 out of compliance with its registry entry — disable it and report.
 
+**Schema changes** <!-- learned: 2026-09-08 --> require the separate `db.migrate` tag in plugin.json and the registry, plus high risk. Run `php scripts/plugin-scan.php <plugin-dir>` to validate declared resources and report checksums; raw schema SQL in runtime handlers remains forbidden. Follow [database migrations](../../../docs/plugins/database-migrations.md) for backups, unresolved attempts and persistent uninstall semantics.
+
 ### 3e. Optional: run `php-malware-scanner`
 
 ```bash
@@ -220,9 +222,9 @@ curl -s -X DELETE \
 The uninstall flow:
 
 1. Refuses to touch core plugins — core plugins can only be disabled.
-2. Calls the plugin's `deactivate()` and `uninstall()` lifecycle
-   hooks so it can tear down external state (webhooks, scheduled
-   jobs the plugin registered).
+2. Serializes with enable/migrations. Calls legacy `deactivate()` and `uninstall()`
+   hooks only for plugins without a migration declaration or history. Migration
+   plugins skip both callbacks during removal and retain tables and core ledger.
 3. Recursively deletes `src/plugins/community/{id}/`.
 4. Clears every `plugin.{id}.*` row from SystemConfig (stored
    credentials, enablement state, plugin-specific settings).

@@ -11,7 +11,9 @@
  *   cd src && composer run orm-gen
  */
 
-$serviceContainer = \Propel\Runtime\Propel::getServiceContainer();
+use Propel\Runtime\Propel;
+
+$serviceContainer = Propel::getServiceContainer();
 $serviceContainer->initDatabaseMapFromDumps([
     'default' => [
         'tablesByName' => [
@@ -47,6 +49,7 @@ $serviceContainer->initDatabaseMapFromDumps([
             'person_custom_master' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PersonCustomMasterTableMap',
             'person_per' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PersonTableMap',
             'pledge_plg' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PledgeTableMap',
+            'plugin_migration_pmg' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PluginMigrationTableMap',
             'property_pro' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PropertyTableMap',
             'propertytype_prt' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PropertyTypeTableMap',
             'query_qry' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PredefinedReportsTableMap',
@@ -95,6 +98,7 @@ $serviceContainer->initDatabaseMapFromDumps([
             '\\PersonCustomMaster' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PersonCustomMasterTableMap',
             '\\Person' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PersonTableMap',
             '\\Pledge' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PledgeTableMap',
+            '\\ChurchCRM\\model\\ChurchCRM\\PluginMigration' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PluginMigrationTableMap',
             '\\Property' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PropertyTableMap',
             '\\PropertyType' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PropertyTypeTableMap',
             '\\PredefinedReports' => '\\ChurchCRM\\model\\ChurchCRM\\Map\\PredefinedReportsTableMap',

@@ -32,6 +32,15 @@
 
 declare(strict_types=1);
 
+use ChurchCRM\Plugin\PluginMetadata;
+use ChurchCRM\Plugin\PluginMigrationManifest;
+
+// Share the core's read-only migration validator. Never autoload plugin code.
+require_once __DIR__ . '/../src/ChurchCRM/Plugin/PluginMigrationException.php';
+require_once __DIR__ . '/../src/ChurchCRM/Plugin/ApprovedPluginRegistry.php';
+require_once __DIR__ . '/../src/ChurchCRM/Plugin/PluginMetadata.php';
+require_once __DIR__ . '/../src/ChurchCRM/Plugin/PluginMigrationManifest.php';
+
 // ──────────────────────────────────────────────────────────────────
 //  Constants — declared at the top of the file so they are defined
 //  before the IIFE at the bottom runs. Top-level `const` in PHP is
@@ -67,6 +76,7 @@ const DANGEROUS_SINKS = [
     ['\\bsystem\\s*\\(', 'error', 'system() invokes a shell.'],
     ['\\bproc_open\\s*\\(', 'error', 'proc_open() invokes a shell.'],
     ['\\bpcntl_exec\\s*\\(', 'error', 'pcntl_exec() invokes a shell.'],
+    ['(?:->|::)(?:exec|query|prepare)\\s*\\(', 'warning', 'Direct SQL execution requires review. Plugin runtime data access must use Propel; schema SQL belongs only in declared migrations executed by core.'],
     ['\\bextract\\s*\\(\\s*\\$_', 'error', 'extract() on $_POST/$_GET/$_REQUEST is a variable injection sink.'],
     ['\\bparse_str\\s*\\(\\s*\\$_', 'error', 'parse_str() on user input is a variable injection sink.'],
     ['\\bunserialize\\s*\\(', 'warning', 'unserialize() is dangerous on attacker-reachable input; document its source.'],
@@ -208,6 +218,21 @@ function checkManifest(string $pluginDir, array &$findings): void
         }
     }
 
+    try {
+        $metadata = new PluginMetadata($data, $pluginDir);
+        $migrations = PluginMigrationManifest::read($metadata);
+        if ($metadata->getMigrations() !== null) {
+            $findings[] = finding('info', 'capability.db.migrate', 'plugin.json', 0,
+                'Requires db.migrate in the approved registry, high risk, and two maintainer reviews. Application tables and history survive uninstall.');
+            foreach ($migrations as $migration) {
+                $findings[] = finding('info', 'migration.checksum', $migration['file'], 0,
+                    $migration['id'] . ' SHA-256 ' . $migration['checksum']);
+            }
+        }
+    } catch (Throwable $e) {
+        $findings[] = finding('error', 'manifest.migrations', 'plugin.json', 0, $e->getMessage());
+    }
+
     // Risk / permissions hints.
     $findings[] = finding('info', 'manifest.summary', 'plugin.json', 0,
         'Manifest ok: id=' . ($data['id'] ?? '?') .
@@ -223,6 +248,9 @@ function checkManifest(string $pluginDir, array &$findings): void
 
 function walkPluginFiles(string $pluginDir, array &$findings, array &$summary): void
 {
+    $manifest = json_decode((string) @file_get_contents($pluginDir . '/plugin.json'), true);
+    $declaresMigrations = is_array($manifest) && is_string($manifest['migrations'] ?? null)
+        && is_array($manifest['permissions'] ?? null) && in_array('db.migrate', $manifest['permissions'], true);
     $iter = new RecursiveIteratorIterator(
         new RecursiveDirectoryIterator($pluginDir, FilesystemIterator::SKIP_DOTS),
         RecursiveIteratorIterator::SELF_FIRST
@@ -255,6 +283,9 @@ function walkPluginFiles(string $pluginDir, array &$findings, array &$summary): 
 
         // Extension allowlist / denylist.
         $ext = strtolower((string) pathinfo($basename, PATHINFO_EXTENSION));
+        if ($ext === 'sql' && !$declaresMigrations) {
+            $findings[] = finding('error', 'migration.undeclared', $rel, 0, 'Shipping SQL requires a migrations manifest and explicit db.migrate permission. Keep development-only SQL out of release packages.');
+        }
         if ($ext === '') {
             if (!in_array(strtoupper($basename), ['LICENSE', 'README', 'CHANGELOG', 'NOTICE'], true)) {
                 $findings[] = finding('error', 'ext.missing', $rel, 0, 'File has no extension.');

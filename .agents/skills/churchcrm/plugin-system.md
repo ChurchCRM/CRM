@@ -29,12 +29,15 @@ ChurchCRM uses a plugin system for:
 | Component | Location | Purpose |
 |-----------|----------|---------|
 | **PluginManager** | `src/ChurchCRM/Plugin/PluginManager.php` | Discovery, loading, activation (static class) |
+| **PluginMigrationManager / PluginMigrationManifest** | `src/ChurchCRM/Plugin/` | Approved forward DDL before plugin boot; persistent Propel ledger, immutable resources and lifecycle locking |
 | **AbstractPlugin** | `src/ChurchCRM/Plugin/AbstractPlugin.php` | Base class for all plugins |
 | **PluginInterface** | `src/ChurchCRM/Plugin/PluginInterface.php` | Plugin contract/interface |
 | **HookManager** | `src/ChurchCRM/Plugin/Hook/HookManager.php` | WordPress-style actions & filters |
 | **Hooks** | `src/ChurchCRM/Plugin/Hooks.php` | Hook point constants |
 
 ### Plugin Locations
+
+**Community schema lifecycle (development API)** <!-- learned: 2026-09-08 -->: see [database migrations](../../../docs/plugins/database-migrations.md). Install validates resources, explicit Admin enable runs pending SQL before any plugin PHP, and normal boot checks readiness without DDL. Disable leaves history/tables intact; uninstall retains them and skips migration plugins' legacy callbacks. This replaces any guidance to create database tables in `activate()`.
 
 | Type | Path | Scope |
 |------|------|-------|
@@ -493,6 +496,8 @@ $this->setConfigValue('lastSync', date('c'));        // Sets plugin.mailchimp.la
 ---
 
 ## Hook System
+
+**Migration plugin callback ownership** <!-- learned: 2026-09-08 -->: core captures action/filter registrations during boot, activation and route registration using `HookManager::forPlugin()`. `PluginManager::unloadPlugin()` detaches those registrations without invoking plugin callbacks on disable/quarantine/failure/reset/uninstall. This does not stop already-running requests, remove routes from existing Slim collectors or cancel external schedulers; maintenance must quiesce those writers. See [recovery](../../../docs/plugins/migration-recovery.md).
 
 ### Available Hook Points
 

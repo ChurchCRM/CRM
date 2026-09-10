@@ -1,0 +1,16 @@
+{
+    "id": "migration-example",
+    "name": "Migration Example",
+    "description": "Test fixture for retained plugin schema and generated Propel models.",
+    "version": "1.0.0",
+    "author": "ChurchCRM contributors",
+    "type": "community",
+    "minimumCRMVersion": "7.7.0",
+    "mainClass": "ChurchCRM\\Plugins\\MigrationExample\\MigrationExamplePlugin",
+    "permissions": ["db.migrate", "db.read", "db.write", "cron", "network.inbound"],
+    "migrations": "migrations/migrations.json",
+    "routesFile": "routes/routes.php",
+    "settings": [],
+    "hooks": ["cron.run"],
+    "menuItems": []
+}

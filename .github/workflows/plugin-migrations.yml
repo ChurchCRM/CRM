@@ -1,0 +1,83 @@
+name: CI — Community Plugin Migrations
+
+on:
+  pull_request:
+    paths:
+      - 'src/ChurchCRM/Plugin/**'
+      - 'src/ChurchCRM/model/**'
+      - 'src/Include/LoadDatabaseMap.php'
+      - 'src/plugins/**'
+      - 'src/mysql/**'
+      - 'src/composer.*'
+      - 'orm/**'
+      - 'scripts/plugin-scan.php'
+      - 'tests/**'
+      - '.github/workflows/plugin-migrations.yml'
+  push:
+    branches: [master, feature/community-plugin-migrations]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  migrations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        database: ['mysql:8.0', 'mariadb:10.11']
+    services:
+      database:
+        image: ${{ matrix.database }}
+        env:
+          MYSQL_ROOT_PASSWORD: migration-tests
+          MYSQL_DATABASE: churchcrm_plugin_migrations_test
+        ports:
+          - 3306/tcp
+        options: >-
+          --health-cmd="mysqladmin ping --host=127.0.0.1 --protocol=tcp --silent -pmigration-tests"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Record tested revision and Linux environment
+        run: |
+          git rev-parse HEAD
+          uname -a
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath
+          coverage: none
+      - name: Install locked dependencies and generate core models
+        working-directory: src
+        run: composer install --no-interaction --prefer-dist
+      - name: Integration tests (shipped plugin models, no plugin generation)
+        env:
+          PLUGIN_MIGRATION_TEST_DSN: mysql:host=127.0.0.1;port=${{ job.services.database.ports[3306] }};dbname=churchcrm_plugin_migrations_test;charset=utf8mb4
+          PLUGIN_MIGRATION_TEST_USER: root
+          PLUGIN_MIGRATION_TEST_PASSWORD: migration-tests
+        run: php tests/plugin-migrations/run.php
+      - name: Read-only plugin security scan
+        run: php scripts/plugin-scan.php tests/fixtures/plugins/community/migration-example
+      - name: Static analysis of migration infrastructure
+        run: php src/vendor/bin/phpstan analyse src/ChurchCRM/Plugin/PluginMigrationManager.php src/ChurchCRM/Plugin/PluginMigrationManifest.php --level=6 --no-progress
+      - name: Remove development dependencies without running generators
+        working-directory: src
+        run: composer install --no-dev --no-scripts --no-plugins --no-interaction --prefer-dist
+      - name: Production dependency integration tests (no generators invoked)
+        env:
+          PLUGIN_MIGRATION_TEST_PRODUCTION: '1'
+          PLUGIN_MIGRATION_TEST_DSN: mysql:host=127.0.0.1;port=${{ job.services.database.ports[3306] }};dbname=churchcrm_plugin_migrations_test;charset=utf8mb4
+          PLUGIN_MIGRATION_TEST_USER: root
+          PLUGIN_MIGRATION_TEST_PASSWORD: migration-tests
+        run: |
+          test ! -d src/vendor/phpstan
+          test ! -d src/vendor/rector
+          mv src/vendor/perplorm/perpl/src/Propel/Generator/Command "$RUNNER_TEMP/plugin-migration-generator"
+          php tests/plugin-migrations/run.php

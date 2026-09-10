@@ -86,12 +86,9 @@ describe('Plugin Management UI', () => {
 
         it('should disable an enabled plugin', () => {
             // First, make sure custom-links is enabled
-            cy.request({
-                method: 'POST',
-                url: '/plugins/api/plugins/custom-links/enable',
-                headers: { 'Content-Type': 'application/json' },
-                failOnStatusCode: false
-            });
+            cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/custom-links/enable');
+            // Re-establish browser authentication after the API-key fixture call.
+            cy.setupAdminSession({ forceLogin: true });
 
             // Reload page
             cy.visit('/plugins/management');
@@ -113,12 +110,7 @@ describe('Plugin Management UI', () => {
         before(() => {
             // Enable mailchimp plugin for settings tests
             cy.setupAdminSession();
-            cy.request({
-                method: 'POST',
-                url: '/plugins/api/plugins/mailchimp/enable',
-                headers: { 'Content-Type': 'application/json' },
-                failOnStatusCode: false
-            });
+            cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/mailchimp/enable');
         });
 
         it('should display settings form when plugin is expanded', () => {

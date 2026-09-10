@@ -55,13 +55,14 @@ interface PluginInterface
 
     /**
      * Called when the plugin is activated.
-     * Use for database migrations, initial setup, etc.
+     * Initial application setup only. Declare schema migrations in plugin.json;
+     * core applies them before loading plugin PHP. Never execute DDL here.
      */
     public function activate(): void;
 
     /**
      * Called when the plugin is deactivated.
-     * Use for cleanup that should happen when disabled.
+     * Use for temporary/external cleanup when disabled; preserve application data.
      */
     public function deactivate(): void;
 
@@ -73,7 +74,9 @@ interface PluginInterface
 
     /**
      * Called when the plugin is uninstalled (deleted).
-     * Use for permanent cleanup: drop tables, delete files, etc.
+     * Legacy cleanup hook; never delete persistent application records here.
+     * Core skips uninstall/deactivate callbacks on removal of migration plugins
+     * and retains their application tables and core-owned migration ledger.
      */
     public function uninstall(): void;
 
