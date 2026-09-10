@@ -81,7 +81,7 @@ function getAdultFamilyMembers(Person $person): array
         } else {
             // No complete birth date: fall back to role-based adult check
             // (Head/Spouse roles — same criterion as Family::getAdults()).
-            // Preserves existing behaviour for members with no recorded DOB.
+            // Preserves existing behavior for members with no recorded DOB.
             if (!in_array((int) $member->getId(), $roleBasedAdultIds, true)) {
                 continue;
             }

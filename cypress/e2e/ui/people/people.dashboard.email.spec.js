@@ -5,7 +5,7 @@
  *
  * The old mailto: dropdown links have been replaced by a single
  * "Email All" button that opens the in-app email composer modal.
- * This spec verifies the new behaviour:
+ * This spec verifies the new behavior:
  *  - The composer button is rendered when email is enabled.
  *  - Clicking it opens the modal (waits for the /api/people/emails fetch).
  *  - The modal shows a recipient count and action buttons.
