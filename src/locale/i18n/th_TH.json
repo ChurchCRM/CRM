@@ -3203,7 +3203,7 @@
   "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins.": "ตรวจสอบไฟล์ปลั๊กอินบนดิสก์ก่อนเปิดใช้งาน ปลั๊กอินที่ไม่ผ่านการตรวจสอบทำงานด้วยสิทธิ์เดียวกับปลั๊กอินที่ผ่านการรับรอง",
   "SHA-256 checksum": "ค่าตรวจสอบ SHA-256",
   "SHA-256 must be a 64-character hex string.": "SHA-256 ต้องเป็นสตริงเลขฐานสิบหกขนาด 64 ตัวอักษร",
-  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.": "ผู้ดูแล ChurchCRM ยังไม่ได้ตรวจสอบปลั๊กอินนี้ คุณรับผิดชอบด้านความปลอดภัยและพฤติกรรมของสิ่งที่ติดตั้งที่นี่ ควรใช้เส้นทางเรียกดูที่ผ่านการรับรองเมื่อเป็นไปได้",
+  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.": "ผู้ดูแล ChurchCRM ยังไม่ได้ตรวจสอบปลั๊กอินนี้ คุณรับผิดชอบด้านความปลอดภัยและพฤติกรรมของสิ่งที่ติดตั้งที่นี่ ควรใช้เส้นทางเรียกดูที่ผ่านการรับรองเมื่อเป็นไปได้",
   "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet.": "รายการปลั๊กอินที่ผ่านการรับรองว่างเปล่า ยังไม่มีปลั๊กอินของบุคคลที่สามที่พร้อมใช้งานผ่านตัวติดตั้งที่ผ่านการตรวจสอบ",
   "The plugin was automatically disabled after a runtime failure.": "ปลั๊กอินถูกปิดใช้งานโดยอัตโนมัติหลังเกิดข้อผิดพลาดขณะรันไทม์",
   "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically.": "ปลั๊กอินเหล่านี้ได้รับการตรวจสอบและรับรองโดยผู้ดูแล ChurchCRM คลิกติดตั้งเพื่อดาวน์โหลดและติดตั้ง ปลั๊กอินจะไม่เปิดใช้งานโดยอัตโนมัติ",

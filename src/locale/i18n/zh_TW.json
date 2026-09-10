@@ -3203,7 +3203,7 @@
   "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins.": "啟用前請先審閱磁碟上的外掛檔案。未驗證的外掛與已核准的外掛具有相同的執行權限。",
   "SHA-256 checksum": "SHA-256 檢查碼",
   "SHA-256 must be a 64-character hex string.": "SHA-256 必須是 64 個字元的十六進位字串。",
-  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.": "ChurchCRM 維護者尚未審閱此外掛。您安裝的任何內容，其安全性與行為由您自行負責。請盡可能優先使用「瀏覽已核准的外掛」流程。",
+  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.": "ChurchCRM 維護者尚未審閱此外掛。您安裝的任何內容，其安全性與行為由您自行負責。請盡可能優先使用「瀏覽已核准的外掛」流程。",
   "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet.": "已核准外掛清單為空。目前尚無第三方外掛可透過已驗證安裝程式取得。",
   "The plugin was automatically disabled after a runtime failure.": "外掛在執行時發生錯誤後已自動停用。",
   "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically.": "這些外掛已由 ChurchCRM 維護者審閱並核准。點選「安裝」以下載並安裝——外掛不會自動啟用。",

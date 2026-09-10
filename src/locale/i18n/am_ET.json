@@ -3213,7 +3213,7 @@
   "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins.": "ከማንቃትዎ በፊት ዲስክ ላይ ያሉ ፕለጊን ፋይሎችን ያስሱ። ያልተረጋገጡ ፕለጊኖች ከተፈቀዱ ፕለጊኖች ጋር ተመሳሳይ ፍቃዶች ይሰራሉ።",
   "SHA-256 checksum": "SHA-256 ፍተሻ ድምር",
   "SHA-256 must be a 64-character hex string.": "SHA-256 64 ቁምፊ ያለው ሄክስ ሕብረቁምፊ መሆን አለበት።",
-  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.": "የChurchCRM ጠባቂዎች ገና ያልገመገሙት ነው። እዚህ የምትጭኑትን ሁሉ ደህንነትና ሥነ-ምግባር ተጠያቂ እርስዎ ናቸው። በተቻለ መጠን ተፈቅደው የቀረቡትን ዛሙዱ ፍሰት ይጠቀሙ።",
+  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.": "የChurchCRM ጠባቂዎች ገና ያልገመገሙት ነው። እዚህ የምትጭኑትን ሁሉ ደህንነትና ሥነ-ምግባር ተጠያቂ እርስዎ ናቸው። በተቻለ መጠን ተፈቅደው የቀረቡትን ዛሙዱ ፍሰት ይጠቀሙ።",
   "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet.": "የተፈቀዱ ፕለጊኖች ዝርዝር ባዶ ነው። ያረጋገጠ ጭናሪ ጥቅም ላይ ሊውሉ የሚችሉ የሶስተኛ ወገን ፕለጊኖች ገና የሉም።",
   "The plugin was automatically disabled after a runtime failure.": "ፕለጊኑ የሩጫ ጊዜ ስህተት ከተፈጠረ በኋላ ራሱ ሰሪ ቦቷል።",
   "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically.": "እነዚህ ፕለጊኖች በChurchCRM ጠባቂዎች ተገምግሞ ፈቃድ ተሰጥቷቸዋል። አንዱን ለማውረድ እና ለመጫን ጫን ይጫኑ — ፕለጊኑ ራሱ ሰሪ አይሆንም።",

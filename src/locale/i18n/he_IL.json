@@ -3213,7 +3213,7 @@
   "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins.": "בדוק את קבצי התוסף בדיסק לפני הפעלה. תוספים לא מאומתים פועלים עם אותן הרשאות כמו תוספים מאושרים.",
   "SHA-256 checksum": "סכום בדיקה SHA-256",
   "SHA-256 must be a 64-character hex string.": "SHA-256 חייב להיות מחרוזת הקסדצימלית באורך 64 תווים.",
-  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.": "מתחזקי ChurchCRM לא בדקו תוסף זה. אתה אחראי לאבטחה ולהתנהגות של כל מה שאתה מתקין כאן. העדף את תהליך עיין במאושרים בכל עת שאפשר.",
+  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.": "מתחזקי ChurchCRM לא בדקו תוסף זה. אתה אחראי לאבטחה ולהתנהגות של כל מה שאתה מתקין כאן. העדף את תהליך עיין במאושרים בכל עת שאפשר.",
   "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet.": "רשימת התוספים המאושרים ריקה. אין עדיין תוספים של צד שלישי זמינים דרך המתקין המאומת.",
   "The plugin was automatically disabled after a runtime failure.": "התוסף הושבת אוטומטית לאחר כשל בזמן הריצה.",
   "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically.": "תוספים אלה נבדקו ואושרו על ידי מתחזקי ChurchCRM. לחץ על התקן כדי להוריד ולהתקין — התוסף לא יופעל אוטומטית.",

@@ -13489,7 +13489,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 debe ser una cadena hexadecimal de 64 caracteres."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Los mantenedores de ChurchCRM no lo han revisado. Sos responsable de la seguridad y el comportamiento de todo lo que instalés aquí. Preferí el flujo de Explorar aprobados siempre que sea posible."
 
 #: 
