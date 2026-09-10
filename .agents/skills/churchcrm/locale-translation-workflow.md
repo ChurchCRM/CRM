@@ -525,3 +525,25 @@ for locale, terms in sorted(d.items()):
     print(f'  {locale}: {len(terms)} terms — {terms[:3]}...' if len(terms) > 3 else f'  {locale}: {terms}')
 "
 ```
+
+---
+
+## Regional English Spelling Overrides (en-GB / en-AU / en-CA) <!-- learned: 2026-09-10 -->
+
+Source strings stay **US-spelled**. British/Australian/Canadian spellings (`behaviour`, `colour`, `neighbour`, `enrolment`, `centre`, `catalogue`, …) are ordinary translations of the `en` / `en-au` / `en-ca` POEditor languages.
+
+**Never hand-edit** `src/locale/i18n/en_{GB,AU,CA}.json` or `src/locale/textdomain/en_{GB,AU,CA}/LC_MESSAGES/messages.{po,mo}` — `poeditor-downloader.js` overwrites them on every sync.
+
+Put the overrides in the missing-terms batches instead, then upload:
+
+```
+locale/terms/missing/en/en-1.json          # "en"    = English - Great Britain
+locale/terms/missing/en-au/en-au-1.json     # "en-au"
+locale/terms/missing/en-ca/en-ca-1.json     # "en-ca"
+```
+
+Keyed by the exact US source string; plurals as `{ "one": "...", "other": "..." }`. These three variants are `skip_audit: true` in `src/locale/locales.json`, so the folders aren't auto-created — make them by hand. Then `npm run locale:upload:missing -- --locale en,en-au,en-ca` and let the download job open the sync PR.
+
+`en-ca` ≠ British: keeps `-ize` / `Recognized`, takes `-our` / `-re` / `cheque` / `catalogue` / `enrolment`.
+
+Full detail: [[i18n-localization]] → "Regional English Spelling Overrides".
