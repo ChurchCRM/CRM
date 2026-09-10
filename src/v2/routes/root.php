@@ -8,7 +8,6 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -104,9 +103,6 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
     $roleDataCheckCount = $personService->getMissingRoleDataCount();
     $classificationDataCheckCount = $personService->getMissingClassificationDataCount();
 
-    $familyService = new FamilyService();
-    $familyCoordinatesCheckCount = $familyService->getMissingCoordinatesCount();
-
     $pageArgs = [
         'sRootPath'                       => SystemURLs::getRootPath(),
         'sPageTitle'                      => gettext('Welcome to') . ' ' . ChurchMetaData::getChurchName(),
@@ -123,7 +119,6 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         'genderDataCheckCount'            => $genderDataCheckCount,
         'roleDataCheckCount'              => $roleDataCheckCount,
         'classificationDataCheckCount'    => $classificationDataCheckCount,
-        'familyCoordinatesCheckCount'     => $familyCoordinatesCheckCount,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
