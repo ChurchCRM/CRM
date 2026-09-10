@@ -511,6 +511,46 @@ Build and lint passed. Please review the changes above. Shall I commit with:
 
 This is non-negotiable. Even when changes are correct, tested, and ready, the user must see the diff and explicitly approve before pushing. The cost of an accidental bad push is higher than the inconvenience of waiting for approval.
 
+#### Commit freely, push only on approval — HARD RULE <!-- learned: 2026-09-10 -->
+
+**Committing and pushing are separate steps with different gates.**
+
+| Step | Gate |
+|------|------|
+| `git commit` | Run lint + build first, show the diff, then commit. A clean build + shown diff is enough to commit — no standing "wait for yes". |
+| `git push` | **Explicit per-push approval, every time.** The user must say "push" / "push it" / "go ahead and push" in their most recent message. Nothing else counts — not "lgtm" on a diff, not silence, not a follow-up question. |
+
+**Why push is gated harder than commit:** every push to GitHub kicks off the
+full CI matrix — ~15–20 minutes of billable runner time across ~25 jobs
+(root/subdir × api/admin-ui/ui-shards, new-system, security scans, build).
+Pushing a branch that isn't ready, or pushing repeatedly while iterating,
+burns CI hours the team may not have. Batch local commits and push once, when
+the user says the branch is ready.
+
+**Enforcement:** a `PreToolUse` Bash hook forces a permission prompt on any
+`git push`. `.claude/settings.json` is gitignored, so each machine adds it
+locally — the block below is the canonical copy. A push that reaches the
+prompt without the user having just asked for it is a mistake to abort, not a
+prompt to click through.
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -c 'if (.tool_input.command // \"\" | test(\"(^|[;&|]|\\\\s)git\\\\s+push(\\\\s|$)\")) then {hookSpecificOutput:{hookEventName:\"PreToolUse\",permissionDecision:\"ask\",permissionDecisionReason:\"HARD RULE (git-workflow.md): git push kicks off GitHub CI (billable runner minutes, ~15-20 min/run). Push ONLY after the user has explicitly approved THIS push in their most recent message. Committing needs no approval; pushing is the gated step.\"}} else empty end'"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 **Before push, always:**
 1. Run lint + build
 2. Show the full `git diff` output to the user
