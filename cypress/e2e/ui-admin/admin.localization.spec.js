@@ -69,6 +69,31 @@ describe("Admin - Localization & Formats Page", () => {
         cy.get("#sTimeZone", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
     });
 
+    // Regression for #9677: TomSelect's default maxOptions:50 truncated the
+    // ~419-entry timezone list at "America/*". Assert the rendered option count
+    // matches the <select>'s own option count — a rendered count of exactly 50
+    // is the signature of the cap still being in place.
+    it("should render every timezone option, not just the first 50 (#9677)", () => {
+        cy.visit("/admin/system/localization");
+
+        cy.get("#sTimeZone", { timeout: 8000 }).siblings(".ts-wrapper").should("exist");
+
+        cy.get("#sTimeZone option").then(($opts) => {
+            const expected = $opts.length;
+            expect(expected, "timezone list is long enough to trip the 50-option cap").to.be.greaterThan(50);
+
+            cy.get("#sTimeZone").siblings(".ts-wrapper").find(".ts-control").click();
+            cy.get("#sTimeZone").siblings(".ts-wrapper").find(".ts-dropdown .option", { timeout: 5000 })
+                .should("have.length", expected);
+
+            // The specific casualty of the cap: Pacific/* sorts last and was unreachable.
+            cy.get("#sTimeZone").siblings(".ts-wrapper").find(".ts-dropdown")
+                .should("contain.text", "Pacific/");
+        });
+
+        cy.get("body").type("{esc}");
+    });
+
     it("should populate language dropdown grouped by region with native names", () => {
         cy.visit("/admin/system/localization");
 
