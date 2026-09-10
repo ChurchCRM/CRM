@@ -2,10 +2,8 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\ImageSupportUtils;
 
 /**
@@ -164,89 +162,23 @@ class Photo
     {
         $this->ensurePhotoDirsExist();
 
-        // Parse data URI with a single consistent pattern — handles all valid MIME subtypes
-        // (including those with +, -, . such as image/svg+xml or image/vnd.ms-photo)
-        if (!preg_match('/^data:([\w+.\/-]+);base64,(.+)$/s', $base64, $uriParts)) {
-            throw new \Exception('Invalid image data: expected a base64-encoded data URI');
-        }
+        // Shared decode + MIME allow-list + upload-size validation (see ImageSupportUtils)
+        $fileData = ImageSupportUtils::decodeBase64Image($base64);
 
-        $uriMimeType = $uriParts[1];
-        $fileData = base64_decode($uriParts[2], true);
+        // Scale down to fit within PHOTO_WIDTH x PHOTO_HEIGHT, preserving aspect
+        // ratio and alpha. Never upscales.
+        $resizedImage = ImageSupportUtils::createResizedImage($fileData, self::PHOTO_WIDTH, self::PHOTO_HEIGHT);
 
-        if ($fileData === false) {
-            throw new \Exception('Invalid base64 data');
-        }
-
-        // Validate MIME type from binary content when fileinfo is available (preferred);
-        // otherwise trust the data URI prefix — imagecreatefromstring() still enforces
-        // the actual binary format, so non-images are rejected regardless.
-        if (function_exists('finfo_open')) {
-            $finfo = new \finfo(FILEINFO_MIME_TYPE);
-            $mimeType = $finfo->buffer($fileData);
-        } else {
-            $mimeType = $uriMimeType;
-        }
-        
-        // Validate against allowed MIME types (see ImageSupportUtils for the list)
-        if (!ImageSupportUtils::isAllowedMimeType($mimeType)) {
-            throw new \Exception('Invalid image type. Only JPEG, PNG, GIF, and WebP images are allowed.');
-        }
-        
-        // Validate file size against the effective server limit (min of upload/post/memory)
-        $maxSize = SystemService::getMaxUploadFileSize(false);
-        if (strlen($fileData) > $maxSize) {
-            throw new PhotoSizeException(
-                sprintf('Image file size exceeds maximum allowed size of %s', SystemService::getMaxUploadFileSize(true))
-            );
-        }
-        
-        // Create GD image from uploaded data
-        $sourceImage = imagecreatefromstring($fileData);
-        if ($sourceImage === false) {
-            throw new \Exception('Failed to create image from uploaded data');
-        }
-        
-        // Get original dimensions
-        $sourceWidth = imagesx($sourceImage);
-        $sourceHeight = imagesy($sourceImage);
-
-        // Scale down to fit within PHOTO_WIDTH × PHOTO_HEIGHT, preserving aspect ratio.
-        // Never upscale — images smaller than the max are stored at their natural size.
-        $scale = min(1.0, self::PHOTO_WIDTH / $sourceWidth, self::PHOTO_HEIGHT / $sourceHeight);
-        $destWidth = (int) round($sourceWidth * $scale);
-        $destHeight = (int) round($sourceHeight * $scale);
-
-        $resizedImage = imagecreatetruecolor($destWidth, $destHeight);
-        if ($resizedImage === false) {
-            throw new \Exception('Failed to create resized image');
-        }
-
-        // Preserve transparency for PNG/GIF
-        imagealphablending($resizedImage, false);
-        imagesavealpha($resizedImage, true);
-
-        if (!imagecopyresampled(
-            $resizedImage,
-            $sourceImage,
-            0, 0, 0, 0,
-            $destWidth,
-            $destHeight,
-            $sourceWidth,
-            $sourceHeight
-        )) {
-            throw new \Exception('Failed to resize image');
-        }
-        
         // Delete any existing photo first
         $this->delete();
-        
+
         // Save as PNG at standard dimensions
         $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
-        
+
         if (!imagepng($resizedImage, $fileName)) {
             throw new \Exception('Failed to save resized image');
         }
-        
+
         // Update state
         $this->photoURI = $fileName;
         $this->hasUploadedPhoto = true;

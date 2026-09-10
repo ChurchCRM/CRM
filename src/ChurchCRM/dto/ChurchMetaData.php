@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\dto;
 
+use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Utils\GeoUtils;
 
 /**
@@ -90,20 +91,56 @@ class ChurchMetaData
     }
 
     /**
+     * True when an administrator has uploaded a church logo through
+     * Admin -> Church Information.
+     */
+    public static function hasCustomLogo(): bool
+    {
+        return ChurchLogoService::hasCustomLogo();
+    }
+
+    /**
      * Absolute URL of the church logo for use in email templates (and
      * eventually other external-facing surfaces like letters or reports).
-     * Falls back to the bundled ChurchCRM logo if the admin-configured
-     * value is empty or not a valid http(s) URL — this way external
-     * email clients always see a working image.
+     *
+     * Precedence: the uploaded `Images/church-logo.png` -> the `sChurchLogoURL`
+     * setting (when it is a valid http(s) URL) -> the bundled ChurchCRM logo,
+     * so external email clients always see a working image.
      */
     public static function getChurchLogoURL(): string
     {
+        return self::resolveLogo(SystemURLs::getURL());
+    }
+
+    /**
+     * Root-path-relative URL of the church logo, for use in the application's
+     * own templates (sidebar brand, login and auth pages). Same precedence as
+     * getChurchLogoURL(); only the prefix differs, because in-app pages must
+     * not depend on the configured absolute URL.
+     */
+    public static function getChurchLogoPath(): string
+    {
+        return self::resolveLogo(SystemURLs::getRootPath());
+    }
+
+    /**
+     * Shared logo precedence. $prefix is prepended to locally served images;
+     * a configured remote `sChurchLogoURL` is returned unchanged.
+     */
+    private static function resolveLogo(string $prefix): string
+    {
+        if (ChurchLogoService::hasCustomLogo()) {
+            // Cache-buster so a re-upload to the same path is picked up immediately.
+            return $prefix . '/Images/' . ChurchLogoService::LOGO_FILENAME
+                . '?v=' . ChurchLogoService::getModifiedTime();
+        }
+
         $configured = self::readString('sChurchLogoURL');
         if ($configured !== '' && filter_var($configured, FILTER_VALIDATE_URL) !== false) {
             return $configured;
         }
 
-        return SystemURLs::getURL() . '/Images/logo-churchcrm-350.jpg';
+        return $prefix . '/Images/logo-churchcrm-350.jpg';
     }
 
     /**

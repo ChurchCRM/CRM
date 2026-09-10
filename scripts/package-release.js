@@ -54,6 +54,7 @@ const ignore = [
   'Images/Person/**/*.jpg',
   'Images/Person/**/*.jpeg',
   'Images/Person/**/*.png',
+  'Images/church-logo.png',
   'composer.lock',
   'Include/Config.php',
   'integrityCheck.json',

@@ -476,10 +476,164 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ── Church Logo card ────────────────────────────────────────────────────
+
+  initChurchLogoUploader();
+
   // ── Live Display Preview ────────────────────────────────────────────────
 
   initChurchInfoPreview();
 });
+
+/**
+ * Church Logo card: reads the chosen file as a data URL and posts it to
+ * /api/system/church-logo, then updates the preview, the Remove button and the
+ * sidebar brand in place. Deliberately not part of the Church Info form POST —
+ * the file input has no name and both buttons are type="button".
+ */
+function initChurchLogoUploader() {
+  const fileInput = document.getElementById("church-logo-file");
+  const uploadBtn = document.getElementById("church-logo-upload-btn");
+  const removeBtn = document.getElementById("church-logo-remove-btn");
+  const preview = document.getElementById("church-logo-preview");
+  const defaultNote = document.getElementById("church-logo-default-note");
+  const messageBox = document.getElementById("church-logo-message");
+
+  if (!fileInput || !uploadBtn || !preview) {
+    return;
+  }
+
+  const t = (key) => (window.i18next ? i18next.t(key) : key);
+
+  // Inline feedback uses textContent (never innerHTML) so translated strings are
+  // never parsed as markup — same rule as the coordinates help text above.
+  function showMessage(text, variant) {
+    if (!messageBox) {
+      return;
+    }
+    messageBox.className = `alert alert-${variant} mt-3`;
+    messageBox.textContent = text;
+  }
+
+  function clearMessage() {
+    if (!messageBox) {
+      return;
+    }
+    messageBox.className = "alert d-none mt-3";
+    messageBox.textContent = "";
+  }
+
+  function applyLogoState(hasCustomLogo, url) {
+    if (url) {
+      preview.src = url;
+    }
+    defaultNote?.classList.toggle("d-none", hasCustomLogo);
+    removeBtn?.classList.toggle("d-none", !hasCustomLogo);
+
+    // Keep the sidebar in sync without a page reload: a custom logo replaces the
+    // stock icon and hides the church-name text.
+    const brandImage = document.getElementById("sidebar-brand-image");
+    const brandText = document.getElementById("sidebar-brand-text");
+    if (brandImage) {
+      const defaultSrc = brandImage.dataset.defaultSrc;
+      if (hasCustomLogo && url) {
+        brandImage.src = url;
+      } else if (defaultSrc) {
+        brandImage.src = defaultSrc;
+      }
+    }
+    brandText?.classList.toggle("d-none", hasCustomLogo);
+  }
+
+  function sendLogoRequest(method, body) {
+    uploadBtn.disabled = true;
+    if (removeBtn) {
+      removeBtn.disabled = true;
+    }
+
+    return fetch(`${window.CRM.root}/api/system/church-logo`, {
+      method: method,
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      credentials: "include",
+      body: body,
+    })
+      .then((response) =>
+        response
+          .json()
+          .catch(() => ({}))
+          .then((data) => {
+            if (!response.ok) {
+              throw new Error(data.message || `HTTP ${response.status}`);
+            }
+            return data;
+          }),
+      )
+      .finally(() => {
+        uploadBtn.disabled = false;
+        if (removeBtn) {
+          removeBtn.disabled = false;
+        }
+      });
+  }
+
+  uploadBtn.addEventListener("click", () => {
+    clearMessage();
+    fileInput.click();
+  });
+
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files?.[0];
+    if (!file) {
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      const imgBase64 = e.target?.result;
+      if (typeof imgBase64 !== "string") {
+        showMessage(t("Could not read the selected file."), "danger");
+        fileInput.value = "";
+        return;
+      }
+
+      sendLogoRequest("POST", JSON.stringify({ imgBase64: imgBase64 }))
+        .then((data) => {
+          applyLogoState(true, data.url);
+          showMessage(t("Church logo updated."), "success");
+          window.CRM?.notify?.(t("Church logo updated."), { type: "success", delay: 3000 });
+        })
+        .catch((error) => {
+          showMessage(error.message || t("Failed to upload the church logo."), "danger");
+        })
+        .finally(() => {
+          // Allow re-selecting the same file after a failed attempt.
+          fileInput.value = "";
+        });
+    };
+
+    reader.onerror = () => {
+      showMessage(t("Could not read the selected file."), "danger");
+      fileInput.value = "";
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+  removeBtn?.addEventListener("click", () => {
+    clearMessage();
+
+    sendLogoRequest("DELETE", null)
+      .then((data) => {
+        applyLogoState(false, data.url);
+        showMessage(t("Church logo removed."), "success");
+        window.CRM?.notify?.(t("Church logo removed."), { type: "success", delay: 3000 });
+      })
+      .catch((error) => {
+        showMessage(error.message || t("Failed to remove the church logo."), "danger");
+      });
+  });
+}
 
 function initChurchInfoPreview() {
   const textFieldIds = [
