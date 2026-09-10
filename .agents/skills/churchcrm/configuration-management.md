@@ -38,7 +38,7 @@ data they affect:
 
 **How to add a dashboard setting:**
 
-1. Define the `ConfigItem` in `SystemConfig::getConfigItems()` as usual — this
+1. Define the `ConfigItem` in `SystemConfig::buildConfigs()` as usual — this
    is what makes the value persist. **Do NOT** list its key in
    `buildCategories()`.
 2. Add an entry to that dashboard view's `window.CRM.settingsPanel.init({ settings: [...] })`

@@ -562,14 +562,15 @@ prompt to click through.
 - A wrong branch or unintended commits can cause serious issues
 - Approval is the gate that prevents mistakes from reaching production CI
 
-**What counts as explicit approval:**
-- "yes"
-- "looks good"
-- "lgtm" (looks good to me)
-- "commit it" / "push it"
-- "go ahead" / "ship it"
+**What counts as explicit push approval:**
+- "yes" (when the user's most recent message explicitly asked about pushing)
+- "push it"
+- "go ahead and push"
+- "push"
 
-**What does NOT count:**
+**What does NOT count as push approval:**
+- "lgtm" / "looks good" / "ship it" — these approve the *diff/commit*, not the push
+- Standalone "go ahead" (ambiguous — does not name pushing)
 - Silence or no response
 - Follow-up questions
 - Continuing the conversation
