@@ -19,7 +19,6 @@
 describe("Country/State TomSelect renders the full list (#9677)", () => {
     beforeEach(() => {
         cy.setupStandardSession();
-        cy.on("uncaught:exception", () => false);
     });
 
     it("Family Editor country dropdown renders all countries, not just the first 50", () => {
