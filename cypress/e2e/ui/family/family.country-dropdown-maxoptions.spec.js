@@ -70,11 +70,15 @@ describe("Country/State TomSelect renders the full list (#9677)", () => {
             $sel[0].tomselect.setValue("US");
         });
 
-        cy.get("select#State", { timeout: 10000 }).should("have.class", "tomselected");
-
         cy.request("/api/public/data/countries/us/states").then((resp) => {
             const expected = Object.keys(resp.body).length;
             expect(expected, "US state list is long enough to trip the 50-option cap").to.be.greaterThan(50);
+
+            // Wait for the states cascade to fully settle before touching the widget:
+            // setValue() can fire the change event more than once, so assert on the
+            // rebuilt <select> reaching its final option count rather than racing it.
+            cy.get("select#State option", { timeout: 10000 }).should("have.length", expected);
+            cy.get("select#State").should("have.class", "tomselected");
 
             cy.get("select#State").next(".ts-wrapper").find(".ts-control").click();
 
