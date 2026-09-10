@@ -10411,10 +10411,6 @@ msgid "Total Check-ins"
 msgstr "Σύνολο καταγραφών παρουσίας"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Δοκιμάστε να επιλέξετε διαφορετικό τύπο εκδήλωσης ή έτος."
-
-#: 
 msgid "Up to Date"
 msgstr "Ενημερωμένο"
 
@@ -17037,10 +17033,6 @@ msgid "Failed to update pledge"
 msgstr "Αποτυχία ενημέρωσης υπόσχεσης"
 
 #: 
-msgid "Family is required"
-msgstr "Η οικογένεια είναι υποχρεωτική"
-
-#: 
 msgid "Financial data"
 msgstr "Οικονομικά δεδομένα"
 
@@ -17167,10 +17159,6 @@ msgstr "Προγραμματισμός υποστήριξης χρόνου εκ�
 #: 
 msgid "Please enter a date"
 msgstr "Παρακαλώ εισάγετε μια ημερομηνία"
-
-#: 
-msgid "Please select a family"
-msgstr "Παρακαλώ επιλέξτε οικογένεια"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17589,14 +17577,6 @@ msgstr "Εκτιμώμενη αξία %s."
 msgid "Minimum bid %s."
 msgstr "Ελάχιστη προσφορά %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Δεν υπάρχουν διαθέσιμες επιλογές \"%s\" ακόμα. Προσθέστε πρώτα τις σχετικές εγγραφές."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Δεν έχουν ρυθμιστεί επιλογές \"%s\" ακόμα. Προσθέστε πρώτα τις σχετικές εγγραφές."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17745,4 +17725,120 @@ msgstr "Τι θα κερδίσετε"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Αποτυχία ανάκτησης αριθμού καταθέσεων"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Επέτειος: %s"
+
+#: 
+msgid "Church"
+msgstr "Εκκλησία"
+
+#: 
+msgid "Classifications"
+msgstr "Κατηγοριοποιήσεις"
+
+#: 
+msgid "Closest"
+msgstr "Πλησιέστερο"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Κατάθεση #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Αποτυχία λήψης αριθμού συγκεντρώσεων κεφαλαίων"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Αποτυχία φόρτωσης γειτόνων."
+
+#: 
+msgid "Farther"
+msgstr "Πιο μακριά"
+
+#: 
+msgid "Farthest"
+msgstr "Πιο απομακρυσμένο"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Εύρεση γειτόνων"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Βρείτε κοντινές οικογένειες και προσθέστε τις στο καλάθι σας"
+
+#: 
+msgid "Map centered on"
+msgstr "Χάρτης με κέντρο στο"
+
+#: 
+msgid "Max distance"
+msgstr "Μέγιστη απόσταση"
+
+#: 
+msgid "Max neighbors"
+msgstr "Μέγιστος αριθμός γειτόνων"
+
+#: 
+msgid "Near"
+msgstr "Κοντά"
+
+#: 
+msgid "Please select a family."
+msgstr "Παρακαλώ επιλέξτε μια οικογένεια."
+
+#: 
+msgid "Results"
+msgstr "Αποτελέσματα"
+
+#: 
+msgid "Same location"
+msgstr "Ίδια τοποθεσία"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Αναζήτηση γειτόνων"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Επιλέξτε μια οικογένεια και κάντε κλικ στο Εύρεση γειτόνων για να δείτε τα αποτελέσματα."
+
+#: 
+msgid "Selected family"
+msgstr "Επιλεγμένη οικογένεια"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Αυτή η τιμή πρέπει να είναι έγκυρο όνομα πεδίου."
+
+#: 
+msgid "Could not load data"
+msgstr "Δεν ήταν δυνατή η φόρτωση δεδομένων"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Ανανεώστε τη σελίδα ή δοκιμάστε ξανά αργότερα."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Προσθέστε πρώτα τις σχετικές εγγραφές."
+
+#: 
+msgid "All Months"
+msgstr "Όλοι οι μήνες"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Δεν έχουν οριστεί ακόμα επιλογές \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Δεν βρέθηκαν εκδηλώσεις για %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Δοκιμάστε να επιλέξετε διαφορετικό τύπο εκδήλωσης, μήνα ή έτος."
 

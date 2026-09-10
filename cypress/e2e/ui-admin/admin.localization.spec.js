@@ -69,6 +69,31 @@ describe("Admin - Localization & Formats Page", () => {
         cy.get("#sTimeZone", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
     });
 
+    // Regression for #9677: TomSelect's default maxOptions:50 truncated the
+    // ~419-entry timezone list at "America/*". Assert the rendered option count
+    // matches the <select>'s own option count — a rendered count of exactly 50
+    // is the signature of the cap still being in place.
+    it("should render every timezone option, not just the first 50 (#9677)", () => {
+        cy.visit("/admin/system/localization");
+
+        cy.get("#sTimeZone", { timeout: 8000 }).siblings(".ts-wrapper").should("exist");
+
+        cy.get("#sTimeZone option").then(($opts) => {
+            const expected = $opts.length;
+            expect(expected, "timezone list is long enough to trip the 50-option cap").to.be.greaterThan(50);
+
+            cy.get("#sTimeZone").siblings(".ts-wrapper").find(".ts-control").click();
+            cy.get("#sTimeZone").siblings(".ts-wrapper").find(".ts-dropdown .option", { timeout: 5000 })
+                .should("have.length", expected);
+
+            // The specific casualty of the cap: Pacific/* sorts last and was unreachable.
+            cy.get("#sTimeZone").siblings(".ts-wrapper").find(".ts-dropdown")
+                .should("contain.text", "Pacific/");
+        });
+
+        cy.get("body").type("{esc}");
+    });
+
     it("should populate language dropdown grouped by region with native names", () => {
         cy.visit("/admin/system/localization");
 
@@ -277,5 +302,57 @@ describe("Admin - Currency settings save round-trip", () => {
 
         // Flash message appears via window.CRM.notify (auto-dismisses in ~5s)
         cy.contains("must be different characters", { timeout: 8000 }).should("be.visible");
+    });
+});
+
+// ── Language selection save round-trip — regression test for #9656 ───────────
+//
+// Before the fix, the POST /localization handler validated the submitted locale
+// code against display-name keys of locales.json (e.g. "Spanish - Spain") rather
+// than locale codes (e.g. es_ES). in_array() always failed → silently fell back
+// to en_US. This test proves the language selection is now persisted correctly.
+//
+// Cleanup resets sLanguage to en_US via the admin config API in an after() hook
+// so subsequent specs start with a known locale.
+
+describe("Admin - Language settings save round-trip (#9656)", () => {
+    after(() => {
+        // Reset language to en_US regardless of test outcome.
+        cy.setupAdminSession();
+        cy.request({
+            method: "POST",
+            url: `/admin/api/system/config/sLanguage`,
+            body: { value: "en_US" },
+            headers: { "Content-Type": "application/json" },
+        });
+    });
+
+    it("persists a non-English language selection after save and page reload", () => {
+        cy.setupAdminSession();
+
+        cy.intercept("POST", "**/admin/system/localization").as("saveLocalization");
+
+        cy.visit("/admin/system/localization");
+
+        // Wait for TomSelect to initialise on #sLanguage before interacting.
+        cy.get("#sLanguage", { timeout: 8000 }).siblings(".ts-wrapper").should("exist");
+
+        // Set the language to Spanish - Spain (es_ES) via the TomSelect API.
+        // Using the native select with {force:true} would bypass TomSelect's
+        // internal state; setValue() keeps both the widget and the underlying
+        // <select> in sync so the submitted form value is correct.
+        cy.get("#sLanguage").then(($el) => {
+            $el[0].tomselect.setValue("es_ES");
+        });
+
+        cy.get("#localization-form").submit();
+        cy.wait("@saveLocalization").its("response.statusCode").should("be.oneOf", [200, 302, 303]);
+
+        // Reload the page and verify the persisted value.
+        // data-selected-locale is a server-rendered attribute whose value comes
+        // directly from SystemConfig::getValue('sLanguage'). Asserting it equals
+        // es_ES proves the backend stored the locale code, not en_US.
+        cy.visit("/admin/system/localization");
+        cy.get("#sLanguage", { timeout: 8000 }).should("have.attr", "data-selected-locale", "es_ES");
     });
 });

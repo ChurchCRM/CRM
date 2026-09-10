@@ -10406,10 +10406,6 @@ msgid "Total Check-ins"
 msgstr "Tong so dang ky vao"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Thu chon loai su kien hoac nam khac."
-
-#: 
 msgid "Up to Date"
 msgstr "Da cap nhat"
 
@@ -17028,10 +17024,6 @@ msgid "Failed to update pledge"
 msgstr "Không thể cập nhật cam kết dâng"
 
 #: 
-msgid "Family is required"
-msgstr "Gia đình là bắt buộc"
-
-#: 
 msgid "Financial data"
 msgstr "Dữ liệu tài chính"
 
@@ -17158,10 +17150,6 @@ msgstr "Lên kế hoạch hỗ trợ thời gian chạy"
 #: 
 msgid "Please enter a date"
 msgstr "Vui lòng nhập ngày"
-
-#: 
-msgid "Please select a family"
-msgstr "Vui lòng chọn một gia đình"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17578,14 +17566,6 @@ msgstr "Giá trị ước tính %s."
 msgid "Minimum bid %s."
 msgstr "Giá đặt tối thiểu %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Chưa có tùy chọn \"%s\" nào. Vui lòng thêm các bản ghi liên quan trước."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Chưa có tùy chọn \"%s\" nào được cấu hình. Vui lòng thêm các bản ghi liên quan trước."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17734,4 +17714,120 @@ msgstr "Những gì bạn sẽ nhận được"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Không thể lấy số lượng tiền gửi"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Kỷ niệm: %s"
+
+#: 
+msgid "Church"
+msgstr "Nhà thờ"
+
+#: 
+msgid "Classifications"
+msgstr "Phân loại"
+
+#: 
+msgid "Closest"
+msgstr "Gần nhất"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Tiền gửi #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Không lấy được số lượng sự kiện gây quỹ"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Không tải được danh sách hàng xóm."
+
+#: 
+msgid "Farther"
+msgstr "Xa hơn"
+
+#: 
+msgid "Farthest"
+msgstr "Xa nhất"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Tìm hàng xóm"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Tìm các gia đình lân cận và thêm vào giỏ hàng"
+
+#: 
+msgid "Map centered on"
+msgstr "Bản đồ tập trung vào"
+
+#: 
+msgid "Max distance"
+msgstr "Khoảng cách tối đa"
+
+#: 
+msgid "Max neighbors"
+msgstr "Số hàng xóm tối đa"
+
+#: 
+msgid "Near"
+msgstr "Gần"
+
+#: 
+msgid "Please select a family."
+msgstr "Vui lòng chọn một gia đình."
+
+#: 
+msgid "Results"
+msgstr "Kết quả"
+
+#: 
+msgid "Same location"
+msgstr "Cùng vị trí"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Tìm kiếm hàng xóm"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Chọn một gia đình và nhấp vào Tìm hàng xóm để xem kết quả."
+
+#: 
+msgid "Selected family"
+msgstr "Gia đình được chọn"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Giá trị này phải là tên trường hợp lệ."
+
+#: 
+msgid "Could not load data"
+msgstr "Không thể tải dữ liệu"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Vui lòng làm mới trang hoặc thử lại sau."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Trước tiên hãy thêm các bản ghi liên quan."
+
+#: 
+msgid "All Months"
+msgstr "Tất cả các tháng"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Chưa có tùy chọn \"%s\" nào được xác định."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Không tìm thấy sự kiện nào cho %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Hãy thử chọn loại sự kiện, tháng hoặc năm khác."
 

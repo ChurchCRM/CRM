@@ -10551,10 +10551,6 @@ msgid "Total Check-ins"
 msgstr "簽到總數"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "請嘗試選擇不同的活動類型或年份。"
-
-#: 
 msgid "Up to Date"
 msgstr "已是最新"
 
@@ -17173,10 +17169,6 @@ msgid "Failed to update pledge"
 msgstr "更新承諾奉獻失敗"
 
 #: 
-msgid "Family is required"
-msgstr "家庭為必填項"
-
-#: 
 msgid "Financial data"
 msgstr "財務資料"
 
@@ -17303,10 +17295,6 @@ msgstr "規劃執行時間支援"
 #: 
 msgid "Please enter a date"
 msgstr "請輸入日期"
-
-#: 
-msgid "Please select a family"
-msgstr "請選擇家庭"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17723,14 +17711,6 @@ msgstr "估計價值 %s。"
 msgid "Minimum bid %s."
 msgstr "最低出價 %s。"
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "目前尚無\"%s\"選項可用。請先新增相關記錄。"
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "目前尚未設定\"%s\"選項。請先新增相關記錄。"
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17879,4 +17859,120 @@ msgstr "您將獲得的改進"
 #: 
 msgid "Failed to get deposit count"
 msgstr "取得存款數量失敗"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "周年紀念：%s"
+
+#: 
+msgid "Church"
+msgstr "教會"
+
+#: 
+msgid "Classifications"
+msgstr "分類"
+
+#: 
+msgid "Closest"
+msgstr "最近"
+
+#: 
+msgid "Deposit #%d"
+msgstr "存款 #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "無法取得募款活動數量"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "載入鄰近家庭失敗。"
+
+#: 
+msgid "Farther"
+msgstr "更遠"
+
+#: 
+msgid "Farthest"
+msgstr "最遠"
+
+#: 
+msgid "Find Neighbors"
+msgstr "尋找鄰近家庭"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "尋找鄰近家庭並加入購物車"
+
+#: 
+msgid "Map centered on"
+msgstr "地圖中心位於"
+
+#: 
+msgid "Max distance"
+msgstr "最大距離"
+
+#: 
+msgid "Max neighbors"
+msgstr "最多鄰居數"
+
+#: 
+msgid "Near"
+msgstr "附近"
+
+#: 
+msgid "Please select a family."
+msgstr "請選擇一個家庭。"
+
+#: 
+msgid "Results"
+msgstr "結果"
+
+#: 
+msgid "Same location"
+msgstr "相同位置"
+
+#: 
+msgid "Search Neighbors"
+msgstr "搜尋鄰近家庭"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "選擇一個家庭，然後點擊尋找鄰近家庭以查看結果。"
+
+#: 
+msgid "Selected family"
+msgstr "已選家庭"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "此值必須是有效的欄位名稱。"
+
+#: 
+msgid "Could not load data"
+msgstr "無法載入資料"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "請重新整理頁面或稍後再試。"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "請先新增相關記錄。"
+
+#: 
+msgid "All Months"
+msgstr "所有月份"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "尚未定義任何「%s」選項。"
+
+#: 
+msgid "No events found for %s %d."
+msgstr "未找到 %s %d 的任何活動。"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "請嘗試選擇不同的活動類型、月份或年份。"
 

@@ -3,6 +3,14 @@
  * Used across PersonEditor, CartToFamilyForm, CSVImport, FamilyEditor, and FamilyRegister
  */
 
+/**
+ * TomSelect renders at most `maxOptions` entries (default 50), so the 256-country
+ * list stopped at China and the 59-entry US state list stopped at Tennessee.
+ * These are fixed enumerations the user picks from by scrolling, not searchable
+ * datasets, so every option has to be rendered. See issue #9677.
+ */
+const FULL_LIST_TOM_SELECT_OPTIONS = Object.freeze({ maxOptions: null });
+
 class DropdownManager {
   /**
    * Initialize a country dropdown with API data
@@ -54,7 +62,7 @@ class DropdownManager {
       if (config.initTomSelect) {
         const el = countrySelect[0];
         if (el && !el.tomselect) {
-          new TomSelect(el);
+          new TomSelect(el, FULL_LIST_TOM_SELECT_OPTIONS);
         }
       }
     });
@@ -138,7 +146,7 @@ class DropdownManager {
           if (config.initTomSelect) {
             const stateEl = stateSelect[0];
             if (stateEl && !stateEl.tomselect) {
-              new TomSelect(stateEl);
+              new TomSelect(stateEl, FULL_LIST_TOM_SELECT_OPTIONS);
             }
           }
 
@@ -237,7 +245,7 @@ class DropdownManager {
       countrySelect.change();
       const el = countrySelect[0];
       if (el && !el.tomselect) {
-        new TomSelect(el);
+        new TomSelect(el, FULL_LIST_TOM_SELECT_OPTIONS);
       }
     });
 
@@ -264,7 +272,7 @@ class DropdownManager {
           });
 
           stateContainer.html($select);
-          new TomSelect($select[0]);
+          new TomSelect($select[0], FULL_LIST_TOM_SELECT_OPTIONS);
         } else {
           // Country has no states - show text input
           const $input = $(

@@ -10418,10 +10418,6 @@ msgid "Total Check-ins"
 msgstr "ሙሉ ግቤት"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "ሌላ ሁነታ ዓይነት ወይም ዓመት ምረጫ ሞክር።"
-
-#: 
 msgid "Up to Date"
 msgstr "ወደ ታዋቅ"
 
@@ -17045,10 +17041,6 @@ msgid "Failed to update pledge"
 msgstr "ቃል-ኪዳን ማዘመን አልተሳካም"
 
 #: 
-msgid "Family is required"
-msgstr "ቤተሰብ ያስፈልጋል"
-
-#: 
 msgid "Financial data"
 msgstr "የፋይናንስ ዳታ"
 
@@ -17175,10 +17167,6 @@ msgstr "የፕላን የሩጫ ጊዜ ድጋፍ"
 #: 
 msgid "Please enter a date"
 msgstr "እባክዎ ቀን ያስገቡ"
-
-#: 
-msgid "Please select a family"
-msgstr "እባክዎ ቤተሰብ ይምረጡ"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17597,14 +17585,6 @@ msgstr "የተገመተ ዋጋ %s።"
 msgid "Minimum bid %s."
 msgstr "አነስተኛ ጫረታ %s።"
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "እስካሁን ምንም \"%s\" አማራጮች አይገኙም። መጀመሪያ ተዛማጅ መዛግብትን ያክሉ።"
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "እስካሁን ምንም \"%s\" አማራጮች አልተዋቀሩም። መጀመሪያ ተዛማጅ መዛግብትን ያክሉ።"
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17753,4 +17733,120 @@ msgstr "የሚያገኙት"
 #: 
 msgid "Failed to get deposit count"
 msgstr "የተቀማጭ ቁጥር ማግኘት አልተሳካም"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "ዓመታዊ በዓል: %s"
+
+#: 
+msgid "Church"
+msgstr "ቤተ ክርስቲያን"
+
+#: 
+msgid "Classifications"
+msgstr "ምደባዎች"
+
+#: 
+msgid "Closest"
+msgstr "ቅርብ"
+
+#: 
+msgid "Deposit #%d"
+msgstr "ተቀማጭ ቁ.%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "የገንዘብ ማሰባሰቢያ ቁጥር ማግኘት አልተቻለም"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "ጎረቤቶችን መጫን አልተቻለም።"
+
+#: 
+msgid "Farther"
+msgstr "ይበልጥ ሩቅ"
+
+#: 
+msgid "Farthest"
+msgstr "እጅግ ሩቅ"
+
+#: 
+msgid "Find Neighbors"
+msgstr "ጎረቤቶችን ፈልግ"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "ቅርብ ቤተሰቦችን ፈልግ እና ወደ ቅርጫትህ አስጨምር"
+
+#: 
+msgid "Map centered on"
+msgstr "ካርታ ያተኮረ በ"
+
+#: 
+msgid "Max distance"
+msgstr "ከፍተኛ ርቀት"
+
+#: 
+msgid "Max neighbors"
+msgstr "ከፍተኛ ጎረቤቶች"
+
+#: 
+msgid "Near"
+msgstr "ቅርብ"
+
+#: 
+msgid "Please select a family."
+msgstr "እባክዎ ቤተሰብ ይምረጡ።"
+
+#: 
+msgid "Results"
+msgstr "ውጤቶች"
+
+#: 
+msgid "Same location"
+msgstr "ተመሳሳይ ቦታ"
+
+#: 
+msgid "Search Neighbors"
+msgstr "ጎረቤቶችን ፈልግ"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "ቤተሰብ ይምረጡ እና ውጤቶችን ለማየት ጎረቤቶችን ፈልግ ን ጠቅ ያድርጉ።"
+
+#: 
+msgid "Selected family"
+msgstr "የተመረጠ ቤተሰብ"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "ይህ ዋጋ ትክክለኛ የመስክ ስም መሆን አለበት።"
+
+#: 
+msgid "Could not load data"
+msgstr "ዳታ መጫን አልተቻለም"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "እባክዎ ገጹን ያድሱ ወይም ቆይተው እንደገና ይሞክሩ።"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "አስቀድሞ ተዛማጅ መዝገቦችን ያስጨምሩ።"
+
+#: 
+msgid "All Months"
+msgstr "ሁሉም ወሮች"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "የ\"%s\" አማራጮች እስካሁን አልተገለጹም።"
+
+#: 
+msgid "No events found for %s %d."
+msgstr "ለ%s %d ምንም ዝግጅቶች አልተገኙም።"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "ሌላ ዝግጅት አይነት፣ ወር ወይም ዓመት ለመምረጥ ሞክሩ።"
 

@@ -10375,10 +10375,6 @@ msgid "Total Check-ins"
 msgstr "कुल चेक-इन"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "कोई भिन्न कार्यक्रम प्रकार या वर्ष चुनने का प्रयास करें।"
-
-#: 
 msgid "Up to Date"
 msgstr "अप टू डेट"
 
@@ -17001,10 +16997,6 @@ msgid "Failed to update pledge"
 msgstr "प्रतिज्ञा अपडेट करने में विफल"
 
 #: 
-msgid "Family is required"
-msgstr "परिवार आवश्यक है"
-
-#: 
 msgid "Financial data"
 msgstr "वित्तीय डेटा"
 
@@ -17131,10 +17123,6 @@ msgstr "रनटाइम समर्थन की योजना बना�
 #: 
 msgid "Please enter a date"
 msgstr "कृपया एक तारीख दर्ज करें"
-
-#: 
-msgid "Please select a family"
-msgstr "कृपया एक परिवार चुनें"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17553,14 +17541,6 @@ msgstr "अनुमानित मूल्य %s।"
 msgid "Minimum bid %s."
 msgstr "न्यूनतम बोली %s।"
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "अभी कोई \"%s\" विकल्प उपलब्ध नहीं है। पहले संबंधित रिकॉर्ड जोड़ें।"
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "अभी कोई \"%s\" विकल्प कॉन्फ़िगर नहीं किया गया है। पहले संबंधित रिकॉर्ड जोड़ें।"
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17709,4 +17689,120 @@ msgstr "आपको क्या मिलेगा"
 #: 
 msgid "Failed to get deposit count"
 msgstr "जमा राशि की गणना प्राप्त करने में विफल"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "वर्षगांठ: %s"
+
+#: 
+msgid "Church"
+msgstr "चर्च"
+
+#: 
+msgid "Classifications"
+msgstr "वर्गीकरण"
+
+#: 
+msgid "Closest"
+msgstr "सबसे नज़दीक"
+
+#: 
+msgid "Deposit #%d"
+msgstr "जमा #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "धन संग्रह की संख्या प्राप्त करने में विफल"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "पड़ोसियों को लोड करने में विफल।"
+
+#: 
+msgid "Farther"
+msgstr "और दूर"
+
+#: 
+msgid "Farthest"
+msgstr "सबसे दूर"
+
+#: 
+msgid "Find Neighbors"
+msgstr "पड़ोसी खोजें"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "पास के परिवारों को खोजें और कार्ट में जोड़ें"
+
+#: 
+msgid "Map centered on"
+msgstr "मानचित्र केंद्रित:"
+
+#: 
+msgid "Max distance"
+msgstr "अधिकतम दूरी"
+
+#: 
+msgid "Max neighbors"
+msgstr "अधिकतम पड़ोसी"
+
+#: 
+msgid "Near"
+msgstr "नज़दीक"
+
+#: 
+msgid "Please select a family."
+msgstr "कृपया एक परिवार चुनें।"
+
+#: 
+msgid "Results"
+msgstr "परिणाम"
+
+#: 
+msgid "Same location"
+msgstr "समान स्थान"
+
+#: 
+msgid "Search Neighbors"
+msgstr "पड़ोसी खोजें"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "एक परिवार चुनें और परिणाम देखने के लिए पड़ोसी खोजें पर क्लिक करें।"
+
+#: 
+msgid "Selected family"
+msgstr "चुना गया परिवार"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "यह मान एक वैध फ़ील्ड नाम होना चाहिए।"
+
+#: 
+msgid "Could not load data"
+msgstr "डेटा लोड नहीं हो सका"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "कृपया पृष्ठ रीफ़्रेश करें या बाद में पुनः प्रयास करें।"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "पहले संबंधित रिकॉर्ड जोड़ें।"
+
+#: 
+msgid "All Months"
+msgstr "सभी महीने"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "अभी तक कोई \"%s\" विकल्प परिभाषित नहीं है।"
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d के लिए कोई इवेंट नहीं मिला।"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "कोई अलग इवेंट प्रकार, महीना या वर्ष चुनने का प्रयास करें।"
 

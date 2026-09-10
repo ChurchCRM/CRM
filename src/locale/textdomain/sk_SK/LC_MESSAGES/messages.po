@@ -10395,10 +10395,6 @@ msgid "Total Check-ins"
 msgstr "Celkový počet prihlásení"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Skúste vybrať iný typ podujatia alebo rok."
-
-#: 
 msgid "Up to Date"
 msgstr "Aktuálne"
 
@@ -17029,10 +17025,6 @@ msgid "Failed to update pledge"
 msgstr "Nepodarilo sa aktualizovať záväzok"
 
 #: 
-msgid "Family is required"
-msgstr "Rodina je povinná"
-
-#: 
 msgid "Financial data"
 msgstr "Finančné údaje"
 
@@ -17159,10 +17151,6 @@ msgstr "Plánovaná podpora behu"
 #: 
 msgid "Please enter a date"
 msgstr "Zadajte dátum"
-
-#: 
-msgid "Please select a family"
-msgstr "Vyberte rodinu"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17569,14 +17557,6 @@ msgstr "Odhadovaná hodnota %s."
 msgid "Minimum bid %s."
 msgstr "Minimálna ponuka %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Zatiaľ nie sú dostupné žiadne možnosti \"%s\". Najprv pridajte príslušné záznamy."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Zatiaľ nie sú nakonfigurované žiadne možnosti \"%s\". Najprv pridajte príslušné záznamy."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17725,4 +17705,120 @@ msgstr "Čo získate"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Nepodarilo sa získať počet vkladov"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Výročie: %s"
+
+#: 
+msgid "Church"
+msgstr "Cirkev"
+
+#: 
+msgid "Classifications"
+msgstr "Klasifikácie"
+
+#: 
+msgid "Closest"
+msgstr "Najbližší"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Vklad č. %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Nepodarilo sa získať počet zbierok"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Nepodarilo sa načítať susedov."
+
+#: 
+msgid "Farther"
+msgstr "Ďalej"
+
+#: 
+msgid "Farthest"
+msgstr "Najďalej"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Nájsť susedov"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Nájdite blízke rodiny a pridajte ich do košíka"
+
+#: 
+msgid "Map centered on"
+msgstr "Mapa zameraná na"
+
+#: 
+msgid "Max distance"
+msgstr "Maximálna vzdialenosť"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maximálny počet susedov"
+
+#: 
+msgid "Near"
+msgstr "Blízko"
+
+#: 
+msgid "Please select a family."
+msgstr "Prosím, vyberte rodinu."
+
+#: 
+msgid "Results"
+msgstr "Výsledky"
+
+#: 
+msgid "Same location"
+msgstr "Rovnaká poloha"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Hľadať susedov"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Vyberte rodinu a kliknite na Nájsť susedov pre zobrazenie výsledkov."
+
+#: 
+msgid "Selected family"
+msgstr "Vybraná rodina"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Táto hodnota musí byť platný názov poľa."
+
+#: 
+msgid "Could not load data"
+msgstr "Nepodarilo sa načítať údaje"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Obnovte stránku alebo to skúste neskôr znova."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Najprv pridajte príslušné záznamy."
+
+#: 
+msgid "All Months"
+msgstr "Všetky mesiace"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Zatiaľ nie sú definované žiadne možnosti \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Pre %s %d neboli nájdené žiadne udalosti."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Skúste vybrať iný typ udalosti, mesiac alebo rok."
 

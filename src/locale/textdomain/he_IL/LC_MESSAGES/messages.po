@@ -10409,10 +10409,6 @@ msgid "Total Check-ins"
 msgstr "סך כל רישומי הנוכחות"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "נסו לבחור סוג אירוע או שנה אחרת."
-
-#: 
 msgid "Up to Date"
 msgstr "מעודכן"
 
@@ -17035,10 +17031,6 @@ msgid "Failed to update pledge"
 msgstr "עדכון ההתחייבות נכשל"
 
 #: 
-msgid "Family is required"
-msgstr "משפחה נדרשת"
-
-#: 
 msgid "Financial data"
 msgstr "נתונים פיננסיים"
 
@@ -17165,10 +17157,6 @@ msgstr "תמיכת זמן ריצה מתוכנן"
 #: 
 msgid "Please enter a date"
 msgstr "אנא הזן תאריך"
-
-#: 
-msgid "Please select a family"
-msgstr "אנא בחר משפחה"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17587,14 +17575,6 @@ msgstr "ערך משוער %s."
 msgid "Minimum bid %s."
 msgstr "הצעת מחיר מינימלית %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "אין אפשרויות \"%s\" זמינות עדיין. הוסף תחילה את הרשומות הרלוונטיות."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "אין אפשרויות \"%s\" מוגדרות עדיין. הוסף תחילה את הרשומות הרלוונטיות."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17743,4 +17723,120 @@ msgstr "מה תרוויח"
 #: 
 msgid "Failed to get deposit count"
 msgstr "כשל בקבלת ספירת הפיקדונות"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "יום השנה: %s"
+
+#: 
+msgid "Church"
+msgstr "כנסייה"
+
+#: 
+msgid "Classifications"
+msgstr "סיווגים"
+
+#: 
+msgid "Closest"
+msgstr "הקרוב ביותר"
+
+#: 
+msgid "Deposit #%d"
+msgstr "פיקדון מספר %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "נכשל בקבלת מספר הגיוס"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "נכשל בטעינת השכנים."
+
+#: 
+msgid "Farther"
+msgstr "יותר רחוק"
+
+#: 
+msgid "Farthest"
+msgstr "הרחוק ביותר"
+
+#: 
+msgid "Find Neighbors"
+msgstr "מצא שכנים"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "מצא משפחות סמוכות והוסף אותן לסל שלך"
+
+#: 
+msgid "Map centered on"
+msgstr "מפה ממורכזת על"
+
+#: 
+msgid "Max distance"
+msgstr "מרחק מקסימלי"
+
+#: 
+msgid "Max neighbors"
+msgstr "מספר שכנים מרבי"
+
+#: 
+msgid "Near"
+msgstr "קרוב"
+
+#: 
+msgid "Please select a family."
+msgstr "אנא בחר משפחה."
+
+#: 
+msgid "Results"
+msgstr "תוצאות"
+
+#: 
+msgid "Same location"
+msgstr "אותו מיקום"
+
+#: 
+msgid "Search Neighbors"
+msgstr "חפש שכנים"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "בחר משפחה ולחץ על מצא שכנים כדי לראות תוצאות."
+
+#: 
+msgid "Selected family"
+msgstr "משפחה שנבחרה"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "ערך זה חייב להיות שם שדה חוקי."
+
+#: 
+msgid "Could not load data"
+msgstr "לא ניתן לטעון נתונים"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "אנא רענן את הדף או נסה שוב מאוחר יותר."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "הוסף תחילה את הרשומות הרלוונטיות."
+
+#: 
+msgid "All Months"
+msgstr "כל החודשים"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "טרם הוגדרו אפשרויות \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "לא נמצאו אירועים עבור %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "נסה לבחור סוג אירוע, חודש או שנה שונים."
 

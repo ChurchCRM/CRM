@@ -10376,10 +10376,6 @@ msgid "Total Check-ins"
 msgstr "ആകെ ചെക്ക്-ഇനുകൾ"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "ഒരു വ്യത്യസ്ത ഇവന്റ് തരം അല്ലെങ്കിൽ വർഷം തിരഞ്ഞെടുക്കാൻ ശ്രമിക്കുക."
-
-#: 
 msgid "Up to Date"
 msgstr "അദ്യതനം"
 
@@ -17002,10 +16998,6 @@ msgid "Failed to update pledge"
 msgstr "പ്രതിജ്ഞ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: 
-msgid "Family is required"
-msgstr "കുടുംബം ആവശ്യമാണ്"
-
-#: 
 msgid "Financial data"
 msgstr "സാമ്പത്തിക ഡേറ്റ"
 
@@ -17132,10 +17124,6 @@ msgstr "റൺടൈം പിന്തുണ ആസൂത്രണം ചെയ
 #: 
 msgid "Please enter a date"
 msgstr "ദയവായി ഒരു തീയതി നൽകുക"
-
-#: 
-msgid "Please select a family"
-msgstr "ദയവായി ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17542,14 +17530,6 @@ msgstr "കണക്കാക്കിയ മൂല്യം %s."
 msgid "Minimum bid %s."
 msgstr "കുറഞ്ഞ ലേലം %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "ഇതുവരെ \"%s\" ഓപ്ഷനുകൾ ലഭ്യമല്ല. ആദ്യം അനുബന്ധ രേഖകൾ ചേർക്കുക."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "ഇതുവരെ \"%s\" ഓപ്ഷനുകൾ കോൺഫിഗർ ചെയ്തിട്ടില്ല. ആദ്യം അനുബന്ധ രേഖകൾ ചേർക്കുക."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17698,4 +17678,120 @@ msgstr "നിങ്ങൾക്ക് ലഭിക്കുന്നത്"
 #: 
 msgid "Failed to get deposit count"
 msgstr "നിക്ഷേപ എണ്ണം ലഭ്യമായില്ല"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "വാർഷികം: %s"
+
+#: 
+msgid "Church"
+msgstr "പള്ളി"
+
+#: 
+msgid "Classifications"
+msgstr "വർഗ്ഗീകരണങ്ങൾ"
+
+#: 
+msgid "Closest"
+msgstr "ഏറ്റവും അടുത്ത്"
+
+#: 
+msgid "Deposit #%d"
+msgstr "നിക്ഷേപം #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "ഫണ്ട്‌ സ്വരൂപണ എണ്ണം ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "അയൽക്കാരെ ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു."
+
+#: 
+msgid "Farther"
+msgstr "കൂടുതൽ അകലെ"
+
+#: 
+msgid "Farthest"
+msgstr "ഏറ്റവും അകലെ"
+
+#: 
+msgid "Find Neighbors"
+msgstr "അയൽക്കാരെ കണ്ടെത്തുക"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "അടുത്തുള്ള കുടുംബങ്ങളെ കണ്ടെത്തി കാർട്ടിൽ ചേർക്കുക"
+
+#: 
+msgid "Map centered on"
+msgstr "ഭൂപടം കേന്ദ്രീകരിച്ചിരിക്കുന്നത്:"
+
+#: 
+msgid "Max distance"
+msgstr "പരമാവധി ദൂരം"
+
+#: 
+msgid "Max neighbors"
+msgstr "പരമാവധി അയൽക്കാർ"
+
+#: 
+msgid "Near"
+msgstr "അടുത്ത്"
+
+#: 
+msgid "Please select a family."
+msgstr "ദയവായി ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Results"
+msgstr "ഫലങ്ങൾ"
+
+#: 
+msgid "Same location"
+msgstr "ഒരേ സ്ഥലം"
+
+#: 
+msgid "Search Neighbors"
+msgstr "അയൽക്കാരെ തിരയുക"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "ഒരു കുടുംബം തിരഞ്ഞെടുത്ത് ഫലങ്ങൾ കാണാൻ അയൽക്കാരെ കണ്ടെത്തുക ക്ലിക്ക് ചെയ്യുക."
+
+#: 
+msgid "Selected family"
+msgstr "തിരഞ്ഞെടുത്ത കുടുംബം"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "ഈ മൂല്യം സാധുവായ ഒരു ഫീൽഡ് നാമം ആയിരിക്കണം."
+
+#: 
+msgid "Could not load data"
+msgstr "ഡാറ്റ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "ദയവായി പേജ് പുതുക്കുക അല്ലെങ്കിൽ പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "ആദ്യം ബന്ധപ്പെട്ട രേഖകൾ ചേർക്കുക."
+
+#: 
+msgid "All Months"
+msgstr "എല്ലാ മാസങ്ങളും"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "\"%s\" ഓപ്ഷനുകൾ ഇതുവരെ നിർവ്വചിച്ചിട്ടില്ല."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d-നായി ഒരു ഇവന്റും കണ്ടെത്തിയില്ല."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "മറ്റൊരു ഇവന്റ് തരം, മാസം അല്ലെങ്കിൽ വർഷം തിരഞ്ഞെടുക്കാൻ ശ്രമിക്കുക."
 

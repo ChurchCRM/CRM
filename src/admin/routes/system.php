@@ -797,9 +797,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         // Body fields have already been sanitized by InputSanitizationMiddleware
         $body = $request->getParsedBody();
 
-        $supportedLocales = array_keys(LocaleService::getSupportedLocales());
+        $supportedLocaleCodes = array_column(LocaleService::getSupportedLocales(), 'locale');
         $lang = $body['sLanguage'] ?? 'en_US';
-        SystemConfig::setValue('sLanguage', in_array($lang, $supportedLocales, true) ? $lang : 'en_US');
+        SystemConfig::setValue('sLanguage', in_array($lang, $supportedLocaleCodes, true) ? $lang : 'en_US');
         $tz = trim((string)($body['sTimeZone'] ?? ''));
         SystemConfig::setValue('sTimeZone', in_array($tz, timezone_identifiers_list(), true) ? $tz : date_default_timezone_get());
         $distanceUnit = $body['sDistanceUnit'] ?? 'miles';

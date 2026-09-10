@@ -10376,10 +10376,6 @@ msgid "Total Check-ins"
 msgstr "Kabuuang mga Check-in"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Subukang pumili ng ibang uri ng kaganapan o taon."
-
-#: 
 msgid "Up to Date"
 msgstr "Napapanahon"
 
@@ -16966,10 +16962,6 @@ msgid "Failed to update pledge"
 msgstr "Nabigo sa pag-update ng pangako"
 
 #: 
-msgid "Family is required"
-msgstr "Kailangan ang pamilya"
-
-#: 
 msgid "Financial data"
 msgstr "Datos ng pananalapi"
 
@@ -17096,10 +17088,6 @@ msgstr "Planuhin ang suporta sa runtime"
 #: 
 msgid "Please enter a date"
 msgstr "Mangyaring magpasok ng petsa"
-
-#: 
-msgid "Please select a family"
-msgstr "Mangyaring pumili ng pamilya"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17506,14 +17494,6 @@ msgstr "Tinatayang halaga %s."
 msgid "Minimum bid %s."
 msgstr "Pinakamababang bid %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Walang mga pagpipiliang \"%s\" na magagamit pa. Magdagdag muna ng mga kaugnay na rekord."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Walang mga pagpipiliang \"%s\" na na-configure pa. Magdagdag muna ng mga kaugnay na rekord."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17662,4 +17642,120 @@ msgstr "Ano ang iyong makukuha"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Nabigo sa pagkuha ng bilang ng deposito"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Anibersaryo: %s"
+
+#: 
+msgid "Church"
+msgstr "Simbahan"
+
+#: 
+msgid "Classifications"
+msgstr "Mga Klasipikasyon"
+
+#: 
+msgid "Closest"
+msgstr "Pinakamalapit"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Deposito #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Hindi nakuha ang bilang ng fundraiser"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Hindi na-load ang mga kapitbahay."
+
+#: 
+msgid "Farther"
+msgstr "Mas malayo"
+
+#: 
+msgid "Farthest"
+msgstr "Pinakamalayo"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Hanapin ang Mga Kapitbahay"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Hanapin ang mga pamilyang malapit at idagdag sa iyong cart"
+
+#: 
+msgid "Map centered on"
+msgstr "Mapa na nakasentro sa"
+
+#: 
+msgid "Max distance"
+msgstr "Max na distansya"
+
+#: 
+msgid "Max neighbors"
+msgstr "Max na kapitbahay"
+
+#: 
+msgid "Near"
+msgstr "Malapit"
+
+#: 
+msgid "Please select a family."
+msgstr "Mangyaring pumili ng pamilya."
+
+#: 
+msgid "Results"
+msgstr "Mga Resulta"
+
+#: 
+msgid "Same location"
+msgstr "Parehong lokasyon"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Maghanap ng Mga Kapitbahay"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Pumili ng pamilya at i-click ang Hanapin ang Mga Kapitbahay para makita ang mga resulta."
+
+#: 
+msgid "Selected family"
+msgstr "Napiling pamilya"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Ang halagang ito ay dapat na wastong pangalan ng field."
+
+#: 
+msgid "Could not load data"
+msgstr "Hindi ma-load ang data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Mangyaring i-refresh ang pahina o subukang muli mamaya."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Idagdag muna ang mga kaugnay na rekord."
+
+#: 
+msgid "All Months"
+msgstr "Lahat ng Buwan"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Wala pang mga opsyong \"%s\" ang natukoy."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Walang nahanap na mga kaganapan para sa %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Subukang pumili ng ibang uri ng kaganapan, buwan, o taon."
 

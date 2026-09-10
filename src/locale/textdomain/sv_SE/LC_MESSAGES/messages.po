@@ -10502,10 +10502,6 @@ msgid "Total Check-ins"
 msgstr "Totalt antal registreringar"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Prova att välja en annan evenemangstyp eller ett annat år."
-
-#: 
 msgid "Up to Date"
 msgstr "Uppdaterad"
 
@@ -17124,10 +17120,6 @@ msgid "Failed to update pledge"
 msgstr "Det gick inte att uppdatera löftet"
 
 #: 
-msgid "Family is required"
-msgstr "Familj krävs"
-
-#: 
 msgid "Financial data"
 msgstr "Ekonomiska uppgifter"
 
@@ -17254,10 +17246,6 @@ msgstr "Planera körtidsstöd"
 #: 
 msgid "Please enter a date"
 msgstr "Ange ett datum"
-
-#: 
-msgid "Please select a family"
-msgstr "Välj en familj"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17660,14 +17648,6 @@ msgstr "Uppskattat värde %s."
 msgid "Minimum bid %s."
 msgstr "Lägsta bud %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Inga \"%s\"-alternativ är tillgängliga ännu. Lägg till relevanta poster först."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Inga \"%s\"-alternativ är konfigurerade ännu. Lägg till relevanta poster först."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17816,4 +17796,120 @@ msgstr "Vad du kommer att vinna"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Misslyckades med att hämta insättningsantal"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Jubileum: %s"
+
+#: 
+msgid "Church"
+msgstr "Församling"
+
+#: 
+msgid "Classifications"
+msgstr "Klassificeringar"
+
+#: 
+msgid "Closest"
+msgstr "Närmast"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Insättning nr %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Det gick inte att hämta antalet insamlingar"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Det gick inte att läsa in grannar."
+
+#: 
+msgid "Farther"
+msgstr "Längre bort"
+
+#: 
+msgid "Farthest"
+msgstr "Längst bort"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Hitta grannar"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Hitta familjer i närheten och lägg till dem i din varukorg"
+
+#: 
+msgid "Map centered on"
+msgstr "Karta centrerad på"
+
+#: 
+msgid "Max distance"
+msgstr "Maxavstånd"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maximalt antal grannar"
+
+#: 
+msgid "Near"
+msgstr "Nära"
+
+#: 
+msgid "Please select a family."
+msgstr "Välj en familj."
+
+#: 
+msgid "Results"
+msgstr "Resultat"
+
+#: 
+msgid "Same location"
+msgstr "Samma plats"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Sök grannar"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Välj en familj och klicka på Hitta grannar för att se resultat."
+
+#: 
+msgid "Selected family"
+msgstr "Vald familj"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Det här värdet måste vara ett giltigt fältnamn."
+
+#: 
+msgid "Could not load data"
+msgstr "Det gick inte att läsa in data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Uppdatera sidan eller försök igen senare."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Lägg till de relevanta posterna först."
+
+#: 
+msgid "All Months"
+msgstr "Alla månader"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Inga \"%s\"-alternativ har definierats än."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Inga händelser hittades för %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Prova att välja en annan händelsetyp, månad eller år."
 

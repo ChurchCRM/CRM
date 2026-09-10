@@ -10438,10 +10438,6 @@ msgid "Total Check-ins"
 msgstr "Összes bejelentkezés"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Próbáljon másik eseménytípust vagy évet választani."
-
-#: 
 msgid "Up to Date"
 msgstr "Naprakész"
 
@@ -17064,10 +17060,6 @@ msgid "Failed to update pledge"
 msgstr "A fogadalom frissítése sikertelen"
 
 #: 
-msgid "Family is required"
-msgstr "A család megadása kötelező"
-
-#: 
 msgid "Financial data"
 msgstr "Pénzügyi adatok"
 
@@ -17194,10 +17186,6 @@ msgstr "Futásidei támogatás tervezése"
 #: 
 msgid "Please enter a date"
 msgstr "Kérjük, adjon meg egy dátumot"
-
-#: 
-msgid "Please select a family"
-msgstr "Kérjük, válasszon egy családot"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17612,14 +17600,6 @@ msgstr "Becsült érték: %s."
 msgid "Minimum bid %s."
 msgstr "Minimális licit: %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Még nem állnak rendelkezésre \"%s\" lehetőségek. Először adja hozzá a megfelelő rekordokat."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Még nincsenek konfigurálva \"%s\" lehetőségek. Először adja hozzá a megfelelő rekordokat."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17768,4 +17748,120 @@ msgstr "Mit nyer ezzel"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Nem sikerült lekérni a befizetések számát"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Évforduló: %s"
+
+#: 
+msgid "Church"
+msgstr "Gyülekezet"
+
+#: 
+msgid "Classifications"
+msgstr "Besorolások"
+
+#: 
+msgid "Closest"
+msgstr "Legközelebb"
+
+#: 
+msgid "Deposit #%d"
+msgstr "%d. sz. befizetés"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Nem sikerült lekérni a gyűjtések számát"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Nem sikerült betölteni a szomszédokat."
+
+#: 
+msgid "Farther"
+msgstr "Távolabb"
+
+#: 
+msgid "Farthest"
+msgstr "Legtávolabb"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Szomszédok keresése"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Közeli családok keresése és hozzáadása a kosárhoz"
+
+#: 
+msgid "Map centered on"
+msgstr "Térkép középpontja:"
+
+#: 
+msgid "Max distance"
+msgstr "Maximális távolság"
+
+#: 
+msgid "Max neighbors"
+msgstr "Szomszédok maximuma"
+
+#: 
+msgid "Near"
+msgstr "Közel"
+
+#: 
+msgid "Please select a family."
+msgstr "Kérjük, válasszon egy családot."
+
+#: 
+msgid "Results"
+msgstr "Eredmények"
+
+#: 
+msgid "Same location"
+msgstr "Azonos helyszín"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Szomszédok keresése"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Válasszon egy családot, majd kattintson a Szomszédok keresése gombra az eredmények megtekintéséhez."
+
+#: 
+msgid "Selected family"
+msgstr "Kiválasztott család"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Ennek az értéknek érvényes mezőnévnek kell lennie."
+
+#: 
+msgid "Could not load data"
+msgstr "Az adatok nem tölthetők be"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Kérjük, frissítse az oldalt, vagy próbálja meg később."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Először adja hozzá a kapcsolódó rekordokat."
+
+#: 
+msgid "All Months"
+msgstr "Minden hónap"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Még nem lettek megadva \"%s\" lehetőségek."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Nem találhatók események ehhez: %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Próbáljon más eseménytípust, hónapot vagy évet választani."
 

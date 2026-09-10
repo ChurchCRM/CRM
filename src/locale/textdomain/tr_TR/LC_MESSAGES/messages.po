@@ -10411,10 +10411,6 @@ msgid "Total Check-ins"
 msgstr "Toplam Giriş Sayısı"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Farklı bir etkinlik türü veya yıl seçmeyi deneyin."
-
-#: 
 msgid "Up to Date"
 msgstr "Güncel"
 
@@ -17037,10 +17033,6 @@ msgid "Failed to update pledge"
 msgstr "Taahhüt güncellenemedi"
 
 #: 
-msgid "Family is required"
-msgstr "Aile zorunludur"
-
-#: 
 msgid "Financial data"
 msgstr "Mali veri"
 
@@ -17167,10 +17159,6 @@ msgstr "Çalışma zamanı desteğini planla"
 #: 
 msgid "Please enter a date"
 msgstr "Lütfen bir tarih girin"
-
-#: 
-msgid "Please select a family"
-msgstr "Lütfen bir aile seçin"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17577,14 +17565,6 @@ msgstr "Tahmini değer %s."
 msgid "Minimum bid %s."
 msgstr "Minimum teklif %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Henüz \"%s\" seçeneği mevcut değil. Önce ilgili kayıtları ekleyin."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Henüz \"%s\" seçeneği yapılandırılmamış. Önce ilgili kayıtları ekleyin."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17733,4 +17713,120 @@ msgstr "Ne kazanacaksınız"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Depozito sayısı alınamadı"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Yıldönümü: %s"
+
+#: 
+msgid "Church"
+msgstr "Kilise"
+
+#: 
+msgid "Classifications"
+msgstr "Sınıflandırmalar"
+
+#: 
+msgid "Closest"
+msgstr "En yakın"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Mevduat #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Bağış kampanyası sayısı alınamadı"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Komşular yüklenemedi."
+
+#: 
+msgid "Farther"
+msgstr "Daha uzak"
+
+#: 
+msgid "Farthest"
+msgstr "En uzak"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Komşuları Bul"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Yakın aileleri bulun ve sepetinize ekleyin"
+
+#: 
+msgid "Map centered on"
+msgstr "Harita merkezi:"
+
+#: 
+msgid "Max distance"
+msgstr "Maksimum mesafe"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maksimum komşu sayısı"
+
+#: 
+msgid "Near"
+msgstr "Yakın"
+
+#: 
+msgid "Please select a family."
+msgstr "Lütfen bir aile seçin."
+
+#: 
+msgid "Results"
+msgstr "Sonuçlar"
+
+#: 
+msgid "Same location"
+msgstr "Aynı konum"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Komşuları Ara"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Bir aile seçin ve sonuçları görmek için Komşuları Bul'a tıklayın."
+
+#: 
+msgid "Selected family"
+msgstr "Seçilen aile"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Bu değer geçerli bir alan adı olmalıdır."
+
+#: 
+msgid "Could not load data"
+msgstr "Veriler yüklenemedi"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Lütfen sayfayı yenileyin veya daha sonra tekrar deneyin."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Önce ilgili kayıtları ekleyin."
+
+#: 
+msgid "All Months"
+msgstr "Tüm Aylar"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Henüz \"%s\" seçeneği tanımlanmamış."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d için etkinlik bulunamadı."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Farklı bir etkinlik türü, ay veya yıl seçmeyi deneyin."
 

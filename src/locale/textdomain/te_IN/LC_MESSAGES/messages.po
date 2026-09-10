@@ -10388,10 +10388,6 @@ msgid "Total Check-ins"
 msgstr "మొత్తం చెక్-ఇన్‌లు"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "వేరే ఈవెంట్ రకం లేదా సంవత్సరాన్ని ఎంచుకోవడానికి ప్రయత్నించండి."
-
-#: 
 msgid "Up to Date"
 msgstr "తాజాగా ఉంది"
 
@@ -17014,10 +17010,6 @@ msgid "Failed to update pledge"
 msgstr "ప్రతిజ్ఞను నవీకరించడం విఫలమైంది"
 
 #: 
-msgid "Family is required"
-msgstr "కుటుంబం అవసరం"
-
-#: 
 msgid "Financial data"
 msgstr "ఆర్థిక డేటా"
 
@@ -17144,10 +17136,6 @@ msgstr "రన్‌టైమ్ మద్దతును ప్లాన్ చ
 #: 
 msgid "Please enter a date"
 msgstr "దయచేసి తేదీని నమోదు చేయండి"
-
-#: 
-msgid "Please select a family"
-msgstr "దయచేసి కుటుంబాన్ని ఎంచుకోండి"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17554,14 +17542,6 @@ msgstr "అంచనా విలువ %s."
 msgid "Minimum bid %s."
 msgstr "కనీస వేలం %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "ఇంకా \"%s\" ఎంపికలు అందుబాటులో లేవు. ముందు సంబంధిత రికార్డులను జోడించండి."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "ఇంకా \"%s\" ఎంపికలు కాన్ఫిగర్ చేయబడలేదు. ముందు సంబంధిత రికార్డులను జోడించండి."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17710,4 +17690,120 @@ msgstr "మీరు పొందేది"
 #: 
 msgid "Failed to get deposit count"
 msgstr "డిపాజిట్ సంఖ్యను పొందడంలో విఫలమైంది"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "వార్షికోత్సవం: %s"
+
+#: 
+msgid "Church"
+msgstr "చర్చి"
+
+#: 
+msgid "Classifications"
+msgstr "వర్గీకరణలు"
+
+#: 
+msgid "Closest"
+msgstr "సమీపంలో ఉన్న"
+
+#: 
+msgid "Deposit #%d"
+msgstr "డిపాజిట్ #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "నిధులు సేకరణ సంఖ్యను పొందడం విఫలమైంది"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "పొరుగువారిని లోడ్ చేయడం విఫలమైంది."
+
+#: 
+msgid "Farther"
+msgstr "మరింత దూరంగా"
+
+#: 
+msgid "Farthest"
+msgstr "అతి దూరంగా"
+
+#: 
+msgid "Find Neighbors"
+msgstr "పొరుగువారిని కనుగొనండి"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "సమీపంలోని కుటుంబాలను కనుగొని మీ కార్ట్‌కు జోడించండి"
+
+#: 
+msgid "Map centered on"
+msgstr "మ్యాప్ కేంద్రీకృతం:"
+
+#: 
+msgid "Max distance"
+msgstr "గరిష్ట దూరం"
+
+#: 
+msgid "Max neighbors"
+msgstr "గరిష్ట పొరుగువారు"
+
+#: 
+msgid "Near"
+msgstr "సమీపంలో"
+
+#: 
+msgid "Please select a family."
+msgstr "దయచేసి ఒక కుటుంబాన్ని ఎంచుకోండి."
+
+#: 
+msgid "Results"
+msgstr "ఫలితాలు"
+
+#: 
+msgid "Same location"
+msgstr "అదే స్థానం"
+
+#: 
+msgid "Search Neighbors"
+msgstr "పొరుగువారిని శోధించండి"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "ఒక కుటుంబాన్ని ఎంచుకొని ఫలితాలను చూడటానికి పొరుగువారిని కనుగొనండి క్లిక్ చేయండి."
+
+#: 
+msgid "Selected family"
+msgstr "ఎంచుకున్న కుటుంబం"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "ఈ విలువ చెల్లుబాటు అయ్యే ఫీల్డ్ పేరు అయి ఉండాలి."
+
+#: 
+msgid "Could not load data"
+msgstr "డేటాను లోడ్ చేయలేకపోయింది"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "దయచేసి పేజీని రిఫ్రెష్ చేయండి లేదా తర్వాత మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "ముందు సంబంధిత రికార్డులను జోడించండి."
+
+#: 
+msgid "All Months"
+msgstr "అన్ని నెలలు"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "\"%s\" ఎంపికలు ఇంకా నిర్వచించబడలేదు."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d కోసం ఏ ఈవెంట్లూ కనుగొనబడలేదు."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "వేరే ఈవెంట్ రకం, నెల లేదా సంవత్సరాన్ని ఎంచుకోవడానికి ప్రయత్నించండి."
 

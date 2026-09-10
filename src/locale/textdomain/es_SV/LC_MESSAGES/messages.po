@@ -10376,10 +10376,6 @@ msgid "Total Check-ins"
 msgstr "Total de registros de asistencia"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Intente seleccionar un tipo de evento o año diferente."
-
-#: 
 msgid "Up to Date"
 msgstr "Actualizado"
 
@@ -17003,10 +16999,6 @@ msgid "Failed to update pledge"
 msgstr "Error al actualizar el compromiso"
 
 #: 
-msgid "Family is required"
-msgstr "La familia es obligatoria"
-
-#: 
 msgid "Financial data"
 msgstr "Datos financieros"
 
@@ -17133,10 +17125,6 @@ msgstr "Planificar soporte en tiempo de ejecución"
 #: 
 msgid "Please enter a date"
 msgstr "Por favor ingrese una fecha"
-
-#: 
-msgid "Please select a family"
-msgstr "Por favor seleccione una familia"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17555,14 +17543,6 @@ msgstr "Valor estimado %s."
 msgid "Minimum bid %s."
 msgstr "Oferta mínima %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Aún no hay opciones de \"%s\" disponibles. Agregue primero los registros correspondientes."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Aún no hay opciones de \"%s\" configuradas. Agregue primero los registros correspondientes."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17711,4 +17691,120 @@ msgstr "Lo que obtendrá"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Error al obtener el conteo de depósitos"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Aniversario: %s"
+
+#: 
+msgid "Church"
+msgstr "Iglesia"
+
+#: 
+msgid "Classifications"
+msgstr "Clasificaciones"
+
+#: 
+msgid "Closest"
+msgstr "Más cercano"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Depósito n.º %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "No se pudo obtener el conteo de recaudadores"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "No se pudieron cargar los vecinos."
+
+#: 
+msgid "Farther"
+msgstr "Más lejos"
+
+#: 
+msgid "Farthest"
+msgstr "El más lejano"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Buscar vecinos"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Buscar familias cercanas y agregarlas al carrito"
+
+#: 
+msgid "Map centered on"
+msgstr "Mapa centrado en"
+
+#: 
+msgid "Max distance"
+msgstr "Distancia máxima"
+
+#: 
+msgid "Max neighbors"
+msgstr "Máximo de vecinos"
+
+#: 
+msgid "Near"
+msgstr "Cerca"
+
+#: 
+msgid "Please select a family."
+msgstr "Por favor, seleccione una familia."
+
+#: 
+msgid "Results"
+msgstr "Resultados"
+
+#: 
+msgid "Same location"
+msgstr "Misma ubicación"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Buscar vecinos"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Seleccione una familia y haga clic en Buscar vecinos para ver los resultados."
+
+#: 
+msgid "Selected family"
+msgstr "Familia seleccionada"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Este valor debe ser un nombre de campo válido."
+
+#: 
+msgid "Could not load data"
+msgstr "No se pudieron cargar los datos"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Actualice la página o intente de nuevo más tarde."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Primero agregue los registros relevantes."
+
+#: 
+msgid "All Months"
+msgstr "Todos los meses"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Aún no se han definido opciones de \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "No se encontraron eventos para %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Intente seleccionar un tipo de evento, mes o año diferente."
 

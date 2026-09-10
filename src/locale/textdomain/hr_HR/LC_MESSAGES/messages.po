@@ -10382,10 +10382,6 @@ msgid "Total Check-ins"
 msgstr "Ukupne prijave"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "Pokušajte odabrati drugu vrstu događaja ili godinu."
-
-#: 
 msgid "Up to Date"
 msgstr "Ažurirano"
 
@@ -17012,10 +17008,6 @@ msgid "Failed to update pledge"
 msgstr "Nije uspjelo ažuriranje zavjeta"
 
 #: 
-msgid "Family is required"
-msgstr "Obitelj je obavezna"
-
-#: 
 msgid "Financial data"
 msgstr "Financijski podaci"
 
@@ -17142,10 +17134,6 @@ msgstr "Planiraj podršku za izvođenje"
 #: 
 msgid "Please enter a date"
 msgstr "Molimo unesite datum"
-
-#: 
-msgid "Please select a family"
-msgstr "Molimo odaberite obitelj"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17566,14 +17554,6 @@ msgstr "Procijenjena vrijednost %s."
 msgid "Minimum bid %s."
 msgstr "Minimalna ponuda %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Još nema dostupnih mogućnosti za \"%s\". Najprije dodajte odgovarajuće zapise."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Još nisu konfigurirane mogućnosti za \"%s\". Najprije dodajte odgovarajuće zapise."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17722,4 +17702,120 @@ msgstr "Što ćete dobiti"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Neuspješno dohvaćanje broja depozita"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Godišnjica: %s"
+
+#: 
+msgid "Church"
+msgstr "Crkva"
+
+#: 
+msgid "Classifications"
+msgstr "Klasifikacije"
+
+#: 
+msgid "Closest"
+msgstr "Najbliži"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Depozit br. %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Nije uspjelo dohvaćanje broja prikupljanja sredstava"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Nije uspjelo učitavanje susjeda."
+
+#: 
+msgid "Farther"
+msgstr "Dalje"
+
+#: 
+msgid "Farthest"
+msgstr "Najdalje"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Pronađi susjede"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Pronađite obitelji u blizini i dodajte ih u košaricu"
+
+#: 
+msgid "Map centered on"
+msgstr "Karta centrirana na"
+
+#: 
+msgid "Max distance"
+msgstr "Maksimalna udaljenost"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maksimalni broj susjeda"
+
+#: 
+msgid "Near"
+msgstr "Blizu"
+
+#: 
+msgid "Please select a family."
+msgstr "Molimo odaberite obitelj."
+
+#: 
+msgid "Results"
+msgstr "Rezultati"
+
+#: 
+msgid "Same location"
+msgstr "Ista lokacija"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Traži susjede"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Odaberite obitelj i kliknite Pronađi susjede za prikaz rezultata."
+
+#: 
+msgid "Selected family"
+msgstr "Odabrana obitelj"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Ova vrijednost mora biti valjani naziv polja."
+
+#: 
+msgid "Could not load data"
+msgstr "Nije moguće učitati podatke"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Osvježite stranicu ili pokušajte ponovo kasnije."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Najprije dodajte relevantne zapise."
+
+#: 
+msgid "All Months"
+msgstr "Svi mjeseci"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Još nisu definirane mogućnosti \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Nisu pronađeni događaji za %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Pokušajte odabrati drugi tip događaja, mjesec ili godinu."
 
