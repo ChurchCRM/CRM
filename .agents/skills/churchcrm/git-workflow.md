@@ -247,6 +247,16 @@ EOF
 
 **Rule:** The description must always accurately reflect *what the PR actually contains* at the time of review — not just what it contained when first opened. A reviewer reading the description should not be surprised by the diff.
 
+**HARD RULE — any big change to a PR requires updating its description in the same session.** <!-- learned: 2026-09-10 -->
+Whenever you materially change a PR — rebase, squash/rewrite history, resolve conflicts that shift the diff, add/remove files or features, rename a migration or route, or drop out-of-scope work during an audit — you MUST run `gh pr edit <n> --body ...` before ending the turn so the Summary / Changes / Files Changed / Testing sections match the new state. The description update is part of the change, not a follow-up. Do not report the PR work as done until the body is current.
+
+**HARD RULE — always resolve review threads that are addressed or outdated.** <!-- learned: 2026-09-10 -->
+After any PR work (push, rebase, review pass), walk every open review thread and resolve it if:
+- the change it asked for is now in the branch, **or**
+- it is superseded / no longer applicable — the code it points at was rewritten, moved, or deleted (GitHub's `isOutdated` is a strong signal but confirm the concern is genuinely gone).
+
+Leave a one-line reply saying what addressed it (commit SHA, or "obsoleted by <change>") before resolving, so the reviewer sees the trail. Only leave a thread open when it raises a real, still-unaddressed concern — then call it out explicitly in your summary. Use the GraphQL `reviewThreads` query + `resolveReviewThread` mutation (see [`code-standards.md → Resolving Review Threads After Addressing Comments`](./code-standards.md)).
+
 ### Keeping Branches Up to Date
 
 **Always merge master into a PR branch before reviewing or testing it.** A branch that has diverged from master may have hidden conflicts or stale code that makes the review misleading.
