@@ -270,14 +270,14 @@ class   SystemConfig
             'bSearchIncludeCalendarEvents'         => new ConfigItem('bSearchIncludeCalendarEvents', 'boolean', '1', gettext('Search Calendar Events')),
             'bSearchIncludeCalendarEventsMax'      => new ConfigItem('bSearchIncludeCalendarEventsMax', 'text', '15', gettext('Maximum number of Calendar Events')),
             'bRequire2FA'                          => new ConfigItem('bRequire2FA', 'boolean', '0', gettext('Require all users to enroll in two-factor authentication')),
-            'i2FAGracePeriodDays'                   => new ConfigItem('i2FAGracePeriodDays', 'number', '7', gettext('Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behaviour). Shortening an active grace period may lock users out immediately.')),
+            'i2FAGracePeriodDays'                  => new ConfigItem('i2FAGracePeriodDays', 'number', '7', gettext('Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately.')),
             's2FAApplicationName'                  => new ConfigItem('s2FAApplicationName', 'text', 'ChurchCRM', gettext('Specify the application name to be displayed in authenticator app')),
             'sTwoFASecretKey'                      => new ConfigItem('sTwoFASecretKey', 'password', '', gettext('Encryption key for storing 2FA secret keys in the database')),
             'bSendUserDeletedEmail'                => new ConfigItem('bSendUserDeletedEmail', 'boolean', '0', gettext('Send an email notifying users when their account has been deleted')),
             'sInactiveClassification'              => new ConfigItem('sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
             'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
-            // Telemetry — collection level and internal state (sTelemetryAskedVersion excluded from UI)
+
             'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'none', gettext('Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent.'), '', json_encode(self::getTelemetryLevelChoices())),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
         ];
