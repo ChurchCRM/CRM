@@ -3233,7 +3233,7 @@
   "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins.": "Pred povolením skontrolujte súbory pluginu na disku. Neoverené pluginy bežia s rovnakými oprávneniami ako schválené.",
   "SHA-256 checksum": "Kontrolný súčet SHA-256",
   "SHA-256 must be a 64-character hex string.": "SHA-256 musí byť 64-znakový hexadecimálny reťazec.",
-  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.": "Správcovia ChurchCRM ho nepreskúmali. Zodpovedáte za bezpečnosť a správanie všetkého, čo tu nainštalujete.",
+  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.": "Správcovia ChurchCRM ho nepreskúmali. Zodpovedáte za bezpečnosť a správanie všetkého, čo tu nainštalujete.",
   "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet.": "Zoznam schválených pluginov je prázdny. Zatiaľ nie sú k dispozícii žiadne pluginy tretích strán.",
   "The plugin was automatically disabled after a runtime failure.": "Plugin bol automaticky zakázaný po zlyhaní za behu.",
   "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically.": "Tieto pluginy boli preskúmané a schválené správcami ChurchCRM. Kliknutím na Inštalovať stiahnete a nainštalujete jeden — plugin nebude automaticky povolený.",

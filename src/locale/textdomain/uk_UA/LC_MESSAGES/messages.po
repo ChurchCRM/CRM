@@ -13542,7 +13542,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 має бути 64-символьним шістнадцятковим рядком."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Супровідники ChurchCRM не перевіряли його. Ви несете відповідальність за безпеку та поведінку всього, що ви тут встановлюєте. За можливості використовуйте перегляд схвалених плагінів."
 
 #: 

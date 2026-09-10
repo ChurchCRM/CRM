@@ -3203,7 +3203,7 @@
   "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins.": "활성화하기 전에 디스크의 플러그인 파일을 검토하세요. 미검증 플러그인은 승인된 플러그인과 동일한 권한으로 실행됩니다.",
   "SHA-256 checksum": "SHA-256 체크섬",
   "SHA-256 must be a 64-character hex string.": "SHA-256은 64자리 16진수 문자열이어야 합니다.",
-  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.": "ChurchCRM 관리자들이 검토하지 않은 플러그인입니다. 여기서 설치하는 모든 항목의 보안과 동작에 대한 책임은 사용자에게 있습니다. 가능하면 승인된 항목 찾아보기를 이용하세요.",
+  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.": "ChurchCRM 관리자들이 검토하지 않은 플러그인입니다. 여기서 설치하는 모든 항목의 보안과 동작에 대한 책임은 사용자에게 있습니다. 가능하면 승인된 항목 찾아보기를 이용하세요.",
   "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet.": "승인된 플러그인 목록이 비어 있습니다. 검증된 설치 프로그램을 통해 사용 가능한 서드파티 플러그인이 아직 없습니다.",
   "The plugin was automatically disabled after a runtime failure.": "런타임 오류로 인해 플러그인이 자동으로 비활성화되었습니다.",
   "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically.": "이 플러그인들은 ChurchCRM 관리자들이 검토하고 승인한 것입니다. 설치를 클릭하여 다운로드 및 설치하세요 — 플러그인은 자동으로 활성화되지 않습니다.",
