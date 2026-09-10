@@ -374,6 +374,17 @@ class DemoDataService
                         if ($familySelfRegistered) {
                             $person->setEnteredBy(Person::SELF_REGISTER);
                         }
+                        if (!empty($m['dateDeceased'])) {
+                            try {
+                                $person->setDateDeceased(new DateTime($m['dateDeceased']));
+                            } catch (Exception $e) {
+                                $this->addWarning("Invalid dateDeceased for person '{$person->getFirstName()} {$person->getLastName()}': {$e->getMessage()}");
+                                $logger->warning('Person dateDeceased parse failed', [
+                                    'dateDeceased' => $m['dateDeceased'] ?? null,
+                                    'error' => $e->getMessage(),
+                                ]);
+                            }
+                        }
                         $person->save();
                         $this->personMap[$person->getId()] = $person;
                         $this->importResult['imported']['people']++;
