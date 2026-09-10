@@ -6,24 +6,41 @@ use ChurchCRM\Utils\MiscUtils;
 
 function FontSelect($fieldname): void
 {
-    $sFPDF_PATH = 'vendor/setasign/fpdf';
+    // Absolute path: the previous relative 'vendor/setasign/fpdf' only resolved
+    // when the CWD happened to be the web root, and scandir() failing left the
+    // font list silently empty.
+    $sFPDF_PATH = __DIR__ . '/../vendor/setasign/fpdf';
 
-    $d = scandir($sFPDF_PATH . '/font/', SCANDIR_SORT_DESCENDING);
-    $fontnames = [];
-    $family = ' ';
-    foreach ($d as $entry) {
-        $len = strlen($entry);
-        if ($len > 3) {
-            if (strtoupper(mb_substr($entry, $len - 3)) === 'PHP') { // php files only
-                $filename = mb_substr($entry, 0, $len - 4);
-                if (mb_substr($filename, 0, strlen($family)) != $family) {
-                    $family = $filename;
-                }
-                $fontnames[] = MiscUtils::filenameToFontname($filename, $family);
-            }
+    // FPDF shipped core font metrics as .php up to 1.8.x and as .json from
+    // 1.9.0. Accept both so the list is not empty on either version, and use
+    // pathinfo() rather than a hardcoded length to strip the extension (the
+    // old code hardcoded $len - 4, which is wrong for ".json").
+    $basenames = [];
+    foreach (scandir($sFPDF_PATH . '/font/') ?: [] as $entry) {
+        if (preg_match('/\.(php|json)$/i', $entry)) {
+            $basenames[] = pathinfo($entry, PATHINFO_FILENAME);
         }
     }
 
+    // Sort explicitly rather than trusting scandir's ordering. The $family
+    // tracking below only works if a family's base name ("helvetica") is seen
+    // before its variants ("helveticab"), and scandir's sort argument is not
+    // dependable across filesystems -- on a Docker bind mount it was observed
+    // returning "courierbi, courierb, courieri, courier" even with
+    // SCANDIR_SORT_ASCENDING, which yields "Helveticab" instead of
+    // "Helvetica Bold".
+    sort($basenames, SORT_STRING);
+
+    $fontnames = [];
+    $family = ' ';
+    foreach ($basenames as $filename) {
+        if (mb_substr($filename, 0, strlen($family)) != $family) {
+            $family = $filename;
+        }
+        $fontnames[] = MiscUtils::filenameToFontname($filename, $family);
+    }
+
+    $fontnames = array_values(array_unique($fontnames));
     sort($fontnames);
 
     echo '<tr>';
