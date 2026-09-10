@@ -2283,3 +2283,12 @@ cy.get("select#mySelect ~ .ts-wrapper > .ts-control").click();
 **Detecting TomSelect init:** Use `should("have.class", "tomselected")` — TomSelect adds this class to the original `<select>` at the end of `setup()`. Do **not** use `should("not.be.visible")` because `ts-hidden-accessible` uses `clip-path + 1px` dimensions, not `display:none`, so Cypress's visibility check returns true.
 
 **Dropdown in body:** With `dropdownParent: "body"`, TomSelect appends `.ts-dropdown` to `<body>` at **init time** (constructor). So `cy.get("body > .ts-dropdown").should("exist")` passes even when no options are loaded and the dropdown is `display:none`.
+
+**Counting rendered options — scope to the owning wrapper.** Without `dropdownParent`, each `.ts-dropdown` is nested *inside* its own sibling `.ts-wrapper`, so a bare `body .ts-dropdown .option` matches **every** TomSelect on the page at once (a country + state page yields 256 + 59 = 315, not 59). Always scope through the `<select>`:
+
+```js
+cy.get("select#State").next(".ts-wrapper").find(".ts-dropdown .option")
+  .should("have.length", expected);
+```
+
+Assert the **count**, not just that the dropdown opened — a rendered count of exactly 50 is the signature of the `maxOptions` cap (see the frontend-development skill). Derive `expected` from the API the select is populated from (`/api/public/data/countries`) rather than hardcoding it, so the test does not go stale when the data changes.
