@@ -61,4 +61,57 @@ if ! node scripts/validate-yaml.js; then
 fi
 
 echo "✓ pre-commit: YAML validation passed."
+
+# SQL validation for any .sql files being committed
+SQL_FILES=$(git diff --cached --name-only --diff-filter=ACM 2>/dev/null | grep -E '\.sql$' | head -20)
+
+if [ -n "$SQL_FILES" ]; then
+    echo "→ pre-commit: validating SQL syntax in changed .sql files…"
+
+    SQL_ERRORS=0
+    for sql_file in $SQL_FILES; do
+        if [ ! -f "$sql_file" ]; then
+            continue
+        fi
+
+        # Check for matching parentheses
+        open_parens=$(grep -o '(' "$sql_file" 2>/dev/null | wc -l)
+        close_parens=$(grep -o ')' "$sql_file" 2>/dev/null | wc -l)
+        if [ "$open_parens" -ne "$close_parens" ]; then
+            echo "  ✘ $sql_file: Mismatched parentheses ($open_parens open, $close_parens close)"
+            SQL_ERRORS=$((SQL_ERRORS + 1))
+        fi
+
+        # Check for trailing comma before semicolon
+        if grep -E ',\s*;' "$sql_file" > /dev/null 2>&1; then
+            echo "  ✘ $sql_file: Trailing comma before semicolon"
+            SQL_ERRORS=$((SQL_ERRORS + 1))
+        fi
+
+        # Check for consecutive commas (,,) which indicate malformed tuples
+        if grep -E ',\s*,' "$sql_file" > /dev/null 2>&1; then
+            echo "  ✘ $sql_file: Consecutive commas detected (malformed tuple)"
+            SQL_ERRORS=$((SQL_ERRORS + 1))
+        fi
+
+        # Check for INSERT without VALUES or SELECT
+        if grep -q "^INSERT INTO" "$sql_file" 2>/dev/null; then
+            if ! grep "INSERT INTO.*VALUES\|INSERT INTO.*SELECT" "$sql_file" > /dev/null 2>&1; then
+                echo "  ✘ $sql_file: INSERT statement without VALUES or SELECT"
+                SQL_ERRORS=$((SQL_ERRORS + 1))
+            fi
+        fi
+    done
+
+    if [ $SQL_ERRORS -gt 0 ]; then
+        echo ""
+        echo "✘ pre-commit: SQL validation failed ($SQL_ERRORS error(s))."
+        echo "  Fix the SQL syntax errors above and re-stage, or bypass in an emergency with:"
+        echo "  git commit --no-verify (justify in PR)."
+        exit 1
+    fi
+
+    echo "✓ pre-commit: SQL syntax validation passed."
+fi
+
 exit 0
