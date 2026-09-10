@@ -727,6 +727,17 @@ TomSelect hides options with `value=""` (treats them as placeholder/clear state)
 
 When TomSelect is inside a card with `table-responsive` or constrained overflow, dropdowns get clipped. Fix: pass `dropdownParent: 'body'` to TomSelect init and add a `body > .ts-dropdown` SCSS rule in `_tabler-bridge.scss` to preserve Tabler styling.
 
+### TomSelect silently truncates long lists: `maxOptions` defaults to 50 <!-- learned: 2026-09-10 -->
+
+TomSelect renders at most `settings.maxOptions` entries — **default 50** — and applies the cap to the already-filtered result set, with no scrollbar and no "more results" hint. Any `<select>` backed by a fixed enumeration longer than 50 silently loses its tail: the country list (256) stopped at China, leaving **United States** unreachable by scrolling; US states (59) stopped at Tennessee; `sTimeZone` (419) was cut inside `America/*`. `TomSelect.defaults` is module-private in v2, so there is no global override — set it per call site:
+
+```js
+// Fixed enumeration the user picks by scrolling — render every option.
+new TomSelect(el, { maxOptions: null });
+```
+
+Keep the default for **type-to-search** pickers (person/family/group), where capping results is the point. Issue #9677 fixed `DropdownManager.js`, `webpack/church-info.js` and `SystemSettings.php`. Typing still finds hidden entries because search runs before the cap — which is exactly why this bug survives casual testing.
+
 ### Uppy v5 XHRUpload: Parse `response.responseText` to Surface Server Errors <!-- learned: 2026-04-21 -->
 
 Uppy v5 wraps **every** non-2xx HTTP response in a `NetworkError` whose `.message` is **hardcoded** to `"This looks like a network error, the endpoint might be blocked by an internet provider or a firewall."` — regardless of the actual status code or response body. The `getResponseError` option from v3/v4 is **not wired up in v5** (the option name appears in a comment in `@uppy/xhr-upload/lib/index.js` but is never read).

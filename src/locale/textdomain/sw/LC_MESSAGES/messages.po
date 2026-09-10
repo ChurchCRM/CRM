@@ -17706,3 +17706,119 @@ msgstr "Utachopata"
 msgid "Failed to get deposit count"
 msgstr "Imeshindwa kupata idadi ya amana"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Kumbukumbu ya mwaka: %s"
+
+#: 
+msgid "Church"
+msgstr "Kanisa"
+
+#: 
+msgid "Classifications"
+msgstr "Uainishaji"
+
+#: 
+msgid "Closest"
+msgstr "Karibu zaidi"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Amana #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Imeshindwa kupata idadi ya ukusanyaji wa fedha"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Imeshindwa kupakia majirani."
+
+#: 
+msgid "Farther"
+msgstr "Mbali zaidi"
+
+#: 
+msgid "Farthest"
+msgstr "Mbali sana"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Tafuta Majirani"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Tafuta familia zilizo karibu na uziongeze kwenye mkoba wako"
+
+#: 
+msgid "Map centered on"
+msgstr "Ramani imewekwa katikati ya"
+
+#: 
+msgid "Max distance"
+msgstr "Umbali wa juu zaidi"
+
+#: 
+msgid "Max neighbors"
+msgstr "Idadi ya juu ya majirani"
+
+#: 
+msgid "Near"
+msgstr "Karibu"
+
+#: 
+msgid "Please select a family."
+msgstr "Tafadhali chagua familia."
+
+#: 
+msgid "Results"
+msgstr "Matokeo"
+
+#: 
+msgid "Same location"
+msgstr "Mahali pamoja"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Tafuta Majirani"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Chagua familia na ubonyeze Tafuta Majirani kuona matokeo."
+
+#: 
+msgid "Selected family"
+msgstr "Familia iliyochaguliwa"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Thamani hii lazima iwe jina halali la sehemu."
+
+#: 
+msgid "Could not load data"
+msgstr "Imeshindwa kupakia data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Tafadhali onyesha upya ukurasa au jaribu tena baadaye."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Ongeza kwanza rekodi zinazohusiana."
+
+#: 
+msgid "All Months"
+msgstr "Miezi Yote"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Hakuna chaguo za \"%s\" zilizowekwa bado."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Hakuna matukio yaliyopatikana kwa %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Jaribu kuchagua aina nyingine ya tukio, mwezi, au mwaka."
+

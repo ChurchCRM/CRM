@@ -17734,3 +17734,119 @@ msgstr "Wat u sal wen"
 msgid "Failed to get deposit count"
 msgstr "Kon nie die aantal deposito's kry nie"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Herdenking: %s"
+
+#: 
+msgid "Church"
+msgstr "Kerk"
+
+#: 
+msgid "Classifications"
+msgstr "Klassifikasies"
+
+#: 
+msgid "Closest"
+msgstr "Naaste"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Deposito #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Kon nie die getal fondsinsamelings kry nie"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Kon nie bure laai nie."
+
+#: 
+msgid "Farther"
+msgstr "Verder"
+
+#: 
+msgid "Farthest"
+msgstr "Verste"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Vind bure"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Vind nabygelee families en voeg hulle by jou mandjie"
+
+#: 
+msgid "Map centered on"
+msgstr "Kaart gesentreer op"
+
+#: 
+msgid "Max distance"
+msgstr "Maksimum afstand"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maksimum bure"
+
+#: 
+msgid "Near"
+msgstr "Naby"
+
+#: 
+msgid "Please select a family."
+msgstr "Kies asseblief 'n gesin."
+
+#: 
+msgid "Results"
+msgstr "Resultate"
+
+#: 
+msgid "Same location"
+msgstr "Dieselfde plek"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Soek bure"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Kies 'n gesin en klik Vind bure om resultate te sien."
+
+#: 
+msgid "Selected family"
+msgstr "Gekose gesin"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Hierdie waarde moet 'n geldige veldnaam wees."
+
+#: 
+msgid "Could not load data"
+msgstr "Kon nie data laai nie"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Verfris asseblief die bladsy of probeer later weer."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Voeg eers die relevante rekords by."
+
+#: 
+msgid "All Months"
+msgstr "Alle maande"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Geen \"%s\" opsies is nog gedefinieer nie."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Geen gebeure gevind vir %s %d nie."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Probeer 'n ander tipe gebeurtenis, maand of jaar kies."
+

@@ -17688,3 +17688,119 @@ msgstr "สิ่งที่คุณจะได้รับ"
 msgid "Failed to get deposit count"
 msgstr "ไม่สามารถดึงจำนวนเงินฝากได้"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "วันครบรอบ: %s"
+
+#: 
+msgid "Church"
+msgstr "คริสตจักร"
+
+#: 
+msgid "Classifications"
+msgstr "การจัดประเภท"
+
+#: 
+msgid "Closest"
+msgstr "ใกล้ที่สุด"
+
+#: 
+msgid "Deposit #%d"
+msgstr "เงินฝาก #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "ไม่สามารถดึงข้อมูลจำนวนการระดมทุนได้"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "ไม่สามารถโหลดเพื่อนบ้านได้"
+
+#: 
+msgid "Farther"
+msgstr "ไกลกว่า"
+
+#: 
+msgid "Farthest"
+msgstr "ไกลที่สุด"
+
+#: 
+msgid "Find Neighbors"
+msgstr "ค้นหาเพื่อนบ้าน"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "ค้นหาครอบครัวใกล้เคียงและเพิ่มลงในตะกร้า"
+
+#: 
+msgid "Map centered on"
+msgstr "แผนที่ศูนย์กลางที่"
+
+#: 
+msgid "Max distance"
+msgstr "ระยะทางสูงสุด"
+
+#: 
+msgid "Max neighbors"
+msgstr "จำนวนเพื่อนบ้านสูงสุด"
+
+#: 
+msgid "Near"
+msgstr "ใกล้"
+
+#: 
+msgid "Please select a family."
+msgstr "กรุณาเลือกครอบครัว"
+
+#: 
+msgid "Results"
+msgstr "ผลลัพธ์"
+
+#: 
+msgid "Same location"
+msgstr "สถานที่เดียวกัน"
+
+#: 
+msgid "Search Neighbors"
+msgstr "ค้นหาเพื่อนบ้าน"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "เลือกครอบครัวและคลิก ค้นหาเพื่อนบ้าน เพื่อดูผลลัพธ์"
+
+#: 
+msgid "Selected family"
+msgstr "ครอบครัวที่เลือก"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "ค่านี้ต้องเป็นชื่อฟิลด์ที่ถูกต้อง"
+
+#: 
+msgid "Could not load data"
+msgstr "ไม่สามารถโหลดข้อมูลได้"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "กรุณารีเฟรชหน้าหรือลองใหม่ภายหลัง"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "เพิ่มระเบียนที่เกี่ยวข้องก่อน"
+
+#: 
+msgid "All Months"
+msgstr "ทุกเดือน"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "ยังไม่มีการกำหนดตัวเลือก \"%s\""
+
+#: 
+msgid "No events found for %s %d."
+msgstr "ไม่พบกิจกรรมสำหรับ %s %d"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "ลองเลือกประเภทกิจกรรม เดือน หรือปีอื่น"
+

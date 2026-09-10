@@ -17,6 +17,7 @@
     "tests/vendor",
     "cypress/configs/*",
     "cypress/e2e/**",
-    "cypress/fixtures/**"
+    "cypress/fixtures/**",
+    "playwright/**"
   ]
 }

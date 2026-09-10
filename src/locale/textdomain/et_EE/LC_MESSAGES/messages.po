@@ -17725,3 +17725,119 @@ msgstr "Mida te saate"
 msgid "Failed to get deposit count"
 msgstr "Sissemaksete arvu hankimine ebaõnnestus"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "Aastapäev: %s"
+
+#: 
+msgid "Church"
+msgstr "Kogudus"
+
+#: 
+msgid "Classifications"
+msgstr "Klassifikatsioonid"
+
+#: 
+msgid "Closest"
+msgstr "Lähim"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Sissemakse nr %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Kogumisaktsioonide arvu ei õnnestunud hankida"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Naabrite laadimine ebaõnnestus."
+
+#: 
+msgid "Farther"
+msgstr "Kaugemal"
+
+#: 
+msgid "Farthest"
+msgstr "Kõige kaugemal"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Leia naabrid"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Leia lähedal asuvad pered ja lisa need oma korvi"
+
+#: 
+msgid "Map centered on"
+msgstr "Kaart on tsentrisse seatud"
+
+#: 
+msgid "Max distance"
+msgstr "Maksimaalne kaugus"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maksimaalne naabrite arv"
+
+#: 
+msgid "Near"
+msgstr "Lähedal"
+
+#: 
+msgid "Please select a family."
+msgstr "Palun valige pere."
+
+#: 
+msgid "Results"
+msgstr "Tulemused"
+
+#: 
+msgid "Same location"
+msgstr "Sama asukoht"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Otsi naabreid"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Valige pere ja klõpsake tulemuste nägemiseks nuppu Leia naabrid."
+
+#: 
+msgid "Selected family"
+msgstr "Valitud pere"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "See väärtus peab olema kehtiv väljanimi."
+
+#: 
+msgid "Could not load data"
+msgstr "Andmeid ei õnnestunud laadida"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Palun värskendage lehte või proovige hiljem uuesti."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Lisage esmalt asjakohased kirjed."
+
+#: 
+msgid "All Months"
+msgstr "Kõik kuud"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "\"%s\" valikuid pole veel määratletud."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Üritusi %s %d jaoks ei leitud."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Proovige valida mõni muu ürituse tüüp, kuu või aasta."
+

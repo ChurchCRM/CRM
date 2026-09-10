@@ -17781,3 +17781,119 @@ msgstr "您将获得的改进"
 msgid "Failed to get deposit count"
 msgstr "获取存款数量失败"
 
+#: 
+msgid "Anniversary: %s"
+msgstr "周年纪念：%s"
+
+#: 
+msgid "Church"
+msgstr "教会"
+
+#: 
+msgid "Classifications"
+msgstr "分类"
+
+#: 
+msgid "Closest"
+msgstr "最近"
+
+#: 
+msgid "Deposit #%d"
+msgstr "存款 #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "获取募款活动数量失败"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "加载邻居失败。"
+
+#: 
+msgid "Farther"
+msgstr "更远"
+
+#: 
+msgid "Farthest"
+msgstr "最远"
+
+#: 
+msgid "Find Neighbors"
+msgstr "查找邻居"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "查找附近的家庭并添加到购物车"
+
+#: 
+msgid "Map centered on"
+msgstr "地图以此为中心"
+
+#: 
+msgid "Max distance"
+msgstr "最大距离"
+
+#: 
+msgid "Max neighbors"
+msgstr "最大邻居数"
+
+#: 
+msgid "Near"
+msgstr "附近"
+
+#: 
+msgid "Please select a family."
+msgstr "请选择一个家庭。"
+
+#: 
+msgid "Results"
+msgstr "结果"
+
+#: 
+msgid "Same location"
+msgstr "相同位置"
+
+#: 
+msgid "Search Neighbors"
+msgstr "搜索邻居"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "选择一个家庭，然后单击查找邻居以查看结果。"
+
+#: 
+msgid "Selected family"
+msgstr "已选家庭"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "此值必须是有效的字段名称。"
+
+#: 
+msgid "Could not load data"
+msgstr "无法加载数据"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "请刷新页面或稍后重试。"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "请先添加相关记录。"
+
+#: 
+msgid "All Months"
+msgstr "所有月份"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "尚未定义任何\"%s\"选项。"
+
+#: 
+msgid "No events found for %s %d."
+msgstr "未找到 %s %d 的任何活动。"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "请尝试选择不同的活动类型、月份或年份。"
+

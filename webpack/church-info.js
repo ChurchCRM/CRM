@@ -86,6 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     new TomSelect(el, {
       allowEmptyOption: true,
+      // TomSelect renders at most `maxOptions` entries (default 50), which cut the
+      // country list off at China and the timezone list off inside America/*.
+      // These are fixed enumerations, so render all of them. See issue #9677.
+      maxOptions: null,
       placeholder: window.i18next ? i18next.t("Search or select...") : "Search or select...",
     });
   }
