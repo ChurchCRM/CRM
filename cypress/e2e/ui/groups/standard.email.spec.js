@@ -5,7 +5,7 @@
  *
  * The old email dropdown (which lazy-loaded via ajax) has been replaced by
  * a single "Email" button that opens the in-app email composer modal via
- * /api/groups/{id}/emails. This spec verifies the new behaviour:
+ * /api/groups/{id}/emails. This spec verifies the new behavior:
  *  - The composer button is present in the group toolbar.
  *  - Clicking it opens the modal and fetches recipients.
  *  - The modal shows a recipient count badge and action buttons.

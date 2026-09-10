@@ -598,7 +598,7 @@ function initializeCalendar() {
   });
 
   // FullCalendar v7 removed the windowResize option. Replicate the debounced
-  // resize behaviour with a native event listener. Clean up the old handler
+  // resize behavior with a native event listener. Clean up the old handler
   // when initializeCalendar() is called again (e.g. after locale reload).
   if (window.CRM._calendarResizeHandler) {
     window.removeEventListener("resize", window.CRM._calendarResizeHandler);
