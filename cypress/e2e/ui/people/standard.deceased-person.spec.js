@@ -248,7 +248,7 @@ describe("Deceased Person Flag", () => {
         cy.location("pathname")
             .then((p) => parseInt(p.match(/family\/(\d+)/)[1], 10))
             .then((familyId) => {
-                cy.get("#members tbody a[href*='/people/view/']").then(($links) => {
+                cy.get("table.card-table tbody a[href*='/people/view/']", { timeout: 10000 }).then(($links) => {
                     [...$links].forEach((a) =>
                         createdPersonIds.push(
                             parseInt(a.getAttribute("href").match(/view\/(\d+)/)[1], 10)
@@ -307,6 +307,8 @@ describe("Deceased Person Flag", () => {
     });
 
     it("the People Dashboard settings panel exposes the deceased-directory toggle", () => {
+        // #peopleSettings only renders for admins — switch to the admin session
+        cy.setupAdminSession();
         cy.visit("/people/dashboard");
         cy.get("#peopleSettings", { timeout: 10000 })
             .find("[name='bHideDeceasedFromDirectory']")
