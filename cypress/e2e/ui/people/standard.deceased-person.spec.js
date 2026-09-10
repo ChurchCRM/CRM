@@ -248,6 +248,7 @@ describe("Deceased Person Flag", () => {
         cy.location("pathname")
             .then((p) => parseInt(p.match(/family\/(\d+)/)[1], 10))
             .then((familyId) => {
+                // family-view.php uses .card-table tables (not #members which is person-list.php)
                 cy.get("table.card-table tbody a[href*='/people/view/']", { timeout: 10000 }).then(($links) => {
                     [...$links].forEach((a) =>
                         createdPersonIds.push(
@@ -267,7 +268,7 @@ describe("Deceased Person Flag", () => {
                     cy.visit(`/people/family/${familyId}`);
 
                     // Deceased member's row is greyed and carries the cross badge
-                    cy.get("#members tbody tr")
+                    cy.get("table.card-table tbody tr")
                         .contains("td", "PassedTwo")
                         .parents("tr")
                         .should("have.class", "text-body-secondary")
@@ -275,7 +276,7 @@ describe("Deceased Person Flag", () => {
                         .should("exist");
 
                     // Living member's row is not greyed
-                    cy.get("#members tbody tr")
+                    cy.get("table.card-table tbody tr")
                         .contains("td", "LivingOne")
                         .parents("tr")
                         .should("not.have.class", "text-body-secondary");
@@ -288,7 +289,9 @@ describe("Deceased Person Flag", () => {
 
     // -----------------------------------------------------------------------
     // bHideDeceasedFromDirectory — moved from the System Settings page to the
-    // People Dashboard settings panel (#9522)
+    // People Dashboard settings panel (#9522).
+    // These three tests require admin access: the config API uses the admin API
+    // key and the People Dashboard settings panel is admin-only.
     // -----------------------------------------------------------------------
 
     it("bHideDeceasedFromDirectory toggles via the config API and defaults to on", () => {
@@ -316,6 +319,8 @@ describe("Deceased Person Flag", () => {
     });
 
     it("the System Settings page no longer lists the deceased-directory setting", () => {
+        // Switch to admin session so we can see the System Settings admin page
+        cy.setupAdminSession();
         cy.visit("/SystemSettings.php");
         cy.get("body").should("be.visible");
         // The ConfigItem still exists (so the value persists) but is no longer
