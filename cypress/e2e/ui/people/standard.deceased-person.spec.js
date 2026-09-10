@@ -227,4 +227,102 @@ describe("Deceased Person Flag", () => {
             });
         });
     });
+
+    // -----------------------------------------------------------------------
+    // Family view — deceased member is still shown, greyed, with a badge,
+    // and the living-member count excludes them
+    // -----------------------------------------------------------------------
+
+    it("family view greys the deceased member, shows a badge, and counts living only", () => {
+        const familyName = "DeceasedFam" + Cypress._.random(0, 1e6);
+
+        cy.visit("/FamilyEditor.php");
+        cy.get("#FamilyName").type(familyName);
+        cy.get('input[name="FirstName1"]').type("LivingOne");
+        cy.get('select[name="Classification1"]').select("1", { force: true });
+        cy.get('input[name="FirstName2"]').type("PassedTwo");
+        cy.get('select[name="Classification2"]').select("1", { force: true });
+        cy.get('button[name="FamilySubmit"]').click();
+        cy.location("pathname").should("include", "/people/family/");
+
+        cy.location("pathname")
+            .then((p) => parseInt(p.match(/family\/(\d+)/)[1], 10))
+            .then((familyId) => {
+                cy.get("#members tbody a[href*='/people/view/']").then(($links) => {
+                    [...$links].forEach((a) =>
+                        createdPersonIds.push(
+                            parseInt(a.getAttribute("href").match(/view\/(\d+)/)[1], 10)
+                        )
+                    );
+                    const deceasedId = [...$links]
+                        .find((a) => a.textContent.includes("PassedTwo"))
+                        .getAttribute("href")
+                        .match(/view\/(\d+)/)[1];
+
+                    cy.visit(`/PersonEditor.php?PersonID=${deceasedId}`);
+                    cy.get("#IsDeceased").check();
+                    cy.get("button[name='PersonSubmit']").click();
+                    cy.url().should("include", `people/view/${deceasedId}`);
+
+                    cy.visit(`/people/family/${familyId}`);
+
+                    // Deceased member's row is greyed and carries the cross badge
+                    cy.get("#members tbody tr")
+                        .contains("td", "PassedTwo")
+                        .parents("tr")
+                        .should("have.class", "text-body-secondary")
+                        .find(".fa-cross")
+                        .should("exist");
+
+                    // Living member's row is not greyed
+                    cy.get("#members tbody tr")
+                        .contains("td", "LivingOne")
+                        .parents("tr")
+                        .should("not.have.class", "text-body-secondary");
+
+                    // Sidebar shows "1 Member (+1 deceased)"
+                    cy.contains("li", "Member").should("contain", "(+1");
+                });
+            });
+    });
+
+    // -----------------------------------------------------------------------
+    // bHideDeceasedFromDirectory — moved from the System Settings page to the
+    // People Dashboard settings panel (#9522)
+    // -----------------------------------------------------------------------
+
+    it("bHideDeceasedFromDirectory toggles via the config API and defaults to on", () => {
+        const key = "/admin/api/system/config/bHideDeceasedFromDirectory";
+
+        cy.makePrivateAdminAPICall("GET", key, null, 200).then((resp) => {
+            expect(String(resp.body.value)).to.eq("1");
+        });
+        cy.makePrivateAdminAPICall("POST", key, { value: "0" }, 200).then((resp) => {
+            expect(String(resp.body.value)).to.eq("0");
+        });
+        cy.makePrivateAdminAPICall("GET", key, null, 200).then((resp) => {
+            expect(String(resp.body.value)).to.eq("0");
+        });
+        cy.makePrivateAdminAPICall("POST", key, { value: "1" }, 200); // restore
+    });
+
+    it("the People Dashboard settings panel exposes the deceased-directory toggle", () => {
+        cy.visit("/people/dashboard");
+        cy.get("#peopleSettings", { timeout: 10000 })
+            .find("[name='bHideDeceasedFromDirectory']")
+            .should("exist");
+    });
+
+    it("the System Settings page no longer lists the deceased-directory setting", () => {
+        cy.visit("/SystemSettings.php");
+        cy.get("body").should("be.visible");
+        // The ConfigItem still exists (so the value persists) but is no longer
+        // in buildCategories(), so neither its key nor its label renders here.
+        cy.get("[name='bHideDeceasedFromDirectory'], #bHideDeceasedFromDirectory").should(
+            "not.exist"
+        );
+        cy.contains("Hide deceased members from the printed directory").should(
+            "not.exist"
+        );
+    });
 });
