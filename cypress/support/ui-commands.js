@@ -14,7 +14,7 @@
  * @param {string} sessionName - Unique identifier for this session (e.g., 'admin-session')
  * @param {string} username - The username to authenticate with
  * @param {string} password - The password to authenticate with
- * @param {{ forceLogin?: boolean }} options - Additional behaviour flags
+ * @param {{ forceLogin?: boolean }} options - Additional behavior flags
  */
 Cypress.Commands.add('setupLoginSession', (sessionName, username, password, options = {}) => {
     const { forceLogin = false, validate } = options;

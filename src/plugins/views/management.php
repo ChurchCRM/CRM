@@ -491,7 +491,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
             <div class="modal-body">
                 <div class="alert alert-warning" role="alert">
                     <strong><?= gettext('This plugin will be installed as UNVERIFIED.') ?></strong><br>
-                    <?= gettext('The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.') ?>
+                    <?= gettext('The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.') ?>
                 </div>
                 <form id="installFromUrlForm">
                     <div class="mb-3">

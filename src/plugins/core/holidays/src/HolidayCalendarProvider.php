@@ -13,7 +13,7 @@ use Yasumi\Yasumi;
  * One holiday calendar (for a specific Yasumi country), instantiated by the
  * Holidays plugin. Replaces the old hard-wired ChurchCRM\SystemCalendars\HolidayCalendar.
  *
- * Behaviour vs. the legacy implementation:
+ * Behavior vs. the legacy implementation:
  *  - Country is constructor-injected instead of read from sChurchCountry directly.
  *  - Honours the FullCalendar $start/$end range (the legacy version was hard-coded
  *    to the current year, so navigating to other years showed no holidays).
