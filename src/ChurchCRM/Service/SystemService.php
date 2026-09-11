@@ -153,7 +153,19 @@ class SystemService
 
         $minIntervalMinutes = self::getTimerJobsMinIntervalMinutes();
         if ($force || $minIntervalMinutes <= 0) {
-            SystemConfig::setValue(self::TIMER_JOBS_LAST_RUN_CONFIG, $nowString);
+            try {
+                SystemConfig::setValue(self::TIMER_JOBS_LAST_RUN_CONFIG, $nowString);
+            } catch (PropelException $e) {
+                // On the very first run there is no row yet, so this writes one;
+                // a concurrent page load inserting the same primary key first
+                // makes that INSERT fail. Losing that race says nothing about
+                // whether we may run — an unrated run always may — so record the
+                // lost claim and carry on rather than failing the cron job.
+                LoggerUtils::getAppLogger()->debug('Timer-job run timestamp lost the INSERT race; running anyway', [
+                    'forced' => $force,
+                    'exception' => $e->getMessage(),
+                ]);
+            }
 
             return true;
         }

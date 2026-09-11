@@ -60,11 +60,22 @@ try {
     exit(1);
 }
 
+// In-memory only — runTimerJobs() collected these, so no database is touched.
 $failures = SystemService::getLastTimerJobFailures();
 if ($failures !== []) {
     fwrite(STDERR, 'Timer jobs completed with failures: ' . implode(', ', $failures) . "\n");
     exit(1);
 }
 
-fwrite(STDOUT, 'Timer jobs completed at ' . (SystemService::getLastTimerJobsRun()?->format('Y-m-d H:i:s') ?? 'unknown') . "\n");
+// The jobs are done by this point and this last read is the only thing here
+// that still goes to the database. A connection dropped during a long run (a
+// MySQL wait_timeout, say) must not turn a successful night into a cron
+// failure, so report the run without the timestamp instead of dying.
+try {
+    $ranAt = SystemService::getLastTimerJobsRun()?->format('Y-m-d H:i:s') ?? 'unknown';
+} catch (\Throwable $e) {
+    $ranAt = 'unknown (could not read the run timestamp: ' . $e->getMessage() . ')';
+}
+
+fwrite(STDOUT, 'Timer jobs completed at ' . $ranAt . "\n");
 exit(0);
