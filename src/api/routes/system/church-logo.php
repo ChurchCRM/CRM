@@ -63,7 +63,8 @@ use Slim\Routing\RouteCollectorProxy;
  *             @OA\Property(property="url", type="string", example="/Images/logo-churchcrm-350.jpg")
  *         )
  *     ),
- *     @OA\Response(response=403, description="Admin role required")
+ *     @OA\Response(response=403, description="Admin role required"),
+ *     @OA\Response(response=500, description="The stored logo could not be removed")
  * )
  */
 $app->group('/system/church-logo', function (RouteCollectorProxy $group): void {
@@ -77,17 +78,29 @@ $app->group('/system/church-logo', function (RouteCollectorProxy $group): void {
     $group->post('', function (Request $request, Response $response, array $args): Response {
         $input = $request->getParsedBody();
 
-        // Detect when PHP discarded the request body because post_max_size was exceeded
         if (empty($input) || !isset($input['imgBase64'])) {
-            $contentLength = (int) ($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
-            $maxSize = SystemService::getMaxUploadFileSize(false);
-            if ($contentLength > 0 && $contentLength > $maxSize) {
-                return SlimUtils::renderErrorJSON(
-                    $response,
-                    sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
-                    [],
-                    413
-                );
+            // PHP throws the whole request body away when it exceeds the size the
+            // server accepts, so "nothing arrived at all" is the only honest
+            // signal that the upload was too large. A body that *did* arrive but
+            // carries no imgBase64 is a malformed request (400) whatever its
+            // Content-Length claims — trusting the header alone lets an inflated
+            // or spoofed value turn a bad request into a misleading 413.
+            $body = $request->getBody();
+            $bodySize = $body->getSize();
+            $bodyWasDiscarded = empty($input)
+                && ($bodySize === null || $bodySize === 0)
+                && (string) $body === '';
+
+            if ($bodyWasDiscarded) {
+                $contentLength = (int) ($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
+                if ($contentLength > SystemService::getMaxUploadFileSize(false)) {
+                    return SlimUtils::renderErrorJSON(
+                        $response,
+                        sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
+                        [],
+                        413
+                    );
+                }
             }
 
             return SlimUtils::renderErrorJSON($response, gettext('Missing image data in request'), [], 400);
@@ -109,10 +122,15 @@ $app->group('/system/church-logo', function (RouteCollectorProxy $group): void {
     });
 
     $group->delete('', function (Request $request, Response $response, array $args): Response {
-        $deleted = ChurchLogoService::delete();
+        // delete() is idempotent: it returns true when there is no logo to remove,
+        // so false means unlink() genuinely failed (permissions, read-only mount)
+        // and the logo is still being served. Reporting that as 200 lies to the UI.
+        if (!ChurchLogoService::delete()) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to remove church logo'), [], 500);
+        }
 
         return SlimUtils::renderJSON($response, [
-            'success'       => $deleted,
+            'success'       => true,
             'hasCustomLogo' => ChurchMetaData::hasCustomLogo(),
             'url'           => ChurchMetaData::getChurchLogoPath(),
         ]);
