@@ -25,6 +25,20 @@ describe("API Private Admin - Background Timer Jobs concurrency", () => {
 
     const configUrl = (name) => `/admin/api/system/config/${name}`;
 
+    /**
+     * Absolute URL of the timer-job endpoint.
+     *
+     * cy.request()/cy.visit() concatenate baseUrl onto a relative URL, but
+     * win.fetch() is the browser's own fetch: it resolves a root-relative path
+     * against the page *origin*, which drops the install's base path. On the
+     * subdirectory profile ("http://host/churchcrm/") the literal
+     * "/api/background/timerjobs" therefore reached http://host/api/... and
+     * 404'd. Composing the URL from baseUrl keeps the base path, and stripping
+     * the trailing slash first avoids a "//api/..." double slash at the root.
+     */
+    const timerJobsUrl = () =>
+        `${Cypress.config("baseUrl").replace(/\/+$/, "")}/api/background/timerjobs`;
+
     const readConfig = (name) =>
         cy
             .makePrivateAdminAPICall("GET", configUrl(name), null, 200)
@@ -48,7 +62,7 @@ describe("API Private Admin - Background Timer Jobs concurrency", () => {
         cy.window().then((win) => {
             const apiKey = Cypress.env("admin.api.key");
             const calls = Array.from({ length: CONCURRENT_REQUESTS }, () =>
-                win.fetch("/api/background/timerjobs", {
+                win.fetch(timerJobsUrl(), {
                     method: "POST",
                     headers: { "x-api-key": apiKey },
                     // Each request must get its own PHP session, or the session
