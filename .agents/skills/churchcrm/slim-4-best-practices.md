@@ -233,18 +233,28 @@ Slim 4 supports a PSR-11 container, but **ChurchCRM does not use one**.
 `AppFactory::setContainer()`, so `$app->getContainer()` is `null` and there is no ambient
 `$container` variable in a route file. Services are constructed where they are used.
 
-**Pattern:**
+**Pattern** (`src/admin/routes/system.php:941-997`, trimmed):
 ```php
 use ChurchCRM\Service\UserService;
-use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 
-$app->post('/users', function (Request $request, Response $response): Response {
+function adminUserEditorNew(Request $request, Response $response): Response
+{
     $userService = new UserService();
-    $user = $userService->createUser($request->getParsedBody());
 
-    return SlimUtils::renderJSON($response, ['data' => $user]);
-});
+    $body     = (array) $request->getParsedBody();
+    $personId = (int) ($body['PersonID'] ?? 0);
+    $userName = InputUtils::sanitizeText((string) ($body['UserName'] ?? ''));
+    $perms    = $userService->normalizeAccessMode($body);
+
+    $userService->createUser($personId, $perms, $userName);
+    // ...
+}
 ```
+
+`UserService::createUser()` is `createUser(int $personId, array $perms, string $userName): User`
+(`src/ChurchCRM/Service/UserService.php:239`) — the raw parsed body is never passed straight
+through; the route unpacks and casts it first.
 
 **Key Points:**
 - Never reference `$container` or `$app->getContainer()` — both are fatal here

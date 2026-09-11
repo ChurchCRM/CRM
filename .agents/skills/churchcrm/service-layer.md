@@ -37,7 +37,7 @@ container library, `MvcAppFactory::create()`
 (`src/ChurchCRM/Slim/MvcAppFactory.php:35-62`) never calls `AppFactory::setContainer()`, and
 `$app->getContainer()` is therefore `null` in every MVC module. The single surviving
 `$container->get(...)` in the tree is inside `SlimUtils::registerCustomErrorHandlers()`
-(`src/ChurchCRM/Slim/SlimUtils.php:80-88`), a method marked `@deprecated Slim 3 only`.
+(`src/ChurchCRM/Slim/SlimUtils.php:80-105`), a method marked `@deprecated Slim 3 only`.
 
 Instantiate the service where you need it:
 
