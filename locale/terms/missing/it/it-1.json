@@ -1,54 +1,54 @@
 {
-  "Check-out": "",
-  "Auto": "",
-  "CSV": "",
-  "OFX": "",
-  "A geocoding error occurred — try again later": "",
-  "Address is incomplete (missing city, state, and ZIP)": "",
-  "All families already have coordinates.": "",
-  "Failed to update coordinates": "",
-  "Failed to update family coordinates": "",
-  "Geocoded all {{geocoded}} families. The map is now up to date.": "",
-  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "",
-  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "",
-  "Geocoding families… this can take up to a minute. You can keep this page open.": "",
-  "Geocoding…": "",
-  "No address on file": "",
-  "No match found — check the street address, city, and ZIP": "",
-  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "",
-  "Open a family to fix its address, then run this again.": "",
-  "Set up now": "",
-  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "",
+  "Check-out": "Check-out",
+  "Auto": "Automatico",
+  "CSV": "CSV",
+  "OFX": "OFX",
+  "A geocoding error occurred — try again later": "Si è verificato un errore di geocodifica — riprova più tardi",
+  "Address is incomplete (missing city, state, and ZIP)": "L'indirizzo è incompleto (mancano città, provincia e CAP)",
+  "All families already have coordinates.": "Tutte le famiglie hanno già le coordinate.",
+  "Failed to update coordinates": "Impossibile aggiornare le coordinate",
+  "Failed to update family coordinates": "Impossibile aggiornare le coordinate della famiglia",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "Geocodificate tutte le {{geocoded}} famiglie. La mappa è ora aggiornata.",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "Geocodificate {{geocoded}} famiglie. {{failed}} non è stato possibile risolverle — vedi i dettagli qui sotto.",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "Geocodificate {{geocoded}} di {{total}} famiglie. {{overflow}} non ancora elaborate — esegui di nuovo per continuare.",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "Geocodifica delle famiglie in corso… può richiedere fino a un minuto. Puoi lasciare questa pagina aperta.",
+  "Geocoding…": "Geocodifica in corso…",
+  "No address on file": "Nessun indirizzo registrato",
+  "No match found — check the street address, city, and ZIP": "Nessuna corrispondenza trovata — controlla via, città e CAP",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "Numero di giorni a disposizione degli utenti per attivare l'autenticazione a due fattori dopo che è stata resa obbligatoria. Imposta 0 per applicarla immediatamente (comportamento precedente). Ridurre un periodo di grazia attivo potrebbe bloccare immediatamente l'accesso agli utenti.",
+  "Open a family to fix its address, then run this again.": "Apri una famiglia per correggere il suo indirizzo, poi esegui di nuovo questa operazione.",
+  "Set up now": "Configura ora",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "Questa funzione trova le coordinate mappa per ogni famiglia che ne è priva, utilizzando OpenStreetMap. Elabora fino a 50 famiglie per esecuzione; un batch completo richiede circa un minuto. Puoi lasciare questa pagina aperta durante l'elaborazione. Continuare?",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "",
-    "other": ""
+    "one": "L'autenticazione a due fattori è obbligatoria. Hai %d giorno per attivarla.",
+    "other": "L'autenticazione a due fattori è obbligatoria. Hai %d giorni per attivarla."
   },
-  "Unknown family": "",
-  "Update All Coordinates": "",
-  "Update All Family Coordinates": "",
-  "Update Coordinates": "",
+  "Unknown family": "Famiglia sconosciuta",
+  "Update All Coordinates": "Aggiorna tutte le coordinate",
+  "Update All Family Coordinates": "Aggiorna tutte le coordinate delle famiglie",
+  "Update Coordinates": "Aggiorna coordinate",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Copiato {{count}} membro",
+    "other": "Copiati {{count}} membri"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Questo elenco ha {{count}} destinatario — troppi per un link mailto:. Usa invece Copia indirizzi.",
+    "other": "Questo elenco ha {{count}} destinatari — troppi per un link mailto:. Usa invece Copia indirizzi."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Troppi destinatari per il client di posta ({{count}} > {{max}}). Usa invece Copia indirizzi.",
+    "other": "Troppi destinatari per il client di posta ({{count}} > {{max}}). Usa invece Copia indirizzi."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuto rimanente",
+    "other": "{{count}} minuti rimanenti"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} famiglia non può essere geocodificata",
+    "other": "{{count}} famiglie non possono essere geocodificate"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…e {{count}} altro. Esegui di nuovo per vedere il resto.",
+    "other": "…e altri {{count}}. Esegui di nuovo per vedere il resto."
   }
 }
