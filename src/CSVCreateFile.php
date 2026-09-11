@@ -294,6 +294,17 @@ if ($sFormat === 'addtocart') {
     if (!empty($_POST['Country'])) {
         $headers[] = 'Country';
     }
+    // Optional second family address (#9743) — opt-in so existing exports keep
+    // their column set byte-identical.
+    if (!empty($_POST['SecondAddress'])) {
+        $headers[] = 'Second Address 1';
+        $headers[] = 'Second Address 2';
+        $headers[] = 'Second City';
+        $headers[] = 'Second State';
+        $headers[] = 'Second Zip';
+        $headers[] = 'Second Country';
+        $headers[] = 'Mailing Address';
+    }
     if (!empty($_POST['HomePhone'])) {
         $headers[] = 'Home Phone';
     }
@@ -496,6 +507,22 @@ if ($sFormat === 'addtocart') {
                 }
                 if (isset($_POST['Country'])) {
                     $row[] = $sCountry;
+                }
+                if (isset($_POST['SecondAddress'])) {
+                    // The second address lives on the family only — there is no
+                    // person-level override for it, so a person with no family
+                    // exports blank cells.
+                    $secondFamily = $fam_ID ? FamilyQuery::create()->findPk($fam_ID) : null;
+                    $secondParts = $secondFamily !== null
+                        ? $secondFamily->getSecondaryAddressParts()
+                        : ['Address1' => '', 'Address2' => '', 'City' => '', 'State' => '', 'Zip' => '', 'Country' => ''];
+                    $row[] = $secondParts['Address1'];
+                    $row[] = $secondParts['Address2'];
+                    $row[] = $secondParts['City'];
+                    $row[] = $secondParts['State'];
+                    $row[] = $secondParts['Zip'];
+                    $row[] = $secondParts['Country'];
+                    $row[] = ($secondFamily !== null && $secondFamily->isSecondAddressMailing()) ? 'Yes' : 'No';
                 }
                 if (isset($_POST['HomePhone'])) {
                     $row[] = $sHomePhone;

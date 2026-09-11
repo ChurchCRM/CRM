@@ -3,8 +3,8 @@
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
-use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Reports\PdfNewsletterLabels;
 use ChurchCRM\Utils\InputUtils;
@@ -26,11 +26,15 @@ if ($sFontSize != 'default') {
     $pdf->setCharSize($sFontSize);
 }
 
-// Get all the families which receive the newsletter by mail
-$families = FamilyQuery::create()
+// Get all the families which receive the newsletter by mail. The SQL sort is on the
+// primary ZIP; sortByMailingZip() re-sorts on the ZIP actually printed, which only
+// differs for families whose second address is flagged as the mailing address.
+$families = Family::sortByMailingZip(
+    FamilyQuery::create()
         ->filterBySendNewsletter('TRUE')
         ->orderByZip()
-        ->find();
+        ->find()
+);
 
 foreach ($families as $family) {
     if ($bRecipientNamingMethod === 'familyname') {
@@ -38,16 +42,10 @@ foreach ($families as $family) {
     } else {
         $labelText = $pdf->makeSalutation($family->getID());
     }
-    if ($family->getAddress1() !== '') {
-        $labelText .="\n" . $family->getAddress1();
-    }
-    if ($family->getAddress2() !== '') {
-        $labelText .="\n" . $family->getAddress2();
-    }
-    $labelText .= sprintf("\n%s, %s  %s", $family->getCity(), $family->getState(), $family->getZip());
 
-    if (Countries::isForeign($family->getCountry())) {
-        $labelText .= "\n" . $family->getCountry();
+    $addressBlock = $family->getMailingAddressLines();
+    if ($addressBlock !== '') {
+        $labelText .= "\n" . $addressBlock;
     }
 
     $pdf->addPdfLabel($labelText);

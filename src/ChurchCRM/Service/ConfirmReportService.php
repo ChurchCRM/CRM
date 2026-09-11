@@ -4,6 +4,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\verify\FamilyVerificationEmail;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
@@ -31,17 +32,13 @@ class ConfirmDownloadPdf extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
     }
 
-    public function startNewPage(\ChurchCRM\model\ChurchCRM\Family $family): float
+    public function startNewPage(Family $family): float
     {
-        $curY = $this->startLetterPage(
+        // The letter is mailed, so it is addressed to the family's mailing address.
+        $curY = $this->startLetterPageForParts(
             $family->getId(),
             $family->getName(),
-            $family->getAddress1(),
-            $family->getAddress2(),
-            (string) ($family->getCity() ?? ''),
-            (string) ($family->getState() ?? ''),
-            (string) ($family->getZip() ?? ''),
-            $family->getCountry(),
+            $family->getMailingAddressParts(),
             'graphic'
         );
 
@@ -95,9 +92,9 @@ class ConfirmEmailPdf extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
     }
 
-    public function startNewPage(int $famId, string $famName, ?string $addr1, ?string $addr2, string $city, string $state, string $zip, ?string $country): float
+    public function startNewPage(int $famId, string $famName, array $mailingParts): float
     {
-        $curY = $this->startLetterPage($famId, $famName, $addr1, $addr2, $city, $state, $zip, $country);
+        $curY = $this->startLetterPageForParts($famId, $famName, $mailingParts);
         $curY += 2 * SystemConfig::getValue('incrementY');
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirm1'));
 
@@ -233,6 +230,12 @@ class ConfirmReportService
             $address .= ', ' . ((string) $family->getCity()) . ', ' . ((string) $family->getState()) . '  ' . ((string) $family->getZip());
             $col1Y = $addField(gettext('Address'), $address, $col1X, $col1Y) + 1;
 
+            // The point of this sheet is for the family to check what is on record,
+            // so show the mailing address too whenever it differs from the primary.
+            if ($family->hasDistinctMailingAddress()) {
+                $col1Y = $addField(gettext('Mailing Address'), $family->getMailingAddressLines(', '), $col1X, $col1Y) + 1;
+            }
+
             $col2Y = $addField(gettext('Home Phone'), $family->getHomePhone(), $col2X, $col2Y) + 1;
             $col2Y = $addField(gettext('Send Newsletter'), $family->getSendNewsletter(), $col2X, $col2Y) + 1;
             if ($family->getWeddingdate()) {
@@ -275,11 +278,10 @@ class ConfirmReportService
                 foreach ($familyMembers as $member) {
                     // New page if needed
                     if ($curY > 255) {
-                        $curY = $pdf->startLetterPage(
-                            $family->getId(), $family->getName(),
-                            $family->getAddress1(), $family->getAddress2(),
-                            (string)($family->getCity() ?? ''), (string)($family->getState() ?? ''),
-                            (string)($family->getZip() ?? ''), $family->getCountry()
+                        $curY = $pdf->startLetterPageForParts(
+                            $family->getId(),
+                            $family->getName(),
+                            $family->getMailingAddressParts()
                         );
                         $curY += 3;
 
@@ -337,11 +339,10 @@ class ConfirmReportService
 
             // --- Group memberships section ---
             if ($curY + 10 >= 260) {
-                $curY = $pdf->startLetterPage(
-                    $family->getId(), $family->getName(),
-                    $family->getAddress1(), $family->getAddress2(),
-                    (string)($family->getCity() ?? ''), (string)($family->getState() ?? ''),
-                    (string)($family->getZip() ?? ''), $family->getCountry()
+                $curY = $pdf->startLetterPageForParts(
+                    $family->getId(),
+                    $family->getName(),
+                    $family->getMailingAddressParts()
                 );
                 $curY += 3;
             }
@@ -389,11 +390,10 @@ class ConfirmReportService
 
             $curY += 1;
             if ($curY > 183) {
-                $curY = $pdf->startLetterPage(
-                    $family->getId(), $family->getName(),
-                    $family->getAddress1(), $family->getAddress2(),
-                    (string)($family->getCity() ?? ''), (string)($family->getState() ?? ''),
-                    (string)($family->getZip() ?? ''), $family->getCountry()
+                $curY = $pdf->startLetterPageForParts(
+                    $family->getId(),
+                    $family->getName(),
+                    $family->getMailingAddressParts()
                 );
                 $curY += 3;
             }
@@ -449,7 +449,9 @@ class ConfirmReportService
             $city = (string)($family->getCity() ?? '');
             $state = (string)($family->getState() ?? '');
             $zip = (string)($family->getZip() ?? '');
-            $country = $family->getCountry();
+            // The address block on every page of this letter is where it gets mailed;
+            // the field table below keeps showing the primary address on record.
+            $mailingParts = $family->getMailingAddressParts();
 
             $emaillist = $family->getEmails();
 
@@ -458,7 +460,7 @@ class ConfirmReportService
                 ->orderByFmrId()
                 ->find();
 
-            $curY = $pdf->startNewPage($famId, $famName, $addr1, $addr2, $city, $state, $zip, $country);
+            $curY = $pdf->startNewPage($famId, $famName, $mailingParts);
             $curY += SystemConfig::getValue('incrementY');
 
             // --- Family info (field-label table format) ---
@@ -485,6 +487,16 @@ class ConfirmReportService
             $pdf->SetFont('Times', '', 10);
             $pdf->writeAtCell($dataCol, $curY, $dataWid, $city . ', ' . $state . '  ' . $zip);
             $curY += SystemConfig::getValue('incrementY');
+
+            // The family is being asked to check what is on record, so the mailing
+            // address is listed too whenever it differs from the primary one.
+            if ($family->hasDistinctMailingAddress()) {
+                $pdf->SetFont('Times', 'B', 10);
+                $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Mailing Address'));
+                $pdf->SetFont('Times', '', 10);
+                $pdf->writeAtCell($dataCol, $curY, $dataWid, $family->getMailingAddressLines(', '));
+                $curY += SystemConfig::getValue('incrementY');
+            }
 
             $pdf->SetFont('Times', 'B', 10);
             $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Home Phone'));
@@ -542,7 +554,7 @@ class ConfirmReportService
 
                 // New page if not enough room for custom fields + trailer
                 if (($curY + count($customFields) * SystemConfig::getValue('incrementY')) > 260) {
-                    $curY = $pdf->startLetterPage($famId, $famName, $addr1, $addr2, $city, $state, $zip, $country);
+                    $curY = $pdf->startLetterPageForParts($famId, $famName, $mailingParts);
                     $pdf->SetFont('Times', 'B', 10);
                     $pdf->writeAtCell($XName, $curY, $XGender - $XName, gettext('Member Name'));
                     $pdf->writeAtCell($XGender, $curY, $XRole - $XGender, gettext('M/F'));
@@ -624,7 +636,7 @@ class ConfirmReportService
 
             // New page if there's not enough room for group assignments
             if (($curY + 2 * $numFamilyMembers * SystemConfig::getValue('incrementY')) >= 260) {
-                $curY = $pdf->startLetterPage($famId, $famName, $addr1, $addr2, $city, $state, $zip, $country);
+                $curY = $pdf->startLetterPageForParts($famId, $famName, $mailingParts);
             }
 
             // --- Group memberships ---
@@ -651,7 +663,7 @@ class ConfirmReportService
             }
 
             if ($curY > 183) {
-                $curY = $pdf->startLetterPage($famId, $famName, $addr1, $addr2, $city, $state, $zip, $country);
+                $curY = $pdf->startLetterPageForParts($famId, $famName, $mailingParts);
             }
             $pdf->finishPage($curY);
 

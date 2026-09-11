@@ -757,6 +757,10 @@ class FinancialService
                     'Zip' => $family->getZip(),
                     'Country' => $family->getCountry(),
                     'Envelope' => $family->getEnvelope(),
+                    // Where a statement is mailed: the flagged second address when
+                    // there is one, the primary address otherwise (#9743). Additive —
+                    // the six primary keys above are unchanged.
+                    'MailingAddress' => $family->getMailingAddressParts(),
                 ];
             } else {
                 $pledgeData['Family'] = null;

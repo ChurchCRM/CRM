@@ -503,6 +503,17 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             <div class="card-body">
                 <?php if (!empty($formattedMailingAddress)) : ?>
                 <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
+                <?php
+                // The address above stays the person's own / inherited primary
+                // address. When the family has flagged a distinct mailing address
+                // (#9743), show it underneath so it is clear where mail goes.
+                $personFamily = $person->getFamily();
+                if ($personFamily !== null && $personFamily->hasDistinctMailingAddress()) : ?>
+                <div class="mt-2 text-body-secondary small" id="person-family-mailing-address">
+                    <i class="fa-solid fa-envelope me-1"></i><strong><?= gettext('Mailing Address') ?></strong>:
+                    <?= InputUtils::escapeHTML($personFamily->getSecondaryAddress()) ?>
+                </div>
+                <?php endif; ?>
                 <div class="mt-2 d-flex flex-wrap gap-1">
                     <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
                     <div class="btn-group directions-btn-group">

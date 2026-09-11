@@ -7,6 +7,7 @@ require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -180,9 +181,9 @@ class PdfReminderReport extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
     }
 
-    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, string $fundOnlyString, int $iFYID): float
+    public function startNewPage($fam_ID, $fam_Name, array $mailingParts, string $fundOnlyString, int $iFYID): float
     {
-        $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+        $curY = $this->startLetterPageForParts($fam_ID, $fam_Name, $mailingParts);
         $curY += 2 * SystemConfig::getValue('incrementY');
         $blurb = SystemConfig::getValue('sReminder1') . FinancialService::formatFiscalYear($iFYID) . $fundOnlyString . '.';
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
@@ -261,7 +262,9 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     }
 
     // Add a page for this reminder report
-    $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fundOnlyString, $iFYID);
+    // The reminder is mailed, so it is addressed to the family's mailing address.
+    // $aFam comes from SELECT * FROM family_fam, so it already carries fam_Second*.
+    $curY = $pdf->startNewPage($fam_ID, $fam_Name, Family::mailingAddressPartsFromRow($aFam), $fundOnlyString, $iFYID);
 
     // Get pledges only
     $rsPledges = RunPreparedQuery(

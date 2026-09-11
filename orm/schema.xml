@@ -154,6 +154,15 @@
         <column name="fam_State" phpName="State" type="VARCHAR" size="50"/>
         <column name="fam_Zip" phpName="Zip" type="VARCHAR" size="50"/>
         <column name="fam_Country" phpName="Country" type="VARCHAR" size="50"/>
+        <column name="fam_SecondAddress1" phpName="SecondAddress1" type="VARCHAR" size="255"/>
+        <column name="fam_SecondAddress2" phpName="SecondAddress2" type="VARCHAR" size="255"/>
+        <column name="fam_SecondCity" phpName="SecondCity" type="VARCHAR" size="50"/>
+        <column name="fam_SecondState" phpName="SecondState" type="VARCHAR" size="50"/>
+        <column name="fam_SecondZip" phpName="SecondZip" type="VARCHAR" size="50"/>
+        <column name="fam_SecondCountry" phpName="SecondCountry" type="VARCHAR" size="50"/>
+        <column name="fam_SecondIsMailing" phpName="SecondIsMailing" type="BOOLEAN" size="1"
+                sqlType="tinyint(1) unsigned" required="true" defaultValue="0"
+                description="When true the second address is the family's mailing address; otherwise it is a second home"/>
         <column name="fam_HomePhone" phpName="HomePhone" type="VARCHAR" size="30"/>
         <column name="fam_Email" phpName="Email" type="VARCHAR" size="100"/>
         <column name="fam_WeddingDate" phpName="Weddingdate" type="DATE"/>
