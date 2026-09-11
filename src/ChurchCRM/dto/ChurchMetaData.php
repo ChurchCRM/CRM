@@ -109,25 +109,30 @@ class ChurchMetaData
      */
     public static function getChurchLogoURL(): string
     {
-        return self::resolveLogo(SystemURLs::getURL());
+        return self::resolveLogo(SystemURLs::getURL(), true);
     }
 
     /**
      * Root-path-relative URL of the church logo, for use in the application's
-     * own templates (sidebar brand, login and auth pages). Same precedence as
-     * getChurchLogoURL(); only the prefix differs, because in-app pages must
-     * not depend on the configured absolute URL.
+     * own templates (sidebar brand, login and auth pages).
+     *
+     * Precedence: the uploaded `Images/church-logo.png` -> the bundled
+     * ChurchCRM logo. The configured `sChurchLogoURL` is deliberately skipped
+     * because in-app pages are served with a Content-Security-Policy whose
+     * `img-src` is `'self'`, so a remote logo would be blocked and render broken.
      */
     public static function getChurchLogoPath(): string
     {
-        return self::resolveLogo(SystemURLs::getRootPath());
+        return self::resolveLogo(SystemURLs::getRootPath(), false);
     }
 
     /**
-     * Shared logo precedence. $prefix is prepended to locally served images;
-     * a configured remote `sChurchLogoURL` is returned unchanged.
+     * Shared logo precedence. $prefix is prepended to locally served images.
+     * When $allowConfiguredUrl is true a valid remote `sChurchLogoURL` is
+     * returned unchanged; callers rendering in-app pages must pass false so the
+     * CSP `img-src 'self'` policy cannot block the logo.
      */
-    private static function resolveLogo(string $prefix): string
+    private static function resolveLogo(string $prefix, bool $allowConfiguredUrl): string
     {
         if (ChurchLogoService::hasCustomLogo()) {
             // Cache-buster so a re-upload to the same path is picked up immediately.
@@ -135,9 +140,11 @@ class ChurchMetaData
                 . '?v=' . ChurchLogoService::getModifiedTime();
         }
 
-        $configured = self::readString('sChurchLogoURL');
-        if ($configured !== '' && filter_var($configured, FILTER_VALIDATE_URL) !== false) {
-            return $configured;
+        if ($allowConfiguredUrl) {
+            $configured = self::readString('sChurchLogoURL');
+            if ($configured !== '' && filter_var($configured, FILTER_VALIDATE_URL) !== false) {
+                return $configured;
+            }
         }
 
         return $prefix . '/Images/logo-churchcrm-350.jpg';

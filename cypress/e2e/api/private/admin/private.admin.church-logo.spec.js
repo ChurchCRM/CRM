@@ -19,6 +19,7 @@ const VALID_PNG_DATA_URI =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
 
 const LOGO_URL = "/api/system/church-logo";
+const LOGO_CONFIG_URL = "/admin/api/system/config/sChurchLogoURL";
 
 describe("API Private Admin Church Logo", () => {
     beforeEach(() => {
@@ -42,6 +43,53 @@ describe("API Private Admin Church Logo", () => {
                     expect(response.body.url).to.include(
                         "logo-churchcrm-350.jpg",
                     );
+                },
+            );
+        });
+    });
+
+    describe("sChurchLogoURL is not used by in-app pages", () => {
+        let originalLogoConfig = "";
+
+        before(() => {
+            cy.makePrivateAdminAPICall("GET", LOGO_CONFIG_URL, null, 200).then(
+                (response) => {
+                    originalLogoConfig = response.body.value ?? "";
+                },
+            );
+        });
+
+        after(() => {
+            // Leave the dev database exactly as it was found.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                LOGO_CONFIG_URL,
+                { value: originalLogoConfig },
+                200,
+            );
+        });
+
+        it("Falls back to the bundled default, not the configured remote URL", () => {
+            // In-app pages are served with a CSP whose img-src is 'self', so a
+            // remote sChurchLogoURL must never reach them — it is an email-only
+            // fallback.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                LOGO_CONFIG_URL,
+                { value: "https://example.com/logo.png" },
+                200,
+            );
+
+            cy.makePrivateAdminAPICall("GET", LOGO_URL, null, 200).then(
+                (response) => {
+                    expect(response.body).to.have.property(
+                        "hasCustomLogo",
+                        false,
+                    );
+                    expect(response.body.url).to.match(
+                        /\/Images\/logo-churchcrm-350\.jpg$/,
+                    );
+                    expect(response.body.url).to.not.include("example.com");
                 },
             );
         });
