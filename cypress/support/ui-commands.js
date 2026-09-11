@@ -222,18 +222,45 @@ Cypress.Commands.add('createPersonWithBirthday', (personData) => {
     cy.url().should("contain", "people/view/");
 });
 
+/**
+ * Deletes the first person matching a global search on `name`.
+ *
+ * Two things this used to get wrong (#9780):
+ *  - It deleted through /api/persons/{id}, which is not a route. The /persons
+ *    group only serves collection endpoints (/latest, /updated, /birthday,
+ *    /search/{query}, ...); a single person is DELETE /api/person/{id}.
+ *  - It read the person id from `children[0].id`, which is a DOM slug such as
+ *    "person-name-1". The numeric id only appears in the child's `uri`
+ *    ("/people/view/22"), and the first result group is not necessarily the
+ *    Persons group — addresses, families and groups share the response.
+ *
+ * Both failures were silent: cy.apiRequest does not fail on status, so the
+ * 404 went unnoticed and the person stayed in the database.
+ */
 Cypress.Commands.add('deletePersonByName', (name) => {
     cy.apiRequest({
         method: 'GET',
-        url: '/api/search/' + name
+        url: `/api/search/${encodeURIComponent(name)}`,
     }).then((response) => {
-        if (response.body && response.body.length > 0) {
-            const personId = response.body[0].children[0].id;
-            cy.apiRequest({
-                method: 'DELETE',
-                url: `/api/persons/${personId}`
-            });
-        }
+        expect(response.status, `GET /api/search/${name}`).to.equal(200);
+
+        const personId = (response.body || [])
+            .flatMap((group) => group.children || [])
+            .map((child) => /\/people\/view\/(\d+)/.exec(child.uri || ''))
+            .filter((match) => match !== null)
+            .map((match) => Number(match[1]))[0];
+
+        expect(personId, `person id for "${name}"`).to.be.a('number');
+
+        cy.apiRequest({
+            method: 'DELETE',
+            url: `/api/person/${personId}`,
+        }).then((deleteResponse) => {
+            expect(
+                deleteResponse.status,
+                `DELETE /api/person/${personId} for "${name}"`,
+            ).to.equal(200);
+        });
     });
 });
 
