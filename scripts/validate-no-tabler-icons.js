@@ -23,7 +23,7 @@ const path = require('path');
 
 // Third-party and generated trees are excluded there (`@tabler/core` itself
 // legitimately mentions `ti-` selectors), and both icon guards share the list.
-const { ROOT, SCAN_ROOTS, collectSourceFiles } = require('./lib/icon-source-files');
+const { ROOT, SCAN_ROOTS, collectSourceFiles, stripComments } = require('./lib/icon-source-files');
 
 // `ti-foo` as a standalone token (so `multi-line`, `anti-aliased` etc. are
 // not matches), and the bare variant class in `class="ti ..."`.
@@ -41,7 +41,9 @@ console.log(`📋 Checking ${files.length} file(s) under ${SCAN_ROOTS.join('/, '
 const hits = [];
 
 for (const filePath of files) {
-    const lines = fs.readFileSync(filePath, 'utf8').split('\n');
+    // Comments are blanked (line numbers preserved) so a note naming the old
+    // Tabler class a line was migrated from is not itself reported.
+    const lines = stripComments(fs.readFileSync(filePath, 'utf8')).split('\n');
     lines.forEach((line, index) => {
         for (const { re, what } of PATTERNS) {
             re.lastIndex = 0;

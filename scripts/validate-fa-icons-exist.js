@@ -33,7 +33,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { ROOT, SCAN_ROOTS, collectSourceFiles } = require('./lib/icon-source-files');
+const { ROOT, SCAN_ROOTS, collectSourceFiles, stripComments } = require('./lib/icon-source-files');
 
 const FA_CSS = path.join(ROOT, 'node_modules', '@fortawesome', 'fontawesome-free', 'css', 'all.css');
 
@@ -71,7 +71,8 @@ function collectLocallyDefinedClasses(files) {
     const classes = new Set();
     for (const filePath of files) {
         if (filePath.endsWith('.css') || filePath.endsWith('.scss')) {
-            for (const name of matchAll(fs.readFileSync(filePath, 'utf8'), SELECTOR_RE)) {
+            const source = stripComments(fs.readFileSync(filePath, 'utf8'));
+            for (const name of matchAll(source, SELECTOR_RE)) {
                 classes.add(name);
             }
         }
@@ -93,7 +94,9 @@ const hits = [];
 let dynamicCount = 0;
 
 for (const filePath of files) {
-    const lines = fs.readFileSync(filePath, 'utf8').split('\n');
+    // Comments are blanked (line numbers preserved) so a migration note such
+    // as `/* was fa-house-plus — Pro-only */` is documentation, not a hit.
+    const lines = stripComments(fs.readFileSync(filePath, 'utf8')).split('\n');
     lines.forEach((line, index) => {
         TOKEN_RE.lastIndex = 0;
         let match;

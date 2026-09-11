@@ -51,4 +51,85 @@ function collectSourceFiles() {
     return files;
 }
 
-module.exports = { ROOT, SCAN_ROOTS, EXTENSIONS, collectSourceFiles };
+/**
+ * Blanks out comment text so the icon guards never flag a class name that is
+ * only *mentioned* — migration notes such as
+ * `/* was fa-house-plus (Pro-only) *\/` are documentation, not markup, and a
+ * guard that fails on them punishes contributors for explaining themselves.
+ *
+ * Comment characters are replaced with spaces rather than removed, so line and
+ * column numbers reported to the user still match the file on disk. String
+ * literals are walked over untouched: `'fa-house-plus'` in real code must
+ * still be caught, and a `//` or `/*` inside a string must not start a
+ * comment. Handles the comment syntaxes shared by every scanned extension:
+ * `/* *\/`, `//`, `<!-- -->`, and a `#` line comment in PHP.
+ */
+function stripComments(source) {
+    const out = source.split('');
+    const n = source.length;
+    let i = 0;
+
+    const blank = (from, to) => {
+        for (let k = from; k < to && k < n; k++) {
+            if (out[k] !== '\n') {
+                out[k] = ' ';
+            }
+        }
+    };
+
+    while (i < n) {
+        const c = source[i];
+
+        // String literals: copy through, honouring backslash escapes.
+        if (c === '"' || c === "'" || c === '`') {
+            i++;
+            while (i < n && source[i] !== c) {
+                i += source[i] === '\\' ? 2 : 1;
+            }
+            i++;
+            continue;
+        }
+
+        if (c === '/' && source[i + 1] === '*') {
+            const end = source.indexOf('*/', i + 2);
+            const stop = end === -1 ? n : end + 2;
+            blank(i, stop);
+            i = stop;
+            continue;
+        }
+
+        // `//` — but not the `//` of a scheme (`https://`), which is inside a
+        // string in practice but may also appear bare in a CSS url().
+        if (c === '/' && source[i + 1] === '/' && source[i - 1] !== ':') {
+            const end = source.indexOf('\n', i);
+            const stop = end === -1 ? n : end;
+            blank(i, stop);
+            i = stop;
+            continue;
+        }
+
+        if (c === '<' && source.startsWith('<!--', i)) {
+            const end = source.indexOf('-->', i + 4);
+            const stop = end === -1 ? n : end + 3;
+            blank(i, stop);
+            i = stop;
+            continue;
+        }
+
+        // `#` starts a PHP line comment only at the start of a line; anywhere
+        // else it is a CSS id selector, a colour literal, or a fragment URL.
+        if (c === '#' && /(^|\n)[ \t]*$/.test(source.slice(Math.max(0, i - 40), i))) {
+            const end = source.indexOf('\n', i);
+            const stop = end === -1 ? n : end;
+            blank(i, stop);
+            i = stop;
+            continue;
+        }
+
+        i++;
+    }
+
+    return out.join('');
+}
+
+module.exports = { ROOT, SCAN_ROOTS, EXTENSIONS, collectSourceFiles, stripComments };
