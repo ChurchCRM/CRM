@@ -79,6 +79,12 @@ export function createPhotoUploader(config) {
       trigger: null, // Don't auto-bind to a trigger
       proudlyDisplayPoweredByUppy: false,
       note: `Max file size: ${displayMaxSizeMB}MB`,
+      // Dashboard defaults its thumbnail generator to 'image/jpeg', which has no alpha
+      // channel — transparent PNGs (typically a church logo) come back with every
+      // transparent pixel painted black in the file-card preview. PNG thumbnails are
+      // slightly larger but preserve transparency. Display-only: the uploaded bytes are
+      // unaffected.
+      thumbnailType: "image/png",
       closeModalOnClickOutside: true,
       autoOpen: "imageEditor",
       locale: {
