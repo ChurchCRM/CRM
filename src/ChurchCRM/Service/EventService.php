@@ -8,7 +8,10 @@ use ChurchCRM\model\ChurchCRM\EventAudience;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Connection\ConnectionInterface;
+use Propel\Runtime\Propel;
 
 /**
  * Service for managing event business logic, including bulk repeat event creation.
@@ -35,10 +38,15 @@ use Propel\Runtime\ActiveQuery\Criteria;
  *   Otherwise each occurrence is titled "<Event type name> — <M j, Y>".
  * - **Times** — caller-supplied startTime/endTime win; otherwise startTime comes
  *   from the event type's default start time (falling back to 09:00) and endTime is
- *   one hour after startTime.
+ *   one hour after startTime. A derived end time that crosses midnight (start at
+ *   23:xx) lands on the following calendar day rather than wrapping back to 00:xx
+ *   on the occurrence date itself.
  * - **Idempotency** — with skipExisting, an occurrence date that already has an
  *   active event of the same type is skipped instead of duplicated. The key is
  *   (event type, calendar date), so re-running the same request creates nothing.
+ *   The whole series is written in one transaction and the existence check is a
+ *   locking read, so two concurrent calls for the same event type serialise
+ *   instead of both passing the check and inserting duplicates.
  */
 class EventService
 {
@@ -139,7 +147,7 @@ class EventService
         // ":00" to a string that already includes seconds (e.g. "09:00:00"
         // → "09:00:00:00" which would be an invalid timestamp).
         $startTime = $this->resolveStartTime($data, $type);
-        $endTime = $this->resolveEndTime($data, $startTime);
+        [$endTime, $endsNextDay] = $this->resolveEndTime($data, $startTime);
 
         $title = trim((string) ($data['title'] ?? ''));
         $desc = $data['desc'] ?? '';
@@ -176,47 +184,64 @@ class EventService
         $created = [];
         $skipped = 0;
 
-        foreach ($occurrenceDates as $occurrenceDate) {
-            $date = $occurrenceDate->format('Y-m-d');
+        // One transaction for the whole series: the existence check below is a
+        // locking read, so the check and the insert it guards cannot interleave
+        // with a concurrent call for the same event type (#9735). It also makes
+        // a series all-or-nothing instead of leaving a half-written run behind.
+        $con = Propel::getWriteConnection(EventTableMap::DATABASE_NAME);
+        $con->beginTransaction();
 
-            if ($skipExisting && $this->hasEventOnDate($typeId, $date)) {
-                $skipped++;
-                continue;
+        try {
+            foreach ($occurrenceDates as $occurrenceDate) {
+                $date = $occurrenceDate->format('Y-m-d');
+
+                if ($skipExisting && $this->hasEventOnDate($typeId, $date, $con)) {
+                    $skipped++;
+                    continue;
+                }
+
+                $eventTitle = $title !== ''
+                    ? $title
+                    : $type->getName() . ' — ' . $occurrenceDate->format('M j, Y');
+
+                $event = new Event();
+                $event->setTitle($eventTitle);
+                $event->setEventType($type);
+                $event->setDesc($desc);
+                $event->setText($text);
+                $event->setStart($date . ' ' . $startTime);
+                $event->setEnd($this->occurrenceEnd($occurrenceDate, $endTime, $endsNextDay));
+                $event->setInActive($inactive);
+
+                if ($calendars !== null) {
+                    $event->setCalendars($calendars);
+                }
+
+                // Always pass the transaction's connection: a default read
+                // connection could not see these uncommitted rows.
+                $event->save($con);
+                $event->reload(false, $con);
+                $eventId = $event->getId();
+
+                if ($linkedGroupId > 0) {
+                    $audience = new EventAudience();
+                    $audience->setEventId($eventId);
+                    $audience->setGroupId($linkedGroupId);
+                    $audience->save($con);
+                }
+
+                $created[] = [
+                    'id' => $eventId,
+                    'title' => $eventTitle,
+                    'date' => $date,
+                ];
             }
 
-            $eventTitle = $title !== ''
-                ? $title
-                : $type->getName() . ' — ' . $occurrenceDate->format('M j, Y');
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
 
-            $event = new Event();
-            $event->setTitle($eventTitle);
-            $event->setEventType($type);
-            $event->setDesc($desc);
-            $event->setText($text);
-            $event->setStart($date . ' ' . $startTime);
-            $event->setEnd($date . ' ' . $endTime);
-            $event->setInActive($inactive);
-
-            if ($calendars !== null) {
-                $event->setCalendars($calendars);
-            }
-
-            $event->save();
-            $event->reload();
-            $eventId = $event->getId();
-
-            if ($linkedGroupId > 0) {
-                $audience = new EventAudience();
-                $audience->setEventId($eventId);
-                $audience->setGroupId($linkedGroupId);
-                $audience->save();
-            }
-
-            $created[] = [
-                'id' => $eventId,
-                'title' => $eventTitle,
-                'date' => $date,
-            ];
+            throw $e;
         }
 
         return [
@@ -314,15 +339,38 @@ class EventService
      * The shared skipExisting key: (event type, calendar date). Deliberately
      * ignores the time of day so a series regenerated with a different start time
      * still counts as "already there".
+     *
+     * Runs as a locking read (SELECT ... FOR UPDATE) on the caller's transaction
+     * connection. With no unique constraint on (event type, date) in the schema,
+     * the lock is what stops two concurrent generations of the same event type
+     * from both seeing "nothing here" and both inserting: the range scanned on
+     * the event_type index is gap-locked for the rest of the transaction.
      */
-    private function hasEventOnDate(int $typeId, string $date): bool
+    private function hasEventOnDate(int $typeId, string $date, ConnectionInterface $con): bool
     {
         return EventQuery::create()
             ->filterByType($typeId)
             ->filterByStart($date . ' 00:00:00', Criteria::GREATER_EQUAL)
             ->filterByStart($date . ' 23:59:59', Criteria::LESS_EQUAL)
             ->filterByInActive(0)
-            ->findOne() !== null;
+            ->lockForUpdate()
+            ->findOne($con) !== null;
+    }
+
+    /**
+     * Full "Y-m-d H:i:s" end timestamp for one occurrence.
+     *
+     * The day roll-over is carried as a separate flag rather than being baked
+     * into the time string, so a derived end that crosses midnight advances the
+     * date instead of landing before its own start (#9735).
+     */
+    private function occurrenceEnd(\DateTime $occurrenceDate, string $endTime, bool $endsNextDay): string
+    {
+        $endDate = $endsNextDay
+            ? (clone $occurrenceDate)->modify('+1 day')
+            : $occurrenceDate;
+
+        return $endDate->format('Y-m-d') . ' ' . $endTime;
     }
 
     /**
@@ -350,20 +398,36 @@ class EventService
 
     /**
      * Caller end time, else one hour after the start time.
+     *
+     * @return array{0: string, 1: bool} the HH:MM:SS end time, and whether it
+     *                                   falls on the day after the occurrence date
      */
-    private function resolveEndTime(array $data, string $startTime): string
+    private function resolveEndTime(array $data, string $startTime): array
     {
         $callerTime = $this->firstNonEmptyString($data['endTime'] ?? null, null);
         if ($callerTime !== null) {
-            return self::normalizeTime($callerTime);
+            // An explicit end time is used on the occurrence date itself, as it
+            // always has been for POST /events/repeat.
+            return [self::normalizeTime($callerTime), false];
         }
 
-        $start = \DateTimeImmutable::createFromFormat('H:i:s', $startTime);
+        // Anchor the "+1 hour" on a full datetime (fixed date, UTC, so no DST
+        // shift can distort a pure wall-clock offset). Adding an hour to a
+        // bare H:i:s and re-formatting as H:i:s silently drops the day
+        // roll-over, which turned a 23:00 start into a 00:00 end on the *same*
+        // date — i.e. end before start.
+        $start = \DateTimeImmutable::createFromFormat(
+            '!Y-m-d H:i:s',
+            '2000-01-01 ' . $startTime,
+            new \DateTimeZone('UTC')
+        );
         if ($start === false) {
-            return '10:00:00';
+            return ['10:00:00', false];
         }
 
-        return $start->modify('+1 hour')->format('H:i:s');
+        $end = $start->modify('+1 hour');
+
+        return [$end->format('H:i:s'), $end->format('Y-m-d') !== '2000-01-01'];
     }
 
     /**
