@@ -1,6 +1,11 @@
 /// <reference types="cypress" />
 
 describe("API Private Photo and Avatar - Person", () => {
+    // Person 28 deliberately has no file under cypress/data/images/people,
+    // which the dev and test compose profiles bind-mount as Images/Person.
+    // Pointing these upload/delete tests at a person that does (1, 2, 5, 10,
+    // 44, 213, 214) would delete a tracked fixture from the working tree —
+    // see issue #9777.
     const testPersonId = 28; // Test person from demo database
     const invalidPersonId = 99999;
 
