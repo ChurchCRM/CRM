@@ -51,6 +51,8 @@ jobs:
         run: npx biome check webpack/
       - name: Icon library check (no Tabler icon classes)
         run: node scripts/validate-no-tabler-icons.js
+      - name: Cypress API keys match seeded users
+        run: npm run lint:cypress-api-keys
 
   format-fix:
     name: Apply format fixes
