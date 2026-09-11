@@ -6,6 +6,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\LoggerUtils;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -14,6 +15,18 @@ abstract class BaseEmail
 {
     protected PHPMailer $mail;
     protected Environment $twig;
+
+    /**
+     * Optional Reply-To, as ['address' => string, 'name' => string].
+     *
+     * Held here rather than pushed straight into PHPMailer so that the last
+     * setReplyTo() call wins and send() adds exactly one Reply-To header.
+     * Null — the default — means no Reply-To header at all, which is the
+     * historical behaviour of every email this class sends.
+     *
+     * @var array{address: string, name: string}|null
+     */
+    private ?array $replyTo = null;
 
     /**
      * @param string[] $toAddresses
@@ -49,13 +62,71 @@ abstract class BaseEmail
         $this->mail->SMTPDebug = 0;
     }
 
+    /**
+     * Set the address a recipient's reply should go to.
+     *
+     * From stays the church address (SPF/DKIM alignment); this only adds a
+     * Reply-To header, so mail about a specific group, event or assignment can
+     * be answered by the coordinator responsible for it instead of the church's
+     * general inbox.
+     *
+     * Opt-in: an email that never calls this sends exactly the message it sent
+     * before, with no Reply-To header. Calling it more than once replaces the
+     * previous value rather than adding a second address.
+     *
+     * An invalid address is ignored with a logged warning rather than throwing —
+     * a bad coordinator address must not stop the mail from going out.
+     */
+    public function setReplyTo(string $address, string $name = ''): void
+    {
+        $address = trim($address);
+
+        if (filter_var($address, FILTER_VALIDATE_EMAIL) === false) {
+            LoggerUtils::getAppLogger()->warning('Ignoring invalid Reply-To address', [
+                'address'    => $address,
+                'emailClass' => static::class,
+            ]);
+
+            return;
+        }
+
+        $this->replyTo = ['address' => $address, 'name' => trim($name)];
+    }
+
+    /**
+     * The configured Reply-To address, or null when none is set.
+     */
+    public function getReplyTo(): ?string
+    {
+        return $this->replyTo['address'] ?? null;
+    }
+
     public function send(): bool
     {
         if (SystemConfig::isEmailEnabled()) {
+            $this->applyReplyTo();
+
             return $this->mail->send();
         }
 
         return false; // email disabled or SMTP misconfigured — skip so we don't crash.
+    }
+
+    /**
+     * Hand the stored Reply-To to PHPMailer, exactly once per instance.
+     *
+     * Applied at send time rather than in setReplyTo() so a caller can change
+     * its mind before sending, and so resending the same instance does not
+     * accumulate duplicate Reply-To headers.
+     */
+    private function applyReplyTo(): void
+    {
+        if ($this->replyTo === null) {
+            return;
+        }
+
+        $this->mail->clearReplyTos();
+        $this->mail->addReplyTo($this->replyTo['address'], $this->replyTo['name']);
     }
 
     public function getError(): string
