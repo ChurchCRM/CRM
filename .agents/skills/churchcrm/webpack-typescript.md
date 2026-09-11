@@ -211,14 +211,14 @@ import './my-feature.css';  // In webpack/my-feature.ts
 > deep, and no page can load it.
 
 ```javascript
-// webpack.config.js:72-114 (real entries, trimmed)
+// webpack.config.js:72-114 — every line below is a real, currently-registered entry
+// (the real block has 42 of them; 5 shown)
 entry: {
     'calendar-event-editor': './webpack/calendar-event-editor.js',
     churchcrm: './webpack/skin-main',
     kiosk: './webpack/kiosk',                          // → webpack/kiosk/index.ts
     'people-list': './webpack/people/person-list',
     'event-checkin': './webpack/event-checkin',
-    'my-feature': './webpack/my-feature.js',           // → src/skin/v2/my-feature.min.js
 },
 output: {
     path: path.resolve('./src/skin/v2'),
@@ -230,6 +230,16 @@ output: {
 The source path may point at a directory (`'./webpack/kiosk'` resolves to
 `webpack/kiosk/index.ts` via `resolve.extensions: ['.ts', '.tsx', '.js']`) and may sit in a
 subdirectory (`'./webpack/people/person-list'`) — only the **key** must stay flat.
+
+**Adding your own entry** — illustrative only; `my-feature` is *not* registered today:
+
+```javascript
+// Example — add one line to the `entry` block in webpack.config.js
+entry: {
+    // …the 42 existing entries…
+    'my-feature': './webpack/my-feature.js',           // → src/skin/v2/my-feature.min.js
+},
+```
 
 Load the result from a view with the emitted name:
 
