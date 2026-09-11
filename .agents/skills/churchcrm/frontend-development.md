@@ -189,22 +189,25 @@ window.CRM.notify(i18next.t('Operation completed'), {
 });
 
 window.CRM.notify(i18next.t('An error occurred'), {
-    type: 'error'
+    type: 'danger'
 });
 
 // ❌ WRONG - Never use alert()
 alert('Operation completed');
 ```
 
-**Notification types:**
+**Notification types:** <!-- learned: 2026-09-11 -->
+- `danger` - Red, failures (`error` is an accepted alias — see issue #9726)
 - `success` - Green, success operations
-- `error` - Red, failures
-- `warning` - Orange, warnings
+- `warning` - Orange/yellow, warnings
 - `info` - Blue, informational
 
+Any other value falls through to the `info` style, so a typo silently renders
+a blue notice instead of failing.
+
 **Options:**
-- `delay` - Auto-dismiss time in milliseconds (default: 5000)
-- `type` - Notification type (default: 'success')
+- `delay` - Auto-dismiss time in milliseconds (default: 3000)
+- `type` - Notification type (default: 'info')
 
 ## Confirmations (CRITICAL)
 
