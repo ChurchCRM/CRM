@@ -214,6 +214,49 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
+     * Order families by the ZIP code their mail is actually addressed to.
+     *
+     * Mailing labels are printed in ZIP order so a bundle can be presorted for the
+     * post office, which only works when the sort key is the ZIP that gets printed
+     * — the flagged second address when a family has one. Callers pass a set that
+     * the database already ordered by the primary ZIP; when no family in that set
+     * has a mailing ZIP of its own the collection is handed back in exactly the
+     * order it arrived, so label ordering is unchanged for every existing install.
+     *
+     * @param iterable<self> $families families ordered by primary ZIP
+     *
+     * @return self[]
+     */
+    public static function sortByMailingZip(iterable $families): array
+    {
+        $sorted = [];
+        $needsResort = false;
+
+        foreach ($families as $family) {
+            $sorted[] = $family;
+            if ($family->getMailingAddressParts()['Zip'] !== trim((string) $family->getZip())) {
+                $needsResort = true;
+            }
+        }
+
+        if (!$needsResort) {
+            return $sorted;
+        }
+
+        // usort has been stable since PHP 8.0, so families sharing a ZIP keep the
+        // relative order the database returned them in.
+        usort(
+            $sorted,
+            static fn (self $a, self $b): int => strcasecmp(
+                $a->getMailingAddressParts()['Zip'],
+                $b->getMailingAddressParts()['Zip']
+            )
+        );
+
+        return $sorted;
+    }
+
+    /**
      * Row-based counterpart of {@see self::getSecondaryAddressParts()} for the
      * report paths that read `SELECT * ... LEFT JOIN family_fam` rows.
      */
