@@ -106,6 +106,16 @@ class SystemService
 
     private static function parseSize(string $size): float
     {
+        $size = trim($size);
+
+        // A negative value (conventionally -1) means "no limit" to PHP — most
+        // commonly memory_limit=-1. The character-stripping below would turn
+        // '-1' into 1 byte, and min() in getMaxUploadFileSize() would then
+        // report a 1-byte upload limit for the whole install.
+        if ($size !== '' && $size[0] === '-') {
+            return (float) PHP_INT_MAX;
+        }
+
         $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
         $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
         if ($unit) {

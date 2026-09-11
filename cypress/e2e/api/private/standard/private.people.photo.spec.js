@@ -269,6 +269,26 @@ describe("API Private Photo and Avatar - Person", () => {
                 expect(response.body.message).to.include("Missing image data");
             });
         });
+
+        it("should reject an oversized unparseable body with 400, not 413", () => {
+            // Regression for #9771, second path: the body arrives in full but
+            // BodyParsingMiddleware cannot decode it, so getParsedBody() is null
+            // and the decision falls to the raw body. slim/psr7 caches
+            // php://input, so the bytes are still readable after the middleware
+            // consumed them and the handler can tell "arrived but unparseable"
+            // (400) from "never arrived" (413). Sent as invalid JSON under
+            // Content-Type: application/json, over 2 MB so Content-Length alone
+            // would have produced a 413.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/person/${testPersonId}/photo`,
+                '{"notImgBase64": "' + "a".repeat(3 * 1024 * 1024),
+                400
+            ).then((response) => {
+                expect(response.body.success).to.eq(false);
+                expect(response.body.message).to.include("Missing image data");
+            });
+        });
     });
 
     describe("DELETE /api/person/{id}/photo", () => {

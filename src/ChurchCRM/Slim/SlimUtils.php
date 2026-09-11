@@ -492,6 +492,17 @@ class SlimUtils
      * judging on the header alone turns every complete body over 2 MB into a
      * misleading size error (issues #9719, #9771).
      *
+     * Re-reading the body here is safe even though `BodyParsingMiddleware`
+     * already consumed it: slim/psr7's `ServerRequestFactory` wraps
+     * `php://input` in a `Stream` backed by a `php://temp` cache
+     * (`ServerRequestFactory::createFromGlobals()`), and `Stream::__toString()`
+     * replays that cache once the stream is finished, ahead of its
+     * `isSeekable()` branch. So `(string) $body` returns the original bytes
+     * for a body that arrived but could not be parsed — invalid JSON, or a
+     * content type with no registered parser — and only returns '' when
+     * nothing arrived at all. `getSize()` is null for `php://input`, which is
+     * why it cannot carry this check on its own.
+     *
      * Residual, and not fixable from here: a short body sent with a huge,
      * lying Content-Length truncates the request, PHP receives nothing, and
      * that is indistinguishable from a body discarded for size.
