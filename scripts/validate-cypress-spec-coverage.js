@@ -54,22 +54,95 @@ function collectSpecs(dir) {
 }
 
 /**
+ * Read one JS/TS string literal starting at `source[start]` (which must be a
+ * quote character). Returns the unquoted value and the index just past the
+ * closing quote. Backslash escapes are honoured so a quote inside the literal
+ * does not end it.
+ * @param {string} source
+ * @param {number} start
+ * @returns {{ value: string, end: number }}
+ */
+function readStringLiteral(source, start) {
+    const quote = source[start];
+    let value = '';
+    let i = start + 1;
+    while (i < source.length) {
+        const char = source[i];
+        if (char === '\\') {
+            value += source[i + 1] ?? '';
+            i += 2;
+            continue;
+        }
+        if (char === quote) {
+            return { value, end: i + 1 };
+        }
+        value += char;
+        i++;
+    }
+    return { value, end: i };
+}
+
+/**
  * Extract the literal glob strings from a config's `specPattern` declaration.
  * Every config in cypress/configs/ declares it as a string literal or an array
  * of string literals, so a source scan avoids having to transpile + execute
- * TypeScript just to read a constant.
+ * TypeScript just to read a constant (the repo has no ts-node/tsx to do that
+ * with).
+ *
+ * The array is consumed by tracking bracket depth rather than by a regex, with
+ * string literals read via `readStringLiteral` and comments skipped, so their
+ * contents are never mistaken for syntax. A glob may therefore contain a
+ * bracket expression (minimatch supports `cypress/e2e/[uv]2/...`) or a quote,
+ * and a `]` in a trailing comment no longer closes the array early — all three
+ * truncated the match under the previous `[^\]]*` regex.
  * @param {string} source
  * @returns {string[]}
  */
 function extractSpecPatterns(source) {
     const patterns = [];
-    const declaration = /specPattern:\s*(\[[^\]]*\]|'[^']*'|"[^"]*")/g;
+    const declaration = /specPattern:\s*/g;
     let match = declaration.exec(source);
     while (match !== null) {
-        const literals = match[1].match(/'[^']*'|"[^"]*"/g) || [];
-        for (const literal of literals) {
-            patterns.push(literal.slice(1, -1));
+        let i = match.index + match[0].length;
+
+        if (source[i] === "'" || source[i] === '"' || source[i] === '`') {
+            const literal = readStringLiteral(source, i);
+            patterns.push(literal.value);
+            declaration.lastIndex = literal.end;
+        } else if (source[i] === '[') {
+            let depth = 0;
+            while (i < source.length) {
+                const char = source[i];
+                if (char === "'" || char === '"' || char === '`') {
+                    const literal = readStringLiteral(source, i);
+                    patterns.push(literal.value);
+                    i = literal.end;
+                    continue;
+                }
+                if (char === '/' && source[i + 1] === '/') {
+                    const lineEnd = source.indexOf('\n', i);
+                    i = lineEnd === -1 ? source.length : lineEnd;
+                    continue;
+                }
+                if (char === '/' && source[i + 1] === '*') {
+                    const blockEnd = source.indexOf('*/', i + 2);
+                    i = blockEnd === -1 ? source.length : blockEnd + 2;
+                    continue;
+                }
+                if (char === '[') {
+                    depth++;
+                } else if (char === ']') {
+                    depth--;
+                    if (depth === 0) {
+                        i++;
+                        break;
+                    }
+                }
+                i++;
+            }
+            declaration.lastIndex = i;
         }
+
         match = declaration.exec(source);
     }
     return patterns;

@@ -36,6 +36,11 @@ describe("Deposit Search: page load and search form", () => {
   beforeEach(() => {
     cy.setupAdminSession();
     cy.visit(DEPOSIT_SEARCH_URL);
+    // The rows are server-rendered, but DataTables re-builds the tbody when it
+    // takes the table over. Asserting before `_wrapper` exists races that
+    // rebuild and can hit a detached element, so wait for it here the way the
+    // selection block below already does.
+    cy.get("#depositsTable_wrapper").should("exist");
   });
 
   it("loads the deposit search page", () => {
@@ -55,7 +60,10 @@ describe("Deposit Search: page load and search form", () => {
 
   it("shows the deposits table with the seeded rows", () => {
     cy.get("#depositsTable").should("exist");
-    cy.get("#depositsTable tbody tr").should("have.length.greaterThan", 0);
+    // `:not(.dataTables_empty)` — with no rows DataTables injects a single
+    // "No data available" placeholder <tr>, which would satisfy a bare
+    // `length.greaterThan 0` and make this assertion vacuous.
+    cy.get("#depositsTable tbody tr:not(.dataTables_empty)").should("have.length.greaterThan", 0);
   });
 
   it("submits date range filter and includes params in URL", () => {
@@ -79,13 +87,16 @@ describe("Deposit Search: page load and search form", () => {
     cy.get("#depositFilterForm").submit();
 
     cy.url().should("include", `depositId=${SEEDED_DEPOSIT_ID}`);
-    cy.get("#depositsTable tbody tr").should("have.length", 1);
+    // The submit reloads the page, so wait for DataTables to re-initialise
+    // before counting rows.
+    cy.get("#depositsTable_wrapper").should("exist");
+    cy.get("#depositsTable tbody tr:not(.dataTables_empty)").should("have.length", 1);
     cy.get("#depositsTable tbody tr").should("have.attr", "data-deposit-id", String(SEEDED_DEPOSIT_ID));
   });
 
   it("clears filters when Clear button is clicked", () => {
     cy.visit(`${DEPOSIT_SEARCH_URL}?dateStart=2020-01-01&dateEnd=2099-12-31`);
-    cy.get("#depositFilterForm a.btn-secondary").contains("Clear").click();
+    cy.get("#depositFilterForm").contains("a", "Clear").click();
     cy.url().should("not.include", "dateStart");
     cy.url().should("not.include", "dateEnd");
   });
@@ -155,6 +166,9 @@ describe("Deposit Search: CSV export quality (bulk endpoint)", () => {
       method: "GET",
       url: `/api/deposits/csv?ids=${SEEDED_DEPOSIT_ID}`,
       headers: { Accept: "text/csv" },
+      // Let the assertion below be the failure point ("expected 404 to equal
+      // 200") instead of cy.request() throwing first with no diagnostic.
+      failOnStatusCode: false,
     }).then((res) => {
       expect(res.status).to.eq(200);
       expect(res.headers["content-type"]).to.match(/text\/csv/i);
@@ -175,6 +189,9 @@ describe("Deposit Search: CSV export quality (bulk endpoint)", () => {
       method: "GET",
       url: `/api/deposits/csv?ids=${SEEDED_DEPOSIT_ID}`,
       headers: { Accept: "text/csv" },
+      // Let the assertion below be the failure point ("expected 404 to equal
+      // 200") instead of cy.request() throwing first with no diagnostic.
+      failOnStatusCode: false,
     }).then((res) => {
       expect(res.status).to.eq(200);
 
