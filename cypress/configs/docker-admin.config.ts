@@ -1,5 +1,6 @@
 import { defineConfig } from 'cypress'
 import { verifyDownloadTasks } from 'cy-verify-downloads';
+import { registerRowCountGuard } from './row-count-guard';
 
 import base from './base.config'
 
@@ -71,6 +72,9 @@ export default defineConfig({
         printLogsToFile: 'always'
       });
       on('task', verifyDownloadTasks);
+      // Test-database drift guard (#9769) — read-only row counts, plus the
+      // env flag cypress/support/e2e.js checks before arming the guard.
+      registerRowCountGuard(on, config);
       on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
           launchOptions.args.push('--disable-dev-shm-usage');

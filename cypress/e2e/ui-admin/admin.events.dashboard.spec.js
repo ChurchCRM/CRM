@@ -10,6 +10,12 @@
  * data being populated, only on the seeded event types being present
  * (which the other passing event specs also rely on).
  */
+// Events createTestEvent() actually created, removed again in after() so the
+// seeded database does not grow with every run (#9769). quick-create returns
+// `created: false` and an existing event's id when one already exists for that
+// date+type, so only genuinely new ids are tracked.
+const createdEventIds = [];
+
 function createTestEvent(callback) {
     cy.makePrivateAdminAPICall(
         "POST",
@@ -18,12 +24,20 @@ function createTestEvent(callback) {
         200,
     ).then((createResp) => {
         expect(createResp.body).to.have.property("eventId");
+        if (createResp.body.created !== false) {
+            createdEventIds.push(createResp.body.eventId);
+        }
         callback(createResp.body.eventId);
     });
 }
 
 describe("Events Dashboard (MVC)", () => {
     beforeEach(() => cy.setupAdminSession());
+
+    // Outermost suite — runs once every nested describe has finished.
+    after(() => {
+        cy.cleanupEvents(createdEventIds);
+    });
 
     it("should display the events dashboard with stat cards", () => {
         cy.visit("event/dashboard");

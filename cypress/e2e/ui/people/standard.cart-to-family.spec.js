@@ -26,11 +26,24 @@
  *     - fam_ID 1 = Campbell
  *
  * Test order is intentional — non-destructive tests run before T3/T4 which
- * assign persons to families (modifying their per_fam_ID permanently in this
- * test run).
+ * assign persons to families.
+ *
+ * Those assignments used to be permanent: the two families T3/T6 create stayed
+ * in the database and persons 27/36/37 kept their new per_fam_ID, so the spec
+ * only passed once per seeded database and every run added a family (#9769).
+ * after() now deletes the created families *without* deleteMembers — which
+ * unlinks their members back to per_fam_ID = 0 — and puts person 37 back to
+ * "Unassigned" through the person editor, since no API moves a person between
+ * families.
  */
 describe("Cart to Family — UI", () => {
     const ROUTE = "/people/cart/to-family";
+
+    /** Families created by T3/T6, removed in after(). */
+    const createdFamilyIds = [];
+
+    /** Seeded free people the destructive tests assign to a family. */
+    const REASSIGNED_PERSON_IDS = [37];
 
     /**
      * Direct form login — creates a fresh PHP session with local auth.
@@ -79,6 +92,36 @@ describe("Cart to Family — UI", () => {
         // an empty cart — no separate emptyCart() call is needed.
         freshAdminLogin();
     });
+
+    after(() => {
+        // No deleteMembers: DELETE /api/family/{id} unlinks the members instead
+        // of deleting them, which is exactly what restores persons 27 and 36.
+        createdFamilyIds.forEach((familyId) => {
+            cy.makePrivateAdminAPICall("DELETE", `/api/family/${familyId}`, null, [
+                200, 404,
+            ]);
+        });
+
+        // Person 37 was moved into the seeded Campbell family (fam_ID 1), which
+        // no endpoint can undo — put it back through the editor form.
+        REASSIGNED_PERSON_IDS.forEach((personId) => {
+            freshAdminLogin();
+            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.get("#familyId").select("0", { force: true });
+            cy.get("#FamilyRole").select("0", { force: true });
+            cy.get('button[name="PersonSubmit"]').click();
+            cy.url().should("contain", "people/view/");
+        });
+    });
+
+    /** Record the family id from the /people/family/{id} URL after a submit. */
+    const trackCreatedFamily = () =>
+        cy.location("pathname").then((pathname) => {
+            const match = pathname.match(/\/people\/family\/(\d+)/);
+            if (match) {
+                createdFamilyIds.push(Number.parseInt(match[1], 10));
+            }
+        });
 
     // ── T1: Empty cart → empty state ────────────────────────────────────────
     it("T1 — shows empty state when cart is empty", () => {
@@ -140,6 +183,7 @@ describe("Cart to Family — UI", () => {
         cy.get("#cartToFamilySubmit").click();
         // Redirected to the new family page
         cy.url().should("match", /\/people\/family\/\d+/);
+        trackCreatedFamily();
         // Cart is empty server-side
         getCart().then((resp) => {
             expect(resp.body.PeopleCart).to.deep.equal([]);
@@ -178,6 +222,7 @@ describe("Cart to Family — UI", () => {
         cy.get("#cartToFamilySubmit").click();
         // No 500 — redirect to new family page
         cy.url().should("match", /\/people\/family\/\d+/);
+        trackCreatedFamily();
         // Cart is empty
         getCart().then((resp) => {
             expect(resp.body.PeopleCart).to.deep.equal([]);

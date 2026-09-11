@@ -32,6 +32,32 @@ describe("Event Detail - Did Not Attend List", () => {
     let absentCount;        // number of members not checked in (set in before())
     let checkedInName;      // full name of the one checked-in member (set in before())
 
+    // The events this spec quick-creates, so after() can remove them again
+    // (#9769). Only ids the API reports as newly created are tracked:
+    // quick-create returns `created: false` and an existing event's id when one
+    // already exists for that date+type, and deleting that would destroy a row
+    // the spec did not create. Deleting an event cascades its event_attend and
+    // calendar_events rows.
+    const createdEventIds = [];
+
+    const trackQuickCreated = (response) => {
+        if (
+            response?.body?.created !== false &&
+            typeof response?.body?.eventId === "number"
+        ) {
+            createdEventIds.push(response.body.eventId);
+        }
+    };
+
+    after(() => {
+        cy.cleanupEvents(createdEventIds);
+    });
+
+    // Checking members in writes a note on each person's timeline
+    // (Event::addTimelineNote()). That note is the person's attendance history:
+    // it deliberately outlives the event and no API removes it — note_nte is
+    // only reported by the row-count guard, not failed on (#9769).
+
     before(() => {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
@@ -48,6 +74,7 @@ describe("Event Detail - Did Not Attend List", () => {
         ).then((resp) => {
             expect(resp.body).to.have.property("eventId");
             pastGroupEventId = resp.body.eventId;
+            trackQuickCreated(resp);
 
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -106,6 +133,7 @@ describe("Event Detail - Did Not Attend List", () => {
         ).then((resp) => {
             expect(resp.body).to.have.property("eventId");
             pastNoGroupEventId = resp.body.eventId;
+            trackQuickCreated(resp);
 
             cy.makePrivateAdminAPICall(
                 "POST",

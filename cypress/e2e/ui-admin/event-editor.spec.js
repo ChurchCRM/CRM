@@ -7,6 +7,25 @@
  * live in cypress/e2e/ui/events/standard.calendar.spec.js.
  */
 describe("Event Editor page", () => {
+    // Titles the save tests use, so after() can look their ids up and remove
+    // them (#9769). The saves happen in the browser, so there is no response
+    // body to read an id out of; deleting an event cascades its
+    // calendar_events rows.
+    const createdEventTitles = [];
+
+    after(() => {
+        if (createdEventTitles.length === 0) {
+            return;
+        }
+        cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((resp) => {
+            cy.cleanupEvents(
+                (resp.body.Events || [])
+                    .filter((e) => createdEventTitles.includes(e.Title))
+                    .map((e) => e.Id),
+            );
+        });
+    });
+
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -98,7 +117,10 @@ describe("Event Editor page", () => {
 
         visitNewEditorForFirstType();
 
-        cy.get("#event-title-input").type(`No Calendar Page ${Date.now()}`);
+        const title = `No Calendar Page ${Date.now()}`;
+        createdEventTitles.push(title);
+
+        cy.get("#event-title-input").type(title);
         cy.get("#calendarsEmptyHint").should("be.visible");
 
         cy.get("#event-editor-save").click();
@@ -111,6 +133,7 @@ describe("Event Editor page", () => {
 
     it("persists InActive and LinkedGroupId when set in the Advanced section", () => {
         const title = `Advanced Persist ${Date.now()}`;
+        createdEventTitles.push(title);
         cy.intercept("POST", "**/api/events").as("createEvent");
 
         visitNewEditorForFirstType();
@@ -137,7 +160,10 @@ describe("Event Editor page", () => {
 
         visitNewEditorForFirstType();
 
-        cy.get("#event-title-input").type(`Default Type Page ${Date.now()}`);
+        const title = `Default Type Page ${Date.now()}`;
+        createdEventTitles.push(title);
+
+        cy.get("#event-title-input").type(title);
         cy.tomSelectByValue("#pinnedCalendarsSelect", "1");
         cy.get("#event-editor-save").click();
 
