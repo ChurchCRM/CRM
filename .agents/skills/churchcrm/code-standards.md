@@ -585,7 +585,8 @@ gh pr comment NUMBER --body "## Follow-up changes pushed\n\n..."
 ## Files
 
 **Logger:** `src/ChurchCRM/Utils/LoggerUtils.php`
-**Service Container:** `src/ChurchCRM/ServiceContainerBuilder.php`
+**Services:** `src/ChurchCRM/Service/` — instantiated directly (`new UserService()`); there is
+no DI container, see [`service-layer.md`](./service-layer.md)
 **Logs:** `src/logs/`
 
 ### ChurchMetaData — Typed String/Float Getters, No Caller Casting <!-- learned: 2026-04-22 -->

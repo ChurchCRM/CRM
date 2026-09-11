@@ -210,10 +210,14 @@ return $response
 ```
 
 ### PhpRenderer View Response
+
+There is no container-registered `view` service — construct the renderer in the route,
+pointing it at the module's `views/` directory (`src/admin/routes/system.php:56`).
+
 ```php
 use Slim\Views\PhpRenderer;
 
-$view = $container->get('view');
+$view = new PhpRenderer(__DIR__ . '/../views/');
 return $view->render($response, 'users.php', [
     'sRootPath' => SystemURLs::getRootPath(),
     'sPageTitle' => gettext('Users'),
@@ -222,41 +226,32 @@ return $view->render($response, 'users.php', [
 ]);
 ```
 
-## Dependency Injection via Constructor
+## Obtaining Services — No DI Container <!-- corrected: 2026-09-11 -->
+
+Slim 4 supports a PSR-11 container, but **ChurchCRM does not use one**.
+`MvcAppFactory::create()` (`src/ChurchCRM/Slim/MvcAppFactory.php:35-62`) never calls
+`AppFactory::setContainer()`, so `$app->getContainer()` is `null` and there is no ambient
+`$container` variable in a route file. Services are constructed where they are used.
 
 **Pattern:**
 ```php
-class UserService {
-    public function __construct(
-        private UserRepository $userRepo,
-        private LoggerInterface $logger
-    ) {}
-    
-    public function createUser($data): User {
-        $this->logger->info('Creating user', ['email' => $data['email']]);
-        return $this->userRepo->save($data);
-    }
-}
+use ChurchCRM\Service\UserService;
+use ChurchCRM\Slim\SlimUtils;
 
-// Register in container
-$container->set('UserService', fn(Container $c) => new UserService(
-    $c->get('UserRepository'),
-    $c->get('LoggerInterface')
-));
+$app->post('/users', function (Request $request, Response $response): Response {
+    $userService = new UserService();
+    $user = $userService->createUser($request->getParsedBody());
 
-// Use in routes
-$app->post('/users', function($request, $response) use ($container) {
-    $service = $container->get('UserService');
-    $user = $service->createUser($request->getParsedBody());
     return SlimUtils::renderJSON($response, ['data' => $user]);
 });
 ```
 
 **Key Points:**
-- NEVER use global `$container` directly
-- Always inject dependencies via constructor
-- Register services in container at startup
-- Use type hints for IDE support
+- Never reference `$container` or `$app->getContainer()` — both are fatal here
+- Construct the service inside the handler; services hold no per-request state worth sharing
+- Services that expose only static methods (`AppIntegrityService`, `LocaleService`, …) are
+  called statically and never instantiated
+- Full rules and real call sites: [`service-layer.md`](./service-layer.md)
 
 ## Common Patterns
 
