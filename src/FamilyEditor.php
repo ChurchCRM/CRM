@@ -66,6 +66,7 @@ $bErrorFlag = false;
 $sNameError = '';
 $sEmailError = '';
 $sWeddingDateError = '';
+$sSecondAddressError = '';
 
 $sName = '';
 
@@ -94,6 +95,37 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount']);
 
     $sState = InputUtils::legacyFilterInput($_POST[$_POST['stateType'] === 'dropDown' ? 'State' : 'StateTextbox']);
+
+    // Optional second address (#9743). Same handling as the primary address:
+    // commas stripped from the street lines (they break the CSV export) and the
+    // zip uppercased when the installation asks for it.
+    $sSecondAddress1 = str_replace(',', '', InputUtils::legacyFilterInput($_POST['SecondAddress1'] ?? ''));
+    $sSecondAddress2 = str_replace(',', '', InputUtils::legacyFilterInput($_POST['SecondAddress2'] ?? ''));
+    $sSecondCity = InputUtils::legacyFilterInput($_POST['SecondCity'] ?? '');
+    $sSecondZip = InputUtils::legacyFilterInput($_POST['SecondZip'] ?? '');
+
+    if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
+        $sSecondZip = strtoupper($sSecondZip);
+    }
+
+    $sSecondCountry = InputUtils::legacyFilterInput($_POST['SecondCountry'] ?? '');
+    $sSecondState = InputUtils::legacyFilterInput(
+        ($_POST['secondStateType'] ?? '') === 'dropDown'
+            ? ($_POST['SecondState'] ?? '')
+            : ($_POST['SecondStateTextbox'] ?? '')
+    );
+    $bSecondIsMailing = isset($_POST['SecondIsMailing']);
+
+    // The second Country/State widgets are plain <select> elements with no blank
+    // option, so they always post a value. Treat a block with neither a street
+    // line nor a city as "no second address" and store it empty, rather than
+    // stamping every family with the first country in the list.
+    if (strlen(trim($sSecondAddress1)) < 1 && strlen(trim($sSecondCity)) < 1) {
+        $sSecondAddress2 = '';
+        $sSecondState = '';
+        $sSecondZip = '';
+        $sSecondCountry = '';
+    }
 
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
     $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
@@ -184,6 +216,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $bErrorFlag = true;
     }
 
+    // The "this is the mailing address" flag needs an address to send mail to (#9743).
+    if ($bSecondIsMailing && strlen(trim($sSecondAddress1)) < 1 && strlen(trim($sSecondCity)) < 1) {
+        $sSecondAddressError = '<span class="text-danger">'
+            . gettext('Enter a second address before marking it as the mailing address') . '</span>';
+        $bErrorFlag = true;
+    }
+
     // Validate Wedding Date if one was entered
     $dateString = DateTimeUtils::parseAndValidate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
     if (strlen($dWeddingDate) > 0 && $dateString === false) {
@@ -241,6 +280,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setState($sState)
             ->setZip($sZip)
             ->setCountry($sCountry)
+            ->setSecondAddress1($sSecondAddress1)
+            ->setSecondAddress2($sSecondAddress2)
+            ->setSecondCity($sSecondCity)
+            ->setSecondState($sSecondState)
+            ->setSecondZip($sSecondZip)
+            ->setSecondCountry($sSecondCountry)
+            ->setSecondIsMailing($bSecondIsMailing)
             ->setHomePhone($sHomePhone)
             ->setSendNewsletter($bSendNewsLetterString)
             ->setEnvelope($nEnvelope)
@@ -405,6 +451,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sState = $family->getState();
         $sZip = $family->getZip();
         $sCountry = $family->getCountry();
+        $sSecondAddress1 = $family->getSecondAddress1();
+        $sSecondAddress2 = $family->getSecondAddress2();
+        $sSecondCity = $family->getSecondCity();
+        $sSecondState = $family->getSecondState();
+        $sSecondZip = $family->getSecondZip();
+        $sSecondCountry = $family->getSecondCountry();
+        $bSecondIsMailing = (bool) $family->getSecondIsMailing();
         $sHomePhone = $family->getHomePhone();
         $sEmail = $family->getEmail();
         $bSendNewsLetter = $family->getSendNewsletter() === 'TRUE';
@@ -465,6 +518,17 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sName = '';
         $sAddress1 = '';
         $sAddress2 = '';
+        // A new family's second address starts completely empty — unlike the primary
+        // address it is NOT seeded from sDefaultCity/State/Zip. (The Country select
+        // still falls back to sDefaultCountry because it has no blank option; the
+        // POST handler above discards the whole block when no address was typed.)
+        $sSecondAddress1 = '';
+        $sSecondAddress2 = '';
+        $sSecondCity = '';
+        $sSecondState = '';
+        $sSecondZip = '';
+        $sSecondCountry = '';
+        $bSecondIsMailing = false;
         $sHomePhone = '';
         $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
         $sWorkPhone = '';
@@ -520,6 +584,7 @@ require_once __DIR__ . '/Include/Header.php';
     <input type="hidden" name="iFamilyID" value="<?= $iFamilyID ?>">
     <input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
     <input type="hidden" id="stateType" name="stateType" value="">
+    <input type="hidden" id="secondStateType" name="secondStateType" value="">
 
     <?php if ($bErrorFlag) { ?>
     <div class="alert alert-danger alert-dismissable" role="alert">
@@ -646,6 +711,87 @@ require_once __DIR__ . '/Include/Header.php';
                     <?php
                 }
             } /* Lat/Lon can be hidden - General Settings */ ?>
+
+            <!-- Second Address Section (#9743) -->
+            <?php
+            $bSecondAddressExpanded = $bSecondIsMailing
+                || strlen(trim((string) $sSecondAddress1)) > 0
+                || strlen(trim((string) $sSecondAddress2)) > 0
+                || strlen(trim((string) $sSecondCity)) > 0
+                || strlen(trim((string) $sSecondZip)) > 0
+                || $sSecondAddressError !== '';
+            ?>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <button class="btn btn-link p-0 text-decoration-none text-body-secondary fw-bold" type="button"
+                            id="secondAddressToggle" data-bs-toggle="collapse" data-bs-target="#secondAddressSection"
+                            aria-expanded="<?= $bSecondAddressExpanded ? 'true' : 'false' ?>" aria-controls="secondAddressSection">
+                        <i class="fa-solid fa-chevron-down me-1"></i><?= gettext('Second Address') ?>
+                        <span class="text-body-secondary fw-normal ms-1">(<?= gettext('optional') ?>)</span>
+                    </button>
+                    <?php if ($sSecondAddressError) { ?>
+                    <div class="small mt-1" id="SecondAddressError"><?= $sSecondAddressError ?></div>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="collapse<?= $bSecondAddressExpanded ? ' show' : '' ?>" id="secondAddressSection">
+                <div class="row mt-3">
+                    <div class="mb-3 col-12 col-md-6">
+                        <label for="SecondAddress1"><?= gettext('Address') ?> 1:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
+                            <input type="text" id="SecondAddress1" name="SecondAddress1" value="<?= InputUtils::escapeAttribute($sSecondAddress1) ?>" maxlength="250" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3 col-12 col-md-6">
+                        <label for="SecondAddress2"><?= gettext('Address') ?> 2:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
+                            <input type="text" id="SecondAddress2" name="SecondAddress2" value="<?= InputUtils::escapeAttribute($sSecondAddress2) ?>" maxlength="250" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-12 col-sm-6 col-md-4">
+                        <label for="SecondCity"><?= gettext('City') ?>:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-city"></i></span>
+                            <input type="text" id="SecondCity" name="SecondCity" value="<?= InputUtils::escapeAttribute($sSecondCity) ?>" maxlength="50" class="form-control">
+                        </div>
+                    </div>
+                    <div id="secondStateOptionDiv" class="mb-3 col-12 col-sm-6 col-md-3">
+                        <label for="SecondState"><?= gettext('State') ?>:</label>
+                        <select id="SecondState" name="SecondState" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sSecondState) ?>" data-system-default="">
+                        </select>
+                    </div>
+                    <div id="secondStateInputDiv" class="mb-3 col-12 col-sm-6 col-md-3 d-none">
+                        <label for="SecondStateTextbox"><?= gettext('State') ?>:</label>
+                        <input id="SecondStateTextbox" type="text" class="form-control" name="SecondStateTextbox" value="<?= InputUtils::escapeAttribute($sSecondState) ?>" maxlength="30">
+                    </div>
+                    <div class="mb-3 col-12 col-sm-6 col-md-2">
+                        <label for="SecondZip"><?= gettext('Zip') ?>:</label>
+                        <input type="text" id="SecondZip" name="SecondZip" class="form-control" <?php
+                        if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
+                            echo 'style="text-transform:uppercase" ';
+                        }
+                        echo 'value="' . InputUtils::escapeAttribute($sSecondZip) . '" '; ?> maxlength="10">
+                    </div>
+                    <div class="mb-3 col-12 col-sm-6 col-md-3">
+                        <label for="SecondCountry"><?= gettext('Country') ?>:</label>
+                        <select id="SecondCountry" name="SecondCountry" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sSecondCountry) ?>" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultCountry') ?>">
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="SecondIsMailing" name="SecondIsMailing" value="1" <?= $bSecondIsMailing ? 'checked' : '' ?>>
+                            <label class="form-check-label" for="SecondIsMailing"><?= gettext('This is the mailing address') ?></label>
+                        </div>
+                        <div class="form-text"><?= gettext('Mail goes to the second address; the primary address stays the physical location used for maps and directions.') ?></div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Contact Information Section -->
             <div class="row mt-4">

@@ -56,6 +56,13 @@ const CSV_CORE_FIELD_LABELS = [
     'State'          => 'State',
     'Zip'            => 'Zip',
     'Country'        => 'Country',
+    'SecondAddress1' => 'Second Address 1',
+    'SecondAddress2' => 'Second Address 2',
+    'SecondCity'     => 'Second City',
+    'SecondState'    => 'Second State',
+    'SecondZip'      => 'Second Zip',
+    'SecondCountry'  => 'Second Country',
+    'MailingAddress' => 'Mailing Address',
     'HomePhone'      => 'Home Phone',
     'WorkPhone'      => 'Work Phone',
     'MobilePhone'    => 'Mobile Phone',
@@ -87,6 +94,13 @@ const CSV_FIELD_ALIASES = [
     'State'          => ['state', 'province', 'region'],
     'Zip'            => ['zip', 'zipcode', 'zip_code', 'postal', 'postal_code', 'postcode'],
     'Country'        => ['country'],
+    'SecondAddress1' => ['secondaddress1', 'second_address_1', 'second address 1', 'secondaddress', 'mailingaddress1', 'mailing_address_1', 'mailing address 1'],
+    'SecondAddress2' => ['secondaddress2', 'second_address_2', 'second address 2', 'mailingaddress2', 'mailing_address_2', 'mailing address 2'],
+    'SecondCity'     => ['secondcity', 'second_city', 'second city', 'mailingcity', 'mailing_city', 'mailing city'],
+    'SecondState'    => ['secondstate', 'second_state', 'second state', 'mailingstate', 'mailing_state', 'mailing state'],
+    'SecondZip'      => ['secondzip', 'second_zip', 'second zip', 'mailingzip', 'mailing_zip', 'mailing zip', 'mailing_postal_code'],
+    'SecondCountry'  => ['secondcountry', 'second_country', 'second country', 'mailingcountry', 'mailing_country', 'mailing country'],
+    'MailingAddress' => ['mailingaddress', 'mailing_address', 'mailing address', 'is_mailing', 'ismailing', 'is mailing'],
     'HomePhone'      => ['homephone', 'home_phone', 'home phone', 'phone', 'telephone'],
     'WorkPhone'      => ['workphone', 'work_phone', 'work phone', 'office_phone', 'office phone'],
     'MobilePhone'    => ['mobilephone', 'mobile_phone', 'mobile phone', 'cellphone', 'cell_phone', 'cell phone', 'mobile', 'cell'],
@@ -434,7 +448,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
             ['FamilyID' => '1001', 'Title' => 'Mr',   'FirstName' => 'John',  'LastName' => 'Smith',   'Gender' => 'Male',   'Address1' => '123 Church St', 'City' => 'Springfield',  'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-1234', 'Email' => 'john.smith@example.com',  'BirthDate' => '1980-05-12', 'MembershipDate' => '2020-01-01', 'WeddingDate' => '2010-06-15', 'Classification' => 'Member', 'FamilyRole' => 'Head of Household'],
             ['FamilyID' => '1001', 'Title' => 'Mrs',  'FirstName' => 'Jane',  'LastName' => 'Smith',   'Gender' => 'Female', 'Address1' => '123 Church St', 'City' => 'Springfield',  'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-4321', 'Email' => 'jane.smith@example.com',  'BirthDate' => '1982-08-20', 'MembershipDate' => '2020-01-01', 'WeddingDate' => '2010-06-15', 'Classification' => 'Member', 'FamilyRole' => 'Spouse'],
             ['FamilyID' => '1001', 'Title' => 'Miss', 'FirstName' => 'Emily', 'LastName' => 'Smith',   'Gender' => 'Female', 'Address1' => '123 Church St', 'City' => 'Springfield',  'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-0000', 'Email' => 'emily.smith@example.com', 'BirthDate' => '2010-03-05', 'MembershipDate' => '2020-01-01',                                     'Classification' => 'Member', 'FamilyRole' => 'Child'],
-            ['FamilyID' => '1002', 'Title' => 'Mr',   'FirstName' => 'Peter', 'LastName' => 'Johnson', 'Gender' => 'Male',   'Address1' => '456 Grace Ave', 'City' => 'Capital City', 'State' => 'IL', 'Zip' => '62999', 'Country' => 'USA', 'HomePhone' => '555-7777', 'Email' => 'peter.johnson@example.com', 'BirthDate' => '1975-11-03', 'MembershipDate' => '2019-03-15', 'WeddingDate' => '2005-09-20', 'Classification' => 'Member', 'FamilyRole' => 'Head of Household'],
+            ['FamilyID' => '1002', 'Title' => 'Mr',   'FirstName' => 'Peter', 'LastName' => 'Johnson', 'Gender' => 'Male',   'Address1' => '456 Grace Ave', 'City' => 'Capital City', 'State' => 'IL', 'Zip' => '62999', 'Country' => 'USA', 'SecondAddress1' => 'PO Box 88', 'SecondCity' => 'Capital City', 'SecondState' => 'IL', 'SecondZip' => '62998', 'SecondCountry' => 'USA', 'MailingAddress' => 'Yes', 'HomePhone' => '555-7777', 'Email' => 'peter.johnson@example.com', 'BirthDate' => '1975-11-03', 'MembershipDate' => '2019-03-15', 'WeddingDate' => '2005-09-20', 'Classification' => 'Member', 'FamilyRole' => 'Head of Household'],
             ['FamilyID' => '',     'Title' => 'Ms',   'FirstName' => 'Alice', 'LastName' => 'Walker',  'Gender' => 'Female', 'Address1' => '789 Solo Ave',  'City' => 'Capital City', 'State' => 'IL', 'Zip' => '62999', 'Country' => 'USA', 'HomePhone' => '555-8888', 'Email' => 'alice.walker@example.com', 'BirthDate' => '1990-02-02', 'MembershipDate' => '2021-05-01',                                     'Classification' => 'Member'],
         ];
 
@@ -714,6 +728,19 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         if (!empty($data['State']))    $family->setState($data['State']);
                         if (!empty($data['Zip']))      $family->setZip($data['Zip']);
                         if (!empty($data['Country']))  $family->setCountry($data['Country']);
+                        // Optional second address (#9743). Family-level only — the
+                        // person branch below deliberately does not read these keys.
+                        if (!empty($data['SecondAddress1'])) $family->setSecondAddress1($data['SecondAddress1']);
+                        if (!empty($data['SecondAddress2'])) $family->setSecondAddress2($data['SecondAddress2']);
+                        if (!empty($data['SecondCity']))     $family->setSecondCity($data['SecondCity']);
+                        if (!empty($data['SecondState']))    $family->setSecondState($data['SecondState']);
+                        if (!empty($data['SecondZip']))      $family->setSecondZip($data['SecondZip']);
+                        if (!empty($data['SecondCountry']))  $family->setSecondCountry($data['SecondCountry']);
+                        // Family::preSave() clears the flag when no second address
+                        // was supplied, so a stray "Yes" can never orphan it.
+                        if (!empty($data['MailingAddress'])) {
+                            $family->setSecondIsMailing(in_array(strtolower(trim((string) $data['MailingAddress'])), ['1', 'true', 'yes', 'y', 't'], true));
+                        }
                         if (!empty($data['HomePhone'])) $family->setHomePhone($data['HomePhone']);
                         if (!empty($data['Email']))    $family->setEmail($data['Email']);
                         if (!empty($data['Envelope'])) $family->setEnvelope((int) $data['Envelope']);
