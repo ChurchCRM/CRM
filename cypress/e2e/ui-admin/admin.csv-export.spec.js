@@ -40,6 +40,62 @@ describe("CSV Export Page", () => {
         // Verify unchecked fields
         cy.get('.form-selectgroup-input[name="Title"]').should("not.be.checked");
         cy.get('.form-selectgroup-input[name="Envelope"]').should("not.be.checked");
+        // Second family address (#9743) is opt-in, so existing exports are unchanged.
+        cy.get('.form-selectgroup-input[name="SecondAddress"]').should("not.be.checked");
+    });
+
+    it("should append the second-address columns only when SecondAddress is requested", () => {
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            form: true,
+            body: {
+                FirstName: 1,
+                Address1: 1,
+                City: 1,
+                State: 1,
+                Zip: 1,
+                Country: 1,
+                SecondAddress: 1,
+                Source: "all",
+                Gender: 0,
+                Format: "Default",
+                Submit: "Create File",
+            },
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.headers["content-type"]).to.include("text/csv");
+            const headerRow = response.body.split("\n")[0];
+            expect(headerRow).to.include("Second Address 1");
+            expect(headerRow).to.include("Second Address 2");
+            expect(headerRow).to.include("Second City");
+            expect(headerRow).to.include("Second State");
+            expect(headerRow).to.include("Second Zip");
+            expect(headerRow).to.include("Second Country");
+            expect(headerRow).to.include("Mailing Address");
+        });
+
+        // Without the opt-in the header row is unchanged.
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            form: true,
+            body: {
+                FirstName: 1,
+                Address1: 1,
+                City: 1,
+                State: 1,
+                Zip: 1,
+                Country: 1,
+                Source: "all",
+                Gender: 0,
+                Format: "Default",
+                Submit: "Create File",
+            },
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.body.split("\n")[0]).to.not.include("Second Address 1");
+        });
     });
 
     it("should allow toggling field pills on and off", () => {
