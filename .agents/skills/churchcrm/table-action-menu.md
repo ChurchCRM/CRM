@@ -46,7 +46,7 @@ Add `w-1` to the `<th>` / `<td>` so the column shrinks to fit the icon button an
 
 ## Shared JS Renderers (use these — do NOT duplicate inline) <!-- learned: 2026-03-24 -->
 
-`CRMJSOM.js` exposes two shared renderers on `window.CRM`. **Always use these** in DataTable `render:` functions instead of writing raw HTML strings.
+`CRMJSOM.js` exposes three shared renderers on `window.CRM`. **Always use these** in DataTable `render:` functions instead of writing raw HTML strings.
 
 ```javascript
 // Standard person action menu: View → Edit → [View Family?] → [divider] → Cart → [divider] → Delete
@@ -55,7 +55,7 @@ window.CRM.renderPersonActionMenu(personId, fullName, { familyId, inCart })
 // Standard family action menu: View → Edit → [divider] → Cart → [divider] → Delete
 window.CRM.renderFamilyActionMenu(familyId, familyName, { inCart })
 
-// Standard event action menu: View → Edit → [divider] → Activate/Deactivate → [divider] → Delete
+// Standard event action menu: View → Edit → Check-in → [divider] → Activate/Deactivate → [divider] → Delete
 window.CRM.renderEventActionMenu(eventId, eventTitle, { inactive })
 ```
 
