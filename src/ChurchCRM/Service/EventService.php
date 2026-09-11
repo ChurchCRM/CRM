@@ -5,59 +5,121 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventAudience;
+use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
-use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Service for managing event business logic, including bulk repeat event creation.
+ *
+ * This is the **only** recurring-event generator in the codebase. Both HTTP entry
+ * points — POST /api/events/repeat and POST /api/events/generate-recurring — and the
+ * repeat-event editor UI funnel through createRecurringEvents(), so the same input
+ * always produces the same dates, the same times and the same duplicate handling
+ * (issue #9735).
+ *
+ * Documented, shared policy:
+ *
+ * - **Cap** — a single call creates at most self::MAX_REPEAT_OCCURRENCES events.
+ *   The cap is expressed in occurrences rather than calendar span because that is
+ *   the unit that bounds the actual work (rows written in one request) and it is
+ *   meaningful for all three recurrence types — a calendar horizon short enough to
+ *   protect weekly recurrence would make yearly recurrence pointless.
+ * - **Recurrence** — a caller-supplied recurType wins and its day fields fall back
+ *   to the event type's defaults, then to the legacy literals (Sunday / 1st / 01-01).
+ *   When no recurType is supplied it is read from the event type, which must then
+ *   also supply the matching day field; an incomplete event type is rejected rather
+ *   than silently defaulted.
+ * - **Title** — a caller-supplied title is used verbatim for every occurrence.
+ *   Otherwise each occurrence is titled "<Event type name> — <M j, Y>".
+ * - **Times** — caller-supplied startTime/endTime win; otherwise startTime comes
+ *   from the event type's default start time (falling back to 09:00) and endTime is
+ *   one hour after startTime.
+ * - **Idempotency** — with skipExisting, an occurrence date that already has an
+ *   active event of the same type is skipped instead of duplicated. The key is
+ *   (event type, calendar date), so re-running the same request creates nothing.
  */
 class EventService
 {
     /**
-     * Create a series of repeat events based on a template and recurrence settings.
+     * Hard cap on the number of events a single createRecurringEvents() call can
+     * generate. Prevents a wide date range (e.g. weekly for 10 years) from
+     * creating thousands of rows in one request and locking the table.
      *
-     * Generates individual Event records for each occurrence of a recurring
-     * event within a date range. Each event is independently editable after creation.
+     * This is the one cap for both HTTP entry points (#9735). 366 is "at most a
+     * year of daily occurrences".
+     */
+    public const MAX_REPEAT_OCCURRENCES = 366;
+
+    /**
+     * Fallback start time when neither the caller nor the event type supplies one.
+     */
+    private const DEFAULT_START_TIME = '09:00:00';
+
+    private RecurrenceDateGenerator $recurrenceDateGenerator;
+
+    public function __construct(?RecurrenceDateGenerator $recurrenceDateGenerator = null)
+    {
+        $this->recurrenceDateGenerator = $recurrenceDateGenerator ?? new RecurrenceDateGenerator();
+    }
+
+    /**
+     * Create a series of repeat events and return just the created IDs.
+     *
+     * Thin wrapper over createRecurringEvents() kept for callers that only care
+     * about the IDs (the repeat-event editor and POST /api/events/repeat).
      *
      * @param array{
-     *   title: string,
+     *   title?: string|null,
      *   typeId: int,
-     *   desc: string,
-     *   text: string,
-     *   startTime: string,
-     *   endTime: string,
-     *   recurType: string,
-     *   recurDOW?: string,
-     *   recurDOM?: int,
-     *   recurDOY?: string,
+     *   desc?: string,
+     *   text?: string,
+     *   startTime?: string|null,
+     *   endTime?: string|null,
+     *   recurType?: string|null,
+     *   recurDOW?: string|null,
+     *   recurDOM?: int|null,
+     *   recurDOY?: string|null,
      *   rangeStart: string,
      *   rangeEnd: string,
      *   linkedGroupId?: int,
      *   pinnedCalendars?: int[],
-     *   inactive?: int
+     *   inactive?: int,
+     *   skipExisting?: bool
      * } $data Event template and recurrence parameters
      *
      * @return int[] Array of created event IDs
      *
      * @throws \InvalidArgumentException if event type is invalid or date range is invalid
      */
-    /**
-     * Hard cap on the number of events a single createRepeatEvents() call can
-     * generate. Prevents a wide date range (e.g. weekly for 10 years) from
-     * creating thousands of rows in one request and locking the table.
-     */
-    public const MAX_REPEAT_OCCURRENCES = 366;
-
     public function createRepeatEvents(array $data): array
     {
-        $type = EventTypeQuery::create()->findOneById((int) $data['typeId']);
+        return array_column($this->createRecurringEvents($data)['events'], 'id');
+    }
+
+    /**
+     * Create a series of events for every occurrence of a recurrence within a range.
+     *
+     * Generates individual Event records so each occurrence is independently
+     * editable after creation. See the class docblock for the title / time /
+     * recurrence / idempotency / cap rules, which are identical for every caller.
+     *
+     * @param array $data Same shape as createRepeatEvents()
+     *
+     * @return array{events: array<int, array{id: int, title: string, date: string}>, skipped: int}
+     *
+     * @throws \InvalidArgumentException if event type is invalid or date range is invalid
+     */
+    public function createRecurringEvents(array $data): array
+    {
+        $type = EventTypeQuery::create()->findOneById((int) ($data['typeId'] ?? 0));
         if ($type === null) {
             throw new \InvalidArgumentException(gettext('Invalid event type ID'));
         }
 
-        // Use createFromFormat with strict ('!') anchor and explicit catch
-        // so a malformed date string returns 400 instead of bubbling up as 500.
+        // Explicit catch so a malformed date string returns 400 instead of
+        // bubbling up as a 500.
         try {
             $rangeStart = new \DateTime($data['rangeStart'] ?? '');
             $rangeStart->setTime(0, 0, 0);
@@ -71,17 +133,21 @@ class EventService
             throw new \InvalidArgumentException(gettext('Range start must be before range end'));
         }
 
+        [$recurType, $dow, $dom, $doy] = $this->resolveRecurrence($data, $type);
+
         // Normalize start/end time to HH:MM:SS so we don't end up appending
         // ":00" to a string that already includes seconds (e.g. "09:00:00"
         // → "09:00:00:00" which would be an invalid timestamp).
-        $startTime = self::normalizeTime($data['startTime'] ?? '09:00');
-        $endTime = self::normalizeTime($data['endTime'] ?? '10:00');
-        $recurType = $data['recurType'] ?? 'weekly';
-        $title = $data['title'];
+        $startTime = $this->resolveStartTime($data, $type);
+        $endTime = $this->resolveEndTime($data, $startTime);
+
+        $title = trim((string) ($data['title'] ?? ''));
         $desc = $data['desc'] ?? '';
         $text = $data['text'] ?? '';
         $inactive = (int) ($data['inactive'] ?? 0);
         $linkedGroupId = (int) ($data['linkedGroupId'] ?? 0);
+        $skipExisting = (bool) ($data['skipExisting'] ?? false);
+        $typeId = (int) $type->getId();
 
         $calendars = null;
         if (!empty($data['pinnedCalendars'])) {
@@ -92,9 +158,9 @@ class EventService
 
         $occurrenceDates = $this->generateOccurrenceDates(
             $recurType,
-            $data['recurDOW'] ?? null,
-            isset($data['recurDOM']) ? (int) $data['recurDOM'] : null,
-            $data['recurDOY'] ?? null,
+            $dow,
+            $dom,
+            $doy,
             $rangeStart,
             $rangeEnd
         );
@@ -107,18 +173,28 @@ class EventService
             ));
         }
 
-        $createdIds = [];
+        $created = [];
+        $skipped = 0;
+
         foreach ($occurrenceDates as $occurrenceDate) {
-            $eventStart = $occurrenceDate->format('Y-m-d') . ' ' . $startTime;
-            $eventEnd = $occurrenceDate->format('Y-m-d') . ' ' . $endTime;
+            $date = $occurrenceDate->format('Y-m-d');
+
+            if ($skipExisting && $this->hasEventOnDate($typeId, $date)) {
+                $skipped++;
+                continue;
+            }
+
+            $eventTitle = $title !== ''
+                ? $title
+                : $type->getName() . ' — ' . $occurrenceDate->format('M j, Y');
 
             $event = new Event();
-            $event->setTitle($title);
+            $event->setTitle($eventTitle);
             $event->setEventType($type);
             $event->setDesc($desc);
             $event->setText($text);
-            $event->setStart($eventStart);
-            $event->setEnd($eventEnd);
+            $event->setStart($date . ' ' . $startTime);
+            $event->setEnd($date . ' ' . $endTime);
             $event->setInActive($inactive);
 
             if ($calendars !== null) {
@@ -136,14 +212,81 @@ class EventService
                 $audience->save();
             }
 
-            $createdIds[] = $eventId;
+            $created[] = [
+                'id' => $eventId,
+                'title' => $eventTitle,
+                'date' => $date,
+            ];
         }
 
-        return $createdIds;
+        return [
+            'events' => $created,
+            'skipped' => $skipped,
+        ];
+    }
+
+    /**
+     * Resolve the recurrence pattern from the caller's input and the event type.
+     *
+     * A caller-supplied recurType wins, and its day fields fall back to the event
+     * type's defaults and then to the legacy literals. When the recurrence itself
+     * comes from the event type, the event type must be complete — silently
+     * defaulting a mis-configured type to "Sundays" would create the wrong events.
+     *
+     * @return array{0: string, 1: string|null, 2: int|null, 3: string|null} recurType, dow, dom, doy
+     *
+     * @throws \InvalidArgumentException when the event type's recurrence is incomplete
+     */
+    private function resolveRecurrence(array $data, EventType $type): array
+    {
+        $callerRecurType = isset($data['recurType']) && $data['recurType'] !== ''
+            ? (string) $data['recurType']
+            : null;
+
+        $recurType = $callerRecurType ?? ($type->getDefRecurType() ?: 'none');
+        if ($recurType === 'none' || $recurType === '') {
+            throw new \InvalidArgumentException(gettext('Event type has no recurrence pattern configured'));
+        }
+
+        $typeIsSource = $callerRecurType === null;
+
+        $dow = $this->firstNonEmptyString($data['recurDOW'] ?? null, $type->getDefRecurDOW());
+        if ($recurType === RecurrenceDateGenerator::RECUR_WEEKLY) {
+            if ($dow === null && $typeIsSource) {
+                throw new \InvalidArgumentException(gettext('Event type has no day-of-week configured for weekly recurrence'));
+            }
+            $dow ??= 'Sunday';
+        }
+
+        $dom = isset($data['recurDOM']) && (int) $data['recurDOM'] > 0
+            ? (int) $data['recurDOM']
+            : (int) $type->getDefRecurDOM();
+        if ($recurType === RecurrenceDateGenerator::RECUR_MONTHLY) {
+            if ($dom < 1 || $dom > 31) {
+                if ($typeIsSource) {
+                    throw new \InvalidArgumentException(gettext('Event type has no valid day-of-month configured for monthly recurrence'));
+                }
+                $dom = 1;
+            }
+        }
+
+        $doy = $this->firstNonEmptyString($data['recurDOY'] ?? null, $this->formatDefRecurDoy($type));
+        if ($recurType === RecurrenceDateGenerator::RECUR_YEARLY) {
+            if ($doy === null && $typeIsSource) {
+                throw new \InvalidArgumentException(gettext('Event type has no date configured for yearly recurrence'));
+            }
+            $doy ??= '01-01';
+        }
+
+        return [$recurType, $dow, $dom > 0 ? $dom : null, $doy];
     }
 
     /**
      * Generate all occurrence dates within a range based on recurrence settings.
+     *
+     * The single date-math entry point for every recurring-event caller; the math
+     * itself lives in the event-free RecurrenceDateGenerator so other modules can
+     * reuse it without dragging in event persistence.
      *
      * @param string      $recurType  One of: weekly, monthly, yearly
      * @param string|null $dow        Day of week name (e.g. "Sunday") — used when $recurType is 'weekly'
@@ -162,141 +305,98 @@ class EventService
         \DateTime $rangeStart,
         \DateTime $rangeEnd
     ): array {
-        switch ($recurType) {
-            case 'weekly':
-                return $this->generateWeeklyDates($dow ?? 'Sunday', $rangeStart, $rangeEnd);
-            case 'monthly':
-                return $this->generateMonthlyDates($dom ?? 1, $rangeStart, $rangeEnd);
-            case 'yearly':
-                return $this->generateYearlyDates($doy ?? '01-01', $rangeStart, $rangeEnd);
-            default:
-                return [];
-        }
+        return $this->recurrenceDateGenerator->generate($recurType, $dow, $dom, $doy, $rangeStart, $rangeEnd);
     }
 
     /**
-     * Generate weekly occurrence dates within a range.
+     * Is there already an active event of this type on this calendar date?
      *
-     * The first occurrence is the first matching day-of-week on or after $rangeStart.
-     * Subsequent occurrences are every 7 days thereafter.
-     *
-     * @param string    $dow        Day name, e.g. "Sunday"
-     * @param \DateTime $rangeStart Inclusive start
-     * @param \DateTime $rangeEnd   Inclusive end
-     *
-     * @return \DateTime[]
+     * The shared skipExisting key: (event type, calendar date). Deliberately
+     * ignores the time of day so a series regenerated with a different start time
+     * still counts as "already there".
      */
-    private function generateWeeklyDates(string $dow, \DateTime $rangeStart, \DateTime $rangeEnd): array
+    private function hasEventOnDate(int $typeId, string $date): bool
     {
-        $dates = [];
-        $current = clone $rangeStart;
-        $current->setTime(0, 0, 0);
-
-        $targetDay = strtolower($dow);
-        $currentDay = strtolower($current->format('l'));
-
-        if ($currentDay !== $targetDay) {
-            $current->modify('next ' . $targetDay);
-        }
-
-        while ($current <= $rangeEnd) {
-            $dates[] = clone $current;
-            $current->modify('+1 week');
-        }
-
-        return $dates;
+        return EventQuery::create()
+            ->filterByType($typeId)
+            ->filterByStart($date . ' 00:00:00', Criteria::GREATER_EQUAL)
+            ->filterByStart($date . ' 23:59:59', Criteria::LESS_EQUAL)
+            ->filterByInActive(0)
+            ->findOne() !== null;
     }
 
     /**
-     * Generate monthly occurrence dates within a range.
-     *
-     * One event per month, on the specified day of month (clamped to the last
-     * valid day when the month is shorter than $dom).
-     *
-     * @param int       $dom        Day of month (1–31)
-     * @param \DateTime $rangeStart Inclusive start
-     * @param \DateTime $rangeEnd   Inclusive end
-     *
-     * @return \DateTime[]
+     * Caller start time, else the event type's default, else 09:00.
      */
-    private function generateMonthlyDates(int $dom, \DateTime $rangeStart, \DateTime $rangeEnd): array
+    private function resolveStartTime(array $data, EventType $type): string
     {
-        $dates = [];
-        $current = clone $rangeStart;
-        $current->setDate((int) $current->format('Y'), (int) $current->format('m'), 1);
-        $current->setTime(0, 0, 0);
-
-        while ($current <= $rangeEnd) {
-            $year = (int) $current->format('Y');
-            $month = (int) $current->format('m');
-            $daysInMonth = DateTimeUtils::getDaysInMonth($month, $year);
-            $actualDay = min($dom, $daysInMonth);
-
-            $occurrence = new \DateTime(sprintf('%04d-%02d-%02d', $year, $month, $actualDay));
-            $occurrence->setTime(0, 0, 0);
-
-            if ($occurrence >= $rangeStart && $occurrence <= $rangeEnd) {
-                $dates[] = $occurrence;
-            }
-
-            $current->modify('+1 month');
+        $callerTime = $this->firstNonEmptyString($data['startTime'] ?? null, null);
+        if ($callerTime !== null) {
+            return self::normalizeTime($callerTime);
         }
 
-        return $dates;
+        // getDefStartTime() can return either a DateTime or a raw string
+        // depending on the Propel codegen path — handle both safely.
+        $defStartTime = $type->getDefStartTime();
+        if ($defStartTime instanceof \DateTimeInterface) {
+            return $defStartTime->format('H:i:s');
+        }
+        if (is_string($defStartTime) && $defStartTime !== '') {
+            return self::normalizeTime($defStartTime);
+        }
+
+        return self::DEFAULT_START_TIME;
     }
 
     /**
-     * Generate yearly occurrence dates within a range.
-     *
-     * One event per year, on the specified month-day (e.g. "04-12" for April 12).
-     * Dates that don't exist in a given year (e.g. Feb 29 in a non-leap year) are
-     * silently skipped.
-     *
-     * @param string    $doy        Month-day string in MM-DD format
-     * @param \DateTime $rangeStart Inclusive start
-     * @param \DateTime $rangeEnd   Inclusive end
-     *
-     * @return \DateTime[]
-     *
-     * @throws \InvalidArgumentException if $doy is not in MM-DD format
+     * Caller end time, else one hour after the start time.
      */
-    private function generateYearlyDates(string $doy, \DateTime $rangeStart, \DateTime $rangeEnd): array
+    private function resolveEndTime(array $data, string $startTime): string
     {
-        $dates = [];
-        $parts = explode('-', $doy);
-        if (count($parts) !== 2 || !is_numeric($parts[0]) || !is_numeric($parts[1])) {
-            throw new \InvalidArgumentException(
-                gettext('Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)')
-            );
+        $callerTime = $this->firstNonEmptyString($data['endTime'] ?? null, null);
+        if ($callerTime !== null) {
+            return self::normalizeTime($callerTime);
         }
 
-        $month = (int) $parts[0];
-        $day = (int) $parts[1];
-
-        if ($month < 1 || $month > 12 || $day < 1 || $day > 31) {
-            throw new \InvalidArgumentException(
-                gettext('Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)')
-            );
+        $start = \DateTimeImmutable::createFromFormat('H:i:s', $startTime);
+        if ($start === false) {
+            return '10:00:00';
         }
 
-        $startYear = (int) $rangeStart->format('Y');
-        $endYear = (int) $rangeEnd->format('Y');
+        return $start->modify('+1 hour')->format('H:i:s');
+    }
 
-        for ($year = $startYear; $year <= $endYear; $year++) {
-            // Skip dates that don't exist in this year (e.g. Feb 29 in a non-leap year)
-            if (!checkdate($month, $day, $year)) {
-                continue;
+    /**
+     * The event type's yearly recurrence day as an MM-DD string, or null.
+     */
+    private function formatDefRecurDoy(EventType $type): ?string
+    {
+        $doy = $type->getDefRecurDOY();
+        if ($doy instanceof \DateTimeInterface) {
+            return $doy->format('m-d');
+        }
+        if (is_string($doy) && $doy !== '') {
+            // Stored as a DATE ("2016-04-12") in some installs; keep only MM-DD.
+            $parsed = \DateTimeImmutable::createFromFormat('!Y-m-d', $doy);
+
+            return $parsed !== false ? $parsed->format('m-d') : $doy;
+        }
+
+        return null;
+    }
+
+    /**
+     * First of the two values that is a non-empty, trimmed string, else null.
+     */
+    private function firstNonEmptyString(mixed $preferred, mixed $fallback): ?string
+    {
+        foreach ([$preferred, $fallback] as $candidate) {
+            if (is_string($candidate) && trim($candidate) !== '') {
+                return trim($candidate);
             }
-
-            $occurrence = new \DateTime(sprintf('%04d-%02d-%02d', $year, $month, $day));
-            $occurrence->setTime(0, 0, 0);
-
-            if ($occurrence >= $rangeStart && $occurrence <= $rangeEnd) {
-                $dates[] = $occurrence;
-            }
         }
 
-        return $dates;
+        return null;
     }
 
     /**
@@ -314,7 +414,7 @@ class EventService
         $parsed = \DateTimeImmutable::createFromFormat('H:i:s', $time)
             ?: \DateTimeImmutable::createFromFormat('H:i', $time);
         if ($parsed === false) {
-            return '09:00:00';
+            return self::DEFAULT_START_TIME;
         }
 
         return $parsed->format('H:i:s');
