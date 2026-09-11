@@ -6,7 +6,8 @@
  * NewsLetterLabels.php and ConfirmLabels.php build every label from
  * Family::getMailingAddressLines() — the flagged second address when a family has
  * one, the primary address otherwise — and order the run by the ZIP that is
- * actually printed rather than by the primary ZIP.
+ * actually printed rather than by the primary ZIP. Every letter that goes through
+ * ChurchInfoReport::startLetterPage() is addressed the same way.
  *
  * Assertion ceiling: this repo has no PDF text parser (no pdf-parse, no pdftotext
  * task), so the existing report specs assert HTTP status plus
@@ -108,6 +109,15 @@ describe("Mailing address on mailed reports (#9743)", () => {
         cy.intercept("GET", "**/Reports/ConfirmLabels.php*").as("confirmLabels");
         openReport(`/Reports/ConfirmLabels.php?${labelQuery}`);
         cy.wait("@confirmLabels", { timeout: 20000 }).then(expectPdf);
+    });
+
+    it("generates a confirmation letter addressed to the second address", () => {
+        createFamilyWithMailingAddress("MailLetter" + Cypress._.random(0, 1e6)).then((familyId) => {
+            cy.visit("/LettersAndLabels.php");
+            cy.intercept("GET", "**/people/report/verify*").as("confirmLetter");
+            openReport(`/people/report/verify?familyId=${familyId}`);
+            cy.wait("@confirmLetter", { timeout: 20000 }).then(expectPdf);
+        });
     });
 
     // Keep last: the API-key call replaces the browser's CRM session server-side.
