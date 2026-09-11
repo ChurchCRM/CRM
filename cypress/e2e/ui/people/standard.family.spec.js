@@ -6,7 +6,9 @@
 // a spec file runs *after* the support file's own root after(), which is where
 // the row-count drift guard checks its snapshot; and the cleanup calls go out
 // with x-api-key, which flips the PHP session to APITokenAuthentication and
-// would send any later cy.visit() to the login page.
+// would send any later cy.visit() to the login page. A top-level afterEach()
+// flushes the list early when a test fails, for the runs that never reach that
+// last describe.
 const createdFamilyIds = [];
 
 /** Record the family id from the /people/family/{id} URL the editor lands on. */
@@ -18,6 +20,21 @@ function trackFamilyFromUrl() {
         }
     });
 }
+
+// Safety net for the end-of-file after() below. That hook only fires if the
+// runner reaches the last describe, which it does not when a suite-level hook
+// blows up or the run is started with --bail; the families created earlier
+// would then survive and the drift guard would fail the *next* run instead.
+// Flushing after a failed test costs nothing on the green path (the array is
+// only non-empty once a family has actually been created) and the following
+// beforeEach re-establishes the UI session through cy.session(), so the
+// x-api-key calls cannot leak into a later cy.visit().
+afterEach(function () {
+    if (this.currentTest?.state !== "failed" || createdFamilyIds.length === 0) {
+        return;
+    }
+    cy.cleanupFamilies(createdFamilyIds.splice(0));
+});
 
 describe("Standard Family", () => {
     beforeEach(() => cy.setupStandardSession());
@@ -172,6 +189,8 @@ describe("Family Editor — edit existing record (PR #9351 prepared-statement sm
 describe("Standard Family Activation", () => {
     // Last suite in the file — cleanup for every family the earlier suites
     // created happens here, so no cy.visit() follows the x-api-key calls.
+    // The top-level afterEach() above covers the case where the run never
+    // reaches this suite.
     after(() => {
         cy.cleanupFamilies(createdFamilyIds.splice(0));
     });

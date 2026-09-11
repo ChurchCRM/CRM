@@ -155,6 +155,7 @@ after(function () {
 
         const softTables = result.softTables || [];
         const offenders = [];
+        const reported = [];
         Object.keys(baseline).forEach((table) => {
             const delta = result.counts[table] - baseline[table];
             const allowance = allowances[table];
@@ -167,16 +168,37 @@ after(function () {
                 (allowance ? `, declared allowance ${allowed}: ${allowance.reason}` : "") +
                 ")";
             if (softTables.includes(table)) {
-                cy.log(`Row-count guard (reported, not failed): ${description}`);
+                reported.push(description);
             } else {
                 offenders.push(description);
             }
         });
 
+        // Cypress.log() writes to the command log synchronously. cy.log() only
+        // *enqueues* a command, and everything enqueued inside this callback is
+        // abandoned the instant the throw below fires — so a spec that tripped a
+        // soft and a hard table in the same run used to lose the soft
+        // diagnostics entirely.
+        reported.forEach((description) => {
+            Cypress.log({
+                name: "row-count-guard",
+                displayName: "row-count-guard",
+                message: `reported, not failed: ${description}`,
+            });
+        });
+
         if (offenders.length > 0) {
+            // The soft-table drift is repeated here as well: the command log is
+            // easy to miss next to a failure, and the error message is what ends
+            // up in CI output.
+            const alsoReported =
+                reported.length > 0
+                    ? `Also reported (soft tables, not failed):\n${reported.join("\n")}\n`
+                    : "";
             throw new Error(
                 `This spec file left rows behind in the test database (#9769).\n` +
                     `${offenders.join("\n")}\n` +
+                    alsoReported +
                     "Delete what the spec creates in an after()/afterEach() hook, or declare the " +
                     "shortfall with cy.allowRowDrift(table, maxDelta, reason).",
             );
