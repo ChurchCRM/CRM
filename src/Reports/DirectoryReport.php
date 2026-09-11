@@ -4,6 +4,7 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Reports\PdfDirectory;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
@@ -42,6 +43,7 @@ $bExcludeInactive = isset($_POST['bExcludeInactive']);
 
 // Get other settings
 $bDirAddress = isset($_POST['bDirAddress']);
+$bDirMailingAddress = isset($_POST['bDirMailingAddress']);
 $bDirWedding = isset($_POST['bDirWedding']);
 $bDirBirthday = isset($_POST['bDirBirthday']);
 $bDirFamilyPhone = isset($_POST['bDirFamilyPhone']);
@@ -271,6 +273,14 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             $OutStr .="\n";
             if (strlen($sCity)) {
                 $OutStr .= $sCity . ', ' . $sState . ' ' . $sZip ."\n";
+            }
+            // The mailing address is a family attribute, so it is printed only when the
+            // family this person belongs to actually mails somewhere else (#9743).
+            if ($bDirMailingAddress && Family::rowHasDistinctMailingAddress($aRow)) {
+                $mailingBlock = Family::formatAddressBlock(Family::mailingAddressPartsFromRow($aRow));
+                if ($mailingBlock !== '') {
+                    $OutStr .= '   ' . gettext('Mailing Address') . ': ' . str_replace("\n", "\n   ", $mailingBlock) . "\n";
+                }
             }
         }
         if (($bDirFamilyPhone || $bDirPersonalPhone) && strlen($sHomePhone)) {

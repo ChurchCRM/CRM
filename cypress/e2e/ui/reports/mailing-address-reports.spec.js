@@ -132,4 +132,70 @@ describe("Mailing address on mailed reports (#9743)", () => {
             });
         });
     });
+
+    /**
+     * The church directory report (#9743): "Address" is relabelled "Primary
+     * Address" and a new "Mailing Address if Different" sub-option, off by
+     * default, prints the flagged second address under a "Mailing Address:" label.
+     *
+     * Mocha runs a nested suite after its parent's own tests, so these start from
+     * the parent's freshAdminLogin() and are unaffected by the API-key call above.
+     * Families created here land in the same createdFamilyIds list, so the shared
+     * `after` hook still returns family_fam to the row count it started with.
+     */
+    describe("Church directory report", () => {
+        /**
+         * Posts the directory form exactly as the browser serialises it, so the
+         * option keys under test are the real ones and the defaults are honest.
+         * The form target is a PDF, which cy.visit() cannot follow, so the POST is
+         * replayed with cy.request() over the session the visit established.
+         */
+        const submitDirectoryForm = () =>
+            cy.get('form[action="Reports/DirectoryReport.php"]').then(($form) =>
+                cy.request({
+                    method: "POST",
+                    url: "Reports/DirectoryReport.php",
+                    headers: { "content-type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(new FormData($form[0])).toString(),
+                    encoding: "binary",
+                    failOnStatusCode: false,
+                })
+            );
+
+        const expectPdfResponse = (response) => {
+            expect(response.status, "no server error").to.equal(200);
+            expect(response.headers["content-type"] || "").to.include("application/pdf");
+        };
+
+        beforeEach(() => {
+            cy.visit("/DirectoryReports.php");
+        });
+
+        it("relabels the address option and offers an indented mailing-address sub-option", () => {
+            cy.get('label[for="bDirAddress"]').should("have.text", "Primary Address");
+            // Same POST key, same default — only the wording changed.
+            cy.get("#bDirAddress").should("be.checked");
+
+            cy.get('label[for="bDirMailingAddress"]').should(
+                "have.text",
+                "Mailing Address if Different"
+            );
+            // Off by default, so existing directories render exactly as before.
+            cy.get("#bDirMailingAddress").should("not.be.checked");
+            // Indented so it reads as a sub-option of "Primary Address" in the grid.
+            cy.get("#bDirMailingAddress").parent().should("have.class", "ms-4");
+        });
+
+        it("generates a directory with the mailing address option off", () => {
+            submitDirectoryForm().then(expectPdfResponse);
+        });
+
+        it("generates a directory with the mailing address option on", () => {
+            createFamilyWithMailingAddress("MailDirectory" + Cypress._.random(0, 1e6)).then(() => {
+                cy.visit("/DirectoryReports.php");
+                cy.get("#bDirMailingAddress").check();
+                submitDirectoryForm().then(expectPdfResponse);
+            });
+        });
+    });
 });
