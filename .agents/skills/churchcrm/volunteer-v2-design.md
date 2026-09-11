@@ -37,11 +37,18 @@ decisions. That is #9703's acceptance criterion:
    description. The epic requires every PR to answer: what existing capability was evaluated, why
    it can be reused as-is or must be extended, and why a new implementation is necessary.
 4. Where this document and a skill file disagree, **this document wins for V2 work** and the
-   disagreement is recorded in [Appendix E](#appendix-e--known-upstream-defects-out-of-scope).
+   disagreement is recorded in [Appendix E](#appendix-e--prerequisite-hardening-track).
    Several skill files are demonstrably stale; the reliable references are
    `groups-mvc-guidelines.md`, `db-schema-migration.md`, `cypress-testing.md`,
    `timezone-handling.md`, and the source files cited here.
-5. Every claim about existing code in this document carries a `path:line` citation against
+5. **[Appendix E](#appendix-e--prerequisite-hardening-track) is a work list, not a disclaimer.**
+   Its items are known upstream defects that affect V2; each is filed as its own upstream issue and
+   **fixed before V2 implementation starts** (§7.3 "Wave -1"). A V2 PR must not carry a workaround,
+   a defensive comment, or a private copy of core behaviour to route around one of them — if you
+   find yourself writing one, the prerequisite has not landed yet and your issue is not ready to
+   start. If you discover a *new* defect while implementing, add it to Appendix E and file it
+   rather than absorbing it into your PR.
+6. Every claim about existing code in this document carries a `path:line` citation against
    upstream `master` at commit `850c70a8c`. If a line number has drifted, the file and symbol name
    are still correct — re-grep rather than assuming the claim is wrong.
 
@@ -92,6 +99,7 @@ Non-hierarchical by design: **Teams under Ministry is sufficient. There are no n
 | D13 | **Substitution/swap is core**, not optional. | Church product decision, #9709 |
 | D14 | **Volunteers are ChurchCRM members with logins** — the "Non-Admin Member Access" persona, i.e. an **EditSelf-exclusive** user. Self-service lives on authenticated member-facing pages, authorized per authenticated person. **Tokenized accept/decline links in email for people without logins are a documented future extension, not in scope.** | Resolves audit open question; see §4.7 |
 | D15 | **Reminders and scheduling**: there is no scheduler in ChurchCRM. V2 specifies a **notification outbox** table (idempotent enqueue keyed by assignment + type, send log, retry-safe) drained by the existing `POST /api/background/timerjobs` mechanism. Installations wanting punctual reminders configure a real cron or external ping of that endpoint with an API key — **zero code**. Best-effort delivery on page load is the documented fallback. | Resolves audit open question; see §3.6 |
+| D16 | **A person may hold multiple qualifications within the same team and the same ministry**, and may be assigned to different positions on different occurrences. **Multi-position on one occurrence is allowed**, with a UI warning and no server-side block — one person can lead singing and serve communion in the same service. The schema already permits all of this unchanged (§2.7, §2.11.2 I7). | Product decision |
 
 #### D14 — rationale and the alternative
 
@@ -151,6 +159,14 @@ Explicitly **not** designed here. Do not build them; do not add speculative colu
 - A generic RBAC engine. #8758/#8760 propose `role_rol`/`AuthorizationService`; **none of it exists
   in code** (`grep -rn "AuthorizationService" src --include="*.php"` → no matches). V2 must not
   depend on it landing, but must be absorbable by it (§4.9).
+
+**Not a non-goal: fixing the upstream defects V2 depends on.** The known defects in
+[Appendix E](#appendix-e--prerequisite-hardening-track) are **not** left alone and are **not**
+worked around. Each is filed as its own upstream issue and fixed on its own PR, before V2
+implementation begins where it blocks (§7.3 "Wave -1"). What *is* a non-goal is fixing them
+**inside a V2 PR**: a V2 branch that also converts a table's charset, rewrites a skill file, or
+sweeps 40 notifier call sites is mixing issues and will be sent back. One defect, one issue, one
+PR — then V2 builds on the fixed core.
 
 ### 0.7 Facts about the current codebase this design relies on
 
@@ -305,7 +321,7 @@ Legend for **Decision**:
 | A10 | Denial UX | `/v2/access-denied?role=…`; allow-list at `src/v2/routes/root.php:24-35`; `RedirectUtils::securityRedirect()` (`src/ChurchCRM/Utils/RedirectUtils.php:34-38`) | **Extend** | Add `'VolunteerManager'` and `'VolunteerCoordinator'` to the allow-list array, **or the denial page renders no reason at all**. |
 | A11 | Menu visibility | `src/ChurchCRM/Config/Menu/Menu.php:38-49` (top-level registry), `MenuItem::__construct($name, $uri, $hasPermission = true, $icon = '')` (`MenuItem.php:18`) | **Reuse** | Permission is a plain boolean 3rd argument — **no closures**. `isVisible()` hides a parent whose children are all hidden (`MenuItem.php:109-116`). Menu visibility must mirror the route middleware exactly. |
 | A12 | Model-layer (ORM lifecycle) authorization | `AuthService::requireUserGroupMembership()` (`AuthService.php:23`) called from `Group`/`Person2group2roleP2g2r` `pre*` hooks | **Do not use** | It reads `$_SESSION` flags that `APITokenAuthentication` never sets (F21), so it silently degrades to admin-only for API-key callers. V2 puts **no** authorization in Propel lifecycle hooks. |
-| A13 | CSRF on API POSTs | `CSRFMiddleware` is applied on exactly **one** route in the app (`src/admin/routes/system.php:78`), and skips validation when `X-API-Key` is present (`CSRFMiddleware.php:40-44`) | **Reuse the status quo** | `/api` is not CSRF-protected anywhere. Adding CSRF to V2 alone would be inconsistent and would break the Cypress API helpers. Flagged in [Appendix E](#appendix-e--known-upstream-defects-out-of-scope), not solved by V2. |
+| A13 | CSRF on API POSTs | `CSRFMiddleware` is applied on exactly **one** route in the app (`src/admin/routes/system.php:78`), and skips validation when `X-API-Key` is present (`CSRFMiddleware.php:40-44`) | **Reuse the status quo** | `/api` is not CSRF-protected anywhere. Adding CSRF to V2 alone would be inconsistent and would break the Cypress API helpers. Deliberately **not** an [Appendix E](#appendix-e--prerequisite-hardening-track) prerequisite: it is a project-wide decision about the whole `/api` surface, nothing in V2 depends on it, and V2 introduces no new exposure by matching the status quo. Raise it on its own if the maintainer wants it. |
 | A14 | Input sanitization | `InputSanitizationMiddleware` (`src/ChurchCRM/Slim/Middleware/InputSanitizationMiddleware.php:37`), types `text` / `html` / `int` | **Extend** | V2 needs `date`, `datetime` and `enum:a,b,c`. Add those types to the **shared** middleware (epic rule: prefer a reusable implementation), with tests. Until it lands, validate in the handler with `in_array($v, [...], true)`. |
 
 ### 1.6 Notifications and messaging
@@ -321,7 +337,7 @@ Legend for **Decision**:
 | N7 | Notification idempotency | — **nothing reusable** (F16) | **New table** | `volunteer_notification_vntf` with a `UNIQUE` dedupe key (§2.14). Modelled on `event_attend`'s `UNIQUE(event_id, person_id)` + `findOneOrCreate()` (`Event.php:87-90`), which is how check-in already gets idempotency for free. |
 | N8 | "Notify a configured set of people" | `NewPersonOrFamilyEmail.php:47-61` (explode a config CSV of person ids → `PersonQuery` → emails) | **Reuse the pattern, not the config** | V2's coordinator recipients come from `volunteer_scope_vscp`, not from a global `SystemConfig` list. |
 | N9 | In-app banner notifications | `NotificationService` (`src/ChurchCRM/Service/NotificationService.php:31`) + `UiNotification` (`src/ChurchCRM/dto/Notification/UiNotification.php:17`) | **Do not use (first release)** | It is a per-request static registry seeded from `$_SESSION` at login, with no table; dismissals live in `user_settings` keyed `notification.dismissed.{id}` and `user_settings.setting_name` is `VARCHAR(50)`. The V2 coordinator dashboard's "what needs my attention" panel (§5.2) serves the same purpose with live data. |
-| N10 | Reply-to on volunteer mail | — none; `BaseEmail.php:24` sets a single `From` (the church address) with no `Reply-To` | **Out of scope, flagged** | A volunteer replying to an assignment email reaches the church's general address, not their coordinator. Adding a `Reply-To` hook to `BaseEmail` is a small reusable core improvement — [Appendix E](#appendix-e--known-upstream-defects-out-of-scope). |
+| N10 | Reply-To on volunteer mail | `src/ChurchCRM/Emails/BaseEmail.php:21-31` (constructor), `:24` (the single `setFrom`), `:33-50` (`setConnection()`, which builds the one `PHPMailer` at `:35`), `:52-59` (`send()`); PHPMailer `^7.0.2` (`src/composer.json:49`) | **Extend (core-reusable)** | `BaseEmail` wraps **PHPMailer** (`use PHPMailer\PHPMailer\PHPMailer;` `BaseEmail.php:11`, `new PHPMailer()` `:35`). It sets exactly one `From` — the church address — at `:24` and never calls `addReplyTo()`, so a volunteer replying to an assignment email reaches the church office rather than their coordinator. **Minimal backward-compatible extension:** add `public function setReplyTo(string $email, string $name = ''): void` storing a nullable pair on the object, applied at the top of `send()` (`:52-59`) as `$this->mail->addReplyTo($email, $name)` before `$this->mail->send()` — PHPMailer's signature is `addReplyTo($address, $name = '')` and it returns `false` on a rejected address, so `send()` logs and continues rather than aborting the message. Nothing changes for existing mail: all nine subclasses call `parent::__construct($toAddresses)` and set no Reply-To, and PHPMailer's own default (replies go to `From`) is preserved. Prerequisite **CR6** (§7.1), consumed by #9710. Routing rule in §3.6 and Appendix C. |
 
 ### 1.7 Module, API, settings, data and platform
 
@@ -563,6 +579,21 @@ assignable by itself; the first release has no self-declared-skills surface at a
 Indexes: `vqal_person_position_uidx UNIQUE (vqal_per_ID, vqal_vpos_ID)`,
 `vqal_position_active_idx (vqal_vpos_ID, vqal_Active)`, `vqal_person_idx (vqal_per_ID)`.
 
+**Multiple positions per person.** One person may hold **as many qualifications as the coordinator
+grants**, with no cap and no restriction on where those positions live: several positions in the
+same team, several positions in the same ministry, and positions across different ministries are
+all ordinary rows. The schema already says exactly this and needs no change — the unique key is
+`UNIQUE (vqal_per_ID, vqal_vpos_ID)`, i.e. *one qualification row per person per position*, not one
+per person per team and not one per person per ministry. That is the whole reason qualification is
+its own table rather than a Group Role: `person2group2role_p2g2r` has PK `(PersonId, GroupId)` and
+permits exactly **one** role per person per group (F19/G6), which would have made multi-position
+qualification structurally impossible. Concretely: Tony may be qualified for Setup, Espresso **and**
+Expeditor in the Coffee Bar team (§2.17 UC1), and Rachel may be qualified for both Song Leader and
+Communion Leader in the Worship team (§2.17 UC2). Assigning such a person is unconstrained across
+occurrences — different positions on different weeks is the normal rotation case — and is also
+permitted on a *single* occurrence; see I7 in §2.11.2 for that rule and D16 in §0.5 for the product
+decision behind it.
+
 **Revocation is deactivation** (`vqal_Active = 0`), not deletion. #9707 requires that qualification
 changes affect *future* eligibility without rewriting historical assignments. Because
 `volunteer_assignment_vasg` carries **no FK to the qualification** — only to person and position —
@@ -723,7 +754,9 @@ requirements of `MinCount = 1, MaxCount = 1`, one per named position.
 Indexes:
 
 - `vasg_occ_pos_per_uidx UNIQUE (vasg_vocc_ID, vasg_vpos_ID, vasg_per_ID)` — **one assignment per
-  person per position per occurrence**.
+  person per position per occurrence**. Note what this deliberately does *not* say: it is not
+  `UNIQUE (vasg_vocc_ID, vasg_per_ID)`, so the same person may hold rows for two **different**
+  positions on the same occurrence (I7, D16). Do not "tighten" this index.
 - `vasg_occurrence_idx (vasg_vocc_ID, vasg_Status)` — the gap query.
 - `vasg_person_status_idx (vasg_per_ID, vasg_Status)` — the volunteer's own list.
 
@@ -772,7 +805,7 @@ Legal transitions, and nothing else:
 | I4 | The position must belong to the occurrence's schedule's ministry (and team, if the position is team-scoped) | service; `400` |
 | I5 | Assigning to an occurrence with `vocc_Status = 'cancelled'` or an end time in the past is rejected | service; `409` |
 | I6 | Historical rows are immutable: once an occurrence's end has passed, only the `pending/accepted → completed` transition may write to its assignments | service |
-| I7 | A person may hold assignments for **two different positions** in the same occurrence; the UI warns, the API allows | by design (I1 is per position) |
+| I7 | A person may hold assignments for **two or more different positions** on the same occurrence. **This is allowed, not merely tolerated** (D16): one person may lead singing *and* serve communion in the same service, and a coordinator who wants that must not be blocked. The UI **warns** — an inline caution on the staffing view (§5.5) naming the other position the person already holds on that occurrence — and lets the coordinator proceed; the API allows it unconditionally and returns no error. Across *different* occurrences there is nothing to warn about at all. | by design: I1 is keyed per **position**, so `vasg_occ_pos_per_uidx` never fires for a second position. Warning is UI-only; there is no server-side block, no override flag, and no setting |
 | I8 | Re-assigning a person who previously declined the same position+occurrence **reuses the existing row**, resetting it to `pending` and appending a response row — it never inserts a second row (I1 would reject it) | service |
 
 #### 2.11.3 Open Gap — derived, deliberately not a table
@@ -979,7 +1012,9 @@ volunteer_position_vpos   (1, min=1, team=1, 'Setup',        active, order 1)
                           (4, min=1, team=1, 'Milk Station', active, order 4)
                           (5, min=1, team=1, 'Expeditor',    active, order 5)
 
--- multiple qualifications per person: Tony can do three of the five
+-- MULTI-POSITION QUALIFICATION (§2.7, D16): person 3 holds THREE qualification rows in the SAME
+-- team and the SAME ministry — Setup, Espresso and Expeditor. Person 7 holds two. Nothing caps
+-- this: UNIQUE(vqal_per_ID, vqal_vpos_ID) is per position, so each row is a distinct key.
 volunteer_qualification_vqal (…, per=3, pos=1, active)  (…, per=3, pos=3, active)  (…, per=3, pos=5, active)
                              (…, per=7, pos=3, active)  (…, per=7, pos=4, active)   … ×15 people
 
@@ -1027,8 +1062,26 @@ volunteer_schedule_vsch   (2, min=2, team=2, 'Sunday Morning Worship',
 
 volunteer_requirement_vreq (10..14, sch=2, pos=10..14, Min=1, Max=1)     -- exactly one each
 
+-- MULTI-POSITION QUALIFICATION, same team, same ministry: person 42 is qualified for Song Leader
+-- only; person 55 for Song Leader and Opening Prayer; person 70 for Communion Leader AND Closing
+-- Prayer. Three rows, two rows, one row — all ordinary rows under UNIQUE(per_ID, vpos_ID):
+volunteer_qualification_vqal (…, per=42, pos=10, active)
+                             (…, per=55, pos=10, active)  (…, per=55, pos=12, active)
+                             (…, per=70, pos=11, active)  (…, per=70, pos=13, active)
+
 volunteer_occurrence_vocc (21, sch=2, event_id=501, date=2026-09-13)     -- SAME event row as occurrence 11
 volunteer_assignment_vasg (201, occ=21, pos=10, per=42, req=10, 'accepted')
+
+-- MULTI-POSITION ASSIGNMENT ON ONE OCCURRENCE (I7, D16): person 70 takes BOTH of their positions
+-- on occurrence 21 — leads communion and closes in prayer at the same service. Two rows, two
+-- distinct (vocc_ID, vpos_ID, per_ID) keys, so vasg_occ_pos_per_uidx never fires:
+volunteer_assignment_vasg (210, occ=21, pos=11, per=70, req=11, 'accepted')
+                          (211, occ=21, pos=13, per=70, req=13, 'accepted')
+-- the staffing view warns the coordinator that person 70 is already on this occurrence; it does
+-- not block, and the API returns 200 for both. A third row (…, occ=21, pos=11, per=70, …) WOULD be
+-- rejected — that is I1, and it is the only thing the unique key forbids.
+-- On the following week's occurrence the coordinator may give person 70 neither, either or both
+-- positions again: nothing in the schema ties a person's position to an earlier occurrence.
 
 -- person 42 proposes a substitute who has already agreed:
 volunteer_swap_vswp       (1, asg=201, proposedBy=42, proposed=55, 'proposed')
@@ -1290,6 +1343,8 @@ final class VolunteerAuthorizationService
     public function getManagedTeamIds(User $user): array;
     /** Coordinators/leaders who should be alerted about this ministry/team. */
     public function getCoordinatorPersonIds(int $ministryId, ?int $teamId = null): array;
+    /** The single coordinator volunteer mail replies to: team leader, else ministry coordinator, else null. §3.6 */
+    public function getReplyToPersonId(int $ministryId, ?int $teamId = null): ?int;
 
     public function grantScope(int $personId, string $scopeType, int $scopeId, int $grantedBy): VolunteerScope;
     public function revokeScope(int $scopeId): void;
@@ -1380,7 +1435,7 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 |---|---|---|
 | Sidebar menu | `src/ChurchCRM/Config/Menu/Menu.php:38-49` (registry) | Add `'Volunteer' => self::getVolunteerMenu($isVolunteerCoordinator, $isVolunteerManager, $isVolunteerV2)` and a `getVolunteerMenu()` modelled on `getEventsMenu()` (`:266-280`): parent carries the view permission, children carry the write permissions. Visibility booleans are computed once in `buildMenuItems()` like the others. **Menu visibility must mirror the route middleware exactly.** |
 | Member menu entry | same | "My Volunteer Schedule" → `volunteer/my-schedule`, visible to every authenticated user when the rollout flag is on. `MenuItem::isVisible()` hides a parent whose children are all hidden, so a volunteer with no assignments still sees the entry (that is intended — it is where they find open opportunities). |
-| Person view tab | `src/people/views/person-view.php:580-584` (nav) and `:680-761` (pane); route args `src/people/routes/view.php:246-248` | **Direct edit** — there is no `PERSON_VIEW_TABS` filter (F15). The route passes the rollout state; the view renders the V1 pane, the V2 pane, or both (§3.8). The V2 pane lists the person's qualifications and upcoming assignments, read-only, linking into `/volunteer`. Adding a real `Hooks::PERSON_VIEW_TABS` filter is a worthwhile core extraction but is **out of scope** — Appendix E. |
+| Person view tab | `src/people/views/person-view.php:580-584` (nav) and `:680-761` (pane); route args `src/people/routes/view.php:246-248` | **Direct edit** — there is no `PERSON_VIEW_TABS` filter (F15). The route passes the rollout state; the view renders the V1 pane, the V2 pane, or both (§3.8). The V2 pane lists the person's qualifications and upcoming assignments, read-only, linking into `/volunteer`. Adding a real `Hooks::PERSON_VIEW_TABS` filter is a worthwhile core extraction, but it is **not a prerequisite** — editing the view directly is the established pattern (F15), not a workaround for a defect. Tracked as open question D-8, not in [Appendix E](#appendix-e--prerequisite-hardening-track). |
 | Event editor | `webpack/event-form.js` beside `#linkedGroupSelect` (`:271-272`) | the ministry select (§2.16 item 10) |
 | Event API | `src/api/routes/calendar/events.php` `applyEventExtendedFields()` `:234-282`, `getEvent` `:181-227` | §2.16 items 7–9 |
 | Event roster / staffing | `src/event/views/view.php` | a "Volunteers" card on the event view showing V2 staffing for occurrences linked to this event, gated on the rollout flag **and** on scope. Read-only; the edit affordance links to `/volunteer/occurrences/{id}`. |
@@ -1409,6 +1464,52 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 
 `cancelPendingFor()` deletes `pending` outbox rows when an assignment stops being live, so a
 cancelled assignment never produces a reminder.
+
+**Reply-To (N10 / CR6).** Every V2 message sets a `Reply-To` so that hitting *reply* reaches a
+human who can act, instead of the church office. The address is resolved **at send time, in the
+drain**, not at enqueue time — the outbox stores no address, so a coordinator handover between
+enqueue and delivery is picked up automatically.
+
+| Outbox type | Direction | `Reply-To` |
+|---|---|---|
+| `assignment`, `reminder`, `signup_confirm`, `swap_resolved` | volunteer-facing | the **responsible coordinator** — see the resolution order below |
+| `decline_alert` | coordinator-facing | the volunteer who declined (`vasg_per_ID` of `vntf_vasg_ID`) |
+| `swap_proposed` | coordinator-facing | the volunteer who proposed the swap (`vswp_ProposedBy_per_ID`) |
+| `gap_alert` | coordinator-facing | **none** — the row is occurrence-scoped (`vntf_vasg_ID IS NULL`, §2.14) and names no single volunteer, so there is nobody to reply to |
+
+**Responsible-coordinator resolution order**, for the occurrence's schedule (`vsch_vmin_ID`,
+`vsch_vtem_ID`):
+
+1. the **team leader** — the oldest `volunteer_scope_vscp` row with `ScopeType = 'team'` and
+   `ScopeId = vsch_vtem_ID`, ordered by `vscp_GrantedDate` then `vscp_ID` so the choice is
+   deterministic — if the schedule has a team and that person has an email;
+2. otherwise the **ministry coordinator** — the same query with `ScopeType = 'ministry'` and
+   `ScopeId = vsch_vmin_ID`;
+3. otherwise **no `Reply-To` at all**: `setReplyTo()` is simply not called, PHPMailer leaves the
+   header off, and replies fall back to the `From` address — the church address set at
+   `BaseEmail.php:24`. This is the existing behaviour, so "no coordinator" degrades to exactly
+   today's mail rather than to a broken header.
+
+One method owns this: `VolunteerAuthorizationService::getReplyToPersonId(int $ministryId, ?int
+$teamId = null): ?int`, a narrowing of the existing `getCoordinatorPersonIds()` (§3.4). Nothing
+else may re-derive it.
+
+**Where the address comes from.** `Person::getEmail()`
+(`src/ChurchCRM/model/ChurchCRM/Person.php:833-843`) — which falls back to the **family** email
+when the person has none, the same caveat already documented for recipients in Appendix C. The
+display name is `Person::getFullName()`. A candidate is skipped (and the next step in the order
+tried) when `getEmail()` returns `null` or an empty string, or when the person is in
+`PersonService::buildDoNotEmailSet()` (N3) — a `Reply-To` invites mail to an address its owner
+asked not to be mailed at, so the opt-out is honoured here too.
+
+> **Do not consult `bEmailMailto` here.** `User::isEmailEnabled()`
+> (`src/ChurchCRM/model/ChurchCRM/User.php:205-211` → `isEnabledSecurity('bEmailMailto')` at
+> `:210`, with an `isEditSelfExclusive()` short-circuit at `:207-209`) gates whether **the acting
+> user** may drive the ad-hoc mailto/composer surfaces (U7). It says nothing about whether a *third
+> party's* address may appear in a header, and a perfectly valid coordinator may be
+> EditSelf-exclusive or have no login at all — scope is keyed on the person, not the user (§2.15).
+> The only email gate that applies to the outbox is `SystemConfig::isEmailEnabled()` (N2); note that
+> the two carry the same method name in different classes and mean different things.
 
 **Drain** — `VolunteerNotificationService::drainOutbox()`, called from
 `SystemService::runTimerJobs()`:
@@ -1911,6 +2012,13 @@ The single most important coordinator screen.
   `GET /occurrences/{id}/eligible?positionId=` — so the picker can only ever offer qualified people.
   In-pool members are listed first; an out-of-pool qualified person appears under a
   "Not in the pool" divider and assigning them requires the `allowOutsidePool` confirm (I3).
+- **Double-duty warning (I7, D16)**: a qualified person who already holds *another* position on
+  this occurrence still appears in the picker — never filtered out, never disabled — annotated with
+  the position they already hold. Choosing them renders a non-blocking inline caution ("Already
+  serving as Song Leader on this occurrence") with the assignment proceeding on confirm. It is a
+  Tabler `alert-warning`, not a `bootbox.confirm` gate and not a server error: multi-position on one
+  occurrence is a supported arrangement, and the warning exists so a coordinator notices an
+  *accidental* double-booking, not so the system can refuse an intentional one.
 - Status badges: `pending` → `bg-yellow-lt text-yellow`, `accepted` → `bg-green-lt text-green`,
   `declined` → `bg-red-lt text-red`, `substituted` → `bg-azure-lt text-azure`,
   `cancelled`/`completed` → `bg-secondary-lt text-secondary`.
@@ -2194,9 +2302,14 @@ can land **in parallel with** #9704/#9705. None of them is a V2-only helper.
 | **CR3** | Add `window.CRM.confirmAction({...})` over bootbox; migrate the three delegated handlers already in `CRMJSOM.js:812-955`. *Optional* — if the maintainer declines, V2 uses the canonical literal. | `src/skin/js/CRMJSOM.js` | #9709, #9711, #9712 | new issue |
 | **CR4** | Extract `ChurchCRM\Service\RecurrenceDateGenerator` (weekly / monthly / yearly, event-free); **migrate `EventService::generateOccurrenceDates()` onto it** in the same PR. Retires one of the two existing duplicate implementations. | `src/ChurchCRM/Service/RecurrenceDateGenerator.php` (new), `src/ChurchCRM/Service/EventService.php` | #9708 (standalone schedules only) | new issue, or folded into #9708 |
 | **CR5** | Add `date`, `datetime` and `enum:a,b,c` types to `InputSanitizationMiddleware` with tests. | `src/ChurchCRM/Slim/Middleware/InputSanitizationMiddleware.php` | #9705 onward (soft) | new issue |
+| **CR6** | Add an optional **`Reply-To`** to `ChurchCRM\Emails\BaseEmail`: `public function setReplyTo(string $email, string $name = ''): void` storing a nullable pair, applied at the top of `send()` (`BaseEmail.php:52-59`) via PHPMailer's `addReplyTo($address, $name = '')` before `$this->mail->send()`; an empty address is a no-op and a `false` return from PHPMailer is logged through `LoggerUtils::getAppLogger()` and does not abort the send. **Why reusable:** every module that mails a person has the same problem — the only `From` any message can carry is the church address (`BaseEmail.php:24`), so a reply never reaches the human who caused the message. The capability belongs on the shared base class, not on a Volunteer-only email base. **Backward compatible by construction:** the constructor signature is untouched, all nine existing subclasses keep calling `parent::__construct($toAddresses)`, and a message that never calls `setReplyTo()` is byte-identical to today's. | `src/ChurchCRM/Emails/BaseEmail.php` | #9710 | new issue (this is E-14, moved into scope) |
 
 CR1, CR2 and CR4 each **delete duplication that exists today** — that is the argument to make in
-the PR, not "V2 needs it".
+the PR, not "V2 needs it". CR5 and CR6 are the two that do not retire duplication: they are
+additive core capabilities, and their reuse argument is that the capability is generic (any
+module's input validation, any module's outbound mail) and therefore lands in the shared class
+rather than in a V2-owned copy. CR6 accordingly migrates no existing caller — there is no existing
+message whose reply target is knowable — and a reviewer should not expect one.
 
 ### 7.2 Issue → section map, and what each PR must contain
 
@@ -2299,13 +2412,17 @@ and why; swap approval as one transaction that never edits the original beyond i
 
 *Normative sections:* §2.14, §3.4 (`VolunteerNotificationService`), §3.6, Appendix C.
 *Depends on:* #9709 (needs assignments to notify about). The outbox table ships with #9705.
+***Needs* CR6** — the `Reply-To` capability must already be in `BaseEmail`; this PR consumes it, it
+does not add it.
 
 **PR contains:** `VolunteerNotificationService`; the seven `BaseEmail` subclasses;
-`iVolunteerReminderLeadHours`; the `SystemService::runTimerJobs()` hook; the
+`iVolunteerReminderLeadHours`; the `SystemService::runTimerJobs()` hook; the `Reply-To` resolution
+in the drain plus `VolunteerAuthorizationService::getReplyToPersonId()` (§3.6); the
 `GET /api/volunteer/assignments/{id}/notifications` read endpoint the idempotency tests need; the
 cron documentation; `private.volunteer.notifications.spec.js`.
 
-*Reuse decisions to document:* `BaseEmail` + the single Twig template reused verbatim;
+*Reuse decisions to document:* `BaseEmail` + the single Twig template reused verbatim, and extended
+**generically** for `Reply-To` (CR6) rather than given a Volunteer-only mail base class;
 `SystemConfig::isEmailEnabled()` checked **before** sending so skipped ≠ failed;
 `PersonService::buildDoNotEmailSet()` honoured; `dto\Notification`'s *pattern* reused but the class
 rejected (no-op text setters, hard-coded body); `BirthdayEmailService` reused as the job shape but
@@ -2376,8 +2493,15 @@ reused; the setup flow guided rather than a set of CRUD pages (#9715's own UX re
 ### 7.3 Order and parallelism
 
 ```
+                 ┌──────────────────────────────────────────────────────────────┐
+ wave -1         │ BLOCKING:     E-1  E-2  E-5  E-6  E-16(=CR4)  E-18  E-19     │  ← land before
+ prerequisite    ├──────────────────────────────────────────────────────────────┤     wave 0/1
+ hardening       │ NON-BLOCKING: E-3 E-4 E-7 E-8 E-9 E-10 E-11 E-12 E-13        │  ← any time,
+ (Appendix E)    │               E-15 E-17                                      │     in parallel
+                 └──────────────────────────────────────────────────────────────┘
+
                  ┌──────────────────────────────────────────────┐
- wave 0          │ CR1  CR2  CR3  CR4  CR5   (core extractions) │  ← independent, any time
+ wave 0          │ CR1  CR2  CR3  CR4  CR5  CR6  (core work)    │  ← independent, any time
                  └──────────────────────────────────────────────┘
 
  wave 1   #9704 rollout flag + module boundary   ──┐
@@ -2398,6 +2522,48 @@ reused; the setup flow guided rather than a set of CRUD pages (#9715's own UX re
                                                    │
  wave 6   #9714 E2E, localization, production readiness  ←┘
 ```
+
+**Wave -1 — prerequisite hardening (Appendix E).** Each item is its own upstream issue and its own
+PR. The product rule is that a known defect affecting V2 is **fixed, not worked around**: no V2 PR
+may ship a defensive hack, a "this is broken upstream" comment, or a private copy of core behaviour
+to route around one of these.
+
+*Blocking — these must be merged before the V2 wave they gate:*
+
+| Item | Blocks | Why it genuinely blocks |
+|---|---|---|
+| **E-2** (`npm run build:orm` broken) | wave 1 (#9705) | #9705's first instruction is to regenerate the ORM. An implementing agent following the documented command fails immediately. Fix it before anyone runs it. |
+| **E-5** (`.htaccess` view exposure) | wave 1 (#9704) | #9704 creates `src/volunteer/.htaccess` by copying an existing module. Three of the six candidates are unsafe, so "copy the safe one" is a trap rather than a design — and the three unsafe ones are a live authentication bypass on every install today. Fixing them removes both problems at once. |
+| **E-6** (`MvcAppFactory` leaks stack traces) | wave 1 (#9704) | `/volunteer` inherits it the moment the module exists. Shipping a new module that leaks stack traces in production is not acceptable, and V2 cannot opt out — the factory takes only three options (F26). |
+| **E-18** (two API error shapes + over-broad redaction) | wave 1 (#9705), wave 2 (#9706) | §4.8's authorization specs assert error bodies, and M5 currently forces V2 to *phrase around* a regex that eats the word *user*. Phrasing around a bug is exactly the workaround this rule forbids. Fix the contract, then write the tests against it. |
+| **E-19** (stale skill files) | wave 1, all of it | §0.2 rule 4 exists solely because of this. An agent implementing #9704 from `routing-architecture.md` or `slim-mvc-skill.md` produces `/volunteer/volunteer/`-style double prefixes and a `src/volunteer/middleware/` directory that nothing loads. It is L-sized and the single highest-leverage item here. |
+| **E-1** (`PrimaryContact` FK on the wrong column) | wave 5 (#9713) | #9713 adds an FK to `events_event` in the same file; the broken block sits three lines away and is the nearest template. Fix it before anyone is tempted to copy it. |
+| **E-16** (two recurrence implementations) | wave 3 (#9708) | This *is* CR4. #9708's standalone schedules need the extracted generator, and adding a third copy is forbidden (reuse row E3, §1.4 — note that is the matrix id, not defect E-3). Deliberately tracked in both places: as prerequisite **CR4** in §7.1, as the defect it retires here. |
+
+*Non-blocking — file them, fix them in parallel, do not let them gate V2:*
+
+- **E-3** (`i18next.t()` in `.php` never extracted) — §5.10 already makes "no `i18next.t()` outside
+  `webpack/`" a hard rule for V2, so V2 adds no new instances. The sweep of the existing 14 and the
+  `locale-check.js` rule are independent.
+- **E-4** (timer jobs run on page load) — V2's outbox (D15) is correct *whatever* drains it, and the
+  documented cron already gives punctual reminders with zero code. The minimal fix (CLI entry point
+  + stale-timer admin warning) makes every installation better but changes nothing V2 designs.
+- **E-7** (`notify('error')` renders blue) — V2 uses `"danger"` from the first line; the alias and
+  the 40-site sweep help everyone else.
+- **E-8** (`BirthdayEmailService` race) — genuinely *easier after* V2, since the outbox is the shape
+  the fix wants. Do not block on it and do not fix it inside a V2 PR.
+- **E-9 – E-13** (test infrastructure: unrun spec, vacuous spec, config drift, inert `.d.ts`, dead
+  `getAllPermissions()`) — each makes V2's own test work slightly nicer; none prevents it. E-11 is
+  the one to do early if convenient, because #9714 adds keys to all three Cypress configs and would
+  otherwise replicate the drift.
+- **E-15** (missing `EVENT_UPDATED` / `EVENT_DELETED` hooks) — listed here rather than above
+  because V2 **does not need them**: E11 chooses a lazy read of `event_start`/`event_end` precisely
+  so there is no state to synchronise. That is a design choice, not a workaround — there is nothing
+  V2 would do differently if the hooks landed. Plugins are affected today, so it is still worth
+  filing.
+- **E-17** (`events_event` is `utf8`) — a cheap in-policy win that must be its own issue. **Do not
+  smuggle a charset conversion into a V2 PR**, and note that #9713 adds a column to this table, so
+  sequence the two rather than running them concurrently.
 
 Constraints an implementer must respect:
 
@@ -2466,6 +2632,7 @@ consume it. This is #9703 deliverable 8.
 | `MinistryMiddleware`, `TeamMiddleware`, `PositionMiddleware`, `ScheduleMiddleware`, `OccurrenceMiddleware`, `AssignmentMiddleware`, `SwapMiddleware` | `AbstractEntityMiddleware` subclasses; `postEntityLoad()` is where per-record scope is decided (F25). | #9706 onward |
 | `VolunteerSearchResultProvider` | Two files (`BaseSearchResultProvider` subclass + one array line) to put volunteers in global search — the cleanest extension point in the codebase. | #9711 |
 | Seven `BaseEmail` subclasses | Appendix C. There is no generic "send an arbitrary message to a person" email class; every message type in the codebase is its own subclass. | #9710 |
+| `BaseEmail::setReplyTo()` *(core, CR6)* | Not V2-specific. `BaseEmail` builds one `PHPMailer` (`BaseEmail.php:35`) and sets a single `From` — the church address — at `:24`, with no `addReplyTo()` call anywhere in the class, so a reply to **any** ChurchCRM message reaches the church office rather than the person who caused it. An optional setter honoured in `send()` (`:52-59`) is the smallest change that fixes it for every module, and it is byte-identical behaviour for the nine existing subclasses that never call it. | CR6 → #9710 |
 | `webpack/common/person-select.ts` *(core, CR1)* | No shared person selector exists; four independent TomSelect instantiations with two class conventions (F13). | CR1 → #9707, #9709, #9711, #9712 |
 | `buildActionMenu()` in `CRMJSOM.js` *(core, CR2)* | No generic builder; three ~95 %-duplicated renderers plus 82 hand-built dropdowns. #9709 forbids a Volunteer-only action-menu framework. | CR2 → #9711 |
 | `window.CRM.confirmAction()` *(core, CR3, optional)* | 99 duplicated `bootbox.confirm` literals in 40 files. | CR3 → #9709, #9711, #9712 |
@@ -2584,15 +2751,20 @@ single Twig template `src/templates/email/BaseEmail.html.twig` and the branding 
 `BaseEmail::getCommonTokens()` — `getTemplateName()` is **never** overridden by any existing
 subclass and V2 does not start.
 
-| Class | Trigger | Recipient | `getFullURL()` | `getButtonText()` |
-|---|---|---|---|---|
-| `VolunteerAssignmentEmail` | outbox type `assignment` | the volunteer | `/volunteer/my-schedule` | *View my schedule* |
-| `VolunteerReminderEmail` | outbox type `reminder` | the volunteer | `/volunteer/my-schedule` | *View my schedule* |
-| `VolunteerDeclineAlertEmail` | outbox type `decline_alert` | coordinators in scope | `/volunteer/occurrences/{id}` | *Fill this gap* |
-| `VolunteerGapAlertEmail` | outbox type `gap_alert` | coordinators in scope | `/volunteer/occurrences/{id}` | *Fill this gap* |
-| `VolunteerSignupConfirmEmail` | outbox type `signup_confirm` | the volunteer | `/volunteer/my-schedule` | *View my schedule* |
-| `VolunteerSwapProposedEmail` | outbox type `swap_proposed` | coordinators in scope | `/volunteer/dashboard` | *Review this request* |
-| `VolunteerSwapResolvedEmail` | outbox type `swap_resolved` | proposer **and** substitute | `/volunteer/my-schedule` | *View my schedule* |
+| Class | Trigger | Recipient | `Reply-To` (§3.6) | `getFullURL()` | `getButtonText()` |
+|---|---|---|---|---|---|
+| `VolunteerAssignmentEmail` | outbox type `assignment` | the volunteer | responsible coordinator | `/volunteer/my-schedule` | *View my schedule* |
+| `VolunteerReminderEmail` | outbox type `reminder` | the volunteer | responsible coordinator | `/volunteer/my-schedule` | *View my schedule* |
+| `VolunteerDeclineAlertEmail` | outbox type `decline_alert` | coordinators in scope | the volunteer who declined | `/volunteer/occurrences/{id}` | *Fill this gap* |
+| `VolunteerGapAlertEmail` | outbox type `gap_alert` | coordinators in scope | none (no single volunteer) | `/volunteer/occurrences/{id}` | *Fill this gap* |
+| `VolunteerSignupConfirmEmail` | outbox type `signup_confirm` | the volunteer | responsible coordinator | `/volunteer/my-schedule` | *View my schedule* |
+| `VolunteerSwapProposedEmail` | outbox type `swap_proposed` | coordinators in scope | the proposing volunteer | `/volunteer/dashboard` | *Review this request* |
+| `VolunteerSwapResolvedEmail` | outbox type `swap_resolved` | proposer **and** substitute | responsible coordinator | `/volunteer/my-schedule` | *View my schedule* |
+
+The `Reply-To` column is set by the **drain** (§3.6), never by the subclass constructor: the drain
+resolves the person, then calls `setReplyTo($person->getEmail(), $person->getFullName())` on the
+built subclass before `send()`. The subclasses therefore stay as thin as every other `BaseEmail`
+subclass in the tree and gain no email-routing logic of their own.
 
 **Content requirements (#9710: "enough context to act"):** every message body carries
 
@@ -2618,12 +2790,18 @@ Swap messages carry both names and the decision.
   (`person_per` and `family_fam` have none). "Localized" here honestly means "localized to the site
   language". Flagged in Appendix D.
 - `Person::getEmail()` falls back to the **family** email when the person has none
-  (`Person.php:833-848`), so a volunteer's assignment mail can land in a shared family inbox. Note
-  it in the docs; it is not a bug V2 can fix.
-- There is a single `From` (the church address) and **no `Reply-To`** (`BaseEmail.php:24`), so a
-  reply reaches the church office, not the coordinator. Appendix E.
+  (`Person.php:833-843`), so a volunteer's assignment mail can land in a shared family inbox. The
+  same fallback applies to the coordinator address used as `Reply-To`. Note it in the docs; it is
+  not a bug V2 can fix.
+- The `From` is and stays the church address (`BaseEmail.php:24`) — `Reply-To` is what V2 sets, and
+  it is **additive**: `BaseEmail` today builds one `PHPMailer` (`:35`) and never calls
+  `addReplyTo()`, so the capability must land first as **CR6** (§7.1, reuse row N10). A V2 PR must
+  not work around its absence by rewriting `From`, by putting the coordinator's address in the body
+  as a substitute, or by subclassing around `send()`.
 - Never `throw` on a send failure inside a request handler — log it and record `failed` on the
   outbox row (N2/§3.6).
+- Never `throw` on a `Reply-To` resolution failure either: no coordinator, no email, and an address
+  PHPMailer rejects all mean "send it without the header", not "fail the message".
 
 ---
 
@@ -2640,36 +2818,58 @@ Deliberately left open. Each has a working default so implementation is not bloc
 | D-5 | **Should V2 propose introducing PHPUnit?** Authorization and idempotency logic can only be proven through E2E today (F12). | No — V2 proves everything through Cypress API specs; raising PHPUnit is a project-level decision. |
 | D-6 | **Volunteer check-in / hours.** #9701 lists "Serve" as the last workflow step but no child issue covers hours. `event_attend` + `Hooks::EVENT_CHECKIN` would carry it for linked occurrences; position attribution has no home there. | Out of scope (§0.6); the read-only attendance join is in place for when it is picked up. |
 | D-7 | **Where should this document live long-term?** `docs/` contains only `openapi/`; `.agents/skills/churchcrm/` is where architectural knowledge currently lives (50 files). | `.agents/skills/churchcrm/volunteer-v2-design.md`, indexed from `SKILL.md`. |
-| D-8 | **Should a `Hooks::PERSON_VIEW_TABS` filter be added** so V2 (and plugins) can contribute a person-view tab without editing `person-view.php`? | Not now — V2 edits the view directly (F15). Listed in Appendix E as a candidate issue. |
+| D-8 | **Should a `Hooks::PERSON_VIEW_TABS` filter be added** so V2 (and plugins) can contribute a person-view tab without editing `person-view.php`? | Not now — V2 edits the view directly (F15), which is the established pattern rather than a workaround, so this is **not** an [Appendix E](#appendix-e--prerequisite-hardening-track) prerequisite. A candidate follow-up issue if the maintainer wants the extension point. |
 
 ---
 
-## Appendix E — Known upstream defects, out of scope
+## Appendix E — Prerequisite hardening track
 
-Found while auditing for this design. **None is fixed by V2**, but each affects V2 and each is a
-ready-to-file issue. Listed so a V2 PR reviewer does not mistake them for V2 regressions.
+Found while auditing for this design. **These are to be filed and fixed as separate issues/PRs
+before V2 implementation starts; V2 issues must not carry workarounds for them.** That is the
+product rule this appendix now records: a known defect that affects V2 gets its own upstream issue
+and its own fix, rather than a V2-local hack, a defensive comment, or a "we design around it" note.
+The appendix is therefore a **work list**, not a disclaimer — it was previously framed as "out of
+scope", and it is not.
 
-| # | Defect | Evidence | Why it matters to V2 |
-|---|---|---|---|
-| E-1 | **`schema.xml` `PrimaryContact` FK is on the wrong column** — it maps `local="event_type"` → `person_per.per_ID`; `SecondaryContact` two lines below is correct. `events.php:301` calls `getPersonRelatedByPrimaryContactPersonId()`. There is **no Cypress coverage** of `/events/{id}/primarycontact` or `/secondarycontact`. | `orm/schema.xml:460-462` | #9713 adds an FK to the same table; copying that block would propagate the bug. |
-| E-2 | **`npm run build:orm` is broken** — `package.json:33` points at `--config-dir=propel` relative to `src/`, and `src/propel` does not exist. The working invocation is `cd src && composer run orm-gen`. | `package.json:33` | Any V2 issue text telling an agent to run it will fail. |
-| E-3 | **`i18next.t()` inside `.php` views is never extracted** — at least 14 core files do it, verified with `src/event/views/audit.php:125` (`grep -c '^msgid "Close stuck events?"' locale/messages.po` → 0). Documented in **no** skill file. | `locale/scripts/i18next.config.ts:6-10` | V2 must not add a fifteenth; §5.10 makes it a hard rule. |
-| E-4 | **Timer jobs run on page load** — `src/skin/js/Footer.js:178` is the entire "cron". A church with no weekday logins sends no scheduled mail on weekdays; a busy Sunday fires it hundreds of times. | `Footer.js:178`; `SystemService.php:74-87` | The whole reason V2 needs an outbox (D15). A real scheduler, or a documented cron in the installer, would benefit far more than volunteers. |
-| E-5 | **`.htaccess` view exposure** — `src/finance/`, `src/v2/` and `src/admin/` lack the `RewriteRule ^views/.*\.php$ - [F,L]` line that `src/event/`, `src/groups/` and `src/people/` have, so `/finance/views/dashboard.php`, `/v2/templates/root/dashboard.php` and `/admin/views/users.php` are directly requestable, bypassing `AuthMiddleware` and the role middleware. | the six `.htaccess` files | V2 copies the safe variant; the three unsafe ones are a live exposure. |
-| E-6 | **`MvcAppFactory` always shows full error detail** — `addErrorMiddleware(true, true, true)` hardcoded, with no config option, while `src/api/index.php:26` correctly passes `SystemConfig::debugEnabled()`. Every MVC module leaks stack traces in production. | `MvcAppFactory.php:49` vs `src/api/index.php:26` | `/volunteer` inherits it. |
-| E-7 | **`window.CRM.notify(..., {type:'error'})` renders blue, not red** — `"error"` is not a branch; 40 call sites use it and `frontend-development.md:196-207` documents it wrongly. | `src/skin/js/notifier.js:53-88` | V2 uses `"danger"`; the doc should be corrected and the 40 sites swept. |
-| E-8 | **`BirthdayEmailService`'s idempotency guard has a check-then-set race** (`:30` then `:36`) and is not per-recipient, so an individual failure is unretryable and invisible. | `BirthdayEmailService.php:30-36` | V2 deliberately does not copy it; the outbox pattern would fix birthday mail too. |
-| E-9 | **`cypress/e2e/finance/deposit-search.spec.js` has never run** — 266 lines written for #9379, matched by no `specPattern` and referenced by no workflow. | `cypress/configs/*.config.ts` | Proof that the §6.2 trap is real, and a free test-coverage win. |
-| E-10 | **`cypress/e2e/ui/people/standard.volunteer-opportunity.spec.js` passes without testing anything** — it gates on `input[name="VolunteerOpportunityIDs[]"]` (checkboxes) which the template no longer renders (it is a TomSelect multi-select), so it always takes the "no volunteer opportunities configured" branch. | that spec, `:28`, `:38`, `:62` | It will not catch a V1/V2 tab-switch regression (§3.8 surface 2). |
-| E-11 | **`nofinance.api.key` differs between configs** — valid in `docker.config.ts:20`, dead in `docker-admin.config.ts:32` — so `cy.makePrivateNoFinanceAPICall()` returns `403` in the api leg and `401` in the admin-ui leg. | those two files | V2 must add new keys to **three** configs, and must not replicate the drift. |
-| E-12 | **`cypress/support/commands.d.ts` is inert and partly fictional** — declares `loginAdmin`, `loginStandard`, `login`, `waitForPageLoad`, none of which exist, and omits ~20 that do; `tsconfig.json` excludes `cypress/` so it is never checked. | `commands.d.ts`; `tsconfig.json:18-21` | V2 spec authors get no autocomplete and no type errors. |
-| E-13 | **`User::getAllPermissions()` has no callers** despite documenting itself as the source for the user editor and the user settings API. | `User.php:243-264` | #9706 adds a key to a method nothing reads; either wire it up or note it. |
-| E-14 | **No `Reply-To` and a single `From`** on every outbound email. | `BaseEmail.php:24` | A volunteer replying to an assignment reaches the church office, not their coordinator. A `Reply-To` hook on `BaseEmail` is small and reusable. |
-| E-15 | **No `EVENT_UPDATED` / `EVENT_DELETED` hooks**, and `EventService::createRepeatEvents()` does not fire `EVENT_CREATED` either — so a plugin listening on `EVENT_CREATED` silently misses every bulk-created event. | `Hooks.php:20-133`; `EventService.php:110-142` | V2 designs around it (E11), but plugins are already affected. |
-| E-16 | **Two competing recurrence implementations** — `EventService::generateOccurrenceDates()` and `generateRecurringEvents()` — with different caps (366 occurrences vs "1 year"), different title generation, and only one of them idempotent. | `EventService.php:157-300`; `events.php:1411-1467`, `:1399-1403` | CR4 retires the duplication. |
-| E-17 | **`events_event` is `utf8`, not `utf8mb4`** — so an emoji in an event title fails, against the project's own rule. | `Install.sql:118-131`; `db-schema-migration.md` | A cheap in-policy win, but it must be its own issue — **do not smuggle a charset conversion into a V2 PR**. |
-| E-18 | **Two API error shapes** — `{"error", "code"}` from middleware vs `{"success", "message"}` from `SlimUtils::renderErrorJSON()`; and the redaction regex in `renderErrorJSON()`/`sanitizeErrorMessage()` swallows the innocuous words *user* and *token*. | `BaseAuthRoleMiddleware.php:42-44`, `:62-64`; `SlimUtils.php:41-43`, `:68` | V2 must phrase error messages around it (M5) and assert the right shape in tests. |
-| E-19 | **Stale skill files.** `routing-architecture.md` and `slim-mvc-skill.md` describe a `return function ($app)` route convention, module-prefixed route paths, `src/<module>/middleware/` directories and a `MenuSection` class — **none of which exist**, and following them produces `/finance/finance/`-style double prefixes. `table-action-menu.md`, `tabler-components.md` §14 and `responsive-design-guidelines.md` disagree with each other and with the code about the action-menu trigger icon and the dropdown-overflow fix. `service-layer.md` shows a DI container that does not exist. `webpack-typescript.md` shows entry keys and `.tsx` files that do not exist. | as cited throughout | An agent implementing a V2 issue from those files will produce broken routes. §0.2 rule 4 exists because of this. |
+How to read the two rightmost columns:
+
+- **Proposed fix** is one honest line. Where a *complete* fix would be a subsystem, the line states
+  the **minimal complete fix** — the smallest change that genuinely closes the defect rather than a
+  first slice of something larger. E-4, E-17 and E-19 are the three where that distinction does
+  real work; read those lines carefully before filing them.
+- **Size** is S (a few files, hours), M (one focused PR, a day or two, tests included), L (a
+  multi-PR effort that needs its own issue thread and a maintainer decision on scope). **Size is
+  not priority** — several S items are hard blockers and one L item (E-19) is too.
+
+Which of these actually block V2, and which merely run alongside it, is scheduled in
+[§7.3 "Wave -1"](#73-order-and-parallelism). A V2 PR reviewer should still use this list to avoid
+mistaking a pre-existing defect for a V2 regression.
+
+**E-14 has been removed from this list: it moved into scope as reuse row N10 and prerequisite CR6
+(§7.1).** The remaining ids are **not renumbered** — E-13 is still followed by E-15 — because
+`E-n` ids are referenced from elsewhere in this document and from issue text.
+
+| # | Defect | Evidence | Why it matters to V2 | Proposed fix (one line) | Size |
+|---|---|---|---|---|---|
+| E-1 | **`schema.xml` `PrimaryContact` FK is on the wrong column** — it maps `local="event_type"` → `person_per.per_ID`; `SecondaryContact` two lines below is correct. `events.php:301` calls `getPersonRelatedByPrimaryContactPersonId()`. There is **no Cypress coverage** of `/events/{id}/primarycontact` or `/secondarycontact`. | `orm/schema.xml:460-462` | #9713 adds an FK to the same table; copying that block would propagate the bug. | Point the `<reference>` at `primary_contact_person_id` (the `SecondaryContact` block two lines below is the correct template), regenerate the ORM, and add the missing Cypress coverage for `/events/{id}/primarycontact`; check whether any deployed DB carries the bad constraint before deciding a migration is needed. | M |
+| E-2 | **`npm run build:orm` is broken** — `package.json:33` points at `--config-dir=propel` relative to `src/`, and `src/propel` does not exist. The working invocation is `cd src && composer run orm-gen`. | `package.json:33` | Any V2 issue text telling an agent to run it will fail. | Fix `package.json:33` to invoke what actually works — `cd src && composer run orm-gen`, with the `orm/propel.php.dist` → `orm/propel.php` copy folded into the script — or delete the script rather than leave a broken one documented. | S |
+| E-3 | **`i18next.t()` inside `.php` views is never extracted** — at least 14 core files do it, verified with `src/event/views/audit.php:125` (`grep -c '^msgid "Close stuck events?"' locale/messages.po` → 0). Documented in **no** skill file. | `locale/scripts/i18next.config.ts:6-10` | V2 must not add a fifteenth; §5.10 makes it a hard rule. | Convert the ~14 offending `.php` call sites to `gettext()` (or move the logic into a `webpack/` entry), then extend `scripts/locale-check.js` so a staged `i18next.t(` inside `src/**/*.php` fails the pre-commit hook — the detection has to be automated or it recurs. | M |
+| E-4 | **Timer jobs run on page load** — `src/skin/js/Footer.js:178` is the entire "cron". A church with no weekday logins sends no scheduled mail on weekdays; a busy Sunday fires it hundreds of times. | `Footer.js:178`; `SystemService.php:74-87` | The whole reason V2 needs an outbox (D15). A real scheduler, or a documented cron in the installer, would benefit far more than volunteers. | **Minimal complete fix, not a scheduler subsystem:** (a) ship a documented CLI entry point that calls `SystemService::runTimerJobs()` plus the `x-api-key` cron one-liner in the install docs, and (b) record a last-run timestamp and raise an **admin-panel warning when timer jobs have not run in N hours**, so a church with no weekday logins is told rather than left silently unnotified. A queue, worker or real scheduler is a separate, much larger decision and is explicitly *not* what closes this. | M |
+| E-5 | **`.htaccess` view exposure** — `src/finance/`, `src/v2/` and `src/admin/` lack the `RewriteRule ^views/.*\.php$ - [F,L]` line that `src/event/`, `src/groups/` and `src/people/` have, so `/finance/views/dashboard.php`, `/v2/templates/root/dashboard.php` and `/admin/views/users.php` are directly requestable, bypassing `AuthMiddleware` and the role middleware. | the six `.htaccess` files | V2 copies the safe variant; the three unsafe ones are a live exposure. | Add the `RewriteRule ^views/.*\.php$ - [F,L]` line to `src/finance/.htaccess` and `src/admin/.htaccess`, and the `^templates/.*\.php$` equivalent to `src/v2/.htaccess` (that module's views live under `templates/`). Three one-line edits — but **report it through `SECURITY.md` first**, not as a public issue: it is a live authentication bypass on shipped installs. | S |
+| E-6 | **`MvcAppFactory` always shows full error detail** — `addErrorMiddleware(true, true, true)` hardcoded, with no config option, while `src/api/index.php:26` correctly passes `SystemConfig::debugEnabled()`. Every MVC module leaks stack traces in production. | `MvcAppFactory.php:49` vs `src/api/index.php:26` | `/volunteer` inherits it. | Pass `SystemConfig::debugEnabled()` as the first argument of `addErrorMiddleware()` in `MvcAppFactory::create()`, exactly as `src/api/index.php:26` already does. One line, plus a smoke test that a 500 in a module renders no stack trace when debug is off. | S |
+| E-7 | **`window.CRM.notify(..., {type:'error'})` renders blue, not red** — `"error"` is not a branch; 40 call sites use it and `frontend-development.md:196-207` documents it wrongly. | `src/skin/js/notifier.js:53-88` | V2 uses `"danger"`; the doc should be corrected and the 40 sites swept. | Add an `"error"` → danger alias branch in `notifier.js` so the 40 existing call sites stop rendering blue, sweep those call sites to `"danger"`, and correct `frontend-development.md:196-207`. The alias goes in first: it fixes the live mis-rendering without waiting for the sweep. | S |
+| E-8 | **`BirthdayEmailService`'s idempotency guard has a check-then-set race** (`:30` then `:36`) and is not per-recipient, so an individual failure is unretryable and invisible. | `BirthdayEmailService.php:30-36` | V2 deliberately does not copy it; the outbox pattern would fix birthday mail too. | Replace the global `sLastBirthdayEmailRunDate` check-then-set with a per-recipient send record carrying a unique dedupe key — i.e. the `volunteer_notification_vntf` shape generalised. Cheapest to do **after** V2's outbox exists and is proven; not a V2 blocker. | M |
+| E-9 | **`cypress/e2e/finance/deposit-search.spec.js` has never run** — 266 lines written for #9379, matched by no `specPattern` and referenced by no workflow. | `cypress/configs/*.config.ts` | Proof that the §6.2 trap is real, and a free test-coverage win. | Add `cypress/e2e/finance/**` to a `specPattern` (or move the spec under `cypress/e2e/ui/`) and wire it into a workflow — then fix whatever the 266 lines report on their first real run, which is unknown until it runs. | S |
+| E-10 | **`cypress/e2e/ui/people/standard.volunteer-opportunity.spec.js` passes without testing anything** — it gates on `input[name="VolunteerOpportunityIDs[]"]` (checkboxes) which the template no longer renders (it is a TomSelect multi-select), so it always takes the "no volunteer opportunities configured" branch. | that spec, `:28`, `:38`, `:62` | It will not catch a V1/V2 tab-switch regression (§3.8 surface 2). | Retarget the spec at the TomSelect multi-select the template actually renders so it exercises a real branch instead of the empty-state fallback. | S |
+| E-11 | **`nofinance.api.key` differs between configs** — valid in `docker.config.ts:20`, dead in `docker-admin.config.ts:32` — so `cy.makePrivateNoFinanceAPICall()` returns `403` in the api leg and `401` in the admin-ui leg. | those two files | V2 must add new keys to **three** configs, and must not replicate the drift. | Define the Cypress API keys once in a shared fragment and import it into all three configs, so the keys cannot drift again. | S |
+| E-12 | **`cypress/support/commands.d.ts` is inert and partly fictional** — declares `loginAdmin`, `loginStandard`, `login`, `waitForPageLoad`, none of which exist, and omits ~20 that do; `tsconfig.json` excludes `cypress/` so it is never checked. | `commands.d.ts`; `tsconfig.json:18-21` | V2 spec authors get no autocomplete and no type errors. | Regenerate `commands.d.ts` from the real `cypress/support/commands.*`, delete the fictional declarations, and stop excluding `cypress/` from type checking (a `cypress/tsconfig.json` is the least invasive way). | M |
+| E-13 | **`User::getAllPermissions()` has no callers** despite documenting itself as the source for the user editor and the user settings API. | `User.php:243-264` | #9706 adds a key to a method nothing reads; either wire it up or note it. | Decide in the issue: wire `getAllPermissions()` into the user editor and user-settings API its own docblock names, **or** delete it. Leaving a documented-but-dead method is the only outcome that is wrong. | S |
+| E-14 | *(moved into scope as N10 / CR6 — see §1.6 and §7.1. Id retired, not reused.)* | — | — | — | — |
+| E-15 | **No `EVENT_UPDATED` / `EVENT_DELETED` hooks**, and `EventService::createRepeatEvents()` does not fire `EVENT_CREATED` either — so a plugin listening on `EVENT_CREATED` silently misses every bulk-created event. | `Hooks.php:20-133`; `EventService.php:110-142` | V2 designs around it (E11), but plugins are already affected. | Fire `Hooks::EVENT_CREATED` per inserted row from `EventService::createRepeatEvents()`, and add `EVENT_UPDATED` / `EVENT_DELETED` to `Hooks.php` with calls from the update and delete paths. V2 still does not depend on the hooks (E11), but plugins do. | M |
+| E-16 | **Two competing recurrence implementations** — `EventService::generateOccurrenceDates()` and `generateRecurringEvents()` — with different caps (366 occurrences vs "1 year"), different title generation, and only one of them idempotent. | `EventService.php:157-300`; `events.php:1411-1467`, `:1399-1403` | CR4 retires the duplication. | This is CR4 (§7.1): extract `ChurchCRM\Service\RecurrenceDateGenerator` and migrate **both** existing callers onto it, reconciling the two different caps and title-generation rules in the process. | M |
+| E-17 | **`events_event` is `utf8`, not `utf8mb4`** — so an emoji in an event title fails, against the project's own rule. | `Install.sql:118-131`; `db-schema-migration.md` | A cheap in-policy win, but it must be its own issue — **do not smuggle a charset conversion into a V2 PR**. | **Minimal complete fix:** one upgrade script doing `ALTER TABLE events_event CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`, with the matching `Install.sql` and `seed.sql` edits — preceded by an audit of that table's index key lengths and of the charset of every column on either side of an FK it participates in, since `utf8mb4` widens index prefixes and MySQL refuses a charset mismatch across an FK. Scoped to `events_event` and its FK partners; a tree-wide legacy-charset migration is a different, larger issue and must not be smuggled in here — nor into a V2 PR. | M |
+| E-18 | **Two API error shapes** — `{"error", "code"}` from middleware vs `{"success", "message"}` from `SlimUtils::renderErrorJSON()`; and the redaction regex in `renderErrorJSON()`/`sanitizeErrorMessage()` swallows the innocuous words *user* and *token*. | `BaseAuthRoleMiddleware.php:42-44`, `:62-64`; `SlimUtils.php:41-43`, `:68` | V2 must phrase error messages around it (M5) and assert the right shape in tests. | **Minimal complete fix:** make `BaseAuthRoleMiddleware` emit the `SlimUtils::renderErrorJSON()` shape so the API has exactly one documented error contract, and narrow the redaction regex to match credential-shaped assignments (`password=`, `api_key:`) instead of the bare English words *user*, *token* and *host*. Both halves are needed — one shape without a sane regex still swallows legitimate messages. | M |
+| E-19 | **Stale skill files.** `routing-architecture.md` and `slim-mvc-skill.md` describe a `return function ($app)` route convention, module-prefixed route paths, `src/<module>/middleware/` directories and a `MenuSection` class — **none of which exist**, and following them produces `/finance/finance/`-style double prefixes. `table-action-menu.md`, `tabler-components.md` §14 and `responsive-design-guidelines.md` disagree with each other and with the code about the action-menu trigger icon and the dropdown-overflow fix. `service-layer.md` shows a DI container that does not exist. `webpack-typescript.md` shows entry keys and `.tsx` files that do not exist. | as cited throughout | An agent implementing a V2 issue from those files will produce broken routes. §0.2 rule 4 exists because of this. | **Minimal complete fix:** rewrite the files that are demonstrably wrong against the code, one small PR each, every claim grep-verified — `routing-architecture.md` and `slim-mvc-skill.md` (route convention, module prefixes, non-existent `src/<module>/middleware/` and `MenuSection`), `service-layer.md` (the DI container that does not exist), `webpack-typescript.md` (entry keys and `.tsx` files that do not exist), and one reconciliation pass over `table-action-menu.md` / `tabler-components.md` §14 / `responsive-design-guidelines.md` so the three agree with the code and each other. Not a docs-system overhaul and not a pass over all 50 skill files — but genuinely large, because each file has to be re-derived from source. | L |
 
 ---
 
