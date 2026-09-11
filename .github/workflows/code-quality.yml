@@ -49,6 +49,8 @@ jobs:
         run: npx biome format .
       - name: Lint check (biome)
         run: npx biome check webpack/
+      - name: Seed schema charset check
+        run: npm run validate:seed-charsets
 
   format-fix:
     name: Apply format fixes

@@ -1264,7 +1264,7 @@ CREATE TABLE `note_nte` (
   PRIMARY KEY (`nte_ID`),
   INDEX `idx_nte_per_ID` (`nte_per_ID`),
   INDEX `idx_nte_fam_ID` (`nte_fam_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=639 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=639 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
