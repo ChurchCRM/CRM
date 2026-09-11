@@ -740,14 +740,14 @@ require_once __DIR__ . '/Include/Header.php';
                         <label for="SecondAddress1"><?= gettext('Address') ?> 1:</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
-                            <input type="text" id="SecondAddress1" name="SecondAddress1" value="<?= InputUtils::escapeAttribute($sSecondAddress1) ?>" maxlength="250" class="form-control">
+                            <input type="text" id="SecondAddress1" name="SecondAddress1" value="<?= InputUtils::escapeAttribute($sSecondAddress1) /* nosemgrep: php.lang.security.injection.echoed-request.echoed-request */ ?>" maxlength="250" class="form-control">
                         </div>
                     </div>
                     <div class="mb-3 col-12 col-md-6">
                         <label for="SecondAddress2"><?= gettext('Address') ?> 2:</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
-                            <input type="text" id="SecondAddress2" name="SecondAddress2" value="<?= InputUtils::escapeAttribute($sSecondAddress2) ?>" maxlength="250" class="form-control">
+                            <input type="text" id="SecondAddress2" name="SecondAddress2" value="<?= InputUtils::escapeAttribute($sSecondAddress2) /* nosemgrep: php.lang.security.injection.echoed-request.echoed-request */ ?>" maxlength="250" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -756,17 +756,17 @@ require_once __DIR__ . '/Include/Header.php';
                         <label for="SecondCity"><?= gettext('City') ?>:</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-city"></i></span>
-                            <input type="text" id="SecondCity" name="SecondCity" value="<?= InputUtils::escapeAttribute($sSecondCity) ?>" maxlength="50" class="form-control">
+                            <input type="text" id="SecondCity" name="SecondCity" value="<?= InputUtils::escapeAttribute($sSecondCity) /* nosemgrep: php.lang.security.injection.echoed-request.echoed-request */ ?>" maxlength="50" class="form-control">
                         </div>
                     </div>
                     <div id="secondStateOptionDiv" class="mb-3 col-12 col-sm-6 col-md-3">
                         <label for="SecondState"><?= gettext('State') ?>:</label>
-                        <select id="SecondState" name="SecondState" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sSecondState) ?>" data-system-default="">
+                        <select id="SecondState" name="SecondState" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sSecondState) /* nosemgrep: php.lang.security.injection.echoed-request.echoed-request */ ?>" data-system-default="">
                         </select>
                     </div>
                     <div id="secondStateInputDiv" class="mb-3 col-12 col-sm-6 col-md-3 d-none">
                         <label for="SecondStateTextbox"><?= gettext('State') ?>:</label>
-                        <input id="SecondStateTextbox" type="text" class="form-control" name="SecondStateTextbox" value="<?= InputUtils::escapeAttribute($sSecondState) ?>" maxlength="30">
+                        <input id="SecondStateTextbox" type="text" class="form-control" name="SecondStateTextbox" value="<?= InputUtils::escapeAttribute($sSecondState) /* nosemgrep: php.lang.security.injection.echoed-request.echoed-request */ ?>" maxlength="30">
                     </div>
                     <div class="mb-3 col-12 col-sm-6 col-md-2">
                         <label for="SecondZip"><?= gettext('Zip') ?>:</label>
@@ -774,11 +774,11 @@ require_once __DIR__ . '/Include/Header.php';
                         if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
                             echo 'style="text-transform:uppercase" ';
                         }
-                        echo 'value="' . InputUtils::escapeAttribute($sSecondZip) . '" '; ?> maxlength="10">
+                        echo 'value="' . InputUtils::escapeAttribute($sSecondZip) . '" '; /* nosemgrep: php.lang.security.injection.echoed-request.echoed-request */ ?> maxlength="10">
                     </div>
                     <div class="mb-3 col-12 col-sm-6 col-md-3">
                         <label for="SecondCountry"><?= gettext('Country') ?>:</label>
-                        <select id="SecondCountry" name="SecondCountry" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sSecondCountry) ?>" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultCountry') ?>">
+                        <select id="SecondCountry" name="SecondCountry" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sSecondCountry) /* nosemgrep: php.lang.security.injection.echoed-request.echoed-request */ ?>" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultCountry') ?>">
                         </select>
                     </div>
                 </div>
