@@ -119,7 +119,7 @@ Use Bootstrap margin utilities: `me-1` (small), `me-2` (standard), `me-3` (large
 | **Settings/Config** | `fa-cog` or `fa-sliders` | `<i class="fa-solid fa-cog me-2"></i>` |
 | **Search/Find** | `fa-magnifying-glass` | `<i class="fa-solid fa-magnifying-glass me-2"></i>` |
 | **Filter** | `fa-filter` | `<i class="fa-solid fa-filter me-2"></i>` |
-| **Menu/Dropdown** | `fa-ellipsis-v` (vertical) or `fa-ellipsis` (horizontal) | `<i class="fa-solid fa-ellipsis-v"></i>` |
+| **Menu/Dropdown** | `fa-ellipsis-vertical` (vertical) or `fa-ellipsis` (horizontal) | `<i class="fa-solid fa-ellipsis-vertical"></i>` — row action menus: see [`table-action-menu.md`](./table-action-menu.md) |
 
 ### Dashboard / Status Icons
 
@@ -167,7 +167,7 @@ When migrating from Tabler icons (deprecated), use this mapping:
 | `ti-circle-check` | `fa-circle-check` |
 | `ti-credit-card` | `fa-credit-card` |
 | `ti-device-floppy` | `fa-floppy-disk` |
-| `ti-dots-vertical` | `fa-ellipsis-v` |
+| `ti-dots-vertical` | `fa-ellipsis-vertical` |
 | `ti-download` | `fa-download` |
 | `ti-edit` | `fa-pencil` |
 | `ti-eye` | `fa-eye` |
