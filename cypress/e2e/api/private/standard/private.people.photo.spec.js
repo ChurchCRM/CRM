@@ -250,6 +250,25 @@ describe("API Private Photo and Avatar - Person", () => {
                 expect(response.body).to.have.property("message");
             });
         });
+
+        it("should reject an oversized body with no image data with 400, not 413", () => {
+            // Regression for #9771. The 413 branch is only for a body PHP threw
+            // away for being larger than the server accepts. This body arrives
+            // complete and simply has no imgBase64, so it is a malformed request.
+            // 3 MB is well over the 2 MB upload_max_filesize the project's PHP
+            // images set — the value the handler compared Content-Length against —
+            // and far under their 2 GB post_max_size, so PHP receives and parses
+            // it in full.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/person/${testPersonId}/photo`,
+                JSON.stringify({ notImgBase64: "a".repeat(3 * 1024 * 1024) }),
+                400
+            ).then((response) => {
+                expect(response.body.success).to.eq(false);
+                expect(response.body.message).to.include("Missing image data");
+            });
+        });
     });
 
     describe("DELETE /api/person/{id}/photo", () => {

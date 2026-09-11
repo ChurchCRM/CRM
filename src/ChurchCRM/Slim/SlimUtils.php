@@ -3,6 +3,7 @@ namespace ChurchCRM\Slim;
 
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\LoggerUtils;
 use Exception;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -475,6 +476,45 @@ class SlimUtils
         }
 
         return $route->getArgument($name);
+    }
+
+    /**
+     * Whether PHP discarded this request's body because it was larger than the
+     * server accepts, which is the only case that justifies answering 413.
+     *
+     * PHP throws the *whole* body away when it exceeds the accepted size, so
+     * "nothing arrived at all" is the only honest signal: an empty parsed body,
+     * a raw body reporting size 0 (or unknown), and no raw bytes. A body that
+     * did arrive but is missing an expected field is a malformed request (400)
+     * no matter what its Content-Length claims — the limit here is
+     * `min(upload_max_filesize, post_max_size, memory_limit)`, which on a stock
+     * config is upload_max_filesize (2M) and sits far below post_max_size, so
+     * judging on the header alone turns every complete body over 2 MB into a
+     * misleading size error (issues #9719, #9771).
+     *
+     * Residual, and not fixable from here: a short body sent with a huge,
+     * lying Content-Length truncates the request, PHP receives nothing, and
+     * that is indistinguishable from a body discarded for size.
+     */
+    public static function isBodyDiscardedForSize(Request $request): bool
+    {
+        if (!empty($request->getParsedBody())) {
+            return false;
+        }
+
+        $body = $request->getBody();
+        $bodySize = $body->getSize();
+        if ($bodySize !== null && $bodySize !== 0) {
+            return false;
+        }
+
+        if ((string) $body !== '') {
+            return false;
+        }
+
+        $contentLength = (int) ($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
+
+        return $contentLength > SystemService::getMaxUploadFileSize(false);
     }
 
     /**
