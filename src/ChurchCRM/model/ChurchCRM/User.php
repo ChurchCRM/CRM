@@ -231,38 +231,6 @@ class User extends BaseUser
         return SystemConfig::getBooleanValue('bEnabledEvents');
     }
 
-    // -- Consolidated permission map for API/UI consumption --
-
-    /**
-     * Return a structured map of all permissions for this user.
-     * Useful for the user editor UI (/admin/system/users/{personId}/edit) and the user settings API.
-     * Every value reflects the effective permission (with admin bypass applied).
-     *
-     * @return array<string, bool>
-     */
-    public function getAllPermissions(): array
-    {
-        return [
-            // Core record permissions (user_usr columns)
-            'isAdmin'             => $this->isAdmin(),
-            'addRecords'          => $this->isAddRecordsEnabled(),
-            'editRecords'         => $this->isEditRecordsEnabled(),
-            'deleteRecords'       => $this->isDeleteRecordsEnabled(),
-            'menuOptions'         => $this->isMenuOptionsEnabled(),
-            'manageGroups'        => $this->isManageGroupsEnabled(),
-            'finance'             => $this->isFinanceEnabled(),
-            'manageFundraisers'   => $this->isManageFundraisersEnabled(),
-            'notes'               => $this->isNotesEnabled(),
-            'editSelf'            => $this->isEditSelfEnabled(),
-            // Module permissions (userconfig_ucfg rows)
-            'addEvent'            => $this->isAddEventEnabled(),
-            'emailMailto'         => $this->isEmailEnabled(),
-            // Computed module-level gates
-            'canViewEvents'       => $this->canViewEvents(),
-            'canManageEvents'     => $this->canManageEvents(),
-        ];
-    }
-
     /**
      * Returns true if the current user may read basic metadata for any family.
      * All authenticated users have this capability by default (read-default policy).
