@@ -5,14 +5,15 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
+// Keep in sync with the groupIcons map in src/skin/js/Footer.js (global search dropdown).
 $groupIcons = [
-    'Persons'          => 'ti-user',
-    'Families'         => 'ti-home',
-    'Groups'           => 'ti-users-group',
-    'Addresses'        => 'ti-map-pin',
-    'Finance Deposits' => 'ti-building-bank',
-    'Finance Payments' => 'ti-credit-card',
-    'Calendar Events'  => 'ti-calendar',
+    'Persons'          => 'fa-user',
+    'Families'         => 'fa-house',
+    'Groups'           => 'fa-users',
+    'Addresses'        => 'fa-map-pin',
+    'Finance Deposits' => 'fa-building',
+    'Finance Payments' => 'fa-credit-card',
+    'Calendar Events'  => 'fa-calendar',
 ];
 ?>
 
@@ -68,7 +69,7 @@ $groupIcons = [
       /** @var \ChurchCRM\Search\SearchResultGroup $group */
       // groupName from BaseSearchResultProvider is "Persons (5)" — strip the count suffix
       $displayName = (string) preg_replace('/\s*\(\d+\)$/', '', $group->groupName);
-      $icon        = $groupIcons[$displayName] ?? 'ti-search';
+      $icon        = $groupIcons[$displayName] ?? 'fa-search';
       $count       = count($group->results);
       ?>
       <div class="col-12">
@@ -77,7 +78,7 @@ $groupIcons = [
             <h3 class="card-title d-flex align-items-center">
               <span class="avatar avatar-sm rounded me-3 text-white"
                     style="background-color: var(--tblr-primary); flex-shrink: 0;">
-                <i class="ti <?= $icon ?>"></i>
+                <i class="fa-solid <?= $icon ?>"></i>
               </span>
               <?= InputUtils::escapeHTML($displayName) ?>
               <span class="badge bg-blue-lt text-blue ms-2"><?= $count ?></span>

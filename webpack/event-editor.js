@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
               t("Deleting this event will also delete all attendance records. This cannot be undone.") +
               ` <strong>${escapeHtml(event.Title || "")}</strong>`,
             buttons: {
-              cancel: { label: `<i class="ti ti-x"></i> ${t("Cancel")}` },
+              cancel: { label: `<i class="fa-solid fa-xmark"></i> ${t("Cancel")}` },
               confirm: { label: `<i class="fa-solid fa-trash"></i> ${t("Delete")}`, className: "btn-danger" },
             },
             callback: (confirmed) => {

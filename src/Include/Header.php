@@ -591,7 +591,7 @@ if ($_twoFAGraceUser !== null):
 ?>
 <div class="alert <?= InputUtils::escapeHTML($_twoFAAlertClass) ?> alert-dismissible mb-0" role="alert" id="two-fa-grace-banner">
   <div class="d-flex align-items-center">
-    <div class="me-2"><i class="ti ti-shield-lock"></i></div>
+    <div class="me-2"><i class="fa-solid fa-shield-halved"></i></div>
     <div>
       <?= InputUtils::escapeHTML(sprintf(
           ngettext(

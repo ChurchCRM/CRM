@@ -119,7 +119,7 @@ Use Bootstrap margin utilities: `me-1` (small), `me-2` (standard), `me-3` (large
 | **Settings/Config** | `fa-cog` or `fa-sliders` | `<i class="fa-solid fa-cog me-2"></i>` |
 | **Search/Find** | `fa-magnifying-glass` | `<i class="fa-solid fa-magnifying-glass me-2"></i>` |
 | **Filter** | `fa-filter` | `<i class="fa-solid fa-filter me-2"></i>` |
-| **Menu/Dropdown** | `fa-ellipsis-v` (vertical) or `fa-ellipsis` (horizontal) | `<i class="fa-solid fa-ellipsis-v"></i>` |
+| **Menu/Dropdown** | `fa-ellipsis-vertical` (vertical) or `fa-ellipsis` (horizontal) | `<i class="fa-solid fa-ellipsis-vertical"></i>` — row action menus: see [`table-action-menu.md`](./table-action-menu.md) |
 
 ### Dashboard / Status Icons
 
@@ -161,13 +161,13 @@ When migrating from Tabler icons (deprecated), use this mapping:
 | `ti-brand-github` | `fa-brands fa-github` |
 | `ti-building` | `fa-building` |
 | `ti-calendar` | `fa-calendar` |
-| `ti-calendar-off` | `fa-calendar-slash` |
+| `ti-calendar-off` | `fa-calendar-xmark` |
 | `ti-cart` | `fa-cart-shopping` |
 | `ti-check` | `fa-check` |
 | `ti-circle-check` | `fa-circle-check` |
 | `ti-credit-card` | `fa-credit-card` |
 | `ti-device-floppy` | `fa-floppy-disk` |
-| `ti-dots-vertical` | `fa-ellipsis-v` |
+| `ti-dots-vertical` | `fa-ellipsis-vertical` |
 | `ti-download` | `fa-download` |
 | `ti-edit` | `fa-pencil` |
 | `ti-eye` | `fa-eye` |
@@ -176,7 +176,7 @@ When migrating from Tabler icons (deprecated), use this mapping:
 | `ti-flag` | `fa-flag` |
 | `ti-folder` | `fa-folder` |
 | `ti-home` | `fa-house` |
-| `ti-home-plus` | `fa-house-plus` |
+| `ti-home-plus` | `fa-house` + adjacent `fa-plus` (no free `fa-house-plus`) |
 | `ti-info-circle` | `fa-circle-info` |
 | `ti-key` | `fa-key` |
 | `ti-location` | `fa-location-dot` |
@@ -198,6 +198,21 @@ When migrating from Tabler icons (deprecated), use this mapping:
 | `ti-upload` | `fa-upload` |
 | `ti-users` | `fa-users` |
 | `ti-x` | `fa-xmark` |
+
+### Verify the target exists in the free tier <!-- learned: 2026-09-11 -->
+
+Font Awesome free has no slashed/“off” variants for several glyphs Tabler
+provides (`fa-calendar-slash`, `fa-house-plus`, `fa-map-pin-slash`,
+`fa-shield-check`, `fa-users-group` are all **Pro-only or nonexistent**), and a
+missing class renders as blank space with no console error. Before using a
+name that is not in the table above, confirm it is really shipped:
+
+```bash
+grep -E '^\.fa-<name>[ ,{]' node_modules/@fortawesome/fontawesome-free/css/all.css
+```
+
+(FA 7 declares each icon as `.fa-<name> { --fa: "\eXXX"; }` — grepping for the
+old `:before` form gives a false negative for every icon.)
 
 ---
 
@@ -318,7 +333,7 @@ Before committing icon-related changes:
 - [ ] No paid Font Awesome variants (`fa-light`, `fa-thin`, `fa-duotone`, `fa-sharp`)
 - [ ] All icons have both variant class (e.g. `fa-solid`) and icon class (e.g. `fa-pencil`)
 - [ ] Icon spacing uses Bootstrap utilities (`me-2`, `ms-2`)
-- [ ] No hardcoded Tabler icons (`ti ti-*`) remain in production code
+- [ ] No Tabler icons (`ti`, `ti-*`) remain — `npm run lint:icons` enforces this
 - [ ] Dynamic icons are escaped if sourced from untrusted input
 - [ ] Decorative icons use `aria-hidden="true"` when appropriate
 - [ ] Icon-only buttons have `aria-label` when not self-evident
