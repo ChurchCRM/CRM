@@ -441,7 +441,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
         <!-- Address Card -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= gettext("Address") ?>
+                <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= $family->hasSecondAddress() ? gettext("Primary Address") : gettext("Address") ?>
                     <?php if ($family->hasLatitudeAndLongitude()): ?>
                     <span class="badge bg-green-lt text-green ms-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
                         <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
@@ -508,6 +508,33 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                         <div id="map1" style="height: 200px;"></div>
                     </div>
                 <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <?php if ($family->hasSecondAddress()) :
+            // Second address (#9743). Map, geocode badge, directions and "Find
+            // Neighbors" stay on the primary card — lat/lng belongs to the
+            // physical address.
+            $secondAddress = $family->getSecondaryAddress();
+            $isMailing = $family->isSecondAddressMailing();
+        ?>
+        <!-- Second Address Card -->
+        <div class="card mb-3" id="second-address-card">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0">
+                    <i class="fa-solid <?= $isMailing ? 'fa-envelope' : 'fa-house-chimney' ?> me-1"></i>
+                    <?= $isMailing ? gettext('Mailing Address') : gettext('Second Home') ?>
+                    <?php if ($isMailing) : ?>
+                    <span class="badge bg-blue-lt text-blue ms-2" title="<?= gettext('Mail is sent to this address instead of the primary address') ?>">
+                        <i class="fa-solid fa-envelope"></i> <?= gettext('Receives Mail') ?>
+                    </span>
+                    <?php endif; ?>
+                </h3>
+            </div>
+            <div class="card-body">
+                <a href="https://maps.google.com/?q=<?= urlencode($secondAddress) ?>"
+                   target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($secondAddress) ?></a>
             </div>
         </div>
         <?php endif; ?>

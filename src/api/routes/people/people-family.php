@@ -217,7 +217,38 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Family object"),
+     *     @OA\Response(response=200, description="Family object. `Address` is the primary/physical address.
+     *         The optional second address (#9743) is exposed additively as `SecondAddress1`, `SecondAddress2`,
+     *         `SecondCity`, `SecondState`, `SecondZip`, `SecondCountry` and `SecondIsMailing`, alongside the
+     *         resolved `MailingAddress` object (the flagged second address when set, the primary otherwise).",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="Id", type="integer"),
+     *             @OA\Property(property="Name", type="string"),
+     *             @OA\Property(property="Address", type="string", description="Primary address, one line"),
+     *             @OA\Property(property="SecondAddress1", type="string", nullable=true),
+     *             @OA\Property(property="SecondAddress2", type="string", nullable=true),
+     *             @OA\Property(property="SecondCity", type="string", nullable=true),
+     *             @OA\Property(property="SecondState", type="string", nullable=true),
+     *             @OA\Property(property="SecondZip", type="string", nullable=true),
+     *             @OA\Property(property="SecondCountry", type="string", nullable=true),
+     *             @OA\Property(property="SecondIsMailing", type="boolean"),
+     *             @OA\Property(property="HasSecondAddress", type="boolean"),
+     *             @OA\Property(property="SecondAddressIsMailing", type="boolean"),
+     *             @OA\Property(property="SecondAddress", type="string", description="Second address, one line"),
+     *             @OA\Property(property="MailingAddressLines", type="string", description="Resolved mailing address, one line"),
+     *             @OA\Property(
+     *                 property="MailingAddress",
+     *                 type="object",
+     *                 description="Resolved mailing address parts",
+     *                 @OA\Property(property="Address1", type="string"),
+     *                 @OA\Property(property="Address2", type="string"),
+     *                 @OA\Property(property="City", type="string"),
+     *                 @OA\Property(property="State", type="string"),
+     *                 @OA\Property(property="Zip", type="string"),
+     *                 @OA\Property(property="Country", type="string")
+     *             )
+     *         )
+     *     ),
      *     @OA\Response(response=403, description="Access denied"),
      *     @OA\Response(response=404, description="Family not found")
      * )
