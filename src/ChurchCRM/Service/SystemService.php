@@ -75,15 +75,44 @@ class SystemService
     {
         LoggerUtils::getAppLogger()->debug('Starting background job processing');
 
-        BirthdayEmailService::run();
+        self::runTimerJob('BirthdayEmailService', static function (): void {
+            BirthdayEmailService::run();
+        });
 
         // Fire the CRON_RUN hook so plugins can register scheduled tasks.
         // Each active plugin registers a handler on Hooks::CRON_RUN in boot().
         // HookManager catches and logs any per-plugin errors so one failing
         // plugin cannot block the others.
-        HookManager::doAction(Hooks::CRON_RUN);
+        self::runTimerJob('CRON_RUN hook', static function (): void {
+            HookManager::doAction(Hooks::CRON_RUN);
+        });
 
         LoggerUtils::getAppLogger()->debug('Finished background job processing');
+    }
+
+    /**
+     * Run a single timer job, logging and swallowing any failure.
+     *
+     * One job must never be able to stop the jobs that follow it, nor the
+     * CRON_RUN hook (issue #9727): before this, an exception in
+     * BirthdayEmailService::run() aborted the whole request, so every plugin's
+     * scheduled work was silently skipped and the caller got an HTTP 500.
+     * This gives the job list the same isolation HookManager already gives
+     * individual plugins.
+     */
+    private static function runTimerJob(string $jobName, callable $job): void
+    {
+        try {
+            $job();
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->error('Timer job failed', [
+                'job' => $jobName,
+                'exception' => $e::class,
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+        }
     }
 
     // Returns a file size limit in bytes based on the PHP upload_max_filesize
