@@ -1,6 +1,10 @@
 /// <reference types="cypress" />
 
 describe("API Private Photo and Avatar - Family", () => {
+    // Family 6 deliberately has no file under cypress/data/images/family,
+    // which the dev and test compose profiles bind-mount as Images/Family.
+    // Pointing these upload/delete tests at family 42 would delete a tracked
+    // fixture from the working tree — see issue #9777.
     const testFamilyId = 6; // Test family from demo database
     const invalidFamilyId = 99999;
 
