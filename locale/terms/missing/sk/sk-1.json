@@ -1,66 +1,66 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "E-mail odoslaný %d rodine.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.|E-mail odoslaný %d rodinám.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "E-mail odoslaný %d rodine.",
+    "few": "E-mail odoslaný %d rodinám.",
+    "many": "E-mail odoslaný %d rodinám.",
+    "other": "E-mail odoslaný %d rodinám."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF úspešne odoslané %d rodine.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.|PDF úspešne odoslané %d rodinám.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "PDF úspešne odoslané %d rodine.",
+    "few": "PDF úspešne odoslané %d rodinám.",
+    "many": "PDF úspešne odoslané %d rodinám.",
+    "other": "PDF úspešne odoslané %d rodinám."
   },
-  "A geocoding error occurred — try again later": "",
-  "Address is incomplete (missing city, state, and ZIP)": "",
-  "All families already have coordinates.": "",
-  "Failed to update coordinates": "",
-  "Failed to update family coordinates": "",
-  "Geocoded all {{geocoded}} families. The map is now up to date.": "",
-  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "",
-  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "",
-  "Geocoding families… this can take up to a minute. You can keep this page open.": "",
-  "Geocoding…": "",
-  "No address on file": "",
-  "No match found — check the street address, city, and ZIP": "",
-  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "",
-  "Open a family to fix its address, then run this again.": "",
-  "Set up now": "",
-  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "",
+  "A geocoding error occurred — try again later": "Vyskytla sa chyba geokódovania — skúste to znova neskôr",
+  "Address is incomplete (missing city, state, and ZIP)": "Adresa je neúplná (chýba mesto, kraj a PSČ)",
+  "All families already have coordinates.": "Všetky rodiny už majú súradnice.",
+  "Failed to update coordinates": "Nepodarilo sa aktualizovať súradnice",
+  "Failed to update family coordinates": "Nepodarilo sa aktualizovať súradnice rodiny",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "Geokódovaných bolo všetkých {{geocoded}} rodín. Mapa je teraz aktuálna.",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "Geokódovaných bolo {{geocoded}} rodín. {{failed}} sa nepodarilo vyriešiť — podrobnosti nájdete nižšie.",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "Geokódovaných bolo {{geocoded}} z {{total}} rodín. {{overflow}} zatiaľ nebolo spracovaných — spustite znova pre pokračovanie.",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "Geokódovanie rodín… môže to trvať až minútu. Túto stránku môžete nechať otvorenú.",
+  "Geocoding…": "Geokódovanie…",
+  "No address on file": "Adresa nie je zaznamenaná",
+  "No match found — check the street address, city, and ZIP": "Nebola nájdená žiadna zhoda — skontrolujte ulicu, mesto a PSČ",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "Počet dní, ktoré majú používatelia na zapojenie dvojfaktorového overovania po tom, čo sa stane povinným. Nastavením na 0 ho vynútite okamžite (predchádzajúce správanie). Skrátenie aktívnej ochrannej lehoty môže používateľov okamžite zablokovať.",
+  "Open a family to fix its address, then run this again.": "Otvorte rodinu a opravte jej adresu, potom to spustite znova.",
+  "Set up now": "Nastaviť teraz",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "Táto funkcia nájde súradnice na mape pre každú rodinu, ktorej chýbajú, pomocou OpenStreetMap. Za jedno spustenie spracuje až 50 rodín; celá dávka trvá približne minútu. Túto stránku môžete nechať otvorenú počas spracovania. Pokračovať?",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "Vyžaduje sa dvojfaktorové overovanie. Máte %d deň na zapojenie.",
+    "few": "Vyžaduje sa dvojfaktorové overovanie. Máte %d dni na zapojenie.",
+    "many": "Vyžaduje sa dvojfaktorové overovanie. Máte %d dňa na zapojenie.",
+    "other": "Vyžaduje sa dvojfaktorové overovanie. Máte %d dní na zapojenie."
   },
-  "Unknown family": "",
-  "Update All Coordinates": "",
-  "Update All Family Coordinates": "",
-  "Update Coordinates": "",
+  "Unknown family": "Neznáma rodina",
+  "Update All Coordinates": "Aktualizovať všetky súradnice",
+  "Update All Family Coordinates": "Aktualizovať súradnice všetkých rodín",
+  "Update Coordinates": "Aktualizovať súradnice",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Skopírovaný {{count}} člen",
+    "other": "Skopírovaných {{count}} členov"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Tento zoznam má {{count}} príjemcu — príliš veľa pre odkaz mailto:. Použite namiesto toho Kopírovať adresy.",
+    "other": "Tento zoznam má {{count}} príjemcov — príliš veľa pre odkaz mailto:. Použite namiesto toho Kopírovať adresy."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite namiesto toho Kopírovať adresy.",
+    "other": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite namiesto toho Kopírovať adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Zostáva {{count}} minúta",
+    "other": "Zostáva {{count}} minút"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} rodinu sa nepodarilo geokódovať",
+    "other": "{{count}} rodín sa nepodarilo geokódovať"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…a ešte {{count}}. Spustite znova, aby ste videli zvyšok.",
+    "other": "…a ešte {{count}}. Spustite znova, aby ste videli zvyšok."
   }
 }
