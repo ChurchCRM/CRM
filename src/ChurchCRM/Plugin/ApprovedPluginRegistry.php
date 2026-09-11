@@ -49,6 +49,7 @@ class ApprovedPluginRegistry
         'cron',               // plugin runs on a schedule
         'hooks.person',       // plugin listens for PERSON_* hooks (PII reach)
         'hooks.family',       // plugin listens for FAMILY_* hooks (PII reach)
+        'hooks.event',        // plugin listens for EVENT_* hooks (calendar + attendance reach)
         'hooks.financial',    // plugin listens for DONATION_* / DEPOSIT_* hooks
         'hooks.email',        // plugin listens for EMAIL_* hooks
         'email.send',         // plugin sends email on behalf of the church

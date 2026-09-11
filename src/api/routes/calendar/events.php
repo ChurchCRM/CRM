@@ -1531,6 +1531,9 @@ function generateRecurringEvents(Request $request, Response $response, array $ar
             $event->setCalendars($calendars);
         }
         $event->save();
+        // Same reasoning as EventService::createRepeatEvents() — the bulk
+        // generator is a creation path and must fire event.created too.
+        HookManager::doAction(Hooks::EVENT_CREATED, $event);
 
         if ($groupId > 0) {
             $audience = new EventAudience();
