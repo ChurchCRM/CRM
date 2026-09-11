@@ -52,6 +52,7 @@
         "lint": "run-s lint:biome lint:icons",
         "lint:biome": "biome check webpack/",
         "lint:icons": "node scripts/validate-no-tabler-icons.js",
+        "lint:cypress-commands": "node scripts/validate-cypress-commands.js",
         "lint:fix": "biome check --write webpack/",
         "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
         "locale:lint": "node scripts/locale-check.js",
