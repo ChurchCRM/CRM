@@ -18,6 +18,10 @@ import { escapeHtml } from "./utils/escape-html";
  * @property {number} [maxFileSize=5000000] - Maximum file size in bytes (default: 5MB)
  * @property {number} [photoWidth=800] - Target photo width in pixels
  * @property {number} [photoHeight=800] - Target photo height in pixels
+ * @property {('free'|'1:1'|'16:9'|'9:16')} [aspectRatio='1:1'] - Crop aspect ratio the image
+ *   editor locks to. Defaults to the square crop person/family/user photos use; pass 'free'
+ *   for non-square targets such as a banner-shaped church logo.
+ * @property {string} [title='Upload Photo'] - Heading shown on the Uppy dashboard modal
  * @property {Function} [onComplete] - Callback function(result) after successful upload
  */
 
@@ -52,6 +56,15 @@ export function createPhotoUploader(config) {
   const photoHeight =
     typeof config.photoHeight === "string" ? parseInt(config.photoHeight, 10) : config.photoHeight || 800;
 
+  // Crop presets understood by @uppy/image-editor's setAspectRatio(), mapped to the
+  // cropperjs value. NaN is cropperjs's documented "free" ratio.
+  const CROPPER_RATIOS = { free: Number.NaN, "1:1": 1, "16:9": 16 / 9, "9:16": 9 / 16 };
+  const aspectRatio = config.aspectRatio in CROPPER_RATIOS ? config.aspectRatio : "1:1";
+  const isFixedAspectRatio = aspectRatio !== "free";
+
+  const dashboardTitle =
+    typeof config.title === "string" && config.title.trim().length > 0 ? config.title.trim() : "Upload Photo";
+
   const uppy = new Uppy({
     id: "photo-uploader",
     autoProceed: false,
@@ -70,8 +83,8 @@ export function createPhotoUploader(config) {
       autoOpen: "imageEditor",
       locale: {
         strings: {
-          dashboardWindowTitle: "Upload Photo",
-          dashboardTitle: "Upload Photo",
+          dashboardWindowTitle: dashboardTitle,
+          dashboardTitle: dashboardTitle,
         },
       },
     })
@@ -90,7 +103,7 @@ export function createPhotoUploader(config) {
       quality: 0.9,
       cropperOptions: {
         viewMode: 1,
-        aspectRatio: 1,
+        aspectRatio: CROPPER_RATIOS[aspectRatio],
         autoCropArea: 1,
         responsive: true,
         croppedCanvasOptions: {},
@@ -102,21 +115,22 @@ export function createPhotoUploader(config) {
         zoomIn: true,
         zoomOut: true,
         cropSquare: true,
-        cropWidescreen: false,
-        cropWidescreenVertical: false,
+        // Widescreen presets are only useful when the target is not locked to a square.
+        cropWidescreen: !isFixedAspectRatio,
+        cropWidescreenVertical: !isFixedAspectRatio,
       },
     });
 
-  // Enforce 1:1 ratio every time the editor opens (including after cancel + re-edit).
-  // resetEditorState() resets plugin state to aspectRatio:'free' on each start, which
-  // causes cropperjs and the UI to fall out of sync. Calling setAspectRatio('1:1') via
+  // Enforce the configured ratio every time the editor opens (including after cancel +
+  // re-edit). resetEditorState() resets plugin state to aspectRatio:'free' on each start,
+  // which causes cropperjs and the UI to fall out of sync. Calling setAspectRatio() via
   // rAF (after initCropper runs in componentDidMount) keeps both in sync.
   uppy.on("file-editor:start", () => {
     const editor = uppy.getPlugin("ImageEditor");
     if (!editor) return;
     const enforce = () => {
       if (editor.cropper) {
-        editor.setAspectRatio("1:1");
+        editor.setAspectRatio(aspectRatio);
       } else {
         requestAnimationFrame(enforce);
       }

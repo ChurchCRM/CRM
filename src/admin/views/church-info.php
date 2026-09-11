@@ -66,9 +66,9 @@ $validationError     = $validationError ?? '';
     </div>
 
     <!-- Church Logo -->
-    <!-- Not part of the Church Info POST: the file input carries no name and
-         both buttons are type="button", so nothing here is submitted with the
-         surrounding form. Uploads go straight to /api/system/church-logo. -->
+    <!-- Not part of the Church Info POST: both buttons are type="button" and the
+         Uppy dashboard renders outside this form, so nothing here is submitted
+         with it. Uploads go straight to /api/system/church-logo. -->
     <div class="row">
         <div class="col-12">
             <div class="card" id="church-logo-card">
@@ -93,10 +93,6 @@ $validationError     = $validationError ?? '';
                         <i class="fa-solid fa-circle-info me-1"></i><?= gettext('Using default ChurchCRM logo') ?>
                     </p>
 
-                    <input type="file"
-                           id="church-logo-file"
-                           class="d-none"
-                           accept="image/png,image/jpeg,image/gif,image/webp">
                     <button type="button" class="btn btn-outline-primary" id="church-logo-upload-btn">
                         <i class="fa-solid fa-upload me-1"></i><?= gettext('Upload') ?>
                     </button>
@@ -480,6 +476,10 @@ $validationError     = $validationError ?? '';
     });
 })();
 </script>
+
+<!-- Shared Uppy photo uploader bundle - powers the Church Logo card -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>
 
 <!-- Church Info page JavaScript -->
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/church-info.min.js') ?>"></script>

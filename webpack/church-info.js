@@ -486,20 +486,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /**
- * Church Logo card: reads the chosen file as a data URL and posts it to
- * /api/system/church-logo, then updates the preview, the Remove button and the
+ * Church Logo card: opens the shared Uppy photo uploader (the same dashboard
+ * used for person, family and user photos) against /api/system/church-logo,
+ * then updates the preview, the Remove button, the default-logo note and the
  * sidebar brand in place. Deliberately not part of the Church Info form POST —
- * the file input has no name and both buttons are type="button".
+ * the dashboard renders outside the form and both buttons are type="button".
  */
 function initChurchLogoUploader() {
-  const fileInput = document.getElementById("church-logo-file");
   const uploadBtn = document.getElementById("church-logo-upload-btn");
   const removeBtn = document.getElementById("church-logo-remove-btn");
   const preview = document.getElementById("church-logo-preview");
   const defaultNote = document.getElementById("church-logo-default-note");
   const messageBox = document.getElementById("church-logo-message");
 
-  if (!fileInput || !uploadBtn || !preview) {
+  if (!uploadBtn || !preview) {
     return;
   }
 
@@ -545,17 +545,16 @@ function initChurchLogoUploader() {
     brandText?.classList.toggle("d-none", hasCustomLogo);
   }
 
-  function sendLogoRequest(method, body) {
+  function sendDeleteRequest() {
     uploadBtn.disabled = true;
     if (removeBtn) {
       removeBtn.disabled = true;
     }
 
     return fetch(`${window.CRM.root}/api/system/church-logo`, {
-      method: method,
+      method: "DELETE",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       credentials: "include",
-      body: body,
     })
       .then((response) =>
         response
@@ -576,54 +575,10 @@ function initChurchLogoUploader() {
       });
   }
 
-  uploadBtn.addEventListener("click", () => {
-    clearMessage();
-    fileInput.click();
-  });
-
-  fileInput.addEventListener("change", () => {
-    const file = fileInput.files?.[0];
-    if (!file) {
-      return;
-    }
-
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      const imgBase64 = e.target?.result;
-      if (typeof imgBase64 !== "string") {
-        showMessage(t("Could not read the selected file."), "danger");
-        fileInput.value = "";
-        return;
-      }
-
-      sendLogoRequest("POST", JSON.stringify({ imgBase64: imgBase64 }))
-        .then((data) => {
-          applyLogoState(true, data.url);
-          showMessage(t("Church logo updated."), "success");
-          window.CRM?.notify?.(t("Church logo updated."), { type: "success", delay: 3000 });
-        })
-        .catch((error) => {
-          showMessage(error.message || t("Failed to upload the church logo."), "danger");
-        })
-        .finally(() => {
-          // Allow re-selecting the same file after a failed attempt.
-          fileInput.value = "";
-        });
-    };
-
-    reader.onerror = () => {
-      showMessage(t("Could not read the selected file."), "danger");
-      fileInput.value = "";
-    };
-
-    reader.readAsDataURL(file);
-  });
-
   removeBtn?.addEventListener("click", () => {
     clearMessage();
 
-    sendLogoRequest("DELETE", null)
+    sendDeleteRequest()
       .then((data) => {
         applyLogoState(false, data.url);
         showMessage(t("Church logo removed."), "success");
@@ -632,6 +587,47 @@ function initChurchLogoUploader() {
       .catch((error) => {
         showMessage(error.message || t("Failed to remove the church logo."), "danger");
       });
+  });
+
+  // The photo-uploader bundle publishes its factory on window._CRM_createPhotoUploader
+  // before this script runs — the same hand-off the person, family and user photo
+  // pages perform.
+  if (typeof window._CRM_createPhotoUploader === "function") {
+    window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+  }
+
+  if (typeof window.CRM?.createPhotoUploader !== "function") {
+    console.error("Photo uploader bundle not loaded; church logo upload is unavailable");
+    uploadBtn.disabled = true;
+    return;
+  }
+
+  const uploader = window.CRM.createPhotoUploader({
+    uploadUrl: `${window.CRM.root}/api/system/church-logo`,
+    maxFileSize: window.CRM.maxUploadSizeBytes,
+    // A logo is a banner, not a square portrait, so let the editor crop freely.
+    aspectRatio: "free",
+    title: t("Church Logo"),
+    onComplete: () => {
+      // Unlike the person/family pages this card updates in place instead of
+      // reloading, so drop the uploaded file to leave the dashboard reusable.
+      uploader.hide();
+      uploader.uppy.clear();
+    },
+  });
+
+  // Exposed the same way the person, family and user photo pages expose theirs.
+  window.CRM.photoUploader = uploader;
+
+  uploader.uppy.on("upload-success", (_file, response) => {
+    applyLogoState(true, response?.body?.url);
+    showMessage(t("Church logo updated."), "success");
+    window.CRM?.notify?.(t("Church logo updated."), { type: "success", delay: 3000 });
+  });
+
+  uploadBtn.addEventListener("click", () => {
+    clearMessage();
+    uploader.show();
   });
 }
 
