@@ -1,6 +1,15 @@
 /// <reference types="cypress" />
 
 /**
+ * Ids of the events this spec created through the API, so they can be removed
+ * again when the spec finishes. Leftover events are not harmless: the events
+ * dashboard groups rows by month and hides "past" rows inside a collapsed
+ * <tbody>, so every stale row makes the next run's assertions less stable
+ * (issue #9795).
+ */
+const createdEventIds = [];
+
+/**
  * Helper — quick-create a fresh event using the seeded "Church Service"
  * event type (id 1) and return its id via a callback. Centralized so
  * every test in this file can guarantee the dashboard has at least one
@@ -9,6 +18,11 @@
  * Tests in this file are SELF-SUFFICIENT — they never depend on seed
  * data being populated, only on the seeded event types being present
  * (which the other passing event specs also rely on).
+ *
+ * Only events this call actually created are tracked for cleanup —
+ * /api/events/quick-create returns an already existing event (created:false)
+ * when one of the same type exists for the day, and that one is not ours to
+ * delete.
  */
 function createTestEvent(callback) {
     cy.makePrivateAdminAPICall(
@@ -18,8 +32,71 @@ function createTestEvent(callback) {
         200,
     ).then((createResp) => {
         expect(createResp.body).to.have.property("eventId");
+        if (createResp.body.created) {
+            createdEventIds.push(createResp.body.eventId);
+        }
         callback(createResp.body.eventId);
     });
+}
+
+/**
+ * Helper — create an event with a caller-supplied unique title and return its
+ * id. POST /api/events answers with `{success:true}` only, so the event is
+ * looked up again by its title marker.
+ *
+ * The event is dated 31 December of the current year so it always lands in the
+ * dashboard's default view (current year, all months) and is still in the
+ * future, which puts its row in the always-visible "current events" tbody.
+ */
+function createUniqueEvent(title, callback) {
+    const year = new Date().getFullYear();
+
+    cy.makePrivateAdminAPICall(
+        "POST",
+        "/api/events",
+        {
+            Title: title,
+            Type: 1,
+            Desc: "",
+            Text: "",
+            Start: `${year}-12-31 23:00:00`,
+            End: `${year}-12-31 23:59:00`,
+            PinnedCalendars: [],
+        },
+        200,
+    );
+
+    cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((resp) => {
+        const matches = resp.body.Events.filter((evt) => evt.Title === title);
+        expect(matches, `exactly one event titled "${title}"`).to.have.length(1);
+        createdEventIds.push(matches[0].Id);
+        callback(matches[0].Id);
+    });
+}
+
+/**
+ * Helper — open the action dropdown of one specific event row.
+ *
+ * Rows for events that already ended, or that were deactivated, live in a
+ * collapsed `tbody.past-events-body`. Expand that group explicitly before
+ * interacting with the row, otherwise the menu item is unreachable as soon as
+ * the database holds other events in the same month (issue #9795).
+ */
+function openEventActionMenu(eventId) {
+    const rowSelector = `.event-action-menu-placeholder[data-event-id="${eventId}"]`;
+
+    cy.get(rowSelector, { timeout: 10000 }).then(($placeholder) => {
+        const $collapsed = $placeholder.closest("tbody.past-events-body:not(.expanded)");
+        if ($collapsed.length > 0) {
+            cy.get(`[data-past-toggle="${$collapsed.attr("id")}"]`).click();
+        }
+    });
+
+    cy.get(rowSelector).should("be.visible");
+    // The menu markup is injected by JS once the locales are ready.
+    cy.get(rowSelector)
+        .find(".dropdown button[data-bs-toggle='dropdown']", { timeout: 10000 })
+        .click();
 }
 
 describe("Events Dashboard (MVC)", () => {
@@ -167,15 +244,29 @@ describe("Events Dashboard (MVC)", () => {
     });
 
     describe("Event action menu", () => {
-        // Each test creates its own event so the dashboard table tbody is
-        // always populated. We can't rely on seed data — DemoData does not
-        // seed any events, and tests within this suite shouldn't share state.
+        // This suite owns exactly one event: created once through the API with
+        // a unique title marker, acted on by id, and deleted again in after().
+        // Targeting our own row — instead of the first row in the table — keeps
+        // the assertions stable no matter how many other events the database
+        // already holds (issue #9795).
+        const eventTitle = `Events Dashboard Action Menu ${Date.now()}`;
         let testEventId;
 
-        beforeEach(() => {
-            createTestEvent((id) => {
+        before(() => {
+            createUniqueEvent(eventTitle, (id) => {
                 testEventId = id;
             });
+        });
+
+        beforeEach(() => {
+            // The Deactivate test flips the event's status — make sure every
+            // test starts from an active event.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${testEventId}/status`,
+                { active: true },
+                200,
+            );
             // After API calls the PHP session can be reset — re-establish admin session
             cy.setupAdminSession({ forceLogin: true });
         });
@@ -189,38 +280,38 @@ describe("Events Dashboard (MVC)", () => {
 
         it("event title link navigates to the read-only event view page", () => {
             cy.visit("event/dashboard");
-            cy.get("table tbody tr td:first-child a", { timeout: 10000 }).first().then(($link) => {
-                const href = $link.attr("href");
-                expect(href).to.include("/event/view/");
-            });
+            cy.contains("table tbody tr td:first-child a", eventTitle, { timeout: 10000 })
+                .should("have.attr", "href")
+                .and("include", `/event/view/${testEventId}`);
         });
 
         it("dropdown menu has View, Edit, Check-in, Deactivate, Delete items", () => {
             cy.visit("event/dashboard");
-            cy.get(".event-action-menu-placeholder .dropdown button[data-bs-toggle='dropdown']", { timeout: 10000 })
-                .first()
-                .click({ force: true });
-            cy.get(".dropdown-menu.show").within(() => {
-                cy.contains("View").should("exist");
-                cy.contains("Edit").should("exist");
-                cy.contains("Check-in").should("exist");
-                // For an active event the toggle says Deactivate
-                cy.contains(/Deactivate|Activate/).should("exist");
-                cy.contains("Delete").should("exist");
-            });
+            openEventActionMenu(testEventId);
+
+            cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`)
+                .find(".dropdown-menu.show")
+                .within(() => {
+                    cy.contains("View").should("exist");
+                    cy.contains("Edit").should("exist");
+                    cy.contains("Check-in").should("exist");
+                    // For an active event the toggle says Deactivate
+                    cy.contains(/Deactivate|Activate/).should("exist");
+                    cy.contains("Delete").should("exist");
+                });
         });
 
         it("Deactivate POSTs /api/events/{id}/status with active=false", () => {
             cy.intercept("POST", "**/api/events/*/status").as("status");
             cy.visit("event/dashboard");
 
-            // Find the event we just created and deactivate it via the menu
-            cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`, { timeout: 10000 })
-                .within(() => {
-                    cy.get(".dropdown button[data-bs-toggle='dropdown']").click({ force: true });
-                });
+            // Find the event we created for this suite and deactivate it via the menu
+            openEventActionMenu(testEventId);
 
-            cy.get(".dropdown-menu.show").contains("Deactivate").click();
+            cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`)
+                .find(".dropdown-menu.show")
+                .contains("Deactivate")
+                .click();
 
             cy.wait("@status").then(({ request, response }) => {
                 expect(response.statusCode).to.eq(200);
@@ -241,17 +332,35 @@ describe("Events Dashboard (MVC)", () => {
             cy.intercept("POST", "**/api/events/*/status").as("status");
             cy.visit("event/dashboard");
 
-            cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`, { timeout: 10000 })
-                .within(() => {
-                    cy.get(".dropdown button[data-bs-toggle='dropdown']").click({ force: true });
-                });
+            // A deactivated event is rendered as a "past" row, so its month
+            // group has to be expanded before the menu can be used.
+            openEventActionMenu(testEventId);
 
-            cy.get(".dropdown-menu.show").contains("Activate").click();
+            cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`)
+                .find(".dropdown-menu.show")
+                .contains("Activate")
+                .click();
 
             cy.wait("@status").then(({ request, response }) => {
                 expect(response.statusCode).to.eq(200);
                 expect(request.body).to.deep.equal({ active: true });
             });
+        });
+    });
+
+    after(() => {
+        // Delete everything this spec created so the next run starts from the
+        // same state — stale rows are exactly what made these tests flaky
+        // (issue #9795).
+        const ids = createdEventIds.splice(0);
+        ids.forEach((id) => {
+            cy.makePrivateAdminAPICall("DELETE", `/api/events/${id}`, null, [200, 404]);
+        });
+
+        // Nothing of ours may be left behind.
+        cy.makePrivateAdminAPICall("GET", "/api/events", null, [200, 404]).then((resp) => {
+            const remaining = (resp.body.Events || []).filter((evt) => ids.includes(evt.Id));
+            expect(remaining, "events created by this spec were all deleted").to.have.length(0);
         });
     });
 });
