@@ -24,10 +24,12 @@ describe("API Private Admin - Background Timer Jobs concurrency", () => {
     // what it is for — but it would also hide the #9727 race this spec exists
     // to catch, so the limit is disabled for the duration.
     const RATE_LIMIT = "iTimerJobsMinIntervalMinutes";
+    const TIMEZONE = "sTimeZone";
 
     let originalMarker;
     let originalFeature;
     let originalRateLimit;
+    let configuredTimezone;
 
     const configUrl = (name) => `/admin/api/system/config/${name}`;
 
@@ -53,12 +55,24 @@ describe("API Private Admin - Background Timer Jobs concurrency", () => {
     const writeConfig = (name, value) =>
         cy.makePrivateAdminAPICall("POST", configUrl(name), { value: value }, 200);
 
-    /** Today's date in the app's configured timezone, as the service formats it. */
-    const todayString = () => {
-        const now = new Date();
-        const pad = (n) => String(n).padStart(2, "0");
-        return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
-    };
+    /**
+     * Today's date in the app's configured timezone, as the service formats it.
+     *
+     * BirthdayEmailService builds the marker from
+     * DateTimeUtils::getConfiguredTimezone(), i.e. the `sTimeZone` system
+     * setting. `new Date()` on the Cypress runner gives the runner's local
+     * wall-clock date instead (UTC in CI), so the two disagree on the calendar
+     * date whenever the runner and the install sit on different sides of
+     * midnight. Derive the expected string from `sTimeZone`, read once in
+     * before(). "en-CA" formats as ISO-style YYYY-MM-DD.
+     */
+    const todayString = () =>
+        new Intl.DateTimeFormat("en-CA", {
+            timeZone: configuredTimezone,
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        }).format(new Date());
 
     /**
      * Fire CONCURRENT_REQUESTS timer-job requests in parallel and resolve with
@@ -82,6 +96,11 @@ describe("API Private Admin - Background Timer Jobs concurrency", () => {
         });
 
     before(() => {
+        readConfig(TIMEZONE).then((value) => {
+            // Empty falls back to the runner's local zone, which is what the
+            // assertion used before — never worse than the old behaviour.
+            configuredTimezone = value || undefined;
+        });
         readConfig(MARKER).then((value) => {
             originalMarker = value;
         });
@@ -122,6 +141,14 @@ describe("API Private Admin - Background Timer Jobs concurrency", () => {
     });
 
     it("returns 200 for every concurrent request when the run marker is stale", () => {
+        // A NULL cfg_value is the same "stale marker" case and used to block
+        // birthday emails for good, because SQL evaluates `NULL <> :today` as
+        // UNKNOWN so the conditional UPDATE matched nothing. It cannot be set up
+        // from here: POSTing a config value never writes NULL (an empty value
+        // equals the default, which deletes the row), and Cypress has no raw-SQL
+        // task in this project. The claim now filters
+        // `cfg_value <> :today OR cfg_value IS NULL`; the NULL path is covered
+        // by direct-SQL verification on the dev stack.
         writeConfig(MARKER, "2000-01-01");
 
         fireConcurrentTimerJobs().then((statuses) => {
