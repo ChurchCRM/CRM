@@ -16,11 +16,15 @@ describe('Admin System Logs - UI Tests', () => {
   const SET_LOG_LEVEL_URL = '/admin/api/system/logs/loglevel';
   const DEBUG_LOG_LEVEL = 100;
 
+  // Captured in before() and restored in after(). Cypress aliases do not survive
+  // from before() to after(), so this has to be a closure-level binding.
+  let originalLevel;
+
   before(() => {
     // Force DEBUG just long enough for the marker request to be recorded, then
     // put the configured level back so the rest of the spec logs normally.
     cy.makePrivateAdminAPICall('GET', LOG_LEVEL_URL, null, 200).then((response) => {
-      const originalLevel = response.body.value;
+      originalLevel = response.body.value;
 
       cy.makePrivateAdminAPICall(
         'POST',
@@ -43,6 +47,22 @@ describe('Admin System Logs - UI Tests', () => {
         200,
       );
     });
+  });
+
+  // Safety net. Every call in before() is a queued Cypress command, so an
+  // unexpected status on any of them aborts the queue and the restore above is
+  // never reached — leaving the server at DEBUG for every spec that follows.
+  // Mocha runs after() even when before() fails, and re-posting the level the
+  // happy path already restored is a no-op.
+  after(() => {
+    if (originalLevel !== undefined) {
+      cy.makePrivateAdminAPICall(
+        'POST',
+        SET_LOG_LEVEL_URL,
+        { value: Number(originalLevel) },
+        200,
+      );
+    }
   });
 
   beforeEach(() => {
@@ -163,8 +183,15 @@ describe('Admin System Logs - UI Tests', () => {
         // Read the size off the page and refuse to download an unbounded file.
         // This is the check that would have failed fast on the 269 MB log
         // instead of hanging.
+        // .a('number') alone would pass for NaN (typeof NaN === 'number'), and
+        // the bound below would then fail with "expected NaN to be less than
+        // 5120" instead of naming the real problem: an unparseable size cell.
+        // satisfy(Number.isFinite) says that directly and, unlike
+        // `.and.not.to.be.NaN`, keeps the chain positive — chai's negation flag
+        // survives .and, so a `not` here would invert the lessThan that follows.
         expect(appLog.sizeKb, `size of ${appLog.name} in KB`)
           .to.be.a('number')
+          .and.to.satisfy(Number.isFinite)
           .and.to.be.lessThan(MAX_LOG_KB);
 
         return cy.wrap(appLog.name, { log: false });
