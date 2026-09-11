@@ -1,0 +1,17 @@
+# Deny all direct web access to the cli/ directory.
+#
+# These scripts are command-line entry points (cron runners). They ship inside
+# the document root so every install has them without a separate deployment
+# step, but nothing here should ever be reachable over HTTP — running the
+# scheduled jobs is not an unauthenticated operation.
+#
+# Each script also refuses to run unless PHP_SAPI is "cli", so an install on a
+# server that ignores .htaccess is still protected.
+
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+</IfModule>
