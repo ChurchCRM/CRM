@@ -6,6 +6,12 @@ tags: ["frontend", "tabler", "tables", "dropdowns", "cart", "ux"]
 
 # Skill: Table Action Menu <!-- learned: 2026-03-23 -->
 
+> **This file is the single source of truth for row action menus** — the trigger markup,
+> the trigger icon, and the wrapper that stops the dropdown being clipped.
+> `responsive-design-guidelines.md`, `tabler-components.md` and `icon-management.md` defer
+> to it. If any of them disagrees, this file wins and the other one is the bug.
+> <!-- learned: 2026-09-11 -->
+
 ## Rule
 
 Every table row that has per-row actions **must** use the standard Tabler action dropdown. No exceptions. This applies to PHP templates and JS-rendered DataTables columns alike.
@@ -19,7 +25,7 @@ Every table row that has per-row actions **must** use the standard Tabler action
     <div class="dropdown">
         <button class="btn btn-sm btn-ghost-secondary" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-ellipsis-v"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
         </button>
         <div class="dropdown-menu dropdown-menu-end">
             <a class="dropdown-item" href="Editor.php?ID=<?= $id ?>">
@@ -48,7 +54,24 @@ window.CRM.renderPersonActionMenu(personId, fullName, { familyId, inCart })
 
 // Standard family action menu: View → Edit → [divider] → Cart → [divider] → Delete
 window.CRM.renderFamilyActionMenu(familyId, familyName, { inCart })
+
+// Standard event action menu: View → Edit → [divider] → Activate/Deactivate → [divider] → Delete
+window.CRM.renderEventActionMenu(eventId, eventTitle, { inactive })
 ```
+
+All three emit the canonical trigger verbatim
+(`src/skin/js/CRMJSOM.js:612-613`, `:683-684`, `:768-769`):
+
+```html
+<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+  <i class="fa-solid fa-ellipsis-vertical"></i>
+</button>
+```
+
+**`fa-ellipsis-vertical`, never `fa-ellipsis-v`.** Font Awesome 7.3.1 ships `.fa-ellipsis-v`
+as a backwards-compatibility alias so both render, but the codebase uses
+`fa-ellipsis-vertical` in all 37 places and hand-written markup must match the shared
+renderers.
 
 - `familyId` — optional; when provided, adds a "View Family" item after Edit
 - `inCart` — optional; flips cart button to RemoveFromCart state
@@ -97,7 +120,7 @@ For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 | Rule | ✅ Correct | ❌ Wrong |
 |------|-----------|---------|
 | Trigger class | `btn-ghost-secondary` | `btn-outline-secondary`, `btn-secondary` |
-| Trigger icon | `fa-solid fa-ellipsis-v` | `fa-solid fa-ellipsis-v`, `fa-ellipsis-v` |
+| Trigger icon | `fa-solid fa-ellipsis-vertical` | `fa-solid fa-ellipsis-v`, `fa-ellipsis-v`, `ti ti-dots-vertical` |
 | Menu alignment | `dropdown-menu-end` | `dropdown-menu-right` |
 | Aria attribute | `aria-expanded="false"` only | `aria-haspopup="true"` |
 | Inline styles | none | `style="z-index:..."`, `style="position:..."` |
@@ -136,7 +159,7 @@ codebase audit of three still-broken instances that already had it.
                         <button class="btn btn-sm btn-ghost-secondary"
                                 data-bs-toggle="dropdown"
                                 data-bs-display="static">
-                            <i class="fa-solid fa-ellipsis-v"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">...</div>
                     </div>
@@ -160,15 +183,30 @@ content to overflow the viewport. `overflow-x: clip` clips horizontal overflow (
 `scroll`, not `clip`. This preserves horizontal containment while letting the dropdown
 menu escape downward.
 
-**Reference implementations** (canonical per-wrapper pattern):
+**Reference implementations** (every `overflow-x: clip` wrapper in the tree):
 - `src/people/views/self-register.php:55` ← canonical reference
-- `src/event/views/list-events.php`
-- `src/groups/views/group-view.php`
-- `src/event/views/types-list.php`
-- `src/people/views/family-view.php:190, 264, 636`
+- `src/people/views/family-view.php:204, 283, 670`
 - `src/people/views/family-list.php:62`
-- `src/people/views/person-view.php:408`
-- `src/DepositSlipEditor.php:277`
+- `src/people/views/person-view.php:417`
+- `src/finance/views/funds/index.php:111`
+- `src/DepositSlipEditor.php:281`
+
+### The superseded form: `overflow: visible` <!-- learned: 2026-09-11 -->
+
+Before #9373/#9383 the documented wrapper was `<div style="overflow: visible;">`. It does
+stop the clipping, but it removes **all** overflow containment, so a wide table spills out
+of its card and pushes the page into horizontal scroll on a phone. Roughly 19 views still
+carry it — e.g. `src/event/views/list-events.php:196-197`,
+`src/groups/views/group-view.php:210`, `src/event/views/types-list.php:14`.
+
+Treat `overflow: visible` as **legacy, not wrong-and-broken**: do not churn a file just to
+convert it, but when you touch a table wrapper for any other reason, upgrade it to
+`overflow-x: clip; overflow-y: visible;`.
+
+```bash
+# Find the remaining ones
+grep -rn "overflow: visible" src/ --include="*.php"
+```
 
 ### Still required: `data-bs-display="static"` on each trigger
 
@@ -182,7 +220,7 @@ on its own, but still needed.
         data-bs-toggle="dropdown"
         data-bs-display="static"
         aria-expanded="false">
-    <i class="fa-solid fa-ellipsis-v"></i>
+    <i class="fa-solid fa-ellipsis-vertical"></i>
 </button>
 ```
 
@@ -286,7 +324,7 @@ No Delete action is shown on the cart page — users can only remove from cart, 
 
 ## Checklist Before Committing Any Table Change
 
-- [ ] Trigger uses `btn-ghost-secondary` + `fa-solid fa-ellipsis-v`
+- [ ] Trigger uses `btn-ghost-secondary` + `fa-solid fa-ellipsis-vertical`
 - [ ] Menu uses `dropdown-menu-end` (not `dropdown-menu-right`)
 - [ ] No `aria-haspopup` attribute
 - [ ] No inline styles on trigger, menu, `<td>`, or `.dropdown`

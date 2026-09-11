@@ -50,7 +50,7 @@ codebase:
 - Stat cards: `col-6` (two-up, never stack to one-up — looks empty on 375px)
 - Main columns: `col-12` (stack everything)
 - Form fields: `col-12`
-- Tables: **must** be wrapped in `.table-responsive` — UNLESS rows have action dropdowns, in which case use `<div style="overflow: visible;">` instead (`data-bs-display="static"` alone does NOT prevent clipping — see [`table-action-menu.md`](./table-action-menu.md))
+- Tables: **must** be wrapped in `.table-responsive` — UNLESS rows have action dropdowns, in which case [`table-action-menu.md`](./table-action-menu.md) → "Overflow / Dropdown Clipping" owns the rule (`overflow-x: clip; overflow-y: visible`; `data-bs-display="static"` alone does NOT prevent clipping)
 - Touch targets: minimum **44×44px** (Apple HIG)
 - Page headers: use icon-only buttons (`font-size: 0` trick, see `_tabler-bridge.scss`)
 - Labels on multi-step forms: hide under 400px (`d-none d-sm-inline`)
@@ -70,7 +70,7 @@ codebase:
   balanced two-column layouts. Do NOT use the 8/4 split at md — it cramps the
   narrow column.
 - Form fields: `col-md-6` for paired fields (name/email, date range)
-- Tables: wrap in `.table-responsive` — UNLESS rows have action dropdowns, in which case use `<div style="overflow: visible;">` instead (see `table-action-menu.md`)
+- Tables: wrap in `.table-responsive` — UNLESS rows have action dropdowns, in which case follow [`table-action-menu.md`](./table-action-menu.md) → "Overflow / Dropdown Clipping"
 - Card header tabs: keep visible but consider shorter labels
   (`<span class="d-none d-xl-inline">Latest Families</span><span class="d-xl-none">New</span>`)
 
@@ -176,30 +176,32 @@ On mobile and tablet they stack automatically (both become `col-12`).
 
 ### Tables must be wrapped — but NOT with `.table-responsive` if the rows have action dropdowns <!-- learned: 2026-04-09 -->
 
-> [!WARNING] Critical conflict with [`table-action-menu.md`](./table-action-menu.md)
+> [!NOTE] The wrapper rule lives in [`table-action-menu.md`](./table-action-menu.md)
 > `.table-responsive` sets `overflow-x: auto`, which (per CSS spec) forces
 > `overflow-y: auto` as well — and that **clips absolutely-positioned row
-> dropdowns on their last rows**. For tables that have per-row action menus
-> (the `ti-dots-vertical` dropdown pattern), you **must** use
-> `<div style="overflow: visible;">` as the wrapper instead. See the Overflow
-> section of `table-action-menu.md` for the full root cause.
+> dropdowns on their last rows**. Tables with per-row action menus therefore need a
+> different wrapper. [`table-action-menu.md`](./table-action-menu.md) →
+> "Overflow / Dropdown Clipping" is the single source of truth for that wrapper, the
+> root cause, and the trigger markup. The summary below repeats its conclusion only —
+> if the two ever disagree, `table-action-menu.md` wins.
 
 **Decision flow for every table in a card:**
 
 ```
 Does the table have per-row action dropdowns?
-├── YES → Use <div style="overflow: visible;"> (dropdowns can escape)
-│         Accept horizontal overflow on phones — it's the lesser evil
-│         compared to broken action menus.
+├── YES → Use <div style="overflow-x: clip; overflow-y: visible;">
+│         Horizontal overflow stays clipped; the dropdown can still escape
+│         downward. (The older <div style="overflow: visible;"> also stops the
+│         clipping but drops horizontal containment — see table-action-menu.md.)
 └── NO  → Use .table-responsive (proper mobile horizontal scroll)
 ```
 
 ```html
 <!-- ✅ CORRECT — table with row action dropdowns -->
-<div class="card-body" style="overflow: visible;">
-    <div style="overflow: visible;">
+<div class="card-body">
+    <div style="overflow-x: clip; overflow-y: visible;">
         <table class="table table-vcenter table-hover card-table">
-            <!-- rows with ti-dots-vertical dropdown in last <td> -->
+            <!-- rows whose last <td> holds the fa-ellipsis-vertical dropdown -->
         </table>
     </div>
 </div>
@@ -311,7 +313,7 @@ there when introducing a new page or fixing a responsive bug.
 | `col-lg-8 col-md-8` main content | Use `col-lg-8` only; stack on md |
 | Inline `width: 300px` on inputs | Use `col-md-*` wrappers + `w-100` |
 | Bare `<table class="table">` in card (no row dropdowns) | Wrap in `.table-responsive` |
-| Bare `<table class="table">` in card (WITH row dropdowns) | Wrap in `<div style="overflow: visible;">` — `.table-responsive` clips dropdowns (see `table-action-menu.md`) |
+| Bare `<table class="table">` in card (WITH row dropdowns) | Wrap in `<div style="overflow-x: clip; overflow-y: visible;">` — `.table-responsive` clips dropdowns (see [`table-action-menu.md`](./table-action-menu.md)) |
 | `navbar-expand-lg` on vertical navbar | The canonical Tabler sidebar is `navbar-expand-xl` |
 | Hardcoded icon `font-size: 12px` on touch targets | Default (≥16px) or bigger for mobile |
 | Long labels crammed into card tabs | Use `d-none d-xl-inline` + `d-xl-none` short label pair |
