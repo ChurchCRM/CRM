@@ -49,6 +49,8 @@ jobs:
         run: npx biome format .
       - name: Lint check (biome)
         run: npx biome check webpack/
+      - name: Icon library check (no Tabler icon classes)
+        run: node scripts/validate-no-tabler-icons.js
 
   format-fix:
     name: Apply format fixes

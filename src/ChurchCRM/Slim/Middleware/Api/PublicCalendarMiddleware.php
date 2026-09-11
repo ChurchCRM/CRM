@@ -34,7 +34,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 403,
                 gettext('External calendar sharing is disabled'),
                 gettext('The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error.'),
-                'ti-lock',
+                'fa-lock',
             );
         }
 
@@ -46,7 +46,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 400,
                 gettext('Missing calendar access token'),
                 gettext('The calendar link is incomplete. Please check the URL with the person who sent it to you.'),
-                'ti-link-off',
+                'fa-link-slash',
             );
         }
 
@@ -60,7 +60,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 404,
                 gettext('Calendar not found'),
                 gettext('This calendar link is invalid or has been revoked. Ask the church for a current link.'),
-                'fa-calendar-slash',
+                'fa-calendar-xmark',
             );
         }
 
@@ -73,7 +73,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 400,
                 gettext('Invalid date format'),
                 gettext('The start or end date in the link could not be understood. Try the base calendar link without date parameters.'),
-                'ti-calendar-question',
+                'fa-circle-question',
             );
         }
         $request = $request->withAttribute('events', $events);
@@ -94,7 +94,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
         int $status,
         string $title,
         string $message,
-        string $icon = 'fa-calendar-slash',
+        string $icon = 'fa-calendar-xmark',
     ): ResponseInterface {
         if ($this->prefersJson($request)) {
             return SlimUtils::renderJSON(
