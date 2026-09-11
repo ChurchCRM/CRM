@@ -16,7 +16,8 @@ const FILE_EXTS = ['.php', '.js', '.jsx', '.ts', '.tsx', '.vue', '.po', '.json',
 // call sites across 19 .php views went unnoticed (#9723).
 //
 // Rather than hard-coding a list of directories here, read the globs out of the
-// extractor's own config so the two can never drift apart.
+// extractor's own config — both `extract.input` and `extract.ignore` — so the
+// two can never drift apart.
 
 const I18NEXT_CONFIG = path.join(root, 'locale', 'scripts', 'i18next.config.ts');
 
@@ -67,11 +68,11 @@ function blankComments(source) {
 }
 
 /**
- * Index of the `]` closing the `[` at `openPos`, or -1. Counts bracket depth so
- * a character class inside a glob (`'!src/[Vv]endor/**'`) cannot end the array
- * early, and skips string literals so a bracket inside one is not counted.
+ * Index of the delimiter closing the one at `openPos`, or -1. Counts depth so a
+ * character class inside a glob (`'src/[Vv]endor/**'`) cannot end the array
+ * early, and skips string literals so a delimiter inside one is not counted.
  */
-function findMatchingBracket(source, openPos) {
+function findMatchingDelimiter(source, openPos, open = '[', close = ']') {
   let depth = 0;
   for (let i = openPos; i < source.length; i++) {
     const char = source[i];
@@ -84,9 +85,9 @@ function findMatchingBracket(source, openPos) {
       }
       continue;
     }
-    if (char === '[') {
+    if (char === open) {
       depth++;
-    } else if (char === ']') {
+    } else if (char === close) {
       depth--;
       if (depth === 0) return i;
     }
@@ -95,7 +96,60 @@ function findMatchingBracket(source, openPos) {
 }
 
 /**
- * Pull the `extract.input` globs out of i18next.config.ts source text.
+ * Body of the `extract: { … }` block, or the whole source when there is no such
+ * block (the self-test fixtures are bare `input: […]` / `ignore: […]` snippets).
+ *
+ * Scoping matters for `ignore`: i18next-cli accepts an `ignore` under `lint` as
+ * well as under `extract`, and reading the wrong one would widen the exclusion
+ * set — which makes this rule quieter, not louder, and so hides exactly the
+ * kind of gap it exists to catch.
+ */
+function extractSection(code) {
+  const marker = code.match(/\bextract\s*:\s*\{/);
+  if (!marker) return code;
+  const open = marker.index + marker[0].length - 1;
+  const close = findMatchingDelimiter(code, open, '{', '}');
+  return close === -1 ? code : code.slice(open + 1, close);
+}
+
+/**
+ * Glob strings from `<key>: [...]` (or `<key>: '...'`, which i18next-cli also
+ * accepts for `ignore`) inside `section`. Returns null for an absent optional
+ * key; throws for anything it cannot read when the key is required.
+ */
+function parseGlobList(section, key, label, required) {
+  const arrayStart = section.match(new RegExp(`\\b${key}\\s*:\\s*\\[`));
+  if (arrayStart) {
+    const open = arrayStart.index + arrayStart[0].length - 1;
+    const close = findMatchingDelimiter(section, open, '[', ']');
+    if (close === -1) {
+      throw new Error(`the "${key}" array in ${label} is never closed — cannot tell which files the extractor scans.`);
+    }
+    const block = section.slice(open + 1, close);
+    const globs = [...block.matchAll(/(['"`])((?:\\.|(?!\1)[^\\])*)\1/g)].map((m) => m[2]);
+    if (globs.length === 0 && required) {
+      throw new Error(`the "${key}" array in ${label} has no string literals — cannot tell which files the extractor scans.`);
+    }
+    return globs;
+  }
+
+  const single = section.match(new RegExp(`\\b${key}\\s*:\\s*(['"\`])((?:\\\\.|(?!\\1)[^\\\\])*)\\1`));
+  if (single) return [single[2]];
+
+  if (!required) return null;
+  throw new Error(`no "${key}: [" array in ${label} — cannot tell which files the extractor scans.`);
+}
+
+/**
+ * Pull the `extract.input` and `extract.ignore` globs out of i18next.config.ts
+ * source text.
+ *
+ * Both matter. i18next-cli hands `input` straight to node-glob, which does not
+ * implement `!` negation inside a pattern array, so a `'!…'` entry there is
+ * inert and `ignore` is the option that actually excludes anything (#9790).
+ * `'!'` entries are still honoured wherever they appear, so that one
+ * re-introduced by hand leaves this rule at least as strict as the extractor
+ * rather than looser.
  *
  * Throws instead of returning null on anything it cannot read. A coverage rule
  * that silently switches itself off is worse than no rule at all — #9723 is
@@ -109,25 +163,14 @@ function parseExtractorInput(source, label) {
   // Comments first: a commented-out entry inside the array is not a live glob,
   // and neither is the prose after a trailing `//`.
   const code = blankComments(source);
+  const section = extractSection(code);
 
-  const keyword = code.match(/\binput\s*:\s*\[/);
-  if (!keyword) {
-    throw new Error(`no "input: [" array in ${label} — cannot tell which files the extractor scans.`);
-  }
-  const open = keyword.index + keyword[0].length - 1;
-  const close = findMatchingBracket(code, open);
-  if (close === -1) {
-    throw new Error(`the "input" array in ${label} is never closed — cannot tell which files the extractor scans.`);
-  }
+  const input = parseGlobList(section, 'input', label, true);
+  const ignore = parseGlobList(section, 'ignore', label, false) ?? [];
 
-  const block = code.slice(open + 1, close);
-  const globs = [...block.matchAll(/(['"`])((?:\\.|(?!\1)[^\\])*)\1/g)].map((m) => m[2]);
-  if (globs.length === 0) {
-    throw new Error(`the "input" array in ${label} has no string literals — cannot tell which files the extractor scans.`);
-  }
-
-  const include = globs.filter((g) => !g.startsWith('!'));
-  const exclude = globs.filter((g) => g.startsWith('!')).map((g) => g.slice(1));
+  const stripBang = (g) => (g.startsWith('!') ? g.slice(1) : g);
+  const include = input.filter((g) => !g.startsWith('!'));
+  const exclude = [...input.filter((g) => g.startsWith('!')), ...ignore].map(stripBang);
   if (include.length === 0) {
     throw new Error(`the "input" array in ${label} has only "!" exclusions — cannot tell which files the extractor scans.`);
   }
@@ -220,7 +263,7 @@ const rules = [
     // declaration is not a call site.
     re: /i18next\.t\(\s*['"`]/,
     appliesTo: (file) => !isExtractorTooling(file) && !isScannedByExtractor(file),
-    message: 'i18next.t() in a file the extractor does not scan — the string will never reach locale/messages.po and can never be translated (see #9723). Add the file\'s directory to extract.input in locale/scripts/i18next.config.ts, or move the string to a scanned file / gettext().',
+    message: 'i18next.t() in a file the extractor does not scan — the string will never reach locale/messages.po and can never be translated (see #9723). Add the file\'s directory to extract.input in locale/scripts/i18next.config.ts (and check it is not excluded by extract.ignore), or move the string to a scanned file / gettext().',
   },
 ];
 
@@ -417,6 +460,55 @@ function runSelfTest() {
     assert.deepStrictEqual(parsed.exclude, ['https://not-a-comment/**']);
   });
 
+  // #9790: exclusions live in `extract.ignore`, because node-glob has no array
+  // negation and the `'!…'` entries in `input` were inert.
+  check('extract.ignore entries become exclusions', () => {
+    const parsed = parseExtractorInput(
+      `export default defineConfig({ extract: {
+         input: [ 'src/**/*.php', 'webpack/**/*.{js,ts,tsx}' ],
+         ignore: [ 'src/skin/external/**', 'webpack/**/*.d.ts' ]
+       } });`,
+      'fixture',
+    );
+    assert.deepStrictEqual(parsed.include, ['src/**/*.php', 'webpack/**/*.{js,ts,tsx}']);
+    assert.deepStrictEqual(parsed.exclude, ['src/skin/external/**', 'webpack/**/*.d.ts']);
+
+    const m = compileExtractorGlobs(parsed);
+    assert.ok(!m.exclude('src/ChurchCRM/dashboard/views/Dashboard.php'), 'a scanned view is not excluded');
+    assert.ok(m.exclude('src/skin/external/vendor.php'), 'expected src/skin/external to be excluded');
+    assert.ok(m.exclude('webpack/types/window.d.ts'), 'expected .d.ts to be excluded');
+  });
+
+  // i18next-cli types `ignore` as `string | string[]`. Missing a single-string
+  // form would shrink the exclusion set, which makes the rule quieter — the
+  // silent-failure direction this file exists to avoid.
+  check('a single-string extract.ignore is read', () => {
+    const parsed = parseExtractorInput(
+      `extract: { input: [ 'src/**/*.php' ], ignore: 'src/vendor/**' }`,
+      'fixture',
+    );
+    assert.deepStrictEqual(parsed.exclude, ['src/vendor/**']);
+  });
+
+  // `ignore` is also a valid key under `lint`. Reading that one would exclude
+  // files the extractor really does scan, silencing the rule for them.
+  check('a lint.ignore is not read as an extract exclusion', () => {
+    const parsed = parseExtractorInput(
+      `export default defineConfig({
+         extract: { input: [ 'src/**/*.php' ], ignore: [ 'src/vendor/**' ] },
+         lint: { ignore: [ 'src/**/*.php' ] }
+       });`,
+      'fixture',
+    );
+    assert.deepStrictEqual(parsed.include, ['src/**/*.php']);
+    assert.deepStrictEqual(parsed.exclude, ['src/vendor/**']);
+  });
+
+  check('a missing extract.ignore is not an error', () => {
+    const parsed = parseExtractorInput(`extract: { input: [ 'src/**/*.php' ] }`, 'fixture');
+    assert.deepStrictEqual(parsed.exclude, []);
+  });
+
   // Failing loudly is the point: a rule that disables itself hides exactly the
   // bug (#9723) it exists to catch.
   check('an unreadable input array throws', () => {
@@ -433,6 +525,10 @@ function runSelfTest() {
     assert.ok(live.include('src/ChurchCRM/dashboard/views/Dashboard.php'), 'expected .php views to be scanned');
     assert.ok(live.include('src/skin/js/anything.js'), 'expected src/skin/js to be scanned');
     assert.ok(!live.include('cypress/e2e/ui/some.spec.js'), 'expected cypress specs not to be scanned');
+    // The live exclusions must be readable from `extract.ignore` (#9790).
+    assert.ok(live.exclude('src/skin/external/anything.php'), 'expected src/skin/external to be excluded');
+    assert.ok(live.exclude('webpack/types/window.d.ts'), 'expected .d.ts files to be excluded');
+    assert.ok(!isScannedByExtractor('webpack/types/window.d.ts'), 'expected .d.ts not to count as scanned');
   });
 
   console.log('locale-check self-test:');
