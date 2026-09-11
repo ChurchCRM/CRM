@@ -1,0 +1,118 @@
+/// <reference types="cypress" />
+
+/**
+ * POST /api/background/timerjobs under concurrency — regression coverage for
+ * issue #9727.
+ *
+ * BirthdayEmailService::run() guarded duplicate sends with a check-then-set on
+ * the `sLastBirthdayEmailRunDate` config value. Footer.js fires the timer-job
+ * endpoint on every page load, so several requests routinely passed the check
+ * together and then collided on the `config_cfg` primary key: 7 of 8 concurrent
+ * requests returned HTTP 500, and because the exception escaped
+ * SystemService::runTimerJobs() they also skipped the CRON_RUN hook.
+ *
+ * The requests are fired with fetch(..., { credentials: "omit" }) so each one
+ * gets its own PHP session — a shared session is serialised by PHP's session
+ * lock and cannot reproduce the race.
+ */
+describe("API Private Admin - Background Timer Jobs concurrency", () => {
+    const CONCURRENT_REQUESTS = 8;
+    const MARKER = "sLastBirthdayEmailRunDate";
+    const FEATURE = "bEnableBirthdayEmails";
+
+    let originalMarker;
+    let originalFeature;
+
+    const configUrl = (name) => `/admin/api/system/config/${name}`;
+
+    const readConfig = (name) =>
+        cy
+            .makePrivateAdminAPICall("GET", configUrl(name), null, 200)
+            .then((response) => response.body.value);
+
+    const writeConfig = (name, value) =>
+        cy.makePrivateAdminAPICall("POST", configUrl(name), { value: value }, 200);
+
+    /** Today's date in the app's configured timezone, as the service formats it. */
+    const todayString = () => {
+        const now = new Date();
+        const pad = (n) => String(n).padStart(2, "0");
+        return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+    };
+
+    /**
+     * Fire CONCURRENT_REQUESTS timer-job requests in parallel and resolve with
+     * the list of HTTP status codes.
+     */
+    const fireConcurrentTimerJobs = () =>
+        cy.window().then((win) => {
+            const apiKey = Cypress.env("admin.api.key");
+            const calls = Array.from({ length: CONCURRENT_REQUESTS }, () =>
+                win.fetch("/api/background/timerjobs", {
+                    method: "POST",
+                    headers: { "x-api-key": apiKey },
+                    // Each request must get its own PHP session, or the session
+                    // lock serialises them and there is no race to test.
+                    credentials: "omit",
+                }),
+            );
+            return Promise.all(calls).then((responses) =>
+                responses.map((response) => response.status),
+            );
+        });
+
+    before(() => {
+        readConfig(MARKER).then((value) => {
+            originalMarker = value;
+        });
+        readConfig(FEATURE).then((value) => {
+            originalFeature = value;
+        });
+    });
+
+    beforeEach(() => {
+        // Same-origin page so fetch() can reach the API; no session needed
+        // because the requests authenticate with the admin API key.
+        cy.visit("/session/begin");
+        writeConfig(FEATURE, "1");
+    });
+
+    after(() => {
+        writeConfig(MARKER, originalMarker ?? "");
+        writeConfig(FEATURE, originalFeature ?? "0");
+    });
+
+    it("returns 200 for every concurrent request when the run marker is unset", () => {
+        // The #9727 reproduction: no marker row, so every request races to
+        // INSERT it and all but one used to fail with a duplicate-key 500.
+        writeConfig(MARKER, "");
+
+        fireConcurrentTimerJobs().then((statuses) => {
+            expect(statuses).to.have.length(CONCURRENT_REQUESTS);
+            statuses.forEach((status) => expect(status).to.equal(200));
+        });
+
+        // Exactly one request claimed the day.
+        readConfig(MARKER).should("equal", todayString());
+    });
+
+    it("returns 200 for every concurrent request when the run marker is stale", () => {
+        writeConfig(MARKER, "2000-01-01");
+
+        fireConcurrentTimerJobs().then((statuses) => {
+            statuses.forEach((status) => expect(status).to.equal(200));
+        });
+
+        readConfig(MARKER).should("equal", todayString());
+    });
+
+    it("returns 200 for every concurrent request when the run already happened today", () => {
+        writeConfig(MARKER, todayString());
+
+        fireConcurrentTimerJobs().then((statuses) => {
+            statuses.forEach((status) => expect(status).to.equal(200));
+        });
+
+        readConfig(MARKER).should("equal", todayString());
+    });
+});
