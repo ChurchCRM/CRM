@@ -48,18 +48,70 @@ function collectDefinedCommands() {
     return defined;
 }
 
+/**
+ * Body of the `interface Chainable { ... }` block, found by brace matching.
+ * Returns null when the interface is missing, which the caller treats as fatal.
+ */
+function extractChainableBody(content) {
+    const header = /\binterface\s+Chainable\b[^{]*\{/.exec(content);
+    if (header === null) {
+        return null;
+    }
+
+    const bodyStart = header.index + header[0].length;
+    let depth = 1;
+    for (let i = bodyStart; i < content.length; i++) {
+        if (content[i] === '{') {
+            depth++;
+        } else if (content[i] === '}') {
+            depth--;
+            if (depth === 0) {
+                return content.slice(bodyStart, i);
+            }
+        }
+    }
+
+    return null;
+}
+
 /** Method names declared on the Cypress.Chainable interface in commands.d.ts */
 function collectDeclaredCommands() {
     const raw = fs.readFileSync(DECLARATIONS_FILE, 'utf8');
     // Strip comments first so JSDoc prose can never be mistaken for a signature.
     const content = raw.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+
+    // Only members of `interface Chainable` count. Anything outside it — a helper
+    // type, an augmentation of another interface — is not a Cypress command.
+    const body = extractChainableBody(content);
+    if (body === null) {
+        console.error('❌ Could not find `interface Chainable { ... }` in cypress/support/commands.d.ts — check the parser.');
+        process.exit(1);
+    }
+
+    // Depth of every character relative to the interface body, so a method
+    // shorthand nested inside an inline object type (e.g. a parameter typed
+    // `{ callback(x: string): void }`) is not mistaken for a command.
+    const depthAt = new Array(body.length);
+    let depth = 0;
+    for (let i = 0; i < body.length; i++) {
+        if (body[i] === '}') {
+            depth--;
+        }
+        depthAt[i] = depth;
+        if (body[i] === '{') {
+            depth++;
+        }
+    }
+
     const declared = new Set();
     // Each member declaration opens a line with `name(` at any indentation.
     const pattern = /^[ \t]*([A-Za-z_$][A-Za-z0-9_$]*)\s*\(/gm;
-    let match = pattern.exec(content);
+    let match = pattern.exec(body);
     while (match !== null) {
-        declared.add(match[1]);
-        match = pattern.exec(content);
+        if (depthAt[match.index] === 0) {
+            declared.add(match[1]);
+        }
+        match = pattern.exec(body);
     }
 
     return declared;
