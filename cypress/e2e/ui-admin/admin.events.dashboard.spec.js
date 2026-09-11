@@ -10,6 +10,32 @@
 const createdEventIds = [];
 
 /**
+ * Local helper — NOT a cy.* command, and deliberately copied into this spec
+ * rather than added to cypress/support (see
+ * `.agents/skills/churchcrm/cypress-testing.md` → "UI Tests Must Not Call APIs
+ * After Login").
+ *
+ * Every cy.request()-backed call — makePrivateAdminAPICall included — makes PHP
+ * issue a new session, which invalidates the browser session a later cy.visit()
+ * needs. `cy.setupAdminSession({ forceLogin: true })` is documented as not
+ * sufficient to recover from that, so any API call that precedes a cy.visit()
+ * in this spec is followed by a real clear-and-form-login instead.
+ */
+function freshAdminLogin() {
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    // Leaving /session/begin is not by itself proof of a successful login (an
+    // error page would satisfy it too) — confirm a CRM session cookie exists,
+    // the same check cy.session()'s validate() uses in support/ui-commands.js.
+    cy.url().should("not.include", "/session/begin");
+    cy.getCookies().should("satisfy", (cookies) =>
+        cookies.some((cookie) => cookie.name.startsWith("CRM-")),
+    );
+}
+
+/**
  * Helper — quick-create a fresh event using the seeded "Church Service"
  * event type (id 1) and return its id via a callback. Centralized so
  * every test in this file can guarantee the dashboard has at least one
@@ -176,7 +202,7 @@ describe("Events Dashboard (MVC)", () => {
             cy.makePrivateAdminAPICall("GET", "/api/events/types", null, 200).then((apiResp) => {
                 expect(apiResp.body).to.have.property("EventTypes");
                 const apiCount = apiResp.body.EventTypes.length;
-                cy.setupAdminSession({ forceLogin: true });
+                freshAdminLogin();
                 cy.visit("event/dashboard");
 
                 // The view renders the count as a plain <div class="fw-medium">
@@ -194,7 +220,7 @@ describe("Events Dashboard (MVC)", () => {
         it("event title row does not render Quill empty placeholder (<p><br /></p>)", () => {
             // Ensure at least one row exists so the assertion is meaningful.
             createTestEvent(() => {
-                cy.setupAdminSession({ forceLogin: true });
+                freshAdminLogin();
                 cy.visit("event/dashboard");
                 // The literal markup must NEVER appear as text under any event row
                 cy.get("table tbody").should("not.contain.text", "<p>");
@@ -213,7 +239,7 @@ describe("Events Dashboard (MVC)", () => {
                     { active: false },
                     200,
                 );
-                cy.setupAdminSession({ forceLogin: true });
+                freshAdminLogin();
 
                 cy.visit(`event/checkin/${eventId}`);
 
@@ -253,6 +279,8 @@ describe("Events Dashboard (MVC)", () => {
         let testEventId;
 
         before(() => {
+            // API-only setup: this leaves a dead PHP session behind, which is
+            // why the beforeEach below logs in for real before any cy.visit().
             createUniqueEvent(eventTitle, (id) => {
                 testEventId = id;
             });
@@ -267,8 +295,10 @@ describe("Events Dashboard (MVC)", () => {
                 { active: true },
                 200,
             );
-            // After API calls the PHP session can be reset — re-establish admin session
-            cy.setupAdminSession({ forceLogin: true });
+            // Both this call and the before() hook above leave a dead PHP
+            // session behind, so every test in this suite starts from a real
+            // login rather than a restored one.
+            freshAdminLogin();
         });
 
         it("renders the standard action dropdown for each event row", () => {
@@ -327,7 +357,7 @@ describe("Events Dashboard (MVC)", () => {
                 { active: false },
                 200,
             );
-            cy.setupAdminSession({ forceLogin: true });
+            freshAdminLogin();
 
             cy.intercept("POST", "**/api/events/*/status").as("status");
             cy.visit("event/dashboard");
