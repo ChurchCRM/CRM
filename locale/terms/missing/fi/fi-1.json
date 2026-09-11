@@ -1,52 +1,52 @@
 {
-  "CSV": "",
-  "OFX": "",
-  "A geocoding error occurred — try again later": "",
-  "Address is incomplete (missing city, state, and ZIP)": "",
-  "All families already have coordinates.": "",
-  "Failed to update coordinates": "",
-  "Failed to update family coordinates": "",
-  "Geocoded all {{geocoded}} families. The map is now up to date.": "",
-  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "",
-  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "",
-  "Geocoding families… this can take up to a minute. You can keep this page open.": "",
-  "Geocoding…": "",
-  "No address on file": "",
-  "No match found — check the street address, city, and ZIP": "",
-  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "",
-  "Open a family to fix its address, then run this again.": "",
-  "Set up now": "",
-  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
+  "A geocoding error occurred — try again later": "Geokoodauksessa tapahtui virhe — yritä myöhemmin uudelleen",
+  "Address is incomplete (missing city, state, and ZIP)": "Osoite on puutteellinen (kaupunki, alue ja postinumero puuttuvat)",
+  "All families already have coordinates.": "Kaikilla perheillä on jo koordinaatit.",
+  "Failed to update coordinates": "Koordinaattien päivitys epäonnistui",
+  "Failed to update family coordinates": "Perheen koordinaattien päivitys epäonnistui",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "Kaikki {{geocoded}} perhettä geokoodattiin. Kartta on nyt ajan tasalla.",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "{{geocoded}} perhettä geokoodattiin. {{failed}} ei voitu ratkaista — katso tiedot alta.",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "{{geocoded}}/{{total}} perhettä geokoodattiin. {{overflow}} on vielä käsittelemättä — suorita uudelleen jatkaaksesi.",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "Geokoodataan perheitä… tämä voi kestää jopa minuutin. Voit pitää tämän sivun auki.",
+  "Geocoding…": "Geokoodataan…",
+  "No address on file": "Osoitetta ei ole tallennettu",
+  "No match found — check the street address, city, and ZIP": "Osumaa ei löytynyt — tarkista katuosoite, kaupunki ja postinumero",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "Päivien määrä, jonka käyttäjillä on aikaa ottaa kaksivaiheinen tunnistautuminen (2FA) käyttöön sen tultua pakolliseksi. Aseta arvoksi 0, jotta se otetaan käyttöön välittömästi (aiempi toimintatapa). Aktiivisen siirtymäajan lyhentäminen voi lukita käyttäjät ulos välittömästi.",
+  "Open a family to fix its address, then run this again.": "Avaa perhe korjataksesi sen osoitteen ja suorita tämä sitten uudelleen.",
+  "Set up now": "Ota käyttöön nyt",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "Tämä etsii karttakoordinaatit jokaiselle perheelle, joilta ne puuttuvat, käyttäen OpenStreetMapia. Se käsittelee enintään 50 perhettä ajokerralla; koko erä kestää noin minuutin. Voit pitää tämän sivun auki suorituksen ajan. Jatketaanko?",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "",
-    "other": ""
+    "one": "Kaksivaiheinen tunnistautuminen on pakollinen. Sinulla on %d päivä aikaa ottaa se käyttöön.",
+    "other": "Kaksivaiheinen tunnistautuminen on pakollinen. Sinulla on %d päivää aikaa ottaa se käyttöön."
   },
-  "Unknown family": "",
-  "Update All Coordinates": "",
-  "Update All Family Coordinates": "",
-  "Update Coordinates": "",
+  "Unknown family": "Tuntematon perhe",
+  "Update All Coordinates": "Päivitä kaikki koordinaatit",
+  "Update All Family Coordinates": "Päivitä kaikkien perheiden koordinaatit",
+  "Update Coordinates": "Päivitä koordinaatit",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Kopioitiin {{count}} jäsen",
+    "other": "Kopioitiin {{count}} jäsentä"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Tässä listassa on {{count}} vastaanottaja — liikaa mailto:-linkille. Käytä sen sijaan Kopioi osoitteet -toimintoa.",
+    "other": "Tässä listassa on {{count}} vastaanottajaa — liikaa mailto:-linkille. Käytä sen sijaan Kopioi osoitteet -toimintoa."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Liikaa vastaanottajia sähköpostiohjelmalle ({{count}} > {{max}}). Käytä sen sijaan Kopioi osoitteet -toimintoa.",
+    "other": "Liikaa vastaanottajia sähköpostiohjelmalle ({{count}} > {{max}}). Käytä sen sijaan Kopioi osoitteet -toimintoa."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuutti jäljellä",
+    "other": "{{count}} minuuttia jäljellä"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} perhettä ei voitu geokoodata",
+    "other": "{{count}} perhettä ei voitu geokoodata"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…ja {{count}} muuta. Suorita uudelleen nähdäksesi loput.",
+    "other": "…ja {{count}} muuta. Suorita uudelleen nähdäksesi loput."
   }
 }
