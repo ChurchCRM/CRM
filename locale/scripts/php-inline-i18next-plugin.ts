@@ -21,12 +21,72 @@ import type { Plugin } from 'i18next-cli';
  * apostrophes inside a key (`i18next.t("Don't")`) are handled, and it abandons
  * a call whose arguments contain a `<?php` / `<?=` tag — such a key is built at
  * render time and is not statically extractable by anything.
+ *
+ * Commented-out calls are skipped: `blankComments` blanks `//` line comments
+ * and block comments (in the inline <script> blocks and in the PHP itself)
+ * before the scan, so a call left behind by a refactor cannot add a phantom
+ * msgid that no live call site backs. `#` comments are deliberately NOT
+ * blanked — `#` is common in unquoted markup (`href=#tab`, colour literals)
+ * and treating it as a comment risks swallowing a live call, which is the very
+ * failure #9723 is about.
  */
 
 // Assembled rather than written out as one literal so that this file does not
 // itself look like an i18next call site to scripts/locale-check.js.
 const CALL_NAME = 'i18next.t';
 const CALL_PREFIX = `${CALL_NAME}(`;
+
+/**
+ * Replace the contents of every `//` line comment and block comment with
+ * spaces, keeping the string the same length so offsets and line numbers are
+ * unchanged. Quote-aware, so a `//` inside a string literal survives.
+ */
+export function blankComments(code: string): string {
+  const out = code.split('');
+  let i = 0;
+
+  while (i < code.length) {
+    const char = code[i];
+
+    if (char === "'" || char === '"' || char === '`') {
+      const quote = char;
+      i++;
+      while (i < code.length) {
+        if (code[i] === '\\') {
+          i += 2;
+          continue;
+        }
+        if (code[i] === quote) {
+          i++;
+          break;
+        }
+        i++;
+      }
+      continue;
+    }
+
+    if (char === '/' && code[i + 1] === '/') {
+      while (i < code.length && code[i] !== '\n') {
+        out[i] = ' ';
+        i++;
+      }
+      continue;
+    }
+
+    if (char === '/' && code[i + 1] === '*') {
+      const end = code.indexOf('*/', i + 2);
+      const stop = end === -1 ? code.length : end + 2;
+      for (; i < stop; i++) {
+        if (code[i] !== '\n') out[i] = ' ';
+      }
+      continue;
+    }
+
+    i++;
+  }
+
+  return out.join('');
+}
 
 /**
  * Return every complete `i18next.t(...)` call expression in `code`.
@@ -90,7 +150,7 @@ export function phpInlineI18nextPlugin(): Plugin {
       // Always return a string for .php, even an empty one: that marks the
       // file as handled so the extractor parses the result instead of warning
       // that no plugin claimed it.
-      return extractI18nextCalls(code).join('\n');
+      return extractI18nextCalls(blankComments(code)).join('\n');
     },
   };
 }
