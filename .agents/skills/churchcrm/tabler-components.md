@@ -165,7 +165,7 @@ When redesigning or fixing UX on any page, apply **all** of the following — no
 | Element | ✅ Tabler Standard | ❌ Wrong |
 |---------|-------------------|---------|
 | Card emphasis | `card-status-top bg-{color}` (thin line) | `card-header bg-primary` (solid blue bar) |
-| Icons | `ti ti-*` (Tabler icons) | `fa-solid fa-*` (FontAwesome) |
+| Icons | `fa-solid fa-*` / `fa-regular` / `fa-brands` (Font Awesome — see [`icon-management.md`](./icon-management.md)) | `ti ti-*` (Tabler icons — webfont removed in #9491) |
 | Form labels | `form-label` | `control-label`, `fw-bold` on labels |
 | Select elements | `form-select` | `form-control` on `<select>` |
 | Form wrapper | Plain `<form>` | `class="well form-horizontal"` |
@@ -338,9 +338,17 @@ Colors: `bg-primary`, `bg-success`, `bg-danger`, `bg-warning`, `bg-info`.
 | `.card-table` | Remove card-body padding for full-width table |
 | `.w-1` | Shrink column to content width (for action buttons) |
 
-### DataTable Card Structure — Use `table-responsive`, Not `card-body p-0` <!-- learned: 2026-03-29 -->
+### DataTable Card Structure — Use `table-responsive`, Not `card-body p-0` <!-- learned: 2026-03-29, scoped: 2026-09-11 -->
 
-The correct Tabler pattern for a card containing a full-width DataTable is `table-responsive` directly on the card. The legacy `card-body p-0` + `overflow:visible` hack is an **anti-pattern** — remove it whenever found.
+> **Applies only to tables with no per-row action dropdown.** If the rows have an action
+> menu, `.table-responsive` clips it and
+> [`table-action-menu.md`](./table-action-menu.md) → "Overflow / Dropdown Clipping" owns the
+> rule instead (`<div style="overflow-x: clip; overflow-y: visible;">`). That file is the
+> single source of truth for action-menu tables; do not apply the guidance below to them.
+
+For a card containing a full-width DataTable **without** row dropdowns, the correct Tabler
+pattern is `table-responsive` directly on the card. The legacy `card-body p-0` +
+`overflow:visible` padding hack is an **anti-pattern** in that case — remove it whenever found.
 
 ```html
 <!-- ✅ CORRECT -->
@@ -372,6 +380,8 @@ The correct Tabler pattern for a card containing a full-width DataTable is `tabl
 **Finding violations:**
 ```bash
 grep -r "card-body p-0" src/ --include="*.php" -l
+# overflow:visible is only a violation when the table has NO row dropdowns —
+# check each hit against table-action-menu.md before changing it
 grep -r "overflow: visible" src/ --include="*.php" -l
 ```
 
@@ -1064,72 +1074,38 @@ Settings saved via `POST /api/user/{userId}/setting/{settingName}` with `{value:
 
 ---
 
-## 14. Iconography Dual System
+## 14. Iconography — Font Awesome Only <!-- corrected: 2026-09-11 -->
 
-### UI Actions → Tabler Icons (`ti-`)
+ChurchCRM uses **Font Awesome 7.3+ exclusively**. Tabler's icon webfont was removed in
+#9491 — `@tabler/icons-webfont` is no longer a dependency
+(`grep -rn "@tabler/icons" package.json webpack.config.js` → 0 hits) and no `ti-dots-vertical`
+remains in `src/`. The "dual system" that used to be documented here (`ti ti-pencil` for UI
+actions, `fa-solid` for domain entities) no longer exists: **every** icon is `fa-solid`,
+`fa-regular` or `fa-brands`.
 
-```html
-<i class="ti ti-pencil"></i>      <!-- Edit -->
-<i class="ti ti-trash"></i>       <!-- Delete -->
-<i class="ti ti-device-floppy"></i> <!-- Save -->
-<i class="ti ti-x"></i>           <!-- Close -->
-<i class="ti ti-search"></i>      <!-- Search -->
-<i class="ti ti-filter"></i>      <!-- Filter -->
-<i class="ti ti-settings"></i>    <!-- Settings -->
-<i class="ti ti-plus"></i>        <!-- Add -->
-<i class="ti ti-download"></i>    <!-- Download -->
-<i class="ti ti-upload"></i>      <!-- Upload -->
-<i class="ti ti-maximize"></i>    <!-- Fullscreen -->
-<i class="ti ti-menu-2"></i>      <!-- Menu toggle -->
-<i class="ti ti-logout"></i>      <!-- Sign out -->
-<i class="ti ti-key"></i>         <!-- Password -->
-<i class="ti ti-shield"></i>      <!-- Security/2FA -->
-<i class="fa-solid fa-bug"></i>       <!-- Report issue (FA: ti-bug fails post-7.6.0, see #9441) -->
-<i class="fa-solid fa-book"></i>      <!-- Documentation (FA: ti-book fails post-7.6.0, see #9441) -->
-<i class="fa-solid fa-headset"></i>   <!-- Support (FA: ti-headset fails post-7.6.0, see #9441) -->
-<i class="fa-solid fa-file-csv"></i>  <!-- DataTables CSV export (FA: ti-table-export fails post-7.6.0, see #9441) -->
-<i class="fa-solid fa-print"></i>     <!-- DataTables print (FA: ti-printer fails post-7.6.0, see #9441) -->
-<i class="ti ti-confetti"></i>    <!-- New release -->
-<i class="ti ti-users"></i>       <!-- Group/team -->
-```
+[`icon-management.md`](./icon-management.md) is the single source of truth for icon choice.
+It carries the per-action icon table, the free-tier rules, and a `ti-*` → `fa-*` mapping for
+any legacy markup you still find.
 
-### Domain Entities → FontAwesome 7 Solid
+For the row action menu trigger specifically, see
+[`table-action-menu.md`](./table-action-menu.md) — it is `fa-solid fa-ellipsis-vertical`.
 
-```html
-<i class="fa-solid fa-user"></i>                       <!-- Person -->
-<i class="fa-solid fa-house-user"></i>                 <!-- Family -->
-<i class="fa-solid fa-people-group"></i>               <!-- Group -->
-<i class="fa-solid fa-circle-dollar-to-slot"></i>      <!-- Finance -->
-<i class="fa-solid fa-calendar-days"></i>              <!-- Event -->
-<i class="fa-solid fa-cart-shopping"></i>              <!-- Cart -->
-<i class="fa-solid fa-clipboard-check"></i>            <!-- Check-in -->
-```
-
-### CSS for Tabler Icons (add to Header-HTML-Scripts.php)
-
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-```
-
-Or install via npm and add to webpack:
-```bash
-npm install @tabler/icons-webfont
-```
-```scss
-// In churchcrm.scss
-@import "~@tabler/icons-webfont/dist/tabler-icons.min.css";
+> Some older examples further up this file still show `ti ti-*` classes. They are stale for
+> the same reason; substitute the Font Awesome equivalent from `icon-management.md`.
 
 ---
 
 ### Navbar/Toolbar Icon Reliability: Use FA Solid for These Specific Glyphs <!-- learned: 2026-08-15 -->
 
+**Historical — superseded by #9491, which removed the Tabler icon webfont outright.**
+Kept for anyone reading old markup or an old branch.
+
 Post-7.6.0 (issue #9441): `ti-bug`, `ti-book`, `ti-headset`, `ti-table-export`, and `ti-printer`
 failed to render (empty squares) for affected users in the top navbar while every surrounding
 FA icon rendered correctly. Root cause is glyph-specific Tabler webfont rendering failure in
-certain upgrade/cache states. PR #9442 incomplete — only fixed `fa-duotone` → `fa-solid`
-for the cart; the ti→fa swaps it described were not landed.
-
-**Rule:** Use `fa-solid` for these five icons in navbar/toolbar contexts — never `ti`:
+certain upgrade/cache states. The five swaps below landed; #9491 then removed the webfont
+entirely, so `ti` is not an option for *any* glyph now — see
+[`icon-management.md`](./icon-management.md).
 
 | Ti icon (avoid) | FA solid replacement |
 |-----------------|---------------------|
@@ -1139,8 +1115,7 @@ for the cart; the ti→fa swaps it described were not landed.
 | `ti ti-table-export` | `fa-solid fa-file-csv` |
 | `ti ti-printer` | `fa-solid fa-print` |
 
-All FA-free v7.3.1 solid glyphs confirmed present. No webpack rebuild needed — both font
-families are already bundled in `churchcrm.min.css`.
+All FA free v7.3.1 solid glyphs confirmed present.
 
 ---
 
