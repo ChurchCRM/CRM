@@ -301,5 +301,53 @@ declare namespace Cypress {
      * @param localeValue - The locale field value from locales.json
      */
     setupLocaleAdminSession(localeValue: string): Chainable<void>;
+
+    /**
+     * Deactivate then delete each event id, ignoring ids that are already
+     * gone. Use from an after() hook so a spec removes the events it created
+     * (#9769). Deleting an event cascades its calendar_events, event_attend
+     * and event_audience rows.
+     * @param eventIds - Event ids to remove
+     */
+    cleanupEvents(eventIds: Array<number | string>): Chainable<void>;
+
+    /**
+     * Delete each note id, ignoring ids that are already gone (#9769).
+     * DELETE /api/note/{id} writes a `delete-note` audit row, so this takes
+     * the spec's content off the timeline but does not restore the row count —
+     * pair it with cy.allowRowDrift("note_nte", …).
+     * @param noteIds - Note ids to remove
+     */
+    cleanupNotes(noteIds: Array<number | string>): Chainable<void>;
+
+    /**
+     * Declare that this spec file cannot fully restore `table`, so the
+     * row-count drift guard in cypress/support/e2e.js tolerates up to
+     * `maxDelta` extra rows. Call it from the spec's own before() hook.
+     * @param table - Guarded table name, e.g. "note_nte"
+     * @param maxDelta - Maximum number of rows the spec may leave behind
+     * @param reason - Why the rows cannot be removed (required)
+     */
+    allowRowDrift(table: string, maxDelta: number, reason: string): Chainable<void>;
+
+    /**
+     * Delete each person id, ignoring ids that are already gone (#9769).
+     * @param personIds - Person ids to remove
+     */
+    cleanupPeople(personIds: Array<number | string>): Chainable<void>;
+
+    /**
+     * Delete each family id together with its members, ignoring ids that are
+     * already gone (#9769).
+     * @param familyIds - Family ids to remove
+     */
+    cleanupFamilies(familyIds: Array<number | string>): Chainable<void>;
+
+    /**
+     * Read the person id out of the current /people/view/{id} URL and push it
+     * onto `collector` for an after() hook to clean up (#9769).
+     * @param collector - Array the id is appended to
+     */
+    trackPersonFromUrl(collector: number[]): Chainable<number | null>;
   }
 }

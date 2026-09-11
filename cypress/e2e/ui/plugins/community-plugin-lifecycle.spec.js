@@ -25,7 +25,9 @@ describe('Community Plugin Lifecycle', () => {
     after(() => {
         if (createdPersonId) {
             cy.setupAdminSession();
-            cy.makePrivateAdminAPICall('DELETE', `/api/people/${createdPersonId}`, null, [200, 204, 404]);
+            // /api/person/{id} — not /api/people/{id}, which does not exist and
+            // silently 404ed, leaving the person behind on every run (#9769).
+            cy.makePrivateAdminAPICall('DELETE', `/api/person/${createdPersonId}`, null, [200, 404]);
         }
     });
 

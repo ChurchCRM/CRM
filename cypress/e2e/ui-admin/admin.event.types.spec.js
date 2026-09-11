@@ -3,6 +3,26 @@
 describe("Event Types Management", () => {
   const eventTypeName = "Test Event Type " + Date.now();
 
+  // Events these tests quick-create, removed again in after() so the seeded
+  // database does not grow with every run (#9769). Only ids the API reports as
+  // newly created are tracked: quick-create returns `created: false` and an
+  // existing event's id when one already exists for that date+type, and
+  // deleting that would remove a row the spec did not create.
+  const createdEventIds = [];
+
+  const trackQuickCreated = (response) => {
+    if (
+      response?.body?.created !== false &&
+      typeof response?.body?.eventId === "number"
+    ) {
+      createdEventIds.push(response.body.eventId);
+    }
+  };
+
+  after(() => {
+    cy.cleanupEvents(createdEventIds);
+  });
+
   beforeEach(() => {
     cy.setupAdminSession();
   });
@@ -46,7 +66,7 @@ describe("Event Types Management", () => {
       "/api/events/quick-create",
       { eventTypeId: 1 },
       200,
-    );
+    ).then(trackQuickCreated);
 
     // cy.request / makePrivateAdminAPICall resets the PHP session; use the
     // canonical session-cache command with forceLogin to re-establish a
@@ -67,7 +87,7 @@ describe("Event Types Management", () => {
       "/api/events/quick-create",
       { eventTypeId: 1 },
       200,
-    );
+    ).then(trackQuickCreated);
 
     // cy.request / makePrivateAdminAPICall resets the PHP session; use the
     // canonical session-cache command with forceLogin to re-establish a
@@ -90,7 +110,7 @@ describe("Event Types Management", () => {
       "/api/events/quick-create",
       { eventTypeId: 1 },
       200,
-    );
+    ).then(trackQuickCreated);
 
     // cy.request / makePrivateAdminAPICall resets the PHP session; use the
     // canonical session-cache command with forceLogin to re-establish a

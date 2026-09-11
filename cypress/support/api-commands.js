@@ -267,3 +267,108 @@ Cypress.Commands.add(
         });
     },
 );
+
+// ---------------------------------------------------------------------------
+// Cleanup helpers (#9769)
+// ---------------------------------------------------------------------------
+
+/**
+ * Delete every event id in `eventIds`, so a spec can undo what it created.
+ *
+ * Deactivates first: DELETE /api/events/{id} refuses (409) to remove an active
+ * event that still has people checked in, which is exactly the state the
+ * check-in specs leave their events in. Deleting an event cascades its
+ * calendar_events, event_attend and event_audience rows via Event::preDelete().
+ *
+ * Ids that are already gone (404) are ignored, so the helper is safe to call
+ * from an after() hook that runs after a failed test.
+ *
+ * @param {Array<number|string>} eventIds
+ */
+Cypress.Commands.add("cleanupEvents", (eventIds) => {
+    const ids = (eventIds || []).filter((id) => Number.isFinite(Number(id)));
+    ids.forEach((eventId) => {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `/api/events/${eventId}/status`,
+            { active: false },
+            [200, 400, 403, 404],
+        );
+        cy.makePrivateAdminAPICall("DELETE", `/api/events/${eventId}`, null, [
+            200, 404, 409,
+        ]);
+    });
+});
+
+/**
+ * Delete every note id in `noteIds`.
+ *
+ * NOTE: DELETE /api/note/{id} writes a `delete-note` audit row for the
+ * timeline, so removing N notes leaves N audit rows behind — the note table
+ * cannot be returned to its exact seed count through the API. Specs that call
+ * this still declare the residue with cy.allowRowDrift("note_nte", …). The
+ * point of calling it is to take the spec's test *content* back off the
+ * person/family timelines, not to zero the row count.
+ *
+ * @param {Array<number|string>} noteIds
+ */
+Cypress.Commands.add("cleanupNotes", (noteIds) => {
+    const ids = (noteIds || []).filter((id) => Number.isFinite(Number(id)));
+    ids.forEach((noteId) => {
+        cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, [
+            200, 403, 404,
+        ]);
+    });
+});
+
+/**
+ * Delete every person id in `personIds`.
+ *
+ * Ids that are already gone (404) are ignored, so the helper is safe to call
+ * from an after() hook that runs after a failed test.
+ *
+ * @param {Array<number|string>} personIds
+ */
+Cypress.Commands.add("cleanupPeople", (personIds) => {
+    const ids = (personIds || []).filter((id) => Number.isFinite(Number(id)));
+    ids.forEach((personId) => {
+        cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, [
+            200, 403, 404,
+        ]);
+    });
+});
+
+/**
+ * Delete every family id in `familyIds`, together with its members.
+ *
+ * @param {Array<number|string>} familyIds
+ */
+Cypress.Commands.add("cleanupFamilies", (familyIds) => {
+    const ids = (familyIds || []).filter((id) => Number.isFinite(Number(id)));
+    ids.forEach((familyId) => {
+        cy.makePrivateAdminAPICall(
+            "DELETE",
+            `/api/family/${familyId}?deleteMembers=true`,
+            null,
+            [200, 403, 404],
+        );
+    });
+});
+
+/**
+ * Record the person id out of the /people/view/{id} URL the legacy
+ * PersonEditor redirects to after a save, pushing it onto `collector` so an
+ * after() hook can clean it up (#9769).
+ *
+ * @param {Array<number>} collector
+ */
+Cypress.Commands.add("trackPersonFromUrl", (collector) => {
+    return cy.url().then((url) => {
+        const match = url.match(/\/people\/view\/(\d+)/);
+        const personId = match ? Number.parseInt(match[1], 10) : null;
+        if (personId) {
+            collector.push(personId);
+        }
+        return personId;
+    });
+});

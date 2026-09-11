@@ -1,5 +1,24 @@
 /// <reference types="cypress" />
 
+// Families these suites create through FamilyEditor, removed again when each
+// suite finishes so the seeded database does not grow with every run (#9769).
+// The hook lives inside the LAST describe on purpose. A root-level after() in
+// a spec file runs *after* the support file's own root after(), which is where
+// the row-count drift guard checks its snapshot; and the cleanup calls go out
+// with x-api-key, which flips the PHP session to APITokenAuthentication and
+// would send any later cy.visit() to the login page.
+const createdFamilyIds = [];
+
+/** Record the family id from the /people/family/{id} URL the editor lands on. */
+function trackFamilyFromUrl() {
+    cy.location("pathname").then((pathname) => {
+        const match = pathname.match(/\/people\/family\/(\d+)/);
+        if (match) {
+            createdFamilyIds.push(Number.parseInt(match[1], 10));
+        }
+    });
+}
+
 describe("Standard Family", () => {
     beforeEach(() => cy.setupStandardSession());
 
@@ -65,6 +84,7 @@ describe("Standard Family", () => {
 
         // Should redirect to family view page
         cy.location("pathname").should("include", "/people/family/");
+        trackFamilyFromUrl();
         // Page subtitle shows Family Profile
         cy.contains("Family Profile");
         // Family members table should show all members
@@ -112,6 +132,7 @@ describe("Family Wedding Date Edit Workflow", () => {
         cy.get('button[name="FamilySubmit"]').click();
 
         cy.location("pathname").should("include", "/people/family/");
+        trackFamilyFromUrl();
         cy.contains("Family Profile");
         cy.get("i.fa-ring").should("not.exist");
         cy.contains(familyName).should("exist");
@@ -149,6 +170,12 @@ describe("Family Editor — edit existing record (PR #9351 prepared-statement sm
 });
 
 describe("Standard Family Activation", () => {
+    // Last suite in the file — cleanup for every family the earlier suites
+    // created happens here, so no cy.visit() follows the x-api-key calls.
+    after(() => {
+        cy.cleanupFamilies(createdFamilyIds.splice(0));
+    });
+
     beforeEach(() => {
         // Reset family 3 to active BEFORE registering intercepts so the setup
         // call is not captured by @updateToActive — only UI-triggered requests

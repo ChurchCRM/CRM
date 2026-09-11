@@ -3,7 +3,36 @@ const personViewPath = "people/view/";
 
 describe("Standard Person", () => {
     const uniqueSeed = Date.now().toString();
-    
+
+    // People this spec adds through PersonEditor, removed again in after() so
+    // the seeded database does not grow with every run (#9769). The third test
+    // also creates a family from the person's last name, and deleting a person
+    // does not take their family with them — so the family id is read back off
+    // each person before anything is deleted.
+    const createdPersonIds = [];
+
+    after(() => {
+        const familyIds = [];
+
+        createdPersonIds.forEach((personId) => {
+            cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, [
+                200, 404,
+            ]).then((resp) => {
+                const familyId = Number(resp.body?.FamId || 0);
+                if (familyId > 0) {
+                    familyIds.push(familyId);
+                }
+            });
+        });
+
+        cy.then(() => {
+            // deleteMembers takes the person with the family; whatever is left
+            // over is an unaffiliated person.
+            cy.cleanupFamilies(familyIds);
+            cy.cleanupPeople(createdPersonIds);
+        });
+    });
+
     beforeEach(() => cy.setupStandardSession());
 
     it("Add Full Person", () => {
@@ -25,6 +54,7 @@ describe("Standard Person", () => {
         cy.get('button[name="PersonSubmit"]').click();
 
         cy.url().should("contain", personViewPath);
+        cy.trackPersonFromUrl(createdPersonIds);
         cy.contains(name);
 
         // Re-open editor and verify the zero-padded month/day were saved correctly.
@@ -54,6 +84,7 @@ describe("Standard Person", () => {
         cy.get('button[name="PersonSubmit"]').click();
 
         cy.url().should("contain", personViewPath);
+        cy.trackPersonFromUrl(createdPersonIds);
         cy.contains(name);
 
         // make sure edit works - click Edit button in toolbar
@@ -90,6 +121,7 @@ describe("Standard Person", () => {
 
         // Should redirect to PersonView without error
         cy.url().should("contain", personViewPath);
+        cy.trackPersonFromUrl(createdPersonIds);
         cy.contains(firstName);
     });
 });
