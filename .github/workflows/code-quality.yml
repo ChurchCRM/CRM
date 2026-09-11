@@ -55,6 +55,8 @@ jobs:
         run: node scripts/validate-no-tabler-icons.js
       - name: Cypress API keys match seeded users
         run: npm run lint:cypress-api-keys
+      - name: Cypress spec coverage (every spec is reachable by a config)
+        run: npm run lint:cypress-spec-coverage
 
   format-fix:
     name: Apply format fixes

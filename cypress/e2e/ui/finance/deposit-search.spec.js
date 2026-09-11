@@ -14,18 +14,26 @@
  *   CsvExporter prepends \t (tab) to values starting with =, -, +, @.
  *   Tests must assert that exported fields do NOT start with those trigger chars,
  *   NOT that they start with a tab — both representations are safe.
+ *
+ * Note on test isolation (#9728):
+ *   Cypress runs with testIsolation enabled, so the page is reset between tests.
+ *   Every test that touches the DOM must therefore establish the session AND visit
+ *   the page in `beforeEach` — a one-shot `before` hook leaves every test after the
+ *   first looking at a blank page.
  */
 
 const DEPOSIT_SEARCH_URL = "/finance/deposit/search";
-const ACCESS_DENIED_URL  = "/v2/access-denied";
-const FORMULA_TRIGGERS   = /^[=\-+@]/;
+const ACCESS_DENIED_URL = "/v2/access-denied";
+const FORMULA_TRIGGERS = /^[=\-+@]/;
+// deposit_dep id 1 is seeded with payments by cypress/data/seed.sql
+const SEEDED_DEPOSIT_ID = 1;
 
 // ---------------------------------------------------------------------------
 // 1. Page load & search form
 // ---------------------------------------------------------------------------
 
 describe("Deposit Search: page load and search form", () => {
-  before(() => {
+  beforeEach(() => {
     cy.setupAdminSession();
     cy.visit(DEPOSIT_SEARCH_URL);
   });
@@ -45,8 +53,9 @@ describe("Deposit Search: page load and search form", () => {
     cy.get("#enteredBy").should("exist");
   });
 
-  it("shows the deposits table", () => {
+  it("shows the deposits table with the seeded rows", () => {
     cy.get("#depositsTable").should("exist");
+    cy.get("#depositsTable tbody tr").should("have.length.greaterThan", 0);
   });
 
   it("submits date range filter and includes params in URL", () => {
@@ -59,13 +68,24 @@ describe("Deposit Search: page load and search form", () => {
     cy.get("#depositsTable").should("exist");
   });
 
-  it("re-populates form fields from URL params after submit", () => {
+  it("re-populates form fields from URL params", () => {
+    cy.visit(`${DEPOSIT_SEARCH_URL}?dateStart=2020-01-01&dateEnd=2099-12-31`);
     cy.get("#dateStart").should("have.value", "2020-01-01");
     cy.get("#dateEnd").should("have.value", "2099-12-31");
   });
 
+  it("filters by deposit ID", () => {
+    cy.get("#depositId").clear().type(String(SEEDED_DEPOSIT_ID));
+    cy.get("#depositFilterForm").submit();
+
+    cy.url().should("include", `depositId=${SEEDED_DEPOSIT_ID}`);
+    cy.get("#depositsTable tbody tr").should("have.length", 1);
+    cy.get("#depositsTable tbody tr").should("have.attr", "data-deposit-id", String(SEEDED_DEPOSIT_ID));
+  });
+
   it("clears filters when Clear button is clicked", () => {
-    cy.get("a").contains("Clear").click();
+    cy.visit(`${DEPOSIT_SEARCH_URL}?dateStart=2020-01-01&dateEnd=2099-12-31`);
+    cy.get("#depositFilterForm a.btn-secondary").contains("Clear").click();
     cy.url().should("not.include", "dateStart");
     cy.url().should("not.include", "dateEnd");
   });
@@ -76,9 +96,12 @@ describe("Deposit Search: page load and search form", () => {
 // ---------------------------------------------------------------------------
 
 describe("Deposit Search: row selection and export buttons", () => {
-  before(() => {
+  beforeEach(() => {
     cy.setupAdminSession();
     cy.visit(DEPOSIT_SEARCH_URL);
+    // The selection handlers are bound after DataTables initialises.
+    cy.get("#depositsTable_wrapper").should("exist");
+    cy.get("#depositsTable tbody .row-select").should("have.length.greaterThan", 0);
   });
 
   it("export buttons are disabled when no rows selected", () => {
@@ -87,59 +110,34 @@ describe("Deposit Search: row selection and export buttons", () => {
     cy.get("#btnExportPDF").should("be.disabled");
   });
 
-  it("Select All checkbox enables export buttons", () => {
-    cy.get("body").then(($body) => {
-      // Only run if there are rows in the table
-      const rowCount = $body.find("#depositsTable tbody tr").length;
-      if (rowCount === 0) {
-        cy.log("No deposit rows found; skipping selection tests");
-        return;
-      }
+  it("Select All checkbox enables export buttons and shows the selected count", () => {
+    cy.get("#selectAllCheckbox").check();
 
-      cy.get("#selectAllCheckbox").check();
-      cy.get("#btnExportCSV").should("not.be.disabled");
-      cy.get("#btnExportOFX").should("not.be.disabled");
-      cy.get("#btnExportPDF").should("not.be.disabled");
-
-      // Selected count badge should appear
-      cy.get("#selectedCount").should("be.visible");
-    });
+    cy.get("#btnExportCSV").should("not.be.disabled");
+    cy.get("#btnExportOFX").should("not.be.disabled");
+    cy.get("#btnExportPDF").should("not.be.disabled");
+    cy.get("#selectedCount").should("be.visible").and("contain.text", "selected");
   });
 
   it("unchecking Select All disables export buttons", () => {
-    cy.get("body").then(($body) => {
-      const rowCount = $body.find("#depositsTable tbody tr").length;
-      if (rowCount === 0) return;
+    cy.get("#selectAllCheckbox").check();
+    cy.get("#btnExportCSV").should("not.be.disabled");
 
-      cy.get("#selectAllCheckbox").uncheck();
-      cy.get("#btnExportCSV").should("be.disabled");
-      cy.get("#btnExportOFX").should("be.disabled");
-      cy.get("#btnExportPDF").should("be.disabled");
-    });
+    cy.get("#selectAllCheckbox").uncheck();
+    cy.get("#btnExportCSV").should("be.disabled");
+    cy.get("#btnExportOFX").should("be.disabled");
+    cy.get("#btnExportPDF").should("be.disabled");
+    cy.get("#selectedCount").should("not.be.visible");
   });
 
   it("Delete button is present but disabled when no rows are selected", () => {
     cy.get("#btnDeleteSelected").should("exist").and("be.disabled");
   });
 
-  it("Delete button enables when rows are selected", () => {
-    cy.get("body").then(($body) => {
-      const rowCount = $body.find("#depositsTable tbody tr .row-select").length;
-      if (rowCount === 0) return;
-
-      cy.get("#depositsTable tbody tr .row-select").first().check();
-      cy.get("#btnDeleteSelected").should("not.be.disabled");
-    });
-  });
-
-  it("checking individual row enables export buttons", () => {
-    cy.get("body").then(($body) => {
-      const rowCount = $body.find("#depositsTable tbody tr .row-select").length;
-      if (rowCount === 0) return;
-
-      cy.get("#depositsTable tbody tr .row-select").first().check();
-      cy.get("#btnExportCSV").should("not.be.disabled");
-    });
+  it("checking an individual row enables the delete and export buttons", () => {
+    cy.get("#depositsTable tbody .row-select").first().check();
+    cy.get("#btnDeleteSelected").should("not.be.disabled");
+    cy.get("#btnExportCSV").should("not.be.disabled");
   });
 });
 
@@ -148,31 +146,22 @@ describe("Deposit Search: row selection and export buttons", () => {
 // ---------------------------------------------------------------------------
 
 describe("Deposit Search: CSV export quality (bulk endpoint)", () => {
-  before(() => {
+  beforeEach(() => {
     cy.setupAdminSession();
   });
 
   it("GET /api/deposits/csv returns a valid CSV with correct headers", () => {
-    // Hit the bulk CSV endpoint directly.
-    // We request deposit IDs via query param; if no data exists the server
-    // may return 404 — that is an acceptable outcome (empty DB in CI).
     cy.request({
-      method:             "GET",
-      url:                "/api/deposits/csv?ids=1",
-      headers:            { Accept: "text/csv" },
-      failOnStatusCode:   false,
+      method: "GET",
+      url: `/api/deposits/csv?ids=${SEEDED_DEPOSIT_ID}`,
+      headers: { Accept: "text/csv" },
     }).then((res) => {
-      if (res.status === 404) {
-        cy.log("No payments for deposit 1 — skipping CSV content checks (empty DB)");
-        return;
-      }
-
       expect(res.status).to.eq(200);
       expect(res.headers["content-type"]).to.match(/text\/csv/i);
       expect(res.headers["content-disposition"]).to.match(/attachment/i);
 
       const lines = res.body.trim().split(/\r?\n/);
-      expect(lines.length).to.be.gte(1, "should have at least a header row");
+      expect(lines.length).to.be.gte(2, "should have a header row and at least one data row");
 
       const headerFields = lines[0].split(",");
       // The first header field should be 'Deposit ID' (possibly quoted by League CSV)
@@ -183,15 +172,11 @@ describe("Deposit Search: CSV export quality (bulk endpoint)", () => {
 
   it("CSV fields do not start with formula-injection trigger characters (=, -, +, @)", () => {
     cy.request({
-      method:           "GET",
-      url:              "/api/deposits/csv?ids=1",
-      headers:          { Accept: "text/csv" },
-      failOnStatusCode: false,
+      method: "GET",
+      url: `/api/deposits/csv?ids=${SEEDED_DEPOSIT_ID}`,
+      headers: { Accept: "text/csv" },
     }).then((res) => {
-      if (res.status !== 200) {
-        cy.log("No data for deposit 1 — skipping formula-injection check");
-        return;
-      }
+      expect(res.status).to.eq(200);
 
       /**
        * RFC 4180 quoted-field-aware row parser.
@@ -206,7 +191,7 @@ describe("Deposit Search: CSV export quality (bulk endpoint)", () => {
         while (i < line.length) {
           if (line[i] === '"') {
             // Quoted field — scan to the closing quote, collapsing "" → "
-            let field = '';
+            let field = "";
             i++;
             while (i < line.length) {
               if (line[i] === '"' && i + 1 < line.length && line[i + 1] === '"') {
@@ -220,10 +205,10 @@ describe("Deposit Search: CSV export quality (bulk endpoint)", () => {
               }
             }
             fields.push(field);
-            if (line[i] === ',') i++;
+            if (line[i] === ",") i++;
           } else {
             // Unquoted field — everything up to the next comma (or EOL)
-            const end = line.indexOf(',', i);
+            const end = line.indexOf(",", i);
             if (end === -1) {
               fields.push(line.slice(i));
               break;
@@ -236,6 +221,8 @@ describe("Deposit Search: CSV export quality (bulk endpoint)", () => {
       }
 
       const lines = res.body.trim().split(/\r?\n/);
+      expect(lines.length).to.be.gte(2, "should have at least one data row to inspect");
+
       // Check data rows (skip header row at index 0)
       lines.slice(1).forEach((line, rowIdx) => {
         const fields = parseCsvRow(line);
