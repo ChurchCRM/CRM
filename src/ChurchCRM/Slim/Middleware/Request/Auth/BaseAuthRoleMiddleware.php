@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Slim\Middleware\BrowserRequestTrait;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -39,7 +40,7 @@ abstract class BaseAuthRoleMiddleware implements MiddlewareInterface
             }
             
             $response = new Response();
-            $errorBody = json_encode(['error' => gettext('No logged in user'), 'code' => 401]);
+            $errorBody = json_encode(SlimUtils::buildErrorPayload(gettext('No logged in user'), 401));
             $response->getBody()->write($errorBody);
             return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
         }
@@ -59,7 +60,7 @@ abstract class BaseAuthRoleMiddleware implements MiddlewareInterface
             }
             
             $response = new Response();
-            $errorBody = json_encode(['error' => $this->noRoleMessage(), 'code' => 403]);
+            $errorBody = json_encode(SlimUtils::buildErrorPayload($this->noRoleMessage(), 403));
             $response->getBody()->write($errorBody);
             return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
         }

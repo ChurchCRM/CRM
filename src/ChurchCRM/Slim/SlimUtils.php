@@ -5,6 +5,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
 use Exception;
+use Propel\Runtime\Exception\PropelException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
@@ -20,6 +21,80 @@ use Throwable;
 
 class SlimUtils
 {
+    /**
+     * Patterns that indicate a message carries a secret *value*, rather than
+     * merely containing an English word like "user", "host" or "token".
+     *
+     * The previous rule was a bare word list (`/(password|...|user|host|\d{1,3}\.\d{1,3})/i`),
+     * unanchored, so it discarded ordinary messages: `User not found`,
+     * `Ghostwriter field is required`, `Value must be between 1.5 and 3.5`.
+     * Each pattern here requires credential-like *context* — an assignment, a
+     * connection string, key material, or a full address (#9737).
+     */
+    private const SENSITIVE_VALUE_PATTERNS = [
+        // password=…, api_key: …, Authorization: Bearer … — a credential name
+        // followed by an assignment and a value.
+        '/\\b(?:pass(?:word|wd)?|pwd|secret|credentials?|api[_-]?key|(?:access|refresh|auth|bearer|csrf|session)[_-]?token|token|authorization|private[_-]?key|client[_-]?secret)\\b\\s*[:=]\\s*\\S/i',
+        // DSN / connection-string fragments: mysql:host=db;dbname=x;user=y
+        '/\\b(?:host|hostname|dbname|unix_socket|user|username|uid)\\s*=\\s*\\S/i',
+        // Credentials embedded in a URL: scheme://user:pass@host
+        '#\\b[a-z][a-z0-9+.-]*://[^\\s/@]+:[^\\s/@]+@#i',
+        // PEM key material
+        '/-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----/',
+        // JSON Web Token
+        '/\\beyJ[A-Za-z0-9_-]{8,}\\.[A-Za-z0-9_-]{8,}\\.[A-Za-z0-9_-]+/',
+        // A long opaque run — API keys, session ids, base64 blobs. No English
+        // word or identifier in a user-facing message reaches 40 characters.
+        '/\\b[A-Za-z0-9_-]{40,}\\b/',
+        // A complete IPv4 address (the old rule matched any two decimals,
+        // so it redacted "between 1.5 and 3.5").
+        '/\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b/',
+    ];
+
+    /**
+     * True when the message looks like it carries a secret value and must not
+     * be shown to the caller.
+     */
+    public static function containsSensitiveValue(string $message): bool
+    {
+        foreach (self::SENSITIVE_VALUE_PATTERNS as $pattern) {
+            if (preg_match($pattern, $message) === 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Build the canonical /api error payload.
+     *
+     * One shape for every error response (#9737). It is a superset of the
+     * three shapes that used to be produced, so existing consumers keep
+     * working: `message` for the `responseJSON.message` readers (the majority,
+     * plus CRMJSOM's `message || error || msg` fallback), `error` for
+     * `responseJSON.error` readers (DepositSlipEditor), `code` for anything
+     * branching on the status, and `success: false` so a response can be
+     * tested without inspecting the HTTP status.
+     *
+     * New code should read `message`.
+     *
+     * @param array<string, mixed> $extra additional keys merged into the payload
+     * @return array<string, mixed>
+     */
+    public static function buildErrorPayload(string $message, int $code, array $extra = []): array
+    {
+        return array_merge(
+            [
+                'success' => false,
+                'message' => $message,
+                'error'   => $message,
+                'code'    => $code,
+            ],
+            $extra
+        );
+    }
+
     /**
      * Render a standard success JSON response
      */
@@ -37,8 +112,10 @@ class SlimUtils
         $default = gettext('An error occurred. Please contact your system administrator.');
         $msg = $message ?: $default;
 
-        // Sanitize the provided message to avoid leaking credentials
-        if (preg_match('/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i', $msg)) {
+        // Sanitize the provided message to avoid leaking credential values.
+        // Only value-shaped secrets are redacted — an ordinary message such as
+        // "User not found" must reach the caller intact (#9737).
+        if (self::containsSensitiveValue($msg)) {
             $msg = $default;
         }
 
@@ -65,8 +142,7 @@ class SlimUtils
             // If logging fails, do not expose details to the client; fail silently
         }
 
-        $payload = array_merge(['success' => false, 'message' => $msg], $extra);
-        return self::renderJSON($response, $payload, $status);
+        return self::renderJSON($response, self::buildErrorPayload($msg, $status, $extra), $status);
     }
 
     /**
@@ -200,14 +276,12 @@ class SlimUtils
 
             if (self::isApiRequest($request)) {
                 // Include HTTP method and path in error response for debugging
-                $errorResponse = [
-                    'error' => $sanitizedMessage,
-                    'code' => $exception->getCode(),
+                $errorResponse = self::buildErrorPayload($sanitizedMessage, $statusCode, [
                     'request' => [
                         'method' => $request->getMethod(),
                         'path' => $path
                     ]
-                ];
+                ]);
 
                 $response->getBody()->write(json_encode($errorResponse));
                 return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
@@ -232,10 +306,10 @@ class SlimUtils
                 return $response->withStatus($statusCode)->withHeader('Content-Type', 'text/html');
             } catch (Throwable $e) {
                 // If rendering the HTML page fails, fallback to JSON to ensure client receives an error
-                $errorResponse = [
-                    'error' => 'An error occurred while rendering the error page.',
-                    'code' => $exception->getCode(),
-                ];
+                $errorResponse = self::buildErrorPayload(
+                    gettext('An error occurred while rendering the error page.'),
+                    500
+                );
                 $response->getBody()->write(json_encode($errorResponse));
                 return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
             }
@@ -316,14 +390,12 @@ class SlimUtils
 
             // API / AJAX requests get JSON
             if (self::isApiRequest($request)) {
-                $errorResponse = [
-                    'error' => self::sanitizeErrorMessage($exception),
-                    'code' => $statusCode,
+                $errorResponse = self::buildErrorPayload(self::sanitizeErrorMessage($exception), $statusCode, [
                     'request' => [
                         'method' => $request->getMethod(),
                         'path' => $request->getUri()->getPath(),
                     ],
-                ];
+                ]);
                 $response->getBody()->write(json_encode($errorResponse));
                 return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
             }
@@ -384,7 +456,7 @@ class SlimUtils
                     'render_error' => $renderEx->getMessage(),
                     'original_error' => $exception->getMessage(),
                 ]);
-                $fallback = ['error' => gettext('An error occurred.'), 'code' => $statusCode];
+                $fallback = self::buildErrorPayload(gettext('An error occurred.'), $statusCode);
                 $response->getBody()->write(json_encode($fallback));
                 return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
             }
@@ -426,16 +498,25 @@ class SlimUtils
 
         $message = $exception->getMessage();
 
-        // For database-related exceptions, return generic message
+        // For database-related exceptions, return generic message.
+        // The ORM exception class is the reliable signal: the vendor directory
+        // is `perplorm/perpl`, so the old `stripos($file, 'propel')` check never
+        // fired, and a failing INSERT is thrown from the generated model under
+        // src/ChurchCRM/model/. That let Propel leak the raw statement to the
+        // client (#9737, seen via #9736).
         if ($exception instanceof \PDOException ||
+            $exception instanceof PropelException ||
             stripos($exception->getFile(), 'propel') !== false ||
+            stripos($exception->getFile(), 'perpl') !== false ||
+            preg_match('/\\b(SQLSTATE|INSERT INTO|UPDATE .+ SET|DELETE FROM|SELECT .+ FROM)\\b/i', $message) === 1 ||
             stripos($message, 'sql') !== false ||
             stripos($message, 'database') !== false) {
             return 'A database error occurred. Please contact your system administrator.';
         }
 
-        // For unexpected exceptions, redact messages that may contain credentials or internal details
-        if (preg_match('/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i', $message)) {
+        // For unexpected exceptions, redact only messages that carry a secret
+        // value — not every message containing the word "user" (#9737).
+        if (self::containsSensitiveValue($message)) {
             return 'An error occurred. Please contact your system administrator.';
         }
 
