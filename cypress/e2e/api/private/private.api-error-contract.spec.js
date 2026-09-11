@@ -18,6 +18,18 @@
 
 const CANONICAL_KEYS = ["success", "message", "error", "code"];
 
+/**
+ * The install's base path — "" at the root profile, "/churchcrm" on the
+ * subdirectory profile.
+ *
+ * The Slim error handlers echo `$request->getUri()->getPath()`, which is the
+ * real request path and therefore carries the base path. Relative URLs handed
+ * to cy.request() get baseUrl concatenated onto them, so a literal
+ * "/api/no-such-route" is genuinely requested at "/churchcrm/api/no-such-route"
+ * there, and asserting the bare "/api/..." only ever held at the root.
+ */
+const basePath = new URL(Cypress.config("baseUrl")).pathname.replace(/\/+$/, "");
+
 /** Assert a body follows the canonical error shape. */
 function expectCanonicalErrorShape(body, expectedCode) {
     CANONICAL_KEYS.forEach((key) => {
@@ -64,7 +76,10 @@ describe("API error contract — one JSON shape (#9737)", () => {
     it("Slim not-found handler 404 keeps its request context", () => {
         cy.makePrivateAdminAPICall("GET", "/api/no-such-route", null, 404).then((response) => {
             expectCanonicalErrorShape(response.body, 404);
-            expect(response.body.request).to.deep.eq({ method: "GET", path: "/api/no-such-route" });
+            expect(response.body.request).to.deep.eq({
+                method: "GET",
+                path: `${basePath}/api/no-such-route`,
+            });
         });
     });
 });
