@@ -82,6 +82,24 @@ describe("API error contract — one JSON shape (#9737)", () => {
             });
         });
     });
+
+    it("extra payload keys cannot displace the canonical ones", () => {
+        // This is the only handler that passes `$extra` to buildErrorPayload,
+        // so it is where the merge order is observable. `error` is documented
+        // as an alias of `message`; a caller-supplied key must never be able
+        // to break that, or a `responseJSON.error` reader and a
+        // `responseJSON.message` reader would see two different errors for
+        // one response.
+        cy.makePrivateAdminAPICall("GET", "/api/no-such-route", null, 404).then((response) => {
+            expect(response.body.request, "extra keys are still merged in").to.exist;
+            CANONICAL_KEYS.forEach((key) => {
+                expect(response.body, `canonical "${key}" survives the merge`).to.have.property(key);
+            });
+            expect(response.body.error, "error stays an alias of message").to.eq(response.body.message);
+            expect(response.body.code, "code stays the HTTP status").to.eq(404);
+            expect(response.body.success).to.eq(false);
+        });
+    });
 });
 
 describe("API error redaction — values, not words (#9737)", () => {
@@ -125,9 +143,13 @@ describe("API error redaction — values, not words (#9737)", () => {
             expect(body).to.not.match(/\.php:\d+/);
         });
 
-        // The failed write must not have left a row behind.
-        cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((response) => {
-            const oversized = response.body.Events.filter((event) => event.Title.length > 255);
+        // The failed write must not have left a row behind. GET /api/events
+        // answers 404, not an empty list, when the table holds no rows at all
+        // (src/api/routes/calendar/events.php:107) — which also means no row
+        // was created.
+        cy.makePrivateAdminAPICall("GET", "/api/events", null, [200, 404]).then((response) => {
+            const events = response.status === 404 ? [] : response.body.Events;
+            const oversized = events.filter((event) => event.Title.length > 255);
             expect(oversized, "no oversized event row was created").to.have.length(0);
         });
     });

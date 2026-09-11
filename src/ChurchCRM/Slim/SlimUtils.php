@@ -52,6 +52,53 @@ class SlimUtils
     ];
 
     /**
+     * A run of standard-base64 characters long enough to be key material.
+     * `SENSITIVE_VALUE_PATTERNS` covers the URL-safe alphabet; this adds the
+     * `+`, `/` and `=` that standard base64 uses, which an unlabelled
+     * credential such as an AWS secret access key
+     * (`wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`) is built from.
+     */
+    private const OPAQUE_BASE64_RUN = '#[A-Za-z0-9+/=_-]{40,}#';
+
+    /**
+     * True when a standard-base64 run in the message looks like key material
+     * rather than a file path.
+     *
+     * Simply adding `+/=` to the URL-safe pattern is not safe: it makes any
+     * absolute or deep relative path of 40+ characters match, so
+     * "Failed to open /var/www/churchcrm/src/ChurchCRM/Service/PersonService"
+     * would be replaced wholesale by the generic message — reintroducing
+     * exactly the over-redaction #9737 set out to remove.
+     *
+     * Paths are built from dictionary words, so they always contain a long
+     * run of consecutive lowercase letters ("churchcrm", "templates",
+     * "local"); a base64 blob of the same length essentially never does.
+     * That single discriminator separates the two cleanly.
+     */
+    private static function containsOpaqueBase64Run(string $message): bool
+    {
+        if (preg_match_all(self::OPAQUE_BASE64_RUN, $message, $matches) < 1) {
+            return false;
+        }
+
+        foreach ($matches[0] as $run) {
+            // No `+`, `/` or `=` means the URL-safe pattern above already
+            // decided this run; nothing to add here.
+            if (preg_match('#[+/=]#', $run) !== 1) {
+                continue;
+            }
+            // A five-letter lowercase word fragment marks this as prose/path.
+            if (preg_match('/[a-z]{5}/', $run) === 1) {
+                continue;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * True when the message looks like it carries a secret value and must not
      * be shown to the caller.
      */
@@ -63,7 +110,7 @@ class SlimUtils
             }
         }
 
-        return false;
+        return self::containsOpaqueBase64Run($message);
     }
 
     /**
@@ -79,19 +126,25 @@ class SlimUtils
      *
      * New code should read `message`.
      *
+     * The canonical keys are merged **last** on purpose: `error` is an alias of
+     * `message` and must never carry a different value, or a
+     * `responseJSON.error` consumer and a `responseJSON.message` consumer would
+     * see two different errors for the same response. A colliding key in
+     * `$extra` is therefore dropped rather than allowed to break the alias.
+     *
      * @param array<string, mixed> $extra additional keys merged into the payload
      * @return array<string, mixed>
      */
     public static function buildErrorPayload(string $message, int $code, array $extra = []): array
     {
         return array_merge(
+            $extra,
             [
                 'success' => false,
                 'message' => $message,
                 'error'   => $message,
                 'code'    => $code,
-            ],
-            $extra
+            ]
         );
     }
 
@@ -308,10 +361,10 @@ class SlimUtils
                 // If rendering the HTML page fails, fallback to JSON to ensure client receives an error
                 $errorResponse = self::buildErrorPayload(
                     gettext('An error occurred while rendering the error page.'),
-                    500
+                    $statusCode
                 );
                 $response->getBody()->write(json_encode($errorResponse));
-                return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
             }
         });
     }
