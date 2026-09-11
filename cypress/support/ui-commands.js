@@ -196,30 +196,46 @@ Cypress.Commands.add("getByTestId", (testId) => {
     return cy.get(`[data-cy="${testId}"], [data-testid="${testId}"]`);
 });
 
-// Birthday calendar test commands
+/**
+ * Creates a person with a birthday through the person editor and yields the
+ * new person's numeric id.
+ *
+ * Two things this used to get wrong (#9788):
+ *  - It selected the birth month and day by the bare number ("5"), but
+ *    PersonEditor emits zero-padded option values ("01".."12" for the month,
+ *    "01".."31" for the day) whose labels are the month abbreviation ("May")
+ *    and the un-padded day ("5"). cy.select() matched neither value nor text.
+ *  - It clicked #PersonSaveButton, which the editor does not render; the save
+ *    control is <button type="submit" name="PersonSubmit">.
+ *
+ * Pairs with cy.deletePersonByName for create/delete round trips.
+ */
 Cypress.Commands.add('createPersonWithBirthday', (personData) => {
+    const padded = (value) => String(value).padStart(2, '0');
+
     cy.visit('/PersonEditor.php');
-    
-    cy.get("#FirstName").type(personData.name);
-    cy.get("#LastName").type("TestUser");
-    cy.get("#Gender").select("1");
-    
-    // Set birthday fields
+
+    cy.get('#FirstName').type(personData.name);
+    cy.get('#LastName').type(personData.lastName ?? 'TestUser');
+    cy.get('#Gender').select('1');
+
     if (personData.month > 0) {
-        cy.get("#BirthMonth").select(personData.month.toString());
+        cy.get('#BirthMonth').select(padded(personData.month));
     }
     if (personData.day > 0) {
-        cy.get("#BirthDay").select(personData.day.toString());
+        cy.get('#BirthDay').select(padded(personData.day));
     }
     if (personData.year) {
-        cy.get("#BirthYear").clear().type(personData.year.toString());
+        cy.get('#BirthYear').clear().type(String(personData.year));
     }
-    
-    cy.get("#Classification").select("1");
-    cy.get("#PersonSaveButton").click();
-    
-    // Wait for save to complete
-    cy.url().should("contain", "people/view/");
+
+    cy.get('#Classification').select('1');
+    cy.get("button[name='PersonSubmit']").click();
+
+    // PersonSubmit redirects to Person::getViewURIForId(), /people/view/{id}.
+    cy.url().should('match', /people\/view\/\d+/);
+
+    return cy.url().then((url) => Number(/\/people\/view\/(\d+)/.exec(url)[1]));
 });
 
 /**

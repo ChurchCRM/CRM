@@ -1427,6 +1427,32 @@ cy.contains('Email').type('test@example.com');  // Wrong element
 cy.get('div.container div.row div.col-md-6 form input[type="email"]');
 ```
 
+### PersonEditor: padded birthday values, and the save button has no id <!-- learned: 2026-09-11 -->
+
+`src/PersonEditor.php` renders `#BirthMonth` / `#BirthDay` as plain selects whose
+option **values are zero-padded** (`"01"`..`"12"`, `"01"`..`"31"`) while their
+labels are the month abbreviation (`Jan`) and the un-padded day (`5`). Selecting
+by the bare number matches neither, so `cy.select()` fails outright. The editor's
+save control is a named submit button, not an id — there is no `#PersonSaveButton`
+anywhere in the codebase.
+
+```javascript
+// ❌ WRONG — no option with value/index/text "5"; #PersonSaveButton does not exist
+cy.get('#BirthMonth').select('5');
+cy.get('#BirthDay').select('1');
+cy.get('#PersonSaveButton').click();
+
+// ✅ CORRECT — pad the value, submit by button name
+cy.get('#BirthMonth').select('05');
+cy.get('#BirthDay').select('01');
+cy.get("button[name='PersonSubmit']").click();
+cy.url().should('match', /people\/view\/\d+/);   // PersonSubmit redirects to the view
+```
+
+`PersonSubmitAndAdd` is the sibling button and reloads the editor instead —
+asserting on the `/people/view/{id}` redirect is what distinguishes them.
+`cy.createPersonWithBirthday` wraps all of this and yields the new person's id.
+
 ### Modal Testing Patterns <!-- learned: 2026-04-06 -->
 
 For dynamically loaded modals (content swapped after API fetch), use specific ID

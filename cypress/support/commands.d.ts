@@ -260,15 +260,16 @@ declare namespace Cypress {
     apiRequest(options: any): any;
 
     /**
-     * Create a person with specific birthday data for testing
-     * @param personData - Object containing name, month, day, year for the person
+     * Create a person with a birthday through PersonEditor and yield their id
+     * @param personData - First name, birth month/day/year and optional last name
      */
     createPersonWithBirthday(personData: {
       name: string;
       month: number;
       day: number;
       year?: number | null;
-    }): void;
+      lastName?: string;
+    }): Chainable<number>;
 
     /**
      * Delete a person by searching for their name
