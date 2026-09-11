@@ -24,6 +24,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 |-------|------------|
 | [Slim MVC Skill](./slim-mvc-skill.md) | MVC route groups, security patterns, migration guidance (optional) |
 | [Configuration Management](./configuration-management.md) | Settings, SystemConfig, admin panels |
+| [Volunteer Management v2 Design](./volunteer-v2-design.md) | **Volunteer Management v2 (any [#9701](https://github.com/ChurchCRM/CRM/issues/9701) child issue)** — read this first, then `routing-architecture.md` → `db-schema-migration.md` → `api-development.md` → `service-layer.md` → `authorization-security.md` → `groups-mvc-guidelines.md` → `timezone-handling.md` → `i18n-localization.md` → `cypress-testing.md` |
 
 ## Database
 
