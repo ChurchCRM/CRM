@@ -55,6 +55,7 @@
         "lint:fix": "biome check --write webpack/",
         "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
         "locale:lint": "node scripts/locale-check.js",
+        "validate:seed-charsets": "node scripts/validate-seed-charsets.js",
         "lint:cypress-api-keys": "node scripts/validate-cypress-api-keys.js",
         "logs:clear": "rm -rf src/logs/*.log",
         "package": "npm run build && node scripts/package-release.js",
