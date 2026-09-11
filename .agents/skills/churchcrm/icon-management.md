@@ -144,7 +144,7 @@ Use Bootstrap margin utilities: `me-1` (small), `me-2` (standard), `me-3` (large
 |------------|------|---------|
 | **Success/Check** | `fa-check-circle` or `fa-circle-check` | `<i class="fa-solid fa-circle-check text-success"></i>` |
 | **Warning/Caution** | `fa-triangle-exclamation` or `fa-exclamation` | `<i class="fa-solid fa-triangle-exclamation text-warning"></i>` |
-| **Error/Alert** | `fa-circle-xmark` or `fa-x-circle` | `<i class="fa-solid fa-circle-xmark text-danger"></i>` |
+| **Error/Alert** | `fa-circle-xmark` or `fa-xmark` | `<i class="fa-solid fa-circle-xmark text-danger"></i>` |
 | **Info** | `fa-circle-info` or `fa-info-circle` | `<i class="fa-solid fa-circle-info text-info"></i>` |
 | **Question/Help** | `fa-circle-question` or `fa-question` | `<i class="fa-solid fa-circle-question"></i>` |
 
@@ -213,6 +213,41 @@ grep -E '^\.fa-<name>[ ,{]' node_modules/@fortawesome/fontawesome-free/css/all.c
 
 (FA 7 declares each icon as `.fa-<name> { --fa: "\eXXX"; }` — grepping for the
 old `:before` form gives a false negative for every icon.)
+
+### The guard that enforces this <!-- learned: 2026-09-11 -->
+
+`npm run lint:icons` runs **two** checks (both also run in the `code-quality`
+CI job):
+
+| Script | Rejects |
+|--------|---------|
+| `scripts/validate-no-tabler-icons.js` | any `ti` / `ti-*` class — the Tabler webfont is not shipped (#9752) |
+| `scripts/validate-fa-icons-exist.js` | any `fa-*` class with no `.fa-<name>` rule in the shipped `node_modules/@fortawesome/fontawesome-free/css/all.css` (#9753) |
+
+The second script needs no allow-list of style tokens: `fa-solid`, `fa-fw`,
+`fa-lg`, `fa-spin`, `fa-2x` and friends are themselves `.fa-*` rules in
+`all.css`, so they pass for free. Both scripts share
+`scripts/lib/icon-source-files.js` and scan `src/` + `webpack/`, skipping
+`node_modules/`, `vendor/`, Propel `Base/` and `Map/`, `src/skin/external/`
+and `src/skin/v2/` (the build output — note that the application's own
+`src/v2/` source tree *is* scanned).
+
+**Dynamic icon names must be complete.** A token that is only a prefix —
+`'fa-' . $icon`, `` `fa-${name}` ``, `fa-chevron-<?= $dir ?>` — cannot be
+verified statically and is silently ignored by the guard. So build lookup maps
+out of whole class names, never out of fragments:
+
+```php
+// Good — the guard can see and verify every name
+$icons = ['person' => 'fa-user', 'family' => 'fa-people-roof'];
+echo '<i class="fa-solid ' . $icons[$type] . '"></i>';
+
+// Bad — invisible to the guard, blank icons ship unnoticed
+echo '<i class="fa-solid fa-' . $suffix . '"></i>';
+```
+
+If a name really must be assembled at runtime, verify each possible result by
+hand against `all.css` before shipping.
 
 ---
 
@@ -334,6 +369,7 @@ Before committing icon-related changes:
 - [ ] All icons have both variant class (e.g. `fa-solid`) and icon class (e.g. `fa-pencil`)
 - [ ] Icon spacing uses Bootstrap utilities (`me-2`, `ms-2`)
 - [ ] No Tabler icons (`ti`, `ti-*`) remain — `npm run lint:icons` enforces this
+- [ ] Every `fa-*` class exists in the shipped free build — `npm run lint:icons` enforces this too
 - [ ] Dynamic icons are escaped if sourced from untrusted input
 - [ ] Decorative icons use `aria-hidden="true"` when appropriate
 - [ ] Icon-only buttons have `aria-label` when not self-evident

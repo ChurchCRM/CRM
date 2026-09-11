@@ -27,7 +27,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card">
             <div class="card-stamp">
                 <div class="card-stamp-icon bg-info">
-                    <i class="fa-solid fa-database-export"></i>
+                    <i class="fa-solid fa-database"></i>
                 </div>
             </div>
             <div class="card-header">

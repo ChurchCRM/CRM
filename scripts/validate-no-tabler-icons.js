@@ -21,20 +21,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.join(__dirname, '..');
-const SCAN_ROOTS = ['src', 'webpack'];
-const EXTENSIONS = new Set(['.php', '.js', '.jsx', '.ts', '.tsx', '.html', '.twig', '.css', '.scss']);
-
-// Third-party or generated trees: not ours to fix, and `@tabler/core` itself
-// legitimately mentions `ti-` selectors.
-const SKIP_DIRS = new Set([
-    'node_modules',
-    'vendor',
-    'external', // src/skin/external — vendored front-end libraries
-    'v2', // src/skin/v2 — webpack build output
-    'Base', // Propel-generated
-    'Map', // Propel-generated
-]);
+// Third-party and generated trees are excluded there (`@tabler/core` itself
+// legitimately mentions `ti-` selectors), and both icon guards share the list.
+const { ROOT, SCAN_ROOTS, collectSourceFiles } = require('./lib/icon-source-files');
 
 // `ti-foo` as a standalone token (so `multi-line`, `anti-aliased` etc. are
 // not matches), and the bare variant class in `class="ti ..."`.
@@ -43,30 +32,10 @@ const PATTERNS = [
     { re: /class\s*=\s*(?:["'`{]|\\")\s*ti[\s"'`]/g, what: 'Tabler `ti` variant class' },
 ];
 
-function walk(dir, out) {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-        if (entry.isDirectory()) {
-            if (SKIP_DIRS.has(entry.name)) {
-                continue;
-            }
-            walk(path.join(dir, entry.name), out);
-        } else if (entry.isFile() && EXTENSIONS.has(path.extname(entry.name))) {
-            out.push(path.join(dir, entry.name));
-        }
-    }
-    return out;
-}
-
 console.log('🔍 Tabler Icon Class Validation');
 console.log('===============================\n');
 
-const files = [];
-for (const scanRoot of SCAN_ROOTS) {
-    const abs = path.join(ROOT, scanRoot);
-    if (fs.existsSync(abs)) {
-        walk(abs, files);
-    }
-}
+const files = collectSourceFiles();
 console.log(`📋 Checking ${files.length} file(s) under ${SCAN_ROOTS.join('/, ')}/\n`);
 
 const hits = [];

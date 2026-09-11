@@ -164,7 +164,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                     <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                                 </button>
                                                 <a href="<?= SystemURLs::getRootPath() ?>/finance/fund/<?= $fundId ?>/contributors" class="dropdown-item">
-                                                    <i class="fa-solid fa-list-details me-2"></i><?= gettext('View Details') ?>
+                                                    <i class="fa-solid fa-rectangle-list me-2"></i><?= gettext('View Details') ?>
                                                 </a>
                                                 <?php if (!$isFirst): ?>
                                                     <button type="button" class="dropdown-item fund-order-btn"
