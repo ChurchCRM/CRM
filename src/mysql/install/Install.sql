@@ -129,7 +129,7 @@ CREATE TABLE `events_event` (
   `secondary_contact_person_id` INT DEFAULT NULL,
   `event_url` text,
   PRIMARY KEY  (`event_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1;
 
 --
 -- Dumping data for table `events_event`
@@ -185,7 +185,7 @@ CREATE TABLE `event_types` (
   `type_grpid` mediumint(9),
 
   PRIMARY KEY  (`type_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `event_types`
