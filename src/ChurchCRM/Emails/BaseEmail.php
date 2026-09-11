@@ -118,6 +118,16 @@ abstract class BaseEmail
      * Applied at send time rather than in setReplyTo() so a caller can change
      * its mind before sending, and so resending the same instance does not
      * accumulate duplicate Reply-To headers.
+     *
+     * PHPMailer is constructed without exceptions, so addReplyTo() reports
+     * failure by returning false and setting ErrorInfo. The filter_var() guard
+     * in setReplyTo() does not make that unreachable: PHPMailer applies its own
+     * validateAddress(), and an internationalised domain is rejected outright
+     * when the intl/mbstring extensions needed to punycode it are missing.
+     * Unchecked, the mail would then go out with no Reply-To header, send()
+     * would still return true, and getReplyTo() would keep reporting an address
+     * that was never applied. Log it and forget the address instead, so the
+     * getter stays honest.
      */
     private function applyReplyTo(): void
     {
@@ -126,7 +136,14 @@ abstract class BaseEmail
         }
 
         $this->mail->clearReplyTos();
-        $this->mail->addReplyTo($this->replyTo['address'], $this->replyTo['name']);
+        if (!$this->mail->addReplyTo($this->replyTo['address'], $this->replyTo['name'])) {
+            LoggerUtils::getAppLogger()->warning('PHPMailer rejected Reply-To address', [
+                'address'    => $this->replyTo['address'],
+                'emailClass' => static::class,
+                'error'      => $this->mail->ErrorInfo,
+            ]);
+            $this->replyTo = null;
+        }
     }
 
     public function getError(): string
