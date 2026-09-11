@@ -16,9 +16,14 @@ Two kinds of Slim app
 | Kind | Bootstrap | Prefixes |
 |------|-----------|----------|
 | **MVC (HTML) modules** | `MvcAppFactory::create('/<prefix>', [...])` | `/admin`, `/event`, `/finance`, `/fundraiser`, `/groups`, `/people`, `/v2` |
-| **Bespoke apps** | `AppFactory::create()` + `SlimUtils::getBasePath()` in their own `index.php` | `/api`, `/external`, `/kiosk`, `/plugins`, `/session`, `/setup` |
+| **Bespoke apps** | `AppFactory::create()` + `SlimUtils::getBasePath()` in their own `index.php` | `/api`, `/external`, `/kiosk`, `/plugins`, `/session`, `/setup`&nbsp;† |
 
-`MvcAppFactory` (`src/ChurchCRM/Slim/MvcAppFactory.php:35-62`) supplies the shared stack: base path, body parsing, routing, the HTML error handler, and the middleware chain `AuthMiddleware` → `ChurchInfoRequiredMiddleware` → optional role middleware → `CorsMiddleware`. API-only entry points deliberately do **not** use it — they need a JSON error handler and a different middleware set (`MvcAppFactory.php:17-18`).
+&nbsp;† `/setup` is the exception: it calls `AppFactory::create()` like the rest, but computes its
+base path by parsing `$_SERVER['SCRIPT_NAME']` (`src/setup/index.php:15-16`) instead of calling
+`SlimUtils::getBasePath()`, because that helper depends on `Config.php`, which does not exist
+yet while the installer runs. The other five all call `SlimUtils::getBasePath('/<prefix>')`.
+
+`MvcAppFactory` (`src/ChurchCRM/Slim/MvcAppFactory.php:35-62`) supplies the shared stack: base path, body parsing, routing, the HTML error handler, and the middleware chain, whose **execution order** is `AuthMiddleware` → `ChurchInfoRequiredMiddleware` → optional role middleware → `CorsMiddleware` (added in the reverse of that order at `MvcAppFactory.php:54-59`, per Slim 4 LIFO). API-only entry points deliberately do **not** use it — they need a JSON error handler and a different middleware set (`MvcAppFactory.php:17-18`).
 
 Middleware: FamilyMiddleware <!-- learned: 2026-03-03 -->
 
@@ -62,7 +67,7 @@ Bespoke Slim apps (not `MvcAppFactory`)
 
 | Prefix | Entry point | Notes |
 |--------|-------------|-------|
-| `/api` | `src/api/index.php` | REST endpoints used by the frontend and external clients. JSON error handler; `CorsMiddleware` + `AuthMiddleware` + `VersionMiddleware`. Routes grouped by domain under `src/api/routes/{calendar,finance,people,public,system,users}/`. Keep the API surface backward-compatible. |
+| `/api` | `src/api/index.php` | REST endpoints used by the frontend and external clients. JSON error handler. Middleware **execution order** is `VersionMiddleware` → `AuthMiddleware` → `CorsMiddleware` — the reverse of the `$app->add()` sequence at `src/api/index.php:29-31`, because Slim 4 is LIFO (last added = first executed). Routes grouped by domain under `src/api/routes/{calendar,finance,people,public,system,users}/`. Keep the API surface backward-compatible. |
 | `/external` | `src/external/index.php` | `src/external/routes/` — `calendar.php`, `register.php`, `system.php`, `verify.php`. Often unauthenticated or token-based; validate inputs strictly. |
 | `/kiosk` | `src/kiosk/index.php` | `src/kiosk/routes/` — `admin.php`, `device.php`, `api/`. Kiosk device token/cookie flows with a deliberately limited action set. |
 | `/plugins` | `src/plugins/index.php` | `/plugins/management/*` and `/plugins/api/*` (admin only), plus `/plugins/{plugin-name}/…` registered by each enabled plugin. Plugin routes run with the plugin's own permission settings — see `plugin-security-scan.md`. |
