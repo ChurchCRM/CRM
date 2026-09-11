@@ -831,7 +831,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             window.CRM.currentPersonID = <?= $iPersonID ?>;
             window.CRM.currentPersonActive = <?= $person->isActive() ? "true" : "false" ?>;
-            window.CRM.currentPersonName = <?= json_encode($person->getFullName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
+            window.CRM.currentPersonName = <?= InputUtils::jsonEncodeForScript($person->getFullName()) ?>;
 
             $("#deletePhoto").click(function() {
                 window.CRM.deletePhoto("person", window.CRM.currentPersonID);

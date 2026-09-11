@@ -16,6 +16,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpForbiddenException;
@@ -281,7 +282,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         // Update only if the value is different
         if ($currentStatus !== $newStatus) {
-            $currentDate = new \DateTime();
+            $currentDate = DateTimeUtils::getToday();
             if ($newStatus === false) {
                 // Deactivating: set DateDeactivated to now
                 $person->setDateDeactivated($currentDate);
