@@ -1008,7 +1008,7 @@ match `vmin_ID`. `ON DELETE SET NULL` so deleting a ministry never deletes churc
 |---|---|---|
 | 1 | `orm/schema.xml` | the column + the FK above, inside `<table name="events_event">` |
 | 2 | `src/mysql/install/Install.sql` | the same column in the `events_event` `CREATE TABLE` (line ~118). **Required**, not optional — nothing validates Install.sql against schema.xml. |
-| 3 | `src/mysql/upgrade/7.7.0-volunteer-v2-event-ministry.sql` | `ALTER TABLE events_event ADD COLUMN event_ministry_id int(11) DEFAULT NULL AFTER secondary_contact_person_id;` + `ADD KEY` + `ADD CONSTRAINT … ON DELETE SET NULL`. Plain `ALTER` — **not** `ADD COLUMN IF NOT EXISTS` (see the comment in `src/mysql/upgrade/7.4.3-manage-fundraisers.sql:5-8`). Must run **after** the table-creation migration. |
+| 3 | `src/mysql/upgrade/7.8.0-volunteer-v2-event-ministry.sql` | `ALTER TABLE events_event ADD COLUMN event_ministry_id int(11) DEFAULT NULL AFTER secondary_contact_person_id;` + `ADD KEY` + `ADD CONSTRAINT … ON DELETE SET NULL`. Plain `ALTER` — **not** `ADD COLUMN IF NOT EXISTS` (see the comment in `src/mysql/upgrade/7.4.3-manage-fundraisers.sql:5-8`). Must run **after** the table-creation migration. |
 | 4 | `src/mysql/upgrade.json` | append the script to the **existing `current` block**; `dbVersion` stays `7.7.0` (F29) |
 | 5 | `cypress/data/seed.sql` | the same column in its `events_event` `CREATE TABLE` — **ask the user before editing `seed.sql`** (`db-schema-migration.md`) |
 | 6 | Propel regen | `cd src && composer run orm-gen` (copy `orm/propel.php.dist` → `orm/propel.php` first), then `npm run build:php:validate:orm`. `Base/` and `Map/` are gitignored — nothing is committed from the regen. |
@@ -1661,7 +1661,7 @@ Derived from the `usr_ManageFundraisers` precedent (`src/mysql/upgrade/7.4.3-man
 | # | File | Change |
 |---|---|---|
 | 1 | `orm/schema.xml` after `usr_ManageFundraisers` (`:596`) | `<column name="usr_VolunteerManager" phpName="VolunteerManager" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>` |
-| 2 | `src/mysql/upgrade/7.7.0-volunteer-v2-manager-permission.sql` | `ALTER TABLE \`user_usr\` ADD COLUMN \`usr_VolunteerManager\` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER \`usr_ManageFundraisers\`;` — plain `ALTER`, **not** `IF NOT EXISTS` (see `7.4.3-manage-fundraisers.sql:5-8`) |
+| 2 | `src/mysql/upgrade/7.8.0-volunteer-v2-manager-permission.sql` | `ALTER TABLE \`user_usr\` ADD COLUMN \`usr_VolunteerManager\` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER \`usr_ManageFundraisers\`;` — plain `ALTER`, **not** `IF NOT EXISTS` (see `7.4.3-manage-fundraisers.sql:5-8`) |
 | 3 | `src/mysql/upgrade.json` | append to the existing `current` block; `dbVersion` stays `7.7.0` |
 | 4 | `src/mysql/install/Install.sql` | the same column in the `user_usr` `CREATE TABLE` — **required** |
 | 5 | `cypress/data/seed.sql` | the same column in its `user_usr` `CREATE TABLE`, plus a seeded manager and a seeded coordinator (§6.4) — **ask the user before editing `seed.sql`** |
@@ -2375,7 +2375,7 @@ empty body); `Menu`/`MenuItem` reused with a boolean permission argument.
 *Normative sections:* §2 (all), Appendix A.
 *Depends on:* #9704 (for the flag it gates behind). Can be developed in parallel from day one.
 
-**PR contains:** the 13 `schema.xml` tables; one `src/mysql/upgrade/7.7.0-volunteer-v2-schema.sql`;
+**PR contains:** the 13 `schema.xml` tables; one `src/mysql/upgrade/7.8.0-volunteer-v2-schema.sql`;
 the `upgrade.json` `current`-block entry; the matching `Install.sql` blocks; the `seed.sql` blocks
 (**after asking**); the hand-written model + query subclasses; lifecycle enum constants on the
 models; `private.volunteer.setup.spec.js` covering the constraints. **No `events_event` column** —
@@ -2693,14 +2693,18 @@ Corrected against the actual tooling in the tree.
    `description` attribute on every table, `phpName="Id"` on every PK, FK column types matched to
    the **parent** (§2.0). Do **not** copy the `PrimaryContact` FK block (F30) and do **not** add a
    redundant `UNIQUE` on a primary key.
-2. **`src/mysql/upgrade/7.7.0-volunteer-v2-<desc>.sql`** — one script per concern. Lead with a
+2. **`src/mysql/upgrade/7.8.0-volunteer-v2-<desc>.sql`** — one script per concern. Lead with a
    comment naming the issue and explaining *why*. `CREATE TABLE IF NOT EXISTS` for new tables; a
    **plain `ALTER TABLE … ADD COLUMN`** for new columns (not `IF NOT EXISTS` — see the comment in
    `src/mysql/upgrade/7.4.3-manage-fundraisers.sql:5-8` about the MySQL/MariaDB divergence).
    `ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`. Index names `_idx` / `_uidx`.
-3. **`src/mysql/upgrade.json`** — append the script path to the **existing `current` block**
-   (`versions: ["7.6.4"]`, `dbVersion: "7.7.0"`). **Do not create a new block** and **do not change
-   `dbVersion`** (F29). Order matters: the V2 tables must be created before anything FKs them.
+3. **`src/mysql/upgrade.json`** — **do not register the script yet.** Maintainer decision on #9818
+   (2026-09-12): Volunteer v2 targets **7.8.0** and is excluded from 7.7.0; "do not register a
+   future 7.8.0 migration in the active 7.7.0 upgrade graph — register it when the 7.8.0
+   development/version boundary is opened". Until then fresh installs get the tables from
+   `Install.sql` and the Cypress database from `seed.sql`. When the 7.8.0 block exists, list the V2
+   scripts in it in this order: schema → manager permission → event ministry (each FKs the one
+   before). F29's "append to the `current` block" is superseded.
 4. **`src/mysql/install/Install.sql`** — mirror every change. **Required, not optional**: nothing in
    the build validates Install.sql against `schema.xml`, and they have already drifted for
    `events_event` (nullability and defaults disagree today).
