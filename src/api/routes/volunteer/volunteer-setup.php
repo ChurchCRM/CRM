@@ -1,16 +1,25 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\Cart;
 use ChurchCRM\Exceptions\VolunteerSetupException;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerPool;
 use ChurchCRM\model\ChurchCRM\VolunteerPosition;
+use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerQualification;
 use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Service\VolunteerSetupService;
 use ChurchCRM\Slim\Middleware\Api\VolunteerMinistryMiddleware;
+use ChurchCRM\Slim\Middleware\Api\VolunteerPoolMiddleware;
 use ChurchCRM\Slim\Middleware\Api\VolunteerPositionMiddleware;
+use ChurchCRM\Slim\Middleware\Api\VolunteerQualificationMiddleware;
 use ChurchCRM\Slim\Middleware\Api\VolunteerTeamMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\VolunteerCoordinatorRoleAuthMiddleware;
@@ -59,8 +68,9 @@ use Slim\Routing\RouteCollectorProxy;
  * administrator holds no explicit grants) and short-circuits an empty allow-list
  * rather than handing `[]` to a filter.
  *
- * #9707 adds the pool and qualification routes to this file; #9708 opens its own
- * group in volunteer-schedule.php.
+ * #9707 added the pool and qualification routes to this file, in their own
+ * blocks below the position block; #9708 opens its own group in
+ * volunteer-schedule.php.
  */
 $app->group('/volunteer', function (RouteCollectorProxy $group): void {
     $group->group('', function (RouteCollectorProxy $setup): void {
@@ -135,6 +145,66 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
 
         $setup->delete('/positions/{positionId:[0-9]+}', 'deleteVolunteerPosition')
             ->add(new VolunteerPositionMiddleware());
+
+        // ── Pools (#9707) ─────────────────────────────────────────────────
+        // The ministry-level routes are coordinator-only, the team-level ones
+        // are open to that team's leader: §4.6 gives a team leader their own
+        // team's pools and nothing wider. A team leader therefore works through
+        // /teams/{teamId}/..., which is exactly the surface §3.3.1 lists.
+        $setup->get('/ministries/{ministryId:[0-9]+}/pools', 'listVolunteerPools')
+            ->add(new VolunteerMinistryMiddleware());
+
+        $setup->post('/ministries/{ministryId:[0-9]+}/pools', 'createVolunteerMinistryPool')
+            ->add(new InputSanitizationMiddleware([
+                'groupId' => 'int',
+                'label' => 'text',
+            ]))
+            ->add(new VolunteerMinistryMiddleware());
+
+        $setup->get('/teams/{teamId:[0-9]+}/pools', 'listVolunteerTeamPools')
+            ->add(new VolunteerTeamMiddleware());
+
+        $setup->post('/teams/{teamId:[0-9]+}/pools', 'createVolunteerTeamPool')
+            ->add(new InputSanitizationMiddleware([
+                'groupId' => 'int',
+                'label' => 'text',
+            ]))
+            ->add(new VolunteerTeamMiddleware());
+
+        $setup->delete('/pools/{poolId:[0-9]+}', 'deleteVolunteerPool')
+            ->add(new VolunteerPoolMiddleware());
+
+        // ── Pool people and the qualification matrix (#9707) ───────────────
+        $setup->get('/ministries/{ministryId:[0-9]+}/members', 'listVolunteerPoolMembers')
+            ->add(new VolunteerMinistryMiddleware());
+
+        $setup->get('/teams/{teamId:[0-9]+}/members', 'listVolunteerTeamMembers')
+            ->add(new VolunteerTeamMiddleware());
+
+        $setup->get('/ministries/{ministryId:[0-9]+}/qualification-matrix', 'getVolunteerQualificationMatrix')
+            ->add(new VolunteerMinistryMiddleware());
+
+        // ── Qualifications (#9707) ────────────────────────────────────────
+        $setup->get('/positions/{positionId:[0-9]+}/qualifications', 'listVolunteerQualifications')
+            ->add(new VolunteerPositionMiddleware());
+
+        $setup->post('/positions/{positionId:[0-9]+}/qualifications', 'grantVolunteerQualification')
+            ->add(new InputSanitizationMiddleware([
+                'personId' => 'int',
+                'notes' => 'text',
+            ]))
+            ->add(new VolunteerPositionMiddleware());
+
+        // The Cart sink (P5/P6). No sanitizer: the payload is empty — the
+        // people come from $_SESSION via Cart::getCartPeople(), never from the
+        // request, so there is nothing to sanitize and nothing to spoof.
+        $setup->post('/positions/{positionId:[0-9]+}/qualifications/from-cart', 'grantVolunteerQualificationsFromCart')
+            ->add(new VolunteerPositionMiddleware());
+
+        $setup->delete('/qualifications/{qualificationId:[0-9]+}', 'revokeVolunteerQualification')
+            ->add(new VolunteerQualificationMiddleware());
+
+        $setup->get('/people/{personId:[0-9]+}/qualifications', 'listVolunteerQualificationsForPerson');
     })->add(VolunteerCoordinatorRoleAuthMiddleware::class);
 })->add(new VolunteerV2EnabledMiddleware());
 
@@ -406,6 +476,10 @@ function getVolunteerMinistry(Request $request, Response $response): Response
             static fn (VolunteerPosition $p): array => volunteerPositionToArray($p, $teamNames),
             $positions
         ),
+        // #9707 completes the §3.3.1 shape: the detail document now also carries
+        // the pool links, so the ministry page renders its Teams & Pools tab
+        // from ONE cached response rather than a second fetch per tab (§5.4).
+        'pools' => volunteerSetupPoolRows($service, $service->listPools($ministryId)),
     ]);
 }
 
@@ -932,4 +1006,792 @@ function deleteVolunteerPosition(Request $request, Response $response): Response
     }
 
     return SlimUtils::renderSuccessJSON($response);
+}
+
+// ─── Pools and qualifications (#9707) ────────────────────────────────────────
+//
+// Wire shapes and helpers first, then the handlers, matching the layout above.
+//
+// The design decision these endpoints exist to express is D1: a Group **is**
+// the roster. Nothing here copies a membership row, and `memberCount` is
+// counted live off `person2group2role_p2g2r` — so a person added to the group
+// in the Groups module is in the pool on the next request, with no sync step.
+
+/**
+ * One pool link. `ownerName`, `groupName` and `memberCount` are looked up in
+ * batch by the caller and passed in, so a list of pools costs three queries
+ * rather than three per row.
+ *
+ * @param array{ownerName?: ?string, groupName?: ?string, memberCount?: int} $context
+ */
+function volunteerPoolToArray(VolunteerPool $pool, array $context = []): array
+{
+    return [
+        'id' => (int) $pool->getId(),
+        'ownerType' => $pool->getOwnerType(),
+        'ownerId' => (int) $pool->getOwnerId(),
+        'ownerName' => $context['ownerName'] ?? null,
+        'groupId' => (int) $pool->getGroupId(),
+        'groupName' => $context['groupName'] ?? null,
+        'memberCount' => $context['memberCount'] ?? 0,
+        'label' => $pool->getLabel(),
+    ];
+}
+
+/**
+ * One qualification row. `active: false` is a REVOKED qualification that is
+ * still readable — that is the whole point of §2.7's "revocation is
+ * deactivation", so the flag is part of the wire shape rather than a filter
+ * applied before serialising.
+ *
+ * @param array{displayName?: ?string, positionName?: ?string, ministryId?: ?int, teamId?: ?int} $context
+ */
+function volunteerQualificationToArray(VolunteerQualification $qualification, array $context = []): array
+{
+    return [
+        'id' => (int) $qualification->getId(),
+        'personId' => (int) $qualification->getPersonId(),
+        'displayName' => $context['displayName'] ?? null,
+        'positionId' => (int) $qualification->getPositionId(),
+        'positionName' => $context['positionName'] ?? null,
+        'ministryId' => $context['ministryId'] ?? null,
+        'teamId' => $context['teamId'] ?? null,
+        'active' => (bool) $qualification->getActive(),
+        'grantedDate' => $qualification->getGrantedDate('Y-m-d H:i:s'),
+        'grantedByPersonId' => $qualification->getGrantedByPersonId() === null
+            ? null
+            : (int) $qualification->getGrantedByPersonId(),
+        'notes' => $qualification->getNotes(),
+    ];
+}
+
+/**
+ * Person id → display name for a set of ids, in ONE query.
+ *
+ * V2 never stores a person's name: the roster rows it renders are projections
+ * over `person_per`, resolved at read time (P8, §1.1 G1).
+ *
+ * @param int[] $personIds
+ *
+ * @return array<int, string>
+ */
+function volunteerSetupPersonNames(array $personIds): array
+{
+    if ($personIds === []) {
+        return [];
+    }
+
+    $names = [];
+    foreach (PersonQuery::create()->findPks($personIds) as $person) {
+        $names[(int) $person->getId()] = $person->getFullName();
+    }
+
+    return $names;
+}
+
+/**
+ * Render a set of pools with their group names, member counts and owner names,
+ * resolving each of those in batch.
+ *
+ * @param VolunteerPool[] $pools
+ *
+ * @return array<int, array<string, mixed>>
+ */
+function volunteerSetupPoolRows(VolunteerSetupService $service, array $pools): array
+{
+    if ($pools === []) {
+        return [];
+    }
+
+    $groupIds = [];
+    $ministryIds = [];
+    $teamIds = [];
+    foreach ($pools as $pool) {
+        $groupIds[(int) $pool->getGroupId()] = true;
+        if ($pool->getOwnerType() === VolunteerPool::OWNER_TYPE_MINISTRY) {
+            $ministryIds[(int) $pool->getOwnerId()] = true;
+        } else {
+            $teamIds[(int) $pool->getOwnerId()] = true;
+        }
+    }
+
+    $groupNames = [];
+    foreach (GroupQuery::create()->findPks(array_keys($groupIds)) as $group) {
+        $groupNames[(int) $group->getId()] = $group->getName();
+    }
+
+    $ownerNames = ['ministry' => [], 'team' => []];
+    if ($ministryIds !== []) {
+        foreach (VolunteerMinistryQuery::create()->findPks(array_keys($ministryIds)) as $ministry) {
+            $ownerNames['ministry'][(int) $ministry->getId()] = $ministry->getName();
+        }
+    }
+    if ($teamIds !== []) {
+        foreach (VolunteerTeamQuery::create()->findPks(array_keys($teamIds)) as $team) {
+            $ownerNames['team'][(int) $team->getId()] = $team->getName();
+        }
+    }
+
+    $memberCounts = $service->countGroupMembers(array_keys($groupIds));
+
+    $rows = [];
+    foreach ($pools as $pool) {
+        $groupId = (int) $pool->getGroupId();
+        $rows[] = volunteerPoolToArray($pool, [
+            'ownerName' => $ownerNames[$pool->getOwnerType()][(int) $pool->getOwnerId()] ?? null,
+            'groupName' => $groupNames[$groupId] ?? null,
+            'memberCount' => $memberCounts[$groupId] ?? 0,
+        ]);
+    }
+
+    return $rows;
+}
+
+/**
+ * The thin projection §3.3.1 specifies for pool people: one row per person,
+ * whichever pool groups they arrived through, plus the position ids they are
+ * qualified for.
+ *
+ * `$positionIds` is what the qualification half is computed over, so a caller
+ * that has already narrowed the positions (a team view) gets a matching
+ * `qualifications` array rather than one that mentions columns it is not
+ * showing.
+ *
+ * @param int[] $positionIds
+ *
+ * @return array<int, array<string, mixed>>
+ */
+function volunteerSetupMemberRows(
+    VolunteerSetupService $service,
+    int $ministryId,
+    ?int $teamId,
+    array $positionIds
+): array {
+    $membership = $service->getPoolMembership($ministryId, $teamId);
+    if ($membership === []) {
+        return [];
+    }
+
+    $names = volunteerSetupPersonNames(array_keys($membership));
+    $qualifications = $service->getQualificationsByPerson($positionIds);
+
+    $rows = [];
+    foreach ($membership as $personId => $groupIds) {
+        $held = $qualifications[$personId] ?? [];
+        $rows[] = [
+            'personId' => $personId,
+            'displayName' => $names[$personId] ?? '',
+            'groupIds' => $groupIds,
+            // §3.3.1's shape: the position ids this person may serve in.
+            'qualifications' => array_keys($held),
+            // Plus the row id behind each tick, so unticking a matrix box can
+            // revoke that exact qualification without a lookup request. Cast to
+            // object so an empty map serialises as {} rather than [].
+            'qualificationIds' => (object) $held,
+        ];
+    }
+
+    // Alphabetical: a matrix is read by looking someone up, not by id order.
+    usort($rows, static fn (array $a, array $b): int => strcasecmp($a['displayName'], $b['displayName']));
+
+    return $rows;
+}
+
+/**
+ * The position ids a member/matrix view is computed over, plus the position
+ * rows themselves. Only active positions become matrix columns — a deactivated
+ * position keeps its history but is not something new people get qualified for
+ * (§2.6).
+ *
+ * @return array{positions: VolunteerPosition[], positionIds: int[]}
+ */
+function volunteerSetupMatrixPositions(VolunteerSetupService $service, int $ministryId, ?int $teamId): array
+{
+    $positions = $service->listPositions($ministryId, $teamId, true);
+
+    return [
+        'positions' => $positions,
+        'positionIds' => array_map(static fn (VolunteerPosition $p): int => (int) $p->getId(), $positions),
+    ];
+}
+
+/** `?teamId=`; absent or empty means "the whole ministry". */
+function volunteerSetupTeamFilter(Request $request): ?int
+{
+    $params = $request->getQueryParams();
+
+    return isset($params['teamId']) && $params['teamId'] !== '' ? (int) $params['teamId'] : null;
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/ministries/{ministryId}/pools",
+ *     operationId="listVolunteerPools",
+ *     summary="The Groups linked as volunteer pools for a ministry and its teams",
+ *     description="A pool is a LINK to an existing group_grp row (design D1, section 2.5). No membership is copied into V2 - memberCount is counted live from the group's own membership rows.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer"),
+ *         description="Narrow the team-owned pools to one team; the ministry's own pools are always included"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="pools", type="array", @OA\Items(type="object")))
+ *     )
+ * )
+ */
+function listVolunteerPools(Request $request, Response $response): Response
+{
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
+
+    $service = new VolunteerSetupService();
+    $pools = $service->listPools((int) $ministry->getId(), volunteerSetupTeamFilter($request));
+
+    return SlimUtils::renderJSON($response, ['pools' => volunteerSetupPoolRows($service, $pools)]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/teams/{teamId}/pools",
+ *     operationId="listVolunteerTeamPools",
+ *     summary="The Groups linked as volunteer pools for one team",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such team"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="pools", type="array", @OA\Items(type="object")))
+ *     )
+ * )
+ */
+function listVolunteerTeamPools(Request $request, Response $response): Response
+{
+    /** @var VolunteerTeam $team */
+    $team = $request->getAttribute('volunteerTeam');
+
+    $service = new VolunteerSetupService();
+    $pools = $service->listPoolsForTeam((int) $team->getId());
+
+    return SlimUtils::renderJSON($response, ['pools' => volunteerSetupPoolRows($service, $pools)]);
+}
+
+/**
+ * Shared body of the two link handlers: same payload, same errors, different
+ * owner. Keeping it in one function is what stops the ministry and team routes
+ * drifting on which field is required.
+ */
+function volunteerSetupLinkPool(Request $request, Response $response, string $ownerType, int $ownerId): Response
+{
+    $body = (array) $request->getParsedBody();
+
+    try {
+        $pool = (new VolunteerSetupService())->linkPool(
+            $ownerType,
+            $ownerId,
+            (int) ($body['groupId'] ?? 0),
+            isset($body['label']) ? (string) $body['label'] : null,
+            volunteerSetupActor()
+        );
+    } catch (\Throwable $e) {
+        return volunteerSetupError($request, $response, $e);
+    }
+
+    $service = new VolunteerSetupService();
+
+    return SlimUtils::renderJSON(
+        $response,
+        ['pool' => volunteerSetupPoolRows($service, [$pool])[0]],
+        201
+    );
+}
+
+/**
+ * @OA\Post(
+ *     path="/volunteer/ministries/{ministryId}/pools",
+ *     operationId="createVolunteerMinistryPool",
+ *     summary="Link an existing Group as a volunteer pool for a ministry",
+ *     description="Reuses the Group as the roster (design D1). Ministry-wide pools feed every team under the ministry. Returns 409 when that group is already linked to this owner.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"groupId"},
+ *         @OA\Property(property="groupId", type="integer", description="group_grp.grp_ID"),
+ *         @OA\Property(property="label", type="string", maxLength=100, description="Optional coordinator label")
+ *     )),
+ *     @OA\Response(response=400, description="groupId is missing or not an integer"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry or group"),
+ *     @OA\Response(response=409, description="That group is already linked here"),
+ *     @OA\Response(response=201, description="Linked")
+ * )
+ */
+function createVolunteerMinistryPool(Request $request, Response $response): Response
+{
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
+
+    return volunteerSetupLinkPool(
+        $request,
+        $response,
+        VolunteerPool::OWNER_TYPE_MINISTRY,
+        (int) $ministry->getId()
+    );
+}
+
+/**
+ * @OA\Post(
+ *     path="/volunteer/teams/{teamId}/pools",
+ *     operationId="createVolunteerTeamPool",
+ *     summary="Link an existing Group as a volunteer pool for one team",
+ *     description="A team leader may link pools for their own team (design section 4.6).",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"groupId"},
+ *         @OA\Property(property="groupId", type="integer"),
+ *         @OA\Property(property="label", type="string", maxLength=100)
+ *     )),
+ *     @OA\Response(response=400, description="groupId is missing or not an integer"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such team or group"),
+ *     @OA\Response(response=409, description="That group is already linked here"),
+ *     @OA\Response(response=201, description="Linked")
+ * )
+ */
+function createVolunteerTeamPool(Request $request, Response $response): Response
+{
+    /** @var VolunteerTeam $team */
+    $team = $request->getAttribute('volunteerTeam');
+
+    return volunteerSetupLinkPool(
+        $request,
+        $response,
+        VolunteerPool::OWNER_TYPE_TEAM,
+        (int) $team->getId()
+    );
+}
+
+/**
+ * @OA\Delete(
+ *     path="/volunteer/pools/{poolId}",
+ *     operationId="deleteVolunteerPool",
+ *     summary="Unlink a volunteer pool",
+ *     description="Removes the LINK only. The Group, its membership and its properties are never touched - roster membership belongs to the Groups module (design D1, Appendix D-1).",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="poolId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this volunteer pool, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such pool"),
+ *     @OA\Response(response=200, description="Unlinked")
+ * )
+ */
+function deleteVolunteerPool(Request $request, Response $response): Response
+{
+    /** @var VolunteerPool $pool */
+    $pool = $request->getAttribute('volunteerPool');
+
+    try {
+        (new VolunteerSetupService())->unlinkPool($pool, volunteerSetupActor());
+    } catch (\Throwable $e) {
+        return volunteerSetupError($request, $response, $e);
+    }
+
+    return SlimUtils::renderSuccessJSON($response);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/ministries/{ministryId}/members",
+ *     operationId="listVolunteerPoolMembers",
+ *     summary="The people in this ministry's volunteer pools",
+ *     description="The de-duplicated UNION of the linked Groups' memberships, read live from person2group2role_p2g2r - V2 stores no people (design D1, section 2.5). Each row also carries the position ids that person is actively qualified for, so the qualification matrix renders from one response (section 5.4).",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="members", type="array", @OA\Items(type="object")))
+ *     )
+ * )
+ */
+function listVolunteerPoolMembers(Request $request, Response $response): Response
+{
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
+
+    $service = new VolunteerSetupService();
+    $ministryId = (int) $ministry->getId();
+    $teamId = volunteerSetupTeamFilter($request);
+    $positions = volunteerSetupMatrixPositions($service, $ministryId, $teamId);
+
+    return SlimUtils::renderJSON($response, [
+        'members' => volunteerSetupMemberRows($service, $ministryId, $teamId, $positions['positionIds']),
+    ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/teams/{teamId}/members",
+ *     operationId="listVolunteerTeamMembers",
+ *     summary="The people in one team's volunteer pools",
+ *     description="The team's own pools UNION the parent ministry's pools, because a ministry-wide pool feeds every team under it.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such team"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="members", type="array", @OA\Items(type="object")))
+ *     )
+ * )
+ */
+function listVolunteerTeamMembers(Request $request, Response $response): Response
+{
+    /** @var VolunteerTeam $team */
+    $team = $request->getAttribute('volunteerTeam');
+
+    $service = new VolunteerSetupService();
+    $ministryId = (int) $team->getMinistryId();
+    $teamId = (int) $team->getId();
+    $positions = volunteerSetupMatrixPositions($service, $ministryId, $teamId);
+
+    return SlimUtils::renderJSON($response, [
+        'members' => volunteerSetupMemberRows($service, $ministryId, $teamId, $positions['positionIds']),
+    ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/ministries/{ministryId}/qualification-matrix",
+ *     operationId="getVolunteerQualificationMatrix",
+ *     summary="Everything the qualification matrix needs, in one response",
+ *     description="Pool people down the side, active positions across the top, and each person's qualified position ids - section 5.4 requires the matrix to handle 15-200 people without re-fetching per cell.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer"),
+ *         description="Narrow both the columns and the pool people to one team"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="ministryId", type="integer"),
+ *             @OA\Property(property="teamId", type="integer", nullable=true),
+ *             @OA\Property(property="positions", type="array", @OA\Items(type="object")),
+ *             @OA\Property(property="pools", type="array", @OA\Items(type="object")),
+ *             @OA\Property(property="people", type="array", @OA\Items(type="object"))
+ *         )
+ *     )
+ * )
+ */
+function getVolunteerQualificationMatrix(Request $request, Response $response): Response
+{
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
+
+    $service = new VolunteerSetupService();
+    $ministryId = (int) $ministry->getId();
+    $teamId = volunteerSetupTeamFilter($request);
+
+    $positions = volunteerSetupMatrixPositions($service, $ministryId, $teamId);
+    $teamNames = volunteerSetupTeamNames($positions['positions']);
+
+    return SlimUtils::renderJSON($response, [
+        'ministryId' => $ministryId,
+        'teamId' => $teamId,
+        'positions' => array_map(
+            static fn (VolunteerPosition $p): array => volunteerPositionToArray($p, $teamNames),
+            $positions['positions']
+        ),
+        'pools' => volunteerSetupPoolRows($service, $service->listPools($ministryId, $teamId)),
+        'people' => volunteerSetupMemberRows($service, $ministryId, $teamId, $positions['positionIds']),
+    ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/positions/{positionId}/qualifications",
+ *     operationId="listVolunteerQualifications",
+ *     summary="Who is qualified for a position",
+ *     description="Includes revoked rows by default: revocation is deactivation, so the grant history stays readable (design section 2.7). Pass active=1 for the eligibility list.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="positionId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="active", in="query", required=false, @OA\Schema(type="boolean")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this position, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such position"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="qualifications", type="array", @OA\Items(type="object")))
+ *     )
+ * )
+ */
+function listVolunteerQualifications(Request $request, Response $response): Response
+{
+    /** @var VolunteerPosition $position */
+    $position = $request->getAttribute('volunteerPosition');
+
+    $service = new VolunteerSetupService();
+    $qualifications = $service->listQualifications(
+        (int) $position->getId(),
+        volunteerSetupActiveFilter($request)
+    );
+
+    $names = volunteerSetupPersonNames(array_map(
+        static fn (VolunteerQualification $q): int => (int) $q->getPersonId(),
+        $qualifications
+    ));
+
+    return SlimUtils::renderJSON($response, [
+        'qualifications' => array_map(
+            static fn (VolunteerQualification $q): array => volunteerQualificationToArray($q, [
+                'displayName' => $names[(int) $q->getPersonId()] ?? null,
+                'positionName' => $position->getName(),
+                'ministryId' => (int) $position->getMinistryId(),
+                'teamId' => $position->getTeamId() === null ? null : (int) $position->getTeamId(),
+            ]),
+            $qualifications
+        ),
+    ]);
+}
+
+/**
+ * @OA\Post(
+ *     path="/volunteer/positions/{positionId}/qualifications",
+ *     operationId="grantVolunteerQualification",
+ *     summary="Qualify a person for a position",
+ *     description="Idempotent by UNIQUE (vqal_per_ID, vqal_vpos_ID): 201 when the row is new, 200 when it already existed - a re-grant reactivates a revoked row rather than inserting a second. The person does NOT have to be in a linked pool: the pool is the candidate set, the qualification is the eligibility (design section 2.5).",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="positionId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"personId"},
+ *         @OA\Property(property="personId", type="integer"),
+ *         @OA\Property(property="notes", type="string", maxLength=255)
+ *     )),
+ *     @OA\Response(response=400, description="personId is missing or not an integer"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this position, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such position or person"),
+ *     @OA\Response(response=200, description="The qualification already existed and is active"),
+ *     @OA\Response(response=201, description="Granted")
+ * )
+ */
+function grantVolunteerQualification(Request $request, Response $response): Response
+{
+    /** @var VolunteerPosition $position */
+    $position = $request->getAttribute('volunteerPosition');
+    $body = (array) $request->getParsedBody();
+    $personId = (int) ($body['personId'] ?? 0);
+
+    $service = new VolunteerSetupService();
+    // Asked BEFORE the write, which is the only moment the answer exists: the
+    // grant itself is an upsert (volunteer-scopes.php takes the same shape).
+    $existing = $service->findQualification($personId, (int) $position->getId());
+
+    try {
+        $qualification = $service->grantQualification(
+            $personId,
+            $position,
+            volunteerSetupActor(),
+            isset($body['notes']) ? (string) $body['notes'] : null
+        );
+    } catch (\Throwable $e) {
+        return volunteerSetupError($request, $response, $e);
+    }
+
+    $names = volunteerSetupPersonNames([(int) $qualification->getPersonId()]);
+
+    return SlimUtils::renderJSON(
+        $response,
+        [
+            'qualification' => volunteerQualificationToArray($qualification, [
+                'displayName' => $names[(int) $qualification->getPersonId()] ?? null,
+                'positionName' => $position->getName(),
+                'ministryId' => (int) $position->getMinistryId(),
+                'teamId' => $position->getTeamId() === null ? null : (int) $position->getTeamId(),
+            ]),
+        ],
+        $existing === null ? 201 : 200
+    );
+}
+
+/**
+ * @OA\Post(
+ *     path="/volunteer/positions/{positionId}/qualifications/from-cart",
+ *     operationId="grantVolunteerQualificationsFromCart",
+ *     summary="Qualify everyone in the session cart for one position",
+ *     description="The V2 Cart sink (design P5/P6): the route reads Cart::getCartPeople() and hands the ids to VolunteerSetupService, exactly as Cart::emptyToGroup()'s successors do. The cart is NOT emptied - the same selection is usually wanted for a second position. Takes no request body.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="positionId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=400, description="The cart is empty"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this position, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such position"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="granted", type="integer"),
+ *             @OA\Property(property="reactivated", type="integer"),
+ *             @OA\Property(property="existing", type="integer"),
+ *             @OA\Property(property="skipped", type="integer")
+ *         )
+ *     )
+ * )
+ */
+function grantVolunteerQualificationsFromCart(Request $request, Response $response): Response
+{
+    /** @var VolunteerPosition $position */
+    $position = $request->getAttribute('volunteerPosition');
+
+    $personIds = [];
+    foreach (Cart::getCartPeople() as $person) {
+        /** @var Person $person */
+        $personIds[] = (int) $person->getId();
+    }
+
+    if ($personIds === []) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Add people to the cart before qualifying them'),
+            [],
+            400,
+            null,
+            $request
+        );
+    }
+
+    try {
+        $result = (new VolunteerSetupService())->grantQualifications(
+            $personIds,
+            $position,
+            volunteerSetupActor()
+        );
+    } catch (\Throwable $e) {
+        return volunteerSetupError($request, $response, $e);
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'granted' => $result['granted'],
+        'reactivated' => $result['reactivated'],
+        'existing' => $result['existing'],
+        'skipped' => $result['skipped'],
+    ]);
+}
+
+/**
+ * @OA\Delete(
+ *     path="/volunteer/qualifications/{qualificationId}",
+ *     operationId="revokeVolunteerQualification",
+ *     summary="Revoke a qualification by deactivating it",
+ *     description="The row is KEPT with active=false (design section 2.7). Historical assignments stay valid because volunteer_assignment_vasg has no foreign key to a qualification - it references the person and the position directly.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="qualificationId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this qualification, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such qualification"),
+ *     @OA\Response(response=200, description="Revoked; the row is returned with active=false")
+ * )
+ */
+function revokeVolunteerQualification(Request $request, Response $response): Response
+{
+    /** @var VolunteerQualification $qualification */
+    $qualification = $request->getAttribute('volunteerQualification');
+
+    try {
+        $qualification = (new VolunteerSetupService())->revokeQualification(
+            $qualification,
+            volunteerSetupActor()
+        );
+    } catch (\Throwable $e) {
+        return volunteerSetupError($request, $response, $e);
+    }
+
+    $position = VolunteerPositionQuery::create()->findPk((int) $qualification->getPositionId());
+    $names = volunteerSetupPersonNames([(int) $qualification->getPersonId()]);
+
+    return SlimUtils::renderJSON($response, [
+        'qualification' => volunteerQualificationToArray($qualification, [
+            'displayName' => $names[(int) $qualification->getPersonId()] ?? null,
+            'positionName' => $position?->getName(),
+            'ministryId' => $position === null ? null : (int) $position->getMinistryId(),
+            'teamId' => $position?->getTeamId() === null ? null : (int) $position->getTeamId(),
+        ]),
+    ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/people/{personId}/qualifications",
+ *     operationId="listVolunteerQualificationsForPerson",
+ *     summary="Everything one person is qualified for, scoped to the caller",
+ *     description="A global manager sees every ministry; a coordinator sees only their own, and the narrowing happens in the query (design section 4.4).",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Volunteer coordinator access is required, or V2 is not enabled"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="qualifications", type="array", @OA\Items(type="object")))
+ *     )
+ * )
+ */
+function listVolunteerQualificationsForPerson(Request $request, Response $response): Response
+{
+    $personId = (int) SlimUtils::getRouteArgument($request, 'personId');
+
+    $service = new VolunteerSetupService();
+    $authz = $service->getAuthorizationService();
+    $actor = volunteerSetupActor();
+
+    // isGlobalManager() first: an administrator holds no explicit grants, so
+    // getManagedMinistryIds() would hand back [] and hide everything (§4.4).
+    $ministryIds = $authz->isGlobalManager($actor) ? null : $authz->getManagedMinistryIds($actor);
+    $qualifications = $service->listQualificationsForPerson($personId, $ministryIds);
+
+    $positionIds = array_values(array_unique(array_map(
+        static fn (VolunteerQualification $q): int => (int) $q->getPositionId(),
+        $qualifications
+    )));
+
+    $positions = [];
+    if ($positionIds !== []) {
+        foreach (VolunteerPositionQuery::create()->findPks($positionIds) as $position) {
+            $positions[(int) $position->getId()] = $position;
+        }
+    }
+
+    $names = volunteerSetupPersonNames([$personId]);
+
+    return SlimUtils::renderJSON($response, [
+        'qualifications' => array_map(
+            static function (VolunteerQualification $q) use ($positions, $names, $personId): array {
+                $position = $positions[(int) $q->getPositionId()] ?? null;
+
+                return volunteerQualificationToArray($q, [
+                    'displayName' => $names[$personId] ?? null,
+                    'positionName' => $position?->getName(),
+                    'ministryId' => $position === null ? null : (int) $position->getMinistryId(),
+                    'teamId' => $position?->getTeamId() === null ? null : (int) $position->getTeamId(),
+                ]);
+            },
+            $qualifications
+        ),
+    ]);
 }

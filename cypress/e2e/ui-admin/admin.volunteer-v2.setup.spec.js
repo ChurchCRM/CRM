@@ -264,3 +264,241 @@ describe("Volunteer v2 setup flow and ministry page (#9715)", () => {
         });
     });
 });
+
+// ═════════════════════════════════════════════════════════════════════════════
+// #9707 — the Teams & Pools tab and the qualification matrix (design §5.4).
+//
+// A separate top-level describe with its own PREFIX and its own fixtures, so
+// nothing above changes and the two halves can fail independently. The API
+// contract these screens sit on is pinned by
+// `private.volunteer.pools-qualifications.spec.js`; what is asserted here is the
+// screen: that a Group can be linked from the tab, that its member count is
+// shown read-only with the Manage Groups note (Appendix D-1), that a matrix
+// checkbox writes through and survives a reload, and that both halves have a
+// first-class empty state (§5.8).
+//
+// Seed groups: 1 "Angels class" (persons 4, 5, 8, 9, 63) and 8 "Girl Scouts"
+// (63, 80, 95) — see seed.sql:1338.
+// ═════════════════════════════════════════════════════════════════════════════
+
+const PREFIX_9707 = "UI9707";
+const MINISTRY_9707 = `${PREFIX_9707} Coffee Bar`;
+const TEAM_9707 = `${PREFIX_9707} Coffee Bar Team`;
+const POSITION_9707 = `${PREFIX_9707} Espresso`;
+const GROUP_ANGELS_ID = 1;
+const GROUP_ANGELS_NAME = "Angels class";
+/**
+ * Read in `before`, never hardcoded: `private.people.groups.spec.js` adds person
+ * 1 to group 1 and does not always take them out again, so the group's size is
+ * not stable across a full suite run. What these tests are about is that the
+ * screen shows the GROUP's own count, whatever it currently is.
+ */
+let angelsMemberCount = 0;
+
+function cleanup9707() {
+    cy.makePrivateAdminAPICall("GET", "/api/volunteer/ministries", null, 200).then(
+        (resp) => {
+            for (const ministry of resp.body.ministries) {
+                if (ministry.name.startsWith(PREFIX_9707)) {
+                    cy.makePrivateAdminAPICall(
+                        "DELETE",
+                        `/api/volunteer/ministries/${ministry.id}`,
+                        null,
+                        [200, 404],
+                    );
+                }
+            }
+        },
+    );
+}
+
+describe("Volunteer v2 pools and qualification matrix (#9707)", () => {
+    let ministryId = 0;
+    let emptyMinistryId = 0;
+    let positionId = 0;
+
+    before(() => {
+        setVersion("v2");
+        cleanup9707();
+
+        // The core endpoint V2 reuses for pool membership (G2) is also the
+        // honest source for what the screen should be showing.
+        cy.makePrivateAdminAPICall(
+            "GET",
+            `/api/groups/${GROUP_ANGELS_ID}/members`,
+            null,
+            200,
+        ).then((resp) => {
+            angelsMemberCount = resp.body.Person2group2roleP2g2rs.length;
+        });
+
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/volunteer/ministries",
+            { name: MINISTRY_9707, description: "UC1 worked example" },
+            201,
+        ).then((resp) => {
+            ministryId = resp.body.ministry.id;
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/volunteer/ministries/${ministryId}/teams`,
+                { name: TEAM_9707 },
+                201,
+            );
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/volunteer/ministries/${ministryId}/positions`,
+                { name: POSITION_9707, description: "Pulls shots" },
+                201,
+            ).then((position) => {
+                positionId = position.body.position.id;
+            });
+        });
+
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/volunteer/ministries",
+            { name: `${PREFIX_9707} Empty Ministry` },
+            201,
+        ).then((resp) => {
+            emptyMinistryId = resp.body.ministry.id;
+        });
+    });
+
+    after(() => {
+        cleanup9707();
+        setVersion("v1");
+    });
+
+    beforeEach(() => {
+        freshAdminLogin();
+    });
+
+    it("shows a Qualifications tab beside Teams & Pools", () => {
+        cy.visit(`/volunteer/ministries/${ministryId}`);
+        cy.get("#nav-item-teams").should("contain", "Pools");
+        cy.get("#nav-item-qualifications").should("contain", "Qualifications");
+    });
+
+    it("shows the empty pool state and the Manage Groups note (D-1)", () => {
+        cy.visit(`/volunteer/ministries/${emptyMinistryId}`);
+        cy.get("#nav-item-teams").click();
+        cy.get("#pools-empty").should("be.visible");
+        cy.get("#pools-empty .empty-title").should("be.visible");
+        // Appendix D-1: membership is read-only in V2 and the screen says so.
+        cy.get("#pools-membership-note")
+            .should("be.visible")
+            .and("contain", "Manage Groups");
+    });
+
+    it("links a Group as the pool and shows its member count read-only", () => {
+        cy.visit(`/volunteer/ministries/${ministryId}`);
+        cy.get("#nav-item-teams").click();
+        cy.get("#pool-add-btn").should("be.visible").click();
+
+        // window.CRM.groups.promptSelection() (G4) — the existing picker, not a
+        // second group chooser built for V2.
+        cy.get(".modal.show").should("be.visible").and("contain", "Select Group");
+        cy.get(".modal.show .ts-control").click();
+        cy.get(".ts-dropdown").should("be.visible");
+        cy.get(".ts-dropdown .option").contains(GROUP_ANGELS_NAME).click();
+        cy.get("#crm-gs-confirm").click();
+
+        cy.get("#volunteerPoolsTable").should("be.visible");
+        cy.get("#volunteerPoolsTable").should("contain", GROUP_ANGELS_NAME);
+        cy.get("#volunteerPoolsTable").should("contain", angelsMemberCount);
+        // The count links out to the group, because editing membership happens there.
+        cy.get(`#volunteerPoolsTable a[href*="/groups/view/${GROUP_ANGELS_ID}"]`)
+            .should("exist");
+    });
+
+    it("renders the matrix with the pool people down the side and positions across the top", () => {
+        cy.visit(`/volunteer/ministries/${ministryId}`);
+        cy.get("#nav-item-qualifications").click();
+        cy.get("#qualifications .volunteer-loading").should("not.be.visible");
+        cy.get("#volunteerQualificationsTable").should("be.visible");
+        cy.get("#volunteerQualificationsTable thead").should("contain", POSITION_9707);
+        cy.get("#volunteerQualificationsTable tbody tr").should(
+            "have.length",
+            angelsMemberCount,
+        );
+        cy.get(
+            `#volunteerQualificationsTable input.volunteer-qual-toggle[data-position-id="${positionId}"]`,
+        ).should("have.length", angelsMemberCount);
+    });
+
+    it("toggles a qualification and it survives a reload", () => {
+        cy.visit(`/volunteer/ministries/${ministryId}`);
+        cy.get("#nav-item-qualifications").click();
+        cy.get(
+            `#volunteerQualificationsTable input.volunteer-qual-toggle[data-person-id="4"][data-position-id="${positionId}"]`,
+        )
+            .should("not.be.checked")
+            .check();
+
+        // Optimistic UI plus a success toast; the write is confirmed by the reload.
+        cy.reload();
+        cy.get("#nav-item-qualifications").click();
+        cy.get(
+            `#volunteerQualificationsTable input.volunteer-qual-toggle[data-person-id="4"][data-position-id="${positionId}"]`,
+        ).should("be.checked");
+
+        // And back off again — revoke is a deactivation, so the box simply clears.
+        cy.get(
+            `#volunteerQualificationsTable input.volunteer-qual-toggle[data-person-id="4"][data-position-id="${positionId}"]`,
+        ).uncheck();
+        cy.reload();
+        cy.get("#nav-item-qualifications").click();
+        cy.get(
+            `#volunteerQualificationsTable input.volunteer-qual-toggle[data-person-id="4"][data-position-id="${positionId}"]`,
+        ).should("not.be.checked");
+    });
+
+    it("offers the person picker and the cart bulk-grant from the matrix", () => {
+        cy.visit(`/volunteer/ministries/${ministryId}`);
+        cy.get("#nav-item-qualifications").click();
+
+        cy.get("#qualification-add-person").should("be.visible").click();
+        cy.get("#qualifyPersonModal").should("be.visible");
+        cy.get("#qualify-person-position").should("contain", POSITION_9707);
+        // The person picker is only built on `shown.bs.modal`, so its TomSelect
+        // wrapper appearing is the signal that the 150 ms fade has finished.
+        // Clicking the close button before that is silently dropped: Bootstrap's
+        // hide() returns early while `_isTransitioning` is true, and "visible"
+        // goes true partway through the fade.
+        cy.get("#qualifyPersonModal .ts-wrapper").should("exist");
+        cy.get("#qualifyPersonModal .btn-close").click();
+        cy.get("#qualifyPersonModal").should("not.be.visible");
+
+        cy.get("#qualification-cart-btn").should("be.visible").click();
+        cy.get("#qualifyCartModal").should("be.visible");
+        cy.get("#qualify-cart-position").should("contain", POSITION_9707);
+    });
+
+    it("resumes the setup flow with the pool step unlocked and the group listed", () => {
+        // §5.3 step 3. Resuming with ?ministryId= is the path a coordinator takes
+        // back into the flow, so the pool step must be usable straight away.
+        cy.visit(`/volunteer/setup?ministryId=${ministryId}`);
+        cy.get("#setup-step-pool").should("be.visible");
+        cy.get("#setup-pool-link").should("not.be.disabled");
+        cy.get("#setup-pool-list").should("contain", GROUP_ANGELS_NAME);
+        cy.get("#setup-pool-list").should("contain", angelsMemberCount);
+        // The design's wording, which is the point of the step: the Group stays
+        // in charge of who belongs.
+        cy.get("#setup-step-pool").should("contain", "Nobody is copied");
+    });
+
+    it("shows a first-class empty state when no pool is linked", () => {
+        cy.visit(`/volunteer/ministries/${emptyMinistryId}`);
+        cy.get("#nav-item-qualifications").click();
+        cy.get("#qualifications-empty").should("be.visible");
+        cy.get("#qualifications-empty .empty-title").should("be.visible");
+    });
+
+    it("renders every matrix label through gettext/i18next, never a raw key", () => {
+        cy.visit(`/volunteer/ministries/${ministryId}`);
+        cy.get("#nav-item-qualifications").click();
+        cy.get("#qualifications").should("not.contain", "i18next");
+        cy.get("#qualifications").invoke("text").should("not.match", /\{\{[a-z]+\}\}/);
+    });
+});

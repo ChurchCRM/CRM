@@ -15,8 +15,8 @@ use ChurchCRM\Utils\InputUtils;
  *
  * Each step is a card. A step that is not yet reachable keeps its controls
  * `disabled`; a step that is done collapses to `.setup-step-summary` with an
- * Edit link. #9707 inserts the pool and qualification steps between the team and
- * position cards, and #9708 the schedule steps after them — see the markers.
+ * Edit link. #9707 inserted the volunteer-pool step between the team and
+ * position cards; #9708 adds the schedule steps after them — see the markers.
  */
 
 /** @var string $sRootPath */
@@ -151,13 +151,51 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     </div>
 
-    <?php /* #9707 inserts the "Volunteer pool" step card here. */ ?>
+    <!--
+      Step 3 — Volunteer pool (#9707, design §5.3).
 
-    <!-- Step 3 — Positions. -->
+      The wording is the design's own and is load-bearing: "Choose the Group
+      whose members volunteer" — never "add volunteers" — because membership
+      stays in Groups and V2 copies nobody (D1).
+    -->
+    <div class="card mb-3" id="setup-step-pool">
+      <div class="card-header">
+        <h3 class="card-title">
+          <span class="badge bg-primary-lt text-primary me-2">3</span><?= gettext('Volunteer pool') ?>
+        </h3>
+      </div>
+      <div class="card-body">
+        <p class="text-body-secondary">
+          <?= gettext('Choose the Group whose members volunteer for this ministry. Nobody is copied — the Group stays in charge of who belongs, so adding someone there adds them here.') ?>
+        </p>
+
+        <div class="volunteer-loading text-center py-4 d-none" id="setup-pool-loading">
+          <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+          <?= gettext('Loading') ?>
+        </div>
+
+        <ul class="list-group mb-3 d-none" id="setup-pool-list"></ul>
+
+        <div class="d-flex gap-2 flex-column flex-sm-row">
+          <button type="button" class="btn btn-primary" id="setup-pool-link" disabled>
+            <i class="fa-solid fa-link me-1"></i><?= gettext('Link a Group') ?>
+          </button>
+          <a href="<?= $sRootPath ?>/groups/editor" class="btn btn-outline-secondary" id="setup-pool-new-group">
+            <i class="fa-solid fa-plus me-1"></i><?= gettext('Create a new Group') ?>
+          </a>
+        </div>
+
+        <div class="alert alert-danger d-none mt-3" role="alert" id="setup-pool-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="setup-error-text"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 — Positions. -->
     <div class="card mb-3" id="setup-step-position">
       <div class="card-header">
         <h3 class="card-title">
-          <span class="badge bg-primary-lt text-primary me-2">3</span><?= gettext('Positions') ?>
+          <span class="badge bg-primary-lt text-primary me-2">4</span><?= gettext('Positions') ?>
         </h3>
       </div>
       <div class="card-body">
@@ -199,7 +237,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     </div>
 
-    <?php /* #9707 inserts the "Qualifications" step card here; #9708 the schedule, staffing and generate steps. */ ?>
+    <?php /*
+      The qualification matrix (§5.3 step 5) is NOT repeated here. It is the
+      screen a coordinator returns to most (§5.4), so it lives on the ministry
+      page's Qualifications tab and the flow links there rather than shipping a
+      second copy that would drift. #9708 adds the schedule, staffing and
+      generate steps after this point.
+    */ ?>
 
     <!-- What next. -->
     <div class="card mb-3 d-none" id="setup-step-next">

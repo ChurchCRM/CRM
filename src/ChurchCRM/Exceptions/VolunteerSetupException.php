@@ -5,7 +5,8 @@ namespace ChurchCRM\Exceptions;
 /**
  * A Volunteer v2 setup operation that failed for a reason the caller can act on:
  * a name that is already taken, a payload that does not hang together, a record
- * that is still referenced, or an authorization decision.
+ * that is still referenced, a record named in the body that does not exist, or
+ * an authorization decision.
  *
  * The service layer decides *what* went wrong; the route decides nothing but how
  * to render it. So the HTTP status travels with the exception rather than being
@@ -40,6 +41,20 @@ class VolunteerSetupException extends \RuntimeException
     public static function forbidden(string $message): self
     {
         return new self($message, 403);
+    }
+
+    /**
+     * A record the payload named does not exist.
+     *
+     * Added with #9707, where it is the only way to answer honestly: a pool's
+     * `vpol_OwnerId` is polymorphic and carries no foreign key (§2.5), so the
+     * service is the only layer that can tell a caller their ministry or team
+     * is not there. An entity middleware answers this for a record named in the
+     * PATH; this covers one named in the BODY.
+     */
+    public static function notFound(string $message): self
+    {
+        return new self($message, 404);
     }
 
     /**
