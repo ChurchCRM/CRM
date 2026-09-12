@@ -3,15 +3,21 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Exceptions\VolunteerSetupException;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\VolunteerMinistryTableMap;
 use ChurchCRM\model\ChurchCRM\Map\VolunteerTeamTableMap;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerPool;
+use ChurchCRM\model\ChurchCRM\VolunteerPoolQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPosition;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerQualification;
 use ChurchCRM\model\ChurchCRM\VolunteerQualificationQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerRequirementQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
@@ -27,8 +33,9 @@ use Propel\Runtime\Propel;
 use Psr\Log\LoggerInterface;
 
 /**
- * Volunteer Management v2 — the setup half of the domain: ministries, teams and
- * positions (#9715, epic #9701, design §2.3, §2.4, §2.6, §3.4).
+ * Volunteer Management v2 — the setup half of the domain: ministries, teams,
+ * positions (#9715) and, since #9707, volunteer pools and qualifications
+ * (epic #9701, design §2.3, §2.4, §2.5, §2.6, §2.7, §3.4).
  *
  * Every mutating method takes the acting `User` and asks
  * `VolunteerAuthorizationService` before it touches a row, so the API layer can
@@ -56,9 +63,11 @@ use Psr\Log\LoggerInterface;
  *   So each create/update does its own case-insensitive check and throws a
  *   conflict the route renders as 409.
  *
- * #9707 adds the pool and qualification halves to this same class. The sections
- * below are separated by banner comments so that lands as an addition rather
- * than a merge.
+ * #9707 added the pool and qualification halves to this same class rather than
+ * a parallel service: they share the authorization helpers, the exception type
+ * and the "names are checked in PHP" discipline above, and a coordinator's
+ * setup screen calls both halves in one request. The sections are separated by
+ * banner comments, so each half is still readable on its own.
  */
 class VolunteerSetupService
 {
@@ -597,6 +606,530 @@ class VolunteerSetupService
         return iterator_to_array($query->orderByOrder()->orderByName()->find(), false);
     }
 
+    // ══ Pools (#9707) ═════════════════════════════════════════════════════
+    //
+    // D1: a Group *is* the roster. `volunteer_pool_vpol` is the link and
+    // nothing else — it stores no people, and V2 never copies a membership row
+    // (§2.5). Everything below therefore reads `person2group2role_p2g2r`
+    // live; there is no cache to invalidate and no second source of truth.
+    //
+    // `vpol_OwnerId` is polymorphic and so carries no foreign key. That makes
+    // this class the only thing standing between the table and a row pointing
+    // at a ministry or team that does not exist, which is why linkPool() looks
+    // the owner up before it writes.
+
+    /**
+     * Link an existing Group to a ministry or a team as one of its volunteer
+     * pools.
+     *
+     * Authorization follows the owner (§4.6 "Link / unlink a pool Group"): a
+     * ministry-owned pool needs the ministry's coordinator, a team-owned pool
+     * the team's leader or the ministry's coordinator above them.
+     *
+     * @param string $ownerType VolunteerPool::OWNER_TYPE_MINISTRY|OWNER_TYPE_TEAM
+     *
+     * @throws VolunteerSetupException 400 on an unknown owner type, 403 outside
+     *                                 the actor's scope, 404 when the owner or
+     *                                 the group does not exist, 409 when the
+     *                                 same group is already linked to that owner
+     */
+    public function linkPool(string $ownerType, int $ownerId, int $groupId, ?string $label, User $actor): VolunteerPool
+    {
+        if (!in_array($ownerType, VolunteerPool::allOwnerTypes(), true)) {
+            throw VolunteerSetupException::invalid(gettext('A pool belongs to a ministry or to a team'));
+        }
+
+        // The owner has no foreign key to lean on (§2.5), so its existence is
+        // checked here or nowhere.
+        if ($ownerType === VolunteerPool::OWNER_TYPE_MINISTRY) {
+            if (VolunteerMinistryQuery::create()->findPk($ownerId) === null) {
+                throw VolunteerSetupException::notFound(gettext('Ministry not found'));
+            }
+            $this->assertCanManageMinistry($actor, $ownerId);
+        } else {
+            if (VolunteerTeamQuery::create()->findPk($ownerId) === null) {
+                throw VolunteerSetupException::notFound(gettext('Team not found'));
+            }
+            $this->assertCanManageTeam($actor, $ownerId);
+        }
+
+        // `vpol_grp_ID` does have a foreign key, but a missing group would
+        // surface as a driver error rather than a 404, so it is checked too.
+        if (GroupQuery::create()->findPk($groupId) === null) {
+            throw VolunteerSetupException::notFound(gettext('Group not found'));
+        }
+
+        $existing = VolunteerPoolQuery::create()
+            ->filterByOwnerType($ownerType)
+            ->filterByOwnerId($ownerId)
+            ->filterByGroupId($groupId)
+            ->findOne();
+
+        if ($existing !== null) {
+            throw VolunteerSetupException::conflict(gettext('That group is already linked as a volunteer pool here'));
+        }
+
+        $pool = new VolunteerPool();
+        $pool->setOwnerType($ownerType);
+        $pool->setOwnerId($ownerId);
+        $pool->setGroupId($groupId);
+        $pool->setLabel($this->normalizeLabel($label));
+        $pool->save();
+
+        $this->logger->info('Volunteer pool linked', [
+            'poolId' => $pool->getId(),
+            'ownerType' => $ownerType,
+            'ownerId' => $ownerId,
+            'groupId' => $groupId,
+            'actor' => $actor->getId(),
+        ]);
+
+        return $pool;
+    }
+
+    /**
+     * Unlink a pool. **The Group is never touched** — not its row, not its
+     * membership, not its properties. Unlinking a pool is a V2 bookkeeping
+     * change, and the roster it pointed at belongs to Groups (D1, §2.5).
+     *
+     * @throws VolunteerSetupException
+     */
+    public function unlinkPool(VolunteerPool $pool, User $actor): void
+    {
+        $this->assertCanManagePool($actor, $pool);
+
+        $poolId = (int) $pool->getId();
+        $pool->delete();
+
+        $this->logger->info('Volunteer pool unlinked', [
+            'poolId' => $poolId,
+            'actor' => $actor->getId(),
+        ]);
+    }
+
+    /**
+     * Every pool feeding a ministry: its own, plus those of its teams.
+     *
+     * `$teamId` narrows the team half to one team and keeps the ministry half,
+     * because a ministry-wide pool feeds every team under it — the same
+     * inheritance `getManagedTeamIds()` applies to scope (§4.4).
+     *
+     * `$visibleTeamIds` is the read-scoping hook for a team leader: pass the
+     * ids they manage and only those teams' pools are returned, alongside the
+     * ministry's own.
+     *
+     * @param int[]|null $visibleTeamIds
+     *
+     * @return VolunteerPool[]
+     */
+    public function listPools(int $ministryId, ?int $teamId = null, ?array $visibleTeamIds = null): array
+    {
+        $teamIds = $this->resolvePoolTeamIds($ministryId, $teamId, $visibleTeamIds);
+
+        $pools = iterator_to_array(
+            VolunteerPoolQuery::create()
+                ->filterByOwnerType(VolunteerPool::OWNER_TYPE_MINISTRY)
+                ->filterByOwnerId($ministryId)
+                ->orderById()
+                ->find(),
+            false
+        );
+
+        if ($teamIds !== []) {
+            $pools = array_merge($pools, iterator_to_array(
+                VolunteerPoolQuery::create()
+                    ->filterByOwnerType(VolunteerPool::OWNER_TYPE_TEAM)
+                    ->filterByOwnerId($teamIds, Criteria::IN)
+                    ->orderById()
+                    ->find(),
+                false
+            ));
+        }
+
+        return $pools;
+    }
+
+    /**
+     * The pools owned by ONE team, and nothing above it.
+     *
+     * The narrow view a team leader gets at `/teams/{id}/pools`: it answers
+     * "which groups did I link", not "which groups feed my team" — the latter
+     * is `listPools($ministryId, $teamId)`, which also carries the ministry's
+     * own pools.
+     *
+     * @return VolunteerPool[]
+     */
+    public function listPoolsForTeam(int $teamId): array
+    {
+        return iterator_to_array(
+            VolunteerPoolQuery::create()
+                ->filterByOwnerType(VolunteerPool::OWNER_TYPE_TEAM)
+                ->filterByOwnerId($teamId)
+                ->orderById()
+                ->find(),
+            false
+        );
+    }
+
+    /**
+     * The people in the pool: the **union** of the linked groups' memberships,
+     * de-duplicated. Nothing is copied and nothing is cached — the group
+     * membership table is read every time, so a coordinator adding someone in
+     * Groups sees them here on the next page load (D1).
+     *
+     * @return int[] person ids, ascending
+     */
+    public function getPoolPersonIds(int $ministryId, ?int $teamId = null): array
+    {
+        return array_keys($this->getPoolMembership($ministryId, $teamId));
+    }
+
+    /**
+     * The same union, but keyed so a caller can say *which* pool group each
+     * person came from — the matrix shows it, and a person in two pools must
+     * still be one row.
+     *
+     * One query over `person2group2role_p2g2r`, not one per group.
+     *
+     * @return array<int, int[]> person id → the pool group ids they belong to
+     */
+    public function getPoolMembership(int $ministryId, ?int $teamId = null, ?array $visibleTeamIds = null): array
+    {
+        $groupIds = [];
+        foreach ($this->listPools($ministryId, $teamId, $visibleTeamIds) as $pool) {
+            $groupIds[(int) $pool->getGroupId()] = true;
+        }
+
+        if ($groupIds === []) {
+            return [];
+        }
+
+        $membership = [];
+        $rows = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId(array_keys($groupIds), Criteria::IN)
+            ->select(['PersonId', 'GroupId'])
+            ->find();
+
+        foreach ($rows as $row) {
+            $personId = (int) $row['PersonId'];
+            $groupId = (int) $row['GroupId'];
+            if (!isset($membership[$personId])) {
+                $membership[$personId] = [];
+            }
+            if (!in_array($groupId, $membership[$personId], true)) {
+                $membership[$personId][] = $groupId;
+            }
+        }
+
+        ksort($membership);
+
+        return $membership;
+    }
+
+    /**
+     * Member counts for a set of pool groups, in ONE query.
+     *
+     * Deliberately not `GroupQuery`'s `memberCount` virtual column: that comes
+     * from a `preSelect()` which also injects a second LEFT JOIN and a
+     * `GROUP BY` into every query built from it (F22). Counting the membership
+     * table directly is one plain aggregate and says what it does.
+     *
+     * @param int[] $groupIds
+     *
+     * @return array<int, int> group id → member count, zero-filled
+     */
+    public function countGroupMembers(array $groupIds): array
+    {
+        $counts = array_fill_keys(array_map('intval', $groupIds), 0);
+        if ($groupIds === []) {
+            return $counts;
+        }
+
+        $rows = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId($groupIds, Criteria::IN)
+            ->select(['GroupId'])
+            ->find();
+
+        foreach ($rows as $groupId) {
+            $key = (int) $groupId;
+            $counts[$key] = ($counts[$key] ?? 0) + 1;
+        }
+
+        return $counts;
+    }
+
+    /** The ministry a pool ultimately belongs to, resolving a team owner. */
+    public function getPoolMinistryId(VolunteerPool $pool): ?int
+    {
+        if ($pool->getOwnerType() === VolunteerPool::OWNER_TYPE_MINISTRY) {
+            return (int) $pool->getOwnerId();
+        }
+
+        $team = VolunteerTeamQuery::create()->findPk((int) $pool->getOwnerId());
+
+        return $team === null ? null : (int) $team->getMinistryId();
+    }
+
+    // ══ Qualifications (#9707) ════════════════════════════════════════════
+    //
+    // D2/§2.7: person ↔ position, many-to-many, in its own table. Not a Group
+    // Role — `person2group2role_p2g2r` has PK (PersonId, GroupId) and so allows
+    // exactly one role per person per group (F19), which would make the
+    // multi-position case D16 requires structurally impossible.
+    //
+    // Two rules are load-bearing and are implemented once, here:
+    //
+    //   **Revocation is deactivation.** `revokeQualification()` sets
+    //   `vqal_Active = 0` and keeps the row, and a re-grant reactivates that
+    //   same row rather than inserting a second — which is also what makes
+    //   `UNIQUE (vqal_per_ID, vqal_vpos_ID)` survivable. Qualification changes
+    //   then affect *future* eligibility without rewriting history, because
+    //   `volunteer_assignment_vasg` carries no foreign key to a qualification:
+    //   it references the person and the position directly, so a past
+    //   assignment stays valid and readable whatever happens here.
+    //
+    //   **Authorization is per position, not per ministry.** A team-scoped
+    //   position belongs to its team, so a team leader may grant on it; a
+    //   ministry-wide position belongs to the coordinator (§4.6). That is
+    //   exactly `canManagePosition()`, so nothing is re-derived.
+    //
+    // Note what is deliberately NOT enforced: the person does **not** have to
+    // be in the pool. §2.5 is explicit that "pool ≠ eligibility" — the pool is
+    // the candidate set a coordinator picks from, and §4.6 puts no membership
+    // condition on granting. A coordinator may qualify someone outside every
+    // linked group, which is why the UI offers a person picker as well as the
+    // matrix.
+
+    /**
+     * Grant a qualification, or reactivate the one that is already there.
+     *
+     * Idempotent by `vqal_person_position_uidx`: calling this twice leaves one
+     * row. Use `findQualification()` first when the caller needs to answer 201
+     * vs 200.
+     *
+     * @throws VolunteerSetupException 403 outside scope, 404 for an unknown person
+     */
+    public function grantQualification(
+        int $personId,
+        VolunteerPosition $position,
+        User $actor,
+        ?string $notes = null
+    ): VolunteerQualification {
+        $this->assertCanManagePosition($actor, (int) $position->getId());
+
+        if (PersonQuery::create()->findPk($personId) === null) {
+            throw VolunteerSetupException::notFound(gettext('Person not found'));
+        }
+
+        $qualification = $this->writeQualification($personId, $position, $actor, $notes);
+
+        $this->logger->info('Volunteer qualification granted', [
+            'qualificationId' => $qualification->getId(),
+            'personId' => $personId,
+            'positionId' => $position->getId(),
+            'actor' => $actor->getId(),
+        ]);
+
+        return $qualification;
+    }
+
+    /**
+     * Grant one position to a list of people — the Cart sink (P5/P6).
+     *
+     * The loop lives here rather than in `Cart`, matching the precedent the
+     * design names: the route reads `Cart::getCartPeople()` and hands the ids
+     * to the service. Authorization is checked ONCE, before the loop, because
+     * every row targets the same position.
+     *
+     * Ids that name nobody are counted as `skipped` rather than aborting the
+     * batch: a cart can outlive a deleted person, and failing the whole grant
+     * over one stale id would be worse than reporting it.
+     *
+     * @param int[] $personIds
+     *
+     * @return array{granted: int, reactivated: int, existing: int, skipped: int, qualifications: VolunteerQualification[]}
+     *
+     * @throws VolunteerSetupException
+     */
+    public function grantQualifications(
+        array $personIds,
+        VolunteerPosition $position,
+        User $actor,
+        ?string $notes = null
+    ): array {
+        $this->assertCanManagePosition($actor, (int) $position->getId());
+
+        $result = ['granted' => 0, 'reactivated' => 0, 'existing' => 0, 'skipped' => 0, 'qualifications' => []];
+        $seen = [];
+
+        foreach ($personIds as $rawId) {
+            $personId = (int) $rawId;
+            if ($personId <= 0 || isset($seen[$personId])) {
+                continue;
+            }
+            $seen[$personId] = true;
+
+            if (PersonQuery::create()->findPk($personId) === null) {
+                ++$result['skipped'];
+                continue;
+            }
+
+            $existing = $this->findQualification($personId, (int) $position->getId());
+            if ($existing === null) {
+                ++$result['granted'];
+            } elseif ($existing->getActive()) {
+                ++$result['existing'];
+            } else {
+                ++$result['reactivated'];
+            }
+
+            $result['qualifications'][] = $this->writeQualification($personId, $position, $actor, $notes);
+        }
+
+        $this->logger->info('Volunteer qualifications granted in bulk', [
+            'positionId' => $position->getId(),
+            'granted' => $result['granted'],
+            'reactivated' => $result['reactivated'],
+            'existing' => $result['existing'],
+            'skipped' => $result['skipped'],
+            'actor' => $actor->getId(),
+        ]);
+
+        return $result;
+    }
+
+    /**
+     * Revoke a qualification by **deactivating** it (§2.7). The row survives,
+     * so the grant history and every assignment that predates the revocation
+     * stay readable.
+     *
+     * @throws VolunteerSetupException
+     */
+    public function revokeQualification(VolunteerQualification $qualification, User $actor): VolunteerQualification
+    {
+        $this->assertCanManagePosition($actor, (int) $qualification->getPositionId());
+
+        $qualification->setActive(false);
+        $qualification->save();
+
+        $this->logger->info('Volunteer qualification revoked', [
+            'qualificationId' => $qualification->getId(),
+            'personId' => $qualification->getPersonId(),
+            'positionId' => $qualification->getPositionId(),
+            'actor' => $actor->getId(),
+        ]);
+
+        return $qualification;
+    }
+
+    /** The one row for this pair, active or not; null when it was never granted. */
+    public function findQualification(int $personId, int $positionId): ?VolunteerQualification
+    {
+        return VolunteerQualificationQuery::create()
+            ->filterByPersonId($personId)
+            ->filterByPositionId($positionId)
+            ->findOne();
+    }
+
+    /**
+     * Who is qualified for a position. `$activeOnly = null` includes revoked
+     * rows, which is what makes the grant history visible.
+     *
+     * @return VolunteerQualification[]
+     */
+    public function listQualifications(int $positionId, ?bool $activeOnly = null): array
+    {
+        $query = VolunteerQualificationQuery::create()->filterByPositionId($positionId);
+
+        if ($activeOnly !== null) {
+            $query->filterByActive($activeOnly);
+        }
+
+        return iterator_to_array($query->orderByGrantedDate()->orderById()->find(), false);
+    }
+
+    /**
+     * One person's qualifications, optionally narrowed to a set of ministries —
+     * which is how the read is scoped for a coordinator (§4.4): the filter goes
+     * into the query, not into a loop over hydrated rows.
+     *
+     * @param int[]|null $ministryIds null means "no narrowing" (manager/admin)
+     *
+     * @return VolunteerQualification[]
+     */
+    public function listQualificationsForPerson(int $personId, ?array $ministryIds = null): array
+    {
+        $query = VolunteerQualificationQuery::create()->filterByPersonId($personId);
+
+        if ($ministryIds !== null) {
+            if ($ministryIds === []) {
+                return [];
+            }
+            $query->usePositionQuery()
+                    ->filterByMinistryId($ministryIds, Criteria::IN)
+                ->endUse();
+        }
+
+        return iterator_to_array($query->orderById()->find(), false);
+    }
+
+    /**
+     * The active-qualification person ids for one position — the eligibility
+     * answer #9709 will ask for when it assigns.
+     *
+     * @return int[]
+     */
+    public function getQualifiedPersonIds(int $positionId): array
+    {
+        $ids = [];
+        $rows = VolunteerQualificationQuery::create()
+            ->filterByPositionId($positionId)
+            ->filterByActive(true)
+            ->select(['PersonId'])
+            ->find();
+
+        foreach ($rows as $personId) {
+            $ids[] = (int) $personId;
+        }
+
+        return array_values(array_unique($ids));
+    }
+
+    /**
+     * The whole matrix body in ONE query: person id → position id →
+     * qualification id, for every position asked about.
+     *
+     * §5.4 requires the matrix to render 15–200 people without re-fetching per
+     * cell, and this is what makes that true — the screen fetches positions,
+     * pool people and this map, then draws. The qualification id is carried
+     * (rather than just a boolean) so unticking a box can revoke the exact row
+     * without a lookup request per click.
+     *
+     * @param int[] $positionIds
+     *
+     * @return array<int, array<int, int>>
+     */
+    public function getQualificationsByPerson(array $positionIds): array
+    {
+        if ($positionIds === []) {
+            return [];
+        }
+
+        $map = [];
+        $rows = VolunteerQualificationQuery::create()
+            ->filterByPositionId($positionIds, Criteria::IN)
+            ->filterByActive(true)
+            ->select(['Id', 'PersonId', 'PositionId'])
+            ->find();
+
+        foreach ($rows as $row) {
+            $personId = (int) $row['PersonId'];
+            $map[$personId][(int) $row['PositionId']] = (int) $row['Id'];
+        }
+
+        return $map;
+    }
+
     // ══ Counts for list rendering ═════════════════════════════════════════
 
     /**
@@ -712,6 +1245,106 @@ class VolunteerSetupService
         if (!$this->authz->canManagePosition($actor, $positionId)) {
             throw VolunteerSetupException::forbidden(gettext('Not authorized for this position'));
         }
+    }
+
+    /**
+     * A pool is owned by a ministry or by a team, and the check follows the
+     * owner (§4.6). A pool whose team has since been deleted is unreachable
+     * rather than open to everyone.
+     *
+     * @throws VolunteerSetupException
+     */
+    private function assertCanManagePool(User $actor, VolunteerPool $pool): void
+    {
+        if ($pool->getOwnerType() === VolunteerPool::OWNER_TYPE_MINISTRY) {
+            $this->assertCanManageMinistry($actor, (int) $pool->getOwnerId());
+
+            return;
+        }
+
+        $this->assertCanManageTeam($actor, (int) $pool->getOwnerId());
+    }
+
+    /**
+     * Which team ids contribute pools for this ministry view.
+     *
+     * `$teamId` narrows to one team (validated against the ministry so a team
+     * from elsewhere cannot be borrowed); `$visibleTeamIds` narrows to what a
+     * team leader may see. Both are intersected with the ministry's own teams,
+     * in ONE query.
+     *
+     * @param int[]|null $visibleTeamIds
+     *
+     * @return int[]
+     */
+    private function resolvePoolTeamIds(int $ministryId, ?int $teamId, ?array $visibleTeamIds): array
+    {
+        $query = VolunteerTeamQuery::create()->filterByMinistryId($ministryId);
+
+        if ($teamId !== null) {
+            $query->filterById($teamId);
+        }
+
+        if ($visibleTeamIds !== null) {
+            if ($visibleTeamIds === []) {
+                return [];
+            }
+            $query->filterById($visibleTeamIds, Criteria::IN);
+        }
+
+        $teamIds = [];
+        foreach ($query->select(['Id'])->find() as $id) {
+            $teamIds[] = (int) $id;
+        }
+
+        return $teamIds;
+    }
+
+    /**
+     * Insert or reactivate the single row for (person, position). Shared by the
+     * one-at-a-time grant and the cart bulk grant so the two cannot drift on
+     * what "re-grant" means.
+     */
+    private function writeQualification(
+        int $personId,
+        VolunteerPosition $position,
+        User $actor,
+        ?string $notes
+    ): VolunteerQualification {
+        $qualification = $this->findQualification($personId, (int) $position->getId());
+
+        if ($qualification === null) {
+            $qualification = new VolunteerQualification();
+            $qualification->setPersonId($personId);
+            $qualification->setPositionId((int) $position->getId());
+        }
+
+        // A re-grant re-stamps who granted it and when: that is the fact a
+        // coordinator wants to see, and the row is the only place it lives.
+        $qualification->setActive(true);
+        // Naive wall-clock in sTimeZone, like every other V2 timestamp (§2.0).
+        $qualification->setGrantedDate(DateTimeUtils::getNowDateTime());
+        $qualification->setGrantedByPersonId((int) $actor->getId());
+
+        if ($notes !== null) {
+            $qualification->setNotes($this->normalizeDescription($notes));
+        }
+
+        $qualification->save();
+
+        return $qualification;
+    }
+
+    /** An absent or blank pool label is stored as NULL, never as ''. */
+    private function normalizeLabel(?string $label): ?string
+    {
+        if ($label === null) {
+            return null;
+        }
+
+        $label = trim($label);
+
+        return $label === '' ? null : $label;
     }
 
     /** @throws VolunteerSetupException */
