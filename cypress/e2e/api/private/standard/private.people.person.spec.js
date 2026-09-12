@@ -88,4 +88,103 @@ describe("API Private Person", () => {
             });
         });
     });
+
+    describe("POST /api/person/{id}/activate/{status} - Activate/Deactivate Person", () => {
+        const personId = 2; // seed.sql has persons 1-N; use person 2 (admin is 1, guard prevents self-deactivate)
+
+        before(() => {
+            // Ensure person 2 starts as active (idempotent setup)
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/person/${personId}/activate/true`,
+                null,
+                200,
+            );
+        });
+
+        after(() => {
+            // Ensure person is left as active after tests
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/person/${personId}/activate/true`,
+                null,
+                200,
+            );
+        });
+
+        it("Deactivates a person (status=false)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/person/${personId}/activate/false`,
+                null,
+                200,
+            ).then((response) => {
+                expect(response.body).to.have.property("success");
+                expect(response.body.success).to.be.true;
+            });
+        });
+
+        it("Person is inactive after deactivation", () => {
+            cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then(
+                (response) => {
+                    expect(response.body).to.have.property("DateDeactivated");
+                    expect(response.body.DateDeactivated).to.not.be.null;
+                    expect(response.body.DateDeactivated).to.not.equal("");
+                },
+            );
+        });
+
+        it("Activates a person (status=true)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/person/${personId}/activate/true`,
+                null,
+                200,
+            ).then((response) => {
+                expect(response.body).to.have.property("success");
+                expect(response.body.success).to.be.true;
+            });
+        });
+
+        it("Person is active after reactivation", () => {
+            cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then(
+                (response) => {
+                    expect(response.body).to.have.property("DateDeactivated");
+                    expect(
+                        response.body.DateDeactivated === null ||
+                        response.body.DateDeactivated === "" ||
+                        response.body.DateDeactivated === undefined,
+                    ).to.be.true;
+                },
+            );
+        });
+
+        it("Returns 403 when trying to deactivate yourself (person 1)", () => {
+            // Admin user is person 1; cannot deactivate self
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/person/1/activate/false",
+                null,
+                403,
+            );
+        });
+
+        it("Returns 400 for invalid status value", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/person/${personId}/activate/invalid`,
+                null,
+                400,
+            );
+        });
+
+        it("Returns 404 for non-existent person", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/person/99999/activate/true",
+                null,
+                404,
+            );
+        });
+    });
 });
