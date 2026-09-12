@@ -128,6 +128,23 @@ class   SystemConfig
         ];
     }
 
+    /**
+     * The V1/V2 Volunteer Management rollout states (#9704).
+     *
+     * An explicit version choice rather than a boolean, so the transition
+     * state ("both") is representable while V1 data is migrated (#9702).
+     */
+    public static function getVolunteerVersionChoices(): array
+    {
+        return [
+            'Choices' => [
+                gettext('V1 — legacy Volunteer Opportunities') . ':v1',
+                gettext('V2 — Volunteer Management') . ':v2',
+                gettext('Both — V1 and V2 side by side (transition)') . ':both',
+            ],
+        ];
+    }
+
     private static function buildConfigs(): array
     {
         return [
@@ -259,6 +276,7 @@ class   SystemConfig
             'bEnabledFinance'                      => new ConfigItem('bEnabledFinance', 'boolean', '1', gettext('Enable Finance menu')),
             'bEnabledEvents'                       => new ConfigItem('bEnabledEvents', 'boolean', '1', gettext('Show or hide the Events section in the main navigation menu')),
             'bEnabledFundraiser'                   => new ConfigItem('bEnabledFundraiser', 'boolean', '1', gettext('Enable Fundraiser menu.')),
+            'sVolunteerVersion'                    => new ConfigItem('sVolunteerVersion', 'choice', 'v1', gettext('Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. "Both" shows each side by side during migration.'), '', json_encode(self::getVolunteerVersionChoices())),
             'bEnabledEmail'                        => new ConfigItem('bEnabledEmail', 'boolean', '1', gettext('Enable email sending from ChurchCRM. Required for password reset, notifications, and email links.')),
             'bEnableBirthdayEmails'                => new ConfigItem('bEnableBirthdayEmails', 'boolean', '0', gettext('Automatically send a birthday greeting email to people on their birthday')),
             'sLastBirthdayEmailRunDate'            => new ConfigItem('sLastBirthdayEmailRunDate', 'text', '', gettext('Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually.')),
