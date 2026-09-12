@@ -50,6 +50,14 @@ const EMAIL_ENABLED_URL = "/admin/api/system/config/bEnabledEmail";
 const SMTP_HOST_URL = "/admin/api/system/config/sSMTPHost";
 const LEAD_HOURS_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
 const DO_NOT_EMAIL_URL = "/admin/api/system/config/iDoNotEmailPropertyId";
+/**
+ * Read, never assumed (#9714). Every `BaseEmail` subject is prefixed with
+ * `sChurchName`, and `private.admin.system.config.spec.js` sets that config to
+ * "Example Church Name" to prove trimming and never restores it — so asserting
+ * the seeded "Main St. Cathedral" passes in isolation and fails in a full-suite
+ * run. The subject shape is what this spec is about; the church's name is not.
+ */
+const CHURCH_NAME_URL = "/admin/api/system/config/sChurchName";
 const TIMERJOBS_LAST_RUN_URL =
     "/admin/api/system/config/sLastTimerJobsRunDateTime";
 
@@ -102,6 +110,7 @@ let originalVersion = null;
 let originalSmtpHost = null;
 let originalLeadHours = null;
 let originalDoNotEmail = null;
+let churchName = "";
 let seriesStart = "";
 let seriesEnd = "";
 let mailpitAvailable = false;
@@ -516,6 +525,9 @@ before(() => {
     readConfig(DO_NOT_EMAIL_URL).then((value) => {
         originalDoNotEmail = value;
     });
+    readConfig(CHURCH_NAME_URL).then((value) => {
+        churchName = value || "";
+    });
 
     setConfig(SETTING_URL, "v2");
     setConfig(EMAIL_ENABLED_URL, "1");
@@ -767,7 +779,7 @@ describe("Volunteer v2 — the drain delivers (§3.6, Appendix C)", () => {
                 mailTo(MEMBER_A_EMAIL).then((message) => {
                     // The church name prefix is the shape every BaseEmail
                     // subclass in the tree already uses.
-                    expect(message.Subject).to.contain("Main St. Cathedral");
+                    expect(message.Subject).to.contain(churchName);
                     expect(message.Subject.toLowerCase()).to.contain("serve");
 
                     const body = `${message.Text || ""}\n${message.HTML || ""}`;
