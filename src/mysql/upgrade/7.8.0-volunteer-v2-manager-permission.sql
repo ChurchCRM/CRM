@@ -3,7 +3,7 @@
 -- Tier: Administrator > *Global Volunteer Manager* > Ministry Coordinator > Team Leader > Volunteer.
 -- A global volunteer manager has authority over every ministry and every team without being a
 -- system administrator; ministry/team-scoped authority lives in volunteer_scope_vscp instead
--- (created by 7.7.0-volunteer-v2-schema.sql, which must therefore run first).
+-- (created by 7.8.0-volunteer-v2-schema.sql, which must therefore run first).
 --
 -- Storage follows the usr_ManageFundraisers precedent (7.4.3-manage-fundraisers.sql): a first-class
 -- permission is a user_usr boolean column, not a userconfig_ucfg row.
