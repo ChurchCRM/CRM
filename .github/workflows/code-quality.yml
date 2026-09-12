@@ -53,6 +53,8 @@ jobs:
         run: npm run validate:seed-charsets
       - name: Icon library check (no Tabler icon classes)
         run: node scripts/validate-no-tabler-icons.js
+      - name: Icon existence check (no Pro-only Font Awesome classes)
+        run: node scripts/validate-fa-icons-exist.js
       - name: Cypress API keys match seeded users
         run: npm run lint:cypress-api-keys
 

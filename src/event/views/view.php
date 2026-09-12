@@ -117,7 +117,7 @@ $inactive = (int) $event->getInActive() === 1;
       </div>
       <?php if (empty($attendees)): ?>
         <div class="card-body text-center text-body-secondary py-4">
-          <i class="fa-solid fa-users-off fs-3 d-block mb-2"></i>
+          <i class="fa-solid fa-users-slash fs-3 d-block mb-2"></i>
           <?= gettext('No one has been checked in to this event yet.') ?>
         </div>
       <?php else: ?>

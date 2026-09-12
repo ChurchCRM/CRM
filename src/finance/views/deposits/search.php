@@ -162,7 +162,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <i class="fa-solid fa-download me-1"></i><?= gettext('OFX') ?>
         </button>
         <button type="button" id="btnExportPDF" class="btn btn-sm btn-success" disabled data-export-type="pdf">
-          <i class="fa-solid fa-file-type-pdf me-1"></i><?= gettext('PDF') ?>
+          <i class="fa-solid fa-file-pdf me-1"></i><?= gettext('PDF') ?>
         </button>
         <a href="#" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#newDepositModal">
           <i class="fa-solid fa-plus me-1"></i><?= gettext('New Deposit') ?>

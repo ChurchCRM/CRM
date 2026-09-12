@@ -11,7 +11,7 @@ $statusTitle = match ($statusCode) {
 };
 
 $statusIcon = match ($statusCode) {
-    404     => 'fa-magnifying-glass-location',
+    404     => 'fa-map-location-dot',
     403     => 'fa-lock',
     default => 'fa-circle-exclamation',
 };

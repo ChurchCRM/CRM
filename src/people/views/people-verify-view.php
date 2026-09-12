@@ -27,7 +27,7 @@ if ($emailErrorReason !== '') {
     switch ($emailErrorReason) {
         case ConfirmReportEmailResult::STATUS_NO_RECIPIENTS:
             $emailAlertClass = 'danger';
-            $emailAlertIcon  = 'fa-solid fa-envelope-off';
+            $emailAlertIcon  = 'fa-solid fa-envelope';
             break;
         case ConfirmReportEmailResult::STATUS_SMTP_FAILURE:
             $emailAlertClass = 'danger';
@@ -35,7 +35,7 @@ if ($emailErrorReason !== '') {
             break;
         case ConfirmReportEmailResult::STATUS_EMAIL_DISABLED:
             $emailAlertClass = 'danger';
-            $emailAlertIcon  = 'fa-solid fa-envelope-off';
+            $emailAlertIcon  = 'fa-solid fa-envelope';
             break;
         case ConfirmReportEmailResult::STATUS_PARTIAL_FAILURE:
             $emailAlertClass = 'warning';
