@@ -69,7 +69,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <i class="fa-solid fa-user-check me-1"></i><?= gettext('Qualifications') ?>
       </a>
     </li>
-    <?php /* Tab strip extension point: #9708/#9711 append Schedules. */ ?>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="nav-item-occurrences" href="#occurrences" data-bs-toggle="tab" role="tab" aria-controls="occurrences" aria-selected="false">
+        <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Occurrences') ?>
+      </a>
+    </li>
+    <?php /* Tab strip extension point: #9711 appends the dashboard's own views. */ ?>
   </ul>
 
   <div class="card-body tab-content">
@@ -294,7 +299,47 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     </div>
 
-    <?php /* Tab content extension point: #9708/#9711 append the Schedules pane. */ ?>
+    <!--
+      Occurrences (#9709). A minimal upcoming list with gap counts, so the staffing
+      view (S4) is reachable from the ministry page - #9708 and #9715 left no hook for
+      it, and #9711's dashboard is the richer answer. Deliberately small: the counts
+      come from GET /api/volunteer/occurrences, which serves them from the single gap
+      implementation, and nothing is re-derived here.
+    -->
+    <div class="tab-pane fade" id="occurrences" role="tabpanel" aria-labelledby="nav-item-occurrences">
+      <div class="volunteer-loading text-center py-4" id="occurrences-loading">
+        <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+        <?= gettext('Loading') ?>
+      </div>
+      <div class="alert alert-danger d-none" role="alert" id="occurrences-error">
+        <i class="fa-solid fa-circle-exclamation me-1"></i>
+        <span class="volunteer-error-text"></span>
+        <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry"><?= gettext('Retry') ?></button>
+      </div>
+      <div class="empty d-none" id="occurrences-empty">
+        <div class="empty-icon"><i class="fa-solid fa-calendar-days fa-2x text-muted"></i></div>
+        <p class="empty-title"><?= gettext('Nothing scheduled yet') ?></p>
+        <p class="empty-subtitle text-body-secondary">
+          <?= gettext('Create a schedule and generate its dates, and the weeks to staff appear here.') ?>
+        </p>
+      </div>
+      <div class="table-responsive d-none" id="occurrences-table-wrapper">
+        <table class="table table-hover table-vcenter" id="volunteerOccurrencesTable">
+          <thead>
+            <tr>
+              <th><?= gettext('When') ?></th>
+              <th><?= gettext('Schedule') ?></th>
+              <th class="text-center"><?= gettext('Filled') ?></th>
+              <th class="text-center"><?= gettext('Still needed') ?></th>
+              <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <?php /* Tab content extension point: #9711 appends the dashboard's own panes. */ ?>
 
   </div>
 </div>

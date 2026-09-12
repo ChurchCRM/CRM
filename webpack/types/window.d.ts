@@ -49,6 +49,8 @@ interface TomSelectInstance {
   getValue(): string | string[];
   clear(silent?: boolean): void;
   clearOptions(): void;
+  /** Moves keyboard focus into the control (#9709 uses it on `shown.bs.modal`). */
+  focus(): void;
   destroy(): void;
 }
 
@@ -154,6 +156,20 @@ interface CRMVolunteerMinistryConfig {
 }
 
 /**
+ * Per-page config for S4, handed to the bundle by
+ * `src/volunteer/views/occurrence-view.php` (issue #9709).
+ *
+ * `eventId` is 0 for a standalone occurrence. It is advisory only — the page asks
+ * the API whether attendance is available (`attendanceAvailable`) rather than
+ * inferring it, because only the server knows whether the linked event still exists.
+ */
+interface CRMVolunteerOccurrenceConfig {
+  occurrenceId: number;
+  ministryId: number;
+  eventId: number;
+}
+
+/**
  * The slice of `window.CRM.groups` (src/skin/js/CRMJSOM.js) that V2 calls.
  *
  * Declared so the group picker is type-checked rather than resolving through
@@ -190,6 +206,8 @@ interface CRMNamespace {
   volunteerSetup?: CRMVolunteerSetupConfig;
   /** Set by src/volunteer/views/ministry-view.php (issue #9715). */
   volunteerMinistry?: CRMVolunteerMinistryConfig;
+  /** Set by src/volunteer/views/occurrence-view.php (issue #9709). */
+  volunteerOccurrence?: CRMVolunteerOccurrenceConfig;
   /** The Groups helpers, including the shared group picker (G4). */
   groups?: CRMGroupsNamespace;
   bEnableGravatarPhotos?: boolean;

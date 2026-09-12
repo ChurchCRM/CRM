@@ -41,6 +41,7 @@ import {
   getQualificationMatrix,
   grantQualification,
   linkPool,
+  listOccurrences,
   type MinistryDetail,
   notifyError,
   notifySuccess,
@@ -50,6 +51,7 @@ import {
   unlinkPool,
   updatePosition,
   updateTeam,
+  type VolunteerOccurrenceSummary,
   type VolunteerPool,
   type VolunteerPoolPerson,
   type VolunteerPosition,
@@ -62,8 +64,12 @@ interface MinistryConfig {
 }
 
 type PaneName = "overview" | "teams" | "positions";
-/** Every tab in the strip. The matrix has its own fetch, so its own name. */
-type TabName = PaneName | "qualifications";
+/**
+ * Every tab in the strip. The matrix and the occurrence list each have their own
+ * fetch — a different document with a different filter — so they carry their own
+ * names and load themselves rather than riding on the ministry detail.
+ */
+type TabName = PaneName | "qualifications" | "occurrences";
 
 let ministryId = 0;
 let detail: MinistryDetail | null = null;
@@ -74,6 +80,12 @@ let detail: MinistryDetail | null = null;
  */
 let matrix: QualificationMatrix | null = null;
 let matrixTeamId: number | null = null;
+/**
+ * The ministry's upcoming occurrences with their derived gap counts (#9709).
+ * Cached like the matrix so switching tabs does not re-fetch, and cleared on error
+ * so Retry is a genuine retry (§5.8).
+ */
+let occurrences: VolunteerOccurrenceSummary[] | null = null;
 /** Which record a modal is editing; 0 means "new". */
 let editingTeamId = 0;
 let editingPositionId = 0;
@@ -523,6 +535,100 @@ async function loadMatrix(force = false): Promise<void> {
   }
 }
 
+// ─── Occurrences (#9709, design §5.5 entry point) ────────────────────────────
+
+/**
+ * The ministry's upcoming weeks with their derived gap counts, and a link into S4.
+ *
+ * Deliberately minimal — #9711's dashboard is the richer "what needs my attention"
+ * answer. Its whole job is to make the staffing view reachable from the ministry page,
+ * which #9708 and #9715 left no hook for. Every count comes from the API, which serves
+ * them from `VolunteerAssignmentService::getGaps()`; nothing is re-derived here.
+ */
+function renderOccurrences(rows: VolunteerOccurrenceSummary[]): void {
+  const body = byId("volunteerOccurrencesTable")?.querySelector("tbody");
+  if (!body) {
+    return;
+  }
+
+  if (rows.length === 0) {
+    destroyDataTable("volunteerOccurrencesTable");
+    body.innerHTML = "";
+    renderState("occurrences", "empty");
+
+    return;
+  }
+
+  destroyDataTable("volunteerOccurrencesTable");
+
+  const root = window.CRM?.root ?? "";
+  body.innerHTML = rows
+    .map((occurrence) => {
+      const when = occurrence.start ?? occurrence.occurrenceDate ?? "";
+      const gap =
+        occurrence.gapCount > 0
+          ? `<span class="badge bg-red-lt text-red">${occurrence.gapCount}</span>`
+          : `<span class="badge bg-green-lt text-green">${i18next.t("Fully staffed")}</span>`;
+
+      return `
+        <tr>
+          <td><a href="${root}/volunteer/occurrences/${occurrence.id}">${escapeHtml(when)}</a></td>
+          <td>${escapeHtml(occurrence.scheduleName ?? "")}</td>
+          <td class="text-center">${occurrence.liveCount} / ${occurrence.requiredCount}</td>
+          <td class="text-center">${gap}</td>
+          <td class="text-center">
+            ${actionMenu([
+              {
+                type: "link",
+                href: `${root}/volunteer/occurrences/${occurrence.id}`,
+                icon: "fa-solid fa-list-check",
+                label: i18next.t("Staff this occurrence"),
+              },
+            ])}
+          </td>
+        </tr>`;
+    })
+    .join("");
+
+  renderState("occurrences", "loaded");
+  initDataTable("volunteerOccurrencesTable");
+}
+
+/** `YYYY-MM-DD`, `offsetDays` from today, in the browser's own calendar. */
+function isoDate(offsetDays: number): string {
+  const date = new Date();
+  date.setHours(12, 0, 0, 0);
+  date.setDate(date.getDate() + offsetDays);
+  const pad = (n: number): string => String(n).padStart(2, "0");
+
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
+async function loadOccurrences(force = false): Promise<void> {
+  if (occurrences !== null && !force) {
+    renderOccurrences(occurrences);
+
+    return;
+  }
+
+  renderState("occurrences", "loading");
+
+  try {
+    // A fixed forward window: `from`/`to` are mandatory server-side (M9), and a
+    // coordinator staffing "the next while" wants roughly a quarter.
+    const data = await listOccurrences({
+      from: isoDate(-7),
+      to: isoDate(90),
+      ministryId,
+    });
+    occurrences = data.occurrences;
+    renderOccurrences(occurrences);
+  } catch (error) {
+    occurrences = null;
+    renderState("occurrences", "error", errorMessage(error, i18next.t("Could not load the occurrences")));
+  }
+}
+
 // ─── Loading ─────────────────────────────────────────────────────────────────
 
 /** Panes that have been activated at least once, so a reload re-renders them. */
@@ -560,6 +666,12 @@ function activate(tab: TabName): void {
   if (tab === "qualifications") {
     fillMatrixTeamFilter();
     void loadMatrix();
+    return;
+  }
+
+  // So is the occurrence list: a date window, not a slice of the ministry detail.
+  if (tab === "occurrences") {
+    void loadOccurrences();
     return;
   }
 
@@ -931,6 +1043,7 @@ function wire(): void {
     ["nav-item-teams", "teams"],
     ["nav-item-positions", "positions"],
     ["nav-item-qualifications", "qualifications"],
+    ["nav-item-occurrences", "occurrences"],
   ] as Array<[string, TabName]>) {
     byId(navId)?.addEventListener("shown.bs.tab", () => activate(pane));
   }
@@ -939,9 +1052,12 @@ function wire(): void {
     // The matrix is a separate document, so its Retry must re-run its own load
     // rather than the ministry fetch — otherwise the button appears dead.
     const inMatrix = button.closest("#qualifications") !== null;
+    const inOccurrences = button.closest("#occurrences") !== null;
     button.addEventListener("click", () => {
       if (inMatrix) {
         void loadMatrix(true);
+      } else if (inOccurrences) {
+        void loadOccurrences(true);
       } else {
         void load(true);
       }

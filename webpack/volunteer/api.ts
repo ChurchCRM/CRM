@@ -303,3 +303,223 @@ export function notifyError(message: string): void {
 export function notifySuccess(message: string): void {
   window.CRM?.notify?.(message, { type: "success" });
 }
+
+// ─── Assignments, gaps and swaps (#9709) ─────────────────────────────────────
+
+/** One assignment as `volunteerAssignmentToArray()` shapes it. */
+export interface VolunteerAssignment {
+  id: number;
+  occurrenceId: number;
+  positionId: number;
+  positionName: string | null;
+  personId: number;
+  displayName: string | null;
+  requirementId: number | null;
+  status: "pending" | "accepted" | "declined" | "cancelled" | "substituted" | "completed";
+  source: "coordinator" | "self_signup" | "substitute";
+  assignedDate: string | null;
+  assignedByPersonId: number | null;
+  respondedDate: string | null;
+  replacesAssignmentId: number | null;
+  notes: string | null;
+  /** Only ever set for a LINKED occurrence (design E10); read-only, V2 never writes it. */
+  attendance: "checked_in" | "checked_out" | "not_checked_in" | null;
+}
+
+/**
+ * One requirement with its derived counts and the rows filling it.
+ *
+ * `gapCount` is `max(0, min - live)` and `openCount` is the remaining self-signup
+ * capacity — they differ whenever a requirement has a `maxCount` above its `minCount`
+ * (the optional third volunteer of §2.17). Both come from the server's single gap
+ * implementation; nothing here re-derives them.
+ */
+export interface VolunteerStaffedRequirement {
+  requirementId: number | null;
+  positionId: number;
+  positionName: string | null;
+  minCount: number;
+  maxCount: number | null;
+  liveCount: number;
+  gapCount: number;
+  openCount: number;
+  pendingCount: number;
+  acceptedCount: number;
+  source: "schedule" | "occurrence";
+  assignments: VolunteerAssignment[];
+}
+
+export interface VolunteerOccurrenceSummary {
+  id: number;
+  scheduleId: number;
+  scheduleName: string | null;
+  ministryId: number | null;
+  teamId: number | null;
+  eventId: number | null;
+  occurrenceDate: string | null;
+  start: string | null;
+  end: string | null;
+  status: "scheduled" | "cancelled";
+  requiredCount: number;
+  liveCount: number;
+  gapCount: number;
+  openCount: number;
+  pendingCount: number;
+}
+
+export interface VolunteerStaffing {
+  occurrence: VolunteerOccurrenceSummary;
+  ministryId: number | null;
+  teamId: number | null;
+  requirements: VolunteerStaffedRequirement[];
+  /** Rows whose position is no longer part of the plan — surfaced, never hidden. */
+  otherAssignments: VolunteerAssignment[];
+  attendanceAvailable: boolean;
+}
+
+/**
+ * One candidate from the eligible picker.
+ *
+ * `inPool` is reported, never used to filter: an out-of-pool qualified person is
+ * assignable behind the `allowOutsidePool` confirm (I3), so hiding them would make the
+ * override unreachable. `conflictPositionId` is the I7/D16 annotation — the person
+ * already holds ANOTHER position on this occurrence, which is allowed and only warned
+ * about.
+ */
+export interface VolunteerEligiblePerson {
+  personId: number;
+  displayName: string;
+  inPool: boolean;
+  lastServedDate: string | null;
+  conflictPositionId: number | null;
+  conflictPositionName: string | null;
+}
+
+/** One substitution request as `volunteerSwapToArray()` shapes it. */
+export interface VolunteerSwap {
+  id: number;
+  assignmentId: number;
+  occurrenceId: number | null;
+  positionId: number | null;
+  positionName: string | null;
+  proposedByPersonId: number;
+  proposedByName: string | null;
+  proposedPersonId: number;
+  proposedPersonName: string | null;
+  status: "proposed" | "approved" | "rejected" | "withdrawn";
+  proposedDate: string | null;
+  decidedDate: string | null;
+  decidedByPersonId: number | null;
+  comment: string | null;
+}
+
+export function getStaffing(occurrenceId: number): Promise<VolunteerStaffing> {
+  return request(`/occurrences/${occurrenceId}/staffing`);
+}
+
+/** Ordered by last served, never-served first — that ordering IS the rotation (§2.17). */
+export function listEligiblePeople(
+  occurrenceId: number,
+  positionId: number,
+  query = "",
+): Promise<{ people: VolunteerEligiblePerson[] }> {
+  const q = query === "" ? "" : `&q=${encodeURIComponent(query)}`;
+
+  return request(`/occurrences/${occurrenceId}/eligible?positionId=${positionId}${q}`);
+}
+
+export function createAssignment(
+  occurrenceId: number,
+  payload: { positionId: number; personId: number; allowOutsidePool?: boolean; notes?: string },
+): Promise<{ assignment: VolunteerAssignment }> {
+  return request(`/occurrences/${occurrenceId}/assignments`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+/**
+ * Coordinator status change. `accepted` / `declined` record a response on the
+ * volunteer's behalf and are written with channel `coordinator`, so the audit trail
+ * shows who actually recorded it (§2.11.1).
+ */
+export function setAssignmentStatus(
+  assignmentId: number,
+  status: "accepted" | "declined" | "cancelled",
+  comment = "",
+): Promise<{ assignment: VolunteerAssignment }> {
+  return request(`/assignments/${assignmentId}/status`, {
+    method: "POST",
+    body: JSON.stringify({ status, comment }),
+  });
+}
+
+/** Cancels; hard-deletes only a pending row that carries no history (§3.3.2). */
+export function deleteAssignment(assignmentId: number): Promise<{ deleted: boolean }> {
+  return request(`/assignments/${assignmentId}`, { method: "DELETE" });
+}
+
+/** Idempotent through the dedupe key unless `force` (§2.14). Nothing is sent here. */
+export function notifyAssignment(
+  assignmentId: number,
+  force = false,
+): Promise<{ created: boolean; notification: { id: number; status: string } }> {
+  return request(`/assignments/${assignmentId}/notify${force ? "?force=1" : ""}`, {
+    method: "POST",
+    body: JSON.stringify({}),
+  });
+}
+
+export function listSwaps(occurrenceId: number, status = "proposed"): Promise<{ swaps: VolunteerSwap[] }> {
+  return request(`/swaps?occurrenceId=${occurrenceId}&status=${encodeURIComponent(status)}`);
+}
+
+/** One transaction server-side: original substituted, replacement inserted (§2.13). */
+export function approveSwap(swapId: number, comment = ""): Promise<{ swap: VolunteerSwap }> {
+  return request(`/swaps/${swapId}/approve`, { method: "POST", body: JSON.stringify({ comment }) });
+}
+
+export function rejectSwap(swapId: number, comment = ""): Promise<{ swap: VolunteerSwap }> {
+  return request(`/swaps/${swapId}/reject`, { method: "POST", body: JSON.stringify({ comment }) });
+}
+
+/**
+ * The Cart sink (P6): the people come from the session cart, not the body. Per-person
+ * failures come back in `skipped` rather than failing the batch.
+ */
+export function assignCart(
+  occurrenceId: number,
+  positionId: number,
+): Promise<{ assigned: number; skipped: Array<{ personId: number; reason: string }> }> {
+  return request("/cart/assign", {
+    method: "POST",
+    body: JSON.stringify({ occurrenceId, positionId }),
+  });
+}
+
+/**
+ * The coordinator occurrence list (#9708, with #9709's derived counts filled in).
+ *
+ * `from` and `to` are mandatory server-side — no pagination protocol is invented for
+ * one module (design M9). `hasGaps` filters to the weeks that are actually short.
+ */
+export function listOccurrences(params: {
+  from: string;
+  to: string;
+  ministryId?: number;
+  teamId?: number;
+  hasGaps?: boolean;
+}): Promise<{ occurrences: VolunteerOccurrenceSummary[]; capped: boolean }> {
+  const query = new URLSearchParams({ from: params.from, to: params.to });
+  if (params.ministryId) {
+    query.set("ministryId", String(params.ministryId));
+  }
+  if (params.teamId) {
+    query.set("teamId", String(params.teamId));
+  }
+  if (params.hasGaps) {
+    query.set("hasGaps", "1");
+  }
+
+  return request(`/occurrences?${query.toString()}`);
+}

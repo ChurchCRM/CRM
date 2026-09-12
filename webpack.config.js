@@ -110,6 +110,7 @@ module.exports = {
     'event-cart-to-event': './webpack/event-cart-to-event',
     'volunteer-setup': './webpack/volunteer/setup',
     'volunteer-ministry': './webpack/volunteer/ministry',
+    'volunteer-occurrence': './webpack/volunteer/occurrence',
     'email-composer': './webpack/common/email-composer',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
