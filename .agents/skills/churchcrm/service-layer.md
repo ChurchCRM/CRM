@@ -29,6 +29,8 @@ Located in `src/ChurchCRM/Service/`:
 - **DepositService** - Deposit slip handling
 - **SystemService** - System-wide operations
 - **UserService** - User management with optimized database operations
+- **EventService** - The one recurring-event generator (see below)
+- **RecurrenceDateGenerator** - Event-free weekly/monthly/yearly date math
 
 ## Example Usage
 
@@ -345,3 +347,15 @@ if (count($occurrenceDates) > self::MAX_REPEAT_OCCURRENCES) {
     ));
 }
 ```
+
+## One Recurrence Engine — `EventService` + `RecurrenceDateGenerator` <!-- learned: 2026-09-11 -->
+
+Recurring events had two independent implementations (issue #9735): `EventService::createRepeatEvents()` and an inline `generateRecurringEvents()` in `src/api/routes/calendar/events.php`, with different caps, titles, times and duplicate handling. They are now one path — **do not add a third**.
+
+- `ChurchCRM\Service\RecurrenceDateGenerator::generate()` — event-free date math (weekly / monthly / yearly). Anything that needs "the dates this repeats on" calls this, not a private copy of the switch.
+- `ChurchCRM\Service\EventService::createRecurringEvents()` — the only place events are created in bulk. `createRepeatEvents()` is a thin wrapper returning just the IDs.
+- Both HTTP endpoints (`POST /api/events/repeat`, `POST /api/events/generate-recurring`) and the repeat-event editor are adapters over it.
+
+The shared, documented policy lives in the `EventService` class docblock: one cap (`MAX_REPEAT_OCCURRENCES`, expressed in occurrences rather than calendar span so it means something for yearly recurrence too), caller-supplied title/times win and otherwise fall back to the event type's defaults, and `skipExisting` dedups on `(event type, calendar date)`.
+
+Endpoint adapters keep their own request/response shapes — the unification is behavioural, not a URL change.

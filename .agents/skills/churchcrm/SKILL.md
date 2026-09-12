@@ -22,7 +22,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 **Additional skills:**
 | Skill | When to Use |
 |-------|------------|
-| [Slim MVC Skill](./slim-mvc-skill.md) | MVC route groups, security patterns, migration guidance (optional) |
+| [Slim MVC Skill](./slim-mvc-skill.md) | Inventory of the Slim apps under `src/`, their role gates, and the shared API entity middleware |
 | [Configuration Management](./configuration-management.md) | Settings, SystemConfig, admin panels |
 
 ## Database
