@@ -347,7 +347,7 @@ Legend for **Decision**:
 | M2 | Module `.htaccess` | `src/event/.htaccess` (8 lines) | **Reuse (copy exactly)** | Copy the event/groups/people variant, **not** finance/v2/admin — those three omit the `RewriteRule ^views/.*\.php$ - [F,L]` line and expose their templates directly (F33). |
 | M3 | Extra module-wide middleware the factory does not expose | `src/fundraiser/index.php:27-35` (wrapper `$app->group('', …)->add(...)`) | **Reuse** | How the rollout gate wraps the whole `/volunteer` module while individual route groups keep their own role gates (§3.1). |
 | M4 | API entry point / route registration | `src/api/index.php` (75 lines; 36 `require` lines at `:38-73`) | **Reuse** | Add `src/api/routes/volunteer/*.php` plus `require` lines. Route files act on the ambient `$app`. |
-| M5 | JSON rendering / error shape | `SlimUtils::renderJSON` (`:397`), `renderSuccessJSON` (`:26`), `renderErrorJSON` (`:35`) | **Reuse** | **Trap:** `renderErrorJSON()` redacts any message matching `/(password\|credential\|secret\|api[_-]?key\|token\|user\|host\|localhost\|…)/i` (`SlimUtils.php:41-43`). `gettext('User is not in this team')` would be replaced by the generic string. Phrase V2 messages to avoid the words *user* and *token* — e.g. "Not authorized for this team". |
+| M5 | JSON rendering / error shape | `SlimUtils::renderJSON` (`:397`), `renderSuccessJSON` (`:26`), `renderErrorJSON` (`:35`) | **Reuse** | Two defects here are fixed by prerequisite **E-18** (#9737): at `850c70a8c`, `renderErrorJSON()` redacts any message containing the bare words *user*, *token* or *host* (`SlimUtils.php:41-43`), and `BaseAuthRoleMiddleware` emits a different JSON shape without calling `renderErrorJSON()` at all. E-18 narrows the regex to credential-shaped values and routes the role middlewares through `renderErrorJSON()`, so V2 lands on **one** error contract with **no phrasing constraint**. Per §0.2 rule 5, V2 does not phrase around the old regex; it waits for E-18 (a blocking prerequisite, §7.3). |
 | M6 | Entity load + 404 | `AbstractEntityMiddleware` (`:42-63`); model subclass `EventsMiddleware.php` | **Reuse (subclass)** | One ~25-line subclass per V2 entity. |
 | M7 | OpenAPI | swagger-php 6 `@OA\*` DocBlocks; `src/composer.json:103-104`; global tag list `docs/openapi/openapi-private-info.php:43-57` | **Extend** | **There is no `Volunteer` tag — add one** before annotating routes. Then `cd src && composer run openapi:private` and commit `docs/openapi/generated/private-api.yaml`. |
 | M8 | Service layer | 29 instance services in `src/ChurchCRM/Service/`, instantiated with `new` | **Reuse** | Instance classes, Propel only (no raw SQL), `LoggerUtils` for business logic, `\RuntimeException(gettext('…'))` for validation failures caught by the route. **No DI container exists** (F17) — design V2 services to be `new`-able. |
@@ -787,13 +787,21 @@ Legal transitions, and nothing else:
 
 | From | To | Who | Notes |
 |---|---|---|---|
-| `pending` | `accepted` | the assigned person | idempotent: accepting twice is a 200 with no second state change and no second response row |
-| `pending` | `declined` | the assigned person | reopens the gap |
-| `accepted` | `declined` | the assigned person | allowed — plans change; reopens the gap |
+| `pending` | `accepted` | the assigned person, or coordinator+ on their behalf | idempotent: accepting twice is a 200 with no second state change and no second response row |
+| `pending` | `declined` | the assigned person, or coordinator+ on their behalf | reopens the gap |
+| `accepted` | `declined` | the assigned person, or coordinator+ on their behalf | allowed — plans change; reopens the gap |
 | `pending` / `accepted` | `cancelled` | coordinator+ | reopens the gap |
 | `accepted` | `substituted` | coordinator+, only via swap approval | creates the replacement assignment in the same transaction |
 | `accepted` | `completed` | system | set when the occurrence's end has passed; if linked and the person has an `event_attend` check-in, `completed` is recorded with attendance, otherwise it is recorded without. Never blocks on attendance. |
 | anything | anything else | — | rejected with `409` and the current status in the body |
+
+"On their behalf" is deliberate, not a loophole: a volunteer who phones the coordinator to say they
+cannot make it is the common case, and the coordinator records it. The response row then carries
+the **coordinator** as `vrsp_per_ID` and `vrsp_Channel = 'coordinator'` (§2.12), so the audit trail
+shows who actually recorded it. A coordinator-recorded decline does **not** enqueue a `decline_alert`
+(§3.6) — the coordinators already know. The member endpoint (§3.3.3 `…/me/…/respond`) and the
+coordinator endpoint (§3.3.2 `…/assignments/{id}/status`) both call the same
+`VolunteerAssignmentService::respond()`; only the actor and the channel differ.
 
 #### 2.11.2 Invariants
 
@@ -838,7 +846,7 @@ preserved", "substitution/swap history must not destroy the audit of the origina
 | `vrsp_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vrsp_vasg_ID` | `AssignmentId` | `INTEGER` required | FK → assignment, `ON DELETE CASCADE` |
 | `vrsp_per_ID` | `PersonId` | `mediumint(9) unsigned` required | who responded (the volunteer, or a coordinator acting on their behalf). FK → `person_per.per_ID`, `ON DELETE CASCADE` |
-| `vrsp_Response` | `Response` | `enum('accepted','declined','cancelled','substitute_proposed','substitute_approved','substitute_rejected')` required | |
+| `vrsp_Response` | `Response` | `enum('accepted','declined','cancelled','substitute_proposed','substitute_approved','substitute_rejected','substitute_withdrawn')` required | one value per swap outcome, so every `vswp_Status` transition (§2.13) leaves a row |
 | `vrsp_ResponseDate` | `ResponseDate` | `DATETIME` required | |
 | `vrsp_Channel` | `Channel` | `enum('web','coordinator')` required default `'web'` | `'email_token'` is reserved for the future tokenized-link extension (D14) and is **not** implemented |
 | `vrsp_Comment` | `Comment` | `VARCHAR(255)` null | |
@@ -869,7 +877,11 @@ coordinator approves or rejects.
 Indexes: `vswp_assignment_status_idx (vswp_vasg_ID, vswp_Status)`,
 `vswp_proposed_person_idx (vswp_Proposed_per_ID)`.
 
-**Lifecycle:** `proposed → approved | rejected | withdrawn` (all terminal).
+**Lifecycle:** `proposed → approved | rejected | withdrawn` (all terminal). `withdrawn` is reached
+only by the proposer, through `POST /api/volunteer/me/swaps/{swapId}/withdraw` (§3.3.3); it appends
+a `substitute_withdrawn` response row to the original assignment (§2.12) and changes nothing else —
+the original stays `accepted`. Every one of the four swap states therefore has a matching response
+row (`substitute_proposed` / `_approved` / `_rejected` / `_withdrawn`).
 
 **Invariants:**
 
@@ -927,9 +939,12 @@ swap_resolved:{swapId}:{personId}
 - Enqueue is `findOneOrCreate()` on `vntf_DedupeKey` inside the same transaction as the state change
   that caused it. A retried operation therefore produces no second message (#9710). This is the
   `event_attend` `UNIQUE(event_id, person_id)` + `findOneOrCreate()` idiom (`Event.php:87-90`).
-- **Delivery failure never rolls back the assignment.** The state change commits; the outbox row
-  moves to `failed` with `Attempts + 1` and `LastError`, and is retried by the next drain until
-  `Attempts >= 5`, after which it stays `failed` and is surfaced on the admin dashboard.
+- **Delivery failure never rolls back the assignment.** The state change commits; on a send error
+  the outbox row **stays `pending`** with `Attempts + 1`, `LastAttemptDate` and `LastError`, so the
+  next drain selects it again. Only when `Attempts` reaches 5 does the row move to `failed`, which
+  is terminal and is surfaced on the admin dashboard (`failedNotifications`). `failed` therefore
+  means "gave up", never "will retry" — the drain's selection filter (§3.6 step 1) is `pending`
+  only, and there is no `retrying` state.
 - `skipped` is written (not `sent`, not `failed`) when the recipient is in the do-not-email set
   (N3) or when `SystemConfig::isEmailEnabled()` is false (N2) — so "we chose not to send" is
   distinguishable from "we tried and could not".
@@ -1232,8 +1247,8 @@ require __DIR__ . '/routes/volunteer/volunteer-me.php';
 ```
 
 All responses are `SlimUtils::renderJSON()` envelopes; all errors are
-`SlimUtils::renderErrorJSON($response, gettext('…'), [], <status>, $e, $request)`. Remember M5: the
-redaction regex swallows the words *user* and *token*.
+`SlimUtils::renderErrorJSON($response, gettext('…'), [], <status>, $e, $request)` — the single
+error contract that E-18 (#9737) establishes; see M5 for why there is no phrasing constraint.
 
 #### 3.3.1 Setup surface — `volunteer-setup.php`
 
@@ -1243,7 +1258,7 @@ redaction regex swallows the words *user* and *token*.
 | POST | `/api/volunteer/ministries` | create | **Manager** | `{name,description}` → `201 {ministry:{…}}`; `409` on duplicate name |
 | GET | `/api/volunteer/ministries/{ministryId}` | detail incl. teams, pools, positions | Coordinator of it | `MinistryMiddleware` → `{ministry, teams[], pools[], positions[]}` |
 | POST | `/api/volunteer/ministries/{ministryId}` | update | Coordinator of it | `{name?,description?,active?}` → `{ministry}` |
-| DELETE | `/api/volunteer/ministries/{ministryId}` | delete | **Manager** | `409` when occurrences or assignments exist; message names the count |
+| DELETE | `/api/volunteer/ministries/{ministryId}` | delete | **Manager** | `409` when occurrences or assignments exist; message names the count. Scope rows (§2.15) never block deletion — they are removed with the ministry |
 | GET | `/api/volunteer/ministries/{ministryId}/teams` | list | Coordinator of it | `{teams:[…]}` |
 | POST | `/api/volunteer/ministries/{ministryId}/teams` | create | Coordinator of it | `{name,description}` → `201 {team}` |
 | GET/POST/DELETE | `/api/volunteer/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware` |
@@ -1281,7 +1296,7 @@ redaction regex swallows the words *user* and *token*.
 | POST | `/api/volunteer/occurrences/{occurrenceId}/assignments` | assign | scope | `{positionId,personId,requirementId?,allowOutsidePool?}` → `201 {assignment}`; `403` I2, `409` I1/I3/I5 |
 | GET | `/api/volunteer/occurrences/{occurrenceId}/emails` | addresses for the email composer (U7) | scope | `{emails:[…]}` — do-not-email applied (N3) |
 | GET | `/api/volunteer/occurrences/{occurrenceId}/roster/csv` | server-side CSV (R2) | scope | `text/csv` via `CsvExporter::getContent()` |
-| POST | `/api/volunteer/assignments/{assignmentId}/status` | coordinator status change | scope | `{status:'cancelled'\|'accepted'\|'declined', comment?}` → `{assignment}`; `409` on an illegal transition |
+| POST | `/api/volunteer/assignments/{assignmentId}/status` | coordinator status change, incl. recording a response on the volunteer's behalf (§2.11.1) | scope | `{status:'cancelled'\|'accepted'\|'declined', comment?}` → `{assignment}`; `accepted`/`declined` write a response row with `Channel='coordinator'` and the coordinator as `vrsp_per_ID`; `409` on an illegal transition |
 | DELETE | `/api/volunteer/assignments/{assignmentId}` | cancel (never hard-deletes once responded) | scope | sets `cancelled`; hard-deletes only a `pending`, never-notified row |
 | POST | `/api/volunteer/assignments/{assignmentId}/notify` | re-enqueue the assignment mail | scope | `{}` → `{notification:{status}}`; idempotent via the dedupe key unless `?force=1` |
 | GET | `/api/volunteer/swaps` | swap queue | scope | `?status=proposed&ministryId=` → `{swaps:[…]}` |
@@ -1303,6 +1318,7 @@ that can be forgotten.
 | GET | `/api/volunteer/me/assignments` | my upcoming (and optionally past) commitments | `?from=&to=&includePast=0` → `{assignments:[{id,occurrenceId,start,end,ministryName,teamName,positionName,status,canRespond,canProposeSubstitute}]}` |
 | POST | `/api/volunteer/me/assignments/{assignmentId}/respond` | accept / decline | `{response:'accepted'\|'declined', comment?}` → `{assignment}`. **Idempotent** (§2.12). `403` if the assignment is not mine (never `404` — the record exists). |
 | POST | `/api/volunteer/me/assignments/{assignmentId}/propose-substitute` | propose a named substitute | `{personId, comment?}` → `201 {swap}`. `personId` here is the *substitute*, not the actor; eligibility is checked server-side. `409` if a proposal is already pending. |
+| POST | `/api/volunteer/me/swaps/{swapId}/withdraw` | withdraw my own pending proposal | `{comment?}` → `{swap}` with `status='withdrawn'`; appends a `substitute_withdrawn` response row (§2.13). `403` if I am not the proposer; `409` unless the swap is `proposed`. |
 | GET | `/api/volunteer/me/opportunities` | open gaps I am qualified for | `?from=&to=` → `{opportunities:[{occurrenceId,start,ministryName,positionId,positionName,openCount}]}` — server-side eligibility, never trusting the client |
 | POST | `/api/volunteer/me/signup` | self-sign-up | `{occurrenceId, positionId}` → `201 {assignment}` with `status='accepted'`, `source='self_signup'`. Re-validates qualification **and** capacity server-side at signup time; `403` unqualified, `409` full. |
 | GET | `/api/volunteer/me/qualifications` | what I am qualified for | `{qualifications:[{positionId,positionName,ministryName,teamName}]}` — read-only; volunteers cannot grant themselves anything |
@@ -1358,7 +1374,7 @@ final class VolunteerSetupService
 {
     public function createMinistry(string $name, string $description, User $actor): VolunteerMinistry;
     public function updateMinistry(VolunteerMinistry $m, array $fields, User $actor): VolunteerMinistry;
-    public function deleteMinistry(VolunteerMinistry $m, User $actor): void;   // refuses when referenced
+    public function deleteMinistry(VolunteerMinistry $m, User $actor): void;   // 409 if any occurrence or assignment references it (§3.3.1); otherwise deletes — FK cascades take teams/pools/positions/qualifications/schedules, and the polymorphic volunteer_scope_vscp rows (no FK, §2.15) are removed explicitly in the same transaction
     public function createTeam(VolunteerMinistry $m, string $name, string $description, User $actor): VolunteerTeam;
     public function linkPool(string $ownerType, int $ownerId, int $groupId, ?string $label): VolunteerPool;
     public function unlinkPool(VolunteerPool $p): void;
@@ -1456,7 +1472,7 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 |---|---|---|---|
 | `assign()` / cart assign | `assignment` | the volunteer | now |
 | `assign()` / `selfSignup()` accepted | `reminder` | the volunteer | occurrence start − `iVolunteerReminderLeadHours` |
-| `respond('declined')` | `decline_alert` | `getCoordinatorPersonIds(ministry, team)` | now |
+| `respond('declined')` **by the volunteer** (`Channel='web'`) | `decline_alert` | `getCoordinatorPersonIds(ministry, team)` | now — a coordinator-recorded decline (`Channel='coordinator'`) enqueues nothing |
 | `selfSignup()` | `signup_confirm` | the volunteer | now |
 | `proposeSubstitute()` | `swap_proposed` | coordinators | now |
 | `approveSwap()` / `rejectSwap()` | `swap_resolved` | proposer **and** substitute | now |
@@ -1519,11 +1535,14 @@ asked not to be mailed at, so the opt-out is honoured here too.
 2. For each: if `!SystemConfig::isEmailEnabled()` → `skipped` (N2). If the recipient is in
    `buildDoNotEmailSet()` → `skipped` (N3). If the person has no email → `skipped`. If the row is a
    `reminder` whose occurrence has already ended → `skipped`.
-3. Otherwise build the `BaseEmail` subclass (Appendix C), `send()`, and record `sent` /
-   `failed` + `Attempts + 1` + `LastError`. Each send is wrapped in its own `try/catch (\Throwable)`
-   with a structured log, copying `dto\Notification::send()`'s per-channel isolation (N4) so one
-   bad address cannot stop the batch.
-4. `failed` rows are retried on the next drain until `Attempts >= 5`.
+3. Otherwise build the `BaseEmail` subclass (Appendix C) and `send()`. On success record `sent`
+   and `SentDate`. On failure record `Attempts + 1`, `LastAttemptDate` and `LastError`, and set
+   `Status` to `failed` **only if `Attempts` is now 5**; otherwise leave it `pending` so step 1
+   picks it up on the next drain. Each send is wrapped in its own `try/catch (\Throwable)` with a
+   structured log, copying `dto\Notification::send()`'s per-channel isolation (N4) so one bad
+   address cannot stop the batch.
+4. Retry is therefore implicit in step 1: a row that failed fewer than 5 times is still `pending`
+   and still due. `failed` is terminal (§2.14) and is never re-selected.
 
 **Punctuality.** Because the drain runs on page loads (F9), reminders are best-effort by default.
 Installations that need them on time add a real cron with **no code change**:
@@ -1718,8 +1737,6 @@ class VolunteerCoordinatorRoleAuthMiddleware extends BaseAuthRoleMiddleware
 
     protected function noRoleMessage(): string
     {
-        // NOTE: avoid the words "user" and "token" — SlimUtils' redaction regex
-        // (SlimUtils.php:41-43) would replace the whole message with a generic string.
         return gettext('Volunteer coordinator access is required');
     }
 
@@ -2352,7 +2369,8 @@ table.
 #### #9706 — Scoped authorization
 
 *Normative sections:* §4 (all), §2.15.
-*Depends on:* #9705 (needs `volunteer_scope_vscp`, ministry and team).
+*Depends on:* #9704 (for `User::isVolunteerV2Enabled()`, which every V2 role middleware calls
+first) **and** #9705 (needs `volunteer_scope_vscp`, ministry and team).
 
 **PR contains:** `usr_VolunteerManager` (the §4.3 twelve-file checklist);
 `VolunteerAuthorizationService`; the two role middlewares; the seven entity middlewares with
