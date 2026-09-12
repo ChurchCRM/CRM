@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\PluginManager;
@@ -35,14 +36,17 @@ class Menu
         $isMenuOptions = $currentUser->isMenuOptionsEnabled();
         $isManageGroups = $currentUser->isManageGroupsEnabled();
         $canViewEvents = $currentUser->canViewEvents();
+        $isVolunteerV1Enabled = User::isVolunteerV1Enabled();
+        $isVolunteerV2Enabled = User::isVolunteerV2Enabled();
         $menus = [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-gauge'),
             'Calendar'     => self::getCalendarMenu($canViewEvents),
-            'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
+            'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled(), $isVolunteerV1Enabled),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
             'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents),
+            'Volunteer'    => self::getVolunteerMenu($isAdmin && $isVolunteerV2Enabled),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
             'Reports'      => self::getReportsMenu($isAdmin),
@@ -92,7 +96,7 @@ class Menu
         return $calendarMenu;
     }
 
-    private static function getPeopleMenu(bool $isAdmin, bool $isMenuOptions, bool $isAddRecordsEnabled): MenuItem
+    private static function getPeopleMenu(bool $isAdmin, bool $isMenuOptions, bool $isAddRecordsEnabled, bool $isVolunteerV1Enabled): MenuItem
     {
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-people-group');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'people/dashboard', true, 'fa-gauge'));
@@ -111,7 +115,7 @@ class Menu
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Classifications'), 'admin/system/options?mode=classes', $isAdmin, 'fa-tags'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Properties'), 'PropertyList.php?Type=p', $isMenuOptions, 'fa-person-half-dress'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin, 'fa-handshake-angle'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin && $isVolunteerV1Enabled, 'fa-handshake-angle'));
     
             $peopleMenu->addSubMenu($adminMenu);
         }
@@ -277,6 +281,23 @@ class Menu
         }
 
         return $eventsMenu;
+    }
+
+    /**
+     * Volunteer Management v2 (#9704). Visible only when the rollout state is
+     * 'v2' or 'both'; the legacy "Volunteer Opportunities" item under
+     * People → Admin covers 'v1' and 'both'.
+     *
+     * $isVisible must mirror the gate on the /volunteer route group exactly —
+     * AdminRoleAuthMiddleware today, the scoped coordinator middleware from
+     * #9706 later — so the menu never advertises a page that 302s away.
+     */
+    private static function getVolunteerMenu(bool $isVisible): MenuItem
+    {
+        $volunteerMenu = new MenuItem(gettext('Volunteer'), '', $isVisible, 'fa-handshake-angle');
+        $volunteerMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', $isVisible, 'fa-gauge'));
+
+        return $volunteerMenu;
     }
 
     private static function getDepositsMenu(bool $isAdmin, bool $isFinanceEnabled): MenuItem

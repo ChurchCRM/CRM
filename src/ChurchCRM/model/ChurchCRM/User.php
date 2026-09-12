@@ -232,6 +232,36 @@ class User extends BaseUser
     }
 
     /**
+     * The Volunteer Management rollout state (#9704): 'v1', 'v2' or 'both'.
+     *
+     * Pure system check — no per-user permission gate, mirroring
+     * isEventsEnabled(). Anything not in the choice list degrades to 'v1',
+     * so a hand-edited or half-migrated config_cfg row can never expose V2.
+     */
+    public static function getVolunteerVersion(): string
+    {
+        $version = SystemConfig::getValue('sVolunteerVersion');
+
+        return in_array($version, ['v1', 'v2', 'both'], true) ? $version : 'v1';
+    }
+
+    /**
+     * Whether the V2 Volunteer Management experience is active ('v2' or 'both').
+     */
+    public static function isVolunteerV2Enabled(): bool
+    {
+        return in_array(self::getVolunteerVersion(), ['v2', 'both'], true);
+    }
+
+    /**
+     * Whether the legacy V1 Volunteer Opportunities experience is active ('v1' or 'both').
+     */
+    public static function isVolunteerV1Enabled(): bool
+    {
+        return in_array(self::getVolunteerVersion(), ['v1', 'both'], true);
+    }
+
+    /**
      * Returns true if the current user may read basic metadata for any family.
      * All authenticated users have this capability by default (read-default policy).
      *
