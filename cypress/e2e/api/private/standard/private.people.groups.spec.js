@@ -4,6 +4,60 @@ describe("API Private Group Operations", () => {
     let groupID = 1; // Use existing group ID for testing
 
     describe("Group Member Operations", () => {
+        // Person 1 is not a seeded member of group 1. The tests below add them,
+        // so every membership this describe creates has to be removed again —
+        // otherwise group 1 keeps an extra member for the rest of the run and
+        // any later spec that asserts its roster, size or email export becomes
+        // order-dependent (issue #9828).
+        const testPersonId = 1;
+        let seededMemberCount;
+
+        // removeperson walks the group's memberships and deletes the matching
+        // one; a person who is not a member is a no-op that still returns 200
+        // with {"success": true}. 200 is therefore the only status it returns —
+        // no defensive extra codes (cypress-testing.md → allowedStatuses).
+        const removeTestPerson = () =>
+            cy.makePrivateAdminAPICall(
+                "DELETE",
+                `/api/groups/${groupID}/removeperson/${testPersonId}`,
+                null,
+                [200]
+            );
+
+        const getMemberCount = () =>
+            cy
+                .makePrivateAdminAPICall(
+                    "GET",
+                    `/api/groups/${groupID}/members`,
+                    null,
+                    200
+                )
+                .then((resp) => resp.body.Person2group2roleP2g2rs.length);
+
+        before(() => {
+            // Drop a stale membership from a previously crashed run first, so
+            // the baseline is the seeded roster and not the seeded roster + 1.
+            removeTestPerson();
+            getMemberCount().then((count) => {
+                seededMemberCount = count;
+            });
+        });
+
+        beforeEach(() => {
+            // Clean up at the start of the next test rather than at the end of
+            // the previous one: afterEach does not run when a test crashes
+            // mid-way (cypress-testing.md → State Cleanup: prefer beforeEach).
+            removeTestPerson();
+        });
+
+        after(() => {
+            // Guard against the leak coming back: assert only, never clean up
+            // here — a cleanup would make this assertion pass unconditionally.
+            getMemberCount().then((count) => {
+                expect(count).to.equal(seededMemberCount);
+            });
+        });
+
         it("Add member to group and verify response structure", () => {
             // Test adding a person to a group
             // GET /api/groups/1/members to ensure proper structure
@@ -40,20 +94,44 @@ describe("API Private Group Operations", () => {
         });
 
         it("Remove member from group", () => {
+            // Seed the membership this test removes. The beforeEach above wipes
+            // person 1 from the group, so without this the DELETE below would
+            // be a no-op that passes whether or not removal works.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${groupID}/addperson/${testPersonId}`,
+                {
+                    RoleID: 1,
+                },
+                200
+            );
+
             // Test removing a person from a group
             cy.makePrivateAdminAPICall(
                 "DELETE",
-                `/api/groups/${groupID}/removeperson/1`,
+                `/api/groups/${groupID}/removeperson/${testPersonId}`,
                 null,
                 200
             );
+
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/groups/${groupID}/members`,
+                null,
+                200
+            ).then((resp) => {
+                const memberIds = resp.body.Person2group2roleP2g2rs.map(
+                    (member) => member.PersonId
+                );
+                expect(memberIds).to.not.include(testPersonId);
+            });
         });
 
         it("Update member role in group", () => {
             // First ensure member exists
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}/addperson/1`,
+                `/api/groups/${groupID}/addperson/${testPersonId}`,
                 {
                     RoleID: 1,
                 },
@@ -62,7 +140,7 @@ describe("API Private Group Operations", () => {
                 // Now update their role
                 cy.makePrivateAdminAPICall(
                     "POST",
-                    `/api/groups/${groupID}/userRole/1`,
+                    `/api/groups/${groupID}/userRole/${testPersonId}`,
                     {
                         roleID: 1,
                     },
@@ -70,6 +148,10 @@ describe("API Private Group Operations", () => {
                 ).then((resp) => {
                     expect(resp.body).to.exist;
                     expect(resp.body).to.have.property("RoleId");
+
+                    // Give back the membership this test created. Without it
+                    // group 1 keeps person 1 for the rest of the run.
+                    removeTestPerson();
                 });
             });
         });
@@ -324,12 +406,18 @@ describe("API Private Group Operations", () => {
         });
 
         it("Non-admin should be denied removing group members", () => {
-            // Test that a user without bManageGroups permission is denied
-            cy.makePrivateUserAPICall(
+            // user.api.key (tony.wade, id 3) has usr_ManageGroups = 1, so it is
+            // NOT denied here — it used to return 500 only because the leaked
+            // person-1 membership (issue #9828) sent the route into its audit
+            // Note write, which has no current user under API-key auth. With
+            // the leak gone the call is an authorized no-op returning 200.
+            // Use a key that genuinely lacks the permission so the test asserts
+            // the denial its name promises.
+            cy.makePrivateLimitedAPICall(
                 "DELETE",
                 `/api/groups/${groupID}/removeperson/1`,
                 null,
-                [401, 403, 500]
+                [403]
             );
         });
 
