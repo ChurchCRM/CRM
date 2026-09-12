@@ -124,11 +124,11 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $person = $request->getAttribute('person');
         $input = $request->getParsedBody();
 
-        // Detect when PHP discarded the request body because post_max_size was exceeded
         if (empty($input) || !isset($input['imgBase64'])) {
-            $contentLength = (int)($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
-            $maxSize = SystemService::getMaxUploadFileSize(false);
-            if ($contentLength > 0 && $contentLength > $maxSize) {
+            // 413 only when PHP genuinely threw the body away for size; a body
+            // that arrived without imgBase64 is a malformed request whatever its
+            // Content-Length claims (issue #9771).
+            if (SlimUtils::isBodyDiscardedForSize($request)) {
                 return SlimUtils::renderErrorJSON(
                     $response,
                     sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
