@@ -334,6 +334,13 @@ class Menu
         // open and need. Menu visibility mirrors the route middleware exactly
         // (§3.5); it never mirrors the strictest action on the page.
         $volunteerMenu->addSubMenu(new MenuItem(gettext('Setup'), 'volunteer/setup', $isVisible, 'fa-wand-magic-sparkles'));
+        // #9711: "My ministries and teams" (design §3.5 names Ministries as the third
+        // child). It carries the SAME visibility as the parent because
+        // /volunteer/ministries carries the same gate, and it is the one page a pure
+        // TEAM LEADER can open — the ministry detail page is ministry-scoped, so
+        // without this entry a team leader sees a Volunteer menu whose every child
+        // leads somewhere they are refused (§4.6).
+        $volunteerMenu->addSubMenu(new MenuItem(gettext('Ministries'), 'volunteer/ministries', $isVisible, 'fa-handshake-angle'));
 
         // #9712 — S5/S6. Visible to every authenticated user while V2 is rolled out,
         // coordinator or not (§3.5). A volunteer with nothing on their list still sees

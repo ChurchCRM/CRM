@@ -92,9 +92,13 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
             cy.url().should("include", "/volunteer/dashboard");
         });
 
-        it("renders the V2 dashboard placeholder", () => {
+        // #9711 replaced #9704's placeholder with the real S1 dashboard, so this
+        // asserts the page is the coordinator dashboard rather than the old
+        // "Volunteer Management" placeholder heading.
+        it("renders the V2 coordinator dashboard", () => {
             cy.visit("/volunteer/dashboard");
-            cy.contains("Volunteer Management").should("be.visible");
+            cy.get("#volunteer-dashboard").should("exist");
+            cy.contains("Volunteer Dashboard").should("be.visible");
         });
     });
 

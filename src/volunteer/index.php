@@ -24,6 +24,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
     $app = $group;
     require __DIR__ . '/routes/dashboard.php';
     require __DIR__ . '/routes/setup.php';
+    require __DIR__ . '/routes/ministries.php';
     require __DIR__ . '/routes/ministry.php';
     require __DIR__ . '/routes/occurrence.php';
     require __DIR__ . '/routes/member.php';
