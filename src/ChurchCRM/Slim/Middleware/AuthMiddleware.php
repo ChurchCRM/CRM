@@ -5,6 +5,7 @@ namespace ChurchCRM\Slim\Middleware;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use Laminas\Diactoros\Response;
@@ -56,8 +57,13 @@ class AuthMiddleware implements MiddlewareInterface
                 // Zero-permission users are NOT blocked: they retain read-only access
                 // to people/family records (read-default policy, #9003). Writes are
                 // denied by the per-route role middleware.
+                //
+                // isLimitedAccessAllowedPath() is consulted here as well as in the
+                // session branch below: the Volunteer v2 member surface must be reachable
+                // by API key too, or cy.makePrivateEditSelfAPICall() always returns 403
+                // and the self-service specs cannot be written at all (#9706, design §4.7).
                 $apiUser = AuthenticationManager::getCurrentUser();
-                if ($apiUser->isEditSelfExclusive()) {
+                if ($apiUser->isEditSelfExclusive() && !$this->isLimitedAccessAllowedPath($request)) {
                     $response = new Response();
                     $response->getBody()->write(json_encode(['error' => 'Account has limited permissions. Contact an administrator.']));
                     return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
@@ -73,7 +79,7 @@ class AuthMiddleware implements MiddlewareInterface
                 // to people/family records (read-default policy, #9003). Writes are denied
                 // by the per-route role middleware and the per-page permission guards.
                 $sessionUser = AuthenticationManager::getCurrentUser();
-                if ($sessionUser->isEditSelfExclusive() && !$this->isAuthFlowExemptPath($request)) {
+                if ($sessionUser->isEditSelfExclusive() && !$this->isLimitedAccessAllowedPath($request)) {
                     if ($this->isBrowserRequest($request)) {
                         $rootPath = SystemURLs::getRootPath();
                         return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
@@ -116,24 +122,50 @@ class AuthMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Check whether the current request targets a page that must remain
-     * accessible even when the user has no admin permissions. Without these
-     * exemptions, limited-permission users get stuck in a redirect loop
-     * because AuthMiddleware blocks the page the auth system is sending
-     * them to. See #8680.
+     * Check whether the current request targets a path that must remain reachable by an
+     * EditSelf-exclusive user.
      *
-     * Exempt paths:
+     * Auth-flow exemptions (#8680). Without these, limited-permission users get stuck in
+     * a redirect loop because AuthMiddleware blocks the page the auth system is sending
+     * them to:
      *  - /user/current/changepassword  — forced password change on first login
      *  - /user/current/manage2fa       — forced 2FA enrollment when bRequire2FA is on
      *  - /user/current/enroll2fa       — backward-compat alias for manage2fa
+     *
+     * Volunteer v2 member self-service (#9706, design §4.7). D14 makes volunteers
+     * EditSelf-exclusive users — that persona IS the volunteer persona — so without an
+     * exemption a volunteer cannot see their own schedule. The exemption is deliberately
+     * as narrow as it can be:
+     *  - it is switched off entirely unless the rollout state includes V2;
+     *  - the paths are enumerated literally, never pattern-matched loosely;
+     *  - every route behind them derives the acting person from the authenticated
+     *    session and accepts no personId parameter (§3.3.3), which is how #9712's
+     *    "unauthorized person IDs cannot be substituted into requests" is satisfied
+     *    structurally rather than by a check that can be forgotten;
+     *  - they are additionally gated by VolunteerV2EnabledMiddleware and still authorize
+     *    per record.
+     * It grants reachability, not authority. Every other internal surface — including
+     * /api/volunteer/scopes and the coordinator area — stays blocked.
      */
-    private function isAuthFlowExemptPath(ServerRequestInterface $request): bool
+    private function isLimitedAccessAllowedPath(ServerRequestInterface $request): bool
     {
         $path = $request->getUri()->getPath();
 
-        return str_contains($path, '/user/current/changepassword')
+        if (
+            str_contains($path, '/user/current/changepassword')
             || str_contains($path, '/user/current/manage2fa')
-            || str_contains($path, '/user/current/enroll2fa');
+            || str_contains($path, '/user/current/enroll2fa')
+        ) {
+            return true;
+        }
+
+        if (!User::isVolunteerV2Enabled()) {
+            return false;
+        }
+
+        return str_contains($path, '/api/volunteer/me/')
+            || str_contains($path, '/volunteer/my-schedule')
+            || str_contains($path, '/volunteer/opportunities');
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool

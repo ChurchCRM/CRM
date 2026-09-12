@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Utils\VersionUtils;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
@@ -39,11 +40,21 @@ $app->get('/limited-access', function (Request $request, Response $response): Re
         // Session might be invalid — that's OK, just show the page without user info
     }
 
+    // Volunteer v2 (#9706, design §4.7 step 3): an EditSelf-exclusive user IS the
+    // volunteer persona (D14), so when the V2 rollout is on, give them somewhere to go
+    // from the page AuthMiddleware lands them on. Shown to every limited user rather
+    // than only to those with an assignment — /volunteer/my-schedule is also where open
+    // opportunities are found, and the page authorizes per record anyway.
+    $volunteerScheduleUrl = User::isVolunteerV2Enabled()
+        ? SystemURLs::getRootPath() . '/volunteer/my-schedule'
+        : '';
+
     return $renderer->render($response, 'limited-access.php', [
         'sRootPath' => SystemURLs::getRootPath(),
         'userName' => $userName,
         'churchName' => $churchName,
         'verifyUrl' => $verifyUrl,
+        'volunteerScheduleUrl' => $volunteerScheduleUrl,
     ]);
 });
 

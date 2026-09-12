@@ -46,6 +46,12 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
             <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify Family Info') ?>
           </a>
           <?php endif; ?>
+          <?php /* Volunteer v2 (#9706): the volunteer self-service entry point. */ ?>
+          <?php if (!empty($volunteerScheduleUrl)): ?>
+          <a href="<?= htmlspecialchars($volunteerScheduleUrl) ?>" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-handshake-angle me-2"></i><?= gettext('My Volunteer Schedule') ?>
+          </a>
+          <?php endif; ?>
           <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="btn btn-outline-secondary">
             <i class="fa-solid fa-right-from-bracket me-2"></i><?= gettext('Log Out') ?>
           </a>
