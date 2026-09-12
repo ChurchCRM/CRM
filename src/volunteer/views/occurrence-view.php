@@ -38,6 +38,8 @@ use ChurchCRM\Utils\InputUtils;
 /** @var string $sStart */
 /** @var string $sEnd */
 /** @var int $iEventId */
+/** @var string $sEventTitle */
+/** @var string $sEventLocation */
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 
@@ -74,12 +76,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <!--
             D4 made visible: a linked occurrence keeps NO times of its own, so the
             coordinator is told where the time actually comes from and can go change it
-            in the one place that owns it.
+            in the one place that owns it. #9713 names that event and, when it has one,
+            says where it happens — several occurrences may share one event (UC3), so
+            "this event" on its own is not enough to act on.
           -->
-          <div class="mt-2 small">
+          <div class="mt-2 small" id="occurrence-event">
             <a href="<?= $sRootPath ?>/event/view/<?= (int) $iEventId ?>" id="occurrence-event-link">
-              <i class="fa-solid fa-calendar-day me-1"></i><?= gettext('Times come from this event') ?>
+              <i class="fa-solid fa-calendar-day me-1"></i><?= $sEventTitle !== '' ? InputUtils::escapeHTML($sEventTitle) : gettext('Times come from this event') ?>
             </a>
+            <div class="text-body-secondary"><?= gettext('Times come from this event') ?></div>
+            <?php if ($sEventLocation !== ''): ?>
+              <div class="text-body-secondary">
+                <i class="fa-solid fa-location-dot me-1"></i><?= InputUtils::escapeHTML($sEventLocation) ?>
+              </div>
+            <?php endif; ?>
           </div>
         <?php endif; ?>
       </div>

@@ -46,6 +46,21 @@ class Event extends BaseEvent
      *  - kioskassignment_kasm    (kiosk → event pins)
      *  - eventcounts_evtcnt      (attendance summary — no FK at DB level)
      *
+     * DELIBERATELY NOT handled here: Volunteer v2's `volunteer_occurrence_vocc` (#9713,
+     * design §2.9/E12). A volunteer occurrence is NOT owned by the event — several
+     * occurrences from different ministries may point at the same service (UC3), and the
+     * assignments, responses and swaps hanging off one are the church's record of who
+     * actually served. Deleting the calendar entry must not erase that history.
+     *
+     * `fk_vocc_event` is declared `ON DELETE SET NULL`, so the database nulls
+     * `vocc_event_id` on its own and the occurrence survives on `vocc_OccurrenceDate`
+     * (which is populated for linked rows precisely to be that anchor). There is nothing
+     * for this method to do, and adding a `VolunteerOccurrenceQuery::...->delete()` line
+     * to the list above would destroy exactly the data the SET NULL exists to keep.
+     *
+     * `events_event.event_ministry_id` points the other way — at a ministry, not at a
+     * child row — and is likewise not this method's business.
+     *
      * See #8670.
      */
     public function preDelete(ConnectionInterface $con = null): bool

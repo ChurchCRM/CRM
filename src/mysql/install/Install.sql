@@ -127,8 +127,13 @@ CREATE TABLE `events_event` (
   `location_id` INT DEFAULT NULL,
   `primary_contact_person_id` INT DEFAULT NULL,
   `secondary_contact_person_id` INT DEFAULT NULL,
+  -- Volunteer v2 (#9713, D9): optional owning volunteer ministry. The FOREIGN KEY is added
+  -- further down, after volunteer_ministry_vmin is created — this table is declared long
+  -- before it and MySQL will not accept a forward reference.
+  `event_ministry_id` int(11) DEFAULT NULL,
   `event_url` text,
-  PRIMARY KEY  (`event_id`)
+  PRIMARY KEY  (`event_id`),
+  KEY `event_ministry_idx` (`event_ministry_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1;
 
 --
@@ -1457,5 +1462,16 @@ CREATE TABLE `volunteer_scope_vscp` (
   CONSTRAINT `fk_vscp_granted_by` FOREIGN KEY (`vscp_GrantedBy_per_ID`)
       REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volunteer v2 (#9713): the events_event -> volunteer_ministry_vmin ownership link.
+--
+-- Declared here rather than inside the events_event CREATE TABLE because that table is
+-- created hundreds of lines before volunteer_ministry_vmin exists. ON DELETE SET NULL so
+-- deleting a ministry never deletes church events (design §2.16).
+--
+ALTER TABLE `events_event`
+    ADD CONSTRAINT `events_event_FK_ministry` FOREIGN KEY (`event_ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
 
 update version_ver set ver_update_end = now();

@@ -193,3 +193,64 @@ npm run build:php:validate:orm
 ```
 
 `src/ChurchCRM/model/ChurchCRM/Base/` and `Map/` are gitignored, so nothing from the regeneration is committed — only the hand-written subclasses. Note that `scripts/validate-orm-base-classes.js` passes silently when `Base/` is absent, so run `composer install` before trusting it.
+
+### Adding a Column Silently Widens Every `fromArray($input)` Write Endpoint <!-- learned: 2026-09-12 -->
+
+Several API write handlers hydrate an entity straight from the request body:
+
+```php
+$Event->fromArray($input);   // src/api/routes/calendar/events.php, updateEvent()
+```
+
+Propel's generated `fromArray()` copies **every** column whose phpName appears in the array.
+So the moment a migration adds a column to that table, the column becomes writable by anyone
+who can reach that endpoint — with no validation, no type check and no authorization — even
+though nothing in the route or the handler was touched. Nothing in the build catches it, and
+the diff that introduces the hole contains no PHP at all.
+
+Before merging a migration on a table an API writes, grep for the entity's `fromArray(` call
+sites. If the new column carries any rule at all (a foreign key that must exist, an
+authorization decision, an enum domain), resolve it explicitly and overwrite whatever
+`fromArray()` copied, on the next line:
+
+```php
+$ministryId = resolveEventMinistryId($response, $input, $currentMinistryId); // validates + authorizes
+if ($ministryId instanceof Response) { return $ministryId; }
+
+$Event->fromArray($input);
+$Event->setId($id);
+$Event->setMinistryId($ministryId);   // authoritative — never what fromArray() copied
+```
+
+Resolve **before** the save, not in a post-save helper: a refused value must leave no row
+behind, which a helper that runs after `save()` cannot guarantee. (#9713 added
+`events_event.event_ministry_id`, which carries a per-row authorization rule; without the
+overwrite above, any caller who could reach `POST /api/events/{id}` could have assigned an
+event to any ministry.)
+
+### A `<foreign-key>` May Point Forward in `schema.xml` — but Not in `Install.sql` / `seed.sql` <!-- learned: 2026-09-12 -->
+
+Propel resolves `<foreign-key foreignTable="…">` across the whole document, so a table
+declared early may reference one declared hundreds of lines later and `npm run build:orm`
+is happy. Raw SQL is not: MySQL rejects a `FOREIGN KEY` whose parent table does not exist
+yet.
+
+When you add an FK from an *old* table to a *new* one, the column goes in the existing
+`CREATE TABLE` (with its `KEY`) and the constraint goes in a trailing `ALTER TABLE`, placed
+after the parent table is created, in **both** `Install.sql` and `cypress/data/seed.sql`:
+
+```sql
+-- inside the existing CREATE TABLE, far above the parent
+  `event_ministry_id` int(11) DEFAULT NULL,
+  ...
+  KEY `event_ministry_idx` (`event_ministry_id`)
+
+-- at the end of the file, after volunteer_ministry_vmin exists
+ALTER TABLE `events_event`
+    ADD CONSTRAINT `events_event_FK_ministry` FOREIGN KEY (`event_ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+```
+
+Verify by loading `Install.sql` into a scratch database and diffing
+`SHOW CREATE TABLE` against the upgrade path's result — that comparison catches a constraint
+present on one path and missing on the other, which nothing else does.

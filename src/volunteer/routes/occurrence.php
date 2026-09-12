@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
@@ -70,6 +71,15 @@ $app->group('', function (RouteCollectorProxy $group): void {
         // shows the event's time and says where it came from.
         $window = (new VolunteerScheduleService())->resolveOccurrenceWindow($occurrence);
 
+        // #9713: name the event rather than just linking to it, and show where it happens —
+        // "Times come from this event" on its own does not tell a coordinator WHICH event,
+        // and several occurrences of different ministries may share one (UC3). Read-only;
+        // the event row is the source of truth for both (D4).
+        $linkedEvent = $occurrence->getEventId() === null
+            ? null
+            : EventQuery::create()->findPk((int) $occurrence->getEventId());
+        $eventLocation = $linkedEvent === null ? null : $linkedEvent->getLocation();
+
         $ministryName = $ministry === null ? gettext('Volunteer') : $ministry->getName();
         $scheduleName = $schedule === null ? gettext('Schedule') : $schedule->getName();
 
@@ -94,6 +104,8 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sStart' => $window['start'] === null ? '' : $window['start']->format('Y-m-d H:i:s'),
             'sEnd' => $window['end'] === null ? '' : $window['end']->format('Y-m-d H:i:s'),
             'iEventId' => $occurrence->getEventId() === null ? 0 : (int) $occurrence->getEventId(),
+            'sEventTitle' => $linkedEvent === null ? '' : (string) $linkedEvent->getTitle(),
+            'sEventLocation' => $eventLocation === null ? '' : (string) $eventLocation->getLocationName(),
         ]);
     });
 })->add(VolunteerCoordinatorRoleAuthMiddleware::class);

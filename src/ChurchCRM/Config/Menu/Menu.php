@@ -48,7 +48,7 @@ class Menu
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
             'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
-            'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents),
+            'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents, $currentUser->canWriteEvents()),
             'Volunteer'    => self::getVolunteerMenu($isVolunteerCoordinator, User::isVolunteerV2Enabled()),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
@@ -270,11 +270,20 @@ class Menu
         }
     }
 
-    private static function getEventsMenu(bool $isAddEventEnabled, bool $canViewEvents): MenuItem
+    /**
+     * @param bool $isAddEventEnabled the global AddEvent right — gates the Event Types admin entry
+     * @param bool $canViewEvents     the Events module is on
+     * @param bool $canWriteEvents    AddEvent **or** a volunteer-ministry coordinator (#9713,
+     *                                design §4.6). Menu visibility must mirror the route
+     *                                middleware exactly (§3.5, A11), and `/event/editor` is
+     *                                gated by AddEventsOrMinistryRoleAuthMiddleware, which asks
+     *                                exactly this question.
+     */
+    private static function getEventsMenu(bool $isAddEventEnabled, bool $canViewEvents, bool $canWriteEvents): MenuItem
     {
         $eventsMenu = new MenuItem(gettext('Events'), '', $canViewEvents, 'fa-ticket');
         $eventsMenu->addSubMenu(new MenuItem(gettext('Events Dashboard'), 'event/dashboard', true, 'fa-gauge'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'event/editor', $isAddEventEnabled, 'fa-circle-plus'));
+        $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'event/editor', $canWriteEvents, 'fa-circle-plus'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'event/checkin', true, 'fa-user-check'));
 
         if ($isAddEventEnabled) {

@@ -452,10 +452,22 @@
         <column name="location_id" phpName="LocationId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="primary_contact_person_id" phpName="PrimaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="secondary_contact_person_id" phpName="SecondaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="event_ministry_id" phpName="MinistryId" type="INTEGER" required="false"
+                description="Volunteer v2 (#9713, D9): optional owning volunteer ministry (volunteer_ministry_vmin.vmin_ID). NULL = no ministry owner; the event behaves exactly as before."/>
         <column name="event_url" phpName="URL" type="LONGVARCHAR"/>
 
         <foreign-key foreignTable="event_types" name="EventType" refPhpName="EventType">
             <reference local="event_type" foreign="type_id"/>
+        </foreign-key>
+
+        <!--
+            A REAL foreign key, unlike the PrimaryContact / SecondaryContact blocks below, which
+            carry skipSql="true" and (for PrimaryContact) map the wrong local column. ON DELETE
+            SET NULL so deleting a ministry never deletes church events (design §2.16).
+        -->
+        <foreign-key foreignTable="volunteer_ministry_vmin" name="EventMinistry" phpName="Ministry"
+                     refPhpName="Event" onDelete="setnull">
+            <reference local="event_ministry_id" foreign="vmin_ID"/>
         </foreign-key>
 
         <foreign-key foreignTable="person_per" name="PrimaryContact" refPhpName="PrimaryContactPerson" skipSql = "true">
@@ -470,6 +482,9 @@
         </foreign-key>
         <index name="event_txt">
             <index-column name="event_text"/>
+        </index>
+        <index name="event_ministry_idx">
+            <index-column name="event_ministry_id"/>
         </index>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>

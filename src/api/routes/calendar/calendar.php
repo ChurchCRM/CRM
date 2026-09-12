@@ -1,11 +1,14 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Dashboard\EventsMenuItems;
 use ChurchCRM\dto\FullCalendarEvent;
 use ChurchCRM\dto\SystemCalendars;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Service\VolunteerAssignmentService;
 use ChurchCRM\Slim\Middleware\Api\CalendarMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
@@ -258,9 +261,29 @@ function getUserCalendarEvents(Request $request, Response $response, array $args
 
 function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar $calendar): array
 {
+    // Volunteer v2 staffing for the whole feed in ONE call (#9713, design §3.5). Resolving
+    // it per event would turn a month of calendar into one query per row, and the scoping
+    // — which events' staffing this caller may see at all — belongs in one place.
+    $eventIds = [];
+    foreach ($events as $event) {
+        $eventIds[] = (int) $event->getId();
+    }
+
+    $staffing = [];
+    if (User::isVolunteerV2Enabled() && AuthenticationManager::isUserAuthenticated()) {
+        $staffing = (new VolunteerAssignmentService())->getEventStaffingSummary(
+            $eventIds,
+            AuthenticationManager::getCurrentUser()
+        );
+    }
+
     $formattedEvents = [];
     foreach ($events as $event) {
-        $fce = FullCalendarEvent::createFromEvent($event, $calendar);
+        $fce = FullCalendarEvent::createFromEvent(
+            $event,
+            $calendar,
+            $staffing[(int) $event->getId()] ?? null
+        );
         $formattedEvents[] = $fce;
     }
 

@@ -200,6 +200,58 @@ function renderTitleFieldInHeader(event) {
     </div>`;
 }
 
+/**
+ * Volunteer v2 (#9713, design §2.16 item 10): fill and reveal the ministry select.
+ *
+ * `GET /api/volunteer/ministries` is already scoped to what the caller may administer —
+ * `VolunteerSetupService::listMinistriesFor()` asks `isGlobalManager()` first and otherwise
+ * filters by the caller's explicit grants — so no `?manageable=1` filter is needed and the
+ * options are exactly the values `POST /api/events` will accept from this caller.
+ *
+ * Any failure (rollout flag off, no coordinator rights, endpoint unavailable) simply leaves
+ * the field hidden. The control is an optional extra on an existing form: a broken fetch must
+ * not stop somebody editing an event.
+ */
+function loadVolunteerMinistries(event) {
+  const field = document.getElementById("eventMinistryField");
+  const select = document.getElementById("eventMinistrySelect");
+  if (!field || !select) return;
+
+  const root = window.CRM?.root ?? "";
+
+  fetch(`${root}/api/volunteer/ministries?active=1`, { credentials: "include" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      const ministries = data?.ministries ?? [];
+      if (ministries.length === 0) return;
+
+      const current = Number(event.MinistryId || 0);
+      for (const m of ministries) {
+        const option = document.createElement("option");
+        option.value = String(m.id);
+        option.textContent = m.name;
+        if (Number(m.id) === current) option.selected = true;
+        select.appendChild(option);
+      }
+
+      // An event may carry a ministry this caller does not administer (an admin set it).
+      // Say so rather than silently showing "No ministry", which a save would then apply.
+      if (current > 0 && !ministries.some((m) => Number(m.id) === current)) {
+        const option = document.createElement("option");
+        option.value = String(current);
+        option.textContent = event.MinistryName || t("Another ministry");
+        option.disabled = true;
+        option.selected = true;
+        select.appendChild(option);
+      }
+
+      field.classList.remove("d-none");
+    })
+    .catch(() => {
+      // Field stays hidden — see the docblock.
+    });
+}
+
 function renderAdvancedSection(event, groups) {
   const inactive = Number(event.InActive || 0) === 1;
   const linkedGroupId = Number(event.LinkedGroupId || 0);
@@ -274,6 +326,21 @@ function renderAdvancedSection(event, groups) {
               ${groupOptions}
             </select>
             <small class="form-text text-secondary">${t("Ties this event to a class or ministry roster — used by the Kiosk check-in flow.")}</small>
+          </div>
+
+          <!--
+            Volunteer v2 (#9713): the owning volunteer ministry. Rendered hidden and filled in
+            asynchronously by loadVolunteerMinistries() below — the options are the ministries
+            THIS caller may administer, which only the server knows. Stays hidden when the
+            Volunteer v2 rollout flag is off, when the caller coordinates nothing, or when no
+            ministry exists yet, so nobody sees an empty control they cannot use.
+          -->
+          <div class="mb-3 d-none" id="eventMinistryField">
+            <label class="form-label" for="eventMinistrySelect">${t("Volunteer Ministry")}</label>
+            <select id="eventMinistrySelect" class="form-select">
+              <option value="0">${t("No ministry")}</option>
+            </select>
+            <small class="form-text text-secondary">${t("Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself.")}</small>
           </div>
 
           ${countsMarkup}
@@ -723,6 +790,17 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
       event.LinkedGroupId = Number.parseInt(linkedGroupEl.value, 10) || 0;
     });
   }
+
+  // Volunteer v2 (#9713). `null` rather than 0 for "no ministry": the API treats 0, '' and
+  // null alike, but null is what `GET /api/events/:id` returns, so a round-trip through the
+  // editor leaves the payload byte-identical to what it read.
+  const ministryEl = document.getElementById("eventMinistrySelect");
+  if (ministryEl) {
+    ministryEl.addEventListener("change", () => {
+      event.MinistryId = Number.parseInt(ministryEl.value, 10) || null;
+    });
+  }
+  loadVolunteerMinistries(event);
 
   // Attendance counts live on `event.AttendanceCounts[]` — each input
   // rewrites the matching row by data-count-id when changed.
