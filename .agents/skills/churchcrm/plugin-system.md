@@ -524,7 +524,37 @@ $this->setConfigValue('lastSync', date('c'));        // Sets plugin.mailchimp.la
 - `MENU_BUILDING` - Building navigation menu
 
 **System:**
-- `CRON_RUN` - Periodic task execution
+- `CRON_RUN` - Periodic task execution (see *How CRON_RUN is actually triggered* below)
+
+### How CRON_RUN is actually triggered <!-- learned: 2026-09-11 -->
+
+`CRON_RUN` fires from `SystemService::runTimerJobs()`. There are two entry points into it,
+and a plugin author needs to know both (issue #9724):
+
+| Entry point | Cadence | Rate limited? |
+|---|---|---|
+| `php cli/timerjobs.php` (or `composer run timerjobs` from `src/`) | Whatever the administrator's crontab says | No — `runTimerJobs(true)` |
+| `POST /api/background/timerjobs`, fired by `src/skin/js/Footer.js` on every authenticated page load | Whenever somebody browses | Yes — at most once per `iTimerJobsMinIntervalMinutes` (default 15) |
+
+The CLI runner is the supported scheduler; the page-load call is the fallback for shared
+hosting with no cron. The recommended crontab line is:
+
+```cron
+0 * * * * /usr/bin/php /path/to/churchcrm/cli/timerjobs.php >> /var/log/churchcrm-cron.log 2>&1
+```
+
+Consequences for plugin code:
+
+- **Do not assume a fixed interval.** Your listener may be called every 15 minutes on a busy
+  site, once a day on a quiet one, or not at all on an idle install without cron. Guard
+  anything that must happen once per period with your own marker, the way
+  `BirthdayEmailService` claims its day and `ExternalBackupPlugin` uses a threshold check.
+- **Do not throw to signal "nothing to do".** `runTimerJob()` catches and logs, then keeps
+  going, but a throw is recorded as a failure and makes the CLI runner exit non-zero.
+- `SystemService::getLastTimerJobsRun()` / `isTimerJobsRunStale()` expose the last successful
+  run; the admin dashboard warns after `iTimerJobsStaleHours` (default 26).
+- New CLI entry points belong in `src/cli/`, which is denied by `.htaccess` **and** guarded
+  with `PHP_SAPI !== 'cli'` in the script itself. Never rely on only one of the two.
 
 ### Registering Hooks
 
