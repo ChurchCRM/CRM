@@ -2326,3 +2326,33 @@ cy.get("select#State").next(".ts-wrapper").find(".ts-dropdown .option")
 ```
 
 Assert the **count**, not just that the dropdown opened — a rendered count of exactly 50 is the signature of the `maxOptions` cap (see the frontend-development skill). Derive `expected` from the API the select is populated from (`/api/public/data/countries`) rather than hardcoding it, so the test does not go stale when the data changes.
+
+## Database Assertions via the `db:query` Node Task <!-- learned: 2026-09-12 -->
+
+Some guarantees have no HTTP surface — UNIQUE keys, foreign keys and their `ON DELETE` rules, enum domains. A spec cannot open a MySQL socket itself, so `cypress/configs/_shared.ts` exports `dbTasks`, a `db:query` node-event task built on the existing `mysql2` devDependency, wrapped as `cy.dbQuery(sql, params)`.
+
+It **returns** driver errors instead of throwing, because asserting that a write is *refused* is usually the point:
+
+```js
+cy.dbQuery("INSERT INTO volunteer_ministry_vmin (vmin_Name, vmin_Active, vmin_CreatedDate) VALUES ('dup', 1, NOW())")
+  .then((result) => {
+      expect(result.error.code).to.equal("ER_DUP_ENTRY");
+  });
+// result.rows is the OkPacket for an INSERT — result.rows.insertId is the new id.
+```
+
+Connection is `127.0.0.1` plus `DATABASE_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE` from the environment, defaulting to `docker/.env`. An isolated stack on another port needs `DATABASE_PORT` exported for the Cypress process, not just for `docker compose`.
+
+### `on('task', ...)` Replaces, It Does Not Merge
+
+Calling `on('task', {...})` a second time **overwrites** the first registration. Every task must go into one object:
+
+```js
+on('task', { ...verifyDownloadTasks, ...dbTasks });
+```
+
+Related trap: `docker.config.ts`, `docker-ui.config.ts` and `docker-admin.config.ts` each define their **own** `setupNodeEvents` and do **not** call `setupCommonNodeEvents` from `_shared.ts` (only `base.config.ts` and `locale.config.ts` do). Adding a task to `_shared.ts` alone leaves it undefined for `npm run test:api` — wire it into the config the spec actually runs under as well.
+
+### Strict Mode Decides Whether a Bad Enum Errors or Truncates
+
+The Docker test database is MariaDB with `sql_mode = STRICT_TRANS_TABLES,...`, so writing a value outside an `enum(...)` is an error, not a silent `''`. Read `@@sql_mode` in the spec and branch rather than hardcoding the expectation — the same spec must survive a server without strict mode.

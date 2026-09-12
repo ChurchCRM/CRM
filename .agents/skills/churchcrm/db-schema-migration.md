@@ -152,3 +152,25 @@ MySQL `utf8` / `utf8mb3` is 3-byte max and silently fails on emoji and other 4-b
 -- ✅ Upgrading existing tables
 ALTER TABLE `note_nte` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
+
+### The Schema Has No Foreign Keys Yet — New Tables Are the First <!-- learned: 2026-09-12 -->
+
+`SELECT COUNT(*) FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_SCHEMA = DATABASE()` returns **0** on a stock install: `orm/schema.xml` declares `<foreign-key>` elements, but `Install.sql` and `cypress/data/seed.sql` contain no `FOREIGN KEY` clause at all, so nothing is enforced at the database level. Consequences when you add a table that *does* declare them (the `volunteer_*` tables in #9705 are the first):
+
+- The constraints are real, so `ON DELETE CASCADE` / `SET NULL` / `RESTRICT` actually fire, and an orphan insert is rejected with `ER_NO_REFERENCED_ROW_2`. That is worth having, but it is new behaviour for this codebase — do not assume existing code is prepared for a `RESTRICT`.
+- `<foreign-key onDelete="cascade|setnull|restrict">` is supported by Propel and was previously unused anywhere in `schema.xml`.
+- **The clauses must be written into `Install.sql` and `seed.sql` by hand**, exactly as in the upgrade script. Mirroring only the columns leaves a fresh install and the Cypress database without the constraints the upgrade path has, and no tooling compares the three files.
+- MariaDB needs an index on every foreign-key column; declare one explicitly (or make the column the leftmost part of a composite key) or the server invents an auto-named one that breaks an `_idx` / `_uidx` naming check.
+- Order matters inside one script: create the parent table before anything references it.
+
+### `npm run build:orm` Works Again <!-- learned: 2026-09-12 -->
+
+`package.json` now runs `cd src/ && composer run orm-gen`; the old broken `./vendor/bin/propel build --config-dir=propel` invocation is gone (#9722). Copy the config first — `orm/propel.php` is gitignored and absent from a fresh checkout:
+
+```bash
+cp orm/propel.php.dist orm/propel.php
+npm run build:orm
+npm run build:php:validate:orm
+```
+
+`src/ChurchCRM/model/ChurchCRM/Base/` and `Map/` are gitignored, so nothing from the regeneration is committed — only the hand-written subclasses. Note that `scripts/validate-orm-base-classes.js` passes silently when `Base/` is absent, so run `composer install` before trusting it.
