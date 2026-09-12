@@ -523,3 +523,139 @@ export function listOccurrences(params: {
 
   return request(`/occurrences?${query.toString()}`);
 }
+
+// ─── The member surface (#9712, design §3.3.3) ───────────────────────────────
+//
+// Same `request()`, same envelope, same error type as everything above — the member
+// screens are not a second client. What makes them the member surface is what the
+// calls do NOT carry: there is no `personId` anywhere below, because every one of
+// these endpoints derives the acting person from the session (§3.3.3). The only
+// `personId` that appears is `proposeSubstitute()`'s, and it names the substitute.
+
+/** One of my own commitments, as the S5 card renders it. */
+export interface VolunteerMyAssignment {
+  id: number;
+  occurrenceId: number;
+  personId: number;
+  positionId: number;
+  positionName: string | null;
+  ministryName: string | null;
+  teamName: string | null;
+  start: string | null;
+  end: string | null;
+  occurrenceDate: string | null;
+  occurrenceStatus: "scheduled" | "cancelled" | null;
+  status: "pending" | "accepted" | "declined" | "cancelled" | "substituted" | "completed";
+  source: "coordinator" | "self_signup" | "substitute";
+  respondedDate: string | null;
+  canRespond: boolean;
+  canProposeSubstitute: boolean;
+  /** Set while a substitution request of mine is still `proposed` — drives Withdraw. */
+  pendingSwapId: number | null;
+  pendingSwapPersonName: string | null;
+}
+
+/**
+ * One open slot I could take.
+ *
+ * `alreadyServing` is §5.6's same-occurrence warning and D16's "allowed, with a
+ * warning, never blocked": the row is still offered, the card just says so.
+ */
+export interface VolunteerMyOpportunity {
+  occurrenceId: number;
+  positionId: number;
+  positionName: string | null;
+  ministryName: string | null;
+  teamName: string | null;
+  occurrenceDate: string | null;
+  start: string | null;
+  end: string | null;
+  openCount: number;
+  minCount: number;
+  liveCount: number;
+  alreadyServing: boolean;
+  alreadyServingPositionNames: string[];
+}
+
+export interface VolunteerMyQualification {
+  positionId: number;
+  positionName: string;
+  ministryId: number;
+  ministryName: string | null;
+  teamId: number | null;
+  teamName: string | null;
+}
+
+export function listMyAssignments(includePast = false): Promise<{ assignments: VolunteerMyAssignment[] }> {
+  return request(`/me/assignments${includePast ? "?includePast=1" : ""}`);
+}
+
+export function respondToMyAssignment(
+  assignmentId: number,
+  response: "accepted" | "declined",
+  comment = "",
+): Promise<{ assignment: VolunteerMyAssignment }> {
+  return request(`/me/assignments/${assignmentId}/respond`, {
+    method: "POST",
+    body: JSON.stringify({ response, comment }),
+  });
+}
+
+/** The picker source for "Find a sub" — already excludes me and anyone on this slot. */
+export function listMySubstituteCandidates(
+  assignmentId: number,
+  query = "",
+): Promise<{ people: VolunteerEligiblePerson[] }> {
+  const suffix = query ? `?q=${encodeURIComponent(query)}` : "";
+
+  return request(`/me/assignments/${assignmentId}/substitutes${suffix}`);
+}
+
+/** `personId` here is the SUBSTITUTE. The proposer is the session. */
+export function proposeMySubstitute(
+  assignmentId: number,
+  personId: number,
+  comment = "",
+): Promise<{ swap: VolunteerSwap }> {
+  return request(`/me/assignments/${assignmentId}/propose-substitute`, {
+    method: "POST",
+    body: JSON.stringify({ personId, comment }),
+  });
+}
+
+export function withdrawMySwap(swapId: number, comment = ""): Promise<{ swap: VolunteerSwap }> {
+  return request(`/me/swaps/${swapId}/withdraw`, {
+    method: "POST",
+    body: JSON.stringify({ comment }),
+  });
+}
+
+export function listMyOpportunities(
+  from?: string,
+  to?: string,
+): Promise<{ opportunities: VolunteerMyOpportunity[]; from: string; to: string }> {
+  const query = new URLSearchParams();
+  if (from) {
+    query.set("from", from);
+  }
+  if (to) {
+    query.set("to", to);
+  }
+  const suffix = query.toString() ? `?${query.toString()}` : "";
+
+  return request(`/me/opportunities${suffix}`);
+}
+
+export function signUpForOpportunity(
+  occurrenceId: number,
+  positionId: number,
+): Promise<{ assignment: VolunteerMyAssignment }> {
+  return request("/me/signup", {
+    method: "POST",
+    body: JSON.stringify({ occurrenceId, positionId }),
+  });
+}
+
+export function listMyQualifications(): Promise<{ qualifications: VolunteerMyQualification[] }> {
+  return request("/me/qualifications");
+}

@@ -275,6 +275,27 @@ class VolunteerNotificationService
     }
 
     /**
+     * "You are on the roster, and you put yourself there" (#9712, §3.6).
+     *
+     * The self-signup counterpart of `enqueueAssignment()`: a volunteer who signed
+     * themselves up is already `accepted`, so the assignment message — which asks
+     * them to answer — would be nonsense. The dedupe key is per assignment per
+     * person, so re-signing up after a decline (I8 re-uses the same row) produces no
+     * second confirmation.
+     */
+    public function enqueueSignupConfirm(VolunteerAssignment $assignment): VolunteerNotification
+    {
+        return $this->enqueue(
+            self::TYPE_SIGNUP_CONFIRM,
+            (int) $assignment->getPersonId(),
+            (int) $assignment->getId(),
+            (int) $assignment->getOccurrenceId(),
+            DateTimeUtils::getToday(),
+            $this->signupConfirmKey((int) $assignment->getId(), (int) $assignment->getPersonId())
+        );
+    }
+
+    /**
      * @param int[] $coordinatorPersonIds
      *
      * @return VolunteerNotification[]

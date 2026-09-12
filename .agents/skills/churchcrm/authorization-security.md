@@ -278,6 +278,26 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
 
 **Single-child menus:** if a top-level menu wraps exactly one child, point the top-level entry at the child's URI instead of nesting. `MenuItem::isVisible()` returns true when `hasPermission && (uri || hasVisibleSubMenus())`, so a parent with an empty URI and zero visible children hides itself automatically — that is what makes the early-return pattern above work.
 
+**A parent's own `hasPermission` is a hard gate on its children.** <!-- learned: 2026-09-12 -->
+The other half of that same expression bites when one menu holds entries with *different* gates.
+`isVisible()` is `hasPermission && (uri || hasVisibleSubMenus())` — the `&&` means a parent whose
+own flag is `false` is hidden **however many visible children it has**. So a menu that mixes a
+role-gated area with an everyone-can-see-it area must give the parent the **union** of the two
+predicates, not the stricter one:
+
+```php
+// ❌ WRONG — the member entries are visible, the parent is not, so nobody sees them
+$menu = new MenuItem(gettext('Volunteer'), '', $isCoordinator, 'fa-handshake-angle');
+$menu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', $isCoordinator, 'fa-gauge'));
+$menu->addSubMenu(new MenuItem(gettext('My Volunteer Schedule'), 'volunteer/my-schedule', $isV2, 'fa-calendar-check'));
+
+// ✅ CORRECT — parent carries the union; each child still carries its own route's gate
+$menu = new MenuItem(gettext('Volunteer'), '', $isCoordinator || $isV2, 'fa-handshake-angle');
+```
+
+Each child keeps mirroring *its* route's middleware exactly — widening the parent advertises
+nothing, because a child whose own flag is false is still hidden (#9712).
+
 ## Legacy Pages: Undefined Globals Silently Disable Filters <!-- learned: 2026-07-11 -->
 
 Legacy `src/*.php` pages sometimes read a bare global that no longer exists (a leftover from the old `Config.php`). PHP 8 does not fatal on this — it emits a deprecation and yields a useless value, so a **security filter can silently become a no-op**.

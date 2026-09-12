@@ -111,6 +111,8 @@ module.exports = {
     'volunteer-setup': './webpack/volunteer/setup',
     'volunteer-ministry': './webpack/volunteer/ministry',
     'volunteer-occurrence': './webpack/volunteer/occurrence',
+    'volunteer-my-schedule': './webpack/volunteer/my-schedule',
+    'volunteer-opportunities': './webpack/volunteer/opportunities',
     'email-composer': './webpack/common/email-composer',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',

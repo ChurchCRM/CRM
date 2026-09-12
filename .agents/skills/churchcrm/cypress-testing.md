@@ -2527,6 +2527,49 @@ on the auto-focused first field, or a widget the app initialises in that handler
 `cy.wait()` — they are deterministic, and a fixed wait is what the rest of this
 skill tells you not to write.
 
+## A seeded login name may be TRUNCATED in the database <!-- learned: 2026-09-12 -->
+
+`user_usr.usr_UserName` is `VARCHAR(32)` (`orm/schema.xml:603`), and several
+`seed.sql` users are seeded with an email address longer than that. MySQL stores
+the first 32 characters and drops the rest **silently**, so the string a spec has
+to type into the login form is not the string in `seed.sql`.
+
+The one that bites: person 100 is seeded as
+`lena.black.editself.notes@example.com` (37 chars) and is actually
+`lena.black.editself.notes@exampl`. Logging in with the full address fails with
+no error of any kind — the form simply returns to `/session/begin`, and
+`src/logs/*-auth.log` shows `Processing local login` with **no** matching success
+line. It reads exactly like a wrong password.
+
+Before hardcoding any seeded username, read the stored value:
+
+```bash
+docker exec <project>-database-1 mysql -uchurchcrm -pchangeme churchcrm \
+  -e "SELECT usr_per_ID, usr_UserName FROM user_usr WHERE usr_per_ID = 100;"
+```
+
+The shared seeded password hash
+(`$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S`) is `changeme`;
+person **99** does not use it, so that account cannot be logged in through the
+form at all without setting a password first.
+
+## An isolated stack needs `DATABASE_PORT` exported for `cy.dbQuery` too <!-- learned: 2026-09-12 -->
+
+`dbTasks` reads `process.env.DATABASE_PORT` and **defaults to 3306**
+(`cypress/configs/_shared.ts`). `CYPRESS_BASE_URL` alone is not enough: a run
+against an isolated stack with only the base URL set drives the browser at the
+right app while every `cy.dbQuery()` reads and writes the **default** stack's
+database on port 3306. The failure is loud only if the two schemas differ
+(`ER_NO_SUCH_TABLE`); when they match, the spec quietly mutates the wrong
+database. Export the whole set for every Cypress invocation, not just for
+`docker:test:start`:
+
+```bash
+export COMPOSE_PROJECT_NAME=crmNNNN WEBSERVER_PORT=81xx DATABASE_PORT=33xx
+export CYPRESS_BASE_URL=http://localhost:81xx/
+npx cypress run --config-file cypress/configs/docker.config.ts --spec "..."
+```
+
 ## Seeded group membership is NOT stable across a suite run <!-- learned: 2026-09-12 -->
 
 `cypress/e2e/api/private/standard/private.people.groups.spec.js` adds person 1

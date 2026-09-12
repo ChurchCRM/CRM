@@ -26,6 +26,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/setup.php';
     require __DIR__ . '/routes/ministry.php';
     require __DIR__ . '/routes/occurrence.php';
+    require __DIR__ . '/routes/member.php';
 })->add(new CSRFMiddleware())->add(new VolunteerV2EnabledMiddleware());
 
 $app->run();
