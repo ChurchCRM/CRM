@@ -10,7 +10,17 @@ describe("API Private Group Operations", () => {
         // any later spec that asserts its roster, size or email export becomes
         // order-dependent (issue #9828).
         const testPersonId = 1;
-        let seededMemberCount;
+
+        // Group 1's roles come from list_lst id 13, seeded with Teacher
+        // (OptionId 1) and Student (OptionId 2) — see cypress/data/seed.sql.
+        // Two distinct seeded roles let the role-update test assert the value
+        // actually changed instead of re-setting the role it started with.
+        const initialRoleId = 1;
+        const updatedRoleId = 2;
+
+        let seededMemberIds;
+
+        const sortIds = (ids) => [...ids].sort((a, b) => a - b);
 
         // removeperson walks the group's memberships and deletes the matching
         // one; a person who is not a member is a no-op that still returns 200
@@ -24,7 +34,17 @@ describe("API Private Group Operations", () => {
                 [200]
             );
 
-        const getMemberCount = () =>
+        const addTestPerson = (roleID) =>
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${groupID}/addperson/${testPersonId}`,
+                {
+                    RoleID: roleID,
+                },
+                200
+            );
+
+        const getMembers = () =>
             cy
                 .makePrivateAdminAPICall(
                     "GET",
@@ -32,29 +52,61 @@ describe("API Private Group Operations", () => {
                     null,
                     200
                 )
-                .then((resp) => resp.body.Person2group2roleP2g2rs.length);
+                .then((resp) => resp.body.Person2group2roleP2g2rs);
+
+        const getMemberIds = () =>
+            getMembers().then((members) =>
+                members.map((member) => member.PersonId)
+            );
+
+        const expectTestPersonAbsent = () =>
+            getMemberIds().then((ids) => {
+                expect(ids, "group members after cleanup").to.not.include(
+                    testPersonId
+                );
+            });
 
         before(() => {
-            // Drop a stale membership from a previously crashed run first, so
-            // the baseline is the seeded roster and not the seeded roster + 1.
+            // Drop a stale membership a previously killed run may have left
+            // behind, so the baseline is the seeded roster and not the seeded
+            // roster + 1.
             removeTestPerson();
-            getMemberCount().then((count) => {
-                seededMemberCount = count;
+            getMemberIds().then((ids) => {
+                seededMemberIds = sortIds(ids);
             });
         });
 
         beforeEach(() => {
-            // Clean up at the start of the next test rather than at the end of
-            // the previous one: afterEach does not run when a test crashes
-            // mid-way (cypress-testing.md → State Cleanup: prefer beforeEach).
+            // Safety net only. The per-test restore lives in afterEach; this
+            // covers the one case no hook in the failing run can cover — a run
+            // that was killed outright (process termination skips every hook,
+            // afterEach and beforeEach alike), leaving person 1 in the group
+            // for the *next* run to find.
             removeTestPerson();
         });
 
+        afterEach(() => {
+            // Per-test restore. afterEach DOES run after an ordinary mid-test
+            // failure — including a synchronous assertion failure, which is
+            // why cleanup belongs here and not queued inside the failing
+            // callback: Cypress's command queue abandons commands still
+            // pending in a callback that threw, but it still runs the hooks.
+            // Each test therefore puts group 1 back as it found it instead of
+            // relying on the next test's beforeEach.
+            removeTestPerson();
+            expectTestPersonAbsent();
+        });
+
         after(() => {
-            // Guard against the leak coming back: assert only, never clean up
+            // Guard against the leak coming back: compare the exact id set the
+            // describe started with, not just its size, so a swapped or
+            // replaced membership is caught too. Assert only, never clean up
             // here — a cleanup would make this assertion pass unconditionally.
-            getMemberCount().then((count) => {
-                expect(count).to.equal(seededMemberCount);
+            getMemberIds().then((ids) => {
+                expect(
+                    sortIds(ids),
+                    "group roster at end of describe"
+                ).to.deep.equal(seededMemberIds);
             });
         });
 
@@ -81,30 +133,26 @@ describe("API Private Group Operations", () => {
 
         it("Add member to group via POST addperson", () => {
             // Test adding a person to a group (person ID 1)
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/groups/${groupID}/addperson/1`,
-                {
-                    RoleID: 1,
-                },
-                200
-            ).then((resp) => {
+            addTestPerson(initialRoleId).then((resp) => {
                 expect(resp.body).to.be.an("array");
+            });
+
+            // The POST status is only half the contract: read the roster back
+            // and assert the membership really exists with the role requested.
+            getMembers().then((members) => {
+                const membership = members.find(
+                    (member) => member.PersonId === testPersonId
+                );
+                expect(membership, `person ${testPersonId} membership`).to.exist;
+                expect(membership.RoleId).to.equal(initialRoleId);
             });
         });
 
         it("Remove member from group", () => {
-            // Seed the membership this test removes. The beforeEach above wipes
-            // person 1 from the group, so without this the DELETE below would
-            // be a no-op that passes whether or not removal works.
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/groups/${groupID}/addperson/${testPersonId}`,
-                {
-                    RoleID: 1,
-                },
-                200
-            );
+            // Seed the membership this test removes. Person 1 is not a seeded
+            // member of group 1, so without this the DELETE below would be a
+            // no-op that passes whether or not removal works.
+            addTestPerson(initialRoleId);
 
             // Test removing a person from a group
             cy.makePrivateAdminAPICall(
@@ -114,46 +162,38 @@ describe("API Private Group Operations", () => {
                 200
             );
 
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `/api/groups/${groupID}/members`,
-                null,
-                200
-            ).then((resp) => {
-                const memberIds = resp.body.Person2group2roleP2g2rs.map(
-                    (member) => member.PersonId
+            getMemberIds().then((ids) => {
+                expect(ids, "group members after removal").to.not.include(
+                    testPersonId
                 );
-                expect(memberIds).to.not.include(testPersonId);
             });
         });
 
         it("Update member role in group", () => {
-            // First ensure member exists
+            // First ensure member exists, with the role the update moves away
+            // from so the assertion below proves the change took effect.
+            addTestPerson(initialRoleId);
+
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}/addperson/${testPersonId}`,
+                `/api/groups/${groupID}/userRole/${testPersonId}`,
                 {
-                    RoleID: 1,
+                    roleID: updatedRoleId,
                 },
                 200
-            ).then(() => {
-                // Now update their role
-                cy.makePrivateAdminAPICall(
-                    "POST",
-                    `/api/groups/${groupID}/userRole/${testPersonId}`,
-                    {
-                        roleID: 1,
-                    },
-                    200
-                ).then((resp) => {
-                    // Enqueue the cleanup FIRST: a failing expect() below throws
-                    // synchronously and would otherwise skip it, and this is the
-                    // last test in the describe so no beforeEach follows.
-                    removeTestPerson();
+            ).then((resp) => {
+                expect(resp.body).to.exist;
+                expect(resp.body).to.have.property("RoleId");
+                expect(resp.body.RoleId).to.equal(updatedRoleId);
+            });
 
-                    expect(resp.body).to.exist;
-                    expect(resp.body).to.have.property("RoleId");
-                });
+            // ...and that the stored membership, not just the response, moved.
+            getMembers().then((members) => {
+                const membership = members.find(
+                    (member) => member.PersonId === testPersonId
+                );
+                expect(membership, `person ${testPersonId} membership`).to.exist;
+                expect(membership.RoleId).to.equal(updatedRoleId);
             });
         });
     });
