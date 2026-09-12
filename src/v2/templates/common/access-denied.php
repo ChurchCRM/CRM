@@ -16,6 +16,8 @@ $roleDescriptions = [
     'Notes' => gettext('Notes access'),
     'AddEvent' => gettext('Add event permission'),
     'Authentication' => gettext('User authentication'),
+    'VolunteerManager' => gettext('Volunteer management access'),
+    'VolunteerCoordinator' => gettext('Volunteer coordinator access'),
 ];
 
 $roleDescription = isset($roleDescriptions[$missingRole])

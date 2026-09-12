@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Utils\CSRFUtils;
@@ -17,6 +18,13 @@ use ChurchCRM\view\PageHeader;
 // For now ... require $bAdmin
 // Future ... $bManageVol
 AuthenticationManager::redirectHomeIfNotAdmin();
+
+// Volunteer rollout (#9704): in v2-only mode this legacy editor is retired from
+// the UI, so enforce that server-side rather than relying on the hidden menu
+// item. 'both' keeps it reachable for the duration of the migration (#9702).
+if (User::getVolunteerVersion() === 'v2') {
+    RedirectUtils::redirect('volunteer/dashboard');
+}
 
 // top down design....
 // title line
