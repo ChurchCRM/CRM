@@ -1246,6 +1246,12 @@ require __DIR__ . '/routes/volunteer/volunteer-schedule.php';
 require __DIR__ . '/routes/volunteer/volunteer-me.php';
 ```
 
+> **Every one of those files opens its own `$app->group('/volunteer', …)` and must chain
+> `->add(new VolunteerV2EnabledMiddleware())` on that group itself.** Slim 4 scopes `->add()` to the
+> single `RouteCollectorProxy` it is chained on; nothing propagates from the group in
+> `volunteer-status.php` (#9704) to a group opened in another file, and an ungated group would be
+> reachable in every rollout state. The role middleware from #9706 is chained the same way.
+
 All responses are `SlimUtils::renderJSON()` envelopes; all errors are
 `SlimUtils::renderErrorJSON($response, gettext('…'), [], <status>, $e, $request)` — the single
 error contract that E-18 (#9737) establishes; see M5 for why there is no phrasing constraint.
