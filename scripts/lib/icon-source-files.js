@@ -62,7 +62,9 @@ function collectSourceFiles() {
  * literals are walked over untouched: `'fa-house-plus'` in real code must
  * still be caught, and a `//` or `/*` inside a string must not start a
  * comment. Handles the comment syntaxes shared by every scanned extension:
- * `/* *\/`, `//`, `<!-- -->`, and a `#` line comment in PHP.
+ * `/* *\/`, `//`, `<!-- -->`, and a `#` line comment in PHP. Also recognizes
+ * PHP heredocs and nowdocs (`<<<LABEL ... LABEL;`) to avoid blanking literal
+ * text (such as URLs with `://`) inside them.
  */
 function stripComments(source) {
     const out = source.split('');
@@ -79,6 +81,31 @@ function stripComments(source) {
 
     while (i < n) {
         const c = source[i];
+
+        // PHP heredocs / nowdocs: `<<<LABEL ... LABEL;`
+        // Recognizable by `<` followed by `<<` and an identifier.
+        if (c === '<' && source[i + 1] === '<' && source[i + 2] === '<') {
+            let j = i + 3;
+            // Skip optional quote for nowdoc
+            const quoted = source[j] === "'" || source[j] === '"';
+            if (quoted) j++;
+            // Collect the label (word characters)
+            const labelStart = j;
+            while (j < n && /[A-Za-z0-9_]/.test(source[j])) j++;
+            const label = source.substring(labelStart, j);
+            if (quoted) j++; // closing quote
+            // Find the label on its own line (with optional semicolon after)
+            const labelPattern = new RegExp(`(^|\n)${label}\\s*;`, 'm');
+            const match = source.slice(j).match(labelPattern);
+            if (match && label.length > 0) {
+                const endPos = j + match.index + match[0].length;
+                i = endPos;
+                continue;
+            }
+            // If we couldn't find the end, skip the `<<<` and continue normally
+            i++;
+            continue;
+        }
 
         // String literals: copy through, honouring backslash escapes.
         if (c === '"' || c === "'" || c === '`') {
