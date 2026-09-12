@@ -408,8 +408,9 @@ class AdminDashboardService
 <?php
 // src/admin/routes/system.php
 
-$app->get('/admin/system/settings', function (Request $request, Response $response) use ($container) {
-    $service = $container->get('AdminDashboardService');
+// Path is relative to the /admin base path set by MvcAppFactory::create()
+$app->get('/system/settings', function (Request $request, Response $response) {
+    $service = new AdminDashboardService();   // no DI container — see service-layer.md
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
     
     return $renderer->render($response, 'settings.php', [
