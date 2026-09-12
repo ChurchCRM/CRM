@@ -1112,7 +1112,7 @@ CREATE TABLE `pledge_denominations_pdem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volunteer Management v2 (#9705) - mirrors src/mysql/upgrade/7.7.0-volunteer-v2-schema.sql
+-- Volunteer Management v2 (#9705) - mirrors src/mysql/upgrade/7.8.0-volunteer-v2-schema.sql
 -- Ordered so that every foreign-key target already exists.
 --
 
