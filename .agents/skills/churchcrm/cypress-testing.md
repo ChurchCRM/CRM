@@ -2469,6 +2469,29 @@ cy.get("select#State").next(".ts-wrapper").find(".ts-dropdown .option")
 
 Assert the **count**, not just that the dropdown opened — a rendered count of exactly 50 is the signature of the `maxOptions` cap (see the frontend-development skill). Derive `expected` from the API the select is populated from (`/api/public/data/countries`) rather than hardcoding it, so the test does not go stale when the data changes.
 
+## Typing into a modal: wait for focus, not for `visible` <!-- learned: 2026-09-12 -->
+
+`should("be.visible")` on a Bootstrap modal is satisfied **partway through** the
+150 ms fade, and at the end of that fade Bootstrap moves focus to the dialog
+element. A `.type()` started in between loses every keystroke after the focus
+jumps — silently, with no error:
+
+```js
+// ❌ FLAKY — "UI9715 Milk Station" arrives as "UI9715 Milk Stat"
+cy.get("#positionModal").should("be.visible");
+cy.get("#position-form-name").type("UI9715 Milk Station");
+
+// ✅ CORRECT — the app focuses the field on shown.bs.modal; wait for that
+cy.get("#positionModal").should("be.visible");
+cy.get("#position-form-name").should("be.focused").type("UI9715 Milk Station");
+```
+
+The truncation length tracks the fade duration, so it looks like a column-width
+or validation bug rather than a focus race. The fix is two-sided and both halves
+are worth having: the modal focuses its first field on `shown.bs.modal`
+(`frontend-development.md` → "Focus the first field on `shown.bs.modal`"), and the
+spec waits for that focus before typing.
+
 ## Database Assertions via the `db:query` Node Task <!-- learned: 2026-09-12 -->
 
 Some guarantees have no HTTP surface — UNIQUE keys, foreign keys and their `ON DELETE` rules, enum domains. A spec cannot open a MySQL socket itself, so `cypress/configs/_shared.ts` exports `dbTasks`, a `db:query` node-event task built on the existing `mysql2` devDependency, wrapped as `cy.dbQuery(sql, params)`.
