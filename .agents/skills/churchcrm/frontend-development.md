@@ -1492,13 +1492,20 @@ literal `</script>` before saving.
 3. CSP forbids inline `onclick` outright (the project rule lives in
    MEMORY.md → "no inline `onclick` (CSP)").
 
-**Pattern:** put the user string into an HTML attribute (`escapeHtml()` IS the
-right encoding here — attribute context), then read it from a delegated click
-handler.
+**Pattern:** put the user string into an HTML attribute, then read it from a
+delegated click handler.
+
+Use `window.CRM.escapeAttribute()` for **every** attribute context (`data-*`,
+`title=`, `value=`, …). `escapeHtml()` encodes only `&`, `<` and `>`, so a `"`
+or `'` in the value closes the quoted attribute early and the rest of the
+string is parsed as further attributes on the element; `escapeAttribute()`
+wraps `escapeHtml()` and additionally encodes both quote characters. Reserve
+`escapeHtml()` for HTML *text* context (element bodies, bootbox message
+strings). <!-- learned: 2026-09-12 -->
 
 ```js
 // In the row renderer (DataTables, list, etc.)
-var nameAttr = window.CRM.escapeHtml(row.Name);  // attribute-safe
+var nameAttr = window.CRM.escapeAttribute(row.Name);  // attribute-safe: also encodes " and '
 var html = '<button class="btn btn-outline-secondary"' +
   ' data-row-action="rename"' +
   ' data-row-id="' + row.Id + '"' +
