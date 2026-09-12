@@ -8,10 +8,10 @@
  * (D16), cancel through the shared action menu, the cart sink and the swap
  * queue — plus the §5.8 states every V2 screen must have.
  *
- * `cy.dbQuery()` is deliberately NOT used: the `db:query` task is registered
- * only in `cypress/configs/docker.config.ts`, so a ui-admin spec that calls it
- * fails with "task not handled" (the config drift #9715 recorded). Everything
- * here is built and torn down through the API.
+ * `cy.dbQuery()` is available here (all three docker configs register `dbTasks`
+ * now, not just `docker.config.ts` as #9715's notes had it) but is deliberately
+ * not used: everything is built and torn down through the very API this page
+ * calls, so a shape change breaks the fixture as loudly as it breaks the page.
  *
  * Order inside every hook is API setup → freshAdminLogin() → cy.visit(),
  * because cy.request() rotates the PHP session cookie (cypress-testing.md).

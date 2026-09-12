@@ -2579,3 +2579,61 @@ Related trap: `docker.config.ts`, `docker-ui.config.ts` and `docker-admin.config
 ### Strict Mode Decides Whether a Bad Enum Errors or Truncates
 
 The Docker test database is MariaDB with `sql_mode = STRICT_TRANS_TABLES,...`, so writing a value outside an `enum(...)` is an error, not a silent `''`. Read `@@sql_mode` in the spec and branch rather than hardcoding the expectation — the same spec must survive a server without strict mode.
+
+## The session cart cannot be seeded by an API-key call <!-- learned: 2026-09-12 -->
+
+`ChurchCRM\dto\Cart` is `$_SESSION` state, so anything that reads it —
+`/api/cart/*`, `POST /api/volunteer/positions/{id}/qualifications/from-cart`,
+`POST /api/volunteer/cart/assign` — only sees the cart of **the PHP session the
+request arrives on**. Two things in a UI spec break that:
+
+- `cy.makePrivateAdminAPICall()` sends `x-api-key` with `withCredentials: false`
+  and therefore **no session cookie**, so the cart it fills belongs to a session
+  the browser will never use.
+- `freshAdminLogin()` starts with `cy.clearCookies()`, so a cart seeded *before*
+  the login is discarded with the cookie that addressed it.
+
+The only thing that works is a plain `cy.request()` **after** the login, which
+rides the browser's session cookie:
+
+```js
+beforeEach(() => {
+    freshAdminLogin();
+});
+
+it("assigns everyone in the cart", () => {
+    cy.request({ method: "DELETE", url: "/api/cart/", failOnStatusCode: false });
+    cy.request({
+        method: "POST",
+        url: "/api/cart/",
+        headers: { "content-type": "application/json" },
+        body: { Persons: [8, 9] },
+    });
+
+    cy.visit("/volunteer/occurrences/12");   // the page now sees those two
+});
+```
+
+An **API-only** spec has no such problem: every `cy.request()` in it shares one
+cookie jar and therefore one session, which is why the cart tests in
+`private.volunteer.pools-qualifications.spec.js` work with
+`cy.makePrivateAdminAPICall()` throughout. The mismatch only appears when a spec
+mixes an API-key call with a browser session. Learned in #9709.
+
+## Driving a TomSelect from a spec <!-- learned: 2026-09-12 -->
+
+`cy.get(sel).select(value, { force: true })` does **not** drive a TomSelect. It
+sets the value on the hidden original `<select>`, so TomSelect's `onChange` never
+fires, its own control still shows the old label, and any handler wired through
+TomSelect is silently skipped. Drive the widget the way a user does:
+
+```js
+cy.get("#my-modal .ts-control").click();                    // open the dropdown
+cy.get(".ts-dropdown .option").first().click();             // pick the first
+cy.get('.ts-dropdown .option[data-value="8"]').click();     // …or a known value
+```
+
+`.ts-dropdown` is **not** scoped to the modal when the control was created with
+`dropdownParent: "body"` (which `webpack/common/person-select.ts` sets by default
+to stop a `.card-body` or `.modal-content` clipping it, #9488) — so select it
+from the document root, not from inside the dialog. Learned in #9709.

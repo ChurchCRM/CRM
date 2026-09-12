@@ -373,6 +373,66 @@ code must never assume `show()` followed by `hide()` in the same tick closes
 anything — drive a modal's lifecycle from `shown.bs.modal` / `hidden.bs.modal`,
 never from a timer.
 
+### The programmatic corollary: "close on success" can land inside the fade <!-- learned: 2026-09-12 -->
+
+The paragraph above is about a **user's** dismiss click, where the right answer
+is to do nothing because the second click works. A *programmatic* `hide()` has no
+second click coming, and there the same guard is a real bug.
+
+The shape is the common one: open a modal, submit, close it when the request
+resolves.
+
+```js
+modal.show();
+// …user picks something, clicks Save…
+save().then(() => {
+  modal.hide();          // ❌ swallowed if the dialog is still fading in
+  notifySuccess(msg);
+});
+```
+
+Against a local API that answers in single-digit milliseconds the whole
+open → populate → submit → resolve cycle can finish inside the 150 ms opening
+fade. `hide()` hits `if (!this._isShown || this._isTransitioning) { return }`,
+returns silently, and the dialog stays open **with the write already committed
+behind it** — no error, no event, nothing in any log. Reading the live instance a
+second later shows exactly that: `_isShown: true`, `_isTransitioning: false`.
+
+The fix is the one the paragraph above already prescribes — drive the lifecycle
+from `shown.bs.modal` — applied to the dismissal rather than to focus:
+
+```js
+let shown = false;
+let hidePending = false;
+
+modalEl.addEventListener("shown.bs.modal", () => {
+  shown = true;
+  if (hidePending) {
+    hidePending = false;
+    modal.hide();          // now it is genuinely not transitioning
+  }
+});
+modalEl.addEventListener("hidden.bs.modal", () => {
+  shown = false;
+  hidePending = false;
+});
+
+function hideModal() {
+  if (!shown) {
+    hidePending = true;    // queue it; never fire into the fade
+    return;
+  }
+  modal.hide();
+}
+```
+
+This is not the "queued hide" the paragraph above warns against — that one
+duplicates a dismissal the user is about to repeat. This one is the **only**
+dismissal there will ever be, and it is released by Bootstrap's own state
+machine rather than by a timer. Confirmed while implementing #9709's assign
+modal, which stayed open after a successful assignment on every fast run.
+
+
 ## Modals (Bootstrap 5 / Tabler) <!-- updated: 2026-03-22 -->
 
 **For complex forms/modals, use Bootstrap 5 data attributes:**
