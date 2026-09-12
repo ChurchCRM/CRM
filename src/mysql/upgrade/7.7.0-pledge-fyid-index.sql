@@ -1,4 +1,4 @@
--- ChurchCRM 7.6.0 — Add plg_FYID index on pledge_plg for fiscal-year query performance
+-- ChurchCRM 7.7.0 — Add plg_FYID index on pledge_plg for fiscal-year query performance
 -- Resolves: GitHub Issue #9378 (Audit and standardize fiscal-year vs. lifetime scoping)
 --
 -- The plg_FYID column is now used in WHERE clauses by the /api/payments/family/{id}/list
