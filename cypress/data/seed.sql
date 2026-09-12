@@ -2152,6 +2152,401 @@ CREATE TABLE `pledge_denominations_pdem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Table structure for table `volunteer_ministry_vmin`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_ministry_vmin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_ministry_vmin` (
+  `vmin_ID`               int(11)               NOT NULL AUTO_INCREMENT,
+  `vmin_Name`             varchar(100)          NOT NULL,
+  `vmin_Description`      varchar(255)                   DEFAULT NULL,
+  `vmin_Active`           tinyint(1) unsigned   NOT NULL DEFAULT 1,
+  `vmin_CreatedDate`      datetime              NOT NULL,
+  `vmin_CreatedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  PRIMARY KEY (`vmin_ID`),
+  UNIQUE KEY `vmin_name_uidx`  (`vmin_Name`),
+  KEY `vmin_active_idx`        (`vmin_Active`),
+  KEY `vmin_created_by_idx`    (`vmin_CreatedBy_per_ID`),
+  CONSTRAINT `fk_vmin_created_by` FOREIGN KEY (`vmin_CreatedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_team_vtem`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_team_vtem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_team_vtem` (
+  `vtem_ID`          int(11)             NOT NULL AUTO_INCREMENT,
+  `vtem_vmin_ID`     int(11)             NOT NULL,
+  `vtem_Name`        varchar(100)        NOT NULL,
+  `vtem_Description` varchar(255)                 DEFAULT NULL,
+  `vtem_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
+  PRIMARY KEY (`vtem_ID`),
+  UNIQUE KEY `vtem_ministry_name_uidx` (`vtem_vmin_ID`, `vtem_Name`),
+  KEY `vtem_ministry_idx`              (`vtem_vmin_ID`),
+  CONSTRAINT `fk_vtem_ministry` FOREIGN KEY (`vtem_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_pool_vpol`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_pool_vpol`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_pool_vpol` (
+  `vpol_ID`        int(11)                     NOT NULL AUTO_INCREMENT,
+  `vpol_OwnerType` enum('ministry','team')     NOT NULL,
+  `vpol_OwnerId`   int(11)                     NOT NULL,
+  `vpol_grp_ID`    mediumint(8) unsigned       NOT NULL,
+  `vpol_Label`     varchar(100)                         DEFAULT NULL,
+  PRIMARY KEY (`vpol_ID`),
+  UNIQUE KEY `vpol_owner_group_uidx` (`vpol_OwnerType`, `vpol_OwnerId`, `vpol_grp_ID`),
+  KEY `vpol_group_idx`               (`vpol_grp_ID`),
+  CONSTRAINT `fk_vpol_group` FOREIGN KEY (`vpol_grp_ID`)
+      REFERENCES `group_grp` (`grp_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_position_vpos`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_position_vpos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_position_vpos` (
+  `vpos_ID`          int(11)             NOT NULL AUTO_INCREMENT,
+  `vpos_vmin_ID`     int(11)             NOT NULL,
+  `vpos_vtem_ID`     int(11)                      DEFAULT NULL,
+  `vpos_Name`        varchar(100)        NOT NULL,
+  `vpos_Description` varchar(255)                 DEFAULT NULL,
+  `vpos_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
+  `vpos_Order`       int(11)             NOT NULL DEFAULT 0,
+  PRIMARY KEY (`vpos_ID`),
+  UNIQUE KEY `vpos_ministry_team_name_uidx` (`vpos_vmin_ID`, `vpos_vtem_ID`, `vpos_Name`),
+  KEY `vpos_ministry_active_idx`            (`vpos_vmin_ID`, `vpos_Active`),
+  KEY `vpos_team_idx`                       (`vpos_vtem_ID`),
+  CONSTRAINT `fk_vpos_ministry` FOREIGN KEY (`vpos_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vpos_team` FOREIGN KEY (`vpos_vtem_ID`)
+      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_qualification_vqal`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_qualification_vqal`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_qualification_vqal` (
+  `vqal_ID`               int(11)               NOT NULL AUTO_INCREMENT,
+  `vqal_per_ID`           mediumint(9) unsigned NOT NULL,
+  `vqal_vpos_ID`          int(11)               NOT NULL,
+  `vqal_Active`           tinyint(1) unsigned   NOT NULL DEFAULT 1,
+  `vqal_GrantedDate`      datetime              NOT NULL,
+  `vqal_GrantedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vqal_Notes`            varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vqal_ID`),
+  UNIQUE KEY `vqal_person_position_uidx` (`vqal_per_ID`, `vqal_vpos_ID`),
+  KEY `vqal_position_active_idx`         (`vqal_vpos_ID`, `vqal_Active`),
+  KEY `vqal_person_idx`                  (`vqal_per_ID`),
+  KEY `vqal_granted_by_idx`              (`vqal_GrantedBy_per_ID`),
+  CONSTRAINT `fk_vqal_person` FOREIGN KEY (`vqal_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vqal_position` FOREIGN KEY (`vqal_vpos_ID`)
+      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vqal_granted_by` FOREIGN KEY (`vqal_GrantedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_schedule_vsch`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_schedule_vsch`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_schedule_vsch` (
+  `vsch_ID`                int(11)                                        NOT NULL AUTO_INCREMENT,
+  `vsch_vmin_ID`           int(11)                                        NOT NULL,
+  `vsch_vtem_ID`           int(11)                                                 DEFAULT NULL,
+  `vsch_Name`              varchar(100)                                   NOT NULL,
+  `vsch_LinkMode`          enum('event_type','standalone')                NOT NULL,
+  `vsch_event_type_id`     int(11)                                                 DEFAULT NULL,
+  `vsch_TitleFilter`       varchar(255)                                            DEFAULT NULL,
+  `vsch_RecurType`         enum('none','weekly','monthly','yearly')       NOT NULL DEFAULT 'none',
+  `vsch_RecurDOW`          enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday') DEFAULT NULL,
+  `vsch_RecurDOM`          tinyint(3)                                              DEFAULT NULL,
+  `vsch_StartTime`         time                                                    DEFAULT NULL,
+  `vsch_EndTime`           time                                                    DEFAULT NULL,
+  `vsch_WindowStart`       date                                           NOT NULL,
+  `vsch_WindowEnd`         date                                                    DEFAULT NULL,
+  `vsch_GenerateAheadDays` int(11)                                        NOT NULL DEFAULT 56,
+  `vsch_Active`            tinyint(1) unsigned                            NOT NULL DEFAULT 1,
+  PRIMARY KEY (`vsch_ID`),
+  KEY `vsch_ministry_idx`      (`vsch_vmin_ID`),
+  KEY `vsch_team_idx`          (`vsch_vtem_ID`),
+  KEY `vsch_type_idx`          (`vsch_event_type_id`),
+  KEY `vsch_active_window_idx` (`vsch_Active`, `vsch_WindowStart`),
+  CONSTRAINT `fk_vsch_ministry` FOREIGN KEY (`vsch_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vsch_team` FOREIGN KEY (`vsch_vtem_ID`)
+      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vsch_event_type` FOREIGN KEY (`vsch_event_type_id`)
+      REFERENCES `event_types` (`type_id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_occurrence_vocc`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_occurrence_vocc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_occurrence_vocc` (
+  `vocc_ID`             int(11)                          NOT NULL AUTO_INCREMENT,
+  `vocc_vsch_ID`        int(11)                          NOT NULL,
+  `vocc_event_id`       int(11)                                   DEFAULT NULL,
+  `vocc_OccurrenceDate` date                             NOT NULL,
+  `vocc_StartDateTime`  datetime                                  DEFAULT NULL,
+  `vocc_EndDateTime`    datetime                                  DEFAULT NULL,
+  `vocc_Status`         enum('scheduled','cancelled')    NOT NULL DEFAULT 'scheduled',
+  `vocc_Notes`          varchar(255)                              DEFAULT NULL,
+  `vocc_GeneratedDate`  datetime                         NOT NULL,
+  PRIMARY KEY (`vocc_ID`),
+  UNIQUE KEY `vocc_schedule_event_uidx` (`vocc_vsch_ID`, `vocc_event_id`),
+  UNIQUE KEY `vocc_schedule_start_uidx` (`vocc_vsch_ID`, `vocc_StartDateTime`),
+  KEY `vocc_date_idx`  (`vocc_OccurrenceDate`),
+  KEY `vocc_event_idx` (`vocc_event_id`),
+  CONSTRAINT `fk_vocc_schedule` FOREIGN KEY (`vocc_vsch_ID`)
+      REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vocc_event` FOREIGN KEY (`vocc_event_id`)
+      REFERENCES `events_event` (`event_id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_requirement_vreq`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_requirement_vreq`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_requirement_vreq` (
+  `vreq_ID`       int(11)      NOT NULL AUTO_INCREMENT,
+  `vreq_vsch_ID`  int(11)               DEFAULT NULL,
+  `vreq_vocc_ID`  int(11)               DEFAULT NULL,
+  `vreq_vpos_ID`  int(11)      NOT NULL,
+  `vreq_MinCount` int(11)      NOT NULL DEFAULT 1,
+  `vreq_MaxCount` int(11)               DEFAULT NULL,
+  `vreq_Notes`    varchar(255)          DEFAULT NULL,
+  PRIMARY KEY (`vreq_ID`),
+  UNIQUE KEY `vreq_schedule_position_uidx`   (`vreq_vsch_ID`, `vreq_vpos_ID`),
+  UNIQUE KEY `vreq_occurrence_position_uidx` (`vreq_vocc_ID`, `vreq_vpos_ID`),
+  KEY `vreq_position_idx`                    (`vreq_vpos_ID`),
+  CONSTRAINT `fk_vreq_schedule` FOREIGN KEY (`vreq_vsch_ID`)
+      REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vreq_occurrence` FOREIGN KEY (`vreq_vocc_ID`)
+      REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vreq_position` FOREIGN KEY (`vreq_vpos_ID`)
+      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_assignment_vasg`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_assignment_vasg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_assignment_vasg` (
+  `vasg_ID`                int(11)               NOT NULL AUTO_INCREMENT,
+  `vasg_vocc_ID`           int(11)               NOT NULL,
+  `vasg_vpos_ID`           int(11)               NOT NULL,
+  `vasg_per_ID`            mediumint(9) unsigned NOT NULL,
+  `vasg_vreq_ID`           int(11)                        DEFAULT NULL,
+  `vasg_Status`            enum('pending','accepted','declined','cancelled','substituted','completed')
+                                                 NOT NULL DEFAULT 'pending',
+  `vasg_Source`            enum('coordinator','self_signup','substitute')
+                                                 NOT NULL DEFAULT 'coordinator',
+  `vasg_AssignedDate`      datetime              NOT NULL,
+  `vasg_AssignedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vasg_RespondedDate`     datetime                       DEFAULT NULL,
+  `vasg_Replaces_vasg_ID`  int(11)                        DEFAULT NULL,
+  `vasg_Notes`             varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vasg_ID`),
+  UNIQUE KEY `vasg_occ_pos_per_uidx` (`vasg_vocc_ID`, `vasg_vpos_ID`, `vasg_per_ID`),
+  KEY `vasg_occurrence_idx`     (`vasg_vocc_ID`, `vasg_Status`),
+  KEY `vasg_person_status_idx`  (`vasg_per_ID`, `vasg_Status`),
+  KEY `vasg_position_idx`       (`vasg_vpos_ID`),
+  KEY `vasg_requirement_idx`    (`vasg_vreq_ID`),
+  KEY `vasg_assigned_by_idx`    (`vasg_AssignedBy_per_ID`),
+  KEY `vasg_replaces_idx`       (`vasg_Replaces_vasg_ID`),
+  CONSTRAINT `fk_vasg_occurrence` FOREIGN KEY (`vasg_vocc_ID`)
+      REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vasg_position` FOREIGN KEY (`vasg_vpos_ID`)
+      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE RESTRICT,
+  CONSTRAINT `fk_vasg_person` FOREIGN KEY (`vasg_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vasg_requirement` FOREIGN KEY (`vasg_vreq_ID`)
+      REFERENCES `volunteer_requirement_vreq` (`vreq_ID`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vasg_assigned_by` FOREIGN KEY (`vasg_AssignedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vasg_replaces` FOREIGN KEY (`vasg_Replaces_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_response_vrsp`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_response_vrsp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_response_vrsp` (
+  `vrsp_ID`           int(11)               NOT NULL AUTO_INCREMENT,
+  `vrsp_vasg_ID`      int(11)               NOT NULL,
+  `vrsp_per_ID`       mediumint(9) unsigned NOT NULL,
+  `vrsp_Response`     enum('accepted','declined','cancelled','substitute_proposed','substitute_approved','substitute_rejected','substitute_withdrawn')
+                                            NOT NULL,
+  `vrsp_ResponseDate` datetime              NOT NULL,
+  `vrsp_Channel`      enum('web','coordinator') NOT NULL DEFAULT 'web',
+  `vrsp_Comment`      varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vrsp_ID`),
+  KEY `vrsp_assignment_idx` (`vrsp_vasg_ID`, `vrsp_ResponseDate`),
+  KEY `vrsp_person_idx`     (`vrsp_per_ID`),
+  CONSTRAINT `fk_vrsp_assignment` FOREIGN KEY (`vrsp_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vrsp_person` FOREIGN KEY (`vrsp_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_swap_vswp`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_swap_vswp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_swap_vswp` (
+  `vswp_ID`               int(11)               NOT NULL AUTO_INCREMENT,
+  `vswp_vasg_ID`          int(11)               NOT NULL,
+  `vswp_ProposedBy_per_ID` mediumint(9) unsigned NOT NULL,
+  `vswp_Proposed_per_ID`  mediumint(9) unsigned NOT NULL,
+  `vswp_Status`           enum('proposed','approved','rejected','withdrawn') NOT NULL DEFAULT 'proposed',
+  `vswp_ProposedDate`     datetime              NOT NULL,
+  `vswp_DecidedDate`      datetime                       DEFAULT NULL,
+  `vswp_DecidedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vswp_Comment`          varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vswp_ID`),
+  KEY `vswp_assignment_status_idx` (`vswp_vasg_ID`, `vswp_Status`),
+  KEY `vswp_proposed_person_idx`   (`vswp_Proposed_per_ID`),
+  KEY `vswp_proposed_by_idx`       (`vswp_ProposedBy_per_ID`),
+  KEY `vswp_decided_by_idx`        (`vswp_DecidedBy_per_ID`),
+  CONSTRAINT `fk_vswp_assignment` FOREIGN KEY (`vswp_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vswp_proposed_by` FOREIGN KEY (`vswp_ProposedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vswp_proposed_person` FOREIGN KEY (`vswp_Proposed_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vswp_decided_by` FOREIGN KEY (`vswp_DecidedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_notification_vntf`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_notification_vntf`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_notification_vntf` (
+  `vntf_ID`              int(11)               NOT NULL AUTO_INCREMENT,
+  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved')
+                                               NOT NULL,
+  `vntf_Channel`         enum('email')         NOT NULL DEFAULT 'email',
+  `vntf_per_ID`          mediumint(9) unsigned NOT NULL,
+  `vntf_vasg_ID`         int(11)                        DEFAULT NULL,
+  `vntf_vocc_ID`         int(11)                        DEFAULT NULL,
+  `vntf_DedupeKey`       varchar(190)          NOT NULL,
+  `vntf_ScheduledFor`    datetime              NOT NULL,
+  `vntf_Status`          enum('pending','sent','failed','skipped') NOT NULL DEFAULT 'pending',
+  `vntf_Attempts`        int(11)               NOT NULL DEFAULT 0,
+  `vntf_LastAttemptDate` datetime                       DEFAULT NULL,
+  `vntf_SentDate`        datetime                       DEFAULT NULL,
+  `vntf_LastError`       varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vntf_ID`),
+  UNIQUE KEY `vntf_dedupe_uidx` (`vntf_DedupeKey`),
+  KEY `vntf_due_idx`            (`vntf_Status`, `vntf_ScheduledFor`),
+  KEY `vntf_assignment_idx`     (`vntf_vasg_ID`),
+  KEY `vntf_person_idx`         (`vntf_per_ID`),
+  KEY `vntf_occurrence_idx`     (`vntf_vocc_ID`),
+  CONSTRAINT `fk_vntf_person` FOREIGN KEY (`vntf_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vntf_assignment` FOREIGN KEY (`vntf_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vntf_occurrence` FOREIGN KEY (`vntf_vocc_ID`)
+      REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `volunteer_scope_vscp`
+-- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
+--
+
+DROP TABLE IF EXISTS `volunteer_scope_vscp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteer_scope_vscp` (
+  `vscp_ID`               int(11)                 NOT NULL AUTO_INCREMENT,
+  `vscp_per_ID`           mediumint(9) unsigned   NOT NULL,
+  `vscp_ScopeType`        enum('ministry','team') NOT NULL,
+  `vscp_ScopeId`          int(11)                 NOT NULL,
+  `vscp_GrantedDate`      datetime                NOT NULL,
+  `vscp_GrantedBy_per_ID` mediumint(9) unsigned            DEFAULT NULL,
+  PRIMARY KEY (`vscp_ID`),
+  UNIQUE KEY `vscp_person_scope_uidx` (`vscp_per_ID`, `vscp_ScopeType`, `vscp_ScopeId`),
+  KEY `vscp_person_idx`               (`vscp_per_ID`),
+  KEY `vscp_scope_idx`                (`vscp_ScopeType`, `vscp_ScopeId`),
+  KEY `vscp_granted_by_idx`           (`vscp_GrantedBy_per_ID`),
+  CONSTRAINT `fk_vscp_person` FOREIGN KEY (`vscp_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vscp_granted_by` FOREIGN KEY (`vscp_GrantedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET AUTOCOMMIT=@OLD_AUTOCOMMIT */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
