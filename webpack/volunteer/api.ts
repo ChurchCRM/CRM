@@ -523,3 +523,144 @@ export function listOccurrences(params: {
 
   return request(`/occurrences?${query.toString()}`);
 }
+
+// ─── Schedules (#9708, surfaced on the ministry page by #9711) ───────────────
+
+/** One schedule as `volunteerScheduleToArray()` shapes it. */
+export interface VolunteerSchedule {
+  id: number;
+  ministryId: number;
+  teamId: number | null;
+  name: string;
+  linkMode: "event_type" | "standalone";
+  eventTypeId: number | null;
+  eventTypeName: string | null;
+  titleFilter: string | null;
+  recurType: string | null;
+  recurDow: string | null;
+  recurDom: number | null;
+  startTime: string | null;
+  endTime: string | null;
+  windowStart: string | null;
+  windowEnd: string | null;
+  generateAheadDays: number;
+  active: boolean;
+  /** Cheap "has this been generated yet?" signal — a COUNT, never a hydration. */
+  occurrenceCount: number;
+}
+
+export function listSchedules(ministryId: number): Promise<{ schedules: VolunteerSchedule[] }> {
+  return request(`/ministries/${ministryId}/schedules`);
+}
+
+export function createSchedule(
+  ministryId: number,
+  payload: Record<string, unknown>,
+): Promise<{ schedule: VolunteerSchedule }> {
+  return request(`/ministries/${ministryId}/schedules`, { method: "POST", body: JSON.stringify(payload) });
+}
+
+export function updateSchedule(
+  scheduleId: number,
+  fields: Record<string, unknown>,
+): Promise<{ schedule: VolunteerSchedule }> {
+  return request(`/schedules/${scheduleId}`, { method: "POST", body: JSON.stringify(fields) });
+}
+
+export function deleteSchedule(scheduleId: number): Promise<{ success: boolean }> {
+  return request(`/schedules/${scheduleId}`, { method: "DELETE" });
+}
+
+/** Idempotent (§2.9): re-running it creates nothing that already exists. */
+export function generateOccurrences(
+  scheduleId: number,
+  through?: string,
+): Promise<{ created: number; existing: number; through: string }> {
+  return request(`/schedules/${scheduleId}/generate`, {
+    method: "POST",
+    body: JSON.stringify(through ? { through } : {}),
+  });
+}
+
+// ─── The coordinator dashboard aggregate (#9711) ─────────────────────────────
+
+/**
+ * The occurrence context every dashboard row carries, so a row can be rendered
+ * and clicked without a second request (design §5.2).
+ */
+export interface VolunteerDashboardContext {
+  occurrenceId: number;
+  occurrenceDate: string | null;
+  start: string | null;
+  end: string | null;
+  occurrenceStatus: string;
+  eventId: number | null;
+  scheduleId: number | null;
+  scheduleName: string | null;
+  ministryId: number | null;
+  ministryName: string | null;
+  teamId: number | null;
+  teamName: string | null;
+}
+
+export type VolunteerDashboardGap = {
+  positionId: number;
+  positionName: string | null;
+  minCount: number;
+  liveCount: number;
+  gapCount: number;
+} & VolunteerDashboardContext;
+
+export type VolunteerDashboardPending = VolunteerAssignment &
+  VolunteerDashboardContext & {
+    /** True when the occurrence is inside `iVolunteerReminderLeadHours` of now. */
+    withinReminderWindow: boolean;
+  };
+
+export type VolunteerDashboardSwap = VolunteerSwap & Partial<VolunteerDashboardContext>;
+
+export type VolunteerDashboardOccurrence = VolunteerOccurrenceSummary & VolunteerDashboardContext;
+
+/** One ministry the caller may navigate to; `manageable` is false for a team leader's parent. */
+export interface VolunteerScopeMinistry {
+  id: number;
+  name: string;
+  description: string | null;
+  active: boolean;
+  manageable: boolean;
+}
+
+export interface VolunteerScopeTeam {
+  id: number;
+  name: string;
+  ministryId: number;
+  ministryName: string | null;
+  active: boolean;
+}
+
+export interface VolunteerDashboard {
+  days: number;
+  from: string;
+  to: string;
+  upcoming: VolunteerDashboardOccurrence[];
+  gaps: VolunteerDashboardGap[];
+  pendingResponses: VolunteerDashboardPending[];
+  proposedSwaps: VolunteerDashboardSwap[];
+  failedNotifications: number;
+  scope: {
+    isAdmin: boolean;
+    isManager: boolean;
+    ministries: VolunteerScopeMinistry[];
+    teams: VolunteerScopeTeam[];
+  };
+  limit: number;
+  capped: boolean;
+}
+
+/**
+ * The ONE call S1 makes. §5.2: "The dashboard makes exactly one API call and
+ * renders all five panels from it. Do not fan out to five endpoints."
+ */
+export function getDashboard(days: number): Promise<VolunteerDashboard> {
+  return request(`/dashboard?days=${days}`);
+}

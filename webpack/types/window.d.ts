@@ -156,6 +156,21 @@ interface CRMVolunteerMinistryConfig {
 }
 
 /**
+ * Per-page config for S1, handed to the bundle by
+ * `src/volunteer/views/dashboard.php` (issue #9711).
+ *
+ * `isAdmin` is advisory: it says whether the settings strip was rendered at all, and
+ * the server decided that. It is never used to authorize anything — every read is
+ * scoped server-side in `GET /api/volunteer/dashboard` (design §4.4).
+ */
+interface CRMVolunteerDashboardConfig {
+  /** Initial window length in days; the select on the page can widen it. */
+  days: number;
+  isAdmin: boolean;
+  isManager: boolean;
+}
+
+/**
  * Per-page config for S4, handed to the bundle by
  * `src/volunteer/views/occurrence-view.php` (issue #9709).
  *
@@ -206,6 +221,8 @@ interface CRMNamespace {
   volunteerSetup?: CRMVolunteerSetupConfig;
   /** Set by src/volunteer/views/ministry-view.php (issue #9715). */
   volunteerMinistry?: CRMVolunteerMinistryConfig;
+  /** Set by src/volunteer/views/dashboard.php (issue #9711). */
+  volunteerDashboard?: CRMVolunteerDashboardConfig;
   /** Set by src/volunteer/views/occurrence-view.php (issue #9709). */
   volunteerOccurrence?: CRMVolunteerOccurrenceConfig;
   /** The Groups helpers, including the shared group picker (G4). */
