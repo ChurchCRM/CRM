@@ -89,11 +89,12 @@ $group->post('/endpoint', function (Request $request, Response $response, array 
 Two behaviours that bite when `renderErrorJSON()` is used for an *expected* refusal
 (a feature-flag or permission gate) rather than a genuine failure:
 
-1. The sanitizer matches `user`, `host` and `token` as bare substrings, so a
-   perfectly innocent message is silently replaced by the generic
-   "An error occurred. Please contact your system administrator." Write around
-   those three words — `gettext('Volunteer Management V2 is not enabled')`, not
-   `'... not enabled for this user'`.
+1. Until #9737 lands, the sanitizer matches `user`, `host` and `token` as bare
+   substrings, so a perfectly innocent message is silently replaced by the generic
+   "An error occurred. Please contact your system administrator." #9737 narrows
+   the regex to credential-shaped values (`password=…`, DSNs, key material); on a
+   tree without it, check the message against `SlimUtils::sanitizeErrorMessage()`
+   before relying on it.
 2. It logs at **ERROR** level unconditionally. An expected 403 therefore shows up
    as an ERROR line in `src/logs/*-app.log`. If the gate is routine, log your own
    `info()` line with the useful context first and accept the duplicate, or use a
