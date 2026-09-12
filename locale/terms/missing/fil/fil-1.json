@@ -1,64 +1,64 @@
 {
-  "Access": "",
-  "Self-service": "",
-  "Feature": "",
-  "Check-out": "",
-  "Code": "",
-  "Live Preview": "",
-  "Sell-through": "",
-  "BCC Mode": "",
-  "Data": "",
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
-  "Preview": "",
-  "Teller": "",
-  "A geocoding error occurred — try again later": "",
-  "Address is incomplete (missing city, state, and ZIP)": "",
-  "All families already have coordinates.": "",
-  "Failed to update coordinates": "",
-  "Failed to update family coordinates": "",
-  "Geocoded all {{geocoded}} families. The map is now up to date.": "",
-  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "",
-  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "",
-  "Geocoding families… this can take up to a minute. You can keep this page open.": "",
-  "Geocoding…": "",
-  "No address on file": "",
-  "No match found — check the street address, city, and ZIP": "",
-  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "",
-  "Open a family to fix its address, then run this again.": "",
-  "Set up now": "",
-  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "",
+  "Access": "Access",
+  "Self-service": "Self-Service",
+  "Feature": "Tampok",
+  "Check-out": "Check-out",
+  "Code": "Kodigo",
+  "Live Preview": "Live na Preview",
+  "Sell-through": "Rate ng Benta",
+  "BCC Mode": "BCC Mode",
+  "Data": "Data",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
+  "Preview": "Preview",
+  "Teller": "Teller",
+  "A geocoding error occurred — try again later": "May naganap na error sa geocoding — subukang muli mamaya",
+  "Address is incomplete (missing city, state, and ZIP)": "Hindi kumpleto ang address (kulang ang lungsod, estado, at ZIP)",
+  "All families already have coordinates.": "Mayroon nang coordinates ang lahat ng pamilya.",
+  "Failed to update coordinates": "Nabigo ang pag-update ng coordinates",
+  "Failed to update family coordinates": "Nabigo ang pag-update ng coordinates ng pamilya",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "Na-geocode ang lahat ng {{geocoded}} pamilya. Napapanahon na ang mapa.",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "Na-geocode ang {{geocoded}} pamilya. Hindi na-resolve ang {{failed}} — tingnan ang detalye sa ibaba.",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "Na-geocode ang {{geocoded}} sa {{total}} pamilya. Hindi pa naproseso ang {{overflow}} — patakbuhin muli upang magpatuloy.",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "Ginagawang geocode ang mga pamilya… maaari itong tumagal ng hanggang isang minuto. Puwede mong iwanang bukas ang page na ito.",
+  "Geocoding…": "Ginagawang geocode…",
+  "No address on file": "Walang naka-file na address",
+  "No match found — check the street address, city, and ZIP": "Walang nahanap na tugma — suriin ang address, lungsod, at ZIP",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "Bilang ng mga araw na mayroon ang mga user para mag-enroll sa 2FA matapos itong iutos. Itakda sa 0 upang ipatupad kaagad (lumang gawi). Ang pagpapaikli ng aktibong grace period ay maaaring agad na mag-lock-out sa mga user.",
+  "Open a family to fix its address, then run this again.": "Buksan ang isang pamilya upang ayusin ang address nito, pagkatapos ay patakbuhin muli ito.",
+  "Set up now": "I-set up na ngayon",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "Hinahanap nito ang mga coordinates sa mapa para sa bawat pamilyang kulang nito, gamit ang OpenStreetMap. Nagpoproseso ito ng hanggang 50 pamilya kada takbo; ang isang buong batch ay tumatagal ng humigit-kumulang isang minuto. Puwede mong iwanang bukas ang page na ito habang tumatakbo ito. Magpatuloy?",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "",
-    "other": ""
+    "one": "Kinakailangan ang two-factor authentication. Mayroon kang %d araw upang mag-enroll.",
+    "other": "Kinakailangan ang two-factor authentication. Mayroon kang %d araw upang mag-enroll."
   },
-  "Unknown family": "",
-  "Update All Coordinates": "",
-  "Update All Family Coordinates": "",
-  "Update Coordinates": "",
+  "Unknown family": "Hindi kilalang pamilya",
+  "Update All Coordinates": "I-update ang Lahat ng Coordinates",
+  "Update All Family Coordinates": "I-update ang Lahat ng Coordinates ng Pamilya",
+  "Update Coordinates": "I-update ang Coordinates",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Kinopya ang {{count}} miyembro",
+    "other": "Kinopya ang {{count}} miyembro"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Ang listahang ito ay may {{count}} tatanggap — masyadong marami para sa mailto: link. Gamitin na lang ang Kopyahin ang mga Address.",
+    "other": "Ang listahang ito ay may {{count}} tatanggap — masyadong marami para sa mailto: link. Gamitin na lang ang Kopyahin ang mga Address."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Masyadong maraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin na lang ang Kopyahin ang mga Address.",
+    "other": "Masyadong maraming tatanggap para sa email client ({{count}} > {{max}}). Gamitin na lang ang Kopyahin ang mga Address."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuto na lang ang natitira",
+    "other": "{{count}} minuto na lang ang natitira"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "Hindi na-geocode ang {{count}} pamilya",
+    "other": "Hindi na-geocode ang {{count}} pamilya"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…at {{count}} pa. Patakbuhin muli upang makita ang iba.",
+    "other": "…at {{count}} pa. Patakbuhin muli upang makita ang iba."
   }
 }
