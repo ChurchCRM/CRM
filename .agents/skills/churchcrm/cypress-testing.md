@@ -875,6 +875,28 @@ it('should reset the database via API', () => {
 
 UI login is only required when the test actually asserts against page content. For pure API tests, establish the session via API and skip the browser entirely.
 
+#### `x-api-key` authenticates MVC pages too — except where `PageInit.php` is required <!-- learned: 2026-09-11 -->
+
+`AuthMiddleware` handles `x-api-key` on **every** Slim app, not just `/api`, so a
+pure `cy.request()` with the admin key can assert an HTML page's status code and
+body without a browser login:
+
+```javascript
+cy.request({ url: '/event/dashboard', headers: { 'x-api-key': Cypress.env('admin.api.key') },
+             failOnStatusCode: false, followRedirect: false });   // → 200
+```
+
+**But** any page whose entry point requires `Include/PageInit.php` calls
+`AuthenticationManager::ensureAuthentication()` at *file-load* time, before Slim
+has built a single middleware — so the API key is never looked at and the request
+302s to `/session/begin`. That includes every legacy root-level `.php` page and
+the whole `/people` module (`src/people/routes/view.php:3`). `/event`,
+`/volunteer` and `/v2` have no such require and work fine.
+
+Practical rule: if a rollout/permission assertion targets `/people/*` or a legacy
+`*.php` page, it cannot live in an API spec — put it in `ui/` or `ui-admin/` with
+a real login. Verify with a one-line `curl -D -` before writing the spec.
+
 ---
 
 ### 7. Avoid Tautological `cy.url().should('include', ...)` After Form Submit <!-- learned: 2026-04-21 -->

@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\PropertyService;
@@ -246,6 +247,10 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         // Volunteer opps
         'assignedVolunteerOppsData' => $assignedVolunteerOppsData,
         'allVolunteerOppsData'      => $allVolunteerOppsData,
+        // Volunteer rollout state (#9704): 'v1' | 'v2' | 'both'. Decides which
+        // Volunteer tab(s) the view renders; the POST / RemoveVO handlers above
+        // are untouched, the flag only decides whether the form reaches them.
+        'volunteerVersion'          => User::getVolunteerVersion(),
         // Properties (ORM)
         'assignedPersonProperties'  => $assignedPersonProperties,
         'allPersonProperties'       => $allPersonProperties,
