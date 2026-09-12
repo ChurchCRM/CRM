@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerNotification;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
@@ -91,6 +92,7 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
             ]));
         $assignment->delete('', 'deleteVolunteerAssignment');
         $assignment->post('/notify', 'notifyVolunteerAssignment');
+        $assignment->get('/notifications', 'listVolunteerAssignmentNotifications');
     })->add(new VolunteerAssignmentMiddleware());
 
     // ── Gaps across the caller's scope ──────────────────────────────────────
@@ -597,14 +599,10 @@ function getVolunteerAssignment(Request $request, Response $response): Response
             static fn (VolunteerSwap $swap): array => volunteerSwapToArray($swap, $names, $assignment, $positionName),
             $swaps
         ),
+        // The same shape GET /notifications returns, from the same builder — one
+        // outbox row must not look different depending on which read found it.
         'notifications' => array_map(
-            static fn ($row): array => [
-                'id' => (int) $row->getId(),
-                'type' => $row->getType(),
-                'status' => $row->getStatus(),
-                'scheduledFor' => $row->getScheduledFor('Y-m-d H:i:s'),
-                'sentDate' => $row->getSentDate('Y-m-d H:i:s'),
-            ],
+            'volunteerNotificationToArray',
             $service->getNotificationService()->listForAssignment((int) $assignment->getId())
         ),
     ]);
@@ -750,12 +748,61 @@ function notifyVolunteerAssignment(Request $request, Response $response): Respon
 
     return SlimUtils::renderJSON($response, [
         'created' => $existing === null,
-        'notification' => [
-            'id' => (int) $notification->getId(),
-            'type' => $notification->getType(),
-            'status' => $notification->getStatus(),
-            'scheduledFor' => $notification->getScheduledFor('Y-m-d H:i:s'),
-        ],
+        'notification' => volunteerNotificationToArray($notification),
+    ]);
+}
+
+/**
+ * One outbox row on the wire (design §2.14).
+ *
+ * Every column except the dedupe key's internals is exposed, because the whole
+ * point of the read is to answer "what has this volunteer actually been told,
+ * and what went wrong" without a database client — including `attempts` and
+ * `lastError`, which are how a coordinator tells "we gave up" from "not yet".
+ */
+function volunteerNotificationToArray(VolunteerNotification $notification): array
+{
+    return [
+        'id' => (int) $notification->getId(),
+        'type' => $notification->getType(),
+        'channel' => $notification->getChannel(),
+        'personId' => (int) $notification->getPersonId(),
+        'assignmentId' => $notification->getAssignmentId() === null ? null : (int) $notification->getAssignmentId(),
+        'occurrenceId' => $notification->getOccurrenceId() === null ? null : (int) $notification->getOccurrenceId(),
+        'dedupeKey' => $notification->getDedupeKey(),
+        'status' => $notification->getStatus(),
+        'scheduledFor' => $notification->getScheduledFor('Y-m-d H:i:s'),
+        'sentDate' => $notification->getSentDate('Y-m-d H:i:s'),
+        'attempts' => (int) $notification->getAttempts(),
+        'lastAttemptDate' => $notification->getLastAttemptDate('Y-m-d H:i:s'),
+        'lastError' => $notification->getLastError(),
+    ];
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/assignments/{assignmentId}/notifications",
+ *     operationId="listVolunteerAssignmentNotifications",
+ *     summary="The notification outbox rows for one assignment",
+ *     description="Design section 6.6: the only way to prove from outside that a retried operation produced no second message. Newest first. Coordinator surface - the volunteer's own view of what they were sent is not this endpoint.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="assignmentId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this assignment, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such assignment"),
+ *     @OA\Response(response=200, description="OK")
+ * )
+ */
+function listVolunteerAssignmentNotifications(Request $request, Response $response): Response
+{
+    /** @var VolunteerAssignment $assignment */
+    $assignment = $request->getAttribute('volunteerAssignment');
+
+    $rows = (new VolunteerNotificationService())->listForAssignment((int) $assignment->getId());
+
+    return SlimUtils::renderJSON($response, [
+        'notifications' => array_map('volunteerNotificationToArray', $rows),
     ]);
 }
 
