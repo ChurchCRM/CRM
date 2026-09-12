@@ -962,4 +962,584 @@
         </vendor>
     </table>
 
+    <!-- ===================================================================
+         Volunteer Management v2 (#9705, epic #9701)
+
+         Thirteen tables covering ministry, team, pool, position,
+         qualification, schedule, occurrence, staffing requirement,
+         assignment, response, swap, notification outbox and scope.
+
+         Conventions (design .agents/skills/churchcrm/volunteer-v2-design.md
+         §2.0): InnoDB, utf8mb4 in SQL, `<prefix>_ID` primary keys named
+         phpName="Id", enums as CHAR + sqlType, BOOLEAN as tinyint(1)
+         unsigned, index names `_idx` / `_uidx`, and foreign-key column types
+         matched to the PARENT column rather than to the inconsistent widths
+         used by person2group2role_p2g2r / event_audience.
+
+         Two columns are deliberately polymorphic and therefore carry no
+         foreign key: volunteer_pool_vpol.vpol_OwnerId and
+         volunteer_scope_vscp.vscp_ScopeId. Referential integrity for those
+         is a service concern, as it already is for record2property_r2p.
+         =================================================================== -->
+
+    <table name="volunteer_ministry_vmin" idMethod="native" phpName="VolunteerMinistry"
+           description="Volunteer v2: an organizational area (Coffee Bar, Worship, Children's Ministry) that owns teams, positions, schedules and coordinator scope">
+        <column name="vmin_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vmin_Name" phpName="Name" type="VARCHAR" size="100" required="true"/>
+        <column name="vmin_Description" phpName="Description" type="VARCHAR" size="255"/>
+        <column name="vmin_Active" phpName="Active" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
+                required="true" defaultValue="1"
+                description="Deactivate rather than delete once occurrences exist"/>
+        <column name="vmin_CreatedDate" phpName="CreatedDate" type="TIMESTAMP" required="true"
+                description="Naive wall-clock in sTimeZone"/>
+        <column name="vmin_CreatedBy_per_ID" phpName="CreatedByPersonId" type="SMALLINT" size="9"
+                sqlType="mediumint(9) unsigned"/>
+        <foreign-key foreignTable="person_per" name="VolunteerMinistryCreatedBy" phpName="CreatedByPerson"
+                     refPhpName="CreatedVolunteerMinistry" onDelete="setnull">
+            <reference local="vmin_CreatedBy_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <unique name="vmin_name_uidx">
+            <unique-column name="vmin_Name"/>
+        </unique>
+        <index name="vmin_active_idx">
+            <index-column name="vmin_Active"/>
+        </index>
+        <index name="vmin_created_by_idx">
+            <index-column name="vmin_CreatedBy_per_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_team_vtem" idMethod="native" phpName="VolunteerTeam"
+           description="Volunteer v2: an operational team inside a ministry; the finest authorization scope. Exactly one level - ministries are never nested">
+        <column name="vtem_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vtem_vmin_ID" phpName="MinistryId" type="INTEGER" required="true"/>
+        <column name="vtem_Name" phpName="Name" type="VARCHAR" size="100" required="true"/>
+        <column name="vtem_Description" phpName="Description" type="VARCHAR" size="255"/>
+        <column name="vtem_Active" phpName="Active" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
+                required="true" defaultValue="1"/>
+        <foreign-key foreignTable="volunteer_ministry_vmin" name="VolunteerTeamMinistry" phpName="Ministry"
+                     refPhpName="VolunteerTeam" onDelete="cascade">
+            <reference local="vtem_vmin_ID" foreign="vmin_ID"/>
+        </foreign-key>
+        <unique name="vtem_ministry_name_uidx">
+            <unique-column name="vtem_vmin_ID"/>
+            <unique-column name="vtem_Name"/>
+        </unique>
+        <index name="vtem_ministry_idx">
+            <index-column name="vtem_vmin_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_pool_vpol" idMethod="native" phpName="VolunteerPool"
+           description="Volunteer v2: links a ministry or team to an existing ChurchCRM group that acts as its volunteer pool. Stores no people - the group is the roster">
+        <column name="vpol_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vpol_OwnerType" phpName="OwnerType" type="CHAR" sqlType="enum('ministry','team')"
+                required="true" description="Which table vpol_OwnerId points at"/>
+        <column name="vpol_OwnerId" phpName="OwnerId" type="INTEGER" required="true"
+                description="vmin_ID or vtem_ID. Polymorphic, so no database foreign key is possible - integrity is enforced in the service layer"/>
+        <column name="vpol_grp_ID" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+                required="true"/>
+        <column name="vpol_Label" phpName="Label" type="VARCHAR" size="100"
+                description="Optional coordinator label, e.g. &quot;Sunday A team&quot;"/>
+        <foreign-key foreignTable="group_grp" name="VolunteerPoolGroup" phpName="Group"
+                     refPhpName="VolunteerPool" onDelete="cascade">
+            <reference local="vpol_grp_ID" foreign="grp_ID"/>
+        </foreign-key>
+        <unique name="vpol_owner_group_uidx">
+            <unique-column name="vpol_OwnerType"/>
+            <unique-column name="vpol_OwnerId"/>
+            <unique-column name="vpol_grp_ID"/>
+        </unique>
+        <index name="vpol_group_idx">
+            <index-column name="vpol_grp_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_position_vpos" idMethod="native" phpName="VolunteerPosition"
+           description="Volunteer v2: a role a volunteer can serve in (Espresso, Song Leader, Nursery Teacher). Owned by a ministry, optionally narrowed to a team">
+        <column name="vpos_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vpos_vmin_ID" phpName="MinistryId" type="INTEGER" required="true"/>
+        <column name="vpos_vtem_ID" phpName="TeamId" type="INTEGER"
+                description="NULL means the position is ministry-wide"/>
+        <column name="vpos_Name" phpName="Name" type="VARCHAR" size="100" required="true"/>
+        <column name="vpos_Description" phpName="Description" type="VARCHAR" size="255"
+                description="Operational requirements for the position, as prose"/>
+        <column name="vpos_Active" phpName="Active" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
+                required="true" defaultValue="1"
+                description="Deactivate rather than delete once assignments exist, so history survives"/>
+        <column name="vpos_Order" phpName="Order" type="INTEGER" required="true" defaultValue="0"
+                description="Display order within the ministry"/>
+        <foreign-key foreignTable="volunteer_ministry_vmin" name="VolunteerPositionMinistry" phpName="Ministry"
+                     refPhpName="VolunteerPosition" onDelete="cascade">
+            <reference local="vpos_vmin_ID" foreign="vmin_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_team_vtem" name="VolunteerPositionTeam" phpName="Team"
+                     refPhpName="VolunteerPosition" onDelete="setnull">
+            <reference local="vpos_vtem_ID" foreign="vtem_ID"/>
+        </foreign-key>
+        <unique name="vpos_ministry_team_name_uidx">
+            <unique-column name="vpos_vmin_ID"/>
+            <unique-column name="vpos_vtem_ID"/>
+            <unique-column name="vpos_Name"/>
+        </unique>
+        <index name="vpos_ministry_active_idx">
+            <index-column name="vpos_vmin_ID"/>
+            <index-column name="vpos_Active"/>
+        </index>
+        <index name="vpos_team_idx">
+            <index-column name="vpos_vtem_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_qualification_vqal" idMethod="native" phpName="VolunteerQualification"
+           description="Volunteer v2: person-to-position eligibility, many to many. Deliberately not a group role - person2group2role_p2g2r permits only one role per person per group">
+        <column name="vqal_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vqal_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
+                required="true"/>
+        <column name="vqal_vpos_ID" phpName="PositionId" type="INTEGER" required="true"/>
+        <column name="vqal_Active" phpName="Active" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
+                required="true" defaultValue="1"
+                description="Revocation is deactivation, never deletion, so historical assignments stay readable"/>
+        <column name="vqal_GrantedDate" phpName="GrantedDate" type="TIMESTAMP" required="true"/>
+        <column name="vqal_GrantedBy_per_ID" phpName="GrantedByPersonId" type="SMALLINT" size="9"
+                sqlType="mediumint(9) unsigned"/>
+        <column name="vqal_Notes" phpName="Notes" type="VARCHAR" size="255"/>
+        <foreign-key foreignTable="person_per" name="VolunteerQualificationPerson" phpName="Person"
+                     refPhpName="VolunteerQualification" onDelete="cascade">
+            <reference local="vqal_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_position_vpos" name="VolunteerQualificationPosition" phpName="Position"
+                     refPhpName="VolunteerQualification" onDelete="cascade">
+            <reference local="vqal_vpos_ID" foreign="vpos_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="VolunteerQualificationGrantedBy" phpName="GrantedByPerson"
+                     refPhpName="GrantedVolunteerQualification" onDelete="setnull">
+            <reference local="vqal_GrantedBy_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <unique name="vqal_person_position_uidx">
+            <unique-column name="vqal_per_ID"/>
+            <unique-column name="vqal_vpos_ID"/>
+        </unique>
+        <index name="vqal_position_active_idx">
+            <index-column name="vqal_vpos_ID"/>
+            <index-column name="vqal_Active"/>
+        </index>
+        <index name="vqal_person_idx">
+            <index-column name="vqal_per_ID"/>
+        </index>
+        <index name="vqal_granted_by_idx">
+            <index-column name="vqal_GrantedBy_per_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_schedule_vsch" idMethod="native" phpName="VolunteerSchedule"
+           description="Volunteer v2: the recurring series V2 owns. Either linked to a ChurchCRM event type, in which case the event occurrences are authoritative, or standalone, in which case V2 generates its own dates">
+        <column name="vsch_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vsch_vmin_ID" phpName="MinistryId" type="INTEGER" required="true"/>
+        <column name="vsch_vtem_ID" phpName="TeamId" type="INTEGER"/>
+        <column name="vsch_Name" phpName="Name" type="VARCHAR" size="100" required="true"/>
+        <column name="vsch_LinkMode" phpName="LinkMode" type="CHAR" sqlType="enum('event_type','standalone')"
+                required="true"/>
+        <column name="vsch_event_type_id" phpName="EventTypeId" type="INTEGER"
+                description="Required when LinkMode is event_type"/>
+        <column name="vsch_TitleFilter" phpName="TitleFilter" type="VARCHAR" size="255"
+                description="Optional LIKE narrowing when one event type carries several distinct services"/>
+        <column name="vsch_RecurType" phpName="RecurType" type="CHAR"
+                sqlType="enum('none','weekly','monthly','yearly')" required="true" defaultValue="none"
+                description="Standalone schedules only; a linked schedule never carries its own recurrence"/>
+        <column name="vsch_RecurDOW" phpName="RecurDow" type="CHAR"
+                sqlType="enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday')"/>
+        <column name="vsch_RecurDOM" phpName="RecurDom" type="TINYINT" size="3"/>
+        <column name="vsch_StartTime" phpName="StartTime" type="TIME"/>
+        <column name="vsch_EndTime" phpName="EndTime" type="TIME"/>
+        <column name="vsch_WindowStart" phpName="WindowStart" type="DATE" required="true"
+                description="No occurrence is ever generated before this date"/>
+        <column name="vsch_WindowEnd" phpName="WindowEnd" type="DATE" description="NULL means open ended"/>
+        <column name="vsch_GenerateAheadDays" phpName="GenerateAheadDays" type="INTEGER" required="true"
+                defaultValue="56" description="How far ahead a generation run materialises occurrences"/>
+        <column name="vsch_Active" phpName="Active" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
+                required="true" defaultValue="1"/>
+        <foreign-key foreignTable="volunteer_ministry_vmin" name="VolunteerScheduleMinistry" phpName="Ministry"
+                     refPhpName="VolunteerSchedule" onDelete="cascade">
+            <reference local="vsch_vmin_ID" foreign="vmin_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_team_vtem" name="VolunteerScheduleTeam" phpName="Team"
+                     refPhpName="VolunteerSchedule" onDelete="setnull">
+            <reference local="vsch_vtem_ID" foreign="vtem_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="event_types" name="VolunteerScheduleEventType" phpName="EventType"
+                     refPhpName="VolunteerSchedule" onDelete="setnull">
+            <reference local="vsch_event_type_id" foreign="type_id"/>
+        </foreign-key>
+        <index name="vsch_ministry_idx">
+            <index-column name="vsch_vmin_ID"/>
+        </index>
+        <index name="vsch_team_idx">
+            <index-column name="vsch_vtem_ID"/>
+        </index>
+        <index name="vsch_type_idx">
+            <index-column name="vsch_event_type_id"/>
+        </index>
+        <index name="vsch_active_window_idx">
+            <index-column name="vsch_Active"/>
+            <index-column name="vsch_WindowStart"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_occurrence_vocc" idMethod="native" phpName="VolunteerOccurrence"
+           description="Volunteer v2: one concrete opportunity to serve. When linked to an event the start and end times are read lazily from events_event and are NULL here; several occurrences from different schedules may point at the same event">
+        <column name="vocc_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vocc_vsch_ID" phpName="ScheduleId" type="INTEGER" required="true"/>
+        <column name="vocc_event_id" phpName="EventId" type="INTEGER"
+                description="When set, events_event is authoritative for date and time"/>
+        <column name="vocc_OccurrenceDate" phpName="OccurrenceDate" type="DATE" required="true"
+                description="Sort and range-filter key. Non-authoritative when the occurrence is linked to an event"/>
+        <column name="vocc_StartDateTime" phpName="StartDateTime" type="TIMESTAMP"
+                description="Standalone occurrences only; naive wall-clock in sTimeZone"/>
+        <column name="vocc_EndDateTime" phpName="EndDateTime" type="TIMESTAMP"/>
+        <column name="vocc_Status" phpName="Status" type="CHAR" sqlType="enum('scheduled','cancelled')"
+                required="true" defaultValue="scheduled"/>
+        <column name="vocc_Notes" phpName="Notes" type="VARCHAR" size="255"/>
+        <column name="vocc_GeneratedDate" phpName="GeneratedDate" type="TIMESTAMP" required="true"/>
+        <foreign-key foreignTable="volunteer_schedule_vsch" name="VolunteerOccurrenceSchedule" phpName="Schedule"
+                     refPhpName="VolunteerOccurrence" onDelete="cascade">
+            <reference local="vocc_vsch_ID" foreign="vsch_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="events_event" name="VolunteerOccurrenceEvent" phpName="Event"
+                     refPhpName="VolunteerOccurrence" onDelete="setnull">
+            <reference local="vocc_event_id" foreign="event_id"/>
+        </foreign-key>
+        <unique name="vocc_schedule_event_uidx">
+            <unique-column name="vocc_vsch_ID"/>
+            <unique-column name="vocc_event_id"/>
+        </unique>
+        <unique name="vocc_schedule_start_uidx">
+            <unique-column name="vocc_vsch_ID"/>
+            <unique-column name="vocc_StartDateTime"/>
+        </unique>
+        <index name="vocc_date_idx">
+            <index-column name="vocc_OccurrenceDate"/>
+        </index>
+        <index name="vocc_event_idx">
+            <index-column name="vocc_event_id"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <!-- The SQL files also add CHECK vreq_one_parent_chk: exactly one of vreq_vsch_ID / vreq_vocc_ID is set.
+         Propel cannot express CHECK constraints, so it lives in SQL only. -->
+    <table name="volunteer_requirement_vreq" idMethod="native" phpName="VolunteerRequirement"
+           description="Volunteer v2: how many people in which position an occurrence needs. Exactly one of the schedule (template) and occurrence (override) columns is set">
+        <column name="vreq_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vreq_vsch_ID" phpName="ScheduleId" type="INTEGER" description="Template level"/>
+        <column name="vreq_vocc_ID" phpName="OccurrenceId" type="INTEGER" description="Per-occurrence override"/>
+        <column name="vreq_vpos_ID" phpName="PositionId" type="INTEGER" required="true"/>
+        <column name="vreq_MinCount" phpName="MinCount" type="INTEGER" required="true" defaultValue="1"
+                description="The number below which a gap exists"/>
+        <column name="vreq_MaxCount" phpName="MaxCount" type="INTEGER"
+                description="NULL means the same as MinCount. Capacity ceiling for self-signup"/>
+        <column name="vreq_Notes" phpName="Notes" type="VARCHAR" size="255"/>
+        <foreign-key foreignTable="volunteer_schedule_vsch" name="VolunteerRequirementSchedule" phpName="Schedule"
+                     refPhpName="VolunteerRequirement" onDelete="cascade">
+            <reference local="vreq_vsch_ID" foreign="vsch_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_occurrence_vocc" name="VolunteerRequirementOccurrence" phpName="Occurrence"
+                     refPhpName="VolunteerRequirement" onDelete="cascade">
+            <reference local="vreq_vocc_ID" foreign="vocc_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_position_vpos" name="VolunteerRequirementPosition" phpName="Position"
+                     refPhpName="VolunteerRequirement" onDelete="cascade">
+            <reference local="vreq_vpos_ID" foreign="vpos_ID"/>
+        </foreign-key>
+        <unique name="vreq_schedule_position_uidx">
+            <unique-column name="vreq_vsch_ID"/>
+            <unique-column name="vreq_vpos_ID"/>
+        </unique>
+        <unique name="vreq_occurrence_position_uidx">
+            <unique-column name="vreq_vocc_ID"/>
+            <unique-column name="vreq_vpos_ID"/>
+        </unique>
+        <index name="vreq_position_idx">
+            <index-column name="vreq_vpos_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_assignment_vasg" idMethod="native" phpName="VolunteerAssignment"
+           description="Volunteer v2: a person serving a position on an occurrence, with an explicit lifecycle. One row per person per position per occurrence - the same person may hold two different positions on one occurrence">
+        <column name="vasg_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vasg_vocc_ID" phpName="OccurrenceId" type="INTEGER" required="true"/>
+        <column name="vasg_vpos_ID" phpName="PositionId" type="INTEGER" required="true"/>
+        <column name="vasg_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
+                required="true"/>
+        <column name="vasg_vreq_ID" phpName="RequirementId" type="INTEGER"
+                description="Which requirement this fills. Nullable so an assignment survives a requirement being restructured"/>
+        <column name="vasg_Status" phpName="Status" type="CHAR"
+                sqlType="enum('pending','accepted','declined','cancelled','substituted','completed')"
+                required="true" defaultValue="pending"/>
+        <column name="vasg_Source" phpName="Source" type="CHAR"
+                sqlType="enum('coordinator','self_signup','substitute')" required="true" defaultValue="coordinator"/>
+        <column name="vasg_AssignedDate" phpName="AssignedDate" type="TIMESTAMP" required="true"/>
+        <column name="vasg_AssignedBy_per_ID" phpName="AssignedByPersonId" type="SMALLINT" size="9"
+                sqlType="mediumint(9) unsigned" description="NULL for self-signup"/>
+        <column name="vasg_RespondedDate" phpName="RespondedDate" type="TIMESTAMP"
+                description="Denormalised from the latest response row"/>
+        <column name="vasg_Replaces_vasg_ID" phpName="ReplacesAssignmentId" type="INTEGER"
+                description="Links a substitute back to the assignment it replaced"/>
+        <column name="vasg_Notes" phpName="Notes" type="VARCHAR" size="255"/>
+        <foreign-key foreignTable="volunteer_occurrence_vocc" name="VolunteerAssignmentOccurrence" phpName="Occurrence"
+                     refPhpName="VolunteerAssignment" onDelete="cascade">
+            <reference local="vasg_vocc_ID" foreign="vocc_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_position_vpos" name="VolunteerAssignmentPosition" phpName="Position"
+                     refPhpName="VolunteerAssignment" onDelete="restrict">
+            <reference local="vasg_vpos_ID" foreign="vpos_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="VolunteerAssignmentPerson" phpName="Person"
+                     refPhpName="VolunteerAssignment" onDelete="cascade">
+            <reference local="vasg_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_requirement_vreq" name="VolunteerAssignmentRequirement" phpName="Requirement"
+                     refPhpName="VolunteerAssignment" onDelete="setnull">
+            <reference local="vasg_vreq_ID" foreign="vreq_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="VolunteerAssignmentAssignedBy" phpName="AssignedByPerson"
+                     refPhpName="AssignedVolunteerAssignment" onDelete="setnull">
+            <reference local="vasg_AssignedBy_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_assignment_vasg" name="VolunteerAssignmentReplaces"
+                     phpName="ReplacedAssignment" refPhpName="ReplacementAssignment" onDelete="setnull">
+            <reference local="vasg_Replaces_vasg_ID" foreign="vasg_ID"/>
+        </foreign-key>
+        <unique name="vasg_occ_pos_per_uidx">
+            <unique-column name="vasg_vocc_ID"/>
+            <unique-column name="vasg_vpos_ID"/>
+            <unique-column name="vasg_per_ID"/>
+        </unique>
+        <index name="vasg_occurrence_idx">
+            <index-column name="vasg_vocc_ID"/>
+            <index-column name="vasg_Status"/>
+        </index>
+        <index name="vasg_person_status_idx">
+            <index-column name="vasg_per_ID"/>
+            <index-column name="vasg_Status"/>
+        </index>
+        <index name="vasg_position_idx">
+            <index-column name="vasg_vpos_ID"/>
+        </index>
+        <index name="vasg_requirement_idx">
+            <index-column name="vasg_vreq_ID"/>
+        </index>
+        <index name="vasg_assigned_by_idx">
+            <index-column name="vasg_AssignedBy_per_ID"/>
+        </index>
+        <index name="vasg_replaces_idx">
+            <index-column name="vasg_Replaces_vasg_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_response_vrsp" idMethod="native" phpName="VolunteerResponse"
+           description="Volunteer v2: append-only history of every response to an assignment. Rows are never updated or deleted; vasg_Status is the denormalised current state">
+        <column name="vrsp_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vrsp_vasg_ID" phpName="AssignmentId" type="INTEGER" required="true"/>
+        <column name="vrsp_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
+                required="true" description="Who responded - the volunteer, or a coordinator acting on their behalf"/>
+        <column name="vrsp_Response" phpName="Response" type="CHAR"
+                sqlType="enum('accepted','declined','cancelled','substitute_proposed','substitute_approved','substitute_rejected','substitute_withdrawn')"
+                required="true"/>
+        <column name="vrsp_ResponseDate" phpName="ResponseDate" type="TIMESTAMP" required="true"/>
+        <column name="vrsp_Channel" phpName="Channel" type="CHAR" sqlType="enum('web','coordinator')"
+                required="true" defaultValue="web"/>
+        <column name="vrsp_Comment" phpName="Comment" type="VARCHAR" size="255"/>
+        <foreign-key foreignTable="volunteer_assignment_vasg" name="VolunteerResponseAssignment" phpName="Assignment"
+                     refPhpName="VolunteerResponse" onDelete="cascade">
+            <reference local="vrsp_vasg_ID" foreign="vasg_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="VolunteerResponsePerson" phpName="Person"
+                     refPhpName="VolunteerResponse" onDelete="cascade">
+            <reference local="vrsp_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <index name="vrsp_assignment_idx">
+            <index-column name="vrsp_vasg_ID"/>
+            <index-column name="vrsp_ResponseDate"/>
+        </index>
+        <index name="vrsp_person_idx">
+            <index-column name="vrsp_per_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_swap_vswp" idMethod="native" phpName="VolunteerSwap"
+           description="Volunteer v2: a volunteer proposes a named substitute who has already agreed; a coordinator approves or rejects. Approval never edits the original assignment beyond its status, so the audit trail survives">
+        <column name="vswp_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vswp_vasg_ID" phpName="AssignmentId" type="INTEGER" required="true"
+                description="The original assignment being handed over"/>
+        <column name="vswp_ProposedBy_per_ID" phpName="ProposedByPersonId" type="SMALLINT" size="9"
+                sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="vswp_Proposed_per_ID" phpName="ProposedPersonId" type="SMALLINT" size="9"
+                sqlType="mediumint(9) unsigned" required="true" description="The substitute"/>
+        <column name="vswp_Status" phpName="Status" type="CHAR"
+                sqlType="enum('proposed','approved','rejected','withdrawn')" required="true" defaultValue="proposed"/>
+        <column name="vswp_ProposedDate" phpName="ProposedDate" type="TIMESTAMP" required="true"/>
+        <column name="vswp_DecidedDate" phpName="DecidedDate" type="TIMESTAMP"/>
+        <column name="vswp_DecidedBy_per_ID" phpName="DecidedByPersonId" type="SMALLINT" size="9"
+                sqlType="mediumint(9) unsigned"/>
+        <column name="vswp_Comment" phpName="Comment" type="VARCHAR" size="255"/>
+        <foreign-key foreignTable="volunteer_assignment_vasg" name="VolunteerSwapAssignment" phpName="Assignment"
+                     refPhpName="VolunteerSwap" onDelete="cascade">
+            <reference local="vswp_vasg_ID" foreign="vasg_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="VolunteerSwapProposedBy" phpName="ProposedByPerson"
+                     refPhpName="ProposedVolunteerSwap" onDelete="cascade">
+            <reference local="vswp_ProposedBy_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="VolunteerSwapProposedPerson" phpName="ProposedPerson"
+                     refPhpName="SubstituteVolunteerSwap" onDelete="cascade">
+            <reference local="vswp_Proposed_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="VolunteerSwapDecidedBy" phpName="DecidedByPerson"
+                     refPhpName="DecidedVolunteerSwap" onDelete="setnull">
+            <reference local="vswp_DecidedBy_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <index name="vswp_assignment_status_idx">
+            <index-column name="vswp_vasg_ID"/>
+            <index-column name="vswp_Status"/>
+        </index>
+        <index name="vswp_proposed_person_idx">
+            <index-column name="vswp_Proposed_per_ID"/>
+        </index>
+        <index name="vswp_proposed_by_idx">
+            <index-column name="vswp_ProposedBy_per_ID"/>
+        </index>
+        <index name="vswp_decided_by_idx">
+            <index-column name="vswp_DecidedBy_per_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_notification_vntf" idMethod="native" phpName="VolunteerNotification"
+           description="Volunteer v2: the notification outbox. Idempotent enqueue keyed by vntf_DedupeKey, a due time, and a retry-safe send log drained by the background timer jobs">
+        <column name="vntf_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vntf_Type" phpName="Type" type="CHAR"
+                sqlType="enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved')"
+                required="true"/>
+        <column name="vntf_Channel" phpName="Channel" type="CHAR" sqlType="enum('email')" required="true"
+                defaultValue="email" description="The delivery extension point; email is the only channel in the first release"/>
+        <column name="vntf_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
+                required="true" description="Recipient"/>
+        <column name="vntf_vasg_ID" phpName="AssignmentId" type="INTEGER"/>
+        <column name="vntf_vocc_ID" phpName="OccurrenceId" type="INTEGER"
+                description="Used by gap_alert, which is not assignment scoped"/>
+        <column name="vntf_DedupeKey" phpName="DedupeKey" type="VARCHAR" size="190" required="true"
+                description="190 rather than 255 to stay inside the InnoDB index prefix limit for utf8mb4"/>
+        <column name="vntf_ScheduledFor" phpName="ScheduledFor" type="TIMESTAMP" required="true"
+                description="Naive wall-clock in sTimeZone; now() for immediate messages"/>
+        <column name="vntf_Status" phpName="Status" type="CHAR"
+                sqlType="enum('pending','sent','failed','skipped')" required="true" defaultValue="pending"/>
+        <column name="vntf_Attempts" phpName="Attempts" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="vntf_LastAttemptDate" phpName="LastAttemptDate" type="TIMESTAMP"/>
+        <column name="vntf_SentDate" phpName="SentDate" type="TIMESTAMP"/>
+        <column name="vntf_LastError" phpName="LastError" type="VARCHAR" size="255"/>
+        <foreign-key foreignTable="person_per" name="VolunteerNotificationPerson" phpName="Person"
+                     refPhpName="VolunteerNotification" onDelete="cascade">
+            <reference local="vntf_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_assignment_vasg" name="VolunteerNotificationAssignment" phpName="Assignment"
+                     refPhpName="VolunteerNotification" onDelete="cascade">
+            <reference local="vntf_vasg_ID" foreign="vasg_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_occurrence_vocc" name="VolunteerNotificationOccurrence" phpName="Occurrence"
+                     refPhpName="VolunteerNotification" onDelete="cascade">
+            <reference local="vntf_vocc_ID" foreign="vocc_ID"/>
+        </foreign-key>
+        <unique name="vntf_dedupe_uidx">
+            <unique-column name="vntf_DedupeKey"/>
+        </unique>
+        <index name="vntf_due_idx">
+            <index-column name="vntf_Status"/>
+            <index-column name="vntf_ScheduledFor"/>
+        </index>
+        <index name="vntf_assignment_idx">
+            <index-column name="vntf_vasg_ID"/>
+        </index>
+        <index name="vntf_person_idx">
+            <index-column name="vntf_per_ID"/>
+        </index>
+        <index name="vntf_occurrence_idx">
+            <index-column name="vntf_vocc_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="volunteer_scope_vscp" idMethod="native" phpName="VolunteerScope"
+           description="Volunteer v2: persists that a person coordinates a ministry or leads a team. Keyed on the person, not the user, so a scope may be granted before the person has a login">
+        <column name="vscp_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="vscp_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
+                required="true"/>
+        <column name="vscp_ScopeType" phpName="ScopeType" type="CHAR" sqlType="enum('ministry','team')"
+                required="true"/>
+        <column name="vscp_ScopeId" phpName="ScopeId" type="INTEGER" required="true"
+                description="vmin_ID or vtem_ID. Polymorphic, so no database foreign key is possible - integrity is enforced in the authorization service"/>
+        <column name="vscp_GrantedDate" phpName="GrantedDate" type="TIMESTAMP" required="true"/>
+        <column name="vscp_GrantedBy_per_ID" phpName="GrantedByPersonId" type="SMALLINT" size="9"
+                sqlType="mediumint(9) unsigned"/>
+        <foreign-key foreignTable="person_per" name="VolunteerScopePerson" phpName="Person"
+                     refPhpName="VolunteerScope" onDelete="cascade">
+            <reference local="vscp_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="person_per" name="VolunteerScopeGrantedBy" phpName="GrantedByPerson"
+                     refPhpName="GrantedVolunteerScope" onDelete="setnull">
+            <reference local="vscp_GrantedBy_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <unique name="vscp_person_scope_uidx">
+            <unique-column name="vscp_per_ID"/>
+            <unique-column name="vscp_ScopeType"/>
+            <unique-column name="vscp_ScopeId"/>
+        </unique>
+        <index name="vscp_person_idx">
+            <index-column name="vscp_per_ID"/>
+        </index>
+        <index name="vscp_scope_idx">
+            <index-column name="vscp_ScopeType"/>
+            <index-column name="vscp_ScopeId"/>
+        </index>
+        <index name="vscp_granted_by_idx">
+            <index-column name="vscp_GrantedBy_per_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
 </database>

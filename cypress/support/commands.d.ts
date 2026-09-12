@@ -463,6 +463,29 @@ declare namespace Cypress {
      */
     waitForLocales(timeout?: number): Chainable<void>;
 
+    // ---------------------------------------------------------------
+    // Database commands (cypress/support/api-commands.js)
+    // ---------------------------------------------------------------
+
+    /**
+     * Run a SQL statement against the test database through the node-side
+     * `db:query` task (mysql2). Used to assert schema guarantees that have no
+     * HTTP surface — UNIQUE keys, foreign keys, ON DELETE rules, enum domains.
+     *
+     * Resolves with `{ rows, error }`: driver errors are RETURNED, not thrown,
+     * so a spec can assert that a write was rejected.
+     *
+     * @param sql - SQL statement, with `?` placeholders for params
+     * @param params - Values bound to the `?` placeholders
+     */
+    dbQuery(
+      sql: string,
+      params?: unknown[]
+    ): Chainable<{
+      rows: any;
+      error: { code: string; errno: number; sqlState: string; message: string } | null;
+    }>;
+
     /**
      * Wait for a Notyf notification with specific text
      * Ensures locales are loaded first (for i18next translations) and verifies notification content

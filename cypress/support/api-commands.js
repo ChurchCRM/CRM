@@ -267,3 +267,15 @@ Cypress.Commands.add(
         });
     },
 );
+
+// -- Direct database access (node-side `db:query` task) --
+//
+// Schema-level guarantees — UNIQUE keys, foreign keys and their ON DELETE
+// rules, enum domains — have no HTTP surface, so the Volunteer v2 schema specs
+// assert them against the database itself (#9705). The task resolves with
+// `{ rows, error }` rather than rejecting, so a spec can assert that a write
+// was refused (ER_DUP_ENTRY, ER_NO_REFERENCED_ROW_2, ...) without failing the
+// test run.
+Cypress.Commands.add("dbQuery", (sql, params = []) => {
+    return cy.task("db:query", { sql, params }, { log: false });
+});
