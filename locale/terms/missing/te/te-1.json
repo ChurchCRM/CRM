@@ -1,60 +1,60 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "%d కుటుంబానికి ఇమెయిల్ పంపబడింది.|%d కుటుంబాలకు ఇమెయిల్ పంపబడింది.|%d కుటుంబాలకు ఇమెయిల్ పంపబడింది.",
-    "other": ""
+    "one": "%d కుటుంబానికి ఇమెయిల్ పంపబడింది.",
+    "other": "%d కుటుంబాలకు ఇమెయిల్ పంపబడింది."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "%d కుటుంబానికి PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.|%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.|%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.",
-    "other": ""
+    "one": "%d కుటుంబానికి PDF విజయవంతంగా ఇమెయిల్ చేయబడింది.",
+    "other": "%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది."
   },
-  "A geocoding error occurred — try again later": "",
-  "Address is incomplete (missing city, state, and ZIP)": "",
-  "All families already have coordinates.": "",
-  "Failed to update coordinates": "",
-  "Failed to update family coordinates": "",
-  "Geocoded all {{geocoded}} families. The map is now up to date.": "",
-  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "",
-  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "",
-  "Geocoding families… this can take up to a minute. You can keep this page open.": "",
-  "Geocoding…": "",
-  "No address on file": "",
-  "No match found — check the street address, city, and ZIP": "",
-  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "",
-  "Open a family to fix its address, then run this again.": "",
-  "Set up now": "",
-  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "",
+  "A geocoding error occurred — try again later": "జియోకోడింగ్ లోపం సంభవించింది — దయచేసి తర్వాత మళ్ళీ ప్రయత్నించండి",
+  "Address is incomplete (missing city, state, and ZIP)": "చిరునామా అసంపూర్ణంగా ఉంది (నగరం, రాష్ట్రం మరియు పిన్ కోడ్ లేవు)",
+  "All families already have coordinates.": "అన్ని కుటుంబాలకు ఇప్పటికే కోఆర్డినేట్‌లు ఉన్నాయి.",
+  "Failed to update coordinates": "కోఆర్డినేట్‌లను నవీకరించడంలో విఫలమైంది",
+  "Failed to update family coordinates": "కుటుంబ కోఆర్డినేట్‌లను నవీకరించడంలో విఫలమైంది",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "మొత్తం {{geocoded}} కుటుంబాలను జియోకోడ్ చేసారు. మ్యాప్ ఇప్పుడు తాజాగా ఉంది.",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "{{geocoded}} కుటుంబాలను జియోకోడ్ చేసారు. {{failed}} పరిష్కరించలేకపోయాము — దిగువ వివరాలు చూడండి.",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "{{total}} కుటుంబాలలో {{geocoded}} జియోకోడ్ చేసారు. {{overflow}} ఇంకా ప్రాసెస్ చేయలేదు — కొనసాగించడానికి మళ్ళీ అమలు చేయండి.",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "కుటుంబాలను జియోకోడింగ్ చేస్తోంది… దీనికి ఒక నిమిషం వరకు పట్టవచ్చు. మీరు ఈ పేజీని తెరిచి ఉంచవచ్చు.",
+  "Geocoding…": "జియోకోడింగ్…",
+  "No address on file": "ఫైల్‌లో చిరునామా లేదు",
+  "No match found — check the street address, city, and ZIP": "సరిపోలిక కనుగొనబడలేదు — వీధి చిరునామా, నగరం మరియు పిన్ కోడ్‌ని తనిఖీ చేయండి",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "2FA తప్పనిసరి చేసిన తర్వాత వినియోగదారులు నమోదు చేసుకోవడానికి ఉన్న రోజుల సంఖ్య. వెంటనే అమలు చేయడానికి (లెగసీ ప్రవర్తన) దీన్ని 0కి సెట్ చేయండి. యాక్టివ్ గ్రేస్ పీరియడ్‌ను తగ్గించడం వల్ల వినియోగదారులు వెంటనే లాక్ అవ్వవచ్చు.",
+  "Open a family to fix its address, then run this again.": "దాని చిరునామాను సరిచేయడానికి ఒక కుటుంబాన్ని తెరవండి, ఆపై దీన్ని మళ్ళీ అమలు చేయండి.",
+  "Set up now": "ఇప్పుడే సెటప్ చేయండి",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "ఇది OpenStreetMap ఉపయోగించి, కోఆర్డినేట్‌లు లేని ప్రతి కుటుంబానికి మ్యాప్ కోఆర్డినేట్‌లను కనుగొంటుంది. ఇది ఒక్కో రన్‌కు 50 కుటుంబాల వరకు ప్రాసెస్ చేస్తుంది; పూర్తి బ్యాచ్‌కు దాదాపు ఒక నిమిషం పడుతుంది. ఇది నడుస్తున్నప్పుడు మీరు ఈ పేజీని తెరిచి ఉంచవచ్చు. కొనసాగించాలా?",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "",
-    "other": ""
+    "one": "రెండు-కారకాల ప్రామాణీకరణ అవసరం. నమోదు చేసుకోవడానికి మీకు %d రోజు ఉంది.",
+    "other": "రెండు-కారకాల ప్రామాణీకరణ అవసరం. నమోదు చేసుకోవడానికి మీకు %d రోజులు ఉన్నాయి."
   },
-  "Unknown family": "",
-  "Update All Coordinates": "",
-  "Update All Family Coordinates": "",
-  "Update Coordinates": "",
+  "Unknown family": "తెలియని కుటుంబం",
+  "Update All Coordinates": "అన్ని కోఆర్డినేట్‌లను నవీకరించండి",
+  "Update All Family Coordinates": "అన్ని కుటుంబ కోఆర్డినేట్‌లను నవీకరించండి",
+  "Update Coordinates": "కోఆర్డినేట్‌లను నవీకరించండి",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} సభ్యుడిని కాపీ చేసారు",
+    "other": "{{count}} మంది సభ్యులను కాపీ చేసారు"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ఈ జాబితాలో {{count}} గ్రహీత ఉన్నారు — mailto: లింక్‌కు చాలా ఎక్కువ. బదులుగా చిరునామాలను కాపీ చేయండి ఉపయోగించండి.",
+    "other": "ఈ జాబితాలో {{count}} మంది గ్రహీతలు ఉన్నారు — mailto: లింక్‌కు చాలా ఎక్కువ. బదులుగా చిరునామాలను కాపీ చేయండి ఉపయోగించండి."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ఇమెయిల్ క్లయింట్‌కు గ్రహీతలు చాలా ఎక్కువ ({{count}} > {{max}}). బదులుగా చిరునామాలను కాపీ చేయండి ఉపయోగించండి.",
+    "other": "ఇమెయిల్ క్లయింట్‌కు గ్రహీతలు చాలా ఎక్కువ ({{count}} > {{max}}). బదులుగా చిరునామాలను కాపీ చేయండి ఉపయోగించండి."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} నిమిషం మిగిలి ఉంది",
+    "other": "{{count}} నిమిషాలు మిగిలి ఉన్నాయి"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} కుటుంబాన్ని జియోకోడ్ చేయలేకపోయాము",
+    "other": "{{count}} కుటుంబాలను జియోకోడ్ చేయలేకపోయాము"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…మరియు {{count}} మరొకటి. మిగిలినవి చూడడానికి మళ్ళీ అమలు చేయండి.",
+    "other": "…మరియు {{count}} మరిన్ని. మిగిలినవి చూడడానికి మళ్ళీ అమలు చేయండి."
   }
 }
