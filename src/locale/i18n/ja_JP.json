@@ -4287,5 +4287,28 @@
   "All Months": "すべての月",
   "No \"%s\" options are defined yet.": "\"%s\" オプションはまだ定義されていません。",
   "No events found for %s %d.": "%s %d のイベントが見つかりませんでした。",
-  "Try selecting a different event type, month, or year.": "別のイベントタイプ、月、または年を選択してみてください。"
+  "Try selecting a different event type, month, or year.": "別のイベントタイプ、月、または年を選択してみてください。",
+  "A geocoding error occurred — try again later": "ジオコーディングエラーが発生しました。後でもう一度お試しください",
+  "Address is incomplete (missing city, state, and ZIP)": "住所が不完全です(市区町村、都道府県、郵便番号が不足しています)",
+  "All families already have coordinates.": "すべての家族にはすでに座標が設定されています。",
+  "Failed to update coordinates": "座標の更新に失敗しました",
+  "Failed to update family coordinates": "家族の座標の更新に失敗しました",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "{{geocoded}}件の家族すべてをジオコーディングしました。マップは最新の状態です。",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "{{geocoded}}件の家族をジオコーディングしました。{{failed}}件は解決できませんでした — 詳細は以下をご覧ください。",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "{{total}}件中{{geocoded}}件の家族をジオコーディングしました。{{overflow}}件は未処理です — 続行するにはもう一度実行してください。",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "家族をジオコーディングしています…最大1分かかることがあります。このページを開いたままにしておいてください。",
+  "Geocoding…": "ジオコーディング中…",
+  "No address on file": "登録されている住所がありません",
+  "No match found — check the street address, city, and ZIP": "一致するものが見つかりませんでした — 番地、市区町村、郵便番号を確認してください",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "2要素認証が義務付けられた後、ユーザーが登録するまでの日数。0に設定するとすぐに強制されます(従来の動作)。有効な猶予期間を短縮すると、ユーザーが即座にロックアウトされる可能性があります。",
+  "Open a family to fix its address, then run this again.": "家族を開いて住所を修正してから、もう一度実行してください。",
+  "Set up now": "今すぐ設定",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "OpenStreetMapを使用して、座標が設定されていないすべての家族のマップ座標を検索します。1回の実行で最大50件の家族を処理し、1バッチ全体で約1分かかります。実行中はこのページを開いたままにしておくことができます。続行しますか?",
+  "Two-factor authentication is required. You have %d day to enroll.": {
+    "other": "2要素認証が必須です。登録まであと%d日です。"
+  },
+  "Unknown family": "不明な家族",
+  "Update All Coordinates": "すべての座標を更新",
+  "Update All Family Coordinates": "すべての家族の座標を更新",
+  "Update Coordinates": "座標を更新"
 }

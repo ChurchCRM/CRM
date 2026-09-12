@@ -17912,3 +17912,83 @@ msgstr "События для %s %d не найдены."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Попробуйте выбрать другой тип события, месяц или год."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Произошла ошибка геокодирования — попробуйте позже"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Адрес указан не полностью (отсутствует город, штат/область или почтовый индекс)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "У всех семей уже есть координаты."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Не удалось обновить координаты"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Не удалось обновить координаты семьи"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Геокодированы все семьи ({{geocoded}}). Карта обновлена."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Геокодировано семей: {{geocoded}}. Не удалось определить координаты для {{failed}} — подробности ниже."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Геокодировано {{geocoded}} из {{total}} семей. {{overflow}} ещё не обработано — запустите снова, чтобы продолжить."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Геокодирование семей… это может занять до минуты. Вы можете оставить страницу открытой."
+
+#: 
+msgid "Geocoding…"
+msgstr "Геокодирование…"
+
+#: 
+msgid "No address on file"
+msgstr "Адрес не указан"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Совпадений не найдено — проверьте улицу, город и почтовый индекс"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Количество дней, в течение которых пользователи должны настроить двухфакторную аутентификацию после того, как она станет обязательной. Установите 0, чтобы применить требование немедленно (прежнее поведение). Сокращение уже действующего льготного периода может немедленно заблокировать доступ пользователям."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Откройте карточку семьи, чтобы исправить адрес, а затем запустите это снова."
+
+#: 
+msgid "Set up now"
+msgstr "Настроить сейчас"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Эта функция находит координаты на карте для всех семей, у которых они отсутствуют, используя OpenStreetMap. За один запуск обрабатывается до 50 семей; полный пакет занимает около минуты. Вы можете оставить страницу открытой во время выполнения. Продолжить?"
+
+#: 
+msgid "Unknown family"
+msgstr "Неизвестная семья"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Обновить все координаты"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Обновить координаты всех семей"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Обновить координаты"
+

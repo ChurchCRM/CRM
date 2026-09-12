@@ -17894,3 +17894,83 @@ msgstr "Ingen hendelser funnet for %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Prøv å velge en annen hendelsestype, måned eller år."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Det oppstod en geokodingsfeil — prøv igjen senere"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adressen er ufullstendig (mangler by, fylke og postnummer)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alle familier har allerede koordinater."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Kunne ikke oppdatere koordinater"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Kunne ikke oppdatere familiekoordinater"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodet alle {{geocoded}} familier. Kartet er nå oppdatert."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodet {{geocoded}} familier. {{failed}} kunne ikke løses — se detaljer nedenfor."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Geokodet {{geocoded}} av {{total}} familier. {{overflow}} er ikke behandlet ennå — kjør igjen for å fortsette."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Geokoder familier … dette kan ta opptil et minutt. Du kan la denne siden være åpen."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokoder …"
+
+#: 
+msgid "No address on file"
+msgstr "Ingen adresse registrert"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Ingen treff funnet — sjekk gateadresse, by og postnummer"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Antall dager brukere har til å registrere seg for tofaktorautentisering etter at det er gjort obligatorisk. Sett til 0 for å håndheve umiddelbart (tidligere oppførsel). Å forkorte en aktiv overgangsperiode kan låse brukere ute umiddelbart."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Åpne en familie for å rette adressen, og kjør deretter dette igjen."
+
+#: 
+msgid "Set up now"
+msgstr "Sett opp nå"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Dette finner kartkoordinater for alle familier som mangler dem, ved hjelp av OpenStreetMap. Det behandler opptil 50 familier per kjøring; en full omgang tar omtrent et minutt. Du kan la denne siden være åpen mens den kjører. Fortsette?"
+
+#: 
+msgid "Unknown family"
+msgstr "Ukjent familie"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Oppdater alle koordinater"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Oppdater alle familiekoordinater"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Oppdater koordinater"
+

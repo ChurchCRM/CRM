@@ -4287,5 +4287,28 @@
   "All Months": "所有月份",
   "No \"%s\" options are defined yet.": "尚未定義任何「%s」選項。",
   "No events found for %s %d.": "未找到 %s %d 的任何活動。",
-  "Try selecting a different event type, month, or year.": "請嘗試選擇不同的活動類型、月份或年份。"
+  "Try selecting a different event type, month, or year.": "請嘗試選擇不同的活動類型、月份或年份。",
+  "A geocoding error occurred — try again later": "發生地理編碼錯誤，請稍後再試",
+  "Address is incomplete (missing city, state, and ZIP)": "地址不完整（缺少城市、州/省和郵遞區號）",
+  "All families already have coordinates.": "所有家庭都已有座標。",
+  "Failed to update coordinates": "更新座標失敗",
+  "Failed to update family coordinates": "更新家庭座標失敗",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "已為全部 {{geocoded}} 個家庭完成地理編碼。地圖現已更新。",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "已為 {{geocoded}} 個家庭完成地理編碼。{{failed}} 個無法解析 — 詳見下方說明。",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "已為 {{total}} 個家庭中的 {{geocoded}} 個完成地理編碼。尚有 {{overflow}} 個未處理 — 請再次執行以繼續。",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "正在為家庭進行地理編碼……這可能需要長達一分鐘。您可以保持此頁面開啟。",
+  "Geocoding…": "地理編碼中……",
+  "No address on file": "沒有存檔地址",
+  "No match found — check the street address, city, and ZIP": "找不到相符結果 — 請檢查街道地址、城市和郵遞區號",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "強制啟用雙因素驗證（2FA）後，使用者可用來註冊的天數。設為 0 表示立即強制執行（舊有行為）。縮短正在進行中的寬限期可能導致使用者立即被鎖定。",
+  "Open a family to fix its address, then run this again.": "開啟該家庭以修正其地址，然後再次執行此操作。",
+  "Set up now": "立即設定",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "此功能會使用 OpenStreetMap 為每個缺少座標的家庭尋找地圖座標。每次執行最多處理 50 個家庭，完整一批約需一分鐘。執行期間您可以保持此頁面開啟。是否繼續？",
+  "Two-factor authentication is required. You have %d day to enroll.": {
+    "other": "需要雙因素驗證。您還有 %d 天可以完成註冊。"
+  },
+  "Unknown family": "未知家庭",
+  "Update All Coordinates": "更新所有座標",
+  "Update All Family Coordinates": "更新所有家庭座標",
+  "Update Coordinates": "更新座標"
 }

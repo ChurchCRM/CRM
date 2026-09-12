@@ -4287,5 +4287,28 @@
   "All Months": "所有月份",
   "No \"%s\" options are defined yet.": "尚未定义任何\"%s\"选项。",
   "No events found for %s %d.": "未找到 %s %d 的任何活动。",
-  "Try selecting a different event type, month, or year.": "请尝试选择不同的活动类型、月份或年份。"
+  "Try selecting a different event type, month, or year.": "请尝试选择不同的活动类型、月份或年份。",
+  "A geocoding error occurred — try again later": "发生地理编码错误 — 请稍后重试",
+  "Address is incomplete (missing city, state, and ZIP)": "地址不完整(缺少城市、州/省和邮政编码)",
+  "All families already have coordinates.": "所有家庭都已具有坐标。",
+  "Failed to update coordinates": "更新坐标失败",
+  "Failed to update family coordinates": "更新家庭坐标失败",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "已为全部 {{geocoded}} 个家庭完成地理编码。地图现已更新。",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "已为 {{geocoded}} 个家庭完成地理编码。{{failed}} 个未能解析 — 详情见下文。",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "已为 {{total}} 个家庭中的 {{geocoded}} 个完成地理编码。{{overflow}} 个尚未处理 — 请再次运行以继续。",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "正在对家庭进行地理编码……这可能需要长达一分钟。您可以让此页面保持打开状态。",
+  "Geocoding…": "正在进行地理编码……",
+  "No address on file": "没有存档地址",
+  "No match found — check the street address, city, and ZIP": "未找到匹配项 — 请检查街道地址、城市和邮政编码",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "强制启用双重验证(2FA)后,用户可用于注册的天数。设为 0 表示立即强制执行(旧版行为)。缩短正在生效的宽限期可能会立即导致用户被锁定。",
+  "Open a family to fix its address, then run this again.": "打开一个家庭以修正其地址,然后再次运行此操作。",
+  "Set up now": "立即设置",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "此操作使用 OpenStreetMap 为每个缺少地图坐标的家庭查找坐标。每次运行最多处理 50 个家庭;完成一整批大约需要一分钟。运行期间您可以让此页面保持打开状态。是否继续?",
+  "Two-factor authentication is required. You have %d day to enroll.": {
+    "other": "需要进行双重验证。您还有 %d 天可以完成注册。"
+  },
+  "Unknown family": "未知家庭",
+  "Update All Coordinates": "更新所有坐标",
+  "Update All Family Coordinates": "更新所有家庭坐标",
+  "Update Coordinates": "更新坐标"
 }

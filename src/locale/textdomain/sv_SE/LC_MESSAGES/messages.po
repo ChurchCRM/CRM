@@ -17914,3 +17914,83 @@ msgstr "Inga händelser hittades för %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Prova att välja en annan händelsetyp, månad eller år."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Ett geokodningsfel uppstod — försök igen senare"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adressen är ofullständig (saknar stad, delstat och postnummer)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alla familjer har redan koordinater."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Det gick inte att uppdatera koordinaterna"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Det gick inte att uppdatera familjens koordinater"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodade alla {{geocoded}} familjer. Kartan är nu uppdaterad."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodade {{geocoded}} familjer. {{failed}} kunde inte lösas — se detaljer nedan."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Geokodade {{geocoded}} av {{total}} familjer. {{overflow}} har inte bearbetats än — kör igen för att fortsätta."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Geokodar familjer… detta kan ta upp till en minut. Du kan låta sidan vara öppen."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokodar…"
+
+#: 
+msgid "No address on file"
+msgstr "Ingen adress registrerad"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Ingen träff hittades — kontrollera gatuadress, stad och postnummer"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Antal dagar användare har på sig att registrera tvåfaktorsautentisering (2FA) efter att det blivit obligatoriskt. Ange 0 för att verkställa omedelbart (äldre beteende). Att förkorta en aktiv respittid kan låsa ute användare omedelbart."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Öppna en familj för att åtgärda dess adress och kör sedan detta igen."
+
+#: 
+msgid "Set up now"
+msgstr "Konfigurera nu"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Detta hittar kartkoordinater för alla familjer som saknar dem, med hjälp av OpenStreetMap. Det bearbetar upp till 50 familjer per körning; en full batch tar cirka en minut. Du kan låta sidan vara öppen medan den körs. Fortsätta?"
+
+#: 
+msgid "Unknown family"
+msgstr "Okänd familj"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Uppdatera alla koordinater"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Uppdatera alla familjekoordinater"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Uppdatera koordinater"
+

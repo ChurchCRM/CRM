@@ -17843,3 +17843,83 @@ msgstr "Δεν βρέθηκαν εκδηλώσεις για %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Δοκιμάστε να επιλέξετε διαφορετικό τύπο εκδήλωσης, μήνα ή έτος."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Παρουσιάστηκε σφάλμα γεωκωδικοποίησης — δοκιμάστε ξανά αργότερα"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Η διεύθυνση είναι ελλιπής (λείπει η πόλη, η πολιτεία και ο ταχυδρομικός κώδικας)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Όλες οι οικογένειες έχουν ήδη συντεταγμένες."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Αποτυχία ενημέρωσης συντεταγμένων"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Αποτυχία ενημέρωσης συντεταγμένων οικογένειας"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Έγινε γεωκωδικοποίηση και των {{geocoded}} οικογενειών. Ο χάρτης είναι πλέον ενημερωμένος."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Έγινε γεωκωδικοποίηση {{geocoded}} οικογενειών. {{failed}} δεν ήταν δυνατό να επιλυθούν — δείτε λεπτομέρειες παρακάτω."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Έγινε γεωκωδικοποίηση {{geocoded}} από {{total}} οικογένειες. {{overflow}} δεν έχουν επεξεργαστεί ακόμη — εκτελέστε ξανά για να συνεχίσετε."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Γίνεται γεωκωδικοποίηση οικογενειών… αυτό μπορεί να διαρκέσει έως ένα λεπτό. Μπορείτε να αφήσετε αυτή τη σελίδα ανοιχτή."
+
+#: 
+msgid "Geocoding…"
+msgstr "Γεωκωδικοποίηση…"
+
+#: 
+msgid "No address on file"
+msgstr "Δεν υπάρχει καταχωρημένη διεύθυνση"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Δεν βρέθηκε αντιστοιχία — ελέγξτε τη διεύθυνση, την πόλη και τον ταχυδρομικό κώδικα"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Αριθμός ημερών που έχουν οι χρήστες για να εγγραφούν στον έλεγχο ταυτότητας δύο παραγόντων (2FA) αφότου καταστεί υποχρεωτικός. Ορίστε 0 για άμεση επιβολή (παλαιά συμπεριφορά). Η μείωση μιας ενεργής περιόδου χάριτος ενδέχεται να αποκλείσει αμέσως τους χρήστες."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Ανοίξτε μια οικογένεια για να διορθώσετε τη διεύθυνσή της και, στη συνέχεια, εκτελέστε το ξανά."
+
+#: 
+msgid "Set up now"
+msgstr "Ρύθμιση τώρα"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Αυτό εντοπίζει συντεταγμένες χάρτη για κάθε οικογένεια που δεν τις διαθέτει, χρησιμοποιώντας το OpenStreetMap. Επεξεργάζεται έως 50 οικογένειες ανά εκτέλεση· μια πλήρης παρτίδα διαρκεί περίπου ένα λεπτό. Μπορείτε να αφήσετε αυτή τη σελίδα ανοιχτή όσο εκτελείται. Συνέχεια;"
+
+#: 
+msgid "Unknown family"
+msgstr "Άγνωστη οικογένεια"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Ενημέρωση Όλων των Συντεταγμένων"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Ενημέρωση Όλων των Συντεταγμένων Οικογενειών"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Ενημέρωση Συντεταγμένων"
+

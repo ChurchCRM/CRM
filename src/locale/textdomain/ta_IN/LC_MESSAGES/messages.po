@@ -17902,3 +17902,83 @@ msgstr "%s %d க்கான நிகழ்வுகள் எதுவும�
 msgid "Try selecting a different event type, month, or year."
 msgstr "வேறு நிகழ்வு வகை, மாதம் அல்லது ஆண்டை தேர்வு செய்து பாருங்கள்."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "புவிக்குறியீட்டில் பிழை ஏற்பட்டது — பின்னர் மீண்டும் முயற்சிக்கவும்"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "முகவரி முழுமையடையவில்லை (நகரம், மாநிலம் மற்றும் அஞ்சல் குறியீடு இல்லை)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "அனைத்து குடும்பங்களுக்கும் ஏற்கனவே ஆயத்தொலைவுகள் உள்ளன."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "ஆயத்தொலைவுகளைப் புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "குடும்ப ஆயத்தொலைவுகளைப் புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "அனைத்து {{geocoded}} குடும்பங்களும் புவிக்குறியிடப்பட்டன. வரைபடம் இப்போது புதுப்பித்த நிலையில் உள்ளது."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} குடும்பங்கள் புவிக்குறியிடப்பட்டன. {{failed}} தீர்க்க முடியவில்லை — கீழே உள்ள விவரங்களைப் பார்க்கவும்."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "{{total}} குடும்பங்களில் {{geocoded}} புவிக்குறியிடப்பட்டன. {{overflow}} இன்னும் செயலாக்கப்படவில்லை — தொடர மீண்டும் இயக்கவும்."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "குடும்பங்களை புவிக்குறியிடுகிறது… இதற்கு ஒரு நிமிடம் வரை ஆகலாம். இந்தப் பக்கத்தைத் திறந்தே வைத்திருக்கலாம்."
+
+#: 
+msgid "Geocoding…"
+msgstr "புவிக்குறியிடுகிறது…"
+
+#: 
+msgid "No address on file"
+msgstr "பதிவில் முகவரி இல்லை"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "பொருத்தம் எதுவும் கிடைக்கவில்லை — தெரு முகவரி, நகரம் மற்றும் அஞ்சல் குறியீட்டைச் சரிபார்க்கவும்"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "2FA கட்டாயமாக்கப்பட்ட பிறகு பயனர்கள் அதில் பதிவு செய்ய வேண்டிய நாட்களின் எண்ணிக்கை. உடனடியாக அமல்படுத்த 0 எனச் அமைக்கவும் (பழைய நடத்தை). செயலிலுள்ள சலுகைக் காலத்தைக் குறைப்பது பயனர்களை உடனடியாகத் தடுக்கக்கூடும்."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "முகவரியைச் சரிசெய்ய ஒரு குடும்பத்தைத் திறந்து, பின்னர் இதை மீண்டும் இயக்கவும்."
+
+#: 
+msgid "Set up now"
+msgstr "இப்போது அமைக்கவும்"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "இது OpenStreetMap-ஐப் பயன்படுத்தி, ஆயத்தொலைவுகள் இல்லாத ஒவ்வொரு குடும்பத்திற்கும் வரைபட ஆயத்தொலைவுகளைக் கண்டறியும். ஒரு இயக்கத்திற்கு 50 குடும்பங்கள் வரை செயலாக்கப்படும்; ஒரு முழுத் தொகுதிக்கு சுமார் ஒரு நிமிடம் ஆகும். இது இயங்கும்போது இந்தப் பக்கத்தைத் திறந்தே வைத்திருக்கலாம். தொடரவா?"
+
+#: 
+msgid "Unknown family"
+msgstr "தெரியாத குடும்பம்"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "அனைத்து ஆயத்தொலைவுகளையும் புதுப்பிக்கவும்"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "அனைத்து குடும்ப ஆயத்தொலைவுகளையும் புதுப்பிக்கவும்"
+
+#: 
+msgid "Update Coordinates"
+msgstr "ஆயத்தொலைவுகளைப் புதுப்பிக்கவும்"
+

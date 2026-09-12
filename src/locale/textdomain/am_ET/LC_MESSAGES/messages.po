@@ -17851,3 +17851,83 @@ msgstr "ለ%s %d ምንም ዝግጅቶች አልተገኙም።"
 msgid "Try selecting a different event type, month, or year."
 msgstr "ሌላ ዝግጅት አይነት፣ ወር ወይም ዓመት ለመምረጥ ሞክሩ።"
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "የጂኦኮዲንግ ስህተት ተከስቷል — በኋላ እንደገና ይሞክሩ"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "አድራሻው ያልተሟላ ነው (ከተማ፣ ክልል እና ዚፕ ኮድ ይጎድላል)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "ሁሉም ቤተሰቦች አስቀድሞ መጋጠሚያዎች አሏቸው።"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "መጋጠሚያዎችን ማዘመን አልተሳካም"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "የቤተሰብ መጋጠሚያዎችን ማዘመን አልተሳካም"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "ሁሉንም {{geocoded}} ቤተሰቦች በጂኦኮድ ተሠርተዋል። ካርታው አሁን ወቅታዊ ነው።"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} ቤተሰቦች በጂኦኮድ ተሠርተዋል። {{failed}} ሊፈቱ አልቻሉም — ከታች ዝርዝሩን ይመልከቱ።"
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "ከ{{total}} ቤተሰቦች መካከል {{geocoded}} በጂኦኮድ ተሠርተዋል። {{overflow}} ገና አልተሠሩም — ለመቀጠል እንደገና ያሂዱ።"
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "ቤተሰቦችን በጂኦኮድ በማድረግ ላይ… ይህ እስከ አንድ ደቂቃ ሊወስድ ይችላል። ይህን ገጽ ክፍት አድርገው ማቆየት ይችላሉ።"
+
+#: 
+msgid "Geocoding…"
+msgstr "በጂኦኮድ በማድረግ ላይ…"
+
+#: 
+msgid "No address on file"
+msgstr "የተመዘገበ አድራሻ የለም"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "ምንም ተመሳሳይ አልተገኘም — የመንገድ አድራሻውን፣ ከተማውን እና ዚፕ ኮዱን ያረጋግጡ"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "ተጠቃሚዎች የሁለት-ደረጃ ማረጋገጫን (2FA) ግዴታ ከሆነ በኋላ ለመመዝገብ የሚኖራቸው የቀናት ብዛት። ወዲያውኑ ለማስፈጸም (የቀድሞ ባህሪ) ወደ 0 ያዘጋጁ። ንቁ የሆነውን የማቆያ ጊዜ ማሳጠር ተጠቃሚዎችን ወዲያውኑ ሊዘጋባቸው ይችላል።"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "አድራሻውን ለማስተካከል ቤተሰቡን ይክፈቱ፣ ከዚያም ይህን እንደገና ያሂዱ።"
+
+#: 
+msgid "Set up now"
+msgstr "አሁን ያዋቅሩ"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "ይህ OpenStreetMap ተጠቅሞ መጋጠሚያ ለሌላቸው ለእያንዳንዱ ቤተሰብ የካርታ መጋጠሚያዎችን ያገኛል። በአንድ ሩጫ እስከ 50 ቤተሰቦችን ያካሂዳል፤ ሙሉ ስብስብ ወደ አንድ ደቂቃ ያህል ይወስዳል። እየሄደ ሳለ ይህን ገጽ ክፍት አድርገው ማቆየት ይችላሉ። ይቀጥሉ?"
+
+#: 
+msgid "Unknown family"
+msgstr "ያልታወቀ ቤተሰብ"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "ሁሉንም መጋጠሚያዎች አዘምን"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "ሁሉንም የቤተሰብ መጋጠሚያዎች አዘምን"
+
+#: 
+msgid "Update Coordinates"
+msgstr "መጋጠሚያዎችን አዘምን"
+

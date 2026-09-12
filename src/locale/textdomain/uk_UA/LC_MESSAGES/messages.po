@@ -17857,3 +17857,83 @@ msgstr "Подій для %s %d не знайдено."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Спробуйте вибрати інший тип події, місяць або рік."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Сталася помилка геокодування — спробуйте пізніше"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Адреса неповна (відсутні місто, область та поштовий індекс)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Усі сім'ї вже мають координати."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Не вдалося оновити координати"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Не вдалося оновити координати сім'ї"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Геокодовано всі {{geocoded}} сімей. Карта тепер актуальна."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Геокодовано {{geocoded}} сімей. {{failed}} не вдалося визначити — див. деталі нижче."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Геокодовано {{geocoded}} із {{total}} сімей. {{overflow}} ще не оброблено — запустіть знову, щоб продовжити."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Геокодування сімей… це може зайняти до хвилини. Ви можете залишити цю сторінку відкритою."
+
+#: 
+msgid "Geocoding…"
+msgstr "Геокодування…"
+
+#: 
+msgid "No address on file"
+msgstr "Немає адреси в записі"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Збігів не знайдено — перевірте вулицю, місто та поштовий індекс"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Кількість днів, які мають користувачі для реєстрації у двофакторній автентифікації після її запровадження. Встановіть 0, щоб застосувати негайно (застаріла поведінка). Скорочення активного пільгового періоду може негайно заблокувати доступ користувачам."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Відкрийте сім'ю, щоб виправити її адресу, а потім запустіть це знову."
+
+#: 
+msgid "Set up now"
+msgstr "Налаштувати зараз"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Це знаходить координати на карті для кожної сім'ї, якій їх бракує, використовуючи OpenStreetMap. За один запуск обробляється до 50 сімей; повна партія займає близько хвилини. Ви можете залишити цю сторінку відкритою під час виконання. Продовжити?"
+
+#: 
+msgid "Unknown family"
+msgstr "Невідома сім'я"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Оновити всі координати"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Оновити координати всіх сімей"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Оновити координати"
+

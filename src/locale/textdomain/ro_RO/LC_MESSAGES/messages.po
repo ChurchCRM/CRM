@@ -17394,6 +17394,10 @@ msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr "Sigur doriti sa eliminati rolul '{{name}}'?"
 
 #: 
+msgid "Auto"
+msgstr "Automat"
+
+#: 
 msgid "Auto follows your OS or browser setting; Light and Dark override it"
 msgstr "Auto urmeaza setarile sistemului de operare sau ale browserului; Luminos si Intunecat le suprascriu"
 
@@ -17882,4 +17886,84 @@ msgstr "Nu s-au găsit evenimente pentru %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Încercați să selectați un alt tip de eveniment, lună sau an."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "A apărut o eroare de geocodare — încercați din nou mai târziu"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa este incompletă (lipsesc orașul, județul și codul poștal)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Toate familiile au deja coordonate."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Actualizarea coordonatelor a eșuat"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Actualizarea coordonatelor familiei a eșuat"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Au fost geocodate toate cele {{geocoded}} familii. Harta este acum actualizată."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Au fost geocodate {{geocoded}} familii. {{failed}} nu au putut fi rezolvate — vedeți detaliile de mai jos."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Au fost geocodate {{geocoded}} din {{total}} familii. {{overflow}} nu au fost încă procesate — rulați din nou pentru a continua."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Se geocodează familiile… acest lucru poate dura până la un minut. Puteți lăsa această pagină deschisă."
+
+#: 
+msgid "Geocoding…"
+msgstr "Se geocodează…"
+
+#: 
+msgid "No address on file"
+msgstr "Nicio adresă înregistrată"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nu s-a găsit nicio corespondență — verificați strada, orașul și codul poștal"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Numărul de zile pe care utilizatorii le au la dispoziție pentru a activa autentificarea în doi factori (2FA) după ce aceasta devine obligatorie. Setați la 0 pentru a o impune imediat (comportament vechi). Scurtarea unei perioade de grație active poate bloca imediat accesul utilizatorilor."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Deschideți o familie pentru a-i corecta adresa, apoi rulați din nou."
+
+#: 
+msgid "Set up now"
+msgstr "Configurați acum"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Aceasta găsește coordonatele pe hartă pentru fiecare familie căreia îi lipsesc, folosind OpenStreetMap. Procesează până la 50 de familii pe rulare; un lot complet durează aproximativ un minut. Puteți lăsa această pagină deschisă în timp ce rulează. Continuați?"
+
+#: 
+msgid "Unknown family"
+msgstr "Familie necunoscută"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Actualizează toate coordonatele"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Actualizează toate coordonatele familiilor"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Actualizează coordonatele"
 

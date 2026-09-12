@@ -17820,3 +17820,83 @@ msgstr "Nisu pronađeni događaji za %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Pokušajte odabrati drugi tip događaja, mjesec ili godinu."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Došlo je do pogreške geokodiranja — pokušajte ponovno kasnije"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa je nepotpuna (nedostaju grad, županija i poštanski broj)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Sve obitelji već imaju koordinate."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Ažuriranje koordinata nije uspjelo"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Ažuriranje koordinata obitelji nije uspjelo"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodirano je svih {{geocoded}} obitelji. Karta je sada ažurirana."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodirano je {{geocoded}} obitelji. {{failed}} nije bilo moguće razriješiti — pogledajte pojedinosti u nastavku."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Geokodirano je {{geocoded}} od {{total}} obitelji. {{overflow}} još nije obrađeno — pokrenite ponovno za nastavak."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Geokodiranje obitelji… ovo može potrajati do minute. Ovu stranicu možete ostaviti otvorenom."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokodiranje…"
+
+#: 
+msgid "No address on file"
+msgstr "Nema zabilježene adrese"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nije pronađeno podudaranje — provjerite adresu, grad i poštanski broj"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Broj dana koje korisnici imaju za prijavu na dvofaktorsku autentifikaciju (2FA) nakon što postane obavezna. Postavite na 0 za trenutnu primjenu (prijašnje ponašanje). Skraćivanje aktivnog razdoblja odgode može odmah zaključati korisnike."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Otvorite obitelj kako biste ispravili njezinu adresu, a zatim ponovno pokrenite ovo."
+
+#: 
+msgid "Set up now"
+msgstr "Postavi sada"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Ovo pronalazi koordinate na karti za svaku obitelj kojoj nedostaju, koristeći OpenStreetMap. Obrađuje do 50 obitelji po pokretanju; potpuna serija traje otprilike minutu. Ovu stranicu možete ostaviti otvorenom dok se izvodi. Nastaviti?"
+
+#: 
+msgid "Unknown family"
+msgstr "Nepoznata obitelj"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Ažuriraj sve koordinate"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Ažuriraj koordinate svih obitelji"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Ažuriraj koordinate"
+

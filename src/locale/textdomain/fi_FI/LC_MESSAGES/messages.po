@@ -17810,3 +17810,83 @@ msgstr "Kohteelle %s %d ei löytynyt tapahtumia."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Yritä valita eri tapahtumatyyppi, kuukausi tai vuosi."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Geokoodauksessa tapahtui virhe — yritä myöhemmin uudelleen"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Osoite on puutteellinen (kaupunki, alue ja postinumero puuttuvat)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Kaikilla perheillä on jo koordinaatit."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Koordinaattien päivittäminen epäonnistui"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Perheen koordinaattien päivittäminen epäonnistui"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Kaikki {{geocoded}} perhettä geokoodattu. Kartta on nyt ajan tasalla."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} perhettä geokoodattu. {{failed}} ei voitu ratkaista — katso tiedot alta."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "{{geocoded}}/{{total}} perhettä geokoodattu. {{overflow}} käsittelemättä — suorita uudelleen jatkaaksesi."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Geokoodataan perheitä… tämä voi kestää jopa minuutin. Voit pitää tämän sivun auki."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokoodataan…"
+
+#: 
+msgid "No address on file"
+msgstr "Osoitetta ei ole tallennettu"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Osumaa ei löytynyt — tarkista katuosoite, kaupunki ja postinumero"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Päivien määrä, jonka aikana käyttäjien on otettava kaksivaiheinen tunnistautuminen käyttöön sen tultua pakolliseksi. Aseta arvoksi 0 pakottaaksesi sen käyttöön välittömästi (vanha toimintatapa). Aktiivisen siirtymäajan lyhentäminen voi lukita käyttäjät ulos välittömästi."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Avaa perhe korjataksesi sen osoitteen ja suorita tämä sitten uudelleen."
+
+#: 
+msgid "Set up now"
+msgstr "Ota käyttöön nyt"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Tämä hakee karttakoordinaatit jokaiselle perheelle, jolta ne puuttuvat, käyttäen OpenStreetMapia. Se käsittelee enintään 50 perhettä ajokerralla; täysi erä kestää noin minuutin. Voit pitää tämän sivun auki suorituksen ajan. Jatketaanko?"
+
+#: 
+msgid "Unknown family"
+msgstr "Tuntematon perhe"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Päivitä kaikki koordinaatit"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Päivitä kaikkien perheiden koordinaatit"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Päivitä koordinaatit"
+
