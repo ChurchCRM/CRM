@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-12 05:35+0000\n"
+"POT-Creation-Date: 2026-09-12 07:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1888,6 +1888,9 @@ msgid "Campaigns Sent"
 msgstr ""
 
 msgid "Can only review and verify their own family. No other access."
+msgstr ""
+
+msgid "Can't change your own active status"
 msgstr ""
 
 msgid "Can't delete yourself"
@@ -7290,6 +7293,12 @@ msgstr ""
 msgid "Marked the Family as Inactive"
 msgstr ""
 
+msgid "Marked the Person as Active"
+msgstr ""
+
+msgid "Marked the Person as Inactive"
+msgstr ""
+
 #. Context: countries
 msgid "Marshall Islands"
 msgstr ""
@@ -9069,7 +9078,13 @@ msgstr ""
 msgid "Please confirm activation of family"
 msgstr ""
 
+msgid "Please confirm activation of person"
+msgstr ""
+
 msgid "Please confirm deactivation of family"
+msgstr ""
+
+msgid "Please confirm deactivation of person"
 msgstr ""
 
 msgid "Please confirm deletion of"
@@ -10669,8 +10684,14 @@ msgstr ""
 msgid "Show/Hide Lost Password Link on the login screen"
 msgstr ""
 
+msgid "Showing active persons only."
+msgstr ""
+
 #. plugin:holidays:section:2:title
 msgid "Showing and hiding individual countries"
+msgstr ""
+
+msgid "Showing inactive persons only."
 msgstr ""
 
 #, php-format
@@ -11463,6 +11484,9 @@ msgid "Third-party extensions."
 msgstr ""
 
 msgid "This Family is Inactive"
+msgstr ""
+
+msgid "This Person is Inactive"
 msgstr ""
 
 msgid "This account is locked because of too many failed login attempts."
@@ -12592,6 +12616,15 @@ msgstr ""
 msgid "View User"
 msgstr ""
 
+msgid "View active only"
+msgstr ""
+
+msgid "View all"
+msgstr ""
+
+msgid "View all (including inactive)"
+msgstr ""
+
 msgid "View all families on an interactive map"
 msgstr ""
 
@@ -12629,6 +12662,9 @@ msgid "View full photo"
 msgstr ""
 
 msgid "View group members, roles, and properties"
+msgstr ""
+
+msgid "View inactive only"
 msgstr ""
 
 msgid "View pledge or payment details"
