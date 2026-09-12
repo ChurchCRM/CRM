@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
+use ChurchCRM\Service\VolunteerAuthorizationService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
@@ -25,6 +26,13 @@ use Propel\Runtime\Connection\ConnectionInterface;
 class User extends BaseUser
 {
     private $provisional2FAKey;
+
+    /**
+     * Per-request memo for isVolunteerCoordinatorEnabled(); null means "not computed yet".
+     * The scope half of that predicate is a query, and both the route middleware and the
+     * menu builder ask for it on the same request (#9706).
+     */
+    private ?bool $volunteerCoordinatorEnabled = null;
 
     public function getId()
     {
@@ -259,6 +267,62 @@ class User extends BaseUser
     public static function isVolunteerV1Enabled(): bool
     {
         return in_array(self::getVolunteerVersion(), ['v1', 'both'], true);
+    }
+
+    /**
+     * Global Volunteer Manager (#9706) — authority over every ministry and every team.
+     *
+     * Same three-line shape as isManageFundraisersEnabled(): the EditSelf-exclusive
+     * short-circuit first (a volunteer is never a manager), then the module feature
+     * flag, then admin-or-flag. `sVolunteerVersion` takes the place bEnabledFundraiser
+     * holds for fundraisers — the manager tier only exists while V2 is rolled out.
+     *
+     * This is the ONE place the administrator bypass for volunteer management is
+     * decided; VolunteerAuthorizationService::isGlobalManager() delegates here and
+     * every other volunteer predicate flows through that (design §4.1).
+     */
+    public function isVolunteerManagerEnabled(): bool
+    {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
+        return self::isVolunteerV2Enabled() && ($this->isAdmin() || $this->isVolunteerManager());
+    }
+
+    /**
+     * May this user open the Volunteer coordinator area at all (#9706)?
+     *
+     * True for an administrator, a global volunteer manager, and anyone holding at
+     * least one volunteer_scope_vscp row (ministry coordinator or team leader).
+     *
+     * Memoised per request because the scope half is a database query and both
+     * VolunteerCoordinatorRoleAuthMiddleware and Menu::buildMenuItems() ask for it —
+     * menu visibility must mirror the route gate exactly (design §3.5, A11), so both
+     * must call this single predicate rather than re-deriving the rule.
+     */
+    public function isVolunteerCoordinatorEnabled(): bool
+    {
+        if ($this->volunteerCoordinatorEnabled !== null) {
+            return $this->volunteerCoordinatorEnabled;
+        }
+
+        if ($this->isVolunteerManagerEnabled()) {
+            // Covers the administrator bypass, the manager flag, the rollout flag
+            // and the EditSelf-exclusive short-circuit in one call.
+            $this->volunteerCoordinatorEnabled = true;
+
+            return true;
+        }
+
+        if ($this->isEditSelfExclusive() || !self::isVolunteerV2Enabled()) {
+            $this->volunteerCoordinatorEnabled = false;
+
+            return false;
+        }
+
+        $this->volunteerCoordinatorEnabled = (new VolunteerAuthorizationService())->hasAnyScope($this);
+
+        return $this->volunteerCoordinatorEnabled;
     }
 
     /**
