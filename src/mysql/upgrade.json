@@ -110,7 +110,8 @@
       "/mysql/upgrade/7.7.0-2fa-grace-period.sql",
       "/mysql/upgrade/7.7.0-add-person-deceased-date.sql",
       "/mysql/upgrade/7.7.0-add-person-datedeactivated.sql",
-      "/mysql/upgrade/7.7.0-events-utf8mb4.sql"
+      "/mysql/upgrade/7.7.0-events-utf8mb4.sql",
+      "/mysql/upgrade/7.7.0-pledge-fyid-index.sql"
     ],
     "dbVersion": "7.7.0"
   }

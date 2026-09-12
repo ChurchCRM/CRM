@@ -137,18 +137,32 @@ describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
   VIEWPORTS.forEach(({ label, width, height }) => {
     it(`[${label}] dropdown escapes table wrapper; container overflow is clip/visible`, () => {
       cy.viewport(width, height);
+
+      // Intercept the DataTable AJAX before visiting so we can wait for
+      // it to complete. Without this wait, the pill click fires while the
+      // initial ?fyid=30 request is still in-flight; DataTables may drop
+      // or defer ajax.url().load() calls made during an active request,
+      // so the All-Time reload never fires and the row assertion times out.
+      cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeInit");
       cy.visit("/people/family/1");
 
-      // DataTable initialises after two async user-setting POSTs.
-      // Wait for the DataTables wrapper element that appears on init.
-      cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
+      // Wait for the initial DataTable AJAX (fyid=30, returns empty) to
+      // complete before clicking the pill. The wrapper also confirms init.
+      cy.wait("@pledgeInit");
+      cy.get("#pledge-payment-v2-table_wrapper").should("exist");
+
+      // Re-arm the intercept for the All-Time reload.
+      cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeAllTime");
 
       // Seed pledges for family 1 are from 2018; the default FY filter hides them.
       // Click "All Time" to remove the filter and reveal all rows.
-      cy.get('.pledge-fy-pill[data-fy=""]').click();
+      cy.get(".pledge-fy-pill[data-fy='0']").click();
+
+      // Wait for the All-Time AJAX to complete so DataTables has rendered rows.
+      cy.wait("@pledgeAllTime");
 
       // Wait for actual data rows (not the DataTables "No data available" empty row).
-      cy.get("#pledge-payment-v2-table tbody tr:not(.dataTables_empty)", { timeout: 10000 })
+      cy.get("#pledge-payment-v2-table tbody tr:not(.dataTables_empty)")
         .should("have.length.at.least", 1);
 
       assertDropdownVisible(

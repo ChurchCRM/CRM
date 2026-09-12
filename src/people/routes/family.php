@@ -6,6 +6,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\FamilyCustomQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\TimelineService;
@@ -175,7 +177,22 @@ function viewFamily(Request $request, Response $response, array $args): Response
         'familyTimeline' => $timelineService->getForFamily($family->getId()),
         'allFamilyProperties' => $allFamilyProperties,
         'familyCustom' => $familyCustom,
-        'currentFY' => FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId()),
+        'currentFY'           => FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId()),
+        'currentFYId'          => FiscalYearUtils::getCurrentFiscalYearId(),
+        'familyAvailableFyids' => (function () use ($familyId): array {
+            // Distinct FYID values for this family's pledge/payment history, newest first.
+            // Used to render server-side FY filter pills on the Pledges & Payments card.
+            $fyids = PledgeQuery::create()
+                ->filterByFamId($familyId)
+                ->addAsColumn('FyId', PledgeTableMap::COL_PLG_FYID)
+                ->select(['FyId'])
+                ->distinct()
+                ->find()
+                ->toArray();
+            $unique = array_unique(array_map('intval', array_filter($fyids, fn($v) => $v !== null && $v !== 0)));
+            rsort($unique);
+            return $unique;
+        })(),
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);

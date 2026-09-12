@@ -78,7 +78,7 @@ $fundraiserTableTitle = $filterStatus !== ''
           </div>
           <div class="col">
             <div class="fw-medium"><?= CurrencyFormatter::formatHtml($raisedThisYear) ?></div>
-            <div class="text-body-secondary"><?= gettext('Raised This Year') ?></div>
+            <div class="text-body-secondary"><?= gettext('Raised This Fiscal Year') ?></div>
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@ $fundraiserTableTitle = $filterStatus !== ''
           </div>
           <div class="col">
             <div class="fw-medium"><?= number_format($itemsThisYear) ?></div>
-            <div class="text-body-secondary"><?= gettext('Items Donated (This Year)') ?></div>
+            <div class="text-body-secondary"><?= gettext('Items Donated (This Fiscal Year)') ?></div>
           </div>
         </div>
       </div>
@@ -112,7 +112,7 @@ $fundraiserTableTitle = $filterStatus !== ''
           </div>
           <div class="col">
             <div class="fw-medium"><?= number_format($buyersThisYear) ?></div>
-            <div class="text-body-secondary"><?= gettext('Buyers This Year') ?></div>
+            <div class="text-body-secondary"><?= gettext('Buyers This Fiscal Year') ?></div>
           </div>
         </div>
       </div>
