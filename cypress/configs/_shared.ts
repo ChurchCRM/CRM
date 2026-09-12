@@ -24,9 +24,15 @@ export const dbTasks = {
     // THROWS rather than being returned as data: it is an infrastructure fault
     // that must fail the run loudly, not something a spec should assert on.
     // Only driver errors from the statement itself are returned below.
+    //
+    // The port must match the stack the specs run against: 3306 for the
+    // default and ci-root stacks, DATABASE_SUBDIR_PORT (3307) for ci-subdir —
+    // the workflows export DATABASE_PORT accordingly, and an isolated local
+    // stack on another port must export it too.
+    const port = Number(process.env.DATABASE_PORT || 3306);
     const connection = await mysql.createConnection({
       host: process.env.DATABASE_HOST || '127.0.0.1',
-      port: Number(process.env.DATABASE_PORT || 3306),
+      port,
       user: process.env.MYSQL_USER || 'churchcrm',
       password: process.env.MYSQL_PASSWORD || 'changeme',
       database: process.env.MYSQL_DATABASE || 'churchcrm',

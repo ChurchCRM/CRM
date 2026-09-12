@@ -2341,7 +2341,7 @@ cy.dbQuery("INSERT INTO volunteer_ministry_vmin (vmin_Name, vmin_Active, vmin_Cr
 // result.rows is the OkPacket for an INSERT — result.rows.insertId is the new id.
 ```
 
-Connection is `127.0.0.1` plus `DATABASE_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE` from the environment, defaulting to `docker/.env`. An isolated stack on another port needs `DATABASE_PORT` exported for the Cypress process, not just for `docker compose`.
+Connection is `127.0.0.1` plus `DATABASE_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE` from the environment, defaulting to `docker/.env`. An isolated stack on another port needs `DATABASE_PORT` exported for the Cypress process, not just for `docker compose` — and so does CI's `ci-subdir` stack, whose database is on 3307 (`DATABASE_SUBDIR_PORT`); both workflows export `DATABASE_PORT: "3307"` on the subdir Cypress step for that reason.
 
 ### `on('task', ...)` Replaces, It Does Not Merge
 
