@@ -74,7 +74,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Occurrences') ?>
       </a>
     </li>
-    <?php /* Tab strip extension point: #9711 appends the dashboard's own views. */ ?>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="nav-item-schedules" href="#schedules" data-bs-toggle="tab" role="tab" aria-controls="schedules" aria-selected="false">
+        <i class="fa-solid fa-repeat me-1"></i><?= gettext('Schedules') ?>
+      </a>
+    </li>
   </ul>
 
   <div class="card-body tab-content">
@@ -339,7 +343,49 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     </div>
 
-    <?php /* Tab content extension point: #9711 appends the dashboard's own panes. */ ?>
+    <!--
+      Schedules (#9711). The recurring patterns #9708 built, made reachable: create
+      one, generate its dates, open the weeks it produced. Generation is idempotent
+      server-side (§2.9), so the button is safe to press twice.
+    -->
+    <div class="tab-pane fade" id="schedules" role="tabpanel" aria-labelledby="nav-item-schedules">
+      <div class="d-flex justify-content-end mb-2">
+        <button type="button" class="btn btn-sm btn-primary" id="schedule-add-btn">
+          <i class="fa-solid fa-plus me-1"></i><?= gettext('Add schedule') ?>
+        </button>
+      </div>
+      <div class="volunteer-loading text-center py-4" id="schedules-loading">
+        <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+        <?= gettext('Loading') ?>
+      </div>
+      <div class="alert alert-danger d-none" role="alert" id="schedules-error">
+        <i class="fa-solid fa-circle-exclamation me-1"></i>
+        <span class="volunteer-error-text"></span>
+        <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry"><?= gettext('Retry') ?></button>
+      </div>
+      <div class="empty d-none" id="schedules-empty">
+        <div class="empty-icon"><i class="fa-solid fa-repeat fa-2x text-muted"></i></div>
+        <p class="empty-title"><?= gettext('No schedules yet') ?></p>
+        <p class="empty-subtitle text-body-secondary">
+          <?= gettext('A schedule is the recurring pattern this ministry staffs — a weekly service, a Wednesday class. Add one and generate its dates.') ?>
+        </p>
+      </div>
+      <div class="table-responsive d-none" id="schedules-table-wrapper">
+        <table class="table table-hover table-vcenter" id="volunteerSchedulesTable">
+          <thead>
+            <tr>
+              <th><?= gettext('Name') ?></th>
+              <th><?= gettext('Pattern') ?></th>
+              <th><?= gettext('Team') ?></th>
+              <th class="text-center"><?= gettext('Dates generated') ?></th>
+              <th class="text-center"><?= gettext('Status') ?></th>
+              <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
 
   </div>
 </div>
@@ -487,6 +533,87 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
         <button type="button" class="btn btn-primary" id="qualify-cart-save"><?= gettext('Qualify') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Schedule editor (#9711) -->
+<div class="modal fade" id="scheduleModal" tabindex="-1" aria-hidden="true" aria-labelledby="scheduleModalTitle">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="scheduleModalTitle"><?= gettext('Schedule') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label" for="schedule-form-name"><?= gettext('Schedule name') ?></label>
+          <input type="text" class="form-control" id="schedule-form-name" maxlength="100">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="schedule-form-team"><?= gettext('Team') ?></label>
+          <select class="form-select" id="schedule-form-team"></select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="schedule-form-link-mode"><?= gettext('Where the dates come from') ?></label>
+          <select class="form-select" id="schedule-form-link-mode">
+            <option value="event_type"><?= gettext('An existing calendar event type') ?></option>
+            <option value="standalone"><?= gettext('A weekly pattern of its own') ?></option>
+          </select>
+        </div>
+        <div class="mb-3 d-none" id="schedule-form-event-type-row">
+          <label class="form-label" for="schedule-form-event-type"><?= gettext('Event type') ?></label>
+          <select class="form-select" id="schedule-form-event-type"></select>
+          <div class="form-text"><?= gettext('The date and time of every occurrence come from the calendar event, so moving the event moves the schedule.') ?></div>
+        </div>
+        <div class="mb-3 d-none" id="schedule-form-title-filter-row">
+          <label class="form-label" for="schedule-form-title-filter"><?= gettext('Only events whose title contains') ?></label>
+          <input type="text" class="form-control" id="schedule-form-title-filter" maxlength="100">
+        </div>
+        <div class="row g-2 d-none" id="schedule-form-standalone-rows">
+          <div class="col-12 col-md-6 mb-3">
+            <label class="form-label" for="schedule-form-dow"><?= gettext('Day of the week') ?></label>
+            <select class="form-select" id="schedule-form-dow">
+              <option value="Sunday"><?= gettext('Sunday') ?></option>
+              <option value="Monday"><?= gettext('Monday') ?></option>
+              <option value="Tuesday"><?= gettext('Tuesday') ?></option>
+              <option value="Wednesday"><?= gettext('Wednesday') ?></option>
+              <option value="Thursday"><?= gettext('Thursday') ?></option>
+              <option value="Friday"><?= gettext('Friday') ?></option>
+              <option value="Saturday"><?= gettext('Saturday') ?></option>
+            </select>
+          </div>
+          <div class="col-6 col-md-3 mb-3">
+            <label class="form-label" for="schedule-form-start-time"><?= gettext('Starts') ?></label>
+            <input type="time" class="form-control" id="schedule-form-start-time">
+          </div>
+          <div class="col-6 col-md-3 mb-3">
+            <label class="form-label" for="schedule-form-end-time"><?= gettext('Ends') ?></label>
+            <input type="time" class="form-control" id="schedule-form-end-time">
+          </div>
+        </div>
+        <div class="row g-2">
+          <div class="col-12 col-md-6 mb-3">
+            <label class="form-label" for="schedule-form-window-start"><?= gettext('First date') ?></label>
+            <input type="date" class="form-control" id="schedule-form-window-start">
+          </div>
+          <div class="col-12 col-md-6 mb-3">
+            <label class="form-label" for="schedule-form-window-end"><?= gettext('Last date') ?></label>
+            <input type="date" class="form-control" id="schedule-form-window-end">
+          </div>
+        </div>
+        <label class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="schedule-form-active" checked>
+          <span class="form-check-label"><?= gettext('Active') ?></span>
+        </label>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="schedule-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" class="btn btn-primary" id="schedule-form-save"><?= gettext('Save') ?></button>
       </div>
     </div>
   </div>

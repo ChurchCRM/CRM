@@ -33,15 +33,19 @@
 import { attachToModal } from "../common/person-select";
 import {
   createPosition,
+  createSchedule,
   createTeam,
   deletePosition,
+  deleteSchedule,
   deleteTeam,
   errorMessage,
+  generateOccurrences,
   getMinistry,
   getQualificationMatrix,
   grantQualification,
   linkPool,
   listOccurrences,
+  listSchedules,
   type MinistryDetail,
   notifyError,
   notifySuccess,
@@ -50,11 +54,13 @@ import {
   revokeQualification,
   unlinkPool,
   updatePosition,
+  updateSchedule,
   updateTeam,
   type VolunteerOccurrenceSummary,
   type VolunteerPool,
   type VolunteerPoolPerson,
   type VolunteerPosition,
+  type VolunteerSchedule,
   type VolunteerTeam,
 } from "./api";
 
@@ -69,7 +75,7 @@ type PaneName = "overview" | "teams" | "positions";
  * fetch — a different document with a different filter — so they carry their own
  * names and load themselves rather than riding on the ministry detail.
  */
-type TabName = PaneName | "qualifications" | "occurrences";
+type TabName = PaneName | "qualifications" | "occurrences" | "schedules";
 
 let ministryId = 0;
 let detail: MinistryDetail | null = null;
@@ -86,6 +92,15 @@ let matrixTeamId: number | null = null;
  * so Retry is a genuine retry (§5.8).
  */
 let occurrences: VolunteerOccurrenceSummary[] | null = null;
+/**
+ * The ministry's recurring schedules (#9708's API, surfaced here by #9711). Cached
+ * like the occurrence list and cleared on error so Retry is a genuine retry (§5.8).
+ */
+let schedules: VolunteerSchedule[] | null = null;
+/** Calendar event types, fetched once for the schedule editor's select. */
+let eventTypes: Array<{ id: number; name: string }> | null = null;
+/** Which schedule a modal is editing; 0 means "new". */
+let editingScheduleId = 0;
 /** Which record a modal is editing; 0 means "new". */
 let editingTeamId = 0;
 let editingPositionId = 0;
@@ -629,6 +644,241 @@ async function loadOccurrences(force = false): Promise<void> {
   }
 }
 
+/**
+ * The ministry's recurring schedules — #9708 built the API and the generator, and left
+ * no screen; §5.4 lists Schedules as a tab of S3, so this is that tab.
+ *
+ * Per row: the pattern in one readable phrase, how many dates have been generated, and
+ * the three actions that matter — generate more, edit, delete. Generation is idempotent
+ * server-side (§2.9), so pressing Generate twice creates nothing the second time; the
+ * toast reports what the server actually did rather than assuming.
+ */
+function renderSchedules(rows: VolunteerSchedule[]): void {
+  const body = byId("volunteerSchedulesTable")?.querySelector("tbody");
+  if (!body) {
+    return;
+  }
+
+  if (rows.length === 0) {
+    destroyDataTable("volunteerSchedulesTable");
+    body.innerHTML = "";
+    renderState("schedules", "empty");
+
+    return;
+  }
+
+  destroyDataTable("volunteerSchedulesTable");
+
+  body.innerHTML = rows
+    .map((schedule) => {
+      const pattern =
+        schedule.linkMode === "event_type"
+          ? i18next.t("Calendar event type: {{name}}", { name: schedule.eventTypeName ?? "" })
+          : i18next.t("Every {{day}}", { day: schedule.recurDow ?? "" });
+      const team = detail?.teams.find((candidate) => candidate.id === schedule.teamId);
+
+      return `
+        <tr>
+          <td>${escapeHtml(schedule.name)}</td>
+          <td>${escapeHtml(pattern)}</td>
+          <td>${escapeHtml(team?.name ?? i18next.t("Whole ministry"))}</td>
+          <td class="text-center">${schedule.occurrenceCount}</td>
+          <td class="text-center">${statusBadge(schedule.active)}</td>
+          <td class="text-center">
+            ${actionMenu([
+              {
+                type: "button",
+                icon: "fa-solid fa-wand-magic-sparkles",
+                label: i18next.t("Generate dates"),
+                className: "volunteer-schedule-generate",
+                data: { "schedule-id": schedule.id, "schedule-name": schedule.name },
+              },
+              {
+                type: "button",
+                icon: "fa-solid fa-pen",
+                label: i18next.t("Edit"),
+                className: "volunteer-schedule-edit",
+                data: { "schedule-id": schedule.id },
+              },
+              {
+                type: "button",
+                icon: "fa-solid fa-trash",
+                label: i18next.t("Delete"),
+                className: "volunteer-schedule-delete",
+                danger: true,
+                data: { "schedule-id": schedule.id, "schedule-name": schedule.name },
+              },
+            ])}
+          </td>
+        </tr>`;
+    })
+    .join("");
+
+  renderState("schedules", "loaded");
+  initDataTable("volunteerSchedulesTable");
+}
+
+async function loadSchedules(force = false): Promise<void> {
+  if (schedules !== null && !force) {
+    renderSchedules(schedules);
+
+    return;
+  }
+
+  renderState("schedules", "loading");
+
+  try {
+    const data = await listSchedules(ministryId);
+    schedules = data.schedules;
+    renderSchedules(schedules);
+  } catch (error) {
+    schedules = null;
+    renderState("schedules", "error", errorMessage(error, i18next.t("Could not load the schedules")));
+  }
+}
+
+/**
+ * Calendar event types for the editor's select.
+ *
+ * A plain `fetch` rather than a call through `./api`: that module is the client for
+ * `/api/volunteer/*` and this is a core calendar read, so routing it through the
+ * volunteer prefix would be wrong. Failure is not fatal — the select is simply empty
+ * and the standalone pattern still works.
+ */
+async function loadEventTypes(): Promise<void> {
+  if (eventTypes !== null) {
+    return;
+  }
+
+  try {
+    const response = await fetch(`${window.CRM?.root ?? ""}/api/events/types`, {
+      credentials: "same-origin",
+      headers: { Accept: "application/json" },
+    });
+    const body: unknown = response.ok ? await response.json() : [];
+    eventTypes = Array.isArray(body)
+      ? body.map((row: Record<string, unknown>) => ({
+          id: Number(row.Id ?? row.id ?? 0),
+          name: String(row.Name ?? row.name ?? ""),
+        }))
+      : [];
+  } catch {
+    eventTypes = [];
+  }
+}
+
+function fillScheduleSelects(): void {
+  const teamSelect = byId<HTMLSelectElement>("schedule-form-team");
+  if (teamSelect) {
+    teamSelect.innerHTML =
+      `<option value="">${escapeHtml(i18next.t("Whole ministry"))}</option>` +
+      (detail?.teams ?? []).map((team) => `<option value="${team.id}">${escapeHtml(team.name)}</option>`).join("");
+  }
+
+  const typeSelect = byId<HTMLSelectElement>("schedule-form-event-type");
+  if (typeSelect) {
+    typeSelect.innerHTML = (eventTypes ?? [])
+      .map((type) => `<option value="${type.id}">${escapeHtml(type.name)}</option>`)
+      .join("");
+  }
+}
+
+/** Show only the fields the chosen link mode actually uses (§2.8's invariants). */
+function syncScheduleMode(): void {
+  const mode = byId<HTMLSelectElement>("schedule-form-link-mode")?.value ?? "event_type";
+  const linked = mode === "event_type";
+  show(byId("schedule-form-event-type-row"), linked);
+  show(byId("schedule-form-title-filter-row"), linked);
+  show(byId("schedule-form-standalone-rows"), !linked);
+}
+
+function openScheduleModal(schedule?: VolunteerSchedule): void {
+  editingScheduleId = schedule?.id ?? 0;
+  show(byId("schedule-form-error"), false);
+
+  void loadEventTypes().then(() => {
+    fillScheduleSelects();
+
+    const set = (id: string, value: string): void => {
+      const el = byId<HTMLInputElement | HTMLSelectElement>(id);
+      if (el) {
+        el.value = value;
+      }
+    };
+
+    set("schedule-form-name", schedule?.name ?? "");
+    set("schedule-form-team", schedule?.teamId === null || schedule === undefined ? "" : String(schedule.teamId));
+    set("schedule-form-link-mode", schedule?.linkMode ?? "event_type");
+    set(
+      "schedule-form-event-type",
+      schedule?.eventTypeId === null || schedule === undefined ? "" : String(schedule.eventTypeId),
+    );
+    set("schedule-form-title-filter", schedule?.titleFilter ?? "");
+    set("schedule-form-dow", schedule?.recurDow ?? "Sunday");
+    set("schedule-form-start-time", (schedule?.startTime ?? "").slice(0, 5));
+    set("schedule-form-end-time", (schedule?.endTime ?? "").slice(0, 5));
+    set("schedule-form-window-start", schedule?.windowStart ?? isoDate(0));
+    set("schedule-form-window-end", schedule?.windowEnd ?? "");
+
+    const active = byId<HTMLInputElement>("schedule-form-active");
+    if (active) {
+      active.checked = schedule?.active ?? true;
+    }
+
+    const title = byId("scheduleModalTitle");
+    if (title) {
+      title.textContent = schedule ? i18next.t("Edit schedule") : i18next.t("Add schedule");
+    }
+
+    syncScheduleMode();
+    modal("scheduleModal")?.show();
+  });
+}
+
+function scheduleFormPayload(): Record<string, unknown> {
+  const value = (id: string): string => byId<HTMLInputElement | HTMLSelectElement>(id)?.value?.trim() ?? "";
+  const linkMode = value("schedule-form-link-mode");
+  const teamId = value("schedule-form-team");
+
+  const payload: Record<string, unknown> = {
+    name: value("schedule-form-name"),
+    linkMode,
+    teamId: teamId === "" ? null : Number(teamId),
+    windowStart: value("schedule-form-window-start"),
+    windowEnd: value("schedule-form-window-end") === "" ? null : value("schedule-form-window-end"),
+    active: byId<HTMLInputElement>("schedule-form-active")?.checked ?? true,
+  };
+
+  if (linkMode === "event_type") {
+    payload.eventTypeId = Number(value("schedule-form-event-type")) || null;
+    payload.titleFilter = value("schedule-form-title-filter");
+  } else {
+    payload.recurType = "weekly";
+    payload.recurDow = value("schedule-form-dow");
+    payload.startTime = value("schedule-form-start-time");
+    payload.endTime = value("schedule-form-end-time");
+  }
+
+  return payload;
+}
+
+function saveSchedule(): void {
+  const payload = scheduleFormPayload();
+  const request =
+    editingScheduleId === 0 ? createSchedule(ministryId, payload) : updateSchedule(editingScheduleId, payload);
+
+  request
+    .then(() => {
+      modal("scheduleModal")?.hide();
+      notifySuccess(editingScheduleId === 0 ? i18next.t("Schedule created") : i18next.t("Schedule saved"));
+
+      return loadSchedules(true);
+    })
+    .catch((error: unknown) => {
+      showModalError("schedule", errorMessage(error, i18next.t("The schedule could not be saved")));
+    });
+}
+
 // ─── Loading ─────────────────────────────────────────────────────────────────
 
 /** Panes that have been activated at least once, so a reload re-renders them. */
@@ -672,6 +922,12 @@ function activate(tab: TabName): void {
   // So is the occurrence list: a date window, not a slice of the ministry detail.
   if (tab === "occurrences") {
     void loadOccurrences();
+    return;
+  }
+
+  // And so is the schedule list: its own collection under the ministry.
+  if (tab === "schedules") {
+    void loadSchedules();
     return;
   }
 
@@ -1044,6 +1300,7 @@ function wire(): void {
     ["nav-item-positions", "positions"],
     ["nav-item-qualifications", "qualifications"],
     ["nav-item-occurrences", "occurrences"],
+    ["nav-item-schedules", "schedules"],
   ] as Array<[string, TabName]>) {
     byId(navId)?.addEventListener("shown.bs.tab", () => activate(pane));
   }
@@ -1053,11 +1310,14 @@ function wire(): void {
     // rather than the ministry fetch — otherwise the button appears dead.
     const inMatrix = button.closest("#qualifications") !== null;
     const inOccurrences = button.closest("#occurrences") !== null;
+    const inSchedules = button.closest("#schedules") !== null;
     button.addEventListener("click", () => {
       if (inMatrix) {
         void loadMatrix(true);
       } else if (inOccurrences) {
         void loadOccurrences(true);
+      } else if (inSchedules) {
+        void loadSchedules(true);
       } else {
         void load(true);
       }
@@ -1070,6 +1330,7 @@ function wire(): void {
   for (const [modalId, inputId] of [
     ["teamModal", "team-form-name"],
     ["positionModal", "position-form-name"],
+    ["scheduleModal", "schedule-form-name"],
   ]) {
     byId(modalId)?.addEventListener("shown.bs.modal", () => {
       byId<HTMLInputElement>(inputId)?.focus();
@@ -1080,6 +1341,9 @@ function wire(): void {
   byId("team-form-save")?.addEventListener("click", saveTeam);
   byId("position-add-btn")?.addEventListener("click", () => openPositionModal());
   byId("position-form-save")?.addEventListener("click", savePosition);
+  byId("schedule-add-btn")?.addEventListener("click", () => openScheduleModal());
+  byId("schedule-form-save")?.addEventListener("click", saveSchedule);
+  byId("schedule-form-link-mode")?.addEventListener("change", syncScheduleMode);
   wirePools();
   wireQualifications();
 
@@ -1087,9 +1351,57 @@ function wire(): void {
   // would go stale.
   document.addEventListener("click", (event) => {
     const target = (event.target as HTMLElement | null)?.closest<HTMLElement>(
-      ".volunteer-team-edit, .volunteer-team-delete, .volunteer-position-edit, .volunteer-position-delete, .volunteer-position-toggle",
+      ".volunteer-team-edit, .volunteer-team-delete, .volunteer-position-edit, .volunteer-position-delete, .volunteer-position-toggle, .volunteer-schedule-edit, .volunteer-schedule-delete, .volunteer-schedule-generate",
     );
     if (!target) {
+      return;
+    }
+
+    if (target.classList.contains("volunteer-schedule-edit")) {
+      openScheduleModal((schedules ?? []).find((row) => row.id === Number(target.dataset.scheduleId)));
+      return;
+    }
+
+    if (target.classList.contains("volunteer-schedule-generate")) {
+      const scheduleId = Number(target.dataset.scheduleId);
+      generateOccurrences(scheduleId)
+        .then((result) => {
+          // The server's own numbers, not an assumption: generation is idempotent,
+          // so "created 0, 8 already there" is a perfectly good outcome to report.
+          notifySuccess(
+            i18next.t("{{created}} dates created, {{existing}} were already there", {
+              created: result.created,
+              existing: result.existing,
+            }),
+          );
+          occurrences = null;
+
+          return loadSchedules(true);
+        })
+        .catch((error: unknown) => {
+          notifyError(errorMessage(error, i18next.t("The dates could not be generated")));
+        });
+      return;
+    }
+
+    if (target.classList.contains("volunteer-schedule-delete")) {
+      const scheduleId = Number(target.dataset.scheduleId);
+      confirmDelete(
+        i18next.t("Delete schedule"),
+        i18next.t("Delete {{name}}? This cannot be undone.", { name: target.dataset.scheduleName ?? "" }),
+        () => {
+          deleteSchedule(scheduleId)
+            .then(() => {
+              notifySuccess(i18next.t("Schedule deleted"));
+              occurrences = null;
+
+              return loadSchedules(true);
+            })
+            .catch((error: unknown) => {
+              notifyError(errorMessage(error, i18next.t("The schedule could not be deleted")));
+            });
+        },
+      );
       return;
     }
 
