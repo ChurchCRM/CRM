@@ -43,7 +43,7 @@
  * Cleanup runs in `before` as well as `after` (cypress-testing.md): an `after`
  * hook does not run when the runner crashes mid-spec.
  *
- * Migration idempotence. `7.7.0-volunteer-v2-event-ministry.sql` is a plain
+ * Migration idempotence. `7.8.0-volunteer-v2-event-ministry.sql` is a plain
  * `ALTER TABLE … ADD COLUMN` (Appendix A step 2) and MySQL has no portable
  * `ADD COLUMN IF NOT EXISTS`, so re-running it on a database that already has
  * the column is an error by design — the upgrade runner is version-gated and
