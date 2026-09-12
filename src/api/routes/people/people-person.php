@@ -76,7 +76,8 @@ use Slim\HttpCache\Cache;
  *     @OA\Response(response=400, description="Invalid image data or upload failed"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="EditRecords role required"),
- *     @OA\Response(response=404, description="Person not found")
+ *     @OA\Response(response=404, description="Person not found"),
+ *     @OA\Response(response=413, description="PHP discarded the request body because it exceeded the server upload limit")
  * )
  * @OA\Delete(
  *     path="/person/{personId}/photo",
