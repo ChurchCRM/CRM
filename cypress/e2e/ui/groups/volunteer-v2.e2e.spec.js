@@ -725,6 +725,105 @@ describe("Volunteer v2 e2e (UI) — localization sanity", () => {
     });
 });
 
+// ── 2b. the locale switch (§5.10) ─────────────────────────────────────────
+
+/**
+ * The failure §5.10 actually warns about is not a missing translation — V2's
+ * msgids are brand new and no catalog has them yet — it is a **module-scope**
+ * `i18next.t()` returning `undefined` on any locale that is not `en_US`
+ * (upstream #9609). That only shows up once the locale is switched, so it
+ * cannot be caught by any of the English assertions above.
+ *
+ * ChurchCRM resolves the locale per request from the user's `ui.locale`
+ * preference (`cypress/support/ui-commands.js` → `setupLocaleAdminSession`),
+ * not from a system-wide `sLanguage` setting, so that is what is switched here.
+ * `fr_FR` is used because `src/locale/textdomain/fr_FR` is one of the catalogs
+ * actually shipped in the tree.
+ *
+ * The proof that the catalog is live is self-calibrating: the same page is read
+ * in `en_US` and in `fr_FR` and the two must differ. Hard-coding a French
+ * string would only prove that one msgid is translated today.
+ */
+describe("Volunteer v2 e2e (UI) — the locale switch (§5.10)", () => {
+    const ADMIN_PERSON = 1;
+    const LOCALE_URL = `/api/user/${ADMIN_PERSON}/setting/ui.locale`;
+
+    function setLocale(value) {
+        cy.makePrivateAPICall(
+            Cypress.env("admin.api.key"),
+            "POST",
+            LOCALE_URL,
+            { value },
+            200,
+        );
+    }
+
+    after(() => {
+        setLocale("en_US");
+    });
+
+    it("renders the V2 dashboard in another language with no undefined labels", () => {
+        let english = "";
+
+        setLocale("en_US");
+        freshAdminLogin();
+        cy.visit(DASHBOARD_URL);
+        cy.get("#volunteer-dashboard", { timeout: 20000 }).should("exist");
+        cy.get("body")
+            .invoke("text")
+            .then((text) => {
+                english = text;
+            });
+
+        cy.then(() => {
+            setLocale("fr_FR");
+            freshAdminLogin();
+            cy.visit(DASHBOARD_URL);
+            cy.get("#volunteer-dashboard", { timeout: 20000 }).should("exist");
+            // The five panels still render — a locale must never break the page.
+            cy.get("#volunteer-gaps-card").should("be.visible");
+            cy.get("#volunteer-upcoming-card").should("be.visible");
+
+            cy.get("#volunteer-dashboard")
+                .invoke("text")
+                .then((text) => {
+                    expect(
+                        text,
+                        "a module-scope translation call returned undefined on a non-en_US locale (#9609)",
+                    ).to.not.match(/\bundefined\b/);
+                    expect(
+                        text,
+                        "an unsubstituted interpolation survived the locale switch",
+                    ).to.not.match(/\{\{\s*\w+\s*\}\}/);
+                });
+
+            cy.get("body")
+                .invoke("text")
+                .then((french) => {
+                    expect(
+                        french,
+                        "the fr_FR catalog was not applied — the page reads identically to en_US",
+                    ).to.not.eq(english);
+                });
+        });
+    });
+
+    it("keeps the volunteer's own page intact in another language", () => {
+        setLocale("fr_FR");
+        freshAdminLogin();
+        cy.visit(`${MINISTRIES_URL}/${ministryId}`);
+        cy.get("#overview-content", { timeout: 20000 }).should("be.visible");
+        cy.get("#overview-content")
+            .invoke("text")
+            .then((text) => {
+                expect(text).to.not.match(/\bundefined\b/);
+                expect(text).to.not.match(/\{\{\s*\w+\s*\}\}/);
+            });
+        // The ministry's own name is data, not a string to translate.
+        cy.get("#volunteer-ministry, body").should("contain", MINISTRY_NAME);
+    });
+});
+
 // ── 3. the responsive pass (§5.9) ─────────────────────────────────────────
 
 describe("Volunteer v2 e2e (UI) — responsive, coordinator and admin screens", () => {
