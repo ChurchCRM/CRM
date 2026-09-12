@@ -27,9 +27,11 @@ use Psr\Http\Server\RequestHandlerInterface;
  * not a boolean) and answers with an empty body carrying the reason in the HTTP
  * reason phrase, which no API client of ours parses.
  *
- * Response shape follows FundraiserEnabledMiddleware, the closest precedent for
- * "this feature is switched off": a 302 to the root path for browser requests
- * and a 403 JSON error for API clients. It deliberately does NOT redirect to
+ * Response behaviour follows FundraiserEnabledMiddleware, the closest precedent
+ * for "this feature is switched off": browser requests get a 302 to the root
+ * path; API clients get 403 with the canonical SlimUtils::renderErrorJSON()
+ * body, {"success": false, "message": "..."} (not Fundraiser's hand-rolled
+ * {"error", "code"} shape). It deliberately does NOT redirect to
  * /v2/access-denied — that page tells the visitor they are missing a role,
  * which would misinform an administrator who has every role and has simply not
  * enabled the module yet.

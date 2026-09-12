@@ -295,7 +295,7 @@ class Menu
     private static function getVolunteerMenu(bool $isVisible): MenuItem
     {
         $volunteerMenu = new MenuItem(gettext('Volunteer'), '', $isVisible, 'fa-handshake-angle');
-        $volunteerMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', true, 'fa-gauge'));
+        $volunteerMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', $isVisible, 'fa-gauge'));
 
         return $volunteerMenu;
     }

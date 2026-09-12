@@ -10,9 +10,11 @@ use Slim\Routing\RouteCollectorProxy;
 /**
  * Volunteer Management V2 API — rollout status (#9704).
  *
- * The whole /api/volunteer group is gated by VolunteerV2EnabledMiddleware, so
- * every V2 endpoint added by a later issue inherits the rollout gate by being
- * registered in a route file beside this one.
+ * This /api/volunteer group is gated by VolunteerV2EnabledMiddleware. Slim 4
+ * scopes ->add() to the one group instance it is chained on, so a later route
+ * file that opens its own $app->group('/volunteer', ...) MUST chain
+ * ->add(new VolunteerV2EnabledMiddleware()) itself — nothing propagates from
+ * this file. An ungated V2 group would be reachable in every rollout state.
  */
 $app->group('/volunteer', function (RouteCollectorProxy $group): void {
     /**
