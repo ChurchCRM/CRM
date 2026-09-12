@@ -307,6 +307,26 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 **ORM Configuration:** `orm/schema.xml`, `orm/propel.php.dist`
 **Generated Models:** `src/ChurchCRM/model/ChurchCRM/` (don't edit directly)
 
+### There is no `Criteria::BETWEEN` <!-- learned: 2026-09-12 -->
+
+`Propel\Runtime\ActiveQuery\Criteria` has no `BETWEEN` constant. Writing one is a
+**runtime** `Error: Undefined constant`, not a lint or build failure, so it surfaces only
+when the code path actually runs — which for a background job can be days later, inside a
+`runTimerJob()` try/catch that logs and keeps going.
+
+```php
+// ❌ WRONG — fatal at runtime, and nothing catches it at build time
+->filterByOccurrenceDate(['min' => $from, 'max' => $to], Criteria::BETWEEN)
+
+// ✅ CORRECT — two filters, explicit and greppable
+->filterByOccurrenceDate($from, Criteria::GREATER_EQUAL)
+->filterByOccurrenceDate($to, Criteria::LESS_EQUAL)
+```
+
+The generated `filterBy*()` range form (`['min' => …, 'max' => …]` with **no** second
+argument) also works, but it reads like an `IN (…)` to anyone skimming, so prefer the two
+explicit filters.
+
 ### MySQL 8.0 Strict Mode: DATE Comparisons <!-- learned: 2026-03-02 -->
 
 **CRITICAL:** MySQL 8.0+ strict mode rejects comparing DATE columns to empty strings (`''`), returning `SQLSTATE[HY000]: 1525 Incorrect DATE value: ''`.

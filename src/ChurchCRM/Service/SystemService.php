@@ -120,6 +120,24 @@ class SystemService
             BirthdayEmailService::run();
         });
 
+        // Volunteer Management v2 (#9710, design §3.5). There is no scheduler in
+        // ChurchCRM, so these three ARE the scheduler for the volunteer module:
+        // reminders become due, the outbox is emptied, and assignments whose
+        // occurrence is over are closed out. Each is its own runTimerJob() call
+        // so one failure cannot take the other two — a mail server that is down
+        // must not stop assignments being marked completed.
+        self::runTimerJob('VolunteerNotificationService::scheduleReminders', static function (): void {
+            (new VolunteerNotificationService())->scheduleReminders();
+        });
+
+        self::runTimerJob('VolunteerNotificationService::drainOutbox', static function (): void {
+            VolunteerNotificationService::drainOutbox();
+        });
+
+        self::runTimerJob('VolunteerAssignmentService::markCompleted', static function (): void {
+            (new VolunteerAssignmentService())->markCompleted(DateTimeUtils::getToday());
+        });
+
         // Fire the CRON_RUN hook so plugins can register scheduled tasks.
         // Each active plugin registers a handler on Hooks::CRON_RUN in boot().
         // HookManager catches and logs any per-plugin errors so one failing

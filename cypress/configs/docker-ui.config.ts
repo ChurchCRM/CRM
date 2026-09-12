@@ -1,6 +1,6 @@
 import { defineConfig } from 'cypress'
 import { verifyDownloadTasks } from 'cy-verify-downloads';
-import { dbTasks } from './_shared'
+import { dbTasks, mailTasks } from './_shared'
 
 import base from './base.config'
 
@@ -82,8 +82,9 @@ export default defineConfig({
         printLogsToFile: 'always'
       });
       // One registration only — a second on('task', ...) replaces the first.
-      // dbTasks adds db:query so UI/admin specs can assert database state too.
-      on('task', { ...verifyDownloadTasks, ...dbTasks });
+      // dbTasks adds db:query so UI/admin specs can assert database state too;
+      // mailTasks adds the optional Mailpit reads (#9710).
+      on('task', { ...verifyDownloadTasks, ...dbTasks, ...mailTasks });
       on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
           launchOptions.args.push('--disable-dev-shm-usage');

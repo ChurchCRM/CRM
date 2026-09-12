@@ -543,6 +543,24 @@ hosting with no cron. The recommended crontab line is:
 0 * * * * /usr/bin/php /path/to/churchcrm/cli/timerjobs.php >> /var/log/churchcrm-cron.log 2>&1
 ```
 
+#### What core registers on the job list <!-- learned: 2026-09-12 -->
+
+`runTimerJobs()` calls these in order, each isolated by `runTimerJob()`:
+
+| Job | What it does | Cadence sensitivity |
+|---|---|---|
+| `BirthdayEmailService` | birthday greetings | once a day; any run that day will do |
+| `VolunteerNotificationService::scheduleReminders` | queues a `reminder` outbox row for every live assignment whose occurrence starts inside `iVolunteerReminderLeadHours` (default 48; **0 disables reminders**) | the cadence is the worst-case lateness |
+| `VolunteerNotificationService::drainOutbox` | sends up to 50 due outbox rows, retrying a failure up to 5 times before giving up | as above; a failed send waits for the next run |
+| `VolunteerAssignmentService::markCompleted` | closes out assignments whose occurrence has finished | not time-critical |
+| `CRON_RUN` hook | every active plugin's scheduled work | plugin's own business |
+
+Consequence for an install that cares about volunteer reminders: recommend a **15-minute**
+crontab (`0,15,30,45 * * * *`) rather than the hourly default, because a reminder is
+delivered by the first run after it falls due — nothing "catches up" a missed minute.
+Volunteer mail is queued into `volunteer_notification_vntf` the moment it is decided and
+delivered only here, so with no cron and no page loads, no volunteer mail goes out at all.
+
 Consequences for plugin code:
 
 - **Do not assume a fixed interval.** Your listener may be called every 15 minutes on a busy

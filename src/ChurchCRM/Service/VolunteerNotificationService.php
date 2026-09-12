@@ -2,26 +2,47 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Emails\BaseEmail;
+use ChurchCRM\Emails\volunteer\VolunteerAssignmentEmail;
+use ChurchCRM\Emails\volunteer\VolunteerDeclineAlertEmail;
+use ChurchCRM\Emails\volunteer\VolunteerEmailContext;
+use ChurchCRM\Emails\volunteer\VolunteerGapAlertEmail;
+use ChurchCRM\Emails\volunteer\VolunteerReminderEmail;
+use ChurchCRM\Emails\volunteer\VolunteerSignupConfirmEmail;
+use ChurchCRM\Emails\volunteer\VolunteerSwapProposedEmail;
+use ChurchCRM\Emails\volunteer\VolunteerSwapResolvedEmail;
+use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
+use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerNotification;
 use ChurchCRM\model\ChurchCRM\VolunteerNotificationQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
+use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSwap;
+use ChurchCRM\model\ChurchCRM\VolunteerSwapQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Log\LoggerInterface;
 
 /**
- * The Volunteer v2 notification outbox — the ENQUEUE half only (#9709; design §2.14, §3.6).
+ * The Volunteer v2 notification outbox — enqueue AND delivery (#9709 + #9710;
+ * design §2.14, §3.6).
  *
  * D15: there is no scheduler in ChurchCRM (F9), so V2 decouples "decide a message is
- * due" from "deliver it". This class owns the first half. #9710 owns the second:
- * `drainOutbox()` here is an explicit, documented no-op, and there is no `BaseEmail`
- * subclass, no template, no `Reply-To` resolution and no send log written anywhere in
- * this issue. That split is deliberate — the assignment workflow must be able to record
- * that a message is owed without waiting on the mail layer, and #9710 must be able to
- * build the mail layer against an outbox that is already being filled by the real
- * workflow (and by its specs, which assert the rows through `cy.dbQuery`).
+ * due" from "deliver it". #9709 built the first half; #9710 added the second —
+ * `scheduleReminders()`, `drainOutbox()`, the seven `BaseEmail` subclasses under
+ * `ChurchCRM\Emails\volunteer` and the send-time `Reply-To` resolution. The split is
+ * still load-bearing at runtime: the assignment workflow records that a message is owed
+ * inside its own transaction and never waits on SMTP, and a delivery failure therefore
+ * cannot roll an assignment back.
  *
  * **Idempotency is the whole point.** Every enqueue is a `findOneOrCreate()` on
  * `vntf_DedupeKey`, which is `UNIQUE` (§2.14) — the `event_attend`
@@ -36,10 +57,11 @@ use Psr\Log\LoggerInterface;
  * decline leaves no decline alert behind. The converse — delivery failing and rolling
  * back the state change — cannot happen here because nothing is delivered here.
  *
- * The dedupe-key builders for all seven types live in `dedupeKey()`. `reminder` is built
- * but never enqueued by this issue: §3.6 schedules reminders from the occurrence's start
- * minus `iVolunteerReminderLeadHours`, and both that setting and the job that fires it
- * are #9710's. The builder is here so #9710 adds a caller, not a key format.
+ * The dedupe-key builders for all seven types live beside the enqueuers. `reminder` rows
+ * are written by `scheduleReminders()` rather than by the assignment workflow: §3.6
+ * schedules them from the occurrence's start minus `iVolunteerReminderLeadHours`, which
+ * means the decision is a property of the clock, not of an operator's click, and so
+ * belongs in the timer job.
  */
 class VolunteerNotificationService
 {
@@ -50,6 +72,15 @@ class VolunteerNotificationService
     public const TYPE_SIGNUP_CONFIRM = VolunteerNotification::TYPE_SIGNUP_CONFIRM;
     public const TYPE_SWAP_PROPOSED = VolunteerNotification::TYPE_SWAP_PROPOSED;
     public const TYPE_SWAP_RESOLVED = VolunteerNotification::TYPE_SWAP_RESOLVED;
+
+    /**
+     * Deliveries attempted before a row is given up on (§2.14).
+     *
+     * Five, and the row stays `pending` — and therefore still due — for the first four,
+     * which is what makes retry implicit in the drain's selection filter rather than a
+     * separate `retrying` state nothing would ever clear.
+     */
+    public const MAX_ATTEMPTS = 5;
 
     private LoggerInterface $logger;
 
@@ -339,30 +370,676 @@ class VolunteerNotificationService
         return $rows;
     }
 
+    // ── Reminders (§3.6, Appendix B) ───────────────────────────────────────
+
     /**
-     * Drain the outbox. **#9710 implements this.**
+     * Enqueue a `reminder` for every live assignment whose occurrence starts inside
+     * `iVolunteerReminderLeadHours` and has not already ended (UC5, D11).
      *
-     * It is declared here, `static`, with its final signature and return shape so that
-     * `SystemService::runTimerJobs()` can be wired to it in one line when #9710 lands —
-     * matching the `BirthdayEmailService::run()` call shape at `SystemService.php:78`
-     * (design §3.4). Until then it does nothing and says so: no row is selected, no mail
-     * is built, no status is changed. It is NOT a stub that silently swallows work — the
-     * outbox is genuinely being filled by #9709, and #9710's job is to start emptying it.
+     * Called from `SystemService::runTimerJobs()` **before** the drain, so a reminder
+     * that becomes due between two runs is scheduled and delivered in the same pass.
      *
-     * What #9710 must add here (design §3.6 "Drain"): select up to `$batchSize` `pending`
-     * rows due now ordered by `ScheduledFor`; skip (status `skipped`) when
-     * `SystemConfig::isEmailEnabled()` is false, when the recipient is in
-     * `PersonService::buildDoNotEmailSet()`, when they have no address, or when a
-     * `reminder`'s occurrence has already ended; otherwise build the `BaseEmail` subclass
-     * for the type, resolve `Reply-To` through
-     * `VolunteerAuthorizationService::getReplyToPersonId()` AT SEND TIME, and send —
-     * recording `sent`, or `Attempts + 1` with the row left `pending` until the fifth
-     * failure turns it `failed`, each send in its own try/catch.
+     * `ScheduledFor` is the occurrence's start minus the lead, which for an occurrence
+     * already inside the window is in the past — that is correct and is the point: the
+     * message is due now. The value is stored rather than recomputed so that changing
+     * the setting later does not silently reschedule mail that was already queued.
+     *
+     * **A lead of 0 (or less) schedules nothing**, which makes the setting a kill switch
+     * an administrator can reach without turning off all church email.
+     *
+     * Idempotent by construction: `reminder:{assignmentId}:{personId}` is the dedupe key,
+     * so running the timer job every fifteen minutes produces one reminder, not ninety-six.
+     *
+     * @return int rows enqueued (existing rows are not counted)
+     */
+    public function scheduleReminders(): int
+    {
+        $leadHours = SystemConfig::getIntValue('iVolunteerReminderLeadHours');
+        if ($leadHours <= 0) {
+            return 0;
+        }
+
+        $now = DateTimeUtils::getToday();
+        $horizon = DateTimeUtils::createDateTime($now->format('Y-m-d H:i:s'))
+            ->modify(sprintf('+%d hours', $leadHours));
+
+        // Bound the scan by occurrence DATE first — the precise window question is
+        // answered per row below, but there is no reason to hydrate every occurrence
+        // in the table to find out. A day of slack on each side covers an occurrence
+        // whose event time sits either side of midnight.
+        // Two filters rather than one range: Propel has no Criteria::BETWEEN, and
+        // the generated filterBy*() range form takes an array without a comparison
+        // constant, which reads as an IN to anyone skimming it.
+        $occurrences = VolunteerOccurrenceQuery::create()
+            ->filterByStatus(VolunteerOccurrence::STATUS_SCHEDULED)
+            ->filterByOccurrenceDate(
+                DateTimeUtils::createDateTime($now->format('Y-m-d'))->modify('-1 day'),
+                Criteria::GREATER_EQUAL
+            )
+            ->filterByOccurrenceDate(
+                DateTimeUtils::createDateTime($horizon->format('Y-m-d'))->modify('+1 day'),
+                Criteria::LESS_EQUAL
+            )
+            ->find();
+
+        if (count($occurrences) === 0) {
+            return 0;
+        }
+
+        $schedules = new VolunteerScheduleService();
+        $due = [];
+        foreach ($occurrences as $occurrence) {
+            $window = $schedules->resolveOccurrenceWindow($occurrence);
+            $start = $window['start'] ?? null;
+            $end = $window['end'] ?? $start;
+
+            if ($start === null || $start > $horizon) {
+                continue;
+            }
+
+            // An occurrence that is already over gets no reminder: the drain would
+            // only skip it again (§3.6 step 2).
+            if ($end !== null && $end < $now) {
+                continue;
+            }
+
+            $due[(int) $occurrence->getId()] = DateTimeUtils::createDateTime($start->format('Y-m-d H:i:s'))
+                ->modify(sprintf('-%d hours', $leadHours));
+        }
+
+        if ($due === []) {
+            return 0;
+        }
+
+        $assignments = VolunteerAssignmentQuery::create()
+            ->filterByOccurrenceId(array_keys($due), Criteria::IN)
+            ->filterByStatus(VolunteerAssignmentService::LIVE_STATUSES, Criteria::IN)
+            ->find();
+
+        $enqueued = 0;
+        foreach ($assignments as $assignment) {
+            $assignmentId = (int) $assignment->getId();
+            $personId = (int) $assignment->getPersonId();
+            $key = $this->reminderKey($assignmentId, $personId);
+
+            if ($this->findByDedupeKey($key) !== null) {
+                continue;
+            }
+
+            $this->enqueue(
+                self::TYPE_REMINDER,
+                $personId,
+                $assignmentId,
+                (int) $assignment->getOccurrenceId(),
+                $due[(int) $assignment->getOccurrenceId()],
+                $key
+            );
+            $enqueued++;
+        }
+
+        if ($enqueued > 0) {
+            $this->logger->info('Volunteer reminders scheduled', [
+                'count' => $enqueued,
+                'leadHours' => $leadHours,
+            ]);
+        }
+
+        return $enqueued;
+    }
+
+    // ── Drain (§3.6) ───────────────────────────────────────────────────────
+
+    /**
+     * Drain the outbox.
+     *
+     * `static` to match the `BirthdayEmailService::run()` call shape at
+     * `SystemService.php` (design §3.4); the work is an instance method so the service's
+     * own collaborators and logger are available the ordinary way.
      *
      * @return array{sent: int, skipped: int, failed: int}
      */
     public static function drainOutbox(int $batchSize = 50): array
     {
-        return ['sent' => 0, 'skipped' => 0, 'failed' => 0];
+        return (new self())->drain($batchSize);
+    }
+
+    /**
+     * §3.6's four steps, in order.
+     *
+     * 1. up to `$batchSize` `pending` rows due now, oldest `ScheduledFor` first;
+     * 2. the four `skipped` rules — email off (N2), do-not-email (N3), no address, and a
+     *    `reminder` for an occurrence that is already over;
+     * 3. otherwise build the subclass, resolve `Reply-To` **at send time** and send,
+     *    recording `sent` or `Attempts + 1`;
+     * 4. retry is implicit — a row below the cap is still `pending` and still due, so the
+     *    next drain picks it up. `failed` is terminal and never re-selected.
+     *
+     * Every row is wrapped in its own `try/catch (\Throwable)` — the per-channel
+     * isolation pattern from `dto\Notification::send()` (N4) — so one unreachable SMTP
+     * server, one deleted person or one malformed address cannot stop the batch. Nothing
+     * in here ever throws to the caller: the timer job must not fail because the mail
+     * server is down.
+     *
+     * @return array{sent: int, skipped: int, failed: int}
+     */
+    private function drain(int $batchSize): array
+    {
+        $counts = ['sent' => 0, 'skipped' => 0, 'failed' => 0];
+
+        $rows = VolunteerNotificationQuery::create()
+            ->filterByStatus(VolunteerNotification::STATUS_PENDING)
+            ->filterByScheduledFor(DateTimeUtils::getToday(), Criteria::LESS_EQUAL)
+            ->orderByScheduledFor(Criteria::ASC)
+            ->limit(max(1, $batchSize))
+            ->find();
+
+        if (count($rows) === 0) {
+            return $counts;
+        }
+
+        // Both of these are per-batch, not per-row: the kill switch cannot change
+        // halfway through a drain, and the opt-out set is one query instead of one
+        // per recipient.
+        $emailEnabled = SystemConfig::isEmailEnabled();
+        $doNotEmail = (new PersonService())->buildDoNotEmailSet();
+
+        foreach ($rows as $row) {
+            try {
+                $counts[$this->deliver($row, $emailEnabled, $doNotEmail)]++;
+            } catch (\Throwable $e) {
+                // A throw from anywhere in the build or the send is a delivery
+                // failure like any other, and is counted against the retry cap so a
+                // permanently broken row cannot be retried forever.
+                $this->recordFailure($row, $e->getMessage());
+                $counts['failed']++;
+                $this->logger->error('Volunteer notification delivery threw', [
+                    'notificationId' => $row->getId(),
+                    'type' => $row->getType(),
+                    'dedupeKey' => $row->getDedupeKey(),
+                    'exception' => $e->getMessage(),
+                ]);
+            }
+        }
+
+        $this->logger->info('Volunteer notification outbox drained', $counts);
+
+        return $counts;
+    }
+
+    /**
+     * Deliver one row, or decide not to.
+     *
+     * @param array<int, bool> $doNotEmail
+     *
+     * @return string one of 'sent', 'skipped', 'failed' — the key to increment
+     */
+    private function deliver(VolunteerNotification $row, bool $emailEnabled, array $doNotEmail): string
+    {
+        // N2: checked BEFORE anything is attempted, because BaseEmail::send() returns
+        // false identically for "email is switched off" and "SMTP refused us", and the
+        // outbox has to tell those apart or the retry rule is meaningless.
+        if (!$emailEnabled) {
+            return $this->recordSkipped($row, 'email disabled');
+        }
+
+        $recipient = PersonQuery::create()->findPk((int) $row->getPersonId());
+        if ($recipient === null) {
+            return $this->recordSkipped($row, 'recipient no longer exists');
+        }
+
+        // N3: mandatory. A person who asked not to be mailed is not mailed, and the
+        // row records that we chose not to rather than that we failed.
+        if (isset($doNotEmail[(int) $row->getPersonId()])) {
+            return $this->recordSkipped($row, 'recipient is in the do-not-email set');
+        }
+
+        // Person::getEmail() falls back to the FAMILY address, so this can legitimately
+        // be a shared inbox (Appendix C notes it; V2 cannot fix it).
+        $address = (string) ($recipient->getEmail() ?? '');
+        if (trim($address) === '') {
+            return $this->recordSkipped($row, 'recipient has no email address');
+        }
+
+        $context = $this->buildContext($row);
+        if ($context === null) {
+            return $this->recordSkipped($row, 'the ministry, schedule or occurrence is gone');
+        }
+
+        if ($row->getType() === self::TYPE_REMINDER && $context->hasEnded()) {
+            return $this->recordSkipped($row, 'the occurrence has already ended');
+        }
+
+        $email = $this->buildEmail($row, $recipient, $address, $context);
+        if ($email === null) {
+            return $this->recordSkipped($row, 'no message could be built for this row');
+        }
+
+        $this->applyReplyTo($email, $row, $context);
+
+        if ($email->send()) {
+            $row->setStatus(VolunteerNotification::STATUS_SENT);
+            $row->setSentDate(DateTimeUtils::getToday());
+            $row->setLastAttemptDate(DateTimeUtils::getToday());
+            $row->setAttempts((int) $row->getAttempts() + 1);
+            $row->setLastError(null);
+            $row->save();
+
+            $this->logger->info('Volunteer notification sent', [
+                'notificationId' => $row->getId(),
+                'type' => $row->getType(),
+                'personId' => $row->getPersonId(),
+            ]);
+
+            return 'sent';
+        }
+
+        $this->recordFailure($row, $email->getError());
+
+        return 'failed';
+    }
+
+    /** §2.14: `skipped` means "we chose not to", so no attempt is counted. */
+    private function recordSkipped(VolunteerNotification $row, string $reason): string
+    {
+        $row->setStatus(VolunteerNotification::STATUS_SKIPPED);
+        $row->setLastError(mb_substr($reason, 0, 255));
+        $row->save();
+
+        $this->logger->info('Volunteer notification skipped', [
+            'notificationId' => $row->getId(),
+            'type' => $row->getType(),
+            'personId' => $row->getPersonId(),
+            'reason' => $reason,
+        ]);
+
+        return 'skipped';
+    }
+
+    /**
+     * §2.14 (amended): a failure keeps the row `pending` so the next drain retries it,
+     * until `Attempts` reaches the cap — only then is it `failed`, which is terminal and
+     * means "gave up", never "will retry".
+     */
+    private function recordFailure(VolunteerNotification $row, string $error): void
+    {
+        $attempts = (int) $row->getAttempts() + 1;
+
+        $row->setAttempts($attempts);
+        $row->setLastAttemptDate(DateTimeUtils::getToday());
+        $row->setLastError(mb_substr($error === '' ? gettext('Unknown delivery error') : $error, 0, 255));
+        $row->setStatus(
+            $attempts >= self::MAX_ATTEMPTS
+                ? VolunteerNotification::STATUS_FAILED
+                : VolunteerNotification::STATUS_PENDING
+        );
+        $row->save();
+
+        $this->logger->warning('Volunteer notification delivery failed', [
+            'notificationId' => $row->getId(),
+            'type' => $row->getType(),
+            'personId' => $row->getPersonId(),
+            'attempts' => $attempts,
+            'status' => $row->getStatus(),
+            'error' => $row->getLastError(),
+        ]);
+    }
+
+    /**
+     * Set the `Reply-To` for this row's direction (§3.6), or set none at all.
+     *
+     * Volunteer-facing mail replies to the responsible coordinator; a decline alert
+     * replies to the volunteer who declined; a swap proposal replies to the volunteer who
+     * proposed it; a gap alert names no single volunteer and therefore carries no
+     * Reply-To. Resolution happens HERE, at send time, so a coordinator handover between
+     * enqueue and delivery is picked up automatically — the outbox stores no address.
+     *
+     * **Never throws.** No coordinator, no address, an address its owner opted out of and
+     * an address PHPMailer rejects all mean "send it without the header" (Appendix C),
+     * which degrades to exactly the behaviour every other ChurchCRM email has today.
+     */
+    private function applyReplyTo(BaseEmail $email, VolunteerNotification $row, VolunteerEmailContext $context): void
+    {
+        try {
+            $personId = match ($row->getType()) {
+                self::TYPE_GAP_ALERT => null,
+                self::TYPE_DECLINE_ALERT => $this->assignmentPersonId($row),
+                self::TYPE_SWAP_PROPOSED => $this->swapProposerPersonId($row),
+                default => $this->coordinatorPersonId($row),
+            };
+
+            if ($personId === null) {
+                return;
+            }
+
+            $person = PersonQuery::create()->findPk($personId);
+            if ($person === null) {
+                return;
+            }
+
+            $address = (string) ($person->getEmail() ?? '');
+            if (trim($address) === '') {
+                return;
+            }
+
+            // A Reply-To invites mail to an address whose owner may have opted out, so
+            // the opt-out is honoured on this side of the header too (§3.6).
+            $doNotEmail = (new PersonService())->buildDoNotEmailSet([$personId]);
+            if (isset($doNotEmail[$personId])) {
+                return;
+            }
+
+            $email->setReplyTo($address, $person->getFullName());
+        } catch (\Throwable $e) {
+            $this->logger->warning('Volunteer notification Reply-To could not be resolved', [
+                'notificationId' => $row->getId(),
+                'type' => $row->getType(),
+                'exception' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    /** The responsible coordinator for this row's occurrence — the ONE owner of §3.6's order. */
+    private function coordinatorPersonId(VolunteerNotification $row): ?int
+    {
+        $scope = $this->scheduleScopeFor($row);
+        if ($scope === null) {
+            return null;
+        }
+
+        return (new VolunteerAuthorizationService())
+            ->getReplyToPersonId($scope['ministryId'], $scope['teamId']);
+    }
+
+    private function assignmentPersonId(VolunteerNotification $row): ?int
+    {
+        $assignment = $this->assignmentFor($row);
+
+        return $assignment === null ? null : (int) $assignment->getPersonId();
+    }
+
+    private function swapProposerPersonId(VolunteerNotification $row): ?int
+    {
+        $swap = $this->swapFor($row, true);
+
+        return $swap === null ? null : (int) $swap->getProposedByPersonId();
+    }
+
+    // ── Building the message ───────────────────────────────────────────────
+
+    /**
+     * The ministry / team / position / when / where block for this row, or null when
+     * the rows it hangs off have been deleted underneath it.
+     */
+    private function buildContext(VolunteerNotification $row): ?VolunteerEmailContext
+    {
+        $occurrence = $this->occurrenceFor($row);
+        if ($occurrence === null) {
+            return null;
+        }
+
+        $schedule = VolunteerScheduleQuery::create()->findPk((int) $occurrence->getScheduleId());
+        if ($schedule === null) {
+            return null;
+        }
+
+        $ministry = VolunteerMinistryQuery::create()->findPk((int) $schedule->getMinistryId());
+        if ($ministry === null) {
+            return null;
+        }
+
+        $teamName = null;
+        if ($schedule->getTeamId() !== null) {
+            $team = VolunteerTeamQuery::create()->findPk((int) $schedule->getTeamId());
+            $teamName = $team === null ? null : (string) $team->getName();
+        }
+
+        $positionName = null;
+        $assignment = $this->assignmentFor($row);
+        if ($assignment !== null) {
+            $position = VolunteerPositionQuery::create()->findPk((int) $assignment->getPositionId());
+            $positionName = $position === null ? null : (string) $position->getName();
+        }
+
+        // Times come only from resolveOccurrenceWindow() — §3.4 says nothing else may
+        // decide an occurrence's window, and a second derivation here is exactly how an
+        // email ends up disagreeing with the page it links to.
+        $window = (new VolunteerScheduleService())->resolveOccurrenceWindow($occurrence);
+
+        return new VolunteerEmailContext(
+            (string) $ministry->getName(),
+            $teamName,
+            $positionName,
+            $window['start'] ?? null,
+            $window['end'] ?? null,
+            $this->locationNameFor($occurrence),
+            (int) $occurrence->getId()
+        );
+    }
+
+    /** The linked event's location, when there is one. Unlinked occurrences have none. */
+    private function locationNameFor(VolunteerOccurrence $occurrence): ?string
+    {
+        $eventId = $occurrence->getEventId();
+        if ($eventId === null) {
+            return null;
+        }
+
+        $event = EventQuery::create()->findPk((int) $eventId);
+        $location = $event?->getLocation();
+
+        return $location === null ? null : (string) $location->getName();
+    }
+
+    /** One `BaseEmail` subclass per outbox type (Appendix C). */
+    private function buildEmail(
+        VolunteerNotification $row,
+        Person $recipient,
+        string $address,
+        VolunteerEmailContext $context
+    ): ?BaseEmail {
+        $to = [$address];
+        $recipientName = (string) $recipient->getFullName();
+
+        switch ($row->getType()) {
+            case self::TYPE_ASSIGNMENT:
+                return new VolunteerAssignmentEmail($to, $recipientName, $context);
+
+            case self::TYPE_REMINDER:
+                return new VolunteerReminderEmail($to, $recipientName, $context);
+
+            case self::TYPE_SIGNUP_CONFIRM:
+                return new VolunteerSignupConfirmEmail($to, $recipientName, $context);
+
+            case self::TYPE_DECLINE_ALERT:
+                $assignment = $this->assignmentFor($row);
+                if ($assignment === null) {
+                    return null;
+                }
+
+                return new VolunteerDeclineAlertEmail(
+                    $to,
+                    $recipientName,
+                    $context,
+                    $this->personName((int) $assignment->getPersonId()),
+                    $this->gapForPosition((int) $assignment->getOccurrenceId(), (int) $assignment->getPositionId())
+                );
+
+            case self::TYPE_GAP_ALERT:
+                return new VolunteerGapAlertEmail(
+                    $to,
+                    $recipientName,
+                    $context,
+                    $this->shortPositions((int) $row->getOccurrenceId())
+                );
+
+            case self::TYPE_SWAP_PROPOSED:
+                $swap = $this->swapFor($row, true);
+                if ($swap === null) {
+                    return null;
+                }
+
+                return new VolunteerSwapProposedEmail(
+                    $to,
+                    $recipientName,
+                    $context,
+                    $this->personName((int) $swap->getProposedByPersonId()),
+                    $this->personName((int) $swap->getProposedPersonId())
+                );
+
+            case self::TYPE_SWAP_RESOLVED:
+                $swap = $this->swapFor($row, false);
+                if ($swap === null) {
+                    return null;
+                }
+
+                return new VolunteerSwapResolvedEmail(
+                    $to,
+                    $recipientName,
+                    $context,
+                    $this->personName((int) $swap->getProposedByPersonId()),
+                    $this->personName((int) $swap->getProposedPersonId()),
+                    $swap->getStatus() === VolunteerSwap::STATUS_APPROVED
+                        ? VolunteerSwapResolvedEmail::DECISION_APPROVED
+                        : VolunteerSwapResolvedEmail::DECISION_REJECTED
+                );
+        }
+
+        return null;
+    }
+
+    private function personName(int $personId): string
+    {
+        $person = PersonQuery::create()->findPk($personId);
+
+        return $person === null ? gettext('A volunteer') : (string) $person->getFullName();
+    }
+
+    /**
+     * How many more people that one position still needs.
+     *
+     * `VolunteerAssignmentService::getGaps()` is THE gap implementation (§2.11.3); this
+     * asks it rather than counting rows, so a mail can never disagree with the staffing
+     * page it links to.
+     */
+    private function gapForPosition(int $occurrenceId, int $positionId): int
+    {
+        $gaps = (new VolunteerAssignmentService())->getGaps([$occurrenceId]);
+
+        return (int) ($gaps[$occurrenceId]['requirements'][$positionId]['gapCount'] ?? 0);
+    }
+
+    /**
+     * Every position on this occurrence that is genuinely short, name → how many.
+     *
+     * @return array<string, int>
+     */
+    private function shortPositions(int $occurrenceId): array
+    {
+        $short = [];
+        foreach ((new VolunteerAssignmentService())->getOpenGaps([$occurrenceId]) as $gap) {
+            $name = $gap['positionName'] ?? null;
+            if ($name === null || (int) $gap['gapCount'] <= 0) {
+                continue;
+            }
+            $short[(string) $name] = (int) $gap['gapCount'];
+        }
+
+        return $short;
+    }
+
+    // ── Row lookups ────────────────────────────────────────────────────────
+
+    private function assignmentFor(VolunteerNotification $row): ?VolunteerAssignment
+    {
+        $assignmentId = $row->getAssignmentId();
+
+        return $assignmentId === null
+            ? null
+            : VolunteerAssignmentQuery::create()->findPk((int) $assignmentId);
+    }
+
+    private function occurrenceFor(VolunteerNotification $row): ?VolunteerOccurrence
+    {
+        $occurrenceId = $row->getOccurrenceId();
+        if ($occurrenceId !== null) {
+            $occurrence = VolunteerOccurrenceQuery::create()->findPk((int) $occurrenceId);
+            if ($occurrence !== null) {
+                return $occurrence;
+            }
+        }
+
+        $assignment = $this->assignmentFor($row);
+
+        return $assignment === null
+            ? null
+            : VolunteerOccurrenceQuery::create()->findPk((int) $assignment->getOccurrenceId());
+    }
+
+    /**
+     * The swap a `swap_proposed` / `swap_resolved` row is about.
+     *
+     * The dedupe key carries the swap id, but §2.14 is explicit that keys are compared
+     * and never parsed, so the swap is found through the row's assignment instead. That
+     * is unambiguous under §2.13's invariant that an assignment has **at most one
+     * `proposed` swap at a time**: an unresolved proposal is the only candidate for
+     * `swap_proposed`, and the newest resolved one is the only candidate for
+     * `swap_resolved`.
+     */
+    private function swapFor(VolunteerNotification $row, bool $wantProposed): ?VolunteerSwap
+    {
+        $assignmentId = $row->getAssignmentId();
+        if ($assignmentId === null) {
+            return null;
+        }
+
+        $query = VolunteerSwapQuery::create()->filterByAssignmentId((int) $assignmentId);
+
+        if ($wantProposed) {
+            $proposed = (clone $query)
+                ->filterByStatus(VolunteerSwap::STATUS_PROPOSED)
+                ->orderById(Criteria::DESC)
+                ->findOne();
+
+            if ($proposed !== null) {
+                return $proposed;
+            }
+        } else {
+            $resolved = (clone $query)
+                ->filterByStatus(VolunteerSwap::STATUS_PROPOSED, Criteria::NOT_EQUAL)
+                ->orderById(Criteria::DESC)
+                ->findOne();
+
+            if ($resolved !== null) {
+                return $resolved;
+            }
+        }
+
+        // The proposal was decided (or re-opened) between enqueue and drain; the newest
+        // swap on the assignment is still the one the message is about.
+        return $query->orderById(Criteria::DESC)->findOne();
+    }
+
+    /**
+     * The ministry (and team) that owns this row's occurrence — the two arguments
+     * `getReplyToPersonId()` needs.
+     *
+     * @return array{ministryId: int, teamId: ?int}|null
+     */
+    private function scheduleScopeFor(VolunteerNotification $row): ?array
+    {
+        $occurrence = $this->occurrenceFor($row);
+        if ($occurrence === null) {
+            return null;
+        }
+
+        $schedule = VolunteerScheduleQuery::create()->findPk((int) $occurrence->getScheduleId());
+        if ($schedule === null) {
+            return null;
+        }
+
+        return [
+            'ministryId' => (int) $schedule->getMinistryId(),
+            'teamId' => $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId(),
+        ];
     }
 }

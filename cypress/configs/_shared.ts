@@ -65,6 +65,82 @@ export const dbTasks = {
   }
 };
 
+/**
+ * Node-side Mailpit tasks.
+ *
+ * The `test` docker profile runs Mailpit (`docker/docker-compose.yaml`), so a
+ * spec can assert what was actually *delivered* — subject, body, headers — and
+ * not merely that the application believed it sent something. #9710 needs that:
+ * "the drain sent it" and "the message carries a Reply-To pointing at the
+ * coordinator" are different claims, and only the second one proves N10/CR6.
+ *
+ * These are node tasks rather than `cy.request()` for one reason: Mailpit is
+ * OPTIONAL. The `ci-root` / `ci-subdir` profiles bring up no mail server at all,
+ * and `cy.request()` fails the test outright on a refused connection — there is
+ * no `failOnStatusCode` for ECONNREFUSED. A task can catch that and RETURN
+ * `{ok: false}`, which lets a spec skip delivery assertions where there is no
+ * mail server instead of failing on infrastructure that was never promised.
+ * Same rationale as `db:query` returning driver errors instead of throwing.
+ *
+ * MAILPIT_URL wins; otherwise MAILSERVER_GUI_PORT (which an isolated local
+ * stack sets alongside DATABASE_PORT) on localhost; otherwise Mailpit's 8025.
+ */
+function mailpitBaseUrl(): string {
+  if (process.env.MAILPIT_URL) {
+    return process.env.MAILPIT_URL.replace(/\/+$/, '');
+  }
+
+  return `http://127.0.0.1:${process.env.MAILSERVER_GUI_PORT || 8025}`;
+}
+
+async function mailpitFetch(path: string, init?: Record<string, unknown>) {
+  // A short timeout keeps "no mail server here" from costing the spec a minute.
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 5000);
+
+  try {
+    const response = await fetch(`${mailpitBaseUrl()}${path}`, {
+      ...(init || {}),
+      signal: controller.signal
+    } as any);
+
+    if (!response.ok) {
+      return { ok: false, error: `HTTP ${response.status}`, body: null };
+    }
+
+    const text = await response.text();
+    return { ok: true, error: null, body: text === '' ? null : JSON.parse(text) };
+  } catch (err: any) {
+    return { ok: false, error: err?.message || String(err), body: null };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+export const mailTasks = {
+  /** Is a Mailpit instance reachable? Never throws — the answer is the point. */
+  async 'mail:available'() {
+    const result = await mailpitFetch('/api/v1/messages?limit=1');
+
+    return { available: result.ok, url: mailpitBaseUrl(), error: result.error };
+  },
+
+  /** Delete every stored message, so a spec can assert on what IT produced. */
+  async 'mail:clear'() {
+    return await mailpitFetch('/api/v1/messages', { method: 'DELETE' });
+  },
+
+  /** Message summaries, newest first. `{ok, body: {messages: [...]}}`. */
+  async 'mail:list'({ limit }: { limit?: number } = {}) {
+    return await mailpitFetch(`/api/v1/messages?limit=${limit || 100}`);
+  },
+
+  /** One message in full — Text, HTML and the ReplyTo header among them. */
+  async 'mail:get'({ id }: { id: string }) {
+    return await mailpitFetch(`/api/v1/message/${encodeURIComponent(id)}`);
+  }
+};
+
 export function setupCommonNodeEvents(on: any, config: any) {
   // cypress-terminal-report logs printer for CI debugging
   try {
@@ -84,7 +160,7 @@ export function setupCommonNodeEvents(on: any, config: any) {
 
   // Every task must be registered in a single on('task', ...) call — a second
   // registration replaces the first rather than merging with it.
-  const tasks: Record<string, any> = { ...dbTasks };
+  const tasks: Record<string, any> = { ...dbTasks, ...mailTasks };
 
   // Register download verification tasks if available
   try {
