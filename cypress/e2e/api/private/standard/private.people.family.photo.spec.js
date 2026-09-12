@@ -221,6 +221,45 @@ describe("API Private Photo and Avatar - Family", () => {
                 expect(response.body).to.have.property("message");
             });
         });
+
+        it("should reject an oversized body with no image data with 400, not 413", () => {
+            // Regression for #9771. The 413 branch is only for a body PHP threw
+            // away for being larger than the server accepts. This body arrives
+            // complete and simply has no imgBase64, so it is a malformed request.
+            // 3 MB is well over the 2 MB upload_max_filesize the project's PHP
+            // images set — the value the handler compared Content-Length against —
+            // and far under their 2 GB post_max_size, so PHP receives and parses
+            // it in full.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/family/${testFamilyId}/photo`,
+                JSON.stringify({ notImgBase64: "a".repeat(3 * 1024 * 1024) }),
+                400
+            ).then((response) => {
+                expect(response.body.success).to.eq(false);
+                expect(response.body.message).to.include("Missing image data");
+            });
+        });
+
+        it("should reject an oversized unparseable body with 400, not 413", () => {
+            // Regression for #9771, second path: the body arrives in full but
+            // BodyParsingMiddleware cannot decode it, so getParsedBody() is null
+            // and the decision falls to the raw body. slim/psr7 caches
+            // php://input, so the bytes are still readable after the middleware
+            // consumed them and the handler can tell "arrived but unparseable"
+            // (400) from "never arrived" (413). Sent as invalid JSON under
+            // Content-Type: application/json, over 2 MB so Content-Length alone
+            // would have produced a 413.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/family/${testFamilyId}/photo`,
+                '{"notImgBase64": "' + "a".repeat(3 * 1024 * 1024),
+                400
+            ).then((response) => {
+                expect(response.body.success).to.eq(false);
+                expect(response.body.message).to.include("Missing image data");
+            });
+        });
     });
 
     describe("DELETE /api/family/{id}/photo", () => {

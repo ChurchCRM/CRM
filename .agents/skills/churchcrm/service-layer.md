@@ -25,19 +25,54 @@ Located in `src/ChurchCRM/Service/`:
 
 - **PersonService** - Person/family operations
 - **GroupService** - Group management
-- **FinancialService** - Payments, pledges, funds
+- **FinancialService** - Payments, pledges, funds (note the name: `FinancialService`, not `FinanceService`)
 - **DepositService** - Deposit slip handling
 - **SystemService** - System-wide operations
 - **UserService** - User management with optimized database operations
+- **EventService** - The one recurring-event generator (see below)
+- **RecurrenceDateGenerator** - Event-free weekly/monthly/yearly date math
 
-## Example Usage
+## How to Obtain a Service — Direct Instantiation <!-- learned: 2026-09-11 -->
+
+**ChurchCRM has no dependency-injection container.** `src/composer.json` declares no
+container library, `MvcAppFactory::create()`
+(`src/ChurchCRM/Slim/MvcAppFactory.php:35-62`) never calls `AppFactory::setContainer()`, and
+`$app->getContainer()` is therefore `null` in every MVC module. The single surviving
+`$container->get(...)` in the tree is inside `SlimUtils::registerCustomErrorHandlers()`
+(`src/ChurchCRM/Slim/SlimUtils.php:80-105`), a method marked `@deprecated Slim 3 only`.
+
+Instantiate the service where you need it:
 
 ```php
-// In API route or legacy page
+// ✅ CORRECT — src/api/routes/finance/finance-payments.php:30-37 (trimmed)
+use ChurchCRM\Service\FinancialService;
+
+$group->get('/', function (Request $request, Response $response, array $args): Response {
+    $financialService = new FinancialService();
+
+    return SlimUtils::renderJSON(
+        $response,
+        ['payments' => $financialService->getPayments()]
+    );
+});
+
+// ❌ WRONG — there is no container; $container is undefined and
+//    $app->getContainer() returns null, so this is a fatal error
 $service = $container->get('FinancialService');
-$result = $service->addPayment($fam_id, $method, $amount, $date, $funds);
-return $response->withJson(['data' => $result]);
+$service = $app->getContainer()->get('FinancialService');
 ```
+
+Services are cheap value-less objects — construct one per request where you use it rather
+than threading a shared instance through the call stack. Other real call sites:
+`new PersonService()` / `new SystemService()` (`src/Include/PageInit.php:13-14`),
+`new UserService()` (`src/admin/views/users.php:14`, `src/admin/routes/system.php:944`),
+`(new PersonService())->buildDoNotEmailSet(...)` (`src/ChurchCRM/dto/Cart.php:269`).
+
+Some services expose **static** methods only and are never instantiated —
+`AppIntegrityService`, `AuthService`, `LocaleService`, `NotificationService`,
+`PropertyService`, `TelemetryService`, `UpgradeService`, `UpgradeAPIService`,
+`BirthdayEmailService`. Call those as `AppIntegrityService::verifyApplicationIntegrity()`.
+Check the class before deciding which form to use.
 
 ## Service Layer Performance Best Practices
 
@@ -140,10 +175,12 @@ public function getUserStats(): array
 **Do NOT create API endpoints** if a service method is only called from a legacy page:
 
 ```php
-// GOOD - Call service directly from legacy page
+// GOOD - Call service directly from the legacy page
+use ChurchCRM\Service\PersonService;
+
 require 'Include/Config.php';
-$service = $container->get('PersonService');
-$result = $service->updatePerson($personId, $data);
+$personService = new PersonService();
+$result = $personService->search($searchTerm);
 
 // BAD - Creating unnecessary API endpoint just to call service once
 // Don't create /api/person/update if only used by one page
@@ -217,9 +254,11 @@ public function getUserSettingsConfig(): array
 ## Files
 
 **Services:** `src/ChurchCRM/Service/`
-**Service Container:** `src/ChurchCRM/ServiceContainerBuilder.php`
 **Logger:** `src/ChurchCRM/Utils/LoggerUtils.php`
 **Config:** `src/ChurchCRM/dto/SystemConfig.php`
+
+There is no service-container file. `src/ChurchCRM/ServiceContainerBuilder.php` does not
+exist anywhere in the tree — see "How to Obtain a Service" above.
 
 ## Auto-Triggering Service Methods from Model Saves <!-- learned: 2026-03-08 -->
 
@@ -345,3 +384,15 @@ if (count($occurrenceDates) > self::MAX_REPEAT_OCCURRENCES) {
     ));
 }
 ```
+
+## One Recurrence Engine — `EventService` + `RecurrenceDateGenerator` <!-- learned: 2026-09-11 -->
+
+Recurring events had two independent implementations (issue #9735): `EventService::createRepeatEvents()` and an inline `generateRecurringEvents()` in `src/api/routes/calendar/events.php`, with different caps, titles, times and duplicate handling. They are now one path — **do not add a third**.
+
+- `ChurchCRM\Service\RecurrenceDateGenerator::generate()` — event-free date math (weekly / monthly / yearly). Anything that needs "the dates this repeats on" calls this, not a private copy of the switch.
+- `ChurchCRM\Service\EventService::createRecurringEvents()` — the only place events are created in bulk. `createRepeatEvents()` is a thin wrapper returning just the IDs.
+- Both HTTP endpoints (`POST /api/events/repeat`, `POST /api/events/generate-recurring`) and the repeat-event editor are adapters over it.
+
+The shared, documented policy lives in the `EventService` class docblock: one cap (`MAX_REPEAT_OCCURRENCES`, expressed in occurrences rather than calendar span so it means something for yearly recurrence too), caller-supplied title/times win and otherwise fall back to the event type's defaults, and `skipExisting` dedups on `(event type, calendar date)`.
+
+Endpoint adapters keep their own request/response shapes — the unification is behavioural, not a URL change.

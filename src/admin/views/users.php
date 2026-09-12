@@ -178,7 +178,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                 <?php if ($user->is2FactorAuthEnabled()) { ?>
                                     <span class="badge rounded-pill bg-success text-white"><i class="fa-solid fa-circle-check me-1"></i><?= gettext('Enabled') ?></span>
                                 <?php } else { ?>
-                                    <span class="badge rounded-pill bg-danger text-white"><i class="fa-solid fa-shield-slash me-1"></i><?= gettext('Disabled') ?></span>
+                                    <span class="badge rounded-pill bg-danger text-white"><i class="fa-solid fa-circle-xmark me-1"></i><?= gettext('Disabled') ?></span>
                                 <?php } ?>
                             </td>
                             <td class="w-1">

@@ -497,14 +497,14 @@ $this->setConfigValue('lastSync', date('c'));        // Sets plugin.mailchimp.la
 ### Available Hook Points
 
 **Person Lifecycle:**
-- `PERSON_CREATED` - After person is created
-- `PERSON_UPDATED` - After person is updated
-- `PERSON_DELETED` - After person is deleted
+- `PERSON_CREATED` - After person is created — receives `Person $person`
+- `PERSON_UPDATED` - After person is updated — receives `Person $person, array $oldData`
+- `PERSON_DELETED` - After person is deleted — receives `int $personId, array $personData`
 
 **Family Lifecycle:**
-- `FAMILY_CREATED` - After family is created
-- `FAMILY_UPDATED` - After family is updated
-- `FAMILY_DELETED` - After family is deleted
+- `FAMILY_CREATED` - After family is created — receives `Family $family`
+- `FAMILY_UPDATED` - After family is updated — receives `Family $family, array $oldData`
+- `FAMILY_DELETED` - After family is deleted — receives `int $familyId, array $familyData`
 
 **Financial:**
 - `DONATION_RECEIVED` - When donation is recorded
@@ -524,7 +524,37 @@ $this->setConfigValue('lastSync', date('c'));        // Sets plugin.mailchimp.la
 - `MENU_BUILDING` - Building navigation menu
 
 **System:**
-- `CRON_RUN` - Periodic task execution
+- `CRON_RUN` - Periodic task execution (see *How CRON_RUN is actually triggered* below)
+
+### How CRON_RUN is actually triggered <!-- learned: 2026-09-11 -->
+
+`CRON_RUN` fires from `SystemService::runTimerJobs()`. There are two entry points into it,
+and a plugin author needs to know both (issue #9724):
+
+| Entry point | Cadence | Rate limited? |
+|---|---|---|
+| `php cli/timerjobs.php` (or `composer run timerjobs` from `src/`) | Whatever the administrator's crontab says | No — `runTimerJobs(true)` |
+| `POST /api/background/timerjobs`, fired by `src/skin/js/Footer.js` on every authenticated page load | Whenever somebody browses | Yes — at most once per `iTimerJobsMinIntervalMinutes` (default 15) |
+
+The CLI runner is the supported scheduler; the page-load call is the fallback for shared
+hosting with no cron. The recommended crontab line is:
+
+```cron
+0 * * * * /usr/bin/php /path/to/churchcrm/cli/timerjobs.php >> /var/log/churchcrm-cron.log 2>&1
+```
+
+Consequences for plugin code:
+
+- **Do not assume a fixed interval.** Your listener may be called every 15 minutes on a busy
+  site, once a day on a quiet one, or not at all on an idle install without cron. Guard
+  anything that must happen once per period with your own marker, the way
+  `BirthdayEmailService` claims its day and `ExternalBackupPlugin` uses a threshold check.
+- **Do not throw to signal "nothing to do".** `runTimerJob()` catches and logs, then keeps
+  going, but a throw is recorded as a failure and makes the CLI runner exit non-zero.
+- `SystemService::getLastTimerJobsRun()` / `isTimerJobsRunStale()` expose the last successful
+  run; the admin dashboard warns after `iTimerJobsStaleHours` (default 26).
+- New CLI entry points belong in `src/cli/`, which is denied by `.htaccess` **and** guarded
+  with `PHP_SAPI !== 'cli'` in the script itself. Never rely on only one of the two.
 
 ### Registering Hooks
 
@@ -561,15 +591,15 @@ Hook constants in `Hooks.php` are inert — nothing fires automatically. Each ho
 
 | Hook | Dispatch Location | Status |
 |------|-------------------|--------|
-| `PERSON_CREATED` | `src/ChurchCRM/Model/Person.php` `postInsert()` — after timeline note creation | ✅ Wired |
-| `PERSON_UPDATED` | `src/ChurchCRM/Model/Person.php` `postUpdate()` — after timeline note check | ✅ Wired |
-| `FAMILY_CREATED` | `src/ChurchCRM/Model/Family.php` `postInsert()` — after welcome email | ✅ Wired |
-| `FAMILY_UPDATED` | `src/ChurchCRM/Model/Family.php` `postUpdate()` — after timeline note | ✅ Wired |
+| `PERSON_CREATED` | `src/ChurchCRM/model/ChurchCRM/Person.php` `postInsert()` — after timeline note creation | ✅ Wired |
+| `PERSON_UPDATED` | `src/ChurchCRM/model/ChurchCRM/Person.php` `postUpdate()` — after timeline note check | ✅ Wired |
+| `FAMILY_CREATED` | `src/ChurchCRM/model/ChurchCRM/Family.php` `postInsert()` — after welcome email | ✅ Wired |
+| `FAMILY_UPDATED` | `src/ChurchCRM/model/ChurchCRM/Family.php` `postUpdate()` — after timeline note | ✅ Wired |
 | `CRON_RUN` | `src/ChurchCRM/Service/SystemService.php` `runTimerJobs()` | ✅ Wired |
 | `MENU_BUILDING` | Core menu builder in admin initializer | ✅ Wired |
 | `SYSTEM_CALENDARS_REGISTER` | Calendar system initialization | ✅ Wired |
-| `PERSON_DELETED` | Needs wiring in `/people/person` DELETE route | ⏳ Pending |
-| `FAMILY_DELETED` | Needs wiring in `/people/family` DELETE route | ⏳ Pending |
+| `PERSON_DELETED` | `src/ChurchCRM/model/ChurchCRM/Person.php` `postDelete()` — payload snapshotted in `preDelete()` | ✅ Wired |
+| `FAMILY_DELETED` | `src/ChurchCRM/model/ChurchCRM/Family.php` `postDelete()` — payload snapshotted in `preDelete()` | ✅ Wired |
 | `EVENT_CREATED` | Needs wiring in `EventService::createEvent()` | ⏳ Pending |
 | `EVENT_CHECKIN` | Needs wiring in `Event::checkInPerson()` | ⏳ Pending |
 | `EVENT_CHECKOUT` | Needs wiring in `Event::checkOutPerson()` | ⏳ Pending |
@@ -577,6 +607,24 @@ Hook constants in `Hooks.php` are inert — nothing fires automatically. Each ho
 | `GROUP_MEMBER_REMOVED` | Needs wiring in groups membership route | ⏳ Pending |
 | `DONATION_RECEIVED` | Needs wiring in financial donation route | ⏳ Pending |
 | `DEPOSIT_CLOSED` | Needs wiring in `FinancialService::setDeposit()` | ⏳ Pending |
+
+### Hook Payloads Are Propel phpName Arrays <!-- learned: 2026-09-11 -->
+
+The `array` half of the person/family lifecycle payloads is keyed by **Propel
+phpName** (`FirstName`, `Email`, `Name`), never by database column name
+(`per_FirstName`) and never lowercased (`email`). Reading `$oldData['email']`
+silently yields `null`.
+
+| Hook | Payload source | Keys |
+|------|----------------|------|
+| `PERSON_UPDATED` / `FAMILY_UPDATED` | `select('*')` read in `preUpdate()`, re-keyed to phpName | persisted columns only |
+| `PERSON_DELETED` / `FAMILY_DELETED` | `toArray()` snapshotted in `preDelete()` | persisted columns **plus** the model's derived keys (`FullName`, `Address`, `HasPhoto`, `FamilyString`) |
+
+Both snapshots are taken only when `HookManager::hasAction()` reports a
+listener, so an install with no plugins pays nothing for them. Dispatching from
+the Propel callbacks rather than from the routes means the member cascade in
+`DELETE /api/family/{id}?deleteMembers=true` fires `PERSON_DELETED` for each
+deleted member — the old route-level dispatch never reached that path (#9768).
 
 ---
 

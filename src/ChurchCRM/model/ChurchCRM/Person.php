@@ -33,6 +33,17 @@ class Person extends BasePerson implements PhotoInterface
     private ?Photo $photo = null;
     private bool $skipPostUpdateNote = false;
 
+    /**
+     * Snapshot of the persisted row, taken in preUpdate()/preDelete() and
+     * handed to the PERSON_UPDATED / PERSON_DELETED listeners afterwards.
+     *
+     * Null means "nothing listening" — the snapshot is skipped when no plugin
+     * has registered for the hook, so installs with no plugins pay nothing.
+     *
+     * @var array<string, mixed>|null
+     */
+    private ?array $hookDataSnapshot = null;
+
     public function getFullName(): string
     {
         return $this->getFormattedName(SystemConfig::getIntValue('iPersonNameStyle'));
@@ -166,13 +177,58 @@ class Person extends BasePerson implements PhotoInterface
         HookManager::doAction(Hooks::PERSON_CREATED, $this);
     }
 
+    /**
+     * Capture the pre-update state so PERSON_UPDATED can report what changed.
+     *
+     * select() is used rather than a normal find so the read bypasses object
+     * hydration and the instance pool — findPk() would just hand back $this,
+     * which already holds the new values. Runs on the save connection, inside
+     * the same transaction, before doSave() writes the new row.
+     */
+    public function preUpdate(?ConnectionInterface $con = null): bool
+    {
+        $this->hookDataSnapshot = null;
+
+        if (HookManager::hasAction(Hooks::PERSON_UPDATED)) {
+            $row = PersonQuery::create()
+                ->filterById((int) $this->getId())
+                ->select('*')
+                ->findOne($con);
+
+            $this->hookDataSnapshot = is_array($row) ? self::toPhpNameKeys($row) : [];
+        }
+
+        return parent::preUpdate($con);
+    }
+
+    /**
+     * Re-key a select('*') row from "Fully\Qualified\Model.PhpName" to just
+     * "PhpName", so PERSON_UPDATED's $oldData matches the shape of
+     * PERSON_DELETED's $personData (which comes from toArray(TYPE_PHPNAME)).
+     *
+     * @param array<string, mixed> $row
+     *
+     * @return array<string, mixed>
+     */
+    private static function toPhpNameKeys(array $row): array
+    {
+        $keyed = [];
+        foreach ($row as $column => $value) {
+            $lastDot = strrpos((string) $column, '.');
+            $keyed[$lastDot === false ? $column : substr((string) $column, $lastDot + 1)] = $value;
+        }
+
+        return $keyed;
+    }
+
     public function postUpdate(?ConnectionInterface $con = null): void
     {
         if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
 
-        HookManager::doAction(Hooks::PERSON_UPDATED, $this);
+        HookManager::doAction(Hooks::PERSON_UPDATED, $this, $this->hookDataSnapshot ?? []);
+        $this->hookDataSnapshot = null;
     }
 
     private function createTimeLineNote(string $type): void
@@ -415,6 +471,22 @@ class Person extends BasePerson implements PhotoInterface
         return $this->photo;
     }
 
+    /**
+     * Save the record without generating the automatic 'Updated' timeline note.
+     * Use when the caller creates a more specific note (e.g. status change) to
+     * avoid a duplicate generic entry. Mirrors the private pattern used by
+     * setImageFromBase64().
+     */
+    public function saveWithoutUpdateNote(\Propel\Runtime\Connection\ConnectionInterface $con = null): void
+    {
+        $this->skipPostUpdateNote = true;
+        try {
+            $this->save($con);
+        } finally {
+            $this->skipPostUpdateNote = false;
+        }
+    }
+
     public function setImageFromBase64($base64): void
     {
         $note = new Note();
@@ -580,6 +652,13 @@ class Person extends BasePerson implements PhotoInterface
 
     public function preDelete(?ConnectionInterface $con = null): bool
     {
+        // Snapshot before the cleanup below removes the rows toArray() reads
+        // (the photo behind HasPhoto), so PERSON_DELETED listeners see the
+        // person as they actually were.
+        $this->hookDataSnapshot = HookManager::hasAction(Hooks::PERSON_DELETED)
+            ? $this->toArray()
+            : null;
+
         // Remove the uploaded image from disk. Call Photo::delete() directly
         // rather than $this->deletePhoto(), which gates on the current user's
         // delete-records permission and writes a Note that NoteQuery below
@@ -615,6 +694,22 @@ class Person extends BasePerson implements PhotoInterface
         NoteQuery::create()->filterByPerson($this)->delete($con);
 
         return parent::preDelete($con);
+    }
+
+    /**
+     * Fire PERSON_DELETED for every path that removes a person.
+     *
+     * This lives on the model rather than in the API route because people are
+     * deleted from more than one place — DELETE /api/person/{id} and the
+     * member cascade in DELETE /api/family/{id}?deleteMembers=true, which
+     * never reached the route-level dispatch at all. Propel calls postDelete()
+     * exactly once per delete(), so every path fires the hook exactly once and
+     * no future caller can forget to.
+     */
+    public function postDelete(?ConnectionInterface $con = null): void
+    {
+        HookManager::doAction(Hooks::PERSON_DELETED, (int) $this->getId(), $this->hookDataSnapshot ?? []);
+        $this->hookDataSnapshot = null;
     }
 
     public function getProperties()
@@ -828,6 +923,23 @@ class Person extends BasePerson implements PhotoInterface
         $array['HasPhoto'] = $this->getPhoto()->hasUploadedPhoto();
 
         return $array;
+    }
+
+    /**
+     * Returns true when the person has not been deactivated.
+     * An empty/null per_DateDeactivated means the person is active.
+     */
+    public function isActive(): bool
+    {
+        return empty($this->getDateDeactivated());
+    }
+
+    /**
+     * Return the person's status as text ('Active' or 'Inactive').
+     */
+    public function getStatusText(): string
+    {
+        return $this->isActive() ? gettext('Active') : gettext('Inactive');
     }
 
     public function getEmail(): ?string

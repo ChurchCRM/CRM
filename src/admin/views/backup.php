@@ -78,7 +78,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <input type="radio" id="archiveType3" name="archiveType" value="3" class="form-selectgroup-input">
                         <div class="form-selectgroup-label d-flex align-items-center p-3">
                             <div class="me-3">
-                                <i class="fa-solid fa-file-zip" style="font-size: 1.5rem;"></i>
+                                <i class="fa-solid fa-file-zipper" style="font-size: 1.5rem;"></i>
                             </div>
                             <div>
                                 <strong><?= gettext('Full Backup') ?></strong>

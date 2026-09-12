@@ -157,19 +157,19 @@ allow_url_include = 0
 **Never throw HTTP exceptions from routes:**
 
 ```php
-// ❌ WRONG - Exception thrown exposes stack trace
-$app->post('/api/payment', function(Request $req, Response $res) {
-    $service = new PaymentService();
-    $service->process($req->getParsedBody());  // If this throws, 500 error
+// ❌ WRONG - Exception thrown exposes stack trace; withJson() is Slim 3 and does not exist
+$app->post('/payments/delete', function(Request $req, Response $res): Response {
+    $service = new FinancialService();
+    $service->deletePayment($groupKey);  // If this throws, raw 500 + stack trace
     return $res->withJson(['success' => true]);
 });
 
-// ✅ CORRECT - Catch and return sanitized JSON
-$app->post('/api/payment', function(Request $req, Response $res) use ($container) {
+// ✅ CORRECT - Catch and return sanitized JSON via SlimUtils
+$app->post('/payments/delete', function(Request $req, Response $res): Response {
     try {
-        $service = $container->get('PaymentService');
-        $result = $service->process($req->getParsedBody());
-        return $res->withJson(['success' => true, 'data' => $result]);
+        $service = new FinancialService();   // no DI container — see service-layer.md
+        $service->deletePayment($groupKey);
+        return SlimUtils::renderJSON($res, ['success' => true]);
     } catch (Throwable $e) {
         return SlimUtils::renderErrorJSON(
             $res,

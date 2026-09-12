@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-10 22:48+0000\n"
+"POT-Creation-Date: 2026-09-12 05:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1480,6 +1480,13 @@ msgid "Back up modified files before upgrading if you want to keep your changes.
 msgstr ""
 
 msgid "Background Color"
+msgstr ""
+
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr ""
+
+#, php-format
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
 msgstr ""
 
 msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
@@ -3249,9 +3256,6 @@ msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a mo
 msgstr ""
 
 msgid "Date is required"
-msgstr ""
-
-msgid "Date range cannot exceed 1 year"
 msgstr ""
 
 msgid "Day"
@@ -6379,6 +6383,9 @@ msgstr ""
 msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
 msgstr ""
 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr ""
+
 msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
 msgstr ""
 
@@ -7495,6 +7502,9 @@ msgid "Minimum length a user may set their password to"
 msgstr ""
 
 msgid "Minimum length is"
+msgstr ""
+
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
 msgstr ""
 
 msgid "Minutes"
@@ -10191,6 +10201,9 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
+msgid "Scheduled tasks are not running"
+msgstr ""
+
 msgid "Schema Version"
 msgstr ""
 
@@ -11314,6 +11327,10 @@ msgid "The page you tried to visit requires special permissions that your accoun
 msgstr ""
 
 #, php-format
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr ""
+
+#, php-format
 msgid "The password for %s has been updated."
 msgstr ""
 
@@ -11435,6 +11452,12 @@ msgstr ""
 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
 msgstr ""
+
+#, php-format
+msgid "They are expected at least once every %d hour."
+msgid_plural "They are expected at least once every %d hours."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Third-party extensions."
 msgstr ""
@@ -12712,6 +12735,9 @@ msgstr ""
 msgid "Wallis and Futuna"
 msgstr ""
 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr ""
+
 msgid "Warning"
 msgstr ""
 
@@ -12942,6 +12968,9 @@ msgid "With Photos"
 msgstr ""
 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr ""
+
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
 msgstr ""
 
 msgid "Work"

@@ -91,6 +91,12 @@ class BirthdayEmailService
      *   - row present: a conditional UPDATE that only matches rows not already
      *     holding today's date; losers see zero affected rows.
      *   - row absent: the INSERT itself, whose primary key rejects the losers.
+     *
+     * `cfg_value` is nullable, and in SQL `NULL <> 'anything'` is UNKNOWN, not
+     * TRUE — a bare `<>` filter would never match a NULL marker row and would
+     * suppress birthday emails for good. The claim therefore matches
+     * `cfg_value <> :today OR cfg_value IS NULL`, so a NULL marker is treated
+     * like any other stale one and gets claimed.
      */
     private static function claimRunForToday(string $todayString): bool
     {
@@ -101,9 +107,17 @@ class BirthdayEmailService
                 return false;
             }
 
+            // `_or()` merges both filters on cfg_value into one parenthesised
+            // group: `cfg_name = :name AND (cfg_value <> :today OR cfg_value IS
+            // NULL)`. A raw `where('cfg_value IS NULL OR cfg_value <> ?')` would
+            // be appended without parentheses and bind as
+            // `name = :name AND cfg_value IS NULL OR cfg_value <> :today`,
+            // which updates every other config row.
             $affectedRows = ConfigQuery::create()
                 ->filterByName(self::LAST_RUN_CONFIG_NAME)
                 ->filterByValue($todayString, Criteria::NOT_EQUAL)
+                ->_or()
+                ->filterByValue(null, Criteria::ISNULL)
                 ->update(['Value' => $todayString]);
 
             return $affectedRows > 0;
@@ -120,7 +134,11 @@ class BirthdayEmailService
             // genuine database failure is still surfaced.
             $winner = ConfigQuery::create()->findOneByName(self::LAST_RUN_CONFIG_NAME);
             if ($winner !== null && $winner->getValue() === $todayString) {
-                LoggerUtils::getAppLogger()?->debug('BirthdayEmailService: another run claimed today first');
+                // The re-read cannot prove the failure was the primary-key
+                // collision rather than, say, a dropped connection, so log the
+                // swallowed exception: the outcome is safe either way, but a
+                // genuine infrastructure failure must stay visible.
+                LoggerUtils::getAppLogger()?->debug('BirthdayEmailService: another run claimed today first (insert failed with: ' . $e->getMessage() . ')');
 
                 return false;
             }

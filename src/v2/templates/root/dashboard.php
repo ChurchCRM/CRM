@@ -163,7 +163,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <ul class="nav nav-tabs card-header-tabs" id="people-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="latest-fam-tab" data-bs-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
-                                <i class="fa-solid fa-house-plus me-1"></i><span class="d-none d-xl-inline"><?= gettext('Latest Families') ?></span><span class="d-xl-none"><?= gettext('New') ?></span>
+                                <i class="fa-solid fa-house-chimney me-1"></i><span class="d-none d-xl-inline"><?= gettext('Latest Families') ?></span><span class="d-xl-none"><?= gettext('New') ?></span>
                             </a>
                         </li>
                         <li class="nav-item">
