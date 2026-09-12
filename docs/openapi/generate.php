@@ -165,14 +165,17 @@ if (!in_array($format, ['yaml', 'json'], true)) {
 $srcDir = __DIR__ . '/../../src';
 
 $resolvePath = static function (string $path) use ($srcDir): string {
-    // If already absolute, use as-is
+    // Every branch returns a CANONICAL absolute path (realpath) when the path exists, so
+    // that scan paths and --exclude paths compare lexically whatever form the caller used
+    // (absolute, relative to src/, relative to the cwd). Only a nonexistent path comes
+    // back unnormalised, and the callers reject those before comparing anything.
     if ($path === '' || $path[0] === '/') {
-        return $path;
+        return realpath($path) ?: $path;
     }
     // Try relative to src/ first
     $attempt = $srcDir . '/' . $path;
     if (file_exists($attempt)) {
-        return $attempt;
+        return realpath($attempt) ?: $attempt;
     }
     // Try relative to current directory
     return realpath($path) ?: $path;
@@ -209,7 +212,10 @@ foreach ($paths as $path) {
     $finder->files()->name('*.php')->in($rawPath)->followLinks();
 
     foreach ($excludeResolved as $excl) {
-        if (str_starts_with($excl, $rawPath)) {
+        // Both sides are canonical (see $resolvePath). The separator check keeps
+        // "…/routes-old" from matching a scan path of "…/routes".
+        $prefix = rtrim($rawPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        if (str_starts_with($excl . DIRECTORY_SEPARATOR, $prefix)) {
             $rel = ltrim(substr($excl, strlen($rawPath)), DIRECTORY_SEPARATOR);
             if ($rel !== '') {
                 $finder->exclude($rel);
@@ -264,7 +270,12 @@ if ($output !== null) {
 
     $openapi->saveAs($output, $format);
     clearstatcache(true, $output);
-    fwrite(STDERR, sprintf("✓ OpenAPI spec written to: %s (%d bytes, %d file(s) scanned)\n", $output, (int) filesize($output), count($filesToScan)));
+    $filesize = filesize($output);
+    if ($filesize === false) {
+        fwrite(STDERR, "Warning: could not stat the output file after writing it: $output\n");
+        $filesize = 0;
+    }
+    fwrite(STDERR, sprintf("✓ OpenAPI spec written to: %s (%d bytes, %d file(s) scanned)\n", $output, $filesize, count($filesToScan)));
 } else {
     echo ($format === 'json' ? $openapi->toJson() : $openapi->toYaml()) . "\n";
 }
