@@ -6,11 +6,14 @@ use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerResponse;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerSwap;
 use ChurchCRM\model\ChurchCRM\VolunteerSwapQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Service\VolunteerAssignmentService;
+use ChurchCRM\Service\VolunteerSetupService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -23,14 +26,14 @@ use Slim\Routing\RouteCollectorProxy;
 /**
  * Volunteer Management V2 API — the member self-service surface (design §3.3.3).
  *
- * Four of the seven endpoints §3.3.3 lists ship here with #9709, ahead of #9712 which
- * owns the rest. Not scope creep: every one of them is half of a workflow #9709 is
- * accountable for. "Volunteer can accept or decline", "decline creates a gap" and
- * "coordinator can approve/reject proposed substitutions" are acceptance criteria on
- * #9709, and there is no way to prove any of them without the surface the volunteer
- * actually answers on. `/me/opportunities`, `/me/signup` and `/me/qualifications` —
- * which belong to self-service discovery, not to the assignment loop — stay with #9712,
- * as do the S5/S6 pages.
+ * Four of the seven endpoints §3.3.3 lists shipped here with #9709, ahead of #9712:
+ * every one of them is half of a workflow #9709 was accountable for ("volunteer can
+ * accept or decline", "decline creates a gap", "coordinator can approve/reject proposed
+ * substitutions"), and none could be proven without the surface the volunteer actually
+ * answers on. **#9712 completes the surface** with the self-service *discovery* half —
+ * `/me/opportunities`, `/me/signup`, `/me/qualifications` — plus one endpoint §3.3.3
+ * does not list, `/me/assignments/{id}/substitutes`, which exists so §5.6's "Find a
+ * sub" picker can only ever offer a name `propose-substitute` will accept.
  *
  * **This group carries NO role gate.** Only `VolunteerV2EnabledMiddleware`. That is the
  * whole design of §3.3.3 and §4.7: the acting person is
@@ -52,8 +55,32 @@ use Slim\Routing\RouteCollectorProxy;
  * `proposeSubstitute()` and `withdrawSwap()` each check the acting person against the
  * row, because they are also reachable from the coordinator surface.
  */
+/**
+ * How far ahead `GET /me/opportunities` looks when the caller names no window.
+ *
+ * S6 is opened with no parameters at all by a volunteer on a phone, so "what is
+ * coming up" needs a definition. A quarter is long enough to cover a schedule
+ * generated a season ahead and short enough that the answer stays a list rather
+ * than a catalogue.
+ */
+const VOLUNTEER_ME_DEFAULT_WINDOW_DAYS = 90;
+
 $app->group('/volunteer/me', function (RouteCollectorProxy $group): void {
     $group->get('/assignments', 'listMyVolunteerAssignments');
+
+    // #9712. Declared before the parameterised assignment routes so neither literal
+    // path can be swallowed by `{assignmentId}`.
+    $group->get('/opportunities', 'listMyVolunteerOpportunities');
+    $group->get('/qualifications', 'listMyVolunteerQualifications');
+    $group->post('/signup', 'signUpForMyVolunteerOpportunity')
+        ->add(new InputSanitizationMiddleware([
+            'occurrenceId' => 'int',
+            'positionId' => 'int',
+            // Deliberately NO 'personId': the actor is the session (§3.3.3). One
+            // arriving in the body is simply never read.
+        ]));
+
+    $group->get('/assignments/{assignmentId:[0-9]+}/substitutes', 'listMyVolunteerSubstituteCandidates');
 
     $group->post('/assignments/{assignmentId:[0-9]+}/respond', 'respondToMyVolunteerAssignment')
         ->add(new InputSanitizationMiddleware([
@@ -116,6 +143,11 @@ function volunteerMeAssignmentToArray(
     $occurrenceId = (int) $assignment->getOccurrenceId();
     $ctx = $context[$occurrenceId] ?? [];
 
+    $pendingSwap = VolunteerSwapQuery::create()
+        ->filterByAssignmentId((int) $assignment->getId())
+        ->filterByStatus(VolunteerSwap::STATUS_PROPOSED)
+        ->findOne();
+
     return [
         'id' => (int) $assignment->getId(),
         'occurrenceId' => $occurrenceId,
@@ -133,6 +165,13 @@ function volunteerMeAssignmentToArray(
         'respondedDate' => $assignment->getRespondedDate('Y-m-d H:i:s'),
         'canRespond' => $service->canRespond($assignment),
         'canProposeSubstitute' => $service->canProposeSubstitute($assignment),
+        // #9712 / §5.6: a card showing "Substitute proposed — waiting for your
+        // coordinator" needs the swap id to offer Withdraw, and the name to say who
+        // was asked. Null on every assignment with nothing pending, which is most.
+        'pendingSwapId' => $pendingSwap === null ? null : (int) $pendingSwap->getId(),
+        'pendingSwapPersonName' => $pendingSwap === null
+            ? null
+            : (volunteerAssignmentPersonNames([(int) $pendingSwap->getProposedPersonId()])[(int) $pendingSwap->getProposedPersonId()] ?? null),
     ];
 }
 
@@ -345,6 +384,217 @@ function withdrawMyVolunteerSwap(Request $request, Response $response): Response
     ]);
 
     return SlimUtils::renderJSON($response, ['swap' => volunteerSwapToArray($swap, $names)]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/me/opportunities",
+ *     operationId="listMyVolunteerOpportunities",
+ *     summary="Open slots I am qualified for and could sign up to right now",
+ *     description="Server-side eligibility, never the client's idea of it: the list is filtered to positions the SESSION person holds an active qualification for, on occurrences that are scheduled, not over and in a pool the person belongs to, with capacity left. Every row it returns is a row POST /me/signup would accept. There is no personId parameter (design section 3.3.3); one in the query string is ignored. Defaults to the next 90 days.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="from", in="query", required=false, @OA\Schema(type="string", format="date")),
+ *     @OA\Parameter(name="to", in="query", required=false, @OA\Schema(type="string", format="date")),
+ *     @OA\Response(response=400, description="The window ends before it starts"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="V2 is not enabled"),
+ *     @OA\Response(response=200, description="OK")
+ * )
+ */
+function listMyVolunteerOpportunities(Request $request, Response $response): Response
+{
+    $personId = (int) AuthenticationManager::getCurrentUser()->getId();
+    $params = $request->getQueryParams();
+
+    // A volunteer opens S6 with no dates at all, so the window has a default:
+    // "what is coming up", not "everything ever generated".
+    $from = volunteerMeParseDate($params['from'] ?? null) ?? DateTimeUtils::getToday();
+    $to = volunteerMeParseDate($params['to'] ?? null)
+        ?? DateTimeUtils::getToday()->modify('+' . VOLUNTEER_ME_DEFAULT_WINDOW_DAYS . ' days');
+
+    if ($to < $from) {
+        return SlimUtils::renderErrorJSON($response, gettext('The window ends before it starts'), [], 400, null, $request);
+    }
+
+    $opportunities = (new VolunteerAssignmentService())->listOpportunitiesForPerson($personId, $from, $to);
+
+    return SlimUtils::renderJSON($response, [
+        'opportunities' => $opportunities,
+        'from' => $from->format('Y-m-d'),
+        'to' => $to->format('Y-m-d'),
+    ]);
+}
+
+/**
+ * @OA\Post(
+ *     path="/volunteer/me/signup",
+ *     operationId="signUpForMyVolunteerOpportunity",
+ *     summary="Put myself on an open slot",
+ *     description="Creates an assignment for the SESSION person with status accepted and source self_signup - a volunteer who volunteered has already answered. Qualification AND capacity are re-validated server-side at signup time whatever the list offered: 403 when unqualified (I2), 409 when the requirement is already at MaxCount, when the occurrence is cancelled or past (I5), or when the person already holds that position (I1). A personId in the body names nobody: the actor is the session.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"occurrenceId","positionId"},
+ *         @OA\Property(property="occurrenceId", type="integer"),
+ *         @OA\Property(property="positionId", type="integer")
+ *     )),
+ *     @OA\Response(response=400, description="Missing or mismatched ids"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not qualified, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such occurrence or position"),
+ *     @OA\Response(response=409, description="Already full, already mine, cancelled or past"),
+ *     @OA\Response(response=201, description="Signed up")
+ * )
+ */
+function signUpForMyVolunteerOpportunity(Request $request, Response $response): Response
+{
+    $currentUser = AuthenticationManager::getCurrentUser();
+    $input = (array) $request->getParsedBody();
+
+    $occurrence = VolunteerOccurrenceQuery::create()->findPk((int) ($input['occurrenceId'] ?? 0));
+    if ($occurrence === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('Occurrence not found'), [], 404, null, $request);
+    }
+
+    $position = VolunteerPositionQuery::create()->findPk((int) ($input['positionId'] ?? 0));
+    if ($position === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('Position not found'), [], 404, null, $request);
+    }
+
+    $service = new VolunteerAssignmentService();
+
+    try {
+        // Every rule lives in the service (§3.4) so the member surface cannot grow a
+        // second, looser copy of the capacity or qualification check. `signup_confirm`
+        // is enqueued inside its transaction.
+        $assignment = $service->selfSignup($occurrence, $position, $currentUser);
+    } catch (\Throwable $e) {
+        return volunteerAssignmentError($request, $response, $e);
+    }
+
+    $context = volunteerMeOccurrenceContext([$assignment], $service);
+
+    return SlimUtils::renderJSON($response, [
+        'assignment' => volunteerMeAssignmentToArray($assignment, $service, $context),
+    ], 201);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/me/qualifications",
+ *     operationId="listMyVolunteerQualifications",
+ *     summary="What I am qualified to do",
+ *     description="Read-only, and read-only on purpose: volunteers cannot grant themselves anything, so there is no write counterpart on this surface. Scoped to the SESSION person - a personId in the query string is ignored (design section 3.3.3).",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="V2 is not enabled"),
+ *     @OA\Response(response=200, description="OK")
+ * )
+ */
+function listMyVolunteerQualifications(Request $request, Response $response): Response
+{
+    $personId = (int) AuthenticationManager::getCurrentUser()->getId();
+
+    $setup = new VolunteerSetupService();
+    $qualifications = $setup->listQualificationsForPerson($personId);
+
+    $positionIds = [];
+    foreach ($qualifications as $qualification) {
+        if ($qualification->getActive()) {
+            $positionIds[(int) $qualification->getPositionId()] = true;
+        }
+    }
+
+    if ($positionIds === []) {
+        return SlimUtils::renderJSON($response, ['qualifications' => []]);
+    }
+
+    $positions = [];
+    foreach (
+        VolunteerPositionQuery::create()
+            ->filterById(array_keys($positionIds), Criteria::IN)
+            ->filterByActive(true)
+            ->find() as $position
+    ) {
+        $positions[(int) $position->getId()] = $position;
+    }
+
+    $ministryNames = [];
+    foreach (
+        VolunteerMinistryQuery::create()
+            ->filterById(array_map(static fn ($p): int => (int) $p->getMinistryId(), $positions), Criteria::IN)
+            ->find() as $ministry
+    ) {
+        $ministryNames[(int) $ministry->getId()] = (string) $ministry->getName();
+    }
+
+    $teamIds = array_values(array_filter(array_map(
+        static fn ($p): ?int => $p->getTeamId() === null ? null : (int) $p->getTeamId(),
+        $positions
+    )));
+    $teamNames = [];
+    if ($teamIds !== []) {
+        foreach (VolunteerTeamQuery::create()->filterById($teamIds, Criteria::IN)->find() as $team) {
+            $teamNames[(int) $team->getId()] = (string) $team->getName();
+        }
+    }
+
+    $payload = [];
+    foreach ($positions as $positionId => $position) {
+        $teamId = $position->getTeamId() === null ? null : (int) $position->getTeamId();
+        $payload[] = [
+            'positionId' => $positionId,
+            'positionName' => (string) $position->getName(),
+            'ministryId' => (int) $position->getMinistryId(),
+            'ministryName' => $ministryNames[(int) $position->getMinistryId()] ?? null,
+            'teamId' => $teamId,
+            'teamName' => $teamId === null ? null : ($teamNames[$teamId] ?? null),
+        ];
+    }
+
+    usort($payload, static fn (array $a, array $b): int => [$a['ministryName'] ?? '', $a['positionName']]
+        <=> [$b['ministryName'] ?? '', $b['positionName']]);
+
+    return SlimUtils::renderJSON($response, ['qualifications' => $payload]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/me/assignments/{assignmentId}/substitutes",
+ *     operationId="listMyVolunteerSubstituteCandidates",
+ *     summary="Who I may offer as my substitute",
+ *     description="The picker behind section 5.6's Find a sub. Deliberately narrower than the coordinator's /eligible: it excludes the caller and anyone already holding this position on this occurrence - the exact two cases propose-substitute refuses - so the picker can never offer a name the server will then reject. 403, never 404, for someone else's assignment.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="assignmentId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="q", in="query", required=false, @OA\Schema(type="string")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not my assignment, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such assignment"),
+ *     @OA\Response(response=200, description="OK")
+ * )
+ */
+function listMyVolunteerSubstituteCandidates(Request $request, Response $response): Response
+{
+    $personId = (int) AuthenticationManager::getCurrentUser()->getId();
+    [$assignment, $status, $message] = volunteerMeFindAssignment($request, $personId);
+
+    if ($assignment === null) {
+        return SlimUtils::renderErrorJSON($response, $message, [], $status, null, $request);
+    }
+
+    $params = $request->getQueryParams();
+    $query = isset($params['q']) && trim((string) $params['q']) !== '' ? trim((string) $params['q']) : null;
+
+    try {
+        $people = (new VolunteerAssignmentService())->getSubstituteCandidates($assignment, $query);
+    } catch (\Throwable $e) {
+        return volunteerAssignmentError($request, $response, $e);
+    }
+
+    return SlimUtils::renderJSON($response, ['people' => $people]);
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────

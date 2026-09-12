@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerNotificationQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
@@ -22,6 +23,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSwap;
 use ChurchCRM\model\ChurchCRM\VolunteerSwapQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -241,9 +243,14 @@ class VolunteerAssignmentService
             $assignment->setNotes($this->normalizeNote($opts['notes'] ?? null));
             $assignment->save($connection);
 
-            // §3.6: assigning enqueues the "you are on the roster" message. Self-signup
-            // does not — #9712 enqueues a `signup_confirm` for that path instead.
-            if (!$selfSignup) {
+            // §3.6: assigning enqueues the "you are on the roster, please answer"
+            // message. Self-signup is already answered, so #9712 enqueues the
+            // `signup_confirm` receipt on that path instead — inside this same
+            // transaction (§2.14), so a rolled-back signup leaves no confirmation
+            // behind.
+            if ($selfSignup) {
+                $this->notifications->enqueueSignupConfirm($assignment);
+            } else {
                 $this->notifications->enqueueAssignment($assignment);
             }
 
@@ -1127,6 +1134,251 @@ class VolunteerAssignmentService
         });
 
         return $people;
+    }
+
+    // ── The member surface (§3.3.3, #9712) ─────────────────────────────────
+
+    /**
+     * "What is open that I could actually sign up for?" — `GET /me/opportunities`.
+     *
+     * The list is derived, never stored, and derived from the **same** `getGaps()`
+     * every other surface uses (§2.11.3): an opportunity is one effective requirement
+     * of one occurrence with `openCount > 0`. Everything else here is a filter that
+     * makes the list honest, i.e. every row it returns is a row `selfSignup()` would
+     * accept:
+     *
+     *   - the position is one I hold an **active** qualification for (I2), and is
+     *     itself active — so the list is server-side eligibility, never the client's
+     *     idea of it;
+     *   - I am in a pool group of the owning ministry or team (I3) — `selfSignup()`
+     *     passes no out-of-pool override, so offering a row I am not in the pool for
+     *     would be offering a guaranteed `409`;
+     *   - the occurrence is `scheduled` and not already over (I5);
+     *   - I do not already hold that position on that occurrence (I1).
+     *
+     * Holding a *different* position on the same occurrence is **not** a filter
+     * (D16/I7): the row stays, annotated with `alreadyServing`, and §5.6's warning is
+     * what the screen does with it. Hiding it would quietly make double-duty
+     * impossible from the member side, which is the opposite of the product decision.
+     *
+     * @return array<int, array{occurrenceId: int, positionId: int, positionName: ?string, ministryName: ?string, teamName: ?string, occurrenceDate: ?string, start: ?string, end: ?string, openCount: int, minCount: int, liveCount: int, alreadyServing: bool, alreadyServingPositionNames: string[]}>
+     */
+    public function listOpportunitiesForPerson(
+        int $personId,
+        \DateTimeInterface $from,
+        \DateTimeInterface $to
+    ): array {
+        $positions = $this->activePositionsFor($personId);
+        if ($positions === []) {
+            return [];
+        }
+
+        $ministryIds = array_values(array_unique(array_map(
+            static fn (VolunteerPosition $p): int => (int) $p->getMinistryId(),
+            $positions
+        )));
+
+        $schedules = [];
+        foreach (VolunteerScheduleQuery::create()->filterByMinistryId($ministryIds, Criteria::IN)->find() as $schedule) {
+            $schedules[(int) $schedule->getId()] = $schedule;
+        }
+        if ($schedules === []) {
+            return [];
+        }
+
+        $occurrences = VolunteerOccurrenceQuery::create()
+            ->filterByScheduleId(array_keys($schedules), Criteria::IN)
+            ->filterByOccurrenceDate($from->format('Y-m-d'), Criteria::GREATER_EQUAL)
+            ->filterByOccurrenceDate($to->format('Y-m-d'), Criteria::LESS_EQUAL)
+            ->filterByStatus(VolunteerOccurrence::STATUS_SCHEDULED)
+            ->orderByOccurrenceDate()
+            ->orderById()
+            ->limit(VolunteerScheduleService::MAX_OCCURRENCE_LIST)
+            ->find();
+
+        $occurrenceRows = iterator_to_array($occurrences, false);
+        if ($occurrenceRows === []) {
+            return [];
+        }
+
+        $occurrenceIds = array_map(static fn (VolunteerOccurrence $o): int => (int) $o->getId(), $occurrenceRows);
+        $gaps = $this->getGaps($occurrenceIds);
+
+        // My live rows on every occurrence in the window, in one query: the I1 filter
+        // and the D16 annotation both come out of it.
+        $mine = [];
+        foreach (
+            VolunteerAssignmentQuery::create()
+                ->filterByPersonId($personId)
+                ->filterByOccurrenceId($occurrenceIds, Criteria::IN)
+                ->filterByStatus(self::LIVE_STATUSES, Criteria::IN)
+                ->find() as $assignment
+        ) {
+            $mine[(int) $assignment->getOccurrenceId()][(int) $assignment->getPositionId()] = true;
+        }
+
+        $now = DateTimeUtils::getToday();
+        $poolMemo = [];
+        $opportunities = [];
+
+        foreach ($occurrenceRows as $occurrence) {
+            $occurrenceId = (int) $occurrence->getId();
+            $schedule = $schedules[(int) $occurrence->getScheduleId()] ?? null;
+            if ($schedule === null) {
+                continue;
+            }
+
+            // I5, the half a date filter cannot express: today's occurrence may
+            // already be over.
+            $window = $this->schedules->resolveOccurrenceWindow($occurrence);
+            if (($window['end'] ?? null) !== null && $window['end'] < $now) {
+                continue;
+            }
+
+            // I3, memoised per (ministry, team) so a 500-occurrence window over one
+            // schedule asks the pool question once.
+            $poolKey = (int) $schedule->getMinistryId() . ':' . ($schedule->getTeamId() ?? 0);
+            if (!array_key_exists($poolKey, $poolMemo)) {
+                $poolMemo[$poolKey] = array_flip($this->setup->getPoolPersonIds(
+                    (int) $schedule->getMinistryId(),
+                    $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId()
+                ));
+            }
+            if (!isset($poolMemo[$poolKey][$personId])) {
+                continue;
+            }
+
+            $held = $mine[$occurrenceId] ?? [];
+
+            foreach ($gaps[$occurrenceId]['requirements'] ?? [] as $positionId => $requirement) {
+                $positionId = (int) $positionId;
+
+                if (!isset($positions[$positionId]) || $requirement['openCount'] <= 0 || isset($held[$positionId])) {
+                    continue;
+                }
+
+                // I4: a ministry-wide position is offered by every team's schedule, a
+                // team-scoped one only by its own team's.
+                $positionTeamId = $positions[$positionId]->getTeamId();
+                $scheduleTeamId = $schedule->getTeamId();
+                if (
+                    $positionTeamId !== null && $scheduleTeamId !== null
+                    && (int) $positionTeamId !== (int) $scheduleTeamId
+                ) {
+                    continue;
+                }
+
+                $alsoHere = array_values(array_map(
+                    fn (int $otherPositionId): string => (string) $this->positionName($otherPositionId),
+                    array_keys($held)
+                ));
+
+                $opportunities[] = [
+                    'occurrenceId' => $occurrenceId,
+                    'positionId' => $positionId,
+                    'positionName' => $requirement['positionName'],
+                    'ministryName' => $this->ministryName((int) $schedule->getMinistryId()),
+                    'teamName' => $scheduleTeamId === null ? null : $this->teamName((int) $scheduleTeamId),
+                    'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
+                    'start' => $window['start'] === null ? null : $window['start']->format('Y-m-d H:i:s'),
+                    'end' => $window['end'] === null ? null : $window['end']->format('Y-m-d H:i:s'),
+                    'openCount' => (int) $requirement['openCount'],
+                    'minCount' => (int) $requirement['minCount'],
+                    'liveCount' => (int) $requirement['liveCount'],
+                    // D16/I7 — an annotation the card warns on, never a filter.
+                    'alreadyServing' => $alsoHere !== [],
+                    'alreadyServingPositionNames' => $alsoHere,
+                ];
+            }
+        }
+
+        // Soonest first: S6 is "what needs me next", not a catalogue.
+        usort($opportunities, static fn (array $a, array $b): int => [$a['start'] ?? '', $a['positionName'] ?? '']
+            <=> [$b['start'] ?? '', $b['positionName'] ?? '']);
+
+        return $opportunities;
+    }
+
+    /**
+     * Who this volunteer may offer as their substitute — the S5 picker (§5.6, CR1).
+     *
+     * A thin, deliberately *narrower* view of `getEligiblePeople()`: the same
+     * qualified-and-annotated list, minus the volunteer themselves and minus anyone
+     * who already holds this position on this occurrence. Those are exactly the two
+     * cases `proposeSubstitute()` refuses, so the picker cannot offer a name the
+     * server will then reject — which is the whole reason it is a separate endpoint
+     * rather than the coordinator's `/eligible`.
+     *
+     * Out-of-pool qualified people are kept (`inPool` says which): `proposeSubstitute()`
+     * does not apply I3, so they genuinely are proposable.
+     *
+     * @return array<int, array{personId: int, displayName: string, inPool: bool, lastServedDate: ?string, conflictPositionId: ?int, conflictPositionName: ?string}>
+     */
+    public function getSubstituteCandidates(VolunteerAssignment $assignment, ?string $query = null): array
+    {
+        $occurrence = $this->requireOccurrence($assignment);
+        $position = $this->requirePosition((int) $assignment->getPositionId());
+
+        $taken = [(int) $assignment->getPersonId() => true];
+        foreach (
+            VolunteerAssignmentQuery::create()
+                ->filterByOccurrenceId((int) $occurrence->getId())
+                ->filterByPositionId((int) $position->getId())
+                ->filterByStatus(self::LIVE_STATUSES, Criteria::IN)
+                ->select(['PersonId'])
+                ->find() as $personId
+        ) {
+            $taken[(int) $personId] = true;
+        }
+
+        return array_values(array_filter(
+            $this->getEligiblePeople($occurrence, $position, $query),
+            static fn (array $person): bool => !isset($taken[$person['personId']])
+        ));
+    }
+
+    /**
+     * Every ACTIVE position this person holds an ACTIVE qualification for, keyed by id.
+     *
+     * @return array<int, VolunteerPosition>
+     */
+    private function activePositionsFor(int $personId): array
+    {
+        $positionIds = [];
+        foreach ($this->setup->listQualificationsForPerson($personId) as $qualification) {
+            if ($qualification->getActive()) {
+                $positionIds[(int) $qualification->getPositionId()] = true;
+            }
+        }
+        if ($positionIds === []) {
+            return [];
+        }
+
+        $positions = [];
+        foreach (
+            VolunteerPositionQuery::create()
+                ->filterById(array_keys($positionIds), Criteria::IN)
+                ->filterByActive(true)
+                ->find() as $position
+        ) {
+            $positions[(int) $position->getId()] = $position;
+        }
+
+        return $positions;
+    }
+
+    private function ministryName(int $ministryId): ?string
+    {
+        $ministry = VolunteerMinistryQuery::create()->findPk($ministryId);
+
+        return $ministry === null ? null : (string) $ministry->getName();
+    }
+
+    private function teamName(int $teamId): ?string
+    {
+        $team = VolunteerTeamQuery::create()->findPk($teamId);
+
+        return $team === null ? null : (string) $team->getName();
     }
 
     // ── Completion (§2.11.1) ───────────────────────────────────────────────
