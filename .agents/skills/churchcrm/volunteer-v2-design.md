@@ -215,7 +215,7 @@ be false, the section that depends on it must be revisited.
 | F26 | `MvcAppFactory::create()` accepts **exactly three** options (`dashboardUrl`, `dashboardText`, `roleMiddleware`) and always passes `addErrorMiddleware(true, true, true)` — full error detail, in production, with no way to turn it off. | `src/ChurchCRM/Slim/MvcAppFactory.php:35-62` |
 | F27 | `SystemConfig` defaults live in PHP, not the DB. `config_cfg` is created empty and `ConfigItem::setValue()` deletes the row when the value equals the default. **Adding a setting needs no SQL on install or upgrade.** | `Install.sql:20-24`; `ConfigItem.php:67-87` |
 | F28 | `event_audience` is documented as "a prospective audience for the purpose of advertising / outreach" — it is **not** an ownership relation. | `orm/schema.xml:820` |
-| F29 | The DB version in development is **7.7.0**, whose `current` block in `src/mysql/upgrade.json` already holds two scripts. A V2 migration is appended to that array; `dbVersion` stays `7.7.0`. | `src/mysql/upgrade.json` (tail) |
+| F29 | The DB version in development is **7.7.0**, whose `current` block in `src/mysql/upgrade.json` already holds several scripts (four at the time #9705 was implemented). A V2 migration is appended to that array; `dbVersion` stays `7.7.0`. | `src/mysql/upgrade.json` (tail) |
 | F30 | `orm/schema.xml:460-462` contains a real bug: the `PrimaryContact` foreign key maps `local="event_type"` → `person_per.per_ID`. **Do not copy that FK block as a template.** | `orm/schema.xml:460-462` |
 | F31 | `i18next.t()` inside a `.php` view is **never extracted** — the JS extractor scans only `src/skin/js/**` and `webpack/**`. At least 14 core files have this bug today. | `locale/scripts/i18next.config.ts:6-10` |
 | F32 | Only `cypress/e2e/api/**`, `cypress/e2e/ui/**` and `cypress/e2e/ui-admin/**` are matched by a Cypress `specPattern`. `cypress/e2e/finance/` exists and **has never run**. | `cypress/configs/{base,docker,docker-ui,docker-admin}.config.ts` |
@@ -386,7 +386,7 @@ Derived from `db-schema-migration.md` and from the newest real table in the tree
 | Index names | `<prefix>_<what>_idx` / `<prefix>_<what>_uidx`. |
 | Enums | `type="CHAR" sqlType="enum('a','b')"` in `schema.xml`, mirrored by a PHP class constant list on the model. **Never** copy V1's `enum('true','false')` string-boolean (`vol_Active`); use `BOOLEAN` + `tinyint(1) unsigned`. |
 | Timestamps | `TIMESTAMP` / `DATETIME` storing **naive wall-clock in `sTimeZone`** (F24). |
-| FK constraints | V2 tables **do** declare real `FOREIGN KEY` constraints in both `schema.xml` and the migration SQL, except where the reference is polymorphic (`volunteer_scope_vscp.vscp_ScopeId`, `volunteer_pool_vpol.vpol_OwnerId`) — same limitation `record2property_r2p` lives with (`orm/schema.xml:756-768`), enforced in the service instead. |
+| FK constraints | V2 tables **do** declare real `FOREIGN KEY` constraints in both `schema.xml` and the migration SQL — note that they are the **first enforced foreign keys in the schema**: existing tables declare `<foreign-key>` in `schema.xml` only, and `Install.sql` carries no `FOREIGN KEY` clause (verified in #9705). The parents V2 references (`person_per`, `group_grp`, `events_event`, `event_types`) have been InnoDB since at least 6.0.0, and the 6.0.0 → 7.7.0 upgrade with the constraints was verified in #9705. Except where the reference is polymorphic (`volunteer_scope_vscp.vscp_ScopeId`, `volunteer_pool_vpol.vpol_OwnerId`) — same limitation `record2property_r2p` lives with (`orm/schema.xml:756-768`), enforced in the service instead. |
 | Redundant `UNIQUE(pk)` | **never** — several legacy tables carry one (`volunteeropportunity_vol` `:677-679`); do not copy. |
 | `description` attribute | required on every table and on any column whose purpose is not obvious. The newest tables do this. |
 
@@ -2703,9 +2703,9 @@ Corrected against the actual tooling in the tree.
    cd src && composer run orm-gen             # = php vendor/bin/propel --config-dir=../orm model:build
    cd .. && npm run build:php:validate:orm
    ```
-   > **`npm run build:orm` is broken.** `package.json:33` runs
-   > `cd src/ && ./vendor/bin/propel build --config-dir=propel`, and **`src/propel` does not exist**.
-   > Any instruction telling an agent to run it will fail. Use the composer script.
+   > `npm run build:orm` works again since E-2 (#9722) landed — it now runs the composer script —
+   > but it still needs `orm/propel.php` copied from `orm/propel.php.dist` first (gitignored, absent
+   > from a fresh checkout).
    >
    > `src/ChurchCRM/model/ChurchCRM/Base/` and `Map/` are gitignored — **nothing from the regen is
    > committed**. Only the hand-written skeleton subclasses are.
