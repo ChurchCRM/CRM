@@ -17842,3 +17842,83 @@ msgstr "Üritusi %s %d jaoks ei leitud."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Proovige valida mõni muu ürituse tüüp, kuu või aasta."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Geokodeerimisel tekkis viga — proovige hiljem uuesti"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Aadress on puudulik (puuduvad linn, maakond ja sihtnumber)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Kõigil peredel on juba koordinaadid."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Koordinaatide uuendamine ebaõnnestus"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Pere koordinaatide uuendamine ebaõnnestus"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodeeriti kõik {{geocoded}} peret. Kaart on nüüd ajakohane."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodeeriti {{geocoded}} peret. {{failed}} ei õnnestunud lahendada — vt üksikasju allpool."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Geokodeeriti {{geocoded}} peret {{total}}-st. {{overflow}} on veel töötlemata — jätkamiseks käivitage uuesti."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Perede geokodeerimine… see võib võtta kuni minuti. Võite selle lehe lahti hoida."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokodeerimine…"
+
+#: 
+msgid "No address on file"
+msgstr "Aadress puudub"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Vastet ei leitud — kontrollige tänava aadressi, linna ja sihtnumbrit"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Päevade arv, mis kasutajatel on kaheastmelise autentimise (2FA) seadistamiseks pärast selle kohustuslikuks muutumist. Kohese jõustamise jaoks (varasem käitumine) määrake väärtuseks 0. Aktiivse ajapikenduse lühendamine võib kasutajad kohe välja lukustada."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Avage pere, et parandada tema aadress, seejärel käivitage see uuesti."
+
+#: 
+msgid "Set up now"
+msgstr "Seadista kohe"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "See leiab kaardikoordinaadid iga pere jaoks, kellel need puuduvad, kasutades OpenStreetMap'i. Ühe käivitusega töödeldakse kuni 50 peret; terve partii võtab aega umbes minuti. Võite selle lehe töötamise ajal lahti hoida. Kas jätkata?"
+
+#: 
+msgid "Unknown family"
+msgstr "Tundmatu pere"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Uuenda kõiki koordinaate"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Uuenda kõigi perede koordinaate"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Uuenda koordinaate"
+

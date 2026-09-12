@@ -4287,5 +4287,28 @@
   "All Months": "ทุกเดือน",
   "No \"%s\" options are defined yet.": "ยังไม่มีการกำหนดตัวเลือก \"%s\"",
   "No events found for %s %d.": "ไม่พบกิจกรรมสำหรับ %s %d",
-  "Try selecting a different event type, month, or year.": "ลองเลือกประเภทกิจกรรม เดือน หรือปีอื่น"
+  "Try selecting a different event type, month, or year.": "ลองเลือกประเภทกิจกรรม เดือน หรือปีอื่น",
+  "A geocoding error occurred — try again later": "เกิดข้อผิดพลาดในการระบุพิกัดทางภูมิศาสตร์ — โปรดลองอีกครั้งในภายหลัง",
+  "Address is incomplete (missing city, state, and ZIP)": "ที่อยู่ไม่สมบูรณ์ (ไม่มีเมือง รัฐ และรหัสไปรษณีย์)",
+  "All families already have coordinates.": "ทุกครอบครัวมีพิกัดแล้ว",
+  "Failed to update coordinates": "ไม่สามารถอัปเดตพิกัดได้",
+  "Failed to update family coordinates": "ไม่สามารถอัปเดตพิกัดของครอบครัวได้",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "ระบุพิกัดครอบครัวทั้งหมด {{geocoded}} ครอบครัวแล้ว แผนที่เป็นข้อมูลล่าสุดแล้ว",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "ระบุพิกัดครอบครัวแล้ว {{geocoded}} ครอบครัว ไม่สามารถระบุได้ {{failed}} ครอบครัว — ดูรายละเอียดด้านล่าง",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "ระบุพิกัดแล้ว {{geocoded}} จาก {{total}} ครอบครัว ยังไม่ได้ประมวลผล {{overflow}} ครอบครัว — เรียกใช้อีกครั้งเพื่อดำเนินการต่อ",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "กำลังระบุพิกัดครอบครัว… อาจใช้เวลาถึงหนึ่งนาที คุณสามารถเปิดหน้านี้ค้างไว้ได้",
+  "Geocoding…": "กำลังระบุพิกัด…",
+  "No address on file": "ไม่มีที่อยู่ในระบบ",
+  "No match found — check the street address, city, and ZIP": "ไม่พบข้อมูลที่ตรงกัน — โปรดตรวจสอบที่อยู่ถนน เมือง และรหัสไปรษณีย์",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "จำนวนวันที่ผู้ใช้มีในการลงทะเบียนยืนยันตัวตนสองขั้นตอน (2FA) หลังจากมีการบังคับใช้ ตั้งค่าเป็น 0 เพื่อบังคับใช้ทันที (พฤติกรรมแบบเดิม) การลดระยะเวลาผ่อนผันที่ใช้งานอยู่อาจทำให้ผู้ใช้ถูกล็อกออกทันที",
+  "Open a family to fix its address, then run this again.": "เปิดข้อมูลครอบครัวเพื่อแก้ไขที่อยู่ แล้วเรียกใช้อีกครั้ง",
+  "Set up now": "ตั้งค่าตอนนี้",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "ฟีเจอร์นี้จะค้นหาพิกัดแผนที่สำหรับทุกครอบครัวที่ยังไม่มีพิกัด โดยใช้ OpenStreetMap ในแต่ละครั้งจะประมวลผลได้สูงสุด 50 ครอบครัว ซึ่งใช้เวลาประมาณหนึ่งนาทีต่อชุด คุณสามารถเปิดหน้านี้ค้างไว้ระหว่างดำเนินการได้ ต้องการดำเนินการต่อหรือไม่?",
+  "Two-factor authentication is required. You have %d day to enroll.": {
+    "other": "จำเป็นต้องใช้การยืนยันตัวตนสองขั้นตอน คุณมีเวลา %d วันในการลงทะเบียน"
+  },
+  "Unknown family": "ครอบครัวที่ไม่รู้จัก",
+  "Update All Coordinates": "อัปเดตพิกัดทั้งหมด",
+  "Update All Family Coordinates": "อัปเดตพิกัดครอบครัวทั้งหมด",
+  "Update Coordinates": "อัปเดตพิกัด"
 }

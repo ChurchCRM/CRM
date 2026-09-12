@@ -17951,3 +17951,83 @@ msgstr "Não foram encontrados eventos para %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Tente selecionar um tipo de evento, mês ou ano diferente."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Ocorreu um erro de geocodificação — tente novamente mais tarde"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "O endereço está incompleto (falta cidade, distrito e código postal)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Todas as famílias já têm coordenadas."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Falha ao atualizar as coordenadas"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Falha ao atualizar as coordenadas da família"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Foram geocodificadas todas as {{geocoded}} famílias. O mapa está agora atualizado."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Foram geocodificadas {{geocoded}} famílias. {{failed}} não puderam ser resolvidas — veja os detalhes abaixo."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Foram geocodificadas {{geocoded}} de {{total}} famílias. {{overflow}} ainda não foram processadas — execute novamente para continuar."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "A geocodificar as famílias… isto pode demorar até um minuto. Pode manter esta página aberta."
+
+#: 
+msgid "Geocoding…"
+msgstr "A geocodificar…"
+
+#: 
+msgid "No address on file"
+msgstr "Nenhum endereço registado"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nenhuma correspondência encontrada — verifique a morada, a cidade e o código postal"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Número de dias que os utilizadores têm para ativar a autenticação de dois fatores depois de esta se tornar obrigatória. Defina como 0 para aplicar imediatamente (comportamento legado). Reduzir um período de tolerância ativo pode bloquear imediatamente o acesso dos utilizadores."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Abra uma família para corrigir a sua morada e execute novamente."
+
+#: 
+msgid "Set up now"
+msgstr "Configurar agora"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Isto encontra as coordenadas do mapa para todas as famílias que não as têm, utilizando o OpenStreetMap. Processa até 50 famílias por execução; um lote completo demora cerca de um minuto. Pode manter esta página aberta enquanto é executado. Continuar?"
+
+#: 
+msgid "Unknown family"
+msgstr "Família desconhecida"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Atualizar Todas as Coordenadas"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Atualizar Todas as Coordenadas das Famílias"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Atualizar Coordenadas"
+

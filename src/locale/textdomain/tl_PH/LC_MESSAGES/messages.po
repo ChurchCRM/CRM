@@ -15587,6 +15587,10 @@ msgid "People &amp; Families"
 msgstr "Mga Tao &amp; Mga Pamilya"
 
 #: 
+msgid "Self-service"
+msgstr "Self-Service"
+
+#: 
 msgid "Self-service only"
 msgstr "Self-service lamang"
 
@@ -15661,6 +15665,10 @@ msgstr "Mga nabigong pagtatangkang mag-login"
 #: 
 msgid "Failed to fetch upgrade preview"
 msgstr "Nabigo sa pagkuha ng preview ng upgrade"
+
+#: 
+msgid "Feature"
+msgstr "Tampok"
 
 #: 
 msgid "Full changelog"
@@ -16007,6 +16015,10 @@ msgid "Choose family"
 msgstr "Pumili ng pamilya"
 
 #: 
+msgid "Code"
+msgstr "Kodigo"
+
+#: 
 msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
 msgstr "I-configure kung paano ipinapakita ang mga halaga ng pera sa buong sistema. Habang ina-update ang mga pahina ng pananalapi upang gamitin ang mga setting na ito (epic #8459), ang simbolo, posisyon, at mga separator na na-configure dito ay ilalapat sa buong sistema."
 
@@ -16139,6 +16151,10 @@ msgid "Linked Donation Fund"
 msgstr "Naka-link na Pondo ng Donasyon"
 
 #: 
+msgid "Live Preview"
+msgstr "Live na Preview"
+
+#: 
 msgid "Loading attendance history…"
 msgstr "Nilo-load ang kasaysayan ng pagdalo…"
 
@@ -16209,6 +16225,10 @@ msgstr "Naipon Ngayong Taon"
 #: 
 msgid "Sample Amount"
 msgstr "Halimbawang Halaga"
+
+#: 
+msgid "Sell-through"
+msgstr "Rate ng Benta"
 
 #: 
 msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
@@ -17759,4 +17779,84 @@ msgstr "Walang nahanap na mga kaganapan para sa %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Subukang pumili ng ibang uri ng kaganapan, buwan, o taon."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "May naganap na error sa geocoding — subukang muli mamaya"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Hindi kumpleto ang address (kulang ang lungsod, estado, at ZIP)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Mayroon nang coordinates ang lahat ng pamilya."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Nabigo ang pag-update ng coordinates"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Nabigo ang pag-update ng coordinates ng pamilya"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Na-geocode ang lahat ng {{geocoded}} pamilya. Napapanahon na ang mapa."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Na-geocode ang {{geocoded}} pamilya. Hindi na-resolve ang {{failed}} — tingnan ang detalye sa ibaba."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Na-geocode ang {{geocoded}} sa {{total}} pamilya. Hindi pa naproseso ang {{overflow}} — patakbuhin muli upang magpatuloy."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Ginagawang geocode ang mga pamilya… maaari itong tumagal ng hanggang isang minuto. Puwede mong iwanang bukas ang page na ito."
+
+#: 
+msgid "Geocoding…"
+msgstr "Ginagawang geocode…"
+
+#: 
+msgid "No address on file"
+msgstr "Walang naka-file na address"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Walang nahanap na tugma — suriin ang address, lungsod, at ZIP"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Bilang ng mga araw na mayroon ang mga user para mag-enroll sa 2FA matapos itong iutos. Itakda sa 0 upang ipatupad kaagad (lumang gawi). Ang pagpapaikli ng aktibong grace period ay maaaring agad na mag-lock-out sa mga user."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Buksan ang isang pamilya upang ayusin ang address nito, pagkatapos ay patakbuhin muli ito."
+
+#: 
+msgid "Set up now"
+msgstr "I-set up na ngayon"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Hinahanap nito ang mga coordinates sa mapa para sa bawat pamilyang kulang nito, gamit ang OpenStreetMap. Nagpoproseso ito ng hanggang 50 pamilya kada takbo; ang isang buong batch ay tumatagal ng humigit-kumulang isang minuto. Puwede mong iwanang bukas ang page na ito habang tumatakbo ito. Magpatuloy?"
+
+#: 
+msgid "Unknown family"
+msgstr "Hindi kilalang pamilya"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "I-update ang Lahat ng Coordinates"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "I-update ang Lahat ng Coordinates ng Pamilya"
+
+#: 
+msgid "Update Coordinates"
+msgstr "I-update ang Coordinates"
 

@@ -17807,3 +17807,83 @@ msgstr "%s %d के लिए कोई इवेंट नहीं मिल�
 msgid "Try selecting a different event type, month, or year."
 msgstr "कोई अलग इवेंट प्रकार, महीना या वर्ष चुनने का प्रयास करें।"
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "जियोकोडिंग में त्रुटि हुई — बाद में पुनः प्रयास करें"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "पता अधूरा है (शहर, राज्य और ZIP कोड गायब है)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "सभी परिवारों के पास पहले से ही निर्देशांक मौजूद हैं।"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "निर्देशांक अपडेट करने में विफल"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "परिवार के निर्देशांक अपडेट करने में विफल"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "सभी {{geocoded}} परिवारों को जियोकोड किया गया। मानचित्र अब अद्यतित है।"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} परिवारों को जियोकोड किया गया। {{failed}} को हल नहीं किया जा सका — नीचे विवरण देखें।"
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "{{total}} में से {{geocoded}} परिवारों को जियोकोड किया गया। {{overflow}} अभी संसाधित नहीं हुए हैं — जारी रखने के लिए फिर से चलाएं।"
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "परिवारों को जियोकोड किया जा रहा है… इसमें एक मिनट तक का समय लग सकता है। आप इस पेज को खुला रख सकते हैं।"
+
+#: 
+msgid "Geocoding…"
+msgstr "जियोकोडिंग हो रही है…"
+
+#: 
+msgid "No address on file"
+msgstr "कोई पता दर्ज नहीं है"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "कोई मिलान नहीं मिला — सड़क का पता, शहर और ZIP कोड जांचें"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "2FA अनिवार्य होने के बाद उपयोगकर्ताओं के पास इसमें नामांकन करने के लिए दिनों की संख्या। तुरंत लागू करने के लिए 0 सेट करें (लीगेसी व्यवहार)। सक्रिय छूट अवधि को छोटा करने से उपयोगकर्ता तुरंत लॉक आउट हो सकते हैं।"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "पता ठीक करने के लिए परिवार को खोलें, फिर इसे फिर से चलाएं।"
+
+#: 
+msgid "Set up now"
+msgstr "अभी सेट अप करें"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "यह OpenStreetMap का उपयोग करके हर उस परिवार के लिए मानचित्र निर्देशांक ढूंढता है जिनके पास ये नहीं हैं। यह प्रति रन 50 परिवारों तक संसाधित करता है; एक पूर्ण बैच में लगभग एक मिनट लगता है। यह चलते समय आप इस पेज को खुला रख सकते हैं। जारी रखें?"
+
+#: 
+msgid "Unknown family"
+msgstr "अज्ञात परिवार"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "सभी निर्देशांक अपडेट करें"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "सभी परिवार के निर्देशांक अपडेट करें"
+
+#: 
+msgid "Update Coordinates"
+msgstr "निर्देशांक अपडेट करें"
+

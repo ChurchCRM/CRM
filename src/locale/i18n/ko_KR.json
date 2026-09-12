@@ -4287,5 +4287,28 @@
   "All Months": "모든 달",
   "No \"%s\" options are defined yet.": "아직 \"%s\" 옵션이 정의되지 않았습니다.",
   "No events found for %s %d.": "%s %d에 대한 행사를 찾을 수 없습니다.",
-  "Try selecting a different event type, month, or year.": "다른 행사 유형, 달 또는 연도를 선택해 보세요."
+  "Try selecting a different event type, month, or year.": "다른 행사 유형, 달 또는 연도를 선택해 보세요.",
+  "A geocoding error occurred — try again later": "지오코딩 오류가 발생했습니다 — 나중에 다시 시도하세요",
+  "Address is incomplete (missing city, state, and ZIP)": "주소가 불완전합니다(시/도, 시/군/구, 우편번호 누락)",
+  "All families already have coordinates.": "모든 가족에 이미 좌표가 있습니다.",
+  "Failed to update coordinates": "좌표를 업데이트하지 못했습니다",
+  "Failed to update family coordinates": "가족 좌표를 업데이트하지 못했습니다",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "{{geocoded}}개 가족의 지오코딩을 모두 완료했습니다. 지도가 최신 상태입니다.",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "{{geocoded}}개 가족의 지오코딩을 완료했습니다. {{failed}}개는 해결할 수 없습니다 — 아래 세부 정보를 확인하세요.",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "전체 {{total}}개 가족 중 {{geocoded}}개의 지오코딩을 완료했습니다. {{overflow}}개는 아직 처리되지 않았습니다 — 계속하려면 다시 실행하세요.",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "가족 정보를 지오코딩하는 중입니다… 최대 1분 정도 걸릴 수 있습니다. 이 페이지를 열어 둔 채로 기다리셔도 됩니다.",
+  "Geocoding…": "지오코딩 중…",
+  "No address on file": "등록된 주소가 없습니다",
+  "No match found — check the street address, city, and ZIP": "일치하는 항목을 찾을 수 없습니다 — 도로명 주소, 시/도, 우편번호를 확인하세요",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "2FA(이중 인증)가 의무화된 후 사용자가 등록해야 하는 유예 일수입니다. 즉시 적용하려면 0으로 설정하세요(기존 방식). 활성화된 유예 기간을 단축하면 사용자가 즉시 잠길 수 있습니다.",
+  "Open a family to fix its address, then run this again.": "가족 정보를 열어 주소를 수정한 후 다시 실행하세요.",
+  "Set up now": "지금 설정하기",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "OpenStreetMap을 사용하여 좌표가 없는 모든 가족의 지도 좌표를 찾습니다. 한 번 실행할 때 최대 50개 가족을 처리하며, 전체 배치는 약 1분이 걸립니다. 실행하는 동안 이 페이지를 열어 둔 채로 두셔도 됩니다. 계속하시겠습니까?",
+  "Two-factor authentication is required. You have %d day to enroll.": {
+    "other": "이중 인증이 필요합니다. 등록까지 %d일 남았습니다."
+  },
+  "Unknown family": "알 수 없는 가족",
+  "Update All Coordinates": "모든 좌표 업데이트",
+  "Update All Family Coordinates": "모든 가족 좌표 업데이트",
+  "Update Coordinates": "좌표 업데이트"
 }
