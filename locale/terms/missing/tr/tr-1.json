@@ -1,60 +1,60 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "%d aileye e-posta gönderildi.|%d aileye e-posta gönderildi.|%d aileye e-posta gönderildi.",
-    "other": ""
+    "one": "%d aileye e-posta gönderildi.",
+    "other": "%d aileye e-posta gönderildi."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF başarıyla %d aileye e-posta ile gönderildi.|PDF başarıyla %d aileye e-posta ile gönderildi.|PDF başarıyla %d aileye e-posta ile gönderildi.",
-    "other": ""
+    "one": "%d aileye PDF başarıyla e-postayla gönderildi.",
+    "other": "%d aileye PDF başarıyla e-postayla gönderildi."
   },
-  "A geocoding error occurred — try again later": "",
-  "Address is incomplete (missing city, state, and ZIP)": "",
-  "All families already have coordinates.": "",
-  "Failed to update coordinates": "",
-  "Failed to update family coordinates": "",
-  "Geocoded all {{geocoded}} families. The map is now up to date.": "",
-  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "",
-  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "",
-  "Geocoding families… this can take up to a minute. You can keep this page open.": "",
-  "Geocoding…": "",
-  "No address on file": "",
-  "No match found — check the street address, city, and ZIP": "",
-  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "",
-  "Open a family to fix its address, then run this again.": "",
-  "Set up now": "",
-  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "",
+  "A geocoding error occurred — try again later": "Bir coğrafi kodlama hatası oluştu — lütfen daha sonra tekrar deneyin",
+  "Address is incomplete (missing city, state, and ZIP)": "Adres eksik (şehir, eyalet ve posta kodu eksik)",
+  "All families already have coordinates.": "Tüm ailelerin zaten koordinatları var.",
+  "Failed to update coordinates": "Koordinatlar güncellenemedi",
+  "Failed to update family coordinates": "Aile koordinatları güncellenemedi",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "{{geocoded}} ailenin tümü coğrafi olarak kodlandı. Harita artık güncel.",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "{{geocoded}} aile coğrafi olarak kodlandı. {{failed}} tanesi çözümlenemedi — ayrıntılar için aşağıya bakın.",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "{{total}} aileden {{geocoded}} tanesi coğrafi olarak kodlandı. {{overflow}} tanesi henüz işlenmedi — devam etmek için tekrar çalıştırın.",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "Aileler coğrafi olarak kodlanıyor… bu işlem bir dakikaya kadar sürebilir. Bu sayfayı açık tutabilirsiniz.",
+  "Geocoding…": "Coğrafi kodlama…",
+  "No address on file": "Kayıtlı adres yok",
+  "No match found — check the street address, city, and ZIP": "Eşleşme bulunamadı — sokak adresini, şehri ve posta kodunu kontrol edin",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "Kullanıcıların, iki faktörlü kimlik doğrulama zorunlu kılındıktan sonra kaydolmaları için sahip oldukları gün sayısı. Hemen zorunlu kılmak için 0 olarak ayarlayın (eski davranış). Etkin bir tolerans süresini kısaltmak, kullanıcıların hemen dışarıda kalmasına neden olabilir.",
+  "Open a family to fix its address, then run this again.": "Adresini düzeltmek için bir aileyi açın, ardından bunu tekrar çalıştırın.",
+  "Set up now": "Şimdi kur",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "Bu, koordinatları eksik olan her aile için OpenStreetMap kullanarak harita koordinatlarını bulur. Her çalıştırmada en fazla 50 aile işlenir; tam bir grup yaklaşık bir dakika sürer. Çalışırken bu sayfayı açık tutabilirsiniz. Devam edilsin mi?",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "",
-    "other": ""
+    "one": "İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var.",
+    "other": "İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var."
   },
-  "Unknown family": "",
-  "Update All Coordinates": "",
-  "Update All Family Coordinates": "",
-  "Update Coordinates": "",
+  "Unknown family": "Bilinmeyen aile",
+  "Update All Coordinates": "Tüm Koordinatları Güncelle",
+  "Update All Family Coordinates": "Tüm Aile Koordinatlarını Güncelle",
+  "Update Coordinates": "Koordinatları Güncelle",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} üye kopyalandı",
+    "other": "{{count}} üye kopyalandı"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Bu listede {{count}} alıcı var — bir mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyala seçeneğini kullanın.",
+    "other": "Bu listede {{count}} alıcı var — bir mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyala seçeneğini kullanın."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyala seçeneğini kullanın.",
+    "other": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyala seçeneğini kullanın."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} dakika kaldı",
+    "other": "{{count}} dakika kaldı"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} aile coğrafi olarak kodlanamadı",
+    "other": "{{count}} aile coğrafi olarak kodlanamadı"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…ve {{count}} tane daha. Kalanını görmek için tekrar çalıştırın.",
+    "other": "…ve {{count}} tane daha. Kalanını görmek için tekrar çalıştırın."
   }
 }
