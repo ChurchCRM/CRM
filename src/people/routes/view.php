@@ -10,12 +10,21 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerQualification;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\PropertyService;
+use ChurchCRM\Service\VolunteerAssignmentService;
+use ChurchCRM\Service\VolunteerScheduleService;
+use ChurchCRM\Service\VolunteerSetupService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\view\PageHeader;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -163,6 +172,129 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         ->orderByOrder()
         ->find();
 
+    // ── Volunteer v2 pane (#9711, design §3.5 / §3.8 surface 2) ──────────────
+    //
+    // What this person is qualified for and what they are committed to next,
+    // read-only, linking into /volunteer. Prepared here because views run no
+    // queries (groups-mvc-guidelines.md), and only when the V2 experience is
+    // actually shown — `v1` mode must cost nothing.
+    //
+    // This is a PERSON-page read, not a coordinator read: it is about the person
+    // whose record is open, gated by the same permission that opened the record,
+    // and it exposes nothing a coordinator screen would not. It is deliberately
+    // NOT scoped to the viewer's volunteer ministries — an administrator looking
+    // at a member's record is not acting as a coordinator of anything.
+    $volunteerV2Qualifications = [];
+    $volunteerV2Assignments = [];
+
+    if (User::isVolunteerV2Enabled()) {
+        $setupService = new VolunteerSetupService();
+        $assignmentService = new VolunteerAssignmentService();
+        $scheduleService = new VolunteerScheduleService();
+
+        $positionNames = [];
+        $positionMinistryIds = [];
+        $qualificationRows = array_values(array_filter(
+            $setupService->listQualificationsForPerson($iPersonID),
+            static fn (VolunteerQualification $row): bool => (bool) $row->getActive()
+        ));
+
+        $positionIds = array_values(array_unique(array_map(
+            static fn (VolunteerQualification $row): int => (int) $row->getPositionId(),
+            $qualificationRows
+        )));
+        if ($positionIds !== []) {
+            foreach (VolunteerPositionQuery::create()->filterById($positionIds, Criteria::IN)->find() as $position) {
+                $positionNames[(int) $position->getId()] = $position->getName();
+                $positionMinistryIds[(int) $position->getId()] = (int) $position->getMinistryId();
+            }
+        }
+
+        $upcoming = $assignmentService->listAssignmentsForPerson($iPersonID);
+        $occurrenceIds = array_values(array_unique(array_map(
+            static fn ($assignment): int => (int) $assignment->getOccurrenceId(),
+            $upcoming
+        )));
+
+        $occurrences = [];
+        $schedules = [];
+        if ($occurrenceIds !== []) {
+            foreach (VolunteerOccurrenceQuery::create()->filterById($occurrenceIds, Criteria::IN)->find() as $occurrence) {
+                $occurrences[(int) $occurrence->getId()] = $occurrence;
+            }
+            $scheduleIds = array_values(array_unique(array_map(
+                static fn ($occurrence): int => (int) $occurrence->getScheduleId(),
+                $occurrences
+            )));
+            if ($scheduleIds !== []) {
+                foreach (VolunteerScheduleQuery::create()->filterById($scheduleIds, Criteria::IN)->find() as $schedule) {
+                    $schedules[(int) $schedule->getId()] = $schedule;
+                }
+            }
+        }
+
+        $ministryIds = array_values(array_unique(array_merge(
+            array_values($positionMinistryIds),
+            array_map(static fn ($schedule): int => (int) $schedule->getMinistryId(), $schedules)
+        )));
+        $ministryNames = [];
+        if ($ministryIds !== []) {
+            foreach (VolunteerMinistryQuery::create()->filterById($ministryIds, Criteria::IN)->find() as $ministry) {
+                $ministryNames[(int) $ministry->getId()] = $ministry->getName();
+            }
+        }
+
+        foreach ($qualificationRows as $row) {
+            $positionId = (int) $row->getPositionId();
+            $volunteerV2Qualifications[] = [
+                'positionId' => $positionId,
+                'positionName' => $positionNames[$positionId] ?? null,
+                'ministryId' => $positionMinistryIds[$positionId] ?? null,
+                'ministryName' => $ministryNames[$positionMinistryIds[$positionId] ?? 0] ?? null,
+                'grantedDate' => $row->getGrantedDate('Y-m-d'),
+            ];
+        }
+
+        // Upcoming positions a person still holds. A cancelled or substituted-away
+        // row is history, not a commitment, so it is not a "what am I doing next"
+        // answer and is left out (§2.11.1).
+        foreach ($upcoming as $assignment) {
+            if (!in_array($assignment->getStatus(), ['pending', 'accepted'], true)) {
+                continue;
+            }
+
+            $occurrence = $occurrences[(int) $assignment->getOccurrenceId()] ?? null;
+            if ($occurrence === null) {
+                continue;
+            }
+
+            $schedule = $schedules[(int) $occurrence->getScheduleId()] ?? null;
+            // The one method allowed to decide an occurrence's time — for a linked
+            // occurrence it reads the event row (D4).
+            $window = $scheduleService->resolveOccurrenceWindow($occurrence);
+            $positionId = (int) $assignment->getPositionId();
+            $ministryId = $schedule === null ? null : (int) $schedule->getMinistryId();
+
+            $volunteerV2Assignments[] = [
+                'occurrenceId' => (int) $occurrence->getId(),
+                'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
+                'start' => $window['start'] === null ? null : $window['start']->format('Y-m-d H:i:s'),
+                'positionId' => $positionId,
+                'positionName' => $positionNames[$positionId]
+                    ?? (VolunteerPositionQuery::create()->findPk($positionId)?->getName()),
+                'scheduleName' => $schedule === null ? null : $schedule->getName(),
+                'ministryId' => $ministryId,
+                'ministryName' => $ministryId === null ? null : ($ministryNames[$ministryId] ?? null),
+                'status' => $assignment->getStatus(),
+            ];
+        }
+
+        usort(
+            $volunteerV2Assignments,
+            static fn (array $a, array $b): int => ($a['occurrenceDate'] ?? '') <=> ($b['occurrenceDate'] ?? '')
+        );
+    }
+
     // ── Properties (ORM via PropertyService) ─
     $assignedPersonProperties = PropertyService::getAssigned($person);
     $allPersonProperties      = PropertyService::getAll($person);
@@ -251,6 +383,10 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         // Volunteer tab(s) the view renders; the POST / RemoveVO handlers above
         // are untouched, the flag only decides whether the form reaches them.
         'volunteerVersion'          => User::getVolunteerVersion(),
+        // #9711: the V2 pane's data (design §3.5). Empty arrays in `v1` mode,
+        // where the pane is not rendered at all.
+        'volunteerV2Qualifications' => $volunteerV2Qualifications,
+        'volunteerV2Assignments'    => $volunteerV2Assignments,
         // Properties (ORM)
         'assignedPersonProperties'  => $assignedPersonProperties,
         'allPersonProperties'       => $allPersonProperties,

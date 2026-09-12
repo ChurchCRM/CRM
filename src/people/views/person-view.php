@@ -791,12 +791,101 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     </div>
                     <?php endif; ?>
                     <?php if ($showVolunteerV2) : ?>
+                    <?php
+                    /*
+                     * The Volunteer v2 pane (#9711, design §3.5 / §3.8 surface 2).
+                     *
+                     * Read-only by design: what this person is qualified for and what
+                     * they are committed to next, each linking into /volunteer where
+                     * the change is actually made. Nothing here writes, and the V1
+                     * pane above — including every one of its ids — is untouched.
+                     *
+                     * The route prepared both arrays; there are no queries in views.
+                     */
+                    $volunteerV2Qualifications = $volunteerV2Qualifications ?? [];
+                    $volunteerV2Assignments    = $volunteerV2Assignments ?? [];
+                    $volunteerV2Empty          = count($volunteerV2Qualifications) === 0
+                                              && count($volunteerV2Assignments) === 0;
+                    $volunteerV2StatusBadges   = [
+                        'pending'  => 'bg-yellow-lt text-yellow',
+                        'accepted' => 'bg-green-lt text-green',
+                    ];
+                    ?>
                     <div class="tab-pane" id="volunteer-v2">
-                        <div class="text-center text-body-secondary py-4">
-                            <i class="fa-solid fa-handshake-angle fa-2x mb-2 d-block opacity-50"></i>
-                            <p class="mb-1"><?= gettext('No volunteer assignments yet.') ?></p>
-                            <p class="mb-0"><?= gettext('Volunteer scheduling and assignments arrive in a later release.') ?></p>
-                        </div>
+                        <?php if ($volunteerV2Empty) : ?>
+                            <div class="empty" id="person-volunteer-v2-empty">
+                                <div class="empty-icon"><i class="fa-solid fa-handshake-angle fa-2x text-muted"></i></div>
+                                <p class="empty-title"><?= gettext('Not volunteering yet') ?></p>
+                                <p class="empty-subtitle text-body-secondary">
+                                    <?= gettext('Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve.') ?>
+                                </p>
+                            </div>
+                        <?php else : ?>
+                            <div class="row g-3">
+                                <div class="col-12 col-lg-6">
+                                    <h4 class="mb-2">
+                                        <i class="fa-solid fa-award me-2"></i><?= gettext('Qualified for') ?>
+                                    </h4>
+                                    <?php if (count($volunteerV2Qualifications) === 0) : ?>
+                                        <p class="text-body-secondary" id="person-volunteer-v2-qualifications">
+                                            <?= gettext('No qualifications yet.') ?>
+                                        </p>
+                                    <?php else : ?>
+                                        <div class="list-group list-group-flush" id="person-volunteer-v2-qualifications">
+                                            <?php foreach ($volunteerV2Qualifications as $aQualification) : ?>
+                                                <div class="list-group-item">
+                                                    <span class="fw-bold"><?= InputUtils::escapeHTML($aQualification['positionName'] ?? '') ?></span>
+                                                    <?php if (!empty($aQualification['ministryName'])) : ?>
+                                                        <div class="text-body-secondary small">
+                                                            <?php if (!empty($aQualification['ministryId'])) : ?>
+                                                                <a href="<?= SystemURLs::getRootPath() ?>/volunteer/ministries/<?= (int) $aQualification['ministryId'] ?>">
+                                                                    <?= InputUtils::escapeHTML($aQualification['ministryName']) ?>
+                                                                </a>
+                                                            <?php else : ?>
+                                                                <?= InputUtils::escapeHTML($aQualification['ministryName']) ?>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+
+                                <div class="col-12 col-lg-6">
+                                    <h4 class="mb-2">
+                                        <i class="fa-solid fa-calendar-check me-2"></i><?= gettext('Serving next') ?>
+                                    </h4>
+                                    <?php if (count($volunteerV2Assignments) === 0) : ?>
+                                        <p class="text-body-secondary" id="person-volunteer-v2-assignments">
+                                            <?= gettext('Nothing scheduled.') ?>
+                                        </p>
+                                    <?php else : ?>
+                                        <div class="list-group list-group-flush" id="person-volunteer-v2-assignments">
+                                            <?php foreach ($volunteerV2Assignments as $aAssignment) : ?>
+                                                <a class="list-group-item list-group-item-action"
+                                                   href="<?= SystemURLs::getRootPath() ?>/volunteer/occurrences/<?= (int) $aAssignment['occurrenceId'] ?>">
+                                                    <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                                                        <div>
+                                                            <span class="fw-bold"><?= InputUtils::escapeHTML($aAssignment['positionName'] ?? '') ?></span>
+                                                            <div class="text-body-secondary small">
+                                                                <?= InputUtils::escapeHTML($aAssignment['occurrenceDate'] ?? '') ?>
+                                                                <?php if (!empty($aAssignment['ministryName'])) : ?>
+                                                                    &middot; <?= InputUtils::escapeHTML($aAssignment['ministryName']) ?>
+                                                                <?php endif; ?>
+                                                            </div>
+                                                        </div>
+                                                        <span class="badge <?= $volunteerV2StatusBadges[$aAssignment['status']] ?? 'bg-secondary-lt text-secondary' ?>">
+                                                            <?= $aAssignment['status'] === 'accepted' ? gettext('Accepted') : gettext('Awaiting reply') ?>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <?php endif; ?>
                     <?php if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) : ?>
