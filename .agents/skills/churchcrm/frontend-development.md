@@ -351,6 +351,28 @@ handler makes the dialog's focus grab a no-op and fixes both.
 Test side, see `cypress-testing.md` → "Typing into a modal": assert
 `should("be.focused")` before `.type()`.
 
+### A modal cannot be dismissed during its own fade <!-- learned: 2026-09-12 -->
+
+The mirror image of the rule above, and the reason a "the X button does nothing"
+report is usually real. `Modal.hide()` starts with:
+
+```js
+if (!this._isShown || this._isTransitioning) { return }
+```
+
+`_isTransitioning` stays true for the whole 150 ms opening fade, so a click on a
+`data-bs-dismiss="modal"` control during it is accepted by the data-api handler
+and then thrown away by `hide()` — no error, no event, the modal stays open. A
+user who reflexively clicks the X the instant the dialog appears has to click
+again.
+
+Nothing in our code can shorten the fade, but do not paper over it with a second
+`hide()` call or a `setTimeout`: the second click already works, and a queued
+hide would fight Bootstrap's own state machine. What this **does** mean is that
+code must never assume `show()` followed by `hide()` in the same tick closes
+anything — drive a modal's lifecycle from `shown.bs.modal` / `hidden.bs.modal`,
+never from a timer.
+
 ## Modals (Bootstrap 5 / Tabler) <!-- updated: 2026-03-22 -->
 
 **For complex forms/modals, use Bootstrap 5 data attributes:**

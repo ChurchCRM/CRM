@@ -2492,6 +2492,64 @@ are worth having: the modal focuses its first field on `shown.bs.modal`
 (`frontend-development.md` → "Focus the first field on `shown.bs.modal`"), and the
 spec waits for that focus before typing.
 
+## Closing a modal: `hide()` is a no-op during the fade <!-- learned: 2026-09-12 -->
+
+The same race bites the *other* end of a modal's life, and this half is worse
+because nothing is even partially applied — the modal simply stays open.
+Bootstrap 5's `Modal.hide()` begins:
+
+```js
+hide() {
+  if (!this._isShown || this._isTransitioning) { return }
+```
+
+`_isTransitioning` is true for the whole 150 ms opening fade, and
+`should("be.visible")` goes true partway through it. So a click on `.btn-close`
+or a Cancel button in that window is silently dropped — the `data-bs-dismiss`
+handler runs, calls `hide()`, and `hide()` returns immediately. The next command
+then fails with a confusing *"element is covered by `<div class="modal fade
+show">`"*, which reads like a z-index bug:
+
+```js
+// ❌ FLAKY — the dismiss is swallowed and the modal never closes
+cy.get("#qualifyPersonModal").should("be.visible");
+cy.get("#qualifyPersonModal .btn-close").click();
+
+// ✅ CORRECT — wait for something that only exists after shown.bs.modal
+cy.get("#qualifyPersonModal .ts-wrapper").should("exist");   // TomSelect is built there
+cy.get("#qualifyPersonModal .btn-close").click();
+cy.get("#qualifyPersonModal").should("not.be.visible");
+```
+
+Any post-`shown.bs.modal` side effect works as the gate: `should("be.focused")`
+on the auto-focused first field, or a widget the app initialises in that handler
+(`attachToModal()`'s TomSelect wrapper, above). Prefer one of those to
+`cy.wait()` — they are deterministic, and a fixed wait is what the rest of this
+skill tells you not to write.
+
+## Seeded group membership is NOT stable across a suite run <!-- learned: 2026-09-12 -->
+
+`cypress/e2e/api/private/standard/private.people.groups.spec.js` adds person 1
+to group 1 ("Angels class") and does not always remove them again, so group 1 has
+5 members when its spec runs alone and 6 after that spec has run. A spec that
+hardcodes a seed group's size passes in isolation and fails in the suite, in
+whichever order the runner happens to pick.
+
+Read the count instead — from the endpoint under test's own dependency, in a
+`before` hook:
+
+```js
+let angelsMemberCount = 0;
+before(() => {
+  cy.makePrivateAdminAPICall("GET", "/api/groups/1/members", null, 200)
+    .then((resp) => { angelsMemberCount = resp.body.Person2group2roleP2g2rs.length; });
+});
+```
+
+The same applies to any assertion derived from a seed group: pin the *property*
+(a union is de-duplicated, a count matches the group's own) rather than the
+number. Person ids are stable; group sizes are not.
+
 ## Database Assertions via the `db:query` Node Task <!-- learned: 2026-09-12 -->
 
 Some guarantees have no HTTP surface — UNIQUE keys, foreign keys and their `ON DELETE` rules, enum domains. A spec cannot open a MySQL socket itself, so `cypress/configs/_shared.ts` exports `dbTasks`, a `db:query` node-event task built on the existing `mysql2` devDependency, wrapped as `cy.dbQuery(sql, params)`.
