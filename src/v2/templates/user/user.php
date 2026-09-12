@@ -454,6 +454,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isManageGroups()],
                 ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isFinance()],
                 ['label' => gettext("Manage Fundraisers"), 'granted' => $user->isManageFundraisers()],
+                ['label' => gettext("Manage Volunteers"), 'granted' => $user->isVolunteerManager()],
             ];
             foreach ($permissions as $perm):
             ?>

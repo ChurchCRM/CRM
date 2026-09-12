@@ -218,6 +218,7 @@ class UserService
             'manageGroups'      => $allow && isset($body['ManageGroups'])      ? 1 : 0,
             'finance'           => $allow && isset($body['Finance'])           ? 1 : 0,
             'manageFundraisers' => $allow && isset($body['ManageFundraisers']) ? 1 : 0,
+            'volunteerManager'  => $allow && isset($body['VolunteerManager'])  ? 1 : 0,
             'notes'             => $allow && isset($body['Notes'])             ? 1 : 0,
             'addEvent'          => $allow && isset($body['AddEvent'])          ? 1 : 0,
         ];
@@ -280,6 +281,7 @@ class UserService
                 ->setManageGroups($perms['manageGroups'])
                 ->setFinance($perms['finance'])
                 ->setManageFundraisers($perms['manageFundraisers'])
+                ->setVolunteerManager($perms['volunteerManager'])
                 ->setNotes($perms['notes'])
                 ->setAdmin($perms['admin'])
                 ->setDefaultFY($defaultFY)
@@ -388,6 +390,7 @@ class UserService
             ->setManageGroups($perms['manageGroups'])
             ->setFinance($perms['finance'])
             ->setManageFundraisers($perms['manageFundraisers'])
+            ->setVolunteerManager($perms['volunteerManager'])
             ->setNotes($perms['notes'])
             ->setAdmin($perms['admin'])
             ->setUserName($userName)
