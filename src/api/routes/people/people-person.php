@@ -5,12 +5,9 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-<<<<<<< HEAD
-=======
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
->>>>>>> c03350def (feat: add deactivate/reactivate support for Person (parity with Family))
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
