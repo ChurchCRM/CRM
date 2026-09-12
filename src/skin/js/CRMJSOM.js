@@ -581,233 +581,294 @@ window.CRM.dashboard = {
   },
 };
 
-/**
- * Render a standard person action dropdown menu.
- * Standard order: View → Edit → [divider] → Cart → [divider] → Delete
- * @param {number} personId
- * @param {string} personName - Used in delete confirmation
- * @param {Object} [options]
- * @param {boolean} [options.inCart=false] - Whether person is already in cart
- * @returns {string} HTML string
- */
-window.CRM.renderPersonActionMenu = (personId, personName, options) => {
-  options = options || {};
-  const inCart = options.inCart || false;
-  const familyId = options.familyId || null;
-  const root = window.CRM.root;
-  // GHSA-hm7v-jrhm-fmfx: use escapeAttribute (encodes quotes) for data-* attribute context
-  const escapedName = window.CRM.escapeAttribute(personName || "");
-  const familyItem = familyId
-    ? '<a class="dropdown-item" href="' +
-      root +
-      "/people/family/" +
-      familyId +
+// ─────────────────────────────────────────────────────────────────────────────
+// Row action menus.
+//
+// `buildActionMenu()` owns the dropdown scaffold and all escaping; the three
+// entity renderers below only describe their item lists. Wrapped in an IIFE so
+// the shared cart-item helper stays private to this block.
+// `.agents/skills/churchcrm/table-action-menu.md` documents the markup emitted here.
+// ─────────────────────────────────────────────────────────────────────────────
+(function setupActionMenuBuilders() {
+  /**
+   * One entry in the item list `window.CRM.buildActionMenu()` accepts.
+   *
+   * @typedef {Object} CRMActionMenuItem
+   * @property {"link"|"button"|"divider"} type
+   * @property {string} [href] - `link` only.
+   * @property {string} [icon] - Font Awesome classes, e.g. "fa-solid fa-eye"; `me-2` is appended.
+   * @property {string} [label] - Visible text.
+   * @property {string} [className] - Extra classes appended to `dropdown-item`.
+   * @property {boolean} [danger] - Prefixes `text-danger`; use for destructive items.
+   * @property {string} [labelClass] - Wraps the label in a `<span>` carrying this class.
+   * @property {Object} [data] - `data-*` attributes, keyed without the `data-` prefix.
+   * @property {boolean} [classBeforeType] - `button` only; emit `class=` before `type=`.
+   */
+
+  /**
+   * Build the canonical Tabler row-action dropdown.
+   *
+   * This is the single place the scaffold is written: the wrapper, the
+   * `btn-ghost-secondary` trigger (including `data-bs-display="static"`, which is
+   * load-bearing — without it the menu is clipped inside a scrolling table
+   * container, see #9373), the `fa-ellipsis-vertical` icon and the
+   * `dropdown-menu dropdown-menu-end` container.
+   *
+   * It is also the single place menu content is escaped: everything landing in an
+   * attribute (`href`, classes, every `data-*` value) goes through
+   * `window.CRM.escapeAttribute()`, and every label goes through
+   * `window.CRM.escapeHtml()`. Callers pass raw strings and must not pre-escape.
+   *
+   * @param {Array<CRMActionMenuItem|null|false|undefined>} items - Falsy entries are
+   *   skipped, so callers can write `condition && item` inline.
+   * @param {Object} [opts]
+   * @param {string} [opts.wrapperClass="dropdown"]
+   * @param {string} [opts.menuClass="dropdown-menu dropdown-menu-end"]
+   * @returns {string} HTML string
+   */
+  window.CRM.buildActionMenu = (items, opts) => {
+    const options = opts || {};
+    const escapeAttribute = window.CRM.escapeAttribute;
+    const escapeHtml = window.CRM.escapeHtml;
+
+    // ` data-foo="a" data-bar="b"` — the one place data-* values are escaped.
+    // GHSA-hm7v-jrhm-fmfx: escapeAttribute (encodes quotes) for data-* attribute context.
+    const dataAttributes = (data) =>
+      data
+        ? Object.keys(data)
+            .map((key) => " data-" + key + '="' + escapeAttribute(data[key]) + '"')
+            .join("")
+        : "";
+
+    const classAttribute = (item) => {
+      const extra = ((item.danger ? "text-danger " : "") + (item.className || "")).trim();
+      return 'class="dropdown-item' + (extra ? " " + escapeAttribute(extra) : "") + '"';
+    };
+
+    const itemBody = (item) => {
+      const icon = item.icon ? '<i class="' + escapeAttribute(item.icon) + ' me-2"></i>' : "";
+      const label = escapeHtml(item.label || "");
+      return (
+        icon + (item.labelClass ? '<span class="' + escapeAttribute(item.labelClass) + '">' + label + "</span>" : label)
+      );
+    };
+
+    const renderItem = (item) => {
+      if (!item) {
+        return "";
+      }
+      if (item.type === "divider") {
+        return '<div class="dropdown-divider"></div>';
+      }
+      if (item.type === "link") {
+        return (
+          "<a " +
+          classAttribute(item) +
+          ' href="' +
+          escapeAttribute(item.href || "") +
+          '"' +
+          dataAttributes(item.data) +
+          ">" +
+          itemBody(item) +
+          "</a>"
+        );
+      }
+      // classBeforeType keeps the cart button's historical attribute order, so the
+      // markup is unchanged from the hand-written renderers this replaced.
+      const leading = item.classBeforeType
+        ? classAttribute(item) + ' type="button"'
+        : 'type="button" ' + classAttribute(item);
+      return "<button " + leading + dataAttributes(item.data) + ">" + itemBody(item) + "</button>";
+    };
+
+    return (
+      '<div class="' +
+      escapeAttribute(options.wrapperClass || "dropdown") +
       '">' +
-      '<i class="fa-solid fa-users me-2"></i>' +
-      i18next.t("View Family") +
-      "</a>"
-    : "";
-  return (
-    '<div class="dropdown">' +
-    '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
-    '<i class="fa-solid fa-ellipsis-vertical"></i>' +
-    "</button>" +
-    '<div class="dropdown-menu dropdown-menu-end">' +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/people/view/" +
-    personId +
-    '">' +
-    '<i class="fa-solid fa-eye me-2"></i>' +
-    i18next.t("View") +
-    "</a>" +
-    (window.CRM.permissions && window.CRM.permissions.editRecords
-      ? '<a class="dropdown-item" href="' +
-        root +
-        "/PersonEditor.php?PersonID=" +
-        personId +
-        '">' +
-        '<i class="fa-solid fa-pencil me-2"></i>' +
-        i18next.t("Edit") +
-        "</a>"
-      : "") +
-    familyItem +
-    '<div class="dropdown-divider"></div>' +
-    '<button class="dropdown-item ' +
-    (inCart ? "RemoveFromCart text-danger" : "AddToCart") +
-    '" type="button"' +
-    ' data-cart-id="' +
-    personId +
-    '" data-cart-type="person"' +
-    ' data-label-add="' +
-    i18next.t("Add to Cart") +
-    '" data-label-remove="' +
-    i18next.t("Remove from Cart") +
-    '">' +
-    '<i class="' +
-    (inCart ? "fa-solid fa-box-open" : "fa-solid fa-cart-shopping") +
-    ' me-2"></i>' +
-    '<span class="cart-label">' +
-    (inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart")) +
-    "</span>" +
-    "</button>" +
-    '<div class="dropdown-divider"></div>' +
-    '<button type="button" class="dropdown-item text-danger delete-person"' +
-    ' data-person_id="' +
-    personId +
-    '" data-person_name="' +
-    escapedName +
-    '">' +
-    '<i class="fa-solid fa-trash me-2"></i>' +
-    i18next.t("Delete") +
-    "</button>" +
-    "</div></div>"
-  );
-};
-
-/**
- * Render a standard family action dropdown menu.
- * Standard order: View → Edit → [divider] → Cart → [divider] → Delete
- * @param {number} familyId
- * @param {string} familyName - Used in delete confirmation (unused currently but kept for parity)
- * @param {Object} [options]
- * @param {boolean} [options.inCart=false] - Whether family is already in cart
- * @returns {string} HTML string
- */
-window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
-  options = options || {};
-  const inCart = options.inCart || false;
-  const root = window.CRM.root;
-  return (
-    '<div class="dropdown">' +
-    '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
-    '<i class="fa-solid fa-ellipsis-vertical"></i>' +
-    "</button>" +
-    '<div class="dropdown-menu dropdown-menu-end">' +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/people/family/" +
-    familyId +
-    '">' +
-    '<i class="fa-solid fa-eye me-2"></i>' +
-    i18next.t("View") +
-    "</a>" +
-    (window.CRM.permissions && window.CRM.permissions.editRecords
-      ? '<a class="dropdown-item" href="' +
-        root +
-        "/FamilyEditor.php?FamilyID=" +
-        familyId +
-        '">' +
-        '<i class="fa-solid fa-pencil me-2"></i>' +
-        i18next.t("Edit") +
-        "</a>"
-      : "") +
-    '<div class="dropdown-divider"></div>' +
-    '<button class="dropdown-item ' +
-    (inCart ? "RemoveFromCart text-danger" : "AddToCart") +
-    '" type="button"' +
-    ' data-cart-id="' +
-    familyId +
-    '" data-cart-type="family"' +
-    ' data-label-add="' +
-    i18next.t("Add to Cart") +
-    '" data-label-remove="' +
-    i18next.t("Remove from Cart") +
-    '">' +
-    '<i class="' +
-    (inCart ? "fa-solid fa-box-open" : "fa-solid fa-cart-shopping") +
-    ' me-2"></i>' +
-    '<span class="cart-label">' +
-    (inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart")) +
-    "</span>" +
-    "</button>" +
-    '<div class="dropdown-divider"></div>' +
-    '<button type="button" class="dropdown-item text-danger delete-family"' +
-    ' data-family_id="' +
-    familyId +
-    '">' +
-    '<i class="fa-solid fa-trash me-2"></i>' +
-    i18next.t("Delete") +
-    "</button>" +
-    "</div></div>"
-  );
-};
-
-/**
- * Render a standard event action dropdown menu.
- * Standard order: View → Edit → Check-in → [divider] → Activate/Deactivate → [divider] → Delete
- *
- * @param {number} eventId
- * @param {string} eventTitle - Used in delete confirmation
- * @param {Object} [options]
- * @param {boolean} [options.inactive=false] - Current event status (controls Activate vs Deactivate)
- * @returns {string} HTML string
- */
-window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
-  options = options || {};
-  const inactive = options.inactive || false;
-  const root = window.CRM.root;
-  const escapedTitle = window.CRM.escapeHtml(eventTitle || "");
-
-  const statusButton = inactive
-    ? '<button type="button" class="dropdown-item activate-event" data-event_id="' +
-      eventId +
+      '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
+      '<i class="fa-solid fa-ellipsis-vertical"></i>' +
+      "</button>" +
+      '<div class="' +
+      escapeAttribute(options.menuClass || "dropdown-menu dropdown-menu-end") +
       '">' +
-      '<i class="fa-solid fa-circle-check me-2"></i>' +
-      i18next.t("Activate") +
-      "</button>"
-    : '<button type="button" class="dropdown-item deactivate-event" data-event_id="' +
-      eventId +
-      '">' +
-      '<i class="fa-solid fa-circle-xmark me-2"></i>' +
-      i18next.t("Deactivate") +
-      "</button>";
+      items.map(renderItem).join("") +
+      "</div></div>"
+    );
+  };
 
-  return (
-    '<div class="dropdown">' +
-    '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
-    '<i class="fa-solid fa-ellipsis-vertical"></i>' +
-    "</button>" +
-    '<div class="dropdown-menu dropdown-menu-end">' +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/event/view/" +
-    eventId +
-    '">' +
-    '<i class="fa-solid fa-eye me-2"></i>' +
-    i18next.t("View") +
-    "</a>" +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/event/editor/" +
-    eventId +
-    '">' +
-    '<i class="fa-solid fa-pencil me-2"></i>' +
-    i18next.t("Edit") +
-    "</a>" +
-    '<a class="dropdown-item" href="' +
-    root +
-    "/event/checkin/" +
-    eventId +
-    '">' +
-    '<i class="fa-solid fa-clipboard-check me-2"></i>' +
-    i18next.t("Check-in") +
-    "</a>" +
-    '<div class="dropdown-divider"></div>' +
-    statusButton +
-    '<div class="dropdown-divider"></div>' +
-    '<button type="button" class="dropdown-item text-danger delete-event"' +
-    ' data-event_id="' +
-    eventId +
-    '" data-event_title="' +
-    escapedTitle +
-    '">' +
-    '<i class="fa-solid fa-trash me-2"></i>' +
-    i18next.t("Delete") +
-    "</button>" +
-    "</div></div>"
-  );
-};
+  /**
+   * The Add/Remove-from-Cart item the person and family menus share verbatim.
+   * cart.js's delegated `.AddToCart` / `.RemoveFromCart` handlers and its
+   * `updateButtonState()` depend on this exact class / data / `.cart-label` shape.
+   *
+   * @param {number} id
+   * @param {"person"|"family"} cartType
+   * @param {boolean} inCart
+   * @returns {CRMActionMenuItem}
+   */
+  const cartItem = (id, cartType, inCart) => ({
+    type: "button",
+    classBeforeType: true,
+    className: inCart ? "RemoveFromCart text-danger" : "AddToCart",
+    icon: inCart ? "fa-solid fa-box-open" : "fa-solid fa-cart-shopping",
+    label: inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart"),
+    labelClass: "cart-label",
+    data: {
+      "cart-id": id,
+      "cart-type": cartType,
+      "label-add": i18next.t("Add to Cart"),
+      "label-remove": i18next.t("Remove from Cart"),
+    },
+  });
+
+  const canEditRecords = () => Boolean(window.CRM.permissions?.editRecords);
+
+  /**
+   * Render a standard person action dropdown menu.
+   * Standard order: View → Edit → [View Family] → [divider] → Cart → [divider] → Delete
+   * @param {number} personId
+   * @param {string} personName - Used in delete confirmation
+   * @param {Object} [options]
+   * @param {boolean} [options.inCart=false] - Whether person is already in cart
+   * @param {number} [options.familyId] - When set, adds a "View Family" item after Edit
+   * @returns {string} HTML string
+   */
+  window.CRM.renderPersonActionMenu = (personId, personName, options) => {
+    options = options || {};
+    const root = window.CRM.root;
+    return window.CRM.buildActionMenu([
+      {
+        type: "link",
+        href: `${root}/people/view/${personId}`,
+        icon: "fa-solid fa-eye",
+        label: i18next.t("View"),
+      },
+      canEditRecords() && {
+        type: "link",
+        href: `${root}/PersonEditor.php?PersonID=${personId}`,
+        icon: "fa-solid fa-pencil",
+        label: i18next.t("Edit"),
+      },
+      options.familyId && {
+        type: "link",
+        href: `${root}/people/family/${options.familyId}`,
+        icon: "fa-solid fa-users",
+        label: i18next.t("View Family"),
+      },
+      { type: "divider" },
+      cartItem(personId, "person", options.inCart || false),
+      { type: "divider" },
+      {
+        type: "button",
+        danger: true,
+        className: "delete-person",
+        icon: "fa-solid fa-trash",
+        label: i18next.t("Delete"),
+        data: { person_id: personId, person_name: personName || "" },
+      },
+    ]);
+  };
+
+  /**
+   * Render a standard family action dropdown menu.
+   * Standard order: View → Edit → [divider] → Cart → [divider] → Delete
+   * @param {number} familyId
+   * @param {string} _familyName - Unused; kept for parity with the person renderer
+   * @param {Object} [options]
+   * @param {boolean} [options.inCart=false] - Whether family is already in cart
+   * @returns {string} HTML string
+   */
+  window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
+    options = options || {};
+    const root = window.CRM.root;
+    return window.CRM.buildActionMenu([
+      {
+        type: "link",
+        href: `${root}/people/family/${familyId}`,
+        icon: "fa-solid fa-eye",
+        label: i18next.t("View"),
+      },
+      canEditRecords() && {
+        type: "link",
+        href: `${root}/FamilyEditor.php?FamilyID=${familyId}`,
+        icon: "fa-solid fa-pencil",
+        label: i18next.t("Edit"),
+      },
+      { type: "divider" },
+      cartItem(familyId, "family", options.inCart || false),
+      { type: "divider" },
+      {
+        type: "button",
+        danger: true,
+        className: "delete-family",
+        icon: "fa-solid fa-trash",
+        label: i18next.t("Delete"),
+        data: { family_id: familyId },
+      },
+    ]);
+  };
+
+  /**
+   * Render a standard event action dropdown menu.
+   * Standard order: View → Edit → Check-in → [divider] → Activate/Deactivate → [divider] → Delete
+   *
+   * @param {number} eventId
+   * @param {string} eventTitle - Used in delete confirmation
+   * @param {Object} [options]
+   * @param {boolean} [options.inactive=false] - Current event status (controls Activate vs Deactivate)
+   * @returns {string} HTML string
+   */
+  window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
+    options = options || {};
+    const root = window.CRM.root;
+    const inactive = options.inactive || false;
+    return window.CRM.buildActionMenu([
+      {
+        type: "link",
+        href: `${root}/event/view/${eventId}`,
+        icon: "fa-solid fa-eye",
+        label: i18next.t("View"),
+      },
+      {
+        type: "link",
+        href: `${root}/event/editor/${eventId}`,
+        icon: "fa-solid fa-pencil",
+        label: i18next.t("Edit"),
+      },
+      {
+        type: "link",
+        href: `${root}/event/checkin/${eventId}`,
+        icon: "fa-solid fa-clipboard-check",
+        label: i18next.t("Check-in"),
+      },
+      { type: "divider" },
+      inactive
+        ? {
+            type: "button",
+            className: "activate-event",
+            icon: "fa-solid fa-circle-check",
+            label: i18next.t("Activate"),
+            data: { event_id: eventId },
+          }
+        : {
+            type: "button",
+            className: "deactivate-event",
+            icon: "fa-solid fa-circle-xmark",
+            label: i18next.t("Deactivate"),
+            data: { event_id: eventId },
+          },
+      { type: "divider" },
+      {
+        type: "button",
+        danger: true,
+        className: "delete-event",
+        icon: "fa-solid fa-trash",
+        label: i18next.t("Delete"),
+        data: { event_id: eventId, event_title: eventTitle || "" },
+      },
+    ]);
+  };
+})();
 
 // Global delegated handlers for .delete-event / .activate-event / .deactivate-event
 // rendered by renderEventActionMenu in DataTables and PHP templates.
@@ -822,7 +883,7 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
       const $btn = $(this);
       const eventId = $btn.data("event_id");
       // jQuery's .data() returns the browser-decoded attribute value, so the
-      // escaping applied by renderEventActionMenu() is undone here. Re-escape
+      // attribute escaping buildActionMenu() applied is undone here. Re-escape
       // before embedding into the bootbox HTML message to prevent XSS.
       const eventTitle = window.CRM.escapeHtml(String($btn.data("event_title") || ""));
       bootbox.confirm({
