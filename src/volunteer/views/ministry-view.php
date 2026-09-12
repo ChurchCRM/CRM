@@ -17,10 +17,11 @@ use ChurchCRM\Utils\InputUtils;
  * translated (design §5.10, F31).
  *
  * **Extension points for the rest of the epic.** The tab strip and the tab
- * content are both marked below. #9707 appends a Pools tab and a Qualifications
- * tab; #9708/#9711 append a Schedules tab. Each is one `<li>` plus one
- * `.tab-pane`, and the lazy-load registry in ministry.ts takes one more entry —
- * nothing here has to move.
+ * content are both marked below. #9707 put the pool list inside the Teams tab
+ * (renamed "Teams & Pools" — a pool belongs beside the team it feeds) and added
+ * a Qualifications tab; #9708/#9711 append a Schedules tab. Each is one `<li>`
+ * plus one `.tab-pane`, and the lazy-load registry in ministry.ts takes one more
+ * entry — nothing here has to move.
  */
 
 /** @var string $sRootPath */
@@ -55,7 +56,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </li>
     <li class="nav-item" role="presentation">
       <a class="nav-link" id="nav-item-teams" href="#teams" data-bs-toggle="tab" role="tab" aria-controls="teams" aria-selected="false">
-        <i class="fa-solid fa-people-group me-1"></i><?= gettext('Teams') ?>
+        <i class="fa-solid fa-people-group me-1"></i><?= gettext('Teams & Pools') ?>
       </a>
     </li>
     <li class="nav-item" role="presentation">
@@ -63,7 +64,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <i class="fa-solid fa-list-check me-1"></i><?= gettext('Positions') ?>
       </a>
     </li>
-    <?php /* Tab strip extension point: #9707 appends Pools and Qualifications, #9708/#9711 Schedules. */ ?>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="nav-item-qualifications" href="#qualifications" data-bs-toggle="tab" role="tab" aria-controls="qualifications" aria-selected="false">
+        <i class="fa-solid fa-user-check me-1"></i><?= gettext('Qualifications') ?>
+      </a>
+    </li>
+    <?php /* Tab strip extension point: #9708/#9711 append Schedules. */ ?>
   </ul>
 
   <div class="card-body tab-content">
@@ -110,7 +116,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     </div>
 
-    <!-- Teams -->
+    <!-- Teams & Pools -->
     <div class="tab-pane fade" id="teams" role="tabpanel" aria-labelledby="nav-item-teams">
       <div class="d-flex justify-content-end mb-2">
         <button type="button" class="btn btn-primary btn-sm" id="team-add-btn">
@@ -141,6 +147,45 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <th><?= gettext('Description') ?></th>
               <th class="text-center"><?= gettext('Positions') ?></th>
               <th class="text-center"><?= gettext('Status') ?></th>
+              <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!--
+        Volunteer pools (#9707, design §2.5). A pool is a LINK to an existing
+        Group — the Group stays the roster and V2 copies nobody (D1). The member
+        count below is therefore read-only here and the row links into the
+        Groups module, which is where membership is edited (Appendix D-1).
+      -->
+      <hr class="my-4">
+      <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between mb-2">
+        <h4 class="mb-0"><i class="fa-solid fa-users me-2"></i><?= gettext('Volunteer pools') ?></h4>
+        <button type="button" class="btn btn-primary btn-sm" id="pool-add-btn">
+          <i class="fa-solid fa-link me-1"></i><?= gettext('Link a Group') ?>
+        </button>
+      </div>
+      <p class="text-body-secondary" id="pools-membership-note">
+        <i class="fa-solid fa-circle-info me-1"></i>
+        <?= gettext('Who is in a pool is decided by the Group. Open the group to add or remove people — that needs the Manage Groups permission.') ?>
+      </p>
+      <div class="empty d-none" id="pools-empty">
+        <div class="empty-icon"><i class="fa-solid fa-users fa-2x text-muted"></i></div>
+        <p class="empty-title"><?= gettext('No volunteer pool yet') ?></p>
+        <p class="empty-subtitle text-body-secondary">
+          <?= gettext('Choose the Group whose members volunteer for this ministry. Nobody is copied — the Group stays in charge of who belongs.') ?>
+        </p>
+      </div>
+      <div class="table-responsive d-none" id="pools-table-wrapper">
+        <table class="table table-hover table-vcenter" id="volunteerPoolsTable">
+          <thead>
+            <tr>
+              <th><?= gettext('Group') ?></th>
+              <th><?= gettext('Serves') ?></th>
+              <th><?= gettext('Label') ?></th>
+              <th class="text-center"><?= gettext('Members') ?></th>
               <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
             </tr>
           </thead>
@@ -189,7 +234,67 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     </div>
 
-    <?php /* Tab content extension point: #9707 appends the Pools and Qualifications panes, #9708/#9711 the Schedules pane. */ ?>
+    <!--
+      Qualifications (#9707, design §5.4). People (rows) × positions (columns),
+      one checkbox per cell. The whole grid comes from ONE
+      /qualification-matrix response — §5.4 is explicit that 15–200 pool members
+      must render without a request per cell.
+
+      Deliberately NOT a DataTable: the column set is data-driven and every cell
+      is an input, so DataTables' row cache would fight the optimistic toggle.
+      The filter box below is the one DataTables feature this grid actually
+      needs.
+    -->
+    <div class="tab-pane fade" id="qualifications" role="tabpanel" aria-labelledby="nav-item-qualifications">
+      <div class="row g-2 align-items-end mb-3">
+        <div class="col-12 col-md-4">
+          <label class="form-label" for="qualification-team-filter"><?= gettext('Team') ?></label>
+          <select class="form-select" id="qualification-team-filter"></select>
+        </div>
+        <div class="col-12 col-md-4">
+          <label class="form-label" for="qualification-filter"><?= gettext('Find a volunteer') ?></label>
+          <input type="search" class="form-control" id="qualification-filter"
+                 placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>">
+        </div>
+        <div class="col-12 col-md-4 d-flex gap-2 justify-content-md-end">
+          <button type="button" class="btn btn-outline-primary" id="qualification-add-person">
+            <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Qualify someone else') ?>
+          </button>
+          <button type="button" class="btn btn-outline-primary" id="qualification-cart-btn">
+            <i class="fa-solid fa-cart-shopping me-1"></i><?= gettext('Qualify the cart') ?>
+          </button>
+        </div>
+      </div>
+
+      <div class="volunteer-loading text-center py-4" id="qualifications-loading">
+        <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+        <?= gettext('Loading') ?>
+      </div>
+      <div class="alert alert-danger d-none" role="alert" id="qualifications-error">
+        <i class="fa-solid fa-circle-exclamation me-1"></i>
+        <span class="volunteer-error-text"></span>
+        <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry"><?= gettext('Retry') ?></button>
+      </div>
+      <div class="empty d-none" id="qualifications-empty">
+        <div class="empty-icon"><i class="fa-solid fa-user-check fa-2x text-muted"></i></div>
+        <p class="empty-title"><?= gettext('Nothing to qualify yet') ?></p>
+        <p class="empty-subtitle text-body-secondary">
+          <?= gettext('Link a Group as the volunteer pool and add at least one position, then tick who can serve where.') ?>
+        </p>
+      </div>
+      <div class="table-responsive d-none" id="qualifications-table-wrapper">
+        <table class="table table-hover table-vcenter" id="volunteerQualificationsTable">
+          <thead>
+            <tr>
+              <th><?= gettext('Volunteer') ?></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <?php /* Tab content extension point: #9708/#9711 append the Schedules pane. */ ?>
 
   </div>
 </div>
@@ -265,6 +370,78 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
         <button type="button" class="btn btn-primary" id="position-form-save"><?= gettext('Save') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  Qualify one person who is not in a pool (#9707).
+
+  §4.6 puts no pool-membership condition on granting a qualification, and §2.5
+  says in as many words that the pool is the candidate set rather than the
+  eligibility rule — so a coordinator may qualify anyone. The picker is the
+  shared person selector (CR1/#9819) pointed at the core person search, not a
+  second widget.
+-->
+<div class="modal fade" id="qualifyPersonModal" tabindex="-1" aria-hidden="true" aria-labelledby="qualifyPersonModalTitle">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="qualifyPersonModalTitle"><?= gettext('Qualify someone else') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-body-secondary">
+          <?= gettext('Anyone can be qualified, whether or not they are in a pool group. Being in the pool is what makes someone a candidate; the qualification is what makes them assignable.') ?>
+        </p>
+        <div class="mb-3">
+          <label class="form-label" for="qualify-person-select"><?= gettext('Person') ?></label>
+          <select class="form-select person-search" id="qualify-person-select"
+                  data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="qualify-person-position"><?= gettext('Position') ?></label>
+          <select class="form-select" id="qualify-person-position"></select>
+        </div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="qualify-person-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" class="btn btn-primary" id="qualify-person-save"><?= gettext('Qualify') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  Qualify everyone in the cart (#9707). The Cart is the existing bulk-selection
+  mechanism (P5); V2 adds a sink for it and no second selection UI.
+-->
+<div class="modal fade" id="qualifyCartModal" tabindex="-1" aria-hidden="true" aria-labelledby="qualifyCartModalTitle">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="qualifyCartModalTitle"><?= gettext('Qualify the cart') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-body-secondary">
+          <?= gettext('Everyone currently in your people cart is qualified for the position you choose. The cart is left as it is, so you can qualify the same people for a second position.') ?>
+        </p>
+        <div class="mb-3">
+          <label class="form-label" for="qualify-cart-position"><?= gettext('Position') ?></label>
+          <select class="form-select" id="qualify-cart-position"></select>
+        </div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="qualify-cart-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" class="btn btn-primary" id="qualify-cart-save"><?= gettext('Qualify') ?></button>
       </div>
     </div>
   </div>

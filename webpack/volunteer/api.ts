@@ -52,10 +52,70 @@ export interface VolunteerPosition {
   order: number;
 }
 
+/**
+ * One pool link as `volunteerPoolToArray()` shapes it (#9707).
+ *
+ * `memberCount` is counted live off the Group's own membership rows on every
+ * request — V2 copies no people (design D1, §2.5) — so it is always current and
+ * is never written back.
+ */
+export interface VolunteerPool {
+  id: number;
+  ownerType: "ministry" | "team";
+  ownerId: number;
+  ownerName: string | null;
+  groupId: number;
+  groupName: string | null;
+  memberCount: number;
+  label: string | null;
+}
+
+/** One qualification as `volunteerQualificationToArray()` shapes it (#9707). */
+export interface VolunteerQualification {
+  id: number;
+  personId: number;
+  displayName: string | null;
+  positionId: number;
+  positionName: string | null;
+  ministryId: number | null;
+  teamId: number | null;
+  active: boolean;
+  grantedDate: string | null;
+  grantedByPersonId: number | null;
+  notes: string | null;
+}
+
+/** One row of the qualification matrix: a person and the positions they hold. */
+export interface VolunteerPoolPerson {
+  personId: number;
+  displayName: string;
+  /** The pool groups this person arrived through — they appear once however many. */
+  groupIds: number[];
+  /** Position ids the person is actively qualified for (design §3.3.1). */
+  qualifications: number[];
+  /** Position id → qualification row id, so unticking revokes that exact row. */
+  qualificationIds: Record<string, number>;
+}
+
+/**
+ * The whole matrix in one document — positions across the top, pool people down
+ * the side, each person's qualified position ids inline. §5.4 requires this to
+ * be ONE fetch for 15–200 people, never a request per cell.
+ */
+export interface QualificationMatrix {
+  ministryId: number;
+  teamId: number | null;
+  positions: VolunteerPosition[];
+  pools: VolunteerPool[];
+  people: VolunteerPoolPerson[];
+}
+
 export interface MinistryDetail {
   ministry: VolunteerMinistry;
   teams: VolunteerTeam[];
   positions: VolunteerPosition[];
+  /** Added by #9707; absent on a response from an older build. */
+  pools?: VolunteerPool[];
 }
 
 /** A non-2xx answer from the API, carrying the server's message and status. */
@@ -161,6 +221,66 @@ export function updatePosition(
 
 export function deletePosition(positionId: number): Promise<{ success: boolean }> {
   return request(`/positions/${positionId}`, { method: "DELETE" });
+}
+
+// ─── Pools and qualifications (#9707) ────────────────────────────────────────
+
+export function listPools(ministryId: number, teamId?: number | null): Promise<{ pools: VolunteerPool[] }> {
+  return request(`/ministries/${ministryId}/pools${teamId ? `?teamId=${teamId}` : ""}`);
+}
+
+/**
+ * Link an existing Group as a pool. The owner is a ministry or a team; there is
+ * no third case, because `vpol_OwnerType` is an enum of exactly those two.
+ */
+export function linkPool(
+  owner: { type: "ministry" | "team"; id: number },
+  groupId: number,
+  label = "",
+): Promise<{ pool: VolunteerPool }> {
+  const path = owner.type === "ministry" ? `/ministries/${owner.id}/pools` : `/teams/${owner.id}/pools`;
+
+  return request(path, { method: "POST", body: JSON.stringify({ groupId, label }) });
+}
+
+/** Unlink a pool. The Group itself is never touched (D1, Appendix D-1). */
+export function unlinkPool(poolId: number): Promise<{ success: boolean }> {
+  return request(`/pools/${poolId}`, { method: "DELETE" });
+}
+
+export function getQualificationMatrix(ministryId: number, teamId?: number | null): Promise<QualificationMatrix> {
+  return request(`/ministries/${ministryId}/qualification-matrix${teamId ? `?teamId=${teamId}` : ""}`);
+}
+
+/** Idempotent: a repeat grant reactivates the same row rather than adding one. */
+export function grantQualification(
+  positionId: number,
+  personId: number,
+  notes = "",
+): Promise<{ qualification: VolunteerQualification }> {
+  return request(`/positions/${positionId}/qualifications`, {
+    method: "POST",
+    body: JSON.stringify({ personId, notes }),
+  });
+}
+
+export function listQualifications(
+  positionId: number,
+  activeOnly = false,
+): Promise<{ qualifications: VolunteerQualification[] }> {
+  return request(`/positions/${positionId}/qualifications${activeOnly ? "?active=1" : ""}`);
+}
+
+/** Revoke = deactivate; the row survives so history stays readable (§2.7). */
+export function revokeQualification(qualificationId: number): Promise<{ qualification: VolunteerQualification }> {
+  return request(`/qualifications/${qualificationId}`, { method: "DELETE" });
+}
+
+/** The Cart sink (P5/P6): the people come from the session cart, not the body. */
+export function qualifyCart(
+  positionId: number,
+): Promise<{ granted: number; reactivated: number; existing: number; skipped: number }> {
+  return request(`/positions/${positionId}/qualifications/from-cart`, { method: "POST" });
 }
 
 /**

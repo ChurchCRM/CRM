@@ -154,6 +154,24 @@ interface CRMVolunteerMinistryConfig {
 }
 
 /**
+ * The slice of `window.CRM.groups` (src/skin/js/CRMJSOM.js) that V2 calls.
+ *
+ * Declared so the group picker is type-checked rather than resolving through
+ * the `[key: string]: unknown` catch-all below (U10). `promptSelection()` hands
+ * the callback string ids — they come out of a TomSelect, which stores its
+ * values as strings — so callers must `Number()` them.
+ */
+interface CRMGroupsNamespace {
+  /** Bit flags: Group = 1, Role = 2; `Group | Role` asks for both. */
+  selectTypes: { Group: number; Role: number };
+  promptSelection?: (
+    options: { Type: number; GroupID?: number | string },
+    callback: (selection: { GroupID?: string; RoleID?: string | null }) => void,
+  ) => void;
+  [key: string]: unknown;
+}
+
+/**
  * The shared DataTables defaults every table merges over its own options
  * (`$.extend(config, window.CRM.plugin.dataTable)`), set in
  * `src/skin/js/CRMJSOM.js`.
@@ -172,6 +190,8 @@ interface CRMNamespace {
   volunteerSetup?: CRMVolunteerSetupConfig;
   /** Set by src/volunteer/views/ministry-view.php (issue #9715). */
   volunteerMinistry?: CRMVolunteerMinistryConfig;
+  /** The Groups helpers, including the shared group picker (G4). */
+  groups?: CRMGroupsNamespace;
   bEnableGravatarPhotos?: boolean;
   showPhotoLightbox?: (type: string, id: number) => void;
   avatarLoader?: unknown;

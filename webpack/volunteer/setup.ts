@@ -1,7 +1,7 @@
 /**
  * S2 — the guided setup flow (#9715, design §5.3).
  *
- * The page is one thread, not three forms: until a ministry exists every later
+ * The page is one thread, not a pile of forms: until a ministry exists every later
  * step's controls stay `disabled`, and each completed step collapses to a
  * summary line with an Edit link. That is the whole difference between a guided
  * flow and the "collection of disconnected CRUD pages" #9715 explicitly rules
@@ -20,10 +20,13 @@ import {
   createPosition,
   createTeam,
   errorMessage,
+  linkPool,
+  listPools,
   listPositions,
   listTeams,
   notifyError,
   notifySuccess,
+  type VolunteerPool,
   type VolunteerPosition,
   type VolunteerTeam,
 } from "./api";
@@ -79,6 +82,7 @@ function setStepEnabled(ids: string[], enabled: boolean): void {
 }
 
 const TEAM_CONTROLS = ["setup-team-name", "setup-team-description", "setup-team-save"];
+const POOL_CONTROLS = ["setup-pool-link"];
 const POSITION_CONTROLS = [
   "setup-position-name",
   "setup-position-description",
@@ -142,6 +146,33 @@ function renderTeams(): void {
   }
 }
 
+/**
+ * Step 3 (#9707): the Groups linked as this ministry's pools.
+ *
+ * The member count is read-only and comes from the Group — this step links a
+ * roster, it does not build one (D1, §5.3).
+ */
+function renderPools(pools: VolunteerPool[]): void {
+  const list = byId<HTMLUListElement>("setup-pool-list");
+  if (!list) {
+    return;
+  }
+
+  list.textContent = "";
+  for (const pool of pools) {
+    const item = document.createElement("li");
+    item.className = "list-group-item d-flex align-items-center justify-content-between";
+    const label = document.createElement("span");
+    label.textContent = pool.groupName ?? "";
+    const badge = document.createElement("span");
+    badge.className = "badge bg-blue-lt";
+    badge.textContent = i18next.t("{{count}} members", { count: pool.memberCount });
+    item.append(label, badge);
+    list.append(item);
+  }
+  show(list, pools.length > 0);
+}
+
 function renderPositions(positions: VolunteerPosition[]): void {
   const list = byId<HTMLUListElement>("setup-position-list");
   if (!list) {
@@ -173,6 +204,7 @@ async function adoptMinistry(id: number, name: string): Promise<void> {
   ministryName = name;
   renderMinistrySummary();
   setStepEnabled(TEAM_CONTROLS, true);
+  setStepEnabled(POOL_CONTROLS, true);
   setStepEnabled(POSITION_CONTROLS, true);
 
   const nextCard = byId("setup-step-next");
@@ -183,16 +215,23 @@ async function adoptMinistry(id: number, name: string): Promise<void> {
   }
 
   show(byId("setup-team-loading"), true);
+  show(byId("setup-pool-loading"), true);
   show(byId("setup-position-loading"), true);
   try {
-    const [teamResult, positionResult] = await Promise.all([listTeams(id), listPositions(id)]);
+    const [teamResult, poolResult, positionResult] = await Promise.all([
+      listTeams(id),
+      listPools(id),
+      listPositions(id),
+    ]);
     teams = teamResult.teams;
     renderTeams();
+    renderPools(poolResult.pools);
     renderPositions(positionResult.positions);
   } catch (error) {
     showStepError("setup-team", errorMessage(error, i18next.t("Could not load this ministry")));
   } finally {
     show(byId("setup-team-loading"), false);
+    show(byId("setup-pool-loading"), false);
     show(byId("setup-position-loading"), false);
   }
 }
@@ -237,6 +276,7 @@ function wireMinistryStep(): void {
     ministryName = "";
     renderMinistrySummary();
     setStepEnabled(TEAM_CONTROLS, false);
+    setStepEnabled(POOL_CONTROLS, false);
     setStepEnabled(POSITION_CONTROLS, false);
     show(byId("setup-step-next"), false);
   });
@@ -269,6 +309,46 @@ function wireTeamStep(): void {
       .catch((error: unknown) => {
         showStepError("setup-team", errorMessage(error, i18next.t("The team could not be added")));
       });
+  });
+}
+
+/**
+ * Step 3 (#9707). The Group is chosen through
+ * `window.CRM.groups.promptSelection()` (G4) — the picker the Groups module
+ * already ships, which owns its modal lifecycle, TomSelect teardown and i18n.
+ * V2 builds no second group chooser.
+ */
+function wirePoolStep(): void {
+  byId("setup-pool-link")?.addEventListener("click", () => {
+    const groups = window.CRM?.groups;
+    if (ministryId === 0) {
+      showStepError("setup-pool", i18next.t("Choose a ministry first"));
+      return;
+    }
+    if (!groups?.promptSelection) {
+      showStepError("setup-pool", i18next.t("The group picker is not available on this page"));
+      return;
+    }
+
+    clearStepError("setup-pool");
+    groups.promptSelection({ Type: groups.selectTypes.Group }, (result) => {
+      const groupId = Number(result.GroupID);
+      if (!groupId) {
+        return;
+      }
+
+      linkPool({ type: "ministry", id: ministryId }, groupId)
+        .then(() => {
+          notifySuccess(i18next.t("Group linked as a volunteer pool"));
+          return listPools(ministryId);
+        })
+        .then((pools) => {
+          renderPools(pools.pools);
+        })
+        .catch((error: unknown) => {
+          showStepError("setup-pool", errorMessage(error, i18next.t("The group could not be linked")));
+        });
+    });
   });
 }
 
@@ -324,6 +404,7 @@ function init(): void {
 
   wireMinistryStep();
   wireTeamStep();
+  wirePoolStep();
   wirePositionStep();
 
   if (config.ministryId > 0) {
