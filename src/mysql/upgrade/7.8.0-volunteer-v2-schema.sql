@@ -1,4 +1,4 @@
--- ChurchCRM 7.7.0 — Volunteer Management v2 core domain model
+-- ChurchCRM 7.8.0 — Volunteer Management v2 core domain model
 -- Implements #9705 (epic #9701); design: .agents/skills/churchcrm/volunteer-v2-design.md §2
 --
 -- Why these tables exist at all, in one line each (the long form, with the
