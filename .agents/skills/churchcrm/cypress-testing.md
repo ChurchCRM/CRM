@@ -2576,6 +2576,59 @@ on('task', { ...verifyDownloadTasks, ...dbTasks });
 
 Related trap: `docker.config.ts`, `docker-ui.config.ts` and `docker-admin.config.ts` each define their **own** `setupNodeEvents` and do **not** call `setupCommonNodeEvents` from `_shared.ts` (only `base.config.ts` and `locale.config.ts` do). Adding a task to `_shared.ts` alone leaves it undefined for `npm run test:api` — wire it into the config the spec actually runs under as well.
 
+## Asserting Delivered Mail with the `mail:*` Node Tasks <!-- learned: 2026-09-12 -->
+
+The `test` docker profile runs **Mailpit** (`docker/docker-compose.yaml`), so a spec can
+assert what was actually delivered — subject, body, and headers such as `Reply-To` — not
+merely that the application believed it sent something. `cypress/configs/_shared.ts`
+exports `mailTasks`: `mail:available`, `mail:clear`, `mail:list`, `mail:get`.
+
+```js
+cy.task("mail:clear");
+// … do the thing that sends …
+cy.task("mail:list", { limit: 100 }).then((r) => {
+    const hit = r.body.messages.find((m) => m.To[0].Address === "someone@example.com");
+    cy.task("mail:get", { id: hit.ID }).then((full) => {
+        expect(full.ReplyTo.map((x) => x.Address)).to.deep.eq(["coordinator@example.com"]);
+        expect(`${full.Text}${full.HTML}`).to.contain("Espresso");
+    });
+});
+```
+
+Two reasons these are **node tasks and not `cy.request()`**:
+
+- **Mailpit is optional.** The `ci-root` / `ci-subdir` profiles bring up no mail server at
+  all. `cy.request()` fails the test outright on a refused connection — `failOnStatusCode`
+  covers HTTP statuses, not `ECONNREFUSED` — whereas a task can catch it and *return*
+  `{ok: false}`. Probe `mail:available` in `before` and `this.skip()` the delivery
+  assertions when it says no; keep every assertion that reads application state (an outbox
+  row's status, say) running everywhere.
+- The base URL comes from `MAILPIT_URL`, else `MAILSERVER_GUI_PORT` on localhost, else
+  8025 — the same isolated-stack story as `DATABASE_PORT`.
+
+Remember the registration trap below: they must be added to `docker*.config.ts` too.
+
+### Never "restore" a captured setting the spec never actually read
+
+`ConfigItem::setValue()` **deletes** the `config_cfg` row when the value equals the item's
+default (`configuration-management.md`). So a spec that captures originals in `before` and
+puts them back in `after` will, on a run whose `before` died early, write the *initializer*
+over a real setting — and for `sSMTPHost` (default `''`) that silently disables email for
+every spec that runs afterwards, in a way nothing in the failing run reports.
+
+```js
+let originalSmtpHost = null;          // NOT "" — null means "never read it"
+
+function restoreConfig(url, captured) {
+    if (captured === null) { return; }
+    setConfig(url, captured);
+}
+
+after(() => {
+    restoreConfig(SMTP_HOST_URL, originalSmtpHost);
+});
+```
+
 ### Strict Mode Decides Whether a Bad Enum Errors or Truncates
 
 The Docker test database is MariaDB with `sql_mode = STRICT_TRANS_TABLES,...`, so writing a value outside an `enum(...)` is an error, not a silent `''`. Read `@@sql_mode` in the spec and branch rather than hardcoding the expectation — the same spec must survive a server without strict mode.
