@@ -17866,3 +17866,83 @@ msgstr "Nem találhatók események ehhez: %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Próbáljon más eseménytípust, hónapot vagy évet választani."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Geokódolási hiba történt — próbálja újra később"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "A cím hiányos (hiányzik a város, a megye/állam és az irányítószám)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Minden családnak már vannak koordinátái."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Nem sikerült frissíteni a koordinátákat"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Nem sikerült frissíteni a család koordinátáit"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Mind a(z) {{geocoded}} család geokódolása megtörtént. A térkép most már naprakész."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} család geokódolása megtörtént. {{failed}} nem volt feloldható — lásd a részleteket lent."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "{{geocoded}} család geokódolása megtörtént a(z) {{total}} közül. {{overflow}} még nincs feldolgozva — a folytatáshoz futtassa újra."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Családok geokódolása… ez akár egy percig is eltarthat. Nyitva tarthatja ezt az oldalt."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokódolás…"
+
+#: 
+msgid "No address on file"
+msgstr "Nincs rögzített cím"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nem található egyezés — ellenőrizze az utca címét, a várost és az irányítószámot"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Azon napok száma, amelyeken belül a felhasználóknak be kell iratkozniuk a kétfaktoros hitelesítésre (2FA), miután az kötelezővé válik. Állítsa 0-ra az azonnali érvényesítéshez (korábbi működés). Egy aktív türelmi időszak lerövidítése azonnal kizárhatja a felhasználókat."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Nyissa meg a családot a cím javításához, majd futtassa újra ezt."
+
+#: 
+msgid "Set up now"
+msgstr "Beállítás most"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Ez megkeresi a térképkoordinátákat minden olyan családhoz, amelynél hiányoznak, az OpenStreetMap segítségével. Futtatásonként legfeljebb 50 családot dolgoz fel; egy teljes köteg körülbelül egy percet vesz igénybe. Az oldalt nyitva tarthatja futás közben. Folytatja?"
+
+#: 
+msgid "Unknown family"
+msgstr "Ismeretlen család"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Összes koordináta frissítése"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Összes családi koordináta frissítése"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Koordináták frissítése"
+
