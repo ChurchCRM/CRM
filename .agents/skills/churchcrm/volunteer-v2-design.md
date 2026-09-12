@@ -676,6 +676,12 @@ Indexes: `vsch_ministry_idx (vsch_vmin_ID)`, `vsch_type_idx (vsch_event_type_id)
 
 Indexes:
 
+**Deliberately no CHECK that a standalone row has `vocc_StartDateTime`.** After `fk_vocc_event` has
+`SET NULL` a deleted event, a formerly linked row legitimately has neither an event nor a start time,
+and MariaDB refuses a CHECK on a column an FK action can change (error 1901). `VolunteerScheduleService`
+must always set `vocc_StartDateTime` for standalone schedules; `vocc_schedule_start_uidx` then
+deduplicates them (#9705 review).
+
 - `vocc_schedule_event_uidx UNIQUE (vocc_vsch_ID, vocc_event_id)` — idempotent **linked**
   generation. MySQL permits multiple `NULL`s in a unique index, so standalone rows never collide here.
 - `vocc_schedule_start_uidx UNIQUE (vocc_vsch_ID, vocc_StartDateTime)` — idempotent **standalone**
@@ -714,6 +720,10 @@ Indexes:
 | `vreq_Notes` | `Notes` | `VARCHAR(255)` null | |
 
 Indexes: `vreq_schedule_position_uidx UNIQUE (vreq_vsch_ID, vreq_vpos_ID)`,
+
+A `CHECK ((vreq_vsch_ID IS NULL) <> (vreq_vocc_ID IS NULL))` (`vreq_one_parent_chk`, SQL only — Propel cannot
+express CHECK) enforces "exactly one parent" on MariaDB 10.2.1+ / MySQL 8.0.16+; MySQL 5.7 parses and
+ignores it (#9705 review).
 `vreq_occurrence_position_uidx UNIQUE (vreq_vocc_ID, vreq_vpos_ID)`,
 `vreq_position_idx (vreq_vpos_ID)`.
 
