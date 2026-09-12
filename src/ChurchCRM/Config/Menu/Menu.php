@@ -49,7 +49,7 @@ class Menu
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
             'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents),
-            'Volunteer'    => self::getVolunteerMenu($isVolunteerCoordinator),
+            'Volunteer'    => self::getVolunteerMenu($isVolunteerCoordinator, User::isVolunteerV2Enabled()),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
             'Reports'      => self::getReportsMenu($isAdmin),
@@ -287,20 +287,34 @@ class Menu
     }
 
     /**
-     * Volunteer Management v2 (#9704, rescoped by #9706).
+     * Volunteer Management v2 (#9704, rescoped by #9706, member half by #9712).
      *
-     * $isVisible is User::isVolunteerCoordinatorEnabled() — the SAME predicate
-     * VolunteerCoordinatorRoleAuthMiddleware calls — so the menu never advertises a
-     * page that 302s away and never hides one the user could open. It already carries
-     * the rollout state, the administrator bypass, the global-manager flag, the
-     * EditSelf-exclusive short-circuit and the ministry/team scope lookup.
+     * $isCoordinator is User::isVolunteerCoordinatorEnabled() — the SAME predicate
+     * VolunteerCoordinatorRoleAuthMiddleware calls — so the coordinator entries never
+     * advertise a page that 302s away and never hide one the user could open. It
+     * already carries the rollout state, the administrator bypass, the global-manager
+     * flag, the EditSelf-exclusive short-circuit and the ministry/team scope lookup.
+     *
+     * $isV2 is User::isVolunteerV2Enabled(), and it is the gate on the two MEMBER
+     * entries — because that is the gate on the member routes (design §3.2: "no role
+     * gate — per-record authorization only, by authenticated person"). Menu visibility
+     * mirrors the route middleware exactly (§3.5), and for these two the middleware is
+     * the rollout flag and nothing else: every authenticated person is potentially a
+     * volunteer.
+     *
+     * The parent therefore carries `$isCoordinator || $isV2`, not `$isCoordinator`:
+     * `MenuItem::isVisible()` returns false for a parent whose own `hasPermission` is
+     * false **however many visible children it has**, so gating the parent on the
+     * coordinator predicate would hide the member entries from exactly the people they
+     * exist for — every volunteer in the church.
      *
      * The legacy "Volunteer Opportunities" item under People → Admin covers the 'v1'
      * and 'both' rollout states and is unaffected.
      */
-    private static function getVolunteerMenu(bool $isVisible): MenuItem
+    private static function getVolunteerMenu(bool $isCoordinator, bool $isV2): MenuItem
     {
-        $volunteerMenu = new MenuItem(gettext('Volunteer'), '', $isVisible, 'fa-handshake-angle');
+        $isVisible = $isCoordinator;
+        $volunteerMenu = new MenuItem(gettext('Volunteer'), '', $isCoordinator || $isV2, 'fa-handshake-angle');
         $volunteerMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', $isVisible, 'fa-gauge'));
         // #9715: the guided setup flow. It carries the SAME visibility as the
         // parent because /volunteer/setup carries the same gate —
@@ -311,6 +325,12 @@ class Menu
         // open and need. Menu visibility mirrors the route middleware exactly
         // (§3.5); it never mirrors the strictest action on the page.
         $volunteerMenu->addSubMenu(new MenuItem(gettext('Setup'), 'volunteer/setup', $isVisible, 'fa-wand-magic-sparkles'));
+
+        // #9712 — S5/S6. Visible to every authenticated user while V2 is rolled out,
+        // coordinator or not (§3.5). A volunteer with nothing on their list still sees
+        // the entry, and that is intended: it is where they go to find something.
+        $volunteerMenu->addSubMenu(new MenuItem(gettext('My Volunteer Schedule'), 'volunteer/my-schedule', $isV2, 'fa-calendar-check'));
+        $volunteerMenu->addSubMenu(new MenuItem(gettext('Open Opportunities'), 'volunteer/opportunities', $isV2, 'fa-hand-holding-heart'));
 
         return $volunteerMenu;
     }
