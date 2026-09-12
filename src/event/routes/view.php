@@ -7,7 +7,13 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
+use ChurchCRM\Service\VolunteerAssignmentService;
 use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -111,6 +117,54 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
         usort($nonAttendees, fn ($a, $b) => strcmp($a['fullName'], $b['fullName']));
     }
 
+    // Volunteer v2 staffing for this event (#9713, design §3.5).
+    //
+    // Gated twice: on the rollout flag, and on scope — `getEventStaffingSummary()` returns
+    // nothing at all unless the caller may manage at least one occurrence linked to this
+    // event, so a volunteer, a plain member or an events administrator with no ministry
+    // scope simply never sees the card. Read-only; the edit affordance is the link to
+    // /volunteer/occurrences/{id}.
+    $volunteerOccurrences = [];
+    if (User::isVolunteerV2Enabled()) {
+        $assignments = new VolunteerAssignmentService();
+        $summary = $assignments->getEventStaffingSummary([$eventId], AuthenticationManager::getCurrentUser());
+        $occurrenceIds = $summary[$eventId]['occurrenceIds'] ?? [];
+
+        if ($occurrenceIds !== []) {
+            // One getGaps() call for every occurrence at once — §2.11.3's single gap
+            // implementation, never re-derived here.
+            $gaps = $assignments->getGaps($occurrenceIds);
+
+            $occurrences = VolunteerOccurrenceQuery::create()
+                ->filterById($occurrenceIds, Criteria::IN)
+                ->orderByOccurrenceDate()
+                ->find();
+
+            // A handful of rows at most — an event carries one occurrence per ministry
+            // scheduling it (UC3), not one per volunteer.
+            foreach ($occurrences as $occurrence) {
+                $schedule = VolunteerScheduleQuery::create()->findPk((int) $occurrence->getScheduleId());
+                $ministry = $schedule === null
+                    ? null
+                    : VolunteerMinistryQuery::create()->findPk((int) $schedule->getMinistryId());
+                $summaryRow = $gaps[(int) $occurrence->getId()] ?? [
+                    'gapCount' => 0,
+                    'liveCount' => 0,
+                    'requiredCount' => 0,
+                ];
+
+                $volunteerOccurrences[] = [
+                    'occurrenceId'  => (int) $occurrence->getId(),
+                    'ministryName'  => $ministry === null ? gettext('Volunteer') : $ministry->getName(),
+                    'scheduleName'  => $schedule === null ? '' : $schedule->getName(),
+                    'liveCount'     => (int) $summaryRow['liveCount'],
+                    'requiredCount' => (int) $summaryRow['requiredCount'],
+                    'gapCount'      => (int) $summaryRow['gapCount'],
+                ];
+            }
+        }
+    }
+
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     return $renderer->render($response, 'view.php', [
@@ -129,5 +183,6 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
         'eventEnded'     => $eventEnded,
         'nonAttendees'   => $nonAttendees,
         'emailEnabled'   => SystemConfig::isEmailEnabled(),
+        'volunteerOccurrences' => $volunteerOccurrences,
     ]);
 });

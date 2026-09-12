@@ -1018,6 +1018,104 @@ class VolunteerAssignmentService
     }
 
     /**
+     * Staffing roll-up per EVENT, for the surfaces that show events rather than
+     * occurrences: the calendar feed's `extendedProps` and the event view's Volunteers
+     * card (#9713, design §3.5, E13).
+     *
+     * Scoped, not global. Staffing counts are coordinator information, so an event is
+     * reported on only when the caller may manage at least one occurrence linked to it —
+     * an administrator or global volunteer manager sees every one, a coordinator or team
+     * leader only theirs, and everyone else gets an empty map. Scoping is done in the
+     * QUERY (§4.4), through the schedule, using the same ministry-OR-team condition the
+     * occurrence list uses; it is not re-derived per row after hydration.
+     *
+     * An event with no linked occurrence the caller may see is simply absent from the
+     * result, which is what lets the feed leave such an event's `extendedProps`
+     * completely untouched rather than decorating it with zeroes.
+     *
+     * Cancelled occurrences are excluded: a cancelled service is not short of anybody.
+     *
+     * @param int[] $eventIds
+     *
+     * @return array<int, array{gapCount: int, liveCount: int, requiredCount: int, staffed: bool, occurrenceIds: int[]}> keyed by event id
+     */
+    public function getEventStaffingSummary(array $eventIds, User $user): array
+    {
+        $eventIds = array_values(array_filter(array_unique(array_map('intval', $eventIds))));
+        if ($eventIds === [] || !User::isVolunteerV2Enabled()) {
+            return [];
+        }
+
+        $scheduleQuery = VolunteerScheduleQuery::create();
+
+        if (!$this->authz->isGlobalManager($user)) {
+            $ministryIds = $this->authz->getManagedMinistryIds($user);
+            $teamIds = $this->authz->getManagedTeamIds($user);
+            if ($ministryIds === [] && $teamIds === []) {
+                return [];
+            }
+
+            $scheduleQuery
+                ->condition('byMinistry', 'VolunteerSchedule.MinistryId IN ?', $ministryIds === [] ? [0] : $ministryIds)
+                ->condition('byTeam', 'VolunteerSchedule.TeamId IN ?', $teamIds === [] ? [0] : $teamIds)
+                ->where(['byMinistry', 'byTeam'], Criteria::LOGICAL_OR);
+        }
+
+        $scheduleIds = array_map('intval', $scheduleQuery->select(['Id'])->find()->toArray());
+        if ($scheduleIds === []) {
+            return [];
+        }
+
+        // occurrence id → event id, for the roll-up below.
+        $occurrenceToEvent = [];
+        $rows = VolunteerOccurrenceQuery::create()
+            ->filterByScheduleId($scheduleIds, Criteria::IN)
+            ->filterByEventId($eventIds, Criteria::IN)
+            ->filterByStatus(VolunteerOccurrence::STATUS_SCHEDULED)
+            ->select(['Id', 'EventId'])
+            ->find();
+
+        foreach ($rows as $row) {
+            $occurrenceToEvent[(int) $row['Id']] = (int) $row['EventId'];
+        }
+
+        if ($occurrenceToEvent === []) {
+            return [];
+        }
+
+        $summary = [];
+        // One getGaps() call for every occurrence at once — a month of calendar must not
+        // fan out into one query per event.
+        foreach ($this->getGaps(array_keys($occurrenceToEvent)) as $occurrenceId => $gaps) {
+            $eventId = $occurrenceToEvent[(int) $occurrenceId] ?? 0;
+            if ($eventId === 0) {
+                continue;
+            }
+
+            if (!isset($summary[$eventId])) {
+                $summary[$eventId] = [
+                    'gapCount' => 0,
+                    'liveCount' => 0,
+                    'requiredCount' => 0,
+                    'staffed' => true,
+                    'occurrenceIds' => [],
+                ];
+            }
+
+            $summary[$eventId]['gapCount'] += $gaps['gapCount'];
+            $summary[$eventId]['liveCount'] += $gaps['liveCount'];
+            $summary[$eventId]['requiredCount'] += $gaps['requiredCount'];
+            $summary[$eventId]['occurrenceIds'][] = (int) $occurrenceId;
+        }
+
+        foreach ($summary as $eventId => $row) {
+            $summary[$eventId]['staffed'] = $row['gapCount'] === 0;
+        }
+
+        return $summary;
+    }
+
+    /**
      * Every assignment row of one occurrence, grouped by position id — what the staffing
      * view renders under each requirement card.
      *
