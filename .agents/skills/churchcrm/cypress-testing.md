@@ -2690,3 +2690,51 @@ cy.get('.ts-dropdown .option[data-value="8"]').click();     // …or a known val
 `dropdownParent: "body"` (which `webpack/common/person-select.ts` sets by default
 to stop a `.card-body` or `.modal-content` clipping it, #9488) — so select it
 from the document root, not from inside the dialog. Learned in #9709.
+
+## The settings panel fills its inputs *after* it renders them <!-- learned: 2026-09-12 -->
+
+`window.CRM.settingsPanel.init()` renders the form first and then fetches the current
+values from `/admin/api/system/config` and writes them into the inputs
+(`webpack/system-settings-panel.js` → `_doInit()` → `render()` → `fetchAndApplyValues()`).
+A spec that types as soon as the input is `visible` is racing that second pass: `clear()`
+empties a field that is about to be overwritten, and the typed text ends up **prepended**
+to the fetched value.
+
+```js
+// ❌ FLAKY — "12" + the 48 that arrives a moment later = "1248"
+cy.get('#volunteerSettings input[name="iVolunteerReminderLeadHours"]').clear().type("12");
+
+// ✅ Wait for the fetched value first; then clear() has something real to clear
+cy.get('#volunteerSettings input[name="iVolunteerReminderLeadHours"]')
+    .should("have.value", originalLeadHours)   // read via the config API in `before`
+    .clear()
+    .type("12");
+```
+
+Same rule for `choice` (`<select>`) and `boolean` (radio pills) settings — assert the
+current value before changing it.
+
+## Assert "nothing to show" as a SCOPED user, never as an administrator <!-- learned: 2026-09-12 -->
+
+An admin-facing list is usually scoped to "everything", so its empty state depends on the
+whole database being clean — which it is not. Specs legitimately leave fixtures behind:
+`admin.volunteer-v2.occurrence.spec.js` uses a `findOrCreateMinistry()` fixture with no
+teardown, so its ministry and unstaffed occurrences persist for every later spec in the
+run, and any `cy.get("#...-empty").should("be.visible")` as admin becomes order-dependent.
+
+Create a persona whose scope is genuinely empty and assert the empty state as them:
+
+```js
+// Fixture: a second ministry with nothing in it, and a scope grant on it
+adminApi("POST", "/api/volunteer/ministries", { name: EMPTY_MINISTRY_NAME }, 201);
+adminApi("POST", "/api/volunteer/scopes",
+    { personId: 3, scopeType: "ministry", scopeId: emptyMinistryId }, [200, 201]);
+
+// Test: log in as person 3, not admin
+freshCoordinatorLogin();
+cy.visit("/volunteer/dashboard");
+cy.get("#volunteer-gaps-empty").should("be.visible");
+```
+
+For the same reason, assert that a specific row **disappeared** (`[data-occurrence-id=…]`
+`.should("not.exist")`) rather than that the whole panel became empty.
