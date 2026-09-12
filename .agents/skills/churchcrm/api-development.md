@@ -424,6 +424,24 @@ composer run openapi:public   # → CRM/docs/openapi/generated/public-api.yaml
 composer run openapi:private  # → CRM/docs/openapi/generated/private-api.yaml
 ```
 
+> **Both composer scripts currently write nothing.** <!-- learned: 2026-09-12 -->
+> `docs/openapi/generate.php` parses its arguments with `getopt()`, which stops at the
+> first non-option argument — and the composer scripts pass the scan paths *before*
+> `--output` / `--format` / `--exclude`. None of those flags is ever seen, so the spec is
+> printed to stdout, the target YAML is never written, and the `api/routes/public`
+> exclusion is ignored. `docs/openapi/generated/private-api.yaml` is thousands of lines
+> stale as a result. Until the script is fixed (flags first, or a real argument parser),
+> generate with the `=` form, which `getopt()` does pick up:
+> ```bash
+> php ../docs/openapi/generate.php --output=../docs/openapi/generated/private-api.yaml \
+>     --format=yaml --exclude=api/routes/public \
+>     ../docs/openapi/openapi-private-info.php api/routes/ admin/routes/api/ \
+>     finance/routes/api/ kiosk/routes/api/ plugins/routes/api/
+> ```
+> Note that `zircote/swagger-php` is a `require-dev` package, so `npm run build`
+> (which runs `composer install --no-dev`) removes it — run a plain `composer install`
+> in `src/` first or the generator fatals with `Class "OpenApi\Generator" not found`.
+
 Commit the updated YAML files to the CRM repo. The rest is automated:
 
 - **On PR/branch push**: `validate-openapi.yml` generates both specs and uploads them as artifacts for review.

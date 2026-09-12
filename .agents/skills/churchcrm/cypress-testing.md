@@ -897,6 +897,31 @@ Practical rule: if a rollout/permission assertion targets `/people/*` or a legac
 `*.php` page, it cannot live in an API spec — put it in `ui/` or `ui-admin/` with
 a real login. Verify with a one-line `curl -D -` before writing the spec.
 
+#### Driving an admin form POST from an API spec (CSRF skips API-key requests) <!-- learned: 2026-09-12 -->
+
+`CSRFMiddleware::process()` returns early when the `X-API-Key` header is present, so a
+CSRF-protected MVC form route — the user editor, for instance — can be driven straight
+from an API spec with no token round trip. Use `form: true`; the handler reads
+`$request->getParsedBody()` and a JSON body arrives as nothing.
+
+```javascript
+cy.request({
+    method: "POST",
+    url: `/admin/system/users/${personId}/edit`,
+    headers: { "x-api-key": Cypress.env("admin.api.key") },
+    form: true,                       // required — the route parses a form body
+    body: { UserName: "…", accessMode: "custom", Notes: "1", VolunteerManager: "1" },
+    failOnStatusCode: false, followRedirect: false, withCredentials: false,
+});                                   // → 302 back to the user list on success
+```
+
+This is how a permission column can be round-tripped end to end in an API spec —
+grant it through the real save path, assert the behaviour it unlocks, revoke it —
+instead of writing the flag straight into the database with `cy.dbQuery()` and
+proving only half the chain. Note the editor reads **every** permission from the
+posted body, so omit a field and you revoke it: send the account's full intended
+permission set every time, and restore the seeded state in an `afterEach`.
+
 ---
 
 ### 7. Avoid Tautological `cy.url().should('include', ...)` After Form Submit <!-- learned: 2026-04-21 -->

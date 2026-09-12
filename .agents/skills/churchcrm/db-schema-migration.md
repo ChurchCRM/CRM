@@ -111,6 +111,25 @@ Checklist for any `ALTER TABLE` migration:
 | `cypress/data/seed.sql` | Update the `CREATE TABLE` block — **ask user first** |
 | `orm/schema.xml` | Update column/table attributes if Propel schema tracks this |
 
+### Adding a column to `seed.sql` means editing its INSERTs too <!-- learned: 2026-09-12 -->
+
+`cypress/data/seed.sql` is a `mysqldump`, so its `INSERT` statements are **positional** —
+`INSERT INTO \`user_usr\` VALUES (1,'…',0,…)` with no column list. Adding a column to the
+`CREATE TABLE` block alone makes every one of those statements fail with
+`Column count doesn't match value count`, and the whole seed load aborts. You must insert a
+value at the matching ordinal in **every** tuple of **every** `INSERT` for that table
+(`user_usr` has ~17 tuples spread over 6 statements).
+
+Do it mechanically, not by hand: split each tuple on top-level commas while honouring
+single-quoted strings, insert the default at the right index, and verify afterwards that
+the column count in `CREATE TABLE` equals the value count in every tuple. `Install.sql` is
+the opposite case — its `user_usr` insert *does* name its columns, so a new column with a
+`DEFAULT` needs no edit there.
+
+Column ordinal drift is also real: `seed.sql` types the permission booleans `tinyint(3)`
+where `Install.sql` types them `tinyint(1)`. Match each file's local convention rather than
+making them agree; nothing validates the three files against each other.
+
 ### MySQL-Compatible Conditional Column Drops <!-- learned: 2026-07-27 -->
 
 `ALTER TABLE ... DROP COLUMN IF EXISTS` is a **MariaDB-only extension** — MySQL (any version including 9.x) rejects it with `SQLSTATE[42000] error 1064`. This breaks upgrade paths on MySQL silently passing on MariaDB.
