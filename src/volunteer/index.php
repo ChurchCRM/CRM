@@ -23,6 +23,8 @@ $app = MvcAppFactory::create('/volunteer', [
 $app->group('', function (RouteCollectorProxy $group): void {
     $app = $group;
     require __DIR__ . '/routes/dashboard.php';
+    require __DIR__ . '/routes/setup.php';
+    require __DIR__ . '/routes/ministry.php';
 })->add(new CSRFMiddleware())->add(new VolunteerV2EnabledMiddleware());
 
 $app->run();

@@ -108,6 +108,8 @@ module.exports = {
     'event-editor': './webpack/event-editor',
     'event-types-list': './webpack/event-types-list',
     'event-cart-to-event': './webpack/event-cart-to-event',
+    'volunteer-setup': './webpack/volunteer/setup',
+    'volunteer-ministry': './webpack/volunteer/ministry',
     'email-composer': './webpack/common/email-composer',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',

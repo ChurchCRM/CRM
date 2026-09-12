@@ -158,6 +158,35 @@ dataTableConfig.pageLength = 25;
 
 **Quick audit**: `grep -rEn "pageLength" src/ --include="*.js" --include="*.php"` — any `pageLength` line that appears *after* `$.extend(..., window.CRM.plugin.dataTable)` is a bug unless it's a dashboard widget.
 
+## DataTables: `destroy()` BEFORE rewriting the `<tbody>`, never after <!-- learned: 2026-09-12 -->
+
+On a page that re-renders its own rows (fetch → rebuild `<tbody>` → re-init), the
+teardown has to happen **first**. `destroy()` restores the rows DataTables cached
+when it was initialised, so destroying *after* writing the new HTML silently puts
+the old rows back and the update looks like it was ignored — no error, no warning,
+just stale content. The first render works (there is no instance yet), which is
+what makes this survive a quick manual test and only show up on the second save.
+
+```js
+// ✅ CORRECT
+function render(rows) {
+  if ($.fn.dataTable.isDataTable("#myTable")) {
+    $("#myTable").DataTable().destroy();   // 1. tear down
+  }
+  document.querySelector("#myTable tbody").innerHTML = rows.map(toRow).join("");  // 2. rewrite
+  $("#myTable").DataTable({ ...window.CRM.plugin.dataTable });                    // 3. re-init
+}
+
+// ❌ WRONG — destroy() resurrects the rows captured at init time
+document.querySelector("#myTable tbody").innerHTML = newHtml;
+$("#myTable").DataTable().destroy();
+$("#myTable").DataTable(config);
+```
+
+Guard the teardown with `$.fn.dataTable.isDataTable(selector)`; calling
+`.DataTable().destroy()` on a plain table re-initialises it as a side effect.
+Live example: `webpack/volunteer/ministry.ts` (`destroyDataTable` / `initDataTable`).
+
 ## Asset Paths (SystemURLs)
 
 **ALWAYS use SystemURLs::getRootPath() for asset references:**
@@ -299,6 +328,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
 **Rule of thumb:** Use bootbox for simple yes/no confirmations; use Bootstrap modals for anything
 that needs custom formatting or more control.
+
+### Focus the first field on `shown.bs.modal` <!-- learned: 2026-09-12 -->
+
+A form modal must put the cursor in its first input itself:
+
+```js
+modalEl.addEventListener("shown.bs.modal", () => {
+  document.getElementById("position-form-name")?.focus();
+});
+```
+
+It is not only a courtesy. Bootstrap's own `shown.bs.modal` handler moves focus to
+the **dialog element** at the end of the 150 ms fade. Anything typed into a field
+before that lands is fine; anything typed after it goes to the dialog and is
+dropped. A user typing immediately loses the tail of what they typed, and a
+Cypress `.type()` started as soon as the modal is `visible` silently truncates —
+`"Milk Station"` arriving as `"Milk Stat"` is the signature, and it looks like a
+server-side length problem rather than a focus one. Focusing the field in the
+handler makes the dialog's focus grab a no-op and fixes both.
+
+Test side, see `cypress-testing.md` → "Typing into a modal": assert
+`should("be.focused")` before `.type()`.
 
 ## Modals (Bootstrap 5 / Tabler) <!-- updated: 2026-03-22 -->
 

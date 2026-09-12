@@ -1,5 +1,6 @@
 import { defineConfig } from 'cypress'
 import { verifyDownloadTasks } from 'cy-verify-downloads';
+import { dbTasks } from './_shared'
 
 import base from './base.config'
 
@@ -80,7 +81,9 @@ export default defineConfig({
         printLogsToConsole: 'onFail',
         printLogsToFile: 'always'
       });
-      on('task', verifyDownloadTasks);
+      // One registration only — a second on('task', ...) replaces the first.
+      // dbTasks adds db:query so UI/admin specs can assert database state too.
+      on('task', { ...verifyDownloadTasks, ...dbTasks });
       on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
           launchOptions.args.push('--disable-dev-shm-usage');

@@ -137,10 +137,41 @@ interface CRMEventActionMenuOptions {
   inactive?: boolean;
 }
 
+/**
+ * Per-page config the volunteer views hand their bundle through an inline
+ * `<script>` (the `window.CRM.eventTypesList` idiom).
+ */
+interface CRMVolunteerSetupConfig {
+  /** Whether the viewer may create a ministry at all (design §4.6). */
+  isManager: boolean;
+  /** Non-zero when `?ministryId=` resumed the flow mid-way; 0 to start fresh. */
+  ministryId: number;
+}
+
+interface CRMVolunteerMinistryConfig {
+  ministryId: number;
+  isManager: boolean;
+}
+
+/**
+ * The shared DataTables defaults every table merges over its own options
+ * (`$.extend(config, window.CRM.plugin.dataTable)`), set in
+ * `src/skin/js/CRMJSOM.js`.
+ */
+interface CRMPluginDefaults {
+  dataTable?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
 interface CRMNamespace {
   root?: string;
   timeZone?: string;
   plugins?: CRMPlugins;
+  plugin?: CRMPluginDefaults;
+  /** Set by src/volunteer/views/setup.php (issue #9715). */
+  volunteerSetup?: CRMVolunteerSetupConfig;
+  /** Set by src/volunteer/views/ministry-view.php (issue #9715). */
+  volunteerMinistry?: CRMVolunteerMinistryConfig;
   bEnableGravatarPhotos?: boolean;
   showPhotoLightbox?: (type: string, id: number) => void;
   avatarLoader?: unknown;
@@ -192,8 +223,27 @@ interface HTMLElement {
   tomselect?: TomSelectInstance;
 }
 
+/**
+ * The members of the global `bootbox` actually used in this codebase. The
+ * package ships no type declarations and is loaded as a global by the skin, so
+ * the surface is declared here rather than pulled from the library — the same
+ * approach `TomSelectInstance` above takes.
+ */
+interface BootboxStatic {
+  alert(options: string | Record<string, unknown>): void;
+  confirm(options: {
+    title?: string;
+    message: string;
+    buttons?: Record<string, { label?: string; className?: string }>;
+    callback: (result: boolean) => void;
+  }): void;
+  prompt(options: Record<string, unknown>): void;
+}
+
 interface Window {
   CRM?: CRMNamespace;
+  /** Loaded globally by the skin; see BootboxStatic. */
+  bootbox?: BootboxStatic;
   /** Exposed globally by skin-core.js so non-bundled scripts share one TomSelect class. */
   TomSelect: TomSelectConstructor;
   bootstrap: {
