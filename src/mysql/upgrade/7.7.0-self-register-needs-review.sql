@@ -1,4 +1,4 @@
--- ChurchCRM 7.6.0 Schema Migration
+-- ChurchCRM 7.7.0 Schema Migration
 -- Add NeedsReview flags for self-registered families/persons (issue #3639)
 --
 -- Background:
