@@ -355,7 +355,7 @@ Legend for **Decision**:
 | S1 | V1/V2 rollout state | `ConfigItem` type `choice` (`src/ChurchCRM/dto/ConfigItem.php:21-30`); working four-state precedent `sTelemetryLevel` (`SystemConfig.php:119-129`, registered `:282`) | **Reuse** | `sVolunteerVersion` ∈ {`v1`,`v2`,`both`}, default `v1`. **No SQL needed on install or upgrade** (F27). Appendix B. |
 | S2 | Rollout enforcement middleware | `BaseAuthSettingMiddleware` (`src/ChurchCRM/Slim/Middleware/Request/Setting/BaseAuthSettingMiddleware.php:12-23`) | **Extend (new sibling, not a subclass)** | The base class only understands `getBooleanValue()` (`:16`) and returns an **empty body** with the reason in the HTTP reason-phrase (`:17-19`). A choice-valued gate needs its own small middleware that returns proper JSON. §3.1. |
 | S3 | Reminder lead time | `ConfigItem` type `number`; `SystemConfig::getIntValue()` (`:488`) | **Reuse** | `iVolunteerReminderLeadHours`, default `48`. Appendix B. |
-| S4 | Admin settings surface | `window.CRM.settingsPanel` (U8) vs `src/SystemSettings.php` + `buildCategories()` | **Reuse the panel** | `bEnabledEvents`/`bEnabledSundaySchool` are not in any category today, so the panel-only approach is the established newer pattern. V2 exposes both settings on the volunteer dashboard behind `if ($isAdmin)`. |
+| S4 | Admin settings surface | `window.CRM.settingsPanel` (U8) vs `src/SystemSettings.php` + `buildCategories()` | **Reuse both** | `bEnabledEvents`/`bEnabledSundaySchool` are not in any category today, so the panel-only approach is the established newer pattern, and V2 exposes both settings on the volunteer dashboard behind `if ($isAdmin)` (#9711). **Until that dashboard exists**, a setting with no category is reachable only through the config API, so #9704 also registers a `Volunteer` category in `buildCategories()` holding `sVolunteerVersion`; `iVolunteerReminderLeadHours` joins it in #9710. |
 | B1 | New tables / migration | `orm/schema.xml` + `src/mysql/upgrade/X.Y.Z-*.sql` + `src/mysql/upgrade.json` + `src/mysql/install/Install.sql` (+ `cypress/data/seed.sql`); worked example `src/mysql/upgrade/7.6.4-pledge-denominations.sql` | **Reuse the conventions** | Append to the **existing `current` block** (`versions:["7.6.4"]`, `dbVersion:"7.7.0"`) — do not create a new block. `CREATE TABLE IF NOT EXISTS`, InnoDB, `utf8mb4_unicode_ci`, index names `_idx` / `_uidx`, a leading comment naming the issue. Full checklist Appendix A. |
 | B2 | Model generation | `cd src && composer run orm-gen` (`src/composer.json:98`) | **Reuse** | **`npm run build:orm` is broken** — `package.json:33` points at `--config-dir=propel` relative to `src/`, and `src/propel` does not exist. Also `orm/propel.php` must be copied from `orm/propel.php.dist` first. Appendix A. |
 | L1 | Localization (PHP) | `gettext()` / `ngettext()`; bootstrapped at `Bootstrapper.php:289-334` | **Reuse** | 5,724 `gettext()` call sites; `_()` is used zero times — do not introduce it. Colons go **outside** the call. Never run `npm run locale:build`; never commit `locale/messages.po`. |
@@ -2274,6 +2274,12 @@ is why that half of the change is not optional.
   The order is **API setup → `freshAdminLogin()` → UI assertions → teardown API calls**. API-only
   specs need no login at all.
 - `cy.intercept()` patterns must start `**/` — `test-subdir` runs the whole suite at `/churchcrm/`.
+- `x-api-key` authenticates Slim MVC pages (`/event`, `/volunteer`, `/v2`), so a pure `cy.request()`
+  can assert their status codes — but **not** `/people/*` or any legacy root `.php` page: those
+  require `Include/PageInit.php`, whose `ensureAuthentication()` runs at file-load time before any
+  middleware, so an API-key request 302s to `/session/begin`. Assertions on the person view or on
+  `VolunteerOpportunityEditor.php` must live in a `ui/` or `ui-admin/` spec with a real login
+  (learned in #9704).
 - SystemConfig is changed through the **admin** app: `POST /admin/api/system/config/{name}` with
   `{value: "…"}`. `/api/system/config/...` silently 404s.
 - Cypress specs are never linted, formatted or typechecked (`biome.json` covers only `src/**` and
@@ -2753,9 +2759,10 @@ it, and two flags would inevitably drift. Anywhere a boolean reads better in cod
 `User::isVolunteerV2Enabled()`.
 
 Both settings are surfaced through `window.CRM.settingsPanel` on the volunteer dashboard inside
-`if ($isAdmin)` (S4/U8), backed by `POST /admin/api/system/config/{name}`. Adding them to
-`SystemConfig::buildCategories()` is optional; `bEnabledEvents` and `bEnabledSundaySchool` are not
-categorised today, so the panel-only approach is the established newer pattern.
+`if ($isAdmin)` (S4/U8), backed by `POST /admin/api/system/config/{name}`. They are also
+listed in a `Volunteer` category in `SystemConfig::buildCategories()` (S4) so that Admin → System
+Settings shows them before the V2 dashboard's panel exists (#9711) — a setting with no category is
+otherwise invisible in the UI.
 
 Optional, advisory only: `volunteerVersion: <?= SystemConfig::getValueForJs('sVolunteerVersion') ?>`
 in the `window.CRM` block at `src/Include/Header.php:160-245`. The server gate is the real control.
