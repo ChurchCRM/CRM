@@ -2340,6 +2340,19 @@ cy.get("select#mySelect ~ .ts-wrapper > .ts-control").click();
 
 **Dropdown in body:** With `dropdownParent: "body"`, TomSelect appends `.ts-dropdown` to `<body>` at **init time** (constructor). So `cy.get("body > .ts-dropdown").should("exist")` passes even when no options are loaded and the dropdown is `display:none`.
 
+**Identifying ONE body-mounted dropdown: `#<select id>-ts-dropdown`.** <!-- learned: 2026-09-12 -->
+Once several pickers on a page use `dropdownParent: "body"`, `body > .ts-dropdown` is ambiguous: an `should("exist")` passes on a *neighbour's* dropdown even when the one under test is broken, and a teardown `should("not.exist")` fails because the neighbours legitimately survive. Scoping through `.next(".ts-wrapper")` does not help either — a body-mounted dropdown is no longer inside the wrapper. TomSelect gives its `.ts-dropdown-content` the id `` `${inputId}-ts-dropdown` `` in `setup()`, and `inputId` is the original element's `id` when it has one, so target that:
+
+```js
+// the dropdown for select#child specifically, and proof it is body-parented
+cy.get("body > .ts-dropdown > #child-ts-dropdown").should("exist");
+cy.get("#child-ts-dropdown .option").should("have.length.greaterThan", 0);
+// teardown: only THIS picker's dropdown must be gone
+cy.get("#checkoutBySelect-ts-dropdown").should("not.exist");
+```
+
+This is what `cypress/e2e/ui/groups/standard.tomselect-dropdownparent.spec.js` and `cypress/e2e/ui/events/standard.event-checkin-person-select.spec.js` use after #9819 made the check-in pickers body-mounted.
+
 **Counting rendered options — scope to the owning wrapper.** Without `dropdownParent`, each `.ts-dropdown` is nested *inside* its own sibling `.ts-wrapper`, so a bare `body .ts-dropdown .option` matches **every** TomSelect on the page at once (a country + state page yields 256 + 59 = 315, not 59). Always scope through the `<select>`:
 
 ```js
