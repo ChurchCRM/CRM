@@ -84,6 +84,21 @@ $group->post('/endpoint', function (Request $request, Response $response, array 
 - **Sanitizes messages automatically**: detects and masks password/token/host patterns
 - **Status passed as parameter**: `int $status` parameter (NOT via `response->withStatus(...)`)
 
+#### The redaction regex eats ordinary English words, and it always logs at ERROR <!-- learned: 2026-09-11 -->
+
+Two behaviours that bite when `renderErrorJSON()` is used for an *expected* refusal
+(a feature-flag or permission gate) rather than a genuine failure:
+
+1. The sanitizer matches `user`, `host` and `token` as bare substrings, so a
+   perfectly innocent message is silently replaced by the generic
+   "An error occurred. Please contact your system administrator." Write around
+   those three words — `gettext('Volunteer Management V2 is not enabled')`, not
+   `'... not enabled for this user'`.
+2. It logs at **ERROR** level unconditionally. An expected 403 therefore shows up
+   as an ERROR line in `src/logs/*-app.log`. If the gate is routine, log your own
+   `info()` line with the useful context first and accept the duplicate, or use a
+   hand-built response — `FundraiserEnabledMiddleware` does the latter.
+
 ### Signature
 
 ```php
