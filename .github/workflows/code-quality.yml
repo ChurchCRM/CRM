@@ -57,6 +57,8 @@ jobs:
         run: node scripts/validate-fa-icons-exist.js
       - name: Cypress API keys match seeded users
         run: npm run lint:cypress-api-keys
+      - name: Cypress command declarations in sync
+        run: npm run lint:cypress-commands
 
   format-fix:
     name: Apply format fixes
