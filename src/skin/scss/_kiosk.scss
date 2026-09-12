@@ -173,6 +173,38 @@
   color: #6c757d;
 }
 
+// "Checked in by" attribution line shown on member cards when a guardian
+// performed the check-in (Check-in By feature, issue #7949).
+.kiosk-member-checkin-by {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+  min-height: 0; // collapse when empty
+
+  .checkin-by-inline-photo {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #dee2e6;
+    flex-shrink: 0;
+  }
+
+  .fa-solid {
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 .kiosk-member-actions {
   display: flex;
   gap: 0.5rem;
