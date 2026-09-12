@@ -1177,9 +1177,10 @@ $group->post('/repeat', 'createRepeatEvents')->add(new InputSanitizationMiddlewa
 
 Rules worth knowing before you pick a type:
 
-- **Every rejection is `400 {"error": "<message naming the field>"}`** — the shape the class has
-  always emitted, *not* `SlimUtils::renderErrorJSON()`'s `{"success": false, "message": …}`.
-  Unifying the two is #9737's job; do not add a third shape here.
+- **Every rejection is `400` with the canonical `SlimUtils::renderErrorJSON()` body,
+  `{"success": false, "message": "<message naming the field>"}`** (since #9821; the class used to
+  emit its own `{"error": …}` shape). Do not add another shape here — #9737 is unifying the API on
+  this one.
 - **The `?` optional form** (`'date?'`, `'datetime?'`, `'enum?:a,b,c'`) treats absent, `null` and
   `''` as "not supplied" and leaves the value **exactly as it is** — an absent field stays absent,
   it is never set to `''`. That is what lets a migrated handler keep its own

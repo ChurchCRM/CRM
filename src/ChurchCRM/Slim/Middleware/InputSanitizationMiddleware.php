@@ -31,7 +31,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  * Required vs optional:
  *  - 'text' and 'html' are applied only when the field is present; they never reject.
  *  - 'int', 'date', 'datetime' and 'enum:…' are REQUIRED: an absent field returns
- *    HTTP 400 `{"error": "<field> is required"}`.
+ *    HTTP 400 with the message `<field> is required`.
  *  - 'date', 'datetime' and 'enum:…' also have an OPTIONAL form written with a `?` suffix on the
  *    type name — 'date?', 'datetime?', 'enum?:a,b,c'. An optional field that is absent, null or
  *    an empty string is left exactly as it is (absent stays absent — it is NOT set to '') and the
@@ -48,8 +48,10 @@ use Psr\Http\Server\RequestHandlerInterface;
  *    constructed, i.e. at route-registration time.
  *  - An unrecognised type string keeps the historical fallback and is treated as 'text'.
  *
- * All rejections use the shape this class has always emitted — HTTP 400 with a JSON body of
- * `{"error": "…"}` — and the message names the offending field.
+ * All rejections are HTTP 400 with the canonical SlimUtils::renderErrorJSON() body,
+ * `{"success": false, "message": "…"}`, and the message names the offending field. (Until #9821
+ * this class emitted its own `{"error": "…"}` shape; #9737 is unifying every API error on the
+ * canonical one, so this was the last holdout among the middlewares.)
  *
  * Usage:
  *   ->add(new InputSanitizationMiddleware([
@@ -266,10 +268,8 @@ class InputSanitizationMiddleware implements MiddlewareInterface
 
     private static function reject(string $message): ResponseInterface
     {
-        return SlimUtils::renderJSON(
-            new Response(),
-            ['error' => $message],
-            400
-        );
+        // The one API error contract (#9737): {"success": false, "message": "..."}.
+        // Before #9821 this class emitted its own {"error": "..."} shape.
+        return SlimUtils::renderErrorJSON(new Response(), $message, [], 400);
     }
 }

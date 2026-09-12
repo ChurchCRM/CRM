@@ -88,10 +88,11 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 }),
                 400,
             ).then((response) => {
-                expect(response.body.error, "middleware error shape").to.be.a(
+                expect(response.body.success, "canonical error shape").to.be.false;
+                expect(response.body.message, "canonical error shape").to.be.a(
                     "string",
                 );
-                expect(response.body.error).to.contain("RecurType");
+                expect(response.body.message).to.contain("RecurType");
             });
         });
 
@@ -107,7 +108,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 }),
                 400,
             ).then((response) => {
-                expect(response.body.error).to.contain("RecurType");
+                expect(response.body.message).to.contain("RecurType");
             });
         });
     });
@@ -148,10 +149,11 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 repeatBody({ RangeStart: "2050-13-45", RangeEnd: endDate }),
                 400,
             ).then((response) => {
-                expect(response.body.error, "middleware error shape").to.be.a(
+                expect(response.body.success, "canonical error shape").to.be.false;
+                expect(response.body.message, "canonical error shape").to.be.a(
                     "string",
                 );
-                expect(response.body.error).to.contain("RangeStart");
+                expect(response.body.message).to.contain("RangeStart");
             });
         });
 
@@ -163,7 +165,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 repeatBody({ RangeStart: "2050-02-30", RangeEnd: endDate }),
                 400,
             ).then((response) => {
-                expect(response.body.error).to.contain("RangeStart");
+                expect(response.body.message).to.contain("RangeStart");
             });
         });
 
@@ -175,7 +177,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 repeatBody({ RangeStart: "2050/01/01", RangeEnd: endDate }),
                 400,
             ).then((response) => {
-                expect(response.body.error).to.contain("RangeStart");
+                expect(response.body.message).to.contain("RangeStart");
             });
         });
 
@@ -286,10 +288,11 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 { eventTypeId, date: "not-a-date" },
                 400,
             ).then((response) => {
-                expect(response.body.error, "middleware error shape").to.be.a(
+                expect(response.body.success, "canonical error shape").to.be.false;
+                expect(response.body.message, "canonical error shape").to.be.a(
                     "string",
                 );
-                expect(response.body.error).to.contain("date");
+                expect(response.body.message).to.contain("date");
             });
         });
     });
@@ -311,7 +314,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 { value: "not-an-int" },
                 400,
             ).then((response) => {
-                expect(response.body.error).to.contain("value");
+                expect(response.body.message).to.contain("value");
             });
         });
 
@@ -322,7 +325,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 {},
                 400,
             ).then((response) => {
-                expect(response.body.error).to.contain("required");
+                expect(response.body.message).to.contain("required");
             });
         });
     });
