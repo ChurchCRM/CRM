@@ -67,6 +67,8 @@ require __DIR__ . '/routes/volunteer/volunteer-status.php';
 require __DIR__ . '/routes/volunteer/volunteer-scopes.php';
 require __DIR__ . '/routes/volunteer/volunteer-setup.php';
 require __DIR__ . '/routes/volunteer/volunteer-schedule.php';
+require __DIR__ . '/routes/volunteer/volunteer-assignment.php';
+require __DIR__ . '/routes/volunteer/volunteer-me.php';
 require __DIR__ . '/routes/cart.php';
 require __DIR__ . '/routes/background.php';
 require __DIR__ . '/routes/geocoder.php';

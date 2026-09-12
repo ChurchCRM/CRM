@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerRequirement;
 use ChurchCRM\model\ChurchCRM\VolunteerRequirementQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
+use ChurchCRM\Service\VolunteerAssignmentService;
 use ChurchCRM\Service\VolunteerAuthorizationService;
 use ChurchCRM\Service\VolunteerScheduleService;
 use ChurchCRM\Slim\Middleware\Api\VolunteerMinistryMiddleware;
@@ -27,11 +28,14 @@ use Slim\Routing\RouteCollectorProxy;
 /**
  * Volunteer Management V2 API — schedules, occurrences and staffing requirements (#9708).
  *
- * The schedule half of design §3.3.2. Assignments, gaps and the staffing workhorse
- * (`/occurrences/{id}/staffing`, `/eligible`, `/assignments`) are #9709 and are deliberately
- * absent here, as are the derived `liveCount` / `gapCount` / `pendingCount` columns of the
- * occurrence list — those are one implementation living in `VolunteerAssignmentService::getGaps()`
- * and must not be pre-empted by a second one in this file.
+ * The schedule half of design §3.3.2. Assignments and the staffing workhorse
+ * (`/occurrences/{id}/staffing`, `/eligible`, `/assignments`) live in `volunteer-assignment.php`
+ * (#9709).
+ *
+ * The derived `liveCount` / `gapCount` / `openCount` / `pendingCount` columns of the occurrence
+ * list and detail ARE served from here (#9709 filled them in), but they are not computed here:
+ * every one of them comes from `VolunteerAssignmentService::getGaps()`, the single gap
+ * implementation (§2.11.3). This file must never grow a second derivation.
  *
  * This group chains `VolunteerV2EnabledMiddleware` and the coordinator role gate itself:
  * Slim 4 scopes `->add()` to the single RouteCollectorProxy it is chained on, so nothing
@@ -154,7 +158,8 @@ function volunteerScheduleToArray(VolunteerSchedule $schedule): array
 function volunteerOccurrenceToArray(
     VolunteerOccurrence $occurrence,
     VolunteerScheduleService $service,
-    ?VolunteerSchedule $schedule = null
+    ?VolunteerSchedule $schedule = null,
+    array $counts = []
 ): array {
     $schedule ??= VolunteerScheduleQuery::create()->findPk((int) $occurrence->getScheduleId());
     $window = $service->resolveOccurrenceWindow($occurrence);
@@ -180,6 +185,13 @@ function volunteerOccurrenceToArray(
         'status' => $occurrence->getStatus(),
         'notes' => $occurrence->getNotes(),
         'requiredCount' => $requiredCount,
+        // Derived staffing counts (#9709, §2.11.3). Present only when the caller passed
+        // them in from VolunteerAssignmentService::getGaps(); a caller that did not ask
+        // gets zeros rather than a silently different second derivation.
+        'liveCount' => (int) ($counts['liveCount'] ?? 0),
+        'gapCount' => (int) ($counts['gapCount'] ?? 0),
+        'openCount' => (int) ($counts['openCount'] ?? 0),
+        'pendingCount' => (int) ($counts['pendingCount'] ?? 0),
         'generatedDate' => $occurrence->getGeneratedDate('Y-m-d H:i:s'),
     ];
 }
@@ -188,7 +200,7 @@ function volunteerOccurrenceToArray(
  * One requirement for the wire. `source` says which level the row came from, so a staffing
  * screen can show "overridden for this week" without re-deriving the merge.
  */
-function volunteerRequirementToArray(VolunteerRequirement $requirement): array
+function volunteerRequirementToArray(VolunteerRequirement $requirement, array $counts = []): array
 {
     $position = VolunteerPositionQuery::create()->findPk((int) $requirement->getPositionId());
 
@@ -202,6 +214,12 @@ function volunteerRequirementToArray(VolunteerRequirement $requirement): array
         'maxCount' => $requirement->getMaxCount() === null ? null : (int) $requirement->getMaxCount(),
         'notes' => $requirement->getNotes(),
         'source' => $requirement->getOccurrenceId() === null ? 'schedule' : 'occurrence',
+        // Same rule as the occurrence shape: the counts arrive from getGaps(), they are
+        // never derived here (#9709, §2.11.3).
+        'liveCount' => (int) ($counts['liveCount'] ?? 0),
+        'gapCount' => (int) ($counts['gapCount'] ?? 0),
+        'openCount' => (int) ($counts['openCount'] ?? 0),
+        'pendingCount' => (int) ($counts['pendingCount'] ?? 0),
     ];
 }
 
@@ -644,6 +662,7 @@ function deleteVolunteerRequirement(Request $request, Response $response, array 
  *     @OA\Parameter(name="to", in="query", required=true, @OA\Schema(type="string", format="date")),
  *     @OA\Parameter(name="ministryId", in="query", required=false, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="hasGaps", in="query", required=false, @OA\Schema(type="boolean"), description="Return only occurrences that are short of at least one required volunteer (#9709). The filter is applied AFTER the counts are derived, because a gap is derived and there is nothing in the occurrence table to filter on."),
  *     @OA\Parameter(name="scheduleId", in="query", required=false, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="status", in="query", required=false, @OA\Schema(type="string", enum={"scheduled","cancelled"})),
  *     @OA\Response(response=400, description="Missing, malformed or inverted window"),
@@ -751,12 +770,32 @@ function listVolunteerOccurrences(Request $request, Response $response): Respons
     }
 
     $service = new VolunteerScheduleService();
+
+    // One getGaps() call for the whole page, never one per row: the gap derivation is
+    // the same single implementation the staffing view uses (#9709, §2.11.3), and it is
+    // built to take every occurrence id at once precisely so a list does not fan out.
+    $assignments = new VolunteerAssignmentService();
+    $gapSummaries = $assignments->getGaps(array_map(
+        static fn (VolunteerOccurrence $occurrence): int => (int) $occurrence->getId(),
+        $rows
+    ));
+
+    // `?hasGaps=1` filters AFTER the counts exist, because a gap is derived and there is
+    // nothing in the occurrence table to filter on (§2.11.3).
+    $onlyGaps = isset($params['hasGaps']) && filter_var($params['hasGaps'], FILTER_VALIDATE_BOOLEAN);
+
     $payload = [];
     foreach ($rows as $occurrence) {
+        $counts = $gapSummaries[(int) $occurrence->getId()] ?? [];
+        if ($onlyGaps && (int) ($counts['gapCount'] ?? 0) <= 0) {
+            continue;
+        }
+
         $payload[] = volunteerOccurrenceToArray(
             $occurrence,
             $service,
-            $schedules[(int) $occurrence->getScheduleId()] ?? null
+            $schedules[(int) $occurrence->getScheduleId()] ?? null,
+            $counts
         );
     }
 
@@ -789,15 +828,24 @@ function listVolunteerOccurrences(Request $request, Response $response): Respons
  */
 function getVolunteerOccurrence(Request $request, Response $response): Response
 {
+    /** @var VolunteerOccurrence $occurrence */
     $occurrence = $request->getAttribute('volunteerOccurrence');
     $service = new VolunteerScheduleService();
+    $occurrenceId = (int) $occurrence->getId();
+
+    // #9709: the detail reports the same derived counts as the list, from the same
+    // getGaps() call — one summary, used for both the occurrence and its requirements.
+    $summary = (new VolunteerAssignmentService())->getGaps([$occurrenceId])[$occurrenceId] ?? [];
+    $perRequirement = $summary['requirements'] ?? [];
+
+    $requirements = [];
+    foreach ($service->getEffectiveRequirements($occurrenceId) as $positionId => $requirement) {
+        $requirements[] = volunteerRequirementToArray($requirement, $perRequirement[(int) $positionId] ?? []);
+    }
 
     return SlimUtils::renderJSON($response, [
-        'occurrence' => volunteerOccurrenceToArray($occurrence, $service),
-        'requirements' => array_values(array_map(
-            'volunteerRequirementToArray',
-            $service->getEffectiveRequirements((int) $occurrence->getId())
-        )),
+        'occurrence' => volunteerOccurrenceToArray($occurrence, $service, null, $summary),
+        'requirements' => $requirements,
     ]);
 }
 

@@ -281,7 +281,7 @@ function volunteerSetupActor(): User
 function volunteerSetupError(Request $request, Response $response, \Throwable $e): Response
 {
     if ($e instanceof VolunteerSetupException) {
-        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), $e->getExtra(), $e->getStatusCode(), null, $request);
     }
 
     return SlimUtils::renderErrorJSON($response, gettext('The volunteer setup change could not be saved'), [], 500, $e, $request);
