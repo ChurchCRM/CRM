@@ -20,6 +20,10 @@ export const dbTasks = {
   async 'db:query'({ sql, params }: { sql: string; params?: unknown[] }) {
     const mysql = require('mysql2/promise');
 
+    // A connection failure (DB down, wrong port or credentials) deliberately
+    // THROWS rather than being returned as data: it is an infrastructure fault
+    // that must fail the run loudly, not something a spec should assert on.
+    // Only driver errors from the statement itself are returned below.
     const connection = await mysql.createConnection({
       host: process.env.DATABASE_HOST || '127.0.0.1',
       port: Number(process.env.DATABASE_PORT || 3306),
@@ -44,7 +48,13 @@ export const dbTasks = {
         }
       };
     } finally {
-      await connection.end();
+      // A rejected await inside finally would replace the value returned
+      // above, so never let end() reject; destroy() cannot.
+      try {
+        await connection.end();
+      } catch {
+        connection.destroy();
+      }
     }
   }
 };

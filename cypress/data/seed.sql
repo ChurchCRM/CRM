@@ -2343,6 +2343,12 @@ CREATE TABLE `volunteer_occurrence_vocc` (
       REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vocc_event` FOREIGN KEY (`vocc_event_id`)
       REFERENCES `events_event` (`event_id`) ON DELETE SET NULL
+  -- No CHECK "standalone rows must have a start time": once fk_vocc_event has
+  -- SET NULL a deleted event, a formerly linked row legitimately has neither an
+  -- event nor a start time (its date lives in vocc_OccurrenceDate), and MariaDB
+  -- refuses a CHECK on a column an FK action can change anyway. The generator
+  -- (VolunteerScheduleService, #9708) always sets vocc_StartDateTime for
+  -- standalone schedules; vocc_schedule_start_uidx deduplicates those rows.
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2371,7 +2377,12 @@ CREATE TABLE `volunteer_requirement_vreq` (
   CONSTRAINT `fk_vreq_occurrence` FOREIGN KEY (`vreq_vocc_ID`)
       REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vreq_position` FOREIGN KEY (`vreq_vpos_ID`)
-      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE CASCADE
+      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE CASCADE,
+  -- Exactly one parent: a template requirement belongs to a schedule, an
+  -- override to an occurrence, never both and never neither. Enforced on
+  -- MariaDB 10.2.1+ / MySQL 8.0.16+; parsed and ignored by MySQL 5.7.
+  CONSTRAINT `vreq_one_parent_chk`
+      CHECK ((`vreq_vsch_ID` IS NULL) <> (`vreq_vocc_ID` IS NULL))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

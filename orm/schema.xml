@@ -1246,6 +1246,8 @@
         </vendor>
     </table>
 
+    <!-- The SQL files also add CHECK vreq_one_parent_chk: exactly one of vreq_vsch_ID / vreq_vocc_ID is set.
+         Propel cannot express CHECK constraints, so it lives in SQL only. -->
     <table name="volunteer_requirement_vreq" idMethod="native" phpName="VolunteerRequirement"
            description="Volunteer v2: how many people in which position an occurrence needs. Exactly one of the schedule (template) and occurrence (override) columns is set">
         <column name="vreq_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>

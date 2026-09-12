@@ -890,6 +890,51 @@ describe("API Private Volunteer v2 core schema", () => {
                 });
             });
 
+            // CHECK constraints (MariaDB 10.2.1+ / MySQL 8.0.16+ enforce them; the
+            // CI databases are MariaDB 10.11 and mysql:latest). Error codes differ:
+            // MariaDB 4025 ER_CONSTRAINT_FAILED, MySQL 3819 ER_CHECK_CONSTRAINT_VIOLATED.
+            const CHECK_ERRNOS = [4025, 3819];
+
+            it("accepts a formerly linked occurrence left with no event and no start time (fk_vocc_event SET NULL)", () => {
+                // Why there is deliberately no CHECK on vocc_StartDateTime: see the
+                // comment in the migration. The standalone dedupe key still applies
+                // to rows the generator creates with a start time.
+                dbOk(
+                    `INSERT INTO volunteer_occurrence_vocc
+                        (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_StartDateTime, vocc_Status, vocc_GeneratedDate)
+                     VALUES (?, NULL, '2026-09-20', NULL, 'scheduled', NOW())`,
+                    [f.schedCoffee],
+                ).then((res) => {
+                    expect(res.insertId).to.be.greaterThan(0);
+                    return dbOk(`DELETE FROM volunteer_occurrence_vocc WHERE vocc_ID = ?`, [res.insertId]);
+                });
+            });
+
+            it("rejects a requirement with neither a schedule nor an occurrence (vreq_one_parent_chk)", () => {
+                dbRejects(
+                    `INSERT INTO volunteer_requirement_vreq
+                        (vreq_vsch_ID, vreq_vocc_ID, vreq_vpos_ID, vreq_MinCount)
+                     VALUES (NULL, NULL, ?, 1)`,
+                    [f.posEspresso],
+                ).then((err) => {
+                    expect(err.errno).to.be.oneOf(CHECK_ERRNOS);
+                });
+            });
+
+            it("rejects a requirement that names both a schedule and an occurrence (vreq_one_parent_chk)", () => {
+                dbOk(`SELECT vocc_ID FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ? LIMIT 1`, [f.schedCoffee]).then((rows) => {
+                    expect(rows.length).to.equal(1);
+                    dbRejects(
+                        `INSERT INTO volunteer_requirement_vreq
+                            (vreq_vsch_ID, vreq_vocc_ID, vreq_vpos_ID, vreq_MinCount)
+                         VALUES (?, ?, ?, 1)`,
+                        [f.schedCoffee, rows[0].vocc_ID, f.posEspresso],
+                    ).then((err) => {
+                        expect(err.errno).to.be.oneOf(CHECK_ERRNOS);
+                    });
+                });
+            });
+
             it("rejects a duplicate requirement for one schedule+position (vreq_schedule_position_uidx)", () => {
                 dbRejects(
                     `INSERT INTO volunteer_requirement_vreq
