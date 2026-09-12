@@ -1,53 +1,53 @@
 {
-  "CSV": "",
-  "OFX": "",
-  "A geocoding error occurred — try again later": "",
-  "Address is incomplete (missing city, state, and ZIP)": "",
-  "All families already have coordinates.": "",
-  "Failed to update coordinates": "",
-  "Failed to update family coordinates": "",
-  "Geocoded all {{geocoded}} families. The map is now up to date.": "",
-  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "",
-  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "",
-  "Geocoding families… this can take up to a minute. You can keep this page open.": "",
-  "Geocoding…": "",
-  "No address on file": "",
-  "No match found — check the street address, city, and ZIP": "",
-  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "",
-  "Open a family to fix its address, then run this again.": "",
-  "Set up now": "",
-  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
+  "A geocoding error occurred — try again later": "Ocurrió un error de geocodificación — inténtelo de nuevo más tarde",
+  "Address is incomplete (missing city, state, and ZIP)": "La dirección está incompleta (falta la ciudad, el departamento y el código postal)",
+  "All families already have coordinates.": "Todas las familias ya tienen coordenadas.",
+  "Failed to update coordinates": "No se pudieron actualizar las coordenadas",
+  "Failed to update family coordinates": "No se pudieron actualizar las coordenadas de la familia",
+  "Geocoded all {{geocoded}} families. The map is now up to date.": "Se geocodificaron las {{geocoded}} familias. El mapa está actualizado.",
+  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "Se geocodificaron {{geocoded}} familias. {{failed}} no se pudieron resolver — vea los detalles a continuación.",
+  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "Se geocodificaron {{geocoded}} de {{total}} familias. {{overflow}} aún no se han procesado — ejecútelo de nuevo para continuar.",
+  "Geocoding families… this can take up to a minute. You can keep this page open.": "Geocodificando familias… esto puede tardar hasta un minuto. Puede mantener esta página abierta.",
+  "Geocoding…": "Geocodificando…",
+  "No address on file": "No hay dirección registrada",
+  "No match found — check the street address, city, and ZIP": "No se encontró ninguna coincidencia — verifique la dirección, la ciudad y el código postal",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "Número de días que tienen los usuarios para inscribirse en la autenticación de dos factores (2FA) después de que se vuelva obligatoria. Configure en 0 para exigirla de inmediato (comportamiento heredado). Acortar un período de gracia activo puede bloquear el acceso a los usuarios de inmediato.",
+  "Open a family to fix its address, then run this again.": "Abra una familia para corregir su dirección y luego ejecute esto de nuevo.",
+  "Set up now": "Configurar ahora",
+  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "Esto busca las coordenadas del mapa para cada familia a la que le falten, utilizando OpenStreetMap. Procesa hasta 50 familias por ejecución; un lote completo tarda aproximadamente un minuto. Puede mantener esta página abierta mientras se ejecuta. ¿Continuar?",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "",
-    "many": "",
-    "other": ""
+    "one": "Se requiere autenticación de dos factores. Tiene %d día para inscribirse.",
+    "many": "Se requiere autenticación de dos factores. Tiene %d días para inscribirse.",
+    "other": "Se requiere autenticación de dos factores. Tiene %d días para inscribirse."
   },
-  "Unknown family": "",
-  "Update All Coordinates": "",
-  "Update All Family Coordinates": "",
-  "Update Coordinates": "",
+  "Unknown family": "Familia desconocida",
+  "Update All Coordinates": "Actualizar todas las coordenadas",
+  "Update All Family Coordinates": "Actualizar todas las coordenadas de las familias",
+  "Update Coordinates": "Actualizar coordenadas",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Se copió {{count}} miembro",
+    "other": "Se copiaron {{count}} miembros"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Esta lista tiene {{count}} destinatario — demasiados para un enlace mailto:. Use Copiar direcciones en su lugar.",
+    "other": "Esta lista tiene {{count}} destinatarios — demasiados para un enlace mailto:. Use Copiar direcciones en su lugar."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Demasiados destinatarios para el cliente de correo ({{count}} > {{max}}). Use Copiar direcciones en su lugar.",
+    "other": "Demasiados destinatarios para el cliente de correo ({{count}} > {{max}}). Use Copiar direcciones en su lugar."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuto restante",
+    "other": "{{count}} minutos restantes"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familia no se pudo geocodificar",
+    "other": "{{count}} familias no se pudieron geocodificar"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…y {{count}} más. Ejecútelo de nuevo para ver el resto.",
+    "other": "…y {{count}} más. Ejecútelo de nuevo para ver el resto."
   }
 }
