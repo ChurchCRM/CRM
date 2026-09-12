@@ -231,6 +231,30 @@ class User extends BaseUser
     }
 
     /**
+     * May this user reach the event WRITE surface at all (#9713, design §4.6, D9)?
+     *
+     * `canManageEvents()` is the global AddEvent right and is unchanged. Volunteer v2 adds
+     * one more way in: a ministry coordinator may create and edit events that carry THEIR
+     * ministry id, without holding AddEvent. That is a coarse "let them past the door"
+     * answer — which particular event row they may write is a per-row question the API
+     * handlers ask `VolunteerAuthorizationService::canManageMinistry()` (§4.5, layer three).
+     *
+     * The Events module must still be enabled system-wide for the coordinator branch, for
+     * the same defense-in-depth reason `canManageEvents()` requires it.
+     *
+     * Used by `AddEventsOrMinistryRoleAuthMiddleware` and by the "Add Church Event" menu
+     * item, so menu visibility mirrors the route gate exactly (design §3.5, A11).
+     */
+    public function canWriteEvents(): bool
+    {
+        if ($this->canManageEvents()) {
+            return true;
+        }
+
+        return self::isEventsEnabled() && $this->isVolunteerCoordinatorEnabled();
+    }
+
+    /**
      * Whether the Events module is enabled system-wide via SystemConfig.
      * Pure system check — no per-user permission gate.
      */
