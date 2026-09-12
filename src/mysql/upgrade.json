@@ -176,8 +176,7 @@
     ],
     "scripts": [
       "/mysql/upgrade/7.6.0-remove-orphaned-query-parameters.sql",
-      "/mysql/upgrade/7.6.0-remove-legacy-custom-search-query.sql",
-      "/mysql/upgrade/7.6.0-self-register-needs-review.sql"
+      "/mysql/upgrade/7.6.0-remove-legacy-custom-search-query.sql"
     ],
     "dbVersion": "7.6.0"
   },
