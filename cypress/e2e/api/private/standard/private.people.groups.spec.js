@@ -146,12 +146,13 @@ describe("API Private Group Operations", () => {
                     },
                     200
                 ).then((resp) => {
+                    // Enqueue the cleanup FIRST: a failing expect() below throws
+                    // synchronously and would otherwise skip it, and this is the
+                    // last test in the describe so no beforeEach follows.
+                    removeTestPerson();
+
                     expect(resp.body).to.exist;
                     expect(resp.body).to.have.property("RoleId");
-
-                    // Give back the membership this test created. Without it
-                    // group 1 keeps person 1 for the rest of the run.
-                    removeTestPerson();
                 });
             });
         });
@@ -411,9 +412,12 @@ describe("API Private Group Operations", () => {
             // person-1 membership (issue #9828) sent the route into its audit
             // Note write, which has no current user under API-key auth. With
             // the leak gone the call is an authorized no-op returning 200.
-            // Use a key that genuinely lacks the permission so the test asserts
-            // the denial its name promises.
-            cy.makePrivateLimitedAPICall(
+            // plainauth (john.plainauth, id 900) passes AuthMiddleware (it is
+            // not EditSelf-exclusive) and lacks usr_ManageGroups, so the 403
+            // below comes from ManageGroupRoleAuthMiddleware — the gate this
+            // test's name promises to cover. (limited.user would be stopped by
+            // AuthMiddleware first and prove nothing about the group gate.)
+            cy.makePrivatePlainAuthAPICall(
                 "DELETE",
                 `/api/groups/${groupID}/removeperson/1`,
                 null,
