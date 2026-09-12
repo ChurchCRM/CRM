@@ -242,6 +242,52 @@ $record = PersonCustomMasterQuery::create()
 // This tells us custom_Field → Id in phpName
 ```
 
+## Idempotent Writes: a UNIQUE key + `findOneOrCreate()` <!-- learned: 2026-09-12 -->
+
+To make a write safe to repeat — a generator that may run twice, an enqueue that may
+be retried, a grant that may be re-posted — put a `UNIQUE` key on the natural identity
+and reach it with `findOneOrCreate()` inside the caller's transaction. Do **not**
+pre-flight with a `SELECT` and then `INSERT`: two concurrent requests both pass the
+check. The index is the guarantee; the query is only the fast path.
+
+```php
+$con = Propel::getWriteConnection(VolunteerOccurrenceTableMap::DATABASE_NAME);
+$con->beginTransaction();
+try {
+    // findOneOrCreate() ACCEPTS a connection, so it sees the transaction's own
+    // uncommitted rows — a default read connection would not.
+    $row = VolunteerOccurrenceQuery::create()
+        ->filterByScheduleId($scheduleId)
+        ->filterByEventId($eventId)
+        ->findOneOrCreate($con);
+
+    if ($row->isNew()) {          // the only reliable "did I create it?" test
+        $row->setGeneratedDate(DateTimeUtils::getNowDateTime());
+        $row->save($con);
+    }
+    $con->commit();
+} catch (\Throwable $e) {
+    $con->rollBack();
+    throw $e;
+}
+```
+
+Three details that are easy to get wrong:
+
+- **`filterByCol(null)` builds an `IS NULL` criterion, and the created object inherits
+  it.** That is what makes an upsert on a polymorphic "exactly one parent" table work:
+  `->filterByScheduleId($id)->filterByOccurrenceId(null)` finds the template row and, when
+  absent, creates one with the right parent already set.
+- **MySQL permits multiple `NULL`s in a `UNIQUE` index.** Two unique keys over the same
+  table, each with a nullable column, therefore do not collide with each other — rows that
+  are `NULL` in one key are deduplicated only by the other. `volunteer_occurrence_vocc`
+  uses exactly this: `(schedule, event)` dedupes event-linked rows and `(schedule, start)`
+  dedupes standalone ones.
+- **`findOneOrCreate()` throws if the query has joins.** Filter on the table's own columns.
+
+Existing call sites: `Event::checkInPerson()` (`Event.php:87-90`, `UNIQUE(event_id,
+person_id)`) and `VolunteerAuthorizationService::grantScope()`.
+
 ## Database Access Example
 
 ```php
