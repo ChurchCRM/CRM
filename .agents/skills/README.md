@@ -6,7 +6,7 @@ This directory contains modular, task-focused development skills for AI coding a
 
 ```
 .agents/skills/
-├── churchcrm/          ← ChurchCRM-specific skills (42 files)
+├── churchcrm/          ← ChurchCRM-specific skills (52 Markdown files)
 │   ├── SKILL.md        ← Entry point index for ChurchCRM skills
 │   ├── api-development.md
 │   ├── database-operations.md
@@ -43,7 +43,12 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 - [Tabler Components](./churchcrm/tabler-components.md)
 - [Webpack & TypeScript](./churchcrm/webpack-typescript.md)
 - [i18n & Localization](./churchcrm/i18n-localization.md)
-- [AI Locale Translation](./churchcrm/locale-ai-translation.md)
+- [Locale Translation Workflow](./churchcrm/locale-translation-workflow.md)
+- [Currency Localization](./churchcrm/currency-localization.md)
+- [Icon Management](./churchcrm/icon-management.md)
+- [Responsive Design Guidelines](./churchcrm/responsive-design-guidelines.md)
+- [Table Action Menu](./churchcrm/table-action-menu.md)
+- [Timezone Handling](./churchcrm/timezone-handling.md)
 
 ### Security
 - [Authorization & Security](./churchcrm/authorization-security.md)
@@ -147,5 +152,4 @@ They are registered in `~/.claude/CLAUDE.md` for automatic discovery.
 
 ---
 
-**Last updated:** February 2026
-
+**Last updated:** September 2026

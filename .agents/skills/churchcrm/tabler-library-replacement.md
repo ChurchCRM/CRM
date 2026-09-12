@@ -54,14 +54,14 @@ SCSS → churchcrm.min.css  (all CSS combined)
 
 | Library | npm Package | Why Keep |
 |---------|-------------|----------|
-| **DataTables.net** | `datatables.net@^2.3.7` + extensions | Too feature-rich to replace (export, server-side, row-select). Upgrade BS4→BS5 integration. |
+| **DataTables.net** | `datatables.net@^3.0.3` + extensions | Too feature-rich to replace (export, server-side, row-select). Upgrade BS4→BS5 integration. |
 | **jQuery** | `jquery@^3.7.1` | Deeply embedded. BS5 auto-detects it. Keep. |
 | ~~**Chart.js**~~ | ~~`chart.js@^4.5.1`~~ | **REPLACED** — fully migrated to ApexCharts `^5.10.4` (2026-03-22). Removed from package.json. |
-| **ApexCharts** | `apexcharts@^5.10.4` | Replaced Chart.js. Used in all dashboards + DepositSlipEditor. Keep. |
-| **FullCalendar** | `fullcalendar@^6.1.19` | Tabler also uses FullCalendar. Already correct. |
+| **ApexCharts** | `apexcharts@^6.10.0` | Replaced Chart.js. Used in all dashboards + DepositSlipEditor. Keep. |
+| **FullCalendar** | `fullcalendar@^7.0.2` | Tabler also uses FullCalendar. Already correct. |
 | **Leaflet** | `leaflet@^1.9.4` | No Tabler map equivalent for street-level maps. Keep. |
-| **i18next** | `i18next@^25.8.18` | Core infrastructure. No replacement. |
-| **Font Awesome** | `@fortawesome/fontawesome-free@^7.2.0` | 1,060+ uses. Gradual migration to Tabler Icons for UI actions only. |
+| **i18next** | `i18next@^26.4.2` | Core infrastructure. No replacement. |
+| **Font Awesome** | `@fortawesome/fontawesome-free@^7.3.1` | Only permitted icon library; use free-tier variants only. |
 | **Flag Icons** | `flag-icons@^7.5.0` | Only 2 uses. Low priority. Keep. |
 | **JustValidate** | `just-validate@^4.3.0` | Only 4 uses but needed for wizard. Keep until full Tabler form validation. |
 | **Uppy** | `@uppy/*` | Photo upload. No Tabler equivalent. Keep. |
@@ -273,7 +273,7 @@ export function confirmDialog(opts: {
         <div class="modal-content">
           <div class="modal-status bg-danger"></div>
           <div class="modal-body text-center py-4">
-            <i class="ti ti-alert-triangle text-danger mb-2" style="font-size:3rem;"></i>
+            <i class="fa-solid fa-triangle-exclamation text-danger mb-2" style="font-size:3rem;"></i>
             ${opts.title ? `<h3>${opts.title}</h3>` : ''}
             <p class="text-secondary">${opts.message}</p>
           </div>
@@ -412,9 +412,9 @@ var filePath = "src/skin/external/datatables/dataTables.bootstrap5.min.css";
 
 ### 8. Tabler Core via npm
 
-**Install:**
+**Install (if not already present):**
 ```bash
-npm install @tabler/core @tabler/icons-webfont
+npm install @tabler/core
 ```
 
 **Gruntfile.js — Add Tabler copy blocks:**
@@ -431,26 +431,18 @@ npm install @tabler/core @tabler/icons-webfont
   ],
   dest: "src/skin/external/tabler/",
 },
-// Tabler Icons webfont
-{
-  expand: true,
-  cwd: "node_modules/@tabler/icons-webfont/dist",
-  src: ["**"],
-  dest: "src/skin/external/tabler-icons/",
-},
 ```
 
 **Header-HTML-Scripts.php — Local references (no CDN):**
 ```php
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/tabler/tabler.min.css') ?>">
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/tabler-icons/tabler-icons.min.css') ?>">
+<!-- Icons are loaded from Font Awesome; see icon-management.md. -->
 ```
 
 **OR bundle into webpack SCSS:**
 ```scss
 // In churchcrm.scss (before custom styles)
 @import "~@tabler/core/dist/css/tabler.min.css";
-@import "~@tabler/icons-webfont/dist/tabler-icons.min.css";
 ```
 
 ---
@@ -460,7 +452,6 @@ npm install @tabler/core @tabler/icons-webfont
 ### Add
 ```json
 "@tabler/core": "^1.4.0",
-"@tabler/icons-webfont": "^3.40.0",
 "tom-select": "^2.4.3",
 "flatpickr": "^4.6.13",
 "litepicker": "^2.0.12",
@@ -511,7 +502,7 @@ npm install @tabler/core @tabler/icons-webfont
 
 ### Add Copy Blocks
 - `@tabler/core/dist/css/` + `dist/js/` → `src/skin/external/tabler/`
-- `@tabler/icons-webfont/dist/` → `src/skin/external/tabler-icons/`
+- Font Awesome remains the only icon asset; do not add a Tabler icon webfont.
 - All `datatables.net-bs4` references → `datatables.net-bs5`
 
 ### Update patchDataTablesCSS
@@ -598,7 +589,7 @@ npm install @tabler/core @tabler/icons-webfont
 
 | Phase | Library Swap | Files | Risk | Status |
 |-------|-------------|-------|------|--------|
-| **0** | Install `@tabler/core` + `@tabler/icons-webfont`, Grunt copy | 3 config files | Low | ✅ Done |
+| **0** | Install `@tabler/core`, Grunt copy | 3 config files | Low | ✅ Done |
 | **1** | ~~Remove dead deps: react, react-datepicker, react-select, react-bootstrap~~ | package.json only | Zero | ✅ Done (7.2.0) |
 | **2** | DataTables BS4 → BS5 | Gruntfile + SCSS + Footer.php | Low | ✅ Done |
 | **2.5** | Chart.js → ApexCharts | 7 JS files | Low | ✅ Done |

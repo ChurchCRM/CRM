@@ -142,15 +142,9 @@ AdminLTE npm dep removed. No `adminlte.min.js` or `adminlte.min.css` loaded. Bri
    .input-group-prepend      → remove wrapper, keep children in .input-group
 
 10. ICONS — Replace UI action icons
-    fa-edit       → ti ti-pencil
-    fa-trash      → ti ti-trash
-    fa-save       → ti ti-device-floppy
-    fa-times      → ti ti-x
-    fa-search     → ti ti-search
-    fa-plus       → ti ti-plus
-    fa-cogs       → ti ti-settings
-    fa-download   → ti ti-download
-    (Domain entity icons stay as FA7 duotone)
+    Use the Font Awesome free-tier equivalents documented in icon-management.md.
+    All icons use fa-solid, fa-regular, or fa-brands; do not add ti-* classes.
+    Domain entity icons also use the Font Awesome free tier (never fa-duotone).
 
 11. TABLES — Apply Tabler table classes
     Add: table-vcenter, table-sm (if admin), table-hover
@@ -179,7 +173,7 @@ AdminLTE npm dep removed. No `adminlte.min.js` or `adminlte.min.css` loaded. Bri
 - [x] Create skill files
 
 ### Phase 1: Infrastructure (COMPLETED) <!-- verified: 2026-03-22 -->
-- [x] Install `@tabler/core` + `@tabler/icons-webfont` via npm
+- [x] Install `@tabler/core` via npm; ChurchCRM icons remain Font Awesome-only
 - [x] Add Grunt copy blocks for Tabler assets
 - [x] Run `npm run build:js:legacy` to copy Tabler files
 - [x] Remove React ecosystem (react, react-dom, react-bootstrap, react-datepicker, react-select) — **done in 7.2.0**

@@ -222,7 +222,7 @@ Colors: `bg-primary`, `bg-success`, `bg-danger`, `bg-warning`, `bg-info`.
       <div class="col-auto">
         <span class="card-stamp">
           <span class="card-stamp-icon bg-primary-lt">
-            <i class="ti ti-users"></i>
+            <i class="fa-solid fa-users"></i>
           </span>
         </span>
       </div>
@@ -316,7 +316,7 @@ Colors: `bg-primary`, `bg-success`, `bg-danger`, `bg-warning`, `bg-info`.
         <td class="text-secondary">john@example.com</td>
         <td>
           <a href="#" class="btn btn-ghost-primary btn-sm">
-            <i class="ti ti-pencil"></i>
+            <i class="fa-solid fa-pencil"></i>
           </a>
         </td>
       </tr>
@@ -748,12 +748,12 @@ This ensures sidebar text uses full body-level contrast and emphasis color on ho
 ```html
 <!-- Icon only -->
 <a href="#" class="btn btn-icon btn-ghost-primary">
-  <i class="ti ti-pencil"></i>
+  <i class="fa-solid fa-pencil"></i>
 </a>
 
 <!-- Icon + text -->
 <a href="#" class="btn btn-primary">
-  <i class="ti ti-plus me-1"></i> Add Person
+  <i class="fa-solid fa-plus me-1"></i> Add Person
 </a>
 ```
 
@@ -821,7 +821,7 @@ Light variants: append `-lt` to any color (e.g., `bg-primary-lt`, `bg-success-lt
     <div class="modal-content">
       <div class="modal-status bg-danger"></div> <!-- colored top bar -->
       <div class="modal-body text-center py-4">
-        <i class="ti ti-alert-triangle text-danger mb-2" style="font-size: 3rem;"></i>
+        <i class="fa-solid fa-triangle-exclamation text-danger mb-2" style="font-size: 3rem;"></i>
         <h3>Are you sure?</h3>
         <p class="text-secondary">This action cannot be undone.</p>
       </div>
@@ -876,7 +876,7 @@ For modals that contain a form or collect user input before triggering an action
         <div class="modal-body">
           <!-- Explanation alert — no dismiss button, not dismissible -->
           <div class="alert alert-info mb-3">
-            <i class="ti ti-info-circle me-1"></i>
+        <i class="fa-solid fa-circle-info me-1"></i>
             <?= gettext('Brief explanation of what will happen.') ?>
           </div>
           <!-- Optional input -->
@@ -893,7 +893,7 @@ For modals that contain a form or collect user input before triggering an action
           <button type="button" class="btn btn-secondary"
                   data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
           <button type="button" class="btn btn-primary" id="submitBtn">
-            <i class="ti ti-brand-github me-1"></i><?= gettext('Primary Action') ?>
+    <i class="fa-brands fa-github me-1"></i><?= gettext('Primary Action') ?>
           </button>
         </div>
       </form>
@@ -965,14 +965,14 @@ toast.show();
 ```html
 <div class="empty">
   <div class="empty-icon">
-    <i class="ti ti-mood-sad" style="font-size: 3rem;"></i>
+    <i class="fa-solid fa-face-frown" style="font-size: 3rem;"></i>
   </div>
   <p class="empty-title">No results found</p>
   <p class="empty-subtitle text-secondary">
     Try adjusting your search or filter to find what you're looking for.
   </p>
   <div class="empty-action">
-    <a href="#" class="btn btn-primary"><i class="ti ti-plus me-1"></i>Add New</a>
+    <a href="#" class="btn btn-primary"><i class="fa-solid fa-plus me-1"></i>Add New</a>
   </div>
 </div>
 ```
@@ -1160,7 +1160,7 @@ Match `docs.tabler.io/ui/layout/navbars` exactly for the topbar:
     <div class="collapse navbar-collapse" id="navbar-menu">
       <div style="position: relative; width: min(480px, 100%);">
         <div class="input-icon">
-          <span class="input-icon-addon"><i class="ti ti-search"></i></span>
+<span class="input-icon-addon"><i class="fa-solid fa-magnifying-glass"></i></span>
           <input type="search" id="globalSearch" class="form-control"
                  placeholder="Search people, families, groups…"
                  autocomplete="off" spellcheck="false">

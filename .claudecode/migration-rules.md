@@ -11,7 +11,7 @@ We are migrating ChurchCRM from AdminLTE (Bootstrap 4) to Tabler (Bootstrap 5).
 
 - **Framework**: Tabler (Bootstrap 5)
 - **Typography**: Inter Variable Font (`font-family: 'Inter', sans-serif`)
-- **Icons**: Tabler Icons (`ti-`) for UI actions; FontAwesome 7 (`fa-`) for domain entities
+- **Icons**: Font Awesome 7 free tier (`fa-`) for all icons; Tabler icon classes are not shipped
 - **Constraints**: Retain all PHP logic, jQuery, DataTables.net — no React/Vue
 
 ---
@@ -105,7 +105,7 @@ Every migrated page must use this layout structure:
       <div class="col-auto">
         <span class="card-stamp">
           <span class="card-stamp-icon bg-primary-lt">
-            <i class="ti ti-users"></i>
+            <i class="fa-solid fa-users"></i>
           </span>
         </span>
       </div>
@@ -133,26 +133,25 @@ Every migrated page must use this layout structure:
 
 | Context | Icon System | Syntax |
 |---------|-------------|--------|
-| UI Actions (Edit, Save, Delete, Close, Search, Filter, Toggle) | Tabler Icons | `<i class="ti ti-[name]"></i>` |
-| Domain Entities (Person, Family, Group, Money, Church, Calendar) | FontAwesome 7 Solid | `<i class="fa-solid fa-[name]"></i>` |
+| UI actions and domain entities | Font Awesome 7 free tier | `<i class="fa-solid fa-[name]"></i>` |
 | Brand/Social | FontAwesome 7 Brands | `<i class="fa-brands fa-[name]"></i>` |
 
 ### Common Mappings
 
 | Purpose | Old (FA4/FA6) | New Tabler Icon |
 |---------|--------------|-----------------|
-| Edit | `fa-edit` | `ti ti-pencil` |
-| Save | `fa-save` | `ti ti-device-floppy` |
-| Delete | `fa-trash` | `ti ti-trash` |
-| Close/X | `fa-times` | `ti ti-x` |
-| Search | `fa-search` | `ti ti-search` |
-| Filter | `fa-filter` | `ti ti-filter` |
-| Settings | `fa-cogs` | `ti ti-settings` |
-| Add/Plus | `fa-plus` | `ti ti-plus` |
-| Download | `fa-download` | `ti ti-download` |
-| Upload | `fa-upload` | `ti ti-upload` |
-| Fullscreen | `fa-expand-arrows-alt` | `ti ti-maximize` |
-| Bars/Menu | `fa-bars` | `ti ti-menu-2` |
+| Edit | `fa-pencil` | `fa-solid fa-pencil` |
+| Save | `fa-floppy-disk` | `fa-solid fa-floppy-disk` |
+| Delete | `fa-trash` | `fa-solid fa-trash` |
+| Close/X | `fa-xmark` | `fa-solid fa-xmark` |
+| Search | `fa-magnifying-glass` | `fa-solid fa-magnifying-glass` |
+| Filter | `fa-filter` | `fa-solid fa-filter` |
+| Settings | `fa-cog` | `fa-solid fa-cog` |
+| Add/Plus | `fa-plus` | `fa-solid fa-plus` |
+| Download | `fa-download` | `fa-solid fa-download` |
+| Upload | `fa-upload` | `fa-solid fa-upload` |
+| Fullscreen | `fa-expand` | `fa-solid fa-expand` |
+| Bars/Menu | `fa-bars` | `fa-solid fa-bars` |
 
 | Purpose | Domain Icon (FA7 Solid) |
 |---------|--------------------------|
@@ -265,8 +264,8 @@ Include breadcrumbs in the `page-header` when `$sBreadcrumb` is set:
 2. [ ] Replace `.box/.box-header/.box-body` with `.card/.card-header/.card-body`
 3. [ ] Replace `data-toggle/dismiss/target` with `data-bs-*` equivalents
 4. [ ] Replace all Bootstrap 4 spacing/flex utilities with BS5 equivalents
-5. [ ] Replace UI action icons with Tabler Icons (`ti-`)
-6. [ ] Verify domain entity icons use `fa-solid fa-[name]` (not `fa-duotone` — FA7 Free only)
+5. [ ] Replace UI action icons with Font Awesome free-tier classes (`fa-solid`, `fa-regular`, or `fa-brands`)
+6. [ ] Verify all icons use the Font Awesome free tier (not `fa-duotone`)
 7. [ ] Test DataTables.net still initializes (no changes needed, just CSS skin)
 8. [ ] Test jQuery plugins still fire (Select2, InputMask, DatePicker)
 9. [ ] Check responsive behaviour at `< md` (volunteer persona)

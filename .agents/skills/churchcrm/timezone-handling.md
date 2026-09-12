@@ -223,5 +223,5 @@ Render the markup unconditionally with `id="eventTzNotice"` and toggle `d-none` 
 
 ## Tabler / icon gotchas learned in this session <!-- learned: 2026-04-25 -->
 
-- `ti-alert-triangle-filled` is NOT in the Tabler Icons release used here — use `ti-alert-triangle` (non-filled) for the warning icon.
+- Use the Font Awesome free-tier warning icon `fa-solid fa-triangle-exclamation`; Tabler icon classes are not shipped.
 - Tabler `.alert` chrome with inline `<strong>` / `<span>` children renders with visible visual gaps that read as columns. For low-key hints use plain text + `text-muted` / `text-warning-emphasis` instead of the alert wrapper.
