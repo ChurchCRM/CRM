@@ -17823,3 +17823,83 @@ msgstr "Pre %s %d neboli nájdené žiadne udalosti."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Skúste vybrať iný typ udalosti, mesiac alebo rok."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Vyskytla sa chyba geokódovania — skúste to znova neskôr"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa je neúplná (chýba mesto, kraj a PSČ)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Všetky rodiny už majú súradnice."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Nepodarilo sa aktualizovať súradnice"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Nepodarilo sa aktualizovať súradnice rodiny"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokódovaných bolo všetkých {{geocoded}} rodín. Mapa je teraz aktuálna."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokódovaných bolo {{geocoded}} rodín. {{failed}} sa nepodarilo vyriešiť — podrobnosti nájdete nižšie."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Geokódovaných bolo {{geocoded}} z {{total}} rodín. {{overflow}} zatiaľ nebolo spracovaných — spustite znova pre pokračovanie."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Geokódovanie rodín… môže to trvať až minútu. Túto stránku môžete nechať otvorenú."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokódovanie…"
+
+#: 
+msgid "No address on file"
+msgstr "Adresa nie je zaznamenaná"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nebola nájdená žiadna zhoda — skontrolujte ulicu, mesto a PSČ"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Počet dní, ktoré majú používatelia na zapojenie dvojfaktorového overovania po tom, čo sa stane povinným. Nastavením na 0 ho vynútite okamžite (predchádzajúce správanie). Skrátenie aktívnej ochrannej lehoty môže používateľov okamžite zablokovať."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Otvorte rodinu a opravte jej adresu, potom to spustite znova."
+
+#: 
+msgid "Set up now"
+msgstr "Nastaviť teraz"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Táto funkcia nájde súradnice na mape pre každú rodinu, ktorej chýbajú, pomocou OpenStreetMap. Za jedno spustenie spracuje až 50 rodín; celá dávka trvá približne minútu. Túto stránku môžete nechať otvorenú počas spracovania. Pokračovať?"
+
+#: 
+msgid "Unknown family"
+msgstr "Neznáma rodina"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Aktualizovať všetky súradnice"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Aktualizovať súradnice všetkých rodín"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Aktualizovať súradnice"
+

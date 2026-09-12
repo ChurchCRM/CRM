@@ -17817,3 +17817,83 @@ msgstr "Nuk u gjetën ngjarje për %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Provoni të zgjidhni një lloj tjetër ngjarjeje, muaji ose viti."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Ndodhi një gabim gjeokodimi — provoni përsëri më vonë"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa është e paplotë (mungojnë qyteti, qarku dhe kodi postar)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Të gjitha familjet kanë tashmë koordinata."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Përditësimi i koordinatave dështoi"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Përditësimi i koordinatave të familjes dështoi"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "U gjeokoduan të gjitha {{geocoded}} familjet. Harta tani është e përditësuar."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "U gjeokoduan {{geocoded}} familje. {{failed}} nuk u zgjidhën dot — shihni detajet më poshtë."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "U gjeokoduan {{geocoded}} nga {{total}} familje. {{overflow}} ende nuk janë përpunuar — ekzekutojeni përsëri për të vazhduar."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Duke gjeokoduar familjet… kjo mund të zgjasë deri në një minutë. Mund ta lini këtë faqe të hapur."
+
+#: 
+msgid "Geocoding…"
+msgstr "Duke gjeokoduar…"
+
+#: 
+msgid "No address on file"
+msgstr "Nuk ka adresë të regjistruar"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nuk u gjet asnjë përputhje — kontrolloni adresën, qytetin dhe kodin postar"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Numri i ditëve që kanë përdoruesit për t'u regjistruar në vërtetimin me dy faktorë (2FA) pasi ai bëhet i detyrueshëm. Vendoseni në 0 për ta zbatuar menjëherë (sjellja e mëparshme). Shkurtimi i një periudhe hiri aktive mund t'i bllokojë përdoruesit menjëherë."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Hapni një familje për të korrigjuar adresën e saj, pastaj ekzekutojeni këtë përsëri."
+
+#: 
+msgid "Set up now"
+msgstr "Konfiguro tani"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Kjo gjen koordinatat e hartës për çdo familje që nuk i ka, duke përdorur OpenStreetMap. Përpunon deri në 50 familje për ekzekutim; një grup i plotë zgjat rreth një minutë. Mund ta lini këtë faqe të hapur ndërsa ekzekutohet. Të vazhdohet?"
+
+#: 
+msgid "Unknown family"
+msgstr "Familje e panjohur"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Përditëso të gjitha koordinatat"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Përditëso koordinatat e të gjitha familjeve"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Përditëso koordinatat"
+

@@ -17349,6 +17349,10 @@ msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr "Sei sicuro di voler rimuovere il ruolo '{{name}}'?"
 
 #: 
+msgid "Auto"
+msgstr "Automatico"
+
+#: 
 msgid "Auto follows your OS or browser setting; Light and Dark override it"
 msgstr "Auto segue le impostazioni del sistema operativo o del browser; Chiaro e Scuro le sovrascrivono"
 
@@ -17853,4 +17857,84 @@ msgstr "Nessun evento trovato per %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Prova a selezionare un tipo di evento, mese o anno diverso."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Si è verificato un errore di geocodifica — riprova più tardi"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "L'indirizzo è incompleto (mancano città, provincia e CAP)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Tutte le famiglie hanno già le coordinate."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Impossibile aggiornare le coordinate"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Impossibile aggiornare le coordinate della famiglia"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geocodificate tutte le {{geocoded}} famiglie. La mappa è ora aggiornata."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geocodificate {{geocoded}} famiglie. {{failed}} non è stato possibile risolverle — vedi i dettagli qui sotto."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Geocodificate {{geocoded}} di {{total}} famiglie. {{overflow}} non ancora elaborate — esegui di nuovo per continuare."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Geocodifica delle famiglie in corso… può richiedere fino a un minuto. Puoi lasciare questa pagina aperta."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geocodifica in corso…"
+
+#: 
+msgid "No address on file"
+msgstr "Nessun indirizzo registrato"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nessuna corrispondenza trovata — controlla via, città e CAP"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Numero di giorni a disposizione degli utenti per attivare l'autenticazione a due fattori dopo che è stata resa obbligatoria. Imposta 0 per applicarla immediatamente (comportamento precedente). Ridurre un periodo di grazia attivo potrebbe bloccare immediatamente l'accesso agli utenti."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Apri una famiglia per correggere il suo indirizzo, poi esegui di nuovo questa operazione."
+
+#: 
+msgid "Set up now"
+msgstr "Configura ora"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Questa funzione trova le coordinate mappa per ogni famiglia che ne è priva, utilizzando OpenStreetMap. Elabora fino a 50 famiglie per esecuzione; un batch completo richiede circa un minuto. Puoi lasciare questa pagina aperta durante l'elaborazione. Continuare?"
+
+#: 
+msgid "Unknown family"
+msgstr "Famiglia sconosciuta"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Aggiorna tutte le coordinate"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Aggiorna tutte le coordinate delle famiglie"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Aggiorna coordinate"
 

@@ -17793,3 +17793,88 @@ msgstr "%s %d のイベントが見つかりませんでした。"
 msgid "Try selecting a different event type, month, or year."
 msgstr "別のイベントタイプ、月、または年を選択してみてください。"
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "ジオコーディングエラーが発生しました — 後でもう一度お試しください"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "住所が不完全です（市区町村、都道府県、郵便番号が不足しています）"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "すべての家族にはすでに座標が設定されています。"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "座標の更新に失敗しました"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "家族の座標の更新に失敗しました"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "{{geocoded}} 件すべての家族のジオコーディングが完了しました。地図は最新の状態です。"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} 件の家族のジオコーディングが完了しました。{{failed}} 件は解決できませんでした — 詳細は以下をご覧ください。"
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "{{total}} 件中 {{geocoded}} 件の家族のジオコーディングが完了しました。{{overflow}} 件はまだ処理されていません — 続行するには再度実行してください。"
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "家族のジオコーディングを実行中です… 最大で1分ほどかかる場合があります。このページは開いたままにしておいて構いません。"
+
+#: 
+msgid "Geocoding…"
+msgstr "ジオコーディング中…"
+
+#: 
+msgid "No address on file"
+msgstr "登録された住所がありません"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "一致する結果が見つかりませんでした — 番地、市区町村、郵便番号を確認してください"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "二要素認証（2FA）が必須になった後、ユーザーが登録するまでに猶予される日数です。即時に強制するには0に設定してください（従来の動作）。有効な猶予期間を短縮すると、ユーザーが直ちにロックアウトされる可能性があります。"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "家族を開いて住所を修正し、その後もう一度実行してください。"
+
+#: 
+msgid "Set up now"
+msgstr "今すぐ設定"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "この機能は、OpenStreetMap を使用して座標が設定されていないすべての家族の地図座標を検索します。1回の実行で最大50件の家族を処理し、フルバッチには約1分かかります。実行中はこのページを開いたままにしておくことができます。続行しますか？"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "二要素認証が必要です。登録までにあと %d 日あります。"
+
+#: 
+msgid "Unknown family"
+msgstr "不明な家族"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "すべての座標を更新"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "すべての家族の座標を更新"
+
+#: 
+msgid "Update Coordinates"
+msgstr "座標を更新"
+

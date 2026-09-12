@@ -17788,3 +17788,83 @@ msgstr "Geen evenementen gevonden voor %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Probeer een ander gebeurtenistype, maand of jaar te selecteren."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Er is een geocoderingsfout opgetreden — probeer het later opnieuw"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Het adres is onvolledig (plaats, provincie en postcode ontbreken)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alle gezinnen hebben al coördinaten."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Bijwerken van coördinaten mislukt"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Bijwerken van de coördinaten van het gezin mislukt"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Alle {{geocoded}} gezinnen zijn gegeocodeerd. De kaart is nu up-to-date."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} gezinnen zijn gegeocodeerd. {{failed}} konden niet worden herleid — zie details hieronder."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "{{geocoded}} van de {{total}} gezinnen zijn gegeocodeerd. {{overflow}} zijn nog niet verwerkt — voer opnieuw uit om door te gaan."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Gezinnen worden gegeocodeerd… dit kan tot een minuut duren. U kunt deze pagina open laten staan."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geocoderen…"
+
+#: 
+msgid "No address on file"
+msgstr "Geen adres bekend"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Geen overeenkomst gevonden — controleer straat, plaats en postcode"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Aantal dagen dat gebruikers hebben om tweefactorauthenticatie (2FA) in te stellen nadat dit verplicht is geworden. Stel in op 0 om dit onmiddellijk af te dwingen (voormalig gedrag). Het verkorten van een actieve overgangsperiode kan gebruikers onmiddellijk buitensluiten."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Open een gezin om het adres te corrigeren en voer dit daarna opnieuw uit."
+
+#: 
+msgid "Set up now"
+msgstr "Nu instellen"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Dit zoekt kaartcoördinaten voor elk gezin dat ze mist, met behulp van OpenStreetMap. Er worden per keer maximaal 50 gezinnen verwerkt; een volledige batch duurt ongeveer een minuut. U kunt deze pagina open laten staan terwijl dit wordt uitgevoerd. Doorgaan?"
+
+#: 
+msgid "Unknown family"
+msgstr "Onbekend gezin"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Alle coördinaten bijwerken"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Alle gezinscoördinaten bijwerken"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Coördinaten bijwerken"
+

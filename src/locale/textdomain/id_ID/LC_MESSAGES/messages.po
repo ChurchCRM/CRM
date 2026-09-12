@@ -17818,3 +17818,88 @@ msgstr "Tidak ada acara yang ditemukan untuk %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Coba pilih jenis acara, bulan, atau tahun yang berbeda."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Terjadi kesalahan geocoding — coba lagi nanti"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Alamat tidak lengkap (kota, provinsi, dan kode pos belum diisi)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Semua keluarga sudah memiliki koordinat."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Gagal memperbarui koordinat"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Gagal memperbarui koordinat keluarga"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Berhasil melakukan geocode pada semua {{geocoded}} keluarga. Peta sekarang sudah diperbarui."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Berhasil melakukan geocode pada {{geocoded}} keluarga. {{failed}} tidak dapat diselesaikan — lihat detail di bawah."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Berhasil melakukan geocode pada {{geocoded}} dari {{total}} keluarga. {{overflow}} belum diproses — jalankan lagi untuk melanjutkan."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Melakukan geocoding pada keluarga… ini bisa memakan waktu hingga satu menit. Anda dapat membiarkan halaman ini tetap terbuka."
+
+#: 
+msgid "Geocoding…"
+msgstr "Melakukan geocoding…"
+
+#: 
+msgid "No address on file"
+msgstr "Tidak ada alamat yang tercatat"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Tidak ditemukan kecocokan — periksa alamat jalan, kota, dan kode pos"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Jumlah hari yang dimiliki pengguna untuk mendaftar autentikasi dua faktor (2FA) setelah menjadi wajib. Atur ke 0 untuk menerapkannya segera (perilaku lama). Memperpendek masa tenggang yang sedang berjalan dapat langsung mengunci akses pengguna."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Buka data keluarga untuk memperbaiki alamatnya, lalu jalankan ini lagi."
+
+#: 
+msgid "Set up now"
+msgstr "Siapkan sekarang"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Fitur ini mencari koordinat peta untuk setiap keluarga yang belum memilikinya, menggunakan OpenStreetMap. Fitur ini memproses hingga 50 keluarga per proses; satu batch penuh memerlukan waktu sekitar satu menit. Anda dapat membiarkan halaman ini tetap terbuka selama proses berjalan. Lanjutkan?"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Autentikasi dua faktor diwajibkan. Anda memiliki %d hari untuk mendaftar."
+
+#: 
+msgid "Unknown family"
+msgstr "Keluarga tidak dikenal"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Perbarui Semua Koordinat"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Perbarui Semua Koordinat Keluarga"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Perbarui Koordinat"
+

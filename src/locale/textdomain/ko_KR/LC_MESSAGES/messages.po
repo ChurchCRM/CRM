@@ -17823,3 +17823,88 @@ msgstr "%s %d에 대한 행사를 찾을 수 없습니다."
 msgid "Try selecting a different event type, month, or year."
 msgstr "다른 행사 유형, 달 또는 연도를 선택해 보세요."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "지오코딩 오류가 발생했습니다 — 나중에 다시 시도하세요"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "주소가 불완전합니다(시/도, 시/군/구, 우편번호 누락)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "모든 가족에 이미 좌표가 있습니다."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "좌표를 업데이트하지 못했습니다"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "가족 좌표를 업데이트하지 못했습니다"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "{{geocoded}}개 가족 모두 지오코딩되었습니다. 지도가 이제 최신 상태입니다."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}}개 가족이 지오코딩되었습니다. {{failed}}개는 확인할 수 없었습니다 — 아래 세부 정보를 참조하세요."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "{{total}}개 가족 중 {{geocoded}}개가 지오코딩되었습니다. {{overflow}}개는 아직 처리되지 않았습니다 — 계속하려면 다시 실행하세요."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "가족 정보를 지오코딩하는 중… 최대 1분 정도 걸릴 수 있습니다. 이 페이지를 열어 두어도 됩니다."
+
+#: 
+msgid "Geocoding…"
+msgstr "지오코딩 중…"
+
+#: 
+msgid "No address on file"
+msgstr "등록된 주소 없음"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "일치하는 항목을 찾을 수 없습니다 — 도로명 주소, 시/도, 우편번호를 확인하세요"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "2단계 인증(2FA)이 의무화된 후 사용자가 등록할 수 있는 유예 일수입니다. 즉시 적용하려면 0으로 설정하세요(이전 동작 방식). 활성화된 유예 기간을 단축하면 사용자가 즉시 차단될 수 있습니다."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "가족 정보를 열어 주소를 수정한 다음 다시 실행하세요."
+
+#: 
+msgid "Set up now"
+msgstr "지금 설정"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "OpenStreetMap을 사용하여 좌표가 없는 모든 가족의 지도 좌표를 찾습니다. 실행당 최대 50개 가족을 처리하며, 전체 배치는 약 1분이 걸립니다. 실행되는 동안 이 페이지를 열어 두어도 됩니다. 계속하시겠습니까?"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "2단계 인증이 필요합니다. 등록까지 %d일 남았습니다."
+
+#: 
+msgid "Unknown family"
+msgstr "알 수 없는 가족"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "모든 좌표 업데이트"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "모든 가족 좌표 업데이트"
+
+#: 
+msgid "Update Coordinates"
+msgstr "좌표 업데이트"
+

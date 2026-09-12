@@ -1,30 +1,10 @@
 {
   "CSV": "",
   "OFX": "",
-  "A geocoding error occurred — try again later": "",
-  "Address is incomplete (missing city, state, and ZIP)": "",
-  "All families already have coordinates.": "",
-  "Failed to update coordinates": "",
-  "Failed to update family coordinates": "",
-  "Geocoded all {{geocoded}} families. The map is now up to date.": "",
-  "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.": "",
-  "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.": "",
-  "Geocoding families… this can take up to a minute. You can keep this page open.": "",
-  "Geocoding…": "",
-  "No address on file": "",
-  "No match found — check the street address, city, and ZIP": "",
-  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "",
-  "Open a family to fix its address, then run this again.": "",
-  "Set up now": "",
-  "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "",
+    "one": "Kaheastmeline autentimine on kohustuslik. Teil on %d päev selle seadistamiseks.|Kaheastmeline autentimine on kohustuslik. Teil on %d päeva selle seadistamiseks.",
     "other": ""
   },
-  "Unknown family": "",
-  "Update All Coordinates": "",
-  "Update All Family Coordinates": "",
-  "Update Coordinates": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""

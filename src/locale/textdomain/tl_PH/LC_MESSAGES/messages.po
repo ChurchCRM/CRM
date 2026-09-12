@@ -17760,3 +17760,83 @@ msgstr "Walang nahanap na mga kaganapan para sa %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "Subukang pumili ng ibang uri ng kaganapan, buwan, o taon."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Nagkaroon ng error sa pag-geocode — subukan muli mamaya"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Hindi kumpleto ang address (kulang ang lungsod, probinsya, at ZIP code)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Lahat ng mga pamilya ay mayroon nang mga coordinate."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Nabigong i-update ang mga coordinate"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Nabigong i-update ang mga coordinate ng pamilya"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Na-geocode na ang lahat ng {{geocoded}} na pamilya. Napapanahon na ngayon ang mapa."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Na-geocode ang {{geocoded}} na pamilya. Hindi na-resolve ang {{failed}} — tingnan ang mga detalye sa ibaba."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "Na-geocode ang {{geocoded}} sa {{total}} na pamilya. Hindi pa naproseso ang {{overflow}} — patakbuhin muli para magpatuloy."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "Ginageocode ang mga pamilya… maaari itong tumagal ng hanggang isang minuto. Maaari mong iwanang bukas ang pahinang ito."
+
+#: 
+msgid "Geocoding…"
+msgstr "Ginageocode…"
+
+#: 
+msgid "No address on file"
+msgstr "Walang naka-file na address"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Walang nahanap na tugma — suriin ang address, lungsod, at ZIP code"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "Bilang ng mga araw na mayroon ang mga user para mag-enroll sa two-factor authentication (2FA) matapos itong maging mandatory. Itakda sa 0 para agad itong ipatupad (dating gawi). Ang pagpapaikli sa isang aktibong grace period ay maaaring agad na mag-lock out sa mga user."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Buksan ang isang pamilya para ayusin ang address nito, pagkatapos ay patakbuhin ito muli."
+
+#: 
+msgid "Set up now"
+msgstr "I-set up na ngayon"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "Hinahanap nito ang mga koordinate sa mapa para sa bawat pamilyang kulang nito, gamit ang OpenStreetMap. Nagpoproseso ito ng hanggang 50 pamilya kada takbo; humigit-kumulang isang minuto ang tagal ng isang buong batch. Maaari mong iwanang bukas ang pahinang ito habang tumatakbo ito. Magpatuloy?"
+
+#: 
+msgid "Unknown family"
+msgstr "Hindi kilalang pamilya"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "I-update ang Lahat ng Coordinate"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "I-update ang Lahat ng Coordinate ng Pamilya"
+
+#: 
+msgid "Update Coordinates"
+msgstr "I-update ang mga Coordinate"
+

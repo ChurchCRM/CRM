@@ -17841,3 +17841,83 @@ msgstr "לא נמצאו אירועים עבור %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "נסה לבחור סוג אירוע, חודש או שנה שונים."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "אירעה שגיאת מיקום גיאוגרפי — נסה שוב מאוחר יותר"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "הכתובת אינה שלמה (חסרים עיר, מחוז ומיקוד)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "לכל המשפחות כבר יש קואורדינטות."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "עדכון הקואורדינטות נכשל"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "עדכון קואורדינטות המשפחה נכשל"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "בוצע מיקום גיאוגרפי לכל {{geocoded}} המשפחות. המפה מעודכנת כעת."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "בוצע מיקום גיאוגרפי ל-{{geocoded}} משפחות. לא ניתן היה לפתור {{failed}} — ראה פרטים למטה."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "בוצע מיקום גיאוגרפי ל-{{geocoded}} מתוך {{total}} משפחות. {{overflow}} עדיין לא עובדו — הפעל שוב כדי להמשיך."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "מבצע מיקום גיאוגרפי למשפחות… זה עשוי לקחת עד דקה. ניתן להשאיר דף זה פתוח."
+
+#: 
+msgid "Geocoding…"
+msgstr "מבצע מיקום גיאוגרפי…"
+
+#: 
+msgid "No address on file"
+msgstr "אין כתובת רשומה"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "לא נמצאה התאמה — בדוק את כתובת הרחוב, העיר והמיקוד"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "מספר הימים שיש למשתמשים כדי להירשם לאימות דו-שלבי (2FA) לאחר שהוא הופך לחובה. הגדר ל-0 כדי לאכוף באופן מיידי (התנהגות קודמת). קיצור תקופת חסד פעילה עלול לנעול משתמשים החוצה באופן מיידי."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "פתח משפחה כדי לתקן את כתובתה, ולאחר מכן הפעל זאת שוב."
+
+#: 
+msgid "Set up now"
+msgstr "הגדר כעת"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "פעולה זו מוצאת קואורדינטות מפה עבור כל משפחה שחסרות לה, באמצעות OpenStreetMap. היא מעבדת עד 50 משפחות בכל הרצה; אצווה מלאה אורכת כדקה. ניתן להשאיר דף זה פתוח בזמן הריצה. להמשיך?"
+
+#: 
+msgid "Unknown family"
+msgstr "משפחה לא ידועה"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "עדכן את כל הקואורדינטות"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "עדכן את קואורדינטות כל המשפחות"
+
+#: 
+msgid "Update Coordinates"
+msgstr "עדכן קואורדינטות"
+

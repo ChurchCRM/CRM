@@ -17894,3 +17894,83 @@ msgstr "لم يتم العثور على أحداث لـ %s %d."
 msgid "Try selecting a different event type, month, or year."
 msgstr "حاول تحديد نوع حدث أو شهر أو سنة مختلفة."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "حدث خطأ في تحديد الموقع الجغرافي — حاول مرة أخرى لاحقًا"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "العنوان غير مكتمل (المدينة والمحافظة والرمز البريدي مفقودة)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "جميع العائلات لديها إحداثيات بالفعل."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "فشل تحديث الإحداثيات"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "فشل تحديث إحداثيات العائلة"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "تم تحديد الموقع الجغرافي لجميع العائلات البالغ عددها {{geocoded}}. الخريطة الآن محدّثة."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "تم تحديد الموقع الجغرافي لـ {{geocoded}} عائلة. تعذّر حل {{failed}} — راجع التفاصيل أدناه."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "تم تحديد الموقع الجغرافي لـ {{geocoded}} من أصل {{total}} عائلة. لم تتم معالجة {{overflow}} بعد — شغّل العملية مرة أخرى للمتابعة."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "جارٍ تحديد الموقع الجغرافي للعائلات… قد يستغرق هذا حتى دقيقة واحدة. يمكنك إبقاء هذه الصفحة مفتوحة."
+
+#: 
+msgid "Geocoding…"
+msgstr "جارٍ تحديد الموقع الجغرافي…"
+
+#: 
+msgid "No address on file"
+msgstr "لا يوجد عنوان مسجل"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "لم يتم العثور على تطابق — تحقق من عنوان الشارع والمدينة والرمز البريدي"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "عدد الأيام المتاحة للمستخدمين للتسجيل في المصادقة الثنائية (2FA) بعد أن تصبح إلزامية. اضبط القيمة على 0 لفرضها فورًا (السلوك القديم). قد يؤدي تقصير فترة سماح نشطة إلى إغلاق الوصول عن المستخدمين فورًا."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "افتح ملف عائلة لتصحيح عنوانها، ثم شغّل هذا مرة أخرى."
+
+#: 
+msgid "Set up now"
+msgstr "الإعداد الآن"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "يبحث هذا عن إحداثيات الخريطة لكل عائلة تفتقر إليها، باستخدام OpenStreetMap. يعالج ما يصل إلى 50 عائلة في كل تشغيل؛ وتستغرق الدفعة الكاملة نحو دقيقة واحدة. يمكنك إبقاء هذه الصفحة مفتوحة أثناء التشغيل. هل تريد المتابعة؟"
+
+#: 
+msgid "Unknown family"
+msgstr "عائلة غير معروفة"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "تحديث جميع الإحداثيات"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "تحديث إحداثيات جميع العائلات"
+
+#: 
+msgid "Update Coordinates"
+msgstr "تحديث الإحداثيات"
+

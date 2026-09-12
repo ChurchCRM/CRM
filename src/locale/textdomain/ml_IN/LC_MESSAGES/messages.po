@@ -17796,3 +17796,83 @@ msgstr "%s %d-നായി ഒരു ഇവന്റും കണ്ടെത്
 msgid "Try selecting a different event type, month, or year."
 msgstr "മറ്റൊരു ഇവന്റ് തരം, മാസം അല്ലെങ്കിൽ വർഷം തിരഞ്ഞെടുക്കാൻ ശ്രമിക്കുക."
 
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "ജിയോകോഡിംഗ് പിശക് സംഭവിച്ചു — ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "വിലാസം അപൂർണ്ണമാണ് (നഗരം, സംസ്ഥാനം, പിൻ കോഡ് എന്നിവ ഇല്ല)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "എല്ലാ കുടുംബങ്ങൾക്കും ഇതിനകം കോർഡിനേറ്റുകൾ ഉണ്ട്."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "കോർഡിനേറ്റുകൾ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "കുടുംബത്തിന്റെ കോർഡിനേറ്റുകൾ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "{{geocoded}} കുടുംബങ്ങൾ മുഴുവനും ജിയോകോഡ് ചെയ്തു. മാപ്പ് ഇപ്പോൾ കാലികമാണ്."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} കുടുംബങ്ങൾ ജിയോകോഡ് ചെയ്തു. {{failed}} എണ്ണം പരിഹരിക്കാൻ കഴിഞ്ഞില്ല — താഴെ വിശദാംശങ്ങൾ കാണുക."
+
+#: 
+msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
+msgstr "{{total}} കുടുംബങ്ങളിൽ {{geocoded}} എണ്ണം ജിയോകോഡ് ചെയ്തു. {{overflow}} എണ്ണം ഇതുവരെ പ്രോസസ്സ് ചെയ്തിട്ടില്ല — തുടരാൻ വീണ്ടും പ്രവർത്തിപ്പിക്കുക."
+
+#: 
+msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgstr "കുടുംബങ്ങളെ ജിയോകോഡ് ചെയ്യുന്നു… ഇതിന് ഒരു മിനിറ്റ് വരെ എടുത്തേക്കാം. ഈ പേജ് തുറന്നിരിക്കാൻ അനുവദിക്കാം."
+
+#: 
+msgid "Geocoding…"
+msgstr "ജിയോകോഡ് ചെയ്യുന്നു…"
+
+#: 
+msgid "No address on file"
+msgstr "രേഖപ്പെടുത്തിയ വിലാസമില്ല"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "പൊരുത്തമൊന്നും കണ്ടെത്തിയില്ല — തെരുവ് വിലാസം, നഗരം, പിൻ കോഡ് എന്നിവ പരിശോധിക്കുക"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
+msgstr "രണ്ട്-ഘടക പ്രാമാണീകരണം (2FA) നിർബന്ധമായതിന് ശേഷം ഉപയോക്താക്കൾക്ക് രജിസ്റ്റർ ചെയ്യാൻ ലഭിക്കുന്ന ദിവസങ്ങളുടെ എണ്ണം. ഉടൻ നടപ്പിലാക്കാൻ 0 ആയി സജ്ജമാക്കുക (പഴയ പെരുമാറ്റം). സജീവമായ ഗ്രേസ് പിരീഡ് ചുരുക്കുന്നത് ഉപയോക്താക്കളെ ഉടൻ ലോക്ക് ചെയ്യപ്പെടാൻ ഇടയാക്കാം."
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "വിലാസം ശരിയാക്കാൻ ഒരു കുടുംബം തുറന്ന്, തുടർന്ന് ഇത് വീണ്ടും പ്രവർത്തിപ്പിക്കുക."
+
+#: 
+msgid "Set up now"
+msgstr "ഇപ്പോൾ സജ്ജമാക്കുക"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgstr "OpenStreetMap ഉപയോഗിച്ച്, കോർഡിനേറ്റുകൾ ഇല്ലാത്ത എല്ലാ കുടുംബങ്ങൾക്കും ഇത് മാപ്പ് കോർഡിനേറ്റുകൾ കണ്ടെത്തുന്നു. ഓരോ റണ്ണിലും പരമാവധി 50 കുടുംബങ്ങൾ പ്രോസസ്സ് ചെയ്യുന്നു; ഒരു പൂർണ്ണ ബാച്ചിന് ഏകദേശം ഒരു മിനിറ്റ് എടുക്കും. ഇത് പ്രവർത്തിക്കുമ്പോൾ ഈ പേജ് തുറന്നിരിക്കാൻ അനുവദിക്കാം. തുടരണോ?"
+
+#: 
+msgid "Unknown family"
+msgstr "അജ്ഞാത കുടുംബം"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "എല്ലാ കോർഡിനേറ്റുകളും അപ്ഡേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "എല്ലാ കുടുംബ കോർഡിനേറ്റുകളും അപ്ഡേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Update Coordinates"
+msgstr "കോർഡിനേറ്റുകൾ അപ്ഡേറ്റ് ചെയ്യുക"
+
