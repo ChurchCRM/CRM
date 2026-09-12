@@ -37,7 +37,10 @@ class Menu
         $isManageGroups = $currentUser->isManageGroupsEnabled();
         $canViewEvents = $currentUser->canViewEvents();
         $isVolunteerV1Enabled = User::isVolunteerV1Enabled();
-        $isVolunteerV2Enabled = User::isVolunteerV2Enabled();
+        // #9706: the Volunteer menu mirrors VolunteerCoordinatorRoleAuthMiddleware exactly.
+        // Computed once here like every other visibility boolean; the predicate memoises
+        // the scope query on the User instance so the route gate reuses it.
+        $isVolunteerCoordinator = $currentUser->isVolunteerCoordinatorEnabled();
         $menus = [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-gauge'),
             'Calendar'     => self::getCalendarMenu($canViewEvents),
@@ -46,7 +49,7 @@ class Menu
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
             'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents),
-            'Volunteer'    => self::getVolunteerMenu($isAdmin && $isVolunteerV2Enabled),
+            'Volunteer'    => self::getVolunteerMenu($isVolunteerCoordinator),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
             'Reports'      => self::getReportsMenu($isAdmin),
@@ -284,13 +287,16 @@ class Menu
     }
 
     /**
-     * Volunteer Management v2 (#9704). Visible only when the rollout state is
-     * 'v2' or 'both'; the legacy "Volunteer Opportunities" item under
-     * People → Admin covers 'v1' and 'both'.
+     * Volunteer Management v2 (#9704, rescoped by #9706).
      *
-     * $isVisible must mirror the gate on the /volunteer route group exactly —
-     * AdminRoleAuthMiddleware today, the scoped coordinator middleware from
-     * #9706 later — so the menu never advertises a page that 302s away.
+     * $isVisible is User::isVolunteerCoordinatorEnabled() — the SAME predicate
+     * VolunteerCoordinatorRoleAuthMiddleware calls — so the menu never advertises a
+     * page that 302s away and never hides one the user could open. It already carries
+     * the rollout state, the administrator bypass, the global-manager flag, the
+     * EditSelf-exclusive short-circuit and the ministry/team scope lookup.
+     *
+     * The legacy "Volunteer Opportunities" item under People → Admin covers the 'v1'
+     * and 'both' rollout states and is unaffected.
      */
     private static function getVolunteerMenu(bool $isVisible): MenuItem
     {
