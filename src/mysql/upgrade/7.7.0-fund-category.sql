@@ -1,4 +1,4 @@
--- ChurchCRM 7.0.3 Donation Fund Category
+-- ChurchCRM 7.7.0 Donation Fund Category
 -- Add fun_Category column to donationfund_fun table for better fund organization.
 
 ALTER TABLE `donationfund_fun`
