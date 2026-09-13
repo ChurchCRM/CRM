@@ -28,37 +28,32 @@ After cloning the repository, install the Node.js dependencies before using the 
 npm install
 ```
 
-Codespaces and Dev Containers install these tools and dependencies automatically. For a local setup, complete these steps yourself before starting the application.
+## Primary local setup
 
-## Recommended setup
+ChurchCRM maintainers develop with PHP, Composer, Node.js, and npm installed locally. Docker runs the application stack used for testing.
 
-GitHub Codespaces and VS Code Dev Containers provide the supported development toolchain: PHP 8.4, Node.js 24, Composer, Docker, and the required extensions.
+From the repository root:
 
-### GitHub Codespaces
+```bash
+npm install
+npm run build
+npm run docker:test:start
+```
 
-1. Open the repository's **Code** menu.
-2. Select **Codespaces** and create a codespace from your working branch.
-3. Wait for the setup process to finish.
-4. Start ChurchCRM:
+Open `http://localhost` and sign in with `admin` / `changeme`.
 
-   ```bash
-   npm run docker:dev:start
-   ```
+The repository does not define an `npm run docker:test` script. Use `npm run docker:test:start` to start the test stack.
 
-5. Open `http://localhost` and sign in with `admin` / `changeme`.
+## Optional community environments
 
-### VS Code Dev Containers
+The repository also contains community-requested configurations for DDEV, GitHub Codespaces, and VS Code Dev Containers. These are alternatives to the maintainer workflow, not the primary development path.
 
-1. Install Docker and the VS Code Dev Containers extension.
-2. Clone this repository and open it in VS Code.
-3. Select **Reopen in Container** when prompted.
-4. After setup finishes, run `npm run docker:dev:start`.
-
-The container setup installs dependencies and builds the application automatically. See [`.devcontainer/README.md`](.devcontainer/README.md) for configuration and troubleshooting.
+- DDEV configuration is under [`.ddev/`](.ddev/).
+- Codespaces and Dev Container instructions are in [`.devcontainer/README.md`](.devcontainer/README.md).
 
 ## Services
 
-After `npm run docker:dev:start`, the development environment provides:
+After `npm run docker:test:start`, the test environment provides:
 
 | Service | URL | Purpose |
 |---|---|---|
@@ -71,8 +66,8 @@ The default ChurchCRM login is `admin` / `changeme`. Never use these credentials
 ## Typical development loop
 
 ```bash
-# Start the application
-npm run docker:dev:start
+# Start the test environment
+npm run docker:test:start
 
 # Rebuild PHP and frontend assets
 npm run build
@@ -83,8 +78,8 @@ npm run lint
 # Run the complete Cypress suite
 npm run test
 
-# Stop the environment while keeping its volumes
-npm run docker:dev:stop
+# Stop the test environment while keeping its volumes
+npm run docker:test:stop
 ```
 
 PHP changes are bind-mounted and normally require only a browser refresh. After changing JavaScript, TypeScript, or CSS, run `npm run build:frontend`.
@@ -107,10 +102,10 @@ Use the smallest relevant test while developing, then run the broader required c
 | `npm run build` | Build PHP dependencies and frontend assets |
 | `npm run build:php` | Validate PHP and install Composer dependencies |
 | `npm run build:frontend` | Build JavaScript and CSS assets |
-| `npm run docker:dev:start` | Start the development services |
-| `npm run docker:dev:logs` | Follow development-service logs |
-| `npm run docker:dev:login:web` | Open a shell in the web container |
-| `npm run docker:dev:reset:db` | Restore the development database seed |
+| `npm run docker:test:start` | Start the local test services |
+| `npm run docker:test:logs` | Follow test-service logs |
+| `npm run docker:test:login:web` | Open a shell in the web container |
+| `npm run docker:test:reset:db` | Restore the test database seed |
 | `npm run lint` | Run the repository's static checks |
 | `npm run test` | Run all Cypress tests |
 
