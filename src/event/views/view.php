@@ -251,12 +251,21 @@ $inactive = (int) $event->getInActive() === 1;
                   <?php if ($vo['scheduleName'] !== ''): ?>
                     <div class="text-body-secondary small"><?= InputUtils::escapeHTML($vo['scheduleName']) ?></div>
                   <?php endif; ?>
-                  <div class="small mt-1">
-                    <?= sprintf(gettext('%1$d of %2$d filled'), $vo['liveCount'], $vo['requiredCount']) ?>
-                  </div>
+                  <?php if ($vo['requirementCount'] > 0): ?>
+                    <div class="small mt-1">
+                      <?= sprintf(gettext('%1$d of %2$d filled'), $vo['liveCount'], $vo['requiredCount']) ?>
+                    </div>
+                  <?php endif; ?>
                 </div>
                 <div class="text-end">
-                  <?php if ($vo['gapCount'] > 0): ?>
+                  <?php if ($vo['requirementCount'] === 0): ?>
+                    <!--
+                      Nobody has said what this occurrence needs. "Fully staffed" here was
+                      the bug: an empty plan has no gaps, so a count-only test calls it
+                      green and the coordinator never learns there is nothing to fill.
+                    -->
+                    <span class="badge bg-secondary-lt text-secondary"><?= gettext('No staffing needs set') ?></span>
+                  <?php elseif ($vo['gapCount'] > 0): ?>
                     <span class="badge bg-orange-lt text-orange">
                       <?= sprintf(gettext('%d still needed'), $vo['gapCount']) ?>
                     </span>
