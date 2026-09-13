@@ -1,32 +1,32 @@
 {
-  "CSV": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "ባለሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀን አለዎት።|ባለሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀናት አሉዎት።",
-    "other": ""
+    "one": "ባለሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀን አለዎት።",
+    "other": "ባለሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀናት አሉዎት።"
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} አባል ተቀድቷል",
+    "other": "{{count}} አባላት ተቀድተዋል"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ይህ ዝርዝር {{count}} ተቀባይ አለው — ለmailto: አገናኝ በጣም ብዙ ነው። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።",
+    "other": "ይህ ዝርዝር {{count}} ተቀባዮች አሉት — ለmailto: አገናኝ በጣም ብዙ ናቸው። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባይ አለ ({{count}} > {{max}})። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።",
+    "other": "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባዮች አሉ ({{count}} > {{max}})። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ደቂቃ ቀርቷል",
+    "other": "{{count}} ደቂቃዎች ቀርተዋል"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ቤተሰብ በጂኦኮድ ሊደረግ አልቻለም",
+    "other": "{{count}} ቤተሰቦች በጂኦኮድ ሊደረጉ አልቻሉም"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…እና {{count}} ተጨማሪ። የቀረውን ለማየት እንደገና ያሂዱ።",
+    "other": "…እና {{count}} ተጨማሪዎች። የቀረውን ለማየት እንደገና ያሂዱ።"
   }
 }
