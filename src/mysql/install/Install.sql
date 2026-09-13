@@ -328,7 +328,9 @@ CREATE TABLE `group_grp` (
   `grp_hasSpecialProps` BOOLEAN NOT NULL default 0,
   `grp_active` BOOLEAN NOT NULL default 1,
   `grp_include_email_export` BOOLEAN NOT NULL default 1,
-  PRIMARY KEY  (`grp_ID`)
+  `grp_ministry_id` int(11) default NULL,
+  PRIMARY KEY  (`grp_ID`),
+  KEY `grp_ministry_idx` (`grp_ministry_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -1133,6 +1135,8 @@ CREATE TABLE `volunteer_ministry_vmin` (
   `vmin_Active`           tinyint(1) unsigned   NOT NULL DEFAULT 1,
   `vmin_CreatedDate`      datetime              NOT NULL,
   `vmin_CreatedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vmin_HelpWanted`       tinyint(1)            NOT NULL DEFAULT 0,
+  `vmin_HelpWantedText`   text                           DEFAULT NULL,
   PRIMARY KEY (`vmin_ID`),
   UNIQUE KEY `vmin_name_uidx`  (`vmin_Name`),
   KEY `vmin_active_idx`        (`vmin_Active`),
@@ -1156,23 +1160,6 @@ CREATE TABLE `volunteer_team_vtem` (
   KEY `vtem_ministry_idx`              (`vtem_vmin_ID`),
   CONSTRAINT `fk_vtem_ministry` FOREIGN KEY (`vtem_vmin_ID`)
       REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Table structure for table `volunteer_pool_vpol`
---
-
-CREATE TABLE `volunteer_pool_vpol` (
-  `vpol_ID`        int(11)                     NOT NULL AUTO_INCREMENT,
-  `vpol_OwnerType` enum('ministry','team')     NOT NULL,
-  `vpol_OwnerId`   int(11)                     NOT NULL,
-  `vpol_grp_ID`    mediumint(8) unsigned       NOT NULL,
-  `vpol_Label`     varchar(100)                         DEFAULT NULL,
-  PRIMARY KEY (`vpol_ID`),
-  UNIQUE KEY `vpol_owner_group_uidx` (`vpol_OwnerType`, `vpol_OwnerId`, `vpol_grp_ID`),
-  KEY `vpol_group_idx`               (`vpol_grp_ID`),
-  CONSTRAINT `fk_vpol_group` FOREIGN KEY (`vpol_grp_ID`)
-      REFERENCES `group_grp` (`grp_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1414,12 +1401,18 @@ CREATE TABLE `volunteer_swap_vswp` (
 
 CREATE TABLE `volunteer_notification_vntf` (
   `vntf_ID`              int(11)               NOT NULL AUTO_INCREMENT,
-  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved')
+  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer')
                                                NOT NULL,
   `vntf_Channel`         enum('email')         NOT NULL DEFAULT 'email',
   `vntf_per_ID`          mediumint(9) unsigned NOT NULL,
   `vntf_vasg_ID`         int(11)                        DEFAULT NULL,
   `vntf_vocc_ID`         int(11)                        DEFAULT NULL,
+  -- D19: opaque, type-specific context for a row that hangs off NEITHER an assignment
+  -- nor an occurrence. `help_offer` is the first such type — it is about a ministry and
+  -- a person, and the one fact the message needs ("were they already in the pool?") is
+  -- true only at the moment of the click and cannot be recomputed at delivery time.
+  -- JSON, read only by the type that wrote it.
+  `vntf_Context`         varchar(190)                   DEFAULT NULL,
   `vntf_DedupeKey`       varchar(190)          NOT NULL,
   `vntf_ScheduledFor`    datetime              NOT NULL,
   `vntf_Status`          enum('pending','sent','failed','skipped') NOT NULL DEFAULT 'pending',
@@ -1472,6 +1465,18 @@ CREATE TABLE `volunteer_scope_vscp` (
 --
 ALTER TABLE `events_event`
     ADD CONSTRAINT `events_event_FK_ministry` FOREIGN KEY (`event_ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
+--
+-- Volunteer v2 (D19): the group_grp -> volunteer_ministry_vmin ownership link.
+--
+-- Declared here rather than inside the group_grp CREATE TABLE because that table is
+-- created long before volunteer_ministry_vmin exists. ON DELETE SET NULL so a cascade
+-- can never remove a church group; the ministry-deletion path removes the pool group
+-- explicitly instead (design D19).
+--
+ALTER TABLE `group_grp`
+    ADD CONSTRAINT `group_grp_FK_ministry` FOREIGN KEY (`grp_ministry_id`)
     REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
 
 update version_ver set ver_update_end = now();

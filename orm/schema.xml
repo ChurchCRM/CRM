@@ -261,10 +261,24 @@
         <column name="grp_hasSpecialProps" phpName="HasSpecialProps" type="BOOLEAN" defaultValue="0"/>
         <column name="grp_active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
         <column name="grp_include_email_export" phpName="IncludeInEmailExport" type="BOOLEAN" size="1" required="true" description="Should members of this group be included in MailChimp Export"/>
+        <column name="grp_ministry_id" phpName="MinistryId" type="INTEGER" required="false"
+                description="Volunteer v2 (D19): the volunteer ministry whose pool this group is (volunteer_ministry_vmin.vmin_ID). NULL = an ordinary group; the model hooks and the Groups module behave exactly as before."/>
         <foreign-key foreignTable="list_lst">
             <reference local="grp_RoleListID" foreign="lst_ID"/>
             <reference local="grp_Type" foreign="lst_OptionID"/>
         </foreign-key>
+        <!--
+            ON DELETE SET NULL so a cascade can never remove a church group. Deleting a
+            ministry removes its pool group explicitly, in the service, inside the same
+            transaction (design D19, §2.3).
+        -->
+        <foreign-key foreignTable="volunteer_ministry_vmin" name="GroupMinistry" phpName="Ministry"
+                     refPhpName="PoolGroup" onDelete="setnull">
+            <reference local="grp_ministry_id" foreign="vmin_ID"/>
+        </foreign-key>
+        <index name="grp_ministry_idx">
+            <index-column name="grp_ministry_id"/>
+        </index>
         <index name="grp_ID_2">
             <index-column name="grp_ID"/>
         </index>
@@ -1010,6 +1024,11 @@
                 description="Naive wall-clock in sTimeZone"/>
         <column name="vmin_CreatedBy_per_ID" phpName="CreatedByPersonId" type="SMALLINT" size="9"
                 sqlType="mediumint(9) unsigned"/>
+        <column name="vmin_HelpWanted" phpName="HelpWanted" type="BOOLEAN" size="1" sqlType="tinyint(1)"
+                required="true" defaultValue="0"
+                description="Volunteer v2 (D19): advertise this ministry on the Open Opportunities page"/>
+        <column name="vmin_HelpWantedText" phpName="HelpWantedText" type="LONGVARCHAR"
+                description="Volunteer v2 (D19): what the ministry wants to say to a volunteer reading the Open Opportunities page"/>
         <foreign-key foreignTable="person_per" name="VolunteerMinistryCreatedBy" phpName="CreatedByPerson"
                      refPhpName="CreatedVolunteerMinistry" onDelete="setnull">
             <reference local="vmin_CreatedBy_per_ID" foreign="per_ID"/>
@@ -1046,34 +1065,6 @@
         </unique>
         <index name="vtem_ministry_idx">
             <index-column name="vtem_vmin_ID"/>
-        </index>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
-
-    <table name="volunteer_pool_vpol" idMethod="native" phpName="VolunteerPool"
-           description="Volunteer v2: links a ministry or team to an existing ChurchCRM group that acts as its volunteer pool. Stores no people - the group is the roster">
-        <column name="vpol_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="vpol_OwnerType" phpName="OwnerType" type="CHAR" sqlType="enum('ministry','team')"
-                required="true" description="Which table vpol_OwnerId points at"/>
-        <column name="vpol_OwnerId" phpName="OwnerId" type="INTEGER" required="true"
-                description="vmin_ID or vtem_ID. Polymorphic, so no database foreign key is possible - integrity is enforced in the service layer"/>
-        <column name="vpol_grp_ID" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
-                required="true"/>
-        <column name="vpol_Label" phpName="Label" type="VARCHAR" size="100"
-                description="Optional coordinator label, e.g. &quot;Sunday A team&quot;"/>
-        <foreign-key foreignTable="group_grp" name="VolunteerPoolGroup" phpName="Group"
-                     refPhpName="VolunteerPool" onDelete="cascade">
-            <reference local="vpol_grp_ID" foreign="grp_ID"/>
-        </foreign-key>
-        <unique name="vpol_owner_group_uidx">
-            <unique-column name="vpol_OwnerType"/>
-            <unique-column name="vpol_OwnerId"/>
-            <unique-column name="vpol_grp_ID"/>
-        </unique>
-        <index name="vpol_group_idx">
-            <index-column name="vpol_grp_ID"/>
         </index>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
@@ -1467,7 +1458,7 @@
            description="Volunteer v2: the notification outbox. Idempotent enqueue keyed by vntf_DedupeKey, a due time, and a retry-safe send log drained by the background timer jobs">
         <column name="vntf_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="vntf_Type" phpName="Type" type="CHAR"
-                sqlType="enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved')"
+                sqlType="enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer')"
                 required="true"/>
         <column name="vntf_Channel" phpName="Channel" type="CHAR" sqlType="enum('email')" required="true"
                 defaultValue="email" description="The delivery extension point; email is the only channel in the first release"/>
@@ -1476,6 +1467,8 @@
         <column name="vntf_vasg_ID" phpName="AssignmentId" type="INTEGER"/>
         <column name="vntf_vocc_ID" phpName="OccurrenceId" type="INTEGER"
                 description="Used by gap_alert, which is not assignment scoped"/>
+        <column name="vntf_Context" phpName="Context" type="VARCHAR" size="190"
+                description="Volunteer v2 (D19): JSON context for a row that hangs off neither an assignment nor an occurrence, read only by the type that wrote it (today: help_offer)"/>
         <column name="vntf_DedupeKey" phpName="DedupeKey" type="VARCHAR" size="190" required="true"
                 description="190 rather than 255 to stay inside the InnoDB index prefix limit for utf8mb4"/>
         <column name="vntf_ScheduledFor" phpName="ScheduledFor" type="TIMESTAMP" required="true"
