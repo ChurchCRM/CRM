@@ -1,28 +1,28 @@
 {
-  "CSV": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "คัดลอกสมาชิก {{count}} คนแล้ว",
+    "other": "คัดลอกสมาชิก {{count}} คนแล้ว"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "รายการนี้มีผู้รับ {{count}} คน — มากเกินไปสำหรับลิงก์ mailto: โปรดใช้ \"คัดลอกที่อยู่อีเมล\" แทน",
+    "other": "รายการนี้มีผู้รับ {{count}} คน — มากเกินไปสำหรับลิงก์ mailto: โปรดใช้ \"คัดลอกที่อยู่อีเมล\" แทน"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ผู้รับมากเกินไปสำหรับโปรแกรมอีเมล ({{count}} > {{max}}) โปรดใช้ \"คัดลอกที่อยู่อีเมล\" แทน",
+    "other": "ผู้รับมากเกินไปสำหรับโปรแกรมอีเมล ({{count}} > {{max}}) โปรดใช้ \"คัดลอกที่อยู่อีเมล\" แทน"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "เหลืออีก {{count}} นาที",
+    "other": "เหลืออีก {{count}} นาที"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "ไม่สามารถระบุพิกัดของครอบครัว {{count}} ครอบครัวได้",
+    "other": "ไม่สามารถระบุพิกัดของครอบครัว {{count}} ครอบครัวได้"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…และอีก {{count}} รายการ เรียกใช้อีกครั้งเพื่อดูส่วนที่เหลือ",
+    "other": "…และอีก {{count}} รายการ เรียกใช้อีกครั้งเพื่อดูส่วนที่เหลือ"
   }
 }
