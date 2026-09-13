@@ -45,6 +45,7 @@ import {
   grantQualification,
   linkPool,
   listOccurrences,
+  listScheduleRequirements,
   listSchedules,
   type MinistryDetail,
   notifyError,
@@ -56,13 +57,16 @@ import {
   updatePosition,
   updateSchedule,
   updateTeam,
+  type VolunteerCandidatePosition,
   type VolunteerOccurrenceSummary,
   type VolunteerPool,
   type VolunteerPoolPerson,
   type VolunteerPosition,
+  type VolunteerRequirementRow,
   type VolunteerSchedule,
   type VolunteerTeam,
 } from "./api";
+import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "./staffing-needs";
 
 interface MinistryConfig {
   ministryId: number;
@@ -101,6 +105,11 @@ let schedules: VolunteerSchedule[] | null = null;
 let eventTypes: Array<{ id: number; name: string }> | null = null;
 /** Which schedule a modal is editing; 0 means "new". */
 let editingScheduleId = 0;
+/**
+ * The staffing plan of the schedule the modal is editing, as stored (§2.10). Empty for a
+ * new schedule, which is what makes every position start checked.
+ */
+let scheduleRequirements: VolunteerRequirementRow[] = [];
 /** Which record a modal is editing; 0 means "new". */
 let editingTeamId = 0;
 let editingPositionId = 0;
@@ -560,6 +569,21 @@ async function loadMatrix(force = false): Promise<void> {
  * which #9708 and #9715 left no hook for. Every count comes from the API, which serves
  * them from `VolunteerAssignmentService::getGaps()`; nothing is re-derived here.
  */
+/**
+ * "1 Lead Teacher, 2 Helper" — what is missing, by name.
+ *
+ * A bare gap count tells a coordinator that something is short without telling them
+ * what, which is one click of guessing per row. The names come from the server's gap
+ * list; only the join happens here.
+ */
+function gapSummary(occurrence: VolunteerOccurrenceSummary): string {
+  if (occurrence.gaps.length === 0) {
+    return i18next.t("{{count}} still needed", { count: occurrence.gapCount });
+  }
+
+  return occurrence.gaps.map((gap) => `${gap.gapCount} ${gap.positionName ?? ""}`.trim()).join(", ");
+}
+
 function renderOccurrences(rows: VolunteerOccurrenceSummary[]): void {
   const body = byId("volunteerOccurrencesTable")?.querySelector("tbody");
   if (!body) {
@@ -580,16 +604,25 @@ function renderOccurrences(rows: VolunteerOccurrenceSummary[]): void {
   body.innerHTML = rows
     .map((occurrence) => {
       const when = occurrence.start ?? occurrence.occurrenceDate ?? "";
+      // An EMPTY plan is not "fully staffed" (§2.10). It has no gaps only because nobody
+      // ever said what it needs, and reporting that in green is the whole of the defect
+      // this change fixes — the badge links straight to where the needs are set.
       const gap =
-        occurrence.gapCount > 0
-          ? `<span class="badge bg-red-lt text-red">${occurrence.gapCount}</span>`
-          : `<span class="badge bg-green-lt text-green">${i18next.t("Fully staffed")}</span>`;
+        occurrence.requirementCount === 0
+          ? `<a class="badge bg-secondary-lt text-secondary" href="${root}/volunteer/occurrences/${occurrence.id}">${escapeHtml(i18next.t("No staffing needs set"))}</a>`
+          : occurrence.gapCount > 0
+            ? `<span class="badge bg-red-lt text-red">${escapeHtml(gapSummary(occurrence))}</span>`
+            : `<span class="badge bg-green-lt text-green">${escapeHtml(i18next.t("Fully staffed"))}</span>`;
+      const filled =
+        occurrence.requirementCount === 0
+          ? `<span class="text-body-secondary">&mdash;</span>`
+          : `${occurrence.liveCount} / ${occurrence.requiredCount}`;
 
       return `
         <tr>
           <td><a href="${root}/volunteer/occurrences/${occurrence.id}">${escapeHtml(when)}</a></td>
           <td>${escapeHtml(occurrence.scheduleName ?? "")}</td>
-          <td class="text-center">${occurrence.liveCount} / ${occurrence.requiredCount}</td>
+          <td class="text-center">${filled}</td>
           <td class="text-center">${gap}</td>
           <td class="text-center">
             ${actionMenu([
@@ -792,11 +825,63 @@ function syncScheduleMode(): void {
   show(byId("schedule-form-standalone-rows"), !linked);
 }
 
+/**
+ * The positions a schedule's staffing plan may name: the chosen team's, plus the
+ * ministry's team-less ones, which §2.6 says apply to every team under it. What it never
+ * offers is another team's positions. A ministry-wide schedule (no team) offers them all.
+ *
+ * Mirrors `volunteerCandidatePositions()` in the API, which serves the same question for
+ * the occurrence-level editor — that one has to, because a team leader editing one week
+ * must not need the ministry-wide position list.
+ */
+function candidatePositionsForTeam(teamId: number | null): VolunteerCandidatePosition[] {
+  return (detail?.positions ?? [])
+    .filter((position) => position.active)
+    .filter((position) => teamId === null || position.teamId === null || position.teamId === teamId)
+    .map((position) => ({
+      id: position.id,
+      name: position.name,
+      teamId: position.teamId,
+      order: position.order,
+    }));
+}
+
+/** Re-draw the needs rows for whichever team the form currently names. */
+function renderScheduleNeeds(): void {
+  const container = byId("schedule-form-needs");
+  if (!container) {
+    return;
+  }
+
+  const raw = byId<HTMLSelectElement>("schedule-form-team")?.value ?? "";
+  const teamId = raw === "" ? null : Number(raw);
+
+  // A new schedule starts with every position checked — "I just made a team with one
+  // position, of course I need one of them" — while an edit reflects the rows that exist,
+  // so a position with no requirement shows unchecked, which is what its absence means.
+  renderStaffingNeeds(container, candidatePositionsForTeam(teamId), scheduleRequirements, editingScheduleId === 0);
+}
+
 function openScheduleModal(schedule?: VolunteerSchedule): void {
   editingScheduleId = schedule?.id ?? 0;
   show(byId("schedule-form-error"), false);
+  scheduleRequirements = [];
 
-  void loadEventTypes().then(() => {
+  // The schedule's stored plan, fetched alongside the event types so the modal opens
+  // once, filled. A failure is not fatal: the rows fall back to the new-schedule
+  // defaults and saving still writes a plan.
+  const requirements =
+    schedule === undefined
+      ? Promise.resolve()
+      : listScheduleRequirements(schedule.id)
+          .then((data) => {
+            scheduleRequirements = data.requirements;
+          })
+          .catch(() => {
+            scheduleRequirements = [];
+          });
+
+  void Promise.all([loadEventTypes(), requirements]).then(() => {
     fillScheduleSelects();
 
     const set = (id: string, value: string): void => {
@@ -831,6 +916,7 @@ function openScheduleModal(schedule?: VolunteerSchedule): void {
     }
 
     syncScheduleMode();
+    renderScheduleNeeds();
     modal("scheduleModal")?.show();
   });
 }
@@ -859,10 +945,26 @@ function scheduleFormPayload(): Record<string, unknown> {
     payload.endTime = value("schedule-form-end-time");
   }
 
+  // The whole plan, in the same request as the schedule row: the server writes both in
+  // one transaction, so a payload naming an unknown position leaves no half-made
+  // schedule behind. An empty array is a real answer ("needs nobody") and is sent as one.
+  const needs = byId("schedule-form-needs");
+  if (needs) {
+    payload.requirements = readStaffingNeeds(needs);
+  }
+
   return payload;
 }
 
 function saveSchedule(): void {
+  const needs = byId("schedule-form-needs");
+  const invalid = needs === null ? null : validateStaffingNeeds(needs);
+  if (invalid !== null) {
+    showModalError("schedule", invalid);
+
+    return;
+  }
+
   const payload = scheduleFormPayload();
   const request =
     editingScheduleId === 0 ? createSchedule(ministryId, payload) : updateSchedule(editingScheduleId, payload);
@@ -1344,6 +1446,10 @@ function wire(): void {
   byId("schedule-add-btn")?.addEventListener("click", () => openScheduleModal());
   byId("schedule-form-save")?.addEventListener("click", saveSchedule);
   byId("schedule-form-link-mode")?.addEventListener("change", syncScheduleMode);
+  // Positions are team-scoped, so the list of things that can be needed changes with the
+  // team. Re-rendering discards whatever was typed for the old team's positions, which is
+  // correct: those rows are no longer part of this schedule's plan.
+  byId("schedule-form-team")?.addEventListener("change", renderScheduleNeeds);
   wirePools();
   wireQualifications();
 

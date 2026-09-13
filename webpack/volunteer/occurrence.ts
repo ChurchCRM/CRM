@@ -35,9 +35,11 @@
 import {
   approveSwap,
   assignCart,
+  clearOccurrenceRequirements,
   createAssignment,
   deleteAssignment,
   errorMessage,
+  getOccurrenceRequirements,
   getStaffing,
   listEligiblePeople,
   listSwaps,
@@ -45,13 +47,16 @@ import {
   notifyError,
   notifySuccess,
   rejectSwap,
+  replaceOccurrenceRequirements,
   setAssignmentStatus,
   type VolunteerAssignment,
   type VolunteerEligiblePerson,
+  type VolunteerRequirementInput,
   type VolunteerStaffedRequirement,
   type VolunteerStaffing,
   type VolunteerSwap,
 } from "./api";
+import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "./staffing-needs";
 
 interface OccurrenceConfig {
   occurrenceId: number;
@@ -76,6 +81,18 @@ let assignSelect: TomSelectInstance | null = null;
  */
 let assignModalShown = false;
 let assignModalHidePending = false;
+/** Same Bootstrap fade trap, for the staffing-needs modal. */
+let needsModalShown = false;
+let needsModalHidePending = false;
+/**
+ * The positions the SCHEDULE asks for, captured when the needs modal opens.
+ *
+ * The effective plan is a UNION (§2.10): an occurrence's rows win position by position,
+ * but leaving a position out does not remove the schedule's requirement for it. So
+ * unchecking a schedule-provided position cannot mean "send no row" — it has to mean
+ * "send Min 0 / Max 0", which is the only way an occurrence can say *not this week*.
+ */
+let needsSchedulePositionIds: number[] = [];
 
 function byId<T extends HTMLElement>(id: string): T | null {
   return document.getElementById(id) as T | null;
@@ -737,11 +754,171 @@ function handleCartAssign(positionId: number, positionName: string): void {
   );
 }
 
+// ─── The staffing-needs editor (§2.10) ───────────────────────────────────────
+
+/**
+ * Open the needs editor, pre-filled from the EFFECTIVE requirements.
+ *
+ * "Effective" is the point: the rows shown are the schedule's plan with this occurrence's
+ * overrides merged over it, resolved server-side by
+ * `VolunteerScheduleService::getEffectiveRequirements()`. Saving turns every checked row
+ * into an occurrence-level override — including the ones that arrived from the schedule,
+ * because "this week, exactly this" is what the coordinator just said. "Use the
+ * schedule's needs" throws the overrides away again.
+ */
+function openNeedsModal(): void {
+  show(byId("needs-form-error"), false);
+  show(byId("needs-loading"), true);
+  show(byId("needs-form-reset"), false);
+
+  const rows = byId("needs-form-rows");
+  if (rows) {
+    rows.innerHTML = "";
+  }
+
+  // Shown first, filled when the fetch lands: Bootstrap's 150 ms fade swallows a hide()
+  // issued inside it, and an editor that pops open only after a round trip reads as a
+  // dead button on a slow install.
+  modal("volunteer-needs-modal")?.show();
+
+  getOccurrenceRequirements(occurrenceId)
+    .then((data) => {
+      needsSchedulePositionIds = data.schedulePositionIds;
+      show(byId("needs-loading"), false);
+      show(byId("needs-form-reset"), data.overridden);
+
+      const hint = byId("needs-form-hint");
+      if (hint) {
+        hint.textContent = data.overridden
+          ? i18next.t("This occurrence has its own staffing needs, set apart from its schedule.")
+          : i18next.t("These needs come from the schedule. Saving here changes this occurrence only.");
+      }
+
+      if (rows) {
+        // Never check-by-default here: an occurrence with no plan at all is the state
+        // the coordinator came to fix, and guessing on their behalf would hide it.
+        renderStaffingNeeds(rows, data.positions, data.requirements, false);
+      }
+    })
+    .catch((error: unknown) => {
+      show(byId("needs-loading"), false);
+      showNeedsError(errorMessage(error, i18next.t("The staffing needs could not be loaded")));
+    });
+}
+
+function showNeedsError(message: string): void {
+  const box = byId("needs-form-error");
+  const text = box?.querySelector(".volunteer-error-text");
+  if (text) {
+    text.textContent = message;
+  }
+  show(box, true);
+}
+
+function saveNeeds(): void {
+  const rows = byId("needs-form-rows");
+  if (!rows) {
+    return;
+  }
+
+  const invalid = validateStaffingNeeds(rows);
+  if (invalid !== null) {
+    showNeedsError(invalid);
+
+    return;
+  }
+
+  show(byId("needs-form-error"), false);
+
+  replaceOccurrenceRequirements(occurrenceId, needsPayload(rows))
+    .then(() => {
+      hideNeedsModal();
+      notifySuccess(i18next.t("Staffing needs saved"));
+
+      return loadStaffing();
+    })
+    .catch((error: unknown) => {
+      showNeedsError(errorMessage(error, i18next.t("The staffing needs could not be saved")));
+    });
+}
+
+/**
+ * The checked rows, plus an explicit Min 0 / Max 0 for every schedule-provided position
+ * the coordinator just unchecked.
+ *
+ * Without the second half, unchecking "Helper" would delete the occurrence's row for it
+ * and the merge would hand the schedule's Helper requirement straight back — the box
+ * would appear to do nothing.
+ */
+function needsPayload(rows: HTMLElement): VolunteerRequirementInput[] {
+  const checked = readStaffingNeeds(rows);
+  const checkedIds = new Set(checked.map((row) => row.positionId));
+
+  const suppressed = needsSchedulePositionIds
+    .filter((positionId) => !checkedIds.has(positionId))
+    .map((positionId) => ({ positionId, minCount: 0, maxCount: 0 }));
+
+  return [...checked, ...suppressed];
+}
+
+function resetNeeds(): void {
+  confirmAction(
+    i18next.t("Use the schedule's needs"),
+    i18next.t("Drop this occurrence's own staffing needs and follow its schedule again?"),
+    () => {
+      clearOccurrenceRequirements(occurrenceId)
+        .then(() => {
+          hideNeedsModal();
+          notifySuccess(i18next.t("This occurrence follows its schedule again"));
+
+          return loadStaffing();
+        })
+        .catch((error: unknown) => {
+          showNeedsError(errorMessage(error, i18next.t("The staffing needs could not be reset")));
+        });
+    },
+  );
+}
+
+/**
+ * Dismiss the needs modal, queueing the request if the fade is still running.
+ *
+ * Same trap as the assign modal: `Modal.hide()` returns early while `_isTransitioning`,
+ * silently throwing the request away, and a local API answering in a few milliseconds
+ * lands squarely inside that 150 ms window.
+ */
+function hideNeedsModal(): void {
+  if (needsModalShown) {
+    modal("volunteer-needs-modal")?.hide();
+
+    return;
+  }
+
+  needsModalHidePending = true;
+}
+
 // ─── Wiring ──────────────────────────────────────────────────────────────────
 
 function wire(): void {
   byId("requirements-refresh")?.addEventListener("click", () => {
     void loadStaffing();
+  });
+
+  byId("requirements-edit")?.addEventListener("click", openNeedsModal);
+  byId("requirements-empty-edit")?.addEventListener("click", openNeedsModal);
+  byId("needs-form-save")?.addEventListener("click", saveNeeds);
+  byId("needs-form-reset")?.addEventListener("click", resetNeeds);
+
+  byId("volunteer-needs-modal")?.addEventListener("shown.bs.modal", () => {
+    needsModalShown = true;
+    if (needsModalHidePending) {
+      needsModalHidePending = false;
+      modal("volunteer-needs-modal")?.hide();
+    }
+  });
+  byId("volunteer-needs-modal")?.addEventListener("hidden.bs.modal", () => {
+    needsModalShown = false;
+    needsModalHidePending = false;
   });
 
   // Retry genuinely re-runs the load that failed, per pane (§5.8).

@@ -100,9 +100,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="card mb-3">
     <div class="card-header d-flex flex-wrap gap-2 align-items-center justify-content-between">
       <h4 class="card-title mb-0"><i class="fa-solid fa-list-check me-2"></i><?= gettext('Staffing') ?></h4>
-      <button type="button" class="btn btn-sm btn-outline-secondary" id="requirements-refresh">
-        <i class="fa-solid fa-rotate me-1"></i><?= gettext('Refresh') ?>
-      </button>
+      <div class="d-flex flex-wrap gap-2">
+        <!--
+          The needs editor (§2.10). Same authorization as staffing the occurrence: the
+          route already turned away anyone who may not manage this occurrence, so
+          reaching this markup at all IS the permission, exactly as the Assign buttons
+          below are gated.
+        -->
+        <button type="button" class="btn btn-sm btn-outline-primary" id="requirements-edit">
+          <i class="fa-solid fa-sliders me-1"></i><?= gettext('Edit staffing needs') ?>
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="requirements-refresh">
+          <i class="fa-solid fa-rotate me-1"></i><?= gettext('Refresh') ?>
+        </button>
+      </div>
     </div>
     <div class="card-body">
       <div class="volunteer-loading text-center py-4" id="requirements-loading">
@@ -114,12 +125,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <span class="volunteer-error-text"></span>
         <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry"><?= gettext('Retry') ?></button>
       </div>
+      <!--
+        The empty plan. This used to read "Nobody is needed yet" and point at a screen
+        that did not exist — staffing requirements were a separate entity with an API and
+        no UI, so a schedule had none and every occurrence it generated reported itself
+        fully staffed at 0/0. The wording now names the state and the button fixes it.
+      -->
       <div class="empty d-none" id="requirements-empty">
         <div class="empty-icon"><i class="fa-solid fa-calendar-check fa-2x text-muted"></i></div>
-        <p class="empty-title"><?= gettext('Nobody is needed yet') ?></p>
+        <p class="empty-title"><?= gettext('No staffing needs set') ?></p>
         <p class="empty-subtitle text-body-secondary">
-          <?= gettext('Set how many volunteers each position needs on the schedule, then come back here to fill them.') ?>
+          <?= gettext('Nobody has said how many volunteers each position needs, so there is nothing to fill.') ?>
         </p>
+        <div class="empty-action">
+          <button type="button" class="btn btn-primary" id="requirements-empty-edit">
+            <i class="fa-solid fa-sliders me-1"></i><?= gettext('Set staffing needs') ?>
+          </button>
+        </div>
       </div>
       <div class="row g-3 d-none" id="requirements-content"></div>
     </div>
@@ -243,6 +265,48 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="modal-footer">
         <button type="button" class="btn btn-link" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
         <button type="button" class="btn btn-primary" id="assign-save"><?= gettext('Assign') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  The staffing-needs editor (§2.10). The same position/checkbox/Min/Max rows the schedule
+  form draws — one shared module, `webpack/volunteer/staffing-needs.ts`, so a Max-below-Min
+  rule cannot be enforced on one screen and not the other.
+
+  Saving writes occurrence-level OVERRIDE rows; "Use the schedule's needs" deletes them so
+  the occurrence follows its schedule again. Nothing is copied from the schedule at
+  generation time — the merge is derived on every read — so a schedule that gains needs
+  today immediately fixes the occurrences it generated last month.
+-->
+<div class="modal fade" id="volunteer-needs-modal" tabindex="-1" aria-hidden="true" aria-labelledby="needsModalTitle">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="needsModalTitle"><?= gettext('Edit staffing needs') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger d-none" role="alert" id="needs-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i>
+          <span class="volunteer-error-text"></span>
+        </div>
+        <p class="text-body-secondary" id="needs-form-hint"></p>
+        <div class="volunteer-loading text-center py-4" id="needs-loading">
+          <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+          <?= gettext('Loading') ?>
+        </div>
+        <div id="needs-form-rows"></div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-link text-danger d-none" id="needs-form-reset">
+          <i class="fa-solid fa-rotate-left me-1"></i><?= gettext('Use the schedule\'s needs') ?>
+        </button>
+        <div class="d-flex gap-2 ms-auto">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+          <button type="button" class="btn btn-primary" id="needs-form-save"><?= gettext('Save') ?></button>
+        </div>
       </div>
     </div>
   </div>
