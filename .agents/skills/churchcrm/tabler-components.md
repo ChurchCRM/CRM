@@ -876,7 +876,7 @@ For modals that contain a form or collect user input before triggering an action
         <div class="modal-body">
           <!-- Explanation alert — no dismiss button, not dismissible -->
           <div class="alert alert-info mb-3">
-        <i class="fa-solid fa-circle-info me-1"></i>
+            <i class="fa-solid fa-circle-info me-1"></i>
             <?= gettext('Brief explanation of what will happen.') ?>
           </div>
           <!-- Optional input -->
@@ -893,7 +893,7 @@ For modals that contain a form or collect user input before triggering an action
           <button type="button" class="btn btn-secondary"
                   data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
           <button type="button" class="btn btn-primary" id="submitBtn">
-    <i class="fa-brands fa-github me-1"></i><?= gettext('Primary Action') ?>
+            <i class="fa-brands fa-github me-1"></i><?= gettext('Primary Action') ?>
           </button>
         </div>
       </form>
@@ -1160,7 +1160,7 @@ Match `docs.tabler.io/ui/layout/navbars` exactly for the topbar:
     <div class="collapse navbar-collapse" id="navbar-menu">
       <div style="position: relative; width: min(480px, 100%);">
         <div class="input-icon">
-<span class="input-icon-addon"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <span class="input-icon-addon"><i class="fa-solid fa-magnifying-glass"></i></span>
           <input type="search" id="globalSearch" class="form-control"
                  placeholder="Search people, families, groups…"
                  autocomplete="off" spellcheck="false">
