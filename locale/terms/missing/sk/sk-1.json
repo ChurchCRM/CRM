@@ -1,46 +1,46 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "E-mail bol odoslaný pre %d rodinu.|E-mail bol odoslaný pre %d rodiny.|E-mail bol odoslaný pre %d rodiny.|E-mail bol odoslaný pre %d rodín.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "E-mail bol odoslaný pre %d rodinu.",
+    "few": "E-mail bol odoslaný pre %d rodiny.",
+    "many": "E-mail bol odoslaný pre %d rodiny.",
+    "other": "E-mail bol odoslaný pre %d rodín."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF bolo úspešne odoslané e-mailom pre %d rodinu.|PDF bolo úspešne odoslané e-mailom pre %d rodiny.|PDF bolo úspešne odoslané e-mailom pre %d rodiny.|PDF bolo úspešne odoslané e-mailom pre %d rodín.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "PDF bolo úspešne odoslané e-mailom pre %d rodinu.",
+    "few": "PDF bolo úspešne odoslané e-mailom pre %d rodiny.",
+    "many": "PDF bolo úspešne odoslané e-mailom pre %d rodiny.",
+    "other": "PDF bolo úspešne odoslané e-mailom pre %d rodín."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d deň.|Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dni.|Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dňa.|Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dní.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d deň.",
+    "few": "Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dni.",
+    "many": "Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dní.",
+    "other": "Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dní."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Skopírovaný {{count}} člen",
+    "other": "Skopírovaných {{count}} členov"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Tento zoznam má {{count}} príjemcu — príliš veľa pre odkaz mailto:. Namiesto toho použite Kopírovať adresy.",
+    "other": "Tento zoznam má {{count}} príjemcov — príliš veľa pre odkaz mailto:. Namiesto toho použite Kopírovať adresy."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Namiesto toho použite Kopírovať adresy.",
+    "other": "Príliš veľa príjemcov pre e-mailového klienta ({{count}} > {{max}}). Namiesto toho použite Kopírovať adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Zostáva {{count}} min",
+    "other": "Zostáva {{count}} min"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "Nepodarilo sa geokódovať {{count}} rodinu",
+    "other": "Nepodarilo sa geokódovať {{count}} rodín"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…a {{count}} ďalšia. Spustite znova, aby ste videli zvyšok.",
+    "other": "…a {{count}} ďalších. Spustite znova, aby ste videli zvyšok."
   }
 }
