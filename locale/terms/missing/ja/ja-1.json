@@ -1,28 +1,28 @@
 {
-  "CSV": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}人のメンバーをコピーしました",
+    "other": "{{count}}人のメンバーをコピーしました"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "この一覧には{{count}}人の宛先があります。多すぎるためmailto:リンクを使用できません。代わりに「アドレスをコピー」を使用してください。",
+    "other": "この一覧には{{count}}人の宛先があります。多すぎるためmailto:リンクを使用できません。代わりに「アドレスをコピー」を使用してください。"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "メールクライアントに対して宛先が多すぎます ({{count}} > {{max}})。代わりに「アドレスをコピー」を使用してください。",
+    "other": "メールクライアントに対して宛先が多すぎます ({{count}} > {{max}})。代わりに「アドレスをコピー」を使用してください。"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "残り{{count}}分",
+    "other": "残り{{count}}分"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}}世帯の位置情報を取得できませんでした",
+    "other": "{{count}}世帯の位置情報を取得できませんでした"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…他{{count}}件。残りを見るにはもう一度実行してください。",
+    "other": "…他{{count}}件。残りを見るにはもう一度実行してください。"
   }
 }
