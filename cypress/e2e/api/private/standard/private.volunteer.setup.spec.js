@@ -35,7 +35,6 @@ const V2_TABLES_CHILD_FIRST = [
     "volunteer_schedule_vsch",
     "volunteer_qualification_vqal",
     "volunteer_position_vpos",
-    "volunteer_pool_vpol",
     "volunteer_scope_vscp",
     "volunteer_team_vtem",
     "volunteer_ministry_vmin",
@@ -50,6 +49,9 @@ const EXPECTED_COLUMNS = {
         "vmin_Active",
         "vmin_CreatedDate",
         "vmin_CreatedBy_per_ID",
+        // D19's advert, off by default.
+        "vmin_HelpWanted",
+        "vmin_HelpWantedText",
     ],
     volunteer_team_vtem: [
         "vtem_ID",
@@ -57,13 +59,6 @@ const EXPECTED_COLUMNS = {
         "vtem_Name",
         "vtem_Description",
         "vtem_Active",
-    ],
-    volunteer_pool_vpol: [
-        "vpol_ID",
-        "vpol_OwnerType",
-        "vpol_OwnerId",
-        "vpol_grp_ID",
-        "vpol_Label",
     ],
     volunteer_position_vpos: [
         "vpos_ID",
@@ -162,6 +157,9 @@ const EXPECTED_COLUMNS = {
         "vntf_per_ID",
         "vntf_vasg_ID",
         "vntf_vocc_ID",
+        // D19: JSON context for a row that hangs off neither an assignment nor an
+        // occurrence — today only `help_offer`.
+        "vntf_Context",
         "vntf_DedupeKey",
         "vntf_ScheduledFor",
         "vntf_Status",
@@ -186,7 +184,6 @@ const V2_TABLES = Object.keys(EXPECTED_COLUMNS);
 const EXPECTED_DELETE_RULES = {
     "volunteer_ministry_vmin.vmin_CreatedBy_per_ID": "SET NULL",
     "volunteer_team_vtem.vtem_vmin_ID": "CASCADE",
-    "volunteer_pool_vpol.vpol_grp_ID": "CASCADE",
     "volunteer_position_vpos.vpos_vmin_ID": "CASCADE",
     // D18 made the column NOT NULL, so SET NULL is no longer expressible; CASCADE
     // never actually fires, because deleting a team that owns positions is refused
@@ -300,7 +297,7 @@ describe("API Private Volunteer v2 core schema", () => {
     });
 
     describe("Schema shape", () => {
-        it("creates all 13 volunteer_* tables as InnoDB / utf8mb4", () => {
+        it("creates all 12 volunteer_* tables as InnoDB / utf8mb4", () => {
             const placeholders = V2_TABLES.map(() => "?").join(", ");
             dbOk(
                 `SELECT TABLE_NAME, ENGINE, TABLE_COLLATION
@@ -320,7 +317,7 @@ describe("API Private Volunteer v2 core schema", () => {
                         `${table} collation`,
                     ).to.match(/^utf8mb4_/);
                 });
-                expect(rows).to.have.length(13);
+                expect(rows).to.have.length(12);
             });
         });
 
@@ -352,7 +349,7 @@ describe("API Private Volunteer v2 core schema", () => {
                 V2_TABLES,
             ).then((rows) => {
                 expect(rows, "one single-column PK per table").to.have.length(
-                    13,
+                    12,
                 );
                 rows.forEach((row) => {
                     expect(row.COLUMN_NAME, `PK of ${row.TABLE_NAME}`).to.match(
@@ -436,21 +433,45 @@ describe("API Private Volunteer v2 core schema", () => {
             });
         });
 
-        it("leaves the two polymorphic columns without a foreign key, by design", () => {
-            // §2.0: vscp_ScopeId and vpol_OwnerId point at either a ministry or
-            // a team, so no single FK target exists — the same limitation
-            // record2property_r2p lives with. Integrity is a service concern.
+        it("leaves the one polymorphic column without a foreign key, by design", () => {
+            // §2.0: vscp_ScopeId points at either a ministry or a team, so no single
+            // FK target exists — the same limitation record2property_r2p lives with.
+            // Integrity is a service concern. (vpol_OwnerId was the other one; D19
+            // removed the table, and `group_grp.grp_ministry_id` that replaced it is
+            // a REAL foreign key, asserted below.)
             dbOk(
                 `SELECT COUNT(*) AS c
                    FROM information_schema.KEY_COLUMN_USAGE
                   WHERE TABLE_SCHEMA = DATABASE()
                     AND REFERENCED_TABLE_NAME IS NOT NULL
-                    AND (
-                          (TABLE_NAME = 'volunteer_scope_vscp' AND COLUMN_NAME = 'vscp_ScopeId')
-                       OR (TABLE_NAME = 'volunteer_pool_vpol'  AND COLUMN_NAME = 'vpol_OwnerId')
-                    )`,
+                    AND TABLE_NAME = 'volunteer_scope_vscp'
+                    AND COLUMN_NAME = 'vscp_ScopeId'`,
             ).then((rows) => {
                 expect(Number(rows[0].c)).to.equal(0);
+            });
+        });
+
+        it("gives group_grp a real ministry foreign key, ON DELETE SET NULL (D19)", () => {
+            // The core column V2 owns. SET NULL rather than CASCADE because a
+            // cascade from a V2 table is how a church would lose a group to a
+            // foreign key it never knew about; the ministry-deletion path removes
+            // the group explicitly instead.
+            dbOk(
+                `SELECT rc.DELETE_RULE, kcu.REFERENCED_TABLE_NAME, kcu.REFERENCED_COLUMN_NAME
+                   FROM information_schema.REFERENTIAL_CONSTRAINTS rc
+                   JOIN information_schema.KEY_COLUMN_USAGE kcu
+                     ON kcu.CONSTRAINT_SCHEMA = rc.CONSTRAINT_SCHEMA
+                    AND kcu.CONSTRAINT_NAME = rc.CONSTRAINT_NAME
+                  WHERE rc.CONSTRAINT_SCHEMA = DATABASE()
+                    AND kcu.TABLE_NAME = 'group_grp'
+                    AND kcu.COLUMN_NAME = 'grp_ministry_id'`,
+            ).then((rows) => {
+                expect(rows, "exactly one FK on grp_ministry_id").to.have.length(1);
+                expect(rows[0].DELETE_RULE).to.equal("SET NULL");
+                expect(rows[0].REFERENCED_TABLE_NAME).to.equal(
+                    "volunteer_ministry_vmin",
+                );
+                expect(rows[0].REFERENCED_COLUMN_NAME).to.equal("vmin_ID");
             });
         });
 
@@ -468,7 +489,6 @@ describe("API Private Volunteer v2 core schema", () => {
                      OR (TABLE_NAME = 'volunteer_assignment_vasg' AND COLUMN_NAME = 'vasg_per_ID')
                      OR (TABLE_NAME = 'volunteer_qualification_vqal' AND COLUMN_NAME = 'vqal_per_ID')
                      OR (TABLE_NAME = 'volunteer_scope_vscp' AND COLUMN_NAME = 'vscp_per_ID')
-                     OR (TABLE_NAME = 'volunteer_pool_vpol' AND COLUMN_NAME = 'vpol_grp_ID')
                     )`,
             ).then((rows) => {
                 const byKey = {};
@@ -486,10 +506,6 @@ describe("API Private Volunteer v2 core schema", () => {
                         personType,
                     );
                 });
-                expect(
-                    byKey["volunteer_pool_vpol.vpol_grp_ID"],
-                    "vpol_grp_ID matches group_grp.grp_ID",
-                ).to.equal(groupType);
             });
         });
     });
@@ -519,17 +535,6 @@ describe("API Private Volunteer v2 core schema", () => {
                     [f.ministryCoffee],
                 ).then((id) => {
                     f.teamCoffee = id;
-                }),
-            );
-
-            cy.then(() =>
-                insertReturningId(
-                    `INSERT INTO volunteer_pool_vpol
-                        (vpol_OwnerType, vpol_OwnerId, vpol_grp_ID, vpol_Label)
-                     VALUES ('team', ?, ?, 'Cypress pool')`,
-                    [f.teamCoffee, GROUP_ANGELS],
-                ).then((id) => {
-                    f.poolCoffee = id;
                 }),
             );
 
@@ -645,13 +650,6 @@ describe("API Private Volunteer v2 core schema", () => {
                 ).then((id) => {
                     f.teamWorship = id;
                 }),
-            );
-            cy.then(() =>
-                dbOk(
-                    `INSERT INTO volunteer_pool_vpol (vpol_OwnerType, vpol_OwnerId, vpol_grp_ID)
-                     VALUES ('team', ?, ?)`,
-                    [f.teamWorship, GROUP_WORSHIP],
-                ),
             );
             cy.then(() =>
                 insertReturningId(
@@ -801,16 +799,6 @@ describe("API Private Volunteer v2 core schema", () => {
                     cy.dbQuery(`DELETE FROM volunteer_team_vtem WHERE vtem_ID = ?`, [
                         rows.insertId,
                     ]);
-                });
-            });
-
-            it("rejects the same group linked twice to one owner (vpol_owner_group_uidx)", () => {
-                dbRejects(
-                    `INSERT INTO volunteer_pool_vpol (vpol_OwnerType, vpol_OwnerId, vpol_grp_ID)
-                     VALUES ('team', ?, ?)`,
-                    [f.teamCoffee, GROUP_ANGELS],
-                ).then((err) => {
-                    expect(err.code).to.equal(DUP_ENTRY);
                 });
             });
 
@@ -1035,26 +1023,41 @@ describe("API Private Volunteer v2 core schema", () => {
                 });
             });
 
-            it("rejects a pool linked to a group that does not exist", () => {
+            it("rejects a group pointing at a ministry that does not exist (D19)", () => {
                 dbRejects(
-                    `INSERT INTO volunteer_pool_vpol (vpol_OwnerType, vpol_OwnerId, vpol_grp_ID)
-                     VALUES ('ministry', ?, 9999)`,
-                    [f.ministryCoffee],
+                    `UPDATE group_grp SET grp_ministry_id = 999999 WHERE grp_ID = ?`,
+                    [GROUP_ANGELS],
                 ).then((err) => {
                     expect(NO_REFERENCED_ROW).to.include(err.code);
                 });
             });
 
-            it("accepts a polymorphic owner id that points at nothing — service-enforced, by design", () => {
-                dbOk(
-                    `INSERT INTO volunteer_pool_vpol (vpol_OwnerType, vpol_OwnerId, vpol_grp_ID)
-                     VALUES ('ministry', 999999, ?)`,
-                    [GROUP_ANGELS],
-                ).then((rows) => {
-                    cy.dbQuery(
-                        `DELETE FROM volunteer_pool_vpol WHERE vpol_ID = ?`,
-                        [rows.insertId],
-                    );
+            it("nulls a group's ministry id when the ministry is deleted (D19)", () => {
+                // The FK, on its own, with no service in the way: a cascade here
+                // would delete a church group, which is what SET NULL prevents. A
+                // throwaway ministry, so nothing the rest of this describe relies on
+                // is deleted underneath it.
+                insertReturningId(
+                    `INSERT INTO volunteer_ministry_vmin
+                        (vmin_Name, vmin_Active, vmin_CreatedDate)
+                     VALUES ('Cypress D19 SET NULL', 1, NOW())`,
+                ).then((ministryId) => {
+                    dbOk(`UPDATE group_grp SET grp_ministry_id = ? WHERE grp_ID = ?`, [
+                        ministryId,
+                        GROUP_WORSHIP,
+                    ]);
+                    dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_ID = ?`, [
+                        ministryId,
+                    ]);
+                    dbOk(
+                        `SELECT grp_ID, grp_ministry_id FROM group_grp WHERE grp_ID = ?`,
+                        [GROUP_WORSHIP],
+                    ).then((rows) => {
+                        expect(rows, "the group survives its ministry").to.have.length(
+                            1,
+                        );
+                        expect(rows[0].grp_ministry_id).to.equal(null);
+                    });
                 });
             });
         });

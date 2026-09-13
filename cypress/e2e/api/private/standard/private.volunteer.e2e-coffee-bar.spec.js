@@ -12,7 +12,7 @@
  * out, and a different qualified volunteer fills the hole from the member
  * surface — with nothing but the real HTTP APIs in between.
  *
- *     15-member Group linked as the pool
+ *     15 people in the ministry's own pool Group
  *       → 5 positions, Min 1/Max 1 x2 plus an optional Min 0/Max 1 third
  *       → several qualifications per person
  *       → a schedule over an event TYPE, generated (twice — idempotency)
@@ -57,13 +57,12 @@ const CHURCH_SERVICE_TYPE = 1; // seed.sql — weekly, Sunday 10:30
 const PREFIX = "E2E9714CB";
 const MINISTRY_NAME = `${PREFIX} Coffee Bar`;
 const TEAM_NAME = `${PREFIX} Coffee Bar Team`;
-const GROUP_NAME = `${PREFIX} Coffee Bar Volunteers`;
 const EVENT_TITLE = `${PREFIX} Sunday Coffee Bar`;
 
 /**
- * The pool, fifteen people (§0.4 UC1: "15 volunteers in one existing ChurchCRM
- * Group"). Thirteen ordinary seeded people plus the two member personas, so the
- * decline and the self-signup both come from inside the pool — I3 refuses an
+ * The pool, fifteen people (§0.4 UC1: "15 volunteers in one ChurchCRM Group").
+ * Thirteen ordinary seeded people plus the two member personas, so the decline and
+ * the self-signup both come from inside the pool — I3 refuses a coordinator's
  * assignment to somebody outside it.
  */
 const POOL_PEOPLE = [2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
@@ -80,6 +79,7 @@ const POSITION_NAMES = [
 
 let ministryId = 0;
 let teamId = 0;
+/** The ministry's own pool Group (D19); read back rather than created. */
 let groupId = 0;
 let scheduleId = 0;
 let occurrenceId = 0;
@@ -233,12 +233,19 @@ function cleanupFixtures() {
           WHERE vmin.vmin_Name LIKE ?`,
         like,
     );
+    // D19: the pool is the ministry's own Group and `grp_ministry_id` is ON DELETE
+    // SET NULL, so the group goes before the ministry or it is left an orphan.
     dbOk(
-        `DELETE vpol FROM volunteer_pool_vpol vpol
-           JOIN volunteer_team_vtem vtem
-             ON vtem.vtem_ID = vpol.vpol_OwnerId AND vpol.vpol_OwnerType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
+        like,
+    );
+    dbOk(
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         like,
     );
     dbOk(
@@ -270,25 +277,6 @@ before(() => {
     });
     setVersion("v2");
     cleanupFixtures();
-
-    // A Group of fifteen. V2 never copies membership (D1) — the Group IS the
-    // roster, so it is built through the Groups API exactly as a church would.
-    cy.makePrivateAdminAPICall(
-        "POST",
-        "/api/groups/",
-        { groupName: GROUP_NAME, description: `${PREFIX} pool group` },
-        200,
-    ).then((resp) => {
-        groupId = resp.body.Id;
-        POOL_ALL.forEach((personId) => {
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/groups/${groupId}/addperson/${personId}`,
-                {},
-                200,
-            );
-        });
-    });
 
     // Ministry creation is manager-only (§3.3.1), so the administrator makes
     // the ministry and then hands person 3 the scope that makes them the
@@ -355,15 +343,30 @@ before(() => {
         });
     });
 
-    // The Group becomes the team's pool. Nobody is copied.
+    // The pool of fifteen (§0.4 UC1: "15 volunteers"). D19: the ministry came with
+    // its own Group, empty, so the coordinator fills it — no group to make first and
+    // nothing to link. The Group is still the roster and V2 still copies nobody (D1);
+    // what changed is that the coordinator can write it without the global Manage
+    // Groups flag, which is exactly what this scenario's persona has.
     cy.then(() => {
+        POOL_ALL.forEach((personId) => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                null,
+                [200, 201],
+            );
+        });
         api(
             COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/teams/${teamId}/pools`,
-            { groupId, label: `${PREFIX} pool` },
-            201,
-        );
+            "GET",
+            `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
+            null,
+            200,
+        ).then((resp) => {
+            groupId = resp.body.groupId;
+        });
     });
 
     // Qualifications: D16 — several per person is the normal case, not an edge
@@ -472,7 +475,7 @@ describe("Volunteer v2 e2e — #9714 scenario 1, Coffee Bar", () => {
         api(
             COORDINATOR_KEY,
             "GET",
-            `${VOLUNTEER_URL}/teams/${teamId}/members`,
+            `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
         ).then((resp) => {
             expect(resp.body.members).to.have.length(POOL_ALL.length);
             expect(POOL_ALL.length).to.eq(15);

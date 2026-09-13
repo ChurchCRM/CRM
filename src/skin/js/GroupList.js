@@ -132,6 +132,21 @@ function initializeGroupList() {
               : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add all to Cart")}</span></button>`
             : "";
           const escapedName = window.CRM.escapeHtml(full.Name || "");
+          // Volunteer v2 (D19): a group owned by a ministry is renamed and deleted from
+          // that ministry, and the API answers 409 here. The items stay in the menu,
+          // disabled and with a title saying why, rather than disappearing — a
+          // coordinator looking for Edit should find out where it went, not wonder
+          // whether the row is broken.
+          const managedByMinistry = Boolean(full.ministryId);
+          const managedTitle = window.CRM.escapeAttribute(
+            i18next.t("Managed from the {{ministry}} ministry", { ministry: full.ministryName || "" }),
+          );
+          const editItem = managedByMinistry
+            ? `<span class="dropdown-item disabled" aria-disabled="true" title="${managedTitle}"><i class="fa-solid fa-pencil me-2"></i>${i18next.t("Edit")}</span>`
+            : `<a class="dropdown-item" href="${window.CRM.root}/groups/editor/${full.Id}"><i class="fa-solid fa-pencil me-2"></i>${i18next.t("Edit")}</a>`;
+          const deleteItem = managedByMinistry
+            ? `<button type="button" class="dropdown-item text-danger" disabled aria-disabled="true" title="${managedTitle}"><i class="fa-solid fa-trash me-2"></i>${i18next.t("Delete")}</button>`
+            : `<button type="button" class="dropdown-item text-danger delete-group" data-group-id="${full.Id}" data-group-name="${escapedName}"><i class="fa-solid fa-trash me-2"></i>${i18next.t("Delete")}</button>`;
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
@@ -139,10 +154,10 @@ function initializeGroupList() {
             "</button>" +
             '<div class="dropdown-menu dropdown-menu-end">' +
             `<a class="dropdown-item" href="${window.CRM.root}/groups/view/${full.Id}"><i class="fa-solid fa-eye me-2"></i>${i18next.t("View")}</a>` +
-            `<a class="dropdown-item" href="${window.CRM.root}/groups/editor/${full.Id}"><i class="fa-solid fa-pencil me-2"></i>${i18next.t("Edit")}</a>` +
+            editItem +
             (hasMembers ? '<div class="dropdown-divider"></div>' + cartBtn : "") +
             '<div class="dropdown-divider"></div>' +
-            `<button type="button" class="dropdown-item text-danger delete-group" data-group-id="${full.Id}" data-group-name="${escapedName}"><i class="fa-solid fa-trash me-2"></i>${i18next.t("Delete")}</button>` +
+            deleteItem +
             "</div></div>"
           );
         },
@@ -184,6 +199,6 @@ function initializeGroupList() {
 }
 
 // Wait for locales to load before initializing
-$(document).ready(function () {
+$(document).ready(() => {
   window.CRM.onLocalesReady(initializeGroupList);
 });

@@ -16,19 +16,15 @@
  */
 
 import {
-  createGroup,
   createMinistry,
   createPosition,
   createTeam,
   errorMessage,
-  linkPool,
-  listPools,
   listPositions,
   listTeams,
   notifyError,
   notifySuccess,
   updateTeam,
-  type VolunteerPool,
   type VolunteerPosition,
   type VolunteerTeam,
 } from "./api";
@@ -84,7 +80,6 @@ function setStepEnabled(ids: string[], enabled: boolean): void {
 }
 
 const TEAM_CONTROLS = ["setup-team-name", "setup-team-description", "setup-team-save"];
-const POOL_CONTROLS = ["setup-pool-link", "setup-pool-new-group"];
 const POSITION_CONTROLS = [
   "setup-position-name",
   "setup-position-description",
@@ -169,33 +164,6 @@ function renderTeams(): void {
   }
 }
 
-/**
- * Step 3 (#9707): the Groups linked as this ministry's pools.
- *
- * The member count is read-only and comes from the Group — this step links a
- * roster, it does not build one (D1, §5.3).
- */
-function renderPools(pools: VolunteerPool[]): void {
-  const list = byId<HTMLUListElement>("setup-pool-list");
-  if (!list) {
-    return;
-  }
-
-  list.textContent = "";
-  for (const pool of pools) {
-    const item = document.createElement("li");
-    item.className = "list-group-item d-flex align-items-center justify-content-between";
-    const label = document.createElement("span");
-    label.textContent = pool.groupName ?? "";
-    const badge = document.createElement("span");
-    badge.className = "badge bg-blue-lt";
-    badge.textContent = i18next.t("{{count}} members", { count: pool.memberCount });
-    item.append(label, badge);
-    list.append(item);
-  }
-  show(list, pools.length > 0);
-}
-
 function renderPositions(positions: VolunteerPosition[]): void {
   const list = byId<HTMLUListElement>("setup-position-list");
   if (!list) {
@@ -227,7 +195,6 @@ async function adoptMinistry(id: number, name: string): Promise<void> {
   ministryName = name;
   renderMinistrySummary();
   setStepEnabled(TEAM_CONTROLS, true);
-  setStepEnabled(POOL_CONTROLS, true);
   setStepEnabled(POSITION_CONTROLS, true);
 
   const nextCard = byId("setup-step-next");
@@ -238,23 +205,16 @@ async function adoptMinistry(id: number, name: string): Promise<void> {
   }
 
   show(byId("setup-team-loading"), true);
-  show(byId("setup-pool-loading"), true);
   show(byId("setup-position-loading"), true);
   try {
-    const [teamResult, poolResult, positionResult] = await Promise.all([
-      listTeams(id),
-      listPools(id),
-      listPositions(id),
-    ]);
+    const [teamResult, positionResult] = await Promise.all([listTeams(id), listPositions(id)]);
     teams = teamResult.teams;
     renderTeams();
-    renderPools(poolResult.pools);
     renderPositions(positionResult.positions);
   } catch (error) {
     showStepError("setup-team", errorMessage(error, i18next.t("Could not load this ministry")));
   } finally {
     show(byId("setup-team-loading"), false);
-    show(byId("setup-pool-loading"), false);
     show(byId("setup-position-loading"), false);
   }
 }
@@ -306,7 +266,6 @@ function wireMinistryStep(): void {
     show(byId("setup-ministry-scope-note"), false);
     renderMinistrySummary();
     setStepEnabled(TEAM_CONTROLS, false);
-    setStepEnabled(POOL_CONTROLS, false);
     setStepEnabled(POSITION_CONTROLS, false);
     show(byId("setup-step-next"), false);
   });
@@ -388,91 +347,6 @@ function wireTeamStep(): void {
   });
 }
 
-/**
- * Step 3 (#9707). The Group is chosen through
- * `window.CRM.groups.promptSelection()` (G4) — the picker the Groups module
- * already ships, which owns its modal lifecycle, TomSelect teardown and i18n.
- * V2 builds no second group chooser.
- */
-function wirePoolStep(): void {
-  byId("setup-pool-link")?.addEventListener("click", () => {
-    const groups = window.CRM?.groups;
-    if (ministryId === 0) {
-      showStepError("setup-pool", i18next.t("Choose a ministry first"));
-      return;
-    }
-    if (!groups?.promptSelection) {
-      showStepError("setup-pool", i18next.t("The group picker is not available on this page"));
-      return;
-    }
-
-    clearStepError("setup-pool");
-    groups.promptSelection({ Type: groups.selectTypes.Group }, (result) => {
-      const groupId = Number(result.GroupID);
-      if (!groupId) {
-        return;
-      }
-
-      linkPool({ type: "ministry", id: ministryId }, groupId)
-        .then(() => {
-          notifySuccess(i18next.t("Group linked as a volunteer pool"));
-          return listPools(ministryId);
-        })
-        .then((pools) => {
-          renderPools(pools.pools);
-        })
-        .catch((error: unknown) => {
-          showStepError("setup-pool", errorMessage(error, i18next.t("The group could not be linked")));
-        });
-    });
-  });
-}
-
-/**
- * "Create a new Group" — Setup step 3's second button. The core groups module has
- * no "new group" page (`/groups/editor/{id}` edits an existing one; new groups come
- * from the dashboard's modal), so the flow asks for a name here, creates the Group
- * through the core API and links it as the pool in one go. Adding people to it is
- * still done on the group page (Appendix D-1), and the success toast says so.
- */
-function wireNewGroupButton(): void {
-  byId("setup-pool-new-group")?.addEventListener("click", () => {
-    if (ministryId === 0) {
-      showStepError("setup-pool", i18next.t("Choose a ministry first"));
-      return;
-    }
-    const bootbox = window.bootbox;
-    if (!bootbox?.prompt) {
-      showStepError("setup-pool", i18next.t("The dialog helper is not available on this page"));
-      return;
-    }
-    clearStepError("setup-pool");
-    bootbox.prompt({
-      title: i18next.t("Name the new Group"),
-      callback: (result: string | null) => {
-        const name = (result ?? "").trim();
-        if (name === "") {
-          return;
-        }
-        createGroup(name)
-          .then((group) => linkPool({ type: "ministry", id: ministryId }, Number(group.Id)))
-          .then(() => {
-            notifySuccess(
-              i18next.t("Group created and linked as a volunteer pool. Add its members on the group page."),
-            );
-            return listPools(ministryId);
-          })
-          .then((pools) => {
-            renderPools(pools.pools);
-          })
-          .catch((error: unknown) => {
-            showStepError("setup-pool", errorMessage(error, i18next.t("The group could not be created")));
-          });
-      },
-    });
-  });
-}
-
 function wirePositionStep(): void {
   byId("setup-position-save")?.addEventListener("click", () => {
     const nameInput = byId<HTMLInputElement>("setup-position-name");
@@ -529,8 +403,6 @@ function init(): void {
 
   wireMinistryStep();
   wireTeamStep();
-  wirePoolStep();
-  wireNewGroupButton();
   wirePositionStep();
 
   if (config.ministryId > 0) {

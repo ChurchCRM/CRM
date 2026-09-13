@@ -23,7 +23,15 @@
  * Every user-visible string is `i18next.t()` in this file (§5.10, F31).
  */
 
-import { errorMessage, listMyOpportunities, signUpForOpportunity, type VolunteerMyOpportunity } from "./api";
+import {
+  errorMessage,
+  listMyHelpWanted,
+  listMyOpportunities,
+  offerToHelp,
+  signUpForOpportunity,
+  type VolunteerHelpWantedMinistry,
+  type VolunteerMyOpportunity,
+} from "./api";
 import {
   byId,
   confirmAction,
@@ -33,9 +41,11 @@ import {
   notifyError,
   notifySuccess,
   renderState,
+  show,
 } from "./member-ui";
 
 let opportunities: VolunteerMyOpportunity[] = [];
+let helpWanted: VolunteerHelpWantedMinistry[] = [];
 
 function cardHtml(opportunity: VolunteerMyOpportunity): string {
   const warning = opportunity.alreadyServing
@@ -80,6 +90,57 @@ function cardHtml(opportunity: VolunteerMyOpportunity): string {
     </div>`;
 }
 
+/**
+ * "Ministries looking for help" (D19).
+ *
+ * Rendered ABOVE the shift list, because it is the answer for the volunteer the
+ * shift list has nothing for — somebody with no qualifications sees an empty list
+ * and, before this, a dead end. When no ministry is advertising the whole section
+ * is omitted rather than shown empty: a heading over nothing is worse than silence.
+ *
+ * The text is the coordinator's own prose, escaped and with its line breaks kept —
+ * `escapeHtml()` first, `\n` → `<br>` second, so a newline in the data can never be
+ * a tag in the output.
+ */
+function helpWantedCardHtml(ministry: VolunteerHelpWantedMinistry): string {
+  const text = (ministry.helpWantedText ?? "").trim();
+  const body =
+    text === "" ? "" : `<p class="volunteer-help-wanted-text mt-2 mb-0">${escapeHtml(text).replace(/\n/g, "<br>")}</p>`;
+
+  return `
+    <div class="card mb-3 volunteer-help-wanted-card" data-ministry-id="${ministry.ministryId}">
+      <div class="card-body">
+        <div class="volunteer-help-wanted-name fw-bold">
+          <i class="fa-solid fa-hand-holding-heart me-1"></i>${escapeHtml(ministry.ministryName)}
+        </div>
+        ${body}
+        <div class="mt-3 d-grid gap-2 d-sm-flex volunteer-card-actions">
+          <button type="button" class="btn btn-outline-primary volunteer-touch-target volunteer-offer-help">
+            ${escapeHtml(i18next.t("I'd like to help"))}
+          </button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderHelpWanted(): void {
+  const section = byId("help-wanted-section");
+  const content = byId("help-wanted-content");
+  if (!section || !content) {
+    return;
+  }
+
+  if (helpWanted.length === 0) {
+    content.innerHTML = "";
+    show(section, false);
+
+    return;
+  }
+
+  content.innerHTML = helpWanted.map(helpWantedCardHtml).join("");
+  show(section, true);
+}
+
 function render(): void {
   const content = byId("opportunities-content");
   if (!content) {
@@ -108,6 +169,40 @@ async function load(): Promise<void> {
   }
 }
 
+/**
+ * The help-wanted section loads independently of the shift list and NEVER fails the
+ * page: a ministry advert is a bonus, and losing the shift list because an advert
+ * could not be fetched would be the wrong trade. A failure simply leaves the section
+ * hidden.
+ */
+async function loadHelpWanted(): Promise<void> {
+  try {
+    const response = await listMyHelpWanted();
+    helpWanted = response.ministries;
+  } catch {
+    helpWanted = [];
+  }
+  renderHelpWanted();
+}
+
+async function offer(ministryId: number): Promise<void> {
+  try {
+    const result = await offerToHelp(ministryId);
+    notifySuccess(
+      result.joinedPool
+        ? i18next.t("Thanks — the coordinator has been told you'd like to help.")
+        : i18next.t("Thanks — the coordinator has been told you'd like to help again."),
+    );
+  } catch (error) {
+    notifyError(errorMessage(error, i18next.t("That could not be sent.")));
+  }
+
+  // The button stays for members and non-members alike (D19) — offering again is a
+  // real thing to do — but `inPool` has changed, so the section is reloaded to keep
+  // the next tap's wording honest.
+  await loadHelpWanted();
+}
+
 async function signUp(occurrenceId: number, positionId: number): Promise<void> {
   try {
     await signUpForOpportunity(occurrenceId, positionId);
@@ -127,6 +222,19 @@ async function signUp(occurrenceId: number, positionId: number): Promise<void> {
 function wire(): void {
   byId("opportunities-retry")?.addEventListener("click", () => {
     void load();
+  });
+
+  byId("help-wanted-content")?.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement).closest(".volunteer-offer-help");
+    if (!button) {
+      return;
+    }
+
+    const card = button.closest(".volunteer-help-wanted-card") as HTMLElement | null;
+    const ministryId = Number(card?.dataset.ministryId ?? 0);
+    if (ministryId) {
+      void offer(ministryId);
+    }
   });
 
   byId("opportunities-content")?.addEventListener("click", (event) => {
@@ -171,6 +279,7 @@ function init(): void {
   }
   wire();
   void load();
+  void loadHelpWanted();
 }
 
 if (window.CRM?.onLocalesReady) {

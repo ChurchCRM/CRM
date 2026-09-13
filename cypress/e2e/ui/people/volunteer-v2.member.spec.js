@@ -45,7 +45,6 @@ const MEMBER_USERNAME = "lena.black.editself.notes@exampl";
 const MEMBER_PASSWORD = "changeme";
 const PERSON_MEMBER = 100;
 
-const POOL_GROUP = 1; // "Angels class" — seeded members 4, 5, 8, 9, 63
 const POOL_MEMBER_A = 8;
 const POOL_MEMBER_B = 9;
 const CHURCH_SERVICE_TYPE = 1;
@@ -197,12 +196,19 @@ function cleanupFixtures() {
           WHERE vmin.vmin_Name LIKE ?`,
         [`${PREFIX}%`],
     );
+    // D19: the pool is the ministry's own Group and `grp_ministry_id` is ON DELETE
+    // SET NULL, so the group and its memberships go before the ministry row.
     dbOk(
-        `DELETE vpol FROM volunteer_pool_vpol vpol
-           JOIN volunteer_team_vtem vtem
-             ON vtem.vtem_ID = vpol.vpol_OwnerId AND vpol.vpol_OwnerType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
+        [`${PREFIX}%`],
+    );
+    dbOk(
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         [`${PREFIX}%`],
     );
     dbOk(
@@ -213,10 +219,6 @@ function cleanupFixtures() {
     );
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, [`${PREFIX}%`]);
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${EVENT_TITLE}%`]);
-    dbOk(`DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ? AND p2g2r_grp_ID = ?`, [
-        PERSON_MEMBER,
-        POOL_GROUP,
-    ]);
 }
 
 /** Put the member back on one PENDING Door assignment and nothing else. */
@@ -267,16 +269,16 @@ before(() => {
         });
     });
 
+    // D19: the ministry came with its own pool Group, empty — fill it through the API.
     cy.then(() => {
-        dbOk(
-            `INSERT IGNORE INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID)
-             VALUES (?, ?, 2)`,
-            [PERSON_MEMBER, POOL_GROUP],
-        );
-        adminApi("POST", `${VOLUNTEER_URL}/teams/${teamId}/pools`, {
-            groupId: POOL_GROUP,
-            label: `${PREFIX} pool`,
-        }, 201);
+        [PERSON_MEMBER, POOL_MEMBER_A, POOL_MEMBER_B].forEach((personId) => {
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                null,
+                [200, 201],
+            );
+        });
     });
 
     cy.then(() => {
@@ -618,6 +620,110 @@ describe("Volunteer v2 — S6 open opportunities (#9712)", () => {
         cy.visit("/volunteer/opportunities");
         cy.get("#opportunities-empty").should("be.visible");
         cy.get("#opportunities-empty .empty-title").should("not.be.empty");
+    });
+});
+
+// ── D19 — "Ministries looking for help" on S6 ──────────────────────────────
+
+/**
+ * The section a volunteer with nothing to sign up for still has something to do
+ * with. Its API contract is pinned by `private.volunteer.ministry-group.spec.js`;
+ * what is asserted here is the SCREEN: that the section is omitted entirely when
+ * no ministry is advertising, that the coordinator's own prose is rendered with
+ * its line breaks and without its markup, that the button reports the right
+ * sentence, and that it stays visible for somebody who is already a member.
+ */
+describe("Volunteer v2 — S6 ministries looking for help (D19)", () => {
+    const HELP_TEXT = "Sundays need help.\nNo experience needed.";
+    /** A deliberately hostile string: escaped as text, never parsed as markup. */
+    const HELP_TEXT_UNSAFE = '<img src=x onerror="window.__xss=1">';
+
+    function setHelpWanted(fields) {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `${VOLUNTEER_URL}/ministries/${ministryId}`,
+            fields,
+            200,
+        );
+    }
+
+    afterEach(() => {
+        setHelpWanted({ helpWanted: false, helpWantedText: "" });
+    });
+
+    it("omits the whole section when no ministry is asking for help", () => {
+        setHelpWanted({ helpWanted: false });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+        cy.get("#opportunities-loading").should("not.be.visible");
+        cy.get("#help-wanted-section").should("not.be.visible");
+    });
+
+    it("lists the ministry with its text and one 'I'd like to help' button", () => {
+        setHelpWanted({ helpWanted: true, helpWantedText: HELP_TEXT });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get("#help-wanted-section").should("be.visible");
+        cy.get(".volunteer-help-wanted-card").should("have.length", 1);
+        cy.get(".volunteer-help-wanted-name").should("contain", `${PREFIX} Hospitality`);
+        // Line breaks are preserved, so the two sentences are two lines.
+        cy.get(".volunteer-help-wanted-text").should("contain", "Sundays need help.");
+        cy.get(".volunteer-help-wanted-text br").should("exist");
+        cy.get(".volunteer-offer-help").should("have.length", 1);
+    });
+
+    it("escapes the coordinator's text instead of rendering it as markup", () => {
+        setHelpWanted({ helpWanted: true, helpWantedText: HELP_TEXT_UNSAFE });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get(".volunteer-help-wanted-card").should("be.visible");
+        cy.get(".volunteer-help-wanted-text img").should("not.exist");
+        cy.window().its("__xss").should("be.undefined");
+    });
+
+    it("offers to help, thanks the volunteer, and keeps the button for a second offer", () => {
+        setHelpWanted({ helpWanted: true, helpWantedText: HELP_TEXT });
+        // Make sure the persona is NOT in the pool, so the first tap is the
+        // "has been added" path.
+        cy.makePrivateAdminAPICall(
+            "DELETE",
+            `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${PERSON_MEMBER}`,
+            null,
+            [200, 404],
+        );
+
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+        cy.get(".volunteer-offer-help").click();
+        cy.get(".notyf__toast").should("contain", "you'd like to help");
+
+        cy.makePrivateAdminAPICall(
+            "GET",
+            `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
+            null,
+            200,
+        ).then((resp) => {
+            expect(resp.body.members.map((m) => m.personId)).to.include(PERSON_MEMBER);
+        });
+
+        // D19: the button stays for members and non-members alike — offering again
+        // is a real thing to do.
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+        cy.get(".volunteer-offer-help").should("be.visible").click();
+        cy.get(".notyf__toast").should("contain", "again");
+    });
+
+    it("renders the section through i18next, never a raw key", () => {
+        setHelpWanted({ helpWanted: true, helpWantedText: HELP_TEXT });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+        cy.get("#help-wanted-section").should("not.contain", "i18next");
+        cy.get("#help-wanted-section")
+            .invoke("text")
+            .should("not.match", /\{\{[a-z]+\}\}/);
     });
 });
 

@@ -10,11 +10,19 @@
  * not; the fixtures are disjoint (a different `PREFIX`), so the two can run in
  * either order or in parallel.
  *
+ * REWRITTEN BY D19. The pool is no longer a link table: a ministry owns exactly one
+ * core Group, created with it and carrying `group_grp.grp_ministry_id`. The "Pools"
+ * block below is therefore about that group's MEMBERSHIP, and everything about
+ * linking, unlinking, `volunteer_pool_vpol` and several groups per owner is gone.
+ * The group's creation, rename, deletion and the coordinator write path live in
+ * `private.volunteer.ministry-group.spec.js`; this file keeps the membership surface
+ * and the qualification half.
+ *
  * What is asserted, and where the design says so:
  *
- *   §2.5  a pool is a LINK to a group_grp row and stores no people; the link is
- *         unique per (ownerType, ownerId, groupId); unlinking never touches the
- *         group
+ *   D19   a ministry's pool is its own Group; membership is read live and is
+ *         editable by the ministry's coordinator; qualifying somebody adds them
+ *         to the pool and revoking never removes them
  *   §2.7  qualification is per (person, position) — UNIQUE (vqal_per_ID,
  *         vqal_vpos_ID) — revocation is DEACTIVATION so history survives, and a
  *         re-grant reactivates the SAME row rather than inserting a second
@@ -25,14 +33,10 @@
  *   P5/P6 the Cart is the bulk-selection mechanism; V2 adds a sink, not a second
  *         selection UI
  *
- * Seed fixtures (design §6.4). The pool-union test deliberately does NOT use
- * group 10 "Worship Service" that the issue brief suggested: `seed.sql:1338`
- * gives it **no** `person2group2role_p2g2r` rows at all, so a union with it
- * could not demonstrate de-duplication. Group 1 "Angels class" (persons 4, 5, 8,
- * 9, 63) and group 8 "Girl Scouts" (persons 63, 80, 95) OVERLAP on person 63, so
- * their union is 7 distinct people where a naive concatenation would report 8 —
- * which is the property worth pinning. Group 10 is still linked once, to prove a
- * member-less pool contributes nothing and does not break the union.
+ * Seed fixtures (design §6.4). Since D19 a ministry's pool starts EMPTY — the group
+ * is created with the ministry and nobody is in it — so the people this spec works
+ * with are put there by the spec itself. The seed group ids below are kept only
+ * because a couple of tests still need a person id that is certainly a real person.
  *
  * Tiers exercised:
  *   person 1   `admin.api.key`      administrator — bypasses every ROLE gate
@@ -57,24 +61,21 @@ const CART_URL = "/api/cart/";
 const PERSON_COORDINATOR = 3; // tony.wade — user.api.key
 const PERSON_PLAIN = 900; // john.plainauth — plainauth.api.key
 
-/** seed.sql group_grp rows; the memberships are seed.sql:1338. */
-const GROUP_ANGELS = 1; // persons 4, 5, 8, 9, 63
-const GROUP_SCOUTS = 8; // persons 63, 80, 95 — overlaps Angels on 63
-const GROUP_WORSHIP = 10; // type 1 "Ministry", zero members
 
 /**
- * The two pool groups' memberships, read from the API in `before` rather than
- * hardcoded from the seed.
- *
- * `private.people.groups.spec.js` adds person 1 to group 1 and does not always
- * take them out again, so group 1's size is NOT stable across a full suite run.
- * What this spec is actually about is the union being de-duplicated, and that is
- * provable against whatever the groups happen to contain: person 63 is in both,
- * so `union.length < angels.length + scouts.length` always holds.
+ * Four real people from the seed, used as pool members and qualification subjects.
+ * Read as ids rather than through a group, because a ministry's pool is its own
+ * group now and starts with nobody in it (D19).
  */
-let angelsMembers = [];
-let scoutsMembers = [];
-let unionMembers = [];
+const POOL_MEMBERS = [4, 5, 8, 9];
+
+/**
+ * A pool member this spec never qualifies — the "In the pool, not qualified yet"
+ * row the matrix has to keep. Deliberately not one of `POOL_MEMBERS`: those are
+ * qualified all over the qualification block, so using one here would make the
+ * assertion depend on the order the tests happened to run in.
+ */
+const MATRIX_POOL_ONLY = 63;
 
 /** Every fixture name starts with this so cleanup deletes exactly what this spec made. */
 const PREFIX = "POOL9707";
@@ -135,17 +136,20 @@ function cleanupFixtures() {
           WHERE m.vmin_Name LIKE ?`,
         [`${PREFIX}%`],
     );
+    // D19: each ministry owns a Group. `grp_ministry_id` is ON DELETE SET NULL, so
+    // deleting the ministry row in SQL would leave the group behind as an orphan
+    // nobody recognises — the memberships and the groups go first, by the link.
     dbOk(
-        `DELETE p FROM volunteer_pool_vpol p
-           JOIN volunteer_ministry_vmin m ON m.vmin_ID = p.vpol_OwnerId
-          WHERE p.vpol_OwnerType = 'ministry' AND m.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         [`${PREFIX}%`],
     );
     dbOk(
-        `DELETE p FROM volunteer_pool_vpol p
-           JOIN volunteer_team_vtem t ON t.vtem_ID = p.vpol_OwnerId
-           JOIN volunteer_ministry_vmin m ON m.vmin_ID = t.vtem_vmin_ID
-          WHERE p.vpol_OwnerType = 'team' AND m.vmin_Name LIKE ?`,
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         [`${PREFIX}%`],
     );
     dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID IN (?, ?)`, [
@@ -206,13 +210,6 @@ function grantScope(scopeType, scopeId) {
     );
 }
 
-/** Link a group as a pool with the admin key and hand back the pool id. */
-function linkPool(ownerPath, groupId, label) {
-    return cy
-        .makePrivateAdminAPICall("POST", ownerPath, { groupId, label }, 201)
-        .then((resp) => resp.body.pool.id);
-}
-
 function grantQualification(positionId, personId, expected = 201) {
     return cy.makePrivateAdminAPICall(
         "POST",
@@ -220,13 +217,6 @@ function grantQualification(positionId, personId, expected = 201) {
         { personId },
         expected,
     );
-}
-
-/** The person ids currently in a group, via the core endpoint V2 reuses (G2). */
-function readGroupMembers(groupId) {
-    return cy
-        .makePrivateAdminAPICall("GET", `/api/groups/${groupId}/members`, null, 200)
-        .then((resp) => resp.body.Person2group2roleP2g2rs.map((m) => m.PersonId));
 }
 
 /** How many qualification rows exist for this pair, whatever their active flag. */
@@ -242,14 +232,6 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
     before(() => {
         setVersion("v2");
         cleanupFixtures();
-
-        readGroupMembers(GROUP_ANGELS).then((ids) => {
-            angelsMembers = ids;
-        });
-        readGroupMembers(GROUP_SCOUTS).then((ids) => {
-            scoutsMembers = ids;
-            unionMembers = [...new Set([...angelsMembers, ...scoutsMembers])];
-        });
 
         createMinistry("Coffee Bar").then((id) => {
             ministryA = id;
@@ -299,7 +281,7 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
         it("returns 401 to an unauthenticated caller", () => {
             cy.request({
                 method: "GET",
-                url: `${MINISTRIES_URL}/${ministryA}/pools`,
+                url: `${MINISTRIES_URL}/${ministryA}/pool`,
                 failOnStatusCode: false,
                 withCredentials: false,
             }).then((resp) => {
@@ -313,7 +295,7 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
             // administrator does NOT bypass.
             cy.makePrivateAdminAPICall(
                 "GET",
-                `${MINISTRIES_URL}/${ministryA}/pools`,
+                `${MINISTRIES_URL}/${ministryA}/pool`,
                 null,
                 403,
             );
@@ -329,7 +311,7 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
         it("denies a user with no manager flag and no scope", () => {
             cy.makePrivatePlainAuthAPICall(
                 "GET",
-                `${MINISTRIES_URL}/${ministryA}/pools`,
+                `${MINISTRIES_URL}/${ministryA}/pool`,
                 null,
                 403,
             );
@@ -343,271 +325,129 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
     });
 
     // -----------------------------------------------------------------
-    // §2.5 / §3.3.1 — linking a Group as the pool
+    // D19 — the ministry's own pool Group and who is in it
     // -----------------------------------------------------------------
-    describe("Pools", () => {
-        let ministryPoolId = 0;
-        let teamPoolId = 0;
-
-        it("links a Group to a ministry and reports its member count", () => {
+    describe("The pool Group", () => {
+        it("gives a new ministry an empty pool Group of its own", () => {
             cy.makePrivateAdminAPICall(
-                "POST",
-                `${MINISTRIES_URL}/${ministryA}/pools`,
-                { groupId: GROUP_ANGELS, label: "Sunday A team" },
-                201,
+                "GET",
+                `${MINISTRIES_URL}/${ministryA}/pool`,
+                null,
+                200,
             ).then((resp) => {
-                expect(resp.body).to.have.property("pool");
-                const pool = resp.body.pool;
-                expect(pool.id).to.be.a("number").and.to.be.greaterThan(0);
-                expect(pool.ownerType).to.eq("ministry");
-                expect(pool.ownerId).to.eq(ministryA);
-                expect(pool.groupId).to.eq(GROUP_ANGELS);
-                expect(pool.groupName).to.eq("Angels class");
-                expect(pool.label).to.eq("Sunday A team");
-                // The count comes from the group's own membership rows — V2 copies
-                // nothing (D1, §2.5).
-                expect(pool.memberCount).to.eq(angelsMembers.length);
-                ministryPoolId = pool.id;
+                expect(resp.body.groupId).to.be.a("number").and.to.be.greaterThan(0);
+                expect(resp.body.groupName).to.eq(`${PREFIX} Coffee Bar`);
+                expect(resp.body.members).to.be.an("array").that.is.empty;
             });
         });
 
-        it("stores the link only — no people are copied into V2", () => {
+        it("adds a person to the pool, through the Group's own membership table", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${MINISTRIES_URL}/${ministryA}/pool/${POOL_MEMBERS[0]}`,
+                null,
+                201,
+            ).then((resp) => {
+                expect(resp.body.added).to.eq(true);
+            });
+
+            // Nothing is copied into V2: the row is in the CORE membership table
+            // (D1), hanging off the ministry's group.
             dbOk(
-                `SELECT vpol_grp_ID FROM volunteer_pool_vpol WHERE vpol_ID = ?`,
-                [ministryPoolId],
+                `SELECT COUNT(*) AS c FROM person2group2role_p2g2r r
+                   JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+                  WHERE g.grp_ministry_id = ? AND r.p2g2r_per_ID = ?`,
+                [ministryA, POOL_MEMBERS[0]],
             ).then((rows) => {
-                expect(rows).to.have.lengthOf(1);
-                expect(Number(rows[0].vpol_grp_ID)).to.eq(GROUP_ANGELS);
-            });
-            // The only V2 tables that may hold person ids are qualifications and
-            // assignments; a pool link must never have created one.
-            dbOk(
-                `SELECT COUNT(*) AS c FROM volunteer_qualification_vqal
-                   JOIN volunteer_position_vpos p ON p.vpos_ID = vqal_vpos_ID
-                  WHERE p.vpos_vmin_ID = ?`,
-                [ministryA],
-            ).then((rows) => {
-                expect(Number(rows[0].c)).to.eq(0);
+                expect(Number(rows[0].c)).to.eq(1);
             });
         });
 
-        it("rejects a second link of the same Group to the same owner with 409", () => {
+        it("is idempotent: adding somebody already in the pool is 200, not 409", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                `${MINISTRIES_URL}/${ministryA}/pools`,
-                { groupId: GROUP_ANGELS },
-                409,
+                `${MINISTRIES_URL}/${ministryA}/pool/${POOL_MEMBERS[0]}`,
+                null,
+                200,
             ).then((resp) => {
-                expect(resp.body).to.have.property("success", false);
+                expect(resp.body.added).to.eq(false);
             });
         });
 
-        it("rejects an unknown group with 404", () => {
+        it("lists the pool alphabetically, with each person's qualification count", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                `${MINISTRIES_URL}/${ministryA}/pools`,
-                { groupId: 99999999 },
-                404,
+                `${MINISTRIES_URL}/${ministryA}/pool/${POOL_MEMBERS[1]}`,
+                null,
+                201,
             );
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `${MINISTRIES_URL}/${ministryA}/pool`,
+                null,
+                200,
+            ).then((resp) => {
+                const ids = resp.body.members.map((m) => m.personId);
+                expect(ids).to.include.members([POOL_MEMBERS[0], POOL_MEMBERS[1]]);
+                for (const member of resp.body.members) {
+                    expect(member.inPool).to.eq(true);
+                    expect(member.displayName).to.be.a("string").and.not.to.eq("");
+                }
+                const names = resp.body.members.map((m) => m.displayName.toLowerCase());
+                expect(names).to.deep.eq([...names].sort());
+            });
         });
 
-        it("rejects a missing groupId with 400", () => {
+        it("rejects an unknown person with 404 and an unknown ministry with 404", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                `${MINISTRIES_URL}/${ministryA}/pools`,
-                { label: "no group" },
-                400,
-            );
-        });
-
-        it("rejects an owner that does not exist with 404", () => {
-            // vpol_OwnerId is polymorphic and carries no foreign key (§2.5), so the
-            // service is the only thing that can refuse this.
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `${MINISTRIES_URL}/99999999/pools`,
-                { groupId: GROUP_ANGELS },
+                `${MINISTRIES_URL}/${ministryA}/pool/99999999`,
+                null,
                 404,
             );
             cy.makePrivateAdminAPICall(
                 "POST",
-                `${VOLUNTEER_URL}/teams/99999999/pools`,
-                { groupId: GROUP_ANGELS },
+                `${MINISTRIES_URL}/99999999/pool/${POOL_MEMBERS[0]}`,
+                null,
                 404,
             );
         });
 
-        it("links a second Group to a team under the same ministry", () => {
+        it("removes somebody from the pool without deleting anything else", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                `${VOLUNTEER_URL}/teams/${teamA}/pools`,
-                { groupId: GROUP_SCOUTS },
+                `${MINISTRIES_URL}/${ministryA}/pool/${POOL_MEMBERS[2]}`,
+                null,
                 201,
-            ).then((resp) => {
-                expect(resp.body.pool.ownerType).to.eq("team");
-                expect(resp.body.pool.ownerId).to.eq(teamA);
-                expect(resp.body.pool.memberCount).to.eq(scoutsMembers.length);
-                teamPoolId = resp.body.pool.id;
-            });
-        });
-
-        it("allows the same Group to be linked to a different owner", () => {
-            // The unique key is (ownerType, ownerId, groupId), so one group may feed
-            // several teams — UC3/UC4 both want that (§2.5).
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `${VOLUNTEER_URL}/teams/${teamA}/pools`,
-                { groupId: GROUP_ANGELS },
-                201,
-            ).then((resp) => {
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `${VOLUNTEER_URL}/pools/${resp.body.pool.id}`,
-                    null,
-                    200,
-                );
-            });
-        });
-
-        it("lists the ministry's pools, its teams' pools and where each belongs", () => {
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `${MINISTRIES_URL}/${ministryA}/pools`,
-                null,
-                200,
-            ).then((resp) => {
-                expect(resp.body).to.have.property("pools");
-                const ids = resp.body.pools.map((p) => p.id);
-                expect(ids).to.include(ministryPoolId);
-                expect(ids).to.include(teamPoolId);
-                const teamPool = resp.body.pools.find((p) => p.id === teamPoolId);
-                expect(teamPool.ownerType).to.eq("team");
-                expect(teamPool.ownerName).to.eq(`${PREFIX} Coffee Bar Team`);
-            });
-        });
-
-        it("lists only that team's pools under /teams/{id}/pools", () => {
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `${VOLUNTEER_URL}/teams/${teamA}/pools`,
-                null,
-                200,
-            ).then((resp) => {
-                const ids = resp.body.pools.map((p) => p.id);
-                expect(ids).to.include(teamPoolId);
-                expect(ids).to.not.include(ministryPoolId);
-            });
-        });
-
-        it("returns the union of the linked groups' memberships, de-duplicated", () => {
-            // Person 63 is in BOTH group 1 and group 8 (seed.sql:1338), so a naive
-            // concatenation reports one person more than the union does.
-            expect(
-                unionMembers.length,
-                "the two seed groups overlap, or this test proves nothing",
-            ).to.be.lessThan(angelsMembers.length + scoutsMembers.length);
-
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `${MINISTRIES_URL}/${ministryA}/members`,
-                null,
-                200,
-            ).then((resp) => {
-                expect(resp.body).to.have.property("members");
-                const personIds = resp.body.members.map((m) => m.personId);
-                expect(personIds).to.have.lengthOf(unionMembers.length);
-                expect(personIds).to.include.members(unionMembers);
-                const shared = resp.body.members.find((m) => m.personId === 63);
-                expect(shared, "the person in both groups appears once").to.exist;
-                expect(shared.groupIds).to.include.members([
-                    GROUP_ANGELS,
-                    GROUP_SCOUTS,
-                ]);
-                expect(shared.displayName).to.be.a("string").and.not.to.eq("");
-            });
-        });
-
-        it("narrows the pool people to one team when ?teamId= is given", () => {
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `${VOLUNTEER_URL}/teams/${teamA}/members`,
-                null,
-                200,
-            ).then((resp) => {
-                const personIds = resp.body.members.map((m) => m.personId);
-                // The ministry-wide pool feeds every team under it, so the team view
-                // is the ministry pool ∪ the team's own pool — still de-duplicated.
-                expect(personIds).to.include.members(unionMembers);
-                expect(personIds).to.have.lengthOf(unionMembers.length);
-            });
-        });
-
-        it("treats a member-less pool group as contributing nobody", () => {
-            // Group 10 "Worship Service" has no person2group2role_p2g2r rows at all.
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `${MINISTRIES_URL}/${ministryA}/pools`,
-                { groupId: GROUP_WORSHIP },
-                201,
-            ).then((resp) => {
-                expect(resp.body.pool.memberCount).to.eq(0);
-                cy.makePrivateAdminAPICall(
-                    "GET",
-                    `${MINISTRIES_URL}/${ministryA}/members`,
-                    null,
-                    200,
-                ).then((members) => {
-                    expect(members.body.members).to.have.lengthOf(
-                        unionMembers.length,
-                    );
-                });
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `${VOLUNTEER_URL}/pools/${resp.body.pool.id}`,
-                    null,
-                    200,
-                );
-            });
-        });
-
-        it("unlinks a pool without touching the Group or its members", () => {
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `${MINISTRIES_URL}/${ministryB}/pools`,
-                { groupId: GROUP_ANGELS },
-                201,
-            ).then((resp) => {
-                const poolId = resp.body.pool.id;
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `${VOLUNTEER_URL}/pools/${poolId}`,
-                    null,
-                    200,
-                );
-                dbOk(`SELECT COUNT(*) AS c FROM volunteer_pool_vpol WHERE vpol_ID = ?`, [
-                    poolId,
-                ]).then((rows) => {
-                    expect(Number(rows[0].c)).to.eq(0);
-                });
-            });
-            // The group is untouched: same membership as the seed.
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `/api/groups/${GROUP_ANGELS}/members`,
-                null,
-                200,
-            ).then((resp) => {
-                const memberIds = resp.body.Person2group2roleP2g2rs.map(
-                    (m) => m.PersonId,
-                );
-                expect(memberIds).to.include.members(angelsMembers);
-            });
-        });
-
-        it("returns 404 for a pool that does not exist", () => {
+            );
             cy.makePrivateAdminAPICall(
                 "DELETE",
-                `${VOLUNTEER_URL}/pools/99999999`,
+                `${MINISTRIES_URL}/${ministryA}/pool/${POOL_MEMBERS[2]}`,
+                null,
+                200,
+            );
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `${MINISTRIES_URL}/${ministryA}/pool`,
+                null,
+                200,
+            ).then((resp) => {
+                const ids = resp.body.members.map((m) => m.personId);
+                expect(ids).to.not.include(POOL_MEMBERS[2]);
+            });
+            // The person still exists — "remove from the pool" is not "delete".
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/person/${POOL_MEMBERS[2]}`,
+                null,
+                200,
+            );
+        });
+
+        it("returns 404 when removing somebody who is not in the pool", () => {
+            cy.makePrivateAdminAPICall(
+                "DELETE",
+                `${MINISTRIES_URL}/${ministryA}/pool/${POOL_MEMBERS[3]}`,
                 null,
                 404,
             );
@@ -628,6 +468,67 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
                 expect(qualification.grantedDate).to.be.a("string");
                 expect(qualification.grantedByPersonId).to.eq(1);
                 expect(qualification.displayName).to.be.a("string").and.not.to.eq("");
+            });
+        });
+
+        it("puts a newly qualified outsider into the ministry's pool (D19)", () => {
+            // Person 9 is in nothing this spec has touched. Qualifying them is what
+            // brings them into the roster — before D19 they would have been
+            // qualified and invisible to every screen that reads the pool.
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `${MINISTRIES_URL}/${ministryA}/pool`,
+                null,
+                200,
+            ).then((before) => {
+                expect(before.body.members.map((m) => m.personId)).to.not.include(
+                    POOL_MEMBERS[3],
+                );
+            });
+
+            grantQualification(positionEspresso, POOL_MEMBERS[3], [200, 201]);
+
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `${MINISTRIES_URL}/${ministryA}/pool`,
+                null,
+                200,
+            ).then((resp) => {
+                expect(resp.body.members.map((m) => m.personId)).to.include(
+                    POOL_MEMBERS[3],
+                );
+            });
+        });
+
+        it("leaves them in the pool when the qualification is revoked (D19)", () => {
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `${VOLUNTEER_URL}/positions/${positionEspresso}/qualifications`,
+                null,
+                200,
+            ).then((resp) => {
+                const row = resp.body.qualifications.find(
+                    (q) => q.personId === POOL_MEMBERS[3],
+                );
+                expect(row, "the grant above must be findable").to.exist;
+                cy.makePrivateAdminAPICall(
+                    "DELETE",
+                    `${VOLUNTEER_URL}/qualifications/${row.id}`,
+                    null,
+                    200,
+                );
+            });
+
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `${MINISTRIES_URL}/${ministryA}/pool`,
+                null,
+                200,
+            ).then((resp) => {
+                expect(
+                    resp.body.members.map((m) => m.personId),
+                    "revoking one qualification must not un-roster anybody",
+                ).to.include(POOL_MEMBERS[3]);
             });
         });
 
@@ -806,7 +707,16 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
     // §5.4 — the matrix payload: people × positions in ONE response
     // -----------------------------------------------------------------
     describe("Qualification matrix", () => {
-        it("carries the positions, the pool people and each person's qualification ids", () => {
+        before(() => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${MINISTRIES_URL}/${ministryA}/pool/${MATRIX_POOL_ONLY}`,
+                null,
+                [200, 201],
+            );
+        });
+
+        it("carries the positions, the union of pool and qualified people, and each person's qualification ids", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
                 `${MINISTRIES_URL}/${ministryA}/qualification-matrix`,
@@ -815,7 +725,9 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
             ).then((resp) => {
                 expect(resp.body).to.have.property("positions");
                 expect(resp.body).to.have.property("people");
-                expect(resp.body).to.have.property("pools");
+                // D19 removed the `pools` array: there is one pool and it is the
+                // ministry's own group, so there is nothing to list.
+                expect(resp.body).to.not.have.property("pools");
                 expect(resp.body.ministryId).to.eq(ministryA);
 
                 const positionIds = resp.body.positions.map((p) => p.id);
@@ -825,9 +737,6 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
                     positionExpeditor,
                 ]);
 
-                const personIds = resp.body.people.map((p) => p.personId);
-                expect(personIds).to.include.members(unionMembers);
-
                 // One fetch carries every cell — §5.4 forbids a request per cell.
                 const tony = resp.body.people.find((p) => p.personId === 4);
                 expect(tony.qualifications).to.include.members([
@@ -835,9 +744,49 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
                     positionEspresso,
                     positionExpeditor,
                 ]);
-                const notQualified = resp.body.people.find((p) => p.personId === 80);
-                expect(notQualified.qualifications).to.be.an("array").that.is.empty;
+                expect(tony.inPool, "qualifying somebody puts them in the pool").to.eq(
+                    true,
+                );
+
+                // D19's union, the other half: a pool member with no ticks is a row.
+                const poolOnly = resp.body.people.find(
+                    (p) => p.personId === MATRIX_POOL_ONLY,
+                );
+                expect(poolOnly, "a pool member with no qualifications is still a row")
+                    .to.exist;
+                expect(poolOnly.inPool).to.eq(true);
+                expect(poolOnly.qualifications).to.be.an("array").that.is.empty;
             });
+        });
+
+        it("keeps a qualified person on the matrix after they leave the pool", () => {
+            // The other half of the union, and the D19 rule it exists for: removing
+            // somebody from the pool does not un-qualify them, so they must stay
+            // visible — and `inPool: false` is how the screen says which they are.
+            cy.makePrivateAdminAPICall(
+                "DELETE",
+                `${MINISTRIES_URL}/${ministryA}/pool/4`,
+                null,
+                200,
+            );
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `${MINISTRIES_URL}/${ministryA}/qualification-matrix`,
+                null,
+                200,
+            ).then((resp) => {
+                const tony = resp.body.people.find((p) => p.personId === 4);
+                expect(tony, "a qualified non-member is still a row").to.exist;
+                expect(tony.inPool).to.eq(false);
+                expect(tony.qualifications).to.include(positionSetup);
+            });
+            // Put them back so the later tests see the state they expect.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${MINISTRIES_URL}/${ministryA}/pool/4`,
+                null,
+                201,
+            );
         });
 
         it("narrows to one team's positions with ?teamId=", () => {
@@ -851,19 +800,6 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
                 expect(positionIds).to.include(positionBTeam);
                 expect(positionIds).to.not.include(positionBOtherTeam);
                 expect(resp.body.teamId).to.eq(teamB);
-            });
-        });
-
-        it("returns an empty people list when no pool is linked", () => {
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `${MINISTRIES_URL}/${ministryB}/qualification-matrix`,
-                null,
-                200,
-            ).then((resp) => {
-                expect(resp.body.pools).to.be.an("array").that.is.empty;
-                expect(resp.body.people).to.be.an("array").that.is.empty;
-                expect(resp.body.positions).to.be.an("array").that.is.not.empty;
             });
         });
     });
@@ -953,37 +889,36 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
             grantScope("team", teamB);
         });
 
-        it("lets the ministry coordinator link and unlink pools in their ministry", () => {
+        it("lets the ministry coordinator add and remove pool members in their ministry", () => {
             cy.makePrivateAPICall(
                 userKey(),
                 "POST",
-                `${VOLUNTEER_URL}/teams/${teamA}/pools`,
-                { groupId: GROUP_WORSHIP },
-                201,
-            ).then((resp) => {
-                cy.makePrivateAPICall(
-                    userKey(),
-                    "DELETE",
-                    `${VOLUNTEER_URL}/pools/${resp.body.pool.id}`,
-                    null,
-                    200,
-                );
-            });
+                `${MINISTRIES_URL}/${ministryA}/pool/${POOL_MEMBERS[3]}`,
+                null,
+                [200, 201],
+            );
+            cy.makePrivateAPICall(
+                userKey(),
+                "DELETE",
+                `${MINISTRIES_URL}/${ministryA}/pool/${POOL_MEMBERS[3]}`,
+                null,
+                200,
+            );
         });
 
         it("denies the coordinator of ministry A every pool route on ministry B", () => {
             cy.makePrivateAPICall(
                 userKey(),
                 "GET",
-                `${MINISTRIES_URL}/${ministryB}/pools`,
+                `${MINISTRIES_URL}/${ministryB}/pool`,
                 null,
                 403,
             );
             cy.makePrivateAPICall(
                 userKey(),
                 "POST",
-                `${MINISTRIES_URL}/${ministryB}/pools`,
-                { groupId: GROUP_ANGELS },
+                `${MINISTRIES_URL}/${ministryB}/pool/${POOL_MEMBERS[0]}`,
+                null,
                 403,
             );
             cy.makePrivateAPICall(
@@ -1042,27 +977,22 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
             );
         });
 
-        it("lets a team leader link a pool on their own team but not on the ministry", () => {
+        it("denies a team leader the ministry-level pool routes", () => {
+            // D19 puts the pool on the MINISTRY, so a team leader who is not the
+            // ministry's coordinator has no pool route at all — §4.6's "scope"
+            // for a team leader never widened to the ministry.
             cy.makePrivateAPICall(
                 userKey(),
                 "POST",
-                `${VOLUNTEER_URL}/teams/${teamB}/pools`,
-                { groupId: GROUP_SCOUTS },
-                201,
-            ).then((resp) => {
-                cy.makePrivateAPICall(
-                    userKey(),
-                    "DELETE",
-                    `${VOLUNTEER_URL}/pools/${resp.body.pool.id}`,
-                    null,
-                    200,
-                );
-            });
+                `${MINISTRIES_URL}/${ministryB}/pool/${POOL_MEMBERS[0]}`,
+                null,
+                403,
+            );
             cy.makePrivateAPICall(
                 userKey(),
-                "POST",
-                `${MINISTRIES_URL}/${ministryB}/pools`,
-                { groupId: GROUP_SCOUTS },
+                "GET",
+                `${MINISTRIES_URL}/${ministryB}/pool`,
+                null,
                 403,
             );
         });
@@ -1070,8 +1000,8 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
         it("denies person 900 every write on the surface", () => {
             cy.makePrivatePlainAuthAPICall(
                 "POST",
-                `${MINISTRIES_URL}/${ministryA}/pools`,
-                { groupId: GROUP_SCOUTS },
+                `${MINISTRIES_URL}/${ministryA}/pool/${POOL_MEMBERS[0]}`,
+                null,
                 403,
             );
             cy.makePrivatePlainAuthAPICall(

@@ -3,13 +3,11 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Exceptions\VolunteerSetupException;
-use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
-use ChurchCRM\model\ChurchCRM\VolunteerPool;
 use ChurchCRM\model\ChurchCRM\VolunteerPosition;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualification;
@@ -17,7 +15,6 @@ use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Service\VolunteerSetupService;
 use ChurchCRM\Slim\Middleware\Api\VolunteerMinistryMiddleware;
-use ChurchCRM\Slim\Middleware\Api\VolunteerPoolMiddleware;
 use ChurchCRM\Slim\Middleware\Api\VolunteerPositionMiddleware;
 use ChurchCRM\Slim\Middleware\Api\VolunteerQualificationMiddleware;
 use ChurchCRM\Slim\Middleware\Api\VolunteerTeamMiddleware;
@@ -81,6 +78,9 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
             ->add(new InputSanitizationMiddleware([
                 'name' => 'text',
                 'description' => 'text',
+                // D19's advert. `helpWantedText` is 'text', not 'html': it is rendered
+                // escaped with its line breaks preserved, never as markup.
+                'helpWantedText' => 'text',
             ]))
             ->add(VolunteerManagerRoleAuthMiddleware::class);
 
@@ -91,6 +91,7 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
             ->add(new InputSanitizationMiddleware([
                 'name' => 'text',
                 'description' => 'text',
+                'helpWantedText' => 'text',
             ]))
             ->add(new VolunteerMinistryMiddleware());
 
@@ -146,36 +147,27 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
         $setup->delete('/positions/{positionId:[0-9]+}', 'deleteVolunteerPosition')
             ->add(new VolunteerPositionMiddleware());
 
-        // ── Pools (#9707) ─────────────────────────────────────────────────
-        // The ministry-level routes are coordinator-only, the team-level ones
-        // are open to that team's leader: §4.6 gives a team leader their own
-        // team's pools and nothing wider. A team leader therefore works through
-        // /teams/{teamId}/..., which is exactly the surface §3.3.1 lists.
-        $setup->get('/ministries/{ministryId:[0-9]+}/pools', 'listVolunteerPools')
+        // ── The pool Group (D19) ──────────────────────────────────────────
+        // There is nothing to link any more: a ministry owns exactly one Group and
+        // it was created with the ministry. What is left is its membership, and
+        // these three routes are the coordinator's way in — gated exactly like
+        // every other ministry route, and writing through the Propel membership
+        // model so the plugin hooks fire (G3).
+        //
+        // No InputSanitizationMiddleware: both writes take their person id from
+        // the PATH, where the route pattern has already restricted it to digits,
+        // and neither reads a body at all.
+        $setup->get('/ministries/{ministryId:[0-9]+}/pool', 'listVolunteerPoolMembers')
             ->add(new VolunteerMinistryMiddleware());
 
-        $setup->post('/ministries/{ministryId:[0-9]+}/pools', 'createVolunteerMinistryPool')
-            ->add(new InputSanitizationMiddleware([
-                'groupId' => 'int',
-                'label' => 'text',
-            ]))
+        $setup->post('/ministries/{ministryId:[0-9]+}/pool/{personId:[0-9]+}', 'addVolunteerPoolMember')
             ->add(new VolunteerMinistryMiddleware());
 
-        $setup->get('/teams/{teamId:[0-9]+}/pools', 'listVolunteerTeamPools')
-            ->add(new VolunteerTeamMiddleware());
-
-        $setup->post('/teams/{teamId:[0-9]+}/pools', 'createVolunteerTeamPool')
-            ->add(new InputSanitizationMiddleware([
-                'groupId' => 'int',
-                'label' => 'text',
-            ]))
-            ->add(new VolunteerTeamMiddleware());
-
-        $setup->delete('/pools/{poolId:[0-9]+}', 'deleteVolunteerPool')
-            ->add(new VolunteerPoolMiddleware());
+        $setup->delete('/ministries/{ministryId:[0-9]+}/pool/{personId:[0-9]+}', 'removeVolunteerPoolMember')
+            ->add(new VolunteerMinistryMiddleware());
 
         // ── Pool people and the qualification matrix (#9707) ───────────────
-        $setup->get('/ministries/{ministryId:[0-9]+}/members', 'listVolunteerPoolMembers')
+        $setup->get('/ministries/{ministryId:[0-9]+}/members', 'listVolunteerMatrixMembers')
             ->add(new VolunteerMinistryMiddleware());
 
         $setup->get('/teams/{teamId:[0-9]+}/members', 'listVolunteerTeamMembers')
@@ -230,6 +222,11 @@ function volunteerMinistryToArray(VolunteerMinistry $ministry, array $counts = [
             : (int) $ministry->getCreatedByPersonId(),
         'teamCount' => $counts['teamCount'] ?? 0,
         'positionCount' => $counts['positionCount'] ?? 0,
+        // D19's advert. Both are always on the wire, so a client can render the
+        // "Help wanted" card without a second request and without guessing that an
+        // absent key means off.
+        'helpWanted' => (bool) $ministry->getHelpWanted(),
+        'helpWantedText' => $ministry->getHelpWantedText(),
     ];
 }
 
@@ -428,10 +425,17 @@ function createVolunteerMinistry(Request $request, Response $response): Response
     // The counts are not decorative here: a caller needs to see that the ministry
     // came with a team, because that team is what its first position or schedule
     // has to name. It is always exactly one and always zero positions, so this is
-    // a statement of the invariant rather than a query.
+    // a statement of the invariant rather than a query. `poolGroupId` is the same
+    // kind of statement for D19: the ministry came with its Group, and a caller
+    // that wants to link to it should not have to ask a second time.
+    $poolGroup = (new VolunteerSetupService())->getPoolGroup((int) $ministry->getId());
+
     return SlimUtils::renderJSON(
         $response,
-        ['ministry' => volunteerMinistryToArray($ministry, ['teamCount' => 1, 'positionCount' => 0])],
+        [
+            'ministry' => volunteerMinistryToArray($ministry, ['teamCount' => 1, 'positionCount' => 0]),
+            'poolGroupId' => $poolGroup === null ? null : (int) $poolGroup->getId(),
+        ],
         201
     );
 }
@@ -465,6 +469,7 @@ function getVolunteerMinistry(Request $request, Response $response): Response
     $service = new VolunteerSetupService();
     $teams = $service->listTeams($ministryId);
     $positions = $service->listPositions($ministryId);
+    $poolGroup = $service->getPoolGroup($ministryId);
 
     $teamPositionCounts = $service->countPositionsByTeam(
         array_map(static fn (VolunteerTeam $t): int => (int) $t->getId(), $teams)
@@ -484,10 +489,13 @@ function getVolunteerMinistry(Request $request, Response $response): Response
             static fn (VolunteerPosition $p): array => volunteerPositionToArray($p, $teamNames),
             $positions
         ),
-        // #9707 completes the §3.3.1 shape: the detail document now also carries
-        // the pool links, so the ministry page renders its Teams & Pools tab
-        // from ONE cached response rather than a second fetch per tab (§5.4).
-        'pools' => volunteerSetupPoolRows($service, $service->listPools($ministryId)),
+        // #9707 completes the §3.3.1 shape and D19 simplifies it: the detail
+        // document carries the ministry's pool Group and its members, so the
+        // ministry page renders its Teams tab and its pool panel from ONE cached
+        // response rather than a second fetch per tab (§5.4).
+        'poolGroupId' => $poolGroup === null ? null : (int) $poolGroup->getId(),
+        'poolGroupName' => $poolGroup === null ? null : (string) $poolGroup->getName(),
+        'pool' => volunteerSetupPoolRows($service, $ministryId),
     ]);
 }
 
@@ -502,7 +510,9 @@ function getVolunteerMinistry(Request $request, Response $response): Response
  *     @OA\RequestBody(required=true, @OA\JsonContent(
  *         @OA\Property(property="name", type="string", maxLength=100),
  *         @OA\Property(property="description", type="string", maxLength=255),
- *         @OA\Property(property="active", type="boolean")
+ *         @OA\Property(property="active", type="boolean"),
+ *         @OA\Property(property="helpWanted", type="boolean", description="Advertise this ministry on the Open Opportunities page (design D19)"),
+ *         @OA\Property(property="helpWantedText", type="string", description="What the ministry wants to say there; rendered escaped with line breaks preserved")
  *     )),
  *     @OA\Response(response=400, description="The name was sent empty"),
  *     @OA\Response(response=401, description="Not authenticated"),
@@ -520,7 +530,11 @@ function updateVolunteerMinistry(Request $request, Response $response): Response
     try {
         $ministry = (new VolunteerSetupService())->updateMinistry(
             $ministry,
-            volunteerSetupFields($request, ['name', 'description', 'active'], ['active']),
+            volunteerSetupFields(
+                $request,
+                ['name', 'description', 'active', 'helpWanted', 'helpWantedText'],
+                ['active', 'helpWanted']
+            ),
             volunteerSetupActor()
         );
     } catch (\Throwable $e) {
@@ -1026,33 +1040,47 @@ function deleteVolunteerPosition(Request $request, Response $response): Response
     return SlimUtils::renderSuccessJSON($response);
 }
 
-// ─── Pools and qualifications (#9707) ────────────────────────────────────────
+// ─── The pool Group and qualifications (#9707, rewritten by D19) ─────────────
 //
 // Wire shapes and helpers first, then the handlers, matching the layout above.
 //
-// The design decision these endpoints exist to express is D1: a Group **is**
-// the roster. Nothing here copies a membership row, and `memberCount` is
-// counted live off `person2group2role_p2g2r` — so a person added to the group
-// in the Groups module is in the pool on the next request, with no sync step.
+// D1 still holds: a Group **is** the roster, and nothing here copies a
+// membership row — every count and every name is read live off
+// `person2group2role_p2g2r`, so somebody added in the Groups module is in the
+// pool on the very next request, with no sync step.
+//
+// What D19 changed is that there is no longer anything to LINK. A ministry owns
+// exactly one Group, created with it, and the endpoints below are about that
+// group's membership rather than about the link that used to point at it.
 
 /**
- * One pool link. `ownerName`, `groupName` and `memberCount` are looked up in
- * batch by the caller and passed in, so a list of pools costs three queries
- * rather than three per row.
+ * One person in a ministry's volunteer pool, or on a row of the qualification
+ * matrix.
  *
- * @param array{ownerName?: ?string, groupName?: ?string, memberCount?: int} $context
+ * `inPool` is what makes the matrix's union readable (D19): its rows are
+ * everyone qualified for any of the positions in view ∪ everyone in the pool, so
+ * a row needs to be able to say which of the two it is there for. A person in
+ * the pool with no ticks yet is the "not qualified yet" hint on the screen; a
+ * qualified person with `inPool: false` was taken out of the group after being
+ * qualified, and is still perfectly assignable.
+ *
+ * @param array{displayName?: ?string, groupIds?: int[], qualifications?: int[], qualificationIds?: array<int, int>, inPool?: bool} $context
  */
-function volunteerPoolToArray(VolunteerPool $pool, array $context = []): array
+function volunteerPoolPersonToArray(int $personId, array $context = []): array
 {
+    $held = $context['qualificationIds'] ?? [];
+
     return [
-        'id' => (int) $pool->getId(),
-        'ownerType' => $pool->getOwnerType(),
-        'ownerId' => (int) $pool->getOwnerId(),
-        'ownerName' => $context['ownerName'] ?? null,
-        'groupId' => (int) $pool->getGroupId(),
-        'groupName' => $context['groupName'] ?? null,
-        'memberCount' => $context['memberCount'] ?? 0,
-        'label' => $pool->getLabel(),
+        'personId' => $personId,
+        'displayName' => $context['displayName'] ?? '',
+        'groupIds' => $context['groupIds'] ?? [],
+        'inPool' => (bool) ($context['inPool'] ?? false),
+        // §3.3.1's shape: the position ids this person may serve in.
+        'qualifications' => array_keys($held),
+        // Plus the row id behind each tick, so unticking a matrix box can revoke
+        // that exact qualification without a lookup request. Cast to object so an
+        // empty map serialises as {} rather than [].
+        'qualificationIds' => (object) $held,
     ];
 }
 
@@ -1108,72 +1136,54 @@ function volunteerSetupPersonNames(array $personIds): array
 }
 
 /**
- * Render a set of pools with their group names, member counts and owner names,
- * resolving each of those in batch.
+ * The pool panel's rows: everybody in the ministry's pool Group, alphabetically.
  *
- * @param VolunteerPool[] $pools
+ * Deliberately NOT the matrix's union — this list answers "who is in the pool",
+ * which is the question the panel's Remove button acts on, so somebody who is
+ * qualified but not a member must not appear in it with a Remove that would 404.
  *
  * @return array<int, array<string, mixed>>
  */
-function volunteerSetupPoolRows(VolunteerSetupService $service, array $pools): array
+function volunteerSetupPoolRows(VolunteerSetupService $service, int $ministryId): array
 {
-    if ($pools === []) {
+    $membership = $service->getPoolMembership($ministryId);
+    if ($membership === []) {
         return [];
     }
 
-    $groupIds = [];
-    $ministryIds = [];
-    $teamIds = [];
-    foreach ($pools as $pool) {
-        $groupIds[(int) $pool->getGroupId()] = true;
-        if ($pool->getOwnerType() === VolunteerPool::OWNER_TYPE_MINISTRY) {
-            $ministryIds[(int) $pool->getOwnerId()] = true;
-        } else {
-            $teamIds[(int) $pool->getOwnerId()] = true;
-        }
-    }
-
-    $groupNames = [];
-    foreach (GroupQuery::create()->findPks(array_keys($groupIds)) as $group) {
-        $groupNames[(int) $group->getId()] = $group->getName();
-    }
-
-    $ownerNames = ['ministry' => [], 'team' => []];
-    if ($ministryIds !== []) {
-        foreach (VolunteerMinistryQuery::create()->findPks(array_keys($ministryIds)) as $ministry) {
-            $ownerNames['ministry'][(int) $ministry->getId()] = $ministry->getName();
-        }
-    }
-    if ($teamIds !== []) {
-        foreach (VolunteerTeamQuery::create()->findPks(array_keys($teamIds)) as $team) {
-            $ownerNames['team'][(int) $team->getId()] = $team->getName();
-        }
-    }
-
-    $memberCounts = $service->countGroupMembers(array_keys($groupIds));
+    $names = volunteerSetupPersonNames(array_keys($membership));
 
     $rows = [];
-    foreach ($pools as $pool) {
-        $groupId = (int) $pool->getGroupId();
-        $rows[] = volunteerPoolToArray($pool, [
-            'ownerName' => $ownerNames[$pool->getOwnerType()][(int) $pool->getOwnerId()] ?? null,
-            'groupName' => $groupNames[$groupId] ?? null,
-            'memberCount' => $memberCounts[$groupId] ?? 0,
+    foreach ($membership as $personId => $groupIds) {
+        $rows[] = volunteerPoolPersonToArray((int) $personId, [
+            'displayName' => $names[(int) $personId] ?? '',
+            'groupIds' => $groupIds,
+            'inPool' => true,
         ]);
     }
+
+    usort($rows, static fn (array $a, array $b): int => strcasecmp($a['displayName'], $b['displayName']));
 
     return $rows;
 }
 
 /**
- * The thin projection §3.3.1 specifies for pool people: one row per person,
- * whichever pool groups they arrived through, plus the position ids they are
- * qualified for.
+ * The qualification matrix's rows: everyone in the pool **union** everyone
+ * qualified for any of the positions in view (D19).
+ *
+ * The union is the decision, not an implementation detail. Before D19 the matrix
+ * was the pool and nothing else, so a coordinator who qualified somebody through
+ * the person picker could not then see or untick them — the row they had just
+ * created was invisible. And going the other way, a pool member with no ticks yet
+ * is exactly who the coordinator opened this screen to find, so dropping them
+ * because they hold no qualification would empty the screen of its whole purpose.
+ * `inPool` tells the two apart on the row.
  *
  * `$positionIds` is what the qualification half is computed over, so a caller
  * that has already narrowed the positions (a team view) gets a matching
  * `qualifications` array rather than one that mentions columns it is not
- * showing.
+ * showing — and the union follows it, so a team view does not drag in people
+ * qualified only for another team's positions.
  *
  * @param int[] $positionIds
  *
@@ -1186,27 +1196,27 @@ function volunteerSetupMemberRows(
     array $positionIds
 ): array {
     $membership = $service->getPoolMembership($ministryId, $teamId);
-    if ($membership === []) {
+    $qualifications = $service->getQualificationsByPerson($positionIds);
+
+    $personIds = array_values(array_unique(array_merge(
+        array_map('intval', array_keys($membership)),
+        array_map('intval', array_keys($qualifications))
+    )));
+
+    if ($personIds === []) {
         return [];
     }
 
-    $names = volunteerSetupPersonNames(array_keys($membership));
-    $qualifications = $service->getQualificationsByPerson($positionIds);
+    $names = volunteerSetupPersonNames($personIds);
 
     $rows = [];
-    foreach ($membership as $personId => $groupIds) {
-        $held = $qualifications[$personId] ?? [];
-        $rows[] = [
-            'personId' => $personId,
+    foreach ($personIds as $personId) {
+        $rows[] = volunteerPoolPersonToArray($personId, [
             'displayName' => $names[$personId] ?? '',
-            'groupIds' => $groupIds,
-            // §3.3.1's shape: the position ids this person may serve in.
-            'qualifications' => array_keys($held),
-            // Plus the row id behind each tick, so unticking a matrix box can
-            // revoke that exact qualification without a lookup request. Cast to
-            // object so an empty map serialises as {} rather than [].
-            'qualificationIds' => (object) $held,
-        ];
+            'groupIds' => $membership[$personId] ?? [],
+            'inPool' => isset($membership[$personId]),
+            'qualificationIds' => $qualifications[$personId] ?? [],
+        ]);
     }
 
     // Alphabetical: a matrix is read by looking someone up, not by id order.
@@ -1243,183 +1253,104 @@ function volunteerSetupTeamFilter(Request $request): ?int
 
 /**
  * @OA\Get(
- *     path="/volunteer/ministries/{ministryId}/pools",
- *     operationId="listVolunteerPools",
- *     summary="The Groups linked as volunteer pools for a ministry and its teams",
- *     description="A pool is a LINK to an existing group_grp row (design D1, section 2.5). No membership is copied into V2 - memberCount is counted live from the group's own membership rows.",
+ *     path="/volunteer/ministries/{ministryId}/pool",
+ *     operationId="listVolunteerPoolMembers",
+ *     summary="The people in this ministry's volunteer pool",
+ *     description="The membership of the ministry's own Group (group_grp.grp_ministry_id), read live from person2group2role_p2g2r - V2 stores no people (design D1, D19). Alphabetical.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
- *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer"),
- *         description="Narrow the team-owned pools to one team; the ministry's own pools are always included"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
  *     @OA\Response(response=200, description="OK",
- *         @OA\JsonContent(@OA\Property(property="pools", type="array", @OA\Items(type="object")))
+ *         @OA\JsonContent(
+ *             @OA\Property(property="groupId", type="integer", nullable=true),
+ *             @OA\Property(property="groupName", type="string", nullable=true),
+ *             @OA\Property(property="members", type="array", @OA\Items(type="object"))
+ *         )
  *     )
  * )
  */
-function listVolunteerPools(Request $request, Response $response): Response
+function listVolunteerPoolMembers(Request $request, Response $response): Response
 {
     /** @var VolunteerMinistry $ministry */
     $ministry = $request->getAttribute('volunteerMinistry');
 
     $service = new VolunteerSetupService();
-    $pools = $service->listPools((int) $ministry->getId(), volunteerSetupTeamFilter($request));
+    $ministryId = (int) $ministry->getId();
+    $group = $service->getPoolGroup($ministryId);
 
-    return SlimUtils::renderJSON($response, ['pools' => volunteerSetupPoolRows($service, $pools)]);
+    return SlimUtils::renderJSON($response, [
+        'groupId' => $group === null ? null : (int) $group->getId(),
+        'groupName' => $group === null ? null : (string) $group->getName(),
+        'members' => volunteerSetupPoolRows($service, $ministryId),
+    ]);
 }
 
 /**
- * @OA\Get(
- *     path="/volunteer/teams/{teamId}/pools",
- *     operationId="listVolunteerTeamPools",
- *     summary="The Groups linked as volunteer pools for one team",
+ * @OA\Post(
+ *     path="/volunteer/ministries/{ministryId}/pool/{personId}",
+ *     operationId="addVolunteerPoolMember",
+ *     summary="Put a person in this ministry's volunteer pool",
+ *     description="Writes a person2group2role_p2g2r row on the ministry's own Group with the group's default role, firing the same GROUP_MEMBER_ADDED plugin hook the Groups module fires. A ministry coordinator may do this WITHOUT the global Manage Groups permission (design D19) - the Propel hooks allow it because the group carries this ministry's id. Idempotent: somebody already in the pool is 200, not 409.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
- *     @OA\Response(response=404, description="No such team"),
- *     @OA\Response(response=200, description="OK",
- *         @OA\JsonContent(@OA\Property(property="pools", type="array", @OA\Items(type="object")))
- *     )
+ *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry, person, or pool group"),
+ *     @OA\Response(response=200, description="They were already in the pool"),
+ *     @OA\Response(response=201, description="Added")
  * )
  */
-function listVolunteerTeamPools(Request $request, Response $response): Response
+function addVolunteerPoolMember(Request $request, Response $response): Response
 {
-    /** @var VolunteerTeam $team */
-    $team = $request->getAttribute('volunteerTeam');
-
-    $service = new VolunteerSetupService();
-    $pools = $service->listPoolsForTeam((int) $team->getId());
-
-    return SlimUtils::renderJSON($response, ['pools' => volunteerSetupPoolRows($service, $pools)]);
-}
-
-/**
- * Shared body of the two link handlers: same payload, same errors, different
- * owner. Keeping it in one function is what stops the ministry and team routes
- * drifting on which field is required.
- */
-function volunteerSetupLinkPool(Request $request, Response $response, string $ownerType, int $ownerId): Response
-{
-    $body = (array) $request->getParsedBody();
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
+    $personId = (int) SlimUtils::getRouteArgument($request, 'personId');
 
     try {
-        $pool = (new VolunteerSetupService())->linkPool(
-            $ownerType,
-            $ownerId,
-            (int) ($body['groupId'] ?? 0),
-            isset($body['label']) ? (string) $body['label'] : null,
+        $added = (new VolunteerSetupService())->addPoolMember(
+            (int) $ministry->getId(),
+            $personId,
             volunteerSetupActor()
         );
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
     }
 
-    $service = new VolunteerSetupService();
-
-    return SlimUtils::renderJSON(
-        $response,
-        ['pool' => volunteerSetupPoolRows($service, [$pool])[0]],
-        201
-    );
-}
-
-/**
- * @OA\Post(
- *     path="/volunteer/ministries/{ministryId}/pools",
- *     operationId="createVolunteerMinistryPool",
- *     summary="Link an existing Group as a volunteer pool for a ministry",
- *     description="Reuses the Group as the roster (design D1). Ministry-wide pools feed every team under the ministry. Returns 409 when that group is already linked to this owner.",
- *     tags={"Volunteer"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
- *     @OA\RequestBody(required=true, @OA\JsonContent(
- *         required={"groupId"},
- *         @OA\Property(property="groupId", type="integer", description="group_grp.grp_ID"),
- *         @OA\Property(property="label", type="string", maxLength=100, description="Optional coordinator label")
- *     )),
- *     @OA\Response(response=400, description="groupId is missing or not an integer"),
- *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
- *     @OA\Response(response=404, description="No such ministry or group"),
- *     @OA\Response(response=409, description="That group is already linked here"),
- *     @OA\Response(response=201, description="Linked")
- * )
- */
-function createVolunteerMinistryPool(Request $request, Response $response): Response
-{
-    /** @var VolunteerMinistry $ministry */
-    $ministry = $request->getAttribute('volunteerMinistry');
-
-    return volunteerSetupLinkPool(
-        $request,
-        $response,
-        VolunteerPool::OWNER_TYPE_MINISTRY,
-        (int) $ministry->getId()
-    );
-}
-
-/**
- * @OA\Post(
- *     path="/volunteer/teams/{teamId}/pools",
- *     operationId="createVolunteerTeamPool",
- *     summary="Link an existing Group as a volunteer pool for one team",
- *     description="A team leader may link pools for their own team (design section 4.6).",
- *     tags={"Volunteer"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
- *     @OA\RequestBody(required=true, @OA\JsonContent(
- *         required={"groupId"},
- *         @OA\Property(property="groupId", type="integer"),
- *         @OA\Property(property="label", type="string", maxLength=100)
- *     )),
- *     @OA\Response(response=400, description="groupId is missing or not an integer"),
- *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
- *     @OA\Response(response=404, description="No such team or group"),
- *     @OA\Response(response=409, description="That group is already linked here"),
- *     @OA\Response(response=201, description="Linked")
- * )
- */
-function createVolunteerTeamPool(Request $request, Response $response): Response
-{
-    /** @var VolunteerTeam $team */
-    $team = $request->getAttribute('volunteerTeam');
-
-    return volunteerSetupLinkPool(
-        $request,
-        $response,
-        VolunteerPool::OWNER_TYPE_TEAM,
-        (int) $team->getId()
-    );
+    return SlimUtils::renderJSON($response, ['personId' => $personId, 'added' => $added], $added ? 201 : 200);
 }
 
 /**
  * @OA\Delete(
- *     path="/volunteer/pools/{poolId}",
- *     operationId="deleteVolunteerPool",
- *     summary="Unlink a volunteer pool",
- *     description="Removes the LINK only. The Group, its membership and its properties are never touched - roster membership belongs to the Groups module (design D1, Appendix D-1).",
+ *     path="/volunteer/ministries/{ministryId}/pool/{personId}",
+ *     operationId="removeVolunteerPoolMember",
+ *     summary="Take a person out of this ministry's volunteer pool",
+ *     description="Deletes the membership row and fires GROUP_MEMBER_REMOVED. Their qualifications are NOT revoked (design D19): the two are independent, and a qualified non-member is still assignable.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="poolId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this volunteer pool, or V2 is not enabled"),
- *     @OA\Response(response=404, description="No such pool"),
- *     @OA\Response(response=200, description="Unlinked")
+ *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry, or that person is not in the pool"),
+ *     @OA\Response(response=200, description="Removed")
  * )
  */
-function deleteVolunteerPool(Request $request, Response $response): Response
+function removeVolunteerPoolMember(Request $request, Response $response): Response
 {
-    /** @var VolunteerPool $pool */
-    $pool = $request->getAttribute('volunteerPool');
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
 
     try {
-        (new VolunteerSetupService())->unlinkPool($pool, volunteerSetupActor());
+        (new VolunteerSetupService())->removePoolMember(
+            (int) $ministry->getId(),
+            (int) SlimUtils::getRouteArgument($request, 'personId'),
+            volunteerSetupActor()
+        );
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
     }
@@ -1430,9 +1361,9 @@ function deleteVolunteerPool(Request $request, Response $response): Response
 /**
  * @OA\Get(
  *     path="/volunteer/ministries/{ministryId}/members",
- *     operationId="listVolunteerPoolMembers",
- *     summary="The people in this ministry's volunteer pools",
- *     description="The de-duplicated UNION of the linked Groups' memberships, read live from person2group2role_p2g2r - V2 stores no people (design D1, section 2.5). Each row also carries the position ids that person is actively qualified for, so the qualification matrix renders from one response (section 5.4).",
+ *     operationId="listVolunteerMatrixMembers",
+ *     summary="The rows of this ministry's qualification matrix",
+ *     description="Everyone in the ministry's pool Group UNION everyone actively qualified for one of the positions in view (design D19). Each row carries inPool and the position ids that person is qualified for, so the matrix renders from one response (section 5.4).",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
@@ -1445,7 +1376,7 @@ function deleteVolunteerPool(Request $request, Response $response): Response
  *     )
  * )
  */
-function listVolunteerPoolMembers(Request $request, Response $response): Response
+function listVolunteerMatrixMembers(Request $request, Response $response): Response
 {
     /** @var VolunteerMinistry $ministry */
     $ministry = $request->getAttribute('volunteerMinistry');
@@ -1497,7 +1428,7 @@ function listVolunteerTeamMembers(Request $request, Response $response): Respons
  *     path="/volunteer/ministries/{ministryId}/qualification-matrix",
  *     operationId="getVolunteerQualificationMatrix",
  *     summary="Everything the qualification matrix needs, in one response",
- *     description="Pool people down the side, active positions across the top, and each person's qualified position ids - section 5.4 requires the matrix to handle 15-200 people without re-fetching per cell.",
+ *     description="Pool members UNION everyone qualified for a position in view down the side (design D19), active positions across the top, and each person's qualified position ids - section 5.4 requires the matrix to handle 15-200 people without re-fetching per cell. A row's inPool flag says which half it is there for.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
@@ -1511,7 +1442,6 @@ function listVolunteerTeamMembers(Request $request, Response $response): Respons
  *             @OA\Property(property="ministryId", type="integer"),
  *             @OA\Property(property="teamId", type="integer", nullable=true),
  *             @OA\Property(property="positions", type="array", @OA\Items(type="object")),
- *             @OA\Property(property="pools", type="array", @OA\Items(type="object")),
  *             @OA\Property(property="people", type="array", @OA\Items(type="object"))
  *         )
  *     )
@@ -1536,7 +1466,6 @@ function getVolunteerQualificationMatrix(Request $request, Response $response): 
             static fn (VolunteerPosition $p): array => volunteerPositionToArray($p, $teamNames),
             $positions['positions']
         ),
-        'pools' => volunteerSetupPoolRows($service, $service->listPools($ministryId, $teamId)),
         'people' => volunteerSetupMemberRows($service, $ministryId, $teamId, $positions['positionIds']),
     ]);
 }

@@ -9,8 +9,6 @@
 --                        a core column to reference, and putting ministry
 --                        identity on group_grp would hide it behind the
 --                        bManageGroups model hooks and GroupQuery::preSelect().
---   pool                 The group↔owner link has nowhere to live; event_audience
---                        is documented as an advertising audience, not ownership.
 --   position             Nothing in core models "a role a volunteer can serve in".
 --   qualification        Person↔position many-to-many is structurally impossible
 --                        on person2group2role_p2g2r: its primary key is
@@ -35,17 +33,22 @@
 --   * Open Gap is derived (requirement minus live assignments), never stored — a
 --     persisted gap is a cache that disagrees with the assignments the first time
 --     a decline is processed outside the happy path.
---   * events_event.event_ministry_id ships with #9713 and user_usr.usr_VolunteerManager
---     with #9706, each in its own migration appended after this one.
+--   * events_event.event_ministry_id ships with #9713, user_usr.usr_VolunteerManager
+--     with #9706 and group_grp.grp_ministry_id with D19, each in its own migration
+--     appended after this one — one script per CORE table V2 touches.
+--   * The volunteer pool has no table. D19 makes a ministry own exactly one core
+--     Group, linked by group_grp.grp_ministry_id, so the roster is the Group and
+--     the link is a column on it. The volunteer_pool_vpol link table this replaces
+--     never shipped.
 --   * The V1 tables (volunteeropportunity_vol, person2volunteeropp_p2vo) are not
 --     read, written, altered or dropped here. V1 data is #9702's concern.
 --
 -- CREATE TABLE IF NOT EXISTS throughout, so re-running the script is a no-op.
 -- Tables are ordered so that every foreign-key target already exists.
 --
--- volunteer_pool_vpol.vpol_OwnerId and volunteer_scope_vscp.vscp_ScopeId are
--- polymorphic (ministry or team) and therefore carry no foreign key — the same
--- limitation record2property_r2p lives with. The service layer enforces those.
+-- volunteer_scope_vscp.vscp_ScopeId is polymorphic (ministry or team) and
+-- therefore carries no foreign key — the same limitation record2property_r2p
+-- lives with. The service layer enforces it.
 
 CREATE TABLE IF NOT EXISTS `volunteer_ministry_vmin` (
   `vmin_ID`               int(11)               NOT NULL AUTO_INCREMENT,
@@ -54,6 +57,11 @@ CREATE TABLE IF NOT EXISTS `volunteer_ministry_vmin` (
   `vmin_Active`           tinyint(1) unsigned   NOT NULL DEFAULT 1,
   `vmin_CreatedDate`      datetime              NOT NULL,
   `vmin_CreatedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  -- D19 "Help wanted": the ministry advertises itself on the Open Opportunities
+  -- page. Off by default, so an installation that never touches it looks exactly
+  -- as it did before. The text is free prose written by the coordinator.
+  `vmin_HelpWanted`       tinyint(1)            NOT NULL DEFAULT 0,
+  `vmin_HelpWantedText`   text                           DEFAULT NULL,
   PRIMARY KEY (`vmin_ID`),
   UNIQUE KEY `vmin_name_uidx`  (`vmin_Name`),
   KEY `vmin_active_idx`        (`vmin_Active`),
@@ -73,19 +81,6 @@ CREATE TABLE IF NOT EXISTS `volunteer_team_vtem` (
   KEY `vtem_ministry_idx`              (`vtem_vmin_ID`),
   CONSTRAINT `fk_vtem_ministry` FOREIGN KEY (`vtem_vmin_ID`)
       REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS `volunteer_pool_vpol` (
-  `vpol_ID`        int(11)                     NOT NULL AUTO_INCREMENT,
-  `vpol_OwnerType` enum('ministry','team')     NOT NULL,
-  `vpol_OwnerId`   int(11)                     NOT NULL,
-  `vpol_grp_ID`    mediumint(8) unsigned       NOT NULL,
-  `vpol_Label`     varchar(100)                         DEFAULT NULL,
-  PRIMARY KEY (`vpol_ID`),
-  UNIQUE KEY `vpol_owner_group_uidx` (`vpol_OwnerType`, `vpol_OwnerId`, `vpol_grp_ID`),
-  KEY `vpol_group_idx`               (`vpol_grp_ID`),
-  CONSTRAINT `fk_vpol_group` FOREIGN KEY (`vpol_grp_ID`)
-      REFERENCES `group_grp` (`grp_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `volunteer_position_vpos` (
@@ -315,12 +310,18 @@ CREATE TABLE IF NOT EXISTS `volunteer_swap_vswp` (
 
 CREATE TABLE IF NOT EXISTS `volunteer_notification_vntf` (
   `vntf_ID`              int(11)               NOT NULL AUTO_INCREMENT,
-  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved')
+  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer')
                                                NOT NULL,
   `vntf_Channel`         enum('email')         NOT NULL DEFAULT 'email',
   `vntf_per_ID`          mediumint(9) unsigned NOT NULL,
   `vntf_vasg_ID`         int(11)                        DEFAULT NULL,
   `vntf_vocc_ID`         int(11)                        DEFAULT NULL,
+  -- D19: opaque, type-specific context for a row that hangs off NEITHER an assignment
+  -- nor an occurrence. `help_offer` is the first such type — it is about a ministry and
+  -- a person, and the one fact the message needs ("were they already in the pool?") is
+  -- true only at the moment of the click and cannot be recomputed at delivery time.
+  -- JSON, read only by the type that wrote it.
+  `vntf_Context`         varchar(190)                   DEFAULT NULL,
   -- 190, not 255: the InnoDB index prefix limit for a utf8mb4 unique key.
   `vntf_DedupeKey`       varchar(190)          NOT NULL,
   `vntf_ScheduledFor`    datetime              NOT NULL,

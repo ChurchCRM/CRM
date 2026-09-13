@@ -25,6 +25,14 @@ class VolunteerNotification extends BaseVolunteerNotification
     public const TYPE_SIGNUP_CONFIRM = 'signup_confirm';
     public const TYPE_SWAP_PROPOSED = 'swap_proposed';
     public const TYPE_SWAP_RESOLVED = 'swap_resolved';
+    /**
+     * D19: somebody used "I'd like to help" on the Open Opportunities page.
+     *
+     * The only type that is about a MINISTRY rather than an occurrence or an
+     * assignment, so `vntf_vasg_ID` and `vntf_vocc_ID` are both null and
+     * `vntf_Context` carries what the message needs.
+     */
+    public const TYPE_HELP_OFFER = 'help_offer';
 
     /**
      * Every legal value of vntf_Type.
@@ -41,6 +49,7 @@ class VolunteerNotification extends BaseVolunteerNotification
             self::TYPE_SIGNUP_CONFIRM,
             self::TYPE_SWAP_PROPOSED,
             self::TYPE_SWAP_RESOLVED,
+            self::TYPE_HELP_OFFER,
         ];
     }
 

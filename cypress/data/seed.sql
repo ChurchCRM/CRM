@@ -1032,7 +1032,9 @@ CREATE TABLE `group_grp` (
   `grp_hasSpecialProps` tinyint(1) NOT NULL DEFAULT 0,
   `grp_active` tinyint(1) NOT NULL DEFAULT 1,
   `grp_include_email_export` tinyint(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`grp_ID`)
+  `grp_ministry_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`grp_ID`),
+  KEY `grp_ministry_idx` (`grp_ministry_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1043,7 +1045,7 @@ CREATE TABLE `group_grp` (
 LOCK TABLES `group_grp` WRITE;
 /*!40000 ALTER TABLE `group_grp` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `group_grp` VALUES (1,4,13,2,'Angels class',NULL,0,1,1),(2,4,14,2,'Class 1-3',NULL,0,1,1),(3,4,15,2,'Class 4-5',NULL,0,1,1),(4,4,16,2,'Class 6-7',NULL,0,1,1),(5,4,17,2,'High School Class',NULL,0,1,1),(6,4,18,2,'Youth Meeting',NULL,0,1,1),(7,0,19,1,'Boys Scouts',NULL,0,1,1),(8,0,20,1,'Girl Scouts',NULL,0,0,0),(9,0,21,1,'Church Board',NULL,0,1,0),(10,1,22,1,'Worship Service','',0,1,1),(11,0,23,1,'Clergy',NULL,0,1,1),(12,0,26,1,'New Test Group',NULL,0,1,1),(13,0,27,1,'New Test Group',NULL,0,1,1),(14,0,28,1,'New Test Group',NULL,0,1,1),(15,0,29,1,'New Test Group',NULL,0,1,1),(16,0,30,1,'New Test Group',NULL,0,1,1),(17,0,31,1,'New Test Group',NULL,0,1,1),(18,0,32,1,'New Test Group',NULL,0,1,1),(19,0,33,1,'New Test Group',NULL,0,1,1),(20,0,34,1,'New Test Group',NULL,0,1,1),(21,0,35,1,'New Test Group',NULL,0,1,1),(22,0,36,1,'New Test Group',NULL,0,1,1),(23,0,37,1,'sdfsdfsdf',NULL,1,1,1);
+INSERT INTO `group_grp` VALUES (1,4,13,2,'Angels class',NULL,0,1,1,NULL),(2,4,14,2,'Class 1-3',NULL,0,1,1,NULL),(3,4,15,2,'Class 4-5',NULL,0,1,1,NULL),(4,4,16,2,'Class 6-7',NULL,0,1,1,NULL),(5,4,17,2,'High School Class',NULL,0,1,1,NULL),(6,4,18,2,'Youth Meeting',NULL,0,1,1,NULL),(7,0,19,1,'Boys Scouts',NULL,0,1,1,NULL),(8,0,20,1,'Girl Scouts',NULL,0,0,0,NULL),(9,0,21,1,'Church Board',NULL,0,1,0,NULL),(10,1,22,1,'Worship Service','',0,1,1,NULL),(11,0,23,1,'Clergy',NULL,0,1,1,NULL),(12,0,26,1,'New Test Group',NULL,0,1,1,NULL),(13,0,27,1,'New Test Group',NULL,0,1,1,NULL),(14,0,28,1,'New Test Group',NULL,0,1,1,NULL),(15,0,29,1,'New Test Group',NULL,0,1,1,NULL),(16,0,30,1,'New Test Group',NULL,0,1,1,NULL),(17,0,31,1,'New Test Group',NULL,0,1,1,NULL),(18,0,32,1,'New Test Group',NULL,0,1,1,NULL),(19,0,33,1,'New Test Group',NULL,0,1,1,NULL),(20,0,34,1,'New Test Group',NULL,0,1,1,NULL),(21,0,35,1,'New Test Group',NULL,0,1,1,NULL),(22,0,36,1,'New Test Group',NULL,0,1,1,NULL),(23,0,37,1,'sdfsdfsdf',NULL,1,1,1,NULL);
 /*!40000 ALTER TABLE `group_grp` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -2170,6 +2172,8 @@ CREATE TABLE `volunteer_ministry_vmin` (
   `vmin_Active`           tinyint(1) unsigned   NOT NULL DEFAULT 1,
   `vmin_CreatedDate`      datetime              NOT NULL,
   `vmin_CreatedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vmin_HelpWanted`       tinyint(1)            NOT NULL DEFAULT 0,
+  `vmin_HelpWantedText`   text                           DEFAULT NULL,
   PRIMARY KEY (`vmin_ID`),
   UNIQUE KEY `vmin_name_uidx`  (`vmin_Name`),
   KEY `vmin_active_idx`        (`vmin_Active`),
@@ -2198,28 +2202,6 @@ CREATE TABLE `volunteer_team_vtem` (
   KEY `vtem_ministry_idx`              (`vtem_vmin_ID`),
   CONSTRAINT `fk_vtem_ministry` FOREIGN KEY (`vtem_vmin_ID`)
       REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `volunteer_pool_vpol`
--- Volunteer Management v2 (#9705); mirrors src/mysql/install/Install.sql
---
-
-DROP TABLE IF EXISTS `volunteer_pool_vpol`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `volunteer_pool_vpol` (
-  `vpol_ID`        int(11)                     NOT NULL AUTO_INCREMENT,
-  `vpol_OwnerType` enum('ministry','team')     NOT NULL,
-  `vpol_OwnerId`   int(11)                     NOT NULL,
-  `vpol_grp_ID`    mediumint(8) unsigned       NOT NULL,
-  `vpol_Label`     varchar(100)                         DEFAULT NULL,
-  PRIMARY KEY (`vpol_ID`),
-  UNIQUE KEY `vpol_owner_group_uidx` (`vpol_OwnerType`, `vpol_OwnerId`, `vpol_grp_ID`),
-  KEY `vpol_group_idx`               (`vpol_grp_ID`),
-  CONSTRAINT `fk_vpol_group` FOREIGN KEY (`vpol_grp_ID`)
-      REFERENCES `group_grp` (`grp_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2506,12 +2488,18 @@ DROP TABLE IF EXISTS `volunteer_notification_vntf`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `volunteer_notification_vntf` (
   `vntf_ID`              int(11)               NOT NULL AUTO_INCREMENT,
-  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved')
+  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer')
                                                NOT NULL,
   `vntf_Channel`         enum('email')         NOT NULL DEFAULT 'email',
   `vntf_per_ID`          mediumint(9) unsigned NOT NULL,
   `vntf_vasg_ID`         int(11)                        DEFAULT NULL,
   `vntf_vocc_ID`         int(11)                        DEFAULT NULL,
+  -- D19: opaque, type-specific context for a row that hangs off NEITHER an assignment
+  -- nor an occurrence. `help_offer` is the first such type — it is about a ministry and
+  -- a person, and the one fact the message needs ("were they already in the pool?") is
+  -- true only at the moment of the click and cannot be recomputed at delivery time.
+  -- JSON, read only by the type that wrote it.
+  `vntf_Context`         varchar(190)                   DEFAULT NULL,
   `vntf_DedupeKey`       varchar(190)          NOT NULL,
   `vntf_ScheduledFor`    datetime              NOT NULL,
   `vntf_Status`          enum('pending','sent','failed','skipped') NOT NULL DEFAULT 'pending',
@@ -2567,6 +2555,18 @@ CREATE TABLE `volunteer_scope_vscp` (
 --
 ALTER TABLE `events_event`
     ADD CONSTRAINT `events_event_FK_ministry` FOREIGN KEY (`event_ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
+--
+-- Volunteer v2 (D19): the group_grp -> volunteer_ministry_vmin ownership link.
+--
+-- Declared here rather than inside the group_grp CREATE TABLE because that table is
+-- created long before volunteer_ministry_vmin exists. ON DELETE SET NULL so a cascade
+-- can never remove a church group; the ministry-deletion path removes the pool group
+-- explicitly instead (design D19).
+--
+ALTER TABLE `group_grp`
+    ADD CONSTRAINT `group_grp_FK_ministry` FOREIGN KEY (`grp_ministry_id`)
     REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

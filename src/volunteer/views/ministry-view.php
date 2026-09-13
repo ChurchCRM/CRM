@@ -17,9 +17,9 @@ use ChurchCRM\Utils\InputUtils;
  * translated (design §5.10, F31).
  *
  * **Extension points for the rest of the epic.** The tab strip and the tab
- * content are both marked below. #9707 put the pool list inside the Teams tab
- * (renamed "Teams & Pools" — a pool belongs beside the team it feeds) and added
- * a Qualifications tab; #9708/#9711 append a Schedules tab. Each is one `<li>`
+ * content are both marked below. #9707 put the pool list inside the Teams tab and
+ * added a Qualifications tab; D19 turned that list into the editable pool panel
+ * and put the tab's name back to "Teams"; #9708/#9711 append a Schedules tab. Each is one `<li>`
  * plus one `.tab-pane`, and the lazy-load registry in ministry.ts takes one more
  * entry — nothing here has to move.
  */
@@ -56,7 +56,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </li>
     <li class="nav-item" role="presentation">
       <a class="nav-link" id="nav-item-teams" href="#teams" data-bs-toggle="tab" role="tab" aria-controls="teams" aria-selected="false">
-        <i class="fa-solid fa-people-group me-1"></i><?= gettext('Teams & Pools') ?>
+        <i class="fa-solid fa-people-group me-1"></i><?= gettext('Teams') ?>
       </a>
     </li>
     <li class="nav-item" role="presentation">
@@ -125,7 +125,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     </div>
 
-    <!-- Teams & Pools -->
+    <!-- Teams and the volunteer pool -->
     <div class="tab-pane fade" id="teams" role="tabpanel" aria-labelledby="nav-item-teams">
       <div class="d-flex justify-content-end mb-2">
         <button type="button" class="btn btn-primary btn-sm" id="team-add-btn">
@@ -164,37 +164,41 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
 
       <!--
-        Volunteer pools (#9707, design §2.5). A pool is a LINK to an existing
-        Group — the Group stays the roster and V2 copies nobody (D1). The member
-        count below is therefore read-only here and the row links into the
-        Groups module, which is where membership is edited (Appendix D-1).
+        The volunteer pool (D19, design §2.5 as amended).
+
+        One Group per ministry, created with it. The panel is editable here because
+        `group_grp.grp_ministry_id` is what lets this ministry's coordinator write it
+        without the global Manage Groups flag — the Groups module is still a second
+        door to the same roster, and the link below goes there.
+
+        The overflow wrapper is mandatory on every table carrying a row action menu:
+        without it the dropdown is clipped by the card (table-action-menu.md).
       -->
       <hr class="my-4">
       <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between mb-2">
-        <h4 class="mb-0"><i class="fa-solid fa-users me-2"></i><?= gettext('Volunteer pools') ?></h4>
+        <h4 class="mb-0"><i class="fa-solid fa-users me-2"></i><?= gettext('Volunteer pool') ?></h4>
         <button type="button" class="btn btn-primary btn-sm" id="pool-add-btn">
-          <i class="fa-solid fa-link me-1"></i><?= gettext('Link a Group') ?>
+          <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add to pool') ?>
         </button>
       </div>
-      <p class="text-body-secondary" id="pools-membership-note">
+      <p class="text-body-secondary" id="pool-membership-note">
         <i class="fa-solid fa-circle-info me-1"></i>
-        <?= gettext('Who is in a pool is decided by the Group. Open the group to add or remove people — that needs the Manage Groups permission.') ?>
+        <?= gettext('These are the people this ministry can call on. Qualifying someone adds them here automatically. The same list is the group') ?>
+        <a href="#" id="pool-group-link" class="d-none"></a><?= gettext(', which you can also open in Groups.') ?>
       </p>
-      <div class="empty d-none" id="pools-empty">
+      <div class="empty d-none" id="pool-empty">
         <div class="empty-icon"><i class="fa-solid fa-users fa-2x text-muted"></i></div>
-        <p class="empty-title"><?= gettext('No volunteer pool yet') ?></p>
+        <p class="empty-title"><?= gettext('Nobody in the pool yet') ?></p>
         <p class="empty-subtitle text-body-secondary">
-          <?= gettext('Choose the Group whose members volunteer for this ministry. Nobody is copied — the Group stays in charge of who belongs.') ?>
+          <?= gettext('Add the people who serve in this ministry, or qualify someone for a position — that brings them in too.') ?>
         </p>
       </div>
-      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="pools-table-wrapper">
-        <table class="table table-hover table-vcenter" id="volunteerPoolsTable">
+      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="pool-table-wrapper">
+        <table class="table table-hover table-vcenter" id="volunteerPoolTable">
           <thead>
             <tr>
-              <th><?= gettext('Group') ?></th>
-              <th><?= gettext('Serves') ?></th>
-              <th><?= gettext('Label') ?></th>
-              <th class="text-center"><?= gettext('Members') ?></th>
+              <th><?= gettext('Person') ?></th>
+              <th><?= gettext('Qualifications') ?></th>
               <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
             </tr>
           </thead>
@@ -288,7 +292,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="empty-icon"><i class="fa-solid fa-user-check fa-2x text-muted"></i></div>
         <p class="empty-title"><?= gettext('Nothing to qualify yet') ?></p>
         <p class="empty-subtitle text-body-secondary">
-          <?= gettext('Link a Group as the volunteer pool and add at least one position, then tick who can serve where.') ?>
+          <?= gettext('Add somebody to the volunteer pool and create at least one position, then tick who can serve where.') ?>
         </p>
       </div>
       <div class="table-responsive d-none" id="qualifications-table-wrapper">
@@ -390,6 +394,45 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<!--
+  Help wanted (D19, design §5.6).
+
+  A small card below the tabs rather than a tab of its own: it is two fields a
+  coordinator sets once and revisits rarely, and burying it behind a sixth tab
+  would hide the one control that puts this ministry in front of people who have
+  never heard of it.
+
+  Shown to anyone who can reach this page as a coordinator, which is the same
+  authority the API applies — coordinators and above (§4.6). The API is still the
+  decision-maker; ministry.ts hides the card if a save ever comes back 403.
+-->
+<div class="card mt-3" id="volunteer-help-wanted">
+  <div class="card-header">
+    <h3 class="card-title mb-0">
+      <i class="fa-solid fa-bullhorn me-2"></i><?= gettext('Help wanted') ?>
+    </h3>
+  </div>
+  <div class="card-body">
+    <p class="text-body-secondary">
+      <?= gettext('Put this ministry on the Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed.') ?>
+    </p>
+    <label class="form-check form-switch mb-3">
+      <input class="form-check-input" type="checkbox" id="help-wanted-toggle">
+      <span class="form-check-label"><?= gettext('Show this ministry on the Open Opportunities page') ?></span>
+    </label>
+    <div class="mb-3">
+      <label class="form-label" for="help-wanted-text"><?= gettext('What you want to say') ?></label>
+      <textarea class="form-control" id="help-wanted-text" rows="3" maxlength="2000"
+                placeholder="<?= InputUtils::escapeAttribute(gettext('We would love more help on Sunday mornings — no experience needed.')) ?>"></textarea>
+      <div class="form-text"><?= gettext('Shown exactly as you type it. Line breaks are kept.') ?></div>
+    </div>
+    <div class="alert alert-danger d-none" role="alert" id="help-wanted-form-error">
+      <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+    </div>
+    <button type="button" class="btn btn-primary" id="help-wanted-save"><?= gettext('Save') ?></button>
+  </div>
+</div>
+
 <?php if ($bIsManager): ?>
 <!--
   Coordinators and team leaders — the screen for #9706's scope API
@@ -473,7 +516,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="empty-icon"><i class="fa-solid fa-people-group fa-2x text-muted"></i></div>
         <p class="empty-title"><?= gettext('No teams yet') ?></p>
         <p class="empty-subtitle text-body-secondary">
-          <?= gettext('Add a team on the Teams & Pools tab, then someone can be made its leader.') ?>
+          <?= gettext('Add a team on the Teams tab, then someone can be made its leader.') ?>
         </p>
       </div>
       <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="scopes-teams-wrapper">
@@ -633,13 +676,49 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <!--
+  Add somebody to the volunteer pool (D19).
+
+  The picker is the shared person selector (CR1/#9819) pointed at the core person
+  search — the same widget the qualify modal below uses — so there is one person
+  chooser in V2, not two.
+-->
+<div class="modal fade" id="poolAddModal" tabindex="-1" aria-hidden="true" aria-labelledby="poolAddModalTitle">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="poolAddModalTitle"><?= gettext('Add to the volunteer pool') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-body-secondary">
+          <?= gettext('The pool is who this ministry can call on. Being in it does not qualify anyone for a position — that is the Qualifications tab.') ?>
+        </p>
+        <div class="mb-3">
+          <label class="form-label" for="pool-add-person-select"><?= gettext('Person') ?></label>
+          <select class="form-select person-search" id="pool-add-person-select"
+                  data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
+        </div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="pool-add-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" class="btn btn-primary" id="pool-add-save"><?= gettext('Add') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
   Qualify one person who is not in a pool (#9707).
 
   §4.6 puts no pool-membership condition on granting a qualification, and §2.5
   says in as many words that the pool is the candidate set rather than the
-  eligibility rule — so a coordinator may qualify anyone. The picker is the
-  shared person selector (CR1/#9819) pointed at the core person search, not a
-  second widget.
+  eligibility rule — so a coordinator may qualify anyone. D19 adds the other half:
+  qualifying somebody outside the pool puts them in it. The picker is the shared
+  person selector (CR1/#9819) pointed at the core person search, not a second
+  widget.
 -->
 <div class="modal fade" id="qualifyPersonModal" tabindex="-1" aria-hidden="true" aria-labelledby="qualifyPersonModalTitle">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -650,7 +729,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
       <div class="modal-body">
         <p class="text-body-secondary">
-          <?= gettext('Anyone can be qualified, whether or not they are in a pool group. Being in the pool is what makes someone a candidate; the qualification is what makes them assignable.') ?>
+          <?= gettext('Anyone can be qualified, whether or not they are in the pool already — qualifying them adds them to it. Being in the pool makes someone a candidate; the qualification is what makes them assignable.') ?>
         </p>
         <div class="mb-3">
           <label class="form-label" for="qualify-person-select"><?= gettext('Person') ?></label>

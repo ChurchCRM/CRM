@@ -14,11 +14,10 @@
  * The fixture is UC1 / §2.17's Coffee Bar, built through the REAL APIs — the
  * setup API (#9715/#9707) for ministry, team, positions, pool and
  * qualifications, and the schedule API (#9708) for the schedule and its
- * occurrences. Nothing here inserts a V2 row by hand except the two things that
- * have no API at all: pool-group membership (every `/api/groups` write needs the
- * global Manage Groups flag, design §4.6) and the historical assignments the
- * last-served ordering needs, which I5 would refuse to create through the API
- * because their occurrence is in the past.
+ * occurrences. Nothing here inserts a V2 row by hand except the historical
+ * assignments the last-served ordering needs, which I5 would refuse to create
+ * through the API because their occurrence is in the past. (Pool membership used to
+ * be the other exception; D19 gave it a writable route, so the fixture uses it.)
  *
  * What #9709 promises, and where each promise is proven:
  *
@@ -52,14 +51,25 @@ const PERSON_COORDINATOR = 3; // tony.wade — every flag but Admin
 const PERSON_PLAIN = 900; // john.plainauth — Notes only, no volunteer rights
 const PERSON_VOLUNTEER = 99; // EditSelf-exclusive — THE volunteer persona (D14)
 
-/** Seeded members of group 1 "Angels class" (seed.sql person2group2role_p2g2r). */
-const POOL_GROUP = 1;
+/**
+ * The pool, since D19: the ministry's OWN Group, created with it and empty, so the
+ * people below are put in it by this spec through `POST /ministries/{id}/pool/{id}`.
+ * Group 1 "Angels class" is no longer involved — a seeded group is somebody else's
+ * roster and borrowing it made the fixture depend on seed membership it did not own.
+ */
 const POOL_MEMBER_A = 8;
 const POOL_MEMBER_B = 9;
 const POOL_MEMBER_C = 63;
 /** In the pool, deliberately never qualified — the I2 case. */
 const POOL_MEMBER_UNQUALIFIED = 5;
-/** Qualified but NOT in any pool group — the I3 case. */
+/**
+ * Qualified and then REMOVED from the pool — the I3 case.
+ *
+ * Since D19 qualifying somebody adds them to the ministry's pool, so "qualified but
+ * outside the pool" can only be produced deliberately: the fixture qualifies them
+ * and then takes them out again, which is exactly the real-world shape (a coordinator
+ * tidies a roster and leaves the qualification alone).
+ */
 const OUTSIDE_POOL_PERSON = 7;
 
 const CHURCH_SERVICE_TYPE = 1; // seed.sql — weekly, Sunday, 10:30
@@ -244,12 +254,19 @@ function cleanupFixtures() {
           WHERE vmin.vmin_Name LIKE ?`,
         [`${FIXTURE_PREFIX}%`],
     );
+    // D19: the pool is the ministry's own Group. `grp_ministry_id` is ON DELETE SET
+    // NULL, so the group has to go before the ministry or it is left an orphan.
     dbOk(
-        `DELETE vpol FROM volunteer_pool_vpol vpol
-           JOIN volunteer_team_vtem vtem
-             ON vtem.vtem_ID = vpol.vpol_OwnerId AND vpol.vpol_OwnerType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
+        [`${FIXTURE_PREFIX}%`],
+    );
+    dbOk(
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         [`${FIXTURE_PREFIX}%`],
     );
     dbOk(
@@ -266,12 +283,6 @@ function cleanupFixtures() {
         `${FIXTURE_PREFIX}%`,
     ]);
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${EVENT_TITLE}%`]);
-    // The volunteer persona is put into the pool group by hand (see the header);
-    // take them back out so the seeded group size is what the next spec expects.
-    dbOk(`DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ? AND p2g2r_grp_ID = ?`, [
-        PERSON_VOLUNTEER,
-        POOL_GROUP,
-    ]);
 }
 
 function createMinistry(name) {
@@ -374,20 +385,25 @@ before(() => {
         });
     });
 
-    // The pool is an existing Group — V2 never copies membership (D1).
-    // The volunteer persona is not a seeded member of it, so put them in
-    // directly: every /api/groups write needs the global Manage Groups flag
-    // and the ORM hooks demand it independently (§4.6, F21).
+    // D19: the ministry came with its own pool Group, empty. Fill it through the
+    // API rather than with raw SQL — the route is now writable by a coordinator, so
+    // there is nothing left for the fixture to work around.
     cy.then(() => {
-        dbOk(
-            `INSERT IGNORE INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID)
-             VALUES (?, ?, 2)`,
-            [PERSON_VOLUNTEER, POOL_GROUP],
-        );
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamA}/pools`, {
-            groupId: POOL_GROUP,
-            label: `${FIXTURE_PREFIX} pool`,
-        }, 201);
+        for (const personId of [
+            POOL_MEMBER_A,
+            POOL_MEMBER_B,
+            POOL_MEMBER_C,
+            POOL_MEMBER_UNQUALIFIED,
+            PERSON_VOLUNTEER,
+        ]) {
+            api(
+                ADMIN_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryA}/pool/${personId}`,
+                null,
+                [200, 201],
+            );
+        }
     });
 
     // Multiple qualifications per person, the §2.17 shape.
@@ -396,6 +412,15 @@ before(() => {
         qualify(posEspresso, POOL_MEMBER_B);
         qualify(posEspresso, PERSON_VOLUNTEER);
         qualify(posEspresso, OUTSIDE_POOL_PERSON);
+        // …and straight back out of the pool, which is what makes them the I3 case
+        // now that qualifying somebody puts them in it (D19).
+        api(
+            ADMIN_KEY,
+            "DELETE",
+            `${VOLUNTEER_URL}/ministries/${ministryA}/pool/${OUTSIDE_POOL_PERSON}`,
+            null,
+            200,
+        );
         qualify(posMilk, POOL_MEMBER_A);
         qualify(posMilk, POOL_MEMBER_C);
         qualify(posMilk, PERSON_VOLUNTEER);

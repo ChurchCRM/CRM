@@ -2,8 +2,10 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\model\ChurchCRM\Map\UserTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
@@ -266,6 +268,41 @@ class VolunteerAuthorizationService
 
         foreach ($this->findScopeRows(self::SCOPE_MINISTRY, $ministryId) as $scope) {
             $personIds[] = (int) $scope->getPersonId();
+        }
+
+        return array_values(array_unique($personIds));
+    }
+
+    /**
+     * Everyone who holds global volunteer authority — the people to tell when a
+     * ministry has no coordinator of its own (D19's "help wanted" fallback).
+     *
+     * Read from `user_usr`, because that is where the tier lives: a global volunteer
+     * manager is a FLAG on a login (`usr_VolunteerManager`, #9706) and an administrator
+     * is `usr_Admin`, neither of which has a `volunteer_scope_vscp` row. `User::getId()`
+     * IS the person id (F4), so no join is needed.
+     *
+     * EditSelf-exclusive logins are excluded: §4.3 says the volunteer persona is never a
+     * manager, and `isVolunteerManagerEnabled()` would refuse them anyway — filtering
+     * here keeps a mail from being addressed to somebody the rest of V2 would turn away.
+     *
+     * @return int[] person ids, deduplicated
+     */
+    public function getGlobalManagerPersonIds(): array
+    {
+        $personIds = [];
+
+        $users = UserQuery::create()
+            ->condition('isManager', UserTableMap::COL_USR_VOLUNTEERMANAGER . ' = ?', true)
+            ->condition('isAdmin', UserTableMap::COL_USR_ADMIN . ' = ?', true)
+            ->where(['isManager', 'isAdmin'], Criteria::LOGICAL_OR)
+            ->find();
+
+        foreach ($users as $user) {
+            if ($user->isEditSelfExclusive()) {
+                continue;
+            }
+            $personIds[] = (int) $user->getId();
         }
 
         return array_values(array_unique($personIds));

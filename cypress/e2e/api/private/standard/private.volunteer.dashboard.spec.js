@@ -53,8 +53,7 @@ const PERSON_COORD_B = 95;
 const PERSON_TEAM_LEADER = 902;
 const PERSON_PLAIN = 900;
 
-/** Seeded members of group 1 "Angels class". */
-const POOL_GROUP = 1;
+/** The people this spec puts in each ministry's own pool Group (D19). */
 const POOL_MEMBER_A = 8;
 const POOL_MEMBER_B = 9;
 const POOL_MEMBER_C = 63;
@@ -323,12 +322,20 @@ function cleanupFixtures() {
           WHERE vmin.vmin_Name LIKE ?`,
         [`${FIXTURE_PREFIX}%`],
     );
+    // D19: the pool is the ministry's own Group, and `grp_ministry_id` is ON DELETE
+    // SET NULL — so the group and its memberships go BEFORE the ministry row, or the
+    // installation is left with an orphan group nobody recognises.
     dbOk(
-        `DELETE vpol FROM volunteer_pool_vpol vpol
-           JOIN volunteer_team_vtem vtem
-             ON vtem.vtem_ID = vpol.vpol_OwnerId AND vpol.vpol_OwnerType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
+        [`${FIXTURE_PREFIX}%`],
+    );
+    dbOk(
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         [`${FIXTURE_PREFIX}%`],
     );
     dbOk(
@@ -394,20 +401,22 @@ before(() => {
         });
     });
 
-    // The pool is an existing Group — V2 never copies membership (D1).
+    // D19: each ministry came with its own pool Group, empty. Both are filled with
+    // the same three people, which is what the old shared-group fixture was really
+    // expressing — one roster feeding two ministries — without borrowing a seeded
+    // group whose membership this spec does not own.
     cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamA1}/pools`, {
-            groupId: POOL_GROUP,
-            label: `${FIXTURE_PREFIX} pool`,
-        }, 201);
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamA2}/pools`, {
-            groupId: POOL_GROUP,
-            label: `${FIXTURE_PREFIX} sound pool`,
-        }, 201);
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryB}/pools`, {
-            groupId: POOL_GROUP,
-            label: `${FIXTURE_PREFIX} booth pool`,
-        }, 201);
+        for (const ministryId of [ministryA, ministryB]) {
+            for (const personId of [POOL_MEMBER_A, POOL_MEMBER_B, POOL_MEMBER_C]) {
+                api(
+                    ADMIN_KEY,
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                    null,
+                    [200, 201],
+                );
+            }
+        }
     });
 
     cy.then(() => {

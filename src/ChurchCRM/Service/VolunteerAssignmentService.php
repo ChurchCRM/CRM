@@ -153,8 +153,9 @@ class VolunteerAssignmentService
      *       when the position is team-scoped)                              → 400
      *   I5  the occurrence is neither cancelled nor already over            → 409
      *   I2  the person holds an ACTIVE qualification for the position       → 403
-     *   I3  the person is in a pool group of the owning ministry or team,
-     *       unless the caller passes allowOutsidePool (which is logged)     → 409
+     *   I3  the person is in the ministry's volunteer pool Group, unless the caller
+     *       passes allowOutsidePool (which is logged) — NOT applied to self
+     *       sign-up, which tests qualification only (D19)                   → 409
      *   I1  one row per (occurrence, position, person) — a live duplicate   → 409
      *   I8  …but a spent row (declined/cancelled) is RE-USED, reset to pending
      *
@@ -188,7 +189,14 @@ class VolunteerAssignmentService
 
         $allowOutsidePool = (bool) ($opts['allowOutsidePool'] ?? false);
         $inPool = $this->isInPool($personId, $schedule);
-        if (!$inPool) {
+        // D19: self sign-up tests QUALIFICATION ONLY. Being in the pool is no longer a
+        // precondition for anything — qualifying somebody now puts them in the ministry's
+        // Group, so the only way to be qualified and outside it is to have been taken out
+        // deliberately, and refusing that person's own offer to serve would be the
+        // opposite of what the coordinator who left the qualification in place meant.
+        // The coordinator path is unchanged: assigning somebody ELSE from outside the
+        // pool is still a decision that has to be made on purpose, with the override.
+        if (!$inPool && !$selfSignup) {
             if (!$allowOutsidePool) {
                 throw VolunteerSetupException::conflict(gettext(
                     'That person is not in a volunteer pool for this ministry. Re-send with the out-of-pool override to assign them anyway.'
@@ -1260,14 +1268,17 @@ class VolunteerAssignmentService
      * every other surface uses (§2.11.3): an opportunity is one effective requirement
      * of one occurrence with `openCount > 0`. Everything else here is a filter that
      * makes the list honest, i.e. every row it returns is a row `selfSignup()` would
-     * accept:
+     * accept.
+     *
+     * **D19 removed the pool filter (I3).** Qualification is the whole eligibility test
+     * on this surface now, on both sides: the list offers what `selfSignup()` accepts,
+     * and `selfSignup()` accepts what the list offers. A person who is qualified but has
+     * been taken out of the ministry's Group still sees, and can still take, the slot
+     * their qualification says they may serve in. The filters that remain:
      *
      *   - the position is one I hold an **active** qualification for (I2), and is
      *     itself active — so the list is server-side eligibility, never the client's
      *     idea of it;
-     *   - I am in a pool group of the owning ministry or team (I3) — `selfSignup()`
-     *     passes no out-of-pool override, so offering a row I am not in the pool for
-     *     would be offering a guaranteed `409`;
      *   - the occurrence is `scheduled` and not already over (I5);
      *   - I do not already hold that position on that occurrence (I1).
      *
@@ -1333,7 +1344,6 @@ class VolunteerAssignmentService
         }
 
         $now = DateTimeUtils::getToday();
-        $poolMemo = [];
         $opportunities = [];
 
         foreach ($occurrenceRows as $occurrence) {
@@ -1347,19 +1357,6 @@ class VolunteerAssignmentService
             // already be over.
             $window = $this->schedules->resolveOccurrenceWindow($occurrence);
             if (($window['end'] ?? null) !== null && $window['end'] < $now) {
-                continue;
-            }
-
-            // I3, memoised per (ministry, team) so a 500-occurrence window over one
-            // schedule asks the pool question once.
-            $poolKey = (int) $schedule->getMinistryId() . ':' . ($schedule->getTeamId() ?? 0);
-            if (!array_key_exists($poolKey, $poolMemo)) {
-                $poolMemo[$poolKey] = array_flip($this->setup->getPoolPersonIds(
-                    (int) $schedule->getMinistryId(),
-                    $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId()
-                ));
-            }
-            if (!isset($poolMemo[$poolKey][$personId])) {
                 continue;
             }
 
@@ -1924,14 +1921,10 @@ class VolunteerAssignmentService
         }
     }
 
+    /** One indexed row lookup against the ministry's pool Group (D19). */
     private function isInPool(int $personId, VolunteerSchedule $schedule): bool
     {
-        $poolIds = $this->setup->getPoolPersonIds(
-            (int) $schedule->getMinistryId(),
-            $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId()
-        );
-
-        return in_array($personId, $poolIds, true);
+        return $this->setup->isInPool((int) $schedule->getMinistryId(), $personId);
     }
 
     /**

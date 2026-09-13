@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
+use ChurchCRM\Exceptions\VolunteerSetupException;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
@@ -72,6 +73,15 @@ $app->group('/volunteer/me', function (RouteCollectorProxy $group): void {
     // path can be swallowed by `{assignmentId}`.
     $group->get('/opportunities', 'listMyVolunteerOpportunities');
     $group->get('/qualifications', 'listMyVolunteerQualifications');
+    // D19. A sibling of /opportunities rather than a section inside it: the two
+    // answer different questions ("what needs me on a date" vs "who is looking for
+    // people at all"), they have different shapes, and a ministry advert has no
+    // occurrence to hang off. The page fetches both and renders two sections.
+    $group->get('/help-wanted', 'listMyVolunteerHelpWanted');
+    // No InputSanitizationMiddleware and — as with /signup — deliberately NO
+    // personId anywhere: the ministry comes from the path as digits, the person
+    // from the session (§3.3.3).
+    $group->post('/help-wanted/{ministryId:[0-9]+}', 'offerToHelpVolunteerMinistry');
     $group->post('/signup', 'signUpForMyVolunteerOpportunity')
         ->add(new InputSanitizationMiddleware([
             'occurrenceId' => 'int',
@@ -391,7 +401,7 @@ function withdrawMyVolunteerSwap(Request $request, Response $response): Response
  *     path="/volunteer/me/opportunities",
  *     operationId="listMyVolunteerOpportunities",
  *     summary="Open slots I am qualified for and could sign up to right now",
- *     description="Server-side eligibility, never the client's idea of it: the list is filtered to positions the SESSION person holds an active qualification for, on occurrences that are scheduled, not over and in a pool the person belongs to, with capacity left. Every row it returns is a row POST /me/signup would accept. There is no personId parameter (design section 3.3.3); one in the query string is ignored. Defaults to the next 90 days.",
+ *     description="Server-side eligibility, never the client's idea of it: the list is filtered to positions the SESSION person holds an active qualification for, on occurrences that are scheduled, not over, with capacity left. Pool membership is NOT tested - design D19 makes qualification the whole eligibility rule on this surface, and POST /me/signup applies exactly the same rule. Every row it returns is a row POST /me/signup would accept. There is no personId parameter (design section 3.3.3); one in the query string is ignored. Defaults to the next 90 days.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="from", in="query", required=false, @OA\Schema(type="string", format="date")),
@@ -695,4 +705,77 @@ function volunteerMeParseDate(?string $raw): ?\DateTimeInterface
     $parsed = \DateTimeImmutable::createFromFormat('!Y-m-d', $raw, DateTimeUtils::getConfiguredTimezone());
 
     return $parsed === false ? null : $parsed;
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/me/help-wanted",
+ *     operationId="listMyVolunteerHelpWanted",
+ *     summary="Ministries that are asking for help",
+ *     description="Every ACTIVE ministry with its Help wanted switch on (design D19), alphabetically, with the text its coordinator wrote. Not filtered by qualification or by pool membership - the whole point of the section is to reach people the ministry does not know yet. inPool says whether the caller is already one of its volunteers, so the page can word the button's result correctly.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="V2 is not enabled"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="ministries", type="array", @OA\Items(type="object")))
+ *     )
+ * )
+ */
+function listMyVolunteerHelpWanted(Request $request, Response $response): Response
+{
+    $personId = (int) AuthenticationManager::getCurrentUser()->getId();
+    $service = new VolunteerSetupService();
+
+    $rows = [];
+    foreach ($service->listHelpWantedMinistries() as $ministry) {
+        $ministryId = (int) $ministry->getId();
+        $rows[] = [
+            'ministryId' => $ministryId,
+            'ministryName' => (string) $ministry->getName(),
+            'helpWantedText' => $ministry->getHelpWantedText(),
+            'inPool' => $service->isInPool($ministryId, $personId),
+        ];
+    }
+
+    return SlimUtils::renderJSON($response, ['ministries' => $rows]);
+}
+
+/**
+ * @OA\Post(
+ *     path="/volunteer/me/help-wanted/{ministryId}",
+ *     operationId="offerToHelpVolunteerMinistry",
+ *     summary="Tell a ministry you would like to help",
+ *     description="The acting person comes from the session; there is deliberately NO personId parameter (design section 3.3.3), so nobody can volunteer somebody else. Adds the caller to the ministry's volunteer pool Group if they are not already in it, then enqueues one help_offer message per coordinator per day - a second tap the same day sends nothing. Answers 403 when the ministry is not asking for help, so a pool cannot be joined by guessing an id.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="That ministry is not asking for help, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry, or it has no pool group"),
+ *     @OA\Response(response=200, description="Thank you",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="joinedPool", type="boolean", description="true when this tap is what put them in the pool"),
+ *             @OA\Property(property="notified", type="integer")
+ *         )
+ *     )
+ * )
+ */
+function offerToHelpVolunteerMinistry(Request $request, Response $response): Response
+{
+    $personId = (int) AuthenticationManager::getCurrentUser()->getId();
+    $ministryId = (int) SlimUtils::getRouteArgument($request, 'ministryId');
+
+    $ministry = VolunteerMinistryQuery::create()->findPk($ministryId);
+    if ($ministry === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('Ministry not found'), [], 404);
+    }
+
+    try {
+        $result = (new VolunteerSetupService())->recordHelpOffer($ministry, $personId);
+    } catch (VolunteerSetupException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), $e->getExtra(), $e->getStatusCode(), null, $request);
+    }
+
+    return SlimUtils::renderJSON($response, $result);
 }
