@@ -1,32 +1,32 @@
 {
-  "CSV": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "נדרש אימות דו-שלבי. יש לך %d יום להירשם.|נדרש אימות דו-שלבי. יש לך %d ימים להירשם.",
-    "other": ""
+    "one": "נדרש אימות דו-שלבי. יש לך %d יום להירשם.",
+    "other": "נדרש אימות דו-שלבי. יש לך %d ימים להירשם."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "הועתק {{count}} חבר",
+    "other": "הועתקו {{count}} חברים"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ברשימה זו יש {{count}} נמען — יותר מדי עבור קישור mailto: יש להשתמש בהעתקת כתובות במקום.",
+    "other": "ברשימה זו יש {{count}} נמענים — יותר מדי עבור קישור mailto: יש להשתמש בהעתקת כתובות במקום."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "יותר מדי נמענים עבור תוכנת הדוא\"ל ({{count}} > {{max}}). יש להשתמש בהעתקת כתובות במקום.",
+    "other": "יותר מדי נמענים עבור תוכנת הדוא\"ל ({{count}} > {{max}}). יש להשתמש בהעתקת כתובות במקום."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "נותרה {{count}} דקה",
+    "other": "נותרו {{count}} דקות"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "לא ניתן היה לאתר מיקום גיאוגרפי עבור {{count}} משפחה",
+    "other": "לא ניתן היה לאתר מיקום גיאוגרפי עבור {{count}} משפחות"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…ועוד {{count}}. יש להריץ שוב כדי לראות את השאר.",
+    "other": "…ועוד {{count}}. יש להריץ שוב כדי לראות את השאר."
   }
 }
