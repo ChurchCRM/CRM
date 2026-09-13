@@ -1,32 +1,32 @@
 {
-  "CSV": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Se requiere la autenticación de dos factores. Tiene %d día para inscribirse.|Se requiere la autenticación de dos factores. Tiene %d días para inscribirse.",
-    "other": ""
+    "one": "Se requiere la autenticación de dos factores. Tiene %d día para inscribirse.",
+    "other": "Se requiere la autenticación de dos factores. Tiene %d días para inscribirse."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Se copió {{count}} miembro",
+    "other": "Se copiaron {{count}} miembros"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Esta lista tiene {{count}} destinatario — demasiados para un enlace mailto:. Use Copiar Direcciones en su lugar.",
+    "other": "Esta lista tiene {{count}} destinatarios — demasiados para un enlace mailto:. Use Copiar Direcciones en su lugar."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Demasiados destinatarios para el cliente de correo ({{count}} > {{max}}). Use Copiar Direcciones en su lugar.",
+    "other": "Demasiados destinatarios para el cliente de correo ({{count}} > {{max}}). Use Copiar Direcciones en su lugar."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuto restante",
+    "other": "{{count}} minutos restantes"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familia no pudo ser geolocalizada",
+    "other": "{{count}} familias no pudieron ser geolocalizadas"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…y {{count}} más. Ejecute de nuevo para ver el resto.",
+    "other": "…y {{count}} más. Ejecute de nuevo para ver el resto."
   }
 }
