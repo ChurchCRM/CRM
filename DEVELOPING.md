@@ -58,7 +58,6 @@ After `npm run docker:test:start`, the test environment provides:
 |---|---|---|
 | ChurchCRM | `http://localhost` | Application under development |
 | Mailpit | `http://localhost:8025` | Captured test email |
-| Adminer | `http://localhost:8088` | Database inspection |
 
 The default ChurchCRM login is `admin` / `changeme`. Never use these credentials in a real deployment.
 
