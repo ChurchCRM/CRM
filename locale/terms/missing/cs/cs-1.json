@@ -1,36 +1,36 @@
 {
-  "Fundraising": "",
-  "Data": "",
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "Fundraising": "Fundraising",
+  "Data": "Data",
+  "CSV": "CSV",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den.|Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny.|Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní.",
-    "few": "",
-    "other": ""
+    "one": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den.",
+    "few": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny.",
+    "other": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Zkopírován {{count}} člen",
+    "other": "Zkopírováno {{count}} členů"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Tento seznam obsahuje {{count}} příjemce — příliš mnoho pro odkaz mailto:. Použijte místo toho Kopírovat adresy.",
+    "other": "Tento seznam obsahuje {{count}} příjemců — příliš mnoho pro odkaz mailto:. Použijte místo toho Kopírovat adresy."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Použijte místo toho Kopírovat adresy.",
+    "other": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Použijte místo toho Kopírovat adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Zbývá {{count}} minuta",
+    "other": "Zbývá {{count}} minut"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "Nepodařilo se geokódovat {{count}} rodinu",
+    "other": "Nepodařilo se geokódovat {{count}} rodin"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…a {{count}} další. Spusťte to znovu, abyste viděli zbytek.",
+    "other": "…a {{count}} dalších. Spusťte to znovu, abyste viděli zbytek."
   }
 }
