@@ -1084,8 +1084,8 @@
            description="Volunteer v2: a role a volunteer can serve in (Espresso, Song Leader, Nursery Teacher). Owned by a ministry, optionally narrowed to a team">
         <column name="vpos_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="vpos_vmin_ID" phpName="MinistryId" type="INTEGER" required="true"/>
-        <column name="vpos_vtem_ID" phpName="TeamId" type="INTEGER"
-                description="NULL means the position is ministry-wide"/>
+        <column name="vpos_vtem_ID" phpName="TeamId" type="INTEGER" required="true"
+                description="Every position belongs to a team; a ministry is never created without one"/>
         <column name="vpos_Name" phpName="Name" type="VARCHAR" size="100" required="true"/>
         <column name="vpos_Description" phpName="Description" type="VARCHAR" size="255"
                 description="Operational requirements for the position, as prose"/>
@@ -1099,7 +1099,7 @@
             <reference local="vpos_vmin_ID" foreign="vmin_ID"/>
         </foreign-key>
         <foreign-key foreignTable="volunteer_team_vtem" name="VolunteerPositionTeam" phpName="Team"
-                     refPhpName="VolunteerPosition" onDelete="setnull">
+                     refPhpName="VolunteerPosition" onDelete="cascade">
             <reference local="vpos_vtem_ID" foreign="vtem_ID"/>
         </foreign-key>
         <unique name="vpos_ministry_team_name_uidx">
@@ -1167,7 +1167,8 @@
            description="Volunteer v2: the recurring series V2 owns. Either linked to a ChurchCRM event type, in which case the event occurrences are authoritative, or standalone, in which case V2 generates its own dates">
         <column name="vsch_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="vsch_vmin_ID" phpName="MinistryId" type="INTEGER" required="true"/>
-        <column name="vsch_vtem_ID" phpName="TeamId" type="INTEGER"/>
+        <column name="vsch_vtem_ID" phpName="TeamId" type="INTEGER" required="true"
+                description="Every schedule belongs to a team; a ministry is never created without one"/>
         <column name="vsch_Name" phpName="Name" type="VARCHAR" size="100" required="true"/>
         <column name="vsch_LinkMode" phpName="LinkMode" type="CHAR" sqlType="enum('event_type','standalone')"
                 required="true"/>
@@ -1195,7 +1196,7 @@
             <reference local="vsch_vmin_ID" foreign="vmin_ID"/>
         </foreign-key>
         <foreign-key foreignTable="volunteer_team_vtem" name="VolunteerScheduleTeam" phpName="Team"
-                     refPhpName="VolunteerSchedule" onDelete="setnull">
+                     refPhpName="VolunteerSchedule" onDelete="cascade">
             <reference local="vsch_vtem_ID" foreign="vtem_ID"/>
         </foreign-key>
         <foreign-key foreignTable="event_types" name="VolunteerScheduleEventType" phpName="EventType"

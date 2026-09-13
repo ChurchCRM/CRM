@@ -36,7 +36,7 @@ const TEAMS_URL = "/api/volunteer/teams";
 const SCOPES_URL = "/api/volunteer/scopes";
 
 const PERSON_COORDINATOR = 3; // tony.wade — user.api.key
-const EVENT_TYPE_CHURCH_SERVICE = 3;
+const EVENT_TYPE_CHURCH_SERVICE = 1; // "Church Service" in the seed
 
 const PREFIX = "DEFTEAM9701";
 

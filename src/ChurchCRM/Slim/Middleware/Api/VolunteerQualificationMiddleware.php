@@ -18,10 +18,10 @@ use Psr\Http\Message\ServerRequestInterface;
  * #9706 middlewares established.
  *
  * A qualification belongs to its POSITION, not to the person it names, so the
- * decision is `canManagePosition()` — which already says that a team-scoped
- * position is the team leader's and a ministry-wide one the coordinator's
- * (§4.6). Routing it through that one predicate is what keeps "a team leader may
- * grant for their own team's positions" from being written twice.
+ * decision is `canManagePosition()` — which already says that a position belongs
+ * to its team, and so to that team's leader and the ministry coordinator above
+ * them (§4.6). Routing it through that one predicate is what keeps "a team leader
+ * may grant for their own team's positions" from being written twice.
  */
 class VolunteerQualificationMiddleware extends AbstractEntityMiddleware
 {

@@ -32,6 +32,8 @@ const MINISTRY_NAME = `${PREFIX} Childrens Ministry`;
 const SHARED_POSITION = `${PREFIX} Lead Teacher`;
 const TEAM_ELEMENTARY = `${PREFIX} Elementary`;
 const TEAM_NURSERY = `${PREFIX} Nursery`;
+/** Seed group 1, "Angels class" — the matrix needs people, and a pool is where they come from. */
+const GROUP_ANGELS_ID = 1;
 
 // Local helper — NOT a cy.* command (cypress-testing.md).
 function freshAdminLogin() {
@@ -170,6 +172,14 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
                             { name: SHARED_POSITION, teamId: nurseryId, order: 2 },
                             201,
                         );
+                        // The matrix draws nothing without people, and people come
+                        // from a linked pool Group (design D1).
+                        cy.makePrivateAdminAPICall(
+                            "POST",
+                            `${MINISTRIES_URL}/${ministryId}/pools`,
+                            { groupId: GROUP_ANGELS_ID },
+                            [200, 201],
+                        );
                     });
                 });
             });
@@ -251,12 +261,20 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
                 freshAdminLogin();
                 cy.visit(`/volunteer/ministries/${soloId}`);
                 cy.get("#nav-item-teams").click();
+                // Wait for the lazy tab load AND the DataTables init before touching a
+                // row menu: a click landing mid-init is thrown away with the row that
+                // DataTables replaces (cypress-testing.md).
+                cy.get("#teams .volunteer-loading").should("not.be.visible");
+                cy.get("#volunteerTeamsTable").should("be.visible");
+                cy.get("#volunteerTeamsTable tbody tr").should("have.length", 1);
                 cy.get("#volunteerTeamsTable tbody tr")
                     .first()
                     .find("button[data-bs-toggle=dropdown]")
                     .click();
-                cy.get("#volunteerTeamsTable .dropdown-menu .volunteer-team-delete")
+                cy.get("#volunteerTeamsTable .dropdown-menu")
                     .first()
+                    .should("be.visible")
+                    .find(".volunteer-team-delete")
                     .click();
                 cy.get(".bootbox .btn-danger").click();
                 // The 409's own message is surfaced verbatim, because it names the

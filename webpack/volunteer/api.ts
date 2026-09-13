@@ -40,11 +40,16 @@ export interface VolunteerTeam {
   positionCount: number;
 }
 
-/** One position as `volunteerPositionToArray()` shapes it. */
+/**
+ * One position as `volunteerPositionToArray()` shapes it.
+ *
+ * `teamId` is never null: every position belongs to a team, and a ministry is
+ * never created without one.
+ */
 export interface VolunteerPosition {
   id: number;
   ministryId: number;
-  teamId: number | null;
+  teamId: number;
   teamName: string | null;
   name: string;
   description: string | null;
@@ -322,6 +327,30 @@ export function notifySuccess(message: string): void {
   window.CRM?.notify?.(message, { type: "success" });
 }
 
+/**
+ * How a position is named on a screen that can show more than one team's positions
+ * at once — "Elementary · Lead Teacher".
+ *
+ * This is the whole point of the "every ministry has at least one team" decision:
+ * two teams under "Children's Ministry" may each own a "Lead Teacher", and a
+ * coordinator looking at a qualification matrix, a dashboard gap list or a
+ * cross-team "still needed" line has to be able to tell them apart. Where the
+ * context is already ONE team — a schedule form after a team is chosen, the
+ * occurrence page, whose header already names the ministry and the team — the bare
+ * position name is right and this helper is not used.
+ *
+ * The separator is a middle dot with hair spaces around it, matching the
+ * "Ministry · Team" line the occurrence header already draws. Returns the bare
+ * position name when there is no team name to prefix, so a caller never has to
+ * guard.
+ */
+export function positionLabel(teamName: string | null | undefined, positionName: string | null): string {
+  const position = positionName ?? "";
+  const team = teamName ?? "";
+
+  return team === "" ? position : `${team} · ${position}`;
+}
+
 // ─── Assignments, gaps and swaps (#9709) ─────────────────────────────────────
 
 /** One assignment as `volunteerAssignmentToArray()` shapes it. */
@@ -407,11 +436,17 @@ export interface VolunteerOccurrenceGap {
   gapCount: number;
 }
 
-/** One position the staffing-needs editor may offer, from the occurrence's own scope. */
+/**
+ * One position the staffing-needs editor may offer, from the occurrence's own scope.
+ *
+ * `teamName` lets a caller that mixes several teams' positions label them
+ * "{Team} · {Position}"; an editor showing one team's positions uses the bare name.
+ */
 export interface VolunteerCandidatePosition {
   id: number;
   name: string;
-  teamId: number | null;
+  teamId: number;
+  teamName?: string | null;
   order: number;
 }
 
@@ -782,7 +817,8 @@ export function listMyQualifications(): Promise<{ qualifications: VolunteerMyQua
 export interface VolunteerSchedule {
   id: number;
   ministryId: number;
-  teamId: number | null;
+  /** Never null: a schedule always belongs to one of its ministry's teams. */
+  teamId: number;
   name: string;
   linkMode: "event_type" | "standalone";
   eventTypeId: number | null;

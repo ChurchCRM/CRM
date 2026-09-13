@@ -530,10 +530,8 @@ function listMyVolunteerQualifications(Request $request, Response $response): Re
         $ministryNames[(int) $ministry->getId()] = (string) $ministry->getName();
     }
 
-    $teamIds = array_values(array_filter(array_map(
-        static fn ($p): ?int => $p->getTeamId() === null ? null : (int) $p->getTeamId(),
-        $positions
-    )));
+    // D18: every position names a team, so there is nothing to filter out here.
+    $teamIds = array_values(array_map(static fn ($p): int => (int) $p->getTeamId(), $positions));
     $teamNames = [];
     if ($teamIds !== []) {
         foreach (VolunteerTeamQuery::create()->filterById($teamIds, Criteria::IN)->find() as $team) {
@@ -543,14 +541,14 @@ function listMyVolunteerQualifications(Request $request, Response $response): Re
 
     $payload = [];
     foreach ($positions as $positionId => $position) {
-        $teamId = $position->getTeamId() === null ? null : (int) $position->getTeamId();
+        $teamId = (int) $position->getTeamId();
         $payload[] = [
             'positionId' => $positionId,
             'positionName' => (string) $position->getName(),
             'ministryId' => (int) $position->getMinistryId(),
             'ministryName' => $ministryNames[(int) $position->getMinistryId()] ?? null,
             'teamId' => $teamId,
-            'teamName' => $teamId === null ? null : ($teamNames[$teamId] ?? null),
+            'teamName' => $teamNames[$teamId] ?? null,
         ];
     }
 
@@ -654,10 +652,8 @@ function volunteerMeOccurrenceContext(array $assignments, VolunteerAssignmentSer
         $ministryNames[(int) $ministry->getId()] = (string) $ministry->getName();
     }
 
-    $teamIds = array_values(array_filter(array_map(
-        static fn ($s): ?int => $s->getTeamId() === null ? null : (int) $s->getTeamId(),
-        $scheduleRows
-    )));
+    // D18: every schedule names a team, so there is nothing to filter out here.
+    $teamIds = array_values(array_map(static fn ($s): int => (int) $s->getTeamId(), $scheduleRows));
     $teamNames = [];
     if ($teamIds !== []) {
         foreach (VolunteerTeamQuery::create()->filterById($teamIds, Criteria::IN)->find() as $team) {

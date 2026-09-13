@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerRequirement;
 use ChurchCRM\model\ChurchCRM\VolunteerRequirementQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Service\VolunteerAssignmentService;
 use ChurchCRM\Service\VolunteerAuthorizationService;
 use ChurchCRM\Service\VolunteerScheduleService;
@@ -136,7 +137,7 @@ function volunteerScheduleToArray(VolunteerSchedule $schedule): array
     return [
         'id' => (int) $schedule->getId(),
         'ministryId' => (int) $schedule->getMinistryId(),
-        'teamId' => $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId(),
+        'teamId' => (int) $schedule->getTeamId(),
         'name' => $schedule->getName(),
         'linkMode' => $schedule->getLinkMode(),
         'eventTypeId' => $schedule->getEventTypeId() === null ? null : (int) $schedule->getEventTypeId(),
@@ -194,7 +195,7 @@ function volunteerOccurrenceToArray(
         'scheduleId' => (int) $occurrence->getScheduleId(),
         'scheduleName' => $schedule !== null ? $schedule->getName() : null,
         'ministryId' => $schedule !== null ? (int) $schedule->getMinistryId() : null,
-        'teamId' => $schedule !== null && $schedule->getTeamId() !== null ? (int) $schedule->getTeamId() : null,
+        'teamId' => $schedule !== null ? (int) $schedule->getTeamId() : null,
         'eventId' => $occurrence->getEventId() === null ? null : (int) $occurrence->getEventId(),
         'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
         'startDateTime' => $occurrence->getStartDateTime('Y-m-d H:i:s'),
@@ -350,10 +351,10 @@ function listVolunteerSchedules(Request $request, Response $response): Response
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=true, @OA\JsonContent(
- *         required={"name","linkMode","windowStart"},
+ *         required={"name","linkMode","teamId","windowStart"},
  *         @OA\Property(property="name", type="string"),
  *         @OA\Property(property="linkMode", type="string", enum={"event_type","standalone"}),
- *         @OA\Property(property="teamId", type="integer", nullable=true),
+ *         @OA\Property(property="teamId", type="integer", description="Required: a schedule always belongs to one of the ministry's teams"),
  *         @OA\Property(property="eventTypeId", type="integer", nullable=true, description="Required when linkMode is event_type"),
  *         @OA\Property(property="titleFilter", type="string", nullable=true, description="Optional LIKE narrowing on the event title"),
  *         @OA\Property(property="recurType", type="string", nullable=true, enum={"none","weekly","monthly","yearly"}, description="Standalone schedules only"),
@@ -629,7 +630,7 @@ function upsertVolunteerOccurrenceRequirement(Request $request, Response $respon
  *     path="/volunteer/occurrences/{occurrenceId}/requirements",
  *     operationId="listVolunteerOccurrenceRequirements",
  *     summary="This occurrence's effective staffing needs, and the positions it could need",
- *     description="Everything the staffing-needs editor has to draw: the EFFECTIVE requirements from VolunteerScheduleService::getEffectiveRequirements() (each carrying `source`, so the caller can see which are the schedule's and which are this occurrence's own), plus the active positions of the owning team — or of the whole ministry for a ministry-wide schedule — so a position that has no requirement row can still be offered as an unchecked line. Served under the occurrence's own scope check, so a team leader never has to reach for the ministry-wide position list to edit one week.",
+ *     description="Everything the staffing-needs editor has to draw: the EFFECTIVE requirements from VolunteerScheduleService::getEffectiveRequirements() (each carrying `source`, so the caller can see which are the schedule's and which are this occurrence's own), plus the active positions of the owning team, so a position that has no requirement row can still be offered as an unchecked line. Served under the occurrence's own scope check, so a team leader can edit one week without reaching past their own team.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="occurrenceId", in="path", required=true, @OA\Schema(type="integer")),
@@ -773,11 +774,14 @@ function volunteerRequirementsAreOverridden(array $effective): bool
 
 /**
  * The positions a schedule's staffing plan may name: the active positions of its team,
- * or — for a ministry-wide schedule — every active position of the ministry.
+ * and nothing else.
  *
- * A team-scoped schedule deliberately still offers the ministry's team-less positions:
- * §2.6 lets a position belong to the ministry rather than a team, and those apply to every
- * team under it. What it never offers is another team's positions.
+ * D18 removed the "ministry-wide position offered to every team" branch that used to live
+ * here. It was the mechanism behind the ambiguity the decision exists to fix — two teams
+ * under one ministry could each own a "Lead Teacher", and a list that mixed a team's own
+ * positions with the ministry's showed the name twice with nothing to tell them apart.
+ * Now a schedule offers exactly its team's positions, so `teamName` is carried only for a
+ * caller that shows several teams' positions side by side.
  *
  * @return array<int, array<string, mixed>>
  */
@@ -787,29 +791,25 @@ function volunteerCandidatePositions(?VolunteerSchedule $schedule): array
         return [];
     }
 
+    $teamId = (int) $schedule->getTeamId();
+    $team = VolunteerTeamQuery::create()->findPk($teamId);
+    $teamName = $team === null ? null : (string) $team->getName();
+
     $positions = VolunteerPositionQuery::create()
         ->filterByMinistryId((int) $schedule->getMinistryId())
+        ->filterByTeamId($teamId)
         ->filterByActive(true)
         ->orderByOrder()
         ->orderByName()
         ->find();
 
-    // Narrowed in PHP rather than in the query: "this team's, plus the ministry's
-    // team-less ones" is an OR against NULL, and a ministry holds a handful of positions,
-    // not a table worth paging.
-    $teamId = $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId();
-
     $rows = [];
     foreach ($positions as $position) {
-        $positionTeamId = $position->getTeamId() === null ? null : (int) $position->getTeamId();
-        if ($teamId !== null && $positionTeamId !== null && $positionTeamId !== $teamId) {
-            continue;
-        }
-
         $rows[] = [
             'id' => (int) $position->getId(),
             'name' => $position->getName(),
-            'teamId' => $positionTeamId,
+            'teamId' => $teamId,
+            'teamName' => $teamName,
             'order' => (int) $position->getOrder(),
         ];
     }

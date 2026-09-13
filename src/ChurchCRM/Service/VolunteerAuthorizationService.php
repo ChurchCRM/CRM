@@ -129,8 +129,9 @@ class VolunteerAuthorizationService
     }
 
     /**
-     * A team-scoped position belongs to its team; a ministry-wide position belongs to the
-     * ministry, so a team leader may not touch it (§4.4, §4.6).
+     * A position belongs to its team (D18 — there is no team-less position), so its
+     * team leader may touch it, and so may the ministry coordinator above them
+     * through `canManageTeam()` (§4.4, §4.6).
      */
     public function canManagePosition(User $user, int $positionId): bool
     {
@@ -143,26 +144,17 @@ class VolunteerAuthorizationService
             return false;
         }
 
-        $teamId = $position->getTeamId();
-        if ($teamId !== null) {
-            return $this->canManageTeam($user, (int) $teamId);
-        }
-
-        return $this->canManageMinistry($user, (int) $position->getMinistryId());
+        return $this->canManageTeam($user, (int) $position->getTeamId());
     }
 
+    /** Same shape as `canManagePosition()`: a schedule always names a team (D18). */
     public function canManageSchedule(User $user, VolunteerSchedule $schedule): bool
     {
         if ($this->isGlobalManager($user)) {
             return true;
         }
 
-        $teamId = $schedule->getTeamId();
-        if ($teamId !== null) {
-            return $this->canManageTeam($user, (int) $teamId);
-        }
-
-        return $this->canManageMinistry($user, (int) $schedule->getMinistryId());
+        return $this->canManageTeam($user, (int) $schedule->getTeamId());
     }
 
     public function canManageOccurrence(User $user, VolunteerOccurrence $occurrence): bool

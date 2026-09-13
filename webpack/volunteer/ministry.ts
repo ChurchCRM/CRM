@@ -50,6 +50,7 @@ import {
   type MinistryDetail,
   notifyError,
   notifySuccess,
+  positionLabel,
   type QualificationMatrix,
   qualifyCart,
   revokeQualification,
@@ -413,7 +414,7 @@ function renderPositions(data: MinistryDetail): void {
           <td class="text-center">${position.order}</td>
           <td class="fw-bold">${escapeHtml(position.name)}</td>
           <td>${position.description ? escapeHtml(position.description) : '<span class="text-body-secondary">—</span>'}</td>
-          <td>${position.teamName ? escapeHtml(position.teamName) : `<span class="text-body-secondary">${i18next.t("Whole ministry")}</span>`}</td>
+          <td>${escapeHtml(position.teamName ?? "")}</td>
           <td class="text-center">${statusBadge(position.active)}</td>
           <td class="w-1">${menu}</td>
         </tr>`;
@@ -458,9 +459,19 @@ function renderMatrix(data: QualificationMatrix): void {
     return;
   }
 
+  // "Elementary · Lead Teacher", not a bare "Lead Teacher", whenever the columns
+  // come from more than one team — two teams under one ministry may own a position
+  // of the same name, and the coordinator has to be able to tell the columns apart.
+  // Once the filter names a single team the prefix is noise, so it is dropped.
+  const matrixSpansTeams = new Set(data.positions.map((position: VolunteerPosition) => position.teamId)).size > 1;
+  const columnLabel = (position: VolunteerPosition): string =>
+    matrixSpansTeams ? positionLabel(position.teamName, position.name) : (position.name ?? "");
+
   head.innerHTML = [
     `<th>${i18next.t("Volunteer")}</th>`,
-    ...data.positions.map((position: VolunteerPosition) => `<th class="text-center">${escapeHtml(position.name)}</th>`),
+    ...data.positions.map(
+      (position: VolunteerPosition) => `<th class="text-center">${escapeHtml(columnLabel(position))}</th>`,
+    ),
   ].join("");
 
   body.innerHTML = data.people
@@ -475,7 +486,7 @@ function renderMatrix(data: QualificationMatrix): void {
                      data-person-id="${person.personId}"
                      data-position-id="${position.id}"
                      data-qualification-id="${qualificationId}"
-                     aria-label="${window.CRM?.escapeAttribute?.(`${person.displayName} — ${position.name}`) ?? ""}">
+                     aria-label="${window.CRM?.escapeAttribute?.(`${person.displayName} — ${columnLabel(position)}`) ?? ""}">
             </td>`;
         })
         .join("");
@@ -511,16 +522,24 @@ function fillPositionSelect(id: string): void {
 
   const previous = select.value;
   select.textContent = "";
-  for (const position of matrix?.positions ?? []) {
+  const positions = matrix?.positions ?? [];
+  const spansTeams = new Set(positions.map((position) => position.teamId)).size > 1;
+  for (const position of positions) {
     const option = document.createElement("option");
     option.value = String(position.id);
-    option.textContent = position.name;
+    option.textContent = spansTeams ? positionLabel(position.teamName, position.name) : position.name;
     select.append(option);
   }
   select.value = previous;
 }
 
-/** The team picker above the matrix; "Whole ministry" is the default. */
+/**
+ * The team picker above the matrix. Unlike the position and schedule editors, this
+ * one keeps an "everything" entry — it is a FILTER, not a scope, and seeing every
+ * team's positions at once is a real question. It is labelled "All teams" rather
+ * than "Whole ministry" because a ministry no longer owns positions directly, and
+ * the columns carry a "{Team} · {Position}" prefix while it is selected.
+ */
 function fillMatrixTeamFilter(): void {
   const select = byId<HTMLSelectElement>("qualification-team-filter");
   if (!select) {
@@ -530,7 +549,7 @@ function fillMatrixTeamFilter(): void {
   select.textContent = "";
   const wide = document.createElement("option");
   wide.value = "";
-  wide.textContent = i18next.t("Whole ministry");
+  wide.textContent = i18next.t("All teams");
   select.append(wide);
   for (const team of detail?.teams ?? []) {
     const option = document.createElement("option");
@@ -581,7 +600,12 @@ function gapSummary(occurrence: VolunteerOccurrenceSummary): string {
     return i18next.t("{{count}} still needed", { count: occurrence.gapCount });
   }
 
-  return occurrence.gaps.map((gap) => `${gap.gapCount} ${gap.positionName ?? ""}`.trim()).join(", ");
+  // This table lists every schedule of the ministry, so two rows can be short of a
+  // "Lead Teacher" that means two different teams' positions. The team is named on
+  // each one, from the occurrence's own schedule.
+  const teamName = detail?.teams.find((team) => team.id === occurrence.teamId)?.name ?? null;
+
+  return occurrence.gaps.map((gap) => `${gap.gapCount} ${positionLabel(teamName, gap.positionName)}`.trim()).join(", ");
 }
 
 function renderOccurrences(rows: VolunteerOccurrenceSummary[]): void {
@@ -709,12 +733,14 @@ function renderSchedules(rows: VolunteerSchedule[]): void {
           ? i18next.t("Calendar event type: {{name}}", { name: schedule.eventTypeName ?? "" })
           : i18next.t("Every {{day}}", { day: schedule.recurDow ?? "" });
       const team = detail?.teams.find((candidate) => candidate.id === schedule.teamId);
+      // Every schedule names a team; an empty cell here would mean the ministry
+      // document is stale, not that the schedule is ministry-wide.
 
       return `
         <tr>
           <td>${escapeHtml(schedule.name)}</td>
           <td>${escapeHtml(pattern)}</td>
-          <td>${escapeHtml(team?.name ?? i18next.t("Whole ministry"))}</td>
+          <td>${escapeHtml(team?.name ?? "")}</td>
           <td class="text-center">${schedule.occurrenceCount}</td>
           <td class="text-center">${statusBadge(schedule.active)}</td>
           <td class="text-center">
@@ -803,9 +829,11 @@ async function loadEventTypes(): Promise<void> {
 function fillScheduleSelects(): void {
   const teamSelect = byId<HTMLSelectElement>("schedule-form-team");
   if (teamSelect) {
-    teamSelect.innerHTML =
-      `<option value="">${escapeHtml(i18next.t("Whole ministry"))}</option>` +
-      (detail?.teams ?? []).map((team) => `<option value="${team.id}">${escapeHtml(team.name)}</option>`).join("");
+    // No "no team" entry: a schedule always belongs to a team, and the ministry
+    // always has at least one to offer.
+    teamSelect.innerHTML = (detail?.teams ?? [])
+      .map((team) => `<option value="${team.id}">${escapeHtml(team.name)}</option>`)
+      .join("");
   }
 
   const typeSelect = byId<HTMLSelectElement>("schedule-form-event-type");
@@ -826,22 +854,23 @@ function syncScheduleMode(): void {
 }
 
 /**
- * The positions a schedule's staffing plan may name: the chosen team's, plus the
- * ministry's team-less ones, which §2.6 says apply to every team under it. What it never
- * offers is another team's positions. A ministry-wide schedule (no team) offers them all.
+ * The positions a schedule's staffing plan may name: the chosen team's, and nothing
+ * else. The "ministry's team-less positions, offered to every team" branch that used
+ * to live here is gone with the positions themselves — it was what made one position
+ * name appear twice in a ministry-wide list with no way to tell which team it meant.
  *
- * Mirrors `volunteerCandidatePositions()` in the API, which serves the same question for
- * the occurrence-level editor — that one has to, because a team leader editing one week
- * must not need the ministry-wide position list.
+ * Mirrors `volunteerCandidatePositions()` in the API, which answers the same question
+ * for the occurrence-level editor.
  */
-function candidatePositionsForTeam(teamId: number | null): VolunteerCandidatePosition[] {
+function candidatePositionsForTeam(teamId: number): VolunteerCandidatePosition[] {
   return (detail?.positions ?? [])
     .filter((position) => position.active)
-    .filter((position) => teamId === null || position.teamId === null || position.teamId === teamId)
+    .filter((position) => position.teamId === teamId)
     .map((position) => ({
       id: position.id,
       name: position.name,
       teamId: position.teamId,
+      teamName: position.teamName,
       order: position.order,
     }));
 }
@@ -853,8 +882,7 @@ function renderScheduleNeeds(): void {
     return;
   }
 
-  const raw = byId<HTMLSelectElement>("schedule-form-team")?.value ?? "";
-  const teamId = raw === "" ? null : Number(raw);
+  const teamId = Number(byId<HTMLSelectElement>("schedule-form-team")?.value ?? 0);
 
   // A new schedule starts with every position checked — "I just made a team with one
   // position, of course I need one of them" — while an edit reflects the rows that exist,
@@ -892,7 +920,9 @@ function openScheduleModal(schedule?: VolunteerSchedule): void {
     };
 
     set("schedule-form-name", schedule?.name ?? "");
-    set("schedule-form-team", schedule?.teamId === null || schedule === undefined ? "" : String(schedule.teamId));
+    // A new schedule starts on the ministry's first team rather than on nothing,
+    // because "nothing" is no longer a storable answer.
+    set("schedule-form-team", String(schedule?.teamId ?? detail?.teams[0]?.id ?? ""));
     set("schedule-form-link-mode", schedule?.linkMode ?? "event_type");
     set(
       "schedule-form-event-type",
@@ -929,7 +959,7 @@ function scheduleFormPayload(): Record<string, unknown> {
   const payload: Record<string, unknown> = {
     name: value("schedule-form-name"),
     linkMode,
-    teamId: teamId === "" ? null : Number(teamId),
+    teamId: Number(teamId),
     windowStart: value("schedule-form-window-start"),
     windowEnd: value("schedule-form-window-end") === "" ? null : value("schedule-form-window-end"),
     active: byId<HTMLInputElement>("schedule-form-active")?.checked ?? true,
@@ -1126,18 +1156,16 @@ function openPositionModal(position?: VolunteerPosition): void {
   }
 
   if (teamSelect) {
+    // No "no team" entry: a position always belongs to one, and a new position
+    // starts on the ministry's first team.
     teamSelect.textContent = "";
-    const wide = document.createElement("option");
-    wide.value = "";
-    wide.textContent = i18next.t("Whole ministry");
-    teamSelect.append(wide);
     for (const team of detail?.teams ?? []) {
       const option = document.createElement("option");
       option.value = String(team.id);
       option.textContent = team.name;
       teamSelect.append(option);
     }
-    teamSelect.value = position?.teamId ? String(position.teamId) : "";
+    teamSelect.value = String(position?.teamId ?? detail?.teams[0]?.id ?? "");
   }
 
   modal("positionModal")?.show();
@@ -1149,10 +1177,14 @@ function savePosition(): void {
   const orderValue = byId<HTMLInputElement>("position-form-order")?.value ?? "0";
   const active = byId<HTMLInputElement>("position-form-active")?.checked ?? true;
   const teamValue = byId<HTMLSelectElement>("position-form-team")?.value ?? "";
-  const teamId = teamValue === "" ? null : Number(teamValue);
+  const teamId = Number(teamValue);
 
   if (name === "") {
     showModalError("position", i18next.t("Give the position a name"));
+    return;
+  }
+  if (!teamId) {
+    showModalError("position", i18next.t("Choose the team this position serves on"));
     return;
   }
 

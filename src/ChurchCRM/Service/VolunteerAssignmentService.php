@@ -1372,14 +1372,11 @@ class VolunteerAssignmentService
                     continue;
                 }
 
-                // I4: a ministry-wide position is offered by every team's schedule, a
-                // team-scoped one only by its own team's.
-                $positionTeamId = $positions[$positionId]->getTeamId();
-                $scheduleTeamId = $schedule->getTeamId();
-                if (
-                    $positionTeamId !== null && $scheduleTeamId !== null
-                    && (int) $positionTeamId !== (int) $scheduleTeamId
-                ) {
+                // I4: a position is offered only by its own team's schedules (D18 —
+                // every position and every schedule names a team).
+                $positionTeamId = (int) $positions[$positionId]->getTeamId();
+                $scheduleTeamId = (int) $schedule->getTeamId();
+                if ($positionTeamId !== $scheduleTeamId) {
                     continue;
                 }
 
@@ -1393,7 +1390,7 @@ class VolunteerAssignmentService
                     'positionId' => $positionId,
                     'positionName' => $requirement['positionName'],
                     'ministryName' => $this->ministryName((int) $schedule->getMinistryId()),
-                    'teamName' => $scheduleTeamId === null ? null : $this->teamName((int) $scheduleTeamId),
+                    'teamName' => $this->teamName($scheduleTeamId),
                     'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
                     'start' => $window['start'] === null ? null : $window['start']->format('Y-m-d H:i:s'),
                     'end' => $window['end'] === null ? null : $window['end']->format('Y-m-d H:i:s'),
@@ -1865,9 +1862,10 @@ class VolunteerAssignmentService
     }
 
     /**
-     * I4: the position must belong to the occurrence's schedule's ministry, and to its
-     * team when the schedule names one and the position is team-scoped. A ministry-wide
-     * position (`vpos_vtem_ID` null) is usable by every team's schedule.
+     * I4: the position must belong to the occurrence's schedule's ministry AND to the
+     * team the schedule names. D18 made both sides `NOT NULL`, so this is now one
+     * plain comparison rather than three cases — and there is no longer a position
+     * that quietly belongs to every team at once.
      *
      * @throws VolunteerSetupException
      */
@@ -1877,10 +1875,7 @@ class VolunteerAssignmentService
             throw VolunteerSetupException::invalid(gettext('That position belongs to a different ministry'));
         }
 
-        $positionTeamId = $position->getTeamId() === null ? null : (int) $position->getTeamId();
-        $scheduleTeamId = $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId();
-
-        if ($positionTeamId !== null && $scheduleTeamId !== null && $positionTeamId !== $scheduleTeamId) {
+        if ((int) $position->getTeamId() !== (int) $schedule->getTeamId()) {
             throw VolunteerSetupException::invalid(gettext('That position belongs to a different team'));
         }
     }
