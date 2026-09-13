@@ -1,33 +1,35 @@
 {
-  "CSV": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Potrebna je dvofaktorska autentifikacija. Imate %d dan za prijavu.|Potrebna je dvofaktorska autentifikacija. Imate %d dana za prijavu.|Potrebna je dvofaktorska autentifikacija. Imate %d dana za prijavu.",
-    "few": "",
-    "other": ""
+    "one": "Potrebna je dvofaktorska autentifikacija. Imate %d dan za prijavu.",
+    "few": "Potrebna je dvofaktorska autentifikacija. Imate %d dana za prijavu.",
+    "other": "Potrebna je dvofaktorska autentifikacija. Imate %d dana za prijavu."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Kopiran je {{count}} član",
+    "few": "Kopirana su {{count}} člana",
+    "other": "Kopirano je {{count}} članova"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Ovaj popis ima {{count}} primatelja — previše za mailto: poveznicu. Umjesto toga upotrijebite Kopiraj adrese.",
+    "other": "Ovaj popis ima {{count}} primatelja — previše za mailto: poveznicu. Umjesto toga upotrijebite Kopiraj adrese."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Previše primatelja za klijenta e-pošte ({{count}} > {{max}}). Umjesto toga upotrijebite Kopiraj adrese.",
+    "other": "Previše primatelja za klijenta e-pošte ({{count}} > {{max}}). Umjesto toga upotrijebite Kopiraj adrese."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Preostalo: {{count}} min",
+    "other": "Preostalo: {{count}} min"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} obitelj nije mogla biti geokodirana",
+    "few": "{{count}} obitelji nisu mogle biti geokodirane",
+    "other": "{{count}} obitelji nije moglo biti geokodirano"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…i još {{count}}. Pokrenite ponovno da vidite ostatak.",
+    "other": "…i još {{count}}. Pokrenite ponovno da vidite ostatak."
   }
 }
