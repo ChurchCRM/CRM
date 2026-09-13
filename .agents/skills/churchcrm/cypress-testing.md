@@ -2781,3 +2781,48 @@ cy.get("#volunteer-gaps-empty").should("be.visible");
 
 For the same reason, assert that a specific row **disappeared** (`[data-occurrence-id=…]`
 `.should("not.exist")`) rather than that the whole panel became empty.
+
+## A server-generated ABSOLUTE url points at port 80, not at your stack <!-- learned: 2026-09-13 -->
+
+Some endpoints return a **fully-qualified** URL built from the application's own
+configured root (`SystemURLs::getURL()` → `docker/Config.php`'s
+`http://localhost`), not from the host the request arrived on. A spec that feeds
+such a URL straight to `cy.visit()` therefore leaves its own stack:
+
+```js
+// cypress/e2e/ui/family/family.verify.spec.js
+cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200)
+  .then((response) => cy.wrap(response.body.url).as("verifyUrl"));
+// → { "url": "http://localhost/external/verify/<token>" }   ← no port
+
+cy.visit(this.verifyUrl);   // ← goes to whatever is on port 80
+```
+
+On the default `test` profile and in CI the app *is* on port 80, so this passes.
+On any **isolated stack** (`WEBSERVER_PORT=8107`, etc.) it silently navigates to
+the other container on port 80 — a different ChurchCRM with a different database
+— which answers `200` with the "Page not fond" shell and
+*"Unable to load verification info"*. The spec then fails on
+`.container-fluid` / `#confirmVerifyBtn` and looks like a broken feature.
+
+**Symptom:** `family.verify.spec.js` fails 7/7 on a freshly seeded isolated
+stack, and passes when the port is substituted by hand:
+
+```bash
+U=$(curl -s -H "x-api-key: $ADMIN_KEY" http://localhost:8107/api/family/1/verify/url \
+      | python3 -c 'import sys,json;print(json.load(sys.stdin)["url"])')
+curl -s "${U/http:\/\/localhost\//http://localhost:8107/}" | grep -o '<title>[^<]*'
+# → <title>ChurchCRM: Family Verification      ← the feature is fine
+```
+
+**Rule.** Never `cy.visit()` a URL the server generated. Take the **path** and
+let Cypress's `baseUrl` supply the origin:
+
+```js
+cy.wrap(new URL(response.body.url).pathname).as("verifyPath");
+// …
+cy.visit(this.verifyPath);   // resolves against CYPRESS_BASE_URL
+```
+
+The same applies to any absolute link read out of a page, an email body, or an
+API payload before handing it to `cy.visit()` or `cy.request()`.
