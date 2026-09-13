@@ -16,6 +16,7 @@
  */
 
 import {
+  createGroup,
   createMinistry,
   createPosition,
   createTeam,
@@ -82,7 +83,7 @@ function setStepEnabled(ids: string[], enabled: boolean): void {
 }
 
 const TEAM_CONTROLS = ["setup-team-name", "setup-team-description", "setup-team-save"];
-const POOL_CONTROLS = ["setup-pool-link"];
+const POOL_CONTROLS = ["setup-pool-link", "setup-pool-new-group"];
 const POSITION_CONTROLS = [
   "setup-position-name",
   "setup-position-description",
@@ -352,6 +353,51 @@ function wirePoolStep(): void {
   });
 }
 
+/**
+ * "Create a new Group" — Setup step 3's second button. The core groups module has
+ * no "new group" page (`/groups/editor/{id}` edits an existing one; new groups come
+ * from the dashboard's modal), so the flow asks for a name here, creates the Group
+ * through the core API and links it as the pool in one go. Adding people to it is
+ * still done on the group page (Appendix D-1), and the success toast says so.
+ */
+function wireNewGroupButton(): void {
+  byId("setup-pool-new-group")?.addEventListener("click", () => {
+    if (ministryId === 0) {
+      showStepError("setup-pool", i18next.t("Choose a ministry first"));
+      return;
+    }
+    const bootbox = window.bootbox;
+    if (!bootbox?.prompt) {
+      showStepError("setup-pool", i18next.t("The dialog helper is not available on this page"));
+      return;
+    }
+    clearStepError("setup-pool");
+    bootbox.prompt({
+      title: i18next.t("Name the new Group"),
+      callback: (result: string | null) => {
+        const name = (result ?? "").trim();
+        if (name === "") {
+          return;
+        }
+        createGroup(name)
+          .then((group) => linkPool({ type: "ministry", id: ministryId }, Number(group.Id)))
+          .then(() => {
+            notifySuccess(
+              i18next.t("Group created and linked as a volunteer pool. Add its members on the group page."),
+            );
+            return listPools(ministryId);
+          })
+          .then((pools) => {
+            renderPools(pools.pools);
+          })
+          .catch((error: unknown) => {
+            showStepError("setup-pool", errorMessage(error, i18next.t("The group could not be created")));
+          });
+      },
+    });
+  });
+}
+
 function wirePositionStep(): void {
   byId("setup-position-save")?.addEventListener("click", () => {
     const nameInput = byId<HTMLInputElement>("setup-position-name");
@@ -405,6 +451,7 @@ function init(): void {
   wireMinistryStep();
   wireTeamStep();
   wirePoolStep();
+  wireNewGroupButton();
   wirePositionStep();
 
   if (config.ministryId > 0) {

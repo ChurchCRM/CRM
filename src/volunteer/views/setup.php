@@ -180,9 +180,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <button type="button" class="btn btn-primary" id="setup-pool-link" disabled>
             <i class="fa-solid fa-link me-1"></i><?= gettext('Link a Group') ?>
           </button>
-          <a href="<?= $sRootPath ?>/groups/editor" class="btn btn-outline-secondary" id="setup-pool-new-group">
+          <button type="button" class="btn btn-outline-secondary" id="setup-pool-new-group" disabled>
             <i class="fa-solid fa-plus me-1"></i><?= gettext('Create a new Group') ?>
-          </a>
+          </button>
         </div>
 
         <div class="alert alert-danger d-none mt-3" role="alert" id="setup-pool-error">

@@ -295,7 +295,25 @@ const GROUP_ANGELS_NAME = "Angels class";
  */
 let angelsMemberCount = 0;
 
+const NEW_GROUP_9707 = `${PREFIX_9707} Setup-made pool`;
+
+/** Groups created by the "Create a new Group" button carry the spec prefix; remove them. */
+function cleanupGroups9707() {
+    // GET /api/groups/ (trailing slash, like the POST) answers a plain array of
+    // Propel toArray() rows, so the keys are phpNames: Id, Name.
+    cy.makePrivateAdminAPICall("GET", "/api/groups/", null, 200).then((resp) => {
+        for (const group of resp.body) {
+            const name = group.Name ?? "";
+            const id = group.Id;
+            if (name.startsWith(PREFIX_9707) && id) {
+                cy.makePrivateAdminAPICall("DELETE", `/api/groups/${id}`, null, [200, 404]);
+            }
+        }
+    });
+}
+
 function cleanup9707() {
+    cleanupGroups9707();
     cy.makePrivateAdminAPICall("GET", "/api/volunteer/ministries", null, 200).then(
         (resp) => {
             for (const ministry of resp.body.ministries) {
@@ -486,6 +504,25 @@ describe("Volunteer v2 pools and qualification matrix (#9707)", () => {
         // The design's wording, which is the point of the step: the Group stays
         // in charge of who belongs.
         cy.get("#setup-step-pool").should("contain", "Nobody is copied");
+    });
+
+    it("creates a new Group from the pool step and links it in one go", () => {
+        // Carl's review path: there is no "new group" page in the groups module
+        // (/groups/editor/{id} edits an existing one), so the button must create
+        // the Group through the core API and link it here, not link to a 404.
+        cy.visit(`/volunteer/setup?ministryId=${ministryId}`);
+        cy.get("#setup-pool-new-group").should("not.be.disabled").click();
+        cy.get(".bootbox").should("be.visible");
+        cy.get(".bootbox input.bootbox-input").should("be.focused").type(NEW_GROUP_9707);
+        cy.get(".bootbox .btn-primary").click();
+
+        cy.get("#setup-pool-list").should("contain", NEW_GROUP_9707);
+        cy.makePrivateAdminAPICall("GET", `/api/volunteer/ministries/${ministryId}/pools`, null, 200).then(
+            (resp) => {
+                const names = resp.body.pools.map((pool) => pool.groupName);
+                expect(names).to.include(NEW_GROUP_9707);
+            },
+        );
     });
 
     it("shows a first-class empty state when no pool is linked", () => {

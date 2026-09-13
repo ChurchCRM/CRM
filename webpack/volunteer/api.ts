@@ -135,7 +135,15 @@ function rootPath(): string {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(`${rootPath()}/api/volunteer${path}`, {
+  return requestAt(`/api/volunteer${path}`, init);
+}
+
+/**
+ * Same envelope handling as `request()`, for the few core endpoints V2 reuses
+ * outside `/api/volunteer` (today: creating a Group to use as a pool).
+ */
+async function requestAt<T>(absolutePath: string, init?: RequestInit): Promise<T> {
+  const response = await fetch(`${rootPath()}${absolutePath}`, {
     credentials: "same-origin",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
     ...init,
@@ -241,6 +249,16 @@ export function linkPool(
   const path = owner.type === "ministry" ? `/ministries/${owner.id}/pools` : `/teams/${owner.id}/pools`;
 
   return request(path, { method: "POST", body: JSON.stringify({ groupId, label }) });
+}
+
+/**
+ * Create a Group through the core groups API (`POST /api/groups/`), the same call
+ * the Groups dashboard makes — V2 builds no second group editor. Membership is
+ * managed on the group page afterwards (Appendix D-1). The core API answers with
+ * Propel's `toArray()` (phpName keys), hence `Id`.
+ */
+export function createGroup(groupName: string): Promise<{ Id: number; Name: string }> {
+  return requestAt("/api/groups/", { method: "POST", body: JSON.stringify({ groupName }) });
 }
 
 /** Unlink a pool. The Group itself is never touched (D1, Appendix D-1). */
