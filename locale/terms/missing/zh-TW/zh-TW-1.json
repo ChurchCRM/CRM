@@ -1,28 +1,28 @@
 {
-  "CSV": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "已複製 {{count}} 位成員",
+    "other": "已複製 {{count}} 位成員"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "此清單有 {{count}} 位收件人 — 對於 mailto: 連結而言太多了。請改用複製地址功能。",
+    "other": "此清單有 {{count}} 位收件人 — 對於 mailto: 連結而言太多了。請改用複製地址功能。"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "電子郵件用戶端的收件人過多 ({{count}} > {{max}})。請改用複製地址功能。",
+    "other": "電子郵件用戶端的收件人過多 ({{count}} > {{max}})。請改用複製地址功能。"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "剩餘 {{count}} 分鐘",
+    "other": "剩餘 {{count}} 分鐘"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 個家庭無法進行地理編碼",
+    "other": "{{count}} 個家庭無法進行地理編碼"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…還有 {{count}} 個。再次執行以查看其餘部分。",
+    "other": "…還有 {{count}} 個。再次執行以查看其餘部分。"
   }
 }
