@@ -18,6 +18,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
@@ -92,8 +93,26 @@ class VolunteerScheduleService
         $schedule = new VolunteerSchedule();
         $schedule->setMinistryId((int) $ministry->getId());
 
-        $this->applyScheduleFields($schedule, $fields, true);
-        $schedule->save();
+        // One transaction around the row and its staffing needs: a `requirements` array
+        // that names an unknown position must not leave a half-made schedule behind for
+        // the coordinator to discover later (§2.10).
+        $con = Propel::getWriteConnection(VolunteerOccurrenceTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+
+        try {
+            $this->applyScheduleFields($schedule, $fields, true);
+            $schedule->save();
+
+            if (array_key_exists('requirements', $fields)) {
+                $this->replaceRequirements($schedule, null, $fields['requirements']);
+            }
+
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            throw $e;
+        }
 
         $this->logger->info('Volunteer schedule created', [
             'scheduleId' => $schedule->getId(),
@@ -112,8 +131,23 @@ class VolunteerScheduleService
      */
     public function updateSchedule(VolunteerSchedule $schedule, array $fields, User $actor): VolunteerSchedule
     {
-        $this->applyScheduleFields($schedule, $fields, false);
-        $schedule->save();
+        $con = Propel::getWriteConnection(VolunteerOccurrenceTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+
+        try {
+            $this->applyScheduleFields($schedule, $fields, false);
+            $schedule->save();
+
+            if (array_key_exists('requirements', $fields)) {
+                $this->replaceRequirements($schedule, null, $fields['requirements']);
+            }
+
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            throw $e;
+        }
 
         $this->logger->info('Volunteer schedule updated', [
             'scheduleId' => $schedule->getId(),
@@ -786,6 +820,143 @@ class VolunteerScheduleService
         ]);
 
         return $requirement;
+    }
+
+    /**
+     * Make one level's staffing needs match `$rows` exactly: upsert every row named,
+     * delete every row at that level whose position is not named.
+     *
+     * This is the "set the whole plan at once" half of §2.10 that
+     * {@see self::upsertRequirement()} — a one-position upsert — cannot express: a form
+     * that lists every position with a checkbox has to be able to say "and NOT this one",
+     * and a sequence of upserts has no way to. The two live side by side; this one is
+     * built out of the other, so there is still exactly one place that writes a
+     * requirement row.
+     *
+     * Exactly one of `$schedule` / `$occurrence` is non-null, same as the single upsert.
+     * An empty `$rows` is legal and means "nothing is needed here" — the schedule form
+     * warns about it, the service does not refuse it.
+     *
+     * @param mixed $rows list of {positionId, minCount, maxCount?, notes?}
+     *
+     * @return VolunteerRequirement[] the resulting rows, in the order they were given
+     *
+     * @throws \RuntimeException
+     */
+    public function replaceRequirements(
+        ?VolunteerSchedule $schedule,
+        ?VolunteerOccurrence $occurrence,
+        mixed $rows
+    ): array {
+        if (($schedule === null) === ($occurrence === null)) {
+            throw new \RuntimeException(gettext('A staffing requirement belongs to exactly one of a schedule or an occurrence'));
+        }
+        if (!is_array($rows)) {
+            throw new \RuntimeException(gettext('The staffing needs must be a list'));
+        }
+
+        // Resolve and validate everything BEFORE the first write, so a bad row in the
+        // middle of the list cannot leave the plan half-applied even outside a
+        // transaction.
+        $wanted = [];
+        foreach ($rows as $row) {
+            if (!is_array($row) || !isset($row['positionId'])) {
+                throw new \RuntimeException(gettext('Each staffing need must name a position'));
+            }
+
+            $positionId = (int) $row['positionId'];
+            if (isset($wanted[$positionId])) {
+                throw new \RuntimeException(gettext('The same position is listed twice in the staffing needs'));
+            }
+
+            $position = VolunteerPositionQuery::create()->findPk($positionId);
+            if ($position === null) {
+                throw new \RuntimeException(gettext('Position not found'));
+            }
+
+            if (!isset($row['minCount']) || !is_numeric($row['minCount'])) {
+                throw new \RuntimeException(gettext('A minimum count is required'));
+            }
+
+            $maxCount = isset($row['maxCount']) && $row['maxCount'] !== '' && $row['maxCount'] !== null
+                ? (int) $row['maxCount']
+                : null;
+
+            $wanted[$positionId] = [
+                'position' => $position,
+                'minCount' => (int) $row['minCount'],
+                'maxCount' => $maxCount,
+                // The route sanitizer is declarative and per-field; a nested array never
+                // passes through it, so the notes of a nested row are sanitized here.
+                'notes' => isset($row['notes']) ? InputUtils::sanitizeText((string) $row['notes']) : null,
+            ];
+        }
+
+        $result = [];
+        foreach ($wanted as $entry) {
+            $result[] = $this->upsertRequirement(
+                $schedule,
+                $occurrence,
+                $entry['position'],
+                $entry['minCount'],
+                $entry['maxCount'],
+                $entry['notes']
+            );
+        }
+
+        $removed = $this->clearRequirements($schedule, $occurrence, array_keys($wanted));
+
+        $this->logger->info('Volunteer staffing needs replaced', [
+            'scheduleId' => $schedule === null ? null : (int) $schedule->getId(),
+            'occurrenceId' => $occurrence === null ? null : (int) $occurrence->getId(),
+            'kept' => count($result),
+            'removed' => $removed,
+        ]);
+
+        return $result;
+    }
+
+    /**
+     * Delete one level's requirement rows, optionally sparing the positions in `$keep`.
+     *
+     * With no `$keep` this is the "use the schedule's needs again" reset of an
+     * occurrence: remove its overrides and `getEffectiveRequirements()` falls straight
+     * back to the schedule's templates, because the merge is derived and nothing was
+     * ever copied (§2.10).
+     *
+     * @param int[] $keep position ids to leave alone
+     *
+     * @return int how many rows were deleted
+     *
+     * @throws \RuntimeException
+     */
+    public function clearRequirements(
+        ?VolunteerSchedule $schedule,
+        ?VolunteerOccurrence $occurrence,
+        array $keep = []
+    ): int {
+        if (($schedule === null) === ($occurrence === null)) {
+            throw new \RuntimeException(gettext('A staffing requirement belongs to exactly one of a schedule or an occurrence'));
+        }
+
+        $query = VolunteerRequirementQuery::create();
+        if ($schedule !== null) {
+            $query->filterByScheduleId((int) $schedule->getId())->filterByOccurrenceId(null);
+        } else {
+            $query->filterByOccurrenceId((int) $occurrence->getId())->filterByScheduleId(null);
+        }
+
+        if ($keep !== []) {
+            $query->filterByPositionId(array_map('intval', $keep), Criteria::NOT_IN);
+        }
+
+        $deleted = 0;
+        foreach ($query->find() as $requirement) {
+            $requirement->delete();
+            $deleted++;
+        }
+
+        return $deleted;
     }
 
     /**

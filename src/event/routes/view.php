@@ -151,6 +151,7 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
                     'gapCount' => 0,
                     'liveCount' => 0,
                     'requiredCount' => 0,
+                    'requirementCount' => 0,
                 ];
 
                 $volunteerOccurrences[] = [
@@ -160,6 +161,10 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
                     'liveCount'     => (int) $summaryRow['liveCount'],
                     'requiredCount' => (int) $summaryRow['requiredCount'],
                     'gapCount'      => (int) $summaryRow['gapCount'],
+                    // How many positions the plan names at all. Zero means nobody has
+                    // said what this occurrence needs, which must never render as
+                    // "Fully staffed" (§2.10).
+                    'requirementCount' => (int) ($summaryRow['requirementCount'] ?? 0),
                 ];
             }
         }

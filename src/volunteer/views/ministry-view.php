@@ -607,6 +607,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <input class="form-check-input" type="checkbox" id="schedule-form-active" checked>
           <span class="form-check-label"><?= gettext('Active') ?></span>
         </label>
+
+        <!--
+          Staffing needs (§2.10). A requirement is a separate entity from a position and
+          nothing used to create one, so a schedule had none: its occurrences needed
+          nobody, had no gaps, and reported "Fully staffed" at 0/0. The rows are rendered
+          by webpack/volunteer/staffing-needs.ts from the team's active positions; the
+          empty-plan warning is created by that module as a sibling of the list, so a
+          re-render on a team change cannot take it away.
+        -->
+        <hr class="my-3">
+        <div class="mb-2">
+          <h6 class="mb-1"><i class="fa-solid fa-list-check me-2"></i><?= gettext('Staffing needs') ?></h6>
+          <div class="form-text" id="schedule-form-needs-hint">
+            <?= gettext('How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses.') ?>
+          </div>
+        </div>
+        <div id="schedule-form-needs"></div>
+
         <div class="alert alert-danger d-none mt-3" role="alert" id="schedule-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
         </div>

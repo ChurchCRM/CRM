@@ -379,10 +379,77 @@ export interface VolunteerOccurrenceSummary {
   end: string | null;
   status: "scheduled" | "cancelled";
   requiredCount: number;
+  /**
+   * How many positions the effective plan names — NOT `requiredCount`, which adds their
+   * minimums up. A Min 0 / Max 1 requirement contributes a plan and no required body, so
+   * only this number can tell "nobody has set any staffing needs" apart from "everything
+   * that was asked for is filled". Zero must render as "No staffing needs set", never as
+   * "Fully staffed".
+   */
+  requirementCount: number;
+  /** The occurrence carries override rows, so "use the schedule's needs" has somewhere to go. */
+  requirementsOverridden: boolean;
   liveCount: number;
   gapCount: number;
   openCount: number;
   pendingCount: number;
+  /**
+   * The genuinely-short positions by name, so a list can say "1 Lead Teacher, 2 Helper"
+   * rather than a bare number nobody can act on. Sliced out of the same `getGaps()`
+   * result the totals come from.
+   */
+  gaps: VolunteerOccurrenceGap[];
+}
+
+export interface VolunteerOccurrenceGap {
+  positionId: number;
+  positionName: string | null;
+  gapCount: number;
+}
+
+/** One position the staffing-needs editor may offer, from the occurrence's own scope. */
+export interface VolunteerCandidatePosition {
+  id: number;
+  name: string;
+  teamId: number | null;
+  order: number;
+}
+
+/** One row of the staffing-needs editor as it is sent back to the server. */
+export interface VolunteerRequirementInput {
+  positionId: number;
+  minCount: number;
+  maxCount: number | null;
+}
+
+/** A requirement as `volunteerRequirementToArray()` shapes it. */
+export interface VolunteerRequirementRow {
+  id: number;
+  scheduleId: number | null;
+  occurrenceId: number | null;
+  positionId: number;
+  positionName: string | null;
+  minCount: number;
+  maxCount: number | null;
+  notes: string | null;
+  source: "schedule" | "occurrence";
+}
+
+export interface VolunteerOccurrenceRequirements {
+  occurrenceId: number;
+  scheduleId: number | null;
+  scheduleName: string | null;
+  requirements: VolunteerRequirementRow[];
+  /** At least one row is this occurrence's own override. */
+  overridden: boolean;
+  positions: VolunteerCandidatePosition[];
+  /**
+   * The positions the SCHEDULE asks for. The merge is a union (§2.10): an occurrence
+   * cannot remove a schedule's requirement by leaving it out, only outvote it — so
+   * "not this week" is an override of Min 0 / Max 0, and the editor needs this list to
+   * know which unchecked rows have to be written as one.
+   */
+  schedulePositionIds: number[];
 }
 
 export interface VolunteerStaffing {
@@ -429,6 +496,37 @@ export interface VolunteerSwap {
   decidedDate: string | null;
   decidedByPersonId: number | null;
   comment: string | null;
+}
+
+/**
+ * Everything the "Edit staffing needs" modal draws: the EFFECTIVE requirements (the
+ * schedule's, with this occurrence's overrides merged over them) and the positions this
+ * occurrence could name, both under the occurrence's own scope check.
+ */
+export function getOccurrenceRequirements(occurrenceId: number): Promise<VolunteerOccurrenceRequirements> {
+  return request(`/occurrences/${occurrenceId}/requirements`);
+}
+
+/** Write this occurrence's override rows to match `requirements` exactly. */
+export function replaceOccurrenceRequirements(
+  occurrenceId: number,
+  requirements: VolunteerRequirementInput[],
+): Promise<{ requirements: VolunteerRequirementRow[]; overridden: boolean }> {
+  return request(`/occurrences/${occurrenceId}/requirements/replace`, {
+    method: "POST",
+    body: JSON.stringify({ requirements }),
+  });
+}
+
+/**
+ * Drop the overrides so the occurrence follows its schedule again. Nothing was ever
+ * copied at generation time — the merge is derived on every read — so this is the whole
+ * of the reset.
+ */
+export function clearOccurrenceRequirements(
+  occurrenceId: number,
+): Promise<{ requirements: VolunteerRequirementRow[]; overridden: boolean }> {
+  return request(`/occurrences/${occurrenceId}/requirements`, { method: "DELETE" });
 }
 
 export function getStaffing(occurrenceId: number): Promise<VolunteerStaffing> {
@@ -705,6 +803,11 @@ export interface VolunteerSchedule {
 
 export function listSchedules(ministryId: number): Promise<{ schedules: VolunteerSchedule[] }> {
   return request(`/ministries/${ministryId}/schedules`);
+}
+
+/** A schedule's template staffing needs — what the edit form pre-fills its rows from. */
+export function listScheduleRequirements(scheduleId: number): Promise<{ requirements: VolunteerRequirementRow[] }> {
+  return request(`/schedules/${scheduleId}/requirements`);
 }
 
 export function createSchedule(

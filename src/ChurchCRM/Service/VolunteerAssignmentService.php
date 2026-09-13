@@ -951,7 +951,21 @@ class VolunteerAssignmentService
         $result = [];
         foreach ($occurrenceIds as $occurrenceId) {
             $requirements = [];
-            $totals = ['liveCount' => 0, 'gapCount' => 0, 'openCount' => 0, 'pendingCount' => 0, 'requiredCount' => 0];
+            // `requirementCount` is how many positions this occurrence can actually
+            // take someone in — a requirement whose capacity (`max ?? min`) is zero is a
+            // deliberate "not this week", not a slot. It is NOT `requiredCount`, which
+            // adds the minimums up: a Min 0 / Max 1 requirement is a real slot with no
+            // required body. Only this number can tell "nobody has set any staffing
+            // needs" apart from "everything asked for is filled", which is exactly the
+            // bug where an unplanned occurrence reported itself fully staffed at 0/0.
+            $totals = [
+                'liveCount' => 0,
+                'gapCount' => 0,
+                'openCount' => 0,
+                'pendingCount' => 0,
+                'requiredCount' => 0,
+                'requirementCount' => 0,
+            ];
 
             foreach ($this->schedules->getEffectiveRequirements($occurrenceId) as $positionId => $requirement) {
                 $positionId = (int) $positionId;
@@ -986,6 +1000,9 @@ class VolunteerAssignmentService
                 $totals['openCount'] += max(0, $capacity - $live);
                 $totals['pendingCount'] += $pending;
                 $totals['requiredCount'] += $min;
+                if ($capacity > 0) {
+                    $totals['requirementCount']++;
+                }
             }
 
             $result[$occurrenceId] = ['requirements' => $requirements] + $totals;

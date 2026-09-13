@@ -361,6 +361,12 @@ function initDataTable(tableId: string): void {
  * come from the server's single gap implementation and nothing is re-derived here.
  */
 function staffedBadge(occurrence: VolunteerDashboardOccurrence): string {
+  // An occurrence whose plan is EMPTY has no gaps only because nobody ever said what it
+  // needs. Green there is a lie — and the one this change exists to stop telling (§2.10).
+  if (occurrence.requirementCount === 0) {
+    return `<span class="badge bg-secondary-lt text-secondary">${i18next.t("No staffing needs set")}</span>`;
+  }
+
   const label = `${occurrence.liveCount} / ${occurrence.requiredCount}`;
 
   if (occurrence.gapCount > 0) {
