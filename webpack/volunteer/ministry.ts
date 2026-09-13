@@ -63,6 +63,7 @@ import {
   type VolunteerSchedule,
   type VolunteerTeam,
 } from "./api";
+import { initVolunteerScopes } from "./scopes";
 
 interface MinistryConfig {
   ministryId: number;
@@ -1476,6 +1477,9 @@ function init(): void {
 
   wire();
   void load();
+  // The coordinator/team-leader card (#9706) owns its own markup, state and
+  // requests; this is the whole of its integration with the page.
+  initVolunteerScopes(config);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

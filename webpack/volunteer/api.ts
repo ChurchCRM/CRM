@@ -322,6 +322,74 @@ export function notifySuccess(message: string): void {
   window.CRM?.notify?.(message, { type: "success" });
 }
 
+/** Toast helper for "nothing broke, but nothing happened either" — an existing grant, say. */
+export function notifyWarning(message: string): void {
+  window.CRM?.notify?.(message, { type: "warning" });
+}
+
+// ─── Coordinator and team-leader scope (#9706, design §2.15 / §4.4) ──────────
+
+/**
+ * One scope grant as `volunteerScopeToArray()` shapes it.
+ *
+ * `scopeName` is null when the polymorphic target has been deleted: the column
+ * carries no foreign key (§2.15), so an orphan row is possible and a listing
+ * must survive one.
+ */
+export interface VolunteerScopeGrant {
+  id: number;
+  personId: number;
+  personName: string;
+  scopeType: "ministry" | "team";
+  scopeId: number;
+  scopeName: string | null;
+  grantedDate: string | null;
+  grantedByPersonId: number | null;
+}
+
+/**
+ * Grants filtered by person, by ministry or by team.
+ *
+ * `ministryId` and `teamId` are mutually exclusive by design — they filter one
+ * polymorphic column two ways, and the API answers a request carrying both with
+ * an empty list rather than a silent AND.
+ */
+export function listScopes(
+  filter: { personId?: number; ministryId?: number; teamId?: number } = {},
+): Promise<{ scopes: VolunteerScopeGrant[] }> {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(filter)) {
+    if (value !== undefined) {
+      params.set(key, String(value));
+    }
+  }
+  const query = params.toString();
+
+  return request(`/scopes${query === "" ? "" : `?${query}`}`);
+}
+
+/**
+ * Grant coordinator or team-leader authority. Manager-only, and idempotent by
+ * the `vscp_person_scope_uidx` unique key: a repeat grant answers 200 with the
+ * same row rather than 409 (§6.6). The status is not visible through this
+ * client, so a caller that needs to tell "granted" from "already there" compares
+ * against the list it is holding.
+ */
+export function grantScope(
+  personId: number,
+  scopeType: "ministry" | "team",
+  scopeId: number,
+): Promise<{ scope: VolunteerScopeGrant }> {
+  return request("/scopes", {
+    method: "POST",
+    body: JSON.stringify({ personId, scopeType, scopeId }),
+  });
+}
+
+export function revokeScope(scopeId: number): Promise<{ success: boolean }> {
+  return request(`/scopes/${scopeId}`, { method: "DELETE" });
+}
+
 // ─── Assignments, gaps and swaps (#9709) ─────────────────────────────────────
 
 /** One assignment as `volunteerAssignmentToArray()` shapes it. */

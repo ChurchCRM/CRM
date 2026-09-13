@@ -252,6 +252,12 @@ function wireMinistryStep(): void {
     createMinistry(name, descriptionInput?.value.trim() ?? "")
       .then((result) => {
         notifySuccess(i18next.t("Ministry created"));
+        // Creating a ministry is manager-only and grants the creator no scope
+        // row (§4.4), so the note says where to grant one to somebody ELSE. It
+        // is shown only on this path — picking an existing ministry says
+        // nothing about who may run it.
+        show(byId("setup-ministry-scope-note"), true);
+
         return adoptMinistry(result.ministry.id, result.ministry.name);
       })
       .catch((error: unknown) => {
@@ -275,6 +281,7 @@ function wireMinistryStep(): void {
   byId("setup-ministry-edit")?.addEventListener("click", () => {
     ministryId = 0;
     ministryName = "";
+    show(byId("setup-ministry-scope-note"), false);
     renderMinistrySummary();
     setStepEnabled(TEAM_CONTROLS, false);
     setStepEnabled(POOL_CONTROLS, false);
