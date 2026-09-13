@@ -1,6 +1,6 @@
 ---
 name: icon-management
-description: Standard patterns for Font Awesome icons across ChurchCRM. Single source of truth for icon usage, free tier compliance, and common substitutions.
+description: Standard patterns for Font Awesome icons across ChurchCRM. Use for icon selection, free-tier compliance, markup, accessibility, and validation.
 tags: ["frontend", "icons", "font-awesome", "ui"]
 learned: "2026-08-15"
 ---
