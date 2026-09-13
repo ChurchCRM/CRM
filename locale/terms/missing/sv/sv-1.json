@@ -1,42 +1,42 @@
 {
-  "Data": "",
-  "Auto": "",
-  "CSV": "",
+  "Data": "Data",
+  "Auto": "Auto",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "E-post skickad till %d familj.|E-post skickad till %d familjer.",
-    "other": ""
+    "one": "E-post skickad till %d familj.",
+    "other": "E-post skickad till %d familjer."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF skickades via e-post till %d familj.|PDF skickades via e-post till %d familjer.",
-    "other": ""
+    "one": "PDF skickades via e-post till %d familj.",
+    "other": "PDF skickades via e-post till %d familjer."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Tvåfaktorsautentisering krävs. Du har %d dag på dig att registrera dig.|Tvåfaktorsautentisering krävs. Du har %d dagar på dig att registrera dig.",
-    "other": ""
+    "one": "Tvåfaktorsautentisering krävs. Du har %d dag på dig att registrera dig.",
+    "other": "Tvåfaktorsautentisering krävs. Du har %d dagar på dig att registrera dig."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Kopierade {{count}} medlem",
+    "other": "Kopierade {{count}} medlemmar"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Den här listan har {{count}} mottagare — för många för en mailto:-länk. Använd Kopiera adresser istället.",
+    "other": "Den här listan har {{count}} mottagare — för många för en mailto:-länk. Använd Kopiera adresser istället."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "För många mottagare för e-postklienten ({{count}} > {{max}}). Använd Kopiera adresser istället.",
+    "other": "För många mottagare för e-postklienten ({{count}} > {{max}}). Använd Kopiera adresser istället."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minut kvar",
+    "other": "{{count}} minuter kvar"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familj kunde inte geokodas",
+    "other": "{{count}} familjer kunde inte geokodas"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…och {{count}} till. Kör igen för att se resten.",
+    "other": "…och {{count}} till. Kör igen för att se resten."
   }
 }
