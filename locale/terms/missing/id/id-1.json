@@ -1,29 +1,29 @@
 {
-  "Data": "",
-  "CSV": "",
-  "OFX": "",
+  "Data": "Data",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} anggota disalin",
+    "other": "{{count}} anggota disalin"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat sebagai gantinya.",
+    "other": "Daftar ini memiliki {{count}} penerima — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat sebagai gantinya."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat sebagai gantinya.",
+    "other": "Terlalu banyak penerima untuk klien email ({{count}} > {{max}}). Gunakan Salin Alamat sebagai gantinya."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} menit tersisa",
+    "other": "{{count}} menit tersisa"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} keluarga tidak dapat digeokode",
+    "other": "{{count}} keluarga tidak dapat digeokode"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…dan {{count}} lainnya. Jalankan lagi untuk melihat sisanya.",
+    "other": "…dan {{count}} lainnya. Jalankan lagi untuk melihat sisanya."
   }
 }
