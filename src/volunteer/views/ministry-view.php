@@ -390,6 +390,171 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<?php if ($bIsManager): ?>
+<!--
+  Coordinators and team leaders — the screen for #9706's scope API
+  (design §2.15, §4.4; the API is `/api/volunteer/scopes`).
+
+  A SELF-CONTAINED block on purpose: everything it needs lives between this
+  comment and the closing endif below, and its behaviour lives in its own
+  bundle module (webpack/volunteer/scopes.ts), which ministry.ts only imports
+  and initialises. Nothing above has to move to add or remove it.
+
+  Deliberately NOT a tab. Granting authority is a rare, deliberate act — it is
+  not one of the six things a coordinator does every week — and a card below the
+  tab strip keeps it out of the working surface while leaving it one scroll
+  away.
+
+  Rendered only for a global volunteer manager, because granting authority is
+  the one thing §3.2 says a coordinator must not be able to do for themselves.
+  `$bIsManager` is the same `isGlobalManager()` answer the API will give; the
+  API is still the decision-maker, and scopes.ts hides the card if a request
+  ever comes back 403.
+-->
+<div class="card mt-3 d-none" id="volunteer-scope-panel">
+  <div class="card-header d-flex flex-wrap gap-2 align-items-center justify-content-between">
+    <h3 class="card-title mb-0">
+      <i class="fa-solid fa-user-shield me-2"></i><?= gettext('Coordinators and team leaders') ?>
+    </h3>
+    <div class="d-flex flex-wrap gap-2">
+      <button type="button" class="btn btn-sm btn-primary" id="scope-add-coordinator" disabled>
+        <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add coordinator') ?>
+      </button>
+      <button type="button" class="btn btn-sm btn-outline-primary" id="scope-add-leader" disabled>
+        <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add team leader') ?>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <p class="text-body-secondary" id="volunteer-scope-help">
+      <i class="fa-solid fa-circle-info me-1"></i>
+      <?= gettext('A coordinator runs the whole ministry — its teams, positions, schedules and every assignment in it. A team leader runs one team and nothing else.') ?>
+    </p>
+    <p class="text-body-secondary small" id="volunteer-scope-login-note">
+      <?= gettext('Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account.') ?>
+    </p>
+
+    <div class="volunteer-loading text-center py-4" id="scopes-loading">
+      <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+      <?= gettext('Loading') ?>
+    </div>
+    <div class="alert alert-danger d-none" role="alert" id="scopes-error">
+      <i class="fa-solid fa-circle-exclamation me-1"></i>
+      <span class="volunteer-error-text"></span>
+      <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry"><?= gettext('Retry') ?></button>
+    </div>
+
+    <div class="d-none" id="scopes-content">
+      <h4 class="mb-2"><i class="fa-solid fa-user-tie me-2"></i><?= gettext('Ministry coordinators') ?></h4>
+      <div class="empty d-none" id="scopes-coordinators-empty">
+        <div class="empty-icon"><i class="fa-solid fa-user-tie fa-2x text-muted"></i></div>
+        <p class="empty-title"><?= gettext('No coordinators yet') ?></p>
+        <p class="empty-subtitle text-body-secondary">
+          <?= gettext('A volunteer manager can run this ministry without a grant. Add a coordinator to let someone else run it without giving them every other ministry as well.') ?>
+        </p>
+      </div>
+      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="scopes-coordinators-wrapper">
+        <table class="table table-hover table-vcenter" id="volunteerCoordinatorsTable">
+          <thead>
+            <tr>
+              <th><?= gettext('Person') ?></th>
+              <th><?= gettext('Granted') ?></th>
+              <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <hr class="my-4">
+
+      <h4 class="mb-2"><i class="fa-solid fa-people-group me-2"></i><?= gettext('Team leaders') ?></h4>
+      <div class="empty d-none" id="scopes-teams-empty">
+        <div class="empty-icon"><i class="fa-solid fa-people-group fa-2x text-muted"></i></div>
+        <p class="empty-title"><?= gettext('No teams yet') ?></p>
+        <p class="empty-subtitle text-body-secondary">
+          <?= gettext('Add a team on the Teams & Pools tab, then someone can be made its leader.') ?>
+        </p>
+      </div>
+      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="scopes-teams-wrapper">
+        <table class="table table-hover table-vcenter" id="volunteerTeamLeadersTable">
+          <thead>
+            <tr>
+              <th><?= gettext('Person') ?></th>
+              <th><?= gettext('Granted') ?></th>
+              <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add a ministry coordinator (#9706) -->
+<div class="modal fade" id="scopeCoordinatorModal" tabindex="-1" aria-hidden="true" aria-labelledby="scopeCoordinatorModalTitle">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="scopeCoordinatorModalTitle"><?= gettext('Add coordinator') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-body-secondary">
+          <?= gettext('A coordinator can manage everything in this ministry, including making changes a volunteer manager would otherwise have to make.') ?>
+        </p>
+        <div class="mb-3">
+          <label class="form-label" for="scope-coordinator-person"><?= gettext('Person') ?></label>
+          <select class="form-select person-search" id="scope-coordinator-person"
+                  data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
+        </div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="scope-coordinator-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" class="btn btn-primary" id="scope-coordinator-save"><?= gettext('Add coordinator') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add a team leader (#9706) -->
+<div class="modal fade" id="scopeLeaderModal" tabindex="-1" aria-hidden="true" aria-labelledby="scopeLeaderModalTitle">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="scopeLeaderModalTitle"><?= gettext('Add team leader') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-body-secondary">
+          <?= gettext('A team leader can manage their own team — its pools, its positions and who serves in them — and nothing else in the ministry.') ?>
+        </p>
+        <div class="mb-3">
+          <label class="form-label" for="scope-leader-team"><?= gettext('Team') ?></label>
+          <select class="form-select" id="scope-leader-team"></select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="scope-leader-person"><?= gettext('Person') ?></label>
+          <select class="form-select person-search" id="scope-leader-person"
+                  data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
+        </div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="scope-leader-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" class="btn btn-primary" id="scope-leader-save"><?= gettext('Add team leader') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endif; ?>
+
 <!-- Team editor -->
 <div class="modal fade" id="teamModal" tabindex="-1" aria-hidden="true" aria-labelledby="teamModalTitle">
   <div class="modal-dialog modal-dialog-centered" role="document">

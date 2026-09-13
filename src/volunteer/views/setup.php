@@ -50,6 +50,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </button>
         </div>
 
+        <!--
+          Who may run this ministry (#9706, design §4.4).
+
+          Creating a ministry grants the creator NO scope row —
+          VolunteerSetupService::createMinistry() refuses anyone who is not
+          already a global volunteer manager, and a manager needs no grant to
+          manage anything. So the truthful line here is not "you are its
+          coordinator": it is that the grant is for somebody else, and where to
+          make it. Shown by webpack/volunteer/setup.ts only after a ministry is
+          created in this step, never after picking an existing one.
+        -->
+        <p class="text-body-secondary small mt-2 d-none" id="setup-ministry-scope-note">
+          <i class="fa-solid fa-user-shield me-1"></i>
+          <?= gettext('As a volunteer manager you can run this ministry already — no coordinator grant is needed for you. To let someone else run it, add a coordinator or a team leader on the ministry page.') ?>
+        </p>
+
         <div class="setup-step-form">
           <?php if ($bIsManager): ?>
             <p class="text-body-secondary">

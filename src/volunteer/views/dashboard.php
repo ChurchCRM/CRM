@@ -234,6 +234,20 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
               <?php endif; ?>
             </p>
           </div>
+          <?php if ($bIsManager): ?>
+            <!--
+              Where authority is granted (#9706, design §4.4). The card above
+              lists the scopes the VIEWER holds; a manager also needs to know
+              where other people's are made, and that is the ministry page, one
+              ministry at a time. No link to a grants screen, because there
+              isn't one and shouldn't be: a grant only means anything next to
+              the ministry it is about.
+            -->
+            <p class="text-body-secondary small mt-3 mb-0" id="volunteer-scope-grant-hint">
+              <i class="fa-solid fa-user-shield me-1"></i>
+              <?= gettext('Open a ministry to make someone its coordinator, or a leader of one of its teams.') ?>
+            </p>
+          <?php endif; ?>
         </div>
       </div>
 
