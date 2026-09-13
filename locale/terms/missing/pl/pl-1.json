@@ -1,43 +1,43 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "Wysłano e-mail do %d rodziny.|Wysłano e-mail do %d rodzin.|Wysłano e-mail do %d rodzin.",
-    "few": "",
-    "other": ""
+    "one": "Wysłano e-mail do %d rodziny.",
+    "few": "Wysłano e-mail do %d rodzin.",
+    "other": "Wysłano e-mail do %d rodzin."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "Plik PDF został wysłany e-mailem do %d rodziny.|Plik PDF został wysłany e-mailem do %d rodzin.|Plik PDF został wysłany e-mailem do %d rodzin.",
-    "few": "",
-    "other": ""
+    "one": "Plik PDF został wysłany e-mailem do %d rodziny.",
+    "few": "Plik PDF został wysłany e-mailem do %d rodzin.",
+    "other": "Plik PDF został wysłany e-mailem do %d rodzin."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dzień na rejestrację.|Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dni na rejestrację.|Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dni na rejestrację.",
-    "few": "",
-    "other": ""
+    "one": "Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dzień na rejestrację.",
+    "few": "Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dni na rejestrację.",
+    "other": "Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dni na rejestrację."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Skopiowano {{count}} członka",
+    "other": "Skopiowano {{count}} członków"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Ta lista zawiera {{count}} odbiorcę — zbyt wielu dla linku mailto. Użyj opcji Kopiuj adresy.",
+    "other": "Ta lista zawiera {{count}} odbiorców — zbyt wielu dla linku mailto. Użyj opcji Kopiuj adresy."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Zbyt wielu odbiorców dla klienta poczty e-mail ({{count}} > {{max}}). Użyj opcji Kopiuj adresy.",
+    "other": "Zbyt wielu odbiorców dla klienta poczty e-mail ({{count}} > {{max}}). Użyj opcji Kopiuj adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Pozostała {{count}} minuta",
+    "other": "Pozostało {{count}} minut"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} rodzina nie mogła zostać zgeokodowana",
+    "other": "{{count}} rodzin nie mogło zostać zgeokodowanych"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…i {{count}} więcej. Uruchom ponownie, aby zobaczyć resztę.",
+    "other": "…i {{count}} więcej. Uruchom ponownie, aby zobaczyć resztę."
   }
 }
