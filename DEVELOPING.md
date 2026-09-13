@@ -2,6 +2,34 @@
 
 This guide is the starting point for contributors changing the ChurchCRM core application. User and administrator instructions belong on [docs.churchcrm.io](https://docs.churchcrm.io).
 
+## Prerequisites
+
+Before running any ChurchCRM build, test, or Docker command, install:
+
+- PHP 8.4 or newer and Composer
+- Node.js 24, which includes npm
+- Docker Desktop or Docker Engine with Docker Compose v2
+- Git and Git LFS
+
+Verify the tools before continuing:
+
+```bash
+php --version
+composer --version
+node --version
+npm --version
+docker --version
+docker compose version
+```
+
+After cloning the repository, install the Node.js dependencies before using the npm scripts:
+
+```bash
+npm install
+```
+
+Codespaces and Dev Containers install these tools and dependencies automatically. For a local setup, complete these steps yourself before starting the application.
+
 ## Recommended setup
 
 GitHub Codespaces and VS Code Dev Containers provide the supported development toolchain: PHP 8.4, Node.js 24, Composer, Docker, and the required extensions.
