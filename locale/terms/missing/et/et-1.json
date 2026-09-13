@@ -1,32 +1,32 @@
 {
-  "CSV": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päev.|Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päeva.",
-    "other": ""
+    "one": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päev.",
+    "other": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päeva."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Kopeeriti {{count}} liige",
+    "other": "Kopeeriti {{count}} liiget"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Selles loendis on {{count}} saaja — liiga palju mailto: lingi jaoks. Kasutage selle asemel funktsiooni „Kopeeri aadressid“.",
+    "other": "Selles loendis on {{count}} saajat — liiga palju mailto: lingi jaoks. Kasutage selle asemel funktsiooni „Kopeeri aadressid“."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Liiga palju saajaid e-posti kliendi jaoks ({{count}} > {{max}}). Kasutage selle asemel funktsiooni „Kopeeri aadressid“.",
+    "other": "Liiga palju saajaid e-posti kliendi jaoks ({{count}} > {{max}}). Kasutage selle asemel funktsiooni „Kopeeri aadressid“."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minut jäänud",
+    "other": "{{count}} minutit jäänud"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} pere ei õnnestunud geokodeerida",
+    "other": "{{count}} peret ei õnnestunud geokodeerida"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…ja veel {{count}}. Käivitage uuesti, et näha ülejäänuid.",
+    "other": "…ja veel {{count}}. Käivitage uuesti, et näha ülejäänuid."
   }
 }
