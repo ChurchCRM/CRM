@@ -8,9 +8,12 @@ use ChurchCRM\Utils\InputUtils;
  *
  * The same card shape as S5 over `GET /api/volunteer/me/opportunities`, each with a
  * single **Sign up** button. The list is server-side eligibility: it only ever contains
- * slots this person is qualified for, in a pool they belong to, with capacity left — so
- * the button is never a trap. The server re-validates both at signup anyway (§3.3.3),
- * because UI filtering is not authorization (D5).
+ * slots this person is qualified for, with capacity left — so the button is never a
+ * trap. The server re-validates at signup anyway (§3.3.3), because UI filtering is not
+ * authorization (D5). D19 dropped the pool test from both sides.
+ *
+ * Above it, D19's "Ministries looking for help": the ministries advertising for
+ * volunteers, each with one **I'd like to help** button.
  *
  * An empty list is a **first-class state, not an error** (§5.6): a Tabler `.empty`
  * block saying nothing is open right now, not a spinner that never resolves and not an
@@ -66,6 +69,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Back to my schedule') ?>
       </a>
     </div>
+  </div>
+
+  <!--
+    Ministries looking for help (D19, design §5.6).
+
+    ABOVE the shift list on purpose: a volunteer with no qualifications yet sees an
+    empty shift list, and this is the section that gives them somewhere to go. The
+    whole block is hidden by opportunities.ts when no ministry is advertising — a
+    heading over nothing is worse than silence.
+  -->
+  <div class="d-none" id="help-wanted-section">
+    <h3 class="h4 mb-2"><?= gettext('Ministries looking for help') ?></h3>
+    <p class="text-body-secondary">
+      <?= gettext('These ministries would like more people. Tell them you are interested and someone will be in touch.') ?>
+    </p>
+    <div id="help-wanted-content"></div>
+    <hr class="my-4">
   </div>
 
   <div class="volunteer-loading text-center py-4" id="opportunities-loading">

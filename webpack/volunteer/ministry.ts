@@ -32,6 +32,7 @@
 
 import { attachToModal } from "../common/person-select";
 import {
+  addPoolMember,
   createPosition,
   createSchedule,
   createTeam,
@@ -43,7 +44,6 @@ import {
   getMinistry,
   getQualificationMatrix,
   grantQualification,
-  linkPool,
   listOccurrences,
   listScheduleRequirements,
   listSchedules,
@@ -53,14 +53,14 @@ import {
   positionLabel,
   type QualificationMatrix,
   qualifyCart,
+  removePoolMember,
   revokeQualification,
-  unlinkPool,
+  updateMinistry,
   updatePosition,
   updateSchedule,
   updateTeam,
   type VolunteerCandidatePosition,
   type VolunteerOccurrenceSummary,
-  type VolunteerPool,
   type VolunteerPoolPerson,
   type VolunteerPosition,
   type VolunteerRequirementRow,
@@ -115,8 +115,6 @@ let scheduleRequirements: VolunteerRequirementRow[] = [];
 /** Which record a modal is editing; 0 means "new". */
 let editingTeamId = 0;
 let editingPositionId = 0;
-/** The pool owner the group picker is about to link to. */
-let poolOwner: { type: "ministry" | "team"; id: number } = { type: "ministry", id: 0 };
 
 function byId<T extends HTMLElement>(id: string): T | null {
   return document.getElementById(id) as T | null;
@@ -239,78 +237,84 @@ function renderOverview(data: MinistryDetail): void {
 }
 
 /**
- * The pool list inside the Teams & Pools tab (#9707).
+ * The volunteer pool panel, below the teams table (#9707, rewritten by D19).
  *
- * Rendered from the same cached ministry document as the teams table, so
- * opening the tab is still one fetch. Membership is READ-ONLY here: the count
- * is a link into `/groups/view/{id}`, because every `/api/groups` write needs
- * the global Manage Groups flag — and the ORM hooks demand it independently, so
- * proxying the edit would only fail deeper in (design §4.6, Appendix D-1).
+ * Rendered from the same cached ministry document as the teams table, so opening
+ * the tab is still ONE fetch. Membership is editable here now: the ministry owns
+ * its Group, and `group_grp.grp_ministry_id` is what lets a coordinator without
+ * the global Manage Groups flag write it (§4.6 as amended by D19). The Groups
+ * module is still a perfectly good second door — this panel is the near one.
  */
-function renderPools(data: MinistryDetail): void {
-  const body = document.querySelector("#volunteerPoolsTable tbody");
+function renderPool(data: MinistryDetail): void {
+  const body = document.querySelector("#volunteerPoolTable tbody");
   if (!body) {
     return;
   }
 
-  const pools = data.pools ?? [];
-  destroyDataTable("volunteerPoolsTable");
+  const members = data.pool ?? [];
+  destroyDataTable("volunteerPoolTable");
 
-  if (pools.length === 0) {
+  const root = window.CRM?.root ?? "";
+  const groupLink = byId<HTMLAnchorElement>("pool-group-link");
+  if (groupLink) {
+    groupLink.href = data.poolGroupId ? `${root}/groups/view/${data.poolGroupId}` : "#";
+    groupLink.textContent = data.poolGroupName ?? "";
+    show(groupLink, Boolean(data.poolGroupId));
+  }
+
+  if (members.length === 0) {
     body.innerHTML = "";
-    show(byId("pools-empty"), true);
-    show(byId("pools-table-wrapper"), false);
+    show(byId("pool-empty"), true);
+    show(byId("pool-table-wrapper"), false);
     return;
   }
 
-  const root = window.CRM?.root ?? "";
-
-  body.innerHTML = pools
-    .map((pool: VolunteerPool) => {
+  body.innerHTML = members
+    .map((person: VolunteerPoolPerson) => {
       const menu = actionMenu([
         {
           type: "link",
-          icon: "fa-solid fa-users",
-          label: i18next.t("Open the group"),
-          href: `${root}/groups/view/${pool.groupId}`,
+          icon: "fa-solid fa-user",
+          label: i18next.t("Open the record"),
+          href: `${root}/person/${person.personId}`,
         },
         { type: "divider" },
         {
           type: "button",
-          icon: "fa-solid fa-link-slash",
-          // "Unlink", never "Delete": the Group and everyone in it survive.
-          label: i18next.t("Unlink"),
-          className: "volunteer-pool-unlink",
+          icon: "fa-solid fa-user-minus",
+          // "Remove from the pool", never "Delete": the person and their
+          // qualifications both survive.
+          label: i18next.t("Remove from the pool"),
+          className: "volunteer-pool-remove",
           danger: true,
-          data: { "pool-id": pool.id, "group-name": pool.groupName ?? "" },
+          data: { "person-id": person.personId, "person-name": person.displayName },
         },
       ]);
 
-      const serves =
-        pool.ownerType === "ministry"
-          ? `<span class="text-body-secondary">${i18next.t("Whole ministry")}</span>`
-          : escapeHtml(pool.ownerName ?? "");
+      const qualified =
+        person.qualifications.length > 0
+          ? `<span class="badge bg-green-lt text-green">${i18next.t("{{count}} qualifications", {
+              count: person.qualifications.length,
+            })}</span>`
+          : `<span class="badge bg-secondary-lt">${i18next.t("Not qualified yet")}</span>`;
 
       return `<tr>
-          <td class="fw-bold">${escapeHtml(pool.groupName ?? "")}</td>
-          <td>${serves}</td>
-          <td>${pool.label ? escapeHtml(pool.label) : '<span class="text-body-secondary">—</span>'}</td>
-          <td class="text-center">
-            <a href="${root}/groups/view/${pool.groupId}" class="badge bg-blue-lt text-decoration-none"
-               title="${i18next.t("Membership is managed in Groups")}">${pool.memberCount}</a>
+          <td class="fw-bold">
+            <a href="${root}/person/${person.personId}">${escapeHtml(person.displayName)}</a>
           </td>
+          <td>${qualified}</td>
           <td class="w-1">${menu}</td>
         </tr>`;
     })
     .join("");
 
-  show(byId("pools-empty"), false);
-  show(byId("pools-table-wrapper"), true);
-  initDataTable("volunteerPoolsTable");
+  show(byId("pool-empty"), false);
+  show(byId("pool-table-wrapper"), true);
+  initDataTable("volunteerPoolTable");
 }
 
 function renderTeams(data: MinistryDetail): void {
-  renderPools(data);
+  renderPool(data);
 
   const body = document.querySelector("#volunteerTeamsTable tbody");
   if (!body) {
@@ -333,13 +337,6 @@ function renderTeams(data: MinistryDetail): void {
           icon: "fa-solid fa-pencil",
           label: i18next.t("Edit"),
           className: "volunteer-team-edit",
-          data: { "team-id": team.id },
-        },
-        {
-          type: "button",
-          icon: "fa-solid fa-link",
-          label: i18next.t("Link a Group"),
-          className: "volunteer-team-link-pool",
           data: { "team-id": team.id },
         },
         { type: "divider" },
@@ -492,8 +489,23 @@ function renderMatrix(data: QualificationMatrix): void {
         })
         .join("");
 
+      // D19: the rows are the pool UNION the qualified, so a row can be here for
+      // either reason and the screen has to say which. A pool member with no ticks
+      // yet is the one a coordinator opened this screen to deal with; a qualified
+      // non-member was taken out of the group and is still assignable.
+      const hint =
+        person.inPool && person.qualifications.length === 0
+          ? ` <span class="badge bg-secondary-lt text-secondary volunteer-pool-hint">${escapeHtml(
+              i18next.t("In the pool, not qualified yet"),
+            )}</span>`
+          : !person.inPool
+            ? ` <span class="badge bg-secondary-lt text-secondary volunteer-outside-pool-hint">${escapeHtml(
+                i18next.t("Not in the pool"),
+              )}</span>`
+            : "";
+
       return `<tr data-person-name="${window.CRM?.escapeAttribute?.(person.displayName.toLowerCase()) ?? ""}">
-          <td class="fw-bold">${escapeHtml(person.displayName)}</td>
+          <td class="fw-bold">${escapeHtml(person.displayName)}${hint}</td>
           ${cells}
         </tr>`;
     })
@@ -1019,6 +1031,7 @@ const activated = new Set<PaneName>(["overview"]);
 
 async function load(force = false): Promise<void> {
   if (detail !== null && !force) {
+    renderHelpWanted(detail);
     for (const pane of activated) {
       TAB_RENDERERS[pane](detail);
     }
@@ -1031,6 +1044,7 @@ async function load(force = false): Promise<void> {
 
   try {
     detail = await getMinistry(ministryId);
+    renderHelpWanted(detail);
     for (const pane of activated) {
       TAB_RENDERERS[pane](detail);
     }
@@ -1226,39 +1240,53 @@ function confirmDelete(title: string, message: string, onConfirm: () => void): v
   });
 }
 
-// ─── Pools (#9707) ───────────────────────────────────────────────────────────
+// ─── Help wanted (D19, design §5.6) ──────────────────────────────────────────
 
 /**
- * Link a Group as a pool, through `window.CRM.groups.promptSelection()` (G4) —
- * the picker the Groups module already ships, which owns the modal lifecycle,
- * the TomSelect teardown and its own i18n. V2 builds no second group chooser.
+ * Fill the "Help wanted" card from the ministry document.
+ *
+ * The card is NOT inside a tab, so it is painted on every load rather than on tab
+ * activation — and it is filled from the same cached document as the tabs, so it
+ * costs no extra request.
  */
-function openGroupPicker(owner: { type: "ministry" | "team"; id: number }): void {
-  const groups = window.CRM?.groups;
-  if (!groups?.promptSelection) {
-    notifyError(i18next.t("The group picker is not available on this page"));
-    return;
+function renderHelpWanted(data: MinistryDetail): void {
+  const toggle = byId<HTMLInputElement>("help-wanted-toggle");
+  const text = byId<HTMLTextAreaElement>("help-wanted-text");
+  if (toggle) {
+    toggle.checked = Boolean(data.ministry.helpWanted);
   }
+  if (text) {
+    text.value = data.ministry.helpWantedText ?? "";
+  }
+}
 
-  poolOwner = owner;
-  groups.promptSelection({ Type: groups.selectTypes.Group }, (result) => {
-    const groupId = Number(result.GroupID);
-    if (!groupId) {
-      return;
-    }
+function wireHelpWanted(): void {
+  byId("help-wanted-save")?.addEventListener("click", () => {
+    const toggle = byId<HTMLInputElement>("help-wanted-toggle");
+    const text = byId<HTMLTextAreaElement>("help-wanted-text");
+    show(byId("help-wanted-form-error"), false);
 
-    linkPool(poolOwner, groupId)
-      .then(() => {
-        notifySuccess(i18next.t("Group linked as a volunteer pool"));
-        // The matrix rows come from the pool, so it is stale now.
-        matrix = null;
-        return load(true);
+    updateMinistry(ministryId, {
+      helpWanted: Boolean(toggle?.checked),
+      helpWantedText: text?.value.trim() ?? "",
+    })
+      .then((result) => {
+        notifySuccess(
+          result.ministry.helpWanted
+            ? i18next.t("Saved — this ministry is now asking for help")
+            : i18next.t("Saved — this ministry is no longer asking for help"),
+        );
+        if (detail) {
+          detail.ministry = result.ministry;
+        }
       })
       .catch((error: unknown) => {
-        notifyError(errorMessage(error, i18next.t("The group could not be linked")));
+        showModalError("help-wanted", errorMessage(error, i18next.t("Help wanted could not be saved")));
       });
   });
 }
+
+// ─── The volunteer pool (D19) ────────────────────────────────────────────────
 
 // ─── Wiring ──────────────────────────────────────────────────────────────────
 
@@ -1270,41 +1298,72 @@ function findPosition(id: number): VolunteerPosition | undefined {
   return detail?.positions.find((position) => position.id === id);
 }
 
-function wirePools(): void {
-  byId("pool-add-btn")?.addEventListener("click", () => openGroupPicker({ type: "ministry", id: ministryId }));
+function wirePool(): void {
+  // The picker is the shared person selector (CR1/#9819) pointed at the core person
+  // search — the same widget the "Qualify someone else" modal uses — so V2 ships no
+  // second person chooser and the modal's TomSelect teardown is handled for it.
+  const modalEl = byId("poolAddModal");
+  if (modalEl) {
+    attachToModal(modalEl, "#pool-add-person-select");
+  }
 
-  // Delegated: the pool and team rows are re-rendered on every load.
+  byId("pool-add-btn")?.addEventListener("click", () => {
+    show(byId("pool-add-form-error"), false);
+    modal("poolAddModal")?.show();
+  });
+
+  byId("pool-add-save")?.addEventListener("click", () => {
+    const select = byId<HTMLSelectElement>("pool-add-person-select");
+    const personId = Number(select?.value ?? 0);
+    if (!personId) {
+      showModalError("pool-add", i18next.t("Choose a person to add"));
+      return;
+    }
+
+    addPoolMember(ministryId, personId)
+      .then((result) => {
+        notifySuccess(
+          result.added
+            ? i18next.t("Added to the volunteer pool")
+            : i18next.t("They were already in the volunteer pool"),
+        );
+        modal("poolAddModal")?.hide();
+        select?.tomselect?.clear();
+        // The matrix's rows are the pool UNION the qualified, so it is stale now.
+        matrix = null;
+
+        return load(true);
+      })
+      .catch((error: unknown) => {
+        showModalError("pool-add", errorMessage(error, i18next.t("They could not be added to the pool")));
+      });
+  });
+
+  // Delegated: the pool rows are re-rendered on every load.
   document.addEventListener("click", (event) => {
-    const target = (event.target as HTMLElement | null)?.closest<HTMLElement>(
-      ".volunteer-pool-unlink, .volunteer-team-link-pool",
-    );
+    const target = (event.target as HTMLElement | null)?.closest<HTMLElement>(".volunteer-pool-remove");
     if (!target) {
       return;
     }
 
-    if (target.classList.contains("volunteer-team-link-pool")) {
-      openGroupPicker({ type: "team", id: Number(target.dataset.teamId) });
-      return;
-    }
-
-    const poolId = Number(target.dataset.poolId);
+    const personId = Number(target.dataset.personId);
     confirmDelete(
-      i18next.t("Unlink this pool"),
-      // Worth spelling out: "unlink" is not "delete the group", and a
-      // coordinator who has just been told membership lives in Groups needs to
-      // know this button does not touch it.
-      i18next.t("Stop using {{name}} as a volunteer pool? The group and its members are not changed.", {
-        name: target.dataset.groupName ?? "",
+      i18next.t("Remove from the volunteer pool"),
+      // Worth spelling out: this is not "delete the person", and it is not
+      // "un-qualify them" either — both survive, which is the whole rule.
+      i18next.t("Take {{name}} out of this ministry's volunteer pool? Their qualifications are kept.", {
+        name: target.dataset.personName ?? "",
       }),
       () => {
-        unlinkPool(poolId)
+        removePoolMember(ministryId, personId)
           .then(() => {
-            notifySuccess(i18next.t("Volunteer pool unlinked"));
+            notifySuccess(i18next.t("Removed from the volunteer pool"));
             matrix = null;
+
             return load(true);
           })
           .catch((error: unknown) => {
-            notifyError(errorMessage(error, i18next.t("The pool could not be unlinked")));
+            notifyError(errorMessage(error, i18next.t("They could not be removed from the pool")));
           });
       },
     );
@@ -1483,7 +1542,8 @@ function wire(): void {
   // team. Re-rendering discards whatever was typed for the old team's positions, which is
   // correct: those rows are no longer part of this schedule's plan.
   byId("schedule-form-team")?.addEventListener("change", renderScheduleNeeds);
-  wirePools();
+  wirePool();
+  wireHelpWanted();
   wireQualifications();
 
   // Delegated: the rows are re-rendered on every load, so per-row listeners

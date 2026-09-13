@@ -28,6 +28,9 @@ export interface VolunteerMinistry {
   createdByPersonId: number | null;
   teamCount: number;
   positionCount: number;
+  /** D19: advertise this ministry on the Open Opportunities page. */
+  helpWanted: boolean;
+  helpWantedText: string | null;
 }
 
 /** One team as `volunteerTeamToArray()` shapes it. */
@@ -57,24 +60,6 @@ export interface VolunteerPosition {
   order: number;
 }
 
-/**
- * One pool link as `volunteerPoolToArray()` shapes it (#9707).
- *
- * `memberCount` is counted live off the Group's own membership rows on every
- * request — V2 copies no people (design D1, §2.5) — so it is always current and
- * is never written back.
- */
-export interface VolunteerPool {
-  id: number;
-  ownerType: "ministry" | "team";
-  ownerId: number;
-  ownerName: string | null;
-  groupId: number;
-  groupName: string | null;
-  memberCount: number;
-  label: string | null;
-}
-
 /** One qualification as `volunteerQualificationToArray()` shapes it (#9707). */
 export interface VolunteerQualification {
   id: number;
@@ -90,12 +75,21 @@ export interface VolunteerQualification {
   notes: string | null;
 }
 
-/** One row of the qualification matrix: a person and the positions they hold. */
+/**
+ * One person in the pool, or on a row of the qualification matrix.
+ *
+ * D19: the matrix's rows are pool members UNION everyone qualified for a position
+ * in view, so `inPool` is what tells the two apart — a member with no ticks yet
+ * gets the "not qualified yet" hint, and a qualified non-member is somebody who
+ * was taken out of the group and is still perfectly assignable.
+ */
 export interface VolunteerPoolPerson {
   personId: number;
   displayName: string;
-  /** The pool groups this person arrived through — they appear once however many. */
+  /** The pool groups this person arrived through; since D19 always 0 or 1 of them. */
   groupIds: number[];
+  /** Is this person in the ministry's pool Group? */
+  inPool: boolean;
   /** Position ids the person is actively qualified for (design §3.3.1). */
   qualifications: number[];
   /** Position id → qualification row id, so unticking revokes that exact row. */
@@ -111,7 +105,6 @@ export interface QualificationMatrix {
   ministryId: number;
   teamId: number | null;
   positions: VolunteerPosition[];
-  pools: VolunteerPool[];
   people: VolunteerPoolPerson[];
 }
 
@@ -119,8 +112,18 @@ export interface MinistryDetail {
   ministry: VolunteerMinistry;
   teams: VolunteerTeam[];
   positions: VolunteerPosition[];
-  /** Added by #9707; absent on a response from an older build. */
-  pools?: VolunteerPool[];
+  /** D19: the ministry's own pool Group and who is in it, in the same document. */
+  poolGroupId?: number | null;
+  poolGroupName?: string | null;
+  pool?: VolunteerPoolPerson[];
+}
+
+/** One ministry advertising for help on the Open Opportunities page (D19). */
+export interface VolunteerHelpWantedMinistry {
+  ministryId: number;
+  ministryName: string;
+  helpWantedText: string | null;
+  inPool: boolean;
 }
 
 /** A non-2xx answer from the API, carrying the server's message and status. */
@@ -145,7 +148,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 
 /**
  * Same envelope handling as `request()`, for the few core endpoints V2 reuses
- * outside `/api/volunteer` (today: creating a Group to use as a pool).
+ * outside `/api/volunteer`.
  */
 async function requestAt<T>(absolutePath: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${rootPath()}${absolutePath}`, {
@@ -187,7 +190,7 @@ export function getMinistry(ministryId: number): Promise<MinistryDetail> {
 
 export function updateMinistry(
   ministryId: number,
-  fields: Partial<Pick<VolunteerMinistry, "name" | "description" | "active">>,
+  fields: Partial<Pick<VolunteerMinistry, "name" | "description" | "active" | "helpWanted" | "helpWantedText">>,
 ): Promise<{ ministry: VolunteerMinistry }> {
   return request(`/ministries/${ministryId}`, { method: "POST", body: JSON.stringify(fields) });
 }
@@ -236,39 +239,29 @@ export function deletePosition(positionId: number): Promise<{ success: boolean }
   return request(`/positions/${positionId}`, { method: "DELETE" });
 }
 
-// ─── Pools and qualifications (#9707) ────────────────────────────────────────
-
-export function listPools(ministryId: number, teamId?: number | null): Promise<{ pools: VolunteerPool[] }> {
-  return request(`/ministries/${ministryId}/pools${teamId ? `?teamId=${teamId}` : ""}`);
-}
+// ─── The pool Group and qualifications (#9707, rewritten by D19) ─────────────
 
 /**
- * Link an existing Group as a pool. The owner is a ministry or a team; there is
- * no third case, because `vpol_OwnerType` is an enum of exactly those two.
+ * Who is in the ministry's volunteer pool.
+ *
+ * There is no "link a group" call any more and no `createGroup` helper: the
+ * ministry owns exactly one Group and it was created with the ministry, so the
+ * only thing left to change is who is in it.
  */
-export function linkPool(
-  owner: { type: "ministry" | "team"; id: number },
-  groupId: number,
-  label = "",
-): Promise<{ pool: VolunteerPool }> {
-  const path = owner.type === "ministry" ? `/ministries/${owner.id}/pools` : `/teams/${owner.id}/pools`;
-
-  return request(path, { method: "POST", body: JSON.stringify({ groupId, label }) });
+export function listPoolMembers(
+  ministryId: number,
+): Promise<{ groupId: number | null; groupName: string | null; members: VolunteerPoolPerson[] }> {
+  return request(`/ministries/${ministryId}/pool`);
 }
 
-/**
- * Create a Group through the core groups API (`POST /api/groups/`), the same call
- * the Groups dashboard makes — V2 builds no second group editor. Membership is
- * managed on the group page afterwards (Appendix D-1). The core API answers with
- * Propel's `toArray()` (phpName keys), hence `Id`.
- */
-export function createGroup(groupName: string): Promise<{ Id: number; Name: string }> {
-  return requestAt("/api/groups/", { method: "POST", body: JSON.stringify({ groupName }) });
+/** Idempotent: somebody already in the pool comes back `added: false`, not an error. */
+export function addPoolMember(ministryId: number, personId: number): Promise<{ personId: number; added: boolean }> {
+  return request(`/ministries/${ministryId}/pool/${personId}`, { method: "POST" });
 }
 
-/** Unlink a pool. The Group itself is never touched (D1, Appendix D-1). */
-export function unlinkPool(poolId: number): Promise<{ success: boolean }> {
-  return request(`/pools/${poolId}`, { method: "DELETE" });
+/** Their qualifications are NOT revoked — the two are independent since D19. */
+export function removePoolMember(ministryId: number, personId: number): Promise<{ success: boolean }> {
+  return request(`/ministries/${ministryId}/pool/${personId}`, { method: "DELETE" });
 }
 
 export function getQualificationMatrix(ministryId: number, teamId?: number | null): Promise<QualificationMatrix> {
@@ -863,6 +856,26 @@ export function listMyOpportunities(
   const suffix = query.toString() ? `?${query.toString()}` : "";
 
   return request(`/me/opportunities${suffix}`);
+}
+
+/**
+ * The ministries advertising for help (D19). A separate call from
+ * `listMyOpportunities()` because it answers a different question and has no date
+ * in it; the page renders the two as two sections.
+ */
+export function listMyHelpWanted(): Promise<{ ministries: VolunteerHelpWantedMinistry[] }> {
+  return request("/me/help-wanted");
+}
+
+/**
+ * "I'd like to help." No person id anywhere: the actor is the session (§3.3.3).
+ *
+ * `joinedPool` is what the toast wording turns on — whether this tap is what put
+ * the volunteer in the ministry's pool, or whether they were already in it and are
+ * offering again.
+ */
+export function offerToHelp(ministryId: number): Promise<{ joinedPool: boolean; notified: number }> {
+  return request(`/me/help-wanted/${ministryId}`, { method: "POST" });
 }
 
 export function signUpForOpportunity(
