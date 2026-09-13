@@ -1,30 +1,30 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Twee-faktor-verifikasie word vereis. Jy het %d dag om te registreer.|Twee-faktor-verifikasie word vereis. Jy het %d dae om te registreer.",
-    "other": ""
+    "one": "Twee-faktor-verifikasie word vereis. Jy het %d dag om te registreer.",
+    "other": "Twee-faktor-verifikasie word vereis. Jy het %d dae om te registreer."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} lid gekopieer",
+    "other": "{{count}} lede gekopieer"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Hierdie lys het {{count}} ontvanger — te veel vir 'n mailto:-skakel. Gebruik eerder Kopieer Adresse.",
+    "other": "Hierdie lys het {{count}} ontvangers — te veel vir 'n mailto:-skakel. Gebruik eerder Kopieer Adresse."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Te veel ontvangers vir e-posprogram ({{count}} > {{max}}). Gebruik eerder Kopieer Adresse.",
+    "other": "Te veel ontvangers vir e-posprogram ({{count}} > {{max}}). Gebruik eerder Kopieer Adresse."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuut oor",
+    "other": "{{count}} minute oor"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familie kon nie geokodeer word nie",
+    "other": "{{count}} families kon nie geokodeer word nie"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…en {{count}} meer. Loop weer om die res te sien.",
+    "other": "…en {{count}} meer. Loop weer om die res te sien."
   }
 }
