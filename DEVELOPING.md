@@ -48,7 +48,7 @@ The repository does not define an `npm run docker:test` script. Use `npm run doc
 
 The repository also contains a community-requested DDEV configuration. It is an alternative to the maintainer workflow, not the primary development path.
 
-- DDEV configuration is under [`.ddev/`](.ddev/).
+- Follow [`.ddev/README.md`](.ddev/README.md) to use the optional DDEV environment.
 
 ## Services
 
