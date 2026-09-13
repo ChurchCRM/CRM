@@ -63,7 +63,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sPageTitle'       => gettext('Set up volunteer scheduling'),
             'sPageSubtitle'    => gettext('Create a ministry, add the teams that serve in it, then list the positions people fill'),
             'aBreadcrumbs'     => PageHeader::breadcrumbs([
-                [gettext('Volunteer'), 'volunteer/dashboard'],
+                [gettext('Volunteer'), '/volunteer/dashboard'],
                 [gettext('Setup')],
             ]),
             'bIsManager'       => $isManager,

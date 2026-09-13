@@ -50,7 +50,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sPageTitle' => gettext('Open Opportunities'),
             'sPageSubtitle' => gettext('Places that still need someone'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('My Volunteer Schedule'), 'volunteer/my-schedule'],
+                [gettext('My Volunteer Schedule'), '/volunteer/my-schedule'],
                 [gettext('Open Opportunities')],
             ]),
             'sMyScheduleUrl' => SystemURLs::getRootPath() . '/volunteer/my-schedule',

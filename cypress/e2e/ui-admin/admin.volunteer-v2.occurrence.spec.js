@@ -317,7 +317,20 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
             freshAdminLogin();
         });
 
-        it("shows the header, the effective event time and the requirement cards", () => {
+        it("breadcrumbs link to the dashboard and the ministry page (not relative 404s)", () => {
+        // Carl's review path: from /volunteer/occurrences/{id} the "Volunteer" and
+        // ministry crumbs resolved relative to the page and 404'd. Breadcrumb URLs
+        // must be root-relative.
+        cy.visit(`/volunteer/occurrences/${occurrenceId}`);
+        cy.get(".breadcrumb a").each(($a) => {
+            expect($a.attr("href"), $a.text()).to.match(/^\//);
+        });
+        cy.get(".breadcrumb a").contains("Volunteer").click();
+        cy.url().should("include", "/volunteer/dashboard");
+        cy.get("#volunteer-dashboard, .page-title").should("exist");
+    });
+
+    it("shows the header, the effective event time and the requirement cards", () => {
             cy.visit(occurrenceUrl());
 
             cy.get("#volunteer-occurrence").should("exist");

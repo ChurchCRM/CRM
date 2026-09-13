@@ -90,8 +90,8 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sPageTitle' => $scheduleName,
             'sPageSubtitle' => gettext('Who is needed, who is on, and what is still short'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Volunteer'), 'volunteer/dashboard'],
-                [$ministryName, $ministry === null ? null : 'volunteer/ministries/' . (int) $ministry->getId()],
+                [gettext('Volunteer'), '/volunteer/dashboard'],
+                [$ministryName, $ministry === null ? null : '/volunteer/ministries/' . (int) $ministry->getId()],
                 [$scheduleName],
             ]),
             'iOccurrenceId' => $occurrenceId,

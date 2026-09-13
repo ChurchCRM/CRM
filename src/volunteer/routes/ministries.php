@@ -130,7 +130,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sPageTitle'    => gettext('My ministries and teams'),
             'sPageSubtitle' => gettext('Everything you help run'),
             'aBreadcrumbs'  => PageHeader::breadcrumbs([
-                [gettext('Volunteer'), 'volunteer/dashboard'],
+                [gettext('Volunteer'), '/volunteer/dashboard'],
                 [gettext('Ministries')],
             ]),
             'aMinistries'   => $aMinistries,

@@ -148,7 +148,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('Teams are the groups of people who serve in this ministry.') ?>
         </p>
       </div>
-      <div class="table-responsive d-none" id="teams-table-wrapper">
+      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="teams-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerTeamsTable">
           <thead>
             <tr>
@@ -187,7 +187,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('Choose the Group whose members volunteer for this ministry. Nobody is copied — the Group stays in charge of who belongs.') ?>
         </p>
       </div>
-      <div class="table-responsive d-none" id="pools-table-wrapper">
+      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="pools-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerPoolsTable">
           <thead>
             <tr>
@@ -226,7 +226,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('A position is a role someone serves in, such as Espresso or Song Leader.') ?>
         </p>
       </div>
-      <div class="table-responsive d-none" id="positions-table-wrapper">
+      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="positions-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerPositionsTable">
           <thead>
             <tr>
@@ -327,7 +327,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('Create a schedule and generate its dates, and the weeks to staff appear here.') ?>
         </p>
       </div>
-      <div class="table-responsive d-none" id="occurrences-table-wrapper">
+      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="occurrences-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerOccurrencesTable">
           <thead>
             <tr>
@@ -370,7 +370,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('A schedule is the recurring pattern this ministry staffs — a weekly service, a Wednesday class. Add one and generate its dates.') ?>
         </p>
       </div>
-      <div class="table-responsive d-none" id="schedules-table-wrapper">
+      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="schedules-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerSchedulesTable">
           <thead>
             <tr>

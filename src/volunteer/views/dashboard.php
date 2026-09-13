@@ -186,7 +186,7 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
               </a>
             </div>
           </div>
-          <div class="table-responsive d-none" id="volunteer-upcoming-content">
+          <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="volunteer-upcoming-content">
             <table class="table table-hover table-vcenter" id="volunteer-upcoming-table">
               <thead>
                 <tr>
