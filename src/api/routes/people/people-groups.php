@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -57,6 +58,39 @@ function _getExcludedPersonIdSet(string $configKey): array
  * @param string[] $phoneList
  * @return array{phones: string[], displayList: string}
  */
+/**
+ * Volunteer v2 (D19): a group that is a ministry's volunteer pool is renamed and
+ * removed from that ministry, never from here.
+ *
+ * Returns a `409` response for such a group, or null for an ordinary one — so the
+ * two handlers that must refuse read as one `if` rather than as a copied block.
+ *
+ * This is not decoration on top of a model rule: `Group::preDelete()` throws for a
+ * managed group outside the Volunteer v2 managed-write context, so without this the
+ * caller would get a 500 out of the ORM instead of a sentence saying where to go.
+ * Adding and removing MEMBERS is deliberately not affected — the Groups module
+ * stays the place anyone with Manage Groups edits any roster.
+ */
+function _renderManagedGroupConflict(Response $response, Group $group): ?Response
+{
+    if ($group->getMinistryId() === null) {
+        return null;
+    }
+
+    $ministry = VolunteerMinistryQuery::create()->findPk((int) $group->getMinistryId());
+    $ministryName = $ministry === null ? '' : (string) $ministry->getName();
+
+    return SlimUtils::renderErrorJSON(
+        $response,
+        sprintf(
+            gettext('This group is the volunteer pool of %s and is managed from that ministry.'),
+            $ministryName
+        ),
+        ['ministryId' => (int) $group->getMinistryId(), 'ministryName' => $ministryName],
+        409
+    );
+}
+
 function _buildPhoneResponse(array $phoneList): array
 {
     return [
@@ -106,12 +140,32 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $memberCounts[(int) $row['GroupId']] = (int) $row['cnt'];
         }
 
+        // Volunteer v2 (D19): a group owned by a ministry is edited and deleted from
+        // that ministry, never here. Resolved in ONE query for the whole list rather
+        // than one per row, and always present on the wire (null when there is no
+        // owner) so a client never has to treat a missing key as "not managed".
+        $ministryNames = [];
+        $ministryIds = [];
+        foreach ($groups as $g) {
+            if ($g->getMinistryId() !== null) {
+                $ministryIds[(int) $g->getMinistryId()] = true;
+            }
+        }
+        if ($ministryIds !== []) {
+            foreach (VolunteerMinistryQuery::create()->findPks(array_keys($ministryIds)) as $ministry) {
+                $ministryNames[(int) $ministry->getId()] = (string) $ministry->getName();
+            }
+        }
+
         $result = [];
         foreach ($groups as $g) {
             $data = $g->toArray();
             $data['groupType'] = $typeNames[(int) $g->getType()] ?? '';
             $data['memberCount'] = $memberCounts[(int) $g->getId()] ?? 0;
             $data['roles'] = $rolesByListId[(int) $g->getRoleListId()] ?? [];
+            $ministryId = $g->getMinistryId() === null ? null : (int) $g->getMinistryId();
+            $data['ministryId'] = $ministryId;
+            $data['ministryName'] = $ministryId === null ? null : ($ministryNames[$ministryId] ?? null);
             $result[] = $data;
         }
 
@@ -814,12 +868,17 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *         )
      *     ),
      *     @OA\Response(response=200, description="Updated group object"),
-     *     @OA\Response(response=403, description="ManageGroupRole role required")
+     *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=409, description="The group is a volunteer ministry's pool and is managed from that ministry (Volunteer v2, D19)")
      * )
      */
     $group->post('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $input = $request->getParsedBody();
         $group = $request->getAttribute('group');
+        $managed = _renderManagedGroupConflict($response, $group);
+        if ($managed !== null) {
+            return $managed;
+        }
         $group->setName($input['groupName']);
         $group->setType($input['groupType']);
         $group->setDescription($input['description'] ?? '');
@@ -832,17 +891,21 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * @OA\Delete(
      *     path="/groups/{groupID}",
      *     summary="Delete a group (ManageGroupRole role required)",
-     *     description="Deletes a group. Members and custom properties are cascade-deleted. Returns 409 Conflict if the group is the audience for one or more events, or is referenced by an event type — reassign those first.",
+     *     description="Deletes a group. Members and custom properties are cascade-deleted. Returns 409 Conflict if the group is the audience for one or more events, is referenced by an event type — reassign those first — or is a volunteer ministry's pool, which is deleted with the ministry.",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Group deleted successfully"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
-     *     @OA\Response(response=409, description="Group is the audience for active events or referenced by event types")
+     *     @OA\Response(response=409, description="Group is the audience for active events, referenced by event types, or is a volunteer ministry's pool (Volunteer v2, D19)")
      * )
      */
     $group->delete('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $group = $request->getAttribute('group');
+        $managed = _renderManagedGroupConflict($response, $group);
+        if ($managed !== null) {
+            return $managed;
+        }
         $groupId = (int) $group->getId();
 
         // Block if the group is attached to events (as audience or via event type default).

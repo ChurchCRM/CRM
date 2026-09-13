@@ -8,6 +8,7 @@ use ChurchCRM\Emails\volunteer\VolunteerAssignmentEmail;
 use ChurchCRM\Emails\volunteer\VolunteerDeclineAlertEmail;
 use ChurchCRM\Emails\volunteer\VolunteerEmailContext;
 use ChurchCRM\Emails\volunteer\VolunteerGapAlertEmail;
+use ChurchCRM\Emails\volunteer\VolunteerHelpOfferEmail;
 use ChurchCRM\Emails\volunteer\VolunteerReminderEmail;
 use ChurchCRM\Emails\volunteer\VolunteerSignupConfirmEmail;
 use ChurchCRM\Emails\volunteer\VolunteerSwapProposedEmail;
@@ -72,6 +73,7 @@ class VolunteerNotificationService
     public const TYPE_SIGNUP_CONFIRM = VolunteerNotification::TYPE_SIGNUP_CONFIRM;
     public const TYPE_SWAP_PROPOSED = VolunteerNotification::TYPE_SWAP_PROPOSED;
     public const TYPE_SWAP_RESOLVED = VolunteerNotification::TYPE_SWAP_RESOLVED;
+    public const TYPE_HELP_OFFER = VolunteerNotification::TYPE_HELP_OFFER;
 
     /**
      * Deliveries attempted before a row is given up on (§2.14).
@@ -107,7 +109,8 @@ class VolunteerNotificationService
         ?int $assignmentId,
         ?int $occurrenceId,
         \DateTimeInterface $scheduledFor,
-        string $dedupeKey
+        string $dedupeKey,
+        ?array $context = null
     ): VolunteerNotification {
         $notification = VolunteerNotificationQuery::create()
             ->filterByDedupeKey($dedupeKey)
@@ -126,6 +129,10 @@ class VolunteerNotificationService
         $notification->setScheduledFor($scheduledFor);
         $notification->setStatus(VolunteerNotification::STATUS_PENDING);
         $notification->setAttempts(0);
+        // D19: the row's own context, for a type that hangs off neither an assignment
+        // nor an occurrence. Written once, at enqueue, because that is the only moment
+        // the fact is true — see `help_offer` below.
+        $notification->setContext($context === null ? null : json_encode($context));
         $notification->save();
 
         $this->logger->info('Volunteer notification enqueued', [
@@ -260,6 +267,36 @@ class VolunteerNotificationService
         return sprintf('%s:%d:%d', self::TYPE_SWAP_RESOLVED, $swapId, $personId);
     }
 
+    /**
+     * `help_offer:{ministryId}:{personId}:{Y-m-d}:{recipientPersonId}` (D19).
+     *
+     * The DATE is in the key on purpose and is the whole behaviour: a volunteer who taps
+     * "I'd like to help" four times in a row produces one message, and the same volunteer
+     * offering again next week produces another — which is a coordinator being told
+     * something, not a duplicate.
+     *
+     * The RECIPIENT is in the key for the same reason it is in `gapAlertKey()`: the key
+     * is `UNIQUE` and one row carries one recipient, so a ministry with three
+     * coordinators needs three rows. Dedupe is therefore per coordinator per day, which
+     * is what "a second click the same day sends nothing" means from the coordinator's
+     * side — the only side that can observe it.
+     */
+    public function helpOfferKey(
+        int $ministryId,
+        int $personId,
+        int $recipientPersonId,
+        ?\DateTimeInterface $day = null
+    ): string {
+        return sprintf(
+            '%s:%d:%d:%s:%d',
+            self::TYPE_HELP_OFFER,
+            $ministryId,
+            $personId,
+            ($day ?? DateTimeUtils::getToday())->format('Y-m-d'),
+            $recipientPersonId
+        );
+    }
+
     // ── Convenience enqueuers, one per §3.6 trigger this issue owns ────────
 
     public function enqueueAssignment(VolunteerAssignment $assignment): VolunteerNotification
@@ -385,6 +422,50 @@ class VolunteerNotificationService
                 $occurrenceId,
                 DateTimeUtils::getToday(),
                 $this->swapResolvedKey((int) $swap->getId(), $personId)
+            );
+        }
+
+        return $rows;
+    }
+
+    /**
+     * Somebody offered to help a ministry (D19).
+     *
+     * Ministry-scoped, so both foreign-key columns stay null and `vntf_Context` carries
+     * what the message needs: which ministry, who offered, and whether this click is what
+     * put them in the pool. That last fact is recorded HERE because it stops being true
+     * the moment it is recorded — by the time the outbox drains, the person is in the
+     * pool either way, and a delivery-time recomputation would always say "already a
+     * member".
+     *
+     * One row per coordinator per day (the dedupe key), so a ministry with three
+     * coordinators gets three messages and a volunteer clicking three times gets none
+     * extra.
+     *
+     * @param int[] $recipientPersonIds
+     *
+     * @return VolunteerNotification[]
+     */
+    public function enqueueHelpOffer(
+        int $ministryId,
+        int $offeringPersonId,
+        array $recipientPersonIds,
+        bool $joinedPool
+    ): array {
+        $rows = [];
+        foreach ($recipientPersonIds as $personId) {
+            $rows[] = $this->enqueue(
+                self::TYPE_HELP_OFFER,
+                (int) $personId,
+                null,
+                null,
+                DateTimeUtils::getToday(),
+                $this->helpOfferKey($ministryId, $offeringPersonId, (int) $personId, DateTimeUtils::getToday()),
+                [
+                    'ministryId' => $ministryId,
+                    'personId' => $offeringPersonId,
+                    'joinedPool' => $joinedPool,
+                ]
             );
         }
 
@@ -725,6 +806,10 @@ class VolunteerNotificationService
                 self::TYPE_GAP_ALERT => null,
                 self::TYPE_DECLINE_ALERT => $this->assignmentPersonId($row),
                 self::TYPE_SWAP_PROPOSED => $this->swapProposerPersonId($row),
+                // D19: a coordinator reading "Ann wants to help" should be able to hit
+                // Reply and reach Ann. The message goes TO the coordinator, so
+                // coordinatorPersonId() would point it back at the recipient.
+                self::TYPE_HELP_OFFER => (int) ($this->rowContext($row)['personId'] ?? 0) ?: null,
                 default => $this->coordinatorPersonId($row),
             };
 
@@ -793,6 +878,17 @@ class VolunteerNotificationService
      */
     private function buildContext(VolunteerNotification $row): ?VolunteerEmailContext
     {
+        // D19: `help_offer` is about a ministry, not an occurrence. There is no schedule,
+        // no date and no position to resolve — that absence IS the message ("somebody
+        // wants to help, nothing is arranged yet"), so it takes its own two-line path
+        // rather than being forced through the occurrence chain below, which would
+        // return null and silently skip the row.
+        if ($row->getType() === self::TYPE_HELP_OFFER) {
+            $ministry = VolunteerMinistryQuery::create()->findPk($this->helpOfferMinistryId($row));
+
+            return $ministry === null ? null : new VolunteerEmailContext((string) $ministry->getName());
+        }
+
         $occurrence = $this->occurrenceFor($row);
         if ($occurrence === null) {
             return null;
@@ -885,6 +981,22 @@ class VolunteerNotificationService
                     $this->gapForPosition((int) $assignment->getOccurrenceId(), (int) $assignment->getPositionId())
                 );
 
+            case self::TYPE_HELP_OFFER:
+                $context_ = $this->rowContext($row);
+                $offeringPersonId = (int) ($context_['personId'] ?? 0);
+                if ($offeringPersonId <= 0) {
+                    return null;
+                }
+
+                return new VolunteerHelpOfferEmail(
+                    $to,
+                    $recipientName,
+                    $context,
+                    $this->personName($offeringPersonId),
+                    $this->helpOfferMinistryId($row),
+                    (bool) ($context_['joinedPool'] ?? false)
+                );
+
             case self::TYPE_GAP_ALERT:
                 return new VolunteerGapAlertEmail(
                     $to,
@@ -926,6 +1038,31 @@ class VolunteerNotificationService
         }
 
         return null;
+    }
+
+    /**
+     * The JSON `vntf_Context` this row was enqueued with, or an empty array.
+     *
+     * Never throws: a row whose context is missing or malformed is a row whose message
+     * cannot be built, which `buildEmail()` already handles by skipping it.
+     *
+     * @return array<string, mixed>
+     */
+    private function rowContext(VolunteerNotification $row): array
+    {
+        $raw = (string) ($row->getContext() ?? '');
+        if (trim($raw) === '') {
+            return [];
+        }
+
+        $decoded = json_decode($raw, true);
+
+        return is_array($decoded) ? $decoded : [];
+    }
+
+    private function helpOfferMinistryId(VolunteerNotification $row): int
+    {
+        return (int) ($this->rowContext($row)['ministryId'] ?? 0);
     }
 
     private function personName(int $personId): string

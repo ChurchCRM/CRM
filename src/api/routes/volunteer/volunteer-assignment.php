@@ -488,7 +488,7 @@ function listVolunteerEligiblePeople(Request $request, Response $response): Resp
  *     path="/volunteer/occurrences/{occurrenceId}/assignments",
  *     operationId="createVolunteerAssignment",
  *     summary="Assign a qualified person to a position on this occurrence",
- *     description="Enforces design section 2.11.2: I4 the position belongs to this schedule's ministry (400), I5 the occurrence is neither cancelled nor past (409), I2 an active qualification (403), I3 pool membership unless allowOutsidePool is passed (409), I1 one row per person per position per occurrence (409). I8 re-uses a declined or cancelled row rather than inserting a second one. I7/D16 - a person already holding ANOTHER position on this occurrence - is allowed unconditionally and returns 201.",
+ *     description="Enforces design section 2.11.2: I4 the position belongs to this schedule's ministry (400), I5 the occurrence is neither cancelled nor past (409), I2 an active qualification (403), I3 membership of the ministry's volunteer pool Group unless allowOutsidePool is passed (409) - NOT applied to self sign-up, which tests qualification only (design D19), I1 one row per person per position per occurrence (409). I8 re-uses a declined or cancelled row rather than inserting a second one. I7/D16 - a person already holding ANOTHER position on this occurrence - is allowed unconditionally and returns 201.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="occurrenceId", in="path", required=true, @OA\Schema(type="integer")),
