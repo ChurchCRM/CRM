@@ -148,56 +148,6 @@ Use Bootstrap margin utilities: `me-1` (small), `me-2` (standard), `me-3` (large
 | **Info** | `fa-circle-info` or `fa-info-circle` | `<i class="fa-solid fa-circle-info text-info"></i>` |
 | **Question/Help** | `fa-circle-question` or `fa-question` | `<i class="fa-solid fa-circle-question"></i>` |
 
-### Tabler → Font Awesome Equivalents (Legacy Migration)
-
-When migrating from Tabler icons (deprecated), use this mapping:
-
-| Tabler | Font Awesome |
-|--------|--------------|
-| `ti-alert-circle` | `fa-circle-info` |
-| `ti-alert-triangle` | `fa-triangle-exclamation` |
-| `ti-arrow-down` | `fa-arrow-down` |
-| `ti-arrow-up` | `fa-arrow-up` |
-| `ti-brand-github` | `fa-brands fa-github` |
-| `ti-building` | `fa-building` |
-| `ti-calendar` | `fa-calendar` |
-| `ti-calendar-off` | `fa-calendar-xmark` |
-| `ti-cart` | `fa-cart-shopping` |
-| `ti-check` | `fa-check` |
-| `ti-circle-check` | `fa-circle-check` |
-| `ti-credit-card` | `fa-credit-card` |
-| `ti-device-floppy` | `fa-floppy-disk` |
-| `ti-dots-vertical` | `fa-ellipsis-vertical` |
-| `ti-download` | `fa-download` |
-| `ti-edit` | `fa-pencil` |
-| `ti-eye` | `fa-eye` |
-| `ti-file` | `fa-file` |
-| `ti-filter` | `fa-filter` |
-| `ti-flag` | `fa-flag` |
-| `ti-folder` | `fa-folder` |
-| `ti-home` | `fa-house` |
-| `ti-home-plus` | `fa-house` + adjacent `fa-plus` (no free `fa-house-plus`) |
-| `ti-info-circle` | `fa-circle-info` |
-| `ti-key` | `fa-key` |
-| `ti-location` | `fa-location-dot` |
-| `ti-logout` | `fa-sign-out` |
-| `ti-map-pin` | `fa-map-pin` |
-| `ti-menu-2` | `fa-bars` |
-| `ti-message` | `fa-message` |
-| `ti-mood-sad` | `fa-face-sad-tear` |
-| `ti-pencil` | `fa-pencil` |
-| `ti-phone` | `fa-phone` |
-| `ti-pin` | `fa-thumbtack` |
-| `ti-plus` | `fa-plus` |
-| `ti-search` | `fa-magnifying-glass` |
-| `ti-settings` | `fa-cog` |
-| `ti-shield` | `fa-shield` |
-| `ti-shopping-cart` | `fa-cart-shopping` |
-| `ti-stack-2` | `fa-layer-group` |
-| `ti-trash` | `fa-trash` |
-| `ti-upload` | `fa-upload` |
-| `ti-users` | `fa-users` |
-| `ti-x` | `fa-xmark` |
 
 ### Verify the target exists in the free tier <!-- learned: 2026-09-11 -->
 
@@ -379,7 +329,6 @@ Before committing icon-related changes:
 ## Related Skills
 
 - `[[frontend-development.md]]` — General UI patterns and component structure
-- `[[bootstrap-5-migration.md]]` — Bootstrap 5 utilities for styling and spacing
 - `[[table-action-menu.md]]` — Standard dropdown menu patterns with icon usage
 - `[[code-standards.md]]` — Pre-commit checklist includes icon usage rules
 
