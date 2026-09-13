@@ -72,6 +72,8 @@ let posEspresso = 0; // ministry A, team A1
 let posMilk = 0; // ministry A, team A1
 let posSound = 0; // ministry A, team A2 — the team leader's only position
 let posBooth = 0; // ministry B
+/** The team ministry B was born with — every ministry is created with one. */
+let teamB = 0;
 let scheduleA1 = 0;
 let scheduleA2 = 0;
 let scheduleB = 0;
@@ -174,6 +176,13 @@ function qualify(positionId, personId) {
     );
 }
 
+/** The team a ministry was born with. */
+function defaultTeam(ministryId) {
+    return api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}`, null, 200).then(
+        (resp) => resp.body.teams[0].id,
+    );
+}
+
 function createSchedule(ministryId, name, teamId) {
     return api(
         ADMIN_KEY,
@@ -185,7 +194,7 @@ function createSchedule(ministryId, name, teamId) {
             eventTypeId: CHURCH_SERVICE_TYPE,
             titleFilter: EVENT_TITLE,
             windowStart: seriesStart,
-            teamId: teamId ?? null,
+            teamId,
         },
         201,
     ).then((resp) => resp.body.schedule.id);
@@ -357,11 +366,16 @@ before(() => {
     });
 
     cy.then(() => {
-        createTeam(ministryA, "Bar Team").then((id) => {
+        // Ministry A keeps the team it was created with as its Bar team, and gains a
+        // second one for sound — UC4's "one ministry, several teams".
+        defaultTeam(ministryA).then((id) => {
             teamA1 = id;
         });
         createTeam(ministryA, "Sound Team").then((id) => {
             teamA2 = id;
+        });
+        defaultTeam(ministryB).then((id) => {
+            teamB = id;
         });
     });
 
@@ -375,7 +389,7 @@ before(() => {
         createPosition(ministryA, teamA2, "Audio Engineer", 3).then((id) => {
             posSound = id;
         });
-        createPosition(ministryB, null, "Booth Runner", 1).then((id) => {
+        createPosition(ministryB, teamB, "Booth Runner", 1).then((id) => {
             posBooth = id;
         });
     });
@@ -431,7 +445,7 @@ before(() => {
         createSchedule(ministryA, "Sound — Sunday", teamA2).then((id) => {
             scheduleA2 = id;
         });
-        createSchedule(ministryB, "Booth — Sunday", null).then((id) => {
+        createSchedule(ministryB, "Booth — Sunday", teamB).then((id) => {
             scheduleB = id;
         });
     });

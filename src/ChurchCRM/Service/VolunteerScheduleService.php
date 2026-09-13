@@ -241,13 +241,20 @@ class VolunteerScheduleService
         }
         $schedule->setLinkMode($linkMode);
 
+        // D18: a schedule ALWAYS belongs to a team. `vsch_vtem_ID` is NOT NULL, and a
+        // ministry is never created without a team, so there is somewhere for every
+        // schedule to go — the old "ministry-wide schedule" is gone along with the
+        // ambiguity it caused when two teams shared a position name.
         if ($has('teamId') || $isCreate) {
-            $teamId = $value('teamId') === null || $value('teamId') === '' ? null : (int) $value('teamId');
-            if ($teamId !== null) {
-                $team = VolunteerTeamQuery::create()->findPk($teamId);
-                if ($team === null || (int) $team->getMinistryId() !== (int) $schedule->getMinistryId()) {
-                    throw new \RuntimeException(gettext('The team does not belong to this ministry'));
-                }
+            $raw = $value('teamId');
+            if ($raw === null || $raw === '') {
+                throw new \RuntimeException(gettext('A schedule belongs to a team; choose one'));
+            }
+
+            $teamId = (int) $raw;
+            $team = VolunteerTeamQuery::create()->findPk($teamId);
+            if ($team === null || (int) $team->getMinistryId() !== (int) $schedule->getMinistryId()) {
+                throw new \RuntimeException(gettext('The team does not belong to this ministry'));
             }
             $schedule->setTeamId($teamId);
         }

@@ -91,24 +91,25 @@ CREATE TABLE IF NOT EXISTS `volunteer_pool_vpol` (
 CREATE TABLE IF NOT EXISTS `volunteer_position_vpos` (
   `vpos_ID`          int(11)             NOT NULL AUTO_INCREMENT,
   `vpos_vmin_ID`     int(11)             NOT NULL,
-  `vpos_vtem_ID`     int(11)                      DEFAULT NULL,
+  `vpos_vtem_ID`     int(11)             NOT NULL,
   `vpos_Name`        varchar(100)        NOT NULL,
   `vpos_Description` varchar(255)                 DEFAULT NULL,
   `vpos_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
   `vpos_Order`       int(11)             NOT NULL DEFAULT 0,
   PRIMARY KEY (`vpos_ID`),
-  -- MySQL treats NULLs as distinct inside a UNIQUE index, so this does not stop
-  -- two ministry-wide (vpos_vtem_ID IS NULL) positions sharing a name. That is
-  -- deliberate: VolunteerSetupService::createPosition() does the case-insensitive
-  -- check and the API returns 409. Do not "fix" it with a NOT NULL DEFAULT 0
-  -- sentinel — that is the event_types.type_grpid anti-pattern and it breaks the FK.
+  -- vpos_vtem_ID is NOT NULL: every ministry is created with a team, so a position
+  -- always belongs to one (D18). With no NULLs in the index MySQL's "NULLs are
+  -- distinct" rule can no longer fire, so this unique key now catches every
+  -- duplicate on its own; VolunteerSetupService::createPosition() keeps its
+  -- case-insensitive check because the index is case-insensitive only by collation
+  -- accident and the service owns the 409's wording.
   UNIQUE KEY `vpos_ministry_team_name_uidx` (`vpos_vmin_ID`, `vpos_vtem_ID`, `vpos_Name`),
   KEY `vpos_ministry_active_idx`            (`vpos_vmin_ID`, `vpos_Active`),
   KEY `vpos_team_idx`                       (`vpos_vtem_ID`),
   CONSTRAINT `fk_vpos_ministry` FOREIGN KEY (`vpos_vmin_ID`)
       REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vpos_team` FOREIGN KEY (`vpos_vtem_ID`)
-      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE SET NULL
+      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `volunteer_qualification_vqal` (
@@ -138,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `volunteer_qualification_vqal` (
 CREATE TABLE IF NOT EXISTS `volunteer_schedule_vsch` (
   `vsch_ID`                int(11)                                        NOT NULL AUTO_INCREMENT,
   `vsch_vmin_ID`           int(11)                                        NOT NULL,
-  `vsch_vtem_ID`           int(11)                                                 DEFAULT NULL,
+  `vsch_vtem_ID`           int(11)                                        NOT NULL,
   `vsch_Name`              varchar(100)                                   NOT NULL,
   `vsch_LinkMode`          enum('event_type','standalone')                NOT NULL,
   `vsch_event_type_id`     int(11)                                                 DEFAULT NULL,
@@ -160,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `volunteer_schedule_vsch` (
   CONSTRAINT `fk_vsch_ministry` FOREIGN KEY (`vsch_vmin_ID`)
       REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vsch_team` FOREIGN KEY (`vsch_vtem_ID`)
-      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE SET NULL,
+      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vsch_event_type` FOREIGN KEY (`vsch_event_type_id`)
       REFERENCES `event_types` (`type_id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

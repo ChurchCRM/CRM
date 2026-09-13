@@ -26,7 +26,9 @@ const DASHBOARD_URL = "/volunteer/dashboard";
 
 const PREFIX = "UI9715";
 const MINISTRY_NAME = `${PREFIX} Coffee Bar`;
-const TEAM_NAME = `${PREFIX} Coffee Bar Team`;
+/** The team a ministry is created with is named "{Ministry} Team". */
+const TEAM_NAME = `${MINISTRY_NAME} Team`;
+const SECOND_TEAM_NAME = `${PREFIX} Saturday Crew`;
 const POSITION_ONE = `${PREFIX} Espresso`;
 const POSITION_TWO = `${PREFIX} Milk Station`;
 
@@ -109,10 +111,12 @@ describe("Volunteer v2 setup flow and ministry page (#9715)", () => {
                 .should("be.visible")
                 .and("contain", MINISTRY_NAME);
 
-            // Step 2 — team. Locked until a ministry exists.
-            cy.get("#setup-team-name").should("not.be.disabled").type(TEAM_NAME);
-            cy.get("#setup-team-save").click();
+            // Step 2 — team. The ministry was created with one already, named after
+            // it; the coordinator may add more beside it.
             cy.get("#setup-team-list").should("contain", TEAM_NAME);
+            cy.get("#setup-team-name").should("not.be.disabled").type(SECOND_TEAM_NAME);
+            cy.get("#setup-team-save").click();
+            cy.get("#setup-team-list").should("contain", SECOND_TEAM_NAME);
 
             // Step 3 — positions, repeatable.
             cy.get("#setup-position-name").should("not.be.disabled").type(POSITION_ONE);
@@ -173,18 +177,27 @@ describe("Volunteer v2 setup flow and ministry page (#9715)", () => {
                 201,
             ).then((resp) => {
                 ministryId = resp.body.ministry.id;
+                // The ministry already has TEAM_NAME — it was created with it — so the
+                // fixture adopts that team rather than asking for a second of the same
+                // name, and hangs the position off it.
                 cy.makePrivateAdminAPICall(
-                    "POST",
-                    `/api/volunteer/ministries/${ministryId}/teams`,
-                    { name: TEAM_NAME },
-                    201,
-                );
-                cy.makePrivateAdminAPICall(
-                    "POST",
-                    `/api/volunteer/ministries/${ministryId}/positions`,
-                    { name: POSITION_ONE, description: "Pulls shots" },
-                    201,
-                );
+                    "GET",
+                    `/api/volunteer/ministries/${ministryId}`,
+                    null,
+                    200,
+                ).then((detail) => {
+                    expect(detail.body.teams[0].name).to.eq(TEAM_NAME);
+                    cy.makePrivateAdminAPICall(
+                        "POST",
+                        `/api/volunteer/ministries/${ministryId}/positions`,
+                        {
+                            name: POSITION_ONE,
+                            description: "Pulls shots",
+                            teamId: detail.body.teams[0].id,
+                        },
+                        201,
+                    );
+                });
             });
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -249,11 +262,14 @@ describe("Volunteer v2 setup flow and ministry page (#9715)", () => {
 
         it("shows a first-class empty state on a ministry with nothing in it", () => {
             cy.visit(`/volunteer/ministries/${emptyMinistryId}`);
+            // Teams can no longer be empty: a ministry is created with one, and the
+            // API refuses to delete the last. So the empty state that is still
+            // reachable — and still has to be first class — is Positions.
             cy.get("#nav-item-teams").click();
-            cy.get("#teams .empty").should("be.visible");
-            cy.get("#teams .empty-title").should("be.visible");
+            cy.get("#volunteerTeamsTable tbody tr").should("have.length", 1);
             cy.get("#nav-item-positions").click();
             cy.get("#positions .empty").should("be.visible");
+            cy.get("#positions .empty-title").should("be.visible");
         });
 
         it("404s a ministry that does not exist", () => {
@@ -283,7 +299,8 @@ describe("Volunteer v2 setup flow and ministry page (#9715)", () => {
 
 const PREFIX_9707 = "UI9707";
 const MINISTRY_9707 = `${PREFIX_9707} Coffee Bar`;
-const TEAM_9707 = `${PREFIX_9707} Coffee Bar Team`;
+/** The team the ministry is created with. */
+const TEAM_9707 = `${MINISTRY_9707} Team`;
 const POSITION_9707 = `${PREFIX_9707} Espresso`;
 const GROUP_ANGELS_ID = 1;
 const GROUP_ANGELS_NAME = "Angels class";
@@ -357,19 +374,27 @@ describe("Volunteer v2 pools and qualification matrix (#9707)", () => {
             201,
         ).then((resp) => {
             ministryId = resp.body.ministry.id;
+            // The ministry came with TEAM_9707 already in it; the position hangs off
+            // that team, because every position belongs to one.
             cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/volunteer/ministries/${ministryId}/teams`,
-                { name: TEAM_9707 },
-                201,
-            );
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/volunteer/ministries/${ministryId}/positions`,
-                { name: POSITION_9707, description: "Pulls shots" },
-                201,
-            ).then((position) => {
-                positionId = position.body.position.id;
+                "GET",
+                `/api/volunteer/ministries/${ministryId}`,
+                null,
+                200,
+            ).then((detail) => {
+                expect(detail.body.teams[0].name).to.eq(TEAM_9707);
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/volunteer/ministries/${ministryId}/positions`,
+                    {
+                        name: POSITION_9707,
+                        description: "Pulls shots",
+                        teamId: detail.body.teams[0].id,
+                    },
+                    201,
+                ).then((position) => {
+                    positionId = position.body.position.id;
+                });
             });
         });
 

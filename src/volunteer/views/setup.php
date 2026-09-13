@@ -134,7 +134,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
       <div class="card-body">
         <p class="text-body-secondary">
-          <?= gettext('Teams are the groups of people who actually serve. One is enough — add more only if different people run different services.') ?>
+          <?= gettext('Teams are the groups of people who actually serve.') ?>
+          <?= gettext('Every ministry has at least one team; rename this one or add more.') ?>
         </p>
 
         <div class="volunteer-loading text-center py-4 d-none" id="setup-team-loading">
@@ -238,7 +239,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </div>
           <div class="col-12 col-md-2">
             <label class="form-label" for="setup-position-team"><?= gettext('Team') ?></label>
-            <select class="form-select" id="setup-position-team" disabled></select>
+            <!--
+              Every position belongs to a team, so this picker has no empty option:
+              it is filled from the ministry's teams and starts on the first one.
+            -->
+            <select class="form-select" id="setup-position-team" disabled required></select>
           </div>
           <div class="col-12 col-md-2 d-grid">
             <button type="button" class="btn btn-primary" id="setup-position-save" disabled>

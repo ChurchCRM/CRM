@@ -27,6 +27,7 @@ import {
   listTeams,
   notifyError,
   notifySuccess,
+  updateTeam,
   type VolunteerPool,
   type VolunteerPosition,
   type VolunteerTeam,
@@ -106,6 +107,15 @@ function renderMinistrySummary(): void {
   form?.classList.toggle("d-none", ministryId !== 0);
 }
 
+/**
+ * The ministry's teams, each with a Rename button.
+ *
+ * A ministry is created with one team already in it, named after the ministry
+ * ("Coffee Bar" → "Coffee Bar Team"), so this list is never empty once step 1 is
+ * done. Rename is offered right here because renaming that starter team — rather
+ * than deleting it and making another — is the thing most coordinators want, and
+ * the API refuses to delete a ministry's only team anyway.
+ */
 function renderTeams(): void {
   const list = byId<HTMLUListElement>("setup-team-list");
   if (!list) {
@@ -115,35 +125,47 @@ function renderTeams(): void {
   list.textContent = "";
   for (const team of teams) {
     const item = document.createElement("li");
-    item.className = "list-group-item d-flex align-items-center justify-content-between";
+    item.className = "list-group-item d-flex align-items-center justify-content-between gap-2";
+
     const label = document.createElement("span");
+    label.className = "flex-fill text-truncate";
     label.textContent = team.name;
+
+    const actions = document.createElement("span");
+    actions.className = "d-flex align-items-center gap-2";
+
     const badge = document.createElement("span");
     badge.className = "badge bg-blue-lt";
     badge.textContent = i18next.t("{{count}} positions", { count: team.positionCount });
-    item.append(label, badge);
+
+    const rename = document.createElement("button");
+    rename.type = "button";
+    rename.className = "btn btn-sm btn-ghost-secondary volunteer-team-rename";
+    rename.dataset.teamId = String(team.id);
+    rename.textContent = i18next.t("Rename");
+
+    actions.append(badge, rename);
+    item.append(label, actions);
     list.append(item);
   }
   show(list, teams.length > 0);
 
-  // The position form's team picker is fed from the same list, with the
-  // ministry-wide option first — a position with no team is the default, not an
-  // edge case (§2.6).
+  // The position form's team picker is fed from the same list. There is no
+  // "no team" entry: a position always belongs to a team, and the ministry
+  // always has one to offer.
   const select = byId<HTMLSelectElement>("setup-position-team");
   if (select) {
     const previous = select.value;
     select.textContent = "";
-    const wide = document.createElement("option");
-    wide.value = "";
-    wide.textContent = i18next.t("Whole ministry");
-    select.append(wide);
     for (const team of teams) {
       const option = document.createElement("option");
       option.value = String(team.id);
       option.textContent = team.name;
       select.append(option);
     }
-    select.value = previous;
+    // Keep the coordinator's choice across a re-render, but never leave the
+    // picker on a value that is no longer in the list.
+    select.value = teams.some((team) => String(team.id) === previous) ? previous : String(teams[0]?.id ?? "");
   }
 }
 
@@ -188,7 +210,7 @@ function renderPositions(positions: VolunteerPosition[]): void {
     label.textContent = position.name;
     const scope = document.createElement("span");
     scope.className = "badge bg-azure-lt";
-    scope.textContent = position.teamName ?? i18next.t("Whole ministry");
+    scope.textContent = position.teamName ?? "";
     item.append(label, scope);
     list.append(item);
   }
@@ -290,7 +312,53 @@ function wireMinistryStep(): void {
   });
 }
 
+/**
+ * Rename a team from the wizard's list. Delegated on the list itself, because
+ * `renderTeams()` replaces its rows wholesale on every change.
+ */
+function wireTeamRename(): void {
+  byId("setup-team-list")?.addEventListener("click", (event) => {
+    const button = (event.target as HTMLElement | null)?.closest<HTMLElement>(".volunteer-team-rename");
+    if (!button) {
+      return;
+    }
+
+    const teamId = Number(button.dataset.teamId ?? 0);
+    const team = teams.find((candidate) => candidate.id === teamId);
+    const bootbox = window.bootbox;
+    if (!teamId || !team || !bootbox?.prompt) {
+      return;
+    }
+
+    bootbox.prompt({
+      title: i18next.t("Rename the team"),
+      value: team.name,
+      callback: (result: string | null) => {
+        const name = (result ?? "").trim();
+        if (name === "" || name === team.name) {
+          return;
+        }
+
+        clearStepError("setup-team");
+        updateTeam(teamId, { name })
+          .then((response) => {
+            teams = teams.map((candidate) =>
+              candidate.id === teamId ? { ...candidate, name: response.team.name } : candidate,
+            );
+            renderTeams();
+            notifySuccess(i18next.t("Team renamed"));
+          })
+          .catch((error: unknown) => {
+            showStepError("setup-team", errorMessage(error, i18next.t("The team could not be renamed")));
+          });
+      },
+    });
+  });
+}
+
 function wireTeamStep(): void {
+  wireTeamRename();
+
   byId("setup-team-save")?.addEventListener("click", () => {
     const nameInput = byId<HTMLInputElement>("setup-team-name");
     const descriptionInput = byId<HTMLInputElement>("setup-team-description");
@@ -417,12 +485,16 @@ function wirePositionStep(): void {
       showStepError("setup-position", i18next.t("Give the position a name to add it"));
       return;
     }
+    if (!teamSelect?.value) {
+      showStepError("setup-position", i18next.t("Choose the team this position serves on"));
+      return;
+    }
 
     clearStepError("setup-position");
     createPosition(ministryId, {
       name,
       description: descriptionInput?.value.trim() ?? "",
-      teamId: teamSelect?.value ? Number(teamSelect.value) : null,
+      teamId: Number(teamSelect?.value ?? 0),
       // Appended in the order the coordinator typed them, which is almost always
       // the order they want to see them in (§2.6 vpos_Order).
       order: (list?.childElementCount ?? 0) + 1,
@@ -434,7 +506,7 @@ function wirePositionStep(): void {
         label.textContent = result.position.name;
         const scope = document.createElement("span");
         scope.className = "badge bg-azure-lt";
-        scope.textContent = result.position.teamName ?? i18next.t("Whole ministry");
+        scope.textContent = result.position.teamName ?? "";
         item.append(label, scope);
         list?.append(item);
         show(list, true);

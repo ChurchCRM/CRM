@@ -22,7 +22,12 @@
  * `webpack/**`, never a `.php` view's `i18next` call (design §5.10, F31).
  */
 
-import type { VolunteerCandidatePosition, VolunteerRequirementInput, VolunteerRequirementRow } from "./api";
+import {
+  positionLabel,
+  type VolunteerCandidatePosition,
+  type VolunteerRequirementInput,
+  type VolunteerRequirementRow,
+} from "./api";
 
 /** Hard ceiling on a count, matching the `number` inputs' own `max`. */
 const MAX_COUNT = 99;
@@ -65,6 +70,15 @@ export function renderStaffingNeeds(
 
   const byPosition = new Map(current.map((row) => [row.positionId, row]));
 
+  // Both callers hand this editor ONE team's positions, so the bare position name is
+  // the right label and the team would be repeated on every row. The guard is here
+  // anyway because the editor takes whatever list it is given: if a caller ever mixes
+  // teams, the rows say which team each position belongs to rather than showing the
+  // same name twice.
+  const spansTeams = new Set(positions.map((position) => position.teamId)).size > 1;
+  const label = (position: VolunteerCandidatePosition): string =>
+    spansTeams ? positionLabel(position.teamName, position.name) : position.name;
+
   container.innerHTML = positions
     .map((position) => {
       const existing = byPosition.get(position.id);
@@ -85,21 +99,21 @@ export function renderStaffingNeeds(
             <label class="form-check mb-0" for="${rowId}-check">
               <input class="form-check-input volunteer-need-check" type="checkbox"
                      id="${rowId}-check" ${checked ? "checked" : ""}>
-              <span class="form-check-label">${escapeHtml(position.name)}</span>
+              <span class="form-check-label">${escapeHtml(label(position))}</span>
             </label>
           </div>
           <div class="col-6 col-sm-3">
             <label class="form-label small mb-1" for="${rowId}-min">${escapeHtml(i18next.t("Min"))}</label>
             <input type="number" class="form-control form-control-sm volunteer-need-min"
                    id="${rowId}-min" min="0" max="${MAX_COUNT}" step="1" value="${min}"
-                   aria-label="${escapeAttribute(i18next.t("Minimum needed for {{position}}", { position: position.name }))}"
+                   aria-label="${escapeAttribute(i18next.t("Minimum needed for {{position}}", { position: label(position) }))}"
                    ${checked ? "" : "disabled"}>
           </div>
           <div class="col-6 col-sm-3">
             <label class="form-label small mb-1" for="${rowId}-max">${escapeHtml(i18next.t("Max"))}</label>
             <input type="number" class="form-control form-control-sm volunteer-need-max"
                    id="${rowId}-max" min="0" max="${MAX_COUNT}" step="1" value="${max}"
-                   aria-label="${escapeAttribute(i18next.t("Maximum allowed for {{position}}", { position: position.name }))}"
+                   aria-label="${escapeAttribute(i18next.t("Maximum allowed for {{position}}", { position: label(position) }))}"
                    ${checked ? "" : "disabled"}>
           </div>
         </div>`;

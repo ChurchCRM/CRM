@@ -1182,7 +1182,7 @@ CREATE TABLE `volunteer_pool_vpol` (
 CREATE TABLE `volunteer_position_vpos` (
   `vpos_ID`          int(11)             NOT NULL AUTO_INCREMENT,
   `vpos_vmin_ID`     int(11)             NOT NULL,
-  `vpos_vtem_ID`     int(11)                      DEFAULT NULL,
+  `vpos_vtem_ID`     int(11)             NOT NULL,
   `vpos_Name`        varchar(100)        NOT NULL,
   `vpos_Description` varchar(255)                 DEFAULT NULL,
   `vpos_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
@@ -1194,7 +1194,7 @@ CREATE TABLE `volunteer_position_vpos` (
   CONSTRAINT `fk_vpos_ministry` FOREIGN KEY (`vpos_vmin_ID`)
       REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vpos_team` FOREIGN KEY (`vpos_vtem_ID`)
-      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE SET NULL
+      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1229,7 +1229,7 @@ CREATE TABLE `volunteer_qualification_vqal` (
 CREATE TABLE `volunteer_schedule_vsch` (
   `vsch_ID`                int(11)                                        NOT NULL AUTO_INCREMENT,
   `vsch_vmin_ID`           int(11)                                        NOT NULL,
-  `vsch_vtem_ID`           int(11)                                                 DEFAULT NULL,
+  `vsch_vtem_ID`           int(11)                                        NOT NULL,
   `vsch_Name`              varchar(100)                                   NOT NULL,
   `vsch_LinkMode`          enum('event_type','standalone')                NOT NULL,
   `vsch_event_type_id`     int(11)                                                 DEFAULT NULL,
@@ -1251,7 +1251,7 @@ CREATE TABLE `volunteer_schedule_vsch` (
   CONSTRAINT `fk_vsch_ministry` FOREIGN KEY (`vsch_vmin_ID`)
       REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vsch_team` FOREIGN KEY (`vsch_vtem_ID`)
-      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE SET NULL,
+      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vsch_event_type` FOREIGN KEY (`vsch_event_type_id`)
       REFERENCES `event_types` (`type_id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

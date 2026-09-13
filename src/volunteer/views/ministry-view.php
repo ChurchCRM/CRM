@@ -608,7 +608,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="row g-2">
           <div class="col-12 col-sm-8">
             <label class="form-label" for="position-form-team"><?= gettext('Team') ?></label>
-            <select class="form-select" id="position-form-team"></select>
+            <!-- Filled from the ministry's teams; a position always belongs to one. -->
+            <select class="form-select" id="position-form-team" required></select>
           </div>
           <div class="col-12 col-sm-4">
             <label class="form-label" for="position-form-order"><?= gettext('Order') ?></label>
@@ -718,7 +719,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="mb-3">
           <label class="form-label" for="schedule-form-team"><?= gettext('Team') ?></label>
-          <select class="form-select" id="schedule-form-team"></select>
+          <!-- Filled from the ministry's teams; a schedule always belongs to one. -->
+          <select class="form-select" id="schedule-form-team" required></select>
         </div>
         <div class="mb-3">
           <label class="form-label" for="schedule-form-link-mode"><?= gettext('Where the dates come from') ?></label>

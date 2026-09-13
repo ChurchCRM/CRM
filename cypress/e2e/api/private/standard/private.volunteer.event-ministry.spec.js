@@ -68,6 +68,8 @@ const EVENT_TITLE = `${FIXTURE_PREFIX} Linked Service`;
 
 let ministryA = 0;
 let ministryB = 0;
+/** Ministry A's team — positions and schedules both have to name one. */
+let teamA = 0;
 let positionOne = 0;
 let scheduleId = 0;
 let linkedOccurrenceId = 0;
@@ -225,11 +227,27 @@ function createMinistry(suffix) {
     ).then((rows) => rows.insertId);
 }
 
-function createPosition(ministryId, name) {
+/**
+ * A team for the ministry.
+ *
+ * These fixtures insert their ministry with raw SQL, which bypasses
+ * `VolunteerSetupService::createMinistry()` and therefore the team it would have
+ * created — so the team is inserted here too. Positions and schedules are
+ * `NOT NULL` on their team column, so one has to exist before either.
+ */
+function createTeam(ministryId, name) {
+    return dbOk(
+        `INSERT INTO volunteer_team_vtem (vtem_vmin_ID, vtem_Name, vtem_Description, vtem_Active)
+         VALUES (?, ?, 'volunteer v2 event-ministry fixture', 1)`,
+        [ministryId, `${FIXTURE_PREFIX} ${name}`],
+    ).then((rows) => rows.insertId);
+}
+
+function createPosition(ministryId, teamId, name) {
     return dbOk(
         `INSERT INTO volunteer_position_vpos (vpos_vmin_ID, vpos_vtem_ID, vpos_Name, vpos_Description, vpos_Active, vpos_Order)
-         VALUES (?, NULL, ?, 'volunteer v2 event-ministry fixture', 1, 1)`,
-        [ministryId, `${FIXTURE_PREFIX} ${name}`],
+         VALUES (?, ?, ?, 'volunteer v2 event-ministry fixture', 1, 1)`,
+        [ministryId, teamId, `${FIXTURE_PREFIX} ${name}`],
     ).then((rows) => rows.insertId);
 }
 
@@ -264,7 +282,9 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
 
         createMinistry("Ministry A").then((id) => {
             ministryA = id;
-            createPosition(ministryA, "Espresso").then((p) => {
+            createTeam(ministryA, "Ministry A Team").then((teamId) => {
+                teamA = teamId;
+                createPosition(ministryA, teamA, "Espresso").then((p) => {
                 positionOne = p;
                 // One qualified person so the deletion test can hang a real
                 // assignment off the linked occurrence (I2 is enforced by
@@ -275,6 +295,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                      VALUES (?, ?, 1, NOW())`,
                     [PERSON_COORDINATOR, positionOne],
                 );
+                });
             });
         });
         createMinistry("Ministry B").then((id) => {
@@ -315,6 +336,8 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                 `/api/volunteer/ministries/${ministryA}/schedules`,
                 {
                     name: `${FIXTURE_PREFIX} Linked`,
+                    // A schedule always names a team (D18).
+                    teamId: teamA,
                     linkMode: "event_type",
                     eventTypeId: CHURCH_SERVICE_TYPE,
                     titleFilter: EVENT_TITLE,

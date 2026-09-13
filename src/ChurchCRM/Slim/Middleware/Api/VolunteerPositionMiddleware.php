@@ -23,8 +23,8 @@ use Psr\Http\Message\ServerRequestInterface;
  * 404 before 403 is deliberate and matches every other entity middleware: a caller who
  * cannot see a ministry learns nothing from "not found" either way.
  *
- * A team-scoped position belongs to its team; a ministry-wide position belongs to the
- * ministry, so a team leader is denied it (§4.6).
+ * A position belongs to its team (D18 — there is no team-less position), so its team
+ * leader may touch it, and the ministry coordinator above them inherits that (§4.6).
  */
 class VolunteerPositionMiddleware extends AbstractEntityMiddleware
 {

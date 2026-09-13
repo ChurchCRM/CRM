@@ -59,7 +59,12 @@ const CHURCH_SERVICE_TYPE = 1;
 
 const PREFIX = "E2EUI9714";
 const MINISTRY_NAME = `${PREFIX} Coffee Bar`;
-const TEAM_NAME = `${PREFIX} Bar Team`;
+/**
+ * UC1 is one ministry with ONE team, and a ministry is now created with exactly
+ * that — "{Ministry} Team". The walk-through adopts it rather than adding a second,
+ * which would make the overview's team count 2 and stop being UC1.
+ */
+const TEAM_NAME = `${MINISTRY_NAME} Team`;
 const GROUP_NAME = `${PREFIX} Bar Volunteers`;
 const POSITION_ESPRESSO = `${PREFIX} Espresso`;
 const POSITION_MILK = `${PREFIX} Milk Station`;
@@ -354,13 +359,10 @@ before(() => {
             },
             [200, 201],
         );
-        adminApi(
-            "POST",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/teams`,
-            { name: TEAM_NAME, description: "" },
-            201,
-        ).then((resp) => {
-            teamId = resp.body.team.id;
+        adminApi("GET", `${VOLUNTEER_URL}/ministries/${ministryId}`, null, 200).then((resp) => {
+            expect(resp.body.teams, "the ministry came with one team").to.have.length(1);
+            expect(resp.body.teams[0].name).to.eq(TEAM_NAME);
+            teamId = resp.body.teams[0].id;
         });
     });
 

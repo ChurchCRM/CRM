@@ -36,6 +36,8 @@ const VOLUNTEER_URL = "/api/volunteer";
 const PREFIX = "UINEEDS";
 const MINISTRY_NAME = `${PREFIX} Children's Ministry`;
 const TEAM_NAME = `${PREFIX} Wednesday Night`;
+/** The team the ministry is created with; this spec adds "Wednesday Night" beside it. */
+const DEFAULT_TEAM_NAME = `${MINISTRY_NAME} Team`;
 const POSITION_LEAD = `${PREFIX} Lead Teacher`;
 const POSITION_HELPER = `${PREFIX} Helper`;
 
@@ -300,9 +302,16 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.get("#schedule-form-team").select(TEAM_NAME);
             cy.get("#schedule-form-needs .volunteer-need-row").should("have.length", 2);
 
-            // The whole ministry offers the same two positions here, but the rows must
-            // be re-drawn rather than left showing the previous team's.
-            cy.get("#schedule-form-team").select(0);
+            // The ministry's OTHER team — the one it was created with — owns no
+            // positions, so switching to it must empty the list rather than leave the
+            // previous team's rows on screen. There is no "whole ministry" choice to
+            // fall back to any more: a schedule always names one team, and each team's
+            // positions are its own.
+            cy.get("#schedule-form-team").select(DEFAULT_TEAM_NAME);
+            cy.get("#schedule-form-needs .volunteer-need-row").should("have.length", 0);
+            cy.get("#schedule-form-needs [data-role=no-positions]").should("be.visible");
+
+            cy.get("#schedule-form-team").select(TEAM_NAME);
             cy.get("#schedule-form-needs .volunteer-need-row").should("have.length", 2);
         });
 
@@ -533,10 +542,20 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.visit(`/volunteer/occurrences/${occurrenceId}`);
             cy.get("#requirements-loading").should("not.be.visible");
             cy.get("#requirements-edit").click();
+            cy.get("#volunteer-needs-modal").should("be.visible");
             cy.get("#needs-loading").should("not.be.visible");
+            // `#needs-loading` starts hidden, so "not visible" can be true before the
+            // rows arrive; wait for the row this test edits to be there and checked,
+            // or the numbers are typed into a field that is about to be replaced.
+            cy.get(`#staffing-need-${posLead}-check`).should("be.checked");
 
-            cy.get(`#staffing-need-${posLead}-min`).clear().type("4");
-            cy.get(`#staffing-need-${posLead}-max`).clear().type("2");
+            // `{selectall}` rather than `.clear()`: on an `<input type=number>` Cypress's
+            // clear intermittently leaves the old digit behind, and the typed one is then
+            // appended — "1" + "2" = 12, which is a valid maximum and quietly turns this
+            // test green-then-red. Replacing the selection is deterministic; the value
+            // assertions keep it honest.
+            cy.get(`#staffing-need-${posLead}-min`).type("{selectall}4").should("have.value", "4");
+            cy.get(`#staffing-need-${posLead}-max`).type("{selectall}2").should("have.value", "2");
             cy.get("#needs-form-save").click();
 
             cy.get("#volunteer-needs-modal").should("be.visible");

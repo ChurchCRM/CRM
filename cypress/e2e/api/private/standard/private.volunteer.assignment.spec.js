@@ -69,6 +69,8 @@ const EVENT_TITLE = `${FIXTURE_PREFIX} Coffee Bar Service`;
 
 let ministryA = 0;
 let ministryB = 0;
+/** The team ministry B was created with — a schedule always names one. */
+let teamB = 0;
 let teamA = 0;
 let posEspresso = 0;
 let posMilk = 0;
@@ -286,6 +288,19 @@ function createTeam(ministryId, name) {
     }, 201).then((resp) => resp.body.team.id);
 }
 
+/**
+ * The team a ministry was born with.
+ *
+ * Every ministry is created with one team already in it, named "{Ministry} Team",
+ * so this fixture adopts that team instead of creating a second one with the same
+ * name — which the API now answers 409 to, correctly.
+ */
+function defaultTeam(ministryId) {
+    return api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}`, null, 200).then(
+        (resp) => resp.body.teams[0].id,
+    );
+}
+
 function createPosition(ministryId, teamId, name, order) {
     return api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
         name: `${FIXTURE_PREFIX} ${name}`,
@@ -339,8 +354,11 @@ before(() => {
     });
 
     cy.then(() => {
-        createTeam(ministryA, "Coffee Bar Team").then((id) => {
+        defaultTeam(ministryA).then((id) => {
             teamA = id;
+        });
+        defaultTeam(ministryB).then((id) => {
+            teamB = id;
         });
     });
 
@@ -422,6 +440,7 @@ before(() => {
             eventTypeId: CHURCH_SERVICE_TYPE,
             titleFilter: EVENT_TITLE,
             windowStart: seriesStart,
+            teamId: teamB,
         }, 201).then((resp) => {
             scheduleB = resp.body.schedule.id;
         });

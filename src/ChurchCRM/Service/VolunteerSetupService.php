@@ -44,7 +44,7 @@ use Psr\Log\LoggerInterface;
  * at all", the entity middleware answers "may they touch THIS record", and this
  * class answers "is this particular operation on this record allowed", which is
  * the only layer that can see the payload (a team id from another ministry, a
- * ministry-wide position a team leader may not create).
+ * team another leader owns).
  *
  * Two rules run through the whole file and are worth stating once:
  *
@@ -56,12 +56,11 @@ use Psr\Log\LoggerInterface;
  *   diverges from V1's cascading editor. History is not a coordinator's to
  *   destroy by accident.
  *
- *   **Names are checked in PHP, not left to the index.** `vmin_name_uidx` and
- *   `vtem_ministry_name_uidx` would raise a driver error, not a 409, and
- *   `vpos_ministry_team_name_uidx` does not fire at all for two ministry-wide
- *   positions because MySQL treats NULLs in a UNIQUE index as distinct (§2.6).
- *   So each create/update does its own case-insensitive check and throws a
- *   conflict the route renders as 409.
+ *   **Names are checked in PHP, not left to the index.** `vmin_name_uidx`,
+ *   `vtem_ministry_name_uidx` and `vpos_ministry_team_name_uidx` would each raise
+ *   a driver error rather than a 409, and none of them is case-insensitive by
+ *   design — only by collation. So each create/update does its own
+ *   case-insensitive check and throws a conflict the route renders as 409.
  *
  * #9707 added the pool and qualification halves to this same class rather than
  * a parallel service: they share the authorization helpers, the exception type
@@ -91,8 +90,15 @@ class VolunteerSetupService
     // ══ Ministries ════════════════════════════════════════════════════════
 
     /**
-     * Create a ministry. **Manager-only** (§4.6): a ministry coordinator may run
-     * the ministry they were given, never mint themselves another one.
+     * Create a ministry **and its first team**. **Manager-only** (§4.6): a ministry
+     * coordinator may run the ministry they were given, never mint themselves
+     * another one.
+     *
+     * D18: a ministry is never team-less. The first team is created here, in the
+     * same transaction, so that every caller gets it — the API, the setup wizard
+     * and any future importer alike — and so that positions and schedules, which
+     * are now `NOT NULL` on their team column, always have somewhere to go. The
+     * team is an ordinary row: it can be renamed, and more can be added beside it.
      *
      * @throws VolunteerSetupException 403 when the actor is not a global manager,
      *                                 400 on an empty name, 409 on a duplicate
@@ -113,15 +119,52 @@ class VolunteerSetupService
         // Naive wall-clock in sTimeZone, like every other V2 timestamp (§2.0).
         $ministry->setCreatedDate(DateTimeUtils::getNowDateTime());
         $ministry->setCreatedByPersonId((int) $actor->getId());
-        $ministry->save();
+
+        $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            $ministry->save($connection);
+
+            $team = new VolunteerTeam();
+            $team->setMinistryId((int) $ministry->getId());
+            $team->setName($this->defaultTeamName($name));
+            $team->setActive(true);
+            $team->save($connection);
+
+            $connection->commit();
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
 
         $this->logger->info('Volunteer ministry created', [
             'ministryId' => $ministry->getId(),
             'name' => $ministry->getName(),
+            'defaultTeamId' => $team->getId(),
             'actor' => $actor->getId(),
         ]);
 
         return $ministry;
+    }
+
+    /**
+     * The name a ministry's first team is born with — "Coffee Bar" → "Coffee Bar
+     * Team" (D18).
+     *
+     * `vtem_Name` is `VARCHAR(100)` and so is `vmin_Name`, so the suffix can push a
+     * maximum-length ministry name over the column; the ministry name is trimmed
+     * rather than the suffix dropped, because the word "Team" is what makes the
+     * label read as one. Uniqueness inside the ministry is free: the ministry has
+     * no other team yet.
+     */
+    private function defaultTeamName(string $ministryName): string
+    {
+        $suffix = ' ' . gettext('Team');
+        $room = 100 - mb_strlen($suffix);
+
+        return rtrim(mb_substr($ministryName, 0, $room)) . $suffix;
     }
 
     /**
@@ -322,14 +365,19 @@ class VolunteerSetupService
     }
 
     /**
-     * Delete a team, but only while nothing hangs off it.
+     * Delete a team, but only while nothing hangs off it **and it is not the last
+     * team its ministry has**.
      *
-     * The design spells out the 409 rule for positions (§2.6) and for ministries
-     * (§3.3.1) and is silent about teams — but `vpos_vtem_ID` is `ON DELETE SET
-     * NULL`, so deleting a team with positions would silently promote every one of
-     * them to ministry-wide, which is a data change nobody asked for and which
-     * cannot be undone from the UI. So a team that still owns positions or
-     * schedules is refused with the same shape of message; empty teams delete.
+     * D18: a ministry always has at least one team, so the last one cannot be
+     * deleted — the 409 says to rename it instead, because renaming is what a
+     * coordinator who wants "a different team" actually wants, and the only other
+     * way out would be to leave the ministry in a state positions and schedules
+     * cannot be created in at all.
+     *
+     * A team that still owns positions or schedules is refused too: `vpos_vtem_ID`
+     * and `vsch_vtem_ID` are `ON DELETE CASCADE`, so deleting such a team would
+     * silently take real setup — and, through the schedule, real occurrences —
+     * with it. Empty, non-last teams delete.
      *
      * @throws VolunteerSetupException
      */
@@ -338,6 +386,18 @@ class VolunteerSetupService
         $this->assertCanManageMinistry($actor, (int) $team->getMinistryId());
 
         $teamId = (int) $team->getId();
+
+        $siblingCount = VolunteerTeamQuery::create()
+            ->filterByMinistryId((int) $team->getMinistryId())
+            ->filterById($teamId, Criteria::NOT_EQUAL)
+            ->count();
+
+        if ($siblingCount === 0) {
+            throw VolunteerSetupException::conflict(
+                gettext('A ministry needs at least one team. Rename it instead.')
+            );
+        }
+
         $positionCount = VolunteerPositionQuery::create()->filterByTeamId($teamId)->count();
         $scheduleCount = VolunteerScheduleQuery::create()->filterByTeamId($teamId)->count();
 
@@ -388,20 +448,24 @@ class VolunteerSetupService
     // ══ Positions ═════════════════════════════════════════════════════════
 
     /**
-     * Create a position, ministry-wide when `$team` is null and team-scoped
-     * otherwise.
+     * Create a position in one of the ministry's teams.
+     *
+     * D18: a position ALWAYS belongs to a team, so `$team` is not optional. The
+     * "ministry-wide position" that used to exist was the mechanism behind the
+     * ambiguity this decision removes — two teams under one ministry could each
+     * own a "Lead Teacher", and a ministry-wide list showed the name twice with
+     * nothing to tell them apart.
      *
      * Authorization follows the ownership of the row being created, which is
      * exactly what `canManagePosition()` already decides for an existing row: a
-     * team-scoped position belongs to its team, so a team leader may create one
-     * in their own team; a ministry-wide position belongs to the ministry, so
-     * only its coordinator may (§4.6).
+     * position belongs to its team, so a team leader may create one in their own
+     * team and a ministry coordinator in any of theirs (§4.6).
      *
      * @throws VolunteerSetupException
      */
     public function createPosition(
         VolunteerMinistry $ministry,
-        ?VolunteerTeam $team,
+        VolunteerTeam $team,
         string $name,
         ?string $description,
         int $order,
@@ -409,17 +473,13 @@ class VolunteerSetupService
     ): VolunteerPosition {
         $ministryId = (int) $ministry->getId();
 
-        if ($team !== null) {
-            if ((int) $team->getMinistryId() !== $ministryId) {
-                throw VolunteerSetupException::invalid(gettext('That team belongs to a different ministry'));
-            }
-            $this->assertCanManageTeam($actor, (int) $team->getId());
-        } else {
-            $this->assertCanManageMinistry($actor, $ministryId);
+        if ((int) $team->getMinistryId() !== $ministryId) {
+            throw VolunteerSetupException::invalid(gettext('That team belongs to a different ministry'));
         }
+        $this->assertCanManageTeam($actor, (int) $team->getId());
 
         $name = $this->requireName($name, gettext('A position name is required'));
-        $teamId = $team === null ? null : (int) $team->getId();
+        $teamId = (int) $team->getId();
         $this->assertPositionNameFree($ministryId, $teamId, $name, null);
 
         $position = new VolunteerPosition();
@@ -445,12 +505,15 @@ class VolunteerSetupService
      * Update a position's name, description, team scope, display order or active
      * flag.
      *
-     * Moving a position between team scopes is authorized against **both** ends:
-     * the caller must be allowed to touch the position where it is now (that is
-     * the entity check) and to own it where it is going. Without the second half
-     * a team leader could push their team's position out to ministry-wide.
+     * Moving a position between teams is authorized against **both** ends: the
+     * caller must be allowed to touch the position where it is now (that is the
+     * entity check) and to own it where it is going. Without the second half a
+     * team leader could push their team's position into somebody else's team.
      *
-     * @param array{name?: string, description?: string|null, teamId?: int|null, order?: int, active?: bool} $fields
+     * There is no "move it out of every team" any more (D18): a null `teamId` is a
+     * 400, not a promotion to ministry-wide.
+     *
+     * @param array{name?: string, description?: string|null, teamId?: int, order?: int, active?: bool} $fields
      *
      * @throws VolunteerSetupException
      */
@@ -459,20 +522,19 @@ class VolunteerSetupService
         $this->assertCanManagePosition($actor, (int) $position->getId());
 
         $ministryId = (int) $position->getMinistryId();
-        $targetTeamId = $position->getTeamId() === null ? null : (int) $position->getTeamId();
+        $targetTeamId = (int) $position->getTeamId();
 
         if (array_key_exists('teamId', $fields)) {
-            $targetTeamId = $fields['teamId'] === null || $fields['teamId'] === '' ? null : (int) $fields['teamId'];
-
-            if ($targetTeamId !== null) {
-                $team = VolunteerTeamQuery::create()->findPk($targetTeamId);
-                if ($team === null || (int) $team->getMinistryId() !== $ministryId) {
-                    throw VolunteerSetupException::invalid(gettext('That team belongs to a different ministry'));
-                }
-                $this->assertCanManageTeam($actor, $targetTeamId);
-            } else {
-                $this->assertCanManageMinistry($actor, $ministryId);
+            if ($fields['teamId'] === null || $fields['teamId'] === '') {
+                throw VolunteerSetupException::invalid(gettext('A position belongs to a team; choose one'));
             }
+
+            $targetTeamId = (int) $fields['teamId'];
+            $team = VolunteerTeamQuery::create()->findPk($targetTeamId);
+            if ($team === null || (int) $team->getMinistryId() !== $ministryId) {
+                throw VolunteerSetupException::invalid(gettext('That team belongs to a different ministry'));
+            }
+            $this->assertCanManageTeam($actor, $targetTeamId);
 
             $position->setTeamId($targetTeamId);
         }
@@ -598,8 +660,8 @@ class VolunteerSetupService
             if ($visibleTeamIds === []) {
                 return [];
             }
-            // A team leader sees their teams' positions, never the ministry-wide
-            // ones — those belong to the coordinator (§4.4).
+            // A team leader sees their own teams' positions and nobody else's
+            // (§4.4). Every position has a team now, so there is no third case.
             $query->filterByTeamId($visibleTeamIds, Criteria::IN);
         }
 
@@ -888,10 +950,10 @@ class VolunteerSetupService
     //   it references the person and the position directly, so a past
     //   assignment stays valid and readable whatever happens here.
     //
-    //   **Authorization is per position, not per ministry.** A team-scoped
-    //   position belongs to its team, so a team leader may grant on it; a
-    //   ministry-wide position belongs to the coordinator (§4.6). That is
-    //   exactly `canManagePosition()`, so nothing is re-derived.
+    //   **Authorization is per position, not per ministry.** A position belongs
+    //   to its team, so its team leader may grant on it and so may the ministry
+    //   coordinator above them (§4.6). That is exactly `canManagePosition()`, so
+    //   nothing is re-derived.
     //
     // Note what is deliberately NOT enforced: the person does **not** have to
     // be in the pool. §2.5 is explicit that "pool ≠ eligibility" — the pool is
@@ -1407,16 +1469,16 @@ class VolunteerSetupService
     }
 
     /**
-     * The check §2.6 explicitly calls for. `vpos_ministry_team_name_uidx` covers
-     * team-scoped positions only: with `vpos_vtem_ID IS NULL` on both rows MySQL
-     * considers the keys distinct and lets a second ministry-wide "Espresso"
-     * through. Matching the null scope with `filterByTeamId(null)` — which Propel
-     * renders as `IS NULL` — closes that hole without the `NOT NULL DEFAULT 0`
-     * sentinel the design forbids.
+     * The check §2.6 explicitly calls for, kept in PHP even though
+     * `vpos_ministry_team_name_uidx` now covers every position (D18 made
+     * `vpos_vtem_ID` `NOT NULL`, so the "MySQL treats NULLs as distinct" hole is
+     * closed). The index would raise a driver error rather than a 409, and its
+     * case-insensitivity is a property of the collation rather than of the design
+     * — this check owns both the status code and the message.
      *
      * @throws VolunteerSetupException
      */
-    private function assertPositionNameFree(int $ministryId, ?int $teamId, string $name, ?int $exceptPositionId): void
+    private function assertPositionNameFree(int $ministryId, int $teamId, string $name, ?int $exceptPositionId): void
     {
         $query = VolunteerPositionQuery::create()
             ->filterByMinistryId($ministryId)

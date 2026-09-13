@@ -60,8 +60,8 @@ use Slim\Routing\RouteCollectorProxy;
  * the team — has even been read. Those two handlers resolve the ministry
  * themselves and hand the whole decision to `VolunteerSetupService`, which
  * applies the same rule `VolunteerPositionMiddleware` applies to an existing
- * row: a team-scoped position belongs to its team, a ministry-wide one to the
- * ministry.
+ * row: a position belongs to its team, and so to that team's leader and the
+ * ministry coordinator above them.
  *
  * Read scoping is done in the QUERY, never after hydration (§4.4). The list
  * handlers call the service, which asks `isGlobalManager()` first (an
@@ -251,13 +251,15 @@ function volunteerTeamToArray(VolunteerTeam $team, int $positionCount = 0): arra
  */
 function volunteerPositionToArray(VolunteerPosition $position, array $teamNames = []): array
 {
-    $teamId = $position->getTeamId() === null ? null : (int) $position->getTeamId();
+    // D18: every position names a team, so `teamId` is never null on the wire and a
+    // client never has to render a "no team" case.
+    $teamId = (int) $position->getTeamId();
 
     return [
         'id' => (int) $position->getId(),
         'ministryId' => (int) $position->getMinistryId(),
         'teamId' => $teamId,
-        'teamName' => $teamId === null ? null : ($teamNames[$teamId] ?? null),
+        'teamName' => $teamNames[$teamId] ?? null,
         'name' => $position->getName(),
         'description' => $position->getDescription(),
         'active' => (bool) $position->getActive(),
@@ -335,9 +337,7 @@ function volunteerSetupTeamNames(array $positions): array
 {
     $teamIds = [];
     foreach ($positions as $position) {
-        if ($position->getTeamId() !== null) {
-            $teamIds[(int) $position->getTeamId()] = true;
-        }
+        $teamIds[(int) $position->getTeamId()] = true;
     }
 
     if ($teamIds === []) {
@@ -425,7 +425,15 @@ function createVolunteerMinistry(Request $request, Response $response): Response
         return volunteerSetupError($request, $response, $e);
     }
 
-    return SlimUtils::renderJSON($response, ['ministry' => volunteerMinistryToArray($ministry)], 201);
+    // The counts are not decorative here: a caller needs to see that the ministry
+    // came with a team, because that team is what its first position or schedule
+    // has to name. It is always exactly one and always zero positions, so this is
+    // a statement of the invariant rather than a query.
+    return SlimUtils::renderJSON(
+        $response,
+        ['ministry' => volunteerMinistryToArray($ministry, ['teamCount' => 1, 'positionCount' => 0])],
+        201
+    );
 }
 
 /**
@@ -711,15 +719,15 @@ function updateVolunteerTeam(Request $request, Response $response): Response
  * @OA\Delete(
  *     path="/volunteer/teams/{teamId}",
  *     operationId="deleteVolunteerTeam",
- *     summary="Delete a team that owns no positions or schedules",
- *     description="Returns 409 while the team still owns positions or schedules: vpos_vtem_ID is ON DELETE SET NULL, so deleting it would silently promote every team-scoped position to ministry-wide.",
+ *     summary="Delete a team that is neither the ministry's last nor still in use",
+ *     description="Returns 409 when this is the ministry's ONLY team - a ministry always has at least one, so the answer is to rename it - and also while the team still owns positions or schedules, which vpos_vtem_ID / vsch_vtem_ID would cascade away with it.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such team"),
- *     @OA\Response(response=409, description="The team still owns positions or schedules"),
+ *     @OA\Response(response=409, description="This is the ministry's only team, or it still owns positions or schedules"),
  *     @OA\Response(response=200, description="Deleted")
  * )
  */
@@ -847,19 +855,19 @@ function listVolunteerPositions(Request $request, Response $response): Response
  * @OA\Post(
  *     path="/volunteer/ministries/{ministryId}/positions",
  *     operationId="createVolunteerPosition",
- *     summary="Create a position, ministry-wide or scoped to one team",
- *     description="A ministry coordinator may create either; a team leader may create one in their own team only (design §4.6).",
+ *     summary="Create a position in one of the ministry's teams",
+ *     description="Every position belongs to a team. A ministry coordinator may create one in any of their teams; a team leader in their own only (design §4.6).
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=true, @OA\JsonContent(
- *         required={"name"},
+ *         required={"name","teamId"},
  *         @OA\Property(property="name", type="string", maxLength=100),
  *         @OA\Property(property="description", type="string", maxLength=255),
- *         @OA\Property(property="teamId", type="integer", nullable=true, description="Omit or null for a ministry-wide position"),
+ *         @OA\Property(property="teamId", type="integer", description="Required: a position always belongs to a team"),
  *         @OA\Property(property="order", type="integer", description="Display order within the ministry")
  *     )),
- *     @OA\Response(response=400, description="The name is missing, or the team belongs to another ministry"),
+ *     @OA\Response(response=400, description="The name or the teamId is missing, or the team belongs to another ministry"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this ministry or team, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry or team"),
@@ -875,13 +883,23 @@ function createVolunteerPosition(Request $request, Response $response): Response
     }
 
     $body = (array) $request->getParsedBody();
-    $team = null;
 
-    if (isset($body['teamId']) && $body['teamId'] !== '' && $body['teamId'] !== null) {
-        $team = VolunteerTeamQuery::create()->findPk((int) $body['teamId']);
-        if ($team === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Team not found'), [], 404, null, $request);
-        }
+    // D18: a position always belongs to a team, and a ministry always has one, so an
+    // absent teamId is a malformed payload rather than a "ministry-wide" request.
+    if (!isset($body['teamId']) || $body['teamId'] === '' || $body['teamId'] === null) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('A position belongs to a team; choose one'),
+            [],
+            400,
+            null,
+            $request
+        );
+    }
+
+    $team = VolunteerTeamQuery::create()->findPk((int) $body['teamId']);
+    if ($team === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('Team not found'), [], 404, null, $request);
     }
 
     try {
@@ -897,7 +915,7 @@ function createVolunteerPosition(Request $request, Response $response): Response
         return volunteerSetupError($request, $response, $e);
     }
 
-    $teamNames = $team === null ? [] : [(int) $team->getId() => $team->getName()];
+    $teamNames = [(int) $team->getId() => $team->getName()];
 
     return SlimUtils::renderJSON($response, ['position' => volunteerPositionToArray($position, $teamNames)], 201);
 }
@@ -940,7 +958,7 @@ function getVolunteerPosition(Request $request, Response $response): Response
  *     @OA\RequestBody(required=true, @OA\JsonContent(
  *         @OA\Property(property="name", type="string", maxLength=100),
  *         @OA\Property(property="description", type="string", maxLength=255),
- *         @OA\Property(property="teamId", type="integer", nullable=true),
+ *         @OA\Property(property="teamId", type="integer", description="Moves the position to another of this ministry's teams; null is a 400"),
  *         @OA\Property(property="order", type="integer"),
  *         @OA\Property(property="active", type="boolean")
  *     )),
@@ -1563,7 +1581,7 @@ function listVolunteerQualifications(Request $request, Response $response): Resp
                 'displayName' => $names[(int) $q->getPersonId()] ?? null,
                 'positionName' => $position->getName(),
                 'ministryId' => (int) $position->getMinistryId(),
-                'teamId' => $position->getTeamId() === null ? null : (int) $position->getTeamId(),
+                'teamId' => (int) $position->getTeamId(),
             ]),
             $qualifications
         ),
@@ -1624,7 +1642,7 @@ function grantVolunteerQualification(Request $request, Response $response): Resp
                 'displayName' => $names[(int) $qualification->getPersonId()] ?? null,
                 'positionName' => $position->getName(),
                 'ministryId' => (int) $position->getMinistryId(),
-                'teamId' => $position->getTeamId() === null ? null : (int) $position->getTeamId(),
+                'teamId' => (int) $position->getTeamId(),
             ]),
         ],
         $existing === null ? 201 : 200

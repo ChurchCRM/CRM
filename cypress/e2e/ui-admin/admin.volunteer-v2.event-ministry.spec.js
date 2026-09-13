@@ -41,6 +41,8 @@ const PUBLIC_CALENDAR = 1;
 
 let ministryId = 0;
 let otherMinistryId = 0;
+/** The team the ministry was created with; positions and schedules both name it. */
+let teamId = 0;
 let positionId = 0;
 let scheduleId = 0;
 let occurrenceId = 0;
@@ -136,13 +138,24 @@ function buildFixtures() {
     ).then((resp) => {
         ministryId = resp.body.ministry.id;
 
+        // A ministry is created with one team, and a position always belongs to a
+        // team, so the fixture reads the team it was given rather than inventing one.
         cy.makePrivateAdminAPICall(
-            "POST",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
-            { name: POSITION_NAME, description: "#9713 UI fixture" },
-            [200, 201],
-        ).then((pResp) => {
-            positionId = pResp.body.position.id;
+            "GET",
+            `${VOLUNTEER_URL}/ministries/${ministryId}`,
+            null,
+            200,
+        ).then((detail) => {
+            teamId = detail.body.teams[0].id;
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/positions`,
+                { name: POSITION_NAME, description: "#9713 UI fixture", teamId },
+                [200, 201],
+            ).then((pResp) => {
+                positionId = pResp.body.position.id;
+            });
         });
     });
 
@@ -200,6 +213,8 @@ function buildFixtures() {
             `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
             {
                 name: `${PREFIX} Sunday`,
+                // A schedule always names a team (D18).
+                teamId,
                 linkMode: "event_type",
                 eventTypeId: CHURCH_SERVICE_TYPE,
                 titleFilter: EVENT_TITLE,
