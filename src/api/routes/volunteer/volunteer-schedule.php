@@ -100,8 +100,18 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
             ->add(new InputSanitizationMiddleware([
                 'status' => 'enum:' . implode(',', VolunteerOccurrence::allStatuses()),
             ]));
+        $occurrence->get('/requirements', 'listVolunteerOccurrenceRequirements');
         $occurrence->post('/requirements', 'upsertVolunteerOccurrenceRequirement')
             ->add(new InputSanitizationMiddleware(['positionId' => 'int', 'notes' => 'text']));
+        // "Set the whole plan for this week" and "go back to the schedule's plan". The
+        // per-position upsert above cannot say "and NOT this position", which is exactly
+        // what an editor listing every position with a checkbox has to say.
+        //
+        // No InputSanitizationMiddleware: its field map is declarative and per-field, and
+        // the only field here is a nested array it has no type for. The rows are
+        // validated and their notes sanitized in VolunteerScheduleService.
+        $occurrence->post('/requirements/replace', 'replaceVolunteerOccurrenceRequirements');
+        $occurrence->delete('/requirements', 'clearVolunteerOccurrenceRequirements');
     })->add(new VolunteerOccurrenceMiddleware());
 
     // ── One requirement ─────────────────────────────────────────────────────
@@ -166,8 +176,17 @@ function volunteerOccurrenceToArray(
 
     $requirements = $service->getEffectiveRequirements((int) $occurrence->getId());
     $requiredCount = 0;
+    $requirementCount = 0;
+    $overridden = false;
     foreach ($requirements as $requirement) {
-        $requiredCount += (int) $requirement->getMinCount();
+        $min = (int) $requirement->getMinCount();
+        $requiredCount += $min;
+        if (($requirement->getMaxCount() === null ? $min : (int) $requirement->getMaxCount()) > 0) {
+            $requirementCount++;
+        }
+        if ($requirement->getOccurrenceId() !== null) {
+            $overridden = true;
+        }
     }
 
     return [
@@ -185,6 +204,18 @@ function volunteerOccurrenceToArray(
         'status' => $occurrence->getStatus(),
         'notes' => $occurrence->getNotes(),
         'requiredCount' => $requiredCount,
+        // How many positions this occurrence can actually take someone in. Not
+        // `requiredCount`, which adds the minimums up — a Min 0 / Max 1 requirement is a
+        // real slot with no required body — and not a bare row count either, because a
+        // Min 0 / Max 0 row is an occurrence saying "not this week" about a position its
+        // schedule asks for. A client uses it to say "No staffing needs set" instead of
+        // wrongly reporting an unplanned occurrence as fully staffed (§2.10).
+        'requirementCount' => $requirementCount,
+        // True when the occurrence carries override rows of its own, so a screen can
+        // offer "use the schedule's needs again" only when there is one to go back to.
+        // Read off the merge that was already resolved above rather than counting rows
+        // again — this shape is built up to MAX_OCCURRENCE_LIST times per listing.
+        'requirementsOverridden' => $overridden,
         // Derived staffing counts (#9709, §2.11.3). Present only when the caller passed
         // them in from VolunteerAssignmentService::getGaps(); a caller that did not ask
         // gets zeros rather than a silently different second derivation.
@@ -192,8 +223,37 @@ function volunteerOccurrenceToArray(
         'gapCount' => (int) ($counts['gapCount'] ?? 0),
         'openCount' => (int) ($counts['openCount'] ?? 0),
         'pendingCount' => (int) ($counts['pendingCount'] ?? 0),
+        // The short positions by name, so a list can say "1 Lead Teacher, 2 Helper"
+        // instead of a bare number a coordinator cannot act on. Sliced out of the same
+        // getGaps() result the totals come from — never a second derivation.
+        'gaps' => volunteerOccurrenceGapList($counts),
         'generatedDate' => $occurrence->getGeneratedDate('Y-m-d H:i:s'),
     ];
+}
+
+/**
+ * The genuinely-short positions of one getGaps() summary, in the order the merge
+ * resolved them.
+ *
+ * @param array<string, mixed> $counts
+ *
+ * @return array<int, array{positionId: int, positionName: ?string, gapCount: int}>
+ */
+function volunteerOccurrenceGapList(array $counts): array
+{
+    $gaps = [];
+    foreach ((array) ($counts['requirements'] ?? []) as $requirement) {
+        if ((int) ($requirement['gapCount'] ?? 0) <= 0) {
+            continue;
+        }
+        $gaps[] = [
+            'positionId' => (int) $requirement['positionId'],
+            'positionName' => $requirement['positionName'] ?? null,
+            'gapCount' => (int) $requirement['gapCount'],
+        ];
+    }
+
+    return $gaps;
 }
 
 /**
@@ -303,7 +363,17 @@ function listVolunteerSchedules(Request $request, Response $response): Response
  *         @OA\Property(property="endTime", type="string", nullable=true, example="20:30:00"),
  *         @OA\Property(property="windowStart", type="string", format="date"),
  *         @OA\Property(property="windowEnd", type="string", format="date", nullable=true),
- *         @OA\Property(property="generateAheadDays", type="integer", nullable=true, example=56)
+ *         @OA\Property(property="generateAheadDays", type="integer", nullable=true, example=56),
+ *         @OA\Property(property="requirements", type="array", nullable=true,
+ *             description="The schedule's whole staffing plan, set in one request. Omit the field to leave the plan alone; send an empty array to clear it. Positions not listed are removed. The schedule row and its plan are written in one transaction.",
+ *             @OA\Items(type="object",
+ *                 required={"positionId","minCount"},
+ *                 @OA\Property(property="positionId", type="integer"),
+ *                 @OA\Property(property="minCount", type="integer", example=1),
+ *                 @OA\Property(property="maxCount", type="integer", nullable=true, example=1),
+ *                 @OA\Property(property="notes", type="string", nullable=true)
+ *             )
+ *         )
  *     )),
  *     @OA\Response(response=400, description="A design section 2.8 invariant was violated"),
  *     @OA\Response(response=401, description="Not authenticated"),
@@ -360,7 +430,7 @@ function getVolunteerSchedule(Request $request, Response $response): Response
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="scheduleId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=true, @OA\JsonContent(type="object",
- *         description="Any subset of the create payload; omitted fields keep their stored value")),
+ *         description="Any subset of the create payload; omitted fields keep their stored value. A `requirements` array replaces the whole staffing plan — positions not listed are removed, an empty array clears it, and an absent field leaves it untouched.")),
  *     @OA\Response(response=400, description="A design section 2.8 invariant was violated"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this schedule, or V2 is not enabled"),
@@ -552,6 +622,199 @@ function upsertVolunteerOccurrenceRequirement(Request $request, Response $respon
     $occurrence = $request->getAttribute('volunteerOccurrence');
 
     return volunteerUpsertRequirement($request, $response, null, $occurrence);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/occurrences/{occurrenceId}/requirements",
+ *     operationId="listVolunteerOccurrenceRequirements",
+ *     summary="This occurrence's effective staffing needs, and the positions it could need",
+ *     description="Everything the staffing-needs editor has to draw: the EFFECTIVE requirements from VolunteerScheduleService::getEffectiveRequirements() (each carrying `source`, so the caller can see which are the schedule's and which are this occurrence's own), plus the active positions of the owning team — or of the whole ministry for a ministry-wide schedule — so a position that has no requirement row can still be offered as an unchecked line. Served under the occurrence's own scope check, so a team leader never has to reach for the ministry-wide position list to edit one week.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="occurrenceId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this occurrence, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such occurrence"),
+ *     @OA\Response(response=200, description="OK")
+ * )
+ */
+function listVolunteerOccurrenceRequirements(Request $request, Response $response): Response
+{
+    $occurrence = $request->getAttribute('volunteerOccurrence');
+    $service = new VolunteerScheduleService();
+    $schedule = VolunteerScheduleQuery::create()->findPk((int) $occurrence->getScheduleId());
+
+    $effective = $service->getEffectiveRequirements((int) $occurrence->getId());
+
+    return SlimUtils::renderJSON($response, [
+        'occurrenceId' => (int) $occurrence->getId(),
+        'scheduleId' => $schedule === null ? null : (int) $schedule->getId(),
+        'scheduleName' => $schedule === null ? null : $schedule->getName(),
+        'requirements' => array_map('volunteerRequirementToArray', array_values($effective)),
+        'overridden' => volunteerRequirementsAreOverridden($effective),
+        'positions' => volunteerCandidatePositions($schedule),
+        // Which positions the SCHEDULE asks for. The editor needs them because the merge
+        // is a union (§2.10): an occurrence cannot remove a schedule's requirement by
+        // leaving it out, only outvote it. Dropping a position for one week is therefore
+        // an override of Min 0 / Max 0, and the editor can only know to write one by
+        // knowing which positions the schedule provides.
+        'schedulePositionIds' => $schedule === null ? [] : array_map(
+            static fn (VolunteerRequirement $requirement): int => (int) $requirement->getPositionId(),
+            iterator_to_array(
+                VolunteerRequirementQuery::create()->filterByScheduleId((int) $schedule->getId())->find(),
+                false
+            )
+        ),
+    ]);
+}
+
+/**
+ * @OA\Post(
+ *     path="/volunteer/occurrences/{occurrenceId}/requirements/replace",
+ *     operationId="replaceVolunteerOccurrenceRequirements",
+ *     summary="Set this occurrence's whole staffing plan, overriding the schedule's",
+ *     description="Writes occurrence-level override rows that match the payload exactly: positions not listed lose their override. An empty array means 'this occurrence needs nobody' and is a real, storable answer — it is NOT the same as having no overrides, which means 'follow the schedule'. Use DELETE on the same path for that.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="occurrenceId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"requirements"},
+ *         @OA\Property(property="requirements", type="array",
+ *             @OA\Items(type="object",
+ *                 required={"positionId","minCount"},
+ *                 @OA\Property(property="positionId", type="integer"),
+ *                 @OA\Property(property="minCount", type="integer"),
+ *                 @OA\Property(property="maxCount", type="integer", nullable=true),
+ *                 @OA\Property(property="notes", type="string", nullable=true)
+ *             )
+ *         )
+ *     )),
+ *     @OA\Response(response=400, description="Unknown position, a duplicate position, or counts out of range"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this occurrence, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such occurrence"),
+ *     @OA\Response(response=200, description="OK")
+ * )
+ */
+function replaceVolunteerOccurrenceRequirements(Request $request, Response $response): Response
+{
+    $occurrence = $request->getAttribute('volunteerOccurrence');
+    $input = (array) $request->getParsedBody();
+
+    if (!array_key_exists('requirements', $input)) {
+        return SlimUtils::renderErrorJSON($response, gettext('The staffing needs must be a list'), [], 400, null, $request);
+    }
+
+    try {
+        (new VolunteerScheduleService())->replaceRequirements(null, $occurrence, $input['requirements']);
+    } catch (\RuntimeException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
+    }
+
+    return volunteerRenderEffectiveRequirements($response, $occurrence);
+}
+
+/**
+ * @OA\Delete(
+ *     path="/volunteer/occurrences/{occurrenceId}/requirements",
+ *     operationId="clearVolunteerOccurrenceRequirements",
+ *     summary="Drop this occurrence's overrides so it follows the schedule again",
+ *     description="The 'use the schedule's needs' reset. Nothing was ever copied from the schedule at generation time — the merge is derived on every read (section 2.10) — so removing the override rows is the whole of the reset, and the occurrence immediately reflects the schedule's current plan, including requirements added long after it was generated.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="occurrenceId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this occurrence, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such occurrence"),
+ *     @OA\Response(response=200, description="OK")
+ * )
+ */
+function clearVolunteerOccurrenceRequirements(Request $request, Response $response): Response
+{
+    $occurrence = $request->getAttribute('volunteerOccurrence');
+
+    try {
+        (new VolunteerScheduleService())->clearRequirements(null, $occurrence);
+    } catch (\RuntimeException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
+    }
+
+    return volunteerRenderEffectiveRequirements($response, $occurrence);
+}
+
+/** The answer both write routes give back: the merge as it now stands. */
+function volunteerRenderEffectiveRequirements(Response $response, VolunteerOccurrence $occurrence): Response
+{
+    $effective = (new VolunteerScheduleService())->getEffectiveRequirements((int) $occurrence->getId());
+
+    return SlimUtils::renderJSON($response, [
+        'occurrenceId' => (int) $occurrence->getId(),
+        'requirements' => array_map('volunteerRequirementToArray', array_values($effective)),
+        'overridden' => volunteerRequirementsAreOverridden($effective),
+    ]);
+}
+
+/**
+ * Whether any row of a resolved merge is the occurrence's own.
+ *
+ * @param VolunteerRequirement[] $effective
+ */
+function volunteerRequirementsAreOverridden(array $effective): bool
+{
+    foreach ($effective as $requirement) {
+        if ($requirement->getOccurrenceId() !== null) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * The positions a schedule's staffing plan may name: the active positions of its team,
+ * or — for a ministry-wide schedule — every active position of the ministry.
+ *
+ * A team-scoped schedule deliberately still offers the ministry's team-less positions:
+ * §2.6 lets a position belong to the ministry rather than a team, and those apply to every
+ * team under it. What it never offers is another team's positions.
+ *
+ * @return array<int, array<string, mixed>>
+ */
+function volunteerCandidatePositions(?VolunteerSchedule $schedule): array
+{
+    if ($schedule === null) {
+        return [];
+    }
+
+    $positions = VolunteerPositionQuery::create()
+        ->filterByMinistryId((int) $schedule->getMinistryId())
+        ->filterByActive(true)
+        ->orderByOrder()
+        ->orderByName()
+        ->find();
+
+    // Narrowed in PHP rather than in the query: "this team's, plus the ministry's
+    // team-less ones" is an OR against NULL, and a ministry holds a handful of positions,
+    // not a table worth paging.
+    $teamId = $schedule->getTeamId() === null ? null : (int) $schedule->getTeamId();
+
+    $rows = [];
+    foreach ($positions as $position) {
+        $positionTeamId = $position->getTeamId() === null ? null : (int) $position->getTeamId();
+        if ($teamId !== null && $positionTeamId !== null && $positionTeamId !== $teamId) {
+            continue;
+        }
+
+        $rows[] = [
+            'id' => (int) $position->getId(),
+            'name' => $position->getName(),
+            'teamId' => $positionTeamId,
+            'order' => (int) $position->getOrder(),
+        ];
+    }
+
+    return $rows;
 }
 
 /**
