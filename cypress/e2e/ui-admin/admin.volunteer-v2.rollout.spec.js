@@ -102,6 +102,36 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
         });
     });
 
+    describe("switching to v2 in the middle of a session (#9706 memo)", () => {
+        // Carl's review path: log in while the setting is still v1, then change
+        // it on the System Settings page WITHOUT logging out. The logged-in User
+        // object lives in the PHP session; a memo of "not a coordinator" computed
+        // during the v1 page loads must not follow the session, or the admin sees
+        // only the two member entries until the next login.
+        beforeEach(() => {
+            setVersion("v1");
+            freshAdminLogin();
+            cy.visit(PERSON_VIEW_URL);
+            cy.get('a[href$="/volunteer/setup"]').should("not.exist");
+        });
+
+        after(() => {
+            setVersion("v1");
+        });
+
+        it("shows the coordinator entries as soon as the setting is saved, without a new login", () => {
+            cy.visit("/SystemSettings.php");
+            cy.get('select[name="new_value[sVolunteerVersion]"]').select("v2", { force: true });
+            cy.get('input[name="save"]').first().click({ force: true });
+
+            cy.visit(PERSON_VIEW_URL);
+            cy.get('a[href$="/volunteer/setup"]').should("exist");
+            cy.get('a[href$="/volunteer/ministries"]').should("exist");
+            cy.get('a[href$="/volunteer/dashboard"]').should("exist");
+            cy.get('a[href$="/volunteer/my-schedule"]').should("exist");
+        });
+    });
+
     describe("both (side-by-side transition)", () => {
         beforeEach(() => {
             setVersion("both");

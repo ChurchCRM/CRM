@@ -32,7 +32,18 @@ class User extends BaseUser
      * The scope half of that predicate is a query, and both the route middleware and the
      * menu builder ask for it on the same request (#9706).
      */
-    private ?bool $volunteerCoordinatorEnabled = null;
+    /**
+     * Per-request memo for isVolunteerCoordinatorEnabled(), keyed by person id.
+     *
+     * STATIC on purpose: the logged-in User object is serialized into the PHP
+     * session, and an instance property would be serialized with it — so an
+     * answer computed while the rollout flag was still 'v1' would follow the
+     * session until the next login. A static is never serialized and lives for
+     * exactly one request (#9706, found in review).
+     *
+     * @var array<int, bool>
+     */
+    private static array $volunteerCoordinatorMemo = [];
 
     public function getId()
     {
@@ -326,27 +337,22 @@ class User extends BaseUser
      */
     public function isVolunteerCoordinatorEnabled(): bool
     {
-        if ($this->volunteerCoordinatorEnabled !== null) {
-            return $this->volunteerCoordinatorEnabled;
+        $key = (int) $this->getId();
+        if (array_key_exists($key, self::$volunteerCoordinatorMemo)) {
+            return self::$volunteerCoordinatorMemo[$key];
         }
 
         if ($this->isVolunteerManagerEnabled()) {
             // Covers the administrator bypass, the manager flag, the rollout flag
             // and the EditSelf-exclusive short-circuit in one call.
-            $this->volunteerCoordinatorEnabled = true;
-
-            return true;
+            return self::$volunteerCoordinatorMemo[$key] = true;
         }
 
         if ($this->isEditSelfExclusive() || !self::isVolunteerV2Enabled()) {
-            $this->volunteerCoordinatorEnabled = false;
-
-            return false;
+            return self::$volunteerCoordinatorMemo[$key] = false;
         }
 
-        $this->volunteerCoordinatorEnabled = (new VolunteerAuthorizationService())->hasAnyScope($this);
-
-        return $this->volunteerCoordinatorEnabled;
+        return self::$volunteerCoordinatorMemo[$key] = (new VolunteerAuthorizationService())->hasAnyScope($this);
     }
 
     /**
