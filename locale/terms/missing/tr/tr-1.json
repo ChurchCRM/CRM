@@ -1,40 +1,40 @@
 {
-  "CSV": "",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "%d aileye e-posta gönderildi.|%d aileye e-posta gönderildi.",
-    "other": ""
+    "one": "%d aileye e-posta gönderildi.",
+    "other": "%d aileye e-posta gönderildi."
   },
-  "OFX": "",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "%d aileye PDF başarıyla e-postayla gönderildi.|%d aileye PDF başarıyla e-postayla gönderildi.",
-    "other": ""
+    "one": "%d aileye PDF başarıyla e-postayla gönderildi.",
+    "other": "%d aileye PDF başarıyla e-postayla gönderildi."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var.|İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var.",
-    "other": ""
+    "one": "İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var.",
+    "other": "İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} üye kopyalandı",
+    "other": "{{count}} üye kopyalandı"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Bu listede {{count}} alıcı var — bir mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyala seçeneğini kullanın.",
+    "other": "Bu listede {{count}} alıcı var — bir mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyala seçeneğini kullanın."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyala seçeneğini kullanın.",
+    "other": "E-posta istemcisi için çok fazla alıcı ({{count}} > {{max}}). Bunun yerine Adresleri Kopyala seçeneğini kullanın."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} dakika kaldı",
+    "other": "{{count}} dakika kaldı"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} aile coğrafi olarak kodlanamadı",
+    "other": "{{count}} aile coğrafi olarak kodlanamadı"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…ve {{count}} tane daha. Kalanını görmek için tekrar çalıştırın.",
+    "other": "…ve {{count}} tane daha. Kalanını görmek için tekrar çalıştırın."
   }
 }
