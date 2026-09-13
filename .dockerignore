@@ -54,6 +54,3 @@ Thumbs.db
 
 # Agent documentation (large; not needed for the application build)
 .agents/
-
-# DevContainer (not needed inside container)
-.devcontainer/

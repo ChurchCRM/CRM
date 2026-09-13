@@ -44,12 +44,11 @@ Open `http://localhost` and sign in with `admin` / `changeme`.
 
 The repository does not define an `npm run docker:test` script. Use `npm run docker:test:start` to start the test stack.
 
-## Optional community environments
+## Optional community environment
 
-The repository also contains community-requested configurations for DDEV, GitHub Codespaces, and VS Code Dev Containers. These are alternatives to the maintainer workflow, not the primary development path.
+The repository also contains a community-requested DDEV configuration. It is an alternative to the maintainer workflow, not the primary development path.
 
 - DDEV configuration is under [`.ddev/`](.ddev/).
-- Codespaces and Dev Container instructions are in [`.devcontainer/README.md`](.devcontainer/README.md).
 
 ## Services
 

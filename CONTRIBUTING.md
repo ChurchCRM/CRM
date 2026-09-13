@@ -152,7 +152,7 @@ Add a feature ChurchCRM doesn't include yet — a third-party API integration, a
 
 ## Setting Up Your Development Environment
 
-Follow [DEVELOPING.md](DEVELOPING.md) for the primary local-tool setup, Docker-based testing, current requirements, build commands, architecture rules, and the pull-request checklist. Community-requested DDEV, Codespaces, and Dev Container configurations remain available as optional alternatives.
+Follow [DEVELOPING.md](DEVELOPING.md) for the primary local-tool setup, Docker-based testing, current requirements, build commands, architecture rules, and the pull-request checklist. A community-requested DDEV configuration remains available as an optional alternative.
 
 The default development login is `admin` / `changeme`. Never use these credentials in a real deployment.
 
