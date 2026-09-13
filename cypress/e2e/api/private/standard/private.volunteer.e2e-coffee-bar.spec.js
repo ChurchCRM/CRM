@@ -321,15 +321,22 @@ before(() => {
         });
     });
 
+    // UC1 is one ministry with one team, and a ministry is now created with exactly
+    // that: "<name> Team". So the coordinator's first act is to adopt the team they
+    // were given rather than to make a second one — asking for a team of the same
+    // name is a 409, and asking for a differently named one would leave the ministry
+    // with two teams that UC1 does not have.
     cy.then(() => {
         api(
             COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/ministries/${ministryId}/teams`,
-            { name: TEAM_NAME, description: "" },
-            201,
+            "GET",
+            `${VOLUNTEER_URL}/ministries/${ministryId}`,
+            null,
+            200,
         ).then((resp) => {
-            teamId = resp.body.team.id;
+            expect(resp.body.teams, "the ministry came with one team").to.have.length(1);
+            expect(resp.body.teams[0].name).to.eq(TEAM_NAME);
+            teamId = resp.body.teams[0].id;
         });
     });
 

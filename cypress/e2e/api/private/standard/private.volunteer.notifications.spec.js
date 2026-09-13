@@ -467,6 +467,19 @@ function createTeam(ministryId, name) {
     }, 201).then((resp) => resp.body.team.id);
 }
 
+/**
+ * The team a ministry was born with.
+ *
+ * Every ministry is created with one team already in it, named "{Ministry} Team",
+ * so this fixture adopts that team instead of creating a second one with the same
+ * name — which the API now answers 409 to, correctly.
+ */
+function defaultTeam(ministryId) {
+    return api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}`, null, 200).then(
+        (resp) => resp.body.teams[0].id,
+    );
+}
+
 function createPosition(ministryId, teamId, name, order) {
     return api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
         name: `${FIXTURE_PREFIX} ${name}`,
@@ -547,7 +560,7 @@ before(() => {
     });
 
     cy.then(() => {
-        createTeam(ministryA, "Coffee Bar Team").then((id) => {
+        defaultTeam(ministryA).then((id) => {
             teamA = id;
         });
     });

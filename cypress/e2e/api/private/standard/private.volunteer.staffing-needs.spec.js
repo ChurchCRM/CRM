@@ -227,8 +227,14 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
         createMinistry("Other Ministry").then((id) => {
             ministryB = id;
-            createPosition(ministryB, null, "Foreign Position", 1).then((p) => {
-                posForeign = p;
+            // "Foreign" means "another ministry's", which is still exactly what this
+            // position is — it just lives in a team of that ministry now, because
+            // `vpos_vtem_ID` is NOT NULL. The ministry row is inserted with raw SQL,
+            // which bypasses the service and so the team it would have created.
+            createTeam(ministryB, "Other Team").then((teamId) => {
+                createPosition(ministryB, teamId, "Foreign Position", 1).then((p) => {
+                    posForeign = p;
+                });
             });
         });
 

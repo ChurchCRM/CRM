@@ -121,6 +121,13 @@ function createMinistry(name, description = "created by the #9715 API spec") {
         .then((resp) => resp.body.ministry.id);
 }
 
+/** The team a ministry was born with — every ministry is created with one. */
+function defaultTeam(ministryId) {
+    return cy
+        .makePrivateAdminAPICall("GET", `${MINISTRIES_URL}/${ministryId}`, null, 200)
+        .then((resp) => resp.body.teams[0].id);
+}
+
 /** Grant person 3 a ministry-level scope over $ministryId (manager-only route). */
 function grantMinistryScope(ministryId) {
     return cy.makePrivateAdminAPICall(
@@ -207,7 +214,9 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 expect(ministry.description).to.eq("UC1");
                 expect(ministry.active).to.eq(true);
                 expect(ministry.id).to.be.a("number").and.to.be.greaterThan(0);
-                expect(ministry.teamCount).to.eq(0);
+                // A ministry is created with its first team already in it (D18), so
+                // the create response says one team and no positions.
+                expect(ministry.teamCount).to.eq(1);
                 expect(ministry.positionCount).to.eq(0);
                 ministryA = ministry.id;
             });
@@ -383,11 +392,14 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
 
         it("refuses (409) to delete a ministry that already has occurrences", () => {
             createMinistry("Running").then((id) => {
+                // vsch_vtem_ID is NOT NULL, so even a raw fixture schedule names the
+                // team the ministry was created with.
+                defaultTeam(id).then((teamId) =>
                 dbOk(
                     `INSERT INTO volunteer_schedule_vsch
-                       (vsch_vmin_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
-                     VALUES (?, ?, 'standalone', '2026-09-13', 56, 1)`,
-                    [id, `${PREFIX} Weekly`],
+                       (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
+                     VALUES (?, ?, ?, 'standalone', '2026-09-13', 56, 1)`,
+                    [id, teamId, `${PREFIX} Weekly`],
                 ).then((scheduleRows) => {
                     const scheduleId = scheduleRows.insertId;
                     dbOk(
@@ -417,7 +429,8 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                         null,
                         200,
                     );
-                });
+                }),
+                );
             });
         });
     });
@@ -513,11 +526,13 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${MINISTRIES_URL}/${ministryA}/teams`,
-                { name: `${PREFIX} Coffee Bar Team`, description: "UC1" },
+                // NOT "<ministry> Team": that is the name the ministry's own first
+                // team already has, and a second one of the same name is a 409.
+                { name: `${PREFIX} Bar Crew`, description: "UC1" },
                 201,
             ).then((resp) => {
                 expect(resp.body.team.ministryId).to.eq(ministryA);
-                expect(resp.body.team.name).to.eq(`${PREFIX} Coffee Bar Team`);
+                expect(resp.body.team.name).to.eq(`${PREFIX} Bar Crew`);
                 expect(resp.body.team.active).to.eq(true);
                 teamA = resp.body.team.id;
             });
@@ -527,7 +542,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${MINISTRIES_URL}/${ministryA}/teams`,
-                { name: `${PREFIX} Coffee Bar Team` },
+                { name: `${PREFIX} Bar Crew` },
                 409,
             );
         });
@@ -536,7 +551,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${MINISTRIES_URL}/${ministryB}/teams`,
-                { name: `${PREFIX} Coffee Bar Team` },
+                { name: `${PREFIX} Bar Crew` },
                 201,
             ).then((resp) => {
                 cy.makePrivateAdminAPICall(
@@ -650,9 +665,14 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
     // -----------------------------------------------------------------
     describe("Positions", () => {
         let teamId = 0;
+        /** The team ministryA was created with; `positionId` lives here. */
+        let homeTeamId = 0;
         let positionId = 0;
 
         before(() => {
+            defaultTeam(ministryA).then((id) => {
+                homeTeamId = id;
+            });
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${MINISTRIES_URL}/${ministryA}/teams`,
@@ -663,43 +683,57 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
         });
 
-        it("creates a ministry-wide position", () => {
+        it("creates a position in a team", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${MINISTRIES_URL}/${ministryA}/positions`,
                 {
                     name: `${PREFIX} Espresso`,
                     description: "Pulls shots",
+                    teamId: homeTeamId,
                     order: 3,
                 },
                 201,
             ).then((resp) => {
                 const position = resp.body.position;
                 expect(position.ministryId).to.eq(ministryA);
-                expect(position.teamId).to.eq(null);
+                // Every position names a team (D18); there is no null case left.
+                expect(position.teamId).to.eq(homeTeamId);
+                expect(position.teamName).to.be.a("string").and.not.be.empty;
                 expect(position.active).to.eq(true);
                 expect(position.order).to.eq(3);
                 positionId = position.id;
             });
         });
 
-        it("rejects a ministry-wide duplicate the unique index cannot catch (NULL team)", () => {
-            // vpos_ministry_team_name_uidx does NOT fire when vpos_vtem_ID is NULL
-            // twice — MySQL treats NULLs as distinct. The explicit, case-insensitive
-            // check in VolunteerSetupService::createPosition() is what returns 409.
+        it("rejects a case-insensitive duplicate inside the same team", () => {
+            // The unique index is now able to catch this on its own — vpos_vtem_ID is
+            // NOT NULL, so the "MySQL treats NULLs as distinct" hole is gone — but the
+            // explicit check in VolunteerSetupService::createPosition() still owns the
+            // 409 and its message, and it is the half that is case-insensitive by
+            // intent rather than by collation.
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${MINISTRIES_URL}/${ministryA}/positions`,
-                { name: `${PREFIX} espresso` },
+                { name: `${PREFIX} espresso`, teamId: homeTeamId },
                 409,
             );
             dbOk(
                 `SELECT COUNT(*) AS c FROM volunteer_position_vpos
-                  WHERE vpos_vmin_ID = ? AND vpos_vtem_ID IS NULL AND vpos_Name LIKE ?`,
-                [ministryA, `${PREFIX} Espresso`],
+                  WHERE vpos_vmin_ID = ? AND vpos_vtem_ID = ? AND vpos_Name LIKE ?`,
+                [ministryA, homeTeamId, `${PREFIX} Espresso`],
             ).then((rows) => {
                 expect(Number(rows[0].c), "no second row was written").to.eq(1);
             });
+        });
+
+        it("rejects a position with no team at all (400)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${MINISTRIES_URL}/${ministryA}/positions`,
+                { name: `${PREFIX} Team-less` },
+                400,
+            );
         });
 
         it("accepts the same name in a different team scope", () => {
@@ -873,7 +907,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 userKey(),
                 "POST",
                 `${MINISTRIES_URL}/${ministryA}/positions`,
-                { name: `${PREFIX} Coordinator Position` },
+                { name: `${PREFIX} Coordinator Position`, teamId: homeTeamId },
                 201,
             ).then((resp) => {
                 cy.makePrivateAdminAPICall(
@@ -883,13 +917,17 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                     200,
                 );
             });
-            cy.makePrivateAPICall(
-                userKey(),
-                "POST",
-                `${MINISTRIES_URL}/${ministryB}/positions`,
-                { name: `${PREFIX} Not Mine` },
-                403,
-            );
+            // Ministry B's own team: the payload is well formed, so the 403 is the
+            // scope check and nothing else.
+            defaultTeam(ministryB).then((foreignTeamId) => {
+                cy.makePrivateAPICall(
+                    userKey(),
+                    "POST",
+                    `${MINISTRIES_URL}/${ministryB}/positions`,
+                    { name: `${PREFIX} Not Mine`, teamId: foreignTeamId },
+                    403,
+                );
+            });
             cy.makePrivateAPICall(
                 userKey(),
                 "GET",

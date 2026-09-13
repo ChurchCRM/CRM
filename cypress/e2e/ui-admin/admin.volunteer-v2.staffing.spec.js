@@ -36,6 +36,8 @@ const VOLUNTEER_URL = "/api/volunteer";
 const PREFIX = "UINEEDS";
 const MINISTRY_NAME = `${PREFIX} Children's Ministry`;
 const TEAM_NAME = `${PREFIX} Wednesday Night`;
+/** The team the ministry is created with; this spec adds "Wednesday Night" beside it. */
+const DEFAULT_TEAM_NAME = `${MINISTRY_NAME} Team`;
 const POSITION_LEAD = `${PREFIX} Lead Teacher`;
 const POSITION_HELPER = `${PREFIX} Helper`;
 
@@ -300,9 +302,16 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.get("#schedule-form-team").select(TEAM_NAME);
             cy.get("#schedule-form-needs .volunteer-need-row").should("have.length", 2);
 
-            // The whole ministry offers the same two positions here, but the rows must
-            // be re-drawn rather than left showing the previous team's.
-            cy.get("#schedule-form-team").select(0);
+            // The ministry's OTHER team — the one it was created with — owns no
+            // positions, so switching to it must empty the list rather than leave the
+            // previous team's rows on screen. There is no "whole ministry" choice to
+            // fall back to any more: a schedule always names one team, and each team's
+            // positions are its own.
+            cy.get("#schedule-form-team").select(DEFAULT_TEAM_NAME);
+            cy.get("#schedule-form-needs .volunteer-need-row").should("have.length", 0);
+            cy.get("#schedule-form-needs [data-role=no-positions]").should("be.visible");
+
+            cy.get("#schedule-form-team").select(TEAM_NAME);
             cy.get("#schedule-form-needs .volunteer-need-row").should("have.length", 2);
         });
 

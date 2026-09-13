@@ -188,12 +188,15 @@ const EXPECTED_DELETE_RULES = {
     "volunteer_team_vtem.vtem_vmin_ID": "CASCADE",
     "volunteer_pool_vpol.vpol_grp_ID": "CASCADE",
     "volunteer_position_vpos.vpos_vmin_ID": "CASCADE",
-    "volunteer_position_vpos.vpos_vtem_ID": "SET NULL",
+    // D18 made the column NOT NULL, so SET NULL is no longer expressible; CASCADE
+    // never actually fires, because deleting a team that owns positions is refused
+    // with 409 before the FK is reached.
+    "volunteer_position_vpos.vpos_vtem_ID": "CASCADE",
     "volunteer_qualification_vqal.vqal_per_ID": "CASCADE",
     "volunteer_qualification_vqal.vqal_vpos_ID": "CASCADE",
     "volunteer_qualification_vqal.vqal_GrantedBy_per_ID": "SET NULL",
     "volunteer_schedule_vsch.vsch_vmin_ID": "CASCADE",
-    "volunteer_schedule_vsch.vsch_vtem_ID": "SET NULL",
+    "volunteer_schedule_vsch.vsch_vtem_ID": "CASCADE",
     "volunteer_schedule_vsch.vsch_event_type_id": "SET NULL",
     "volunteer_occurrence_vocc.vocc_vsch_ID": "CASCADE",
     "volunteer_occurrence_vocc.vocc_event_id": "SET NULL",
@@ -822,31 +825,34 @@ describe("API Private Volunteer v2 core schema", () => {
                 });
             });
 
-            it("does NOT catch two ministry-wide positions of the same name — the documented NULL trap", () => {
-                // §2.6: MySQL treats NULLs as distinct inside a UNIQUE index, so
-                // two vpos_vtem_ID IS NULL rows with the same name are accepted.
-                // VolunteerSetupService::createPosition() is what returns 409.
-                // This test pins the behaviour so nobody "fixes" it with a
-                // NOT NULL DEFAULT 0 sentinel, which would break the FK.
-                const ids = [];
-                dbOk(
+            it("refuses a position with no team at all (D18)", () => {
+                // This used to be "the documented NULL trap": vpos_vtem_ID was
+                // nullable, MySQL treats NULLs in a UNIQUE index as distinct, and two
+                // ministry-wide positions of the same name therefore both went in. That
+                // is exactly the ambiguity the "every ministry has at least one team"
+                // decision removes — a position with no team no longer exists, and the
+                // column says so, which also closes the duplicate hole for free.
+                cy.dbQuery(
                     `INSERT INTO volunteer_position_vpos
                         (vpos_vmin_ID, vpos_vtem_ID, vpos_Name, vpos_Active, vpos_Order)
                      VALUES (?, NULL, 'Ministry Wide', 1, 0)`,
                     [f.ministryCoffee],
-                ).then((rows) => ids.push(rows.insertId));
-                dbOk(
+                ).then((result) => {
+                    expect(result.error, "vpos_vtem_ID is NOT NULL").to.not.eq(null);
+                    expect(result.error.code).to.equal("ER_BAD_NULL_ERROR");
+                });
+            });
+
+            it("now catches a duplicate position name in the same team, whatever the team", () => {
+                // With no NULLs left in the key, vpos_ministry_team_name_uidx covers
+                // every position rather than only the team-scoped ones.
+                dbRejects(
                     `INSERT INTO volunteer_position_vpos
                         (vpos_vmin_ID, vpos_vtem_ID, vpos_Name, vpos_Active, vpos_Order)
-                     VALUES (?, NULL, 'Ministry Wide', 1, 0)`,
-                    [f.ministryCoffee],
-                ).then((rows) => {
-                    ids.push(rows.insertId);
-                    expect(ids, "both inserts accepted").to.have.length(2);
-                    cy.dbQuery(
-                        `DELETE FROM volunteer_position_vpos WHERE vpos_ID IN (?, ?)`,
-                        ids,
-                    );
+                     VALUES (?, ?, 'Milk Station', 1, 0)`,
+                    [f.ministryCoffee, f.teamCoffee],
+                ).then((err) => {
+                    expect(err.code).to.equal(DUP_ENTRY);
                 });
             });
 

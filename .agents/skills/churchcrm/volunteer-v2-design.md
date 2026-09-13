@@ -72,7 +72,7 @@ the epic (#9701) and from the church driving this work.
 
 | # | Use case | What it forces into the model |
 |---|---|---|
-| **UC1** | **Coffee Bar.** One ministry/team. 15 volunteers in one existing ChurchCRM Group. Five positions (Setup, Cleanup, Espresso, Milk Station, Expeditor). 2–3 people needed each Sunday. Volunteers hold multiple qualifications. Assignments rotate. Weekly notification; accept/decline; declines create gaps; qualified volunteers self-sign-up. | Group-as-pool; many-to-many qualification; a *count* requirement that is not one-per-position; self-service signup. |
+| **UC1** | **Coffee Bar.** One ministry with one team — the team the ministry was created with (D18). 15 volunteers in one existing ChurchCRM Group. Five positions (Setup, Cleanup, Espresso, Milk Station, Expeditor). 2–3 people needed each Sunday. Volunteers hold multiple qualifications. Assignments rotate. Weekly notification; accept/decline; declines create gaps; qualified volunteers self-sign-up. | Group-as-pool; many-to-many qualification; a *count* requirement that is not one-per-position; self-service signup. |
 | **UC2** | **Sunday Worship.** "Sunday Morning Worship" is a recurring ChurchCRM calendar event, Sundays 10:30–11:45. A coordinator (**not** a system administrator) fills Song Leader, Communion Leader, Opening Prayer, Closing Prayer and Preacher for each occurrence, weeks ahead, from qualified people. Volunteers confirm, decline, or propose a substitute who has already agreed; the coordinator approves or rejects. | Occurrence must be the **event** row; exactly-one-per-position requirements; substitution/swap as a first-class, coordinator-approved workflow; non-admin coordinator. |
 | **UC3** | **Parallel ministries on the same occurrence.** The sound booth needs Audio Engineers during that same service, under a **different** coordinator, in a different team/ministry. | Occurrence↔event is many-to-one: several V2 occurrences (different schedules, different ministries) may point at the same `events_event` row. Authorization is per ministry/team, not per event. |
 | **UC4** | **Children's Ministry.** One Ministry, several Teams, five weekly "events" (Elementary Bible Hour Sun 09:30–10:15, Nursery Bible Hour Sun 09:30–10:15, Children's Church Sun 10:30–11:45, Wednesday Night Elementary Wed 19:00–20:00, Wednesday Night Preschool Wed 19:00–20:00). Each team may have its own leader, or one coordinator manages all. For class-type events the coordinator also wants to see **attendance** (existing event check-in) alongside who served. | Teams under a Ministry; per-team leader scope; one schedule per weekly event; read-only reuse of `event_attend`. |
@@ -101,6 +101,7 @@ Non-hierarchical by design: **Teams under Ministry is sufficient. There are no n
 | D15 | **Reminders and scheduling**: there is no scheduler in ChurchCRM. V2 specifies a **notification outbox** table (idempotent enqueue keyed by assignment + type, send log, retry-safe) drained by the existing `POST /api/background/timerjobs` mechanism. Installations wanting punctual reminders configure a real cron or external ping of that endpoint with an API key — **zero code**. Best-effort delivery on page load is the documented fallback. | Resolves audit open question; see §3.6 |
 | D17 | **Release target is 7.8.0.** Volunteer v2 is excluded from 7.7.0 (maintainer, #9818/#9817/#9805). The rollout flag ships defaulting to `v1`, V1 stays fully compatible, and the authorization and migration prerequisites in this document remain explicit; V2 migration scripts are named `7.8.0-*` and are registered only when the 7.8.0 block opens. | Maintainer decision, 2026-09-12 |
 | D16 | **A person may hold multiple qualifications within the same team and the same ministry**, and may be assigned to different positions on different occurrences. **Multi-position on one occurrence is allowed**, with a UI warning and no server-side block — one person can lead singing and serve communion in the same service. The schema already permits all of this unchanged (§2.7, §2.11.2 I7). | Product decision |
+| D18 | **Every ministry always has at least one team, and positions and schedules always belong to a team.** Creating a ministry auto-creates its first team, named `"{Ministry name} Team"`, in the same transaction as the ministry; it is an ordinary team and can be renamed. `vpos_vtem_ID` and `vsch_vtem_ID` are **`NOT NULL`**, their foreign keys are `ON DELETE CASCADE` (a `NOT NULL` column cannot take `SET NULL`), and the API answers `400` to a position or schedule with no `teamId`. A ministry's **only** team cannot be deleted — `409`, *"A ministry needs at least one team. Rename it instead."* — while deleting the ministry still takes its teams with it. Scope semantics are unchanged: a ministry coordinator manages every team of their ministry, a team leader their own. **Why:** the "ministry-wide position" this replaces was the mechanism behind a real ambiguity — two teams under "Children's Ministry" each owned a "Lead Teacher", and a ministry-wide view listed the name twice with nothing to say which team it meant. Where a screen can still show positions from more than one team (the qualification matrix with its filter on *All teams*, a cross-team "still needed" line, a dashboard gap list), a position is labelled `"{Team} · {Position}"`; where the context is already one team, the bare name stands. | Church product decision |
 
 #### D14 — rationale and the alternative
 
@@ -427,8 +428,8 @@ erDiagram
     volunteer_ministry_vmin ||--o{ volunteer_schedule_vsch  : "schedules"
     volunteer_ministry_vmin ||--o{ events_event             : "optionally owns"
 
-    volunteer_team_vtem     ||--o{ volunteer_position_vpos  : "may own"
-    volunteer_team_vtem     ||--o{ volunteer_schedule_vsch  : "may own"
+    volunteer_team_vtem     ||--o{ volunteer_position_vpos  : "owns"
+    volunteer_team_vtem     ||--o{ volunteer_schedule_vsch  : "owns"
 
     volunteer_position_vpos ||--o{ volunteer_qualification_vqal : "qualifies for"
     volunteer_position_vpos ||--o{ volunteer_requirement_vreq   : "is required by"
@@ -500,9 +501,14 @@ finest authorization scope (Team Leader) and the usual owner of a pool and a sch
 
 Indexes: `vtem_ministry_name_uidx UNIQUE (vtem_vmin_ID, vtem_Name)`, `vtem_ministry_idx (vtem_vmin_ID)`.
 
-A ministry with no teams is legal (UC1: Coffee Bar is one ministry, one team — the coordinator may
-skip the team step and the setup wizard creates a single default team named after the ministry, so
-that scope and pool always have a team to hang on; see §5.3).
+**A ministry never has zero teams (D18).** `VolunteerSetupService::createMinistry()` creates the
+first one — `"{Ministry name} Team"` — inside the same transaction as the ministry, so the API, the
+setup wizard and any future importer all get it without each remembering to. It is an ordinary row:
+rename it, add more beside it. What cannot happen is removing the last one — `deleteTeam()` answers
+`409` *"A ministry needs at least one team. Rename it instead."* — because a ministry with no team
+has nowhere to put a position or a schedule, both of which are now `NOT NULL` on their team column.
+Deleting the **ministry** still cascades its teams away as before. UC1 is exactly this shape: Coffee
+Bar is one ministry with the one team it was born with (§5.3).
 
 ### 2.5 Volunteer Pool — `volunteer_pool_vpol` (the Group link)
 
@@ -538,7 +544,7 @@ Teacher. Owned by a ministry; optionally narrowed to a team.
 |---|---|---|---|
 | `vpos_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vpos_vmin_ID` | `MinistryId` | `INTEGER` required | FK → `volunteer_ministry_vmin.vmin_ID`, `ON DELETE CASCADE` |
-| `vpos_vtem_ID` | `TeamId` | `INTEGER` null | FK → `volunteer_team_vtem.vtem_ID`, `ON DELETE SET NULL`. `NULL` = ministry-wide position. |
+| `vpos_vtem_ID` | `TeamId` | `INTEGER` required | FK → `volunteer_team_vtem.vtem_ID`, `ON DELETE CASCADE`. **Every position belongs to a team** (D18); there is no ministry-wide position. `CASCADE` rather than `SET NULL` because the column is `NOT NULL`; it never actually fires, since `deleteTeam()` refuses a team that still owns positions. |
 | `vpos_Name` | `Name` | `VARCHAR(100)` required | |
 | `vpos_Description` | `Description` | `VARCHAR(255)` null | "operational requirements" per #9715 live here as prose. |
 | `vpos_Active` | `Active` | `BOOLEAN` required default `1` | #9715: deactivation must not destroy history — so **deactivate, never delete**, once assignments exist. |
@@ -547,13 +553,15 @@ Teacher. Owned by a ministry; optionally narrowed to a team.
 Indexes: `vpos_ministry_team_name_uidx UNIQUE (vpos_vmin_ID, vpos_vtem_ID, vpos_Name)`,
 `vpos_ministry_active_idx (vpos_vmin_ID, vpos_Active)`.
 
-> **MySQL trap, documented deliberately.** In a `UNIQUE` index MySQL treats `NULL`s as distinct, so
-> the unique above does **not** prevent two ministry-wide positions with the same name
-> (`vpos_vtem_ID IS NULL` twice). `VolunteerSetupService::createPosition()` therefore performs an
-> explicit case-insensitive duplicate check within the ministry, and the API returns `409`. The
-> index still buys idempotency for team-scoped positions. Do not "fix" this by giving
-> `vpos_vtem_ID` a `NOT NULL DEFAULT 0` sentinel — that is the `event_types.type_grpid` anti-pattern
-> and it breaks the FK.
+> **The MySQL NULL trap this index used to have is gone.** While `vpos_vtem_ID` was nullable, MySQL
+> treated two `NULL`s in the `UNIQUE` key as distinct, so two ministry-wide positions could share a
+> name. D18 made the column `NOT NULL` — with a real team on every row the key now catches every
+> duplicate by itself. `VolunteerSetupService::createPosition()` keeps its explicit check anyway,
+> for two reasons that have nothing to do with NULLs: the index would raise a driver error rather
+> than a `409`, and the index is case-insensitive only by collation accident, while the service
+> means it. Note what was *not* done: the column is `NOT NULL` because every position genuinely has
+> a team, **not** via a `NOT NULL DEFAULT 0` sentinel — that is the `event_types.type_grpid`
+> anti-pattern and it would break the FK.
 
 **Deleting a position** is allowed only when it has no qualifications, requirements or assignments;
 otherwise the API returns `409` with a count, mirroring `DELETE /api/volunteer-opportunities/{id}`
@@ -619,7 +627,7 @@ violates the product principle ("set it up once"); it is available as a per-occu
 |---|---|---|---|
 | `vsch_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vsch_vmin_ID` | `MinistryId` | `INTEGER` required | FK → ministry, `ON DELETE CASCADE` |
-| `vsch_vtem_ID` | `TeamId` | `INTEGER` null | FK → team, `ON DELETE SET NULL` |
+| `vsch_vtem_ID` | `TeamId` | `INTEGER` required | FK → team, `ON DELETE CASCADE`. **Every schedule belongs to a team** (D18), so the positions its staffing plan may name are exactly that team's. |
 | `vsch_Name` | `Name` | `VARCHAR(100)` required | e.g. "Sunday Morning Worship", "Coffee Bar — Sunday" |
 | `vsch_LinkMode` | `LinkMode` | `enum('event_type','standalone')` required | |
 | `vsch_event_type_id` | `EventTypeId` | `INTEGER` null | FK → `event_types.type_id`, `ON DELETE SET NULL`. Required when `LinkMode = 'event_type'`. |
@@ -1711,10 +1719,11 @@ EditSelf-exclusive persona's home (D14, §4.7).
 - A `ministry` scope row grants authority over that ministry **and everything under it**: its teams,
   positions, qualifications, schedules, occurrences, assignments, swaps, and its ministry-linked
   events.
-- A `team` scope row grants authority over that team only: its pools, its team-scoped positions and
-  their qualifications, its schedules, and the assignments on occurrences of those schedules. A
-  team leader may **not** create ministries, teams or ministry-wide positions, and may not manage
-  ministry-linked events.
+- A `team` scope row grants authority over that team only: its pools, its positions and their
+  qualifications, its schedules, and the assignments on occurrences of those schedules. A team
+  leader may **not** create ministries or teams, may not touch another team's positions (D18 leaves
+  no position outside a team, so "another team's" is the whole of what is out of reach), and may not
+  manage ministry-linked events.
 - `getManagedTeamIds()` returns own team scopes **∪** every team under a managed ministry. This is
   what makes the hierarchy real rather than two independent lists.
 - **Read scoping happens in the query, not in PHP.** Every list endpoint filters with
@@ -1794,8 +1803,7 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 | Create / edit team | ✓ | ✓ | scope | ✗ | ✗ |
 | Link / unlink a pool Group | ✓ | ✓ | scope | scope (own team) | ✗ |
 | **Add/remove people in the pool Group** | ✓ | needs `ManageGroups` | needs `ManageGroups` | needs `ManageGroups` | ✗ |
-| Create / edit ministry-wide position | ✓ | ✓ | scope | ✗ | ✗ |
-| Create / edit team-scoped position | ✓ | ✓ | scope | scope (own team) | ✗ |
+| Create / edit position | ✓ | ✓ | scope | scope (own team) | ✗ |
 | Deactivate position | ✓ | ✓ | scope | scope (own team) | ✗ |
 | Grant / revoke qualification | ✓ | ✓ | scope | scope (own team's positions) | ✗ |
 | Create / edit schedule | ✓ | ✓ | scope | scope (own team) | ✗ |
@@ -2012,7 +2020,9 @@ line with an Edit link; the Next button is disabled until the step is valid.
 
 ```
 1. Ministry      name, description                     (Manager only; coordinators start at step 2)
-2. Team          name — or "skip, one team" which silently creates a default team named after the ministry
+2. Team          the ministry was created with one, "{Ministry} Team" (D18) — rename it, or add more
+                   beside it. One short line says so: "Every ministry has at least one team; rename
+                   this one or add more."
 3. Volunteer pool  pick an existing Group via window.CRM.groups.promptSelection() (G4)
                    → shows member count immediately; "Create a new Group" links to /groups/editor
 4. Positions     repeatable inline rows: name, description, active

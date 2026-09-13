@@ -87,9 +87,19 @@ let teamB = 0;
 let positionSetup = 0;
 let positionEspresso = 0;
 let positionExpeditor = 0;
-/** Ministry-wide in B, plus one scoped to team B: the team-leader boundary. */
-let positionBWide = 0;
+/**
+ * Two positions in ministry B, in two DIFFERENT teams: the team-leader boundary.
+ *
+ * `positionBTeam` is in team B, which person 3 leads. `positionBOtherTeam` is in
+ * the team ministry B was created with, which they do not — it used to be a
+ * ministry-wide position, and since every position now belongs to a team, another
+ * team's position is what "outside this leader's scope, inside the same ministry"
+ * means.
+ */
+let positionBOtherTeam = 0;
 let positionBTeam = 0;
+/** The team ministry B was born with; nobody in this spec leads it. */
+let teamBDefault = 0;
 
 function userKey() {
     return Cypress.env("user.api.key");
@@ -169,7 +179,14 @@ function createTeam(ministryId, name) {
         .then((resp) => resp.body.team.id);
 }
 
-function createPosition(ministryId, name, teamId = null) {
+/** The team a ministry was born with — every ministry is created with one. */
+function defaultTeam(ministryId) {
+    return cy
+        .makePrivateAdminAPICall("GET", `${MINISTRIES_URL}/${ministryId}`, null, 200)
+        .then((resp) => resp.body.teams[0].id);
+}
+
+function createPosition(ministryId, name, teamId) {
     return cy
         .makePrivateAdminAPICall(
             "POST",
@@ -236,7 +253,9 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
 
         createMinistry("Coffee Bar").then((id) => {
             ministryA = id;
-            createTeam(ministryA, "Coffee Bar Team").then((teamId) => {
+            // The ministry came with "<name> Team"; adopt it rather than asking for a
+            // second team of the same name, which is now a 409.
+            defaultTeam(ministryA).then((teamId) => {
                 teamA = teamId;
                 createPosition(ministryA, "Setup", teamA).then((p) => {
                     positionSetup = p;
@@ -258,8 +277,12 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
                     positionBTeam = p;
                 });
             });
-            createPosition(ministryB, "Audio Engineer").then((p) => {
-                positionBWide = p;
+            // A position in ministry B's OTHER team — the one it was created with.
+            defaultTeam(ministryB).then((teamId) => {
+                teamBDefault = teamId;
+                createPosition(ministryB, "Audio Engineer", teamBDefault).then((p) => {
+                    positionBOtherTeam = p;
+                });
             });
         });
     });
@@ -826,7 +849,7 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
             ).then((resp) => {
                 const positionIds = resp.body.positions.map((p) => p.id);
                 expect(positionIds).to.include(positionBTeam);
-                expect(positionIds).to.not.include(positionBWide);
+                expect(positionIds).to.not.include(positionBOtherTeam);
                 expect(resp.body.teamId).to.eq(teamB);
             });
         });
@@ -976,14 +999,14 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
             cy.makePrivateAPICall(
                 userKey(),
                 "POST",
-                `${VOLUNTEER_URL}/positions/${positionBWide}/qualifications`,
+                `${VOLUNTEER_URL}/positions/${positionBOtherTeam}/qualifications`,
                 { personId: 4 },
                 403,
             );
             cy.makePrivateAPICall(
                 userKey(),
                 "GET",
-                `${VOLUNTEER_URL}/positions/${positionBWide}/qualifications`,
+                `${VOLUNTEER_URL}/positions/${positionBOtherTeam}/qualifications`,
                 null,
                 403,
             );
@@ -1007,12 +1030,13 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
                 );
             });
 
-            // The ministry-wide position of the same ministry belongs to the
-            // coordinator, not to the team leader (§4.6, canManagePosition).
+            // A position in ANOTHER team of the same ministry belongs to that
+            // team's leader and to the ministry's coordinator, never to this leader
+            // (§4.6, canManagePosition).
             cy.makePrivateAPICall(
                 userKey(),
                 "POST",
-                `${VOLUNTEER_URL}/positions/${positionBWide}/qualifications`,
+                `${VOLUNTEER_URL}/positions/${positionBOtherTeam}/qualifications`,
                 { personId: 4 },
                 403,
             );

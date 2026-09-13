@@ -61,6 +61,8 @@ const EVENT_TITLE = `${FIXTURE_PREFIX} Linked Service`;
 let ministryA = 0;
 let ministryB = 0;
 let teamA1 = 0;
+/** Ministry B's team — a schedule always names a team of its own ministry. */
+let teamB1 = 0;
 let positionOne = 0;
 let positionTwo = 0;
 let scopeIdCoordinator = 0;
@@ -197,6 +199,9 @@ function createPosition(ministryId, teamId, name, order) {
 function linkedScheduleBody(overrides = {}) {
     return {
         name: `${FIXTURE_PREFIX} Linked`,
+        // Every schedule belongs to a team, so the minimal VALID body names one.
+        // The tests about a bad team still override it.
+        teamId: teamA1,
         linkMode: "event_type",
         eventTypeId: CHURCH_SERVICE_TYPE,
         windowStart: isoDate(0),
@@ -208,6 +213,7 @@ function linkedScheduleBody(overrides = {}) {
 function standaloneScheduleBody(overrides = {}) {
     return {
         name: `${FIXTURE_PREFIX} Standalone`,
+        teamId: teamA1,
         linkMode: "standalone",
         recurType: "weekly",
         recurDow: "Tuesday",
@@ -257,6 +263,9 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
         createMinistry("Ministry B").then((id) => {
             ministryB = id;
+            createTeam(ministryB, "Team B1").then((teamId) => {
+                teamB1 = teamId;
+            });
         });
 
         // The coordinator persona: person 3 with a ministry scope on A only.
@@ -1082,11 +1091,14 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             ).then((id) => {
                 scheduleInA = id;
             });
+            // standaloneScheduleBody() defaults to ministry A's team, which is the
+            // wrong ministry here — a schedule has to name a team of its OWN ministry.
             createSchedule(
                 ministryB,
                 standaloneScheduleBody({
                     name: `${FIXTURE_PREFIX} Scope B`,
                     recurDow: "Saturday",
+                    teamId: teamB1,
                 }),
             ).then((id) => {
                 scheduleInB = id;

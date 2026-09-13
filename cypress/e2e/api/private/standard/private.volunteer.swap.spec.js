@@ -271,12 +271,11 @@ before(() => {
         ministryId = resp.body.ministry.id;
     });
 
+    // The ministry was created with "<name> Team" already in it, so the fixture
+    // adopts that team rather than asking for a second one of the same name.
     cy.then(() => {
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/teams`, {
-            name: `${FIXTURE_PREFIX} Worship Team`,
-            description: "volunteer v2 swap fixture",
-        }, 201).then((resp) => {
-            teamId = resp.body.team.id;
+        api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/ministries/${ministryId}`, null, 200).then((resp) => {
+            teamId = resp.body.teams[0].id;
         });
     });
 
