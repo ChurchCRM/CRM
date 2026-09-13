@@ -1,32 +1,32 @@
 {
-  "CSV": "",
-  "OFX": "",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "द्विकारक प्रमाणीकरण (2FA) आवश्यक है। आपके पास नामांकन करने के लिए %d दिन है।|द्विकारक प्रमाणीकरण (2FA) आवश्यक है। आपके पास नामांकन करने के लिए %d दिन हैं।",
-    "other": ""
+    "one": "द्विकारक प्रमाणीकरण (2FA) आवश्यक है। आपके पास नामांकन करने के लिए %d दिन है।",
+    "other": "द्विकारक प्रमाणीकरण (2FA) आवश्यक है। नामांकन के लिए आपके पास %d दिन शेष हैं।"
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} सदस्य कॉपी किया गया",
+    "other": "{{count}} सदस्य कॉपी किए गए"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "इस सूची में {{count}} प्राप्तकर्ता है — mailto: लिंक के लिए बहुत अधिक है। इसके बजाय \"पते कॉपी करें\" का उपयोग करें।",
+    "other": "इस सूची में {{count}} प्राप्तकर्ता हैं — mailto: लिंक के लिए बहुत अधिक हैं। इसके बजाय \"पते कॉपी करें\" का उपयोग करें।"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ईमेल क्लाइंट के लिए बहुत अधिक प्राप्तकर्ता हैं ({{count}} > {{max}})। इसके बजाय \"पते कॉपी करें\" का उपयोग करें।",
+    "other": "ईमेल क्लाइंट के लिए बहुत अधिक प्राप्तकर्ता हैं ({{count}} > {{max}})। इसके बजाय \"पते कॉपी करें\" का उपयोग करें।"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} मिनट शेष",
+    "other": "{{count}} मिनट शेष"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} परिवार को जियोकोड नहीं किया जा सका",
+    "other": "{{count}} परिवारों को जियोकोड नहीं किया जा सका"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…और {{count}} अधिक। बाकी देखने के लिए फिर से चलाएं।",
+    "other": "…और {{count}} अधिक। बाकी देखने के लिए फिर से चलाएं।"
   }
 }
