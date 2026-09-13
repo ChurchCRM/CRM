@@ -84,7 +84,7 @@ Non-hierarchical by design: **Teams under Ministry is sufficient. There are no n
 
 | # | Decision | Source |
 |---|---|---|
-| D1 | **Groups are the volunteer pool/roster.** V2 stores a reference to `group_grp.grp_ID`; it never copies membership. | #9701 |
+| D1 | **Groups are the volunteer pool/roster.** V2 never copies membership. *(Amended by D19: the reference is `group_grp.grp_ministry_id` on the Group, not a row in a link table — a ministry owns exactly one Group.)* | #9701 |
 | D2 | **Qualifications are NOT Group Roles.** Qualification is a separate many-to-many person↔position relation. | #9701, and structurally forced (§2) |
 | D3 | **Occurrences/shifts are separate from assignments.** | #9701 |
 | D4 | **When a schedule is linked to a ChurchCRM Event, the event occurrence is authoritative** for date/time and occurrence identity. No second recurrence engine for linked schedules. Unlinked schedules may generate their own occurrences. | #9701, #9708, #9713 |
@@ -101,6 +101,7 @@ Non-hierarchical by design: **Teams under Ministry is sufficient. There are no n
 | D15 | **Reminders and scheduling**: there is no scheduler in ChurchCRM. V2 specifies a **notification outbox** table (idempotent enqueue keyed by assignment + type, send log, retry-safe) drained by the existing `POST /api/background/timerjobs` mechanism. Installations wanting punctual reminders configure a real cron or external ping of that endpoint with an API key — **zero code**. Best-effort delivery on page load is the documented fallback. | Resolves audit open question; see §3.6 |
 | D17 | **Release target is 7.8.0.** Volunteer v2 is excluded from 7.7.0 (maintainer, #9818/#9817/#9805). The rollout flag ships defaulting to `v1`, V1 stays fully compatible, and the authorization and migration prerequisites in this document remain explicit; V2 migration scripts are named `7.8.0-*` and are registered only when the 7.8.0 block opens. | Maintainer decision, 2026-09-12 |
 | D16 | **A person may hold multiple qualifications within the same team and the same ministry**, and may be assigned to different positions on different occurrences. **Multi-position on one occurrence is allowed**, with a UI warning and no server-side block — one person can lead singing and serve communion in the same service. The schema already permits all of this unchanged (§2.7, §2.11.2 I7). | Product decision |
+| D19 | **A ministry owns exactly one core Group — its volunteer pool — and coordinators may write it.** Creating a ministry creates that Group in the same transaction: named after the ministry, typed "Ministry", carrying a new nullable core column `group_grp.grp_ministry_id` (FK → `vmin_ID`, `ON DELETE SET NULL`). Renaming the ministry renames the Group; deleting the ministry deletes it. The `volunteer_pool_vpol` link table is **removed** — nothing had shipped, and the Group's own ministry id is the link. Three consequences follow. **(a) The `bManageGroups` model hooks gain one exception** (F21 fixed rather than worked around): a write to a Group carrying a ministry id is allowed when the caller coordinates that ministry — decided by `VolunteerAuthorizationService` reading `volunteer_scope_vscp`, never `$_SESSION`, so API-key callers are judged identically — or when a V2 service has opened an explicit managed-write context (`VolunteerPoolWriter::run()`) after authorizing the write itself. A Group with a NULL ministry id takes the unchanged V1 path, flag and all. **(b) Qualification no longer requires pool membership, in either direction**: the picker may name anyone, qualifying somebody outside the pool ADDS them to it, revoking a qualification never removes them, and the qualification matrix's rows are the pool ∪ everyone qualified. Self-signup and `GET /me/opportunities` test qualification only — I3 is gone from the member surface (the coordinator's out-of-pool override is unchanged). **(c) A ministry can advertise**: `vmin_HelpWanted` / `vmin_HelpWantedText` put it on the Open Opportunities page with an "I'd like to help" button that joins the pool and mails the coordinators (outbox type `help_offer`, one per coordinator per day). The Groups module keeps the Group fully visible and its MEMBERSHIP fully editable; only its identity moves — `POST`/`DELETE /api/groups/{id}` answer `409`, the editor redirects, and the page says whose pool it is. **Why:** D-1's read-only pool was the single most-reported friction in review — a coordinator could see who was in their pool and not add to it, and the fix "give every coordinator `bManageGroups`" grants edit rights over every group in the church. Owning the Group is what makes a narrow exception expressible at all. | Church product decision |
 | D18 | **Every ministry always has at least one team, and positions and schedules always belong to a team.** Creating a ministry auto-creates its first team, named `"{Ministry name} Team"`, in the same transaction as the ministry; it is an ordinary team and can be renamed. `vpos_vtem_ID` and `vsch_vtem_ID` are **`NOT NULL`**, their foreign keys are `ON DELETE CASCADE` (a `NOT NULL` column cannot take `SET NULL`), and the API answers `400` to a position or schedule with no `teamId`. A ministry's **only** team cannot be deleted — `409`, *"A ministry needs at least one team. Rename it instead."* — while deleting the ministry still takes its teams with it. Scope semantics are unchanged: a ministry coordinator manages every team of their ministry, a team leader their own. **Why:** the "ministry-wide position" this replaces was the mechanism behind a real ambiguity — two teams under "Children's Ministry" each owned a "Lead Teacher", and a ministry-wide view listed the name twice with nothing to say which team it meant. Where a screen can still show positions from more than one team (the qualification matrix with its filter on *All teams*, a cross-team "still needed" line, a dashboard gap list), a position is labelled `"{Team} · {Position}"`; where the context is already one team, the bare name stands. | Church product decision |
 
 #### D14 — rationale and the alternative
@@ -209,7 +210,7 @@ be false, the section that depends on it must be revisited.
 |---|---|---|
 | F19 | `person2group2role_p2g2r` has PK `(p2g2r_per_ID, p2g2r_grp_ID)` — **one role per person per group**. Multi-position qualification on Group Roles is structurally impossible. | `orm/schema.xml:296-301` |
 | F20 | `GroupService::deleteGroupRole()` **renumbers** the `lst_OptionID` of every surviving higher role. Any FK a V2 table kept to a role id would silently re-point. | `GroupService.php:262-269` |
-| F21 | `Group::preSave/preInsert/preUpdate/preDelete` and the four equivalents on `Person2group2roleP2g2r` call `AuthService::requireUserGroupMembership('bManageGroups')`, which reads `$_SESSION` flags that `APITokenAuthentication` never sets. A non-admin coordinator cannot save a Group through the ORM, and an API-key caller falls back to `isAdmin()`. | `Group.php:34-60`; `Person2group2roleP2g2r.php:22-46`; `AuthService.php:23-48`; `LocalAuthentication.php:98-99` |
+| F21 | `Group::preSave/preInsert/preUpdate/preDelete` and the four equivalents on `Person2group2roleP2g2r` call `AuthService::requireUserGroupMembership('bManageGroups')`, which reads `$_SESSION` flags that `APITokenAuthentication` never sets. A non-admin coordinator cannot save a Group through the ORM, and an API-key caller falls back to `isAdmin()`. **D19 amends this, narrowly:** the V1 check is asked first and still wins; only when it says no is a second question asked, and only a Group carrying `grp_ministry_id` can answer it yes — through the scope table rather than `$_SESSION`, so the API-key degradation this row describes does not reappear in the exception (§4.6). | `Group.php`; `Person2group2roleP2g2r.php`; `AuthService.php`; `VolunteerPoolWriter.php`; `LocalAuthentication.php:98-99` |
 | F22 | `GroupQuery::preSelect()` unconditionally injects a LEFT JOIN, `COUNT()`, `GROUP BY Group.Id` and a second LEFT JOIN into **every** query built from `GroupQuery`. | `src/ChurchCRM/model/ChurchCRM/GroupQuery.php:23-36` |
 | F23 | `Event::preDelete()` hard-deletes child rows (`calendar_events`, `event_audience`, `event_attend`, `eventcounts_evtcnt`, `kioskassginment_kasm`) because Propel does not cascade event FKs. | `src/ChurchCRM/model/ChurchCRM/Event.php:51-62` |
 | F24 | All event DATETIMEs store **naive wall-clock in `sTimeZone`**. Never UTC. PHP's default timezone is set to `sTimeZone` at bootstrap. The frontend keeps wall-clock strings, never JS `Date`. | `.agents/skills/churchcrm/timezone-handling.md`; `Bootstrapper.php:284`; `src/Include/Header.php:177` |
@@ -247,9 +248,9 @@ Legend for **Decision**:
 
 | Id | Capability | Existing code location | Decision | Notes |
 |---|---|---|---|---|
-| G1 | Volunteer pool / roster (who belongs) | `orm/schema.xml:251-275` (`group_grp`), `:295-318` (`person2group2role_p2g2r`); `src/ChurchCRM/Service/GroupService.php` | **Reuse** | V2 stores a `grp_ID` reference on `volunteer_pool_vpol` (§2.5). V2 **never** copies membership rows. Group membership remains the source of truth for who is in the pool. |
+| G1 | Volunteer pool / roster (who belongs) | `orm/schema.xml` (`group_grp`, `person2group2role_p2g2r`); `src/ChurchCRM/Service/GroupService.php` | **Reuse** | D19: the ministry OWNS a `group_grp` row, marked by `grp_ministry_id` (§2.5). V2 **never** copies membership rows — group membership remains the source of truth for who is in the pool, and the Groups module remains a working second door to it. |
 | G2 | Group member list | `src/api/routes/people/people-groups.php:227` `GET /groups/{id}/members` | **Reuse** | Returns `Person2group2roleP2g2rs[]` with the family address merged in. The V2 pool screen calls this directly; it does not re-implement a member list. |
-| G3 | Add/remove pool member | `people-groups.php:923` `POST /groups/{id}/addperson/{userID}`, `:887` `DELETE /groups/{id}/removeperson/{userID}` | **Reuse** | Already fires `Hooks::GROUP_MEMBER_ADDED/REMOVED` and writes a person timeline Note. **Trap:** the whole write block is gated on `ManageGroups` (`:1195`) and the ORM hooks require it too (F21) — see §4.6 for what a coordinator without `ManageGroups` can and cannot do. |
+| G3 | Add/remove pool member | `people-groups.php:923` `POST /groups/{id}/addperson/{userID}`, `:887` `DELETE /groups/{id}/removeperson/{userID}` | **Reuse the MECHANISM, not the route** | Those routes stay exactly as they are and keep working for anyone with `ManageGroups`, on a managed group as on any other. V2's own `POST`/`DELETE /api/volunteer/ministries/{id}/pool/{personId}` write through the same Propel membership model so `Hooks::GROUP_MEMBER_ADDED/REMOVED` still fire — a plugin cannot tell which door the member came through. The reason for a second door rather than a proxy is D19's hook exception: the V2 route is reachable by a coordinator **without** `ManageGroups`, and the core route is not (§4.6). |
 | G4 | Group + role picker modal | `src/skin/js/CRMJSOM.js:165` `window.CRM.groups.promptSelection()` | **Reuse** | Handles the Bootstrap modal lifecycle, TomSelect teardown and i18n already. Used to pick the pool Group in the setup flow. |
 | G5 | Group Roles as **team leadership** marker | `list_lst` via `grp_RoleListID`; `people-groups.php:279`, `:1076` | **Do not use** | Tempting, but rejected: role ids renumber on delete (F20), role lists are per-group with free-text names, `Install.sql:352-390` seeds no "Leader" role anywhere, and `SundaySchoolService::getClassByRole()` (`:210-232`) shows the existing resolution is by literal name string. Team Leader is a `volunteer_scope_vscp` row instead (§4.4). |
 | G6 | Group Roles as **qualification** model | `person2group2role_p2g2r` PK `(PersonId, GroupId)` | **Do not use** | Structurally impossible: one role per person per group (F19). This is also the epic's explicit ruling. |
@@ -322,7 +323,7 @@ Legend for **Decision**:
 | A9 | Read-open / write-gated API split | `src/api/routes/people/people-groups.php:68` (ungated read block) vs `:765`…`:1195` (write block gated) | **Reuse** | V2 uses the same two-block idiom inside `/api/volunteer`. |
 | A10 | Denial UX | `/v2/access-denied?role=…`; allow-list at `src/v2/routes/root.php:24-35`; `RedirectUtils::securityRedirect()` (`src/ChurchCRM/Utils/RedirectUtils.php:34-38`) | **Extend** | Add `'VolunteerManager'` and `'VolunteerCoordinator'` to the allow-list array, **or the denial page renders no reason at all**. |
 | A11 | Menu visibility | `src/ChurchCRM/Config/Menu/Menu.php:38-49` (top-level registry), `MenuItem::__construct($name, $uri, $hasPermission = true, $icon = '')` (`MenuItem.php:18`) | **Reuse** | Permission is a plain boolean 3rd argument — **no closures**. `isVisible()` hides a parent whose children are all hidden (`MenuItem.php:109-116`). Menu visibility must mirror the route middleware exactly. |
-| A12 | Model-layer (ORM lifecycle) authorization | `AuthService::requireUserGroupMembership()` (`AuthService.php:23`) called from `Group`/`Person2group2roleP2g2r` `pre*` hooks | **Do not use** | It reads `$_SESSION` flags that `APITokenAuthentication` never sets (F21), so it silently degrades to admin-only for API-key callers. V2 puts **no** authorization in Propel lifecycle hooks. |
+| A12 | Model-layer (ORM lifecycle) authorization | `AuthService::requireUserGroupMembership()` (`AuthService.php:23`) called from `Group`/`Person2group2roleP2g2r` `pre*` hooks | **Do not use — one audited exception (D19)** | It reads `$_SESSION` flags that `APITokenAuthentication` never sets (F21), so it silently degrades to admin-only for API-key callers. V2 puts no authorization of its own in Propel lifecycle hooks, and defines **no** `pre*` hooks on its own models. The single exception is the D19 pool-group exception added to the two CORE models, which exists precisely to *narrow* an existing hook rather than to add one, and which answers through the scope table so it does not inherit the defect (§4.6). |
 | A13 | CSRF on API POSTs | `CSRFMiddleware` is applied on exactly **one** route in the app (`src/admin/routes/system.php:78`), and skips validation when `X-API-Key` is present (`CSRFMiddleware.php:40-44`) | **Reuse the status quo** | `/api` is not CSRF-protected anywhere. Adding CSRF to V2 alone would be inconsistent and would break the Cypress API helpers. Deliberately **not** an [Appendix E](#appendix-e--prerequisite-hardening-track) prerequisite: it is a project-wide decision about the whole `/api` surface, nothing in V2 depends on it, and V2 introduces no new exposure by matching the status quo. Raise it on its own if the maintainer wants it. |
 | A14 | Input sanitization | `InputSanitizationMiddleware` (`src/ChurchCRM/Slim/Middleware/InputSanitizationMiddleware.php:37`), types `text` / `html` / `int` | **Extend** | V2 needs `date`, `datetime` and `enum:a,b,c`. Add those types to the **shared** middleware (epic rule: prefer a reusable implementation), with tests. Until it lands, validate in the handler with `in_array($v, [...], true)`. |
 
@@ -388,7 +389,7 @@ Derived from `db-schema-migration.md` and from the newest real table in the tree
 | Index names | `<prefix>_<what>_idx` / `<prefix>_<what>_uidx`. |
 | Enums | `type="CHAR" sqlType="enum('a','b')"` in `schema.xml`, mirrored by a PHP class constant list on the model. **Never** copy V1's `enum('true','false')` string-boolean (`vol_Active`); use `BOOLEAN` + `tinyint(1) unsigned`. |
 | Timestamps | `TIMESTAMP` / `DATETIME` storing **naive wall-clock in `sTimeZone`** (F24). |
-| FK constraints | V2 tables **do** declare real `FOREIGN KEY` constraints in both `schema.xml` and the migration SQL — note that they are the **first enforced foreign keys in the schema**: existing tables declare `<foreign-key>` in `schema.xml` only, and `Install.sql` carries no `FOREIGN KEY` clause (verified in #9705). The parents V2 references (`person_per`, `group_grp`, `events_event`, `event_types`) have been InnoDB since at least 6.0.0, and the 6.0.0 → current upgrade with the constraints was verified in #9705 (to be re-run when the scripts are registered in the 7.8.0 block). Except where the reference is polymorphic (`volunteer_scope_vscp.vscp_ScopeId`, `volunteer_pool_vpol.vpol_OwnerId`) — same limitation `record2property_r2p` lives with (`orm/schema.xml:756-768`), enforced in the service instead. |
+| FK constraints | V2 tables **do** declare real `FOREIGN KEY` constraints in both `schema.xml` and the migration SQL — note that they are the **first enforced foreign keys in the schema**: existing tables declare `<foreign-key>` in `schema.xml` only, and `Install.sql` carries no `FOREIGN KEY` clause (verified in #9705). The parents V2 references (`person_per`, `group_grp`, `events_event`, `event_types`) have been InnoDB since at least 6.0.0, and the 6.0.0 → current upgrade with the constraints was verified in #9705 (to be re-run when the scripts are registered in the 7.8.0 block). Except where the reference is polymorphic (`volunteer_scope_vscp.vscp_ScopeId`) — same limitation `record2property_r2p` lives with (`orm/schema.xml:756-768`), enforced in the service instead. |
 | Redundant `UNIQUE(pk)` | **never** — several legacy tables carry one (`volunteeropportunity_vol` `:677-679`); do not copy. |
 | `description` attribute | required on every table and on any column whose purpose is not obvious. The newest tables do this. |
 
@@ -399,7 +400,7 @@ Derived from `db-schema-migration.md` and from the newest real table in the tree
 | Ministry | `volunteer_ministry_vmin` | organizational area (Coffee Bar, Worship, Children's Ministry) | Ministry |
 | Team | `volunteer_team_vtem` | operational team inside a ministry | Team |
 | Position | `volunteer_position_vpos` | a role a volunteer can serve in | Position |
-| Volunteer Pool | `volunteer_pool_vpol` | link ministry/team → existing `group_grp` | Volunteer Pool |
+| Volunteer Pool | **no table** — `group_grp.grp_ministry_id` (D19) | the ministry's own Group | Volunteer Pool |
 | Qualification | `volunteer_qualification_vqal` | person ↔ position eligibility | Qualification |
 | Schedule | `volunteer_schedule_vsch` | the recurring series V2 owns | (implied by #9708) |
 | Occurrence | `volunteer_occurrence_vocc` | one concrete opportunity to serve | Shift/Occurrence |
@@ -411,7 +412,8 @@ Derived from `db-schema-migration.md` and from the newest real table in the tree
 | Notification outbox | `volunteer_notification_vntf` | idempotent enqueue + send log | (#9710, D15) |
 | Scope | `volunteer_scope_vscp` | user → ministry/team authority | (#9706) |
 
-Plus **one nullable column on a core table**: `events_event.event_ministry_id` (§2.16).
+Plus **two nullable columns on core tables**: `events_event.event_ministry_id` (§2.16) and
+`group_grp.grp_ministry_id` (§2.5, D19).
 
 ### 2.2 ER diagram
 
@@ -421,7 +423,7 @@ erDiagram
     person_per      ||--o{ volunteer_assignment_vasg    : "serves"
     person_per      ||--o{ volunteer_scope_vscp         : "coordinates"
     person_per      ||--o{ volunteer_notification_vntf  : "receives"
-    group_grp       ||--o{ volunteer_pool_vpol          : "is a pool for"
+    volunteer_ministry_vmin ||--o| group_grp             : "owns its pool group"
 
     volunteer_ministry_vmin ||--o{ volunteer_team_vtem      : "has teams"
     volunteer_ministry_vmin ||--o{ volunteer_position_vpos  : "defines positions"
@@ -483,8 +485,14 @@ write, and every ministry query inherits `preSelect()`.
 | `vmin_Active` | `Active` | `BOOLEAN` `tinyint(1) unsigned` required default `1` | Deactivate, never delete, once occurrences exist. |
 | `vmin_CreatedDate` | `CreatedDate` | `DATETIME` required | wall-clock in `sTimeZone` |
 | `vmin_CreatedBy_per_ID` | `CreatedByPersonId` | `mediumint(9) unsigned` null | FK → `person_per.per_ID`, `ON DELETE SET NULL` |
+| `vmin_HelpWanted` | `HelpWanted` | `tinyint(1)` required default `0` | D19: advertise on the Open Opportunities page |
+| `vmin_HelpWantedText` | `HelpWantedText` | `TEXT` null | D19: the coordinator's own prose, rendered escaped with line breaks preserved |
 
 Indexes: `vmin_name_uidx UNIQUE (vmin_Name)`, `vmin_active_idx (vmin_Active)`.
+
+**A ministry never has zero pools either (D19).** `createMinistry()` creates its Group in the
+same transaction as the ministry and its first team, for the same reason D18 gives about the
+team: every caller gets it without remembering to.
 
 ### 2.4 Team — `volunteer_team_vtem`
 
@@ -510,30 +518,69 @@ has nowhere to put a position or a schedule, both of which are now `NOT NULL` on
 Deleting the **ministry** still cascades its teams away as before. UC1 is exactly this shape: Coffee
 Bar is one ministry with the one team it was born with (§5.3).
 
-### 2.5 Volunteer Pool — `volunteer_pool_vpol` (the Group link)
+### 2.5 Volunteer Pool — the ministry's own Group (D19)
 
-**Purpose.** D1: a Group *is* the roster. This table is the link, nothing more. It stores **no
-people**.
+**Purpose.** D1: a Group *is* the roster. D19: **the ministry owns one**, and says so with a
+column on the Group rather than with a link table.
 
-| Column | phpName | Type | Notes |
-|---|---|---|---|
-| `vpol_ID` | `Id` | `INTEGER` PK autoinc | |
-| `vpol_OwnerType` | `OwnerType` | `enum('ministry','team')` required | polymorphic, like `record2property_r2p` |
-| `vpol_OwnerId` | `OwnerId` | `INTEGER` required | `vmin_ID` or `vtem_ID`; **no DB FK possible** — enforced in `VolunteerSetupService` |
-| `vpol_grp_ID` | `GroupId` | `mediumint(8) unsigned` required | FK → `group_grp.grp_ID`, `ON DELETE CASCADE` |
-| `vpol_Label` | `Label` | `VARCHAR(100)` null | optional coordinator label, e.g. "Sunday A team" |
+There is no `volunteer_pool_vpol`. The design originally specified one — a polymorphic
+`(ownerType, ownerId, groupId)` link so several Groups could feed one team — and D19 removed it
+before anything shipped, because every consequence of it turned out to be a cost:
 
-Indexes: `vpol_owner_group_uidx UNIQUE (vpol_OwnerType, vpol_OwnerId, vpol_grp_ID)`,
-`vpol_group_idx (vpol_grp_ID)`.
+* a polymorphic owner column carries **no foreign key**, so the service layer was the only thing
+  standing between the table and a row pointing at nothing (§2.0);
+* a pool the coordinator had to *choose* meant a setup step (§5.3 step 3) whose only honest
+  wording was "the Group stays in charge of who belongs" — i.e. an explanation of a limitation;
+* and, decisively, a Group that V2 merely *points at* gives the model hooks nothing to reason
+  about, which is why the pool was read-only (Appendix D-1).
 
-*Why a link table rather than a nullable `vtem_grp_ID` column (the one-line alternative):* UC3 and
-UC4 both want more than one pool feeding one team (Worship draws on "Worship Team" and
-"Musicians"), and the epic names Volunteer Pool as its own concept. `ON DELETE CASCADE` on the
-group FK means deleting a group unlinks the pool without touching assignments or history.
+A Group that a ministry **owns** answers all three. The column:
 
-**Pool ≠ eligibility.** Being in the pool group does not make someone assignable; a
-**Qualification** does (§2.7). The pool is the *candidate set* the coordinator picks from and the
-audience for gap-filling invitations.
+```xml
+<!-- orm/schema.xml, inside <table name="group_grp">, after grp_include_email_export -->
+<column name="grp_ministry_id" phpName="MinistryId" type="INTEGER" required="false"
+        description="Volunteer v2 (D19): the volunteer ministry whose pool this group is. NULL = an ordinary group."/>
+<foreign-key foreignTable="volunteer_ministry_vmin" name="GroupMinistry" phpName="Ministry"
+             refPhpName="PoolGroup" onDelete="setnull">
+    <reference local="grp_ministry_id" foreign="vmin_ID"/>
+</foreign-key>
+<index name="grp_ministry_idx"><index-column name="grp_ministry_id"/></index>
+```
+
+`ON DELETE SET NULL`, never `CASCADE`: a cascade from a V2 table to `group_grp` is how a church
+loses a group to a foreign key it never knew about. `VolunteerSetupService::deleteMinistry()`
+removes the pool Group **explicitly**, inside the same transaction, through the managed-write
+context — so the removal is a decision taken in the open, and `Group::preDelete()` refuses it
+from anywhere else.
+
+**The Group is an ordinary `group_grp` row.** It appears in the Groups module, in the cart, in
+email export, in the sidebar. `grp_Name` is `VARCHAR(50)` against `vmin_Name`'s 100 (F2), so a
+long ministry name is truncated for the Group rather than refused for the ministry.
+
+**Exactly what adding this column touches:**
+
+| # | File | Change |
+|---|---|---|
+| 1 | `orm/schema.xml` | the column, the FK and the index above, inside `<table name="group_grp">` |
+| 2 | `src/mysql/install/Install.sql` | the column + `KEY` in the `group_grp` `CREATE TABLE`, and the `ALTER TABLE … ADD CONSTRAINT` beside the `events_event` one — `group_grp` is created hundreds of lines before `volunteer_ministry_vmin` exists, so the FK is deferred exactly as #9713's is |
+| 3 | `cypress/data/seed.sql` | the same two edits, **plus a trailing `NULL` on every `INSERT INTO group_grp VALUES (…)` tuple** — the dump has no column list |
+| 4 | `src/mysql/upgrade/7.8.0-volunteer-v2-group-ministry.sql` | its own script, like #9713's, **not** registered in `upgrade.json` (D17) |
+| 5 | Propel regen | `npm run build:orm`; `Base/` and `Map/` are gitignored |
+| 6 | `Group` / `Person2group2roleP2g2r` models | the hook exception (§4.6) |
+| 7 | `people-groups.php` | `409` on rename/delete of a managed group; `ministryId`/`ministryName` on the list payload |
+| 8 | Groups module UI | the note, the disabled Edit/Delete, the editor redirect (§5.4) |
+
+**F22 still applies to the lookup.** `GroupQuery::preSelect()` injects a LEFT JOIN, a `COUNT()`
+and a `GROUP BY` into every query built from `GroupQuery`, so `getPoolGroup()` inherits them. It is
+one indexed single-row lookup and the cost is accepted rather than worked around — the alternative
+is raw SQL against `group_grp`, which would be the first place in V2 to bypass the ORM for a read.
+Member **counts** are still taken from `person2group2role_p2g2r` directly (`countGroupMembers()`),
+never from `preSelect()`'s virtual column.
+
+**Pool ≠ eligibility, still.** Being in the pool does not make somebody assignable; a
+**Qualification** does (§2.7). What D19 changed is the other direction: a qualification now puts
+somebody *in* the pool, because a person a coordinator has just said may serve is by definition
+one of that ministry's volunteers.
 
 ### 2.6 Position — `volunteer_position_vpos`
 
@@ -828,7 +875,7 @@ coordinator endpoint (§3.3.2 `…/assignments/{id}/status`) both call the same
 |---|---|---|
 | I1 | One assignment per person per position per occurrence | `vasg_occ_pos_per_uidx` |
 | I2 | **No assignment without an active qualification** for that position at assign time | `VolunteerAssignmentService::assign()`; `403` from the API. Re-assignment after the qualification is revoked is blocked; the *existing* row is untouched. |
-| I3 | The person must be in at least one pool group of the owning ministry **or** team — *or* the coordinator explicitly overrides with `allowOutsidePool: true` (logged) | service; `409` without the flag |
+| I3 | The person must be in the ministry's pool Group — *or* the coordinator explicitly overrides with `allowOutsidePool: true` (logged). **Not applied to self sign-up (D19)**, which tests qualification only | service; `409` without the flag |
 | I4 | The position must belong to the occurrence's schedule's ministry (and team, if the position is team-scoped) | service; `400` |
 | I5 | Assigning to an occurrence with `vocc_Status = 'cancelled'` or an end time in the past is rejected | service; `409` |
 | I6 | Historical rows are immutable: once an occurrence's end has passed, only the `pending/accepted → completed` transition may write to its assignments | service |
@@ -1038,7 +1085,7 @@ Ids are illustrative. `→` means "FK to".
 ```
 volunteer_ministry_vmin   (1, 'Coffee Bar', active)
 volunteer_team_vtem       (1, min=1, 'Coffee Bar Team', active)
-volunteer_pool_vpol       (1, owner=('team',1), grp_ID=31 → group_grp "Coffee Bar Volunteers" (15 members))
+group_grp                 (31, 'Coffee Bar', type=Ministry, grp_ministry_id=1)  -- 15 members (D19)
 
 volunteer_position_vpos   (1, min=1, team=1, 'Setup',        active, order 1)
                           (2, min=1, team=1, 'Cleanup',      active, order 2)
@@ -1084,7 +1131,7 @@ recently is offered first. No rotation table, no rotation algorithm.
 ```
 volunteer_ministry_vmin   (2, 'Worship', active)
 volunteer_team_vtem       (2, min=2, 'Worship Team', active)
-volunteer_pool_vpol       (2, owner=('team',2), grp_ID=10 → group_grp "Worship Service" (type 1))
+group_grp                 (32, 'Worship', type=Ministry, grp_ministry_id=2)  -- the pool (D19)
 
 volunteer_position_vpos   (10, min=2, team=2, 'Song Leader')      (11, … 'Communion Leader')
                           (12, … 'Opening Prayer')                (13, … 'Closing Prayer')
@@ -1141,7 +1188,8 @@ the Worship coordinator cannot touch Coffee Bar's assignments on the shared occu
 volunteer_ministry_vmin (3, "Children's Ministry", active)
 volunteer_team_vtem     (3, min=3, 'Elementary')  (4, min=3, 'Nursery')  (5, min=3, 'Preschool')
 
-volunteer_pool_vpol     (3, ('team',3), grp_ID=40)  (4, ('team',4), grp_ID=41)  (5, ('team',5), grp_ID=42)
+group_grp               (40, "Children's Ministry", type=Ministry, grp_ministry_id=3)
+                        -- ONE pool for the whole ministry (D19): every team draws on the same people
 
 volunteer_scope_vscp    (…, per=61, 'ministry', 3)   -- one coordinator over everything
                         (…, per=62, 'team',     4)   -- Nursery has its own leader
@@ -1281,16 +1329,17 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 |---|---|---|---|---|
 | GET | `/api/volunteer/ministries` | list ministries **scoped** to the caller | Coordinator | `?manageable=1&active=1` → `{ministries:[{id,name,description,active,teamCount,openGapCount}]}` |
 | POST | `/api/volunteer/ministries` | create | **Manager** | `{name,description}` → `201 {ministry:{…}}`; `409` on duplicate name |
-| GET | `/api/volunteer/ministries/{ministryId}` | detail incl. teams, pools, positions | Coordinator of it | `MinistryMiddleware` → `{ministry, teams[], pools[], positions[]}` |
-| POST | `/api/volunteer/ministries/{ministryId}` | update | Coordinator of it | `{name?,description?,active?}` → `{ministry}` |
+| GET | `/api/volunteer/ministries/{ministryId}` | detail incl. teams, positions, pool | Coordinator of it | `MinistryMiddleware` → `{ministry, teams[], positions[], poolGroupId, poolGroupName, pool[]}` |
+| POST | `/api/volunteer/ministries/{ministryId}` | update | Coordinator of it | `{name?,description?,active?,helpWanted?,helpWantedText?}` → `{ministry}`. Renaming renames the pool Group (D19) |
 | DELETE | `/api/volunteer/ministries/{ministryId}` | delete | **Manager** | `409` when occurrences or assignments exist; message names the count. Scope rows (§2.15) never block deletion — they are removed with the ministry |
 | GET | `/api/volunteer/ministries/{ministryId}/teams` | list | Coordinator of it | `{teams:[…]}` |
 | POST | `/api/volunteer/ministries/{ministryId}/teams` | create | Coordinator of it | `{name,description}` → `201 {team}` |
 | GET/POST/DELETE | `/api/volunteer/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware` |
-| GET | `/api/volunteer/teams/{teamId}/pools` | list pool links | Coordinator / Team Leader | `{pools:[{id,groupId,groupName,memberCount,label}]}` |
-| POST | `/api/volunteer/teams/{teamId}/pools` | link an existing Group | Coordinator / Team Leader | `{groupId,label?}` → `201 {pool}`; `409` if already linked |
-| DELETE | `/api/volunteer/pools/{poolId}` | unlink (never deletes the Group) | Coordinator / Team Leader | `200` |
-| GET | `/api/volunteer/teams/{teamId}/members` | **thin projection** over the pool groups | Coordinator / Team Leader | `{members:[{personId,displayName,groupIds[],qualifications:[positionId]}]}` — reads `GroupService::getGroupMembers()` (G10); does not re-implement a roster |
+| GET | `/api/volunteer/ministries/{ministryId}/pool` | who is in the ministry's pool Group (D19) | Coordinator of it | `{groupId,groupName,members:[{personId,displayName,inPool,qualifications[]}]}`, alphabetical |
+| POST | `/api/volunteer/ministries/{ministryId}/pool/{personId}` | add to the pool | Coordinator of it — **no `ManageGroups` needed** (§4.6) | `201 {personId,added:true}`; `200 {added:false}` when already there. Writes through the Propel membership model, so `Hooks::GROUP_MEMBER_ADDED` fires (G3) |
+| DELETE | `/api/volunteer/ministries/{ministryId}/pool/{personId}` | remove from the pool | Coordinator of it | `200`; `404` when they are not in it. Qualifications are **not** revoked (D19) |
+| GET | `/api/volunteer/ministries/{ministryId}/members` | the qualification matrix's rows | Coordinator of it | pool ∪ everyone qualified for a position in view (D19): `{members:[{personId,displayName,inPool,groupIds[],qualifications:[positionId],qualificationIds{}}]}` |
+| GET | `/api/volunteer/teams/{teamId}/members` | the same, narrowed to one team's positions | Coordinator / Team Leader | as above |
 | GET | `/api/volunteer/ministries/{ministryId}/positions` | list | Coordinator / Team Leader | `?active=1&teamId=` → `{positions:[…]}` |
 | POST | `/api/volunteer/ministries/{ministryId}/positions` | create | Coordinator of it | `{name,description,teamId?,order?}` → `201`; `409` duplicate |
 | GET/POST/DELETE | `/api/volunteer/positions/{positionId}` | read / update / deactivate-or-delete | Coordinator of the ministry | `DELETE` → `409` when referenced (§2.6) |
@@ -1344,7 +1393,9 @@ that can be forgotten.
 | POST | `/api/volunteer/me/assignments/{assignmentId}/respond` | accept / decline | `{response:'accepted'\|'declined', comment?}` → `{assignment}`. **Idempotent** (§2.12). `403` if the assignment is not mine (never `404` — the record exists). |
 | POST | `/api/volunteer/me/assignments/{assignmentId}/propose-substitute` | propose a named substitute | `{personId, comment?}` → `201 {swap}`. `personId` here is the *substitute*, not the actor; eligibility is checked server-side. `409` if a proposal is already pending. |
 | POST | `/api/volunteer/me/swaps/{swapId}/withdraw` | withdraw my own pending proposal | `{comment?}` → `{swap}` with `status='withdrawn'`; appends a `substitute_withdrawn` response row (§2.13). `403` if I am not the proposer; `409` unless the swap is `proposed`. |
-| GET | `/api/volunteer/me/opportunities` | open gaps I am qualified for | `?from=&to=` → `{opportunities:[{occurrenceId,start,ministryName,positionId,positionName,openCount}]}` — server-side eligibility, never trusting the client |
+| GET | `/api/volunteer/me/opportunities` | open gaps I am qualified for | `?from=&to=` → `{opportunities:[{occurrenceId,start,ministryName,positionId,positionName,openCount}]}` — server-side eligibility, never trusting the client. **Qualification only since D19**: pool membership is not tested here or at signup |
+| GET | `/api/volunteer/me/help-wanted` | ministries asking for help (D19) | `{ministries:[{ministryId,ministryName,helpWantedText,inPool}]}` — active ministries with the switch on; not filtered by qualification |
+| POST | `/api/volunteer/me/help-wanted/{ministryId}` | "I'd like to help" (D19) | no body, **no `personId` anywhere** — the actor is the session (§3.3.3). Joins the pool if not already in it and enqueues one `help_offer` per coordinator per day → `{joinedPool,notified}`; `403` when the ministry is not asking, `404` unknown |
 | POST | `/api/volunteer/me/signup` | self-sign-up | `{occurrenceId, positionId}` → `201 {assignment}` with `status='accepted'`, `source='self_signup'`. Re-validates qualification **and** capacity server-side at signup time; `403` unqualified, `409` full. |
 | GET | `/api/volunteer/me/qualifications` | what I am qualified for | `{qualifications:[{positionId,positionName,ministryName,teamName}]}` — read-only; volunteers cannot grant themselves anything |
 
@@ -1401,9 +1452,15 @@ final class VolunteerSetupService
     public function updateMinistry(VolunteerMinistry $m, array $fields, User $actor): VolunteerMinistry;
     public function deleteMinistry(VolunteerMinistry $m, User $actor): void;   // 409 if any occurrence or assignment references it (§3.3.1); otherwise deletes — FK cascades take teams/pools/positions/qualifications/schedules, and the polymorphic volunteer_scope_vscp rows (no FK, §2.15) are removed explicitly in the same transaction
     public function createTeam(VolunteerMinistry $m, string $name, string $description, User $actor): VolunteerTeam;
-    public function linkPool(string $ownerType, int $ownerId, int $groupId, ?string $label): VolunteerPool;
-    public function unlinkPool(VolunteerPool $p): void;
-    public function getPoolPersonIds(int $ministryId, ?int $teamId = null): array;   // union of group memberships
+    // D19 — the ministry's own pool Group. No link/unlink: createMinistry() made it.
+    public function getPoolGroup(int $ministryId): ?Group;
+    public function addPoolMember(int $ministryId, int $personId, User $actor): bool;      // true when a row was created
+    public function removePoolMember(int $ministryId, int $personId, User $actor): void;   // 404 when not a member; keeps qualifications
+    public function joinPoolGroup(Group $g, int $personId): bool;   // caller has ALREADY authorized; managed write
+    public function isInPool(int $ministryId, int $personId): bool;
+    public function getPoolPersonIds(int $ministryId, ?int $teamId = null): array;   // $teamId accepted and ignored: one pool per ministry
+    public function listHelpWantedMinistries(): array;                               // D19
+    public function recordHelpOffer(VolunteerMinistry $m, int $personId): array;     // D19: joins the pool + enqueues help_offer
     public function createPosition(VolunteerMinistry $m, ?VolunteerTeam $t, string $name, string $description, int $order): VolunteerPosition;
     public function setPositionActive(VolunteerPosition $p, bool $active): VolunteerPosition;
     public function grantQualification(int $personId, VolunteerPosition $p, User $actor, ?string $notes): VolunteerQualification;
@@ -1719,7 +1776,7 @@ EditSelf-exclusive persona's home (D14, §4.7).
 - A `ministry` scope row grants authority over that ministry **and everything under it**: its teams,
   positions, qualifications, schedules, occurrences, assignments, swaps, and its ministry-linked
   events.
-- A `team` scope row grants authority over that team only: its pools, its positions and their
+- A `team` scope row grants authority over that team only: its positions and their
   qualifications, its schedules, and the assignments on occurrences of those schedules. A team
   leader may **not** create ministries or teams, may not touch another team's positions (D18 leaves
   no position outside a team, so "another team's" is the whole of what is out of reach), and may not
@@ -1801,8 +1858,11 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 | Grant ministry scope (make a coordinator) | ✓ | ✓ | ✗ | ✗ | ✗ |
 | Grant team scope (make a team leader) | ✓ | ✓ | scope | ✗ | ✗ |
 | Create / edit team | ✓ | ✓ | scope | ✗ | ✗ |
-| Link / unlink a pool Group | ✓ | ✓ | scope | scope (own team) | ✗ |
-| **Add/remove people in the pool Group** | ✓ | needs `ManageGroups` | needs `ManageGroups` | needs `ManageGroups` | ✗ |
+| ~~Link / unlink a pool Group~~ | — | — | — | — | — | *(D19: there is nothing to link — a ministry owns its Group)* |
+| **Add/remove people in the pool Group** | ✓ | ✓ | scope | ✗ (ministry-level route) | ✗ |
+| Edit / delete the pool Group itself | ✗ — it is the ministry's | ✗ | ✗ | ✗ | ✗ |
+| Set "Help wanted" on a ministry | ✓ | ✓ | scope | ✗ | ✗ |
+| Offer to help a ministry that is asking | ✓ | ✓ | ✓ | ✓ | **✓** |
 | Create / edit position | ✓ | ✓ | scope | scope (own team) | ✗ |
 | Deactivate position | ✓ | ✓ | scope | scope (own team) | ✗ |
 | Grant / revoke qualification | ✓ | ✓ | scope | scope (own team's positions) | ✗ |
@@ -1825,16 +1885,45 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 
 Two rows need explaining.
 
-**Pool membership.** Every `/api/groups` write requires the global `ManageGroups` flag
-(`people-groups.php:1195`) **and** the Propel hooks on `Group` / `Person2group2roleP2g2r` require
-it too (F21) — the ORM will throw regardless of what V2's middleware decides. V2 therefore does
-**not** proxy roster edits. The pool screen shows membership read-only and links to
-`/groups/view/{id}` with a clear message when the coordinator lacks `ManageGroups`. The two
-rejected workarounds are recorded so nobody retries them: giving every coordinator the global
-`ManageGroups` flag (blunt, grants edit rights over *every* group in the church), and calling
-`GroupService::addUserToGroupInternal()` (`:138`), which is explicitly auth-free and would be a
-**silent authorization bypass**. Whether coordinators should be able to manage their pool rosters
-is a genuine product question — [Appendix D](#appendix-d--open-questions-for-the-maintainer).
+**Pool membership (rewritten by D19).** Every `/api/groups` write requires the global
+`ManageGroups` flag (`people-groups.php:1195`) **and** the Propel hooks on `Group` /
+`Person2group2roleP2g2r` require it too (F21) — the ORM throws regardless of what V2's middleware
+decides. D19 does not work around that; it fixes the hooks, narrowly:
+
+```php
+// Group::assertGroupWritable() and Person2group2roleP2g2r::assertMembershipWritable()
+if (AuthService::hasUserGroupMembership('bManageGroups')) { return; }          // V1, unchanged, FIRST
+if (VolunteerPoolWriter::mayWriteMinistryGroup($ministryId)) { return; }       // the one exception
+AuthService::requireUserGroupMembership('bManageGroups');                      // V1's throw, unchanged
+```
+
+Three properties make this safe to put in a lifecycle hook, which A12 otherwise forbids:
+
+1. **The V1 answer is asked first and wins immediately.** A group with a NULL `grp_ministry_id` —
+   every group in an installation that has never made a ministry — takes byte-for-byte the path it
+   always took: same flags, same administrator bypass, same thrown 401 with the same message, and
+   no extra query. Only a caller V1 would have *refused* reaches the second question.
+2. **The exception reads the scope table, not `$_SESSION`.** That is the precise defect A12/F21
+   named: `requireUserGroupMembership()` degrades to admin-only for API-key callers because
+   `APITokenAuthentication` never sets the flags. `VolunteerAuthorizationService::canManageMinistry()`
+   answers identically for both.
+3. **It is per-GROUP, never per-user.** The same coordinator who may write their ministry's pool
+   may write nothing else — not another ministry's pool, not an ordinary group.
+
+The managed-write context (`VolunteerPoolWriter::run(callable)`, a depth counter with
+`try`/`finally`) is the second half: it is how a V2 service says "I have already authorized this",
+and it is what lets a volunteer's own "I'd like to help" add them to a Group they have no
+permission over. The caller MUST authorize first — opening a context without deciding would be
+exactly the silent bypass `GroupService::addUserToGroupInternal()` (`:138`) already is.
+
+The two workarounds this replaces are recorded so nobody retries them: giving every coordinator
+the global `ManageGroups` flag (blunt — grants edit rights over *every* group in the church), and
+calling `addUserToGroupInternal()` (auth-free, a **silent bypass**).
+
+**Deleting** a managed group is nobody's: `Group::preDelete()` throws for a group with a ministry
+id unless the managed-write context is open, so `VolunteerSetupService::deleteMinistry()` is the
+only path, and the `409` from `DELETE /api/groups/{id}` is a statement about the model rather than
+a UI convention.
 
 **Ministry-linked events.** `AddEventsRoleAuthMiddleware` is a global boolean
 (`canManageEvents()`); there is no per-row event authorization anywhere today. The rule V2 adds, in
@@ -1981,7 +2070,7 @@ tables.
 |---|---|---|---|---|
 | S1 | Coordinator dashboard — "what needs my attention" | `/volunteer/dashboard` | Coordinator | `volunteer-dashboard` |
 | S2 | Setup flow (guided) | `/volunteer/setup` | Coordinator (ministry step: Manager) | `volunteer-setup` |
-| S3 | Ministry detail — teams, pools, positions, qualifications, schedules | `/volunteer/ministries/{id}` | scope | `volunteer-ministry` |
+| S3 | Ministry detail — teams + pool, positions, qualifications, schedules, help wanted | `/volunteer/ministries/{id}` | scope | `volunteer-ministry` |
 | S4 | Occurrence / staffing view | `/volunteer/occurrences/{id}` | scope | `volunteer-occurrence` |
 | S5 | My schedule (member) | `/volunteer/my-schedule` | authenticated person | `volunteer-my-schedule` |
 | S6 | Open opportunities (member) | `/volunteer/opportunities` | authenticated person | `volunteer-opportunities` |
@@ -2023,26 +2112,48 @@ line with an Edit link; the Next button is disabled until the step is valid.
 2. Team          the ministry was created with one, "{Ministry} Team" (D18) — rename it, or add more
                    beside it. One short line says so: "Every ministry has at least one team; rename
                    this one or add more."
-3. Volunteer pool  pick an existing Group via window.CRM.groups.promptSelection() (G4)
-                   → shows member count immediately; "Create a new Group" links to /groups/editor
-4. Positions     repeatable inline rows: name, description, active
-5. Qualifications a matrix: pool members down the side, positions across the top, checkboxes.
-                   Bulk fill from the Cart (P5) for "everyone in the cart is qualified for X".
-6. Schedule      link to an event type (default) or define a standalone weekly pattern
-7. Staffing      per position: min / max. Live preview: "This Sunday you will need 2–3 people."
-8. Generate      "Create the next 8 weeks" → POST /schedules/{id}/generate, then straight to S1
+3. Positions     repeatable inline rows: name, description, active
+4. Qualifications a matrix: pool members ∪ everyone qualified down the side, positions across the
+                   top, checkboxes. Bulk fill from the Cart (P5) for "everyone in the cart is
+                   qualified for X". Qualifying somebody adds them to the pool (D19).
+5. Schedule      link to an event type (default) or define a standalone weekly pattern
+6. Staffing      per position: min / max. Live preview: "This Sunday you will need 2–3 people."
+7. Generate      "Create the next 8 weeks" → POST /schedules/{id}/generate, then straight to S1
 ```
 
-Step 3 is where D1 becomes visible to the user: the wording is "**Choose the Group whose members
-volunteer for this team**", never "add volunteers", because membership stays in Groups.
+**There is no volunteer-pool step (D19).** #9707 added one between Team and Positions — "choose
+the Group whose members volunteer for this team" — and D19 removed it: a ministry is created with
+its own pool Group, so there is nothing to choose. People arrive in the pool three ways, all of
+them *after* setup rather than during it: the pool panel on the ministry page, a qualification
+(which adds them), or their own "I'd like to help". What used to be step 4 is now step 3.
 
 ### 5.4 S3 — Ministry detail
 
-Tabbed, all tabs lazily loaded on activation (the `attendance-history.ts` pattern, U6): **Teams &
-Pools**, **Positions**, **Qualifications**, **Schedules**. The Qualifications tab is the matrix from
-setup step 5, and is the screen a coordinator returns to most; it must handle 15–200 pool members
-without re-fetching per cell (one `GET /teams/{id}/members` carries each member's qualification
-ids).
+Tabbed, all tabs lazily loaded on activation (the `attendance-history.ts` pattern, U6): **Teams**,
+**Positions**, **Qualifications**, **Schedules**. The Qualifications tab is the matrix from the
+setup flow, and is the screen a coordinator returns to most; it must handle 15–200 people without
+re-fetching per cell (one `GET /ministries/{id}/qualification-matrix` carries every row, every
+column and every tick).
+
+**The Teams tab also carries the volunteer pool panel (D19)** — the ministry's own Group's
+membership, with an "Add to pool" button (the shared person picker, CR1/#9819) and a per-row
+Remove through `window.CRM.buildActionMenu`, inside the mandatory
+`overflow-x: clip; overflow-y: visible` wrapper. Membership is **editable here**: the coordinator
+owns this Group (§4.6). A line under the heading names the Group and links to it in the Groups
+module, which is a second door to the same roster rather than the only one. The tab is called
+"Teams", not "Teams & Pools": there is one pool and it belongs to the ministry, not beside a team.
+
+**Below the tabs, a "Help wanted" card (D19):** a switch and a textarea, saved with one button.
+Not a tab — it is two fields a coordinator sets once and revisits rarely, and a sixth tab would
+hide the one control that puts this ministry in front of people who have never heard of it.
+
+**The Groups module's side of it.** A Group carrying a ministry id stays visible everywhere and
+its membership stays editable by anyone with `ManageGroups`; only its identity moves. `/groups/view/{id}`
+shows an alert — *"This group is the volunteer pool of {Ministry}. It is managed from that
+ministry."* — with a link to the ministry; Edit and Delete are **rendered disabled** (`disabled` +
+`aria-disabled` + a `title` saying why) on the page and in the group list's row action menu, rather
+than hidden, so somebody looking for Edit learns where it went; and `/groups/editor/{id}` redirects
+back to the group, because every write that editor could make answers `409`.
 
 ### 5.5 S4 — Occurrence / staffing view
 
@@ -2075,6 +2186,16 @@ The single most important coordinator screen.
   everyone in the cart** (P6).
 
 ### 5.6 S5 / S6 — Volunteer self-service
+
+> **D19 adds a section to S6.** Above the shift list, *"Ministries looking for help"*: every active
+> ministry with its Help-wanted switch on, showing its coordinator's prose (escaped, line breaks
+> preserved) and one **"I'd like to help"** button. It is not filtered by qualification or by pool
+> membership — reaching people the ministry does not know yet is the entire point, and a volunteer
+> with no qualifications was previously shown an empty page and a dead end. The whole section is
+> omitted when nothing is advertising; a heading over nothing is worse than silence. The button
+> stays for members and non-members alike, because offering again is a real thing to do; the toast
+> is *"Thanks — the coordinator has been told you'd like to help."* or, for somebody already in the
+> pool, *"…you'd like to help again."*
 
 Deliberately plain. A volunteer must never see the word *ministry hierarchy*, *requirement*,
 *occurrence* or *schedule*.
@@ -2421,14 +2542,18 @@ with the API-key evidence; RBAC #8758 evaluated and found absent from the codeba
 *Normative sections:* §2.5, §2.6, §2.7, §3.3.1, §5.3, §5.4. *Depends on:* #9705, #9706. *Needs* CR1.
 
 **PR contains:** `VolunteerSetupService` (pool + position + qualification halves); the pool,
-position and qualification endpoints; S3's Teams & Pools / Positions / Qualifications tabs; the
+position and qualification endpoints; S3's Teams / Positions / Qualifications tabs; the
 qualification matrix; `private.volunteer.setup.spec.js` extended.
 
 *Reuse decisions to document:* Group reused as the pool with membership **not** copied;
-`GET /groups/{id}/members` reused; `window.CRM.groups.promptSelection()` reused for group
-selection; person selector reused via CR1; Cart reused for bulk qualification; qualification
-revocation is deactivation so history survives, with the "assignment has no FK to qualification"
-reasoning; `GroupService` **not** extended, and why.
+`GET /groups/{id}/members` reused; person selector reused via CR1; Cart reused for bulk
+qualification; qualification revocation is deactivation so history survives, with the "assignment
+has no FK to qualification" reasoning; `GroupService` **not** extended, and why.
+
+> **Superseded in part by D19.** The pool half shipped as a link table and a wizard step; D19
+> replaced both with `group_grp.grp_ministry_id`, the writable pool panel, the hook exception and
+> "Help wanted". `window.CRM.groups.promptSelection()` is no longer used by V2 — there is no group
+> to choose. Read §2.5, §4.6, §5.3 and §5.4 as amended, not this paragraph, when touching the pool.
 
 #### #9708 — Recurring schedules and occurrence generation
 
@@ -2646,7 +2771,6 @@ consume it. This is #9703 deliverable 8.
 | `volunteer_ministry_vmin` | "Ministry" exists only as group-type list option `list_lst (3,1)` (F11) — there is no entity to FK. Five V2 tables plus one core column need a stable owner id. Using `group_grp` would put ministry identity behind `bManageGroups` model hooks (F21), cap the name at 50 chars (F2), and inherit `GroupQuery::preSelect()`'s injected join/`COUNT`/`GROUP BY` on every query (F22). | #9705, #9715, #9706, #9713 |
 | `volunteer_team_vtem` | Same as above at the team level (`list_lst (3,2)` is a group *type*). Team is the finest authorization scope; it needs an id that a scope row can reference and that a coordinator cannot delete by deleting a group. | #9705, #9715, #9706 |
 | `volunteer_position_vpos` | Nothing in core models "a role a volunteer can serve in". V1's `volunteeropportunity_vol` is the nearest and is a flat admin list with `VARCHAR(30)` names, no owner, no team, no ordering within a ministry — and D7 forbids depending on it. Group Roles are excluded by F19/F20. | #9705, #9715, #9707, #9709 |
-| `volunteer_pool_vpol` | The Group↔owner link has nowhere to live. `event_audience` is the only comparable join and its documented semantics are "prospective audience for advertising/outreach" (F28), the API treats it as at-most-one (`events.php:196`), and it joins events, not ministries. | #9705, #9707 |
 | `volunteer_qualification_vqal` | Person↔position many-to-many is **structurally impossible** on `person2group2role_p2g2r`: PK `(PersonId, GroupId)` permits one role per person per group (F19), and role option ids renumber on delete (F20). Group member properties (`groupprop_<id>`) are runtime-`CREATE TABLE`, `c1..cN` columns, no PK on the master table, raw SQL throughout, and dropped on disable (G8). V1's `person2volunteeropp_p2vo` has no FKs, nullable join columns and no unique constraint. | #9705, #9707, #9709, #9712 |
 | `volunteer_schedule_vsch` | **There is no event series identifier of any kind** (F7) — no `series_id`, no `parent_event_id`, no recurrence rule on the event. Bulk "repeat" creates N unlinked rows and discards the id list. V2 must own the series or there is nothing to attach staffing requirements to. | #9705, #9708, #9713 |
 | `volunteer_occurrence_vocc` | An `events_event` row cannot carry per-ministry staffing state, and UC3 needs several ministries staffing the same event independently. A link row is also what lets *unlinked* schedules exist at all (#9708) and what preserves history when an event is deleted (E12/F23). | #9705, #9708, #9709, #9713 |
@@ -2663,13 +2787,17 @@ consume it. This is #9703 deliverable 8.
 |---|---|---|
 | `user_usr.usr_VolunteerManager` | A global volunteer-manager right has no home; every first-class permission since `usr_ManageFundraisers` is a Tier 1 boolean column. The Tier 2 alternative (`userconfig_ucfg`) is the tier the codebase is migrating away from (`User.php:72-77`). | #9706 |
 | `events_event.event_ministry_id` | D9: a coordinator must create and edit *their* ministry's events without the global `AddEvent` right, and there is no per-row event authorization today. `event_audience` cannot carry it — different semantics (F28), wrong cardinality in the API, and it points at groups. | #9713 |
+| `group_grp.grp_ministry_id` | D19: a ministry owns exactly one Group — its volunteer pool. Replaces the `volunteer_pool_vpol` link table, which never shipped: a link gives the model hooks nothing to reason about, which is why the pool was read-only (D-1). This column is what makes the `bManageGroups` exception expressible per-group rather than per-user (§2.5, §4.6). | D19 |
+| `volunteer_ministry_vmin.vmin_HelpWanted` / `vmin_HelpWantedText` | D19: a ministry advertises on the Open Opportunities page. Two columns on the row that owns the advert; nothing in core expresses "this area wants more people". | D19 |
+| `volunteer_notification_vntf.vntf_Context` | D19: the outbox's first type that hangs off neither an assignment nor an occurrence. `help_offer` is about a ministry and a person, and the one fact its message needs — *were they already in the pool?* — is true only at the moment of the click and cannot be recomputed at delivery time. | D19 |
 
 ### 8.3 New services
 
 | Service | Why | Consumer issues |
 |---|---|---|
 | `VolunteerAuthorizationService` | No scope primitive exists (F10). Must be one class so the admin bypass lives in exactly one place and so a future `AuthorizationService` (#8758) can absorb it without call-site churn. | #9706 and every later issue |
-| `VolunteerSetupService` | Ministry/team/pool/position/qualification CRUD with scope checks. `GroupService` is deliberately not extended: ~60 % raw concatenated SQL, `bManageGroups`-only gating, and `addUserToGroup()` swallows failures (G10). | #9707, #9715 |
+| `VolunteerSetupService` | Ministry/team/pool/position/qualification CRUD with scope checks. `GroupService` is deliberately not extended: ~60 % raw concatenated SQL, `bManageGroups`-only gating, and `addUserToGroup()` swallows failures (G10). | #9707, #9715, D19 |
+| `VolunteerPoolWriter` | D19's managed-write context and the hook predicate, in one small final class so the two core models share exactly one implementation of "may this caller write a ministry's pool Group". Deliberately not a method on `VolunteerSetupService`: the models must not depend on the setup service, and a depth counter with `try`/`finally` is the whole of it (§4.6). | D19 |
 | `VolunteerScheduleService` | Occurrence generation, the linked/unlinked window resolution, and the effective-requirement merge. Cannot live in `EventService`, which exists to *create* events — precisely what #9713 forbids. | #9708, #9713 |
 | `VolunteerAssignmentService` | The whole assignment/response/gap/swap workflow, including the single gap implementation. No analogue exists. | #9709, #9711, #9712 |
 | `VolunteerNotificationService` | `dto\Notification` cannot carry a message body (no-op setters, hard-coded text, `sendSMS()` always returns `true`) and `NotificationService` is an in-app banner registry with no table. Neither can enqueue, deduplicate, schedule or retry. | #9710 |
@@ -2868,7 +2996,7 @@ Deliberately left open. Each has a working default so implementation is not bloc
 
 | # | Question | Default taken here |
 |---|---|---|
-| D-1 | **Should ministry coordinators be able to edit their pool Group's membership?** Today every `/api/groups` write needs the global `ManageGroups` flag *and* the ORM hooks enforce it independently (F21), so a coordinator without it cannot add a volunteer to the pool. The clean fix is a core change (a scoped group-write path, or relaxing the model hooks), which is bigger than V2. | Pool membership is **read-only** in V2; the screen links to `/groups/view/{id}` and says what permission is needed (§4.6). |
+| ~~D-1~~ | ~~**Should ministry coordinators be able to edit their pool Group's membership?**~~ **CLOSED — answered by D19.** Yes. The ministry owns its Group (`group_grp.grp_ministry_id`), and the model hooks gain one narrow exception for a Group that carries a ministry id, decided through the scope table. The read-only pool and its "you need the Manage Groups permission" message are gone. | ~~Pool membership is read-only in V2~~ → see **D19** and §4.6. |
 | D-2 | **Is email localized to the site language acceptable?** Per-recipient localization needs a language column on `person_per` **and** switching the gettext domain per message — genuinely new infrastructure. | Site language. Documented in Appendix C. |
 | D-3 | **Is best-effort reminder timing acceptable out of the box?** There is no scheduler (F9); the documented cron is zero-code but requires a server admin. | Best-effort, with the cron documented and surfaced as a hint in the admin panel (D15). |
 | D-4 | **Does V2 need tokenized accept/decline links for volunteers without logins?** D14 says no for the first release; the `tokens` table + `/external/` would support it (`Token.php:21-40`, one new `switch` case). The `vrsp_Channel` enum already reserves `email_token`. | Out of scope; the extension point exists. |
