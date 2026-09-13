@@ -15,7 +15,7 @@ ChurchCRM is a community project. Every church that uses it does so because some
 | **QA tester** | Find bugs, test new features, validate fixes |
 | **Designer** | UI/UX improvements, logo work, social graphics |
 | **Writer / content creator** | Blog posts, tutorials, case studies |
-| **Documentation writer** | User guides, admin docs, developer wiki |
+| **Documentation writer** | User guides, admin docs, developer documentation |
 | **Translator** | Translate ChurchCRM into your language |
 | **Social media manager** | Grow ChurchCRM's presence and reach |
 | **Marketer** | Help churches discover ChurchCRM |
@@ -78,7 +78,7 @@ You don't need to be a developer to test ChurchCRM. Browser testing, accessibili
 - Report anything confusing or broken on [GitHub Issues](https://github.com/ChurchCRM/CRM/issues)
 - Test the [live demo](https://churchcrm.io/demo.html) and report issues
 
-**Use the [Bug Reporting Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)** to include useful information when filing issues.
+**Use the [Bug Reporting Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)** to include useful information when filing issues.
 
 ---
 
@@ -111,13 +111,13 @@ ChurchCRM has thousands of users but most churches have never heard of it. Sprea
 
 ---
 
-### Answer Questions in the Community
+### Help the Community
 
-People get stuck. A quick, helpful answer to a question on Discord or GitHub Discussions saves a church administrator hours of frustration and keeps them using ChurchCRM.
+People get stuck. A quick, helpful answer on Discord can save a church administrator hours of frustration and keep them using ChurchCRM.
 
 **Where to help:**
-- [Discord server](https://discord.gg/tuWyFzj3Nj) — real-time questions from users
-- [GitHub Discussions](https://github.com/ChurchCRM/CRM/discussions) — in-depth questions
+- [Discord server](https://discord.gg/tuWyFzj3Nj) — questions and collaboration
+- [GitHub Issues](https://github.com/ChurchCRM/CRM/issues) — confirmed bugs and planned work
 
 No expertise required for most questions — if you've used ChurchCRM for a while, your experience is valuable.
 
@@ -133,7 +133,7 @@ Fix bugs, add features, improve performance, and expand test coverage in the mai
 1. Make sure you have a [GitHub account](https://github.com/signup/free)
 2. Join [Discord](https://discord.gg/tuWyFzj3Nj) and introduce yourself
 3. Ask in Discord what's a good place to start — maintainers will point you to something concrete
-4. Set up your [development environment](#setting-up-your-development-environment)
+4. Set up your [development environment](DEVELOPING.md)
 5. Open a pull request
 
 **All PRs must be linked to an open issue.** If the issue doesn't exist yet, open it first.
@@ -152,48 +152,9 @@ Add a feature ChurchCRM doesn't include yet — a third-party API integration, a
 
 ## Setting Up Your Development Environment
 
-### Quick Start (Recommended)
+Follow [DEVELOPING.md](DEVELOPING.md) for the supported Codespaces and Dev Container setup, current requirements, build commands, testing, architecture rules, and the pull-request checklist.
 
-**GitHub Codespaces (Easiest):**
-1. Go to the [ChurchCRM GitHub repository](https://github.com/ChurchCRM/CRM)
-2. Click "Code" → "Codespaces" → "Create codespace on master"
-3. Wait 2–3 minutes for automatic setup
-4. Run `npm run docker:dev:start` then open `http://localhost` with `admin`/`changeme`
-
-**VS Code Dev Containers:**
-1. Install the "Dev Containers" extension in VS Code
-2. Clone the repo and open it in VS Code
-3. Click "Reopen in Container" when prompted
-
-**DDEV (Local Docker):**
-```bash
-git clone https://github.com/ChurchCRM/CRM.git churchcrm
-cd churchcrm
-ddev start
-ddev setup-churchcrm
-ddev launch
-```
-
-Login: **admin** / **changeme**
-
-### Coding Standards
-
-- **Database:** Propel ORM only — no raw SQL
-- **UI:** Bootstrap 5 / Tabler CSS classes (not Bootstrap 4)
-- **PHP:** 8.4+, PSR-12 style, explicit nullable types
-- **i18n:** Wrap all UI text with `gettext()` (PHP) or i18n helpers (JS)
-- **Business logic:** Service classes in `src/ChurchCRM/Service/`
-
-Full standards: `.github/copilot-instructions.md` in the repo
-
-### Testing
-
-All pull requests require Cypress tests:
-
-```bash
-npm run test          # Run all tests (headless)
-npm run test:ui       # Interactive browser testing
-```
+The default development login is `admin` / `changeme`. Never use these credentials in a real deployment.
 
 ---
 

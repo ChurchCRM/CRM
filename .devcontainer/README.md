@@ -64,7 +64,6 @@ Default credentials: `admin` / `changeme`
 npm run build              # Full build (PHP + frontend)
 npm run build:frontend     # Webpack build of JS/CSS
 npm run build:php          # Composer dependency updates
-npm run deploy             # Production build with signatures
 npm ci                     # Reinstall npm packages
 
 # Docker service management:
@@ -120,7 +119,7 @@ XDEBUG_CONFIG=client_host=host.docker.internal client_port=9003
 ### Code/Build Issues
 - **"Cannot find module"**: Re-run `npm ci` and `npm run build:frontend`
 - **"Class not found (PHP)"**: Re-run `cd src && composer install`
-- **"Locale files missing"**: Run `npm run postinstall`
+- **"Locale files missing"**: Re-run `npm ci`
 
 ## Development Workflow
 
