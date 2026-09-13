@@ -72,8 +72,7 @@ const PERSON_COORDINATOR = 3; // tony.wade@example.com — coordinates ministry 
 const PERSON_PLAIN = 900; // john.plainauth — no volunteer rights at all
 const PERSON_VOLUNTEER = 99; // EditSelf-exclusive — THE volunteer persona (D14)
 
-/** Seeded members of group 1 "Angels class". */
-const POOL_GROUP = 1;
+/** The people this spec puts in the ministry's own pool Group (D19). */
 const POOL_MEMBER_A = 8; // herminia.bennett@example.com
 const POOL_MEMBER_B = 9; // jean.williams@example.com
 const POOL_MEMBER_C = 63; // julie.gregory@example.com — the "no email" case
@@ -419,12 +418,20 @@ function cleanupFixtures() {
           WHERE vmin.vmin_Name LIKE ?`,
         [`${FIXTURE_PREFIX}%`],
     );
+    // D19: the pool is the ministry's own Group, and `grp_ministry_id` is ON DELETE
+    // SET NULL — so the group and its memberships go BEFORE the ministry row, or the
+    // installation is left with an orphan group nobody recognises.
     dbOk(
-        `DELETE vpol FROM volunteer_pool_vpol vpol
-           JOIN volunteer_team_vtem vtem
-             ON vtem.vtem_ID = vpol.vpol_OwnerId AND vpol.vpol_OwnerType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
+        [`${FIXTURE_PREFIX}%`],
+    );
+    dbOk(
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         [`${FIXTURE_PREFIX}%`],
     );
     dbOk(
@@ -441,10 +448,6 @@ function cleanupFixtures() {
         `${FIXTURE_PREFIX}%`,
     ]);
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${EVENT_TITLE}%`]);
-    dbOk(`DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ? AND p2g2r_grp_ID = ?`, [
-        PERSON_VOLUNTEER,
-        POOL_GROUP,
-    ]);
     // Anything this spec borrowed from a seeded person is put back by hand.
     dbOk(`DELETE FROM record2property_r2p WHERE r2p_pro_ID = ? AND r2p_record_ID IN (?, ?)`, [
         DO_NOT_EMAIL_PROPERTY,
@@ -574,16 +577,23 @@ before(() => {
         });
     });
 
+    // D19: the ministry came with its own pool Group, empty. Filled through the
+    // API — there is no /api/groups write to work around any more.
     cy.then(() => {
-        dbOk(
-            `INSERT IGNORE INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID)
-             VALUES (?, ?, 2)`,
-            [PERSON_VOLUNTEER, POOL_GROUP],
-        );
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamA}/pools`, {
-            groupId: POOL_GROUP,
-            label: `${FIXTURE_PREFIX} pool`,
-        }, 201);
+        for (const personId of [
+            POOL_MEMBER_A,
+            POOL_MEMBER_B,
+            POOL_MEMBER_C,
+            PERSON_VOLUNTEER,
+        ]) {
+            api(
+                ADMIN_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryA}/pool/${personId}`,
+                null,
+                [200, 201],
+            );
+        }
     });
 
     cy.then(() => {

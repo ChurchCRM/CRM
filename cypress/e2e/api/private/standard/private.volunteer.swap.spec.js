@@ -44,7 +44,6 @@ const PERSON_ASSIGNEE = 99; // EditSelf-exclusive — the volunteer persona (D14
 const PERSON_SUBSTITUTE = 100; // EditSelf + Notes — the swap counterparty
 const PERSON_UNQUALIFIED_SUB = 5;
 
-const POOL_GROUP = 1; // "Angels class"
 const CHURCH_SERVICE_TYPE = 1;
 
 const FIXTURE_PREFIX = "SWAP9709";
@@ -191,12 +190,20 @@ function cleanupFixtures() {
           WHERE vmin.vmin_Name LIKE ?`,
         [`${FIXTURE_PREFIX}%`],
     );
+    // D19: the pool is the ministry's own Group, and `grp_ministry_id` is ON DELETE
+    // SET NULL — so the group and its memberships go BEFORE the ministry row, or the
+    // installation is left with an orphan group nobody recognises.
     dbOk(
-        `DELETE vpol FROM volunteer_pool_vpol vpol
-           JOIN volunteer_team_vtem vtem
-             ON vtem.vtem_ID = vpol.vpol_OwnerId AND vpol.vpol_OwnerType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
+        [`${FIXTURE_PREFIX}%`],
+    );
+    dbOk(
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         [`${FIXTURE_PREFIX}%`],
     );
     dbOk(
@@ -208,10 +215,6 @@ function cleanupFixtures() {
     dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [PERSON_COORDINATOR]);
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, [`${FIXTURE_PREFIX}%`]);
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${EVENT_TITLE}%`]);
-    dbOk(
-        `DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID IN (?, ?) AND p2g2r_grp_ID = ?`,
-        [PERSON_ASSIGNEE, PERSON_SUBSTITUTE, POOL_GROUP],
-    );
 }
 
 function qualify(positionId, personId) {
@@ -298,18 +301,19 @@ before(() => {
         });
     });
 
-    // Both volunteers are put into the pool group directly: every /api/groups
-    // write needs the global Manage Groups flag (§4.6, F21).
+    // D19: both volunteers go into the ministry's own pool Group through the API —
+    // the raw INSERT this replaces existed only because /api/groups needed the
+    // global Manage Groups flag.
     cy.then(() => {
-        dbOk(
-            `INSERT IGNORE INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID)
-             VALUES (?, ?, 2), (?, ?, 2)`,
-            [PERSON_ASSIGNEE, POOL_GROUP, PERSON_SUBSTITUTE, POOL_GROUP],
-        );
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamId}/pools`, {
-            groupId: POOL_GROUP,
-            label: `${FIXTURE_PREFIX} pool`,
-        }, 201);
+        for (const personId of [PERSON_ASSIGNEE, PERSON_SUBSTITUTE]) {
+            api(
+                ADMIN_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                null,
+                [200, 201],
+            );
+        }
     });
 
     cy.then(() => {

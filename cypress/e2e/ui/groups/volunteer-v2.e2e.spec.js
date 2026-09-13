@@ -65,7 +65,6 @@ const MINISTRY_NAME = `${PREFIX} Coffee Bar`;
  * which would make the overview's team count 2 and stop being UC1.
  */
 const TEAM_NAME = `${MINISTRY_NAME} Team`;
-const GROUP_NAME = `${PREFIX} Bar Volunteers`;
 const POSITION_ESPRESSO = `${PREFIX} Espresso`;
 const POSITION_MILK = `${PREFIX} Milk Station`;
 const EVENT_TITLE = `${PREFIX} Sunday Service`;
@@ -285,12 +284,19 @@ function cleanupFixtures() {
           WHERE vmin.vmin_Name LIKE ?`,
         like,
     );
+    // D19: the pool is the ministry's own Group and `grp_ministry_id` is ON DELETE
+    // SET NULL, so the group and its memberships go before the ministry row.
     dbOk(
-        `DELETE vpol FROM volunteer_pool_vpol vpol
-           JOIN volunteer_team_vtem vtem
-             ON vtem.vtem_ID = vpol.vpol_OwnerId AND vpol.vpol_OwnerType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
+        like,
+    );
+    dbOk(
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         like,
     );
     dbOk(
@@ -321,23 +327,6 @@ before(() => {
     });
     setVersion("v2");
     cleanupFixtures();
-
-    adminApi(
-        "POST",
-        "/api/groups/",
-        { groupName: GROUP_NAME, description: `${PREFIX} pool` },
-        200,
-    ).then((resp) => {
-        groupId = resp.body.Id;
-        POOL_ALL.forEach((personId) => {
-            adminApi(
-                "POST",
-                `/api/groups/${groupId}/addperson/${personId}`,
-                {},
-                200,
-            );
-        });
-    });
 
     adminApi(
         "POST",
@@ -386,11 +375,20 @@ before(() => {
     });
 
     cy.then(() => {
-        adminApi(
-            "POST",
-            `${VOLUNTEER_URL}/teams/${teamId}/pools`,
-            { groupId, label: `${PREFIX} pool` },
-            201,
+        // D19: the ministry came with its own pool Group, empty — fill it through
+        // the API rather than making a group and linking it.
+        POOL_ALL.forEach((personId) => {
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                null,
+                [200, 201],
+            );
+        });
+        adminApi("GET", `${VOLUNTEER_URL}/ministries/${ministryId}/pool`, null, 200).then(
+            (resp) => {
+                groupId = resp.body.groupId;
+            },
         );
         // The volunteer persona is qualified for both, so they have something
         // on S5 and something left to sign up for on S6.

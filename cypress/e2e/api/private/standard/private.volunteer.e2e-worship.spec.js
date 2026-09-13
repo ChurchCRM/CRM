@@ -51,7 +51,6 @@ const CHURCH_SERVICE_TYPE = 1; // seed.sql — the weekly Sunday 10:30 service
 const PREFIX = "E2E9714WS";
 const MINISTRY_NAME = `${PREFIX} Sunday Worship`;
 const TEAM_NAME = `${PREFIX} Worship Team`;
-const GROUP_NAME = `${PREFIX} Worship Volunteers`;
 const EVENT_TITLE = `${PREFIX} Sunday Morning Worship`;
 
 /** UC2's five roles. Every one of them is Min 1 / Max 1. */
@@ -228,12 +227,19 @@ function cleanupFixtures() {
           WHERE vmin.vmin_Name LIKE ?`,
         like,
     );
+    // D19: the pool is the ministry's own Group and `grp_ministry_id` is ON DELETE
+    // SET NULL, so the group goes before the ministry or it is left an orphan.
     dbOk(
-        `DELETE vpol FROM volunteer_pool_vpol vpol
-           JOIN volunteer_team_vtem vtem
-             ON vtem.vtem_ID = vpol.vpol_OwnerId AND vpol.vpol_OwnerType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
+        like,
+    );
+    dbOk(
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         like,
     );
     dbOk(
@@ -264,23 +270,6 @@ before(() => {
     });
     setVersion("v2");
     cleanupFixtures();
-
-    cy.makePrivateAdminAPICall(
-        "POST",
-        "/api/groups/",
-        { groupName: GROUP_NAME, description: `${PREFIX} pool group` },
-        200,
-    ).then((resp) => {
-        groupId = resp.body.Id;
-        POOL_ALL.forEach((personId) => {
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/groups/${groupId}/addperson/${personId}`,
-                {},
-                200,
-            );
-        });
-    });
 
     cy.then(() => {
         api(
@@ -335,14 +324,27 @@ before(() => {
         });
     });
 
+    // D19: the ministry came with its own pool Group, empty — so the coordinator
+    // fills it rather than making a group and linking it.
     cy.then(() => {
+        POOL_ALL.forEach((personId) => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                null,
+                [200, 201],
+            );
+        });
         api(
             COORDINATOR_KEY,
-            "POST",
-            `${VOLUNTEER_URL}/teams/${teamId}/pools`,
-            { groupId, label: `${PREFIX} pool` },
-            201,
-        );
+            "GET",
+            `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
+            null,
+            200,
+        ).then((resp) => {
+            groupId = resp.body.groupId;
+        });
     });
 
     // Everybody in the pool is qualified for everything: UC2's constraint is

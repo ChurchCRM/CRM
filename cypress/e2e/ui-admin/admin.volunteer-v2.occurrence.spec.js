@@ -30,7 +30,6 @@ const POSITION_MILK = `${PREFIX} Milk Station`;
 const POSITION_EXPEDITOR = `${PREFIX} Expeditor`;
 const EVENT_TITLE = `${PREFIX} Coffee Bar Service`;
 
-const POOL_GROUP = 1; // "Angels class" — seeded members 4, 5, 8, 9, 63
 const POOL_MEMBER_A = 8;
 const POOL_MEMBER_B = 9;
 const CHURCH_SERVICE_TYPE = 1;
@@ -200,13 +199,16 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
         });
 
         cy.then(() => {
-            // Linking the same Group twice is a 409; both outcomes are fine here.
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `${VOLUNTEER_URL}/teams/${teamId}/pools`,
-                { groupId: POOL_GROUP, label: `${PREFIX} pool` },
-                [201, 409],
-            );
+            // D19: the ministry came with its own pool Group, empty. Adding
+            // somebody already in it is 200, not 409.
+            for (const personId of [POOL_MEMBER_A, POOL_MEMBER_B]) {
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                    null,
+                    [200, 201],
+                );
+            }
         });
 
         cy.then(() => {

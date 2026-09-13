@@ -46,7 +46,6 @@ const PERSON_SUBSTITUTE = 100;
 const PERSON_PLAIN = 900;
 
 /** Seeded members of group 1 "Angels class" (seed.sql person2group2role_p2g2r). */
-const POOL_GROUP = 1;
 const POOL_MEMBER_A = 8;
 const POOL_MEMBER_B = 9;
 
@@ -275,12 +274,20 @@ function cleanupFixtures() {
           WHERE vmin.vmin_Name LIKE ?`,
         [`${FIXTURE_PREFIX}%`],
     );
+    // D19: the pool is the ministry's own Group, and `grp_ministry_id` is ON DELETE
+    // SET NULL — so the group and its memberships go BEFORE the ministry row, or the
+    // installation is left with an orphan group nobody recognises.
     dbOk(
-        `DELETE vpol FROM volunteer_pool_vpol vpol
-           JOIN volunteer_team_vtem vtem
-             ON vtem.vtem_ID = vpol.vpol_OwnerId AND vpol.vpol_OwnerType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
+        [`${FIXTURE_PREFIX}%`],
+    );
+    dbOk(
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         [`${FIXTURE_PREFIX}%`],
     );
     dbOk(
@@ -293,13 +300,6 @@ function cleanupFixtures() {
         `${FIXTURE_PREFIX}%`,
     ]);
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${EVENT_TITLE}%`]);
-    // The two volunteer personas are put into the pool group by hand (see the
-    // header); take them back out so the seeded group size is what the next
-    // spec expects.
-    dbOk(
-        `DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID IN (?, ?) AND p2g2r_grp_ID = ?`,
-        [PERSON_VOLUNTEER, PERSON_SUBSTITUTE, POOL_GROUP],
-    );
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
@@ -334,18 +334,18 @@ before(() => {
         });
     });
 
-    // The pool is an existing Group — V2 never copies membership (D1). Neither
-    // volunteer persona is a seeded member of it, so put them in directly.
+    // D19: the ministry came with its own pool Group, empty — both volunteer
+    // personas go in through the API.
     cy.then(() => {
-        dbOk(
-            `INSERT IGNORE INTO person2group2role_p2g2r (p2g2r_per_ID, p2g2r_grp_ID, p2g2r_rle_ID)
-             VALUES (?, ?, 2), (?, ?, 2)`,
-            [PERSON_VOLUNTEER, POOL_GROUP, PERSON_SUBSTITUTE, POOL_GROUP],
-        );
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/teams/${teamId}/pools`, {
-            groupId: POOL_GROUP,
-            label: `${FIXTURE_PREFIX} pool`,
-        }, 201);
+        for (const personId of [PERSON_VOLUNTEER, PERSON_SUBSTITUTE]) {
+            api(
+                ADMIN_KEY,
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                null,
+                [200, 201],
+            );
+        }
     });
 
     cy.then(() => {

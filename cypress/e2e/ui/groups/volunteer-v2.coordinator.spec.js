@@ -29,7 +29,6 @@ const VOLUNTEER_URL = "/api/volunteer";
 const DASHBOARD_URL = "/volunteer/dashboard";
 const MINISTRIES_URL = "/volunteer/ministries";
 
-const POOL_GROUP = 1;
 const POOL_MEMBER_A = 8; // qualified for Espresso
 const POOL_MEMBER_B = 9; // qualified for Milk Station — the one the picker offers
 const CHURCH_SERVICE_TYPE = 1;
@@ -186,12 +185,19 @@ function cleanupFixtures() {
           WHERE vmin.vmin_Name LIKE ?`,
         [`${PREFIX}%`],
     );
+    // D19: the pool is the ministry's own Group and `grp_ministry_id` is ON DELETE
+    // SET NULL, so the group and its memberships go before the ministry row.
     dbOk(
-        `DELETE vpol FROM volunteer_pool_vpol vpol
-           JOIN volunteer_team_vtem vtem
-             ON vtem.vtem_ID = vpol.vpol_OwnerId AND vpol.vpol_OwnerType = 'team'
-           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
-          WHERE vmin.vmin_Name LIKE ?`,
+        `DELETE r FROM person2group2role_p2g2r r
+           JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
+        [`${PREFIX}%`],
+    );
+    dbOk(
+        `DELETE g FROM group_grp g
+           JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
+          WHERE m.vmin_Name LIKE ?`,
         [`${PREFIX}%`],
     );
     dbOk(
@@ -245,11 +251,16 @@ function buildFixture() {
         });
     });
 
+    // D19: the ministry came with its own pool Group, empty — fill it through the API.
     cy.then(() => {
-        adminApi("POST", `${VOLUNTEER_URL}/teams/${teamId}/pools`, {
-            groupId: POOL_GROUP,
-            label: `${PREFIX} pool`,
-        }, 201);
+        [POOL_MEMBER_A, POOL_MEMBER_B].forEach((personId) => {
+            adminApi(
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${personId}`,
+                null,
+                [200, 201],
+            );
+        });
     });
 
     cy.then(() => {

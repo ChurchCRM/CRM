@@ -9,10 +9,11 @@
  * through `window.CRM.notify`.
  *
  * Scope note: steps 1–3 of §5.3 that this issue owns are Ministry → Team →
- * Positions. The volunteer pool (step 3 in the design's numbering) and the
- * qualification matrix arrive with #9707; the schedule, staffing and generate
- * steps with #9708/#9711. The flow is built so those slot in without moving
- * what is here.
+ * Positions. The qualification matrix arrives with #9707; the schedule, staffing
+ * and generate steps with #9708/#9711. (#9707 also added a volunteer-pool step
+ * between Team and Positions; D19 removed it again — a ministry now comes with
+ * its pool Group, so there is nothing to choose.) The flow is built so those slot
+ * in without moving what is here.
  *
  * Order inside every hook is API setup → freshAdminLogin() → cy.visit(),
  * because cy.request() rotates the PHP session cookie (cypress-testing.md).
@@ -219,7 +220,13 @@ describe("Volunteer v2 setup flow and ministry page (#9715)", () => {
             cy.get("#nav-item-overview").should("contain", "Overview");
             cy.get("#nav-item-teams").should("contain", "Teams");
             cy.get("#nav-item-positions").should("contain", "Positions");
-            cy.contains(MINISTRY_NAME).should("be.visible");
+            // Scoped to the card, not the whole page: since D19 the ministry also
+            // owns a GROUP of the same name, which appears in the sidebar's
+            // (collapsed, therefore invisible) groups menu — an unscoped
+            // `cy.contains` picks that up first.
+            cy.get("#volunteer-ministry .card-title")
+                .should("be.visible")
+                .and("contain", MINISTRY_NAME);
         });
 
         it("loads the Teams tab lazily and shows its rows with an action menu", () => {
@@ -282,19 +289,22 @@ describe("Volunteer v2 setup flow and ministry page (#9715)", () => {
 });
 
 // ═════════════════════════════════════════════════════════════════════════════
-// #9707 — the Teams & Pools tab and the qualification matrix (design §5.4).
+// #9707, rewritten by D19 — the volunteer pool panel and the qualification
+// matrix (design §5.4).
 //
 // A separate top-level describe with its own PREFIX and its own fixtures, so
 // nothing above changes and the two halves can fail independently. The API
 // contract these screens sit on is pinned by
-// `private.volunteer.pools-qualifications.spec.js`; what is asserted here is the
-// screen: that a Group can be linked from the tab, that its member count is
-// shown read-only with the Manage Groups note (Appendix D-1), that a matrix
-// checkbox writes through and survives a reload, and that both halves have a
-// first-class empty state (§5.8).
+// `private.volunteer.pools-qualifications.spec.js` and
+// `private.volunteer.ministry-group.spec.js`; what is asserted here is the
+// SCREEN: that the pool panel adds and removes people, that the matrix shows a
+// pool member with no ticks as "not qualified yet", that a checkbox writes
+// through and survives a reload, and that both halves have a first-class empty
+// state (§5.8).
 //
-// Seed groups: 1 "Angels class" (persons 4, 5, 8, 9, 63) and 8 "Girl Scouts"
-// (63, 80, 95) — see seed.sql:1338.
+// What is gone: everything about linking a Group. There is no group picker on
+// this tab and no pool step in the wizard, because a ministry is created with
+// its own pool Group.
 // ═════════════════════════════════════════════════════════════════════════════
 
 const PREFIX_9707 = "UI9707";
@@ -302,35 +312,22 @@ const MINISTRY_9707 = `${PREFIX_9707} Coffee Bar`;
 /** The team the ministry is created with. */
 const TEAM_9707 = `${MINISTRY_9707} Team`;
 const POSITION_9707 = `${PREFIX_9707} Espresso`;
-const GROUP_ANGELS_ID = 1;
-const GROUP_ANGELS_NAME = "Angels class";
+
 /**
- * Read in `before`, never hardcoded: `private.people.groups.spec.js` adds person
- * 1 to group 1 and does not always take them out again, so the group's size is
- * not stable across a full suite run. What these tests are about is that the
- * screen shows the GROUP's own count, whatever it currently is.
+ * The people this spec puts in the ministry's own pool Group (D19). Person 4 is
+ * the one the matrix toggles; person 5 is deliberately never qualified, so the
+ * "In the pool, not qualified yet" hint has a row to appear on.
  */
-let angelsMemberCount = 0;
+const POOL_PEOPLE_9707 = [4, 5];
+const POOL_NEVER_QUALIFIED = 5;
+/** Added and removed by the panel test — in nothing to begin with. */
+const POOL_ADDED_BY_PANEL = 8;
 
-const NEW_GROUP_9707 = `${PREFIX_9707} Setup-made pool`;
-
-/** Groups created by the "Create a new Group" button carry the spec prefix; remove them. */
-function cleanupGroups9707() {
-    // GET /api/groups/ (trailing slash, like the POST) answers a plain array of
-    // Propel toArray() rows, so the keys are phpNames: Id, Name.
-    cy.makePrivateAdminAPICall("GET", "/api/groups/", null, 200).then((resp) => {
-        for (const group of resp.body) {
-            const name = group.Name ?? "";
-            const id = group.Id;
-            if (name.startsWith(PREFIX_9707) && id) {
-                cy.makePrivateAdminAPICall("DELETE", `/api/groups/${id}`, null, [200, 404]);
-            }
-        }
-    });
-}
-
+/**
+ * Ministries take their pool Group with them when they are deleted (D19), so there
+ * is no separate group cleanup any more.
+ */
 function cleanup9707() {
-    cleanupGroups9707();
     cy.makePrivateAdminAPICall("GET", "/api/volunteer/ministries", null, 200).then(
         (resp) => {
             for (const ministry of resp.body.ministries) {
@@ -347,7 +344,7 @@ function cleanup9707() {
     );
 }
 
-describe("Volunteer v2 pools and qualification matrix (#9707)", () => {
+describe("Volunteer v2 volunteer pool and qualification matrix (#9707, D19)", () => {
     let ministryId = 0;
     let emptyMinistryId = 0;
     let positionId = 0;
@@ -355,17 +352,6 @@ describe("Volunteer v2 pools and qualification matrix (#9707)", () => {
     before(() => {
         setVersion("v2");
         cleanup9707();
-
-        // The core endpoint V2 reuses for pool membership (G2) is also the
-        // honest source for what the screen should be showing.
-        cy.makePrivateAdminAPICall(
-            "GET",
-            `/api/groups/${GROUP_ANGELS_ID}/members`,
-            null,
-            200,
-        ).then((resp) => {
-            angelsMemberCount = resp.body.Person2group2roleP2g2rs.length;
-        });
 
         cy.makePrivateAdminAPICall(
             "POST",
@@ -396,6 +382,17 @@ describe("Volunteer v2 pools and qualification matrix (#9707)", () => {
                     positionId = position.body.position.id;
                 });
             });
+
+            // D19: the ministry came with its pool Group, empty. Fill it so the
+            // matrix has rows and the panel has something to show.
+            for (const personId of POOL_PEOPLE_9707) {
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/volunteer/ministries/${ministryId}/pool/${personId}`,
+                    null,
+                    [200, 201],
+                );
+            }
         });
 
         cy.makePrivateAdminAPICall(
@@ -417,42 +414,79 @@ describe("Volunteer v2 pools and qualification matrix (#9707)", () => {
         freshAdminLogin();
     });
 
-    it("shows a Qualifications tab beside Teams & Pools", () => {
+    it("names the tab Teams, with no Pools in it any more (D19)", () => {
         cy.visit(`/volunteer/ministries/${ministryId}`);
-        cy.get("#nav-item-teams").should("contain", "Pools");
+        cy.get("#nav-item-teams").should("contain", "Teams").and("not.contain", "Pools");
         cy.get("#nav-item-qualifications").should("contain", "Qualifications");
     });
 
-    it("shows the empty pool state and the Manage Groups note (D-1)", () => {
+    it("shows the empty pool state with no group to link (D19)", () => {
         cy.visit(`/volunteer/ministries/${emptyMinistryId}`);
         cy.get("#nav-item-teams").click();
-        cy.get("#pools-empty").should("be.visible");
-        cy.get("#pools-empty .empty-title").should("be.visible");
-        // Appendix D-1: membership is read-only in V2 and the screen says so.
-        cy.get("#pools-membership-note")
+        cy.get("#pool-empty").should("be.visible");
+        cy.get("#pool-empty .empty-title").should("be.visible");
+        // The note names the ministry's OWN group and says the Groups module is a
+        // second door — never "you need the Manage Groups permission" (that was
+        // Appendix D-1, which D19 retires).
+        cy.get("#pool-membership-note")
             .should("be.visible")
-            .and("contain", "Manage Groups");
+            .and("not.contain", "Manage Groups");
+        // And there is nothing to link: the button adds a PERSON.
+        cy.get("#pool-add-btn").should("contain", "Add to pool");
     });
 
-    it("links a Group as the pool and shows its member count read-only", () => {
+    it("lists the pool with a link to the ministry's own Group", () => {
+        cy.visit(`/volunteer/ministries/${ministryId}`);
+        cy.get("#nav-item-teams").click();
+        cy.get("#volunteerPoolTable").should("be.visible");
+        cy.get("#volunteerPoolTable tbody tr").should(
+            "have.length",
+            POOL_PEOPLE_9707.length,
+        );
+        cy.get("#pool-group-link")
+            .should("be.visible")
+            .and("contain", MINISTRY_9707)
+            .and("have.attr", "href")
+            .and("include", "/groups/view/");
+    });
+
+    it("adds somebody to the pool with the shared person picker, and removes them again", () => {
         cy.visit(`/volunteer/ministries/${ministryId}`);
         cy.get("#nav-item-teams").click();
         cy.get("#pool-add-btn").should("be.visible").click();
 
-        // window.CRM.groups.promptSelection() (G4) — the existing picker, not a
-        // second group chooser built for V2.
-        cy.get(".modal.show").should("be.visible").and("contain", "Select Group");
-        cy.get(".modal.show .ts-control").click();
-        cy.get(".ts-dropdown").should("be.visible");
-        cy.get(".ts-dropdown .option").contains(GROUP_ANGELS_NAME).click();
-        cy.get("#crm-gs-confirm").click();
+        cy.get("#poolAddModal").should("be.visible");
+        // The shared person selector (CR1/#9819), initialised on `shown.bs.modal`.
+        cy.get("#poolAddModal .ts-wrapper").should("exist");
+        cy.get("#pool-add-person-select").then(($el) => {
+            const ts = $el[0].tomselect;
+            ts.addOption({ objid: String(POOL_ADDED_BY_PANEL), text: "Added by panel" });
+            ts.setValue(String(POOL_ADDED_BY_PANEL));
+        });
+        cy.get("#pool-add-save").click();
 
-        cy.get("#volunteerPoolsTable").should("be.visible");
-        cy.get("#volunteerPoolsTable").should("contain", GROUP_ANGELS_NAME);
-        cy.get("#volunteerPoolsTable").should("contain", angelsMemberCount);
-        // The count links out to the group, because editing membership happens there.
-        cy.get(`#volunteerPoolsTable a[href*="/groups/view/${GROUP_ANGELS_ID}"]`)
-            .should("exist");
+        cy.get("#volunteerPoolTable tbody tr").should(
+            "have.length",
+            POOL_PEOPLE_9707.length + 1,
+        );
+
+        // …and out again, through the row action menu.
+        cy.get(
+            `#volunteerPoolTable .volunteer-pool-remove[data-person-id="${POOL_ADDED_BY_PANEL}"]`,
+        )
+            .parents(".dropdown")
+            .find("[data-bs-toggle='dropdown']")
+            .click();
+        cy.get(
+            `#volunteerPoolTable .volunteer-pool-remove[data-person-id="${POOL_ADDED_BY_PANEL}"]`,
+        ).click();
+        cy.get(".bootbox").should("be.visible").and("contain", "qualifications are kept");
+        cy.get(".bootbox .btn-danger").click();
+
+        cy.get("#volunteerPoolTable tbody tr").should(
+            "have.length",
+            POOL_PEOPLE_9707.length,
+        );
     });
 
     it("renders the matrix with the pool people down the side and positions across the top", () => {
@@ -463,11 +497,23 @@ describe("Volunteer v2 pools and qualification matrix (#9707)", () => {
         cy.get("#volunteerQualificationsTable thead").should("contain", POSITION_9707);
         cy.get("#volunteerQualificationsTable tbody tr").should(
             "have.length",
-            angelsMemberCount,
+            POOL_PEOPLE_9707.length,
         );
         cy.get(
             `#volunteerQualificationsTable input.volunteer-qual-toggle[data-position-id="${positionId}"]`,
-        ).should("have.length", angelsMemberCount);
+        ).should("have.length", POOL_PEOPLE_9707.length);
+    });
+
+    it("marks a pool member with no qualifications yet (D19)", () => {
+        cy.visit(`/volunteer/ministries/${ministryId}`);
+        cy.get("#nav-item-qualifications").click();
+        cy.get(
+            `#volunteerQualificationsTable input.volunteer-qual-toggle[data-person-id="${POOL_NEVER_QUALIFIED}"]`,
+        )
+            .parents("tr")
+            .find(".volunteer-pool-hint")
+            .should("be.visible")
+            .and("contain", "In the pool, not qualified yet");
     });
 
     it("toggles a qualification and it survives a reload", () => {
@@ -518,39 +564,20 @@ describe("Volunteer v2 pools and qualification matrix (#9707)", () => {
         cy.get("#qualify-cart-position").should("contain", POSITION_9707);
     });
 
-    it("resumes the setup flow with the pool step unlocked and the group listed", () => {
-        // §5.3 step 3. Resuming with ?ministryId= is the path a coordinator takes
-        // back into the flow, so the pool step must be usable straight away.
+    it("has no volunteer-pool step in the wizard any more (D19)", () => {
+        // §5.3 step 3 is gone: a ministry is created with its pool Group, so there
+        // is nothing to choose. What used to be step 4 is now step 3.
         cy.visit(`/volunteer/setup?ministryId=${ministryId}`);
-        cy.get("#setup-step-pool").should("be.visible");
-        cy.get("#setup-pool-link").should("not.be.disabled");
-        cy.get("#setup-pool-list").should("contain", GROUP_ANGELS_NAME);
-        cy.get("#setup-pool-list").should("contain", angelsMemberCount);
-        // The design's wording, which is the point of the step: the Group stays
-        // in charge of who belongs.
-        cy.get("#setup-step-pool").should("contain", "Nobody is copied");
+        cy.get("#setup-step-pool").should("not.exist");
+        cy.get("#setup-pool-link").should("not.exist");
+        cy.get("#setup-pool-new-group").should("not.exist");
+        cy.get("#setup-step-position")
+            .should("be.visible")
+            .and("contain", "Positions");
+        cy.get("#setup-step-position .card-title").should("contain", "3");
     });
 
-    it("creates a new Group from the pool step and links it in one go", () => {
-        // Carl's review path: there is no "new group" page in the groups module
-        // (/groups/editor/{id} edits an existing one), so the button must create
-        // the Group through the core API and link it here, not link to a 404.
-        cy.visit(`/volunteer/setup?ministryId=${ministryId}`);
-        cy.get("#setup-pool-new-group").should("not.be.disabled").click();
-        cy.get(".bootbox").should("be.visible");
-        cy.get(".bootbox input.bootbox-input").should("be.focused").type(NEW_GROUP_9707);
-        cy.get(".bootbox .btn-primary").click();
-
-        cy.get("#setup-pool-list").should("contain", NEW_GROUP_9707);
-        cy.makePrivateAdminAPICall("GET", `/api/volunteer/ministries/${ministryId}/pools`, null, 200).then(
-            (resp) => {
-                const names = resp.body.pools.map((pool) => pool.groupName);
-                expect(names).to.include(NEW_GROUP_9707);
-            },
-        );
-    });
-
-    it("shows a first-class empty state when no pool is linked", () => {
+    it("shows a first-class empty state when nobody is in the pool", () => {
         cy.visit(`/volunteer/ministries/${emptyMinistryId}`);
         cy.get("#nav-item-qualifications").click();
         cy.get("#qualifications-empty").should("be.visible");
