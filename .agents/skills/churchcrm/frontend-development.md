@@ -21,11 +21,10 @@ This skill covers frontend patterns, UI components, notifications, international
 
 **Verified versions in this repo (package.json):**
 - `@tabler/core` ^1.4.0
-- `@tabler/icons-webfont` ^3.40.0
 - `bootstrap` ^5.3.8
 - `apexcharts` ^5.10.4
-- `typescript` ^5.9.3
-- `webpack` ^5.105.4
+- `typescript` ^6.0.3
+- `webpack` ^5.109.0
 
 **For detailed component reference**, see `tabler-components.md`.
 
@@ -129,7 +128,7 @@ For tables with many potential columns:
 
 ## DataTables: Always Inherit the User's Page-Length Preference <!-- learned: 2026-04-22 -->
 
-Every user has a **"Rows per page"** preference (Edit Profile → Preferences → Tables). It's stored in the `ui.table.size` user setting and exposed globally as `window.CRM.plugin.dataTable` by [src/Include/Header.php](src/Include/Header.php#L85-L163). Every list-page DataTable MUST merge this global config so the user's choice wins.
+Every user has a **"Rows per page"** preference (Edit Profile → Preferences → Tables). It's stored in the `ui.table.size` user setting and exposed globally as `window.CRM.plugin.dataTable` by [src/Include/Header.php](../../../src/Include/Header.php#L85-L163). Every list-page DataTable MUST merge this global config so the user's choice wins.
 
 **Correct pattern** — put any local defaults *first*, then extend with the global config so `window.CRM.plugin.dataTable.pageLength` overrides them:
 
@@ -153,7 +152,7 @@ dataTableConfig.pageLength = 25;
 
 **Intentional exceptions** (do NOT copy these for list pages):
 
-- Home dashboard widgets in [MainDashboard.js](src/skin/js/MainDashboard.js#L47-L57) set `paging: false` via `dataTableDashboardDefaults` — compact widgets, not paginated lists.
+- Home dashboard widgets in [MainDashboard.js](../../../src/skin/js/MainDashboard.js#L47-L57) set `paging: false` via `dataTableDashboardDefaults` — compact widgets, not paginated lists.
 - Birthdays / Anniversaries dashboard widgets override back to `pageLength: 5` *after* the extend on purpose (tight widget constraint).
 
 **Quick audit**: `grep -rEn "pageLength" src/ --include="*.js" --include="*.php"` — any `pageLength` line that appears *after* `$.extend(..., window.CRM.plugin.dataTable)` is a bug unless it's a dashboard widget.
