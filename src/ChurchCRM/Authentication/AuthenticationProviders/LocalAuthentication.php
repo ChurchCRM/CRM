@@ -83,24 +83,18 @@ class LocalAuthentication implements IAuthenticationProvider
     /**
      * Establish the PHP session state for `$this->currentUser`.
      *
-     * This is the half of a successful login that is purely about the *session*:
-     * a fresh session id plus the per-session flags and caches the rest of the
-     * application reads. It deliberately contains no login bookkeeping (last
-     * login stamp, login/failed-login counters) so that it can be reused by
-     * flows that are not logins — notably the admin masquerade in
-     * {@see \ChurchCRM\Service\ImpersonationService}, which must not make the
-     * impersonated account look as though the user signed in.
+     * This is the half of a successful login that is purely about the *session*
+     * payload: the per-session flags and caches the rest of the application
+     * reads. It deliberately contains neither login bookkeeping (last login
+     * stamp, login/failed-login counters) nor the session id rotation, so that
+     * it can be reused by flows that are not logins — notably the admin
+     * masquerade in {@see \ChurchCRM\Service\ImpersonationService}, which must
+     * not make the impersonated account look as though the user signed in.
      *
      * @see prepareSuccessfulLoginOperations() for the full post-login sequence.
      */
     private function establishSessionForUser(): void
     {
-        // Regenerate session ID to prevent session fixation attacks.
-        // delete_old_session=true ensures the old session file is removed.
-        if (session_status() === PHP_SESSION_ACTIVE) {
-            session_regenerate_id(true);
-        }
-
         $_SESSION['bManageGroups'] = $this->currentUser->isManageGroupsEnabled();
         $_SESSION['bFinance'] = $this->currentUser->isFinanceEnabled();
 
@@ -124,6 +118,14 @@ class LocalAuthentication implements IAuthenticationProvider
      */
     private function prepareSuccessfulLoginOperations(): void
     {
+        // Regenerate session ID to prevent session fixation attacks.
+        // delete_old_session=true ensures the old session file is removed.
+        // This belongs to the *login* only: it is the transition from an
+        // anonymous (possibly attacker-supplied) id to an authenticated one.
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_regenerate_id(true);
+        }
+
         $this->establishSessionForUser();
 
         // Set the LastLogin and Increment the LoginCount
@@ -144,6 +146,16 @@ class LocalAuthentication implements IAuthenticationProvider
      * counters and the `usr_LastLogin` / `usr_LoginCount` bookkeeping; the
      * session state itself is identical because both paths share
      * establishSessionForUser().
+     *
+     * The session id is deliberately NOT rotated. Both masquerade transitions
+     * happen inside an already-authenticated session in the same browser, so
+     * there is no fixation window to close — while rotating with
+     * delete_old_session=true destroys the session out from under any request
+     * the page being left behind still has in flight, which 401s and bounces
+     * the browser to the login page (the global jQuery 401 handler in
+     * CRMJSOM.js redirects on sight). Rotating with delete_old_session=false
+     * would be worse: it leaves the *previous* identity reachable on the old
+     * id until GC.
      */
     public function establishSessionAsUser(User $user): void
     {

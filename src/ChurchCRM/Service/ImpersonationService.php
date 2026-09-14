@@ -85,8 +85,9 @@ class ImpersonationService
 
         // Establish the session as the target user exactly the way a successful
         // password (+2FA) login would, minus every login side effect. The
-        // masquerade record is written first so it survives the session id
-        // regeneration performed while establishing the session.
+        // session id itself is kept — see
+        // LocalAuthentication::establishSessionAsUser() for why rotating it here
+        // strands in-flight requests from the page being left behind.
         $_SESSION[self::SESSION_KEY] = $record;
         AuthenticationManager::establishSessionAsUser($target);
 

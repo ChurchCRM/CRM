@@ -107,8 +107,9 @@ class AuthenticationManager
      * masquerade flow: {@see \ChurchCRM\Service\ImpersonationService} performs
      * the authorization checks and the auth-log bookkeeping, and is the only
      * supported caller. None of the one-time login side effects run here — no
-     * `usr_LastLogin` / `usr_LoginCount` update, no failed-login reset, no
-     * update check, no remote notification fetch and no plugin hooks.
+     * session id rotation, no `usr_LastLogin` / `usr_LoginCount` update, no
+     * failed-login reset, no update check, no remote notification fetch and no
+     * plugin hooks.
      */
     public static function establishSessionAsUser(User $user): void
     {
