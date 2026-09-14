@@ -47,20 +47,13 @@
     z-index: 1055; // above a Tabler card and its sticky headers, below a modal backdrop
 }
 
-// One cell of the qualification grid: the checkbox, and the badge that confirms
-// what happened to it. The badge is absolutely sized out of the flow so a save
-// does not make the column jump.
-.volunteer-qual-cell {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    min-height: 1.5rem;
-}
-
-.volunteer-qual-status {
-    display: inline-flex;
-    align-items: center;
-    min-width: 1.25rem;
-    font-size: 0.75rem;
-    line-height: 1;
-}
+// There are deliberately NO rules for a cell of the qualification grid.
+//
+// A cell used to hold the checkbox plus a `.volunteer-qual-status` slot carrying a
+// spinner and then a "Saved" / "Not saved" badge, with a `min-width` meant to reserve
+// room for it. It did not: the badge is wider than the reservation, so every tick
+// widened its column for a second and a half and shifted every checkbox to its right.
+//
+// A save now confirms itself in the standard top-right notification (`notifySuccess`),
+// which is outside the table and cannot move anything in it, and the cell is the
+// checkbox and nothing else. ministry.ts writes no markup into the cell at all.

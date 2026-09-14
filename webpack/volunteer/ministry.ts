@@ -33,6 +33,8 @@
 
 import { attachToModal } from "../common/person-select";
 import {
+  addPoolMember,
+  addPoolMembersFromCart,
   createPosition,
   createSchedule,
   createTeam,
@@ -53,7 +55,6 @@ import {
   notifySuccess,
   positionLabel,
   type QualificationMatrix,
-  qualifyCart,
   removeVolunteerFromMinistry,
   revokeQualification,
   revokeScope,
@@ -192,6 +193,21 @@ function showModalError(prefix: string, message: string): void {
   notifyError(message);
 }
 
+/**
+ * Write a dialog's heading from the browser.
+ *
+ * "Add Volunteer to {Team}" cannot be a `gettext()` string in the .php view: only
+ * the browser knows which team the grid is showing, and an `i18next.t()` call inside
+ * a .php file is scanned by neither extractor and would never be translated (§5.10,
+ * F31). So the view ships the short static title and this replaces it on open.
+ */
+function setModalTitle(id: string, text: string): void {
+  const title = byId(id);
+  if (title) {
+    title.textContent = text;
+  }
+}
+
 function modal(id: string): { show(): void; hide(): void } | null {
   const el = byId(id);
   if (!el || !window.bootstrap?.Modal) {
@@ -199,6 +215,47 @@ function modal(id: string): { show(): void; hide(): void } | null {
   }
 
   return window.bootstrap.Modal.getOrCreateInstance(el);
+}
+
+/** Which modals have finished their show transition, by element id. */
+const shownModals = new Set<string>();
+/** Modals asked to close while still fading in, to be closed the moment they are open. */
+const pendingModalHides = new Set<string>();
+
+/**
+ * Register the fade guard for one modal.
+ *
+ * Bootstrap 5's `Modal.hide()` returns early while `_isTransitioning` is true: the
+ * request is accepted and thrown away, silently, and the dialog stays open. A local
+ * API answering in a few milliseconds lands squarely inside the 150 ms fade, so
+ * "hide on success" cannot simply call `hide()` — which is exactly what a dialog with
+ * no round trip of its own to wait for does.
+ *
+ * `occurrence.ts` carries a hand-rolled pair of booleans for the same trap; this is
+ * the same idea, keyed by element id so one call per modal is all it costs.
+ */
+function wireModalFadeGuard(id: string): void {
+  const el = byId(id);
+  el?.addEventListener("shown.bs.modal", () => {
+    shownModals.add(id);
+    if (pendingModalHides.delete(id)) {
+      modal(id)?.hide();
+    }
+  });
+  el?.addEventListener("hidden.bs.modal", () => {
+    shownModals.delete(id);
+    pendingModalHides.delete(id);
+  });
+}
+
+/** Close a modal, queueing the request when it is still fading in. */
+function hideModal(id: string): void {
+  if (!shownModals.has(id)) {
+    pendingModalHides.add(id);
+    return;
+  }
+
+  modal(id)?.hide();
 }
 
 function statusBadge(active: boolean): string {
@@ -485,19 +542,18 @@ function renderMatrix(data: QualificationMatrix): void {
           const qualificationId = person.qualificationIds?.[String(position.id)] ?? 0;
           const checked = person.qualifications.includes(position.id) ? " checked" : "";
 
-          // The status slot beside every box is where that box reports on itself —
-          // a spinner while the write is in flight, then "Saved" or "Not saved".
-          // It is a sibling of the input rather than a class on it, because a
-          // checkbox cannot carry a spinner and there is no Save button to look at.
+          // The cell is the checkbox and NOTHING else. It used to carry a status slot
+          // beside the box — a spinner, then a green "Saved" badge for a second and a
+          // half — and that badge is wider than a checkbox, so every tick widened its
+          // column and shifted every box to the right of it. A save is confirmed in
+          // the standard top-right notification instead, which is outside the table
+          // and cannot move anything in it.
           return `<td class="text-center">
-              <span class="volunteer-qual-cell">
-                <input type="checkbox" class="form-check-input volunteer-qual-toggle"${checked}
-                       data-person-id="${person.personId}"
-                       data-position-id="${position.id}"
-                       data-qualification-id="${qualificationId}"
-                       aria-label="${window.CRM?.escapeAttribute?.(`${person.displayName} — ${columnLabel(position)}`) ?? ""}">
-                <span class="volunteer-qual-status" aria-live="polite"></span>
-              </span>
+              <input type="checkbox" class="form-check-input volunteer-qual-toggle"${checked}
+                     data-person-id="${person.personId}"
+                     data-position-id="${position.id}"
+                     data-qualification-id="${qualificationId}"
+                     aria-label="${window.CRM?.escapeAttribute?.(`${person.displayName} — ${columnLabel(position)}`) ?? ""}">
             </td>`;
         })
         .join("");
@@ -545,8 +601,6 @@ function renderMatrix(data: QualificationMatrix): void {
   // hidden with the empty and error states.
   show(byId("volunteers-save-hint"), true);
   applyMatrixFilter();
-  fillPositionSelect("qualify-person-position");
-  fillPositionSelect("qualify-cart-position");
 }
 
 /**
@@ -593,40 +647,19 @@ function refreshPoolHint(input: HTMLInputElement, personId: number): void {
   hint.hidden = person.qualifications.length > 0;
 }
 
-/** How long the green confirmation stays up before the cell goes quiet again. */
-const SAVED_BADGE_MS = 1500;
-
 /**
- * The three things one checkbox can be saying about itself.
+ * What one cell names, for the toast that confirms its save.
  *
- * `null` clears the slot. The badge is taken out of the flow by
- * `.volunteer-qual-status` in the stylesheet, so a column does not jump wider for
- * a second and a half every time somebody ticks a box.
+ * "Espresso: Jane Doe qualified" says what happened without the coordinator having
+ * to remember which of forty boxes they just clicked — a bare "Saved" in the corner
+ * of the screen, several columns away from the box, does not. Both names come from
+ * the cached matrix, which is the same document the grid was drawn from.
  */
-function setQualificationStatus(input: HTMLInputElement, state: "saving" | "saved" | "failed" | null): void {
-  const slot = input.parentElement?.querySelector<HTMLElement>(".volunteer-qual-status");
-  if (!slot) {
-    return;
-  }
-
-  if (state === "saving") {
-    slot.innerHTML = `<span class="spinner-border spinner-border-sm text-secondary" role="status" aria-hidden="true"></span>`;
-    return;
-  }
-  if (state === "saved") {
-    slot.innerHTML = `<span class="badge bg-green-lt text-green"><i class="fa-solid fa-check me-1"></i>${escapeHtml(
-      i18next.t("Saved"),
-    )}</span>`;
-    return;
-  }
-  if (state === "failed") {
-    slot.innerHTML = `<span class="badge bg-red-lt text-red"><i class="fa-solid fa-triangle-exclamation me-1"></i>${escapeHtml(
-      i18next.t("Not saved"),
-    )}</span>`;
-    return;
-  }
-
-  slot.textContent = "";
+function qualificationCellNames(personId: number, positionId: number): { person: string; position: string } {
+  return {
+    person: matrix?.people.find((row: VolunteerPoolPerson) => row.personId === personId)?.displayName ?? "",
+    position: matrix?.positions.find((row: VolunteerPosition) => row.id === positionId)?.name ?? "",
+  };
 }
 
 /** Hide the rows whose name does not contain what was typed. Pure client-side. */
@@ -638,24 +671,12 @@ function applyMatrixFilter(): void {
   }
 }
 
-/** The two modals offer the same columns the matrix is showing. */
-function fillPositionSelect(id: string): void {
-  const select = byId<HTMLSelectElement>(id);
-  if (!select) {
-    return;
-  }
-
-  const previous = select.value;
-  select.textContent = "";
-  const positions = matrix?.positions ?? [];
-  const spansTeams = new Set(positions.map((position) => position.teamId)).size > 1;
-  for (const position of positions) {
-    const option = document.createElement("option");
-    option.value = String(position.id);
-    option.textContent = spansTeams ? positionLabel(position.teamName, position.name) : position.name;
-    select.append(option);
-  }
-  select.value = previous;
+/**
+ * The team the Volunteers grid is showing, by name — the two Add dialogs put it in
+ * their titles, because "Add Volunteer" on its own does not say to what.
+ */
+function matrixTeamName(): string {
+  return detail?.teams.find((team) => team.id === matrixTeamId)?.name ?? "";
 }
 
 /**
@@ -806,57 +827,92 @@ function isoDate(offsetDays: number): string {
   const date = new Date();
   date.setHours(12, 0, 0, 0);
   date.setDate(date.getDate() + offsetDays);
+
+  return formatIsoDate(date);
+}
+
+function formatIsoDate(date: Date): string {
   const pad = (n: number): string => String(n).padStart(2, "0");
 
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
-/** How far forward the default "upcoming" window looks. */
-const UPCOMING_DAYS = 90;
-/** How far back "Filter by Date" proposes when it is opened with no range set. */
-const PAST_DEFAULT_DAYS = 90;
+/**
+ * How far past From the window runs when the To box is left empty.
+ *
+ * The list endpoint takes a MANDATORY `from`/`to` window (design M9: no pagination
+ * protocol was invented for one module), so "no end date" is not something the API
+ * can be asked. An empty To therefore has to be turned into a real upper bound here,
+ * and a year is the honest reading of "as far as it goes": a schedule generates at
+ * most a year or so ahead, and the 500-row cap — which the response reports as
+ * `capped` — is the real limit on how much comes back anyway.
+ */
+const OPEN_ENDED_TO_YEARS = 1;
+
+/** How long a typed field waits after the last keystroke before it queries. */
+const OCCURRENCE_TEXT_DEBOUNCE_MS = 300;
+
+/** Pending debounce for the typed fields, so a fast typist makes one request. */
+let occurrenceTypingTimer = 0;
 
 /**
- * The window the Occurrences tab is showing, or `null` for the default.
+ * The search form's four fields, read off the DOM at the moment of the request.
  *
- * The default is **upcoming only** — from today forward — because the tab exists
- * to staff the weeks ahead, and a list that opens on things that already happened
- * buries them. Everything before today is one dialog away ("Filter by Date"), and
- * choosing a range puts it here; "Back to upcoming" sets it to null again.
+ * There is no cached "current filter" object: the inputs ARE the state, so nothing
+ * can drift out of step with what the coordinator is looking at, and a re-render
+ * cannot silently query something other than what the form says.
+ *
+ * `from` falls back to today because the tab exists to staff the weeks ahead — the
+ * weeks that already happened are reached by moving From back, which is one field
+ * rather than the dialog this replaced.
  */
-let occurrenceRange: { from: string; to: string } | null = null;
+function occurrenceQuery(): { from: string; to: string; teamId?: number; text?: string } {
+  const from = byId<HTMLInputElement>("occurrence-from")?.value || isoDate(0);
+  const typedTo = byId<HTMLInputElement>("occurrence-to")?.value ?? "";
+  const teamId = Number(byId<HTMLSelectElement>("occurrence-team-filter")?.value ?? "") || undefined;
+  const text = byId<HTMLInputElement>("occurrence-event-filter")?.value.trim() || undefined;
 
-/** The window actually asked for, default included. `from`/`to` are mandatory (M9). */
-function occurrenceWindow(): { from: string; to: string } {
-  return occurrenceRange ?? { from: isoDate(0), to: isoDate(UPCOMING_DAYS) };
-}
-
-/** "Showing 2026-06-01 to 2026-09-13", with the way back, or nothing at all. */
-function renderOccurrenceRangeNote(): void {
-  const note = byId("occurrences-range-note");
-  const text = byId("occurrences-range-text");
-  if (text && occurrenceRange !== null) {
-    text.textContent = i18next.t("Showing {{from}} to {{to}}", {
-      from: occurrenceRange.from,
-      to: occurrenceRange.to,
-    });
+  // An empty To means "as far as it goes"; the endpoint requires a bound, so
+  // From + a year is sent and the code says so rather than leaving a magic date.
+  let to = typedTo;
+  if (to === "") {
+    const end = new Date(`${from}T12:00:00`);
+    end.setFullYear(end.getFullYear() + OPEN_ENDED_TO_YEARS);
+    to = formatIsoDate(end);
   }
-  show(note, occurrenceRange !== null);
+
+  return { from, to, teamId, text };
 }
 
 async function loadOccurrences(force = false): Promise<void> {
   if (occurrences !== null && !force) {
-    renderOccurrenceRangeNote();
     renderOccurrences(occurrences);
 
     return;
   }
 
   renderState("occurrences", "loading");
-  renderOccurrenceRangeNote();
+
+  // The Team select is filled from the ministry document, and `gapSummary()` names
+  // the team of a short position from the same place — so the document has to be
+  // there before the first occurrence request, exactly as it does for the grid.
+  if (detail === null) {
+    await load();
+  }
+  fillOccurrenceTeamFilter();
+
+  const query = occurrenceQuery();
+  // Said here rather than only by the server's 400, because it is the one mistake
+  // the form makes easy and the answer is faster where the mistake was made.
+  if (query.to < query.from) {
+    occurrences = null;
+    renderState("occurrences", "error", i18next.t("The window ends before it starts"));
+
+    return;
+  }
 
   try {
-    const data = await listOccurrences({ ...occurrenceWindow(), ministryId });
+    const data = await listOccurrences({ ...query, ministryId });
     occurrences = data.occurrences;
     renderOccurrences(occurrences);
   } catch (error) {
@@ -866,51 +922,82 @@ async function loadOccurrences(force = false): Promise<void> {
 }
 
 /**
- * The "Filter by Date" dialog: a From, a To, and a Show.
+ * The Team select above the occurrence list.
  *
- * It opens on the last ninety days up to yesterday — "what did we just do" — which
- * is the question a coordinator opens a past-occurrence list to ask. The list
- * endpoint already takes a mandatory `from`/`to` window (M9), so this asks nothing
- * new of the API; only the browser's idea of "the default" changes.
+ * Unlike the Volunteers grid's team filter, this one DOES have an "All teams" entry
+ * and starts on it: an occurrence belongs to exactly one team's schedule, so a list
+ * spanning teams is unambiguous — it is the columns of the qualification grid that
+ * were not — and "what is coming up in this ministry" is the question the tab opens
+ * on.
  */
-function wireOccurrenceRange(): void {
-  byId("occurrences-filter-btn")?.addEventListener("click", () => {
-    show(byId("occurrence-range-form-error"), false);
-    const from = byId<HTMLInputElement>("occurrence-range-from");
-    const to = byId<HTMLInputElement>("occurrence-range-to");
-    if (from) {
-      from.value = occurrenceRange?.from ?? isoDate(-PAST_DEFAULT_DAYS);
-    }
-    if (to) {
-      to.value = occurrenceRange?.to ?? isoDate(-1);
-    }
-    modal("occurrenceRangeModal")?.show();
-  });
+function fillOccurrenceTeamFilter(): void {
+  const select = byId<HTMLSelectElement>("occurrence-team-filter");
+  if (!select) {
+    return;
+  }
 
-  byId("occurrence-range-show")?.addEventListener("click", () => {
-    const from = byId<HTMLInputElement>("occurrence-range-from")?.value ?? "";
-    const to = byId<HTMLInputElement>("occurrence-range-to")?.value ?? "";
+  const previous = select.value;
+  select.textContent = "";
 
-    if (from === "" || to === "") {
-      showModalError("occurrence-range", i18next.t("Choose a date to show from and a date to show to"));
-      return;
-    }
-    // The server answers an inverted window with a 400; saying so here is faster
-    // and says it where the mistake was made.
-    if (to < from) {
-      showModalError("occurrence-range", i18next.t("The window ends before it starts"));
-      return;
-    }
+  const all = document.createElement("option");
+  all.value = "";
+  all.textContent = i18next.t("All Teams");
+  select.append(all);
 
-    occurrenceRange = { from, to };
-    modal("occurrenceRangeModal")?.hide();
+  for (const team of detail?.teams ?? []) {
+    const option = document.createElement("option");
+    option.value = String(team.id);
+    option.textContent = team.name;
+    select.append(option);
+  }
+
+  // Keep whatever was chosen if that team still exists; otherwise fall back to All.
+  select.value = previous;
+  if (select.value !== previous) {
+    select.value = "";
+  }
+}
+
+/**
+ * The search form: Team · Event · From · To, all live.
+ *
+ * It replaces a "Filter by Date" button, a modal, a "Showing … to …" line and a
+ * "Back to upcoming" link. Every field re-runs the query as soon as it changes.
+ *
+ * The Team select fires once per choice, so it queries immediately. The three typed
+ * fields are debounced together: the Event box fires per keystroke, and a date input
+ * typed rather than picked fires `input` for every complete date it passes through on
+ * the way to the one that was meant — 2026-06-16 is a valid date at "0026", "0206"
+ * and "2026" too. Both `input` and `change` are listened for on the dates, because a
+ * browser fires `input` when a date is typed and `change` when one is picked, and
+ * neither event alone covers both ways of using the control.
+ *
+ * Every one of the four narrows the query SERVER-side — `teamId` and `text` are
+ * query parameters of `GET /occurrences`, not a filter over rows already drawn.
+ * The table is a DataTable, and `renderOccurrences()` destroys it before rewriting
+ * the `<tbody>`; doing it the other way round silently restores the cached rows.
+ */
+function wireOccurrenceFilters(): void {
+  const from = byId<HTMLInputElement>("occurrence-from");
+  if (from && from.value === "") {
+    from.value = isoDate(0);
+  }
+
+  const reloadSoon = (): void => {
+    window.clearTimeout(occurrenceTypingTimer);
+    occurrenceTypingTimer = window.setTimeout(() => {
+      void loadOccurrences(true);
+    }, OCCURRENCE_TEXT_DEBOUNCE_MS);
+  };
+
+  byId("occurrence-team-filter")?.addEventListener("change", () => {
     void loadOccurrences(true);
   });
 
-  byId("occurrences-range-reset")?.addEventListener("click", () => {
-    occurrenceRange = null;
-    void loadOccurrences(true);
-  });
+  for (const id of ["occurrence-event-filter", "occurrence-from", "occurrence-to"]) {
+    byId(id)?.addEventListener("input", reloadSoon);
+    byId(id)?.addEventListener("change", reloadSoon);
+  }
 }
 
 /**
@@ -1666,59 +1753,87 @@ function wireQualifications(): void {
     void loadMatrix(true);
   });
 
+  // ── "Add Volunteer" ────────────────────────────────────────────────────────
+  //
+  // The dialog used to grant a qualification and carried a position select to say
+  // which. It does not any more: it puts the person in the ministry's POOL and
+  // grants nothing, because being in the pool is candidacy and a tick on the grid
+  // is eligibility (§2.5). Their row appears with no ticks, which is the prompt to
+  // make the second statement.
+  //
   // The shared person selector (CR1/#9819) rather than a fourth hand-rolled
   // TomSelect: it owns the modal lifecycle, the body-mounted dropdown and the
   // maxOptions fix.
-  const personModal = byId("qualifyPersonModal");
-  const personPicker = personModal ? attachToModal(personModal, "#qualify-person-select") : null;
+  const personModal = byId("addVolunteerModal");
+  const personPicker = personModal ? attachToModal(personModal, "#add-volunteer-person") : null;
+  // Both dialogs act the moment their button is pressed, with no field to fill in
+  // afterwards, so both can finish inside Bootstrap's 150 ms fade.
+  wireModalFadeGuard("addVolunteerModal");
+  wireModalFadeGuard("addFromCartModal");
 
   byId("qualification-add-person")?.addEventListener("click", () => {
-    show(byId("qualify-person-form-error"), false);
-    fillPositionSelect("qualify-person-position");
-    modal("qualifyPersonModal")?.show();
+    show(byId("add-volunteer-form-error"), false);
+    personPicker?.getInstance()?.clear();
+    setModalTitle("addVolunteerModalTitle", i18next.t("Add Volunteer to {{team}}", { team: matrixTeamName() }));
+    modal("addVolunteerModal")?.show();
   });
 
-  byId("qualify-person-save")?.addEventListener("click", () => {
+  byId("add-volunteer-save")?.addEventListener("click", () => {
     const personId = Number(personPicker?.getInstance()?.getValue() ?? 0);
-    const positionId = Number(byId<HTMLSelectElement>("qualify-person-position")?.value ?? 0);
-
-    if (!personId || !positionId) {
-      showModalError("qualify-person", i18next.t("Choose a person and a position"));
+    if (!personId) {
+      showModalError("add-volunteer", i18next.t("Choose a person"));
       return;
     }
 
-    grantQualification(positionId, personId)
-      .then(() => {
-        modal("qualifyPersonModal")?.hide();
-        notifySuccess(i18next.t("Qualification granted"));
-        return loadMatrix(true);
+    // Idempotent server-side, so "they were already here" is an ANSWER rather than
+    // an error — and the grid is force-refreshed either way, because a coordinator
+    // who has just named somebody expects to see them whichever answer came back.
+    addPoolMember(ministryId, personId)
+      .then((result) => {
+        hideModal("addVolunteerModal");
+        notifySuccess(
+          result.added
+            ? i18next.t("Added — now tick the positions they can serve")
+            : i18next.t("They were already a volunteer here"),
+        );
+
+        // The pool count on Overview moved, so the ministry document is stale too.
+        return load(true).then(() => loadMatrix(true));
       })
       .catch((error: unknown) => {
-        showModalError("qualify-person", errorMessage(error, i18next.t("The qualification could not be saved")));
+        showModalError("add-volunteer", errorMessage(error, i18next.t("They could not be added")));
       });
   });
 
+  // ── "Add from Cart" ────────────────────────────────────────────────────────
+  //
+  // Same change, same reason: everyone in the cart joins the ministry's volunteers
+  // and nobody is qualified for anything, so there is nothing to choose. ONE
+  // request does the whole cart — thirty people should not be thirty round trips,
+  // and a batch that half-completed is not a state this screen could describe.
   byId("qualification-cart-btn")?.addEventListener("click", () => {
-    show(byId("qualify-cart-form-error"), false);
-    fillPositionSelect("qualify-cart-position");
-    modal("qualifyCartModal")?.show();
+    show(byId("add-from-cart-form-error"), false);
+    setModalTitle("addFromCartModalTitle", i18next.t("Add Everyone in Cart to {{team}}", { team: matrixTeamName() }));
+    modal("addFromCartModal")?.show();
   });
 
-  byId("qualify-cart-save")?.addEventListener("click", () => {
-    const positionId = Number(byId<HTMLSelectElement>("qualify-cart-position")?.value ?? 0);
-    if (!positionId) {
-      showModalError("qualify-cart", i18next.t("Choose a position"));
-      return;
-    }
-
-    qualifyCart(positionId)
+  byId("add-from-cart-save")?.addEventListener("click", () => {
+    addPoolMembersFromCart(ministryId)
       .then((result) => {
-        modal("qualifyCartModal")?.hide();
-        notifySuccess(i18next.t("{{count}} people qualified", { count: result.granted + result.reactivated }));
-        return loadMatrix(true);
+        hideModal("addFromCartModal");
+        // The server's own counts, never an assumption: the cart may hold people
+        // who were volunteers here already, and saying so is the honest answer.
+        notifySuccess(
+          i18next.t("{{added}} added, {{alreadyMembers}} were already volunteers here", {
+            added: result.added,
+            alreadyMembers: result.alreadyMembers,
+          }),
+        );
+
+        return load(true).then(() => loadMatrix(true));
       })
       .catch((error: unknown) => {
-        showModalError("qualify-cart", errorMessage(error, i18next.t("The cart could not be qualified")));
+        showModalError("add-from-cart", errorMessage(error, i18next.t("The cart could not be added")));
       });
   });
 
@@ -1734,9 +1849,12 @@ function wireQualifications(): void {
    * activated again — drew a document that predated the save, which is what the
    * product owner saw as "it is not persisting".
    *
-   * Each box also reports on itself, because there is deliberately no Save
-   * button: a spinner while the write is in flight, a green "Saved" for a second
-   * and a half, and a red "Not saved" beside the rolled-back box on failure.
+   * The save confirms itself in the standard top-right notification, naming the
+   * position and the person. It used to be a badge in a slot beside the box, which
+   * widened the column for a second and a half and shifted every checkbox to its
+   * right — so the cell now holds the checkbox and nothing else, and nothing in the
+   * grid moves when a write lands. The box is disabled for the duration of the
+   * request, which is the only in-place signal left and costs no layout.
    */
   document.addEventListener("change", (event) => {
     const target = event.target as HTMLInputElement | null;
@@ -1748,19 +1866,24 @@ function wireQualifications(): void {
     const positionId = Number(target.dataset.positionId);
     const qualificationId = Number(target.dataset.qualificationId ?? 0);
     const nowChecked = target.checked;
+    const names = qualificationCellNames(personId, positionId);
     target.disabled = true;
-    setQualificationStatus(target, "saving");
 
     const confirmSaved = (): void => {
       target.disabled = false;
-      setQualificationStatus(target, "saved");
-      window.setTimeout(() => setQualificationStatus(target, null), SAVED_BADGE_MS);
+      notifySuccess(
+        nowChecked
+          ? i18next.t("{{position}}: {{name}} qualified", { position: names.position, name: names.person })
+          : i18next.t("{{position}}: {{name}} no longer qualified", {
+              position: names.position,
+              name: names.person,
+            }),
+      );
     };
 
     const rollback = (error: unknown, fallback: string): void => {
       target.checked = !nowChecked;
       target.disabled = false;
-      setQualificationStatus(target, "failed");
       notifyError(errorMessage(error, fallback));
     };
 
@@ -1780,9 +1903,9 @@ function wireQualifications(): void {
     }
 
     if (!qualificationId) {
-      // Nothing to revoke — the box was never really on.
+      // Nothing to revoke — the box was never really on. No toast either: nothing
+      // happened, and a notification saying so would be noise.
       target.disabled = false;
-      setQualificationStatus(target, null);
       return;
     }
 
@@ -1916,7 +2039,6 @@ function wire(): void {
     ["teamModal", "team-form-name"],
     ["positionModal", "position-form-name"],
     ["scheduleModal", "schedule-form-name"],
-    ["occurrenceRangeModal", "occurrence-range-from"],
   ]) {
     byId(modalId)?.addEventListener("shown.bs.modal", () => {
       byId<HTMLInputElement>(inputId)?.focus();
@@ -1938,7 +2060,7 @@ function wire(): void {
   wireRemoveVolunteer();
   wireHelpWanted();
   wireQualifications();
-  wireOccurrenceRange();
+  wireOccurrenceFilters();
   // The qualification grid is the one table on this page that scrolls sideways.
   wireUnclippedRowMenus("volunteers-table-wrapper");
 

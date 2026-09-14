@@ -53,7 +53,7 @@ use Psr\Log\LoggerInterface;
  * 2. **Every mutation takes the acting `User` and authorizes through
  *    `VolunteerAuthorizationService`.** The route middleware has already answered "may
  *    this caller touch this record"; the service answers it again because the service
- *    is also reachable from the cart sink, the member surface and (later) a timer job,
+ *    is also reachable from the member surface and (later) a timer job,
  *    where no entity middleware ran. UI hiding is never the gate (D5).
  *
  * 3. **Historical rows are immutable (I6).** Once an occurrence's end has passed the
@@ -302,53 +302,6 @@ class VolunteerAssignmentService
             'status' => VolunteerAssignment::STATUS_ACCEPTED,
             'assignedBy' => null,
         ]);
-    }
-
-    /**
-     * Assign everyone currently in the session cart to one position (P6, §3.3.2).
-     *
-     * Per-person failures are reported, never thrown: the coordinator selected fifteen
-     * people and wants the twelve who are eligible put on, plus a list of why the other
-     * three were not. That is the same contract
-     * `VolunteerSetupService::grantQualifications()` already uses for the cart.
-     *
-     * @param int[] $personIds
-     *
-     * @return array{assigned: int, skipped: array<int, array{personId: int, reason: string}>, assignments: VolunteerAssignment[]}
-     */
-    public function assignFromCart(
-        VolunteerOccurrence $occurrence,
-        VolunteerPosition $position,
-        array $personIds,
-        User $actor,
-        bool $allowOutsidePool = false
-    ): array {
-        if (!$this->authz->canManageOccurrence($actor, $occurrence)) {
-            throw VolunteerSetupException::forbidden(gettext('Not authorized for this occurrence'));
-        }
-
-        $assigned = [];
-        $skipped = [];
-
-        foreach ($personIds as $personId) {
-            try {
-                $assigned[] = $this->assign($occurrence, $position, (int) $personId, $actor, [
-                    'allowOutsidePool' => $allowOutsidePool,
-                ]);
-            } catch (VolunteerSetupException $e) {
-                $skipped[] = ['personId' => (int) $personId, 'reason' => $e->getMessage()];
-            }
-        }
-
-        $this->logger->info('Volunteer assignments from cart', [
-            'occurrenceId' => $occurrence->getId(),
-            'positionId' => $position->getId(),
-            'assigned' => count($assigned),
-            'skipped' => count($skipped),
-            'actor' => $actor->getId(),
-        ]);
-
-        return ['assigned' => count($assigned), 'skipped' => $skipped, 'assignments' => $assigned];
     }
 
     // ── Respond and status changes ─────────────────────────────────────────

@@ -24,6 +24,11 @@ use ChurchCRM\Utils\InputUtils;
  *   - The **volunteer pool panel is gone**. The V2 pool endpoints and the Groups
  *     module still own the roster; this page simply no longer shows the panel, and
  *     qualifying somebody still brings them into the pool.
+ *   - **Adding a volunteer no longer qualifies them.** "Add Volunteer" and "Add from
+ *     Cart" put people in the ministry's pool and grant nothing, so neither dialog
+ *     has a position select; the ticks on the grid are the second step.
+ *   - **The Occurrences tab has a search form**, not a "Filter by Date" dialog —
+ *     Team · Event · From · To above the table, every field live.
  *
  * Every string is `gettext()`. The JS strings live in
  * webpack/volunteer/ministry.ts, because an `i18next.t()` call inside a .php file
@@ -287,12 +292,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <input type="search" class="form-control" id="qualification-filter"
                  placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>">
         </div>
+        <!--
+          Adding a volunteer and saying what they can do are two steps now. Both
+          buttons put people in the ministry's pool and grant nothing; the ticks on
+          the grid below are the second step, which is why neither dialog carries a
+          position selector any more.
+        -->
         <div class="col-12 col-md-4 d-flex gap-2 justify-content-md-end">
           <button type="button" class="btn btn-outline-primary" id="qualification-add-person">
-            <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Qualify someone else') ?>
+            <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Volunteer') ?>
           </button>
           <button type="button" class="btn btn-outline-primary" id="qualification-cart-btn">
-            <i class="fa-solid fa-cart-shopping me-1"></i><?= gettext('Qualify the cart') ?>
+            <i class="fa-solid fa-cart-shopping me-1"></i><?= gettext('Add from Cart') ?>
           </button>
         </div>
       </div>
@@ -314,9 +325,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </p>
       </div>
       <!--
-        There is deliberately no Save button: each tick is its own write, and each
-        one confirms itself beside the box it was made in. The hint says so, because
-        a grid of checkboxes with no Save button otherwise reads as unsaved work.
+        There is deliberately no Save button: each tick is its own write, and each one
+        confirms itself in the standard top-right notification. The hint says so,
+        because a grid of checkboxes with no Save button otherwise reads as unsaved
+        work.
+
+        The confirmation used to be a badge in a status slot beside each box, which
+        meant every save nudged the checkbox column sideways for a second and a half.
+        Nothing in a cell moves now — the cell is the checkbox and nothing else.
       -->
       <p class="text-body-secondary small mb-2 d-none" id="volunteers-save-hint">
         <i class="fa-solid fa-circle-info me-1"></i><?= gettext('Ticks save as you make them.') ?>
@@ -425,22 +441,38 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     -->
     <div class="tab-pane fade" id="occurrences" role="tabpanel" aria-labelledby="nav-item-occurrences">
       <!--
-        The tab shows what is still to come. Everything that already happened is
-        one dialog away rather than mixed into the default list, because a
-        coordinator opening this tab is staffing the weeks ahead and a year of
-        past weeks buries them.
+        A search form rather than a "Filter by Date" dialog.
+
+        The dialog it replaces could only narrow by date, and everything else — which
+        team, which service — had to be read off the table by eye. Four fields, laid
+        out like the Volunteers tab's controls above, and every one of them live: a
+        change re-runs the query rather than waiting for a Show button.
+
+        From defaults to today, because the tab exists to staff the weeks ahead; the
+        weeks that already happened are reached by moving From back, which is one
+        field instead of a dialog. To is deliberately EMPTY by default and means "as
+        far as it goes" — the list endpoint takes a mandatory from/to window (design
+        M9), so ministry.ts sends From + one year when the box is blank.
       -->
-      <div class="d-flex flex-wrap gap-2 align-items-center justify-content-end mb-2">
-        <button type="button" class="btn btn-sm btn-outline-primary" id="occurrences-filter-btn">
-          <i class="fa-solid fa-calendar-day me-1"></i><?= gettext('Filter by Date') ?>
-        </button>
+      <div class="row g-2 align-items-end mb-3">
+        <div class="col-12 col-md-3">
+          <label class="form-label" for="occurrence-team-filter"><?= gettext('Team') ?></label>
+          <select class="form-select" id="occurrence-team-filter"></select>
+        </div>
+        <div class="col-12 col-md-3">
+          <label class="form-label" for="occurrence-event-filter"><?= gettext('Event') ?></label>
+          <input type="search" class="form-control" id="occurrence-event-filter" maxlength="100"
+                 placeholder="<?= InputUtils::escapeAttribute(gettext('Any event')) ?>">
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="form-label" for="occurrence-from"><?= gettext('From') ?></label>
+          <input type="date" class="form-control" id="occurrence-from">
+        </div>
+        <div class="col-6 col-md-3">
+          <label class="form-label" for="occurrence-to"><?= gettext('To') ?></label>
+          <input type="date" class="form-control" id="occurrence-to">
+        </div>
       </div>
-      <p class="text-body-secondary small d-none" id="occurrences-range-note">
-        <span id="occurrences-range-text"></span>
-        <button type="button" class="btn btn-link btn-sm p-0 ms-2 align-baseline" id="occurrences-range-reset">
-          <?= gettext('Back to upcoming') ?>
-        </button>
-      </p>
       <div class="volunteer-loading text-center py-4" id="occurrences-loading">
         <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
         <?= gettext('Loading') ?>
@@ -658,73 +690,69 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <!--
-  Qualify one person who is not in a pool (#9707).
+  Add one volunteer to this ministry (#9707, as amended).
 
-  §4.6 puts no pool-membership condition on granting a qualification, and §2.5
-  says in as many words that the pool is the candidate set rather than the
-  eligibility rule — so a coordinator may qualify anyone. D19 adds the other half:
-  qualifying somebody outside the pool puts them in it. The picker is the shared
-  person selector (CR1/#9819) pointed at the core person search, not a second
-  widget.
+  The dialog used to grant a qualification and carried a position select to say
+  which. It does not any more: it puts the person in the ministry's pool Group and
+  stops there, because being in the pool is candidacy and the tick on the grid is
+  eligibility (§2.5) — two separate statements that were being made in one click.
+  The row appears in the grid with no ticks, which is the prompt to make the second.
+
+  The picker is the shared person selector (CR1/#9819) pointed at the core person
+  search, not a second widget. The title names the selected team and is written by
+  ministry.ts, because only the browser knows which team the grid is showing.
 -->
-<div class="modal fade" id="qualifyPersonModal" tabindex="-1" aria-hidden="true" aria-labelledby="qualifyPersonModalTitle">
+<div class="modal fade" id="addVolunteerModal" tabindex="-1" aria-hidden="true" aria-labelledby="addVolunteerModalTitle">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="qualifyPersonModalTitle"><?= gettext('Qualify someone else') ?></h5>
+        <h5 class="modal-title" id="addVolunteerModalTitle"><?= gettext('Add Volunteer') ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
       </div>
       <div class="modal-body">
-        <p class="text-body-secondary">
-          <?= gettext('Anyone can be qualified, whether or not they are in the pool already — qualifying them adds them to it. Being in the pool makes someone a candidate; the qualification is what makes them assignable.') ?>
-        </p>
         <div class="mb-3">
-          <label class="form-label" for="qualify-person-select"><?= gettext('Person') ?></label>
-          <select class="form-select person-search" id="qualify-person-select"
+          <label class="form-label" for="add-volunteer-person"><?= gettext('Person') ?></label>
+          <select class="form-select person-search" id="add-volunteer-person"
                   data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
         </div>
-        <div class="mb-3">
-          <label class="form-label" for="qualify-person-position"><?= gettext('Position') ?></label>
-          <select class="form-select" id="qualify-person-position"></select>
-        </div>
-        <div class="alert alert-danger d-none mt-3" role="alert" id="qualify-person-form-error">
+        <div class="alert alert-danger d-none mt-3" role="alert" id="add-volunteer-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-        <button type="button" class="btn btn-primary" id="qualify-person-save"><?= gettext('Qualify') ?></button>
+        <button type="button" class="btn btn-primary" id="add-volunteer-save"><?= gettext('Add') ?></button>
       </div>
     </div>
   </div>
 </div>
 
 <!--
-  Qualify everyone in the cart (#9707). The Cart is the existing bulk-selection
-  mechanism (P5); V2 adds a sink for it and no second selection UI.
+  Add everyone in the cart (#9707, as amended). The Cart is the existing
+  bulk-selection mechanism (P5); V2 adds a sink for it and no second selection UI.
+
+  Same change as the dialog above: they join the ministry's volunteers, and nobody
+  is qualified for anything — so there is nothing to choose and no position select.
+  One request does the whole cart (`POST /ministries/{id}/pool/from-cart`).
 -->
-<div class="modal fade" id="qualifyCartModal" tabindex="-1" aria-hidden="true" aria-labelledby="qualifyCartModalTitle">
+<div class="modal fade" id="addFromCartModal" tabindex="-1" aria-hidden="true" aria-labelledby="addFromCartModalTitle">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="qualifyCartModalTitle"><?= gettext('Qualify the cart') ?></h5>
+        <h5 class="modal-title" id="addFromCartModalTitle"><?= gettext('Add Everyone in Cart') ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
       </div>
       <div class="modal-body">
-        <p class="text-body-secondary">
-          <?= gettext('Everyone currently in your people cart is qualified for the position you choose. The cart is left as it is, so you can qualify the same people for a second position.') ?>
+        <p class="text-body-secondary mb-0">
+          <?= gettext('Everyone in the cart joins this ministry\'s volunteers. Tick their positions afterwards.') ?>
         </p>
-        <div class="mb-3">
-          <label class="form-label" for="qualify-cart-position"><?= gettext('Position') ?></label>
-          <select class="form-select" id="qualify-cart-position"></select>
-        </div>
-        <div class="alert alert-danger d-none mt-3" role="alert" id="qualify-cart-form-error">
+        <div class="alert alert-danger d-none mt-3" role="alert" id="add-from-cart-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-        <button type="button" class="btn btn-primary" id="qualify-cart-save"><?= gettext('Qualify') ?></button>
+        <button type="button" class="btn btn-primary" id="add-from-cart-save"><?= gettext('Add All') ?></button>
       </div>
     </div>
   </div>
@@ -825,47 +853,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
         <button type="button" class="btn btn-primary" id="schedule-form-save"><?= gettext('Save') ?></button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--
-  Filter the Occurrences tab by date.
-
-  The tab defaults to what is still to come; this dialog is how the weeks that
-  already happened are reached. The range defaults to the last 90 days up to
-  yesterday — "what did we just do" — and the list endpoint already takes a
-  mandatory `from`/`to` window (design M9), so nothing new is asked of the API.
--->
-<div class="modal fade" id="occurrenceRangeModal" tabindex="-1" aria-hidden="true" aria-labelledby="occurrenceRangeModalTitle">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="occurrenceRangeModalTitle"><?= gettext('Filter by Date') ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
-      </div>
-      <div class="modal-body">
-        <p class="text-body-secondary">
-          <?= gettext('Show the occurrences between two dates, including ones that have already happened.') ?>
-        </p>
-        <div class="row g-2">
-          <div class="col-12 col-sm-6 mb-3">
-            <label class="form-label" for="occurrence-range-from"><?= gettext('From') ?></label>
-            <input type="date" class="form-control" id="occurrence-range-from">
-          </div>
-          <div class="col-12 col-sm-6 mb-3">
-            <label class="form-label" for="occurrence-range-to"><?= gettext('To') ?></label>
-            <input type="date" class="form-control" id="occurrence-range-to">
-          </div>
-        </div>
-        <div class="alert alert-danger d-none mt-3" role="alert" id="occurrence-range-form-error">
-          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-        <button type="button" class="btn btn-primary" id="occurrence-range-show"><?= gettext('Show') ?></button>
       </div>
     </div>
   </div>

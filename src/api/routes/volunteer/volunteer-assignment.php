@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\Cart;
 use ChurchCRM\Exceptions\VolunteerSetupException;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -38,7 +37,7 @@ use Slim\Routing\RouteCollectorProxy;
  *
  * The coordinator surface: the staffing workhorse, the eligible picker, assign, the
  * status changes (including recording a response on a volunteer's behalf), cancel,
- * re-notify, the gap list, the swap queue and the Cart sink. The volunteer's own four
+ * re-notify, the gap list and the swap queue. The volunteer's own four
  * endpoints live in `volunteer-me.php`, which carries no role gate at all — mixing the
  * two surfaces in one file is exactly how a `personId` parameter ends up somewhere it
  * must never be (§3.3.3, §4.7).
@@ -47,7 +46,7 @@ use Slim\Routing\RouteCollectorProxy;
  * `VolunteerCoordinatorRoleAuthMiddleware` for the coarse "do you coordinate anything"
  * question and an entity middleware for the per-record one, and the service asks
  * `VolunteerAuthorizationService` a third time because it is also reachable from the
- * cart sink and the member surface where no entity middleware ran (§4.5, three layers).
+ * member surface, where no entity middleware ran (§4.5, three layers).
  *
  * **This group opens its own `$app->group('/volunteer', …)` and chains
  * `VolunteerV2EnabledMiddleware` itself.** Slim 4 scopes `->add()` to the single
@@ -110,14 +109,12 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
             ->add(new InputSanitizationMiddleware(['comment' => 'text']));
     })->add(new VolunteerSwapMiddleware());
 
-    // ── The Cart sink (P6) ──────────────────────────────────────────────────
-    // The people come from $_SESSION via Cart::getCartPeople(), never from the body —
-    // so only the target is sanitized, and there is nothing to spoof.
-    $group->post('/cart/assign', 'assignVolunteersFromCart')
-        ->add(new InputSanitizationMiddleware([
-            'occurrenceId' => 'int',
-            'positionId' => 'int',
-        ]));
+    // There is no cart sink on this surface any more. "Assign everyone in the cart"
+    // was taken off the occurrence page by the product owner: assigning is a
+    // per-person act with per-person eligibility rules (I1-I5), and a button that
+    // half-succeeded and reported a list of reasons was a worse answer than the
+    // single-person Assign flow beside it. The Cart still feeds V2 — it fills the
+    // ministry's volunteer POOL (`/ministries/{id}/pool/from-cart`, volunteer-setup.php).
 })->add(VolunteerCoordinatorRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
 
 // ─── Wire shapes ─────────────────────────────────────────────────────────────
@@ -1058,79 +1055,4 @@ function rejectVolunteerSwap(Request $request, Response $response): Response
     ]);
 
     return SlimUtils::renderJSON($response, ['swap' => volunteerSwapToArray($swap, $names)]);
-}
-
-/**
- * @OA\Post(
- *     path="/volunteer/cart/assign",
- *     operationId="assignVolunteersFromCart",
- *     summary="Assign everyone in the session cart to one position",
- *     description="The V2 Cart sink (design P5/P6): the route reads Cart::getCartPeople() and hands the ids to VolunteerAssignmentService, which applies I1-I5 per person. Per-person failures are REPORTED in skipped[] rather than failing the batch - the coordinator wants the eligible twelve assigned plus a reason for the other three. The cart is emptied only when emptyCart is true, because the same selection is usually wanted for a second position.",
- *     tags={"Volunteer"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\RequestBody(required=true, @OA\JsonContent(
- *         required={"occurrenceId","positionId"},
- *         @OA\Property(property="occurrenceId", type="integer"),
- *         @OA\Property(property="positionId", type="integer"),
- *         @OA\Property(property="allowOutsidePool", type="boolean"),
- *         @OA\Property(property="emptyCart", type="boolean")
- *     )),
- *     @OA\Response(response=400, description="The cart is empty"),
- *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this occurrence, or V2 is not enabled"),
- *     @OA\Response(response=404, description="No such occurrence or position"),
- *     @OA\Response(response=200, description="OK")
- * )
- */
-function assignVolunteersFromCart(Request $request, Response $response): Response
-{
-    $input = (array) $request->getParsedBody();
-
-    $occurrence = VolunteerOccurrenceQuery::create()->findPk((int) ($input['occurrenceId'] ?? 0));
-    if ($occurrence === null) {
-        return SlimUtils::renderErrorJSON($response, gettext('Occurrence not found'), [], 404, null, $request);
-    }
-
-    $position = VolunteerPositionQuery::create()->findPk((int) ($input['positionId'] ?? 0));
-    if ($position === null) {
-        return SlimUtils::renderErrorJSON($response, gettext('Position not found'), [], 404, null, $request);
-    }
-
-    $personIds = [];
-    foreach (Cart::getCartPeople() as $person) {
-        /** @var Person $person */
-        $personIds[] = (int) $person->getId();
-    }
-
-    if ($personIds === []) {
-        return SlimUtils::renderErrorJSON(
-            $response,
-            gettext('Add people to the cart before assigning them'),
-            [],
-            400,
-            null,
-            $request
-        );
-    }
-
-    try {
-        $result = (new VolunteerAssignmentService())->assignFromCart(
-            $occurrence,
-            $position,
-            $personIds,
-            volunteerAssignmentActor(),
-            filter_var($input['allowOutsidePool'] ?? false, FILTER_VALIDATE_BOOLEAN)
-        );
-    } catch (\Throwable $e) {
-        return volunteerAssignmentError($request, $response, $e);
-    }
-
-    if (filter_var($input['emptyCart'] ?? false, FILTER_VALIDATE_BOOLEAN)) {
-        Cart::emptyAll();
-    }
-
-    return SlimUtils::renderJSON($response, [
-        'assigned' => $result['assigned'],
-        'skipped' => $result['skipped'],
-    ]);
 }

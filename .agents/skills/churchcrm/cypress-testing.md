@@ -2512,13 +2512,13 @@ show">`"*, which reads like a z-index bug:
 
 ```js
 // ❌ FLAKY — the dismiss is swallowed and the modal never closes
-cy.get("#qualifyPersonModal").should("be.visible");
-cy.get("#qualifyPersonModal .btn-close").click();
+cy.get("#addVolunteerModal").should("be.visible");
+cy.get("#addVolunteerModal .btn-close").click();
 
 // ✅ CORRECT — wait for something that only exists after shown.bs.modal
-cy.get("#qualifyPersonModal .ts-wrapper").should("exist");   // TomSelect is built there
-cy.get("#qualifyPersonModal .btn-close").click();
-cy.get("#qualifyPersonModal").should("not.be.visible");
+cy.get("#addVolunteerModal .ts-wrapper").should("exist");   // TomSelect is built there
+cy.get("#addVolunteerModal .btn-close").click();
+cy.get("#addVolunteerModal").should("not.be.visible");
 ```
 
 Any post-`shown.bs.modal` side effect works as the gate: `should("be.focused")`
@@ -2526,6 +2526,31 @@ on the auto-focused first field, or a widget the app initialises in that handler
 (`attachToModal()`'s TomSelect wrapper, above). Prefer one of those to
 `cy.wait()` — they are deterministic, and a fixed wait is what the rest of this
 skill tells you not to write.
+
+**The same trap bites the APP, not just the spec** <!-- learned: 2026-09-14 -->
+
+A dialog whose only content is a button — "Add All", a confirm — can finish its
+round trip inside the 150 ms fade, so `modal.hide()` in the `.then()` is dropped
+and the dialog stays open for a real user too. A gate in the spec only hides that.
+Fix it in the module: record `shown.bs.modal`, and queue a hide requested before
+it (`webpack/volunteer/ministry.ts` → `wireModalFadeGuard()` / `hideModal()`;
+`webpack/volunteer/occurrence.ts` carries the same idea as a pair of booleans).
+
+```ts
+const shownModals = new Set<string>();
+const pendingModalHides = new Set<string>();
+
+el.addEventListener("shown.bs.modal", () => {
+  shownModals.add(id);
+  if (pendingModalHides.delete(id)) modal(id)?.hide();   // the queued close
+});
+el.addEventListener("hidden.bs.modal", () => { shownModals.delete(id); pendingModalHides.delete(id); });
+
+function hideModal(id: string): void {
+  if (!shownModals.has(id)) { pendingModalHides.add(id); return; }
+  modal(id)?.hide();
+}
+```
 
 ## A seeded login name may be TRUNCATED in the database <!-- learned: 2026-09-12 -->
 
@@ -2679,9 +2704,9 @@ The Docker test database is MariaDB with `sql_mode = STRICT_TRANS_TABLES,...`, s
 ## The session cart cannot be seeded by an API-key call <!-- learned: 2026-09-12 -->
 
 `ChurchCRM\dto\Cart` is `$_SESSION` state, so anything that reads it —
-`/api/cart/*`, `POST /api/volunteer/positions/{id}/qualifications/from-cart`,
-`POST /api/volunteer/cart/assign` — only sees the cart of **the PHP session the
-request arrives on**. Two things in a UI spec break that:
+`/api/cart/*`, `POST /api/volunteer/ministries/{id}/pool/from-cart` — only sees
+the cart of **the PHP session the request arrives on**. Two things in a UI spec
+break that:
 
 - `cy.makePrivateAdminAPICall()` sends `x-api-key` with `withCredentials: false`
   and therefore **no session cookie**, so the cart it fills belongs to a session

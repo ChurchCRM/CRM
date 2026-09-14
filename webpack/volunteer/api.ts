@@ -288,6 +288,22 @@ export function addPoolMember(ministryId: number, personId: number): Promise<{ p
   return request(`/ministries/${ministryId}/pool/${personId}`, { method: "POST" });
 }
 
+/**
+ * The Cart sink for the pool (P5/P6): the people come from the session cart, not
+ * the body, so this takes no payload.
+ *
+ * One request for the whole cart rather than one `addPoolMember` per person — a
+ * coordinator with thirty people in the cart should pay for one round trip, and a
+ * batch that half-completed because the tenth call failed is not a state anything
+ * on the page could describe. Idempotent per person: somebody already in the pool
+ * is counted in `alreadyMembers` rather than failing the batch.
+ *
+ * Nobody is qualified for anything here — that is the ticks on the grid (§2.5).
+ */
+export function addPoolMembersFromCart(ministryId: number): Promise<{ added: number; alreadyMembers: number }> {
+  return request(`/ministries/${ministryId}/pool/from-cart`, { method: "POST" });
+}
+
 /** Their qualifications are NOT revoked — the two are independent since D19. */
 export function removePoolMember(ministryId: number, personId: number): Promise<{ success: boolean }> {
   return request(`/ministries/${ministryId}/pool/${personId}`, { method: "DELETE" });
@@ -332,13 +348,6 @@ export function listQualifications(
 /** Revoke = deactivate; the row survives so history stays readable (§2.7). */
 export function revokeQualification(qualificationId: number): Promise<{ qualification: VolunteerQualification }> {
   return request(`/qualifications/${qualificationId}`, { method: "DELETE" });
-}
-
-/** The Cart sink (P5/P6): the people come from the session cart, not the body. */
-export function qualifyCart(
-  positionId: number,
-): Promise<{ granted: number; reactivated: number; existing: number; skipped: number }> {
-  return request(`/positions/${positionId}/qualifications/from-cart`, { method: "POST" });
 }
 
 /**
@@ -738,30 +747,22 @@ export function rejectSwap(swapId: number, comment = ""): Promise<{ swap: Volunt
 }
 
 /**
- * The Cart sink (P6): the people come from the session cart, not the body. Per-person
- * failures come back in `skipped` rather than failing the batch.
- */
-export function assignCart(
-  occurrenceId: number,
-  positionId: number,
-): Promise<{ assigned: number; skipped: Array<{ personId: number; reason: string }> }> {
-  return request("/cart/assign", {
-    method: "POST",
-    body: JSON.stringify({ occurrenceId, positionId }),
-  });
-}
-
-/**
  * The coordinator occurrence list (#9708, with #9709's derived counts filled in).
  *
  * `from` and `to` are mandatory server-side — no pagination protocol is invented for
  * one module (design M9). `hasGaps` filters to the weeks that are actually short.
+ *
+ * `teamId` and `text` are what the ministry page's Occurrences search form sends.
+ * `text` matches the occurrence's TITLE case-insensitively — its schedule's name, or
+ * for an event-linked occurrence the linked event's title — and is applied in the
+ * query server-side, never by hiding rows here.
  */
 export function listOccurrences(params: {
   from: string;
   to: string;
   ministryId?: number;
   teamId?: number;
+  text?: string;
   hasGaps?: boolean;
 }): Promise<{ occurrences: VolunteerOccurrenceSummary[]; capped: boolean }> {
   const query = new URLSearchParams({ from: params.from, to: params.to });
@@ -770,6 +771,9 @@ export function listOccurrences(params: {
   }
   if (params.teamId) {
     query.set("teamId", String(params.teamId));
+  }
+  if (params.text) {
+    query.set("text", params.text);
   }
   if (params.hasGaps) {
     query.set("hasGaps", "1");

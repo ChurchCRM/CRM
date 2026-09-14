@@ -804,6 +804,85 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             });
         });
 
+        // ── `?text=` on the occurrence list — the Occurrences tab's Event box ──
+        //
+        // An occurrence's TITLE is its schedule's name, except when it is linked to a
+        // calendar event, where the event owns the words a coordinator would search
+        // for (D4: a linked occurrence keeps no times and no title of its own). This
+        // fixture is the only place in the suite where the two differ — the schedule
+        // is "… Linked Worship" and its events are "… Linked Service" — which is what
+        // makes the two halves of the filter separable.
+        describe("filtering the occurrence list by title (?text=)", () => {
+            const listByText = (text) =>
+                api(
+                    ADMIN_KEY,
+                    "GET",
+                    `/api/volunteer/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}` +
+                        `&text=${encodeURIComponent(text)}`,
+                );
+
+            it("matches the schedule's own name", () => {
+                listByText("Linked Worship").then((resp) => {
+                    expect(resp.body.occurrences).to.have.length(4);
+                    resp.body.occurrences.forEach((o) => {
+                        expect(o.scheduleId).to.eq(scheduleId);
+                    });
+                });
+            });
+
+            it("matches the LINKED EVENT's title, which the schedule's name does not contain", () => {
+                // "Service" appears only on the events; the schedule is "Linked Worship".
+                // Lower case on purpose — the match is case-insensitive.
+                listByText("linked service").then((resp) => {
+                    expect(resp.body.occurrences).to.have.length(4);
+                    resp.body.occurrences.forEach((o) => {
+                        expect(o.eventId, "matched through the event, so it is linked").to.be.a("number");
+                    });
+                });
+            });
+
+            it("returns nothing when neither the schedule nor the event matches", () => {
+                listByText(`${FIXTURE_PREFIX} NoSuchTitleAnywhere`).then((resp) => {
+                    expect(resp.body.occurrences).to.have.length(0);
+                });
+            });
+
+            it("treats % and _ as literal characters, not LIKE wildcards", () => {
+                // Unescaped, `%` would match every title there is and this would
+                // return the whole window.
+                listByText("%").then((resp) => {
+                    expect(resp.body.occurrences).to.have.length(0);
+                });
+                listByText("Linked_Worship").then((resp) => {
+                    expect(resp.body.occurrences).to.have.length(0);
+                });
+            });
+
+            it("is ignored when blank, rather than matching nothing", () => {
+                listByText("   ").then((resp) => {
+                    expect(resp.body.occurrences).to.have.length(4);
+                });
+            });
+
+            it("combines with ?teamId= rather than replacing it", () => {
+                api(
+                    ADMIN_KEY,
+                    "GET",
+                    `/api/volunteer/occurrences?from=${seriesStart}&to=${seriesEnd}&teamId=${teamA1}&text=Linked`,
+                ).then((resp) => {
+                    expect(resp.body.occurrences).to.have.length(4);
+                });
+
+                api(
+                    ADMIN_KEY,
+                    "GET",
+                    `/api/volunteer/occurrences?from=${seriesStart}&to=${seriesEnd}&teamId=${teamB1}&text=Linked`,
+                ).then((resp) => {
+                    expect(resp.body.occurrences, "another team owns no linked schedule").to.have.length(0);
+                });
+            });
+        });
+
         it("honours the title filter", () => {
             // A schedule on the same event type with a filter nothing matches
             // finds no events at all — proving the filter, not just the type,
