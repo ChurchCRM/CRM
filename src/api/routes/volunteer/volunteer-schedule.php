@@ -1,6 +1,8 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
@@ -21,6 +23,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\VolunteerCoordinatorRoleAuthMiddlewar
 use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -297,6 +300,39 @@ function volunteerParseDateParam(?string $raw): ?string
     $parsed = \DateTimeImmutable::createFromFormat('!Y-m-d', $raw, DateTimeUtils::getConfiguredTimezone());
 
     return $parsed !== false && $parsed->format('Y-m-d') === $raw ? $raw : null;
+}
+
+/**
+ * The `?text=` needle of the occurrence list, sanitised.
+ *
+ * `InputUtils::sanitizeText()` trims and strips tags, exactly as the body sanitizer
+ * would — `InputSanitizationMiddleware` only touches a parsed BODY, and this arrives
+ * in the query string, so the route has to do it itself.
+ *
+ * Returns null when there is nothing to filter on, so the caller can skip the whole
+ * clause rather than adding a `LIKE '%%'` that matches everything anyway.
+ */
+function volunteerOccurrenceTextFilter(mixed $raw): ?string
+{
+    if (!is_string($raw)) {
+        return null;
+    }
+
+    $needle = InputUtils::sanitizeText($raw);
+
+    return $needle === '' ? null : $needle;
+}
+
+/**
+ * One needle as a `LIKE` pattern that matches it literally.
+ *
+ * `%` and `_` are wildcards to `LIKE` and mean nothing to the person who typed them,
+ * so they are escaped: a search for `100%` must find "100% Attendance" and not every
+ * title there is. The backslash itself goes first, or the escapes get re-escaped.
+ */
+function volunteerOccurrenceLikePattern(string $needle): string
+{
+    return '%' . str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $needle) . '%';
 }
 
 // ── Schedules ───────────────────────────────────────────────────────────────
@@ -924,7 +960,8 @@ function deleteVolunteerRequirement(Request $request, Response $response, array 
  *     @OA\Parameter(name="from", in="query", required=true, @OA\Schema(type="string", format="date")),
  *     @OA\Parameter(name="to", in="query", required=true, @OA\Schema(type="string", format="date")),
  *     @OA\Parameter(name="ministryId", in="query", required=false, @OA\Schema(type="integer")),
- *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer"), description="Only the occurrences whose schedule belongs to this team."),
+ *     @OA\Parameter(name="text", in="query", required=false, @OA\Schema(type="string", maxLength=100), description="Case-insensitive substring of the occurrence's title - its schedule's name, or for an event-linked occurrence the linked event's title. The narrowing happens in the query; % and _ are escaped so they are matched literally rather than as LIKE wildcards."),
  *     @OA\Parameter(name="hasGaps", in="query", required=false, @OA\Schema(type="boolean"), description="Return only occurrences that are short of at least one required volunteer (#9709). The filter is applied AFTER the counts are derived, because a gap is derived and there is nothing in the occurrence table to filter on."),
  *     @OA\Parameter(name="scheduleId", in="query", required=false, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="status", in="query", required=false, @OA\Schema(type="string", enum={"scheduled","cancelled"})),
@@ -1017,6 +1054,46 @@ function listVolunteerOccurrences(Request $request, Response $response): Respons
 
     if (isset($params['status']) && $params['status'] !== '') {
         $query->filterByStatus((string) $params['status']);
+    }
+
+    // `?text=` — the Event box of the ministry page's Occurrences tab.
+    //
+    // An occurrence's title is its schedule's name, EXCEPT when it is linked to a
+    // calendar event, where the event owns the words a coordinator would search for
+    // (D4: a linked occurrence keeps no times and no title of its own). So the needle
+    // is matched against both, and an occurrence is kept when either half matches.
+    //
+    // Both halves resolve to an id list first and the OR lands on the OCCURRENCE
+    // query, which is the one that could return hundreds of rows — the narrowing is
+    // in the SQL, never a filter over hydrated results and never in the browser.
+    // `$schedules` is the caller's already-scoped, already-fetched map, so matching
+    // names over it costs no query and cannot widen what the caller may see.
+    $text = volunteerOccurrenceTextFilter($params['text'] ?? null);
+    if ($text !== null) {
+        $titleScheduleIds = [];
+        foreach ($schedules as $scheduleId => $schedule) {
+            if (stripos((string) $schedule->getName(), $text) !== false) {
+                $titleScheduleIds[] = (int) $scheduleId;
+            }
+        }
+
+        $titleEventIds = array_map(
+            static fn (Event $event): int => (int) $event->getId(),
+            iterator_to_array(
+                EventQuery::create()
+                    ->filterByTitle(volunteerOccurrenceLikePattern($text), Criteria::LIKE)
+                    ->find(),
+                false
+            )
+        );
+
+        // `[0]` rather than `[]`: Propel renders an empty IN as a clause that is never
+        // true, but spelling the impossible id keeps both halves of the OR readable
+        // and makes the "no schedule matched, only events did" case obvious.
+        $query
+            ->condition('byScheduleName', 'VolunteerOccurrence.ScheduleId IN ?', $titleScheduleIds === [] ? [0] : $titleScheduleIds)
+            ->condition('byEventTitle', 'VolunteerOccurrence.EventId IN ?', $titleEventIds === [] ? [0] : $titleEventIds)
+            ->where(['byScheduleName', 'byEventTitle'], Criteria::LOGICAL_OR);
     }
 
     // One extra row is fetched so the response can say truthfully whether the cap bit.
