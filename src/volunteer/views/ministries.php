@@ -34,9 +34,11 @@ $aTeams = $aTeams ?? [];
         <h3 class="card-title mb-0">
           <i class="fa-solid fa-handshake-angle me-2"></i><?= gettext('Ministries I coordinate') ?>
         </h3>
-        <a href="<?= $sRootPath ?>/volunteer/setup" class="btn btn-primary btn-sm">
-          <i class="fa-solid fa-wand-magic-sparkles me-1"></i><?= gettext('Guided setup') ?>
-        </a>
+        <?php if ($bIsManager): ?>
+          <button type="button" class="btn btn-primary btn-sm" id="ministry-new-btn">
+            <i class="fa-solid fa-plus me-1"></i><?= gettext('New ministry') ?>
+          </button>
+        <?php endif; ?>
       </div>
       <div class="card-body">
         <?php if (count($aMinistries) > 0): ?>
@@ -81,9 +83,9 @@ $aTeams = $aTeams ?? [];
             </p>
             <?php if ($bIsManager): ?>
               <div class="empty-action">
-                <a href="<?= $sRootPath ?>/volunteer/setup" class="btn btn-primary">
-                  <i class="fa-solid fa-plus me-1"></i><?= gettext('Start the guided setup') ?>
-                </a>
+                <button type="button" class="btn btn-primary" id="ministry-new-empty-btn">
+                  <i class="fa-solid fa-plus me-1"></i><?= gettext('New ministry') ?>
+                </button>
               </div>
             <?php endif; ?>
           </div>
@@ -141,6 +143,12 @@ $aTeams = $aTeams ?? [];
     </div>
   </div>
 </div>
+
+<?php if ($bIsManager): ?>
+  <?php require __DIR__ . '/partials/ministry-create-modal.php'; ?>
+<?php endif; ?>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/volunteer-ministries.min.js') ?>"></script>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

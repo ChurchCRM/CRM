@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerNotificationQuery;
@@ -1047,6 +1048,197 @@ class VolunteerAssignmentService
         }
 
         return $gaps;
+    }
+
+    /**
+     * The ministry's schedules the caller may actually see (§4.4).
+     *
+     * A ministry coordinator, a global volunteer manager and an administrator see the
+     * whole ministry; a team leader sees only the schedules of the teams they lead — and
+     * a person may lead several teams in the same ministry, so the team ids are unioned
+     * rather than reduced to one. Scoping is done in the QUERY, never after hydration.
+     *
+     * @return int[] schedule ids; `[]` means "nothing in this ministry is visible"
+     */
+    private function visibleScheduleIds(int $ministryId, User $user): array
+    {
+        $query = VolunteerScheduleQuery::create()->filterByMinistryId($ministryId);
+
+        if (!$this->authz->isGlobalManager($user) && !$this->authz->canManageMinistry($user, $ministryId)) {
+            // Not a coordinator of this ministry: the only way in is a team scope, and it
+            // reaches exactly the teams that scope names.
+            $teamIds = $this->authz->getManagedTeamIds($user);
+            if ($teamIds === []) {
+                return [];
+            }
+            $query->filterByTeamId($teamIds, Criteria::IN);
+        }
+
+        return array_map('intval', $query->select(['Id'])->find()->toArray());
+    }
+
+    /**
+     * Occurrences of those schedules that have not happened yet.
+     *
+     * "Future" is read at day granularity first — `vocc_OccurrenceDate >= today` is the
+     * indexed filter the rest of V2 ranges on — and then narrowed by the occurrence's
+     * real start, which for a linked occurrence lives on the event
+     * (`VolunteerScheduleService::resolveOccurrenceWindow()`, the one method allowed to
+     * decide it). An occurrence with no resolvable start at all is treated as still to
+     * come, which is the same choice `assertNotHistorical()` makes.
+     *
+     * @param int[] $scheduleIds
+     *
+     * @return int[] occurrence ids
+     */
+    private function upcomingOccurrenceIds(array $scheduleIds, ?string $status = null): array
+    {
+        if ($scheduleIds === []) {
+            return [];
+        }
+
+        $query = VolunteerOccurrenceQuery::create()
+            ->filterByScheduleId($scheduleIds, Criteria::IN)
+            ->filterByOccurrenceDate(DateTimeUtils::getTodayDate(), Criteria::GREATER_EQUAL);
+
+        if ($status !== null) {
+            $query->filterByStatus($status);
+        }
+
+        // `getToday()` is "now in the church's timezone", despite the name.
+        $now = DateTimeUtils::getToday();
+        $ids = [];
+        foreach ($query->orderByOccurrenceDate()->find() as $occurrence) {
+            $start = $this->schedules->resolveOccurrenceWindow($occurrence)['start'] ?? null;
+            if ($start !== null && $start < $now) {
+                continue;
+            }
+            $ids[] = (int) $occurrence->getId();
+        }
+
+        return $ids;
+    }
+
+    /**
+     * The ministry overview's "Unfilled Positions" number (design §5.4 as amended).
+     *
+     * The sum of the open slots — `max(0, required - live)` per effective requirement —
+     * over every future, scheduled occurrence of the ministry the caller may see. The
+     * arithmetic is NOT re-derived here: it is `getGaps()`, the single gap implementation
+     * (§2.11.3), handed every occurrence id at once so a ministry with a quarter of
+     * generated dates costs one pass rather than one query per week.
+     */
+    public function countUnfilledPositions(int $ministryId, User $user): int
+    {
+        $occurrenceIds = $this->upcomingOccurrenceIds(
+            $this->visibleScheduleIds($ministryId, $user),
+            VolunteerOccurrence::STATUS_SCHEDULED
+        );
+
+        if ($occurrenceIds === []) {
+            return 0;
+        }
+
+        $unfilled = 0;
+        foreach ($this->getGaps($occurrenceIds) as $summary) {
+            $unfilled += (int) $summary['gapCount'];
+        }
+
+        return $unfilled;
+    }
+
+    /**
+     * Take one person out of a ministry entirely — the Volunteers tab's "Remove
+     * Volunteer" (design §5.4 as amended).
+     *
+     * Three things, in ONE transaction, in this order:
+     *
+     *   1. every ACTIVE qualification they hold for a position of this ministry is
+     *      revoked through `VolunteerSetupService::revokeQualification()`, so §2.7's
+     *      "revocation is deactivation" still holds and the grant history survives;
+     *   2. every LIVE assignment of theirs on a still-to-come occurrence of this
+     *      ministry is cancelled through `cancel()` — the ordinary status-change path,
+     *      so the outbox rows are cancelled with it and the response trail is appended
+     *      rather than rewritten. Nothing is hard-deleted here that the cancel path
+     *      would not have deleted itself;
+     *   3. they are removed from the ministry's pool Group through the managed-write
+     *      context, which is what lets a coordinator without `ManageGroups` do it.
+     *
+     * A past assignment is left exactly as it is: it is service history, and this action
+     * is about the future.
+     *
+     * @return array{qualifications: int, assignments: int, removedFromPool: bool}
+     *
+     * @throws VolunteerSetupException 403 outside scope, 404 for an unknown person
+     */
+    public function removeVolunteerFromMinistry(VolunteerMinistry $ministry, int $personId, User $actor): array
+    {
+        $ministryId = (int) $ministry->getId();
+
+        // Layer three (§4.5): the route's middleware has usually decided this already,
+        // but a non-HTTP caller must not be able to skip it.
+        if (!$this->authz->canManageMinistry($actor, $ministryId)) {
+            throw VolunteerSetupException::forbidden(gettext('Not authorized for this ministry'));
+        }
+
+        if (PersonQuery::create()->findPk($personId) === null) {
+            throw VolunteerSetupException::notFound(gettext('Person not found'));
+        }
+
+        $occurrenceIds = $this->upcomingOccurrenceIds($this->visibleScheduleIds($ministryId, $actor));
+        $assignments = $occurrenceIds === []
+            ? []
+            : iterator_to_array(
+                VolunteerAssignmentQuery::create()
+                    ->filterByPersonId($personId)
+                    ->filterByOccurrenceId($occurrenceIds, Criteria::IN)
+                    ->filterByStatus(self::LIVE_STATUSES, Criteria::IN)
+                    ->find(),
+                false
+            );
+
+        $qualifications = array_filter(
+            $this->setup->listQualificationsForPerson($personId, [$ministryId]),
+            static fn ($qualification): bool => (bool) $qualification->getActive()
+        );
+
+        $connection = Propel::getWriteConnection(VolunteerAssignmentTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            foreach ($qualifications as $qualification) {
+                $this->setup->revokeQualification($qualification, $actor);
+            }
+
+            foreach ($assignments as $assignment) {
+                $this->cancel($assignment, $actor);
+            }
+
+            $removedFromPool = $this->setup->isInPool($ministryId, $personId);
+            if ($removedFromPool) {
+                $this->setup->removePoolMember($ministryId, $personId, $actor);
+            }
+
+            $connection->commit();
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+            throw $e;
+        }
+
+        $this->logger->info('Volunteer removed from ministry', [
+            'ministryId' => $ministryId,
+            'personId' => $personId,
+            'qualifications' => count($qualifications),
+            'assignments' => count($assignments),
+            'removedFromPool' => $removedFromPool,
+            'actor' => $actor->getId(),
+        ]);
+
+        return [
+            'qualifications' => count($qualifications),
+            'assignments' => count($assignments),
+            'removedFromPool' => $removedFromPool,
+        ];
     }
 
     /**

@@ -143,16 +143,17 @@ interface CRMEventActionMenuOptions {
  * Per-page config the volunteer views hand their bundle through an inline
  * `<script>` (the `window.CRM.eventTypesList` idiom).
  */
-interface CRMVolunteerSetupConfig {
-  /** Whether the viewer may create a ministry at all (design §4.6). */
-  isManager: boolean;
-  /** Non-zero when `?ministryId=` resumed the flow mid-way; 0 to start fresh. */
-  ministryId: number;
-}
-
 interface CRMVolunteerMinistryConfig {
   ministryId: number;
+  /** Advisory: a global volunteer manager, who alone may grant scopes (§3.2). */
   isManager: boolean;
+  /**
+   * Advisory: the server believes the viewer coordinates this ministry or better
+   * — true for an administrator, a global manager and a ministry-scope holder,
+   * false for a team leader. It decides whether "Remove Volunteer" is offered and
+   * nothing else; the API authorizes independently (design §4.5, D5).
+   */
+  isMinistryCoordinator: boolean;
 }
 
 /**
@@ -217,8 +218,6 @@ interface CRMNamespace {
   timeZone?: string;
   plugins?: CRMPlugins;
   plugin?: CRMPluginDefaults;
-  /** Set by src/volunteer/views/setup.php (issue #9715). */
-  volunteerSetup?: CRMVolunteerSetupConfig;
   /** Set by src/volunteer/views/ministry-view.php (issue #9715). */
   volunteerMinistry?: CRMVolunteerMinistryConfig;
   /** Set by src/volunteer/views/dashboard.php (issue #9711). */

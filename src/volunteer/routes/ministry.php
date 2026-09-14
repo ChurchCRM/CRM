@@ -44,8 +44,14 @@ $app->group('', function (RouteCollectorProxy $group): void {
 
         $currentUser = AuthenticationManager::getCurrentUser();
         $authz = new VolunteerAuthorizationService();
+        // Coordinator-or-above for THIS ministry: true for an administrator, a global
+        // volunteer manager and the holder of a ministry scope, false for a team
+        // leader. It is handed to the page as an ADVISORY flag — it decides whether
+        // "Remove Volunteer" is offered, never whether it is allowed. The API decides
+        // that independently, with the ministry-level entity middleware (D5, §4.5).
+        $bIsMinistryCoordinator = $authz->canManageMinistry($currentUser, $ministryId);
 
-        if (!$authz->canManageMinistry($currentUser, $ministryId)) {
+        if (!$bIsMinistryCoordinator) {
             return SlimUtils::renderRedirect(
                 $response,
                 SystemURLs::getRootPath() . '/v2/access-denied?role=VolunteerCoordinator'
@@ -66,6 +72,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sMinistryName'  => $ministry->getName(),
             'bMinistryActive' => (bool) $ministry->getActive(),
             'bIsManager'     => $authz->isGlobalManager($currentUser),
+            'bIsMinistryCoordinator' => $bIsMinistryCoordinator,
         ]);
     });
 })->add(VolunteerCoordinatorRoleAuthMiddleware::class);

@@ -6,8 +6,10 @@
  *
  * The scope API shipped manager-only and with no screen behind it: authority
  * could only be granted with a REST client or a SQL insert. This spec covers the
- * screen that closes that gap — the "Coordinators and team leaders" card on the
- * ministry page.
+ * two screens that close that gap, which the product owner split in two: the
+ * "Ministry Coordinators" card on the Overview tab, and — because a leader leads
+ * a TEAM — "Set Team Leader" / "Remove Team Leader" on the team's own row in the
+ * Teams card above it. There is no team-leader table and no team select any more.
  *
  * Two halves, and the second is the one that matters:
  *
@@ -162,8 +164,13 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
             cy.get("#volunteer-scope-panel").should("be.visible");
             cy.get("#volunteer-scope-help").should("contain", "coordinator");
             cy.get("#scopes-coordinators-empty").should("be.visible");
-            // Every team of the ministry is listed, whether or not it has a leader.
-            cy.get("#volunteerTeamLeadersTable tbody").should("contain", TEAM_NAME);
+            // The card is coordinators and nothing else now: no team-leader table,
+            // no "Add team leader" button, no copy about them.
+            cy.get("#volunteerTeamLeadersTable").should("not.exist");
+            cy.get("#scope-add-leader").should("not.exist");
+            cy.get("#volunteer-scope-panel").should("not.contain", "team leader");
+            // Every team of the ministry is listed on the Teams card instead.
+            cy.get("#volunteerTeamsTable tbody").should("contain", TEAM_NAME);
         });
 
         it("grants a ministry coordinator through the person picker", () => {
@@ -195,43 +202,49 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
             cy.get("#volunteerCoordinatorsTable tbody tr").should("have.length", 1);
         });
 
-        it("grants a team leader on the chosen team", () => {
+        it("sets a team leader from the team's own row", () => {
             cy.visit(ministryUrl());
+            cy.get("#teams-loading").should("not.be.visible");
+            cy.get("#volunteerTeamsTable").should("be.visible");
 
-            cy.get("#scope-add-leader").click();
-            cy.get("#scopeLeaderModal").should("be.visible");
-            cy.get("#scope-leader-team").select(String(teamId));
-            pickPerson("#scopeLeaderModal", "Herminia", LEADER_NAME);
-            cy.get("#scope-leader-save").click();
+            cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"]`)
+                .find("button[data-bs-toggle=dropdown]")
+                .click();
+            cy.get(
+                `#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-set`,
+            ).click();
 
-            cy.get("#scopeLeaderModal").should("not.be.visible");
-            cy.get(`#volunteerTeamLeadersTable tbody tr.volunteer-scope-row[data-team-id="${teamId}"]`)
-                .should("have.length", 1)
-                .and("contain", LEADER_NAME)
+            cy.get("#teamLeaderModal").should("be.visible");
+            // No team select: the team is the row the item was opened from.
+            cy.get("#teamLeaderModal select#scope-leader-team").should("not.exist");
+            pickPerson("#teamLeaderModal", "Herminia", LEADER_NAME);
+            cy.get("#team-leader-save").click();
+
+            cy.get("#teamLeaderModal").should("not.be.visible");
+            cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-cell`)
+                .should("contain", LEADER_NAME)
                 .find(`a[href*="PersonView.php?PersonID=${LEADER_PERSON}"]`)
                 .should("exist");
         });
 
-        it("removes a team leader behind a bootbox confirm", () => {
+        it("removes the team leader behind a bootbox confirm", () => {
             cy.visit(ministryUrl());
+            cy.get("#teams-loading").should("not.be.visible");
+            cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-cell`)
+                .should("contain", LEADER_NAME);
 
-            cy.get(
-                `#volunteerTeamLeadersTable tbody tr.volunteer-scope-row[data-team-id="${teamId}"] .dropdown > button`,
-            )
-                .first()
+            cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"]`)
+                .find("button[data-bs-toggle=dropdown]")
                 .click();
-            // Scoped to the team-leader row: the coordinator table carries a
-            // Remove item of its own, earlier in document order.
             cy.get(
-                `#volunteerTeamLeadersTable tbody tr.volunteer-scope-row[data-team-id="${teamId}"] .dropdown-item.volunteer-scope-remove`,
-            )
-                .first()
-                .click();
+                `#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-remove`,
+            ).click();
 
             cy.get(".bootbox.modal").should("be.visible");
             cy.get(".bootbox .btn-primary, .bootbox .btn-danger").last().click();
 
-            cy.get("#volunteerTeamLeadersTable tbody").should("not.contain", LEADER_NAME);
+            cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-cell`)
+                .should("not.contain", LEADER_NAME);
             // The coordinator grant is untouched — and the next case depends on it.
             cy.get("#volunteerCoordinatorsTable tbody").should("contain", COORDINATOR_NAME);
         });
@@ -249,8 +262,16 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
             cy.url().should("not.include", "access-denied");
             cy.get("#volunteer-ministry").should("contain", MINISTRY_NAME);
 
-            // Granting is manager-only (§3.2): a coordinator does not get the card.
+            // Granting is manager-only (§3.2): a coordinator does not get the card,
+            // and the team rows carry no leader items either — but they still SHOW
+            // who leads what, because those names ride on the ministry document
+            // rather than on the manager-only /scopes listing.
             cy.get("#volunteer-scope-panel").should("not.exist");
+            cy.get("#teams-loading").should("not.be.visible");
+            cy.get("#volunteerTeamsTable").should("be.visible");
+            cy.get("#volunteerTeamsTable thead").should("contain", "Team Leader");
+            cy.get("#volunteerTeamsTable .volunteer-team-leader-set").should("not.exist");
+            cy.get("#volunteerTeamsTable .volunteer-team-leader-remove").should("not.exist");
         });
     });
 });

@@ -325,15 +325,10 @@ class Menu
         $isVisible = $isCoordinator;
         $volunteerMenu = new MenuItem(gettext('Volunteer'), '', $isCoordinator || $isV2, 'fa-handshake-angle');
         $volunteerMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', $isVisible, 'fa-gauge'));
-        // #9715: the guided setup flow. It carries the SAME visibility as the
-        // parent because /volunteer/setup carries the same gate —
-        // VolunteerCoordinatorRoleAuthMiddleware. Creating a ministry inside the
-        // flow is manager-only (§4.6), but a coordinator opens the very same page
-        // to add teams and positions to the ministry they already hold (§5.3),
-        // so gating the menu entry on the manager flag would hide a page they can
-        // open and need. Menu visibility mirrors the route middleware exactly
-        // (§3.5); it never mirrors the strictest action on the page.
-        $volunteerMenu->addSubMenu(new MenuItem(gettext('Setup'), 'volunteer/setup', $isVisible, 'fa-wand-magic-sparkles'));
+        // There is no Setup entry any more: the guided setup flow is gone, and the
+        // one step of it that had no home elsewhere — creating a ministry — is a
+        // "New ministry" button on Ministries and on the dashboard.
+        //
         // #9711: "My ministries and teams" (design §3.5 names Ministries as the third
         // child). It carries the SAME visibility as the parent because
         // /volunteer/ministries carries the same gate, and it is the one page a pure

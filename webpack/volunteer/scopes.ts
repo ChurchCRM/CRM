@@ -1,24 +1,30 @@
 /**
- * Coordinators and team leaders — the screen for #9706's scope API
+ * Ministry coordinators — the screen for #9706's scope API
  * (design §2.15 and §4.4).
  *
- * The API to grant ministry-coordinator and team-leader authority shipped with
- * the epic; nothing ever called it, so the only ways to make someone a
- * coordinator were a REST client and a SQL insert. This module is the card on
- * the ministry page that closes that gap.
+ * The API to grant ministry-coordinator authority shipped with the epic; nothing
+ * ever called it, so the only ways to make someone a coordinator were a REST
+ * client and a SQL insert. This module is the card on the ministry page that
+ * closes that gap.
  *
  * It is a SEPARATE module rather than another section of ministry.ts on purpose:
- * ministry.ts is already six tabs and 1,400 lines, and this surface has nothing
- * to do with any of them. `ministry.ts` imports one function and calls it once.
+ * ministry.ts is already six tabs, and this surface has nothing to do with any of
+ * them. `ministry.ts` imports one function and calls it once.
+ *
+ * **Team leaders are not here.** A leader leads a team, so the grant belongs on
+ * the team's own row in the Teams card on Overview — which is where it now is
+ * (ministry.ts, "Set Team Leader" / "Remove Team Leader"). This card is
+ * ministry-coordinator grants and nothing else: no team-leader table, no team
+ * select, no copy about them.
  *
  * **Who sees it.** Granting authority is manager-only — §3.2 is explicit that it
  * is the one thing a coordinator must not be able to do for themselves — so the
  * view renders the markup only for a global manager and `init()` returns early
  * when `window.CRM.volunteerMinistry.isManager` is false. Neither is the
  * decision: the API is, and it is manager-gated by
- * `VolunteerManagerRoleAuthMiddleware`. A 403 from any of the three requests
- * hides the whole card rather than showing a broken one, so a stale flag degrades
- * to "not offered" instead of "offered and then refused".
+ * `VolunteerManagerRoleAuthMiddleware`. A 403 from the listing hides the whole
+ * card rather than showing a broken one, so a stale flag degrades to "not
+ * offered" instead of "offered and then refused".
  *
  * **Duplicate grants are not errors.** `POST /scopes` is idempotent by the
  * `vscp_person_scope_uidx` unique key and answers 200 with the existing row
@@ -39,21 +45,16 @@ import {
   errorMessage,
   grantScope,
   listScopes,
-  listTeams,
   notifyError,
   notifySuccess,
   notifyWarning,
   revokeScope,
   VolunteerApiError,
   type VolunteerScopeGrant,
-  type VolunteerTeam,
 } from "./api";
 
 let ministryId = 0;
-let teams: VolunteerTeam[] = [];
 let coordinators: VolunteerScopeGrant[] = [];
-/** Team-leader grants keyed by team id, so a team with none still renders its row. */
-let leaders = new Map<number, VolunteerScopeGrant[]>();
 let wired = false;
 
 function byId<T extends HTMLElement>(id: string): T | null {
@@ -66,10 +67,6 @@ function show(el: Element | null, visible: boolean): void {
 
 function escapeHtml(value: string): string {
   return window.CRM?.escapeHtml?.(value) ?? value;
-}
-
-function escapeAttribute(value: string): string {
-  return window.CRM?.escapeAttribute?.(value) ?? value;
 }
 
 function root(): string {
@@ -103,15 +100,13 @@ function renderState(state: "loading" | "error" | "loaded", message = ""): void 
   show(byId("scopes-error"), state === "error");
   show(byId("scopes-content"), state === "loaded");
 
-  // Both buttons need the loaded data to do anything sensible — the team select
-  // is built from it, and a grant is checked against it for duplicates — so they
-  // stay disabled until it is there. The markup ships them disabled for the same
-  // reason: the card is shown before the first response arrives.
-  for (const id of ["scope-add-coordinator", "scope-add-leader"]) {
-    const button = byId<HTMLButtonElement>(id);
-    if (button) {
-      button.disabled = state !== "loaded";
-    }
+  // The button needs the loaded data to do anything sensible — a grant is checked
+  // against it for duplicates — so it stays disabled until it is there. The markup
+  // ships it disabled for the same reason: the card is shown before the first
+  // response arrives.
+  const button = byId<HTMLButtonElement>("scope-add-coordinator");
+  if (button) {
+    button.disabled = state !== "loaded";
   }
 
   if (state === "error") {
@@ -164,7 +159,7 @@ function showModalError(prefix: string, message: string): void {
  * PERSON, and "who is this?" is the first question a manager asks of a name they
  * do not recognise.
  */
-function grantRow(grant: VolunteerScopeGrant, extraClass: string, data: Record<string, string | number>): string {
+function grantRow(grant: VolunteerScopeGrant): string {
   const menu = actionMenu([
     {
       type: "button",
@@ -175,17 +170,12 @@ function grantRow(grant: VolunteerScopeGrant, extraClass: string, data: Record<s
       data: {
         "scope-id": grant.id,
         "scope-person": grant.personName,
-        "scope-type": grant.scopeType,
         "scope-target": grant.scopeName ?? "",
       },
     },
   ]);
 
-  const attributes = Object.entries(data)
-    .map(([key, value]) => ` data-${key}="${escapeAttribute(String(value))}"`)
-    .join("");
-
-  return `<tr class="${extraClass}"${attributes}>
+  return `<tr class="volunteer-scope-row" data-scope-id="${grant.id}">
       <td class="fw-bold">
         <a href="${root()}/PersonView.php?PersonID=${grant.personId}">${escapeHtml(grant.personName)}</a>
       </td>
@@ -200,84 +190,27 @@ function renderCoordinators(): void {
     return;
   }
 
-  body.innerHTML = coordinators
-    .map((grant) => grantRow(grant, "volunteer-scope-row", { "scope-id": grant.id }))
-    .join("");
+  body.innerHTML = coordinators.map((grant) => grantRow(grant)).join("");
 
   show(byId("scopes-coordinators-empty"), coordinators.length === 0);
   show(byId("scopes-coordinators-wrapper"), coordinators.length > 0);
 }
 
-/**
- * Team leaders, grouped under EVERY team of the ministry — including the teams
- * that have no leader. A team with nobody on it is the useful half of this list:
- * it is what tells a manager where the gap is.
- */
-function renderTeamLeaders(): void {
-  const body = document.querySelector("#volunteerTeamLeadersTable tbody");
-  if (!body) {
-    return;
-  }
-
-  body.innerHTML = teams
-    .map((team) => {
-      const rows = leaders.get(team.id) ?? [];
-      const header = `<tr class="volunteer-scope-team-row" data-team-id="${team.id}">
-          <th colspan="3" class="bg-light">
-            <i class="fa-solid fa-people-group me-2 text-body-secondary"></i>${escapeHtml(team.name)}
-          </th>
-        </tr>`;
-
-      if (rows.length === 0) {
-        return `${header}<tr class="volunteer-scope-empty-row" data-team-id="${team.id}">
-            <td colspan="3" class="text-body-secondary">${i18next.t("No team leader yet")}</td>
-          </tr>`;
-      }
-
-      return header + rows.map((grant) => grantRow(grant, "volunteer-scope-row", { "team-id": team.id })).join("");
-    })
-    .join("");
-
-  show(byId("scopes-teams-empty"), teams.length === 0);
-  show(byId("scopes-teams-wrapper"), teams.length > 0);
-}
-
-/** The team select in the "Add team leader" modal, rebuilt from the loaded teams. */
-function fillTeamSelect(): void {
-  const select = byId<HTMLSelectElement>("scope-leader-team");
-  if (!select) {
-    return;
-  }
-
-  select.innerHTML = teams.map((team) => `<option value="${team.id}">${escapeHtml(team.name)}</option>`).join("");
-}
-
 // ─── Loading ─────────────────────────────────────────────────────────────────
 
 /**
- * Everything the card shows, in two round trips rather than one per team.
- *
- * The ministry's teams and its coordinator grants are independent, so they go
- * together; the per-team grants can only be asked for once the team ids are
- * known. `?ministryId=` and `?teamId=` filter the same polymorphic column two
- * ways and the API refuses to combine them, which is why this is two calls and
- * not one.
+ * One round trip: the ministry-coordinator grants on this ministry. The
+ * per-team grants are the Teams card's business now, and they ride on the
+ * ministry document rather than on this manager-only endpoint.
  */
 async function load(): Promise<void> {
   renderState("loading");
 
   try {
-    const [teamResult, coordinatorResult] = await Promise.all([listTeams(ministryId), listScopes({ ministryId })]);
-
-    teams = teamResult.teams;
-    coordinators = coordinatorResult.scopes;
-
-    const perTeam = await Promise.all(teams.map((team) => listScopes({ teamId: team.id })));
-    leaders = new Map(teams.map((team, index) => [team.id, perTeam[index]?.scopes ?? []]));
+    const result = await listScopes({ ministryId });
+    coordinators = result.scopes;
 
     renderCoordinators();
-    renderTeamLeaders();
-    fillTeamSelect();
     renderState("loaded");
   } catch (error: unknown) {
     // 403 is not a failure to report — it is the answer that this viewer is not
@@ -315,44 +248,21 @@ function saveCoordinator(personId: number, personName: string): void {
     });
 }
 
-function saveLeader(personId: number, personName: string, teamId: number, teamName: string): void {
-  const existing = (leaders.get(teamId) ?? []).find((grant) => grant.personId === personId);
-  if (existing) {
-    showModalError("scope-leader", i18next.t("{{name}} already leads {{team}}", { name: personName, team: teamName }));
-    notifyWarning(i18next.t("{{name}} already leads {{team}}", { name: personName, team: teamName }));
-    return;
-  }
-
-  grantScope(personId, "team", teamId)
-    .then(() => {
-      modal("scopeLeaderModal")?.hide();
-      notifySuccess(i18next.t("{{name}} now leads {{team}}", { name: personName, team: teamName }));
-
-      return load();
-    })
-    .catch((error: unknown) => {
-      showModalError("scope-leader", errorMessage(error, i18next.t("The team leader could not be added")));
-    });
-}
-
 /** Revoking authority is destructive, so it goes behind a bootbox confirm (U3). */
 function confirmRemove(target: HTMLElement): void {
   const scopeId = Number(target.dataset.scopeId);
   const personName = target.dataset.scopePerson ?? "";
-  const isTeam = target.dataset.scopeType === "team";
   const targetName = target.dataset.scopeTarget ?? "";
 
   window.bootbox?.confirm({
-    title: isTeam ? i18next.t("Remove team leader") : i18next.t("Remove coordinator"),
-    message: isTeam
-      ? i18next.t("Stop {{name}} leading {{team}}? Their login and their own assignments are untouched.", {
-          name: personName,
-          team: targetName,
-        })
-      : i18next.t("Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched.", {
-          name: personName,
-          ministry: targetName,
-        }),
+    title: i18next.t("Remove coordinator"),
+    message: i18next.t(
+      "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched.",
+      {
+        name: personName,
+        ministry: targetName,
+      },
+    ),
     buttons: {
       confirm: { label: i18next.t("Yes"), className: "btn-danger" },
       cancel: { label: i18next.t("No"), className: "btn-default" },
@@ -364,7 +274,7 @@ function confirmRemove(target: HTMLElement): void {
 
       revokeScope(scopeId)
         .then(() => {
-          notifySuccess(isTeam ? i18next.t("Team leader removed") : i18next.t("Coordinator removed"));
+          notifySuccess(i18next.t("Coordinator removed"));
 
           return load();
         })
@@ -393,22 +303,10 @@ function wire(): void {
   // it owns the modal lifecycle, the body-mounted dropdown and the maxOptions fix.
   const coordinatorModal = byId("scopeCoordinatorModal");
   const coordinatorPicker = coordinatorModal ? attachToModal(coordinatorModal, "#scope-coordinator-person") : null;
-  const leaderModal = byId("scopeLeaderModal");
-  const leaderPicker = leaderModal ? attachToModal(leaderModal, "#scope-leader-person") : null;
 
   byId("scope-add-coordinator")?.addEventListener("click", () => {
     show(byId("scope-coordinator-error"), false);
     modal("scopeCoordinatorModal")?.show();
-  });
-
-  byId("scope-add-leader")?.addEventListener("click", () => {
-    show(byId("scope-leader-error"), false);
-    if (teams.length === 0) {
-      notifyWarning(i18next.t("Add a team first — a team leader has to lead something"));
-      return;
-    }
-    fillTeamSelect();
-    modal("scopeLeaderModal")?.show();
   });
 
   byId("scope-coordinator-save")?.addEventListener("click", () => {
@@ -421,21 +319,6 @@ function wire(): void {
 
     show(byId("scope-coordinator-error"), false);
     saveCoordinator(personId, pickedName(instance, personId));
-  });
-
-  byId("scope-leader-save")?.addEventListener("click", () => {
-    const instance = leaderPicker?.getInstance();
-    const personId = Number(instance?.getValue() ?? 0);
-    const select = byId<HTMLSelectElement>("scope-leader-team");
-    const teamId = Number(select?.value ?? 0);
-
-    if (!personId || !teamId) {
-      showModalError("scope-leader", i18next.t("Choose a team and a person"));
-      return;
-    }
-
-    show(byId("scope-leader-error"), false);
-    saveLeader(personId, pickedName(instance, personId), teamId, teams.find((team) => team.id === teamId)?.name ?? "");
   });
 
   // Delegated: the rows are re-rendered on every load, so per-row listeners

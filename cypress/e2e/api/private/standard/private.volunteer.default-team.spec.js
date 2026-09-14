@@ -6,7 +6,7 @@
  * The product decision this file pins, in full:
  *
  *   1. Creating a ministry auto-creates its first team, named "{Ministry} Team",
- *      in the same transaction — so the API and the setup wizard both get it.
+ *      in the same transaction — so every caller of the create endpoint gets it.
  *   2. A position ALWAYS belongs to a team (`vpos_vtem_ID` is NOT NULL). The API
  *      rejects a position with no `teamId` (400) and one naming another
  *      ministry's team (400).

@@ -446,7 +446,10 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
 
         it("offers the quick actions §5.2 requires", () => {
             cy.visit(DASHBOARD_URL);
-            cy.get('#volunteer-quick-actions a[href$="/volunteer/setup"]').should("exist");
+            // The guided-setup link is gone; "New ministry" replaced it, and it is
+            // a button rather than a link because it opens a modal.
+            cy.get('#volunteer-quick-actions a[href$="/volunteer/setup"]').should("not.exist");
+            cy.get("#volunteer-quick-actions #ministry-new-btn").should("exist");
             cy.get('#volunteer-quick-actions a[href$="/volunteer/ministries"]').should("exist");
         });
 
