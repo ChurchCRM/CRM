@@ -11,8 +11,11 @@ use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPosition;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualification;
+use ChurchCRM\model\ChurchCRM\VolunteerScope;
+use ChurchCRM\model\ChurchCRM\VolunteerScopeQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
+use ChurchCRM\Service\VolunteerAssignmentService;
 use ChurchCRM\Service\VolunteerSetupService;
 use ChurchCRM\Slim\Middleware\Api\VolunteerMinistryMiddleware;
 use ChurchCRM\Slim\Middleware\Api\VolunteerPositionMiddleware;
@@ -166,6 +169,14 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
         $setup->delete('/ministries/{ministryId:[0-9]+}/pool/{personId:[0-9]+}', 'removeVolunteerPoolMember')
             ->add(new VolunteerMinistryMiddleware());
 
+        // "Remove Volunteer" on the ministry page's Volunteers tab: qualifications,
+        // upcoming assignments and pool membership in one call. Ministry-level, so
+        // `VolunteerMinistryMiddleware` answers 403 for a team leader — the page hides
+        // the menu item from them, but hiding is not security (D5) and this is the
+        // decision. No sanitizer: both ids come from the PATH, already digits-only.
+        $setup->delete('/ministries/{ministryId:[0-9]+}/volunteers/{personId:[0-9]+}', 'removeVolunteerFromMinistry')
+            ->add(new VolunteerMinistryMiddleware());
+
         // ── Pool people and the qualification matrix (#9707) ───────────────
         $setup->get('/ministries/{ministryId:[0-9]+}/members', 'listVolunteerMatrixMembers')
             ->add(new VolunteerMinistryMiddleware());
@@ -230,7 +241,14 @@ function volunteerMinistryToArray(VolunteerMinistry $ministry, array $counts = [
     ];
 }
 
-function volunteerTeamToArray(VolunteerTeam $team, int $positionCount = 0): array
+/**
+ * @param array<int, array{scopeId: int, personId: int, personName: string}> $leaders
+ *     the team-scope grants on this team, so the ministry page can render a "Team
+ *     Leader" column without a `/scopes` call per row — and without needing the
+ *     manager-only scope API at all, which a ministry coordinator does not have.
+ *     Writing a grant is still `/api/volunteer/scopes`, still manager-only (§3.2).
+ */
+function volunteerTeamToArray(VolunteerTeam $team, int $positionCount = 0, array $leaders = []): array
 {
     return [
         'id' => (int) $team->getId(),
@@ -239,7 +257,48 @@ function volunteerTeamToArray(VolunteerTeam $team, int $positionCount = 0): arra
         'description' => $team->getDescription(),
         'active' => (bool) $team->getActive(),
         'positionCount' => $positionCount,
+        // Normally 0 or 1. The column carries no uniqueness constraint, so more than
+        // one is representable and is reported rather than silently truncated.
+        'leaders' => array_values($leaders),
     ];
+}
+
+/**
+ * Team id → its team-leader grants, in ONE query over `volunteer_scope_vscp`.
+ *
+ * @param int[] $teamIds
+ *
+ * @return array<int, array<int, array{scopeId: int, personId: int, personName: string}>>
+ */
+function volunteerSetupTeamLeaders(array $teamIds): array
+{
+    if ($teamIds === []) {
+        return [];
+    }
+
+    $scopes = VolunteerScopeQuery::create()
+        ->filterByScopeType(VolunteerScope::TYPE_TEAM)
+        ->filterByScopeId($teamIds, Criteria::IN)
+        ->orderById()
+        ->find();
+
+    $rows = iterator_to_array($scopes, false);
+    $names = volunteerSetupPersonNames(array_map(
+        static fn (VolunteerScope $scope): int => (int) $scope->getPersonId(),
+        $rows
+    ));
+
+    $byTeam = [];
+    foreach ($rows as $scope) {
+        $personId = (int) $scope->getPersonId();
+        $byTeam[(int) $scope->getScopeId()][] = [
+            'scopeId' => (int) $scope->getId(),
+            'personId' => $personId,
+            'personName' => $names[$personId] ?? '',
+        ];
+    }
+
+    return $byTeam;
 }
 
 /**
@@ -454,6 +513,14 @@ function createVolunteerMinistry(Request $request, Response $response): Response
  *     @OA\Response(response=200, description="OK",
  *         @OA\JsonContent(
  *             @OA\Property(property="ministry", type="object"),
+ *             @OA\Property(property="summary", type="object",
+ *                 description="The three numbers the overview strip shows, computed with the caller's scope",
+ *                 @OA\Property(property="teamCount", type="integer"),
+ *                 @OA\Property(property="volunteerCount", type="integer",
+ *                     description="Members of the ministry's pool Group"),
+ *                 @OA\Property(property="unfilledPositionCount", type="integer",
+ *                     description="Open slots across every future scheduled occurrence the caller may see")
+ *             ),
  *             @OA\Property(property="teams", type="array", @OA\Items(type="object")),
  *             @OA\Property(property="positions", type="array", @OA\Items(type="object"))
  *         )
@@ -471,9 +538,9 @@ function getVolunteerMinistry(Request $request, Response $response): Response
     $positions = $service->listPositions($ministryId);
     $poolGroup = $service->getPoolGroup($ministryId);
 
-    $teamPositionCounts = $service->countPositionsByTeam(
-        array_map(static fn (VolunteerTeam $t): int => (int) $t->getId(), $teams)
-    );
+    $teamIds = array_map(static fn (VolunteerTeam $t): int => (int) $t->getId(), $teams);
+    $teamPositionCounts = $service->countPositionsByTeam($teamIds);
+    $teamLeaders = volunteerSetupTeamLeaders($teamIds);
     $teamNames = volunteerSetupTeamNames($positions);
 
     return SlimUtils::renderJSON($response, [
@@ -481,8 +548,23 @@ function getVolunteerMinistry(Request $request, Response $response): Response
             'teamCount' => count($teams),
             'positionCount' => count($positions),
         ]),
+        // The overview strip's three numbers. `unfilledPositionCount` is scoped to the
+        // caller by the service — a team leader sees only the occurrences of the teams
+        // they lead — and reuses the ONE gap implementation rather than re-deriving it.
+        'summary' => [
+            'teamCount' => count($teams),
+            'volunteerCount' => count($service->getPoolPersonIds($ministryId)),
+            'unfilledPositionCount' => (new VolunteerAssignmentService())->countUnfilledPositions(
+                $ministryId,
+                volunteerSetupActor()
+            ),
+        ],
         'teams' => array_map(
-            static fn (VolunteerTeam $t): array => volunteerTeamToArray($t, $teamPositionCounts[(int) $t->getId()] ?? 0),
+            static fn (VolunteerTeam $t): array => volunteerTeamToArray(
+                $t,
+                $teamPositionCounts[(int) $t->getId()] ?? 0,
+                $teamLeaders[(int) $t->getId()] ?? []
+            ),
             $teams
         ),
         'positions' => array_map(
@@ -1356,6 +1438,48 @@ function removeVolunteerPoolMember(Request $request, Response $response): Respon
     }
 
     return SlimUtils::renderSuccessJSON($response);
+}
+
+/**
+ * @OA\Delete(
+ *     path="/volunteer/ministries/{ministryId}/volunteers/{personId}",
+ *     operationId="removeVolunteerFromMinistry",
+ *     summary="Take one person out of a ministry entirely",
+ *     description="In one transaction: revokes every active qualification they hold for a position of this ministry (revocation is deactivation, design section 2.7), cancels every live assignment of theirs on a still-to-come occurrence of the ministry through the ordinary cancel path so the outbox rows are cancelled and the response trail is appended, and removes them from the ministry's pool Group through the managed-write context. Past assignments are service history and are left alone. Ministry-level authority: a team leader gets 403.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry or person"),
+ *     @OA\Response(response=200, description="Removed",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="personId", type="integer"),
+ *             @OA\Property(property="qualifications", type="integer", description="Qualifications revoked"),
+ *             @OA\Property(property="assignments", type="integer", description="Upcoming assignments cancelled"),
+ *             @OA\Property(property="removedFromPool", type="boolean")
+ *         )
+ *     )
+ * )
+ */
+function removeVolunteerFromMinistry(Request $request, Response $response): Response
+{
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
+    $personId = (int) SlimUtils::getRouteArgument($request, 'personId');
+
+    try {
+        $result = (new VolunteerAssignmentService())->removeVolunteerFromMinistry(
+            $ministry,
+            $personId,
+            volunteerSetupActor()
+        );
+    } catch (\Throwable $e) {
+        return volunteerSetupError($request, $response, $e);
+    }
+
+    return SlimUtils::renderJSON($response, ['personId' => $personId] + $result);
 }
 
 /**
