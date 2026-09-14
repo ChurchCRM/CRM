@@ -358,22 +358,25 @@ describe("Volunteer v2 ministry page (#9701)", () => {
             ).should("not.be.checked");
         });
 
-        it("offers the person picker and the cart bulk-grant", () => {
+        // Both dialogs put people in the ministry's POOL and grant nothing, so
+        // neither carries a position select any more (round three; the wording and
+        // the counts are asserted in admin.volunteer-v2.ministry-page-3.spec.js).
+        it("offers the person picker and the cart bulk-add", () => {
             cy.visit(ministryUrl());
             cy.get("#nav-item-volunteers").click();
 
             cy.get("#qualification-add-person").should("be.visible").click();
-            cy.get("#qualifyPersonModal").should("be.visible");
-            cy.get("#qualify-person-position").should("contain", POSITION_ONE);
+            cy.get("#addVolunteerModal").should("be.visible");
             // The person picker is only built on `shown.bs.modal`, so its TomSelect
             // wrapper appearing is the signal that the 150 ms fade has finished.
-            cy.get("#qualifyPersonModal .ts-wrapper").should("exist");
-            cy.get("#qualifyPersonModal .btn-close").click();
-            cy.get("#qualifyPersonModal").should("not.be.visible");
+            cy.get("#addVolunteerModal .ts-wrapper").should("exist");
+            cy.get("#addVolunteerModal select").should("have.length", 1);
+            cy.get("#addVolunteerModal .btn-close").click();
+            cy.get("#addVolunteerModal").should("not.be.visible");
 
             cy.get("#qualification-cart-btn").should("be.visible").click();
-            cy.get("#qualifyCartModal").should("be.visible");
-            cy.get("#qualify-cart-position").should("contain", POSITION_ONE);
+            cy.get("#addFromCartModal").should("be.visible");
+            cy.get("#addFromCartModal select").should("not.exist");
         });
 
         it("shows a first-class empty state when the team has no positions", () => {

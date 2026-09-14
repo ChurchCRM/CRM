@@ -23,8 +23,14 @@
  *      back, reload, and switch teams to and fro; every one of them fails on the
  *      unchanged branch.
  *
- *   3. **Occurrences default to upcoming**, with a "Filter by Date" dialog for
- *      everything else. A past occurrence is absent until the dialog is used.
+ *   3. **Occurrences default to upcoming.** A past occurrence is not in the list
+ *      the tab opens on.
+ *
+ * Round THREE has since moved two things out of this file: the inline "Saved" badge
+ * beside a ticked box became a toast (it was shifting the checkbox column), and the
+ * "Filter by Date" dialog became a live Team / Event / From / To search form. Both
+ * are covered in admin.volunteer-v2.ministry-page-3.spec.js; what is left here is
+ * the behaviour round three did not change.
  *
  * Order inside every hook is API setup → freshAdminLogin() → cy.visit(), because
  * cy.request() rotates the PHP session cookie (cypress-testing.md). Fixture rows
@@ -339,22 +345,18 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
             });
         });
 
-        it("confirms the save beside the box that was ticked", () => {
+        // Round three moved this confirmation OUT of the cell: the inline badge was
+        // wider than the checkbox and shifted the whole column for a second and a
+        // half on every tick. The toast that replaced it, and the proof that nothing
+        // in the grid moves, are in admin.volunteer-v2.ministry-page-3.spec.js; what
+        // this case still owns is that a tick confirms itself at all.
+        it("confirms the save", () => {
             cy.visit(ministryUrl());
             openVolunteersTab();
 
             qualBox(TICKED_PERSON, firstPositionId).should("not.be.checked").check();
 
-            qualBox(TICKED_PERSON, firstPositionId)
-                .parents(".volunteer-qual-cell")
-                .find(".volunteer-qual-status")
-                .should("contain", "Saved");
-
-            // …and goes quiet again, rather than leaving a badge on every cell.
-            qualBox(TICKED_PERSON, firstPositionId)
-                .parents(".volunteer-qual-cell")
-                .find(".volunteer-qual-status")
-                .should("not.contain", "Saved", { timeout: 6000 });
+            cy.get(".notyf__toast--success").should("be.visible");
         });
 
         it("takes the 'not qualified yet' badge away as soon as a box is ticked", () => {
@@ -461,7 +463,13 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
     });
 
     // ═════════════════════════════════════════════════════════════════════════
-    // 3. Occurrences default to upcoming; the past is one dialog away
+    // 3. Occurrences default to upcoming — the "Filter by Date" dialog is gone
+    //
+    // Round three replaced the dialog with a live Team / Event / From / To search
+    // form, so the dialog cases that were here have moved to
+    // admin.volunteer-v2.ministry-page-3.spec.js and are written against the form.
+    // What survives here is the half of the behaviour that did NOT change: the tab
+    // still opens on what is still to come, and a past occurrence is not in it.
     // ═════════════════════════════════════════════════════════════════════════
 
     describe("the Occurrences tab", () => {
@@ -482,64 +490,26 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
             freshAdminLogin();
         });
 
-        it("shows only what is still to come, and offers Filter by Date", () => {
+        it("opens on what is still to come, with From set to today", () => {
             cy.visit(ministryUrl());
             cy.get("#nav-item-occurrences").click();
             cy.get("#occurrences .volunteer-loading").should("not.be.visible");
-
             cy.get("#volunteerOccurrencesTable").should("be.visible");
-            cy.get("#volunteerOccurrencesTable tbody").should("not.contain", PAST_DATE);
 
-            cy.get("#occurrences-filter-btn").should("be.visible").and("contain", "Filter by Date");
-            // Nothing has been filtered, so there is nothing to say and no way back.
-            cy.get("#occurrences-range-note").should("not.be.visible");
+            cy.get("#occurrence-from").should("have.value", isoDate(0));
+            cy.get("#volunteerOccurrencesTable tbody").should("not.contain", PAST_DATE);
         });
 
-        it("shows the past occurrence once a range is chosen, and goes back again", () => {
+        it("has no Filter by Date button, dialog or range note left", () => {
             cy.visit(ministryUrl());
             cy.get("#nav-item-occurrences").click();
             cy.get("#occurrences .volunteer-loading").should("not.be.visible");
-            cy.get("#volunteerOccurrencesTable tbody").should("not.contain", PAST_DATE);
+            cy.get("#volunteerOccurrencesTable").should("be.visible");
 
-            cy.get("#occurrences-filter-btn").click();
-            cy.get("#occurrenceRangeModal").should("be.visible");
-            cy.get("#occurrenceRangeModalTitle").should("contain", "Filter by Date");
-            // The dialog opens on the last ninety days, up to yesterday. Waiting
-            // for the focus the dialog hands its first field is what proves
-            // Bootstrap's 150 ms fade has finished: "visible" is true partway
-            // through it, and a modal asked to hide mid-fade ignores it.
-            cy.get("#occurrence-range-from").should("be.focused");
-            cy.get("#occurrence-range-from").should("have.value", isoDate(-90));
-            cy.get("#occurrence-range-to").should("have.value", isoDate(-1));
-            cy.get("#occurrence-range-show").click();
-
-            cy.get("#occurrenceRangeModal").should("not.be.visible");
-            cy.get("#occurrences .volunteer-loading").should("not.be.visible");
-            cy.get("#volunteerOccurrencesTable tbody").should("contain", PAST_DATE);
-
-            cy.get("#occurrences-range-note")
-                .should("be.visible")
-                .and("contain", `Showing ${isoDate(-90)} to ${isoDate(-1)}`);
-
-            cy.get("#occurrences-range-reset").should("contain", "Back to upcoming").click();
-            cy.get("#occurrences .volunteer-loading").should("not.be.visible");
-            cy.get("#volunteerOccurrencesTable tbody").should("not.contain", PAST_DATE);
-            cy.get("#occurrences-range-note").should("not.be.visible");
-        });
-
-        it("refuses a window that ends before it starts", () => {
-            cy.visit(ministryUrl());
-            cy.get("#nav-item-occurrences").click();
-            cy.get("#occurrences .volunteer-loading").should("not.be.visible");
-
-            cy.get("#occurrences-filter-btn").click();
-            cy.get("#occurrence-range-from").should("be.focused");
-            cy.get("#occurrence-range-from").clear().type(isoDate(-1));
-            cy.get("#occurrence-range-to").clear().type(isoDate(-90));
-            cy.get("#occurrence-range-show").click();
-
-            cy.get("#occurrence-range-form-error").should("be.visible").and("contain", "ends before it starts");
-            cy.get("#occurrenceRangeModal").should("be.visible");
+            cy.get("#occurrences-filter-btn").should("not.exist");
+            cy.get("#occurrenceRangeModal").should("not.exist");
+            cy.get("#occurrences-range-note").should("not.exist");
+            cy.get("#occurrences-range-reset").should("not.exist");
         });
     });
 });
