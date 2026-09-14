@@ -37,16 +37,16 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 
 <div id="volunteer-dashboard">
 
-  <!-- Quick actions (§5.2): the three places a coordinator goes next. -->
+  <!-- Quick actions (§5.2). "My ministries and teams" used to sit here as a
+       link to a list page; the sidebar's Ministries heading lists the same
+       ministries now, and the card in the right-hand column below still names
+       them and the teams under them. -->
   <div class="d-flex flex-wrap gap-2 align-items-center mb-3" id="volunteer-quick-actions">
     <?php if ($bIsManager): ?>
       <button type="button" class="btn btn-primary" id="ministry-new-btn">
         <i class="fa-solid fa-plus me-1"></i><?= gettext('New ministry') ?>
       </button>
     <?php endif; ?>
-    <a href="<?= $sRootPath ?>/volunteer/ministries" class="btn btn-outline-primary">
-      <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('My ministries and teams') ?>
-    </a>
     <div class="ms-auto d-flex align-items-center gap-2">
       <label class="form-label mb-0 text-body-secondary" for="volunteer-days">
         <?= gettext('Show the next') ?>
@@ -180,13 +180,8 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
             <div class="empty-icon"><i class="fa-solid fa-calendar-check fa-2x text-muted"></i></div>
             <p class="empty-title"><?= gettext('Nothing scheduled yet') ?></p>
             <p class="empty-subtitle text-body-secondary">
-              <?= gettext('Create a schedule and generate its dates, and the weeks to staff appear here.') ?>
+              <?= gettext('Open a ministry from the Ministries menu, create a schedule and generate its dates, and the weeks to staff appear here.') ?>
             </p>
-            <div class="empty-action">
-              <a href="<?= $sRootPath ?>/volunteer/ministries" class="btn btn-primary">
-                <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('My ministries and teams') ?>
-              </a>
-            </div>
           </div>
           <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="volunteer-upcoming-content">
             <table class="table table-hover table-vcenter" id="volunteer-upcoming-table">
@@ -214,8 +209,9 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
     <div class="col-12 col-xl-4">
 
       <!-- My ministries and teams. For a team leader this is the ONLY entry
-           point into the module, because /volunteer/ministries/{id} is
-           ministry-scoped (design §4.6). -->
+           point into the module: /volunteer/ministries/{id} is ministry-scoped
+           (design §4.6), so the sidebar's Ministries heading offers them no
+           ministry entry and this card is where their teams are named. -->
       <div class="card mb-3" id="volunteer-scope-card">
         <div class="card-header">
           <h3 class="card-title mb-0">
@@ -235,6 +231,16 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
                 <?= gettext('Ask a volunteer manager to create a ministry and make you its coordinator.') ?>
               <?php endif; ?>
             </p>
+            <?php if ($bIsManager): ?>
+              <!-- The same modal as the quick action above; ministry-create.ts
+                   wires both buttons. This one used to live on the retired
+                   ministries list page, where it was the empty state's action. -->
+              <div class="empty-action">
+                <button type="button" class="btn btn-primary" id="ministry-new-empty-btn">
+                  <i class="fa-solid fa-plus me-1"></i><?= gettext('New ministry') ?>
+                </button>
+              </div>
+            <?php endif; ?>
           </div>
           <?php if ($bIsManager): ?>
             <!--

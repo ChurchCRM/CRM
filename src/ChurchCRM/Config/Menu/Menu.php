@@ -5,12 +5,15 @@ namespace ChurchCRM\Config\Menu;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
-use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\FundRaiserService;
+use ChurchCRM\Service\VolunteerAuthorizationService;
 
 class Menu
 {
@@ -41,6 +44,7 @@ class Menu
         // Computed once here like every other visibility boolean; the predicate memoises
         // the scope query on the User instance so the route gate reuses it.
         $isVolunteerCoordinator = $currentUser->isVolunteerCoordinatorEnabled();
+        $isVolunteerV2Enabled = User::isVolunteerV2Enabled();
         $menus = [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-gauge'),
             'Calendar'     => self::getCalendarMenu($canViewEvents),
@@ -49,7 +53,8 @@ class Menu
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
             'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents, $currentUser->canWriteEvents()),
-            'Volunteer'    => self::getVolunteerMenu($isVolunteerCoordinator, User::isVolunteerV2Enabled()),
+            'Volunteer'    => self::getVolunteerMenu($isVolunteerV2Enabled),
+            'Ministries'   => self::getMinistriesMenu($currentUser, $isVolunteerCoordinator),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
             'Reports'      => self::getReportsMenu($isAdmin),
@@ -296,54 +301,118 @@ class Menu
     }
 
     /**
-     * Volunteer Management v2 (#9704, rescoped by #9706, member half by #9712).
+     * Volunteer Management v2 — the MEMBER surface (#9704, member half by #9712).
      *
-     * $isCoordinator is User::isVolunteerCoordinatorEnabled() — the SAME predicate
-     * VolunteerCoordinatorRoleAuthMiddleware calls — so the coordinator entries never
-     * advertise a page that 302s away and never hide one the user could open. It
-     * already carries the rollout state, the administrator bypass, the global-manager
-     * flag, the EditSelf-exclusive short-circuit and the ministry/team scope lookup.
+     * "Volunteer" is now the volunteer's own heading and nothing else: my schedule
+     * and the opportunities I could take. The administration surface — the
+     * dashboard and the ministries a coordinator runs — moved to its own
+     * "Ministries" heading, below, so that the heading a volunteer opens is about
+     * them rather than about running the programme.
      *
-     * $isV2 is User::isVolunteerV2Enabled(), and it is the gate on the two MEMBER
-     * entries — because that is the gate on the member routes (design §3.2: "no role
-     * gate — per-record authorization only, by authenticated person"). Menu visibility
-     * mirrors the route middleware exactly (§3.5), and for these two the middleware is
-     * the rollout flag and nothing else: every authenticated person is potentially a
-     * volunteer.
-     *
-     * The parent therefore carries `$isCoordinator || $isV2`, not `$isCoordinator`:
-     * `MenuItem::isVisible()` returns false for a parent whose own `hasPermission` is
-     * false **however many visible children it has**, so gating the parent on the
-     * coordinator predicate would hide the member entries from exactly the people they
-     * exist for — every volunteer in the church.
+     * $isV2 is User::isVolunteerV2Enabled(), and it is the only gate here, because
+     * that is the gate on the member routes (design §3.2: "no role gate — per-record
+     * authorization only, by authenticated person"). Menu visibility mirrors the
+     * route middleware exactly (§3.5), and for these two the middleware is the
+     * rollout flag and nothing else: every authenticated person is potentially a
+     * volunteer, and one with nothing on their list still sees the entries — that is
+     * intended, it is where they go to find something.
      *
      * The legacy "Volunteer Opportunities" item under People → Admin covers the 'v1'
      * and 'both' rollout states and is unaffected.
      */
-    private static function getVolunteerMenu(bool $isCoordinator, bool $isV2): MenuItem
+    private static function getVolunteerMenu(bool $isV2): MenuItem
     {
-        $isVisible = $isCoordinator;
-        $volunteerMenu = new MenuItem(gettext('Volunteer'), '', $isCoordinator || $isV2, 'fa-handshake-angle');
-        $volunteerMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', $isVisible, 'fa-gauge'));
-        // There is no Setup entry any more: the guided setup flow is gone, and the
-        // one step of it that had no home elsewhere — creating a ministry — is a
-        // "New ministry" button on Ministries and on the dashboard.
-        //
-        // #9711: "My ministries and teams" (design §3.5 names Ministries as the third
-        // child). It carries the SAME visibility as the parent because
-        // /volunteer/ministries carries the same gate, and it is the one page a pure
-        // TEAM LEADER can open — the ministry detail page is ministry-scoped, so
-        // without this entry a team leader sees a Volunteer menu whose every child
-        // leads somewhere they are refused (§4.6).
-        $volunteerMenu->addSubMenu(new MenuItem(gettext('Ministries'), 'volunteer/ministries', $isVisible, 'fa-handshake-angle'));
-
-        // #9712 — S5/S6. Visible to every authenticated user while V2 is rolled out,
-        // coordinator or not (§3.5). A volunteer with nothing on their list still sees
-        // the entry, and that is intended: it is where they go to find something.
+        $volunteerMenu = new MenuItem(gettext('Volunteer'), '', $isV2, 'fa-handshake-angle');
         $volunteerMenu->addSubMenu(new MenuItem(gettext('My Volunteer Schedule'), 'volunteer/my-schedule', $isV2, 'fa-calendar-check'));
         $volunteerMenu->addSubMenu(new MenuItem(gettext('Open Opportunities'), 'volunteer/opportunities', $isV2, 'fa-hand-holding-heart'));
 
         return $volunteerMenu;
+    }
+
+    /**
+     * Volunteer Management v2 — the ADMINISTRATION surface (epic #9701).
+     *
+     * A heading of its own, built the way the Groups block builds its per-group
+     * entries: a Dashboard entry and then one entry per ministry, by name, each
+     * linking straight to `/volunteer/ministries/{id}`. It replaces the retired
+     * "My ministries and teams" list page — a list of the same links, one click
+     * further away.
+     *
+     * $isCoordinator is User::isVolunteerCoordinatorEnabled() — the SAME predicate
+     * VolunteerCoordinatorRoleAuthMiddleware calls — so nothing here advertises a
+     * page that 302s away and nothing openable is hidden (§3.5, A11). It already
+     * carries the rollout state, the administrator bypass, the global-manager flag,
+     * the EditSelf-exclusive short-circuit and the ministry/team scope lookup.
+     *
+     * A pure **team leader** passes that predicate and gets the heading with
+     * Dashboard alone: `getManageableMinistries()` returns nothing for them,
+     * because leading a team is not administering the ministry above it (§4.6) and
+     * the ministry page would refuse them. The dashboard is their entry point, and
+     * its "My ministries and teams" card names the teams they lead. A manager who
+     * has not created a ministry yet sees the same Dashboard-only heading, and the
+     * dashboard's "New ministry" action is right there.
+     *
+     * One query per request, ids and names only — see
+     * `VolunteerAuthorizationService::getManageableMinistries()` for the memo and
+     * the reason it is static. The early return keeps even that query off every
+     * page load for the overwhelming majority of users, who coordinate nothing.
+     */
+    private static function getMinistriesMenu(User $currentUser, bool $isCoordinator): MenuItem
+    {
+        $ministriesMenu = new MenuItem(gettext('Ministries'), '', $isCoordinator, 'fa-sitemap');
+        if (!$isCoordinator) {
+            // Every /volunteer coordinator route is behind
+            // VolunteerCoordinatorRoleAuthMiddleware; skip the lookup entirely.
+            return $ministriesMenu;
+        }
+
+        $ministriesMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', true, 'fa-gauge'));
+
+        $activeMinistryId = self::getVolunteerMinistryIdForCurrentRoute();
+        foreach ((new VolunteerAuthorizationService())->getManageableMinistries($currentUser) as $ministryId => $ministryName) {
+            // The name is data, rendered by MenuRenderer through
+            // InputUtils::escapeHTML() like every other menu label.
+            $ministryItem = new MenuItem($ministryName, 'volunteer/ministries/' . $ministryId, true, 'fa-handshake-angle');
+            if ($activeMinistryId === $ministryId) {
+                $ministryItem->setActiveOverride(true);
+            }
+            $ministriesMenu->addSubMenu($ministryItem);
+        }
+
+        return $ministriesMenu;
+    }
+
+    /**
+     * The ministry the current request belongs to when the URL does not name it.
+     *
+     * `/volunteer/ministries/{id}` needs nothing: `MenuItem::isActive()` matches it
+     * against the entry's own URI. `/volunteer/occurrences/{id}` does — an
+     * occurrence belongs to a schedule and a schedule to a ministry, and without
+     * this the sidebar would show nothing highlighted on the one page a coordinator
+     * spends the most time. Two primary-key lookups of a single column, and only on
+     * that route: every other page returns before touching the database.
+     */
+    private static function getVolunteerMinistryIdForCurrentRoute(): ?int
+    {
+        $path = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
+        if (!is_string($path) || preg_match('{/volunteer/occurrences/([0-9]+)$}', $path, $matches) !== 1) {
+            return null;
+        }
+
+        $scheduleId = VolunteerOccurrenceQuery::create()
+            ->filterById((int) $matches[1])
+            ->select('ScheduleId')
+            ->findOne();
+        if ($scheduleId === null) {
+            return null;
+        }
+
+        $ministryId = VolunteerScheduleQuery::create()
+            ->filterById((int) $scheduleId)
+            ->select('MinistryId')
+            ->findOne();
+
+        return $ministryId === null ? null : (int) $ministryId;
     }
 
     private static function getDepositsMenu(bool $isAdmin, bool $isFinanceEnabled): MenuItem

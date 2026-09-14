@@ -24,7 +24,7 @@
  *     to a ministry coordinator and above;
  *   - the **Help wanted** card renders on its own tab and on no other;
  *   - `/volunteer/setup` is gone from the menu and the URL 404s;
- *   - **New ministry** on `/volunteer/ministries` creates one and lands on it.
+ *   - **New ministry** on the dashboard creates one and lands on it.
  *
  * Order inside every hook is API setup → freshAdminLogin() → cy.visit(), because
  * cy.request() rotates the PHP session cookie (cypress-testing.md). Fixture rows
@@ -596,10 +596,12 @@ describe("Volunteer v2 — the Setup page is gone (#9701)", () => {
         freshAdminLogin();
     });
 
-    it("is not in the Volunteer menu any more", () => {
+    it("is not in the menu any more", () => {
         cy.visit(DASHBOARD_URL);
         cy.get('a[href$="/volunteer/setup"]').should("not.exist");
-        cy.get('a[href$="/volunteer/ministries"]').should("exist");
+        // The retired ministries list page has no entry either: the Ministries
+        // heading lists the ministries themselves, under the dashboard.
+        cy.get('a[href$="/volunteer/ministries"]').should("not.exist");
         cy.get('a[href$="/volunteer/dashboard"]').should("exist");
     });
 
@@ -618,7 +620,7 @@ describe("Volunteer v2 — the Setup page is gone (#9701)", () => {
     });
 
     it("creates a ministry from the modal and lands on its page", () => {
-        cy.visit(MINISTRIES_URL);
+        cy.visit(DASHBOARD_URL);
         cy.get("#ministry-new-btn").should("be.visible").and("contain", "New ministry").click();
 
         cy.get("#ministryCreateModal").should("be.visible");

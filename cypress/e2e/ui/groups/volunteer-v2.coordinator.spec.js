@@ -450,7 +450,10 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
             // a button rather than a link because it opens a modal.
             cy.get('#volunteer-quick-actions a[href$="/volunteer/setup"]').should("not.exist");
             cy.get("#volunteer-quick-actions #ministry-new-btn").should("exist");
-            cy.get('#volunteer-quick-actions a[href$="/volunteer/ministries"]').should("exist");
+            // "My ministries and teams" is no longer a quick action: the
+            // sidebar's Ministries heading lists them, and the card in the
+            // right-hand column names the teams.
+            cy.get('#volunteer-quick-actions a[href$="/volunteer/ministries"]').should("not.exist");
         });
 
         it("renders localized strings from the bundle, not raw keys", () => {
@@ -574,16 +577,21 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         });
     });
 
+    // The ministries list page that used to answer this is gone: the sidebar's
+    // Ministries heading lists the ministries, and the dashboard's own card
+    // names the teams under them — which is the half a pure team leader needs,
+    // since they get no ministry entry in the menu at all (§4.6).
     describe("The team-leader entry point (§4.6, design gap 1)", () => {
-        it("the Ministries list page names the ministry and its teams", () => {
-            cy.visit(MINISTRIES_URL);
-            cy.get("#volunteer-ministries-list").should("contain", MINISTRY_NAME);
-            cy.get("#volunteer-teams-list").should("contain", TEAM_NAME);
+        it("the dashboard names the ministries and the teams the viewer runs", () => {
+            cy.visit(DASHBOARD_URL);
+            cy.get("#volunteer-scope-ministries").should("contain", MINISTRY_NAME);
+            cy.get("#volunteer-scope-teams").should("contain", TEAM_NAME);
         });
 
-        it("is reachable from the Volunteer menu", () => {
+        it("the Ministries menu links straight at the ministry", () => {
             cy.visit(DASHBOARD_URL);
-            cy.get('a[href$="/volunteer/ministries"]').should("exist");
+            cy.get(`a[href$="${MINISTRIES_URL}/${ministryId}"]`).should("exist");
+            cy.get(`a[href$="${MINISTRIES_URL}"]`).should("not.exist");
         });
     });
 
