@@ -33,6 +33,14 @@ export interface VolunteerMinistry {
   helpWantedText: string | null;
 }
 
+/** One team-scope grant, as carried on a team row by `volunteerTeamToArray()`. */
+export interface VolunteerTeamLeader {
+  /** The `volunteer_scope_vscp` row id, so revoking needs no lookup. */
+  scopeId: number;
+  personId: number;
+  personName: string;
+}
+
 /** One team as `volunteerTeamToArray()` shapes it. */
 export interface VolunteerTeam {
   id: number;
@@ -41,6 +49,13 @@ export interface VolunteerTeam {
   description: string | null;
   active: boolean;
   positionCount: number;
+  /**
+   * The team's leaders. Normally 0 or 1 — the UI treats a team as having at most
+   * one — but the scope table has no uniqueness constraint, so the API reports
+   * every row rather than silently truncating. Absent on the endpoints that do
+   * not resolve them.
+   */
+  leaders?: VolunteerTeamLeader[];
 }
 
 /**
@@ -108,8 +123,22 @@ export interface QualificationMatrix {
   people: VolunteerPoolPerson[];
 }
 
+/**
+ * The three numbers the ministry overview strip shows, computed server-side with
+ * the viewer's scope: a coordinator, global manager or administrator is counted
+ * over the whole ministry, a team leader over the teams they lead.
+ */
+export interface MinistrySummary {
+  teamCount: number;
+  /** Members of the ministry's pool Group. */
+  volunteerCount: number;
+  /** Open slots across every future, scheduled occurrence the viewer may see. */
+  unfilledPositionCount: number;
+}
+
 export interface MinistryDetail {
   ministry: VolunteerMinistry;
+  summary?: MinistrySummary;
   teams: VolunteerTeam[];
   positions: VolunteerPosition[];
   /** D19: the ministry's own pool Group and who is in it, in the same document. */
@@ -262,6 +291,19 @@ export function addPoolMember(ministryId: number, personId: number): Promise<{ p
 /** Their qualifications are NOT revoked — the two are independent since D19. */
 export function removePoolMember(ministryId: number, personId: number): Promise<{ success: boolean }> {
   return request(`/ministries/${ministryId}/pool/${personId}`, { method: "DELETE" });
+}
+
+/**
+ * Take one person out of a ministry entirely: qualifications revoked, upcoming
+ * assignments cancelled, pool membership removed — one transaction server-side.
+ *
+ * Ministry-level authority; a team leader is refused with 403.
+ */
+export function removeVolunteerFromMinistry(
+  ministryId: number,
+  personId: number,
+): Promise<{ personId: number; qualifications: number; assignments: number; removedFromPool: boolean }> {
+  return request(`/ministries/${ministryId}/volunteers/${personId}`, { method: "DELETE" });
 }
 
 export function getQualificationMatrix(ministryId: number, teamId?: number | null): Promise<QualificationMatrix> {

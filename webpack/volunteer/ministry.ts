@@ -1,22 +1,23 @@
 /**
- * S3 — ministry detail (#9715 and #9707, design §5.4).
+ * S3 — ministry detail (#9715 and #9707, design §5.4 as amended).
  *
- * Four tabs. Overview, Teams & Pools and Positions are rendered from ONE
- * `GET /api/volunteer/ministries/{id}` response that is fetched on first use and
- * cached; Qualifications is one `GET .../qualification-matrix` because it has
- * its own `?teamId=` filter. Both obey the same rule, which is the point §5.4
- * actually makes: the matrix must handle 15–200 pool members "without
- * re-fetching per cell", so the whole grid — people, positions and every tick —
- * arrives in a single document and a checkbox writes exactly one row.
+ * Six tabs: **Overview · Volunteers · Positions · Schedules · Occurrences · Help
+ * Wanted**. Overview (its three counts, its description and its teams card) and
+ * Positions are rendered from ONE `GET /api/volunteer/ministries/{id}` response
+ * that is fetched on first use and cached; Volunteers is one
+ * `GET .../qualification-matrix` because it has its own `?teamId=` filter. Both
+ * obey the same rule, which is the point §5.4 actually makes: the grid must
+ * handle 15–200 people "without re-fetching per cell", so the whole thing —
+ * people, positions and every tick — arrives in a single document and a checkbox
+ * writes exactly one row.
  *
- * The pool half is deliberately read-only about membership. A pool is a link to
- * a Group and the Group stays the roster (D1); every `/api/groups` write needs
- * the global Manage Groups flag and the ORM hooks demand it independently, so
- * the screen links into `/groups/view/{id}` and says which permission is needed
- * rather than proxying an edit that would fail deeper in (§4.6, Appendix D-1).
+ * The volunteer-pool panel is gone. The V2 pool endpoints and the Groups module
+ * still own the roster; this page no longer shows it, qualifying somebody still
+ * brings them into the pool, and "Remove Volunteer" on the Volunteers tab is the
+ * one place membership is ended from here.
  *
- * Adding a tab (#9708/#9711's Schedules) is: one `<li>` and one `.tab-pane` in
- * the view, one entry in `TAB_RENDERERS` here. Nothing else moves.
+ * Adding a tab is: one `<li>` and one `.tab-pane` in the view, one entry in
+ * `TAB_RENDERERS` (or one branch in `activate()`) here. Nothing else moves.
  *
  * Every state §5.8 requires is here and is driven by `renderState()`: the
  * loading block is re-shown at the start of **every** attempt, the error block
@@ -32,7 +33,6 @@
 
 import { attachToModal } from "../common/person-select";
 import {
-  addPoolMember,
   createPosition,
   createSchedule,
   createTeam,
@@ -44,6 +44,7 @@ import {
   getMinistry,
   getQualificationMatrix,
   grantQualification,
+  grantScope,
   listOccurrences,
   listScheduleRequirements,
   listSchedules,
@@ -53,8 +54,9 @@ import {
   positionLabel,
   type QualificationMatrix,
   qualifyCart,
-  removePoolMember,
+  removeVolunteerFromMinistry,
   revokeQualification,
+  revokeScope,
   updateMinistry,
   updatePosition,
   updateSchedule,
@@ -66,6 +68,7 @@ import {
   type VolunteerRequirementRow,
   type VolunteerSchedule,
   type VolunteerTeam,
+  type VolunteerTeamLeader,
 } from "./api";
 import { initVolunteerScopes } from "./scopes";
 import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "./staffing-needs";
@@ -73,17 +76,31 @@ import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from ".
 interface MinistryConfig {
   ministryId: number;
   isManager: boolean;
+  /**
+   * Advisory: "the server believes you coordinate this ministry or better". It
+   * decides whether "Remove Volunteer" is OFFERED and nothing else — the API
+   * authorizes independently with the ministry-level entity middleware (D5).
+   */
+  isMinistryCoordinator: boolean;
 }
 
+/**
+ * Panes rendered from the cached ministry document. The teams card lives on
+ * Overview and keeps its own `teams-*` state block, so it is a pane name here
+ * even though it is no longer a tab.
+ */
 type PaneName = "overview" | "teams" | "positions";
 /**
- * Every tab in the strip. The matrix and the occurrence list each have their own
- * fetch — a different document with a different filter — so they carry their own
- * names and load themselves rather than riding on the ministry detail.
+ * Every tab in the strip. The volunteer grid and the occurrence list each have
+ * their own fetch — a different document with a different filter — so they carry
+ * their own names and load themselves rather than riding on the ministry detail.
  */
-type TabName = PaneName | "qualifications" | "occurrences" | "schedules";
+type TabName = "overview" | "positions" | "volunteers" | "occurrences" | "schedules" | "help-wanted";
 
 let ministryId = 0;
+let isManager = false;
+/** Advisory only — see `MinistryConfig.isMinistryCoordinator`. */
+let isMinistryCoordinator = false;
 let detail: MinistryDetail | null = null;
 /**
  * The matrix is cached separately from `detail` because it is a different
@@ -91,7 +108,15 @@ let detail: MinistryDetail | null = null;
  * the whole grid, never one per cell (§5.4).
  */
 let matrix: QualificationMatrix | null = null;
+/**
+ * The team whose positions the Volunteers grid is showing. There is no "all
+ * teams" answer any more: a ministry's teams own their own positions, two teams
+ * may own a position of the same name, and a grid spanning them made the columns
+ * ambiguous. Null only before the first team is known.
+ */
 let matrixTeamId: number | null = null;
+/** Which team a "Set Team Leader" modal is acting on; 0 means none is open. */
+let leaderTeamId = 0;
 /**
  * The ministry's upcoming occurrences with their derived gap counts (#9709).
  * Cached like the matrix so switching tabs does not re-fetch, and cleared on error
@@ -129,7 +154,7 @@ function show(el: Element | null, visible: boolean): void {
  * state. `content` is only shown in the `loaded` state, and `empty` replaces it
  * when there is genuinely nothing rather than leaving an empty table.
  */
-function renderState(pane: TabName, state: "loading" | "error" | "empty" | "loaded", message = ""): void {
+function renderState(pane: TabName | PaneName, state: "loading" | "error" | "empty" | "loaded", message = ""): void {
   show(byId(`${pane}-loading`), state === "loading");
   show(byId(`${pane}-error`), state === "error");
   show(byId(`${pane}-empty`), state === "empty");
@@ -220,8 +245,17 @@ function initDataTable(tableId: string): void {
 
 // ─── Renderers ───────────────────────────────────────────────────────────────
 
+/**
+ * The overview strip's three counts, then the description, then the teams card.
+ *
+ * Every number comes from the server's own `summary` block — `teamCount`,
+ * `volunteerCount` (the pool Group's membership) and `unfilledPositionCount`
+ * (open slots across every future scheduled occurrence the viewer may see,
+ * derived from the ONE gap implementation). Nothing is re-derived in the browser:
+ * the unfilled count in particular is scope-dependent, and only the server knows
+ * which occurrences this viewer is allowed to be counted over.
+ */
 function renderOverview(data: MinistryDetail): void {
-  const active = data.positions.filter((position) => position.active).length;
   const set = (id: string, value: string): void => {
     const el = byId(id);
     if (el) {
@@ -229,93 +263,45 @@ function renderOverview(data: MinistryDetail): void {
     }
   };
 
-  set("overview-team-count", String(data.teams.length));
-  set("overview-position-count", String(data.positions.length));
-  set("overview-active-position-count", String(active));
+  set("overview-team-count", String(data.summary?.teamCount ?? data.teams.length));
+  set("overview-volunteer-count", String(data.summary?.volunteerCount ?? 0));
+  set("overview-unfilled-count", String(data.summary?.unfilledPositionCount ?? 0));
   set("overview-description", data.ministry.description ?? "");
   renderState("overview", "loaded");
+  renderTeams(data);
+}
+
+/** The leaders of one team, comma-separated, each linking to their person record. */
+function teamLeaderCell(team: VolunteerTeam): string {
+  const root = window.CRM?.root ?? "";
+  const leaders = team.leaders ?? [];
+
+  if (leaders.length === 0) {
+    return "";
+  }
+
+  // A team is treated as having at most one leader, but the scope table carries
+  // no uniqueness constraint — so if the API ever holds more than one, all of them
+  // are named rather than one of them silently winning.
+  return leaders
+    .map(
+      (leader: VolunteerTeamLeader) =>
+        `<a href="${root}/PersonView.php?PersonID=${leader.personId}">${escapeHtml(leader.personName)}</a>`,
+    )
+    .join(", ");
 }
 
 /**
- * The volunteer pool panel, below the teams table (#9707, rewritten by D19).
+ * The teams card on Overview — the list that used to open the Teams tab, plus the
+ * team's leader and the two menu items that set and clear it.
  *
- * Rendered from the same cached ministry document as the teams table, so opening
- * the tab is still ONE fetch. Membership is editable here now: the ministry owns
- * its Group, and `group_grp.grp_ministry_id` is what lets a coordinator without
- * the global Manage Groups flag write it (§4.6 as amended by D19). The Groups
- * module is still a perfectly good second door — this panel is the near one.
+ * Granting authority is manager-only (§3.2), so the leader items appear only for a
+ * global volunteer manager. The leader NAMES are shown to anyone who can open the
+ * page: they arrive on the ministry document rather than from the manager-only
+ * `/scopes` listing, so a ministry coordinator sees who leads what without being
+ * able to change it.
  */
-function renderPool(data: MinistryDetail): void {
-  const body = document.querySelector("#volunteerPoolTable tbody");
-  if (!body) {
-    return;
-  }
-
-  const members = data.pool ?? [];
-  destroyDataTable("volunteerPoolTable");
-
-  const root = window.CRM?.root ?? "";
-  const groupLink = byId<HTMLAnchorElement>("pool-group-link");
-  if (groupLink) {
-    groupLink.href = data.poolGroupId ? `${root}/groups/view/${data.poolGroupId}` : "#";
-    groupLink.textContent = data.poolGroupName ?? "";
-    show(groupLink, Boolean(data.poolGroupId));
-  }
-
-  if (members.length === 0) {
-    body.innerHTML = "";
-    show(byId("pool-empty"), true);
-    show(byId("pool-table-wrapper"), false);
-    return;
-  }
-
-  body.innerHTML = members
-    .map((person: VolunteerPoolPerson) => {
-      const menu = actionMenu([
-        {
-          type: "link",
-          icon: "fa-solid fa-user",
-          label: i18next.t("Open the record"),
-          href: `${root}/person/${person.personId}`,
-        },
-        { type: "divider" },
-        {
-          type: "button",
-          icon: "fa-solid fa-user-minus",
-          // "Remove from the pool", never "Delete": the person and their
-          // qualifications both survive.
-          label: i18next.t("Remove from the pool"),
-          className: "volunteer-pool-remove",
-          danger: true,
-          data: { "person-id": person.personId, "person-name": person.displayName },
-        },
-      ]);
-
-      const qualified =
-        person.qualifications.length > 0
-          ? `<span class="badge bg-green-lt text-green">${i18next.t("{{count}} qualifications", {
-              count: person.qualifications.length,
-            })}</span>`
-          : `<span class="badge bg-secondary-lt">${i18next.t("Not qualified yet")}</span>`;
-
-      return `<tr>
-          <td class="fw-bold">
-            <a href="${root}/person/${person.personId}">${escapeHtml(person.displayName)}</a>
-          </td>
-          <td>${qualified}</td>
-          <td class="w-1">${menu}</td>
-        </tr>`;
-    })
-    .join("");
-
-  show(byId("pool-empty"), false);
-  show(byId("pool-table-wrapper"), true);
-  initDataTable("volunteerPoolTable");
-}
-
 function renderTeams(data: MinistryDetail): void {
-  renderPool(data);
-
   const body = document.querySelector("#volunteerTeamsTable tbody");
   if (!body) {
     return;
@@ -331,6 +317,8 @@ function renderTeams(data: MinistryDetail): void {
 
   body.innerHTML = data.teams
     .map((team: VolunteerTeam) => {
+      const leaders = team.leaders ?? [];
+      const leaderNames = leaders.map((leader) => leader.personName).join(", ");
       const menu = actionMenu([
         {
           type: "button",
@@ -339,6 +327,30 @@ function renderTeams(data: MinistryDetail): void {
           className: "volunteer-team-edit",
           data: { "team-id": team.id },
         },
+        isManager &&
+          leaders.length === 0 && {
+            type: "button",
+            icon: "fa-solid fa-user-shield",
+            label: i18next.t("Set Team Leader"),
+            className: "volunteer-team-leader-set",
+            data: { "team-id": team.id, "team-name": team.name },
+          },
+        isManager &&
+          leaders.length > 0 && {
+            type: "button",
+            icon: "fa-solid fa-user-minus",
+            label: i18next.t("Remove Team Leader"),
+            className: "volunteer-team-leader-remove",
+            danger: true,
+            data: {
+              "team-id": team.id,
+              "team-name": team.name,
+              "leader-name": leaderNames,
+              // Every grant on the row, so "remove" clears the team even in the
+              // case the model allows but the UI does not: more than one leader.
+              "scope-ids": leaders.map((leader) => leader.scopeId).join(","),
+            },
+          },
         { type: "divider" },
         {
           type: "button",
@@ -350,9 +362,10 @@ function renderTeams(data: MinistryDetail): void {
         },
       ]);
 
-      return `<tr>
+      return `<tr data-team-id="${team.id}">
           <td class="fw-bold">${escapeHtml(team.name)}</td>
           <td>${team.description ? escapeHtml(team.description) : '<span class="text-body-secondary">—</span>'}</td>
+          <td class="volunteer-team-leader-cell">${teamLeaderCell(team)}</td>
           <td class="text-center"><span class="badge bg-blue-lt">${team.positionCount}</span></td>
           <td class="text-center">${statusBadge(team.active)}</td>
           <td class="w-1">${menu}</td>
@@ -423,9 +436,12 @@ function renderPositions(data: MinistryDetail): void {
   initDataTable("volunteerPositionsTable");
 }
 
-const TAB_RENDERERS: Record<PaneName, (data: MinistryDetail) => void> = {
+/**
+ * The panes rendered straight from the cached ministry document. `teams` is not
+ * here because it is not a tab any more — `renderOverview()` draws it.
+ */
+const TAB_RENDERERS: Record<"overview" | "positions", (data: MinistryDetail) => void> = {
   overview: renderOverview,
-  teams: renderTeams,
   positions: renderPositions,
 };
 
@@ -453,9 +469,14 @@ function renderMatrix(data: QualificationMatrix): void {
   if (data.positions.length === 0 || data.people.length === 0) {
     head.innerHTML = `<th>${i18next.t("Volunteer")}</th>`;
     body.innerHTML = "";
-    renderState("qualifications", "empty");
+    renderState("volunteers", "empty");
     return;
   }
+
+  // "Remove Volunteer" is a ministry-level act, so it is offered to a ministry
+  // coordinator and above and to nobody else. The flag is the server's opinion and
+  // is advisory: the API refuses a team leader with 403 whatever this says (D5).
+  const canRemove = isMinistryCoordinator;
 
   // "Elementary · Lead Teacher", not a bare "Lead Teacher", whenever the columns
   // come from more than one team — two teams under one ministry may own a position
@@ -470,6 +491,7 @@ function renderMatrix(data: QualificationMatrix): void {
     ...data.positions.map(
       (position: VolunteerPosition) => `<th class="text-center">${escapeHtml(columnLabel(position))}</th>`,
     ),
+    canRemove ? `<th class="text-center no-export w-1">${i18next.t("Actions")}</th>` : "",
   ].join("");
 
   body.innerHTML = data.people
@@ -504,14 +526,28 @@ function renderMatrix(data: QualificationMatrix): void {
               )}</span>`
             : "";
 
+      const menu = canRemove
+        ? `<td class="text-center w-1">${actionMenu([
+            {
+              type: "button",
+              icon: "fa-solid fa-user-minus",
+              label: i18next.t("Remove Volunteer"),
+              className: "volunteer-remove-volunteer",
+              danger: true,
+              data: { "person-id": person.personId, "person-name": person.displayName },
+            },
+          ])}</td>`
+        : "";
+
       return `<tr data-person-name="${window.CRM?.escapeAttribute?.(person.displayName.toLowerCase()) ?? ""}">
           <td class="fw-bold">${escapeHtml(person.displayName)}${hint}</td>
           ${cells}
+          ${menu}
         </tr>`;
     })
     .join("");
 
-  renderState("qualifications", "loaded");
+  renderState("volunteers", "loaded");
   applyMatrixFilter();
   fillPositionSelect("qualify-person-position");
   fillPositionSelect("qualify-cart-position");
@@ -547,11 +583,13 @@ function fillPositionSelect(id: string): void {
 }
 
 /**
- * The team picker above the matrix. Unlike the position and schedule editors, this
- * one keeps an "everything" entry — it is a FILTER, not a scope, and seeing every
- * team's positions at once is a real question. It is labelled "All teams" rather
- * than "Whole ministry" because a ministry no longer owns positions directly, and
- * the columns carry a "{Team} · {Position}" prefix while it is selected.
+ * The team picker above the Volunteers grid.
+ *
+ * It has no "all teams" entry: positions belong to teams, two teams under one
+ * ministry may own a position of the same name, and a grid spanning them made the
+ * columns ambiguous however they were labelled. The grid therefore always shows
+ * exactly one team, and it starts on the first — the same order the teams card
+ * uses, which is the ministry document's order.
  */
 function fillMatrixTeamFilter(): void {
   const select = byId<HTMLSelectElement>("qualification-team-filter");
@@ -559,12 +597,13 @@ function fillMatrixTeamFilter(): void {
     return;
   }
 
+  const teams = detail?.teams ?? [];
+  if (matrixTeamId === null || !teams.some((team) => team.id === matrixTeamId)) {
+    matrixTeamId = teams[0]?.id ?? null;
+  }
+
   select.textContent = "";
-  const wide = document.createElement("option");
-  wide.value = "";
-  wide.textContent = i18next.t("All teams");
-  select.append(wide);
-  for (const team of detail?.teams ?? []) {
+  for (const team of teams) {
     const option = document.createElement("option");
     option.value = String(team.id);
     option.textContent = team.name;
@@ -579,15 +618,20 @@ async function loadMatrix(force = false): Promise<void> {
     return;
   }
 
-  renderState("qualifications", "loading");
+  renderState("volunteers", "loading");
   try {
-    matrix = await getQualificationMatrix(ministryId, matrixTeamId);
+    // The ministry document names the teams, and the grid is always one team's —
+    // so it has to be there before the first matrix request can name one.
+    if (detail === null) {
+      await load();
+    }
     fillMatrixTeamFilter();
+    matrix = await getQualificationMatrix(ministryId, matrixTeamId);
     renderMatrix(matrix);
   } catch (error) {
     // Clearing the cache is what makes Retry a genuine retry (§5.8).
     matrix = null;
-    renderState("qualifications", "error", errorMessage(error, i18next.t("Could not load the qualifications")));
+    renderState("volunteers", "error", errorMessage(error, i18next.t("Could not load the volunteers")));
   }
 }
 
@@ -1027,7 +1071,12 @@ function saveSchedule(): void {
 // ─── Loading ─────────────────────────────────────────────────────────────────
 
 /** Panes that have been activated at least once, so a reload re-renders them. */
-const activated = new Set<PaneName>(["overview"]);
+const activated = new Set<"overview" | "positions">(["overview"]);
+
+/** The state blocks a pane owns — Overview owns the teams card's as well. */
+function paneStates(pane: "overview" | "positions"): Array<TabName | PaneName> {
+  return pane === "overview" ? ["overview", "teams"] : [pane];
+}
 
 async function load(force = false): Promise<void> {
   if (detail !== null && !force) {
@@ -1039,7 +1088,9 @@ async function load(force = false): Promise<void> {
   }
 
   for (const pane of activated) {
-    renderState(pane, "loading");
+    for (const state of paneStates(pane)) {
+      renderState(state, "loading");
+    }
   }
 
   try {
@@ -1053,15 +1104,18 @@ async function load(force = false): Promise<void> {
     detail = null;
     const message = errorMessage(error, i18next.t("Could not load this ministry"));
     for (const pane of activated) {
-      renderState(pane, "error", message);
+      for (const state of paneStates(pane)) {
+        renderState(state, "error", message);
+      }
     }
   }
 }
 
 function activate(tab: TabName): void {
-  // The matrix is its own document with its own filter, so it loads itself.
-  if (tab === "qualifications") {
-    fillMatrixTeamFilter();
+  // The volunteer grid is its own document with its own team filter, so it loads
+  // itself — and it makes sure the ministry document is there first, because the
+  // team it filters on comes from that.
+  if (tab === "volunteers") {
     void loadMatrix();
     return;
   }
@@ -1075,6 +1129,15 @@ function activate(tab: TabName): void {
   // And so is the schedule list: its own collection under the ministry.
   if (tab === "schedules") {
     void loadSchedules();
+    return;
+  }
+
+  // Help wanted has no fetch of its own: it is two fields of the ministry
+  // document, filled on every load.
+  if (tab === "help-wanted") {
+    if (detail === null) {
+      void load();
+    }
     return;
   }
 
@@ -1286,7 +1349,7 @@ function wireHelpWanted(): void {
   });
 }
 
-// ─── The volunteer pool (D19) ────────────────────────────────────────────────
+// ─── Team leaders, on the team's own row (#9706's scope API) ─────────────────
 
 // ─── Wiring ──────────────────────────────────────────────────────────────────
 
@@ -1298,72 +1361,93 @@ function findPosition(id: number): VolunteerPosition | undefined {
   return detail?.positions.find((position) => position.id === id);
 }
 
-function wirePool(): void {
-  // The picker is the shared person selector (CR1/#9819) pointed at the core person
-  // search — the same widget the "Qualify someone else" modal uses — so V2 ships no
-  // second person chooser and the modal's TomSelect teardown is handled for it.
-  const modalEl = byId("poolAddModal");
-  if (modalEl) {
-    attachToModal(modalEl, "#pool-add-person-select");
-  }
+/**
+ * "Set Team Leader" / "Remove Team Leader" on a row of the teams card.
+ *
+ * The grant is the same `/api/volunteer/scopes` call the coordinator card makes,
+ * with `scopeType: "team"` — manager-only at the API, which is why both menu
+ * items and this whole modal are rendered for a manager only. The modal asks for
+ * a person and nothing else: the team is the row it was opened from.
+ */
+function wireTeamLeaders(): void {
+  const modalEl = byId("teamLeaderModal");
+  // The shared person selector (CR1/#9819), which owns the modal lifecycle, the
+  // body-mounted dropdown and the maxOptions fix.
+  const picker = modalEl ? attachToModal(modalEl, "#team-leader-person") : null;
 
-  byId("pool-add-btn")?.addEventListener("click", () => {
-    show(byId("pool-add-form-error"), false);
-    modal("poolAddModal")?.show();
-  });
-
-  byId("pool-add-save")?.addEventListener("click", () => {
-    const select = byId<HTMLSelectElement>("pool-add-person-select");
-    const personId = Number(select?.value ?? 0);
-    if (!personId) {
-      showModalError("pool-add", i18next.t("Choose a person to add"));
+  byId("team-leader-save")?.addEventListener("click", () => {
+    const instance = picker?.getInstance();
+    const personId = Number(instance?.getValue() ?? 0);
+    if (!personId || leaderTeamId === 0) {
+      showModalError("team-leader", i18next.t("Choose a person"));
       return;
     }
 
-    addPoolMember(ministryId, personId)
-      .then((result) => {
+    const personName = (() => {
+      const label = instance?.options?.[String(personId)]?.text;
+
+      return typeof label === "string" ? label : "";
+    })();
+
+    grantScope(personId, "team", leaderTeamId)
+      .then(() => {
+        modal("teamLeaderModal")?.hide();
+        instance?.clear();
         notifySuccess(
-          result.added
-            ? i18next.t("Added to the volunteer pool")
-            : i18next.t("They were already in the volunteer pool"),
+          i18next.t("{{name}} now leads {{team}}", {
+            name: personName,
+            team: findTeam(leaderTeamId)?.name ?? "",
+          }),
         );
-        modal("poolAddModal")?.hide();
-        select?.tomselect?.clear();
-        // The matrix's rows are the pool UNION the qualified, so it is stale now.
-        matrix = null;
 
         return load(true);
       })
       .catch((error: unknown) => {
-        showModalError("pool-add", errorMessage(error, i18next.t("They could not be added to the pool")));
+        showModalError("team-leader", errorMessage(error, i18next.t("The team leader could not be set")));
       });
   });
+}
 
-  // Delegated: the pool rows are re-rendered on every load.
+/**
+ * "Remove Volunteer" on a row of the Volunteers grid.
+ *
+ * One call, three effects, spelled out in the confirm because none of them is
+ * guessable from the words "remove": the qualifications go, the upcoming
+ * assignments are cancelled, and they leave the pool. The toast reports the
+ * server's own counts rather than assuming what happened.
+ */
+function wireRemoveVolunteer(): void {
   document.addEventListener("click", (event) => {
-    const target = (event.target as HTMLElement | null)?.closest<HTMLElement>(".volunteer-pool-remove");
+    const target = (event.target as HTMLElement | null)?.closest<HTMLElement>(".volunteer-remove-volunteer");
     if (!target) {
       return;
     }
 
     const personId = Number(target.dataset.personId);
+    const personName = target.dataset.personName ?? "";
+
     confirmDelete(
-      i18next.t("Remove from the volunteer pool"),
-      // Worth spelling out: this is not "delete the person", and it is not
-      // "un-qualify them" either — both survive, which is the whole rule.
-      i18next.t("Take {{name}} out of this ministry's volunteer pool? Their qualifications are kept.", {
-        name: target.dataset.personName ?? "",
-      }),
+      i18next.t("Remove Volunteer"),
+      i18next.t(
+        "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, and removes them from the volunteer pool.",
+        { name: personName, ministry: detail?.ministry.name ?? "" },
+      ),
       () => {
-        removePoolMember(ministryId, personId)
-          .then(() => {
-            notifySuccess(i18next.t("Removed from the volunteer pool"));
+        removeVolunteerFromMinistry(ministryId, personId)
+          .then((result) => {
+            notifySuccess(
+              i18next.t("Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments.", {
+                qualifications: result.qualifications,
+                assignments: result.assignments,
+              }),
+            );
             matrix = null;
 
-            return load(true);
+            // The pool count on Overview moved, so the ministry document is stale too.
+            return load(true).then(() => loadMatrix(true));
           })
           .catch((error: unknown) => {
-            notifyError(errorMessage(error, i18next.t("They could not be removed from the pool")));
+            notifyError(errorMessage(error, i18next.t("They could not be removed from this ministry")));
           });
       },
     );
@@ -1374,8 +1458,8 @@ function wireQualifications(): void {
   byId("qualification-filter")?.addEventListener("input", applyMatrixFilter);
 
   byId("qualification-team-filter")?.addEventListener("change", (event) => {
-    const value = (event.target as HTMLSelectElement).value;
-    matrixTeamId = value === "" ? null : Number(value);
+    // Every option is a team now, so there is no "" to translate back to null.
+    matrixTeamId = Number((event.target as HTMLSelectElement).value) || null;
     void loadMatrix(true);
   });
 
@@ -1490,19 +1574,19 @@ function wireQualifications(): void {
 function wire(): void {
   for (const [navId, pane] of [
     ["nav-item-overview", "overview"],
-    ["nav-item-teams", "teams"],
+    ["nav-item-volunteers", "volunteers"],
     ["nav-item-positions", "positions"],
-    ["nav-item-qualifications", "qualifications"],
-    ["nav-item-occurrences", "occurrences"],
     ["nav-item-schedules", "schedules"],
+    ["nav-item-occurrences", "occurrences"],
+    ["nav-item-help-wanted", "help-wanted"],
   ] as Array<[string, TabName]>) {
     byId(navId)?.addEventListener("shown.bs.tab", () => activate(pane));
   }
 
   for (const button of document.querySelectorAll(".volunteer-retry")) {
-    // The matrix is a separate document, so its Retry must re-run its own load
+    // The grid is a separate document, so its Retry must re-run its own load
     // rather than the ministry fetch — otherwise the button appears dead.
-    const inMatrix = button.closest("#qualifications") !== null;
+    const inMatrix = button.closest("#volunteers") !== null;
     const inOccurrences = button.closest("#occurrences") !== null;
     const inSchedules = button.closest("#schedules") !== null;
     button.addEventListener("click", () => {
@@ -1542,7 +1626,8 @@ function wire(): void {
   // team. Re-rendering discards whatever was typed for the old team's positions, which is
   // correct: those rows are no longer part of this schedule's plan.
   byId("schedule-form-team")?.addEventListener("change", renderScheduleNeeds);
-  wirePool();
+  wireTeamLeaders();
+  wireRemoveVolunteer();
   wireHelpWanted();
   wireQualifications();
 
@@ -1550,9 +1635,48 @@ function wire(): void {
   // would go stale.
   document.addEventListener("click", (event) => {
     const target = (event.target as HTMLElement | null)?.closest<HTMLElement>(
-      ".volunteer-team-edit, .volunteer-team-delete, .volunteer-position-edit, .volunteer-position-delete, .volunteer-position-toggle, .volunteer-schedule-edit, .volunteer-schedule-delete, .volunteer-schedule-generate",
+      ".volunteer-team-edit, .volunteer-team-delete, .volunteer-team-leader-set, .volunteer-team-leader-remove, .volunteer-position-edit, .volunteer-position-delete, .volunteer-position-toggle, .volunteer-schedule-edit, .volunteer-schedule-delete, .volunteer-schedule-generate",
     );
     if (!target) {
+      return;
+    }
+
+    if (target.classList.contains("volunteer-team-leader-set")) {
+      leaderTeamId = Number(target.dataset.teamId);
+      show(byId("team-leader-form-error"), false);
+      const title = byId("teamLeaderModalTitle");
+      if (title) {
+        title.textContent = i18next.t("Set the leader of {{team}}", { team: target.dataset.teamName ?? "" });
+      }
+      modal("teamLeaderModal")?.show();
+      return;
+    }
+
+    if (target.classList.contains("volunteer-team-leader-remove")) {
+      // Every grant on the row, so a team that somehow holds two leaders is
+      // genuinely cleared rather than left with one.
+      const scopeIds = (target.dataset.scopeIds ?? "")
+        .split(",")
+        .map(Number)
+        .filter((id) => id > 0);
+      confirmDelete(
+        i18next.t("Remove Team Leader"),
+        i18next.t("Stop {{name}} leading {{team}}? Their login and their own assignments are untouched.", {
+          name: target.dataset.leaderName ?? "",
+          team: target.dataset.teamName ?? "",
+        }),
+        () => {
+          Promise.all(scopeIds.map((scopeId) => revokeScope(scopeId)))
+            .then(() => {
+              notifySuccess(i18next.t("Team leader removed"));
+
+              return load(true);
+            })
+            .catch((error: unknown) => {
+              notifyError(errorMessage(error, i18next.t("The team leader could not be removed")));
+            });
+        },
+      );
       return;
     }
 
@@ -1666,8 +1790,14 @@ function wire(): void {
 }
 
 function init(): void {
-  const config = (window.CRM?.volunteerMinistry ?? { ministryId: 0, isManager: false }) as MinistryConfig;
+  const config = (window.CRM?.volunteerMinistry ?? {
+    ministryId: 0,
+    isManager: false,
+    isMinistryCoordinator: false,
+  }) as MinistryConfig;
   ministryId = config.ministryId;
+  isManager = config.isManager;
+  isMinistryCoordinator = config.isMinistryCoordinator;
 
   if (ministryId === 0) {
     return;
