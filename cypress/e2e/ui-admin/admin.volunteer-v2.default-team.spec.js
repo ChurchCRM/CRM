@@ -5,15 +5,20 @@
  *
  * The product decision, on the UI side:
  *
- *   - The setup wizard's team step shows the team the ministry was born with,
- *     says so in one sentence, and offers Rename beside it.
  *   - "Whole ministry" is gone from the position editor and from the schedule
  *     form, because a position or schedule with no team no longer exists.
- *   - Where positions from more than one team can appear side by side — the
- *     qualification matrix with the team filter on "All teams" — the column is
- *     labelled "{Team} · {Position}", which is the whole point: two teams under
- *     "Children's Ministry" may both have a "Lead Teacher" and the coordinator
- *     has to be able to tell them apart.
+ *   - The Volunteers grid shows exactly ONE team's positions. It used to offer an
+ *     "All teams" filter, and the column label carried a "{Team} · {Position}"
+ *     prefix so that two "Lead Teacher" columns could be told apart; the product
+ *     owner removed the option instead, so the grid starts on the first team and
+ *     the prefix never appears.
+ *   - The teams themselves are a card on Overview rather than a tab of their own.
+ *
+ * The setup wizard is gone, so the cases that drove it are gone with it: the team
+ * step's "this ministry was born with a team" copy and its Rename, and the
+ * wizard's own position-team select. What they were really asserting — that a
+ * team is always preselected and there is no team-less option — is asserted below
+ * against the ministry page's editors, which are now the only editors there are.
  *
  * Order inside every hook is API setup → freshAdminLogin() → cy.visit(), because
  * cy.request() rotates the PHP session cookie (cypress-testing.md). Fixtures are
@@ -25,7 +30,6 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const MINISTRIES_URL = "/api/volunteer/ministries";
-const SETUP_URL = "/volunteer/setup";
 
 const PREFIX = "UIDEFTEAM";
 const MINISTRY_NAME = `${PREFIX} Childrens Ministry`;
@@ -72,54 +76,6 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
     after(() => {
         cleanupFixtures();
         setVersion("v1");
-    });
-
-    describe("The setup wizard's team step", () => {
-        beforeEach(() => {
-            cleanupFixtures();
-            freshAdminLogin();
-        });
-
-        it("shows the team the ministry was just born with, and explains it", () => {
-            cy.visit(SETUP_URL);
-            cy.get("#setup-ministry-name").type(`${PREFIX} Coffee Bar`);
-            cy.get("#setup-ministry-save").click();
-            cy.get("#setup-step-ministry .setup-step-summary").should("be.visible");
-
-            // The auto-created team is already listed, named after the ministry.
-            cy.get("#setup-team-list").should("be.visible");
-            cy.get("#setup-team-list").should("contain", `${PREFIX} Coffee Bar Team`);
-            cy.get("#setup-step-team").should(
-                "contain",
-                "Every ministry has at least one team",
-            );
-        });
-
-        it("offers Rename on that team and renames it in place", () => {
-            cy.visit(SETUP_URL);
-            cy.get("#setup-ministry-name").type(`${PREFIX} Coffee Bar`);
-            cy.get("#setup-ministry-save").click();
-            cy.get("#setup-team-list").should("contain", `${PREFIX} Coffee Bar Team`);
-
-            cy.get("#setup-team-list .volunteer-team-rename").first().click();
-            cy.get(".bootbox input").clear().type(`${PREFIX} Sunday Crew`);
-            cy.get(".bootbox .btn-primary").click();
-            cy.get("#setup-team-list").should("contain", `${PREFIX} Sunday Crew`);
-        });
-
-        it("preselects a team in the position step and offers no team-less option", () => {
-            cy.visit(SETUP_URL);
-            cy.get("#setup-ministry-name").type(`${PREFIX} Coffee Bar`);
-            cy.get("#setup-ministry-save").click();
-            cy.get("#setup-team-list").should("contain", `${PREFIX} Coffee Bar Team`);
-
-            cy.get("#setup-position-team option").should("have.length.at.least", 1);
-            cy.get("#setup-position-team").should("not.contain", "Whole ministry");
-            cy.get("#setup-position-team")
-                .find("option[value='']")
-                .should("not.exist");
-            cy.get("#setup-position-team").invoke("val").should("not.eq", "");
-        });
     });
 
     describe("The ministry page's editors", () => {
@@ -225,31 +181,32 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
             cy.get("#schedule-form-team").invoke("val").should("not.eq", "");
         });
 
-        it("labels matrix columns '{Team} · {Position}' when two teams share a name", () => {
+        it("shows one team at a time, with no 'All teams' option", () => {
             cy.visit(`/volunteer/ministries/${ministryId}`);
-            cy.get("#nav-item-qualifications").click();
-            // The filter defaults to every team, which is exactly the view that used
-            // to show "Lead Teacher" twice with nothing to tell them apart.
-            cy.get("#qualification-team-filter").should("have.value", "");
-            cy.get("#volunteerQualificationsTable thead").should(
-                "contain",
-                `${TEAM_ELEMENTARY} · ${SHARED_POSITION}`,
-            );
-            cy.get("#volunteerQualificationsTable thead").should(
-                "contain",
-                `${TEAM_NURSERY} · ${SHARED_POSITION}`,
-            );
+            cy.get("#nav-item-volunteers").click();
+            cy.get("#volunteers .volunteer-loading").should("not.be.visible");
+
+            // The option that used to make two "Lead Teacher" columns appear side
+            // by side is gone, and the grid opens on the first team instead.
+            cy.get("#qualification-team-filter").should("not.contain", "All teams");
+            cy.get("#qualification-team-filter")
+                .find("option[value='']")
+                .should("not.exist");
+            cy.get("#qualification-team-filter").should("have.value", String(elementaryId));
+
+            // One team's columns, so the "{Team} · {Position}" prefix is noise and
+            // is not drawn.
+            cy.get("#volunteerQualificationsTable thead").should("contain", SHARED_POSITION);
+            cy.get("#volunteerQualificationsTable thead").should("not.contain", "·");
         });
 
-        it("drops the prefix once the filter names one team", () => {
+        it("swaps the columns when another team is chosen", () => {
             cy.visit(`/volunteer/ministries/${ministryId}`);
-            cy.get("#nav-item-qualifications").click();
-            cy.get("#volunteerQualificationsTable thead").should("contain", "·");
+            cy.get("#nav-item-volunteers").click();
+            cy.get("#volunteers .volunteer-loading").should("not.be.visible");
             cy.get("#qualification-team-filter").select(String(nurseryId));
-            cy.get("#volunteerQualificationsTable thead").should(
-                "not.contain",
-                `${TEAM_ELEMENTARY} · `,
-            );
+            cy.get("#volunteerQualificationsTable thead").should("contain", SHARED_POSITION);
+            cy.get("#volunteerQualificationsTable thead").should("not.contain", "·");
         });
 
         it("refuses to delete the only team, and says to rename it instead", () => {
@@ -262,11 +219,11 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
                 const soloId = resp.body.ministry.id;
                 freshAdminLogin();
                 cy.visit(`/volunteer/ministries/${soloId}`);
-                cy.get("#nav-item-teams").click();
-                // Wait for the lazy tab load AND the DataTables init before touching a
-                // row menu: a click landing mid-init is thrown away with the row that
+                // The teams card is on Overview, which is the tab the page opens on.
+                // Wait for the load AND the DataTables init before touching a row
+                // menu: a click landing mid-init is thrown away with the row that
                 // DataTables replaces (cypress-testing.md).
-                cy.get("#teams .volunteer-loading").should("not.be.visible");
+                cy.get("#teams-loading").should("not.be.visible");
                 cy.get("#volunteerTeamsTable").should("be.visible");
                 cy.get("#volunteerTeamsTable tbody tr").should("have.length", 1);
                 cy.get("#volunteerTeamsTable tbody tr")

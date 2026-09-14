@@ -112,7 +112,7 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
             setVersion("v1");
             freshAdminLogin();
             cy.visit(PERSON_VIEW_URL);
-            cy.get('a[href$="/volunteer/setup"]').should("not.exist");
+            cy.get('a[href$="/volunteer/ministries"]').should("not.exist");
         });
 
         after(() => {
@@ -125,7 +125,9 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
             cy.get('input[name="save"]').first().click({ force: true });
 
             cy.visit(PERSON_VIEW_URL);
-            cy.get('a[href$="/volunteer/setup"]').should("exist");
+            // "Setup" is gone from the menu: the guided wizard was removed and
+            // its one irreplaceable step is a "New ministry" button now.
+            cy.get('a[href$="/volunteer/setup"]').should("not.exist");
             cy.get('a[href$="/volunteer/ministries"]').should("exist");
             cy.get('a[href$="/volunteer/dashboard"]').should("exist");
             cy.get('a[href$="/volunteer/my-schedule"]').should("exist");

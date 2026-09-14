@@ -45,7 +45,6 @@
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
 const DASHBOARD_URL = "/volunteer/dashboard";
-const SETUP_URL = "/volunteer/setup";
 const MINISTRIES_URL = "/volunteer/ministries";
 const MY_SCHEDULE_URL = "/volunteer/my-schedule";
 const OPPORTUNITIES_URL = "/volunteer/opportunities";
@@ -690,7 +689,6 @@ describe("Volunteer v2 e2e (UI) — localization sanity", () => {
      */
     const screens = [
         ["dashboard", DASHBOARD_URL, "#volunteer-dashboard"],
-        ["setup", SETUP_URL, "#setup-step-ministry"],
         ["ministries", MINISTRIES_URL, "#volunteer-ministries-list"],
     ];
 
@@ -843,11 +841,6 @@ describe("Volunteer v2 e2e (UI) — responsive, coordinator and admin screens", 
             cy.get("#volunteer-gaps-card").should("be.visible");
         });
 
-        it(`setup flow fits at ${at}`, () => {
-            checkScreen("S2 setup", SETUP_URL, "#setup-step-ministry", viewport);
-            cy.get("#setup-ministry-name").should("be.visible");
-        });
-
         it(`ministries list fits at ${at}`, () => {
             checkScreen("ministries list", MINISTRIES_URL, "body", viewport);
         });
@@ -861,11 +854,11 @@ describe("Volunteer v2 e2e (UI) — responsive, coordinator and admin screens", 
             );
 
             [
-                "#nav-item-teams",
+                "#nav-item-volunteers",
                 "#nav-item-positions",
-                "#nav-item-qualifications",
                 "#nav-item-schedules",
                 "#nav-item-occurrences",
+                "#nav-item-help-wanted",
             ].forEach((tab) => {
                 cy.get(tab).click();
                 // Give the tab's own fetch a moment to paint its table.

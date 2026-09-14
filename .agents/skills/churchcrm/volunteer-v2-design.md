@@ -1251,7 +1251,7 @@ $app = MvcAppFactory::create('/volunteer', [
 $app->group('', function (RouteCollectorProxy $group): void {
     $app = $group;                                  // alias so route files see $app
     require __DIR__ . '/routes/dashboard.php';
-    require __DIR__ . '/routes/setup.php';
+    require __DIR__ . '/routes/ministries.php';
     require __DIR__ . '/routes/ministry.php';
     require __DIR__ . '/routes/occurrence.php';
     require __DIR__ . '/routes/member.php';
@@ -1291,7 +1291,7 @@ requests, using `BrowserRequestTrait` exactly as `BaseAuthRoleMiddleware` does
 
 | Area | Path prefix | Gate |
 |---|---|---|
-| Coordinator MVC | `/volunteer/dashboard`, `/volunteer/setup`, `/volunteer/ministries/{id}`, `/volunteer/occurrences/{id}` | `VolunteerCoordinatorRoleAuthMiddleware` on the group |
+| Coordinator MVC | `/volunteer/dashboard`, `/volunteer/ministries`, `/volunteer/ministries/{id}`, `/volunteer/occurrences/{id}` | `VolunteerCoordinatorRoleAuthMiddleware` on the group |
 | Member MVC | `/volunteer/my-schedule`, `/volunteer/opportunities` | **no role gate** — per-record authorization only, by authenticated person (D14) |
 | Coordinator API | `/api/volunteer/...` | `VolunteerCoordinatorRoleAuthMiddleware` + `VolunteerV2EnabledMiddleware` on the group; per-entity middleware per route |
 | Member API | `/api/volunteer/me/...` | `VolunteerV2EnabledMiddleware` only — every authenticated person is potentially a volunteer |
@@ -1329,7 +1329,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 |---|---|---|---|---|
 | GET | `/api/volunteer/ministries` | list ministries **scoped** to the caller | Coordinator | `?manageable=1&active=1` → `{ministries:[{id,name,description,active,teamCount,openGapCount}]}` |
 | POST | `/api/volunteer/ministries` | create | **Manager** | `{name,description}` → `201 {ministry:{…}}`; `409` on duplicate name |
-| GET | `/api/volunteer/ministries/{ministryId}` | detail incl. teams, positions, pool | Coordinator of it | `MinistryMiddleware` → `{ministry, teams[], positions[], poolGroupId, poolGroupName, pool[]}` |
+| GET | `/api/volunteer/ministries/{ministryId}` | detail incl. teams (with their leaders), positions, pool and the overview `summary` | Coordinator of it | `MinistryMiddleware` → `{ministry, summary:{teamCount,volunteerCount,unfilledPositionCount}, teams[{…,leaders:[{scopeId,personId,personName}]}], positions[], poolGroupId, poolGroupName, pool[]}`. `unfilledPositionCount` is scoped to the caller — §5.4 |
 | POST | `/api/volunteer/ministries/{ministryId}` | update | Coordinator of it | `{name?,description?,active?,helpWanted?,helpWantedText?}` → `{ministry}`. Renaming renames the pool Group (D19) |
 | DELETE | `/api/volunteer/ministries/{ministryId}` | delete | **Manager** | `409` when occurrences or assignments exist; message names the count. Scope rows (§2.15) never block deletion — they are removed with the ministry |
 | GET | `/api/volunteer/ministries/{ministryId}/teams` | list | Coordinator of it | `{teams:[…]}` |
@@ -1338,6 +1338,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | GET | `/api/volunteer/ministries/{ministryId}/pool` | who is in the ministry's pool Group (D19) | Coordinator of it | `{groupId,groupName,members:[{personId,displayName,inPool,qualifications[]}]}`, alphabetical |
 | POST | `/api/volunteer/ministries/{ministryId}/pool/{personId}` | add to the pool | Coordinator of it — **no `ManageGroups` needed** (§4.6) | `201 {personId,added:true}`; `200 {added:false}` when already there. Writes through the Propel membership model, so `Hooks::GROUP_MEMBER_ADDED` fires (G3) |
 | DELETE | `/api/volunteer/ministries/{ministryId}/pool/{personId}` | remove from the pool | Coordinator of it | `200`; `404` when they are not in it. Qualifications are **not** revoked (D19) |
+| DELETE | `/api/volunteer/ministries/{ministryId}/volunteers/{personId}` | "Remove Volunteer": revoke every qualification for a position of this ministry, cancel every live assignment on a still-to-come occurrence of it, and remove them from the pool — one transaction | Coordinator of it (**ministry-level**: a team leader gets `403`) | `200 {personId,qualifications,assignments,removedFromPool}`; `404` for an unknown person. Idempotent: a second call reports zeroes. Past assignments are untouched — §5.4 |
 | GET | `/api/volunteer/ministries/{ministryId}/members` | the qualification matrix's rows | Coordinator of it | pool ∪ everyone qualified for a position in view (D19): `{members:[{personId,displayName,inPool,groupIds[],qualifications:[positionId],qualificationIds{}}]}` |
 | GET | `/api/volunteer/teams/{teamId}/members` | the same, narrowed to one team's positions | Coordinator / Team Leader | as above |
 | GET | `/api/volunteer/ministries/{ministryId}/positions` | list | Coordinator / Team Leader | `?active=1&teamId=` → `{positions:[…]}` |
@@ -2069,8 +2070,9 @@ tables.
 | # | Screen | Route | Gate | Bundle |
 |---|---|---|---|---|
 | S1 | Coordinator dashboard — "what needs my attention" | `/volunteer/dashboard` | Coordinator | `volunteer-dashboard` |
-| S2 | Setup flow (guided) | `/volunteer/setup` | Coordinator (ministry step: Manager) | `volunteer-setup` |
-| S3 | Ministry detail — teams + pool, positions, qualifications, schedules, help wanted | `/volunteer/ministries/{id}` | scope | `volunteer-ministry` |
+| S2 | ~~Setup flow (guided)~~ **removed** — see §5.3 | — | — | — |
+| S2b | My ministries and teams (the module index, and "New ministry") | `/volunteer/ministries` | Coordinator | `volunteer-ministries` |
+| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, help wanted | `/volunteer/ministries/{id}` | scope | `volunteer-ministry` |
 | S4 | Occurrence / staffing view | `/volunteer/occurrences/{id}` | scope | `volunteer-occurrence` |
 | S5 | My schedule (member) | `/volunteer/my-schedule` | authenticated person | `volunteer-my-schedule` |
 | S6 | Open opportunities (member) | `/volunteer/opportunities` | authenticated person | `volunteer-opportunities` |
@@ -2102,58 +2104,111 @@ Answers, in this order, top to bottom:
 The dashboard makes exactly **one** API call (`GET /api/volunteer/dashboard`) and renders all five
 panels from it. Do not fan out to five endpoints.
 
-### 5.3 S2 — Setup flow
+### 5.3 S2 — Setup flow — **removed**
 
-A guided sequence, not five menu items. Each step is a card; completed steps collapse to a summary
-line with an Edit link; the Next button is disabled until the step is valid.
+There is no guided setup flow and no `/volunteer/setup` route. The URL **404s**; the
+`volunteer-setup` bundle, its view, its route and its spec are all deleted.
 
-```
-1. Ministry      name, description                     (Manager only; coordinators start at step 2)
-2. Team          the ministry was created with one, "{Ministry} Team" (D18) — rename it, or add more
-                   beside it. One short line says so: "Every ministry has at least one team; rename
-                   this one or add more."
-3. Positions     repeatable inline rows: name, description, active
-4. Qualifications a matrix: pool members ∪ everyone qualified down the side, positions across the
-                   top, checkboxes. Bulk fill from the Cart (P5) for "everyone in the cart is
-                   qualified for X". Qualifying somebody adds them to the pool (D19).
-5. Schedule      link to an event type (default) or define a standalone weekly pattern
-6. Staffing      per position: min / max. Live preview: "This Sunday you will need 2–3 people."
-7. Generate      "Create the next 8 weeks" → POST /schedules/{id}/generate, then straight to S1
-```
+The wizard walked a coordinator through seven steps. Six of them acquired a better home
+on the ministry page itself as the epic landed — teams and their leaders on Overview,
+positions on the Positions tab, qualifications on the Volunteers tab, schedules and
+staffing needs in the schedule editor, date generation on a schedule's row — so the
+wizard had become a second, worse editor for the same records, and one that could drift
+from them.
 
-**There is no volunteer-pool step (D19).** #9707 added one between Team and Positions — "choose
-the Group whose members volunteer for this team" — and D19 removed it: a ministry is created with
-its own pool Group, so there is nothing to choose. People arrive in the pool three ways, all of
-them *after* setup rather than during it: the pool panel on the ministry page, a qualification
-(which adds them), or their own "I'd like to help". What used to be step 4 is now step 3.
+The one step with nowhere else to live is the **first**: creating the ministry. That is
+now a **"New ministry" button** on `/volunteer/ministries` and in the dashboard's quick
+actions, rendered for a volunteer manager only (§4.6), which opens a modal asking for a
+name and a description. On success it navigates to the new ministry's page, where the
+team and the pool Group it was created with already exist (D18/D19). The endpoint is
+unchanged: `POST /api/volunteer/ministries`, manager-gated by
+`VolunteerManagerRoleAuthMiddleware`.
+
+**There was never a volunteer-pool step (D19).** #9707 added one between Team and
+Positions — "choose the Group whose members volunteer for this team" — and D19 removed
+it: a ministry is created with its own pool Group, so there is nothing to choose. People
+arrive in the pool three ways, all of them after creation: a qualification (which adds
+them), the Groups module, or their own "I'd like to help".
 
 ### 5.4 S3 — Ministry detail
 
-Tabbed, all tabs lazily loaded on activation (the `attendance-history.ts` pattern, U6): **Teams**,
-**Positions**, **Qualifications**, **Schedules**. The Qualifications tab is the matrix from the
-setup flow, and is the screen a coordinator returns to most; it must handle 15–200 people without
-re-fetching per cell (one `GET /ministries/{id}/qualification-matrix` carries every row, every
-column and every tick).
+Six tabs, all lazily loaded on activation (the `attendance-history.ts` pattern, U6), in
+this order:
 
-**The Teams tab also carries the volunteer pool panel (D19)** — the ministry's own Group's
-membership, with an "Add to pool" button (the shared person picker, CR1/#9819) and a per-row
-Remove through `window.CRM.buildActionMenu`, inside the mandatory
-`overflow-x: clip; overflow-y: visible` wrapper. Membership is **editable here**: the coordinator
-owns this Group (§4.6). A line under the heading names the Group and links to it in the Groups
-module, which is a second door to the same roster rather than the only one. The tab is called
-"Teams", not "Teams & Pools": there is one pool and it belongs to the ministry, not beside a team.
+**Overview · Volunteers · Positions · Schedules · Occurrences · Help Wanted**
 
-**Below the tabs, a "Help wanted" card (D19):** a switch and a textarea, saved with one button.
-Not a tab — it is two fields a coordinator sets once and revisits rarely, and a sixth tab would
-hide the one control that puts this ministry in front of people who have never heard of it.
+- **Overview** carries, top to bottom: a strip of exactly three counts — **Teams**,
+  **Volunteers** (members of the ministry's pool Group) and **Unfilled Positions** — then
+  the ministry description, then the **Teams card**, then the **Ministry Coordinators**
+  card.
 
-**The Groups module's side of it.** A Group carrying a ministry id stays visible everywhere and
-its membership stays editable by anyone with `ManageGroups`; only its identity moves. `/groups/view/{id}`
-shows an alert — *"This group is the volunteer pool of {Ministry}. It is managed from that
-ministry."* — with a link to the ministry; Edit and Delete are **rendered disabled** (`disabled` +
-`aria-disabled` + a `title` saying why) on the page and in the group list's row action menu, rather
-than hidden, so somebody looking for Edit learns where it went; and `/groups/editor/{id}` redirects
-back to the group, because every write that editor could make answers `409`.
+  *Unfilled Positions* is the sum of the open slots (`max(0, required − live)` per
+  effective requirement) across every **future, scheduled** occurrence of the ministry,
+  computed server-side **with the viewer's scope**: a ministry coordinator, a global
+  manager or an administrator is counted over the whole ministry; a team leader only over
+  the occurrences whose schedule belongs to a team they lead, unioned across every such
+  team. `GET /ministries/{id}` returns the three numbers in a `summary` block, and the
+  arithmetic is `VolunteerAssignmentService::getGaps()` — the one gap implementation
+  (§2.11.3) — never a second derivation in the route.
+
+  The **Teams card** is the team list that used to open the Teams tab, with its Add team
+  button and its rename / deactivate / delete row actions, plus a **Team Leader** column
+  naming the leader as a link to `/PersonView.php?PersonID={id}` (blank when there is
+  none). The row menu gains **"Set Team Leader"** when the team has none and **"Remove
+  Team Leader"** when it has one; the former opens a modal with the shared person picker
+  and nothing else — the team is the row — and grants a `team` scope through
+  `POST /api/volunteer/scopes`, the latter revokes it behind a `bootbox.confirm`. Both
+  items are manager-only, because granting authority is (§3.2); the leader NAMES ride on
+  the ministry document, so a coordinator can see who leads what without the manager-only
+  `/scopes` listing. A team is treated as having at most one leader; if the API ever holds
+  more, all are named and "Remove Team Leader" revokes them all.
+
+  The **Ministry Coordinators** card (renamed from "Coordinators and team leaders") is
+  ministry-coordinator grants and nothing else — no team-leader section, modal or copy.
+  Same visibility rule as before: rendered for a global volunteer manager, and the grant
+  API is manager-only.
+
+- **Volunteers** (formerly Qualifications) is the matrix: people down the side, positions
+  across the top, a checkbox per cell. Its team select has **no "All teams" option** and
+  defaults to the **first team**, so the grid always shows exactly one team's positions
+  and the "{Team} · {Position}" column prefix never appears. Rows are pool members ∪
+  everyone qualified for a position in view, with the "In the pool, not qualified yet" and
+  "Not in the pool" hints. It must handle 15–200 people without re-fetching per cell (one
+  `GET /ministries/{id}/qualification-matrix` carries every row, column and tick).
+
+  A right-hand **Actions** column carries **"Remove Volunteer"**, offered to ministry
+  coordinators and above and never to team leaders. It confirms, then calls
+  `DELETE /api/volunteer/ministries/{id}/volunteers/{personId}`, which in one transaction
+  revokes every qualification of that person for a position of this ministry, cancels
+  every live assignment of theirs on a still-to-come occurrence of it through the ordinary
+  cancel path (so pending outbox rows are cancelled and the response trail is kept), and
+  removes them from the pool Group through the managed-write context. Past assignments are
+  left alone. The response carries the counts and the toast reports them. The page's
+  `isMinistryCoordinator` flag is advisory; the route authorizes with the ministry-level
+  entity middleware (D5).
+
+  Because the last column holds an action menu, the wrapper is the mandatory
+  `overflow-x: clip; overflow-y: visible` pair rather than `.table-responsive`: a
+  horizontal scroller would clip the dropdown (table-action-menu.md). A ministry with very
+  many positions therefore wraps its columns rather than scrolling them.
+
+- **Help Wanted** is a tab of its own (D19, §5.6): a switch and a textarea saved with one
+  button. It used to be a card below the tab strip, which meant it painted underneath
+  every tab at once.
+
+**There is no Teams tab and no volunteer-pool panel.** The teams moved to the Overview
+card above; the pool panel is gone from this page entirely. The V2 pool endpoints and the
+Groups module still own the roster, and qualifying somebody still brings them into the
+pool — "Remove Volunteer" is the only place membership ends from this screen.
+
+**The Groups module's side of it.** A Group carrying a ministry id stays visible everywhere
+and its membership stays editable by anyone with `ManageGroups`; only its identity moves.
+`/groups/view/{id}` shows an alert — *"This group is the volunteer pool of {Ministry}. It is
+managed from that ministry."* — with a link to the ministry; Edit and Delete are **rendered
+disabled** (`disabled` + `aria-disabled` + a `title` saying why) on the page and in the group
+list's row action menu, rather than hidden, so somebody looking for Edit learns where it went;
+and `/groups/editor/{id}` redirects back to the group, because every write that editor could
+make answers `409`.
 
 ### 5.5 S4 — Occurrence / staffing view
 
@@ -2230,7 +2285,7 @@ when something needs filling."
 | Screen | Reuses |
 |---|---|
 | S1 | Tabler cards + badges, DataTables (U2), action menu (U1), bootbox confirm (U3), `window.CRM.notify` (U5), settings panel (U8), `PageHeader` (U11) |
-| S2 | `window.CRM.groups.promptSelection()` (G4), person selector (P4), Cart (P5), bootbox confirm (U3), Tabler forms |
+| S2b | Tabler forms + one modal ("New ministry"), `window.CRM.notify` (U5) |
 | S3 | DataTables (U2), person selector (P4), avatar loader (P8), lazily-loaded tabs (U6) |
 | S4 | person selector (P4), action menu (U1), email composer (U7), Cart sink (P6), CSV export (R1/R2), avatar loader (P8) |
 | S5/S6 | Tabler cards + badges, bootbox confirm/prompt (U3), `window.CRM.notify` (U5), person selector (P4, for "find a sub") |
@@ -2343,7 +2398,7 @@ Only three globs are wired into a Cypress config (F32):
 | `private.volunteer.notifications.spec.js` | `cypress/e2e/api/private/standard/` | outbox enqueue idempotency, `skipped` vs `failed`, drain, `cancelPendingFor` |
 | `volunteer-v2.member.spec.js` | `cypress/e2e/ui/people/` | S5/S6 as a member: accept, decline, sign up, propose a sub; mobile viewport; empty states |
 | `volunteer-v2.coordinator.spec.js` | `cypress/e2e/ui/groups/` | S1 → S4 coordinator path; gap visible; assign from the eligible picker; localized strings present |
-| `admin.volunteer-v2.setup.spec.js` | `cypress/e2e/ui-admin/` | S2 setup flow end to end as admin; settings panel |
+| `admin.volunteer-v2.ministry-page.spec.js` | `cypress/e2e/ui-admin/` | S3 end to end as admin: tab order, Overview counts + Teams card, Volunteers tab and Remove Volunteer, Help Wanted tab, the removed pool panel, `/volunteer/setup` 404, the "New ministry" modal |
 | `admin.volunteer-v2.event-ministry.spec.js` | `cypress/e2e/ui-admin/` | the ministry field on the event editor; authorization on set/clear |
 
 ### 6.4 Fixtures
@@ -2658,13 +2713,15 @@ recommendation, and how to disable V2 without data loss.
 
 *Normative sections:* §2.3, §2.4, §2.6, §3.3.1, §5.3. *Depends on:* #9705, #9706.
 
-**PR contains:** the ministry/team/position halves of `VolunteerSetupService`; their endpoints; S2
-(the guided setup flow); `admin.volunteer-v2.setup.spec.js`.
+**PR contains:** the ministry/team/position halves of `VolunteerSetupService`; their endpoints; S3
+(the ministry page) and its `admin.volunteer-v2.ministry-page.spec.js`. It originally contained S2,
+the guided setup flow; §5.3 records why that was removed and what replaced it.
 
 *Reuse decisions to document:* Ministry as a **new table** rather than a `group_grp` row, with the
 four-part justification in §2.3 and the one-line alternative; teams flat under ministry (D8);
 position deactivation instead of deletion; existing form/modal/notification/authorization patterns
-reused; the setup flow guided rather than a set of CRUD pages (#9715's own UX requirement).
+reused; the ministry page organised as a workflow rather than a menu of tables (#9715's own UX
+requirement) — which is what let the guided flow be dropped without losing the requirement.
 
 ### 7.3 Order and parallelism
 
@@ -2816,7 +2873,7 @@ consume it. This is #9703 deliverable 8.
 | `webpack/common/person-select.ts` *(core, CR1)* | No shared person selector exists; four independent TomSelect instantiations with two class conventions (F13). | CR1 → #9707, #9709, #9711, #9712 |
 | `buildActionMenu()` in `CRMJSOM.js` *(core, CR2)* | No generic builder; three renderers sharing 22 verbatim lines (person↔family 48 of 58 identical) plus 35 hand-built dropdown triggers in 25 files (re-counted at `a22e68128`). #9709 forbids a Volunteer-only action-menu framework. | CR2 → #9711 |
 | `window.CRM.confirmAction()` *(core, CR3, optional)* | 47 `bootbox.confirm` literals in 32 files. | CR3 → #9709, #9711, #9712 |
-| Six webpack entries (`volunteer-dashboard`, `-setup`, `-ministry`, `-occurrence`, `-my-schedule`, `-opportunities`) | One per screen, matching the module-prefixed bare-key convention. | #9711, #9712, #9715 |
+| Six webpack entries (`volunteer-dashboard`, `-ministries`, `-ministry`, `-occurrence`, `-my-schedule`, `-opportunities`) | One per screen, matching the module-prefixed bare-key convention. | #9711, #9712, #9715 |
 
 **Nothing else is new.** No new UI framework, no new bulk-selection system, no second roster, no
 second person picker, no second calendar, no second messaging stack, no second authorization system,
