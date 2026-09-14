@@ -165,33 +165,135 @@ function makeSchedule(name, teamId, positionId, minCount) {
     });
 }
 
+/**
+ * Every row this spec could have made, children first — the FK graph is deep
+ * enough that order is not optional, and the pool Group has to go before the
+ * ministry because `grp_ministry_id` is ON DELETE SET NULL and would otherwise
+ * leave an orphan nobody can recognise (D19).
+ */
 function cleanupFixtures() {
+    const like = [`${PREFIX}%`];
+    const scopedToAssignment = `
+        JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
+        JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vocc.vocc_vsch_ID
+        JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
+       WHERE vmin.vmin_Name LIKE ?`;
+
+    dbOk(
+        `DELETE vntf FROM volunteer_notification_vntf vntf
+           JOIN volunteer_assignment_vasg vasg ON vasg.vasg_ID = vntf.vntf_vasg_ID
+           ${scopedToAssignment}`,
+        like,
+    );
+    dbOk(
+        `DELETE vntf FROM volunteer_notification_vntf vntf
+           JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vntf.vntf_vocc_ID
+           JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vocc.vocc_vsch_ID
+           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
+          WHERE vmin.vmin_Name LIKE ?`,
+        like,
+    );
+    dbOk(
+        `DELETE vswp FROM volunteer_swap_vswp vswp
+           JOIN volunteer_assignment_vasg vasg ON vasg.vasg_ID = vswp.vswp_vasg_ID
+           ${scopedToAssignment}`,
+        like,
+    );
+    dbOk(
+        `DELETE vrsp FROM volunteer_response_vrsp vrsp
+           JOIN volunteer_assignment_vasg vasg ON vasg.vasg_ID = vrsp.vrsp_vasg_ID
+           ${scopedToAssignment}`,
+        like,
+    );
+    dbOk(`DELETE vasg FROM volunteer_assignment_vasg vasg ${scopedToAssignment}`, like);
+    dbOk(
+        `DELETE vreq FROM volunteer_requirement_vreq vreq
+           JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vreq.vreq_vsch_ID
+           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
+          WHERE vmin.vmin_Name LIKE ?`,
+        like,
+    );
+    dbOk(
+        `DELETE vreq FROM volunteer_requirement_vreq vreq
+           JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vreq.vreq_vocc_ID
+           JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vocc.vocc_vsch_ID
+           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
+          WHERE vmin.vmin_Name LIKE ?`,
+        like,
+    );
+    dbOk(
+        `DELETE vocc FROM volunteer_occurrence_vocc vocc
+           JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vocc.vocc_vsch_ID
+           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
+          WHERE vmin.vmin_Name LIKE ?`,
+        like,
+    );
+    dbOk(
+        `DELETE vsch FROM volunteer_schedule_vsch vsch
+           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vsch.vsch_vmin_ID
+          WHERE vmin.vmin_Name LIKE ?`,
+        like,
+    );
+    dbOk(
+        `DELETE vqal FROM volunteer_qualification_vqal vqal
+           JOIN volunteer_position_vpos vpos ON vpos.vpos_ID = vqal.vqal_vpos_ID
+           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vpos.vpos_vmin_ID
+          WHERE vmin.vmin_Name LIKE ?`,
+        like,
+    );
+    dbOk(
+        `DELETE vpos FROM volunteer_position_vpos vpos
+           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vpos.vpos_vmin_ID
+          WHERE vmin.vmin_Name LIKE ?`,
+        like,
+    );
     dbOk(
         `DELETE r FROM person2group2role_p2g2r r
            JOIN group_grp g ON g.grp_ID = r.p2g2r_grp_ID
            JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
           WHERE m.vmin_Name LIKE ?`,
-        [`${PREFIX}%`],
+        like,
     );
     dbOk(
         `DELETE g FROM group_grp g
            JOIN volunteer_ministry_vmin m ON m.vmin_ID = g.grp_ministry_id
           WHERE m.vmin_Name LIKE ?`,
-        [`${PREFIX}%`],
+        like,
+    );
+    dbOk(
+        `DELETE vtem FROM volunteer_team_vtem vtem
+           JOIN volunteer_ministry_vmin vmin ON vmin.vmin_ID = vtem.vtem_vmin_ID
+          WHERE vmin.vmin_Name LIKE ?`,
+        like,
     );
     dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID IN (?, ?)`, [
         PERSON_COORDINATOR,
         PERSON_LEADER,
     ]);
-    dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, [
-        `${PREFIX}%`,
-    ]);
+    dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, like);
 }
 
+/** The summary as the ministry PAGE reads it — embedded in the detail document. */
 function summaryFor(key) {
     return api(key, "GET", `${MINISTRIES_URL}/${ministryId}`).then(
         (resp) => resp.body.summary,
     );
+}
+
+/**
+ * The same block from the standalone endpoint, which is the only one a team
+ * leader can reach: `GET /ministries/{id}` is ministry-scoped and answers 403 for
+ * them, so `.../summary` authorizes itself and lets a leader ask for their own
+ * narrower number.
+ */
+function summaryEndpointFor(key, expectedStatus = 200) {
+    return api(
+        key,
+        "GET",
+        `${MINISTRIES_URL}/${ministryId}/summary`,
+        null,
+        expectedStatus,
+    ).then((resp) => resp.body.summary);
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
@@ -400,10 +502,18 @@ describe("Volunteer v2 — the ministry overview summary (#9701)", () => {
             expect(summary.teamCount).to.eq(3);
             expect(summary.unfilledPositionCount).to.eq(5);
         });
+        summaryEndpointFor(COORDINATOR_KEY).then((summary) => {
+            expect(summary.unfilledPositionCount).to.eq(5);
+        });
+    });
+
+    it("refuses the ministry detail to a team leader, who is not a coordinator", () => {
+        // The page itself is ministry-scoped (§4.6), so the embedded summary is too.
+        api(LEADER_KEY, "GET", `${MINISTRIES_URL}/${ministryId}`, null, 403);
     });
 
     it("gives a leader of two of the three teams only their own occurrences", () => {
-        summaryFor(LEADER_KEY).then((summary) => {
+        summaryEndpointFor(LEADER_KEY).then((summary) => {
             // Elementary is short one (one of its two slots is filled) and Nursery
             // is short two; Youth is somebody else's team and is not counted.
             expect(summary.unfilledPositionCount).to.eq(3);

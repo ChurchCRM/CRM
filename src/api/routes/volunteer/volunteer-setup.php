@@ -90,6 +90,13 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
         $setup->get('/ministries/{ministryId:[0-9]+}', 'getVolunteerMinistry')
             ->add(new VolunteerMinistryMiddleware());
 
+        // The overview strip's three numbers on their own. No ministry entity
+        // middleware, deliberately: it answers "do you coordinate this ministry",
+        // and a TEAM LEADER has a real, narrower answer to give here — the
+        // occurrences of the teams they lead. The handler makes that decision
+        // itself, the same shape as the two position routes below.
+        $setup->get('/ministries/{ministryId:[0-9]+}/summary', 'getVolunteerMinistrySummary');
+
         $setup->post('/ministries/{ministryId:[0-9]+}', 'updateVolunteerMinistry')
             ->add(new InputSanitizationMiddleware([
                 'name' => 'text',
@@ -548,17 +555,10 @@ function getVolunteerMinistry(Request $request, Response $response): Response
             'teamCount' => count($teams),
             'positionCount' => count($positions),
         ]),
-        // The overview strip's three numbers. `unfilledPositionCount` is scoped to the
-        // caller by the service — a team leader sees only the occurrences of the teams
-        // they lead — and reuses the ONE gap implementation rather than re-deriving it.
-        'summary' => [
-            'teamCount' => count($teams),
-            'volunteerCount' => count($service->getPoolPersonIds($ministryId)),
-            'unfilledPositionCount' => (new VolunteerAssignmentService())->countUnfilledPositions(
-                $ministryId,
-                volunteerSetupActor()
-            ),
-        ],
+        // The overview strip's three numbers, in the same document as the tabs, so
+        // the page opens on ONE fetch. `GET .../summary` answers the same shape for
+        // a caller who may see only part of the ministry.
+        'summary' => volunteerSetupMinistrySummary($service, $ministryId, count($teams)),
         'teams' => array_map(
             static fn (VolunteerTeam $t): array => volunteerTeamToArray(
                 $t,
@@ -578,6 +578,89 @@ function getVolunteerMinistry(Request $request, Response $response): Response
         'poolGroupId' => $poolGroup === null ? null : (int) $poolGroup->getId(),
         'poolGroupName' => $poolGroup === null ? null : (string) $poolGroup->getName(),
         'pool' => volunteerSetupPoolRows($service, $ministryId),
+    ]);
+}
+
+/**
+ * The overview strip's three numbers, computed with the CALLER's scope.
+ *
+ * `unfilledPositionCount` is the interesting one: `VolunteerAssignmentService`
+ * narrows the occurrences to what this viewer may see — everything for a ministry
+ * coordinator, a global manager or an administrator, and only the teams they lead
+ * for a team leader — and sums the gaps with `getGaps()`, the one gap
+ * implementation (§2.11.3). Nothing is re-derived here.
+ *
+ * @param int|null $teamCount the team count the caller already has, so the common
+ *                            path does not count the same rows twice
+ *
+ * @return array{teamCount: int, volunteerCount: int, unfilledPositionCount: int}
+ */
+function volunteerSetupMinistrySummary(
+    VolunteerSetupService $service,
+    int $ministryId,
+    ?int $teamCount = null
+): array {
+    return [
+        'teamCount' => $teamCount ?? count($service->listTeams($ministryId)),
+        'volunteerCount' => count($service->getPoolPersonIds($ministryId)),
+        'unfilledPositionCount' => (new VolunteerAssignmentService())->countUnfilledPositions(
+            $ministryId,
+            volunteerSetupActor()
+        ),
+    ];
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/ministries/{ministryId}/summary",
+ *     operationId="getVolunteerMinistrySummary",
+ *     summary="The three counts the ministry overview shows",
+ *     description="teamCount, volunteerCount (members of the ministry's pool Group) and unfilledPositionCount - the sum of the open slots (required minus live, per effective requirement) across every future, scheduled occurrence the CALLER may see. A ministry coordinator, a global manager and an administrator are counted over the whole ministry; a team leader only over the occurrences whose schedule belongs to a team they lead, unioned across every such team. The same block is embedded in GET /ministries/{ministryId}, which is what the ministry page reads; this route exists for a caller who may see only part of the ministry and is therefore refused that one.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Neither a coordinator of this ministry nor a leader of a team in it, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="ministryId", type="integer"),
+ *             @OA\Property(property="summary", type="object",
+ *                 @OA\Property(property="teamCount", type="integer"),
+ *                 @OA\Property(property="volunteerCount", type="integer"),
+ *                 @OA\Property(property="unfilledPositionCount", type="integer")
+ *             )
+ *         )
+ *     )
+ * )
+ */
+function getVolunteerMinistrySummary(Request $request, Response $response): Response
+{
+    $ministry = volunteerSetupFindMinistry($request);
+    if ($ministry === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('Ministry not found'), [], 404, null, $request);
+    }
+
+    $service = new VolunteerSetupService();
+    $ministryId = (int) $ministry->getId();
+    $visibleTeamIds = volunteerSetupVisibleTeamIds($service, volunteerSetupActor(), $ministryId);
+
+    // null means "coordinates the whole ministry"; an empty array means they hold
+    // no team in it either, which is the 403.
+    if ($visibleTeamIds !== null && $visibleTeamIds === []) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Not authorized for this ministry'),
+            [],
+            403,
+            null,
+            $request
+        );
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'ministryId' => $ministryId,
+        'summary' => volunteerSetupMinistrySummary($service, $ministryId),
     ]);
 }
 

@@ -412,8 +412,13 @@ describe("Volunteer v2 ministry page (#9701)", () => {
                 "have.length",
                 POOL_PEOPLE.length - 1,
             );
-            // The Overview count followed them out.
-            cy.get("#nav-item-overview").click();
+
+            // The Overview count followed them out. Asserted after a fresh visit
+            // rather than by clicking the tab behind the dialog: bootbox's hide()
+            // returns early while Bootstrap is still transitioning, so the dialog
+            // can outlive the action it confirmed and cover the tab strip.
+            cy.visit(ministryUrl());
+            cy.get("#overview-content").should("be.visible");
             cy.get("#overview-volunteer-count").should(
                 "have.text",
                 String(POOL_PEOPLE.length - 1),
@@ -480,6 +485,7 @@ describe("Volunteer v2 ministry page (#9701)", () => {
 
         it("renders the card on its own tab and on no other", () => {
             cy.visit(ministryUrl());
+            cy.get("#overview-content").should("be.visible");
             // It used to sit outside the tab content, so it painted under every tab.
             cy.get("#volunteer-help-wanted").should("not.be.visible");
 
@@ -493,12 +499,19 @@ describe("Volunteer v2 ministry page (#9701)", () => {
 
         it("saves the advert and it survives a reload", () => {
             cy.visit(ministryUrl());
+            // The two fields are filled from the ministry document, so ticking the
+            // switch before that response lands would be overwritten by it.
+            cy.get("#overview-content").should("be.visible");
             cy.get("#nav-item-help-wanted").click();
             cy.get("#help-wanted-toggle").check();
             cy.get("#help-wanted-text").clear().type(HELP_WANTED_TEXT);
             cy.get("#help-wanted-save").click();
+            // The toast is the signal the POST came back; reloading before it does
+            // races the save (cypress-testing.md).
+            cy.contains("asking for help", { timeout: 10000 }).should("exist");
 
             cy.reload();
+            cy.get("#overview-content").should("be.visible");
             cy.get("#nav-item-help-wanted").click();
             cy.get("#help-wanted-toggle").should("be.checked");
             cy.get("#help-wanted-text").should("have.value", HELP_WANTED_TEXT);
