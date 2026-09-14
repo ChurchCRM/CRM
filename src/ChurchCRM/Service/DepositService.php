@@ -15,6 +15,7 @@ use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FunctionsUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -208,11 +209,17 @@ class DepositService {
         // and adds the totalAmount virtual column.
         $query = DepositQuery::create();
 
-        if (!empty($filters['dateStart'])) {
-            $query->filterByDate(['min' => $filters['dateStart']]);
-        }
-        if (!empty($filters['dateEnd'])) {
-            $query->filterByDate(['max' => $filters['dateEnd']]);
+        // fyid overrides dateStart/dateEnd: only one date-range block fires.
+        if (!empty($filters['fyid']) && (int) $filters['fyid'] > 0) {
+            $fyDates = FiscalYearUtils::getFiscalYearDatesById((int) $filters['fyid']);
+            $query->filterByDate(['min' => $fyDates['startDate'], 'max' => $fyDates['endDate']]);
+        } else {
+            if (!empty($filters['dateStart'])) {
+                $query->filterByDate(['min' => $filters['dateStart']]);
+            }
+            if (!empty($filters['dateEnd'])) {
+                $query->filterByDate(['max' => $filters['dateEnd']]);
+            }
         }
         if (!empty($filters['depositId'])) {
             $query->filterById((int) $filters['depositId']);

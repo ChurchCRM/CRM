@@ -66,10 +66,11 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      * @OA\Get(
      *     path="/payments/family/{familyId}/list",
      *     summary="Get pledge and payment history for a family (Finance role required)",
-     *     description="Results are filtered by the current user's ShowSince date and ShowPayments/ShowPledges preferences.",
+     *     description="Results are filtered by fyid (fiscal year) when provided; otherwise by the current user's ShowSince date preference. ShowPayments/ShowPledges preferences always apply.",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="fyid", in="query", required=false, description="Fiscal year ID to filter by; omit for all-time", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Pledge/payment rows for the family",
      *         @OA\JsonContent(@OA\Property(property="data", type="array", @OA\Items(
      *             @OA\Property(property="FormattedFY", type="string"),
@@ -88,10 +89,21 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      */
     $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args): Response {
         $familyId = SlimUtils::getRouteArgument($request, 'familyId');
+        $queryParams = $request->getQueryParams();
+        $fyid = isset($queryParams['fyid']) ? (int) $queryParams['fyid'] : null;
+
         $query = PledgeQuery::create()->filterByFamId($familyId);
-        if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
-            $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
+
+        if ($fyid !== null && $fyid > 0) {
+            // Server-side FY filter: exact FYID match
+            $query->filterByFyId($fyid);
+        } else {
+            // Fall back to ShowSince user preference when no FY is specified
+            if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
+                $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
+            }
         }
+
         if (!AuthenticationManager::getCurrentUser()->isShowPayments()) {
             $query->filterByPledgeOrPayment('Payment', Criteria::NOT_EQUAL);
         }
