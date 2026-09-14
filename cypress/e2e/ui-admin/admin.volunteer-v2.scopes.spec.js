@@ -7,15 +7,18 @@
  * The scope API shipped manager-only and with no screen behind it: authority
  * could only be granted with a REST client or a SQL insert. This spec covers the
  * two screens that close that gap, which the product owner split in two: the
- * "Ministry Coordinators" card on the Overview tab, and — because a leader leads
- * a TEAM — "Set Team Leader" / "Remove Team Leader" on the team's own row in the
- * Teams card above it. There is no team-leader table and no team select any more.
+ * "Ministry Coordinators" card on the Overview tab, and — because a leader is a
+ * property of a TEAM — a **Team leader** field inside the Add team and Edit team
+ * dialogs. There is no team-leader table, no team select, and (since the second
+ * round of product-owner changes) no standalone "Set Team Leader" modal and no
+ * row menu items that open one.
  *
  * Two halves, and the second is the one that matters:
  *
- *   1. an administrator grants a ministry coordinator and a team leader through
- *      the card, sees both listed, is told when a grant already exists, and
- *      removes one behind a bootbox confirm;
+ *   1. an administrator grants a ministry coordinator through the card and a team
+ *      leader through the team dialog, sees both listed, is told when a
+ *      coordinator grant already exists, and clears the leader by emptying the
+ *      field;
  *   2. the person who was granted the coordinator scope — Tony Campbell,
  *      person 3, who holds no admin and no volunteer-manager flag — logs in and
  *      finds the Volunteer menu and the ministry page genuinely open to him.
@@ -141,6 +144,18 @@ function pickPerson(modalId, query, fullName) {
     cy.get("body > .ts-dropdown .option", { timeout: 10000 }).contains(fullName).click();
 }
 
+/** Open the Edit team dialog from the team's row action menu. */
+function openTeamEditor() {
+    cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"]`)
+        .find("button[data-bs-toggle=dropdown]")
+        .click();
+    cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-edit`).click();
+    cy.get("#teamModal").should("be.visible");
+    // The picker is built on `shown.bs.modal`, so its TomSelect wrapper appearing
+    // is the signal that Bootstrap's 150 ms fade has finished.
+    cy.get("#teamModal .ts-wrapper, #team-form-leader-readonly").should("exist");
+}
+
 describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
     before(() => {
         setVersion("v2");
@@ -202,47 +217,69 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
             cy.get("#volunteerCoordinatorsTable tbody tr").should("have.length", 1);
         });
 
-        it("sets a team leader from the team's own row", () => {
+        it("has no standalone team-leader modal and no row items that open one", () => {
             cy.visit(ministryUrl());
             cy.get("#teams-loading").should("not.be.visible");
             cy.get("#volunteerTeamsTable").should("be.visible");
 
+            cy.get("#teamLeaderModal").should("not.exist");
+            cy.get("#team-leader-save").should("not.exist");
             cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"]`)
                 .find("button[data-bs-toggle=dropdown]")
                 .click();
-            cy.get(
-                `#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-set`,
-            ).click();
+            cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .dropdown-menu`)
+                .should("be.visible")
+                .and("not.contain", "Set Team Leader")
+                .and("not.contain", "Remove Team Leader");
+        });
 
-            cy.get("#teamLeaderModal").should("be.visible");
-            // No team select: the team is the row the item was opened from.
-            cy.get("#teamLeaderModal select#scope-leader-team").should("not.exist");
-            pickPerson("#teamLeaderModal", "Herminia", LEADER_NAME);
-            cy.get("#team-leader-save").click();
+        it("sets a team leader from the Edit team dialog", () => {
+            cy.visit(ministryUrl());
+            cy.get("#teams-loading").should("not.be.visible");
+            cy.get("#volunteerTeamsTable").should("be.visible");
 
-            cy.get("#teamLeaderModal").should("not.be.visible");
+            openTeamEditor();
+
+            // The dialog that edits the team asks the leader question too, and it
+            // is the only person picker in it.
+            cy.get("#team-form-leader").should("exist");
+            cy.get("#team-form-leader-readonly").should("not.exist");
+            pickPerson("#teamModal", "Herminia", LEADER_NAME);
+            cy.get("#team-form-save").click();
+
+            cy.get("#teamModal").should("not.be.visible");
             cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-cell`)
                 .should("contain", LEADER_NAME)
                 .find(`a[href*="PersonView.php?PersonID=${LEADER_PERSON}"]`)
                 .should("exist");
         });
 
-        it("removes the team leader behind a bootbox confirm", () => {
+        it("opens the Edit team dialog pre-filled with the leader it already has", () => {
             cy.visit(ministryUrl());
             cy.get("#teams-loading").should("not.be.visible");
             cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-cell`)
                 .should("contain", LEADER_NAME);
 
-            cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"]`)
-                .find("button[data-bs-toggle=dropdown]")
-                .click();
-            cy.get(
-                `#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-remove`,
-            ).click();
+            openTeamEditor();
+            // The shared picker renders the chosen person as a `.item` in its
+            // control, which is what "pre-filled" looks like from outside.
+            cy.get("#teamModal .ts-control .item").should("contain", LEADER_NAME);
+            cy.get("#teamModal .btn-close").click();
+        });
 
-            cy.get(".bootbox.modal").should("be.visible");
-            cy.get(".bootbox .btn-primary, .bootbox .btn-danger").last().click();
+        it("clears the team leader by emptying the field", () => {
+            cy.visit(ministryUrl());
+            cy.get("#teams-loading").should("not.be.visible");
+            cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-cell`)
+                .should("contain", LEADER_NAME);
 
+            openTeamEditor();
+            cy.get("#teamModal .ts-control .item").should("contain", LEADER_NAME);
+            cy.get("#team-form-leader-clear").click();
+            cy.get("#teamModal .ts-control .item").should("not.exist");
+            cy.get("#team-form-save").click();
+
+            cy.get("#teamModal").should("not.be.visible");
             cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-cell`)
                 .should("not.contain", LEADER_NAME);
             // The coordinator grant is untouched — and the next case depends on it.
@@ -272,6 +309,24 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
             cy.get("#volunteerTeamsTable thead").should("contain", "Team Leader");
             cy.get("#volunteerTeamsTable .volunteer-team-leader-set").should("not.exist");
             cy.get("#volunteerTeamsTable .volunteer-team-leader-remove").should("not.exist");
+        });
+
+        it("shows the leader read-only in the team dialog, and says who may change it", () => {
+            freshCoordinatorLogin();
+            cy.visit(ministryUrl());
+            cy.get("#teams-loading").should("not.be.visible");
+            cy.get("#volunteerTeamsTable").should("be.visible");
+
+            openTeamEditor();
+            // No picker at all: the scope API is manager-only, so offering a
+            // control it would refuse is worse than not offering one.
+            cy.get("#team-form-leader").should("not.exist");
+            cy.get("#team-form-leader-clear").should("not.exist");
+            cy.get("#team-form-leader-readonly").should("be.visible").and("have.attr", "readonly");
+            cy.get("#team-form-leader-note").should(
+                "contain",
+                "Only a volunteer manager can change the team leader",
+            );
         });
     });
 });

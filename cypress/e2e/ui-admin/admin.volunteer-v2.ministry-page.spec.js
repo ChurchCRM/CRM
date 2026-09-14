@@ -13,9 +13,10 @@
  *
  * What is NEW, and is the whole reason this file exists:
  *
- *   - the tab strip is **Overview · Volunteers · Positions · Schedules ·
+ *   - the tab strip is **Overview · Positions · Volunteers · Schedules ·
  *     Occurrences · Help Wanted**, in that order, with no Teams tab and no
- *     Qualifications tab;
+ *     Qualifications tab — Positions comes before Volunteers, because a position
+ *     has to exist before anybody can be ticked against it;
  *   - Overview carries exactly three counts, the description, the **Teams card**
  *     (with a Team Leader column) and, under it, **Ministry Coordinators** — which
  *     has no team-leader controls or copy at all;
@@ -184,8 +185,8 @@ describe("Volunteer v2 ministry page (#9701)", () => {
                 const labels = [...$tabs].map((el) => el.textContent.trim());
                 expect(labels).to.deep.eq([
                     "Overview",
-                    "Volunteers",
                     "Positions",
+                    "Volunteers",
                     "Schedules",
                     "Occurrences",
                     "Help Wanted",
@@ -248,11 +249,19 @@ describe("Volunteer v2 ministry page (#9701)", () => {
             cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .dropdown-menu`)
                 .should("be.visible")
                 .and("contain", "Edit")
-                .and("contain", "Set Team Leader");
-            // Nobody leads it yet, so the opposite item is not offered.
+                .and("contain", "Delete");
+            // The leader is a field of the team dialog now, so the two menu items
+            // that used to set and clear it are gone from the row entirely.
+            cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .dropdown-menu`)
+                .should("not.contain", "Set Team Leader")
+                .and("not.contain", "Remove Team Leader");
+            cy.get(
+                `#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-set`,
+            ).should("not.exist");
             cy.get(
                 `#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-remove`,
             ).should("not.exist");
+            // The COLUMN stays: it is how a coordinator finds out who leads what.
             cy.get(
                 `#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-cell`,
             ).should("have.text", "");
