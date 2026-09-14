@@ -997,38 +997,22 @@ describe("Volunteer v2 — the eligible picker (§3.3.2, §2.17 rotation)", () =
     });
 });
 
-describe("Volunteer v2 — the Cart sink (P6)", () => {
-    beforeEach(resetWorkflow);
-
-    it("assigns everyone in the cart and reports who was skipped and why", () => {
-        cy.makePrivateAdminAPICall(
-            "POST",
-            CART_URL,
-            { Persons: [POOL_MEMBER_A, POOL_MEMBER_B, POOL_MEMBER_UNQUALIFIED] },
-            200,
-        );
-
-        cy.makePrivateAdminAPICall("POST", `${VOLUNTEER_URL}/cart/assign`, {
-            occurrenceId: occurrenceOne,
-            positionId: posEspresso,
-        }, 200).then((resp) => {
-            expect(resp.body.assigned).to.eq(2);
-            const skipped = resp.body.skipped;
-            expect(skipped).to.have.length(1);
-            expect(skipped[0].personId).to.eq(POOL_MEMBER_UNQUALIFIED);
-            expect(skipped[0].reason).to.be.a("string").and.not.be.empty;
-        });
-
-        dbOk(
-            `SELECT COUNT(*) AS c FROM volunteer_assignment_vasg
-              WHERE vasg_vocc_ID = ? AND vasg_vpos_ID = ?`,
-            [occurrenceOne, posEspresso],
-        ).then((rows) => {
-            expect(Number(rows[0].c)).to.eq(2);
-        });
-    });
-
-    it("is idempotent: a second run assigns nobody new", () => {
+/**
+ * The Cart sink is gone from this surface.
+ *
+ * `POST /volunteer/cart/assign` and `VolunteerAssignmentService::assignFromCart()`
+ * were removed with the occurrence page's "Assign everyone in the cart" button:
+ * assigning is a per-person act with per-person eligibility rules (I1-I5), so the
+ * bulk call half-succeeded and handed back a list of reasons — a worse answer than
+ * the single-person picker, which can only ever offer assignable people. The Cart
+ * still feeds V2 from the ministry page, where it fills the volunteer POOL
+ * (`POST /ministries/{id}/pool/from-cart`, covered in
+ * private.volunteer.pools-qualifications.spec.js).
+ *
+ * The case below is what stops the route coming back by accident.
+ */
+describe("Volunteer v2 — the Cart sink is off the assignment surface", () => {
+    it("has no cart-assign route any more", () => {
         cy.makePrivateAdminAPICall(
             "POST",
             CART_URL,
@@ -1036,26 +1020,14 @@ describe("Volunteer v2 — the Cart sink (P6)", () => {
             200,
         );
 
-        cy.makePrivateAdminAPICall("POST", `${VOLUNTEER_URL}/cart/assign`, {
-            occurrenceId: occurrenceOne,
-            positionId: posEspresso,
-        }, 200);
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `${VOLUNTEER_URL}/cart/assign`,
+            { occurrenceId: occurrenceOne, positionId: posEspresso },
+            404,
+        );
 
-        cy.makePrivateAdminAPICall("POST", `${VOLUNTEER_URL}/cart/assign`, {
-            occurrenceId: occurrenceOne,
-            positionId: posEspresso,
-        }, 200).then((resp) => {
-            expect(resp.body.assigned).to.eq(0);
-            expect(resp.body.skipped).to.have.length(2);
-        });
-    });
-
-    it("returns 400 when the cart is empty", () => {
         cy.makePrivateAdminAPICall("DELETE", CART_URL, null, 200);
-        cy.makePrivateAdminAPICall("POST", `${VOLUNTEER_URL}/cart/assign`, {
-            occurrenceId: occurrenceOne,
-            positionId: posEspresso,
-        }, 400);
     });
 });
 

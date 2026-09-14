@@ -5,8 +5,13 @@
  *
  * The workhorse coordinator screen: requirements with live/gap counts, the
  * assignment rows under each, the eligible picker, the I7 double-duty warning
- * (D16), cancel through the shared action menu, the cart sink and the swap
- * queue — plus the §5.8 states every V2 screen must have.
+ * (D16), cancel through the shared action menu and the swap queue — plus the
+ * §5.8 states every V2 screen must have.
+ *
+ * The cart sink is NOT here any more: "Assign everyone in the cart" was removed by
+ * the product owner along with its route, because assigning is a per-person act with
+ * per-person eligibility rules and a bulk button that half-succeeds is worse than
+ * the picker beside it. One case below stops the button coming back.
  *
  * `cy.dbQuery()` is available here (all three docker configs register `dbTasks`
  * now, not just `docker.config.ts` as #9715's notes had it) but is deliberately
@@ -535,39 +540,24 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
         });
     });
 
-    describe("the cart sink (P6)", () => {
+    // The "Assign everyone in the cart" button is gone, and so is the route behind
+    // it: assigning is a per-person act with per-person eligibility rules (I1-I5),
+    // so the bulk button half-succeeded and reported a list of reasons. The Cart
+    // still feeds V2 on the ministry page, where it fills the volunteer pool.
+    describe("the cart sink is gone from this page", () => {
         beforeEach(() => {
             clearAssignments();
             freshAdminLogin();
         });
 
-        it("assigns everyone in the cart to one position", () => {
-            // The cart is $_SESSION state, so it has to be seeded in the SAME PHP
-            // session the browser is using. `cy.makePrivateAdminAPICall` authenticates
-            // with an x-api-key and sends no session cookie, which lands the cart in a
-            // different session entirely — and `freshAdminLogin()` clears cookies, so
-            // seeding before the login would throw it away too. A plain cy.request
-            // after the login rides the session cookie and is the only thing that works.
-            cy.request({
-                method: "DELETE",
-                url: "/api/cart/",
-                failOnStatusCode: false,
-            });
-            cy.request({
-                method: "POST",
-                url: "/api/cart/",
-                headers: { "content-type": "application/json" },
-                body: { Persons: [POOL_MEMBER_A, POOL_MEMBER_B] },
-            });
-
+        it("offers only Assign on a requirement card", () => {
             cy.visit(occurrenceUrl());
 
-            cy.get(`.volunteer-cart-assign[data-position-id="${posEspresso}"]`).click();
-            cy.get(".bootbox.modal").should("be.visible");
-            cy.get(".bootbox .btn-primary, .bootbox .btn-danger").last().click();
-
-            cy.get(`.volunteer-requirement[data-position-id="${posEspresso}"] .volunteer-assignment-row[data-status="pending"]`)
-                .should("have.length", 2);
+            cy.get(`.volunteer-requirement[data-position-id="${posEspresso}"]`).should("be.visible");
+            cy.get(".volunteer-cart-assign").should("not.exist");
+            cy.get(`.volunteer-requirement[data-position-id="${posEspresso}"] .card-footer button`)
+                .should("have.length", 1)
+                .and("contain", "Assign");
         });
     });
 

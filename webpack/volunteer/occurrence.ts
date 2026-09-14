@@ -3,8 +3,14 @@
  *
  * The workhorse coordinator screen. One card per position showing `filled / required`
  * with a live gap badge, the assignment rows underneath with their status badges and
- * row-action menus, an **Assign** control opening the eligible picker, "assign everyone
- * in the cart", and the substitution queue for this occurrence.
+ * row-action menus, an **Assign** control opening the eligible picker, and the
+ * substitution queue for this occurrence.
+ *
+ * There is no "assign everyone in the cart" button any more, and no cart-assign call:
+ * assigning is a per-person act with per-person eligibility rules (I1–I5), so the bulk
+ * button half-succeeded and reported a list of reasons — strictly worse than the picker
+ * beside it, which can only ever offer people who are genuinely assignable. The Cart
+ * still feeds V2 from the ministry page, where it fills the volunteer pool.
  *
  * Two independent fetches, two independent state machines (`renderState()`): the
  * staffing read and the swap queue. One failing must not blank the other — a coordinator
@@ -34,7 +40,6 @@
 
 import {
   approveSwap,
-  assignCart,
   clearOccurrenceRequirements,
   createAssignment,
   deleteAssignment,
@@ -299,18 +304,20 @@ function requirementCard(requirement: VolunteerStaffedRequirement, showAttendanc
           </div>
           <div class="volunteer-assignment-list">${rows}</div>
         </div>
+        <!--
+          One button. "Assign everyone in the cart" was here beside it and is gone:
+          assigning is a per-person act with per-person eligibility rules (I1-I5), so
+          the bulk button half-succeeded and reported a list of reasons — a worse
+          answer than the picker next to it, which can only ever offer people who are
+          actually assignable. The Cart still feeds V2 on the ministry page, where it
+          fills the volunteer pool.
+        -->
         <div class="card-footer d-flex flex-wrap gap-2">
           <button type="button" class="btn btn-sm btn-primary volunteer-assign-btn"
                   data-position-id="${requirement.positionId}"
                   data-position-name="${escapeHtml(requirement.positionName ?? "")}"
                   ${canAssign ? "" : "disabled"}>
             <i class="fa-solid fa-user-plus me-1"></i>${escapeHtml(i18next.t("Assign"))}
-          </button>
-          <button type="button" class="btn btn-sm btn-outline-secondary volunteer-cart-assign"
-                  data-position-id="${requirement.positionId}"
-                  data-position-name="${escapeHtml(requirement.positionName ?? "")}"
-                  ${canAssign ? "" : "disabled"}>
-            <i class="fa-solid fa-cart-shopping me-1"></i>${escapeHtml(i18next.t("Assign everyone in the cart"))}
           </button>
         </div>
       </div>
@@ -719,41 +726,6 @@ function handleSwapAction(action: string, swapId: number, personName: string): v
   );
 }
 
-function handleCartAssign(positionId: number, positionName: string): void {
-  confirmAction(
-    i18next.t("Assign everyone in the cart"),
-    i18next.t(
-      "Assign everyone currently in your people cart to {{position}}? Anyone who is not eligible is skipped and listed.",
-      {
-        position: positionName,
-      },
-    ),
-    () => {
-      assignCart(occurrenceId, positionId)
-        .then((result) => {
-          if (result.assigned > 0) {
-            notifySuccess(i18next.t("{{count}} assigned", { count: result.assigned }));
-          }
-          if (result.skipped.length > 0) {
-            // "danger", never "error" — "error" renders blue (U5/E-7).
-            notifyError(
-              i18next.t("{{count}} skipped: {{reasons}}", {
-                count: result.skipped.length,
-                reasons: result.skipped.map((row) => row.reason).join("; "),
-              }),
-            );
-          }
-
-          return loadStaffing();
-        })
-        .catch((error: unknown) => {
-          notifyError(errorMessage(error, i18next.t("The cart could not be assigned")));
-        });
-    },
-    false,
-  );
-}
-
 // ─── The staffing-needs editor (§2.10) ───────────────────────────────────────
 
 /**
@@ -971,7 +943,7 @@ function wire(): void {
   // stale after the first refresh.
   document.addEventListener("click", (event) => {
     const target = (event.target as HTMLElement | null)?.closest<HTMLElement>(
-      ".volunteer-assign-btn, .volunteer-cart-assign, .dropdown-item[data-action]",
+      ".volunteer-assign-btn, .dropdown-item[data-action]",
     );
     if (!target) {
       return;
@@ -979,12 +951,6 @@ function wire(): void {
 
     if (target.classList.contains("volunteer-assign-btn")) {
       openAssignModal(Number(target.dataset.positionId), target.dataset.positionName ?? "");
-
-      return;
-    }
-
-    if (target.classList.contains("volunteer-cart-assign")) {
-      handleCartAssign(Number(target.dataset.positionId), target.dataset.positionName ?? "");
 
       return;
     }
