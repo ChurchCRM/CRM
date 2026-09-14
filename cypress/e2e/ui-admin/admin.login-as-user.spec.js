@@ -13,6 +13,12 @@ const TARGET_USER_ID = 3; // tony.wade@example.com
 const TARGET_USER_NAME = "Tony Campbell";
 const ADMIN_USER_ID = 1;
 
+// usr_ID 99 — non-admin with usr_EditSelf=1, i.e. EditSelf-exclusive. Such a
+// user is confined to /external/limited-access, which renders the *other* header
+// layout (HeaderNotLoggedIn.php).
+const SELF_SERVICE_USER_ID = 99;
+const SELF_SERVICE_USER_NAME = "Amanda Black";
+
 /** Today's date in the rotating log filename format ({Y-m-d}-auth.log). */
 function authLogFileName() {
     const now = new Date();
@@ -112,6 +118,41 @@ describe("Admin Login as User (masquerade)", () => {
         cy.get("#impersonationBanner").should("not.exist");
         cy.get(".navbar").should("contain.text", "Church Admin");
         cy.url().should("not.include", "/session/begin");
+    });
+
+    // Regression: an EditSelf-exclusive target is redirected straight to
+    // /external/limited-access, which renders HeaderNotLoggedIn.php rather than
+    // Header.php. The banner must follow the session onto that layout too,
+    // otherwise the administrator has no visible way back.
+    it("shows the banner on the limited-access page for a self-service-only user", () => {
+        cy.visit(`/v2/user/${SELF_SERVICE_USER_ID}`);
+        cy.get("#loginAsUser").click();
+        cy.get(".bootbox.modal").should(
+            "contain.text",
+            `Log in as ${SELF_SERVICE_USER_NAME}?`,
+        );
+        cy.get(".bootbox.modal .btn-warning").click();
+
+        cy.url().should("include", "/external/limited-access");
+        cy.get("body").should("have.class", "impersonating");
+        cy.get("#impersonationBanner")
+            .should("be.visible")
+            .and(
+                "contain.text",
+                `You are logged in as ${SELF_SERVICE_USER_NAME}. Actions are recorded as them.`,
+            );
+
+        // The banner's icon is the only exit on this layout — it has no user menu.
+        cy.get("#impersonationExit").should("be.visible").click();
+        cy.url().should("include", `/v2/user/${SELF_SERVICE_USER_ID}`);
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.get(".navbar").should("contain.text", "Church Admin");
+    });
+
+    it("does not render the banner or the offset on the anonymous login page", () => {
+        cy.visit("/session/begin");
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.get("body").should("not.have.class", "impersonating");
     });
 
     it("writes both masquerade lines to the auth log", () => {
