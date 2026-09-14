@@ -12,6 +12,7 @@ class MenuItem
     private $hasPermission;
     private $icon;
     private bool $external = false;
+    private bool $activeOverride = false;
     private array $subItems = [];
     private array $counters = [];
 
@@ -131,8 +132,29 @@ class MenuItem
         return false;
     }
 
+    /**
+     * Mark this item active for a route that is NOT its own URL.
+     *
+     * `isActive()` can only compare the request path with the item's own URI,
+     * which is right for almost every entry. It is not enough when a page
+     * *belongs* to an entry without living under its URL — the Volunteer v2
+     * occurrence page `/volunteer/occurrences/{id}` belongs to the ministry
+     * whose schedule generated it, and the sidebar should highlight that
+     * ministry while you are on it. The menu builder is the only thing that
+     * can know that relationship, so it says so here rather than teaching
+     * `isActive()` about individual modules.
+     */
+    public function setActiveOverride(bool $active): void
+    {
+        $this->activeOverride = $active;
+    }
+
     public function isActive(): bool
     {
+        if ($this->activeOverride) {
+            return true;
+        }
+
         if (empty($this->uri)) {
             return false;
         }

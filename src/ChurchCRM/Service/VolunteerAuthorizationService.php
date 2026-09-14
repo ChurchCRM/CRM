@@ -78,6 +78,14 @@ class VolunteerAuthorizationService
      */
     private array $scopeCache = [];
 
+    /**
+     * Per-request memoisation of `getManageableMinistries()`, keyed by person id.
+     * Static on purpose — see that method's docblock.
+     *
+     * @var array<int, array<int, string>>
+     */
+    private static array $manageableMinistryMemo = [];
+
     private LoggerInterface $logger;
 
     public function __construct()
@@ -223,6 +231,64 @@ class VolunteerAuthorizationService
     public function getManagedMinistryIds(User $user): array
     {
         return $this->loadScopes($user)['ministry'];
+    }
+
+    /**
+     * The ministries this user may administer, id => name, ordered by name.
+     *
+     * This is what the sidebar's **Ministries** heading lists: one entry per
+     * ministry, linking to `/volunteer/ministries/{id}`. It is deliberately
+     * NOT `getManagedMinistryIds()` plus a second query at the call site —
+     * the two tiers answer differently and the difference is the whole point:
+     *
+     *   - a global manager or an administrator holds no explicit grants, so
+     *     their list is every **active** ministry;
+     *   - anybody else gets exactly the ministries they hold a `ministry`
+     *     scope on, active or not — a coordinator of a ministry that was just
+     *     deactivated still has to be able to reach it, and since the
+     *     ministries list page was retired the sidebar is the only way in;
+     *   - a pure **team leader** holds only `team` scopes, so the list is
+     *     empty. Leading a team is not administering the ministry above it
+     *     (§4.6), and `/volunteer/ministries/{id}` would refuse them.
+     *
+     * Ids and names only — this runs on **every** page of the application, so
+     * it never hydrates a model object.
+     *
+     * Memoised per request in a STATIC, unlike the instance-level
+     * `$scopeCache`: `Menu::buildMenuItems()` constructs its own service and
+     * every route handler constructs another, so an instance memo would not
+     * make "one query per request" true. A static is safe here for the same
+     * reason it is safe in `User::$volunteerCoordinatorMemo` — nothing
+     * serializes this class into the PHP session, and a static never outlives
+     * the request.
+     *
+     * @return array<int, string> ministry id => ministry name
+     */
+    public function getManageableMinistries(User $user): array
+    {
+        $personId = (int) $user->getId();
+        if (array_key_exists($personId, self::$manageableMinistryMemo)) {
+            return self::$manageableMinistryMemo[$personId];
+        }
+
+        $query = VolunteerMinistryQuery::create();
+
+        if ($this->isGlobalManager($user)) {
+            $query->filterByActive(true);
+        } else {
+            $ministryIds = $this->getManagedMinistryIds($user);
+            if ($ministryIds === []) {
+                return self::$manageableMinistryMemo[$personId] = [];
+            }
+            $query->filterById($ministryIds, Criteria::IN);
+        }
+
+        $ministries = [];
+        foreach ($query->orderByName()->select(['Id', 'Name'])->find()->toArray() as $row) {
+            $ministries[(int) $row['Id']] = (string) $row['Name'];
+        }
+
+        return self::$manageableMinistryMemo[$personId] = $ministries;
     }
 
     /**
@@ -489,6 +555,6 @@ class VolunteerAuthorizationService
 
     private function forgetScopes(int $personId): void
     {
-        unset($this->scopeCache[$personId]);
+        unset($this->scopeCache[$personId], self::$manageableMinistryMemo[$personId]);
     }
 }
