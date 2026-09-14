@@ -268,7 +268,7 @@ Legend for **Decision**:
 | P3 | "Eligible people for this position" picker | — (V2-specific query, no core equivalent) | **New endpoint, reused UI** | `GET /api/volunteer/occurrences/{id}/eligible?positionId=` (§3.3). Renders through the shared person-select helper (P4). The *query* is new because qualification is new; the *widget* is not. |
 | P4 | Person picker UI (TomSelect) | Duplicated 3× (re-counted at `a22e68128` for the CR1 issue draft; `webpack/people/person-group-manager.js:114-160` is a pre-populated *group* picker, not an AJAX person search) with **two different class conventions**: `src/skin/js/GroupView.js:488-519` (`.personSearch`), `webpack/event-checkin.js:24-71` and `:583-620` (`.person-search`), `webpack/people/person-group-manager.js:114-160` | **Extract → reuse** (core-reusable) | **No shared module exists.** Create `webpack/common/person-select.ts` exporting `initPersonSelect(el, opts)` honouring both class conventions and accepting a custom `endpoint` (so V2 passes the eligible-people endpoint). Migrate `event-checkin.js` onto it in the same PR. Then V2 uses it. See §7.1-CR1. |
 | P5 | Bulk person selection (Cart) | `src/ChurchCRM/dto/Cart.php`; `src/api/routes/cart.php`; `src/skin/js/cart.js` | **Reuse** | The declarative DOM contract (`data-cart-id` + `data-cart-type` + class `AddToCart`/`RemoveFromCart`, wired at `cart.js:483-521`, `:638-683`) means a V2 DataTable row action needs **zero new JS** — just the right markup, exactly as `GroupList.js:131-132` does. Do not build a second bulk-selection mechanism. |
-| P6 | Cart **sink** for V2 | precedents: `Cart::emptyToGroup()` `Cart.php:180`, `Cart::emptyToFamily()` `:206`, `src/event/routes/event.php:65` cart-to-event | **Extend** | Add one V2 sink: `POST /api/volunteer/cart/assign` (§3.3). Put the loop in `VolunteerAssignmentService`, not in `Cart` — the route calls `Cart::getCartPeople()` (`:243`) and then the service. **Gotcha:** the cart dropdown menu HTML (`cart.js:606-636`) is hardcoded with no extension point; adding a V2 entry there means editing that function. |
+| P6 | Cart **sink** for V2 | precedents: `Cart::emptyToGroup()` `Cart.php:180`, `Cart::emptyToFamily()` `:206`, `src/event/routes/event.php:65` cart-to-event | **Extend** | One V2 sink: `POST /api/volunteer/ministries/{id}/pool/from-cart` (§3.3.1) — everyone in the cart joins the ministry's volunteer **pool**, and nothing is qualified or assigned. Put the loop in `VolunteerSetupService::addPoolMembers()`, not in `Cart` — the route calls `Cart::getCartPeople()` (`:243`) and then the service. **RETIRED:** the earlier sinks `POST /volunteer/cart/assign` and `POST /volunteer/positions/{id}/qualifications/from-cart` are gone (see §5.4 and §5.5) — bulk *assignment* half-succeeded under the per-person rules I1–I5, and bulk *qualification* made two statements in one click. **Gotcha:** the cart dropdown menu HTML (`cart.js:606-636`) is hardcoded with no extension point; adding a V2 entry there means editing that function. |
 | P7 | Cart as a durable store | `$_SESSION['aPeopleCart']` | **Do not use** | Session-scoped, cleared on logout, person-ids only, shared across tabs, no size cap. It cannot be a draft-assignment store or a volunteer's self-service basket. |
 | P8 | Person profile / photo | `src/ChurchCRM/Utils/...`, `window.CRM.avatarLoader` (`webpack/avatar-loader.ts`) | **Reuse** | V2 rosters render `<img data-image-entity-type="person" data-image-entity-id=… class="avatar avatar-sm me-2">` and call `window.CRM.avatarLoader.refresh()` — the `GroupView.js:783-799`, `:899` pattern. V2 never duplicates person data. |
 
@@ -1337,6 +1337,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | GET/POST/DELETE | `/api/volunteer/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware` |
 | GET | `/api/volunteer/ministries/{ministryId}/pool` | who is in the ministry's pool Group (D19) | Coordinator of it | `{groupId,groupName,members:[{personId,displayName,inPool,qualifications[]}]}`, alphabetical |
 | POST | `/api/volunteer/ministries/{ministryId}/pool/{personId}` | add to the pool | Coordinator of it — **no `ManageGroups` needed** (§4.6) | `201 {personId,added:true}`; `200 {added:false}` when already there. Writes through the Propel membership model, so `Hooks::GROUP_MEMBER_ADDED` fires (G3) |
+| POST | `/api/volunteer/ministries/{ministryId}/pool/from-cart` | **cart sink** (P5/P6): put everyone in the session cart in the pool | Coordinator of it | no body — the people come from `Cart::getCartPeople()` → `200 {added:int, alreadyMembers:int}`; `400` when the cart is empty. Idempotent per person; grants **no** qualification, and the cart is not emptied. This is what "Add from Cart" on S3 calls |
 | DELETE | `/api/volunteer/ministries/{ministryId}/pool/{personId}` | remove from the pool | Coordinator of it | `200`; `404` when they are not in it. Qualifications are **not** revoked (D19) |
 | DELETE | `/api/volunteer/ministries/{ministryId}/volunteers/{personId}` | "Remove Volunteer": revoke every qualification for a position of this ministry, cancel every live assignment on a still-to-come occurrence of it, and remove them from the pool — one transaction | Coordinator of it (**ministry-level**: a team leader gets `403`) | `200 {personId,qualifications,assignments,removedFromPool}`; `404` for an unknown person. Idempotent: a second call reports zeroes. Past assignments are untouched — §5.4 |
 | GET | `/api/volunteer/ministries/{ministryId}/members` | the qualification matrix's rows | Coordinator of it | pool ∪ everyone qualified for a position in view (D19): `{members:[{personId,displayName,inPool,groupIds[],qualifications:[positionId],qualificationIds{}}]}` |
@@ -1346,6 +1347,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | GET/POST/DELETE | `/api/volunteer/positions/{positionId}` | read / update / deactivate-or-delete | Coordinator of the ministry | `DELETE` → `409` when referenced (§2.6) |
 | GET | `/api/volunteer/positions/{positionId}/qualifications` | who is qualified | Coordinator / Team Leader | `{qualifications:[{id,personId,displayName,active,grantedDate}]}` |
 | POST | `/api/volunteer/positions/{positionId}/qualifications` | grant | Coordinator / Team Leader **of that position** | `{personId,notes?}` → `201`; idempotent — re-granting a deactivated row reactivates it |
+| ~~POST~~ | ~~`/api/volunteer/positions/{positionId}/qualifications/from-cart`~~ | **RETIRED.** Bulk-qualifying the cart for one position had no caller left once S3's cart dialog stopped asking for a position; the cart now fills the pool instead (`/pool/from-cart` above) | — | — |
 | DELETE | `/api/volunteer/qualifications/{qualificationId}` | revoke (**deactivates**) | Coordinator / Team Leader | `200 {qualification}` with `active:false` |
 | GET | `/api/volunteer/people/{personId}/qualifications` | one person's qualifications | Coordinator+, or self | scoped to the caller's ministries |
 | GET | `/api/volunteer/scopes` | list scope grants | **Manager**, or coordinator of the named ministry | `?ministryId=&teamId=&personId=` |
@@ -1379,7 +1381,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | POST | `/api/volunteer/swaps/{swapId}/reject` | reject | scope | `{comment?}` → `{swap}` |
 | GET | `/api/volunteer/dashboard` | "what needs my attention" | Coordinator / Team Leader | `?days=28` → `{upcoming:[…], gaps:[…], pendingResponses:[…], proposedSwaps:[…], failedNotifications:int}` |
 | GET | `/api/volunteer/gaps` | gaps across the caller's scope | Coordinator / Team Leader | `from`,`to` required → `{gaps:[{occurrenceId,start,positionId,positionName,gapCount}]}` |
-| POST | `/api/volunteer/cart/assign` | **cart sink** (P6) | scope | `{occurrenceId,positionId,emptyCart?:true}` → `{assigned:int, skipped:[{personId,reason}]}`; uses `Cart::getCartPeople()` and honours I2/I3 per person |
+| ~~POST~~ | ~~`/api/volunteer/cart/assign`~~ | **RETIRED** with S4's "Assign everyone in the cart" button (§5.5). Assigning is a per-person act with per-person rules (I1–I5), so the batch half-succeeded and answered with a list of reasons — worse than the single-person picker beside it, which can only offer assignable people. `VolunteerAssignmentService::assignFromCart()` is removed with it | — | — |
 
 #### 3.3.3 Member surface — `volunteer-me.php`
 
@@ -1540,7 +1542,7 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 | Event roster / staffing | `src/event/views/view.php` | a "Volunteers" card on the event view showing V2 staffing for occurrences linked to this event, gated on the rollout flag **and** on scope. Read-only; the edit affordance links to `/volunteer/occurrences/{id}`. |
 | Calendar | `src/ChurchCRM/dto/FullCalendarEvent.php:52-75` | add `extendedProps.volunteerGapCount` / `volunteerStaffed` for events the caller may see (E13) |
 | Global search | `src/api/routes/search.php:39-47` + a new `VolunteerSearchResultProvider` | E/P2. Results scoped by `getManagedMinistryIds()`. |
-| Cart | `src/skin/js/cart.js:606-636` (dropdown) + `POST /api/volunteer/cart/assign` | P6. Adding a V2 entry to the dropdown means editing that hardcoded function — flagged, not required for the first release; the occurrence page can offer "assign everyone in the cart" from its own button. |
+| Cart | `src/skin/js/cart.js:606-636` (dropdown) + `POST /api/volunteer/ministries/{id}/pool/from-cart` | P6. Adding a V2 entry to the dropdown means editing that hardcoded function — flagged, not required for the first release; the ministry page offers "Add from Cart" on its Volunteers tab. The occurrence page's "assign everyone in the cart" button and its route are retired. |
 | Timer job | `src/ChurchCRM/Service/SystemService.php:78` | `VolunteerNotificationService::drainOutbox();` and `(new VolunteerAssignmentService())->markCompleted(DateTimeUtils::getNowDateTime());` next to `BirthdayEmailService::run();` |
 | Event deletion | `src/ChurchCRM/model/ChurchCRM/Event.php:51-62` | null the occurrence link (E12) |
 | Access-denied page | `src/v2/routes/root.php:24-35` | add `'VolunteerManager'` and `'VolunteerCoordinator'` |
@@ -2187,10 +2189,47 @@ this order:
   `isMinistryCoordinator` flag is advisory; the route authorizes with the ministry-level
   entity middleware (D5).
 
+  **A tick confirms itself in a toast.** Each checkbox is its own write and there is no
+  Save button, so the hint *"Ticks save as you make them."* sits above the grid and the
+  save answers in the standard top-right `notifySuccess` notification — *"{Position}:
+  {name} qualified"* / *"{Position}: {name} no longer qualified"*. A failure rolls the
+  box back and shows the red one. The confirmation used to be a badge in a status slot
+  beside the box; the badge is wider than a checkbox, so every tick widened its column
+  for a second and a half and shifted every box to the right of it. **A cell is now the
+  checkbox and nothing else** — `.volunteer-qual-cell` and `.volunteer-qual-status` are
+  gone from the markup and the stylesheet — and nothing in the grid moves when a write
+  lands.
+
+  **Add Volunteer** and **Add from Cart** (formerly "Qualify someone else" and "Qualify
+  the cart") sit beside the filters. Both put people in the ministry's pool Group and
+  grant **nothing**: being in the pool is candidacy and a tick is eligibility (§2.5), and
+  making both statements in one click was what the position selector on those dialogs
+  amounted to. *Add Volunteer* is the shared person search, Cancel and Add, titled *"Add
+  Volunteer to {selected team}"*, calling the idempotent
+  `POST /ministries/{id}/pool/{personId}`; *Add from Cart* is one line of prose, Cancel
+  and Add All, titled *"Add Everyone in Cart to {selected team}"*, calling
+  `POST /ministries/{id}/pool/from-cart` once for the whole cart. Both force-refresh the
+  grid so the new rows appear with no ticks, which is the prompt to make the second
+  statement.
+
   Because the last column holds an action menu, the wrapper is the mandatory
   `overflow-x: clip; overflow-y: visible` pair rather than `.table-responsive`: a
   horizontal scroller would clip the dropdown (table-action-menu.md). A ministry with very
   many positions therefore wraps its columns rather than scrolling them.
+
+- **Occurrences** carries a compact search form above the table — **Team · Event · From ·
+  To** — laid out like the Volunteers tab's controls, with every field live: a change
+  re-runs `GET /occurrences` (the text box debounced ~300 ms, and the DataTable destroyed
+  before the `<tbody>` is rewritten). *Team* offers **All Teams** first and defaults to
+  it; *Event* matches the occurrence's title case-insensitively — the schedule's name, or
+  for an event-linked occurrence the linked event's title — and is a `?text=` parameter
+  narrowing the query server-side, never a filter over rows already drawn; *From* defaults
+  to today and *To* is empty. The endpoint's `from`/`to` window is mandatory (M9), so an
+  empty *To* is sent as **From + one year**. The past is reached by moving *From* back.
+
+  This replaces the **"Filter by Date" button, its dialog, the "Showing … to …" line and
+  the "Back to upcoming" link**, all of which are gone: the dialog could only narrow by
+  date, so which team and which service had to be read off the table by eye.
 
 - **Help Wanted** is a tab of its own (D19, §5.6): a switch and a textarea saved with one
   button. It used to be a card below the tab strip, which meant it painted underneath
@@ -2237,8 +2276,13 @@ The single most important coordinator screen.
 - Row actions via the shared action-menu (U1): *Send reminder*, *Cancel assignment*, *Replace*,
   *View person*.
 - Footer actions: **Email these volunteers** (declarative `data-email-composer` +
-  `data-email-endpoint="volunteer/occurrences/{id}/emails"`, U7), **Export CSV** (R2), **Assign
-  everyone in the cart** (P6).
+  `data-email-endpoint="volunteer/occurrences/{id}/emails"`, U7) and **Export CSV** (R2).
+- **"Assign everyone in the cart" is RETIRED**, along with `POST /api/volunteer/cart/assign` and
+  `VolunteerAssignmentService::assignFromCart()`. Assignment is per person and carries per-person
+  rules (I1–I5), so the bulk button routinely half-succeeded and reported a list of reasons a
+  coordinator then had to act on one at a time — strictly worse than the picker beside it, which
+  can only ever offer people who are genuinely assignable. The Cart still feeds V2, on S3, where it
+  fills the ministry's volunteer pool (P6).
 
 ### 5.6 S5 / S6 — Volunteer self-service
 
@@ -2286,8 +2330,8 @@ when something needs filling."
 |---|---|
 | S1 | Tabler cards + badges, DataTables (U2), action menu (U1), bootbox confirm (U3), `window.CRM.notify` (U5), settings panel (U8), `PageHeader` (U11) |
 | S2b | Tabler forms + one modal ("New ministry"), `window.CRM.notify` (U5) |
-| S3 | DataTables (U2), person selector (P4), avatar loader (P8), lazily-loaded tabs (U6) |
-| S4 | person selector (P4), action menu (U1), email composer (U7), Cart sink (P6), CSV export (R1/R2), avatar loader (P8) |
+| S3 | DataTables (U2), person selector (P4), avatar loader (P8), lazily-loaded tabs (U6), Cart sink (P6, "Add from Cart" into the pool) |
+| S4 | person selector (P4), action menu (U1), email composer (U7), CSV export (R1/R2), avatar loader (P8) |
 | S5/S6 | Tabler cards + badges, bootbox confirm/prompt (U3), `window.CRM.notify` (U5), person selector (P4, for "find a sub") |
 
 **No new UI framework, no new component library, no Volunteer-only action-menu framework.** #9709
