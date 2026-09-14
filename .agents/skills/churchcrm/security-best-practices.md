@@ -607,6 +607,55 @@ $person->setFirstName($input);
 
 ---
 
+## Admin Masquerade ("Login as User") <!-- learned: 2026-09-14 -->
+
+`ChurchCRM\Service\ImpersonationService` lets an administrator open a session as
+another user (issue #9843). Because it deliberately bypasses every credential
+check, treat it as privileged code and keep these invariants when touching it.
+
+**How the session is swapped.** `LocalAuthentication::prepareSuccessfulLoginOperations()`
+is split in two: `establishSessionForUser()` (session id regeneration + the
+`bManageGroups` / `bFinance` / cart / deposit / timestamp session state) and the
+login bookkeeping (`usr_LastLogin`, `usr_LoginCount`, `usr_FailedLogins`). A
+masquerade calls only the first half, through
+`AuthenticationManager::establishSessionAsUser()`, so the impersonated account is
+never made to look as though the user signed in. Never inline the flag-setting
+lines into a new code path — reuse `establishSessionAsUser()` so login and
+masquerade cannot drift apart.
+
+**What is skipped:** password check, 2FA prompt, failed-login counters, the
+"last login" stamp, the update check and remote notification fetch that
+`AuthenticationManager::authenticate()` performs, and every plugin hook. (There
+are no login hooks in `Plugin\Hooks` today; if one is added it must stay out of
+this path.)
+
+**Session key.** `$_SESSION['impersonator'] = ['userId' => adminId, 'startedAt' => ..., 'stashed' => ...]`.
+Its presence is the single source of truth for "this session is a masquerade" —
+`Include/Header.php` uses it to add `body.impersonating` and require
+`Include/ImpersonationBanner.php`, and to turn the user menu's Sign out into an
+exit action. Administrator-only session values (the `systemUpdate*` release
+notice) are stashed on the record at start and restored on exit so they cannot
+leak into the impersonated view.
+
+**Gating the routes.** `POST /v2/user/{id}/impersonate` and
+`POST /v2/user/impersonate/exit` are session-only. That is *not* automatic:
+`AuthMiddleware` authenticates an `x-api-key` header on every MVC route outside
+`/api/public`, so any route that must be unreachable by token needs
+`SessionOnlyMiddleware` (403). Middleware order matters — Slim 4 runs them in
+reverse of the `->add()` sequence, and `NoActiveMasqueradeMiddleware` (409) must
+run *before* `AdminRoleAuthMiddleware`, otherwise a nested start is reported as a
+bare 403 from the impersonated (non-admin) session.
+
+**Logging.** Both ends are written to the auth log with both user ids:
+`Masquerade started: admin {id} ({name}) as user {id} ({name})` and
+`Masquerade ended: admin {id} back from user {id}`. An exit whose stored
+administrator no longer exists — or is no longer an administrator — logs
+`Masquerade aborted: …`, calls `AuthenticationManager::endSession()` and sends
+the browser to the login page. Never add a code path that changes who the
+session belongs to without an auth-log line naming both ids.
+
+---
+
 ## TLS/SSL Verification
 
 ### Secure by Default
