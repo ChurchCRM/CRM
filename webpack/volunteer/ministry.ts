@@ -1,7 +1,7 @@
 /**
  * S3 — ministry detail (#9715 and #9707, design §5.4 as amended).
  *
- * Six tabs: **Overview · Volunteers · Positions · Schedules · Occurrences · Help
+ * Six tabs: **Overview · Positions · Volunteers · Schedules · Occurrences · Help
  * Wanted**. Overview (its three counts, its description and its teams card) and
  * Positions are rendered from ONE `GET /api/volunteer/ministries/{id}` response
  * that is fetched on first use and cached; Volunteers is one
@@ -115,8 +115,16 @@ let matrix: QualificationMatrix | null = null;
  * ambiguous. Null only before the first team is known.
  */
 let matrixTeamId: number | null = null;
-/** Which team a "Set Team Leader" modal is acting on; 0 means none is open. */
-let leaderTeamId = 0;
+/**
+ * The leader grants the open team dialog started with.
+ *
+ * Normally none or one — the UI treats a team as having at most one leader — but
+ * the scope table carries no uniqueness constraint, so every row the API reported
+ * is held and every one of them is revoked when the field is cleared. Comparing
+ * this against what the picker ends up holding is what decides whether saving the
+ * team also has to grant or revoke a scope.
+ */
+let teamLeadersOnOpen: VolunteerTeamLeader[] = [];
 /**
  * The ministry's upcoming occurrences with their derived gap counts (#9709).
  * Cached like the matrix so switching tabs does not re-fetch, and cleared on error
@@ -293,13 +301,14 @@ function teamLeaderCell(team: VolunteerTeam): string {
 
 /**
  * The teams card on Overview — the list that used to open the Teams tab, plus the
- * team's leader and the two menu items that set and clear it.
+ * team's leader.
  *
- * Granting authority is manager-only (§3.2), so the leader items appear only for a
- * global volunteer manager. The leader NAMES are shown to anyone who can open the
- * page: they arrive on the ministry document rather than from the manager-only
- * `/scopes` listing, so a ministry coordinator sees who leads what without being
- * able to change it.
+ * The row menu no longer sets or clears the leader: a leader is a property of the
+ * team, so it is a field of the Add/Edit team dialog and the menu is Edit and
+ * Delete again. The Team Leader COLUMN stays, and stays visible to anyone who can
+ * open the page — the names ride on the ministry document rather than on the
+ * manager-only `/scopes` listing, so a ministry coordinator sees who leads what
+ * without being able to change it.
  */
 function renderTeams(data: MinistryDetail): void {
   const body = document.querySelector("#volunteerTeamsTable tbody");
@@ -317,8 +326,6 @@ function renderTeams(data: MinistryDetail): void {
 
   body.innerHTML = data.teams
     .map((team: VolunteerTeam) => {
-      const leaders = team.leaders ?? [];
-      const leaderNames = leaders.map((leader) => leader.personName).join(", ");
       const menu = actionMenu([
         {
           type: "button",
@@ -327,30 +334,6 @@ function renderTeams(data: MinistryDetail): void {
           className: "volunteer-team-edit",
           data: { "team-id": team.id },
         },
-        isManager &&
-          leaders.length === 0 && {
-            type: "button",
-            icon: "fa-solid fa-user-shield",
-            label: i18next.t("Set Team Leader"),
-            className: "volunteer-team-leader-set",
-            data: { "team-id": team.id, "team-name": team.name },
-          },
-        isManager &&
-          leaders.length > 0 && {
-            type: "button",
-            icon: "fa-solid fa-user-minus",
-            label: i18next.t("Remove Team Leader"),
-            className: "volunteer-team-leader-remove",
-            danger: true,
-            data: {
-              "team-id": team.id,
-              "team-name": team.name,
-              "leader-name": leaderNames,
-              // Every grant on the row, so "remove" clears the team even in the
-              // case the model allows but the UI does not: more than one leader.
-              "scope-ids": leaders.map((leader) => leader.scopeId).join(","),
-            },
-          },
         { type: "divider" },
         {
           type: "button",
@@ -469,6 +452,7 @@ function renderMatrix(data: QualificationMatrix): void {
   if (data.positions.length === 0 || data.people.length === 0) {
     head.innerHTML = `<th>${i18next.t("Volunteer")}</th>`;
     body.innerHTML = "";
+    show(byId("volunteers-save-hint"), false);
     renderState("volunteers", "empty");
     return;
   }
@@ -501,12 +485,19 @@ function renderMatrix(data: QualificationMatrix): void {
           const qualificationId = person.qualificationIds?.[String(position.id)] ?? 0;
           const checked = person.qualifications.includes(position.id) ? " checked" : "";
 
+          // The status slot beside every box is where that box reports on itself —
+          // a spinner while the write is in flight, then "Saved" or "Not saved".
+          // It is a sibling of the input rather than a class on it, because a
+          // checkbox cannot carry a spinner and there is no Save button to look at.
           return `<td class="text-center">
-              <input type="checkbox" class="form-check-input volunteer-qual-toggle"${checked}
-                     data-person-id="${person.personId}"
-                     data-position-id="${position.id}"
-                     data-qualification-id="${qualificationId}"
-                     aria-label="${window.CRM?.escapeAttribute?.(`${person.displayName} — ${columnLabel(position)}`) ?? ""}">
+              <span class="volunteer-qual-cell">
+                <input type="checkbox" class="form-check-input volunteer-qual-toggle"${checked}
+                       data-person-id="${person.personId}"
+                       data-position-id="${position.id}"
+                       data-qualification-id="${qualificationId}"
+                       aria-label="${window.CRM?.escapeAttribute?.(`${person.displayName} — ${columnLabel(position)}`) ?? ""}">
+                <span class="volunteer-qual-status" aria-live="polite"></span>
+              </span>
             </td>`;
         })
         .join("");
@@ -515,16 +506,18 @@ function renderMatrix(data: QualificationMatrix): void {
       // either reason and the screen has to say which. A pool member with no ticks
       // yet is the one a coordinator opened this screen to deal with; a qualified
       // non-member was taken out of the group and is still assignable.
-      const hint =
-        person.inPool && person.qualifications.length === 0
-          ? ` <span class="badge bg-secondary-lt text-secondary volunteer-pool-hint">${escapeHtml(
-              i18next.t("In the pool, not qualified yet"),
-            )}</span>`
-          : !person.inPool
-            ? ` <span class="badge bg-secondary-lt text-secondary volunteer-outside-pool-hint">${escapeHtml(
-                i18next.t("Not in the pool"),
-              )}</span>`
-            : "";
+      //
+      // For a pool member the badge is always RENDERED and merely hidden when it
+      // does not apply, because a tick falsifies it there and then: the first tick
+      // must be able to take "not qualified yet" away, and the last untick must be
+      // able to bring it back, without re-rendering the grid under the coordinator.
+      const hint = person.inPool
+        ? ` <span class="badge bg-secondary-lt text-secondary volunteer-pool-hint"${
+            person.qualifications.length === 0 ? "" : " hidden"
+          }>${escapeHtml(i18next.t("In the pool, not qualified yet"))}</span>`
+        : ` <span class="badge bg-secondary-lt text-secondary volunteer-outside-pool-hint">${escapeHtml(
+            i18next.t("Not in the pool"),
+          )}</span>`;
 
       const menu = canRemove
         ? `<td class="text-center w-1">${actionMenu([
@@ -548,9 +541,92 @@ function renderMatrix(data: QualificationMatrix): void {
     .join("");
 
   renderState("volunteers", "loaded");
+  // Only meaningful next to a grid that exists, so it is shown with the grid and
+  // hidden with the empty and error states.
+  show(byId("volunteers-save-hint"), true);
   applyMatrixFilter();
   fillPositionSelect("qualify-person-position");
   fillPositionSelect("qualify-cart-position");
+}
+
+/**
+ * Write one tick back into the cached matrix.
+ *
+ * This is the whole of the "the ticks do not persist" defect. The grid is cached
+ * in `matrix` and re-rendered from that cache whenever the tab is activated
+ * again, so a save that only changed the checkbox's DOM was thrown away by the
+ * next `renderMatrix(matrix)` — the write had reached the database and the screen
+ * was drawing a document that predated it. Every save now updates the model the
+ * renderer reads, in exactly the shape the server would have sent: an active
+ * qualification is in `qualifications` and carries its row id in
+ * `qualificationIds`, and a revoked one is in neither.
+ */
+function setCachedQualification(personId: number, positionId: number, qualificationId: number, active: boolean): void {
+  const person = matrix?.people.find((row: VolunteerPoolPerson) => row.personId === personId);
+  if (!person) {
+    return;
+  }
+
+  const held = new Set(person.qualifications);
+  if (active) {
+    held.add(positionId);
+    person.qualificationIds[String(positionId)] = qualificationId;
+  } else {
+    held.delete(positionId);
+    delete person.qualificationIds[String(positionId)];
+  }
+  person.qualifications = [...held];
+}
+
+/**
+ * "In the pool, not qualified yet" is a statement about the row that one tick
+ * makes false and the last untick makes true again, so it is re-decided from the
+ * cached model after every save rather than left until the next full render.
+ */
+function refreshPoolHint(input: HTMLInputElement, personId: number): void {
+  const person = matrix?.people.find((row: VolunteerPoolPerson) => row.personId === personId);
+  const hint = input.closest("tr")?.querySelector<HTMLElement>(".volunteer-pool-hint");
+  if (!person || !hint) {
+    return;
+  }
+
+  hint.hidden = person.qualifications.length > 0;
+}
+
+/** How long the green confirmation stays up before the cell goes quiet again. */
+const SAVED_BADGE_MS = 1500;
+
+/**
+ * The three things one checkbox can be saying about itself.
+ *
+ * `null` clears the slot. The badge is taken out of the flow by
+ * `.volunteer-qual-status` in the stylesheet, so a column does not jump wider for
+ * a second and a half every time somebody ticks a box.
+ */
+function setQualificationStatus(input: HTMLInputElement, state: "saving" | "saved" | "failed" | null): void {
+  const slot = input.parentElement?.querySelector<HTMLElement>(".volunteer-qual-status");
+  if (!slot) {
+    return;
+  }
+
+  if (state === "saving") {
+    slot.innerHTML = `<span class="spinner-border spinner-border-sm text-secondary" role="status" aria-hidden="true"></span>`;
+    return;
+  }
+  if (state === "saved") {
+    slot.innerHTML = `<span class="badge bg-green-lt text-green"><i class="fa-solid fa-check me-1"></i>${escapeHtml(
+      i18next.t("Saved"),
+    )}</span>`;
+    return;
+  }
+  if (state === "failed") {
+    slot.innerHTML = `<span class="badge bg-red-lt text-red"><i class="fa-solid fa-triangle-exclamation me-1"></i>${escapeHtml(
+      i18next.t("Not saved"),
+    )}</span>`;
+    return;
+  }
+
+  slot.textContent = "";
 }
 
 /** Hide the rows whose name does not contain what was typed. Pure client-side. */
@@ -619,6 +695,7 @@ async function loadMatrix(force = false): Promise<void> {
   }
 
   renderState("volunteers", "loading");
+  show(byId("volunteers-save-hint"), false);
   try {
     // The ministry document names the teams, and the grid is always one team's —
     // so it has to be there before the first matrix request can name one.
@@ -631,6 +708,7 @@ async function loadMatrix(force = false): Promise<void> {
   } catch (error) {
     // Clearing the cache is what makes Retry a genuine retry (§5.8).
     matrix = null;
+    show(byId("volunteers-save-hint"), false);
     renderState("volunteers", "error", errorMessage(error, i18next.t("Could not load the volunteers")));
   }
 }
@@ -733,29 +811,106 @@ function isoDate(offsetDays: number): string {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
+/** How far forward the default "upcoming" window looks. */
+const UPCOMING_DAYS = 90;
+/** How far back "Filter by Date" proposes when it is opened with no range set. */
+const PAST_DEFAULT_DAYS = 90;
+
+/**
+ * The window the Occurrences tab is showing, or `null` for the default.
+ *
+ * The default is **upcoming only** — from today forward — because the tab exists
+ * to staff the weeks ahead, and a list that opens on things that already happened
+ * buries them. Everything before today is one dialog away ("Filter by Date"), and
+ * choosing a range puts it here; "Back to upcoming" sets it to null again.
+ */
+let occurrenceRange: { from: string; to: string } | null = null;
+
+/** The window actually asked for, default included. `from`/`to` are mandatory (M9). */
+function occurrenceWindow(): { from: string; to: string } {
+  return occurrenceRange ?? { from: isoDate(0), to: isoDate(UPCOMING_DAYS) };
+}
+
+/** "Showing 2026-06-01 to 2026-09-13", with the way back, or nothing at all. */
+function renderOccurrenceRangeNote(): void {
+  const note = byId("occurrences-range-note");
+  const text = byId("occurrences-range-text");
+  if (text && occurrenceRange !== null) {
+    text.textContent = i18next.t("Showing {{from}} to {{to}}", {
+      from: occurrenceRange.from,
+      to: occurrenceRange.to,
+    });
+  }
+  show(note, occurrenceRange !== null);
+}
+
 async function loadOccurrences(force = false): Promise<void> {
   if (occurrences !== null && !force) {
+    renderOccurrenceRangeNote();
     renderOccurrences(occurrences);
 
     return;
   }
 
   renderState("occurrences", "loading");
+  renderOccurrenceRangeNote();
 
   try {
-    // A fixed forward window: `from`/`to` are mandatory server-side (M9), and a
-    // coordinator staffing "the next while" wants roughly a quarter.
-    const data = await listOccurrences({
-      from: isoDate(-7),
-      to: isoDate(90),
-      ministryId,
-    });
+    const data = await listOccurrences({ ...occurrenceWindow(), ministryId });
     occurrences = data.occurrences;
     renderOccurrences(occurrences);
   } catch (error) {
     occurrences = null;
     renderState("occurrences", "error", errorMessage(error, i18next.t("Could not load the occurrences")));
   }
+}
+
+/**
+ * The "Filter by Date" dialog: a From, a To, and a Show.
+ *
+ * It opens on the last ninety days up to yesterday — "what did we just do" — which
+ * is the question a coordinator opens a past-occurrence list to ask. The list
+ * endpoint already takes a mandatory `from`/`to` window (M9), so this asks nothing
+ * new of the API; only the browser's idea of "the default" changes.
+ */
+function wireOccurrenceRange(): void {
+  byId("occurrences-filter-btn")?.addEventListener("click", () => {
+    show(byId("occurrence-range-form-error"), false);
+    const from = byId<HTMLInputElement>("occurrence-range-from");
+    const to = byId<HTMLInputElement>("occurrence-range-to");
+    if (from) {
+      from.value = occurrenceRange?.from ?? isoDate(-PAST_DEFAULT_DAYS);
+    }
+    if (to) {
+      to.value = occurrenceRange?.to ?? isoDate(-1);
+    }
+    modal("occurrenceRangeModal")?.show();
+  });
+
+  byId("occurrence-range-show")?.addEventListener("click", () => {
+    const from = byId<HTMLInputElement>("occurrence-range-from")?.value ?? "";
+    const to = byId<HTMLInputElement>("occurrence-range-to")?.value ?? "";
+
+    if (from === "" || to === "") {
+      showModalError("occurrence-range", i18next.t("Choose a date to show from and a date to show to"));
+      return;
+    }
+    // The server answers an inverted window with a 400; saying so here is faster
+    // and says it where the mistake was made.
+    if (to < from) {
+      showModalError("occurrence-range", i18next.t("The window ends before it starts"));
+      return;
+    }
+
+    occurrenceRange = { from, to };
+    modal("occurrenceRangeModal")?.hide();
+    void loadOccurrences(true);
+  });
+
+  byId("occurrences-range-reset")?.addEventListener("click", () => {
+    occurrenceRange = null;
+    void loadOccurrences(true);
+  });
 }
 
 /**
@@ -1151,8 +1306,19 @@ function activate(tab: TabName): void {
 
 // ─── Editors ─────────────────────────────────────────────────────────────────
 
+/**
+ * The team dialog's person picker, or null for a viewer who may not use one.
+ *
+ * The shared selector (CR1/#9819) initialises on `shown.bs.modal`, so the leader
+ * the dialog was opened with is handed to it through `teamLeadersOnOpen` rather
+ * than set here — by the time `openTeamModal()` returns, the picker does not
+ * exist yet.
+ */
+let teamLeaderPicker: PersonSelectModalHandle | null = null;
+
 function openTeamModal(team?: VolunteerTeam): void {
   editingTeamId = team?.id ?? 0;
+  teamLeadersOnOpen = team?.leaders ?? [];
   show(byId("team-form-error"), false);
 
   const name = byId<HTMLInputElement>("team-form-name");
@@ -1173,13 +1339,50 @@ function openTeamModal(team?: VolunteerTeam): void {
     title.textContent = team ? i18next.t("Edit team") : i18next.t("Add team");
   }
 
+  // A viewer who may not grant sees the leader as text, because the scope API is
+  // manager-only and offering a control it will refuse is worse than not offering
+  // one. The hint beside it says who can.
+  const readOnly = byId<HTMLInputElement>("team-form-leader-readonly");
+  if (readOnly) {
+    readOnly.value = teamLeadersOnOpen.map((leader) => leader.personName).join(", ");
+  }
+
   modal("teamModal")?.show();
+}
+
+/**
+ * Bring the team's scope rows into line with what the dialog was left holding.
+ *
+ * Only a manager reaches this: the field is read-only for everyone else, and the
+ * `/api/volunteer/scopes` endpoints refuse them anyway. The grant goes first so a
+ * failure leaves the existing leader in place rather than a team with nobody.
+ */
+function syncTeamLeader(teamId: number, chosenPersonId: number): Promise<void> {
+  if (!isManager) {
+    return Promise.resolve();
+  }
+
+  const stale = teamLeadersOnOpen.filter((leader) => leader.personId !== chosenPersonId);
+  const alreadyGranted = teamLeadersOnOpen.some((leader) => leader.personId === chosenPersonId);
+
+  // Nothing was chosen and nothing was there: the commonest case does no work.
+  if (chosenPersonId === 0 && stale.length === 0) {
+    return Promise.resolve();
+  }
+
+  const granted =
+    chosenPersonId !== 0 && !alreadyGranted
+      ? grantScope(chosenPersonId, "team", teamId).then(() => undefined)
+      : Promise.resolve();
+
+  return granted.then(() => Promise.all(stale.map((leader) => revokeScope(leader.scopeId))).then(() => undefined));
 }
 
 function saveTeam(): void {
   const name = byId<HTMLInputElement>("team-form-name")?.value.trim() ?? "";
   const description = byId<HTMLInputElement>("team-form-description")?.value.trim() ?? "";
   const active = byId<HTMLInputElement>("team-form-active")?.checked ?? true;
+  const leaderPersonId = isManager ? Number(teamLeaderPicker?.getInstance()?.getValue() ?? 0) || 0 : 0;
 
   if (name === "") {
     showModalError("team", i18next.t("Give the team a name"));
@@ -1188,17 +1391,24 @@ function saveTeam(): void {
 
   // A newly created team is active by construction (§2.4 default), so the switch
   // only needs a follow-up write when the coordinator turned it off while adding.
-  const saved =
+  const saved: Promise<number> =
     editingTeamId === 0
       ? createTeam(ministryId, name, description).then((result) =>
-          active ? undefined : updateTeam(result.team.id, { active: false }).then(() => undefined),
+          active ? result.team.id : updateTeam(result.team.id, { active: false }).then(() => result.team.id),
         )
-      : updateTeam(editingTeamId, { name, description, active }).then(() => undefined);
+      : updateTeam(editingTeamId, { name, description, active }).then(() => editingTeamId);
 
+  // The scope call happens BEFORE the dialog closes, so a refused grant is
+  // reported in the dialog it was asked for in rather than as a toast over a
+  // screen that looks like it saved.
   saved
+    .then((teamId) => syncTeamLeader(teamId, leaderPersonId))
     .then(() => {
       modal("teamModal")?.hide();
       notifySuccess(editingTeamId === 0 ? i18next.t("Team added") : i18next.t("Team saved"));
+      // A team change can add or rename a column of the qualification grid, so
+      // the grid's own cached document is stale too.
+      matrix = null;
       return load(true);
     })
     .catch((error: unknown) => {
@@ -1275,6 +1485,9 @@ function savePosition(): void {
     .then(() => {
       modal("positionModal")?.hide();
       notifySuccess(editingPositionId === 0 ? i18next.t("Position added") : i18next.t("Position saved"));
+      // A position IS a column of the qualification grid, so the grid's cached
+      // document no longer describes the screen.
+      matrix = null;
       return load(true);
     })
     .catch((error: unknown) => {
@@ -1362,49 +1575,39 @@ function findPosition(id: number): VolunteerPosition | undefined {
 }
 
 /**
- * "Set Team Leader" / "Remove Team Leader" on a row of the teams card.
+ * The Team leader field inside the Add/Edit team dialog.
  *
- * The grant is the same `/api/volunteer/scopes` call the coordinator card makes,
- * with `scopeType: "team"` — manager-only at the API, which is why both menu
- * items and this whole modal are rendered for a manager only. The modal asks for
- * a person and nothing else: the team is the row it was opened from.
+ * The shared person selector (CR1/#9819) owns the modal lifecycle, the
+ * body-mounted dropdown and the maxOptions fix, so all this does is pre-fill it
+ * with whoever currently leads the team. The option is added by hand rather than
+ * searched for: the picker's `load()` only runs on typing, and a pre-selected
+ * value with no matching option renders as a blank control.
+ *
+ * Only a manager gets a picker at all — the markup renders a read-only field for
+ * everybody else, so `#team-form-leader` is simply not in the document and
+ * `attachToModal` has nothing to wrap.
  */
-function wireTeamLeaders(): void {
-  const modalEl = byId("teamLeaderModal");
-  // The shared person selector (CR1/#9819), which owns the modal lifecycle, the
-  // body-mounted dropdown and the maxOptions fix.
-  const picker = modalEl ? attachToModal(modalEl, "#team-leader-person") : null;
+function wireTeamLeaderField(): void {
+  const modalEl = byId("teamModal");
+  if (!modalEl || !isManager) {
+    return;
+  }
 
-  byId("team-leader-save")?.addEventListener("click", () => {
-    const instance = picker?.getInstance();
-    const personId = Number(instance?.getValue() ?? 0);
-    if (!personId || leaderTeamId === 0) {
-      showModalError("team-leader", i18next.t("Choose a person"));
-      return;
-    }
+  teamLeaderPicker = attachToModal(modalEl, "#team-form-leader", {
+    onInit: (instance) => {
+      const leader = teamLeadersOnOpen[0];
+      if (!leader) {
+        return;
+      }
+      instance.addOption({ objid: String(leader.personId), text: leader.personName });
+      instance.setValue(String(leader.personId), true);
+    },
+  });
 
-    const personName = (() => {
-      const label = instance?.options?.[String(personId)]?.text;
-
-      return typeof label === "string" ? label : "";
-    })();
-
-    grantScope(personId, "team", leaderTeamId)
-      .then(() => {
-        modal("teamLeaderModal")?.hide();
-        instance?.clear();
-        notifySuccess(
-          i18next.t("{{name}} now leads {{team}}", {
-            name: personName,
-            team: findTeam(leaderTeamId)?.name ?? "",
-          }),
-        );
-
-        return load(true);
-      })
-      .catch((error: unknown) => {
-        showModalError("team-leader", errorMessage(error, i18next.t("The team leader could not be set")));
-      });
+  // Clearing the field is how a team is left with no leader: an empty picker on
+  // save revokes whatever grant the dialog opened with.
+  byId("team-form-leader-clear")?.addEventListener("click", () => {
+    teamLeaderPicker?.getInstance()?.clear();
   });
 }
 
@@ -1523,8 +1726,17 @@ function wireQualifications(): void {
    * One cell. The tick is applied straight away and rolled back on failure with
    * a toast — the §5.4 "optimistic UI + toast on failure" rule. The grid is NOT
    * re-fetched on success: a coordinator ticking fifteen boxes should not pay
-   * for fifteen reloads, and the only state that changed is the one this
-   * checkbox owns.
+   * for fifteen reloads.
+   *
+   * What it DOES do on success is write the answer back into `matrix`, the cached
+   * document the grid is re-rendered from. Without that the tick lived only in the
+   * DOM and the next `renderMatrix(matrix)` — which happens every time the tab is
+   * activated again — drew a document that predated the save, which is what the
+   * product owner saw as "it is not persisting".
+   *
+   * Each box also reports on itself, because there is deliberately no Save
+   * button: a spinner while the write is in flight, a green "Saved" for a second
+   * and a half, and a red "Not saved" beside the rolled-back box on failure.
    */
   document.addEventListener("change", (event) => {
     const target = event.target as HTMLInputElement | null;
@@ -1537,19 +1749,31 @@ function wireQualifications(): void {
     const qualificationId = Number(target.dataset.qualificationId ?? 0);
     const nowChecked = target.checked;
     target.disabled = true;
+    setQualificationStatus(target, "saving");
+
+    const confirmSaved = (): void => {
+      target.disabled = false;
+      setQualificationStatus(target, "saved");
+      window.setTimeout(() => setQualificationStatus(target, null), SAVED_BADGE_MS);
+    };
 
     const rollback = (error: unknown, fallback: string): void => {
       target.checked = !nowChecked;
       target.disabled = false;
+      setQualificationStatus(target, "failed");
       notifyError(errorMessage(error, fallback));
     };
 
     if (nowChecked) {
       grantQualification(positionId, personId)
         .then((result) => {
-          // Remember the row id so unticking can revoke it with no lookup.
-          target.dataset.qualificationId = String(result.qualification.id);
-          target.disabled = false;
+          // Remember the row id so unticking can revoke it with no lookup — on the
+          // element for this render, and in the cache for every render after it.
+          const savedId = result.qualification.id;
+          target.dataset.qualificationId = String(savedId);
+          setCachedQualification(personId, positionId, savedId, true);
+          refreshPoolHint(target, personId);
+          confirmSaved();
         })
         .catch((error: unknown) => rollback(error, i18next.t("The qualification could not be saved")));
       return;
@@ -1558,24 +1782,107 @@ function wireQualifications(): void {
     if (!qualificationId) {
       // Nothing to revoke — the box was never really on.
       target.disabled = false;
+      setQualificationStatus(target, null);
       return;
     }
 
     revokeQualification(qualificationId)
       .then(() => {
         // Revocation is deactivation, so the row id stays valid: re-ticking
-        // reactivates the same row rather than making a second one (§2.7).
-        target.disabled = false;
+        // reactivates the same row rather than making a second one (§2.7). The
+        // cache drops it, which is the shape the server would send — an inactive
+        // qualification is in neither list.
+        setCachedQualification(personId, positionId, qualificationId, false);
+        target.dataset.qualificationId = "0";
+        refreshPoolHint(target, personId);
+        confirmSaved();
       })
       .catch((error: unknown) => rollback(error, i18next.t("The qualification could not be removed")));
   });
 }
 
+/**
+ * Keep a row action menu usable inside a horizontally scrolling table.
+ *
+ * `.volunteer-scroll-x` sets `overflow-x: auto` so the qualification grid can be
+ * wider than the page. Per the CSS Overflow spec that coerces `overflow-y` from
+ * `visible` to `auto`, which clips any absolutely-positioned descendant — and a
+ * Bootstrap dropdown is exactly that. `data-bs-display="static"` does not help:
+ * it only turns Popper off, and the menu is still positioned inside the clipping
+ * box.
+ *
+ * The fix is to take the OPEN menu out of that box altogether. A `position: fixed`
+ * element is not clipped by an ancestor's overflow at all, so on `shown.bs.dropdown`
+ * the menu is switched to fixed and anchored to the trigger's viewport rectangle,
+ * and on `hide.bs.dropdown` it is handed back to Bootstrap untouched. Nothing is
+ * moved in the DOM, so Bootstrap's own focus handling, the delegated row-action
+ * click handlers and `dropdown-menu-end` alignment all keep working.
+ *
+ * Coordinates are re-derived on scroll and resize while the menu is open, because
+ * a fixed element does not follow the row it belongs to.
+ */
+function wireUnclippedRowMenus(wrapperId: string): void {
+  const wrapper = byId(wrapperId);
+  if (!wrapper) {
+    return;
+  }
+
+  let open: { menu: HTMLElement; toggle: HTMLElement } | null = null;
+
+  const place = (): void => {
+    if (!open) {
+      return;
+    }
+    const rect = open.toggle.getBoundingClientRect();
+    // `dropdown-menu-end` aligns the menu's right edge with the trigger's.
+    open.menu.style.top = `${rect.bottom}px`;
+    open.menu.style.left = `${Math.max(0, rect.right - open.menu.offsetWidth)}px`;
+  };
+
+  const release = (): void => {
+    if (!open) {
+      return;
+    }
+    open.menu.classList.remove("volunteer-menu-fixed");
+    open.menu.style.top = "";
+    open.menu.style.left = "";
+    open = null;
+    window.removeEventListener("resize", place);
+    window.removeEventListener("scroll", place, true);
+  };
+
+  // `shown`, not `show`: a `.dropdown-menu` without `.show` is `display: none`,
+  // so its width — which right-alignment needs — is zero until Bootstrap has
+  // opened it. The handler runs before the browser paints, so there is no flash.
+  wrapper.addEventListener("shown.bs.dropdown", (event) => {
+    // Bootstrap fires this on the TOGGLE, not on the `.dropdown` wrapper — both
+    // are accepted here so the handler survives either reading.
+    const node = event.target as HTMLElement | null;
+    const toggle = node?.matches("[data-bs-toggle='dropdown']")
+      ? node
+      : (node?.querySelector<HTMLElement>("[data-bs-toggle='dropdown']") ?? null);
+    const menu = toggle?.parentElement?.querySelector<HTMLElement>(".dropdown-menu") ?? null;
+    if (!menu || !toggle) {
+      return;
+    }
+
+    release();
+    open = { menu, toggle };
+    menu.classList.add("volunteer-menu-fixed");
+    place();
+    window.addEventListener("resize", place);
+    // Capture: the wrapper's own scroll does not bubble.
+    window.addEventListener("scroll", place, true);
+  });
+
+  wrapper.addEventListener("hide.bs.dropdown", release);
+}
+
 function wire(): void {
   for (const [navId, pane] of [
     ["nav-item-overview", "overview"],
-    ["nav-item-volunteers", "volunteers"],
     ["nav-item-positions", "positions"],
+    ["nav-item-volunteers", "volunteers"],
     ["nav-item-schedules", "schedules"],
     ["nav-item-occurrences", "occurrences"],
     ["nav-item-help-wanted", "help-wanted"],
@@ -1609,6 +1916,7 @@ function wire(): void {
     ["teamModal", "team-form-name"],
     ["positionModal", "position-form-name"],
     ["scheduleModal", "schedule-form-name"],
+    ["occurrenceRangeModal", "occurrence-range-from"],
   ]) {
     byId(modalId)?.addEventListener("shown.bs.modal", () => {
       byId<HTMLInputElement>(inputId)?.focus();
@@ -1626,57 +1934,21 @@ function wire(): void {
   // team. Re-rendering discards whatever was typed for the old team's positions, which is
   // correct: those rows are no longer part of this schedule's plan.
   byId("schedule-form-team")?.addEventListener("change", renderScheduleNeeds);
-  wireTeamLeaders();
+  wireTeamLeaderField();
   wireRemoveVolunteer();
   wireHelpWanted();
   wireQualifications();
+  wireOccurrenceRange();
+  // The qualification grid is the one table on this page that scrolls sideways.
+  wireUnclippedRowMenus("volunteers-table-wrapper");
 
   // Delegated: the rows are re-rendered on every load, so per-row listeners
   // would go stale.
   document.addEventListener("click", (event) => {
     const target = (event.target as HTMLElement | null)?.closest<HTMLElement>(
-      ".volunteer-team-edit, .volunteer-team-delete, .volunteer-team-leader-set, .volunteer-team-leader-remove, .volunteer-position-edit, .volunteer-position-delete, .volunteer-position-toggle, .volunteer-schedule-edit, .volunteer-schedule-delete, .volunteer-schedule-generate",
+      ".volunteer-team-edit, .volunteer-team-delete, .volunteer-position-edit, .volunteer-position-delete, .volunteer-position-toggle, .volunteer-schedule-edit, .volunteer-schedule-delete, .volunteer-schedule-generate",
     );
     if (!target) {
-      return;
-    }
-
-    if (target.classList.contains("volunteer-team-leader-set")) {
-      leaderTeamId = Number(target.dataset.teamId);
-      show(byId("team-leader-form-error"), false);
-      const title = byId("teamLeaderModalTitle");
-      if (title) {
-        title.textContent = i18next.t("Set the leader of {{team}}", { team: target.dataset.teamName ?? "" });
-      }
-      modal("teamLeaderModal")?.show();
-      return;
-    }
-
-    if (target.classList.contains("volunteer-team-leader-remove")) {
-      // Every grant on the row, so a team that somehow holds two leaders is
-      // genuinely cleared rather than left with one.
-      const scopeIds = (target.dataset.scopeIds ?? "")
-        .split(",")
-        .map(Number)
-        .filter((id) => id > 0);
-      confirmDelete(
-        i18next.t("Remove Team Leader"),
-        i18next.t("Stop {{name}} leading {{team}}? Their login and their own assignments are untouched.", {
-          name: target.dataset.leaderName ?? "",
-          team: target.dataset.teamName ?? "",
-        }),
-        () => {
-          Promise.all(scopeIds.map((scopeId) => revokeScope(scopeId)))
-            .then(() => {
-              notifySuccess(i18next.t("Team leader removed"));
-
-              return load(true);
-            })
-            .catch((error: unknown) => {
-              notifyError(errorMessage(error, i18next.t("The team leader could not be removed")));
-            });
-        },
-      );
       return;
     }
 
@@ -1742,6 +2014,7 @@ function wire(): void {
           deleteTeam(teamId)
             .then(() => {
               notifySuccess(i18next.t("Team deleted"));
+              matrix = null;
               return load(true);
             })
             .catch((error: unknown) => {
@@ -1763,6 +2036,8 @@ function wire(): void {
       updatePosition(positionId, { active: nowActive })
         .then(() => {
           notifySuccess(nowActive ? i18next.t("Position activated") : i18next.t("Position deactivated"));
+          // Only ACTIVE positions are columns (§2.6), so this adds or drops one.
+          matrix = null;
           return load(true);
         })
         .catch((error: unknown) => {
@@ -1779,6 +2054,7 @@ function wire(): void {
         deletePosition(positionId)
           .then(() => {
             notifySuccess(i18next.t("Position deleted"));
+            matrix = null;
             return load(true);
           })
           .catch((error: unknown) => {

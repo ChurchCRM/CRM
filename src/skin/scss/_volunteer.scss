@@ -1,0 +1,66 @@
+// Volunteer Management V2 (#9701).
+
+// A table that has to be allowed to grow wider than the page.
+//
+// The qualification grid on the ministry page has one column per position, and
+// the number of positions is unlimited, so the table cannot be made to fit: it
+// has to scroll sideways, and the scrollbar has to come and go by itself as the
+// window is resized. That is what `overflow-x: auto` on a block-level wrapper
+// does — the wrapper is always exactly as wide as its container, the table is
+// allowed to be wider, and the browser re-evaluates on every resize with no
+// ResizeObserver and no JS at all.
+//
+// `white-space: nowrap` is what makes the table honest about its width: without
+// it the cells squeeze their text instead of overflowing, and the wrapper never
+// discovers it has too much content.
+//
+// The row action menu that this scroller would clip is NOT solved here — CSS
+// cannot: the moment `overflow-x` is `auto`, `overflow-y: visible` computes to
+// `auto` and any absolutely-positioned descendant is clipped. ministry.ts
+// re-anchors the open menu with `position: fixed`, which is not clipped by an
+// ancestor's overflow at all. See table-action-menu.md.
+.volunteer-scroll-x {
+    overflow-x: auto;
+    overflow-y: visible;
+
+    > .table {
+        width: auto;
+        min-width: 100%;
+    }
+
+    > .table th,
+    > .table td {
+        white-space: nowrap;
+    }
+}
+
+// An open row action menu that has been re-anchored to the viewport by
+// ministry.ts. Bootstrap's own `.dropdown-menu.show` is `position: absolute`
+// with a Popper/`data-bs-display="static"` offset; the class below is added
+// alongside `.show` and the coordinates are written as inline `top`/`left`,
+// because only the browser knows where the trigger ended up after a scroll.
+.volunteer-menu-fixed {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    transform: none;
+    z-index: 1055; // above a Tabler card and its sticky headers, below a modal backdrop
+}
+
+// One cell of the qualification grid: the checkbox, and the badge that confirms
+// what happened to it. The badge is absolutely sized out of the flow so a save
+// does not make the column jump.
+.volunteer-qual-cell {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    min-height: 1.5rem;
+}
+
+.volunteer-qual-status {
+    display: inline-flex;
+    align-items: center;
+    min-width: 1.25rem;
+    font-size: 0.75rem;
+    line-height: 1;
+}
