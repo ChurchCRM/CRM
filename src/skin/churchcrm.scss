@@ -49,6 +49,9 @@
 @include meta.load-css("scss/finance");
 @include meta.load-css("scss/quill");
 
+// Volunteer Management V2 — the scrolling qualification grid and its row menus
+@include meta.load-css("scss/volunteer");
+
 // Floating Action Buttons — menu toggle, add person, add family
 @include meta.load-css("scss/fab");
 
