@@ -39,9 +39,11 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 
   <!-- Quick actions (§5.2): the three places a coordinator goes next. -->
   <div class="d-flex flex-wrap gap-2 align-items-center mb-3" id="volunteer-quick-actions">
-    <a href="<?= $sRootPath ?>/volunteer/setup" class="btn btn-primary">
-      <i class="fa-solid fa-wand-magic-sparkles me-1"></i><?= gettext('Guided setup') ?>
-    </a>
+    <?php if ($bIsManager): ?>
+      <button type="button" class="btn btn-primary" id="ministry-new-btn">
+        <i class="fa-solid fa-plus me-1"></i><?= gettext('New ministry') ?>
+      </button>
+    <?php endif; ?>
     <a href="<?= $sRootPath ?>/volunteer/ministries" class="btn btn-outline-primary">
       <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('My ministries and teams') ?>
     </a>
@@ -181,8 +183,8 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
               <?= gettext('Create a schedule and generate its dates, and the weeks to staff appear here.') ?>
             </p>
             <div class="empty-action">
-              <a href="<?= $sRootPath ?>/volunteer/setup" class="btn btn-primary">
-                <i class="fa-solid fa-plus me-1"></i><?= gettext('Start the guided setup') ?>
+              <a href="<?= $sRootPath ?>/volunteer/ministries" class="btn btn-primary">
+                <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('My ministries and teams') ?>
               </a>
             </div>
           </div>
@@ -316,6 +318,10 @@ $(document).ready(function () {
     });
 });
 </script>
+<?php endif; ?>
+
+<?php if ($bIsManager): ?>
+  <?php require __DIR__ . '/partials/ministry-create-modal.php'; ?>
 <?php endif; ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

@@ -37,6 +37,7 @@ import {
   type VolunteerDashboardPending,
   type VolunteerDashboardSwap,
 } from "./api";
+import { initMinistryCreate } from "./ministry-create";
 
 interface DashboardConfig {
   days: number;
@@ -611,6 +612,9 @@ function init(): void {
   days = config.days > 0 ? config.days : 28;
 
   wire();
+  // "New ministry" — the quick action that replaced the guided setup wizard. The
+  // button is rendered for a volunteer manager only; this is a no-op otherwise.
+  initMinistryCreate();
   void load();
 }
 

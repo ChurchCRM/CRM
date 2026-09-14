@@ -109,7 +109,7 @@ module.exports = {
     'event-types-list': './webpack/event-types-list',
     'event-cart-to-event': './webpack/event-cart-to-event',
     'volunteer-dashboard': './webpack/volunteer/dashboard',
-    'volunteer-setup': './webpack/volunteer/setup',
+    'volunteer-ministries': './webpack/volunteer/ministries',
     'volunteer-ministry': './webpack/volunteer/ministry',
     'volunteer-occurrence': './webpack/volunteer/occurrence',
     'volunteer-my-schedule': './webpack/volunteer/my-schedule',
