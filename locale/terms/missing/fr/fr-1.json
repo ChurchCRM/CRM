@@ -1,36 +1,36 @@
 {
-  "Code": "",
-  "Signature": "",
-  "Auto": "",
-  "CSV": "",
-  "OFX": "",
-  "Classifications": "",
+  "Code": "Code",
+  "Signature": "Signature",
+  "Auto": "Auto",
+  "CSV": "CSV",
+  "OFX": "OFX",
+  "Classifications": "Classifications",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "L'authentification à deux facteurs est requise. Vous avez %d jour pour vous inscrire.|L'authentification à deux facteurs est requise. Vous avez %d jours pour vous inscrire.",
-    "other": ""
+    "one": "L'authentification à deux facteurs est requise. Vous avez %d jour pour vous inscrire.",
+    "other": "L'authentification à deux facteurs est requise. Vous avez %d jours pour vous inscrire."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} membre copié",
+    "other": "{{count}} membres copiés"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Cette liste contient {{count}} destinataire — trop pour un lien mailto: Utilisez plutôt Copier les adresses.",
+    "other": "Cette liste contient {{count}} destinataires — trop pour un lien mailto: Utilisez plutôt Copier les adresses."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez plutôt Copier les adresses.",
+    "other": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez plutôt Copier les adresses."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minute restante",
+    "other": "{{count}} minutes restantes"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} famille n'a pas pu être géolocalisée",
+    "other": "{{count}} familles n'ont pas pu être géolocalisées"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…et {{count}} de plus. Relancez pour voir le reste.",
+    "other": "…et {{count}} de plus. Relancez pour voir le reste."
   }
 }
