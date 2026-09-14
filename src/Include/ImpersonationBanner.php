@@ -3,14 +3,18 @@
 /**
  * Impersonation banner (issue #9843).
  *
- * Rendered by Include/Header.php immediately after the opening <body> tag, so
- * it reaches every legacy `.php` page and every Slim MVC page (including the
- * /v2 module) through the one header both of them require. Keeping it in a
- * single include is deliberate: a second copy would drift, and a page without
- * the banner would let an administrator forget they are acting as someone else.
+ * Rendered immediately after the opening <body> tag by BOTH header layouts —
+ * Include/Header.php (every legacy `.php` page and every Slim MVC page,
+ * including /v2) and Include/HeaderNotLoggedIn.php (the auth-flow pages, the
+ * 404s, the Bootstrapper error page and, crucially, /external/limited-access,
+ * where an EditSelf-exclusive user is confined). Keeping it in a single include
+ * is deliberate: a second copy would drift, and a page without the banner would
+ * let an administrator forget they are acting as someone else — or strand them
+ * with no way back.
  *
- * Nothing is emitted unless the session actually carries a masquerade record.
- * `body.impersonating` (set in Header.php) supplies the offset that keeps the
+ * Nothing is emitted unless there is an authenticated session AND that session
+ * carries a masquerade record, so the include is inert on anonymous pages.
+ * `body.impersonating` (set by both headers) supplies the offset that keeps the
  * page content and the fixed navbars clear of the bar — see
  * skin/scss/_impersonation.scss.
  */
@@ -21,7 +25,7 @@ use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
-if (!ImpersonationService::isActive()) {
+if (!ImpersonationService::isActive() || !AuthenticationManager::isUserAuthenticated()) {
     return;
 }
 
