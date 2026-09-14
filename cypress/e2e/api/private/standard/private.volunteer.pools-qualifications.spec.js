@@ -31,7 +31,9 @@
  *   §4.6  who may link a pool and who may grant a qualification: coordinator in
  *         their own ministry, team leader for their own team's positions only
  *   P5/P6 the Cart is the bulk-selection mechanism; V2 adds a sink, not a second
- *         selection UI
+ *         selection UI. That sink is now `POST /ministries/{id}/pool/from-cart`,
+ *         which adds to the POOL and grants nothing — the position-scoped
+ *         `qualifications/from-cart` route is gone
  *
  * Seed fixtures (design §6.4). Since D19 a ministry's pool starts EMPTY — the group
  * is created with the ministry and nobody is in it — so the people this spec works
@@ -805,77 +807,116 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
     });
 
     // -----------------------------------------------------------------
-    // P5 / P6 — bulk grant from the Cart, not a second selection mechanism
+    // P5 / P6 — bulk ADD TO THE POOL from the Cart, not a second selection
+    // mechanism.
+    //
+    // This replaces "bulk grant from the cart". `POST
+    // /positions/{id}/qualifications/from-cart` is gone: the ministry page's cart
+    // button no longer asks for a position, because adding somebody to a ministry
+    // and saying what they can do are two statements (§2.5) and it was making both
+    // in one click. Its replacement puts everyone in the cart in the POOL and grants
+    // nothing.
     // -----------------------------------------------------------------
-    describe("Bulk grant from the cart", () => {
+    describe("Bulk add to the pool from the cart", () => {
+        const CART_PEOPLE = [8, 9, 63];
+
         beforeEach(() => {
             cy.makePrivateAdminAPICall("DELETE", CART_URL, null, 200);
+            for (const personId of CART_PEOPLE) {
+                cy.makePrivateAdminAPICall(
+                    "DELETE",
+                    `${MINISTRIES_URL}/${ministryB}/pool/${personId}`,
+                    null,
+                    [200, 404],
+                );
+            }
         });
 
         after(() => {
             cy.makePrivateAdminAPICall("DELETE", CART_URL, null, 200);
         });
 
-        it("qualifies everyone in the cart for one position", () => {
+        it("puts everyone in the cart in the ministry's pool in one call", () => {
+            cy.makePrivateAdminAPICall("POST", CART_URL, { Persons: CART_PEOPLE }, 200);
+
             cy.makePrivateAdminAPICall(
                 "POST",
-                CART_URL,
-                { Persons: [8, 9, 63] },
+                `${MINISTRIES_URL}/${ministryB}/pool/from-cart`,
+                null,
                 200,
+            ).then((resp) => {
+                expect(resp.body.added).to.eq(CART_PEOPLE.length);
+                expect(resp.body.alreadyMembers).to.eq(0);
+            });
+
+            cy.makePrivateAdminAPICall("GET", `${MINISTRIES_URL}/${ministryB}/pool`, null, 200).then(
+                (resp) => {
+                    const personIds = resp.body.members.map((m) => m.personId);
+                    expect(personIds).to.include.members(CART_PEOPLE);
+                },
             );
-
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `${VOLUNTEER_URL}/positions/${positionExpeditor}/qualifications/from-cart`,
-                null,
-                200,
-            ).then((resp) => {
-                expect(resp.body.granted).to.eq(3);
-                expect(resp.body.existing).to.eq(0);
-            });
-
-            cy.makePrivateAdminAPICall(
-                "GET",
-                `${VOLUNTEER_URL}/positions/${positionExpeditor}/qualifications?active=1`,
-                null,
-                200,
-            ).then((resp) => {
-                const personIds = resp.body.qualifications.map((q) => q.personId);
-                expect(personIds).to.include.members([8, 9, 63]);
-            });
         });
 
-        it("is idempotent: re-running reports the rows that already existed", () => {
+        it("grants no qualification — the pool is candidacy, the tick is eligibility (§2.5)", () => {
+            cy.makePrivateAdminAPICall("POST", CART_URL, { Persons: CART_PEOPLE }, 200);
             cy.makePrivateAdminAPICall(
                 "POST",
-                CART_URL,
-                { Persons: [8, 9, 63] },
-                200,
-            );
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `${VOLUNTEER_URL}/positions/${positionExpeditor}/qualifications/from-cart`,
+                `${MINISTRIES_URL}/${ministryB}/pool/from-cart`,
                 null,
                 200,
-            ).then((resp) => {
-                expect(resp.body.granted).to.eq(0);
-                expect(resp.body.existing).to.eq(3);
-            });
+            );
+
             dbOk(
                 `SELECT COUNT(*) AS c FROM volunteer_qualification_vqal
                   WHERE vqal_vpos_ID = ? AND vqal_per_ID IN (8, 9, 63)`,
-                [positionExpeditor],
+                [positionBTeam],
             ).then((rows) => {
-                expect(Number(rows[0].c)).to.eq(3);
+                expect(Number(rows[0].c), "qualifications created by a pool add").to.eq(0);
+            });
+        });
+
+        it("is idempotent: re-running counts the ones that were already there", () => {
+            cy.makePrivateAdminAPICall("POST", CART_URL, { Persons: CART_PEOPLE }, 200);
+            cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${ministryB}/pool/from-cart`, null, 200);
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${MINISTRIES_URL}/${ministryB}/pool/from-cart`,
+                null,
+                200,
+            ).then((resp) => {
+                expect(resp.body.added).to.eq(0);
+                expect(resp.body.alreadyMembers).to.eq(CART_PEOPLE.length);
+            });
+
+            // One membership row each, never a second (the Group's unique membership).
+            dbOk(
+                `SELECT COUNT(*) AS c
+                   FROM person2group2role_p2g2r p
+                   JOIN group_grp g ON g.grp_ID = p.p2g2r_grp_ID
+                  WHERE g.grp_ministry_id = ? AND p.p2g2r_per_ID IN (8, 9, 63)`,
+                [ministryB],
+            ).then((rows) => {
+                expect(Number(rows[0].c)).to.eq(CART_PEOPLE.length);
             });
         });
 
         it("returns 400 when the cart is empty", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                `${VOLUNTEER_URL}/positions/${positionExpeditor}/qualifications/from-cart`,
+                `${MINISTRIES_URL}/${ministryB}/pool/from-cart`,
                 null,
                 400,
+            );
+        });
+
+        it("no longer offers the position-scoped cart grant", () => {
+            cy.makePrivateAdminAPICall("POST", CART_URL, { Persons: CART_PEOPLE }, 200);
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${VOLUNTEER_URL}/positions/${positionBTeam}/qualifications/from-cart`,
+                null,
+                404,
             );
         });
     });
@@ -1012,7 +1053,7 @@ describe("Volunteer v2 pool and qualification API (#9707)", () => {
             );
             cy.makePrivatePlainAuthAPICall(
                 "POST",
-                `${VOLUNTEER_URL}/positions/${positionSetup}/qualifications/from-cart`,
+                `${MINISTRIES_URL}/${ministryA}/pool/from-cart`,
                 null,
                 403,
             );

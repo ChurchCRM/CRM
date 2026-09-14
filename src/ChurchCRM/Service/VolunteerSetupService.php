@@ -891,6 +891,67 @@ class VolunteerSetupService
     }
 
     /**
+     * Put a list of people in the ministry's volunteer pool — the Cart sink (P5/P6).
+     *
+     * The loop lives here rather than in `Cart`, matching the precedent the design
+     * names: the route reads `Cart::getCartPeople()` and hands the ids to the service.
+     * Authorization is checked ONCE, before the loop, because every row targets the
+     * same ministry — and the pool Group is resolved once for the same reason.
+     *
+     * Per person this is exactly `addPoolMember()`: idempotent, and somebody already
+     * in the pool is counted rather than thrown over. Ids that name nobody are skipped
+     * silently — a cart can outlive a deleted person, and failing the whole batch over
+     * one stale id would be worse than ignoring it.
+     *
+     * Nothing is qualified here. Being in the pool is candidacy; the tick on the
+     * Volunteers grid is eligibility (§2.5), and the coordinator does that second.
+     *
+     * @param int[] $personIds
+     *
+     * @return array{added: int, alreadyMembers: int}
+     *
+     * @throws VolunteerSetupException 403 outside scope, 404 when the ministry has no pool group
+     */
+    public function addPoolMembers(int $ministryId, array $personIds, User $actor): array
+    {
+        $this->assertCanManageMinistry($actor, $ministryId);
+
+        $group = $this->requirePoolGroup($ministryId);
+
+        $added = 0;
+        $alreadyMembers = 0;
+        $seen = [];
+
+        foreach ($personIds as $rawId) {
+            $personId = (int) $rawId;
+            if ($personId <= 0 || isset($seen[$personId])) {
+                continue;
+            }
+            $seen[$personId] = true;
+
+            if (PersonQuery::create()->findPk($personId) === null) {
+                continue;
+            }
+
+            if ($this->joinPoolGroup($group, $personId)) {
+                ++$added;
+            } else {
+                ++$alreadyMembers;
+            }
+        }
+
+        $this->logger->info('Volunteer pool members added in bulk', [
+            'ministryId' => $ministryId,
+            'groupId' => $group->getId(),
+            'added' => $added,
+            'alreadyMembers' => $alreadyMembers,
+            'actor' => $actor->getId(),
+        ]);
+
+        return ['added' => $added, 'alreadyMembers' => $alreadyMembers];
+    }
+
+    /**
      * Put a person in a pool Group whose authorization the CALLER has already
      * decided — the qualification path (§4.6 puts no membership condition on
      * granting, so qualifying somebody simply brings them in) and the member-side
@@ -1256,74 +1317,6 @@ class VolunteerSetupService
         }
 
         return $this->joinPoolGroup($group, $personId);
-    }
-
-    /**
-     * Grant one position to a list of people — the Cart sink (P5/P6).
-     *
-     * The loop lives here rather than in `Cart`, matching the precedent the
-     * design names: the route reads `Cart::getCartPeople()` and hands the ids
-     * to the service. Authorization is checked ONCE, before the loop, because
-     * every row targets the same position.
-     *
-     * Ids that name nobody are counted as `skipped` rather than aborting the
-     * batch: a cart can outlive a deleted person, and failing the whole grant
-     * over one stale id would be worse than reporting it.
-     *
-     * @param int[] $personIds
-     *
-     * @return array{granted: int, reactivated: int, existing: int, skipped: int, qualifications: VolunteerQualification[]}
-     *
-     * @throws VolunteerSetupException
-     */
-    public function grantQualifications(
-        array $personIds,
-        VolunteerPosition $position,
-        User $actor,
-        ?string $notes = null
-    ): array {
-        $this->assertCanManagePosition($actor, (int) $position->getId());
-
-        $result = ['granted' => 0, 'reactivated' => 0, 'existing' => 0, 'skipped' => 0, 'qualifications' => []];
-        $seen = [];
-
-        foreach ($personIds as $rawId) {
-            $personId = (int) $rawId;
-            if ($personId <= 0 || isset($seen[$personId])) {
-                continue;
-            }
-            $seen[$personId] = true;
-
-            if (PersonQuery::create()->findPk($personId) === null) {
-                ++$result['skipped'];
-                continue;
-            }
-
-            $existing = $this->findQualification($personId, (int) $position->getId());
-            if ($existing === null) {
-                ++$result['granted'];
-            } elseif ($existing->getActive()) {
-                ++$result['existing'];
-            } else {
-                ++$result['reactivated'];
-            }
-
-            $result['qualifications'][] = $this->writeQualification($personId, $position, $actor, $notes);
-            // D19: same rule as the single grant — qualifying somebody brings them
-            // into the ministry's pool Group.
-            $this->qualifyIntoPool((int) $position->getMinistryId(), $personId);
-        }
-
-        $this->logger->info('Volunteer qualifications granted in bulk', [
-            'positionId' => $position->getId(),
-            'granted' => $result['granted'],
-            'reactivated' => $result['reactivated'],
-            'existing' => $result['existing'],
-            'skipped' => $result['skipped'],
-            'actor' => $actor->getId(),
-        ]);
-
-        return $result;
     }
 
     /**

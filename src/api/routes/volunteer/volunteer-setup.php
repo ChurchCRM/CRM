@@ -160,14 +160,25 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
         // ── The pool Group (D19) ──────────────────────────────────────────
         // There is nothing to link any more: a ministry owns exactly one Group and
         // it was created with the ministry. What is left is its membership, and
-        // these three routes are the coordinator's way in — gated exactly like
-        // every other ministry route, and writing through the Propel membership
-        // model so the plugin hooks fire (G3).
+        // these routes are the coordinator's way in — gated exactly like every
+        // other ministry route, and writing through the Propel membership model so
+        // the plugin hooks fire (G3).
         //
-        // No InputSanitizationMiddleware: both writes take their person id from
-        // the PATH, where the route pattern has already restricted it to digits,
-        // and neither reads a body at all.
+        // No InputSanitizationMiddleware: the per-person writes take their person id
+        // from the PATH, where the route pattern has already restricted it to digits,
+        // and none of them reads a body at all.
         $setup->get('/ministries/{ministryId:[0-9]+}/pool', 'listVolunteerPoolMembers')
+            ->add(new VolunteerMinistryMiddleware());
+
+        // The Cart sink for the pool (P5/P6), which is what "Add from Cart" on the
+        // Volunteers tab calls. Declared BEFORE the `{personId}` route below so the
+        // literal segment is unambiguous to a reader — the `[0-9]+` constraint already
+        // makes it impossible for `from-cart` to be swallowed by it.
+        //
+        // No sanitizer, for the same reason the per-person routes have none: the
+        // payload is empty, the people come from $_SESSION via Cart::getCartPeople(),
+        // and there is nothing in the request to spoof.
+        $setup->post('/ministries/{ministryId:[0-9]+}/pool/from-cart', 'addVolunteerPoolMembersFromCart')
             ->add(new VolunteerMinistryMiddleware());
 
         $setup->post('/ministries/{ministryId:[0-9]+}/pool/{personId:[0-9]+}', 'addVolunteerPoolMember')
@@ -205,12 +216,11 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
             ]))
             ->add(new VolunteerPositionMiddleware());
 
-        // The Cart sink (P5/P6). No sanitizer: the payload is empty — the
-        // people come from $_SESSION via Cart::getCartPeople(), never from the
-        // request, so there is nothing to sanitize and nothing to spoof.
-        $setup->post('/positions/{positionId:[0-9]+}/qualifications/from-cart', 'grantVolunteerQualificationsFromCart')
-            ->add(new VolunteerPositionMiddleware());
-
+        // There is no `qualifications/from-cart` route any more. The Cart sink of the
+        // Volunteers tab is "Add from Cart", which puts people in the POOL and grants
+        // nothing — `/ministries/{id}/pool/from-cart` above. Qualifying a group of
+        // people for one position in a single click had no caller left once the
+        // position selector came off that dialog.
         $setup->delete('/qualifications/{qualificationId:[0-9]+}', 'revokeVolunteerQualification')
             ->add(new VolunteerQualificationMiddleware());
 
@@ -1490,6 +1500,65 @@ function addVolunteerPoolMember(Request $request, Response $response): Response
 }
 
 /**
+ * @OA\Post(
+ *     path="/volunteer/ministries/{ministryId}/pool/from-cart",
+ *     operationId="addVolunteerPoolMembersFromCart",
+ *     summary="Put everyone in the session cart into this ministry's volunteer pool",
+ *     description="The V2 Cart sink for the pool (design P5/P6, D19): the route reads Cart::getCartPeople() and hands the ids to VolunteerSetupService::addPoolMembers(), which writes one person2group2role_p2g2r row per person through the managed-write context so the GROUP_MEMBER_ADDED plugin hook fires exactly as it does for the single-person route. Idempotent per person: somebody already in the pool is counted in alreadyMembers rather than failing the batch, so pressing the button twice is safe. No qualification is granted - being in the pool is candidacy, the tick on the grid is eligibility (design section 2.5). The cart is NOT emptied. Takes no request body.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=400, description="The cart is empty"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry, or it has no pool group"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="added", type="integer", description="How many people were newly put in the pool"),
+ *             @OA\Property(property="alreadyMembers", type="integer", description="How many were in it already")
+ *         )
+ *     )
+ * )
+ */
+function addVolunteerPoolMembersFromCart(Request $request, Response $response): Response
+{
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
+
+    $personIds = [];
+    foreach (Cart::getCartPeople() as $person) {
+        /** @var Person $person */
+        $personIds[] = (int) $person->getId();
+    }
+
+    if ($personIds === []) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Add people to the cart before adding them as volunteers'),
+            [],
+            400,
+            null,
+            $request
+        );
+    }
+
+    try {
+        $result = (new VolunteerSetupService())->addPoolMembers(
+            (int) $ministry->getId(),
+            $personIds,
+            volunteerSetupActor()
+        );
+    } catch (\Throwable $e) {
+        return volunteerSetupError($request, $response, $e);
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'added' => $result['added'],
+        'alreadyMembers' => $result['alreadyMembers'],
+    ]);
+}
+
+/**
  * @OA\Delete(
  *     path="/volunteer/ministries/{ministryId}/pool/{personId}",
  *     operationId="removeVolunteerPoolMember",
@@ -1783,69 +1852,6 @@ function grantVolunteerQualification(Request $request, Response $response): Resp
         ],
         $existing === null ? 201 : 200
     );
-}
-
-/**
- * @OA\Post(
- *     path="/volunteer/positions/{positionId}/qualifications/from-cart",
- *     operationId="grantVolunteerQualificationsFromCart",
- *     summary="Qualify everyone in the session cart for one position",
- *     description="The V2 Cart sink (design P5/P6): the route reads Cart::getCartPeople() and hands the ids to VolunteerSetupService, exactly as Cart::emptyToGroup()'s successors do. The cart is NOT emptied - the same selection is usually wanted for a second position. Takes no request body.",
- *     tags={"Volunteer"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="positionId", in="path", required=true, @OA\Schema(type="integer")),
- *     @OA\Response(response=400, description="The cart is empty"),
- *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this position, or V2 is not enabled"),
- *     @OA\Response(response=404, description="No such position"),
- *     @OA\Response(response=200, description="OK",
- *         @OA\JsonContent(
- *             @OA\Property(property="granted", type="integer"),
- *             @OA\Property(property="reactivated", type="integer"),
- *             @OA\Property(property="existing", type="integer"),
- *             @OA\Property(property="skipped", type="integer")
- *         )
- *     )
- * )
- */
-function grantVolunteerQualificationsFromCart(Request $request, Response $response): Response
-{
-    /** @var VolunteerPosition $position */
-    $position = $request->getAttribute('volunteerPosition');
-
-    $personIds = [];
-    foreach (Cart::getCartPeople() as $person) {
-        /** @var Person $person */
-        $personIds[] = (int) $person->getId();
-    }
-
-    if ($personIds === []) {
-        return SlimUtils::renderErrorJSON(
-            $response,
-            gettext('Add people to the cart before qualifying them'),
-            [],
-            400,
-            null,
-            $request
-        );
-    }
-
-    try {
-        $result = (new VolunteerSetupService())->grantQualifications(
-            $personIds,
-            $position,
-            volunteerSetupActor()
-        );
-    } catch (\Throwable $e) {
-        return volunteerSetupError($request, $response, $e);
-    }
-
-    return SlimUtils::renderJSON($response, [
-        'granted' => $result['granted'],
-        'reactivated' => $result['reactivated'],
-        'existing' => $result['existing'],
-        'skipped' => $result['skipped'],
-    ]);
 }
 
 /**
