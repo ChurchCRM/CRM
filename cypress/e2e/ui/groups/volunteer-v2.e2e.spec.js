@@ -687,15 +687,18 @@ describe("Volunteer v2 e2e (UI) — localization sanity", () => {
      * `.text()` walks `<script>` nodes too, and every V2 view's inline bootstrap
      * script legitimately contains the strings this test forbids on screen.
      */
+    // The ministries list page was retired with the navigation change; the
+    // ministry detail page it linked to is the surface that survived, and the
+    // sidebar lists the ministries now.
     const screens = [
         ["dashboard", DASHBOARD_URL, "#volunteer-dashboard"],
-        ["ministries", MINISTRIES_URL, "#volunteer-ministries-list"],
+        ["ministry", () => `${MINISTRIES_URL}/${ministryId}`, "#overview-content"],
     ];
 
     screens.forEach(([label, url, ready]) => {
         it(`${label} renders no raw i18next key or unsubstituted placeholder`, () => {
             freshAdminLogin();
-            cy.visit(url);
+            cy.visit(typeof url === "function" ? url() : url);
             cy.get(ready, { timeout: 20000 }).should("exist");
 
             cy.get(ready)
@@ -839,10 +842,6 @@ describe("Volunteer v2 e2e (UI) — responsive, coordinator and admin screens", 
         it(`dashboard fits at ${at}`, () => {
             checkScreen("S1 dashboard", DASHBOARD_URL, "#volunteer-dashboard", viewport);
             cy.get("#volunteer-gaps-card").should("be.visible");
-        });
-
-        it(`ministries list fits at ${at}`, () => {
-            checkScreen("ministries list", MINISTRIES_URL, "body", viewport);
         });
 
         it(`ministry page and every tab fit at ${at}`, () => {

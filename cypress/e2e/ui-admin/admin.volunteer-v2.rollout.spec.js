@@ -107,12 +107,13 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
         // it on the System Settings page WITHOUT logging out. The logged-in User
         // object lives in the PHP session; a memo of "not a coordinator" computed
         // during the v1 page loads must not follow the session, or the admin sees
-        // only the two member entries until the next login.
+        // only the two member entries under Volunteer and no Ministries heading
+        // at all until the next login.
         beforeEach(() => {
             setVersion("v1");
             freshAdminLogin();
             cy.visit(PERSON_VIEW_URL);
-            cy.get('a[href$="/volunteer/ministries"]').should("not.exist");
+            cy.get('a[href$="/volunteer/dashboard"]').should("not.exist");
         });
 
         after(() => {
@@ -128,7 +129,10 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
             // "Setup" is gone from the menu: the guided wizard was removed and
             // its one irreplaceable step is a "New ministry" button now.
             cy.get('a[href$="/volunteer/setup"]').should("not.exist");
-            cy.get('a[href$="/volunteer/ministries"]').should("exist");
+            // The coordinator half is the Ministries heading now — the
+            // dashboard entry moved there out of the Volunteer heading, and
+            // the retired ministries list page has no entry at all.
+            cy.get('a[href$="/volunteer/ministries"]').should("not.exist");
             cy.get('a[href$="/volunteer/dashboard"]').should("exist");
             cy.get('a[href$="/volunteer/my-schedule"]').should("exist");
         });

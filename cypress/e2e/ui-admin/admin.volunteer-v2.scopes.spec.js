@@ -288,12 +288,15 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
     });
 
     describe("what the granted coordinator can now do", () => {
-        it("gives person 3 the Volunteer menu and the ministry page", () => {
+        it("gives person 3 the Ministries menu and the ministry page", () => {
             freshCoordinatorLogin();
 
             // The coordinator entries appear only for User::isVolunteerCoordinatorEnabled(),
             // which for this person is true solely because of the scope row the UI wrote.
-            cy.get(`a[href$="${MINISTRIES_URL}"]`).should("exist");
+            // They live under the Ministries heading: the dashboard, and one
+            // entry per ministry they hold a scope on — which is this one.
+            cy.get('a[href$="/volunteer/dashboard"]').should("exist");
+            cy.get(`a[href$="${ministryUrl()}"]`).should("exist");
 
             cy.visit(ministryUrl());
             cy.url().should("not.include", "access-denied");
