@@ -244,6 +244,76 @@ convert it, but when you touch a table wrapper for any other reason, upgrade it 
 grep -rn "overflow: visible" src/ --include="*.php"
 ```
 
+### A menu inside a horizontally SCROLLING table <!-- learned: 2026-09-14 -->
+
+`overflow-x: clip` above is the right answer when the table may be *clipped*
+horizontally. Some tables may not be: the Volunteer v2 qualification grid has one
+column per position and the number of positions is unlimited, so it has to scroll
+sideways, and the scrollbar has to appear and disappear as the window is resized.
+
+There is no CSS-only answer for that case. `overflow-x: auto` coerces
+`overflow-y` from `visible` to `auto` (the same spec rule as above), and
+`data-bs-display="static"` does not help — it only turns Popper off; the menu is
+still absolutely positioned *inside* the clipping box.
+
+**Rule: a scrolling wrapper keeps `overflow-x: auto`, and the OPEN menu is
+re-anchored to the viewport with `position: fixed`.** A fixed element is not
+clipped by an ancestor's overflow at all (as long as no ancestor creates a
+containing block with `transform` / `filter` / `perspective`). Nothing moves in
+the DOM, so Bootstrap's focus handling, `dropdown-menu-end` alignment and every
+delegated row-action click handler keep working.
+
+```scss
+// src/skin/scss/_volunteer.scss
+.volunteer-scroll-x {
+    overflow-x: auto;
+    overflow-y: visible;              // coerced to auto; the menu escapes via position: fixed
+
+    > .table { width: auto; min-width: 100%; }
+    > .table th, > .table td { white-space: nowrap; }   // or the cells squeeze instead of overflowing
+}
+
+.volunteer-menu-fixed {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    transform: none;
+    z-index: 1055;
+}
+```
+
+```ts
+// webpack/volunteer/ministry.ts — wireUnclippedRowMenus()
+wrapper.addEventListener("shown.bs.dropdown", (event) => {
+  // Bootstrap fires dropdown events on the TOGGLE, not on the `.dropdown` wrapper.
+  const node = event.target as HTMLElement | null;
+  const toggle = node?.matches("[data-bs-toggle='dropdown']")
+    ? node
+    : node?.querySelector<HTMLElement>("[data-bs-toggle='dropdown']") ?? null;
+  const menu = toggle?.parentElement?.querySelector<HTMLElement>(".dropdown-menu");
+  // …add .volunteer-menu-fixed, then set top/left from toggle.getBoundingClientRect()
+});
+wrapper.addEventListener("hide.bs.dropdown", release);   // strip the class and the coordinates
+```
+
+Three details that are easy to get wrong:
+
+- **`shown`, not `show`.** A `.dropdown-menu` without `.show` is `display: none`,
+  so its width is 0 and right-alignment lands in the wrong place. `shown` runs
+  before the browser paints, so there is no visible flash.
+- **Bootstrap fires `show`/`shown.bs.dropdown` on the toggle button**, not on the
+  `.dropdown` wrapper — a handler that does `event.target.querySelector(".dropdown-menu")`
+  silently never fires.
+- **Re-place on `scroll` (capture) and `resize` while the menu is open**: a fixed
+  element does not follow the row it belongs to. The wrapper's own scroll event
+  does not bubble, so the listener must be registered with `capture: true`.
+
+Proving it in Cypress: at `cy.viewport(900, 800)` assert
+`wrapper.scrollWidth > wrapper.clientWidth`, then open the menu and check
+`getComputedStyle(menu).position === "fixed"`, that its rectangle is inside the
+viewport, and that `document.elementFromPoint()` at the menu's own centre lands
+*inside the menu* — a clipped menu is not what the browser draws there.
+
 ### Still required: `data-bs-display="static"` on each trigger
 
 Keep `data-bs-display="static"` on every toggle button inside a fixed-overflow wrapper.
