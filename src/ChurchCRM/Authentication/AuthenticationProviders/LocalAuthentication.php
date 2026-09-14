@@ -80,20 +80,26 @@ class LocalAuthentication implements IAuthenticationProvider
         }
     }
 
-    private function prepareSuccessfulLoginOperations(): void
+    /**
+     * Establish the PHP session state for `$this->currentUser`.
+     *
+     * This is the half of a successful login that is purely about the *session*:
+     * a fresh session id plus the per-session flags and caches the rest of the
+     * application reads. It deliberately contains no login bookkeeping (last
+     * login stamp, login/failed-login counters) so that it can be reused by
+     * flows that are not logins — notably the admin masquerade in
+     * {@see \ChurchCRM\Service\ImpersonationService}, which must not make the
+     * impersonated account look as though the user signed in.
+     *
+     * @see prepareSuccessfulLoginOperations() for the full post-login sequence.
+     */
+    private function establishSessionForUser(): void
     {
         // Regenerate session ID to prevent session fixation attacks.
         // delete_old_session=true ensures the old session file is removed.
         if (session_status() === PHP_SESSION_ACTIVE) {
             session_regenerate_id(true);
         }
-
-        // Set the LastLogin and Increment the LoginCount
-        $date = new \DateTimeImmutable('now', DateTimeUtils::getConfiguredTimezone());
-        $this->currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
-        $this->currentUser->setLoginCount($this->currentUser->getLoginCount() + 1);
-        $this->currentUser->setFailedLogins(0);
-        $this->currentUser->save();
 
         $_SESSION['bManageGroups'] = $this->currentUser->isManageGroupsEnabled();
         $_SESSION['bFinance'] = $this->currentUser->isFinanceEnabled();
@@ -109,6 +115,41 @@ class LocalAuthentication implements IAuthenticationProvider
         // Pledge and payment preferences
         //$_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
         $_SESSION['iCurrentDeposit'] = $this->currentUser->getCurrentDeposit();
+    }
+
+    /**
+     * Everything that must happen after credentials (and 2FA, where enrolled)
+     * have been accepted: record the login against the account, then establish
+     * the session.
+     */
+    private function prepareSuccessfulLoginOperations(): void
+    {
+        $this->establishSessionForUser();
+
+        // Set the LastLogin and Increment the LoginCount
+        $date = new \DateTimeImmutable('now', DateTimeUtils::getConfiguredTimezone());
+        $this->currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
+        $this->currentUser->setLoginCount($this->currentUser->getLoginCount() + 1);
+        $this->currentUser->setFailedLogins(0);
+        $this->currentUser->save();
+    }
+
+    /**
+     * Establish this provider's session as `$user` WITHOUT authenticating them.
+     *
+     * Only the impersonation flow may call this, and only after it has proven
+     * that the *caller* is an administrator — see
+     * {@see \ChurchCRM\Service\ImpersonationService}. Compared with a password
+     * login this skips the password check, the 2FA prompt, the failed-login
+     * counters and the `usr_LastLogin` / `usr_LoginCount` bookkeeping; the
+     * session state itself is identical because both paths share
+     * establishSessionForUser().
+     */
+    public function establishSessionAsUser(User $user): void
+    {
+        $this->currentUser = $user;
+        $this->bPendingTwoFactorAuth = false;
+        $this->establishSessionForUser();
     }
 
     public function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult
