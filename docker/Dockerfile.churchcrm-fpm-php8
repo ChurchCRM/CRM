@@ -1,19 +1,109 @@
-# PHP-FPM Dockerfile for ChurchCRM (nginx deployments)
-#
-# Use this image with the nginx configuration in docker/nginx/default.conf.
-# For the Apache-based development/CI setup, see Dockerfile.churchcrm-apache-php8.
+# Production PHP-FPM Dockerfile for ChurchCRM
+# Includes compiled ChurchCRM release code (no rebuild needed)
 #
 # Build:
-#   docker build -f Dockerfile.churchcrm-fpm-php8 -t churchcrm/crm:php8-fpm .
+#   docker build -f Dockerfile.churchcrm-fpm-php8 -t churchcrm/crm:7.7.0-php8-fpm .
 #
-# Required PHP extensions for ChurchCRM:
-#   bcmath, curl, exif, gd, gettext, iconv, intl, mbstring, mysqli,
-#   opcache, pdo_mysql, xml, zip
+# The release code is copied into the image during build.
+# When container starts, ChurchCRM is ready to serve.
 
-FROM php:8.4-fpm AS base
+ARG PHP_VERSION=8.4
+
+# Builder stage: compile PHP extensions only (code comes from release artifact)
+FROM php:${PHP_VERSION}-fpm AS builder
 LABEL maintainer="ChurchCRM"
 
+# Install system dependencies required by PHP extensions
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        libcurl4-openssl-dev \
+        libfreetype6-dev \
+        libicu-dev \
+        libjpeg-dev \
+        libonig-dev \
+        libpng-dev \
+        libxml2-dev \
+        libzip-dev \
+        gettext \
+        locales \
+        locales-all \
+        unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install and configure PHP extensions
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install -j$(nproc) \
+        bcmath \
+        curl \
+        exif \
+        gd \
+        gettext \
+        iconv \
+        intl \
+        mbstring \
+        mysqli \
+        opcache \
+        pdo_mysql \
+        xml \
+        zip
+
+# Configure PHP settings for production
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+    sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2M/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^post_max_size.*$/post_max_size = 2G/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^memory_limit.*$/memory_limit = 256M/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^max_execution_time.*$/max_execution_time = 120/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^display_errors.*$/display_errors = Off/g' $PHP_INI_DIR/php.ini
+
+
+# Production stage: minimal runtime with compiled ChurchCRM
+# Uses standard PHP base with security best practices equivalent to DHI approach
+FROM php:${PHP_VERSION}-fpm AS prod
+LABEL maintainer="ChurchCRM" \
+      org.opencontainers.image.description="ChurchCRM with PHP-FPM (production-ready, includes release code)"
+
 EXPOSE 9000
+
+# Install only runtime libraries (no dev tools)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        libcurl4 \
+        libfreetype6 \
+        libicu76 \
+        libjpeg62-turbo \
+        libonig5 \
+        libpng16-16 \
+        libxml2 \
+        libzip5 \
+        gettext \
+        locales \
+        locales-all \
+    && apt-get remove -y --purge apt-utils && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Copy compiled PHP extensions and configuration from builder
+COPY --from=builder /usr/local/lib/php/extensions/no-debug-non-zts-20240924/ \
+     /usr/local/lib/php/extensions/no-debug-non-zts-20240924/
+COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
+COPY --from=builder /usr/local/etc/php/php.ini /usr/local/etc/php/php.ini
+
+# Create non-root user
+RUN groupadd -r www && useradd -r -g www www
+
+# Copy ChurchCRM release code (provided from release artifact during docker build)
+# The build context should include the extracted release code
+COPY --chown=www:www . .
+
+# Set non-root user for PHP-FPM
+USER www
+
+
+# Dev stage: includes build tools (for developers, not production)
+FROM php:${PHP_VERSION}-fpm AS dev
+LABEL maintainer="ChurchCRM"
 
 # Install system dependencies required by PHP extensions
 RUN apt-get update && \
@@ -56,27 +146,12 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
     sed -i 's/^memory_limit.*$/memory_limit = 256M/g' $PHP_INI_DIR/php.ini && \
     sed -i 's/^max_execution_time.*$/max_execution_time = 120/g' $PHP_INI_DIR/php.ini
 
-# Create non-root user
-RUN groupadd -r www && useradd -r -g www www
-
-
-# Production stage - minimal runtime
-FROM base AS prod
-
-# Use non-root user
-USER www
-
-
-# Dev stage - includes build tools for local development inside the container
-FROM base AS dev
-
 # Install development tools and NVM + Node.js
 RUN apt-get update && \
     apt-get install -y \
         git \
         make \
         python3 \
-        unzip \
         curl \
     && rm -rf /var/lib/apt/lists/* && \
     curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
@@ -91,3 +166,5 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     php -r "if (hash_file('sha384', 'composer-setup.php') === trim(file_get_contents('https://composer.github.io/installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); }" && \
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
     rm composer-setup.php
+
+WORKDIR /var/www/html
