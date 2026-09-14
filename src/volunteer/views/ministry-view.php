@@ -6,8 +6,8 @@ use ChurchCRM\Utils\InputUtils;
 /**
  * S3 — ministry detail (design §5.4, as amended by the product owner).
  *
- * Six tabs, each loaded lazily on its first activation: **Overview · Volunteers ·
- * Positions · Schedules · Occurrences · Help Wanted**. Markup only: the route
+ * Six tabs, each loaded lazily on its first activation: **Overview · Positions ·
+ * Volunteers · Schedules · Occurrences · Help Wanted**. Markup only: the route
  * decided what may be shown and the tab contents come from
  * `/api/volunteer/ministries/{id}` — no queries here
  * (groups-mvc-guidelines.md).
@@ -60,13 +60,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="nav-item-volunteers" href="#volunteers" data-bs-toggle="tab" role="tab" aria-controls="volunteers" aria-selected="false">
-        <i class="fa-solid fa-user-check me-1"></i><?= gettext('Volunteers') ?>
+      <a class="nav-link" id="nav-item-positions" href="#positions" data-bs-toggle="tab" role="tab" aria-controls="positions" aria-selected="false">
+        <i class="fa-solid fa-list-check me-1"></i><?= gettext('Positions') ?>
       </a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="nav-item-positions" href="#positions" data-bs-toggle="tab" role="tab" aria-controls="positions" aria-selected="false">
-        <i class="fa-solid fa-list-check me-1"></i><?= gettext('Positions') ?>
+      <a class="nav-link" id="nav-item-volunteers" href="#volunteers" data-bs-toggle="tab" role="tab" aria-controls="volunteers" aria-selected="false">
+        <i class="fa-solid fa-user-check me-1"></i><?= gettext('Volunteers') ?>
       </a>
     </li>
     <li class="nav-item" role="presentation">
@@ -269,10 +269,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       The filter box below is the one DataTables feature this grid actually
       needs.
 
-      The wrapper is the mandatory overflow pair rather than `.table-responsive`,
-      because the row action menu in the last column would otherwise be clipped
-      by the horizontal scroller (table-action-menu.md). A ministry with very many
-      positions therefore wraps its columns rather than scrolling them.
+      The wrapper scrolls sideways (`.volunteer-scroll-x`) rather than carrying
+      the usual `overflow-x: clip` pair: position names and counts are unlimited,
+      so a ministry with very many positions has to be scrollable rather than
+      wrapped. The row action menu that a horizontal scroller would clip is
+      re-anchored with `position: fixed` by ministry.ts — see
+      table-action-menu.md, "A menu inside a horizontally scrolling table".
     -->
     <div class="tab-pane fade" id="volunteers" role="tabpanel" aria-labelledby="nav-item-volunteers">
       <div class="row g-2 align-items-end mb-3">
@@ -311,7 +313,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <?= gettext('Create at least one position for this team, then tick who can serve where.') ?>
         </p>
       </div>
-      <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="volunteers-table-wrapper">
+      <!--
+        There is deliberately no Save button: each tick is its own write, and each
+        one confirms itself beside the box it was made in. The hint says so, because
+        a grid of checkboxes with no Save button otherwise reads as unsaved work.
+      -->
+      <p class="text-body-secondary small mb-2 d-none" id="volunteers-save-hint">
+        <i class="fa-solid fa-circle-info me-1"></i><?= gettext('Ticks save as you make them.') ?>
+      </p>
+      <div class="volunteer-scroll-x d-none" id="volunteers-table-wrapper">
         <table class="table table-hover table-vcenter" id="volunteerQualificationsTable">
           <thead>
             <tr>
@@ -414,6 +424,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       implementation, and nothing is re-derived here.
     -->
     <div class="tab-pane fade" id="occurrences" role="tabpanel" aria-labelledby="nav-item-occurrences">
+      <!--
+        The tab shows what is still to come. Everything that already happened is
+        one dialog away rather than mixed into the default list, because a
+        coordinator opening this tab is staffing the weeks ahead and a year of
+        past weeks buries them.
+      -->
+      <div class="d-flex flex-wrap gap-2 align-items-center justify-content-end mb-2">
+        <button type="button" class="btn btn-sm btn-outline-primary" id="occurrences-filter-btn">
+          <i class="fa-solid fa-calendar-day me-1"></i><?= gettext('Filter by Date') ?>
+        </button>
+      </div>
+      <p class="text-body-secondary small d-none" id="occurrences-range-note">
+        <span id="occurrences-range-text"></span>
+        <button type="button" class="btn btn-link btn-sm p-0 ms-2 align-baseline" id="occurrences-range-reset">
+          <?= gettext('Back to upcoming') ?>
+        </button>
+      </p>
       <div class="volunteer-loading text-center py-4" id="occurrences-loading">
         <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
         <?= gettext('Loading') ?>
@@ -512,43 +539,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
-<!--
-  Set the leader of ONE team (#9706's scope API).
-
-  No team select: the team is the row the menu item was opened from, so the modal
-  asks the one question that is left. Granting is manager-only (§3.2), so the
-  whole block is inside the same `$bIsManager` gate the coordinator card is.
--->
-<div class="modal fade" id="teamLeaderModal" tabindex="-1" aria-hidden="true" aria-labelledby="teamLeaderModalTitle">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="teamLeaderModalTitle"><?= gettext('Set Team Leader') ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
-      </div>
-      <div class="modal-body">
-        <p class="text-body-secondary">
-          <?= gettext('A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.') ?>
-        </p>
-        <div class="mb-3">
-          <label class="form-label" for="team-leader-person"><?= gettext('Person') ?></label>
-          <select class="form-select person-search" id="team-leader-person"
-                  data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
-        </div>
-        <div class="alert alert-danger d-none mt-3" role="alert" id="team-leader-form-error">
-          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-        <button type="button" class="btn btn-primary" id="team-leader-save"><?= gettext('Set Team Leader') ?></button>
-      </div>
-    </div>
-  </div>
-</div>
 <?php endif; ?>
 
-<!-- Team editor -->
+<!--
+  Team editor — name, description, active, and the team's leader.
+
+  The leader used to be a modal of its own, opened from two menu items on the
+  team's row. It is a property of the team, so it is now a field of the dialog
+  that edits one: adding a team and giving it a leader is one dialog, and
+  changing the leader is the same Edit dialog everything else about the team is
+  changed in.
+
+  Granting is manager-only (§3.2) — the `/api/volunteer/scopes` endpoints refuse
+  anyone else — so only a manager gets the picker. Everybody else is shown the
+  current leader as read-only text and told who may change it, which is honest
+  about the permission rather than offering a control the API will refuse.
+-->
 <div class="modal fade" id="teamModal" tabindex="-1" aria-hidden="true" aria-labelledby="teamModalTitle">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -564,6 +570,32 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="mb-3">
           <label class="form-label" for="team-form-description"><?= gettext('Description') ?></label>
           <input type="text" class="form-control" id="team-form-description" maxlength="255">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="team-form-leader"><?= gettext('Team leader') ?></label>
+<?php if ($bIsManager): ?>
+          <div class="input-group">
+            <select class="form-select person-search" id="team-form-leader"
+                    data-placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>"></select>
+            <!--
+              The × clears the picker, which is what says "this team has no leader":
+              an empty field on save revokes the grant.
+            -->
+            <button type="button" class="btn btn-outline-secondary" id="team-form-leader-clear"
+                    title="<?= InputUtils::escapeAttribute(gettext('Remove the team leader')) ?>"
+                    aria-label="<?= InputUtils::escapeAttribute(gettext('Remove the team leader')) ?>">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="form-text">
+            <?= gettext('A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry.') ?>
+          </div>
+<?php else: ?>
+          <input type="text" class="form-control" id="team-form-leader-readonly" readonly>
+          <div class="form-text" id="team-form-leader-note">
+            <?= gettext('Only a volunteer manager can change the team leader') ?>
+          </div>
+<?php endif; ?>
         </div>
         <label class="form-check form-switch">
           <input class="form-check-input" type="checkbox" id="team-form-active" checked>
@@ -793,6 +825,47 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
         <button type="button" class="btn btn-primary" id="schedule-form-save"><?= gettext('Save') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  Filter the Occurrences tab by date.
+
+  The tab defaults to what is still to come; this dialog is how the weeks that
+  already happened are reached. The range defaults to the last 90 days up to
+  yesterday — "what did we just do" — and the list endpoint already takes a
+  mandatory `from`/`to` window (design M9), so nothing new is asked of the API.
+-->
+<div class="modal fade" id="occurrenceRangeModal" tabindex="-1" aria-hidden="true" aria-labelledby="occurrenceRangeModalTitle">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="occurrenceRangeModalTitle"><?= gettext('Filter by Date') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-body-secondary">
+          <?= gettext('Show the occurrences between two dates, including ones that have already happened.') ?>
+        </p>
+        <div class="row g-2">
+          <div class="col-12 col-sm-6 mb-3">
+            <label class="form-label" for="occurrence-range-from"><?= gettext('From') ?></label>
+            <input type="date" class="form-control" id="occurrence-range-from">
+          </div>
+          <div class="col-12 col-sm-6 mb-3">
+            <label class="form-label" for="occurrence-range-to"><?= gettext('To') ?></label>
+            <input type="date" class="form-control" id="occurrence-range-to">
+          </div>
+        </div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="occurrence-range-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" class="btn btn-primary" id="occurrence-range-show"><?= gettext('Show') ?></button>
       </div>
     </div>
   </div>
