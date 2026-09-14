@@ -237,7 +237,7 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 ### CI/CD Testing (GitHub Actions)
 
 - Docker profiles: `dev`, `test`, `ci` in `docker-compose.yaml`
-- CI uses `npm run docker:ci:start` with optimized containers
+- CI uses the exact `docker:ci:*` scripts defined in `package.json`
 - Artifacts uploaded: `cypress-artifacts-{run_id}` contains logs, screenshots, videos
 - Access via Actions → Workflow run → Artifacts section
 - Debugging: Download `cypress-reports-{branch}` for detailed failure analysis
@@ -246,16 +246,16 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 
 ```bash
 # Development
-npm run docker:dev:start     # Start dev containers
+npm run docker:dev:start     # Start the Docker development stack
 npm run docker:dev:stop      # Stop containers
 npm run docker:dev:logs      # View logs
 
 # Testing
 npm run docker:test:start       # Start test containers
-npm run docker:test:restart     # Restart all containers
-npm run docker:test:restart:db  # Restart database only (refresh schema)
+npm run docker:test:stop        # Stop containers and keep volumes
 npm run docker:test:rebuild     # Full rebuild with new images
 npm run docker:test:down        # Remove containers and volumes
+npm run docker:test:reset:db    # Reload the seeded test database
 ```
 
 ## CRITICAL: Keep Tests in Sync with Code Changes

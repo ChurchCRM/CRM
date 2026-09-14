@@ -607,6 +607,76 @@ $person->setFirstName($input);
 
 ---
 
+## Admin Masquerade ("Login as User") <!-- learned: 2026-09-14 -->
+
+`ChurchCRM\Service\ImpersonationService` lets an administrator open a session as
+another user (issue #9843). Because it deliberately bypasses every credential
+check, treat it as privileged code and keep these invariants when touching it.
+
+**How the session is swapped.** `LocalAuthentication::prepareSuccessfulLoginOperations()`
+is split in two: `establishSessionForUser()` (the `bManageGroups` / `bFinance` /
+cart / deposit / timestamp session payload) and the login-only work around it —
+`session_regenerate_id(true)` plus the bookkeeping (`usr_LastLogin`,
+`usr_LoginCount`, `usr_FailedLogins`). A masquerade calls only the payload half,
+through `AuthenticationManager::establishSessionAsUser()`, so the impersonated
+account is never made to look as though the user signed in. Never inline the
+flag-setting lines into a new code path — reuse `establishSessionAsUser()` so
+login and masquerade cannot drift apart.
+
+**Do not rotate the session id on a masquerade transition.** Both transitions
+happen inside an already-authenticated session in the same browser, so there is
+no fixation window to close. `session_regenerate_id(true)` there destroys the
+session out from under any XHR the page being left behind still has in flight;
+those requests 401, and the global jQuery 401 handler in `CRMJSOM.js` redirects
+the window to the login page — so exiting a masquerade from a busy page could
+dump the administrator at `/session/begin` instead of the user's record.
+Rotating with `delete_old_session=false` is worse: the previous identity stays
+reachable on the old id until GC.
+
+**What is skipped:** password check, 2FA prompt, failed-login counters, the
+"last login" stamp, the update check and remote notification fetch that
+`AuthenticationManager::authenticate()` performs, and every plugin hook. (There
+are no login hooks in `Plugin\Hooks` today; if one is added it must stay out of
+this path.)
+
+**Session key.** `$_SESSION['impersonator'] = ['userId' => adminId, 'startedAt' => ..., 'stashed' => ...]`.
+Its presence is the single source of truth for "this session is a masquerade".
+**Both** header layouts read it: `Include/Header.php` (which also turns the user
+menu's Sign out into an exit action) and `Include/HeaderNotLoggedIn.php`. The
+second one matters because an EditSelf-exclusive target is bounced by
+`AuthMiddleware` / `PageInit` to `/external/limited-access`, which renders that
+layout — without the banner there the administrator has no visible way back. For
+the same reason `/user/impersonate/exit` is on `AuthMiddleware`'s
+`isAuthFlowExemptPath()` list, or the exit POST would itself be redirected. Administrator-only session values (the `systemUpdate*` release
+notice) are stashed on the record at start and restored on exit so they cannot
+leak into the impersonated view.
+
+**Gating the routes.** `POST /v2/user/{id}/impersonate` and
+`POST /v2/user/impersonate/exit` are session-only. That is *not* automatic:
+`AuthMiddleware` authenticates an `x-api-key` header on every MVC route outside
+`/api/public`, so any route that must be unreachable by token needs
+`SessionOnlyMiddleware` (403). Middleware order matters — Slim 4 runs them in
+reverse of the `->add()` sequence, and `NoActiveMasqueradeMiddleware` (409) must
+run *before* `AdminRoleAuthMiddleware`, otherwise a nested start is reported as a
+bare 403 from the impersonated (non-admin) session.
+
+**Never another administrator.** `startImpersonation()` answers 403 and the button
+is hidden when the target `isAdmin()`. Every consequential action during a
+masquerade is attributed to the impersonated account in the operational logs, so
+admin-to-admin impersonation would let one administrator act under a colleague's
+identity; there is nothing to learn from another administrator's view anyway
+(pr-reviewer finding on #9844).
+
+**Logging.** Both ends are written to the auth log with both user ids:
+`Masquerade started: admin {id} ({name}) as user {id} ({name})` and
+`Masquerade ended: admin {id} back from user {id}`. An exit whose stored
+administrator no longer exists — or is no longer an administrator — logs
+`Masquerade aborted: …`, calls `AuthenticationManager::endSession()` and sends
+the browser to the login page. Never add a code path that changes who the
+session belongs to without an auth-log line naming both ids.
+
+---
+
 ## TLS/SSL Verification
 
 ### Secure by Default
@@ -840,7 +910,7 @@ churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
 - [src/Include/HeaderNotLoggedIn.php](../../../src/Include/HeaderNotLoggedIn.php) — `churchWebSite` JS literal
 - [src/FamilyEditor.php](../../../src/FamilyEditor.php) — `data-system-default`, `data-phone-mask`, `placeholder`
 - [src/PersonEditor.php](../../../src/PersonEditor.php) — date picker `placeholder`
-- [src/CartToFamily.php](../../../src/CartToFamily.php) — `data-inputmask` phone format
+- [src/people/views/cart/to-family.php](../../../src/people/views/cart/to-family.php) — `data-inputmask` phone format
 - [src/ChurchCRM/utils/CustomFieldUtils.php](../../../src/ChurchCRM/utils/CustomFieldUtils.php) — `placeholder`, `data-phone-mask`
 - [src/DirectoryReports.php](../../../src/DirectoryReports.php) — form `value=`, textarea content
 - [src/external/templates/registration/family-register.php](../../../src/external/templates/registration/family-register.php) — JS literals, address/phone inputs

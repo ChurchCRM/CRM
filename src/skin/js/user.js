@@ -150,3 +150,38 @@ $(document).ready(() => {
     });
   }
 });
+
+// ── Admin masquerade: "Login as User" (#9843) ─────────────────────
+// The button submits a real form; this only inserts a confirmation in front of
+// it so an administrator cannot start a masquerade by a stray click.
+$("#impersonateForm").on("submit", function (e) {
+  const form = this;
+  if (form.dataset.confirmed === "true") {
+    return; // second pass: let the browser submit
+  }
+  e.preventDefault();
+
+  const userName = form.dataset.userName || "";
+  bootbox.confirm({
+    title: i18next.t("Login as User"),
+    message: i18next.t("Log in as {{name}}? Everything you do until you exit is done as them and is logged.", {
+      name: userName,
+    }),
+    buttons: {
+      confirm: {
+        label: i18next.t("Login as User"),
+        className: "btn-warning",
+      },
+      cancel: {
+        label: i18next.t("Cancel"),
+        className: "btn-default",
+      },
+    },
+    callback: (result) => {
+      if (result) {
+        form.dataset.confirmed = "true";
+        form.submit();
+      }
+    },
+  });
+});
