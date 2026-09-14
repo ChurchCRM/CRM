@@ -27,6 +27,25 @@ $app->group('', function (RouteCollectorProxy $group): void {
     $group->get('/', fn (Request $request, Response $response): Response => SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/volunteer/dashboard'));
 
     /**
+     * GET /volunteer/ministries — the retired "My ministries and teams" list.
+     *
+     * The sidebar's **Ministries** heading lists every ministry the viewer may
+     * administer, so the page that used to list them is gone: it was a list of
+     * the same links, one click further away. The URL stays as a redirect
+     * rather than a 404 because it is in bookmarks, in old emails and in the
+     * browser history of everyone who has used the module so far, and the
+     * dashboard is where all of them wanted to end up.
+     *
+     * Declared here, in the same group and behind the same gate, so a caller
+     * who may not open the coordinator area is still turned away by the
+     * middleware rather than bounced to a page that would then refuse them.
+     * It precedes `/ministries/{ministryId}` in ministry.php: Slim matches the
+     * literal path first, and `{ministryId:[0-9]+}` cannot match an empty
+     * segment in any case.
+     */
+    $group->get('/ministries', fn (Request $request, Response $response): Response => SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/volunteer/dashboard'));
+
+    /**
      * GET /volunteer/dashboard — S1, "what needs my attention" (#9711, §5.2).
      *
      * This route renders markup and the page config and runs no query of its own:

@@ -8,8 +8,12 @@
  * name, a description, and a jump straight to the new ministry's page, where the
  * team and the pool Group it was created with are already waiting (D18/D19).
  *
- * Shared by two pages — `/volunteer/ministries` and the dashboard's quick
- * actions — because both offered the wizard and both must still offer this.
+ * It lives in the dashboard's quick actions. It was shared with the ministries
+ * list page until that page was retired in favour of the sidebar's Ministries
+ * heading, which is why this is still its own module rather than part of
+ * `dashboard.ts`: the modal is a self-contained thing and the next page that
+ * needs it imports it the same way.
+ *
  * Creating a ministry is manager-only (§4.6), so the BUTTON and the modal are
  * rendered server-side for a manager only; this module simply does nothing when
  * the markup is not on the page. Hiding is not security (D5): `POST

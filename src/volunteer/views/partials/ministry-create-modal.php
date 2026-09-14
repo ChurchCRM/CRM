@@ -3,15 +3,17 @@
 use ChurchCRM\Utils\InputUtils;
 
 /**
- * The "New ministry" modal, shared by `/volunteer/ministries` and the dashboard.
+ * The "New ministry" modal, opened from the dashboard's quick actions. It was
+ * shared with the ministries list page until that page was retired in favour of
+ * the sidebar's Ministries heading; the dashboard is the one place it lives now.
  *
  * Included only inside a manager-only branch: creating a ministry is manager-only
  * (design §4.6), and `POST /api/volunteer/ministries` enforces that independently
  * — the markup being absent is a courtesy, not the control (D5).
  *
- * Behaviour lives in webpack/volunteer/ministry-create.ts, which both bundles
- * import; every JS-side string is `i18next.t()` there, because an `i18next.t()`
- * call inside a .php file is scanned by no extractor (§5.10, F31).
+ * Behaviour lives in webpack/volunteer/ministry-create.ts, which the dashboard
+ * bundle imports; every JS-side string is `i18next.t()` there, because an
+ * `i18next.t()` call inside a .php file is scanned by no extractor (§5.10, F31).
  */
 ?>
 <div class="modal fade" id="ministryCreateModal" tabindex="-1" aria-hidden="true" aria-labelledby="ministryCreateModalTitle">
