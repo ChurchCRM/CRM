@@ -13,10 +13,11 @@ $sPageTitle = gettext("Settings");
 $sPageSubtitle = $user->getFullName();
 $isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
 // Admin masquerade (#9843): offered only to an administrator, never on their own
-// record, and never while a masquerade is already running — the same three
-// conditions the POST route enforces.
+// record, never on another administrator's record, and never while a masquerade
+// is already running — the same four conditions the POST route enforces.
 $canImpersonateViewedUser = AuthenticationManager::getCurrentUser()->isAdmin()
     && !$isOwnProfile
+    && !$user->isAdmin()
     && !ImpersonationService::isActive();
 // Use distinct variable names so Header.php's reassignment of $personId,
 // $avatarApiUrl, $hasUploadedPhoto, and $photo (always reads the logged-in

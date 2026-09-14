@@ -17,6 +17,7 @@ const ADMIN_USER_ID = 1;
 // user is confined to /external/limited-access, which renders the *other* header
 // layout (HeaderNotLoggedIn.php).
 const SELF_SERVICE_USER_ID = 99;
+const PEER_ADMIN_USER_ID = 906; // locale-admin@churchcrm.test, usr_Admin = 1
 const SELF_SERVICE_USER_NAME = "Amanda Black";
 
 /** Today's date in the rotating log filename format ({Y-m-d}-auth.log). */
@@ -52,6 +53,11 @@ describe("Admin Login as User (masquerade)", () => {
 
     it("does not show the button on the admin's own record", () => {
         cy.visit(`/v2/user/${ADMIN_USER_ID}`);
+        cy.get("#loginAsUser").should("not.exist");
+    });
+
+    it("does not show the button on another administrator's record", () => {
+        cy.visit(`/v2/user/${PEER_ADMIN_USER_ID}`);
         cy.get("#loginAsUser").should("not.exist");
     });
 
@@ -208,6 +214,22 @@ describe("Admin Login as User (masquerade)", () => {
                     failOnStatusCode: false,
                 }).then((response) => {
                     expect(response.status).to.equal(404);
+                });
+            });
+        });
+
+        it("POST for another administrator answers 403", () => {
+            csrfTokenFromPage().then((token) => {
+                cy.request({
+                    method: "POST",
+                    url: `/v2/user/${PEER_ADMIN_USER_ID}/impersonate`,
+                    form: true,
+                    body: { csrf_token: token },
+                    headers: { Accept: "application/json" },
+                    failOnStatusCode: false,
+                }).then((response) => {
+                    expect(response.status).to.equal(403);
+                    expect(response.body.error).to.equal("You cannot log in as another administrator.");
                 });
             });
         });

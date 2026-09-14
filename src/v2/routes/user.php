@@ -107,6 +107,18 @@ function startImpersonation(Request $request, Response $response, array $args): 
         );
     }
 
+    // Never another administrator: every consequential action during a masquerade is
+    // attributed to the impersonated account in the operational logs, so a peer admin
+    // could act under a colleague's identity. An administrator has nothing to learn
+    // from another administrator's view anyway (pr-reviewer finding on #9844).
+    if ($target->isAdmin()) {
+        return SlimUtils::renderJSON(
+            $response,
+            ['error' => gettext('You cannot log in as another administrator.')],
+            403
+        );
+    }
+
     ImpersonationService::start($target);
 
     return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/dashboard');

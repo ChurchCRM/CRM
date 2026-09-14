@@ -660,6 +660,13 @@ reverse of the `->add()` sequence, and `NoActiveMasqueradeMiddleware` (409) must
 run *before* `AdminRoleAuthMiddleware`, otherwise a nested start is reported as a
 bare 403 from the impersonated (non-admin) session.
 
+**Never another administrator.** `startImpersonation()` answers 403 and the button
+is hidden when the target `isAdmin()`. Every consequential action during a
+masquerade is attributed to the impersonated account in the operational logs, so
+admin-to-admin impersonation would let one administrator act under a colleague's
+identity; there is nothing to learn from another administrator's view anyway
+(pr-reviewer finding on #9844).
+
 **Logging.** Both ends are written to the auth log with both user ids:
 `Masquerade started: admin {id} ({name}) as user {id} ({name})` and
 `Masquerade ended: admin {id} back from user {id}`. An exit whose stored
