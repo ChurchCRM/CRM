@@ -1291,7 +1291,7 @@ requests, using `BrowserRequestTrait` exactly as `BaseAuthRoleMiddleware` does
 
 | Area | Path prefix | Gate |
 |---|---|---|
-| Coordinator MVC | `/volunteer/dashboard`, `/volunteer/ministries`, `/volunteer/ministries/{id}`, `/volunteer/occurrences/{id}` | `VolunteerCoordinatorRoleAuthMiddleware` on the group |
+| Coordinator MVC | `/volunteer/dashboard`, `/volunteer/ministries/{id}`, `/volunteer/occurrences/{id}` | `VolunteerCoordinatorRoleAuthMiddleware` on the group. `/volunteer/ministries` with no id is a 302 to the dashboard, inside the same group and behind the same gate — the list page it used to serve was retired in favour of the sidebar's **Ministries** heading (§5.0) |
 | Member MVC | `/volunteer/my-schedule`, `/volunteer/opportunities` | **no role gate** — per-record authorization only, by authenticated person (D14) |
 | Coordinator API | `/api/volunteer/...` | `VolunteerCoordinatorRoleAuthMiddleware` + `VolunteerV2EnabledMiddleware` on the group; per-entity middleware per route |
 | Member API | `/api/volunteer/me/...` | `VolunteerV2EnabledMiddleware` only — every authenticated person is potentially a volunteer |
@@ -1534,8 +1534,8 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 
 | Surface | File | Change |
 |---|---|---|
-| Sidebar menu | `src/ChurchCRM/Config/Menu/Menu.php:38-49` (registry) | Add `'Volunteer' => self::getVolunteerMenu($isVolunteerCoordinator, $isVolunteerManager, $isVolunteerV2)` and a `getVolunteerMenu()` modelled on `getEventsMenu()` (`:266-280`): parent carries the view permission, children carry the write permissions. Visibility booleans are computed once in `buildMenuItems()` like the others. **Menu visibility must mirror the route middleware exactly.** |
-| Member menu entry | same | "My Volunteer Schedule" → `volunteer/my-schedule`, visible to every authenticated user when the rollout flag is on. `MenuItem::isVisible()` hides a parent whose children are all hidden, so a volunteer with no assignments still sees the entry (that is intended — it is where they find open opportunities). |
+| Sidebar menu | `src/ChurchCRM/Config/Menu/Menu.php` (registry) | **Two** headings, not one — see §5.0. `'Volunteer' => self::getVolunteerMenu($isVolunteerV2Enabled)` is the member surface; `'Ministries' => self::getMinistriesMenu($currentUser, $isVolunteerCoordinator)` is the administration surface and is built the way `getGroupMenu()` builds its per-group entries. Visibility booleans are computed once in `buildMenuItems()` like the others. **Menu visibility must mirror the route middleware exactly.** |
+| Member menu entry | same | "My Volunteer Schedule" → `volunteer/my-schedule` and "Open Opportunities" → `volunteer/opportunities`, visible to every authenticated user when the rollout flag is on, and the whole of the "Volunteer" heading. `MenuItem::isVisible()` hides a parent whose children are all hidden, so a volunteer with no assignments still sees the entry (that is intended — it is where they find open opportunities). |
 | Person view tab | `src/people/views/person-view.php:580-584` (nav) and `:680-761` (pane); route args `src/people/routes/view.php:246-248` | **Direct edit** — there is no `PERSON_VIEW_TABS` filter (F15). The route passes the rollout state; the view renders the V1 pane, the V2 pane, or both (§3.8). The V2 pane lists the person's qualifications and upcoming assignments, read-only, linking into `/volunteer`. Adding a real `Hooks::PERSON_VIEW_TABS` filter is a worthwhile core extraction, but it is **not a prerequisite** — editing the view directly is the established pattern (F15), not a workaround for a defect. Tracked as open question D-8, not in [Appendix E](#appendix-e--prerequisite-hardening-track). |
 | Event editor | `webpack/event-form.js` beside `#linkedGroupSelect` (`:271-272`) | the ministry select (§2.16 item 10) |
 | Event API | `src/api/routes/calendar/events.php` `applyEventExtendedFields()` `:234-282`, `getEvent` `:181-227` | §2.16 items 7–9 |
@@ -2067,13 +2067,48 @@ Design rule for this whole section: **the coordinator UI is a workflow, not a se
 unavoidable (positions, qualifications) it is reached from inside the workflow, not from a menu of
 tables.
 
+### 5.0 Navigation — two headings
+
+V2 puts **two** top-level headings in the sidebar, and which one a person opens says who
+they are on that visit.
+
+| Heading | Icon | Shown to | Entries |
+|---|---|---|---|
+| **Volunteer** | `fa-handshake-angle` | every authenticated person while the rollout flag is on (`User::isVolunteerV2Enabled()`) | *My Volunteer Schedule* (S5), *Open Opportunities* (S6) — the member surface, and nothing else |
+| **Ministries** | `fa-sitemap` | a volunteer coordinator-or-above (`User::isVolunteerCoordinatorEnabled()` — the same predicate `VolunteerCoordinatorRoleAuthMiddleware` asks) | *Dashboard* (S1), then **one entry per ministry the viewer may administer**, by name, linking to `/volunteer/ministries/{id}` (S3) — the administration surface |
+
+The per-ministry entries are built exactly the way the Groups heading builds its per-group
+entries: one cheap id-and-name query per request, memoised in
+`VolunteerAuthorizationService::getManageableMinistries()`. Who gets which entries follows
+§4.6 with no new rule:
+
+- **administrator / global volunteer manager** — every *active* ministry;
+- **ministry coordinator** — exactly the ministries they hold a `ministry` scope on, active
+  or not (they still have to be able to reach one that was just deactivated);
+- **team leader** — *Dashboard* alone. Leading a team is not administering the ministry above
+  it, and `/volunteer/ministries/{id}` would refuse them. Their teams are named on the
+  dashboard's "My ministries and teams" card, which is their entry point;
+- **manager with no ministry yet** — *Dashboard* alone, and its **New ministry** quick action.
+
+The current ministry's entry is highlighted on `/volunteer/ministries/{id}` — `MenuItem::isActive()`
+matches the path — and on `/volunteer/occurrences/{id}`, where the menu builder resolves
+occurrence → schedule → ministry with two single-column primary-key lookups and marks the
+entry with `MenuItem::setActiveOverride()`. That resolution runs on that route and no other.
+
+**The same ministries appear twice in the sidebar, by the same names, and that is correct.**
+A ministry is created with its own pool **Group** (D19), so *Groups → Ministry* lists
+"Coffee Bar" as a Group at the same time *Ministries* lists it as a ministry. They are two
+doors onto the same people: the Groups entry manages *membership*, the Ministries entry
+manages the *programme* — teams, positions, qualifications, schedules and who is on for
+Sunday.
+
 ### 5.1 Screen inventory
 
 | # | Screen | Route | Gate | Bundle |
 |---|---|---|---|---|
 | S1 | Coordinator dashboard — "what needs my attention" | `/volunteer/dashboard` | Coordinator | `volunteer-dashboard` |
 | S2 | ~~Setup flow (guided)~~ **removed** — see §5.3 | — | — | — |
-| S2b | My ministries and teams (the module index, and "New ministry") | `/volunteer/ministries` | Coordinator | `volunteer-ministries` |
+| S2b | ~~My ministries and teams (the module index)~~ **removed** — the sidebar's **Ministries** heading lists the same ministries (§5.0), and `/volunteer/ministries` 302s to S1. Its "New ministry" button lives on S1 | — | — | — |
 | S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, help wanted | `/volunteer/ministries/{id}` | scope | `volunteer-ministry` |
 | S4 | Occurrence / staffing view | `/volunteer/occurrences/{id}` | scope | `volunteer-occurrence` |
 | S5 | My schedule (member) | `/volunteer/my-schedule` | authenticated person | `volunteer-my-schedule` |
@@ -2119,9 +2154,10 @@ wizard had become a second, worse editor for the same records, and one that coul
 from them.
 
 The one step with nowhere else to live is the **first**: creating the ministry. That is
-now a **"New ministry" button** on `/volunteer/ministries` and in the dashboard's quick
-actions, rendered for a volunteer manager only (§4.6), which opens a modal asking for a
-name and a description. On success it navigates to the new ministry's page, where the
+now a **"New ministry" button** in the dashboard's quick actions — and again in the
+"My ministries and teams" card's empty state, which is where a manager with no ministry
+yet is looking — rendered for a volunteer manager only (§4.6), which opens a modal asking
+for a name and a description. On success it navigates to the new ministry's page, where the
 team and the pool Group it was created with already exist (D18/D19). The endpoint is
 unchanged: `POST /api/volunteer/ministries`, manager-gated by
 `VolunteerManagerRoleAuthMiddleware`.

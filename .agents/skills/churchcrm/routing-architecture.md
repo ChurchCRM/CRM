@@ -476,6 +476,43 @@ $menus = [
 Badges are added with `MenuItem::addCounter(new MenuCounter(...))` — see
 `Menu::getCalendarMenu()` (`src/ChurchCRM/Config/Menu/Menu.php:82-93`).
 
+#### Data-driven entries (one per record) <!-- learned: 2026-09-14 -->
+
+A heading can list *records* rather than fixed pages — Groups lists every group, Sunday
+School every class, Ministries every ministry a coordinator runs. The rule is the same in
+all three: **one batched query per request, ids and names only, never a hydrated model**,
+because the menu is built on every page load.
+
+```php
+$groups = GroupQuery::create()->filterByType($types)->orderByName()
+    ->select(['Id', 'Name'])->find()->toArray();   // Menu::getGroupMenu()
+```
+
+Two things that bite:
+
+- **Escaping is the renderer's job.** `MenuRenderer` puts every label through
+  `InputUtils::escapeHTML()`, so pass the raw record name — escaping it here double-encodes it.
+- **Labels are truncated at 25 characters** by `MenuItem::getName()` (to 22 plus `" ..."`).
+  A Cypress assertion on a long record name must match the truncated form, or use the `href`.
+
+#### Highlighting an entry for a page that is not its own URL <!-- learned: 2026-09-14 -->
+
+`MenuItem::isActive()` compares the request path with the item's own URI, which is right for
+almost every entry. When a page *belongs* to an entry without living under its URL — e.g.
+`/volunteer/occurrences/{id}` belongs to the ministry whose schedule generated it — the menu
+builder resolves the relationship and says so:
+
+```php
+$item = new MenuItem($ministryName, 'volunteer/ministries/' . $id, true, 'fa-handshake-angle');
+if ($activeMinistryId === $id) {
+    $item->setActiveOverride(true);   // isActive() → true, so openMenu() opens the heading
+}
+```
+
+Resolve the relationship **only on the route that needs it** (match `$_SERVER['REQUEST_URI']`
+first, then query) so no other page pays for it. See
+`Menu::getVolunteerMinistryIdForCurrentRoute()`.
+
 ---
 
 ## Event MVC Module (`/event/*`) <!-- learned: 2026-04-07, updated 2026-04-09 -->
