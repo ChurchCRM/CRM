@@ -77,12 +77,73 @@ $group->post('/endpoint', function (Request $request, Response $response, array 
 });
 ```
 
+### Canonical API Error Shape <!-- learned: 2026-09-11 -->
+
+**Every `/api` error response uses one shape**, built by
+`SlimUtils::buildErrorPayload()` and emitted by `renderErrorJSON()`, the role
+and auth middleware, and the Slim error handlers (#9737):
+
+```json
+{
+  "success": false,
+  "message": "User not found",
+  "error":   "User not found",
+  "code":    404
+}
+```
+
+- **`message` is canonical** — read it in new client code.
+- **`error` is an alias** of `message`, kept so the pre-existing
+  `responseJSON.error` consumers (e.g. `DepositSlipEditor.js`) keep working.
+  Do not give it a different value.
+- **`code`** mirrors the HTTP status.
+- **`success: false`** lets a caller branch without inspecting the status.
+- Extra keys are merged on top: the Slim error handlers add
+  `request: {method, path}`; a route may pass `['errors' => [...]]` via the
+  `$extra` argument.
+
+Emit it from anywhere that hand-rolls a JSON error:
+
+```php
+use ChurchCRM\Slim\SlimUtils;
+
+$response->getBody()->write(json_encode(
+    SlimUtils::buildErrorPayload(gettext('Invalid API key'), 401)
+));
+```
+
+Known outliers still emitting `{"error": …}` only —
+`RequestParameterValidationMiddleware`, `InputSanitizationMiddleware`,
+`PublicCalendarMiddleware`. They call `renderJSON` directly (so they also skip
+redaction and error logging); convert them when you next touch them.
+
 ### renderErrorJSON Behavior
 
 - **Server-side logs**: exception class, message, file, line, trace, request method/path/IP/user-agent
 - **Client receives**: sanitized message only (no traces, file paths, or credentials)
-- **Sanitizes messages automatically**: detects and masks password/token/host patterns
+- **Redacts secret *values*, not words**: see below
 - **Status passed as parameter**: `int $status` parameter (NOT via `response->withStatus(...)`)
+
+### Redaction: Value-Shaped, Not Word-Shaped <!-- learned: 2026-09-11 -->
+
+`SlimUtils::containsSensitiveValue()` decides whether a message is replaced by
+the generic "An error occurred…". It matches credential-like **context** only —
+`name=value` / `name: value` assignments for credential names, DSN fragments
+(`host=`, `dbname=`, `user=`), credentials in a URL (`scheme://user:pass@host`),
+PEM key material, JWTs, opaque runs of 40+ characters, and complete IPv4
+addresses.
+
+It deliberately does **not** match bare English words. The previous rule was an
+unanchored word list, so `User not found` came back as "An error occurred…",
+`Ghostwriter field is required` was redacted for containing "host", and
+`Value must be between 1.5 and 3.5` for containing "1.5" (#9737).
+
+`sanitizeErrorMessage()` additionally collapses ORM/PDO failures to
+"A database error occurred…". Detect them by **exception class**
+(`PropelException`, `PDOException`) — the vendor directory is `perplorm/perpl`
+and a failing write is thrown from the generated model under
+`src/ChurchCRM/model/`, so a `stripos($file, 'propel')` check never fires and
+Propel leaks the whole `INSERT INTO … VALUES (:p0, …)` statement to the client.
 
 ### Signature
 
@@ -139,7 +200,7 @@ throw new HttpBadRequestException($request, gettext('invalid event type id'));
 
 **Key Pattern:**
 - **Success responses**: `{'success': true, 'data': ...}` or `{'success': true, 'message': ...}`
-- **Error responses**: ALWAYS use `message` field (not `error`, `msg`, or other variations)
+- **Error responses**: build with `SlimUtils::buildErrorPayload()` / `renderErrorJSON()`; read `message` (see [Canonical API Error Shape](#canonical-api-error-shape))
 - **Security**: Return generic error messages to users, not specific validation details
 
 **Example:**
@@ -689,10 +750,12 @@ $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, a
 
 **Do not** leak the service's raw exception message to the client — localize via
 `gettext()` and log the exception via `renderErrorJSON`'s 5th/6th arguments.
-`SlimUtils::renderErrorJSON` sanitizes messages matching
-`/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i`
-back to a default, and the service message `"Cannot delete fund 'X': it has N associated pledge(s)."`
-will be sanitized if the fund name contains `user` / `host` / etc.
+`SlimUtils::renderErrorJSON` redacts messages that carry a secret *value* —
+see [Redaction: Value-Shaped, Not Word-Shaped](#redaction-value-shaped-not-word-shaped).
+A service message such as `"Cannot delete fund 'X': it has N associated pledge(s)."`
+survives even when the fund name contains the words `user` or `host`; it is
+redacted only if the name looks like a credential (`api_key=…`, a 40+ character
+opaque token, an IPv4 address).
 
 ### Reference implementations in-tree
 

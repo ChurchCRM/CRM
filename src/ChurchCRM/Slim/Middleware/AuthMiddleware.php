@@ -5,6 +5,7 @@ namespace ChurchCRM\Slim\Middleware;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use Laminas\Diactoros\Response;
@@ -43,7 +44,7 @@ class AuthMiddleware implements MiddlewareInterface
                         'method' => $request->getMethod()
                     ]);
                     $response = new Response();
-                    $errorBody = json_encode(['error' => gettext('Invalid API key'), 'code' => 401]);
+                    $errorBody = json_encode(SlimUtils::buildErrorPayload(gettext('Invalid API key'), 401));
                     $response->getBody()->write($errorBody);
                     return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
                 }
@@ -59,7 +60,7 @@ class AuthMiddleware implements MiddlewareInterface
                 $apiUser = AuthenticationManager::getCurrentUser();
                 if ($apiUser->isEditSelfExclusive()) {
                     $response = new Response();
-                    $response->getBody()->write(json_encode(['error' => 'Account has limited permissions. Contact an administrator.']));
+                    $response->getBody()->write(json_encode(SlimUtils::buildErrorPayload(gettext('Account has limited permissions. Contact an administrator.'), 403)));
                     return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
                 }
             } elseif (AuthenticationManager::validateUserSessionIsActive(!$this->isPath($request, 'background'))) {
@@ -80,7 +81,7 @@ class AuthMiddleware implements MiddlewareInterface
                     }
                     // API request — return 403
                     $response = new Response();
-                    $response->getBody()->write(json_encode(['error' => 'Account has limited permissions. Contact an administrator.']));
+                    $response->getBody()->write(json_encode(SlimUtils::buildErrorPayload(gettext('Account has limited permissions. Contact an administrator.'), 403)));
                     return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
                 }
 
@@ -106,7 +107,7 @@ class AuthMiddleware implements MiddlewareInterface
                 }
 
                 $response = new Response();
-                $errorBody = json_encode(['error' => gettext('No logged in user'), 'code' => 401]);
+                $errorBody = json_encode(SlimUtils::buildErrorPayload(gettext('No logged in user'), 401));
                 $response->getBody()->write($errorBody);
                 return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
             }
