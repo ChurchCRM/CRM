@@ -32,7 +32,7 @@ class GeoUtils
     ): array {
         if (empty(trim($address))) {
             LoggerUtils::getAppLogger()->warning('Geocoding: empty address provided');
-            return ['Latitude' => 0, 'Longitude' => 0];
+            return ['Latitude' => 0.0, 'Longitude' => 0.0];
         }
 
         return GeocoderChain::fromConfig()->geocode(trim($address), $city, $state, $zip, $country);

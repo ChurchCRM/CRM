@@ -52,7 +52,7 @@ class GeocoderChain
      */
     public static function availableProviderNames(): array
     {
-        return array_map(static fn (string $class): string => $class::NAME, array_values(self::PROVIDERS));
+        return array_map(static fn (string $class): string => (new $class())->getName(), array_values(self::PROVIDERS));
     }
 
     /**
@@ -117,7 +117,8 @@ class GeocoderChain
                 continue;
             }
 
-            if ($result !== null && ($result['Latitude'] !== 0.0 || $result['Longitude'] !== 0.0)) {
+            // Cast before comparing: a provider returning integer zeros must not pass as a hit.
+            if ($result !== null && ((float) $result['Latitude'] !== 0.0 || (float) $result['Longitude'] !== 0.0)) {
                 $this->logger->debug(
                     'Geocoding: ' . $provider->getName() . ' found lat=' . $result['Latitude'] . ', lng=' . $result['Longitude']
                 );
