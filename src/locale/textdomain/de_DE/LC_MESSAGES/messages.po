@@ -5128,14 +5128,6 @@ msgid "Verification URL created"
 msgstr "Verifizierungs-URL erstellt"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Fehler beim Versenden der E-Mail(s)"
 
@@ -8527,10 +8519,6 @@ msgstr "Ihr Passwort wurde erfolgreich aktualisiert."
 #: 
 msgid "selected family has no coordinates"
 msgstr "ausgewählte Familie hat keine Koordinaten"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12292,10 +12280,6 @@ msgid "Database dump only (.sql)"
 msgstr "Nur Datenbankexport (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Der Datumsbereich darf 1 Jahr nicht überschreiten"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Unwiderrufliche Operation"
 
@@ -12890,10 +12874,6 @@ msgstr "Dienst für diese Rollenliste nicht gefunden"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Der Inaktivitätsstatus kann nur für die Klassifikationsliste umgeschaltet werden"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Neue Gemeindemitglieder erhalten keine Willkommens-E-Mail mit ihren Anmeldedaten. Teilen Sie das Passwort manuell mit oder konfigurieren Sie zunächst die E-Mail-Funktion."
 
 #: 
 msgid "Option name is required"
@@ -17946,14 +17926,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "{{geocoded}} Familien wurden geokodiert. {{failed}} konnten nicht aufgelöst werden – siehe Details unten."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "{{geocoded}} von {{total}} Familien wurden geokodiert. {{overflow}} wurden noch nicht verarbeitet – führen Sie den Vorgang erneut aus, um fortzufahren."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Familien werden geokodiert … dies kann bis zu einer Minute dauern. Sie können diese Seite geöffnet lassen."
-
-#: 
 msgid "Geocoding…"
 msgstr "Geokodierung läuft …"
 
@@ -17966,20 +17938,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Keine Übereinstimmung gefunden – bitte Straße, Stadt und Postleitzahl überprüfen"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Anzahl der Tage, die Benutzern zur Verfügung stehen, um sich nach der verpflichtenden Einführung für die Zwei-Faktor-Authentifizierung (2FA) zu registrieren. Auf 0 setzen, um dies sofort zu erzwingen (bisheriges Verhalten). Eine Verkürzung einer laufenden Übergangsfrist kann Benutzer sofort aussperren."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Öffnen Sie eine Familie, um deren Adresse zu korrigieren, und führen Sie diesen Vorgang anschließend erneut aus."
 
 #: 
 msgid "Set up now"
 msgstr "Jetzt einrichten"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Dies ermittelt mithilfe von OpenStreetMap die Kartenkoordinaten für alle Familien, denen sie fehlen. Es werden bis zu 50 Familien pro Durchlauf verarbeitet; ein vollständiger Durchlauf dauert etwa eine Minute. Sie können diese Seite währenddessen geöffnet lassen. Fortfahren?"
 
 #: 
 msgid "Unknown family"

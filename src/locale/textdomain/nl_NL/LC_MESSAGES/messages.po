@@ -5019,14 +5019,6 @@ msgid "Verification URL created"
 msgstr "Verificatie-URL gemaakt"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Fout bij het verzenden van e-mail(s)"
 
@@ -8418,10 +8410,6 @@ msgstr "Uw wachtwoord is succesvol bijgewerkt."
 #: 
 msgid "selected family has no coordinates"
 msgstr "geselecteerde familie heeft geen coördinaten"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12183,10 +12171,6 @@ msgid "Database dump only (.sql)"
 msgstr "Alleen database-dump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Datumbereik mag niet meer dan 1 jaar bedragen"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destructieve bewerking"
 
@@ -12781,10 +12765,6 @@ msgstr "Groep niet gevonden voor deze rollenlijst"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Inactieve status kan alleen worden gewijzigd voor de classificatielijst"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Nieuwe gebruikers ontvangen geen welkomstmail met hun inloggegevens. Deel het wachtwoord handmatig met hen of configureer eerst e-mail."
 
 #: 
 msgid "Option name is required"
@@ -17817,14 +17797,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "{{geocoded}} gezinnen zijn gegeocodeerd. {{failed}} konden niet worden herleid — zie details hieronder."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "{{geocoded}} van {{total}} gezinnen zijn gegeocodeerd. {{overflow}} nog niet verwerkt — voer opnieuw uit om door te gaan."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Gezinnen worden gegeocodeerd… dit kan tot een minuut duren. U kunt deze pagina open laten staan."
-
-#: 
 msgid "Geocoding…"
 msgstr "Geocoderen…"
 
@@ -17837,20 +17809,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Geen overeenkomst gevonden — controleer straatnaam, plaats en postcode"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Aantal dagen dat gebruikers hebben om zich in te schrijven voor tweefactorauthenticatie nadat dit verplicht is gesteld. Stel in op 0 om dit onmiddellijk af te dwingen (verouderd gedrag). Het verkorten van een actieve overgangsperiode kan gebruikers onmiddellijk buitensluiten."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Open een gezin om het adres te corrigeren en voer dit daarna opnieuw uit."
 
 #: 
 msgid "Set up now"
 msgstr "Nu instellen"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Dit zoekt kaartcoördinaten voor elk gezin dat deze mist, met behulp van OpenStreetMap. Er worden maximaal 50 gezinnen per keer verwerkt; een volledige batch duurt ongeveer een minuut. U kunt deze pagina open laten staan terwijl dit wordt uitgevoerd. Doorgaan?"
 
 #: 
 msgid "Unknown family"

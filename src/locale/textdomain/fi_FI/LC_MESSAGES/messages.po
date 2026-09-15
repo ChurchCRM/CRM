@@ -5018,14 +5018,6 @@ msgid "Verification URL created"
 msgstr "Vahvistus-URL luotu"
 
 #: 
-msgid "URL"
-msgstr "URL-osoite"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Virhe sähköpostien lähetyksessä"
 
@@ -8416,10 +8408,6 @@ msgstr "Salasanasi on päivitetty."
 #: 
 msgid "selected family has no coordinates"
 msgstr "valitulla perheellä ei ole koordinaatteja"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12181,10 +12169,6 @@ msgid "Database dump only (.sql)"
 msgstr "Vain tietokannan vedos (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Aikaväli ei voi ylittää yhtä vuotta"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Tuhoava toiminto"
 
@@ -12779,10 +12763,6 @@ msgstr "Ryhmää ei löydy tälle rooliluettelolle"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Passiivinen tila voidaan vaihtaa vain luokitteluluettelossa"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Uudet käyttäjät eivät saa tervetulosähköpostia tunnistetietoineen. Jaa salasana heille manuaalisesti tai määritä ensin sähköposti."
 
 #: 
 msgid "Option name is required"
@@ -17839,14 +17819,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "{{geocoded}} perhettä geokoodattu. {{failed}} ei voitu ratkaista — katso tiedot alta."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "{{geocoded}}/{{total}} perhettä geokoodattu. {{overflow}} käsittelemättä — suorita uudelleen jatkaaksesi."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Geokoodataan perheitä… tämä voi kestää jopa minuutin. Voit pitää tämän sivun auki."
-
-#: 
 msgid "Geocoding…"
 msgstr "Geokoodataan…"
 
@@ -17859,20 +17831,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Osumaa ei löytynyt — tarkista katuosoite, kaupunki ja postinumero"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Päivien määrä, jonka aikana käyttäjien on otettava kaksivaiheinen tunnistautuminen käyttöön sen tultua pakolliseksi. Aseta arvoksi 0 pakottaaksesi sen käyttöön välittömästi (vanha toimintatapa). Aktiivisen siirtymäajan lyhentäminen voi lukita käyttäjät ulos välittömästi."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Avaa perhe korjataksesi sen osoitteen ja suorita tämä sitten uudelleen."
 
 #: 
 msgid "Set up now"
 msgstr "Ota käyttöön nyt"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Tämä hakee karttakoordinaatit jokaiselle perheelle, jolta ne puuttuvat, käyttäen OpenStreetMapia. Se käsittelee enintään 50 perhettä ajokerralla; täysi erä kestää noin minuutin. Voit pitää tämän sivun auki suorituksen ajan. Jatketaanko?"
 
 #: 
 msgid "Unknown family"
