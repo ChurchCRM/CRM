@@ -5039,14 +5039,6 @@ msgid "Verification URL created"
 msgstr "Vytvořená ověřovací adresa URL"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Chyba při odesílání e-mailu(ů)"
 
@@ -8445,10 +8437,6 @@ msgstr "Vaše heslo bylo úspěšně aktualizováno."
 #: 
 msgid "selected family has no coordinates"
 msgstr "vybraná rodina nemá souřadnice"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12212,10 +12200,6 @@ msgid "Database dump only (.sql)"
 msgstr "Pouze výpis databáze (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Rozsah dat nesmí překročit 1 rok"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destruktivní operace"
 
@@ -12810,10 +12794,6 @@ msgstr "Skupina nebyla nalezena pro tento seznam rolí"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Neaktivní stav lze přepínat pouze pro seznam klasifikací"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Noví uživatelé neobdrží uvítací e-mail s přihlašovacími údaji. Sdílejte heslo ručně nebo nejprve nakonfigurujte e-mail."
 
 #: 
 msgid "Option name is required"
@@ -17863,14 +17843,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "Geokódováno {{geocoded}} rodin. {{failed}} se nepodařilo vyřešit — podrobnosti najdete níže."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "Geokódováno {{geocoded}} z {{total}} rodin. {{overflow}} zatím nezpracováno — spusťte akci znovu pro pokračování."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Geokódování rodin… může to trvat až minutu. Tuto stránku můžete ponechat otevřenou."
-
-#: 
 msgid "Geocoding…"
 msgstr "Geokódování…"
 
@@ -17883,20 +17855,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Nebyla nalezena žádná shoda — zkontrolujte ulici, město a PSČ"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Počet dní, které mají uživatelé na aktivaci dvoufaktorového ověření poté, co se stane povinným. Nastavením na 0 se vynutí okamžitě (původní chování). Zkrácení aktivní ochranné lhůty může uživatele okamžitě zamknout mimo systém."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Otevřete rodinu a opravte její adresu, poté akci spusťte znovu."
 
 #: 
 msgid "Set up now"
 msgstr "Nastavit nyní"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Tato funkce najde souřadnice na mapě pro všechny rodiny, kterým chybí, pomocí OpenStreetMap. Za jedno spuštění zpracuje až 50 rodin; celá dávka trvá přibližně minutu. Během zpracování můžete tuto stránku ponechat otevřenou. Pokračovat?"
 
 #: 
 msgid "Unknown family"

@@ -5049,14 +5049,6 @@ msgid "Verification URL created"
 msgstr "Kinnitus URL on loodud"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Viga e-kirjade saatmisel"
 
@@ -8448,10 +8440,6 @@ msgstr "Teie parool on edukalt uuendatud."
 #: 
 msgid "selected family has no coordinates"
 msgstr "valitud perekonnal pole koordinaate"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12213,10 +12201,6 @@ msgid "Database dump only (.sql)"
 msgstr "Ainult andmebaasi dump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Kuupäevavahemik ei tohi ületada 1 aastat"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Hävitav toiming"
 
@@ -12811,10 +12795,6 @@ msgstr "Rühma ei leitud selle rollinimekirja jaoks"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Passiivset olekut saab lülitada ainult klassifikatsioonide loendi jaoks"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Uued kasutajad ei saa tervitusmeili oma mandaatidega. Jagage parool nendega käsitsi või seadistage esmalt e-post."
 
 #: 
 msgid "Option name is required"
@@ -17871,14 +17851,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "Geokodeeriti {{geocoded}} peret. {{failed}} ei õnnestunud lahendada — vt üksikasju allpool."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "Geokodeeriti {{geocoded}} peret {{total}}-st. {{overflow}} on veel töötlemata — jätkamiseks käivitage uuesti."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Perede geokodeerimine… see võib võtta kuni minuti. Võite selle lehe lahti hoida."
-
-#: 
 msgid "Geocoding…"
 msgstr "Geokodeerimine…"
 
@@ -17891,20 +17863,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Vastet ei leitud — kontrollige tänava aadressi, linna ja sihtnumbrit"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Päevade arv, mis kasutajatel on kaheastmelise autentimise (2FA) seadistamiseks pärast selle kohustuslikuks muutumist. Kohese jõustamise jaoks (varasem käitumine) määrake väärtuseks 0. Aktiivse ajapikenduse lühendamine võib kasutajad kohe välja lukustada."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Avage pere, et parandada tema aadress, seejärel käivitage see uuesti."
 
 #: 
 msgid "Set up now"
 msgstr "Seadista kohe"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "See leiab kaardikoordinaadid iga pere jaoks, kellel need puuduvad, kasutades OpenStreetMap'i. Ühe käivitusega töödeldakse kuni 50 peret; terve partii võtab aega umbes minuti. Võite selle lehe töötamise ajal lahti hoida. Kas jätkata?"
 
 #: 
 msgid "Unknown family"

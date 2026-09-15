@@ -5047,14 +5047,6 @@ msgid "Verification URL created"
 msgstr "URL ya uthibitishaji imeundwa"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Hitilafu katika kutuma barua pepe"
 
@@ -8445,10 +8437,6 @@ msgstr "Nywila yako imesasishwa kwa mafanikio."
 #: 
 msgid "selected family has no coordinates"
 msgstr "familia iliyochaguliwa haina kuratibu"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12210,10 +12198,6 @@ msgid "Database dump only (.sql)"
 msgstr "Nakala ya hifadhidata peke yake (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Kipindi cha tarehe haiwezi kuzidi mwaka 1"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operesheni ya Uharibifu"
 
@@ -12808,10 +12792,6 @@ msgstr "Huduma haikupatikana kwa orodha hii ya majukumu"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Hali ya kutokuwa hai inaweza kubadilishwa tu kwa orodha ya uainishaji"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Waumini wapya hawatapokea barua pepe ya karibu na vitambulisho vyao. Shiriki nywila nao kwa mkono, au sanidi barua pepe kwanza."
 
 #: 
 msgid "Option name is required"
@@ -17852,14 +17832,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "Familia {{geocoded}} zimepatiwa kuratibu. {{failed}} hazikuweza kutatuliwa — angalia maelezo hapa chini."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "Familia {{geocoded}} kati ya {{total}} zimepatiwa kuratibu. {{overflow}} bado hazijachakatwa — endesha tena ili kuendelea."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Inatafuta kuratibu za familia… hii inaweza kuchukua hadi dakika moja. Unaweza kuacha ukurasa huu wazi."
-
-#: 
 msgid "Geocoding…"
 msgstr "Inatafuta kuratibu…"
 
@@ -17872,20 +17844,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Hakuna kinachofanana kilichopatikana — angalia anwani ya mtaa, jiji, na msimbo wa posta"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Idadi ya siku watumiaji walizonazo kujiandikisha kwa uthibitishaji wa hatua mbili (2FA) baada ya kuwa ni lazima. Weka 0 kutekeleza mara moja (tabia ya zamani). Kupunguza muda wa neema unaoendelea kunaweza kuwafungia watumiaji nje mara moja."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Fungua familia ili kurekebisha anwani yake, kisha endesha hii tena."
 
 #: 
 msgid "Set up now"
 msgstr "Sanidi sasa"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Hii hutafuta kuratibu za ramani kwa kila familia isiyokuwa nazo, kwa kutumia OpenStreetMap. Huchakata familia hadi 50 kwa kila kuendesha; kundi kamili huchukua takriban dakika moja. Unaweza kuacha ukurasa huu wazi wakati inaendelea. Endelea?"
 
 #: 
 msgid "Unknown family"

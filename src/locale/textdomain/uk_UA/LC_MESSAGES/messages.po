@@ -5050,14 +5050,6 @@ msgid "Verification URL created"
 msgstr "Створено URL-адресу для підтвердження"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Помилка надсилання електронних листів"
 
@@ -8465,10 +8457,6 @@ msgstr "Ваш пароль успішно оновлено."
 #: 
 msgid "selected family has no coordinates"
 msgstr "обрана сім'я не має координат"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12234,10 +12222,6 @@ msgid "Database dump only (.sql)"
 msgstr "Лише дамп бази даних (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Діапазон дат не може перевищувати 1 рік"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Деструктивна операція"
 
@@ -12832,10 +12816,6 @@ msgstr "Служіння для цього списку ролей не знай
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Статус неактивний можна змінити лише для списку класифікацій"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Нові парафіяни не отримають вітального листа з їхніми обліковими даними. Передайте пароль вручну або спочатку налаштуйте електронну пошту."
 
 #: 
 msgid "Option name is required"
@@ -17886,14 +17866,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "Геокодовано {{geocoded}} сімей. {{failed}} не вдалося визначити — див. деталі нижче."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "Геокодовано {{geocoded}} із {{total}} сімей. {{overflow}} ще не оброблено — запустіть знову, щоб продовжити."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Геокодування сімей… це може зайняти до хвилини. Ви можете залишити цю сторінку відкритою."
-
-#: 
 msgid "Geocoding…"
 msgstr "Геокодування…"
 
@@ -17906,20 +17878,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Збігів не знайдено — перевірте вулицю, місто та поштовий індекс"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Кількість днів, які мають користувачі для реєстрації у двофакторній автентифікації після її запровадження. Встановіть 0, щоб застосувати негайно (застаріла поведінка). Скорочення активного пільгового періоду може негайно заблокувати доступ користувачам."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Відкрийте сім'ю, щоб виправити її адресу, а потім запустіть це знову."
 
 #: 
 msgid "Set up now"
 msgstr "Налаштувати зараз"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Це знаходить координати на карті для кожної сім'ї, якій їх бракує, використовуючи OpenStreetMap. За один запуск обробляється до 50 сімей; повна партія займає близько хвилини. Ви можете залишити цю сторінку відкритою під час виконання. Продовжити?"
 
 #: 
 msgid "Unknown family"

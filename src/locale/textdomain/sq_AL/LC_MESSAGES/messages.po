@@ -5041,14 +5041,6 @@ msgid "Verification URL created"
 msgstr "URL e verifikimit u krijua"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Gabim gjatë dërgimit të email-eve"
 
@@ -8439,10 +8431,6 @@ msgstr "Fjalëkalimi juaj është përditësuar me sukses."
 #: 
 msgid "selected family has no coordinates"
 msgstr "familja e zgjedhur nuk ka koordinata"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12204,10 +12192,6 @@ msgid "Database dump only (.sql)"
 msgstr "Vetëm dump i bazës së të dhënave (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Intervali i datave nuk mund të kalojë 1 vit"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operacion Shkatërrues"
 
@@ -12802,10 +12786,6 @@ msgstr "Grupi nuk u gjet për këtë listë rolesh"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Statusi joaktiv mund të ndryshohet vetëm për listën e klasifikimeve"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Përdoruesit e rinj nuk do të marrin një email mirëseardhje me kredencialet e tyre. Ndani fjalëkalimin me ta manualisht, ose konfiguroni emailin fillimisht."
 
 #: 
 msgid "Option name is required"
@@ -17846,14 +17826,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "U gjeokoduan {{geocoded}} familje. {{failed}} nuk u zgjidhën dot — shihni detajet më poshtë."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "U gjeokoduan {{geocoded}} nga {{total}} familje. {{overflow}} ende nuk janë përpunuar — ekzekutojeni përsëri për të vazhduar."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Duke gjeokoduar familjet… kjo mund të zgjasë deri në një minutë. Mund ta mbani këtë faqe hapur."
-
-#: 
 msgid "Geocoding…"
 msgstr "Duke gjeokoduar…"
 
@@ -17866,20 +17838,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Nuk u gjet asnjë përputhje — kontrolloni adresën e rrugës, qytetin dhe kodin postar"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Numri i ditëve që kanë përdoruesit për t'u regjistruar në 2FA pasi bëhet i detyrueshëm. Vendoseni në 0 për ta zbatuar menjëherë (sjellje e vjetër). Shkurtimi i një periudhe hiri aktive mund t'i bllokojë përdoruesit menjëherë jashtë sistemit."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Hapni një familje për të korrigjuar adresën e saj, më pas ekzekutojeni këtë përsëri."
 
 #: 
 msgid "Set up now"
 msgstr "Konfiguro tani"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Kjo gjen koordinatat e hartës për çdo familje që i mungojnë, duke përdorur OpenStreetMap. Përpunon deri në 50 familje për ekzekutim; një grup i plotë zgjat rreth një minutë. Mund ta mbani këtë faqe hapur ndërsa ekzekutohet. Të vazhdohet?"
 
 #: 
 msgid "Unknown family"
