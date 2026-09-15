@@ -848,9 +848,9 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     <?php
                 } ?>
                 <button type="button" id="verifyURL"
-                        class="btn btn-secondary"><i class="fa-solid fa-link"></i><?= gettext("URL") ?></button>
+                        class="btn btn-secondary"><i class="fa-solid fa-link"></i>URL</button>
                 <button type="button" id="verifyDownloadPDF"
-                        class="btn btn-info"><i class="fa-solid fa-download"></i><?= gettext("PDF") ?></button>
+                        class="btn btn-info"><i class="fa-solid fa-download"></i>PDF</button>
                 <button type="button" id="verifyNow"
                         class="btn btn-success"><i class="fa-solid fa-check"></i><?= gettext("Verified In Person") ?>
                 </button>

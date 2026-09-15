@@ -132,7 +132,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                         <th class="text-center"><?= gettext('Last Login') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
                         <th class="text-center"><?= gettext('Status') ?></th>
-                        <th class="text-center"><?= gettext('2FA') ?></th>
+                        <th class="text-center">2FA</th>
                         <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                     </tr>
                 </thead>
