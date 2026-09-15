@@ -500,7 +500,9 @@ import "../src/skin/scss/system-settings-panel.scss";
         }
       });
 
-      // Save each setting
+      // Save each setting. fetch() only rejects on network errors, so a 4xx/5xx
+      // from the config API has to be turned into a rejection explicitly or the
+      // failure would be reported as a success.
       const promises = Object.keys(settings).map((key) =>
         fetch(`${window.CRM.root}${this.options.configApiPath}/${key}`, {
           method: "POST",
@@ -508,6 +510,11 @@ import "../src/skin/scss/system-settings-panel.scss";
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ value: settings[key] }),
+        }).then((response) => {
+          if (!response.ok) {
+            throw new Error(`${key}: ${response.status} ${response.statusText}`);
+          }
+          return response;
         }),
       );
 
@@ -525,6 +532,11 @@ import "../src/skin/scss/system-settings-panel.scss";
           if (window.CRM?.notify) {
             window.CRM.notify(t("Failed to save settings"), { type: "error", delay: 5000 });
           }
+        })
+        .finally(() => {
+          // Restore the button on both outcomes. Panels whose onSave reloads the
+          // page never noticed, but the Map Settings, Email and Text panels stay
+          // on the page and were left with a disabled "Saving..." button (#9852).
           saveBtn.disabled = false;
           saveBtn.innerHTML = originalHtml;
         });
