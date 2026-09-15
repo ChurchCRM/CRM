@@ -118,7 +118,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bHidePersonAddress')) ?>
                 }
             ],
-            showAllSettingsLink: false
+            showAllSettingsLink: false,
+            // No reload: map-view.js listens for this and applies the saved default zoom in place.
+            onSave: function (savedValues) {
+                document.dispatchEvent(new CustomEvent('crm:mapsettings-saved', { detail: savedValues }));
+            }
         });
     });
     <?php endif; ?>

@@ -17,7 +17,7 @@
  *            { name: 'iFYMonth', type: 'choice', label: 'Fiscal Year Month', choices: [...] },
  *            { name: 'bEnableNonDeductible', type: 'boolean', label: 'Non-deductible' }
  *        ],
- *        onSave: function() { window.location.reload(); }
+ *        onSave: function(savedValues) { window.location.reload(); }
  *    });
  */
 
@@ -218,7 +218,7 @@ import "../src/skin/scss/system-settings-panel.scss";
      * @param {string} options.title - Panel title
      * @param {string} options.icon - Font Awesome icon class
      * @param {Array} options.settings - Array of setting names or setting config objects
-     * @param {Function} options.onSave - Callback after successful save
+     * @param {Function} options.onSave - Callback after successful save; receives {name: value} of the saved settings
      * @param {boolean} options.showAllSettingsLink - Show link to System Settings page
      * @param {string} options.headerClass - CSS class for header (default: bg-primary-lt)
      */
@@ -524,8 +524,10 @@ import "../src/skin/scss/system-settings-panel.scss";
             window.CRM.notify(t("Settings saved successfully"), { type: "success", delay: 2000 });
           }
 
+          // Hand the saved values to the page so it can apply them in place
+          // instead of reloading (the Map Settings panel re-zooms the map).
           if (typeof this.options.onSave === "function") {
-            this.options.onSave();
+            this.options.onSave(settings);
           }
         })
         .catch((_error) => {

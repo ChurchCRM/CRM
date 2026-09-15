@@ -44,4 +44,24 @@ describe("Settings Panel — Save button", () => {
             .and("contain.text", "Save Settings");
         cy.contains("Failed to save settings").should("exist");
     });
+
+    it("Map Settings: a saved default zoom is applied to the map without a reload", () => {
+        cy.intercept("POST", "**/admin/api/system/config/*").as("saveConfig");
+
+        cy.visit("people/map");
+        cy.get(".leaflet-tile-pane img", { timeout: 10000 }).should("exist");
+        cy.contains("Map Settings").click();
+        cy.get("#mapAdminSettings", { timeout: 10000 }).should("be.visible");
+
+        // Pick a zoom level different from the default (10) and save
+        cy.get("#mapAdminSettings select[name='iMapZoom']").select("14");
+        cy.get("#mapAdminSettings #settingsPanelSaveBtn").click();
+        cy.wait("@saveConfig");
+
+        // Tile URLs carry the zoom level: /{z}/{x}/{y}.png — no cy.reload() here
+        cy.get(".leaflet-tile-pane img[src*='/14/']", { timeout: 10000 }).should("exist");
+
+        // Restore the default so other specs see the seeded value
+        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/iMapZoom", { value: "10" }, 200);
+    });
 });
