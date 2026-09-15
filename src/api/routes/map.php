@@ -282,17 +282,25 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
  * @OA\Post(
  *     path="/map/geocode-all",
  *     summary="Geocode all active families missing coordinates",
- *     description="Iterates active families that have a street address but no usable coordinates, geocoding each via the configured geocoding services (Map Settings) at ~1 request/second. Processes up to 50 families per call; repeat if 'remaining' > 0. Admin-only.",
+ *     description="Iterates active families that have a street address but no usable coordinates, geocoding each via the configured geocoding services (Map Settings) at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Admin-only.",
  *     tags={"Map"},
  *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(
+ *         required=false,
+ *         @OA\JsonContent(
+ *             @OA\Property(property="skip", type="integer", minimum=0, default=0, description="Families (in ID order) to skip before the batch — the running count of failures from previous calls")
+ *         )
+ *     ),
  *     @OA\Response(
  *         response=200,
  *         description="Geocoding batch summary",
  *         @OA\JsonContent(
  *             @OA\Property(property="total",     type="integer", description="Total families missing coordinates before this run"),
+ *             @OA\Property(property="skip",      type="integer", description="Offset applied to this batch (echoed back)"),
+ *             @OA\Property(property="processed", type="integer", description="Families examined in this batch (0 when skip >= total)"),
  *             @OA\Property(property="geocoded",  type="integer", description="Families successfully geocoded in this batch"),
  *             @OA\Property(property="failed",    type="integer", description="Families that could not be geocoded"),
- *             @OA\Property(property="remaining", type="integer", description="Families still missing coordinates after this batch (run again if > 0)"),
+ *             @OA\Property(property="remaining", type="integer", description="Families still missing coordinates after this batch, including the ones that failed (run again while remaining > failures so far)"),
  *             @OA\Property(
  *                 property="failures",
  *                 type="array",
@@ -318,8 +326,14 @@ function geocodeAllFamilies(Request $request, Response $response, array $args): 
     // Allow extended execution time for the throttled Nominatim loop (~1 req/sec × up to 50 families)
     set_time_limit(240);
 
+    $input = $request->getParsedBody();
+    $skip = is_array($input) && isset($input['skip']) && is_numeric($input['skip']) ? (int) $input['skip'] : 0;
+    if ($skip < 0) {
+        return SlimUtils::renderErrorJSON($response, gettext('skip must be zero or a positive integer'), [], 400, null, $request);
+    }
+
     try {
-        $summary = (new FamilyService())->geocodeAllMissingFamilies();
+        $summary = (new FamilyService())->geocodeAllMissingFamilies($skip);
         return SlimUtils::renderJSON($response, $summary);
     } catch (\Throwable $e) {
         return SlimUtils::renderErrorJSON(

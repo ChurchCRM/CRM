@@ -81,6 +81,7 @@ Every key with `""` value needs a translation.
 - **Preserve exactly:** `%d`, `%s`, `%1$s` format specifiers, markdown formatting, URLs
 - **Brand names — never translate:** ChurchCRM, Vonage, MailChimp, GitHub, OpenLP, Nextcloud, Gravatar, WebDAV, POEditor, ownCloud
 - **Leave as `""` (do NOT translate):** `N/A`, `name@example.com`, `SHA1 Hash`, `BCC`
+- **If you hit a standalone pure-technical-acronym key** (e.g. `CSV`, `OFX`, `PDF`, `2FA`, `URL`) with nothing else in the string — don't translate it at all, even identically. These should never have been extracted as translatable terms; flag it as a source-code bug (needs unwrapping from `gettext()`/`i18next.t()`, see `i18n-localization.md` → "Do Not Wrap Brand / Technical Literals") instead of spending translation effort or adding it to `english-ok.json`.
 
 ### 4c. Apply via temp file
 
