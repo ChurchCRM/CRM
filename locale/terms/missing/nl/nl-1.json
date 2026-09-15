@@ -4,17 +4,17 @@
   "Planning": "",
   "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-mail verzonden naar %d gezin.|E-mail verzonden naar %d gezinnen.",
-    "other": ""
+    "one": "E-mail verzonden naar %d gezin.",
+    "other": "E-mail verzonden naar %d gezinnen."
   },
   "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF succesvol gemaild naar %d gezin.|PDF succesvol gemaild naar %d gezinnen.",
-    "other": ""
+    "one": "PDF succesvol gemaild naar %d gezin.",
+    "other": "PDF succesvol gemaild naar %d gezinnen."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Tweefactorauthenticatie is verplicht. U heeft %d dag om u in te schrijven.|Tweefactorauthenticatie is verplicht. U heeft %d dagen om u in te schrijven.",
-    "other": ""
+    "one": "Tweefactorauthenticatie is verplicht. U heeft %d dag om u in te schrijven.",
+    "other": "Tweefactorauthenticatie is verplicht. U heeft %d dagen om u in te schrijven."
   },
   "Copied {{count}} members": {
     "one": "",

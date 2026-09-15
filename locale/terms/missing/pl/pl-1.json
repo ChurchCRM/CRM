@@ -1,20 +1,20 @@
 {
   "CSV": "",
   "Email sent to %d family.": {
-    "one": "Wysłano e-mail do %d rodziny.|Wysłano e-mail do %d rodzin.|Wysłano e-mail do %d rodzin.",
-    "few": "",
-    "other": ""
+    "one": "Wysłano e-mail do %d rodziny.",
+    "few": "Wysłano e-mail do %d rodzin.",
+    "other": "Wysłano e-mail do %d rodzin."
   },
   "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "Plik PDF został wysłany e-mailem do %d rodziny.|Plik PDF został wysłany e-mailem do %d rodzin.|Plik PDF został wysłany e-mailem do %d rodzin.",
-    "few": "",
-    "other": ""
+    "one": "Plik PDF został wysłany e-mailem do %d rodziny.",
+    "few": "Plik PDF został wysłany e-mailem do %d rodzin.",
+    "other": "Plik PDF został wysłany e-mailem do %d rodzin."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dzień na rejestrację.|Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dni na rejestrację.|Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dni na rejestrację.",
-    "few": "",
-    "other": ""
+    "one": "Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dzień na rejestrację.",
+    "few": "Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dni na rejestrację.",
+    "other": "Uwierzytelnianie dwuskładnikowe jest wymagane. Masz %d dni na rejestrację."
   },
   "Copied {{count}} members": {
     "one": "",

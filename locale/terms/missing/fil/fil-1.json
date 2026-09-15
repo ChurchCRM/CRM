@@ -9,8 +9,8 @@
   "Preview": "",
   "Teller": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Kinakailangan ang two-factor authentication. Mayroon kang %d araw upang mag-enroll.|Kinakailangan ang two-factor authentication. Mayroon kang %d araw upang mag-enroll.",
-    "other": ""
+    "one": "Kinakailangan ang two-factor authentication. Mayroon kang %d araw upang mag-enroll.",
+    "other": "Kinakailangan ang two-factor authentication. Mayroon kang %d araw upang mag-enroll."
   },
   "Copied {{count}} members": {
     "one": "",

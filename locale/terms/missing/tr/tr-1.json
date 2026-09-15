@@ -1,17 +1,17 @@
 {
   "CSV": "",
   "Email sent to %d family.": {
-    "one": "%d aileye e-posta gönderildi.|%d aileye e-posta gönderildi.",
-    "other": ""
+    "one": "%d aileye e-posta gönderildi.",
+    "other": "%d aileye e-posta gönderildi."
   },
   "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "%d aileye PDF başarıyla e-postayla gönderildi.|%d aileye PDF başarıyla e-postayla gönderildi.",
-    "other": ""
+    "one": "%d aileye PDF başarıyla e-postayla gönderildi.",
+    "other": "%d aileye PDF başarıyla e-postayla gönderildi."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var.|İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var.",
-    "other": ""
+    "one": "İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var.",
+    "other": "İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var."
   },
   "Copied {{count}} members": {
     "one": "",
