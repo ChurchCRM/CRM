@@ -54,7 +54,8 @@ if (geocodeAllBtn) {
     panel.appendChild(spinner);
 
     const text = document.createElement("span");
-    text.textContent = t("Geocoding families… this can take up to a minute. You can keep this page open.");
+    text.setAttribute("data-geocode-progress", "");
+    text.textContent = t("Geocoding families… this can take a few minutes. You can keep this page open.");
     panel.appendChild(text);
 
     resultsContainer.appendChild(panel);
@@ -190,7 +191,7 @@ if (geocodeAllBtn) {
     if (data.failuresTruncated) {
       const more = document.createElement("div");
       more.className = "text-secondary small mt-2";
-      more.textContent = t(`…and {{count}} more. Run again to see the rest.`, {
+      more.textContent = t(`…and {{count}} more not listed here.`, {
         count: data.failed - data.failures.length,
       });
       body.appendChild(more);
@@ -208,12 +209,67 @@ if (geocodeAllBtn) {
     resultsContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
+  // Progress text inside the working panel, updated after every batch.
+  const setWorkingText = (text) => {
+    const el = resultsContainer ? resultsContainer.querySelector("[data-geocode-progress]") : null;
+    if (el) el.textContent = text;
+  };
+
+  // Runs the whole job from one click. The server processes 50 families per
+  // call in a fixed (ID) order; families it could not resolve keep their empty
+  // coordinates, so without an offset the next call would re-query the same
+  // failures at the front of the list and never reach the rest (#9846). Each
+  // call therefore skips the number of families that already failed in this
+  // run, and the loop stops once nothing but known failures is left.
+  const runAllBatches = (acc) =>
+    fetch(buildAPIUrl("map/geocode-all"), {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ skip: acc.failed }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((body) => {
+            throw new Error(body.message || res.statusText);
+          });
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (acc.total === null) acc.total = data.total;
+        acc.geocoded += data.geocoded;
+        acc.failed += data.failed;
+        acc.remaining = data.remaining;
+        if (Array.isArray(data.failures)) acc.failures.push(...data.failures);
+        acc.failuresTruncated = acc.failuresTruncated || data.failuresTruncated;
+
+        if (data.geocoded > 0) {
+          document.dispatchEvent(new CustomEvent(FAMILY_DATA_CHANGED));
+        }
+
+        setWorkingText(
+          t(`Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located.`, {
+            done: acc.geocoded + acc.failed,
+            total: acc.total,
+            geocoded: acc.geocoded,
+          }),
+        );
+
+        // More families beyond the known failures, and this batch made progress?
+        // (processed === 0 means the offset reached the end — never loop on that.)
+        if (data.remaining > acc.failed && data.processed > 0) {
+          return runAllBatches(acc);
+        }
+        return acc;
+      });
+
   geocodeAllBtn.addEventListener("click", () => {
     window.bootbox.confirm({
       title: t("Update All Family Coordinates"),
       message: t(
         "This finds map coordinates for every family that is missing them, using OpenStreetMap. " +
-          "It processes up to 50 families per run; a full batch takes about a minute. " +
+          "It works through the families in batches of 50, about a minute per batch. " +
           "You can keep this page open while it runs. Continue?",
       ),
       buttons: {
@@ -228,74 +284,48 @@ if (geocodeAllBtn) {
         geocodeAllBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-1"></i>${t("Geocoding…")}`;
         showWorkingPanel();
 
-        fetch(buildAPIUrl("map/geocode-all"), {
-          method: "POST",
-          credentials: "same-origin",
-          headers: { "Content-Type": "application/json" },
+        runAllBatches({
+          total: null,
+          geocoded: 0,
+          failed: 0,
+          remaining: 0,
+          failures: [],
+          failuresTruncated: false,
         })
-          .then((res) => {
-            if (!res.ok) {
-              return res.json().then((body) => {
-                throw new Error(body.message || res.statusText);
-              });
-            }
-            return res.json();
-          })
-          .then((data) => {
+          .then((acc) => {
             geocodeAllBtn.disabled = false;
 
             // Refresh the button's "(N)" count so it reflects how many families
             // are still missing coordinates. originalHtml is stale — captured
-            // before the run. data.remaining is `total - geocoded`, so it
-            // already includes families that failed this run. Patch the count
-            // in place rather than rebuilding so the icon/markup stay intact.
-            if (typeof data.remaining === "number") {
-              const withoutCount = originalHtml.replace(/\s*\(\d+\)(\s*)$/, "$1");
-              geocodeAllBtn.innerHTML = data.remaining > 0 ? `${withoutCount} (${data.remaining})` : withoutCount;
-              geocodeAllBtn.dataset.missingCount = String(data.remaining);
-            } else {
-              geocodeAllBtn.innerHTML = originalHtml;
-            }
+            // before the run. Patch the count in place rather than rebuilding
+            // so the icon/markup stay intact.
+            const withoutCount = originalHtml.replace(/\s*\(\d+\)(\s*)$/, "$1");
+            geocodeAllBtn.innerHTML = acc.remaining > 0 ? `${withoutCount} (${acc.remaining})` : withoutCount;
+            geocodeAllBtn.dataset.missingCount = String(acc.remaining);
 
             // --- Summary toast --------------------------------------------
-            // `remaining` covers batch overflow (families not reached because
-            // of the 50-per-run cap) PLUS families that failed. Only prompt
-            // "run again" when there is genuine overflow — re-running does
-            // nothing for addresses that simply will not resolve.
-            const overflow = data.remaining - data.failed;
             let msg;
             let toastType;
-            if (data.total === 0) {
+            if (acc.total === 0) {
               msg = t("All families already have coordinates.");
               toastType = "info";
-            } else if (overflow > 0) {
-              msg = t(
-                `Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue.`,
-                { geocoded: data.geocoded, total: data.total, overflow },
-              );
-              toastType = "warning";
-            } else if (data.failed > 0) {
+            } else if (acc.failed > 0) {
               msg = t(`Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below.`, {
-                geocoded: data.geocoded,
-                failed: data.failed,
+                geocoded: acc.geocoded,
+                failed: acc.failed,
               });
-              toastType = data.geocoded > 0 ? "success" : "warning";
+              toastType = acc.geocoded > 0 ? "success" : "warning";
             } else {
               msg = t(`Geocoded all {{geocoded}} families. The map is now up to date.`, {
-                geocoded: data.geocoded,
+                geocoded: acc.geocoded,
               });
               toastType = "success";
             }
 
             window.CRM.notify(msg, { type: toastType, delay: 8000 });
 
-            // --- Failure detail panel ------------------------------------
-            renderFailurePanel(data);
-
-            // --- Repaint the map in place (no reload) --------------------
-            if (data.geocoded > 0) {
-              document.dispatchEvent(new CustomEvent(FAMILY_DATA_CHANGED));
-            }
+            // --- Failure detail panel (every batch's failures, not just the last) ---
+            renderFailurePanel(acc);
           })
           .catch((err) => {
             geocodeAllBtn.disabled = false;

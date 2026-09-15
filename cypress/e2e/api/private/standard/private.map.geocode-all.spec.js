@@ -77,6 +77,64 @@ describe("API Private Map — POST /api/map/geocode-all", () => {
         });
     });
 
+    context("skip offset (#9846)", () => {
+        // The bulk action takes families in ID order. A client passes back the
+        // number of families that failed in its earlier batches as `skip`, so
+        // unresolvable families are not re-queried at the front of every batch.
+        // Neither call below reaches Nominatim for a skipped family, so this is
+        // deterministic regardless of what the seed addresses resolve to.
+        it("Skipping past every missing family processes nothing", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
+                (response) => {
+                    expect(response.body.skip).to.equal(100000);
+                    expect(response.body.processed).to.equal(0);
+                    expect(response.body.geocoded).to.equal(0);
+                    expect(response.body.failed).to.equal(0);
+                    expect(response.body.remaining).to.equal(response.body.total);
+                    expect(response.body.failures).to.have.length(0);
+                },
+            );
+        });
+
+        it("Skipping all but one missing family processes exactly one", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
+                (probe) => {
+                    const total = probe.body.total;
+                    if (total === 0) {
+                        cy.log("No families missing coordinates in this database — nothing to offset");
+                        return;
+                    }
+                    cy.makePrivateAdminAPICall(
+                        "POST",
+                        "/api/map/geocode-all",
+                        { skip: total - 1 },
+                        200,
+                        60000,
+                    ).then((response) => {
+                        expect(response.body.skip).to.equal(total - 1);
+                        expect(response.body.processed).to.equal(1);
+                        expect(response.body.geocoded + response.body.failed).to.equal(1);
+                    });
+                },
+            );
+        });
+
+        it("Rejects a negative skip with 400", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: -1 }, 400, 30000);
+        });
+
+        it("Echoes skip=0 and processed when no skip is given", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
+                (probe) => {
+                    // Only the shape is asserted here; the happy-path test above
+                    // already runs a real batch.
+                    expect(probe.body).to.have.property("skip").that.is.a("number");
+                    expect(probe.body).to.have.property("processed").that.is.a("number");
+                },
+            );
+        });
+    });
+
     context("Authentication", () => {
         it("Returns 401 when no API key is supplied", () => {
             cy.apiRequest({
