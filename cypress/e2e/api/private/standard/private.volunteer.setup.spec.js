@@ -67,6 +67,7 @@ const EXPECTED_COLUMNS = {
         "vpos_Name",
         "vpos_Description",
         "vpos_Active",
+        "vpos_Recruiting",
         "vpos_Order",
     ],
     volunteer_qualification_vqal: [

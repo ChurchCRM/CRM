@@ -380,6 +380,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <th><?= gettext('Name') ?></th>
               <th><?= gettext('Description') ?></th>
               <th><?= gettext('Team') ?></th>
+              <!--
+                "Recruit Volunteers" (round four). A green check or nothing — the
+                empty cell IS the "no" state, because a column of red crosses reads
+                as a column of problems. Sortable like every other column, so a
+                coordinator can bring the advertised roles together.
+              -->
+              <th class="text-center"><?= gettext('Recruiting') ?></th>
               <th class="text-center"><?= gettext('Status') ?></th>
               <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
             </tr>
@@ -454,6 +461,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         far as it goes" — the list endpoint takes a mandatory from/to window (design
         M9), so ministry.ts sends From + one year when the box is blank.
       -->
+      <!--
+        Export CSV and Print, above the form rather than beside the table.
+
+        DataTables would put them in its own top row INSIDE the table wrapper,
+        which on this tab lands them under the search form and beside a "Search:"
+        box that no longer exists — `searching` is off for this table, because the
+        Team/Event/From/To form above already narrows the query server-side and a
+        second box that filters only the drawn page answers the same question with
+        a different answer. ministry.ts moves the buttons here instead; the
+        container is emptied before each re-init so a re-run of the query cannot
+        leave two toolbars behind.
+      -->
+      <div class="d-flex justify-content-end mb-2" id="occurrences-toolbar"></div>
       <div class="row g-2 align-items-end mb-3">
         <div class="col-12 col-md-3">
           <label class="form-label" for="occurrence-team-filter"><?= gettext('Team') ?></label>
@@ -677,6 +697,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <input class="form-check-input" type="checkbox" id="position-form-active" checked>
           <span class="form-check-label"><?= gettext('Active') ?></span>
         </label>
+        <!--
+          Round four: a position can advertise itself. Off by default, and below
+          Active on purpose — an inactive position is never advertised whatever
+          this switch says, so the order on screen matches the order of the rules.
+        -->
+        <label class="form-check form-switch mt-2">
+          <input class="form-check-input" type="checkbox" id="position-form-recruiting">
+          <span class="form-check-label"><?= gettext('Recruit Volunteers') ?></span>
+        </label>
+        <div class="form-text" id="position-form-recruiting-hint">
+          <?= gettext('Advertise this position on the Open Opportunities page.') ?>
+        </div>
         <div class="alert alert-danger d-none mt-3" role="alert" id="position-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
         </div>

@@ -1083,6 +1083,9 @@
         <column name="vpos_Active" phpName="Active" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
                 required="true" defaultValue="1"
                 description="Deactivate rather than delete once assignments exist, so history survives"/>
+        <column name="vpos_Recruiting" phpName="Recruiting" type="BOOLEAN" size="1" sqlType="tinyint(1)"
+                required="true" defaultValue="0"
+                description="Advertise this position by name on the Open Opportunities page; independent of the ministry-level Help wanted advert"/>
         <column name="vpos_Order" phpName="Order" type="INTEGER" required="true" defaultValue="0"
                 description="Display order within the ministry"/>
         <foreign-key foreignTable="volunteer_ministry_vmin" name="VolunteerPositionMinistry" phpName="Ministry"

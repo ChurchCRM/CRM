@@ -336,6 +336,10 @@ function volunteerPositionToArray(VolunteerPosition $position, array $teamNames 
         'name' => $position->getName(),
         'description' => $position->getDescription(),
         'active' => (bool) $position->getActive(),
+        // "Recruit Volunteers" (round four): this position is advertised by name on
+        // the Open Opportunities page. Always on the wire, so a client never has to
+        // read an absent key as "off".
+        'recruiting' => (bool) $position->getRecruiting(),
         'order' => (int) $position->getOrder(),
     ];
 }
@@ -385,6 +389,40 @@ function volunteerSetupFields(Request $request, array $allowed, array $booleans 
     }
 
     return $fields;
+}
+
+/**
+ * Read a STRICT boolean out of the parsed body, or fail.
+ *
+ * `InputSanitizationMiddleware` has no boolean type, and `(bool)` is the wrong
+ * fallback: it turns `"no"`, `"off"` and `"2"` into `true`, which on a switch
+ * named "Recruit Volunteers" would silently publish a position nobody asked to
+ * publish. So the accepted spellings are exactly the ones a JSON client and an
+ * HTML form can produce — `true`/`false`, `1`/`0`, `"1"`/`"0"`, `"true"`/`"false"`
+ * — and everything else, including `null` and an empty string, is a `400`.
+ *
+ * Returns the parsed value, or `null` when the key is absent (nothing to do) —
+ * the caller distinguishes the two with `array_key_exists()`.
+ */
+function volunteerSetupStrictBoolean(mixed $value): ?bool
+{
+    if (is_bool($value)) {
+        return $value;
+    }
+
+    if (is_int($value)) {
+        return $value === 1 ? true : ($value === 0 ? false : null);
+    }
+
+    if (is_string($value)) {
+        return match (strtolower(trim($value))) {
+            '1', 'true' => true,
+            '0', 'false' => false,
+            default => null,
+        };
+    }
+
+    return null;
 }
 
 /** `?active=1` / `?active=0`; absent means "both". */
@@ -1054,9 +1092,10 @@ function listVolunteerPositions(Request $request, Response $response): Response
  *         @OA\Property(property="name", type="string", maxLength=100),
  *         @OA\Property(property="description", type="string", maxLength=255),
  *         @OA\Property(property="teamId", type="integer", description="Required: a position always belongs to a team"),
- *         @OA\Property(property="order", type="integer", description="Display order within the ministry")
+ *         @OA\Property(property="order", type="integer", description="Display order within the ministry"),
+ *         @OA\Property(property="recruiting", type="boolean", default=false, description="Advertise this position by name on the Open Opportunities page. Strictly boolean - true/false/1/0 and their string spellings only; anything else is a 400")
  *     )),
- *     @OA\Response(response=400, description="The name or the teamId is missing, or the team belongs to another ministry"),
+ *     @OA\Response(response=400, description="The name or the teamId is missing, the team belongs to another ministry, or recruiting was not a boolean"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this ministry or team, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry or team"),
@@ -1091,6 +1130,24 @@ function createVolunteerPosition(Request $request, Response $response): Response
         return SlimUtils::renderErrorJSON($response, gettext('Team not found'), [], 404, null, $request);
     }
 
+    // The sanitizer has no boolean type, so the switch is validated here — before
+    // anything is written — rather than coerced with a `(bool)` that would read
+    // "no" as yes.
+    $recruiting = false;
+    if (array_key_exists('recruiting', $body)) {
+        $recruiting = volunteerSetupStrictBoolean($body['recruiting']);
+        if ($recruiting === null) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Recruit Volunteers must be true or false'),
+                [],
+                400,
+                null,
+                $request
+            );
+        }
+    }
+
     try {
         $position = (new VolunteerSetupService())->createPosition(
             $ministry,
@@ -1098,7 +1155,8 @@ function createVolunteerPosition(Request $request, Response $response): Response
             (string) ($body['name'] ?? ''),
             isset($body['description']) ? (string) $body['description'] : null,
             isset($body['order']) ? (int) $body['order'] : 0,
-            volunteerSetupActor()
+            volunteerSetupActor(),
+            $recruiting
         );
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
@@ -1149,9 +1207,10 @@ function getVolunteerPosition(Request $request, Response $response): Response
  *         @OA\Property(property="description", type="string", maxLength=255),
  *         @OA\Property(property="teamId", type="integer", description="Moves the position to another of this ministry's teams; null is a 400"),
  *         @OA\Property(property="order", type="integer"),
- *         @OA\Property(property="active", type="boolean")
+ *         @OA\Property(property="active", type="boolean"),
+ *         @OA\Property(property="recruiting", type="boolean", description="Advertise this position by name on the Open Opportunities page. Strictly boolean - true/false/1/0 and their string spellings only; anything else is a 400")
  *     )),
- *     @OA\Response(response=400, description="The name was sent empty, or the team belongs to another ministry"),
+ *     @OA\Response(response=400, description="The name was sent empty, the team belongs to another ministry, or recruiting was not a boolean"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this position, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such position"),
@@ -1167,6 +1226,25 @@ function updateVolunteerPosition(Request $request, Response $response): Response
     $actor = volunteerSetupActor();
 
     $fields = volunteerSetupFields($request, ['name', 'description', 'teamId', 'order', 'active'], ['active']);
+
+    // `recruiting` is read separately from the permissive boolean coercion above:
+    // this switch publishes a position to every volunteer in the church, so an
+    // unrecognised value is refused rather than guessed.
+    $body = (array) $request->getParsedBody();
+    if (array_key_exists('recruiting', $body)) {
+        $recruiting = volunteerSetupStrictBoolean($body['recruiting']);
+        if ($recruiting === null) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Recruit Volunteers must be true or false'),
+                [],
+                400,
+                null,
+                $request
+            );
+        }
+        $fields['recruiting'] = $recruiting;
+    }
 
     try {
         // The activation-only payload goes through the dedicated method so the

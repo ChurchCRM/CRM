@@ -2220,6 +2220,7 @@ CREATE TABLE `volunteer_position_vpos` (
   `vpos_Name`        varchar(100)        NOT NULL,
   `vpos_Description` varchar(255)                 DEFAULT NULL,
   `vpos_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
+  `vpos_Recruiting`  tinyint(1)          NOT NULL DEFAULT 0,
   `vpos_Order`       int(11)             NOT NULL DEFAULT 0,
   PRIMARY KEY (`vpos_ID`),
   UNIQUE KEY `vpos_ministry_team_name_uidx` (`vpos_vmin_ID`, `vpos_vtem_ID`, `vpos_Name`),

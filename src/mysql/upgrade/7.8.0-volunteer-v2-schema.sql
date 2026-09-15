@@ -90,6 +90,10 @@ CREATE TABLE IF NOT EXISTS `volunteer_position_vpos` (
   `vpos_Name`        varchar(100)        NOT NULL,
   `vpos_Description` varchar(255)                 DEFAULT NULL,
   `vpos_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
+  -- "Recruit Volunteers": this position is advertised by name on the Open
+  -- Opportunities page. Separate from the ministry-level vmin_HelpWanted advert
+  -- and default OFF, so turning V2 on never publishes a position nobody chose.
+  `vpos_Recruiting`  tinyint(1)          NOT NULL DEFAULT 0,
   `vpos_Order`       int(11)             NOT NULL DEFAULT 0,
   PRIMARY KEY (`vpos_ID`),
   -- vpos_vtem_ID is NOT NULL: every ministry is created with a team, so a position

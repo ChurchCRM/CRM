@@ -72,6 +72,8 @@ export interface VolunteerPosition {
   name: string;
   description: string | null;
   active: boolean;
+  /** "Recruit Volunteers": advertise this position by name on Open Opportunities. */
+  recruiting: boolean;
   order: number;
 }
 
@@ -147,11 +149,31 @@ export interface MinistryDetail {
   pool?: VolunteerPoolPerson[];
 }
 
-/** One ministry advertising for help on the Open Opportunities page (D19). */
+/**
+ * One position a ministry is recruiting for, as `GET /me/help-wanted` shapes it.
+ *
+ * Already ordered by the server — team name, then the position's own order — so
+ * the page renders the array as it arrives and never sorts it again.
+ */
+export interface VolunteerHelpWantedPosition {
+  teamName: string;
+  positionName: string;
+  description: string | null;
+}
+
+/**
+ * One ministry advertising for help on the Open Opportunities page (D19, as
+ * amended in round four).
+ *
+ * A ministry is here because its own Help-wanted switch is on, or because it has
+ * at least one active recruiting position, or both — so `helpWantedText` and
+ * `recruitingPositions` are each independently allowed to be empty.
+ */
 export interface VolunteerHelpWantedMinistry {
   ministryId: number;
   ministryName: string;
   helpWantedText: string | null;
+  recruitingPositions: VolunteerHelpWantedPosition[];
   inPool: boolean;
 }
 
@@ -252,14 +274,14 @@ export function listPositions(ministryId: number): Promise<{ positions: Voluntee
 
 export function createPosition(
   ministryId: number,
-  payload: { name: string; description: string; teamId: number | null; order: number },
+  payload: { name: string; description: string; teamId: number | null; order: number; recruiting?: boolean },
 ): Promise<{ position: VolunteerPosition }> {
   return request(`/ministries/${ministryId}/positions`, { method: "POST", body: JSON.stringify(payload) });
 }
 
 export function updatePosition(
   positionId: number,
-  fields: Partial<Pick<VolunteerPosition, "name" | "description" | "teamId" | "order" | "active">>,
+  fields: Partial<Pick<VolunteerPosition, "name" | "description" | "teamId" | "order" | "active" | "recruiting">>,
 ): Promise<{ position: VolunteerPosition }> {
   return request(`/positions/${positionId}`, { method: "POST", body: JSON.stringify(fields) });
 }

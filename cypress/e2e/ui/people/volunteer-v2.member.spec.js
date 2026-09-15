@@ -727,6 +727,194 @@ describe("Volunteer v2 — S6 ministries looking for help (D19)", () => {
     });
 });
 
+// ── Round four — "New volunteers needed for the following positions" ───────
+
+/**
+ * A position can now advertise itself (`recruiting`), and a ministry reaches the
+ * Open Opportunities page when its Help-wanted switch is on **or** it has at
+ * least one active recruiting position. What is asserted here is the screen: the
+ * heading, the optional description, the subheading, the
+ * `{Team} - {Position} - {Description}` rows in their server-chosen order, and
+ * that the "I'd like to help" button still does exactly what it did — including
+ * on a ministry that qualifies only through its positions, where a dead button
+ * would be the obvious way to get this wrong.
+ *
+ * The API contract is pinned by `private.volunteer.recruiting.spec.js`.
+ */
+describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)", () => {
+    const SUBHEADING = "New volunteers needed for the following positions";
+    const DOOR_DESCRIPTION = "Hold the door and say hello.";
+    const HELP_TEXT = "Sundays need help.";
+
+    function setMinistry(fields) {
+        cy.makePrivateAdminAPICall("POST", `${VOLUNTEER_URL}/ministries/${ministryId}`, fields, 200);
+    }
+
+    function setPosition(positionId, fields) {
+        cy.makePrivateAdminAPICall("POST", `${VOLUNTEER_URL}/positions/${positionId}`, fields, 200);
+    }
+
+    beforeEach(() => {
+        setMinistry({ helpWanted: false, helpWantedText: "" });
+        setPosition(posDoor, { recruiting: false, description: DOOR_DESCRIPTION, active: true });
+        setPosition(posCoffee, { recruiting: false, description: "", active: true });
+    });
+
+    afterEach(() => {
+        setMinistry({ helpWanted: false, helpWantedText: "" });
+        setPosition(posDoor, { recruiting: false, description: "", active: true });
+        setPosition(posCoffee, { recruiting: false, description: "", active: true });
+        // The "I'd like to help" test takes the persona out of the pool to prove
+        // the button puts them back. Restore it unconditionally: every later
+        // describe seeds an assignment for them, and I3 answers 409 for somebody
+        // outside the pool — a failure here must not cascade into the rest.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${PERSON_MEMBER}`,
+            null,
+            [200, 201],
+        );
+    });
+
+    it("advertises a ministry whose only advert is a recruiting position", () => {
+        setPosition(posDoor, { recruiting: true });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get("#help-wanted-section").should("be.visible");
+        cy.get(".volunteer-help-wanted-card").should("have.length", 1);
+        cy.get(".volunteer-help-wanted-name").should("contain", `${PREFIX} Hospitality`);
+        // The switch is off and the text is empty, so there is no prose paragraph.
+        cy.get(".volunteer-help-wanted-text").should("not.exist");
+        cy.get(".volunteer-help-wanted-positions-title").should("contain", SUBHEADING);
+        cy.get(".volunteer-offer-help").should("have.length", 1);
+    });
+
+    it("formats a row as Team - Position - Description", () => {
+        setPosition(posDoor, { recruiting: true });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get(".volunteer-help-wanted-position")
+            .should("have.length", 1)
+            .first()
+            .invoke("text")
+            .then((text) => {
+                expect(text.replace(/\s+/g, " ").trim()).to.eq(
+                    `${PREFIX} Greeters - ${PREFIX} Door - ${DOOR_DESCRIPTION}`,
+                );
+            });
+    });
+
+    it("drops the trailing separator when the position has no description", () => {
+        setPosition(posCoffee, { recruiting: true });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get(".volunteer-help-wanted-position")
+            .should("have.length", 1)
+            .first()
+            .invoke("text")
+            .then((text) => {
+                expect(text.replace(/\s+/g, " ").trim()).to.eq(
+                    `${PREFIX} Greeters - ${PREFIX} Coffee`,
+                );
+            });
+    });
+
+    it("orders the rows the way the Positions table does", () => {
+        setPosition(posDoor, { recruiting: true });
+        setPosition(posCoffee, { recruiting: true });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get(".volunteer-help-wanted-position").should("have.length", 2);
+        // Door is order 1, Coffee is order 2, and both are on the one team.
+        cy.get(".volunteer-help-wanted-position").first().should("contain", `${PREFIX} Door`);
+        cy.get(".volunteer-help-wanted-position").last().should("contain", `${PREFIX} Coffee`);
+    });
+
+    it("omits a deactivated position even while its recruiting switch is on", () => {
+        setPosition(posDoor, { recruiting: true });
+        setPosition(posCoffee, { recruiting: true });
+        setPosition(posCoffee, { active: false });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get(".volunteer-help-wanted-position").should("have.length", 1);
+        cy.get(".volunteer-help-wanted-card").should("not.contain", `${PREFIX} Coffee`);
+    });
+
+    it("shows the description AND the positions when both adverts are on", () => {
+        setMinistry({ helpWanted: true, helpWantedText: HELP_TEXT });
+        setPosition(posDoor, { recruiting: true });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get(".volunteer-help-wanted-text").should("contain", HELP_TEXT);
+        cy.get(".volunteer-help-wanted-positions-title").should("contain", SUBHEADING);
+        cy.get(".volunteer-help-wanted-position").should("have.length", 1);
+    });
+
+    it("shows no subheading for a ministry advertising with prose alone", () => {
+        setMinistry({ helpWanted: true, helpWantedText: HELP_TEXT });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get(".volunteer-help-wanted-card").should("be.visible");
+        cy.get(".volunteer-help-wanted-positions-title").should("not.exist");
+        cy.get(".volunteer-help-wanted-position").should("not.exist");
+    });
+
+    it("keeps 'I'd like to help' working on a ministry advertised only by a position", () => {
+        setPosition(posDoor, { recruiting: true });
+        cy.makePrivateAdminAPICall(
+            "DELETE",
+            `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${PERSON_MEMBER}`,
+            null,
+            [200, 404],
+        );
+
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+        cy.get(".volunteer-offer-help").click();
+        cy.get(".notyf__toast").should("contain", "you'd like to help");
+
+        cy.makePrivateAdminAPICall(
+            "GET",
+            `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
+            null,
+            200,
+        ).then((resp) => {
+            expect(resp.body.members.map((m) => m.personId)).to.include(PERSON_MEMBER);
+        });
+    });
+
+    it("escapes a position name and description instead of rendering markup", () => {
+        setPosition(posDoor, {
+            recruiting: true,
+            description: '<img src=x onerror="window.__posxss=1">',
+        });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get(".volunteer-help-wanted-position").should("exist");
+        cy.get(".volunteer-help-wanted-position img").should("not.exist");
+        cy.window().its("__posxss").should("be.undefined");
+    });
+
+    it("renders the subheading through i18next, never a raw key", () => {
+        setPosition(posDoor, { recruiting: true });
+        freshMemberLogin();
+        cy.visit("/volunteer/opportunities");
+
+        cy.get("#help-wanted-section").should("not.contain", "i18next");
+        cy.get("#help-wanted-section")
+            .invoke("text")
+            .should("not.match", /\{\{[a-z]+\}\}/);
+    });
+});
+
 // ── §5.9 — mobile is a hard requirement for #9712 ──────────────────────────
 
 describe("Volunteer v2 — member screens on a phone (§5.9)", () => {

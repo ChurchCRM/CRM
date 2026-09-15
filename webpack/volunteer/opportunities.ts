@@ -91,12 +91,57 @@ function cardHtml(opportunity: VolunteerMyOpportunity): string {
 }
 
 /**
- * "Ministries looking for help" (D19).
+ * The positions a ministry is recruiting for, as one line each.
+ *
+ * `{Team} - {Position} - {Description}`, with the trailing separator dropped when
+ * there is no description — a line ending in a dangling dash reads as truncated
+ * text rather than as an absent field. The rows arrive in the order the server
+ * chose (team name, then the position's own order, the same order the coordinator
+ * sees in the Positions table), so nothing is sorted here.
+ *
+ * Every part is `escapeHtml()`d: a position name and its description are
+ * coordinator-entered prose, exactly like the ministry's own advert above.
+ */
+function recruitingPositionsHtml(ministry: VolunteerHelpWantedMinistry): string {
+  const positions = ministry.recruitingPositions ?? [];
+  if (positions.length === 0) {
+    return "";
+  }
+
+  const rows = positions
+    .map((position) => {
+      const parts = [position.teamName, position.positionName];
+      const description = (position.description ?? "").trim();
+      if (description !== "") {
+        parts.push(description);
+      }
+
+      return `<div class="volunteer-help-wanted-position">${escapeHtml(parts.join(" - "))}</div>`;
+    })
+    .join("");
+
+  return `
+        <div class="volunteer-help-wanted-positions mt-3">
+          <div class="volunteer-help-wanted-positions-title fw-bold">${escapeHtml(
+            i18next.t("New volunteers needed for the following positions"),
+          )}</div>
+          ${rows}
+        </div>`;
+}
+
+/**
+ * "Ministries looking for help" (D19, extended in round four).
  *
  * Rendered ABOVE the shift list, because it is the answer for the volunteer the
  * shift list has nothing for — somebody with no qualifications sees an empty list
  * and, before this, a dead end. When no ministry is advertising the whole section
  * is omitted rather than shown empty: a heading over nothing is worse than silence.
+ *
+ * A ministry reaches this list by its own Help-wanted switch OR by having at least
+ * one active recruiting position, so the card is built from four independent
+ * pieces in a fixed order: the name, the coordinator's prose when there is any,
+ * the recruited-for positions when there are any, and the button — which is always
+ * there, because every ministry in this list accepts the offer it makes.
  *
  * The text is the coordinator's own prose, escaped and with its line breaks kept —
  * `escapeHtml()` first, `\n` → `<br>` second, so a newline in the data can never be
@@ -114,6 +159,7 @@ function helpWantedCardHtml(ministry: VolunteerHelpWantedMinistry): string {
           <i class="fa-solid fa-hand-holding-heart me-1"></i>${escapeHtml(ministry.ministryName)}
         </div>
         ${body}
+        ${recruitingPositionsHtml(ministry)}
         <div class="mt-3 d-grid gap-2 d-sm-flex volunteer-card-actions">
           <button type="button" class="btn btn-outline-primary volunteer-touch-target volunteer-offer-help">
             ${escapeHtml(i18next.t("I'd like to help"))}
