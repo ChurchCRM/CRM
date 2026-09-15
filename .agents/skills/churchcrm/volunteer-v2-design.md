@@ -101,7 +101,7 @@ Non-hierarchical by design: **Teams under Ministry is sufficient. There are no n
 | D15 | **Reminders and scheduling**: there is no scheduler in ChurchCRM. V2 specifies a **notification outbox** table (idempotent enqueue keyed by assignment + type, send log, retry-safe) drained by the existing `POST /api/background/timerjobs` mechanism. Installations wanting punctual reminders configure a real cron or external ping of that endpoint with an API key — **zero code**. Best-effort delivery on page load is the documented fallback. | Resolves audit open question; see §3.6 |
 | D17 | **Release target is 7.8.0.** Volunteer v2 is excluded from 7.7.0 (maintainer, #9818/#9817/#9805). The rollout flag ships defaulting to `v1`, V1 stays fully compatible, and the authorization and migration prerequisites in this document remain explicit; V2 migration scripts are named `7.8.0-*` and are registered only when the 7.8.0 block opens. | Maintainer decision, 2026-09-12 |
 | D16 | **A person may hold multiple qualifications within the same team and the same ministry**, and may be assigned to different positions on different occurrences. **Multi-position on one occurrence is allowed**, with a UI warning and no server-side block — one person can lead singing and serve communion in the same service. The schema already permits all of this unchanged (§2.7, §2.11.2 I7). | Product decision |
-| D19 | **A ministry owns exactly one core Group — its volunteer pool — and coordinators may write it.** Creating a ministry creates that Group in the same transaction: named after the ministry, typed "Ministry", carrying a new nullable core column `group_grp.grp_ministry_id` (FK → `vmin_ID`, `ON DELETE SET NULL`). Renaming the ministry renames the Group; deleting the ministry deletes it. The `volunteer_pool_vpol` link table is **removed** — nothing had shipped, and the Group's own ministry id is the link. Three consequences follow. **(a) The `bManageGroups` model hooks gain one exception** (F21 fixed rather than worked around): a write to a Group carrying a ministry id is allowed when the caller coordinates that ministry — decided by `VolunteerAuthorizationService` reading `volunteer_scope_vscp`, never `$_SESSION`, so API-key callers are judged identically — or when a V2 service has opened an explicit managed-write context (`VolunteerPoolWriter::run()`) after authorizing the write itself. A Group with a NULL ministry id takes the unchanged V1 path, flag and all. **(b) Qualification no longer requires pool membership, in either direction**: the picker may name anyone, qualifying somebody outside the pool ADDS them to it, revoking a qualification never removes them, and the qualification matrix's rows are the pool ∪ everyone qualified. Self-signup and `GET /me/opportunities` test qualification only — I3 is gone from the member surface (the coordinator's out-of-pool override is unchanged). **(c) A ministry can advertise**: `vmin_HelpWanted` / `vmin_HelpWantedText` put it on the Open Opportunities page with an "I'd like to help" button that joins the pool and mails the coordinators (outbox type `help_offer`, one per coordinator per day). The Groups module keeps the Group fully visible and its MEMBERSHIP fully editable; only its identity moves — `POST`/`DELETE /api/groups/{id}` answer `409`, the editor redirects, and the page says whose pool it is. **Why:** D-1's read-only pool was the single most-reported friction in review — a coordinator could see who was in their pool and not add to it, and the fix "give every coordinator `bManageGroups`" grants edit rights over every group in the church. Owning the Group is what makes a narrow exception expressible at all. | Church product decision |
+| D19 | **A ministry owns exactly one core Group — its volunteer pool — and coordinators may write it.** Creating a ministry creates that Group in the same transaction: named after the ministry, typed "Ministry", carrying a new nullable core column `group_grp.grp_ministry_id` (FK → `vmin_ID`, `ON DELETE SET NULL`). Renaming the ministry renames the Group; deleting the ministry deletes it. The `volunteer_pool_vpol` link table is **removed** — nothing had shipped, and the Group's own ministry id is the link. Three consequences follow. **(a) The `bManageGroups` model hooks gain one exception** (F21 fixed rather than worked around): a write to a Group carrying a ministry id is allowed when the caller coordinates that ministry — decided by `VolunteerAuthorizationService` reading `volunteer_scope_vscp`, never `$_SESSION`, so API-key callers are judged identically — or when a V2 service has opened an explicit managed-write context (`VolunteerPoolWriter::run()`) after authorizing the write itself. A Group with a NULL ministry id takes the unchanged V1 path, flag and all. **(b) Qualification no longer requires pool membership, in either direction**: the picker may name anyone, qualifying somebody outside the pool ADDS them to it, revoking a qualification never removes them, and the qualification matrix's rows are the pool ∪ everyone qualified. Self-signup and `GET /me/opportunities` test qualification only — I3 is gone from the member surface (the coordinator's out-of-pool override is unchanged). **(c) A ministry can advertise**: `vmin_HelpWanted` / `vmin_HelpWantedText` put it on the Open Opportunities page with an "I'd like to help" button that joins the pool and mails the coordinators (outbox type `help_offer`, one per coordinator per day). *(Amended round four: there are now TWO ways to be advertising — the ministry-level switch, or **any active position with `vpos_Recruiting` on**, which also lists those positions by name under "New volunteers needed for the following positions" (§5.6). Either alone is enough, and `recordHelpOffer()` shares the same test, so the button is never rendered over a `403`. **Why:** a coordinator who has already named the roles they need has said everything the section needs; making them find a second switch on a different tab to be listed at all was the friction this removes.)* The Groups module keeps the Group fully visible and its MEMBERSHIP fully editable; only its identity moves — `POST`/`DELETE /api/groups/{id}` answer `409`, the editor redirects, and the page says whose pool it is. **Why:** D-1's read-only pool was the single most-reported friction in review — a coordinator could see who was in their pool and not add to it, and the fix "give every coordinator `bManageGroups`" grants edit rights over every group in the church. Owning the Group is what makes a narrow exception expressible at all. | Church product decision |
 | D18 | **Every ministry always has at least one team, and positions and schedules always belong to a team.** Creating a ministry auto-creates its first team, named `"{Ministry name} Team"`, in the same transaction as the ministry; it is an ordinary team and can be renamed. `vpos_vtem_ID` and `vsch_vtem_ID` are **`NOT NULL`**, their foreign keys are `ON DELETE CASCADE` (a `NOT NULL` column cannot take `SET NULL`), and the API answers `400` to a position or schedule with no `teamId`. A ministry's **only** team cannot be deleted — `409`, *"A ministry needs at least one team. Rename it instead."* — while deleting the ministry still takes its teams with it. Scope semantics are unchanged: a ministry coordinator manages every team of their ministry, a team leader their own. **Why:** the "ministry-wide position" this replaces was the mechanism behind a real ambiguity — two teams under "Children's Ministry" each owned a "Lead Teacher", and a ministry-wide view listed the name twice with nothing to say which team it meant. Where a screen can still show positions from more than one team (the qualification matrix with its filter on *All teams*, a cross-team "still needed" line, a dashboard gap list), a position is labelled `"{Team} · {Position}"`; where the context is already one team, the bare name stands. | Church product decision |
 
 #### D14 — rationale and the alternative
@@ -595,6 +595,7 @@ Teacher. Owned by a ministry; optionally narrowed to a team.
 | `vpos_Name` | `Name` | `VARCHAR(100)` required | |
 | `vpos_Description` | `Description` | `VARCHAR(255)` null | "operational requirements" per #9715 live here as prose. |
 | `vpos_Active` | `Active` | `BOOLEAN` required default `1` | #9715: deactivation must not destroy history — so **deactivate, never delete**, once assignments exist. |
+| `vpos_Recruiting` | `Recruiting` | `tinyint(1)` required default `0` | **"Recruit Volunteers"** (round four): advertise this position **by name** on the Open Opportunities page (§5.6). Independent of the ministry-level `vmin_HelpWanted`, and default **off** — turning V2 on must never publish a position nobody chose. An INACTIVE position is never advertised whatever this says, so `vpos_Active` is the outer gate. |
 | `vpos_Order` | `Order` | `INTEGER` required default `0` | display order within the ministry |
 
 Indexes: `vpos_ministry_team_name_uidx UNIQUE (vpos_vmin_ID, vpos_vtem_ID, vpos_Name)`,
@@ -1343,8 +1344,8 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | GET | `/api/volunteer/ministries/{ministryId}/members` | the qualification matrix's rows | Coordinator of it | pool ∪ everyone qualified for a position in view (D19): `{members:[{personId,displayName,inPool,groupIds[],qualifications:[positionId],qualificationIds{}}]}` |
 | GET | `/api/volunteer/teams/{teamId}/members` | the same, narrowed to one team's positions | Coordinator / Team Leader | as above |
 | GET | `/api/volunteer/ministries/{ministryId}/positions` | list | Coordinator / Team Leader | `?active=1&teamId=` → `{positions:[…]}` |
-| POST | `/api/volunteer/ministries/{ministryId}/positions` | create | Coordinator of it | `{name,description,teamId?,order?}` → `201`; `409` duplicate |
-| GET/POST/DELETE | `/api/volunteer/positions/{positionId}` | read / update / deactivate-or-delete | Coordinator of the ministry | `DELETE` → `409` when referenced (§2.6) |
+| POST | `/api/volunteer/ministries/{ministryId}/positions` | create | Coordinator of it | `{name,description,teamId?,order?,recruiting?}` → `201`; `409` duplicate. `recruiting` defaults **false** and is **strictly** boolean — `true`/`false`/`1`/`0` and their string spellings, anything else `400` (the sanitizer has no bool type, and `(bool) "no"` is `true`) |
+| GET/POST/DELETE | `/api/volunteer/positions/{positionId}` | read / update / deactivate-or-delete | Coordinator of the ministry | `POST {…,recruiting?}` with the same strict boolean rule; `DELETE` → `409` when referenced (§2.6). Every position on the wire carries `recruiting`, so an absent key never has to be read as "off" |
 | GET | `/api/volunteer/positions/{positionId}/qualifications` | who is qualified | Coordinator / Team Leader | `{qualifications:[{id,personId,displayName,active,grantedDate}]}` |
 | POST | `/api/volunteer/positions/{positionId}/qualifications` | grant | Coordinator / Team Leader **of that position** | `{personId,notes?}` → `201`; idempotent — re-granting a deactivated row reactivates it |
 | ~~POST~~ | ~~`/api/volunteer/positions/{positionId}/qualifications/from-cart`~~ | **RETIRED.** Bulk-qualifying the cart for one position had no caller left once S3's cart dialog stopped asking for a position; the cart now fills the pool instead (`/pool/from-cart` above) | — | — |
@@ -1397,8 +1398,8 @@ that can be forgotten.
 | POST | `/api/volunteer/me/assignments/{assignmentId}/propose-substitute` | propose a named substitute | `{personId, comment?}` → `201 {swap}`. `personId` here is the *substitute*, not the actor; eligibility is checked server-side. `409` if a proposal is already pending. |
 | POST | `/api/volunteer/me/swaps/{swapId}/withdraw` | withdraw my own pending proposal | `{comment?}` → `{swap}` with `status='withdrawn'`; appends a `substitute_withdrawn` response row (§2.13). `403` if I am not the proposer; `409` unless the swap is `proposed`. |
 | GET | `/api/volunteer/me/opportunities` | open gaps I am qualified for | `?from=&to=` → `{opportunities:[{occurrenceId,start,ministryName,positionId,positionName,openCount}]}` — server-side eligibility, never trusting the client. **Qualification only since D19**: pool membership is not tested here or at signup |
-| GET | `/api/volunteer/me/help-wanted` | ministries asking for help (D19) | `{ministries:[{ministryId,ministryName,helpWantedText,inPool}]}` — active ministries with the switch on; not filtered by qualification |
-| POST | `/api/volunteer/me/help-wanted/{ministryId}` | "I'd like to help" (D19) | no body, **no `personId` anywhere** — the actor is the session (§3.3.3). Joins the pool if not already in it and enqueues one `help_offer` per coordinator per day → `{joinedPool,notified}`; `403` when the ministry is not asking, `404` unknown |
+| GET | `/api/volunteer/me/help-wanted` | ministries asking for help (D19, extended round four) | `{ministries:[{ministryId,ministryName,helpWantedText,recruitingPositions:[{teamName,positionName,description}],inPool}]}` — every ACTIVE ministry whose own Help-wanted switch is on **or** which has at least one active recruiting position; `recruitingPositions` is ordered **team name, then the position's own order**, server-side, and is `[]` when there are none; not filtered by qualification |
+| POST | `/api/volunteer/me/help-wanted/{ministryId}` | "I'd like to help" (D19) | no body, **no `personId` anywhere** — the actor is the session (§3.3.3). Joins the pool if not already in it and enqueues one `help_offer` per coordinator per day → `{joinedPool,notified}`; `403` only when the ministry is advertising in **neither** way (the same test the listing above applies — the button is rendered for every ministry it returns, so a narrower rule here would be a dead control), `404` unknown |
 | POST | `/api/volunteer/me/signup` | self-sign-up | `{occurrenceId, positionId}` → `201 {assignment}` with `status='accepted'`, `source='self_signup'`. Re-validates qualification **and** capacity server-side at signup time; `403` unqualified, `409` full. |
 | GET | `/api/volunteer/me/qualifications` | what I am qualified for | `{qualifications:[{positionId,positionName,ministryName,teamName}]}` — read-only; volunteers cannot grant themselves anything |
 
@@ -1462,9 +1463,11 @@ final class VolunteerSetupService
     public function joinPoolGroup(Group $g, int $personId): bool;   // caller has ALREADY authorized; managed write
     public function isInPool(int $ministryId, int $personId): bool;
     public function getPoolPersonIds(int $ministryId, ?int $teamId = null): array;   // $teamId accepted and ignored: one pool per ministry
-    public function listHelpWantedMinistries(): array;                               // D19
+    public function listHelpWantedMinistries(): array;                               // D19 + round four: help-wanted switch OR an active recruiting position
+    public function listRecruitingPositionsByMinistry(array $ministryIds): array;    // round four: [ministryId => [{teamName,positionName,description}]], ordered team then order
+    public function isAdvertisingForHelp(VolunteerMinistry $m): bool;                // round four: the one test the listing and recordHelpOffer share
     public function recordHelpOffer(VolunteerMinistry $m, int $personId): array;     // D19: joins the pool + enqueues help_offer
-    public function createPosition(VolunteerMinistry $m, ?VolunteerTeam $t, string $name, string $description, int $order): VolunteerPosition;
+    public function createPosition(VolunteerMinistry $m, ?VolunteerTeam $t, string $name, string $description, int $order, bool $recruiting = false): VolunteerPosition;
     public function setPositionActive(VolunteerPosition $p, bool $active): VolunteerPosition;
     public function grantQualification(int $personId, VolunteerPosition $p, User $actor, ?string $notes): VolunteerQualification;
     public function revokeQualification(VolunteerQualification $q, User $actor): VolunteerQualification;  // deactivates
@@ -2267,9 +2270,32 @@ this order:
   the "Back to upcoming" link**, all of which are gone: the dialog could only narrow by
   date, so which team and which service had to be read off the table by eye.
 
+  **Round four finished the job: this table has no DataTables "Search:" box.** It is the
+  one table in V2 initialised with `searching: false`, because the form above already
+  narrows the query SERVER-side and a second box filtering only the drawn page answers
+  the same question with a different answer. **Export CSV and Print move ABOVE the
+  form**, into a small right-aligned toolbar row of their own — DataTables would put
+  them in its own layout row inside the table wrapper, i.e. *below* the form and beside
+  a search box that no longer exists. The group is built explicitly from the shared
+  `window.CRM.plugin.dataTable.buttons` config (so `:not(.no-export)` and the
+  `no-export` Actions column are untouched) and moved; nothing about the shared
+  DataTables defaults changes, and every other table in the install keeps its search box.
+
+- **Positions** gained a **Recruiting** column in round four, between *Team* and
+  *Status*: a green check (`fa-solid fa-check text-success`, labelled *"Recruiting"* for
+  a screen reader) when the position advertises itself, and an **empty cell** when it
+  does not — a column of red crosses reads as a column of faults, and most positions are
+  not advertised. Sortable like every other column. The **Add position** and **Edit
+  position** dialogs carry the matching switch, **"Recruit Volunteers"**, under *Active*
+  and off by default, hinted *"Advertise this position on the Open Opportunities page."*
+  Under *Active* on purpose: an inactive position is never advertised whatever the switch
+  says, so the order on screen matches the order of the rules.
+
 - **Help Wanted** is a tab of its own (D19, §5.6): a switch and a textarea saved with one
   button. It used to be a card below the tab strip, which meant it painted underneath
-  every tab at once.
+  every tab at once. It is no longer the ONLY way in: since round four a ministry also
+  reaches Open Opportunities by having a recruiting position, so a coordinator who has
+  named the roles they need never has to find this tab as well.
 
 **There is no Teams tab and no volunteer-pool panel.** The teams moved to the Overview
 card above; the pool panel is gone from this page entirely. The V2 pool endpoints and the
@@ -2331,6 +2357,27 @@ The single most important coordinator screen.
 > stays for members and non-members alike, because offering again is a real thing to do; the toast
 > is *"Thanks — the coordinator has been told you'd like to help."* or, for somebody already in the
 > pool, *"…you'd like to help again."*
+>
+> **Round four widened the section's door and gave each card a middle.** A ministry now appears
+> when its Help-wanted switch is on **OR** when it has at least one ACTIVE position with *Recruit
+> Volunteers* on — either alone is enough, and a ministry with neither still never appears. Each
+> card is four independent pieces in this fixed order:
+>
+> 1. the **ministry name**;
+> 2. the **help-wanted description**, when it is non-empty — escaped, line breaks preserved, exactly as before;
+> 3. when the ministry has recruiting positions, the subheading **"New volunteers needed for the
+>    following positions"** followed by one row per position, formatted
+>    `{Team name} - {Position name} - {Position description}` with the trailing `" - "` dropped when
+>    there is no description (a line ending in a dangling dash reads as truncated text, not as an
+>    absent field), ordered **team name then the position's own order** — the order the coordinator
+>    sees in the Positions table, decided SERVER-side so every client agrees;
+> 4. the **"I'd like to help"** button, with exactly the behaviour above.
+>
+> An inactive position is never listed, whatever its switch says: deactivation is how a role is
+> retired without destroying its history (§2.6), and advertising a retired role would be the one
+> place that history leaked onto a member screen. Because the button is rendered for every ministry
+> the listing returns, `POST /me/help-wanted/{id}` answers `403` only when NEITHER advert is on —
+> the two share one test, `isAdvertisingForHelp()`.
 
 Deliberately plain. A volunteer must never see the word *ministry hierarchy*, *requirement*,
 *occurrence* or *schedule*.
