@@ -1,33 +1,33 @@
 {
-  "Check-out": "",
-  "CSV": "",
-  "OFX": "",
+  "Check-out": "Check-out",
+  "CSV": "CSV",
+  "OFX": "OFX",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "L'autenticazione a due fattori è obbligatoria. Hai %d giorno per attivarla.|L'autenticazione a due fattori è obbligatoria. Hai %d giorni per attivarla.",
-    "other": ""
+    "one": "L'autenticazione a due fattori è obbligatoria. Hai %d giorno per attivarla.",
+    "other": "L'autenticazione a due fattori è obbligatoria. Hai %d giorni per attivarla."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Copiato {{count}} membro",
+    "other": "Copiati {{count}} membri"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Questo elenco ha {{count}} destinatario — troppi per un link mailto:. Usa invece Copia indirizzi.",
+    "other": "Questo elenco ha {{count}} destinatari — troppi per un link mailto:. Usa invece Copia indirizzi."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Troppi destinatari per il client di posta ({{count}} > {{max}}). Usa invece Copia indirizzi.",
+    "other": "Troppi destinatari per il client di posta ({{count}} > {{max}}). Usa invece Copia indirizzi."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuto rimanente",
+    "other": "{{count}} minuti rimanenti"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} famiglia non è stata geocodificata",
+    "other": "{{count}} famiglie non sono state geocodificate"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…e {{count}} altro. Esegui di nuovo per vedere il resto.",
+    "other": "…e {{count}} altri. Esegui di nuovo per vedere il resto."
   }
 }
