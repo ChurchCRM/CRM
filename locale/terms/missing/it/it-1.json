@@ -3,8 +3,8 @@
   "CSV": "",
   "OFX": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "L'autenticazione a due fattori è obbligatoria. Hai %d giorno per attivarla.|L'autenticazione a due fattori è obbligatoria. Hai %d giorni per attivarla.",
-    "other": ""
+    "one": "L'autenticazione a due fattori è obbligatoria. Hai %d giorno per attivarla.",
+    "other": "L'autenticazione a due fattori è obbligatoria. Hai %d giorni per attivarla."
   },
   "Copied {{count}} members": {
     "one": "",

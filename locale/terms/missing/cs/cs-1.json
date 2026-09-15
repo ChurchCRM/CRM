@@ -5,9 +5,9 @@
   "N/A": "",
   "OFX": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den.|Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny.|Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní.",
-    "few": "",
-    "other": ""
+    "one": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den.",
+    "few": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny.",
+    "other": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní."
   },
   "Copied {{count}} members": {
     "one": "",

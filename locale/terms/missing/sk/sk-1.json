@@ -1,23 +1,23 @@
 {
   "CSV": "",
   "Email sent to %d family.": {
-    "one": "E-mail bol odoslaný pre %d rodinu.|E-mail bol odoslaný pre %d rodiny.|E-mail bol odoslaný pre %d rodiny.|E-mail bol odoslaný pre %d rodín.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "E-mail bol odoslaný pre %d rodinu.",
+    "few": "E-mail bol odoslaný pre %d rodiny.",
+    "many": "E-mail bol odoslaný pre %d rodiny.",
+    "other": "E-mail bol odoslaný pre %d rodín."
   },
   "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF bolo úspešne odoslané e-mailom pre %d rodinu.|PDF bolo úspešne odoslané e-mailom pre %d rodiny.|PDF bolo úspešne odoslané e-mailom pre %d rodiny.|PDF bolo úspešne odoslané e-mailom pre %d rodín.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "PDF bolo úspešne odoslané e-mailom pre %d rodinu.",
+    "few": "PDF bolo úspešne odoslané e-mailom pre %d rodiny.",
+    "many": "PDF bolo úspešne odoslané e-mailom pre %d rodiny.",
+    "other": "PDF bolo úspešne odoslané e-mailom pre %d rodín."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d deň.|Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dni.|Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dňa.|Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dní.",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d deň.",
+    "few": "Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dni.",
+    "many": "Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dňa.",
+    "other": "Vyžaduje sa dvojfaktorové overenie. Na zapojenie máte %d dní."
   },
   "Copied {{count}} members": {
     "one": "",

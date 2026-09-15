@@ -1,7 +1,7 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Twee-faktor-verifikasie word vereis. Jy het %d dag om te registreer.|Twee-faktor-verifikasie word vereis. Jy het %d dae om te registreer.",
-    "other": ""
+    "one": "Twee-faktor-verifikasie word vereis. Jy het %d dag om te registreer.",
+    "other": "Twee-faktor-verifikasie word vereis. Jy het %d dae om te registreer."
   },
   "Copied {{count}} members": {
     "one": "",

@@ -6,8 +6,8 @@
   "OFX": "",
   "Classifications": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "L'authentification à deux facteurs est requise. Vous avez %d jour pour vous inscrire.|L'authentification à deux facteurs est requise. Vous avez %d jours pour vous inscrire.",
-    "other": ""
+    "one": "L'authentification à deux facteurs est requise. Vous avez %d jour pour vous inscrire.",
+    "other": "L'authentification à deux facteurs est requise. Vous avez %d jours pour vous inscrire."
   },
   "Copied {{count}} members": {
     "one": "",
