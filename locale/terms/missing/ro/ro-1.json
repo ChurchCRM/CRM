@@ -1,47 +1,53 @@
 {
-  "Important": "",
-  "Major": "",
-  "Catalog": "",
-  "CSV": "",
+  "Important": "Important",
+  "Major": "Major",
+  "Catalog": "Catalog",
+  "CSV": "CSV",
   "Email sent to %d family.": {
-    "one": "E-mail trimis către %d familie.|E-mail trimis către %d familii.|E-mail trimis către %d de familii.",
-    "few": "",
-    "other": ""
+    "one": "E-mail trimis către %d familie.",
+    "few": "E-mail trimis către %d familii.",
+    "other": "E-mail trimis către %d de familii."
   },
-  "N/A": "",
-  "OFX": "",
+  "N/A": "N/A",
+  "OFX": "OFX",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF trimis cu succes prin e-mail către %d familie.|PDF trimis cu succes prin e-mail către %d familii.|PDF trimis cu succes prin e-mail către %d de familii.",
-    "few": "",
-    "other": ""
+    "one": "PDF trimis cu succes prin e-mail către %d familie.",
+    "few": "PDF trimis cu succes prin e-mail către %d familii.",
+    "other": "PDF trimis cu succes prin e-mail către %d de familii."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Autentificarea în doi factori este obligatorie. Aveți %d zi pentru a vă înscrie.|Autentificarea în doi factori este obligatorie. Aveți %d zile pentru a vă înscrie.|Autentificarea în doi factori este obligatorie. Aveți %d de zile pentru a vă înscrie.",
-    "few": "",
-    "other": ""
+    "one": "Autentificarea în doi factori este obligatorie. Aveți %d zi pentru a vă înscrie.",
+    "few": "Autentificarea în doi factori este obligatorie. Aveți %d zile pentru a vă înscrie.",
+    "other": "Autentificarea în doi factori este obligatorie. Aveți %d de zile pentru a vă înscrie."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "S-a copiat {{count}} membru",
+    "few": "S-au copiat {{count}} membri",
+    "other": "S-au copiat {{count}} de membri"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Această listă are {{count}} destinatar — prea mulți pentru un link mailto:. Folosiți în schimb Copiere adrese.",
+    "few": "Această listă are {{count}} destinatari — prea mulți pentru un link mailto:. Folosiți în schimb Copiere adrese.",
+    "other": "Această listă are {{count}} de destinatari — prea mulți pentru un link mailto:. Folosiți în schimb Copiere adrese."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți în schimb Copiere adrese.",
+    "few": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți în schimb Copiere adrese.",
+    "other": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți în schimb Copiere adrese."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minut rămas",
+    "few": "{{count}} minute rămase",
+    "other": "{{count}} de minute rămase"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familie nu a putut fi geocodificată",
+    "few": "{{count}} familii nu au putut fi geocodificate",
+    "other": "{{count}} de familii nu au putut fi geocodificate"
   },
   "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
+    "one": "…și încă {{count}}. Rulați din nou pentru a vedea restul.",
+    "few": "…și încă {{count}}. Rulați din nou pentru a vedea restul.",
+    "other": "…și încă {{count}}. Rulați din nou pentru a vedea restul."
   }
 }
