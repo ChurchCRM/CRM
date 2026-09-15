@@ -212,7 +212,7 @@ if (geocodeAllBtn) {
     window.bootbox.confirm({
       title: t("Update All Family Coordinates"),
       message: t(
-        "This finds map coordinates for every family that is missing them, using OpenStreetMap. " +
+        "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. " +
           "It processes up to 50 families per run; a full batch takes about a minute. " +
           "You can keep this page open while it runs. Continue?",
       ),

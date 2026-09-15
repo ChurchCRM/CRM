@@ -120,7 +120,7 @@ class FamilyService
 
             if ($lat === 0.0 && $lng === 0.0) {
                 $this->logger->warning(
-                    'geocodeFamilyWithReason: no result from Nominatim for family ' . $family->getId()
+                    'geocodeFamilyWithReason: no result from any geocoding provider for family ' . $family->getId()
                 );
                 return ['success' => false, 'reason' => 'no_result'];
             }
@@ -209,7 +209,7 @@ class FamilyService
 
         // Remaining = families that still need geocoding after this run:
         // those not included in this batch (overflow) PLUS those that failed
-        // during the batch (Nominatim returned no result for them).
+        // during the batch (no geocoding provider returned a result for them).
         $remaining = max(0, $total - $geocoded);
 
         $this->logger->info('geocodeAllMissingFamilies: batch complete', [
