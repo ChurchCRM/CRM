@@ -16,7 +16,7 @@ describe("Settings Panel — Save button", () => {
 
         cy.visit("people/map");
         cy.contains("Map Settings").click();
-        cy.get("#mapAdminSettings", { timeout: 10000 }).should("be.visible");
+        cy.get("#mapAdminSettings", { timeout: 10000 }).should("have.class", "show").and("not.have.class", "collapsing");
 
         cy.get("#mapAdminSettings #settingsPanelSaveBtn").should("not.be.disabled").click();
         cy.wait("@saveConfig").its("response.statusCode").should("eq", 200);
@@ -37,7 +37,7 @@ describe("Settings Panel — Save button", () => {
 
         cy.visit("people/map");
         cy.contains("Map Settings").click();
-        cy.get("#mapAdminSettings", { timeout: 10000 }).should("be.visible");
+        cy.get("#mapAdminSettings", { timeout: 10000 }).should("have.class", "show").and("not.have.class", "collapsing");
 
         cy.get("#mapAdminSettings #settingsPanelSaveBtn").click();
         cy.wait("@saveConfigFail");
@@ -57,7 +57,7 @@ describe("Settings Panel — Save button", () => {
         cy.visit("people/map");
         cy.get(".leaflet-tile-pane img", { timeout: 10000 }).should("exist");
         cy.contains("Map Settings").click();
-        cy.get("#mapAdminSettings", { timeout: 10000 }).should("be.visible");
+        cy.get("#mapAdminSettings", { timeout: 10000 }).should("have.class", "show").and("not.have.class", "collapsing");
 
         // Pick a zoom level different from the default (10) and save
         cy.get("#mapAdminSettings select[name='iMapZoom']").select("14");
