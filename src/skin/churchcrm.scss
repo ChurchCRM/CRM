@@ -58,6 +58,9 @@
 // Tabler custom styles — color overrides, DataTables skin
 @include meta.load-css("scss/_tabler-bridge");
 
+// Admin masquerade banner (#9843) — fixed top bar + layout offsets
+@include meta.load-css("scss/_impersonation");
+
 html,
 body {
     font-size: 14px;

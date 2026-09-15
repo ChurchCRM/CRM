@@ -126,6 +126,11 @@ class AuthMiddleware implements MiddlewareInterface
      *  - /user/current/changepassword  — forced password change on first login
      *  - /user/current/manage2fa       — forced 2FA enrollment when bRequire2FA is on
      *  - /user/current/enroll2fa       — backward-compat alias for manage2fa
+     *  - /user/impersonate/exit        — the way out of an admin masquerade (#9843).
+     *    Without this, an administrator who logs in as an EditSelf-exclusive user
+     *    is bounced to /external/limited-access on the very request that would
+     *    hand them their own session back, and the masquerade cannot be ended
+     *    from the banner at all.
      */
     private function isAuthFlowExemptPath(ServerRequestInterface $request): bool
     {
@@ -133,7 +138,8 @@ class AuthMiddleware implements MiddlewareInterface
 
         return str_contains($path, '/user/current/changepassword')
             || str_contains($path, '/user/current/manage2fa')
-            || str_contains($path, '/user/current/enroll2fa');
+            || str_contains($path, '/user/current/enroll2fa')
+            || str_contains($path, '/user/impersonate/exit');
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool
