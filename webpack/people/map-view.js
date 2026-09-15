@@ -316,6 +316,16 @@ if (cfg && document.getElementById("map")) {
   // -- Map init ---------------------------------------------------------------
   const map = L.map("map").setView([cfg.churchLat, cfg.churchLng], cfg.zoom);
 
+  // Map Settings saved on this page (see map-view.php): apply the new default
+  // zoom to the map that is already showing, so no reload is needed. The other
+  // map settings only affect the editors and geocoding, not this view.
+  document.addEventListener("crm:mapsettings-saved", (event) => {
+    const zoom = Number.parseInt(event.detail?.iMapZoom, 10);
+    if (Number.isFinite(zoom) && zoom > 0 && zoom !== map.getZoom()) {
+      map.setView([cfg.churchLat, cfg.churchLng], zoom);
+    }
+  });
+
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution:
