@@ -295,8 +295,24 @@ function destroyDataTable(tableId: string): void {
   }
 }
 
-/** DataTables through the canonical `window.CRM.plugin.dataTable` merge idiom. */
-function initDataTable(tableId: string): void {
+/**
+ * DataTables through the canonical `window.CRM.plugin.dataTable` merge idiom.
+ *
+ * `overrides` is merged AFTER the shared defaults, so a single table can turn a
+ * feature off without touching `window.CRM.plugin.dataTable` — which every list
+ * page in the install reads, and which the user's "Rows per page" preference
+ * lives in.
+ *
+ * `buttonsInto` puts the Export CSV / Print group into a container of the
+ * caller's choosing instead of the DataTables layout row. The group is built
+ * HERE, explicitly, from the very same shared `buttons` config — so the two
+ * buttons keep their `:not(.no-export)` column rule verbatim — because the
+ * extension's own group is created on `init.dt`, which fires only after
+ * `DataTable()` has returned; asking for it on the next line gets an empty set.
+ * Building it ourselves also sets `settings._buttons`, so that later listener
+ * finds a group already there and does not add a second one.
+ */
+function initDataTable(tableId: string, overrides: Record<string, unknown> = {}, buttonsInto?: string): void {
   const table = $(`#${tableId}`);
   if (table.length === 0) {
     return;
@@ -305,8 +321,37 @@ function initDataTable(tableId: string): void {
   // §5.8: a failed ajax must render the inline block, never a browser alert.
   $.fn.dataTable.ext.errMode = "none";
 
-  table.DataTable({ ...(window.CRM?.plugin?.dataTable ?? {}) });
+  const defaults = window.CRM?.plugin?.dataTable ?? {};
+  const api = table.DataTable({ ...defaults, ...overrides });
+
+  if (buttonsInto) {
+    const container = byId(buttonsInto);
+    if (container) {
+      // Emptied first: `destroyDataTable()` leaves the old group orphaned in here,
+      // and every re-run of the Occurrences query re-inits the table.
+      container.textContent = "";
+      new $.fn.dataTable.Buttons(api, { buttons: defaults.buttons }).container().appendTo(container);
+    }
+  }
 }
+
+/**
+ * The Occurrences table's own DataTables options.
+ *
+ * `searching: false` removes the "Search:" box the Team/Event/From/To form
+ * replaced; the layout then names only the three regions that are left, because
+ * a `layout` slot pointing at a feature that no longer exists renders nothing but
+ * still reserves its row.
+ */
+const OCCURRENCES_TABLE_OPTIONS: Record<string, unknown> = {
+  searching: false,
+  layout: {
+    topStart: null,
+    topEnd: null,
+    bottomStart: "pageLength",
+    bottomEnd: ["info", "paging"],
+  },
+};
 
 // ─── Renderers ───────────────────────────────────────────────────────────────
 
@@ -461,11 +506,21 @@ function renderPositions(data: MinistryDetail): void {
         },
       ]);
 
+      // A green check or an empty cell. No cross for "off": a column of red
+      // crosses reads as a column of faults, and most positions are not
+      // advertised. The icon carries its own label, because a tick with no text
+      // is nothing at all to a screen reader.
+      const recruitingLabel = i18next.t("Recruiting");
+      const recruiting = position.recruiting
+        ? `<i class="fa-solid fa-check text-success" aria-label="${escapeHtml(recruitingLabel)}" title="${escapeHtml(recruitingLabel)}"></i>`
+        : "";
+
       return `<tr>
           <td class="text-center">${position.order}</td>
           <td class="fw-bold">${escapeHtml(position.name)}</td>
           <td>${position.description ? escapeHtml(position.description) : '<span class="text-body-secondary">—</span>'}</td>
           <td>${escapeHtml(position.teamName ?? "")}</td>
+          <td class="text-center volunteer-position-recruiting">${recruiting}</td>
           <td class="text-center">${statusBadge(position.active)}</td>
           <td class="w-1">${menu}</td>
         </tr>`;
@@ -773,6 +828,11 @@ function renderOccurrences(rows: VolunteerOccurrenceSummary[]): void {
   if (rows.length === 0) {
     destroyDataTable("volunteerOccurrencesTable");
     body.innerHTML = "";
+    // The table is gone, so its export buttons have nothing to export.
+    const toolbar = byId("occurrences-toolbar");
+    if (toolbar) {
+      toolbar.textContent = "";
+    }
     renderState("occurrences", "empty");
 
     return;
@@ -819,7 +879,7 @@ function renderOccurrences(rows: VolunteerOccurrenceSummary[]): void {
     .join("");
 
   renderState("occurrences", "loaded");
-  initDataTable("volunteerOccurrencesTable");
+  initDataTable("volunteerOccurrencesTable", OCCURRENCES_TABLE_OPTIONS, "occurrences-toolbar");
 }
 
 /** `YYYY-MM-DD`, `offsetDays` from today, in the browser's own calendar. */
@@ -1300,7 +1360,7 @@ function saveSchedule(): void {
 
   request
     .then(() => {
-      modal("scheduleModal")?.hide();
+      hideModal("scheduleModal");
       notifySuccess(editingScheduleId === 0 ? i18next.t("Schedule created") : i18next.t("Schedule saved"));
 
       return loadSchedules(true);
@@ -1491,7 +1551,7 @@ function saveTeam(): void {
   saved
     .then((teamId) => syncTeamLeader(teamId, leaderPersonId))
     .then(() => {
-      modal("teamModal")?.hide();
+      hideModal("teamModal");
       notifySuccess(editingTeamId === 0 ? i18next.t("Team added") : i18next.t("Team saved"));
       // A team change can add or rename a column of the qualification grid, so
       // the grid's own cached document is stale too.
@@ -1511,6 +1571,7 @@ function openPositionModal(position?: VolunteerPosition): void {
   const description = byId<HTMLInputElement>("position-form-description");
   const order = byId<HTMLInputElement>("position-form-order");
   const active = byId<HTMLInputElement>("position-form-active");
+  const recruiting = byId<HTMLInputElement>("position-form-recruiting");
   const teamSelect = byId<HTMLSelectElement>("position-form-team");
   const title = byId("positionModalTitle");
 
@@ -1525,6 +1586,10 @@ function openPositionModal(position?: VolunteerPosition): void {
   }
   if (active) {
     active.checked = position?.active ?? true;
+  }
+  // A NEW position never advertises itself: publishing is a decision, not a default.
+  if (recruiting) {
+    recruiting.checked = position?.recruiting ?? false;
   }
   if (title) {
     title.textContent = position ? i18next.t("Edit position") : i18next.t("Add position");
@@ -1551,6 +1616,7 @@ function savePosition(): void {
   const description = byId<HTMLInputElement>("position-form-description")?.value.trim() ?? "";
   const orderValue = byId<HTMLInputElement>("position-form-order")?.value ?? "0";
   const active = byId<HTMLInputElement>("position-form-active")?.checked ?? true;
+  const recruiting = byId<HTMLInputElement>("position-form-recruiting")?.checked ?? false;
   const teamValue = byId<HTMLSelectElement>("position-form-team")?.value ?? "";
   const teamId = Number(teamValue);
 
@@ -1565,12 +1631,19 @@ function savePosition(): void {
 
   const saved =
     editingPositionId === 0
-      ? createPosition(ministryId, { name, description, teamId, order: Number(orderValue) || 0 })
-      : updatePosition(editingPositionId, { name, description, teamId, order: Number(orderValue) || 0, active });
+      ? createPosition(ministryId, { name, description, teamId, order: Number(orderValue) || 0, recruiting })
+      : updatePosition(editingPositionId, {
+          name,
+          description,
+          teamId,
+          order: Number(orderValue) || 0,
+          active,
+          recruiting,
+        });
 
   saved
     .then(() => {
-      modal("positionModal")?.hide();
+      hideModal("positionModal");
       notifySuccess(editingPositionId === 0 ? i18next.t("Position added") : i18next.t("Position saved"));
       // A position IS a column of the qualification grid, so the grid's cached
       // document no longer describes the screen.
@@ -1768,8 +1841,15 @@ function wireQualifications(): void {
   const personPicker = personModal ? attachToModal(personModal, "#add-volunteer-person") : null;
   // Both dialogs act the moment their button is pressed, with no field to fill in
   // afterwards, so both can finish inside Bootstrap's 150 ms fade.
+  // Every dialog that closes ITSELF on a successful save needs the guard: a local
+  // API answers inside Bootstrap's 150 ms fade, and `Modal.hide()` during the
+  // transition is accepted and thrown away, leaving the dialog open over a screen
+  // that has already been updated.
   wireModalFadeGuard("addVolunteerModal");
   wireModalFadeGuard("addFromCartModal");
+  wireModalFadeGuard("positionModal");
+  wireModalFadeGuard("teamModal");
+  wireModalFadeGuard("scheduleModal");
 
   byId("qualification-add-person")?.addEventListener("click", () => {
     show(byId("add-volunteer-form-error"), false);
