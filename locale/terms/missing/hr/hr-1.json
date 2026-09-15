@@ -2,9 +2,9 @@
   "CSV": "",
   "OFX": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Potrebna je dvofaktorska autentifikacija. Imate %d dan za prijavu.",
-    "few": "Potrebna je dvofaktorska autentifikacija. Imate %d dana za prijavu.",
-    "other": "Potrebna je dvofaktorska autentifikacija. Imate %d dana za prijavu."
+    "one": "Potrebna je dvofaktorska autentifikacija. Imate %d dan za prijavu.|Potrebna je dvofaktorska autentifikacija. Imate %d dana za prijavu.|Potrebna je dvofaktorska autentifikacija. Imate %d dana za prijavu.",
+    "few": "",
+    "other": ""
   },
   "Copied {{count}} members": {
     "one": "",

@@ -1,18 +1,18 @@
 {
   "CSV": "",
   "Email sent to %d family.": {
-    "one": "Email-i u dërgua te %d familje.",
-    "other": "Email-i u dërgua te %d familje."
+    "one": "Email-i u dërgua te %d familje.|Email-i u dërgua te %d familje.",
+    "other": ""
   },
   "N/A": "",
   "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF-ja u dërgua me sukses te %d familje.",
-    "other": "PDF-ja u dërgua me sukses te %d familje."
+    "one": "PDF-ja u dërgua me sukses te %d familje.|PDF-ja u dërgua me sukses te %d familje.",
+    "other": ""
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Kërkohet vërtetimi dyfaktorësh. Keni %d ditë për t'u regjistruar.",
-    "other": "Kërkohet vërtetimi dyfaktorësh. Keni %d ditë për t'u regjistruar."
+    "one": "Kërkohet vërtetimi dyfaktorësh. Keni %d ditë për t'u regjistruar.|Kërkohet vërtetimi dyfaktorësh. Keni %d ditë për t'u regjistruar.",
+    "other": ""
   },
   "Copied {{count}} members": {
     "one": "",
