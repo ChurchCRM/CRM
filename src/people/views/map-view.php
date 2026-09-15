@@ -116,6 +116,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     type: 'boolean',
                     label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Person Address')) ?>,
                     tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bHidePersonAddress')) ?>
+                },
+                {
+                    name: 'sGeocoderProviders',
+                    type: 'text',
+                    label: <?= InputUtils::jsonEncodeForScript(gettext('Geocoding services')) ?>,
+                    tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sGeocoderProviders')) ?>
                 }
             ],
             showAllSettingsLink: false,
