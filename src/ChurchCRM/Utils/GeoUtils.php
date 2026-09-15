@@ -24,10 +24,12 @@ class GeoUtils
      *
      * - A bare number directly followed by an English street-type word gets its
      *   ordinal suffix ("NW 10 Street" -> "NW 10th Street", "SW 74 Lane" ->
-     *   "SW 74th Lane"). The first token is never touched, so a house number
-     *   in front of a lettered street ("6047 Avenue F") is left alone.
-     * - A trailing unit designator is removed ("708 SW 16th Ave Apt 215" ->
-     *   "708 SW 16th Ave"); geocoders resolve the building, not the unit.
+     *   "SW 74th Lane", "5 Avenue" -> "5th Avenue"). A leading number is taken
+     *   as the house number unless the street-type word ends the line, so
+     *   "6047 Avenue F" is left alone.
+     * - Trailing unit designators are removed, stacked ones too ("708 SW 16th
+     *   Ave Apt 215" -> "708 SW 16th Ave"); geocoders resolve the building, not
+     *   the unit.
      * - Whitespace is collapsed.
      *
      * Pure function, no I/O. Only the part before the first comma is
@@ -54,22 +56,29 @@ class GeoUtils
             }
         }
 
-        // Strip a trailing unit designator, with or without a separating comma/space.
-        $street = preg_replace(
-            '/\s*(?:' . self::UNIT_DESIGNATORS . ')\s*[\w-]+\s*$/iu',
-            '',
-            $street
-        ) ?? $street;
+        // Strip trailing unit designators, with or without a separating comma/space.
+        // Loop: "Apt 215 Suite 3300" stacks two, and the anchored pattern removes one per pass.
+        $unitPattern = '/\s*(?:' . self::UNIT_DESIGNATORS . ')\s*[\w-]+\s*$/iu';
+        do {
+            $before = $street;
+            $street = preg_replace($unitPattern, '', $street) ?? $street;
+        } while ($street !== $before);
 
         $tokens = explode(' ', trim($street));
         $count = count($tokens);
-        for ($i = 1; $i < $count - 1; $i++) {
+        for ($i = 0; $i < $count - 1; $i++) {
             if (
-                preg_match('/^\d+$/', $tokens[$i]) === 1
-                && preg_match('/^(?:' . self::STREET_TYPES . ')\.?$/i', $tokens[$i + 1]) === 1
+                preg_match('/^\d+$/', $tokens[$i]) !== 1
+                || preg_match('/^(?:' . self::STREET_TYPES . ')\.?$/i', $tokens[$i + 1]) !== 1
             ) {
-                $tokens[$i] .= self::ordinalSuffix((int) $tokens[$i]);
+                continue;
             }
+            // The first token is normally the house number ("6047 Avenue F"), so it is only
+            // treated as a street number when the street-type word ends the line ("5 Avenue").
+            if ($i === 0 && $i + 1 !== $count - 1) {
+                continue;
+            }
+            $tokens[$i] .= self::ordinalSuffix((int) $tokens[$i]);
         }
 
         return trim(implode(' ', $tokens)) . $rest;
@@ -166,6 +175,9 @@ class GeoUtils
 
                 // Structured queries need OSM's exact street spelling; retry once
                 // free-form, after the 1 req/sec pause Nominatim's policy requires.
+                // The pause holds this PHP worker for a second on every miss; at
+                // ChurchCRM's scale that is acceptable, and the bulk action already
+                // paces itself at one family per second (FamilyService).
                 $logger->debug('Geocoding: structured query found nothing, retrying free-form');
                 sleep(1);
             }

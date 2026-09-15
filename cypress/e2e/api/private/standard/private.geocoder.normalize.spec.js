@@ -54,4 +54,32 @@ describe("API Private Geocoder — street name normalisation (#9847)", () => {
             30000,
         ).then((response) => expectNear(response.body));
     });
+
+    it("normalises a street line that starts with the street number (no house number)", () => {
+        // "5 Avenue" with nothing in front of it: the leading number is the street,
+        // not a house number, because the street-type word ends the line.
+        // Result is somewhere along Fifth Avenue in Manhattan (street-level match).
+        cy.wait(1100);
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/geocoder/address",
+            { address: "5 Avenue, New York, NY 10001" },
+            200,
+            30000,
+        ).then((response) => {
+            expect(response.body.Latitude).to.be.within(40.70, 40.80);
+            expect(response.body.Longitude).to.be.within(-74.02, -73.94);
+        });
+    });
+
+    it("strips stacked unit designators", () => {
+        cy.wait(1100);
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/geocoder/address",
+            { address: "350 5 Avenue Apt 215 Suite 3300, New York, NY 10118" },
+            200,
+            30000,
+        ).then((response) => expectNear(response.body));
+    });
 });
