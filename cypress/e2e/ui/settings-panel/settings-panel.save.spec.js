@@ -11,6 +11,13 @@
 describe("Settings Panel — Save button", () => {
     beforeEach(() => cy.setupAdminSession());
 
+    // The zoom case below changes iMapZoom; restore the seeded default even if
+    // that case fails part-way, so later specs see the value they expect.
+    after(() => {
+        cy.setupAdminSession();
+        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/iMapZoom", { value: "10" }, 200);
+    });
+
     it("Map Settings: Save re-enables the button after a successful save", () => {
         cy.intercept("POST", "**/admin/api/system/config/*").as("saveConfig");
 
@@ -19,11 +26,20 @@ describe("Settings Panel — Save button", () => {
         cy.get("#mapAdminSettings", { timeout: 10000 }).should("have.class", "show").and("not.have.class", "collapsing");
 
         cy.get("#mapAdminSettings #settingsPanelSaveBtn").should("not.be.disabled").click();
-        cy.wait("@saveConfig").its("response.statusCode").should("eq", 200);
+        cy.wait("@saveConfig");
 
+        // The panel POSTs every setting in parallel and re-enables the button only
+        // once all of them settle, so the button is the real synchronisation point.
         cy.get("#mapAdminSettings #settingsPanelSaveBtn", { timeout: 10000 })
             .should("not.be.disabled")
             .and("contain.text", "Save Settings");
+
+        // By then every POST has completed; all must have succeeded
+        cy.get("@saveConfig.all").should("have.length.at.least", 1).then((calls) => {
+            for (const call of calls) {
+                expect(call.response.statusCode).to.eq(200);
+            }
+        });
 
         // The pane collapses after a successful save, like clicking Map Settings again
         cy.get("#mapAdminSettings", { timeout: 10000 }).should("not.be.visible");
@@ -66,8 +82,6 @@ describe("Settings Panel — Save button", () => {
 
         // Tile URLs carry the zoom level: /{z}/{x}/{y}.png — no cy.reload() here
         cy.get(".leaflet-tile-pane img[src*='/14/']", { timeout: 10000 }).should("exist");
-
-        // Restore the default so other specs see the seeded value
-        cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/iMapZoom", { value: "10" }, 200);
+        // iMapZoom is restored in the after() hook
     });
 });
