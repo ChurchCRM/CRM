@@ -614,6 +614,10 @@ class VolunteerSetupService
      * position belongs to its team, so a team leader may create one in their own
      * team and a ministry coordinator in any of theirs (§4.6).
      *
+     * `$recruiting` is the "Recruit Volunteers" switch and defaults to FALSE: a
+     * position is advertised on the Open Opportunities page only when somebody
+     * has said so, never as a side effect of creating it.
+     *
      * @throws VolunteerSetupException
      */
     public function createPosition(
@@ -622,7 +626,8 @@ class VolunteerSetupService
         string $name,
         ?string $description,
         int $order,
-        User $actor
+        User $actor,
+        bool $recruiting = false
     ): VolunteerPosition {
         $ministryId = (int) $ministry->getId();
 
@@ -641,6 +646,7 @@ class VolunteerSetupService
         $position->setName($name);
         $position->setDescription($this->normalizeDescription($description));
         $position->setActive(true);
+        $position->setRecruiting($recruiting);
         $position->setOrder($order);
         $position->save();
 
@@ -666,7 +672,7 @@ class VolunteerSetupService
      * There is no "move it out of every team" any more (D18): a null `teamId` is a
      * 400, not a promotion to ministry-wide.
      *
-     * @param array{name?: string, description?: string|null, teamId?: int, order?: int, active?: bool} $fields
+     * @param array{name?: string, description?: string|null, teamId?: int, order?: int, active?: bool, recruiting?: bool} $fields
      *
      * @throws VolunteerSetupException
      */
@@ -711,6 +717,12 @@ class VolunteerSetupService
 
         if (array_key_exists('active', $fields)) {
             $position->setActive((bool) $fields['active']);
+        }
+
+        // "Recruit Volunteers". The route has already rejected anything that is
+        // not a real boolean, so the cast here can never invent a `true`.
+        if (array_key_exists('recruiting', $fields)) {
+            $position->setRecruiting((bool) $fields['recruiting']);
         }
 
         $position->save();
@@ -1135,24 +1147,131 @@ class VolunteerSetupService
     /**
      * Every ministry currently advertising for help, active ones only.
      *
+     * **There are two ways to be advertising.** The ministry-level Help-wanted
+     * switch is one; having at least one ACTIVE position with "Recruit Volunteers"
+     * on is the other, and either is enough. A coordinator who has named the roles
+     * they need has already said everything the section needs to show, and making
+     * them tick a second switch somewhere else to be listed at all was the defect
+     * this rule removes.
+     *
      * No authorization: this is what the Open Opportunities page shows to any
-     * signed-in volunteer, and a ministry that has switched the advert ON has asked
-     * to be seen. Deactivated ministries are excluded whatever their flag says — an
-     * inactive ministry is not running, and inviting somebody to join it would be a
-     * dead end.
+     * signed-in volunteer, and a ministry that has switched either advert ON has
+     * asked to be seen. Deactivated ministries are excluded whatever their flags
+     * say — an inactive ministry is not running, and inviting somebody to join it
+     * would be a dead end.
      *
      * @return VolunteerMinistry[]
      */
     public function listHelpWantedMinistries(): array
     {
+        $recruitingMinistryIds = $this->recruitingMinistryIds();
+
         return iterator_to_array(
             VolunteerMinistryQuery::create()
-                ->filterByHelpWanted(true)
                 ->filterByActive(true)
+                ->condition('vminHelpWanted', 'VolunteerMinistry.HelpWanted = ?', true)
+                // `[0]` rather than `[]`: an empty IN list is not valid SQL, and a
+                // primary key is never 0, so this is the "matches nothing" spelling
+                // the rest of V2 uses.
+                ->condition('vminRecruiting', 'VolunteerMinistry.Id IN ?', $recruitingMinistryIds === [] ? [0] : $recruitingMinistryIds)
+                ->where(['vminHelpWanted', 'vminRecruiting'], Criteria::LOGICAL_OR)
                 ->orderByName()
                 ->find(),
             false
         );
+    }
+
+    /**
+     * The ids of every ministry with at least one active recruiting position.
+     *
+     * One `SELECT DISTINCT` over `volunteer_position_vpos`, so the listing above
+     * stays a single extra query however many ministries exist.
+     *
+     * @return int[]
+     */
+    private function recruitingMinistryIds(): array
+    {
+        $ids = [];
+        $rows = VolunteerPositionQuery::create()
+            ->filterByRecruiting(true)
+            ->filterByActive(true)
+            ->select(['MinistryId'])
+            ->distinct()
+            ->find();
+
+        foreach ($rows as $ministryId) {
+            $ids[] = (int) $ministryId;
+        }
+
+        return $ids;
+    }
+
+    /**
+     * The positions a set of ministries is recruiting for, keyed by ministry id.
+     *
+     * Ordered **team name, then the position's own order, then its name** — the
+     * same order the Positions table uses, decided here rather than in the browser
+     * so every client and every export agrees on it.
+     *
+     * Inactive positions are excluded: deactivation is how a coordinator retires a
+     * role without destroying its history (§2.6), and advertising a retired role
+     * would be the one place that history leaked back onto a member screen.
+     *
+     * @param int[] $ministryIds
+     *
+     * @return array<int, array<int, array{teamName: string, positionName: string, description: string|null}>>
+     */
+    public function listRecruitingPositionsByMinistry(array $ministryIds): array
+    {
+        if ($ministryIds === []) {
+            return [];
+        }
+
+        $positions = VolunteerPositionQuery::create()
+            ->filterByMinistryId($ministryIds, Criteria::IN)
+            ->filterByRecruiting(true)
+            ->filterByActive(true)
+            ->useTeamQuery()
+                ->orderByName(Criteria::ASC)
+            ->endUse()
+            // `with()` hydrates the team the join already fetched, so naming it on
+            // every row costs no query at all.
+            ->with('Team')
+            ->orderByOrder(Criteria::ASC)
+            ->orderByName(Criteria::ASC)
+            ->find();
+
+        $byMinistry = [];
+        foreach ($positions as $position) {
+            $byMinistry[(int) $position->getMinistryId()][] = [
+                'teamName' => (string) ($position->getTeam()?->getName() ?? ''),
+                'positionName' => (string) $position->getName(),
+                'description' => $position->getDescription(),
+            ];
+        }
+
+        return $byMinistry;
+    }
+
+    /**
+     * Is this ministry asking for help at all?
+     *
+     * The read side of the same rule `listHelpWantedMinistries()` applies, kept in
+     * one place because `recordHelpOffer()` has to agree with it exactly: the "I'd
+     * like to help" button is rendered for every ministry that listing returns, and
+     * a 403 behind a rendered button is a dead control.
+     */
+    public function isAdvertisingForHelp(VolunteerMinistry $ministry): bool
+    {
+        if ($ministry->getHelpWanted()) {
+            return true;
+        }
+
+        return VolunteerPositionQuery::create()
+            ->filterByMinistryId((int) $ministry->getId())
+            ->filterByRecruiting(true)
+            ->filterByActive(true)
+            ->count() > 0;
     }
 
     /**
@@ -1162,9 +1281,11 @@ class VolunteerSetupService
      * The actor is the SESSION person and is passed as an id rather than a `User`,
      * because there is no permission to check — any signed-in volunteer may offer to
      * help a ministry that has asked for help, and that is the whole authorization
-     * rule. What there IS to check is the ministry's own consent: `403` when the
-     * advert is off, so a volunteer cannot add themselves to an arbitrary roster by
-     * guessing an id.
+     * rule. What there IS to check is the ministry's own consent: `403` when NEITHER
+     * advert is on — not the ministry-level switch and not a single active recruiting
+     * position — so a volunteer cannot add themselves to an arbitrary roster by
+     * guessing an id. The test is `isAdvertisingForHelp()`, the same one the listing
+     * uses, because the button is rendered for exactly the ministries it lists.
      *
      * The pool write is a managed write for exactly this reason: the person is neither
      * an administrator nor a coordinator, and this method — having checked the advert —
@@ -1181,7 +1302,7 @@ class VolunteerSetupService
      */
     public function recordHelpOffer(VolunteerMinistry $ministry, int $personId): array
     {
-        if (!$ministry->getHelpWanted()) {
+        if (!$this->isAdvertisingForHelp($ministry)) {
             throw VolunteerSetupException::forbidden(gettext('This ministry is not asking for help right now'));
         }
 

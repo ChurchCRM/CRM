@@ -712,7 +712,7 @@ function volunteerMeParseDate(?string $raw): ?\DateTimeInterface
  *     path="/volunteer/me/help-wanted",
  *     operationId="listMyVolunteerHelpWanted",
  *     summary="Ministries that are asking for help",
- *     description="Every ACTIVE ministry with its Help wanted switch on (design D19), alphabetically, with the text its coordinator wrote. Not filtered by qualification or by pool membership - the whole point of the section is to reach people the ministry does not know yet. inPool says whether the caller is already one of its volunteers, so the page can word the button's result correctly.",
+ *     description="Every ACTIVE ministry that is advertising, alphabetically. A ministry advertises in either of two ways (design D19 as amended in round four): its own Help wanted switch is on, or it has at least one ACTIVE position with Recruit Volunteers on - either is enough. helpWantedText is the coordinator's own prose and may be empty; recruitingPositions names the positions being recruited for, ordered by team name and then by the position's own order, and is an empty array when there are none. Not filtered by qualification or by pool membership - the whole point of the section is to reach people the ministry does not know yet. inPool says whether the caller is already one of its volunteers, so the page can word the button's result correctly.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=401, description="Not authenticated"),
@@ -727,13 +727,25 @@ function listMyVolunteerHelpWanted(Request $request, Response $response): Respon
     $personId = (int) AuthenticationManager::getCurrentUser()->getId();
     $service = new VolunteerSetupService();
 
+    $ministries = $service->listHelpWantedMinistries();
+    $ministryIds = array_map(
+        static fn ($ministry): int => (int) $ministry->getId(),
+        $ministries
+    );
+
+    // ONE query for every ministry's recruiting positions, ordered server-side, so
+    // the section costs two queries however many ministries are advertising and
+    // every client renders the rows in the same order.
+    $positionsByMinistry = $service->listRecruitingPositionsByMinistry($ministryIds);
+
     $rows = [];
-    foreach ($service->listHelpWantedMinistries() as $ministry) {
+    foreach ($ministries as $ministry) {
         $ministryId = (int) $ministry->getId();
         $rows[] = [
             'ministryId' => $ministryId,
             'ministryName' => (string) $ministry->getName(),
             'helpWantedText' => $ministry->getHelpWantedText(),
+            'recruitingPositions' => $positionsByMinistry[$ministryId] ?? [],
             'inPool' => $service->isInPool($ministryId, $personId),
         ];
     }
@@ -746,12 +758,12 @@ function listMyVolunteerHelpWanted(Request $request, Response $response): Respon
  *     path="/volunteer/me/help-wanted/{ministryId}",
  *     operationId="offerToHelpVolunteerMinistry",
  *     summary="Tell a ministry you would like to help",
- *     description="The acting person comes from the session; there is deliberately NO personId parameter (design section 3.3.3), so nobody can volunteer somebody else. Adds the caller to the ministry's volunteer pool Group if they are not already in it, then enqueues one help_offer message per coordinator per day - a second tap the same day sends nothing. Answers 403 when the ministry is not asking for help, so a pool cannot be joined by guessing an id.",
+ *     description="The acting person comes from the session; there is deliberately NO personId parameter (design section 3.3.3), so nobody can volunteer somebody else. Adds the caller to the ministry's volunteer pool Group if they are not already in it, then enqueues one help_offer message per coordinator per day - a second tap the same day sends nothing. Answers 403 only when the ministry is advertising in NEITHER way - no Help wanted switch and no active recruiting position - so a pool cannot be joined by guessing an id, while every ministry the help-wanted listing returns accepts the offer its rendered button makes.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="That ministry is not asking for help, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="That ministry is not asking for help in either way, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry, or it has no pool group"),
  *     @OA\Response(response=200, description="Thank you",
  *         @OA\JsonContent(
