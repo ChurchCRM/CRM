@@ -24,6 +24,9 @@ describe("Settings Panel — Save button", () => {
         cy.get("#mapAdminSettings #settingsPanelSaveBtn", { timeout: 10000 })
             .should("not.be.disabled")
             .and("contain.text", "Save Settings");
+
+        // The pane collapses after a successful save, like clicking Map Settings again
+        cy.get("#mapAdminSettings", { timeout: 10000 }).should("not.be.visible");
     });
 
     it("Map Settings: a failed save re-enables the button and reports the failure", () => {
@@ -43,6 +46,9 @@ describe("Settings Panel — Save button", () => {
             .should("not.be.disabled")
             .and("contain.text", "Save Settings");
         cy.contains("Failed to save settings").should("exist");
+
+        // Nothing was saved, so the pane stays open for another attempt
+        cy.get("#mapAdminSettings").should("be.visible");
     });
 
     it("Map Settings: a saved default zoom is applied to the map without a reload", () => {

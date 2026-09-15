@@ -119,9 +119,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 }
             ],
             showAllSettingsLink: false,
-            // No reload: map-view.js listens for this and applies the saved default zoom in place.
+            // No reload: map-view.js listens for this and applies the saved default zoom in
+            // place, then the pane collapses just as if the Map Settings button were clicked.
             onSave: function (savedValues) {
                 document.dispatchEvent(new CustomEvent('crm:mapsettings-saved', { detail: savedValues }));
+                window.bootstrap.Collapse.getOrCreateInstance(document.getElementById('mapAdminSettings')).hide();
             }
         });
     });
