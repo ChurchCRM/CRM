@@ -17,7 +17,7 @@
  *            { name: 'iFYMonth', type: 'choice', label: 'Fiscal Year Month', choices: [...] },
  *            { name: 'bEnableNonDeductible', type: 'boolean', label: 'Non-deductible' }
  *        ],
- *        onSave: function() { window.location.reload(); }
+ *        onSave: function(savedValues) { window.location.reload(); }
  *    });
  */
 
@@ -218,7 +218,7 @@ import "../src/skin/scss/system-settings-panel.scss";
      * @param {string} options.title - Panel title
      * @param {string} options.icon - Font Awesome icon class
      * @param {Array} options.settings - Array of setting names or setting config objects
-     * @param {Function} options.onSave - Callback after successful save
+     * @param {Function} options.onSave - Callback after successful save; receives {name: value} of the saved settings
      * @param {boolean} options.showAllSettingsLink - Show link to System Settings page
      * @param {string} options.headerClass - CSS class for header (default: bg-primary-lt)
      */
@@ -500,7 +500,9 @@ import "../src/skin/scss/system-settings-panel.scss";
         }
       });
 
-      // Save each setting
+      // Save each setting. fetch() only rejects on network errors, so a 4xx/5xx
+      // from the config API has to be turned into a rejection explicitly or the
+      // failure would be reported as a success.
       const promises = Object.keys(settings).map((key) =>
         fetch(`${window.CRM.root}${this.options.configApiPath}/${key}`, {
           method: "POST",
@@ -508,6 +510,11 @@ import "../src/skin/scss/system-settings-panel.scss";
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ value: settings[key] }),
+        }).then((response) => {
+          if (!response.ok) {
+            throw new Error(`${key}: ${response.status} ${response.statusText}`);
+          }
+          return response;
         }),
       );
 
@@ -517,14 +524,21 @@ import "../src/skin/scss/system-settings-panel.scss";
             window.CRM.notify(t("Settings saved successfully"), { type: "success", delay: 2000 });
           }
 
+          // Hand the saved values to the page so it can apply them in place
+          // instead of reloading (the Map Settings panel re-zooms the map).
           if (typeof this.options.onSave === "function") {
-            this.options.onSave();
+            this.options.onSave(settings);
           }
         })
         .catch((_error) => {
           if (window.CRM?.notify) {
             window.CRM.notify(t("Failed to save settings"), { type: "error", delay: 5000 });
           }
+        })
+        .finally(() => {
+          // Restore the button on both outcomes. Panels whose onSave reloads the
+          // page never noticed, but the Map Settings, Email and Text panels stay
+          // on the page and were left with a disabled "Saving..." button (#9852).
           saveBtn.disabled = false;
           saveBtn.innerHTML = originalHtml;
         });
