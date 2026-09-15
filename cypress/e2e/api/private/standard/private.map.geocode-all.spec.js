@@ -24,6 +24,11 @@ describe("API Private Map — POST /api/map/geocode-all", () => {
                 200,
                 120000,
             ).then((response) => {
+                // No skip key in the body: the API must default to 0 (#9846) —
+                // a client that omits it gets the first batch, not an error.
+                expect(response.body.skip).to.equal(0);
+                expect(response.body).to.have.property("processed").that.is.a("number").and.at.least(0);
+
                 // Core summary fields must all be present
                 expect(response.body).to.have.property("total");
                 expect(response.body).to.have.property("geocoded");
@@ -123,12 +128,11 @@ describe("API Private Map — POST /api/map/geocode-all", () => {
             cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: -1 }, 400, 30000);
         });
 
-        it("Echoes skip=0 and processed when no skip is given", () => {
+        it("Echoes the requested skip and a processed count in the summary", () => {
             cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
                 (probe) => {
-                    // Only the shape is asserted here; the happy-path test above
-                    // already runs a real batch.
-                    expect(probe.body).to.have.property("skip").that.is.a("number");
+                    // The default (no skip key) path is asserted by the happy-path test above.
+                    expect(probe.body.skip).to.equal(100000);
                     expect(probe.body).to.have.property("processed").that.is.a("number");
                 },
             );

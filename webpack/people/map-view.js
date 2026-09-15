@@ -230,9 +230,14 @@ if (geocodeAllBtn) {
     })
       .then((res) => {
         if (!res.ok) {
-          return res.json().then((body) => {
-            throw new Error(body.message || res.statusText);
-          });
+          // The error body is JSON from the API, but a gateway or PHP fatal page
+          // is not — fall back to the status text instead of a JSON parse error.
+          return res
+            .json()
+            .catch(() => ({}))
+            .then((body) => {
+              throw new Error(body.message || res.statusText || String(res.status));
+            });
         }
         return res.json();
       })
