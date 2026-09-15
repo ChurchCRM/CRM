@@ -2,8 +2,8 @@
   "CSV": "",
   "OFX": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Se requiere la autenticación de dos factores. Tiene %d día para inscribirse.",
-    "other": "Se requiere la autenticación de dos factores. Tiene %d días para inscribirse."
+    "one": "Se requiere la autenticación de dos factores. Tiene %d día para inscribirse.|Se requiere la autenticación de dos factores. Tiene %d días para inscribirse.",
+    "other": ""
   },
   "Copied {{count}} members": {
     "one": "",

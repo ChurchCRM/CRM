@@ -2,8 +2,8 @@
   "CSV": "",
   "OFX": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "נדרש אימות דו-שלבי. יש לך %d יום להירשם.",
-    "other": "נדרש אימות דו-שלבי. יש לך %d ימים להירשם."
+    "one": "נדרש אימות דו-שלבי. יש לך %d יום להירשם.|נדרש אימות דו-שלבי. יש לך %d ימים להירשם.",
+    "other": ""
   },
   "Copied {{count}} members": {
     "one": "",

@@ -2,17 +2,17 @@
   "Data": "",
   "CSV": "",
   "Email sent to %d family.": {
-    "one": "Barua pepe imetumwa kwa familia %d.",
-    "other": "Barua pepe zimetumwa kwa familia %d."
+    "one": "Barua pepe imetumwa kwa familia %d.|Barua pepe zimetumwa kwa familia %d.",
+    "other": ""
   },
   "OFX": "",
   "PDF successfully emailed to %d family.": {
-    "one": "PDF imetumwa kwa mafanikio kwa barua pepe kwa familia %d.",
-    "other": "PDF zimetumwa kwa mafanikio kwa barua pepe kwa familia %d."
+    "one": "PDF imetumwa kwa mafanikio kwa barua pepe kwa familia %d.|PDF zimetumwa kwa mafanikio kwa barua pepe kwa familia %d.",
+    "other": ""
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Uthibitishaji wa hatua mbili unahitajika. Una siku %d ya kujiandikisha.",
-    "other": "Uthibitishaji wa hatua mbili unahitajika. Una siku %d za kujiandikisha."
+    "one": "Uthibitishaji wa hatua mbili unahitajika. Una siku %d ya kujiandikisha.|Uthibitishaji wa hatua mbili unahitajika. Una siku %d za kujiandikisha.",
+    "other": ""
   },
   "Copied {{count}} members": {
     "one": "",

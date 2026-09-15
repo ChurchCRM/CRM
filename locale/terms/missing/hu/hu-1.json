@@ -3,8 +3,8 @@
   "N/A": "",
   "OFX": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Kétfaktoros hitelesítés szükséges. %d napja van a beiratkozásra.",
-    "other": "Kétfaktoros hitelesítés szükséges. %d napja van a beiratkozásra."
+    "one": "Kétfaktoros hitelesítés szükséges. %d napja van a beiratkozásra.|Kétfaktoros hitelesítés szükséges. %d napja van a beiratkozásra.",
+    "other": ""
   },
   "Copied {{count}} members": {
     "one": "",

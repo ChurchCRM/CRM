@@ -2,8 +2,8 @@
   "CSV": "",
   "OFX": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päev.",
-    "other": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päeva."
+    "one": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päev.|Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päeva.",
+    "other": ""
   },
   "Copied {{count}} members": {
     "one": "",

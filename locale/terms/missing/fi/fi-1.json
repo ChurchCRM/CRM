@@ -2,8 +2,8 @@
   "CSV": "",
   "OFX": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Kaksivaiheinen tunnistautuminen on pakollinen. Sinulla on %d päivä aikaa ottaa se käyttöön.",
-    "other": "Kaksivaiheinen tunnistautuminen on pakollinen. Sinulla on %d päivää aikaa ottaa se käyttöön."
+    "one": "Kaksivaiheinen tunnistautuminen on pakollinen. Sinulla on %d päivä aikaa ottaa se käyttöön.|Kaksivaiheinen tunnistautuminen on pakollinen. Sinulla on %d päivää aikaa ottaa se käyttöön.",
+    "other": ""
   },
   "Copied {{count}} members": {
     "one": "",
