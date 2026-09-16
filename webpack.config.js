@@ -118,6 +118,9 @@ module.exports = {
     // (design §5.2 / #9865) rather than by every portal page.
     'portal-profile': './webpack/portal/portal-profile.ts',
     'portal-family': './webpack/portal/portal-family.ts',
+    // Member Portal calendar (#9866): FullCalendar for /portal/calendar. Its own
+    // entry so the tiny `portal` bundle every page loads stays tiny.
+    'portal-calendar': './webpack/portal/portal-calendar.ts',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
   },

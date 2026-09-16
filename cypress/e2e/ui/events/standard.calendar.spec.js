@@ -400,3 +400,52 @@ describe("Standard Calendar — save (admin-session)", () => {
         });
     });
 });
+
+/**
+ * The calendar sidebar's three lists (MP5, #9866).
+ *
+ * The `calendars` table has no owner column, so "My Calendars" told staff
+ * something that was never true; the heading now reads "Church Calendars".
+ * Calendars that name an owning ministry (`calendars.ministry_id`) are listed
+ * under their own heading between the church and system lists — the seed has
+ * calendar 6, "Youth Ministry", with ministry_id 1.
+ */
+describe("Calendar sidebar — church, ministry and system lists", () => {
+    beforeEach(() => cy.setupStandardSession());
+
+    const openSidebar = () => {
+        cy.visit("event/calendars");
+        cy.get('[data-bs-target="#calendarSidebar"]').click();
+        cy.get("#calendarSidebar").should("be.visible");
+    };
+
+    it('The church calendar heading reads "Church Calendars", not "My Calendars"', () => {
+        openSidebar();
+        cy.get("#calendarSidebar").should("contain", "Church Calendars");
+        cy.get("#calendarSidebar").should("not.contain", "My Calendars");
+    });
+
+    it("A calendar with an owning ministry is listed under Ministry Calendars", () => {
+        openSidebar();
+
+        cy.get("#calendarMinistrySection", { timeout: 10000 }).should("not.have.class", "d-none");
+        cy.get("#calendarMinistrySection").should("contain", "Ministry Calendars");
+        cy.get("#calendarMinistryList").should("contain", "Youth Ministry");
+
+        // It is not also in the church list.
+        cy.get("#calendarUserList").should("not.contain", "Youth Ministry");
+        cy.get("#calendarUserList").should("contain", "Public Calendar");
+    });
+
+    it("GET /api/calendars carries the owning ministry", () => {
+        cy.request("/api/calendars").then((response) => {
+            const calendars = response.body.Calendars;
+            const ministryCalendar = calendars.find((calendar) => calendar.Name === "Youth Ministry");
+            expect(ministryCalendar, "the seeded ministry calendar").to.exist;
+            expect(ministryCalendar.MinistryId).to.eq(1);
+
+            const churchCalendar = calendars.find((calendar) => calendar.Name === "Public Calendar");
+            expect(churchCalendar.MinistryId).to.eq(null);
+        });
+    });
+});

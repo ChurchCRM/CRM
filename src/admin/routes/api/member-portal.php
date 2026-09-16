@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Portal\PortalCalendarService;
 use ChurchCRM\Portal\PortalStatsService;
 use ChurchCRM\Portal\ThemeException;
 use ChurchCRM\Portal\ThemeManager;
@@ -24,6 +25,12 @@ $app->group('/api/member-portal', function (RouteCollectorProxy $group): void {
         // `name` is a folder name; sanitizeText strips markup, and the handler
         // then checks it against the folders actually on disk.
         ->add(new InputSanitizationMiddleware(['name' => 'text']));
+    $group->get('/calendars', 'listMemberPortalCalendarsAPI');
+    // The body is a list of {type, id} objects, not scalar fields, so
+    // InputSanitizationMiddleware has nothing to clean here; validation is
+    // PortalCalendarService::setVisible(), which accepts only entries naming a
+    // calendar this installation actually has.
+    $group->post('/calendars', 'saveMemberPortalCalendarsAPI');
 });
 
 /**
@@ -149,3 +156,49 @@ function isKnownMemberPortalTheme(string $name): bool
     return false;
 }
 
+
+/**
+ * GET /admin/api/member-portal/calendars — every church, ministry and system
+ * calendar with the "Show in Member Portal" switch's current position.
+ */
+function listMemberPortalCalendarsAPI(Request $request, Response $response): Response
+{
+    return SlimUtils::renderJSON($response, [
+        'calendars' => PortalCalendarService::listChoices(),
+    ]);
+}
+
+/**
+ * POST /admin/api/member-portal/calendars {"visible": [{"type": "...", "id": 1}]}
+ * — replace the set of calendars members see.
+ *
+ *   400 — `visible` is missing, is not a list, or an entry names no calendar
+ *   200 — saved; the refreshed list comes back so the page can redraw
+ */
+function saveMemberPortalCalendarsAPI(Request $request, Response $response): Response
+{
+    $input = $request->getParsedBody();
+    $visible = is_array($input) ? ($input['visible'] ?? null) : null;
+
+    if (!is_array($visible)) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Send the calendars to show as a list.'),
+            [],
+            400,
+            null,
+            $request
+        );
+    }
+
+    try {
+        PortalCalendarService::setVisible(array_values($visible));
+    } catch (\InvalidArgumentException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'success' => true,
+        'calendars' => PortalCalendarService::listChoices(),
+    ]);
+}

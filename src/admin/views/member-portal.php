@@ -11,7 +11,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
  * Admin → Member Portal (#9864, design §4).
  *
  * Variables from the route: $themes, $activeTheme, $activeThemeExists,
- * $developerMode, $showCalendar, $showVolunteer, $allowBirthdayEdit, $stats.
+ * $developerMode, $showCalendar, $showVolunteer, $allowBirthdayEdit, $stats,
+ * $portalCalendars.
  *
  * Every theme was validated server-side by the route, so each entry carries a
  * badge on first paint without a round trip. The page's behaviour lives in
@@ -30,6 +31,20 @@ $statusBadge = static function (string $status): array {
 /** A theme's label in the dropdown: the system theme is named as such. */
 $themeLabel = static function (array $theme): string {
     return $theme['isDefault'] ? gettext('System default') : $theme['name'];
+};
+
+/**
+ * What kind of calendar a Calendars-tab row is. A row of the `calendars` table
+ * with an owning ministry is a ministry calendar; without one it is church-wide.
+ */
+$calendarKind = static function (array $portalCalendar): string {
+    if ($portalCalendar['type'] !== 'calendar') {
+        return gettext('System calendar');
+    }
+
+    return $portalCalendar['ministryId'] === null
+        ? gettext('Church calendar')
+        : gettext('Ministry calendar');
 };
 
 $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes.md';
@@ -67,11 +82,8 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
                 <i class="fa-solid fa-chart-simple me-2"></i><?= gettext('Statistics') ?>
             </a>
         </li>
-        <!-- Calendars tab (MP5, issue #9866): the portal calendar picker lands
-             here. The tab and its pane stay hidden until that issue fills the
-             pane in — MP5 only has to drop content into #portal-calendars and
-             remove the two `d-none` classes. -->
-        <li class="nav-item d-none" role="presentation" id="portal-calendars-tab-item">
+        <!-- Calendars (MP5, issue #9866): which calendars members see. -->
+        <li class="nav-item" role="presentation" id="portal-calendars-tab-item">
             <a class="nav-link" id="portal-calendars-tab" data-bs-toggle="tab" href="#portal-calendars" role="tab">
                 <i class="fa-solid fa-calendar-days me-2"></i><?= gettext('Calendars') ?>
             </a>
@@ -330,8 +342,68 @@ $themesDocUrl = 'https://github.com/ChurchCRM/CRM/blob/master/docs/portal-themes
         </div>
 
         <!-- ============================ Calendars =========================== -->
-        <!-- Placeholder pane for MP5 (#9866). Intentionally empty. -->
-        <div class="tab-pane fade d-none" id="portal-calendars" role="tabpanel"></div>
+        <div class="tab-pane fade" id="portal-calendars" role="tabpanel">
+            <p class="text-secondary" id="portalCalendarsLead">
+                <?= gettext('Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only.') ?>
+            </p>
+
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-vcenter card-table" id="portalCalendarsTable">
+                        <thead>
+                            <tr>
+                                <th><?= gettext('Calendar') ?></th>
+                                <th><?= gettext('Kind') ?></th>
+                                <th class="w-1"><?= gettext('Colour') ?></th>
+                                <th class="w-1"><?= gettext('Show in Member Portal') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($portalCalendars as $portalCalendar): ?>
+                                <?php
+                                $rowKey = $portalCalendar['type'] . '-' . $portalCalendar['id'];
+                                $kind = $calendarKind($portalCalendar);
+                                ?>
+                                <tr data-calendar-type="<?= InputUtils::escapeAttribute($portalCalendar['type']) ?>"
+                                    data-calendar-id="<?= (int) $portalCalendar['id'] ?>">
+                                    <td><span class="fw-bold"><?= InputUtils::escapeHTML($portalCalendar['name']) ?></span></td>
+                                    <td class="text-secondary"><?= InputUtils::escapeHTML($kind) ?></td>
+                                    <td>
+                                        <span class="portal-calendar-swatch d-inline-block rounded border"
+                                              style="inline-size: 1.25rem; block-size: 1.25rem; background-color: <?= InputUtils::escapeAttribute($portalCalendar['colors']['background']) ?>;"
+                                              title="<?= InputUtils::escapeAttribute($portalCalendar['colors']['background']) ?>"
+                                              aria-hidden="true"></span>
+                                    </td>
+                                    <td>
+                                        <label class="form-check form-switch mb-0">
+                                            <input class="form-check-input portal-calendar-switch" type="checkbox"
+                                                   id="portalCalendarSwitch-<?= InputUtils::escapeAttribute($rowKey) ?>"
+                                                   <?= $portalCalendar['visible'] ? 'checked' : '' ?>>
+                                            <span class="visually-hidden">
+                                                <?= sprintf(gettext('Show "%s" in the Member Portal'), InputUtils::escapeHTML($portalCalendar['name'])) ?>
+                                            </span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <?php if ($portalCalendars === []): ?>
+                                <tr id="portalNoCalendars">
+                                    <td colspan="4" class="text-secondary">
+                                        <?= gettext('This installation has no calendars yet.') ?>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer d-flex align-items-center gap-2">
+                    <button type="button" class="btn btn-primary" id="portalCalendarsSaveButton">
+                        <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save calendars') ?>
+                    </button>
+                    <span class="text-secondary" id="portalCalendarsStatus" role="status"></span>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

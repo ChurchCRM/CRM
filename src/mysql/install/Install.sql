@@ -203,13 +203,27 @@ CREATE TABLE `calendars` (
   `accesstoken` VARCHAR(255),
   `foregroundColor` VARCHAR(6),
   `backgroundColor` VARCHAR(6),
+  -- The volunteer ministry this calendar belongs to, NULL for a church-wide
+  -- calendar. The foreign key to `volunteer_ministry_vmin` is added by the
+  -- Volunteer v2 schema, which creates that table (see
+  -- mysql/upgrade/7.8.0-member-portal-calendars.sql).
+  `ministry_id` INT NULL DEFAULT NULL,
   PRIMARY KEY (`calendar_id`),
-  UNIQUE KEY `accesstoken` (`accesstoken`)
+  UNIQUE KEY `accesstoken` (`accesstoken`),
+  KEY `calendars_ministry_idx` (`ministry_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 INSERT INTO `calendars` (`calendar_id`,`name`,`accesstoken`,`foregroundColor`,`backgroundColor`) VALUES
  (1,"Public Calendar",NULL,"FFFFFF","00AA00"),
  (2,"Private Calendar",NULL,"FFFFFF","0000AA");
+
+-- A new install shows "Public Calendar" in the Member Portal; every other
+-- calendar, and every system calendar, starts switched off (Member Portal,
+-- #9866). An *upgrade* writes no row here, so an existing church falls back to
+-- the code default of `aPortalCalendars` — an empty list, i.e. nothing is
+-- shared with members until an administrator says so.
+INSERT INTO `config_cfg` (`cfg_name`,`cfg_value`) VALUES
+ ('aPortalCalendars','[{"type":"calendar","id":1}]');
 
 # This is a join-table to link an event with a calendar
 CREATE TABLE `calendar_events` (

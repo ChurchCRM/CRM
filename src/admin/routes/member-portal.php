@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Portal\PortalCalendarService;
 use ChurchCRM\Portal\PortalStatsService;
 use ChurchCRM\Portal\ThemeManager;
 use ChurchCRM\Portal\ThemeValidator;
@@ -55,6 +56,10 @@ $memberPortalHandler = function (Request $request, Response $response): Response
         'showVolunteer' => SystemConfig::getBooleanValue('bPortalShowVolunteer'),
         'allowBirthdayEdit' => SystemConfig::getBooleanValue('bPortalAllowBirthdayEdit'),
         'stats' => PortalStatsService::getStatistics(),
+        // The Calendars tab (#9866): every church, ministry and system calendar
+        // with the position of its "Show in Member Portal" switch, rendered
+        // server-side so the tab needs no round trip on first paint.
+        'portalCalendars' => PortalCalendarService::listChoices(),
     ];
 
     return $renderer->render($response, 'member-portal.php', $pageArgs);

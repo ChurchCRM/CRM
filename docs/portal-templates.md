@@ -210,7 +210,8 @@ will stop working on your pages.
 
 | Template | Rendered for | Its own variables |
 |---|---|---|
-| `home.html.twig` | `GET /portal` | `pageTitle`, `familySummary` |
+| `home.html.twig` | `GET /portal` | `pageTitle`, `upcomingEvents`, `hasVisibleCalendars`, `familySummary` |
+| `calendar/index.html.twig` | `GET /portal/calendar` | `pageTitle`, `calendars`, `hasCalendars`, `calendarConfigJson` |
 | `profile/index.html.twig` | `GET /portal/profile` | `pageTitle`, `profile` |
 | `profile/edit.html.twig` | `GET /portal/profile/edit` | `pageTitle`, `profile` |
 | `profile/password.html.twig` | `GET/POST /v2/user/current/changepassword`, self-service session | `pageTitle`, `minPasswordLength`, `oldPasswordError`, `newPasswordError` |
@@ -290,8 +291,46 @@ broken theme cannot break the page that reports it. A theme may still override
 them — its version is used everywhere except when that theme is the one that
 failed.
 
-More pages arrive with the rest of the epic: calendar (MP5), volunteering
-(MP6), teams (MP7). Each one adds a row to this table.
+More pages arrive with the rest of the epic: volunteering (MP6), teams (MP7).
+Each one adds a row to this table.
+
+### The home page's calendar card
+
+`upcomingEvents` is the next three events from the calendars the church shares,
+already formatted for printing — `{title, when, calendarName}`, where `when` is
+a date string in the installation's own format. It is empty when nothing is
+coming up, and `hasVisibleCalendars` is `false` when the church has shared no
+calendar at all; the two cases read differently to a member, so the system
+theme says "Nothing is on the calendar just now." for the first and "No calendar
+has been shared with members yet." for the second.
+
+The card is only rendered when `portal.showCalendar` is on.
+
+### The calendar page
+
+`calendars` is the legend: `{name, color}` for each calendar an administrator
+switched on, in the order Admin → Member Portal → Calendars lists them, with
+`color` a CSS colour ready for a swatch. `hasCalendars` is `false` when nothing
+is shared, and the page then says so instead of drawing a grid.
+
+The events are **not** in the template. FullCalendar fetches
+`GET /api/portal/calendar/events?from=…&to=…` for the window it is showing, so
+paging through months costs one small request each. An override must therefore
+keep three things, which the page's bundle looks for:
+
+| Keep | Why |
+|---|---|
+| `<div id="portal-calendar">` | Where FullCalendar renders |
+| `<section id="portal-calendar-detail">` and its `portal-calendar-detail-*` ids | The panel an event click fills in — title, when, where, calendar, details |
+| `window.CRM.portalCalendar = {{ calendarConfigJson }}` plus `asset('/skin/v2/portal-calendar.min.js')` | The endpoint, the church's timezone and the window cap |
+
+`calendarConfigJson` is a pre-rendered fragment like the four above: print it
+inside a `<script nonce="{{ nonce() }}">` without `|escape` and without `|raw`.
+Link `asset('/skin/v2/portal-calendar.min.css')` from `head_extra` — that is
+FullCalendar's own stylesheet, not portal styling.
+
+A theme that would rather draw its own calendar can drop all of this and call
+the same endpoint itself; it is session-gated and needs no token.
 
 ---
 
