@@ -233,8 +233,11 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             'email' => (string) ($user->getEmail() ?? ''),
             'avatarUrl' => SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo',
             'familyId' => $person ? (int) $person->getFamId() : 0,
-            // Volunteer scopes reach self-service logins in MP6/#9705 (P17).
-            'isTeamLeader' => false,
+            // True when this person holds a volunteer `team` scope — including on
+            // a self-service login, which is the whole of the D14 revision (P17,
+            // #9867). MP7 turns it into the "My Teams" nav entry; until then it is
+            // a fact a theme may already render.
+            'isTeamLeader' => $user->isVolunteerTeamLeaderEnabled(),
             'isStaff' => !$user->isEditSelfExclusive(),
         ];
     }

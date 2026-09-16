@@ -45,6 +45,16 @@ class User extends BaseUser
      */
     private static array $volunteerCoordinatorMemo = [];
 
+    /**
+     * Per-request memo for isVolunteerTeamLeaderEnabled(), keyed by person id.
+     *
+     * Static for exactly the reason above: never serialized into the session, so
+     * it cannot outlive the request that computed it (#9867).
+     *
+     * @var array<int, bool>
+     */
+    private static array $volunteerTeamLeaderMemo = [];
+
     public function getId()
     {
         return $this->getPersonId();
@@ -334,6 +344,15 @@ class User extends BaseUser
      * VolunteerCoordinatorRoleAuthMiddleware and Menu::buildMenuItems() ask for it —
      * menu visibility must mirror the route gate exactly (design §3.5, A11), so both
      * must call this single predicate rather than re-deriving the rule.
+     *
+     * **Still false for a self-service (EditSelf-exclusive) account**, and that is
+     * load-bearing. The Member Portal's revision of D14 (#9867) made scopes count
+     * for those accounts, so `VolunteerAuthorizationService::loadScopes()` now
+     * returns their grants — but the coordinator tier stays a staff tier: the
+     * short-circuit below is what keeps the admin dashboard and the sidebar's
+     * Ministries heading closed to a member login. A self-service account that
+     * leads a team is answered by isVolunteerTeamLeaderEnabled() instead, and
+     * exercises it in the portal.
      */
     public function isVolunteerCoordinatorEnabled(): bool
     {
@@ -353,6 +372,45 @@ class User extends BaseUser
         }
 
         return self::$volunteerCoordinatorMemo[$key] = (new VolunteerAuthorizationService())->hasAnyScope($this);
+    }
+
+    /**
+     * Does this person lead at least one volunteer team (#9867, Member Portal P17)?
+     *
+     * The Member Portal's revision of Volunteer v2 decision D14: a team leader may
+     * hold an ordinary member login. Tony Smith leads the Wednesday Evening team of
+     * Children's Ministry with a self-service account, and must be able to run his
+     * team — from the Member Portal (MP7), never from the admin shell.
+     *
+     * So this predicate deliberately does NOT short-circuit on
+     * `isEditSelfExclusive()`, unlike every module permission getter above it. It
+     * is not a module permission: it opens no admin page and grants no authority
+     * by itself. It answers one question — "is there a `team` grant for this
+     * person" — and `VolunteerAuthorizationService::canManageTeam()` is still what
+     * decides any individual action.
+     *
+     * A ministry coordinator, a global manager and an administrator are all
+     * `false` here even though they may manage every team under them: leading a
+     * team is an explicit `team` scope row, not something inherited downwards
+     * (volunteer design §4.4). Callers wanting "may this user manage team T" want
+     * `canManageTeam()`.
+     *
+     * Memoised per request in a static, for the same reason
+     * isVolunteerCoordinatorEnabled() is.
+     */
+    public function isVolunteerTeamLeaderEnabled(): bool
+    {
+        $key = (int) $this->getId();
+        if (array_key_exists($key, self::$volunteerTeamLeaderMemo)) {
+            return self::$volunteerTeamLeaderMemo[$key];
+        }
+
+        if (!self::isVolunteerV2Enabled()) {
+            return self::$volunteerTeamLeaderMemo[$key] = false;
+        }
+
+        return self::$volunteerTeamLeaderMemo[$key] =
+            (new VolunteerAuthorizationService())->getOwnTeamScopeIds($this) !== [];
     }
 
     /**

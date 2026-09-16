@@ -234,6 +234,22 @@ class VolunteerAuthorizationService
     }
 
     /**
+     * The teams this user leads by an explicit `team` grant of their own.
+     *
+     * Deliberately NOT `getManagedTeamIds()`, which unions in every team under a
+     * managed ministry: this answers "does this person lead a team", which is what
+     * `User::isVolunteerTeamLeaderEnabled()` and the Member Portal's My Teams page
+     * (MP7) are about. A coordinator or an administrator leads no team by this
+     * definition, and that is correct — they administer the ministry above it.
+     *
+     * @return int[]
+     */
+    public function getOwnTeamScopeIds(User $user): array
+    {
+        return $this->loadScopes($user)['team'];
+    }
+
+    /**
      * The ministries this user may administer, id => name, ordered by name.
      *
      * This is what the sidebar's **Ministries** heading lists: one entry per
@@ -525,10 +541,21 @@ class VolunteerAuthorizationService
     /**
      * The raw grants held by one user, memoised for the request.
      *
-     * Short-circuits to no grants when V2 is switched off or the user is EditSelf-exclusive:
-     * the volunteer persona is never a coordinator (§4.3), and a rolled-back installation
-     * grants nothing. Both checks are cheap and keep every predicate consistent without
-     * repeating themselves.
+     * Short-circuits to no grants when V2 is switched off — a rolled-back
+     * installation grants nothing — and that is now the ONLY short-circuit here.
+     *
+     * **D14 as revised by the Member Portal (P17, #9867).** This method used to
+     * discard every grant held by an EditSelf-exclusive account, on the reasoning
+     * that "the volunteer persona is never a coordinator". The first half of that
+     * is still true and is still enforced — by
+     * `User::isVolunteerCoordinatorEnabled()`, which has its own
+     * `isEditSelfExclusive()` short-circuit, so the admin dashboard and the
+     * sidebar's Ministries heading stay shut to a self-service login. The second
+     * half was wrong: a team leader with a member login (Member Portal UC2) is a
+     * real person in a real church, and silently dropping their `team` grant made
+     * the scope row a lie — an administrator could grant it, see it listed, and
+     * have it do nothing. Scopes now load for every account; what an account may
+     * *reach* with them is decided where it always was, one layer up.
      *
      * @return array{ministry: int[], team: int[]}
      */
@@ -540,7 +567,7 @@ class VolunteerAuthorizationService
             return $this->scopeCache[$personId];
         }
 
-        if (!User::isVolunteerV2Enabled() || $user->isEditSelfExclusive()) {
+        if (!User::isVolunteerV2Enabled()) {
             return $this->scopeCache[$personId] = ['ministry' => [], 'team' => []];
         }
 

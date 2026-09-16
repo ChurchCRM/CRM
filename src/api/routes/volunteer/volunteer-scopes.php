@@ -228,6 +228,8 @@ function deleteVolunteerScope(Request $request, Response $response, array $args)
  *         @OA\JsonContent(
  *             @OA\Property(property="isAdmin", type="boolean"),
  *             @OA\Property(property="isGlobalManager", type="boolean"),
+ *             @OA\Property(property="isCoordinator", type="boolean"),
+ *             @OA\Property(property="isTeamLeader", type="boolean"),
  *             @OA\Property(property="managedMinistryIds", type="array", @OA\Items(type="integer")),
  *             @OA\Property(property="managedTeamIds", type="array", @OA\Items(type="integer"))
  *         )
@@ -245,9 +247,23 @@ function getMyVolunteerPermissions(Request $request, Response $response): Respon
 
     // Explicit grants only — an administrator or global manager holds none, which is why
     // isGlobalManager is reported separately rather than being folded into the id lists.
+    //
+    // `isCoordinator` and `isTeamLeader` (#9867) are the two tier answers a client
+    // cannot derive from the id lists, and they differ for exactly the persona the
+    // Member Portal's revision of D14 is about:
+    //
+    //   - a SELF-SERVICE login holding a `team` grant is `isTeamLeader: true` and
+    //     `isCoordinator: false`. It leads its team from the Member Portal and the
+    //     admin dashboard stays shut to it;
+    //   - a coordinator or manager is `isCoordinator: true` and `isTeamLeader: false`:
+    //     they administer the ministry above the team rather than leading one
+    //     (volunteer design §4.4), so `managedTeamIds` can be long while
+    //     `isTeamLeader` is false.
     return SlimUtils::renderJSON($response, [
         'isAdmin' => $currentUser->isAdmin(),
         'isGlobalManager' => $authz->isGlobalManager($currentUser),
+        'isCoordinator' => $currentUser->isVolunteerCoordinatorEnabled(),
+        'isTeamLeader' => $currentUser->isVolunteerTeamLeaderEnabled(),
         'managedMinistryIds' => $authz->getManagedMinistryIds($currentUser),
         'managedTeamIds' => $authz->getManagedTeamIds($currentUser),
     ]);
