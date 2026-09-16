@@ -1,9 +1,14 @@
 {% extends "layout.html.twig" %}
 
 {#
-  The member's landing page. MP2 ships the welcome card and a clearly-marked
-  placeholder for each section a later issue fills in, so a church that installs
-  this release sees what is coming rather than an empty page.
+  The member's landing page. The welcome card, the church calendar card (MP5,
+  #9866 — the next three events from the calendars the church shares), and a
+  clearly-marked placeholder for each section a later issue fills in, so a
+  church that installs this release sees what is coming rather than an empty
+  page.
+
+  Variables: `upcomingEvents` ({title, when, calendarName} for each of the next
+  three events, already formatted) and `hasVisibleCalendars`.
 #}
 
 {% block content %}
@@ -20,6 +25,33 @@
     </section>
 
     <div class="portal-card-grid">
+        {% if portal.showCalendar %}
+        <section class="portal-card portal-card-calendar">
+            <h2 class="portal-card-title">
+                <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+                <span>{{ gettext('Church calendar') }}</span>
+            </h2>
+            {% if not hasVisibleCalendars %}
+            <p class="portal-card-text">{{ gettext('No calendar has been shared with members yet.') }}</p>
+            {% elseif upcomingEvents is empty %}
+            <p class="portal-card-text">{{ gettext('Nothing is on the calendar just now.') }}</p>
+            {% else %}
+            <ul class="portal-upcoming-list">
+                {% for event in upcomingEvents %}
+                <li class="portal-upcoming-item">
+                    <span class="portal-upcoming-title">{{ event.title }}</span>
+                    <span class="portal-upcoming-when">{{ event.when }}</span>
+                    {% if event.calendarName %}
+                    <span class="portal-upcoming-calendar">{{ event.calendarName }}</span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <a class="portal-card-link" href="{{ url('/portal/calendar') }}">{{ gettext('See the whole calendar') }}</a>
+        </section>
+        {% endif %}
+
         {#
           The section switches on Admin → Member Portal (#9864) decide whether
           the calendar and volunteering sections belong on the page at all.
@@ -27,7 +59,6 @@
           page can filter the same way.
         #}
         {% set placeholders = [
-            { 'id': 'calendar', 'icon': 'fa-solid fa-calendar-days', 'title': gettext('Church calendar'), 'shown': portal.showCalendar },
             { 'id': 'volunteer', 'icon': 'fa-solid fa-handshake-angle', 'title': gettext('My volunteering'), 'shown': portal.showVolunteer },
             { 'id': 'family', 'icon': 'fa-solid fa-people-roof', 'title': gettext('My family'), 'shown': true },
             { 'id': 'profile', 'icon': 'fa-solid fa-user', 'title': gettext('My profile'), 'shown': true }

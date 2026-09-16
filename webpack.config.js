@@ -114,6 +114,9 @@ module.exports = {
     // Member Portal: its own CSS/JS bundle, never part of the RTL-flipped core
     // bundle, so a church theme is not flipped twice (design §3.5).
     portal: './webpack/portal/portal.ts',
+    // Member Portal calendar (#9866): FullCalendar for /portal/calendar. Its own
+    // entry so the tiny `portal` bundle every page loads stays tiny.
+    'portal-calendar': './webpack/portal/portal-calendar.ts',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
   },
