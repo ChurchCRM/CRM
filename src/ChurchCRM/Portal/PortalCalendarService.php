@@ -155,8 +155,9 @@ class PortalCalendarService
             $key = self::key($type, $id);
             if (!isset($known[$key])) {
                 throw new \InvalidArgumentException(sprintf(
-                    gettext('There is no %1$s calendar with id %2$d.'),
-                    $type,
+                    $type === self::TYPE_SYSTEM
+                        ? gettext('There is no system calendar with id %d.')
+                        : gettext('There is no church calendar with id %d.'),
                     $id
                 ));
             }
