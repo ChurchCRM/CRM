@@ -5016,14 +5016,6 @@ msgid "Verification URL created"
 msgstr "確認URLが作成されました"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "メール送信エラー"
 
@@ -8406,10 +8398,6 @@ msgstr "パスワードが正常に更新されました。"
 #: 
 msgid "selected family has no coordinates"
 msgstr "選択した家族に座標がありません"
-
-#: 
-msgid "2FA"
-msgstr "二段階認証"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12169,10 +12157,6 @@ msgid "Database dump only (.sql)"
 msgstr "データベースダンプのみ（.sql）"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "日付範囲は1年を超えることはできません"
-
-#: 
 msgid "Destructive Operation"
 msgstr "破壊的な操作"
 
@@ -12767,10 +12751,6 @@ msgstr "このロールリストに対応するミニストリーが見つかり
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "非アクティブ状態は分類リストに対してのみ切り替えできます"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "新しいユーザーには認証情報を含むウェルカムメールが送信されません。パスワードを手動でお知らせいただくか、先にメールを設定してください。"
 
 #: 
 msgid "Option name is required"
@@ -17792,4 +17772,73 @@ msgstr "%s %d のイベントが見つかりませんでした。"
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "別のイベントタイプ、月、または年を選択してみてください。"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "ジオコーディングエラーが発生しました。後でもう一度お試しください"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "住所が不完全です(市区町村、都道府県、郵便番号が不足しています)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "すべての家族にはすでに座標が設定されています。"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "座標の更新に失敗しました"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "家族の座標の更新に失敗しました"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "{{geocoded}}件の家族すべてをジオコーディングしました。マップは最新の状態です。"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}}件の家族をジオコーディングしました。{{failed}}件は解決できませんでした — 詳細は以下をご覧ください。"
+
+#: 
+msgid "Geocoding…"
+msgstr "ジオコーディング中…"
+
+#: 
+msgid "No address on file"
+msgstr "登録されている住所がありません"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "一致するものが見つかりませんでした — 番地、市区町村、郵便番号を確認してください"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "家族を開いて住所を修正してから、もう一度実行してください。"
+
+#: 
+msgid "Set up now"
+msgstr "今すぐ設定"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "2要素認証が必須です。登録まであと%d日です。"
+
+#: 
+msgid "Unknown family"
+msgstr "不明な家族"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "すべての座標を更新"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "すべての家族の座標を更新"
+
+#: 
+msgid "Update Coordinates"
+msgstr "座標を更新"
 

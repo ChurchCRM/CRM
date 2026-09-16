@@ -5051,14 +5051,6 @@ msgid "Verification URL created"
 msgstr "የማረጋገጫ ዩአርኤል ተፈጥሯል "
 
 #: 
-msgid "URL"
-msgstr "URL (አድራሻ)"
-
-#: 
-msgid "PDF"
-msgstr "ፒዲኤፍ"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "ኢሜል የመላክ ስህተት "
 
@@ -8456,10 +8448,6 @@ msgstr "ይለፍ ቃልዎ በተሳካ ሁኔታ ተዘምኗል።"
 #: 
 msgid "selected family has no coordinates"
 msgstr "የተመረጠው ቤተሰብ መጋጠሚያዎች የሉትም"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12221,10 +12209,6 @@ msgid "Database dump only (.sql)"
 msgstr "ዳታቤዝ ብቻ (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "የቀን ክልል ከ1 ዓመት መብለጥ አይችልም"
-
-#: 
 msgid "Destructive Operation"
 msgstr "አጥፊ ተግባር"
 
@@ -12819,10 +12803,6 @@ msgstr "ለዚህ ሚና ዝርዝር አገልግሎት አልተገኘም"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "ንቁ ያልሆነ ሁኔታ ለምደባ ዝርዝር ብቻ ሊቀያየር ይችላል"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "አዲስ አባላት ምስክርነቶቻቸው ያለ ሁሉ ኢሜይል አይቀበሉም። ይለፍ ቃሉን በእጅ ያጋሩ ወይም መጀመሪያ ኢሜይልን ያዋቅሩ።"
 
 #: 
 msgid "Option name is required"
@@ -17850,4 +17830,68 @@ msgstr "ለ%s %d ምንም ዝግጅቶች አልተገኙም።"
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "ሌላ ዝግጅት አይነት፣ ወር ወይም ዓመት ለመምረጥ ሞክሩ።"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "የጂኦኮዲንግ ስህተት ተከስቷል — በኋላ እንደገና ይሞክሩ"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "አድራሻው ያልተሟላ ነው (ከተማ፣ ክልል እና ዚፕ ኮድ ይጎድላል)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "ሁሉም ቤተሰቦች አስቀድሞ መጋጠሚያዎች አሏቸው።"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "መጋጠሚያዎችን ማዘመን አልተሳካም"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "የቤተሰብ መጋጠሚያዎችን ማዘመን አልተሳካም"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "ሁሉንም {{geocoded}} ቤተሰቦች በጂኦኮድ ተሠርተዋል። ካርታው አሁን ወቅታዊ ነው።"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} ቤተሰቦች በጂኦኮድ ተሠርተዋል። {{failed}} ሊፈቱ አልቻሉም — ከታች ዝርዝሩን ይመልከቱ።"
+
+#: 
+msgid "Geocoding…"
+msgstr "በጂኦኮድ በማድረግ ላይ…"
+
+#: 
+msgid "No address on file"
+msgstr "የተመዘገበ አድራሻ የለም"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "ምንም ተመሳሳይ አልተገኘም — የመንገድ አድራሻውን፣ ከተማውን እና ዚፕ ኮዱን ያረጋግጡ"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "አድራሻውን ለማስተካከል ቤተሰቡን ይክፈቱ፣ ከዚያም ይህን እንደገና ያሂዱ።"
+
+#: 
+msgid "Set up now"
+msgstr "አሁን ያዋቅሩ"
+
+#: 
+msgid "Unknown family"
+msgstr "ያልታወቀ ቤተሰብ"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "ሁሉንም መጋጠሚያዎች አዘምን"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "ሁሉንም የቤተሰብ መጋጠሚያዎች አዘምን"
+
+#: 
+msgid "Update Coordinates"
+msgstr "መጋጠሚያዎችን አዘምን"
 
