@@ -392,7 +392,13 @@ class PortalCalendarService
             ->endUse()
             // Keep events that overlap the window: they end after it starts (or
             // never end), and they start before it ends.
-            ->where('events_event.event_end IS NULL OR events_event.event_end >= ?', $from->format('Y-m-d H:i:s'))
+            //
+            // The parentheses are load-bearing. Propel appends this clause with
+            // AND, and `A AND B OR C` binds as `(A AND B) OR C` in SQL, so an
+            // unparenthesised OR here would drop the calendar filter for every
+            // row that matches its right-hand side — i.e. hand a member events
+            // from calendars nobody shared with them.
+            ->where('(events_event.event_end IS NULL OR events_event.event_end >= ?)', $from->format('Y-m-d H:i:s'))
             ->filterByStart($to, Criteria::LESS_THAN)
             ->orderBy(EventTableMap::COL_EVENT_START)
             ->find();
