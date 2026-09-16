@@ -369,9 +369,36 @@ describe("Member Portal — My Teams", () => {
 
             cy.url({ timeout: 10000 }).should("include", `${TEAMS_URL}/${teamLed}/occurrences/`);
             cy.get("#volunteer-occurrence").should("exist");
-            cy.get("#requirements-empty, #requirements-content", { timeout: 15000 }).should("exist");
             cy.get(".portal-breadcrumb").should("contain.text", `${PREFIX} Greeters`);
             cy.get("#sidebar").should("not.exist");
+
+            // A new schedule starts with every position needed once, so this date
+            // has a Door card with an Assign control on it.
+            cy.get("#requirements-content .volunteer-assign-btn", { timeout: 15000 })
+                .first()
+                .click();
+
+            cy.get("#volunteer-assign-modal", { timeout: 10000 }).should("be.visible");
+            // The picker is a TomSelect over a hidden `<select>`; the bundle reads the
+            // underlying control's value, so setting it is what the coordinator's click
+            // ends up doing.
+            cy.get("#assign-person-select option", { timeout: 10000 }).should("have.length.greaterThan", 1);
+            cy.get("#assign-person-select").select(String(POOL_MEMBER), { force: true });
+            cy.get("#assign-save").click();
+
+            cy.get("#requirements-content", { timeout: 15000 }).should("contain.text", "Herminia");
+
+            cy.then(() => {
+                dbOk(
+                    `SELECT vasg.vasg_ID FROM volunteer_assignment_vasg vasg
+                       JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
+                       JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vocc.vocc_vsch_ID
+                      WHERE vsch.vsch_vtem_ID = ? AND vasg.vasg_per_ID = ?`,
+                    [teamLed, POOL_MEMBER],
+                ).then((rows) => {
+                    expect(rows.length, "the assignment was written").to.eq(1);
+                });
+            });
         });
     });
 

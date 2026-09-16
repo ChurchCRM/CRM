@@ -32,6 +32,29 @@
     margin-block-end: var(--portal-gap);
 }
 
+// The two facts on a team card — how many positions, and when it next meets.
+// A plain stacked list rather than `.portal-detail-list`: that one is a
+// two-column grid meant for a full-width page, and inside a card of this width
+// it wraps every value onto three lines.
+.portal-team-facts {
+    list-style: none;
+    margin: 0 0 var(--portal-gap);
+    padding: 0;
+
+    li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding-block: 0.15rem;
+    }
+
+    i {
+        inline-size: 1rem;
+        text-align: center;
+        color: var(--tblr-secondary-color, inherit);
+    }
+}
+
 // One team on the index. `.portal-card` already supplies the card; this only
 // keeps the "Open this team" link at the bottom however tall the cards are, so a
 // row of them lines up.

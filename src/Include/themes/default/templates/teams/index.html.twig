@@ -38,19 +38,25 @@
             <p class="portal-placeholder-badge">{{ gettext('Inactive') }}</p>
             {% endif %}
 
-            <dl class="portal-detail-list">
-                <dt>{{ gettext('Positions') }}</dt>
-                <dd>{{ ngettext('%s position', '%s positions', team.positionCount)|format(team.positionCount) }}</dd>
-
-                <dt>{{ gettext('Next date') }}</dt>
-                <dd>
+            {#
+              Two short facts, stacked — deliberately NOT `.portal-detail-list`,
+              whose two-column grid is for a full-width page and wraps every value
+              onto three lines inside a card of this width.
+            #}
+            <ul class="portal-team-facts">
+                <li>
+                    <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                    {{ ngettext('%s position', '%s positions', team.positionCount)|format(team.positionCount) }}
+                </li>
+                <li>
+                    <i class="fa-solid fa-calendar-day" aria-hidden="true"></i>
                     {% if team.nextOccurrence %}
-                    {{ team.nextOccurrence.date }}
+                    {{ gettext('Next on %s')|format(team.nextOccurrence.date) }}
                     {% else %}
                     {{ gettext('Nothing scheduled yet') }}
                     {% endif %}
-                </dd>
-            </dl>
+                </li>
+            </ul>
 
             <a class="portal-card-link" href="{{ team.url }}">{{ gettext('Open this team') }}</a>
         </section>
