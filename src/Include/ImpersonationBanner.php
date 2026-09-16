@@ -6,11 +6,12 @@
  * Rendered immediately after the opening <body> tag by BOTH header layouts —
  * Include/Header.php (every legacy `.php` page and every Slim MVC page,
  * including /v2) and Include/HeaderNotLoggedIn.php (the auth-flow pages, the
- * 404s, the Bootstrapper error page and, crucially, /external/limited-access,
- * where an EditSelf-exclusive user is confined). Keeping it in a single include
- * is deliberate: a second copy would drift, and a page without the banner would
- * let an administrator forget they are acting as someone else — or strand them
- * with no way back.
+ * 404s and the Bootstrapper error page) — and, since MP8 (#9869), captured by
+ * ChurchCRM\Portal\PortalExtension and printed by the Member Portal's Twig
+ * layout, which is where an EditSelf-exclusive user is confined (#9863).
+ * Keeping it in a single include is deliberate: a second copy would drift, and
+ * a page without the banner would let an administrator forget they are acting
+ * as someone else — or strand them with no way back.
  *
  * Nothing is emitted unless there is an authenticated session AND that session
  * carries a masquerade record, so the include is inert on anonymous pages.

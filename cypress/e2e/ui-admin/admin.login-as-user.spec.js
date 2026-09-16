@@ -14,8 +14,9 @@ const TARGET_USER_NAME = "Tony Campbell";
 const ADMIN_USER_ID = 1;
 
 // usr_ID 99 — non-admin with usr_EditSelf=1, i.e. EditSelf-exclusive. Such a
-// user is confined to /external/limited-access, which renders the *other* header
-// layout (HeaderNotLoggedIn.php).
+// user is confined to the Member Portal (#9863), which renders neither admin
+// header layout: the banner reaches it through the portal's own Twig layout
+// (#9869).
 const SELF_SERVICE_USER_ID = 99;
 const PEER_ADMIN_USER_ID = 906; // locale-admin@churchcrm.test, usr_Admin = 1
 const SELF_SERVICE_USER_NAME = "Amanda Black";
@@ -126,11 +127,12 @@ describe("Admin Login as User (masquerade)", () => {
         cy.url().should("not.include", "/session/begin");
     });
 
-    // Regression: an EditSelf-exclusive target is redirected straight to
-    // /external/limited-access, which renders HeaderNotLoggedIn.php rather than
-    // Header.php. The banner must follow the session onto that layout too,
-    // otherwise the administrator has no visible way back.
-    it("shows the banner on the limited-access page for a self-service-only user", () => {
+    // Regression: an EditSelf-exclusive target lands in the Member Portal, which
+    // renders neither Header.php nor HeaderNotLoggedIn.php. The banner must follow
+    // the session onto the portal's own layout too (MP8, #9869), otherwise the
+    // administrator has no visible way back — and the portal's "you are viewing
+    // this as yourself" staff bar must not claim otherwise.
+    it("shows the banner in the Member Portal for a self-service-only user", () => {
         cy.visit(`/v2/user/${SELF_SERVICE_USER_ID}`);
         cy.get("#loginAsUser").click();
         cy.get(".bootbox.modal").should(
@@ -139,8 +141,12 @@ describe("Admin Login as User (masquerade)", () => {
         );
         cy.get(".bootbox.modal .btn-warning").click();
 
-        cy.url().should("include", "/external/limited-access");
+        cy.url().should("include", "/portal");
         cy.get("body").should("have.class", "impersonating");
+        cy.get(".portal-home", { timeout: 10000 }).should("exist");
+        // The staff bar would say "You are viewing the Member Portal as yourself",
+        // which during a masquerade is exactly the wrong sentence.
+        cy.get(".portal-staff-bar").should("not.exist");
         cy.get("#impersonationBanner")
             .should("be.visible")
             .and(
@@ -148,7 +154,8 @@ describe("Admin Login as User (masquerade)", () => {
                 `You are logged in as ${SELF_SERVICE_USER_NAME}. Actions are recorded as them.`,
             );
 
-        // The banner's icon is the only exit on this layout — it has no user menu.
+        // The banner's icon is the only exit on this layout — the portal has no
+        // admin user menu.
         cy.get("#impersonationExit").should("be.visible").click();
         cy.url().should("include", `/v2/user/${SELF_SERVICE_USER_ID}`);
         cy.get("#impersonationBanner").should("not.exist");
