@@ -1,26 +1,26 @@
 {
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} perc van hátra",
+    "other": "{{count}} perc van hátra"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} családot nem sikerült geokódolni",
+    "other": "{{count}} családot nem sikerült geokódolni"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} másodperce aktív",
+    "other": "{{count}} másodperce aktív"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Megerősítő e-maileket fog küldeni {{count}} családnak.",
+    "other": "Megerősítő e-maileket fog küldeni {{count}} családnak."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} családnak nincs rögzített e-mail címe, ezért ki lesznek hagyva",
+    "other": "{{count}} családnak nincs rögzített e-mail címe, ezért ki lesznek hagyva"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…és még {{count}} további, amely itt nincs felsorolva.",
+    "other": "…és még {{count}} további, amely itt nincs felsorolva."
   }
 }
