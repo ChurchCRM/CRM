@@ -27,6 +27,9 @@ const MEMBER_PASSWORD = "changeme";
 
 const adminKey = () => Cypress.env("admin.api.key");
 
+/** Stashed in `before` and restored in `after` — see the comment there. */
+let originalVolunteerVersion = "v1";
+
 /*
  * NOTE: every x-api-key request below replaces the browser session cookie with
  * an API-token session, so a UI step that follows one has to re-establish the
@@ -74,11 +77,27 @@ describe("Admin → Member Portal page", () => {
         );
     });
 
+    before(() => {
+        // Two tests below switch the volunteer rollout flag to `v2` to make the
+        // volunteering card real. Left on, it retires the V1 opportunity editor by
+        // design (#9704), and `admin.people` and
+        // `admin.volunteer-opportunity-editor` then fail later in the suite looking
+        // for a page that quietly redirected away. Stash it and put it back (#9869).
+        cy.request({
+            url: "/admin/api/system/config/sVolunteerVersion",
+            headers: { "x-api-key": adminKey() },
+            failOnStatusCode: false,
+        }).then((resp) => {
+            originalVolunteerVersion = resp.body.value ?? resp.body.data ?? "v1";
+        });
+    });
+
     after(() => {
         activateTheme("default");
         setConfig("bPortalDeveloperMode", "0");
         setConfig("bPortalShowCalendar", "1");
         setConfig("bPortalShowVolunteer", "1");
+        setConfig("sVolunteerVersion", originalVolunteerVersion);
         cy.exec(`rm -rf ${GOOD_DIR} ${BROKEN_DIR}`, { failOnNonZeroExit: false });
     });
 
