@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} परिवार की जियोकोडिंग नहीं हो सकी",
+    "other": "{{count}} परिवारों की जियोकोडिंग नहीं हो सकी"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} सेकंड से सक्रिय",
+    "other": "{{count}} सेकंड से सक्रिय"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "आप {{count}} परिवार को पुष्टिकरण ईमेल भेजने वाले हैं।",
+    "other": "आप {{count}} परिवारों को पुष्टिकरण ईमेल भेजने वाले हैं।"
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} परिवार के पास रिकॉर्ड में कोई ईमेल पता नहीं है और उसे छोड़ दिया जाएगा",
+    "other": "{{count}} परिवारों के पास रिकॉर्ड में कोई ईमेल पता नहीं है और उन्हें छोड़ दिया जाएगा"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…और {{count}} अन्य यहाँ सूचीबद्ध नहीं है।",
+    "other": "…और {{count}} अन्य यहाँ सूचीबद्ध नहीं हैं।"
   }
 }

@@ -1,18 +1,18 @@
 {
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "已啟用 {{count}} 秒",
+    "other": "已啟用 {{count}} 秒"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "您即將傳送確認電子郵件給 {{count}} 個家庭。",
+    "other": "您即將傳送確認電子郵件給 {{count}} 個家庭。"
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 個家庭沒有留存電子郵件地址，將會被略過",
+    "other": "{{count}} 個家庭沒有留存電子郵件地址，將會被略過"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…以及另外 {{count}} 個未在此列出。",
+    "other": "…以及另外 {{count}} 個未在此列出。"
   }
 }
