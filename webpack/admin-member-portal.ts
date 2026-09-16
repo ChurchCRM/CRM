@@ -13,12 +13,11 @@
  *      the active theme alone;
  *   4. a refresh of the statistics numbers when that tab is opened.
  *
- * Every user-visible string goes through i18next, and i18next is only
- * populated once the locale loader has run, so the strings are resolved inside
- * the handlers rather than at module load.
+ * Every user-visible string goes through i18next — the *global* instance the
+ * locale loader initialises, never a bundled copy, which would be empty — and
+ * is resolved inside the handlers, because i18next is only populated once the
+ * locale loader has run.
  */
-import i18next from "i18next";
-
 interface ThemeFinding {
   file: string;
   line: number;
@@ -50,6 +49,19 @@ const STATUS_BADGE_ID = "portalThemeStatusBadge";
 
 const root = (): string => window.CRM?.root ?? "";
 
+/**
+ * Translate through the global i18next the locale loader set up. A bundled
+ * `import i18next` would be a second, never-initialised instance whose `t()`
+ * returns an empty string, so every label on the page would render blank.
+ */
+function t(key: string): string {
+  if (typeof i18next === "undefined" || typeof i18next.t !== "function") {
+    return key;
+  }
+  const translated = i18next.t(key);
+  return translated === undefined || translated === "" ? key : translated;
+}
+
 function escapeHtml(value: string): string {
   const div = document.createElement("div");
   div.textContent = value;
@@ -59,12 +71,12 @@ function escapeHtml(value: string): string {
 /** Class, icon and label for a validation summary. */
 function statusPresentation(status: string): { cssClass: string; icon: string; label: string } {
   if (status === "error") {
-    return { cssClass: "bg-danger", icon: "fa-circle-xmark", label: i18next.t("Errors") };
+    return { cssClass: "bg-danger", icon: "fa-circle-xmark", label: t("Errors") };
   }
   if (status === "warning") {
-    return { cssClass: "bg-warning", icon: "fa-triangle-exclamation", label: i18next.t("Warnings") };
+    return { cssClass: "bg-warning", icon: "fa-triangle-exclamation", label: t("Warnings") };
   }
-  return { cssClass: "bg-success", icon: "fa-circle-check", label: i18next.t("Valid") };
+  return { cssClass: "bg-success", icon: "fa-circle-check", label: t("Valid") };
 }
 
 function paintStatusBadge(status: string): void {
@@ -89,7 +101,7 @@ function paintFindings(response: ThemeResponse): void {
 
   if (response.findings.length === 0) {
     container.innerHTML = `<div class="alert alert-success mb-0"><i class="fa-solid fa-circle-check me-2"></i>${escapeHtml(
-      i18next.t("This theme has no problems."),
+      t("This theme has no problems."),
     )}</div>`;
     return;
   }
@@ -97,16 +109,16 @@ function paintFindings(response: ThemeResponse): void {
   const rows = response.findings
     .map((finding) => {
       const badgeClass = finding.level === "error" ? "bg-danger" : "bg-warning";
-      const badgeLabel = finding.level === "error" ? i18next.t("Error") : i18next.t("Warning");
+      const badgeLabel = finding.level === "error" ? t("Error") : t("Warning");
+      // A file:line pair is the same in every language — no translation needed.
       const where = finding.file
-        ? `<code>${escapeHtml(finding.file)}</code>${finding.line > 0 ? ` <span class="text-secondary">${escapeHtml(i18next.t("line {{line}}", { line: finding.line }))}</span>` : ""} `
+        ? `<code>${escapeHtml(finding.file)}${finding.line > 0 ? `:${finding.line}` : ""}</code> `
         : "";
       return `<li class="py-1"><span class="badge ${badgeClass} me-2">${escapeHtml(badgeLabel)}</span>${where}<span>${escapeHtml(finding.message)}</span></li>`;
     })
     .join("");
 
-  const heading =
-    response.activated === false ? i18next.t("This theme cannot be activated") : i18next.t("What the check found");
+  const heading = response.activated === false ? t("This theme cannot be activated") : t("What the check found");
 
   container.innerHTML = `
     <div class="card">
@@ -134,7 +146,7 @@ async function checkTheme(name: string): Promise<void> {
   }
   const response = await fetch(`${root()}/admin/api/member-portal/theme/${encodeURIComponent(name)}/validation`);
   if (!response.ok) {
-    window.CRM?.notify?.(i18next.t("That theme could not be checked."), { type: "danger" });
+    window.CRM?.notify?.(t("That theme could not be checked."), { type: "danger" });
     return;
   }
   const body: ThemeResponse = await response.json();
@@ -166,18 +178,18 @@ async function activateTheme(name: string): Promise<void> {
   if (response.status === 409 && body) {
     paintStatusBadge("error");
     paintFindings({ ...body, activated: false });
-    window.CRM?.notify?.(i18next.t("That theme has errors, so it was not activated."), { type: "danger" });
+    window.CRM?.notify?.(t("That theme has errors, so it was not activated."), { type: "danger" });
     return;
   }
 
   if (!response.ok || !body) {
-    window.CRM?.notify?.(i18next.t("That theme could not be activated."), { type: "danger" });
+    window.CRM?.notify?.(t("That theme could not be activated."), { type: "danger" });
     return;
   }
 
   paintStatusBadge(body.status);
   paintFindings(body);
-  window.CRM?.notify?.(i18next.t("The Member Portal theme was changed."), { type: "success" });
+  window.CRM?.notify?.(t("The Member Portal theme was changed."), { type: "success" });
   window.setTimeout(() => window.location.reload(), 1500);
 }
 
@@ -248,7 +260,7 @@ function wireSettingsPanel(): void {
 
   panel.init({
     container: SETTINGS_CONTAINER,
-    title: i18next.t("Portal settings"),
+    title: t("Portal settings"),
     icon: "fa-solid fa-sliders",
     headerClass: "bg-info-lt",
     // These four items deliberately carry no System Settings category, so a
@@ -258,26 +270,26 @@ function wireSettingsPanel(): void {
       {
         name: "bPortalShowCalendar",
         type: "boolean",
-        label: i18next.t("Show the church calendar"),
-        tooltip: i18next.t("Show the church calendar section in the Member Portal."),
+        label: t("Show the church calendar"),
+        tooltip: t("Show the church calendar section in the Member Portal."),
       },
       {
         name: "bPortalShowVolunteer",
         type: "boolean",
-        label: i18next.t("Show volunteering"),
-        tooltip: i18next.t("Show the volunteering and team sections in the Member Portal."),
+        label: t("Show volunteering"),
+        tooltip: t("Show the volunteering and team sections in the Member Portal."),
       },
       {
         name: "bPortalAllowBirthdayEdit",
         type: "boolean",
-        label: i18next.t("Let members edit birthdays"),
-        tooltip: i18next.t("Allow members to change their own and their family members' birthdays."),
+        label: t("Let members edit birthdays"),
+        tooltip: t("Allow members to change their own and their family members' birthdays."),
       },
       {
         name: "bPortalDeveloperMode",
         type: "boolean",
-        label: i18next.t("Developer mode"),
-        tooltip: i18next.t(
+        label: t("Developer mode"),
+        tooltip: t(
           "Turns off the portal template cache and prints the name of each template in an HTML comment. For theme designers; leave this off in normal use.",
         ),
       },
