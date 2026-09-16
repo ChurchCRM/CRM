@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "No se pudo geocodificar {{count}} familia",
+    "other": "No se pudieron geocodificar {{count}} familias"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Activo durante {{count}} segundo",
+    "other": "Activo durante {{count}} segundos"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Está a punto de enviar correos de confirmación a {{count}} familia.",
+    "other": "Está a punto de enviar correos de confirmación a {{count}} familias."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familia no tiene una dirección de correo electrónico registrada y será omitida",
+    "other": "{{count}} familias no tienen una dirección de correo electrónico registrada y serán omitidas"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…y {{count}} más no aparece aquí.",
+    "other": "…y {{count}} más no aparecen aquí."
   }
 }
