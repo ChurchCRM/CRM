@@ -269,6 +269,18 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
+     * Row-based counterpart of {@see self::isSecondAddressMailing()}: the flag is
+     * set and there is a second address to send mail to.
+     */
+    public static function rowSecondAddressIsMailing(array $row): bool
+    {
+        $second = self::secondaryAddressPartsFromRow($row);
+        $hasSecond = $second['Address1'] !== '' || $second['City'] !== '';
+
+        return $hasSecond && (int) ($row['fam_SecondIsMailing'] ?? 0) === 1;
+    }
+
+    /**
      * Row-based counterpart of {@see self::hasDistinctMailingAddress()}.
      */
     public static function rowHasDistinctMailingAddress(array $row): bool

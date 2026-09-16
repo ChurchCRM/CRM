@@ -98,6 +98,81 @@ describe("CSV Export Page", () => {
         });
     });
 
+    it("exports the second address and mailing flag for each member of the family", () => {
+        // The export reads fam_Second* from the row its own query already joined
+        // (review on #9801: no per-person family lookup), so the values must
+        // still come out right for every member of one family.
+        const stamp = String(Cypress._.random(0, 1e6));
+        const familyName = "CsvSecondAddr" + stamp;
+        const members = ["Exporta" + stamp, "Exportb" + stamp];
+
+        cy.visit("/FamilyEditor.php");
+        cy.contains("Family Info");
+        cy.get("#FamilyName").type(familyName);
+        cy.get('input[name="Address1"]').type("11 Primary Street");
+        cy.get('input[name="City"]').clear().type("Springfield");
+        cy.get('select[name="State"]').select("IL", { force: true });
+        cy.get("#secondAddressToggle").click();
+        cy.get("#SecondAddress1").type("PO Box 1204");
+        cy.get("#SecondCity").type("Othertown");
+        cy.get("#SecondState").select("IL", { force: true });
+        cy.get("#SecondZip").type("62998");
+        cy.get("#SecondIsMailing").should("not.be.disabled").check();
+        cy.get('input[name="FirstName1"]').type(members[0]);
+        cy.get('select[name="Classification1"]').select("1", { force: true });
+        cy.get('input[name="FirstName2"]').type(members[1]);
+        cy.get('select[name="Classification2"]').select("1", { force: true });
+        cy.get('button[name="FamilySubmit"]').click();
+        cy.location("pathname").should("include", "/people/family/");
+
+        cy.location("pathname").then((pathname) => {
+            const familyId = Number(pathname.split("/").pop());
+
+            // The export page always posts the four "to" dates as today; when a
+            // request leaves one out, CSVCreateFile.php adds "<= NULL" for it and
+            // exports nobody, so send them the way the form does.
+            const today = new Date().toISOString().slice(0, 10);
+
+            cy.request({
+                method: "POST",
+                url: "/CSVCreateFile.php",
+                form: true,
+                body: {
+                    FirstName: 1,
+                    Address1: 1,
+                    City: 1,
+                    SecondAddress: 1,
+                    Source: "all",
+                    Gender: 0,
+                    MembershipDate2: today,
+                    BirthDate2: today,
+                    AnniversaryDate2: today,
+                    EnterDate2: today,
+                    Format: "Default",
+                    Submit: "Create File",
+                },
+            }).then((response) => {
+                expect(response.status).to.eq(200);
+                const rows = response.body
+                    .split("\n")
+                    .filter((line) => members.some((name) => line.includes(name)));
+                expect(rows, "one row per member").to.have.length(members.length);
+                rows.forEach((row) => {
+                    expect(row).to.include("PO Box 1204");
+                    expect(row).to.include("Othertown");
+                    expect(row).to.include("62998");
+                    expect(row).to.include(",Yes");
+                });
+            });
+
+            cy.request({
+                method: "DELETE",
+                url: `/api/family/${familyId}?deleteMembers=true`,
+                failOnStatusCode: false,
+            });
+        });
+    });
+
     it("should allow toggling field pills on and off", () => {
         cy.contains(".form-selectgroup-label", "Title").click();
         cy.get('.form-selectgroup-input[name="Title"]').should("be.checked");
