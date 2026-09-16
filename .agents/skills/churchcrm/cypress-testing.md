@@ -2329,3 +2329,19 @@ cy.get("select#State").next(".ts-wrapper").find(".ts-dropdown .option")
 ```
 
 Assert the **count**, not just that the dropdown opened — a rendered count of exactly 50 is the signature of the `maxOptions` cap (see the frontend-development skill). Derive `expected` from the API the select is populated from (`/api/public/data/countries`) rather than hardcoding it, so the test does not go stale when the data changes.
+
+## Gotcha: A Family Member Cannot Be Given Their Own Address From a Test <!-- learned: 2026-09-16 -->
+
+`PersonEditor.php` renders the Address card only for unaffiliated people (`$iFamily === 0`); for a member of a family it emits hidden inputs that re-post whatever the person already has. No `/api/person/{id}` route writes address columns either. So a spec cannot exercise "person address wins over family address" for a household member through the UI or the API — a person created through `FamilyEditor.php` (`FirstName1`, `Classification1`) has **no** address of their own, which is the shape to use when a report or label must fall back to the family address (see `standard.cart-labels.spec.js`, #9873).
+
+```js
+// Family address lives on the family; the member created here has none.
+cy.visit("/FamilyEditor.php");
+cy.get("#FamilyName").type(name);
+cy.get('input[name="Address1"]').type("742 Evergreen Terrace");
+cy.get('input[name="FirstName1"]').type("Addressless");
+cy.get('select[name="Classification1"]').select("1", { force: true });
+cy.get('button[name="FamilySubmit"]').click();
+```
+
+**PDF reports with no PDF parser:** ask the same endpoint for `filetype=CSV` where it offers one (`Reports/PDFLabel.php` does) and assert the address text in the body with `cy.request()`; keep the PDF run for status, `application/pdf` and a `%PDF-` prefix.
