@@ -164,7 +164,7 @@
     "other": "Liikaa vastaanottajia sähköpostiohjelmalle ({{count}} > {{max}}). Käytä sen sijaan Kopioi osoitteet -toimintoa."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuutti jäljellä",
+    "other": "{{count}} minuuttia jäljellä"
   }
 }
