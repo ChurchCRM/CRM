@@ -1,18 +1,18 @@
 {
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Hoạt động trong {{count}} giây",
+    "other": "Hoạt động trong {{count}} giây"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Bạn sắp gửi email xác nhận đến {{count}} gia đình.",
+    "other": "Bạn sắp gửi email xác nhận đến {{count}} gia đình."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} gia đình không có địa chỉ email lưu trữ và sẽ bị bỏ qua",
+    "other": "{{count}} gia đình không có địa chỉ email lưu trữ và sẽ bị bỏ qua"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…và {{count}} gia đình khác không được liệt kê ở đây.",
+    "other": "…và {{count}} gia đình khác không được liệt kê ở đây."
   }
 }
