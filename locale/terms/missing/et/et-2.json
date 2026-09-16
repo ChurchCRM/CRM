@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} perekond ei saanud geokodeerida.",
+    "other": "{{count}} perekonda ei saanud geokodeerida."
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktiivne {{count}} sekund",
+    "other": "Aktiivne {{count}} sekundit"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Te kavatsete saata kinnituskirjad {{count}} perekonnale.",
+    "other": "Te kavatsete saata kinnituskirjad {{count}} perekonnale."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} perekonnal puudub toimikus e-posti aadress ja see jäetakse vahele.",
+    "other": "{{count}} perekonnal puudub toimikus e-posti aadress ja need jäetakse vahele."
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…ja veel {{count}} ei ole siin loetletud.",
+    "other": "…ja veel {{count}} ei ole siin loetletud."
   }
 }
