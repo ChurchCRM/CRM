@@ -1495,4 +1495,16 @@ ALTER TABLE `group_grp`
     ADD CONSTRAINT `group_grp_FK_ministry` FOREIGN KEY (`grp_ministry_id`)
     REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
 
+--
+-- Member Portal (#9866 / #9869): the calendars -> volunteer_ministry_vmin ownership link.
+--
+-- Declared here rather than inside the calendars CREATE TABLE because that table is created
+-- long before volunteer_ministry_vmin exists. ON DELETE SET NULL so a cascade can never remove
+-- a church calendar; the ministry-deletion path removes the ministry's own calendar explicitly
+-- instead (design §5.3).
+--
+ALTER TABLE `calendars`
+    ADD CONSTRAINT `calendars_ministry_fk` FOREIGN KEY (`ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
 update version_ver set ver_update_end = now();

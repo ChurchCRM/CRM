@@ -208,6 +208,11 @@ function initCalendar(): void {
       center: "title",
       end: "dayGridMonth,timeGridWeek,listMonth",
     },
+    // FullCalendar 7 hashes its own class names, so its toolbar buttons cannot be
+    // reached from a stylesheet without this. The portal needs to: FullCalendar's
+    // buttons are 34px tall and the responsive guidelines ask for 44px on a page a
+    // member scrolls with a thumb (#9869). Same hook the admin calendar uses.
+    headerToolbarClass: "portal-fc-toolbar",
     // The toolbar's button labels come from FullCalendar's own locale file,
     // which applyFcLocale() loads for the church's language.
     height: "auto",

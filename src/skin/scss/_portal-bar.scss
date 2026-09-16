@@ -3,8 +3,14 @@
 // A staff member inside the portal is there on purpose and needs an obvious way
 // back to the admin area (design P10). The bar deliberately matches the
 // dimensions the masquerade bar (#9843 / #9844) uses — 2.5rem tall, fixed to the
-// top, one exit icon button on the trailing edge — so MP8 can unify the two into
-// one component without any visual change.
+// top, one exit icon button on the trailing edge.
+//
+// MP8 (#9869) put the masquerade bar in the portal too, rendered by the shared
+// include `Include/ImpersonationBanner.php`. That markup was written for the admin
+// bundle and leans on Tabler utilities (`bg-warning-lt`, `btn-warning`) and Tabler
+// variables that `portal.min.css` does not carry, so the second half of this file
+// dresses the same classes in the portal's own tokens. The two bars are never on
+// screen together: the layout hides the staff bar while a masquerade is active.
 //
 // Logical properties only: this file ships in `portal.min.css`, which is never
 // RTL-flipped.
@@ -18,7 +24,10 @@
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    block-size: 2.5rem;
+    // 2.75rem, not the admin bar's 2.5rem: the exit control inside it is a touch
+    // target and the guidelines put the floor at 44px (#9869). Four pixels taller
+    // than the admin shell's bar, which nobody sees side by side.
+    block-size: 2.75rem;
     padding-inline: 0.75rem;
     background-color: var(--portal-accent);
     color: #1f1f1f;
@@ -38,8 +47,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-block-size: 2rem;
-    min-inline-size: 2rem;
+    min-block-size: 44px;
+    min-inline-size: 44px;
     border-radius: 999px;
     color: inherit;
     text-decoration: none;
@@ -53,5 +62,66 @@
 
 // The bar is fixed, so the page below it has to start lower.
 .portal-body-with-bar {
-    padding-block-start: 2.5rem;
+    padding-block-start: 2.75rem;
+}
+
+
+// ── The masquerade bar inside the portal (#9843 markup, #9869 styling) ──────
+
+.impersonation-bar {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 1040;
+    min-block-size: 2.75rem;
+    // Amber rather than the theme accent: a masquerade is a state to notice, and
+    // a church theme recolouring `--portal-accent` must not be able to make the
+    // one warning on the page blend in.
+    background-color: #fde68a;
+    color: #1f1f1f;
+    border-block-end: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 0.875rem;
+}
+
+.impersonation-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-block-size: 2.75rem;
+    padding-inline: 0.75rem;
+}
+
+.impersonation-bar-text {
+    overflow: hidden;
+    font-weight: 500;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+}
+
+.impersonation-bar-actions {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+// The exit control. `btn btn-icon btn-sm btn-warning` means nothing here, so the
+// button is given the 44px touch target the responsive guidelines ask for and a
+// shape that matches the staff bar's exit.
+#impersonationExit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 44px;
+    min-inline-size: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: inherit;
+    cursor: pointer;
+}
+
+#impersonationExit:hover,
+#impersonationExit:focus-visible {
+    background-color: rgba(0, 0, 0, 0.2);
 }

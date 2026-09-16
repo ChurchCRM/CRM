@@ -8,8 +8,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 // The interim "limited access" landing is retired: a self-service login now
-// lands in the Member Portal (#9863, design §2.2). The route stays so links in
-// old emails and bookmarks keep working; MP8 removes the template it replaced.
+// lands in the Member Portal (#9863, design §2.2), and MP8 (#9869) deleted the
+// template this route used to render. The route itself stays — permanently — so
+// links in old emails and bookmarks keep working.
 $app->get('/limited-access', function (Request $request, Response $response): Response {
     return $response
         ->withStatus(302)

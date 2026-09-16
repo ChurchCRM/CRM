@@ -10,8 +10,11 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use Throwable;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\GlobalsInterface;
 use Twig\Markup;
@@ -119,9 +122,11 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 'themeName' => $this->themeName,
                 'locale' => $localeInfo->getLocale(),
                 'isRTL' => $localeInfo->isRTL(),
-                // Masquerade ("Login as User", #9843/#9844) is not on this branch
-                // yet; MP8 wires the banner in. Until then nobody is impersonated.
-                'impersonating' => false,
+                // Masquerade ("Login as User", #9843/#9844). True when an
+                // administrator is acting as this member; the layout then hides the
+                // staff bar — "viewing as yourself" would be a lie — and renders
+                // `portal.impersonationBanner` in its place.
+                'impersonating' => ImpersonationService::isActive(),
                 // Developer mode is the Admin → Member Portal switch
                 // `bPortalDeveloperMode` (#9864): the template cache is off and
                 // PortalTwig prints the template name in an HTML comment.
@@ -146,6 +151,11 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 // blobs the bootstrap and locale-loader scripts need. They are
                 // Markup so autoescape leaves them alone, and the JSON is
                 // encoded with InputUtils::jsonEncodeForScript().
+                // The masquerade banner, rendered by the SAME include both admin
+                // header layouts use (Include/ImpersonationBanner.php) so its markup,
+                // its ids and its wording can never drift between the admin shell and
+                // the portal. Empty when nobody is impersonating.
+                'impersonationBanner' => new Markup($this->renderImpersonationBanner(), 'UTF-8'),
                 'pluginHead' => new Markup(PluginManager::getPluginHeadContent(), 'UTF-8'),
                 'pluginFooter' => new Markup(PluginManager::getPluginFooterContent(), 'UTF-8'),
                 'bootstrapJson' => new Markup($this->getBootstrapJson($localeInfo), 'UTF-8'),
@@ -155,6 +165,40 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 ),
             ],
         ];
+    }
+
+    /**
+     * The masquerade banner's HTML, or '' when nobody is impersonating.
+     *
+     * `Include/ImpersonationBanner.php` echoes its markup and returns early when the
+     * session carries no masquerade, so it is captured rather than called. Rendering
+     * the include instead of re-writing the bar in Twig is the whole point: the exit
+     * form, its CSRF token, its ids and the sentence an administrator reads are
+     * defined once (#9843) and the portal shows exactly what the admin shell shows.
+     *
+     * The portal bundle styles `.impersonation-bar` itself (`_portal-bar.scss`) —
+     * the core stylesheet this markup was written against is not loaded here.
+     */
+    private function renderImpersonationBanner(): string
+    {
+        if (!ImpersonationService::isActive()) {
+            return '';
+        }
+
+        ob_start();
+
+        try {
+            require SystemURLs::getDocumentRoot() . '/Include/ImpersonationBanner.php';
+        } catch (Throwable $e) {
+            ob_end_clean();
+            LoggerUtils::getAppLogger()->error('Could not render the portal masquerade banner', [
+                'error' => $e->getMessage(),
+            ]);
+
+            return '';
+        }
+
+        return (string) ob_get_clean();
     }
 
     /**

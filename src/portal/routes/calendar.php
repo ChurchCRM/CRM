@@ -28,12 +28,18 @@ $calendarHandler = function (Request $request, Response $response): Response {
         throw new HttpNotFoundException($request);
     }
 
+    // Ministries this member runs a team for: their own calendars are marked in the
+    // legend so a team leader can find the one they read every week (design §5.3).
+    $ledMinistryIds = PortalCalendarService::ledMinistryIds();
+
     $calendars = [];
     foreach (PortalCalendarService::listChoices() as $choice) {
         if ($choice['visible']) {
             $calendars[] = [
                 'name' => $choice['name'],
                 'color' => $choice['colors']['background'],
+                'isMine' => $choice['ministryId'] !== null
+                    && in_array($choice['ministryId'], $ledMinistryIds, true),
             ];
         }
     }

@@ -17,9 +17,10 @@ PluginManager::init($pluginsPath);
 $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo object
 
 // Admin masquerade (#9843). This header is used by pages a *logged-in* user can
-// be sent to — most importantly /external/limited-access, where AuthMiddleware
-// and PageInit confine an EditSelf-exclusive user — as well as by pages with no
-// session at all (login, password reset, 404, the Bootstrapper error page). The
+// be sent to — the self-service password and 2FA pages — as well as by pages with
+// no session at all (login, password reset, 404, the Bootstrapper error page). An
+// EditSelf-exclusive user is confined to the Member Portal (#9863), whose own Twig
+// layout renders the same banner include (#9869). The
 // banner must follow the session, so it is rendered here too, guarded by both
 // "a user is authenticated" and "that session is a masquerade" so it can never
 // appear on an anonymous page.

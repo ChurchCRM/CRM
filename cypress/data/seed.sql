@@ -39,11 +39,18 @@ CREATE TABLE `calendars` (
 --
 -- Dumping data for table `calendars`
 --
+-- Calendar 6, "Youth Ministry", used to carry `ministry_id = 1` even though this seed
+-- contains no `volunteer_ministry_vmin` rows at all. That was harmless while the column
+-- had no foreign key; #9869 adds one, and the seed loads with FOREIGN_KEY_CHECKS=0, so
+-- the dangling value survived the load and was then silently nulled the first time a
+-- spec created and deleted a ministry that happened to take id 1. The column is NULL
+-- here now and `standard.calendar.spec.js` builds its own ministry + calendar pair.
+--
 
 LOCK TABLES `calendars` WRITE;
 /*!40000 ALTER TABLE `calendars` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00',NULL),(2,'Private Calendar',NULL,'FFFFFF','0000AA',NULL),(3,'C',NULL,'FA8072','212F3D',NULL),(4,'Ca',NULL,'FA8072','212F3D',NULL),(5,'Ca',NULL,'FA8072','212F3D',NULL),(6,'Youth Ministry',NULL,'FFFFFF','795548',1);
+INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00',NULL),(2,'Private Calendar',NULL,'FFFFFF','0000AA',NULL),(3,'C',NULL,'FA8072','212F3D',NULL),(4,'Ca',NULL,'FA8072','212F3D',NULL),(5,'Ca',NULL,'FA8072','212F3D',NULL),(6,'Youth Ministry',NULL,'FFFFFF','795548',NULL);
 /*!40000 ALTER TABLE `calendars` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -2571,6 +2578,18 @@ ALTER TABLE `events_event`
 --
 ALTER TABLE `group_grp`
     ADD CONSTRAINT `group_grp_FK_ministry` FOREIGN KEY (`grp_ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
+--
+-- Member Portal (#9866 / #9869): the calendars -> volunteer_ministry_vmin ownership link.
+--
+-- Declared here rather than inside the calendars CREATE TABLE because that table is created
+-- long before volunteer_ministry_vmin exists. ON DELETE SET NULL so a cascade can never remove
+-- a church calendar; the ministry-deletion path removes the ministry's own calendar explicitly
+-- instead (design §5.3).
+--
+ALTER TABLE `calendars`
+    ADD CONSTRAINT `calendars_ministry_fk` FOREIGN KEY (`ministry_id`)
     REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

@@ -66,3 +66,19 @@
         margin-block-start: auto;
     }
 }
+
+
+// ── Touch targets on the shared volunteer components (#9869) ────────────────
+//
+// The team page is drawn by the same components as the admin ministry page, where
+// `btn-sm` is a reasonable choice: responsive-design-guidelines.md exempts admin
+// pages from the phone by design. The portal is the opposite case — it is the one
+// part of ChurchCRM a member opens, and they open it on a phone — so every Bootstrap
+// button the components render is brought up to the 44px target here rather than by
+// changing the components and re-styling the admin page with them.
+//
+// Scoped to `.portal-body`, which only the portal layout sets, so nothing in the
+// admin shell can pick this up.
+.portal-body .btn {
+    min-block-size: 44px;
+}

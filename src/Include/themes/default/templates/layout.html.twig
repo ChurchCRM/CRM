@@ -43,11 +43,12 @@
 
     {% block head_extra %}{% endblock %}
 </head>
-<body class="portal-body{% if member.isStaff %} portal-body-with-bar{% endif %}">
+<body class="portal-body{% if member.isStaff or portal.impersonating %} portal-body-with-bar{% endif %}{% if portal.impersonating %} impersonating{% endif %}">
 
-{% if member.isStaff %}
+{% if member.isStaff and not portal.impersonating %}
 {# A staff login is in the portal on purpose and needs an obvious way back
-   (design P10). MP8 replaces this with the shared masquerade bar. #}
+   (design P10). Hidden during a masquerade: "viewing as yourself" is then a
+   lie, and the banner below carries the way out instead. #}
 <div class="portal-staff-bar" role="region" aria-label="{{ gettext('Member Portal notice') }}">
     <span class="portal-staff-bar-text">{{ gettext('You are viewing the Member Portal as yourself.') }}</span>
     <a class="portal-staff-bar-exit" href="{{ url('/v2/dashboard') }}"
@@ -57,9 +58,15 @@
 </div>
 {% endif %}
 
-{# Impersonation banner hook: the masquerade feature (#9843 / #9844) is not on
-   this branch yet. MP8 renders Include/ImpersonationBanner.php here, above the
-   portal shell, when portal.impersonating is true. #}
+{% if portal.impersonating %}
+{# The masquerade banner (#9843), rendered by Include/ImpersonationBanner.php —
+   the same include both admin header layouts use, so an administrator sees the
+   same sentence and the same way back wherever they are. A pre-rendered
+   fragment: print it without |escape and without |raw. A theme overriding this
+   layout MUST keep emitting it, or an administrator acting as a member has no
+   visible way out. #}
+{{ portal.impersonationBanner }}
+{% endif %}
 
 <div class="portal-shell">
     {% block header %}{% include 'partials/header.html.twig' %}{% endblock %}

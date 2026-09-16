@@ -8,9 +8,10 @@
   themselves arrive from GET /api/portal/calendar/events; the legend is
   server-rendered so the colours mean something before the first fetch lands.
 
-  Variables: `calendars` ({name, color} for each calendar switched on),
-  `hasCalendars`, `calendarConfigJson`. A theme overriding this page must keep
-  the ids `portal-calendar` and `portal-calendar-detail`, which the bundle
+  Variables: `calendars` ({name, color, isMine} for each calendar switched on —
+  `isMine` is true for the calendar of a ministry whose team this member leads,
+  #9869), `hasCalendars`, `calendarConfigJson`. A theme overriding this page must
+  keep the ids `portal-calendar` and `portal-calendar-detail`, which the bundle
   looks for, and should keep emitting `calendarConfigJson`.
 #}
 
@@ -33,9 +34,13 @@
     <section class="portal-card portal-calendar-card">
         <ul class="portal-calendar-legend" aria-label="{{ gettext('Calendars') }}">
             {% for calendar in calendars %}
-            <li class="portal-calendar-legend-item">
+            <li class="portal-calendar-legend-item{% if calendar.isMine %} portal-calendar-legend-mine{% endif %}">
                 <span class="portal-calendar-legend-swatch" style="background-color: {{ calendar.color }};" aria-hidden="true"></span>
                 <span class="portal-calendar-legend-name">{{ calendar.name }}</span>
+                {% if calendar.isMine %}
+                {# A team leader's own ministry, marked so it is findable in a long legend. #}
+                <span class="portal-calendar-legend-tag">{{ gettext('You lead this') }}</span>
+                {% endif %}
             </li>
             {% endfor %}
         </ul>

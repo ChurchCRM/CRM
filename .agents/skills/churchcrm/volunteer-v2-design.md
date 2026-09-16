@@ -2032,7 +2032,9 @@ and edit events for their ministry and nothing else — which is exactly D9.
 D14 makes volunteers EditSelf-exclusive users. `AuthMiddleware` currently blocks them:
 
 - **Session branch** (`AuthMiddleware.php:76-85`): EditSelf-exclusive browser requests are redirected
-  to `/external/limited-access`; API requests get `403`. Exempt paths are enumerated in
+  to `/external/limited-access`; API requests get `403`. (Since the Member Portal landed the
+  destination is `/portal/`, and `/external/limited-access` is only a 302 kept for old links —
+  its page was deleted in MP8, #9869.) Exempt paths are enumerated in
   `isAuthFlowExemptPath()` (`:130-137`) — `changepassword`, `manage2fa`, `enroll2fa` — added for
   #8680 for exactly this class of problem.
 - **API-key branch** (`:59-64`): EditSelf-exclusive users get an unconditional `403`.
@@ -2089,8 +2091,8 @@ were widening the gate for moved. The two member MVC pages are now
   as 302s to the portal for one release (`src/volunteer/routes/member-redirects.php`), so a link in
   already-sent mail still works — for a self-service session `AuthMiddleware` answers first and
   lands them on `/portal/`, one click from their schedule, rather than on the page itself;
-- step 3's link lives on the portal, not on `/external/limited-access`, which now redirects to
-  `/portal` and is deleted in MP8.
+- step 3's link lives on the portal, not on `/external/limited-access`, whose page MP8 (#9869)
+  deleted; the URL survives as a permanent 302 to `/portal` so old links keep working.
 
 **Alternative (one line).** Give volunteers zero-permission non-EditSelf accounts — no core change,
 but the #9003 read-default policy then hands every volunteer read access to the whole directory.
