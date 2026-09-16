@@ -32,7 +32,14 @@ describe("API Private Admin User Editor - username length validation (#9831)", (
     }
 
     function cleanupUser() {
-        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${personId}`, null, [200, 204, 404]);
+        // Trailing slash required: the DELETE route is registered as
+        // group('/api/user/{userId:[0-9]+}') + delete('/') in
+        // src/admin/routes/api/user-admin.php, so the full path is
+        // .../user/{id}/ — without the slash Slim 404s on no route match
+        // (masked by the acceptable-status list below) and the account is
+        // never actually removed, which silently breaks the create -> delete
+        // -> recreate cycle this spec relies on between tests.
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${personId}/`, null, [200, 204, 404]);
     }
 
     beforeEach(() => {
