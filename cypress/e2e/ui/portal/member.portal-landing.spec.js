@@ -100,6 +100,14 @@ describe("Member Portal — self-service landing", () => {
  * flag includes V2.
  */
 describe("Member Portal — the navigation follows the enabled features", () => {
+    // Its own copy: the landing describe's helper is scoped to that block.
+    const login = () => {
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type("lena.black.editself.notes@exampl");
+        cy.get("input[name=Password]").type("changeme{enter}");
+    };
+
     const setVersion = (value) =>
         cy.makePrivateAdminAPICall(
             "POST",

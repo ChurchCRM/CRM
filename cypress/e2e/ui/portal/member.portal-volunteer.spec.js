@@ -463,6 +463,11 @@ describe("Member Portal — volunteering workflows (#9867)", () => {
     });
 
     it("signs up for an open slot from the opportunities page", () => {
+        // Nothing else booked that day: with the Door assignment still in place,
+        // signing up for Coffee on the same occurrence is D16's "you are already
+        // helping that day" case, which asks first — a different test.
+        clearWorkflowRows();
+        freshMemberLogin();
         cy.visit(OPPORTUNITIES_URL);
 
         cy.get(`.volunteer-opportunity-card[data-position-id="${posCoffee}"]`, {
