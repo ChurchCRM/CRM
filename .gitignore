@@ -41,6 +41,13 @@ src/plugins/community/*
 # ...except the checked-in .htaccess deny block (GHSA-37mf-vq43-5qp9)
 !src/plugins/community/.htaccess
 
+# Member Portal themes are uploaded by the church and live in their own repo;
+# only the system theme that ships with the release is committed here.
+src/Include/themes/*
+!src/Include/themes/default
+# Twig's compile cache for the portal (created at runtime)
+src/Include/cache/
+
 src/admin/data/signatures.json
 src/ChurchCRM/model/ChurchCRM/Base
 src/ChurchCRM/model/ChurchCRM/Map
