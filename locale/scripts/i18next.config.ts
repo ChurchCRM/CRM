@@ -21,6 +21,7 @@ export default defineConfig({
       'src/vendor/**',
       'src/locale/vendor/**',
       'src/skin/external/**',
+      'src/mysql/**',
       'webpack/**/*.d.ts'
     ],
     output: 'locale/.work/locales/{{language}}/{{namespace}}.json',
