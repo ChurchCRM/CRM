@@ -186,6 +186,20 @@ interface CRMVolunteerOccurrenceConfig {
 }
 
 /**
+ * Per-page config for the Member Portal's My Teams page, handed to
+ * `webpack/portal/teams.ts` by `teams/team.html.twig` (issue #9868).
+ *
+ * Both values are advisory in the usual sense: they say which team the page was
+ * rendered for, and the route already decided the reader may run it. Every
+ * request the bundle makes is authorized again per record server-side (§4.5).
+ */
+interface CRMPortalTeamConfig {
+  teamId: number;
+  /** The team's ministry — the create-position and create-schedule routes are keyed on it. */
+  ministryId: number;
+}
+
+/**
  * The slice of `window.CRM.groups` (src/skin/js/CRMJSOM.js) that V2 calls.
  *
  * Declared so the group picker is type-checked rather than resolving through
@@ -247,8 +261,11 @@ interface CRMNamespace {
   volunteerMinistry?: CRMVolunteerMinistryConfig;
   /** Set by src/volunteer/views/dashboard.php (issue #9711). */
   volunteerDashboard?: CRMVolunteerDashboardConfig;
-  /** Set by src/volunteer/views/occurrence-view.php (issue #9709). */
+  /** Set by src/volunteer/views/occurrence-view.php, and by the Member Portal's
+   * teams/occurrence.html.twig, which reuses the same bundle (issues #9709, #9868). */
   volunteerOccurrence?: CRMVolunteerOccurrenceConfig;
+  /** Set by the Member Portal's teams/team.html.twig (issue #9868). */
+  portalTeam?: CRMPortalTeamConfig;
   /** The Groups helpers, including the shared group picker (G4). */
   groups?: CRMGroupsNamespace;
   bEnableGravatarPhotos?: boolean;

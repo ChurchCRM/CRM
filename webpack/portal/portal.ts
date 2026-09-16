@@ -14,6 +14,7 @@
  * the key back (#9867). That instance is only populated once the locale loader
  * has finished, so anything user-visible waits for onLocalesReady.
  */
+import { ensureCrmHelpers } from "../common/crm-helpers";
 import { formatWhat, formatWhen } from "../volunteer/member-ui";
 
 import "./portal.scss";
@@ -68,32 +69,6 @@ function wireFlashDismissal(): void {
       button.closest(".portal-flash")?.remove();
     });
   }
-}
-
-/**
- * `window.CRM.escapeHtml` is defined by `skin/js/CRMJSOM.js`, which is an
- * ADMIN-shell script the portal deliberately does not load. Several bundles the
- * portal reuses — the two volunteer pages among them — escape through it and
- * fall back to the raw string when it is missing, which in the portal would mean
- * no escaping at all. Define it here, with the same implementation, before any
- * page bundle runs (#9867).
- */
-function ensureEscapeHtml(): void {
-  window.CRM = window.CRM || {};
-  const crm = window.CRM;
-  if (typeof crm.escapeHtml === "function") {
-    return;
-  }
-
-  crm.escapeHtml = (text: string): string => {
-    if (text === null || text === undefined) {
-      return "";
-    }
-    const div = document.createElement("div");
-    div.textContent = String(text);
-
-    return div.innerHTML;
-  };
 }
 
 /**
@@ -177,7 +152,14 @@ function wireLocalisedLabels(): void {
 }
 
 function start(): void {
-  ensureEscapeHtml();
+  // `window.CRM.escapeHtml`, `escapeAttribute` and `buildActionMenu` are defined
+  // by `skin/js/CRMJSOM.js`, which is an ADMIN-shell script the portal
+  // deliberately does not load. Several bundles the portal reuses — the two
+  // volunteer member pages, and MP7's team pages — escape and build row menus
+  // through them and degrade silently when they are missing, which in the portal
+  // would mean no escaping and no row actions at all. Installed here, from the
+  // shared module, before any page bundle runs (#9867, #9868).
+  ensureCrmHelpers();
   wireNavigationToggle();
   wireFlashDismissal();
 

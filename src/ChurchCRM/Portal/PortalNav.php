@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Portal;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
@@ -13,9 +14,9 @@ use Throwable;
  * Design §5 fixes the order — Home · Calendar · Volunteering · My Teams ·
  * My Family · Profile — and says an entry is hidden when its feature is off or
  * the member has nothing there. MP2 shipped the skeleton; MP4 adds My Family
- * and Profile in their fixed places at the end, and MP6 adds Volunteering
- * before them. The calendar and teams entries slot into the same list as
- * MP5 and MP7 land.
+ * and Profile in their fixed places at the end, MP6 adds Volunteering before
+ * them and MP7 adds My Teams between the two. The calendar entry slots into the
+ * same list when MP5 lands.
  *
  * A nav entry is `{id, label, url, icon, active, badge}`; `url` is already
  * prefixed with the install root path, and `icon` is a Font Awesome class.
@@ -31,6 +32,7 @@ class PortalNav
 {
     public const HOME = 'home';
     public const VOLUNTEER = 'volunteer';
+    public const TEAMS = 'teams';
     public const FAMILY = 'family';
     public const PROFILE = 'profile';
 
@@ -62,6 +64,18 @@ class PortalNav
                 'label' => gettext('Volunteering'),
                 'url' => $rootPath . '/portal/volunteer/schedule',
                 'icon' => 'fa-solid fa-handshake-angle',
+            ];
+        }
+
+        if (self::isMyTeamsVisible()) {
+            $entries[] = [
+                'id' => self::TEAMS,
+                // "My Teams", the member's own phrase for the teams they run —
+                // never "Ministries", which is the admin shell's word for the
+                // level above and is not what this entry opens (P16).
+                'label' => gettext('My Teams'),
+                'url' => $rootPath . '/portal/teams',
+                'icon' => 'fa-solid fa-people-group',
             ];
         }
 
@@ -116,5 +130,32 @@ class PortalNav
         } catch (Throwable) {
             return true;
         }
+    }
+
+    /**
+     * Does this member get a "My Teams" entry (MP7, #9868)?
+     *
+     * Everything `isVolunteeringVisible()` requires — the volunteering section is
+     * where My Teams belongs — plus one more thing: the member has to actually
+     * lead a team. `User::isVolunteerTeamLeaderEnabled()` is exactly that question
+     * and is true for a member login as well as a staff one, which is the whole of
+     * the D14 revision (Member Portal P17).
+     *
+     * A ministry coordinator, a global manager and an administrator are FALSE here
+     * even though `/portal/teams` would let them in: they are not team leaders
+     * (volunteer design §4.4), their own way into a team is the ministry page in
+     * the admin shell, and putting a "My Teams" entry in their portal navigation
+     * would claim the opposite. The route is deliberately more generous than the
+     * menu; the menu is what the design fixes (§5).
+     */
+    public static function isMyTeamsVisible(): bool
+    {
+        if (!self::isVolunteeringVisible()) {
+            return false;
+        }
+
+        $user = AuthenticationManager::getCurrentUser();
+
+        return $user instanceof User && $user->isVolunteerTeamLeaderEnabled();
     }
 }

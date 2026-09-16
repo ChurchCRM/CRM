@@ -6,3 +6,9 @@
 @use "../../src/skin/scss/portal";
 @use "../../src/skin/scss/portal-bar";
 @use "../../src/skin/scss/portal-volunteer";
+@use "../../src/skin/scss/portal-teams";
+// The two rules the shared volunteer components depend on — the sideways-scrolling
+// table wrapper and the viewport-anchored row menu that wrapper would otherwise
+// clip. They live in `_volunteer.scss` because the admin ministry page needs them
+// too; both are axis rules, not directional ones, so they are safe here.
+@use "../../src/skin/scss/volunteer";

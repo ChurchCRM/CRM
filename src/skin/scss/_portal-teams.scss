@@ -1,0 +1,45 @@
+// Member Portal — the My Teams pages (MP7, #9868)
+//
+// Three small groups of rules. The four tabs, the tables and the dialogs are
+// Tabler's and are already styled by the core bundle the portal layout loads;
+// what is left is the portal's own chrome around them.
+//
+// Part of `portal.min.css`, never the RTL-flipped core bundle, so everything
+// here uses CSS logical properties only and the same design tokens
+// `_portal.scss` declares (design §3.5).
+
+// The "← My Teams" / "← Team name" line above a page title. Not Tabler
+// breadcrumbs: the portal has one level of nesting and a single back link reads
+// better on a phone than a trail that wraps.
+.portal-breadcrumb {
+    margin-block-end: var(--portal-gap);
+    font-size: 0.875rem;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        // The volunteer design's §5.9 mobile rule applies to a link a leader taps
+        // on the way back out, the same as it does to an accept/decline button.
+        min-block-size: 44px;
+    }
+}
+
+// The ministry a team belongs to, under the team's name. Quiet: it is context,
+// not the subject of the page.
+.portal-team-ministry {
+    color: var(--tblr-secondary-color, inherit);
+    margin-block-end: var(--portal-gap);
+}
+
+// One team on the index. `.portal-card` already supplies the card; this only
+// keeps the "Open this team" link at the bottom however tall the cards are, so a
+// row of them lines up.
+.portal-team-card {
+    display: flex;
+    flex-direction: column;
+
+    .portal-card-link {
+        margin-block-start: auto;
+    }
+}

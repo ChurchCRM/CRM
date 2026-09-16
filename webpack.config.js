@@ -123,6 +123,9 @@ module.exports = {
     // (design §5.2 / #9865) rather than by every portal page.
     'portal-profile': './webpack/portal/portal-profile.ts',
     'portal-family': './webpack/portal/portal-family.ts',
+    // My Teams (#9868): the team page's four tabs, drawn by the shared volunteer
+    // components. The occurrence page reuses `volunteer-occurrence` unchanged.
+    'portal-teams': './webpack/portal/teams.ts',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
   },
