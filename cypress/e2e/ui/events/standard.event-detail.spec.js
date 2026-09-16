@@ -26,31 +26,31 @@
  *   cy.setupAdminSession({ forceLogin: true }) inside the .then() before
  *   cy.visit().
  */
+// The events this file quick-creates, so each suite's after() can remove them
+// again (#9769). Only ids the API reports as newly created are tracked:
+// quick-create returns `created: false` and an existing event's id when one
+// already exists for that date+type, and deleting that would destroy a row the
+// spec did not create. Deleting an event cascades its event_attend and
+// calendar_events rows.
+const createdEventIds = [];
+
+const trackQuickCreated = (response) => {
+    if (
+        response?.body?.created !== false &&
+        typeof response?.body?.eventId === "number"
+    ) {
+        createdEventIds.push(response.body.eventId);
+    }
+};
+
 describe("Event Detail - Did Not Attend List", () => {
     let pastGroupEventId;   // past event linked to group 1; first member checked in
     let pastNoGroupEventId; // past event with no linked group
     let absentCount;        // number of members not checked in (set in before())
     let checkedInName;      // full name of the one checked-in member (set in before())
 
-    // The events this spec quick-creates, so after() can remove them again
-    // (#9769). Only ids the API reports as newly created are tracked:
-    // quick-create returns `created: false` and an existing event's id when one
-    // already exists for that date+type, and deleting that would destroy a row
-    // the spec did not create. Deleting an event cascades its event_attend and
-    // calendar_events rows.
-    const createdEventIds = [];
-
-    const trackQuickCreated = (response) => {
-        if (
-            response?.body?.created !== false &&
-            typeof response?.body?.eventId === "number"
-        ) {
-            createdEventIds.push(response.body.eventId);
-        }
-    };
-
     after(() => {
-        cy.cleanupEvents(createdEventIds);
+        cy.cleanupEvents(createdEventIds.splice(0));
     });
 
     // Checking members in writes a note on each person's timeline
@@ -244,7 +244,12 @@ describe("Event Detail - Responsive Actions", () => {
         ).then((resp) => {
             expect(resp.body).to.have.property("eventId");
             currentEventId = resp.body.eventId;
+            trackQuickCreated(resp);
         });
+    });
+
+    after(() => {
+        cy.cleanupEvents(createdEventIds.splice(0));
     });
 
     beforeEach(() => cy.setupAdminSession({ forceLogin: true }));
