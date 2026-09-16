@@ -712,6 +712,16 @@ textarea.portal-input {
     white-space: nowrap;
 }
 
+// FullCalendar's own toolbar buttons (#9869). FullCalendar 7 emits hashed class
+// names, so `headerToolbarClass` in portal-calendar.ts is the only stable hook;
+// the buttons inside it are 34px tall out of the box and the responsive
+// guidelines ask for 44px. Sizing the element rather than the class keeps working
+// if FullCalendar changes what it renders inside the toolbar.
+.portal-fc-toolbar button {
+    min-block-size: 44px;
+    min-inline-size: 44px;
+}
+
 .portal-calendar-grid {
     // FullCalendar's own grid can be wider than a phone; let it scroll inside
     // its card rather than making the page scroll sideways.

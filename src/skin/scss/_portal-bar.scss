@@ -24,7 +24,10 @@
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    block-size: 2.5rem;
+    // 2.75rem, not the admin bar's 2.5rem: the exit control inside it is a touch
+    // target and the guidelines put the floor at 44px (#9869). Four pixels taller
+    // than the admin shell's bar, which nobody sees side by side.
+    block-size: 2.75rem;
     padding-inline: 0.75rem;
     background-color: var(--portal-accent);
     color: #1f1f1f;
@@ -44,8 +47,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-block-size: 2rem;
-    min-inline-size: 2rem;
+    min-block-size: 44px;
+    min-inline-size: 44px;
     border-radius: 999px;
     color: inherit;
     text-decoration: none;
@@ -59,7 +62,7 @@
 
 // The bar is fixed, so the page below it has to start lower.
 .portal-body-with-bar {
-    padding-block-start: 2.5rem;
+    padding-block-start: 2.75rem;
 }
 
 
@@ -70,7 +73,7 @@
     inset-block-start: 0;
     inset-inline: 0;
     z-index: 1040;
-    min-block-size: 2.5rem;
+    min-block-size: 2.75rem;
     // Amber rather than the theme accent: a masquerade is a state to notice, and
     // a church theme recolouring `--portal-accent` must not be able to make the
     // one warning on the page blend in.
@@ -85,7 +88,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
-    min-block-size: 2.5rem;
+    min-block-size: 2.75rem;
     padding-inline: 0.75rem;
 }
 
@@ -108,8 +111,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-block-size: 2rem;
-    min-inline-size: 2rem;
+    min-block-size: 44px;
+    min-inline-size: 44px;
     padding: 0;
     border: 0;
     border-radius: 999px;
