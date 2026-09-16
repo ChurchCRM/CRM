@@ -1,8 +1,8 @@
 /**
  * Admin → Member Portal (#9864) — the page's behaviour.
  *
- * Three tabs are rendered server-side (Settings, Themes, Statistics); this
- * bundle adds the four things that need the browser:
+ * Four tabs are rendered server-side (Settings, Themes, Statistics, Calendars);
+ * this bundle adds the five things that need the browser:
  *
  *   1. the Settings Panel component for the four portal ConfigItems, which
  *      saves through POST /admin/api/system/config/{name};
@@ -11,7 +11,9 @@
  *   3. theme activation, which goes through POST /admin/api/member-portal/theme
  *      so the validator can refuse — a refusal lists the findings and leaves
  *      the active theme alone;
- *   4. a refresh of the statistics numbers when that tab is opened.
+ *   4. a refresh of the statistics numbers when that tab is opened;
+ *   5. the Calendars tab's save, which posts the switched-on calendars to
+ *      POST /admin/api/member-portal/calendars.
  *
  * Every user-visible string goes through i18next — the *global* instance the
  * locale loader initialises, never a bundled copy, which would be empty — and
@@ -46,6 +48,8 @@ const SETTINGS_CONTAINER = "#portalSettingsPanel";
 const THEME_SELECT_ID = "portalThemeSelect";
 const FINDINGS_ID = "portalThemeFindings";
 const STATUS_BADGE_ID = "portalThemeStatusBadge";
+const CALENDARS_TABLE_ID = "portalCalendarsTable";
+const CALENDARS_STATUS_ID = "portalCalendarsStatus";
 
 const root = (): string => window.CRM?.root ?? "";
 
@@ -300,9 +304,66 @@ function wireSettingsPanel(): void {
   });
 }
 
+/**
+ * Save the Calendars tab: the set of switched-on calendars, as the whole list
+ * rather than a diff, so what the server stores is exactly what the page shows.
+ */
+async function saveCalendars(button: HTMLButtonElement | null): Promise<void> {
+  const table = document.getElementById(CALENDARS_TABLE_ID);
+  const status = document.getElementById(CALENDARS_STATUS_ID);
+  if (!table) {
+    return;
+  }
+
+  const visible: Array<{ type: string; id: number }> = [];
+  for (const row of table.querySelectorAll<HTMLTableRowElement>("tr[data-calendar-type]")) {
+    const input = row.querySelector<HTMLInputElement>(".portal-calendar-switch");
+    if (!input?.checked) {
+      continue;
+    }
+    visible.push({
+      type: row.dataset.calendarType ?? "",
+      id: Number.parseInt(row.dataset.calendarId ?? "0", 10),
+    });
+  }
+
+  setBusy(button, true);
+  if (status) {
+    status.textContent = "";
+  }
+
+  const response = await fetch(`${root()}/admin/api/member-portal/calendars`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ visible }),
+  });
+  setBusy(button, false);
+
+  if (!response.ok) {
+    window.CRM?.notify?.(t("The calendars could not be saved."), { type: "danger" });
+    return;
+  }
+
+  if (status) {
+    status.textContent =
+      visible.length === 0
+        ? t("No calendar is shared with members.")
+        : t("Saved. Members see the calendars switched on above.");
+  }
+  window.CRM?.notify?.(t("The Member Portal calendars were saved."), { type: "success" });
+}
+
+function wireCalendarControls(): void {
+  const button = document.getElementById("portalCalendarsSaveButton") as HTMLButtonElement | null;
+  button?.addEventListener("click", () => {
+    void saveCalendars(button);
+  });
+}
+
 function start(): void {
   wireThemeControls();
   wireSettingsPanel();
+  wireCalendarControls();
   document.getElementById("portal-statistics-tab")?.addEventListener("click", () => {
     void refreshStatistics();
   });
