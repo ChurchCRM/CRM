@@ -1,0 +1,103 @@
+{% extends "layout.html.twig" %}
+
+{#
+  My Family → Update your family details.
+
+  Reached only by an adult of the family; the route refuses everybody else
+  before this template is rendered. Posts to POST /api/portal/family with
+  fetch (webpack/portal/portal-family.ts).
+
+  Variables: `family`, `members`, `canEdit`, `countries`
+  (see docs/portal-templates.md).
+#}
+
+{% block content %}
+<div class="portal-family-edit">
+
+    <section class="portal-card">
+        <h1 class="portal-page-title">{{ gettext('Update your family details') }}</h1>
+        <p class="portal-card-text">
+            {{ gettext('This is where the church sends post and who it calls about your household.') }}
+        </p>
+    </section>
+
+    <form class="portal-card portal-form" id="portal-family-form" method="post"
+          action="{{ url('/api/portal/family') }}" novalidate>
+        {{ csrf_field() }}
+
+        <div class="portal-field-grid">
+            <div class="portal-field portal-field-wide">
+                <label class="portal-field-label" for="portal-address1">{{ gettext('Address') }}</label>
+                <input class="portal-input" type="text" id="portal-address1" name="address1" value="{{ family.address1 }}" autocomplete="address-line1">
+                <p class="portal-field-error" data-error-for="address1" role="alert"></p>
+            </div>
+
+            <div class="portal-field portal-field-wide">
+                <label class="portal-field-label" for="portal-address2">{{ gettext('Address Line 2') }}</label>
+                <input class="portal-input" type="text" id="portal-address2" name="address2" value="{{ family.address2 }}" autocomplete="address-line2">
+                <p class="portal-field-error" data-error-for="address2" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-city">{{ gettext('City') }}</label>
+                <input class="portal-input" type="text" id="portal-city" name="city" value="{{ family.city }}" autocomplete="address-level2">
+                <p class="portal-field-error" data-error-for="city" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-state">{{ gettext('State') }}</label>
+                <input class="portal-input" type="text" id="portal-state" name="state" value="{{ family.state }}" autocomplete="address-level1">
+                <p class="portal-field-error" data-error-for="state" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-zip">{{ gettext('Zip') }}</label>
+                <input class="portal-input" type="text" id="portal-zip" name="zip" value="{{ family.zip }}" autocomplete="postal-code" inputmode="numeric">
+                <p class="portal-field-error" data-error-for="zip" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-country">{{ gettext('Country') }}</label>
+                <select class="portal-input" id="portal-country" name="country" autocomplete="country-name">
+                    <option value=""></option>
+                    {% for code, name in countries %}
+                    <option value="{{ name }}"{% if name == family.country %} selected{% endif %}>{{ name }}</option>
+                    {% endfor %}
+                    {% if family.country and family.country not in countries %}
+                    <option value="{{ family.country }}" selected>{{ family.country }}</option>
+                    {% endif %}
+                </select>
+                <p class="portal-field-error" data-error-for="country" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-family-homePhone">{{ gettext('Home Phone') }}</label>
+                <input class="portal-input" type="tel" id="portal-family-homePhone" name="homePhone" value="{{ family.homePhone }}" inputmode="tel">
+                <p class="portal-field-error" data-error-for="homePhone" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-family-email">{{ gettext('Email') }}</label>
+                <input class="portal-input" type="email" id="portal-family-email" name="email" value="{{ family.email }}" inputmode="email">
+                <p class="portal-field-error" data-error-for="email" role="alert"></p>
+            </div>
+
+            <div class="portal-field">
+                <label class="portal-field-label" for="portal-weddingDate">{{ gettext('Wedding Date') }}</label>
+                <input class="portal-input" type="date" id="portal-weddingDate" name="weddingDate" value="{{ family.weddingDate }}">
+                <p class="portal-field-error" data-error-for="weddingDate" role="alert"></p>
+            </div>
+        </div>
+
+        <div class="portal-form-actions">
+            <button class="portal-button" type="submit" id="portal-family-save">{{ gettext('Save changes') }}</button>
+            <a class="portal-button portal-button-quiet" href="{{ url('/portal/family') }}">{{ gettext('Cancel') }}</a>
+        </div>
+    </form>
+
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ asset('/skin/v2/portal-family.min.js') }}"></script>
+{% endblock %}

@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Twig\GettextExtension;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response as Psr7Response;
@@ -41,6 +42,25 @@ class PortalTwig
 
     public const THEME_ERROR_TEMPLATE = 'errors/theme-error.html.twig';
     public const UNAVAILABLE_TEMPLATE = 'errors/unavailable.html.twig';
+
+    /**
+     * The two side effects every portal page needs before it renders: the
+     * security headers that mint the CSP nonce each inline script carries, and
+     * the plugin system whose head/footer HTML the layout prints.
+     *
+     * `PortalAccessMiddleware` calls this for the portal's own routes. A route
+     * outside `/portal` that renders a portal page — the password and
+     * two-factor pages a self-service session opens (#9865) — calls it itself.
+     * Both operations are idempotent, exactly as `PageInit.php` relies on.
+     */
+    public static function preparePage(): void
+    {
+        $documentRoot = rtrim(SystemURLs::getDocumentRoot(), '/\\');
+
+        require_once $documentRoot . '/Include/Header-Security.php';
+
+        PluginManager::init($documentRoot . '/plugins');
+    }
 
     /**
      * Build the per-request environment for the active theme.

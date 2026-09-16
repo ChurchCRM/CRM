@@ -1,9 +1,13 @@
 {% extends "layout.html.twig" %}
 
 {#
-  The member's landing page. MP2 ships the welcome card and a clearly-marked
-  placeholder for each section a later issue fills in, so a church that installs
-  this release sees what is coming rather than an empty page.
+  The member's landing page. My Family and Profile are real cards since MP4;
+  the calendar and volunteering are still clearly-marked placeholders, so a
+  church that installs this release sees what is coming rather than an empty
+  page.
+
+  Variables: `pageTitle`, `familySummary` (`{name, memberCount}`, or null when
+  the member has no family record).
 #}
 
 {% block content %}
@@ -28,9 +32,7 @@
         #}
         {% set placeholders = [
             { 'id': 'calendar', 'icon': 'fa-solid fa-calendar-days', 'title': gettext('Church calendar'), 'shown': portal.showCalendar },
-            { 'id': 'volunteer', 'icon': 'fa-solid fa-handshake-angle', 'title': gettext('My volunteering'), 'shown': portal.showVolunteer },
-            { 'id': 'family', 'icon': 'fa-solid fa-people-roof', 'title': gettext('My family'), 'shown': true },
-            { 'id': 'profile', 'icon': 'fa-solid fa-user', 'title': gettext('My profile'), 'shown': true }
+            { 'id': 'volunteer', 'icon': 'fa-solid fa-handshake-angle', 'title': gettext('My volunteering'), 'shown': portal.showVolunteer }
         ]|filter(placeholder => placeholder.shown) %}
         {% for placeholder in placeholders %}
         <section class="portal-card portal-card-placeholder portal-card-{{ placeholder.id }}">
@@ -44,6 +46,34 @@
             </p>
         </section>
         {% endfor %}
+
+        <section class="portal-card" id="portal-home-family-card">
+            <h2 class="portal-card-title">
+                <i class="fa-solid fa-people-roof" aria-hidden="true"></i>
+                <span>{{ gettext('My Family') }}</span>
+            </h2>
+            {% if familySummary %}
+            <p class="portal-card-text">
+                <span class="portal-card-lead">{{ gettext('%s family')|format(familySummary.name) }}</span><br>
+                {{ ngettext('%s person in your household', '%s people in your household', familySummary.memberCount)|format(familySummary.memberCount) }}
+            </p>
+            <p><a class="portal-card-link" href="{{ url('/portal/family') }}">{{ gettext('Update your details') }}</a></p>
+            {% else %}
+            <p class="portal-card-text">{{ gettext('You are not part of a family record yet.') }}</p>
+            {% endif %}
+        </section>
+
+        <section class="portal-card" id="portal-home-profile-card">
+            <h2 class="portal-card-title">
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+                <span>{{ gettext('Profile') }}</span>
+            </h2>
+            <p class="portal-card-text">
+                <span class="portal-card-lead">{{ member.fullName }}</span><br>
+                {{ gettext('Your name, email, phone numbers and photo.') }}
+            </p>
+            <p><a class="portal-card-link" href="{{ url('/portal/profile') }}">{{ gettext('Update your details') }}</a></p>
+        </section>
     </div>
 
 </div>
