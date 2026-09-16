@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familie kon nie geokodeer word nie",
+    "other": "{{count}} families kon nie geokodeer word nie"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktief vir {{count}} sekonde",
+    "other": "Aktief vir {{count}} sekondes"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Jy is op die punt om bevestigings-e-posse aan {{count}} familie te stuur.",
+    "other": "Jy is op die punt om bevestigings-e-posse aan {{count}} families te stuur."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familie het geen e-posadres op rekord nie en sal oorgeslaan word",
+    "other": "{{count}} families het geen e-posadres op rekord nie en sal oorgeslaan word"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…en {{count}} meer wat nie hier gelys is nie.",
+    "other": "…en {{count}} meer wat nie hier gelys is nie."
   }
 }
