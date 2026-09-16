@@ -1,26 +1,26 @@
 {
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuto rimanente",
+    "other": "{{count}} minuti rimanenti"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} famiglia non è stata geocodificata",
+    "other": "{{count}} famiglie non sono state geocodificate"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Attivo per {{count}} secondo",
+    "other": "Attivo per {{count}} secondi"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Stai per inviare email di conferma a {{count}} famiglia.",
+    "other": "Stai per inviare email di conferma a {{count}} famiglie."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} famiglia non ha un indirizzo email registrato e verrà saltata",
+    "other": "{{count}} famiglie non hanno un indirizzo email registrato e verranno saltate"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…e altro {{count}} non elencato qui.",
+    "other": "…e altri {{count}} non elencati qui."
   }
 }

@@ -1,40 +1,40 @@
 {
-  "skip must be zero or a positive integer": "",
-  "view families missing an email": "",
+  "skip must be zero or a positive integer": "skip trebuie să fie zero sau un număr întreg pozitiv",
+  "view families missing an email": "vizualizați familiile cărora le lipsește un e-mail",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} membru copiat",
+    "other": "{{count}} membri copiați"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Această listă are {{count}} destinatar — prea mulți pentru un link mailto:. Folosiți în schimb Copiază adresele.",
+    "other": "Această listă are {{count}} destinatari — prea mulți pentru un link mailto:. Folosiți în schimb Copiază adresele."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți în schimb Copiază adresele.",
+    "other": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți în schimb Copiază adresele."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min rămas",
+    "other": "{{count}} min rămase"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familie nu a putut fi geocodificată",
+    "other": "{{count}} familii nu au putut fi geocodificate"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Activ timp de {{count}} secundă",
+    "other": "Activ timp de {{count}} secunde"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Sunteți pe cale să trimiteți e-mailuri de confirmare către {{count}} familie.",
+    "other": "Sunteți pe cale să trimiteți e-mailuri de confirmare către {{count}} familii."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familie nu are o adresă de e-mail înregistrată și va fi omisă",
+    "other": "{{count}} familii nu au o adresă de e-mail înregistrată și vor fi omise"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…și mai există {{count}} care nu apare aici.",
+    "other": "…și mai există {{count}} care nu apar aici."
   }
 }

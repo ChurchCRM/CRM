@@ -1,38 +1,38 @@
 {
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} membre copié",
+    "other": "{{count}} membres copiés"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Cette liste comporte {{count}} destinataire — trop pour un lien mailto:. Utilisez plutôt Copier les adresses.",
+    "other": "Cette liste comporte {{count}} destinataires — trop pour un lien mailto:. Utilisez plutôt Copier les adresses."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez plutôt Copier les adresses.",
+    "other": "Trop de destinataires pour le client de messagerie ({{count}} > {{max}}). Utilisez plutôt Copier les adresses."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minute restante",
+    "other": "{{count}} minutes restantes"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} famille n'a pas pu être géocodée",
+    "other": "{{count}} familles n'ont pas pu être géocodées"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Actif depuis {{count}} seconde",
+    "other": "Actif depuis {{count}} secondes"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Vous êtes sur le point d'envoyer des e-mails de confirmation à {{count}} famille.",
+    "other": "Vous êtes sur le point d'envoyer des e-mails de confirmation à {{count}} familles."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} famille n'a pas d'adresse e-mail enregistrée et sera ignorée",
+    "other": "{{count}} familles n'ont pas d'adresse e-mail enregistrée et seront ignorées"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…et {{count}} autre non listé ici.",
+    "other": "…et {{count}} autres non listés ici."
   }
 }
