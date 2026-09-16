@@ -2,10 +2,196 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const picomatch = require('picomatch');
 
 const root = process.cwd();
 const IGNORE_DIRS = ['node_modules', '.git', 'vendor', 'src/vendor', 'src/locale/vendor', 'src/skin/external', 'src/skin/v2', 'src/skin/icons', 'dist', 'build', 'src/locale/i18n', 'src/locale/textdomain', 'locale/locales', 'locale/messages.po'];
 const FILE_EXTS = ['.php', '.js', '.jsx', '.ts', '.tsx', '.vue', '.po', '.json', '.html', '.phtml'];
+
+// ---- i18next extractor coverage -------------------------------------------
+//
+// An i18next.t('…') call in a file the extractor does not scan is silently
+// untranslatable: it never reaches locale/messages.po, so POEditor never offers
+// it and the string renders in English in every locale. That is exactly how 226
+// call sites across 19 .php views went unnoticed (#9723).
+//
+// Rather than hard-coding a list of directories here, read the globs out of the
+// extractor's own config so the two can never drift apart.
+
+const I18NEXT_CONFIG = path.join(root, 'locale', 'scripts', 'i18next.config.ts');
+
+/**
+ * Blank every comment in `source`, replacing its characters with spaces so all
+ * offsets stay put. Quote-aware, so a `//` inside a string literal (a URL, a
+ * glob) survives untouched.
+ */
+function blankComments(source) {
+  const out = source.split('');
+  let i = 0;
+  while (i < source.length) {
+    const char = source[i];
+    if (char === "'" || char === '"' || char === '`') {
+      const quote = char;
+      i++;
+      while (i < source.length) {
+        if (source[i] === '\\') {
+          i += 2;
+          continue;
+        }
+        if (source[i] === quote) {
+          i++;
+          break;
+        }
+        i++;
+      }
+      continue;
+    }
+    if (char === '/' && source[i + 1] === '/') {
+      while (i < source.length && source[i] !== '\n') {
+        out[i] = ' ';
+        i++;
+      }
+      continue;
+    }
+    if (char === '/' && source[i + 1] === '*') {
+      const end = source.indexOf('*/', i + 2);
+      const stop = end === -1 ? source.length : end + 2;
+      for (; i < stop; i++) {
+        if (source[i] !== '\n') out[i] = ' ';
+      }
+      continue;
+    }
+    i++;
+  }
+  return out.join('');
+}
+
+/**
+ * Index of the `]` closing the `[` at `openPos`, or -1. Counts bracket depth so
+ * a character class inside a glob (`'!src/[Vv]endor/**'`) cannot end the array
+ * early, and skips string literals so a bracket inside one is not counted.
+ */
+function findMatchingBracket(source, openPos) {
+  let depth = 0;
+  for (let i = openPos; i < source.length; i++) {
+    const char = source[i];
+    if (char === "'" || char === '"' || char === '`') {
+      const quote = char;
+      i++;
+      while (i < source.length && source[i] !== quote) {
+        if (source[i] === '\\') i++;
+        i++;
+      }
+      continue;
+    }
+    if (char === '[') {
+      depth++;
+    } else if (char === ']') {
+      depth--;
+      if (depth === 0) return i;
+    }
+  }
+  return -1;
+}
+
+/**
+ * Pull the `extract.input` globs out of i18next.config.ts source text.
+ *
+ * Throws instead of returning null on anything it cannot read. A coverage rule
+ * that silently switches itself off is worse than no rule at all — #9723 is
+ * precisely the story of 226 unextractable call sites that nobody noticed.
+ *
+ * @param {string} source raw i18next.config.ts contents
+ * @param {string} label  path to name in error messages
+ * @returns {{include: string[], exclude: string[]}}
+ */
+function parseExtractorInput(source, label) {
+  // Comments first: a commented-out entry inside the array is not a live glob,
+  // and neither is the prose after a trailing `//`.
+  const code = blankComments(source);
+
+  const keyword = code.match(/\binput\s*:\s*\[/);
+  if (!keyword) {
+    throw new Error(`no "input: [" array in ${label} — cannot tell which files the extractor scans.`);
+  }
+  const open = keyword.index + keyword[0].length - 1;
+  const close = findMatchingBracket(code, open);
+  if (close === -1) {
+    throw new Error(`the "input" array in ${label} is never closed — cannot tell which files the extractor scans.`);
+  }
+
+  const block = code.slice(open + 1, close);
+  const globs = [...block.matchAll(/(['"`])((?:\\.|(?!\1)[^\\])*)\1/g)].map((m) => m[2]);
+  if (globs.length === 0) {
+    throw new Error(`the "input" array in ${label} has no string literals — cannot tell which files the extractor scans.`);
+  }
+
+  const include = globs.filter((g) => !g.startsWith('!'));
+  const exclude = globs.filter((g) => g.startsWith('!')).map((g) => g.slice(1));
+  if (include.length === 0) {
+    throw new Error(`the "input" array in ${label} has only "!" exclusions — cannot tell which files the extractor scans.`);
+  }
+
+  return { include, exclude };
+}
+
+/**
+ * Compile parsed globs into matchers.
+ *
+ * picomatch rather than a hand-rolled glob→RegExp translation: brace
+ * alternatives can themselves contain wildcards (`'{*.js,*.ts}'`), and escaping
+ * those alternatives as regex literals produced a pattern that matched no file
+ * at all — silently switching the rule off.
+ */
+function compileExtractorGlobs({ include, exclude }) {
+  return {
+    include: picomatch(include, { dot: true }),
+    exclude: exclude.length > 0 ? picomatch(exclude, { dot: true }) : () => false,
+  };
+}
+
+function loadExtractorGlobs() {
+  const label = path.relative(root, I18NEXT_CONFIG);
+  let source;
+  try {
+    source = fs.readFileSync(I18NEXT_CONFIG, 'utf8');
+  } catch (e) {
+    throw new Error(`cannot read ${label} (${e.message}) — the i18next-outside-extractor rule needs the extractor's own input globs.`);
+  }
+  return compileExtractorGlobs(parseExtractorInput(source, label));
+}
+
+let extractorGlobs;
+try {
+  extractorGlobs = loadExtractorGlobs();
+} catch (error) {
+  console.error(`locale-check: ${error.message}`);
+  console.error('  → Fix locale/scripts/i18next.config.ts, or update scripts/locale-check.js to match it.');
+  process.exit(2);
+}
+
+/** Repo-relative, forward-slashed path — what the globs are written against. */
+function toRepoRelative(filePath) {
+  return path.relative(root, path.resolve(root, filePath)).split(path.sep).join('/');
+}
+
+function isScannedByExtractor(filePath) {
+  const rel = toRepoRelative(filePath);
+  if (extractorGlobs.exclude(rel)) return false;
+  return extractorGlobs.include(rel);
+}
+
+/**
+ * The extraction tooling itself — this file and the extractor config/plugin it
+ * reads — documents what a call site looks like rather than containing one.
+ * Exempt it from the coverage rule only; every other rule still applies.
+ */
+const EXTRACTOR_TOOLING = ['scripts/locale-check.js', 'locale/scripts/'];
+
+function isExtractorTooling(filePath) {
+  const rel = toRepoRelative(filePath);
+  return EXTRACTOR_TOOLING.some((prefix) => rel === prefix || rel.startsWith(prefix));
+}
 
 function isMinified(filePath) {
   return filePath.endsWith('.min.js') || filePath.endsWith('.min.css');
@@ -28,6 +214,14 @@ const rules = [
     re: /(?:gettext|i18next\.t)\(\s*(['"])— [^'"]*—\1\s*[,)]/,
     message: 'Decorative em-dash wrapper baked into a translatable string — move the "—" characters outside the call (see i18n-localization.md "Decorative Wrappers").',
   },
+  {
+    name: 'i18next-outside-extractor',
+    // A literal first argument only — `i18next.t()` in a comment or a type
+    // declaration is not a call site.
+    re: /i18next\.t\(\s*['"`]/,
+    appliesTo: (file) => !isExtractorTooling(file) && !isScannedByExtractor(file),
+    message: 'i18next.t() in a file the extractor does not scan — the string will never reach locale/messages.po and can never be translated (see #9723). Add the file\'s directory to extract.input in locale/scripts/i18next.config.ts, or move the string to a scanned file / gettext().',
+  },
 ];
 
 function isIgnored(filePath) {
@@ -37,6 +231,7 @@ function isIgnored(filePath) {
 function checkLine(file, lineNum, text) {
   const issues = [];
   for (const rule of rules) {
+    if (rule.appliesTo && !rule.appliesTo(file)) continue;
     if (rule.re.test(text)) {
       issues.push({ file, line: lineNum, text: text.trim(), rule: rule.name, message: rule.message });
     }
@@ -143,7 +338,112 @@ function report(results, scopeLabel) {
   return 2;
 }
 
+// ---- Self-test (npm run locale:lint:self-test) ----
+//
+// The repo has no unit-test runner for scripts/, so the parser cases that the
+// i18next-outside-extractor rule depends on are checked here with node:assert.
+// Each case is a shape that used to break the parser silently.
+
+function runSelfTest() {
+  const assert = require('node:assert');
+  const cases = [];
+  const check = (name, fn) => {
+    try {
+      fn();
+      cases.push(`  ok   ${name}`);
+    } catch (e) {
+      cases.push(`  FAIL ${name}\n       ${e.message}`);
+      process.exitCode = 2;
+    }
+  };
+
+  // Brace alternatives that contain wildcards. The previous escapeRegExp pass
+  // turned '{*.js,*.ts}' into a regex for a literal asterisk, so every file
+  // failed to match and the rule went quiet.
+  check('brace alternatives may contain wildcards', () => {
+    const m = compileExtractorGlobs({ include: ['webpack/**/{*.js,*.ts}'], exclude: [] });
+    assert.ok(m.include('webpack/admin/main.ts'), 'expected webpack/admin/main.ts to match');
+    assert.ok(m.include('webpack/main.js'), 'expected webpack/main.js to match');
+    assert.ok(!m.include('webpack/main.css'), 'expected webpack/main.css not to match');
+  });
+
+  check('plain brace alternatives still match', () => {
+    const m = compileExtractorGlobs({ include: ['webpack/**/*.{js,ts,tsx}'], exclude: [] });
+    assert.ok(m.include('webpack/a/b/c.tsx'));
+    assert.ok(!m.include('webpack/a/b/c.css'));
+  });
+
+  // A character class inside a glob used to terminate the lazy [\s\S]*? match
+  // at its ']', truncating the array to whatever came before it.
+  check('character class in a glob does not truncate the input array', () => {
+    const parsed = parseExtractorInput(
+      `export default defineConfig({ extract: { input: [
+         'src/skin/js/**/*.js',
+         '!src/[Vv]endor/**',
+         'webpack/**/*.{js,ts,tsx}'
+       ] } });`,
+      'fixture',
+    );
+    assert.deepStrictEqual(parsed.include, ['src/skin/js/**/*.js', 'webpack/**/*.{js,ts,tsx}']);
+    assert.deepStrictEqual(parsed.exclude, ['src/[Vv]endor/**']);
+  });
+
+  // A commented-out entry (and the prose after a trailing //) is not a glob.
+  check('// comments are not read as globs', () => {
+    const parsed = parseExtractorInput(
+      `input: [
+         'src/skin/js/**/*.js',
+         // '!src/legacy/**',   // temporarily disabled
+         'webpack/**/*.ts'
+       ]`,
+      'fixture',
+    );
+    assert.deepStrictEqual(parsed.include, ['src/skin/js/**/*.js', 'webpack/**/*.ts']);
+    assert.deepStrictEqual(parsed.exclude, []);
+  });
+
+  check('block comments are not read as globs', () => {
+    const parsed = parseExtractorInput(
+      `input: [ 'a/**/*.js', /* 'b/**/ /* *.js' */ 'c/**/*.ts' ]`,
+      'fixture',
+    );
+    assert.ok(parsed.include.includes('a/**/*.js'));
+    assert.ok(parsed.include.includes('c/**/*.ts'));
+  });
+
+  check('a // inside a string literal is kept', () => {
+    const parsed = parseExtractorInput(`input: [ 'src/**/*.php', '!https://not-a-comment/**' ]`, 'fixture');
+    assert.deepStrictEqual(parsed.include, ['src/**/*.php']);
+    assert.deepStrictEqual(parsed.exclude, ['https://not-a-comment/**']);
+  });
+
+  // Failing loudly is the point: a rule that disables itself hides exactly the
+  // bug (#9723) it exists to catch.
+  check('an unreadable input array throws', () => {
+    assert.throws(() => parseExtractorInput('export default defineConfig({});', 'fixture'), /no "input: \[" array/);
+    assert.throws(() => parseExtractorInput('input: [', 'fixture'), /never closed/);
+    assert.throws(() => parseExtractorInput('input: []', 'fixture'), /no string literals/);
+    assert.throws(() => parseExtractorInput(`input: ['!a/**']`, 'fixture'), /only "!" exclusions/);
+  });
+
+  // The live config must stay readable, and must still cover the .php views
+  // that #9723 was about.
+  check('the live i18next.config.ts still parses and covers .php views', () => {
+    const live = loadExtractorGlobs();
+    assert.ok(live.include('src/ChurchCRM/dashboard/views/Dashboard.php'), 'expected .php views to be scanned');
+    assert.ok(live.include('src/skin/js/anything.js'), 'expected src/skin/js to be scanned');
+    assert.ok(!live.include('cypress/e2e/ui/some.spec.js'), 'expected cypress specs not to be scanned');
+  });
+
+  console.log('locale-check self-test:');
+  console.log(cases.join('\n'));
+  return process.exitCode === 2 ? 2 : 0;
+}
+
 function main() {
+  if (process.argv.includes('--self-test')) {
+    process.exit(runSelfTest());
+  }
   const staged = process.argv.includes('--staged');
   const results = staged ? runStagedScan() : runFullRepoScan();
   const exitCode = report(results, staged ? 'staged changes' : 'full repo');

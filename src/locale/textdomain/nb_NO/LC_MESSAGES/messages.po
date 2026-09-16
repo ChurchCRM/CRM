@@ -5122,14 +5122,6 @@ msgid "Verification URL created"
 msgstr "Verifiserings-URL opprettet"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Feil ved sending av e-post"
 
@@ -8520,10 +8512,6 @@ msgstr "Passordet ditt er oppdatert."
 #: 
 msgid "selected family has no coordinates"
 msgstr "valgt familie har ingen koordinater"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12285,10 +12273,6 @@ msgid "Database dump only (.sql)"
 msgstr "Kun databasedump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Datoperioden kan ikke overskride 1 år"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destruktiv operasjon"
 
@@ -12883,10 +12867,6 @@ msgstr "Gruppe ikke funnet for denne rollelisten"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Inaktiv status kan bare endres for klassifiseringslisten"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Nye brukere vil ikke motta en velkomst-e-post med legitimasjon. Del passordet med dem manuelt, eller konfigurer e-post først."
 
 #: 
 msgid "Option name is required"
@@ -17893,4 +17873,68 @@ msgstr "Ingen hendelser funnet for %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Prøv å velge en annen hendelsestype, måned eller år."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Det oppstod en geokodingsfeil — prøv igjen senere"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adressen er ufullstendig (mangler by, fylke og postnummer)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alle familier har allerede koordinater."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Kunne ikke oppdatere koordinater"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Kunne ikke oppdatere familiekoordinater"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodet alle {{geocoded}} familier. Kartet er nå oppdatert."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodet {{geocoded}} familier. {{failed}} kunne ikke løses — se detaljer nedenfor."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokoder …"
+
+#: 
+msgid "No address on file"
+msgstr "Ingen adresse registrert"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Ingen treff funnet — sjekk gateadresse, by og postnummer"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Åpne en familie for å rette adressen, og kjør deretter dette igjen."
+
+#: 
+msgid "Set up now"
+msgstr "Sett opp nå"
+
+#: 
+msgid "Unknown family"
+msgstr "Ukjent familie"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Oppdater alle koordinater"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Oppdater alle familiekoordinater"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Oppdater koordinater"
 

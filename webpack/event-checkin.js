@@ -291,7 +291,7 @@ function loadRoster(eventId) {
 function buildMemberCard(member, eventId) {
   const isCheckedIn = member.status === "checked_in";
   const btnClass = isCheckedIn ? "btn-outline-secondary" : "btn-success";
-  const btnIcon = isCheckedIn ? "ti-door-exit" : "ti-check";
+  const btnIcon = isCheckedIn ? "fa-right-from-bracket" : "fa-check";
   const btnText = isCheckedIn ? i18next.t("Check Out") : i18next.t("Check In");
   const action = isCheckedIn ? "checkout" : "checkin";
 
@@ -343,7 +343,7 @@ function buildMemberCard(member, eventId) {
     '" data-event-id="' +
     eventId +
     '">' +
-    '<i class="ti ' +
+    '<i class="fa-solid ' +
     btnIcon +
     ' me-1"></i>' +
     btnText +
@@ -540,11 +540,11 @@ $(() => {
       "</div>" +
       '<div class="modal-footer">' +
       '<button type="button" class="btn btn-link" id="checkoutCancelBtn" data-bs-dismiss="modal">' +
-      '<i class="ti ti-x"></i> ' +
+      '<i class="fa-solid fa-xmark"></i> ' +
       i18next.t("Cancel") +
       "</button>" +
       '<button type="button" class="btn btn-outline-warning" id="checkoutSkipBtn">' +
-      '<i class="ti ti-check"></i> ' +
+      '<i class="fa-solid fa-check"></i> ' +
       i18next.t("Skip & Check Out") +
       "</button>" +
       '<button type="button" class="btn btn-primary" id="checkoutConfirmBtn">' +
@@ -665,7 +665,7 @@ $(() => {
         $row
           .find(".checkout-btn")
           .replaceWith(
-            `<span class="dropdown-item disabled text-success"><i class="ti ti-check me-2"></i>${i18next.t("Checked Out")}</span>`,
+            `<span class="dropdown-item disabled text-success"><i class="fa-solid fa-check me-2"></i>${i18next.t("Checked Out")}</span>`,
           );
         window.CRM.notify(i18next.t("Person checked out."), { type: "success", delay: 3000 });
 
@@ -689,7 +689,7 @@ $(() => {
       title: i18next.t("Delete attendance record?"),
       message: `${i18next.t("Delete check-in record for")} <strong>${window.CRM.escapeHtml(String(personName || ""))}</strong>?`,
       buttons: {
-        cancel: { label: `<i class="ti ti-x"></i> ${i18next.t("Cancel")}` },
+        cancel: { label: `<i class="fa-solid fa-xmark"></i> ${i18next.t("Cancel")}` },
         confirm: { label: `<i class="fa-solid fa-trash"></i> ${i18next.t("Delete")}`, className: "btn-danger" },
       },
       callback: (confirmed) => {

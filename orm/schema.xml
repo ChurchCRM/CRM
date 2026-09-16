@@ -62,6 +62,7 @@
         <column name="per_Facebook" phpName="Facebook" type="VARCHAR" size="50" Description="Facebook username" />
         <column name="per_Twitter" phpName="Twitter" type="VARCHAR" size="50" Description="Twitter username" />
         <column name="per_LinkedIn" phpName="LinkedIn" type="VARCHAR" size="50" Description="LinkedIn name" />
+        <column name="per_DateDeactivated" phpName="DateDeactivated" type="DATE"/>
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>
@@ -458,7 +459,7 @@
         </foreign-key>
 
         <foreign-key foreignTable="person_per" name="PrimaryContact" refPhpName="PrimaryContactPerson" skipSql = "true">
-            <reference local="event_type" foreign="per_ID"/>
+            <reference local="primary_contact_person_id" foreign="per_ID"/>
         </foreign-key>
 
         <foreign-key foreignTable="person_per" name="SecondaryContact" refPhpName="SecondaryContactPerson" skipSql = "true">

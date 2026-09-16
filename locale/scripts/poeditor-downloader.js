@@ -154,32 +154,49 @@ const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
  * This function detects pipe-separated plurals and converts them to nested format.
  * Handles all CLDR plural categories in order: zero, one, two, few, many, other.
  */
+// Term keys that carry a counting placeholder — the only kind of term
+// `poeditor-upload-missing.js`'s convertPluralsToSeparated() ever pipe-joins.
+// Gates the pipe-split heuristic below so an ordinary translated string that
+// happens to contain a literal "|" (e.g. "Ctrl | Cmd") is never mistaken for
+// an encoded plural.
+const COUNT_PLACEHOLDER_PATTERN = /\{\{\s*\w*count\w*\s*\}\}|%\d*d/i;
+
 function convertPipeSeparatedPlurals(data) {
     if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
 
     const result = {};
 
     for (const [term, value] of Object.entries(data)) {
-        if (typeof value === 'string') {
+        if (typeof value === 'string' && COUNT_PLACEHOLDER_PATTERN.test(term)) {
             // Check if this is a pipe-separated plural (contains | and multiple non-empty parts)
             const parts = value.split('|').map(s => s.trim());
             if (parts.length > 1 && parts.every(p => p.length > 0)) {
-                // This looks like a pipe-separated plural
-                // Map parts to CLDR forms in order: zero, one, two, few, many, other
-                const pluralForms = {};
-                CLDR_PLURAL_FORMS.slice(0, parts.length).forEach((form, index) => {
-                    if (parts[index]) pluralForms[form] = parts[index];
-                });
-                if (Object.keys(pluralForms).length > 1) {
-                    result[term] = pluralForms;
-                } else {
-                    result[term] = value;
+                // Map parts back to the CLDR forms `convertPluralsToSeparated()` (upload
+                // script) joined them from, in the SAME canonical order (zero, one, two,
+                // few, many, other) — skipping zero/two since the upload side only ever
+                // emits those when a source object explicitly has them. The overwhelmingly
+                // common case is exactly 2 parts, which the upload side always produces as
+                // [one, other] (see poeditor-upload-missing.js convertPluralsToSeparated) —
+                // NOT [zero, one]. Mapping this wrong silently mislabels which grammatical
+                // form each translation belongs to.
+                let pluralForms = null;
+                if (parts.length === 2) {
+                    pluralForms = { one: parts[0], other: parts[1] };
+                } else if (parts.length >= 3 && parts.length <= CLDR_PLURAL_FORMS.length) {
+                    // 3+ segments could be [one, few, other], [one, few, many, other], or
+                    // (rarely) include zero/two — there is no fixed order that is correct
+                    // for every language without per-locale CLDR category metadata this
+                    // script doesn't have. Guessing wrong would silently attach a
+                    // translation to the wrong plural category, which is worse than
+                    // leaving the term as an unconverted pipe string. Warn and pass through.
+                    console.warn(`  ⚠️  convertPipeSeparatedPlurals: "${term}" has ${parts.length} pipe-separated forms — cannot determine CLDR category order without per-locale plural metadata; leaving as a literal string. Fix manually if this term needs true plural forms.`);
                 }
+                result[term] = pluralForms && Object.keys(pluralForms).length > 1 ? pluralForms : value;
             } else {
                 result[term] = value;
             }
         } else {
-            // Already nested or non-string — pass through
+            // Already nested, non-string, or a term with no counting placeholder — pass through
             result[term] = value;
         }
     }

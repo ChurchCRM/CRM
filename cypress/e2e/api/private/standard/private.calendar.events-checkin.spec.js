@@ -514,17 +514,24 @@ describe("API Event Check-in Endpoints", () => {
             );
         });
 
-        it("Returns 400 when date range exceeds 1 year", () => {
+        // #9735 replaced this endpoint's private "1 year" range cap with the
+        // one shared occurrence cap (366) that POST /events/repeat also
+        // enforces, so a two-year weekly range (~104 events) is now accepted
+        // and an over-cap range is what returns 400. Parity between the two
+        // endpoints is pinned in private.calendar.recurring-parity.spec.js.
+        it("Returns 400 when the range exceeds the shared occurrence cap", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/generate-recurring",
                 {
                     eventTypeId: 1,
-                    startDate: "2026-01-01",
-                    endDate: "2028-01-01",
+                    startDate: "2040-01-01",
+                    endDate: "2050-01-01",
                 },
                 400,
-            );
+            ).then((resp) => {
+                expect(resp.body.message).to.contain("Too many occurrences");
+            });
         });
 
         it("Returns 401 when not authenticated", () => {

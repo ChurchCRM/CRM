@@ -444,7 +444,7 @@ function newEvent(Request $request, Response $response, array $args): Response
  *     path="/events/repeat",
  *     operationId="createRepeatEvents",
  *     summary="Create a series of repeat events",
- *     description="Generates individual event records for each occurrence of a recurring event within a date range. Each created event is independently editable.",
+ *     description="Generates individual event records for each occurrence of a recurring event within a date range. Each created event is independently editable. Shares one recurrence engine with POST /events/generate-recurring: the same recurrence and date range produce the same occurrence dates on both endpoints, and a single call creates at most 366 events.",
  *     tags={"Calendar"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=true, @OA\JsonContent(
@@ -463,16 +463,18 @@ function newEvent(Request $request, Response $response, array $args): Response
  *         @OA\Property(property="RangeEnd", type="string", format="date", example="2026-12-31", description="Last date of the repetition range (inclusive)"),
  *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), nullable=true),
  *         @OA\Property(property="LinkedGroupId", type="integer", nullable=true),
- *         @OA\Property(property="Inactive", type="integer", enum={0,1}, nullable=true)
+ *         @OA\Property(property="Inactive", type="integer", enum={0,1}, nullable=true),
+ *         @OA\Property(property="SkipExisting", type="boolean", default=false, description="Skip occurrence dates that already have an active event of this type, making the call idempotent. Same semantics as POST /events/generate-recurring.")
  *     )),
  *     @OA\Response(response=200, description="Repeat events created",
  *         @OA\JsonContent(
  *             @OA\Property(property="success", type="boolean", example=true),
  *             @OA\Property(property="count", type="integer", example=52),
+ *             @OA\Property(property="skipped", type="integer", example=0, description="Occurrences skipped because an event of this type already existed on that date (only non-zero when SkipExisting is true)"),
  *             @OA\Property(property="eventIds", type="array", @OA\Items(type="integer"))
  *         )
  *     ),
- *     @OA\Response(response=400, description="Invalid input (bad event type, invalid dates, unknown recurrence type)"),
+ *     @OA\Response(response=400, description="Invalid input (bad event type, invalid dates, unknown recurrence type, or more than 366 occurrences)"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="AddEvents role required")
  * )
@@ -512,7 +514,7 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
 
     try {
         $service = new EventService();
-        $createdIds = $service->createRepeatEvents([
+        $result = $service->createRecurringEvents([
             'title'          => $input['Title'],
             'typeId'         => (int) $input['Type'],
             'desc'           => $input['Desc'] ?? '',
@@ -528,14 +530,20 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
             'pinnedCalendars' => array_map('intval', is_array($input['PinnedCalendars'] ?? null) ? $input['PinnedCalendars'] : []),
             'linkedGroupId'  => (int) ($input['LinkedGroupId'] ?? 0),
             'inactive'       => (int) ($input['Inactive'] ?? 0),
+            // Off by default so the historical "create them all again" behaviour
+            // is unchanged; opt in for an idempotent re-run (#9735).
+            'skipExisting'   => filter_var($input['SkipExisting'] ?? false, FILTER_VALIDATE_BOOLEAN),
         ]);
     } catch (\InvalidArgumentException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
     }
 
+    $createdIds = array_column($result['events'], 'id');
+
     return SlimUtils::renderJSON($response, [
         'success'  => true,
         'count'    => count($createdIds),
+        'skipped'  => $result['skipped'],
         'eventIds' => $createdIds,
     ]);
 }
@@ -1343,7 +1351,7 @@ function deleteAttendance(Request $request, Response $response, array $args): Re
  *     path="/events/generate-recurring",
  *     operationId="generateRecurringEvents",
  *     summary="Generate recurring events from an EventType's recurrence settings",
- *     description="Creates multiple events between startDate and endDate based on the EventType's recurrence pattern (weekly, monthly, or yearly). Optionally skips dates where an event of the same type already exists.",
+ *     description="Creates multiple events between startDate and endDate based on the EventType's recurrence pattern (weekly, monthly, or yearly). Optionally skips dates where an event of the same type already exists. Shares one recurrence engine with POST /events/repeat: the same recurrence and date range produce the same occurrence dates on both endpoints, and a single call creates at most 366 events.",
  *     tags={"Calendar"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=true, @OA\JsonContent(
@@ -1365,7 +1373,7 @@ function deleteAttendance(Request $request, Response $response, array $args): Re
  *             ))
  *         )
  *     ),
- *     @OA\Response(response=400, description="Invalid input"),
+ *     @OA\Response(response=400, description="Invalid input (bad event type, invalid dates, event type with no recurrence configured, or more than 366 occurrences)"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="AddEvents role required")
  * )
@@ -1396,160 +1404,29 @@ function generateRecurringEvents(Request $request, Response $response, array $ar
         return SlimUtils::renderErrorJSON($response, gettext('endDate must be after startDate'), [], 400);
     }
 
-    // Limit range to 1 year max to prevent accidental mass-creation
-    $maxEnd = (new \DateTime($startDate))->modify('+1 year')->format('Y-m-d');
-    if ($endDate > $maxEnd) {
-        return SlimUtils::renderErrorJSON($response, gettext('Date range cannot exceed 1 year'), [], 400);
-    }
-
-    $recurType = $eventType->getDefRecurType() ?: 'none';
-    if ($recurType === 'none') {
-        return SlimUtils::renderErrorJSON($response, gettext('Event type has no recurrence pattern configured'), [], 400);
-    }
-
-    // Calculate occurrence dates
-    $dates = [];
-    $start = new \DateTime($startDate);
-    $end = new \DateTime($endDate);
-
-    switch ($recurType) {
-        case 'weekly':
-            $dow = $eventType->getDefRecurDow();
-            if (empty($dow)) {
-                return SlimUtils::renderErrorJSON($response, gettext('Event type has no day-of-week configured for weekly recurrence'), [], 400);
-            }
-            // Move to the first occurrence of the target day on or after startDate
-            $current = clone $start;
-            $targetDay = ucfirst(strtolower(trim($dow)));
-            if ($current->format('l') !== $targetDay) {
-                $current->modify("next {$targetDay}");
-            }
-            while ($current <= $end) {
-                $dates[] = $current->format('Y-m-d');
-                $current->modify('+1 week');
-            }
-            break;
-
-        case 'monthly':
-            $dom = (int) $eventType->getDefRecurDom();
-            if ($dom < 1 || $dom > 31) {
-                return SlimUtils::renderErrorJSON($response, gettext('Event type has no valid day-of-month configured for monthly recurrence'), [], 400);
-            }
-            $current = clone $start;
-            // Move to the target DOM in the current month
-            $current->setDate((int) $current->format('Y'), (int) $current->format('m'), min($dom, (int) $current->format('t')));
-            if ($current < $start) {
-                $current->modify('+1 month');
-                $current->setDate((int) $current->format('Y'), (int) $current->format('m'), min($dom, (int) $current->format('t')));
-            }
-            while ($current <= $end) {
-                $dates[] = $current->format('Y-m-d');
-                $current->modify('+1 month');
-                // Handle months with fewer days (e.g., DOM=31 in a 30-day month)
-                $current->setDate((int) $current->format('Y'), (int) $current->format('m'), min($dom, (int) $current->format('t')));
-            }
-            break;
-
-        case 'yearly':
-            $doy = $eventType->getDefRecurDoy();
-            if ($doy === null) {
-                return SlimUtils::renderErrorJSON($response, gettext('Event type has no date configured for yearly recurrence'), [], 400);
-            }
-            $doyDate = $doy instanceof \DateTime ? $doy : new \DateTime($doy);
-            $month = (int) $doyDate->format('m');
-            $day = (int) $doyDate->format('d');
-            $currentYear = (int) $start->format('Y');
-            $endYear = (int) $end->format('Y');
-            for ($y = $currentYear; $y <= $endYear; $y++) {
-                $candidate = new \DateTime("{$y}-{$month}-{$day}");
-                if ($candidate >= $start && $candidate <= $end) {
-                    $dates[] = $candidate->format('Y-m-d');
-                }
-            }
-            break;
-    }
-
-    if (empty($dates)) {
-        return SlimUtils::renderJSON($response, ['created' => 0, 'skipped' => 0, 'events' => []]);
-    }
-
-    $groupId = (int) $eventType->getGroupId();
-    // getDefStartTime() can return either a DateTime or a raw string
-    // depending on the Propel codegen path — handle both safely.
-    $startTimeStr = '09:00:00';
-    $defStartTime = $eventType->getDefStartTime();
-    if ($defStartTime instanceof \DateTimeInterface) {
-        $startTimeStr = $defStartTime->format('H:i:s');
-    } elseif (is_string($defStartTime) && $defStartTime !== '') {
-        $parsed = \DateTimeImmutable::createFromFormat('H:i:s', $defStartTime)
-            ?: \DateTimeImmutable::createFromFormat('H:i', $defStartTime);
-        if ($parsed !== false) {
-            $startTimeStr = $parsed->format('H:i:s');
-        }
-    }
-
-    // Resolve pinned calendars if provided
-    $calendars = null;
-    if (!empty($pinnedCalendarIds) && is_array($pinnedCalendarIds)) {
-        $calendars = CalendarQuery::create()
-            ->filterById($pinnedCalendarIds, Criteria::IN)
-            ->find();
-    }
-
-    $createdEvents = [];
-    $skippedCount = 0;
-
-    foreach ($dates as $date) {
-        // Check for existing event on this date
-        if ($skipExisting) {
-            $existing = EventQuery::create()
-                ->filterByType($eventTypeId)
-                ->filterByStart($date . ' 00:00:00', Criteria::GREATER_EQUAL)
-                ->filterByStart($date . ' 23:59:59', Criteria::LESS_EQUAL)
-                ->filterByInActive(0)
-                ->findOne();
-
-            if ($existing !== null) {
-                $skippedCount++;
-                continue;
-            }
-        }
-
-        $formattedDate = date('M j, Y', strtotime($date));
-        $title = $eventType->getName() . ' — ' . $formattedDate;
-
-        $eventStart = $date . ' ' . $startTimeStr;
-        $eventEnd = (new \DateTime($eventStart))->modify('+1 hour')->format('Y-m-d H:i:s');
-
-        $event = new Event();
-        $event->setTitle($title);
-        $event->setType($eventTypeId);
-        $event->setStart($eventStart);
-        $event->setEnd($eventEnd);
-        $event->setInActive(0);
-        if ($calendars !== null) {
-            $event->setCalendars($calendars);
-        }
-        $event->save();
-
-        if ($groupId > 0) {
-            $audience = new EventAudience();
-            $audience->setEventId($event->getId());
-            $audience->setGroupId($groupId);
-            $audience->save();
-        }
-
-        $createdEvents[] = [
-            'id' => $event->getId(),
-            'title' => $title,
-            'date' => $date,
-        ];
+    // Thin adapter over the one recurring-event generator (#9735). Everything
+    // this endpoint used to do inline — occurrence dates, the generated
+    // "<Type> — M j, Y" title, the event type's default start time with a
+    // one-hour duration, and skipExisting dedup — is the service's documented
+    // behaviour when the caller supplies no title, times or recurrence.
+    try {
+        $service = new EventService();
+        $result = $service->createRecurringEvents([
+            'typeId'          => $eventTypeId,
+            'rangeStart'      => $startDate,
+            'rangeEnd'        => $endDate,
+            'skipExisting'    => $skipExisting,
+            'pinnedCalendars' => array_map('intval', is_array($pinnedCalendarIds) ? $pinnedCalendarIds : []),
+            'linkedGroupId'   => (int) $eventType->getGroupId(),
+        ]);
+    } catch (\InvalidArgumentException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
     }
 
     return SlimUtils::renderJSON($response, [
-        'created' => count($createdEvents),
-        'skipped' => $skippedCount,
-        'events' => $createdEvents,
+        'created' => count($result['events']),
+        'skipped' => $result['skipped'],
+        'events' => $result['events'],
     ]);
 }
 

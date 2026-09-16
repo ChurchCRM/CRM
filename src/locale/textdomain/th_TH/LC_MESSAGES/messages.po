@@ -5028,14 +5028,6 @@ msgid "Verification URL created"
 msgstr "สร้าง URL การยืนยันแล้ว"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "ข้อผิดพลาดในการส่งอีเมล"
 
@@ -8418,10 +8410,6 @@ msgstr "รหัสผ่านของคุณได้รับการอ
 #: 
 msgid "selected family has no coordinates"
 msgstr "ครอบครัวที่เลือกไม่มีพิกัด"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12181,10 +12169,6 @@ msgid "Database dump only (.sql)"
 msgstr "ดัมพ์ฐานข้อมูลเท่านั้น (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "ช่วงวันที่ต้องไม่เกิน 1 ปี"
-
-#: 
 msgid "Destructive Operation"
 msgstr "การดำเนินการที่อันตราย"
 
@@ -12779,10 +12763,6 @@ msgstr "ไม่พบพันธกิจสำหรับรายการ
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "สถานะไม่ใช้งานสามารถสลับได้เฉพาะสำหรับรายการการจัดประเภทเท่านั้น"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "สมาชิกใหม่จะไม่ได้รับอีเมลต้อนรับพร้อมข้อมูลประจำตัว โปรดแชร์รหัสผ่านด้วยตนเอง หรือตั้งค่าอีเมลก่อน"
 
 #: 
 msgid "Option name is required"
@@ -17804,4 +17784,73 @@ msgstr "ไม่พบกิจกรรมสำหรับ %s %d"
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "ลองเลือกประเภทกิจกรรม เดือน หรือปีอื่น"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "เกิดข้อผิดพลาดในการระบุพิกัดทางภูมิศาสตร์ — โปรดลองอีกครั้งในภายหลัง"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "ที่อยู่ไม่สมบูรณ์ (ไม่มีเมือง รัฐ และรหัสไปรษณีย์)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "ทุกครอบครัวมีพิกัดแล้ว"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "ไม่สามารถอัปเดตพิกัดได้"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "ไม่สามารถอัปเดตพิกัดของครอบครัวได้"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "ระบุพิกัดครอบครัวทั้งหมด {{geocoded}} ครอบครัวแล้ว แผนที่เป็นข้อมูลล่าสุดแล้ว"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "ระบุพิกัดครอบครัวแล้ว {{geocoded}} ครอบครัว ไม่สามารถระบุได้ {{failed}} ครอบครัว — ดูรายละเอียดด้านล่าง"
+
+#: 
+msgid "Geocoding…"
+msgstr "กำลังระบุพิกัด…"
+
+#: 
+msgid "No address on file"
+msgstr "ไม่มีที่อยู่ในระบบ"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "ไม่พบข้อมูลที่ตรงกัน — โปรดตรวจสอบที่อยู่ถนน เมือง และรหัสไปรษณีย์"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "เปิดข้อมูลครอบครัวเพื่อแก้ไขที่อยู่ แล้วเรียกใช้อีกครั้ง"
+
+#: 
+msgid "Set up now"
+msgstr "ตั้งค่าตอนนี้"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "จำเป็นต้องใช้การยืนยันตัวตนสองขั้นตอน คุณมีเวลา %d วันในการลงทะเบียน"
+
+#: 
+msgid "Unknown family"
+msgstr "ครอบครัวที่ไม่รู้จัก"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "อัปเดตพิกัดทั้งหมด"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "อัปเดตพิกัดครอบครัวทั้งหมด"
+
+#: 
+msgid "Update Coordinates"
+msgstr "อัปเดตพิกัด"
 

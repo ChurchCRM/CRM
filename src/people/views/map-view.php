@@ -118,7 +118,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bHidePersonAddress')) ?>
                 }
             ],
-            showAllSettingsLink: false
+            showAllSettingsLink: false,
+            // No reload: map-view.js listens for this and applies the saved default zoom in
+            // place, then the pane collapses just as if the Map Settings button were clicked.
+            onSave: function (savedValues) {
+                document.dispatchEvent(new CustomEvent('crm:mapsettings-saved', { detail: savedValues }));
+                var pane = document.getElementById('mapAdminSettings');
+                var collapse = window.bootstrap.Collapse.getOrCreateInstance(pane, { toggle: false });
+                if (pane.classList.contains('collapsing')) {
+                    // Bootstrap ignores hide() while the open animation is still running
+                    pane.addEventListener('shown.bs.collapse', function () { collapse.hide(); }, { once: true });
+                } else {
+                    collapse.hide();
+                }
+            }
         });
     });
     <?php endif; ?>
