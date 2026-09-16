@@ -138,6 +138,15 @@ unanchored word list, so `User not found` came back as "An error occurred…",
 `Ghostwriter field is required` was redacted for containing "host", and
 `Value must be between 1.5 and 3.5` for containing "1.5" (#9737).
 
+Regression coverage for both directions lives in
+`scripts/test-error-redaction.php` (`npm run test:php`, also run in CI). It
+calls the real `containsSensitiveValue()`, `sanitizeErrorMessage()`,
+`buildErrorPayload()` and `renderErrorJSON()` and asserts that quoted JSON keys
+(`{"password":"hunter2"}`), standard base64 with `/`, `+`, `=` and lowercase
+runs, DSNs, JWTs and PEM blocks are redacted while `User not found` and
+`password must be at least 8 characters` stay readable. Add a case there
+whenever you touch `SENSITIVE_VALUE_PATTERNS`.
+
 `sanitizeErrorMessage()` additionally collapses ORM/PDO failures to
 "A database error occurred…". Detect them by **exception class**
 (`PropelException`, `PDOException`) — the vendor directory is `perplorm/perpl`
