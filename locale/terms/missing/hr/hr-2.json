@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} obitelj nije mogla biti geokodirana",
+    "other": "{{count}} obitelji nije moglo biti geokodirano"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktivno {{count}} sekundu",
+    "other": "Aktivno {{count}} sekundi"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Upravo ćete poslati potvrdne e-poruke za {{count}} obitelj.",
+    "other": "Upravo ćete poslati potvrdne e-poruke za {{count}} obitelji."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} obitelj nema evidentiranu adresu e-pošte i bit će preskočena",
+    "other": "{{count}} obitelji nema evidentiranu adresu e-pošte i bit će preskočeno"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…i još {{count}} koji ovdje nije naveden.",
+    "other": "…i još {{count}} koji ovdje nisu navedeni."
   }
 }

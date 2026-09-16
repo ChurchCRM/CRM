@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "تعذر تحديد إحداثيات أسرة واحدة",
+    "other": "تعذر تحديد إحداثيات {{count}} أسرة"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "نشط لمدة ثانية واحدة",
+    "other": "نشط لمدة {{count}} ثانية"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "أنت على وشك إرسال رسائل تأكيد إلى أسرة واحدة.",
+    "other": "أنت على وشك إرسال رسائل تأكيد إلى {{count}} أسرة."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "أسرة واحدة ليس لديها عنوان بريد إلكتروني مسجل وسيتم تخطيها",
+    "other": "{{count}} أسرة ليس لديها عنوان بريد إلكتروني مسجل وسيتم تخطيها"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…وواحد آخر غير مدرج هنا.",
+    "other": "…و{{count}} آخرين غير مدرجين هنا."
   }
 }
