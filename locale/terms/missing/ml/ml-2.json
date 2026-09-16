@@ -1,30 +1,30 @@
 {
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ഇമെയിൽ ക്ലയന്റിന് വളരെയധികം സ്വീകർത്താക്കൾ ({{count}} > {{max}}). പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക.",
+    "other": "ഇമെയിൽ ക്ലയന്റിന് വളരെയധികം സ്വീകർത്താക്കൾ ({{count}} > {{max}}). പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} മിനിറ്റ് ബാക്കി",
+    "other": "{{count}} മിനിറ്റുകൾ ബാക്കി"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} കുടുംബത്തെ ജിയോകോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല",
+    "other": "{{count}} കുടുംബങ്ങളെ ജിയോകോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} സെക്കൻഡ് സജീവം",
+    "other": "{{count}} സെക്കൻഡുകൾ സജീവം"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "നിങ്ങൾ {{count}} കുടുംബത്തിന് സ്ഥിരീകരണ ഇമെയിലുകൾ അയയ്ക്കാൻ പോകുന്നു.",
+    "other": "നിങ്ങൾ {{count}} കുടുംബങ്ങൾക്ക് സ്ഥിരീകരണ ഇമെയിലുകൾ അയയ്ക്കാൻ പോകുന്നു."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} കുടുംബത്തിന് രേഖയിൽ ഇമെയിൽ വിലാസമില്ല, ഒഴിവാക്കപ്പെടും",
+    "other": "{{count}} കുടുംബങ്ങൾക്ക് രേഖയിൽ ഇമെയിൽ വിലാസമില്ല, ഒഴിവാക്കപ്പെടും"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…കൂടാതെ {{count}} എണ്ണം കൂടി ഇവിടെ പട്ടികപ്പെടുത്തിയിട്ടില്ല.",
+    "other": "…കൂടാതെ {{count}} എണ്ണം കൂടി ഇവിടെ പട്ടികപ്പെടുത്തിയിട്ടില്ല."
   }
 }
