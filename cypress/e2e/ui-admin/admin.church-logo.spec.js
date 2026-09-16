@@ -60,6 +60,32 @@ function uploadLogoThroughUppy() {
 }
 
 describe("Admin - Church Logo", () => {
+    // Base64 of the logo the instance had before this suite ran, or null.
+    let originalLogoBase64 = null;
+
+    before(() => {
+        // The logo is global state: remember what the instance had so the
+        // suite can put it back instead of resetting a customised instance's
+        // branding.
+        cy.makePrivateAdminAPICall("GET", LOGO_API_URL, null, 200).then(
+            (response) => {
+                if (!response.body.hasCustomLogo) {
+                    return;
+                }
+                // Root-relative URL with the install's base path already in it;
+                // resolve against the origin so a subdirectory install does not
+                // get its base path doubled.
+                cy.request({
+                    url: new URL(response.body.url, Cypress.config("baseUrl"))
+                        .href,
+                    encoding: "base64",
+                }).then((imageResponse) => {
+                    originalLogoBase64 = imageResponse.body;
+                });
+            },
+        );
+    });
+
     beforeEach(() => {
         // Remove any logo left behind by a previous (possibly failed) run first,
         // then establish the browser session.
@@ -68,8 +94,18 @@ describe("Admin - Church Logo", () => {
     });
 
     after(() => {
-        // The logo is global state — never leave one behind for other specs.
-        cy.makePrivateAdminAPICall("DELETE", LOGO_API_URL, null, 200);
+        // Leave the instance as it was found: restore the original logo or make
+        // sure none is left behind for other specs.
+        if (originalLogoBase64 !== null) {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                LOGO_API_URL,
+                { imgBase64: `data:image/png;base64,${originalLogoBase64}` },
+                200,
+            );
+        } else {
+            cy.makePrivateAdminAPICall("DELETE", LOGO_API_URL, null, 200);
+        }
     });
 
     it("Opens the shared Uppy dashboard from the Church Logo card", () => {

@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\Utils\ImageSupportUtils;
 use ChurchCRM\Utils\LoggerUtils;
 
@@ -47,26 +48,44 @@ class ChurchLogoService
     }
 
     /**
-     * Last-modified timestamp of the uploaded logo, or 0 when none exists.
-     * Used as a cache-busting `?v=` token so re-uploading produces a fresh
-     * browser fetch of the same URL (same approach as Photo, see #8662).
+     * Content-derived version token for the cache-busting `?v=` query, or an
+     * empty string when no logo exists.
+     *
+     * A hash of the stored bytes guarantees a different URL whenever the
+     * logo's content changes, including two replacements inside the same
+     * second, which a filemtime() token (Photo's approach, #8662) cannot
+     * promise. xxh3 is bundled with ext/hash since PHP 8.1 and hashes the
+     * at-most-1200x400 PNG in well under a millisecond, so this is cheap
+     * enough for every page render.
      */
-    public static function getModifiedTime(): int
+    public static function getVersion(): string
     {
-        if (!self::hasCustomLogo()) {
-            return 0;
+        $path = self::getLogoPath();
+        if (!is_file($path)) {
+            return '';
         }
 
-        $mtime = @filemtime(self::getLogoPath());
+        $hash = @hash_file('xxh3', $path);
+        if ($hash === false) {
+            // Unreadable at this instant (e.g. mid-replacement on a filesystem
+            // without atomic rename); fall back to stat data rather than fail.
+            clearstatcache(true, $path);
+            $hash = sprintf('%x-%x', (int) @filemtime($path), (int) @filesize($path));
+        }
 
-        return $mtime === false ? 0 : $mtime;
+        return $hash;
     }
 
     /**
      * Store an uploaded logo from a base64 data URI, re-encoded to PNG.
      *
+     * The logo is site-wide and served while this runs, so the new PNG is
+     * encoded to a temporary file and renamed over the live one: a failed
+     * upload (bad image, over budget, disk full) leaves the current logo
+     * exactly as it was, and readers never see a half-written file.
+     *
      * @throws \Exception when the payload is not a supported image
-     * @throws \ChurchCRM\Exceptions\PhotoSizeException when it exceeds the server upload limit
+     * @throws PhotoSizeException when it exceeds the server upload limit or the decode pixel budget
      */
     public static function setImageFromBase64(string $base64): void
     {
@@ -75,15 +94,14 @@ class ChurchLogoService
         // Shared decode + MIME allow-list + upload-size validation
         $fileData = ImageSupportUtils::decodeBase64Image($base64);
 
+        // Also checks the source dimensions against the decode budget first
         $resizedImage = ImageSupportUtils::createResizedImage(
             $fileData,
             self::LOGO_MAX_WIDTH,
             self::LOGO_MAX_HEIGHT
         );
 
-        if (!imagepng($resizedImage, self::getLogoPath())) {
-            throw new \Exception('Failed to save the church logo');
-        }
+        ImageSupportUtils::savePngAtomically($resizedImage, self::getLogoPath());
 
         LoggerUtils::getAppLogger()->info('Church logo uploaded', [
             'path'   => self::getLogoPath(),

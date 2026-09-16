@@ -21,7 +21,7 @@ use Slim\Routing\RouteCollectorProxy;
  *     @OA\Response(response=200, description="Church logo status",
  *         @OA\JsonContent(
  *             @OA\Property(property="hasCustomLogo", type="boolean", example=true),
- *             @OA\Property(property="url", type="string", example="/Images/church-logo.png?v=1718000000")
+ *             @OA\Property(property="url", type="string", example="/Images/church-logo.png?v=3f2a9c1e8b7d6a54")
  *         )
  *     ),
  *     @OA\Response(response=403, description="Admin role required")
@@ -42,12 +42,12 @@ use Slim\Routing\RouteCollectorProxy;
  *         @OA\JsonContent(
  *             @OA\Property(property="success", type="boolean", example=true),
  *             @OA\Property(property="hasCustomLogo", type="boolean", example=true),
- *             @OA\Property(property="url", type="string", example="/Images/church-logo.png?v=1718000000")
+ *             @OA\Property(property="url", type="string", example="/Images/church-logo.png?v=3f2a9c1e8b7d6a54")
  *         )
  *     ),
  *     @OA\Response(response=400, description="Missing or unsupported image data"),
  *     @OA\Response(response=403, description="Admin role required"),
- *     @OA\Response(response=413, description="Image exceeds the server upload limit")
+ *     @OA\Response(response=413, description="Image exceeds the server upload limit or the decode pixel budget")
  * )
  * @OA\Delete(
  *     path="/system/church-logo",

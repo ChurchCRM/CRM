@@ -135,9 +135,10 @@ class ChurchMetaData
     private static function resolveLogo(string $prefix, bool $allowConfiguredUrl): string
     {
         if (ChurchLogoService::hasCustomLogo()) {
-            // Cache-buster so a re-upload to the same path is picked up immediately.
+            // Content-hash cache-buster: the URL changes whenever the bytes do,
+            // so a re-upload is picked up immediately, even seconds apart.
             return $prefix . '/Images/' . ChurchLogoService::LOGO_FILENAME
-                . '?v=' . ChurchLogoService::getModifiedTime();
+                . '?v=' . ChurchLogoService::getVersion();
         }
 
         if ($allowConfiguredUrl) {
