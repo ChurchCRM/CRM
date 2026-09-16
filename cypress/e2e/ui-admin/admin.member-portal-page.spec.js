@@ -189,6 +189,12 @@ describe("Admin → Member Portal page", () => {
 
         it("Turning the calendar section off hides its card in the portal", () => {
             activateTheme("default");
+            // MP6 (#9867) turned the volunteering placeholder into a real card,
+            // so the "the other section is untouched" half of this assertion
+            // now looks for that card — which needs the V2 rollout flag on as
+            // well as its own section switch.
+            setConfig("sVolunteerVersion", "v2");
+            setConfig("bPortalShowVolunteer", "1");
             setConfig("bPortalShowCalendar", "1");
             loginAsMember();
             cy.get(".portal-card-calendar").should("exist");
@@ -196,9 +202,20 @@ describe("Admin → Member Portal page", () => {
             setConfig("bPortalShowCalendar", "0");
             loginAsMember();
             cy.get(".portal-card-calendar").should("not.exist");
-            cy.get(".portal-card-volunteer").should("exist");
+            cy.get("#portal-volunteering-card").should("exist");
 
             setConfig("bPortalShowCalendar", "1");
+        });
+
+        it("Turning the volunteering section off hides its card in the portal", () => {
+            activateTheme("default");
+            setConfig("sVolunteerVersion", "v2");
+            setConfig("bPortalShowVolunteer", "0");
+            loginAsMember();
+            cy.get("#portal-volunteering-card").should("not.exist");
+            cy.get(".portal-card-calendar").should("exist");
+
+            setConfig("bPortalShowVolunteer", "1");
         });
     });
 });
