@@ -159,10 +159,20 @@ class AuthMiddleware implements MiddlewareInterface
      *  - /user/current/enroll2fa        — backward-compat alias for manage2fa
      *  - /user/impersonate/exit         — the way out of an admin masquerade (#9843);
      *    without it the exit request itself would be redirected away
-     *  - /api/volunteer/me/…, /volunteer/my-schedule, /volunteer/opportunities — the
-     *    Volunteer v2 member surface (#9706, design §4.7), only while the rollout
-     *    state includes V2; every route behind them derives the acting person from
-     *    the session and accepts no personId. These move into /portal with MP6 (#9867).
+     *  - /api/volunteer/me/…            — the Volunteer v2 member API (#9706,
+     *    volunteer design §4.7), only while the rollout state includes V2. Every
+     *    route behind it derives the acting person from the session and accepts
+     *    no personId.
+     *
+     * The two Volunteer v2 MVC pages that used to be listed beside that API —
+     * `/volunteer/my-schedule` and `/volunteer/opportunities` — moved into the
+     * portal with MP6 (#9867), so the `/portal` prefix above covers them and
+     * they are no longer exempt. `/api/volunteer/me/` stays: the portal's
+     * volunteering templates load the same two bundles, and those bundles call
+     * exactly that API. An old link to either retired URL therefore lands a
+     * self-service member on `/portal/` rather than on the page itself — one
+     * click from their schedule, and the price of the member surface having
+     * exactly one home (design §0.2).
      *
      * Without the auth-flow exemptions, limited-permission users get stuck in a
      * redirect loop because AuthMiddleware blocks the page the auth system is
@@ -193,9 +203,7 @@ class AuthMiddleware implements MiddlewareInterface
             return false;
         }
 
-        return str_contains($path, '/api/volunteer/me/')
-            || str_contains($path, '/volunteer/my-schedule')
-            || str_contains($path, '/volunteer/opportunities');
+        return str_contains($path, '/api/volunteer/me/');
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool

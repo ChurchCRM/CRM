@@ -44,7 +44,6 @@ class Menu
         // Computed once here like every other visibility boolean; the predicate memoises
         // the scope query on the User instance so the route gate reuses it.
         $isVolunteerCoordinator = $currentUser->isVolunteerCoordinatorEnabled();
-        $isVolunteerV2Enabled = User::isVolunteerV2Enabled();
         $menus = [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-gauge'),
             'Calendar'     => self::getCalendarMenu($canViewEvents),
@@ -53,7 +52,9 @@ class Menu
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
             'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents, $currentUser->canWriteEvents()),
-            'Volunteer'    => self::getVolunteerMenu($isVolunteerV2Enabled),
+            // No "Volunteer" heading: the member surface lives only in the
+            // Member Portal now (#9867, Member Portal design P16). "Ministries"
+            // below is the administration surface and is unchanged.
             'Ministries'   => self::getMinistriesMenu($currentUser, $isVolunteerCoordinator),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
@@ -300,34 +301,20 @@ class Menu
         return $eventsMenu;
     }
 
-    /**
-     * Volunteer Management v2 — the MEMBER surface (#9704, member half by #9712).
-     *
-     * "Volunteer" is now the volunteer's own heading and nothing else: my schedule
-     * and the opportunities I could take. The administration surface — the
-     * dashboard and the ministries a coordinator runs — moved to its own
-     * "Ministries" heading, below, so that the heading a volunteer opens is about
-     * them rather than about running the programme.
-     *
-     * $isV2 is User::isVolunteerV2Enabled(), and it is the only gate here, because
-     * that is the gate on the member routes (design §3.2: "no role gate — per-record
-     * authorization only, by authenticated person"). Menu visibility mirrors the
-     * route middleware exactly (§3.5), and for these two the middleware is the
-     * rollout flag and nothing else: every authenticated person is potentially a
-     * volunteer, and one with nothing on their list still sees the entries — that is
-     * intended, it is where they go to find something.
-     *
-     * The legacy "Volunteer Opportunities" item under People → Admin covers the 'v1'
-     * and 'both' rollout states and is unaffected.
-     */
-    private static function getVolunteerMenu(bool $isV2): MenuItem
-    {
-        $volunteerMenu = new MenuItem(gettext('Volunteer'), '', $isV2, 'fa-handshake-angle');
-        $volunteerMenu->addSubMenu(new MenuItem(gettext('My Volunteer Schedule'), 'volunteer/my-schedule', $isV2, 'fa-calendar-check'));
-        $volunteerMenu->addSubMenu(new MenuItem(gettext('Open Opportunities'), 'volunteer/opportunities', $isV2, 'fa-hand-holding-heart'));
-
-        return $volunteerMenu;
-    }
+    // There is no getVolunteerMenu() any more (#9867, Member Portal design P16).
+    //
+    // The "Volunteer" heading held exactly two items — *My Volunteer Schedule*
+    // and *Open Opportunities* — and both pages moved into the Member Portal,
+    // where they are reached from its own "Volunteering" nav entry
+    // (ChurchCRM\Portal\PortalNav). Member-facing volunteer functionality now
+    // exists in one place, and the admin sidebar carries only the
+    // administration surface: the "Ministries" heading below, unchanged.
+    //
+    // Staff who also volunteer reach their own schedule through the Member
+    // Portal, which their user menu links to.
+    //
+    // The legacy "Volunteer Opportunities" item under People → Admin covers the
+    // 'v1' and 'both' rollout states and is unaffected.
 
     /**
      * Volunteer Management v2 — the ADMINISTRATION surface (epic #9701).
