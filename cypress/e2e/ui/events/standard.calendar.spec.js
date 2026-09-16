@@ -407,10 +407,57 @@ describe("Standard Calendar — save (admin-session)", () => {
  * The `calendars` table has no owner column, so "My Calendars" told staff
  * something that was never true; the heading now reads "Church Calendars".
  * Calendars that name an owning ministry (`calendars.ministry_id`) are listed
- * under their own heading between the church and system lists — the seed has
- * calendar 6, "Youth Ministry", with ministry_id 1.
+ * under their own heading between the church and system lists.
+ *
+ * The fixture is built here rather than seeded. #9869 gave `calendars.ministry_id` a
+ * real foreign key to `volunteer_ministry_vmin`, so a seeded calendar pointing at a
+ * ministry the seed does not contain is no longer a harmless fiction: it survives the
+ * load only because the dump disables foreign-key checks, and it is nulled the moment
+ * some other spec creates and deletes a ministry that takes the same id. So this block
+ * makes its own ministry and its own calendar, and takes both away afterwards.
  */
 describe("Calendar sidebar — church, ministry and system lists", () => {
+    const MINISTRY_NAME = "CALSIDEBAR Youth Ministry";
+    let ministryId = 0;
+
+    const dbOk = (sql, params = []) =>
+        cy.dbQuery(sql, params).then((result) => {
+            if (result.error !== null) {
+                throw new Error(
+                    `Unexpected SQL failure.\n  SQL: ${sql}\n  ${result.error.code}: ${result.error.message}`,
+                );
+            }
+            return result.rows;
+        });
+
+    const removeFixture = () => {
+        // The calendar first: the foreign key is ON DELETE SET NULL, so a calendar
+        // left behind becomes an unowned church calendar and pollutes this very list.
+        dbOk(`DELETE FROM calendars WHERE name = ?`, [MINISTRY_NAME]);
+        dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name = ?`, [MINISTRY_NAME]);
+    };
+
+    before(() => {
+        removeFixture();
+        dbOk(
+            `INSERT INTO volunteer_ministry_vmin
+                (vmin_Name, vmin_Description, vmin_Active, vmin_CreatedDate)
+             VALUES (?, 'calendar sidebar fixture', 1, NOW())`,
+            [MINISTRY_NAME],
+        ).then((rows) => {
+            ministryId = rows.insertId;
+            dbOk(
+                `INSERT INTO calendars (name, foregroundColor, backgroundColor, ministry_id)
+                 VALUES (?, 'FFFFFF', '795548', ?)`,
+                [MINISTRY_NAME, ministryId],
+            );
+        });
+    });
+
+    after(() => {
+        removeFixture();
+    });
+
     beforeEach(() => cy.setupStandardSession());
 
     const openSidebar = () => {
@@ -430,19 +477,19 @@ describe("Calendar sidebar — church, ministry and system lists", () => {
 
         cy.get("#calendarMinistrySection", { timeout: 10000 }).should("not.have.class", "d-none");
         cy.get("#calendarMinistrySection").should("contain", "Ministry Calendars");
-        cy.get("#calendarMinistryList").should("contain", "Youth Ministry");
+        cy.get("#calendarMinistryList").should("contain", MINISTRY_NAME);
 
         // It is not also in the church list.
-        cy.get("#calendarUserList").should("not.contain", "Youth Ministry");
+        cy.get("#calendarUserList").should("not.contain", MINISTRY_NAME);
         cy.get("#calendarUserList").should("contain", "Public Calendar");
     });
 
     it("GET /api/calendars carries the owning ministry", () => {
         cy.request("/api/calendars").then((response) => {
             const calendars = response.body.Calendars;
-            const ministryCalendar = calendars.find((calendar) => calendar.Name === "Youth Ministry");
-            expect(ministryCalendar, "the seeded ministry calendar").to.exist;
-            expect(ministryCalendar.MinistryId).to.eq(1);
+            const ministryCalendar = calendars.find((calendar) => calendar.Name === MINISTRY_NAME);
+            expect(ministryCalendar, "the ministry calendar").to.exist;
+            expect(ministryCalendar.MinistryId).to.eq(ministryId);
 
             const churchCalendar = calendars.find((calendar) => calendar.Name === "Public Calendar");
             expect(churchCalendar.MinistryId).to.eq(null);

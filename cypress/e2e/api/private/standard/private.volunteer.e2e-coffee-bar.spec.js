@@ -257,6 +257,11 @@ function cleanupFixtures() {
     dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [
         PERSON_COORDINATOR,
     ]);
+    // #9869: a ministry created through the API now comes with its own calendar,
+    // named after the ministry. `calendars.ministry_id` is ON DELETE SET NULL, so
+    // deleting the ministry row directly would leave the calendar behind as an
+    // unowned church calendar. It goes first, matched on the same prefix.
+    dbOk(`DELETE FROM calendars WHERE name LIKE ?`, like);
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, like);
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, like);
     // The pool Group is this spec's own; take its memberships with it.

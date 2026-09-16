@@ -179,6 +179,11 @@ function cleanupFixtures() {
         `DELETE vtem FROM volunteer_team_vtem vtem ${byMinistry.replace("%s", "vtem.vtem_vmin_ID")}`,
         like,
     );
+    // #9869: a ministry created through the API now comes with its own calendar,
+    // named after the ministry. `calendars.ministry_id` is ON DELETE SET NULL, so
+    // deleting the ministry row directly would leave the calendar behind as an
+    // unowned church calendar. It goes first, matched on the same prefix.
+    dbOk(`DELETE FROM calendars WHERE name LIKE ?`, like);
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, like);
 }
 

@@ -39,11 +39,18 @@ CREATE TABLE `calendars` (
 --
 -- Dumping data for table `calendars`
 --
+-- Calendar 6, "Youth Ministry", used to carry `ministry_id = 1` even though this seed
+-- contains no `volunteer_ministry_vmin` rows at all. That was harmless while the column
+-- had no foreign key; #9869 adds one, and the seed loads with FOREIGN_KEY_CHECKS=0, so
+-- the dangling value survived the load and was then silently nulled the first time a
+-- spec created and deleted a ministry that happened to take id 1. The column is NULL
+-- here now and `standard.calendar.spec.js` builds its own ministry + calendar pair.
+--
 
 LOCK TABLES `calendars` WRITE;
 /*!40000 ALTER TABLE `calendars` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00',NULL),(2,'Private Calendar',NULL,'FFFFFF','0000AA',NULL),(3,'C',NULL,'FA8072','212F3D',NULL),(4,'Ca',NULL,'FA8072','212F3D',NULL),(5,'Ca',NULL,'FA8072','212F3D',NULL),(6,'Youth Ministry',NULL,'FFFFFF','795548',1);
+INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00',NULL),(2,'Private Calendar',NULL,'FFFFFF','0000AA',NULL),(3,'C',NULL,'FA8072','212F3D',NULL),(4,'Ca',NULL,'FA8072','212F3D',NULL),(5,'Ca',NULL,'FA8072','212F3D',NULL),(6,'Youth Ministry',NULL,'FFFFFF','795548',NULL);
 /*!40000 ALTER TABLE `calendars` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
