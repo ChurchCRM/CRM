@@ -534,6 +534,62 @@ This keeps each file under ~300 lines and makes it obvious which route handles w
 
 ---
 
+## Member Portal MVC Module (`/portal/*`) <!-- learned: 2026-09-16 -->
+
+The member-facing area (epic #8977, design
+[`member-portal-design.md`](./member-portal-design.md)). It is an
+`MvcAppFactory` module like `/event`, with three things no other module does.
+
+| Component | Location |
+|-----------|----------|
+| Entry point | `src/portal/index.php` — `MvcAppFactory::create('/portal', [...])`, **no** module role middleware |
+| Page gate | `ChurchCRM\Portal\PortalAccessMiddleware` + `CSRFMiddleware`, added to the route **group**, not the app |
+| Routes | `src/portal/routes/*.php` — `home.php` (inside the gated group, uses `$group`), `theme-asset.php` (public, uses `$app`) |
+| Views | Twig, not `PhpRenderer`: `src/Include/themes/default/templates/**/*.twig` |
+| Error pages | The module's own, via the new `errorHandler` option on `MvcAppFactory` |
+| `.htaccess` | `src/portal/.htaccess` — blocks `routes/*.php`, routes everything else through `index.php` |
+
+**1. No role middleware; the gate is the landing rule instead.** Every login may
+open the portal. An `isEditSelfExclusive()` session is *confined* to it:
+`AuthMiddleware::isLimitedAccessAllowedPath()` (renamed from
+`isAuthFlowExemptPath`) lets `/portal`, `/api/portal` and the auth-flow pages
+through and 302s everything else to `/portal/`; `Include/PageInit.php` does the
+same for legacy pages; `AuthenticationManager::getDefaultLandingPath()` picks the
+post-login destination. `/external/limited-access` is now a 302 to `/portal/`.
+
+**2. One route is public inside an authenticated module.**
+`GET /portal/theme/{name}/{path}` streams theme assets and must work without a
+session. App-level middleware cannot be skipped per route, so
+`AuthMiddleware::isPublicPath()` carves it out alongside `/api/public`, and
+`PortalAccessMiddleware` is attached to the page group rather than the app. A
+missing asset returns a bare 404, not the HTML error page — there is no session
+to render a page for.
+
+**3. Templates come from a theme, not from `views/`.**
+`ChurchCRM\Portal\PortalTwig::render()` is the only way a portal page becomes a
+response. The loader order is *active theme → default theme*; `@default/...`
+always addresses core. A render failure in the active theme shows administrators
+`errors/theme-error.html.twig` and members `errors/unavailable.html.twig`, both
+from the default theme, and logs to `LoggerUtils::getAppLogger()` **and**
+`error_log()` — never a silent fallback.
+
+```php
+// src/portal/routes/<page>.php — inside the gated group, so $group, not $app
+$group->get('/profile', function (Request $request, Response $response): Response {
+    return PortalTwig::render($response, 'profile/index.html.twig', $model, PortalNav::PROFILE);
+});
+```
+
+The template contract (blocks, partials, every global) is documented for theme
+authors in `docs/portal-templates.md`; adding a variable or block is a
+compatible change, renaming or removing one is not.
+
+**`MvcAppFactory` gained `'errorHandler' => callable`** for this module: the
+shared Tabler error page `require`s `Include/Header.php`, i.e. the admin shell,
+which a member must never see.
+
+---
+
 ## Deprecated Locations (DO NOT USE)
 
 | Path | Status | Reason |
