@@ -689,6 +689,8 @@ paths:
           description: 'Missing or invalid calendar ID'
         '401':
           description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
         '409':
           description: 'Calendar still has events assigned; remove them first'
       security:
