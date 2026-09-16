@@ -33,9 +33,12 @@ class SlimUtils
      * connection string, key material, or a full address (#9737).
      */
     private const SENSITIVE_VALUE_PATTERNS = [
-        // password=…, api_key: …, Authorization: Bearer … — a credential name
-        // followed by an assignment and a value.
-        '/\\b(?:pass(?:word|wd)?|pwd|secret|credentials?|api[_-]?key|(?:access|refresh|auth|bearer|csrf|session)[_-]?token|token|authorization|private[_-]?key|client[_-]?secret)\\b\\s*[:=]\\s*\\S/i',
+        // password=…, api_key: …, Authorization: Bearer …, {"password":"…"},
+        // ['token' => '…'] — a credential name, optionally quoted as a JSON or
+        // map key, followed by a separator and a value, with whitespace
+        // allowed on either side of the separator. Prose such as "password
+        // must be at least 8 characters" has no separator and is left alone.
+        '/\\b(?:pass(?:word|wd)?|pwd|secret|credentials?|api[_-]?key|(?:access|refresh|auth|bearer|csrf|session)[_-]?token|token|authorization|private[_-]?key|client[_-]?secret)\\b["\']?\\s*[:=]\\s*\\S/i',
         // DSN / connection-string fragments: mysql:host=db;dbname=x;user=y
         '/\\b(?:host|hostname|dbname|unix_socket|user|username|uid)\\s*=\\s*\\S/i',
         // Credentials embedded in a URL: scheme://user:pass@host
@@ -44,64 +47,31 @@ class SlimUtils
         '/-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----/',
         // JSON Web Token
         '/\\beyJ[A-Za-z0-9_-]{8,}\\.[A-Za-z0-9_-]{8,}\\.[A-Za-z0-9_-]+/',
-        // A long opaque run — API keys, session ids, base64 blobs. No English
-        // word or identifier in a user-facing message reaches 40 characters.
-        '/\\b[A-Za-z0-9_-]{40,}\\b/',
+        // A long opaque run — API keys, session ids, base64 blobs — in the
+        // URL-safe *or* the standard base64 alphabet, so an unlabelled
+        // credential such as an AWS secret access key
+        // (`wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`) is caught even though
+        // `/` splits it into short segments. No word-boundary anchors: `+`,
+        // `/` and `=` are not word characters, so `\b` would fail beside them.
+        // No user-facing message legitimately contains a 40-character
+        // unbroken token. A server path or slug that long is an internal
+        // detail the caller should not see either, so it is collapsed rather
+        // than exempted — there is no lexical test ("looks like prose") that
+        // a generated secret cannot also pass. A message that must show such
+        // a value belongs in a dedicated payload field, not in free text.
+        '#[A-Za-z0-9+/=_-]{40,}#',
         // A complete IPv4 address (the old rule matched any two decimals,
         // so it redacted "between 1.5 and 3.5").
         '/\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b/',
     ];
 
     /**
-     * A run of standard-base64 characters long enough to be key material.
-     * `SENSITIVE_VALUE_PATTERNS` covers the URL-safe alphabet; this adds the
-     * `+`, `/` and `=` that standard base64 uses, which an unlabelled
-     * credential such as an AWS secret access key
-     * (`wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`) is built from.
-     */
-    private const OPAQUE_BASE64_RUN = '#[A-Za-z0-9+/=_-]{40,}#';
-
-    /**
-     * True when a standard-base64 run in the message looks like key material
-     * rather than a file path.
-     *
-     * Simply adding `+/=` to the URL-safe pattern is not safe: it makes any
-     * absolute or deep relative path of 40+ characters match, so
-     * "Failed to open /var/www/churchcrm/src/ChurchCRM/Service/PersonService"
-     * would be replaced wholesale by the generic message — reintroducing
-     * exactly the over-redaction #9737 set out to remove.
-     *
-     * Paths are built from dictionary words, so they always contain a long
-     * run of consecutive lowercase letters ("churchcrm", "templates",
-     * "local"); a base64 blob of the same length essentially never does.
-     * That single discriminator separates the two cleanly.
-     */
-    private static function containsOpaqueBase64Run(string $message): bool
-    {
-        if (preg_match_all(self::OPAQUE_BASE64_RUN, $message, $matches) < 1) {
-            return false;
-        }
-
-        foreach ($matches[0] as $run) {
-            // No `+`, `/` or `=` means the URL-safe pattern above already
-            // decided this run; nothing to add here.
-            if (preg_match('#[+/=]#', $run) !== 1) {
-                continue;
-            }
-            // A five-letter lowercase word fragment marks this as prose/path.
-            if (preg_match('/[a-z]{5}/', $run) === 1) {
-                continue;
-            }
-
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
      * True when the message looks like it carries a secret value and must not
      * be shown to the caller.
+     *
+     * Regression coverage for both directions — values that must be redacted
+     * and ordinary messages that must stay readable — lives in
+     * `scripts/test-error-redaction.php` (`npm run test:php`).
      */
     public static function containsSensitiveValue(string $message): bool
     {
@@ -111,7 +81,7 @@ class SlimUtils
             }
         }
 
-        return self::containsOpaqueBase64Run($message);
+        return false;
     }
 
     /**
