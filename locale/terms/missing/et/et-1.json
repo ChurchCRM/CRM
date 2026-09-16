@@ -164,7 +164,7 @@
     "other": "Liiga palju saajaid e-posti kliendi jaoks ({{count}} > {{max}}). Kasutage selle asemel funktsiooni „Kopeeri aadressid”."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Jäänud on {{count}} minut",
+    "other": "Jäänud on {{count}} minutit"
   }
 }
