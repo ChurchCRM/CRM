@@ -17,7 +17,10 @@ $app->get('/theme/{name}/{path:.*}', function (Request $request, Response $respo
     if ($absolutePath === null) {
         // A plain 404, not the module's HTML error page: this route is public
         // and serves static files, so there is no session to render a page for.
-        $response->getBody()->write('Not found');
+        // Still translated — the installation's own language is set by `sLanguage`
+        // and needs no session, and a member who opens a broken theme URL directly
+        // should not be answered in English (#9869).
+        $response->getBody()->write(gettext('Not found'));
 
         return $response->withStatus(404)->withHeader('Content-Type', 'text/plain');
     }
