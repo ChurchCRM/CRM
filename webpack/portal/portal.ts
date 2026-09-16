@@ -6,11 +6,11 @@
  * navigation on a phone and dismissing a flash message. Page-specific bundles
  * (calendar, volunteering, teams) are separate entries added by later issues.
  *
- * Strings go through i18next, and i18next is only populated once the locale
- * loader has finished, so anything user-visible waits for onLocalesReady.
+ * Strings go through the page's global i18next — the one the layout loads and
+ * the locale loader initialises, never a bundled copy — and it is only
+ * populated once the locale loader has finished, so anything user-visible
+ * waits for onLocalesReady.
  */
-import i18next from "i18next";
-
 import "./portal.scss";
 
 const NAV_ID = "portal-nav";
