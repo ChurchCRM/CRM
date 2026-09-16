@@ -20,16 +20,21 @@ describe("Member Portal — staff access", () => {
         cy.url().should("not.include", "/portal");
     });
 
+    // Scoped to the user menu's dropdown: since #9864 the admin sidebar also
+    // carries a "Member Portal" entry (Admin → Member Portal), so matching on
+    // the label alone would find that collapsed sidebar link instead.
+    const userMenuPortalLink = () => cy.get('.dropdown-menu a.dropdown-item[href$="/portal/"]');
+
     it("The user menu offers a Member Portal entry", () => {
         cy.visit("/v2/dashboard");
         cy.get('[aria-label="Open user menu"]').click();
-        cy.contains("a", "Member Portal").should("be.visible");
+        userMenuPortalLink().should("be.visible").and("contain.text", "Member Portal");
     });
 
     it("The Member Portal entry opens the portal", () => {
         cy.visit("/v2/dashboard");
         cy.get('[aria-label="Open user menu"]').click();
-        cy.contains("a", "Member Portal").click();
+        userMenuPortalLink().click();
         cy.url({ timeout: 10000 }).should("include", "/portal");
         cy.get(".portal-home").should("exist");
     });

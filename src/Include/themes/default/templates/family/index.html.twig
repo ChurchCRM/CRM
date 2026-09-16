@@ -1,0 +1,178 @@
+{% extends "layout.html.twig" %}
+
+{#
+  My Family — the address the church writes to, everyone in the household, and
+  the two things a member can do about it.
+
+  Variables: `family`, `members`, `canEdit`, `canConfirm`
+  (see docs/portal-templates.md). `canEdit` is true only for the family's
+  adults; every other member sees the same page without the edit controls.
+#}
+
+{% block content %}
+<div class="portal-family">
+
+    <section class="portal-card">
+        <h1 class="portal-page-title">{{ gettext('%s family')|format(family.name) }}</h1>
+        <p class="portal-card-text">
+            {{ ngettext('%s person in your household', '%s people in your household', members|length)|format(members|length) }}
+        </p>
+    </section>
+
+    <section class="portal-card" id="portal-family-address">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
+            <span>{{ gettext('Where we reach you') }}</span>
+        </h2>
+        <dl class="portal-detail-list">
+            <dt>{{ gettext('Address') }}</dt>
+            <dd data-field="address1">{{ family.address1|default('—') }}</dd>
+
+            {% if family.address2 %}
+            <dt>{{ gettext('Address Line 2') }}</dt>
+            <dd data-field="address2">{{ family.address2 }}</dd>
+            {% endif %}
+
+            <dt>{{ gettext('City') }}</dt>
+            <dd data-field="city">{{ family.city|default('—') }}</dd>
+
+            <dt>{{ gettext('State') }}</dt>
+            <dd data-field="state">{{ family.state|default('—') }}</dd>
+
+            <dt>{{ gettext('Zip') }}</dt>
+            <dd data-field="zip">{{ family.zip|default('—') }}</dd>
+
+            <dt>{{ gettext('Country') }}</dt>
+            <dd data-field="country">{{ family.country|default('—') }}</dd>
+
+            <dt>{{ gettext('Home Phone') }}</dt>
+            <dd data-field="homePhone">{{ family.homePhone|default('—') }}</dd>
+
+            <dt>{{ gettext('Email') }}</dt>
+            <dd data-field="email">{{ family.email|default('—') }}</dd>
+
+            {% if family.weddingDate %}
+            <dt>{{ gettext('Wedding Date') }}</dt>
+            <dd data-field="weddingDate">{{ family.weddingDate }}</dd>
+            {% endif %}
+        </dl>
+
+        {% if canEdit %}
+        <p class="portal-action-row">
+            <a class="portal-button" href="{{ url('/portal/family/edit') }}" id="portal-family-edit-link">
+                <i class="fa-solid fa-pen" aria-hidden="true"></i>
+                <span>{{ gettext('Update your details') }}</span>
+            </a>
+        </p>
+        {% else %}
+        <p class="portal-card-text" id="portal-family-readonly-note">
+            {{ gettext('Only an adult of your family can change these details. Please contact the church office.') }}
+        </p>
+        {% endif %}
+    </section>
+
+    <section class="portal-card" id="portal-family-members">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-people-roof" aria-hidden="true"></i>
+            <span>{{ gettext('Family Members') }}</span>
+        </h2>
+        <ul class="portal-member-list">
+            {% for person in members %}
+            <li class="portal-member{% if person.isSelf %} is-self{% endif %}" data-person-row="{{ person.id }}">
+                {% if person.photoUrl %}
+                <img class="portal-avatar" src="{{ person.photoUrl }}" alt="" loading="lazy">
+                {% else %}
+                <span class="portal-avatar portal-avatar-initials" aria-hidden="true">{{ person.initials }}</span>
+                {% endif %}
+                <span class="portal-member-text">
+                    <span class="portal-member-fullname">{{ person.fullName }}</span>
+                    <span class="portal-member-role">{{ person.role }}</span>
+                </span>
+                {% if person.isSelf %}
+                <span class="portal-member-badge">{{ gettext('You') }}</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% if canEdit %}
+        <p class="portal-action-row">
+            <button class="portal-button portal-button-quiet" type="button" id="portal-add-member-open">
+                <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                <span>{{ gettext('Add a family member') }}</span>
+            </button>
+        </p>
+        {% endif %}
+    </section>
+
+    {% if canConfirm %}
+    <section class="portal-card" id="portal-family-confirm-card">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <span>{{ gettext('Confirm your family details') }}</span>
+        </h2>
+        <p class="portal-card-text">
+            {{ gettext('Let the church office know whether everything above is still right.') }}
+        </p>
+        <p class="portal-action-row">
+            <a class="portal-button" href="{{ url('/portal/family/confirm') }}" id="portal-family-confirm-link">
+                {{ gettext('Confirm your family details') }}
+            </a>
+        </p>
+    </section>
+    {% endif %}
+
+</div>
+
+{% if canEdit %}
+{# The "add a family member" dialog. It is a plain <dialog>: the portal's own
+   chrome, with no dependency on the admin bundle's modal machinery. #}
+<dialog class="portal-dialog" id="portal-add-member-dialog" aria-labelledby="portal-add-member-title">
+    <form class="portal-form" id="portal-add-member-form" method="dialog" novalidate>
+        {{ csrf_field() }}
+        <h2 class="portal-card-title" id="portal-add-member-title">{{ gettext('Add a family member') }}</h2>
+        <p class="portal-card-text">
+            {{ gettext('This goes to the church office for review. Nobody is added to the church records until a member of staff has looked at it.') }}
+        </p>
+
+        <div class="portal-field">
+            <label class="portal-field-label" for="portal-new-firstName">{{ gettext('First Name') }}</label>
+            <input class="portal-input" type="text" id="portal-new-firstName" name="firstName" required>
+            <p class="portal-field-error" data-error-for="firstName" role="alert"></p>
+        </div>
+
+        <div class="portal-field">
+            <label class="portal-field-label" for="portal-new-lastName">{{ gettext('Last Name') }}</label>
+            <input class="portal-input" type="text" id="portal-new-lastName" name="lastName" value="{{ family.name }}" required>
+            <p class="portal-field-error" data-error-for="lastName" role="alert"></p>
+        </div>
+
+        <div class="portal-field">
+            <label class="portal-field-label" for="portal-new-role">{{ gettext('Role') }}</label>
+            <select class="portal-input" id="portal-new-role" name="role">
+                {% for role in familyRoles %}
+                <option value="{{ role.id }}"{% if role.id == defaultNewMemberRoleId %} selected{% endif %}>{{ role.name }}</option>
+                {% endfor %}
+            </select>
+            <p class="portal-field-error" data-error-for="role" role="alert"></p>
+        </div>
+
+        <div class="portal-field">
+            <label class="portal-field-label" for="portal-new-birthday">{{ gettext('Birthday') }}</label>
+            <input class="portal-input" type="date" id="portal-new-birthday" name="birthday">
+            <p class="portal-field-hint">{{ gettext('Optional') }}</p>
+            <p class="portal-field-error" data-error-for="birthday" role="alert"></p>
+        </div>
+
+        <div class="portal-form-actions">
+            <button class="portal-button" type="button" id="portal-add-member-submit">{{ gettext('Send to the church office') }}</button>
+            <button class="portal-button portal-button-quiet" type="button" id="portal-add-member-cancel">{{ gettext('Cancel') }}</button>
+        </div>
+    </form>
+</dialog>
+{% endif %}
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ asset('/skin/v2/portal-family.min.js') }}"></script>
+{% endblock %}

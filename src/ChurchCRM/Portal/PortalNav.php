@@ -12,16 +12,27 @@ use Throwable;
  *
  * Design §5 fixes the order — Home · Calendar · Volunteering · My Teams ·
  * My Family · Profile — and says an entry is hidden when its feature is off or
- * the member has nothing there. MP2 shipped the skeleton; MP6 adds Volunteering,
- * and MP4/MP5/MP7 add their own entries to this one model as those pages land.
+ * the member has nothing there. MP2 shipped the skeleton; MP4 adds My Family
+ * and Profile in their fixed places at the end, and MP6 adds Volunteering
+ * before them. The calendar and teams entries slot into the same list as
+ * MP5 and MP7 land.
  *
  * A nav entry is `{id, label, url, icon, active, badge}`; `url` is already
  * prefixed with the install root path, and `icon` is a Font Awesome class.
+ *
+ * Section switches (#9864): the Calendar entry MP5 adds belongs behind
+ * `bPortalShowCalendar`, and the Volunteering / My Teams entries behind
+ * `bPortalShowVolunteer` — both are already exposed to templates as
+ * `portal.showCalendar` / `portal.showVolunteer`. Volunteering reads it
+ * through `isVolunteeringVisible()` below; Home, My Family and Profile are
+ * never optional.
  */
 class PortalNav
 {
     public const HOME = 'home';
     public const VOLUNTEER = 'volunteer';
+    public const FAMILY = 'family';
+    public const PROFILE = 'profile';
 
     /**
      * @return array<int, array{id: string, label: string, url: string, icon: string, active: bool, badge: string}>
@@ -30,6 +41,9 @@ class PortalNav
     {
         $rootPath = SystemURLs::getRootPath();
 
+        // Built in the design's order — Home · Calendar · Volunteering ·
+        // My Teams · My Family · Profile — so an entry a later issue switches
+        // on lands in its fixed place rather than at the end of the list.
         $entries = [
             [
                 'id' => self::HOME,
@@ -50,6 +64,20 @@ class PortalNav
                 'icon' => 'fa-solid fa-handshake-angle',
             ];
         }
+
+        $entries[] = [
+            'id' => self::FAMILY,
+            'label' => gettext('My Family'),
+            'url' => $rootPath . '/portal/family',
+            'icon' => 'fa-solid fa-people-roof',
+        ];
+
+        $entries[] = [
+            'id' => self::PROFILE,
+            'label' => gettext('Profile'),
+            'url' => $rootPath . '/portal/profile',
+            'icon' => 'fa-solid fa-user',
+        ];
 
         return array_map(
             static fn (array $entry): array => $entry + [

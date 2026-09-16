@@ -3,8 +3,10 @@
 namespace ChurchCRM\Portal;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Twig\GettextExtension;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response as Psr7Response;
@@ -40,6 +42,25 @@ class PortalTwig
 
     public const THEME_ERROR_TEMPLATE = 'errors/theme-error.html.twig';
     public const UNAVAILABLE_TEMPLATE = 'errors/unavailable.html.twig';
+
+    /**
+     * The two side effects every portal page needs before it renders: the
+     * security headers that mint the CSP nonce each inline script carries, and
+     * the plugin system whose head/footer HTML the layout prints.
+     *
+     * `PortalAccessMiddleware` calls this for the portal's own routes. A route
+     * outside `/portal` that renders a portal page — the password and
+     * two-factor pages a self-service session opens (#9865) — calls it itself.
+     * Both operations are idempotent, exactly as `PageInit.php` relies on.
+     */
+    public static function preparePage(): void
+    {
+        $documentRoot = rtrim(SystemURLs::getDocumentRoot(), '/\\');
+
+        require_once $documentRoot . '/Include/Header-Security.php';
+
+        PluginManager::init($documentRoot . '/plugins');
+    }
 
     /**
      * Build the per-request environment for the active theme.
@@ -117,6 +138,15 @@ class PortalTwig
             $html = self::create($activeNavId)->render($template, $model);
         } catch (ThemeException | TwigError $e) {
             return self::renderThemeFailure($response, $e, $activeNavId);
+        }
+
+        if (self::isDeveloperMode()) {
+            // Developer mode names the template that produced the page, so a
+            // designer reading "view source" knows which file to override
+            // (design §4). The name is a path from the theme's templates/
+            // folder, never member data, so it needs no escaping beyond
+            // closing the comment safely.
+            $html = '<!-- portal template: ' . str_replace('--', '- -', $template) . " -->\n" . $html;
         }
 
         $response->getBody()->write($html);
@@ -238,7 +268,11 @@ class PortalTwig
         $twig = new Environment($loader, [
             'autoescape' => 'html',
             'strict_variables' => false,
-            'cache' => self::getCacheDirectory(),
+            // Developer mode turns the compile cache off entirely, so nothing
+            // can go stale while a theme is being written (design §3.2 / P7).
+            // Normally templates compile to Include/cache and recompile on
+            // change, which is already live editing.
+            'cache' => self::isDeveloperMode() ? false : self::getCacheDirectory(),
             'auto_reload' => true,
         ]);
         $twig->addExtension(new GettextExtension());
@@ -262,6 +296,14 @@ class PortalTwig
         }
 
         return is_writable($cacheDirectory) ? $cacheDirectory : false;
+    }
+
+    /**
+     * The Admin → Member Portal "Developer mode" switch (`bPortalDeveloperMode`).
+     */
+    public static function isDeveloperMode(): bool
+    {
+        return SystemConfig::getBooleanValue('bPortalDeveloperMode');
     }
 
     private static function currentUserIsAdministrator(): bool

@@ -430,19 +430,36 @@ teaser. Themes typically override this page first.
 
 - Read: own person and family (existing read routes suffice).
 - Edit, own person: first/middle/last name, title/suffix, email, work email, home/cell/work phone,
-  birthday (`bPortalAllowBirthdayEdit`), photo (existing avatar upload route, already scoped by
-  `canEditPerson`). Edit, family: address, city, state, zip, country, home phone, email, wedding
+  birthday (`bPortalAllowBirthdayEdit`), photo. The avatar upload route is scoped by
+  `canEditPerson` but gated by `EditRecordsRoleAuthMiddleware`, which a self-service login never
+  passes, so the portal has its own `POST /api/portal/me/photo` calling the same model method
+  (`Person::setImageFromBase64()`) for the member's own record and nothing else.
+  Edit, family: address, city, state, zip, country, home phone, email, wedding
   date — only for the family's adults (head/spouse), the same audience the verify flow addresses.
-  Other members: view only; "add a family member" creates a pending self-registration entry
-  (`Person::SELF_REGISTER`) for staff review on the existing page rather than a live person.
+  Other members: view only; "add a family member" — also an adults-only action, because it writes
+  into the family — creates a pending self-registration entry
+  (`Person::SELF_REGISTER`) for staff review on the existing page rather than a live person. That
+  entry sits in an existing, *not* self-registered family, a case the staff review page did not
+  list before: `GET /api/persons/self-register` now excludes only the members of self-registered
+  families instead of everybody who has a family at all.
 - Every write: `POST /api/portal/me` and `POST /api/portal/family` with
   `InputSanitizationMiddleware` and a field allow-list; a timeline `Note` "edited via the Member
-  Portal" is written so staff see who changed what.
+  Portal" is written so staff see who changed what. Dates (`birthday`, `weddingDate`) travel as
+  ISO `YYYY-MM-DD` from `<input type="date">` and are sanitized as `text`, because the sanitizer
+  has no `date` type yet (#9821); the service parses them strictly, so `2026-02-31` is refused
+  rather than rolled forward.
 - "Confirm your family details" (`/portal/family/confirm`): same outcome as `/external/verify`
-  (a `verify` note, no changes / changes needed + comment). The emailed verify-token link keeps
-  working for people without logins.
+  (a `verify` note, no changes / changes needed + comment), and offered to every member of the
+  family, not only its adults — it records an opinion, it does not change a record. The note is
+  written exactly as `/external/verify` writes it, `Person::SELF_VERIFY` and all, because the
+  People → Verify dashboard selects on `EnteredBy = SELF_VERIFY`; the confirming member's own id
+  is deliberately not used. The emailed verify-token link keeps working for people without logins.
 - Password and two-factor: the existing `/v2/user/current/*` pages (already allowed for this
-  persona), given a portal-aware layout in MP3.
+  persona), given a portal-aware layout. Delivered in MP4 (#9865) rather than MP3: MP3 is the
+  admin page and never touches these routes. The routes branch on
+  `User::isEditSelfExclusive()` and render portal templates for that session only — same URLs,
+  same field names, same POST handler, same CSRF form id and the same
+  `PasswordChange.js` / `two-factor-enrollment` bundles, so each flow has one implementation.
 
 ### 5.3 Calendar (`/portal/calendar`)
 

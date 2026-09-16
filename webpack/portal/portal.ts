@@ -7,13 +7,12 @@
  * page's volunteering card. Page-specific bundles (the two volunteer pages, and
  * calendar and teams later) are separate entries.
  *
- * Strings go through i18next, and i18next is only populated once the locale
- * loader has finished, so anything user-visible waits for onLocalesReady.
- *
- * `i18next` is the GLOBAL the layout loads (`skin/external/i18next`), the one
- * `locale-loader.min.js` actually calls `init()` on — importing the npm package
- * here would give this bundle a second, permanently empty instance whose `t()`
- * only ever echoes the key back (#9867).
+ * Strings go through the page's global i18next — the one the layout loads
+ * (`skin/external/i18next`) and the one `locale-loader.min.js` actually calls
+ * `init()` on, never a bundled copy: importing the npm package here would give
+ * this bundle a second, permanently empty instance whose `t()` only ever echoes
+ * the key back (#9867). That instance is only populated once the locale loader
+ * has finished, so anything user-visible waits for onLocalesReady.
  */
 import { formatWhat, formatWhen } from "../volunteer/member-ui";
 

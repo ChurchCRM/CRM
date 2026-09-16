@@ -3,14 +3,15 @@
 namespace ChurchCRM\Portal;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Exception\HttpForbiddenException;
+use Throwable;
 
 /**
  * The gate on every Member Portal page: an authenticated browser session, and
@@ -41,18 +42,45 @@ class PortalAccessMiddleware implements MiddlewareInterface
                 ->withHeader('Location', AuthenticationManager::getSessionBeginURL());
         }
 
-        $documentRoot = rtrim(SystemURLs::getDocumentRoot(), '/\\');
-
         // Portal pages carry the same security headers as the rest of the
-        // application — the CSP nonce every inline script and theme.js uses is
-        // emitted here.
-        require_once $documentRoot . '/Include/Header-Security.php';
+        // application — the CSP nonce every inline script and theme.js uses —
+        // and the plugin head/footer content the layout prints.
+        PortalTwig::preparePage();
 
-        // Active plugins inject <head> and footer content into portal pages the
-        // same way they do into admin pages; the layout prints what they
-        // return. init() is idempotent, exactly as PageInit.php relies on.
-        PluginManager::init($documentRoot . '/plugins');
+        // Every portal page acts for the session's own person and no other
+        // (design P11). Resolving it once here is what lets a route read the
+        // actor without ever taking an id from the request. It stays null for
+        // an account with no person record; the pages that need one 404.
+        $person = AuthenticationManager::getCurrentUser()->getPerson();
 
-        return $handler->handle($request);
+        $this->recordActivity();
+
+        return $handler->handle($request->withAttribute(PortalSelfService::ACTOR_ATTRIBUTE, $person));
+    }
+
+    /**
+     * Stamp `usr_LastPortalActivity` so the Admin → Member Portal statistics
+     * tab can answer "active in the last 15 minutes" honestly (#9864).
+     *
+     * The write is throttled to once every five minutes by comparing the value
+     * already in the column, not a session flag, so it survives session churn
+     * and costs one small UPDATE per member per five minutes at most. A failure
+     * here must never break a portal page: the column is a statistic.
+     */
+    private function recordActivity(): void
+    {
+        $user = AuthenticationManager::getCurrentUser();
+        if (!$user instanceof User) {
+            return;
+        }
+
+        try {
+            PortalStatsService::recordPortalActivity($user);
+        } catch (Throwable $e) {
+            LoggerUtils::getAppLogger()->warning('Could not record Member Portal activity', [
+                'userName' => $user->getUserName(),
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 }

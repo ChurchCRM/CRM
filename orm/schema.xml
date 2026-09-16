@@ -648,6 +648,11 @@
         <column name="usr_CalNoSchool7" phpName="CalNoSchool7" type="DATE"/>
         <column name="usr_CalNoSchool8" phpName="CalNoSchool8" type="DATE"/>
         <column name="usr_SearchFamily" phpName="Searchfamily" type="TINYINT" size="3"/>
+        <!-- Member Portal (#9864): when this account last opened a portal page.
+             Stamped by PortalAccessMiddleware at most once every five minutes,
+             and read by the Admin → Member Portal statistics tab to answer
+             "active in the last 15 minutes". NULL = never opened the portal. -->
+        <column name="usr_LastPortalActivity" phpName="LastPortalActivity" type="TIMESTAMP"/>
         <index name="usr_per_ID">
             <index-column name="usr_per_ID"/>
         </index>

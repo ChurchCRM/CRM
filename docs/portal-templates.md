@@ -78,6 +78,31 @@ You do not need to add any of it, and you should not load a second copy:
 | `#portal-main` | The `<main>` element |
 | `.portal-card` | The standard content card |
 | `.portal-subnav` | A page's own secondary tab bar, e.g. the two volunteering pages |
+| `.portal-page-title` | The `<h1>` at the top of a page's content |
+| `.portal-detail-list` | A `<dl>` of label/value pairs — one column on a phone, two from the tablet breakpoint up |
+| `.portal-form` / `.portal-field` / `.portal-input` | A self-service form, one of its fields, and the control inside it |
+| `.portal-field-error` | The inline message for a field; it is hidden while empty |
+| `.portal-button` / `.portal-button-quiet` | The primary and secondary action buttons |
+| `.portal-avatar` / `.portal-avatar-initials` | A member's photo, and the initials shown when there is none |
+| `.portal-member-list` / `.portal-member` | The family members list; the member's own row also carries `.is-self` |
+| `.portal-dialog` | A `<dialog>` in the portal's own chrome |
+
+### Hooks the page bundles look for
+
+`portal-profile.min.js` and `portal-family.min.js` bind to these ids, so a theme
+that overrides one of those pages must keep them if it wants the page to work:
+
+| Id | On |
+|---|---|
+| `portal-profile-form`, `portal-profile-save` | `profile/edit.html.twig` |
+| `portal-photo-input`, `portal-photo-preview`, `portal-photo-error` | `profile/edit.html.twig` |
+| `portal-family-form`, `portal-family-save` | `family/edit.html.twig` |
+| `portal-confirm-form`, `portal-confirm-submit`, `portal-confirm-comment`, `portal-confirm-comment-field` | `family/confirm.html.twig` |
+| `portal-add-member-dialog`, `portal-add-member-form`, `portal-add-member-open`, `portal-add-member-submit`, `portal-add-member-cancel` | `family/index.html.twig` |
+
+A field's inline message is the element with `data-error-for="<field name>"`
+inside the form; a read-only value the bundle refreshes after a save is the
+element with `data-field="<field name>"`.
 
 ---
 
@@ -186,10 +211,18 @@ will stop working on your pages.
 
 | Template | Rendered for | Its own variables |
 |---|---|---|
-| `home.html.twig` | `GET /portal` | `pageTitle`, `showVolunteering` |
+| `home.html.twig` | `GET /portal` | `pageTitle`, `showVolunteering`, `familySummary` |
 | `volunteer/schedule.html.twig` | `GET /portal/volunteer/schedule` | `pageTitle`, `activeTab` |
 | `volunteer/opportunities.html.twig` | `GET /portal/volunteer/opportunities` | `pageTitle`, `activeTab` |
 | `volunteer/partials/tabs.html.twig` | included by both volunteering pages | `activeTab` |
+| `profile/index.html.twig` | `GET /portal/profile` | `pageTitle`, `profile` |
+| `profile/edit.html.twig` | `GET /portal/profile/edit` | `pageTitle`, `profile` |
+| `profile/password.html.twig` | `GET/POST /v2/user/current/changepassword`, self-service session | `pageTitle`, `minPasswordLength`, `oldPasswordError`, `newPasswordError` |
+| `profile/password-changed.html.twig` | The same route, after a successful change | `pageTitle` |
+| `profile/two-factor.html.twig` | `GET /v2/user/current/manage2fa`, self-service session | `pageTitle` |
+| `family/index.html.twig` | `GET /portal/family` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm`, `familyRoles`, `defaultNewMemberRoleId` |
+| `family/edit.html.twig` | `GET /portal/family/edit` | `pageTitle`, `family`, `members`, `canEdit`, `countries` |
+| `family/confirm.html.twig` | `GET /portal/family/confirm` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm` |
 | `errors/403.html.twig` | A page this member may not open | `pageTitle` |
 | `errors/404.html.twig` | An unknown portal URL (and 405) | `pageTitle` |
 | `errors/500.html.twig` | An unexpected failure | `pageTitle` |
@@ -197,6 +230,64 @@ will stop working on your pages.
 | `errors/theme-error.html.twig` | Shown to **administrators** when the active theme fails to render | `themeName`, `file`, `line`, `message` |
 
 `pageTitle` is the page's own title; the layout puts the church's name after it.
+
+### `profile`
+
+The signed-in member's own person record, as `GET /api/portal/me` returns it.
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | int | The person id |
+| `title`, `firstName`, `middleName`, `lastName`, `suffix` | string | |
+| `email`, `workEmail` | string | |
+| `homePhone`, `cellPhone`, `workPhone` | string | |
+| `birthday` | string | ISO `YYYY-MM-DD`, empty when unknown |
+| `fullName` | string | Formatted per the installation's name format |
+| `familyRole` | string | e.g. `Spouse`; `Unassigned` when the person has no role |
+| `familyId` | int | `0` when the person has no family |
+| `familyName` | string | The family's surname |
+| `photoUrl` | string | The person's photo endpoint, cache-busted; **empty when no photo has been uploaded** — render initials instead |
+| `hasPhoto` | bool | Whether a photo has been uploaded |
+| `canEditBirthday` | bool | Mirrors `bPortalAllowBirthdayEdit`; when false the birthday is neither shown nor accepted |
+
+### `family`
+
+The member's own family. Never another family: the routes take no family id.
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | int | |
+| `name` | string | The family's surname |
+| `address1`, `address2`, `city`, `state`, `zip`, `country` | string | |
+| `homePhone`, `email` | string | |
+| `weddingDate` | string | ISO `YYYY-MM-DD`, empty when unset |
+
+### `members`
+
+Everyone in the member's family, adults first, as `Family::getPeopleSorted()`
+orders them.
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | int | |
+| `fullName` | string | |
+| `role` | string | The family-role name |
+| `email`, `cellPhone` | string | |
+| `photoUrl` | string | Empty when the member has no photo |
+| `initials` | string | The two-letter stand-in for a missing photo |
+| `isSelf` | bool | `true` for the signed-in member's own row |
+| `isAdult` | bool | `true` for a head or spouse — the roles `sDirRoleHead` and `sDirRoleSpouse` name |
+
+### `canEdit`, `canConfirm`, `countries`, `familyRoles`, `familySummary`
+
+| Variable | Type | Notes |
+|---|---|---|
+| `canEdit` | bool | Whether this member may change the family's details — true only for an adult of the family |
+| `canConfirm` | bool | Whether the "Confirm your family details" card is offered |
+| `countries` | map | Country code → country name, for the address form's `<select>` |
+| `familyRoles` | list | `{id, name}` for each family role, for the "add a family member" form |
+| `defaultNewMemberRoleId` | int | The role that form starts on — the configured child role, not head of household |
+| `familySummary` | object | On the home page only: `{name, memberCount}`, or `null` when the member has no family |
 
 The two theme-failure pages are always rendered from the **system** theme, so a
 broken theme cannot break the page that reports it. A theme may still override
@@ -217,8 +308,8 @@ the home page renders its "My volunteering" card only then. `activeTab` is
 the page renders empty. Override the wrapper, the headings and the surrounding
 layout freely.
 
-More pages arrive with the rest of the epic: profile and family (MP4), calendar
-(MP5), teams (MP7). Each one adds a row to this table.
+More pages arrive with the rest of the epic: calendar (MP5), teams (MP7). Each
+one adds a row to this table.
 
 ---
 

@@ -1,0 +1,27 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Two-factor authentication, in the portal's layout.
+
+  Rendered by GET /v2/user/current/manage2fa when the session is a self-service
+  one (issue #9865). The enrollment UI is the existing `two-factor-enrollment`
+  bundle, mounted on the same container id it looks for on the admin page, so
+  there is one implementation of the flow and not two.
+#}
+
+{% block content %}
+<section class="portal-card">
+    <h1 class="portal-page-title">{{ gettext('Two-Factor Authentication') }}</h1>
+    <p class="portal-card-text">
+        {{ gettext('Add a second step to your sign-in, so your password alone is not enough to reach your account.') }}
+    </p>
+    <div id="two-factor-enrollment-app"></div>
+    <p class="portal-action-row">
+        <a class="portal-button portal-button-quiet" href="{{ url('/portal/profile') }}">{{ gettext('Back to your profile') }}</a>
+    </p>
+</section>
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ asset('/skin/v2/two-factor-enrollment.min.js') }}"></script>
+{% endblock %}

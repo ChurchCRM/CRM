@@ -141,17 +141,39 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
-        // Only standalone individuals (no family) — family members are already
-        // represented via GET /families/self-register and would otherwise be
-        // duplicated in both lists.
-        $people = PersonQuery::create()
+        // Everyone who is waiting for review *and is not already shown as part
+        // of a self-registered family*: standalone individuals from the public
+        // form, plus people a member proposed for their own — existing —
+        // family through the Member Portal (#9865). Excluding only the
+        // self-registered families keeps the two lists from duplicating each
+        // other, which is what the old "no family at all" filter was for.
+        $selfRegisteredFamilyIds = FamilyQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
-            ->filterByFamId(0)
-            ->orderByDateEntered(Criteria::DESC)
-            ->limit(100)
-            ->find();
+            ->select('Id')
+            ->find()
+            ->getData();
 
-        return SlimUtils::renderJSON($response, ['people' => $people->toArray()]);
+        $query = PersonQuery::create()
+            ->filterByEnteredBy(Person::SELF_REGISTER)
+            ->orderByDateEntered(Criteria::DESC)
+            ->limit(100);
+        if ($selfRegisteredFamilyIds !== []) {
+            $query->filterByFamId($selfRegisteredFamilyIds, Criteria::NOT_IN);
+        }
+        $people = $query->find();
+
+        $rows = [];
+        foreach ($people as $person) {
+            $family = $person->getFamily();
+            $rows[] = array_merge($person->toArray(), [
+                // The list distinguishes "individual with no family" from
+                // "proposed member of an existing family", so staff know which
+                // record they are about to attach somebody to.
+                'FamilyName' => $family === null ? '' : (string) $family->getName(),
+            ]);
+        }
+
+        return SlimUtils::renderJSON($response, ['people' => $rows]);
     });
 });
 

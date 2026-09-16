@@ -239,3 +239,73 @@ The portal runs under ChurchCRM's CSP, and your theme runs inside it:
 `Include/themes/*` is ignored by ChurchCRM's git repository (except the system
 theme), so keep your theme in its own repository and deploy it with your own
 script or over FTP. Nothing in ChurchCRM's release will ever overwrite it.
+
+---
+
+## Admin → Member Portal
+
+Everything about the portal that an administrator can change lives on one page:
+**Admin → Member Portal** (`/admin/member-portal`). It is administrators only,
+and it has three tabs.
+
+### Settings
+
+**Portal theme** lists every folder found under `Include/themes/`, with the
+system theme first as *System default*. Each entry carries the result of the
+last validation: *Valid*, *Warnings* or *Errors*.
+
+- **Check** runs the validator against the theme you have selected and lists
+  what it found — file, line and message — without changing anything. Use it
+  after uploading a change, before making the theme live.
+- **Activate** makes the selected theme the one members see, on their next
+  request. Activation validates first: a theme with error-level findings is
+  **refused**, the findings are listed, and the portal keeps the theme it
+  already had. Warnings are shown and allowed.
+
+**Developer mode** is for whoever is writing the theme:
+
+- the Twig compile cache is turned off entirely, so nothing can go stale while
+  you edit (normal operation already recompiles a changed file on the next
+  request — this simply removes the cache from the picture);
+- every portal page starts with a comment naming the template that produced it:
+
+  ```html
+  <!-- portal template: home.html.twig -->
+  ```
+
+  which tells you exactly which file to copy into your theme to override it.
+
+Leave Developer mode **off** in normal use: without the cache, every page
+recompiles its templates on every request.
+
+The remaining switches decide what the portal offers members: whether the church
+calendar is shown, whether the volunteering and team pages are shown, and whether
+members may change birthdays on their own and their family's records.
+
+### Themes
+
+A table of every theme folder on the server: its display name (from
+`theme.json` when present, otherwise the folder name), the folder itself, the
+author and description from `theme.json`, how many templates it overrides, and
+its last validation result — expand a row to read the individual findings.
+Each row can be checked or activated from its action menu.
+
+> **Themes are provided by your church, not by ChurchCRM, and are not verified
+> by the ChurchCRM project.** The page says so too.
+
+### Statistics
+
+How much the portal is being used, counting **self-service accounts only** —
+people whose login reaches the portal and nothing else:
+
+| Number | Where it comes from |
+|---|---|
+| Active now | `usr_LastPortalActivity` within the last 15 minutes |
+| Last 24 hours / 7 days / 30 days | `usr_LastLogin` |
+| Self-service accounts | every account with Edit Self and no Admin flag |
+| Never signed in | `usr_LoginCount` is zero |
+| Ten most recent sign-ins | newest `usr_LastLogin` first, with the member's name and when they were last seen in the portal |
+
+`usr_LastPortalActivity` is stamped when a member opens a portal page, at most
+once every five minutes, so "active now" is honest without costing a write per
+page view.
