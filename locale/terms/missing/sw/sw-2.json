@@ -1,34 +1,34 @@
 {
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Orodha hii ina mpokeaji {{count}} — wengi sana kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake.",
+    "other": "Orodha hii ina wapokeaji {{count}} — wengi sana kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Mpokeaji ni wengi sana kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake.",
+    "other": "Wapokeaji ni wengi sana kwa programu ya barua pepe ({{count}} > {{max}}). Tumia Nakili Anwani badala yake."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Dakika {{count}} imesalia",
+    "other": "Dakika {{count}} zimesalia"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "Familia {{count}} haikuweza kuwekewa jiografia",
+    "other": "Familia {{count}} hazikuweza kuwekewa jiografia"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Inatumika kwa sekunde {{count}}",
+    "other": "Inatumika kwa sekunde {{count}}"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Unakaribia kutuma barua pepe za uthibitisho kwa familia {{count}}.",
+    "other": "Unakaribia kutuma barua pepe za uthibitisho kwa familia {{count}}."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "Familia {{count}} haina anwani ya barua pepe iliyowekwa na itapitwa",
+    "other": "Familia {{count}} hazina anwani za barua pepe zilizowekwa na zitapitwa"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…na {{count}} zaidi hazijaorodheshwa hapa.",
+    "other": "…na {{count}} zaidi hazijaorodheshwa hapa."
   }
 }
