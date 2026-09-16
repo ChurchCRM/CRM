@@ -3,8 +3,6 @@
 namespace ChurchCRM\Portal;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Plugin\PluginManager;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -41,18 +39,17 @@ class PortalAccessMiddleware implements MiddlewareInterface
                 ->withHeader('Location', AuthenticationManager::getSessionBeginURL());
         }
 
-        $documentRoot = rtrim(SystemURLs::getDocumentRoot(), '/\\');
-
         // Portal pages carry the same security headers as the rest of the
-        // application — the CSP nonce every inline script and theme.js uses is
-        // emitted here.
-        require_once $documentRoot . '/Include/Header-Security.php';
+        // application — the CSP nonce every inline script and theme.js uses —
+        // and the plugin head/footer content the layout prints.
+        PortalTwig::preparePage();
 
-        // Active plugins inject <head> and footer content into portal pages the
-        // same way they do into admin pages; the layout prints what they
-        // return. init() is idempotent, exactly as PageInit.php relies on.
-        PluginManager::init($documentRoot . '/plugins');
+        // Every portal page acts for the session's own person and no other
+        // (design P11). Resolving it once here is what lets a route read the
+        // actor without ever taking an id from the request. It stays null for
+        // an account with no person record; the pages that need one 404.
+        $person = AuthenticationManager::getCurrentUser()->getPerson();
 
-        return $handler->handle($request);
+        return $handler->handle($request->withAttribute(PortalSelfService::ACTOR_ATTRIBUTE, $person));
     }
 }
