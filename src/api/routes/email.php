@@ -45,9 +45,9 @@ use Slim\Routing\RouteCollectorProxy;
  */
 $app->group('/email', function (RouteCollectorProxy $group): void {
     $group->post('/send', function (Request $request, Response $response): Response {
-        // Guard: SMTP credentials must be present (mirrors the hasValidMailServerSettings() check
-        // that Header.php uses to set window.CRM.comm.smtpConfigured on the frontend).
-        if (!SystemConfig::hasValidMailServerSettings()) {
+        // Guard: both the admin toggle (bEnabledEmail) and SMTP credentials must be
+        // present (mirrors what Header.php uses to set window.CRM.comm.smtpConfigured).
+        if (!SystemConfig::isEmailEnabled()) {
             return SlimUtils::renderErrorJSON(
                 $response,
                 gettext('Email sending is not configured. Please set up SMTP settings before sending.'),
