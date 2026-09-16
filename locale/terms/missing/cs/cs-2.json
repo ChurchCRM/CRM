@@ -1,34 +1,34 @@
 {
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Tento seznam má {{count}} příjemce — to je příliš mnoho pro odkaz mailto. Použijte místo toho Kopírovat adresy.",
+    "other": "Tento seznam má {{count}} příjemci — to je příliš mnoho pro odkaz mailto. Použijte místo toho Kopírovat adresy."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Použijte místo toho Kopírovat adresy.",
+    "other": "Příliš mnoho příjemců pro e-mailového klienta ({{count}} > {{max}}). Použijte místo toho Kopírovat adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Zbývá {{count}} minuta.",
+    "other": "Zbývají {{count}} minuty."
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "Nepodařilo se geokódovat {{count}} rodinu.",
+    "other": "Nepodařilo se geokódovat {{count}} rodiny."
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktivní {{count}} sekundu.",
+    "other": "Aktivní {{count}} sekundy."
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Chystáte se odeslat potvrzovací e-maily {{count}} rodině.",
+    "other": "Chystáte se odeslat potvrzovací e-maily {{count}} rodinám."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} rodina nemá v evidenci e-mailovou adresu a bude přeskočena.",
+    "other": "{{count}} rodiny nemají v evidenci e-mailovou adresu a budou přeskočeny."
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…a {{count}} další zde není uveden.",
+    "other": "…a {{count}} další zde nejsou uvedeny."
   }
 }
