@@ -140,4 +140,40 @@ describe("Find Neighbors (/people/map/neighbors)", () => {
         );
         cy.get(".neighbors-legend").should("be.visible");
     });
+
+    describe("Update All Coordinates (#9846)", () => {
+        it("Runs every batch from one click, passing the failure count as skip", () => {
+            const calls = [];
+            cy.intercept("POST", "**/api/map/geocode-all", (req) => {
+                calls.push(req.body);
+            }).as("geocodeAll");
+
+            cy.visit("people/map");
+            cy.get("#geocodeAllBtn").should("exist").click();
+            cy.get(".bootbox .btn-primary").click();
+
+            // Working panel shows while batches run
+            cy.get("#geocodeAllResults [role='status']").should("exist");
+
+            // The run ends when the button is re-enabled; the seed data has a
+            // handful of families with fake addresses, so at least one call
+            // happens and the last one carries the running failure count.
+            cy.get("#geocodeAllBtn", { timeout: 180000 }).should("not.be.disabled");
+            cy.wrap(null).then(() => {
+                expect(calls.length).to.be.at.least(1);
+                expect(calls[0]).to.deep.include({ skip: 0 });
+                for (const body of calls) {
+                    expect(body.skip).to.be.a("number").and.be.at.least(0);
+                }
+            });
+
+            // Either a success toast (nothing failed) or the failure panel listing
+            // every unresolved family from the whole run.
+            cy.get("body").then(($body) => {
+                if ($body.find("#geocodeAllResults .alert-warning").length > 0) {
+                    cy.get("#geocodeAllResults .alert-warning .list-group-item").should("have.length.at.least", 1);
+                }
+            });
+        });
+    });
 });

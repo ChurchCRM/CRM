@@ -154,19 +154,28 @@ class FamilyService
      *   total: int,
      *   geocoded: int,
      *   failed: int,
+     *   skip: int,
+     *   processed: int,
      *   remaining: int,
      *   failures: list<array{id:int,name:string,address:string,editUrl:string,reason:string}>,
      *   failuresTruncated: bool
      * }
      */
-    public function geocodeAllMissingFamilies(): array
+    public function geocodeAllMissingFamilies(int $skip = 0): array
     {
+        $skip = max(0, $skip);
         // Count the total BEFORE fetching the batch so `remaining` stays accurate
         // even when the batch is limited by MAX_GEOCODE_PER_RUN.
         $total = $this->getMissingCoordinatesCount();
 
         // Fetch only the rows we will process, not all missing rows into PHP memory.
+        // The order is fixed (by ID) and the caller passes back how many families
+        // failed in its earlier batches as $skip, so a family Nominatim cannot
+        // resolve is not re-queried at the front of every batch — that stalled
+        // installs with more than one batch of unresolvable addresses (#9846).
         $batch = $this->buildMissingCoordinatesQuery()
+            ->orderById()
+            ->offset($skip)
             ->limit(self::MAX_GEOCODE_PER_RUN)
             ->find();
 
@@ -177,6 +186,7 @@ class FamilyService
 
         $this->logger->info('geocodeAllMissingFamilies: starting batch', [
             'total'     => $total,
+            'skip'      => $skip,
             'batchSize' => $count,
         ]);
 
@@ -220,6 +230,8 @@ class FamilyService
 
         return [
             'total'             => $total,
+            'skip'              => $skip,
+            'processed'         => $count,
             'geocoded'          => $geocoded,
             'failed'            => $failed,
             'remaining'         => $remaining,

@@ -5039,14 +5039,6 @@ msgid "Verification URL created"
 msgstr "Vytvořená ověřovací adresa URL"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Chyba při odesílání e-mailu(ů)"
 
@@ -8445,10 +8437,6 @@ msgstr "Vaše heslo bylo úspěšně aktualizováno."
 #: 
 msgid "selected family has no coordinates"
 msgstr "vybraná rodina nemá souřadnice"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12212,10 +12200,6 @@ msgid "Database dump only (.sql)"
 msgstr "Pouze výpis databáze (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Rozsah dat nesmí překročit 1 rok"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destruktivní operace"
 
@@ -12810,10 +12794,6 @@ msgstr "Skupina nebyla nalezena pro tento seznam rolí"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Neaktivní stav lze přepínat pouze pro seznam klasifikací"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Noví uživatelé neobdrží uvítací e-mail s přihlašovacími údaji. Sdílejte heslo ručně nebo nejprve nakonfigurujte e-mail."
 
 #: 
 msgid "Option name is required"
@@ -17833,4 +17813,68 @@ msgstr "Pro %s %d nebyly nalezeny žádné události."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Zkuste vybrat jiný typ události, měsíc nebo rok."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Došlo k chybě geokódování — zkuste to prosím později"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa je neúplná (chybí město, stát a PSČ)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Všechny rodiny již mají souřadnice."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Aktualizace souřadnic se nezdařila"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Aktualizace souřadnic rodiny se nezdařila"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokódování dokončeno pro všech {{geocoded}} rodin. Mapa je nyní aktuální."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokódováno {{geocoded}} rodin. {{failed}} se nepodařilo vyřešit — podrobnosti najdete níže."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokódování…"
+
+#: 
+msgid "No address on file"
+msgstr "Adresa není k dispozici"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nebyla nalezena žádná shoda — zkontrolujte ulici, město a PSČ"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Otevřete rodinu a opravte její adresu, poté akci spusťte znovu."
+
+#: 
+msgid "Set up now"
+msgstr "Nastavit nyní"
+
+#: 
+msgid "Unknown family"
+msgstr "Neznámá rodina"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Aktualizovat všechny souřadnice"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Aktualizovat souřadnice všech rodin"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Aktualizovat souřadnice"
 

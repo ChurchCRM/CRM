@@ -5049,14 +5049,6 @@ msgid "Verification URL created"
 msgstr "Kinnitus URL on loodud"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Viga e-kirjade saatmisel"
 
@@ -8448,10 +8440,6 @@ msgstr "Teie parool on edukalt uuendatud."
 #: 
 msgid "selected family has no coordinates"
 msgstr "valitud perekonnal pole koordinaate"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12213,10 +12201,6 @@ msgid "Database dump only (.sql)"
 msgstr "Ainult andmebaasi dump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Kuupäevavahemik ei tohi ületada 1 aastat"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Hävitav toiming"
 
@@ -12811,10 +12795,6 @@ msgstr "Rühma ei leitud selle rollinimekirja jaoks"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Passiivset olekut saab lülitada ainult klassifikatsioonide loendi jaoks"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Uued kasutajad ei saa tervitusmeili oma mandaatidega. Jagage parool nendega käsitsi või seadistage esmalt e-post."
 
 #: 
 msgid "Option name is required"
@@ -17841,4 +17821,68 @@ msgstr "Üritusi %s %d jaoks ei leitud."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Proovige valida mõni muu ürituse tüüp, kuu või aasta."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Geokodeerimisel tekkis viga — proovige hiljem uuesti"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Aadress on puudulik (puuduvad linn, maakond ja sihtnumber)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Kõigil peredel on juba koordinaadid."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Koordinaatide uuendamine ebaõnnestus"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Pere koordinaatide uuendamine ebaõnnestus"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodeeriti kõik {{geocoded}} peret. Kaart on nüüd ajakohane."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodeeriti {{geocoded}} peret. {{failed}} ei õnnestunud lahendada — vt üksikasju allpool."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokodeerimine…"
+
+#: 
+msgid "No address on file"
+msgstr "Aadress puudub"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Vastet ei leitud — kontrollige tänava aadressi, linna ja sihtnumbrit"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Avage pere, et parandada tema aadress, seejärel käivitage see uuesti."
+
+#: 
+msgid "Set up now"
+msgstr "Seadista kohe"
+
+#: 
+msgid "Unknown family"
+msgstr "Tundmatu pere"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Uuenda kõiki koordinaate"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Uuenda kõigi perede koordinaate"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Uuenda koordinaate"
 

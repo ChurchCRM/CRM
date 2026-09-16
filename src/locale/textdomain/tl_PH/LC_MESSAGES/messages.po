@@ -5016,14 +5016,6 @@ msgid "Verification URL created"
 msgstr "Nilikha ang Verification URL"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Error sa pagpapadala ng email(s)"
 
@@ -8414,10 +8406,6 @@ msgstr "Ang iyong password ay matagumpay na na-update."
 #: 
 msgid "selected family has no coordinates"
 msgstr "ang napiling pamilya ay walang mga coordinate"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12179,10 +12167,6 @@ msgid "Database dump only (.sql)"
 msgstr "Database dump lamang (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Ang saklaw ng petsa ay hindi maaaring lumampas sa 1 taon"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Mapanganib na Operasyon"
 
@@ -12777,10 +12761,6 @@ msgstr "Hindi nahanap ang grupo para sa listahan ng papel na ito"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Ang inactive na status ay maaari lamang i-toggle para sa listahan ng mga klasipikasyon"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Ang mga bagong gumagamit ay hindi makakatanggap ng welcome email na may kanilang mga kredensyal. Ibahagi ang password sa kanila nang manu-mano, o i-configure muna ang email."
 
 #: 
 msgid "Option name is required"
@@ -15587,6 +15567,10 @@ msgid "People &amp; Families"
 msgstr "Mga Tao &amp; Mga Pamilya"
 
 #: 
+msgid "Self-service"
+msgstr "Self-Service"
+
+#: 
 msgid "Self-service only"
 msgstr "Self-service lamang"
 
@@ -15661,6 +15645,10 @@ msgstr "Mga nabigong pagtatangkang mag-login"
 #: 
 msgid "Failed to fetch upgrade preview"
 msgstr "Nabigo sa pagkuha ng preview ng upgrade"
+
+#: 
+msgid "Feature"
+msgstr "Tampok"
 
 #: 
 msgid "Full changelog"
@@ -16007,6 +15995,10 @@ msgid "Choose family"
 msgstr "Pumili ng pamilya"
 
 #: 
+msgid "Code"
+msgstr "Kodigo"
+
+#: 
 msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
 msgstr "I-configure kung paano ipinapakita ang mga halaga ng pera sa buong sistema. Habang ina-update ang mga pahina ng pananalapi upang gamitin ang mga setting na ito (epic #8459), ang simbolo, posisyon, at mga separator na na-configure dito ay ilalapat sa buong sistema."
 
@@ -16139,6 +16131,10 @@ msgid "Linked Donation Fund"
 msgstr "Naka-link na Pondo ng Donasyon"
 
 #: 
+msgid "Live Preview"
+msgstr "Live na Preview"
+
+#: 
 msgid "Loading attendance history…"
 msgstr "Nilo-load ang kasaysayan ng pagdalo…"
 
@@ -16209,6 +16205,10 @@ msgstr "Naipon Ngayong Taon"
 #: 
 msgid "Sample Amount"
 msgstr "Halimbawang Halaga"
+
+#: 
+msgid "Sell-through"
+msgstr "Rate ng Benta"
 
 #: 
 msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
@@ -17759,4 +17759,68 @@ msgstr "Walang nahanap na mga kaganapan para sa %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Subukang pumili ng ibang uri ng kaganapan, buwan, o taon."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "May naganap na error sa geocoding — subukang muli mamaya"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Hindi kumpleto ang address (kulang ang lungsod, estado, at ZIP)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Mayroon nang coordinates ang lahat ng pamilya."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Nabigo ang pag-update ng coordinates"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Nabigo ang pag-update ng coordinates ng pamilya"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Na-geocode ang lahat ng {{geocoded}} pamilya. Napapanahon na ang mapa."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Na-geocode ang {{geocoded}} pamilya. Hindi na-resolve ang {{failed}} — tingnan ang detalye sa ibaba."
+
+#: 
+msgid "Geocoding…"
+msgstr "Ginagawang geocode…"
+
+#: 
+msgid "No address on file"
+msgstr "Walang naka-file na address"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Walang nahanap na tugma — suriin ang address, lungsod, at ZIP"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Buksan ang isang pamilya upang ayusin ang address nito, pagkatapos ay patakbuhin muli ito."
+
+#: 
+msgid "Set up now"
+msgstr "I-set up na ngayon"
+
+#: 
+msgid "Unknown family"
+msgstr "Hindi kilalang pamilya"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "I-update ang Lahat ng Coordinates"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "I-update ang Lahat ng Coordinates ng Pamilya"
+
+#: 
+msgid "Update Coordinates"
+msgstr "I-update ang Coordinates"
 

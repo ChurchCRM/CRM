@@ -5074,14 +5074,6 @@ msgid "Verification URL created"
 msgstr "URL de verificación creada"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Error al enviar correo electrónico(s)"
 
@@ -8473,10 +8465,6 @@ msgstr "Su contraseña ha sido actualizada correctamente."
 #: 
 msgid "selected family has no coordinates"
 msgstr "la familia seleccionada no tiene coordenadas"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12238,10 +12226,6 @@ msgid "Database dump only (.sql)"
 msgstr "Solo volcado de base de datos (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "El rango de fechas no puede superar 1 año"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operación destructiva"
 
@@ -12836,10 +12820,6 @@ msgstr "No se encontró ningún ministerio para esta lista de roles"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "El estado inactivo solo se puede cambiar en la lista de clasificaciones"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Los nuevos feligreses no recibirán un correo de bienvenida con sus credenciales. Comparta la contraseña manualmente o configure el correo electrónico primero."
 
 #: 
 msgid "Option name is required"
@@ -17867,4 +17847,68 @@ msgstr "No se encontraron eventos para %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Intente seleccionar un tipo de evento, mes o año diferente."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Se produjo un error de geocodificación — inténtelo de nuevo más tarde"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "La dirección está incompleta (faltan ciudad, estado y código postal)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Todas las familias ya tienen coordenadas."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Error al actualizar las coordenadas"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Error al actualizar las coordenadas de la familia"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Se geocodificaron las {{geocoded}} familias. El mapa está ahora actualizado."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Se geocodificaron {{geocoded}} familias. {{failed}} no se pudieron resolver — vea los detalles a continuación."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geocodificando…"
+
+#: 
+msgid "No address on file"
+msgstr "No hay dirección registrada"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "No se encontró ninguna coincidencia — verifique la calle, la ciudad y el código postal"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Abra una familia para corregir su dirección y luego ejecute esto de nuevo."
+
+#: 
+msgid "Set up now"
+msgstr "Configurar ahora"
+
+#: 
+msgid "Unknown family"
+msgstr "Familia desconocida"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Actualizar todas las coordenadas"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Actualizar todas las coordenadas de las familias"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Actualizar coordenadas"
 

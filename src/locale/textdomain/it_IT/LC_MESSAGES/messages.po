@@ -5069,14 +5069,6 @@ msgid "Verification URL created"
 msgstr "URL di verifica creato"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Errore durante l'invio delle e-mail"
 
@@ -8468,10 +8460,6 @@ msgstr "La tua password è stata aggiornata con successo."
 #: 
 msgid "selected family has no coordinates"
 msgstr "la famiglia selezionata non ha coordinate"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12233,10 +12221,6 @@ msgid "Database dump only (.sql)"
 msgstr "Solo dump del database (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "L'intervallo di date non può superare 1 anno"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operazione distruttiva"
 
@@ -12831,10 +12815,6 @@ msgstr "Ministero non trovato per questo elenco di ruoli"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Lo stato inattivo può essere modificato solo per l’elenco delle classificazioni"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "I nuovi utenti non riceveranno un’email di benvenuto con le loro credenziali. Condividere la password manualmente o configurare prima l’email."
 
 #: 
 msgid "Option name is required"
@@ -17349,6 +17329,10 @@ msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr "Sei sicuro di voler rimuovere il ruolo '{{name}}'?"
 
 #: 
+msgid "Auto"
+msgstr "Automatico"
+
+#: 
 msgid "Auto follows your OS or browser setting; Light and Dark override it"
 msgstr "Auto segue le impostazioni del sistema operativo o del browser; Chiaro e Scuro le sovrascrivono"
 
@@ -17853,4 +17837,68 @@ msgstr "Nessun evento trovato per %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Prova a selezionare un tipo di evento, mese o anno diverso."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Si è verificato un errore di geocodifica — riprova più tardi"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "L'indirizzo è incompleto (mancano città, provincia e CAP)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Tutte le famiglie hanno già le coordinate."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Impossibile aggiornare le coordinate"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Impossibile aggiornare le coordinate della famiglia"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geocodificate tutte le {{geocoded}} famiglie. La mappa è ora aggiornata."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geocodificate {{geocoded}} famiglie. {{failed}} non è stato possibile risolverle — vedi i dettagli qui sotto."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geocodifica in corso…"
+
+#: 
+msgid "No address on file"
+msgstr "Nessun indirizzo registrato"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nessuna corrispondenza trovata — controlla via, città e CAP"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Apri una famiglia per correggerne l'indirizzo, quindi esegui di nuovo questa operazione."
+
+#: 
+msgid "Set up now"
+msgstr "Configura ora"
+
+#: 
+msgid "Unknown family"
+msgstr "Famiglia sconosciuta"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Aggiorna tutte le coordinate"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Aggiorna le coordinate di tutte le famiglie"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Aggiorna coordinate"
 
