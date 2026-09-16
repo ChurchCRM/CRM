@@ -556,35 +556,25 @@ function ZipBundleSort(array $inLabels)
 }
 
 /**
- * Person value for a label field, or the family value when the person has none.
- */
-function SelectLabelField(array $aRow, string $sPersonColumn, string $sFamilyColumn): string
-{
-    $sValue = trim((string) ($aRow[$sPersonColumn] ?? ''));
-    if ($sValue === '') {
-        $sValue = trim((string) ($aRow[$sFamilyColumn] ?? ''));
-    }
-
-    return $sValue;
-}
-
-/**
- * Both street lines from the person when either is set, otherwise both from
- * the family, so the two lines of one address are never mixed.
+ * The address block for a label, taken whole from one source: the person's own
+ * address when they have entered a street line, otherwise the family's. The
+ * decision is made once for all five parts so a label never mixes a person's
+ * street with the family's city, or the reverse. Matches Person::getAddress().
  *
- * @return array{0: string, 1: string}
+ * @return array{Address1: string, Address2: string, City: string, State: string, Zip: string}
  */
-function SelectLabelAddressLines(array $aRow): array
+function SelectLabelAddress(array $aRow): array
 {
     $sPersonAddress1 = trim((string) ($aRow['per_Address1'] ?? ''));
     $sPersonAddress2 = trim((string) ($aRow['per_Address2'] ?? ''));
-    if ($sPersonAddress1 !== '' || $sPersonAddress2 !== '') {
-        return [$sPersonAddress1, $sPersonAddress2];
-    }
+    $sPrefix = ($sPersonAddress1 !== '' || $sPersonAddress2 !== '') ? 'per_' : 'fam_';
 
     return [
-        trim((string) ($aRow['fam_Address1'] ?? '')),
-        trim((string) ($aRow['fam_Address2'] ?? '')),
+        'Address1' => trim((string) ($aRow[$sPrefix . 'Address1'] ?? '')),
+        'Address2' => trim((string) ($aRow[$sPrefix . 'Address2'] ?? '')),
+        'City'     => trim((string) ($aRow[$sPrefix . 'City'] ?? '')),
+        'State'    => trim((string) ($aRow[$sPrefix . 'State'] ?? '')),
+        'Zip'      => trim((string) ($aRow[$sPrefix . 'Zip'] ?? '')),
     ];
 }
 
@@ -677,10 +667,12 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             // address, as Person::getAddress() and the newsletter labels do.
             // Households normally carry the address on the family record only,
             // which left these labels blank (#9873).
-            [$sAddress1, $sAddress2] = SelectLabelAddressLines($aRow);
-            $sCity = SelectLabelField($aRow, 'per_City', 'fam_City');
-            $sState = SelectLabelField($aRow, 'per_State', 'fam_State');
-            $sZip = SelectLabelField($aRow, 'per_Zip', 'fam_Zip');
+            $aAddress = SelectLabelAddress($aRow);
+            $sAddress1 = $aAddress['Address1'];
+            $sAddress2 = $aAddress['Address2'];
+            $sCity = $aAddress['City'];
+            $sState = $aAddress['State'];
+            $sZip = $aAddress['Zip'];
 
             $sAddress = $sAddress1;
             if ($sAddress2 !== '') {
