@@ -505,6 +505,18 @@ what does not:
 
 The "Ministries looking for help" section and "I'd like to help" are unchanged.
 
+**As built (MP6, #9867).** The nav carries one entry, **Volunteering**, pointing at the schedule
+page; the two pages carry a secondary tab bar between them (*My schedule* / *Find something to do*),
+because two sidebar entries do not survive the move to a six-item top nav. The entry and both
+routes ask one predicate, `PortalNav::isVolunteeringVisible()` — `User::isVolunteerV2Enabled()` and
+`bPortalShowVolunteer`, the latter read defensively because MP3 is what declares it — so the portal
+never offers a page it would then refuse. The home page's "My volunteering" card is real: the
+member's next live assignment and a count of the ones still waiting for an answer, read
+client-side from `/api/volunteer/me/assignments` by `portal.min.js`, best-effort and silent on
+failure. The layout also gained `bootbox` (the volunteer pages' prompts and confirmations) and
+`portal.min.js` now defines `window.CRM.escapeHtml` when the admin shell's `CRMJSOM.js` has not —
+without it the reused bundles would insert unescaped names into the DOM.
+
 ### 5.5 My Teams (`/portal/teams`, `/portal/teams/{teamId}`, `/portal/teams/{teamId}/occurrences/{id}`)
 
 For team leaders (and staff who lead a team, when they open the portal). The team page is the

@@ -298,6 +298,11 @@ $menu = new MenuItem(gettext('Volunteer'), '', $isCoordinator || $isV2, 'fa-hand
 Each child keeps mirroring *its* route's middleware exactly — widening the parent advertises
 nothing, because a child whose own flag is false is still hidden (#9712).
 
+> The example above is **historical**: the mixed-gate "Volunteer" heading no longer exists.
+> #9867 moved the member entries into the Member Portal and deleted the heading, leaving
+> "Ministries" — a single-gate menu — behind. The rule it teaches still applies to any menu that
+> mixes gates.
+
 ## Legacy Pages: Undefined Globals Silently Disable Filters <!-- learned: 2026-07-11 -->
 
 Legacy `src/*.php` pages sometimes read a bare global that no longer exists (a leftover from the old `Config.php`). PHP 8 does not fatal on this — it emits a deprecation and yields a useless value, so a **security filter can silently become a no-op**.

@@ -581,7 +581,7 @@ The member-facing area (epic #8977, design
 |-----------|----------|
 | Entry point | `src/portal/index.php` — `MvcAppFactory::create('/portal', [...])`, **no** module role middleware |
 | Page gate | `ChurchCRM\Portal\PortalAccessMiddleware` + `CSRFMiddleware`, added to the route **group**, not the app |
-| Routes | `src/portal/routes/*.php` — `home.php` (inside the gated group, uses `$group`), `theme-asset.php` (public, uses `$app`) |
+| Routes | `src/portal/routes/*.php` — `home.php` and `volunteer.php` (inside the gated group, using `$group`), `theme-asset.php` (public, uses `$app`) |
 | Views | Twig, not `PhpRenderer`: `src/Include/themes/default/templates/**/*.twig` |
 | Error pages | The module's own, via the new `errorHandler` option on `MvcAppFactory` |
 | `.htaccess` | `src/portal/.htaccess` — blocks `routes/*.php`, routes everything else through `index.php` |
@@ -589,7 +589,8 @@ The member-facing area (epic #8977, design
 **1. No role middleware; the gate is the landing rule instead.** Every login may
 open the portal. An `isEditSelfExclusive()` session is *confined* to it:
 `AuthMiddleware::isLimitedAccessAllowedPath()` (renamed from
-`isAuthFlowExemptPath`) lets `/portal`, `/api/portal` and the auth-flow pages
+`isAuthFlowExemptPath`) lets `/portal`, `/api/portal`, the auth-flow pages and
+`/api/volunteer/me/` (the API the portal's volunteering pages call, #9867)
 through and 302s everything else to `/portal/`; `Include/PageInit.php` does the
 same for legacy pages; `AuthenticationManager::getDefaultLandingPath()` picks the
 post-login destination. `/external/limited-access` is now a 302 to `/portal/`.

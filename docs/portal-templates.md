@@ -62,8 +62,8 @@ You do not need to add any of it, and you should not load a second copy:
   variant when the locale is right-to-left
 - `moment`
 - `portal.min.css`, then the active theme's `theme.css` when it has one
-- `i18next` and the locale loader, then `portal.min.js`, then the active theme's
-  `theme.js` when it has one
+- `bootbox` (confirmations and prompts), `i18next` and the locale loader, then
+  `portal.min.js`, then the active theme's `theme.js` when it has one
 - whatever `<head>` and footer HTML the enabled plugins inject
 
 ### Page IDs and classes worth knowing
@@ -77,6 +77,7 @@ You do not need to add any of it, and you should not load a second copy:
 | `#portal-nav` / `#portal-nav-toggle` | The navigation and the button that opens it on a phone |
 | `#portal-main` | The `<main>` element |
 | `.portal-card` | The standard content card |
+| `.portal-subnav` | A page's own secondary tab bar, e.g. the two volunteering pages |
 
 ---
 
@@ -127,7 +128,7 @@ portal route, ever addresses somebody else.
 | `email` | string | |
 | `avatarUrl` | string | The person's photo endpoint |
 | `familyId` | int | `0` when the person has no family |
-| `isTeamLeader` | bool | Reserved; always `false` until the volunteer pages move into the portal |
+| `isTeamLeader` | bool | `true` when this person leads at least one volunteer team. Also `true` on a self-service login — that is the point of it |
 | `isStaff` | bool | `true` for a login that also has the admin shell — the layout shows the "viewing as yourself" bar for it |
 
 ### `nav`
@@ -185,7 +186,10 @@ will stop working on your pages.
 
 | Template | Rendered for | Its own variables |
 |---|---|---|
-| `home.html.twig` | `GET /portal` | `pageTitle` |
+| `home.html.twig` | `GET /portal` | `pageTitle`, `showVolunteering` |
+| `volunteer/schedule.html.twig` | `GET /portal/volunteer/schedule` | `pageTitle`, `activeTab` |
+| `volunteer/opportunities.html.twig` | `GET /portal/volunteer/opportunities` | `pageTitle`, `activeTab` |
+| `volunteer/partials/tabs.html.twig` | included by both volunteering pages | `activeTab` |
 | `errors/403.html.twig` | A page this member may not open | `pageTitle` |
 | `errors/404.html.twig` | An unknown portal URL (and 405) | `pageTitle` |
 | `errors/500.html.twig` | An unexpected failure | `pageTitle` |
@@ -199,8 +203,22 @@ broken theme cannot break the page that reports it. A theme may still override
 them — its version is used everywhere except when that theme is the one that
 failed.
 
+`showVolunteering` is `true` when the installation offers the volunteering pages;
+the home page renders its "My volunteering" card only then. `activeTab` is
+`'schedule'` or `'opportunities'` and is what the tab partial highlights.
+
+**The two volunteering pages are container markup and nothing else.** Their ids —
+`#volunteer-my-schedule`, `#assignments-loading` / `-error` / `-empty` / `-content`,
+`#substitute-modal` and friends on one page; `#volunteer-opportunities`,
+`#help-wanted-section` / `-content`, `#opportunities-loading` / `-error` / `-empty` /
+`-content` on the other — are read by `skin/v2/volunteer-my-schedule.min.js` and
+`skin/v2/volunteer-opportunities.min.js`, which fill them from
+`/api/volunteer/me/*`. A theme overriding either template must keep every id, or
+the page renders empty. Override the wrapper, the headings and the surrounding
+layout freely.
+
 More pages arrive with the rest of the epic: profile and family (MP4), calendar
-(MP5), volunteering (MP6), teams (MP7). Each one adds a row to this table.
+(MP5), teams (MP7). Each one adds a row to this table.
 
 ---
 
