@@ -51,6 +51,7 @@ $group->get('/family', function (Request $request, Response $response) use ($por
                 // Only the adults see the "add a family member" dialog, but the
                 // role list is cheap and a theme may put it elsewhere.
                 'familyRoles' => PortalSelfService::getFamilyRoles(),
+                'defaultNewMemberRoleId' => PortalSelfService::getDefaultNewMemberRoleId(),
             ],
             $portalFamilyView($request)
         ),

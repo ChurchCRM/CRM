@@ -404,6 +404,10 @@
 
 // Forms ----------------------------------------------------------------------
 
+.portal-form .portal-card-text {
+    margin-block-end: 1rem;
+}
+
 .portal-field-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -466,29 +470,6 @@ textarea.portal-input {
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-block-start: 0.5rem;
-}
-
-.portal-button-quiet {
-    background-color: transparent;
-    border: 1px solid var(--portal-border);
-    color: var(--portal-text);
-}
-
-.portal-button-quiet:hover,
-.portal-button-quiet:focus-visible {
-    color: var(--portal-text);
-}
-
-button.portal-button {
-    font: inherit;
-    cursor: pointer;
-    border: 0;
-    gap: 0.5rem;
-}
-
-button.portal-button[disabled] {
-    opacity: 0.6;
-    cursor: progress;
 }
 
 .portal-choice {
@@ -593,18 +574,44 @@ button.portal-button[disabled] {
 .portal-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     min-block-size: 44px;
     padding-inline: 1rem;
+    border: 0;
     border-radius: var(--portal-radius);
     background-color: var(--portal-primary);
     color: var(--portal-primary-contrast);
+    font: inherit;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .portal-button:hover,
 .portal-button:focus-visible {
     color: var(--portal-primary-contrast);
     filter: brightness(1.1);
+}
+
+.portal-button[disabled] {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+// The secondary action: same shape, no fill. Declared after .portal-button so
+// its background wins — both are single-class selectors, so source order is
+// the only thing deciding it.
+.portal-button-quiet {
+    background-color: transparent;
+    border: 1px solid var(--portal-border);
+    color: var(--portal-text);
+}
+
+.portal-button-quiet:hover,
+.portal-button-quiet:focus-visible {
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+    filter: none;
 }
 
 // Footer ---------------------------------------------------------------------

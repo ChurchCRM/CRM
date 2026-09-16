@@ -633,9 +633,21 @@ class PortalSelfService
     }
 
     /**
+     * The role a proposed family member starts on: the configured "child"
+     * role. The first role in the list would be head of household, which is
+     * the wrong default for somebody an existing household is adding.
+     */
+    public static function getDefaultNewMemberRoleId(): int
+    {
+        $childRoles = explode(',', (string) SystemConfig::getValue('sDirRoleChild'));
+
+        return (int) ($childRoles[0] ?? 0);
+    }
+
+    /**
      * The submitted family role, kept only when it is one this installation
-     * actually offers. Anything else falls back to the configured "child"
-     * role, because staff review the entry before it becomes a member anyway.
+     * actually offers. Anything else falls back to the default above, because
+     * staff review the entry before it becomes a member anyway.
      */
     private static function resolveRoleId(mixed $role): int
     {
@@ -646,9 +658,7 @@ class PortalSelfService
             }
         }
 
-        $childRoles = explode(',', (string) SystemConfig::getValue('sDirRoleChild'));
-
-        return (int) ($childRoles[0] ?? 0);
+        return self::getDefaultNewMemberRoleId();
     }
 
     /**

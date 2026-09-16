@@ -151,7 +151,7 @@
             <label class="portal-field-label" for="portal-new-role">{{ gettext('Role') }}</label>
             <select class="portal-input" id="portal-new-role" name="role">
                 {% for role in familyRoles %}
-                <option value="{{ role.id }}">{{ role.name }}</option>
+                <option value="{{ role.id }}"{% if role.id == defaultNewMemberRoleId %} selected{% endif %}>{{ role.name }}</option>
                 {% endfor %}
             </select>
             <p class="portal-field-error" data-error-for="role" role="alert"></p>

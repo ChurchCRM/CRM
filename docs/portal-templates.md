@@ -216,7 +216,7 @@ will stop working on your pages.
 | `profile/password.html.twig` | `GET/POST /v2/user/current/changepassword`, self-service session | `pageTitle`, `minPasswordLength`, `oldPasswordError`, `newPasswordError` |
 | `profile/password-changed.html.twig` | The same route, after a successful change | `pageTitle` |
 | `profile/two-factor.html.twig` | `GET /v2/user/current/manage2fa`, self-service session | `pageTitle` |
-| `family/index.html.twig` | `GET /portal/family` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm`, `familyRoles` |
+| `family/index.html.twig` | `GET /portal/family` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm`, `familyRoles`, `defaultNewMemberRoleId` |
 | `family/edit.html.twig` | `GET /portal/family/edit` | `pageTitle`, `family`, `members`, `canEdit`, `countries` |
 | `family/confirm.html.twig` | `GET /portal/family/confirm` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm` |
 | `errors/403.html.twig` | A page this member may not open | `pageTitle` |
@@ -282,6 +282,7 @@ orders them.
 | `canConfirm` | bool | Whether the "Confirm your family details" card is offered |
 | `countries` | map | Country code → country name, for the address form's `<select>` |
 | `familyRoles` | list | `{id, name}` for each family role, for the "add a family member" form |
+| `defaultNewMemberRoleId` | int | The role that form starts on — the configured child role, not head of household |
 | `familySummary` | object | On the home page only: `{name, memberCount}`, or `null` when the member has no family |
 
 The two theme-failure pages are always rendered from the **system** theme, so a
