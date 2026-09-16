@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} perhettä ei voitu geokoodata",
+    "other": "{{count}} perhettä ei voitu geokoodata"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktiivinen {{count}} sekunnin ajan",
+    "other": "Aktiivinen {{count}} sekunnin ajan"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Olet lähettämässä vahvistussähköpostia {{count}} perheelle.",
+    "other": "Olet lähettämässä vahvistussähköposteja {{count}} perheelle."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} perheellä ei ole sähköpostiosoitetta tiedoissa, ja se ohitetaan",
+    "other": "{{count}} perheellä ei ole sähköpostiosoitetta tiedoissa, ja ne ohitetaan"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…ja {{count}} muu, jota ei ole lueteltu tässä.",
+    "other": "…ja {{count}} muuta, joita ei ole lueteltu tässä."
   }
 }
