@@ -51,6 +51,30 @@ data they affect:
 examples — both are `ConfigItem`s absent from `buildCategories()`, surfaced on
 `#peopleSettings`.
 
+### Admin → Member Portal owns the portal's settings <!-- learned: 2026-09-16 -->
+
+The Member Portal (epic #8977) does not use a dashboard `settingsPanel` bolted
+onto an existing page: it has a page of its own, `/admin/member-portal`
+(`src/admin/routes/member-portal.php` + `src/admin/views/member-portal.php`,
+issue #9864), whose **Settings** tab hosts the Settings Panel component. Five
+`ConfigItem`s live there, all declared in `buildConfigs()` and all deliberately
+absent from `buildCategories()`:
+
+| Key | Type | Default | What it does |
+|-----|------|---------|--------------|
+| `sMemberPortalTheme` | text | `default` | folder name of the active theme under `Include/themes/` |
+| `bPortalDeveloperMode` | boolean | `0` | no Twig compile cache; template name in an HTML comment |
+| `bPortalShowCalendar` | boolean | `1` | show the church calendar in the portal |
+| `bPortalShowVolunteer` | boolean | `1` | show volunteering and team pages |
+| `bPortalAllowBirthdayEdit` | boolean | `0` | let members change birthdays |
+
+Four of the five save through the normal
+`POST /admin/api/system/config/{name}`. `sMemberPortalTheme` does **not**: it
+goes through `POST /admin/api/member-portal/theme`, because activation runs
+`ThemeManager::validate()` first and answers 409 with the findings when the
+theme cannot render — a plain config write would happily store a value that
+breaks the portal for every member.
+
 **Moving an existing key off the System Settings page:** delete it from its
 `buildCategories()` array and add it to the relevant dashboard panel. The
 `ConfigItem` and every `getBooleanValue()` / `getValue()` call site stay
