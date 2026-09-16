@@ -1,41 +1,41 @@
 {
-  "people from cart?": "",
-  "skip must be zero or a positive integer": "",
-  "view families missing an email": "",
+  "people from cart?": "mga tao mula sa cart?",
+  "skip must be zero or a positive integer": "ang skip ay dapat zero o positibong integer",
+  "view families missing an email": "tingnan ang mga pamilyang walang email",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Nakopya ang {{count}} miyembro",
+    "other": "Nakopya ang {{count}} miyembro"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Ang listahang ito ay may {{count}} tatanggap — sobrang dami para sa mailto: link. Gamitin na lang ang Copy Addresses.",
+    "other": "Ang listahang ito ay may {{count}} tatanggap — sobrang dami para sa mailto: link. Gamitin na lang ang Copy Addresses."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Sobrang dami ng tatanggap para sa email client ({{count}} > {{max}}). Gamitin na lang ang Copy Addresses.",
+    "other": "Sobrang dami ng tatanggap para sa email client ({{count}} > {{max}}). Gamitin na lang ang Copy Addresses."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuto na lang ang natitira",
+    "other": "{{count}} minuto na lang ang natitira"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} pamilya ang hindi na-geocode",
+    "other": "{{count}} pamilya ang hindi na-geocode"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktibo sa loob ng {{count}} segundo",
+    "other": "Aktibo sa loob ng {{count}} segundo"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Ikaw ay magpapadala ng mga confirmation email sa {{count}} pamilya.",
+    "other": "Ikaw ay magpapadala ng mga confirmation email sa {{count}} pamilya."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} pamilya ang walang naitalang email address at lalaktawan",
+    "other": "{{count}} pamilya ang walang naitalang email address at lalaktawan"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…at {{count}} pa ang hindi nakalista dito.",
+    "other": "…at {{count}} pa ang hindi nakalista dito."
   }
 }
