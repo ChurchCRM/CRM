@@ -12,6 +12,7 @@ use ChurchCRM\Service\VolunteerAssignmentService;
 use ChurchCRM\Slim\Middleware\Api\CalendarMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\CalendarWriteRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\Collection\ObjectCollection;
@@ -33,8 +34,12 @@ $app->group('/calendars', function (RouteCollectorProxy $group): void {
     $group->delete('/{id}', 'deleteUserCalendar')->add(CalendarMiddleware::class);
     $group->get('/{id}/events', 'getUserCalendarEvents')->add(CalendarMiddleware::class);
     $group->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents')->add(CalendarMiddleware::class);
-    $group->post('/{id}/NewAccessToken', 'NewAccessToken')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class);
-    $group->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class);
+    // Administering ONE existing calendar is a per-row question once a ministry can own a
+    // calendar (§5.3), so these two use CalendarWriteRoleAuthMiddleware rather than the
+    // global Add Events gate. It is listed FIRST so Slim runs it LAST — after
+    // CalendarMiddleware has put the row it needs on the request.
+    $group->post('/{id}/NewAccessToken', 'NewAccessToken')->add(CalendarWriteRoleAuthMiddleware::class)->add(CalendarMiddleware::class);
+    $group->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(CalendarWriteRoleAuthMiddleware::class)->add(CalendarMiddleware::class);
 });
 
 $app->group('/systemcalendars', function (RouteCollectorProxy $group): void {

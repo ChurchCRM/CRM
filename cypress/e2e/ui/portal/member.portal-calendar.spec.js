@@ -173,4 +173,101 @@ describe("Member Portal calendar", () => {
         cy.get(".portal-card-calendar").should("not.contain", "Coming soon");
         cy.get(".portal-card-calendar").should("contain", "See the whole calendar");
     });
+
+    /**
+     * The last row of the MP5 scope-split table, delivered on the volunteer branch
+     * (#9869): "a member who leads a team sees their ministry's calendar highlighted".
+     *
+     * It needed team leadership, which only reaches a self-service login once MP6 has
+     * landed — which is why it could not ship with #9866.
+     */
+    describe("a team leader's own ministry (#9869)", () => {
+        const MINISTRY_NAME = `PortalLegend ${Cypress._.random(0, 1e6)}`;
+        let ministryId = 0;
+        let ministryCalendarId = 0;
+        let originalVersion = "v1";
+
+        before(() => {
+            cy.request({
+                method: "GET",
+                url: "/admin/api/system/config/sVolunteerVersion",
+                headers: { "x-api-key": adminKey() },
+            }).then((resp) => {
+                originalVersion = resp.body.value ?? resp.body.data ?? "v1";
+            });
+            setConfig("sVolunteerVersion", "v2");
+
+            cy.request({
+                method: "POST",
+                url: "/api/volunteer/ministries",
+                headers: {
+                    "content-type": "application/json",
+                    "x-api-key": adminKey(),
+                },
+                body: { name: MINISTRY_NAME, description: "#9869 legend fixture" },
+            }).then((resp) => {
+                ministryId = resp.body.ministry.id;
+                ministryCalendarId = resp.body.calendarId;
+
+                // The ministry came with one team; make person 100 its leader.
+                cy.request({
+                    method: "GET",
+                    url: `/api/volunteer/ministries/${ministryId}/teams`,
+                    headers: { "x-api-key": adminKey() },
+                }).then((tResp) => {
+                    cy.request({
+                        method: "POST",
+                        url: "/api/volunteer/scopes",
+                        headers: {
+                            "content-type": "application/json",
+                            "x-api-key": adminKey(),
+                        },
+                        body: {
+                            personId: 100,
+                            scopeType: "team",
+                            scopeId: tResp.body.teams[0].id,
+                        },
+                        failOnStatusCode: false,
+                    });
+                });
+            });
+        });
+
+        after(() => {
+            cy.then(() => {
+                cy.request({
+                    method: "DELETE",
+                    url: `/api/volunteer/ministries/${ministryId}`,
+                    headers: { "x-api-key": adminKey() },
+                    failOnStatusCode: false,
+                });
+                setConfig("sVolunteerVersion", originalVersion);
+                setVisibleCalendars([]);
+            });
+        });
+
+        it("marks the calendar of a ministry whose team the member leads", () => {
+            cy.then(() => {
+                setVisibleCalendars([
+                    { type: "calendar", id: CHURCH_CALENDAR_ID },
+                    { type: "calendar", id: ministryCalendarId },
+                ]);
+            });
+            loginAsMember();
+
+            cy.visit("/portal/calendar");
+
+            cy.get(".portal-calendar-legend").should("contain", MINISTRY_NAME);
+            cy.get(".portal-calendar-legend-mine")
+                .should("have.length", 1)
+                .and("contain", MINISTRY_NAME)
+                .and("contain", "You lead this");
+
+            // The church calendar is nobody's ministry and carries no tag.
+            cy.get(".portal-calendar-legend-item")
+                .contains(CHURCH_CALENDAR_NAME)
+                .closest(".portal-calendar-legend-item")
+                .should("not.have.class", "portal-calendar-legend-mine");
+        });
+    });
 });

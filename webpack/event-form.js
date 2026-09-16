@@ -212,7 +212,7 @@ function renderTitleFieldInHeader(event) {
  * the field hidden. The control is an optional extra on an existing form: a broken fetch must
  * not stop somebody editing an event.
  */
-function loadVolunteerMinistries(event) {
+function loadVolunteerMinistries(event, onLoaded = null) {
   const field = document.getElementById("eventMinistryField");
   const select = document.getElementById("eventMinistrySelect");
   if (!field || !select) return;
@@ -246,6 +246,8 @@ function loadVolunteerMinistries(event) {
       }
 
       field.classList.remove("d-none");
+
+      if (typeof onLoaded === "function") onLoaded();
     })
     .catch(() => {
       // Field stays hidden — see the docblock.
@@ -791,6 +793,30 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
     });
   }
 
+  /**
+   * Add the ministry's own calendar to the pinned list (Member Portal design §5.3).
+   *
+   * Every ministry is created with a calendar carrying its id, so choosing a ministry is
+   * almost always also a statement about where the event belongs — and a coordinator
+   * without Add Events may pin to that calendar and to no other, so leaving them to find
+   * it in a list of every church calendar would be a trap.
+   *
+   * Strictly additive: it never removes a pin the user chose, never replaces the list, and
+   * does nothing when the ministry has no calendar (an upgraded installation) or when the
+   * calendar is already pinned.
+   */
+  function prePinMinistryCalendar(ministryId) {
+    if (!ministryId || !tsCalendars) return;
+
+    const calendar = calendars.find((c) => Number(c.MinistryId || 0) === Number(ministryId));
+    if (!calendar) return;
+
+    const id = String(calendar.Id);
+    if (tsCalendars.getValue().includes(id)) return;
+
+    tsCalendars.addItem(id);
+  }
+
   // Volunteer v2 (#9713). `null` rather than 0 for "no ministry": the API treats 0, '' and
   // null alike, but null is what `GET /api/events/:id` returns, so a round-trip through the
   // editor leaves the payload byte-identical to what it read.
@@ -798,9 +824,17 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
   if (ministryEl) {
     ministryEl.addEventListener("change", () => {
       event.MinistryId = Number.parseInt(ministryEl.value, 10) || null;
+      prePinMinistryCalendar(event.MinistryId);
     });
   }
-  loadVolunteerMinistries(event);
+  loadVolunteerMinistries(event, () => {
+    // Pre-pin on open only for an event that has no pins yet — a new one. An event that
+    // already carries pins is somebody's decision, and re-opening it must not quietly add
+    // to that decision (Member Portal design §5.3).
+    if (!Array.isArray(event.PinnedCalendars) || event.PinnedCalendars.length === 0) {
+      prePinMinistryCalendar(Number(event.MinistryId || 0) || null);
+    }
+  });
 
   // Attendance counts live on `event.AttendanceCounts[]` — each input
   // rewrites the matching row by data-count-id when changed.

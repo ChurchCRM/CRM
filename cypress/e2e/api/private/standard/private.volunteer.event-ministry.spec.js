@@ -68,6 +68,13 @@ const EVENT_TITLE = `${FIXTURE_PREFIX} Linked Service`;
 
 let ministryA = 0;
 let ministryB = 0;
+/**
+ * The ministries' own calendars (#9869, Member Portal design §5.3). A coordinator
+ * without Add Events may pin to their ministry's calendar and to nothing else, so the
+ * coordinator block below pins here rather than to "Public Calendar".
+ */
+let calendarA = 0;
+let calendarB = 0;
 /** Ministry A's team — positions and schedules both have to name one. */
 let teamA = 0;
 let positionOne = 0;
@@ -126,6 +133,19 @@ function eventBody(overrides = {}) {
         PinnedCalendars: [PUBLIC_CALENDAR],
         ...overrides,
     };
+}
+
+/**
+ * The same payload, pinned to ministry A's OWN calendar.
+ *
+ * A coordinator without Add Events may pin an event to the calendar their ministry owns
+ * and to no other (#9869, Member Portal design §5.3), so every coordinator write in this
+ * spec uses this rather than `eventBody()`'s "Public Calendar" default. Reading
+ * `calendarA` at call time, not at module load, is deliberate: the fixture assigns it in
+ * `before`, and these helpers are evaluated inside the `it`s.
+ */
+function coordinatorEventBody(overrides = {}) {
+    return eventBody({ PinnedCalendars: [calendarA], ...overrides });
 }
 
 /** Create an event as `key` and resolve with its id (read back by title). */
@@ -214,6 +234,15 @@ function cleanupFixtures() {
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [
         `${FIXTURE_PREFIX}%`,
     ]);
+    dbOk(
+        `DELETE ce FROM calendar_events ce
+           JOIN calendars c ON c.calendar_id = ce.calendar_id
+          WHERE c.name LIKE ?`,
+        [`${FIXTURE_PREFIX}%`],
+    );
+    // Before the ministries: the FK is ON DELETE SET NULL, so a calendar left behind
+    // would survive as an unowned church calendar and leak into the next run.
+    dbOk(`DELETE FROM calendars WHERE name LIKE ?`, [`${FIXTURE_PREFIX}%`]);
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, [
         `${FIXTURE_PREFIX}%`,
     ]);
@@ -235,6 +264,19 @@ function createMinistry(suffix) {
  * created — so the team is inserted here too. Positions and schedules are
  * `NOT NULL` on their team column, so one has to exist before either.
  */
+/**
+ * The ministry's own calendar. `VolunteerSetupService::createMinistry()` creates one
+ * with every ministry; these fixtures insert their ministry with raw SQL and therefore
+ * have to insert the calendar too, exactly as they already do for the team.
+ */
+function createMinistryCalendar(ministryId, suffix) {
+    return dbOk(
+        `INSERT INTO calendars (name, foregroundColor, backgroundColor, ministry_id)
+         VALUES (?, 'FFFFFF', '2E7D32', ?)`,
+        [`${FIXTURE_PREFIX} ${suffix}`, ministryId],
+    ).then((rows) => rows.insertId);
+}
+
 function createTeam(ministryId, name) {
     return dbOk(
         `INSERT INTO volunteer_team_vtem (vtem_vmin_ID, vtem_Name, vtem_Description, vtem_Active)
@@ -282,6 +324,9 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
 
         createMinistry("Ministry A").then((id) => {
             ministryA = id;
+            createMinistryCalendar(ministryA, "Ministry A Calendar").then((c) => {
+                calendarA = c;
+            });
             createTeam(ministryA, "Ministry A Team").then((teamId) => {
                 teamA = teamId;
                 createPosition(ministryA, teamA, "Espresso").then((p) => {
@@ -300,6 +345,9 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
         });
         createMinistry("Ministry B").then((id) => {
             ministryB = id;
+            createMinistryCalendar(ministryB, "Ministry B Calendar").then((c) => {
+                calendarB = c;
+            });
         });
 
         cy.then(() => {
@@ -558,7 +606,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
         it("creates an event carrying THEIR ministry id", () => {
             createEventAs(
                 COORDINATOR_KEY,
-                eventBody({
+                coordinatorEventBody({
                     Title: `${FIXTURE_PREFIX} Coordinator Event`,
                     MinistryId: ministryA,
                 }),
@@ -575,7 +623,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                 COORDINATOR_KEY,
                 "POST",
                 "/api/events",
-                eventBody({
+                coordinatorEventBody({
                     Title: `${FIXTURE_PREFIX} Coordinator Foreign`,
                     MinistryId: ministryB,
                 }),
@@ -594,7 +642,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                 COORDINATOR_KEY,
                 "POST",
                 "/api/events",
-                eventBody({ Title: `${FIXTURE_PREFIX} Coordinator Unowned` }),
+                coordinatorEventBody({ Title: `${FIXTURE_PREFIX} Coordinator Unowned` }),
                 403,
             );
 
@@ -608,7 +656,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
         it("edits, deactivates, re-times and deletes their own ministry's event", () => {
             createEventAs(
                 COORDINATOR_KEY,
-                eventBody({
+                coordinatorEventBody({
                     Title: `${FIXTURE_PREFIX} Coordinator Editable`,
                     MinistryId: ministryA,
                 }),
@@ -617,7 +665,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                     COORDINATOR_KEY,
                     "POST",
                     `/api/events/${eventId}`,
-                    eventBody({
+                    coordinatorEventBody({
                         Title: `${FIXTURE_PREFIX} Coordinator Editable`,
                         Desc: "renamed by the coordinator",
                         MinistryId: ministryA,
@@ -667,13 +715,14 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                 eventBody({
                     Title: `${FIXTURE_PREFIX} Foreign Ministry Event`,
                     MinistryId: ministryB,
+                    PinnedCalendars: [calendarB],
                 }),
             ).then((eventId) => {
                 api(
                     COORDINATOR_KEY,
                     "POST",
                     `/api/events/${eventId}`,
-                    eventBody({
+                    coordinatorEventBody({
                         Title: `${FIXTURE_PREFIX} Foreign Ministry Event`,
                         MinistryId: ministryB,
                     }),
@@ -709,13 +758,13 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
         it("is refused an event that carries no ministry at all", () => {
             createEventAs(
                 ADMIN_KEY,
-                eventBody({ Title: `${FIXTURE_PREFIX} Unowned Event` }),
+                coordinatorEventBody({ Title: `${FIXTURE_PREFIX} Unowned Event` }),
             ).then((eventId) => {
                 api(
                     COORDINATOR_KEY,
                     "POST",
                     `/api/events/${eventId}`,
-                    eventBody({ Title: `${FIXTURE_PREFIX} Unowned Event` }),
+                    coordinatorEventBody({ Title: `${FIXTURE_PREFIX} Unowned Event` }),
                     403,
                 );
                 api(
@@ -731,7 +780,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
         it("may not hand their own event to a ministry they do not manage", () => {
             createEventAs(
                 COORDINATOR_KEY,
-                eventBody({
+                coordinatorEventBody({
                     Title: `${FIXTURE_PREFIX} Coordinator Handover`,
                     MinistryId: ministryA,
                 }),
@@ -740,7 +789,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                     COORDINATOR_KEY,
                     "POST",
                     `/api/events/${eventId}`,
-                    eventBody({
+                    coordinatorEventBody({
                         Title: `${FIXTURE_PREFIX} Coordinator Handover`,
                         MinistryId: ministryB,
                     }),
@@ -762,7 +811,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
             // one being replaced — a coordinator has none over "no ministry".
             createEventAs(
                 COORDINATOR_KEY,
-                eventBody({
+                coordinatorEventBody({
                     Title: `${FIXTURE_PREFIX} Coordinator Orphan`,
                     MinistryId: ministryA,
                 }),
@@ -771,7 +820,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                     COORDINATOR_KEY,
                     "POST",
                     `/api/events/${eventId}`,
-                    eventBody({
+                    coordinatorEventBody({
                         Title: `${FIXTURE_PREFIX} Coordinator Orphan`,
                         MinistryId: null,
                     }),
@@ -784,6 +833,47 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                 ).then((rows) => {
                     expect(rows[0].event_ministry_id).to.eq(ministryA);
                 });
+            });
+        });
+
+        // #9869: the pin is a second authorization question, asked per calendar.
+        it("is refused a pin to a church calendar they do not own", () => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                "/api/events",
+                coordinatorEventBody({
+                    Title: `${FIXTURE_PREFIX} Coordinator Church Pin`,
+                    MinistryId: ministryA,
+                    PinnedCalendars: [PUBLIC_CALENDAR],
+                }),
+                403,
+            );
+
+            dbOk(`SELECT event_id FROM events_event WHERE event_title = ?`, [
+                `${FIXTURE_PREFIX} Coordinator Church Pin`,
+            ]).then((rows) => {
+                expect(rows.length, "nothing was created").to.eq(0);
+            });
+        });
+
+        it("is refused a pin to ANOTHER ministry's calendar", () => {
+            api(
+                COORDINATOR_KEY,
+                "POST",
+                "/api/events",
+                coordinatorEventBody({
+                    Title: `${FIXTURE_PREFIX} Coordinator Foreign Pin`,
+                    MinistryId: ministryA,
+                    PinnedCalendars: [calendarB],
+                }),
+                403,
+            );
+
+            dbOk(`SELECT event_id FROM events_event WHERE event_title = ?`, [
+                `${FIXTURE_PREFIX} Coordinator Foreign Pin`,
+            ]).then((rows) => {
+                expect(rows.length, "nothing was created").to.eq(0);
             });
         });
 

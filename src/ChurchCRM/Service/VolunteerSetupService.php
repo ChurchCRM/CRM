@@ -3,6 +3,9 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Exceptions\VolunteerSetupException;
+use ChurchCRM\model\ChurchCRM\Calendar;
+use ChurchCRM\model\ChurchCRM\CalendarEventQuery;
+use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
@@ -88,6 +91,31 @@ class VolunteerSetupService
     /** The group type a ministry's volunteer pool Group is given (D19). */
     private const MINISTRY_GROUP_TYPE_NAME = 'Ministry';
 
+    /**
+     * Background/foreground pairs a ministry calendar is born with (Member Portal
+     * design §5.3).
+     *
+     * Six pairs, each a mid-to-dark background under white text, so a swatch in the
+     * portal legend and a block in the month grid are both legible without anyone
+     * choosing anything. They are hex WITHOUT the leading `#`, which is how
+     * `calendars.backgroundColor` stores colour and how `NewCalendar` writes it.
+     *
+     * The pair is picked by ministry id modulo the palette, so two ministries created
+     * one after another never look the same, and a coordinator who wants their own
+     * colour changes it on the admin calendar page like any other calendar — nothing
+     * here is re-applied after creation.
+     *
+     * @var array<int, array{background: string, foreground: string}>
+     */
+    private const MINISTRY_CALENDAR_PALETTE = [
+        ['background' => '2E7D32', 'foreground' => 'FFFFFF'],
+        ['background' => '1565C0', 'foreground' => 'FFFFFF'],
+        ['background' => '6A1B9A', 'foreground' => 'FFFFFF'],
+        ['background' => 'C62828', 'foreground' => 'FFFFFF'],
+        ['background' => 'EF6C00', 'foreground' => 'FFFFFF'],
+        ['background' => '00838F', 'foreground' => 'FFFFFF'],
+    ];
+
     private LoggerInterface $logger;
 
     private VolunteerAuthorizationService $authz;
@@ -165,6 +193,12 @@ class VolunteerSetupService
             // at the top of this method.
             $group = VolunteerPoolWriter::run(fn (): Group => $this->createPoolGroup($ministry, $connection));
 
+            // The ministry's own calendar, in the same transaction and for the same
+            // reason as the pool group: a ministry is never calendar-less, so a
+            // coordinator creating "Car Wash" for Youth Ministry has somewhere of their
+            // own to pin it (Member Portal design §5.3).
+            $calendar = $this->createMinistryCalendar($ministry, $connection);
+
             $connection->commit();
         } catch (\Throwable $e) {
             $connection->rollBack();
@@ -177,6 +211,7 @@ class VolunteerSetupService
             'name' => $ministry->getName(),
             'defaultTeamId' => $team->getId(),
             'poolGroupId' => $group->getId(),
+            'calendarId' => $calendar->getId(),
             'actor' => $actor->getId(),
         ]);
 
@@ -208,6 +243,59 @@ class VolunteerSetupService
         $group->save($connection);
 
         return $group;
+    }
+
+    /**
+     * The ministry's own calendar (Member Portal design §5.3).
+     *
+     * The same shape as the pool Group above: one ordinary core row, created with the
+     * ministry, named after it, carrying `calendars.ministry_id`. That column is what
+     * the events API reads to let this ministry's coordinator pin an event here without
+     * the global Add Events right, what the admin calendar page reads to list the
+     * calendar under "Ministry Calendars", and what the portal reads to tell a member
+     * which calendars belong to a ministry they serve.
+     *
+     * `calendars.name` is `VARCHAR(99)`, `vmin_Name` is `VARCHAR(100)`, so a maximum-length
+     * ministry name is TRUNCATED rather than refused — the same call the pool group makes.
+     * Calendar names are not unique, so a collision with an existing church calendar is
+     * legal and left alone.
+     *
+     * No access token: a ministry calendar is a church-internal thing, and publishing it
+     * is a decision an administrator makes afterwards on the admin calendar page.
+     */
+    private function createMinistryCalendar(VolunteerMinistry $ministry, $connection): Calendar
+    {
+        $palette = self::MINISTRY_CALENDAR_PALETTE[
+            (int) $ministry->getId() % count(self::MINISTRY_CALENDAR_PALETTE)
+        ];
+
+        $calendar = new Calendar();
+        $calendar->setName($this->ministryCalendarName($ministry));
+        $calendar->setBackgroundColor($palette['background']);
+        $calendar->setForegroundColor($palette['foreground']);
+        $calendar->setMinistryId((int) $ministry->getId());
+        $calendar->save($connection);
+
+        return $calendar;
+    }
+
+    /**
+     * The name a ministry's calendar carries: the ministry's own name, trimmed to the
+     * column. Kept in one place so the create and the rename can never disagree.
+     */
+    private function ministryCalendarName(VolunteerMinistry $ministry): string
+    {
+        return mb_substr((string) $ministry->getName(), 0, 99);
+    }
+
+    /**
+     * A ministry's calendar, or null when it has none — an upgraded installation whose
+     * ministries predate §5.3, or one whose administrator deleted the calendar on the
+     * admin calendar page. Every caller treats the absence as ordinary.
+     */
+    public function getMinistryCalendar(int $ministryId): ?Calendar
+    {
+        return CalendarQuery::create()->findOneByMinistryId($ministryId);
     }
 
     /**
@@ -324,11 +412,23 @@ class VolunteerSetupService
                     $group->save();
                 });
             }
+
+            // …and its calendar, for the same reason: a calendar still called "Coffee
+            // Bar" under a ministry now called "Cafe" is the drift the owning column
+            // exists to stop (§5.3). No managed-write context here — `calendars` has no
+            // model-level permission hook; the authorization is assertCanManageMinistry
+            // at the top of this method.
+            $calendar = $this->getMinistryCalendar((int) $ministry->getId());
+            if ($calendar !== null) {
+                $calendar->setName($this->ministryCalendarName($ministry));
+                $calendar->save();
+            }
         }
 
         $this->logger->info('Volunteer ministry updated', [
             'ministryId' => $ministry->getId(),
             'renamedPoolGroup' => $renamed,
+            'renamedCalendar' => $renamed,
             'actor' => $actor->getId(),
         ]);
 
@@ -408,6 +508,22 @@ class VolunteerSetupService
                 });
             }
 
+            // The ministry's calendar goes the same way, and for the same reason:
+            // `calendars.ministry_id` is ON DELETE SET NULL (§5.3), so leaving it would
+            // turn the calendar into an unnamed orphan on the admin calendar page.
+            // Its pin rows go with it — an event pinned elsewhere too keeps that pin,
+            // and one pinned only here becomes an unpinned event, which is a state the
+            // "Unpinned events" system calendar already shows an administrator.
+            $calendar = $this->getMinistryCalendar($ministryId);
+            $removedCalendarId = null;
+            if ($calendar !== null) {
+                $removedCalendarId = (int) $calendar->getId();
+                CalendarEventQuery::create()
+                    ->filterByCalendarId($removedCalendarId)
+                    ->delete($connection);
+                $calendar->delete($connection);
+            }
+
             $ministry->delete($connection);
             $connection->commit();
 
@@ -415,6 +531,7 @@ class VolunteerSetupService
                 'ministryId' => $ministryId,
                 'removedScopeRows' => $removedScopes,
                 'removedPoolGroupId' => $removedGroupId,
+                'removedCalendarId' => $removedCalendarId,
                 'actor' => $actor->getId(),
             ]);
         } catch (\Throwable $e) {

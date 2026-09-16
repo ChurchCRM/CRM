@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Portal;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\FullCalendarEvent;
 use ChurchCRM\dto\SystemCalendars;
 use ChurchCRM\dto\SystemConfig;
@@ -12,6 +13,9 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
+use ChurchCRM\Service\VolunteerAuthorizationService;
 use ChurchCRM\SystemCalendars\AnniversariesCalendar;
 use ChurchCRM\SystemCalendars\BirthdaysCalendar;
 use ChurchCRM\SystemCalendars\SystemCalendar;
@@ -89,6 +93,51 @@ class PortalCalendarService
         }
 
         return $choices;
+    }
+
+    /**
+     * The ministries whose teams the signed-in member runs (design §5.3, last row of
+     * the MP5 scope-split table).
+     *
+     * The portal calendar marks these calendars so a team leader can pick their own
+     * ministry out of a legend of eight — the one calendar on the page they have a
+     * reason to read every week. It is a display hint and nothing more: it changes no
+     * permission, and a member who leads nothing simply gets an empty list.
+     *
+     * "Runs" is `VolunteerAuthorizationService::getManagedTeamIds()` — the member's own
+     * team grants plus every team under a ministry they coordinate — mapped to the
+     * ministries those teams belong to. A global volunteer manager is NOT everyone's
+     * team leader: that method gives them only their explicit grants.
+     *
+     * @return array<int, int> ministry ids, de-duplicated
+     */
+    public static function ledMinistryIds(): array
+    {
+        if (!User::isVolunteerV2Enabled()) {
+            return [];
+        }
+
+        try {
+            $user = AuthenticationManager::getCurrentUser();
+        } catch (Throwable) {
+            return [];
+        }
+
+        if (!$user instanceof User) {
+            return [];
+        }
+
+        $teamIds = (new VolunteerAuthorizationService())->getManagedTeamIds($user);
+        if ($teamIds === []) {
+            return [];
+        }
+
+        $ministryIds = [];
+        foreach (VolunteerTeamQuery::create()->filterById($teamIds, Criteria::IN)->find() as $team) {
+            $ministryIds[(int) $team->getMinistryId()] = true;
+        }
+
+        return array_keys($ministryIds);
     }
 
     /**

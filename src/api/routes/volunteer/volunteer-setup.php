@@ -554,13 +554,19 @@ function createVolunteerMinistry(Request $request, Response $response): Response
     // a statement of the invariant rather than a query. `poolGroupId` is the same
     // kind of statement for D19: the ministry came with its Group, and a caller
     // that wants to link to it should not have to ask a second time.
-    $poolGroup = (new VolunteerSetupService())->getPoolGroup((int) $ministry->getId());
+    $service = new VolunteerSetupService();
+    $poolGroup = $service->getPoolGroup((int) $ministry->getId());
+    // …and `calendarId` is the same statement for the ministry calendar (#9869,
+    // Member Portal design §5.3): the ministry came with its calendar, and a caller
+    // that wants to pin an event to it should not have to go looking.
+    $calendar = $service->getMinistryCalendar((int) $ministry->getId());
 
     return SlimUtils::renderJSON(
         $response,
         [
             'ministry' => volunteerMinistryToArray($ministry, ['teamCount' => 1, 'positionCount' => 0]),
             'poolGroupId' => $poolGroup === null ? null : (int) $poolGroup->getId(),
+            'calendarId' => $calendar === null ? null : (int) $calendar->getId(),
         ],
         201
     );

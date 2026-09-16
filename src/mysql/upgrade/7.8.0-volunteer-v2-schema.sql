@@ -370,3 +370,25 @@ CREATE TABLE IF NOT EXISTS `volunteer_scope_vscp` (
   CONSTRAINT `fk_vscp_granted_by` FOREIGN KEY (`vscp_GrantedBy_per_ID`)
       REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Member Portal (#9866 / #9869): the calendars -> volunteer_ministry_vmin ownership link.
+--
+-- The column and its index ship in 7.8.0-member-portal-calendars.sql, which lands with the
+-- Member Portal epic and cannot declare the constraint: volunteer_ministry_vmin does not exist
+-- until this script creates it. The constraint therefore lives here, at the end of the V2
+-- schema, exactly as the sibling comment in that file promises.
+--
+-- ON DELETE SET NULL, matching group_grp and events_event: deleting a ministry must never delete
+-- a church calendar through a cascade. VolunteerSetupService::deleteMinistry() removes the
+-- ministry's own calendar explicitly, inside the same transaction, so the removal is a decision
+-- the service makes rather than a side effect of a foreign key — and a calendar an administrator
+-- later re-pointed at nothing simply becomes a church calendar again.
+--
+-- Plain ALTER TABLE (no IF NOT EXISTS) for the reason given in
+-- 7.8.0-volunteer-v2-group-ministry.sql: the upgrade runner is version-gated, and IF NOT EXISTS
+-- is a MariaDB-only extension MySQL does not accept.
+--
+ALTER TABLE `calendars`
+    ADD CONSTRAINT `calendars_ministry_fk` FOREIGN KEY (`ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;

@@ -41,6 +41,11 @@ const PUBLIC_CALENDAR = 1;
 
 let ministryId = 0;
 let otherMinistryId = 0;
+/**
+ * The ministry's own calendar (#9869). Every ministry is created with one, and the
+ * editor pre-pins it when the event is given that ministry.
+ */
+let ministryCalendarId = 0;
 /** The team the ministry was created with; positions and schedules both name it. */
 let teamId = 0;
 let positionId = 0;
@@ -137,6 +142,7 @@ function buildFixtures() {
         [200, 201],
     ).then((resp) => {
         ministryId = resp.body.ministry.id;
+        ministryCalendarId = resp.body.calendarId;
 
         // A ministry is created with one team, and a position always belongs to a
         // team, so the fixture reads the team it was given rather than inventing one.
@@ -319,6 +325,76 @@ describe("Volunteer v2 — event ministry field and Volunteers card (#9713)", ()
             ).then((r) => {
                 expect(r.rows[0].event_ministry_id).to.eq(null);
             });
+        });
+
+        // #9869: choosing a ministry also pre-pins that ministry's own calendar, because
+        // a coordinator without Add Events may pin there and nowhere else.
+        it("pre-pins the ministry's own calendar when a ministry is chosen", () => {
+            // Reset the event to one church pin and no ministry: the two tests above
+            // leave it in whatever state they ended in, and this one is about what the
+            // editor ADDS. API setup before the login — cy.request() rotates the cookie.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${plainEventId}`,
+                {
+                    Title: PLAIN_EVENT_TITLE,
+                    Type: CHURCH_SERVICE_TYPE,
+                    Start: `${isoDate(20)}T19:00:00`,
+                    End: `${isoDate(20)}T20:00:00`,
+                    MinistryId: null,
+                    PinnedCalendars: [PUBLIC_CALENDAR],
+                },
+                200,
+            );
+
+            freshAdminLogin();
+            cy.visit(`/event/editor/${plainEventId}`);
+            cy.get('[data-bs-target="#eventAdvancedFields"]', {
+                timeout: 15000,
+            }).click();
+
+            // Before: only the church calendar the fixture pinned.
+            cy.get("#pinnedCalendarsSelect", { timeout: 10000 })
+                .parent()
+                .find(".item")
+                .should("not.contain", MINISTRY_NAME);
+
+            cy.get("#eventMinistrySelect", { timeout: 10000 }).select(
+                String(ministryId),
+            );
+
+            // After: the ministry's calendar has joined the list, and the church
+            // calendar the user already chose is still there — the pre-pin adds, it
+            // never replaces.
+            cy.get("#pinnedCalendarsSelect")
+                .parent()
+                .find(".item")
+                .should("contain", MINISTRY_NAME);
+
+            cy.get("#event-editor-save").click();
+            cy.url().should("not.include", "/event/editor");
+
+            cy.dbQuery(
+                `SELECT calendar_id FROM calendar_events WHERE event_id = ?`,
+                [plainEventId],
+            ).then((r) => {
+                const pinned = r.rows.map((row) => Number(row.calendar_id));
+                expect(pinned, "the ministry calendar was saved").to.include(
+                    ministryCalendarId,
+                );
+                expect(pinned, "the church calendar survived").to.include(
+                    PUBLIC_CALENDAR,
+                );
+            });
+
+            // Put the event back the way the other tests expect it.
+            cy.visit(`/event/editor/${plainEventId}`);
+            cy.get('[data-bs-target="#eventAdvancedFields"]', {
+                timeout: 15000,
+            }).click();
+            cy.get("#eventMinistrySelect", { timeout: 10000 }).select("0");
+            cy.get("#event-editor-save").click();
+            cy.url().should("not.include", "/event/editor");
         });
 
         it("is not rendered at all while the rollout flag is v1", () => {

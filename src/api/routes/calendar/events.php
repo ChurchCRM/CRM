@@ -5,6 +5,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\EventQuery;
 use ChurchCRM\model\ChurchCRM\Base\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
@@ -325,6 +326,68 @@ function eventWriteAllowed(User $user, ?int $eventMinistryId): bool
 }
 
 /**
+ * May this caller pin an event to `$calendar`?
+ *
+ * The global Add Events right opens every calendar, as it always has. A ministry
+ * coordinator who does NOT hold it may pin to exactly one kind of calendar: one their
+ * own ministry owns (`calendars.ministry_id`, Member Portal design §5.3). That is the
+ * whole of the exception — the same shape the Group hooks got for the ministry's pool
+ * (D19), and the reason every ministry is created with a calendar of its own.
+ *
+ * A coordinator therefore cannot quietly write onto "Public Calendar", which is what a
+ * church would notice; and "pin to my own ministry's calendar" needs no new permission,
+ * which is what makes a coordinator useful without Add Events.
+ */
+function eventCalendarPinAllowed(User $user, Calendar $calendar): bool
+{
+    if ($user->canManageEvents()) {
+        return true;
+    }
+
+    if (!User::isVolunteerV2Enabled()) {
+        return false;
+    }
+
+    $ministryId = $calendar->getMinistryId();
+    if ($ministryId === null) {
+        return false;
+    }
+
+    return eventVolunteerAuthz()->canManageMinistry($user, (int) $ministryId);
+}
+
+/**
+ * Guard for the pinned-calendar list on a create or an update. Returns a 403 naming the
+ * calendar that was refused, or null when every one of them is allowed.
+ *
+ * Runs BEFORE the event is saved, like `eventWriteGuard()`, so a refused pin leaves no row
+ * and no half-pinned event behind.
+ *
+ * @param iterable<Calendar> $calendars
+ */
+function eventCalendarPinGuard(Response $response, iterable $calendars): ?Response
+{
+    $user = AuthenticationManager::getCurrentUser();
+
+    foreach ($calendars as $calendar) {
+        if (!eventCalendarPinAllowed($user, $calendar)) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                sprintf(
+                    /* Translators: %s is the name of a calendar the user may not write to. */
+                    gettext('Not authorized to pin events to the calendar "%s"'),
+                    (string) $calendar->getName()
+                ),
+                [],
+                403
+            );
+        }
+    }
+
+    return null;
+}
+
+/**
  * Guard for the four handlers that write an EXISTING event (update, time, status, delete).
  * Returns a 403 response when the caller may not touch this row, null when they may.
  */
@@ -617,6 +680,13 @@ function newEvent(Request $request, Response $response, array $args): Response
         return SlimUtils::renderErrorJSON($response, gettext('invalid calendar pinning'), [], 400);
     }
 
+    // Existence was the only check this had. A coordinator without Add Events may pin to
+    // their own ministry's calendar and to nothing else (§5.3).
+    $pinRefusal = eventCalendarPinGuard($response, $calendars);
+    if ($pinRefusal !== null) {
+        return $pinRefusal;
+    }
+
     // we have event type and pined calendars.  now create the event.
     $event = new Event();
     $event->setTitle($input['Title']);
@@ -796,6 +866,14 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     $PinnedCalendars = CalendarQuery::create()
         ->filterById($input['PinnedCalendars'], Criteria::IN)
         ->find();
+
+    // Same rule as newEvent(): the pins a caller may set are the calendars they may write
+    // to (§5.3). Checked before the save, so a refused pin leaves the event as it was.
+    $pinRefusal = eventCalendarPinGuard($response, $PinnedCalendars);
+    if ($pinRefusal !== null) {
+        return $pinRefusal;
+    }
+
     $Event->setCalendars($PinnedCalendars);
 
     $Event->save();

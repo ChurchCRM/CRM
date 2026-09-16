@@ -894,13 +894,23 @@
       <column name="backgroundColor" phpName="BackgroundColor" type="VARCHAR" size="6"/>
       <column name="foregroundColor" phpName="ForegroundColor" type="VARCHAR" size="6"/>
       <!-- The volunteer ministry this calendar belongs to; NULL for a church-wide
-           calendar. No foreign key yet: volunteer_ministry_vmin is created by the
-           Volunteer v2 schema (#9701), which adds the constraint when it lands. -->
+           calendar. -->
       <column name="ministry_id" phpName="MinistryId" type="INTEGER"/>
 
       <unique name="accesstoken">
         <unique-column name="accesstoken"/>
       </unique>
+
+      <!--
+          ON DELETE SET NULL so a cascade can never remove a church calendar. Deleting a
+          ministry removes its own calendar explicitly, in the service, inside the same
+          transaction — the same shape as the pool group (D19) and the ministry's events
+          (§2.16). Member Portal design §5.3.
+      -->
+      <foreign-key foreignTable="volunteer_ministry_vmin" name="CalendarMinistry" phpName="Ministry"
+                   refPhpName="MinistryCalendar" onDelete="setnull">
+        <reference local="ministry_id" foreign="vmin_ID"/>
+      </foreign-key>
 
       <index name="calendars_ministry_idx">
         <index-column name="ministry_id"/>

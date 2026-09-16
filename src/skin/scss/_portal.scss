@@ -694,6 +694,24 @@ textarea.portal-input {
     flex-shrink: 0;
 }
 
+// A calendar belonging to a ministry this member leads (#9869). The row is given
+// the portal's own text colour rather than the muted one, and a small tag says why
+// — colour alone would be the only signal otherwise, and it is the swatch's job.
+.portal-calendar-legend-mine {
+    color: var(--portal-text);
+    font-weight: 600;
+}
+
+.portal-calendar-legend-tag {
+    padding: 0.05rem 0.4rem;
+    border: 1px solid var(--portal-border);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--portal-muted);
+    white-space: nowrap;
+}
+
 .portal-calendar-grid {
     // FullCalendar's own grid can be wider than a phone; let it scroll inside
     // its card rather than making the page scroll sideways.
