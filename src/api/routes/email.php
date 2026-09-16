@@ -38,15 +38,16 @@ use Slim\Routing\RouteCollectorProxy;
  *         )
  *     ),
  *     @OA\Response(response=400, description="Invalid or missing request data"),
- *     @OA\Response(response=422, description="SMTP is not configured — cannot send server-side"),
+ *     @OA\Response(response=422, description="Email sending is disabled or SMTP is not configured"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Email permission required")
  * )
  */
 $app->group('/email', function (RouteCollectorProxy $group): void {
     $group->post('/send', function (Request $request, Response $response): Response {
-        // Guard: both the admin toggle (bEnabledEmail) and SMTP credentials must be
-        // present (mirrors what Header.php uses to set window.CRM.comm.smtpConfigured).
+        // Guard: email must be fully enabled — checks BOTH the bEnabledEmail admin toggle
+        // AND a valid SMTP configuration (stricter than the frontend smtpConfigured signal,
+        // which only tests hasValidMailServerSettings()).
         if (!SystemConfig::isEmailEnabled()) {
             return SlimUtils::renderErrorJSON(
                 $response,
