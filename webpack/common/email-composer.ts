@@ -1171,6 +1171,17 @@ document.addEventListener("DOMContentLoaded", () => {
     ensureModalExists();
     wireDataAttributes();
 
+    // Bootstrap moves focus to the dialog when the fade-in ends. If the user has already
+    // opened the compose form by then, give the focus back to the subject field so typing
+    // is not interrupted.
+    if (modalEl) {
+      modalEl.addEventListener("shown.bs.modal", () => {
+        if (composeFormVisible && subjectInputEl && !subjectInputEl.disabled) {
+          subjectInputEl.focus();
+        }
+      });
+    }
+
     // Reset the tooManyHintEl reference when the modal fully hides so it is
     // re-created fresh on the next open (avoids stale DOM references).
     if (modalEl) {

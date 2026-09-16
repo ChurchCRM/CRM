@@ -17,10 +17,15 @@
  * @var int $totalPeople - Total people displayed
  */
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+// Server-side "Send email" needs the Email permission and a working, enabled SMTP setup.
+$canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && SystemConfig::isEmailEnabled();
 ?>
 
 <div class="card">
@@ -89,6 +94,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
 
+        <?php if ($canSendEmail): ?>
+        <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+        <?php endif; ?>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         (function () {
             var base = <?= InputUtils::jsonEncodeForScript($sRootPath . '/people/photos') ?>;
@@ -200,7 +208,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             <i class="fa-solid fa-envelope"></i>
                                         </span>
                                     <?php endif; ?>
-                                    <?php if ($email): ?>
+                                    <?php if ($email && $canSendEmail): ?>
+                                        <button type="button"
+                                                class="btn btn-sm btn-icon btn-outline-primary"
+                                                data-email-composer
+                                                data-email-person-id="<?= (int) $person->getId() ?>"
+                                                data-email-address="<?= InputUtils::escapeAttribute($email) ?>"
+                                                data-email-name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>"
+                                                data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $person->getFullName())) ?>"
+                                                title="<?= gettext('Send email from ChurchCRM') ?>: <?= InputUtils::escapeAttribute($email) ?>">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </button>
+                                    <?php elseif ($email): ?>
                                         <a href="mailto:<?= InputUtils::escapeAttribute($email) ?>"
                                            class="btn btn-sm btn-icon btn-outline-primary"
                                            title="<?= gettext('Email') ?>: <?= InputUtils::escapeAttribute($email) ?>"
