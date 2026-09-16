@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ቤተሰብ በጂኦኮድ ሊደረግ አልቻለም",
+    "other": "{{count}} ቤተሰቦች በጂኦኮድ ሊደረጉ አልቻሉም"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "ለ{{count}} ሰከንድ ንቁ ነው",
+    "other": "ለ{{count}} ሰከንዶች ንቁ ነው"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "ለ{{count}} ቤተሰብ የማረጋገጫ ኢሜይሎችን ሊልኩ ነው።",
+    "other": "ለ{{count}} ቤተሰቦች የማረጋገጫ ኢሜይሎችን ሊልኩ ነው።"
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ቤተሰብ በመዝገብ ላይ ኢሜይል አድራሻ የለውም እና ይዘለላል",
+    "other": "{{count}} ቤተሰቦች በመዝገብ ላይ ኢሜይል አድራሻ የላቸውም እና ይዘለላሉ"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…እና {{count}} ተጨማሪ እዚህ አልተዘረዘሩም።",
+    "other": "…እና {{count}} ተጨማሪዎች እዚህ አልተዘረዘሩም።"
   }
 }
