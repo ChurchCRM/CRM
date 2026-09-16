@@ -589,11 +589,28 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             <i class="fa-solid fa-users me-1"></i><?= gettext('Groups') ?>
                         </a>
                     </li>
+                    <?php
+                    // Volunteer rollout (#9704). 'both' shows two clearly labelled
+                    // tabs so the active experience is never ambiguous during the
+                    // migration; the legacy tab keeps its id and pane id.
+                    $volunteerVersion = $volunteerVersion ?? 'v1';
+                    $showVolunteerV1  = in_array($volunteerVersion, ['v1', 'both'], true);
+                    $showVolunteerV2  = in_array($volunteerVersion, ['v2', 'both'], true);
+                    ?>
+                    <?php if ($showVolunteerV1) : ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
+                            <i class="fa-solid fa-handshake-angle me-1"></i><?= $volunteerVersion === 'both' ? gettext('Volunteer (Legacy)') : gettext('Volunteer') ?>
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <?php if ($showVolunteerV2) : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-volunteer-v2" href="#volunteer-v2" data-bs-toggle="tab">
                             <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('Volunteer') ?>
                         </a>
                     </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-attendance" href="#attendance" data-bs-toggle="tab">
                             <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Attendance') ?>
@@ -689,6 +706,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             </div>
                         <?php } ?>
                     </div>
+                    <?php if ($showVolunteerV1) : ?>
                     <div class="tab-pane" id="volunteer">
                         <?php
                         $assignedVolIDs = [];
@@ -771,6 +789,16 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             </div>
                         <?php endif; ?>
                     </div>
+                    <?php endif; ?>
+                    <?php if ($showVolunteerV2) : ?>
+                    <div class="tab-pane" id="volunteer-v2">
+                        <div class="text-center text-body-secondary py-4">
+                            <i class="fa-solid fa-handshake-angle fa-2x mb-2 d-block opacity-50"></i>
+                            <p class="mb-1"><?= gettext('No volunteer assignments yet.') ?></p>
+                            <p class="mb-0"><?= gettext('Volunteer scheduling and assignments arrive in a later release.') ?></p>
+                        </div>
+                    </div>
+                    <?php endif; ?>
                     <?php if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) : ?>
                     <div class="tab-pane d-none" id="mailchimp">
                         <table class="table">

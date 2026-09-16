@@ -556,6 +556,23 @@ Last updated: February 16, 2026
 
 Always pair a ConfigItem removal with a `DELETE FROM config_cfg WHERE cfg_name = '...'` in the upgrade migration.
 
+### Resetting a setting to its default echoes the OLD value in the same request <!-- learned: 2026-09-11 -->
+
+`ConfigItem::setValue()` deletes the `config_cfg` row when the new value equals the
+default, but it does **not** clear the already-populated `$this->value`. So within
+that one request `getValue()` still returns the previous value:
+
+```bash
+POST /admin/api/system/config/sVolunteerVersion {"value":"v2"}  → {"value":"v2"}
+POST /admin/api/system/config/sVolunteerVersion {"value":"v1"}  → {"value":"v2"}   # stale, v1 is the default
+GET  /admin/api/system/config/sVolunteerVersion                 → {"value":"v1"}   # correct on the next request
+```
+
+The stored value is right; only the echo in the same request is stale. Never
+assert on a `POST .../config/{name}` response body when the value being written is
+the item's default — do a separate `GET` instead. (Same reason a settings page
+that re-renders from the POST response shows the old value until reloaded.)
+
 ### Verify buildCategories() After Editing SystemConfig <!-- learned: 2026-03-27 -->
 
 When adding or removing entries near `buildCategories()`, verify every key listed in every category still has a matching entry in `buildConfigs()`. Missing entries will silently produce PHP errors at runtime when the settings page iterates categories.
