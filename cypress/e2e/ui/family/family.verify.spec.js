@@ -4,8 +4,9 @@
  * Use case B — "self-verify" via a token link, opened by someone with NO account.
  * An admin mints the link (GET /api/family/{id}/verify/url) and shares it; the
  * recipient visits /external/verify/{token} with no session. Path A (EditSelf
- * account users) reaches the SAME page and is covered in
- * cypress/e2e/ui/security/limited-access.spec.js.
+ * account users) reaches the SAME page; since the Member Portal landed (#9863)
+ * those users start at /portal, and MP4 moves the verify flow into it —
+ * see cypress/e2e/ui/portal/member.portal-landing.spec.js.
  */
 describe("Family verification — self-verify token link (no account)", () => {
     const familyId = 1;

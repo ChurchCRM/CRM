@@ -16,7 +16,8 @@
  *
  * Expected: 403 on EVERY internal endpoint. The only self-service surface for an
  * EditSelf user is the token-scoped external verify flow (/external/verify/{token}),
- * which is covered in cypress/e2e/ui/security/limited-access.spec.js.
+ * which is covered in cypress/e2e/ui/security/limited-access.spec.js and
+ * cypress/e2e/ui/portal/member.portal-landing.spec.js.
  *
  * Note: avatar, nav, and photo GET endpoints use FamilyReadMiddleware (canReadFamily())
  * instead of FamilyMiddleware (canViewFamily()), making them accessible to plain-auth
