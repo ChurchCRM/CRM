@@ -452,6 +452,10 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <i class="fa-solid fa-cog me-2"></i><?= gettext('Change Settings') ?>
             </a>
             <div class="dropdown-divider"></div>
+            <a href="<?= SystemURLs::getRootPath() ?>/portal/" class="dropdown-item">
+              <i class="fa-solid fa-church me-2"></i><?= gettext('Member Portal') ?>
+            </a>
+            <div class="dropdown-divider"></div>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
               <i class="fa-solid fa-shield me-2"></i><?= gettext("Manage Two-Factor Authentication") ?>
             </a>

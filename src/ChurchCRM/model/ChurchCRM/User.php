@@ -87,7 +87,7 @@ class User extends BaseUser
     //   2. Read-time: every isXxxEnabled() method short-circuits on
     //      isEditSelfExclusive() before checking the stored flag.
     //   3. Entry gate: AuthMiddleware and PageInit redirect EditSelf-exclusive
-    //      users to /external/limited-access before any route runs.
+    //      users to /portal before any route runs.
     //
     // Zero-permission users (all flags 0, EditSelf=0) are NOT blocked at the
     // entry gate — they retain read-only access under the read-default policy
@@ -109,7 +109,7 @@ class User extends BaseUser
      *
      * A non-admin user with EditSelf=1 has no module permissions and cannot use
      * the CRM interface — PageInit and AuthMiddleware redirect them to
-     * /external/limited-access.
+     * the Member Portal at /portal.
      *
      * Deliberately NOT true for a zero-permission user (all flags 0). Those users
      * retain read-only access to people and family records under the read-default
