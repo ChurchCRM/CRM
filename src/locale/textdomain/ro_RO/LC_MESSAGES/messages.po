@@ -1186,48 +1186,9 @@ msgid "Minimum Price"
 msgstr "Pret minim"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Utilități Geografice ale Familiilor"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Selectați familia"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Numărul maxim de vecini"
-
-#: 
-msgid "Maximum distance"
-msgstr "Distanța maximă"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Formatul fișierului de date"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "Vizualizator GPS"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Includeți familiile în fișierul de coordonate"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Familiile vecine"
-
-#: 
-msgid "Make Data File"
-msgstr "Creați Fișierul de Date"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Afișați Vecinii"
 
 #: 
 msgid "Distance"
@@ -1248,10 +1209,6 @@ msgstr "Longitudine"
 #: 
 msgid "Add to Cart"
 msgstr "Adauga in cos"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Intersectati cu Cosul"
 
 #: 
 msgid "Remove from Cart"
@@ -1437,10 +1394,6 @@ msgstr "Trimite email la toți"
 #: 
 msgid "Family Roles"
 msgstr "Rolurile familiei"
-
-#: 
-msgid "Family Geographic"
-msgstr "Geografia familiei"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4317,26 +4270,8 @@ msgid "Profile Image uploaded"
 msgstr "Fotografie profil încărcată"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Afișați vecini cu aceste clasificări"
-
-#: 
-msgid "Please select a Family."
-msgstr "Alegeți o familie."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Nume fișiere coordonate în baza de date"
-
-#: 
 msgid "select an option"
 msgstr "selectează o opțiune"
-
-#: 
-msgid "Direct me"
-msgstr "Direcționează-mă"
 
 #: 
 msgid "Your cart is empty"
@@ -5173,14 +5108,6 @@ msgstr "Panou de verificare a persoanelor"
 #: 
 msgid "Verification URL created"
 msgstr "URL de verificare creat"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8583,10 +8510,6 @@ msgid "selected family has no coordinates"
 msgstr "familia selectată nu are coordonate"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Solicitați tuturor utilizatorilor să se înscrie pentru autentificarea în doi factori"
 
@@ -9474,10 +9397,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Generați documente fiscale pentru donatori"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Utilități geografice"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Introduceți datele în ChurchCRM"
 
@@ -10208,10 +10127,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Vizualizați și gestionați plățile ofertelor"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Vizualizați și gestionați datele de localizare ale familiei"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Vizualizați și gestionați fișierele jurnal de sistem pentru depanare"
 
@@ -10550,10 +10465,6 @@ msgstr "Aceasta va redescărca și reaplica versiunea curentă. Poate repara fi�
 #: 
 msgid "Total Check-ins"
 msgstr "Total înregistrări de prezență"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Încercați să selectați un alt tip de eveniment sau an."
 
 #: 
 msgid "Up to Date"
@@ -12360,10 +12271,6 @@ msgid "Database dump only (.sql)"
 msgstr "Doar export bază de date (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Intervalul de date nu poate depăși 1 an"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operațiune distructivă"
 
@@ -12958,10 +12865,6 @@ msgstr "Grupul nu a fost găsit pentru această listă de roluri"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Starea inactivă poate fi modificată numai pentru lista de clasificări"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Utilizatorii noi nu vor primi un e-mail de bun venit cu datele lor de autentificare. Partajați parola manual sau configurați mai întâi e-mailul."
 
 #: 
 msgid "Option name is required"
@@ -13668,7 +13571,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 trebuie să fie un șir hexadecimal de 64 de caractere."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Administratorii ChurchCRM nu l-au revizuit. Sunteți responsabil pentru securitatea și comportamentul oricărui lucru pe care îl instalați aici. Preferați fluxul Răsfoiți aprobate ori de câte ori este posibil."
 
 #: 
@@ -17122,10 +17026,6 @@ msgid "Deleted successfully"
 msgstr "Șters cu succes"
 
 #: 
-msgid "Deposit #"
-msgstr "Depozit #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Chitanță de depozit"
 
@@ -17172,10 +17072,6 @@ msgstr "Recuperarea angajamentului a eșuat"
 #: 
 msgid "Failed to update pledge"
 msgstr "Actualizarea angajamentului a eșuat"
-
-#: 
-msgid "Family is required"
-msgstr "Familia este obligatorie"
 
 #: 
 msgid "Financial data"
@@ -17304,10 +17200,6 @@ msgstr "Planifică suportul de execuție"
 #: 
 msgid "Please enter a date"
 msgstr "Vă rugăm să introduceți o dată"
-
-#: 
-msgid "Please select a family"
-msgstr "Vă rugăm să selectați o familie"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17480,6 +17372,10 @@ msgstr "A aparut o eroare neasteptata la trimiterea e-mailurilor. Verificati set
 #: 
 msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr "Sigur doriti sa eliminati rolul '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Automat"
 
 #: 
 msgid "Auto follows your OS or browser setting; Light and Dark override it"
@@ -17692,4 +17588,346 @@ msgstr "rand selectat"
 #: 
 msgid "rows selected"
 msgstr "randuri selectate"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Zile de naștere și aniversări"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Valoare estimată %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Ofertă minimă %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Persoane cu zile de naștere sau aniversări de căsătorie într-o anumită lună"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Luna pentru care doriți să fie afișate zilele de naștere și aniversările."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Luna aniversării de căsătorie pentru care doriți să fie afișate înregistrările."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Total toate achizițiile: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Total achiziții: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Aniversări de căsătorie"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Persoane cu aniversări de căsătorie într-o anumită lună"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "A apărut o eroare. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Sigur doriți să ștergeți acest fond?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Nu se poate șterge: fondul are angajamente asociate"
+
+#: 
+msgid "Delete Fund"
+msgstr "Ștergere fond"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Direcția trebuie să fie 'sus' sau 'jos'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Editare fond de donații"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Nu s-a putut reordona fondul de donații"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fondul a fost adăugat cu succes."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fondul a fost șters cu succes."
+
+#: 
+msgid "Fund name"
+msgstr "Numele fondului"
+
+#: 
+msgid "Fund name is required."
+msgstr "Numele fondului este obligatoriu."
+
+#: 
+msgid "Fund order updated."
+msgstr "Ordinea fondurilor a fost actualizată."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fondul a fost salvat cu succes."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Nu a fost adăugat niciun fond încă. Folosiți formularul de mai sus pentru a adăuga primul fond."
+
+#: 
+msgid "Optional description"
+msgstr "Descriere opțională"
+
+#: 
+msgid "Private Calendar"
+msgstr "Calendar privat"
+
+#: 
+msgid "Public Calendar"
+msgstr "Calendar public"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Avansat: Instalați în schimb o versiune specifică"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "În mod implicit, expertul actualizează la cea mai recentă versiune. Puteți alege în schimb o versiune specifică mai jos."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Nu se poate edita o plată într-un depozit închis"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Descărcare și aplicare {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Fiecare versiune ChurchCRM include corecții de securitate. Recomandăm cu insistență actualizarea întotdeauna la cea mai recentă versiune."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Decodificarea cererii de plată a eșuat"
+
+#: 
+msgid "Full release notes"
+msgstr "Note complete de lansare"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Date de plată invalide"
+
+#: 
+msgid "No release notes available."
+msgstr "Nu sunt disponibile note de lansare."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Avertisment: {{chosen}} nu include corecțiile de securitate din {{latest}}. Continuați doar dacă aveți un motiv specific."
+
+#: 
+msgid "What you'll gain"
+msgstr "Ce veți câștiga"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Eroare la obținerea numărului de depozite"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Aniversare: %s"
+
+#: 
+msgid "Church"
+msgstr "Biserică"
+
+#: 
+msgid "Classifications"
+msgstr "Clasificări"
+
+#: 
+msgid "Closest"
+msgstr "Cel mai apropiat"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Depozit nr. %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Nu s-a putut obține numărul strângerilor de fonduri"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Nu s-au putut încărca vecinii."
+
+#: 
+msgid "Farther"
+msgstr "Mai departe"
+
+#: 
+msgid "Farthest"
+msgstr "Cel mai depărtat"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Găsire vecini"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Găsiți familii din apropiere și adăugați-le în coș"
+
+#: 
+msgid "Map centered on"
+msgstr "Hartă centrată pe"
+
+#: 
+msgid "Max distance"
+msgstr "Distanță maximă"
+
+#: 
+msgid "Max neighbors"
+msgstr "Număr maxim de vecini"
+
+#: 
+msgid "Near"
+msgstr "Aproape"
+
+#: 
+msgid "Please select a family."
+msgstr "Vă rugăm să selectați o familie."
+
+#: 
+msgid "Results"
+msgstr "Rezultate"
+
+#: 
+msgid "Same location"
+msgstr "Aceeași locație"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Căutare vecini"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Selectați o familie și faceți clic pe Găsire vecini pentru a vedea rezultatele."
+
+#: 
+msgid "Selected family"
+msgstr "Familie selectată"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Această valoare trebuie să fie un nume de câmp valid."
+
+#: 
+msgid "Could not load data"
+msgstr "Nu s-au putut încărca datele"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Vă rugăm să actualizați pagina sau să încercați din nou mai târziu."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Adăugați mai întâi înregistrările relevante."
+
+#: 
+msgid "All Months"
+msgstr "Toate lunile"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Nu există încă opțiuni \"%s\" definite."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Nu s-au găsit evenimente pentru %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Încercați să selectați un alt tip de eveniment, lună sau an."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "A apărut o eroare de geocodare — încercați din nou mai târziu"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa este incompletă (lipsesc orașul, județul și codul poștal)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Toate familiile au deja coordonate."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Actualizarea coordonatelor a eșuat"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Actualizarea coordonatelor familiei a eșuat"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Au fost geocodate toate cele {{geocoded}} familii. Harta este acum actualizată."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Au fost geocodate {{geocoded}} familii. {{failed}} nu au putut fi rezolvate — vedeți detaliile de mai jos."
+
+#: 
+msgid "Geocoding…"
+msgstr "Se geocodează…"
+
+#: 
+msgid "No address on file"
+msgstr "Nicio adresă înregistrată"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nu s-a găsit nicio corespondență — verificați strada, orașul și codul poștal"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Deschideți o familie pentru a-i corecta adresa, apoi rulați din nou."
+
+#: 
+msgid "Set up now"
+msgstr "Configurați acum"
+
+#: 
+msgid "Unknown family"
+msgstr "Familie necunoscută"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Actualizează toate coordonatele"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Actualizează toate coordonatele familiilor"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Actualizează coordonatele"
 

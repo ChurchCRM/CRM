@@ -320,7 +320,10 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
         'Baptism Location',
         'Nickname',
     ];
-    $people = PersonQuery::create()->find();
+    // Eager-load families to avoid N+1 queries (getFamily() is called for every person)
+    $people = PersonQuery::create()
+        ->leftJoinWithFamily()
+        ->find();
     $list = [];
     foreach ($people as $person) {
         $family = $person->getFamily();

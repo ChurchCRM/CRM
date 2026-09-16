@@ -95,6 +95,8 @@ module.exports = {
     'people-family-list': './webpack/people/family-list',
     'people-family-view': './webpack/people/family-view',
     'people-person-view': './webpack/people/person-view',
+    'people-map-view': './webpack/people/map-view',
+    'people-map-neighbors': './webpack/people/map-neighbors',
     'error': './webpack/error',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',

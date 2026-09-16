@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Minimální cena"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Rodinné geografické nástroje"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Vyberte rodinu"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maximální počet sousedů"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maximální vzdálenost"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Formát datového souboru"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "Vizualizér GPS"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Zahrnout rodiny do souboru souřadnic"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Sousedící rodiny"
-
-#: 
-msgid "Make Data File"
-msgstr "Vytvořit datový soubor"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Ukázat sousedy"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Zeměpisná délka"
 #: 
 msgid "Add to Cart"
 msgstr "Přidat do košíku"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Protnout s košíkem"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "E-mail všem"
 #: 
 msgid "Family Roles"
 msgstr "Rodinné role"
-
-#: 
-msgid "Family Geographic"
-msgstr "Geografie rodiny"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4249,26 +4202,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilový obrázek nahrán"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Ukažte sousedy s těmito klasifikacemi"
-
-#: 
-msgid "Please select a Family."
-msgstr "Vyberte rodinu."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Název souboru databáze souřadnic"
-
-#: 
 msgid "select an option"
 msgstr "vyberte možnost"
-
-#: 
-msgid "Direct me"
-msgstr "Veď mě"
 
 #: 
 msgid "Your cart is empty"
@@ -5102,14 +5037,6 @@ msgstr "Nástěnka ověření osob"
 #: 
 msgid "Verification URL created"
 msgstr "Vytvořená ověřovací adresa URL"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8512,10 +8439,6 @@ msgid "selected family has no coordinates"
 msgstr "vybraná rodina nemá souřadnice"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Vyžadovat, aby se všichni uživatelé přihlásili k dvoufaktorovému ověřování"
 
@@ -9403,10 +9326,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Generovat daňové potvrzení pro dárce"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geografické nástroje"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Importujte svá data do ChurchCRM"
 
@@ -10137,10 +10056,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Zobrazit a spravovat platby sbírek"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Zobrazit a spravovat údaje o poloze rodin"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Zobrazit a spravovat systémové protokoly pro ladění"
 
@@ -10479,10 +10394,6 @@ msgstr "Toto znovu stáhne a aplikuje aktuální verzi. Může opravit poškozen
 #: 
 msgid "Total Check-ins"
 msgstr "Celkový počet registrací"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Zkuste vybrat jiný typ události nebo rok."
 
 #: 
 msgid "Up to Date"
@@ -12289,10 +12200,6 @@ msgid "Database dump only (.sql)"
 msgstr "Pouze výpis databáze (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Rozsah dat nesmí překročit 1 rok"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destruktivní operace"
 
@@ -12887,10 +12794,6 @@ msgstr "Skupina nebyla nalezena pro tento seznam rolí"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Neaktivní stav lze přepínat pouze pro seznam klasifikací"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Noví uživatelé neobdrží uvítací e-mail s přihlašovacími údaji. Sdílejte heslo ručně nebo nejprve nakonfigurujte e-mail."
 
 #: 
 msgid "Option name is required"
@@ -13597,7 +13500,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 musí být 64znakový hexadecimální řetězec."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Správci ChurchCRM jej neprověřili. Jste zodpovědní za bezpečnost a chování všeho, co zde instalujete. Kdykoli je to možné, preferujte postup Procházet schválené."
 
 #: 
@@ -17055,10 +16959,6 @@ msgid "Deleted successfully"
 msgstr "Úspěšně smazáno"
 
 #: 
-msgid "Deposit #"
-msgstr "Číslo vkladu"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Pokladní doklad"
 
@@ -17105,10 +17005,6 @@ msgstr "Načtení příslibu se nezdařilo"
 #: 
 msgid "Failed to update pledge"
 msgstr "Aktualizace příslibu se nezdařila"
-
-#: 
-msgid "Family is required"
-msgstr "Rodina je povinná"
 
 #: 
 msgid "Financial data"
@@ -17237,10 +17133,6 @@ msgstr "Naplánovat podporu za běhu"
 #: 
 msgid "Please enter a date"
 msgstr "Prosím zadejte datum"
-
-#: 
-msgid "Please select a family"
-msgstr "Prosím vyberte rodinu"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17643,4 +17535,346 @@ msgstr "radek vybran"
 #: 
 msgid "rows selected"
 msgstr "radky vybrany"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Narozeniny a výročí"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Odhadovaná hodnota %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Minimální nabídka %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Osoby s narozeninami nebo výročím svatby v daném měsíci"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Měsíc, pro který chcete zobrazit narozeniny a výročí."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Měsíc výročí svatby, pro který chcete zobrazit záznamy."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Celkem všech nákupů: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Celkové nákupy: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Výročí svatby"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Osoby s výročím svatby v daném měsíci"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Došlo k chybě. Zkuste to prosím znovu."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Opravdu chcete smazat tento fond?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Nelze smazat: fond má přidružené finanční závazky"
+
+#: 
+msgid "Delete Fund"
+msgstr "Smazat fond"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Směr musí být 'up' nebo 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Upravit dar fondu"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Nepodařilo se změnit pořadí dar fondu"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fond byl úspěšně přidán."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fond byl úspěšně smazán."
+
+#: 
+msgid "Fund name"
+msgstr "Název fondu"
+
+#: 
+msgid "Fund name is required."
+msgstr "Název fondu je povinný."
+
+#: 
+msgid "Fund order updated."
+msgstr "Pořadí fondů bylo aktualizováno."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fond byl úspěšně uložen."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Zatím nebyly přidány žádné fondy. Pomocí formuláře výše přidejte první fond."
+
+#: 
+msgid "Optional description"
+msgstr "Volitelný popis"
+
+#: 
+msgid "Private Calendar"
+msgstr "Soukromý kalendář"
+
+#: 
+msgid "Public Calendar"
+msgstr "Veřejný kalendář"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Pokročilé: Nainstalovat konkrétní verzi"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Ve výchozím nastavení průvodce aktualizuje na nejnovější verzi. Níže můžete místo toho zvolit konkrétní verzi."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Nelze upravit platbu v uzavřeném vkladu"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Stáhnout a použít {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Každé vydání ChurchCRM obsahuje bezpečnostní opravy. Důrazně doporučujeme vždy aktualizovat na nejnovější verzi."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Nepodařilo se dekódovat platební požadavek"
+
+#: 
+msgid "Full release notes"
+msgstr "Úplné poznámky k vydání"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Neplatné platební údaje"
+
+#: 
+msgid "No release notes available."
+msgstr "Žádné poznámky k vydání nejsou k dispozici."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Varování: {{chosen}} postrádá bezpečnostní opravy obsažené ve {{latest}}. Pokračujte pouze tehdy, máte-li konkrétní důvod."
+
+#: 
+msgid "What you'll gain"
+msgstr "Co získáte"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Nepodařilo se získat počet vkladů"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Výročí: %s"
+
+#: 
+msgid "Church"
+msgstr "Církev"
+
+#: 
+msgid "Classifications"
+msgstr "Klasifikace"
+
+#: 
+msgid "Closest"
+msgstr "Nejbližší"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Vklad č. %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Nepodařilo se získat počet fundraiserů"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Nepodařilo se načíst sousedy."
+
+#: 
+msgid "Farther"
+msgstr "Dále"
+
+#: 
+msgid "Farthest"
+msgstr "Nejdále"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Najít sousedy"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Najít blízké rodiny a přidat je do košíku"
+
+#: 
+msgid "Map centered on"
+msgstr "Mapa vycentrována na"
+
+#: 
+msgid "Max distance"
+msgstr "Maximální vzdálenost"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maximální počet sousedů"
+
+#: 
+msgid "Near"
+msgstr "Blízko"
+
+#: 
+msgid "Please select a family."
+msgstr "Prosím vyberte rodinu."
+
+#: 
+msgid "Results"
+msgstr "Výsledky"
+
+#: 
+msgid "Same location"
+msgstr "Stejné umístění"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Hledat sousedy"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Vyberte rodinu a klikněte na Najít sousedy pro zobrazení výsledků."
+
+#: 
+msgid "Selected family"
+msgstr "Vybraná rodina"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Tato hodnota musí být platný název pole."
+
+#: 
+msgid "Could not load data"
+msgstr "Nepodařilo se načíst data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Obnovte stránku nebo to zkuste znovu později."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Nejprve přidejte příslušné záznamy."
+
+#: 
+msgid "All Months"
+msgstr "Všechny měsíce"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Zatím nejsou definovány žádné možnosti \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Pro %s %d nebyly nalezeny žádné události."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Zkuste vybrat jiný typ události, měsíc nebo rok."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Došlo k chybě geokódování — zkuste to prosím později"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa je neúplná (chybí město, stát a PSČ)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Všechny rodiny již mají souřadnice."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Aktualizace souřadnic se nezdařila"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Aktualizace souřadnic rodiny se nezdařila"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokódování dokončeno pro všech {{geocoded}} rodin. Mapa je nyní aktuální."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokódováno {{geocoded}} rodin. {{failed}} se nepodařilo vyřešit — podrobnosti najdete níže."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokódování…"
+
+#: 
+msgid "No address on file"
+msgstr "Adresa není k dispozici"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nebyla nalezena žádná shoda — zkontrolujte ulici, město a PSČ"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Otevřete rodinu a opravte její adresu, poté akci spusťte znovu."
+
+#: 
+msgid "Set up now"
+msgstr "Nastavit nyní"
+
+#: 
+msgid "Unknown family"
+msgstr "Neznámá rodina"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Aktualizovat všechny souřadnice"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Aktualizovat souřadnice všech rodin"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Aktualizovat souřadnice"
 

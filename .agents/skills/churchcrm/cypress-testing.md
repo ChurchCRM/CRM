@@ -525,6 +525,9 @@ cy.contains(".card-title", "Properties").should("be.visible");
 
 Current Cypress best practice (2024+) is to clean up state at the **start** of the next test, not at the end of the previous one. Reason: `afterEach` does not run if a test crashes mid-way (uncaught exception, lost connection, process kill). Cleanup that only runs in `afterEach` can therefore leave the DB in a bad state that breaks every subsequent test.
 
+**Correction — use both hooks, for different jobs <!-- learned: 2026-09-12 -->**
+The sentence above overstates it: `afterEach` **does** run after an ordinary mid-test failure, assertion failures included. Only process termination (kill, crash of the runner) skips hooks — and it skips *all* of them, `beforeEach` included. So: `beforeEach` is the **safety net** that clears state a previously *killed* run left behind; `afterEach` is the **per-test restore**, so a test run on its own (`.only`) still leaves the DB as it found it. What `afterEach` does *not* rescue is cleanup queued **inside** a callback that threw: Cypress's command queue `onError` runs `cleanup()`, which advances the queue index to its length before failing the runnable, so commands still pending in that callback are abandoned ([command_queue.ts](https://github.com/cypress-io/cypress/blob/develop/packages/driver/src/cypress/command_queue.ts)). Put the cleanup in `afterEach`, never "enqueue it first" ahead of the assertions.
+
 ```javascript
 // ✅ CORRECT — cleanup and fixture setup both live in beforeEach
 describe("Group property management", () => {
@@ -1137,6 +1140,40 @@ Config files live in `cypress/configs/` (NOT `docker/`):
 - The config points at a Docker container. Start the stack (`npm run docker:test:start`) before running tests. There is **no** `docker:test` script — that name doesn't exist in `package.json`.
 - If the stack is already running (containers up but from a prior/stale run), `docker:test:start` is a no-op that just confirms health — it does **not** reseed the database. Use `npm run docker:test:reset:db` to tear down volumes and bring the containers back up with fresh seed data when a spec depends on specific seeded rows (e.g. `DepositSlipID=5`). <!-- learned: 2026-07-25 -->
 
+### `cypress/data/seed.sql` must match `Install.sql`'s charsets <!-- learned: 2026-09-11 -->
+
+`cypress/data/seed.sql` is a hand-refreshed mysqldump, so it silently drifts
+from `src/mysql/install/Install.sql` whenever a schema migration lands only in
+the install/upgrade SQL. Every Docker CI profile loads `seed.sql`, so the drift
+means the suite exercises a schema **no real installation has**.
+
+Issue #9754 is the canonical case: the #8856 `utf8mb3 → utf8mb4` conversion of
+`note_nte` was applied to `Install.sql` and `src/mysql/upgrade/7.3.1-cleanup.sql`
+but never to `seed.sql`, so a note containing an emoji returned HTTP 500 in CI
+while working fine on a fresh install — i.e. the fix was completely unguarded.
+
+```bash
+# Compares the declared table charset of every table in both files.
+# Runs in the `typecheck-and-lint` CI job; `utf8` and `utf8mb3` count as equal.
+npm run validate:seed-charsets
+```
+
+Rules:
+- Any migration that changes a table's charset/collation **must** update the
+  matching `CREATE TABLE` block in `cypress/data/seed.sql` in the same PR.
+- `utf8` (Install.sql, hand-written) and `utf8mb3` (seed.sql, dumper output)
+  are the same 3-byte charset — not drift.
+- The validator compares charsets only, not collations: `seed.sql` spells a
+  collation on every table while `Install.sql` leaves it implicit in places
+  (`user_settings`), and an implicit collation can't be resolved without a
+  live server.
+- Tables in only one file are skipped — `seed.sql` carries runtime-created
+  `groupprop_<id>` tables that `Install.sql` rightly never declares.
+
+`cypress/e2e/api/private/standard/private.notes.emoji-charset.spec.js` is the
+runtime guard for `note_nte`: it round-trips a 4-byte body (emoji, skin-tone
+sequence, CJK ext-B) through create / read / update / delete.
+
 ### Running Tests <!-- learned: 2026-03-26 -->
 
 ```bash
@@ -1303,7 +1340,7 @@ rg -l "Debug Email Connection" cypress/e2e
 different cards depending on environment (config error / success /
 failure), assert on **structural elements present in every state** — e.g.
 the new title plus a card header like "SMTP Configuration" — rather than a
-state-specific message. See `cypress/e2e/ui/admin/admin.email.spec.js` for
+state-specific message. See `cypress/e2e/ui-admin/admin.debug.spec.js` for
 the pattern.
 
 ## Test File Best Practices
@@ -1757,7 +1794,7 @@ Doubled-up `Contents/`. Same command in the user's interactive terminal works fi
 
 ```bash
 npx cypress run --config-file cypress/configs/docker.config.ts \
-  --spec "cypress/e2e/ui/admin/event-types.spec.js" \
+  --spec "cypress/e2e/ui-admin/event-types.spec.js" \
   > src/event-tests-output.txt 2>&1
 ```
 
@@ -2256,3 +2293,39 @@ SyntaxError: ... Unexpected token (NN:CC)
 ```
 
 Note: `*/` inside double-quoted strings (`"**/api/..."`) within actual code is fine — only the parser is affected by comment context.
+
+---
+
+## TomSelect DOM Structure — Sibling Not Parent <!-- learned: 2026-08-31 -->
+
+TomSelect 2.x inserts `.ts-wrapper` as the **next sibling** of the original `<select>` (using `insertAdjacentElement('afterend', self.wrapper)` in `tom-select.base.js`). The `<select>` is NOT moved inside the wrapper.
+
+**Anti-pattern** (always fails):
+```js
+cy.get("select#mySelect").closest(".ts-wrapper")  // ❌ traverses ancestors, wrapper is a sibling
+```
+
+**Correct patterns:**
+```js
+// Option A: target the immediately-following sibling directly
+cy.get("select#mySelect").next(".ts-wrapper").find(".ts-control").click();
+
+// Option B: go up to shared container, search down
+cy.get("select#mySelect").parent().find(".ts-control").click();
+
+// Option C: CSS sibling combinator
+cy.get("select#mySelect ~ .ts-wrapper > .ts-control").click();
+```
+
+**Detecting TomSelect init:** Use `should("have.class", "tomselected")` — TomSelect adds this class to the original `<select>` at the end of `setup()`. Do **not** use `should("not.be.visible")` because `ts-hidden-accessible` uses `clip-path + 1px` dimensions, not `display:none`, so Cypress's visibility check returns true.
+
+**Dropdown in body:** With `dropdownParent: "body"`, TomSelect appends `.ts-dropdown` to `<body>` at **init time** (constructor). So `cy.get("body > .ts-dropdown").should("exist")` passes even when no options are loaded and the dropdown is `display:none`.
+
+**Counting rendered options — scope to the owning wrapper.** Without `dropdownParent`, each `.ts-dropdown` is nested *inside* its own sibling `.ts-wrapper`, so a bare `body .ts-dropdown .option` matches **every** TomSelect on the page at once (a country + state page yields 256 + 59 = 315, not 59). Always scope through the `<select>`:
+
+```js
+cy.get("select#State").next(".ts-wrapper").find(".ts-dropdown .option")
+  .should("have.length", expected);
+```
+
+Assert the **count**, not just that the dropdown opened — a rendered count of exactly 50 is the signature of the `maxOptions` cap (see the frontend-development skill). Derive `expected` from the API the select is populated from (`/api/public/data/countries`) rather than hardcoding it, so the test does not go stale when the data changes.

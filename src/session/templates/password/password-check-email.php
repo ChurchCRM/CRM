@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext("Password Reset Successful");
 $sBodyClass = 'page-auth page-login';
@@ -19,7 +20,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
           <div class="login-header-logo">
             <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" />
           </div>
-          <h2 class="login-header-church-name"><?= ChurchMetaData::getChurchName() ?></h2>
+          <h2 class="login-header-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
           <p class="login-header-tagline"><?= gettext('Password Recovery') ?></p>
         </div>
 

@@ -71,19 +71,6 @@ msgid "Generate Catalog"
 msgstr "Generate Catalogue"
 
 #: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maximum number of neighbours"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Neighbour Families"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Show Neighbours"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Non-deductible amount can't be greater than total amount."
 
@@ -160,11 +147,6 @@ msgstr "Make user-entered zip/postcodes in UPPER-CASE when saving to the databas
 #: 
 msgid "Church Checking Account Number"
 msgstr "Church Chequeing Account Number"
-
-#: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Show neighbours with these classifications"
 
 #: 
 msgid "KioskVisibilityTimestamp"

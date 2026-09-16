@@ -210,11 +210,7 @@ class FundRaiserService
         $this->logger->debug('FundRaiserService::getWidgetStats');
 
         $year = DateTimeUtils::getCurrentYear();
-
-        // Active fundraisers count (Active + Planning)
-        $activeCount = FundRaiserQuery::create()
-            ->filterByStatus(['Active', 'Planning'])
-            ->count();
+        $activeCount = count($this->getActiveFundraiserCollection());
 
         // This-year fundraiser IDs (step 1 of 2-step approach — no FK relations defined)
         $yearStart = $year . '-01-01';
@@ -262,18 +258,65 @@ class FundRaiserService
     }
 
     /**
-     * Returns the count of fundraisers in Active or Planning status.
+     * Returns the count of fundraisers not Closed AND not archived by end date.
      *
      * Used by the navigation menu counter. Callers are responsible for any
      * session-level caching (e.g. storing in $_SESSION['iFundraiserActiveCount']
      * and invalidating on state changes).
+     *
+     * Mirrors getWidgetStats() and fundraiser.php active/archived split logic
+     * so the sidebar badge matches the stat card and table.
      */
     public function getActiveFundraiserCount(): int
     {
         $this->logger->debug('FundRaiserService::getActiveFundraiserCount');
-        return FundRaiserQuery::create()
-            ->filterByStatus(['Active', 'Planning'])
-            ->count();
+        return count($this->getActiveFundraiserCollection());
+    }
+
+    /**
+     * Returns scalar rows for fundraisers that are not Closed AND not past their end date.
+     * Used by both getWidgetStats() and getActiveFundraiserCount() to avoid code duplication.
+     * Mirrors the active/archived split logic in fundraiser.php.
+     *
+     * Uses a DB-level status filter and column projection to avoid full ORM hydration —
+     * returns lightweight associative rows instead of hydrated FundRaiser objects.
+     *
+     * @return array<int, array{Id:string, Date:string|null, EndDate:string|null, Status:string|null}>
+     */
+    private function getActiveFundraiserCollection(): array
+    {
+        $todayDate = DateTimeUtils::getTodayDate();
+        $activeFundraisers = [];
+
+        // Filter Closed fundraisers at the DB level; project only the columns we need
+        // to avoid fully hydrating every row as a Propel object.
+        $candidates = FundRaiserQuery::create()
+            ->filterByStatus('Closed', \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+            ->_or()->filterByStatus(null)  // MySQL: NULL != 'Closed' is UNKNOWN, not TRUE — include NULL-status rows explicitly
+            ->select(['Id', 'Date', 'EndDate', 'Status'])
+            ->find();
+
+        foreach ($candidates as $row) {
+            $status  = $row['Status'] ?? 'Active';
+            $endDate = $row['EndDate'];
+
+            // Fundraisers with Active or Planning status and no explicit end date are
+            // open-ended — always count them as active. Falling back to the start date
+            // (Date) would silently archive such fundraisers the day after they started.
+            if ($endDate === null && in_array($status, ['Active', 'Planning'], true)) {
+                $activeFundraisers[] = $row;
+                continue;
+            }
+
+            $effectiveEnd = $endDate ?? $row['Date'];
+            if ($effectiveEnd !== null && $effectiveEnd < $todayDate) {
+                continue;
+            }
+
+            $activeFundraisers[] = $row;
+        }
+
+        return $activeFundraisers;
     }
 
     /**

@@ -6,6 +6,7 @@
  */
 
 import { deleteEvent, renderEventEditor, saveEvent } from "./event-form.js";
+import { escapeHtml } from "./utils/escape-html";
 
 const CRMRoot = window.CRM.root;
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
@@ -18,13 +19,6 @@ function fetchJSON(url, fallback = null) {
       return r.status === 204 ? {} : r.json();
     })
     .catch(() => fallback);
-}
-
-function escapeHtml(str) {
-  if (!str) return "";
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
 function showError(message) {
@@ -131,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
               t("Deleting this event will also delete all attendance records. This cannot be undone.") +
               ` <strong>${escapeHtml(event.Title || "")}</strong>`,
             buttons: {
-              cancel: { label: `<i class="ti ti-x"></i> ${t("Cancel")}` },
+              cancel: { label: `<i class="fa-solid fa-xmark"></i> ${t("Cancel")}` },
               confirm: { label: `<i class="fa-solid fa-trash"></i> ${t("Delete")}`, className: "btn-danger" },
             },
             callback: (confirmed) => {

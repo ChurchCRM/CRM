@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Minimum prys"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Geografiese hulpmiddels vir gesinne"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Kies gesin"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maksimum aantal bure"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maksimum afstand"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Data lêer formaat"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Sluit gesinne in die koördinaatlêer in"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Buurgesinne"
-
-#: 
-msgid "Make Data File"
-msgstr "Maak datalêer"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Wys Bure"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Lengtegraad"
 #: 
 msgid "Add to Cart"
 msgstr "Voeg in mandjie"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Kruis met wa"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "E-pos almal"
 #: 
 msgid "Family Roles"
 msgstr "Gesinsrolle"
-
-#: 
-msgid "Family Geographic"
-msgstr "Geografiese familie"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4254,26 +4207,8 @@ msgid "Profile Image uploaded"
 msgstr "Profielprent opgelaai"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Wys bure met hierdie klassifikasies"
-
-#: 
-msgid "Please select a Family."
-msgstr "Kies 'n gesin."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Koördineer databasis lêernaam"
-
-#: 
 msgid "select an option"
 msgstr "kies 'n opsie"
-
-#: 
-msgid "Direct me"
-msgstr "Rig my"
 
 #: 
 msgid "Your cart is empty"
@@ -5113,14 +5048,6 @@ msgstr "Mense verifieer Dashboard"
 #: 
 msgid "Verification URL created"
 msgstr "Verifikasie-URL geskep"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8516,10 +8443,6 @@ msgid "selected family has no coordinates"
 msgstr "gekose familie het geen koördinate nie"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Vereis dat alle gebruikers tweefaktor-verifikasie aktiveer"
 
@@ -9406,10 +9329,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Genereer belastingsverklaring-dokumente vir donateurs"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geografiese Nutsmiddele"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Kry Jou Gegewens in ChurchCRM"
 
@@ -10140,10 +10059,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Bekyk en bestuur offergawes-depositostrokies"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Bekyk en bestuur gesin-liggingdata"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Bekyk en bestuur stelsel-loglêers vir foutopsporing"
 
@@ -10482,10 +10397,6 @@ msgstr "Dit sal die huidige weergawe herlaai en hertoepas. Dit kan korrupte of g
 #: 
 msgid "Total Check-ins"
 msgstr "Totale Kontroles"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Probeer 'n ander gebegeurtenis-tipe of jaar kies."
 
 #: 
 msgid "Up to Date"
@@ -12291,10 +12202,6 @@ msgid "Database dump only (.sql)"
 msgstr "Slegs databasis-dump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Datumreeks kan nie 1 jaar oorskry nie"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Verwoestende Operasie"
 
@@ -12889,10 +12796,6 @@ msgstr "Groep nie gevind vir hierdie rollys nie"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Inaktiewe status kan slegs vir die klassifikasielys omgeskakel word"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Nuwe gebruikers sal nie 'n welkome e-pos met hul geloofsbriewe ontvang nie. Deel die wagwoord handmatig met hulle, of stel eers e-pos op."
 
 #: 
 msgid "Option name is required"
@@ -13599,7 +13502,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 moet 'n 64-karakter heksadesimale string wees."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Die ChurchCRM-onderhouers het dit nie hersien nie. U is verantwoordelik vir die sekuriteit en gedrag van alles wat u hier installeer. Verkies die Blaai Goedgekeurdes-vloei waar moontlik."
 
 #: 
@@ -17062,10 +16966,6 @@ msgid "Deleted successfully"
 msgstr "Suksesvol uitgevee"
 
 #: 
-msgid "Deposit #"
-msgstr "Deposito #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Depositostrokie"
 
@@ -17112,10 +17012,6 @@ msgstr "Kon nie belofte ophaal nie"
 #: 
 msgid "Failed to update pledge"
 msgstr "Kon nie belofte opdateer nie"
-
-#: 
-msgid "Family is required"
-msgstr "Gesin is vereis"
 
 #: 
 msgid "Financial data"
@@ -17244,10 +17140,6 @@ msgstr "Beplan looptydondersteuning"
 #: 
 msgid "Please enter a date"
 msgstr "Voer asseblief ʼn datum in"
-
-#: 
-msgid "Please select a family"
-msgstr "Kies asseblief ʼn gesin"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17434,10 +17326,6 @@ msgid "Back to Pledge Dashboard"
 msgstr "Terug na Belofte-paneelbord"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
 msgstr "Klik \"Genereer Koordnate\" om die kaartligging vir die adres hierbo op te soek, of voer breedtegraad/lengtegraad handmatig in. As dit leeg gelaat word, word koordinate ook outomaties bespeur wanneer u die vorm stoor."
 
@@ -17548,10 +17436,6 @@ msgid "No valid deposit IDs provided"
 msgstr "Geen geldige deposito-IDs verskaf nie"
 
 #: 
-msgid "OFX"
-msgstr "OFX"
-
-#: 
 msgid "PDF successfully emailed to %d family."
 msgid_plural "PDFs successfully emailed to %d families."
 msgstr[0] "PDF suksesvol per e-pos gestuur aan %d gesin."
@@ -17660,4 +17544,346 @@ msgstr "ry gekies"
 #: 
 msgid "rows selected"
 msgstr "rye gekies"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Verjaardae en Herdenkinsdae"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Geskatte waarde %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Minimum bod %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Mense met verjaardae of trou-herdenkinsdae in 'n bepaalde maand"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Die maand waarvoor u verjaardae en herdenkinsdae wil ontvang."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Die trou-herdenkingsmaand waarvoor u rekords wil ontvang."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Totaal van alle aankope: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Totale aankope: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Trou-herdenkinsdae"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Mense met trou-herdenkinsdae in 'n bepaalde maand"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Daar het 'n fout opgetree. Probeer asseblief weer."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Is u seker u wil hierdie fonds uitvee?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Kan nie uitvee nie: fonds het geassosieerde beloftes"
+
+#: 
+msgid "Delete Fund"
+msgstr "Vee Fonds Uit"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Rigting moet 'op' of 'af' wees."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Wysig Skenkingsfonds"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Kon nie skenkingsfonds herrangskik nie"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fonds suksesvol bygevoeg."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fonds suksesvol uitgevee."
+
+#: 
+msgid "Fund name"
+msgstr "Fondsnaam"
+
+#: 
+msgid "Fund name is required."
+msgstr "Fondsnaam is verpligtend."
+
+#: 
+msgid "Fund order updated."
+msgstr "Fondsvolgorde opgedateer."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fonds suksesvol gestoor."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Geen fondse is nog bygevoeg nie. Gebruik die vorm hierbo om die eerste fonds by te voeg."
+
+#: 
+msgid "Optional description"
+msgstr "Opsionele beskrywing"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privaat Kalender"
+
+#: 
+msgid "Public Calendar"
+msgstr "Openbare Kalender"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Gevorderd: Installeer eerder 'n spesifieke weergawe"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Die towenaar gradeer standaard op na die nuutste weergawe. U kan eerder 'n spesifieke weergawe hieronder kies."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Kan nie 'n betaling in 'n geslote deposito wysig nie"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Laai af en Pas toe {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Elke ChurchCRM-vrystelling sluit sekuriteitsreëlings in. Ons beveel sterk aan om altyd na die nuutste weergawe op te gradeer."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Kon nie betalingsversoek dekodeer nie"
+
+#: 
+msgid "Full release notes"
+msgstr "Volledige vrystellingsnotas"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Ongeldige betalingsdata"
+
+#: 
+msgid "No release notes available."
+msgstr "Geen vrystellingsnotas beskikbaar nie."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Waarskuwing: {{chosen}} ontbreek sekuriteitsreëlings ingesluit in {{latest}}. Gaan slegs voort as u 'n spesifieke rede het."
+
+#: 
+msgid "What you'll gain"
+msgstr "Wat u sal wen"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Kon nie die aantal deposito's kry nie"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Herdenking: %s"
+
+#: 
+msgid "Church"
+msgstr "Kerk"
+
+#: 
+msgid "Classifications"
+msgstr "Klassifikasies"
+
+#: 
+msgid "Closest"
+msgstr "Naaste"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Deposito #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Kon nie die getal fondsinsamelings kry nie"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Kon nie bure laai nie."
+
+#: 
+msgid "Farther"
+msgstr "Verder"
+
+#: 
+msgid "Farthest"
+msgstr "Verste"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Vind bure"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Vind nabygelee families en voeg hulle by jou mandjie"
+
+#: 
+msgid "Map centered on"
+msgstr "Kaart gesentreer op"
+
+#: 
+msgid "Max distance"
+msgstr "Maksimum afstand"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maksimum bure"
+
+#: 
+msgid "Near"
+msgstr "Naby"
+
+#: 
+msgid "Please select a family."
+msgstr "Kies asseblief 'n gesin."
+
+#: 
+msgid "Results"
+msgstr "Resultate"
+
+#: 
+msgid "Same location"
+msgstr "Dieselfde plek"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Soek bure"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Kies 'n gesin en klik Vind bure om resultate te sien."
+
+#: 
+msgid "Selected family"
+msgstr "Gekose gesin"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Hierdie waarde moet 'n geldige veldnaam wees."
+
+#: 
+msgid "Could not load data"
+msgstr "Kon nie data laai nie"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Verfris asseblief die bladsy of probeer later weer."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Voeg eers die relevante rekords by."
+
+#: 
+msgid "All Months"
+msgstr "Alle maande"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Geen \"%s\" opsies is nog gedefinieer nie."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Geen gebeure gevind vir %s %d nie."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Probeer 'n ander tipe gebeurtenis, maand of jaar kies."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "'n Geokoderingsfout het voorgekom — probeer later weer"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adres is onvolledig (stad, provinsie en poskode ontbreek)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alle families het reeds koördinate."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Kon nie koördinate opdateer nie"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Kon nie familie se koördinate opdateer nie"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Alle {{geocoded}} families is gegeokodeer. Die kaart is nou op datum."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} families is gegeokodeer. {{failed}} kon nie opgelos word nie — sien besonderhede hieronder."
+
+#: 
+msgid "Geocoding…"
+msgstr "Besig om te geokodeer…"
+
+#: 
+msgid "No address on file"
+msgstr "Geen adres aangeteken nie"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Geen ooreenkoms gevind nie — kontroleer die straatadres, stad en poskode"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Maak 'n familie oop om die adres reg te stel, en loop dit dan weer."
+
+#: 
+msgid "Set up now"
+msgstr "Stel nou op"
+
+#: 
+msgid "Unknown family"
+msgstr "Onbekende familie"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Opdateer Alle Koördinate"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Opdateer Alle Familiekoördinate"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Opdateer Koördinate"
 

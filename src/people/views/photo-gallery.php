@@ -91,7 +91,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         (function () {
-            var base = <?= json_encode($sRootPath . '/people/photos', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+            var base = <?= InputUtils::jsonEncodeForScript($sRootPath . '/people/photos') ?>;
 
             function applyFilters() {
                 var cls       = document.getElementById('classification-select').value;
@@ -115,7 +115,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php if (empty($peopleData)): ?>
             <div class="empty">
                 <div class="empty-icon">
-                    <i class="fa-solid fa-camera-off fs-1 text-body-secondary"></i>
+                    <i class="fa-solid fa-camera fs-1 text-body-secondary"></i>
                 </div>
                 <p class="empty-title"><?= gettext('No people found') ?></p>
                 <p class="empty-subtitle text-body-secondary">

@@ -35,9 +35,9 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
     $aFam = mysqli_fetch_array($rsFamInfo);
     extract($aFam);
 
-    // Only get family members that are in the cart
+    // Only get family members that are in the cart (exclude deceased)
     $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID=' . $famID . ' AND per_ID IN ('
-    . Cart::getCartIdString() . ') ORDER BY per_LastName, per_FirstName';
+    . Cart::getCartIdString() . ') AND per_DateDeceased IS NULL ORDER BY per_LastName, per_FirstName';
 
     $rsMembers = RunQuery($sSQL);
     $numMembers = mysqli_num_rows($rsMembers);
@@ -573,6 +573,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ';
     $sSQL .= 'ON person_per.per_fam_ID = family_fam.fam_ID ';
     $sSQL .= 'WHERE per_ID IN (' . Cart::getCartIdString() . ') ';
+    $sSQL .= 'AND per_DateDeceased IS NULL ';
     $sSQL .= 'ORDER BY per_LastName, per_FirstName, fam_Zip';
     $rsCartItems = RunQuery($sSQL);
     $didFam = [];

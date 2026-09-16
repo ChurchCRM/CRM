@@ -28,15 +28,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     });
 
     function confirmDeleteField(fieldName, propId, fieldId) {
-        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + window.CRM.escapeHtml(fieldName) + '"?';
-        msg += '<br><br><strong>' + <?= json_encode(gettext('Warning')) ?> + ':</strong> ';
-        msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all group member data assigned for this field!')) ?>;
+        var msg = <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to delete')) ?> + '"' + window.CRM.escapeHtml(fieldName) + '"?';
+        msg += '<br><br><strong>' + <?= InputUtils::jsonEncodeForScript(gettext('Warning')) ?> + ':</strong> ';
+        msg += <?= InputUtils::jsonEncodeForScript(gettext('By deleting this field, you will irrevocably lose all group member data assigned for this field!')) ?>;
         bootbox.confirm({
-            title: <?= json_encode(gettext('Delete Confirmation')) ?>,
+            title: <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
             message: msg,
             buttons: {
-                cancel:  { label: <?= json_encode(gettext('Cancel')) ?>, className: 'btn-secondary' },
-                confirm: { label: <?= json_encode(gettext('Delete')) ?>, className: 'btn-danger' }
+                cancel:  { label: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?>, className: 'btn-secondary' },
+                confirm: { label: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, className: 'btn-danger' }
             },
             callback: function(result) {
                 if (result) {

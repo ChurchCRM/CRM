@@ -32,7 +32,7 @@ $app->group('/geocoder', function (RouteCollectorProxy $group): void {
  */
 function getGeoLocals(Request $request, Response $response, array $p_args): Response
 {
-    $input = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
+    $input = json_decode($request->getBody(), null, 512);
     if (empty($input)) {
         throw new HttpBadRequestException($request);
     }

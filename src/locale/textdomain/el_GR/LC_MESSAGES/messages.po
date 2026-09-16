@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Κατώτατη τιμή"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Family Geographic Utilities"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Επιλέξτε Οικογένεια"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Μέγιστος αριθμός γειτόνων"
-
-#: 
-msgid "Maximum distance"
-msgstr "Μέγιστη απόσταση"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Μορφή αρχείου δεδομένων"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Συμπεριλάβετε οικογένειες στο αρχείο συντεταγμένων"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Οικογένειες γειτόνων"
-
-#: 
-msgid "Make Data File"
-msgstr "Δημιουργία αρχείου δεδομένων"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Εμφάνιση Γείτονες"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Γεωγραφικό μήκος"
 #: 
 msgid "Add to Cart"
 msgstr "Προσθήκη στο καλάθι"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Διασταύρωση με Καλάθι"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "Αποστολή email σε όλους"
 #: 
 msgid "Family Roles"
 msgstr "Οικογενειακοί ρόλοι"
-
-#: 
-msgid "Family Geographic"
-msgstr "Οικογενειακή Γεωγραφική"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4254,26 +4207,8 @@ msgid "Profile Image uploaded"
 msgstr "Η εικόνα προφίλ μεταφορτώθηκε"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Εμφάνιση γειτόνων με αυτές τις ταξινομήσεις"
-
-#: 
-msgid "Please select a Family."
-msgstr "Επιλέξτε μια οικογένεια."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Όνομα αρχείου βάσης δεδομένων συντεταγμένων"
-
-#: 
 msgid "select an option"
 msgstr "επιλέξτε μια επιλογή"
-
-#: 
-msgid "Direct me"
-msgstr "Κατευθύνει με"
 
 #: 
 msgid "Your cart is empty"
@@ -5113,14 +5048,6 @@ msgstr "Άτομα επαλήθευση πίνακα ελέγχου"
 #: 
 msgid "Verification URL created"
 msgstr "Δημιουργήθηκε διεύθυνση URL επαλήθευσης"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8516,10 +8443,6 @@ msgid "selected family has no coordinates"
 msgstr "η επιλεγμένη οικογένεια δεν έχει συντεταγμένες"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Απαιτήστε από όλους τους χρήστες να εγγραφούν στον έλεγχο ταυτότητας δύο παραγόντων"
 
@@ -9406,10 +9329,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Δημιουργία φορολογικών βεβαιώσεων για δωρητές"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Γεωγραφικά εργαλεία"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Εισαγωγή δεδομένων στο ChurchCRM"
 
@@ -10140,10 +10059,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Προβολή και διαχείριση πληρωμών αποδεικτικών κατάθεσης"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Προβολή και διαχείριση δεδομένων τοποθεσίας οικογενειών"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Προβολή και διαχείριση αρχείων καταγραφής συστήματος για αποσφαλμάτωση"
 
@@ -10482,10 +10397,6 @@ msgstr "Αυτό θα κατεβάσει εκ νέου και θα εφαρμό�
 #: 
 msgid "Total Check-ins"
 msgstr "Σύνολο καταγραφών παρουσίας"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Δοκιμάστε να επιλέξετε διαφορετικό τύπο εκδήλωσης ή έτος."
 
 #: 
 msgid "Up to Date"
@@ -12291,10 +12202,6 @@ msgid "Database dump only (.sql)"
 msgstr "Μόνο εξαγωγή βάσης δεδομένων (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Το εύρος ημερομηνιών δεν μπορεί να υπερβαίνει το 1 έτος"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Καταστροφική Λειτουργία"
 
@@ -12889,10 +12796,6 @@ msgstr "Η ομάδα δεν βρέθηκε για αυτήν τη λίστα ρ
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Η ανενεργή κατάσταση μπορεί να αλλαχτεί μόνο για τη λίστα ταξινομήσεων"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Οι νέοι χρήστες δεν θα λάβουν email καλωσορίσματος με τα διαπιστευτήριά τους. Κοινοποιήστε τον κωδικό πρόσβασης χειροκίνητα ή ρυθμίστε πρώτα το email."
 
 #: 
 msgid "Option name is required"
@@ -13599,7 +13502,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "Το SHA-256 πρέπει να είναι μια δεκαεξαδική συμβολοσειρά 64 χαρακτήρων."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Οι συντηρητές του ChurchCRM δεν το έχουν ελέγξει. Είστε υπεύθυνοι για την ασφάλεια και τη συμπεριφορά οτιδήποτε εγκαθιστάτε εδώ. Προτιμήστε τη ροή Περιήγηση εγκεκριμένων όποτε είναι δυνατόν."
 
 #: 
@@ -17062,10 +16966,6 @@ msgid "Deleted successfully"
 msgstr "Διαγράφηκε επιτυχώς"
 
 #: 
-msgid "Deposit #"
-msgstr "Κατάθεση #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Απόδειξη Κατάθεσης"
 
@@ -17112,10 +17012,6 @@ msgstr "Αποτυχία ανάκτησης υπόσχεσης"
 #: 
 msgid "Failed to update pledge"
 msgstr "Αποτυχία ενημέρωσης υπόσχεσης"
-
-#: 
-msgid "Family is required"
-msgstr "Η οικογένεια είναι υποχρεωτική"
 
 #: 
 msgid "Financial data"
@@ -17244,10 +17140,6 @@ msgstr "Προγραμματισμός υποστήριξης χρόνου εκ�
 #: 
 msgid "Please enter a date"
 msgstr "Παρακαλώ εισάγετε μια ημερομηνία"
-
-#: 
-msgid "Please select a family"
-msgstr "Παρακαλώ επιλέξτε οικογένεια"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17520,6 +17412,10 @@ msgid "Manage Events"
 msgstr "Διαχείριση Εκδηλώσεων"
 
 #: 
+msgid "N/A"
+msgstr "Δ/Α"
+
+#: 
 msgid "New Deposit"
 msgstr "Νέα Κατάθεση"
 
@@ -17648,4 +17544,346 @@ msgstr "γραμμή επιλεγμένη"
 #: 
 msgid "rows selected"
 msgstr "γραμμές επιλεγμένες"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Γενέθλια & Επέτειοι"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Εκτιμώμενη αξία %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Ελάχιστη προσφορά %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Άτομα με γενέθλια ή επέτειο γάμου σε συγκεκριμένο μήνα"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Ο μήνας για τον οποίο επιθυμείτε να εμφανιστούν γενέθλια και επέτειοι."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Ο μήνας επετείου γάμου για τον οποίο επιθυμείτε να εμφανιστούν εγγραφές."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Σύνολο όλων των αγορών: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Συνολικές αγορές: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Επέτειοι Γάμου"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Άτομα με επέτειο γάμου σε συγκεκριμένο μήνα"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Παρουσιάστηκε σφάλμα. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το ταμείο;"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Αδύνατη η διαγραφή: το ταμείο έχει συνδεδεμένες οικονομικές δεσμεύσεις"
+
+#: 
+msgid "Delete Fund"
+msgstr "Διαγραφή Ταμείου"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Η κατεύθυνση πρέπει να είναι 'πάνω' ή 'κάτω'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Επεξεργασία Ταμείου Προσφορών"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Αποτυχία αναδιάταξης ταμείου προσφορών"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Το ταμείο προστέθηκε με επιτυχία."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Το ταμείο διαγράφηκε με επιτυχία."
+
+#: 
+msgid "Fund name"
+msgstr "Όνομα ταμείου"
+
+#: 
+msgid "Fund name is required."
+msgstr "Το όνομα του ταμείου είναι υποχρεωτικό."
+
+#: 
+msgid "Fund order updated."
+msgstr "Η σειρά του ταμείου ενημερώθηκε."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Το ταμείο αποθηκεύτηκε με επιτυχία."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Δεν έχουν προστεθεί ταμεία ακόμα. Χρησιμοποιήστε την παραπάνω φόρμα για να προσθέσετε το πρώτο ταμείο."
+
+#: 
+msgid "Optional description"
+msgstr "Προαιρετική περιγραφή"
+
+#: 
+msgid "Private Calendar"
+msgstr "Ιδιωτικό Ημερολόγιο"
+
+#: 
+msgid "Public Calendar"
+msgstr "Δημόσιο Ημερολόγιο"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Για προχωρημένους: Εγκατάσταση συγκεκριμένης έκδοσης"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Ο οδηγός αναβαθμίζει από προεπιλογή στην τελευταία έκδοση. Μπορείτε να επιλέξετε μια συγκεκριμένη έκδοση παρακάτω."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Δεν είναι δυνατή η επεξεργασία πληρωμής σε κλειστή κατάθεση"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Λήψη & Εφαρμογή {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Κάθε έκδοση του ChurchCRM περιλαμβάνει διορθώσεις ασφαλείας. Συνιστούμε ανεπιφύλακτα την αναβάθμιση στην τελευταία έκδοση."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Αποτυχία αποκωδικοποίησης αιτήματος πληρωμής"
+
+#: 
+msgid "Full release notes"
+msgstr "Πλήρεις σημειώσεις έκδοσης"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Μη έγκυρα δεδομένα πληρωμής"
+
+#: 
+msgid "No release notes available."
+msgstr "Δεν υπάρχουν διαθέσιμες σημειώσεις έκδοσης."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Προειδοποίηση: Η έκδοση {{chosen}} δεν περιλαμβάνει διορθώσεις ασφαλείας που περιέχονται στην {{latest}}. Συνεχίστε μόνο εάν έχετε συγκεκριμένο λόγο."
+
+#: 
+msgid "What you'll gain"
+msgstr "Τι θα κερδίσετε"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Αποτυχία ανάκτησης αριθμού καταθέσεων"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Επέτειος: %s"
+
+#: 
+msgid "Church"
+msgstr "Εκκλησία"
+
+#: 
+msgid "Classifications"
+msgstr "Κατηγοριοποιήσεις"
+
+#: 
+msgid "Closest"
+msgstr "Πλησιέστερο"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Κατάθεση #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Αποτυχία λήψης αριθμού συγκεντρώσεων κεφαλαίων"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Αποτυχία φόρτωσης γειτόνων."
+
+#: 
+msgid "Farther"
+msgstr "Πιο μακριά"
+
+#: 
+msgid "Farthest"
+msgstr "Πιο απομακρυσμένο"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Εύρεση γειτόνων"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Βρείτε κοντινές οικογένειες και προσθέστε τις στο καλάθι σας"
+
+#: 
+msgid "Map centered on"
+msgstr "Χάρτης με κέντρο στο"
+
+#: 
+msgid "Max distance"
+msgstr "Μέγιστη απόσταση"
+
+#: 
+msgid "Max neighbors"
+msgstr "Μέγιστος αριθμός γειτόνων"
+
+#: 
+msgid "Near"
+msgstr "Κοντά"
+
+#: 
+msgid "Please select a family."
+msgstr "Παρακαλώ επιλέξτε μια οικογένεια."
+
+#: 
+msgid "Results"
+msgstr "Αποτελέσματα"
+
+#: 
+msgid "Same location"
+msgstr "Ίδια τοποθεσία"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Αναζήτηση γειτόνων"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Επιλέξτε μια οικογένεια και κάντε κλικ στο Εύρεση γειτόνων για να δείτε τα αποτελέσματα."
+
+#: 
+msgid "Selected family"
+msgstr "Επιλεγμένη οικογένεια"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Αυτή η τιμή πρέπει να είναι έγκυρο όνομα πεδίου."
+
+#: 
+msgid "Could not load data"
+msgstr "Δεν ήταν δυνατή η φόρτωση δεδομένων"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Ανανεώστε τη σελίδα ή δοκιμάστε ξανά αργότερα."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Προσθέστε πρώτα τις σχετικές εγγραφές."
+
+#: 
+msgid "All Months"
+msgstr "Όλοι οι μήνες"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Δεν έχουν οριστεί ακόμα επιλογές \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Δεν βρέθηκαν εκδηλώσεις για %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Δοκιμάστε να επιλέξετε διαφορετικό τύπο εκδήλωσης, μήνα ή έτος."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Παρουσιάστηκε σφάλμα γεωκωδικοποίησης — δοκιμάστε ξανά αργότερα"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Η διεύθυνση είναι ελλιπής (λείπει η πόλη, η πολιτεία και ο ταχυδρομικός κώδικας)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Όλες οι οικογένειες έχουν ήδη συντεταγμένες."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Αποτυχία ενημέρωσης συντεταγμένων"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Αποτυχία ενημέρωσης συντεταγμένων οικογένειας"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Έγινε γεωκωδικοποίηση και των {{geocoded}} οικογενειών. Ο χάρτης είναι πλέον ενημερωμένος."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Έγινε γεωκωδικοποίηση {{geocoded}} οικογενειών. {{failed}} δεν ήταν δυνατό να επιλυθούν — δείτε λεπτομέρειες παρακάτω."
+
+#: 
+msgid "Geocoding…"
+msgstr "Γεωκωδικοποίηση…"
+
+#: 
+msgid "No address on file"
+msgstr "Δεν υπάρχει καταχωρημένη διεύθυνση"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Δεν βρέθηκε αντιστοιχία — ελέγξτε τη διεύθυνση, την πόλη και τον ταχυδρομικό κώδικα"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Ανοίξτε μια οικογένεια για να διορθώσετε τη διεύθυνσή της και, στη συνέχεια, εκτελέστε το ξανά."
+
+#: 
+msgid "Set up now"
+msgstr "Ρύθμιση τώρα"
+
+#: 
+msgid "Unknown family"
+msgstr "Άγνωστη οικογένεια"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Ενημέρωση Όλων των Συντεταγμένων"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Ενημέρωση Όλων των Συντεταγμένων Οικογενειών"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Ενημέρωση Συντεταγμένων"
 

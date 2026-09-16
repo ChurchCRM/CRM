@@ -1155,48 +1155,9 @@ msgid "Minimum Price"
 msgstr "ዝቅተኛ ዋጋ"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "የቤተሰብ ጂኦግራፊያዊ መገልገያዎች"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "ቤተሰብ ይምረጡ"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "ከፍተኛው የጎረቤቶች ብዛት"
-
-#: 
-msgid "Maximum distance"
-msgstr "ከፍተኛው ርቀት"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "የውሂብ ፋይል ቅርጸት"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "ጂፒኤስ ቪዥዋል"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "ቤተሰቦችን በተቀናጀ ፋይል ውስጥ ያካትቱ"
-
-#: 
-msgid "Neighbor Families"
-msgstr "የጎረቤት ቤተሰቦች"
-
-#: 
-msgid "Make Data File"
-msgstr "የውሂብ ፋይል አድርግ"
-
-#: 
-msgid "Show Neighbors"
-msgstr "ጎረቤቶችን አሳይ"
 
 #: 
 msgid "Distance"
@@ -1217,10 +1178,6 @@ msgstr "ኬንትሮስ"
 #: 
 msgid "Add to Cart"
 msgstr "ወደ ግዢው ቅርጫት ጨምር"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "በጋሪ ያቋርጡ"
 
 #: 
 msgid "Remove from Cart"
@@ -1399,10 +1356,6 @@ msgstr "ሁሉንም ኢሜይል ያድርጉ"
 #: 
 msgid "Family Roles"
 msgstr "የቤተሰብ ሚናዎች"
-
-#: 
-msgid "Family Geographic"
-msgstr "የቤተሰብ ጂኦግራፊያዊ"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4254,26 +4207,8 @@ msgid "Profile Image uploaded"
 msgstr "የመገለጫ ምስል ተለጥፏል"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "በእነዚህ ምደባዎች ጎረቤቶችን አሳይ"
-
-#: 
-msgid "Please select a Family."
-msgstr "እባክዎ ቤተሰብ ይምረጡ"
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "የዳታ መሠረት ፋይል ስም አስተባባሪ"
-
-#: 
 msgid "select an option"
 msgstr "አንድ አማራጭ ይምረጡ"
-
-#: 
-msgid "Direct me"
-msgstr "ምራኝ"
 
 #: 
 msgid "Your cart is empty"
@@ -5114,14 +5049,6 @@ msgstr "ሰዋች ዳሽቦርዱን ያረጋግጣሉ "
 #: 
 msgid "Verification URL created"
 msgstr "የማረጋገጫ ዩአርኤል ተፈጥሯል "
-
-#: 
-msgid "URL"
-msgstr "URL (አድራሻ)"
-
-#: 
-msgid "PDF"
-msgstr "ፒዲኤፍ"
 
 #: 
 msgid "Error sending email(s)"
@@ -8523,10 +8450,6 @@ msgid "selected family has no coordinates"
 msgstr "የተመረጠው ቤተሰብ መጋጠሚያዎች የሉትም"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "ሁሉም ተጠቃሚዎች ሁለት-ደረጃ ማረጋገጫ እንዲሞሉ ይጠይቁ"
 
@@ -9413,10 +9336,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "ለ ሰባ ገንዘብ መግለጫ ሰነዶች ስ"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "ጂኦግራፊያል ስርዓቶች"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "ውሎ መረጃ ወደ ChurchCRM ገብ"
 
@@ -10147,10 +10066,6 @@ msgid "View and manage deposit slip payments"
 msgstr "ዳቦ ሙሙ ገንዘብ ይተንትን እና ይሸፍኑ"
 
 #: 
-msgid "View and manage family location data"
-msgstr "ቤተሰብ ቦታ መረጃ ይተንትን እና ይሸፍኑ"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "ስርዓት ጊዜ ፋይሎች ተሻጋሪ ይተንትን እና ይሸፍኑ"
 
@@ -10489,10 +10404,6 @@ msgstr "ይህ ድግመ-ዝጁ እና ድግመ-ተግባር ወቅት ስሪ�
 #: 
 msgid "Total Check-ins"
 msgstr "ሙሉ ግቤት"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "ሌላ ሁነታ ዓይነት ወይም ዓመት ምረጫ ሞክር።"
 
 #: 
 msgid "Up to Date"
@@ -12298,10 +12209,6 @@ msgid "Database dump only (.sql)"
 msgstr "ዳታቤዝ ብቻ (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "የቀን ክልል ከ1 ዓመት መብለጥ አይችልም"
-
-#: 
 msgid "Destructive Operation"
 msgstr "አጥፊ ተግባር"
 
@@ -12896,10 +12803,6 @@ msgstr "ለዚህ ሚና ዝርዝር አገልግሎት አልተገኘም"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "ንቁ ያልሆነ ሁኔታ ለምደባ ዝርዝር ብቻ ሊቀያየር ይችላል"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "አዲስ አባላት ምስክርነቶቻቸው ያለ ሁሉ ኢሜይል አይቀበሉም። ይለፍ ቃሉን በእጅ ያጋሩ ወይም መጀመሪያ ኢሜይልን ያዋቅሩ።"
 
 #: 
 msgid "Option name is required"
@@ -13606,7 +13509,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 64 ቁምፊ ያለው ሄክስ ሕብረቁምፊ መሆን አለበት።"
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "የChurchCRM ጠባቂዎች ገና ያልገመገሙት ነው። እዚህ የምትጭኑትን ሁሉ ደህንነትና ሥነ-ምግባር ተጠያቂ እርስዎ ናቸው። በተቻለ መጠን ተፈቅደው የቀረቡትን ዛሙዱ ፍሰት ይጠቀሙ።"
 
 #: 
@@ -17070,10 +16974,6 @@ msgid "Deleted successfully"
 msgstr "በተሳካ ሁኔታ ተሰርዟል"
 
 #: 
-msgid "Deposit #"
-msgstr "ተቀማጭ #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "የተቀማጭ ደረሰኝ"
 
@@ -17120,10 +17020,6 @@ msgstr "ቃል-ኪዳን ማምጣት አልተሳካም"
 #: 
 msgid "Failed to update pledge"
 msgstr "ቃል-ኪዳን ማዘመን አልተሳካም"
-
-#: 
-msgid "Family is required"
-msgstr "ቤተሰብ ያስፈልጋል"
 
 #: 
 msgid "Financial data"
@@ -17252,10 +17148,6 @@ msgstr "የፕላን የሩጫ ጊዜ ድጋፍ"
 #: 
 msgid "Please enter a date"
 msgstr "እባክዎ ቀን ያስገቡ"
-
-#: 
-msgid "Please select a family"
-msgstr "እባክዎ ቤተሰብ ይምረጡ"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17528,6 +17420,10 @@ msgid "Manage Events"
 msgstr "ዝግጅቶችን አስተዳድር"
 
 #: 
+msgid "N/A"
+msgstr "አይፈጸምም"
+
+#: 
 msgid "New Deposit"
 msgstr "አዲስ ተቀማጭ"
 
@@ -17656,4 +17552,346 @@ msgstr "ረድፍ ተመርጧል"
 #: 
 msgid "rows selected"
 msgstr "ረድፎች ተመርጠዋል"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "የልደት እና የዓመት በዓላት"
+
+#: 
+msgid "Estimated value %s."
+msgstr "የተገመተ ዋጋ %s።"
+
+#: 
+msgid "Minimum bid %s."
+msgstr "አነስተኛ ጫረታ %s።"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "በተወሰነ ወር ልደት ወይም የጋብቻ ዓመት በዓል ያላቸው ሰዎች"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "ልደቶችና ዓመት በዓላት እንዲመለሱ የሚፈልጉበት ወር።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "መዛግብት እንዲመለሱ የሚፈልጉት የጋብቻ ዓመት በዓል ወር።"
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "የሁሉም ግዢዎች ድምር፡ %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "ጠቅላላ ግዢዎች፡ %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "የጋብቻ ዓመት በዓላት"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "በተወሰነ ወር የጋብቻ ዓመት በዓል ያላቸው ሰዎች"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "ስህተት ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "ይህን ፈንድ መሰረዝ እንደሚፈልጉ እርግጠኛ ነዎት?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "መሰረዝ አይቻልም፡ ፈንዱ ተዛማጅ ቃልኪዳኖች አሉት"
+
+#: 
+msgid "Delete Fund"
+msgstr "ፈንድ ሰርዝ"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "አቅጣጫ 'ወደ ላይ' ወይም 'ወደ ታች' መሆን አለበት።"
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "የልዕዋቃ ፈንድ አርትዕ"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "የልዕዋቃ ፈንድ ቅደም ተከተሉን ማስተካከል አልተቻለም"
+
+#: 
+msgid "Fund added successfully."
+msgstr "ፈንዱ በተሳካ ሁኔታ ተጨምሯል።"
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "ፈንዱ በተሳካ ሁኔታ ተሰርዟል።"
+
+#: 
+msgid "Fund name"
+msgstr "የፈንድ ስም"
+
+#: 
+msgid "Fund name is required."
+msgstr "የፈንድ ስም ያስፈልጋል።"
+
+#: 
+msgid "Fund order updated."
+msgstr "የፈንድ ቅደም ተከተል ተዘምኗል።"
+
+#: 
+msgid "Fund saved successfully."
+msgstr "ፈንዱ በተሳካ ሁኔታ ተቀምጧል።"
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "እስካሁን ምንም ፈንዶች አልተጨመሩም። የመጀመሪያውን ፈንድ ለመጨመር ከላይ ያለውን ቅጽ ይጠቀሙ።"
+
+#: 
+msgid "Optional description"
+msgstr "አማራጭ መግለጫ"
+
+#: 
+msgid "Private Calendar"
+msgstr "የግል የቀን መቁጠሪያ"
+
+#: 
+msgid "Public Calendar"
+msgstr "የጋራ የቀን መቁጠሪያ"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "የተሻሻለ፡ ይልቁኑ የተወሰነ ስሪት ጫን"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "በነባሪ ሁኔታ አጋዡ ወደ የቅርቡ ስሪት ያሻሽላል። ይልቁኑ ከታች የተወሰነ ስሪት መምረጥ ይችላሉ።"
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "በተዘጋ ተቀማጭ ውስጥ ክፍያ ማርትዕ አይቻልም"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "{{version}} አውርድና ተግብር"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "እያንዳንዱ ChurchCRM ዕትም የደህንነት ጥገናዎችን ያካትታል። ሁልጊዜ ወደ የቅርቡ ስሪት ማሻሻልን በጽኑ እንመክራለን።"
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "የክፍያ ጥያቄን መፍታት አልተቻለም"
+
+#: 
+msgid "Full release notes"
+msgstr "ሙሉ የዕትም ማስታወሻዎች"
+
+#: 
+msgid "Invalid payment data"
+msgstr "ልክ ያልሆነ የክፍያ ውሂብ"
+
+#: 
+msgid "No release notes available."
+msgstr "ምንም የዕትም ማስታወሻዎች አይገኙም።"
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "ማስጠንቀቂያ፡ {{chosen}} በ{{latest}} ውስጥ የተካተቱ የደህንነት ጥገናዎች ይጎድሉታል። ልዩ ምክንያት ካለዎት ብቻ ይቀጥሉ።"
+
+#: 
+msgid "What you'll gain"
+msgstr "የሚያገኙት"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "የተቀማጭ ቁጥር ማግኘት አልተሳካም"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "ዓመታዊ በዓል: %s"
+
+#: 
+msgid "Church"
+msgstr "ቤተ ክርስቲያን"
+
+#: 
+msgid "Classifications"
+msgstr "ምደባዎች"
+
+#: 
+msgid "Closest"
+msgstr "ቅርብ"
+
+#: 
+msgid "Deposit #%d"
+msgstr "ተቀማጭ ቁ.%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "የገንዘብ ማሰባሰቢያ ቁጥር ማግኘት አልተቻለም"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "ጎረቤቶችን መጫን አልተቻለም።"
+
+#: 
+msgid "Farther"
+msgstr "ይበልጥ ሩቅ"
+
+#: 
+msgid "Farthest"
+msgstr "እጅግ ሩቅ"
+
+#: 
+msgid "Find Neighbors"
+msgstr "ጎረቤቶችን ፈልግ"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "ቅርብ ቤተሰቦችን ፈልግ እና ወደ ቅርጫትህ አስጨምር"
+
+#: 
+msgid "Map centered on"
+msgstr "ካርታ ያተኮረ በ"
+
+#: 
+msgid "Max distance"
+msgstr "ከፍተኛ ርቀት"
+
+#: 
+msgid "Max neighbors"
+msgstr "ከፍተኛ ጎረቤቶች"
+
+#: 
+msgid "Near"
+msgstr "ቅርብ"
+
+#: 
+msgid "Please select a family."
+msgstr "እባክዎ ቤተሰብ ይምረጡ።"
+
+#: 
+msgid "Results"
+msgstr "ውጤቶች"
+
+#: 
+msgid "Same location"
+msgstr "ተመሳሳይ ቦታ"
+
+#: 
+msgid "Search Neighbors"
+msgstr "ጎረቤቶችን ፈልግ"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "ቤተሰብ ይምረጡ እና ውጤቶችን ለማየት ጎረቤቶችን ፈልግ ን ጠቅ ያድርጉ።"
+
+#: 
+msgid "Selected family"
+msgstr "የተመረጠ ቤተሰብ"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "ይህ ዋጋ ትክክለኛ የመስክ ስም መሆን አለበት።"
+
+#: 
+msgid "Could not load data"
+msgstr "ዳታ መጫን አልተቻለም"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "እባክዎ ገጹን ያድሱ ወይም ቆይተው እንደገና ይሞክሩ።"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "አስቀድሞ ተዛማጅ መዝገቦችን ያስጨምሩ።"
+
+#: 
+msgid "All Months"
+msgstr "ሁሉም ወሮች"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "የ\"%s\" አማራጮች እስካሁን አልተገለጹም።"
+
+#: 
+msgid "No events found for %s %d."
+msgstr "ለ%s %d ምንም ዝግጅቶች አልተገኙም።"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "ሌላ ዝግጅት አይነት፣ ወር ወይም ዓመት ለመምረጥ ሞክሩ።"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "የጂኦኮዲንግ ስህተት ተከስቷል — በኋላ እንደገና ይሞክሩ"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "አድራሻው ያልተሟላ ነው (ከተማ፣ ክልል እና ዚፕ ኮድ ይጎድላል)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "ሁሉም ቤተሰቦች አስቀድሞ መጋጠሚያዎች አሏቸው።"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "መጋጠሚያዎችን ማዘመን አልተሳካም"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "የቤተሰብ መጋጠሚያዎችን ማዘመን አልተሳካም"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "ሁሉንም {{geocoded}} ቤተሰቦች በጂኦኮድ ተሠርተዋል። ካርታው አሁን ወቅታዊ ነው።"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} ቤተሰቦች በጂኦኮድ ተሠርተዋል። {{failed}} ሊፈቱ አልቻሉም — ከታች ዝርዝሩን ይመልከቱ።"
+
+#: 
+msgid "Geocoding…"
+msgstr "በጂኦኮድ በማድረግ ላይ…"
+
+#: 
+msgid "No address on file"
+msgstr "የተመዘገበ አድራሻ የለም"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "ምንም ተመሳሳይ አልተገኘም — የመንገድ አድራሻውን፣ ከተማውን እና ዚፕ ኮዱን ያረጋግጡ"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "አድራሻውን ለማስተካከል ቤተሰቡን ይክፈቱ፣ ከዚያም ይህን እንደገና ያሂዱ።"
+
+#: 
+msgid "Set up now"
+msgstr "አሁን ያዋቅሩ"
+
+#: 
+msgid "Unknown family"
+msgstr "ያልታወቀ ቤተሰብ"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "ሁሉንም መጋጠሚያዎች አዘምን"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "ሁሉንም የቤተሰብ መጋጠሚያዎች አዘምን"
+
+#: 
+msgid "Update Coordinates"
+msgstr "መጋጠሚያዎችን አዘምን"
 

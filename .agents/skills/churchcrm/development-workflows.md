@@ -21,20 +21,18 @@ This skill covers setup, build processes, Docker management, testing workflows, 
 - **Webpack** - Build system for frontend assets
 - **Cypress** - End-to-end testing
 
-## Quick Start (GitHub Codespaces/Dev Containers)
+## Quick Start
 
-- **GitHub Codespaces**: Click"Code" → "Codespaces" → "Create codespace" - fully automated setup
-- **VS Code Dev Containers**: Install Dev Containers extension, open repo, click "Reopen in Container"
-- **Manual setup**: Run `./scripts/setup-dev-environment.sh` for automated local setup
+Use locally installed PHP, Composer, Node.js/npm, and Docker. `DEVELOPING.md` is the canonical onboarding guide; do not infer setup steps from optional environment files.
 
 ## Setup & Build
 
 ### Initial Setup
 
 ```bash
-npm ci                    # Install exact dependencies  
+npm install               # Install Node dependencies
 npm run build             # Build everything (PHP + frontend)
-npm run docker:dev:start  # Start Docker containers
+npm run docker:test:start # Start the local test stack
 ```
 
 ### Development Cycle
@@ -48,26 +46,10 @@ npm run docker:dev:login:web # Shell into web container
 
 ## Docker Management
 
-### Docker Sandbox (sbx) — Zero host dependencies
-
-Use when Docker is available but **Node, PHP, and Composer are NOT installed** (e.g. agent sandboxes, CI runners, quick evaluations).  All build steps run inside a multi-stage Docker build stage.
+### Development Stack
 
 ```bash
-npm run docker:sbx:start    # Build image + start all services (first run: 5–15 min)
-npm run docker:sbx:stop     # Stop (keep data volumes)
-npm run docker:sbx:down     # Stop + remove containers and volumes
-npm run docker:sbx:logs     # Live logs
-npm run docker:sbx:rebuild  # Full rebuild (after code changes)
-```
-
-- **Web**: `http://localhost` — admin / changeme
-- **Adminer**: `http://localhost:8088` — DB GUI
-- Config file: `docker/docker-compose.sbx.yaml` + `docker/Dockerfile.sbx`
-
-### Development Containers
-
-```bash
-npm run docker:dev:start     # Start dev containers
+npm run docker:dev:start     # Start the Docker development stack
 npm run docker:dev:stop      # Stop containers
 npm run docker:dev:logs      # View logs
 npm run docker:dev:login:web # Shell into web container
@@ -77,17 +59,16 @@ npm run docker:dev:login:web # Shell into web container
 
 ```bash
 npm run docker:test:start       # Start test containers
-npm run docker:test:restart     # Restart all containers
-npm run docker:test:restart:db  # Restart database only (refresh schema)
+npm run docker:test:stop        # Stop containers and keep volumes
 npm run docker:test:rebuild     # Full rebuild with new images
 npm run docker:test:down        # Remove containers and volumes
-npm run docker:test:subdir      # Start test containers for subdirectory install
+npm run docker:test:reset:db    # Reload the seeded test database
+npm run docker:test:logs        # Follow test logs
 ```
 
 ### CI Containers
 
 ```bash
-npm run docker:ci:start                # CI containers (GitHub Actions profile)
 npm run docker:ci:root:start           # Parallel test — root path install
 npm run docker:ci:root:down            # Tear down root profile
 npm run docker:ci:subdir:start         # Parallel test — subdirectory install
@@ -96,16 +77,7 @@ npm run docker:ci:new-system:start     # Fresh empty database (setup wizard test
 npm run docker:ci:new-system:down      # Tear down new-system profile
 ```
 
-### Docker Profiles
-
-- **dev** — Full development environment (Composer, Node via NVM, Xdebug, Adminer)
-- **test** — Minimal runtime for local testing
-- **ci** — CI/CD optimized (used by GitHub Actions)
-- **ci-root** — Parallel CI test on root-path install (`/`)
-- **ci-subdir** — Parallel CI test on subdirectory install (`/churchcrm/`)
-- **ci-new-system** — Fresh empty database for setup-wizard tests
-
-Configuration files: `docker/docker-compose.yaml`, `docker/docker-compose.gh-actions.yaml`, `docker/docker-compose.parallel.yaml`, `docker/docker-compose.subdir.yaml`, `docker/docker-compose.sbx.yaml`, `docker/docker-compose.nginx.yaml`, `docker/docker-compose.frankenphp.yaml`
+The development stack uses `docker/docker-compose.dev.yaml`. Test and CI profiles use `docker/docker-compose.yaml` with `docker/docker-compose.parallel.yaml` and `docker/docker-compose.subdir.yaml` where required.
 
 ## Testing Workflows
 
@@ -116,7 +88,8 @@ Configuration files: `docker/docker-compose.yaml`, `docker/docker-compose.gh-act
 npm run test
 
 # Run specific test file
-npx cypress run --spec "cypress/e2e/api/path/to/test.spec.js"
+npx cypress run --config-file cypress/configs/docker.config.ts \
+  --spec "cypress/e2e/api/path/to/test.spec.js"
 
 # Interactive browser testing
 npm run test:ui
@@ -143,8 +116,8 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 
 ### CI/CD Testing (GitHub Actions)
 
-- **Docker profiles**: `dev`, `test`, `ci`, `ci-root`, `ci-subdir`, `ci-new-system` in `docker/docker-compose.yaml` + overlay files
-- **CI command**: `npm run docker:ci:start` with optimized containers
+- **Docker profiles**: `test` and `ci` in `docker/docker-compose.yaml`, with parallel overlays for CI scenarios
+- **CI commands**: use the exact `docker:ci:*` scripts defined in `package.json`
 - **Artifacts uploaded**: `cypress-artifacts-{run_id}` contains logs, screenshots, videos
 - **Access**: Actions → Workflow run → Artifacts section
 - **Debugging**: Download `cypress-reports-{branch}` for detailed failure analysis
@@ -368,7 +341,7 @@ git add -A
 ## Configuration Files
 
 - **Build**: `webpack.config.js`, `Gruntfile.js`, `package.json`
-- **Docker**: `docker/docker-compose.yaml`, `docker/docker-compose.sbx.yaml`, `docker/docker-compose.gh-actions.yaml`, `docker/docker-compose.parallel.yaml`, `docker/docker-compose.subdir.yaml`, `docker/docker-compose.nginx.yaml`, `docker/docker-compose.frankenphp.yaml`
+- **Docker**: `docker/docker-compose.dev.yaml`, `docker/docker-compose.yaml`, `docker/docker-compose.parallel.yaml`, `docker/docker-compose.subdir.yaml`, and deployment examples under `docker/examples/`
 - **Cypress**: `cypress/configs/docker.config.ts`, `cypress/configs/new-system.config.ts`, `cypress/configs/base.config.ts`, `cypress/configs/_shared.ts`
 - **PHP**: `composer.json`, `orm/propel.php.dist`
 - **ORM**: `orm/schema.xml`

@@ -154,9 +154,9 @@
       ]
     },
     "browser_automation": {
-      "reason": "Cypress E2E tests run via Bash(npm *); Playwright not needed",
+      "reason": "Cypress E2E tests and the Playwright marketing visual-media pipeline (playwright/) both run via Bash(npm *) — no dedicated browser-automation agent tools needed",
       "examples": [
-        "Playwright browser tools (beyond Cypress)"
+        "Playwright/Cypress browser tools beyond `npm run test*` / `npm run marketing:visuals*`"
       ]
     }
   },

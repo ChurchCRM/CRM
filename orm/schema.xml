@@ -40,6 +40,8 @@
                 required="true" defaultValue="0"/>
         <column name="per_BirthYear" phpName="BirthYear" type="SMALLINT" size="4" sqlType="smallint(4)"/>
         <column name="per_MembershipDate" phpName="MembershipDate" type="DATE"/>
+        <column name="per_DateDeceased" phpName="DateDeceased" type="DATE"
+                description="Date the person died; NULL means living/unknown"/>
         <column name="per_Gender" phpName="Gender" type="TINYINT" size="1" sqlType="tinyint(1) unsigned" required="true"
                 defaultValue="false"/>
         <column name="per_fmr_ID" phpName="FmrId" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"
@@ -60,8 +62,18 @@
         <column name="per_Facebook" phpName="Facebook" type="VARCHAR" size="50" Description="Facebook username" />
         <column name="per_Twitter" phpName="Twitter" type="VARCHAR" size="50" Description="Twitter username" />
         <column name="per_LinkedIn" phpName="LinkedIn" type="VARCHAR" size="50" Description="LinkedIn name" />
+        <column name="per_DateDeactivated" phpName="DateDeactivated" type="DATE"/>
         <index name="per_ID">
             <index-column name="per_ID"/>
+        </index>
+        <index name="idx_per_fam_ID">
+            <index-column name="per_fam_ID"/>
+        </index>
+        <index name="idx_per_cls_ID">
+            <index-column name="per_cls_ID"/>
+        </index>
+        <index name="idx_per_fmr_ID">
+            <index-column name="per_fmr_ID"/>
         </index>
         <foreign-key foreignTable="family_fam">
             <reference local="per_fam_ID" foreign="fam_ID"/>
@@ -212,6 +224,12 @@
         <column name="nte_EditedBy" phpName="EditedBy" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
                 required="true" defaultValue="0"/>
         <column name="nte_Type" phpName="Type" type="VARCHAR" size="50"/>
+        <index name="idx_nte_per_ID">
+            <index-column name="nte_per_ID"/>
+        </index>
+        <index name="idx_nte_fam_ID">
+            <index-column name="nte_fam_ID"/>
+        </index>
         <foreign-key foreignTable="person_per">
             <reference local="nte_per_ID" foreign="per_ID"/>
         </foreign-key>
@@ -441,7 +459,7 @@
         </foreign-key>
 
         <foreign-key foreignTable="person_per" name="PrimaryContact" refPhpName="PrimaryContactPerson" skipSql = "true">
-            <reference local="event_type" foreign="per_ID"/>
+            <reference local="primary_contact_person_id" foreign="per_ID"/>
         </foreign-key>
 
         <foreign-key foreignTable="person_per" name="SecondaryContact" refPhpName="SecondaryContactPerson" skipSql = "true">
@@ -502,6 +520,18 @@
         <column name="plg_aut_ResultID" phpName="AutResultId" type="SMALLINT" size="9" sqlType="mediumint(9)" required="true" defaultValue="0"/>
         <column name="plg_NonDeductible" phpName="Nondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
         <column name="plg_GroupKey" phpName="GroupKey" type="VARCHAR" size="64" required="true"/>
+        <index name="idx_plg_FamID">
+            <index-column name="plg_FamID"/>
+        </index>
+        <index name="idx_plg_FYID">
+            <index-column name="plg_FYID"/>
+        </index>
+        <index name="idx_plg_fundID">
+            <index-column name="plg_fundID"/>
+        </index>
+        <index name="idx_plg_depID">
+            <index-column name="plg_depID"/>
+        </index>
         <foreign-key foreignTable="deposit_dep">
             <reference local="plg_depID" foreign="dep_ID"/>
         </foreign-key>
@@ -514,6 +544,28 @@
         <foreign-key foreignTable="person_per">
             <reference local="plg_EditedBy" foreign="per_ID"/>
         </foreign-key>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="pledge_denominations_pdem" idMethod="native" phpName="PledgeDenomination" description="Cash denomination counts recorded per pledge/payment GroupKey for a deposit (cash-counting workflow). Column plg_depID mirrors the name used in FinancialService raw SQL.">
+        <column name="pdem_id" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="pdem_plg_GroupKey" phpName="GroupKey" type="VARCHAR" size="64" required="true"/>
+        <column name="plg_depID" phpName="DepId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="pdem_denominationID" phpName="DenominationId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true" defaultValue="0"/>
+        <column name="pdem_denominationQuantity" phpName="DenominationQuantity" type="INTEGER"/>
+        <index name="pdem_groupkey_idx">
+            <index-column name="pdem_plg_GroupKey"/>
+        </index>
+        <index name="pdem_deposit_denom_idx">
+            <index-column name="plg_depID"/>
+            <index-column name="pdem_denominationID"/>
+        </index>
+        <unique name="pdem_groupkey_denom_uidx">
+            <unique-column name="pdem_plg_GroupKey"/>
+            <unique-column name="pdem_denominationID"/>
+        </unique>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
@@ -553,6 +605,7 @@
         <column name="usr_TwoFactorAuthSecret" phpName="TwoFactorAuthSecret" type="VARCHAR" size="255" />
         <column name="usr_TwoFactorAuthLastKeyTimestamp" phpName="TwoFactorAuthLastKeyTimestamp" type="SMALLINT" size="9" />
         <column name="usr_TwoFactorAuthRecoveryCodes" phpName="TwoFactorAuthRecoveryCodes" type="LONGVARCHAR"/>
+        <column name="usr_TwoFactorAuthGracePeriodStart" phpName="TwoFactorAuthGracePeriodStart" type="TIMESTAMP" />
         <column name="usr_EditSelf" phpName="EditSelf" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_CalStart" phpName="CalStart" type="DATE"/>
         <column name="usr_CalEnd" phpName="CalEnd" type="DATE"/>

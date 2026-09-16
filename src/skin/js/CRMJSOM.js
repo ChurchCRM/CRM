@@ -270,13 +270,6 @@ window.CRM.groups = {
 
     wrapper.addEventListener("hidden.bs.modal", cleanup, { once: true });
 
-    // Fallback timeout: ensure cleanup happens if hidden.bs.modal doesn't fire
-    setTimeout(() => {
-      if (wrapper.parentNode) {
-        cleanup();
-      }
-    }, 2000);
-
     const confirmBtn = wrapper.querySelector("#crm-gs-confirm");
     const roleWrapper = wrapper.querySelector("#crm-gs-role-wrapper");
 
@@ -554,6 +547,38 @@ window.CRM.dashboard = {
       document.getElementById("EventsNumber").innerText = data.Events;
     });
   },
+
+  /**
+   * Load open deposit count once on page load
+   * Used by Finance menu badge to show real-time count of open deposits
+   */
+  loadOpenDepositCount: () => {
+    const el = document.getElementById("openDeposits");
+    if (!el) return; // Finance menu not present for this user
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "deposits/open-count",
+      suppressErrorDialog: true,
+    }).done((data) => {
+      el.innerText = data.count;
+    });
+  },
+
+  /**
+   * Load active fundraiser count once on page load for menu badge.
+   * Replaces session-cached count, ensuring always fresh data.
+   */
+  loadFundraiserCount: () => {
+    const el = document.getElementById("activeFundraisers");
+    if (!el) return; // Fundraiser menu badge not present for this user (feature disabled or no permission)
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "fundraisers/active-count",
+      suppressErrorDialog: true,
+    }).done((data) => {
+      el.innerText = data.count;
+    });
+  },
 };
 
 /**
@@ -722,7 +747,8 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
   options = options || {};
   const inactive = options.inactive || false;
   const root = window.CRM.root;
-  const escapedTitle = window.CRM.escapeHtml(eventTitle || "");
+  // use escapeAttribute (encodes quotes) for data-* attribute context, as renderPersonActionMenu does
+  const escapedTitle = window.CRM.escapeAttribute(eventTitle || "");
 
   const statusButton = inactive
     ? '<button type="button" class="dropdown-item activate-event" data-event_id="' +

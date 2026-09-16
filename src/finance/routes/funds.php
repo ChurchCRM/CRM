@@ -3,7 +3,6 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\DonationFundService;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -11,7 +10,8 @@ use Slim\Views\PhpRenderer;
 
 /**
  * Web route for the Donation Funds admin page.
- * GET /finance/funds — renders a Tabler DataTable page (admin only).
+ * GET /finance/funds — renders a Tabler DataTable page (Finance role or Admin,
+ * enforced by FinanceRoleAuthMiddleware at the module level in finance/index.php).
  */
 $app->get('/funds', function (Request $request, Response $response): Response {
     $service = new DonationFundService();
@@ -70,4 +70,4 @@ $app->get('/funds', function (Request $request, Response $response): Response {
     ];
 
     return $renderer->render($response, 'funds/index.php', $pageArgs);
-})->add(AdminRoleAuthMiddleware::class);
+});

@@ -45,7 +45,11 @@ if (file_exists(__DIR__ . '/Include/Config.php')) {
 
 // Get the current request path with query string stripped.
 $_idx_requestPath = strtok($_SERVER['REQUEST_URI'], '?');
-$shortName = str_replace(SystemURLs::getRootPath() . '/', '', $_idx_requestPath);
+// Strip the install-root prefix to derive the app-relative path.
+$_idx_rootPrefix = SystemURLs::getRootPath() . '/';
+$shortName = str_starts_with($_idx_requestPath, $_idx_rootPrefix)
+    ? substr($_idx_requestPath, strlen($_idx_rootPrefix))
+    : substr($_idx_requestPath, 1);
 
 // First, ensure that the user is authenticated.
 AuthenticationManager::ensureAuthentication();

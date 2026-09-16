@@ -17,21 +17,15 @@
 
 import DOMPurify from "dompurify";
 import { initializeQuillEditor } from "./quill-editor.js";
+import { escapeHtml } from "./utils/escape-html";
 
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Architecture
 // ---------------------------------------------------------------------------
 
-function escapeHtml(str) {
-  if (!str) return "";
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-}
-
-// Architecture: event.Start / event.End are CHURCH wall-clock STRINGS in
+// event.Start / event.End are CHURCH wall-clock STRINGS in
 // `YYYY-MM-DDTHH:mm:ss` (timed) or `YYYY-MM-DD` (all-day). Never JS Date
 // objects in date logic. This avoids browser-tz contamination — `new Date()`,
 // `getHours()`, `getDate()` etc. all interpret in the user's local tz, which
@@ -170,7 +164,7 @@ export function isAllDay(event) {
   // Date-only string (length 10) is implicitly all-day.
   if (s.length <= 10) return true;
   const m = s.match(/T(\d{2}):(\d{2})/);
-  if (!m || m[1] !== "00" || m[2] !== "00") return false;
+  if (m?.[1] !== "00" || m?.[2] !== "00") return false;
   if (event.End) {
     const e = toWallClockString(event.End);
     if (e.length > 10) {
@@ -264,7 +258,7 @@ function renderAdvancedSection(event, groups) {
             <div class="form-selectgroup form-selectgroup-pills">
               <label class="form-selectgroup-item">
                 <input type="radio" name="eventInActive" value="0" class="form-selectgroup-input" ${!inactive ? "checked" : ""}>
-                <span class="form-selectgroup-label"><i class="ti ti-check me-1"></i>${t("Active")}</span>
+                <span class="form-selectgroup-label"><i class="fa-solid fa-check me-1"></i>${t("Active")}</span>
               </label>
               <label class="form-selectgroup-item">
                 <input type="radio" name="eventInActive" value="1" class="form-selectgroup-input" ${inactive ? "checked" : ""}>
@@ -417,7 +411,7 @@ function renderViewerMarkup(event, calendars, eventTypes, groups = []) {
     <dd class="col-sm-9">${
       inactive
         ? `<span class="badge bg-secondary-lt"><i class="fa-solid fa-ban me-1"></i>${t("Inactive")}</span>`
-        : `<span class="badge bg-green-lt text-green"><i class="ti ti-check me-1"></i>${t("Active")}</span>`
+        : `<span class="badge bg-green-lt text-green"><i class="fa-solid fa-check me-1"></i>${t("Active")}</span>`
     }</dd>`;
   if (matchedType) {
     metaRows += `<dt class="col-sm-3 text-muted">${t("Event Type")}</dt>
@@ -748,13 +742,13 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
     advancedCollapse.addEventListener("show.bs.collapse", () => {
       const chevron = document.getElementById("eventAdvancedChevron");
       const label = document.getElementById("eventAdvancedLabel");
-      if (chevron) chevron.classList.replace("ti-chevron-down", "ti-chevron-up");
+      if (chevron) chevron.classList.replace("fa-chevron-down", "fa-chevron-up");
       if (label) label.textContent = t("Hide advanced options");
     });
     advancedCollapse.addEventListener("hide.bs.collapse", () => {
       const chevron = document.getElementById("eventAdvancedChevron");
       const label = document.getElementById("eventAdvancedLabel");
-      if (chevron) chevron.classList.replace("ti-chevron-up", "ti-chevron-down");
+      if (chevron) chevron.classList.replace("fa-chevron-up", "fa-chevron-down");
       if (label) label.textContent = t("Show more options");
     });
   }

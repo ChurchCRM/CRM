@@ -165,7 +165,7 @@ class PluginLocalization
             if ($raw === false) {
                 return null;
             }
-            $decoded = json_decode($raw, true, 8, JSON_THROW_ON_ERROR);
+            $decoded = json_decode($raw, true, 8);
         } catch (\Throwable $e) {
             LoggerUtils::getAppLogger()->warning('Plugin i18n file is not valid JSON', [
                 'plugin' => $metadata->getId(),

@@ -1,0 +1,64 @@
+# Security: Images/ directory — serve only safe image types
+#
+# Two layers of defence for GHSA-v5mx-w5g6-fjpc:
+#
+#   1. Disable PHP execution entirely so no file placed here (legitimately or
+#      via a path-traversal / backup-restore attack) can be interpreted as PHP,
+#      even if the web server is configured to execute `.pht`, `.phtml`, etc.
+#
+#   2. Allow-list the file extensions that are permitted to be served at all.
+#      Anything not in the list is blocked with a 403 Forbidden response.
+#      Combined with the upload-side extension allowlist in RestoreJob.php,
+#      this provides defence-in-depth: a file that slips through the upload
+#      check still cannot be served to a browser.
+#
+# SVG is intentionally excluded from the allowlist: SVG files served as
+# image/svg+xml can execute embedded <script> tags in browsers. Static files
+# served directly by Apache do not carry the CSP headers sent by PHP responses,
+# so an SVG in Images/ would enable stored-XSS for any visitor. Photo.php
+# excludes SVG upload for the same reason.
+#
+# Allowed extensions (must stay in sync with ALLOWED_IMAGE_EXTENSIONS in
+# src/ChurchCRM/Backup/RestoreJob.php and the nginx location block in
+# docker/examples/nginx/default.conf):
+#   jpg, jpeg, png, gif, webp, ico, bmp, tiff, tif
+
+# ── 1. Disable PHP execution ─────────────────────────────────────────────────
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>
+
+# Remove PHP handler for any remaining CGI/FastCGI configurations.
+# (?i) makes the match case-insensitive (covers SHELL.PHP, SHELL.PHT, etc.)
+# on case-sensitive Linux filesystems where plain FilesMatch is PCRE without /i.
+<FilesMatch "(?i)\.ph(p[2-9]?|ps|tml|ar|t|s)$">
+    SetHandler None
+    SetHandler default-handler
+</FilesMatch>
+
+# ── 2. Extension allowlist — block everything except safe image types ─────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Allow directories (needed for subdirectory traversal)
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Allow safe image extensions (case-insensitive via [NC] flag)
+    RewriteCond %{REQUEST_URI} \.(jpg|jpeg|png|gif|webp|ico|bmp|tiff|tif)$ [NC]
+    RewriteRule ^ - [L]
+
+    # Block everything else (including extension-less files and SVG)
+    RewriteRule ^ - [F,L]
+</IfModule>
+
+# Deny all if mod_rewrite is not available (belt-and-suspenders)
+<IfModule !mod_rewrite.c>
+    Require all denied
+</IfModule>

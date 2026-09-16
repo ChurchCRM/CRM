@@ -310,3 +310,205 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
         });
     });
 });
+
+// ---------------------------------------------------------------------------
+// Regression tests for issue #9615 — anonymous donor (no Family) support
+// ---------------------------------------------------------------------------
+describe("API Finance Payments - Anonymous donor / no Family (#9615)", () => {
+    /**
+     * Payload factory for anonymous (no FamilyID) payments.
+     * FamilyID is explicitly null — mirrors what the pledge editor now sends
+     * when no family is selected.
+     */
+    const getAnonPayload = (overrides = {}) => ({
+        type: "Payment",
+        iMethod: "CASH",
+        Date: "2025-11-01",
+        FamilyID: null,   // ← anonymous / cash donation — no family
+        FYID: 29,
+        tScanString: "",
+        FundSplit: JSON.stringify([
+            {
+                FundID: "1",
+                Amount: 50.00,
+                NonDeductible: 0,
+                Comment: "anonymous donation #9615",
+            },
+        ]),
+        ...overrides,
+    });
+
+    /**
+     * Payload factory for payments WITH a family (regression guard).
+     */
+    const getFamilyPayload = (overrides = {}) => ({
+        type: "Payment",
+        iMethod: "CASH",
+        Date: "2025-11-02",
+        FamilyID: "1",
+        FYID: 29,
+        tScanString: "",
+        FundSplit: JSON.stringify([
+            {
+                FundID: "1",
+                Amount: 75.00,
+                NonDeductible: 0,
+                Comment: "family donation regression #9615",
+            },
+        ]),
+        ...overrides,
+    });
+
+    describe("POST /api/payments/pledges — anonymous donor (FamilyID null)", () => {
+        it("returns 200 and a GroupKey when FamilyID is null (regression fix for #9615)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getAnonPayload(),
+                200
+            ).then((resp) => {
+                expect(resp.body).to.have.property("payment");
+                const groupKey = resp.body.groupKey;
+                expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+                const payment = resp.body.payment;
+                expect(payment).to.have.property("total");
+                expect(payment.total).to.be.closeTo(50.00, 0.01);
+
+                // Verify the record was actually persisted by fetching via group key
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    "/api/payments/pledges/" + groupKey,
+                    null,
+                    200
+                ).then((getResp) => {
+                    expect(getResp.body.groupKey).to.equal(groupKey);
+                    expect(getResp.body.pledgeOrPayment).to.equal("Payment");
+                    expect(getResp.body.funds).to.be.an("array").with.length(1);
+                    expect(getResp.body.total).to.be.closeTo(50.00, 0.01);
+                    // familyId and familyName should be empty/null for anonymous donations
+                    expect(getResp.body.familyId).to.satisfy(
+                        (v) => v === null || v === 0 || v === undefined,
+                        "familyId should be absent/null/0 for anonymous donations"
+                    );
+
+                    // Clean up — delete the anonymous pledge we just created
+                    cy.makePrivateAdminAPICall(
+                        "DELETE",
+                        "/api/payments/" + groupKey,
+                        null,
+                        200
+                    );
+                });
+            });
+        });
+
+        it("saved anonymous record is removed after DELETE (verifies persistence)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getAnonPayload({ Date: "2025-11-03" }),
+                200
+            ).then((createResp) => {
+                const groupKey = createResp.body.groupKey;
+                expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+
+                // Verify the record exists before deleting (rules out a false positive 404)
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    "/api/payments/pledges/" + groupKey,
+                    null,
+                    200
+                ).then(() => {
+                    cy.makePrivateAdminAPICall(
+                        "DELETE",
+                        "/api/payments/" + groupKey,
+                        null,
+                        200
+                    ).then(() => {
+                        cy.makePrivateAdminAPICall(
+                            "GET",
+                            "/api/payments/pledges/" + groupKey,
+                            null,
+                            404
+                        );
+                    });
+                });
+            });
+        });
+
+        it("PUT /api/payments/{groupKey} updates anonymous pledge without requiring FamilyID", () => {
+            // Create an anonymous pledge first
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getAnonPayload({ Date: "2025-11-04" }),
+                200
+            ).then((createResp) => {
+                const groupKey = createResp.body.groupKey;
+
+                // Now PUT the same pledge with a different amount — still no FamilyID
+                const updatedFundSplit = JSON.stringify([{
+                    FundID: "1",
+                    Amount: 80.00,
+                    NonDeductible: 0,
+                    Comment: "updated anon donation #9615",
+                }]);
+                cy.makePrivateAdminAPICall(
+                    "PUT",
+                    "/api/payments/" + groupKey,
+                    getAnonPayload({
+                        Date: "2025-11-04",
+                        FundSplit: updatedFundSplit,
+                    }),
+                    200
+                ).then((putResp) => {
+                    expect(putResp.body.payment.total).to.be.closeTo(80.00, 0.01);
+
+                    // Clean up
+                    cy.makePrivateAdminAPICall(
+                        "DELETE",
+                        "/api/payments/" + groupKey,
+                        null,
+                        200
+                    );
+                });
+            });
+        });
+    });
+
+    describe("POST /api/payments/pledges — payment WITH a Family still works (regression guard)", () => {
+        it("returns 200 and a GroupKey when FamilyID is provided (regression guard for #9615)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getFamilyPayload(),
+                200
+            ).then((resp) => {
+                expect(resp.body).to.have.property("payment");
+                const groupKey = resp.body.groupKey;
+                expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+                const payment = resp.body.payment;
+                expect(payment.total).to.be.closeTo(75.00, 0.01);
+
+                // Verify family data is returned correctly
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    "/api/payments/pledges/" + groupKey,
+                    null,
+                    200
+                ).then((getResp) => {
+                    expect(getResp.body.familyId).to.equal(1);
+                    expect(getResp.body.familyName).to.be.a("string").and.to.have.length.greaterThan(0);
+
+                    // Clean up
+                    cy.makePrivateAdminAPICall(
+                        "DELETE",
+                        "/api/payments/" + groupKey,
+                        null,
+                        200
+                    );
+                });
+            });
+        });
+    });
+});

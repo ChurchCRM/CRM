@@ -26,7 +26,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
     <i class="fa-solid fa-triangle-exclamation me-2 fs-3"></i>
     <div class="flex-grow-1">
         <strong><?= gettext('Email is disabled') ?></strong>
-        <div class="text-secondary"><?= gettext('New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first.') ?></div>
+        <div class="text-secondary"><?= gettext('New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first.') ?></div>
     </div>
     <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="btn btn-warning ms-3">
         <i class="fa-solid fa-envelope me-1"></i><?= gettext('Set up Email') ?>
@@ -81,9 +81,9 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
 
         <?php
         $accessModes = [
-            ['value' => 'admin', 'icon' => 'ti-shield-check', 'label' => gettext('Administrator'), 'desc' => gettext('Full access — grants all privileges.')],
-            ['value' => 'self',  'icon' => 'ti-user-check',   'label' => gettext('Self-service only'), 'desc' => gettext('Can only review and verify their own family. No other access.')],
-            ['value' => 'custom','icon' => 'ti-adjustments',  'label' => gettext('Custom'), 'desc' => gettext('Choose specific permissions below.')],
+            ['value' => 'admin', 'icon' => 'fa-user-shield',  'label' => gettext('Administrator'), 'desc' => gettext('Full access — grants all privileges.')],
+            ['value' => 'self',  'icon' => 'fa-user-check',   'label' => gettext('Self-service only'), 'desc' => gettext('Can only review and verify their own family. No other access.')],
+            ['value' => 'custom','icon' => 'fa-sliders',      'label' => gettext('Custom'), 'desc' => gettext('Choose specific permissions below.')],
         ];
         ?>
         <div class="mb-3">
@@ -94,7 +94,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
                     <input type="radio" name="accessMode" value="<?= $mode['value'] ?>" class="form-selectgroup-input"<?= $accessMode === $mode['value'] ? ' checked' : '' ?>>
                     <span class="form-selectgroup-label d-block text-start p-3">
                         <span class="d-flex align-items-center mb-1">
-                            <i class="ti <?= $mode['icon'] ?> me-2 text-primary fs-3"></i>
+                            <i class="fa-solid <?= $mode['icon'] ?> me-2 text-primary fs-3"></i>
                             <span class="fw-bold"><?= $mode['label'] ?></span>
                         </span>
                         <span class="d-block text-body-secondary small"><?= $mode['desc'] ?></span>

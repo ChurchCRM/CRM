@@ -116,8 +116,8 @@ class GoogleAnalyticsPlugin extends AbstractPlugin
         }
 
         // Use json_encode for safe JS string construction
-        $eventNameJs = json_encode($eventName, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT);
-        $paramsJson = json_encode($params, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT);
+        $eventNameJs = json_encode($eventName, JSON_HEX_TAG);
+        $paramsJson = json_encode($params, JSON_HEX_TAG);
 
         // Handle json_encode failures gracefully
         if ($eventNameJs === false || $paramsJson === false) {

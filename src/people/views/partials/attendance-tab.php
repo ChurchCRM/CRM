@@ -10,6 +10,7 @@
  * personMapConfig) so no inline <script> block is needed.
  */
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 $i18n = [
@@ -37,9 +38,9 @@ $i18n = [
 ?>
 
 <div id="attendance-tab"
-     data-person-id="<?= InputUtils::escapeHTML((string) $iPersonID) ?>"
-     data-api-root="<?= InputUtils::escapeHTML(\ChurchCRM\dto\SystemURLs::getRootPath()) ?>"
-     data-i18n="<?= htmlspecialchars(json_encode($i18n, JSON_HEX_TAG | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR), ENT_QUOTES, 'UTF-8') ?>">
+     data-person-id="<?= (int)$iPersonID ?>"
+     data-api-root="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>"
+     data-i18n="<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript($i18n)) ?>">
 
     <!-- Loading state -->
     <div class="attendance-loading text-center py-4">

@@ -1154,48 +1154,9 @@ msgid "Minimum Price"
 msgstr "اقل سعر"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "عائلة الجغرافية المرافق"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "اختر أسرة"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "الحد الأقصى لعدد الجيران"
-
-#: 
-msgid "Maximum distance"
-msgstr "المسافة القصوي"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "تنسيق ملف البيانات"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS متخيل"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "تشمل الأسر في تنسيق ملف"
-
-#: 
-msgid "Neighbor Families"
-msgstr "الأسر المجاورة"
-
-#: 
-msgid "Make Data File"
-msgstr "إنشاء ملف البيانات"
-
-#: 
-msgid "Show Neighbors"
-msgstr "عرض الجيران"
 
 #: 
 msgid "Distance"
@@ -1216,10 +1177,6 @@ msgstr "خط الطول"
 #: 
 msgid "Add to Cart"
 msgstr "إضافة الى العربة"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "تتقاطع مع العربة"
 
 #: 
 msgid "Remove from Cart"
@@ -1398,10 +1355,6 @@ msgstr "أرسل جميع"
 #: 
 msgid "Family Roles"
 msgstr "أدوار الأسرة"
-
-#: 
-msgid "Family Geographic"
-msgstr "الجغرافية الأسرة"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4252,26 +4205,8 @@ msgid "Profile Image uploaded"
 msgstr "الصورة الشخصية مرفوع"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "تظهر الجيران مع هذه التصنيفات"
-
-#: 
-msgid "Please select a Family."
-msgstr "الرجاء اختيار الأسرة."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "تنسيق البيانات اسم ملف قاعدة"
-
-#: 
 msgid "select an option"
 msgstr "حدد اختيارا"
-
-#: 
-msgid "Direct me"
-msgstr "تدلني"
 
 #: 
 msgid "Your cart is empty"
@@ -5104,14 +5039,6 @@ msgstr "الناس تحقق لوحة"
 #: 
 msgid "Verification URL created"
 msgstr "خلق URL التحقق"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "بي دي إف"
 
 #: 
 msgid "Error sending email(s)"
@@ -8539,10 +8466,6 @@ msgid "selected family has no coordinates"
 msgstr "الأسرة المختارة ليس لها إحداثيات"
 
 #: 
-msgid "2FA"
-msgstr "التحقق الثنائي"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "طلب من جميع المستخدمين التسجيل في المصادقة الثنائية"
 
@@ -9433,10 +9356,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "إنشاء وثائق البيانات الضريبية للمانحين"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "الأدوات الجغرافية"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "أدخل بيانات ChurchCRM الخاصة بك"
 
@@ -10167,10 +10086,6 @@ msgid "View and manage deposit slip payments"
 msgstr "عرض وإدارة دفعات الإيصالات"
 
 #: 
-msgid "View and manage family location data"
-msgstr "عرض وإدارة بيانات موقع العائلة"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "عرض وإدارة ملفات السجل النظامي لتصحيح الأخطاء"
 
@@ -10509,10 +10424,6 @@ msgstr "سيؤدي هذا إلى إعادة تحميل وإعادة تطبيق �
 #: 
 msgid "Total Check-ins"
 msgstr "إجمالي عمليات تسجيل الوصول"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "حاول تحديد نوع حدث أو سنة مختلفة."
 
 #: 
 msgid "Up to Date"
@@ -12322,10 +12233,6 @@ msgid "Database dump only (.sql)"
 msgstr "نسخة قاعدة البيانات فقط (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "لا يمكن أن يتجاوز نطاق التاريخ سنة واحدة"
-
-#: 
 msgid "Destructive Operation"
 msgstr "عملية تدميرية"
 
@@ -12920,10 +12827,6 @@ msgstr "لم يتم العثور على الخدمة لقائمة الأدوار
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "يمكن تبديل حالة عدم النشاط فقط في قائمة التصنيفات"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "لن يتلقى الأعضاء الجدد بريداً إلكترونياً ترحيبياً ببيانات اعتمادهم. شارك كلمة المرور معهم يدوياً، أو قم بتكوين البريد الإلكتروني أولاً."
 
 #: 
 msgid "Option name is required"
@@ -13630,7 +13533,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "يجب أن يكون SHA-256 سلسلة سداسية عشرية مكونة من 64 حرفًا."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "لم يراجعه مشرفو ChurchCRM. أنت مسؤول عن أمان وسلوك كل ما تثبته هنا. يُفضَّل استخدام تدفق تصفح المعتمدة كلما أمكن."
 
 #: 
@@ -17105,10 +17009,6 @@ msgid "Deleted successfully"
 msgstr "تم الحذف بنجاح"
 
 #: 
-msgid "Deposit #"
-msgstr "رقم الإيداع"
-
-#: 
 msgid "Deposit Slip"
 msgstr "إيصال الإيداع"
 
@@ -17155,10 +17055,6 @@ msgstr "فشل في استرداد التعهد"
 #: 
 msgid "Failed to update pledge"
 msgstr "فشل في تحديث التعهد"
-
-#: 
-msgid "Family is required"
-msgstr "العائلة مطلوبة"
 
 #: 
 msgid "Financial data"
@@ -17287,10 +17183,6 @@ msgstr "دعم وقت تشغيل الخطة"
 #: 
 msgid "Please enter a date"
 msgstr "يرجى إدخال تاريخ"
-
-#: 
-msgid "Please select a family"
-msgstr "يرجى اختيار عائلة"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17567,6 +17459,10 @@ msgid "Manage Events"
 msgstr "إدارة الفعاليات"
 
 #: 
+msgid "N/A"
+msgstr "غير متاح"
+
+#: 
 msgid "New Deposit"
 msgstr "إيداع جديد"
 
@@ -17699,4 +17595,346 @@ msgstr "صف محدد"
 #: 
 msgid "rows selected"
 msgstr "صفوف محددة"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "أعياد الميلاد والذكرى السنوية"
+
+#: 
+msgid "Estimated value %s."
+msgstr "القيمة التقديرية %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "الحد الأدنى للعرض %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "الأشخاص الذين لديهم أعياد ميلاد أو ذكرى سنوية للزواج في شهر معين"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "الشهر الذي تريد استرداد أعياد الميلاد والذكرى السنوية فيه."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "شهر الذكرى السنوية للزواج الذي تريد استرداد السجلات فيه."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "إجمالي جميع المشتريات: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "إجمالي المشتريات: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "الذكرى السنوية للزواج"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "الأشخاص الذين لديهم ذكرى سنوية للزواج في شهر معين"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "حدث خطأ. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "هل أنت متأكد أنك تريد حذف هذا الصندوق؟"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "لا يمكن الحذف: يحتوي الصندوق على تعهدات مرتبطة به"
+
+#: 
+msgid "Delete Fund"
+msgstr "حذف الصندوق"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "يجب أن يكون الاتجاه 'up' أو 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "تعديل صندوق التبرعات"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "فشل إعادة ترتيب صندوق التبرعات"
+
+#: 
+msgid "Fund added successfully."
+msgstr "تمت إضافة الصندوق بنجاح."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "تم حذف الصندوق بنجاح."
+
+#: 
+msgid "Fund name"
+msgstr "اسم الصندوق"
+
+#: 
+msgid "Fund name is required."
+msgstr "اسم الصندوق مطلوب."
+
+#: 
+msgid "Fund order updated."
+msgstr "تم تحديث ترتيب الصندوق."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "تم حفظ الصندوق بنجاح."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "لم يتم إضافة أي صناديق بعد. استخدم النموذج أعلاه لإضافة الصندوق الأول."
+
+#: 
+msgid "Optional description"
+msgstr "وصف اختياري"
+
+#: 
+msgid "Private Calendar"
+msgstr "تقويم خاص"
+
+#: 
+msgid "Public Calendar"
+msgstr "تقويم عام"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "متقدم: تثبيت إصدار محدد بدلاً من ذلك"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "بشكل افتراضي، يقوم المعالج بالترقية إلى أحدث إصدار. يمكنك بدلاً من ذلك اختيار إصدار محدد أدناه."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "لا يمكن تعديل دفعة في إيداع مغلق"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "تنزيل وتطبيق {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "يتضمن كل إصدار من ChurchCRM إصلاحات أمنية. نوصي بشدة بالترقية دائماً إلى أحدث إصدار."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "فشل فك تشفير طلب الدفع"
+
+#: 
+msgid "Full release notes"
+msgstr "ملاحظات الإصدار الكاملة"
+
+#: 
+msgid "Invalid payment data"
+msgstr "بيانات الدفع غير صالحة"
+
+#: 
+msgid "No release notes available."
+msgstr "لا تتوفر ملاحظات إصدار."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "تحذير: {{chosen}} يفتقر إلى إصلاحات أمنية مضمّنة في {{latest}}. تابع فقط إذا كان لديك سبب محدد."
+
+#: 
+msgid "What you'll gain"
+msgstr "ما ستكسبه"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "فشل في الحصول على عدد الودائع"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "الذكرى السنوية: %s"
+
+#: 
+msgid "Church"
+msgstr "الكنيسة"
+
+#: 
+msgid "Classifications"
+msgstr "التصنيفات"
+
+#: 
+msgid "Closest"
+msgstr "الأقرب"
+
+#: 
+msgid "Deposit #%d"
+msgstr "إيداع رقم %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "فشل في الحصول على عدد جمع التبرعات"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "فشل في تحميل الجيران."
+
+#: 
+msgid "Farther"
+msgstr "أبعد"
+
+#: 
+msgid "Farthest"
+msgstr "الأبعد"
+
+#: 
+msgid "Find Neighbors"
+msgstr "البحث عن الجيران"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "ابحث عن العائلات القريبة وأضفها إلى سلتك"
+
+#: 
+msgid "Map centered on"
+msgstr "الخريطة مركزها على"
+
+#: 
+msgid "Max distance"
+msgstr "أقصى مسافة"
+
+#: 
+msgid "Max neighbors"
+msgstr "أقصى عدد من الجيران"
+
+#: 
+msgid "Near"
+msgstr "قريب"
+
+#: 
+msgid "Please select a family."
+msgstr "الرجاء اختيار عائلة."
+
+#: 
+msgid "Results"
+msgstr "النتائج"
+
+#: 
+msgid "Same location"
+msgstr "نفس الموقع"
+
+#: 
+msgid "Search Neighbors"
+msgstr "البحث عن الجيران"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "اختر عائلة وانقر على البحث عن الجيران لرؤية النتائج."
+
+#: 
+msgid "Selected family"
+msgstr "العائلة المختارة"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "يجب أن تكون هذه القيمة اسم حقل صالحاً."
+
+#: 
+msgid "Could not load data"
+msgstr "تعذّر تحميل البيانات"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "الرجاء تحديث الصفحة أو المحاولة لاحقاً."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "أضف السجلات ذات الصلة أولاً."
+
+#: 
+msgid "All Months"
+msgstr "جميع الأشهر"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "لم يتم تحديد أي خيارات \"%s\" حتى الآن."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "لم يتم العثور على أحداث لـ %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "حاول تحديد نوع حدث أو شهر أو سنة مختلفة."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "حدث خطأ في تحديد الموقع الجغرافي — حاول مرة أخرى لاحقًا"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "العنوان غير مكتمل (المدينة والمحافظة والرمز البريدي مفقودة)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "جميع العائلات لديها إحداثيات بالفعل."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "فشل تحديث الإحداثيات"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "فشل تحديث إحداثيات العائلة"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "تم تحديد إحداثيات جميع العائلات البالغ عددها {{geocoded}}. الخريطة محدّثة الآن."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "تم تحديد إحداثيات {{geocoded}} عائلة. تعذّر تحديد {{failed}} — راجع التفاصيل أدناه."
+
+#: 
+msgid "Geocoding…"
+msgstr "جارٍ تحديد الإحداثيات…"
+
+#: 
+msgid "No address on file"
+msgstr "لا يوجد عنوان مسجل"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "لم يتم العثور على تطابق — تحقق من عنوان الشارع والمدينة والرمز البريدي"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "افتح ملف عائلة لإصلاح عنوانها، ثم كرر هذه العملية."
+
+#: 
+msgid "Set up now"
+msgstr "إعداد الآن"
+
+#: 
+msgid "Unknown family"
+msgstr "عائلة غير معروفة"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "تحديث جميع الإحداثيات"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "تحديث جميع إحداثيات العائلات"
+
+#: 
+msgid "Update Coordinates"
+msgstr "تحديث الإحداثيات"
 

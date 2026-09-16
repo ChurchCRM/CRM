@@ -17,7 +17,13 @@ export default defineConfig({
   env: {
     'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
     'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',
-    'nofinance.api.key': 'M_5K4ZWTdBTmMOTGTfLWCmXFbETgHNG6_6FNZXJJulicn_WweBjm',
+    'nofinance.api.key': 'judithMatthewsEditRecordsNoNotesApiKey1234',
+    'finance.only.api.key': 'financeOnlyApiKeyForTesting12345678901234',
+    'finance.only.username': 'grace.financeonly@example.com',
+    'finance.only.password': 'changeme',
+    'managegroups.only.api.key': 'manageGroupsOnlyApiKeyForTesting12345678901',
+    'managegroups.only.username': 'kyle.kioskonly@example.com',
+    'managegroups.only.password': 'changeme',
     'nofundraiser.api.key': 'financeNoFundraiserApiKeyForTesting12345',
     'nofundraiser.username': 'finance.nofundraiser',
     'nofundraiser.password': 'changeme',
@@ -38,7 +44,21 @@ export default defineConfig({
   numTestsKeptInMemory: 0,
   e2e: {
     ...base.e2e,
+    // Admin UI specs (cypress/e2e/ui-admin) run as a dedicated parallel CI job
+    // (docker-admin.config.ts / npm run test:ui-admin) and are intentionally
+    // excluded here, mirroring how new-system specs are excluded from this config.
+    specPattern: [
+      'cypress/e2e/api/**/*.spec.js',
+      'cypress/e2e/ui/**/*.spec.js'
+    ],
     setupNodeEvents(on, config) {
+      // Register cypress-split for UI spec sharding (SPLIT / SPLIT_INDEX env vars).
+      // Guard: when SPLIT is unset the plugin is a no-op, so it's safe to
+      // require unconditionally, but we skip registration to avoid debug noise.
+      if (process.env.SPLIT) {
+        const cypressSplit = require('cypress-split');
+        cypressSplit(on, config);
+      }
       const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
       installLogsPrinter(on, {
         outputRoot: 'cypress/logs',

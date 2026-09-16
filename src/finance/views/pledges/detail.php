@@ -68,9 +68,13 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                 <div class="col-sm-6 col-lg-3">
                     <div class="text-muted small mb-1"><?= gettext('Family') ?></div>
                     <div class="fw-bold">
+                        <?php if (!empty($pledge['familyId'])): ?>
                         <a href="<?= $sRootPath ?>/people/family/<?= (int) $pledge['familyId'] ?>">
                             <?= InputUtils::escapeHTML($pledge['familyName']) ?>
                         </a>
+                        <?php else: ?>
+                        <?= gettext('Anonymous') ?>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -102,7 +106,7 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                     <div class="text-muted small mb-1"><?= gettext('Deposit Slip') ?></div>
                     <div class="fw-bold">
                         <a href="<?= $sRootPath ?>/DepositSlipEditor.php?DepositSlipID=<?= (int) $pledge['depositId'] ?>">
-                            <?= gettext('Deposit #') . (int) $pledge['depositId'] ?>
+                            <?= sprintf(gettext('Deposit #%d'), (int) $pledge['depositId']) ?>
                         </a>
                     </div>
                 </div>

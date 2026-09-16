@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "குறைந்தபட்ச விலை"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "குடும்ப புவியியல் பயன்பாடுகள்"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "குடும்பத்தைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "அண்டை வீட்டுக்காரர் அதிகபட்ச எண்ணிக்கை"
-
-#: 
-msgid "Maximum distance"
-msgstr "அதிகபட்ச தூரம்"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "தரவு/தகவல்கள் கோப்பு வடிவம்"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "ஜிபிஎஸ் விஷுவலைசர்/காட்சிப்படுத்துபவர்"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "ஒருங்கிணைந்த கோப்பில் குடும்பங்களைச் சேர்க்கவும்"
-
-#: 
-msgid "Neighbor Families"
-msgstr "அண்டை குடும்பங்கள்"
-
-#: 
-msgid "Make Data File"
-msgstr "தரவு/தகவல்கள் கோப்பை உருவாக்கவும்"
-
-#: 
-msgid "Show Neighbors"
-msgstr "அண்டை நாடுகளைக் காட்டு"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "தீர்க்கரேகை"
 #: 
 msgid "Add to Cart"
 msgstr "பெட்டகத்தில்/மின்வண்டி சேர்"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "மின்வண்டியுடன் வெட்டுங்கள்"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "அனைவருக்கும் மின்னஞ்சல் அ�
 #: 
 msgid "Family Roles"
 msgstr "குடும்ப பங்குகள்/பாத்திரங்கள்"
-
-#: 
-msgid "Family Geographic"
-msgstr "குடும்ப புவியியல்"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4252,26 +4205,8 @@ msgid "Profile Image uploaded"
 msgstr "சுயவிவரப் படம் பதிவேற்றப்பட்டது"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "இந்த வகைப்பாடுகளுடன் அண்டை வீட்டாரைக் காட்டு"
-
-#: 
-msgid "Please select a Family."
-msgstr "குடும்பத்தைத் தேர்ந்தெடுக்கவும்."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "ஒருங்கிணைப்பு தரவு அடிப்படை கோப்பு பெயர்"
-
-#: 
 msgid "select an option"
 msgstr "ஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "Direct me"
-msgstr "என்னை இயக்கு"
 
 #: 
 msgid "Your cart is empty"
@@ -5109,14 +5044,6 @@ msgstr "மக்கள் டாஷ்போர்டைச் சரிபா�
 #: 
 msgid "Verification URL created"
 msgstr "சரிபார்ப்பு URL உருவாக்கப்பட்டது"
-
-#: 
-msgid "URL"
-msgstr "யு ஆர் எல் (URL)"
-
-#: 
-msgid "PDF"
-msgstr "பி டி எஃப் (PDF)  "
 
 #: 
 msgid "Error sending email(s)"
@@ -8523,10 +8450,6 @@ msgid "selected family has no coordinates"
 msgstr "தேர்ந்தெடுத்த குடும்பத்திற்கு ஆயங்கள் இல்லை"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "அனைத்து பயனர்களும் இரு காரணி அங்கீகாரத்தில் சேர வேண்டும்"
 
@@ -9413,10 +9336,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "நன்கொடையாளர்களுக்கான வரி அறிக்கை ஆவணங்களை உருவாக்கவும்"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "புவியியல் பயன்பாடுகள்"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "உங்கள் தரவை ChurchCRM இல் சேர்க்கவும்"
 
@@ -10147,10 +10066,6 @@ msgid "View and manage deposit slip payments"
 msgstr "காணிக்கை வைப்பு சீட்டு பணம் செலுத்தல்களைப் பார்த்து நிர்வகிக்கவும்"
 
 #: 
-msgid "View and manage family location data"
-msgstr "குடும்ப இருப்பிட தரவைப் பார்த்து நிர்வகிக்கவும்"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "பிழைத்திருத்தத்திற்கான கணினி பதிவு கோப்புகளைப் பார்த்து நிர்வகிக்கவும்"
 
@@ -10489,10 +10404,6 @@ msgstr "இது தற்போதைய பதிப்பை மீண்ட
 #: 
 msgid "Total Check-ins"
 msgstr "மொத்த வருகைப் பதிவுகள்"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "வேறு நிகழ்வு வகை அல்லது ஆண்டைத் தேர்ந்தெடுக்க முயற்சிக்கவும்."
 
 #: 
 msgid "Up to Date"
@@ -12302,10 +12213,6 @@ msgid "Database dump only (.sql)"
 msgstr "தரவுத்தளம் மட்டும் (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "தேதி வரம்பு 1 ஆண்டை தாண்டக்கூடாது"
-
-#: 
 msgid "Destructive Operation"
 msgstr "அழிவு சார்ந்த செயல்பாடு"
 
@@ -12900,10 +12807,6 @@ msgstr "இந்த பாத்திர பட்டியலுக்கா�
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "செயலற்ற நிலையை வகைப்பாடுகள் பட்டியலுக்கு மட்டுமே மாற்ற முடியும்"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "புதிய உறுப்பினர்கள் தங்கள் சான்றுகளுடன் வரவேற்பு மின்னஞ்சலைப் பெற மாட்டார்கள். கடவுச்சொற்றை கைமுறையாக பகிரவும் அல்லது முதலில் மின்னஞ்சலை உள்ளமைக்கவும்."
 
 #: 
 msgid "Option name is required"
@@ -13610,7 +13513,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 ஒரு 64-எழுத்து hex சரமாக இருக்க வேண்டும்."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM பராமரிப்பாளர்கள் இதை மதிப்பாய்வு செய்யவில்லை. இங்கே நீங்கள் நிறுவும் எதன் பாதுகாப்பு மற்றும் நடத்தைக்கும் நீங்களே பொறுப்பு. முடிந்தவரை அங்கீகரிக்கப்பட்டவைகளை உலாவுக வழிமுறையை விரும்பவும்."
 
 #: 
@@ -17121,10 +17025,6 @@ msgid "Deleted successfully"
 msgstr "வெற்றிகரமாக நீக்கப்பட்டது"
 
 #: 
-msgid "Deposit #"
-msgstr "வைப்பு #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "வைப்பு சீட்டு"
 
@@ -17171,10 +17071,6 @@ msgstr "உறுதிமொழியை மீட்டெடுக்க த�
 #: 
 msgid "Failed to update pledge"
 msgstr "உறுதிமொழியை புதுப்பிக்க தோல்வியடைந்தது"
-
-#: 
-msgid "Family is required"
-msgstr "குடும்பம் தேவை"
 
 #: 
 msgid "Financial data"
@@ -17303,10 +17199,6 @@ msgstr "இயக்க நேர ஆதரவை திட்டமிடவு
 #: 
 msgid "Please enter a date"
 msgstr "தேதியை உள்ளிடவும்"
-
-#: 
-msgid "Please select a family"
-msgstr "ஒரு குடும்பத்தை தேர்ந்தெடுக்கவும்"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17579,6 +17471,10 @@ msgid "Manage Events"
 msgstr "நிகழ்வுகளை நிர்வகி"
 
 #: 
+msgid "N/A"
+msgstr "பொருந்தாது"
+
+#: 
 msgid "New Deposit"
 msgstr "புதிய வைப்புத்தொகை"
 
@@ -17707,4 +17603,346 @@ msgstr "வரிசை தேர்ந்தெடுக்கப்பட்�
 #: 
 msgid "rows selected"
 msgstr "வரிசைகள் தேர்ந்தெடுக்கப்பட்டன"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "பிறந்தநாட்கள் & நினைவு நாட்கள்"
+
+#: 
+msgid "Estimated value %s."
+msgstr "மதிப்பிடப்பட்ட மதிப்பு %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "குறைந்தபட்ச ஏலம் %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "ஒரு குறிப்பிட்ட மாதத்தில் பிறந்தநாள் அல்லது திருமண நினைவு நாள் உள்ளவர்கள்"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "பிறந்தநாட்கள் மற்றும் நினைவு நாட்களை பெற விரும்பும் மாதம்."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "திருமண நினைவு நாள் பதிவுகளை பெற விரும்பும் மாதம்."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "அனைத்து கொள்முதல்களின் மொத்தம்: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "மொத்த கொள்முதல்கள்: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "திருமண நினைவு நாட்கள்"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "ஒரு குறிப்பிட்ட மாதத்தில் திருமண நினைவு நாள் உள்ளவர்கள்"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "ஒரு பிழை ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "இந்த நிதியை நீக்க விரும்புகிறீர்களா?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "நீக்க முடியாது: நிதியுடன் தொடர்புடைய உறுதிமொழிகள் உள்ளன"
+
+#: 
+msgid "Delete Fund"
+msgstr "நிதியை நீக்கு"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "திசை 'up' அல்லது 'down' ஆக இருக்க வேண்டும்."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "நன்கொடை நிதியை திருத்து"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "நன்கொடை நிதியை மறுவரிசைப்படுத்த முடியவில்லை"
+
+#: 
+msgid "Fund added successfully."
+msgstr "நிதி வெற்றிகரமாக சேர்க்கப்பட்டது."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "நிதி வெற்றிகரமாக நீக்கப்பட்டது."
+
+#: 
+msgid "Fund name"
+msgstr "நிதியின் பெயர்"
+
+#: 
+msgid "Fund name is required."
+msgstr "நிதியின் பெயர் அவசியம்."
+
+#: 
+msgid "Fund order updated."
+msgstr "நிதி வரிசை புதுப்பிக்கப்பட்டது."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "நிதி வெற்றிகரமாக சேமிக்கப்பட்டது."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "இன்னும் எந்த நிதியும் சேர்க்கப்படவில்லை. முதல் நிதியை சேர்க்க மேலே உள்ள படிவத்தை பயன்படுத்தவும்."
+
+#: 
+msgid "Optional description"
+msgstr "விருப்பமான விளக்கம்"
+
+#: 
+msgid "Private Calendar"
+msgstr "தனியார் நாட்காட்டி"
+
+#: 
+msgid "Public Calendar"
+msgstr "பொது நாட்காட்டி"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "மேம்பட்டது: பதிலாக ஒரு குறிப்பிட்ட பதிப்பை நிறுவு"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "இயல்பாக, வழிகாட்டி சமீபத்திய பதிப்பிற்கு மேம்படுத்தும். நீங்கள் கீழே ஒரு குறிப்பிட்ட பதிப்பை தேர்வு செய்யலாம்."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "மூடப்பட்ட வைப்பில் கட்டணத்தை திருத்த முடியாது"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "பதிவிறக்கு & பயன்படுத்து {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "ஒவ்வொரு ChurchCRM வெளியீடும் பாதுகாப்பு திருத்தங்களை உள்ளடக்கியது. எப்போதும் சமீபத்திய பதிப்பிற்கு மேம்படுத்துமாறு நாங்கள் உறுதியாக பரிந்துரைக்கிறோம்."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "கட்டண கோரிக்கையை மறைகுறியாக்க முடியவில்லை"
+
+#: 
+msgid "Full release notes"
+msgstr "முழு வெளியீட்டு குறிப்புகள்"
+
+#: 
+msgid "Invalid payment data"
+msgstr "தவறான கட்டண தரவு"
+
+#: 
+msgid "No release notes available."
+msgstr "வெளியீட்டு குறிப்புகள் எதுவும் இல்லை."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "எச்சரிக்கை: {{chosen}} இல் {{latest}} இல் உள்ள பாதுகாப்பு திருத்தங்கள் இல்லை. குறிப்பிட்ட காரணம் இருந்தால் மட்டுமே தொடரவும்."
+
+#: 
+msgid "What you'll gain"
+msgstr "நீங்கள் பெறுவது"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "வைப்பு எண்ணிக்கையைப் பெறுவதில் தோல்வி"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "ஆண்டு விழா: %s"
+
+#: 
+msgid "Church"
+msgstr "தேவாலயம்"
+
+#: 
+msgid "Classifications"
+msgstr "வகைப்படுத்தல்கள்"
+
+#: 
+msgid "Closest"
+msgstr "மிக நெருக்கமான"
+
+#: 
+msgid "Deposit #%d"
+msgstr "வைப்பு #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "நிதி திரட்டல் எண்ணிக்கையை பெற முடியவில்லை"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "அண்டை வீட்டினரை ஏற்ற முடியவில்லை."
+
+#: 
+msgid "Farther"
+msgstr "இன்னும் தூரம்"
+
+#: 
+msgid "Farthest"
+msgstr "மிகவும் தூரம்"
+
+#: 
+msgid "Find Neighbors"
+msgstr "அண்டை வீட்டினரை கண்டறி"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "அருகிலுள்ள குடும்பங்களை கண்டு உங்கள் கார்ட்டில் சேர்க்கவும்"
+
+#: 
+msgid "Map centered on"
+msgstr "வரைபடம் மையம்:"
+
+#: 
+msgid "Max distance"
+msgstr "அதிகபட்ச தூரம்"
+
+#: 
+msgid "Max neighbors"
+msgstr "அதிகபட்ச அண்டை வீட்டினர்"
+
+#: 
+msgid "Near"
+msgstr "அருகில்"
+
+#: 
+msgid "Please select a family."
+msgstr "ஒரு குடும்பத்தை தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Results"
+msgstr "முடிவுகள்"
+
+#: 
+msgid "Same location"
+msgstr "அதே இடம்"
+
+#: 
+msgid "Search Neighbors"
+msgstr "அண்டை வீட்டினரை தேடு"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "ஒரு குடும்பத்தை தேர்ந்தெடுத்து முடிவுகளைக் காண அண்டை வீட்டினரை கண்டறி என்பதை கிளிக் செய்யவும்."
+
+#: 
+msgid "Selected family"
+msgstr "தேர்ந்தெடுக்கப்பட்ட குடும்பம்"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "இந்த மதிப்பு சரியான புலப் பெயராக இருக்க வேண்டும்."
+
+#: 
+msgid "Could not load data"
+msgstr "தரவை ஏற்ற முடியவில்லை"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "பக்கத்தை புதுப்பிக்கவும் அல்லது பின்னர் மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "முதலில் தொடர்புடைய பதிவுகளை சேர்க்கவும்."
+
+#: 
+msgid "All Months"
+msgstr "அனைத்து மாதங்கள்"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "\"%s\" விருப்பங்கள் இன்னும் வரையறுக்கப்படவில்லை."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d க்கான நிகழ்வுகள் எதுவும் கிடைக்கவில்லை."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "வேறு நிகழ்வு வகை, மாதம் அல்லது ஆண்டை தேர்வு செய்து பாருங்கள்."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "புவிக்குறியீட்டில் பிழை ஏற்பட்டது — பின்னர் மீண்டும் முயற்சிக்கவும்"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "முகவரி முழுமையடையவில்லை (நகரம், மாநிலம் மற்றும் அஞ்சல் குறியீடு இல்லை)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "அனைத்து குடும்பங்களுக்கும் ஏற்கனவே ஆயத்தொலைவுகள் உள்ளன."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "ஆயத்தொலைவுகளைப் புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "குடும்ப ஆயத்தொலைவுகளைப் புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "அனைத்து {{geocoded}} குடும்பங்களும் புவிக்குறியிடப்பட்டன. வரைபடம் இப்போது புதுப்பித்த நிலையில் உள்ளது."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} குடும்பங்கள் புவிக்குறியிடப்பட்டன. {{failed}} தீர்க்க முடியவில்லை — கீழே உள்ள விவரங்களைப் பார்க்கவும்."
+
+#: 
+msgid "Geocoding…"
+msgstr "புவிக்குறியிடுகிறது…"
+
+#: 
+msgid "No address on file"
+msgstr "பதிவில் முகவரி இல்லை"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "பொருத்தம் எதுவும் கிடைக்கவில்லை — தெரு முகவரி, நகரம் மற்றும் அஞ்சல் குறியீட்டைச் சரிபார்க்கவும்"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "முகவரியைச் சரிசெய்ய ஒரு குடும்பத்தைத் திறந்து, பின்னர் இதை மீண்டும் இயக்கவும்."
+
+#: 
+msgid "Set up now"
+msgstr "இப்போது அமைக்கவும்"
+
+#: 
+msgid "Unknown family"
+msgstr "தெரியாத குடும்பம்"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "அனைத்து ஆயத்தொலைவுகளையும் புதுப்பிக்கவும்"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "அனைத்து குடும்ப ஆயத்தொலைவுகளையும் புதுப்பிக்கவும்"
+
+#: 
+msgid "Update Coordinates"
+msgstr "ஆயத்தொலைவுகளைப் புதுப்பிக்கவும்"
 

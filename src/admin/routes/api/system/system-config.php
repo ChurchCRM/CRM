@@ -47,6 +47,7 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
         return SlimUtils::renderJSON($response, ['value' => '']);
     }
 
+    // Sanitization is applied centrally in SystemConfig::setValue() — no duplicate call here.
     SystemConfig::setValue($configName, $value);
 
     // Never return the saved value for password types

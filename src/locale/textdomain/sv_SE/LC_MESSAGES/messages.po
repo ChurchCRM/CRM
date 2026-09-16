@@ -1195,48 +1195,9 @@ msgid "Minimum Price"
 msgstr "Maximal distans"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Familj geografisk verktyg"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Välj familj:"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maximum antal grannar"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maximal distans"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Filformat"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visning"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Inkludera familjer i koordinat fil"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Granfamiljer"
-
-#: 
-msgid "Make Data File"
-msgstr "Skapa informationsfil"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Visa grannar"
 
 #: 
 msgid "Distance"
@@ -1257,10 +1218,6 @@ msgstr "Longitud"
 #: 
 msgid "Add to Cart"
 msgstr "Lägg till korgen"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Bearbeta med korgen"
 
 #: 
 msgid "Remove from Cart"
@@ -1451,10 +1408,6 @@ msgstr "Skicka e-post till alla"
 #: 
 msgid "Family Roles"
 msgstr "Familjeroller"
-
-#: 
-msgid "Family Geographic"
-msgstr "Familj geografi"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4345,26 +4298,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilbild uppladdad"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Visa grannar med dessa klassificeringar"
-
-#: 
-msgid "Please select a Family."
-msgstr "Välj en familj."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Koordinera databasfilnamn"
-
-#: 
 msgid "select an option"
 msgstr "Välj ett alternativ"
-
-#: 
-msgid "Direct me"
-msgstr "Rikta mig"
 
 #: 
 msgid "Your cart is empty"
@@ -5204,14 +5139,6 @@ msgstr "Person verifikation instrumentpanelen"
 #: 
 msgid "Verification URL created"
 msgstr "Verifierings-URL skapad"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8607,10 +8534,6 @@ msgid "selected family has no coordinates"
 msgstr "vald familj har inga koordinater"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kräv att alla användare registrerar sig för tvåfaktorsautentisering"
 
@@ -9497,10 +9420,6 @@ msgid "Generate tax statement documents for donors"
 msgstr "Generera skattebesked för givare"
 
 #: 
-msgid "Geographic Utilities"
-msgstr "Geografiska verktyg"
-
-#: 
 msgid "Get Your Data Into ChurchCRM"
 msgstr "Importera dina data till ChurchCRM"
 
@@ -10231,10 +10150,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Visa och hantera kollektinsamlingsbetalningar"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Visa och hantera familjers platsdata"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Visa och hantera systemloggfiler för felsökning"
 
@@ -10573,10 +10488,6 @@ msgstr "Detta laddar ner och tillämpar den aktuella versionen på nytt. Det kan
 #: 
 msgid "Total Check-ins"
 msgstr "Totalt antal registreringar"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Prova att välja en annan evenemangstyp eller ett annat år."
 
 #: 
 msgid "Up to Date"
@@ -12382,10 +12293,6 @@ msgid "Database dump only (.sql)"
 msgstr "Enbart databasdump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Datumintervallet får inte överstiga 1 år"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destruktiv åtgärd"
 
@@ -12980,10 +12887,6 @@ msgstr "Grupp hittades inte för den här rollistan"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Inaktiv status kan bara växlas för klassificeringslistan"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Nya användare kommer inte att få ett välkomstmejl med sina inloggningsuppgifter. Dela lösenordet manuellt med dem eller konfigurera e-post först."
 
 #: 
 msgid "Option name is required"
@@ -13690,7 +13593,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 måste vara en 64-teckens hexsträng."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM:s underhållare har inte granskat det. Du ansvarar för säkerheten och beteendet hos allt du installerar här. Föredra flödet Bläddra bland godkända när det är möjligt."
 
 #: 
@@ -17149,10 +17053,6 @@ msgid "Deleted successfully"
 msgstr "Borttaget"
 
 #: 
-msgid "Deposit #"
-msgstr "Insättning #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Insättningskvitto"
 
@@ -17199,10 +17099,6 @@ msgstr "Det gick inte att hämta löftet"
 #: 
 msgid "Failed to update pledge"
 msgstr "Det gick inte att uppdatera löftet"
-
-#: 
-msgid "Family is required"
-msgstr "Familj krävs"
 
 #: 
 msgid "Financial data"
@@ -17331,10 +17227,6 @@ msgstr "Planera körtidsstöd"
 #: 
 msgid "Please enter a date"
 msgstr "Ange ett datum"
-
-#: 
-msgid "Please select a family"
-msgstr "Välj en familj"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17597,6 +17489,10 @@ msgid "Manage Events"
 msgstr "Hantera evenemang"
 
 #: 
+msgid "N/A"
+msgstr "Ej tillgänglig"
+
+#: 
 msgid "New Deposit"
 msgstr "Ny insattning"
 
@@ -17719,4 +17615,346 @@ msgstr "rad vald"
 #: 
 msgid "rows selected"
 msgstr "rader valda"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Födelsedagar & jubileer"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Uppskattat värde %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Lägsta bud %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Personer med födelsedag eller bröllopsdag under en viss månad"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Den månad för vilken du vill hämta födelsedagar och jubileer."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Den månad för bröllopsdag för vilken du vill hämta poster."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Totalt för alla köp: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Totala köp: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Bröllopsdagar"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Personer med bröllopsdag under en viss månad"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Ett fel uppstod. Försök igen."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Är du säker på att du vill ta bort denna fond?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Kan inte ta bort: fonden har tillhörande löften"
+
+#: 
+msgid "Delete Fund"
+msgstr "Ta bort fond"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Riktningen måste vara 'upp' eller 'ner'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Redigera gåvofond"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Det gick inte att ändra ordning på gåvofonden"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fonden har lagts till."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fonden har tagits bort."
+
+#: 
+msgid "Fund name"
+msgstr "Fondens namn"
+
+#: 
+msgid "Fund name is required."
+msgstr "Fondens namn är obligatoriskt."
+
+#: 
+msgid "Fund order updated."
+msgstr "Fondordningen har uppdaterats."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fonden har sparats."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Inga fonder har lagts till ännu. Använd formuläret ovan för att lägga till den första fonden."
+
+#: 
+msgid "Optional description"
+msgstr "Valfri beskrivning"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privat kalender"
+
+#: 
+msgid "Public Calendar"
+msgstr "Offentlig kalender"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Avancerat: Installera en specifik version istället"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Som standard uppgraderar guiden till den senaste versionen. Du kan istället välja en specifik version nedan."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Det går inte att redigera en betalning i en avslutad insättning"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Hämta och tillämpa {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Varje ChurchCRM-version innehåller säkerhetskorrigeringar. Vi rekommenderar starkt att alltid uppgradera till den senaste versionen."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Det gick inte att avkoda betalningsbegäran"
+
+#: 
+msgid "Full release notes"
+msgstr "Fullständiga versionskommentarer"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Ogiltiga betalningsuppgifter"
+
+#: 
+msgid "No release notes available."
+msgstr "Inga versionskommentarer tillgängliga."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Varning: {{chosen}} saknar säkerhetskorrigeringar som ingår i {{latest}}. Fortsätt bara om du har ett specifikt skäl."
+
+#: 
+msgid "What you'll gain"
+msgstr "Vad du kommer att vinna"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Misslyckades med att hämta insättningsantal"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Jubileum: %s"
+
+#: 
+msgid "Church"
+msgstr "Församling"
+
+#: 
+msgid "Classifications"
+msgstr "Klassificeringar"
+
+#: 
+msgid "Closest"
+msgstr "Närmast"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Insättning nr %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Det gick inte att hämta antalet insamlingar"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Det gick inte att läsa in grannar."
+
+#: 
+msgid "Farther"
+msgstr "Längre bort"
+
+#: 
+msgid "Farthest"
+msgstr "Längst bort"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Hitta grannar"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Hitta familjer i närheten och lägg till dem i din varukorg"
+
+#: 
+msgid "Map centered on"
+msgstr "Karta centrerad på"
+
+#: 
+msgid "Max distance"
+msgstr "Maxavstånd"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maximalt antal grannar"
+
+#: 
+msgid "Near"
+msgstr "Nära"
+
+#: 
+msgid "Please select a family."
+msgstr "Välj en familj."
+
+#: 
+msgid "Results"
+msgstr "Resultat"
+
+#: 
+msgid "Same location"
+msgstr "Samma plats"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Sök grannar"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Välj en familj och klicka på Hitta grannar för att se resultat."
+
+#: 
+msgid "Selected family"
+msgstr "Vald familj"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Det här värdet måste vara ett giltigt fältnamn."
+
+#: 
+msgid "Could not load data"
+msgstr "Det gick inte att läsa in data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Uppdatera sidan eller försök igen senare."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Lägg till de relevanta posterna först."
+
+#: 
+msgid "All Months"
+msgstr "Alla månader"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Inga \"%s\"-alternativ har definierats än."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Inga händelser hittades för %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Prova att välja en annan händelsetyp, månad eller år."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Ett geokodningsfel uppstod — försök igen senare"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adressen är ofullständig (saknar stad, delstat och postnummer)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alla familjer har redan koordinater."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Det gick inte att uppdatera koordinaterna"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Det gick inte att uppdatera familjens koordinater"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodade alla {{geocoded}} familjer. Kartan är nu uppdaterad."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodade {{geocoded}} familjer. {{failed}} kunde inte lösas — se detaljer nedan."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokodar…"
+
+#: 
+msgid "No address on file"
+msgstr "Ingen adress registrerad"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Ingen träff hittades — kontrollera gatuadress, stad och postnummer"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Öppna en familj för att åtgärda dess adress och kör sedan detta igen."
+
+#: 
+msgid "Set up now"
+msgstr "Konfigurera nu"
+
+#: 
+msgid "Unknown family"
+msgstr "Okänd familj"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Uppdatera alla koordinater"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Uppdatera alla familjekoordinater"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Uppdatera koordinater"
 
