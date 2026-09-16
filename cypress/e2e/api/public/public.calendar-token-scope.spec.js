@@ -105,11 +105,15 @@ describe("Public Calendar - access token scope (security)", () => {
                 if (resp.status === 200 && Array.isArray(resp.body)) {
                     resp.body.forEach((evt) => {
                         if (evt.Id) {
+                            // 404 is tolerated: an earlier crashed run may have
+                            // already removed the event. Aborting here would skip
+                            // the calendar delete below and orphan the calendar,
+                            // which then 409s forever because events stay pinned.
                             cy.makePrivateAdminAPICall(
                                 "DELETE",
                                 `/api/events/${evt.Id}`,
                                 null,
-                                200,
+                                [200, 404],
                             );
                         }
                     });
@@ -163,7 +167,7 @@ describe("Public Calendar - access token scope (security)", () => {
             failOnStatusCode: false,
         }).then((resp) => {
             expect(resp.status, "/events must return 200").to.equal(200);
-            expect(resp.body).to.be.an("array");
+            expect(resp.body, "/events must return an array").to.be.an("array");
 
             const titles = resp.body.map((e) => e.Title);
             expect(titles, "calendar A's own event must be present").to.include(eventATitle);
@@ -182,6 +186,7 @@ describe("Public Calendar - access token scope (security)", () => {
             failOnStatusCode: false,
         }).then((resp) => {
             expect(resp.status, "/events must return 200").to.equal(200);
+            expect(resp.body, "/events must return an array").to.be.an("array");
 
             const titles = resp.body.map((e) => e.Title);
             expect(titles, "calendar B's own event must be present").to.include(eventBTitle);
@@ -193,41 +198,61 @@ describe("Public Calendar - access token scope (security)", () => {
     });
 
     // -- FullCalendar feed (what the public HTML page fetches) -------------
-    it("GET /fullcalendar?start&end returns only the token's own calendar", () => {
+
+    /** Assert the FullCalendar feed for `token` shows `ownTitle` and never `otherTitle`. */
+    function assertFullCalendarScoped(getToken, ownTitle, otherTitle, ownLabel, otherLabel) {
         cy.request({
             method: "GET",
-            url: `/api/public/calendar/${tokenA}/fullcalendar`,
+            url: `/api/public/calendar/${getToken()}/fullcalendar`,
             qs: windowQs,
             failOnStatusCode: false,
         }).then((resp) => {
             expect(resp.status, "/fullcalendar must return 200").to.equal(200);
+            expect(resp.body, "/fullcalendar must return an array").to.be.an("array");
 
-            const events = Array.isArray(resp.body) ? resp.body : [];
-            const titles = events.map((e) => e.title);
-            expect(titles, "calendar A's own event must be present").to.include(eventATitle);
+            const titles = resp.body.map((e) => e.title);
+            expect(titles, `calendar ${ownLabel}'s own event must be present`).to.include(ownTitle);
             expect(
                 titles,
-                "calendar B's event must NOT leak into calendar A's FullCalendar feed",
-            ).not.to.include(eventBTitle);
+                `calendar ${otherLabel}'s event must NOT leak into calendar ${ownLabel}'s FullCalendar feed`,
+            ).not.to.include(otherTitle);
         });
+    }
+
+    it("GET /fullcalendar?start&end returns only the token's own calendar", () => {
+        assertFullCalendarScoped(() => tokenA, eventATitle, eventBTitle, "A", "B");
+    });
+
+    it("GET /fullcalendar?start&end does not leak in the other direction either", () => {
+        assertFullCalendarScoped(() => tokenB, eventBTitle, eventATitle, "B", "A");
     });
 
     // -- iCal export -------------------------------------------------------
-    it("GET /ics?start&end exports only the token's own calendar", () => {
+
+    /** Assert the .ics export for `token` contains `ownTitle` and never `otherTitle`. */
+    function assertIcsScoped(getToken, ownTitle, otherTitle, ownLabel, otherLabel) {
         cy.request({
             method: "GET",
-            url: `/api/public/calendar/${tokenA}/ics`,
+            url: `/api/public/calendar/${getToken()}/ics`,
             qs: windowQs,
             failOnStatusCode: false,
         }).then((resp) => {
             expect(resp.status, "/ics must return 200").to.equal(200);
             expect(resp.headers["content-type"]).to.include("text/calendar");
-            expect(resp.body, "calendar A's own event must be present").to.include(eventATitle);
+            expect(resp.body, `calendar ${ownLabel}'s own event must be present`).to.include(ownTitle);
             expect(
                 resp.body,
-                "calendar B's event must NOT leak into calendar A's .ics download",
-            ).not.to.include(eventBTitle);
+                `calendar ${otherLabel}'s event must NOT leak into calendar ${ownLabel}'s .ics download`,
+            ).not.to.include(otherTitle);
         });
+    }
+
+    it("GET /ics?start&end exports only the token's own calendar", () => {
+        assertIcsScoped(() => tokenA, eventATitle, eventBTitle, "A", "B");
+    });
+
+    it("GET /ics?start&end does not leak in the other direction either", () => {
+        assertIcsScoped(() => tokenB, eventBTitle, eventATitle, "B", "A");
     });
 
     // -- unfiltered path: already correct, guards against regressing it ----
@@ -238,6 +263,7 @@ describe("Public Calendar - access token scope (security)", () => {
             failOnStatusCode: false,
         }).then((resp) => {
             expect(resp.status, "/events must return 200").to.equal(200);
+            expect(resp.body, "/events must return an array").to.be.an("array");
 
             const titles = resp.body.map((e) => e.Title);
             expect(titles, "calendar A's own event must be present").to.include(eventATitle);
@@ -272,6 +298,7 @@ describe("Public Calendar - access token scope (security)", () => {
             failOnStatusCode: false,
         }).then((resp) => {
             expect(resp.status, "/events must return 200").to.equal(200);
+            expect(resp.body, "/events must return an array").to.be.an("array");
 
             const titles = resp.body.map((e) => e.Title);
             expect(titles, "calendar A's own event must be present").to.include(eventATitle);
