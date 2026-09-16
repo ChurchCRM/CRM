@@ -1,30 +1,30 @@
 {
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Príliš mnoho príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite možnosť Kopírovať adresy.",
+    "other": "Príliš mnoho príjemcov pre e-mailového klienta ({{count}} > {{max}}). Použite možnosť Kopírovať adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Zostáva {{count}} minúta",
+    "other": "Zostáva {{count}} minút"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} rodinu nebolo možné geokódovať",
+    "other": "{{count}} rodín nebolo možné geokódovať"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktívne {{count}} sekundu",
+    "other": "Aktívne {{count}} sekúnd"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Chystáte sa odoslať potvrdzujúce e-maily {{count}} rodine.",
+    "other": "Chystáte sa odoslať potvrdzujúce e-maily {{count}} rodinám."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} rodina nemá zaznamenanú e-mailovú adresu a bude vynechaná",
+    "other": "{{count}} rodín nemá zaznamenanú e-mailovú adresu a bude vynechaných"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…a {{count}} ďalší, ktorý tu nie je uvedený.",
+    "other": "…a {{count}} ďalších, ktorí tu nie sú uvedení."
   }
 }

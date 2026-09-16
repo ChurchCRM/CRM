@@ -1,18 +1,18 @@
 {
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "ใช้งานมาแล้ว {{count}} วินาที",
+    "other": "ใช้งานมาแล้ว {{count}} วินาที"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "คุณกำลังจะส่งอีเมลยืนยันไปยัง {{count}} ครอบครัว",
+    "other": "คุณกำลังจะส่งอีเมลยืนยันไปยัง {{count}} ครอบครัว"
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ครอบครัวไม่มีที่อยู่อีเมลในระบบและจะถูกข้าม",
+    "other": "{{count}} ครอบครัวไม่มีที่อยู่อีเมลในระบบและจะถูกข้าม"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…และอีก {{count}} รายการที่ไม่ได้แสดงไว้ที่นี่",
+    "other": "…และอีก {{count}} รายการที่ไม่ได้แสดงไว้ที่นี่"
   }
 }
