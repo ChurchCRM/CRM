@@ -86,6 +86,8 @@ You do not need to add any of it, and you should not load a second copy:
 | `.portal-avatar` / `.portal-avatar-initials` | A member's photo, and the initials shown when there is none |
 | `.portal-member-list` / `.portal-member` | The family members list; the member's own row also carries `.is-self` |
 | `.portal-dialog` | A `<dialog>` in the portal's own chrome |
+| `.portal-breadcrumb` | The single "← back" link above a nested page's title (My Teams) |
+| `.portal-team-card` / `.portal-team-ministry` | One team on **My Teams**, and the ministry line under a team's name |
 
 ### Hooks the page bundles look for
 
@@ -99,6 +101,7 @@ that overrides one of those pages must keep them if it wants the page to work:
 | `portal-family-form`, `portal-family-save` | `family/edit.html.twig` |
 | `portal-confirm-form`, `portal-confirm-submit`, `portal-confirm-comment`, `portal-confirm-comment-field` | `family/confirm.html.twig` |
 | `portal-add-member-dialog`, `portal-add-member-form`, `portal-add-member-open`, `portal-add-member-submit`, `portal-add-member-cancel` | `family/index.html.twig` |
+| `portal-team`, `portal-team-tabs`, `nav-item-positions` / `-volunteers` / `-schedules` / `-occurrences` | `teams/team.html.twig` |
 
 A field's inline message is the element with `data-error-for="<field name>"`
 inside the form; a read-only value the bundle refreshes after a save is the
@@ -223,6 +226,9 @@ will stop working on your pages.
 | `family/index.html.twig` | `GET /portal/family` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm`, `familyRoles`, `defaultNewMemberRoleId` |
 | `family/edit.html.twig` | `GET /portal/family/edit` | `pageTitle`, `family`, `members`, `canEdit`, `countries` |
 | `family/confirm.html.twig` | `GET /portal/family/confirm` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm` |
+| `teams/index.html.twig` | `GET /portal/teams` | `pageTitle`, `teams` |
+| `teams/team.html.twig` | `GET /portal/teams/{teamId}` | `pageTitle`, `team` |
+| `teams/occurrence.html.twig` | `GET /portal/teams/{teamId}/occurrences/{occurrenceId}` | `pageTitle`, `team`, `occurrence` |
 | `errors/403.html.twig` | A page this member may not open | `pageTitle` |
 | `errors/404.html.twig` | An unknown portal URL (and 405) | `pageTitle` |
 | `errors/500.html.twig` | An unexpected failure | `pageTitle` |
@@ -289,6 +295,30 @@ orders them.
 | `defaultNewMemberRoleId` | int | The role that form starts on — the configured child role, not head of household |
 | `familySummary` | object | On the home page only: `{name, memberCount}`, or `null` when the member has no family |
 
+### `teams`, `team` and `occurrence` (My Teams)
+
+`teams` is the list **My Teams** renders, one entry per team this member runs,
+ordered by ministry then team.
+
+| Field | Type | What it is |
+|---|---|---|
+| `id` | int | The team |
+| `name` | string | The team's name |
+| `ministryId` / `ministryName` | int / string | The ministry above it |
+| `active` | bool | False for a deactivated team; the card says so |
+| `positionCount` | int | How many positions the team owns, active or not |
+| `nextOccurrence` | object | `{id, date}` for the soonest scheduled date from today, or `null` |
+| `url` | string | The team's page, root-path aware |
+
+`team` on the two nested pages is `{id, name, description, active, ministryId,
+ministryName}` — `description` is `''` when the team has none.
+
+`occurrence` is `{id, scheduleName, status, date, start, end, eventId,
+eventTitle, eventLocation}`. `status` is `'scheduled'` or `'cancelled'`; `start`
+is `YYYY-MM-DD HH:MM` and `end` is `HH:MM`, both `''` for an occurrence with no
+resolved window; `eventId` is `0` when the date is not linked to a calendar
+event, and the two event fields are `''` then.
+
 The two theme-failure pages are always rendered from the **system** theme, so a
 broken theme cannot break the page that reports it. A theme may still override
 them — its version is used everywhere except when that theme is the one that
@@ -308,8 +338,25 @@ the home page renders its "My volunteering" card only then. `activeTab` is
 the page renders empty. Override the wrapper, the headings and the surrounding
 layout freely.
 
-More pages arrive with the rest of the epic: calendar (MP5), teams (MP7). Each
-one adds a row to this table.
+**The team and occurrence pages are container markup too.** `teams/team.html.twig`
+is filled by `skin/v2/portal-teams.min.js` and
+`teams/occurrence.html.twig` by `skin/v2/volunteer-occurrence.min.js` — the
+admin occurrence page's bundle, unchanged. Both address their markup by id, and
+those ids are deliberately the same ones the admin ministry and occurrence views
+carry, so the same components can draw either. A theme overriding one of these
+templates must keep every id it finds there: `volunteerPositionsTable`,
+`volunteerQualificationsTable`, `volunteerSchedulesTable`,
+`volunteerOccurrencesTable` and their `-loading` / `-error` / `-empty` /
+`-table-wrapper` state blocks; `positionModal` and `scheduleModal` with their
+`*-form-*` fields; and on the occurrence page `requirements-*`, `swaps-*`,
+`volunteer-assign-modal` and `volunteer-needs-modal`. Override the wrapper, the
+headings, the tab strip and the surrounding layout freely.
+
+A control a theme **removes** is not an error: every one of those bundles looks
+its controls up by id and does nothing when one is absent. That is how the
+portal's own templates leave out the things a team leader may not do.
+
+One page is left to arrive: the calendar (MP5). It adds a row to this table.
 
 ---
 

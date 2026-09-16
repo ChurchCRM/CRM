@@ -1925,7 +1925,7 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 | Create / edit position | ✓ | ✓ | scope | scope (own team) | ✗ |
 | Deactivate position | ✓ | ✓ | scope | scope (own team) | ✗ |
 | Grant / revoke qualification | ✓ | ✓ | scope | scope (own team's positions) | ✗ |
-| Create / edit schedule | ✓ | ✓ | scope | scope (own team) | ✗ |
+| Create / edit schedule | ✓ | ✓ | scope | scope (own team) | ✗ |<!-- gate: see "Team-leader schedules" below -->
 | Set staffing requirements (template) | ✓ | ✓ | scope | scope (own team) | ✗ |
 | Set per-occurrence requirement override | ✓ | ✓ | scope | scope | ✗ |
 | Generate occurrences | ✓ | ✓ | scope | scope | ✗ |
@@ -1942,7 +1942,35 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 | Create / edit an event with **no** ministry id | existing `AddEvent` rules, unchanged | | | | |
 | Change the rollout setting / reminder lead time | ✓ | ✗ | ✗ | ✗ | ✗ |
 
-Two rows need explaining.
+Three rows need explaining.
+
+**Team-leader schedules (#9868).** "scope (own team)" on the schedule rows is not something a
+single middleware can say, because `POST /volunteer/ministries/{ministryId}/schedules` is keyed on
+the MINISTRY while the thing it creates belongs to the TEAM the payload names. The gate is
+therefore the union of the two readings, in this order:
+
+```
+allowed = canManageMinistry(user, ministryId)                       // unchanged for everyone above
+       || (body.teamId !== null
+           && canManageTeam(user, body.teamId)
+           && team(body.teamId).ministryId === ministryId)          // the team-leader clause
+```
+
+`VolunteerScheduleCreateMiddleware` applies it from the raw payload and
+`VolunteerScheduleService::createSchedule()` applies it again from the resolved row, because a
+middleware that read a body is never the last word on a write (§4.5, layer three). The second
+conjunct of the team clause is load-bearing: without it a leader of a team could create a schedule
+naming their own team under a ministry they have nothing to do with.
+
+Every other schedule verb was already team-scoped and is untouched: editing, deleting, generating
+and setting requirements all go through `VolunteerScheduleMiddleware`, and a schedule row names its
+team.
+
+Reading is the same shape. The ministry-keyed list and qualification matrix stay ministry-gated —
+a ministry-wide screen is a coordinator's — and #9868 added the team-keyed twins a team leader
+asks instead: `GET /volunteer/teams/{id}/schedules` and
+`GET /volunteer/teams/{id}/qualification-matrix`, both behind `VolunteerTeamMiddleware`, both
+serving exactly the document the ministry route serves with `?teamId=` set.
 
 **Pool membership (rewritten by D19).** Every `/api/groups` write requires the global
 `ManageGroups` flag (`people-groups.php:1195`) **and** the Propel hooks on `Group` /
@@ -2148,6 +2176,7 @@ the Member Portal, which their user menu links to.
 | Where | Heading / entry | Icon | Shown to | Entries |
 |---|---|---|---|---|
 | Member Portal nav | **Volunteering** | `fa-solid fa-handshake-angle` | every member, while `PortalNav::isVolunteeringVisible()` — the rollout flag `User::isVolunteerV2Enabled()` **and** the administrator's `bPortalShowVolunteer` switch (read defensively: undeclared means on, MP3 declares it) | links to *My schedule* (S5); the page's own tab bar carries *Find something to do* (S6). The route and the entry ask the same predicate, so the portal never offers a page it will then 404 |
+| Member Portal nav | **My Teams** | `fa-solid fa-people-group` | a member who holds an explicit `team` grant (`User::isVolunteerTeamLeaderEnabled()`), while volunteering is visible at all. A coordinator, manager or administrator is **not** a team leader (§4.4) and gets no entry — their way into a team is the ministry page | `/portal/teams`, then one team page each with Positions · Volunteers · Schedules · Dates, and an occurrence page under it (#9868, Member Portal §5.5). The route is deliberately more generous than the entry: it also admits a coordinator-or-above who opens the portal as themselves |
 | Admin sidebar | ~~**Volunteer**~~ | — | — | **removed** — see above |
 | Admin sidebar | **Ministries** | `fa-sitemap` | a volunteer coordinator-or-above (`User::isVolunteerCoordinatorEnabled()` — the same predicate `VolunteerCoordinatorRoleAuthMiddleware` asks; still **false** for a self-service login after the D14 revision) | *Dashboard* (S1), then **one entry per ministry the viewer may administer**, by name, linking to `/volunteer/ministries/{id}` (S3) — the administration surface |
 

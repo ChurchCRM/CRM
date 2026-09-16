@@ -546,6 +546,49 @@ their own team (P17; the volunteer route gate on schedule creation becomes team-
 occurrence page in the portal uses the occurrence components with the same authorization the admin
 occurrence page applies per occurrence.
 
+**As built (#9868).** Five things came out differently from the sketch above, and are recorded
+here rather than left for the next reader to rediscover:
+
+1. **There is no `/api/portal/teams/*` namespace.** The sketch assumed one. The index page turned
+   out to need no API at all — it is a short list of plain reads, so it is server-rendered from
+   `ChurchCRM\Portal\PortalTeams` — and everything the other two pages need is already a volunteer
+   endpoint that authorizes per record. Adding a portal-shaped copy of fifteen of those would have
+   been a second surface to keep in step with the first. Two **team-keyed twins** were added to
+   `/api/volunteer` instead, because only the ministry-keyed versions existed:
+   `GET /volunteer/teams/{id}/qualification-matrix` and `GET /volunteer/teams/{id}/schedules`,
+   both behind `VolunteerTeamMiddleware`.
+2. **`AuthMiddleware::isLimitedAccessAllowedPath()` had to widen.** It confined a self-service
+   login to `/portal`, the auth-flow pages and `/api/volunteer/me/`; a member-login team leader
+   now also reaches `/api/volunteer/`. `/volunteer` — the admin MVC area — is deliberately still
+   not on that list, so the admin shell stays shut to them, which is what P10 requires.
+3. **`VolunteerCoordinatorRoleAuthMiddleware` had to widen too**, to
+   `isVolunteerCoordinatorEnabled() || isVolunteerTeamLeaderEnabled()`. The User predicate itself
+   is unchanged — it still returns false for a self-service login, so `Menu::buildMenuItems()`
+   keeps the Ministries heading hidden, which is the reason the short-circuit exists.
+4. **Nothing had to be extracted from `occurrence.ts`.** It was already page-agnostic: it names no
+   ministry, reads its world from `window.CRM.volunteerOccurrence` and `/api/volunteer/occurrences/*`,
+   and addresses its markup by id. `teams/occurrence.html.twig` reproduces those ids and loads
+   `volunteer-occurrence.min.js` unchanged — the same move P15 made for the two member pages. The
+   one difference is that the linked calendar event is NAMED but not LINKED, because
+   `/event/view/{id}` is an admin-shell page a member would be bounced away from.
+5. **The nav entry is narrower than the routes.** `My Teams` is shown only to somebody with an
+   explicit `team` grant (`isVolunteerTeamLeaderEnabled()`), while `/portal/teams` also admits a
+   coordinator, manager or administrator who opens the portal as themselves. A coordinator is not
+   a team leader (volunteer design §4.4) and their way into a team is the ministry page; claiming
+   otherwise in their navigation would be wrong, and refusing them the page would be pointless.
+
+The components the team page shares with the admin ministry page live in
+`webpack/volunteer/components/` — `ui.ts` (the §5.8 state machine, the modal fade guard, the
+DataTables and row-menu helpers), `positions-table.ts`, `qualification-matrix.ts`,
+`schedules-table.ts`, `occurrences-table.ts` — and take a context object rather than reading module
+state. Controls a caller does not want are omitted from ITS markup; every component looks its
+controls up by id and is inert when one is absent.
+
+Because the portal loads no part of the admin shell, `window.CRM.escapeHtml`, `escapeAttribute`
+and `buildActionMenu` — `CRMJSOM.js`'s, which those components use — are installed by
+`webpack/common/crm-helpers.ts` when absent, and DataTables is simply not there, so the portal's
+tables are plain tables.
+
 ### 5.6 Directory (phase 2)
 
 #8977 asks for member-scoped contact search. It needs a per-person opt-in and a rule for
