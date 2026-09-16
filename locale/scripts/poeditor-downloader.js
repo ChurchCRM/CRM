@@ -189,7 +189,14 @@ function getPluralCategoriesForLocale(poEditorLocale) {
             for (let n = 0; n <= PLURAL_SAMPLE_MAX; n++) reachable.add(pluralRules.select(n));
             result = CLDR_PLURAL_FORMS.filter((form) => reachable.has(form));
         } catch (err) {
-            // Intl doesn't recognise this language code — leave result null.
+            // The expected failure here is Intl.PluralRules throwing a RangeError for
+            // an unrecognised BCP-47 language tag — leave result null so the caller
+            // falls back to the legacy one/other-only behaviour. Anything else (e.g. a
+            // future refactor breaking CLDR_PLURAL_FORMS) would otherwise be silently
+            // absorbed with no diagnostic, so surface those.
+            if (!(err instanceof RangeError)) {
+                console.warn(`  ⚠️  getPluralCategoriesForLocale("${poEditorLocale}"): unexpected error, falling back to one/other — ${err.message}`);
+            }
         }
     }
 
@@ -233,6 +240,14 @@ function convertPipeSeparatedPlurals(data, poEditorLocale) {
                     // map positions directly onto the canonical order Intl.PluralRules
                     // reports for this language. Resolves cases (3+ forms) that used
                     // to be ambiguous without per-locale metadata.
+                    //
+                    // NOTE: this positional mapping is only correct when POEditor's pipe
+                    // export order matches CLDR canonical order for this locale. That
+                    // holds for every locale ChurchCRM currently supports, but is not a
+                    // language-universal guarantee — e.g. Latvian's gettext plural-index
+                    // order ([one, other, zero]) diverges from its CLDR canonical order
+                    // ([zero, one, other]). Verify this still holds before adding any new
+                    // locale whose gettext plural-index order might diverge from CLDR.
                     pluralForms = {};
                     requiredForms.forEach((form, i) => { pluralForms[form] = parts[i]; });
                 } else if (parts.length === 2) {
