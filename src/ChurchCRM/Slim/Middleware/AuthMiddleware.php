@@ -174,6 +174,19 @@ class AuthMiddleware implements MiddlewareInterface
      * click from their schedule, and the price of the member surface having
      * exactly one home (design §0.2).
      *
+     * **The team-leader exemption (#9868).** A self-service login that holds a
+     * volunteer `team` scope may reach the whole of `/api/volunteer/`, not just
+     * `/me/`. That is the Member Portal's revision of D14 (P17, #9867) made
+     * reachable: My Teams (MP7) is a portal page, and everything on it — the
+     * qualification grid, the schedules, the occurrences, the assignments — is
+     * served by the coordinator half of that API. It widens the API surface and
+     * nothing else: `/volunteer` (the admin MVC area) is still not on this list,
+     * so such a login is still bounced to `/portal/` if it asks for one of those
+     * pages. What the API then LETS them do is decided exactly where it was
+     * before — `VolunteerTeam/Position/Schedule/Occurrence/AssignmentMiddleware`
+     * refuse every record outside the teams they lead, and the ministry-level
+     * routes refuse them outright (volunteer design §4.4, §4.5).
+     *
      * Without the auth-flow exemptions, limited-permission users get stuck in a
      * redirect loop because AuthMiddleware blocks the page the auth system is
      * sending them to. See #8680.
@@ -203,7 +216,20 @@ class AuthMiddleware implements MiddlewareInterface
             return false;
         }
 
-        return str_contains($path, '/api/volunteer/me/');
+        if (str_contains($path, '/api/volunteer/me/')) {
+            return true;
+        }
+
+        // The rest of the volunteer API, for a team leader only (#9868). The scope
+        // lookup is memoised per request on the User model, so asking here costs
+        // nothing on the paths that never reach this line.
+        if (str_contains($path, '/api/volunteer/')) {
+            $user = AuthenticationManager::getCurrentUser();
+
+            return $user instanceof User && $user->isVolunteerTeamLeaderEnabled();
+        }
+
+        return false;
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool

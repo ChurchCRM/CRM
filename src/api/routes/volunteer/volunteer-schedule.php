@@ -17,7 +17,9 @@ use ChurchCRM\Service\VolunteerAuthorizationService;
 use ChurchCRM\Service\VolunteerScheduleService;
 use ChurchCRM\Slim\Middleware\Api\VolunteerMinistryMiddleware;
 use ChurchCRM\Slim\Middleware\Api\VolunteerOccurrenceMiddleware;
+use ChurchCRM\Slim\Middleware\Api\VolunteerScheduleCreateMiddleware;
 use ChurchCRM\Slim\Middleware\Api\VolunteerScheduleMiddleware;
+use ChurchCRM\Slim\Middleware\Api\VolunteerTeamMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\VolunteerCoordinatorRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
@@ -53,22 +55,40 @@ use Slim\Routing\RouteCollectorProxy;
  */
 $app->group('/volunteer', function (RouteCollectorProxy $group): void {
     // ── Schedules under a ministry ──────────────────────────────────────────
-    $group->group('/ministries/{ministryId:[0-9]+}/schedules', function (RouteCollectorProxy $schedules): void {
-        $schedules->get('', 'listVolunteerSchedules');
-        $schedules->post('', 'createVolunteerSchedule')
-            ->add(new InputSanitizationMiddleware([
-                'name' => 'text',
-                'linkMode' => 'enum:' . VolunteerSchedule::LINK_MODE_EVENT_TYPE . ',' . VolunteerSchedule::LINK_MODE_STANDALONE,
-                'titleFilter' => 'text',
-                // Optional so an absent field still reaches the service's own §2.8
-                // invariant check with its specific message, rather than being rejected
-                // here with a generic "is required".
-                'recurType' => 'enum?:' . implode(',', VolunteerSchedule::allRecurTypes()),
-                'recurDow' => 'enum?:' . implode(',', VolunteerSchedule::allRecurDows()),
-                'windowStart' => 'date?',
-                'windowEnd' => 'date?',
-            ]));
-    })->add(new VolunteerMinistryMiddleware());
+    //
+    // The two verbs are gated DIFFERENTLY since #9868, which is why they are no
+    // longer one group with one middleware:
+    //
+    //   GET  — a ministry-wide list, so `VolunteerMinistryMiddleware`, unchanged.
+    //          A team leader asks `/teams/{teamId}/schedules` below instead.
+    //   POST — `VolunteerScheduleCreateMiddleware`: the ministry answer first,
+    //          then "is the team this payload names one you lead, under this
+    //          ministry" (§4.6's team-leader schedule row). The service re-checks.
+    $group->get('/ministries/{ministryId:[0-9]+}/schedules', 'listVolunteerSchedules')
+        ->add(new VolunteerMinistryMiddleware());
+
+    $group->post('/ministries/{ministryId:[0-9]+}/schedules', 'createVolunteerSchedule')
+        ->add(new InputSanitizationMiddleware([
+            'name' => 'text',
+            'linkMode' => 'enum:' . VolunteerSchedule::LINK_MODE_EVENT_TYPE . ',' . VolunteerSchedule::LINK_MODE_STANDALONE,
+            'titleFilter' => 'text',
+            // Optional so an absent field still reaches the service's own §2.8
+            // invariant check with its specific message, rather than being rejected
+            // here with a generic "is required".
+            'recurType' => 'enum?:' . implode(',', VolunteerSchedule::allRecurTypes()),
+            'recurDow' => 'enum?:' . implode(',', VolunteerSchedule::allRecurDows()),
+            'windowStart' => 'date?',
+            'windowEnd' => 'date?',
+        ]))
+        ->add(new VolunteerScheduleCreateMiddleware());
+
+    // ── Schedules of one team (#9868) ───────────────────────────────────────
+    //
+    // The same list, keyed on the team and gated per team, so a team leader can
+    // see their own schedules without being authorized for the ministry above
+    // them. The Member Portal's My Teams page is the caller.
+    $group->get('/teams/{teamId:[0-9]+}/schedules', 'listVolunteerTeamSchedules')
+        ->add(new VolunteerTeamMiddleware());
 
     // ── One schedule ────────────────────────────────────────────────────────
     $group->group('/schedules/{scheduleId:[0-9]+}', function (RouteCollectorProxy $schedule): void {
@@ -379,6 +399,43 @@ function listVolunteerSchedules(Request $request, Response $response): Response
 }
 
 /**
+ * @OA\Get(
+ *     path="/volunteer/teams/{teamId}/schedules",
+ *     operationId="listVolunteerTeamSchedules",
+ *     summary="List one team's volunteer schedules",
+ *     description="The team-keyed twin of the ministry list, gated per team so a team leader can see their own schedules without being authorized for the ministry above them (design section 4.4). Added for the Member Portal's My Teams page (#9868).",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="active", in="query", required=false, @OA\Schema(type="boolean"),
+ *         description="Only active schedules"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such team"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="schedules", type="array", @OA\Items(type="object")))
+ *     )
+ * )
+ */
+function listVolunteerTeamSchedules(Request $request, Response $response): Response
+{
+    $team = $request->getAttribute('volunteerTeam');
+    $params = $request->getQueryParams();
+
+    $query = VolunteerScheduleQuery::create()->filterByTeamId((int) $team->getId());
+
+    if (isset($params['active']) && $params['active'] !== '') {
+        $query->filterByActive(filter_var($params['active'], FILTER_VALIDATE_BOOLEAN));
+    }
+
+    $schedules = $query->orderByName()->find();
+
+    return SlimUtils::renderJSON($response, [
+        'schedules' => array_map('volunteerScheduleToArray', iterator_to_array($schedules, false)),
+    ]);
+}
+
+/**
  * @OA\Post(
  *     path="/volunteer/ministries/{ministryId}/schedules",
  *     operationId="createVolunteerSchedule",
@@ -390,7 +447,7 @@ function listVolunteerSchedules(Request $request, Response $response): Response
  *         required={"name","linkMode","teamId","windowStart"},
  *         @OA\Property(property="name", type="string"),
  *         @OA\Property(property="linkMode", type="string", enum={"event_type","standalone"}),
- *         @OA\Property(property="teamId", type="integer", description="Required: a schedule always belongs to one of the ministry's teams"),
+ *         @OA\Property(property="teamId", type="integer", description="Required: a schedule always belongs to one of the ministry's teams. A team leader may only name a team they lead (design section 4.6)."),
  *         @OA\Property(property="eventTypeId", type="integer", nullable=true, description="Required when linkMode is event_type"),
  *         @OA\Property(property="titleFilter", type="string", nullable=true, description="Optional LIKE narrowing on the event title"),
  *         @OA\Property(property="recurType", type="string", nullable=true, enum={"none","weekly","monthly","yearly"}, description="Standalone schedules only"),
@@ -414,7 +471,7 @@ function listVolunteerSchedules(Request $request, Response $response): Response
  *     )),
  *     @OA\Response(response=400, description="A design section 2.8 invariant was violated"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Not authorized: you neither administer this ministry nor lead the team named by teamId (design section 4.6), or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
  *     @OA\Response(response=201, description="Created")
  * )

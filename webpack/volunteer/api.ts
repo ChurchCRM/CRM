@@ -268,8 +268,22 @@ export function deleteTeam(teamId: number): Promise<{ success: boolean }> {
   return request(`/teams/${teamId}`, { method: "DELETE" });
 }
 
-export function listPositions(ministryId: number): Promise<{ positions: VolunteerPosition[] }> {
-  return request(`/ministries/${ministryId}/positions`);
+/**
+ * One team and its positions, in one document.
+ *
+ * Gated per TEAM rather than per ministry, so a team leader may read their own —
+ * which is what the Member Portal's My Teams page (#9868) opens with.
+ */
+export function getTeam(teamId: number): Promise<{ team: VolunteerTeam; positions: VolunteerPosition[] }> {
+  return request(`/teams/${teamId}`);
+}
+
+/**
+ * `teamId` narrows the list to one team. The handler scopes what it returns to
+ * the caller's own teams anyway (§4.4), so this is a filter, never a permission.
+ */
+export function listPositions(ministryId: number, teamId?: number | null): Promise<{ positions: VolunteerPosition[] }> {
+  return request(`/ministries/${ministryId}/positions${teamId ? `?teamId=${teamId}` : ""}`);
 }
 
 export function createPosition(
@@ -346,6 +360,17 @@ export function removeVolunteerFromMinistry(
 
 export function getQualificationMatrix(ministryId: number, teamId?: number | null): Promise<QualificationMatrix> {
   return request(`/ministries/${ministryId}/qualification-matrix${teamId ? `?teamId=${teamId}` : ""}`);
+}
+
+/**
+ * The same matrix, asked for by TEAM (#9868).
+ *
+ * Identical document; the difference is the gate. The ministry route is refused
+ * to a team leader — correctly, a ministry-wide grid is a coordinator's screen —
+ * so the portal's one-team page asks for one team's.
+ */
+export function getTeamQualificationMatrix(teamId: number): Promise<QualificationMatrix> {
+  return request(`/teams/${teamId}/qualification-matrix`);
 }
 
 /** Idempotent: a repeat grant reactivates the same row rather than adding one. */
@@ -988,6 +1013,14 @@ export interface VolunteerSchedule {
 
 export function listSchedules(ministryId: number): Promise<{ schedules: VolunteerSchedule[] }> {
   return request(`/ministries/${ministryId}/schedules`);
+}
+
+/**
+ * One team's schedules, gated per team (#9868) — the list a team leader may read
+ * without being authorized for the ministry above them.
+ */
+export function listTeamSchedules(teamId: number): Promise<{ schedules: VolunteerSchedule[] }> {
+  return request(`/teams/${teamId}/schedules`);
 }
 
 /** A schedule's template staffing needs — what the edit form pre-fills its rows from. */

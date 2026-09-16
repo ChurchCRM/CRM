@@ -14,12 +14,28 @@ namespace ChurchCRM\Slim\Middleware\Request\Auth;
  * The predicate lives on the User model so that Menu::buildMenuItems() can mirror this
  * gate exactly with the same call, and so the scope query is memoised for the request
  * (§3.5, A11: menu visibility must mirror the route middleware).
+ *
+ * **The team-leader clause (#9868).** `isVolunteerCoordinatorEnabled()` short-circuits
+ * to false for an EditSelf-exclusive login, on purpose: the admin dashboard and the
+ * sidebar's Ministries heading must stay shut to a self-service account, and
+ * `Menu::buildMenuItems()` mirrors that call. But the Member Portal's revision of D14
+ * (P17, #9867) says a team leader MAY hold an ordinary member login and must be able
+ * to run their team — from the portal (MP7), through this very API. So the second
+ * clause restores what this class's own first paragraph always claimed: a team leader
+ * has volunteer coordination authority, whatever kind of login they hold.
+ *
+ * Nothing about a STAFF login changes: a staff team leader holds a scope, so
+ * `hasAnyScope()` already made `isVolunteerCoordinatorEnabled()` true for them.
+ * And a self-service team leader still cannot open the `/volunteer` MVC area:
+ * `AuthMiddleware` confines an EditSelf-exclusive browser session to `/portal`
+ * and the paths `isLimitedAccessAllowedPath()` names, and `/volunteer` is not one
+ * of them. This widens the API, not the admin shell.
  */
 class VolunteerCoordinatorRoleAuthMiddleware extends BaseAuthRoleMiddleware
 {
     protected function hasRole(): bool
     {
-        return $this->user->isVolunteerCoordinatorEnabled();
+        return $this->user->isVolunteerCoordinatorEnabled() || $this->user->isVolunteerTeamLeaderEnabled();
     }
 
     protected function noRoleMessage(): string

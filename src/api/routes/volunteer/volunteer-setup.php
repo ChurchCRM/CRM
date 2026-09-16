@@ -205,6 +205,18 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
         $setup->get('/ministries/{ministryId:[0-9]+}/qualification-matrix', 'getVolunteerQualificationMatrix')
             ->add(new VolunteerMinistryMiddleware());
 
+        // The same document, asked for by TEAM rather than by ministry (#9868).
+        //
+        // The ministry-keyed route above is gated by `VolunteerMinistryMiddleware`,
+        // which refuses a team leader — correctly: a ministry-wide grid is a
+        // ministry coordinator's screen. The Member Portal's My Teams page is one
+        // team's grid, so it asks for one team's, and `VolunteerTeamMiddleware`
+        // answers the scope question at the level the page actually works at
+        // (§4.4). The handler computes exactly what the ministry route computes
+        // with `?teamId=` set; there is no second derivation.
+        $setup->get('/teams/{teamId:[0-9]+}/qualification-matrix', 'getVolunteerTeamQualificationMatrix')
+            ->add(new VolunteerTeamMiddleware());
+
         // ── Qualifications (#9707) ────────────────────────────────────────
         $setup->get('/positions/{positionId:[0-9]+}/qualifications', 'listVolunteerQualifications')
             ->add(new VolunteerPositionMiddleware());
@@ -1809,6 +1821,51 @@ function getVolunteerQualificationMatrix(Request $request, Response $response): 
     $service = new VolunteerSetupService();
     $ministryId = (int) $ministry->getId();
     $teamId = volunteerSetupTeamFilter($request);
+
+    $positions = volunteerSetupMatrixPositions($service, $ministryId, $teamId);
+    $teamNames = volunteerSetupTeamNames($positions['positions']);
+
+    return SlimUtils::renderJSON($response, [
+        'ministryId' => $ministryId,
+        'teamId' => $teamId,
+        'positions' => array_map(
+            static fn (VolunteerPosition $p): array => volunteerPositionToArray($p, $teamNames),
+            $positions['positions']
+        ),
+        'people' => volunteerSetupMemberRows($service, $ministryId, $teamId, $positions['positionIds']),
+    ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/volunteer/teams/{teamId}/qualification-matrix",
+ *     operationId="getVolunteerTeamQualificationMatrix",
+ *     summary="One team's qualification matrix, in one response",
+ *     description="The team-scoped twin of the ministry route: the same document, narrowed to one team, gated per team rather than per ministry so a team leader can open their own grid (design section 4.4). Added for the Member Portal's My Teams page (#9868).",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such team"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="ministryId", type="integer"),
+ *             @OA\Property(property="teamId", type="integer"),
+ *             @OA\Property(property="positions", type="array", @OA\Items(type="object")),
+ *             @OA\Property(property="people", type="array", @OA\Items(type="object"))
+ *         )
+ *     )
+ * )
+ */
+function getVolunteerTeamQualificationMatrix(Request $request, Response $response): Response
+{
+    /** @var VolunteerTeam $team */
+    $team = $request->getAttribute('volunteerTeam');
+
+    $service = new VolunteerSetupService();
+    $ministryId = (int) $team->getMinistryId();
+    $teamId = (int) $team->getId();
 
     $positions = volunteerSetupMatrixPositions($service, $ministryId, $teamId);
     $teamNames = volunteerSetupTeamNames($positions['positions']);

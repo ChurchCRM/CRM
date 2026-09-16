@@ -86,7 +86,9 @@ class VolunteerScheduleService
     /**
      * @param array<string, mixed> $fields
      *
-     * @throws \RuntimeException when a §2.8 invariant is violated
+     * @throws \RuntimeException when a §2.8 invariant is violated, or when the actor
+     *                            may neither administer the ministry nor lead the team
+     *                            the payload names (§4.6, #9868)
      */
     public function createSchedule(VolunteerMinistry $ministry, array $fields, User $actor): VolunteerSchedule
     {
@@ -101,6 +103,7 @@ class VolunteerScheduleService
 
         try {
             $this->applyScheduleFields($schedule, $fields, true);
+            $this->assertMayCreateForTeam($schedule, $actor);
             $schedule->save();
 
             if (array_key_exists('requirements', $fields)) {
@@ -222,6 +225,35 @@ class VolunteerScheduleService
      *
      * @throws \RuntimeException
      */
+    /**
+     * Layer three of §4.5 for schedule creation (#9868).
+     *
+     * `VolunteerScheduleCreateMiddleware` has already decided the same question
+     * from the raw payload, and this asks it again from the RESOLVED row — after
+     * `applyScheduleFields()` has turned `teamId` into a team that provably belongs
+     * to this ministry. The design is explicit that a middleware reading a body is
+     * never the last word on a write; a caller reaching this service by any other
+     * path (a future route, a console command) gets the same answer.
+     *
+     * The rule is §4.6's: administer the ministry, or lead the team.
+     *
+     * @throws \RuntimeException when the actor may do neither
+     */
+    private function assertMayCreateForTeam(VolunteerSchedule $schedule, User $actor): void
+    {
+        $authz = new VolunteerAuthorizationService();
+
+        if ($authz->canManageMinistry($actor, (int) $schedule->getMinistryId())) {
+            return;
+        }
+
+        if ($schedule->getTeamId() !== null && $authz->canManageTeam($actor, (int) $schedule->getTeamId())) {
+            return;
+        }
+
+        throw new \RuntimeException(gettext('You may only create a schedule for a team you lead'));
+    }
+
     private function applyScheduleFields(VolunteerSchedule $schedule, array $fields, bool $isCreate): void
     {
         $has = static fn (string $key): bool => array_key_exists($key, $fields);
