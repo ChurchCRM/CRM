@@ -39,8 +39,9 @@ describe("Deposit Search: page load and search form", () => {
     // The rows are server-rendered, but DataTables re-builds the tbody when it
     // takes the table over. Asserting before `_wrapper` exists races that
     // rebuild and can hit a detached element, so wait for it here the way the
-    // selection block below already does.
+    // selection block below already does, then for at least one real row.
     cy.get("#depositsTable_wrapper").should("exist");
+    cy.get("#depositsTable tbody tr[data-deposit-id]").should("have.length.greaterThan", 0);
   });
 
   it("loads the deposit search page", () => {
@@ -60,10 +61,11 @@ describe("Deposit Search: page load and search form", () => {
 
   it("shows the deposits table with the seeded rows", () => {
     cy.get("#depositsTable").should("exist");
-    // `:not(.dataTables_empty)` — with no rows DataTables injects a single
-    // "No data available" placeholder <tr>, which would satisfy a bare
-    // `length.greaterThan 0` and make this assertion vacuous.
-    cy.get("#depositsTable tbody tr:not(.dataTables_empty)").should("have.length.greaterThan", 0);
+    // Count only rows the page rendered for a deposit. With no rows DataTables
+    // injects a "No data available" placeholder <tr> (the class marks its
+    // <td>, so `tr:not(.dataTables_empty)` still matched it); a bare row count
+    // would pass against an empty table.
+    cy.get("#depositsTable tbody tr[data-deposit-id]").should("have.length.greaterThan", 0);
   });
 
   it("submits date range filter and includes params in URL", () => {
@@ -90,8 +92,9 @@ describe("Deposit Search: page load and search form", () => {
     // The submit reloads the page, so wait for DataTables to re-initialise
     // before counting rows.
     cy.get("#depositsTable_wrapper").should("exist");
-    cy.get("#depositsTable tbody tr:not(.dataTables_empty)").should("have.length", 1);
-    cy.get("#depositsTable tbody tr").should("have.attr", "data-deposit-id", String(SEEDED_DEPOSIT_ID));
+    cy.get("#depositsTable tbody tr[data-deposit-id]")
+      .should("have.length", 1)
+      .and("have.attr", "data-deposit-id", String(SEEDED_DEPOSIT_ID));
   });
 
   it("clears filters when Clear button is clicked", () => {
