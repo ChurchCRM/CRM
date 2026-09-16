@@ -30,7 +30,9 @@ CREATE TABLE `calendars` (
   `accesstoken` varchar(99) DEFAULT NULL,
   `foregroundColor` varchar(6) DEFAULT NULL,
   `backgroundColor` varchar(6) DEFAULT NULL,
-  PRIMARY KEY (`calendar_id`)
+  `ministry_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`calendar_id`),
+  KEY `calendars_ministry_idx` (`ministry_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -41,12 +43,12 @@ CREATE TABLE `calendars` (
 LOCK TABLES `calendars` WRITE;
 /*!40000 ALTER TABLE `calendars` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00'),(2,'Private Calendar',NULL,'FFFFFF','0000AA'),(3,'C',NULL,'FA8072','212F3D'),(4,'Ca',NULL,'FA8072','212F3D'),(5,'Ca',NULL,'FA8072','212F3D');
+INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00',NULL),(2,'Private Calendar',NULL,'FFFFFF','0000AA',NULL),(3,'C',NULL,'FA8072','212F3D',NULL),(4,'Ca',NULL,'FA8072','212F3D',NULL),(5,'Ca',NULL,'FA8072','212F3D',NULL),(6,'Youth Ministry',NULL,'FFFFFF','795548',1);
 /*!40000 ALTER TABLE `calendars` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `calendars` with 5 row(s)
+-- Dumped table `calendars` with 6 row(s)
 --
 
 --

@@ -96,14 +96,17 @@ describe("Admin → Member Portal page", () => {
             cy.setupAdminSession();
         });
 
-        it("Shows the Settings, Themes and Statistics tabs", () => {
+        it("Shows the Settings, Themes, Statistics and Calendars tabs", () => {
             cy.visit("/admin/member-portal");
             cy.get("#memberPortalTabs").should("be.visible");
             cy.get("#portal-settings-tab").should("contain.text", "Settings");
             cy.get("#portal-themes-tab").should("contain.text", "Themes");
             cy.get("#portal-statistics-tab").should("contain.text", "Statistics");
-            // The Calendars tab is MP5's; its container is present but hidden.
-            cy.get("#portal-calendars-tab-item").should("have.class", "d-none");
+            // The Calendars tab was MP3's hidden placeholder until MP5 (#9866)
+            // filled it in; what it contains is covered by
+            // admin.member-portal-calendars.spec.js.
+            cy.get("#portal-calendars-tab").should("contain.text", "Calendars");
+            cy.get("#portal-calendars-tab-item").should("not.have.class", "d-none");
             cy.get("#portal-calendars").should("exist");
         });
 

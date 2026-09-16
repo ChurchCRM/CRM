@@ -893,10 +893,18 @@
       <column name="accesstoken" phpName="AccessToken" type="VARCHAR" size="255"/>
       <column name="backgroundColor" phpName="BackgroundColor" type="VARCHAR" size="6"/>
       <column name="foregroundColor" phpName="ForegroundColor" type="VARCHAR" size="6"/>
+      <!-- The volunteer ministry this calendar belongs to; NULL for a church-wide
+           calendar. No foreign key yet: volunteer_ministry_vmin is created by the
+           Volunteer v2 schema (#9701), which adds the constraint when it lands. -->
+      <column name="ministry_id" phpName="MinistryId" type="INTEGER"/>
 
       <unique name="accesstoken">
         <unique-column name="accesstoken"/>
       </unique>
+
+      <index name="calendars_ministry_idx">
+        <index-column name="ministry_id"/>
+      </index>
 
       <vendor type="mysql">
           <parameter name="Engine" value="InnoDB"/>

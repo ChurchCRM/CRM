@@ -506,6 +506,30 @@ must pin it to some existing church calendar.
 - Not in scope: volunteer schedule occurrences that are not linked to an event do not appear on
   calendars (they never have); "My Volunteer Schedule" is where those live.
 
+**Scope split between this epic and the Volunteer v2 branch (added with MP5, #9866).** The
+ministry-calendar half of this section needs `volunteer_ministry_vmin`, which the Volunteer v2
+schema creates. The Member Portal epic lands first, so #9866 ships only what stands without that
+table, and the rest is an MP7 follow-up on the volunteer branch:
+
+| Piece | Where it lands |
+|---|---|
+| `calendars.ministry_id INT NULL` with an index, **no** foreign key | MP5 (#9866) |
+| "Ministry Calendars" heading on the admin calendar page, shown only when some calendar has a ministry | MP5 (#9866) |
+| "Church Calendars" relabel | MP5 (#9866) |
+| `aPortalCalendars`, the Calendars tab, `/portal/calendar`, `GET /api/portal/calendar/events` | MP5 (#9866) |
+| The foreign key to `volunteer_ministry_vmin`, `ON DELETE SET NULL` | Volunteer v2 schema, once its table exists |
+| Creating, renaming and deleting a ministry's calendar with the ministry | Volunteer v2 (#9701) |
+| The calendar middleware's "coordinator of the owning ministry may pin without Add Events" exception | Volunteer v2 (MP7 follow-up) |
+| The event editor pre-pinning a ministry's calendar when the event has a ministry | Volunteer v2 (MP7 follow-up) |
+| "A member who leads a team sees their ministry's calendar highlighted" | Volunteer v2 (MP7 follow-up), since it needs team leadership, which reaches self-service logins in MP6 |
+
+Two details the implementation settled that this section left open. `aPortalCalendars` entries are
+`{"type": "calendar"|"system", "id": <int>}` — the kind has to be in the entry because a church
+calendar id and a system calendar id are both small integers from different spaces. And the events
+endpoint takes plain `YYYY-MM-DD` days rather than instants, refuses a reversed range with a 400,
+and clamps the window to 62 days (the system calendars expand a row per person per year), echoing
+the window it actually answered.
+
 ### 5.4 Volunteering (`/portal/volunteer/schedule`, `/portal/volunteer/opportunities`)
 
 The two pages move from `/volunteer/my-schedule` and `/volunteer/opportunities`. What changes and
@@ -608,7 +632,7 @@ nothing renders until that epic ships.
 
 | Change | File |
 |---|---|
-| `calendars.ministry_id INT NULL`, FK → `volunteer_ministry_vmin` `ON DELETE SET NULL` (ministry calendars, §5.3) | `7.8.0-member-portal-calendars.sql`, `Install.sql`, seed, `orm/schema.xml` |
+| `calendars.ministry_id INT NULL` with an index (ministry calendars, §5.3). The FK → `volunteer_ministry_vmin` `ON DELETE SET NULL` is added by the Volunteer v2 schema, which creates that table | `7.8.0-member-portal-calendars.sql`, `Install.sql`, seed, `orm/schema.xml` |
 | `aPortalCalendars` JSON config (portal-visible calendar and system-calendar ids) | `SystemConfig.php` |
 | `user_usr.usr_LastPortalActivity DATETIME NULL` | `7.8.0-member-portal-activity.sql`, same set |
 | Config items in §4 (no System Settings category) | `SystemConfig.php` |

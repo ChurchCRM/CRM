@@ -199,7 +199,11 @@
 .portal-layout {
     display: grid;
     gap: var(--portal-gap);
-    grid-template-columns: 1fr;
+    // minmax(0, 1fr), not 1fr: a grid track sized 1fr is still floored at the
+    // item's min-content width, so one wide child — a calendar grid, a table —
+    // would stretch the whole page and make the body scroll sideways. This lets
+    // the column shrink and leaves the wide child to scroll inside its own card.
+    grid-template-columns: minmax(0, 1fr);
 }
 
 .portal-card {
@@ -652,6 +656,145 @@ textarea.portal-input {
     background-position: center;
 }
 
+// Calendar (MP5, #9866) ------------------------------------------------------
+//
+// Mobile first: the page is one column, the legend wraps, and FullCalendar
+// opens in its list view below the tablet breakpoint (the bundle decides that,
+// because a CSS media query cannot change which view is rendered). The detail
+// panel is part of the page rather than a dialog, so a phone scrolls to it.
+
+.portal-page-title {
+    margin: 0 0 var(--portal-gap);
+    font-family: var(--portal-font-heading);
+    font-size: 1.5rem;
+}
+
+.portal-calendar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin: 0 0 var(--portal-gap);
+    padding: 0;
+    list-style: none;
+}
+
+.portal-calendar-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    color: var(--portal-muted);
+}
+
+.portal-calendar-legend-swatch {
+    inline-size: 0.75rem;
+    block-size: 0.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--portal-border);
+    flex-shrink: 0;
+}
+
+.portal-calendar-grid {
+    // FullCalendar's own grid can be wider than a phone; let it scroll inside
+    // its card rather than making the page scroll sideways.
+    overflow-x: auto;
+}
+
+.portal-calendar-loading {
+    margin: 0;
+    color: var(--portal-muted);
+}
+
+.portal-calendar-detail {
+    position: relative;
+}
+
+.portal-calendar-detail-close {
+    position: absolute;
+    inset-block-start: 0.75rem;
+    inset-inline-end: 0.75rem;
+    border: 0;
+    background: transparent;
+    color: var(--portal-muted);
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0.35rem;
+    cursor: pointer;
+    // A comfortable touch target on a phone.
+    min-inline-size: 2.75rem;
+    min-block-size: 2.75rem;
+}
+
+.portal-calendar-detail-title {
+    margin: 0 2.75rem 0.75rem 0;
+    font-family: var(--portal-font-heading);
+    font-size: 1.25rem;
+}
+
+.portal-calendar-detail-list {
+    margin: 0;
+}
+
+.portal-calendar-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    margin-block-end: 0.75rem;
+
+    dt {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--portal-muted);
+    }
+
+    dd {
+        margin: 0;
+    }
+}
+
+// The home page's church-calendar card.
+
+.portal-upcoming-list {
+    margin: 0 0 0.75rem;
+    padding: 0;
+    list-style: none;
+}
+
+.portal-upcoming-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding-block: 0.5rem;
+    border-block-end: 1px solid var(--portal-border);
+
+    &:last-child {
+        border-block-end: 0;
+    }
+}
+
+.portal-upcoming-title {
+    font-weight: 600;
+}
+
+.portal-upcoming-when,
+.portal-upcoming-calendar {
+    font-size: 0.8125rem;
+    color: var(--portal-muted);
+}
+
+.portal-card-link {
+    display: inline-block;
+    color: var(--portal-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
 // Tablet and up --------------------------------------------------------------
 
 @media (min-width: 768px) {
@@ -692,10 +835,26 @@ textarea.portal-input {
     .portal-field-wide {
         grid-column: 1 / -1;
     }
+
+    .portal-calendar-detail-row {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 1rem;
+
+        dt {
+            flex: 0 0 7rem;
+        }
+    }
 }
 
 @media (min-width: 992px) {
     .portal-card-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    // The calendar card carries a list rather than one sentence, so it gets two
+    // of the four columns while the other cards keep one each.
+    .portal-card-calendar {
+        grid-column: span 2;
     }
 }

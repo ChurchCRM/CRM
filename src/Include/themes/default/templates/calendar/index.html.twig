@@ -1,0 +1,93 @@
+{% extends "layout.html.twig" %}
+
+{#
+  The Member Portal calendar (MP5, #9866).
+
+  Read-only: FullCalendar draws the months, a click opens the detail panel
+  below the grid, and nothing on this page can change an event. The events
+  themselves arrive from GET /api/portal/calendar/events; the legend is
+  server-rendered so the colours mean something before the first fetch lands.
+
+  Variables: `calendars` ({name, color} for each calendar switched on),
+  `hasCalendars`, `calendarConfigJson`. A theme overriding this page must keep
+  the ids `portal-calendar` and `portal-calendar-detail`, which the bundle
+  looks for, and should keep emitting `calendarConfigJson`.
+#}
+
+{% block head_extra %}
+    {# FullCalendar's stylesheet, extracted from the portal-calendar bundle. #}
+    <link rel="stylesheet" href="{{ asset('/skin/v2/portal-calendar.min.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="portal-calendar-page">
+
+    <h1 class="portal-page-title">{{ gettext('Calendar') }}</h1>
+
+    {% if not hasCalendars %}
+    <section class="portal-card portal-calendar-empty" id="portal-calendar-empty">
+        <p class="portal-card-text">{{ gettext('No calendar has been shared with members yet.') }}</p>
+    </section>
+    {% else %}
+
+    <section class="portal-card portal-calendar-card">
+        <ul class="portal-calendar-legend" aria-label="{{ gettext('Calendars') }}">
+            {% for calendar in calendars %}
+            <li class="portal-calendar-legend-item">
+                <span class="portal-calendar-legend-swatch" style="background-color: {{ calendar.color }};" aria-hidden="true"></span>
+                <span class="portal-calendar-legend-name">{{ calendar.name }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+
+        {# FullCalendar renders into this element; until its bundle runs, the
+           paragraph inside is what a member sees. #}
+        <div class="portal-calendar-grid" id="portal-calendar">
+            <p class="portal-calendar-loading">{{ gettext('Loading the calendar…') }}</p>
+        </div>
+    </section>
+
+    {#
+      The detail panel. It is part of the page rather than a dialog so a phone
+      simply scrolls to it, and so a member using a screen reader is told about
+      it (aria-live) instead of having focus yanked away.
+    #}
+    <section class="portal-card portal-calendar-detail" id="portal-calendar-detail" aria-live="polite" hidden>
+        <button type="button" class="portal-calendar-detail-close" id="portal-calendar-detail-close"
+                aria-label="{{ gettext('Close event details') }}">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <h2 class="portal-calendar-detail-title" id="portal-calendar-detail-title"></h2>
+        <dl class="portal-calendar-detail-list">
+            <div class="portal-calendar-detail-row" id="portal-calendar-detail-when-row">
+                <dt>{{ gettext('When') }}</dt>
+                <dd id="portal-calendar-detail-when"></dd>
+            </div>
+            <div class="portal-calendar-detail-row" id="portal-calendar-detail-where-row" hidden>
+                <dt>{{ gettext('Where') }}</dt>
+                <dd id="portal-calendar-detail-where"></dd>
+            </div>
+            <div class="portal-calendar-detail-row" id="portal-calendar-detail-calendar-row">
+                <dt>{{ gettext('Calendar') }}</dt>
+                <dd id="portal-calendar-detail-calendar"></dd>
+            </div>
+            <div class="portal-calendar-detail-row" id="portal-calendar-detail-description-row" hidden>
+                <dt>{{ gettext('Details') }}</dt>
+                <dd id="portal-calendar-detail-description"></dd>
+            </div>
+        </dl>
+    </section>
+
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+{% if hasCalendars %}
+<script nonce="{{ nonce() }}">
+    window.CRM = window.CRM || {};
+    window.CRM.portalCalendar = {{ calendarConfigJson }};
+</script>
+<script src="{{ asset('/skin/v2/portal-calendar.min.js') }}"></script>
+{% endif %}
+{% endblock %}

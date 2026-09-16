@@ -256,6 +256,15 @@ class   SystemConfig
             'bPortalShowCalendar'                  => new ConfigItem('bPortalShowCalendar', 'boolean', '1', gettext('Show the church calendar in the Member Portal.')),
             'bPortalShowVolunteer'                 => new ConfigItem('bPortalShowVolunteer', 'boolean', '1', gettext('Show volunteering and team pages in the Member Portal.')),
             'bPortalAllowBirthdayEdit'             => new ConfigItem('bPortalAllowBirthdayEdit', 'boolean', '0', gettext('Let members change their own and their family members\' birthdays in the Member Portal.')),
+            // The calendars the Member Portal shows, as a JSON list of
+            // {"type":"calendar"|"system","id":<int>} entries — church and
+            // ministry calendars by `calendars.calendar_id`, system calendars
+            // (Birthdays, Anniversaries, …) by their virtual id. Empty means
+            // nothing is shared with members, which is what an upgraded
+            // installation gets; Install.sql seeds the one church calendar a new
+            // install starts with. Read and written through
+            // ChurchCRM\Portal\PortalCalendarService, never by hand.
+            'aPortalCalendars'                     => new ConfigItem('aPortalCalendars', 'json', '[]', gettext('Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars.')),
             'bEnableExternalCalendarAPI'           => new ConfigItem('bEnableExternalCalendarAPI', 'boolean', '0', gettext('Allow unauthenticated reads of events from the external calendar API')),
             'sCalendarEmbedOrigins'                => new ConfigItem('sCalendarEmbedOrigins', 'text', '*', gettext('Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any origin. Restrict to specific origins for tighter security, e.g. "https://mysite.org https://embed.example.com".')),
             

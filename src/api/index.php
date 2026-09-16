@@ -53,6 +53,7 @@ require __DIR__ . '/routes/people/people-properties.php';
 require __DIR__ . '/routes/people/notes.php';
 require __DIR__ . '/routes/people/timeline.php';
 require __DIR__ . '/routes/people/people-attendance.php';
+require __DIR__ . '/routes/portal/portal-calendar.php';
 require __DIR__ . '/routes/portal/portal-me.php';
 require __DIR__ . '/routes/public/public.php';
 require __DIR__ . '/routes/public/public-data.php';

@@ -13,24 +13,25 @@ use Throwable;
  *
  * Design §5 fixes the order — Home · Calendar · Volunteering · My Teams ·
  * My Family · Profile — and says an entry is hidden when its feature is off or
- * the member has nothing there. MP2 shipped the skeleton; MP4 adds My Family
- * and Profile in their fixed places at the end, MP6 adds Volunteering before
- * them and MP7 adds My Teams between the two. The calendar entry slots into the
- * same list when MP5 lands.
+ * the member has nothing there. MP2 shipped the skeleton; MP5 adds Calendar,
+ * behind the `bPortalShowCalendar` switch; MP4 adds My Family and Profile in
+ * their fixed places at the end; MP6 adds Volunteering before them and MP7 adds
+ * My Teams between the two. The list is now complete.
  *
  * A nav entry is `{id, label, url, icon, active, badge}`; `url` is already
  * prefixed with the install root path, and `icon` is a Font Awesome class.
  *
- * Section switches (#9864): the Calendar entry MP5 adds belongs behind
- * `bPortalShowCalendar`, and the Volunteering / My Teams entries behind
- * `bPortalShowVolunteer` — both are already exposed to templates as
- * `portal.showCalendar` / `portal.showVolunteer`. Volunteering reads it
- * through `isVolunteeringVisible()` below; Home, My Family and Profile are
- * never optional.
+ * Section switches (#9864): the Calendar entry is behind `bPortalShowCalendar`
+ * and the Volunteering / My Teams entries behind `bPortalShowVolunteer` — both
+ * are also exposed to templates as `portal.showCalendar` /
+ * `portal.showVolunteer`, so a theme drawing its own home page filters the same
+ * way. Volunteering reads its switch through `isVolunteeringVisible()` below;
+ * Home, My Family and Profile are never optional.
  */
 class PortalNav
 {
     public const HOME = 'home';
+    public const CALENDAR = 'calendar';
     public const VOLUNTEER = 'volunteer';
     public const TEAMS = 'teams';
     public const FAMILY = 'family';
@@ -54,6 +55,15 @@ class PortalNav
                 'icon' => 'fa-solid fa-house',
             ],
         ];
+
+        if (SystemConfig::getBooleanValue('bPortalShowCalendar')) {
+            $entries[] = [
+                'id' => self::CALENDAR,
+                'label' => gettext('Calendar'),
+                'url' => $rootPath . '/portal/calendar',
+                'icon' => 'fa-solid fa-calendar-days',
+            ];
+        }
 
         if (self::isVolunteeringVisible()) {
             $entries[] = [

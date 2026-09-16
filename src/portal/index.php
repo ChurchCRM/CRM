@@ -32,6 +32,7 @@ require __DIR__ . '/routes/theme-asset.php';
 // every state-changing request.
 $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/home.php';
+    require __DIR__ . '/routes/calendar.php';
     require __DIR__ . '/routes/volunteer.php';
     require __DIR__ . '/routes/teams.php';
     require __DIR__ . '/routes/profile.php';
