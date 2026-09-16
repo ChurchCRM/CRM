@@ -30,7 +30,17 @@ const excludes = [
   // Community plugins are installed at runtime and must never be shipped in
   // signatures.json (they'd otherwise be reported as orphans on every install).
   // Keep this in sync with AppIntegrityService::isExcludedFromOrphanDetection().
-  /^plugins\/community\//
+  /^plugins\/community\//,
+  // Church-supplied Member Portal themes and, later, other church-supplied
+  // module types (member-portal-design.md §3.8). They are uploaded by the
+  // church's administrator and survive every upgrade, so they are never part of
+  // a release. The `default` theme is the exception: it ships with the release
+  // and keeps its signatures, which is why the lookahead is here and the PHP
+  // side exempts the whole of Include/themes/ from ORPHAN detection only.
+  /^Include\/themes\/(?!default\/)/,
+  /^Include\/modules\//,
+  // Twig's compile cache for the portal — generated at runtime.
+  /^Include\/cache\//
 ];
 
 function isExcluded(rel) {

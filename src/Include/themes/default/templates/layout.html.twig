@@ -1,0 +1,103 @@
+{#
+  Member Portal — the page shell every portal template extends.
+
+  Blocks a theme may override: head_extra, header, nav, hero, content, sidebar,
+  footer, scripts_extra. The full contract, with every variable and its shape,
+  is documented in docs/portal-templates.md.
+#}
+<!DOCTYPE html>
+{# portal.locale is a POSIX locale (en_US); an HTML lang attribute wants BCP 47. #}
+<html lang="{{ portal.locale|replace({'_': '-'}) }}"{% if portal.isRTL %} dir="rtl"{% endif %}{% if portal.colorMode == 'dark' %} data-bs-theme="dark"{% endif %}>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>{{ pageTitle|default(gettext('Member Portal')) }} · {{ church.name|default('ChurchCRM') }}</title>
+    <link rel="icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
+
+    {# Core ChurchCRM bundle: Tabler, Bootstrap 5, jQuery and the shared helpers. #}
+    {% if portal.isRTL %}
+    <link rel="stylesheet" href="{{ asset('/skin/v2/churchcrm-rtl.min.css') }}">
+    {% else %}
+    <link rel="stylesheet" href="{{ asset('/skin/v2/churchcrm.min.css') }}">
+    {% endif %}
+    <script src="{{ asset('/skin/v2/churchcrm.min.js') }}"></script>
+    <script src="{{ asset('/skin/external/moment/moment.min.js') }}"></script>
+
+    {{ portal.pluginHead }}
+
+    {# Portal styling, then the active theme's own stylesheet on top of it. #}
+    <link rel="stylesheet" href="{{ asset('/skin/v2/portal.min.css') }}">
+    {% if portal.hasThemeCss %}
+    <link rel="stylesheet" href="{{ theme_asset('theme.css') }}">
+    {% endif %}
+
+    {% if portal.colorMode == 'auto' %}
+    <script nonce="{{ nonce() }}">
+        // Follow the operating system before first paint, so the page never
+        // flashes the wrong theme.
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+        }
+    </script>
+    {% endif %}
+
+    {% block head_extra %}{% endblock %}
+</head>
+<body class="portal-body{% if member.isStaff %} portal-body-with-bar{% endif %}">
+
+{% if member.isStaff %}
+{# A staff login is in the portal on purpose and needs an obvious way back
+   (design P10). MP8 replaces this with the shared masquerade bar. #}
+<div class="portal-staff-bar" role="region" aria-label="{{ gettext('Member Portal notice') }}">
+    <span class="portal-staff-bar-text">{{ gettext('You are viewing the Member Portal as yourself.') }}</span>
+    <a class="portal-staff-bar-exit" href="{{ url('/v2/dashboard') }}"
+       aria-label="{{ gettext('Exit to the admin area') }}" title="{{ gettext('Exit to the admin area') }}">
+        <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+    </a>
+</div>
+{% endif %}
+
+{# Impersonation banner hook: the masquerade feature (#9843 / #9844) is not on
+   this branch yet. MP8 renders Include/ImpersonationBanner.php here, above the
+   portal shell, when portal.impersonating is true. #}
+
+<div class="portal-shell">
+    {% block header %}{% include 'partials/header.html.twig' %}{% endblock %}
+    {% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
+    {% block hero %}{% endblock %}
+
+    <main class="portal-main" id="portal-main">
+        <div class="portal-container">
+            {% include 'partials/flash.html.twig' %}
+            <div class="portal-layout">
+                <div class="portal-content">{% block content %}{% endblock %}</div>
+                {% block sidebar %}{% endblock %}
+            </div>
+        </div>
+    </main>
+
+    {% block footer %}{% include 'partials/footer.html.twig' %}{% endblock %}
+</div>
+
+<script nonce="{{ nonce() }}">
+    window.CRM = Object.assign(window.CRM || {}, {{ portal.bootstrapJson }});
+</script>
+<script src="{{ asset('/skin/external/i18next/i18next.min.js') }}"></script>
+<script src="{{ asset('/skin/v2/locale-loader.min.js') }}"></script>
+<script nonce="{{ nonce() }}">
+    (function () {
+        var localeConfig = {{ portal.localeConfigJson }};
+        if (window.CRM && window.CRM.loadLocaleFiles) {
+            window.CRM.loadLocaleFiles(localeConfig);
+        }
+    })();
+</script>
+<script src="{{ asset('/skin/v2/portal.min.js') }}"></script>
+{% if portal.hasThemeJs %}
+<script src="{{ theme_asset('theme.js') }}"></script>
+{% endif %}
+
+{{ portal.pluginFooter }}
+{% block scripts_extra %}{% endblock %}
+</body>
+</html>

@@ -5016,14 +5016,6 @@ msgid "Verification URL created"
 msgstr "Nilikha ang Verification URL"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Error sa pagpapadala ng email(s)"
 
@@ -8414,10 +8406,6 @@ msgstr "Ang iyong password ay matagumpay na na-update."
 #: 
 msgid "selected family has no coordinates"
 msgstr "ang napiling pamilya ay walang mga coordinate"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12179,10 +12167,6 @@ msgid "Database dump only (.sql)"
 msgstr "Database dump lamang (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Ang saklaw ng petsa ay hindi maaaring lumampas sa 1 taon"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Mapanganib na Operasyon"
 
@@ -12777,10 +12761,6 @@ msgstr "Hindi nahanap ang grupo para sa listahan ng papel na ito"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Ang inactive na status ay maaari lamang i-toggle para sa listahan ng mga klasipikasyon"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Ang mga bagong gumagamit ay hindi makakatanggap ng welcome email na may kanilang mga kredensyal. Ibahagi ang password sa kanila nang manu-mano, o i-configure muna ang email."
 
 #: 
 msgid "Option name is required"
@@ -17809,14 +17789,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "Na-geocode ang {{geocoded}} pamilya. Hindi na-resolve ang {{failed}} — tingnan ang detalye sa ibaba."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "Na-geocode ang {{geocoded}} sa {{total}} pamilya. Hindi pa naproseso ang {{overflow}} — patakbuhin muli upang magpatuloy."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Ginagawang geocode ang mga pamilya… maaari itong tumagal ng hanggang isang minuto. Puwede mong iwanang bukas ang page na ito."
-
-#: 
 msgid "Geocoding…"
 msgstr "Ginagawang geocode…"
 
@@ -17829,20 +17801,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Walang nahanap na tugma — suriin ang address, lungsod, at ZIP"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Bilang ng mga araw na mayroon ang mga user para mag-enroll sa 2FA matapos itong iutos. Itakda sa 0 upang ipatupad kaagad (lumang gawi). Ang pagpapaikli ng aktibong grace period ay maaaring agad na mag-lock-out sa mga user."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Buksan ang isang pamilya upang ayusin ang address nito, pagkatapos ay patakbuhin muli ito."
 
 #: 
 msgid "Set up now"
 msgstr "I-set up na ngayon"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Hinahanap nito ang mga coordinates sa mapa para sa bawat pamilyang kulang nito, gamit ang OpenStreetMap. Nagpoproseso ito ng hanggang 50 pamilya kada takbo; ang isang buong batch ay tumatagal ng humigit-kumulang isang minuto. Puwede mong iwanang bukas ang page na ito habang tumatakbo ito. Magpatuloy?"
 
 #: 
 msgid "Unknown family"

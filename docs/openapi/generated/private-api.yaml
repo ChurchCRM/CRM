@@ -159,7 +159,19 @@ paths:
       tags:
         - Map
       summary: 'Geocode all active families missing coordinates'
-      description: "Iterates active families that have a street address but no usable coordinates, geocoding each via Nominatim at ~1 request/second. Processes up to 50 families per call; repeat if 'remaining' > 0. Admin-only."
+      description: "Iterates active families that have a street address but no usable coordinates, geocoding each via Nominatim at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Admin-only."
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                skip:
+                  description: 'Families (in ID order) to skip before the batch — the running count of failures from previous calls'
+                  type: integer
+                  default: 0
+                  minimum: 0
+              type: object
       responses:
         '200':
           description: 'Geocoding batch summary'
@@ -168,9 +180,11 @@ paths:
               schema:
                 properties:
                   total: { description: 'Total families missing coordinates before this run', type: integer }
+                  skip: { description: 'Offset applied to this batch (echoed back)', type: integer }
+                  processed: { description: 'Families examined in this batch (0 when skip >= total)', type: integer }
                   geocoded: { description: 'Families successfully geocoded in this batch', type: integer }
                   failed: { description: 'Families that could not be geocoded', type: integer }
-                  remaining: { description: 'Families still missing coordinates after this batch (run again if > 0)', type: integer }
+                  remaining: { description: 'Families still missing coordinates after this batch, including the ones that failed (run again while remaining > failures so far)', type: integer }
                   failures: { description: 'Per-family failure details (capped at 20 entries). Empty array when all families were geocoded.', type: array, items: { properties: { id: { description: 'Family ID', type: integer }, name: { description: 'Family name', type: string }, address: { description: 'Full street address', type: string }, editUrl: { description: 'URL to the family editor page', type: string }, reason: { description: "Machine code: 'incomplete_address' | 'no_result' | 'error'", type: string } }, type: object } }
                   failuresTruncated: { description: 'True when failed > 20 and some failures are omitted from the array', type: boolean }
                 type: object

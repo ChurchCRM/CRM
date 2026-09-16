@@ -1,0 +1,43 @@
+/*
+ * ChurchCRM Member Portal — system theme.
+ *
+ * This file is part of the release and is OVERWRITTEN on every upgrade.
+ * To brand the portal for your church, copy the whole `default` folder to
+ * `Include/themes/<your-church>/`, edit the copy, and pick it on
+ * Admin -> Member Portal. See docs/portal-themes.md.
+ *
+ * Everything the portal draws is expressed through the custom properties
+ * below, so a church theme that only redefines them recolours every page.
+ * `portal.min.css` already carries these same values as its fallbacks, which
+ * is why a theme.css of a dozen lines is a complete theme.
+ */
+
+:root {
+  --portal-primary: #1f4e79;
+  --portal-primary-contrast: #ffffff;
+  --portal-accent: #c9a227;
+  --portal-surface: #ffffff;
+  --portal-surface-alt: #f4f6f8;
+  --portal-text: #1f1f1f;
+  --portal-muted: #6b6b6b;
+  --portal-border: #e3e6ea;
+  --portal-font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --portal-font-heading: Georgia, "Times New Roman", serif;
+  --portal-radius: 12px;
+  --portal-header-bg: var(--portal-primary);
+  --portal-header-text: var(--portal-primary-contrast);
+  --portal-hero-image: none;
+}
+
+[data-bs-theme="dark"] {
+  --portal-primary: #6ea8d8;
+  --portal-primary-contrast: #101418;
+  --portal-accent: #e0bd4a;
+  --portal-surface: #1a1d21;
+  --portal-surface-alt: #22262b;
+  --portal-text: #f1f3f5;
+  --portal-muted: #a6acb3;
+  --portal-border: #343a40;
+  --portal-header-bg: #15334d;
+  --portal-header-text: #f1f3f5;
+}

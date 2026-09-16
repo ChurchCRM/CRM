@@ -1,61 +1,19 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Utils\VersionUtils;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-// Limited access page for users with no admin permissions (GHSA-5w59-32c8-933v)
+// The interim "limited access" landing is retired: a self-service login now
+// lands in the Member Portal (#9863, design §2.2). The route stays so links in
+// old emails and bookmarks keep working; MP8 removes the template it replaced.
 $app->get('/limited-access', function (Request $request, Response $response): Response {
-    $renderer = new PhpRenderer(__DIR__ . '/../templates/');
-    $userName = '';
-    $churchName = ChurchMetaData::getChurchName();
-    $verifyUrl = '';
-
-    // Try to get the user info from the active session
-    try {
-        if (AuthenticationManager::validateUserSessionIsActive(false)) {
-            $user = AuthenticationManager::getCurrentUser();
-            $person = $user->getPerson();
-            $userName = $person ? ($person->getFirstName() . ' ' . $person->getLastName()) : $user->getUserName();
-
-            // Only generate the verify link when EditSelf is explicitly enabled.
-            // Users with EditSelf=0 must not receive a family-verification token even
-            // when they belong to a family — the verify flow is a self-edit capability
-            // that requires the explicit permission flag. (Fixes #9079)
-            $familyId = $person ? $person->getFamId() : 0;
-            if ($familyId > 0 && $user->isEditSelfEnabled()) {
-                $token = new \ChurchCRM\model\ChurchCRM\Token();
-                $token->build('verifyFamily', $familyId);
-                $token->save();
-                $verifyUrl = SystemURLs::getRootPath() . '/external/verify/' . $token->getToken();
-            }
-        }
-    } catch (\Throwable $e) {
-        // Session might be invalid — that's OK, just show the page without user info
-    }
-
-    // Volunteer v2 (#9706, design §4.7 step 3): an EditSelf-exclusive user IS the
-    // volunteer persona (D14), so when the V2 rollout is on, give them somewhere to go
-    // from the page AuthMiddleware lands them on. Shown to every limited user rather
-    // than only to those with an assignment — /volunteer/my-schedule is also where open
-    // opportunities are found, and the page authorizes per record anyway.
-    $volunteerScheduleUrl = User::isVolunteerV2Enabled()
-        ? SystemURLs::getRootPath() . '/volunteer/my-schedule'
-        : '';
-
-    return $renderer->render($response, 'limited-access.php', [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'userName' => $userName,
-        'churchName' => $churchName,
-        'verifyUrl' => $verifyUrl,
-        'volunteerScheduleUrl' => $volunteerScheduleUrl,
-    ]);
+    return $response
+        ->withStatus(302)
+        ->withHeader('Location', SystemURLs::getRootPath() . '/portal/');
 });
 
  $app->group('/system', function (RouteCollectorProxy $group): void {

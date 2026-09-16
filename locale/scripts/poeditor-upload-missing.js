@@ -288,11 +288,35 @@ function isNotIdenticalToKey(termKey, value) {
 }
 
 /**
- * Analyzes a single batch file and splits its terms into three buckets:
- *   localizedTerms – have translations that differ from the source key,
- *                    OR are in the english-ok allowlist (intentionally English)
- *   suspectTerms   – translation is identical to the source key and NOT in allowlist
- *   emptyTerms     – no translation found at all
+ * Returns true when a plural-form object has SOME forms filled in and OTHERS
+ * present-but-blank (e.g. `{ one: "X", few: "", other: "" }`) — a translation
+ * that was started but not finished for every CLDR category this locale needs.
+ *
+ * This must be checked BEFORE the term is allowed anywhere near
+ * `convertPluralsToSeparated()`. That function silently drops any blank form
+ * and joins the survivors by position — so a partially-filled Czech object
+ * missing "few" would collapse from 3 slots to 2 and shift "other" into the
+ * "few" position with no error from POEditor or this script. Skipping
+ * incomplete plurals entirely (never uploading them) avoids depending on
+ * exactly how POEditor's pipe-separated plural import resolves a form-count
+ * mismatch, which cannot be verified without a live API call.
+ */
+function hasIncompleteForms(value) {
+    if (typeof value !== 'object' || value === null) return false;
+    const strings = Object.values(value).filter(v => typeof v === 'string');
+    const hasFilled = strings.some(v => v.trim() !== '');
+    const hasBlank = strings.some(v => v.trim() === '');
+    return hasFilled && hasBlank;
+}
+
+/**
+ * Analyzes a single batch file and splits its terms into four buckets:
+ *   localizedTerms  – have translations that differ from the source key,
+ *                     OR are in the english-ok allowlist (intentionally English)
+ *   suspectTerms    – translation is identical to the source key and NOT in allowlist
+ *   emptyTerms      – no translation found at all
+ *   incompleteTerms – a plural object with some CLDR forms filled and others
+ *                     left blank (see hasIncompleteForms) — never safe to upload
  *
  * @param {string} filePath - path to the batch JSON file
  * @param {Set<string>} [englishOkSet] - optional set of terms safe to upload as-is
@@ -303,9 +327,12 @@ function analyzeFile(filePath, englishOkSet = new Set()) {
     const localizedTerms = {};
     const suspectTerms = {};
     const emptyTerms = {};
+    const incompleteTerms = {};
 
     for (const [term, value] of Object.entries(raw)) {
-        if (!hasAnyTranslation(value)) {
+        if (hasIncompleteForms(value)) {
+            incompleteTerms[term] = value;
+        } else if (!hasAnyTranslation(value)) {
             emptyTerms[term] = value;
         } else if (!isNotIdenticalToKey(term, value)) {
             // Value is identical to the source key — check the allowlist
@@ -319,7 +346,7 @@ function analyzeFile(filePath, englishOkSet = new Set()) {
         }
     }
 
-    return { localizedTerms, suspectTerms, emptyTerms };
+    return { localizedTerms, suspectTerms, emptyTerms, incompleteTerms };
 }
 
 // ── POEditor API helpers ─────────────────────────────────────────────────────
@@ -737,7 +764,7 @@ async function main() {
 
         if (!localeEntry) {
             console.warn(`\n  ⚠️  [${localeNum}/${totalLocales}] Folder "${folder}" does not match any locale in locales.json — skipping.`);
-            results.push({ locale: folder, name: folder, status: 'no-match', uploaded: 0, empty: 0, remaining: '?' });
+            results.push({ locale: folder, name: folder, status: 'no-match', uploaded: 0, empty: 0, remaining: '?', incomplete: 0 });
             totalSkipped++;
             continue;
         }
@@ -755,13 +782,14 @@ async function main() {
 
         if (jsonFiles.length === 0) {
             console.log('  No JSON batch files found, skipping.\n');
-            results.push({ locale: poEditorCode, name: localeName, status: 'no-files', uploaded: 0, empty: 0, remaining: '?' });
+            results.push({ locale: poEditorCode, name: localeName, status: 'no-files', uploaded: 0, empty: 0, remaining: '?', incomplete: 0 });
             continue;
         }
 
         // Aggregate across all batch files for this locale
         const allLocalized = {};
         const allSuspect = {};
+        const allIncomplete = {};
         let totalEmpty = 0;
 
         const englishOkSet = englishOkAllowlist.get(folderKey) ?? new Set();
@@ -769,26 +797,35 @@ async function main() {
 
         for (const file of jsonFiles) {
             const filePath = path.join(folderPath, file);
-            const { localizedTerms, suspectTerms, emptyTerms } = analyzeFile(filePath, englishOkSet);
+            const { localizedTerms, suspectTerms, emptyTerms, incompleteTerms } = analyzeFile(filePath, englishOkSet);
             Object.assign(allLocalized, localizedTerms);
             Object.assign(allSuspect, suspectTerms);
+            Object.assign(allIncomplete, incompleteTerms);
             totalEmpty += Object.keys(emptyTerms).length;
         }
 
         const localizedCount = Object.keys(allLocalized).length;
         const suspectCount = Object.keys(allSuspect).length;
+        const incompleteCount = Object.keys(allIncomplete).length;
 
         console.log(
             `  Files: ${jsonFiles.length}` +
             `  |  Ready to upload: ${localizedCount}` +
             (englishOkCount > 0 ? `  |  English-OK (allowlisted): ${englishOkCount}` : '') +
             `  |  Suspect (skipped): ${suspectCount}` +
-            `  |  Empty: ${totalEmpty}`
+            `  |  Empty: ${totalEmpty}` +
+            (incompleteCount > 0 ? `  |  Incomplete plurals (skipped): ${incompleteCount}` : '')
         );
+        if (incompleteCount > 0) {
+            console.log(`  ⚠️  Incomplete plural form(s) — some CLDR forms filled, others left blank — will NOT be uploaded until complete:`);
+            for (const term of Object.keys(allIncomplete)) {
+                console.log(`      "${term}"`);
+            }
+        }
 
         if (localizedCount === 0) {
             console.log('  No valid translated terms found — nothing to upload.\n');
-            results.push({ locale: poEditorCode, name: localeName, status: 'nothing-to-upload', uploaded: 0, empty: totalEmpty, remaining: '?' });
+            results.push({ locale: poEditorCode, name: localeName, status: 'nothing-to-upload', uploaded: 0, empty: totalEmpty, remaining: '?', incomplete: incompleteCount });
             totalSkipped++;
             continue;
         }
@@ -809,7 +846,7 @@ async function main() {
 
             if (choice !== '' && choice !== 'y' && choice !== 'yes') {
                 console.log('  ⏭️  Skipped.');
-                results.push({ locale: poEditorCode, name: localeName, status: 'user-skipped', uploaded: 0, empty: totalEmpty, remaining: '?' });
+                results.push({ locale: poEditorCode, name: localeName, status: 'user-skipped', uploaded: 0, empty: totalEmpty, remaining: '?', incomplete: incompleteCount });
                 totalSkipped++;
                 continue;
             }
@@ -817,7 +854,7 @@ async function main() {
 
         if (dryRun) {
             console.log(`  🔸 DRY RUN: would upload ${localizedCount} term(s) to "${poEditorCode}"`);
-            results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: '(dry run)' });
+            results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: '(dry run)', incomplete: incompleteCount });
             totalUploaded += localizedCount;
             continue;
         }
@@ -834,7 +871,7 @@ async function main() {
             totalUploaded += localizedCount;
         } catch (err) {
             console.error(`  ❌ Upload failed: ${sanitize(err.message)}`); // lgtm[js/log-injection] Error message sanitized before logging
-            results.push({ locale: poEditorCode, name: localeName, status: 'upload-failed', uploaded: 0, empty: totalEmpty, remaining: '?' });
+            results.push({ locale: poEditorCode, name: localeName, status: 'upload-failed', uploaded: 0, empty: totalEmpty, remaining: '?', incomplete: incompleteCount });
             totalSkipped++;
             continue;
         }
@@ -853,7 +890,7 @@ async function main() {
             console.log(`\n  ⏭️  Skipping download (--no-download)`);
         }
 
-        results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: remainingCount });
+        results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: remainingCount, incomplete: incompleteCount });
 
         // ── Rate-limit guard ─────────────────────────────────────────────────
         console.log(`  ⏱️  Waiting ${BETWEEN_LOCALES_DELAY_MS / 1000}s before next locale...`);
@@ -873,12 +910,14 @@ async function main() {
         const colStatus = 18;
         const colUp = 10;
         const colEmpty = 8;
+        const colIncomplete = 12;
         const colLeft = 10;
         const header =
             'Locale'.padEnd(colLocale) +
             'Status'.padEnd(colStatus) +
             'Uploaded'.padStart(colUp) +
             'Empty'.padStart(colEmpty) +
+            'Incomplete'.padStart(colIncomplete) +
             'Remaining'.padStart(colLeft);
         console.log(`\n  ${header}`);
         console.log(`  ${'─'.repeat(header.length)}`);
@@ -897,14 +936,16 @@ async function main() {
             const status = (statusIcon[r.status] || r.status).slice(0, colStatus - 1);
             const up = String(r.uploaded).padStart(colUp);
             const empty = String(r.empty).padStart(colEmpty);
+            const incomplete = String(r.incomplete ?? 0).padStart(colIncomplete);
             const left = String(r.remaining).padStart(colLeft);
-            console.log(`  ${label.padEnd(colLocale)}${status.padEnd(colStatus)}${up}${empty}${left}`);
+            console.log(`  ${label.padEnd(colLocale)}${status.padEnd(colStatus)}${up}${empty}${incomplete}${left}`);
         }
 
         console.log(`  ${'─'.repeat(header.length)}`);
 
         // Totals
         const totalUp = results.reduce((s, r) => s + r.uploaded, 0);
+        const totalIncompleteAll = results.reduce((s, r) => s + (r.incomplete ?? 0), 0);
         const successCount = results.filter(r => r.status === 'uploaded').length;
         const failCount = results.filter(r => r.status === 'upload-failed').length;
         const skipCount = results.filter(r => r.status !== 'uploaded' && r.status !== 'upload-failed').length;
@@ -912,6 +953,7 @@ async function main() {
         console.log(`\n  Total uploaded: ${totalUp} term(s) across ${successCount} locale(s)`);
         if (failCount > 0) console.log(`  Failed: ${failCount} locale(s)`);
         if (skipCount > 0) console.log(`  Skipped: ${skipCount} locale(s)`);
+        if (totalIncompleteAll > 0) console.log(`  ⚠️  Incomplete plural forms (not uploaded, need every CLDR form filled): ${totalIncompleteAll} term(s)`);
     }
 
     if (!skipDownload) {

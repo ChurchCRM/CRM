@@ -247,6 +247,10 @@ class   SystemConfig
             'bEnableLostPassword'                  => new ConfigItem('bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem('sChurchWebSite', 'text', '', ''),
             'sChurchLogoURL'                       => new ConfigItem('sChurchLogoURL', 'text', '', gettext('Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo.')),
+            // Member Portal (#9863). Deliberately declared without a System
+            // Settings category so it never appears on src/SystemSettings.php:
+            // the portal's settings live on their own admin page (design P9).
+            'sMemberPortalTheme'                   => new ConfigItem('sMemberPortalTheme', 'text', 'default', gettext('Folder name of the Member Portal theme to use, from Include/themes/. "default" is the system theme that ships with ChurchCRM.')),
             'bEnableExternalCalendarAPI'           => new ConfigItem('bEnableExternalCalendarAPI', 'boolean', '0', gettext('Allow unauthenticated reads of events from the external calendar API')),
             'sCalendarEmbedOrigins'                => new ConfigItem('sCalendarEmbedOrigins', 'text', '*', gettext('Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any origin. Restrict to specific origins for tighter security, e.g. "https://mysite.org https://embed.example.com".')),
             

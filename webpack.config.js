@@ -114,6 +114,9 @@ module.exports = {
     'volunteer-my-schedule': './webpack/volunteer/my-schedule',
     'volunteer-opportunities': './webpack/volunteer/opportunities',
     'email-composer': './webpack/common/email-composer',
+    // Member Portal: its own CSS/JS bundle, never part of the RTL-flipped core
+    // bundle, so a church theme is not flipped twice (design §3.5).
+    portal: './webpack/portal/portal.ts',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
   },

@@ -1,0 +1,421 @@
+// Member Portal
+//
+// Compiled into its own bundle (`skin/v2/portal.min.css`, webpack entry
+// `portal`) and deliberately NOT part of the core `churchcrm` bundle: the core
+// bundle has an RTL-flipped twin, and a church theme must never be flipped
+// twice. Everything here uses CSS logical properties only, so the same
+// stylesheet is correct in both directions.
+//
+// Every value a church might want to change is a custom property. The
+// fallbacks below are the system theme's; `Include/themes/default/theme.css`
+// carries the same block, and a church theme that redefines a handful of them
+// recolours every portal page (design §3.5).
+
+:root {
+    --portal-primary: #1f4e79;
+    --portal-primary-contrast: #ffffff;
+    --portal-accent: #c9a227;
+    --portal-surface: #ffffff;
+    --portal-surface-alt: #f4f6f8;
+    --portal-text: #1f1f1f;
+    --portal-muted: #6b6b6b;
+    --portal-border: #e3e6ea;
+    --portal-font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --portal-font-heading: Georgia, "Times New Roman", serif;
+    --portal-radius: 12px;
+    --portal-header-bg: var(--portal-primary);
+    --portal-header-text: var(--portal-primary-contrast);
+    --portal-hero-image: none;
+    --portal-content-width: 1100px;
+    --portal-gap: 1rem;
+}
+
+[data-bs-theme="dark"] {
+    --portal-surface: #1a1d21;
+    --portal-surface-alt: #22262b;
+    --portal-text: #f1f3f5;
+    --portal-muted: #a6acb3;
+    --portal-border: #343a40;
+}
+
+.portal-body {
+    margin: 0;
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+    font-family: var(--portal-font-body);
+    min-block-size: 100vh;
+}
+
+.portal-shell {
+    display: flex;
+    flex-direction: column;
+    min-block-size: 100vh;
+}
+
+.portal-container {
+    inline-size: 100%;
+    max-inline-size: var(--portal-content-width);
+    margin-inline: auto;
+    padding-inline: var(--portal-gap);
+}
+
+// Header ---------------------------------------------------------------------
+
+.portal-header {
+    background-color: var(--portal-header-bg);
+    color: var(--portal-header-text);
+}
+
+.portal-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--portal-gap);
+    min-block-size: 4rem;
+    flex-wrap: wrap;
+}
+
+.portal-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.portal-brand-logo {
+    block-size: 2.25rem;
+    inline-size: auto;
+    max-inline-size: 12rem;
+    object-fit: contain;
+}
+
+.portal-brand-name {
+    font-family: var(--portal-font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.portal-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--portal-gap);
+}
+
+.portal-member-name {
+    display: none;
+}
+
+.portal-signout,
+.portal-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    min-inline-size: 44px;
+    justify-content: center;
+    padding-inline: 0.75rem;
+    border: 0;
+    border-radius: var(--portal-radius);
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.portal-signout:hover,
+.portal-signout:focus-visible,
+.portal-nav-toggle:hover,
+.portal-nav-toggle:focus-visible {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: inherit;
+}
+
+.portal-nav-toggle {
+    display: inline-flex;
+}
+
+// Navigation -----------------------------------------------------------------
+
+.portal-nav {
+    // Collapsed on a phone until the header's toggle opens it; always open
+    // from the tablet breakpoint up.
+    display: none;
+    background-color: var(--portal-surface);
+    border-block-end: 1px solid var(--portal-border);
+}
+
+.portal-nav.is-open {
+    display: block;
+}
+
+.portal-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0.5rem 0;
+    list-style: none;
+}
+
+.portal-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    padding-inline: 0.75rem;
+    border-radius: var(--portal-radius);
+    color: var(--portal-text);
+    text-decoration: none;
+}
+
+.portal-nav-link:hover,
+.portal-nav-link:focus-visible {
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+}
+
+.portal-nav-link.is-active {
+    background-color: var(--portal-primary);
+    color: var(--portal-primary-contrast);
+}
+
+.portal-nav-badge {
+    margin-inline-start: auto;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background-color: var(--portal-accent);
+    color: var(--portal-text);
+    font-size: 0.75rem;
+}
+
+// Main -----------------------------------------------------------------------
+
+.portal-main {
+    flex: 1 1 auto;
+    padding-block: 1.5rem;
+}
+
+.portal-layout {
+    display: grid;
+    gap: var(--portal-gap);
+    grid-template-columns: 1fr;
+}
+
+.portal-card {
+    background-color: var(--portal-surface);
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    padding: 1.25rem;
+    margin-block-end: var(--portal-gap);
+}
+
+.portal-card-grid {
+    display: grid;
+    gap: var(--portal-gap);
+    grid-template-columns: 1fr;
+}
+
+.portal-card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.5rem;
+    font-family: var(--portal-font-heading);
+    font-size: 1.1rem;
+}
+
+.portal-card-text {
+    margin: 0;
+    color: var(--portal-muted);
+}
+
+.portal-welcome-title {
+    margin: 0;
+    font-family: var(--portal-font-heading);
+    font-size: 1.75rem;
+}
+
+.portal-welcome-family {
+    margin: 0.25rem 0 0.75rem;
+    color: var(--portal-muted);
+}
+
+.portal-welcome-intro {
+    margin: 0;
+}
+
+.portal-placeholder-badge {
+    display: inline-block;
+    margin: 0 0 0.5rem;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+// Flash ----------------------------------------------------------------------
+
+.portal-flash {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-block-end: var(--portal-gap);
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--portal-border);
+    border-inline-start: 4px solid var(--portal-primary);
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-surface);
+}
+
+.portal-flash-success {
+    border-inline-start-color: #2fb344;
+}
+
+.portal-flash-warning {
+    border-inline-start-color: var(--portal-accent);
+}
+
+.portal-flash-danger {
+    border-inline-start-color: #d63939;
+}
+
+.portal-flash-dismiss {
+    min-block-size: 44px;
+    min-inline-size: 44px;
+    border: 0;
+    background: none;
+    color: var(--portal-muted);
+    cursor: pointer;
+}
+
+// Errors ---------------------------------------------------------------------
+
+.portal-error,
+.portal-unavailable,
+.portal-theme-error {
+    margin-block-start: 2rem;
+}
+
+.portal-error-title {
+    margin: 0 0 0.5rem;
+    font-family: var(--portal-font-heading);
+    font-size: 1.5rem;
+}
+
+.portal-error-text {
+    margin: 0 0 1rem;
+    color: var(--portal-muted);
+}
+
+.portal-theme-error-details {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.25rem 1rem;
+    margin: 0 0 1rem;
+}
+
+.portal-theme-error-details dt {
+    color: var(--portal-muted);
+}
+
+.portal-theme-error-details dd {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    overflow-wrap: anywhere;
+}
+
+.portal-button {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+    padding-inline: 1rem;
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-primary);
+    color: var(--portal-primary-contrast);
+    text-decoration: none;
+}
+
+.portal-button:hover,
+.portal-button:focus-visible {
+    color: var(--portal-primary-contrast);
+    filter: brightness(1.1);
+}
+
+// Footer ---------------------------------------------------------------------
+
+.portal-footer {
+    background-color: var(--portal-surface);
+    border-block-start: 1px solid var(--portal-border);
+    padding-block: 1rem;
+    color: var(--portal-muted);
+}
+
+.portal-footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.portal-footer-church-name {
+    font-weight: 600;
+    color: var(--portal-text);
+}
+
+.portal-footer-detail {
+    margin-inline-start: 0.75rem;
+    color: inherit;
+}
+
+// Hero -----------------------------------------------------------------------
+//
+// Empty in the system theme: a church theme sets --portal-hero-image and puts
+// its own markup in the `hero` block.
+
+.portal-hero {
+    background-image: var(--portal-hero-image);
+    background-size: cover;
+    background-position: center;
+}
+
+// Tablet and up --------------------------------------------------------------
+
+@media (min-width: 768px) {
+    .portal-member-name {
+        display: inline;
+    }
+
+    .portal-nav-toggle {
+        display: none;
+    }
+
+    .portal-nav {
+        display: block;
+    }
+
+    .portal-nav-list {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .portal-nav-badge {
+        margin-inline-start: 0.25rem;
+    }
+
+    .portal-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 992px) {
+    .portal-card-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}

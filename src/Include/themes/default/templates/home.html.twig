@@ -1,0 +1,44 @@
+{% extends "layout.html.twig" %}
+
+{#
+  The member's landing page. MP2 ships the welcome card and a clearly-marked
+  placeholder for each section a later issue fills in, so a church that installs
+  this release sees what is coming rather than an empty page.
+#}
+
+{% block content %}
+<div class="portal-home">
+
+    <section class="portal-card portal-welcome">
+        <h1 class="portal-welcome-title">{{ gettext('Welcome, %s')|format(member.firstName|default(member.fullName)) }}</h1>
+        {% if member.familyName %}
+        <p class="portal-welcome-family">{{ gettext('%s family')|format(member.familyName) }}</p>
+        {% endif %}
+        <p class="portal-welcome-intro">
+            {{ gettext('This is your church account. Everything you can do for yourself and your family lives here.') }}
+        </p>
+    </section>
+
+    <div class="portal-card-grid">
+        {% set placeholders = [
+            { 'icon': 'fa-solid fa-calendar-days', 'title': gettext('Church calendar') },
+            { 'icon': 'fa-solid fa-handshake-angle', 'title': gettext('My volunteering') },
+            { 'icon': 'fa-solid fa-people-roof', 'title': gettext('My family') },
+            { 'icon': 'fa-solid fa-user', 'title': gettext('My profile') }
+        ] %}
+        {% for placeholder in placeholders %}
+        <section class="portal-card portal-card-placeholder">
+            <h2 class="portal-card-title">
+                <i class="{{ placeholder.icon }}" aria-hidden="true"></i>
+                <span>{{ placeholder.title }}</span>
+            </h2>
+            <p class="portal-placeholder-badge">{{ gettext('Coming soon') }}</p>
+            <p class="portal-card-text">
+                {{ gettext('This part of the Member Portal is not ready yet. It will appear here in a future update.') }}
+            </p>
+        </section>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

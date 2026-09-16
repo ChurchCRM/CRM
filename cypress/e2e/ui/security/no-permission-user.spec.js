@@ -10,7 +10,7 @@
  *
  * Business rule under test (read-default policy, #9003):
  *  - A zero-permission user CAN log in and READ people and family records.
- *    They are NOT redirected to /external/limited-access — that flow is now
+ *    They are NOT redirected to the Member Portal — that confinement is
  *    reserved for EditSelf-only users (see limited-access.spec.js).
  *  - They CANNOT write anything: no add/edit/delete of person or family, and no
  *    access to finance, notes, admin, or menu-option pages.
@@ -19,9 +19,8 @@
  * User::isEditSelfExclusive(), replacing the removed hasNoAdminPermissions().
  * Zero-permission users fall through it; EditSelf-only users do not.
  *
- * Contrast: limited.user (EditSelf=1, person 4, family 1) IS confined to
- * /external/limited-access and gets the "Verify Family Info" button — see
- * limited-access.spec.js.
+ * Contrast: limited.user (EditSelf=1, person 4, family 1) IS confined to the
+ * Member Portal at /portal — see limited-access.spec.js.
  */
 describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
     const noPermUser = "noperm.user";
@@ -39,20 +38,21 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
     describe("Can log in and read people/families", () => {
         beforeEach(login);
 
-        it("Login lands in the CRM, NOT on limited-access", () => {
-            cy.url().should("not.include", "/external/limited-access");
+        it("Login lands in the admin shell, NOT in the Member Portal", () => {
+            cy.url().should("include", "/v2/dashboard");
+            cy.url().should("not.include", "/portal");
         });
 
         it("Can view the main dashboard", () => {
             cy.visit("v2/dashboard");
             cy.url().should("include", "/v2/dashboard");
-            cy.url().should("not.include", "/external/limited-access");
+            cy.url().should("not.include", "/portal");
         });
 
         it("Can view the people dashboard", () => {
             cy.visit("people/dashboard");
             cy.url().should("include", "/people/dashboard");
-            cy.url().should("not.include", "/external/limited-access");
+            cy.url().should("not.include", "/portal");
         });
 
         it("Can view the person listing", () => {

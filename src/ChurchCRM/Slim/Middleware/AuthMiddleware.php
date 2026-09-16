@@ -20,11 +20,7 @@ class AuthMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // Construct the full public API path including any subdirectory installation
-        // Examples: '/api/public' (root install), '/crm/api/public' (subdirectory install)
-        $publicApiPath = SystemURLs::getRootPath() . '/api/public';
-        
-        if (!str_starts_with($request->getUri()->getPath(), $publicApiPath)) {
+        if (!$this->isPublicPath($request)) {
             $apiKey = $request->getHeader('x-api-key');
             if (!empty($apiKey)) {
                 $logger = LoggerUtils::getAppLogger();
@@ -72,7 +68,8 @@ class AuthMiddleware implements MiddlewareInterface
                 // validate the user session; however, do not update tLastOperation if the requested path is "/background"
                 // since /background operations do not connotate user activity.
 
-                // Confine EditSelf-only users to the self-service flow.
+                // Confine EditSelf-only users to the Member Portal, the whole of
+                // their self-service surface (design P10, #9863).
                 // BUT allow them through if they need to change their password — blocking
                 // the change-password page locks new users out permanently. See #8680.
                 // Zero-permission users are NOT redirected: they retain read-only access
@@ -82,7 +79,7 @@ class AuthMiddleware implements MiddlewareInterface
                 if ($sessionUser->isEditSelfExclusive() && !$this->isLimitedAccessAllowedPath($request)) {
                     if ($this->isBrowserRequest($request)) {
                         $rootPath = SystemURLs::getRootPath();
-                        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
+                        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/portal/');
                     }
                     // API request — return 403
                     $response = new Response();
@@ -122,39 +119,66 @@ class AuthMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Check whether the current request targets a path that must remain reachable by an
-     * EditSelf-exclusive user.
+     * Paths that carry no authentication at all.
      *
-     * Auth-flow exemptions (#8680). Without these, limited-permission users get stuck in
-     * a redirect loop because AuthMiddleware blocks the page the auth system is sending
-     * them to:
-     *  - /user/current/changepassword  — forced password change on first login
-     *  - /user/current/manage2fa       — forced 2FA enrollment when bRequire2FA is on
-     *  - /user/current/enroll2fa       — backward-compat alias for manage2fa
-     *  - /user/impersonate/exit        — the way out of an admin masquerade (#9843).
-     *    Without this, an administrator who logs in as an EditSelf-exclusive user
-     *    is bounced to /external/limited-access on the very request that would
-     *    hand them their own session back, and the masquerade cannot be ended
-     *    from the banner at all.
+     *  - /api/public/…     — the public API surface
+     *  - /portal/theme/…   — Member Portal theme assets (#9863). Include/ is
+     *    deny-all at the web-server level, so a theme's stylesheet, script,
+     *    images and fonts are streamed by the application instead. The route
+     *    serves nothing but allow-listed static files, and staying public is
+     *    what keeps a cached portal page from breaking on a logged-out asset
+     *    request (design §2.2 step 6).
      *
-     * Volunteer v2 member self-service (#9706, design §4.7). D14 makes volunteers
-     * EditSelf-exclusive users — that persona IS the volunteer persona — so without an
-     * exemption a volunteer cannot see their own schedule. The exemption is deliberately
-     * as narrow as it can be:
-     *  - it is switched off entirely unless the rollout state includes V2;
-     *  - the paths are enumerated literally, never pattern-matched loosely;
-     *  - every route behind them derives the acting person from the authenticated
-     *    session and accepts no personId parameter (§3.3.3), which is how #9712's
-     *    "unauthorized person IDs cannot be substituted into requests" is satisfied
-     *    structurally rather than by a check that can be forgotten;
-     *  - they are additionally gated by VolunteerV2EnabledMiddleware and still authorize
-     *    per record.
-     * It grants reachability, not authority. Every other internal surface — including
-     * /api/volunteer/scopes and the coordinator area — stays blocked.
+     * Both are built with the install's root path, so a subdirectory install
+     * ('/crm/api/public') matches exactly as a root install does.
+     */
+    private function isPublicPath(ServerRequestInterface $request): bool
+    {
+        $path = $request->getUri()->getPath();
+        $rootPath = SystemURLs::getRootPath();
+
+        foreach (['/api/public', '/portal/theme'] as $publicPrefix) {
+            $publicPath = $rootPath . $publicPrefix;
+            if ($path === $publicPath || str_starts_with($path, $publicPath . '/')) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Check whether the current request targets a path an EditSelf-only session
+     * is allowed to reach. Everything else is redirected to the Member Portal.
+     *
+     * Allowed paths:
+     *  - /portal and /portal/…          — the Member Portal itself (#9863)
+     *  - /api/portal/…                  — the portal's own API surface
+     *  - /user/current/changepassword   — forced password change on first login
+     *  - /user/current/manage2fa        — forced 2FA enrollment when bRequire2FA is on
+     *  - /user/current/enroll2fa        — backward-compat alias for manage2fa
+     *  - /user/impersonate/exit         — the way out of an admin masquerade (#9843);
+     *    without it the exit request itself would be redirected away
+     *  - /api/volunteer/me/…, /volunteer/my-schedule, /volunteer/opportunities — the
+     *    Volunteer v2 member surface (#9706, design §4.7), only while the rollout
+     *    state includes V2; every route behind them derives the acting person from
+     *    the session and accepts no personId. These move into /portal with MP6 (#9867).
+     *
+     * Without the auth-flow exemptions, limited-permission users get stuck in a
+     * redirect loop because AuthMiddleware blocks the page the auth system is
+     * sending them to. See #8680.
      */
     private function isLimitedAccessAllowedPath(ServerRequestInterface $request): bool
     {
         $path = $request->getUri()->getPath();
+        $rootPath = SystemURLs::getRootPath();
+
+        foreach (['/portal', '/api/portal'] as $allowedPrefix) {
+            $allowedPath = $rootPath . $allowedPrefix;
+            if ($path === $allowedPath || str_starts_with($path, $allowedPath . '/')) {
+                return true;
+            }
+        }
 
         if (
             str_contains($path, '/user/current/changepassword')
