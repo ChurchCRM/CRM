@@ -1,0 +1,7 @@
+// Entry stylesheet for the `portal` webpack bundle → skin/v2/portal.min.css.
+//
+// It is deliberately separate from the core `churchcrm` bundle, which has an
+// RTL-flipped twin: a church theme loads on top of this file and must never be
+// flipped twice. Everything it pulls in uses logical properties only.
+@use "../../src/skin/scss/portal";
+@use "../../src/skin/scss/portal-bar";
