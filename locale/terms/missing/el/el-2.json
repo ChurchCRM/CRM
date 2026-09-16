@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} οικογένεια δεν ήταν δυνατό να γεωκωδικοποιηθεί",
+    "other": "{{count}} οικογένειες δεν ήταν δυνατό να γεωκωδικοποιηθούν"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Ενεργό για {{count}} δευτερόλεπτο",
+    "other": "Ενεργό για {{count}} δευτερόλεπτα"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Πρόκειται να στείλετε email επιβεβαίωσης σε {{count}} οικογένεια.",
+    "other": "Πρόκειται να στείλετε email επιβεβαίωσης σε {{count}} οικογένειες."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} οικογένεια δεν έχει καταχωρημένη διεύθυνση email και θα παραλειφθεί",
+    "other": "{{count}} οικογένειες δεν έχουν καταχωρημένη διεύθυνση email και θα παραλειφθούν"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…και {{count}} ακόμα που δεν αναφέρεται εδώ.",
+    "other": "…και {{count}} ακόμα που δεν αναφέρονται εδώ."
   }
 }

@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "לא ניתן היה למקם גיאוגרפית {{count}} משפחה",
+    "other": "לא ניתן היה למקם גיאוגרפית {{count}} משפחות"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "פעיל במשך {{count}} שנייה",
+    "other": "פעיל במשך {{count}} שניות"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "אתה עומד לשלוח אימיילי אישור ל-{{count}} משפחה.",
+    "other": "אתה עומד לשלוח אימיילי אישור ל-{{count}} משפחות."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "ל-{{count}} משפחה אין כתובת אימייל רשומה והיא תדולג",
+    "other": "ל-{{count}} משפחות אין כתובת אימייל רשומה והן ידולגו"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…ועוד {{count}} שאינו מופיע כאן.",
+    "other": "…ועוד {{count}} שאינם מופיעים כאן."
   }
 }
