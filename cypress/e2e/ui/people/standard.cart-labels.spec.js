@@ -137,6 +137,69 @@ describe("Cart mailing labels (#9873)", () => {
         });
     });
 
+    it("prints one label per household when grouped by family (CSV)", () => {
+        // Two adults and a child of one family in the cart used to produce two
+        // labels, one for the adults and one for the children. Grouped by
+        // family means one label, addressed to the adults.
+        // Labels cap the name at 33 characters, so keep these short.
+        const stamp = String(Cypress._.random(0, 1e5));
+        const household = "Hh" + stamp;
+        const adults = ["Ann" + stamp, "Ben" + stamp];
+        const child = "Cal" + stamp;
+        const householdStreet = "9 Household Way";
+
+        cy.visit("/FamilyEditor.php");
+        cy.contains("Family Info");
+        cy.get("#FamilyName").type(household);
+        cy.get('input[name="Address1"]').type(householdStreet);
+        cy.get('input[name="City"]').clear().type(city);
+        cy.get('select[name="State"]').select("IL", { force: true });
+        cy.get('input[name="Zip"]').clear().type(zip);
+        cy.get('input[name="FirstName1"]').type(adults[0]);
+        cy.get('input[name="LastName1"]').clear().type(household);
+        cy.get('select[name="Classification1"]').select("1", { force: true });
+        cy.get('select[name="Role1"]').select("1", { force: true });
+        cy.get('input[name="FirstName2"]').type(adults[1]);
+        cy.get('input[name="LastName2"]').clear().type(household);
+        cy.get('select[name="Classification2"]').select("1", { force: true });
+        cy.get('select[name="Role2"]').select("2", { force: true });
+        cy.get('input[name="FirstName3"]').type(child);
+        cy.get('input[name="LastName3"]').clear().type(household);
+        cy.get('select[name="Classification3"]').select("1", { force: true });
+        cy.get('select[name="Role3"]').select("3", { force: true });
+        cy.get('button[name="FamilySubmit"]').click();
+
+        cy.location("pathname")
+            .should("include", "/people/family/")
+            .then((pathname) => {
+                const householdId = Number(pathname.split("/").pop());
+                emptyCart();
+                cy.request({
+                    method: "POST",
+                    url: "/api/cart/",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ Family: householdId }),
+                });
+
+                const familyQuery = labelQuery.replace("groupbymode=indiv", "groupbymode=fam");
+                cy.request(`/Reports/PDFLabel.php?${familyQuery}&filetype=CSV`).then((response) => {
+                    expect(response.status).to.equal(200);
+                    const rows = String(response.body)
+                        .split("\n")
+                        .filter((line) => line.includes(householdStreet));
+                    expect(rows, "one label for the household").to.have.length(1);
+                    expect(rows[0], "addressed to both adults").to.include(`${adults[0]} & ${adults[1]} ${household}`);
+                    expect(rows[0], "not to the child").to.not.include(child);
+                });
+
+                cy.request({
+                    method: "DELETE",
+                    url: `/api/family/${householdId}?deleteMembers=true`,
+                    failOnStatusCode: false,
+                });
+            });
+    });
+
     it("generates the PDF without a server error", () => {
         cy.request({
             url: `/Reports/PDFLabel.php?${labelQuery}&filetype=PDF`,

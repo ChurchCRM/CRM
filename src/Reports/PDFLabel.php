@@ -629,6 +629,18 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
         if ($mode === 'fam') {
             $aName = GroupBySalutation($aRow['per_fam_ID'], $aAdultRole, $aChildRole);
+
+            // One label per household (#9873): the adults' salutation when an
+            // adult of the family is in the cart, else the children's (so a
+            // class list still gets "To the parents of"), else the family
+            // name. Before, a family with adults and children in the cart got
+            // one label for each group.
+            foreach (['adult', 'child', 'other'] as $sGroup) {
+                if ($aName[$sGroup] !== 'Nothing to return') {
+                    $aName = [$sGroup => $aName[$sGroup]];
+                    break;
+                }
+            }
         } else {
             $sName = MiscUtils::formatFullName(
                 $aRow['per_Title'],
