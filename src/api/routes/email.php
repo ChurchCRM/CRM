@@ -28,8 +28,12 @@ use Slim\Routing\RouteCollectorProxy;
  *     ),
  *     @OA\Response(response=200, description="Email sent successfully",
  *         @OA\JsonContent(
- *             @OA\Property(property="sent",    type="integer", description="Number of messages sent"),
- *             @OA\Property(property="failed",  type="integer", description="Number of messages that failed"),
+ *             @OA\Property(property="sent",    type="integer",
+ *                 description="Number of messages sent"),
+ *             @OA\Property(property="failed",  type="integer",
+ *                 description="Number of messages that failed to send"),
+ *             @OA\Property(property="skipped", type="integer",
+ *                 description="Number of addresses skipped before send (invalid format or duplicate). sent + failed + skipped always equals the total number of entries in the request recipients array."),
  *             @OA\Property(property="errors",  type="array",   @OA\Items(type="string"))
  *         )
  *     ),
@@ -90,18 +94,35 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
             );
         }
 
-        // ── Sanitise inputs ──────────────────────────────────────────── //
-        $rawRecipients = $payload['recipients'];
-        $recipients    = [];
+        // ── Normalise, validate, and deduplicate recipients ───────────── //
+        // $totalRequested is used to compute the `skipped` count so that
+        // sent + failed + skipped always equals the number of entries the
+        // caller submitted, with no silent drops.
+        $rawRecipients  = $payload['recipients'];
+        $totalRequested = count($rawRecipients);
+
+        $seen       = [];
+        $recipients = [];
         foreach ($rawRecipients as $addr) {
             if (!is_string($addr)) {
-                continue;
+                continue; // non-string entry → skipped
             }
             $addr = trim($addr);
-            if ($addr !== '' && filter_var($addr, FILTER_VALIDATE_EMAIL)) {
-                $recipients[] = $addr;
+            if ($addr === '' || !filter_var($addr, FILTER_VALIDATE_EMAIL)) {
+                continue; // empty or invalid address → skipped
             }
+            // Normalise to lowercase for deduplication (addresses are
+            // case-insensitive in practice even though the local-part is
+            // technically case-sensitive per RFC 5321).
+            $normalised = strtolower($addr);
+            if (isset($seen[$normalised])) {
+                continue; // duplicate → skipped
+            }
+            $seen[$normalised] = true;
+            $recipients[]      = $addr;
         }
+
+        $skipped = $totalRequested - count($recipients);
 
         if (count($recipients) === 0) {
             return SlimUtils::renderErrorJSON(
@@ -119,6 +140,9 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
         $bcc     = !empty($payload['bcc']) && $payload['bcc'] !== false && $payload['bcc'] !== 'false';
 
         // ── Limit batch size to guard against accidental spam ─────────── //
+        // The batch-size check is applied after deduplication so that a
+        // request with many duplicates is not rejected for a limit it would
+        // not actually reach.
         $maxBatchSize = 500;
         if (count($recipients) > $maxBatchSize) {
             return SlimUtils::renderErrorJSON(
@@ -133,14 +157,17 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
 
         // ── Send ─────────────────────────────────────────────────────── //
         try {
-            $email = new BulkEmail($recipients, $subject, $body, $bcc);
-            $sent  = $email->send() ? count($recipients) : 0;
-            $errors = $sent === 0 ? [$email->getError()] : [];
+            $email  = new BulkEmail($recipients, $subject, $body, $bcc);
+            $sent   = $email->send() ? count($recipients) : 0;
+            $failed = count($recipients) - $sent;
+            $errors = $failed > 0 ? array_filter([$email->getError()]) : [];
 
+            // Invariant: $sent + $failed + $skipped === $totalRequested
             return SlimUtils::renderJSON($response, [
                 'sent'    => $sent,
-                'failed'  => count($recipients) - $sent,
-                'errors'  => array_filter($errors),
+                'failed'  => $failed,
+                'skipped' => $skipped,
+                'errors'  => $errors,
             ]);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON(

@@ -41,6 +41,7 @@ interface EmailListResponse {
 interface EmailSendResponse {
   sent?: number;
   failed?: number;
+  skipped?: number;
   errors?: string[];
   message?: string;
   error?: string;
@@ -290,9 +291,15 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
       const bannerIcon = document.createElement("i");
       bannerIcon.className = "fa-solid fa-circle-check me-2";
       banner.appendChild(bannerIcon);
-      banner.appendChild(
-        document.createTextNode(i18next.t("Email sent to {{count}} recipient(s).", { count: data.sent })),
-      );
+      const skipped = data.skipped ?? 0;
+      const successText =
+        skipped > 0
+          ? i18next.t(
+              "Email sent to {{count}} recipient(s). {{skipped}} invalid or duplicate address(es) were skipped.",
+              { count: data.sent, skipped },
+            )
+          : i18next.t("Email sent to {{count}} recipient(s).", { count: data.sent });
+      banner.appendChild(document.createTextNode(successText));
       composeFormEl?.appendChild(banner);
 
       // Disable form so user can't accidentally re-send
