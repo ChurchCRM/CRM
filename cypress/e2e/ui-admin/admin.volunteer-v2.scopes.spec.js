@@ -199,7 +199,7 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
             cy.get("#scopeCoordinatorModal").should("not.be.visible");
             cy.get("#volunteerCoordinatorsTable tbody")
                 .should("contain", COORDINATOR_NAME)
-                .find(`a[href*="PersonView.php?PersonID=${COORDINATOR_PERSON}"]`)
+                .find(`a[href$="/people/view/${COORDINATOR_PERSON}"]`)
                 .should("exist");
             cy.get("#scopes-coordinators-empty").should("not.be.visible");
         });
@@ -250,7 +250,7 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
             cy.get("#teamModal").should("not.be.visible");
             cy.get(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"] .volunteer-team-leader-cell`)
                 .should("contain", LEADER_NAME)
-                .find(`a[href*="PersonView.php?PersonID=${LEADER_PERSON}"]`)
+                .find(`a[href$="/people/view/${LEADER_PERSON}"]`)
                 .should("exist");
         });
 

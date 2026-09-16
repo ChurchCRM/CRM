@@ -396,7 +396,7 @@ function teamLeaderCell(team: VolunteerTeam): string {
   return leaders
     .map(
       (leader: VolunteerTeamLeader) =>
-        `<a href="${root}/PersonView.php?PersonID=${leader.personId}">${escapeHtml(leader.personName)}</a>`,
+        `<a href="${root}/people/view/${leader.personId}">${escapeHtml(leader.personName)}</a>`,
     )
     .join(", ");
 }

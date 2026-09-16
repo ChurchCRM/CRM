@@ -177,7 +177,7 @@ function grantRow(grant: VolunteerScopeGrant): string {
 
   return `<tr class="volunteer-scope-row" data-scope-id="${grant.id}">
       <td class="fw-bold">
-        <a href="${root()}/PersonView.php?PersonID=${grant.personId}">${escapeHtml(grant.personName)}</a>
+        <a href="${root()}/people/view/${grant.personId}">${escapeHtml(grant.personName)}</a>
       </td>
       <td>${escapeHtml(grantedLabel(grant.grantedDate))}</td>
       <td class="w-1">${menu}</td>
