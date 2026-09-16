@@ -191,6 +191,14 @@ function listPeople(Request $request, Response $response, array $args): Response
         $familyActiveStatus = 'all';
     }
 
+    // Person active/inactive status filter (default: show only active persons)
+    $personActiveStatus = 'active';
+    if (($_GET['personActiveStatus'] ?? '') === 'inactive') {
+        $personActiveStatus = 'inactive';
+    } elseif (($_GET['personActiveStatus'] ?? '') === 'all') {
+        $personActiveStatus = 'all';
+    }
+
     $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
 
     if ($sInactiveClassificationIds === '') {
@@ -205,6 +213,14 @@ function listPeople(Request $request, Response $response, array $args): Response
     }
 
     $members->leftJoinFamily();
+
+    // Apply person active status filter
+    if ($personActiveStatus === 'active') {
+        $members->filterByDateDeactivated(null);
+    } elseif ($personActiveStatus === 'inactive') {
+        $members->filterByDateDeactivated(null, Criteria::ISNOTNULL);
+    }
+
     $members->find();
 
     $filterByClsId = '';
@@ -270,6 +286,7 @@ function listPeople(Request $request, Response $response, array $args): Response
             [gettext('Person Listing')],
         ]),
         'members'                         => $members,
+        'personActiveStatus'              => $personActiveStatus,
         'filterByClsId'                   => $filterByClsId,
         'filterByClsOptionId'             => $filterByClsOptionId,
         'filterByFmrId'                   => $filterByFmrId,

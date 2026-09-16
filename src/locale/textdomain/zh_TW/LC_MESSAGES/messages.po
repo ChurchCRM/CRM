@@ -5156,16 +5156,6 @@ msgstr "驗證網址已創建"
 
 #: 
 #, fuzzy
-msgid "URL"
-msgstr "網址"
-
-#: 
-#, fuzzy
-msgid "PDF"
-msgstr "PDF"
-
-#: 
-#, fuzzy
 msgid "Error sending email(s)"
 msgstr "發送電子郵件時出錯"
 
@@ -8590,10 +8580,6 @@ msgstr "您的密碼已成功更新。"
 #: 
 msgid "selected family has no coordinates"
 msgstr "所選家庭沒有座標"
-
-#: 
-msgid "2FA"
-msgstr "雙重驗證"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12353,10 +12339,6 @@ msgid "Database dump only (.sql)"
 msgstr "僅資料庫轉儲（.sql）"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "日期範圍不能超過1年"
-
-#: 
 msgid "Destructive Operation"
 msgstr "危險操作"
 
@@ -12951,10 +12933,6 @@ msgstr "找不到此角色清單的事工"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "停用狀態只能在分類清單中切換"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "新使用者將不會收到包含其登入資訊的歡迎電子郵件。請手動與他們分享密碼，或先設定電子郵件。"
 
 #: 
 msgid "Option name is required"
@@ -17976,4 +17954,73 @@ msgstr "未找到 %s %d 的任何活動。"
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "請嘗試選擇不同的活動類型、月份或年份。"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "發生地理編碼錯誤，請稍後再試"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "地址不完整（缺少城市、州/省和郵遞區號）"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "所有家庭都已有座標。"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "更新座標失敗"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "更新家庭座標失敗"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "已為全部 {{geocoded}} 個家庭完成地理編碼。地圖現已更新。"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "已為 {{geocoded}} 個家庭完成地理編碼。{{failed}} 個無法解析 — 詳見下方說明。"
+
+#: 
+msgid "Geocoding…"
+msgstr "地理編碼中……"
+
+#: 
+msgid "No address on file"
+msgstr "沒有存檔地址"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "找不到相符結果 — 請檢查街道地址、城市和郵遞區號"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "開啟該家庭以修正其地址，然後再次執行此操作。"
+
+#: 
+msgid "Set up now"
+msgstr "立即設定"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "需要雙因素驗證。您還有 %d 天可以完成註冊。"
+
+#: 
+msgid "Unknown family"
+msgstr "未知家庭"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "更新所有座標"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "更新所有家庭座標"
+
+#: 
+msgid "Update Coordinates"
+msgstr "更新座標"
 

@@ -5050,14 +5050,6 @@ msgid "Verification URL created"
 msgstr "Δημιουργήθηκε διεύθυνση URL επαλήθευσης"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Σφάλμα αποστολής email(ων)"
 
@@ -8449,10 +8441,6 @@ msgstr "Ο κωδικός σας ενημερώθηκε με επιτυχία."
 #: 
 msgid "selected family has no coordinates"
 msgstr "η επιλεγμένη οικογένεια δεν έχει συντεταγμένες"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12214,10 +12202,6 @@ msgid "Database dump only (.sql)"
 msgstr "Μόνο εξαγωγή βάσης δεδομένων (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Το εύρος ημερομηνιών δεν μπορεί να υπερβαίνει το 1 έτος"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Καταστροφική Λειτουργία"
 
@@ -12812,10 +12796,6 @@ msgstr "Η ομάδα δεν βρέθηκε για αυτήν τη λίστα ρ
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Η ανενεργή κατάσταση μπορεί να αλλαχτεί μόνο για τη λίστα ταξινομήσεων"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Οι νέοι χρήστες δεν θα λάβουν email καλωσορίσματος με τα διαπιστευτήριά τους. Κοινοποιήστε τον κωδικό πρόσβασης χειροκίνητα ή ρυθμίστε πρώτα το email."
 
 #: 
 msgid "Option name is required"
@@ -17842,4 +17822,68 @@ msgstr "Δεν βρέθηκαν εκδηλώσεις για %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Δοκιμάστε να επιλέξετε διαφορετικό τύπο εκδήλωσης, μήνα ή έτος."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Παρουσιάστηκε σφάλμα γεωκωδικοποίησης — δοκιμάστε ξανά αργότερα"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Η διεύθυνση είναι ελλιπής (λείπει η πόλη, η πολιτεία και ο ταχυδρομικός κώδικας)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Όλες οι οικογένειες έχουν ήδη συντεταγμένες."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Αποτυχία ενημέρωσης συντεταγμένων"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Αποτυχία ενημέρωσης συντεταγμένων οικογένειας"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Έγινε γεωκωδικοποίηση και των {{geocoded}} οικογενειών. Ο χάρτης είναι πλέον ενημερωμένος."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Έγινε γεωκωδικοποίηση {{geocoded}} οικογενειών. {{failed}} δεν ήταν δυνατό να επιλυθούν — δείτε λεπτομέρειες παρακάτω."
+
+#: 
+msgid "Geocoding…"
+msgstr "Γεωκωδικοποίηση…"
+
+#: 
+msgid "No address on file"
+msgstr "Δεν υπάρχει καταχωρημένη διεύθυνση"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Δεν βρέθηκε αντιστοιχία — ελέγξτε τη διεύθυνση, την πόλη και τον ταχυδρομικό κώδικα"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Ανοίξτε μια οικογένεια για να διορθώσετε τη διεύθυνσή της και, στη συνέχεια, εκτελέστε το ξανά."
+
+#: 
+msgid "Set up now"
+msgstr "Ρύθμιση τώρα"
+
+#: 
+msgid "Unknown family"
+msgstr "Άγνωστη οικογένεια"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Ενημέρωση Όλων των Συντεταγμένων"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Ενημέρωση Όλων των Συντεταγμένων Οικογενειών"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Ενημέρωση Συντεταγμένων"
 

@@ -5054,14 +5054,6 @@ msgid "Verification URL created"
 msgstr "URL xác minh đã được tạo"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Lỗi khi gửi (các) email"
 
@@ -8445,10 +8437,6 @@ msgstr "Mật khẩu của bạn đã được cập nhật thành công."
 #: 
 msgid "selected family has no coordinates"
 msgstr "gia đình đã chọn không có tọa độ"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12208,10 +12196,6 @@ msgid "Database dump only (.sql)"
 msgstr "Chỉ kết xuất cơ sở dữ liệu (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Phạm vi ngày không được vượt quá 1 năm"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Thao tác xóa dữ liệu"
 
@@ -12806,10 +12790,6 @@ msgstr "Không tìm thấy sứ vụ cho danh sách vai trò này"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Trạng thái không hoạt động chỉ có thể được bật/tắt cho danh sách phân loại"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Thành viên mới sẽ không nhận được email chào mừng kèm thông tin đăng nhập. Hãy chia sẻ mật khẩu với họ theo cách thủ công, hoặc cấu hình email trước."
 
 #: 
 msgid "Option name is required"
@@ -17831,4 +17811,73 @@ msgstr "Không tìm thấy sự kiện nào cho %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Hãy thử chọn loại sự kiện, tháng hoặc năm khác."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Đã xảy ra lỗi định vị địa lý — vui lòng thử lại sau"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Địa chỉ không đầy đủ (thiếu thành phố, tỉnh/bang và mã ZIP)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Tất cả các gia đình đều đã có tọa độ."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Không thể cập nhật tọa độ"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Không thể cập nhật tọa độ gia đình"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Đã định vị địa lý cho tất cả {{geocoded}} gia đình. Bản đồ hiện đã được cập nhật."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Đã định vị địa lý cho {{geocoded}} gia đình. {{failed}} không thể xác định được — xem chi tiết bên dưới."
+
+#: 
+msgid "Geocoding…"
+msgstr "Đang định vị địa lý…"
+
+#: 
+msgid "No address on file"
+msgstr "Không có địa chỉ được lưu"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Không tìm thấy kết quả phù hợp — hãy kiểm tra địa chỉ đường, thành phố và mã ZIP"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Mở một gia đình để sửa địa chỉ, sau đó chạy lại thao tác này."
+
+#: 
+msgid "Set up now"
+msgstr "Thiết lập ngay"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Yêu cầu xác thực hai yếu tố. Bạn có %d ngày để đăng ký."
+
+#: 
+msgid "Unknown family"
+msgstr "Gia đình không xác định"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Cập nhật tất cả tọa độ"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Cập nhật tất cả tọa độ gia đình"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Cập nhật tọa độ"
 

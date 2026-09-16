@@ -6,11 +6,11 @@ use ChurchCRM\Utils\InputUtils;
 
 /** @var string $title   Short headline, already translated. */
 /** @var string $message Longer explanation, already translated. */
-/** @var string $icon    Optional Tabler icon class (e.g. 'ti-calendar-x'). */
+/** @var string $icon    Optional Font Awesome icon class (e.g. 'fa-calendar-xmark'). */
 
 $sPageTitle = $title;
 $sBodyClass = 'antialiased d-flex flex-column';
-$icon ??= 'ti-calendar-off';
+$icon ??= 'fa-calendar-xmark';
 $rootPath = SystemURLs::getRootPath();
 $churchName = ChurchMetaData::getChurchName();
 $logoURL = ChurchMetaData::getChurchLogoURL();
@@ -39,7 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
       <div class="card-status-top bg-warning"></div>
       <div class="card-body text-center py-5">
         <div class="mb-3">
-          <i class="ti <?= InputUtils::escapeAttribute($icon) ?> text-warning" style="font-size: 3.5rem; line-height: 1;"></i>
+          <i class="fa-solid <?= InputUtils::escapeAttribute($icon) ?> text-warning" style="font-size: 3.5rem; line-height: 1;"></i>
         </div>
         <h2 class="h2 mb-2"><?= InputUtils::escapeHTML($title) ?></h2>
         <p class="text-body-secondary mb-4 mx-auto" style="max-width: 32rem;">

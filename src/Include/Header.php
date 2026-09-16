@@ -338,7 +338,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
             <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="dropdown-item"
                title="<?= gettext('New Release') ?>">
-              <i class="fa-solid fa-party-horn me-2"></i><?= gettext('New Release') ?>
+              <i class="fa-solid fa-champagne-glasses me-2"></i><?= gettext('New Release') ?>
               <?php if ($updateVersion) { ?>
                 <span id="upgradeToVersion" class="ms-1">
                   <?= $updateVersion->MAJOR ?>.<?= $updateVersion->MINOR ?>.<?= $updateVersion->PATCH ?>
@@ -348,7 +348,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <?php } ?>
             <a href="https://github.com/ChurchCRM/CRM/releases/latest" target="_blank"
                class="dropdown-item" title="<?= gettext('Release Notes') ?>">
-              <i class="fa-solid fa-notebook me-2"></i><?= gettext('Release Notes') ?>
+              <i class="fa-solid fa-book me-2"></i><?= gettext('Release Notes') ?>
             </a>
           </div>
         </div>
@@ -604,7 +604,7 @@ if ($_twoFAGraceUser !== null):
 ?>
 <div class="alert <?= InputUtils::escapeHTML($_twoFAAlertClass) ?> alert-dismissible mb-0" role="alert" id="two-fa-grace-banner">
   <div class="d-flex align-items-center">
-    <div class="me-2"><i class="ti ti-shield-lock"></i></div>
+    <div class="me-2"><i class="fa-solid fa-shield-halved"></i></div>
     <div>
       <?= InputUtils::escapeHTML(sprintf(
           ngettext(
