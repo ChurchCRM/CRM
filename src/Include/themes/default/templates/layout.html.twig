@@ -82,6 +82,10 @@
 <script nonce="{{ nonce() }}">
     window.CRM = Object.assign(window.CRM || {}, {{ portal.bootstrapJson }});
 </script>
+{# Confirmations and prompts. Not part of the core bundle — the admin shell loads
+   it from Include/Footer.php, and every portal page that asks a member "are you
+   sure?" needs the same dialog (design §1, "bootbox — reuse"). #}
+<script src="{{ asset('/skin/external/bootbox/bootbox.min.js') }}"></script>
 <script src="{{ asset('/skin/external/i18next/i18next.min.js') }}"></script>
 <script src="{{ asset('/skin/v2/locale-loader.min.js') }}"></script>
 <script nonce="{{ nonce() }}">

@@ -1,12 +1,31 @@
 {% extends "layout.html.twig" %}
 
 {#
-  The member's landing page. MP2 ships the welcome card and a clearly-marked
+  The member's landing page. MP2 shipped the welcome card and a clearly-marked
   placeholder for each section a later issue fills in, so a church that installs
   this release sees what is coming rather than an empty page.
+
+  MP6 (#9867) makes the volunteering card real: its two lines — what the member
+  is on for next, and how many of their assignments are still waiting for an
+  answer — are filled in by `portal.min.js` from `/api/volunteer/me/assignments`.
+  The card is server-rendered empty and stays useful if that request fails.
 #}
 
+{% macro placeholder_card(icon, title) %}
+<section class="portal-card portal-card-placeholder">
+    <h2 class="portal-card-title">
+        <i class="{{ icon }}" aria-hidden="true"></i>
+        <span>{{ title }}</span>
+    </h2>
+    <p class="portal-placeholder-badge">{{ gettext('Coming soon') }}</p>
+    <p class="portal-card-text">
+        {{ gettext('This part of the Member Portal is not ready yet. It will appear here in a future update.') }}
+    </p>
+</section>
+{% endmacro %}
+
 {% block content %}
+{% import _self as cards %}
 <div class="portal-home">
 
     <section class="portal-card portal-welcome">
@@ -20,24 +39,34 @@
     </section>
 
     <div class="portal-card-grid">
-        {% set placeholders = [
-            { 'icon': 'fa-solid fa-calendar-days', 'title': gettext('Church calendar') },
-            { 'icon': 'fa-solid fa-handshake-angle', 'title': gettext('My volunteering') },
-            { 'icon': 'fa-solid fa-people-roof', 'title': gettext('My family') },
-            { 'icon': 'fa-solid fa-user', 'title': gettext('My profile') }
-        ] %}
-        {% for placeholder in placeholders %}
-        <section class="portal-card portal-card-placeholder">
+
+        {{ cards.placeholder_card('fa-solid fa-calendar-days', gettext('Church calendar')) }}
+
+        {% if showVolunteering %}
+        <section class="portal-card portal-card-volunteering" id="portal-volunteering-card">
             <h2 class="portal-card-title">
-                <i class="{{ placeholder.icon }}" aria-hidden="true"></i>
-                <span>{{ placeholder.title }}</span>
+                <i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>
+                <span>{{ gettext('My volunteering') }}</span>
             </h2>
-            <p class="portal-placeholder-badge">{{ gettext('Coming soon') }}</p>
-            <p class="portal-card-text">
-                {{ gettext('This part of the Member Portal is not ready yet. It will appear here in a future update.') }}
+
+            <p class="portal-card-text" id="portal-volunteering-loading">{{ gettext('Loading') }}</p>
+
+            {# Filled by portal.min.js; the strings it writes are i18next.t() there. #}
+            <p class="portal-card-text d-none" id="portal-volunteering-next"></p>
+            <p class="portal-volunteering-pending d-none" id="portal-volunteering-pending"></p>
+
+            <p class="portal-card-text d-none" id="portal-volunteering-empty">
+                {{ gettext('Nothing on your list yet. Have a look at what needs filling.') }}
             </p>
+
+            <a class="portal-card-link" href="{{ url('/portal/volunteer/schedule') }}">
+                {{ gettext('Go to my volunteering') }}
+            </a>
         </section>
-        {% endfor %}
+        {% endif %}
+
+        {{ cards.placeholder_card('fa-solid fa-people-roof', gettext('My family')) }}
+        {{ cards.placeholder_card('fa-solid fa-user', gettext('My profile')) }}
     </div>
 
 </div>

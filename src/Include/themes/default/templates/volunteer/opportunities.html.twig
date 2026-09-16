@@ -1,0 +1,88 @@
+{% extends "layout.html.twig" %}
+
+{#
+  S6 — open opportunities, in the Member Portal (MP6, #9867; Member Portal design
+  §5.4, volunteer design §5.6).
+
+  The same card shape as the schedule page over `GET /api/volunteer/me/opportunities`,
+  each with a single **Sign up** button, and above it D19's "Ministries looking for
+  help" with its one **I'd like to help** button per ministry. The list is
+  server-side eligibility, and the server re-validates at signup (§3.3.3, D5), so
+  the button is never a trap.
+
+  Every id below is one `webpack/volunteer/opportunities.ts` looks for: the bundle
+  did not change when the page moved (P15), so none of them may be renamed here.
+
+  An empty list is a **first-class state, not an error** (§5.6): a Tabler `.empty`
+  block saying nothing is open right now, never a spinner that never resolves.
+#}
+
+{% block content %}
+<div class="portal-volunteer">
+
+    {% include 'volunteer/partials/tabs.html.twig' %}
+
+    <div id="volunteer-opportunities">
+
+        <div class="card mb-3">
+            <div class="card-body d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                <div class="text-body-secondary">
+                    <i class="fa-solid fa-circle-info me-1" aria-hidden="true"></i>
+                    {{ gettext('These are the places you are trained for that still need someone.') }}
+                </div>
+                <a class="btn btn-outline-primary volunteer-touch-target" href="{{ url('/portal/volunteer/schedule') }}">
+                    <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>{{ gettext('Back to my schedule') }}
+                </a>
+            </div>
+        </div>
+
+        {#
+          Ministries looking for help (D19, design §5.6).
+
+          ABOVE the shift list on purpose: a volunteer with no qualifications yet
+          sees an empty shift list, and this is the section that gives them
+          somewhere to go. The whole block is hidden by opportunities.ts when no
+          ministry is advertising — a heading over nothing is worse than silence.
+        #}
+        <div class="d-none" id="help-wanted-section">
+            <h3 class="h4 mb-2">{{ gettext('Ministries looking for help') }}</h3>
+            <p class="text-body-secondary">
+                {{ gettext('These ministries would like more people. Tell them you are interested and someone will be in touch.') }}
+            </p>
+            <div id="help-wanted-content"></div>
+            <hr class="my-4">
+        </div>
+
+        <div class="volunteer-loading text-center py-4" id="opportunities-loading">
+            <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+            {{ gettext('Loading') }}
+        </div>
+
+        <div class="alert alert-danger d-none" role="alert" id="opportunities-error">
+            <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+            <span class="volunteer-error-text"></span>
+            <button type="button" class="btn btn-sm btn-outline-danger ms-2" id="opportunities-retry">{{ gettext('Retry') }}</button>
+        </div>
+
+        <div class="empty d-none" id="opportunities-empty">
+            <div class="empty-icon"><i class="fa-solid fa-calendar-check fa-2x text-muted" aria-hidden="true"></i></div>
+            <p class="empty-title">{{ gettext('Nothing open right now') }}</p>
+            <p class="empty-subtitle text-body-secondary">
+                {{ gettext('We will email you when something needs filling.') }}
+            </p>
+            <div class="empty-action">
+                <a class="btn btn-primary volunteer-touch-target" href="{{ url('/portal/volunteer/schedule') }}">
+                    <i class="fa-solid fa-calendar-check me-1" aria-hidden="true"></i>{{ gettext('Back to my schedule') }}
+                </a>
+            </div>
+        </div>
+
+        <div class="d-none" id="opportunities-content"></div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/volunteer-opportunities.min.js') }}"></script>
+{% endblock %}
