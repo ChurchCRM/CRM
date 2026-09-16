@@ -199,7 +199,11 @@
 .portal-layout {
     display: grid;
     gap: var(--portal-gap);
-    grid-template-columns: 1fr;
+    // minmax(0, 1fr), not 1fr: a grid track sized 1fr is still floored at the
+    // item's min-content width, so one wide child — a calendar grid, a table —
+    // would stretch the whole page and make the body scroll sideways. This lets
+    // the column shrink and leaves the wide child to scroll inside its own card.
+    grid-template-columns: minmax(0, 1fr);
 }
 
 .portal-card {
@@ -561,6 +565,7 @@
             flex: 0 0 7rem;
         }
     }
+
 }
 
 @media (min-width: 992px) {
