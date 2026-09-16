@@ -76,6 +76,7 @@ renderers.
 - `familyId` — optional; when provided, adds a "View Family" item after Edit
 - `inCart` — optional; flips cart button to RemoveFromCart state
 - The global `.delete-person` delegated handler is registered in `CRMJSOM.js` — **no per-page copy needed**
+- Any user-supplied string going into a `data-*` (or other) attribute must be encoded with `window.CRM.escapeAttribute()`, which encodes quotes as well; `window.CRM.escapeHtml()` is for HTML text context only <!-- learned: 2026-09-12 -->
 - These functions call `i18next.t()` at render time (safe: DataTables render after locales load)
 
 ```javascript
@@ -120,7 +121,7 @@ For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 | Rule | ✅ Correct | ❌ Wrong |
 |------|-----------|---------|
 | Trigger class | `btn-ghost-secondary` | `btn-outline-secondary`, `btn-secondary` |
-| Trigger icon | `fa-solid fa-ellipsis-vertical` | `fa-solid fa-ellipsis-v`, `fa-ellipsis-v`, `ti ti-dots-vertical` |
+| Trigger icon | `fa-solid fa-ellipsis-vertical` | `fa-solid fa-ellipsis-v`, `fa-ellipsis-v` |
 | Menu alignment | `dropdown-menu-end` | `dropdown-menu-right` |
 | Aria attribute | `aria-expanded="false"` only | `aria-haspopup="true"` |
 | Inline styles | none | `style="z-index:..."`, `style="position:..."` |

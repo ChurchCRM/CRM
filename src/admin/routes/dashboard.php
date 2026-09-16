@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -125,6 +126,11 @@ $app->get('/', function (Request $request, Response $response) {
         ],
     ];
 
+    // Scheduled-task health (#9724). The timer jobs only run on a page load
+    // unless the administrator has installed the cron entry, so surface it here
+    // rather than letting birthday emails silently stop going out.
+    $timerJobsLastRun = SystemService::getLastTimerJobsRun();
+
     $pageArgs = [
         'sRootPath'        => SystemURLs::getRootPath(),
         'sPageTitle'       => gettext('Admin Dashboard'),
@@ -141,6 +147,10 @@ $app->get('/', function (Request $request, Response $response) {
         'completedSteps'   => $completedSteps,
         'totalSteps'       => $totalSteps,
         'allDone'          => $completedSteps === $totalSteps,
+        'timerJobsStale'       => SystemService::isTimerJobsRunStale(),
+        'timerJobsStaleHours'  => SystemService::getTimerJobsStaleHours(),
+        'timerJobsLastRun'     => $timerJobsLastRun?->format('Y-m-d H:i:s'),
+        'timerJobsCronCommand' => '/usr/bin/php ' . SystemURLs::getDocumentRoot() . '/cli/timerjobs.php',
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

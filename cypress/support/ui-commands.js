@@ -456,7 +456,9 @@ Cypress.Commands.add('select2Clear', (selector) => {
     cy.tomSelectClear(selector);
 });
 Cypress.Commands.add('select2GetSelected', (selector) => {
-    cy.tomSelectGetSelected(selector);
+    // Must `return` so the alias yields the same subject as tomSelectGetSelected;
+    // without it Cypress yields undefined and .should() asserts on nothing.
+    return cy.tomSelectGetSelected(selector);
 });
 Cypress.Commands.add('select2HasTheme', (selector) => {
     cy.tomSelectIsInitialized(selector);
