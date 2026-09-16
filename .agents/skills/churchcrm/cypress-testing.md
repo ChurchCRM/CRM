@@ -565,6 +565,31 @@ describe("Group property management", () => {
 
 `afterEach` / `after` are still fine for **non-state** housekeeping (printing debug info, collecting artifacts). Don't use them to reset application state.
 
+### Test-database drift guard and `cy.cleanup*()` helpers (#9769) <!-- learned: 2026-09-16 -->
+
+Every spec file run through the three docker configs is bracketed by a row-count
+guard (`cypress/support/e2e.js` + `cypress/configs/row-count-guard.ts`): it
+`COUNT(*)`s `events_event`, `event_attend`, `calendar_events`, `person_per`,
+`family_fam` and `note_nte` before and after the file and **fails the file** if
+the count grew (leaked rows) or shrank (seeded rows deleted). `note_nte` growth is
+only reported (the app writes audit notes on nearly every person/family write);
+shrinkage still fails.
+
+- Track every id a spec creates and remove it with `cy.cleanupEvents(ids)`,
+  `cy.cleanupNotes(ids)`, `cy.cleanupPeople(ids)`, `cy.cleanupFamilies(ids)`.
+  They accept only `200` or `404` from the DELETE and then **re-read each id and
+  fail unless it is 404** — a `400`/`403`/`409` is a failed cleanup, not "already gone".
+- Unavoidable growth is declared, never muted: `cy.allowRowDrift(table, maxDelta, reason)`
+  in the spec's own `before()`; the accepted delta is `[0, maxDelta]`.
+- The guard reads MySQL over the published port. CI sets `ROW_GUARD_DB_PORT`
+  (`3306` root, `3307` subdir) and `ROW_GUARD_REQUIRED=1`; locally it falls back to
+  `DATABASE_PORT`/`3306`. An unreachable database **fails** the spec with a
+  connection error — set `ROW_GUARD_DB_PORT` for an isolated stack, or
+  `ROW_GUARD_DISABLED=1` to opt out of a local run (ignored when `REQUIRED` is set).
+- Limitation: counts are aggregates, so one leaked row replacing one deleted seeded
+  row is invisible to the guard; the per-id re-read in the cleanup helpers is what
+  covers the rows a spec knows about.
+
 ### When to use `cy.setupAdminSession({ forceLogin: true })` <!-- learned: 2026-04-13 -->
 
 `setupAdminSession()` uses `cy.session()` to cache the admin login across tests — normally you only pay the login cost once per run. The `{ forceLogin: true }` option generates a **new** unique session name (`admin-session-<timestamp>-<random>`), which bypasses the cache and forces a full re-login.
