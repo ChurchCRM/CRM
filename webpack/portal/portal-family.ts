@@ -11,8 +11,6 @@
  * Each `wire*` function returns immediately when its form is not on the page,
  * so the same file is correct on all three.
  */
-import i18next from "i18next";
-
 import {
   applyServerFailures,
   clearFieldErrors,
@@ -23,6 +21,7 @@ import {
   refreshDisplayedValues,
   setFieldError,
   showPortalToast,
+  t,
 } from "./portal-forms";
 
 interface PortalFamily {
@@ -41,7 +40,7 @@ function validateDate(form: HTMLFormElement, field: string, futureMessage: strin
   }
   const entered = new Date(`${input.value}T00:00:00`);
   if (Number.isNaN(entered.getTime())) {
-    setFieldError(form, field, i18next.t("That is not a valid date."));
+    setFieldError(form, field, t("That is not a valid date."));
     return false;
   }
   if (entered > new Date()) {
@@ -62,8 +61,8 @@ function wireFamilyForm(): void {
     event.preventDefault();
     clearFieldErrors(form);
 
-    if (!validateDate(form, "weddingDate", i18next.t("A wedding date cannot be in the future."))) {
-      showPortalToast("danger", i18next.t("Nothing was saved. Please check the highlighted fields."));
+    if (!validateDate(form, "weddingDate", t("A wedding date cannot be in the future."))) {
+      showPortalToast("danger", t("Nothing was saved. Please check the highlighted fields."));
       return;
     }
 
@@ -87,8 +86,8 @@ function wireFamilyForm(): void {
         showPortalToast(
           "success",
           updated.length === 0
-            ? i18next.t("Nothing had changed, so nothing was saved.")
-            : i18next.t("Your family details have been saved."),
+            ? t("Nothing had changed, so nothing was saved.")
+            : t("Your family details have been saved."),
         );
 
         const family = result.data.family ?? {};
@@ -101,7 +100,7 @@ function wireFamilyForm(): void {
         refreshDisplayedValues(family);
       })
       .catch(() => {
-        showPortalToast("danger", i18next.t("Nothing was saved. Please try again."));
+        showPortalToast("danger", t("Nothing was saved. Please try again."));
       })
       .finally(() => {
         if (saveButton) {
@@ -137,7 +136,7 @@ function wireConfirmForm(): void {
 
     const values = collectFormValues(form);
     if (values.result === "change-needed" && !(values.comment ?? "").trim()) {
-      setFieldError(form, "comment", i18next.t("Please tell us what needs changing."));
+      setFieldError(form, "comment", t("Please tell us what needs changing."));
       return;
     }
 
@@ -151,11 +150,11 @@ function wireConfirmForm(): void {
           showPortalToast("danger", genericFailureMessage(result));
           return;
         }
-        showPortalToast("success", i18next.t("Thank you. The church office has your answer."));
+        showPortalToast("success", t("Thank you. The church office has your answer."));
         form.hidden = true;
       })
       .catch(() => {
-        showPortalToast("danger", i18next.t("Nothing was saved. Please try again."));
+        showPortalToast("danger", t("Nothing was saved. Please try again."));
       })
       .finally(() => {
         if (submit) {
@@ -200,11 +199,11 @@ function wireAddMemberDialog(): void {
     let valid = true;
     for (const field of ["firstName", "lastName"]) {
       if ((values[field] ?? "").trim().length < 2) {
-        setFieldError(form, field, i18next.t("Please enter at least two characters."));
+        setFieldError(form, field, t("Please enter at least two characters."));
         valid = false;
       }
     }
-    if (!validateDate(form, "birthday", i18next.t("A birthday cannot be in the future."))) {
+    if (!validateDate(form, "birthday", t("A birthday cannot be in the future."))) {
       valid = false;
     }
     if (!valid) {
@@ -220,11 +219,11 @@ function wireAddMemberDialog(): void {
           return;
         }
         close();
-        showPortalToast("success", i18next.t("Thank you. The church office will review this before it is added."));
+        showPortalToast("success", t("Thank you. The church office will review this before it is added."));
         form.reset();
       })
       .catch(() => {
-        showPortalToast("danger", i18next.t("Nothing was saved. Please try again."));
+        showPortalToast("danger", t("Nothing was saved. Please try again."));
       })
       .finally(() => {
         submit.disabled = false;

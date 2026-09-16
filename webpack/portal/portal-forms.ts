@@ -6,7 +6,19 @@
  * field it belongs to. None of it touches the admin bundle's machinery, so a
  * church theme restyles a portal form by restyling portal CSS.
  */
-import i18next from "i18next";
+/**
+ * Translate a user-visible string.
+ *
+ * The page's `i18next` is the global one the layout loads and the locale
+ * loader initialises — importing the npm package instead would bundle a second,
+ * never-initialised instance whose `t()` returns nothing. The English literal
+ * is the fallback, so a page still reads correctly before the locale files
+ * arrive or when a key has no translation.
+ */
+export function t(text: string): string {
+  const translated = typeof i18next !== "undefined" ? i18next.t(text) : "";
+  return translated || text;
+}
 
 /** What a portal API answers with, whether it worked or not. */
 export interface PortalApiResult<T = Record<string, unknown>> {
@@ -147,7 +159,7 @@ export function showPortalToast(type: "success" | "danger" | "warning" | "info",
   const dismiss = document.createElement("button");
   dismiss.type = "button";
   dismiss.className = "portal-flash-dismiss";
-  dismiss.setAttribute("aria-label", i18next.t("Dismiss"));
+  dismiss.setAttribute("aria-label", t("Dismiss"));
   dismiss.textContent = "×";
   dismiss.addEventListener("click", () => flash.remove());
 
@@ -165,9 +177,9 @@ export function genericFailureMessage(result: PortalApiResult): string {
     return result.data.message;
   }
   if (result.status === 403) {
-    return i18next.t("You are not allowed to change this. Please contact the church office.");
+    return t("You are not allowed to change this. Please contact the church office.");
   }
-  return i18next.t("Nothing was saved. Please try again.");
+  return t("Nothing was saved. Please try again.");
 }
 
 /**

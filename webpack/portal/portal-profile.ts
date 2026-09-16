@@ -6,8 +6,6 @@
  * that field instead of throwing the page away, and it uploads a new photo to
  * `POST /api/portal/me/photo`.
  */
-import i18next from "i18next";
-
 import {
   applyServerFailures,
   clearFieldErrors,
@@ -17,6 +15,7 @@ import {
   postPortalJSON,
   setFieldError,
   showPortalToast,
+  t,
 } from "./portal-forms";
 
 interface PortalProfile {
@@ -44,7 +43,7 @@ function validateLocally(form: HTMLFormElement): boolean {
   for (const field of ["firstName", "lastName"]) {
     const input = form.querySelector<HTMLInputElement>(`[name="${field}"]`);
     if (input && input.value.trim().length < 2) {
-      setFieldError(form, field, i18next.t("Please enter at least two characters."));
+      setFieldError(form, field, t("Please enter at least two characters."));
       valid = false;
     }
   }
@@ -53,10 +52,10 @@ function validateLocally(form: HTMLFormElement): boolean {
   if (birthday?.value) {
     const entered = new Date(`${birthday.value}T00:00:00`);
     if (Number.isNaN(entered.getTime())) {
-      setFieldError(form, "birthday", i18next.t("That birthday is not a valid date."));
+      setFieldError(form, "birthday", t("That birthday is not a valid date."));
       valid = false;
     } else if (entered > new Date()) {
-      setFieldError(form, "birthday", i18next.t("A birthday cannot be in the future."));
+      setFieldError(form, "birthday", t("A birthday cannot be in the future."));
       valid = false;
     }
   }
@@ -76,7 +75,7 @@ function wireProfileForm(): void {
     clearFieldErrors(form);
 
     if (!validateLocally(form)) {
-      showPortalToast("danger", i18next.t("Nothing was saved. Please check the highlighted fields."));
+      showPortalToast("danger", t("Nothing was saved. Please check the highlighted fields."));
       return;
     }
 
@@ -99,14 +98,12 @@ function wireProfileForm(): void {
         const updated = result.data.updated ?? [];
         showPortalToast(
           "success",
-          updated.length === 0
-            ? i18next.t("Nothing had changed, so nothing was saved.")
-            : i18next.t("Your details have been saved."),
+          updated.length === 0 ? t("Nothing had changed, so nothing was saved.") : t("Your details have been saved."),
         );
         applyProfile(form, result.data.profile ?? {});
       })
       .catch(() => {
-        showPortalToast("danger", i18next.t("Nothing was saved. Please try again."));
+        showPortalToast("danger", t("Nothing was saved. Please try again."));
       })
       .finally(() => {
         if (saveButton) {
@@ -146,7 +143,7 @@ function updatePhotoPreview(profile: PortalProfile): void {
   const image = document.createElement("img");
   image.id = preview.id;
   image.className = "portal-avatar portal-avatar-lg";
-  image.alt = i18next.t("Your photo");
+  image.alt = t("Your photo");
   image.src = String(profile.photoUrl);
   preview.replaceWith(image);
 }
@@ -169,7 +166,7 @@ function wirePhotoUpload(): void {
     }
     if (file.size > MAX_PHOTO_BYTES) {
       if (error) {
-        error.textContent = i18next.t("That photo is too large. Please choose a smaller one.");
+        error.textContent = t("That photo is too large. Please choose a smaller one.");
       }
       input.value = "";
       return;
@@ -189,12 +186,12 @@ function wirePhotoUpload(): void {
             }
             return;
           }
-          showPortalToast("success", i18next.t("Your photo has been saved."));
+          showPortalToast("success", t("Your photo has been saved."));
           updatePhotoPreview(result.data.profile ?? {});
         })
         .catch(() => {
           if (error) {
-            error.textContent = i18next.t("That photo could not be saved.");
+            error.textContent = t("That photo could not be saved.");
           }
         });
     });
