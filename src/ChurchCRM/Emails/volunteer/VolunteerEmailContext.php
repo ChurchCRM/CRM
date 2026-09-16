@@ -112,10 +112,17 @@ final class VolunteerEmailContext
         return SystemURLs::getURL() . '/volunteer/occurrences/' . $this->occurrenceId;
     }
 
-    /** Absolute link to the volunteer's own schedule, for the volunteer-facing mail. */
+    /**
+     * Absolute link to the volunteer's own schedule, for the volunteer-facing mail.
+     *
+     * The Member Portal (#9867): a volunteer's schedule lives at
+     * `/portal/volunteer/schedule`, never in the admin shell. The old
+     * `/volunteer/my-schedule` still redirects here, so mail already in someone's
+     * inbox keeps working, but new mail links straight at the page.
+     */
     public static function getMyScheduleURL(): string
     {
-        return SystemURLs::getURL() . '/volunteer/my-schedule';
+        return SystemURLs::getURL() . '/portal/volunteer/schedule';
     }
 
     /** Absolute link to the coordinator dashboard, where swap requests are reviewed. */

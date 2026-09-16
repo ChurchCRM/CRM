@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext('My Account');
@@ -46,7 +47,18 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
             <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify Family Info') ?>
           </a>
           <?php endif; ?>
-          <?php /* Volunteer v2 (#9706): the volunteer self-service entry point. */ ?>
+          <?php
+            /*
+             * Volunteer v2 (#9706): the volunteer self-service entry point.
+             *
+             * This whole template is already unreachable — /external/limited-access
+             * redirects to /portal (#9863) — and MP8 deletes it. Until then the
+             * button points where the pages actually live (#9867): the Member
+             * Portal, never the retired /volunteer/my-schedule.
+             */
+            $volunteerScheduleUrl = $volunteerScheduleUrl
+                ?? (User::isVolunteerV2Enabled() ? SystemURLs::getRootPath() . '/portal/volunteer/schedule' : '');
+          ?>
           <?php if (!empty($volunteerScheduleUrl)): ?>
           <a href="<?= htmlspecialchars($volunteerScheduleUrl) ?>" class="btn btn-primary btn-lg">
             <i class="fa-solid fa-handshake-angle me-2"></i><?= gettext('My Volunteer Schedule') ?>

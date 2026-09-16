@@ -7,10 +7,10 @@ use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\MvcAppFactory;
 use Slim\Routing\RouteCollectorProxy;
 
-// NO module-level roleMiddleware: the coordinator area and the volunteer's own
-// self-service area will live in the same module behind different gates, so
-// every gate is applied per route group instead (see the volunteer-v2 design,
-// §3.2). Today only the coordinator half exists.
+// NO module-level roleMiddleware: every gate is applied per route group instead
+// (see the volunteer-v2 design, §3.2). Since MP6 (#9867) this module is the
+// coordinator area and nothing else — the volunteer's own two pages moved into
+// the Member Portal, and all that is left of them here is a pair of redirects.
 $app = MvcAppFactory::create('/volunteer', [
     'dashboardUrl'  => '/volunteer/dashboard',
     'dashboardText' => gettext('Back to Volunteer Dashboard'),
@@ -25,7 +25,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/dashboard.php';
     require __DIR__ . '/routes/ministry.php';
     require __DIR__ . '/routes/occurrence.php';
-    require __DIR__ . '/routes/member.php';
+    require __DIR__ . '/routes/member-redirects.php';
 })->add(new CSRFMiddleware())->add(new VolunteerV2EnabledMiddleware());
 
 $app->run();
