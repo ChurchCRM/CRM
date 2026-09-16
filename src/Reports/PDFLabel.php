@@ -555,6 +555,39 @@ function ZipBundleSort(array $inLabels)
     }
 }
 
+/**
+ * Person value for a label field, or the family value when the person has none.
+ */
+function SelectLabelField(array $aRow, string $sPersonColumn, string $sFamilyColumn): string
+{
+    $sValue = trim((string) ($aRow[$sPersonColumn] ?? ''));
+    if ($sValue === '') {
+        $sValue = trim((string) ($aRow[$sFamilyColumn] ?? ''));
+    }
+
+    return $sValue;
+}
+
+/**
+ * Both street lines from the person when either is set, otherwise both from
+ * the family, so the two lines of one address are never mixed.
+ *
+ * @return array{0: string, 1: string}
+ */
+function SelectLabelAddressLines(array $aRow): array
+{
+    $sPersonAddress1 = trim((string) ($aRow['per_Address1'] ?? ''));
+    $sPersonAddress2 = trim((string) ($aRow['per_Address2'] ?? ''));
+    if ($sPersonAddress1 !== '' || $sPersonAddress2 !== '') {
+        return [$sPersonAddress1, $sPersonAddress2];
+    }
+
+    return [
+        trim((string) ($aRow['fam_Address1'] ?? '')),
+        trim((string) ($aRow['fam_Address2'] ?? '')),
+    ];
+}
+
 function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComplete): string
 {
     // $mode is"indiv" or"fam"
@@ -588,7 +621,9 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
 
 
-        if (($aRow['per_fam_ID'] === 0) && ($mode === 'fam')) {
+        // mysqli returns the column as a string, so compare as an integer;
+        // GroupBySalutation() cannot build a label for family 0.
+        if (((int) $aRow['per_fam_ID'] === 0) && ($mode === 'fam')) {
             // Skip people with no family ID
             continue;
         }
@@ -638,12 +673,14 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                 $sName ="To the parents of:\n" . $sName;
             }
 
-            // Use person data only - each person must enter their own information
-            $sAddress1 = $aRow['per_Address1'] ?? '';
-            $sAddress2 = $aRow['per_Address2'] ?? '';
-            $sCity = $aRow['per_City'] ?? '';
-            $sState = $aRow['per_State'] ?? '';
-            $sZip = $aRow['per_Zip'] ?? '';
+            // A person's own address wins; otherwise fall back to the family
+            // address, as Person::getAddress() and the newsletter labels do.
+            // Households normally carry the address on the family record only,
+            // which left these labels blank (#9873).
+            [$sAddress1, $sAddress2] = SelectLabelAddressLines($aRow);
+            $sCity = SelectLabelField($aRow, 'per_City', 'fam_City');
+            $sState = SelectLabelField($aRow, 'per_State', 'fam_State');
+            $sZip = SelectLabelField($aRow, 'per_Zip', 'fam_Zip');
 
             $sAddress = $sAddress1;
             if ($sAddress2 !== '') {
