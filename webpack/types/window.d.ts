@@ -34,8 +34,33 @@ interface CRMEmailComposer {
   open(options: CRMEmailComposerOptions): void;
 }
 
+/** One row of `window.CRM.settingsPanel.init({ settings: [...] })`. */
+interface CRMSettingsPanelSetting {
+  name: string;
+  type: "boolean" | "number" | "text" | "choice" | "password" | "date" | "textarea" | "json" | "ajax";
+  label?: string;
+  tooltip?: string;
+  choices?: Array<string | { value: string; label: string }>;
+  [key: string]: unknown;
+}
+
+/** The reusable SystemConfig editor from webpack/system-settings-panel.js. */
+interface CRMSettingsPanel {
+  init(options: {
+    container: string;
+    title?: string;
+    icon?: string;
+    headerClass?: string;
+    showAllSettingsLink?: boolean;
+    settings: Array<string | CRMSettingsPanelSetting>;
+    onSave?: (savedValues?: Record<string, string>) => void;
+    [key: string]: unknown;
+  }): void;
+}
+
 interface CRMNamespace {
   root?: string;
+  settingsPanel?: CRMSettingsPanel;
   timeZone?: string;
   plugins?: CRMPlugins;
   bEnableGravatarPhotos?: boolean;

@@ -20,14 +20,20 @@
     </section>
 
     <div class="portal-card-grid">
+        {#
+          The section switches on Admin → Member Portal (#9864) decide whether
+          the calendar and volunteering sections belong on the page at all.
+          `id` is what the switch is named after, so a theme overriding this
+          page can filter the same way.
+        #}
         {% set placeholders = [
-            { 'icon': 'fa-solid fa-calendar-days', 'title': gettext('Church calendar') },
-            { 'icon': 'fa-solid fa-handshake-angle', 'title': gettext('My volunteering') },
-            { 'icon': 'fa-solid fa-people-roof', 'title': gettext('My family') },
-            { 'icon': 'fa-solid fa-user', 'title': gettext('My profile') }
-        ] %}
+            { 'id': 'calendar', 'icon': 'fa-solid fa-calendar-days', 'title': gettext('Church calendar'), 'shown': portal.showCalendar },
+            { 'id': 'volunteer', 'icon': 'fa-solid fa-handshake-angle', 'title': gettext('My volunteering'), 'shown': portal.showVolunteer },
+            { 'id': 'family', 'icon': 'fa-solid fa-people-roof', 'title': gettext('My family'), 'shown': true },
+            { 'id': 'profile', 'icon': 'fa-solid fa-user', 'title': gettext('My profile'), 'shown': true }
+        ]|filter(placeholder => placeholder.shown) %}
         {% for placeholder in placeholders %}
-        <section class="portal-card portal-card-placeholder">
+        <section class="portal-card portal-card-placeholder portal-card-{{ placeholder.id }}">
             <h2 class="portal-card-title">
                 <i class="{{ placeholder.icon }}" aria-hidden="true"></i>
                 <span>{{ placeholder.title }}</span>

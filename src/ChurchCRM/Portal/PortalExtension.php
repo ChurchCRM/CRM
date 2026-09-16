@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\LocaleInfo;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Plugin\PluginManager;
@@ -121,9 +122,16 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
                 // Masquerade ("Login as User", #9843/#9844) is not on this branch
                 // yet; MP8 wires the banner in. Until then nobody is impersonated.
                 'impersonating' => false,
-                // Developer mode is an Admin → Member Portal switch (MP3). Live
-                // editing already works through Twig's auto_reload.
-                'developerMode' => false,
+                // Developer mode is the Admin → Member Portal switch
+                // `bPortalDeveloperMode` (#9864): the template cache is off and
+                // PortalTwig prints the template name in an HTML comment.
+                'developerMode' => PortalTwig::isDeveloperMode(),
+                // The Admin → Member Portal section switches (#9864). A theme
+                // that draws its own home page reads these to decide whether a
+                // section belongs on the page at all.
+                'showCalendar' => SystemConfig::getBooleanValue('bPortalShowCalendar'),
+                'showVolunteer' => SystemConfig::getBooleanValue('bPortalShowVolunteer'),
+                'allowBirthdayEdit' => SystemConfig::getBooleanValue('bPortalAllowBirthdayEdit'),
                 // Whether the active theme (or the default it falls back to)
                 // carries these optional files, so the layout can skip a <link>
                 // or <script> that would only 404. Extra fields on an existing

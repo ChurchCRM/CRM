@@ -24,6 +24,30 @@ class ThemeValidator
     public const LEVEL_ERROR = 'error';
     public const LEVEL_WARNING = 'warning';
 
+    /** Not a finding level — the summary of a finding list with nothing in it. */
+    public const LEVEL_OK = 'ok';
+
+    /**
+     * Reduce a finding list to the single badge the Admin → Member Portal page
+     * shows for a theme: Errors beat Warnings, and an empty list is Valid.
+     *
+     * @param array<int, array{file: string, line: int, message: string, level: string}> $findings
+     *
+     * @return self::LEVEL_* the worst level present
+     */
+    public static function summarize(array $findings): string
+    {
+        $summary = self::LEVEL_OK;
+        foreach ($findings as $finding) {
+            if ($finding['level'] === self::LEVEL_ERROR) {
+                return self::LEVEL_ERROR;
+            }
+            $summary = self::LEVEL_WARNING;
+        }
+
+        return $summary;
+    }
+
     /**
      * Assets a template may ask for with `theme_asset()`. Anything referenced
      * but absent from both the theme and the default theme is a warning.

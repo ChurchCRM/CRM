@@ -4,13 +4,16 @@ namespace ChurchCRM\Portal;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Exception\HttpForbiddenException;
+use Throwable;
 
 /**
  * The gate on every Member Portal page: an authenticated browser session, and
@@ -53,6 +56,34 @@ class PortalAccessMiddleware implements MiddlewareInterface
         // return. init() is idempotent, exactly as PageInit.php relies on.
         PluginManager::init($documentRoot . '/plugins');
 
+        $this->recordActivity();
+
         return $handler->handle($request);
+    }
+
+    /**
+     * Stamp `usr_LastPortalActivity` so the Admin → Member Portal statistics
+     * tab can answer "active in the last 15 minutes" honestly (#9864).
+     *
+     * The write is throttled to once every five minutes by comparing the value
+     * already in the column, not a session flag, so it survives session churn
+     * and costs one small UPDATE per member per five minutes at most. A failure
+     * here must never break a portal page: the column is a statistic.
+     */
+    private function recordActivity(): void
+    {
+        $user = AuthenticationManager::getCurrentUser();
+        if (!$user instanceof User) {
+            return;
+        }
+
+        try {
+            PortalStatsService::recordPortalActivity($user);
+        } catch (Throwable $e) {
+            LoggerUtils::getAppLogger()->warning('Could not record Member Portal activity', [
+                'userName' => $user->getUserName(),
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 }

@@ -14,6 +14,12 @@ use ChurchCRM\dto\SystemURLs;
  *
  * A nav entry is `{id, label, url, icon, active, badge}`; `url` is already
  * prefixed with the install root path, and `icon` is a Font Awesome class.
+ *
+ * Section switches (#9864): the Calendar entry MP5 adds belongs behind
+ * `bPortalShowCalendar`, and the Volunteering / My Teams entries MP6 adds
+ * behind `bPortalShowVolunteer` — both are already exposed to templates as
+ * `portal.showCalendar` / `portal.showVolunteer`. There is nothing to hide
+ * yet: Home is the only entry and it is never optional.
  */
 class PortalNav
 {
