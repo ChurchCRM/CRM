@@ -1,30 +1,30 @@
 {
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Слишком много получателей для почтового клиента ({{count}} > {{max}}). Используйте «Скопировать адреса».",
+    "other": "Слишком много получателей для почтового клиента ({{count}} > {{max}}). Используйте «Скопировать адреса»."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Осталась {{count}} минута",
+    "other": "Осталось {{count}} минут"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "Не удалось геокодировать {{count}} семью",
+    "other": "Не удалось геокодировать {{count}} семей"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Активен {{count}} секунду",
+    "other": "Активен {{count}} секунд"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Вы собираетесь отправить письма с подтверждением {{count}} семье.",
+    "other": "Вы собираетесь отправить письма с подтверждением {{count}} семьям."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} семья не имеет сохранённого email-адреса и будет пропущена",
+    "other": "{{count}} семей не имеют сохранённого email-адреса и будут пропущены"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…и ещё {{count}}, не указанный здесь.",
+    "other": "…и ещё {{count}}, не указанных здесь."
   }
 }

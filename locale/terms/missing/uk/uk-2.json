@@ -1,30 +1,30 @@
 {
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Занадто багато отримувачів для поштового клієнта ({{count}} > {{max}}). Використайте замість цього «Копіювати адреси».",
+    "other": "Занадто багато отримувачів для поштового клієнта ({{count}} > {{max}}). Використайте замість цього «Копіювати адреси»."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Залишилася {{count}} хвилина",
+    "other": "Залишилося {{count}} хвилин"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} сім'ю не вдалося геокодувати",
+    "other": "{{count}} сімей не вдалося геокодувати"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Активний протягом {{count}} секунди",
+    "other": "Активний протягом {{count}} секунд"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Ви збираєтеся надіслати листи з підтвердженням {{count}} сім'ї.",
+    "other": "Ви збираєтеся надіслати листи з підтвердженням {{count}} сім'ям."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} сім'я не має електронної адреси в записі та буде пропущена",
+    "other": "{{count}} сімей не мають електронної адреси в записі та будуть пропущені"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…і ще {{count}} не показано тут.",
+    "other": "…і ще {{count}} не показано тут."
   }
 }
