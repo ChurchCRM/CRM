@@ -26,21 +26,15 @@ class PortalNav
     {
         $rootPath = SystemURLs::getRootPath();
 
-        $items = [
+        return [
             [
                 'id' => self::HOME,
                 'label' => gettext('Home'),
                 'url' => $rootPath . '/portal/',
                 'icon' => 'fa-solid fa-house',
-                'active' => false,
+                'active' => $activeId === self::HOME,
                 'badge' => '',
             ],
         ];
-
-        foreach ($items as $index => $item) {
-            $items[$index]['active'] = $item['id'] === $activeId;
-        }
-
-        return $items;
     }
 }
