@@ -142,6 +142,68 @@ async function fetchUntranslatedTerms(poEditorLocale) {
 // CLDR plural category names, in canonical order.
 const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
 
+// Cache of poEditorLocale -> ordered CLDR categories (or null when Intl can't resolve
+// a category set for that language code), so we only ask Intl.PluralRules once per locale.
+const pluralCategoriesCache = new Map();
+
+// Every i18next `{{count}}` / `%d` interpolation in this codebase is a plain
+// whole number — never a formatted decimal. `Intl.PluralRules.resolvedOptions()
+// .pluralCategories` reports every category the locale's grammar EVER uses,
+// including ones that only trigger for numbers with visible decimal digits
+// (v != 0) — e.g. Czech/Slovak "many" and French "many" are exclusively
+// decimal-only and can never be selected by `.select(<integer>)`. Trusting
+// the raw resolved list would ask translators to fill in a category that
+// production code can never actually reach. Sample `.select()` across a wide
+// integer range instead, so only categories reachable for real whole-number
+// counts are required.
+const PLURAL_SAMPLE_MAX = 1000;
+
+/**
+ * Returns this locale's required CLDR plural categories, in canonical order
+ * (zero, one, two, few, many, other), using the real language code from
+ * src/locale/locales.json and the platform's Intl.PluralRules data — scoped
+ * to categories actually reachable for integer counts (see PLURAL_SAMPLE_MAX
+ * comment above). "other" is always included: i18next treats it as the
+ * mandatory fallback category regardless of whether a locale's grammar ever
+ * selects it for a plain integer.
+ *
+ * Returns null when the language code can't be resolved or Intl doesn't
+ * recognise it — callers must fall back to the old one/other-only behaviour
+ * in that case rather than guessing.
+ */
+function getPluralCategoriesForLocale(poEditorLocale) {
+    if (pluralCategoriesCache.has(poEditorLocale)) {
+        return pluralCategoriesCache.get(poEditorLocale);
+    }
+
+    let result = null;
+    const entry = Object.values(localesConfig).find(
+        (config) => config.poEditor && config.poEditor.toLowerCase() === poEditorLocale.toLowerCase()
+    );
+    const languageCode = entry && entry.languageCode;
+
+    if (languageCode) {
+        try {
+            const pluralRules = new Intl.PluralRules(languageCode);
+            const reachable = new Set(['other']);
+            for (let n = 0; n <= PLURAL_SAMPLE_MAX; n++) reachable.add(pluralRules.select(n));
+            result = CLDR_PLURAL_FORMS.filter((form) => reachable.has(form));
+        } catch (err) {
+            // The expected failure here is Intl.PluralRules throwing a RangeError for
+            // an unrecognised BCP-47 language tag — leave result null so the caller
+            // falls back to the legacy one/other-only behaviour. Anything else (e.g. a
+            // future refactor breaking CLDR_PLURAL_FORMS) would otherwise be silently
+            // absorbed with no diagnostic, so surface those.
+            if (!(err instanceof RangeError)) {
+                console.warn(`  ⚠️  getPluralCategoriesForLocale("${poEditorLocale}"): unexpected error, falling back to one/other — ${err.message}`);
+            }
+        }
+    }
+
+    pluralCategoriesCache.set(poEditorLocale, result);
+    return result;
+}
+
 /**
  * Convert pipe-separated plurals to nested plural format for i18next.
  *
@@ -161,9 +223,10 @@ const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
 // an encoded plural.
 const COUNT_PLACEHOLDER_PATTERN = /\{\{\s*\w*count\w*\s*\}\}|%\d*d/i;
 
-function convertPipeSeparatedPlurals(data) {
+function convertPipeSeparatedPlurals(data, poEditorLocale) {
     if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
 
+    const requiredForms = poEditorLocale ? getPluralCategoriesForLocale(poEditorLocale) : null;
     const result = {};
 
     for (const [term, value] of Object.entries(data)) {
@@ -171,24 +234,44 @@ function convertPipeSeparatedPlurals(data) {
             // Check if this is a pipe-separated plural (contains | and multiple non-empty parts)
             const parts = value.split('|').map(s => s.trim());
             if (parts.length > 1 && parts.every(p => p.length > 0)) {
-                // Map parts back to the CLDR forms `convertPluralsToSeparated()` (upload
-                // script) joined them from, in the SAME canonical order (zero, one, two,
-                // few, many, other) — skipping zero/two since the upload side only ever
-                // emits those when a source object explicitly has them. The overwhelmingly
-                // common case is exactly 2 parts, which the upload side always produces as
-                // [one, other] (see poeditor-upload-missing.js convertPluralsToSeparated) —
-                // NOT [zero, one]. Mapping this wrong silently mislabels which grammatical
-                // form each translation belongs to.
                 let pluralForms = null;
-                if (parts.length === 2) {
+                if (requiredForms && parts.length === requiredForms.length) {
+                    // Exact match against this locale's real CLDR category count —
+                    // map positions directly onto the canonical order Intl.PluralRules
+                    // reports for this language. Resolves cases (3+ forms) that used
+                    // to be ambiguous without per-locale metadata.
+                    //
+                    // NOTE: this positional mapping is only correct when POEditor's pipe
+                    // export order matches CLDR canonical order for this locale. That
+                    // holds for every locale ChurchCRM currently supports, but is not a
+                    // language-universal guarantee — e.g. Latvian's gettext plural-index
+                    // order ([one, other, zero]) diverges from its CLDR canonical order
+                    // ([zero, one, other]). Verify this still holds before adding any new
+                    // locale whose gettext plural-index order might diverge from CLDR.
+                    pluralForms = {};
+                    requiredForms.forEach((form, i) => { pluralForms[form] = parts[i]; });
+                } else if (parts.length === 2) {
+                    // Legacy/no-metadata fallback: the upload side's universal 2-part
+                    // convention is always [one, other] (see poeditor-upload-missing.js
+                    // convertPluralsToSeparated). If this locale actually needs more
+                    // categories than that (e.g. Arabic needs 6, Russian needs 4), pad
+                    // the missing ones as empty stubs so translators/agents are prompted
+                    // to fill them in — instead of silently leaving the term as a
+                    // 2-category object that can never represent the other CLDR forms.
                     pluralForms = { one: parts[0], other: parts[1] };
+                    if (requiredForms && requiredForms.length > 2) {
+                        const expanded = {};
+                        for (const form of requiredForms) {
+                            expanded[form] = Object.prototype.hasOwnProperty.call(pluralForms, form) ? pluralForms[form] : '';
+                        }
+                        pluralForms = expanded;
+                    }
                 } else if (parts.length >= 3 && parts.length <= CLDR_PLURAL_FORMS.length) {
-                    // 3+ segments could be [one, few, other], [one, few, many, other], or
-                    // (rarely) include zero/two — there is no fixed order that is correct
-                    // for every language without per-locale CLDR category metadata this
-                    // script doesn't have. Guessing wrong would silently attach a
-                    // translation to the wrong plural category, which is worse than
-                    // leaving the term as an unconverted pipe string. Warn and pass through.
+                    // 3+ segments with no matching per-locale category count — there is no
+                    // fixed order that is correct for every language without metadata.
+                    // Guessing wrong would silently attach a translation to the wrong
+                    // plural category, which is worse than leaving the term as an
+                    // unconverted pipe string. Warn and pass through.
                     console.warn(`  ⚠️  convertPipeSeparatedPlurals: "${term}" has ${parts.length} pipe-separated forms — cannot determine CLDR category order without per-locale plural metadata; leaving as a literal string. Fix manually if this term needs true plural forms.`);
                 }
                 result[term] = pluralForms && Object.keys(pluralForms).length > 1 ? pluralForms : value;
@@ -468,7 +551,7 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                             // Then normalise formatting and add newline.
                             try {
                                 const parsed = JSON.parse(fileData.toString('utf8'));
-                                let converted = convertPipeSeparatedPlurals(parsed);
+                                let converted = convertPipeSeparatedPlurals(parsed, poEditorLocale);
                                 const restructured = restructurePluralForms(converted);
                                 fileData = Buffer.from(JSON.stringify(restructured, null, 2) + '\n', 'utf8');
                             } catch (err) {
@@ -598,7 +681,7 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
             console.log(`  ⏭️  Skipping missing-terms for ${locale} (skip_audit)`);
         } else {
             let missing = await fetchUntranslatedTerms(poEditorLocale);
-            missing = convertPipeSeparatedPlurals(missing);
+            missing = convertPipeSeparatedPlurals(missing, poEditorLocale);
             missing = restructurePluralForms(missing);
             const termCount = Object.keys(missing).length;
 
