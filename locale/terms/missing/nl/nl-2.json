@@ -1,39 +1,39 @@
 {
-  "view families missing an email": "",
+  "view families missing an email": "gezinnen zonder e-mailadres bekijken",
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} lid gekopieerd",
+    "other": "{{count}} leden gekopieerd"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Deze lijst heeft {{count}} ontvanger — te veel voor een mailto:-link. Gebruik in plaats daarvan Adressen kopiëren.",
+    "other": "Deze lijst heeft {{count}} ontvangers — te veel voor een mailto:-link. Gebruik in plaats daarvan Adressen kopiëren."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Te veel ontvangers voor de e-mailclient ({{count}} > {{max}}). Gebruik in plaats daarvan Adressen kopiëren.",
+    "other": "Te veel ontvangers voor de e-mailclient ({{count}} > {{max}}). Gebruik in plaats daarvan Adressen kopiëren."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuut resterend",
+    "other": "{{count}} minuten resterend"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} gezin kon niet worden gegeocodeerd",
+    "other": "{{count}} gezinnen konden niet worden gegeocodeerd"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Actief voor {{count}} seconde",
+    "other": "Actief voor {{count}} seconden"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "U staat op het punt bevestigingsmails te verzenden naar {{count}} gezin.",
+    "other": "U staat op het punt bevestigingsmails te verzenden naar {{count}} gezinnen."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} gezin heeft geen e-mailadres geregistreerd en wordt overgeslagen",
+    "other": "{{count}} gezinnen hebben geen e-mailadres geregistreerd en worden overgeslagen"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…en nog {{count}} andere niet hier vermeld.",
+    "other": "…en nog {{count}} andere niet hier vermeld."
   }
 }
