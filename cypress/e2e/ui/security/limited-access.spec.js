@@ -12,92 +12,73 @@
  *   1. PHP model: User::isEditSelfExclusive() suppresses module perms at runtime
  *   2. DB migration: src/mysql/upgrade/7.4.2-editself-exclusive.sql clears any
  *      orphaned module permissions left from pre-PR-9016 installations.
+ *
+ * Since the Member Portal landed (#9863) the destination of that confinement is
+ * `/portal`, not the interim `/external/limited-access` page: a self-service
+ * login lands in the portal, is bounced back to it from every admin URL, and
+ * `/external/limited-access` is a 302 to `/portal` for old links. What the
+ * portal itself renders is covered by
+ * cypress/e2e/ui/portal/member.portal-landing.spec.js.
  */
 describe("Self-only access — EditSelf account user (limited.user)", () => {
     const limitedUser = "limited.user";
     const limitedPassword = "changeme";
 
-    it("Login redirects to /external/limited-access", () => {
+    const login = () => {
         cy.clearCookies();
         cy.visit("session/begin");
         cy.get("input[name=User]").type(limitedUser);
         cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+        cy.url({ timeout: 10000 }).should("include", "/portal");
+    };
 
-        // Should end up on the limited access page, not the dashboard
-        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
-        cy.contains("Welcome");
+    it("Login redirects to /portal", () => {
+        login();
+        cy.url().should("not.include", "/external/limited-access");
+        cy.url().should("not.include", "/v2/dashboard");
     });
 
-    it("Shows Verify Family Info button and Log Out button", () => {
-        cy.clearCookies();
-        cy.visit("session/begin");
-        cy.get("input[name=User]").type(limitedUser);
-        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
-
-        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
-        cy.contains("Verify Family Info").should("exist");
-        cy.contains("Log Out").should("exist");
+    it("Shows the portal home, not the admin shell", () => {
+        login();
+        cy.get(".portal-home").should("exist");
+        cy.get("#sidebar").should("not.exist");
     });
 
-    it("Verify Family Info link goes to /external/verify/{token}", () => {
-        cy.clearCookies();
-        cy.visit("session/begin");
-        cy.get("input[name=User]").type(limitedUser);
-        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
-
-        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
-        cy.contains("Verify Family Info").click();
-        cy.url({ timeout: 10000 }).should("include", "/external/verify/");
-        // Verify page should show the family name (Campbell — person 4, family 1)
-        cy.get("body", { timeout: 10000 }).should("contain.text", "Campbell");
+    it("Sign out returns to the login page", () => {
+        login();
+        cy.contains("Sign out").click();
+        cy.url({ timeout: 10000 }).should("include", "/session/begin");
     });
 
-    it("Log Out returns to login page", () => {
-        cy.clearCookies();
-        cy.visit("session/begin");
-        cy.get("input[name=User]").type(limitedUser);
-        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
-
-        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
-        cy.contains("Log Out").click();
-        cy.url().should("include", "/session/begin");
+    it("The old /external/limited-access URL redirects to /portal", () => {
+        login();
+        cy.visit("external/limited-access", { failOnStatusCode: false });
+        cy.url({ timeout: 10000 }).should("include", "/portal");
+        cy.url().should("not.include", "/external/limited-access");
     });
 
-    it("Direct visit to /v2/dashboard redirects to limited-access", () => {
-        cy.clearCookies();
-        cy.visit("session/begin");
-        cy.get("input[name=User]").type(limitedUser);
-        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
-
-        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+    it("Direct visit to /v2/dashboard redirects to /portal", () => {
+        login();
 
         // Try to access an admin page directly
         cy.visit("v2/dashboard", { failOnStatusCode: false });
-        cy.url().should("include", "/external/limited-access");
+        cy.url().should("include", "/portal");
     });
 
-    it("Direct visit to other internal MVC apps also redirects to limited-access", () => {
-        cy.clearCookies();
-        cy.visit("session/begin");
-        cy.get("input[name=User]").type(limitedUser);
-        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
-        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+    it("Direct visit to other internal MVC apps also redirects to /portal", () => {
+        login();
 
-        // The "external pages only" guarantee must hold across every internal
-        // MVC app, not just /v2 — each is gated by AuthMiddleware via MvcAppFactory.
+        // The "portal only" guarantee must hold across every internal MVC app,
+        // not just /v2 — each is gated by AuthMiddleware via MvcAppFactory.
         cy.visit("people/dashboard", { failOnStatusCode: false });
-        cy.url().should("include", "/external/limited-access");
+        cy.url().should("include", "/portal");
     });
 
     it("Session-based internal API call is blocked with 403", () => {
         // Complements the api-key 403 test: a logged-in browser SESSION for a
         // limited user must also be rejected from internal APIs (AuthMiddleware
         // User::isEditSelfExclusive() gate), so they can't pivot via the cookie.
-        cy.clearCookies();
-        cy.visit("session/begin");
-        cy.get("input[name=User]").type(limitedUser);
-        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
-        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+        login();
 
         cy.request({
             method: "GET",

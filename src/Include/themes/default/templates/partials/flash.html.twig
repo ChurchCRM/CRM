@@ -1,0 +1,17 @@
+{#
+  One-shot messages queued for this member by the previous request. The list is
+  emptied as it is read, so a reload never shows the same message twice.
+#}
+{% if flash is not empty %}
+<div class="portal-flash-list">
+    {% for message in flash %}
+    <div class="portal-flash portal-flash-{{ message.type|default('info') }}" role="status">
+        <span class="portal-flash-text">{{ message.message }}</span>
+        <button class="portal-flash-dismiss" type="button"
+                aria-label="{{ gettext('Dismiss') }}">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}

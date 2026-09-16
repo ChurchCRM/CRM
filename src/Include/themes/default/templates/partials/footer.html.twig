@@ -1,0 +1,20 @@
+{#
+  The portal footer: how to reach the church, and the ChurchCRM credit.
+#}
+<footer class="portal-footer">
+    <div class="portal-container portal-footer-inner">
+        <div class="portal-footer-church">
+            <span class="portal-footer-church-name">{{ church.name }}</span>
+            {% if church.phone %}<span class="portal-footer-detail">{{ church.phone }}</span>{% endif %}
+            {% if church.email %}
+            <a class="portal-footer-detail" href="mailto:{{ church.email }}">{{ church.email }}</a>
+            {% endif %}
+            {% if church.website %}
+            <a class="portal-footer-detail" href="{{ church.website }}" rel="noopener noreferrer">{{ gettext('Church website') }}</a>
+            {% endif %}
+        </div>
+        <div class="portal-footer-credit">
+            <a href="https://churchcrm.io" target="_blank" rel="noopener noreferrer">ChurchCRM</a>
+        </div>
+    </div>
+</footer>

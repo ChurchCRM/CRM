@@ -1,0 +1,27 @@
+{#
+  The portal header: the church's identity on the left, the member and the way
+  out on the right. There is no admin furniture here and never will be.
+#}
+<header class="portal-header">
+    <div class="portal-container portal-header-inner">
+        <a class="portal-brand" href="{{ url('/portal/') }}">
+            {% if church.logoUrl %}
+            <img class="portal-brand-logo" src="{{ church.logoUrl }}" alt="{{ church.name }}">
+            {% endif %}
+            <span class="portal-brand-name">{{ church.name|default('ChurchCRM') }}</span>
+        </a>
+
+        <div class="portal-header-actions">
+            <button class="portal-nav-toggle" type="button" id="portal-nav-toggle"
+                    aria-controls="portal-nav" aria-expanded="false"
+                    aria-label="{{ gettext('Toggle navigation') }}">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+            <span class="portal-member-name">{{ member.fullName }}</span>
+            <a class="portal-signout" href="{{ url('/session/end') }}">
+                <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+                <span>{{ gettext('Sign out') }}</span>
+            </a>
+        </div>
+    </div>
+</header>

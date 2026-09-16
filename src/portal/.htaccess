@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Block direct access to the module's PHP files (everything must go through
+# index.php so the Slim middleware stack runs).
+RewriteRule ^routes/.*\.php$ - [F,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
