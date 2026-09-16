@@ -22,7 +22,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 **Additional skills:**
 | Skill | When to Use |
 |-------|------------|
-| [Slim MVC Skill](./slim-mvc-skill.md) | MVC route groups, security patterns, migration guidance (optional) |
+| [Slim MVC Skill](./slim-mvc-skill.md) | Inventory of the Slim apps under `src/`, their role gates, and the shared API entity middleware |
 | [Configuration Management](./configuration-management.md) | Settings, SystemConfig, admin panels |
 
 ## Database
@@ -48,22 +48,9 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts |
 | [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, vanilla JS/TS modules, asset management |
 | [i18n & Localization](./i18n-localization.md) | Adding UI text, translations |
-| [AI Locale Translation](./locale-ai-translation.md) | Translating missing terms via Claude AI before a release |
-| [Locale Stack Ranking](./locale-stack-ranking.md) | **NEW** — Prioritize translation effort by impact (TIER-1: 53% world pop, TIER-2: 80%, etc.) |
+| [Locale Translation Workflow](./locale-translation-workflow.md) | Authoritative translate → upload → download workflow, including durability and prioritization |
 | [Currency Localization](./currency-localization.md) | **NEW** — Displaying money with configurable symbol / position / separators (PHP, JS, DataTables, Chart.js, CSS, PDFs). Required for any finance-adjacent change. Epic: [#8459](https://github.com/ChurchCRM/CRM/issues/8459) |
-
-## Tabler Migration (Vision 2026)
-
-| Skill | When to Use |
-|-------|------------|
-| [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts — the new UI reference |
-| [Library Replacement Guide](./tabler-library-replacement.md) | Which 3rd-party libs to swap (Select2→Tom Select, etc.), npm/webpack/Grunt changes |
-| [Migration Playbook](./tabler-migration-playbook.md) | Per-page migration steps, full codebase audit inventory, phased execution plan |
 | [Error Reporting & Issue Filing](./error-reporting.md) | Shared Tabler-styled error pages (4xx/5xx), consistent UX, wiring to Issue Reporter modal, and E2E testing patterns |
-
-**Agent-only skill file**: `.claudecode/migration-rules.md` — strict rules for the Tabler shell, personas, iconography, and legacy bridge.
-
-**Epic Issue**: [#8301 — UI Migration: AdminLTE to Tabler 2026](https://github.com/ChurchCRM/CRM/issues/8301)
 
 ## Security
 
@@ -207,6 +194,4 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 - **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
 - **Address PR comments**: `pr-review.md` → `github-interaction.md` → `git-workflow.md`
 - **Add print support to a page**: `frontend-development.md` (Print Support section) → `security-best-practices.md` (CSP) → `git-workflow.md`
-- **Migrate a page to Tabler**: `tabler-migration-playbook.md` → `tabler-components.md` → `table-action-menu.md` → `bootstrap-5-migration.md` → `git-workflow.md`
 - **Add or edit a table with row actions**: `table-action-menu.md` → `tabler-components.md` → `git-workflow.md`
-- **Swap a 3rd-party library**: `tabler-library-replacement.md` → `webpack-typescript.md` → `git-workflow.md`

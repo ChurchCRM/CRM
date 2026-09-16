@@ -5078,14 +5078,6 @@ msgid "Verification URL created"
 msgstr "Ellenőrzés URL létrehozva"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Hiba az e-mail(ek) küldésekor"
 
@@ -8476,10 +8468,6 @@ msgstr "A jelszava sikeresen frissítve lett."
 #: 
 msgid "selected family has no coordinates"
 msgstr "A kiválasztott családnak nincs koordinátája"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12241,10 +12229,6 @@ msgid "Database dump only (.sql)"
 msgstr "Csak adatbázis-mentés (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "A dátumtartomány nem haladhatja meg az 1 évet"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Visszafordíthatatlan művelet"
 
@@ -12839,10 +12823,6 @@ msgstr "A csoport nem található ehhez a szerepkörlistához"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Az inaktív állapot csak a besorolások listájánál kapcsolható át"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Az új felhasználók nem kapnak üdvözlő e-mailt a hitelesítő adataikkal. Ossza meg velük a jelszót manuálisan, vagy először konfigurálja az e-mailt."
 
 #: 
 msgid "Option name is required"
@@ -17865,4 +17845,68 @@ msgstr "Nem találhatók események ehhez: %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Próbáljon más eseménytípust, hónapot vagy évet választani."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Geokódolási hiba történt — próbálja újra később"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "A cím hiányos (hiányzik a város, a megye/állam és az irányítószám)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Minden családnak már vannak koordinátái."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Nem sikerült frissíteni a koordinátákat"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Nem sikerült frissíteni a család koordinátáit"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Mind a(z) {{geocoded}} család geokódolása megtörtént. A térkép most már naprakész."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} család geokódolása megtörtént. {{failed}} nem volt feloldható — lásd a részleteket lent."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokódolás…"
+
+#: 
+msgid "No address on file"
+msgstr "Nincs rögzített cím"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nem található egyezés — ellenőrizze az utca címét, a várost és az irányítószámot"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Nyissa meg a családot a cím javításához, majd futtassa újra ezt."
+
+#: 
+msgid "Set up now"
+msgstr "Beállítás most"
+
+#: 
+msgid "Unknown family"
+msgstr "Ismeretlen család"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Összes koordináta frissítése"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Összes családi koordináta frissítése"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Koordináták frissítése"
 

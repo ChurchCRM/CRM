@@ -5110,14 +5110,6 @@ msgid "Verification URL created"
 msgstr "URL de verificare creat"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Trimiterea email(urilor) a eșuat"
 
@@ -8516,10 +8508,6 @@ msgstr "Parola dvs. a fost actualizată cu succes."
 #: 
 msgid "selected family has no coordinates"
 msgstr "familia selectată nu are coordonate"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12283,10 +12271,6 @@ msgid "Database dump only (.sql)"
 msgstr "Doar export bază de date (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Intervalul de date nu poate depăși 1 an"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operațiune distructivă"
 
@@ -12881,10 +12865,6 @@ msgstr "Grupul nu a fost găsit pentru această listă de roluri"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Starea inactivă poate fi modificată numai pentru lista de clasificări"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Utilizatorii noi nu vor primi un e-mail de bun venit cu datele lor de autentificare. Partajați parola manual sau configurați mai întâi e-mailul."
 
 #: 
 msgid "Option name is required"
@@ -17394,6 +17374,10 @@ msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr "Sigur doriti sa eliminati rolul '{{name}}'?"
 
 #: 
+msgid "Auto"
+msgstr "Automat"
+
+#: 
 msgid "Auto follows your OS or browser setting; Light and Dark override it"
 msgstr "Auto urmeaza setarile sistemului de operare sau ale browserului; Luminos si Intunecat le suprascriu"
 
@@ -17882,4 +17866,68 @@ msgstr "Nu s-au găsit evenimente pentru %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Încercați să selectați un alt tip de eveniment, lună sau an."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "A apărut o eroare de geocodare — încercați din nou mai târziu"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa este incompletă (lipsesc orașul, județul și codul poștal)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Toate familiile au deja coordonate."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Actualizarea coordonatelor a eșuat"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Actualizarea coordonatelor familiei a eșuat"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Au fost geocodate toate cele {{geocoded}} familii. Harta este acum actualizată."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Au fost geocodate {{geocoded}} familii. {{failed}} nu au putut fi rezolvate — vedeți detaliile de mai jos."
+
+#: 
+msgid "Geocoding…"
+msgstr "Se geocodează…"
+
+#: 
+msgid "No address on file"
+msgstr "Nicio adresă înregistrată"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nu s-a găsit nicio corespondență — verificați strada, orașul și codul poștal"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Deschideți o familie pentru a-i corecta adresa, apoi rulați din nou."
+
+#: 
+msgid "Set up now"
+msgstr "Configurați acum"
+
+#: 
+msgid "Unknown family"
+msgstr "Familie necunoscută"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Actualizează toate coordonatele"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Actualizează toate coordonatele familiilor"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Actualizează coordonatele"
 

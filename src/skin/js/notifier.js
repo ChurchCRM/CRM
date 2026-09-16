@@ -50,7 +50,9 @@ export function notify(messageOrObject, options = {}) {
 
   // Map bootstrap-notify types to Notyf
   // Using Bootstrap 4.6.2 theme colors for consistency
-  if (type === "danger") {
+  // "error" is an accepted alias for "danger": bootstrap-notify used the
+  // Bootstrap contextual name, but most call sites spell it "error".
+  if (type === "danger" || type === "error") {
     notyfInstance.error({
       message: message,
       duration: duration,

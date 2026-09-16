@@ -525,6 +525,9 @@ cy.contains(".card-title", "Properties").should("be.visible");
 
 Current Cypress best practice (2024+) is to clean up state at the **start** of the next test, not at the end of the previous one. Reason: `afterEach` does not run if a test crashes mid-way (uncaught exception, lost connection, process kill). Cleanup that only runs in `afterEach` can therefore leave the DB in a bad state that breaks every subsequent test.
 
+**Correction — use both hooks, for different jobs <!-- learned: 2026-09-12 -->**
+The sentence above overstates it: `afterEach` **does** run after an ordinary mid-test failure, assertion failures included. Only process termination (kill, crash of the runner) skips hooks — and it skips *all* of them, `beforeEach` included. So: `beforeEach` is the **safety net** that clears state a previously *killed* run left behind; `afterEach` is the **per-test restore**, so a test run on its own (`.only`) still leaves the DB as it found it. What `afterEach` does *not* rescue is cleanup queued **inside** a callback that threw: Cypress's command queue `onError` runs `cleanup()`, which advances the queue index to its length before failing the runnable, so commands still pending in that callback are abandoned ([command_queue.ts](https://github.com/cypress-io/cypress/blob/develop/packages/driver/src/cypress/command_queue.ts)). Put the cleanup in `afterEach`, never "enqueue it first" ahead of the assertions.
+
 ```javascript
 // ✅ CORRECT — cleanup and fixture setup both live in beforeEach
 describe("Group property management", () => {
@@ -1136,6 +1139,40 @@ Config files live in `cypress/configs/` (NOT `docker/`):
 - If Cypress binary is broken or missing, fix with: `npx cypress cache clear && npm install`
 - The config points at a Docker container. Start the stack (`npm run docker:test:start`) before running tests. There is **no** `docker:test` script — that name doesn't exist in `package.json`.
 - If the stack is already running (containers up but from a prior/stale run), `docker:test:start` is a no-op that just confirms health — it does **not** reseed the database. Use `npm run docker:test:reset:db` to tear down volumes and bring the containers back up with fresh seed data when a spec depends on specific seeded rows (e.g. `DepositSlipID=5`). <!-- learned: 2026-07-25 -->
+
+### `cypress/data/seed.sql` must match `Install.sql`'s charsets <!-- learned: 2026-09-11 -->
+
+`cypress/data/seed.sql` is a hand-refreshed mysqldump, so it silently drifts
+from `src/mysql/install/Install.sql` whenever a schema migration lands only in
+the install/upgrade SQL. Every Docker CI profile loads `seed.sql`, so the drift
+means the suite exercises a schema **no real installation has**.
+
+Issue #9754 is the canonical case: the #8856 `utf8mb3 → utf8mb4` conversion of
+`note_nte` was applied to `Install.sql` and `src/mysql/upgrade/7.3.1-cleanup.sql`
+but never to `seed.sql`, so a note containing an emoji returned HTTP 500 in CI
+while working fine on a fresh install — i.e. the fix was completely unguarded.
+
+```bash
+# Compares the declared table charset of every table in both files.
+# Runs in the `typecheck-and-lint` CI job; `utf8` and `utf8mb3` count as equal.
+npm run validate:seed-charsets
+```
+
+Rules:
+- Any migration that changes a table's charset/collation **must** update the
+  matching `CREATE TABLE` block in `cypress/data/seed.sql` in the same PR.
+- `utf8` (Install.sql, hand-written) and `utf8mb3` (seed.sql, dumper output)
+  are the same 3-byte charset — not drift.
+- The validator compares charsets only, not collations: `seed.sql` spells a
+  collation on every table while `Install.sql` leaves it implicit in places
+  (`user_settings`), and an implicit collation can't be resolved without a
+  live server.
+- Tables in only one file are skipped — `seed.sql` carries runtime-created
+  `groupprop_<id>` tables that `Install.sql` rightly never declares.
+
+`cypress/e2e/api/private/standard/private.notes.emoji-charset.spec.js` is the
+runtime guard for `note_nte`: it round-trips a 4-byte body (emoji, skin-tone
+sequence, CJK ext-B) through create / read / update / delete.
 
 ### Running Tests <!-- learned: 2026-03-26 -->
 

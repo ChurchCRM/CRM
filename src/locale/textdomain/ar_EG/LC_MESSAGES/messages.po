@@ -5041,14 +5041,6 @@ msgid "Verification URL created"
 msgstr "خلق URL التحقق"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "بي دي إف"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "خطأ في إرسال البريد الإلكتروني (الصورة)"
 
@@ -8472,10 +8464,6 @@ msgstr "تم تحديث كلمة مرورك بنجاح."
 #: 
 msgid "selected family has no coordinates"
 msgstr "الأسرة المختارة ليس لها إحداثيات"
-
-#: 
-msgid "2FA"
-msgstr "التحقق الثنائي"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12245,10 +12233,6 @@ msgid "Database dump only (.sql)"
 msgstr "نسخة قاعدة البيانات فقط (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "لا يمكن أن يتجاوز نطاق التاريخ سنة واحدة"
-
-#: 
 msgid "Destructive Operation"
 msgstr "عملية تدميرية"
 
@@ -12843,10 +12827,6 @@ msgstr "لم يتم العثور على الخدمة لقائمة الأدوار
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "يمكن تبديل حالة عدم النشاط فقط في قائمة التصنيفات"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "لن يتلقى الأعضاء الجدد بريداً إلكترونياً ترحيبياً ببيانات اعتمادهم. شارك كلمة المرور معهم يدوياً، أو قم بتكوين البريد الإلكتروني أولاً."
 
 #: 
 msgid "Option name is required"
@@ -17893,4 +17873,68 @@ msgstr "لم يتم العثور على أحداث لـ %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "حاول تحديد نوع حدث أو شهر أو سنة مختلفة."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "حدث خطأ في تحديد الموقع الجغرافي — حاول مرة أخرى لاحقًا"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "العنوان غير مكتمل (المدينة والمحافظة والرمز البريدي مفقودة)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "جميع العائلات لديها إحداثيات بالفعل."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "فشل تحديث الإحداثيات"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "فشل تحديث إحداثيات العائلة"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "تم تحديد إحداثيات جميع العائلات البالغ عددها {{geocoded}}. الخريطة محدّثة الآن."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "تم تحديد إحداثيات {{geocoded}} عائلة. تعذّر تحديد {{failed}} — راجع التفاصيل أدناه."
+
+#: 
+msgid "Geocoding…"
+msgstr "جارٍ تحديد الإحداثيات…"
+
+#: 
+msgid "No address on file"
+msgstr "لا يوجد عنوان مسجل"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "لم يتم العثور على تطابق — تحقق من عنوان الشارع والمدينة والرمز البريدي"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "افتح ملف عائلة لإصلاح عنوانها، ثم كرر هذه العملية."
+
+#: 
+msgid "Set up now"
+msgstr "إعداد الآن"
+
+#: 
+msgid "Unknown family"
+msgstr "عائلة غير معروفة"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "تحديث جميع الإحداثيات"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "تحديث جميع إحداثيات العائلات"
+
+#: 
+msgid "Update Coordinates"
+msgstr "تحديث الإحداثيات"
 
