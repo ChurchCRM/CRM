@@ -852,9 +852,18 @@ describe("Volunteer v2 member API — §4.8 negatives", () => {
         api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/ministries`, null, 403);
     });
 
-    it("lets the volunteer reach the member MVC pages the exemption names (§4.7)", () => {
-        api(SELFEDIT_KEY, "GET", "/volunteer/my-schedule", null, 200);
-        api(SELFEDIT_KEY, "GET", "/volunteer/opportunities", null, 200);
+    it("302s the retired member MVC URLs, which are no longer exempt (§4.7, #9867)", () => {
+        // The pages moved into the Member Portal, so `isLimitedAccessAllowedPath()`
+        // names only `/api/volunteer/me/` now. An EditSelf-exclusive caller asking
+        // for either old URL is redirected — by AuthMiddleware first, and by the
+        // volunteer module's own forwarding route for anyone it lets through.
+        api(SELFEDIT_KEY, "GET", "/volunteer/my-schedule", null, [302, 403]);
+        api(SELFEDIT_KEY, "GET", "/volunteer/opportunities", null, [302, 403]);
+    });
+
+    it("still reaches the member API the exemption does name (§4.7)", () => {
+        api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/assignments`, null, 200);
+        api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/permissions`, null, 200);
     });
 
     it("still redirects an EditSelf-exclusive volunteer away from the coordinator MVC area", () => {

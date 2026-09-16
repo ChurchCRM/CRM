@@ -107,8 +107,7 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
         // it on the System Settings page WITHOUT logging out. The logged-in User
         // object lives in the PHP session; a memo of "not a coordinator" computed
         // during the v1 page loads must not follow the session, or the admin sees
-        // only the two member entries under Volunteer and no Ministries heading
-        // at all until the next login.
+        // no Ministries heading at all until the next login.
         beforeEach(() => {
             setVersion("v1");
             freshAdminLogin();
@@ -134,7 +133,9 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
             // the retired ministries list page has no entry at all.
             cy.get('a[href$="/volunteer/ministries"]').should("not.exist");
             cy.get('a[href$="/volunteer/dashboard"]').should("exist");
-            cy.get('a[href$="/volunteer/my-schedule"]').should("exist");
+            // The member entries are NOT in the sidebar in any state (#9867):
+            // they moved into the Member Portal with the pages themselves.
+            cy.get('a[href$="/volunteer/my-schedule"]').should("not.exist");
         });
     });
 

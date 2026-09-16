@@ -809,8 +809,10 @@ describe("Volunteer v2 — the drain delivers (§3.6, Appendix C)", () => {
                     expect(body, "the position name").to.contain(ESPRESSO_NAME);
                     expect(body, "the ministry name").to.contain(MINISTRY_NAME);
                     expect(body, "the church wall-clock time").to.contain("10:30 AM");
+                    // The CTA points into the Member Portal since #9867 — that is
+                    // where a volunteer's schedule is.
                     expect(body, "the CTA into my schedule").to.contain(
-                        "/volunteer/my-schedule",
+                        "/portal/volunteer/schedule",
                     );
 
                     // N10 / CR6: replies reach the coordinator, not the office.

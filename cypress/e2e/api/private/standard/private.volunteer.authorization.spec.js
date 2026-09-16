@@ -579,6 +579,8 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 expect(resp.body).to.deep.eq({
                     isAdmin: false,
                     isGlobalManager: false,
+                    isCoordinator: false,
+                    isTeamLeader: false,
                     managedMinistryIds: [],
                     managedTeamIds: [],
                 });
@@ -743,10 +745,89 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 expect(resp.body).to.deep.eq({
                     isAdmin: false,
                     isGlobalManager: false,
+                    isCoordinator: false,
+                    isTeamLeader: false,
                     managedMinistryIds: [],
                     managedTeamIds: [],
                 });
             });
+        });
+
+        /**
+         * The D14 revision (#9867, Member Portal P17).
+         *
+         * Before it, `loadScopes()` threw away every grant an EditSelf-exclusive
+         * account held, so this test's `isTeamLeader` and `managedTeamIds` came
+         * back false and empty — the grant existed in the table and did nothing.
+         * Now the grant counts: the member IS a team leader, and will run that
+         * team from the Member Portal (MP7).
+         *
+         * What must NOT change is the tier above it: `isCoordinator` stays false,
+         * because `User::isVolunteerCoordinatorEnabled()` keeps its own EditSelf
+         * short-circuit — that is what holds the coordinator dashboard and the
+         * sidebar's Ministries heading shut for this account (asserted below).
+         */
+        it("counts a team scope granted to a self-service account (D14 revision)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_VOLUNTEER, scopeType: "team", scopeId: teamA1 },
+                201,
+            );
+
+            cy.makePrivateEditSelfAPICall(
+                "GET",
+                ME_PERMISSIONS_URL,
+                null,
+                200,
+            ).then((resp) => {
+                expect(resp.body).to.deep.eq({
+                    isAdmin: false,
+                    isGlobalManager: false,
+                    isCoordinator: false,
+                    isTeamLeader: true,
+                    managedMinistryIds: [],
+                    managedTeamIds: [teamA1],
+                });
+            });
+
+            // Still not a coordinator anywhere it matters.
+            cy.makePrivateEditSelfAPICall("GET", SCOPES_URL, null, 403);
+            pageRequest(DASHBOARD_URL, Cypress.env("selfedit.api.key")).then((resp) => {
+                expect(resp.status).to.be.oneOf([302, 403]);
+            });
+
+            dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [
+                PERSON_VOLUNTEER,
+            ]);
+        });
+
+        it("reports a ministry scope on a self-service account without making it a coordinator", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_VOLUNTEER, scopeType: "ministry", scopeId: ministryA },
+                201,
+            );
+
+            cy.makePrivateEditSelfAPICall(
+                "GET",
+                ME_PERMISSIONS_URL,
+                null,
+                200,
+            ).then((resp) => {
+                // The grant loads — but leading no team, this account is not a
+                // team leader either, and the coordinator tier stays staff-only.
+                expect(resp.body.managedMinistryIds).to.deep.eq([ministryA]);
+                expect(resp.body.isCoordinator).to.eq(false);
+                expect(resp.body.isTeamLeader).to.eq(false);
+            });
+
+            cy.makePrivateEditSelfAPICall("GET", `/api/volunteer/ministries`, null, 403);
+
+            dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [
+                PERSON_VOLUNTEER,
+            ]);
         });
 
         it("still cannot reach the coordinator/manager scope API", () => {

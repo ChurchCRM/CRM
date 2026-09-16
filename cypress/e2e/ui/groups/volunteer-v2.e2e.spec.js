@@ -46,8 +46,9 @@ const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
 const DASHBOARD_URL = "/volunteer/dashboard";
 const MINISTRIES_URL = "/volunteer/ministries";
-const MY_SCHEDULE_URL = "/volunteer/my-schedule";
-const OPPORTUNITIES_URL = "/volunteer/opportunities";
+// The member pages live in the Member Portal since #9867; the old URLs 302 here.
+const MY_SCHEDULE_URL = "/portal/volunteer/schedule";
+const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
 
 const PERSON_COORDINATOR = 3;
 const PERSON_VOLUNTEER = 100;
@@ -654,9 +655,12 @@ describe("Volunteer v2 e2e (UI) — the member surface is invisible in v1 (#9704
         setVersion("v2");
     });
 
-    it("shows a volunteer no Volunteer menu at all", () => {
+    it("shows a volunteer no volunteering navigation at all", () => {
         freshMemberLogin();
         cy.visit("/");
+        // Neither the portal's Volunteering entry (#9867) nor any link to the
+        // retired admin URLs.
+        cy.get("a[href$='portal/volunteer/schedule']").should("not.exist");
         cy.get("a[href$='volunteer/my-schedule']").should("not.exist");
         cy.get("a[href$='volunteer/opportunities']").should("not.exist");
         cy.get("a[href$='volunteer/dashboard']").should("not.exist");
@@ -664,11 +668,13 @@ describe("Volunteer v2 e2e (UI) — the member surface is invisible in v1 (#9704
 
     it("does not serve the member pages by URL either", () => {
         freshMemberLogin();
+        // With the flag on v1 the portal route answers 404 through the portal's
+        // own error page — the page itself never renders.
         cy.visit(MY_SCHEDULE_URL, { failOnStatusCode: false });
-        cy.url().should("not.include", "/volunteer/my-schedule");
+        cy.get("#volunteer-my-schedule").should("not.exist");
 
         cy.visit(OPPORTUNITIES_URL, { failOnStatusCode: false });
-        cy.url().should("not.include", "/volunteer/opportunities");
+        cy.get("#volunteer-opportunities").should("not.exist");
     });
 
     it("leaves the legacy V1 person-view tab working for an administrator", () => {

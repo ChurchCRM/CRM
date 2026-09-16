@@ -14,8 +14,11 @@
  *     by name — every active ministry for an administrator or a global
  *     volunteer manager, exactly the ministry scopes for anybody else, and
  *     nothing at all for a pure team leader.
- *   - **Volunteer** — the member surface, and nothing else: *My Volunteer
- *     Schedule* and *Open Opportunities*.
+ *   - ~~**Volunteer**~~ — **gone** (#9867, Member Portal P16). The member
+ *     surface lives only in the Member Portal now, so there is no "Volunteer"
+ *     heading in the admin sidebar in ANY rollout state and for ANY user.
+ *     Everything below that used to assert its two entries asserts its absence
+ *     instead; "Ministries" is unchanged in every case.
  *
  * The `/volunteer/ministries` list page is gone with it: the sidebar lists the
  * ministries now, so the route 302s to the dashboard and the dashboard keeps
@@ -125,7 +128,7 @@ function menuSectionShouldNotExist(title) {
         .should("have.length", 0);
 }
 
-describe("Volunteer v2 — the Ministries and Volunteer sidebar headings", () => {
+describe("Volunteer v2 — the Ministries sidebar heading", () => {
     before(() => {
         setVersion("v2");
         cleanupFixtures();
@@ -171,15 +174,26 @@ describe("Volunteer v2 — the Ministries and Volunteer sidebar headings", () =>
             });
         });
 
-        it("leaves only the two member items under Volunteer", () => {
-            menuSection("Volunteer").within(() => {
-                cy.get('a[href$="/volunteer/my-schedule"]').should("exist");
-                cy.get('a[href$="/volunteer/opportunities"]').should("exist");
-                cy.get(`a[href$="${DASHBOARD_URL}"]`).should("not.exist");
-                cy.get(`a[href$="${MINISTRIES_URL}"]`).should("not.exist");
-                // Dashboard and the per-ministry entries are the whole of the
-                // administration surface, and none of it is here any more.
-                cy.get("a.nav-link").should("have.length", 2);
+        it("has no Volunteer heading at all, and no member links anywhere", () => {
+            menuSectionShouldNotExist("Volunteer");
+            // The member pages are in the portal; the sidebar must not link to
+            // either of their retired URLs.
+            cy.get('a[href$="/volunteer/my-schedule"]').should("not.exist");
+            cy.get('a[href$="/volunteer/opportunities"]').should("not.exist");
+        });
+
+        it("leaves Ministries holding only the administration surface", () => {
+            menuSection("Ministries").within(() => {
+                cy.get(`a[href$="${DASHBOARD_URL}"]`).should("exist");
+                // Every entry under this heading is either the dashboard or a
+                // ministry page — never a member page. The count itself is not
+                // asserted: an administrator sees every ACTIVE ministry, and
+                // another spec's fixture may still be around.
+                cy.get("a.nav-link").each(($link) => {
+                    expect($link.attr("href")).to.match(
+                        /\/volunteer\/(dashboard|ministries\/\d+)$/,
+                    );
+                });
             });
         });
 
@@ -257,11 +271,10 @@ describe("Volunteer v2 — the Ministries and Volunteer sidebar headings", () =>
             menuSection("Ministries").should("not.contain", MINISTRY_B);
         });
 
-        it("still gets the member items under Volunteer", () => {
-            menuSection("Volunteer").within(() => {
-                cy.get('a[href$="/volunteer/my-schedule"]').should("exist");
-                cy.get('a[href$="/volunteer/opportunities"]').should("exist");
-            });
+        it("gets no Volunteer heading either", () => {
+            menuSectionShouldNotExist("Volunteer");
+            cy.get('a[href$="/volunteer/my-schedule"]').should("not.exist");
+            cy.get('a[href$="/volunteer/opportunities"]').should("not.exist");
         });
     });
 
@@ -298,16 +311,18 @@ describe("Volunteer v2 — the Ministries and Volunteer sidebar headings", () =>
 
         beforeEach(() => {
             freshStandardLogin();
-            cy.visit("/volunteer/my-schedule");
+            cy.visit("/people/view/1");
         });
 
-        it("gets the Volunteer heading and no Ministries heading at all", () => {
+        it("gets neither heading — and reaches volunteering through the portal", () => {
             menuSectionShouldNotExist("Ministries");
-            menuSection("Volunteer").within(() => {
-                cy.get('a[href$="/volunteer/my-schedule"]').should("exist");
-                cy.get('a[href$="/volunteer/opportunities"]').should("exist");
-                cy.get(`a[href$="${DASHBOARD_URL}"]`).should("not.exist");
-            });
+            menuSectionShouldNotExist("Volunteer");
+
+            // This user is staff (person 3 has module permissions), so they land
+            // in the admin shell; their own schedule is in the portal.
+            cy.visit("/portal/volunteer/schedule");
+            cy.get("#volunteer-my-schedule").should("exist");
+            cy.get("#portal-nav").find('a[href$="/portal/volunteer/schedule"]').should("exist");
         });
     });
 
@@ -324,6 +339,7 @@ describe("Volunteer v2 — the Ministries and Volunteer sidebar headings", () =>
             freshAdminLogin();
             cy.visit("/people/view/1");
             menuSectionShouldNotExist("Ministries");
+            // "Volunteer" is absent in every state now (#9867), not just this one.
             menuSectionShouldNotExist("Volunteer");
         });
     });

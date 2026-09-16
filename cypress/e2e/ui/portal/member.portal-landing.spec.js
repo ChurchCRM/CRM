@@ -93,3 +93,55 @@ describe("Member Portal — self-service landing", () => {
         cy.get(".portal-staff-bar").should("not.exist");
     });
 });
+
+/**
+ * The nav is feature-gated, one entry at a time (design §5). MP6 (#9867) added
+ * the first gated entry: Volunteering, shown only while the Volunteer v2 rollout
+ * flag includes V2.
+ */
+describe("Member Portal — the navigation follows the enabled features", () => {
+    const setVersion = (value) =>
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/admin/api/system/config/sVolunteerVersion",
+            { value },
+            200,
+        );
+
+    after(() => {
+        setVersion("v1");
+    });
+
+    it("hides Volunteering while the volunteer rollout flag is v1", () => {
+        setVersion("v1");
+        login();
+        cy.url({ timeout: 10000 }).should("include", "/portal");
+
+        cy.get("#portal-nav").should("exist");
+        cy.get("#portal-nav").find("a[href$='/portal/volunteer/schedule']").should("not.exist");
+        // …and the page itself is not there to be reached by URL either.
+        cy.visit("portal/volunteer/schedule", { failOnStatusCode: false });
+        cy.get("#volunteer-my-schedule").should("not.exist");
+    });
+
+    it("shows Volunteering once the volunteer rollout flag is v2", () => {
+        setVersion("v2");
+        login();
+        cy.url({ timeout: 10000 }).should("include", "/portal");
+
+        cy.get("#portal-nav")
+            .find("a[href$='/portal/volunteer/schedule']")
+            .should("exist")
+            .and("contain", "Volunteering");
+
+        // The home page's volunteering card is real, not a "Coming soon" tile.
+        cy.get("#portal-volunteering-card").should("exist");
+        cy.get("#portal-volunteering-card .portal-placeholder-badge").should("not.exist");
+    });
+
+    it("Home is always there, and is the active entry on /portal", () => {
+        login();
+        cy.url({ timeout: 10000 }).should("include", "/portal");
+        cy.get("#portal-nav .portal-nav-link.is-active").should("contain", "Home");
+    });
+});

@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
 
 /**
- * Volunteer v2 — S5 / S6, the volunteer self-service screens (#9712, §5.6).
+ * Volunteer v2 — S5 / S6, the volunteer self-service screens (#9712, §5.6),
+ * inside the Member Portal (#9867).
  *
  * The member half of the product: "what am I down for", "what still needs
  * filling", accept, decline, find a sub, sign up. Deliberately plain — a
@@ -20,10 +21,28 @@
  * Order inside every hook is API setup → login → `cy.visit()`, because
  * `cy.request()` rotates the PHP session cookie (cypress-testing.md). Fixtures
  * are removed in `before` as well as `after`.
+ *
+ * **#9867 moved the pages, not the behaviour.** They render from Twig templates
+ * in the portal layout instead of PHP views in the admin shell; every container
+ * id, every bundle and every string is the same, so every assertion below is the
+ * same one it was — only the two URLs changed, and the navigation assertion,
+ * which now looks at the portal's nav because the admin sidebar is not there.
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
+
+/**
+ * The two member pages live in the MEMBER PORTAL since #9867 — they are Twig
+ * templates rendered by `src/portal/routes/volunteer.php`, not PHP views in the
+ * admin shell. The bundles, the ids they drive and every string below are
+ * unchanged by that move, which is the point: this spec asserts the same
+ * behaviour at the new addresses.
+ */
+const MY_SCHEDULE_URL = "/portal/volunteer/schedule";
+const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
+const LEGACY_MY_SCHEDULE_URL = "/volunteer/my-schedule";
+const LEGACY_OPPORTUNITIES_URL = "/volunteer/opportunities";
 
 const PREFIX = "UI9712";
 const EVENT_TITLE = `${PREFIX} Hospitality Service`;
@@ -365,7 +384,7 @@ describe("Volunteer v2 — S5 my schedule (#9712)", () => {
     });
 
     it("renders the upcoming commitment as a card with what, when and status", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
 
         cy.get("#volunteer-my-schedule").should("exist");
         cy.get(".volunteer-assignment-card").should("have.length.at.least", 1);
@@ -383,7 +402,7 @@ describe("Volunteer v2 — S5 my schedule (#9712)", () => {
     });
 
     it("never shows a coordinator concept — no 'occurrence', 'requirement' or 'schedule'", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get(".volunteer-assignment-card").should("have.length.at.least", 1);
         cy.get("#volunteer-my-schedule").invoke("text").then((text) => {
             const lowered = text.toLowerCase();
@@ -394,7 +413,7 @@ describe("Volunteer v2 — S5 my schedule (#9712)", () => {
     });
 
     it("accepts with one tap and re-renders the card", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get(".volunteer-assignment-card").first().find(".volunteer-accept").click();
 
         cy.get(".volunteer-assignment-card")
@@ -415,7 +434,7 @@ describe("Volunteer v2 — S5 my schedule (#9712)", () => {
     });
 
     it("declines behind a prompt and reopens the slot as an open opportunity", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get(".volunteer-assignment-card").first().find(".volunteer-decline").click();
 
         cy.get(".bootbox").should("be.visible");
@@ -428,14 +447,14 @@ describe("Volunteer v2 — S5 my schedule (#9712)", () => {
             .should("contain.text", "Declined");
 
         // The slot is genuinely open again — S6 says so.
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
         cy.get(`.volunteer-opportunity-card[data-position-id="${posDoor}"]`).should("exist");
     });
 
     it("shows a first-class empty state when nothing is booked", () => {
         clearWorkflowRows();
         freshMemberLogin();
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get("#assignments-empty").should("be.visible");
         cy.get("#assignments-empty .empty-title").should("not.be.empty");
         cy.get(".volunteer-assignment-card").should("not.exist");
@@ -456,7 +475,7 @@ describe("Volunteer v2 — S5 my schedule (#9712)", () => {
             req.reply({ statusCode: 500, body: { success: false, message: "boom" } });
         }).as("assignments");
 
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.wait("@assignments");
         cy.get("#assignments-error").should("be.visible");
 
@@ -469,7 +488,7 @@ describe("Volunteer v2 — S5 my schedule (#9712)", () => {
     });
 
     it("renders localized strings, never a raw i18next key", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         // `.text()` returns hidden nodes too, so wait for the cards before reading:
         // otherwise the loading block alone satisfies the read.
         cy.get(".volunteer-assignment-card").should("have.length.at.least", 1);
@@ -489,7 +508,7 @@ describe("Volunteer v2 — S5 find a sub (#9712)", () => {
     });
 
     it("offers only eligible people, never the volunteer themselves", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get(".volunteer-assignment-card").first().find(".volunteer-find-sub").click();
 
         cy.get("#substitute-modal").should("be.visible");
@@ -502,7 +521,7 @@ describe("Volunteer v2 — S5 find a sub (#9712)", () => {
     });
 
     it("creates the proposal and turns the card into 'waiting for your coordinator'", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get(".volunteer-assignment-card").first().find(".volunteer-find-sub").click();
         cy.get("#substitute-modal").should("be.visible");
         cy.get("#substitute-select").select(String(POOL_MEMBER_A), { force: true });
@@ -517,7 +536,7 @@ describe("Volunteer v2 — S5 find a sub (#9712)", () => {
     });
 
     it("withdraws a pending proposal and restores the ordinary buttons", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get(".volunteer-assignment-card").first().find(".volunteer-find-sub").click();
         cy.get("#substitute-modal").should("be.visible");
         cy.get("#substitute-select").select(String(POOL_MEMBER_A), { force: true });
@@ -541,7 +560,7 @@ describe("Volunteer v2 — S6 open opportunities (#9712)", () => {
     });
 
     it("lists an open opportunity with a single Sign up button", () => {
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
         cy.get("#volunteer-opportunities").should("exist");
         cy.get(`.volunteer-opportunity-card[data-position-id="${posCoffee}"]`)
             .first()
@@ -552,7 +571,7 @@ describe("Volunteer v2 — S6 open opportunities (#9712)", () => {
     });
 
     it("signing up moves the commitment onto my schedule", () => {
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
         cy.get(`.volunteer-opportunity-card[data-position-id="${posCoffee}"]`)
             .first()
             .find(".volunteer-signup")
@@ -562,7 +581,7 @@ describe("Volunteer v2 — S6 open opportunities (#9712)", () => {
         cy.get(`.volunteer-opportunity-card[data-position-id="${posCoffee}"][data-occurrence-id="${occurrenceId}"]`)
             .should("not.exist");
 
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get(".volunteer-assignment-card").should("have.length.at.least", 1);
         cy.get("#volunteer-my-schedule").should("contain", `${PREFIX} Coffee`);
     });
@@ -575,7 +594,7 @@ describe("Volunteer v2 — S6 open opportunities (#9712)", () => {
             201,
         );
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get(
             `.volunteer-opportunity-card[data-position-id="${posDoor}"][data-occurrence-id="${occurrenceId}"]`,
@@ -617,7 +636,7 @@ describe("Volunteer v2 — S6 open opportunities (#9712)", () => {
         });
 
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
         cy.get("#opportunities-empty").should("be.visible");
         cy.get("#opportunities-empty .empty-title").should("not.be.empty");
     });
@@ -654,7 +673,7 @@ describe("Volunteer v2 — S6 ministries looking for help (D19)", () => {
     it("omits the whole section when no ministry is asking for help", () => {
         setHelpWanted({ helpWanted: false });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
         cy.get("#opportunities-loading").should("not.be.visible");
         cy.get("#help-wanted-section").should("not.be.visible");
     });
@@ -662,7 +681,7 @@ describe("Volunteer v2 — S6 ministries looking for help (D19)", () => {
     it("lists the ministry with its text and one 'I'd like to help' button", () => {
         setHelpWanted({ helpWanted: true, helpWantedText: HELP_TEXT });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get("#help-wanted-section").should("be.visible");
         cy.get(".volunteer-help-wanted-card").should("have.length", 1);
@@ -676,7 +695,7 @@ describe("Volunteer v2 — S6 ministries looking for help (D19)", () => {
     it("escapes the coordinator's text instead of rendering it as markup", () => {
         setHelpWanted({ helpWanted: true, helpWantedText: HELP_TEXT_UNSAFE });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get(".volunteer-help-wanted-card").should("be.visible");
         cy.get(".volunteer-help-wanted-text img").should("not.exist");
@@ -695,7 +714,7 @@ describe("Volunteer v2 — S6 ministries looking for help (D19)", () => {
         );
 
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
         cy.get(".volunteer-offer-help").click();
         cy.get(".notyf__toast").should("contain", "you'd like to help");
 
@@ -711,7 +730,7 @@ describe("Volunteer v2 — S6 ministries looking for help (D19)", () => {
         // D19: the button stays for members and non-members alike — offering again
         // is a real thing to do.
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
         cy.get(".volunteer-offer-help").should("be.visible").click();
         cy.get(".notyf__toast").should("contain", "again");
     });
@@ -719,7 +738,7 @@ describe("Volunteer v2 — S6 ministries looking for help (D19)", () => {
     it("renders the section through i18next, never a raw key", () => {
         setHelpWanted({ helpWanted: true, helpWantedText: HELP_TEXT });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
         cy.get("#help-wanted-section").should("not.contain", "i18next");
         cy.get("#help-wanted-section")
             .invoke("text")
@@ -779,7 +798,7 @@ describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)",
     it("advertises a ministry whose only advert is a recruiting position", () => {
         setPosition(posDoor, { recruiting: true });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get("#help-wanted-section").should("be.visible");
         cy.get(".volunteer-help-wanted-card").should("have.length", 1);
@@ -793,7 +812,7 @@ describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)",
     it("formats a row as Team - Position - Description", () => {
         setPosition(posDoor, { recruiting: true });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get(".volunteer-help-wanted-position")
             .should("have.length", 1)
@@ -809,7 +828,7 @@ describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)",
     it("drops the trailing separator when the position has no description", () => {
         setPosition(posCoffee, { recruiting: true });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get(".volunteer-help-wanted-position")
             .should("have.length", 1)
@@ -826,7 +845,7 @@ describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)",
         setPosition(posDoor, { recruiting: true });
         setPosition(posCoffee, { recruiting: true });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get(".volunteer-help-wanted-position").should("have.length", 2);
         // Door is order 1, Coffee is order 2, and both are on the one team.
@@ -839,7 +858,7 @@ describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)",
         setPosition(posCoffee, { recruiting: true });
         setPosition(posCoffee, { active: false });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get(".volunteer-help-wanted-position").should("have.length", 1);
         cy.get(".volunteer-help-wanted-card").should("not.contain", `${PREFIX} Coffee`);
@@ -849,7 +868,7 @@ describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)",
         setMinistry({ helpWanted: true, helpWantedText: HELP_TEXT });
         setPosition(posDoor, { recruiting: true });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get(".volunteer-help-wanted-text").should("contain", HELP_TEXT);
         cy.get(".volunteer-help-wanted-positions-title").should("contain", SUBHEADING);
@@ -859,7 +878,7 @@ describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)",
     it("shows no subheading for a ministry advertising with prose alone", () => {
         setMinistry({ helpWanted: true, helpWantedText: HELP_TEXT });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get(".volunteer-help-wanted-card").should("be.visible");
         cy.get(".volunteer-help-wanted-positions-title").should("not.exist");
@@ -876,7 +895,7 @@ describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)",
         );
 
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
         cy.get(".volunteer-offer-help").click();
         cy.get(".notyf__toast").should("contain", "you'd like to help");
 
@@ -896,7 +915,7 @@ describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)",
             description: '<img src=x onerror="window.__posxss=1">',
         });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get(".volunteer-help-wanted-position").should("exist");
         cy.get(".volunteer-help-wanted-position img").should("not.exist");
@@ -906,7 +925,7 @@ describe("Volunteer v2 — S6 positions being recruited for (#9701 round four)",
     it("renders the subheading through i18next, never a raw key", () => {
         setPosition(posDoor, { recruiting: true });
         freshMemberLogin();
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
 
         cy.get("#help-wanted-section").should("not.contain", "i18next");
         cy.get("#help-wanted-section")
@@ -925,13 +944,13 @@ describe("Volunteer v2 — member screens on a phone (§5.9)", () => {
     });
 
     it("S5 fits a 375px viewport with no horizontal scroll", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get(".volunteer-assignment-card").should("be.visible");
         assertNoHorizontalOverflow();
     });
 
     it("S5 accept/decline meet the 44px touch target minimum", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get(".volunteer-assignment-card").first().find(".volunteer-accept").then(($el) => {
             expect(parseFloat($el.css("height")), "accept height").to.be.gte(44);
         });
@@ -941,7 +960,7 @@ describe("Volunteer v2 — member screens on a phone (§5.9)", () => {
     });
 
     it("S5 cards are a single column at every width", () => {
-        cy.visit("/volunteer/my-schedule");
+        cy.visit(MY_SCHEDULE_URL);
         cy.get(".volunteer-assignment-card").then(($cards) => {
             if ($cards.length < 2) {
                 return;
@@ -953,7 +972,7 @@ describe("Volunteer v2 — member screens on a phone (§5.9)", () => {
     });
 
     it("S6 fits a 375px viewport with a full-width sign-up button", () => {
-        cy.visit("/volunteer/opportunities");
+        cy.visit(OPPORTUNITIES_URL);
         cy.get(".volunteer-opportunity-card").should("be.visible");
         assertNoHorizontalOverflow();
         cy.get(".volunteer-opportunity-card").first().find(".volunteer-signup").then(($el) => {
@@ -962,20 +981,46 @@ describe("Volunteer v2 — member screens on a phone (§5.9)", () => {
     });
 });
 
-// ── The member menu entry (§3.5) ───────────────────────────────────────────
+// ── The member's navigation, in the portal (§3.5, #9867) ───────────────────
 
-describe("Volunteer v2 — the member menu entry (§3.5)", () => {
+describe("Volunteer v2 — the member navigation (§3.5)", () => {
     beforeEach(() => {
         seedPendingDoorAssignment();
         freshMemberLogin();
     });
 
-    it("offers 'My Volunteer Schedule' to a volunteer who coordinates nothing", () => {
-        cy.visit("/volunteer/my-schedule");
-        cy.get("a[href$='volunteer/my-schedule']").should("exist");
-        cy.get("a[href$='volunteer/opportunities']").should("exist");
-        // …and never the coordinator entries.
+    /**
+     * The admin sidebar's "Volunteer" heading is gone (#9867, Member Portal P16),
+     * so the assertion that used to look for its two entries now looks at the
+     * portal's own navigation — which is the only navigation a member ever sees.
+     */
+    it("shows Volunteering in the portal nav to a volunteer who coordinates nothing", () => {
+        cy.visit(MY_SCHEDULE_URL);
+
+        cy.get("#portal-nav").within(() => {
+            cy.get(`a[href$='${MY_SCHEDULE_URL}']`).should("exist").and("contain", "Volunteering");
+        });
+        // Both pages are reachable from the page's own tab bar.
+        cy.get("#portal-volunteer-tab-schedule").should("exist");
+        cy.get("#portal-volunteer-tab-opportunities").should("exist");
+
+        // …and never the coordinator entries, nor any admin furniture at all.
         cy.get("a[href$='volunteer/dashboard']").should("not.exist");
         cy.get("a[href$='volunteer/setup']").should("not.exist");
+        cy.get("#sidebar-menu").should("not.exist");
+    });
+
+    it("302s the retired member URLs to the portal", () => {
+        cy.request({ url: LEGACY_MY_SCHEDULE_URL, followRedirect: false }).then((resp) => {
+            expect(resp.status).to.eq(302);
+            // A self-service session is answered by AuthMiddleware before the
+            // volunteer module's redirect is reached, so the destination is the
+            // portal — the page itself for staff, the portal home for a member.
+            expect(resp.headers.location).to.match(/\/portal\//);
+        });
+        cy.request({ url: LEGACY_OPPORTUNITIES_URL, followRedirect: false }).then((resp) => {
+            expect(resp.status).to.eq(302);
+            expect(resp.headers.location).to.match(/\/portal\//);
+        });
     });
 });
