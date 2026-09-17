@@ -1,5 +1,8 @@
 {#
-  The portal footer: how to reach the church, and the ChurchCRM credit.
+  The portal footer: how to reach the church on the left, and the church's own
+  social accounts (#9907) on the right. Both sides come from Admin → Church
+  Information; nothing is hard-coded here, and a side with nothing configured
+  renders nothing at all.
 #}
 <footer class="portal-footer">
     <div class="portal-container portal-footer-inner">
@@ -13,8 +16,17 @@
             <a class="portal-footer-detail" href="{{ church.website }}" rel="noopener noreferrer">{{ gettext('Church website') }}</a>
             {% endif %}
         </div>
-        <div class="portal-footer-credit">
-            <a href="https://churchcrm.io" target="_blank" rel="noopener noreferrer">ChurchCRM</a>
+        {% if church.socialLinks is not empty %}
+        <div class="portal-footer-social">
+            {% for link in church.socialLinks %}
+            <a class="portal-footer-social-link"
+               href="{{ link.url }}"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="{{ link.label }}"
+               title="{{ link.label }}"><i class="{{ link.icon }}" aria-hidden="true"></i></a>
+            {% endfor %}
         </div>
+        {% endif %}
     </div>
 </footer>

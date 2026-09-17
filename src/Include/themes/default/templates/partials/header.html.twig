@@ -1,6 +1,11 @@
 {#
   The portal header: the church's identity on the left, the member and the way
   out on the right. There is no admin furniture here and never will be.
+
+  The account menu is one button — "Hello <first name>" — over a dropdown. Its
+  behaviour lives in `portal.min.js`, which binds to the ids below, so a theme
+  that overrides this partial must keep `portal-account-toggle` and
+  `portal-account-menu` for the menu to open at all.
 #}
 <header class="portal-header">
     <div class="portal-container portal-header-inner">
@@ -17,11 +22,38 @@
                     aria-label="{{ gettext('Toggle navigation') }}">
                 <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </button>
-            <span class="portal-member-name">{{ member.fullName }}</span>
-            <a class="portal-signout" href="{{ url('/session/end') }}">
-                <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
-                <span>{{ gettext('Sign out') }}</span>
-            </a>
+
+            <div class="portal-account" id="portal-account">
+                <button class="portal-account-toggle" type="button" id="portal-account-toggle"
+                        aria-haspopup="menu" aria-expanded="false" aria-controls="portal-account-menu">
+                    {# A member with no first name on file still gets greeted by
+                       something; the full name is the only other thing we have. #}
+                    <span class="portal-account-label">{{ gettext('Hello %s')|format(member.firstName|default(member.fullName)) }}</span>
+                    <i class="fa-solid fa-chevron-down portal-account-caret" aria-hidden="true"></i>
+                </button>
+
+                <div class="portal-account-menu" id="portal-account-menu" role="menu"
+                     aria-labelledby="portal-account-toggle" hidden>
+                    <a class="portal-account-item" role="menuitem" href="{{ url('/portal/profile/password') }}">
+                        <i class="fa-solid fa-key" aria-hidden="true"></i>
+                        <span>{{ gettext('Change Password') }}</span>
+                    </a>
+                    {# Every staff login — not only an administrator — needs a way
+                       back to the admin area it came from. Never during a
+                       masquerade: the impersonated session is the member, and its
+                       way out is the banner's own exit control. #}
+                    {% if member.isStaff and not portal.impersonating %}
+                    <a class="portal-account-item" role="menuitem" href="{{ url('/v2/dashboard') }}">
+                        <i class="fa-solid fa-gauge" aria-hidden="true"></i>
+                        <span>{{ gettext('Admin Console') }}</span>
+                    </a>
+                    {% endif %}
+                    <a class="portal-account-item" role="menuitem" href="{{ url('/session/end') }}">
+                        <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+                        <span>{{ gettext('Sign out') }}</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </header>

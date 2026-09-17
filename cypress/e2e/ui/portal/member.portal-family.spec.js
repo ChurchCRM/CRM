@@ -19,7 +19,7 @@
  *     live member
  */
 describe("Member Portal — My Family", () => {
-    const adultUser = "lena.black.editself.notes@exampl";
+    const adultUser = "lena.black.editself.notes@example.com";
     const nonAdultUser = "limited.user";
     const password = "changeme";
 

@@ -64,7 +64,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
         <div class="row mb-3">
             <label class="col-sm-3 col-form-label" for="UserName"><?= gettext('Login Name') ?></label>
             <div class="col-sm-9">
-                <input type="text" name="UserName" id="UserName" value="<?= InputUtils::escapeAttribute($sUserName) ?>" class="form-control">
+                <input type="text" name="UserName" id="UserName" value="<?= InputUtils::escapeAttribute($sUserName) ?>" class="form-control" maxlength="50">
             </div>
         </div>
     </div>

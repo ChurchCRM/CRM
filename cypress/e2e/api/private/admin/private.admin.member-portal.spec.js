@@ -20,8 +20,8 @@ const WARNING_THEME = "cypressapiwarn";
 const BROKEN_THEME = "cypressapibroken";
 const THEME_DIRS = [GOOD_THEME, WARNING_THEME, BROKEN_THEME].map((id) => `src/Include/themes/${id}`);
 
-// usr_UserName is VARCHAR(32), so the seeded address is stored truncated.
-const MEMBER_USER = "lena.black.editself.notes@exampl";
+// usr_UserName is VARCHAR(50) since #9831, so the seeded address is stored whole.
+const MEMBER_USER = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 const MEMBER_PERSON_ID = 100;
 

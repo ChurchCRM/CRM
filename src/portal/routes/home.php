@@ -31,6 +31,10 @@ $homeHandler = function (Request $request, Response $response): Response {
             // The nav entry is decided by the same call, so the card and the
             // navigation can never disagree.
             'showVolunteering' => PortalNav::isVolunteeringVisible(),
+            // The Profile card shows the member's own contact details rather
+            // than a sentence describing them, so it reads the same view-model
+            // the Profile page renders — never a second copy of the logic.
+            'profile' => $actor instanceof Person ? PortalSelfService::getProfile($actor) : null,
             'familySummary' => $family === null ? null : [
                 'name' => (string) $family->getName(),
                 'memberCount' => count($family->getPeople()),

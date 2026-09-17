@@ -65,7 +65,7 @@ an admin page is not finished.
 | P7 | **Templates are live: an edited template file is picked up on the next request.** | Twig compiles to a PHP cache and, with `auto_reload`, recompiles a template whose file changed. Designers edit over FTP and reload. A "Developer mode" switch on the admin page turns the compile cache off entirely. |
 | P8 | **A broken theme fails loudly.** Activation compiles every template in the theme and refuses with the exact file, line and message. At render time an error in the active theme shows the administrator the error and shows members a portal-styled "temporarily unavailable" page; the error is written to the application log (Admin → System → Logs) and to PHP's `error_log` (the web server's error log). There is no silent fallback to the default theme. | Silent fallback hides the problem from the designer. |
 | P9 | **Configuration lives on a dedicated Admin → Member Portal page**, not in System Settings. | System Settings is not accepting new items; the page is also the home for theme validation, statistics and, later, calendar visibility and modules. Values are still `ConfigItem`s in `config_cfg` so backups, exports and the config API work unchanged; they carry no System Settings category, which is exactly how an item is hidden from that page. |
-| P10 | **Landing rule: an Edit-Self-only login lands in `/portal` and cannot reach the admin shell; every other login lands in the admin shell as today and gets a "Member Portal" entry in its user menu.** While a staff member is in the portal, the same fixed top bar the masquerade uses (#9843) says "You are viewing the Member Portal as yourself" with the same exit control, which returns them to the admin dashboard. | Every staff login, however limited, holds View on people and families; "self-service" is the only member persona. No third case. Staff need an obvious way back, and the exit control already exists. |
+| P10 | **Landing rule: an Edit-Self-only login lands in `/portal` and cannot reach the admin shell; every other login lands in the admin shell as today and gets a "Member Portal" entry in its user menu.** While a staff member is in the portal, the header's account menu carries an **Admin Console** entry that returns them to the admin dashboard; it is shown for every staff login and hidden during a masquerade. | Every staff login, however limited, holds View on people and families; "self-service" is the only member persona. No third case. Staff need an obvious way back, but a fixed bar on every page was too loud a way to give them one (product review, 2026-09-17): the menu entry does the same job and costs no vertical space. A masquerading administrator leaves through the banner's own exit control, so the entry would be a second, wrong way out. |
 | P11 | **Every portal API derives the acting person from the session. No route accepts a `personId` naming the actor.** | Same invariant Volunteer v2 §3.3.3 uses; it makes IDOR structurally impossible on the member surface. |
 | P12 | **Family scope = the member's own family**, via the existing `User::canViewFamily()` / `canEditPerson()` rules. | Nothing new to audit; the rules already exist for the Edit Self flag. |
 | P13 | **The administrator chooses which calendars the portal shows**, on the Admin → Member Portal page, from one list that holds the church calendars (the `calendars` rows) and the system calendars (Birthdays, Anniversaries, Holidays, Unpinned events). Stored as a JSON config value, not a column, because system calendars are virtual. Events inherit from the calendars they are pinned to. **Every volunteer ministry gets its own calendar**, created with the ministry (`calendars.ministry_id`), which its coordinators may pin events to and which the administrator may show in the portal like any other. | There is no per-event visibility flag; the system calendars are not table rows; ministries have no calendar today (§5.3). |
@@ -180,7 +180,7 @@ src/Include/themes/
       partials/{nav,header,footer,flash}.html.twig
       home.html.twig
       profile/{index,edit}.html.twig
-      family/{index,confirm}.html.twig
+      family/{index,edit,confirm,none}.html.twig
       calendar/index.html.twig
       volunteer/{schedule,opportunities}.html.twig
       teams/{index,team,occurrence}.html.twig
@@ -312,7 +312,7 @@ render.
 | `theme_asset(path)` | `/portal/theme/<active>/<path>?v=<filemtime>`; if the file is missing in the active theme but present in `default`, the default's URL |
 | `csrf_field()` | `CSRFUtils::getTokenInputField()` |
 | `nonce()` | `SystemURLs::getCSPNonce()` |
-| `church` | `{name, address, city, state, zip, phone, email, website, logoUrl}` from `ChurchMetaData`; `logoUrl` is the uploaded logo from PR #9719 when set, else the stock image. The default theme's header uses it; a theme may replace it with `theme_asset()` |
+| `church` | `{name, address, city, state, zip, phone, email, website, logoUrl, socialLinks}` from `ChurchMetaData`; `logoUrl` is the uploaded logo from PR #9719 when set, else the stock image. The default theme's header uses it; a theme may replace it with `theme_asset()`. `socialLinks` (#9907) is the church's configured social accounts, ordered X, YouTube, Facebook, Instagram, each `{id, label, url, icon}`, empty when none is set — the default theme's footer renders them as icon links on its trailing edge |
 | `member` | `{id, firstName, lastName, fullName, email, avatarUrl, familyId, isTeamLeader, isStaff}` |
 | `nav` | the `PortalNav` model: ordered `[{id, label, url, icon, active, badge}]` |
 | `flash` | `[{type, message}]` from the session |
@@ -427,10 +427,11 @@ Config items (all without a System Settings category): `sMemberPortalTheme`,
 
 Navigation (the `nav` model), in order, each hidden when its feature is off or the member has
 nothing there: **Home · Calendar · Volunteering · My Teams · My Family · Profile**. The header
-shows the church logo and name, the member's name, and Sign out (or "Exit to your account" during
-a masquerade). No admin sidebar anywhere. Staff opening the portal see the fixed top bar "You are viewing
-the Member Portal as yourself" with the exit control from #9843, which returns them to the admin
-dashboard (P10).
+shows the church logo and name, and one account menu: a button reading "Hello <first name>" over
+**Change Password**, **Admin Console** (staff logins only, never during a masquerade) and **Sign out**.
+The church name is not a link that restyles itself under the pointer. No admin sidebar anywhere.
+Staff opening the portal leave it again through Admin Console (P10); there is no fixed "viewing as
+yourself" bar. A masquerade still shows the banner from #9843, with its own exit control.
 
 ### 5.1 Home (`/portal`)
 
@@ -474,12 +475,43 @@ teaser. Themes typically override this page first.
   written exactly as `/external/verify` writes it, `Person::SELF_VERIFY` and all, because the
   People → Verify dashboard selects on `EnteredBy = SELF_VERIFY`; the confirming member's own id
   is deliberately not used. The emailed verify-token link keeps working for people without logins.
-- Password and two-factor: the existing `/v2/user/current/*` pages (already allowed for this
-  persona), given a portal-aware layout. Delivered in MP4 (#9865) rather than MP3: MP3 is the
-  admin page and never touches these routes. The routes branch on
-  `User::isEditSelfExclusive()` and render portal templates for that session only — same URLs,
-  same field names, same POST handler, same CSRF form id and the same
-  `PasswordChange.js` / `two-factor-enrollment` bundles, so each flow has one implementation.
+- **A member with no family is not an error.** `/portal/family`, `/family/edit` and
+  `/family/confirm` answer `family/none.html.twig` — HTTP 200, the normal portal chrome, "My
+  Family" still the active nav entry — when the person has no family, and when the account has no
+  person record at all. It says *"You are not currently associated with a family"*, asks the member
+  to contact the church office, and offers **Admin → Church Information**'s email as a `mailto:`
+  link and its phone as a `tel:` link (the `tel:` href keeps the digits and a leading `+`; the
+  number is displayed as the church typed it). Either line is left out when its setting is empty,
+  and with neither configured the page says only "Please contact the church office." The home
+  page's My Family card says the same thing in one line and links here. The portal's 404 stays for
+  URLs that really do not exist: "This page was not found" told a member their record was broken
+  when it was only incomplete.
+- **The home page's Profile card shows the values, not their names.** It reads the same
+  `PortalSelfService::getProfile()` the Profile page renders and lists email, mobile, home phone,
+  birthday (only while `bPortalAllowBirthdayEdit` is on, exactly as the Profile page gates it) and
+  the family role (only for a member who has a family). Empty fields are skipped; with nothing on
+  file the card says "No contact details on file yet."
+- Password and two-factor: **the portal's own pages**, `GET/POST /portal/profile/password` and
+  `GET /portal/profile/two-factor`, rendered in the portal layout for *every* role — member,
+  staff, administrator, and during a masquerade. This is a product-owner decision (2026-09-17):
+  leaving the portal is the "Admin Console" control's job and nothing else's, so an administrator
+  who changes their password from the portal must not be dropped back into the admin shell.
+  Delivered in MP4 (#9865) rather than MP3: MP3 is the admin page and never touches these routes.
+  The pages act on the signed-in *account*, not on a person record, so an account with no person
+  linked can still change its password. `PortalAccountPages` is the single place a portal account
+  page becomes a response; the change itself is `User::userChangePassword()`, the field names, the
+  form id, the CSRF form id and the `PasswordChange.js` / `two-factor-enrollment` bundles are
+  unchanged, so each flow still has one implementation.
+
+  The older `/v2/user/current/changepassword` and `/v2/user/current/manage2fa` keep their
+  behaviour unchanged and render through the same `PortalAccountPages`: they are what
+  `LocalAuthentication` returns as `nextStepURL` for a forced first-login password change or a
+  required 2FA enrollment, and what `AuthMiddleware::isLimitedAccessAllowedPath()` exempts by
+  name. They deliberately do **not** redirect to the portal URLs: the forced flows break out of
+  their own redirect loop by matching `/v2/user/current/changepassword` against `REQUEST_URI`, so
+  a redirect would bounce the browser between the two paths forever. The password template's form
+  target is a variable (`formAction`) so each route posts back to itself; it is never taken from
+  the request, so there is no redirect for an attacker to steer.
 
 ### 5.3 Calendar (`/portal/calendar`)
 
@@ -738,7 +770,7 @@ issue for every user-visible piece):
 | MP5 | Calendar: Calendars tab on the admin page (`aPortalCalendars`), ministry calendars (`calendars.ministry_id`, created with the ministry, coordinator pinning, "Ministry Calendars" heading, event editor pre-pin), "Church Calendars" relabel, portal page and API | MP2, MP3 |
 | MP6 | Volunteer pages moved into the portal; admin "Volunteer" heading removed; D14 revision; team-leader flag | MP2 + volunteer integration branch |
 | MP7 | My Teams (team-scoped management in the portal; shared components refactor; team-leader schedules) | MP6 |
-| MP8 | Masquerade banner and the staff "viewing as yourself" bar in the portal layout; admin user-menu link; limited-access retirement; e2e, localization, responsive and production-readiness pass | MP2–MP7 |
+| MP8 | Masquerade banner in the portal layout (the staff "viewing as yourself" bar it was to unify with is gone; the account menu's Admin Console replaced it); admin user-menu link; limited-access retirement; e2e, localization, responsive and production-readiness pass | MP2–MP7 |
 | MP9 | UCCC theme (its own repository, not upstream): colours, fonts, imagery, home page override | MP2 |
 
 MP2 is the largest (theming infrastructure); MP3–MP5 are each about the size of one volunteer child

@@ -46,7 +46,9 @@ describe("Self-only access — EditSelf account user (limited.user)", () => {
 
     it("Sign out returns to the login page", () => {
         login();
-        cy.contains("Sign out").click();
+        // "Sign out" lives in the header's account menu ("Hello <first name>").
+        cy.get("#portal-account-toggle").click();
+        cy.get("#portal-account-menu").contains("Sign out").click();
         cy.url({ timeout: 10000 }).should("include", "/session/begin");
     });
 

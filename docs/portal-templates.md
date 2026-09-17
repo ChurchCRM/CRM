@@ -40,7 +40,7 @@ Every page extends `layout.html.twig`, which a theme may also override.
 | `hero` | A full-width band under the navigation | empty |
 | `content` | **The page itself.** Every page template fills this. | empty |
 | `sidebar` | An optional column beside the content | empty |
-| `footer` | The church contact line and the ChurchCRM credit | `partials/footer.html.twig` |
+| `footer` | The church contact line and the church's social links | `partials/footer.html.twig` |
 | `scripts_extra` | Extra `<script>` for this page — with `nonce="{{ nonce() }}"` | empty |
 
 ### Partials
@@ -49,9 +49,9 @@ Each is a separate file, so a theme can replace one without touching the others:
 
 | Partial | Renders |
 |---|---|
-| `partials/header.html.twig` | Church logo and name, the member's name, Sign out |
+| `partials/header.html.twig` | Church logo and name, and the account menu ("Hello &lt;first name&gt;" → Change Password, Admin Console for staff, Sign out) |
 | `partials/nav.html.twig` | The `nav` entries, and the toggle target `#portal-nav` |
-| `partials/footer.html.twig` | Church contact details, ChurchCRM credit |
+| `partials/footer.html.twig` | Church contact details on the leading edge, `church.socialLinks` as icon links on the trailing edge |
 | `partials/flash.html.twig` | The fixed notice container, holding this request's `flash` messages. **A theme that overrides `layout.html.twig` must keep this include** — without it there is no container, and every message the portal raises goes unseen. |
 
 ### What the layout already loads
@@ -75,16 +75,18 @@ toast in the fixed top-right stack that fades away on its own.
 
 | Selector | What it is |
 |---|---|
-| `.portal-body` | `<body>`; also `.portal-body-with-bar` when the staff bar is showing |
-| `.portal-staff-bar` | The fixed "You are viewing the Member Portal as yourself." bar |
+| `.portal-body` | `<body>`; also `.portal-body-with-bar` when a bar is fixed to the top of the viewport — the masquerade banner is the only one |
 | `.portal-shell` | The column that holds header, nav, main and footer |
 | `.portal-container` | The width-limited wrapper used by every band |
 | `#portal-nav` / `#portal-nav-toggle` | The navigation and the button that opens it on a phone |
+| `#portal-account` / `#portal-account-toggle` / `#portal-account-menu` | The header's account menu: its wrapper, the "Hello &lt;first name&gt;" button and the `role="menu"` dropdown. `portal.min.js` binds to these ids, so a theme that overrides `partials/header.html.twig` must keep them |
 | `#portal-main` | The `<main>` element |
 | `.portal-card` | The standard content card |
 | `.portal-subnav` | A page's own secondary tab bar, e.g. the two volunteering pages |
 | `.portal-page-title` | The `<h1>` at the top of a page's content |
 | `.portal-detail-list` | A `<dl>` of label/value pairs — one column on a phone, two from the tablet breakpoint up |
+| `.portal-card-details` | The same `<dl>` inside a card: one column at every width, because a card is a column and a long email address has nowhere to wrap |
+| `.portal-contact-list` / `.portal-contact-item` | The church office's contact lines on `family/none.html.twig` — an icon and a `mailto:` or `tel:` link |
 | `.portal-form` / `.portal-field` / `.portal-input` | A self-service form, one of its fields, and the control inside it |
 | `.portal-field-error` | The inline message for a field; it is hidden while empty |
 | `.portal-button` / `.portal-button-quiet` | The primary and secondary action buttons |
@@ -147,6 +149,7 @@ The church's identity, from **Admin → Church Information**.
 | `phone`, `email` | string | |
 | `website` | string | |
 | `logoUrl` | string | The uploaded church logo, or ChurchCRM's stock image when none is set |
+| `socialLinks` | list | The church's social accounts (#9907), already filtered to the ones that are set and ordered X, YouTube, Facebook, Instagram. Each entry is `{id, label, url, icon}` — `icon` is a Font Awesome Free brand class such as `fa-brands fa-facebook`. Empty when the church has configured none, so `{% if church.socialLinks is not empty %}` is the whole guard you need. |
 
 ### `member`
 
@@ -163,7 +166,7 @@ portal route, ever addresses somebody else.
 | `avatarUrl` | string | `/api/portal/me/photo`, cache-busted; **empty when no photo has been uploaded** — render initials instead |
 | `familyId` | int | `0` when the person has no family |
 | `isTeamLeader` | bool | `true` when this person leads at least one volunteer team. Also `true` on a self-service login — that is the point of it |
-| `isStaff` | bool | `true` for a login that also has the admin shell — the layout shows the "viewing as yourself" bar for it |
+| `isStaff` | bool | `true` for a login that also has the admin shell — the account menu offers it "Admin Console", unless a masquerade is in progress |
 
 ### `nav`
 
@@ -220,22 +223,23 @@ will stop working on your pages.
 
 | Template | Rendered for | Its own variables |
 |---|---|---|
-| `home.html.twig` | `GET /portal` | `pageTitle`, `upcomingEvents`, `hasVisibleCalendars`, `showVolunteering`, `familySummary` |
+| `home.html.twig` | `GET /portal` | `pageTitle`, `upcomingEvents`, `hasVisibleCalendars`, `showVolunteering`, `familySummary`, `profile` |
 | `calendar/index.html.twig` | `GET /portal/calendar` | `pageTitle`, `calendars`, `hasCalendars`, `calendarConfigJson` |
 | `volunteer/schedule.html.twig` | `GET /portal/volunteer/schedule` | `pageTitle`, `activeTab` |
 | `volunteer/opportunities.html.twig` | `GET /portal/volunteer/opportunities` | `pageTitle`, `activeTab` |
 | `volunteer/partials/tabs.html.twig` | included by both volunteering pages | `activeTab` |
 | `profile/index.html.twig` | `GET /portal/profile` | `pageTitle`, `profile` |
 | `profile/edit.html.twig` | `GET /portal/profile/edit` | `pageTitle`, `profile` |
-| `profile/password.html.twig` | `GET/POST /v2/user/current/changepassword`, self-service session | `pageTitle`, `minPasswordLength`, `oldPasswordError`, `newPasswordError` |
-| `profile/password-changed.html.twig` | The same route, after a successful change | `pageTitle` |
-| `profile/two-factor.html.twig` | `GET /v2/user/current/manage2fa`, self-service session | `pageTitle` |
+| `profile/password.html.twig` | `GET/POST /portal/profile/password` (every role); also `GET/POST /v2/user/current/changepassword` for a self-service session | `pageTitle`, `formAction`, `minPasswordLength`, `oldPasswordError`, `newPasswordError` |
+| `profile/password-changed.html.twig` | Either of those routes, after a successful change | `pageTitle` |
+| `profile/two-factor.html.twig` | `GET /portal/profile/two-factor` (every role); also `GET /v2/user/current/manage2fa` for a self-service session | `pageTitle` |
 | `family/index.html.twig` | `GET /portal/family` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm`, `familyRoles`, `defaultNewMemberRoleId` |
 | `family/edit.html.twig` | `GET /portal/family/edit` | `pageTitle`, `family`, `members`, `canEdit`, `countries` |
 | `family/confirm.html.twig` | `GET /portal/family/confirm` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm` |
 | `teams/index.html.twig` | `GET /portal/teams` | `pageTitle`, `teams` |
 | `teams/team.html.twig` | `GET /portal/teams/{teamId}` | `pageTitle`, `team` |
 | `teams/occurrence.html.twig` | `GET /portal/teams/{teamId}/occurrences/{occurrenceId}` | `pageTitle`, `team`, `occurrence` |
+| `family/none.html.twig` | All three family URLs, for a member with no family | `pageTitle`, `officeEmail`, `officePhone`, `officePhoneHref` |
 | `errors/403.html.twig` | A page this member may not open | `pageTitle` |
 | `errors/404.html.twig` | An unknown portal URL (and 405) | `pageTitle` |
 | `errors/500.html.twig` | An unexpected failure | `pageTitle` |
@@ -243,6 +247,12 @@ will stop working on your pages.
 | `errors/theme-error.html.twig` | Shown to **administrators** when the active theme fails to render | `themeName`, `file`, `line`, `message` |
 
 `pageTitle` is the page's own title; the layout puts the church's name after it.
+
+`formAction` on `profile/password.html.twig` is the URL that page's form posts
+back to. It exists because the same template serves two routes: the portal's own
+page, and the forced first-login change at `/v2/user/current/changepassword`,
+which is pinned to its own URL until it completes. An override must post to
+`formAction`, not to a hard-coded path, or a forced password change will loop.
 
 ### `profile`
 
@@ -301,6 +311,35 @@ orders them.
 | `familyRoles` | list | `{id, name}` for each family role, for the "add a family member" form |
 | `defaultNewMemberRoleId` | int | The role that form starts on — the configured child role, not head of household |
 | `familySummary` | object | On the home page only: `{name, memberCount}`, or `null` when the member has no family |
+| `profile` | object | On the home page too: the same `profile` the Profile page gets, or `null` for an account with no person record |
+
+### A member with no family
+
+`/portal/family`, `/portal/family/edit` and `/portal/family/confirm` all render
+`family/none.html.twig` when the acting member has no family record — and when
+the account has no person record at all. It is an ordinary portal page: HTTP
+200, the usual chrome, "My Family" still the active navigation entry. Only URLs
+that really do not exist get `errors/404.html.twig`.
+
+| Variable | Type | Notes |
+|---|---|---|
+| `officeEmail` | string | **Admin → Church Information**'s email. Empty when unset — leave the line out rather than linking to nowhere |
+| `officePhone` | string | The church's phone, exactly as it was typed. Print this |
+| `officePhoneHref` | string | The same number reduced to what a `tel:` link can dial — digits, plus a leading `+` for an international number. Empty when the church configured no phone, or typed one with no digits in it |
+
+With neither configured the system theme drops both lines and says only
+"Please contact the church office."
+
+### The home page's Profile card
+
+The card prints the member's own details rather than a sentence describing them.
+It reads them out of `profile` — the very view-model `profile/index.html.twig`
+renders, so the two pages can never disagree — and skips every empty field: with
+nothing on file it says "No contact details on file yet." The birthday follows
+the Profile page and appears only while `profile.canEditBirthday` is true, and
+the family role is shown only when `profile.familyId` is non-zero. Values sit in
+`<dd data-field="…">` inside `#portal-home-profile-details`, with the same field
+names the Profile page uses.
 
 ### `teams`, `team` and `occurrence` (My Teams)
 
@@ -382,7 +421,9 @@ A theme that keeps the feature must keep these ids:
 | `#portal-calendar-subscribe-result` | The address block, `hidden` until there is an address |
 | `#portal-calendar-subscribe-url` | A read-only `<input>` holding the feed address |
 | `#portal-calendar-subscribe-copy` | Copy to clipboard (falls back to selecting the text) |
+| `#portal-calendar-subscribe-open-row` | The paragraph holding the link below. Starts `hidden`; the bundle reveals it **only when the feed address is `https`** |
 | `#portal-calendar-subscribe-open` | An `<a>` whose `href` the bundle sets to the `webcal://` address |
+| `#portal-calendar-subscribe-manual-hint` | The sentence shown instead of that link when the site is on plain `http` — Apple's calendar clients rewrite `webcal://` to `https://` and never fall back, so the one-tap link cannot work there |
 | `#portal-calendar-subscribe-reset` | Opens the confirmation below |
 | `#portal-calendar-reset-dialog` with `#portal-calendar-reset-confirm` / `#portal-calendar-reset-cancel` | "Get a new calendar address?" |
 

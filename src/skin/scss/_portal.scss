@@ -94,6 +94,24 @@
     text-decoration: none;
 }
 
+// The core bundle's `a:hover` (0,1,1) outweighs `.portal-brand` (0,1,0), so
+// without this the church's name turned link-blue and picked up an underline
+// under the pointer. The church's identity is not a link that lights up.
+.portal-brand:hover,
+.portal-brand:focus,
+.portal-brand:focus-visible {
+    color: inherit;
+    text-decoration: none;
+}
+
+// Nothing above removes the browser's focus ring, but the header's dark
+// background makes the default one hard to see, so draw our own.
+.portal-brand:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 3px;
+    border-radius: var(--portal-radius);
+}
+
 .portal-brand-logo {
     block-size: 2.25rem;
     inline-size: auto;
@@ -111,13 +129,14 @@
     display: flex;
     align-items: center;
     gap: var(--portal-gap);
+    // The header wraps on a phone, and a wrapped line starts at the leading
+    // edge — which would put the account button on the left and hang its
+    // right-aligned menu off the side of the screen. Keep the actions on the
+    // trailing edge whether they wrap or not.
+    margin-inline-start: auto;
 }
 
-.portal-member-name {
-    display: none;
-}
-
-.portal-signout,
+.portal-account-toggle,
 .portal-nav-toggle {
     display: inline-flex;
     align-items: center;
@@ -134,8 +153,8 @@
     cursor: pointer;
 }
 
-.portal-signout:hover,
-.portal-signout:focus-visible,
+.portal-account-toggle:hover,
+.portal-account-toggle:focus-visible,
 .portal-nav-toggle:hover,
 .portal-nav-toggle:focus-visible {
     background-color: rgba(255, 255, 255, 0.15);
@@ -144,6 +163,67 @@
 
 .portal-nav-toggle {
     display: inline-flex;
+}
+
+// Account menu ---------------------------------------------------------------
+//
+// "Hello <first name>" over a dropdown of the things a member does to their
+// account. Everything is a portal token, so a church theme restyles it with the
+// rest of the header.
+
+.portal-account {
+    position: relative;
+}
+
+.portal-account-label {
+    // The header is tight on a phone and a long first name must not push the
+    // caret off the edge.
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-inline-size: 10rem;
+}
+
+.portal-account-caret {
+    font-size: 0.75rem;
+    // The caret is decoration; it must not grow the button's hit area.
+    flex: 0 0 auto;
+}
+
+.portal-account-toggle[aria-expanded="true"] .portal-account-caret {
+    transform: rotate(180deg);
+}
+
+.portal-account-menu {
+    position: absolute;
+    inset-block-start: calc(100% + 0.25rem);
+    inset-inline-end: 0;
+    // Above the navigation band, below the toast stack (1050).
+    z-index: 1045;
+    min-inline-size: 13rem;
+    padding-block: 0.25rem;
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-surface);
+    color: var(--portal-text);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.18);
+}
+
+.portal-account-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    padding-inline: 0.75rem;
+    color: var(--portal-text);
+    text-decoration: none;
+}
+
+.portal-account-item:hover,
+.portal-account-item:focus-visible {
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+    text-decoration: none;
 }
 
 // Navigation -----------------------------------------------------------------
@@ -346,6 +426,45 @@
     overflow-wrap: anywhere;
 }
 
+// The compact variant a card uses. A card in the home page's grid is a column,
+// not a page, so the label stays above its value at every width — the
+// two-column rule below would leave a long email address wrapping one
+// character at a time.
+
+.portal-card-details {
+    margin-block: 0.5rem 0.75rem;
+}
+
+.portal-card-details dt {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+
+.portal-card-details dd {
+    margin-block-end: 0.5rem;
+}
+
+.portal-card-details dd:last-of-type {
+    margin-block-end: 0;
+}
+
+// Contact lines — the church office's email and phone, offered as links a
+// phone can act on.
+
+.portal-contact-list {
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.portal-contact-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-block: 0.25rem;
+}
+
 // Profile and family ---------------------------------------------------------
 
 .portal-profile-identity {
@@ -531,8 +650,8 @@ textarea.portal-input {
     position: fixed;
     inset-block-start: var(--portal-toast-offset, var(--portal-gap));
     inset-inline: var(--portal-gap);
-    // Above the staff bar (1040) — a message about what just happened outranks
-    // the way back to the admin area.
+    // Above the masquerade banner (1040) and the account menu (1045) — a
+    // message about what just happened outranks both.
     z-index: 1050;
     display: flex;
     flex-direction: column;
@@ -542,8 +661,8 @@ textarea.portal-input {
     pointer-events: none;
 }
 
-// The staff bar is fixed too, so the stack has to clear it by hand: body
-// padding moves the flow, not a fixed element.
+// The masquerade banner is fixed too, so the stack has to clear it by hand:
+// body padding moves the flow, not a fixed element.
 .portal-body-with-bar .portal-toasts {
     --portal-toast-offset: calc(2.5rem + var(--portal-gap));
 }
@@ -735,6 +854,31 @@ textarea.portal-input {
 .portal-footer-detail {
     margin-inline-start: 0.75rem;
     color: inherit;
+}
+
+// The church's social accounts (#9907). `margin-inline-start: auto` is what
+// keeps them on the trailing edge: `justify-content: space-between` only
+// right-aligns them while both halves share a line, and on a phone the row
+// wraps and the social block gets a line of its own.
+
+.portal-footer-social {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-inline-start: auto;
+}
+
+.portal-footer-social-link {
+    color: var(--portal-muted);
+    font-size: 1.125rem;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.portal-footer-social-link:hover,
+.portal-footer-social-link:focus-visible {
+    color: var(--portal-primary);
+    text-decoration: none;
 }
 
 // Hero -----------------------------------------------------------------------
@@ -987,8 +1131,8 @@ textarea.portal-input {
         inline-size: var(--portal-toast-width);
     }
 
-    .portal-member-name {
-        display: inline;
+    .portal-account-label {
+        max-inline-size: 16rem;
     }
 
     .portal-nav-toggle {
@@ -1015,6 +1159,11 @@ textarea.portal-input {
 
     .portal-detail-list {
         grid-template-columns: minmax(8rem, max-content) 1fr;
+    }
+
+    // …except inside a card, which is a column and stays one.
+    .portal-card-details {
+        grid-template-columns: 1fr;
     }
 
     .portal-field-grid {

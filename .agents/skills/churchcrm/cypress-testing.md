@@ -1559,6 +1559,21 @@ cy.contains('Email').type('test@example.com');  // Wrong element
 cy.get('div.container div.row div.col-md-6 form input[type="email"]');
 ```
 
+### DataTables Empty Placeholder — Count Rows by a Server-Rendered Attribute <!-- learned: 2026-09-16 -->
+
+With zero rows DataTables injects `<tr><td class="dataTables_empty">No data available…</td></tr>`.
+The class is on the `<td>`, so `tr:not(.dataTables_empty)` still matches the placeholder
+row and a "table has rows" assertion passes against an empty table. Count only rows the
+page rendered for a record, via an attribute the view puts on the `<tr>`:
+
+```javascript
+// ❌ WRONG — :not() checks the tr's own classes; the placeholder tr has none
+cy.get("#depositsTable tbody tr:not(.dataTables_empty)").should("have.length.greaterThan", 0);
+
+// ✅ CORRECT — only real rows carry the attribute (verified: fails on an emptied table)
+cy.get("#depositsTable tbody tr[data-deposit-id]").should("have.length.greaterThan", 0);
+```
+
 ### Modal Testing Patterns <!-- learned: 2026-04-06 -->
 
 For dynamically loaded modals (content swapped after API fetch), use specific ID
@@ -1685,6 +1700,38 @@ on('task', {
     }
 });
 ```
+
+## Cross-Spec Seed Mutation — Don't Hard-Code a Record Another Spec Edits <!-- learned: 2026-09-17 -->
+
+**GOTCHA:** the seed is loaded once per stack, not per spec. A spec that edits a
+seeded record and does not put it back changes what every *later* spec reads —
+and the order is alphabetical by filename, so "it passed in isolation" proves
+nothing.
+
+Real case: `member.portal-profile.spec.js` saves a new email and mobile number on
+person 100 (Lena Black) and leaves them. `member.portal-landing.spec.js` sorts
+after it and asserted the *seeded* values, so it passed alone and failed in a
+full run.
+
+```js
+// ❌ WRONG — the seeded values, which a sibling spec has already overwritten
+cy.get("[data-field=email]").should("contain.text", "lena.walker@example.com");
+
+// ✅ CORRECT — assert against the record the page renders
+cy.request("/api/portal/me").then(({ body }) => {
+    const me = body.profile;                       // note the envelope key
+    expect(me.email, "the seed gives Lena an email").to.contain("@");
+    cy.get("[data-field=email]").should("contain.text", me.email);
+});
+```
+
+**Rules:**
+- Hard-code a seeded value only for a field no spec writes (ids, family roles,
+  list-option names). Anything a self-service or admin edit test touches is a
+  moving target.
+- Better still: have the editing spec restore what it changed in `after()`.
+- When comparing to an API, check the response envelope —
+  `GET /api/portal/me` answers `{profile: {...}}`, not the profile itself.
 
 ## Related Knowledge
 - **Session Management**: Cypress documentation on `cy.session()`

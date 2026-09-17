@@ -12,8 +12,8 @@
  *   - the Calendar nav entry is behind bPortalShowCalendar, and so is the page
  *
  * Seed persona: user 100, Lena Black (person 100). usr_EditSelf=1 and no admin
- * flag, so she is confined to the portal. The username column is VARCHAR(32),
- * so the seeded address is stored truncated — log in with the 32-char form.
+ * flag, so she is confined to the portal. usr_UserName is VARCHAR(50)
+ * since #9831, so the seeded address is stored whole.
  *
  * Seed facts: calendar 1 is "Public Calendar"; person 5 is Albert Campbell,
  * born on 9 September, which is what the Birthdays assertion reads. The
@@ -23,7 +23,7 @@
  * NOTE: every x-api-key request replaces the browser session cookie with an
  * API-token session, so a member step that follows one has to log in again.
  */
-const MEMBER_USER = "lena.black.editself.notes@exampl";
+const MEMBER_USER = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 
 const CHURCH_CALENDAR_ID = 1;
@@ -196,9 +196,20 @@ describe("Member Portal calendar", () => {
                 });
 
             cy.get("#portal-calendar-subscribe-copy").should("be.visible");
-            cy.get("#portal-calendar-subscribe-open")
-                .should("have.attr", "href")
-                .and("match", /^webcal:\/\//);
+
+            // Over plain http there is no one-tap link: macOS and iOS Calendar
+            // rewrite webcal:// to https:// and never fall back, so the link
+            // would fail silently. The dialog tells the member to paste the
+            // address instead. The test stack is http, so this is the branch
+            // under test; the https branch is asserted by the API spec, which
+            // checks the webcalUrl the server still returns.
+            cy.location("protocol").should("eq", "http:");
+            cy.get("#portal-calendar-subscribe-open").should("not.be.visible");
+            cy.get("#portal-calendar-subscribe-open-row").should("not.be.visible");
+            cy.contains("Copy this address and add it to your calendar app as a new calendar subscription.").should(
+                "be.visible",
+            );
+
             cy.get("#portal-calendar-subscribe-reset").should("be.visible");
         });
 

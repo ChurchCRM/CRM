@@ -43,20 +43,12 @@
 
     {% block head_extra %}{% endblock %}
 </head>
-<body class="portal-body{% if member.isStaff or portal.impersonating %} portal-body-with-bar{% endif %}{% if portal.impersonating %} impersonating{% endif %}">
-
-{% if member.isStaff and not portal.impersonating %}
-{# A staff login is in the portal on purpose and needs an obvious way back
-   (design P10). Hidden during a masquerade: "viewing as yourself" is then a
-   lie, and the banner below carries the way out instead. #}
-<div class="portal-staff-bar" role="region" aria-label="{{ gettext('Member Portal notice') }}">
-    <span class="portal-staff-bar-text">{{ gettext('You are viewing the Member Portal as yourself.') }}</span>
-    <a class="portal-staff-bar-exit" href="{{ url('/v2/dashboard') }}"
-       aria-label="{{ gettext('Exit to the admin area') }}" title="{{ gettext('Exit to the admin area') }}">
-        <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
-    </a>
-</div>
-{% endif %}
+{# `portal-body-with-bar` makes room for a bar fixed to the top of the viewport.
+   A staff login used to get one — "You are viewing the Member Portal as
+   yourself." — but the account menu's "Admin Console" entry says the same thing
+   without spending a band of every page on it, so the only bar left is the
+   masquerade banner. #}
+<body class="portal-body{% if portal.impersonating %} portal-body-with-bar{% endif %}">
 
 {% if portal.impersonating %}
 {# The masquerade banner (#9843), rendered by Include/ImpersonationBanner.php —

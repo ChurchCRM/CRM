@@ -13,7 +13,8 @@ use Slim\Routing\RouteCollectorProxy;
 //
 // There is no module-level role middleware. Every login may open the portal:
 // a self-service account lands here and can reach nothing else, while staff
-// open it from their user menu and see the "viewing as yourself" bar.
+// open it from their user menu and get back out through the header's account
+// menu ("Admin Console").
 $app = MvcAppFactory::create('/portal', [
     'dashboardUrl' => '/portal/',
     'dashboardText' => gettext('Back to the Member Portal'),

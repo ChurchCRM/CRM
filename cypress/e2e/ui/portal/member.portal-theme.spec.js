@@ -32,7 +32,7 @@ const setPortalTheme = (value) =>
 const loginAsMember = () => {
     cy.clearCookies();
     cy.visit("session/begin");
-    cy.get("input[name=User]").type("lena.black.editself.notes@exampl");
+    cy.get("input[name=User]").type("lena.black.editself.notes@example.com");
     cy.get("input[name=Password]").type("changeme{enter}");
     cy.url({ timeout: 10000 }).should("include", "/portal");
 };

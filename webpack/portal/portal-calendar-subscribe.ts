@@ -137,6 +137,8 @@ function renderAddress(subscription: Subscription): void {
   const result = element("portal-calendar-subscribe-result");
   const url = element<HTMLInputElement>("portal-calendar-subscribe-url");
   const open = element<HTMLAnchorElement>("portal-calendar-subscribe-open");
+  const openRow = element("portal-calendar-subscribe-open-row");
+  const manualHint = element("portal-calendar-subscribe-manual-hint");
   if (!result) {
     return;
   }
@@ -149,9 +151,26 @@ function renderAddress(subscription: Subscription): void {
   if (url) {
     url.value = subscription.url;
   }
-  if (open) {
+
+  // "Open in calendar app" is a webcal:// link, and webcal:// is only a
+  // one-tap shortcut where the feed is served over https. macOS and iOS
+  // Calendar rewrite webcal:// to https:// before they fetch anything, and
+  // they do not fall back to http: on a church still on plain http the tap
+  // sends a TLS handshake to port 80, the server answers with nothing it can
+  // read, and the subscription fails with no useful message. So over http we
+  // do not offer the link at all — the member pastes the address instead,
+  // which works everywhere.
+  const secureFeed = subscription.url.startsWith("https://");
+  if (openRow) {
+    openRow.hidden = !secureFeed;
+  }
+  if (manualHint) {
+    manualHint.hidden = secureFeed;
+  }
+  if (open && secureFeed) {
     open.href = subscription.webcalUrl ?? subscription.url;
   }
+
   result.hidden = false;
 }
 

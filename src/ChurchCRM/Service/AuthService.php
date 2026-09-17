@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\User;
 use Exception;
 
 /**
@@ -52,21 +53,35 @@ class AuthService
         }
 
         $currentUser = AuthenticationManager::getCurrentUser();
+        $roles = is_array($groupName) ? $groupName : [$groupName];
 
-        // Check single permission or if user is admin
-        if (is_string($groupName)) {
-            return (bool) (($_SESSION[$groupName] ?? null) || ($currentUser && $currentUser->isAdmin()));
-        }
-
-        // Check array of permissions
-        if (is_array($groupName)) {
-            foreach ($groupName as $role) {
-                if (($_SESSION[$role] ?? null) || ($currentUser && $currentUser->isAdmin())) {
-                    return true;
-                }
+        foreach ($roles as $role) {
+            if (self::currentUserHasRole($currentUser, $role)) {
+                return true;
             }
         }
 
         return false;
+    }
+
+    /**
+     * $_SESSION['bManageGroups'] / ['bFinance'] are only ever populated by
+     * LocalAuthentication at browser login (see LocalAuthentication::authenticate()).
+     * API-key callers (APITokenAuthentication) never populate them, so checking
+     * $_SESSION alone denies every non-admin API-key user regardless of their
+     * actual permissions (issue #9830). Resolve known role names against the
+     * live permission state on the authenticated user instead; fall back to the
+     * legacy $_SESSION flag for any role name not in the map below.
+     */
+    private static function currentUserHasRole(User $currentUser, string $role): bool
+    {
+        $liveCheck = match ($role) {
+            'bManageGroups' => $currentUser->isManageGroupsEnabled(),
+            'bFinance' => $currentUser->isFinanceEnabled(),
+            'bAdmin' => $currentUser->isAdmin(),
+            default => false,
+        };
+
+        return $liveCheck || ($_SESSION[$role] ?? false) || $currentUser->isAdmin();
     }
 }
