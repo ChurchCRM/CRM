@@ -220,9 +220,9 @@ will stop working on your pages.
 | `calendar/index.html.twig` | `GET /portal/calendar` | `pageTitle`, `calendars`, `hasCalendars`, `calendarConfigJson` |
 | `profile/index.html.twig` | `GET /portal/profile` | `pageTitle`, `profile` |
 | `profile/edit.html.twig` | `GET /portal/profile/edit` | `pageTitle`, `profile` |
-| `profile/password.html.twig` | `GET/POST /v2/user/current/changepassword`, self-service session | `pageTitle`, `minPasswordLength`, `oldPasswordError`, `newPasswordError` |
-| `profile/password-changed.html.twig` | The same route, after a successful change | `pageTitle` |
-| `profile/two-factor.html.twig` | `GET /v2/user/current/manage2fa`, self-service session | `pageTitle` |
+| `profile/password.html.twig` | `GET/POST /portal/profile/password` (every role); also `GET/POST /v2/user/current/changepassword` for a self-service session | `pageTitle`, `formAction`, `minPasswordLength`, `oldPasswordError`, `newPasswordError` |
+| `profile/password-changed.html.twig` | Either of those routes, after a successful change | `pageTitle` |
+| `profile/two-factor.html.twig` | `GET /portal/profile/two-factor` (every role); also `GET /v2/user/current/manage2fa` for a self-service session | `pageTitle` |
 | `family/index.html.twig` | `GET /portal/family` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm`, `familyRoles`, `defaultNewMemberRoleId` |
 | `family/edit.html.twig` | `GET /portal/family/edit` | `pageTitle`, `family`, `members`, `canEdit`, `countries` |
 | `family/confirm.html.twig` | `GET /portal/family/confirm` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm` |
@@ -233,6 +233,12 @@ will stop working on your pages.
 | `errors/theme-error.html.twig` | Shown to **administrators** when the active theme fails to render | `themeName`, `file`, `line`, `message` |
 
 `pageTitle` is the page's own title; the layout puts the church's name after it.
+
+`formAction` on `profile/password.html.twig` is the URL that page's form posts
+back to. It exists because the same template serves two routes: the portal's own
+page, and the forced first-login change at `/v2/user/current/changepassword`,
+which is pinned to its own URL until it completes. An override must post to
+`formAction`, not to a hard-coded path, or a forced password change will loop.
 
 ### `profile`
 
