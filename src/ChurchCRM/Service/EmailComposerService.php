@@ -194,15 +194,20 @@ class EmailComposerService
     }
 
     /**
-     * The closing the composer pre-fills under two blank lines, from the letter settings
-     * (sConfirmSincerely / sConfirmSigner); the church name stands in for a missing signer.
+     * The closing the composer pre-fills under two blank lines:
+     *   Sincerely,
+     *   <full name of the user writing the message>
+     *   <church name>
+     * The first word comes from sConfirmSincerely; the report signer setting is not used
+     * because the message is from the person writing it, not from the office.
      */
-    public static function defaultSignature(): string
+    public static function defaultSignature(?User $user): string
     {
         $sincerely = trim((string) SystemConfig::getValue('sConfirmSincerely')) ?: gettext('Sincerely');
-        $signer = trim((string) SystemConfig::getValue('sConfirmSigner')) ?: ChurchMetaData::getChurchName();
+        $name = $user !== null ? trim($user->getFullName()) ?: (string) $user->getUserName() : '';
+        $lines = array_filter([$sincerely . ',', $name, ChurchMetaData::getChurchName()], static fn (string $l): bool => $l !== '');
 
-        return $sincerely . ",\n" . $signer;
+        return implode("\n", $lines);
     }
 
     /**
