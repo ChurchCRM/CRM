@@ -747,3 +747,28 @@ $families->where('(' . implode(' OR ', $conditions) . ')');
 `where($namedConditions, 'or')` (the array form) is safe for the same reason — Propel builds a
 combined criterion. The trap is only the single raw SQL string. Audit with:
 `grep -rn --include="*.php" -e "->where(" src | grep -i " or "`.
+
+## Propel Cannot DELETE Through a Join <!-- learned: 2026-09-17 -->
+
+`ModelCriteria::delete()` throws `PropelException: ModelCriteria::delete is unable to delete.`
+(HTTP 500 through the API error handler) when the query carries a `useXxxQuery()` join.
+Resolve the ids through the join first, then delete by `IN`:
+
+```php
+// ❌ 500 — a joined DELETE
+VolunteerAssignmentQuery::create()
+    ->useOccurrenceQuery()->useScheduleQuery()->filterByMinistryId($id)->endUse()->endUse()
+    ->delete($connection);
+
+// ✅ two steps
+$occurrenceIds = VolunteerOccurrenceQuery::create()
+    ->useScheduleQuery()->filterByMinistryId($id)->endUse()
+    ->select('Id')->find()->toArray();
+if ($occurrenceIds !== []) {
+    VolunteerAssignmentQuery::create()
+        ->filterByOccurrenceId(array_map('intval', $occurrenceIds), Criteria::IN)
+        ->delete($connection);
+}
+```
+
+`count()` and `find()` through the same join are fine; only `delete()` (and `update()`) refuse it.

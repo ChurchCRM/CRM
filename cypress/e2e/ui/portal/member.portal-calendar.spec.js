@@ -305,6 +305,14 @@ describe("Member Portal calendar", () => {
 
         after(() => {
             cy.then(() => {
+                // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
+                cy.request({
+                    method: "POST",
+                    url: `/api/volunteer/ministries/${ministryId}`,
+                    headers: { "x-api-key": adminKey() },
+                    body: { active: false },
+                    failOnStatusCode: false,
+                });
                 cy.request({
                     method: "DELETE",
                     url: `/api/volunteer/ministries/${ministryId}`,

@@ -547,38 +547,74 @@ function wireHelpWanted(): void {
   });
 }
 
-// ─── Delete ministry (manager-only, design §4.6) ─────────────────────────────
+// ─── Lifecycle: Deactivate / Reactivate / Delete (design §4.6, §5.4) ─────────
 
 /**
- * The header's Delete button. The view renders it only for a manager, but the
- * API decides: `DELETE /ministries/{id}` answers 403 to anyone else and 409 while
- * the ministry still has occurrences or assignments. That 409 message — the
- * counts, and "deactivate it instead" — is shown as the toast, so a refused delete
- * explains itself. On success the page no longer exists, so the browser goes to
- * the dashboard, whose sidebar and ministry list will no longer name it.
+ * The header's lifecycle buttons (product-owner decision, 2026-09-17).
+ *
+ * Deactivate and Reactivate are one field on the ministry — `active` through the
+ * ordinary update — followed by a full reload, because the sidebar (which heading
+ * the ministry sits under), the Inactive badge and which buttons the header
+ * shows are all server-rendered from that flag.
+ *
+ * Delete is rendered only on a deactivated ministry and only for a manager, but
+ * the API decides: 403 for anyone else, 409 while the ministry is still active.
+ * Deletion is total — service history included — so the dialog says how many
+ * occurrences and assignments go with it, from the summary the page already
+ * holds. On success the page no longer exists, so the browser goes to the
+ * dashboard.
  */
-function wireMinistryDelete(): void {
-  const button = byId<HTMLButtonElement>("ministry-delete-btn");
-  if (!button) {
-    return;
-  }
+function wireMinistryLifecycle(): void {
+  const deactivate = byId<HTMLButtonElement>("ministry-deactivate-btn");
+  const reactivate = byId<HTMLButtonElement>("ministry-reactivate-btn");
+  const remove = byId<HTMLButtonElement>("ministry-delete-btn");
 
-  button.addEventListener("click", () => {
-    const name = button.dataset.ministryName ?? "";
+  const setActive = (button: HTMLButtonElement, active: boolean, failure: string): void => {
+    button.disabled = true;
+    updateMinistry(ministryId, { active })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((error: unknown) => {
+        button.disabled = false;
+        notifyError(errorMessage(error, failure));
+      });
+  };
+
+  deactivate?.addEventListener("click", () => {
+    const name = deactivate.dataset.ministryName ?? "";
+    confirmDelete(
+      i18next.t("Deactivate ministry"),
+      i18next.t(
+        "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed.",
+        { name },
+      ),
+      () => setActive(deactivate, false, i18next.t("The ministry could not be deactivated")),
+    );
+  });
+
+  reactivate?.addEventListener("click", () => {
+    setActive(reactivate, true, i18next.t("The ministry could not be reactivated"));
+  });
+
+  remove?.addEventListener("click", () => {
+    const name = remove.dataset.ministryName ?? "";
+    const occurrences = detail?.summary?.occurrenceCount ?? 0;
+    const assignments = detail?.summary?.assignmentCount ?? 0;
     confirmDelete(
       i18next.t("Delete ministry"),
       i18next.t(
-        "Delete {{name}}? Its teams, positions, schedules, coordinator and team-leader grants, volunteer pool group and calendar are removed with it. This cannot be undone.",
-        { name },
+        "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone.",
+        { name, occurrences, assignments },
       ),
       () => {
-        button.disabled = true;
+        remove.disabled = true;
         deleteMinistry(ministryId)
           .then(() => {
             window.location.href = `${window.CRM?.root ?? ""}/volunteer/dashboard`;
           })
           .catch((error: unknown) => {
-            button.disabled = false;
+            remove.disabled = false;
             notifyError(errorMessage(error, i18next.t("The ministry could not be deleted")));
           });
       },
@@ -673,7 +709,7 @@ function wire(): void {
   byId("team-form-save")?.addEventListener("click", saveTeam);
   wireTeamLeaderField();
   wireHelpWanted();
-  wireMinistryDelete();
+  wireMinistryLifecycle();
 
   // Delegated: the rows are re-rendered on every load, so per-row listeners
   // would go stale. Positions, schedules and the grid wire their own.

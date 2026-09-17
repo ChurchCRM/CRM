@@ -56,19 +56,33 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <span class="badge bg-secondary-lt"><?= gettext('Inactive') ?></span>
       <?php endif; ?>
     </div>
-    <?php if ($bIsManager): ?>
-      <!--
-        Delete is manager-only (design §4.6: Administrator and Manage Ministries, never a
-        coordinator), so it is rendered for exactly the users the API lets through. It is
-        NOT hidden while occurrences or assignments exist: the API answers 409 with a
-        message naming the counts and saying to deactivate instead, and that message is
-        what the toast shows — the button is how the user learns why deleting is refused.
-      -->
-      <button type="button" class="btn btn-outline-danger btn-sm" id="ministry-delete-btn"
-              data-ministry-name="<?= InputUtils::escapeHTML($sMinistryName) ?>">
-        <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete') ?>
-      </button>
-    <?php endif; ?>
+    <!--
+      Lifecycle (product-owner decision, 2026-09-17). An active ministry offers
+      Deactivate to anyone who may open the page — a coordinator may deactivate their
+      own ministry (§4.6 "Edit / deactivate: scope"). A deactivated one offers
+      Reactivate, and — manager-only, because deletion is (§4.6) — Delete, which the
+      API refuses for an active ministry regardless of what is rendered (D5). The
+      counts the Delete dialog quotes come from the ministry document's summary.
+    -->
+    <div class="d-flex gap-2">
+      <?php if ($bMinistryActive): ?>
+        <button type="button" class="btn btn-outline-secondary btn-sm" id="ministry-deactivate-btn"
+                data-ministry-name="<?= InputUtils::escapeHTML($sMinistryName) ?>">
+          <i class="fa-solid fa-box-archive me-1"></i><?= gettext('Deactivate') ?>
+        </button>
+      <?php else: ?>
+        <button type="button" class="btn btn-outline-primary btn-sm" id="ministry-reactivate-btn"
+                data-ministry-name="<?= InputUtils::escapeHTML($sMinistryName) ?>">
+          <i class="fa-solid fa-rotate-left me-1"></i><?= gettext('Reactivate') ?>
+        </button>
+        <?php if ($bIsManager): ?>
+          <button type="button" class="btn btn-outline-danger btn-sm" id="ministry-delete-btn"
+                  data-ministry-name="<?= InputUtils::escapeHTML($sMinistryName) ?>">
+            <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete') ?>
+          </button>
+        <?php endif; ?>
+      <?php endif; ?>
+    </div>
   </div>
 
   <ul class="nav nav-tabs" id="volunteer-ministry-tabs" role="tablist">

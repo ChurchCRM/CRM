@@ -98,6 +98,8 @@ function cleanupMinistries() {
     adminApi("GET", `${VOLUNTEER_URL}/ministries`, null, 200).then((resp) => {
         for (const ministry of resp.body.ministries) {
             if (ministry.name.startsWith(PREFIX)) {
+                // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
+                adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministry.id}`, { active: false }, [200, 404]);
                 adminApi("DELETE", `${VOLUNTEER_URL}/ministries/${ministry.id}`, null, [200, 404]);
             }
         }

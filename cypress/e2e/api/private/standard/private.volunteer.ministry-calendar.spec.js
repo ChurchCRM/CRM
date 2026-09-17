@@ -310,6 +310,8 @@ describe("Volunteer v2 — the ministry calendar (#9869)", () => {
                 doomedCalendar = body.calendarId;
                 expect(doomedCalendar).to.be.greaterThan(0);
 
+                // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
+                api(ADMIN_KEY, "POST", `/api/volunteer/ministries/${doomedMinistry}`, { active: false }, 200);
                 api(
                     ADMIN_KEY,
                     "DELETE",

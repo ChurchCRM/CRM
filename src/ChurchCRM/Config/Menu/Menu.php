@@ -56,6 +56,9 @@ class Menu
             // Member Portal now (#9867, Member Portal design P16). "Ministries"
             // below is the administration surface and is unchanged.
             'Ministries'   => self::getMinistriesMenu($currentUser, $isVolunteerCoordinator),
+            // Deactivated ministries get their own heading, shown only while there is
+            // one; that page is where Reactivate and Delete live (2026-09-17 decision).
+            'DeactivatedMinistries' => self::getDeactivatedMinistriesMenu($currentUser, $isVolunteerCoordinator),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
             'Reports'      => self::getReportsMenu($isAdmin),
@@ -337,7 +340,8 @@ class Menu
      * the ministry page would refuse them. The dashboard is their entry point, and
      * its "My ministries and teams" card names the teams they lead. A manager who
      * has not created a ministry yet sees the same Dashboard-only heading, and the
-     * dashboard's "New ministry" action is right there.
+     * dashboard's "New ministry" action is right there. Only ACTIVE ministries are
+     * listed here; deactivated ones move to the Deactivated Ministries heading.
      *
      * One query per request, ids and names only — see
      * `VolunteerAuthorizationService::getManageableMinistries()` for the memo and
@@ -354,19 +358,50 @@ class Menu
         }
 
         $ministriesMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', true, 'fa-gauge'));
-
-        $activeMinistryId = self::getVolunteerMinistryIdForCurrentRoute();
-        foreach ((new VolunteerAuthorizationService())->getManageableMinistries($currentUser) as $ministryId => $ministryName) {
-            // The name is data, rendered by MenuRenderer through
-            // InputUtils::escapeHTML() like every other menu label.
-            $ministryItem = new MenuItem($ministryName, 'volunteer/ministries/' . $ministryId, true, 'fa-handshake-angle');
-            if ($activeMinistryId === $ministryId) {
-                $ministryItem->setActiveOverride(true);
-            }
-            $ministriesMenu->addSubMenu($ministryItem);
-        }
+        self::addMinistryEntries($ministriesMenu, $currentUser, true);
 
         return $ministriesMenu;
+    }
+
+    /**
+     * **Deactivated Ministries** — the lifecycle heading (product-owner decision,
+     * 2026-09-17). A ministry is deactivated from its page, drops out of the
+     * Ministries heading and appears here; its page then offers Reactivate and,
+     * to a manager, Delete. The heading has no Dashboard entry and no fixed
+     * content, so `MenuItem::isVisible()` hides it whenever the viewer manages no
+     * deactivated ministry — for most installations, most of the time.
+     *
+     * Same predicate, same memoised query as the Ministries heading: the second
+     * heading costs nothing extra.
+     */
+    private static function getDeactivatedMinistriesMenu(User $currentUser, bool $isCoordinator): MenuItem
+    {
+        $menu = new MenuItem(gettext('Deactivated Ministries'), '', $isCoordinator, 'fa-box-archive');
+        if ($isCoordinator) {
+            self::addMinistryEntries($menu, $currentUser, false);
+        }
+
+        return $menu;
+    }
+
+    /**
+     * One entry per ministry the viewer may administer whose active flag matches,
+     * by name, linking to `/volunteer/ministries/{id}`. The name is data, rendered
+     * by MenuRenderer through `InputUtils::escapeHTML()` like every other label.
+     */
+    private static function addMinistryEntries(MenuItem $heading, User $currentUser, bool $active): void
+    {
+        $currentMinistryId = self::getVolunteerMinistryIdForCurrentRoute();
+        foreach ((new VolunteerAuthorizationService())->getManageableMinistries($currentUser) as $ministryId => $ministry) {
+            if ($ministry['active'] !== $active) {
+                continue;
+            }
+            $item = new MenuItem($ministry['name'], 'volunteer/ministries/' . $ministryId, true, 'fa-handshake-angle');
+            if ($currentMinistryId === $ministryId) {
+                $item->setActiveOverride(true);
+            }
+            $heading->addSubMenu($item);
+        }
     }
 
     /**

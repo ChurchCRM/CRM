@@ -136,6 +136,10 @@ export interface MinistrySummary {
   volunteerCount: number;
   /** Open slots across every future, scheduled occurrence the viewer may see. */
   unfilledPositionCount: number;
+  /** All-time, unscoped: what the Delete confirmation says goes with the ministry. */
+  occurrenceCount: number;
+  /** All-time, unscoped, any status: the service history the Delete confirmation names. */
+  assignmentCount: number;
 }
 
 export interface MinistryDetail {

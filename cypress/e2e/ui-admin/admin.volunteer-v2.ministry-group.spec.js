@@ -59,6 +59,8 @@ function cleanupFixtures() {
     cy.makePrivateAdminAPICall("GET", MINISTRIES_URL, null, 200).then((resp) => {
         for (const ministry of resp.body.ministries) {
             if (ministry.name.startsWith(PREFIX)) {
+                // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
+                cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${ministry.id}`, { active: false }, [200, 404]);
                 cy.makePrivateAdminAPICall(
                     "DELETE",
                     `${MINISTRIES_URL}/${ministry.id}`,

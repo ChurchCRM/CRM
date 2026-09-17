@@ -17,7 +17,7 @@
  * inside its ministry, a case-insensitive position-name duplicate check inside
  * one (ministry, team) scope — the explicit check that compensates for MySQL
  * treating NULLs as distinct in `vpos_ministry_team_name_uidx` — and the two
- * "deactivate, never delete once referenced" 409 rules.
+ * "deactivate before delete" 409 rule (2026-09-17: an active ministry is never deleted; a deactivated one takes everything with it).
  *
  * Tiers exercised (design §6.4 fixture table):
  *   person 1   `admin.api.key`      administrator — bypasses every ROLE gate
@@ -331,6 +331,8 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                     expect(ids).to.not.include(id);
                     expect(ids).to.include(ministryA);
                 });
+                // Active ministries are refused (409): deactivate first (2026-09-17 lifecycle rule).
+                cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${id}`, { active: false }, 200);
                 cy.makePrivateAdminAPICall(
                     "DELETE",
                     `${MINISTRIES_URL}/${id}`,
@@ -363,6 +365,8 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
 
         it("deletes an empty ministry", () => {
             createMinistry("Disposable").then((id) => {
+                // Active ministries are refused (409): deactivate first (2026-09-17 lifecycle rule).
+                cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${id}`, { active: false }, 200);
                 cy.makePrivateAdminAPICall(
                     "DELETE",
                     `${MINISTRIES_URL}/${id}`,
@@ -381,6 +385,8 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
         it("removes the ministry's scope grants with it (§3.4 deleteMinistry)", () => {
             createMinistry("Scoped Away").then((id) => {
                 grantMinistryScope(id);
+                // Active ministries are refused (409): deactivate first (2026-09-17 lifecycle rule).
+                cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${id}`, { active: false }, 200);
                 cy.makePrivateAdminAPICall(
                     "DELETE",
                     `${MINISTRIES_URL}/${id}`,
@@ -397,8 +403,23 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
         });
 
-        it("refuses (409) to delete a ministry that already has occurrences", () => {
-            createMinistry("Running").then((id) => {
+        it("refuses (409) to delete a ministry while it is still active", () => {
+            createMinistry("Still Running").then((id) => {
+                cy.makePrivateAdminAPICall("DELETE", `${MINISTRIES_URL}/${id}`, null, 409).then((resp) => {
+                    expect(resp.body).to.have.property("success", false);
+                    expect(resp.body.message).to.include("Deactivate");
+                });
+                cy.makePrivateAdminAPICall("GET", `${MINISTRIES_URL}/${id}`, null, 200);
+
+                // Deactivated, the same delete goes through.
+                cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${id}`, { active: false }, 200);
+                cy.makePrivateAdminAPICall("DELETE", `${MINISTRIES_URL}/${id}`, null, 200);
+                cy.makePrivateAdminAPICall("GET", `${MINISTRIES_URL}/${id}`, null, 404);
+            });
+        });
+
+        it("deletes a deactivated ministry together with its occurrences and assignments", () => {
+            createMinistry("Retired").then((id) => {
                 // vsch_vtem_ID is NOT NULL, so even a raw fixture schedule names the
                 // team the ministry was created with.
                 defaultTeam(id).then((teamId) =>
@@ -414,28 +435,42 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                            (vocc_vsch_ID, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
                          VALUES (?, '2026-09-13', 'scheduled', NOW())`,
                         [scheduleId],
-                    );
+                    ).then((occurrenceRows) => {
+                        const occurrenceId = occurrenceRows.insertId;
+                        dbOk(
+                            `INSERT INTO volunteer_position_vpos (vpos_vmin_ID, vpos_vtem_ID, vpos_Name, vpos_Active)
+                             VALUES (?, ?, ?, 1)`,
+                            [id, teamId, `${PREFIX} Usher`],
+                        ).then((positionRows) => {
+                            // A past-dated, accepted assignment: service history, which the
+                            // delete removes on purpose (the confirmation names the counts).
+                            dbOk(
+                                `INSERT INTO volunteer_assignment_vasg
+                                   (vasg_vocc_ID, vasg_vpos_ID, vasg_per_ID, vasg_Status, vasg_Source, vasg_AssignedDate)
+                                 VALUES (?, ?, 4, 'accepted', 'coordinator', NOW())`,
+                                [occurrenceId, positionRows.insertId],
+                            );
+                        });
 
-                    cy.makePrivateAdminAPICall(
-                        "DELETE",
-                        `${MINISTRIES_URL}/${id}`,
-                        null,
-                        409,
-                    ).then((resp) => {
-                        expect(resp.body).to.have.property("success", false);
+                        cy.makePrivateAdminAPICall("GET", `${MINISTRIES_URL}/${id}`, null, 200).then((resp) => {
+                            expect(resp.body.summary).to.have.property("occurrenceCount", 1);
+                            expect(resp.body.summary).to.have.property("assignmentCount", 1);
+                        });
+
+                        cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${id}`, { active: false }, 200);
+                        cy.makePrivateAdminAPICall("DELETE", `${MINISTRIES_URL}/${id}`, null, 200);
+                        cy.makePrivateAdminAPICall("GET", `${MINISTRIES_URL}/${id}`, null, 404);
+
+                        dbOk(`SELECT COUNT(*) AS c FROM volunteer_assignment_vasg WHERE vasg_vocc_ID = ?`, [occurrenceId]).then((rows) => {
+                            expect(Number(rows[0].c), "assignments").to.eq(0);
+                        });
+                        dbOk(`SELECT COUNT(*) AS c FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?`, [scheduleId]).then((rows) => {
+                            expect(Number(rows[0].c), "occurrences").to.eq(0);
+                        });
+                        dbOk(`SELECT COUNT(*) AS c FROM volunteer_schedule_vsch WHERE vsch_ID = ?`, [scheduleId]).then((rows) => {
+                            expect(Number(rows[0].c), "schedules").to.eq(0);
+                        });
                     });
-
-                    // Once the occurrence is gone the delete goes through.
-                    dbOk(
-                        `DELETE FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?`,
-                        [scheduleId],
-                    );
-                    cy.makePrivateAdminAPICall(
-                        "DELETE",
-                        `${MINISTRIES_URL}/${id}`,
-                        null,
-                        200,
-                    );
                 }),
                 );
             });

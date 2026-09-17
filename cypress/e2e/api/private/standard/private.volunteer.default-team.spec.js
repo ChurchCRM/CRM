@@ -391,6 +391,8 @@ describe("Volunteer v2 — every ministry has at least one team (#9701)", () => 
 
         it("still deletes a ministry together with its teams", () => {
             createMinistry("Disposable").then((ministry) => {
+                // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
+                cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${ministry.id}`, { active: false }, [200, 404]);
                 cy.makePrivateAdminAPICall(
                     "DELETE",
                     `${MINISTRIES_URL}/${ministry.id}`,

@@ -281,6 +281,8 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
                     expect(detail.body.pool).to.be.an("array").that.is.empty;
                 });
 
+                // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
+                cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${body.ministry.id}`, { active: false }, [200, 404]);
                 cy.makePrivateAdminAPICall(
                     "DELETE",
                     `${MINISTRIES_URL}/${body.ministry.id}`,
@@ -315,6 +317,8 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
                     null,
                     201,
                 );
+                // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
+                cy.makePrivateAdminAPICall("POST", `${MINISTRIES_URL}/${ministryId}`, { active: false }, [200, 404]);
                 cy.makePrivateAdminAPICall(
                     "DELETE",
                     `${MINISTRIES_URL}/${ministryId}`,

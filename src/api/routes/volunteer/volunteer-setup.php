@@ -659,7 +659,11 @@ function getVolunteerMinistry(Request $request, Response $response): Response
  * @param int|null $teamCount the team count the caller already has, so the common
  *                            path does not count the same rows twice
  *
- * @return array{teamCount: int, volunteerCount: int, unfilledPositionCount: int}
+ * `occurrenceCount` and `assignmentCount` are all-time totals, not scoped: they
+ * exist for the ministry page's Delete confirmation, which has to say how much
+ * service history goes with the ministry (§5.4 as amended 2026-09-17).
+ *
+ * @return array{teamCount: int, volunteerCount: int, unfilledPositionCount: int, occurrenceCount: int, assignmentCount: int}
  */
 function volunteerSetupMinistrySummary(
     VolunteerSetupService $service,
@@ -673,6 +677,8 @@ function volunteerSetupMinistrySummary(
             $ministryId,
             volunteerSetupActor()
         ),
+        'occurrenceCount' => $service->countMinistryOccurrences($ministryId),
+        'assignmentCount' => $service->countMinistryAssignments($ministryId),
     ];
 }
 
@@ -694,7 +700,9 @@ function volunteerSetupMinistrySummary(
  *             @OA\Property(property="summary", type="object",
  *                 @OA\Property(property="teamCount", type="integer"),
  *                 @OA\Property(property="volunteerCount", type="integer"),
- *                 @OA\Property(property="unfilledPositionCount", type="integer")
+ *                 @OA\Property(property="unfilledPositionCount", type="integer"),
+ *                 @OA\Property(property="occurrenceCount", type="integer", description="All-time, unscoped - for the Delete confirmation"),
+ *                 @OA\Property(property="assignmentCount", type="integer", description="All-time, unscoped - for the Delete confirmation")
  *             )
  *         )
  *     )
@@ -779,15 +787,15 @@ function updateVolunteerMinistry(Request $request, Response $response): Response
  * @OA\Delete(
  *     path="/volunteer/ministries/{ministryId}",
  *     operationId="deleteVolunteerMinistry",
- *     summary="Delete a ministry that has no service history",
- *     description="Global volunteer managers and administrators only. Returns 409 once any occurrence or assignment references the ministry - deactivate it instead (design §2.3).",
+ *     summary="Delete a deactivated ministry and everything under it",
+ *     description="Global volunteer managers and administrators only, and only for a ministry whose active flag is off - an active ministry is refused with 409 (deactivate it first, through POST with active:false). The delete then removes the ministry's teams, positions, qualifications, schedules, occurrences and assignments, service history included, together with its scope grants, pool Group and calendar (design §4.6, §5.4 as amended 2026-09-17).",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Ministry management access is required, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
- *     @OA\Response(response=409, description="The ministry still has occurrences or assignments"),
+ *     @OA\Response(response=409, description="The ministry is still active"),
  *     @OA\Response(response=200, description="Deleted")
  * )
  */

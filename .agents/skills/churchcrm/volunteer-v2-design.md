@@ -509,7 +509,7 @@ write, and every ministry query inherits `preSelect()`.
 | `vmin_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vmin_Name` | `Name` | `VARCHAR(100)` required | `UNIQUE`. 100, not 50 — V1's `VARCHAR(30)` is far too small. |
 | `vmin_Description` | `Description` | `VARCHAR(255)` null | |
-| `vmin_Active` | `Active` | `BOOLEAN` `tinyint(1) unsigned` required default `1` | Deactivate, never delete, once occurrences exist. |
+| `vmin_Active` | `Active` | `BOOLEAN` `tinyint(1) unsigned` required default `1` | The lifecycle gate *(revised 2026-09-17)*: a ministry must be deactivated before `DELETE` is accepted; a deactivated one sits under the sidebar's **Deactivated Ministries** heading, whose page offers Reactivate and (manager-only) Delete. |
 | `vmin_CreatedDate` | `CreatedDate` | `DATETIME` required | wall-clock in `sTimeZone` |
 | `vmin_CreatedBy_per_ID` | `CreatedByPersonId` | `mediumint(9) unsigned` null | FK → `person_per.per_ID`, `ON DELETE SET NULL` |
 | `vmin_HelpWanted` | `HelpWanted` | `tinyint(1)` required default `0` | D19: advertise on the Open Opportunities page |
@@ -1375,7 +1375,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | POST | `/api/volunteer/ministries` | create | **Manager** | `{name,description}` → `201 {ministry:{…}}`; `409` on duplicate name |
 | GET | `/api/volunteer/ministries/{ministryId}` | detail incl. teams (with their leaders), positions, pool and the overview `summary` | Coordinator of it | `MinistryMiddleware` → `{ministry, summary:{teamCount,volunteerCount,unfilledPositionCount}, teams[{…,leaders:[{scopeId,personId,personName}]}], positions[], poolGroupId, poolGroupName, pool[]}`. `unfilledPositionCount` is scoped to the caller — §5.4 |
 | POST | `/api/volunteer/ministries/{ministryId}` | update | Coordinator of it | `{name?,description?,active?,helpWanted?,helpWantedText?}` → `{ministry}`. Renaming renames the pool Group (D19) |
-| DELETE | `/api/volunteer/ministries/{ministryId}` | delete | **Manager** | `409` when occurrences or assignments exist; message names the count. Scope rows (§2.15) never block deletion — they are removed with the ministry |
+| DELETE | `/api/volunteer/ministries/{ministryId}` | delete | **Manager** | `409` while the ministry is still **active** ("Deactivate this ministry before deleting it."). Once deactivated the delete is total — teams, positions, qualifications, schedules, occurrences, assignments and their responses/swaps/outbox rows, service history included — plus the scope rows (§2.15), the pool Group and the calendar, in one transaction *(revised 2026-09-17; the earlier occurrence/assignment 409 is gone)* |
 | GET | `/api/volunteer/ministries/{ministryId}/teams` | list | Coordinator of it | `{teams:[…]}` |
 | POST | `/api/volunteer/ministries/{ministryId}/teams` | create | Coordinator of it | `{name,description}` → `201 {team}` |
 | GET/POST/DELETE | `/api/volunteer/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware` |
@@ -1497,7 +1497,7 @@ final class VolunteerSetupService
 {
     public function createMinistry(string $name, string $description, User $actor): VolunteerMinistry;
     public function updateMinistry(VolunteerMinistry $m, array $fields, User $actor): VolunteerMinistry;
-    public function deleteMinistry(VolunteerMinistry $m, User $actor): void;   // 409 if any occurrence or assignment references it (§3.3.1); otherwise deletes — FK cascades take teams/pools/positions/qualifications/schedules, and the polymorphic volunteer_scope_vscp rows (no FK, §2.15) are removed explicitly in the same transaction
+    public function deleteMinistry(VolunteerMinistry $m, User $actor): void;   // 409 while the ministry is active (§3.3.1, 2026-09-17); otherwise deletes everything — assignments explicitly first (their position key is RESTRICT), then the row, whose FK cascades take teams/positions/qualifications/schedules/occurrences; the polymorphic volunteer_scope_vscp rows (no FK, §2.15), the pool Group and the calendar are removed explicitly in the same transaction
     public function createTeam(VolunteerMinistry $m, string $name, string $description, User $actor): VolunteerTeam;
     // D19 — the ministry's own pool Group. No link/unlink: createMinistry() made it.
     public function getPoolGroup(int $ministryId): ?Group;
@@ -1913,7 +1913,7 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 |---|---|---|---|---|---|
 | Create ministry | ✓ | ✓ | ✗ | ✗ | ✗ |
 | Edit / deactivate ministry | ✓ | ✓ | scope | ✗ | ✗ |
-| Delete ministry | ✓ | ✓ | ✗ | ✗ | ✗ |
+| Delete ministry (only once deactivated — 2026-09-17) | ✓ | ✓ | ✗ | ✗ | ✗ |
 | Grant ministry scope (make a coordinator) | ✓ | ✓ | ✗ | ✗ | ✗ |
 | Grant team scope (make a team leader) | ✓ | ✓ | scope | ✗ | ✗ |
 | Create / edit team | ✓ | ✓ | scope | ✗ | ✗ |
@@ -2187,9 +2187,13 @@ entries: one cheap id-and-name query per request, memoised in
 `VolunteerAuthorizationService::getManageableMinistries()`. Who gets which entries follows
 §4.6 with no new rule:
 
-- **administrator / global volunteer manager** — every *active* ministry;
-- **ministry coordinator** — exactly the ministries they hold a `ministry` scope on, active
-  or not (they still have to be able to reach one that was just deactivated);
+- **administrator / global volunteer manager** — every ministry;
+- **ministry coordinator** — exactly the ministries they hold a `ministry` scope on;
+
+  *(revised 2026-09-17)* — in both cases the **active** ones sit under **Ministries** and the
+  deactivated ones under a second heading, **Deactivated Ministries** (`fa-box-archive`, no
+  Dashboard entry), which `MenuItem::isVisible()` hides whenever it would be empty. Same
+  memoised query, split by the `active` flag it now carries;
 - **team leader on a STAFF account** — *Dashboard* alone. Leading a team is not administering
   the ministry above it, and `/volunteer/ministries/{id}` would refuse them. Their teams are
   named on the dashboard's "My ministries and teams" card, which is their entry point;
@@ -2293,14 +2297,19 @@ this order:
 
 **Overview · Volunteers · Positions · Schedules · Occurrences · Help Wanted**
 
-The card header names the ministry, shows the **Inactive** badge when `Active = 0`, and —
-for an administrator or a Manage Ministries user only (`$bIsManager`, the same
-`isGlobalManager()` answer the API gives) — a **Delete** button *(added 2026-09-17)*. It
-confirms through `bootbox`, calls `DELETE /api/volunteer/ministries/{id}` and lands on the
-Ministry Dashboard. It is **not** hidden while occurrences or assignments exist: the API's
-`409` message (the counts, "Deactivate it instead of deleting it") is shown as the toast, so
-the refusal explains itself. A coordinator never sees the button, and the route would refuse
-them anyway (§4.6).
+The card header names the ministry, shows the **Inactive** badge when `Active = 0`, and
+carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
+
+- on an **active** ministry: **Deactivate**, offered to anyone who may open the page (a
+  coordinator may deactivate their own ministry — §4.6 "Edit / deactivate: scope"). It
+  confirms, sets `active:false` through the ordinary update and reloads: the ministry leaves
+  the sidebar's Ministries heading for **Deactivated Ministries**, and the header now shows —
+- on a **deactivated** ministry: **Reactivate** (same audience, `active:true`, reload) and, for
+  an administrator or Manage Ministries user only (`$bIsManager`), **Delete**. Delete confirms
+  with the ministry's all-time `occurrenceCount` and `assignmentCount` from the document's
+  `summary`, says that past service records go with it, calls
+  `DELETE /api/volunteer/ministries/{id}` and lands on the Ministry Dashboard. The API refuses
+  an active ministry with `409` whatever is rendered (D5), and a refusal is shown as the toast.
 
 - **Overview** carries, top to bottom: a strip of exactly three counts — **Teams**,
   **Volunteers** (members of the ministry's pool Group) and **Unfilled Positions** — then

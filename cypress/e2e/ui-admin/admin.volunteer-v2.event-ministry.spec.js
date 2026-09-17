@@ -113,6 +113,8 @@ function deleteFixtures() {
             });
         }
         for (const m of mine) {
+            // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
+            cy.makePrivateAdminAPICall("POST", `${VOLUNTEER_URL}/ministries/${m.id}`, { active: false }, [200, 404]);
             cy.makePrivateAdminAPICall(
                 "DELETE",
                 `${VOLUNTEER_URL}/ministries/${m.id}`,

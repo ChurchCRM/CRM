@@ -436,17 +436,25 @@ class VolunteerSetupService
     }
 
     /**
-     * Delete a ministry. **Manager-only** (§4.6), and refused with 409 the moment
-     * any occurrence or assignment hangs off it — at that point there is service
-     * history to protect and `Active = 0` is the right answer (§2.3).
+     * Delete a ministry. **Manager-only** (§4.6), and only once it has been
+     * **deactivated** (product-owner decision, 2026-09-17): an active ministry is
+     * refused with 409. Deactivation is the pause that makes a deletion deliberate
+     * — the ministry leaves the Ministries heading for "Deactivated Ministries",
+     * and only that page offers Delete.
      *
-     * When it does go through, the foreign keys take teams, positions,
-     * qualifications, schedules and requirements with it. Two things do not, and are
-     * removed explicitly inside the same transaction:
+     * Once it goes through, EVERYTHING under the ministry goes with it, service
+     * history included: teams, positions, qualifications, schedules, requirements,
+     * occurrences, assignments with their responses, swaps and outbox rows. The
+     * foreign keys cascade most of that. Three things they do not, or must not be
+     * trusted to, are handled explicitly inside the same transaction:
      *
+     *   * assignments are deleted FIRST, through their occurrences: the
+     *     assignment→position key is RESTRICT (so a position can never be deleted
+     *     from under a live roster by an ordinary edit), and the order in which
+     *     InnoDB fires the ministry's own cascades is not something to rely on;
      *   * `volunteer_scope_vscp` — its target column is polymorphic and carries no
      *     foreign key (§2.15), so the installation would be left with grants pointing
-     *     at nothing.
+     *     at nothing;
      *   * the ministry's **pool Group** — `group_grp.grp_ministry_id` is `ON DELETE SET
      *     NULL` on purpose (D19), because a cascade from a V2 table to a core table is
      *     how a church loses a group to a foreign key it never knew about. Removing it
@@ -463,23 +471,37 @@ class VolunteerSetupService
         }
 
         $ministryId = (int) $ministry->getId();
-        $occurrenceCount = $this->countMinistryOccurrences($ministryId);
-        $assignmentCount = $this->countMinistryAssignments($ministryId);
 
-        if ($occurrenceCount > 0 || $assignmentCount > 0) {
-            throw VolunteerSetupException::conflict(sprintf(
-                gettext('This ministry still has %1$d scheduled occurrences and %2$d assignments. Deactivate it instead of deleting it.'),
-                $occurrenceCount,
-                $assignmentCount
-            ));
+        if ($ministry->getActive()) {
+            throw VolunteerSetupException::conflict(
+                gettext('Deactivate this ministry before deleting it.')
+            );
         }
 
+        $occurrenceCount = $this->countMinistryOccurrences($ministryId);
+        $assignmentCount = $this->countMinistryAssignments($ministryId);
         $teamIds = $this->getTeamIds($ministryId);
 
         $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
         $connection->beginTransaction();
 
         try {
+            // Assignments first (see the docblock): responses, swaps and outbox rows
+            // cascade from them, so nothing pending survives the ministry. Two steps,
+            // because Propel refuses a DELETE that carries a join.
+            $occurrenceIds = VolunteerOccurrenceQuery::create()
+                ->useScheduleQuery()
+                    ->filterByMinistryId($ministryId)
+                ->endUse()
+                ->select('Id')
+                ->find()
+                ->toArray();
+            $removedAssignments = $occurrenceIds === []
+                ? 0
+                : VolunteerAssignmentQuery::create()
+                    ->filterByOccurrenceId(array_map('intval', $occurrenceIds), Criteria::IN)
+                    ->delete($connection);
+
             $scopeQuery = VolunteerScopeQuery::create()
                 ->filterByScopeType(VolunteerScope::TYPE_MINISTRY)
                 ->filterByScopeId($ministryId);
@@ -529,6 +551,9 @@ class VolunteerSetupService
 
             $this->logger->info('Volunteer ministry deleted', [
                 'ministryId' => $ministryId,
+                'occurrences' => $occurrenceCount,
+                'assignments' => $assignmentCount,
+                'removedAssignmentRows' => $removedAssignments,
                 'removedScopeRows' => $removedScopes,
                 'removedPoolGroupId' => $removedGroupId,
                 'removedCalendarId' => $removedCalendarId,
@@ -1961,7 +1986,8 @@ class VolunteerSetupService
         return $ids;
     }
 
-    private function countMinistryOccurrences(int $ministryId): int
+    /** Every occurrence of the ministry, past and future — the Delete dialog's number. */
+    public function countMinistryOccurrences(int $ministryId): int
     {
         return VolunteerOccurrenceQuery::create()
             ->useScheduleQuery()
@@ -1970,7 +1996,8 @@ class VolunteerSetupService
             ->count();
     }
 
-    private function countMinistryAssignments(int $ministryId): int
+    /** Every assignment of the ministry in any status — the Delete dialog's number. */
+    public function countMinistryAssignments(int $ministryId): int
     {
         return VolunteerAssignmentQuery::create()
             ->usePositionQuery()

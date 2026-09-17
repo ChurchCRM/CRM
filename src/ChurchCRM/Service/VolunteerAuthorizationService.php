@@ -278,7 +278,7 @@ class VolunteerAuthorizationService
      * serializes this class into the PHP session, and a static never outlives
      * the request.
      *
-     * @return array<int, string> ministry id => ministry name
+     * @return array<int, array{name: string, active: bool}> ministry id => name and active flag
      */
     public function getManageableMinistries(User $user): array
     {
@@ -289,9 +289,7 @@ class VolunteerAuthorizationService
 
         $query = VolunteerMinistryQuery::create();
 
-        if ($this->isGlobalManager($user)) {
-            $query->filterByActive(true);
-        } else {
+        if (!$this->isGlobalManager($user)) {
             $ministryIds = $this->getManagedMinistryIds($user);
             if ($ministryIds === []) {
                 return self::$manageableMinistryMemo[$personId] = [];
@@ -299,9 +297,13 @@ class VolunteerAuthorizationService
             $query->filterById($ministryIds, Criteria::IN);
         }
 
+        // Active and inactive alike, flagged: the sidebar splits them into the
+        // "Ministries" and "Deactivated Ministries" headings (Menu.php), and a
+        // manager has to be able to reach a deactivated ministry to reactivate or
+        // delete it (2026-09-17 lifecycle decision).
         $ministries = [];
-        foreach ($query->orderByName()->select(['Id', 'Name'])->find()->toArray() as $row) {
-            $ministries[(int) $row['Id']] = (string) $row['Name'];
+        foreach ($query->orderByName()->select(['Id', 'Name', 'Active'])->find()->toArray() as $row) {
+            $ministries[(int) $row['Id']] = ['name' => (string) $row['Name'], 'active' => (bool) $row['Active']];
         }
 
         return self::$manageableMinistryMemo[$personId] = $ministries;

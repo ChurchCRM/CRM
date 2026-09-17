@@ -86,6 +86,8 @@ function cleanupFixtures() {
                             200, 404, 409,
                         ]);
                     }
+                    // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
+                    adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministry.id}`, { active: false }, [200, 404]);
                     adminApi("DELETE", `${VOLUNTEER_URL}/ministries/${ministry.id}`, null, [
                         200, 404, 409,
                     ]);
