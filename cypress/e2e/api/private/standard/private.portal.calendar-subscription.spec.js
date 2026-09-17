@@ -14,8 +14,8 @@
  *     members and to nothing else about the member who owns it.
  *
  * Seed persona: user 100, Lena Black. usr_EditSelf=1, no admin flag, family 20.
- * The username column is VARCHAR(32), so the seeded address is stored
- * truncated — log in with the 32-character form.
+ * usr_UserName is VARCHAR(50) since #9831, so the seeded address is stored
+ * whole.
  *
  * Seed facts: calendar 1 is "Public Calendar", calendar 2 is "Private
  * Calendar", the church is "Main St. Cathedral", and system calendar 0 is
@@ -26,7 +26,7 @@
  * NOTE: every x-api-key request replaces the browser session cookie with an
  * API-token session, so a member step that follows one has to log in again.
  */
-const MEMBER_USER = "lena.black.editself.notes@exampl";
+const MEMBER_USER = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 
 const CHURCH_CALENDAR_ID = 1;

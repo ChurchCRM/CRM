@@ -22,7 +22,7 @@ const GOOD_DIR = `src/Include/themes/${GOOD_THEME}`;
 const BROKEN_DIR = `src/Include/themes/${BROKEN_THEME}`;
 const HEADER_PURPLE = "rgb(75, 0, 130)";
 
-const MEMBER_USER = "lena.black.editself.notes@exampl";
+const MEMBER_USER = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 
 const adminKey = () => Cypress.env("admin.api.key");

@@ -25,7 +25,7 @@
  * Other Relative, not an adult of his).
  */
 describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
-    const adultUser = "lena.black.editself.notes@exampl";
+    const adultUser = "lena.black.editself.notes@example.com";
     const nonAdultUser = "limited.user";
     const password = "changeme";
 

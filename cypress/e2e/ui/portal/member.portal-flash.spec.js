@@ -20,7 +20,7 @@
  * self-service member the other portal specs use.
  */
 describe("Member Portal — notices", () => {
-    const memberUser = "lena.black.editself.notes@exampl";
+    const memberUser = "lena.black.editself.notes@example.com";
     const password = "changeme";
 
     const loginAsMember = () => {

@@ -21,7 +21,7 @@ const PUBLIC_CALENDAR_ID = 1;
 const SEEDED_EVENT_TITLE = "Christmas Service";
 const WINDOW_AROUND_SEEDED_EVENT = { from: "2016-12-01", to: "2016-12-31" };
 
-const MEMBER_USER = "lena.black.editself.notes@exampl";
+const MEMBER_USER = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 
 const EVENTS_URL = "/api/portal/calendar/events";

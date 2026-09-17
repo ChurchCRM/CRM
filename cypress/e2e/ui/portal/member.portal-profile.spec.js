@@ -5,8 +5,8 @@
  *
  * Seed persona: user 100, Lena Black (person 100, family 20, family role 2 =
  * Spouse). usr_EditSelf=1 and no admin flag, so User::isEditSelfExclusive() is
- * true and she lands in /portal. The username column is VARCHAR(32), so the
- * seeded address is stored truncated — log in with the 32-character form.
+ * true and she lands in /portal. usr_UserName is VARCHAR(50) since #9831, so the
+ * seeded address is stored whole.
  *
  * Design: .agents/skills/churchcrm/member-portal-design.md §5.2 (P11, P12).
  *   - a member reads and edits their own person record and nothing else
@@ -23,7 +23,7 @@
  * administrator turns it on.
  */
 describe("Member Portal — Profile", () => {
-    const memberUser = "lena.black.editself.notes@exampl";
+    const memberUser = "lena.black.editself.notes@example.com";
     const memberPassword = "changeme";
 
     const login = () => {
