@@ -214,10 +214,8 @@ function toggleComposeForm(show: boolean): void {
   if (sendBtn) {
     const icon = sendBtn.querySelector("i");
     const label = sendBtn.lastChild;
-    if (icon) icon.className = show ? "fa-solid fa-chevron-up me-1" : "fa-solid fa-paper-plane me-1";
-    if (label instanceof Text) label.nodeValue = show ? i18next.t("Cancel") : i18next.t("Send");
-    sendBtn.classList.toggle("btn-primary", !show);
-    sendBtn.classList.toggle("btn-outline-primary", show);
+    if (icon) icon.className = show ? "fa-solid fa-chevron-up me-1" : "fa-solid fa-pen-to-square me-1";
+    if (label instanceof Text) label.nodeValue = show ? i18next.t("Cancel") : i18next.t("Compose Message");
   }
 
   if (!show) {
@@ -513,8 +511,15 @@ function ensureModalExists(): void {
   clientBtn.disabled = true;
   clientBtn.title = i18next.t("Open recipients in your local email application");
 
-  // "Send" button — only shown when SMTP is configured (created unconditionally, visibility controlled)
-  sendBtn = makeBtn("crm-email-send-btn", "btn btn-sm btn-primary", "fa-solid fa-paper-plane", i18next.t("Send"));
+  // "Compose Message" button — only shown when email sending is enabled (created unconditionally, visibility controlled)
+  // "Compose Message" — outline style like the other footer actions; the primary-coloured
+  // action is the "Send Email" submit inside the form it opens.
+  sendBtn = makeBtn(
+    "crm-email-send-btn",
+    "btn btn-sm btn-outline-primary",
+    "fa-solid fa-pen-to-square",
+    i18next.t("Compose Message"),
+  );
   sendBtn.disabled = true;
 
   const closeBtn = document.createElement("button");
@@ -1207,10 +1212,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Reset Send button appearance
         if (sendBtn) {
           const icon = sendBtn.querySelector("i");
-          if (icon) icon.className = "fa-solid fa-paper-plane me-1";
+          if (icon) icon.className = "fa-solid fa-pen-to-square me-1";
           const label = sendBtn.lastChild;
-          if (label instanceof Text) label.nodeValue = i18next.t("Send");
-          sendBtn.classList.replace("btn-outline-primary", "btn-primary");
+          if (label instanceof Text) label.nodeValue = i18next.t("Compose Message");
         }
         tooManyHintEl = null;
         recipientListWrapperEl = null;
