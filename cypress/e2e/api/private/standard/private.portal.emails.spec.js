@@ -32,6 +32,14 @@ const SAMANTHA_PERSON_ID = 102;
 
 const tag = `portal-email-${Date.now()}`;
 
+/**
+ * The address the seeded messages actually went to, captured from the send
+ * API's own report rather than hard-coded: `private.portal.me.spec.js` changes
+ * Lena's email as part of testing the profile write, so whichever spec runs
+ * first decides what her address is by the time these rows are written.
+ */
+let sentToAddress;
+
 /** Sign in with the login form so cy.request() inherits a real session. */
 const portalLogin = () => {
     cy.clearCookies();
@@ -57,7 +65,10 @@ describe("Member Portal API — /api/portal/me/emails", () => {
                 personIds: [LENA_PERSON_ID],
                 subject: `${tag} message ${n}`,
                 body: `Body of message ${n} for Lena`,
-            }).then((resp) => expect(resp.body.counts.sent).to.eq(1));
+            }).then((resp) => {
+                expect(resp.body.counts.sent).to.eq(1);
+                sentToAddress = resp.body.sent[0].email;
+            });
         }
         cy.makePrivateAdminAPICall("POST", "/api/email/send", {
             personIds: [SAMANTHA_PERSON_ID],
@@ -98,8 +109,8 @@ describe("Member Portal API — /api/portal/me/emails", () => {
                     kindLabel: "Message",
                     status: "sent",
                     hasBody: true,
-                    address: "lena.walker@example.com",
                 });
+                expect(mine[0].address, "the row names the address it went to").to.eq(sentToAddress);
             });
         });
 

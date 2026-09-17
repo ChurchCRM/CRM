@@ -65,10 +65,12 @@ describe("Member Portal — staff access", () => {
         cy.url({ timeout: 10000 }).should("include", "/v2/dashboard");
     });
 
-    it("The account menu still offers Change Password and Sign out to staff", () => {
+    it("The account menu still offers Email History, Change Password and Sign out to staff", () => {
         cy.visit("/portal/");
         cy.get("#portal-account-toggle", { timeout: 10000 }).click();
-        cy.get('#portal-account-menu [role="menuitem"]').should("have.length", 3);
+        // Email History, Change Password, Admin Console, Sign out.
+        cy.get('#portal-account-menu [role="menuitem"]').should("have.length", 4);
+        cy.get("#portal-account-menu").contains('[role="menuitem"]', "Email History").should("exist");
         cy.get("#portal-account-menu").contains('[role="menuitem"]', "Change Password").should("exist");
         cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").should("exist");
     });
