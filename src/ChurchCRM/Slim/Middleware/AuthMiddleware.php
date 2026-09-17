@@ -158,11 +158,12 @@ class AuthMiddleware implements MiddlewareInterface
      * Check whether the current request targets one of the self-service auth
      * flow paths listed in self::AUTH_FLOW_EXEMPT_PATHS.
      *
-     * Paths in the list are relative to the install root, so the comparison is
-     * anchored at SystemURLs::getRootPath() — a subdirectory installation
-     * (/crm/v2/user/current/manage2fa) matches, while an unrelated route that
-     * merely contains an exempt path as a substring does not. This mirrors
-     * ChurchInfoRequiredMiddleware::process().
+     * Paths in the list are relative to the install root, so each is compared
+     * whole against SystemURLs::getRootPath() . $exemptPath. A subdirectory
+     * installation (/crm/v2/user/current/manage2fa) still matches, while a path
+     * that merely contains or ends with an exempt path — /evil/api/user/current/
+     * 2fa-status — does not, so the gate cannot be widened by a future
+     * catch-all route.
      */
     private function isAuthFlowExemptPath(ServerRequestInterface $request): bool
     {
@@ -170,7 +171,7 @@ class AuthMiddleware implements MiddlewareInterface
         $rootPath = SystemURLs::getRootPath();
 
         foreach (self::AUTH_FLOW_EXEMPT_PATHS as $exemptPath) {
-            if (str_starts_with($path, $rootPath . $exemptPath)) {
+            if ($path === $rootPath . $exemptPath) {
                 return true;
             }
         }

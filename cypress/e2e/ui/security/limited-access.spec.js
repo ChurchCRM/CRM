@@ -131,6 +131,12 @@ describe("Self-only access — EditSelf account user (limited.user)", () => {
             .and(($img) => {
                 expect($img.attr("src")).to.match(/^data:image\/png;base64,/);
             });
+
+        // Entering a wrong code exercises POST /api/user/current/test2FAEnrollmentCode.
+        // A 403 there would leave the field in the "Verifying…" state forever; the
+        // "Code is invalid" message proves the endpoint answered 200.
+        cy.get("#totp-input").type("000000");
+        cy.contains("Code is invalid", { timeout: 10000 }).should("be.visible");
     });
 
     it("API call with limited user key returns 403", () => {
