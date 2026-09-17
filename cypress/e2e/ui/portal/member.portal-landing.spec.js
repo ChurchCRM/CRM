@@ -48,10 +48,11 @@ describe("Member Portal — self-service landing", () => {
         cy.get("#fab-container").should("not.exist");
     });
 
-    it("The portal header offers Sign out, which returns to the login page", () => {
+    it("The account menu offers Sign out, which returns to the login page", () => {
         login();
         cy.url({ timeout: 10000 }).should("include", "/portal");
-        cy.contains("Sign out").click();
+        cy.get("#portal-account-toggle").click();
+        cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").click();
         cy.url({ timeout: 10000 }).should("include", "/session/begin");
     });
 
@@ -87,9 +88,14 @@ describe("Member Portal — self-service landing", () => {
         cy.url().should("not.include", "SystemSettings.php");
     });
 
-    it("The staff 'viewing as yourself' bar is NOT shown to a member", () => {
+    // The bar is gone for everyone (2026-09-17): the account menu's "Admin
+    // Console" entry is the way back to the admin area, and a member never
+    // sees that entry either.
+    it("No staff bar is rendered, and the account menu has no Admin Console", () => {
         login();
         cy.url({ timeout: 10000 }).should("include", "/portal");
         cy.get(".portal-staff-bar").should("not.exist");
+        cy.get("#portal-account-toggle").click();
+        cy.get("#portal-account-menu").contains("Admin Console").should("not.exist");
     });
 });

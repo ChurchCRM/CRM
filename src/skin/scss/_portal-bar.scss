@@ -1,57 +1,17 @@
-// Member Portal — the fixed "viewing as yourself" bar
+// Member Portal — room for a bar fixed to the top of the viewport
 //
-// A staff member inside the portal is there on purpose and needs an obvious way
-// back to the admin area (design P10). The bar deliberately matches the
-// dimensions the masquerade bar (#9843 / #9844) uses — 2.5rem tall, fixed to the
-// top, one exit icon button on the trailing edge — so MP8 can unify the two into
-// one component without any visual change.
+// The portal had one such bar: "You are viewing the Member Portal as yourself.",
+// shown to every staff login. It is gone (2026-09-17, product review) — the
+// account menu's "Admin Console" entry is the way back to the admin area, and
+// it costs no vertical space. What survives is the offset, because the
+// masquerade banner (#9843 / #9844) that MP8 renders here is fixed too, and a
+// fixed element is out of the flow: the page below has to start lower by hand.
+//
+// The 2.5rem matches the masquerade bar's own height, so the two agree.
 //
 // Logical properties only: this file ships in `portal.min.css`, which is never
 // RTL-flipped.
 
-.portal-staff-bar {
-    position: fixed;
-    inset-block-start: 0;
-    inset-inline: 0;
-    z-index: 1040;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    block-size: 2.5rem;
-    padding-inline: 0.75rem;
-    background-color: var(--portal-accent);
-    color: #1f1f1f;
-    font-size: 0.875rem;
-    text-align: center;
-}
-
-.portal-staff-bar-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.portal-staff-bar-exit {
-    position: absolute;
-    inset-inline-end: 0.25rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-block-size: 2rem;
-    min-inline-size: 2rem;
-    border-radius: 999px;
-    color: inherit;
-    text-decoration: none;
-}
-
-.portal-staff-bar-exit:hover,
-.portal-staff-bar-exit:focus-visible {
-    background-color: rgba(0, 0, 0, 0.15);
-    color: inherit;
-}
-
-// The bar is fixed, so the page below it has to start lower.
 .portal-body-with-bar {
     padding-block-start: 2.5rem;
 }

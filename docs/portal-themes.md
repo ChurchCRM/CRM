@@ -81,7 +81,7 @@ That alone recolours and refonts every portal page.
 |---|---|
 | `--portal-primary` | Header background, active navigation, buttons |
 | `--portal-primary-contrast` | Text drawn on `--portal-primary` |
-| `--portal-accent` | Badges, the staff "viewing as yourself" bar |
+| `--portal-accent` | Badges and the masquerade banner |
 | `--portal-surface` | Cards, navigation bar, footer |
 | `--portal-surface-alt` | Page background |
 | `--portal-text` | Body text |

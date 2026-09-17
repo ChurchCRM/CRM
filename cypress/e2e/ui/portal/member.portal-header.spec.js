@@ -1,10 +1,14 @@
 /// <reference types="cypress" />
 
 /**
- * Member Portal — the header: the church brand link.
+ * Member Portal — the header: the church brand link and the account menu.
  *
- * Product review (2026-09-17): hovering the church name must not restyle it —
- * the core bundle's `a:hover` was painting it link-blue and underlining it.
+ * Product review (2026-09-17):
+ *   - hovering the church name must not restyle it (the core bundle's `a:hover`
+ *     was painting it link-blue and underlining it)
+ *   - the member's name and the bare "Sign out" link are replaced by one
+ *     "Hello <first name>" button that opens a menu: Change Password,
+ *     Admin Console (staff logins only, never during a masquerade), Sign out
  *
  * Seed persona: user 100, Lena Black (person 100, family 20). usr_EditSelf=1
  * and no admin flag, so she is confined to the portal. The username column is
@@ -131,6 +135,103 @@ describe("Member Portal header", () => {
             cy.visit("/portal/profile");
             cy.get(".portal-brand").click();
             cy.url({ timeout: 10000 }).should("match", /\/portal\/?$/);
+        });
+    });
+
+    describe("The account menu", () => {
+        it("Greets the member by first name on the toggle button", () => {
+            cy.get("#portal-account-toggle")
+                .should("be.visible")
+                .and("contain.text", "Hello Lena")
+                .and("have.attr", "aria-haspopup", "menu")
+                .and("have.attr", "aria-expanded", "false");
+
+            // The bare name and the bare sign-out link are gone.
+            cy.get(".portal-member-name").should("not.exist");
+            cy.get(".portal-signout").should("not.exist");
+        });
+
+        it("Is closed until the button is clicked", () => {
+            cy.get("#portal-account-menu").should("not.be.visible");
+
+            cy.get("#portal-account-toggle").click();
+
+            cy.get("#portal-account-menu").should("be.visible").and("have.attr", "role", "menu");
+            cy.get("#portal-account-toggle").should("have.attr", "aria-expanded", "true");
+        });
+
+        it("Offers Change Password and Sign out, but not Admin Console, to a member", () => {
+            cy.get("#portal-account-toggle").click();
+
+            cy.get('#portal-account-menu [role="menuitem"]').should("have.length", 2);
+            cy.get("#portal-account-menu")
+                .contains('[role="menuitem"]', "Change Password")
+                .should("have.attr", "href")
+                .and("include", "/portal/profile/password");
+            cy.get("#portal-account-menu")
+                .contains('[role="menuitem"]', "Sign out")
+                .should("have.attr", "href")
+                .and("include", "/session/end");
+            cy.get("#portal-account-menu").contains("Admin Console").should("not.exist");
+        });
+
+        it("Closes on Escape and gives focus back to the button", () => {
+            cy.get("#portal-account-toggle").click();
+            cy.get("#portal-account-menu").should("be.visible");
+
+            cy.get("#portal-account-menu").trigger("keydown", { key: "Escape" });
+
+            cy.get("#portal-account-menu").should("not.be.visible");
+            cy.get("#portal-account-toggle").should("have.attr", "aria-expanded", "false");
+            cy.focused().should("have.id", "portal-account-toggle");
+        });
+
+        it("Closes when a click lands outside it", () => {
+            cy.get("#portal-account-toggle").click();
+            cy.get("#portal-account-menu").should("be.visible");
+
+            cy.get("#portal-main").click("topLeft");
+
+            cy.get("#portal-account-menu").should("not.be.visible");
+            cy.get("#portal-account-toggle").should("have.attr", "aria-expanded", "false");
+        });
+
+        it("Moves between the items with the arrow keys", () => {
+            cy.get("#portal-account-toggle").click();
+
+            cy.focused().should("contain.text", "Change Password");
+            cy.focused().trigger("keydown", { key: "ArrowDown" });
+            cy.focused().should("contain.text", "Sign out");
+            cy.focused().trigger("keydown", { key: "ArrowUp" });
+            cy.focused().should("contain.text", "Change Password");
+        });
+
+        it("Signs the member out from the menu", () => {
+            cy.get("#portal-account-toggle").click();
+            cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").click();
+            cy.url({ timeout: 10000 }).should("include", "/session/begin");
+        });
+
+        it("Works beside the navigation toggle on a phone", () => {
+            cy.viewport(375, 812);
+            cy.visit("/portal/");
+
+            cy.get("#portal-nav-toggle").should("be.visible");
+            cy.get("#portal-account-toggle").should("be.visible").click();
+            cy.get("#portal-account-menu").should("be.visible");
+
+            // The menu is right-aligned to its button; on a phone the header
+            // wraps, and the button must not end up so far to the leading edge
+            // that the menu hangs off the side of the screen.
+            cy.get("#portal-account-menu").then(($menu) => {
+                const box = $menu[0].getBoundingClientRect();
+                expect(box.left, "the menu starts inside the viewport").to.be.at.least(0);
+                expect(box.right, "the menu ends inside the viewport").to.be.at.most(375);
+            });
+
+            // The hamburger still opens the navigation while the menu is up.
+            cy.get("#portal-nav-toggle").click();
+            cy.get("#portal-nav").should("have.class", "is-open");
         });
     });
 });

@@ -6,8 +6,13 @@
  * Design: .agents/skills/churchcrm/member-portal-design.md §2.3 / P10.
  *   - a staff login still lands on /v2/dashboard
  *   - the admin user menu offers "Member Portal"
- *   - inside the portal a staff session sees the fixed "viewing as yourself"
- *     bar, whose exit control returns to the admin dashboard
+ *   - inside the portal a staff session gets back to the admin area through the
+ *     account menu's "Admin Console" entry
+ *
+ * The fixed "You are viewing the Member Portal as yourself." bar was removed on
+ * 2026-09-17 (product review): "Admin Console" does the same job without
+ * spending a band of every page on it. The bar's offset class survives for the
+ * masquerade banner only.
  */
 describe("Member Portal — staff access", () => {
     beforeEach(() => {
@@ -39,16 +44,32 @@ describe("Member Portal — staff access", () => {
         cy.get(".portal-home").should("exist");
     });
 
-    it("Staff see the 'viewing as yourself' bar and no admin sidebar", () => {
+    it("No staff bar takes a band off the top of the page, and no admin sidebar", () => {
         cy.visit("/portal/");
-        cy.get(".portal-staff-bar", { timeout: 10000 }).should("be.visible");
-        cy.contains("You are viewing the Member Portal as yourself.").should("exist");
+        cy.get(".portal-account-toggle", { timeout: 10000 }).should("be.visible");
+        cy.get(".portal-staff-bar").should("not.exist");
+        cy.contains("You are viewing the Member Portal as yourself.").should("not.exist");
+        cy.get("body").should("not.have.class", "portal-body-with-bar");
         cy.get("#sidebar").should("not.exist");
     });
 
-    it("The exit control returns to the admin dashboard", () => {
+    it("The account menu offers Admin Console, which returns to the admin dashboard", () => {
         cy.visit("/portal/");
-        cy.get('.portal-staff-bar [aria-label="Exit to the admin area"]', { timeout: 10000 }).click();
+        cy.get("#portal-account-toggle", { timeout: 10000 }).click();
+        cy.get("#portal-account-menu")
+            .contains('[role="menuitem"]', "Admin Console")
+            .should("have.attr", "href")
+            .and("include", "/v2/dashboard");
+
+        cy.get("#portal-account-menu").contains('[role="menuitem"]', "Admin Console").click();
         cy.url({ timeout: 10000 }).should("include", "/v2/dashboard");
+    });
+
+    it("The account menu still offers Change Password and Sign out to staff", () => {
+        cy.visit("/portal/");
+        cy.get("#portal-account-toggle", { timeout: 10000 }).click();
+        cy.get('#portal-account-menu [role="menuitem"]').should("have.length", 3);
+        cy.get("#portal-account-menu").contains('[role="menuitem"]', "Change Password").should("exist");
+        cy.get("#portal-account-menu").contains('[role="menuitem"]', "Sign out").should("exist");
     });
 });

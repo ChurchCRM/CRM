@@ -129,13 +129,14 @@
     display: flex;
     align-items: center;
     gap: var(--portal-gap);
+    // The header wraps on a phone, and a wrapped line starts at the leading
+    // edge — which would put the account button on the left and hang its
+    // right-aligned menu off the side of the screen. Keep the actions on the
+    // trailing edge whether they wrap or not.
+    margin-inline-start: auto;
 }
 
-.portal-member-name {
-    display: none;
-}
-
-.portal-signout,
+.portal-account-toggle,
 .portal-nav-toggle {
     display: inline-flex;
     align-items: center;
@@ -152,8 +153,8 @@
     cursor: pointer;
 }
 
-.portal-signout:hover,
-.portal-signout:focus-visible,
+.portal-account-toggle:hover,
+.portal-account-toggle:focus-visible,
 .portal-nav-toggle:hover,
 .portal-nav-toggle:focus-visible {
     background-color: rgba(255, 255, 255, 0.15);
@@ -162,6 +163,67 @@
 
 .portal-nav-toggle {
     display: inline-flex;
+}
+
+// Account menu ---------------------------------------------------------------
+//
+// "Hello <first name>" over a dropdown of the things a member does to their
+// account. Everything is a portal token, so a church theme restyles it with the
+// rest of the header.
+
+.portal-account {
+    position: relative;
+}
+
+.portal-account-label {
+    // The header is tight on a phone and a long first name must not push the
+    // caret off the edge.
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-inline-size: 10rem;
+}
+
+.portal-account-caret {
+    font-size: 0.75rem;
+    // The caret is decoration; it must not grow the button's hit area.
+    flex: 0 0 auto;
+}
+
+.portal-account-toggle[aria-expanded="true"] .portal-account-caret {
+    transform: rotate(180deg);
+}
+
+.portal-account-menu {
+    position: absolute;
+    inset-block-start: calc(100% + 0.25rem);
+    inset-inline-end: 0;
+    // Above the navigation band, below the toast stack (1050).
+    z-index: 1045;
+    min-inline-size: 13rem;
+    padding-block: 0.25rem;
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-surface);
+    color: var(--portal-text);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.18);
+}
+
+.portal-account-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    padding-inline: 0.75rem;
+    color: var(--portal-text);
+    text-decoration: none;
+}
+
+.portal-account-item:hover,
+.portal-account-item:focus-visible {
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+    text-decoration: none;
 }
 
 // Navigation -----------------------------------------------------------------
@@ -549,8 +611,8 @@ textarea.portal-input {
     position: fixed;
     inset-block-start: var(--portal-toast-offset, var(--portal-gap));
     inset-inline: var(--portal-gap);
-    // Above the staff bar (1040) — a message about what just happened outranks
-    // the way back to the admin area.
+    // Above the masquerade banner (1040) and the account menu (1045) — a
+    // message about what just happened outranks both.
     z-index: 1050;
     display: flex;
     flex-direction: column;
@@ -560,8 +622,8 @@ textarea.portal-input {
     pointer-events: none;
 }
 
-// The staff bar is fixed too, so the stack has to clear it by hand: body
-// padding moves the flow, not a fixed element.
+// The masquerade banner is fixed too, so the stack has to clear it by hand:
+// body padding moves the flow, not a fixed element.
 .portal-body-with-bar .portal-toasts {
     --portal-toast-offset: calc(2.5rem + var(--portal-gap));
 }
@@ -977,8 +1039,8 @@ textarea.portal-input {
         inline-size: var(--portal-toast-width);
     }
 
-    .portal-member-name {
-        display: inline;
+    .portal-account-label {
+        max-inline-size: 16rem;
     }
 
     .portal-nav-toggle {

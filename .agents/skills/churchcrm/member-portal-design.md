@@ -65,7 +65,7 @@ an admin page is not finished.
 | P7 | **Templates are live: an edited template file is picked up on the next request.** | Twig compiles to a PHP cache and, with `auto_reload`, recompiles a template whose file changed. Designers edit over FTP and reload. A "Developer mode" switch on the admin page turns the compile cache off entirely. |
 | P8 | **A broken theme fails loudly.** Activation compiles every template in the theme and refuses with the exact file, line and message. At render time an error in the active theme shows the administrator the error and shows members a portal-styled "temporarily unavailable" page; the error is written to the application log (Admin → System → Logs) and to PHP's `error_log` (the web server's error log). There is no silent fallback to the default theme. | Silent fallback hides the problem from the designer. |
 | P9 | **Configuration lives on a dedicated Admin → Member Portal page**, not in System Settings. | System Settings is not accepting new items; the page is also the home for theme validation, statistics and, later, calendar visibility and modules. Values are still `ConfigItem`s in `config_cfg` so backups, exports and the config API work unchanged; they carry no System Settings category, which is exactly how an item is hidden from that page. |
-| P10 | **Landing rule: an Edit-Self-only login lands in `/portal` and cannot reach the admin shell; every other login lands in the admin shell as today and gets a "Member Portal" entry in its user menu.** While a staff member is in the portal, the same fixed top bar the masquerade uses (#9843) says "You are viewing the Member Portal as yourself" with the same exit control, which returns them to the admin dashboard. | Every staff login, however limited, holds View on people and families; "self-service" is the only member persona. No third case. Staff need an obvious way back, and the exit control already exists. |
+| P10 | **Landing rule: an Edit-Self-only login lands in `/portal` and cannot reach the admin shell; every other login lands in the admin shell as today and gets a "Member Portal" entry in its user menu.** While a staff member is in the portal, the header's account menu carries an **Admin Console** entry that returns them to the admin dashboard; it is shown for every staff login and hidden during a masquerade. | Every staff login, however limited, holds View on people and families; "self-service" is the only member persona. No third case. Staff need an obvious way back, but a fixed bar on every page was too loud a way to give them one (product review, 2026-09-17): the menu entry does the same job and costs no vertical space. A masquerading administrator leaves through the banner's own exit control, so the entry would be a second, wrong way out. |
 | P11 | **Every portal API derives the acting person from the session. No route accepts a `personId` naming the actor.** | Same invariant Volunteer v2 §3.3.3 uses; it makes IDOR structurally impossible on the member surface. |
 | P12 | **Family scope = the member's own family**, via the existing `User::canViewFamily()` / `canEditPerson()` rules. | Nothing new to audit; the rules already exist for the Edit Self flag. |
 | P13 | **The administrator chooses which calendars the portal shows**, on the Admin → Member Portal page, from one list that holds the church calendars (the `calendars` rows) and the system calendars (Birthdays, Anniversaries, Holidays, Unpinned events). Stored as a JSON config value, not a column, because system calendars are virtual. Events inherit from the calendars they are pinned to. **Every volunteer ministry gets its own calendar**, created with the ministry (`calendars.ministry_id`), which its coordinators may pin events to and which the administrator may show in the portal like any other. | There is no per-event visibility flag; the system calendars are not table rows; ministries have no calendar today (§5.3). |
@@ -427,10 +427,11 @@ Config items (all without a System Settings category): `sMemberPortalTheme`,
 
 Navigation (the `nav` model), in order, each hidden when its feature is off or the member has
 nothing there: **Home · Calendar · Volunteering · My Teams · My Family · Profile**. The header
-shows the church logo and name, the member's name, and Sign out (or "Exit to your account" during
-a masquerade). No admin sidebar anywhere. Staff opening the portal see the fixed top bar "You are viewing
-the Member Portal as yourself" with the exit control from #9843, which returns them to the admin
-dashboard (P10).
+shows the church logo and name, and one account menu: a button reading "Hello <first name>" over
+**Change Password**, **Admin Console** (staff logins only, never during a masquerade) and **Sign out**.
+The church name is not a link that restyles itself under the pointer. No admin sidebar anywhere.
+Staff opening the portal leave it again through Admin Console (P10); there is no fixed "viewing as
+yourself" bar. A masquerade still shows the banner from #9843, with its own exit control.
 
 ### 5.1 Home (`/portal`)
 
@@ -683,7 +684,7 @@ issue for every user-visible piece):
 | MP5 | Calendar: Calendars tab on the admin page (`aPortalCalendars`), ministry calendars (`calendars.ministry_id`, created with the ministry, coordinator pinning, "Ministry Calendars" heading, event editor pre-pin), "Church Calendars" relabel, portal page and API | MP2, MP3 |
 | MP6 | Volunteer pages moved into the portal; admin "Volunteer" heading removed; D14 revision; team-leader flag | MP2 + volunteer integration branch |
 | MP7 | My Teams (team-scoped management in the portal; shared components refactor; team-leader schedules) | MP6 |
-| MP8 | Masquerade banner and the staff "viewing as yourself" bar in the portal layout; admin user-menu link; limited-access retirement; e2e, localization, responsive and production-readiness pass | MP2–MP7 |
+| MP8 | Masquerade banner in the portal layout (the staff "viewing as yourself" bar it was to unify with is gone; the account menu's Admin Console replaced it); admin user-menu link; limited-access retirement; e2e, localization, responsive and production-readiness pass | MP2–MP7 |
 | MP9 | UCCC theme (its own repository, not upstream): colours, fonts, imagery, home page override | MP2 |
 
 MP2 is the largest (theming infrastructure); MP3–MP5 are each about the size of one volunteer child

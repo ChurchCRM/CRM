@@ -49,7 +49,7 @@ Each is a separate file, so a theme can replace one without touching the others:
 
 | Partial | Renders |
 |---|---|
-| `partials/header.html.twig` | Church logo and name, the member's name, Sign out |
+| `partials/header.html.twig` | Church logo and name, and the account menu ("Hello &lt;first name&gt;" → Change Password, Admin Console for staff, Sign out) |
 | `partials/nav.html.twig` | The `nav` entries, and the toggle target `#portal-nav` |
 | `partials/footer.html.twig` | Church contact details, ChurchCRM credit |
 | `partials/flash.html.twig` | The fixed notice container, holding this request's `flash` messages. **A theme that overrides `layout.html.twig` must keep this include** — without it there is no container, and every message the portal raises goes unseen. |
@@ -75,11 +75,11 @@ toast in the fixed top-right stack that fades away on its own.
 
 | Selector | What it is |
 |---|---|
-| `.portal-body` | `<body>`; also `.portal-body-with-bar` when the staff bar is showing |
-| `.portal-staff-bar` | The fixed "You are viewing the Member Portal as yourself." bar |
+| `.portal-body` | `<body>`; also `.portal-body-with-bar` when a bar is fixed to the top of the viewport — the masquerade banner is the only one |
 | `.portal-shell` | The column that holds header, nav, main and footer |
 | `.portal-container` | The width-limited wrapper used by every band |
 | `#portal-nav` / `#portal-nav-toggle` | The navigation and the button that opens it on a phone |
+| `#portal-account` / `#portal-account-toggle` / `#portal-account-menu` | The header's account menu: its wrapper, the "Hello &lt;first name&gt;" button and the `role="menu"` dropdown. `portal.min.js` binds to these ids, so a theme that overrides `partials/header.html.twig` must keep them |
 | `#portal-main` | The `<main>` element |
 | `.portal-card` | The standard content card |
 | `.portal-page-title` | The `<h1>` at the top of a page's content |
@@ -159,7 +159,7 @@ portal route, ever addresses somebody else.
 | `avatarUrl` | string | `/api/portal/me/photo`, cache-busted; **empty when no photo has been uploaded** — render initials instead |
 | `familyId` | int | `0` when the person has no family |
 | `isTeamLeader` | bool | Reserved; always `false` until the volunteer pages move into the portal |
-| `isStaff` | bool | `true` for a login that also has the admin shell — the layout shows the "viewing as yourself" bar for it |
+| `isStaff` | bool | `true` for a login that also has the admin shell — the account menu offers it "Admin Console", unless a masquerade is in progress |
 
 ### `nav`
 
