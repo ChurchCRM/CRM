@@ -346,6 +346,148 @@ describe("Admin - Church Information Page", () => {
         });
     });
 
+    // Church social media links — issue #9907.
+    // Four optional URL config items (sChurchX / sChurchYouTube /
+    // sChurchFacebook / sChurchInstagram) live next to sChurchWebSite and are
+    // edited from a "Social Media" card on this page. Empty is allowed;
+    // anything else must be an absolute https:// URL.
+    describe("Social media links (#9907)", () => {
+        const SOCIAL_KEYS = ["sChurchX", "sChurchYouTube", "sChurchFacebook", "sChurchInstagram"];
+
+        const SOCIAL_VALUES = {
+            sChurchX: "https://x.com/testchurch",
+            sChurchYouTube: "https://www.youtube.com/@testchurch",
+            sChurchFacebook: "https://facebook.com/testchurch",
+            sChurchInstagram: "https://instagram.com/testchurch",
+        };
+
+        // Helper: fill the always-required text fields so submission can succeed
+        function fillRequiredFields(suffix = "") {
+            cy.get("#sChurchName").clear().type("Social Test Church" + suffix);
+            cy.get("#sChurchPhone").clear().type("(555) 123-4567");
+            cy.get("#sChurchEmail").clear().type("social-test@example.com");
+            cy.get("#sChurchAddress").clear().type("123 Main St");
+            cy.get("#sChurchCity").clear().type("Springfield");
+            cy.get("#sChurchState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            cy.tomSelectByValue("#sChurchState", "IL");
+            cy.get("#sChurchZip").clear().type("62701");
+        }
+
+        after(() => {
+            // Leave the install as we found it — blank every social link.
+            SOCIAL_KEYS.forEach((key) => {
+                cy.makePrivateAdminAPICall("POST", `/admin/api/system/config/${key}`, { value: "" });
+            });
+        });
+
+        it("should render the Social Media card with the four brand inputs", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.contains("Social Media").should("be.visible");
+
+            SOCIAL_KEYS.forEach((key) => {
+                cy.get(`#${key}`).should("exist").and("have.attr", "type", "url");
+            });
+
+            // Brand icons in each input group (Font Awesome Free brands)
+            cy.get("#social-icon-x").should("have.class", "fa-x-twitter");
+            cy.get("#social-icon-youtube").should("have.class", "fa-youtube");
+            cy.get("#social-icon-facebook").should("have.class", "fa-facebook");
+            cy.get("#social-icon-instagram").should("have.class", "fa-instagram");
+        });
+
+        it("should save the four links, persist them across a reload and show preview icons", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            fillRequiredFields(" Save");
+
+            SOCIAL_KEYS.forEach((key) => {
+                cy.get(`#${key}`).clear().type(SOCIAL_VALUES[key]);
+            });
+
+            cy.get("#church-info-form").submit();
+
+            cy.url({ timeout: 10000 }).should("include", "church-info");
+            cy.contains("Church information saved successfully", { timeout: 10000 }).should("be.visible");
+
+            // Values round-trip into the form after the redirect
+            SOCIAL_KEYS.forEach((key) => {
+                cy.get(`#${key}`).should("have.value", SOCIAL_VALUES[key]);
+            });
+
+            // ...and a full reload still shows them (i.e. they were persisted)
+            cy.visit("admin/system/church-info");
+            SOCIAL_KEYS.forEach((key) => {
+                cy.get(`#${key}`).should("have.value", SOCIAL_VALUES[key]);
+            });
+
+            // Preview card renders one icon link per set network
+            cy.get("#preview-social-line").should("not.have.class", "d-none");
+            cy.get("#preview-social-line a").should("have.length", 4);
+            cy.get("#preview-social-x")
+                .should("have.attr", "href", SOCIAL_VALUES.sChurchX)
+                .and("have.attr", "target", "_blank")
+                .and("have.attr", "rel", "noopener noreferrer");
+            cy.get("#preview-social-youtube").should("have.attr", "href", SOCIAL_VALUES.sChurchYouTube);
+            cy.get("#preview-social-facebook").should("have.attr", "href", SOCIAL_VALUES.sChurchFacebook);
+            cy.get("#preview-social-instagram").should("have.attr", "href", SOCIAL_VALUES.sChurchInstagram);
+        });
+
+        it("should expose the saved links through the admin config API", () => {
+            SOCIAL_KEYS.forEach((key) => {
+                cy.makePrivateAdminAPICall("GET", `/admin/api/system/config/${key}`).then((resp) => {
+                    expect(resp.body.value, key).to.equal(SOCIAL_VALUES[key]);
+                });
+            });
+        });
+
+        it("should reject a plain http:// social URL", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            fillRequiredFields(" BadScheme");
+
+            cy.get("#sChurchFacebook").clear().type("http://facebook.com/testchurch");
+
+            cy.get("#church-info-form").submit();
+
+            cy.contains("Facebook must be a full https:// web address", { timeout: 10000 }).should("be.visible");
+            // The bad input is echoed back so the admin can correct it
+            cy.get("#sChurchFacebook").should("have.value", "http://facebook.com/testchurch");
+        });
+
+        it("should reject a junk social value that is not a URL", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            fillRequiredFields(" Junk");
+
+            cy.get("#sChurchInstagram").clear().type("not-a-url");
+
+            cy.get("#church-info-form").submit();
+
+            cy.contains("Instagram must be a full https:// web address", { timeout: 10000 }).should("be.visible");
+            cy.get("#sChurchInstagram").should("have.value", "not-a-url");
+        });
+
+        it("should allow clearing every social link again", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            fillRequiredFields(" Clear");
+
+            SOCIAL_KEYS.forEach((key) => {
+                cy.get(`#${key}`).clear();
+            });
+
+            cy.get("#church-info-form").submit();
+
+            cy.contains("Church information saved successfully", { timeout: 10000 }).should("be.visible");
+            cy.get("#preview-social-line").should("have.class", "d-none");
+        });
+    });
+
     // Tests for the "Generate Coordinates" button and live map preview added in PR #9375.
     describe("Generate Coordinates button and live map preview", () => {
         it("should display the Generate Coordinates button on the page", () => {

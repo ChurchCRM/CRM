@@ -856,6 +856,31 @@ textarea.portal-input {
     color: inherit;
 }
 
+// The church's social accounts (#9907). `margin-inline-start: auto` is what
+// keeps them on the trailing edge: `justify-content: space-between` only
+// right-aligns them while both halves share a line, and on a phone the row
+// wraps and the social block gets a line of its own.
+
+.portal-footer-social {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-inline-start: auto;
+}
+
+.portal-footer-social-link {
+    color: var(--portal-muted);
+    font-size: 1.125rem;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.portal-footer-social-link:hover,
+.portal-footer-social-link:focus-visible {
+    color: var(--portal-primary);
+    text-decoration: none;
+}
+
 // Hero -----------------------------------------------------------------------
 //
 // Empty in the system theme: a church theme sets --portal-hero-image and puts

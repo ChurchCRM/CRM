@@ -1943,7 +1943,7 @@ CREATE TABLE `user_usr` (
   `usr_showSince` date NOT NULL DEFAULT '2016-01-01',
   `usr_defaultFY` mediumint(9) NOT NULL DEFAULT 10,
   `usr_currentDeposit` mediumint(9) NOT NULL DEFAULT 0,
-  `usr_UserName` varchar(32) DEFAULT NULL,
+  `usr_UserName` varchar(50) DEFAULT NULL,
   `usr_apiKey` varchar(255) DEFAULT NULL,
   `usr_EditSelf` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_CalStart` date DEFAULT NULL,

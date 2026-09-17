@@ -1430,6 +1430,21 @@ cy.contains('Email').type('test@example.com');  // Wrong element
 cy.get('div.container div.row div.col-md-6 form input[type="email"]');
 ```
 
+### DataTables Empty Placeholder — Count Rows by a Server-Rendered Attribute <!-- learned: 2026-09-16 -->
+
+With zero rows DataTables injects `<tr><td class="dataTables_empty">No data available…</td></tr>`.
+The class is on the `<td>`, so `tr:not(.dataTables_empty)` still matches the placeholder
+row and a "table has rows" assertion passes against an empty table. Count only rows the
+page rendered for a record, via an attribute the view puts on the `<tr>`:
+
+```javascript
+// ❌ WRONG — :not() checks the tr's own classes; the placeholder tr has none
+cy.get("#depositsTable tbody tr:not(.dataTables_empty)").should("have.length.greaterThan", 0);
+
+// ✅ CORRECT — only real rows carry the attribute (verified: fails on an emptied table)
+cy.get("#depositsTable tbody tr[data-deposit-id]").should("have.length.greaterThan", 0);
+```
+
 ### Modal Testing Patterns <!-- learned: 2026-04-06 -->
 
 For dynamically loaded modals (content swapped after API fetch), use specific ID
