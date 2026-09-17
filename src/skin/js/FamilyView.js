@@ -109,9 +109,7 @@ function initializeFamilyView() {
     // current FY on refresh or when opening a copied/bookmarked URL.
     var urlParams = new URLSearchParams(window.location.search);
     var activePillFy = parseInt($(".pledge-fy-pill.active").data("fy") || "0", 10) || 0;
-    var initialFyid = urlParams.has("fyid")
-      ? (parseInt(urlParams.get("fyid"), 10) || 0)
-      : activePillFy;
+    var initialFyid = urlParams.has("fyid") ? parseInt(urlParams.get("fyid"), 10) || 0 : activePillFy;
 
     var dataTableConfig = {
       ajax: {
