@@ -1,46 +1,46 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Twee-faktor-verifikasie word vereis. Jy het %d dag om te registreer.|Twee-faktor-verifikasie word vereis. Jy het %d dae om te registreer.",
-    "other": ""
+    "one": "Twee-faktor-verifikasie word vereis. Jy het %d dag om te registreer.",
+    "other": "Twee-faktor-verifikasie word vereis. Jy het %d dae om te registreer."
   },
   "They are expected at least once every %d hour.": {
-    "one": "Hulle word ten minste een keer elke %d uur verwag.|Hulle word ten minste een keer elke %d uur verwag.",
-    "other": ""
+    "one": "Hulle word ten minste een keer elke %d uur verwag.",
+    "other": "Hulle word ten minste een keer elke %d uur verwag."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Het {{count}} lid gekopieer",
+    "other": "Het {{count}} lede gekopieer"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Hierdie lys het {{count}} ontvanger — te veel vir 'n mailto:-skakel. Gebruik eerder Kopieer Adresse.",
+    "other": "Hierdie lys het {{count}} ontvangers — te veel vir 'n mailto:-skakel. Gebruik eerder Kopieer Adresse."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Te veel ontvangers vir e-posprogram ({{count}} > {{max}}). Gebruik eerder Kopieer Adresse.",
+    "other": "Te veel ontvangers vir e-posprogram ({{count}} > {{max}}). Gebruik eerder Kopieer Adresse."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minuut oor",
+    "other": "{{count}} minute oor"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} gesin kon nie geokodeer word nie",
+    "other": "{{count}} gesinne kon nie geokodeer word nie"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktief vir {{count}} sekonde",
+    "other": "Aktief vir {{count}} sekondes"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Jy is op die punt om bevestigings-e-posse te stuur na {{count}} gesin.",
+    "other": "Jy is op die punt om bevestigings-e-posse te stuur na {{count}} gesinne."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} gesin het geen e-posadres aangeteken nie en sal oorgeslaan word",
+    "other": "{{count}} gesinne het geen e-posadres aangeteken nie en sal oorgeslaan word"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…en {{count}} meer nie hier gelys nie.",
+    "other": "…en {{count}} meer nie hier gelys nie."
   }
 }
