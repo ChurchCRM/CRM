@@ -114,7 +114,11 @@ function initializeFamilyView() {
     // current FY on refresh or when opening a copied/bookmarked URL.
     var urlParams = new URLSearchParams(window.location.search);
     var activePillFy = parseInt($(".pledge-fy-pill.active").data("fy") || "0", 10) || 0;
-    var initialFyid = urlParams.has("fyid") ? parseInt(urlParams.get("fyid"), 10) || 0 : activePillFy;
+    // Use rawFyid-null check rather than parseInt()|| to correctly preserve
+    // an explicit fyid=0 (All Time): parseInt("0") is falsy and would
+    // incorrectly revert to activePillFy on refresh.
+    var rawFyid = urlParams.get("fyid");
+    var initialFyid = rawFyid !== null ? parseInt(rawFyid, 10) : activePillFy;
 
     // If the resolved FY doesn't correspond to any rendered pill (e.g. a
     // stale bookmark for a fiscal year this family has no history in), fall
@@ -125,6 +129,7 @@ function initializeFamilyView() {
     // Also fix the browser URL so a refresh doesn't loop the same mismatch.
     if (initialFyid !== 0 && !$(".pledge-fy-pill[data-fy='" + initialFyid + "']").length) {
       initialFyid = activePillFy;
+      // Correct the URL so refreshing/sharing doesn't loop the same mismatch.
       var fixParams = new URLSearchParams(window.location.search);
       fixParams.set("fyid", String(initialFyid));
       window.history.replaceState({}, "", window.location.pathname + "?" + fixParams.toString());
