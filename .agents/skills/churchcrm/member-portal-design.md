@@ -180,7 +180,7 @@ src/Include/themes/
       partials/{nav,header,footer,flash}.html.twig
       home.html.twig
       profile/{index,edit}.html.twig
-      family/{index,confirm}.html.twig
+      family/{index,edit,confirm,none}.html.twig
       calendar/index.html.twig
       volunteer/{schedule,opportunities}.html.twig
       teams/{index,team,occurrence}.html.twig
@@ -474,6 +474,22 @@ teaser. Themes typically override this page first.
   written exactly as `/external/verify` writes it, `Person::SELF_VERIFY` and all, because the
   People → Verify dashboard selects on `EnteredBy = SELF_VERIFY`; the confirming member's own id
   is deliberately not used. The emailed verify-token link keeps working for people without logins.
+- **A member with no family is not an error.** `/portal/family`, `/family/edit` and
+  `/family/confirm` answer `family/none.html.twig` — HTTP 200, the normal portal chrome, "My
+  Family" still the active nav entry — when the person has no family, and when the account has no
+  person record at all. It says *"You are not currently associated with a family"*, asks the member
+  to contact the church office, and offers **Admin → Church Information**'s email as a `mailto:`
+  link and its phone as a `tel:` link (the `tel:` href keeps the digits and a leading `+`; the
+  number is displayed as the church typed it). Either line is left out when its setting is empty,
+  and with neither configured the page says only "Please contact the church office." The home
+  page's My Family card says the same thing in one line and links here. The portal's 404 stays for
+  URLs that really do not exist: "This page was not found" told a member their record was broken
+  when it was only incomplete.
+- **The home page's Profile card shows the values, not their names.** It reads the same
+  `PortalSelfService::getProfile()` the Profile page renders and lists email, mobile, home phone,
+  birthday (only while `bPortalAllowBirthdayEdit` is on, exactly as the Profile page gates it) and
+  the family role (only for a member who has a family). Empty fields are skipped; with nothing on
+  file the card says "No contact details on file yet."
 - Password and two-factor: the existing `/v2/user/current/*` pages (already allowed for this
   persona), given a portal-aware layout. Delivered in MP4 (#9865) rather than MP3: MP3 is the
   admin page and never touches these routes. The routes branch on
