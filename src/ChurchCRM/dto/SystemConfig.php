@@ -229,6 +229,15 @@ class   SystemConfig
             'sKioskVisibilityTimestamp'            => new ConfigItem('sKioskVisibilityTimestamp', 'text', '', gettext('KioskVisibilityTimestamp')),
             'bEnableLostPassword'                  => new ConfigItem('bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem('sChurchWebSite', 'text', '', ''),
+            // Church social media accounts. Like the other church-identity
+            // items above, these are deliberately absent from
+            // buildCategories() so they never appear on the System Settings
+            // page — they are edited on Admin -> System -> Church Info and
+            // read back through ChurchMetaData::getChurchSocialLinks().
+            'sChurchX'                             => new ConfigItem('sChurchX', 'text', '', ''),
+            'sChurchYouTube'                       => new ConfigItem('sChurchYouTube', 'text', '', ''),
+            'sChurchFacebook'                      => new ConfigItem('sChurchFacebook', 'text', '', ''),
+            'sChurchInstagram'                     => new ConfigItem('sChurchInstagram', 'text', '', ''),
             'sChurchLogoURL'                       => new ConfigItem('sChurchLogoURL', 'text', '', gettext('Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo.')),
             // Member Portal (#9863, #9864). Deliberately declared without a
             // System Settings category so they never appear on
