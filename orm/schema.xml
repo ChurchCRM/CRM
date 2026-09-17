@@ -623,6 +623,15 @@
              and read by the Admin → Member Portal statistics tab to answer
              "active in the last 15 minutes". NULL = never opened the portal. -->
         <column name="usr_LastPortalActivity" phpName="LastPortalActivity" type="TIMESTAMP"/>
+        <!-- Member Portal calendar subscription (design §5.3, "Subscribing").
+             The token is the bearer secret in the member's feed URL — 32 random
+             bytes as hex — minted on the first save and rotated by "Reset link";
+             NULL means this account has no feed. The selection is a JSON array
+             of the calendar ids the member ticked ("calendar:3", "system:0"),
+             always intersected with what the administrator currently shares
+             before a feed is built. -->
+        <column name="usr_PortalCalendarToken" phpName="PortalCalendarToken" type="VARCHAR" size="64"/>
+        <column name="usr_PortalCalendarSelection" phpName="PortalCalendarSelection" type="LONGVARCHAR"/>
         <index name="usr_per_ID">
             <index-column name="usr_per_ID"/>
         </index>
@@ -631,6 +640,9 @@
         </unique>
         <unique name="usr_ApiKey">
             <unique-column name="usr_ApiKey"/>
+        </unique>
+        <unique name="usr_PortalCalendarToken">
+            <unique-column name="usr_PortalCalendarToken"/>
         </unique>
         <foreign-key foreignTable="person_per">
             <reference local="usr_per_ID" foreign="per_ID"/>
