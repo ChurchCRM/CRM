@@ -44,6 +44,23 @@ cypress/e2e/api/private/
     └── family.spec.ts
 ```
 
+## Build the Worktree Before Running Cypress Against It <!-- learned: 2026-09-17 -->
+
+`src/skin/v2/*.min.js` and `src/skin/external/` are build artifacts (git-ignored). A
+fresh clone or `git worktree` that has only had `npm ci` + `composer install` serves
+pages without jQuery, i18next or the locale loader, so every spec fails with
+application errors that look like page bugs:
+
+```
+ReferenceError: $ is not defined          # any legacy page with an inline $(document).ready
+ReferenceError: i18next is not defined    # the cy.setupAdminSession() beforeEach hook
+```
+
+Run the full `npm run build` once (not just `build:webpack` — `grunt copy` in
+`build:js:legacy` is what populates `src/skin/external/`) before the first Cypress run
+in a new worktree. The Docker test stack bind-mounts the worktree, so no container
+rebuild is needed afterwards.
+
 ## Session-Based Login Pattern (REQUIRED)
 
 ### Modern Pattern (Cypress 13+)
