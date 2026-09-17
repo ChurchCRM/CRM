@@ -103,9 +103,15 @@ function initializeFamilyView() {
 
     // Determine initial FY from URL param, falling back to the active pill's data-fy
     // (the active pill is set server-side to the current FY by default).
+    // Must distinguish an ABSENT fyid param (fall back to current FY) from an
+    // EXPLICIT fyid=0 (All Time) — `parseInt(...) || activePillFy` treated 0 as
+    // falsy and silently reverted an explicit All-Time selection back to the
+    // current FY on refresh or when opening a copied/bookmarked URL.
     var urlParams = new URLSearchParams(window.location.search);
     var activePillFy = parseInt($(".pledge-fy-pill.active").data("fy") || "0", 10) || 0;
-    var initialFyid = parseInt(urlParams.get("fyid") || "", 10) || activePillFy;
+    var initialFyid = urlParams.has("fyid")
+      ? (parseInt(urlParams.get("fyid"), 10) || 0)
+      : activePillFy;
 
     var dataTableConfig = {
       ajax: {
@@ -215,13 +221,13 @@ function initializeFamilyView() {
           $(".pledge-fy-pill").removeClass("active");
           $(this).addClass("active");
           var fy = parseInt($(this).data("fy") || "0", 10) || 0;
-          // Persist selection in URL without page reload
+          // Persist selection in URL without page reload. All Time is written
+          // as an explicit fyid=0 (not by deleting the param) so a refresh or
+          // shared/bookmarked URL can tell "All Time was chosen" apart from
+          // "no selection yet, use the current-FY default" — see initialFyid
+          // parsing above.
           var params = new URLSearchParams(window.location.search);
-          if (fy > 0) {
-            params.set("fyid", fy);
-          } else {
-            params.delete("fyid");
-          }
+          params.set("fyid", fy);
           window.history.replaceState(
             {},
             "",

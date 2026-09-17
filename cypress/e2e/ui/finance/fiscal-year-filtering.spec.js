@@ -109,12 +109,18 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.get(".pledge-fy-pill[data-fy='0']").click();
       cy.wait("@allTime");
 
-      // URL should update to include fyid-related state
-      // (All-Time removes the fyid param; the URL should not have fyid=0)
-      cy.location("search").then((search) => {
-        // All Time = no fyid param in URL (we delete it)
-        expect(search).not.to.include("fyid=");
+      // All Time is persisted as an explicit fyid=0 (not by omitting the
+      // param), so refreshing or opening a copied/bookmarked URL doesn't
+      // silently fall back to the current FY.
+      cy.location("search").should("include", "fyid=0");
+
+      // Refreshing the page must keep the All-Time selection.
+      cy.intercept("GET", "**/api/payments/family/1/list*").as("afterReload");
+      cy.reload();
+      cy.wait("@afterReload").then((interception) => {
+        expect(interception.request.url).not.to.include("fyid=");
       });
+      cy.get(".pledge-fy-pill.active").should("contain", "All Time");
     });
   });
 
