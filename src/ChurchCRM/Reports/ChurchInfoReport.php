@@ -23,6 +23,122 @@ class ChurchInfoReport extends FPDF
     public string $paperFormat = 'Letter';
 
     /**
+     * When true, every page the report draws is one half of a landscape sheet
+     * and the pages are imposed two-up in booklet order when the PDF is
+     * written. See enableBookletImposition().
+     */
+    protected bool $bookletImposition = false;
+
+    /**
+     * Lay the report out as a folded booklet.
+     *
+     * Each page the report draws becomes one half of the sheet turned
+     * landscape (a letter sheet gives 5.5 x 8.5 in pages, A4 gives A5). When
+     * the document is closed the pages are padded to a multiple of four and
+     * placed two per sheet in booklet order, so the sheets can be printed
+     * double sided (flip on the short edge) and folded down the middle.
+     *
+     * Must be called before the first AddPage().
+     */
+    public function enableBookletImposition(): void
+    {
+        if ($this->page > 0) {
+            $this->Error('Booklet imposition must be enabled before the first page is added');
+        }
+        $this->bookletImposition = true;
+
+        // FPDF stores the default size as [short edge, long edge] whatever the orientation.
+        [$sheetShort, $sheetLong] = $this->DefPageSize;
+        $this->DefOrientation = 'P';
+        $this->CurOrientation = 'P';
+        $this->DefPageSize = [$sheetLong / 2, $sheetShort];
+        $this->CurPageSize = $this->DefPageSize;
+        $this->w = $this->DefPageSize[0];
+        $this->h = $this->DefPageSize[1];
+        $this->wPt = $this->w * $this->k;
+        $this->hPt = $this->h * $this->k;
+        $this->PageBreakTrigger = $this->h - $this->bMargin;
+    }
+
+    public function isBookletImposition(): bool
+    {
+        return $this->bookletImposition;
+    }
+
+    protected function _putpages(): void
+    {
+        if ($this->bookletImposition) {
+            $this->imposeBookletPages();
+        }
+        parent::_putpages();
+    }
+
+    /**
+     * Rewrite the FPDF page buffers so each output page is a landscape sheet
+     * carrying two of the pages drawn so far, in booklet order.
+     *
+     * For N pages (padded to a multiple of 4) sheet i carries pages N-i and
+     * i+1, with the outer page on the left for even i and on the right for
+     * odd i. That is the order which lines the backs up when the stack is
+     * printed double sided with a short-edge flip and folded in half.
+     *
+     * FPDF keeps fonts and images in one document-wide resource dictionary
+     * and every page stream starts by setting its own font and colours, so
+     * two streams can be concatenated. Each is wrapped in q/Q so graphics
+     * state does not leak from the left page into the right one, and the
+     * right page is translated by one page width.
+     */
+    private function imposeBookletPages(): void
+    {
+        $pageCount = $this->page;
+        if ($pageCount === 0) {
+            return;
+        }
+
+        [$pageW, $pageH] = $this->DefPageSize;
+        $pageWPt = $pageW * $this->k;
+        $paddedCount = (int) ceil($pageCount / 4) * 4;
+
+        $pages = $this->pages;
+        $links = $this->PageLinks;
+        for ($i = 1; $i <= $paddedCount; $i++) {
+            if (!isset($pages[$i])) {
+                $pages[$i] = '';
+                $links[$i] = [];
+            } elseif (!empty($this->AliasNbPages)) {
+                $pages[$i] = str_replace($this->AliasNbPages, (string) $pageCount, $pages[$i]);
+            }
+        }
+
+        $sheets = [];
+        $sheetLinks = [];
+        $shift = sprintf("q 1 0 0 1 %.2F 0 cm\n", $pageWPt);
+        for ($i = 0; $i < $paddedCount / 2; $i++) {
+            $outer = $paddedCount - $i;
+            $inner = $i + 1;
+            [$left, $right] = $i % 2 === 0 ? [$outer, $inner] : [$inner, $outer];
+
+            $sheet = $i + 1;
+            $sheets[$sheet] = "q\n" . $pages[$left] . "\nQ\n" . $shift . $pages[$right] . "\nQ";
+
+            $sheetLinks[$sheet] = $links[$left];
+            foreach ($links[$right] as $link) {
+                $link[0] += $pageWPt;
+                $sheetLinks[$sheet][] = $link;
+            }
+        }
+
+        $this->pages = $sheets;
+        $this->PageLinks = $sheetLinks;
+        $this->PageInfo = [];
+        $this->page = count($sheets);
+        $this->AliasNbPages = '';
+        // Sheets are landscape: two page widths across, one page high.
+        $this->DefOrientation = 'P';
+        $this->DefPageSize = [$pageW * 2, $pageH];
+    }
+
+    /**
      * Converts a UTF-8 string to ISO-8859-1 for FPDF compatibility.
      * Uses iconv() if available, falls back to mb_convert_encoding().
      */
