@@ -476,10 +476,160 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ── Church Logo card ────────────────────────────────────────────────────
+
+  initChurchLogoUploader();
+
   // ── Live Display Preview ────────────────────────────────────────────────
 
   initChurchInfoPreview();
 });
+
+/**
+ * Church Logo card: opens the shared Uppy photo uploader (the same dashboard
+ * used for person, family and user photos) against /api/system/church-logo,
+ * then updates the preview, the Remove button, the default-logo note and the
+ * sidebar brand in place. Deliberately not part of the Church Info form POST —
+ * the dashboard renders outside the form and both buttons are type="button".
+ */
+function initChurchLogoUploader() {
+  const uploadBtn = document.getElementById("church-logo-upload-btn");
+  const removeBtn = document.getElementById("church-logo-remove-btn");
+  const preview = document.getElementById("church-logo-preview");
+  const defaultNote = document.getElementById("church-logo-default-note");
+  const messageBox = document.getElementById("church-logo-message");
+
+  if (!uploadBtn || !preview) {
+    return;
+  }
+
+  const t = (key) => (window.i18next ? i18next.t(key) : key);
+
+  // Inline feedback uses textContent (never innerHTML) so translated strings are
+  // never parsed as markup — same rule as the coordinates help text above.
+  function showMessage(text, variant) {
+    if (!messageBox) {
+      return;
+    }
+    messageBox.className = `alert alert-${variant} mt-3`;
+    messageBox.textContent = text;
+  }
+
+  function clearMessage() {
+    if (!messageBox) {
+      return;
+    }
+    messageBox.className = "alert d-none mt-3";
+    messageBox.textContent = "";
+  }
+
+  function applyLogoState(hasCustomLogo, url) {
+    if (url) {
+      preview.src = url;
+    }
+    defaultNote?.classList.toggle("d-none", hasCustomLogo);
+    removeBtn?.classList.toggle("d-none", !hasCustomLogo);
+
+    // Keep the sidebar in sync without a page reload: a custom logo replaces the
+    // stock icon and hides the church-name text.
+    const brandImage = document.getElementById("sidebar-brand-image");
+    const brandText = document.getElementById("sidebar-brand-text");
+    if (brandImage) {
+      const defaultSrc = brandImage.dataset.defaultSrc;
+      if (hasCustomLogo && url) {
+        brandImage.src = url;
+      } else if (defaultSrc) {
+        brandImage.src = defaultSrc;
+      }
+    }
+    brandText?.classList.toggle("d-none", hasCustomLogo);
+  }
+
+  function sendDeleteRequest() {
+    uploadBtn.disabled = true;
+    if (removeBtn) {
+      removeBtn.disabled = true;
+    }
+
+    return fetch(`${window.CRM.root}/api/system/church-logo`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      credentials: "include",
+    })
+      .then((response) =>
+        response
+          .json()
+          .catch(() => ({}))
+          .then((data) => {
+            if (!response.ok) {
+              throw new Error(data.message || `HTTP ${response.status}`);
+            }
+            return data;
+          }),
+      )
+      .finally(() => {
+        uploadBtn.disabled = false;
+        if (removeBtn) {
+          removeBtn.disabled = false;
+        }
+      });
+  }
+
+  removeBtn?.addEventListener("click", () => {
+    clearMessage();
+
+    sendDeleteRequest()
+      .then((data) => {
+        applyLogoState(false, data.url);
+        showMessage(t("Church logo removed."), "success");
+        window.CRM?.notify?.(t("Church logo removed."), { type: "success", delay: 3000 });
+      })
+      .catch((error) => {
+        showMessage(error.message || t("Failed to remove the church logo."), "danger");
+      });
+  });
+
+  // The photo-uploader bundle publishes its factory on window._CRM_createPhotoUploader
+  // before this script runs — the same hand-off the person, family and user photo
+  // pages perform.
+  if (typeof window._CRM_createPhotoUploader === "function") {
+    window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+  }
+
+  if (typeof window.CRM?.createPhotoUploader !== "function") {
+    console.error("Photo uploader bundle not loaded; church logo upload is unavailable");
+    uploadBtn.disabled = true;
+    return;
+  }
+
+  const uploader = window.CRM.createPhotoUploader({
+    uploadUrl: `${window.CRM.root}/api/system/church-logo`,
+    maxFileSize: window.CRM.maxUploadSizeBytes,
+    // A logo is a banner, not a square portrait, so let the editor crop freely.
+    aspectRatio: "free",
+    title: t("Church Logo"),
+    onComplete: () => {
+      // Unlike the person/family pages this card updates in place instead of
+      // reloading, so drop the uploaded file to leave the dashboard reusable.
+      uploader.hide();
+      uploader.uppy.clear();
+    },
+  });
+
+  // Exposed the same way the person, family and user photo pages expose theirs.
+  window.CRM.photoUploader = uploader;
+
+  uploader.uppy.on("upload-success", (_file, response) => {
+    applyLogoState(true, response?.body?.url);
+    showMessage(t("Church logo updated."), "success");
+    window.CRM?.notify?.(t("Church logo updated."), { type: "success", delay: 3000 });
+  });
+
+  uploadBtn.addEventListener("click", () => {
+    clearMessage();
+    uploader.show();
+  });
+}
 
 function initChurchInfoPreview() {
   const textFieldIds = [

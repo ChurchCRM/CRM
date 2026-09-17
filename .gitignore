@@ -18,6 +18,8 @@ locale/.work
 # Uploaded Images
 src/Images/Family/*
 src/Images/Person/*
+# Uploaded church logo (Admin -> Church Information)
+src/Images/church-logo.png
 # Keep the directories for CI/fresh installs
 !src/Images/Family/.gitkeep
 !src/Images/Person/.gitkeep

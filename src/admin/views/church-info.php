@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
@@ -59,6 +60,53 @@ $validationError     = $validationError ?? '';
                             <?= gettext('Optional. URL for your church website.') ?>
                         </small>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Church Logo -->
+    <!-- Not part of the Church Info POST: both buttons are type="button" and the
+         Uppy dashboard renders outside this form, so nothing here is submitted
+         with it. Uploads go straight to /api/system/church-logo. -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="church-logo-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fa-solid fa-image me-2"></i><?= gettext('Church Logo') ?></h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-body-secondary">
+                        <?= gettext('Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears.') ?>
+                    </p>
+
+                    <div class="mb-2">
+                        <img id="church-logo-preview"
+                             src="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchLogoPath()) ?>"
+                             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+                             class="border rounded bg-light p-2"
+                             style="max-height: 120px; max-width: 100%; height: auto;">
+                    </div>
+
+                    <p id="church-logo-default-note"
+                       class="text-body-secondary small<?= ChurchMetaData::hasCustomLogo() ? ' d-none' : '' ?>">
+                        <i class="fa-solid fa-circle-info me-1"></i><?= gettext('Using default ChurchCRM logo') ?>
+                    </p>
+
+                    <button type="button" class="btn btn-outline-primary" id="church-logo-upload-btn">
+                        <i class="fa-solid fa-upload me-1"></i><?= gettext('Upload') ?>
+                    </button>
+                    <button type="button"
+                            class="btn btn-outline-danger ms-2<?= ChurchMetaData::hasCustomLogo() ? '' : ' d-none' ?>"
+                            id="church-logo-remove-btn">
+                        <i class="fa-solid fa-trash me-1"></i><?= gettext('Remove') ?>
+                    </button>
+
+                    <div id="church-logo-message" class="alert d-none mt-3" role="alert"></div>
+
+                    <small class="form-text text-body-secondary d-block mt-2">
+                        <?= gettext('PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred.') ?>
+                    </small>
                 </div>
             </div>
         </div>
@@ -428,6 +476,10 @@ $validationError     = $validationError ?? '';
     });
 })();
 </script>
+
+<!-- Shared Uppy photo uploader bundle - powers the Church Logo card -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>
 
 <!-- Church Info page JavaScript -->
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/church-info.min.js') ?>"></script>
