@@ -1,22 +1,22 @@
 {
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} keluarga tidak dapat digeocode",
+    "other": "{{count}} keluarga tidak dapat digeocode"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktif selama {{count}} detik",
+    "other": "Aktif selama {{count}} detik"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Anda akan mengirim email konfirmasi ke {{count}} keluarga.",
+    "other": "Anda akan mengirim email konfirmasi ke {{count}} keluarga."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} keluarga tidak memiliki alamat email tercatat dan akan dilewati",
+    "other": "{{count}} keluarga tidak memiliki alamat email tercatat dan akan dilewati"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…dan {{count}} lainnya tidak tercantum di sini.",
+    "other": "…dan {{count}} lainnya tidak tercantum di sini."
   }
 }
