@@ -5,7 +5,15 @@
   The account menu is one button — "Hello <first name>" — over a dropdown. Its
   behaviour lives in `portal.min.js`, which binds to the ids below, so a theme
   that overrides this partial must keep `portal-account-toggle` and
-  `portal-account-menu` for the menu to open at all.
+  `portal-account-menu` for the menu to open at all. The menu walks whatever
+  `[role="menuitem"]` it finds, in document order, so an item may be added or
+  removed here without touching the bundle.
+
+  Its items, in order:
+    1. Email History — what the church has emailed this member
+    2. Change Password
+    3. Admin Console — staff logins only, never during a masquerade
+    4. Sign out
 #}
 <header class="portal-header">
     <div class="portal-container portal-header-inner">
@@ -34,6 +42,10 @@
 
                 <div class="portal-account-menu" id="portal-account-menu" role="menu"
                      aria-labelledby="portal-account-toggle" hidden>
+                    <a class="portal-account-item" role="menuitem" href="{{ url('/portal/email-history') }}">
+                        <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+                        <span>{{ gettext('Email History') }}</span>
+                    </a>
                     <a class="portal-account-item" role="menuitem" href="{{ url('/portal/profile/password') }}">
                         <i class="fa-solid fa-key" aria-hidden="true"></i>
                         <span>{{ gettext('Change Password') }}</span>
