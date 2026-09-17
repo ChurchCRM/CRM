@@ -52,7 +52,7 @@ Each is a separate file, so a theme can replace one without touching the others:
 | `partials/header.html.twig` | Church logo and name, the member's name, Sign out |
 | `partials/nav.html.twig` | The `nav` entries, and the toggle target `#portal-nav` |
 | `partials/footer.html.twig` | Church contact details, ChurchCRM credit |
-| `partials/flash.html.twig` | The `flash` messages for this request |
+| `partials/flash.html.twig` | The fixed notice container, holding this request's `flash` messages. **A theme that overrides `layout.html.twig` must keep this include** — without it there is no container, and every message the portal raises goes unseen. |
 
 ### What the layout already loads
 
@@ -65,6 +65,11 @@ You do not need to add any of it, and you should not load a second copy:
 - `i18next` and the locale loader, then `portal.min.js`, then the active theme's
   `theme.js` when it has one
 - whatever `<head>` and footer HTML the enabled plugins inject
+
+`portal.min.js` also publishes `window.CRM.portalToast(message, type)` — `type`
+being `success`, `warning`, `danger` or `info` (the default). Call it from a
+theme's `theme.js` to show a message the way the portal shows all of them: a
+toast in the fixed top-right stack that fades away on its own.
 
 ### Page IDs and classes worth knowing
 
@@ -85,6 +90,7 @@ You do not need to add any of it, and you should not load a second copy:
 | `.portal-avatar` / `.portal-avatar-initials` | A member's photo, and the initials shown when there is none |
 | `.portal-member-list` / `.portal-member` | The family members list; the member's own row also carries `.is-self` |
 | `.portal-dialog` | A `<dialog>` in the portal's own chrome |
+| `#portal-toasts` / `.portal-flash` | The fixed notice container, and one notice in it. `position: fixed`, so a notice never moves the page; see [`portal-themes.md`](./portal-themes.md) for its colour tokens |
 
 ### Hooks the page bundles look for
 

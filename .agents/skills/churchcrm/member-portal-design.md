@@ -344,6 +344,18 @@ CSS custom properties, so a colour-only theme is a `theme.css` of a dozen lines:
 }
 ```
 
+Notices are part of that palette: `--portal-success`, `--portal-warning`, `--portal-danger` and
+`--portal-info`, each with a `-contrast` twin for the text drawn on it, plus `--portal-toast-width`.
+The full list a theme may set is `docs/portal-themes.md` → "Design tokens".
+
+**Every portal notice is a toast in one fixed container** (`#portal-toasts`, rendered by
+`partials/flash.html.twig`, filled by the server's `flash` messages and by
+`window.CRM.portalToast(message, type)`), never a card in the document flow — a notice that takes
+part in the flow moves the page under the member as it appears and again as it goes. Note that
+`.portal-container` is not unique: the header, the nav and `<main>` each have one, so a bundle that
+inserts a notice "at the top of the page" by that selector lands in the **header** and displaces the
+church logo. <!-- learned: 2026-09-16 -->
+
 Dark mode: tokens have a `[data-bs-theme="dark"]` block in the default `theme.css`; a theme may
 override it or not. Fonts must come from `self` or `fonts.googleapis.com`/`fonts.gstatic.com`
 (the CSP allows those). RTL: portal CSS uses logical properties only, so a theme is not flipped by
