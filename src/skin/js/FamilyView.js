@@ -122,8 +122,12 @@ function initializeFamilyView() {
     // highlighted pill — rather than fetching data for a mismatched FY while
     // a different pill (previously: whichever pill happened to be first,
     // i.e. All Time) lit up as if it were active.
+    // Also fix the browser URL so a refresh doesn't loop the same mismatch.
     if (initialFyid !== 0 && !$(".pledge-fy-pill[data-fy='" + initialFyid + "']").length) {
       initialFyid = activePillFy;
+      var fixParams = new URLSearchParams(window.location.search);
+      fixParams.set("fyid", String(initialFyid));
+      window.history.replaceState({}, "", window.location.pathname + "?" + fixParams.toString());
     }
 
     var dataTableConfig = {
