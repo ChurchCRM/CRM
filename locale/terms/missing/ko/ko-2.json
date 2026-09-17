@@ -1,18 +1,14 @@
 {
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "other": "{{count}}초 동안 활성"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "other": "{{count}}개 가족에게 확인 이메일을 보내려고 합니다."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "other": "{{count}}개 가족은 등록된 이메일 주소가 없어 건너뜁니다"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "other": "…그리고 여기에 나열되지 않은 {{count}}개 더."
   }
 }
