@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\Photo;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Portal\PortalApiMiddleware;
 use ChurchCRM\Portal\PortalSelfService;
@@ -9,6 +10,7 @@ use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\HttpCache\Cache;
 use Slim\Routing\RouteCollectorProxy;
 
 /*
@@ -102,13 +104,33 @@ $portalError = static function (Response $response, PortalSelfServiceException $
     );
 };
 
+/**
+ * Serve a person's uploaded photo exactly as `/api/person/{id}/photo` does —
+ * the same bytes, the same content type from the same `Photo` object — or the
+ * same 404 when nobody has uploaded one, which is what tells the templates to
+ * render initials instead of a broken image.
+ *
+ * A missing photo and a person the caller may not see are deliberately the
+ * same answer: see `PortalSelfService::findFamilyMember()`.
+ */
+$portalPhoto = static function (Response $response, int $personId): Response {
+    $photo = new Photo('Person', $personId);
+
+    if (!$photo->hasUploadedPhoto()) {
+        return SlimUtils::renderErrorJSON($response, gettext('No photo has been uploaded for this person.'), [], 404);
+    }
+
+    return SlimUtils::renderPhoto($response, $photo);
+};
+
 $app->group('/portal', function (RouteCollectorProxy $group) use (
     $portalPersonFields,
     $portalFamilyFields,
     $portalNewMemberFields,
     $portalConfirmFields,
     $portalActor,
-    $portalError
+    $portalError,
+    $portalPhoto
 ): void {
     /**
      * @OA\Get(
@@ -241,6 +263,25 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
 
     /**
      * @OA\Get(
+     *     path="/portal/me/photo",
+     *     operationId="getPortalMyPhoto",
+     *     summary="The signed-in member's own photo (binary image)",
+     *     description="Returns the member's uploaded photo bytes. The portal serves its own copy because AuthMiddleware confines a self-service session to /portal and /api/portal, so /api/person/{id}/photo — which the profile used to point at — answers those sessions with 403 and every avatar renders broken. The member is taken from the session; there is no person id to pass. Cached privately for two hours, the same window the person endpoint uses; the URLs the portal hands out carry a ?v=<mtime> cache-buster so a fresh upload is visible at once.",
+     *     tags={"Member Portal"},
+     *     @OA\Response(response=200, description="The photo",
+     *         @OA\MediaType(mediaType="image/*", @OA\Schema(type="string", format="binary"))
+     *     ),
+     *     @OA\Response(response=401, description="No signed-in session"),
+     *     @OA\Response(response=403, description="API-key caller, or an account with no person record"),
+     *     @OA\Response(response=404, description="This member has not uploaded a photo")
+     * )
+     */
+    $group->get('/me/photo', function (Request $request, Response $response) use ($portalActor, $portalPhoto): Response {
+        return $portalPhoto($response, (int) $portalActor($request)->getId());
+    })->add(new Cache('private', Photo::CACHE_DURATION_SECONDS));
+
+    /**
+     * @OA\Get(
      *     path="/portal/family",
      *     operationId="getPortalFamily",
      *     summary="The signed-in member's own family",
@@ -336,6 +377,31 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(new InputSanitizationMiddleware($portalConfirmFields));
+
+    /**
+     * @OA\Get(
+     *     path="/portal/family/members/{personId}/photo",
+     *     operationId="getPortalFamilyMemberPhoto",
+     *     summary="The photo of somebody in the signed-in member's own family (binary image)",
+     *     description="The read side of the portal's own photo serving, for the faces on the My Family page. The id is checked against the members of the acting member's family — the same enumeration GET /portal/family renders — and anything else is 404, never 403: a 403 would confirm that the id names a real person, which a member outside that family must not learn (design P12). This is the only portal route that takes a person id, and it never names the actor.",
+     *     tags={"Member Portal"},
+     *     @OA\Parameter(name="personId", in="path", required=true, description="A person in the acting member's own family", @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="The photo",
+     *         @OA\MediaType(mediaType="image/*", @OA\Schema(type="string", format="binary"))
+     *     ),
+     *     @OA\Response(response=401, description="No signed-in session"),
+     *     @OA\Response(response=403, description="API-key caller, or an account with no person record"),
+     *     @OA\Response(response=404, description="Not a member of this family, or that member has no photo")
+     * )
+     */
+    $group->get('/family/members/{personId:[0-9]+}/photo', function (Request $request, Response $response, array $args) use ($portalActor, $portalPhoto): Response {
+        $member = PortalSelfService::findFamilyMember($portalActor($request), (int) $args['personId']);
+        if ($member === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('No photo has been uploaded for this person.'), [], 404);
+        }
+
+        return $portalPhoto($response, (int) $member->getId());
+    })->add(new Cache('private', Photo::CACHE_DURATION_SECONDS));
 
     /**
      * @OA\Post(

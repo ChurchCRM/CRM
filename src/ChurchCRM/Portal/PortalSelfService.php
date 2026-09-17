@@ -117,7 +117,7 @@ class PortalSelfService
             'familyRole' => $actor->getFamilyRoleName(),
             'familyId' => $family ? (int) $family->getId() : 0,
             'familyName' => $family ? (string) $family->getName() : '',
-            'photoUrl' => self::getPhotoUrl($actor),
+            'photoUrl' => self::getPhotoUrl($actor, $actor),
             'hasPhoto' => $actor->getPhoto()->hasUploadedPhoto(),
             'canEditBirthday' => PortalSettings::allowsBirthdayEdit(),
         ];
@@ -144,7 +144,7 @@ class PortalSelfService
                 'role' => $member->getFamilyRoleName(),
                 'email' => (string) $member->getEmail(),
                 'cellPhone' => (string) $member->getCellPhone(),
-                'photoUrl' => self::getPhotoUrl($member),
+                'photoUrl' => self::getPhotoUrl($member, $actor),
                 'initials' => self::getInitials($member),
                 'isSelf' => (int) $member->getId() === (int) $actor->getId(),
                 'isAdult' => self::isAdultOf($family, $member),
@@ -615,21 +615,59 @@ class PortalSelfService
      * The photo endpoint for a person, cache-busted by the file's own
      * modification time so a fresh upload is visible immediately.
      *
+     * It is always a `/api/portal/*` URL, never `/api/person/{id}/photo`:
+     * `AuthMiddleware::isLimitedAccessAllowedPath()` confines a self-service
+     * session to `/portal` and `/api/portal`, so the person endpoint answers
+     * the very members these pages are for with 403 and every avatar renders
+     * broken. The portal serves its own bytes instead.
+     *
      * Empty when nobody has uploaded a photo: the endpoint 404s in that case,
      * and a template that is told there is no URL renders initials instead of
      * a broken image.
      */
-    private static function getPhotoUrl(Person $person): string
+    public static function getPhotoUrl(Person $person, Person $actor): string
     {
-        $photo = new Photo('Person', (int) $person->getId());
+        $personId = (int) $person->getId();
+
+        $photo = new Photo('Person', $personId);
         if (!$photo->hasUploadedPhoto()) {
             return '';
         }
 
-        $url = SystemURLs::getRootPath() . '/api/person/' . (int) $person->getId() . '/photo';
+        $path = $personId === (int) $actor->getId()
+            ? '/api/portal/me/photo'
+            : '/api/portal/family/members/' . $personId . '/photo';
+
+        $url = SystemURLs::getRootPath() . $path;
         $version = $photo->getPhotoModifiedTime();
 
         return $version ? $url . '?v=' . $version : $url;
+    }
+
+    /**
+     * The member of the actor's own family with this id, or null when there is
+     * no such member — including when the id names somebody real in another
+     * family, or nobody at all. The caller cannot tell those cases apart, which
+     * is the point: a member must not learn who exists outside their family
+     * (design P12).
+     *
+     * The enumeration is the same one `getFamilyView()` renders, so what the
+     * page shows and what the API will serve can never drift apart.
+     */
+    public static function findFamilyMember(Person $actor, int $personId): ?Person
+    {
+        $family = $actor->getFamily();
+        if ($family === null) {
+            return null;
+        }
+
+        foreach ($family->getPeopleSorted() as $member) {
+            if ((int) $member->getId() === $personId) {
+                return $member;
+            }
+        }
+
+        return null;
     }
 
     /**

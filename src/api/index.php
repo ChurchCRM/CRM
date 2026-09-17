@@ -58,6 +58,7 @@ require __DIR__ . '/routes/portal/portal-me.php';
 require __DIR__ . '/routes/public/public.php';
 require __DIR__ . '/routes/public/public-data.php';
 require __DIR__ . '/routes/public/public-calendar.php';
+require __DIR__ . '/routes/public/public-portal-calendar.php';
 require __DIR__ . '/routes/public/public-user.php';
 require __DIR__ . '/routes/public/public-register.php';
 require __DIR__ . '/routes/system/property-types.php';

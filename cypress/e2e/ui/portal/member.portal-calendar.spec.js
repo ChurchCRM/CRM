@@ -163,6 +163,65 @@ describe("Member Portal calendar", () => {
         setConfig("bPortalShowCalendar", "1");
     });
 
+    describe("Subscribing to the calendar", () => {
+        it("Offers a Subscribe button above the calendar, one checkbox per shared calendar, and a feed address after saving", () => {
+            setVisibleCalendars([
+                { type: "calendar", id: CHURCH_CALENDAR_ID },
+                { type: "system", id: BIRTHDAYS_CALENDAR_ID },
+            ]);
+            setConfig("bPortalShowCalendar", "1");
+            loginAsMember();
+
+            cy.visit("/portal/calendar");
+
+            cy.get("#portal-calendar-subscribe").should("be.visible").click();
+            cy.get("#portal-calendar-subscribe-dialog").should("be.visible");
+            cy.contains("Subscribe to the calendar").should("be.visible");
+
+            // One checkbox per calendar the administrator shares, all ticked
+            // when nothing has been saved yet.
+            cy.get("#portal-calendar-subscribe-choices input[type=checkbox]")
+                .should("have.length", 2)
+                .and("be.checked");
+
+            cy.get("#portal-calendar-subscribe-save").click();
+
+            cy.get("#portal-calendar-subscribe-url", { timeout: 10000 })
+                .should("be.visible")
+                .invoke("val")
+                .should((value) => {
+                    expect(value).to.include(Cypress.config("baseUrl").replace(/\/$/, ""));
+                    expect(value).to.include("/api/public/portal-calendar/");
+                    expect(value).to.match(/\/calendar\.ics$/);
+                });
+
+            cy.get("#portal-calendar-subscribe-copy").should("be.visible");
+            cy.get("#portal-calendar-subscribe-open")
+                .should("have.attr", "href")
+                .and("match", /^webcal:\/\//);
+            cy.get("#portal-calendar-subscribe-reset").should("be.visible");
+        });
+
+        it("Remembers the calendars that were ticked", () => {
+            setVisibleCalendars([
+                { type: "calendar", id: CHURCH_CALENDAR_ID },
+                { type: "system", id: BIRTHDAYS_CALENDAR_ID },
+            ]);
+            loginAsMember();
+
+            cy.visit("/portal/calendar");
+            cy.get("#portal-calendar-subscribe").click();
+            cy.get(`#portal-calendar-subscribe-choices input[value="system:${BIRTHDAYS_CALENDAR_ID}"]`).uncheck();
+            cy.get("#portal-calendar-subscribe-save").click();
+            cy.get("#portal-calendar-subscribe-url", { timeout: 10000 }).should("be.visible");
+
+            cy.reload();
+            cy.get("#portal-calendar-subscribe").click();
+            cy.get(`#portal-calendar-subscribe-choices input[value="calendar:${CHURCH_CALENDAR_ID}"]`).should("be.checked");
+            cy.get(`#portal-calendar-subscribe-choices input[value="system:${BIRTHDAYS_CALENDAR_ID}"]`).should("not.be.checked");
+        });
+    });
+
     it("The home page card lists the next events instead of a placeholder", () => {
         setVisibleCalendars([{ type: "calendar", id: CHURCH_CALENDAR_ID }]);
         setConfig("bPortalShowCalendar", "1");

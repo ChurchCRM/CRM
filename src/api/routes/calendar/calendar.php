@@ -31,7 +31,7 @@ $app->group('/calendars', function (RouteCollectorProxy $group): void {
     $group->get('/', 'getUserCalendars');
     $group->post('/', 'NewCalendar')->add(new InputSanitizationMiddleware(['Name' => 'text']))->add(AddEventsRoleAuthMiddleware::class);
     $group->get('/{id}', 'getUserCalendars');
-    $group->delete('/{id}', 'deleteUserCalendar')->add(CalendarMiddleware::class);
+    $group->delete('/{id}', 'deleteUserCalendar')->add(CalendarMiddleware::class)->add(AddEventsRoleAuthMiddleware::class);
     $group->get('/{id}/events', 'getUserCalendarEvents')->add(CalendarMiddleware::class);
     $group->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents')->add(CalendarMiddleware::class);
     // Administering ONE existing calendar is a per-row question once a ministry can own a
@@ -399,6 +399,7 @@ function NewCalendar(Request $request, Response $response, $args): Response
  *     ),
  *     @OA\Response(response=400, description="Missing or invalid calendar ID"),
  *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required"),
  *     @OA\Response(response=409, description="Calendar still has events assigned; remove them first")
  * )
  */

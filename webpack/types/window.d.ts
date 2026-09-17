@@ -275,6 +275,11 @@ interface CRMNamespace {
   APIRequest?: (options: CRMAPIRequestOptions) => { done: (cb: () => void) => unknown };
   notify?: (message: string | object, options?: Record<string, unknown>) => void;
   notyf?: unknown;
+  /** Member Portal only: show a toast in the portal's fixed top-right stack.
+   * Published by the `portal` bundle, which every portal page loads, so a page
+   * bundle, a plugin or a theme's `theme.js` can raise a notice without knowing
+   * how the portal draws one. */
+  portalToast?: (message: string, type?: "success" | "danger" | "warning" | "info") => void;
   /** Escapes `&`, `<` and `>` — safe for text nodes, NOT for attribute values. */
   escapeHtml?: (s: string) => string;
   /** Escapes `&`, `<`, `>` and both quote characters — use for attribute values. */

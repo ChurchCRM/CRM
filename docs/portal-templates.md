@@ -52,7 +52,7 @@ Each is a separate file, so a theme can replace one without touching the others:
 | `partials/header.html.twig` | Church logo and name, the member's name, Sign out |
 | `partials/nav.html.twig` | The `nav` entries, and the toggle target `#portal-nav` |
 | `partials/footer.html.twig` | Church contact details, ChurchCRM credit |
-| `partials/flash.html.twig` | The `flash` messages for this request |
+| `partials/flash.html.twig` | The fixed notice container, holding this request's `flash` messages. **A theme that overrides `layout.html.twig` must keep this include** — without it there is no container, and every message the portal raises goes unseen. |
 
 ### What the layout already loads
 
@@ -65,6 +65,11 @@ You do not need to add any of it, and you should not load a second copy:
 - `bootbox` (confirmations and prompts), `i18next` and the locale loader, then
   `portal.min.js`, then the active theme's `theme.js` when it has one
 - whatever `<head>` and footer HTML the enabled plugins inject
+
+`portal.min.js` also publishes `window.CRM.portalToast(message, type)` — `type`
+being `success`, `warning`, `danger` or `info` (the default). Call it from a
+theme's `theme.js` to show a message the way the portal shows all of them: a
+toast in the fixed top-right stack that fades away on its own.
 
 ### Page IDs and classes worth knowing
 
@@ -88,6 +93,7 @@ You do not need to add any of it, and you should not load a second copy:
 | `.portal-dialog` | A `<dialog>` in the portal's own chrome |
 | `.portal-breadcrumb` | The single "← back" link above a nested page's title (My Teams) |
 | `.portal-team-card` / `.portal-team-ministry` | One team on **My Teams**, and the ministry line under a team's name |
+| `#portal-toasts` / `.portal-flash` | The fixed notice container, and one notice in it. `position: fixed`, so a notice never moves the page; see [`portal-themes.md`](./portal-themes.md) for its colour tokens |
 
 ### Hooks the page bundles look for
 
@@ -154,7 +160,7 @@ portal route, ever addresses somebody else.
 | `fullName` | string | Formatted per the installation's name format |
 | `familyName` | string | The family's surname; empty when the person has no family |
 | `email` | string | |
-| `avatarUrl` | string | The person's photo endpoint |
+| `avatarUrl` | string | `/api/portal/me/photo`, cache-busted; **empty when no photo has been uploaded** — render initials instead |
 | `familyId` | int | `0` when the person has no family |
 | `isTeamLeader` | bool | `true` when this person leads at least one volunteer team. Also `true` on a self-service login — that is the point of it |
 | `isStaff` | bool | `true` for a login that also has the admin shell — the layout shows the "viewing as yourself" bar for it |
@@ -253,7 +259,7 @@ The signed-in member's own person record, as `GET /api/portal/me` returns it.
 | `familyRole` | string | e.g. `Spouse`; `Unassigned` when the person has no role |
 | `familyId` | int | `0` when the person has no family |
 | `familyName` | string | The family's surname |
-| `photoUrl` | string | The person's photo endpoint, cache-busted; **empty when no photo has been uploaded** — render initials instead |
+| `photoUrl` | string | `/api/portal/me/photo`, cache-busted; **empty when no photo has been uploaded** — render initials instead |
 | `hasPhoto` | bool | Whether a photo has been uploaded |
 | `canEditBirthday` | bool | Mirrors `bPortalAllowBirthdayEdit`; when false the birthday is neither shown nor accepted |
 
@@ -280,7 +286,7 @@ orders them.
 | `fullName` | string | |
 | `role` | string | The family-role name |
 | `email`, `cellPhone` | string | |
-| `photoUrl` | string | Empty when the member has no photo |
+| `photoUrl` | string | `/api/portal/family/members/{id}/photo` (or `/api/portal/me/photo` for the member's own row), cache-busted; empty when that member has no photo |
 | `initials` | string | The two-letter stand-in for a missing photo |
 | `isSelf` | bool | `true` for the signed-in member's own row |
 | `isAdult` | bool | `true` for a head or spouse — the roles `sDirRoleHead` and `sDirRoleSpouse` name |
@@ -353,7 +359,35 @@ keep three things, which the page's bundle looks for:
 |---|---|
 | `<div id="portal-calendar">` | Where FullCalendar renders |
 | `<section id="portal-calendar-detail">` and its `portal-calendar-detail-*` ids | The panel an event click fills in — title, when, where, calendar, details |
-| `window.CRM.portalCalendar = {{ calendarConfigJson }}` plus `asset('/skin/v2/portal-calendar.min.js')` | The endpoint, the church's timezone and the window cap |
+| `window.CRM.portalCalendar = {{ calendarConfigJson }}` plus `asset('/skin/v2/portal-calendar.min.js')` | The endpoint, the church's timezone, the window cap, and the two subscription endpoints |
+
+### Subscribing to the calendar
+
+The **Subscribe** button opens a dialog where a member ticks the calendars they
+want in their own calendar app and gets one address back. The bundle draws the
+checkboxes and fills in the address from
+`GET /api/portal/calendar/subscription`, so none of it is server-rendered: the
+feed address is a bearer secret and is fetched only when the dialog opens.
+
+A theme that keeps the feature must keep these ids:
+
+| Keep | What it is |
+|---|---|
+| `#portal-calendar-subscribe` | The button that opens the dialog |
+| `#portal-calendar-subscribe-dialog` | The dialog itself |
+| `#portal-calendar-subscribe-form` | A `<form>` carrying `{{ csrf_field() }}` — the bundle reads the token out of it |
+| `#portal-calendar-subscribe-choices` | The empty container the checkboxes are drawn into |
+| `#portal-calendar-subscribe-error` | Where a refused save is reported |
+| `#portal-calendar-subscribe-save`, `#portal-calendar-subscribe-close` | Save, and dismiss |
+| `#portal-calendar-subscribe-result` | The address block, `hidden` until there is an address |
+| `#portal-calendar-subscribe-url` | A read-only `<input>` holding the feed address |
+| `#portal-calendar-subscribe-copy` | Copy to clipboard (falls back to selecting the text) |
+| `#portal-calendar-subscribe-open` | An `<a>` whose `href` the bundle sets to the `webcal://` address |
+| `#portal-calendar-subscribe-reset` | Opens the confirmation below |
+| `#portal-calendar-reset-dialog` with `#portal-calendar-reset-confirm` / `#portal-calendar-reset-cancel` | "Get a new calendar address?" |
+
+A theme that wants none of this drops the button and both dialogs together; the
+bundle does nothing when the button is absent.
 
 `calendarConfigJson` is a pre-rendered fragment like the four above: print it
 inside a `<script nonce="{{ nonce() }}">` without `|escape` and without `|raw`.

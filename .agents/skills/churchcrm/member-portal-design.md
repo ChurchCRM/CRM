@@ -344,6 +344,18 @@ CSS custom properties, so a colour-only theme is a `theme.css` of a dozen lines:
 }
 ```
 
+Notices are part of that palette: `--portal-success`, `--portal-warning`, `--portal-danger` and
+`--portal-info`, each with a `-contrast` twin for the text drawn on it, plus `--portal-toast-width`.
+The full list a theme may set is `docs/portal-themes.md` → "Design tokens".
+
+**Every portal notice is a toast in one fixed container** (`#portal-toasts`, rendered by
+`partials/flash.html.twig`, filled by the server's `flash` messages and by
+`window.CRM.portalToast(message, type)`), never a card in the document flow — a notice that takes
+part in the flow moves the page under the member as it appears and again as it goes. Note that
+`.portal-container` is not unique: the header, the nav and `<main>` each have one, so a bundle that
+inserts a notice "at the top of the page" by that selector lands in the **header** and displaces the
+church logo. <!-- learned: 2026-09-16 -->
+
 Dark mode: tokens have a `[data-bs-theme="dark"]` block in the default `theme.css`; a theme may
 override it or not. Fonts must come from `self` or `fonts.googleapis.com`/`fonts.gstatic.com`
 (the CSP allows those). RTL: portal CSS uses logical properties only, so a theme is not flipped by
@@ -434,6 +446,14 @@ teaser. Themes typically override this page first.
   `canEditPerson` but gated by `EditRecordsRoleAuthMiddleware`, which a self-service login never
   passes, so the portal has its own `POST /api/portal/me/photo` calling the same model method
   (`Person::setImageFromBase64()`) for the member's own record and nothing else.
+- **Reading a photo is the portal's own route too.** `AuthMiddleware::isLimitedAccessAllowedPath()`
+  confines a self-service session to `/portal` and `/api/portal`, so `GET /api/person/{id}/photo`
+  answers a member with 403 and every avatar renders broken. `GET /api/portal/me/photo` and
+  `GET /api/portal/family/members/{id}/photo` serve the same bytes through the same `Photo` object,
+  privately cached for the same two hours, and every `photoUrl` the portal hands out points at
+  them, cache-busted with `?v=<mtime>`. The family route is the one place a portal route takes a
+  person id: it is checked against the members of the actor's own family (P12) and anything else is
+  **404, never 403**, so a member cannot learn who exists outside their family.
   Edit, family: address, city, state, zip, country, home phone, email, wedding
   date — only for the family's adults (head/spouse), the same audience the verify flow addresses.
   Other members: view only; "add a family member" — also an adults-only action, because it writes
@@ -502,7 +522,27 @@ must pin it to some existing church calendar.
   colour per calendar as on the admin page; event click opens a detail panel (title, when, location,
   description, ministry name when set). A member who leads a team sees their ministry's calendar
   highlighted.
-- iCal subscription per member: phase 2.
+- **Subscribing.** A member may take the calendar with them. The calendar page
+  carries a **Subscribe** button in the top-right of the title row; it opens a
+  dialog with one checkbox per calendar the administrator shares, and saving
+  hands back a single address — `(Church name) Calendar` — that feeds exactly
+  the calendars ticked. The address is
+  `/api/public/portal-calendar/{token}/calendar.ics`: no session, because a
+  calendar app cannot sign in, so the token *is* the credential. It is 32
+  random bytes as hex, minted on the first save and rotated by **Reset link**,
+  which retires the old address at once. What the feed serves is always the
+  member's selection **intersected with the calendars that are shared right
+  now**, so un-sharing a calendar removes it from every member's feed on the
+  next fetch without anybody re-saving anything; nothing but events is
+  reachable through the token, the privacy rewriting above still applies
+  (a birthday reads "Lena B."), and an unknown token is a bare 404 that cannot
+  be told apart from an account with no feed. The document is RFC 5545, three
+  months back to eighteen months ahead, `VALUE=DATE` for the whole-day and
+  virtual events and UTC instants for timed ones, `CATEGORIES` naming the
+  calendar an event came from. The per-calendar public ICS
+  (`/api/public/calendar/{token}/ics`) is untouched; it cannot express virtual
+  events, which is why the portal has its own builder
+  (`ChurchCRM\Portal\PortalCalendarFeed`).
 - Not in scope: volunteer schedule occurrences that are not linked to an event do not appear on
   calendars (they never have); "My Volunteer Schedule" is where those live.
 
@@ -635,6 +675,8 @@ nothing renders until that epic ships.
 | `calendars.ministry_id INT NULL` with an index (ministry calendars, §5.3). The FK → `volunteer_ministry_vmin` `ON DELETE SET NULL` is added by the Volunteer v2 schema, which creates that table | `7.8.0-member-portal-calendars.sql`, `Install.sql`, seed, `orm/schema.xml` |
 | `aPortalCalendars` JSON config (portal-visible calendar and system-calendar ids) | `SystemConfig.php` |
 | `user_usr.usr_LastPortalActivity DATETIME NULL` | `7.8.0-member-portal-activity.sql`, same set |
+| `user_usr.usr_PortalCalendarToken VARCHAR(64) NULL` with a UNIQUE index — the bearer secret in a member's calendar feed URL; NULL means no feed (§5.3, "Subscribing") | `7.8.0-member-portal-activity.sql`, `Install.sql`, seed, `orm/schema.xml` |
+| `user_usr.usr_PortalCalendarSelection TEXT NULL` — JSON array of the calendar ids the member ticked, always intersected with what is shared before a feed is built | same set |
 | Config items in §4 (no System Settings category) | `SystemConfig.php` |
 | `AppIntegrityService::isExcludedFromOrphanDetection` and `generate-signatures-node.js` gain `Include/themes/` (and `Include/modules/`) | core |
 | `.gitignore`: `src/Include/themes/*` except `default` | core |

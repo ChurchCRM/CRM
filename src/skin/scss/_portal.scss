@@ -28,6 +28,17 @@
     --portal-hero-image: none;
     --portal-content-width: 1100px;
     --portal-gap: 1rem;
+    // Notice colours. Each is a solid background with the text drawn on it, the
+    // way the admin side's toasts read.
+    --portal-success: #2fb344;
+    --portal-success-contrast: #ffffff;
+    --portal-warning: var(--portal-accent);
+    --portal-warning-contrast: #1f1f1f;
+    --portal-danger: #d63939;
+    --portal-danger-contrast: #ffffff;
+    --portal-info: var(--portal-primary);
+    --portal-info-contrast: var(--portal-primary-contrast);
+    --portal-toast-width: 24rem;
 }
 
 [data-bs-theme="dark"] {
@@ -504,39 +515,120 @@ textarea.portal-input {
 }
 
 // Flash ----------------------------------------------------------------------
+//
+// Every portal notice — the server's `flash` messages and anything a page
+// bundle raises after a fetch — is a toast in this one fixed container. Fixed
+// is the point: a notice must never take part in the document flow, or the
+// page jumps under the member's hands as it appears and again as it goes.
+// (It used to be inserted into the header's flex row, which pushed the church
+// logo halfway across the screen.)
+//
+// Phone first: the stack spans the viewport with a margin each side. From the
+// tablet breakpoint up it becomes a column in the top-right corner, where the
+// admin side's toasts live.
+
+.portal-toasts {
+    position: fixed;
+    inset-block-start: var(--portal-toast-offset, var(--portal-gap));
+    inset-inline: var(--portal-gap);
+    // Above the staff bar (1040) — a message about what just happened outranks
+    // the way back to the admin area.
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    // The container spans the viewport even when it is empty, so it must never
+    // swallow a click. Each toast takes its own clicks back.
+    pointer-events: none;
+}
+
+// The staff bar is fixed too, so the stack has to clear it by hand: body
+// padding moves the flow, not a fixed element.
+.portal-body-with-bar .portal-toasts {
+    --portal-toast-offset: calc(2.5rem + var(--portal-gap));
+}
 
 .portal-flash {
+    pointer-events: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
-    margin-block-end: var(--portal-gap);
     padding: 0.75rem 1rem;
-    border: 1px solid var(--portal-border);
-    border-inline-start: 4px solid var(--portal-primary);
     border-radius: var(--portal-radius);
-    background-color: var(--portal-surface);
+    background-color: var(--portal-info);
+    color: var(--portal-info-contrast);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.18);
+    animation: portal-toast-in 0.2s ease-out;
 }
 
 .portal-flash-success {
-    border-inline-start-color: #2fb344;
+    background-color: var(--portal-success);
+    color: var(--portal-success-contrast);
 }
 
 .portal-flash-warning {
-    border-inline-start-color: var(--portal-accent);
+    background-color: var(--portal-warning);
+    color: var(--portal-warning-contrast);
 }
 
 .portal-flash-danger {
-    border-inline-start-color: #d63939;
+    background-color: var(--portal-danger);
+    color: var(--portal-danger-contrast);
+}
+
+.portal-flash-text {
+    flex: 1 1 auto;
+}
+
+.portal-flash-icon {
+    flex: 0 0 auto;
 }
 
 .portal-flash-dismiss {
+    flex: 0 0 auto;
     min-block-size: 44px;
     min-inline-size: 44px;
     border: 0;
     background: none;
-    color: var(--portal-muted);
+    color: inherit;
     cursor: pointer;
+    opacity: 0.8;
+
+    &:hover,
+    &:focus-visible {
+        opacity: 1;
+    }
+}
+
+// The toast retires on a timer; this is how it leaves.
+.portal-flash-leaving {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes portal-toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+// A member who asked for less motion still gets the message and still gets it
+// taken away again — just without the movement.
+@media (prefers-reduced-motion: reduce) {
+    .portal-flash {
+        animation: none;
+    }
+
+    .portal-flash-leaving {
+        transition: none;
+    }
 }
 
 // Errors ---------------------------------------------------------------------
@@ -823,9 +915,78 @@ textarea.portal-input {
     }
 }
 
+// Calendar subscription (design §5.3) ----------------------------------------
+//
+// Mobile first: the page heading is a wrapping flex row, so on a phone the
+// Subscribe button sits under the title and from the tablet breakpoint up it
+// sits at the end of the title's row.
+
+.portal-page-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-block-end: var(--portal-gap);
+
+    .portal-page-title {
+        margin-block-end: 0;
+    }
+}
+
+.portal-calendar-subscribe-dialog {
+    // Wider than the default dialog: the feed address is a long single line and
+    // a member has to be able to see enough of it to recognise it.
+    inline-size: min(36rem, calc(100vw - 2rem));
+}
+
+.portal-calendar-subscribe-notice {
+    // Empty until something happens, so it must not reserve a line of space.
+    &:empty {
+        display: none;
+    }
+
+    color: var(--portal-primary);
+}
+
+.portal-calendar-subscribe-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-block: var(--portal-gap);
+}
+
+.portal-calendar-subscribe-result {
+    margin-block-start: var(--portal-gap);
+    padding-block-start: var(--portal-gap);
+    border-block-start: 1px solid var(--portal-border);
+}
+
+.portal-calendar-subscribe-url-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+
+    .portal-input {
+        flex: 1 1 14rem;
+        // The address is long and is read, not typed; a small monospace face
+        // makes a mistyped character visible.
+        font-family: var(--bs-font-monospace, monospace);
+        font-size: 0.8125rem;
+    }
+}
+
 // Tablet and up --------------------------------------------------------------
 
 @media (min-width: 768px) {
+    // Off the phone the stack stops spanning the screen and becomes a column in
+    // the top-right corner, beside nothing and on top of everything.
+    .portal-toasts {
+        inset-inline-start: auto;
+        inline-size: var(--portal-toast-width);
+    }
+
     .portal-member-name {
         display: inline;
     }

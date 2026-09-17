@@ -6,6 +6,8 @@
  * field it belongs to. None of it touches the admin bundle's machinery, so a
  * church theme restyles a portal form by restyling portal CSS.
  */
+import { type PortalToastType, portalToast } from "./portal-toast";
+
 /**
  * Translate a user-visible string.
  *
@@ -48,8 +50,21 @@ export async function postPortalJSON<T = Record<string, unknown>>(
   body: Record<string, unknown>,
   csrfToken: string,
 ): Promise<PortalApiResult<T>> {
+  return sendPortalJSON<T>("POST", url, body, csrfToken);
+}
+
+/**
+ * The same, for a route whose verb is not POST — the calendar subscription is
+ * a PUT, because saving the selection replaces it rather than adding to it.
+ */
+export async function sendPortalJSON<T = Record<string, unknown>>(
+  method: string,
+  url: string,
+  body: Record<string, unknown>,
+  csrfToken: string,
+): Promise<PortalApiResult<T>> {
   const response = await fetch(url, {
-    method: "POST",
+    method,
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
@@ -136,36 +151,12 @@ export function applyServerFailures(form: HTMLFormElement, failures: string[] = 
 }
 
 /**
- * A one-shot message at the top of the page, in the same clothes as the
- * server-rendered flash messages so a theme styles both at once.
+ * A one-shot message, in the portal's fixed toast stack — the same component
+ * the server's `flash` messages render into, so a theme styles both at once and
+ * neither one ever moves the page.
  */
-export function showPortalToast(type: "success" | "danger" | "warning" | "info", message: string): void {
-  const container = document.querySelector<HTMLElement>(".portal-container") ?? document.body;
-  let list = document.querySelector<HTMLElement>(".portal-flash-list");
-  if (!list) {
-    list = document.createElement("div");
-    list.className = "portal-flash-list";
-    container.prepend(list);
-  }
-
-  const flash = document.createElement("div");
-  flash.className = `portal-flash portal-flash-${type}`;
-  flash.setAttribute("role", "status");
-
-  const text = document.createElement("span");
-  text.className = "portal-flash-text";
-  text.textContent = message;
-
-  const dismiss = document.createElement("button");
-  dismiss.type = "button";
-  dismiss.className = "portal-flash-dismiss";
-  dismiss.setAttribute("aria-label", t("Dismiss"));
-  dismiss.textContent = "×";
-  dismiss.addEventListener("click", () => flash.remove());
-
-  flash.append(text, dismiss);
-  list.append(flash);
-  flash.scrollIntoView({ block: "nearest" });
+export function showPortalToast(type: PortalToastType, message: string): void {
+  portalToast(message, type);
 }
 
 /**

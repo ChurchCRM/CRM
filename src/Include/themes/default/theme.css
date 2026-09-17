@@ -27,6 +27,15 @@
   --portal-header-bg: var(--portal-primary);
   --portal-header-text: var(--portal-primary-contrast);
   --portal-hero-image: none;
+  --portal-success: #2fb344;
+  --portal-success-contrast: #ffffff;
+  --portal-warning: var(--portal-accent);
+  --portal-warning-contrast: #1f1f1f;
+  --portal-danger: #d63939;
+  --portal-danger-contrast: #ffffff;
+  --portal-info: var(--portal-primary);
+  --portal-info-contrast: var(--portal-primary-contrast);
+  --portal-toast-width: 24rem;
 }
 
 [data-bs-theme="dark"] {

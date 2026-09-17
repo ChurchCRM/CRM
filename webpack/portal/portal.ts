@@ -3,9 +3,9 @@
  *
  * Deliberately tiny: the portal's chrome is server-rendered Twig, so the only
  * behaviour that belongs here is what needs the browser — opening the collapsed
- * navigation on a phone, dismissing a flash message, and filling in the home
- * page's volunteering card. Page-specific bundles (the two volunteer pages, and
- * calendar and teams later) are separate entries.
+ * navigation on a phone, running the toast stack, and filling in the home
+ * page's volunteering card. Page-specific bundles (calendar, the two volunteer
+ * pages, teams) are separate entries.
  *
  * Strings go through the page's global i18next — the one the layout loads
  * (`skin/external/i18next`) and the one `locale-loader.min.js` actually calls
@@ -16,7 +16,7 @@
  */
 import { ensureCrmHelpers } from "../common/crm-helpers";
 import { formatWhat, formatWhen } from "../volunteer/member-ui";
-
+import { type PortalToastType, portalToast, wireRenderedToasts } from "./portal-toast";
 import "./portal.scss";
 
 const NAV_ID = "portal-nav";
@@ -60,15 +60,15 @@ function wireNavigationToggle(): void {
 }
 
 /**
- * Flash messages are one-shot: the server has already forgotten them, so
- * dismissing one only has to remove it from the page.
+ * One way for anything on a portal page — a page bundle, a plugin, a theme's
+ * `theme.js` — to say something happened, without knowing how the portal draws
+ * a notice.
  */
-function wireFlashDismissal(): void {
-  for (const button of document.querySelectorAll<HTMLElement>(".portal-flash-dismiss")) {
-    button.addEventListener("click", () => {
-      button.closest(".portal-flash")?.remove();
-    });
-  }
+function publishToastHelper(): void {
+  window.CRM = window.CRM || {};
+  window.CRM.portalToast = (message: string, type: PortalToastType = "info") => {
+    portalToast(message, type);
+  };
 }
 
 /**
@@ -161,7 +161,8 @@ function start(): void {
   // shared module, before any page bundle runs (#9867, #9868).
   ensureCrmHelpers();
   wireNavigationToggle();
-  wireFlashDismissal();
+  publishToastHelper();
+  wireRenderedToasts();
 
   if (typeof window.CRM?.onLocalesReady === "function") {
     window.CRM.onLocalesReady(wireLocalisedLabels);

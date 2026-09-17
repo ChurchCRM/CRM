@@ -25,6 +25,7 @@ import "fullcalendar/skeleton.css";
 import "fullcalendar/themes/forma/theme.css";
 import "fullcalendar/themes/forma/palettes/blue.css";
 import { applyFcLocale } from "../common/fc-locale";
+import { initCalendarSubscription } from "./portal-calendar-subscribe";
 
 /**
  * `fullcalendar/all` exports only `Calendar`, so the shapes FullCalendar hands
@@ -54,6 +55,9 @@ interface PortalCalendarConfig {
   eventsUrl: string;
   timeZone: string;
   maxWindowDays: number;
+  /** The member's own subscription (design §5.3, "Subscribing"). */
+  subscriptionUrl: string;
+  subscriptionResetUrl: string;
 }
 
 /** One event as PortalCalendarService shapes it. */
@@ -240,6 +244,13 @@ function initCalendar(): void {
   window.CRM.fullcalendar = calendar;
 
   wireDetailClose();
+
+  // The Subscribe dialog is independent of FullCalendar — it only needs the
+  // two endpoints — but it lives on this page, so it is wired up here.
+  initCalendarSubscription({
+    subscriptionUrl: settings.subscriptionUrl,
+    subscriptionResetUrl: settings.subscriptionResetUrl,
+  });
 
   applyFcLocale(calendar).then(() => {
     calendar.render();

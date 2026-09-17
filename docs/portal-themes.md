@@ -94,6 +94,17 @@ That alone recolours and refonts every portal page.
 | `--portal-hero-image` | The `hero` block's background image |
 | `--portal-content-width` | Maximum content width |
 | `--portal-gap` | The spacing rhythm |
+| `--portal-success`, `--portal-success-contrast` | A "saved" notice — green by default |
+| `--portal-warning`, `--portal-warning-contrast` | A "have a look at this" notice |
+| `--portal-danger`, `--portal-danger-contrast` | A "that did not work" notice |
+| `--portal-info`, `--portal-info-contrast` | A plain notice; follows `--portal-primary` |
+| `--portal-toast-width` | How wide the notice stack is, off a phone |
+
+**Notices.** Every message the portal shows — "Your details have been saved.",
+"Nothing was saved." — is a toast in a fixed container in the top-right corner
+(the whole width, with a margin, on a phone). It is always out of the document
+flow, so a notice never moves the page. The four pairs of tokens above are the
+whole palette; the markup is `.portal-toasts > .portal-flash.portal-flash-<type>`.
 
 **Dark mode.** Members choose light, dark or "follow my device". In dark mode
 the portal carries `data-bs-theme="dark"` on `<html>`, so redefine whichever

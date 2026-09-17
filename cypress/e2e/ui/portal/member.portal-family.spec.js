@@ -56,6 +56,25 @@ describe("Member Portal — My Family", () => {
             cy.get("#portal-family-readonly-note").should("not.exist");
         });
 
+        it("shows a family member's photo as a real image, not a broken one", () => {
+            // Samantha (person 102) has a seeded photo under
+            // cypress/data/images/people. Her avatar used to point at
+            // /api/person/102/photo, which a member session is refused, so the
+            // row rendered a broken image. naturalWidth tells the two apart.
+            loginAs(adultUser);
+            cy.visit("/portal/family");
+
+            cy.get('[data-person-row="102"] img.portal-avatar')
+                .should("have.attr", "src")
+                .and("match", /\/api\/portal\/family\/members\/102\/photo/);
+            cy.get('[data-person-row="102"] img.portal-avatar')
+                .should("have.prop", "naturalWidth")
+                .and("be.greaterThan", 0);
+
+            // A member with no photo still gets initials rather than a broken image.
+            cy.get('[data-person-row="103"] .portal-avatar-initials').should("exist");
+        });
+
         it("edits the family address, sees the toast, and the change survives a reload", () => {
             const stamp = String(Date.now()).slice(-5);
             const newAddress = `${stamp} Avondale Ave`;

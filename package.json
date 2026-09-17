@@ -59,6 +59,7 @@
         "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
         "locale:lint": "node scripts/locale-check.js",
         "validate:seed-charsets": "node scripts/validate-seed-charsets.js",
+        "validate:mysql-upgrade-syntax": "node scripts/validate-mysql-upgrade-syntax.js",
         "lint:cypress-api-keys": "node scripts/validate-cypress-api-keys.js",
         "locale:lint:self-test": "node scripts/locale-check.js --self-test",
         "logs:clear": "rm -rf src/logs/*.log",
