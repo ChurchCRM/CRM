@@ -428,7 +428,8 @@ Config items (all without a System Settings category): `sMemberPortalTheme`,
 Navigation (the `nav` model), in order, each hidden when its feature is off or the member has
 nothing there: **Home · Calendar · Volunteering · My Teams · My Family · Profile**. The header
 shows the church logo and name, and one account menu: a button reading "Hello <first name>" over
-**Change Password**, **Admin Console** (staff logins only, never during a masquerade) and **Sign out**.
+**Email History** (§5.8), **Change Password**, **Admin Console** (staff logins only, never during a
+masquerade) and **Sign out**.
 The church name is not a link that restyles itself under the pointer. No admin sidebar anywhere.
 Staff opening the portal leave it again through Admin Console (P10); there is no fixed "viewing as
 yourself" bar. A masquerade still shows the banner from #9843, with its own exit control.
@@ -642,6 +643,49 @@ this version: the codebase has no payment gateway, no online-giving model and no
 those need their own design (gateway modules under `Include/modules/gateways/`, provider
 interface, webhook-to-payment recording, receipts, statements). The nav reserves the "Giving" slot;
 nothing renders until that epic ships.
+
+### 5.8 Email History (`/portal/email-history`, `/portal/email-history/{id}`)
+
+What the church has emailed this member, newest first and paginated. Product-owner request,
+2026-09-17: *"so the member can see a record of what the church emailed them, newest to oldest and
+paginated."*
+
+**Depends on two unreleased pieces**, and cannot ship before them: the email log #9877
+(`email_log_eml`, `EmailLogService`) is where the rows come from, and the server-side composer send
+#9876 is what puts most of them there. The portal epic's branch carries a merge of #9877, which
+carries #9876.
+
+- **Reached from the account menu, not the nav.** It is a record of the account rather than a place
+  a member works, and the nav is already at its width on a phone. `PortalNav` is handed no active id
+  for these two pages, which it renders as "nothing is active" — the behaviour an unknown id
+  already had.
+- **List** (`email/index.html.twig`): Date, Type (`EmailLogService::kindLabel()`), Subject (a link
+  to the detail page; "(no subject)" when the send carried none) and Status. Sent is quiet; Failed
+  and Skipped carry the palette's `--portal-danger` / `--portal-warning`, because those are the two
+  a member needs to notice. `EmailLogService::DEFAULT_PAGE_SIZE` per page, Previous / Next and
+  "Page X of Y" driven by `?page=`. Server-rendered from the service — no bundle, no fetch. Empty
+  state: "The church has not emailed you yet." One `<table>` at every width, unrolled into stacked
+  blocks on a phone by `_portal.scss` (the `data-label` pattern).
+- **Detail** (`email/show.html.twig`): subject as the title, then date, type, status and the address
+  it went to, then the message. **The stored body is rendered in an `<iframe sandbox srcdoc="…">`
+  and nowhere else** — an empty `sandbox` is its own opaque origin with no scripts, no forms and no
+  top-level navigation, and Twig's autoescaping is what fills the attribute safely. The frame keeps
+  a fixed height and scrolls: an opaque-origin document cannot be measured from the page, and both
+  ways to measure it (`allow-same-origin`, or a script inside the frame) are permissions this page
+  must not grant. An account email, whose body is deliberately never stored, says "The content of
+  this email was not kept."
+- **API**: `GET /api/portal/me/emails?page=&limit=` and `GET /api/portal/me/emails/{id}`, session
+  only, actor from the session like every other portal route (P11). A row that is not this person's
+  and an id that does not exist are the same **404**, never a 403 — the treatment P12 already gives
+  a person id outside the member's family, for the same reason: a member must not be able to learn
+  that a record exists by asking for it.
+- **Scope decision, open for the product owner.** Only rows whose `eml_per_ID` is this person are
+  shown. Mail addressed to the **family's shared address** lands with `eml_per_ID` NULL and
+  `eml_fam_ID` set, and is deliberately left out of this first version: showing it would put mail
+  nobody was named on in front of every adult of the household, which is a privacy call rather than
+  an implementation detail. `EmailLogService::getForFamily()` is what a later version would call if
+  the answer is "show it" — the staff family page already does.
+- Not in scope: re-sending, deleting, marking read, or any write at all. The page is a record.
 
 ---
 

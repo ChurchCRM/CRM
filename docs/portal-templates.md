@@ -49,7 +49,7 @@ Each is a separate file, so a theme can replace one without touching the others:
 
 | Partial | Renders |
 |---|---|
-| `partials/header.html.twig` | Church logo and name, and the account menu ("Hello &lt;first name&gt;" → Change Password, Admin Console for staff, Sign out) |
+| `partials/header.html.twig` | Church logo and name, and the account menu ("Hello &lt;first name&gt;" → Email History, Change Password, Admin Console for staff, Sign out) |
 | `partials/nav.html.twig` | The `nav` entries, and the toggle target `#portal-nav` |
 | `partials/footer.html.twig` | Church contact details on the leading edge, `church.socialLinks` as icon links on the trailing edge |
 | `partials/flash.html.twig` | The fixed notice container, holding this request's `flash` messages. **A theme that overrides `layout.html.twig` must keep this include** — without it there is no container, and every message the portal raises goes unseen. |
@@ -230,6 +230,8 @@ will stop working on your pages.
 | `family/edit.html.twig` | `GET /portal/family/edit` | `pageTitle`, `family`, `members`, `canEdit`, `countries` |
 | `family/confirm.html.twig` | `GET /portal/family/confirm` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm` |
 | `family/none.html.twig` | All three family URLs, for a member with no family | `pageTitle`, `officeEmail`, `officePhone`, `officePhoneHref` |
+| `email/index.html.twig` | `GET /portal/email-history` | `pageTitle`, `emails`, `page`, `pages`, `total`, `previousUrl`, `nextUrl` |
+| `email/show.html.twig` | `GET /portal/email-history/{id}` | `pageTitle`, `email`, `body`, `hasBody` |
 | `errors/403.html.twig` | A page this member may not open | `pageTitle` |
 | `errors/404.html.twig` | An unknown portal URL (and 405) | `pageTitle` |
 | `errors/500.html.twig` | An unexpected failure | `pageTitle` |
@@ -406,6 +408,55 @@ FullCalendar's own stylesheet, not portal styling.
 
 A theme that would rather draw its own calendar can drop all of this and call
 the same endpoint itself; it is session-gated and needs no token.
+
+### Email History
+
+`email/index.html.twig` is a paginated list of what the church has emailed this
+member — reached from the header's account menu, not from the main navigation,
+so **no nav entry is active while it is open**.
+
+`emails` is the page's rows, newest first. Every field is a finished string;
+nothing here needs formatting or reasoning about in a template:
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | int | Use it to build the detail URL |
+| `subject` | string | Empty for an email that was sent without one — print `(no subject)` |
+| `kindLabel` | string | The kind in words: `Message`, `Birthday greeting`, `Password reset link`, … |
+| `status` | string | `sent`, `failed` or `skipped` — for a CSS class, not for reading |
+| `statusLabel` | string | The same, in words, already translated |
+| `address` | string | The address the message went to |
+| `dateSent` | string | Formatted in the installation's date format, with the time |
+| `hasBody` | bool | False for the account emails, whose content is never stored |
+
+`page`, `pages` and `total` drive "Page X of Y"; `previousUrl` and `nextUrl` are
+query strings (`?page=2`) and are empty strings at the ends of the list, which is
+how the template knows not to draw that link. The list is server-rendered — there
+is no bundle on this page — but the same rows are available to a theme that would
+rather fetch them, at `GET /api/portal/me/emails?page=&limit=`.
+
+The list is one `<table class="portal-table">` at every width. On a phone
+`_portal.scss` unrolls it into a stack of blocks, taking each cell's column name
+from its `data-label` attribute, so an override that keeps the table markup gets
+the phone layout for free.
+
+`email/show.html.twig` is one email: `email` is a single row in the shape above,
+`hasBody` says whether there is anything to show, and `body` is **the stored HTML
+of the message**.
+
+> **`body` goes in exactly one place: the `srcdoc` of an iframe with an empty
+> `sandbox` attribute.** It is markup somebody else wrote, kept as it was sent.
+> Twig's autoescaping is what makes the attribute safe; `|raw` on it, or printing
+> it anywhere in the document, hands a member's browser foreign markup with the
+> portal's own origin behind it. The frame does not grow to fit its content — an
+> empty `sandbox` puts the document in its own opaque origin, so its height
+> cannot be measured from the page, and the two ways to measure it
+> (`allow-same-origin`, or a script inside the frame) are the two permissions
+> this page must not grant. It scrolls instead.
+
+Scope: the page shows the rows addressed to this person. Email sent to the
+family's shared address is not included — see
+`src/api/routes/portal/portal-emails.php`.
 
 ---
 
