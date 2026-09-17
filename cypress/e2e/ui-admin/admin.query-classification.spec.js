@@ -13,6 +13,34 @@
 //   Beck (Franklin + Julie Beck, cls 0) on 2010-07-22.
 //   list_lst classification 1 = Member, 2 = Regular Attender, 3 = Guest,
 //   5 = Non-Attender, 4 = Non-Attender (staff).
+//
+// The admin-ui CI job runs every spec against one database, so earlier specs
+// leave extra classifications (admin.people.spec.js) and unclassified
+// "ImportTest" people with July birthdays (admin.csvimport.spec.js) behind.
+// Assertions below therefore check the seeded rows and relative order rather
+// than exact lists and counts.
+
+const SEEDED_OPTIONS = [
+    ["1", "Member"],
+    ["2", "Regular Attender"],
+    ["3", "Guest"],
+    ["5", "Non-Attender"],
+    ["4", "Non-Attender (staff)"],
+];
+
+function readOptions($opts) {
+    return [...$opts].map((o) => [o.value, o.textContent.trim()]);
+}
+
+// Asserts that `expected` pairs appear in `actual` in the same relative order.
+function expectInOrder(actual, expected) {
+    let cursor = 0;
+    expected.forEach(([value, label]) => {
+        const idx = actual.findIndex(([v, l], i) => i >= cursor && v === value && l === label);
+        expect(idx, `option ${value} "${label}" present after position ${cursor}`).to.be.at.least(cursor);
+        cursor = idx + 1;
+    });
+}
 
 const CLASSIFICATION_QUERIES = {
     "Person by Property": 9,
@@ -32,22 +60,14 @@ describe("Data & Reports — Classification filter (#9914)", () => {
             cy.visit(`/QueryView.php?QueryID=${queryId}`);
             cy.get("body").should("not.contain", "Fatal error");
             cy.get('select[name="percls[]"]').should("have.attr", "multiple");
-            cy.get('select[name="percls[]"]').within(() => {
-                    // Live list from list_lst, in sequence order, plus Unassigned.
-                    cy.get("option:not([disabled])").then(($opts) => {
-                        const labels = [...$opts].map((o) => o.textContent.trim());
-                        expect(labels).to.deep.equal([
-                            "Member",
-                            "Regular Attender",
-                            "Guest",
-                            "Non-Attender",
-                            "Non-Attender (staff)",
-                            "Unassigned",
-                        ]);
-                    });
-                    cy.get('option[value="5"]').should("have.text", "Non-Attender");
-                    cy.get('option[value="0"]').should("have.text", "Unassigned");
-                });
+            cy.get('select[name="percls[]"] option:not([disabled])').then(($opts) => {
+                const options = readOptions($opts);
+                // Seeded rows from list_lst in sequence order (ids 5 and 4 are
+                // deliberately out of numeric order in the seed) ...
+                expectInOrder(options, SEEDED_OPTIONS);
+                // ... and Unassigned (per_cls_ID = 0) last.
+                expect(options[options.length - 1]).to.deep.equal(["0", "Unassigned"]);
+            });
             cy.contains("Leave empty for all classifications");
         });
     });
@@ -86,9 +106,13 @@ describe("Data & Reports — Classification filter (#9914)", () => {
         cy.get('input[name="Submit"]').click();
 
         cy.get("body").should("not.contain", "This value is required");
-        cy.get("table tbody tr").should("have.length", 10);
+        // Ten seeded July birthdays; other specs may add unclassified people.
+        cy.get("table tbody tr").should("have.length.at.least", 10);
         cy.get("table tbody").should("contain", "Constance Hart");
+        cy.get("table tbody").should("contain", "Ruben Ray");
         cy.get("table tbody").should("contain", "Austin Robertson");
+        // Every option value, including Unassigned, was substituted.
+        cy.get("code").should("contain", "per_cls_ID IN (");
         cy.get("code").should("contain", "'0'");
     });
 
@@ -98,9 +122,40 @@ describe("Data & Reports — Classification filter (#9914)", () => {
         cy.get('select[name="percls[]"]').select(["Unassigned"]);
         cy.get('input[name="Submit"]').click();
 
-        cy.get("table tbody tr").should("have.length", 6);
+        // Six seeded unclassified July birthdays; other specs may add more.
+        cy.get("table tbody tr").should("have.length.at.least", 6);
         cy.get("table tbody").should("contain", "Austin Robertson");
         cy.get("table tbody").should("not.contain", "Constance Hart");
+        cy.get("table tbody").should("not.contain", "Ruben Ray");
+        cy.get("code").should("contain", "per_cls_ID IN ('0')");
+    });
+
+    it("a classification added in Classification Manager appears in the filter", () => {
+        const name = "CypressQueryCls_" + Date.now();
+
+        cy.visit("/admin/system/options?mode=classes");
+        cy.get("#newOptionName").type(name);
+        cy.get("#addOptionBtn").click();
+        cy.get(`#optionsTable tbody input.option-name-input[value="${name}"]`, { timeout: 10000 }).should("exist");
+
+        cy.visit("/QueryView.php?QueryID=18");
+        cy.get('select[name="percls[]"] option:not([disabled])').then(($opts) => {
+            const options = readOptions($opts);
+            const idx = options.findIndex(([, label]) => label === name);
+            expect(idx, "new classification listed").to.be.at.least(0);
+            expect(options[options.length - 1][1], "Unassigned stays last").to.equal("Unassigned");
+        });
+
+        // Clean up so later specs see the seeded list.
+        cy.visit("/admin/system/options?mode=classes");
+        cy.get(`#optionsTable tbody input.option-name-input[value="${name}"]`)
+            .closest("tr")
+            .within(() => {
+                cy.get('[data-bs-toggle="dropdown"]').click();
+                cy.get(".delete-btn").click();
+            });
+        cy.get(".bootbox .btn-danger").click();
+        cy.get(`#optionsTable tbody input.option-name-input[value="${name}"]`, { timeout: 10000 }).should("not.exist");
     });
 
     it("Wedding Anniversaries honours the Classification filter", () => {
