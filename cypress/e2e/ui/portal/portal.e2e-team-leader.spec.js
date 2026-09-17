@@ -472,7 +472,7 @@ describe("Member Portal e2e — #9869 scenario 2, a team leader on a member logi
 
     it("is refused the admin ministry page the coordinator uses", () => {
         leaderLogin();
-        cy.visit(`/volunteer/ministries/${ministryId}`, {
+        cy.visit(`/ministries/${ministryId}`, {
             failOnStatusCode: false,
         });
 

@@ -102,7 +102,7 @@ function findOrCreateMinistry() {
 
 /** Open the Schedules tab of the ministry page and wait for its list to settle. */
 function openSchedulesTab() {
-    cy.visit(`/volunteer/ministries/${ministryId}`);
+    cy.visit(`/ministries/${ministryId}`);
     cy.get("#nav-item-schedules").click();
     cy.get("#schedules-loading").should("not.be.visible");
 }
@@ -369,7 +369,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             onlyScheduleId().then((scheduleId) => {
                 generateOccurrences(scheduleId).then(() => {
                     freshAdminLogin();
-                    cy.visit(`/volunteer/ministries/${ministryId}`);
+                    cy.visit(`/ministries/${ministryId}`);
                     cy.get("#nav-item-occurrences").click();
                     cy.get("#occurrences-loading").should("not.be.visible");
 
@@ -404,7 +404,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             ).then((created) => {
                 generateOccurrences(created.body.schedule.id).then(() => {
                     freshAdminLogin();
-                    cy.visit(`/volunteer/ministries/${ministryId}`);
+                    cy.visit(`/ministries/${ministryId}`);
                     cy.get("#nav-item-occurrences").click();
                     cy.get("#occurrences-loading").should("not.be.visible");
 
@@ -454,7 +454,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
         });
 
         it("overrides this week's needs and puts them back", () => {
-            cy.visit(`/volunteer/occurrences/${occurrenceId}`);
+            cy.visit(`/ministries/occurrences/${occurrenceId}`);
             cy.get("#requirements-loading").should("not.be.visible");
             cy.get(".volunteer-requirement .requirement-counts").should("contain.text", "0 / 1");
 
@@ -515,7 +515,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             );
 
             cy.then(freshAdminLogin);
-            cy.visit(`/volunteer/occurrences/${occurrenceId}`);
+            cy.visit(`/ministries/occurrences/${occurrenceId}`);
             cy.get("#requirements-loading").should("not.be.visible");
             cy.get("#requirements-empty")
                 .should("be.visible")
@@ -539,7 +539,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
         });
 
         it("refuses a maximum below the minimum in the modal", () => {
-            cy.visit(`/volunteer/occurrences/${occurrenceId}`);
+            cy.visit(`/ministries/occurrences/${occurrenceId}`);
             cy.get("#requirements-loading").should("not.be.visible");
             cy.get("#requirements-edit").click();
             cy.get("#volunteer-needs-modal").should("be.visible");

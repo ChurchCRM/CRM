@@ -2781,7 +2781,7 @@ it("assigns everyone in the cart", () => {
         body: { Persons: [8, 9] },
     });
 
-    cy.visit("/volunteer/occurrences/12");   // the page now sees those two
+    cy.visit("/ministries/occurrences/12");   // the page now sees those two
 });
 ```
 
@@ -2850,7 +2850,7 @@ adminApi("POST", "/api/volunteer/scopes",
 
 // Test: log in as person 3, not admin
 freshCoordinatorLogin();
-cy.visit("/volunteer/dashboard");
+cy.visit("/ministries/dashboard");
 cy.get("#volunteer-gaps-empty").should("be.visible");
 ```
 

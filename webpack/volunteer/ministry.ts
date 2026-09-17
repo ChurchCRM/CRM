@@ -169,7 +169,7 @@ function buildComponents(): void {
     fixedTeamId: () => null,
     teams,
     ensureContext: ensureDetail,
-    occurrenceUrl: (occurrenceId) => `${window.CRM?.root ?? ""}/volunteer/occurrences/${occurrenceId}`,
+    occurrenceUrl: (occurrenceId) => `${window.CRM?.root ?? ""}/ministries/occurrences/${occurrenceId}`,
   });
 
   schedulesTable = createSchedulesTable({
@@ -611,7 +611,7 @@ function wireMinistryLifecycle(): void {
         remove.disabled = true;
         deleteMinistry(ministryId)
           .then(() => {
-            window.location.href = `${window.CRM?.root ?? ""}/volunteer/dashboard`;
+            window.location.href = `${window.CRM?.root ?? ""}/ministries/dashboard`;
           })
           .catch((error: unknown) => {
             remove.disabled = false;

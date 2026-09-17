@@ -107,7 +107,7 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
 
     // ── GET /portal/teams/{teamId}/occurrences/{occurrenceId} ───────────────
     //
-    // The portal's twin of `/volunteer/occurrences/{id}`, with the same
+    // The portal's twin of `/ministries/occurrences/{id}`, with the same
     // per-occurrence authorization: the occurrence must belong to a schedule of
     // the team in the path, and that team must be one this login runs. Checking
     // the path team as well as the occurrence's own is what stops a leader of team

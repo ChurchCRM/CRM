@@ -858,7 +858,7 @@ describe("Volunteer v2 — the drain delivers (§3.6, Appendix C)", () => {
                     expect(body, "the position still short").to.contain(
                         ESPRESSO_NAME,
                     );
-                    expect(body, "the gap link").to.contain("/volunteer/occurrences/");
+                    expect(body, "the gap link").to.contain("/ministries/occurrences/");
                     expect(body, "how many are still needed").to.contain("1");
                     // §3.6: a coordinator-facing decline alert replies to the
                     // volunteer who declined.

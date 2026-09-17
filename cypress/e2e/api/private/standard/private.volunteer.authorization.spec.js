@@ -40,7 +40,7 @@
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const SCOPES_URL = "/api/volunteer/scopes";
 const ME_PERMISSIONS_URL = "/api/volunteer/me/permissions";
-const DASHBOARD_URL = "/volunteer/dashboard";
+const DASHBOARD_URL = "/ministries/dashboard";
 
 const PERSON_COORDINATOR = 3; // tony.wade — user.api.key
 const PERSON_MANAGER = 900; // john.plainauth — plainauth.api.key

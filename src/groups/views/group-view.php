@@ -43,7 +43,7 @@ $sManagedTitle = $bIsMinistryPool
             gettext('This group is the volunteer pool of %s. It is managed from that ministry.'),
             '<strong>' . InputUtils::escapeHTML($sMinistryName) . '</strong>'
         ) ?>
-        <a href="<?= $sRootPath ?>/volunteer/ministries/<?= (int) $iMinistryId ?>" class="alert-link ms-1">
+        <a href="<?= $sRootPath ?>/ministries/<?= (int) $iMinistryId ?>" class="alert-link ms-1">
             <?= gettext('Open the ministry') ?>
         </a>
     </div>

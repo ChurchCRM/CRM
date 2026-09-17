@@ -42,8 +42,8 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
-const DASHBOARD_URL = "/volunteer/dashboard";
-const MINISTRIES_URL = "/volunteer/ministries";
+const DASHBOARD_URL = "/ministries/dashboard";
+const MINISTRIES_URL = "/ministries";
 // The member pages live in the Member Portal since #9867; the old URLs 302 here.
 const MY_SCHEDULE_URL = "/portal/volunteer/schedule";
 const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
@@ -560,7 +560,7 @@ describe("Volunteer v2 e2e (UI) — the shortest loop", () => {
             `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posMilk}"]`,
         ).click();
 
-        cy.url().should("include", "/volunteer/occurrences/");
+        cy.url().should("include", "/ministries/occurrences/");
         cy.get("#requirements-content", { timeout: 20000 }).should("be.visible");
 
         const milkCard = () =>
@@ -634,7 +634,7 @@ describe("Volunteer v2 e2e (UI) — the shortest loop", () => {
     it("volunteer: the coordinator surface stays shut to them", () => {
         freshMemberLogin();
         cy.visit(DASHBOARD_URL, { failOnStatusCode: false });
-        cy.url().should("not.include", "/volunteer/dashboard");
+        cy.url().should("not.include", "/ministries/dashboard");
     });
 });
 
@@ -666,7 +666,7 @@ describe("Volunteer v2 e2e (UI) — the member surface is invisible in v1 (#9704
         cy.get("a[href$='portal/volunteer/schedule']").should("not.exist");
         cy.get("a[href$='volunteer/my-schedule']").should("not.exist");
         cy.get("a[href$='volunteer/opportunities']").should("not.exist");
-        cy.get("a[href$='volunteer/dashboard']").should("not.exist");
+        cy.get("a[href$='ministries/dashboard']").should("not.exist");
     });
 
     it("does not serve the member pages by URL either", () => {
@@ -878,7 +878,7 @@ describe("Volunteer v2 e2e (UI) — responsive, coordinator and admin screens", 
         it(`occurrence / staffing view fits at ${at}`, () => {
             checkScreen(
                 "S4 occurrence",
-                `/volunteer/occurrences/${occurrenceId}`,
+                `/ministries/occurrences/${occurrenceId}`,
                 "#volunteer-occurrence",
                 viewport,
             );

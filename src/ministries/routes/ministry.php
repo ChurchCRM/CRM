@@ -33,8 +33,8 @@ use Slim\Views\PhpRenderer;
  * Route paths are module-relative: setBasePath() already carries '/volunteer'.
  */
 $app->group('', function (RouteCollectorProxy $group): void {
-    // GET /volunteer/ministries/{ministryId}
-    $group->get('/ministries/{ministryId:[0-9]+}', function (Request $request, Response $response, array $args): Response {
+    // GET /ministries/{ministryId}
+    $group->get('/{ministryId:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $ministryId = (int) $args['ministryId'];
         $ministry = VolunteerMinistryQuery::create()->findPk($ministryId);
 
@@ -65,7 +65,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sPageTitle'     => $ministry->getName(),
             'sPageSubtitle'  => $ministry->getDescription() ?? gettext('Teams, positions and the people who fill them'),
             'aBreadcrumbs'   => PageHeader::breadcrumbs([
-                [gettext('Ministries'), '/volunteer/dashboard'],
+                [gettext('Ministries'), '/ministries/dashboard'],
                 [$ministry->getName()],
             ]),
             'iMinistryId'    => $ministryId,

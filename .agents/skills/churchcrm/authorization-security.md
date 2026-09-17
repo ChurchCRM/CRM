@@ -288,7 +288,7 @@ predicates, not the stricter one:
 ```php
 // ❌ WRONG — the member entries are visible, the parent is not, so nobody sees them
 $menu = new MenuItem(gettext('Volunteer'), '', $isCoordinator, 'fa-handshake-angle');
-$menu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', $isCoordinator, 'fa-gauge'));
+$menu->addSubMenu(new MenuItem(gettext('Dashboard'), 'ministries/dashboard', $isCoordinator, 'fa-gauge'));
 $menu->addSubMenu(new MenuItem(gettext('My Volunteer Schedule'), 'volunteer/my-schedule', $isV2, 'fa-calendar-check'));
 
 // ✅ CORRECT — parent carries the union; each child still carries its own route's gate

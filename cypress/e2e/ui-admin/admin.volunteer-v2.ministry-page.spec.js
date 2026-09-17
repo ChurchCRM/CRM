@@ -36,8 +36,8 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
-const MINISTRIES_URL = "/volunteer/ministries";
-const DASHBOARD_URL = "/volunteer/dashboard";
+const MINISTRIES_URL = "/ministries";
+const DASHBOARD_URL = "/ministries/dashboard";
 
 const PREFIX = "UIMINPAGE";
 const MINISTRY_NAME = `${PREFIX} Coffee Bar`;
@@ -605,8 +605,8 @@ describe("Volunteer v2 — the Setup page is gone (#9701)", () => {
         cy.get('a[href$="/volunteer/setup"]').should("not.exist");
         // The retired ministries list page has no entry either: the Ministries
         // heading lists the ministries themselves, under the dashboard.
-        cy.get('a[href$="/volunteer/ministries"]').should("not.exist");
-        cy.get('a[href$="/volunteer/dashboard"]').should("exist");
+        cy.get('a[href$="/ministries"]').should("not.exist");
+        cy.get('a[href$="/ministries/dashboard"]').should("exist");
     });
 
     it("404s at /volunteer/setup", () => {
@@ -634,7 +634,7 @@ describe("Volunteer v2 — the Setup page is gone (#9701)", () => {
         cy.get("#ministry-create-description").type("Welcomes people on a Sunday");
         cy.get("#ministry-create-save").click();
 
-        cy.url().should("match", /\/volunteer\/ministries\/\d+$/);
+        cy.url().should("match", /\/ministries\/\d+$/);
         cy.get("#volunteer-ministry .card-title").should(
             "contain",
             `${CREATE_PREFIX} Hospitality`,

@@ -40,7 +40,7 @@ use Slim\Views\PhpRenderer;
  * Route paths are module-relative: `setBasePath()` already carries '/volunteer'.
  */
 $app->group('', function (RouteCollectorProxy $group): void {
-    // GET /volunteer/occurrences/{occurrenceId}
+    // GET /ministries/occurrences/{occurrenceId}
     $group->get('/occurrences/{occurrenceId:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $occurrenceId = (int) $args['occurrenceId'];
         $occurrence = VolunteerOccurrenceQuery::create()->findPk($occurrenceId);
@@ -90,8 +90,8 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sPageTitle' => $scheduleName,
             'sPageSubtitle' => gettext('Who is needed, who is on, and what is still short'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Ministries'), '/volunteer/dashboard'],
-                [$ministryName, $ministry === null ? null : '/volunteer/ministries/' . (int) $ministry->getId()],
+                [gettext('Ministries'), '/ministries/dashboard'],
+                [$ministryName, $ministry === null ? null : '/ministries/' . (int) $ministry->getId()],
                 [$scheduleName],
             ]),
             'iOccurrenceId' => $occurrenceId,

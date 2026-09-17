@@ -20,7 +20,7 @@
  *     Everything below that used to assert its two entries asserts its absence
  *     instead; "Ministries" is unchanged in every case.
  *
- * The `/volunteer/ministries` list page is gone with it: the sidebar lists the
+ * The `/ministries` list page is gone with it: the sidebar lists the
  * ministries now, so the route 302s to the dashboard and the dashboard keeps
  * the "New ministry" quick action.
  *
@@ -32,8 +32,8 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
-const DASHBOARD_URL = "/volunteer/dashboard";
-const MINISTRIES_URL = "/volunteer/ministries";
+const DASHBOARD_URL = "/ministries/dashboard";
+const MINISTRIES_URL = "/ministries";
 
 const PREFIX = "UIMENU";
 const MINISTRY_A = `${PREFIX} Hospitality`;
@@ -194,7 +194,7 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
                 // Ministries group's own toggle is a collapse anchor, not a link.
                 cy.get("a.nav-link:not([data-bs-toggle])").each(($link) => {
                     expect($link.attr("href")).to.match(
-                        /\/volunteer\/(dashboard|ministries\/\d+)$/,
+                        /\/ministries\/(dashboard|\d+)$/,
                     );
                 });
             });
@@ -216,13 +216,23 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
                 });
         });
 
-        it("302s the retired ministries list page to the dashboard", () => {
-            cy.request({ url: MINISTRIES_URL, followRedirect: false }).then((resp) => {
+        it("302s the retired /volunteer URLs and the bare module URL to the dashboard", () => {
+            // The list page's old address, and the old dashboard address, are
+            // redirects in src/volunteer/routes/coordinator-redirects.php.
+            for (const retired of ["/volunteer/ministries", "/volunteer/dashboard"]) {
+                cy.request({ url: retired, followRedirect: false }).then((resp) => {
+                    expect(resp.status, retired).to.eq(302);
+                    expect(resp.headers.location).to.match(/\/ministries\/dashboard$/);
+                });
+            }
+            // The bare module URL: Apache adds the trailing slash (301) and the
+            // module's "/" route sends that to the dashboard (302).
+            cy.request({ url: `${MINISTRIES_URL}/`, followRedirect: false }).then((resp) => {
                 expect(resp.status).to.eq(302);
-                expect(resp.headers.location).to.match(/\/volunteer\/dashboard$/);
+                expect(resp.headers.location).to.match(/\/ministries\/dashboard$/);
             });
 
-            cy.visit(MINISTRIES_URL);
+            cy.visit("/volunteer/ministries");
             cy.url().should("include", DASHBOARD_URL);
             cy.get("#volunteer-dashboard").should("exist");
         });
@@ -237,7 +247,7 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
             cy.get("#ministry-create-name").should("be.focused").type(CREATE_NAME);
             cy.get("#ministry-create-save").click();
 
-            cy.url().should("match", /\/volunteer\/ministries\/\d+$/);
+            cy.url().should("match", /\/ministries\/\d+$/);
             cy.get("#volunteer-ministry .card-title").should("contain", CREATE_NAME);
 
             // And the new ministry is in the sidebar on the page it landed on.

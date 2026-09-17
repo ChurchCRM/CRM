@@ -876,7 +876,7 @@ describe("Volunteer v2 member API — §4.8 negatives", () => {
     it("still redirects an EditSelf-exclusive volunteer away from the coordinator MVC area", () => {
         // 403 from the role middleware, or a redirect to the access-denied page —
         // never the dashboard itself.
-        api(SELFEDIT_KEY, "GET", "/volunteer/dashboard", null, [302, 403]);
+        api(SELFEDIT_KEY, "GET", "/ministries/dashboard", null, [302, 403]);
     });
 
     it("401s the whole member surface with no credentials at all", () => {

@@ -253,7 +253,7 @@ class VolunteerAuthorizationService
      * The ministries this user may administer, id => name, ordered by name.
      *
      * This is what the sidebar's **Ministries** heading lists: one entry per
-     * ministry, linking to `/volunteer/ministries/{id}`. It is deliberately
+     * ministry, linking to `/ministries/{id}`. It is deliberately
      * NOT `getManagedMinistryIds()` plus a second query at the call site —
      * the two tiers answer differently and the difference is the whole point:
      *
@@ -265,7 +265,7 @@ class VolunteerAuthorizationService
      *     ministries list page was retired the sidebar is the only way in;
      *   - a pure **team leader** holds only `team` scopes, so the list is
      *     empty. Leading a team is not administering the ministry above it
-     *     (§4.6), and `/volunteer/ministries/{id}` would refuse them.
+     *     (§4.6), and `/ministries/{id}` would refuse them.
      *
      * Ids and names only — this runs on **every** page of the application, so
      * it never hydrates a model object.

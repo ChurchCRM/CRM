@@ -7,25 +7,19 @@ use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\MvcAppFactory;
 use Slim\Routing\RouteCollectorProxy;
 
-// NO module-level roleMiddleware: every gate is applied per route group instead
-// (see the volunteer-v2 design, §3.2). Since MP6 (#9867) this module is the
-// coordinator area and nothing else — the volunteer's own two pages moved into
-// the Member Portal, and all that is left of them here is a pair of redirects.
+// Redirects only. The member pages moved into the Member Portal (MP6, #9867) and
+// the coordinator area moved to /ministries (product-owner review, 2026-09-17);
+// every URL this module ever served is in bookmarks, old emails and browser
+// histories, so each one still lands where its reader wanted to go.
 $app = MvcAppFactory::create('/volunteer', [
-    'dashboardUrl'  => '/volunteer/dashboard',
+    'dashboardUrl'  => '/ministries/dashboard',
     'dashboardText' => gettext('Back to Ministry Dashboard'),
 ]);
 
-// Rollout gate for the whole module, using the wrapper-group idiom from
-// src/fundraiser/index.php (MvcAppFactory exposes no hook for this).
-// LIFO: VolunteerV2Enabled runs first, then CSRF. The route files reference
-// $app, so alias the group proxy to $app for them.
 $app->group('', function (RouteCollectorProxy $group): void {
     $app = $group;
-    require __DIR__ . '/routes/dashboard.php';
-    require __DIR__ . '/routes/ministry.php';
-    require __DIR__ . '/routes/occurrence.php';
     require __DIR__ . '/routes/member-redirects.php';
+    require __DIR__ . '/routes/coordinator-redirects.php';
 })->add(new CSRFMiddleware())->add(new VolunteerV2EnabledMiddleware());
 
 $app->run();

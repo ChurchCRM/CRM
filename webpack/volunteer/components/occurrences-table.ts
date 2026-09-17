@@ -14,7 +14,7 @@
  * Two things the caller decides: the search form's Team select (the ministry page
  * offers "All Teams" and every team; the portal's page is fixed to one team and
  * leaves the select out of its markup entirely), and where an occurrence link
- * points — `/volunteer/occurrences/{id}` in the admin shell,
+ * points — `/ministries/occurrences/{id}` in the admin shell,
  * `/portal/teams/{teamId}/occurrences/{id}` in the portal.
  */
 

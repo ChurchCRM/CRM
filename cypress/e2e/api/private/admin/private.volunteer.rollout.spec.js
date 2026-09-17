@@ -10,7 +10,7 @@
  *   - `GET /api/volunteer/status`        — V2 API, gated by VolunteerV2EnabledMiddleware
  *   - `GET /api/volunteer-opportunities` — V1 API, deliberately enabled in EVERY state
  *                                          (design §3.8 surface 5; #9702 owns its retirement)
- *   - `GET /volunteer/dashboard`         — V2 MVC module, gated by the same middleware
+ *   - `GET /ministries/dashboard`         — V2 MVC module, gated by the same middleware
  *                                          plus VolunteerCoordinatorRoleAuthMiddleware on the
  *                                          route group (#9706 replaced #9704's admin gate)
  *
@@ -32,7 +32,7 @@
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const STATUS_URL = "/api/volunteer/status";
 const V1_API_URL = "/api/volunteer-opportunities";
-const DASHBOARD_URL = "/volunteer/dashboard";
+const DASHBOARD_URL = "/ministries/dashboard";
 
 /** Set the rollout state. The POST response body is not asserted: ConfigItem::setValue()
  *  deletes the config_cfg row when the value equals the default but leaves the in-memory
@@ -135,10 +135,10 @@ describe("Volunteer v2 rollout flag (#9704)", () => {
             });
         });
 
-        it("redirects /volunteer to /volunteer/dashboard", () => {
+        it("redirects /volunteer to /ministries/dashboard", () => {
             adminPageRequest("/volunteer/").then((resp) => {
                 expect(resp.status).to.eq(302);
-                expect(resp.headers.location).to.include("/volunteer/dashboard");
+                expect(resp.headers.location).to.include("/ministries/dashboard");
             });
         });
 

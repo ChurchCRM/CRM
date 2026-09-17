@@ -150,7 +150,7 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
         });
 
         it("has no 'Whole ministry' choice in the position editor", () => {
-            cy.visit(`/volunteer/ministries/${ministryId}`);
+            cy.visit(`/ministries/${ministryId}`);
             cy.get("#nav-item-positions").click();
             cy.get("#position-add-btn").should("be.visible").click();
             cy.get("#positionModal").should("be.visible");
@@ -163,7 +163,7 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
         });
 
         it("names a team on every row of the positions table", () => {
-            cy.visit(`/volunteer/ministries/${ministryId}`);
+            cy.visit(`/ministries/${ministryId}`);
             cy.get("#nav-item-positions").click();
             cy.get("#volunteerPositionsTable").should("be.visible");
             cy.get("#volunteerPositionsTable").should("not.contain", "Whole ministry");
@@ -172,7 +172,7 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
         });
 
         it("requires a team on the schedule form and offers no team-less option", () => {
-            cy.visit(`/volunteer/ministries/${ministryId}`);
+            cy.visit(`/ministries/${ministryId}`);
             cy.get("#nav-item-schedules").click();
             cy.get("#schedule-add-btn").should("be.visible").click();
             cy.get("#scheduleModal").should("be.visible");
@@ -184,7 +184,7 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
         });
 
         it("shows one team at a time, with no 'All teams' option", () => {
-            cy.visit(`/volunteer/ministries/${ministryId}`);
+            cy.visit(`/ministries/${ministryId}`);
             cy.get("#nav-item-volunteers").click();
             cy.get("#volunteers .volunteer-loading").should("not.be.visible");
 
@@ -203,7 +203,7 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
         });
 
         it("swaps the columns when another team is chosen", () => {
-            cy.visit(`/volunteer/ministries/${ministryId}`);
+            cy.visit(`/ministries/${ministryId}`);
             cy.get("#nav-item-volunteers").click();
             cy.get("#volunteers .volunteer-loading").should("not.be.visible");
             cy.get("#qualification-team-filter").select(String(nurseryId));
@@ -220,7 +220,7 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
             ).then((resp) => {
                 const soloId = resp.body.ministry.id;
                 freshAdminLogin();
-                cy.visit(`/volunteer/ministries/${soloId}`);
+                cy.visit(`/ministries/${soloId}`);
                 // The teams card is on Overview, which is the tab the page opens on.
                 // Wait for the load AND the DataTables init before touching a row
                 // menu: a click landing mid-init is thrown away with the row that

@@ -123,7 +123,7 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
     // nothing at all unless the caller may manage at least one occurrence linked to this
     // event, so a volunteer, a plain member or an events administrator with no ministry
     // scope simply never sees the card. Read-only; the edit affordance is the link to
-    // /volunteer/occurrences/{id}.
+    // /ministries/occurrences/{id}.
     $volunteerOccurrences = [];
     if (User::isVolunteerV2Enabled()) {
         $assignments = new VolunteerAssignmentService();

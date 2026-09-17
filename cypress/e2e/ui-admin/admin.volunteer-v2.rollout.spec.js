@@ -58,7 +58,7 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
         it("keeps the legacy Volunteer Opportunities admin menu item and hides the V2 menu", () => {
             cy.visit(PERSON_VIEW_URL);
             cy.get('a[href$="VolunteerOpportunityEditor.php"]').should("exist");
-            cy.get('a[href$="/volunteer/dashboard"]').should("not.exist");
+            cy.get('a[href$="/ministries/dashboard"]').should("not.exist");
         });
 
         it("serves the legacy editor without redirecting", () => {
@@ -83,20 +83,20 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
 
         it("shows the V2 menu entry and hides the legacy admin menu item", () => {
             cy.visit(PERSON_VIEW_URL);
-            cy.get('a[href$="/volunteer/dashboard"]').should("exist");
+            cy.get('a[href$="/ministries/dashboard"]').should("exist");
             cy.get('a[href$="VolunteerOpportunityEditor.php"]').should("not.exist");
         });
 
         it("redirects the legacy editor to the V2 dashboard", () => {
             cy.visit(LEGACY_EDITOR_URL);
-            cy.url().should("include", "/volunteer/dashboard");
+            cy.url().should("include", "/ministries/dashboard");
         });
 
         // #9711 replaced #9704's placeholder with the real S1 dashboard, so this
         // asserts the page is the coordinator dashboard rather than the old
         // "Volunteer Management" placeholder heading.
         it("renders the V2 coordinator dashboard", () => {
-            cy.visit("/volunteer/dashboard");
+            cy.visit("/ministries/dashboard");
             cy.get("#volunteer-dashboard").should("exist");
             cy.contains("Ministry Dashboard").should("be.visible");
         });
@@ -112,7 +112,7 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
             setVersion("v1");
             freshAdminLogin();
             cy.visit(PERSON_VIEW_URL);
-            cy.get('a[href$="/volunteer/dashboard"]').should("not.exist");
+            cy.get('a[href$="/ministries/dashboard"]').should("not.exist");
         });
 
         after(() => {
@@ -131,8 +131,8 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
             // The coordinator half is the Ministries heading now — the
             // dashboard entry moved there out of the Volunteer heading, and
             // the retired ministries list page has no entry at all.
-            cy.get('a[href$="/volunteer/ministries"]').should("not.exist");
-            cy.get('a[href$="/volunteer/dashboard"]').should("exist");
+            cy.get('a[href$="/ministries"]').should("not.exist");
+            cy.get('a[href$="/ministries/dashboard"]').should("exist");
             // The member entries are NOT in the sidebar in any state (#9867):
             // they moved into the Member Portal with the pages themselves.
             cy.get('a[href$="/volunteer/my-schedule"]').should("not.exist");
@@ -156,7 +156,7 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
         it("shows both the legacy admin menu item and the V2 menu entry", () => {
             cy.visit(PERSON_VIEW_URL);
             cy.get('a[href$="VolunteerOpportunityEditor.php"]').should("exist");
-            cy.get('a[href$="/volunteer/dashboard"]').should("exist");
+            cy.get('a[href$="/ministries/dashboard"]').should("exist");
         });
 
         it("serves the legacy editor without redirecting", () => {

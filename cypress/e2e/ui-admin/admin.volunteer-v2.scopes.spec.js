@@ -40,7 +40,7 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
-const MINISTRIES_URL = "/volunteer/ministries";
+const MINISTRIES_URL = "/ministries";
 
 const PREFIX = "UI9706";
 const MINISTRY_NAME = `${PREFIX} Hospitality`;
@@ -297,7 +297,7 @@ describe("Volunteer v2 coordinator and team-leader grants (#9706 UI)", () => {
             // which for this person is true solely because of the scope row the UI wrote.
             // They live under the Ministries heading: the dashboard, and one
             // entry per ministry they hold a scope on — which is this one.
-            cy.get('a[href$="/volunteer/dashboard"]').should("exist");
+            cy.get('a[href$="/ministries/dashboard"]').should("exist");
             cy.get(`a[href$="${ministryUrl()}"]`).should("exist");
 
             cy.visit(ministryUrl());

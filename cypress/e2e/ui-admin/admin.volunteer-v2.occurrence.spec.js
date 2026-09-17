@@ -63,7 +63,7 @@ function setVersion(value) {
 }
 
 function occurrenceUrl() {
-    return `/volunteer/occurrences/${occurrenceId}`;
+    return `/ministries/occurrences/${occurrenceId}`;
 }
 
 /**
@@ -325,15 +325,15 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
         });
 
         it("breadcrumbs link to the dashboard and the ministry page (not relative 404s)", () => {
-        // Carl's review path: from /volunteer/occurrences/{id} the "Ministries" and
+        // Carl's review path: from /ministries/occurrences/{id} the "Ministries" and
         // ministry crumbs resolved relative to the page and 404'd. Breadcrumb URLs
         // must be root-relative.
-        cy.visit(`/volunteer/occurrences/${occurrenceId}`);
+        cy.visit(`/ministries/occurrences/${occurrenceId}`);
         cy.get(".breadcrumb a").each(($a) => {
             expect($a.attr("href"), $a.text()).to.match(/^\//);
         });
         cy.get(".breadcrumb a").contains("Ministries").click();
-        cy.url().should("include", "/volunteer/dashboard");
+        cy.url().should("include", "/ministries/dashboard");
         cy.get("#volunteer-dashboard, .page-title").should("exist");
     });
 

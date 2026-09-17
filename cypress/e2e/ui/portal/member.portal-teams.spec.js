@@ -17,7 +17,7 @@
  * The walk is the acceptance criterion of the issue, in order: the nav entry
  * appears, the team opens, a qualification tick saves, a schedule is created,
  * its dates are generated, one of them is staffed — and the two refusals hold:
- * another team's page is the portal's own 403, and `/volunteer/ministries/{id}`
+ * another team's page is the portal's own 403, and `/ministries/{id}`
  * never renders the admin shell.
  *
  * `limited.user` is the control: a member with no scope at all, who must not see
@@ -420,11 +420,11 @@ describe("Member Portal — My Teams", () => {
 
         it("The admin ministry page never renders for a member login", () => {
             login(LEADER_USERNAME, LEADER_PASSWORD);
-            cy.visit(`/volunteer/ministries/${ministryId}`, { failOnStatusCode: false });
+            cy.visit(`/ministries/${ministryId}`, { failOnStatusCode: false });
 
             cy.get("#volunteer-ministry").should("not.exist");
             cy.get("#sidebar").should("not.exist");
-            cy.url().should("not.include", `/volunteer/ministries/${ministryId}`);
+            cy.url().should("not.include", `/ministries/${ministryId}`);
         });
 
         it("A member who leads nothing has no My Teams entry and cannot open the pages", () => {

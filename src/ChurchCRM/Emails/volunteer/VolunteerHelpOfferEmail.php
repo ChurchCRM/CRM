@@ -84,7 +84,7 @@ class VolunteerHelpOfferEmail extends BaseVolunteerEmail
     /** The qualification tab, not the ministry's front page: that is where the action is. */
     protected function getFullURL(): string
     {
-        return SystemURLs::getURL() . '/volunteer/ministries/' . $this->ministryId . '#qualifications';
+        return SystemURLs::getURL() . '/ministries/' . $this->ministryId . '#qualifications';
     }
 
     protected function getButtonText(): string

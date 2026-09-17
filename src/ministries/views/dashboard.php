@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
  * the page header (groups-mvc-guidelines.md).
  *
  * Every string here is `gettext()`; the JS strings live in
- * `webpack/volunteer/dashboard.ts`, because an `i18next.t()` call inside a .php
+ * `webpack/ministries/dashboard.ts`, because an `i18next.t()` call inside a .php
  * file is scanned by neither the PHP nor the JS extractor and is silently never
  * translated (§5.10, F31).
  *
@@ -209,7 +209,7 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
     <div class="col-12 col-xl-4">
 
       <!-- My ministries and teams. For a team leader this is the ONLY entry
-           point into the module: /volunteer/ministries/{id} is ministry-scoped
+           point into the module: /ministries/{id} is ministry-scoped
            (design §4.6), so the sidebar's Ministries heading offers them no
            ministry entry and this card is where their teams are named. -->
       <div class="card mb-3" id="volunteer-scope-card">

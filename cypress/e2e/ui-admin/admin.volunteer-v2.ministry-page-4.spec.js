@@ -27,7 +27,7 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
-const MINISTRIES_URL = "/volunteer/ministries";
+const MINISTRIES_URL = "/ministries";
 
 const PREFIX = "UIPAGE4";
 const MINISTRY_NAME = `${PREFIX} Coffee Bar`;

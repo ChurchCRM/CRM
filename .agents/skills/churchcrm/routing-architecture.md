@@ -499,11 +499,11 @@ Two things that bite:
 
 `MenuItem::isActive()` compares the request path with the item's own URI, which is right for
 almost every entry. When a page *belongs* to an entry without living under its URL — e.g.
-`/volunteer/occurrences/{id}` belongs to the ministry whose schedule generated it — the menu
+`/ministries/occurrences/{id}` belongs to the ministry whose schedule generated it — the menu
 builder resolves the relationship and says so:
 
 ```php
-$item = new MenuItem($ministryName, 'volunteer/ministries/' . $id, true, 'fa-handshake-angle');
+$item = new MenuItem($ministryName, 'ministries/' . $id, true, 'fa-handshake-angle');
 if ($activeMinistryId === $id) {
     $item->setActiveOverride(true);   // isActive() → true, so openMenu() opens the heading
 }
@@ -718,3 +718,15 @@ cy.url().should('include', 'access-denied');
 ---
 
 Last updated: September 11, 2026
+
+## Volunteer v2 lives at /ministries, /volunteer is redirects only <!-- learned: 2026-09-17 -->
+
+The coordinator area of Volunteer Management v2 is the `src/ministries/` module
+(`MvcAppFactory::create('/ministries')`): `/ministries/dashboard`, `/ministries/{id}`,
+`/ministries/occurrences/{id}`. `src/volunteer/index.php` still exists but serves only
+redirects — `routes/member-redirects.php` (to the Member Portal) and
+`routes/coordinator-redirects.php` (301s to `/ministries/*`). The API is unchanged at
+`/api/volunteer/*`, and the webpack bundles keep their `volunteer-*` names. A new module
+directory needs its own `.htaccess` (copy `src/fundraiser/.htaccess`): the root rewrite
+passes a real directory through, and the module's own rule sends everything to its
+`index.php`.

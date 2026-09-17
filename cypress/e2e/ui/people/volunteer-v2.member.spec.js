@@ -1010,7 +1010,7 @@ describe("Volunteer v2 — the member navigation (§3.5)", () => {
         cy.get("#portal-volunteer-tab-opportunities").should("exist");
 
         // …and never the coordinator entries, nor any admin furniture at all.
-        cy.get("a[href$='volunteer/dashboard']").should("not.exist");
+        cy.get("a[href$='ministries/dashboard']").should("not.exist");
         cy.get("a[href$='volunteer/setup']").should("not.exist");
         cy.get("#sidebar-menu").should("not.exist");
     });

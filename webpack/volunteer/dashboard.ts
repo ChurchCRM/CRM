@@ -183,7 +183,7 @@ function renderGaps(gaps: VolunteerDashboardGap[]): void {
 
       return `
         <a class="list-group-item list-group-item-action volunteer-gap-link"
-           href="${root()}/volunteer/occurrences/${gap.occurrenceId}"
+           href="${root()}/ministries/occurrences/${gap.occurrenceId}"
            data-occurrence-id="${gap.occurrenceId}"
            data-position-id="${gap.positionId}">
           <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
@@ -255,7 +255,7 @@ function renderPending(rows: VolunteerDashboardPending[]): void {
               ${actionMenu([
                 {
                   type: "link",
-                  href: `${root()}/volunteer/occurrences/${row.occurrenceId}`,
+                  href: `${root()}/ministries/occurrences/${row.occurrenceId}`,
                   icon: "fa-solid fa-list-check",
                   label: i18next.t("Open the occurrence"),
                 },
@@ -321,7 +321,7 @@ function renderSwaps(swaps: VolunteerDashboardSwap[]): void {
                 <button type="button" class="btn btn-sm btn-outline-danger volunteer-swap-reject" data-swap-id="${swap.id}">
                   <i class="fa-solid fa-xmark me-1"></i>${i18next.t("Reject")}
                 </button>
-                <a class="btn btn-sm btn-outline-secondary" href="${root()}/volunteer/occurrences/${swap.occurrenceId ?? 0}">
+                <a class="btn btn-sm btn-outline-secondary" href="${root()}/ministries/occurrences/${swap.occurrenceId ?? 0}">
                   ${i18next.t("Open the occurrence")}
                 </a>
               </div>
@@ -405,7 +405,7 @@ function renderUpcoming(rows: VolunteerDashboardOccurrence[]): void {
 
       return `
         <tr>
-          <td><a href="${root()}/volunteer/occurrences/${occurrence.id}">${escapeHtml(whenLabel(occurrence.start, occurrence.occurrenceDate))}</a></td>
+          <td><a href="${root()}/ministries/occurrences/${occurrence.id}">${escapeHtml(whenLabel(occurrence.start, occurrence.occurrenceDate))}</a></td>
           <td>${escapeHtml(ministryLabel(occurrence.ministryName, occurrence.teamName))}</td>
           <td>${escapeHtml(occurrence.scheduleName ?? "")}</td>
           <td class="text-center">${staffedBadge(occurrence)}</td>
@@ -414,13 +414,13 @@ function renderUpcoming(rows: VolunteerDashboardOccurrence[]): void {
             ${actionMenu([
               {
                 type: "link",
-                href: `${root()}/volunteer/occurrences/${occurrence.id}`,
+                href: `${root()}/ministries/occurrences/${occurrence.id}`,
                 icon: "fa-solid fa-list-check",
                 label: i18next.t("Staff this occurrence"),
               },
               occurrence.ministryId !== null && {
                 type: "link",
-                href: `${root()}/volunteer/ministries/${occurrence.ministryId}`,
+                href: `${root()}/ministries/${occurrence.ministryId}`,
                 icon: "fa-solid fa-handshake-angle",
                 label: i18next.t("Open the ministry"),
               },
@@ -476,7 +476,7 @@ function renderScope(scope: VolunteerDashboard["scope"]): void {
       }
 
       return `
-        <a class="list-group-item list-group-item-action" href="${root()}/volunteer/ministries/${ministry.id}">
+        <a class="list-group-item list-group-item-action" href="${root()}/ministries/${ministry.id}">
           <span class="fw-bold">${escapeHtml(ministry.name)}</span>${inactive}
         </a>`;
     })

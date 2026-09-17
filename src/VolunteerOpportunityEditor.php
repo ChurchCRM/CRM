@@ -23,7 +23,7 @@ AuthenticationManager::redirectHomeIfNotAdmin();
 // the UI, so enforce that server-side rather than relying on the hidden menu
 // item. 'both' keeps it reachable for the duration of the migration (#9702).
 if (User::getVolunteerVersion() === 'v2') {
-    RedirectUtils::redirect('volunteer/dashboard');
+    RedirectUtils::redirect('ministries/dashboard');
 }
 
 // top down design....

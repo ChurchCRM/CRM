@@ -110,7 +110,7 @@ describe("Volunteer v2 — a ministry's pool Group in the Groups module (D19)", 
             .and("contain", "volunteer pool")
             .and("contain", MINISTRY_NAME)
             .and("contain", "managed from that ministry");
-        cy.get(`#group-ministry-pool-note a[href*="/volunteer/ministries/${ministryId}"]`)
+        cy.get(`#group-ministry-pool-note a[href*="/ministries/${ministryId}"]`)
             .should("be.visible");
     });
 

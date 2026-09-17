@@ -95,7 +95,7 @@ Non-hierarchical by design: **Teams under Ministry is sufficient. There are no n
 | D9 | **Ministry coordinators create and own events.** `events_event` gains a nullable ministry id. Events carrying a ministry id are editable and volunteer-assignable by that ministry's coordinator (and by global volunteer managers / administrators). Events with a null ministry id behave exactly as today. Ministries are **not** the parent of events in general — the link is optional. | Church product decision |
 | D10 | **Email only for the first release** (assignment, reminder, decline/gap alert, swap proposal/resolution, signup confirmation). SMS and in-app are later; the design must not preclude them and must not build them. | Church product decision |
 | D11 | **Reminder lead time is one system-level setting**, adjustable by an administrator, not per volunteer. | Church product decision |
-| D12 | **Authorization tiers**: Administrator > Global Volunteer Manager > Ministry Coordinator > Team Leader > Volunteer. *(**Revised 2026-09-17**, product owner: the Global Volunteer Manager tier is granted by the user-editor permission **"Manage Ministries"** — column `user_usr.usr_ManageMinistries`, predicate `User::isManageMinistriesEnabled()`, route gate `ManageMinistriesRoleAuthMiddleware`, access-denied role code `ManageMinistries`. The tier keeps its name in this document; the permission was renamed because the admin surface it opens is the **Ministries** heading and the **Ministry Dashboard**, not a volunteer-facing page. The same revision renamed the dashboard from "Volunteer Dashboard" to "Ministry Dashboard" and rooted the coordinator area's breadcrumb trail at **Home / Ministries** instead of Home / Volunteer.)* | #9701, #9706 |
+| D12 | **Authorization tiers**: Administrator > Global Volunteer Manager > Ministry Coordinator > Team Leader > Volunteer. *(**Revised 2026-09-17**, product owner: the Global Volunteer Manager tier is granted by the user-editor permission **"Manage Ministries"** — column `user_usr.usr_ManageMinistries`, predicate `User::isManageMinistriesEnabled()`, route gate `ManageMinistriesRoleAuthMiddleware`, access-denied role code `ManageMinistries`. The tier keeps its name in this document; the permission was renamed because the admin surface it opens is the **Ministries** heading and the **Ministry Dashboard**, not a volunteer-facing page. The same revision renamed the dashboard from "Volunteer Dashboard" to "Ministry Dashboard", rooted the coordinator area's breadcrumb trail at **Home / Ministries** instead of Home / Volunteer, and **moved the coordinator module to `/ministries`** (`src/ministries/`, `MvcAppFactory::create('/ministries')`): the dashboard is `/ministries/dashboard`, a ministry page `/ministries/{id}`, an occurrence page `/ministries/occurrences/{id}`. `src/volunteer/` keeps only 301/302 redirects — the member pages' to the portal, the coordinator pages' to `/ministries/*`. The API stays at `/api/volunteer/*`. The Ministry Dashboard shows nothing from a deactivated ministry: its occurrences, gaps, responses, swaps and failed sends are dropped after scoping, and the "My ministries and teams" card lists active ministries and their teams only.)* | #9701, #9706 |
 | D13 | **Substitution/swap is core**, not optional. | Church product decision, #9709 |
 | D14 | **Volunteers are ChurchCRM members with logins** — the "Non-Admin Member Access" persona, i.e. an **EditSelf-exclusive** user. Self-service lives on authenticated member-facing pages, authorized per authenticated person. **Tokenized accept/decline links in email for people without logins are a documented future extension, not in scope.** *(**Revised 2026-09-16** by the Member Portal epic, decision P17, issue [#9867](https://github.com/ChurchCRM/CRM/issues/9867): **volunteer scopes count for a self-service login.** `VolunteerAuthorizationService::loadScopes()` no longer discards the grants of an EditSelf-exclusive account — only the rollout-flag short-circuit remains — and `User::isVolunteerTeamLeaderEnabled()` reports a held `team` grant regardless of the flag. A self-service-only account **can never be a coordinator; it may lead a team, exercised in the Member Portal (MP6/MP7)**: `isVolunteerCoordinatorEnabled()` keeps its own EditSelf short-circuit, so the coordinator dashboard and the sidebar's Ministries heading stay closed to it. The member surface itself moved out of the admin shell into `/portal/volunteer/*` at the same time — §4.7, §5.0, §5.1.)* | Resolves audit open question; see §4.7. Revision: Member Portal design §0.4 P17, §7 |
 | D15 | **Reminders and scheduling**: there is no scheduler in ChurchCRM. V2 specifies a **notification outbox** table (idempotent enqueue keyed by assignment + type, send log, retry-safe) drained by the existing `POST /api/background/timerjobs` mechanism. Installations wanting punctual reminders configure a real cron or external ping of that endpoint with an API key — **zero code**. Best-effort delivery on page load is the documented fallback. | Resolves audit open question; see §3.6 |
@@ -1286,7 +1286,7 @@ use Slim\Routing\RouteCollectorProxy;
 // NO module-level roleMiddleware: the coordinator area and the member area have
 // different gates and must live in the same module (see §3.2).
 $app = MvcAppFactory::create('/volunteer', [
-    'dashboardUrl'  => '/volunteer/dashboard',
+    'dashboardUrl'  => '/ministries/dashboard',
     'dashboardText' => gettext('Back to Ministry Dashboard'),
 ]);
 
@@ -1307,8 +1307,8 @@ $app->run();
 Notes an implementer must not get wrong:
 
 - Route paths inside route files are **module-relative** (`$app->get('/dashboard', …)`), because
-  `setBasePath()` already carries `/volunteer`. Writing `/volunteer/dashboard` yields
-  `/volunteer/volunteer/dashboard`.
+  `setBasePath()` already carries `/volunteer`. Writing `/ministries/dashboard` yields
+  `/ministries/dashboard`.
 - Route files act on the ambient `$app`; there are **no controller classes** anywhere in this
   codebase and no `return function ($app)` convention. `routing-architecture.md` and
   `slim-mvc-skill.md` claim otherwise and are wrong — follow `src/event/` and
@@ -1335,7 +1335,7 @@ requests, using `BrowserRequestTrait` exactly as `BaseAuthRoleMiddleware` does
 
 | Area | Path prefix | Gate |
 |---|---|---|
-| Coordinator MVC | `/volunteer/dashboard`, `/volunteer/ministries/{id}`, `/volunteer/occurrences/{id}` | `VolunteerCoordinatorRoleAuthMiddleware` on the group. `/volunteer/ministries` with no id is a 302 to the dashboard, inside the same group and behind the same gate — the list page it used to serve was retired in favour of the sidebar's **Ministries** heading (§5.0) |
+| Coordinator MVC | `/ministries/dashboard`, `/ministries/{id}`, `/ministries/occurrences/{id}` | `VolunteerCoordinatorRoleAuthMiddleware` on the group. `/ministries` with no id is a 302 to the dashboard, inside the same group and behind the same gate — the list page it used to serve was retired in favour of the sidebar's **Ministries** heading (§5.0) |
 | Member MVC | `/portal/volunteer/schedule`, `/portal/volunteer/opportunities` (moved out of this module by #9867; the old `/volunteer/my-schedule` and `/volunteer/opportunities` 302 here for one release) | **no role gate** — per-record authorization only, by authenticated person (D14). The rollout flag still applies: `PortalNav::isVolunteeringVisible()` gates both the route and the nav entry |
 | Coordinator API | `/api/volunteer/...` | `VolunteerCoordinatorRoleAuthMiddleware` + `VolunteerV2EnabledMiddleware` on the group; per-entity middleware per route |
 | Member API | `/api/volunteer/me/...` | `VolunteerV2EnabledMiddleware` only — every authenticated person is potentially a volunteer |
@@ -1585,7 +1585,7 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 | Person view tab | `src/people/views/person-view.php:580-584` (nav) and `:680-761` (pane); route args `src/people/routes/view.php:246-248` | **Direct edit** — there is no `PERSON_VIEW_TABS` filter (F15). The route passes the rollout state; the view renders the V1 pane, the V2 pane, or both (§3.8). The V2 pane lists the person's qualifications and upcoming assignments, read-only, linking into `/volunteer`. Adding a real `Hooks::PERSON_VIEW_TABS` filter is a worthwhile core extraction, but it is **not a prerequisite** — editing the view directly is the established pattern (F15), not a workaround for a defect. Tracked as open question D-8, not in [Appendix E](#appendix-e--prerequisite-hardening-track). |
 | Event editor | `webpack/event-form.js` beside `#linkedGroupSelect` (`:271-272`) | the ministry select (§2.16 item 10) |
 | Event API | `src/api/routes/calendar/events.php` `applyEventExtendedFields()` `:234-282`, `getEvent` `:181-227` | §2.16 items 7–9 |
-| Event roster / staffing | `src/event/views/view.php` | a "Volunteers" card on the event view showing V2 staffing for occurrences linked to this event, gated on the rollout flag **and** on scope. Read-only; the edit affordance links to `/volunteer/occurrences/{id}`. |
+| Event roster / staffing | `src/event/views/view.php` | a "Volunteers" card on the event view showing V2 staffing for occurrences linked to this event, gated on the rollout flag **and** on scope. Read-only; the edit affordance links to `/ministries/occurrences/{id}`. |
 | Calendar | `src/ChurchCRM/dto/FullCalendarEvent.php:52-75` | add `extendedProps.volunteerGapCount` / `volunteerStaffed` for events the caller may see (E13) |
 | Global search | `src/api/routes/search.php:39-47` + a new `VolunteerSearchResultProvider` | E/P2. Results scoped by `getManagedMinistryIds()`. |
 | Cart | `src/skin/js/cart.js:606-636` (dropdown) + `POST /api/volunteer/ministries/{id}/pool/from-cart` | P6. Adding a V2 entry to the dropdown means editing that hardcoded function — flagged, not required for the first release; the ministry page offers "Add from Cart" on its Volunteers tab. The occurrence page's "assign everyone in the cart" button and its route are retired. |
@@ -1708,7 +1708,7 @@ These are the only places the rollout flag has to be threaded. Everything else i
 | 1 | People → Admin → "Volunteer Opportunities" menu item | `src/ChurchCRM/Config/Menu/Menu.php:114` | visibility becomes `$isAdmin && User::isVolunteerV1Enabled()`; a new top-level Volunteer menu appears when `isVolunteerV2Enabled()` |
 | 2 | Person view "Volunteer" tab | `src/people/views/person-view.php:580-584` (nav), `:680-761` (pane) | `v1` → today's pane; `v2` → the V2 pane; `both` → **two clearly-labelled tabs**, "Volunteer (Legacy)" and "Volunteer", because #9704 requires the active experience to be obvious. The route (`src/people/routes/view.php:246-248`) passes the version in. |
 | 3 | Person-view assign `POST` / `RemoveVO` `GET` | `src/people/routes/view.php:22-48`, `:65-72` | **handlers untouched.** The flag only decides whether the form that posts to them is rendered. Do **not** add V2 writes to these handlers. |
-| 4 | Legacy editor page | `src/VolunteerOpportunityEditor.php:19` | in `v2`-only mode, a server-side redirect to `/volunteer/dashboard`. This is the "enforce the rollout server-side" requirement of #9704, which explicitly permits changes "required to expose/disable the experience". |
+| 4 | Legacy editor page | `src/VolunteerOpportunityEditor.php:19` | in `v2`-only mode, a server-side redirect to `/ministries/dashboard`. This is the "enforce the rollout server-side" requirement of #9704, which explicitly permits changes "required to expose/disable the experience". |
 | 5 | V1 REST API group | `src/api/routes/system/volunteer-opportunities.php:265` | **leave enabled in every state.** It is already admin-only, and #9702's migration tooling will want it. Recommended: no change at all. |
 | 6 | `QueryView` empty-state admin link | `src/QueryView.php:375-378` | hardcodes `VolunteerOpportunityEditor.php`; if #4 adds a redirect this link silently changes destination. **Leave it**; note it for #9702. |
 | 7 | Reports menu → `QueryList.php` | `src/ChurchCRM/Config/Menu/Menu.php:336` | the two seeded V1 volunteer queries stay listed in every state. Acceptable — they are V1 data reports and #9702 owns their retirement. |
@@ -1945,7 +1945,7 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 Three rows need explaining.
 
 **Team-leader schedules (#9868).** "scope (own team)" on the schedule rows is not something a
-single middleware can say, because `POST /volunteer/ministries/{ministryId}/schedules` is keyed on
+single middleware can say, because `POST /ministries/{ministryId}/schedules` is keyed on
 the MINISTRY while the thing it creates belongs to the TEAM the payload names. The gate is
 therefore the union of the two readings, in this order:
 
@@ -2125,7 +2125,7 @@ Every row here needs a Cypress spec (§6.5).
 | Rollout `v1` → V1 surfaces | unchanged and working |
 | EditSelf-exclusive volunteer → `GET /api/volunteer/me/assignments` | `200` (the §4.7 exemption) |
 | EditSelf-exclusive volunteer → `GET /api/volunteer/ministries` | `403` (not exempt) |
-| EditSelf-exclusive volunteer → `/volunteer/dashboard` in a browser | `302` to `/portal/` (#9863; it was `/external/limited-access` before the Member Portal) |
+| EditSelf-exclusive volunteer → `/ministries/dashboard` in a browser | `302` to `/portal/` (#9863; it was `/external/limited-access` before the Member Portal) |
 | EditSelf-exclusive volunteer holding a `team` scope → `GET /api/volunteer/me/permissions` | `200`, `isTeamLeader: true`, `isCoordinator: false` (the D14 revision, #9867) |
 | Administrator → everything | `200` |
 
@@ -2180,7 +2180,7 @@ the Member Portal, which their user menu links to.
 | Member Portal nav | **Volunteering** | `fa-solid fa-handshake-angle` | every member, while `PortalNav::isVolunteeringVisible()` — the rollout flag `User::isVolunteerV2Enabled()` **and** the administrator's `bPortalShowVolunteer` switch (read defensively: undeclared means on, MP3 declares it) | links to *My schedule* (S5); the page's own tab bar carries *Find something to do* (S6). The route and the entry ask the same predicate, so the portal never offers a page it will then 404 |
 | Member Portal nav | **My Teams** | `fa-solid fa-people-group` | a member who holds an explicit `team` grant (`User::isVolunteerTeamLeaderEnabled()`), while volunteering is visible at all. A coordinator, manager or administrator is **not** a team leader (§4.4) and gets no entry — their way into a team is the ministry page | `/portal/teams`, then one team page each with Positions · Volunteers · Schedules · Dates, and an occurrence page under it (#9868, Member Portal §5.5). The route is deliberately more generous than the entry: it also admits a coordinator-or-above who opens the portal as themselves |
 | Admin sidebar | ~~**Volunteer**~~ | — | — | **removed** — see above |
-| Admin sidebar | **Ministries** | `fa-sitemap` | a volunteer coordinator-or-above (`User::isVolunteerCoordinatorEnabled()` — the same predicate `VolunteerCoordinatorRoleAuthMiddleware` asks; still **false** for a self-service login after the D14 revision) | *Dashboard* (S1), then **one entry per ministry the viewer may administer**, by name, linking to `/volunteer/ministries/{id}` (S3) — the administration surface |
+| Admin sidebar | **Ministries** | `fa-sitemap` | a volunteer coordinator-or-above (`User::isVolunteerCoordinatorEnabled()` — the same predicate `VolunteerCoordinatorRoleAuthMiddleware` asks; still **false** for a self-service login after the D14 revision) | *Dashboard* (S1), then **one entry per ministry the viewer may administer**, by name, linking to `/ministries/{id}` (S3) — the administration surface |
 
 The per-ministry entries are built exactly the way the Groups heading builds its per-group
 entries: one cheap id-and-name query per request, memoised in
@@ -2196,15 +2196,15 @@ entries: one cheap id-and-name query per request, memoised in
   which `MenuItem::isVisible()` drops whenever it would be empty. Same memoised query, split by
   the `active` flag it now carries;
 - **team leader on a STAFF account** — *Dashboard* alone. Leading a team is not administering
-  the ministry above it, and `/volunteer/ministries/{id}` would refuse them. Their teams are
+  the ministry above it, and `/ministries/{id}` would refuse them. Their teams are
   named on the dashboard's "My ministries and teams" card, which is their entry point;
 - **team leader on a SELF-SERVICE account** (the D14 revision, #9867) — no sidebar at all: that
   login never sees the admin shell. Their team pages are in the Member Portal (MP7), reached
   from its own navigation;
 - **manager with no ministry yet** — *Dashboard* alone, and its **New ministry** quick action.
 
-The current ministry's entry is highlighted on `/volunteer/ministries/{id}` — `MenuItem::isActive()`
-matches the path — and on `/volunteer/occurrences/{id}`, where the menu builder resolves
+The current ministry's entry is highlighted on `/ministries/{id}` — `MenuItem::isActive()`
+matches the path — and on `/ministries/occurrences/{id}`, where the menu builder resolves
 occurrence → schedule → ministry with two single-column primary-key lookups and marks the
 entry with `MenuItem::setActiveOverride()`. That resolution runs on that route and no other.
 
@@ -2219,11 +2219,11 @@ Sunday.
 
 | # | Screen | Route | Gate | Bundle |
 |---|---|---|---|---|
-| S1 | Coordinator dashboard — "what needs my attention" | `/volunteer/dashboard` | Coordinator | `volunteer-dashboard` |
+| S1 | Coordinator dashboard — "what needs my attention" | `/ministries/dashboard` | Coordinator | `volunteer-dashboard` |
 | S2 | ~~Setup flow (guided)~~ **removed** — see §5.3 | — | — | — |
-| S2b | ~~My ministries and teams (the module index)~~ **removed** — the sidebar's **Ministries** heading lists the same ministries (§5.0), and `/volunteer/ministries` 302s to S1. Its "New ministry" button lives on S1 | — | — | — |
-| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, help wanted | `/volunteer/ministries/{id}` | scope | `volunteer-ministry` |
-| S4 | Occurrence / staffing view | `/volunteer/occurrences/{id}` | scope | `volunteer-occurrence` |
+| S2b | ~~My ministries and teams (the module index)~~ **removed** — the sidebar's **Ministries** heading lists the same ministries (§5.0), and `/ministries` 302s to S1. Its "New ministry" button lives on S1 | — | — | — |
+| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, help wanted | `/ministries/{id}` | scope | `volunteer-ministry` |
+| S4 | Occurrence / staffing view | `/ministries/occurrences/{id}` | scope | `volunteer-occurrence` |
 | S5 | My schedule (member) | `/portal/volunteer/schedule` | authenticated person | `volunteer-my-schedule` |
 | S6 | Open opportunities (member) | `/portal/volunteer/opportunities` | authenticated person | `volunteer-opportunities` |
 
@@ -3264,10 +3264,10 @@ subclass and V2 does not start.
 |---|---|---|---|---|---|
 | `VolunteerAssignmentEmail` | outbox type `assignment` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 | `VolunteerReminderEmail` | outbox type `reminder` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
-| `VolunteerDeclineAlertEmail` | outbox type `decline_alert` | coordinators in scope | the volunteer who declined | `/volunteer/occurrences/{id}` | *Fill this gap* |
-| `VolunteerGapAlertEmail` | outbox type `gap_alert` | coordinators in scope | none (no single volunteer) | `/volunteer/occurrences/{id}` | *Fill this gap* |
+| `VolunteerDeclineAlertEmail` | outbox type `decline_alert` | coordinators in scope | the volunteer who declined | `/ministries/occurrences/{id}` | *Fill this gap* |
+| `VolunteerGapAlertEmail` | outbox type `gap_alert` | coordinators in scope | none (no single volunteer) | `/ministries/occurrences/{id}` | *Fill this gap* |
 | `VolunteerSignupConfirmEmail` | outbox type `signup_confirm` | the volunteer | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
-| `VolunteerSwapProposedEmail` | outbox type `swap_proposed` | coordinators in scope | the proposing volunteer | `/volunteer/dashboard` | *Review this request* |
+| `VolunteerSwapProposedEmail` | outbox type `swap_proposed` | coordinators in scope | the proposing volunteer | `/ministries/dashboard` | *Review this request* |
 | `VolunteerSwapResolvedEmail` | outbox type `swap_resolved` | proposer **and** substitute | responsible coordinator | `/portal/volunteer/schedule` | *View my schedule* |
 
 The `Reply-To` column is set by the **drain** (§3.6), never by the subclass constructor: the drain

@@ -321,7 +321,7 @@ class Menu
      *
      * A heading of its own, built the way the Groups block builds its per-group
      * entries: a Dashboard entry and then one entry per ministry, by name, each
-     * linking straight to `/volunteer/ministries/{id}`. It replaces the retired
+     * linking straight to `/ministries/{id}`. It replaces the retired
      * "My ministries and teams" list page — a list of the same links, one click
      * further away.
      *
@@ -354,7 +354,7 @@ class Menu
             return $ministriesMenu;
         }
 
-        $ministriesMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', true, 'fa-gauge'));
+        $ministriesMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'ministries/dashboard', true, 'fa-gauge'));
         self::addMinistryEntries($ministriesMenu, $currentUser, true);
         // Last under the heading: the nested Deactivated Ministries group, which
         // MenuItem::isVisible() drops whenever it would be empty.
@@ -386,7 +386,7 @@ class Menu
 
     /**
      * One entry per ministry the viewer may administer whose active flag matches,
-     * by name, linking to `/volunteer/ministries/{id}`. The name is data, rendered
+     * by name, linking to `/ministries/{id}`. The name is data, rendered
      * by MenuRenderer through `InputUtils::escapeHTML()` like every other label.
      */
     private static function addMinistryEntries(MenuItem $heading, User $currentUser, bool $active): void
@@ -396,7 +396,7 @@ class Menu
             if ($ministry['active'] !== $active) {
                 continue;
             }
-            $item = new MenuItem($ministry['name'], 'volunteer/ministries/' . $ministryId, true, 'fa-handshake-angle');
+            $item = new MenuItem($ministry['name'], 'ministries/' . $ministryId, true, 'fa-handshake-angle');
             if ($currentMinistryId === $ministryId) {
                 $item->setActiveOverride(true);
             }
@@ -407,8 +407,8 @@ class Menu
     /**
      * The ministry the current request belongs to when the URL does not name it.
      *
-     * `/volunteer/ministries/{id}` needs nothing: `MenuItem::isActive()` matches it
-     * against the entry's own URI. `/volunteer/occurrences/{id}` does — an
+     * `/ministries/{id}` needs nothing: `MenuItem::isActive()` matches it
+     * against the entry's own URI. `/ministries/occurrences/{id}` does — an
      * occurrence belongs to a schedule and a schedule to a ministry, and without
      * this the sidebar would show nothing highlighted on the one page a coordinator
      * spends the most time. Two primary-key lookups of a single column, and only on
@@ -417,7 +417,7 @@ class Menu
     private static function getVolunteerMinistryIdForCurrentRoute(): ?int
     {
         $path = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
-        if (!is_string($path) || preg_match('{/volunteer/occurrences/([0-9]+)$}', $path, $matches) !== 1) {
+        if (!is_string($path) || preg_match('{/ministries/occurrences/([0-9]+)$}', $path, $matches) !== 1) {
             return null;
         }
 

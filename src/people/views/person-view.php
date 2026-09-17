@@ -881,7 +881,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                                                     <?php if (!empty($aQualification['ministryName'])) : ?>
                                                         <div class="text-body-secondary small">
                                                             <?php if (!empty($aQualification['ministryId'])) : ?>
-                                                                <a href="<?= SystemURLs::getRootPath() ?>/volunteer/ministries/<?= (int) $aQualification['ministryId'] ?>">
+                                                                <a href="<?= SystemURLs::getRootPath() ?>/ministries/<?= (int) $aQualification['ministryId'] ?>">
                                                                     <?= InputUtils::escapeHTML($aQualification['ministryName']) ?>
                                                                 </a>
                                                             <?php else : ?>
@@ -907,7 +907,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                                         <div class="list-group list-group-flush" id="person-volunteer-v2-assignments">
                                             <?php foreach ($volunteerV2Assignments as $aAssignment) : ?>
                                                 <a class="list-group-item list-group-item-action"
-                                                   href="<?= SystemURLs::getRootPath() ?>/volunteer/occurrences/<?= (int) $aAssignment['occurrenceId'] ?>">
+                                                   href="<?= SystemURLs::getRootPath() ?>/ministries/occurrences/<?= (int) $aAssignment['occurrenceId'] ?>">
                                                     <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
                                                         <div>
                                                             <span class="fw-bold"><?= InputUtils::escapeHTML($aAssignment['positionName'] ?? '') ?></span>

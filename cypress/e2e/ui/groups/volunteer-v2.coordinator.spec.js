@@ -26,8 +26,8 @@
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const LEAD_SETTING_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
 const VOLUNTEER_URL = "/api/volunteer";
-const DASHBOARD_URL = "/volunteer/dashboard";
-const MINISTRIES_URL = "/volunteer/ministries";
+const DASHBOARD_URL = "/ministries/dashboard";
+const MINISTRIES_URL = "/ministries";
 
 const POOL_MEMBER_A = 8; // qualified for Espresso
 const POOL_MEMBER_B = 9; // qualified for Milk Station — the one the picker offers
@@ -458,7 +458,7 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
             // "My ministries and teams" is no longer a quick action: the
             // sidebar's Ministries heading lists them, and the card in the
             // right-hand column names the teams.
-            cy.get('#volunteer-quick-actions a[href$="/volunteer/ministries"]').should("not.exist");
+            cy.get('#volunteer-quick-actions a[href$="/ministries"]').should("not.exist");
         });
 
         it("renders localized strings from the bundle, not raw keys", () => {
@@ -478,7 +478,7 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
                 `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posMilk}"]`,
             ).click();
 
-            cy.url().should("include", `/volunteer/occurrences/${occurrenceId}`);
+            cy.url().should("include", `/ministries/occurrences/${occurrenceId}`);
 
             // S4: assign the one qualified person from the eligible picker.
             cy.get(`.volunteer-assign-btn[data-position-id="${posMilk}"]`).click();
@@ -540,7 +540,7 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
             cy.get("#person-volunteer-v2-qualifications").should("contain", POSITION_ESPRESSO);
             cy.get("#person-volunteer-v2-assignments")
                 .should("contain", POSITION_ESPRESSO)
-                .find(`a[href*="/volunteer/occurrences/${occurrenceId}"]`)
+                .find(`a[href*="/ministries/occurrences/${occurrenceId}"]`)
                 .should("exist");
         });
 
@@ -602,7 +602,7 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
 
     describe("The ministry page Schedules tab (§5.4)", () => {
         it("lists the schedule and offers a generate action", () => {
-            cy.visit(`/volunteer/ministries/${ministryId}`);
+            cy.visit(`/ministries/${ministryId}`);
             cy.get("#nav-item-schedules").should("exist").click();
             cy.get("#schedules").should("be.visible");
             cy.get("#volunteerSchedulesTable tbody").should("contain", `${PREFIX} Coffee Bar`);

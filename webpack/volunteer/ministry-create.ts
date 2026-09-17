@@ -67,7 +67,7 @@ function save(): void {
       notifySuccess(i18next.t("Ministry created"));
       // Straight to the new ministry's page: its first team and its pool Group
       // exist already, so there is nothing else to ask for here.
-      window.location.href = `${window.CRM?.root ?? ""}/volunteer/ministries/${result.ministry.id}`;
+      window.location.href = `${window.CRM?.root ?? ""}/ministries/${result.ministry.id}`;
     })
     .catch((error: unknown) => {
       showError(errorMessage(error, i18next.t("The ministry could not be created")));

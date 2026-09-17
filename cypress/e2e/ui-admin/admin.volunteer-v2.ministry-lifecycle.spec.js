@@ -32,8 +32,8 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
-const MINISTRIES_URL = "/volunteer/ministries";
-const DASHBOARD_URL = "/volunteer/dashboard";
+const MINISTRIES_URL = "/ministries";
+const DASHBOARD_URL = "/ministries/dashboard";
 
 const PREFIX = "UIMINLIFE";
 const MINISTRY_NAME = `${PREFIX} Parking Team`;

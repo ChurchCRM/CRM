@@ -301,7 +301,7 @@ $inactive = (int) $event->getInActive() === 1;
                     <span class="badge bg-green-lt text-green"><?= gettext('Fully staffed') ?></span>
                   <?php endif; ?>
                   <div class="mt-2 small">
-                    <a href="<?= $sRootPath ?>/volunteer/occurrences/<?= (int) $vo['occurrenceId'] ?>">
+                    <a href="<?= $sRootPath ?>/ministries/occurrences/<?= (int) $vo['occurrenceId'] ?>">
                       <i class="fa-solid fa-list-check me-1"></i><?= gettext('Manage staffing') ?>
                     </a>
                   </div>

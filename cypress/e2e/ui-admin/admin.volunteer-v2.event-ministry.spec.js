@@ -12,8 +12,8 @@
  *      modal gets it for free and is not separately asserted here.
  *   2. `/event/view/{id}` — the read-only **Volunteers** card listing the V2
  *      occurrences linked to this event, with their gap counts and a link to
- *      `/volunteer/occurrences/{id}`.
- *   3. `/volunteer/occurrences/{id}` — the link back, now carrying the event's
+ *      `/ministries/occurrences/{id}`.
+ *   3. `/ministries/occurrences/{id}` — the link back, now carrying the event's
  *      title and location rather than a bare "Times come from this event".
  *
  * §2.16 does **not** specify a visible calendar badge — only the
@@ -424,7 +424,7 @@ describe("Volunteer v2 — event ministry field and Volunteers card (#9713)", ()
             // minCount 2, nobody assigned.
             cy.get("#event-volunteers-card").should("contain", "2");
             cy.get("#event-volunteers-card")
-                .find(`a[href*="/volunteer/occurrences/${occurrenceId}"]`)
+                .find(`a[href*="/ministries/occurrences/${occurrenceId}"]`)
                 .should("exist");
         });
 
@@ -448,7 +448,7 @@ describe("Volunteer v2 — event ministry field and Volunteers card (#9713)", ()
     describe("the occurrence page's link back to the event (§3.5)", () => {
         it("names the event it takes its times from", () => {
             freshAdminLogin();
-            cy.visit(`/volunteer/occurrences/${occurrenceId}`);
+            cy.visit(`/ministries/occurrences/${occurrenceId}`);
 
             cy.get("#occurrence-event-link", { timeout: 15000 })
                 .should("be.visible")

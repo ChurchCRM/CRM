@@ -126,7 +126,9 @@ function getVolunteerDashboard(Request $request, Response $response): Response
 
     // One scoped allow-list; every panel below is derived from it. `volunteerScopedOccurrenceIds()`
     // is #9709's helper in volunteer-assignment.php — the dashboard does not re-derive scope.
-    $occurrenceIds = volunteerScopedOccurrenceIds($currentUser, $authz, $from, $to);
+    $occurrenceIds = volunteerDashboardActiveOnly(
+        volunteerScopedOccurrenceIds($currentUser, $authz, $from, $to)
+    );
 
     $scope = volunteerDashboardScope($currentUser, $authz);
 
@@ -508,6 +510,36 @@ function volunteerDashboardFailedNotifications(array $occurrenceIds): int
  *
  * @return array<string, mixed>
  */
+/**
+ * Drop the occurrences of DEACTIVATED ministries (product-owner decision,
+ * 2026-09-17): a deactivated ministry is parked, and nothing of it — upcoming
+ * occurrences, gaps, pending responses, swaps, failed sends — belongs on the
+ * "what needs my attention" page. Its own page still shows all of it. Applied
+ * here, after the scope helper, because that helper also serves the occurrence
+ * list of a deactivated ministry's page, which must keep working.
+ *
+ * @param int[] $occurrenceIds
+ *
+ * @return int[]
+ */
+function volunteerDashboardActiveOnly(array $occurrenceIds): array
+{
+    if ($occurrenceIds === []) {
+        return [];
+    }
+
+    return array_map('intval', VolunteerOccurrenceQuery::create()
+        ->filterById($occurrenceIds, Criteria::IN)
+        ->useScheduleQuery()
+            ->useMinistryQuery()
+                ->filterByActive(true)
+            ->endUse()
+        ->endUse()
+        ->select(['Id'])
+        ->find()
+        ->toArray());
+}
+
 function volunteerDashboardScope(User $user, VolunteerAuthorizationService $authz): array
 {
     $isManager = $authz->isGlobalManager($user);
@@ -530,6 +562,9 @@ function volunteerDashboardScope(User $user, VolunteerAuthorizationService $auth
     }
 
     if ($teamQuery !== null) {
+        // The card is for active ministries only (2026-09-17); a deactivated
+        // ministry's teams are reached from its own page.
+        $teamQuery->useMinistryQuery()->filterByActive(true)->endUse();
         foreach ($teamQuery->orderByName()->find() as $team) {
             $teams[] = [
                 'id' => (int) $team->getId(),
@@ -543,7 +578,7 @@ function volunteerDashboardScope(User $user, VolunteerAuthorizationService $auth
 
     $manageableIds = $authz->getManagedMinistryIds($user);
 
-    $ministryQuery = VolunteerMinistryQuery::create();
+    $ministryQuery = VolunteerMinistryQuery::create()->filterByActive(true);
     if (!$isManager) {
         $visibleIds = array_values(array_unique(array_merge($manageableIds, $teamParentMinistryIds)));
         if ($visibleIds === []) {

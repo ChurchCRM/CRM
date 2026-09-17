@@ -109,7 +109,7 @@ final class VolunteerEmailContext
             return '';
         }
 
-        return SystemURLs::getURL() . '/volunteer/occurrences/' . $this->occurrenceId;
+        return SystemURLs::getURL() . '/ministries/occurrences/' . $this->occurrenceId;
     }
 
     /**
@@ -128,6 +128,6 @@ final class VolunteerEmailContext
     /** Absolute link to the coordinator dashboard, where swap requests are reviewed. */
     public static function getDashboardURL(): string
     {
-        return SystemURLs::getURL() . '/volunteer/dashboard';
+        return SystemURLs::getURL() . '/ministries/dashboard';
     }
 }
