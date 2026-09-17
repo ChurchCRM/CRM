@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 19:09+0000\n"
+"POT-Creation-Date: 2026-09-17 04:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7243,6 +7243,10 @@ msgid "Login Name is required"
 msgstr ""
 
 msgid "Login already in use, please select a different login!"
+msgstr ""
+
+#, php-format
+msgid "Login must be %d characters or fewer!"
 msgstr ""
 
 msgid "Login must be at least 3 characters!"
