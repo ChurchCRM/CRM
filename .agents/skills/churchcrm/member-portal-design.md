@@ -502,7 +502,27 @@ must pin it to some existing church calendar.
   colour per calendar as on the admin page; event click opens a detail panel (title, when, location,
   description, ministry name when set). A member who leads a team sees their ministry's calendar
   highlighted.
-- iCal subscription per member: phase 2.
+- **Subscribing.** A member may take the calendar with them. The calendar page
+  carries a **Subscribe** button in the top-right of the title row; it opens a
+  dialog with one checkbox per calendar the administrator shares, and saving
+  hands back a single address — `(Church name) Calendar` — that feeds exactly
+  the calendars ticked. The address is
+  `/api/public/portal-calendar/{token}/calendar.ics`: no session, because a
+  calendar app cannot sign in, so the token *is* the credential. It is 32
+  random bytes as hex, minted on the first save and rotated by **Reset link**,
+  which retires the old address at once. What the feed serves is always the
+  member's selection **intersected with the calendars that are shared right
+  now**, so un-sharing a calendar removes it from every member's feed on the
+  next fetch without anybody re-saving anything; nothing but events is
+  reachable through the token, the privacy rewriting above still applies
+  (a birthday reads "Lena B."), and an unknown token is a bare 404 that cannot
+  be told apart from an account with no feed. The document is RFC 5545, three
+  months back to eighteen months ahead, `VALUE=DATE` for the whole-day and
+  virtual events and UTC instants for timed ones, `CATEGORIES` naming the
+  calendar an event came from. The per-calendar public ICS
+  (`/api/public/calendar/{token}/ics`) is untouched; it cannot express virtual
+  events, which is why the portal has its own builder
+  (`ChurchCRM\Portal\PortalCalendarFeed`).
 - Not in scope: volunteer schedule occurrences that are not linked to an event do not appear on
   calendars (they never have); "My Volunteer Schedule" is where those live.
 
@@ -580,6 +600,8 @@ nothing renders until that epic ships.
 | `calendars.ministry_id INT NULL` with an index (ministry calendars, §5.3). The FK → `volunteer_ministry_vmin` `ON DELETE SET NULL` is added by the Volunteer v2 schema, which creates that table | `7.8.0-member-portal-calendars.sql`, `Install.sql`, seed, `orm/schema.xml` |
 | `aPortalCalendars` JSON config (portal-visible calendar and system-calendar ids) | `SystemConfig.php` |
 | `user_usr.usr_LastPortalActivity DATETIME NULL` | `7.8.0-member-portal-activity.sql`, same set |
+| `user_usr.usr_PortalCalendarToken VARCHAR(64) NULL` with a UNIQUE index — the bearer secret in a member's calendar feed URL; NULL means no feed (§5.3, "Subscribing") | `7.8.0-member-portal-activity.sql`, `Install.sql`, seed, `orm/schema.xml` |
+| `user_usr.usr_PortalCalendarSelection TEXT NULL` — JSON array of the calendar ids the member ticked, always intersected with what is shared before a feed is built | same set |
 | Config items in §4 (no System Settings category) | `SystemConfig.php` |
 | `AppIntegrityService::isExcludedFromOrphanDetection` and `generate-signatures-node.js` gain `Include/themes/` (and `Include/modules/`) | core |
 | `.gitignore`: `src/Include/themes/*` except `default` | core |
