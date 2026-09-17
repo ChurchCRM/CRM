@@ -119,7 +119,8 @@ class AuthMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Paths that must stay reachable for a user who has no module permissions.
+     * Paths (relative to the install root) that must stay reachable for a user
+     * who has no module permissions.
      * Without these exemptions, limited-permission users get stuck in a
      * redirect loop (pages) or a 403 (XHRs) because AuthMiddleware blocks the
      * very flow the auth system is sending them to. See #8680 and #9886.
@@ -157,16 +158,19 @@ class AuthMiddleware implements MiddlewareInterface
      * Check whether the current request targets one of the self-service auth
      * flow paths listed in self::AUTH_FLOW_EXEMPT_PATHS.
      *
-     * Matching is done on the tail of the request path so that subdirectory
-     * installations (e.g. /crm/v2/user/current/manage2fa) are covered without
-     * the middleware needing to know the install root.
+     * Paths in the list are relative to the install root, so the comparison is
+     * anchored at SystemURLs::getRootPath() — a subdirectory installation
+     * (/crm/v2/user/current/manage2fa) matches, while an unrelated route that
+     * merely contains an exempt path as a substring does not. This mirrors
+     * ChurchInfoRequiredMiddleware::process().
      */
     private function isAuthFlowExemptPath(ServerRequestInterface $request): bool
     {
-        $path = $request->getUri()->getPath();
+        $path     = $request->getUri()->getPath();
+        $rootPath = SystemURLs::getRootPath();
 
         foreach (self::AUTH_FLOW_EXEMPT_PATHS as $exemptPath) {
-            if (str_ends_with($path, $exemptPath)) {
+            if (str_starts_with($path, $rootPath . $exemptPath)) {
                 return true;
             }
         }
