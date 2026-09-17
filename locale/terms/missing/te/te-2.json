@@ -1,30 +1,30 @@
 {
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ఇమెయిల్ క్లయింట్‌కు చాలా ఎక్కువ స్వీకర్తలు ఉన్నారు ({{count}} > {{max}}). బదులుగా చిరునామాలను కాపీ చేయి ఉపయోగించండి.",
+    "other": "ఇమెయిల్ క్లయింట్‌కు చాలా ఎక్కువ స్వీకర్తలు ఉన్నారు ({{count}} > {{max}}). బదులుగా చిరునామాలను కాపీ చేయి ఉపయోగించండి."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} నిమిషం మిగిలి ఉంది",
+    "other": "{{count}} నిమిషాలు మిగిలి ఉన్నాయి"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} కుటుంబాన్ని జియోకోడ్ చేయలేకపోయింది",
+    "other": "{{count}} కుటుంబాలను జియోకోడ్ చేయలేకపోయింది"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} సెకను పాటు క్రియాశీలం",
+    "other": "{{count}} సెకన్ల పాటు క్రియాశీలం"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "మీరు {{count}} కుటుంబానికి నిర్ధారణ ఇమెయిల్‌లను పంపబోతున్నారు.",
+    "other": "మీరు {{count}} కుటుంబాలకు నిర్ధారణ ఇమెయిల్‌లను పంపబోతున్నారు."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} కుటుంబానికి రికార్డులో ఇమెయిల్ చిరునామా లేదు మరియు దాటవేయబడుతుంది",
+    "other": "{{count}} కుటుంబాలకు రికార్డులో ఇమెయిల్ చిరునామా లేదు మరియు దాటవేయబడతాయి"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…మరియు ఇక్కడ జాబితా చేయని {{count}} మరొకటి.",
+    "other": "…మరియు ఇక్కడ జాబితా చేయని {{count}} మరిన్ని."
   }
 }
