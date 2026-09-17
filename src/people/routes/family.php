@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\FamilyCustomQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -173,6 +174,13 @@ function viewFamily(Request $request, Response $response, array $args): Response
         ]),
         'family' => $family,
         'familyTimeline' => $timelineService->getForFamily($family->getId()),
+        // Email history: family address rows plus the current members' rows (5 most recent)
+        'emailHistory' => (new EmailLogService())->getForFamily(
+            (int) $family->getId(),
+            array_map(static fn ($member) => (int) $member->getId(), iterator_to_array($family->getPeople())),
+            1,
+            5
+        ),
         'allFamilyProperties' => $allFamilyProperties,
         'familyCustom' => $familyCustom,
         'currentFY' => FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId()),

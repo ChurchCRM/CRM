@@ -137,7 +137,7 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
                 $resolved['recipients'],
                 $subject,
                 $body,
-                AuthenticationManager::getCurrentUser()->getUserName(),
+                AuthenticationManager::getCurrentUser(),
             );
 
             return SlimUtils::renderJSON($response, [

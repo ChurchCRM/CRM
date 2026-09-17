@@ -36,6 +36,17 @@ class ComposerEmail extends BaseEmail
         ]);
     }
 
+    protected function getLogKind(): string
+    {
+        return 'composer';
+    }
+
+    /** The composer body is the one message a member should be able to read back later. */
+    protected function logsBody(): bool
+    {
+        return true;
+    }
+
     protected function getFullURL(): string
     {
         return '';

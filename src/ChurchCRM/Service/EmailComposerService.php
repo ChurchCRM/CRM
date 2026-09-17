@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\Emails\ComposerEmail;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
@@ -139,7 +140,7 @@ class EmailComposerService
      *
      * @return array{sent: list<array{personId: ?int, familyId: ?int, name: string, email: string}>, failed: list<array{personId: ?int, familyId: ?int, name: string, email: string, error: string}>}
      */
-    public function send(array $recipients, string $subject, string $body, string $sentBy = ''): array
+    public function send(array $recipients, string $subject, string $body, ?User $sentBy = null): array
     {
         $sent = [];
         $failed = [];
@@ -159,6 +160,8 @@ class EmailComposerService
                     $subject,
                     $body,
                 );
+                // Attribute the history row to the record and the sending user.
+                $email->setLogContext($recipient['personId'], $recipient['familyId'], $sentBy?->getId() !== null ? (int) $sentBy->getId() : null);
                 if ($email->send()) {
                     $sent[] = $public;
                 } else {
@@ -172,7 +175,7 @@ class EmailComposerService
         }
 
         LoggerUtils::getAppLogger()->info('Composer email sent', [
-            'sentBy'  => $sentBy,
+            'sentBy'  => $sentBy?->getUserName() ?? '',
             'subject' => $subject,
             'sent'    => count($sent),
             'failed'  => count($failed),

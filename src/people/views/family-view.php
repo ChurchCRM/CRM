@@ -385,6 +385,29 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             </div>
         </div>
 
+        <!-- Email history: family address and members, 5 most recent -->
+        <?php $emailHistory = $emailHistory ?? ['rows' => [], 'total' => 0]; ?>
+        <div class="card mb-3" id="email-history-card">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0"><i class="fa-solid fa-envelope-open-text me-1"></i> <?= gettext('Recent Emails') ?>
+                    <span class="badge bg-secondary-lt text-secondary ms-2"><?= (int) $emailHistory['total'] ?></span>
+                </h3>
+            </div>
+            <div class="card-body p-0">
+                <?php
+                $emailHistoryRows = $emailHistory['rows'];
+                $emailHistoryShowTo = true;
+                include __DIR__ . '/partials/email-history-table.php';
+                ?>
+            </div>
+            <?php if ((int) $emailHistory['total'] > 5) : ?>
+            <div class="card-footer text-end py-2 text-body-secondary small">
+                <?= sprintf(gettext('Showing the 5 most recent of %d. Open a family member to see their full history.'), (int) $emailHistory['total']) ?>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php include __DIR__ . '/partials/email-history-modal.php'; ?>
+
         <!-- Timeline Card -->
         <div class="card mb-3 timeline-container" id="family-timeline-container">
             <div class="card-header d-flex align-items-center" role="button" data-bs-toggle="collapse" data-bs-target="#family-timeline-body" aria-expanded="true">
