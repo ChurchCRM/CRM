@@ -37,8 +37,9 @@ describe("Email history on the person view", () => {
     });
 
     it("tells the viewer when an email's content is not stored", () => {
-        cy.visit("/people/view/3");
-        cy.get("#email-history-card .email-history-open[data-email-log-id='7']").click();
+        // The full page lists every row, so the seeded reset-link row (id 7) is always there
+        cy.visit("/people/view/3/emails");
+        cy.get(".email-history-open[data-email-log-id='7']").click();
         cy.get("#email-history-modal").should("be.visible");
         cy.get("#email-history-modal-nobody").should("be.visible");
         cy.get("#email-history-modal-body").should("not.be.visible");
