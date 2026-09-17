@@ -8,6 +8,11 @@
     "one": "Se espera que asistan al menos una vez cada %d hora.|Se espera que asistan al menos una vez cada %d horas.",
     "other": ""
   },
+  "Buyers This Fiscal Year": "",
+  "Current": "",
+  "Items Donated (This Fiscal Year)": "",
+  "Login must be %d characters or fewer!": "",
+  "Raised This Fiscal Year": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""
