@@ -74,7 +74,7 @@ describe("Data & Reports — Classification filter (#9914)", () => {
 
     it("Birthdays: one classification returns only that classification", () => {
         cy.visit("/QueryView.php?QueryID=18");
-        cy.get('input[name="birthmonth"]').clear().type("7");
+        cy.get('select[name="birthmonth"]').select("7");
         cy.get('select[name="percls[]"]').select(["Member"]);
         cy.get('input[name="Submit"]').click();
 
@@ -88,7 +88,7 @@ describe("Data & Reports — Classification filter (#9914)", () => {
 
     it("Birthdays: several classifications are combined in one run", () => {
         cy.visit("/QueryView.php?QueryID=18");
-        cy.get('input[name="birthmonth"]').clear().type("7");
+        cy.get('select[name="birthmonth"]').select("7");
         cy.get('select[name="percls[]"]').select(["Member", "Regular Attender", "Non-Attender"]);
         cy.get('input[name="Submit"]').click();
 
@@ -102,7 +102,7 @@ describe("Data & Reports — Classification filter (#9914)", () => {
 
     it("Birthdays: leaving Classification blank returns everyone, including Unassigned", () => {
         cy.visit("/QueryView.php?QueryID=18");
-        cy.get('input[name="birthmonth"]').clear().type("7");
+        cy.get('select[name="birthmonth"]').select("7");
         cy.get('input[name="Submit"]').click();
 
         cy.get("body").should("not.contain", "This value is required");
@@ -118,7 +118,7 @@ describe("Data & Reports — Classification filter (#9914)", () => {
 
     it("Birthdays: Unassigned selects people with no classification", () => {
         cy.visit("/QueryView.php?QueryID=18");
-        cy.get('input[name="birthmonth"]').clear().type("7");
+        cy.get('select[name="birthmonth"]').select("7");
         cy.get('select[name="percls[]"]').select(["Unassigned"]);
         cy.get('input[name="Submit"]').click();
 
@@ -160,7 +160,7 @@ describe("Data & Reports — Classification filter (#9914)", () => {
 
     it("Wedding Anniversaries honours the Classification filter", () => {
         cy.visit("/QueryView.php?QueryID=300");
-        cy.get('input[name="weddingmonth"]').clear().type("7");
+        cy.get('select[name="weddingmonth"]').select("7");
         cy.get('select[name="percls[]"]').select(["Regular Attender"]);
         cy.get('input[name="Submit"]').click();
 
@@ -171,7 +171,7 @@ describe("Data & Reports — Classification filter (#9914)", () => {
 
     it("Wedding Anniversaries with Classification blank lists every couple", () => {
         cy.visit("/QueryView.php?QueryID=300");
-        cy.get('input[name="weddingmonth"]').clear().type("7");
+        cy.get('select[name="weddingmonth"]').select("7");
         cy.get('input[name="Submit"]').click();
 
         cy.get("table tbody tr").should("have.length", 3);
@@ -182,7 +182,7 @@ describe("Data & Reports — Classification filter (#9914)", () => {
 
     it("Birthdays & Anniversaries applies the filter to both halves of the union", () => {
         cy.visit("/QueryView.php?QueryID=301");
-        cy.get('input[name="month"]').clear().type("7");
+        cy.get('select[name="month"]').select("7");
         cy.get('select[name="percls[]"]').select(["Member", "Regular Attender"]);
         cy.get('input[name="Submit"]').click();
 

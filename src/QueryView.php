@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -468,6 +469,21 @@ function getQueryParameterOptionValues(?string $optionSQL): array
     );
 }
 
+/**
+ * Localized month names keyed 1-12, for qrp_Type 4 ("month") parameters.
+ *
+ * @return array<int, string>
+ */
+function getQueryMonthNames(): array
+{
+    return [
+        1 => gettext('January'), 2 => gettext('February'), 3 => gettext('March'),
+        4 => gettext('April'), 5 => gettext('May'), 6 => gettext('June'),
+        7 => gettext('July'), 8 => gettext('August'), 9 => gettext('September'),
+        10 => gettext('October'), 11 => gettext('November'), 12 => gettext('December'),
+    ];
+}
+
 function getQueryFormInput($queryParameters)
 {
     global $aErrorText;
@@ -552,6 +568,18 @@ function getQueryFormInput($queryParameters)
                 }
                 $input .= '</select>';
             }
+            break;
+
+        // Month SELECT (1-12, localized names) defaulting to next month, so the
+        // reports people run at month end point at the month they are preparing.
+        case 4:
+            $nextMonth = DateTimeUtils::getCurrentMonth() % 12 + 1;
+            $input = '<select name="' . $qrp_Alias . '" class="form-select">';
+            foreach (getQueryMonthNames() as $monthNumber => $monthName) {
+                $selected = $monthNumber === $nextMonth ? ' selected' : '';
+                $input .= '<option value="' . $monthNumber . '"' . $selected . '>' . InputUtils::escapeHTML($monthName) . '</option>';
+            }
+            $input .= '</select>';
             break;
     }
 

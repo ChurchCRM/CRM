@@ -726,8 +726,8 @@ CREATE TABLE `queryparameters_qrp` (
 
 INSERT INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_OptionSQL`, `qrp_Name`, `qrp_Description`, `qrp_Alias`, `qrp_Default`, `qrp_Required`, `qrp_InputBoxSize`, `qrp_Validation`, `qrp_NumericMax`, `qrp_NumericMin`, `qrp_AlphaMinLength`, `qrp_AlphaMaxLength`) VALUES
   (8, 9, 2, 'SELECT pro_ID AS Value, pro_Name as Display \r\nFROM property_pro\r\nWHERE pro_Class= ''p'' \r\nORDER BY pro_Name ', 'Property', 'The property for which you would like person records returned.', 'PropertyID', '0', 1, 0, '', 0, 0, 0, 0),
-  (18, 18, 0, '', 'Month', 'The birthday month for which you would like records returned.', 'birthmonth', '1', 1, 0, '', 12, 1, 1, 2),
-  (22, 22, 0, '', 'Month', 'The membership anniversary month for which you would like records returned.', 'membermonth', '1', 1, 0, '', 12, 1, 1, 2),
+  (18, 18, 4, '', 'Month', 'The birthday month for which you would like records returned.', 'birthmonth', '1', 1, 0, 'n', 12, 1, 1, 2),
+  (22, 22, 4, '', 'Month', 'The membership anniversary month for which you would like records returned.', 'membermonth', '1', 1, 0, 'n', 12, 1, 1, 2),
   (25, 25, 2, 'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name', 'Volunteer opportunities', 'Choose a volunteer opportunity', 'volopp', '1', 1, 0, '', 12, 1, 1, 2),
   (26, 26, 0, '', 'Months', 'Number of months since becoming a friend', 'friendmonths', '1', 1, 0, '', 24, 1, 1, 2),
   (27, 28, 1, '', 'First Fiscal Year', 'First fiscal year for comparison', 'fyid1', '9', 1, 0, '', 12, 9, 0, 0),
@@ -740,8 +740,8 @@ INSERT INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_Opti
   (200, 200, 2, 'SELECT custom_field as Value, custom_Name as Display FROM person_custom_master', 'Custom field', 'Choose customer person field', 'custom', '1', 0, 0, '', 0, 0, 0, 0),
   (201, 200, 0, '', 'Field value', 'Match custom field to this value', 'value', '1', 0, 0, '', 0, 0, 0, 0),
   (202, 201, 3, 'SELECT event_id as Value, event_title as Display FROM events_event ORDER BY event_start DESC', 'Event', 'Select the desired event', 'event', '', 1, 0, '', 0, 0, 0, 0),
-  (300, 300, 0, '', 'Month', 'The wedding anniversary month for which you would like records returned.', 'weddingmonth', '1', 1, 0, 'n', 12, 1, 1, 2),
-  (301, 301, 0, '', 'Month', 'The month for which you would like birthdays and anniversaries returned.', 'month', '1', 1, 0, 'n', 12, 1, 1, 2),
+  (300, 300, 4, '', 'Month', 'The wedding anniversary month for which you would like records returned.', 'weddingmonth', '1', 1, 0, 'n', 12, 1, 1, 2),
+  (301, 301, 4, '', 'Month', 'The month for which you would like birthdays and anniversaries returned.', 'month', '1', 1, 0, 'n', 12, 1, 1, 2),
   (302, 9, 3, 'SELECT Value, Display FROM (SELECT lst_OptionID AS Value, lst_OptionName AS Display, lst_OptionSequence AS Seq FROM list_lst WHERE lst_ID = 1 UNION ALL SELECT 0, ''Unassigned'', 9999) AS cls ORDER BY Seq, Value', 'Classification', 'Hold Ctrl (Cmd on Mac) to choose more than one. Leave empty for all classifications.', 'percls', '', 0, 0, '', 0, 0, 0, 0),
   (303, 22, 3, 'SELECT Value, Display FROM (SELECT lst_OptionID AS Value, lst_OptionName AS Display, lst_OptionSequence AS Seq FROM list_lst WHERE lst_ID = 1 UNION ALL SELECT 0, ''Unassigned'', 9999) AS cls ORDER BY Seq, Value', 'Classification', 'Hold Ctrl (Cmd on Mac) to choose more than one. Leave empty for all classifications.', 'percls', '', 0, 0, '', 0, 0, 0, 0),
   (304, 25, 3, 'SELECT Value, Display FROM (SELECT lst_OptionID AS Value, lst_OptionName AS Display, lst_OptionSequence AS Seq FROM list_lst WHERE lst_ID = 1 UNION ALL SELECT 0, ''Unassigned'', 9999) AS cls ORDER BY Seq, Value', 'Classification', 'Hold Ctrl (Cmd on Mac) to choose more than one. Leave empty for all classifications.', 'percls', '', 0, 0, '', 0, 0, 0, 0),
