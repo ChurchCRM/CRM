@@ -1,46 +1,46 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "ባለሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀን አለዎት።|ባለሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀናት አሉዎት።",
-    "other": ""
+    "one": "ባለ ሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀን ይቀርዎታል።",
+    "other": "ባለ ሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀናት ይቀርዎታል።"
   },
   "They are expected at least once every %d hour.": {
-    "one": "ቢያንስ በየ%d ሰዓት አንድ ጊዜ ይጠበቃል።|ቢያንስ በየ%d ሰዓታት አንድ ጊዜ ይጠበቃል።",
-    "other": ""
+    "one": "ቢያንስ በየ%d ሰዓት አንድ ጊዜ ይጠበቃሉ።",
+    "other": "ቢያንስ በየ%d ሰዓታት አንድ ጊዜ ይጠበቃሉ።"
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} አባል ተቀድቷል",
+    "other": "{{count}} አባላት ተቀድተዋል"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ይህ ዝርዝር {{count}} ተቀባይ አለው — ለmailto: አገናኝ በጣም ብዙ ነው። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።",
+    "other": "ይህ ዝርዝር {{count}} ተቀባዮች አሉት — ለmailto: አገናኝ በጣም ብዙ ናቸው። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።"
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባዮች አሉ ({{count}} > {{max}})። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።",
+    "other": "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባዮች አሉ ({{count}} > {{max}})። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።"
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ደቂቃ ቀርቷል",
+    "other": "{{count}} ደቂቃዎች ቀርተዋል"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ቤተሰብ በካርታ ላይ ሊገለጽ አልቻለም",
+    "other": "{{count}} ቤተሰቦች በካርታ ላይ ሊገለጹ አልቻሉም"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "ለ{{count}} ሰከንድ ንቁ",
+    "other": "ለ{{count}} ሰከንዶች ንቁ"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "ለ{{count}} ቤተሰብ የማረጋገጫ ኢሜይሎችን ልትልኩ ነው።",
+    "other": "ለ{{count}} ቤተሰቦች የማረጋገጫ ኢሜይሎችን ልትልኩ ነው።"
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} ቤተሰብ በመዝገብ ላይ የኢሜይል አድራሻ የለውም እና ይዘለላል",
+    "other": "{{count}} ቤተሰቦች በመዝገብ ላይ የኢሜይል አድራሻ የላቸውም እና ይዘለላሉ"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…እና {{count}} ተጨማሪ እዚህ ያልተዘረዘረ።",
+    "other": "…እና {{count}} ተጨማሪዎች እዚህ ያልተዘረዘሩ።"
   }
 }
