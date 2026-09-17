@@ -13,7 +13,7 @@ use Slim\Routing\RouteCollectorProxy;
 // the Member Portal, and all that is left of them here is a pair of redirects.
 $app = MvcAppFactory::create('/volunteer', [
     'dashboardUrl'  => '/volunteer/dashboard',
-    'dashboardText' => gettext('Back to Volunteer Dashboard'),
+    'dashboardText' => gettext('Back to Ministry Dashboard'),
 ]);
 
 // Rollout gate for the whole module, using the wrapper-group idiom from

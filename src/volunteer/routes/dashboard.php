@@ -63,9 +63,9 @@ $app->group('', function (RouteCollectorProxy $group): void {
 
         return $renderer->render($response, 'dashboard.php', [
             'sRootPath'     => SystemURLs::getRootPath(),
-            'sPageTitle'    => gettext('Volunteer Dashboard'),
+            'sPageTitle'    => gettext('Ministry Dashboard'),
             'sPageSubtitle' => gettext('What needs your attention this week'),
-            'aBreadcrumbs'  => PageHeader::breadcrumbs([[gettext('Volunteer')]]),
+            'aBreadcrumbs'  => PageHeader::breadcrumbs([[gettext('Ministries')]]),
             'bIsAdmin'      => $currentUser->isAdmin(),
             'bIsManager'    => $authz->isGlobalManager($currentUser),
             // The default window §3.3.2 fixes. The select on the page can widen it.

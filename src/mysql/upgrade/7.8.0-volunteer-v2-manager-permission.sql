@@ -1,4 +1,4 @@
--- Volunteer Management v2 (#9706, epic #9701): add the usr_VolunteerManager permission column.
+-- Volunteer Management v2 (#9706, epic #9701): add the usr_ManageMinistries permission column.
 --
 -- Tier: Administrator > *Global Volunteer Manager* > Ministry Coordinator > Team Leader > Volunteer.
 -- A global volunteer manager has authority over every ministry and every team without being a
@@ -12,4 +12,4 @@
 -- runner is version-gated: fresh installs set the DB version to the current
 -- release via installChurchCRMSchema() and never execute historical migration
 -- scripts. IF NOT EXISTS is a MariaDB-only extension unsupported by MySQL.
-ALTER TABLE `user_usr` ADD COLUMN `usr_VolunteerManager` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER `usr_ManageFundraisers`;
+ALTER TABLE `user_usr` ADD COLUMN `usr_ManageMinistries` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER `usr_ManageFundraisers`;

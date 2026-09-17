@@ -246,6 +246,16 @@ export function updateMinistry(
   return request(`/ministries/${ministryId}`, { method: "POST", body: JSON.stringify(fields) });
 }
 
+/**
+ * Manager-only. 403 for a coordinator, 409 while any occurrence or assignment
+ * still hangs off the ministry (the message names the counts); on 200 the
+ * ministry, its teams, positions, schedules, scope grants, pool Group and
+ * calendar are gone (`VolunteerSetupService::deleteMinistry()`).
+ */
+export function deleteMinistry(ministryId: number): Promise<{ success: boolean }> {
+  return request(`/ministries/${ministryId}`, { method: "DELETE" });
+}
+
 export function listTeams(ministryId: number): Promise<{ teams: VolunteerTeam[] }> {
   return request(`/ministries/${ministryId}/teams`);
 }

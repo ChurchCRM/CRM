@@ -95,7 +95,7 @@ Non-hierarchical by design: **Teams under Ministry is sufficient. There are no n
 | D9 | **Ministry coordinators create and own events.** `events_event` gains a nullable ministry id. Events carrying a ministry id are editable and volunteer-assignable by that ministry's coordinator (and by global volunteer managers / administrators). Events with a null ministry id behave exactly as today. Ministries are **not** the parent of events in general — the link is optional. | Church product decision |
 | D10 | **Email only for the first release** (assignment, reminder, decline/gap alert, swap proposal/resolution, signup confirmation). SMS and in-app are later; the design must not preclude them and must not build them. | Church product decision |
 | D11 | **Reminder lead time is one system-level setting**, adjustable by an administrator, not per volunteer. | Church product decision |
-| D12 | **Authorization tiers**: Administrator > Global Volunteer Manager > Ministry Coordinator > Team Leader > Volunteer. | #9701, #9706 |
+| D12 | **Authorization tiers**: Administrator > Global Volunteer Manager > Ministry Coordinator > Team Leader > Volunteer. *(**Revised 2026-09-17**, product owner: the Global Volunteer Manager tier is granted by the user-editor permission **"Manage Ministries"** — column `user_usr.usr_ManageMinistries`, predicate `User::isManageMinistriesEnabled()`, route gate `ManageMinistriesRoleAuthMiddleware`, access-denied role code `ManageMinistries`. The tier keeps its name in this document; the permission was renamed because the admin surface it opens is the **Ministries** heading and the **Ministry Dashboard**, not a volunteer-facing page. The same revision renamed the dashboard from "Volunteer Dashboard" to "Ministry Dashboard" and rooted the coordinator area's breadcrumb trail at **Home / Ministries** instead of Home / Volunteer.)* | #9701, #9706 |
 | D13 | **Substitution/swap is core**, not optional. | Church product decision, #9709 |
 | D14 | **Volunteers are ChurchCRM members with logins** — the "Non-Admin Member Access" persona, i.e. an **EditSelf-exclusive** user. Self-service lives on authenticated member-facing pages, authorized per authenticated person. **Tokenized accept/decline links in email for people without logins are a documented future extension, not in scope.** *(**Revised 2026-09-16** by the Member Portal epic, decision P17, issue [#9867](https://github.com/ChurchCRM/CRM/issues/9867): **volunteer scopes count for a self-service login.** `VolunteerAuthorizationService::loadScopes()` no longer discards the grants of an EditSelf-exclusive account — only the rollout-flag short-circuit remains — and `User::isVolunteerTeamLeaderEnabled()` reports a held `team` grant regardless of the flag. A self-service-only account **can never be a coordinator; it may lead a team, exercised in the Member Portal (MP6/MP7)**: `isVolunteerCoordinatorEnabled()` keeps its own EditSelf short-circuit, so the coordinator dashboard and the sidebar's Ministries heading stay closed to it. The member surface itself moved out of the admin shell into `/portal/volunteer/*` at the same time — §4.7, §5.0, §5.1.)* | Resolves audit open question; see §4.7. Revision: Member Portal design §0.4 P17, §7 |
 | D15 | **Reminders and scheduling**: there is no scheduler in ChurchCRM. V2 specifies a **notification outbox** table (idempotent enqueue keyed by assignment + type, send log, retry-safe) drained by the existing `POST /api/background/timerjobs` mechanism. Installations wanting punctual reminders configure a real cron or external ping of that endpoint with an API key — **zero code**. Best-effort delivery on page load is the documented fallback. | Resolves audit open question; see §3.6 |
@@ -341,14 +341,14 @@ Legend for **Decision**:
 |---|---|---|---|---|
 | A1 | Actor identity | `AuthenticationManager::getCurrentUser(): User` (`src/ChurchCRM/Authentication/AuthenticationManager.php:42`); `User::getId()` (`User.php:29`) | **Reuse** | Returns the **person** id (F4). No mapping table. |
 | A2 | Admin bypass + feature-flag gate + EditSelf short-circuit | `User::isFinanceEnabled()` `User.php:181-187` and siblings | **Reuse (the shape, verbatim)** | Every new V2 predicate uses the same three-line shape. §4.2. |
-| A3 | Global "Volunteer Manager" role | `user_usr` boolean column + `User::isXxxEnabled()` + a `BaseAuthRoleMiddleware` subclass; direct precedent `usr_ManageFundraisers` added by `src/mysql/upgrade/7.4.3-manage-fundraisers.sql` | **Extend** | New `usr_VolunteerManager` column. Full checklist §4.3. Rejected alternative in one line: a `userconfig_ucfg` row (`bManageVolunteers`, read via `isEnabledSecurity()`), which needs no migration but is the storage tier the codebase is migrating away from (`User.php:72-77`). |
+| A3 | Global "Volunteer Manager" role | `user_usr` boolean column + `User::isXxxEnabled()` + a `BaseAuthRoleMiddleware` subclass; direct precedent `usr_ManageFundraisers` added by `src/mysql/upgrade/7.4.3-manage-fundraisers.sql` | **Extend** | New `usr_ManageMinistries` column. Full checklist §4.3. Rejected alternative in one line: a `userconfig_ucfg` row (`bManageVolunteers`, read via `isEnabledSecurity()`), which needs no migration but is the storage tier the codebase is migrating away from (`User.php:72-77`). |
 | A4 | Ministry-coordinator / team-leader **scope** | — **nothing exists** (F10) | **New table** | `volunteer_scope_vscp` (§2.15). No table in `orm/schema.xml` persists a user→object scope; Group Roles cannot carry it (G5); the RBAC epic does not exist in code (§0.6). |
-| A5 | Coarse role gate on a route group | `BaseAuthRoleMiddleware` (`src/ChurchCRM/Slim/Middleware/Request/Auth/BaseAuthRoleMiddleware.php:18`); 11 subclasses; usage `src/v2/routes/email.php:19` | **Extend (two subclasses)** | `VolunteerManagerRoleAuthMiddleware`, `VolunteerCoordinatorRoleAuthMiddleware`. ~20 lines each. **Never** used for ministry/team scope — the middleware runs before route args become domain objects. |
+| A5 | Coarse role gate on a route group | `BaseAuthRoleMiddleware` (`src/ChurchCRM/Slim/Middleware/Request/Auth/BaseAuthRoleMiddleware.php:18`); 11 subclasses; usage `src/v2/routes/email.php:19` | **Extend (two subclasses)** | `ManageMinistriesRoleAuthMiddleware`, `VolunteerCoordinatorRoleAuthMiddleware`. ~20 lines each. **Never** used for ministry/team scope — the middleware runs before route args become domain objects. |
 | A6 | Per-record scope check | `AbstractEntityMiddleware::postEntityLoad()` (F25); live example `FamilyMiddleware.php:43-50` | **Reuse** | One entity middleware per V2 entity; the scope decision lives in `postEntityLoad()`, returning `SlimUtils::renderErrorJSON(new Response(), gettext('Not authorized for this ministry'), [], 403)`. |
 | A7 | "Self or authorized" check | `src/api/routes/people/people-attendance.php:75` | **Reuse (the shape)** | `if ($personId !== (int) $currentUser->getId() && !$authz->canManageAssignment(...)) { 403 }`. This is exactly #9712's requirement. |
 | A8 | Per-record visibility predicate on a model | `Note::isVisibleTo(User $user): bool` `src/ChurchCRM/model/ChurchCRM/Note.php:80-96` | **Reuse (the pattern)** | `VolunteerAssignment::isVisibleTo(User): bool`. |
 | A9 | Read-open / write-gated API split | `src/api/routes/people/people-groups.php:68` (ungated read block) vs `:765`…`:1195` (write block gated) | **Reuse** | V2 uses the same two-block idiom inside `/api/volunteer`. |
-| A10 | Denial UX | `/v2/access-denied?role=…`; allow-list at `src/v2/routes/root.php:24-35`; `RedirectUtils::securityRedirect()` (`src/ChurchCRM/Utils/RedirectUtils.php:34-38`) | **Extend** | Add `'VolunteerManager'` and `'VolunteerCoordinator'` to the allow-list array, **or the denial page renders no reason at all**. |
+| A10 | Denial UX | `/v2/access-denied?role=…`; allow-list at `src/v2/routes/root.php:24-35`; `RedirectUtils::securityRedirect()` (`src/ChurchCRM/Utils/RedirectUtils.php:34-38`) | **Extend** | Add `'ManageMinistries'` and `'VolunteerCoordinator'` to the allow-list array, **or the denial page renders no reason at all**. |
 | A11 | Menu visibility | `src/ChurchCRM/Config/Menu/Menu.php:38-49` (top-level registry), `MenuItem::__construct($name, $uri, $hasPermission = true, $icon = '')` (`MenuItem.php:18`) | **Reuse** | Permission is a plain boolean 3rd argument — **no closures**. `isVisible()` hides a parent whose children are all hidden (`MenuItem.php:109-116`). Menu visibility must mirror the route middleware exactly. |
 | A12 | Model-layer (ORM lifecycle) authorization | `AuthService::requireUserGroupMembership()` (`AuthService.php:23`) called from `Group`/`Person2group2roleP2g2r` `pre*` hooks | **Do not use — one audited exception (D19)** | It reads `$_SESSION` flags that `APITokenAuthentication` never sets (F21), so it silently degrades to admin-only for API-key callers. V2 puts no authorization of its own in Propel lifecycle hooks, and defines **no** `pre*` hooks on its own models. The single exception is the D19 pool-group exception added to the two CORE models, which exists precisely to *narrow* an existing hook rather than to add one, and which answers through the scope table so it does not inherit the defect (§4.6). |
 | A13 | CSRF on API POSTs | `CSRFMiddleware` is applied on exactly **one** route in the app (`src/admin/routes/system.php:78`), and skips validation when `X-API-Key` is present (`CSRFMiddleware.php:40-44`) | **Reuse the status quo** | `/api` is not CSRF-protected anywhere. Adding CSRF to V2 alone would be inconsistent and would break the Cypress API helpers. Deliberately **not** an [Appendix E](#appendix-e--prerequisite-hardening-track) prerequisite: it is a project-wide decision about the whole `/api` surface, nothing in V2 depends on it, and V2 introduces no new exposure by matching the status quo. Raise it on its own if the maintainer wants it. |
@@ -1287,7 +1287,7 @@ use Slim\Routing\RouteCollectorProxy;
 // different gates and must live in the same module (see §3.2).
 $app = MvcAppFactory::create('/volunteer', [
     'dashboardUrl'  => '/volunteer/dashboard',
-    'dashboardText' => gettext('Back to Volunteer Dashboard'),
+    'dashboardText' => gettext('Back to Ministry Dashboard'),
 ]);
 
 // Rollout gate for the whole module, using the wrapper-group idiom from
@@ -1327,7 +1327,7 @@ Notes an implementer must not get wrong:
 `src/ChurchCRM/Slim/Middleware/Request/Setting/`. It cannot extend `BaseAuthSettingMiddleware`,
 which only reads `getBooleanValue()` and returns an **empty body** with the reason in the HTTP
 reason phrase (S2). It reads `sVolunteerVersion`, allows `v2` and `both`, and otherwise returns
-`403` JSON for API requests / a `302` to `/v2/access-denied?role=VolunteerManager` for browser
+`403` JSON for API requests / a `302` to `/v2/access-denied?role=ManageMinistries` for browser
 requests, using `BrowserRequestTrait` exactly as `BaseAuthRoleMiddleware` does
 (`BaseAuthRoleMiddleware.php:57-64`, `:73-78`).
 
@@ -1339,7 +1339,7 @@ requests, using `BrowserRequestTrait` exactly as `BaseAuthRoleMiddleware` does
 | Member MVC | `/portal/volunteer/schedule`, `/portal/volunteer/opportunities` (moved out of this module by #9867; the old `/volunteer/my-schedule` and `/volunteer/opportunities` 302 here for one release) | **no role gate** — per-record authorization only, by authenticated person (D14). The rollout flag still applies: `PortalNav::isVolunteeringVisible()` gates both the route and the nav entry |
 | Coordinator API | `/api/volunteer/...` | `VolunteerCoordinatorRoleAuthMiddleware` + `VolunteerV2EnabledMiddleware` on the group; per-entity middleware per route |
 | Member API | `/api/volunteer/me/...` | `VolunteerV2EnabledMiddleware` only — every authenticated person is potentially a volunteer |
-| Global-manager-only API | `POST /api/volunteer/ministries`, `DELETE /api/volunteer/ministries/{id}`, all of `/api/volunteer/scopes` | `VolunteerManagerRoleAuthMiddleware` on those routes |
+| Global-manager-only API | `POST /api/volunteer/ministries`, `DELETE /api/volunteer/ministries/{id}`, all of `/api/volunteer/scopes` | `ManageMinistriesRoleAuthMiddleware` on those routes |
 
 This mirrors `/v2`, which has no app-level role middleware and gates individual groups instead
 (`src/v2/routes/email.php:13-19`, `text.php:13-17`). Middleware `->add()` order is **LIFO** — the
@@ -1591,7 +1591,7 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 | Cart | `src/skin/js/cart.js:606-636` (dropdown) + `POST /api/volunteer/ministries/{id}/pool/from-cart` | P6. Adding a V2 entry to the dropdown means editing that hardcoded function — flagged, not required for the first release; the ministry page offers "Add from Cart" on its Volunteers tab. The occurrence page's "assign everyone in the cart" button and its route are retired. |
 | Timer job | `src/ChurchCRM/Service/SystemService.php:78` | `VolunteerNotificationService::drainOutbox();` and `(new VolunteerAssignmentService())->markCompleted(DateTimeUtils::getNowDateTime());` next to `BirthdayEmailService::run();` |
 | Event deletion | `src/ChurchCRM/model/ChurchCRM/Event.php:51-62` | null the occurrence link (E12) |
-| Access-denied page | `src/v2/routes/root.php:24-35` | add `'VolunteerManager'` and `'VolunteerCoordinator'` |
+| Access-denied page | `src/v2/routes/root.php:24-35` | add `'ManageMinistries'` and `'VolunteerCoordinator'` |
 | Header permission block | `src/Include/Header.php:230-233` | optionally add `window.CRM.permissions.volunteerCoordinator` — **advisory only**; the server gate is the control |
 | Auth entry gate | `src/ChurchCRM/Slim/Middleware/AuthMiddleware.php:60-64`, `:76`, `:130-137` | the narrow member-path exemption (§4.7) |
 
@@ -1725,7 +1725,7 @@ has **zero code** in the tree (§0.6), though §4.9 explains how V2 is absorbed 
 | Tier | Decided by | Persisted where |
 |---|---|---|
 | **Administrator** | `User::isAdmin()` | `user_usr.usr_Admin` — **unchanged** |
-| **Global Volunteer Manager** | `User::isVolunteerManagerEnabled()` (new) | new `user_usr.usr_VolunteerManager` column (§4.3) |
+| **Global Volunteer Manager** | `User::isManageMinistriesEnabled()` (new) | new `user_usr.usr_ManageMinistries` column (§4.3) |
 | **Ministry Coordinator** | `VolunteerAuthorizationService::canManageMinistry($user, $id)` | `volunteer_scope_vscp` row, `ScopeType = 'ministry'` (§2.15) |
 | **Team Leader** | `VolunteerAuthorizationService::canManageTeam($user, $id)` | `volunteer_scope_vscp` row, `ScopeType = 'team'` |
 | **Volunteer** | `$assignment->getPersonId() === $user->getId()` | **nothing** — identity only (F4) |
@@ -1765,28 +1765,28 @@ public function canManageTeam(User $user, int $teamId): bool
 | Thing | Storage | Why not the alternative |
 |---|---|---|
 | Rollout state | `SystemConfig` `sVolunteerVersion` (`choice`: `v1`\|`v2`\|`both`, default `v1`) | #9704 asks for "an explicit version/rollout state over a boolean". `sTelemetryLevel` is a shipped four-state precedent (`SystemConfig.php:119-129`, `:282`). **No `bEnabledVolunteer` boolean is added** — `sVolunteerVersion` subsumes it, and two flags would drift. Needs **no SQL** (F27). |
-| Global Volunteer Manager | `user_usr.usr_VolunteerManager` (Tier 1 boolean column) | Alternative: a `userconfig_ucfg` row `bManageVolunteers` read via `isEnabledSecurity()` — no migration, but it is the tier the codebase is migrating away from (`User.php:72-77`) and it costs a per-request loop over `getUserConfigs()` (`:606-610`). Every first-class permission since `usr_ManageFundraisers` uses Tier 1. |
+| Global Volunteer Manager | `user_usr.usr_ManageMinistries` (Tier 1 boolean column) | Alternative: a `userconfig_ucfg` row `bManageVolunteers` read via `isEnabledSecurity()` — no migration, but it is the tier the codebase is migrating away from (`User.php:72-77`) and it costs a per-request loop over `getUserConfigs()` (`:606-610`). Every first-class permission since `usr_ManageFundraisers` uses Tier 1. |
 | Coordinator / Team Leader scope | `volunteer_scope_vscp` | Alternative: **Group Roles** — rejected, and this is the single most likely wrong turn an implementer will take. Reasons, all verified: `Group::preInsert()` allocates a fresh `lst_ID` per group and seeds it with a single `'Member'` option (`Group.php:58-91`), **`Install.sql:352-390` seeds no "Leader" role anywhere**, `GroupService::deleteGroupRole()` renumbers surviving option ids so any stored reference silently re-points (F20), `SundaySchoolService::getClassByRole()` resolves roles by **literal name string** (`:210-232`), and a person can hold **one** role per group (F19) so they could not lead two teams sharing a pool. |
 | Volunteer identity | nothing | `User::getId()` *is* the person id (F4). |
 
-### 4.3 Adding `usr_VolunteerManager` — complete checklist
+### 4.3 Adding `usr_ManageMinistries` — complete checklist
 
 Derived from the `usr_ManageFundraisers` precedent (`src/mysql/upgrade/7.4.3-manage-fundraisers.sql`).
 
 | # | File | Change |
 |---|---|---|
-| 1 | `orm/schema.xml` after `usr_ManageFundraisers` (`:596`) | `<column name="usr_VolunteerManager" phpName="VolunteerManager" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>` |
-| 2 | `src/mysql/upgrade/7.8.0-volunteer-v2-manager-permission.sql` | `ALTER TABLE \`user_usr\` ADD COLUMN \`usr_VolunteerManager\` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER \`usr_ManageFundraisers\`;` — plain `ALTER`, **not** `IF NOT EXISTS` (see `7.4.3-manage-fundraisers.sql:5-8`) |
+| 1 | `orm/schema.xml` after `usr_ManageFundraisers` (`:596`) | `<column name="usr_ManageMinistries" phpName="ManageMinistries" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>` |
+| 2 | `src/mysql/upgrade/7.8.0-volunteer-v2-manager-permission.sql` | `ALTER TABLE \`user_usr\` ADD COLUMN \`usr_ManageMinistries\` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER \`usr_ManageFundraisers\`;` — plain `ALTER`, **not** `IF NOT EXISTS` (see `7.4.3-manage-fundraisers.sql:5-8`) |
 | 3 | `src/mysql/upgrade.json` | **not touched** — `7.8.0-volunteer-v2-manager-permission.sql` is registered in the 7.8.0 block when it opens, after the schema script (D17, F29) |
 | 4 | `src/mysql/install/Install.sql` | the same column in the `user_usr` `CREATE TABLE` — **required** |
 | 5 | `cypress/data/seed.sql` | the same column in its `user_usr` `CREATE TABLE`, plus a seeded manager and a seeded coordinator (§6.4) — **ask the user before editing `seed.sql`** |
 | 6 | ORM | `cd src && composer run orm-gen`, then `npm run build:php:validate:orm` |
 | 7 | `src/ChurchCRM/model/ChurchCRM/User.php` | the three predicates below, beside `isManageFundraisersEnabled()` (`:189`) |
-| 8 | `src/ChurchCRM/Service/UserService.php:210-224` | add `'volunteerManager' => …` to `extractModulePerms()` |
+| 8 | `src/ChurchCRM/Service/UserService.php:210-224` | add `'manageMinistries' => …` to `extractModulePerms()` |
 | 9 | `src/admin/views/user-editor.php:158-170` | add the checkbox to the `$permissions` array |
 | 10 | `User::getAllPermissions()` (`:243-264`) | add the key (note: this method currently has **no callers** — see Appendix E) |
-| 11 | `src/v2/routes/root.php:24-35` | add `'VolunteerManager'` and `'VolunteerCoordinator'` to the allow-list |
-| 12 | new `.../Request/Auth/VolunteerManagerRoleAuthMiddleware.php` and `VolunteerCoordinatorRoleAuthMiddleware.php` | §4.5 |
+| 11 | `src/v2/routes/root.php:24-35` | add `'ManageMinistries'` and `'VolunteerCoordinator'` to the allow-list |
+| 12 | new `.../Request/Auth/ManageMinistriesRoleAuthMiddleware.php` and `VolunteerCoordinatorRoleAuthMiddleware.php` | §4.5 |
 
 ```php
 // src/ChurchCRM/model/ChurchCRM/User.php — beside isManageFundraisersEnabled() (:189)
@@ -1806,12 +1806,12 @@ public static function isVolunteerV1Enabled(): bool
     return in_array(self::getVolunteerVersion(), ['v1', 'both'], true);
 }
 
-public function isVolunteerManagerEnabled(): bool
+public function isManageMinistriesEnabled(): bool
 {
     if ($this->isEditSelfExclusive()) {
         return false;                       // a volunteer is never a manager
     }
-    return self::isVolunteerV2Enabled() && ($this->isAdmin() || $this->isVolunteerManager());
+    return self::isVolunteerV2Enabled() && ($this->isAdmin() || $this->isManageMinistries());
 }
 ```
 
@@ -1860,7 +1860,7 @@ The codebase already uses three layers, and V2 uses the same three — no more, 
 
 | Layer | Answers | V2 use |
 |---|---|---|
-| **Role middleware** (`BaseAuthRoleMiddleware`) | "Does this user have the coarse capability at all?" | `VolunteerManagerRoleAuthMiddleware` on global-manager routes; `VolunteerCoordinatorRoleAuthMiddleware` on the coordinator area. **Never** used for ministry/team scope — the middleware runs before route args are resolved into domain objects and the base class has no entity hook. |
+| **Role middleware** (`BaseAuthRoleMiddleware`) | "Does this user have the coarse capability at all?" | `ManageMinistriesRoleAuthMiddleware` on global-manager routes; `VolunteerCoordinatorRoleAuthMiddleware` on the coordinator area. **Never** used for ministry/team scope — the middleware runs before route args are resolved into domain objects and the base class has no entity hook. |
 | **Entity middleware** (`AbstractEntityMiddleware::postEntityLoad()`) | "This specific record exists — may this user touch it?" | `MinistryMiddleware`, `TeamMiddleware`, `PositionMiddleware`, `ScheduleMiddleware`, `OccurrenceMiddleware`, `AssignmentMiddleware`, `SwapMiddleware`. |
 | **Handler / service** | "Is this *particular operation* on this record allowed, is the payload in scope, and is the volunteer eligible?" | self-or-authorized checks, eligibility and capacity at signup time, and **list-query scoping**, which no middleware can do. |
 
@@ -1874,7 +1874,7 @@ class VolunteerCoordinatorRoleAuthMiddleware extends BaseAuthRoleMiddleware
             return false;
         }
         $authz = new VolunteerAuthorizationService();
-        return $this->user->isVolunteerManagerEnabled() || $authz->hasAnyScope($this->user);
+        return $this->user->isManageMinistriesEnabled() || $authz->hasAnyScope($this->user);
     }
 
     protected function noRoleMessage(): string
@@ -2278,7 +2278,7 @@ yet is looking — rendered for a volunteer manager only (§4.6), which opens a 
 for a name and a description. On success it navigates to the new ministry's page, where the
 team and the pool Group it was created with already exist (D18/D19). The endpoint is
 unchanged: `POST /api/volunteer/ministries`, manager-gated by
-`VolunteerManagerRoleAuthMiddleware`.
+`ManageMinistriesRoleAuthMiddleware`.
 
 **There was never a volunteer-pool step (D19).** #9707 added one between Team and
 Positions — "choose the Group whose members volunteer for this team" — and D19 removed
@@ -2292,6 +2292,15 @@ Six tabs, all lazily loaded on activation (the `attendance-history.ts` pattern, 
 this order:
 
 **Overview · Volunteers · Positions · Schedules · Occurrences · Help Wanted**
+
+The card header names the ministry, shows the **Inactive** badge when `Active = 0`, and —
+for an administrator or a Manage Ministries user only (`$bIsManager`, the same
+`isGlobalManager()` answer the API gives) — a **Delete** button *(added 2026-09-17)*. It
+confirms through `bootbox`, calls `DELETE /api/volunteer/ministries/{id}` and lands on the
+Ministry Dashboard. It is **not** hidden while occurrences or assignments exist: the API's
+`409` message (the counts, "Deactivate it instead of deleting it") is shown as the toast, so
+the refusal explains itself. A coordinator never sees the button, and the route would refuse
+them anyway (§4.6).
 
 - **Overview** carries, top to bottom: a strip of exactly three counts — **Teams**,
   **Volunteers** (members of the ministry's pool Group) and **Unfilled Positions** — then
@@ -2796,7 +2805,7 @@ message whose reply target is knowable — and a reviewer should not expect one.
 `VolunteerV2EnabledMiddleware`; `src/volunteer/index.php` + `.htaccess` (copied from
 `src/event/.htaccess`) + a placeholder dashboard route and view; the `Menu.php` volunteer entry and
 the `Menu.php:114` V1 visibility change; the seven switch surfaces from §3.8 wired but rendering
-V1-as-today; `'VolunteerManager'`/`'VolunteerCoordinator'` in `src/v2/routes/root.php:24-35`;
+V1-as-today; `'ManageMinistries'`/`'VolunteerCoordinator'` in `src/v2/routes/root.php:24-35`;
 `private.volunteer.rollout.spec.js`. **No SQL, no schema change.**
 
 *Reuse decisions to document in the PR:* `choice` `ConfigItem` reused (precedent `sTelemetryLevel`);
@@ -2828,7 +2837,7 @@ table.
 *Depends on:* #9704 (for `User::isVolunteerV2Enabled()`, which every V2 role middleware calls
 first) **and** #9705 (needs `volunteer_scope_vscp`, ministry and team).
 
-**PR contains:** `usr_VolunteerManager` (the §4.3 twelve-file checklist);
+**PR contains:** `usr_ManageMinistries` (the §4.3 twelve-file checklist);
 `VolunteerAuthorizationService`; the two role middlewares; the seven entity middlewares with
 `postEntityLoad()`; the `AuthMiddleware` member-path exemption (§4.7) in **both** branches; the
 scope CRUD endpoints; `private.volunteer.authorization.spec.js` covering every §4.8 row.
@@ -3048,7 +3057,7 @@ to route around one of these.
 Constraints an implementer must respect:
 
 - **#9705 owns every `schema.xml` / `Install.sql` edit except two.** The exceptions are
-  `usr_VolunteerManager` (#9706) and `events_event.event_ministry_id` (#9713), each in its own
+  `usr_ManageMinistries` (#9706) and `events_event.event_ministry_id` (#9713), each in its own
   `7.8.0-volunteer-v2-*.sql` script. **No V2 PR edits `upgrade.json`** (D17): the three scripts are
   registered together, in the order schema → permission → event ministry, when the maintainer opens
   the 7.8.0 block.
@@ -3089,7 +3098,7 @@ consume it. This is #9703 deliverable 8.
 
 | Column | Why | Consumer issues |
 |---|---|---|
-| `user_usr.usr_VolunteerManager` | A global volunteer-manager right has no home; every first-class permission since `usr_ManageFundraisers` is a Tier 1 boolean column. The Tier 2 alternative (`userconfig_ucfg`) is the tier the codebase is migrating away from (`User.php:72-77`). | #9706 |
+| `user_usr.usr_ManageMinistries` | A global volunteer-manager right has no home; every first-class permission since `usr_ManageFundraisers` is a Tier 1 boolean column. The Tier 2 alternative (`userconfig_ucfg`) is the tier the codebase is migrating away from (`User.php:72-77`). | #9706 |
 | `events_event.event_ministry_id` | D9: a coordinator must create and edit *their* ministry's events without the global `AddEvent` right, and there is no per-row event authorization today. `event_audience` cannot carry it — different semantics (F28), wrong cardinality in the API, and it points at groups. | #9713 |
 | `group_grp.grp_ministry_id` | D19: a ministry owns exactly one Group — its volunteer pool. Replaces the `volunteer_pool_vpol` link table, which never shipped: a link gives the model hooks nothing to reason about, which is why the pool was read-only (D-1). This column is what makes the `bManageGroups` exception expressible per-group rather than per-user (§2.5, §4.6). | D19 |
 | `volunteer_ministry_vmin.vmin_HelpWanted` / `vmin_HelpWantedText` | D19: a ministry advertises on the Open Opportunities page. Two columns on the row that owns the advert; nothing in core expresses "this area wants more people". | D19 |
@@ -3112,7 +3121,7 @@ consume it. This is #9703 deliverable 8.
 | Item | Why | Consumer issues |
 |---|---|---|
 | `VolunteerV2EnabledMiddleware` | `BaseAuthSettingMiddleware` reads booleans only and returns an empty body with the reason in the HTTP reason phrase (S2); the rollout state is a three-value `choice` (#9704). | #9704 |
-| `VolunteerManagerRoleAuthMiddleware`, `VolunteerCoordinatorRoleAuthMiddleware` | Thin `BaseAuthRoleMiddleware` subclasses (~20 lines each) — the established way to gate a route group. | #9706 |
+| `ManageMinistriesRoleAuthMiddleware`, `VolunteerCoordinatorRoleAuthMiddleware` | Thin `BaseAuthRoleMiddleware` subclasses (~20 lines each) — the established way to gate a route group. | #9706 |
 | `MinistryMiddleware`, `TeamMiddleware`, `PositionMiddleware`, `ScheduleMiddleware`, `OccurrenceMiddleware`, `AssignmentMiddleware`, `SwapMiddleware` | `AbstractEntityMiddleware` subclasses; `postEntityLoad()` is where per-record scope is decided (F25). | #9706 onward |
 | `VolunteerSearchResultProvider` | Two files (`BaseSearchResultProvider` subclass + one array line) to put volunteers in global search — the cleanest extension point in the codebase. | #9711 |
 | Seven `BaseEmail` subclasses | Appendix C. There is no generic "send an arbitrary message to a person" email class; every message type in the codebase is its own subclass. | #9710 |

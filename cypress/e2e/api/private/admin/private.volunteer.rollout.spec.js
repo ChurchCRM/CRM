@@ -143,7 +143,7 @@ describe("Volunteer v2 rollout flag (#9704)", () => {
         });
 
         it("denies the V2 dashboard to a non-admin with no volunteer scope", () => {
-            // person 3 holds every permission flag except Admin, no usr_VolunteerManager
+            // person 3 holds every permission flag except Admin, no usr_ManageMinistries
             // and no volunteer_scope_vscp row, so VolunteerCoordinatorRoleAuthMiddleware
             // turns them away. The scoped positive path lives in
             // cypress/e2e/api/private/standard/private.volunteer.authorization.spec.js (#9706).

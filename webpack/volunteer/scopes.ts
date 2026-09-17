@@ -22,7 +22,7 @@
  * view renders the markup only for a global manager and `init()` returns early
  * when `window.CRM.volunteerMinistry.isManager` is false. Neither is the
  * decision: the API is, and it is manager-gated by
- * `VolunteerManagerRoleAuthMiddleware`. A 403 from the listing hides the whole
+ * `ManageMinistriesRoleAuthMiddleware`. A 403 from the listing hides the whole
  * card rather than showing a broken one, so a stale flag degrades to "not
  * offered" instead of "offered and then refused".
  *

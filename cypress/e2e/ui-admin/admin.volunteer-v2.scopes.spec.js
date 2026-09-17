@@ -46,7 +46,7 @@ const PREFIX = "UI9706";
 const MINISTRY_NAME = `${PREFIX} Hospitality`;
 const TEAM_NAME = `${PREFIX} Greeters`;
 
-/** tony.wade — every flag but Admin, and NOT a volunteer manager (usr_VolunteerManager = 0). */
+/** tony.wade — every flag but Admin, and NOT a volunteer manager (usr_ManageMinistries = 0). */
 const COORDINATOR_PERSON = 3;
 const COORDINATOR_NAME = "Tony Campbell";
 /** A second person, granted team-leader authority only. */

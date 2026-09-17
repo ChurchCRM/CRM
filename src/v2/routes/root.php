@@ -37,7 +37,7 @@ function viewAccessDenied(Request $request, Response $response, array $args): Re
         // Volunteer Management v2 (#9704). The role middlewares that emit these
         // arrive with #9706; listing them now keeps the access-denied page from
         // silently blanking the role name when they do.
-        'VolunteerManager',
+        'ManageMinistries',
         'VolunteerCoordinator',
     ];
 

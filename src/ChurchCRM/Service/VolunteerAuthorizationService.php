@@ -34,7 +34,7 @@ use Psr\Log\LoggerInterface;
  *   Team Leader    → true for their teams only
  *   Volunteer      → true only for rows whose person id is their own
  *
- * The administrator bypass lives in exactly one place — User::isVolunteerManagerEnabled(),
+ * The administrator bypass lives in exactly one place — User::isManageMinistriesEnabled(),
  * reached through isGlobalManager() — and every other predicate in this class calls
  * canManageMinistry() or canManageTeam(), which begin with that call. Nothing else in V2
  * may test isAdmin() for a volunteer decision.
@@ -103,7 +103,7 @@ class VolunteerAuthorizationService
      */
     public function isGlobalManager(User $user): bool
     {
-        return $user->isVolunteerManagerEnabled();
+        return $user->isManageMinistriesEnabled();
     }
 
     /**
@@ -360,12 +360,12 @@ class VolunteerAuthorizationService
      * ministry has no coordinator of its own (D19's "help wanted" fallback).
      *
      * Read from `user_usr`, because that is where the tier lives: a global volunteer
-     * manager is a FLAG on a login (`usr_VolunteerManager`, #9706) and an administrator
+     * manager is a FLAG on a login (`usr_ManageMinistries`, #9706) and an administrator
      * is `usr_Admin`, neither of which has a `volunteer_scope_vscp` row. `User::getId()`
      * IS the person id (F4), so no join is needed.
      *
      * EditSelf-exclusive logins are excluded: §4.3 says the volunteer persona is never a
-     * manager, and `isVolunteerManagerEnabled()` would refuse them anyway — filtering
+     * manager, and `isManageMinistriesEnabled()` would refuse them anyway — filtering
      * here keeps a mail from being addressed to somebody the rest of V2 would turn away.
      *
      * @return int[] person ids, deduplicated
@@ -375,7 +375,7 @@ class VolunteerAuthorizationService
         $personIds = [];
 
         $users = UserQuery::create()
-            ->condition('isManager', UserTableMap::COL_USR_VOLUNTEERMANAGER . ' = ?', true)
+            ->condition('isManager', UserTableMap::COL_USR_MANAGEMINISTRIES . ' = ?', true)
             ->condition('isAdmin', UserTableMap::COL_USR_ADMIN . ' = ?', true)
             ->where(['isManager', 'isAdmin'], Criteria::LOGICAL_OR)
             ->find();

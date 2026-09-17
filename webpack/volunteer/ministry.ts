@@ -45,6 +45,7 @@ import {
   addPoolMember,
   addPoolMembersFromCart,
   createTeam,
+  deleteMinistry,
   deleteTeam,
   errorMessage,
   getMinistry,
@@ -546,6 +547,45 @@ function wireHelpWanted(): void {
   });
 }
 
+// ─── Delete ministry (manager-only, design §4.6) ─────────────────────────────
+
+/**
+ * The header's Delete button. The view renders it only for a manager, but the
+ * API decides: `DELETE /ministries/{id}` answers 403 to anyone else and 409 while
+ * the ministry still has occurrences or assignments. That 409 message — the
+ * counts, and "deactivate it instead" — is shown as the toast, so a refused delete
+ * explains itself. On success the page no longer exists, so the browser goes to
+ * the dashboard, whose sidebar and ministry list will no longer name it.
+ */
+function wireMinistryDelete(): void {
+  const button = byId<HTMLButtonElement>("ministry-delete-btn");
+  if (!button) {
+    return;
+  }
+
+  button.addEventListener("click", () => {
+    const name = button.dataset.ministryName ?? "";
+    confirmDelete(
+      i18next.t("Delete ministry"),
+      i18next.t(
+        "Delete {{name}}? Its teams, positions, schedules, coordinator and team-leader grants, volunteer pool group and calendar are removed with it. This cannot be undone.",
+        { name },
+      ),
+      () => {
+        button.disabled = true;
+        deleteMinistry(ministryId)
+          .then(() => {
+            window.location.href = `${window.CRM?.root ?? ""}/volunteer/dashboard`;
+          })
+          .catch((error: unknown) => {
+            button.disabled = false;
+            notifyError(errorMessage(error, i18next.t("The ministry could not be deleted")));
+          });
+      },
+    );
+  });
+}
+
 // ─── Wiring ──────────────────────────────────────────────────────────────────
 
 function findTeam(id: number): VolunteerTeam | undefined {
@@ -633,6 +673,7 @@ function wire(): void {
   byId("team-form-save")?.addEventListener("click", saveTeam);
   wireTeamLeaderField();
   wireHelpWanted();
+  wireMinistryDelete();
 
   // Delegated: the rows are re-rendered on every load, so per-row listeners
   // would go stale. Positions, schedules and the grid wire their own.

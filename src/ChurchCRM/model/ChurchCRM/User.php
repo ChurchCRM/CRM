@@ -326,12 +326,12 @@ class User extends BaseUser
      * decided; VolunteerAuthorizationService::isGlobalManager() delegates here and
      * every other volunteer predicate flows through that (design §4.1).
      */
-    public function isVolunteerManagerEnabled(): bool
+    public function isManageMinistriesEnabled(): bool
     {
         if ($this->isEditSelfExclusive()) {
             return false;
         }
-        return self::isVolunteerV2Enabled() && ($this->isAdmin() || $this->isVolunteerManager());
+        return self::isVolunteerV2Enabled() && ($this->isAdmin() || $this->isManageMinistries());
     }
 
     /**
@@ -361,7 +361,7 @@ class User extends BaseUser
             return self::$volunteerCoordinatorMemo[$key];
         }
 
-        if ($this->isVolunteerManagerEnabled()) {
+        if ($this->isManageMinistriesEnabled()) {
             // Covers the administrator bypass, the manager flag, the rollout flag
             // and the EditSelf-exclusive short-circuit in one call.
             return self::$volunteerCoordinatorMemo[$key] = true;

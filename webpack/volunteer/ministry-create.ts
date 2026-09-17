@@ -17,7 +17,7 @@
  * Creating a ministry is manager-only (§4.6), so the BUTTON and the modal are
  * rendered server-side for a manager only; this module simply does nothing when
  * the markup is not on the page. Hiding is not security (D5): `POST
- * /api/volunteer/ministries` is gated by `VolunteerManagerRoleAuthMiddleware`
+ * /api/volunteer/ministries` is gated by `ManageMinistriesRoleAuthMiddleware`
  * whatever the page chose to draw.
  *
  * Every user-visible string is `i18next.t()` here rather than in the view: the

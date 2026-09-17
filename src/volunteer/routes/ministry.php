@@ -65,7 +65,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sPageTitle'     => $ministry->getName(),
             'sPageSubtitle'  => $ministry->getDescription() ?? gettext('Teams, positions and the people who fill them'),
             'aBreadcrumbs'   => PageHeader::breadcrumbs([
-                [gettext('Volunteer'), '/volunteer/dashboard'],
+                [gettext('Ministries'), '/volunteer/dashboard'],
                 [$ministry->getName()],
             ]),
             'iMinistryId'    => $ministryId,

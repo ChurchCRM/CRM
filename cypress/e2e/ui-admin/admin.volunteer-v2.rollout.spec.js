@@ -98,7 +98,7 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
         it("renders the V2 coordinator dashboard", () => {
             cy.visit("/volunteer/dashboard");
             cy.get("#volunteer-dashboard").should("exist");
-            cy.contains("Volunteer Dashboard").should("be.visible");
+            cy.contains("Ministry Dashboard").should("be.visible");
         });
     });
 

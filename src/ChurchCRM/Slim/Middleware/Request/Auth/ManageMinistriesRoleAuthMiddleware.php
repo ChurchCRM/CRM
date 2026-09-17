@@ -13,26 +13,26 @@ namespace ChurchCRM\Slim\Middleware\Request\Auth;
  * answer "may this user touch ministry 7" — that is the entity middlewares' job
  * (AbstractEntityMiddleware::postEntityLoad(), §4.5).
  *
- * User::isVolunteerManagerEnabled() already carries the administrator bypass, the
+ * User::isManageMinistriesEnabled() already carries the administrator bypass, the
  * EditSelf-exclusive short-circuit and the `sVolunteerVersion` rollout gate, so this
  * class deliberately adds nothing to it.
  */
-class VolunteerManagerRoleAuthMiddleware extends BaseAuthRoleMiddleware
+class ManageMinistriesRoleAuthMiddleware extends BaseAuthRoleMiddleware
 {
     protected function hasRole(): bool
     {
-        return $this->user->isVolunteerManagerEnabled();
+        return $this->user->isManageMinistriesEnabled();
     }
 
     protected function noRoleMessage(): string
     {
-        return gettext('Volunteer manager access is required');
+        return gettext('Ministry management access is required');
     }
 
     protected function getRoleName(): string
     {
         // Must stay in the allow-list at src/v2/routes/root.php or the access-denied
         // page renders no reason at all (design A10).
-        return 'VolunteerManager';
+        return 'ManageMinistries';
     }
 }

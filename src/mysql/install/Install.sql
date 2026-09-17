@@ -895,7 +895,7 @@ CREATE TABLE `user_usr` (
   `usr_ManageGroups` tinyint(1) unsigned NOT NULL default '0',
   `usr_Finance` tinyint(1) unsigned NOT NULL default '0',
   `usr_ManageFundraisers` tinyint(1) unsigned NOT NULL default '0',
-  `usr_VolunteerManager` tinyint(1) unsigned NOT NULL default '0',
+  `usr_ManageMinistries` tinyint(1) unsigned NOT NULL default '0',
   `usr_Notes` tinyint(1) unsigned NOT NULL default '0',
   `usr_Admin` tinyint(1) unsigned NOT NULL default '0',
   `usr_SearchLimit` tinyint(4) default '10',

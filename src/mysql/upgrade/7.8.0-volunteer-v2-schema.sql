@@ -33,7 +33,7 @@
 --   * Open Gap is derived (requirement minus live assignments), never stored — a
 --     persisted gap is a cache that disagrees with the assignments the first time
 --     a decline is processed outside the happy path.
---   * events_event.event_ministry_id ships with #9713, user_usr.usr_VolunteerManager
+--   * events_event.event_ministry_id ships with #9713, user_usr.usr_ManageMinistries
 --     with #9706 and group_grp.grp_ministry_id with D19, each in its own migration
 --     appended after this one — one script per CORE table V2 touches.
 --   * The volunteer pool has no table. D19 makes a ministry own exactly one core

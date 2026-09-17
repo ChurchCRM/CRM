@@ -80,7 +80,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
             : EventQuery::create()->findPk((int) $occurrence->getEventId());
         $eventLocation = $linkedEvent === null ? null : $linkedEvent->getLocation();
 
-        $ministryName = $ministry === null ? gettext('Volunteer') : $ministry->getName();
+        $ministryName = $ministry === null ? gettext('Ministry') : $ministry->getName();
         $scheduleName = $schedule === null ? gettext('Schedule') : $schedule->getName();
 
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -90,7 +90,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sPageTitle' => $scheduleName,
             'sPageSubtitle' => gettext('Who is needed, who is on, and what is still short'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Volunteer'), '/volunteer/dashboard'],
+                [gettext('Ministries'), '/volunteer/dashboard'],
                 [$ministryName, $ministry === null ? null : '/volunteer/ministries/' . (int) $ministry->getId()],
                 [$scheduleName],
             ]),

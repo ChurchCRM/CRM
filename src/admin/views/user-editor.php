@@ -168,7 +168,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
                 // ManageFundraisers rather than the AddEvent row below: a checkbox that
                 // disappears with a system setting would be silently cleared by the next save,
                 // because extractModulePerms() reads every permission from the posted form.
-                ['name' => 'VolunteerManager', 'label' => gettext('Manage Volunteers'),                'checked' => $perms['volunteerManager']],
+                ['name' => 'ManageMinistries', 'label' => gettext('Manage Ministries'),                'checked' => $perms['manageMinistries']],
             ];
             if ($eventsEnabled) {
                 $permissions[] = ['name' => 'AddEvent', 'label' => gettext('Manage Events'), 'checked' => !empty($perms['addEvent'])];

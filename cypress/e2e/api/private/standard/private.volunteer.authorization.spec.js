@@ -9,9 +9,9 @@
  *
  *   - the scope CRUD surface  `/api/volunteer/scopes`
  *   - the idempotent grant    (§6.6: second POST is 200 with the SAME id, never 409)
- *   - the `usr_VolunteerManager` round trip through the user-administration
+ *   - the `usr_ManageMinistries` round trip through the user-administration
  *     surface (`/admin/system/users/{personId}/edit`), proving the new column
- *     drives `User::isVolunteerManagerEnabled()` and therefore the middleware
+ *     drives `User::isManageMinistriesEnabled()` and therefore the middleware
  *   - the §4.7 member-path exemption on the API-key branch of AuthMiddleware
  *
  * Tiers exercised (design §6.4 fixture table):
@@ -252,21 +252,21 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
     });
 
     // ---------------------------------------------------------------------
-    // usr_VolunteerManager — the new column, end to end
+    // usr_ManageMinistries — the new column, end to end
     // ---------------------------------------------------------------------
-    describe("usr_VolunteerManager round trip through the user editor", () => {
+    describe("usr_ManageMinistries round trip through the user editor", () => {
         afterEach(() => {
             restoreManagerUser();
         });
 
-        it("renders an unchecked Volunteer Manager checkbox for a user without it", () => {
+        it("renders an unchecked Manage Ministries checkbox for a user without it", () => {
             getUserEditor(PERSON_MANAGER).then((resp) => {
                 expect(resp.status).to.eq(200);
-                expect(resp.body).to.include('name="VolunteerManager"');
+                expect(resp.body).to.include('name="ManageMinistries"');
                 const field = resp.body.match(
-                    /<input[^>]*name="VolunteerManager"[^>]*>/,
+                    /<input[^>]*name="ManageMinistries"[^>]*>/,
                 );
-                expect(field, "the VolunteerManager input").to.not.eq(null);
+                expect(field, "the ManageMinistries input").to.not.eq(null);
                 expect(field[0]).to.not.include("checked");
             });
         });
@@ -279,7 +279,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 UserName: MANAGER_USERNAME,
                 accessMode: "custom",
                 Notes: "1",
-                VolunteerManager: "1",
+                ManageMinistries: "1",
             }).then((resp) => {
                 expect(resp.status).to.be.oneOf([200, 302]);
             });
@@ -287,7 +287,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             // The editor reads the stored column back as checked.
             getUserEditor(PERSON_MANAGER).then((resp) => {
                 const field = resp.body.match(
-                    /<input[^>]*name="VolunteerManager"[^>]*>/,
+                    /<input[^>]*name="ManageMinistries"[^>]*>/,
                 );
                 expect(field[0]).to.include("checked");
             });
@@ -314,19 +314,19 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 UserName: MANAGER_USERNAME,
                 accessMode: "custom",
                 Notes: "1",
-                VolunteerManager: "1",
+                ManageMinistries: "1",
             });
             cy.makePrivatePlainAuthAPICall("GET", SCOPES_URL, null, 200);
 
             // accessMode 'self' is exclusive: extractModulePerms() zeroes every
-            // module permission, VolunteerManager included (#9079).
+            // module permission, ManageMinistries included (#9079).
             postUserEditor(PERSON_MANAGER, {
                 UserName: MANAGER_USERNAME,
                 accessMode: "self",
-                VolunteerManager: "1",
+                ManageMinistries: "1",
             });
             cy.dbQuery(
-                "SELECT usr_VolunteerManager AS flag FROM user_usr WHERE usr_per_ID = ?",
+                "SELECT usr_ManageMinistries AS flag FROM user_usr WHERE usr_per_ID = ?",
                 [PERSON_MANAGER],
             ).then((result) => {
                 expect(result.error).to.eq(null);

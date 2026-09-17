@@ -913,7 +913,7 @@ cy.request({
     url: `/admin/system/users/${personId}/edit`,
     headers: { "x-api-key": Cypress.env("admin.api.key") },
     form: true,                       // required — the route parses a form body
-    body: { UserName: "…", accessMode: "custom", Notes: "1", VolunteerManager: "1" },
+    body: { UserName: "…", accessMode: "custom", Notes: "1", ManageMinistries: "1" },
     failOnStatusCode: false, followRedirect: false, withCredentials: false,
 });                                   // → 302 back to the user list on success
 ```

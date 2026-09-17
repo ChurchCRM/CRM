@@ -1945,7 +1945,7 @@ CREATE TABLE `user_usr` (
   `usr_ManageGroups` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_Finance` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_ManageFundraisers` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_VolunteerManager` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_ManageMinistries` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_Notes` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_Admin` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `usr_SearchLimit` tinyint(4) DEFAULT 10,

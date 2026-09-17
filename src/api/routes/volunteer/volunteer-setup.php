@@ -23,7 +23,7 @@ use ChurchCRM\Slim\Middleware\Api\VolunteerQualificationMiddleware;
 use ChurchCRM\Slim\Middleware\Api\VolunteerTeamMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\VolunteerCoordinatorRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\VolunteerManagerRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\ManageMinistriesRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -46,7 +46,7 @@ use Slim\Routing\RouteCollectorProxy;
  *                                       group would answer in every rollout state.
  *   VolunteerCoordinatorRoleAuthMiddleware  on the inner group — "do you coordinate
  *                                       anything at all".
- *   VolunteerManagerRoleAuthMiddleware  on the two manager-only routes, POST and
+ *   ManageMinistriesRoleAuthMiddleware  on the two manager-only routes, POST and
  *                                       DELETE of a ministry (§4.6).
  *   VolunteerMinistry/Team/PositionMiddleware  per record: 404 when it is missing,
  *                                       403 when it is outside the caller's scope.
@@ -85,7 +85,7 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
                 // escaped with its line breaks preserved, never as markup.
                 'helpWantedText' => 'text',
             ]))
-            ->add(VolunteerManagerRoleAuthMiddleware::class);
+            ->add(ManageMinistriesRoleAuthMiddleware::class);
 
         $setup->get('/ministries/{ministryId:[0-9]+}', 'getVolunteerMinistry')
             ->add(new VolunteerMinistryMiddleware());
@@ -107,7 +107,7 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
 
         $setup->delete('/ministries/{ministryId:[0-9]+}', 'deleteVolunteerMinistry')
             ->add(new VolunteerMinistryMiddleware())
-            ->add(VolunteerManagerRoleAuthMiddleware::class);
+            ->add(ManageMinistriesRoleAuthMiddleware::class);
 
         // ── Teams ─────────────────────────────────────────────────────────
         $setup->get('/ministries/{ministryId:[0-9]+}/teams', 'listVolunteerTeams')
@@ -529,7 +529,7 @@ function listVolunteerMinistries(Request $request, Response $response): Response
  *     )),
  *     @OA\Response(response=400, description="The name is missing or empty"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Volunteer manager access is required, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Ministry management access is required, or V2 is not enabled"),
  *     @OA\Response(response=409, description="A ministry with that name already exists"),
  *     @OA\Response(response=201, description="Created")
  * )
@@ -785,7 +785,7 @@ function updateVolunteerMinistry(Request $request, Response $response): Response
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Volunteer manager access is required, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Ministry management access is required, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
  *     @OA\Response(response=409, description="The ministry still has occurrences or assignments"),
  *     @OA\Response(response=200, description="Deleted")

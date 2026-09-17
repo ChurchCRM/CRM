@@ -8,7 +8,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerScopeQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Service\VolunteerAuthorizationService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\VolunteerManagerRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\ManageMinistriesRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -49,7 +49,7 @@ $app->group('/volunteer', function (RouteCollectorProxy $group): void {
                 'scopeId' => 'int',
             ]));
         $scopes->delete('/{scopeId:[0-9]+}', 'deleteVolunteerScope');
-    })->add(VolunteerManagerRoleAuthMiddleware::class);
+    })->add(ManageMinistriesRoleAuthMiddleware::class);
 
     $group->get('/me/permissions', 'getMyVolunteerPermissions');
 })->add(new VolunteerV2EnabledMiddleware());
@@ -97,7 +97,7 @@ function volunteerScopeToArray(VolunteerScope $scope): array
  *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer"),
  *         description="Only team-scope grants on this team"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Volunteer manager access is required, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Ministry management access is required, or V2 is not enabled"),
  *     @OA\Response(response=200, description="OK",
  *         @OA\JsonContent(@OA\Property(property="scopes", type="array", @OA\Items(type="object")))
  *     )
@@ -133,7 +133,7 @@ function listVolunteerScopes(Request $request, Response $response): Response
  *     )),
  *     @OA\Response(response=400, description="Missing or invalid field"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Volunteer manager access is required, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Ministry management access is required, or V2 is not enabled"),
  *     @OA\Response(response=404, description="The person or the scope target does not exist"),
  *     @OA\Response(response=200, description="The grant already existed; the same row is returned"),
  *     @OA\Response(response=201, description="Granted")
@@ -194,7 +194,7 @@ function createVolunteerScope(Request $request, Response $response): Response
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="scopeId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Volunteer manager access is required, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Ministry management access is required, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such grant"),
  *     @OA\Response(response=200, description="Revoked")
  * )
