@@ -94,6 +94,24 @@
     text-decoration: none;
 }
 
+// The core bundle's `a:hover` (0,1,1) outweighs `.portal-brand` (0,1,0), so
+// without this the church's name turned link-blue and picked up an underline
+// under the pointer. The church's identity is not a link that lights up.
+.portal-brand:hover,
+.portal-brand:focus,
+.portal-brand:focus-visible {
+    color: inherit;
+    text-decoration: none;
+}
+
+// Nothing above removes the browser's focus ring, but the header's dark
+// background makes the default one hard to see, so draw our own.
+.portal-brand:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 3px;
+    border-radius: var(--portal-radius);
+}
+
 .portal-brand-logo {
     block-size: 2.25rem;
     inline-size: auto;
