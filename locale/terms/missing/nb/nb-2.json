@@ -1,38 +1,38 @@
 {
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Kopierte {{count}} medlem",
+    "other": "Kopierte {{count}} medlemmer"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Denne listen har {{count}} mottaker — for mange for en mailto:-lenke. Bruk Kopier adresser i stedet.",
+    "other": "Denne listen har {{count}} mottakere — for mange for en mailto:-lenke. Bruk Kopier adresser i stedet."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "For mange mottakere for e-postklienten ({{count}} > {{max}}). Bruk Kopier adresser i stedet.",
+    "other": "For mange mottakere for e-postklienten ({{count}} > {{max}}). Bruk Kopier adresser i stedet."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} min igjen",
+    "other": "{{count}} min igjen"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familie kunne ikke geokodes",
+    "other": "{{count}} familier kunne ikke geokodes"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktiv i {{count}} sekund",
+    "other": "Aktiv i {{count}} sekunder"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Du er i ferd med å sende bekreftelses-e-poster til {{count}} familie.",
+    "other": "Du er i ferd med å sende bekreftelses-e-poster til {{count}} familier."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familie har ingen registrert e-postadresse og vil bli hoppet over",
+    "other": "{{count}} familier har ingen registrert e-postadresse og vil bli hoppet over"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "… og {{count}} til som ikke er oppført her.",
+    "other": "… og {{count}} til som ikke er oppført her."
   }
 }
