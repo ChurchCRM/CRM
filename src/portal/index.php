@@ -34,6 +34,7 @@ require __DIR__ . '/routes/theme-asset.php';
 $app->group('', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/home.php';
     require __DIR__ . '/routes/calendar.php';
+    require __DIR__ . '/routes/email.php';
     require __DIR__ . '/routes/profile.php';
     require __DIR__ . '/routes/family.php';
 })->add(new CSRFMiddleware())->add(new PortalAccessMiddleware());

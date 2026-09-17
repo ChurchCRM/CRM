@@ -1093,6 +1093,132 @@ textarea.portal-input {
     }
 }
 
+// Email History --------------------------------------------------------------
+//
+// The list is one `<table>` at every width — the same markup, the same reading
+// order, so nothing is duplicated or hidden from a screen reader. On a phone it
+// is unrolled into a stack of blocks: each row is a card, each cell carries its
+// column name from `data-label`, and the header row goes away because every
+// cell now names itself. From the tablet breakpoint up the browser's own table
+// layout takes over again (see the media block below).
+
+.portal-table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    margin-block-end: var(--portal-gap);
+}
+
+.portal-table thead {
+    // Off-screen rather than `display: none`: a phone hides the header row, but
+    // the table still has one, so assistive technology that reads the table
+    // structure is not left guessing what a cell is.
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.portal-table-row {
+    display: block;
+    padding-block: 0.75rem;
+    border-block-end: 1px solid var(--portal-border);
+
+    &:last-child {
+        border-block-end: 0;
+    }
+}
+
+.portal-table-cell {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-block: 0.15rem;
+
+    // The column's name, printed beside the value only while the table is
+    // unrolled. `attr()` keeps it in the markup's own language, already
+    // translated by Twig.
+    &::before {
+        content: attr(data-label);
+        flex: 0 0 5.5rem;
+        color: var(--portal-muted);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+}
+
+.portal-email-subject {
+    font-size: 1rem;
+    font-weight: 600;
+    // A long subject wraps rather than pushing the row sideways.
+    overflow-wrap: anywhere;
+}
+
+.portal-email-date {
+    color: var(--portal-muted);
+}
+
+.portal-email-kind {
+    display: inline-block;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-muted);
+    font-size: 0.75rem;
+}
+
+// Sent is the ordinary case and stays quiet; a member only needs to notice the
+// other two, so those carry the palette's notice colours.
+.portal-email-status {
+    display: inline-block;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-muted);
+
+    &.is-failed {
+        background-color: var(--portal-danger);
+        color: var(--portal-danger-contrast);
+    }
+
+    &.is-skipped {
+        background-color: var(--portal-warning);
+        color: var(--portal-warning-contrast);
+    }
+}
+
+.portal-pager {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.portal-pager-position {
+    color: var(--portal-muted);
+    font-size: 0.875rem;
+    // With only one of the two buttons present the position still sits between
+    // them rather than jumping to an edge.
+    order: 0;
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+// The stored email body, in its sandboxed frame. It cannot be measured from
+// here (see email/show.html.twig), so it gets a generous height and scrolls.
+.portal-email-body {
+    inline-size: 100%;
+    block-size: min(60vh, 32rem);
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    background-color: #ffffff;
+}
+
 // Tablet and up --------------------------------------------------------------
 
 @media (min-width: 768px) {
@@ -1154,6 +1280,53 @@ textarea.portal-input {
         dt {
             flex: 0 0 7rem;
         }
+    }
+
+    // Off the phone the email list rolls back up into a real table: the header
+    // row comes back, each cell is a cell again, and the per-cell column names
+    // are not needed because the header says them once.
+    .portal-table thead {
+        position: static;
+        inline-size: auto;
+        block-size: auto;
+        clip-path: none;
+    }
+
+    .portal-table th {
+        padding: 0.5rem 0.75rem 0.5rem 0;
+        border-block-end: 1px solid var(--portal-border);
+        text-align: start;
+        color: var(--portal-muted);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+    }
+
+    .portal-table-row {
+        display: table-row;
+        padding-block: 0;
+    }
+
+    .portal-table-cell {
+        display: table-cell;
+        padding: 0.6rem 0.75rem 0.6rem 0;
+        vertical-align: baseline;
+        border-block-end: 1px solid var(--portal-border);
+
+        &::before {
+            content: none;
+        }
+    }
+
+    // The subject is the column that should take the space a long one needs;
+    // the other three are as narrow as their content.
+    .portal-table-cell:nth-child(1),
+    .portal-table-cell:nth-child(2),
+    .portal-table-cell:nth-child(4) {
+        white-space: nowrap;
+        inline-size: 1%;
     }
 }
 
