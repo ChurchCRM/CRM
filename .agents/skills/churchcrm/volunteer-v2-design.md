@@ -509,7 +509,7 @@ write, and every ministry query inherits `preSelect()`.
 | `vmin_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vmin_Name` | `Name` | `VARCHAR(100)` required | `UNIQUE`. 100, not 50 — V1's `VARCHAR(30)` is far too small. |
 | `vmin_Description` | `Description` | `VARCHAR(255)` null | |
-| `vmin_Active` | `Active` | `BOOLEAN` `tinyint(1) unsigned` required default `1` | The lifecycle gate *(revised 2026-09-17)*: a ministry must be deactivated before `DELETE` is accepted; a deactivated one sits under the sidebar's **Deactivated Ministries** heading, whose page offers Reactivate and (manager-only) Delete. |
+| `vmin_Active` | `Active` | `BOOLEAN` `tinyint(1) unsigned` required default `1` | The lifecycle gate *(revised 2026-09-17)*: a ministry must be deactivated before `DELETE` is accepted; a deactivated one sits in the **Deactivated Ministries** group nested under the sidebar's Ministries heading, and its page offers Reactivate and (manager-only) Delete. |
 | `vmin_CreatedDate` | `CreatedDate` | `DATETIME` required | wall-clock in `sTimeZone` |
 | `vmin_CreatedBy_per_ID` | `CreatedByPersonId` | `mediumint(9) unsigned` null | FK → `person_per.per_ID`, `ON DELETE SET NULL` |
 | `vmin_HelpWanted` | `HelpWanted` | `tinyint(1)` required default `0` | D19: advertise on the Open Opportunities page |
@@ -2190,10 +2190,11 @@ entries: one cheap id-and-name query per request, memoised in
 - **administrator / global volunteer manager** — every ministry;
 - **ministry coordinator** — exactly the ministries they hold a `ministry` scope on;
 
-  *(revised 2026-09-17)* — in both cases the **active** ones sit under **Ministries** and the
-  deactivated ones under a second heading, **Deactivated Ministries** (`fa-box-archive`, no
-  Dashboard entry), which `MenuItem::isVisible()` hides whenever it would be empty. Same
-  memoised query, split by the `active` flag it now carries;
+  *(revised 2026-09-17)* — in both cases the **active** ones are direct entries of **Ministries**
+  and the deactivated ones sit in a group **nested under it**, after them: **Deactivated
+  Ministries** (`fa-box-archive`, the Groups heading's per-type sub-groups are the precedent),
+  which `MenuItem::isVisible()` drops whenever it would be empty. Same memoised query, split by
+  the `active` flag it now carries;
 - **team leader on a STAFF account** — *Dashboard* alone. Leading a team is not administering
   the ministry above it, and `/volunteer/ministries/{id}` would refuse them. Their teams are
   named on the dashboard's "My ministries and teams" card, which is their entry point;
@@ -2303,7 +2304,8 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
 - on an **active** ministry: **Deactivate**, offered to anyone who may open the page (a
   coordinator may deactivate their own ministry — §4.6 "Edit / deactivate: scope"). It
   confirms, sets `active:false` through the ordinary update and reloads: the ministry leaves
-  the sidebar's Ministries heading for **Deactivated Ministries**, and the header now shows —
+  the Ministries heading's active entries for the nested **Deactivated Ministries** group, and the
+  header now shows —
 - on a **deactivated** ministry: **Reactivate** (same audience, `active:true`, reload) and, for
   an administrator or Manage Ministries user only (`$bIsManager`), **Delete**. Delete confirms
   with the ministry's all-time `occurrenceCount` and `assignmentCount` from the document's

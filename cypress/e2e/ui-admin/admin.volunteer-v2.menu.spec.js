@@ -189,9 +189,10 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
                 cy.get(`a[href$="${DASHBOARD_URL}"]`).should("exist");
                 // Every entry under this heading is either the dashboard or a
                 // ministry page — never a member page. The count itself is not
-                // asserted: an administrator sees every ACTIVE ministry, and
-                // another spec's fixture may still be around.
-                cy.get("a.nav-link").each(($link) => {
+                // asserted: an administrator sees every ministry, and another
+                // spec's fixture may still be around. The nested Deactivated
+                // Ministries group's own toggle is a collapse anchor, not a link.
+                cy.get("a.nav-link:not([data-bs-toggle])").each(($link) => {
                     expect($link.attr("href")).to.match(
                         /\/volunteer\/(dashboard|ministries\/\d+)$/,
                     );

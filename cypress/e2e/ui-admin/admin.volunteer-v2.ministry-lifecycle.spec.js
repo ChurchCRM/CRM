@@ -5,8 +5,9 @@
  * Reactivate / Delete (epic #9701, design §4.6 and §5.4 as amended 2026-09-17).
  *
  * Product-owner decision: a ministry must be deactivated before it can be
- * deleted. Deactivating moves it from the sidebar's Ministries heading to a
- * **Deactivated Ministries** heading that exists only while there is one; that
+ * deleted. Deactivating moves it from the Ministries heading's active entries to a
+ * **Deactivated Ministries** group nested under that heading, which exists only
+ * while there is one; that
  * page offers Reactivate and — to an administrator or Manage Ministries user —
  * Delete, which then removes everything under the ministry, service history
  * included. Proved here:
@@ -127,22 +128,36 @@ function menuSection(title) {
         .then((href) => cy.get(href));
 }
 
+/**
+ * Deactivated Ministries is a group NESTED inside the Ministries heading, so "under
+ * Ministries" means a DIRECT entry of that heading's list — the nested group's own
+ * entries sit one `ul` deeper and must not count.
+ */
 function headingHasMinistry(title, expected) {
-    menuSection(title).within(() => {
-        cy.get(`a[href$="${ministryUrl()}"]`).should(expected ? "exist" : "not.exist");
-    });
+    menuSection(title)
+        .find(`> ul > li > div > a[href$="${ministryUrl()}"]`)
+        .should(expected ? "exist" : "not.exist");
 }
 
-/** The Deactivated Ministries heading may hold other specs' residue; ours is what matters. */
+/** The nested group may hold other specs' residue; ours is what matters. */
 function deactivatedHeadingLacksMinistry() {
     // A jQuery filter inside .then(), not cy.filter(): the Cypress one retries until
-    // it finds something, and "no such heading at all" is the expected common case.
+    // it finds something, and "no such group at all" is the expected common case.
     cy.get("a[data-bs-toggle='collapse'] .nav-link-title").then(($titles) => {
         const heading = $titles.filter((_i, el) => el.textContent.trim() === "Deactivated Ministries");
         if (heading.length === 0) {
             return;
         }
         headingHasMinistry("Deactivated Ministries", false);
+    });
+}
+
+/** The nested group is a child of the Ministries heading, never a heading of its own. */
+function deactivatedGroupIsNestedUnderMinistries() {
+    menuSection("Ministries").within(() => {
+        cy.get("a[data-bs-toggle='collapse'] .nav-link-title")
+            .filter((_i, el) => el.textContent.trim() === "Deactivated Ministries")
+            .should("have.length", 1);
     });
 }
 
@@ -192,6 +207,10 @@ describe("Volunteer v2 — ministry lifecycle (Deactivate, Reactivate, Delete)",
             cy.get("#ministry-delete-btn").should("be.visible").and("contain", "Delete");
             headingHasMinistry("Ministries", false);
             headingHasMinistry("Deactivated Ministries", true);
+            deactivatedGroupIsNestedUnderMinistries();
+            // Both levels open on a deactivated ministry's own page.
+            menuSection("Ministries").should("have.class", "show");
+            menuSection("Deactivated Ministries").should("have.class", "show");
 
             cy.get("#ministry-reactivate-btn").click();
             cy.get("#ministry-deactivate-btn").should("be.visible");

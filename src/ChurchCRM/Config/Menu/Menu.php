@@ -56,9 +56,6 @@ class Menu
             // Member Portal now (#9867, Member Portal design P16). "Ministries"
             // below is the administration surface and is unchanged.
             'Ministries'   => self::getMinistriesMenu($currentUser, $isVolunteerCoordinator),
-            // Deactivated ministries get their own heading, shown only while there is
-            // one; that page is where Reactivate and Delete live (2026-09-17 decision).
-            'DeactivatedMinistries' => self::getDeactivatedMinistriesMenu($currentUser, $isVolunteerCoordinator),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
             'Reports'      => self::getReportsMenu($isAdmin),
@@ -359,27 +356,30 @@ class Menu
 
         $ministriesMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'volunteer/dashboard', true, 'fa-gauge'));
         self::addMinistryEntries($ministriesMenu, $currentUser, true);
+        // Last under the heading: the nested Deactivated Ministries group, which
+        // MenuItem::isVisible() drops whenever it would be empty.
+        $ministriesMenu->addSubMenu(self::getDeactivatedMinistriesMenu($currentUser));
 
         return $ministriesMenu;
     }
 
     /**
-     * **Deactivated Ministries** — the lifecycle heading (product-owner decision,
-     * 2026-09-17). A ministry is deactivated from its page, drops out of the
-     * Ministries heading and appears here; its page then offers Reactivate and,
-     * to a manager, Delete. The heading has no Dashboard entry and no fixed
-     * content, so `MenuItem::isVisible()` hides it whenever the viewer manages no
-     * deactivated ministry — for most installations, most of the time.
+     * **Deactivated Ministries** — the lifecycle group NESTED under the Ministries
+     * heading, after the active entries (product-owner decision, 2026-09-17; the
+     * Groups heading's per-type sub-groups are the precedent, and MenuRenderer
+     * recurses). A ministry is deactivated from its page, leaves the list of
+     * active entries and appears here; its page then offers Reactivate and, to a
+     * manager, Delete. The group has no fixed content, so `MenuItem::isVisible()`
+     * drops it whenever the viewer manages no deactivated ministry — for most
+     * installations, most of the time. `openMenu()` recurses too, so opening a
+     * deactivated ministry expands both levels.
      *
-     * Same predicate, same memoised query as the Ministries heading: the second
-     * heading costs nothing extra.
+     * Same memoised query as the active entries: the group costs nothing extra.
      */
-    private static function getDeactivatedMinistriesMenu(User $currentUser, bool $isCoordinator): MenuItem
+    private static function getDeactivatedMinistriesMenu(User $currentUser): MenuItem
     {
-        $menu = new MenuItem(gettext('Deactivated Ministries'), '', $isCoordinator, 'fa-box-archive');
-        if ($isCoordinator) {
-            self::addMinistryEntries($menu, $currentUser, false);
-        }
+        $menu = new MenuItem(gettext('Deactivated Ministries'), '', true, 'fa-box-archive');
+        self::addMinistryEntries($menu, $currentUser, false);
 
         return $menu;
     }
