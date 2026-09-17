@@ -18,6 +18,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <label for="fyid" class="fw-bold"><?= gettext('Fiscal Year') ?></label>
                 <form method="GET" class="d-inline">
                     <select name="fyid" id="fyid" class="form-select d-inline-block" style="width: auto;">
+                        <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
                         <?php foreach ($availableYears as $year): ?>
                             <option value="<?= $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
                                 <?= InputUtils::escapeHTML($year['label']) ?>
@@ -53,7 +54,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= CurrencyFormatter::formatHtml($totalPledges) ?></div>
-                            <div class="text-body-secondary"><?= gettext('Total Pledges') ?> — <?= FinancialService::formatFiscalYear($selectedFyid) ?></div>
+                            <div class="text-body-secondary"><?= gettext('Total Pledges') ?> — <?= $selectedFyid === 0 ? gettext('All Time') : FinancialService::formatFiscalYear($selectedFyid) ?></div>
                         </div>
                     </div>
                 </div>

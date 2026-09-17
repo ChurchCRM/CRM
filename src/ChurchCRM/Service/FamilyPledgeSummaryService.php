@@ -14,31 +14,35 @@ class FamilyPledgeSummaryService
      * Get family pledge summary for a given fiscal year
      *
      * Returns an array of families with their pledges grouped by donation fund
-     * 
-     * @param int $fyid Fiscal Year ID
+     *
+     * @param int $fyid Fiscal Year ID, or 0/negative for All Time (no FY filter)
      * @return array Array of families with pledge data
      */
     public function getFamilyPledgesByFiscalYear(int $fyid): array
     {
         // Get all pledges for the fiscal year (only actual pledges, not payments)
-        $pledges = PledgeQuery::create()
-            ->filterByFyId($fyid)
+        $pledgesQuery = PledgeQuery::create()
             ->filterByPledgeOrPayment('Pledge')
             ->filterByAmount(0, Criteria::GREATER_THAN)
             ->joinWith('Pledge.Family')
             ->joinWith('Pledge.DonationFund', Criteria::LEFT_JOIN)
-            ->orderByFamId()
-            ->find();
+            ->orderByFamId();
+        if ($fyid > 0) {
+            $pledgesQuery->filterByFyId($fyid);
+        }
+        $pledges = $pledgesQuery->find();
 
         // Get all payments for the fiscal year to compare with pledges
-        $payments = PledgeQuery::create()
-            ->filterByFyId($fyid)
+        $paymentsQuery = PledgeQuery::create()
             ->filterByPledgeOrPayment('Payment')
             ->filterByAmount(0, Criteria::GREATER_THAN)
             ->joinWith('Pledge.Family')
             ->joinWith('Pledge.DonationFund', Criteria::LEFT_JOIN)
-            ->orderByFamId()
-            ->find();
+            ->orderByFamId();
+        if ($fyid > 0) {
+            $paymentsQuery->filterByFyId($fyid);
+        }
+        $payments = $paymentsQuery->find();
 
         // Per-fund record counters (to match legacy PledgeSummary report)
         $fundPledgeCounts = [];

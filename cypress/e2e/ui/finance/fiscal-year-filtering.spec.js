@@ -214,6 +214,24 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       // Seed has pledges in FY22 — fund total section should render
       cy.get("table tbody tr").should("have.length.at.least", 1);
     });
+
+    it("offers an All Time option that shows every fiscal year's pledges", () => {
+      cy.visit("finance/pledge/dashboard");
+
+      // All Time is a real option, not just the named fiscal years
+      cy.get("#fyid option[value='0']").should("exist").and("contain.text", "All Time");
+
+      cy.get("#fyid").select("0");
+      cy.location("search").should("include", "fyid=0");
+      cy.contains("Pledge Dashboard");
+
+      // All Time aggregates every seeded fiscal year (22, 23, 25) — strictly
+      // more rows than any single FY, and the label must not show a bogus
+      // "1996" (fyid 0 run through the calendar-year formula unfiltered).
+      cy.contains("All Time");
+      cy.contains("1996").should("not.exist");
+      cy.get("table tbody tr").should("have.length.at.least", 1);
+    });
   });
 
 
