@@ -1,49 +1,49 @@
 {
-  "Code": "",
+  "Code": "Code",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tag Zeit, sich zu registrieren.|Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tage Zeit, sich zu registrieren.",
-    "other": ""
+    "one": "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tag Zeit, sich zu registrieren.",
+    "other": "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tage Zeit, sich zu registrieren."
   },
-  "Link": "",
-  "Offline": "",
+  "Link": "Link",
+  "Offline": "Offline",
   "They are expected at least once every %d hour.": {
-    "one": "Sie werden mindestens einmal alle %d Stunde erwartet.|Sie werden mindestens einmal alle %d Stunden erwartet.",
-    "other": ""
+    "one": "Sie werden mindestens einmal alle %d Stunde erwartet.",
+    "other": "Sie werden mindestens einmal alle %d Stunden erwartet."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} Mitglied kopiert",
+    "other": "{{count}} Mitglieder kopiert"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Diese Liste hat {{count}} Empfänger — zu viele für einen mailto:-Link. Verwenden Sie stattdessen „Adressen kopieren“.",
+    "other": "Diese Liste hat {{count}} Empfänger — zu viele für einen mailto:-Link. Verwenden Sie stattdessen „Adressen kopieren“."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Zu viele Empfänger für das E-Mail-Programm ({{count}} > {{max}}). Verwenden Sie stattdessen „Adressen kopieren“.",
+    "other": "Zu viele Empfänger für das E-Mail-Programm ({{count}} > {{max}}). Verwenden Sie stattdessen „Adressen kopieren“."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Noch {{count}} Minute übrig",
+    "other": "Noch {{count}} Minuten übrig"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} Familie konnte nicht geokodiert werden",
+    "other": "{{count}} Familien konnten nicht geokodiert werden"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktiv seit {{count}} Sekunde",
+    "other": "Aktiv seit {{count}} Sekunden"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Sie sind dabei, Bestätigungs-E-Mails an {{count}} Familie zu senden.",
+    "other": "Sie sind dabei, Bestätigungs-E-Mails an {{count}} Familien zu senden."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} Familie hat keine hinterlegte E-Mail-Adresse und wird übersprungen",
+    "other": "{{count}} Familien haben keine hinterlegte E-Mail-Adresse und werden übersprungen"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…und {{count}} weitere, die hier nicht aufgeführt ist.",
+    "other": "…und {{count}} weitere, die hier nicht aufgeführt sind."
   }
 }
