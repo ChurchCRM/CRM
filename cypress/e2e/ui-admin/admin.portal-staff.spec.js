@@ -52,3 +52,52 @@ describe("Member Portal — staff access", () => {
         cy.url({ timeout: 10000 }).should("include", "/v2/dashboard");
     });
 });
+
+/**
+ * Account pages stay inside the portal for every role.
+ *
+ * Product finding: an administrator who opened the portal and clicked "Change
+ * password" or "Two-factor" was dropped back into the admin console, because
+ * /v2/user/current/* only wore the portal layout for an Edit-Self-only session.
+ * The portal now owns both pages, so the only way out of the portal is the
+ * "Admin Console" control the staff bar offers.
+ */
+describe("Member Portal — account pages for staff", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
+    it("Change password from the portal keeps an administrator in the portal", () => {
+        cy.visit("/portal/profile");
+        cy.get("#portal-change-password-link").click();
+
+        cy.url({ timeout: 10000 }).should("include", "/portal/profile/password");
+        cy.url().should("not.include", "/v2/");
+        cy.get(".portal-shell").should("exist");
+        cy.get("#sidebar").should("not.exist");
+        cy.get("#OldPassword").should("exist");
+        cy.get("#NewPassword1").should("exist");
+    });
+
+    it("Two-factor from the portal keeps an administrator in the portal", () => {
+        cy.visit("/portal/profile");
+        cy.get("#portal-two-factor-link").click();
+
+        cy.url({ timeout: 10000 }).should("include", "/portal/profile/two-factor");
+        cy.url().should("not.include", "/v2/");
+        cy.get(".portal-shell").should("exist");
+        cy.get("#sidebar").should("not.exist");
+    });
+
+    it("The two-factor enrollment wizard runs on the portal page", () => {
+        cy.visit("/portal/profile/two-factor");
+        cy.get("#two-factor-enrollment-app").should("exist");
+        // The shared two-factor-enrollment bundle mounts and draws its intro
+        // step, which is what proves the portal page carries a working wizard
+        // and not just an empty container.
+        cy.get("#begin2faEnrollment", { timeout: 10000 })
+            .should("exist")
+            .and("be.visible")
+            .and("be.enabled");
+    });
+});
