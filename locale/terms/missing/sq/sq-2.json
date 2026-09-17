@@ -1,34 +1,34 @@
 {
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Kjo listë ka {{count}} marrës — shumë për një lidhje mailto:. Përdorni Kopjo Adresat në vend të kësaj.",
+    "other": "Kjo listë ka {{count}} marrës — shumë për një lidhje mailto:. Përdorni Kopjo Adresat në vend të kësaj."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Shumë marrës për klientin e email-it ({{count}} > {{max}}). Përdorni Kopjo Adresat në vend të kësaj.",
+    "other": "Shumë marrës për klientin e email-it ({{count}} > {{max}}). Përdorni Kopjo Adresat në vend të kësaj."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minutë e mbetur",
+    "other": "{{count}} minuta të mbetura"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familje nuk mund të gjeokodohej",
+    "other": "{{count}} familje nuk mund të gjeokodoheshin"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktiv për {{count}} sekondë",
+    "other": "Aktiv për {{count}} sekonda"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Ju jeni gati të dërgoni email-e konfirmimi tek {{count}} familje.",
+    "other": "Ju jeni gati të dërgoni email-e konfirmimi tek {{count}} familje."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} familje nuk ka adresë email të regjistruar dhe do të kalohet",
+    "other": "{{count}} familje nuk kanë adresë email të regjistruar dhe do të kalohen"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…dhe {{count}} më shumë që nuk është listuar këtu.",
+    "other": "…dhe {{count}} më shumë që nuk janë listuar këtu."
   }
 }
