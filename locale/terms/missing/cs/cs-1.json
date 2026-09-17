@@ -1,51 +1,51 @@
 {
-  "Data": "",
-  "N/A": "",
+  "Data": "Data",
+  "N/A": "N/A",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den.|Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny.|Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní.",
-    "few": "",
-    "other": ""
+    "one": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den.",
+    "few": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny.",
+    "other": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní."
   },
-  "Offline": "",
+  "Offline": "Offline",
   "They are expected at least once every %d hour.": {
-    "one": "Očekává se, že se dostaví alespoň jednou za %d hodinu.|Očekává se, že se dostaví alespoň jednou za %d hodiny.|Očekává se, že se dostaví alespoň jednou za %d hodin.",
-    "few": "",
-    "other": ""
+    "one": "Očekává se, že se dostaví alespoň jednou za %d hodinu.",
+    "few": "Očekává se, že se dostaví alespoň jednou za %d hodiny.",
+    "other": "Očekává se, že se dostaví alespoň jednou za %d hodin."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Zkopírován {{count}} člen",
+    "other": "Zkopírováno {{count}} členů"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Tento seznam obsahuje {{count}} příjemce — příliš mnoho pro odkaz mailto:. Použijte místo toho Kopírovat adresy.",
+    "other": "Tento seznam obsahuje {{count}} příjemců — příliš mnoho pro odkaz mailto:. Použijte místo toho Kopírovat adresy."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Příliš mnoho příjemců pro e-mailový klient ({{count}} > {{max}}). Použijte místo toho Kopírovat adresy.",
+    "other": "Příliš mnoho příjemců pro e-mailový klient ({{count}} > {{max}}). Použijte místo toho Kopírovat adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Zbývá {{count}} minuta",
+    "other": "Zbývá {{count}} minut"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "Nepodařilo se geokódovat {{count}} rodinu",
+    "other": "Nepodařilo se geokódovat {{count}} rodin"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktivní {{count}} sekundu",
+    "other": "Aktivní {{count}} sekund"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Chystáte se odeslat potvrzovací e-maily {{count}} rodině.",
+    "other": "Chystáte se odeslat potvrzovací e-maily {{count}} rodinám."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} rodina nemá uvedenou e-mailovou adresu a bude vynechána",
+    "other": "{{count}} rodin nemá uvedenou e-mailovou adresu a bude vynecháno"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…a {{count}} další, který tu není uveden.",
+    "other": "…a {{count}} dalších, které tu nejsou uvedeny."
   }
 }
