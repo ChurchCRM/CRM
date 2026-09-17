@@ -108,6 +108,31 @@ describe("Self-only access — EditSelf account user (limited.user)", () => {
         });
     });
 
+    it("Can reach the 2FA management page and render a QR code (#9886)", () => {
+        // The manage2fa PAGE was always exempt, but the API calls its bundle makes
+        // were not — so the wizard hung on the loading spinner and an EditSelf-only
+        // user under bRequire2FA could never finish enrollment.
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type(limitedUser);
+        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+
+        cy.visit("v2/user/current/manage2fa");
+        cy.url().should("include", "/v2/user/current/manage2fa");
+
+        // GET /api/user/current/2fa-status must succeed for the wizard to leave
+        // the loading view and show the intro step.
+        cy.get("#begin2faEnrollment", { timeout: 10000 }).should("be.visible").click();
+
+        // POST /api/user/current/refresh2fasecret must succeed for the QR to render.
+        cy.get("#2faQrCodeDataUri", { timeout: 10000 })
+            .should("be.visible")
+            .and(($img) => {
+                expect($img.attr("src")).to.match(/^data:image\/png;base64,/);
+            });
+    });
+
     it("API call with limited user key returns 403", () => {
         cy.apiRequest({
             method: "GET",

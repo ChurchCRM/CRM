@@ -52,12 +52,14 @@ class AuthMiddleware implements MiddlewareInterface
                 ]);
 
                 // Confine EditSelf-only users to the self-service flow — they have no
-                // module permissions and no business on the internal API surface.
+                // module permissions and no business on the internal API surface,
+                // apart from the self-service auth-flow paths (password change,
+                // 2FA enrollment) listed in self::AUTH_FLOW_EXEMPT_PATHS.
                 // Zero-permission users are NOT blocked: they retain read-only access
                 // to people/family records (read-default policy, #9003). Writes are
                 // denied by the per-route role middleware.
                 $apiUser = AuthenticationManager::getCurrentUser();
-                if ($apiUser->isEditSelfExclusive()) {
+                if ($apiUser->isEditSelfExclusive() && !$this->isAuthFlowExemptPath($request)) {
                     $response = new Response();
                     $response->getBody()->write(json_encode(['error' => 'Account has limited permissions. Contact an administrator.']));
                     return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
@@ -67,8 +69,9 @@ class AuthMiddleware implements MiddlewareInterface
                 // since /background operations do not connotate user activity.
 
                 // Confine EditSelf-only users to the self-service flow.
-                // BUT allow them through if they need to change their password — blocking
-                // the change-password page locks new users out permanently. See #8680.
+                // BUT allow them through for the self-service auth-flow paths: blocking
+                // the change-password page locks new users out permanently (#8680), and
+                // blocking the 2FA APIs makes enrollment impossible (#9886).
                 // Zero-permission users are NOT redirected: they retain read-only access
                 // to people/family records (read-default policy, #9003). Writes are denied
                 // by the per-route role middleware and the per-page permission guards.
@@ -116,24 +119,59 @@ class AuthMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Check whether the current request targets a page that must remain
-     * accessible even when the user has no admin permissions. Without these
-     * exemptions, limited-permission users get stuck in a redirect loop
-     * because AuthMiddleware blocks the page the auth system is sending
-     * them to. See #8680.
+     * Paths that must stay reachable for a user who has no module permissions.
+     * Without these exemptions, limited-permission users get stuck in a
+     * redirect loop (pages) or a 403 (XHRs) because AuthMiddleware blocks the
+     * very flow the auth system is sending them to. See #8680 and #9886.
      *
-     * Exempt paths:
-     *  - /user/current/changepassword  — forced password change on first login
-     *  - /user/current/manage2fa       — forced 2FA enrollment when bRequire2FA is on
-     *  - /user/current/enroll2fa       — backward-compat alias for manage2fa
+     * Every entry is self-service: each handler acts on the requesting user's
+     * own account only, via AuthenticationManager::getCurrentUser(). Keep the
+     * list exact — never exempt a whole route group.
+     *
+     * Pages:
+     *  - /v2/user/current/changepassword — forced password change on first login
+     *  - /v2/user/current/manage2fa      — forced 2FA enrollment when bRequire2FA is on
+     *  - /v2/user/current/enroll2fa      — backward-compat alias for manage2fa
+     *
+     * APIs called by the manage2fa page bundle (webpack/two-factor-enrollment.js):
+     *  - /api/user/current/2fa-status
+     *  - /api/user/current/get2faqrcode
+     *  - /api/user/current/refresh2fasecret
+     *  - /api/user/current/refresh2farecoverycodes
+     *  - /api/user/current/remove2fasecret
+     *  - /api/user/current/test2FAEnrollmentCode
+     */
+    private const AUTH_FLOW_EXEMPT_PATHS = [
+        '/v2/user/current/changepassword',
+        '/v2/user/current/manage2fa',
+        '/v2/user/current/enroll2fa',
+        '/api/user/current/2fa-status',
+        '/api/user/current/get2faqrcode',
+        '/api/user/current/refresh2fasecret',
+        '/api/user/current/refresh2farecoverycodes',
+        '/api/user/current/remove2fasecret',
+        '/api/user/current/test2FAEnrollmentCode',
+    ];
+
+    /**
+     * Check whether the current request targets one of the self-service auth
+     * flow paths listed in self::AUTH_FLOW_EXEMPT_PATHS.
+     *
+     * Matching is done on the tail of the request path so that subdirectory
+     * installations (e.g. /crm/v2/user/current/manage2fa) are covered without
+     * the middleware needing to know the install root.
      */
     private function isAuthFlowExemptPath(ServerRequestInterface $request): bool
     {
         $path = $request->getUri()->getPath();
 
-        return str_contains($path, '/user/current/changepassword')
-            || str_contains($path, '/user/current/manage2fa')
-            || str_contains($path, '/user/current/enroll2fa');
+        foreach (self::AUTH_FLOW_EXEMPT_PATHS as $exemptPath) {
+            if (str_ends_with($path, $exemptPath)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool
