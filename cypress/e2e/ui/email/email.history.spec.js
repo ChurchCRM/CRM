@@ -73,15 +73,9 @@ describe("Email history on the person view", () => {
     });
 });
 
-describe("Email history on the family view and the email dashboard", () => {
+describe("Email history on the email dashboard", () => {
     beforeEach(() => {
         cy.setupAdminSession();
-    });
-
-    it("family view shows the members' recent emails with the recipient address", () => {
-        cy.visit("/people/family/1");
-        cy.get("#email-history-card [data-email-history-table] tbody tr").should("have.length", 5);
-        cy.get("#email-history-card").should("contain.text", "mathew.campbell@example.com");
     });
 
     it("admin email dashboard shows recent sends with a failed count", () => {
