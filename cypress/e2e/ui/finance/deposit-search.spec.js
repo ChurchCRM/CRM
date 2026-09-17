@@ -35,7 +35,10 @@ const SEEDED_DEPOSIT_ID = 1;
 describe("Deposit Search: page load and search form", () => {
   beforeEach(() => {
     cy.setupAdminSession();
-    cy.visit(DEPOSIT_SEARCH_URL);
+    // Visit with ?fyid=0 (All Time) so the server-rendered table includes the
+    // seed deposits from 2018 (FY22). Without this the page defaults to the
+    // current fiscal year, which has no seed data and leaves the table empty.
+    cy.visit(`${DEPOSIT_SEARCH_URL}?fyid=0`);
     // The rows are server-rendered, but DataTables re-builds the tbody when it
     // takes the table over. Asserting before `_wrapper` exists races that
     // rebuild and can hit a detached element, so wait for it here the way the
@@ -112,7 +115,8 @@ describe("Deposit Search: page load and search form", () => {
 describe("Deposit Search: row selection and export buttons", () => {
   beforeEach(() => {
     cy.setupAdminSession();
-    cy.visit(DEPOSIT_SEARCH_URL);
+    // ?fyid=0 (All Time) ensures seed deposits from 2018 appear in the table.
+    cy.visit(`${DEPOSIT_SEARCH_URL}?fyid=0`);
     // The selection handlers are bound after DataTables initialises.
     cy.get("#depositsTable_wrapper").should("exist");
     cy.get("#depositsTable tbody .row-select").should("have.length.greaterThan", 0);
