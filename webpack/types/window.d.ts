@@ -65,6 +65,8 @@ interface CRMNamespace {
   onLocalesReady?: (callback: () => void) => void;
   comm?: {
     emailSendingEnabled?: boolean;
+    /** Closing pre-filled at the end of a new composer message ("Sincerely,\nSigner"). */
+    emailSignature?: string;
     vonageEnabled?: boolean;
     /** Church default "to" address (sToEmailAddress); "" when unset or user lacks email permission. */
     defaultEmailToAddress?: string;

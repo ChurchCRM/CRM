@@ -24,7 +24,8 @@ const composeAndSend = (subject, body) => {
     cy.intercept("POST", "**/api/email/send").as("send");
     cy.get("#crm-email-send-btn").should("be.visible").click();
     cy.get("#crm-email-subject").should("be.visible").type(subject);
-    cy.get("#crm-email-body").type(body);
+    // The body is pre-filled with two blank lines and the closing; the author types above it.
+    cy.get("#crm-email-body").type(`{moveToStart}${body}`);
     cy.get("#crm-email-send-submit").click();
     return cy.wait("@send");
 };
@@ -45,6 +46,12 @@ describe("Send email from a record", () => {
         // The church default "to" is not offered for a one-to-one message
         cy.get("#crm-email-include-default").should("not.exist");
 
+        // Compose Message opens the form with the closing pre-filled under two blank lines
+        cy.get("#crm-email-send-btn").should("contain.text", "Compose Message").click();
+        cy.get("#crm-email-body").invoke("val").should("match", /^\n\n.+,\n.+$/);
+        cy.get("#crm-email-body").invoke("val").should("include", "Sincerely,");
+        cy.get("#crm-email-send-btn").should("contain.text", "Cancel").click();
+
         composeAndSend(`Hello ${tag}`, "See you Sunday.").then(({ request, response }) => {
             expect(request.body).to.deep.include({ personIds: [2], familyIds: [] });
             expect(request.body).to.not.have.property("recipients");
@@ -57,6 +64,32 @@ describe("Send email from a record", () => {
             expect(messages).to.have.length(1);
             expect(messages[0].To[0].Address).to.equal("mathew.campbell@example.com");
         });
+    });
+
+    it("Preview shows the formatted message for the first recipient without sending", () => {
+        cy.visit("/people/view/2");
+        cy.get("[data-email-composer][data-email-person-id='2']").click();
+        cy.get("#crm-email-send-btn").should("be.visible").click();
+        cy.get("#crm-email-subject").type("Preview check");
+        cy.get("#crm-email-body").type("{moveToStart}Hi Mathew,");
+        cy.intercept("POST", "**/api/email/preview").as("preview");
+        cy.intercept("POST", "**/api/email/send").as("send");
+        cy.get("#crm-email-preview-btn").click();
+        cy.wait("@preview").its("response.statusCode").should("eq", 200);
+        cy.get("#crm-email-preview-modal").should("be.visible");
+        cy.get("#crm-email-preview-title").should("contain.text", "Mathew Campbell");
+        cy.get("#crm-email-preview-frame")
+            .should("have.attr", "srcdoc")
+            .and("include", "Hi Mathew,")
+            .and("include", "Sincerely,")
+            .and("not.include", "Dear ")
+            .and("not.include", "You received this email");
+        cy.get("@send.all").should("have.length", 0);
+        // Bootstrap ignores hide() while the fade-in is still running; let it finish.
+        cy.wait(500);
+        cy.get("#crm-email-preview-modal .modal-footer button").click();
+        cy.get("#crm-email-preview-modal").should("not.be.visible");
+        cy.get("#crm-email-composer-modal").should("be.visible");
     });
 
     it("family view: each member row and the family address carry a Send button", () => {

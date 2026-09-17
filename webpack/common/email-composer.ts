@@ -91,6 +91,11 @@ let composeFormEl: HTMLElement | null = null;
 let subjectInputEl: HTMLInputElement | null = null;
 /** Body textarea inside the compose form */
 let bodyTextareaEl: HTMLTextAreaElement | null = null;
+/** Preview modal (created once) and its iframe */
+let previewModalEl: HTMLElement | null = null;
+let previewFrameEl: HTMLIFrameElement | null = null;
+let previewTitleEl: HTMLElement | null = null;
+let previewErrorEl: HTMLElement | null = null;
 /** AbortController for an in-flight POST /api/email/send */
 let sendController: AbortController | null = null;
 
@@ -263,21 +268,40 @@ function toggleComposeForm(show: boolean): void {
   bodyTextareaEl.rows = 6;
   bodyTextareaEl.placeholder = i18next.t("Enter your message…");
   bodyTextareaEl.required = true;
+  // The author writes the greeting; the closing is pre-filled under two blank lines and
+  // stays editable. Nothing else is generated around the message.
+  const signature = window.CRM?.comm?.emailSignature ?? "";
+  bodyTextareaEl.value = signature ? `\n\n${signature}` : "";
+  bodyTextareaEl.addEventListener("focus", () => bodyTextareaEl?.setSelectionRange(0, 0), { once: true });
+  const bodyHint = document.createElement("div");
+  bodyHint.className = "form-hint";
+  bodyHint.textContent = i18next.t("Start with your own greeting. The closing below is pre-filled and can be edited.");
   bodyGroup.appendChild(bodyLabel);
   bodyGroup.appendChild(bodyTextareaEl);
+  bodyGroup.appendChild(bodyHint);
   composeFormEl.appendChild(bodyGroup);
 
-  // Submit button
+  // Preview + Submit buttons
   const submitRow = document.createElement("div");
   submitRow.className = "d-flex justify-content-end gap-2";
+  const previewBtn = makeBtn(
+    "crm-email-preview-btn",
+    "btn btn-outline-secondary",
+    "fa-solid fa-eye",
+    i18next.t("Preview"),
+  );
   const submitBtn = makeBtn(
     "crm-email-send-submit",
     "btn btn-primary",
     "fa-solid fa-paper-plane",
     i18next.t("Send Email"),
   );
+  submitRow.appendChild(previewBtn);
   submitRow.appendChild(submitBtn);
   composeFormEl.appendChild(submitRow);
+  previewBtn.addEventListener("click", () => {
+    doPreviewEmail(previewBtn).catch(console.error);
+  });
 
   // Addresses with no person/family record behind them cannot be sent server-side.
   const { personIds, familyIds, unknown } = sendableIds();
@@ -325,8 +349,9 @@ function appendNotSentList(banner: HTMLElement, notSent: EmailSendOutcome[]): vo
  * Execute the server-side send via POST /api/email/send.
  * Shows progress on the submit button, then a success/error banner in the form.
  */
-async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
-  if (!subjectInputEl || !bodyTextareaEl) return;
+/** Validates the compose form and returns the payload, or null after focusing the bad field. */
+function composePayload(): { personIds: number[]; familyIds: number[]; subject: string; body: string } | null {
+  if (!subjectInputEl || !bodyTextareaEl) return null;
 
   const subject = subjectInputEl.value.trim();
   const body = bodyTextareaEl.value.trim();
@@ -334,19 +359,102 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
   if (!subject) {
     subjectInputEl.classList.add("is-invalid");
     subjectInputEl.focus();
-    return;
+    return null;
   }
   subjectInputEl.classList.remove("is-invalid");
 
   if (!body) {
     bodyTextareaEl.classList.add("is-invalid");
     bodyTextareaEl.focus();
-    return;
+    return null;
   }
   bodyTextareaEl.classList.remove("is-invalid");
 
   const { personIds, familyIds } = sendableIds();
-  if (personIds.length + familyIds.length === 0) return;
+  if (personIds.length + familyIds.length === 0) return null;
+  return { personIds, familyIds, subject, body };
+}
+
+/** Builds the preview modal once: header with the addressee, sandboxed iframe for the HTML. */
+function ensurePreviewModal(): void {
+  if (previewModalEl) return;
+  previewModalEl = document.createElement("div");
+  previewModalEl.className = "modal fade";
+  previewModalEl.id = "crm-email-preview-modal";
+  previewModalEl.setAttribute("tabindex", "-1");
+  previewModalEl.setAttribute("aria-labelledby", "crm-email-preview-title");
+  previewModalEl.innerHTML = [
+    '<div class="modal-dialog modal-lg modal-dialog-scrollable">',
+    '  <div class="modal-content">',
+    '    <div class="modal-header">',
+    '      <h5 class="modal-title" id="crm-email-preview-title"></h5>',
+    `      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${escapeHtml(i18next.t("Close"))}"></button>`,
+    "    </div>",
+    '    <div class="modal-body">',
+    '      <div class="alert alert-danger d-none" id="crm-email-preview-error"></div>',
+    `      <iframe id="crm-email-preview-frame" class="w-100 border rounded" sandbox="" title="${escapeHtml(i18next.t("Email preview"))}" style="min-height: 520px; background: #fff;"></iframe>`,
+    "    </div>",
+    '    <div class="modal-footer">',
+    `      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${escapeHtml(i18next.t("Back to editing"))}</button>`,
+    "    </div>",
+    "  </div>",
+    "</div>",
+  ].join("");
+  document.body.appendChild(previewModalEl);
+  previewFrameEl = previewModalEl.querySelector("#crm-email-preview-frame");
+  previewTitleEl = previewModalEl.querySelector("#crm-email-preview-title");
+  previewErrorEl = previewModalEl.querySelector("#crm-email-preview-error");
+}
+
+/** POST /api/email/preview and show the rendered message for the first recipient. */
+async function doPreviewEmail(previewBtn: HTMLButtonElement): Promise<void> {
+  const payload = composePayload();
+  if (!payload) return;
+  ensurePreviewModal();
+  if (!previewModalEl || !previewFrameEl || !previewTitleEl || !previewErrorEl) return;
+
+  previewBtn.disabled = true;
+  previewErrorEl.classList.add("d-none");
+  previewFrameEl.removeAttribute("srcdoc");
+  previewTitleEl.textContent = i18next.t("Preview");
+  try {
+    const res = await fetch(buildAPIUrl("email/preview"), {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = (await res.json().catch(() => ({}))) as {
+      html?: string;
+      recipient?: { name: string; email: string };
+      recipientCount?: number;
+      message?: string;
+    };
+    if (!res.ok || typeof data.html !== "string") {
+      previewErrorEl.textContent = data.message ?? i18next.t("Could not build the preview.");
+      previewErrorEl.classList.remove("d-none");
+    } else {
+      const who = data.recipient ? `${data.recipient.name} <${data.recipient.email}>` : "";
+      const more = (data.recipientCount ?? 1) > 1 ? ` (+${(data.recipientCount ?? 1) - 1})` : "";
+      previewTitleEl.textContent = `${i18next.t("Preview")} — ${i18next.t("To")}: ${who}${more}`;
+      previewFrameEl.setAttribute("srcdoc", data.html);
+    }
+    window.bootstrap.Modal.getOrCreateInstance(previewModalEl).show();
+  } catch (err) {
+    console.error("[email-composer] preview failed:", err);
+    previewErrorEl.textContent = i18next.t("Could not build the preview.");
+    previewErrorEl.classList.remove("d-none");
+    window.bootstrap.Modal.getOrCreateInstance(previewModalEl).show();
+  } finally {
+    previewBtn.disabled = false;
+  }
+}
+
+async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
+  const payload = composePayload();
+  if (!payload) return;
+  const { personIds, familyIds, subject, body } = payload;
+  if (!subjectInputEl || !bodyTextareaEl) return;
 
   // Abort any previous send
   sendController?.abort();
