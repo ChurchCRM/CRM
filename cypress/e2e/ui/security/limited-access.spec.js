@@ -97,7 +97,9 @@ describe("Self-only access — EditSelf account user (limited.user)", () => {
         cy.visit("session/begin");
         cy.get("input[name=User]").type(limitedUser);
         cy.get("input[name=Password]").type(limitedPassword + "{enter}");
-        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+        // A self-service login lands in the Member Portal (#9863), not on the
+        // retired /external/limited-access page the upstream fix (#9887) expects.
+        cy.url({ timeout: 10000 }).should("include", "/portal");
 
         cy.visit("v2/user/current/manage2fa");
         cy.url().should("include", "/v2/user/current/manage2fa");
