@@ -164,6 +164,10 @@ abstract class BaseEmail
             'churchCityLine'       => self::getChurchCityLine(),
             'churchCountry'        => self::getChurchCountryName(),
             'churchWebSite'        => ChurchMetaData::getChurchWebSite(),
+            // The link is rebuilt in the template from a literal scheme plus the validated
+            // host/path, so a configured value can never inject another URL scheme.
+            'churchWebSiteHost'    => self::getChurchWebSiteParts()['host'],
+            'churchWebSiteSecure'  => self::getChurchWebSiteParts()['secure'],
             'dear'                 => SystemConfig::getValue('sDear'),
             'confirmSincerely'     => SystemConfig::getValue('sConfirmSincerely'),
             'confirmSigner'        => SystemConfig::getValue('sConfirmSigner'),
@@ -192,6 +196,31 @@ abstract class BaseEmail
         $zip = ChurchMetaData::getChurchZip();
 
         return trim($cityState . ($zip !== '' ? ' ' . $zip : ''));
+    }
+
+    /**
+     * The configured website split into a literal-scheme flag and the rest of the URL.
+     * Only http(s) URLs with a host qualify; anything else yields an empty host and no link.
+     *
+     * @return array{host: string, secure: bool}
+     */
+    private static function getChurchWebSiteParts(): array
+    {
+        $site = trim(ChurchMetaData::getChurchWebSite());
+        if ($site !== '' && !preg_match('#^[a-z][a-z0-9+.-]*://#i', $site)) {
+            $site = 'https://' . $site;
+        }
+        $parts = $site !== '' ? parse_url($site) : false;
+        $scheme = strtolower((string) ($parts['scheme'] ?? ''));
+        if ($parts === false || !in_array($scheme, ['http', 'https'], true) || empty($parts['host'])) {
+            return ['host' => '', 'secure' => true];
+        }
+        $host = $parts['host']
+            . (isset($parts['port']) ? ':' . (int) $parts['port'] : '')
+            . ($parts['path'] ?? '')
+            . (isset($parts['query']) ? '?' . $parts['query'] : '');
+
+        return ['host' => $host, 'secure' => $scheme === 'https'];
     }
 
     /** Country display name for the configured code, or the raw value when unknown. */
