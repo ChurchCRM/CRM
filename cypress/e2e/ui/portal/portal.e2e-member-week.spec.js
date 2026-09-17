@@ -47,7 +47,7 @@
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
 
-const MEMBER_USERNAME = "lena.black.editself.notes@exampl";
+const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 const PERSON_MEMBER = 100;
 const POOL_MEMBER_B = 8;

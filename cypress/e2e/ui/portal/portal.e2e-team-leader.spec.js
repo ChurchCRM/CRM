@@ -50,7 +50,7 @@ const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/volunteer";
 const TEAMS_URL = "/portal/teams";
 
-const LEADER_USERNAME = "lena.black.editself.notes@exampl";
+const LEADER_USERNAME = "lena.black.editself.notes@example.com";
 const LEADER_PASSWORD = "changeme";
 const PERSON_LEADER = 100;
 

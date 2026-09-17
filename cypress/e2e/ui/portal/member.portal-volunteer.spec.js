@@ -29,7 +29,7 @@ const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
 const LEGACY_SCHEDULE_URL = "/volunteer/my-schedule";
 const LEGACY_OPPORTUNITIES_URL = "/volunteer/opportunities";
 
-const MEMBER_USERNAME = "lena.black.editself.notes@exampl";
+const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 const PERSON_MEMBER = 100;
 const POOL_MEMBER_A = 8;

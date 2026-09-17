@@ -60,7 +60,7 @@ const EVENT_TITLE = `${PREFIX} Hospitality Service`;
  * `lena.black.editself.notes@exampl`. Logging in with the full address fails with
  * no error beyond a silent return to `/session/begin`.
  */
-const MEMBER_USERNAME = "lena.black.editself.notes@exampl";
+const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 const PERSON_MEMBER = 100;
 

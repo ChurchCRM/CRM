@@ -49,7 +49,7 @@ const BROKEN_DIR = `src/Include/themes/${BROKEN_THEME}`;
 /** A colour no default token uses, so "it changed" cannot be a coincidence. */
 const THEME_TEAL = "rgb(0, 105, 107)";
 
-const MEMBER_USER = "lena.black.editself.notes@exampl";
+const MEMBER_USER = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 
 /** Every portal page the member can open — the theme has to reach all of them. */

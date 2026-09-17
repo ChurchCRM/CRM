@@ -36,7 +36,7 @@ const VOLUNTEER_URL = "/api/volunteer";
 const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
 const SCHEDULE_URL = "/portal/volunteer/schedule";
 
-const MEMBER_USERNAME = "lena.black.editself.notes@exampl";
+const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 const PERSON_MEMBER = 100;
 

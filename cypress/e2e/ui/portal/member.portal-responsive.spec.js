@@ -30,7 +30,7 @@
  * session, so all API setup happens before the login, once, in `before`.
  */
 
-const MEMBER_USER = "lena.black.editself.notes@exampl";
+const MEMBER_USER = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 
 const CHURCH_CALENDAR_ID = 1;

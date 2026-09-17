@@ -32,7 +32,7 @@
  * session, so each locale change is followed by a fresh login.
  */
 
-const MEMBER_USER = "lena.black.editself.notes@exampl";
+const MEMBER_USER = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 const MEMBER_USER_ID = 100;
 

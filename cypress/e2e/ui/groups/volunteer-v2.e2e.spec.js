@@ -52,7 +52,7 @@ const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
 
 const PERSON_COORDINATOR = 3;
 const PERSON_VOLUNTEER = 100;
-const MEMBER_USERNAME = "lena.black.editself.notes@exampl";
+const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 
 const CHURCH_SERVICE_TYPE = 1;
