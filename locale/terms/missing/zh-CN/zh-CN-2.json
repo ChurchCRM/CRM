@@ -1,18 +1,18 @@
 {
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "已活跃 {{count}} 秒",
+    "other": "已活跃 {{count}} 秒"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "您即将向 {{count}} 个家庭发送确认邮件。",
+    "other": "您即将向 {{count}} 个家庭发送确认邮件。"
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} 个家庭没有存档的电子邮件地址，将被跳过",
+    "other": "{{count}} 个家庭没有存档的电子邮件地址，将被跳过"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "……以及另外 {{count}} 个未在此列出。",
+    "other": "……以及另外 {{count}} 个未在此列出。"
   }
 }
