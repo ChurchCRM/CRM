@@ -48,8 +48,21 @@ export async function postPortalJSON<T = Record<string, unknown>>(
   body: Record<string, unknown>,
   csrfToken: string,
 ): Promise<PortalApiResult<T>> {
+  return sendPortalJSON<T>("POST", url, body, csrfToken);
+}
+
+/**
+ * The same, for a route whose verb is not POST — the calendar subscription is
+ * a PUT, because saving the selection replaces it rather than adding to it.
+ */
+export async function sendPortalJSON<T = Record<string, unknown>>(
+  method: string,
+  url: string,
+  body: Record<string, unknown>,
+  csrfToken: string,
+): Promise<PortalApiResult<T>> {
   const response = await fetch(url, {
-    method: "POST",
+    method,
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",

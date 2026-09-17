@@ -795,6 +795,59 @@ textarea.portal-input {
     }
 }
 
+// Calendar subscription (design §5.3) ----------------------------------------
+//
+// Mobile first: the page heading is a wrapping flex row, so on a phone the
+// Subscribe button sits under the title and from the tablet breakpoint up it
+// sits at the end of the title's row.
+
+.portal-page-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-block-end: var(--portal-gap);
+
+    .portal-page-title {
+        margin-block-end: 0;
+    }
+}
+
+.portal-calendar-subscribe-dialog {
+    // Wider than the default dialog: the feed address is a long single line and
+    // a member has to be able to see enough of it to recognise it.
+    inline-size: min(36rem, calc(100vw - 2rem));
+}
+
+.portal-calendar-subscribe-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-block: var(--portal-gap);
+}
+
+.portal-calendar-subscribe-result {
+    margin-block-start: var(--portal-gap);
+    padding-block-start: var(--portal-gap);
+    border-block-start: 1px solid var(--portal-border);
+}
+
+.portal-calendar-subscribe-url-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+
+    .portal-input {
+        flex: 1 1 14rem;
+        // The address is long and is read, not typed; a small monospace face
+        // makes a mistyped character visible.
+        font-family: var(--bs-font-monospace, monospace);
+        font-size: 0.8125rem;
+    }
+}
+
 // Tablet and up --------------------------------------------------------------
 
 @media (min-width: 768px) {

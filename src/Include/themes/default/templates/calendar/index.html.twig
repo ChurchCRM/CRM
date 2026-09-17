@@ -12,6 +12,13 @@
   `hasCalendars`, `calendarConfigJson`. A theme overriding this page must keep
   the ids `portal-calendar` and `portal-calendar-detail`, which the bundle
   looks for, and should keep emitting `calendarConfigJson`.
+
+  The Subscribe dialog (design §5.3, "Subscribing") adds a second set of ids
+  the bundle looks for: `portal-calendar-subscribe` (the button),
+  `portal-calendar-subscribe-dialog`, `-choices`, `-save`, `-cancel`, `-close`,
+  `-result`, `-url`, `-copy`, `-open`, `-reset`, `-error`, and the confirm
+  dialog `portal-calendar-reset-dialog` with `-confirm` / `-cancel`. A theme
+  that drops the dialog should drop the button with it.
 #}
 
 {% block head_extra %}
@@ -22,7 +29,20 @@
 {% block content %}
 <div class="portal-calendar-page">
 
-    <h1 class="portal-page-title">{{ gettext('Calendar') }}</h1>
+    {#
+      Title and the Subscribe button share a row on anything wider than a
+      phone; below that the button wraps underneath the title (the row is a
+      flex container that wraps, see _portal.scss).
+    #}
+    <div class="portal-page-heading">
+        <h1 class="portal-page-title">{{ gettext('Calendar') }}</h1>
+        {% if hasCalendars %}
+        <button type="button" class="portal-button portal-button-quiet" id="portal-calendar-subscribe">
+            <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i>
+            <span>{{ gettext('Subscribe') }}</span>
+        </button>
+        {% endif %}
+    </div>
 
     {% if not hasCalendars %}
     <section class="portal-card portal-calendar-empty" id="portal-calendar-empty">
@@ -80,6 +100,83 @@
 
     {% endif %}
 </div>
+
+{% if hasCalendars %}
+{#
+  "Subscribe to the calendar". A plain <dialog> in the portal's own chrome, the
+  same pattern the family page's "add a family member" dialog uses: no
+  dependency on the admin bundle's modal machinery, and a theme restyles it by
+  restyling `.portal-dialog`.
+
+  The checkboxes are rendered by the bundle from
+  GET /api/portal/calendar/subscription rather than server-side, because the
+  same list has to be redrawn after every save and after a reset.
+#}
+<dialog class="portal-dialog portal-calendar-subscribe-dialog" id="portal-calendar-subscribe-dialog"
+        aria-labelledby="portal-calendar-subscribe-title">
+    <form class="portal-form" id="portal-calendar-subscribe-form" method="dialog" novalidate>
+    {{ csrf_field() }}
+    <h2 class="portal-card-title" id="portal-calendar-subscribe-title">{{ gettext('Subscribe to the calendar') }}</h2>
+    <p class="portal-card-text">
+        {{ gettext('Choose the calendars you want in your own calendar app.') }}
+    </p>
+
+    <p class="portal-field-error" id="portal-calendar-subscribe-error" role="alert"></p>
+
+    <div class="portal-calendar-subscribe-choices" id="portal-calendar-subscribe-choices"
+         role="group" aria-labelledby="portal-calendar-subscribe-title"></div>
+
+    <div class="portal-calendar-subscribe-result" id="portal-calendar-subscribe-result" hidden>
+        <label class="portal-field-label" for="portal-calendar-subscribe-url">
+            {{ gettext('Calendar address') }}
+        </label>
+        <div class="portal-calendar-subscribe-url-row">
+            <input class="portal-input" type="text" id="portal-calendar-subscribe-url" readonly>
+            <button type="button" class="portal-button portal-button-quiet" id="portal-calendar-subscribe-copy">
+                <i class="fa-solid fa-copy" aria-hidden="true"></i>
+                <span>{{ gettext('Copy') }}</span>
+            </button>
+        </div>
+        <p class="portal-field-hint">
+            {{ gettext('Add this address to your calendar app. It updates on its own when the church calendar changes.') }}
+        </p>
+        <p class="portal-action-row">
+            <a class="portal-button portal-button-quiet" id="portal-calendar-subscribe-open" href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                <span>{{ gettext('Open in calendar app') }}</span>
+            </a>
+        </p>
+        <p class="portal-field-hint">
+            {{ gettext('If you have shared this address by mistake, get a new one. The old address stops working straight away.') }}
+        </p>
+        <p class="portal-action-row">
+            <button type="button" class="portal-button portal-button-quiet" id="portal-calendar-subscribe-reset">
+                <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+                <span>{{ gettext('Reset link') }}</span>
+            </button>
+        </p>
+    </div>
+
+    <div class="portal-form-actions">
+        <button type="button" class="portal-button" id="portal-calendar-subscribe-save">{{ gettext('Save') }}</button>
+        <button type="button" class="portal-button portal-button-quiet" id="portal-calendar-subscribe-close">{{ gettext('Close') }}</button>
+    </div>
+    </form>
+</dialog>
+
+{# The "are you sure" for Reset link. Its own dialog rather than bootbox, so the
+   portal keeps one confirmation style and one set of theme tokens. #}
+<dialog class="portal-dialog" id="portal-calendar-reset-dialog" aria-labelledby="portal-calendar-reset-title">
+    <h2 class="portal-card-title" id="portal-calendar-reset-title">{{ gettext('Get a new calendar address?') }}</h2>
+    <p class="portal-card-text">
+        {{ gettext('Your current address will stop working straight away. Anyone you gave it to will need the new one.') }}
+    </p>
+    <div class="portal-form-actions">
+        <button type="button" class="portal-button" id="portal-calendar-reset-confirm">{{ gettext('Reset link') }}</button>
+        <button type="button" class="portal-button portal-button-quiet" id="portal-calendar-reset-cancel">{{ gettext('Cancel') }}</button>
+    </div>
+</dialog>
+{% endif %}
 {% endblock %}
 
 {% block scripts_extra %}
