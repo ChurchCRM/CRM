@@ -55,9 +55,9 @@ npm run docker:dev:logs      # View logs
 npm run docker:dev:login:web # Shell into web container
 ```
 
-### Building With No Host npm/PHP/Composer <!-- learned: 2026-09-17 -->
+### Building Without a Local PHP/Composer/Node.js Toolchain <!-- learned: 2026-09-17 -->
 
-The `dev` Docker image (`docker/Dockerfile.churchcrm-apache-php8`, `target: dev`) already has PHP, Composer, and Node 24/npm installed — a host missing any of those doesn't need them, as long as `docker`/`docker compose` are available and `docker:dev:start` is running:
+The `dev` Docker image (`docker/Dockerfile.churchcrm-apache-php8`, `target: dev`) already has PHP, Composer, and Node 24/npm installed, so none of that toolchain needs to exist on the host — only `docker`/`docker compose` and `npm` itself (just to invoke the wrapper scripts below) are assumed, with `docker:dev:start` running. If even `npm` isn't available on the host, skip straight to the raw `docker compose exec` fallback at the end of this section.
 
 ```bash
 npm run docker:dev:start   # bring the stack up first

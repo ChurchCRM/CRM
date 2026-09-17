@@ -44,9 +44,9 @@ Open `http://localhost` and sign in with `admin` / `changeme`.
 
 The repository does not define an `npm run docker:test` script. Use `npm run docker:test:start` to start the test stack.
 
-## Building without local PHP, Composer, or Node.js
+## Building Without a Local PHP/Composer/Node.js Toolchain
 
-If the host is missing PHP, Composer, or Node.js/npm, the development Docker image already has all three (PHP 8.4, Composer, Node 24/npm) — the full build can run entirely inside it instead of on the host. `docker`, `docker compose`, and `npm` (just to invoke the scripts below) are still required on the host.
+The development Docker image already has PHP 8.4, Composer, and Node 24/npm installed, so none of that toolchain needs to exist on the host — only `docker`, `docker compose`, and `npm` itself (just to invoke the wrapper scripts below) are assumed. If even `npm` isn't available on the host, skip straight to the raw `docker compose exec` command at the end of this section.
 
 ```bash
 npm run docker:dev:start   # bring up the development stack (builds the image on first run)
