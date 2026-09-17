@@ -121,7 +121,7 @@ describe("Member Portal — self-service landing", () => {
  * the two pages rather than hard-coding one of the states.
  */
 describe("Member Portal — the home page's Profile card", () => {
-    const memberUser = "lena.black.editself.notes@exampl";
+    const memberUser = "lena.black.editself.notes@example.com";
     const memberPassword = "changeme";
 
     const OLD_DESCRIPTION = "Your name, email, phone numbers and photo.";
