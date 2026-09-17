@@ -82,11 +82,16 @@ describe("API POST /api/email/send", () => {
                     expect(full.body.HTML).to.not.include("Dear ");
                     expect(full.body.HTML).to.not.include("Sincerely");
                     expect(full.body.HTML).to.not.include("You received this email");
-                    // Footer = the Church Information display preview: name, address, phone, email
-                    expect(full.body.HTML).to.include("<strong>Main St. Cathedral</strong>");
-                    expect(full.body.HTML).to.include("demo@churchcrm.io");
                     expect(full.body.HTML).to.include("Line one<br");
                     expect(full.body.HTML).to.not.include("<script");
+                    // Footer = the Church Information display preview: name, address, phone, email.
+                    // Read the live values: other specs in the same run change the church name.
+                    cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/sChurchName").then((name) => {
+                        expect(full.body.HTML).to.include(`<strong>${name.body.value}</strong>`);
+                    });
+                    cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/sChurchEmail").then((email) => {
+                        expect(full.body.HTML).to.include(`mailto:${email.body.value}`);
+                    });
                 });
             });
         });
