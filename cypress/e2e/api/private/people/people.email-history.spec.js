@@ -20,7 +20,10 @@ describe("API GET /api/email/log", () => {
             expect(rows).to.have.length(5);
             const dates = rows.map((r) => r.dateSent);
             expect([...dates].sort().reverse()).to.deep.equal(dates);
-            const row = rows.find((r) => r.id === 1);
+        });
+        // The seeded row (id 1) may have scrolled off the first small page; read a big one for its shape
+        adminGet("/api/email/log?personId=2&limit=100").then((resp) => {
+            const row = resp.body.rows.find((r) => r.id === 1);
             expect(row).to.include({
                 personId: 2,
                 address: "mathew.campbell@example.com",
