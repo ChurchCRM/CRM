@@ -3,6 +3,7 @@
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\EmailLogService;
@@ -158,6 +159,11 @@ abstract class BaseEmail
             'churchEmail'          => ChurchMetaData::getChurchEmail(),
             'churchCRMURL'         => SystemURLs::getURL(),
             'churchLogo'           => ChurchMetaData::getChurchLogoURL(),
+            // Footer: the same lines as the Display Preview on Admin -> Church Information.
+            'churchStreet'         => ChurchMetaData::getChurchAddress(),
+            'churchCityLine'       => self::getChurchCityLine(),
+            'churchCountry'        => self::getChurchCountryName(),
+            'churchWebSite'        => ChurchMetaData::getChurchWebSite(),
             'dear'                 => SystemConfig::getValue('sDear'),
             'confirmSincerely'     => SystemConfig::getValue('sConfirmSincerely'),
             'confirmSigner'        => SystemConfig::getValue('sConfirmSigner'),
@@ -177,6 +183,26 @@ abstract class BaseEmail
         }
 
         return $commonTokens;
+    }
+
+    /** "City, State Zip" as the Church Information preview shows it; empty when unset. */
+    private static function getChurchCityLine(): string
+    {
+        $cityState = implode(', ', array_filter([ChurchMetaData::getChurchCity(), ChurchMetaData::getChurchState()]));
+        $zip = ChurchMetaData::getChurchZip();
+
+        return trim($cityState . ($zip !== '' ? ' ' . $zip : ''));
+    }
+
+    /** Country display name for the configured code, or the raw value when unknown. */
+    private static function getChurchCountryName(): string
+    {
+        $code = ChurchMetaData::getChurchCountry();
+        if ($code === '') {
+            return '';
+        }
+
+        return Countries::getNames()[$code] ?? $code;
     }
 
     /**
