@@ -47,6 +47,61 @@ import {
 let opportunities: VolunteerMyOpportunity[] = [];
 let helpWanted: VolunteerHelpWantedMinistry[] = [];
 
+/**
+ * One card shape for both lists on this page.
+ *
+ * The product owner's restructure asks that an open position and a ministry
+ * asking for help look like the same kind of thing, because to a volunteer they
+ * ARE the same kind of thing: something to say yes to. So there is one builder,
+ * and the two lists differ only in what they put into it — the icon, the words,
+ * the optional badge, and the button.
+ *
+ * `title` is raw text and is escaped here. Everything ending in `Html` is already
+ * safe: the callers build those from `escapeHtml()`ed pieces, because only they
+ * know which fragments are prose (escaped) and which are markup they authored.
+ *
+ * `titleClass` / `textClass` carry each list's own semantic hook
+ * (`volunteer-card-when`, `volunteer-help-wanted-name`, …) alongside the shared
+ * structural class, so the page's existing selectors keep meaning what they meant
+ * while the structure itself is identical on both sides.
+ *
+ * The **empty state** is a third card of this shape, but it is static and lives in
+ * `volunteer/opportunities.html.twig` — keep the two in step when this changes.
+ */
+interface MemberCard {
+  variantClass: string;
+  /** Pre-rendered `data-*` attributes. Numeric values only — never prose. */
+  attributes?: string;
+  icon: string;
+  title: string;
+  titleClass: string;
+  textHtml?: string;
+  asideHtml?: string;
+  extraHtml?: string;
+  actionsHtml: string;
+}
+
+function memberCardHtml(card: MemberCard): string {
+  return `
+    <div class="card mb-3 ${card.variantClass}"${card.attributes ?? ""}>
+      <div class="card-body">
+        <div class="d-flex flex-wrap gap-2 justify-content-between align-items-start">
+          <div>
+            <div class="volunteer-card-title ${card.titleClass} fw-bold">
+              <i class="${card.icon} me-1" aria-hidden="true"></i>${escapeHtml(card.title)}
+            </div>
+            ${card.textHtml ?? ""}
+          </div>
+          ${card.asideHtml ?? ""}
+        </div>
+        ${card.extraHtml ?? ""}
+        <div class="mt-3 d-grid gap-2 d-sm-flex volunteer-card-actions">
+          ${card.actionsHtml}
+        </div>
+      </div>
+    </div>`;
+}
+
 function cardHtml(opportunity: VolunteerMyOpportunity): string {
   const warning = opportunity.alreadyServing
     ? `<div class="alert alert-warning mt-2 mb-0 py-2 volunteer-already-serving" role="alert">
@@ -65,29 +120,21 @@ function cardHtml(opportunity: VolunteerMyOpportunity): string {
         )}</span>`
       : `<span class="badge bg-secondary volunteer-card-needed">${escapeHtml(i18next.t("One more needed"))}</span>`;
 
-  return `
-    <div class="card mb-3 volunteer-opportunity-card"
-         data-occurrence-id="${opportunity.occurrenceId}" data-position-id="${opportunity.positionId}">
-      <div class="card-body">
-        <div class="d-flex flex-wrap gap-2 justify-content-between align-items-start">
-          <div>
-            <div class="volunteer-card-when fw-bold">
-              <i class="fa-solid fa-clock me-1"></i>${escapeHtml(formatWhen(opportunity.start, opportunity.occurrenceDate))}
-            </div>
-            <div class="volunteer-card-what text-body-secondary">
-              ${escapeHtml(formatWhat(opportunity.ministryName, opportunity.teamName, opportunity.positionName))}
-            </div>
-          </div>
-          ${needed}
-        </div>
-        ${warning}
-        <div class="mt-3 d-grid gap-2 d-sm-flex volunteer-card-actions">
-          <button type="button" class="btn btn-primary volunteer-touch-target volunteer-signup">
-            <i class="fa-solid fa-hand-holding-heart me-1"></i>${escapeHtml(i18next.t("Sign up"))}
-          </button>
-        </div>
-      </div>
-    </div>`;
+  return memberCardHtml({
+    variantClass: "volunteer-opportunity-card",
+    attributes: ` data-occurrence-id="${opportunity.occurrenceId}" data-position-id="${opportunity.positionId}"`,
+    icon: "fa-solid fa-clock",
+    title: formatWhen(opportunity.start, opportunity.occurrenceDate),
+    titleClass: "volunteer-card-when",
+    textHtml: `<p class="volunteer-card-text volunteer-card-what text-body-secondary mt-2 mb-0">${escapeHtml(
+      formatWhat(opportunity.ministryName, opportunity.teamName, opportunity.positionName),
+    )}</p>`,
+    asideHtml: needed,
+    extraHtml: warning,
+    actionsHtml: `<button type="button" class="btn btn-primary volunteer-touch-target volunteer-signup">
+            <i class="fa-solid fa-hand-holding-heart me-1" aria-hidden="true"></i>${escapeHtml(i18next.t("Sign up"))}
+          </button>`,
+  });
 }
 
 /**
@@ -150,23 +197,24 @@ function recruitingPositionsHtml(ministry: VolunteerHelpWantedMinistry): string 
 function helpWantedCardHtml(ministry: VolunteerHelpWantedMinistry): string {
   const text = (ministry.helpWantedText ?? "").trim();
   const body =
-    text === "" ? "" : `<p class="volunteer-help-wanted-text mt-2 mb-0">${escapeHtml(text).replace(/\n/g, "<br>")}</p>`;
+    text === ""
+      ? ""
+      : `<p class="volunteer-card-text volunteer-help-wanted-text text-body-secondary mt-2 mb-0">${escapeHtml(
+          text,
+        ).replace(/\n/g, "<br>")}</p>`;
 
-  return `
-    <div class="card mb-3 volunteer-help-wanted-card" data-ministry-id="${ministry.ministryId}">
-      <div class="card-body">
-        <div class="volunteer-help-wanted-name fw-bold">
-          <i class="fa-solid fa-hand-holding-heart me-1"></i>${escapeHtml(ministry.ministryName)}
-        </div>
-        ${body}
-        ${recruitingPositionsHtml(ministry)}
-        <div class="mt-3 d-grid gap-2 d-sm-flex volunteer-card-actions">
-          <button type="button" class="btn btn-outline-primary volunteer-touch-target volunteer-offer-help">
+  return memberCardHtml({
+    variantClass: "volunteer-help-wanted-card",
+    attributes: ` data-ministry-id="${ministry.ministryId}"`,
+    icon: "fa-solid fa-hand-holding-heart",
+    title: ministry.ministryName,
+    titleClass: "volunteer-help-wanted-name",
+    textHtml: body,
+    extraHtml: recruitingPositionsHtml(ministry),
+    actionsHtml: `<button type="button" class="btn btn-outline-primary volunteer-touch-target volunteer-offer-help">
             ${escapeHtml(i18next.t("I'd like to help"))}
-          </button>
-        </div>
-      </div>
-    </div>`;
+          </button>`,
+  });
 }
 
 function renderHelpWanted(): void {

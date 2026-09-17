@@ -643,7 +643,10 @@ describe("Volunteer v2 — S6 open opportunities (#9712)", () => {
         freshMemberLogin();
         cy.visit(OPPORTUNITIES_URL);
         cy.get("#opportunities-empty").should("be.visible");
-        cy.get("#opportunities-empty .empty-title").should("not.be.empty");
+        // The empty state is a card in the availability list now, not a Tabler
+        // `.empty` block — `member.portal-opportunities-layout.spec.js` owns its
+        // shape; what matters here is that it says something.
+        cy.get("#opportunities-empty .volunteer-card-title").should("not.be.empty");
     });
 });
 
