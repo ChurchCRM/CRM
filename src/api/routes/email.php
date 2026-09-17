@@ -154,4 +154,64 @@ $app->group('/email', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to send email'), [], 500, $e, $request);
         }
     })->add(new InputSanitizationMiddleware(['subject' => 'text', 'body' => 'text']));
+
+    /**
+     * @OA\Post(
+     *     path="/email/preview",
+     *     summary="Render a composer message for its first recipient without sending it",
+     *     tags={"Email"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\RequestBody(required=true, @OA\JsonContent(required={"subject","body"},
+     *         @OA\Property(property="personIds", type="array", @OA\Items(type="integer")),
+     *         @OA\Property(property="familyIds", type="array", @OA\Items(type="integer")),
+     *         @OA\Property(property="subject", type="string"),
+     *         @OA\Property(property="body", type="string"))),
+     *     @OA\Response(response=200, description="The rendered HTML and who it is addressed to",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="html", type="string"),
+     *             @OA\Property(property="recipient", type="object",
+     *                 @OA\Property(property="name", type="string"),
+     *                 @OA\Property(property="email", type="string")),
+     *             @OA\Property(property="recipientCount", type="integer", description="How many recipients the send would reach"))),
+     *     @OA\Response(response=400, description="No resolvable recipient, or empty subject/body"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Email permission required")
+     * )
+     */
+    $group->post('/preview', function (Request $request, Response $response): Response {
+        $payload = (array) $request->getParsedBody();
+        $isPositiveInt = static fn ($id): bool => (is_int($id) && $id > 0) || (is_string($id) && ctype_digit($id) && (int) $id > 0);
+        $rawPersonIds = $payload['personIds'] ?? [];
+        $rawFamilyIds = $payload['familyIds'] ?? [];
+        if (!is_array($rawPersonIds) || !is_array($rawFamilyIds)
+            || array_filter($rawPersonIds, $isPositiveInt) !== $rawPersonIds
+            || array_filter($rawFamilyIds, $isPositiveInt) !== $rawFamilyIds
+        ) {
+            return SlimUtils::renderErrorJSON($response, gettext('personIds and familyIds must be arrays of positive integers'), [], 400, null, $request);
+        }
+        $subject = (string) ($payload['subject'] ?? '');
+        $body = (string) ($payload['body'] ?? '');
+        if ($subject === '' || $body === '') {
+            return SlimUtils::renderErrorJSON($response, gettext('subject and body are required'), [], 400, null, $request);
+        }
+        try {
+            $service = new EmailComposerService();
+            $resolved = $service->resolveRecipients(
+                EmailComposerService::normalizeIds($rawPersonIds),
+                EmailComposerService::normalizeIds($rawFamilyIds),
+            );
+            if ($resolved['recipients'] === []) {
+                return SlimUtils::renderErrorJSON($response, gettext('None of the recipients can be emailed'), ['skipped' => $resolved['skipped']], 400, null, $request);
+            }
+            $first = $resolved['recipients'][0];
+
+            return SlimUtils::renderJSON($response, [
+                'html'           => $service->preview($first, $subject, $body),
+                'recipient'      => ['name' => $first['name'], 'email' => $first['email']],
+                'recipientCount' => count($resolved['recipients']),
+            ]);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to build the preview'), [], 500, $e, $request);
+        }
+    })->add(new InputSanitizationMiddleware(['subject' => 'text', 'body' => 'text']));
 })->add(EmailRoleAuthMiddleware::class);

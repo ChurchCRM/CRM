@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\ComposerEmail;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -35,7 +37,7 @@ class EmailComposerService
      * @param int[] $personIds
      * @param int[] $familyIds
      *
-     * @return array{recipients: list<array{personId: ?int, familyId: ?int, name: string, greeting: string, email: string}>, skipped: list<array{personId: ?int, familyId: ?int, name: string, reason: string}>}
+     * @return array{recipients: list<array{personId: ?int, familyId: ?int, name: string, email: string}>, skipped: list<array{personId: ?int, familyId: ?int, name: string, reason: string}>}
      */
     public function resolveRecipients(array $personIds, array $familyIds): array
     {
@@ -84,7 +86,6 @@ class EmailComposerService
                     'personId' => $personId,
                     'familyId' => null,
                     'name'     => $name,
-                    'greeting' => trim((string) $person->getFirstName()) ?: $name,
                     'email'    => $email,
                 ];
             }
@@ -122,7 +123,6 @@ class EmailComposerService
                     'personId' => null,
                     'familyId' => $familyId,
                     'name'     => $name,
-                    'greeting' => $name,
                     'email'    => $email,
                 ];
             }
@@ -135,7 +135,7 @@ class EmailComposerService
      * Sends one ComposerEmail per recipient. Never throws for a transport
      * failure: the failed recipient is reported with PHPMailer's error text.
      *
-     * @param list<array{personId: ?int, familyId: ?int, name: string, greeting: string, email: string}> $recipients
+     * @param list<array{personId: ?int, familyId: ?int, name: string, email: string}> $recipients
      *
      * @return array{sent: list<array{personId: ?int, familyId: ?int, name: string, email: string}>, failed: list<array{personId: ?int, familyId: ?int, name: string, email: string, error: string}>}
      */
@@ -155,7 +155,6 @@ class EmailComposerService
                 $email = new ComposerEmail(
                     $recipient['email'],
                     $recipient['name'],
-                    $recipient['greeting'],
                     $subject,
                     $body,
                 );
@@ -179,6 +178,28 @@ class EmailComposerService
         ]);
 
         return ['sent' => $sent, 'failed' => $failed];
+    }
+
+    /**
+     * The message as it would be sent to one recipient, without sending it.
+     *
+     * @param array{personId: ?int, familyId: ?int, name: string, email: string} $recipient
+     */
+    public function preview(array $recipient, string $subject, string $body): string
+    {
+        return (new ComposerEmail($recipient['email'], $recipient['name'], $subject, $body))->getHtml();
+    }
+
+    /**
+     * The closing the composer pre-fills under two blank lines, from the letter settings
+     * (sConfirmSincerely / sConfirmSigner); the church name stands in for a missing signer.
+     */
+    public static function defaultSignature(): string
+    {
+        $sincerely = trim((string) SystemConfig::getValue('sConfirmSincerely')) ?: gettext('Sincerely');
+        $signer = trim((string) SystemConfig::getValue('sConfirmSigner')) ?: ChurchMetaData::getChurchName();
+
+        return $sincerely . ",\n" . $signer;
     }
 
     /**

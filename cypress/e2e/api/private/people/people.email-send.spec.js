@@ -77,11 +77,34 @@ describe("API POST /api/email/send", () => {
                 const mathew = messages.find((m) => m.To[0].Address === "mathew.campbell@example.com");
                 expect(mathew.To[0].Name).to.equal("Mathew Campbell");
                 cy.request(`${mailpit()}/api/v1/message/${mathew.ID}`).then((full) => {
-                    expect(full.body.HTML).to.include("Mathew,");
+                    // The author writes greeting and closing: nothing is generated around the body
+                    // except the church header, and there is no marketing footer.
+                    expect(full.body.HTML).to.not.include("Dear ");
+                    expect(full.body.HTML).to.not.include("Sincerely");
+                    expect(full.body.HTML).to.not.include("You received this email");
                     expect(full.body.HTML).to.include("Line one<br");
                     expect(full.body.HTML).to.not.include("<script");
                 });
             });
+        });
+    });
+
+    describe("preview", () => {
+        it("renders the message for the first resolvable recipient without sending it", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/email/preview", {
+                personIds: [105, 2, 3],
+                subject: "Preview <b>only</b>",
+                body: "Hello Mathew,\n\nSee you Sunday.\n\nSincerely,\nThe Office",
+            }).then((resp) => {
+                expect(resp.body.recipient).to.deep.equal({ name: "Mathew Campbell", email: "mathew.campbell@example.com" });
+                expect(resp.body.recipientCount).to.eq(2);
+                expect(resp.body.html).to.include("Hello Mathew,<br");
+                expect(resp.body.html).to.include("The Office");
+                expect(resp.body.html).to.not.include("Dear ");
+                expect(resp.body.html).to.not.include("You received this email");
+            });
+            cy.makePrivateAdminAPICall("POST", "/api/email/preview", { personIds: [105], subject: "s", body: "b" }, 400);
+            cy.makePrivateAdminAPICall("POST", "/api/email/preview", { personIds: [2], subject: "", body: "b" }, 400);
         });
     });
 

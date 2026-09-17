@@ -10,14 +10,15 @@ namespace ChurchCRM\Emails;
  *
  * The subject and body arrive already sanitized by InputSanitizationMiddleware
  * ('text' mode: tags stripped); the template escapes them again on output and
- * turns newlines into <br>.
+ * turns newlines into <br>. The author writes the greeting and closing (the composer
+ * pre-fills the closing from sConfirmSincerely / sConfirmSigner); nothing is generated
+ * around the body except the church header.
  */
 class ComposerEmail extends BaseEmail
 {
     public function __construct(
         string $toAddress,
         string $toName,
-        private readonly string $greetingName,
         string $subject,
         private readonly string $body,
     ) {
@@ -31,9 +32,21 @@ class ComposerEmail extends BaseEmail
     public function getTokens(): array
     {
         return array_merge($this->getCommonTokens(), [
-            'toName' => $this->greetingName,
+            'toName' => '',
             'body'   => $this->body,
         ]);
+    }
+
+    /** The composer template renders the body only: no generated greeting, closing or footer. */
+    protected function getTemplateName(): string
+    {
+        return 'ComposerEmail.html.twig';
+    }
+
+    /** The rendered HTML exactly as it will be sent, for the composer's Preview. */
+    public function getHtml(): string
+    {
+        return (string) $this->mail->Body;
     }
 
     protected function getFullURL(): string
