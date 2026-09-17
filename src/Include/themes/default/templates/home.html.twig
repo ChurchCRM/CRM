@@ -10,7 +10,8 @@
   Variables: `pageTitle`; `upcomingEvents` ({title, when, calendarName} for each
   of the next three events, already formatted) and `hasVisibleCalendars`;
   `familySummary` (`{name, memberCount}`, or null when the member has no family
-  record).
+  record); `profile` (the same view-model the Profile page renders, or null for
+  an account with no person record).
 #}
 
 {% block content %}
@@ -88,7 +89,10 @@
             </p>
             <p><a class="portal-card-link" href="{{ url('/portal/family') }}">{{ gettext('Update your details') }}</a></p>
             {% else %}
-            <p class="portal-card-text">{{ gettext('You are not part of a family record yet.') }}</p>
+            {# The same fact My Family itself reports, in one line. The page it
+               links to carries the church office's contact details. #}
+            <p class="portal-card-text">{{ gettext('You are not currently associated with a family') }}</p>
+            <p><a class="portal-card-link" href="{{ url('/portal/family') }}">{{ gettext('How to correct this') }}</a></p>
             {% endif %}
         </section>
 
@@ -98,9 +102,32 @@
                 <span>{{ gettext('Profile') }}</span>
             </h2>
             <p class="portal-card-text">
-                <span class="portal-card-lead">{{ member.fullName }}</span><br>
-                {{ gettext('Your name, email, phone numbers and photo.') }}
+                <span class="portal-card-lead">{{ member.fullName }}</span>
             </p>
+            {#
+              The details themselves, not a description of them. Empty fields are
+              left out, so the card is as long as the church's record is full.
+              The birthday follows the Profile page, which shows it only while
+              `bPortalAllowBirthdayEdit` is on; the family role is meaningless
+              for a member with no family, so it waits for one.
+            #}
+            {% set profileRows = [
+                { 'field': 'email', 'label': gettext('Email'), 'icon': 'fa-solid fa-envelope', 'value': profile.email },
+                { 'field': 'cellPhone', 'label': gettext('Mobile Phone'), 'icon': 'fa-solid fa-mobile-screen', 'value': profile.cellPhone },
+                { 'field': 'homePhone', 'label': gettext('Home Phone'), 'icon': 'fa-solid fa-phone', 'value': profile.homePhone },
+                { 'field': 'birthday', 'label': gettext('Birthday'), 'icon': 'fa-solid fa-cake-candles', 'value': profile.canEditBirthday ? profile.birthday : '' },
+                { 'field': 'familyRole', 'label': gettext('Family Role'), 'icon': 'fa-solid fa-people-roof', 'value': profile.familyId ? profile.familyRole : '' }
+            ]|filter(row => row.value) %}
+            {% if profileRows is empty %}
+            <p class="portal-card-text">{{ gettext('No contact details on file yet.') }}</p>
+            {% else %}
+            <dl class="portal-detail-list portal-card-details" id="portal-home-profile-details">
+                {% for row in profileRows %}
+                <dt><i class="{{ row.icon }}" aria-hidden="true"></i> {{ row.label }}</dt>
+                <dd data-field="{{ row.field }}">{{ row.value }}</dd>
+                {% endfor %}
+            </dl>
+            {% endif %}
             <p><a class="portal-card-link" href="{{ url('/portal/profile') }}">{{ gettext('Update your details') }}</a></p>
         </section>
     </div>

@@ -346,6 +346,45 @@
     overflow-wrap: anywhere;
 }
 
+// The compact variant a card uses. A card in the home page's grid is a column,
+// not a page, so the label stays above its value at every width — the
+// two-column rule below would leave a long email address wrapping one
+// character at a time.
+
+.portal-card-details {
+    margin-block: 0.5rem 0.75rem;
+}
+
+.portal-card-details dt {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+
+.portal-card-details dd {
+    margin-block-end: 0.5rem;
+}
+
+.portal-card-details dd:last-of-type {
+    margin-block-end: 0;
+}
+
+// Contact lines — the church office's email and phone, offered as links a
+// phone can act on.
+
+.portal-contact-list {
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.portal-contact-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-block: 0.25rem;
+}
+
 // Profile and family ---------------------------------------------------------
 
 .portal-profile-identity {
@@ -987,6 +1026,11 @@ textarea.portal-input {
 
     .portal-detail-list {
         grid-template-columns: minmax(8rem, max-content) 1fr;
+    }
+
+    // …except inside a card, which is a column and stays one.
+    .portal-card-details {
+        grid-template-columns: 1fr;
     }
 
     .portal-field-grid {
