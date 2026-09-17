@@ -1,47 +1,47 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päev.|Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päeva.",
-    "other": ""
+    "one": "Kaheastmeline autentimine on kohustuslik. Teil on selleks aega %d päev.",
+    "other": "Kaheastmeline autentimine on kohustuslik. Teil on selleks aega %d päeva."
   },
-  "Link": "",
+  "Link": "Link",
   "They are expected at least once every %d hour.": {
-    "one": "Neid oodatakse vähemalt korra iga %d tunni jooksul.|Neid oodatakse vähemalt korra iga %d tunni jooksul.",
-    "other": ""
+    "one": "Neid oodatakse vähemalt korra iga %d tunni jooksul.",
+    "other": "Neid oodatakse vähemalt korra iga %d tunni jooksul."
   },
   "Copied {{count}} members": {
-    "one": "",
-    "other": ""
+    "one": "Kopeeriti {{count}} liige",
+    "other": "Kopeeriti {{count}} liiget"
   },
   "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Selles loendis on {{count}} saaja — liiga palju mailto: lingi jaoks. Kasutage selle asemel funktsiooni „Kopeeri aadressid“.",
+    "other": "Selles loendis on {{count}} saajat — liiga palju mailto: lingi jaoks. Kasutage selle asemel funktsiooni „Kopeeri aadressid“."
   },
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Liiga palju saajaid e-posti kliendi jaoks ({{count}} > {{max}}). Kasutage selle asemel funktsiooni „Kopeeri aadressid“.",
+    "other": "Liiga palju saajaid e-posti kliendi jaoks ({{count}} > {{max}}). Kasutage selle asemel funktsiooni „Kopeeri aadressid“."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} minut jäänud",
+    "other": "{{count}} minutit jäänud"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} pere ei õnnestunud geokodeerida",
+    "other": "{{count}} peret ei õnnestunud geokodeerida"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktiivne {{count}} sekund",
+    "other": "Aktiivne {{count}} sekundit"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Te saadate kinnituskirjad {{count}} perele.",
+    "other": "Te saadate kinnituskirjad {{count}} perele."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} perel ei ole e-posti aadressi kirjas ja need jäetakse vahele",
+    "other": "{{count}} perel ei ole e-posti aadressi kirjas ja need jäetakse vahele"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…ja veel {{count}} pole siin loetletud.",
+    "other": "…ja veel {{count}} pole siin loetletud."
   }
 }
