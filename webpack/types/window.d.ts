@@ -22,12 +22,22 @@ interface CRMAPIRequestOptions {
   [key: string]: unknown;
 }
 
+/** One recipient with the record behind the address, as returned by the /emails list endpoints. */
+interface CRMEmailRecipient {
+  personId?: number | null;
+  familyId?: number | null;
+  name: string;
+  email: string;
+}
+
 interface CRMEmailComposerOptions {
   emails: string[];
   byRole?: Record<string, string[]>;
   title: string;
   /** Church default "to" address (sToEmailAddress); offered as a removable default recipient. */
   defaultTo?: string;
+  /** Records behind the addresses; required for the server-side Send (ids are posted, not addresses). */
+  recipients?: CRMEmailRecipient[];
 }
 
 interface CRMEmailComposer {
@@ -305,7 +315,9 @@ interface CRMNamespace {
    * calling i18next.t() on page load. */
   onLocalesReady?: (callback: () => void) => void;
   comm?: {
-    smtpConfigured?: boolean;
+    emailSendingEnabled?: boolean;
+    /** Closing pre-filled at the end of a new composer message ("Sincerely,\nSigner"). */
+    emailSignature?: string;
     vonageEnabled?: boolean;
     /** Church default "to" address (sToEmailAddress); "" when unset or user lacks email permission. */
     defaultEmailToAddress?: string;

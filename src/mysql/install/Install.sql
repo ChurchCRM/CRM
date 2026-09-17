@@ -1510,4 +1510,24 @@ ALTER TABLE `calendars`
     ADD CONSTRAINT `calendars_ministry_fk` FOREIGN KEY (`ministry_id`)
     REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
 
+CREATE TABLE `email_log_eml` (
+  `eml_ID`        int(10) unsigned      NOT NULL AUTO_INCREMENT,
+  `eml_per_ID`    mediumint(8) unsigned DEFAULT NULL,
+  `eml_fam_ID`    mediumint(8) unsigned DEFAULT NULL,
+  `eml_usr_ID`    mediumint(9) unsigned DEFAULT NULL,
+  `eml_Address`   varchar(255)          NOT NULL,
+  `eml_Kind`      varchar(50)           NOT NULL,
+  `eml_Subject`   varchar(255)          NOT NULL DEFAULT '',
+  `eml_Body`      longtext              DEFAULT NULL,
+  `eml_Status`    varchar(20)           NOT NULL,
+  `eml_Error`     text                  DEFAULT NULL,
+  `eml_MessageID` varchar(255)          DEFAULT NULL,
+  `eml_DateSent`  datetime              NOT NULL,
+  PRIMARY KEY (`eml_ID`),
+  KEY `idx_eml_per_ID`   (`eml_per_ID`),
+  KEY `idx_eml_fam_ID`   (`eml_fam_ID`),
+  KEY `idx_eml_DateSent` (`eml_DateSent`),
+  KEY `idx_eml_Status`   (`eml_Status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 update version_ver set ver_update_end = now();

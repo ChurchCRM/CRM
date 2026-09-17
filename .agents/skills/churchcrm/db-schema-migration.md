@@ -284,3 +284,11 @@ ALTER TABLE `events_event`
 Verify by loading `Install.sql` into a scratch database and diffing
 `SHOW CREATE TABLE` against the upgrade path's result — that comparison catches a constraint
 present on one path and missing on the other, which nothing else does.
+### Adding a New Table: Generate the Propel Model Too <!-- learned: 2026-09-16 -->
+
+`src/ChurchCRM/model/ChurchCRM/Base/` and `Map/` are git-ignored: after adding a `<table>` to
+`orm/schema.xml`, run `cp -n orm/propel.php.dist orm/propel.php && cd src && composer run orm-gen`
+and commit only the two skeleton subclasses it creates (`<PhpName>.php`, `<PhpName>Query.php`).
+CI regenerates the Base classes. The test DB comes solely from `cypress/data/seed.sql`, so a new
+table must be added there as well (with a few seeded rows if specs read it) or every request
+touching it 500s in Cypress. Reference: `email_log_eml` (#9877).

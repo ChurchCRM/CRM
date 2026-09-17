@@ -7,8 +7,9 @@
  *   - hovering the church name must not restyle it (the core bundle's `a:hover`
  *     was painting it link-blue and underlining it)
  *   - the member's name and the bare "Sign out" link are replaced by one
- *     "Hello <first name>" button that opens a menu: Change Password,
- *     Admin Console (staff logins only, never during a masquerade), Sign out
+ *     "Hello <first name>" button that opens a menu: Email History,
+ *     Change Password, Admin Console (staff logins only, never during a
+ *     masquerade), Sign out
  *
  * Seed persona: user 100, Lena Black (person 100, family 20). usr_EditSelf=1
  * and no admin flag, so she is confined to the portal. The username column is
@@ -160,10 +161,14 @@ describe("Member Portal header", () => {
             cy.get("#portal-account-toggle").should("have.attr", "aria-expanded", "true");
         });
 
-        it("Offers Change Password and Sign out, but not Admin Console, to a member", () => {
+        it("Offers Email History, Change Password and Sign out, but not Admin Console, to a member", () => {
             cy.get("#portal-account-toggle").click();
 
-            cy.get('#portal-account-menu [role="menuitem"]').should("have.length", 2);
+            cy.get('#portal-account-menu [role="menuitem"]').should("have.length", 3);
+            cy.get("#portal-account-menu")
+                .contains('[role="menuitem"]', "Email History")
+                .should("have.attr", "href")
+                .and("include", "/portal/email-history");
             cy.get("#portal-account-menu")
                 .contains('[role="menuitem"]', "Change Password")
                 .should("have.attr", "href")
@@ -199,6 +204,8 @@ describe("Member Portal header", () => {
         it("Moves between the items with the arrow keys", () => {
             cy.get("#portal-account-toggle").click();
 
+            cy.focused().should("contain.text", "Email History");
+            cy.focused().trigger("keydown", { key: "ArrowDown" });
             cy.focused().should("contain.text", "Change Password");
             cy.focused().trigger("keydown", { key: "ArrowDown" });
             cy.focused().should("contain.text", "Sign out");

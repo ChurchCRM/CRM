@@ -29,7 +29,11 @@ $fam_Latitude       = (float) ($personData['fam_Latitude'] ?? 0);
 $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
 ?>
 
-<?php $currentUserId = AuthenticationManager::getCurrentUser()->getId(); ?>
+<?php
+$currentUserId = AuthenticationManager::getCurrentUser()->getId();
+// Server-side "Send email" needs the Email permission and a working, enabled SMTP setup.
+$canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && SystemConfig::isEmailEnabled();
+?>
 
 <div id="person-deactivated" class="alert alert-warning d-none">
     <strong><?= gettext("This Person is Inactive") ?> </strong>
@@ -186,6 +190,17 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     title="<?= gettext('Copy to clipboard') ?>">
                                 <i class="fa-solid fa-copy"></i>
                             </button>
+                            <?php if ($canSendEmail) : ?>
+                            <button class="btn btn-sm btn-ghost-primary ms-1" type="button"
+                                    data-email-composer
+                                    data-email-person-id="<?= (int) $iPersonID ?>"
+                                    data-email-address="<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>"
+                                    data-email-name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>"
+                                    data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $person->getFullName())) ?>"
+                                    title="<?= gettext('Send email from ChurchCRM') ?>">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                            <?php endif; ?>
                         </li>
                         <?php endif; ?>
                         <?php if (!empty($per_WorkEmail)) : ?>
@@ -574,6 +589,34 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
         <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
         <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
         <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
+        <?php if ($canSendEmail) : ?>
+        <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+        <?php endif; ?>
+
+        <!-- Email history: 5 most recent, full list on its own page -->
+        <?php $emailHistory = $emailHistory ?? ['rows' => [], 'total' => 0]; ?>
+        <div class="card mb-3" id="email-history-card">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0"><i class="fa-solid fa-envelope-open-text me-1"></i> <?= gettext('Recent Emails') ?>
+                    <span class="badge bg-secondary-lt text-secondary ms-2"><?= (int) $emailHistory['total'] ?></span>
+                </h3>
+            </div>
+            <div class="card-body p-0">
+                <?php
+                $emailHistoryRows = $emailHistory['rows'];
+                $emailHistoryShowTo = false;
+                include __DIR__ . '/partials/email-history-table.php';
+                ?>
+            </div>
+            <?php if ((int) $emailHistory['total'] > 0) : ?>
+            <div class="card-footer text-end py-2">
+                <a href="<?= $sRootPath ?>/people/view/<?= (int) $iPersonID ?>/emails" id="email-history-show-all">
+                    <?= gettext('Show all') ?> (<?= (int) $emailHistory['total'] ?>) <i class="fa-solid fa-chevron-right fa-xs ms-1"></i>
+                </a>
+            </div>
+            <?php endif; ?>
+        </div>
+        <?php include __DIR__ . '/partials/email-history-modal.php'; ?>
 
         <!-- Tabbed Content -->
         <div class="card">

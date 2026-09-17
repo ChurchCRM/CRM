@@ -1682,3 +1682,28 @@ $("#MyTable").on("click", "[data-row-action]", function() {
 
 `$(...).data()` decodes the attribute value back to the original string — the
 JS-context concerns disappear because the string never enters a JS literal.
+
+## Bootstrap Modal Steals Focus at the End of Its Fade <!-- learned: 2026-09-16 -->
+
+`Modal.show()` returns before the fade transition ends; on `shown.bs.modal` Bootstrap calls
+`focus()` on the dialog element. Any field focused inside the modal before that moment
+(a form injected right after `show()`, a Send form opened within ~300 ms) loses focus and
+keystrokes go to the dialog. Cypress `type()` then silently truncates the value. Fix in the
+module that owns the modal, not in the test:
+
+```ts
+modalEl.addEventListener("shown.bs.modal", () => {
+  if (composeFormVisible && subjectInputEl) subjectInputEl.focus();
+});
+```
+
+(`webpack/common/email-composer.ts`.) Assert `should("have.value", text)` after typing in
+specs so a regression is visible.
+
+## Always Build Through `npm run build:frontend` <!-- learned: 2026-09-16 -->
+
+Running `npx webpack` directly produces a **development** build (`eval` source maps,
+`webpack-internal://` paths) because `NODE_ENV` is unset; the dashboard then fails with
+`ReferenceError: i18next is not defined` and every UI spec's login breaks. Use
+`npm run build:frontend` (sets `NODE_ENV=production`, then formats and regenerates the
+integrity signatures) or the full `npm run build`.

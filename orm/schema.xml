@@ -578,6 +578,45 @@
         </vendor>
     </table>
 
+    <table name="email_log_eml" idMethod="native" phpName="EmailLog" description="One row per recipient for every email ChurchCRM sent through BaseEmail::send(): composer messages, birthday greetings, verification links, account emails, notifications. Links to the person/family the address belonged to at send time and to the user who sent a composer message. The rendered body is stored only for email classes that allow it (composer); account emails never store a body.">
+        <column name="eml_ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="eml_per_ID" phpName="PerId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
+        <column name="eml_fam_ID" phpName="FamId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
+        <column name="eml_usr_ID" phpName="UsrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="eml_Address" phpName="Address" type="VARCHAR" size="255" required="true"/>
+        <column name="eml_Kind" phpName="Kind" type="VARCHAR" size="50" required="true"/>
+        <column name="eml_Subject" phpName="Subject" type="VARCHAR" size="255" required="true" defaultValue=""/>
+        <column name="eml_Body" phpName="Body" type="LONGVARCHAR"/>
+        <column name="eml_Status" phpName="Status" type="VARCHAR" size="20" required="true"/>
+        <column name="eml_Error" phpName="Error" type="LONGVARCHAR"/>
+        <column name="eml_MessageID" phpName="MessageId" type="VARCHAR" size="255"/>
+        <column name="eml_DateSent" phpName="DateSent" type="TIMESTAMP" required="true"/>
+        <index name="idx_eml_per_ID">
+            <index-column name="eml_per_ID"/>
+        </index>
+        <index name="idx_eml_fam_ID">
+            <index-column name="eml_fam_ID"/>
+        </index>
+        <index name="idx_eml_DateSent">
+            <index-column name="eml_DateSent"/>
+        </index>
+        <index name="idx_eml_Status">
+            <index-column name="eml_Status"/>
+        </index>
+        <foreign-key foreignTable="person_per" phpName="Person">
+            <reference local="eml_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="family_fam" phpName="Family">
+            <reference local="eml_fam_ID" foreign="fam_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="user_usr" phpName="SentByUser">
+            <reference local="eml_usr_ID" foreign="usr_per_ID"/>
+        </foreign-key>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
     <table name="pledge_denominations_pdem" idMethod="native" phpName="PledgeDenomination" description="Cash denomination counts recorded per pledge/payment GroupKey for a deposit (cash-counting workflow). Column plg_depID mirrors the name used in FinancialService raw SQL.">
         <column name="pdem_id" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="pdem_plg_GroupKey" phpName="GroupKey" type="VARCHAR" size="64" required="true"/>

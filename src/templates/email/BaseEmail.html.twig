@@ -137,7 +137,7 @@
                 <!-- start copy -->
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 3px solid #d4dadf;">
-                        <h2 style="margin: 0 0 16px;">{{dear}} {{toName}},</h2>
+                        {% block greeting %}<h2 style="margin: 0 0 16px;">{{dear}} {{toName}},</h2>{% endblock %}
                         <p style="margin: 0 0 16px;">
                             {{body|nl2br}}
                         </p>
@@ -197,6 +197,7 @@
                 <!-- end copy -->
                 {% endif %}
 
+                {% block closing %}
                 <!-- start copy -->
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
@@ -206,6 +207,7 @@
                     </td>
                 </tr>
                 <!-- end copy -->
+                {% endblock %}
 
             </table>
             <!--[if (gte mso 9)|(IE)]>
@@ -217,44 +219,30 @@
     </tr>
     <!-- end copy block -->
 
+{# Footer: the church's contact block, the same lines as the Display Preview on
+   Admin -> Church Information. No "you received this email because…" / unsubscribe text:
+   these are transactional and pastoral messages; newsletters go through Mailchimp. #}
+{% block footer %}
 <!-- start footer -->
 <tr>
     <td align="center" bgcolor="#e9ecef" style="padding: 24px;">
-        <!--[if (gte mso 9)|(IE)]>
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
-            <tr>
-                <td align="center" valign="top" width="600">
-        <![endif]-->
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-
-            <!-- start permission -->
             <tr>
                 <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
-                    <p style="margin: 0;">{{emailErrorText}}</p>
+                    {% if churchName %}<p style="margin: 0;"><strong>{{ churchName }}</strong></p>{% endif %}
+                    {% if churchStreet %}<p style="margin: 0;">{{ churchStreet }}</p>{% endif %}
+                    {% if churchCityLine %}<p style="margin: 0;">{{ churchCityLine }}</p>{% endif %}
+                    {% if churchCountry %}<p style="margin: 0;">{{ churchCountry }}</p>{% endif %}
+                    {% if churchPhone %}<p style="margin: 0;">{{ churchPhone }}</p>{% endif %}
+                    {% if churchEmail %}<p style="margin: 0;"><a href="mailto:{{ churchEmail }}" style="color: #666;">{{ churchEmail }}</a></p>{% endif %}
+                    {% if churchWebSite %}<p style="margin: 0;"><a href="{{ churchWebSite }}" target="_blank" style="color: #666;">{{ churchWebSite }}</a></p>{% endif %}
                 </td>
             </tr>
-            <!-- end permission -->
-
-            <!-- start unsubscribe -->
-            <tr>
-                <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
-                    <p style="margin: 0;">{{stopEmailText}} <a href="mailto:{{churchEmail}}" target="_blank">{{churchName}}</a>.</p>
-                    <p style="margin: 0;">{{churchAddress}}</p>
-                    <p style="margin: 0;">{{churchPhone}}</p>
-
-                </td>
-            </tr>
-            <!-- end unsubscribe -->
-
         </table>
-        <!--[if (gte mso 9)|(IE)]>
-        </td>
-        </tr>
-        </table>
-        <![endif]-->
     </td>
 </tr>
 <!-- end footer -->
+{% endblock %}
 
 </table>
 <!-- end body -->
