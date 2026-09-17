@@ -9268,10 +9268,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "A ChurchCRM bővítése MailChimp-pel, biztonsági mentésekkel és egyebekkel"
 
 #: 
-msgid "FY %s"
-msgstr "Pénzügyi év %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "A családok közös címmel és telefonszámmal rendelkeznek."
 
@@ -16033,10 +16029,6 @@ msgid "Buyers Registered"
 msgstr "Regisztrált vevők"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Vevők ebben az évben"
-
-#: 
 msgid "Catalog"
 msgstr "Katalógus"
 
@@ -16185,10 +16177,6 @@ msgid "Items Donated"
 msgstr "Adományozott tételek"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Adományozott tételek (ebben az évben)"
-
-#: 
 msgid "Items Sold"
 msgstr "Eladott tételek"
 
@@ -16267,10 +16255,6 @@ msgstr "Gyors előbeállítások"
 #: 
 msgid "Raised"
 msgstr "Összegyűjtve"
-
-#: 
-msgid "Raised This Year"
-msgstr "Ebben az évben összegyűjtve"
 
 #: 
 msgid "Sample Amount"

@@ -9236,10 +9236,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Mo rong ChurchCRM voi MailChimp, sao luu va nhieu hon nua"
 
 #: 
-msgid "FY %s"
-msgstr "Nam tai chinh %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Cac gia dinh dung chung dia chi va so dien thoai."
 
@@ -15997,10 +15993,6 @@ msgid "Buyers Registered"
 msgstr "Người mua đã đăng ký"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Người mua trong năm nay"
-
-#: 
 msgid "Catalog"
 msgstr "Danh mục"
 
@@ -16149,10 +16141,6 @@ msgid "Items Donated"
 msgstr "Các mục được hiến tặng"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Các mục được hiến tặng (Năm nay)"
-
-#: 
 msgid "Items Sold"
 msgstr "Các mục đã bán"
 
@@ -16231,10 +16219,6 @@ msgstr "Cài đặt nhanh"
 #: 
 msgid "Raised"
 msgstr "Đã gây quỹ"
-
-#: 
-msgid "Raised This Year"
-msgstr "Đã gây quỹ năm nay"
 
 #: 
 msgid "Sample Amount"

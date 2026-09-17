@@ -14,31 +14,35 @@ class FamilyPledgeSummaryService
      * Get family pledge summary for a given fiscal year
      *
      * Returns an array of families with their pledges grouped by donation fund
-     * 
-     * @param int $fyid Fiscal Year ID
+     *
+     * @param int $fyid Fiscal Year ID, or 0/negative for All Time (no FY filter)
      * @return array Array of families with pledge data
      */
     public function getFamilyPledgesByFiscalYear(int $fyid): array
     {
         // Get all pledges for the fiscal year (only actual pledges, not payments)
-        $pledges = PledgeQuery::create()
-            ->filterByFyId($fyid)
+        $pledgesQuery = PledgeQuery::create()
             ->filterByPledgeOrPayment('Pledge')
             ->filterByAmount(0, Criteria::GREATER_THAN)
             ->joinWith('Pledge.Family')
             ->joinWith('Pledge.DonationFund', Criteria::LEFT_JOIN)
-            ->orderByFamId()
-            ->find();
+            ->orderByFamId();
+        if ($fyid > 0) {
+            $pledgesQuery->filterByFyId($fyid);
+        }
+        $pledges = $pledgesQuery->find();
 
         // Get all payments for the fiscal year to compare with pledges
-        $payments = PledgeQuery::create()
-            ->filterByFyId($fyid)
+        $paymentsQuery = PledgeQuery::create()
             ->filterByPledgeOrPayment('Payment')
             ->filterByAmount(0, Criteria::GREATER_THAN)
             ->joinWith('Pledge.Family')
             ->joinWith('Pledge.DonationFund', Criteria::LEFT_JOIN)
-            ->orderByFamId()
-            ->find();
+            ->orderByFamId();
+        if ($fyid > 0) {
+            $paymentsQuery->filterByFyId($fyid);
+        }
+        $payments = $paymentsQuery->find();
 
         // Per-fund record counters (to match legacy PledgeSummary report)
         $fundPledgeCounts = [];
@@ -285,11 +289,12 @@ class FamilyPledgeSummaryService
     }
 
     /**
-     * Get all available fiscal years for the dropdown
+     * Get all available fiscal years for the dropdown.
      *
-     * Returns fiscal years from the oldest pledge in the database to the next fiscal year
-     * 
-     * @return array Array of fiscal years with id and label, sorted newest to oldest
+     * Returns fiscal years from the oldest pledge in the database to the next fiscal year,
+     * sorted newest first. Delegates label-building to FiscalYearUtils::buildFiscalYearList().
+     *
+     * @return array<int, array{id: int, label: string}>
      */
     public function getAvailableFiscalYears(): array
     {
@@ -298,23 +303,10 @@ class FamilyPledgeSummaryService
             ->orderByFyId()
             ->select(['FyId'])
             ->findOne();
-        
-        $oldestFyId = $oldestPledge ? (int) $oldestPledge : FiscalYearUtils::getCurrentFiscalYearId();
-        $currentFyId = FiscalYearUtils::getCurrentFiscalYearId();
-        $nextFyId = $currentFyId + 1; // Include next fiscal year for planning
-        
-        $years = [];
-        // Build array from oldest to next year, then reverse to show newest first
-        for ($fyid = $oldestFyId; $fyid <= $nextFyId; $fyid++) {
-            $fyLabel = FinancialService::formatFiscalYear($fyid);
-            $years[] = [
-                'id' => $fyid,
-                'label' => $fyLabel,
-            ];
-        }
-        
-        // Reverse to show newest first
-        return array_reverse($years);
+
+        $oldestFyId = $oldestPledge !== null ? (int) $oldestPledge : FiscalYearUtils::getCurrentFiscalYearId();
+
+        return FiscalYearUtils::buildFiscalYearList($oldestFyId);
     }
 
     /**

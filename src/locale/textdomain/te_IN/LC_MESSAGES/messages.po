@@ -9218,10 +9218,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, బ్యాకప్‌లు మరియు మరిన్నింటితో ChurchCRM విస్తరించండి"
 
 #: 
-msgid "FY %s"
-msgstr "ఆర్థిక సంవత్సరం %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "కుటుంబాలు చిరునామా మరియు ఫోన్ నంబర్ పంచుకుంటాయి."
 
@@ -15983,10 +15979,6 @@ msgid "Buyers Registered"
 msgstr "నమోదైన కొనుగోలుదారులు"
 
 #: 
-msgid "Buyers This Year"
-msgstr "ఈ సంవత్సరం కొనుగోలుదారులు"
-
-#: 
 msgid "Catalog"
 msgstr "కేటలాగ్"
 
@@ -16135,10 +16127,6 @@ msgid "Items Donated"
 msgstr "దానం చేసిన అంశాలు"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "దానం చేసిన అంశాలు (ఈ సంవత్సరం)"
-
-#: 
 msgid "Items Sold"
 msgstr "విక్రయించిన అంశాలు"
 
@@ -16217,10 +16205,6 @@ msgstr "త్వరిత ముందే నిర్ధారించిన 
 #: 
 msgid "Raised"
 msgstr "సేకరించబడింది"
-
-#: 
-msgid "Raised This Year"
-msgstr "ఈ సంవత్సరం సేకరించబడింది"
 
 #: 
 msgid "Sample Amount"

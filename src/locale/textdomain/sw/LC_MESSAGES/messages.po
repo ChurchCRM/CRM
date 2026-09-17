@@ -9237,10 +9237,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Panua ChurchCRM na MailChimp, nakala rudufu, na zaidi"
 
 #: 
-msgid "FY %s"
-msgstr "MF %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Familia zinashiriki anwani na nambari ya simu."
 
@@ -16002,10 +15998,6 @@ msgid "Buyers Registered"
 msgstr "Wanunuzi Waliojisajili"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Wanunuzi Mwaka Huu"
-
-#: 
 msgid "Catalog"
 msgstr "Katalogi"
 
@@ -16154,10 +16146,6 @@ msgid "Items Donated"
 msgstr "Vipengele Vilivyochangiwa"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Vipengele Vilivyochangiwa (Mwaka Huu)"
-
-#: 
 msgid "Items Sold"
 msgstr "Vipengele Vilivyouzwa"
 
@@ -16236,10 +16224,6 @@ msgstr "Mipangilio ya haraka"
 #: 
 msgid "Raised"
 msgstr "Imekusanywa"
-
-#: 
-msgid "Raised This Year"
-msgstr "Iliyokusanywa Mwaka Huu"
 
 #: 
 msgid "Sample Amount"
