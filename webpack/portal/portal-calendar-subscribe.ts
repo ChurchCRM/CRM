@@ -17,7 +17,7 @@
  * bootbox or a Bootstrap modal, so the portal keeps one dialog style that a
  * church theme restyles with the portal tokens.
  */
-import { getCsrfToken, type PortalApiResult, sendPortalJSON, showPortalToast, t } from "./portal-forms";
+import { getCsrfToken, type PortalApiResult, sendPortalJSON, t } from "./portal-forms";
 
 /** One calendar the member may tick. */
 interface SubscriptionChoice {
@@ -66,6 +66,23 @@ function closeDialog(dialog: HTMLDialogElement): void {
 
 function setError(message: string): void {
   const target = element("portal-calendar-subscribe-error");
+  if (target) {
+    target.textContent = message;
+  }
+  if (message !== "") {
+    setNotice("");
+  }
+}
+
+/**
+ * Say what just happened, inside the dialog.
+ *
+ * Not `showPortalToast`: a `<dialog>` opened with `showModal()` is in the
+ * browser's top layer, so a message appended to the page underneath would be
+ * drawn behind the modal backdrop where nobody sees it.
+ */
+function setNotice(message: string): void {
+  const target = element("portal-calendar-subscribe-notice");
   if (target) {
     target.textContent = message;
   }
@@ -185,7 +202,7 @@ async function copyAddress(): Promise<void> {
   try {
     if (navigator.clipboard?.writeText) {
       await navigator.clipboard.writeText(input.value);
-      showPortalToast("success", t("The calendar address was copied."));
+      setNotice(t("The calendar address was copied."));
       return;
     }
   } catch {
@@ -195,7 +212,7 @@ async function copyAddress(): Promise<void> {
   input.focus();
   input.select();
   input.setSelectionRange(0, input.value.length);
-  showPortalToast("info", t("The address is selected — copy it with your keyboard."));
+  setNotice(t("The address is selected — copy it with your keyboard."));
 }
 
 export function initCalendarSubscription(config: SubscriptionConfig): void {
@@ -212,6 +229,7 @@ export function initCalendarSubscription(config: SubscriptionConfig): void {
   /** Ask the server for the current state and redraw the dialog from it. */
   const load = async (): Promise<void> => {
     setError("");
+    setNotice("");
     const response = await fetch(config.subscriptionUrl, {
       credentials: "same-origin",
       headers: { accept: "application/json" },
@@ -245,7 +263,7 @@ export function initCalendarSubscription(config: SubscriptionConfig): void {
         return;
       }
       render(result.data);
-      showPortalToast("success", t("Your calendar subscription was saved."));
+      setNotice(t("Your calendar subscription was saved."));
     });
   });
 
@@ -279,7 +297,7 @@ export function initCalendarSubscription(config: SubscriptionConfig): void {
         return;
       }
       render(result.data);
-      showPortalToast("success", t("You have a new calendar address. The old one no longer works."));
+      setNotice(t("You have a new calendar address. The old one no longer works."));
     });
   });
 }

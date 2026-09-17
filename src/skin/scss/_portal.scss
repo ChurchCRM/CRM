@@ -820,6 +820,15 @@ textarea.portal-input {
     inline-size: min(36rem, calc(100vw - 2rem));
 }
 
+.portal-calendar-subscribe-notice {
+    // Empty until something happens, so it must not reserve a line of space.
+    &:empty {
+        display: none;
+    }
+
+    color: var(--portal-primary);
+}
+
 .portal-calendar-subscribe-choices {
     display: flex;
     flex-direction: column;
