@@ -273,12 +273,8 @@ function toggleComposeForm(show: boolean): void {
   const signature = window.CRM?.comm?.emailSignature ?? "";
   bodyTextareaEl.value = signature ? `\n\n${signature}` : "";
   bodyTextareaEl.addEventListener("focus", () => bodyTextareaEl?.setSelectionRange(0, 0), { once: true });
-  const bodyHint = document.createElement("div");
-  bodyHint.className = "form-hint";
-  bodyHint.textContent = i18next.t("Start with your own greeting. The closing below is pre-filled and can be edited.");
   bodyGroup.appendChild(bodyLabel);
   bodyGroup.appendChild(bodyTextareaEl);
-  bodyGroup.appendChild(bodyHint);
   composeFormEl.appendChild(bodyGroup);
 
   // Preview + Submit buttons
