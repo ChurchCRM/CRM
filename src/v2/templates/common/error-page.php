@@ -10,6 +10,8 @@
  */
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\VersionUtils;
 
 $code = $code ?? 500;
 $title = $title ?? gettext('Error');
@@ -18,6 +20,24 @@ $returnUrl = $returnUrl ?? (SystemURLs::getRootPath() . '/v2/dashboard');
 $returnText = $returnText ?? gettext('Return to Dashboard');
 // Optional raw HTML block to render after the message (internal use only)
 $extraHtml = $extraHtml ?? '';
+
+// Last-resort fallback if the #reportIssue header link/modal isn't present on
+// this page (e.g. this partial rendered without Header.php) — a prefilled
+// GitHub issue, not SystemURLs::getSupportURL()'s generic docs site, since a
+// crash report belongs on the tracker, not in user documentation. Mirrors the
+// pattern already used by src/errors/template.php.
+try {
+    $sAppVersion = VersionUtils::getInstalledVersion();
+} catch (\Throwable $e) {
+    $sAppVersion = 'Unknown';
+}
+$sIssueBody = "**Error:** $message\n"
+    . '**Page:** ' . ($_SERVER['REQUEST_URI'] ?? 'Unknown') . "\n"
+    . "**ChurchCRM Version:** $sAppVersion\n"
+    . '**PHP Version:** ' . phpversion();
+$sGithubIssueUrl = 'https://github.com/ChurchCRM/CRM/issues/new'
+    . '?title=' . rawurlencode('[Error ' . $code . '] ' . $title)
+    . '&body=' . rawurlencode($sIssueBody);
 
 ?>
 
@@ -98,7 +118,8 @@ $extraHtml = $extraHtml ?? '';
       }
     }
 
-    // Final fallback: open support URL in new tab
-    window.open('<?= SystemURLs::getSupportURL() ?>', '_blank');
+    // Final fallback: neither the header's issue-reporter trigger nor its
+    // modal are present on this page — open a prefilled GitHub issue instead.
+    window.open(<?= InputUtils::jsonEncodeForScript($sGithubIssueUrl) ?>, '_blank');
   });
 </script>
