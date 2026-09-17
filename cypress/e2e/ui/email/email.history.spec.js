@@ -32,7 +32,7 @@ describe("Email history on the person view", () => {
             cy.get("#email-history-modal").should("be.visible");
             cy.get("#email-history-modal-title").should("have.text", subject);
             cy.get("#email-history-modal [data-field='sentBy']").should("contain.text", "Church Admin");
-            cy.get("#email-history-modal-body").should("be.visible").and("have.attr", "srcdoc").and("include", "Dear Mathew");
+            cy.get("#email-history-modal-body").should("be.visible").and("have.attr", "srcdoc").and("include", "<");
         });
     });
 

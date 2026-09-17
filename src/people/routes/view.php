@@ -280,17 +280,21 @@ $app->get('/view/{personID:[0-9]+}/emails', function (Request $request, Response
     $page = max(1, (int) ($request->getQueryParams()['page'] ?? 1));
     $emailHistory = (new EmailLogService())->getForPerson($iPersonID, $page, EmailLogService::DEFAULT_PAGE_SIZE);
 
+    // Home / People / Family / Person / Email History — PageHeader takes [label, url] pairs.
+    $emailBreadcrumbs = [[gettext('People'), '/people/dashboard']];
+    if ($person->getFamId() !== '' && $person->getFamily() !== null) {
+        $emailBreadcrumbs[] = [InputUtils::escapeHTML($person->getFamily()->getName()), '/people/family/' . $person->getFamId()];
+    }
+    $emailBreadcrumbs[] = [InputUtils::escapeHTML($person->getFullName()), '/people/view/' . $iPersonID];
+    $emailBreadcrumbs[] = [gettext('Email History')];
+
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     return $renderer->render($response, 'person-emails.php', [
         'sRootPath'     => SystemURLs::getRootPath(),
         'sPageTitle'    => InputUtils::escapeHTML($person->getFullName()),
         'sPageSubtitle' => gettext('Email History'),
-        'aBreadcrumbs'  => PageHeader::breadcrumbs([
-            ['label' => gettext('People'), 'url' => '/people/dashboard', 'icon' => 'fa-users'],
-            ['label' => $person->getFullName(), 'url' => '/people/view/' . $iPersonID],
-            ['label' => gettext('Email History')],
-        ]),
+        'aBreadcrumbs'  => PageHeader::breadcrumbs($emailBreadcrumbs),
         'sPageHeaderButtons' => PageHeader::buttons([
             ['label' => gettext('Back to Person'), 'url' => '/people/view/' . $iPersonID, 'icon' => 'fa-arrow-left'],
         ]),

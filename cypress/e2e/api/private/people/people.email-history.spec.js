@@ -97,7 +97,7 @@ describe("Every send writes history rows", () => {
             expect(row.sentByUserId).to.eq(1);
             adminGet(`/api/email/log/${row.id}`).then((detail) => {
                 expect(detail.body.body).to.include("First line<br");
-                expect(detail.body.body).to.include("Mathew,");
+                expect(detail.body.body).to.include("Second line");
             });
         });
     });
