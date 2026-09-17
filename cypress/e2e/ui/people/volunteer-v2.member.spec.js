@@ -53,12 +53,9 @@ const EVENT_TITLE = `${PREFIX} Hospitality Service`;
  * `changeme` password, so there is no new seeded user and nothing for the
  * configs to drift on (§6.4).
  *
- * **The username is TRUNCATED, and that is not a typo.** `user_usr.usr_UserName`
- * is `VARCHAR(32)` (`orm/schema.xml:603`), and `seed.sql` seeds person 100 as
- * `lena.black.editself.notes@example.com` — 37 characters. MySQL stores the first
- * 32 and drops the rest, so the name the login form has to be given is
- * `lena.black.editself.notes@exampl`. Logging in with the full address fails with
- * no error beyond a silent return to `/session/begin`.
+ * The username is the full 37-character address. `user_usr.usr_UserName` used
+ * to be `VARCHAR(32)` and silently truncated it (upstream #9831); #9879 widened
+ * the column, so the seed now stores the whole address.
  */
 const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";

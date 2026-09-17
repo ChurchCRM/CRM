@@ -30,11 +30,9 @@
  *   coordinator  — person 3 (`tony.wade`) holding a ministry scope; NOT an admin
  *   volunteer    — person 100, the seeded EditSelf+Notes login #9712 uses
  *
- * The member username is **truncated at 32 characters** and that is not a typo:
- * `user_usr.usr_UserName` is `VARCHAR(32)` and `seed.sql` seeds a 37-character
- * address, so the login form has to be given `lena.black.editself.notes@exampl`.
- * Logging in with the full address silently returns to `/session/begin`
- * (upstream #9831).
+ * The member username is the full address: `user_usr.usr_UserName` used to be
+ * `VARCHAR(32)` and truncated it (upstream #9831), but #9879 widened the column
+ * and the seed now stores all 37 characters.
  *
  * Order inside every hook is **API setup → login → cy.visit()**: `cy.request()`
  * rotates the PHP session cookie (`cypress-testing.md`). Fixtures are removed in
