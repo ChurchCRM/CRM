@@ -189,7 +189,7 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
     }
 
     /**
-     * @return array<string, string|float>
+     * @return array<string, mixed>
      */
     private function getChurch(): array
     {
@@ -203,6 +203,10 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             'email' => ChurchMetaData::getChurchEmail(),
             'website' => ChurchMetaData::getChurchWebSite(),
             'logoUrl' => ChurchMetaData::getChurchLogoURL(),
+            // The church's own social accounts (#9907), already filtered to
+            // the configured ones and ordered X, YouTube, Facebook, Instagram.
+            // Each entry is {id, label, url, icon}; empty when none is set.
+            'socialLinks' => ChurchMetaData::getChurchSocialLinks(),
         ];
     }
 

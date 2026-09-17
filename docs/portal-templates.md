@@ -40,7 +40,7 @@ Every page extends `layout.html.twig`, which a theme may also override.
 | `hero` | A full-width band under the navigation | empty |
 | `content` | **The page itself.** Every page template fills this. | empty |
 | `sidebar` | An optional column beside the content | empty |
-| `footer` | The church contact line and the ChurchCRM credit | `partials/footer.html.twig` |
+| `footer` | The church contact line and the church's social links | `partials/footer.html.twig` |
 | `scripts_extra` | Extra `<script>` for this page — with `nonce="{{ nonce() }}"` | empty |
 
 ### Partials
@@ -51,7 +51,7 @@ Each is a separate file, so a theme can replace one without touching the others:
 |---|---|
 | `partials/header.html.twig` | Church logo and name, the member's name, Sign out |
 | `partials/nav.html.twig` | The `nav` entries, and the toggle target `#portal-nav` |
-| `partials/footer.html.twig` | Church contact details, ChurchCRM credit |
+| `partials/footer.html.twig` | Church contact details on the leading edge, `church.socialLinks` as icon links on the trailing edge |
 | `partials/flash.html.twig` | The fixed notice container, holding this request's `flash` messages. **A theme that overrides `layout.html.twig` must keep this include** — without it there is no container, and every message the portal raises goes unseen. |
 
 ### What the layout already loads
@@ -143,6 +143,7 @@ The church's identity, from **Admin → Church Information**.
 | `phone`, `email` | string | |
 | `website` | string | |
 | `logoUrl` | string | The uploaded church logo, or ChurchCRM's stock image when none is set |
+| `socialLinks` | list | The church's social accounts (#9907), already filtered to the ones that are set and ordered X, YouTube, Facebook, Instagram. Each entry is `{id, label, url, icon}` — `icon` is a Font Awesome Free brand class such as `fa-brands fa-facebook`. Empty when the church has configured none, so `{% if church.socialLinks is not empty %}` is the whole guard you need. |
 
 ### `member`
 
