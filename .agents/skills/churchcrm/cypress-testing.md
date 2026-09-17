@@ -61,6 +61,23 @@ Run the full `npm run build` once (not just `build:webpack` — `grunt copy` in
 in a new worktree. The Docker test stack bind-mounts the worktree, so no container
 rebuild is needed afterwards.
 
+## One Database Per CI Job: Never Assert Exact Lists or Counts of Live Data <!-- learned: 2026-09-17 -->
+
+Each CI job (`api`, `admin-ui`, each `ui` shard) seeds the database **once** and runs all
+of its specs against it in alphabetical order. Anything an earlier spec creates and does
+not delete is visible to later specs. Known leftovers in `admin-ui`:
+
+- `admin.people.spec.js` adds classifications (`CypressTestClass_<ts>`, `CypressRenamed_<ts>`)
+  to `list_lst` and leaves them.
+- `admin.csvimport.spec.js` imports unclassified people (`... ImportTest`) with July 4 birthdays.
+
+So a spec that renders a list from `list_lst`, or counts people, passes locally against a
+fresh seed and fails in CI. Assert the seeded rows and their relative order (`expectInOrder`
+style helper), use `have.length.at.least`, and check the generated SQL or specific seeded
+names instead of totals. If you need to prove "options come from the database", create a
+row in the test, check it appears, and delete it in the same test. Example:
+`cypress/e2e/ui-admin/admin.query-classification.spec.js`.
+
 ## Session-Based Login Pattern (REQUIRED)
 
 ### Modern Pattern (Cypress 13+)
