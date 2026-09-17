@@ -59,6 +59,33 @@ describe("Member Portal — Profile", () => {
         cy.get("#portal-profile-details [data-field=cellPhone]").should("not.be.empty");
     });
 
+    it("The avatar is a real image once a photo is uploaded, on both profile pages", () => {
+        // A member session may not read /api/person/{id}/photo — AuthMiddleware
+        // confines it to /portal and /api/portal — so an avatar pointed there
+        // decodes to nothing and shows as a broken image. naturalWidth is what
+        // tells a loaded photo from a broken one.
+        //
+        // Lena has no tracked fixture under cypress/data/images/people, so
+        // uploading hers here overwrites nothing (issue #9777); the file read
+        // from is somebody else's fixture and is only ever read.
+        login();
+        cy.visit("/portal/profile/edit");
+        cy.get("#portal-photo-input").selectFile("cypress/data/images/people/102.png", { force: true });
+
+        cy.get(".portal-flash-success", { timeout: 10000 })
+            .should("be.visible")
+            .and("contain", "Your photo has been saved");
+
+        // The preview is re-pointed at the URL the upload response returned.
+        cy.get("img#portal-photo-preview").should("have.attr", "src").and("match", /\/api\/portal\/me\/photo/);
+        cy.get("img#portal-photo-preview").should("have.prop", "naturalWidth").and("be.greaterThan", 0);
+
+        // And the same photo loads on the profile page itself, reloaded fresh.
+        cy.visit("/portal/profile");
+        cy.get("img#portal-profile-photo").should("have.attr", "src").and("match", /\/api\/portal\/me\/photo/);
+        cy.get("img#portal-profile-photo").should("have.prop", "naturalWidth").and("be.greaterThan", 0);
+    });
+
     it("Editing the mobile phone and email saves, toasts, and survives a reload", () => {
         const stamp = Date.now();
         const newPhone = `(206) 555-${String(stamp).slice(-4)}`;

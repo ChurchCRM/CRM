@@ -16,6 +16,9 @@
  *   - an API-key caller is refused
  *   - every write leaves a timeline note
  *   - `<script>` in a field is stripped before it is stored
+ *   - photos are served by the portal itself, because a member session may
+ *     not read `/api/person/{id}/photo`, and a photo outside the member's
+ *     own family is 404, never 403
  *
  * Personas: Lena Black (user 100, person 100, family 20, role 2 = Spouse, an
  * adult of her family) and limited.user (user 4, person 4, family 1, role 4 =
@@ -259,6 +262,112 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
                 expect(notes.length, "the verify dashboard lists the portal confirmation").to.be.greaterThan(0);
                 expect(notes.some((note) => note.FamId === LENA_FAMILY_ID)).to.eq(true);
             });
+        });
+    });
+
+    describe("Photos — GET /api/portal/me/photo and /api/portal/family/members/{id}/photo", () => {
+        // A member session is confined to /portal and /api/portal by
+        // AuthMiddleware::isLimitedAccessAllowedPath(), so /api/person/{id}/photo
+        // — where the portal used to point every <img src> — answers it with 403
+        // and the avatar renders broken. The portal serves its own photo bytes
+        // instead; these tests are the contract for that.
+        //
+        // Seeded photo files live in cypress/data/images/people, which the test
+        // stack bind-mounts as Images/Person. Lena (person 100) deliberately has
+        // no tracked fixture: the tests below upload her one through the portal,
+        // the same way the member does, so nothing here overwrites a tracked file
+        // (issue #9777). Samantha (person 102, the same family) does have one and
+        // is only ever read.
+        const PNG_1PX =
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
+
+        const FAMILY_MEMBER_WITH_PHOTO = 102; // Samantha Black, family 20
+        const FAMILY_MEMBER_WITHOUT_PHOTO = 103; // Serenity Black, family 20
+        const OUTSIDE_PERSON_WITH_PHOTO = 44; // Rhonda Diaz, family 9
+        const MISSING_PERSON = 987654;
+
+        /** GET an image URL on the current session, without failing on 404. */
+        const getPhoto = (url) => cy.request({ url, encoding: "binary", failOnStatusCode: false });
+
+        const expectImage = (response) => {
+            expect(response.status).to.eq(200);
+            expect(response.headers["content-type"]).to.match(/^image\//);
+            expect(response.body.length, "the response carries image bytes").to.be.greaterThan(0);
+        };
+
+        /** Give the acting member a photo through the portal's own upload route. */
+        const uploadOwnPhoto = () => {
+            withCsrfToken((token) => {
+                portalPost("/api/portal/me/photo", { imgBase64: PNG_1PX }, token, 200);
+            });
+        };
+
+        it("refuses an API-key caller, like every other portal route", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/portal/me/photo", null, 403);
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/portal/family/members/${FAMILY_MEMBER_WITH_PHOTO}/photo`,
+                null,
+                403,
+            );
+        });
+
+        it("serves the member their own photo, right after they upload it", () => {
+            portalLogin(adultUser);
+            uploadOwnPhoto();
+            getPhoto("/api/portal/me/photo").then(expectImage);
+        });
+
+        it("hands out a photo URL the member's own session can actually fetch", () => {
+            // The regression this block exists for: the profile used to carry
+            // /api/person/{id}/photo, which the member's own session may not read.
+            portalLogin(adultUser);
+            uploadOwnPhoto();
+            cy.request("/api/portal/me").then((profile) => {
+                const photoUrl = profile.body.profile.photoUrl;
+                expect(photoUrl, "the profile carries a photo URL").to.match(/\/api\/portal\/me\/photo/);
+                getPhoto(photoUrl).then(expectImage);
+            });
+        });
+
+        it("404s for a member who has never uploaded a photo", () => {
+            portalLogin(nonAdultUser); // person 4 has no photo file
+            getPhoto("/api/portal/me/photo").its("status").should("eq", 404);
+        });
+
+        it("serves the photo of somebody in the member's own family", () => {
+            portalLogin(adultUser);
+            getPhoto(`/api/portal/family/members/${FAMILY_MEMBER_WITH_PHOTO}/photo`).then(expectImage);
+        });
+
+        it("hands out family photo URLs the member's own session can fetch", () => {
+            portalLogin(adultUser);
+            cy.request("/api/portal/family").then((family) => {
+                const withPhotos = family.body.members.filter((member) => member.photoUrl);
+                expect(withPhotos.length, "at least one seeded family member has a photo").to.be.greaterThan(0);
+                for (const member of withPhotos) {
+                    expect(member.photoUrl).to.match(/\/api\/portal\/(me|family\/members\/\d+)\/photo/);
+                    getPhoto(member.photoUrl).then(expectImage);
+                }
+            });
+        });
+
+        it("404s for a member of the family who has no photo", () => {
+            portalLogin(adultUser);
+            getPhoto(`/api/portal/family/members/${FAMILY_MEMBER_WITHOUT_PHOTO}/photo`).its("status").should("eq", 404);
+        });
+
+        it("404s — not 403 — for a person outside the member's family", () => {
+            // 404 rather than 403 on purpose: a 403 would confirm that the id
+            // names a real person who has a photo, which is exactly what a
+            // member outside that family must not learn.
+            portalLogin(adultUser);
+            getPhoto(`/api/portal/family/members/${OUTSIDE_PERSON_WITH_PHOTO}/photo`).its("status").should("eq", 404);
+        });
+
+        it("404s for a person id that does not exist, the same way", () => {
+            portalLogin(adultUser);
+            getPhoto(`/api/portal/family/members/${MISSING_PERSON}/photo`).its("status").should("eq", 404);
         });
     });
 
