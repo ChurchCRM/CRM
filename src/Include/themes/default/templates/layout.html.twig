@@ -62,13 +62,18 @@
    portal shell, when portal.impersonating is true. #}
 
 <div class="portal-shell">
+    {# The toast container. It is `position: fixed`, so it is outside the flow
+       wherever it sits; it lives here, ahead of the page, because a live region
+       belongs early in the document. A theme that replaces this layout must
+       keep the include — see partials/flash.html.twig. #}
+    {% include 'partials/flash.html.twig' %}
+
     {% block header %}{% include 'partials/header.html.twig' %}{% endblock %}
     {% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
     {% block hero %}{% endblock %}
 
     <main class="portal-main" id="portal-main">
         <div class="portal-container">
-            {% include 'partials/flash.html.twig' %}
             <div class="portal-layout">
                 <div class="portal-content">{% block content %}{% endblock %}</div>
                 {% block sidebar %}{% endblock %}
