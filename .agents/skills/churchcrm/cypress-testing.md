@@ -1557,6 +1557,38 @@ on('task', {
 });
 ```
 
+## Cross-Spec Seed Mutation — Don't Hard-Code a Record Another Spec Edits <!-- learned: 2026-09-17 -->
+
+**GOTCHA:** the seed is loaded once per stack, not per spec. A spec that edits a
+seeded record and does not put it back changes what every *later* spec reads —
+and the order is alphabetical by filename, so "it passed in isolation" proves
+nothing.
+
+Real case: `member.portal-profile.spec.js` saves a new email and mobile number on
+person 100 (Lena Black) and leaves them. `member.portal-landing.spec.js` sorts
+after it and asserted the *seeded* values, so it passed alone and failed in a
+full run.
+
+```js
+// ❌ WRONG — the seeded values, which a sibling spec has already overwritten
+cy.get("[data-field=email]").should("contain.text", "lena.walker@example.com");
+
+// ✅ CORRECT — assert against the record the page renders
+cy.request("/api/portal/me").then(({ body }) => {
+    const me = body.profile;                       // note the envelope key
+    expect(me.email, "the seed gives Lena an email").to.contain("@");
+    cy.get("[data-field=email]").should("contain.text", me.email);
+});
+```
+
+**Rules:**
+- Hard-code a seeded value only for a field no spec writes (ids, family roles,
+  list-option names). Anything a self-service or admin edit test touches is a
+  moving target.
+- Better still: have the editing spec restore what it changed in `after()`.
+- When comparing to an API, check the response envelope —
+  `GET /api/portal/me` answers `{profile: {...}}`, not the profile itself.
+
 ## Related Knowledge
 - **Session Management**: Cypress documentation on `cy.session()`
 - **Test Organization**: BDD/Cucumber patterns

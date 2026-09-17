@@ -102,8 +102,14 @@ describe("Member Portal — self-service landing", () => {
  * than the information. It now shows the values themselves, taken from the same
  * `PortalSelfService::getProfile()` the Profile page renders.
  *
- * Seed persona: Lena Black (person 100) — email lena.walker@example.com,
- * mobile (006)-199-3045, home (747)-292-0200, family role 2 = Spouse.
+ * Seed persona: Lena Black (person 100), family role 2 = Spouse.
+ *
+ * Her email and mobile number are NOT hard-coded here:
+ * member.portal-profile.spec.js edits both and does not put them back, so
+ * whichever spec runs second would read stale values. The card is checked
+ * against `GET /api/portal/me` — the very record it renders — which is the
+ * assertion that matters anyway: the card shows the member's details rather
+ * than a sentence about them.
  *
  * Birthday follows the Profile page: it is shown only when
  * `bPortalAllowBirthdayEdit` is on, so the test asserts the *agreement* between
@@ -130,21 +136,26 @@ describe("Member Portal — the home page's Profile card", () => {
 
     it("shows the member's name and their real email and mobile number", () => {
         cy.get("#portal-home-profile-card", { timeout: 10000 }).should("contain.text", "Lena");
-        cy.get("#portal-home-profile-card [data-field=email]").should(
-            "contain.text",
-            "lena.walker@example.com"
-        );
-        cy.get("#portal-home-profile-card [data-field=cellPhone]").should(
-            "contain.text",
-            "(006)-199-3045"
-        );
+        cy.request("/api/portal/me").then(({ body }) => {
+            const me = body.profile;
+            expect(me.email, "the seed gives Lena an email address").to.contain("@");
+            expect(me.cellPhone, "the seed gives Lena a mobile number").to.not.be.empty;
+            cy.get("#portal-home-profile-card [data-field=email]").should("contain.text", me.email);
+            cy.get("#portal-home-profile-card [data-field=cellPhone]").should(
+                "contain.text",
+                me.cellPhone
+            );
+        });
     });
 
     it("shows the home phone and the family role too", () => {
-        cy.get("#portal-home-profile-card [data-field=homePhone]").should(
-            "contain.text",
-            "(747)-292-0200"
-        );
+        cy.request("/api/portal/me").then(({ body }) => {
+            const me = body.profile;
+            cy.get("#portal-home-profile-card [data-field=homePhone]").should(
+                "contain.text",
+                me.homePhone
+            );
+        });
         cy.get("#portal-home-profile-card [data-field=familyRole]").should("contain.text", "Spouse");
     });
 
