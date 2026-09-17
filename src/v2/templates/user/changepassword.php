@@ -1,8 +1,10 @@
 <?php
 
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext('Change Password') . ': ' . $user->getFullName();
 if ($isForced) {
@@ -19,7 +21,7 @@ if ($isForced) {
         <!-- Card header: logo -->
         <div class="login-card-header">
             <div class="login-header-logo">
-                <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" />
+                <img src="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchLogoPath()) ?>" alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>" />
             </div>
         </div>
 

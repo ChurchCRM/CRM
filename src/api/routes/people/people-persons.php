@@ -511,7 +511,13 @@ function buildFormattedPersonList(Collection $people): array
  *                 description="All unique member email addresses (does not include sToEmailAddress)"),
  *             @OA\Property(property="byRole", type="object",
  *                 description="Emails grouped by classification role name",
- *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))
+ *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string"))),
+ *             @OA\Property(property="recipients", type="array", description="The same people with ids, for POST /api/email/send",
+ *                 @OA\Items(type="object",
+ *                     @OA\Property(property="personId", type="integer"),
+ *                     @OA\Property(property="familyId", type="integer", nullable=true),
+ *                     @OA\Property(property="name", type="string"),
+ *                     @OA\Property(property="email", type="string")))
  *         )
  *     ),
  *     @OA\Response(response=401, description="Unauthorized"),

@@ -24,6 +24,9 @@ const excludes = [
   /^propel\/propel\.php$/,
   /^integrityCheck\.json$/,
   /^Images\/Person\/thumbnails\//,
+  // Uploaded church logo — runtime data, must never be signed or reported as an orphan.
+  // Keep in sync with AppIntegrityService::isExcludedFromOrphanDetection().
+  /^Images\/church-logo\.png$/,
   /^vendor\/.*\/example\//,
   /^vendor\/.*\/tests\//,
   /^vendor\/.*\/docs\//,

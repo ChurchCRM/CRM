@@ -449,7 +449,13 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *                 description="All unique member email addresses (does not include sToEmailAddress)"),
      *             @OA\Property(property="byRole", type="object",
      *                 description="Emails grouped by group role name",
-     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))
+     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string"))),
+     *             @OA\Property(property="recipients", type="array", description="The same people with ids, for POST /api/email/send",
+     *                 @OA\Items(type="object",
+     *                     @OA\Property(property="personId", type="integer"),
+     *                     @OA\Property(property="familyId", type="integer", nullable=true),
+     *                     @OA\Property(property="name", type="string"),
+     *                     @OA\Property(property="email", type="string")))
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
@@ -475,7 +481,23 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Email contact info segmented by role (teachers/parents/kids)"),
+     *     @OA\Response(response=200, description="Email contact info segmented by role (teachers/parents/kids)",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="emails", type="array", @OA\Items(type="string"), description="All unique addresses"),
+     *             @OA\Property(property="byRole", type="object", description="Emails grouped by Teachers / Parents / Kids",
+     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string"))),
+     *             @OA\Property(property="recipients", type="array", description="The same people with ids, for POST /api/email/send",
+     *                 @OA\Items(type="object",
+     *                     @OA\Property(property="personId", type="integer"),
+     *                     @OA\Property(property="familyId", type="integer", nullable=true),
+     *                     @OA\Property(property="name", type="string"),
+     *                     @OA\Property(property="email", type="string"))),
+     *             @OA\Property(property="all", type="string", description="Legacy CSV of all addresses"),
+     *             @OA\Property(property="teachers", type="string", description="Legacy CSV"),
+     *             @OA\Property(property="parents", type="string", description="Legacy CSV"),
+     *             @OA\Property(property="kids", type="string", description="Legacy CSV")
+     *         )
+     *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Email permission required"),
      *     @OA\Response(response=404, description="Group not found")
@@ -493,17 +515,27 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $teacherEmails = [];
             $parentEmails = [];
             $kidEmails = [];
-            $teacherEmailsSeen = [];
-            $kidEmailsSeen     = [];
-            $parentEmailsSeen  = [];
+            $recipients = [];
+            $emailsSeen = [];
+
+            // One entry per unique address, with the person id so the composer can send by id.
+            $addRecipient = static function (int $personId, string $name, string $email) use (&$recipients, &$emailsSeen): bool {
+                $key = strtolower($email);
+                if ($email === '' || isset($emailsSeen[$key])) {
+                    return false;
+                }
+                $emailsSeen[$key] = true;
+                $recipients[] = ['personId' => $personId, 'familyId' => null, 'name' => $name, 'email' => $email];
+
+                return true;
+            };
 
             foreach ($rsTeachers as $teacher) {
                 if (isset($doNotEmailSet[(int) $teacher->getId()])) {
                     continue;
                 }
-                $email = (string) $teacher->getEmail();
-                if (!empty($email) && !isset($teacherEmailsSeen[$email])) {
-                    $teacherEmailsSeen[$email] = true;
+                $email = trim((string) $teacher->getEmail());
+                if ($addRecipient((int) $teacher->getId(), $teacher->getFullName(), $email)) {
                     $teacherEmails[] = $email;
                 }
             }
@@ -511,21 +543,21 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             foreach ($thisClassChildren as $child) {
                 $kidId = (int) ($child['kidId'] ?? 0);
                 if ($kidId > 0 && !isset($doNotEmailSet[$kidId])) {
-                    $kidEmail = (string) ($child['kidEmail'] ?? '');
-                    if (!empty($kidEmail) && !isset($kidEmailsSeen[$kidEmail])) {
-                        $kidEmailsSeen[$kidEmail] = true;
+                    $kidEmail = trim((string) ($child['kidEmail'] ?? ''));
+                    $kidName = trim(($child['firstName'] ?? '') . ' ' . ($child['LastName'] ?? ''));
+                    if ($addRecipient($kidId, $kidName, $kidEmail)) {
                         $kidEmails[] = $kidEmail;
                     }
                 }
 
-                foreach (['dadId' => 'dadEmail', 'momId' => 'momEmail'] as $idField => $emailField) {
-                    $parentId = (int) ($child[$idField] ?? 0);
-                    if ($parentId > 0 && isset($doNotEmailSet[$parentId])) {
+                foreach (['dad', 'mom'] as $parent) {
+                    $parentId = (int) ($child[$parent . 'Id'] ?? 0);
+                    if ($parentId <= 0 || isset($doNotEmailSet[$parentId])) {
                         continue;
                     }
-                    $email = (string) ($child[$emailField] ?? '');
-                    if (!empty($email) && !isset($parentEmailsSeen[$email])) {
-                        $parentEmailsSeen[$email] = true;
+                    $email = trim((string) ($child[$parent . 'Email'] ?? ''));
+                    $parentName = trim(($child[$parent . 'FirstName'] ?? '') . ' ' . ($child[$parent . 'LastName'] ?? ''));
+                    if ($addRecipient($parentId, $parentName, $email)) {
                         $parentEmails[] = $email;
                     }
                 }
@@ -548,8 +580,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
 
             return SlimUtils::renderJSON($response, [
                 // New canonical shape consumed by the email-composer modal
-                'emails' => $allEmails,
-                'byRole' => $byRole,
+                'emails'     => $allEmails,
+                'byRole'     => $byRole,
+                'recipients' => $recipients,
                 // Legacy CSV fields retained for backward compatibility
                 'all'      => implode(',', $allEmails),
                 'teachers' => implode(',', $teacherEmails),

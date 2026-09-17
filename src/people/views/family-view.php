@@ -15,6 +15,9 @@ $sPageTitle = InputUtils::escapeHTML($family->getName());
 $sPageSubtitle = gettext('Family Profile') . ' — ID: ' . $family->getId();
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
+// Server-side "Send email" needs the Email permission and a working, enabled SMTP setup.
+$canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && SystemConfig::isEmailEnabled();
+
 $familyAddress = $family->getAddress();
 
 $memberCount = count($family->getPeople());
@@ -197,7 +200,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
         <?php }
 
         // Helper: standard member table (Key People / Other)
-        function renderMemberTable(array $members, string $label, string $icon, string $color): void {
+        function renderMemberTable(array $members, string $label, string $icon, string $color, bool $canSendEmail = false): void {
             if (empty($members)) { return; } ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
@@ -234,6 +237,17 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                         <?php $tmpEmail = $person->getEmail();
                                         if (!empty($tmpEmail)) { ?>
                                             <a href="mailto:<?= InputUtils::escapeAttribute($tmpEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($tmpEmail) ?></a>
+                                            <?php if ($canSendEmail) { ?>
+                                            <button class="btn btn-sm btn-ghost-primary ms-1" type="button"
+                                                    data-email-composer
+                                                    data-email-person-id="<?= (int) $person->getId() ?>"
+                                                    data-email-address="<?= InputUtils::escapeAttribute($tmpEmail) ?>"
+                                                    data-email-name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>"
+                                                    data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $person->getFullName())) ?>"
+                                                    title="<?= gettext('Send email from ChurchCRM') ?>">
+                                                <i class="fa-solid fa-paper-plane"></i>
+                                            </button>
+                                            <?php } ?>
                                         <?php } ?>
                                     </td>
                                     <td><?php renderMemberActions($person); ?></td>
@@ -246,7 +260,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
         <?php }
 
         // Helper: children table (no Role column, adds Sunday School column if enabled)
-        function renderChildrenTable(array $members, string $label, string $icon, string $color): void {
+        function renderChildrenTable(array $members, string $label, string $icon, string $color, bool $canSendEmail = false): void {
             if (empty($members)) { return; }
 
             $ssEnabled = SystemConfig::getBooleanValue('bEnabledSundaySchool');
@@ -319,6 +333,17 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                         <?php $tmpEmail = $person->getEmail();
                                         if (!empty($tmpEmail)) { ?>
                                             <a href="mailto:<?= InputUtils::escapeAttribute($tmpEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($tmpEmail) ?></a>
+                                            <?php if ($canSendEmail) { ?>
+                                            <button class="btn btn-sm btn-ghost-primary ms-1" type="button"
+                                                    data-email-composer
+                                                    data-email-person-id="<?= (int) $person->getId() ?>"
+                                                    data-email-address="<?= InputUtils::escapeAttribute($tmpEmail) ?>"
+                                                    data-email-name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>"
+                                                    data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $person->getFullName())) ?>"
+                                                    title="<?= gettext('Send email from ChurchCRM') ?>">
+                                                <i class="fa-solid fa-paper-plane"></i>
+                                            </button>
+                                            <?php } ?>
                                         <?php } ?>
                                     </td>
                                     <td><?php renderMemberActions($person); ?></td>
@@ -354,9 +379,9 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                 <?php } ?>
             </div>
             <div class="card-body">
-                <?php renderMemberTable($keyPeople, gettext("Key People"), 'fa-crown', 'warning'); ?>
-                <?php renderChildrenTable($childPeople, gettext("Children"), 'fa-children', 'info'); ?>
-                <?php renderMemberTable($otherPeople, gettext("Other Members"), 'fa-user-group', 'secondary'); ?>
+                <?php renderMemberTable($keyPeople, gettext("Key People"), 'fa-crown', 'warning', $canSendEmail); ?>
+                <?php renderChildrenTable($childPeople, gettext("Children"), 'fa-children', 'info', $canSendEmail); ?>
+                <?php renderMemberTable($otherPeople, gettext("Other Members"), 'fa-user-group', 'secondary', $canSendEmail); ?>
             </div>
         </div>
 
@@ -522,6 +547,17 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                 <ul class="list-unstyled mb-0">
                     <li class="mb-1">
                         <i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
+                        <?php if ($canSendEmail) : ?>
+                        <button class="btn btn-sm btn-ghost-primary ms-1" type="button"
+                                data-email-composer
+                                data-email-family-id="<?= (int) $family->getId() ?>"
+                                data-email-address="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
+                                data-email-name="<?= InputUtils::escapeAttribute(sprintf(gettext('%s Family'), $family->getName())) ?>"
+                                data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s Family'), $family->getName())) ?>"
+                                title="<?= gettext('Send email from ChurchCRM') ?>">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                        <?php endif; ?>
                         <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
                                 data-email="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
                                 title="<?= gettext('Copy to clipboard') ?>">
@@ -726,6 +762,9 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-family-view.min.js') ?>"></script>
+<?php if ($canSendEmail) : ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
 
 <!-- Photo uploader bundle - loaded only on this page -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">

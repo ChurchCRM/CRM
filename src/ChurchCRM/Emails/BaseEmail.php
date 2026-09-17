@@ -3,8 +3,10 @@
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\SystemService;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
@@ -14,6 +16,12 @@ abstract class BaseEmail
 {
     protected PHPMailer $mail;
     protected Environment $twig;
+
+    /** Record the message is addressed to, when the sender knows it (see setLogContext). */
+    protected ?int $logPersonId = null;
+    protected ?int $logFamilyId = null;
+    /** User who wrote the message (composer); NULL for automated sends. */
+    protected ?int $logSentByUserId = null;
 
     /**
      * @param string[] $toAddresses
@@ -49,13 +57,73 @@ abstract class BaseEmail
         $this->mail->SMTPDebug = 0;
     }
 
+    /**
+     * Sends the message and writes one email-history row per recipient
+     * (email_log_eml), whatever the outcome. Returns false, without trying,
+     * when email is disabled or SMTP is misconfigured so callers never crash.
+     */
     public function send(): bool
     {
-        if (SystemConfig::isEmailEnabled()) {
-            return $this->mail->send();
+        if (!SystemConfig::isEmailEnabled()) {
+            $this->logSend(EmailLogService::STATUS_SKIPPED);
+
+            return false;
         }
 
-        return false; // email disabled or SMTP misconfigured — skip so we don't crash.
+        $sent = false;
+        try {
+            $sent = $this->mail->send();
+        } finally {
+            $this->logSend($sent ? EmailLogService::STATUS_SENT : EmailLogService::STATUS_FAILED);
+        }
+
+        return $sent;
+    }
+
+    /**
+     * Tells the history log which record this message is for and who sent it.
+     * Without it the log falls back to matching the address against people and families.
+     */
+    public function setLogContext(?int $personId = null, ?int $familyId = null, ?int $sentByUserId = null): static
+    {
+        $this->logPersonId = $personId;
+        $this->logFamilyId = $familyId;
+        $this->logSentByUserId = $sentByUserId;
+
+        return $this;
+    }
+
+    /**
+     * Short kind stored in the history log (eml_Kind), e.g. composer, birthday,
+     * account.reset. Defaults to the class name without the Email suffix.
+     */
+    protected function getLogKind(): string
+    {
+        $short = (new \ReflectionClass($this))->getShortName();
+
+        return strtolower((string) preg_replace('/Email$/', '', $short));
+    }
+
+    /**
+     * Whether the rendered body may be kept in the history log. Off by default: account
+     * emails carry passwords and one-time tokens. Only the composer turns it on.
+     */
+    protected function logsBody(): bool
+    {
+        return false;
+    }
+
+    private function logSend(string $status): void
+    {
+        (new EmailLogService())->logSend(
+            $this->mail,
+            $status,
+            $this->getLogKind(),
+            $this->logsBody(),
+            $this->logPersonId,
+            $this->logFamilyId,
+            $this->logSentByUserId,
+        );
     }
 
     public function getError(): string
@@ -91,6 +159,11 @@ abstract class BaseEmail
             'churchEmail'          => ChurchMetaData::getChurchEmail(),
             'churchCRMURL'         => SystemURLs::getURL(),
             'churchLogo'           => ChurchMetaData::getChurchLogoURL(),
+            // Footer: the same lines as the Display Preview on Admin -> Church Information.
+            'churchStreet'         => ChurchMetaData::getChurchAddress(),
+            'churchCityLine'       => self::getChurchCityLine(),
+            'churchCountry'        => self::getChurchCountryName(),
+            'churchWebSite'        => ChurchMetaData::getChurchWebSite(),
             'dear'                 => SystemConfig::getValue('sDear'),
             'confirmSincerely'     => SystemConfig::getValue('sConfirmSincerely'),
             'confirmSigner'        => SystemConfig::getValue('sConfirmSigner'),
@@ -110,6 +183,26 @@ abstract class BaseEmail
         }
 
         return $commonTokens;
+    }
+
+    /** "City, State Zip" as the Church Information preview shows it; empty when unset. */
+    private static function getChurchCityLine(): string
+    {
+        $cityState = implode(', ', array_filter([ChurchMetaData::getChurchCity(), ChurchMetaData::getChurchState()]));
+        $zip = ChurchMetaData::getChurchZip();
+
+        return trim($cityState . ($zip !== '' ? ' ' . $zip : ''));
+    }
+
+    /** Country display name for the configured code, or the raw value when unknown. */
+    private static function getChurchCountryName(): string
+    {
+        $code = ChurchMetaData::getChurchCountry();
+        if ($code === '') {
+            return '';
+        }
+
+        return Countries::getNames()[$code] ?? $code;
     }
 
     /**

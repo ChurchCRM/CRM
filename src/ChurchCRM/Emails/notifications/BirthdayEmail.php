@@ -17,6 +17,7 @@ class BirthdayEmail extends BaseEmail
     {
         $this->person = $person;
         parent::__construct($toAddresses);
+        $this->setLogContext((int) $person->getId());
         $this->mail->Subject = SystemConfig::getValue('sChurchName') . ': ' . $this->getSubSubject();
         $this->mail->isHTML(true);
         $this->mail->msgHTML($this->buildMessage());
@@ -25,6 +26,11 @@ class BirthdayEmail extends BaseEmail
     protected function getSubSubject(): string
     {
         return gettext('Happy Birthday') . ', ' . $this->person->getFullName() . '!';
+    }
+
+    protected function getLogKind(): string
+    {
+        return 'birthday';
     }
 
     public function getTokens(): array
