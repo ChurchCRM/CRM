@@ -475,12 +475,27 @@ teaser. Themes typically override this page first.
   written exactly as `/external/verify` writes it, `Person::SELF_VERIFY` and all, because the
   People → Verify dashboard selects on `EnteredBy = SELF_VERIFY`; the confirming member's own id
   is deliberately not used. The emailed verify-token link keeps working for people without logins.
-- Password and two-factor: the existing `/v2/user/current/*` pages (already allowed for this
-  persona), given a portal-aware layout. Delivered in MP4 (#9865) rather than MP3: MP3 is the
-  admin page and never touches these routes. The routes branch on
-  `User::isEditSelfExclusive()` and render portal templates for that session only — same URLs,
-  same field names, same POST handler, same CSRF form id and the same
-  `PasswordChange.js` / `two-factor-enrollment` bundles, so each flow has one implementation.
+- Password and two-factor: **the portal's own pages**, `GET/POST /portal/profile/password` and
+  `GET /portal/profile/two-factor`, rendered in the portal layout for *every* role — member,
+  staff, administrator, and during a masquerade. This is a product-owner decision (2026-09-17):
+  leaving the portal is the "Admin Console" control's job and nothing else's, so an administrator
+  who changes their password from the portal must not be dropped back into the admin shell.
+  Delivered in MP4 (#9865) rather than MP3: MP3 is the admin page and never touches these routes.
+  The pages act on the signed-in *account*, not on a person record, so an account with no person
+  linked can still change its password. `PortalAccountPages` is the single place a portal account
+  page becomes a response; the change itself is `User::userChangePassword()`, the field names, the
+  form id, the CSRF form id and the `PasswordChange.js` / `two-factor-enrollment` bundles are
+  unchanged, so each flow still has one implementation.
+
+  The older `/v2/user/current/changepassword` and `/v2/user/current/manage2fa` keep their
+  behaviour unchanged and render through the same `PortalAccountPages`: they are what
+  `LocalAuthentication` returns as `nextStepURL` for a forced first-login password change or a
+  required 2FA enrollment, and what `AuthMiddleware::isLimitedAccessAllowedPath()` exempts by
+  name. They deliberately do **not** redirect to the portal URLs: the forced flows break out of
+  their own redirect loop by matching `/v2/user/current/changepassword` against `REQUEST_URI`, so
+  a redirect would bounce the browser between the two paths forever. The password template's form
+  target is a variable (`formAction`) so each route posts back to itself; it is never taken from
+  the request, so there is no redirect for an attacker to steer.
 
 ### 5.3 Calendar (`/portal/calendar`)
 
