@@ -84,6 +84,8 @@ toast in the fixed top-right stack that fades away on its own.
 | `.portal-card` | The standard content card |
 | `.portal-page-title` | The `<h1>` at the top of a page's content |
 | `.portal-detail-list` | A `<dl>` of label/value pairs — one column on a phone, two from the tablet breakpoint up |
+| `.portal-card-details` | The same `<dl>` inside a card: one column at every width, because a card is a column and a long email address has nowhere to wrap |
+| `.portal-contact-list` / `.portal-contact-item` | The church office's contact lines on `family/none.html.twig` — an icon and a `mailto:` or `tel:` link |
 | `.portal-form` / `.portal-field` / `.portal-input` | A self-service form, one of its fields, and the control inside it |
 | `.portal-field-error` | The inline message for a field; it is hidden while empty |
 | `.portal-button` / `.portal-button-quiet` | The primary and secondary action buttons |
@@ -216,7 +218,7 @@ will stop working on your pages.
 
 | Template | Rendered for | Its own variables |
 |---|---|---|
-| `home.html.twig` | `GET /portal` | `pageTitle`, `upcomingEvents`, `hasVisibleCalendars`, `familySummary` |
+| `home.html.twig` | `GET /portal` | `pageTitle`, `upcomingEvents`, `hasVisibleCalendars`, `familySummary`, `profile` |
 | `calendar/index.html.twig` | `GET /portal/calendar` | `pageTitle`, `calendars`, `hasCalendars`, `calendarConfigJson` |
 | `profile/index.html.twig` | `GET /portal/profile` | `pageTitle`, `profile` |
 | `profile/edit.html.twig` | `GET /portal/profile/edit` | `pageTitle`, `profile` |
@@ -226,6 +228,7 @@ will stop working on your pages.
 | `family/index.html.twig` | `GET /portal/family` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm`, `familyRoles`, `defaultNewMemberRoleId` |
 | `family/edit.html.twig` | `GET /portal/family/edit` | `pageTitle`, `family`, `members`, `canEdit`, `countries` |
 | `family/confirm.html.twig` | `GET /portal/family/confirm` | `pageTitle`, `family`, `members`, `canEdit`, `canConfirm` |
+| `family/none.html.twig` | All three family URLs, for a member with no family | `pageTitle`, `officeEmail`, `officePhone`, `officePhoneHref` |
 | `errors/403.html.twig` | A page this member may not open | `pageTitle` |
 | `errors/404.html.twig` | An unknown portal URL (and 405) | `pageTitle` |
 | `errors/500.html.twig` | An unexpected failure | `pageTitle` |
@@ -297,6 +300,35 @@ orders them.
 | `familyRoles` | list | `{id, name}` for each family role, for the "add a family member" form |
 | `defaultNewMemberRoleId` | int | The role that form starts on — the configured child role, not head of household |
 | `familySummary` | object | On the home page only: `{name, memberCount}`, or `null` when the member has no family |
+| `profile` | object | On the home page too: the same `profile` the Profile page gets, or `null` for an account with no person record |
+
+### A member with no family
+
+`/portal/family`, `/portal/family/edit` and `/portal/family/confirm` all render
+`family/none.html.twig` when the acting member has no family record — and when
+the account has no person record at all. It is an ordinary portal page: HTTP
+200, the usual chrome, "My Family" still the active navigation entry. Only URLs
+that really do not exist get `errors/404.html.twig`.
+
+| Variable | Type | Notes |
+|---|---|---|
+| `officeEmail` | string | **Admin → Church Information**'s email. Empty when unset — leave the line out rather than linking to nowhere |
+| `officePhone` | string | The church's phone, exactly as it was typed. Print this |
+| `officePhoneHref` | string | The same number reduced to what a `tel:` link can dial — digits, plus a leading `+` for an international number. Empty when the church configured no phone, or typed one with no digits in it |
+
+With neither configured the system theme drops both lines and says only
+"Please contact the church office."
+
+### The home page's Profile card
+
+The card prints the member's own details rather than a sentence describing them.
+It reads them out of `profile` — the very view-model `profile/index.html.twig`
+renders, so the two pages can never disagree — and skips every empty field: with
+nothing on file it says "No contact details on file yet." The birthday follows
+the Profile page and appears only while `profile.canEditBirthday` is true, and
+the family role is shown only when `profile.familyId` is non-zero. Values sit in
+`<dd data-field="…">` inside `#portal-home-profile-details`, with the same field
+names the Profile page uses.
 
 The two theme-failure pages are always rendered from the **system** theme, so a
 broken theme cannot break the page that reports it. A theme may still override

@@ -26,6 +26,10 @@ $homeHandler = function (Request $request, Response $response): Response {
         'home.html.twig',
         [
             'pageTitle' => gettext('Home'),
+            // The Profile card shows the member's own contact details rather
+            // than a sentence describing them, so it reads the same view-model
+            // the Profile page renders — never a second copy of the logic.
+            'profile' => $actor instanceof Person ? PortalSelfService::getProfile($actor) : null,
             'familySummary' => $family === null ? null : [
                 'name' => (string) $family->getName(),
                 'memberCount' => count($family->getPeople()),
