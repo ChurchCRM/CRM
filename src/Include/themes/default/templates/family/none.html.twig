@@ -1,0 +1,46 @@
+{% extends "layout.html.twig" %}
+
+{#
+  My Family, for a member the church has not put in a household yet — and for
+  an account with no person record at all. It is a normal portal page, not an
+  error: "This page was not found" would read like a broken link rather than a
+  fact about the member's record.
+
+  Variables: `pageTitle`, `officeEmail`, `officePhone`, `officePhoneHref`
+  (see docs/portal-templates.md). Either contact detail may be empty; its line
+  is then left out rather than linking to nowhere.
+#}
+
+{% block content %}
+<section class="portal-card portal-family-none" id="portal-family-none">
+    <h1 class="portal-page-title">{{ gettext('You are not currently associated with a family') }}</h1>
+
+    {% if officeEmail or officePhoneHref %}
+    <p class="portal-card-text">
+        {{ gettext('Please contact the church office so we may correct our records.') }}
+    </p>
+    <ul class="portal-contact-list">
+        {% if officeEmail %}
+        <li class="portal-contact-item">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <a class="portal-card-link" id="portal-family-none-email" href="mailto:{{ officeEmail }}">{{ officeEmail }}</a>
+        </li>
+        {% endif %}
+        {% if officePhoneHref %}
+        <li class="portal-contact-item">
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            {# The number is displayed as the church wrote it; only the href is
+               reduced to what a phone can dial. #}
+            <a class="portal-card-link" id="portal-family-none-phone" href="tel:{{ officePhoneHref }}">{{ officePhone }}</a>
+        </li>
+        {% endif %}
+    </ul>
+    {% else %}
+    <p class="portal-card-text">{{ gettext('Please contact the church office.') }}</p>
+    {% endif %}
+
+    <p class="portal-action-row">
+        <a class="portal-button" href="{{ url('/portal/') }}">{{ gettext('Back to the Member Portal') }}</a>
+    </p>
+</section>
+{% endblock %}
