@@ -150,7 +150,7 @@ portal route, ever addresses somebody else.
 | `fullName` | string | Formatted per the installation's name format |
 | `familyName` | string | The family's surname; empty when the person has no family |
 | `email` | string | |
-| `avatarUrl` | string | The person's photo endpoint |
+| `avatarUrl` | string | `/api/portal/me/photo`, cache-busted; **empty when no photo has been uploaded** — render initials instead |
 | `familyId` | int | `0` when the person has no family |
 | `isTeamLeader` | bool | Reserved; always `false` until the volunteer pages move into the portal |
 | `isStaff` | bool | `true` for a login that also has the admin shell — the layout shows the "viewing as yourself" bar for it |
@@ -243,7 +243,7 @@ The signed-in member's own person record, as `GET /api/portal/me` returns it.
 | `familyRole` | string | e.g. `Spouse`; `Unassigned` when the person has no role |
 | `familyId` | int | `0` when the person has no family |
 | `familyName` | string | The family's surname |
-| `photoUrl` | string | The person's photo endpoint, cache-busted; **empty when no photo has been uploaded** — render initials instead |
+| `photoUrl` | string | `/api/portal/me/photo`, cache-busted; **empty when no photo has been uploaded** — render initials instead |
 | `hasPhoto` | bool | Whether a photo has been uploaded |
 | `canEditBirthday` | bool | Mirrors `bPortalAllowBirthdayEdit`; when false the birthday is neither shown nor accepted |
 
@@ -270,7 +270,7 @@ orders them.
 | `fullName` | string | |
 | `role` | string | The family-role name |
 | `email`, `cellPhone` | string | |
-| `photoUrl` | string | Empty when the member has no photo |
+| `photoUrl` | string | `/api/portal/family/members/{id}/photo` (or `/api/portal/me/photo` for the member's own row), cache-busted; empty when that member has no photo |
 | `initials` | string | The two-letter stand-in for a missing photo |
 | `isSelf` | bool | `true` for the signed-in member's own row |
 | `isAdult` | bool | `true` for a head or spouse — the roles `sDirRoleHead` and `sDirRoleSpouse` name |

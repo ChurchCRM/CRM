@@ -434,6 +434,14 @@ teaser. Themes typically override this page first.
   `canEditPerson` but gated by `EditRecordsRoleAuthMiddleware`, which a self-service login never
   passes, so the portal has its own `POST /api/portal/me/photo` calling the same model method
   (`Person::setImageFromBase64()`) for the member's own record and nothing else.
+- **Reading a photo is the portal's own route too.** `AuthMiddleware::isLimitedAccessAllowedPath()`
+  confines a self-service session to `/portal` and `/api/portal`, so `GET /api/person/{id}/photo`
+  answers a member with 403 and every avatar renders broken. `GET /api/portal/me/photo` and
+  `GET /api/portal/family/members/{id}/photo` serve the same bytes through the same `Photo` object,
+  privately cached for the same two hours, and every `photoUrl` the portal hands out points at
+  them, cache-busted with `?v=<mtime>`. The family route is the one place a portal route takes a
+  person id: it is checked against the members of the actor's own family (P12) and anything else is
+  **404, never 403**, so a member cannot learn who exists outside their family.
   Edit, family: address, city, state, zip, country, home phone, email, wedding
   date — only for the family's adults (head/spouse), the same audience the verify flow addresses.
   Other members: view only; "add a family member" — also an adults-only action, because it writes
