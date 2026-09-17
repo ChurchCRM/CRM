@@ -57,6 +57,12 @@ $calendarHandler = function (Request $request, Response $response): Response {
                 // the member is reading from (timezone-handling.md).
                 'timeZone' => DateTimeUtils::getConfiguredTimezone()->getName(),
                 'maxWindowDays' => PortalCalendarService::MAX_WINDOW_DAYS,
+                // The Subscribe dialog talks to these three; the feed address
+                // itself is never rendered into the page, because the dialog
+                // fetches it only when a member opens it and it is a bearer
+                // secret that has no business in the HTML of every page load.
+                'subscriptionUrl' => SystemURLs::getRootPath() . '/api/portal/calendar/subscription',
+                'subscriptionResetUrl' => SystemURLs::getRootPath() . '/api/portal/calendar/subscription/reset',
             ]), 'UTF-8'),
         ],
         PortalNav::CALENDAR

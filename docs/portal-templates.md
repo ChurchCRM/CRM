@@ -328,7 +328,35 @@ keep three things, which the page's bundle looks for:
 |---|---|
 | `<div id="portal-calendar">` | Where FullCalendar renders |
 | `<section id="portal-calendar-detail">` and its `portal-calendar-detail-*` ids | The panel an event click fills in — title, when, where, calendar, details |
-| `window.CRM.portalCalendar = {{ calendarConfigJson }}` plus `asset('/skin/v2/portal-calendar.min.js')` | The endpoint, the church's timezone and the window cap |
+| `window.CRM.portalCalendar = {{ calendarConfigJson }}` plus `asset('/skin/v2/portal-calendar.min.js')` | The endpoint, the church's timezone, the window cap, and the two subscription endpoints |
+
+### Subscribing to the calendar
+
+The **Subscribe** button opens a dialog where a member ticks the calendars they
+want in their own calendar app and gets one address back. The bundle draws the
+checkboxes and fills in the address from
+`GET /api/portal/calendar/subscription`, so none of it is server-rendered: the
+feed address is a bearer secret and is fetched only when the dialog opens.
+
+A theme that keeps the feature must keep these ids:
+
+| Keep | What it is |
+|---|---|
+| `#portal-calendar-subscribe` | The button that opens the dialog |
+| `#portal-calendar-subscribe-dialog` | The dialog itself |
+| `#portal-calendar-subscribe-form` | A `<form>` carrying `{{ csrf_field() }}` — the bundle reads the token out of it |
+| `#portal-calendar-subscribe-choices` | The empty container the checkboxes are drawn into |
+| `#portal-calendar-subscribe-error` | Where a refused save is reported |
+| `#portal-calendar-subscribe-save`, `#portal-calendar-subscribe-close` | Save, and dismiss |
+| `#portal-calendar-subscribe-result` | The address block, `hidden` until there is an address |
+| `#portal-calendar-subscribe-url` | A read-only `<input>` holding the feed address |
+| `#portal-calendar-subscribe-copy` | Copy to clipboard (falls back to selecting the text) |
+| `#portal-calendar-subscribe-open` | An `<a>` whose `href` the bundle sets to the `webcal://` address |
+| `#portal-calendar-subscribe-reset` | Opens the confirmation below |
+| `#portal-calendar-reset-dialog` with `#portal-calendar-reset-confirm` / `#portal-calendar-reset-cancel` | "Get a new calendar address?" |
+
+A theme that wants none of this drops the button and both dialogs together; the
+bundle does nothing when the button is absent.
 
 `calendarConfigJson` is a pre-rendered fragment like the four above: print it
 inside a `<script nonce="{{ nonce() }}">` without `|escape` and without `|raw`.
