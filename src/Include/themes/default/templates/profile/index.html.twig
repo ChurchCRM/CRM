@@ -91,10 +91,10 @@
             {{ gettext('Change the password you sign in with, or add a second step so a password alone is not enough.') }}
         </p>
         <p class="portal-action-row">
-            <a class="portal-button" href="{{ url('/v2/user/current/changepassword') }}" id="portal-change-password-link">
+            <a class="portal-button" href="{{ url('/portal/profile/password') }}" id="portal-change-password-link">
                 {{ gettext('Change your password') }}
             </a>
-            <a class="portal-button portal-button-quiet" href="{{ url('/v2/user/current/manage2fa') }}" id="portal-two-factor-link">
+            <a class="portal-button portal-button-quiet" href="{{ url('/portal/profile/two-factor') }}" id="portal-two-factor-link">
                 {{ gettext('Two-factor authentication') }}
             </a>
         </p>

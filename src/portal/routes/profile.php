@@ -1,6 +1,9 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Portal\PortalAccountPages;
 use ChurchCRM\Portal\PortalNav;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Portal\PortalTwig;
@@ -55,4 +58,50 @@ $group->get('/profile/edit', function (Request $request, Response $response) use
         ],
         PortalNav::PROFILE
     );
+});
+
+// The account pages: password and two-factor, owned by the portal so that every
+// role — member, staff, administrator, and a masquerading administrator — stays
+// inside the portal. The admin console is reached from the staff bar's "Admin
+// Console" control and nowhere else. See PortalAccountPages for why the older
+// /v2/user/current/* URLs still exist alongside these.
+//
+// These two act on the signed-in *account*, not on a person record, so unlike
+// the pages above they do not resolve $portalActor: somebody whose account has
+// no person record linked must still be able to change their own password.
+
+// GET /portal/profile/password — the form.
+$group->get('/profile/password', function (Request $request, Response $response): Response {
+    return PortalAccountPages::renderPasswordForm($response, PortalAccountPages::getPasswordUrl());
+});
+
+// POST /portal/profile/password — the change itself. CSRF is already enforced
+// for every portal route by the group middleware in src/portal/index.php.
+//
+// Both outcomes stay in the portal and on this URL: a success renders the
+// confirmation page, and a rejected password re-renders this form carrying the
+// error, exactly as the /v2 page does for a self-service session.
+$group->post('/profile/password', function (Request $request, Response $response): Response {
+    $user = AuthenticationManager::getCurrentUser();
+
+    try {
+        PortalAccountPages::applyPasswordChange($user, $request->getParsedBody());
+    } catch (PasswordChangeException $passwordChangeException) {
+        $isOldPassword = $passwordChangeException->AffectedPassword === 'Old';
+
+        return PortalAccountPages::renderPasswordForm(
+            $response,
+            PortalAccountPages::getPasswordUrl(),
+            $isOldPassword ? $passwordChangeException->getMessage() : '',
+            $isOldPassword ? '' : $passwordChangeException->getMessage()
+        );
+    }
+
+    return PortalAccountPages::renderPasswordChanged($response);
+});
+
+// GET /portal/profile/two-factor — enrollment and recovery codes, drawn by the
+// shared two-factor-enrollment bundle against /api/user/current/*.
+$group->get('/profile/two-factor', function (Request $request, Response $response): Response {
+    return PortalAccountPages::renderTwoFactor($response);
 });
