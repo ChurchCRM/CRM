@@ -23,6 +23,12 @@ abstract class BaseUserEmail extends BaseEmail
 
     abstract protected function getSubSubject(): string;
 
+    /** Account emails add the "you received this because of activity on your account" note. */
+    protected function getTemplateName(): string
+    {
+        return 'AccountEmail.html.twig';
+    }
+
     public function getTokens(): array
     {
         $myTokens = [
