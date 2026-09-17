@@ -239,7 +239,11 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             // their family's name; adding a field is a compatible change (§3.6).
             'familyName' => $person && $person->getFamily() ? (string) $person->getFamily()->getName() : '',
             'email' => (string) ($user->getEmail() ?? ''),
-            'avatarUrl' => SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo',
+            // The portal's own endpoint, not /api/person/{id}/photo: a
+            // self-service session is refused that path, so an avatar pointed
+            // there renders broken for exactly the people the portal is for.
+            // Empty when nobody has uploaded a photo, like profile.photoUrl.
+            'avatarUrl' => $person ? PortalSelfService::getPhotoUrl($person, $person) : '',
             'familyId' => $person ? (int) $person->getFamId() : 0,
             // Volunteer scopes reach self-service logins in MP6/#9705 (P17).
             'isTeamLeader' => false,
