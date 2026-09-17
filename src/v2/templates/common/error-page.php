@@ -7,6 +7,11 @@
  *  - $message (string)
  *  - $returnUrl (string)
  *  - $returnText (string)
+ *  - $bStandalone (bool) - true when rendered without Header.php/Footer.php
+ *    (e.g. SlimUtils::registerDefaultJsonErrorHandler(), used by apps that
+ *    can't safely assume an authenticated Header.php will render, such as
+ *    session/index.php). Wraps the partial in a minimal HTML document that
+ *    loads the CSS bundle itself, since nothing else will.
  */
 
 use ChurchCRM\dto\SystemURLs;
@@ -20,6 +25,7 @@ $returnUrl = $returnUrl ?? (SystemURLs::getRootPath() . '/v2/dashboard');
 $returnText = $returnText ?? gettext('Return to Dashboard');
 // Optional raw HTML block to render after the message (internal use only)
 $extraHtml = $extraHtml ?? '';
+$bStandalone = $bStandalone ?? false;
 
 // Last-resort fallback if the #reportIssue header link/modal isn't present on
 // this page (e.g. this partial rendered without Header.php) — a prefilled
@@ -40,6 +46,18 @@ $sGithubIssueUrl = 'https://github.com/ChurchCRM/CRM/issues/new'
     . '&body=' . rawurlencode($sIssueBody);
 
 ?>
+<?php if ($bStandalone) { ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title><?= htmlspecialchars($title) ?></title>
+  <link rel="icon" href="<?= SystemURLs::getRootPath() ?>/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.css') ?>">
+</head>
+<body>
+<?php } ?>
 
 <div class="page-body">
   <div class="container-xl">
@@ -123,3 +141,7 @@ $sGithubIssueUrl = 'https://github.com/ChurchCRM/CRM/issues/new'
     window.open(<?= InputUtils::jsonEncodeForScript($sGithubIssueUrl) ?>, '_blank');
   });
 </script>
+<?php if ($bStandalone) { ?>
+</body>
+</html>
+<?php } ?>
