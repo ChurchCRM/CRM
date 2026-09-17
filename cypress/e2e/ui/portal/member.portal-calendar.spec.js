@@ -196,9 +196,20 @@ describe("Member Portal calendar", () => {
                 });
 
             cy.get("#portal-calendar-subscribe-copy").should("be.visible");
-            cy.get("#portal-calendar-subscribe-open")
-                .should("have.attr", "href")
-                .and("match", /^webcal:\/\//);
+
+            // Over plain http there is no one-tap link: macOS and iOS Calendar
+            // rewrite webcal:// to https:// and never fall back, so the link
+            // would fail silently. The dialog tells the member to paste the
+            // address instead. The test stack is http, so this is the branch
+            // under test; the https branch is asserted by the API spec, which
+            // checks the webcalUrl the server still returns.
+            cy.location("protocol").should("eq", "http:");
+            cy.get("#portal-calendar-subscribe-open").should("not.be.visible");
+            cy.get("#portal-calendar-subscribe-open-row").should("not.be.visible");
+            cy.contains("Copy this address and add it to your calendar app as a new calendar subscription.").should(
+                "be.visible",
+            );
+
             cy.get("#portal-calendar-subscribe-reset").should("be.visible");
         });
 

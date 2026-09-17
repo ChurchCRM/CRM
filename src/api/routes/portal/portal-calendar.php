@@ -239,6 +239,10 @@ function portalCalendarSubscriptionPayload(Request $request): array
         // webcal:// is what makes "Open in calendar app" a single tap: macOS,
         // iOS, Outlook and Google all register the scheme and open their
         // "subscribe to a calendar" flow rather than downloading a file once.
+        // It is still sent over plain http, but the portal does not offer the
+        // link there: Apple's clients rewrite webcal:// to https:// and never
+        // fall back, so the tap would fail silently. See
+        // webpack/portal/portal-calendar-subscribe.ts.
         'webcalUrl' => $url === null ? null : preg_replace('#^https?://#', 'webcal://', $url),
         'choices' => PortalCalendarSubscription::choices($user),
     ];

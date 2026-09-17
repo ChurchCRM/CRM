@@ -351,7 +351,9 @@ A theme that keeps the feature must keep these ids:
 | `#portal-calendar-subscribe-result` | The address block, `hidden` until there is an address |
 | `#portal-calendar-subscribe-url` | A read-only `<input>` holding the feed address |
 | `#portal-calendar-subscribe-copy` | Copy to clipboard (falls back to selecting the text) |
+| `#portal-calendar-subscribe-open-row` | The paragraph holding the link below. Starts `hidden`; the bundle reveals it **only when the feed address is `https`** |
 | `#portal-calendar-subscribe-open` | An `<a>` whose `href` the bundle sets to the `webcal://` address |
+| `#portal-calendar-subscribe-manual-hint` | The sentence shown instead of that link when the site is on plain `http` — Apple's calendar clients rewrite `webcal://` to `https://` and never fall back, so the one-tap link cannot work there |
 | `#portal-calendar-subscribe-reset` | Opens the confirmation below |
 | `#portal-calendar-reset-dialog` with `#portal-calendar-reset-confirm` / `#portal-calendar-reset-cancel` | "Get a new calendar address?" |
 

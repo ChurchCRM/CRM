@@ -144,11 +144,18 @@
         <p class="portal-field-hint">
             {{ gettext('Add this address to your calendar app. It updates on its own when the church calendar changes.') }}
         </p>
-        <p class="portal-action-row">
+        {# Exactly one of these two is revealed by the bundle, once it knows
+           whether the feed address is https. See portal-calendar-subscribe.ts:
+           a webcal:// link is useless over plain http. Both start hidden so
+           neither flashes up before that is known. #}
+        <p class="portal-action-row" id="portal-calendar-subscribe-open-row" hidden>
             <a class="portal-button portal-button-quiet" id="portal-calendar-subscribe-open" href="#">
                 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                 <span>{{ gettext('Open in calendar app') }}</span>
             </a>
+        </p>
+        <p class="portal-field-hint" id="portal-calendar-subscribe-manual-hint" hidden>
+            {{ gettext('Copy this address and add it to your calendar app as a new calendar subscription.') }}
         </p>
         <p class="portal-field-hint">
             {{ gettext('If you have shared this address by mistake, get a new one. The old address stops working straight away.') }}
