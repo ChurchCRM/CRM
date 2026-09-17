@@ -15,7 +15,7 @@
  * VARCHAR(32), so the seeded address is stored truncated — log in with the
  * 32-character form.
  */
-const MEMBER_USER = "lena.black.editself.notes@exampl";
+const MEMBER_USER = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
 
 const PROBE_CLASS = "portal-state-probe";
