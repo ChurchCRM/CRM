@@ -123,46 +123,6 @@ $socialPlaceholders = [
         </div>
     </div>
 
-    <!-- Social Media -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fa-solid fa-share-nodes me-2"></i><?= gettext('Social Media') ?></h3>
-                </div>
-                <div class="card-body">
-                    <p class="text-body-secondary mb-3">
-                        <?= gettext('Optional. Links to the church\'s own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network.') ?>
-                    </p>
-                    <div class="row">
-                        <?php foreach ($socialNetworks as $network): ?>
-                        <div class="mb-3 col-md-6">
-                            <label for="<?= InputUtils::escapeAttribute($network['config']) ?>"><?= InputUtils::escapeHTML($network['label']) ?></label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="<?= InputUtils::escapeAttribute($network['icon']) ?>"
-                                       id="social-icon-<?= InputUtils::escapeAttribute($network['id']) ?>"
-                                       aria-hidden="true"></i>
-                                </span>
-                                <input type="url"
-                                       class="form-control"
-                                       id="<?= InputUtils::escapeAttribute($network['config']) ?>"
-                                       name="<?= InputUtils::escapeAttribute($network['config']) ?>"
-                                       value="<?= InputUtils::escapeHTML($network['url']) ?>"
-                                       maxlength="200"
-                                       placeholder="<?= InputUtils::escapeAttribute($socialPlaceholders[$network['id']] ?? 'https://') ?>">
-                            </div>
-                        </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <small class="form-text text-body-secondary">
-                        <?= gettext('Each address must start with https://') ?>
-                    </small>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Location -->
     <div class="row">
         <div class="col-12">
@@ -337,6 +297,46 @@ $socialPlaceholders = [
                             </select>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fa-solid fa-share-nodes me-2"></i><?= gettext('Social Media') ?></h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-body-secondary mb-3">
+                        <?= gettext('Optional. Links to the church\'s own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network.') ?>
+                    </p>
+                    <div class="row">
+                        <?php foreach ($socialNetworks as $network): ?>
+                        <div class="mb-3 col-md-6">
+                            <label for="<?= InputUtils::escapeAttribute($network['config']) ?>"><?= InputUtils::escapeHTML($network['label']) ?></label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="<?= InputUtils::escapeAttribute($network['icon']) ?>"
+                                       id="social-icon-<?= InputUtils::escapeAttribute($network['id']) ?>"
+                                       aria-hidden="true"></i>
+                                </span>
+                                <input type="url"
+                                       class="form-control"
+                                       id="<?= InputUtils::escapeAttribute($network['config']) ?>"
+                                       name="<?= InputUtils::escapeAttribute($network['config']) ?>"
+                                       value="<?= InputUtils::escapeHTML($network['url']) ?>"
+                                       maxlength="200"
+                                       placeholder="<?= InputUtils::escapeAttribute($socialPlaceholders[$network['id']] ?? 'https://') ?>">
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <small class="form-text text-body-secondary">
+                        <?= gettext('Each address must start with https://') ?>
+                    </small>
                 </div>
             </div>
         </div>
