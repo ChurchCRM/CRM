@@ -94,11 +94,16 @@ function initializeFamilyView() {
 
   // Pledges & Payments table — init after ensuring both types are returned by API
   if ($("#pledge-payment-v2-table").length) {
-    // Build the ajax URL with an optional FY filter.
-    // fyid 0 or empty string means all-time; positive int means specific FY.
+    // Build the ajax URL, always sending fyid explicitly (including 0 for All
+    // Time). The API distinguishes fyid=0 ("All Time", no date filter at all)
+    // from an absent fyid param (falls back to the user's ShowSince
+    // preference) — this client always has a resolved value (current FY by
+    // default, or an explicit selection), so it must never omit the param,
+    // or an explicit All-Time selection would silently be reinterpreted
+    // server-side as "nothing selected, use ShowSince".
     function getPledgeAjaxUrl(fyid) {
       var base = window.CRM.root + "/api/payments/family/" + window.CRM.currentFamily + "/list";
-      return fyid > 0 ? base + "?fyid=" + fyid : base;
+      return base + "?fyid=" + fyid;
     }
 
     // Determine initial FY from URL param, falling back to the active pill's data-fy
@@ -110,6 +115,16 @@ function initializeFamilyView() {
     var urlParams = new URLSearchParams(window.location.search);
     var activePillFy = parseInt($(".pledge-fy-pill.active").data("fy") || "0", 10) || 0;
     var initialFyid = urlParams.has("fyid") ? parseInt(urlParams.get("fyid"), 10) || 0 : activePillFy;
+
+    // If the resolved FY doesn't correspond to any rendered pill (e.g. a
+    // stale bookmark for a fiscal year this family has no history in), fall
+    // back to the current-FY default for BOTH the fetched data and the
+    // highlighted pill — rather than fetching data for a mismatched FY while
+    // a different pill (previously: whichever pill happened to be first,
+    // i.e. All Time) lit up as if it were active.
+    if (initialFyid !== 0 && !$(".pledge-fy-pill[data-fy='" + initialFyid + "']").length) {
+      initialFyid = activePillFy;
+    }
 
     var dataTableConfig = {
       ajax: {

@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -168,7 +169,7 @@ $statusClasses = [
             <div class="card-header py-2">
                 <h3 class="card-title">
                     <i class="fa-solid fa-users me-1"></i>
-                    <?= gettext('Contributors') ?> &mdash; <?= $selectedFyid === 0 ? gettext('All Time') : InputUtils::escapeHTML(FinancialService::formatFiscalYear($selectedFyid)) ?>
+                    <?= gettext('Contributors') ?> &mdash; <?= InputUtils::escapeHTML(FiscalYearUtils::formatFiscalYearLabel($selectedFyid)) ?>
                 </h3>
             </div>
             <div style="overflow: visible;">

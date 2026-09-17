@@ -131,6 +131,21 @@ class FiscalYearUtils
     }
 
     /**
+     * Label for a fiscal-year-scoped display: "All Time" for the 0/negative
+     * sentinel, otherwise the formatted fiscal year. Centralizes a rule that
+     * was independently duplicated across dashboard.php, pledge-dashboard.php,
+     * contributors.php, and deposits/search.php — every "All Time" display
+     * label should go through this instead of reimplementing the sentinel
+     * check against FinancialService::formatFiscalYear() directly.
+     *
+     * @param int $fyid Fiscal Year ID, or 0/negative for All Time
+     */
+    public static function formatFiscalYearLabel(int $fyid): string
+    {
+        return $fyid > 0 ? FinancialService::formatFiscalYear($fyid) : gettext('All Time');
+    }
+
+    /**
      * Renders an HTML <select> dropdown for fiscal year selection.
      * Migrated from PrintFYIDSelect() in Functions.php.
      */

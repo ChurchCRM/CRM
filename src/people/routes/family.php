@@ -181,7 +181,14 @@ function viewFamily(Request $request, Response $response, array $args): Response
         'currentFYId'          => FiscalYearUtils::getCurrentFiscalYearId(),
         'familyAvailableFyids' => (function () use ($familyId): array {
             // Distinct FYID values for this family's pledge/payment history, newest first.
-            // Used to render server-side FY filter pills on the Pledges & Payments card.
+            // Used to render server-side FY filter pills on the Pledges & Payments card,
+            // which is only ever shown to finance-enabled users — skip the query
+            // entirely for everyone else rather than running it on every family
+            // profile view (one of the most frequently loaded pages) for data
+            // that's never used.
+            if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+                return [];
+            }
             $fyids = PledgeQuery::create()
                 ->filterByFamId($familyId)
                 ->addAsColumn('FyId', PledgeTableMap::COL_PLG_FYID)

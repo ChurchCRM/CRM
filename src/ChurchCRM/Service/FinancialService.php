@@ -829,19 +829,6 @@ class FinancialService
     // =========================================================================
 
     /**
-     * Calculate fiscal year date range based on system configuration (current FY).
-     *
-     * Delegates to FiscalYearUtils::getFiscalYearDatesById() with the current FY ID
-     * so all FY computation is in one place.
-     *
-     * @return array{startDate: string, endDate: string, label: string, month: int}
-     */
-    public function getFiscalYearDates(): array
-    {
-        return FiscalYearUtils::getFiscalYearDatesById(FiscalYearUtils::getCurrentFiscalYearId());
-    }
-
-    /**
      * Get deposit statistics (total, open, closed counts).
      *
      * @return array{total: int, open: int, closed: int}

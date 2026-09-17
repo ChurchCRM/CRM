@@ -63,8 +63,10 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       );
       cy.get(".pledge-fy-pill[data-fy='0']").click();
       cy.wait("@pledgeAllTime").then((interception) => {
-        // URL should NOT contain fyid param (all-time = no filter)
-        expect(interception.request.url).not.to.include("fyid=");
+        // The AJAX request must send fyid=0 explicitly, not omit the param —
+        // an omitted param falls back server-side to the user's ShowSince
+        // preference, which is not the same as "All Time".
+        expect(interception.request.url).to.include("fyid=0");
       });
 
       // All-Time pill is now active
@@ -114,11 +116,12 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       // silently fall back to the current FY.
       cy.location("search").should("include", "fyid=0");
 
-      // Refreshing the page must keep the All-Time selection.
+      // Refreshing the page must keep the All-Time selection — the AJAX
+      // request must still send fyid=0 explicitly, not omit the param.
       cy.intercept("GET", "**/api/payments/family/1/list*").as("afterReload");
       cy.reload();
       cy.wait("@afterReload").then((interception) => {
-        expect(interception.request.url).not.to.include("fyid=");
+        expect(interception.request.url).to.include("fyid=0");
       });
       cy.get(".pledge-fy-pill.active").should("contain", "All Time");
     });
@@ -299,6 +302,18 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.location("search").should("include", `fyid=${SEED_FYID_2018}`);
 
       // Seed has 2018 deposits — at least one row must appear
+      cy.get("#depositsTable tbody tr").should("have.length.at.least", 1);
+    });
+
+    it("an explicit date range wins over the ambient (default current-FY) fyid", () => {
+      // No fyid param is given, so the route defaults selectedFyid to the
+      // current FY — under the old precedence rule (fyid always wins when
+      // positive) that would silently discard this date range in favor of
+      // the current FY's own range, which has no seeded deposits at all, so
+      // the table would render empty. The date range must win instead and
+      // surface the seeded 2018-02-18 deposit.
+      cy.visit("finance/deposit/search?dateStart=2018-02-01&dateEnd=2018-02-28");
+
       cy.get("#depositsTable tbody tr").should("have.length.at.least", 1);
     });
   });

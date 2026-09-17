@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -54,7 +55,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= CurrencyFormatter::formatHtml($totalPledges) ?></div>
-                            <div class="text-body-secondary"><?= gettext('Total Pledges') ?> — <?= $selectedFyid === 0 ? gettext('All Time') : FinancialService::formatFiscalYear($selectedFyid) ?></div>
+                            <div class="text-body-secondary"><?= gettext('Total Pledges') ?> — <?= FiscalYearUtils::formatFiscalYearLabel($selectedFyid) ?></div>
                         </div>
                     </div>
                 </div>
