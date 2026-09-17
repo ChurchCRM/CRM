@@ -1,30 +1,30 @@
 {
   "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
+    "one": "Za dużo odbiorców dla klienta e-mail ({{count}} > {{max}}). Użyj opcji Kopiuj adresy.",
+    "other": "Za dużo odbiorców dla klienta e-mail ({{count}} > {{max}}). Użyj opcji Kopiuj adresy."
   },
   "{{count}} min left": {
-    "one": "",
-    "other": ""
+    "one": "Pozostała {{count}} minuta",
+    "other": "Pozostało {{count}} minut"
   },
   "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} rodzina nie mogła zostać zgeokodowana",
+    "other": "{{count}} rodzin nie mogło zostać zgeokodowanych"
   },
   "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
+    "one": "Aktywny przez {{count}} sekundę",
+    "other": "Aktywny przez {{count}} sekund"
   },
   "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
+    "one": "Zaraz wyślesz e-maile potwierdzające do {{count}} rodziny.",
+    "other": "Zaraz wyślesz e-maile potwierdzające do {{count}} rodzin."
   },
   "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
+    "one": "{{count}} rodzina nie ma zapisanego adresu e-mail i zostanie pominięta",
+    "other": "{{count}} rodzin nie ma zapisanego adresu e-mail i zostanie pominiętych"
   },
   "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
+    "one": "…i {{count}} więcej nie wymieniona tutaj.",
+    "other": "…i {{count}} więcej nie wymienionych tutaj."
   }
 }
