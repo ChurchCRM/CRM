@@ -3,8 +3,8 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
-use ChurchCRM\Service\VolunteerAuthorizationService;
-use ChurchCRM\Slim\Middleware\Request\Auth\VolunteerCoordinatorRoleAuthMiddleware;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;

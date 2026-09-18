@@ -7,7 +7,7 @@ use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
-use ChurchCRM\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;

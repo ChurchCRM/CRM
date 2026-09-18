@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

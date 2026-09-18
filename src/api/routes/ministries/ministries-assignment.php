@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Exceptions\VolunteerSetupException;
+use ChurchCRM\Volunteer\VolunteerException;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
@@ -15,16 +15,16 @@ use ChurchCRM\model\ChurchCRM\VolunteerResponse;
 use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSwap;
-use ChurchCRM\Service\VolunteerAssignmentService;
-use ChurchCRM\Service\VolunteerAuthorizationService;
-use ChurchCRM\Service\VolunteerNotificationService;
-use ChurchCRM\Service\VolunteerScheduleService;
-use ChurchCRM\Slim\Middleware\Api\VolunteerAssignmentMiddleware;
-use ChurchCRM\Slim\Middleware\Api\VolunteerOccurrenceMiddleware;
-use ChurchCRM\Slim\Middleware\Api\VolunteerSwapMiddleware;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerNotificationService;
+use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
+use ChurchCRM\Volunteer\Middleware\VolunteerAssignmentMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerOccurrenceMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerSwapMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\VolunteerCoordinatorRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -229,12 +229,12 @@ function volunteerSwapToArray(
  *
  * `getExtra()` is merged into the envelope, which is how §2.11.1's "409 with the current
  * status in the body" arrives as a field rather than as a sentence a client would have
- * to parse. Anything that is not a VolunteerSetupException is a genuine 500 and is
+ * to parse. Anything that is not a VolunteerException is a genuine 500 and is
  * logged with its exception, never echoed.
  */
 function volunteerAssignmentError(Request $request, Response $response, \Throwable $e): Response
 {
-    if ($e instanceof VolunteerSetupException) {
+    if ($e instanceof VolunteerException) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), $e->getExtra(), $e->getStatusCode(), null, $request);
     }
 

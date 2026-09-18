@@ -13,7 +13,7 @@ use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\FundRaiserService;
-use ChurchCRM\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 
 class Menu
 {

@@ -15,9 +15,9 @@ use ChurchCRM\model\ChurchCRM\VolunteerQualification;
 use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\PropertyService;
-use ChurchCRM\Service\VolunteerAssignmentService;
-use ChurchCRM\Service\VolunteerScheduleService;
-use ChurchCRM\Service\VolunteerSetupService;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
+use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -189,14 +189,14 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $volunteerV2Assignments = [];
 
     if (User::isVolunteerV2Enabled()) {
-        $setupService = new VolunteerSetupService();
+        $ministryService = new VolunteerMinistryService();
         $assignmentService = new VolunteerAssignmentService();
         $scheduleService = new VolunteerScheduleService();
 
         $positionNames = [];
         $positionMinistryIds = [];
         $qualificationRows = array_values(array_filter(
-            $setupService->listQualificationsForPerson($iPersonID),
+            $ministryService->listQualificationsForPerson($iPersonID),
             static fn (VolunteerQualification $row): bool => (bool) $row->getActive()
         ));
 

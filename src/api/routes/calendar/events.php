@@ -22,7 +22,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\EventService;
-use ChurchCRM\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsOrMinistryRoleAuthMiddleware;

@@ -775,7 +775,7 @@ Because this epic lands first, the volunteer integration branch changes before i
    modules so the portal team page can reuse them (no behaviour change on the admin page).
 5. `/external/limited-access` is retired (route redirects to `/portal`); its template and the
    volunteer button on it are deleted.
-6. `VolunteerSetupService::createMinistry()` also creates the ministry's calendar
+6. `VolunteerMinistryService::createMinistry()` also creates the ministry's calendar
    (`calendars.ministry_id`), renames and deletes it with the ministry, alongside the team and the
    pool Group it already creates; the volunteer design's D19 row gains the calendar (§5.3).
 7. The UI review checklist and the docs issue for the volunteer epic are updated to the new URLs.

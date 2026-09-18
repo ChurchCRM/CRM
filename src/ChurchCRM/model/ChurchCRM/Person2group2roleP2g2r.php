@@ -4,7 +4,7 @@ namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2r as BasePerson2group2roleP2g2r;
 use ChurchCRM\Service\AuthService;
-use ChurchCRM\Service\VolunteerPoolWriter;
+use ChurchCRM\Volunteer\Service\VolunteerPoolWriter;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**

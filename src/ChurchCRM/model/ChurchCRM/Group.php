@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Group as BaseGroup;
 use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
 use ChurchCRM\Service\AuthService;
-use ChurchCRM\Service\VolunteerPoolWriter;
+use ChurchCRM\Volunteer\Service\VolunteerPoolWriter;
 use Exception;
 use Propel\Runtime\Connection\ConnectionInterface;
 
@@ -80,7 +80,7 @@ class Group extends BaseGroup
      * Deleting a ministry's volunteer pool group is NOT a coordinator's to do.
      *
      * D19: the group is created with the ministry and removed with it, so the only path
-     * that may delete one is `VolunteerSetupService::deleteMinistry()`, which opens the
+     * that may delete one is `VolunteerMinistryService::deleteMinistry()`, which opens the
      * managed-write context. Everything else — the Groups module, the API, an
      * administrator — is refused here, which is what makes the 409 the `/api/groups`
      * route answers a statement about the model rather than a UI convention.

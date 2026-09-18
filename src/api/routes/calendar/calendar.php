@@ -8,7 +8,7 @@ use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Slim\Middleware\Api\CalendarMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;

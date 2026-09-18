@@ -2,7 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
-use ChurchCRM\Exceptions\VolunteerSetupException;
+use ChurchCRM\Volunteer\VolunteerException;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
@@ -15,16 +15,16 @@ use ChurchCRM\model\ChurchCRM\VolunteerScope;
 use ChurchCRM\model\ChurchCRM\VolunteerScopeQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
-use ChurchCRM\Service\VolunteerAssignmentService;
-use ChurchCRM\Service\VolunteerSetupService;
-use ChurchCRM\Slim\Middleware\Api\VolunteerMinistryMiddleware;
-use ChurchCRM\Slim\Middleware\Api\VolunteerPositionMiddleware;
-use ChurchCRM\Slim\Middleware\Api\VolunteerQualificationMiddleware;
-use ChurchCRM\Slim\Middleware\Api\VolunteerTeamMiddleware;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
+use ChurchCRM\Volunteer\Middleware\VolunteerMinistryMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerPositionMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerQualificationMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerTeamMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\VolunteerCoordinatorRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\ManageMinistriesRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
+use ChurchCRM\Volunteer\Middleware\ManageMinistriesRoleAuthMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -58,7 +58,7 @@ use Slim\Routing\RouteCollectorProxy;
  * lets a **team leader** create and edit positions in their own team, and
  * `VolunteerMinistryMiddleware` would deny them before the payload — which names
  * the team — has even been read. Those two handlers resolve the ministry
- * themselves and hand the whole decision to `VolunteerSetupService`, which
+ * themselves and hand the whole decision to `VolunteerMinistryService`, which
  * applies the same rule `VolunteerPositionMiddleware` applies to an existing
  * row: a position belongs to its team, and so to that team's leader and the
  * ministry coordinator above them.
@@ -366,12 +366,12 @@ function volunteerSetupActor(): User
 
 /**
  * Turn a service-layer failure into the canonical error envelope, carrying the
- * status the service chose. Anything that is not a VolunteerSetupException is a
+ * status the service chose. Anything that is not a VolunteerException is a
  * genuine fault and becomes a 500 with the exception attached for the log.
  */
 function volunteerSetupError(Request $request, Response $response, \Throwable $e): Response
 {
-    if ($e instanceof VolunteerSetupException) {
+    if ($e instanceof VolunteerException) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), $e->getExtra(), $e->getStatusCode(), null, $request);
     }
 
@@ -495,7 +495,7 @@ function volunteerSetupTeamNames(array $positions): array
  */
 function listVolunteerMinistries(Request $request, Response $response): Response
 {
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $ministries = $service->listMinistriesFor(volunteerSetupActor(), volunteerSetupActiveFilter($request));
 
     $ministryIds = array_map(static fn (VolunteerMinistry $m): int => (int) $m->getId(), $ministries);
@@ -539,7 +539,7 @@ function createVolunteerMinistry(Request $request, Response $response): Response
     $body = (array) $request->getParsedBody();
 
     try {
-        $ministry = (new VolunteerSetupService())->createMinistry(
+        $ministry = (new VolunteerMinistryService())->createMinistry(
             (string) ($body['name'] ?? ''),
             isset($body['description']) ? (string) $body['description'] : null,
             volunteerSetupActor()
@@ -554,7 +554,7 @@ function createVolunteerMinistry(Request $request, Response $response): Response
     // a statement of the invariant rather than a query. `poolGroupId` is the same
     // kind of statement for D19: the ministry came with its Group, and a caller
     // that wants to link to it should not have to ask a second time.
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $poolGroup = $service->getPoolGroup((int) $ministry->getId());
     // …and `calendarId` is the same statement for the ministry calendar (#9869,
     // Member Portal design §5.3): the ministry came with its calendar, and a caller
@@ -606,7 +606,7 @@ function getVolunteerMinistry(Request $request, Response $response): Response
     $ministry = $request->getAttribute('volunteerMinistry');
     $ministryId = (int) $ministry->getId();
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $teams = $service->listTeams($ministryId);
     $positions = $service->listPositions($ministryId);
     $poolGroup = $service->getPoolGroup($ministryId);
@@ -666,7 +666,7 @@ function getVolunteerMinistry(Request $request, Response $response): Response
  * @return array{teamCount: int, volunteerCount: int, unfilledPositionCount: int, occurrenceCount: int, assignmentCount: int}
  */
 function volunteerSetupMinistrySummary(
-    VolunteerSetupService $service,
+    VolunteerMinistryService $service,
     int $ministryId,
     ?int $teamCount = null
 ): array {
@@ -715,7 +715,7 @@ function getVolunteerMinistrySummary(Request $request, Response $response): Resp
         return SlimUtils::renderErrorJSON($response, gettext('Ministry not found'), [], 404, null, $request);
     }
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $ministryId = (int) $ministry->getId();
     $visibleTeamIds = volunteerSetupVisibleTeamIds($service, volunteerSetupActor(), $ministryId);
 
@@ -767,7 +767,7 @@ function updateVolunteerMinistry(Request $request, Response $response): Response
     $ministry = $request->getAttribute('volunteerMinistry');
 
     try {
-        $ministry = (new VolunteerSetupService())->updateMinistry(
+        $ministry = (new VolunteerMinistryService())->updateMinistry(
             $ministry,
             volunteerSetupFields(
                 $request,
@@ -805,7 +805,7 @@ function deleteVolunteerMinistry(Request $request, Response $response): Response
     $ministry = $request->getAttribute('volunteerMinistry');
 
     try {
-        (new VolunteerSetupService())->deleteMinistry($ministry, volunteerSetupActor());
+        (new VolunteerMinistryService())->deleteMinistry($ministry, volunteerSetupActor());
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
     }
@@ -837,7 +837,7 @@ function listVolunteerTeams(Request $request, Response $response): Response
     /** @var VolunteerMinistry $ministry */
     $ministry = $request->getAttribute('volunteerMinistry');
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $teams = $service->listTeams((int) $ministry->getId(), volunteerSetupActiveFilter($request));
     $counts = $service->countPositionsByTeam(
         array_map(static fn (VolunteerTeam $t): int => (int) $t->getId(), $teams)
@@ -879,7 +879,7 @@ function createVolunteerTeam(Request $request, Response $response): Response
     $body = (array) $request->getParsedBody();
 
     try {
-        $team = (new VolunteerSetupService())->createTeam(
+        $team = (new VolunteerMinistryService())->createTeam(
             $ministry,
             (string) ($body['name'] ?? ''),
             isset($body['description']) ? (string) $body['description'] : null,
@@ -916,7 +916,7 @@ function getVolunteerTeam(Request $request, Response $response): Response
     /** @var VolunteerTeam $team */
     $team = $request->getAttribute('volunteerTeam');
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $positions = $service->listPositions((int) $team->getMinistryId(), (int) $team->getId());
     $teamNames = [(int) $team->getId() => $team->getName()];
 
@@ -956,7 +956,7 @@ function updateVolunteerTeam(Request $request, Response $response): Response
     $team = $request->getAttribute('volunteerTeam');
 
     try {
-        $team = (new VolunteerSetupService())->updateTeam(
+        $team = (new VolunteerMinistryService())->updateTeam(
             $team,
             volunteerSetupFields($request, ['name', 'description', 'active'], ['active']),
             volunteerSetupActor()
@@ -990,7 +990,7 @@ function deleteVolunteerTeam(Request $request, Response $response): Response
     $team = $request->getAttribute('volunteerTeam');
 
     try {
-        (new VolunteerSetupService())->deleteTeam($team, volunteerSetupActor());
+        (new VolunteerMinistryService())->deleteTeam($team, volunteerSetupActor());
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
     }
@@ -1021,7 +1021,7 @@ function volunteerSetupFindMinistry(Request $request): ?VolunteerMinistry
  *
  * @return int[]|null
  */
-function volunteerSetupVisibleTeamIds(VolunteerSetupService $service, User $actor, int $ministryId): ?array
+function volunteerSetupVisibleTeamIds(VolunteerMinistryService $service, User $actor, int $ministryId): ?array
 {
     $authz = $service->getAuthorizationService();
 
@@ -1075,7 +1075,7 @@ function listVolunteerPositions(Request $request, Response $response): Response
     }
 
     $ministryId = (int) $ministry->getId();
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
 
     // A coordinator of the ministry sees all of it. A team leader sees their own
     // teams' positions and nothing else — the ids are handed to the query, not
@@ -1175,7 +1175,7 @@ function createVolunteerPosition(Request $request, Response $response): Response
     }
 
     try {
-        $position = (new VolunteerSetupService())->createPosition(
+        $position = (new VolunteerMinistryService())->createPosition(
             $ministry,
             $team,
             (string) ($body['name'] ?? ''),
@@ -1248,7 +1248,7 @@ function updateVolunteerPosition(Request $request, Response $response): Response
 {
     /** @var VolunteerPosition $position */
     $position = $request->getAttribute('volunteerPosition');
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $actor = volunteerSetupActor();
 
     $fields = volunteerSetupFields($request, ['name', 'description', 'teamId', 'order', 'active'], ['active']);
@@ -1311,7 +1311,7 @@ function deleteVolunteerPosition(Request $request, Response $response): Response
     $position = $request->getAttribute('volunteerPosition');
 
     try {
-        (new VolunteerSetupService())->deletePosition($position, volunteerSetupActor());
+        (new VolunteerMinistryService())->deletePosition($position, volunteerSetupActor());
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
     }
@@ -1423,7 +1423,7 @@ function volunteerSetupPersonNames(array $personIds): array
  *
  * @return array<int, array<string, mixed>>
  */
-function volunteerSetupPoolRows(VolunteerSetupService $service, int $ministryId): array
+function volunteerSetupPoolRows(VolunteerMinistryService $service, int $ministryId): array
 {
     $membership = $service->getPoolMembership($ministryId);
     if ($membership === []) {
@@ -1469,7 +1469,7 @@ function volunteerSetupPoolRows(VolunteerSetupService $service, int $ministryId)
  * @return array<int, array<string, mixed>>
  */
 function volunteerSetupMemberRows(
-    VolunteerSetupService $service,
+    VolunteerMinistryService $service,
     int $ministryId,
     ?int $teamId,
     array $positionIds
@@ -1512,7 +1512,7 @@ function volunteerSetupMemberRows(
  *
  * @return array{positions: VolunteerPosition[], positionIds: int[]}
  */
-function volunteerSetupMatrixPositions(VolunteerSetupService $service, int $ministryId, ?int $teamId): array
+function volunteerSetupMatrixPositions(VolunteerMinistryService $service, int $ministryId, ?int $teamId): array
 {
     $positions = $service->listPositions($ministryId, $teamId, true);
 
@@ -1556,7 +1556,7 @@ function listVolunteerPoolMembers(Request $request, Response $response): Respons
     /** @var VolunteerMinistry $ministry */
     $ministry = $request->getAttribute('volunteerMinistry');
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $ministryId = (int) $ministry->getId();
     $group = $service->getPoolGroup($ministryId);
 
@@ -1591,7 +1591,7 @@ function addVolunteerPoolMember(Request $request, Response $response): Response
     $personId = (int) SlimUtils::getRouteArgument($request, 'personId');
 
     try {
-        $added = (new VolunteerSetupService())->addPoolMember(
+        $added = (new VolunteerMinistryService())->addPoolMember(
             (int) $ministry->getId(),
             $personId,
             volunteerSetupActor()
@@ -1608,7 +1608,7 @@ function addVolunteerPoolMember(Request $request, Response $response): Response
  *     path="/ministries/ministries/{ministryId}/pool/from-cart",
  *     operationId="addVolunteerPoolMembersFromCart",
  *     summary="Put everyone in the session cart into this ministry's volunteer pool",
- *     description="The V2 Cart sink for the pool (design P5/P6, D19): the route reads Cart::getCartPeople() and hands the ids to VolunteerSetupService::addPoolMembers(), which writes one person2group2role_p2g2r row per person through the managed-write context so the GROUP_MEMBER_ADDED plugin hook fires exactly as it does for the single-person route. Idempotent per person: somebody already in the pool is counted in alreadyMembers rather than failing the batch, so pressing the button twice is safe. No qualification is granted - being in the pool is candidacy, the tick on the grid is eligibility (design section 2.5). The cart is NOT emptied. Takes no request body.",
+ *     description="The V2 Cart sink for the pool (design P5/P6, D19): the route reads Cart::getCartPeople() and hands the ids to VolunteerMinistryService::addPoolMembers(), which writes one person2group2role_p2g2r row per person through the managed-write context so the GROUP_MEMBER_ADDED plugin hook fires exactly as it does for the single-person route. Idempotent per person: somebody already in the pool is counted in alreadyMembers rather than failing the batch, so pressing the button twice is safe. No qualification is granted - being in the pool is candidacy, the tick on the grid is eligibility (design section 2.5). The cart is NOT emptied. Takes no request body.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
@@ -1647,7 +1647,7 @@ function addVolunteerPoolMembersFromCart(Request $request, Response $response): 
     }
 
     try {
-        $result = (new VolunteerSetupService())->addPoolMembers(
+        $result = (new VolunteerMinistryService())->addPoolMembers(
             (int) $ministry->getId(),
             $personIds,
             volunteerSetupActor()
@@ -1684,7 +1684,7 @@ function removeVolunteerPoolMember(Request $request, Response $response): Respon
     $ministry = $request->getAttribute('volunteerMinistry');
 
     try {
-        (new VolunteerSetupService())->removePoolMember(
+        (new VolunteerMinistryService())->removePoolMember(
             (int) $ministry->getId(),
             (int) SlimUtils::getRouteArgument($request, 'personId'),
             volunteerSetupActor()
@@ -1761,7 +1761,7 @@ function listVolunteerMatrixMembers(Request $request, Response $response): Respo
     /** @var VolunteerMinistry $ministry */
     $ministry = $request->getAttribute('volunteerMinistry');
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $ministryId = (int) $ministry->getId();
     $teamId = volunteerSetupTeamFilter($request);
     $positions = volunteerSetupMatrixPositions($service, $ministryId, $teamId);
@@ -1793,7 +1793,7 @@ function listVolunteerTeamMembers(Request $request, Response $response): Respons
     /** @var VolunteerTeam $team */
     $team = $request->getAttribute('volunteerTeam');
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $ministryId = (int) $team->getMinistryId();
     $teamId = (int) $team->getId();
     $positions = volunteerSetupMatrixPositions($service, $ministryId, $teamId);
@@ -1832,7 +1832,7 @@ function getVolunteerQualificationMatrix(Request $request, Response $response): 
     /** @var VolunteerMinistry $ministry */
     $ministry = $request->getAttribute('volunteerMinistry');
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $ministryId = (int) $ministry->getId();
     $teamId = volunteerSetupTeamFilter($request);
 
@@ -1877,7 +1877,7 @@ function getVolunteerTeamQualificationMatrix(Request $request, Response $respons
     /** @var VolunteerTeam $team */
     $team = $request->getAttribute('volunteerTeam');
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $ministryId = (int) $team->getMinistryId();
     $teamId = (int) $team->getId();
 
@@ -1918,7 +1918,7 @@ function listVolunteerQualifications(Request $request, Response $response): Resp
     /** @var VolunteerPosition $position */
     $position = $request->getAttribute('volunteerPosition');
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $qualifications = $service->listQualifications(
         (int) $position->getId(),
         volunteerSetupActiveFilter($request)
@@ -1971,7 +1971,7 @@ function grantVolunteerQualification(Request $request, Response $response): Resp
     $body = (array) $request->getParsedBody();
     $personId = (int) ($body['personId'] ?? 0);
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     // Asked BEFORE the write, which is the only moment the answer exists: the
     // grant itself is an upsert (ministries-scopes.php takes the same shape).
     $existing = $service->findQualification($personId, (int) $position->getId());
@@ -2024,7 +2024,7 @@ function revokeVolunteerQualification(Request $request, Response $response): Res
     $qualification = $request->getAttribute('volunteerQualification');
 
     try {
-        $qualification = (new VolunteerSetupService())->revokeQualification(
+        $qualification = (new VolunteerMinistryService())->revokeQualification(
             $qualification,
             volunteerSetupActor()
         );
@@ -2065,7 +2065,7 @@ function listVolunteerQualificationsForPerson(Request $request, Response $respon
 {
     $personId = (int) SlimUtils::getRouteArgument($request, 'personId');
 
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
     $authz = $service->getAuthorizationService();
     $actor = volunteerSetupActor();
 

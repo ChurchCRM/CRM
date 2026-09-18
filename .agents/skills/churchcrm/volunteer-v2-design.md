@@ -295,7 +295,7 @@ Legend for **Decision**:
 | P3 | "Eligible people for this position" picker | — (V2-specific query, no core equivalent) | **New endpoint, reused UI** | `GET /api/ministries/occurrences/{id}/eligible?positionId=` (§3.3). Renders through the shared person-select helper (P4). The *query* is new because qualification is new; the *widget* is not. |
 | P4 | Person picker UI (TomSelect) | Duplicated 3× (re-counted at `a22e68128` for the CR1 issue draft; `webpack/people/person-group-manager.js:114-160` is a pre-populated *group* picker, not an AJAX person search) with **two different class conventions**: `src/skin/js/GroupView.js:488-519` (`.personSearch`), `webpack/event-checkin.js:24-71` and `:583-620` (`.person-search`), `webpack/people/person-group-manager.js:114-160` | **Extract → reuse** (core-reusable) | **No shared module exists.** Create `webpack/common/person-select.ts` exporting `initPersonSelect(el, opts)` honouring both class conventions and accepting a custom `endpoint` (so V2 passes the eligible-people endpoint). Migrate `event-checkin.js` onto it in the same PR. Then V2 uses it. See §7.1-CR1. |
 | P5 | Bulk person selection (Cart) | `src/ChurchCRM/dto/Cart.php`; `src/api/routes/cart.php`; `src/skin/js/cart.js` | **Reuse** | The declarative DOM contract (`data-cart-id` + `data-cart-type` + class `AddToCart`/`RemoveFromCart`, wired at `cart.js:483-521`, `:638-683`) means a V2 DataTable row action needs **zero new JS** — just the right markup, exactly as `GroupList.js:131-132` does. Do not build a second bulk-selection mechanism. |
-| P6 | Cart **sink** for V2 | precedents: `Cart::emptyToGroup()` `Cart.php:180`, `Cart::emptyToFamily()` `:206`, `src/event/routes/event.php:65` cart-to-event | **Extend** | One V2 sink: `POST /api/ministries/ministries/{id}/pool/from-cart` (§3.3.1) — everyone in the cart joins the ministry's volunteer **pool**, and nothing is qualified or assigned. Put the loop in `VolunteerSetupService::addPoolMembers()`, not in `Cart` — the route calls `Cart::getCartPeople()` (`:243`) and then the service. **RETIRED:** the earlier sinks `POST /volunteer/cart/assign` and `POST /volunteer/positions/{id}/qualifications/from-cart` are gone (see §5.4 and §5.5) — bulk *assignment* half-succeeded under the per-person rules I1–I5, and bulk *qualification* made two statements in one click. **Gotcha:** the cart dropdown menu HTML (`cart.js:606-636`) is hardcoded with no extension point; adding a V2 entry there means editing that function. |
+| P6 | Cart **sink** for V2 | precedents: `Cart::emptyToGroup()` `Cart.php:180`, `Cart::emptyToFamily()` `:206`, `src/event/routes/event.php:65` cart-to-event | **Extend** | One V2 sink: `POST /api/ministries/ministries/{id}/pool/from-cart` (§3.3.1) — everyone in the cart joins the ministry's volunteer **pool**, and nothing is qualified or assigned. Put the loop in `VolunteerMinistryService::addPoolMembers()`, not in `Cart` — the route calls `Cart::getCartPeople()` (`:243`) and then the service. **RETIRED:** the earlier sinks `POST /volunteer/cart/assign` and `POST /volunteer/positions/{id}/qualifications/from-cart` are gone (see §5.4 and §5.5) — bulk *assignment* half-succeeded under the per-person rules I1–I5, and bulk *qualification* made two statements in one click. **Gotcha:** the cart dropdown menu HTML (`cart.js:606-636`) is hardcoded with no extension point; adding a V2 entry there means editing that function. |
 | P7 | Cart as a durable store | `$_SESSION['aPeopleCart']` | **Do not use** | Session-scoped, cleared on logout, person-ids only, shared across tabs, no size cap. It cannot be a draft-assignment store or a volunteer's self-service basket. |
 | P8 | Person profile / photo | `src/ChurchCRM/Utils/...`, `window.CRM.avatarLoader` (`webpack/avatar-loader.ts`) | **Reuse** | V2 rosters render `<img data-image-entity-type="person" data-image-entity-id=… class="avatar avatar-sm me-2">` and call `window.CRM.avatarLoader.refresh()` — the `GroupView.js:783-799`, `:899` pattern. V2 never duplicates person data. |
 
@@ -536,7 +536,7 @@ finest authorization scope (Team Leader) and the usual owner of a pool and a sch
 
 Indexes: `vtem_ministry_name_uidx UNIQUE (vtem_vmin_ID, vtem_Name)`, `vtem_ministry_idx (vtem_vmin_ID)`.
 
-**A ministry never has zero teams (D18).** `VolunteerSetupService::createMinistry()` creates the
+**A ministry never has zero teams (D18).** `VolunteerMinistryService::createMinistry()` creates the
 first one — `"{Ministry name} Team"` — inside the same transaction as the ministry, so the API, the
 setup wizard and any future importer all get it without each remembering to. It is an ordinary row:
 rename it, add more beside it. What cannot happen is removing the last one — `deleteTeam()` answers
@@ -575,7 +575,7 @@ A Group that a ministry **owns** answers all three. The column:
 ```
 
 `ON DELETE SET NULL`, never `CASCADE`: a cascade from a V2 table to `group_grp` is how a church
-loses a group to a foreign key it never knew about. `VolunteerSetupService::deleteMinistry()`
+loses a group to a foreign key it never knew about. `VolunteerMinistryService::deleteMinistry()`
 removes the pool Group **explicitly**, inside the same transaction, through the managed-write
 context — so the removal is a decision taken in the open, and `Group::preDelete()` refuses it
 from anywhere else.
@@ -631,7 +631,7 @@ Indexes: `vpos_ministry_team_name_uidx UNIQUE (vpos_vmin_ID, vpos_vtem_ID, vpos_
 > **The MySQL NULL trap this index used to have is gone.** While `vpos_vtem_ID` was nullable, MySQL
 > treated two `NULL`s in the `UNIQUE` key as distinct, so two ministry-wide positions could share a
 > name. D18 made the column `NOT NULL` — with a real team on every row the key now catches every
-> duplicate by itself. `VolunteerSetupService::createPosition()` keeps its explicit check anyway,
+> duplicate by itself. `VolunteerMinistryService::createPosition()` keeps its explicit check anyway,
 > for two reasons that have nothing to do with NULLs: the index would raise a driver error rather
 > than a `409`, and the index is case-insensitive only by collation accident, while the service
 > means it. Note what was *not* done: the column is `NOT NULL` because every position genuinely has
@@ -1055,7 +1055,7 @@ team". See §4.4 for the authorization semantics.
 | `vscp_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vscp_per_ID` | `PersonId` | `mediumint(9) unsigned` required | FK → `person_per.per_ID`, `ON DELETE CASCADE`. Keyed on the **person**, not the user, so a scope may be granted before the person has a login — and `User::getId()` already returns the person id (F4), so lookups need no join. |
 | `vscp_ScopeType` | `ScopeType` | `enum('ministry','team')` required | |
-| `vscp_ScopeId` | `ScopeId` | `INTEGER` required | `vmin_ID` or `vtem_ID`. Polymorphic ⇒ **no DB FK**; referential integrity is enforced in `VolunteerAuthorizationService` and by `ON DELETE` cleanup in `VolunteerSetupService::deleteMinistry()/deleteTeam()`. |
+| `vscp_ScopeId` | `ScopeId` | `INTEGER` required | `vmin_ID` or `vtem_ID`. Polymorphic ⇒ **no DB FK**; referential integrity is enforced in `VolunteerAuthorizationService` and by `ON DELETE` cleanup in `VolunteerMinistryService::deleteMinistry()/deleteTeam()`. |
 | `vscp_GrantedDate` | `GrantedDate` | `DATETIME` required | |
 | `vscp_GrantedBy_per_ID` | `GrantedByPersonId` | `mediumint(9) unsigned` null | FK → `person_per.per_ID`, `ON DELETE SET NULL` |
 
@@ -1279,7 +1279,7 @@ links and already-sent mail still work.
 // src/volunteer/index.php
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
-use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\MvcAppFactory;
 use Slim\Routing\RouteCollectorProxy;
 
@@ -1493,7 +1493,7 @@ final class VolunteerAuthorizationService
 ```
 
 ```php
-final class VolunteerSetupService
+final class VolunteerMinistryService
 {
     public function createMinistry(string $name, string $description, User $actor): VolunteerMinistry;
     public function updateMinistry(VolunteerMinistry $m, array $fields, User $actor): VolunteerMinistry;
@@ -1865,7 +1865,7 @@ The codebase already uses three layers, and V2 uses the same three — no more, 
 | **Handler / service** | "Is this *particular operation* on this record allowed, is the payload in scope, and is the volunteer eligible?" | self-or-authorized checks, eligibility and capacity at signup time, and **list-query scoping**, which no middleware can do. |
 
 ```php
-// src/ChurchCRM/Slim/Middleware/Request/Auth/VolunteerCoordinatorRoleAuthMiddleware.php
+// src/ChurchCRM/Volunteer/Middleware/VolunteerCoordinatorRoleAuthMiddleware.php
 class VolunteerCoordinatorRoleAuthMiddleware extends BaseAuthRoleMiddleware
 {
     protected function hasRole(): bool
@@ -2008,7 +2008,7 @@ the global `ManageGroups` flag (blunt — grants edit rights over *every* group 
 calling `addUserToGroupInternal()` (auth-free, a **silent bypass**).
 
 **Deleting** a managed group is nobody's: `Group::preDelete()` throws for a group with a ministry
-id unless the managed-write context is open, so `VolunteerSetupService::deleteMinistry()` is the
+id unless the managed-write context is open, so `VolunteerMinistryService::deleteMinistry()` is the
 only path, and the `409` from `DELETE /api/groups/{id}` is a statement about the model rather than
 a UI convention.
 
@@ -2863,7 +2863,7 @@ with the API-key evidence; RBAC #8758 evaluated and found absent from the codeba
 
 *Normative sections:* §2.5, §2.6, §2.7, §3.3.1, §5.3, §5.4. *Depends on:* #9705, #9706. *Needs* CR1.
 
-**PR contains:** `VolunteerSetupService` (pool + position + qualification halves); the pool,
+**PR contains:** `VolunteerMinistryService` (pool + position + qualification halves); the pool,
 position and qualification endpoints; S3's Teams / Positions / Qualifications tabs; the
 qualification matrix; `private.volunteer.setup.spec.js` extended.
 
@@ -2980,7 +2980,7 @@ recommendation, and how to disable V2 without data loss.
 
 *Normative sections:* §2.3, §2.4, §2.6, §3.3.1, §5.3. *Depends on:* #9705, #9706.
 
-**PR contains:** the ministry/team/position halves of `VolunteerSetupService`; their endpoints; S3
+**PR contains:** the ministry/team/position halves of `VolunteerMinistryService`; their endpoints; S3
 (the ministry page) and its `admin.volunteer-v2.ministry-page.spec.js`. It originally contained S2,
 the guided setup flow; §5.3 records why that was removed and what replaced it.
 
@@ -3074,7 +3074,7 @@ Constraints an implementer must respect:
   the 7.8.0 block.
 - **#9709 is the keystone.** Waves 5 and 6 all consume `VolunteerAssignmentService`. Do not start
   #9710/#9711/#9712 against a stub.
-- #9715 and #9707 both touch `VolunteerSetupService`. Split it cleanly: #9715 owns ministry / team /
+- #9715 and #9707 both touch `VolunteerMinistryService`. Split it cleanly: #9715 owns ministry / team /
   position; #9707 owns pool / qualification. If one lands first, the other rebases.
 - #9713's migration must run **after** #9705's (the FK target must exist). Order them inside the
   `scripts` array in `upgrade.json`.
@@ -3120,8 +3120,8 @@ consume it. This is #9703 deliverable 8.
 | Service | Why | Consumer issues |
 |---|---|---|
 | `VolunteerAuthorizationService` | No scope primitive exists (F10). Must be one class so the admin bypass lives in exactly one place and so a future `AuthorizationService` (#8758) can absorb it without call-site churn. | #9706 and every later issue |
-| `VolunteerSetupService` | Ministry/team/pool/position/qualification CRUD with scope checks. `GroupService` is deliberately not extended: ~60 % raw concatenated SQL, `bManageGroups`-only gating, and `addUserToGroup()` swallows failures (G10). | #9707, #9715, D19 |
-| `VolunteerPoolWriter` | D19's managed-write context and the hook predicate, in one small final class so the two core models share exactly one implementation of "may this caller write a ministry's pool Group". Deliberately not a method on `VolunteerSetupService`: the models must not depend on the setup service, and a depth counter with `try`/`finally` is the whole of it (§4.6). | D19 |
+| `VolunteerMinistryService` | Ministry/team/pool/position/qualification CRUD with scope checks. `GroupService` is deliberately not extended: ~60 % raw concatenated SQL, `bManageGroups`-only gating, and `addUserToGroup()` swallows failures (G10). | #9707, #9715, D19 |
+| `VolunteerPoolWriter` | D19's managed-write context and the hook predicate, in one small final class so the two core models share exactly one implementation of "may this caller write a ministry's pool Group". Deliberately not a method on `VolunteerMinistryService`: the models must not depend on the setup service, and a depth counter with `try`/`finally` is the whole of it (§4.6). | D19 |
 | `VolunteerScheduleService` | Occurrence generation, the linked/unlinked window resolution, and the effective-requirement merge. Cannot live in `EventService`, which exists to *create* events — precisely what #9713 forbids. | #9708, #9713 |
 | `VolunteerAssignmentService` | The whole assignment/response/gap/swap workflow, including the single gap implementation. No analogue exists. | #9709, #9711, #9712 |
 | `VolunteerNotificationService` | `dto\Notification` cannot carry a message body (no-op setters, hard-coded text, `sendSMS()` always returns `true`) and `NotificationService` is an in-app banner registry with no table. Neither can enqueue, deduplicate, schedule or retry. | #9710 |
@@ -3255,7 +3255,7 @@ in the `window.CRM` block at `src/Include/Header.php:160-245`. The server gate i
 
 ## Appendix C — Email templates
 
-Seven `BaseEmail` subclasses under `src/ChurchCRM/Emails/volunteer/`. Every one of them reuses the
+Seven `BaseEmail` subclasses under `src/ChurchCRM/Volunteer/Email/`. Every one of them reuses the
 single Twig template `src/templates/email/BaseEmail.html.twig` and the branding tokens from
 `BaseEmail::getCommonTokens()` — `getTemplateName()` is **never** overridden by any existing
 subclass and V2 does not start.

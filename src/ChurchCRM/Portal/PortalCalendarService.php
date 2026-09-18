@@ -15,7 +15,7 @@ use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
-use ChurchCRM\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\SystemCalendars\AnniversariesCalendar;
 use ChurchCRM\SystemCalendars\BirthdaysCalendar;
 use ChurchCRM\SystemCalendars\SystemCalendar;

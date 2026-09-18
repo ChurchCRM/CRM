@@ -260,12 +260,12 @@ function createMinistry(suffix) {
  * A team for the ministry.
  *
  * These fixtures insert their ministry with raw SQL, which bypasses
- * `VolunteerSetupService::createMinistry()` and therefore the team it would have
+ * `VolunteerMinistryService::createMinistry()` and therefore the team it would have
  * created — so the team is inserted here too. Positions and schedules are
  * `NOT NULL` on their team column, so one has to exist before either.
  */
 /**
- * The ministry's own calendar. `VolunteerSetupService::createMinistry()` creates one
+ * The ministry's own calendar. `VolunteerMinistryService::createMinistry()` creates one
  * with every ministry; these fixtures insert their ministry with raw SQL and therefore
  * have to insert the calendar too, exactly as they already do for the team.
  */

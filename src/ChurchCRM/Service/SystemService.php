@@ -11,6 +11,8 @@ use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerNotificationService;
 use PDO;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Exception\PropelException;

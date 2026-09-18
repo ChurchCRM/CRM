@@ -12,7 +12,7 @@
  * and the portal page. This spec covers the half that needed the volunteer schema:
  *
  *   1. the foreign key to `volunteer_ministry_vmin`, ON DELETE SET NULL;
- *   2. `VolunteerSetupService::createMinistry()` creating the calendar in the same
+ *   2. `VolunteerMinistryService::createMinistry()` creating the calendar in the same
  *      transaction as the ministry, renaming it with the ministry and deleting it
  *      with the ministry — the D19 pool-Group lifecycle, applied to a calendar;
  *   3. the pin exception: a coordinator WITHOUT Add Events may pin an event to their

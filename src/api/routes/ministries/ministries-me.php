@@ -3,7 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignment;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
-use ChurchCRM\Exceptions\VolunteerSetupException;
+use ChurchCRM\Volunteer\VolunteerException;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
@@ -13,10 +13,10 @@ use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSwap;
 use ChurchCRM\model\ChurchCRM\VolunteerSwapQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
-use ChurchCRM\Service\VolunteerAssignmentService;
-use ChurchCRM\Service\VolunteerSetupService;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -507,8 +507,8 @@ function listMyVolunteerQualifications(Request $request, Response $response): Re
 {
     $personId = (int) AuthenticationManager::getCurrentUser()->getId();
 
-    $setup = new VolunteerSetupService();
-    $qualifications = $setup->listQualificationsForPerson($personId);
+    $ministries = new VolunteerMinistryService();
+    $qualifications = $ministries->listQualificationsForPerson($personId);
 
     $positionIds = [];
     foreach ($qualifications as $qualification) {
@@ -725,7 +725,7 @@ function volunteerMeParseDate(?string $raw): ?\DateTimeInterface
 function listMyVolunteerHelpWanted(Request $request, Response $response): Response
 {
     $personId = (int) AuthenticationManager::getCurrentUser()->getId();
-    $service = new VolunteerSetupService();
+    $service = new VolunteerMinistryService();
 
     $ministries = $service->listHelpWantedMinistries();
     $ministryIds = array_map(
@@ -784,8 +784,8 @@ function offerToHelpVolunteerMinistry(Request $request, Response $response): Res
     }
 
     try {
-        $result = (new VolunteerSetupService())->recordHelpOffer($ministry, $personId);
-    } catch (VolunteerSetupException $e) {
+        $result = (new VolunteerMinistryService())->recordHelpOffer($ministry, $personId);
+    } catch (VolunteerException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), $e->getExtra(), $e->getStatusCode(), null, $request);
     }
 

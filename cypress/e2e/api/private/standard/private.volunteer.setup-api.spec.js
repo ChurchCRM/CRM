@@ -751,7 +751,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
         it("rejects a case-insensitive duplicate inside the same team", () => {
             // The unique index is now able to catch this on its own — vpos_vtem_ID is
             // NOT NULL, so the "MySQL treats NULLs as distinct" hole is gone — but the
-            // explicit check in VolunteerSetupService::createPosition() still owns the
+            // explicit check in VolunteerMinistryService::createPosition() still owns the
             // 409 and its message, and it is the half that is case-insensitive by
             // intent rather than by collation.
             cy.makePrivateAdminAPICall(

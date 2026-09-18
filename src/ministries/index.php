@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Setting\VolunteerV2EnabledMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\MvcAppFactory;
 use Slim\Routing\RouteCollectorProxy;
 

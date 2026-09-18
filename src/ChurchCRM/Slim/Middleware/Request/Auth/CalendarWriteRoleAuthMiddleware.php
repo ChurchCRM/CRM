@@ -6,7 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Slim\Middleware\BrowserRequestTrait;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response;

@@ -204,7 +204,7 @@ function renderTitleFieldInHeader(event) {
  * Volunteer v2 (#9713, design §2.16 item 10): fill and reveal the ministry select.
  *
  * `GET /api/ministries/ministries` is already scoped to what the caller may administer —
- * `VolunteerSetupService::listMinistriesFor()` asks `isGlobalManager()` first and otherwise
+ * `VolunteerMinistryService::listMinistriesFor()` asks `isGlobalManager()` first and otherwise
  * filters by the caller's explicit grants — so no `?manageable=1` filter is needed and the
  * options are exactly the values `POST /api/events` will accept from this caller.
  *

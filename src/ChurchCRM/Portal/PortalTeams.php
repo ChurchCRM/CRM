@@ -11,7 +11,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
-use ChurchCRM\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 

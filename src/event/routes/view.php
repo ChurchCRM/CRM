@@ -11,7 +11,7 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
-use ChurchCRM\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\view\PageHeader;
