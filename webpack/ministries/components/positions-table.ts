@@ -117,12 +117,19 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
           ? `<i class="fa-solid fa-check text-success" aria-label="${escapeHtml(recruitingLabel)}" title="${escapeHtml(recruitingLabel)}"></i>`
           : "";
 
+        const selfLabel = i18next.t("Self sign-up");
+        const selfAssignable =
+          position.selfAssignable !== false
+            ? `<i class="fa-solid fa-check text-success" aria-label="${escapeHtml(selfLabel)}" title="${escapeHtml(selfLabel)}"></i>`
+            : "";
+
         return `<tr>
           <td class="text-center">${position.order}</td>
           <td class="fw-bold">${escapeHtml(position.name)}</td>
           <td>${position.description ? escapeHtml(position.description) : '<span class="text-body-secondary">—</span>'}</td>
           <td>${escapeHtml(position.teamName ?? "")}</td>
           <td class="text-center volunteer-position-recruiting">${recruiting}</td>
+          <td class="text-center volunteer-position-self-assignable">${selfAssignable}</td>
           <td class="text-center">${statusBadge(position.active)}</td>
           <td class="w-1">${menu}</td>
         </tr>`;
@@ -142,6 +149,7 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
     const order = byId<HTMLInputElement>("position-form-order");
     const active = byId<HTMLInputElement>("position-form-active");
     const recruiting = byId<HTMLInputElement>("position-form-recruiting");
+    const selfAssignable = byId<HTMLInputElement>("position-form-self-assignable");
     const teamSelect = byId<HTMLSelectElement>("position-form-team");
     const title = byId("positionModalTitle");
 
@@ -160,6 +168,9 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
     // A NEW position never advertises itself: publishing is a decision, not a default.
     if (recruiting) {
       recruiting.checked = position?.recruiting ?? false;
+    }
+    if (selfAssignable) {
+      selfAssignable.checked = position?.selfAssignable ?? true;
     }
     if (title) {
       title.textContent = position ? i18next.t("Edit position") : i18next.t("Add position");
@@ -188,6 +199,7 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
     const orderValue = byId<HTMLInputElement>("position-form-order")?.value ?? "0";
     const active = byId<HTMLInputElement>("position-form-active")?.checked ?? true;
     const recruiting = byId<HTMLInputElement>("position-form-recruiting")?.checked ?? false;
+    const selfAssignable = byId<HTMLInputElement>("position-form-self-assignable")?.checked ?? true;
     const teamValue = byId<HTMLSelectElement>("position-form-team")?.value ?? "";
     const teamId = Number(teamValue);
 
@@ -210,6 +222,7 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
             teamId,
             order: Number(orderValue) || 0,
             recruiting,
+            selfAssignable,
           })
         : updatePosition(editingPositionId, {
             name,
@@ -218,6 +231,7 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
             order: Number(orderValue) || 0,
             active,
             recruiting,
+            selfAssignable,
           });
 
     saved

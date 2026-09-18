@@ -116,10 +116,10 @@ function cardHtml(opportunity: VolunteerMyOpportunity): string {
 
   const needed =
     opportunity.openCount > 1
-      ? `<span class="badge bg-secondary volunteer-card-needed">${escapeHtml(
+      ? `<span class="badge bg-secondary-lt text-secondary volunteer-card-needed">${escapeHtml(
           i18next.t("{{count}} still needed", { count: opportunity.openCount }),
         )}</span>`
-      : `<span class="badge bg-secondary volunteer-card-needed">${escapeHtml(i18next.t("One more needed"))}</span>`;
+      : `<span class="badge bg-secondary-lt text-secondary volunteer-card-needed">${escapeHtml(i18next.t("One more needed"))}</span>`;
 
   return memberCardHtml({
     variantClass: "volunteer-opportunity-card",

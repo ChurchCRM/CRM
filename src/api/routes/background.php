@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -17,6 +18,7 @@ $app->group('/background', function (RouteCollectorProxy $group): void {
  *     description="Fallback trigger fired from the page footer on every authenticated page load, for installs that cannot run cron. The jobs are rate limited server-side by iTimerJobsMinIntervalMinutes, so a call inside that window returns ran=false without doing any work. The supported scheduler is the command-line runner (cli/timerjobs.php) driven by cron.",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=false, @OA\JsonContent(@OA\Property(property="force", type="boolean", description="Administrators only: run now even inside the minimum interval"))),
  *     @OA\Response(response=200, description="Timer jobs executed, or skipped by the rate limit",
  *         @OA\JsonContent(
  *             @OA\Property(property="ran", type="boolean", example=true, description="False when the rate limit skipped this call"),
@@ -28,7 +30,12 @@ $app->group('/background', function (RouteCollectorProxy $group): void {
  */
 function runTimerJobsAPI(Request $request, Response $response, array $args): Response
 {
-    $ran = SystemService::runTimerJobs();
+    // `force` skips the minimum interval. Administrators only: it is the "Run
+    // background jobs now" button on Admin → Ministry Settings, for an install
+    // without cron that wants a queued reminder out this minute.
+    $body = (array) $request->getParsedBody();
+    $force = !empty($body['force']) && AuthenticationManager::getCurrentUser()->isAdmin();
+    $ran = SystemService::runTimerJobs($force);
     $lastRun = SystemService::getLastTimerJobsRun();
 
     return SlimUtils::renderJSON($response, [

@@ -40,7 +40,7 @@ const SCHEDULE_SUNDAY = `${PREFIX} Sunday Morning`;
 
 /** The exact wording the product owner chose for the switch and its hint. */
 const SWITCH_LABEL = "Recruit Volunteers";
-const SWITCH_HINT = "Advertise this position on the Open Opportunities page.";
+const SWITCH_HINT = "Advertise this position on the Member Portal Open Opportunities page.";
 
 let ministryId = 0;
 let firstTeamId = 0;
@@ -246,11 +246,15 @@ describe("Volunteer v2 ministry page, round four (#9701)", () => {
             cy.get("#occurrences-table-wrapper .dt-buttons").should("not.exist");
         });
 
-        it("still marks the Actions column no-export", () => {
+        it("keeps the export away from the checkbox column, and has no Actions column", () => {
             cy.visit(ministryUrl());
             openOccurrencesTab();
 
-            cy.get("#volunteerOccurrencesTable thead th").last().should("have.class", "no-export");
+            // The Actions column went on 2026-09-18; the row's checkbox leads instead
+            // and is the one column an export must skip.
+            cy.get("#volunteerOccurrencesTable thead th").first().should("have.class", "no-export");
+            cy.get("#volunteerOccurrencesTable thead th").last().should("contain", "Filled").and("not.have.class", "no-export");
+            cy.get("#volunteerOccurrencesTable thead th").should("not.contain", "Actions");
         });
 
         it("renders one toolbar, not one per reload of the table", () => {
@@ -373,7 +377,7 @@ describe("Volunteer v2 ministry page, round four (#9701)", () => {
             freshAdminLogin();
         });
 
-        it("has a Recruiting header between Team and Status", () => {
+        it("has Recruiting and Self sign-up headers between Team and Status", () => {
             cy.visit(ministryUrl());
             openPositionsTab();
 
@@ -385,6 +389,7 @@ describe("Volunteer v2 ministry page, round four (#9701)", () => {
                     "Description",
                     "Team",
                     "Recruiting",
+                    "Self sign-up",
                     "Status",
                     "Actions",
                 ]);

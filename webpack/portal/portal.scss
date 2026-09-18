@@ -12,3 +12,13 @@
 // clip. They live in `_volunteer.scss` because the admin ministry page needs them
 // too; both are axis rules, not directional ones, so they are safe here.
 @use "../../src/skin/scss/volunteer";
+
+/* Status badges on the volunteering cards (review, 2026-09-18): tinted background,
+   matching dark text, a hairline border and real weight — Tabler's solid
+   badges put white on yellow and light blue, which was unreadable. */
+.volunteer-card-status,
+.volunteer-card-needed {
+  font-weight: 600;
+  border: 1px solid currentColor;
+  letter-spacing: 0.01em;
+}

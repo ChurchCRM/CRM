@@ -769,6 +769,35 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
         });
 
+        it("defaults Self-assignable to on, and only a real boolean turns it off (2026-09-18)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${MINISTRIES_URL}/${ministryA}/positions`,
+                { name: `${PREFIX} Preacher`, description: "Chosen, not signed up for", teamId: homeTeamId, order: 9 },
+                201,
+            ).then((resp) => {
+                const id = resp.body.position.id;
+                expect(resp.body.position.selfAssignable, "the default").to.eq(true);
+
+                cy.makePrivateAdminAPICall("POST", `/api/ministries/positions/${id}`, { selfAssignable: false }, 200).then((upd) => {
+                    expect(upd.body.position.selfAssignable).to.eq(false);
+                });
+                cy.makePrivateAdminAPICall("GET", `/api/ministries/positions/${id}`, null, 200).then((read) => {
+                    expect(read.body.position.selfAssignable).to.eq(false);
+                });
+                cy.makePrivateAdminAPICall("POST", `/api/ministries/positions/${id}`, { selfAssignable: "no" }, 400);
+            });
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${MINISTRIES_URL}/${ministryA}/positions`,
+                { name: `${PREFIX} Preacher Off`, teamId: homeTeamId, order: 10, selfAssignable: false },
+                201,
+            ).then((resp) => {
+                expect(resp.body.position.selfAssignable).to.eq(false);
+            });
+        });
+
         it("rejects a position with no team at all (400)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",

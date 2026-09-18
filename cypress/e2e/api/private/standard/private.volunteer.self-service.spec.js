@@ -834,6 +834,40 @@ describe("Volunteer v2 member API — the substitute picker", () => {
 
 // ── §4.8 negatives on the member surface ───────────────────────────────────
 
+describe("Volunteer v2 member API — a position that is not self-assignable (2026-09-18)", () => {
+    let posPreacher = 0;
+
+    before(() => {
+        // Qualified for it, and the occurrence is short of it — everything that
+        // would make it an opportunity, except the switch.
+        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/positions`, {
+            name: `${FIXTURE_PREFIX} Preacher`,
+            description: "Chosen by the coordinator",
+            teamId,
+            order: 9,
+            selfAssignable: false,
+        }, 201).then((resp) => {
+            posPreacher = resp.body.position.id;
+            qualify(posPreacher, PERSON_VOLUNTEER);
+            upsertRequirement(posPreacher, 1, 1);
+        });
+    });
+
+    it("is never listed among the member's opportunities", () => {
+        myOpportunities().then((rows) => {
+            expect(rows.map((r) => r.positionId)).to.not.include(posPreacher);
+            // …while a self-assignable position on the same occurrence still is.
+            expect(rows.map((r) => r.positionId)).to.include(posDoor);
+        });
+    });
+
+    it("refuses a direct sign-up with 403, in words", () => {
+        signup(occurrenceOne, posPreacher, 403).then((resp) => {
+            expect(resp.body.message).to.include("team leader or coordinator");
+        });
+    });
+});
+
 describe("Volunteer v2 member API — §4.8 negatives", () => {
     beforeEach(() => {
         cleanupWorkflowRows();

@@ -74,6 +74,8 @@ export interface VolunteerPosition {
   active: boolean;
   /** "Recruit Volunteers": advertise this position by name on Open Opportunities. */
   recruiting: boolean;
+  /** Off: the portal never offers it and self-signup is refused; a leader assigns it. */
+  selfAssignable: boolean;
   order: number;
 }
 
@@ -302,14 +304,23 @@ export function listPositions(ministryId: number, teamId?: number | null): Promi
 
 export function createPosition(
   ministryId: number,
-  payload: { name: string; description: string; teamId: number | null; order: number; recruiting?: boolean },
+  payload: {
+    name: string;
+    description: string;
+    teamId: number | null;
+    order: number;
+    recruiting?: boolean;
+    selfAssignable?: boolean;
+  },
 ): Promise<{ position: VolunteerPosition }> {
   return request(`/ministries/${ministryId}/positions`, { method: "POST", body: JSON.stringify(payload) });
 }
 
 export function updatePosition(
   positionId: number,
-  fields: Partial<Pick<VolunteerPosition, "name" | "description" | "teamId" | "order" | "active" | "recruiting">>,
+  fields: Partial<
+    Pick<VolunteerPosition, "name" | "description" | "teamId" | "order" | "active" | "recruiting" | "selfAssignable">
+  >,
 ): Promise<{ position: VolunteerPosition }> {
   return request(`/positions/${positionId}`, { method: "POST", body: JSON.stringify(fields) });
 }

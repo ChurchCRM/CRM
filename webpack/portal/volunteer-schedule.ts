@@ -81,23 +81,23 @@ function statusBadge(assignment: VolunteerMyAssignment): { label: string; classN
       label: assignment.pendingSwapPersonName
         ? tText("Substitute asked: {{name}}", { name: assignment.pendingSwapPersonName })
         : i18next.t("Substitute asked"),
-      className: "bg-info",
+      className: "bg-azure-lt text-azure",
     };
   }
 
   switch (assignment.status) {
     case "accepted":
-      return { label: i18next.t("Going"), className: "bg-success" };
+      return { label: i18next.t("Going"), className: "bg-green-lt text-green" };
     case "declined":
-      return { label: i18next.t("Declined"), className: "bg-secondary" };
+      return { label: i18next.t("Declined"), className: "bg-secondary-lt text-secondary" };
     case "cancelled":
-      return { label: i18next.t("No longer needed"), className: "bg-secondary" };
+      return { label: i18next.t("No longer needed"), className: "bg-secondary-lt text-secondary" };
     case "substituted":
-      return { label: i18next.t("Someone else is covering"), className: "bg-secondary" };
+      return { label: i18next.t("Someone else is covering"), className: "bg-secondary-lt text-secondary" };
     case "completed":
-      return { label: i18next.t("Thank you"), className: "bg-primary" };
+      return { label: i18next.t("Thank you"), className: "bg-blue-lt text-blue" };
     default:
-      return { label: i18next.t("Needs an answer"), className: "bg-warning" };
+      return { label: i18next.t("Needs an answer"), className: "bg-yellow-lt text-yellow" };
   }
 }
 

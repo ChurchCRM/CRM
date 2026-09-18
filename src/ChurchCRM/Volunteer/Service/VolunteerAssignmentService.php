@@ -298,6 +298,10 @@ class VolunteerAssignmentService
      */
     public function selfSignup(VolunteerOccurrence $occurrence, VolunteerPosition $position, User $actor): VolunteerAssignment
     {
+        if (!$position->getSelfAssignable()) {
+            throw VolunteerException::forbidden(gettext('This position is assigned by its team leader or coordinator, not by signing up'));
+        }
+
         $personId = (int) $actor->getId();
         $this->assertCapacityAvailable($occurrence, $position);
 
@@ -1617,6 +1621,9 @@ class VolunteerAssignmentService
             VolunteerPositionQuery::create()
                 ->filterById(array_keys($positionIds), Criteria::IN)
                 ->filterByActive(true)
+                // A position its team leader or coordinator fills is never an
+                // opportunity, however qualified the member is (2026-09-18).
+                ->filterBySelfAssignable(true)
                 ->find() as $position
         ) {
             $positions[(int) $position->getId()] = $position;

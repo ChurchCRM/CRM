@@ -55,6 +55,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <?= gettext('Background jobs last ran') ?>:
             <strong id="ministry-last-run"><?= $sLastTimerJobsRun === '' ? gettext('never') : InputUtils::escapeHTML($sLastTimerJobsRun) ?></strong>
           </p>
+          <p class="mb-2">
+            <button type="button" class="btn btn-sm btn-outline-primary" id="ministry-run-jobs-btn">
+              <i class="fa-solid fa-play me-1"></i><?= gettext('Run background jobs now') ?>
+            </button>
+            <span class="text-body-secondary small ms-2"><?= gettext('Sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run.') ?></span>
+          </p>
           <p class="text-body-secondary small mb-0" id="ministry-cron-hint">
             <i class="fa-solid fa-clock me-1"></i>
             <?= gettext('Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes') ?> —
@@ -121,6 +127,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function () {
+    var runBtn = document.getElementById('ministry-run-jobs-btn');
+    if (runBtn) {
+        runBtn.addEventListener('click', function () {
+            runBtn.disabled = true;
+            window.CRM.APIRequest({
+                method: 'POST',
+                path: 'background/timerjobs',
+                data: JSON.stringify({ force: true })
+            }).done(function () {
+                window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('Background jobs ran')) ?>, { type: 'success' });
+                setTimeout(function () { window.location.reload(); }, 1200);
+            }).fail(function () {
+                runBtn.disabled = false;
+            });
+        });
+    }
+
     window.CRM.settingsPanel.init({
         container: '#ministrySettingsPanel',
         title: <?= InputUtils::jsonEncodeForScript(gettext('Settings')) ?>,

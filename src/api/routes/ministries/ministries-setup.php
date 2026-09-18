@@ -353,6 +353,7 @@ function volunteerPositionToArray(VolunteerPosition $position, array $teamNames 
         // the Open Opportunities page. Always on the wire, so a client never has to
         // read an absent key as "off".
         'recruiting' => (bool) $position->getRecruiting(),
+        'selfAssignable' => (bool) $position->getSelfAssignable(),
         'order' => (int) $position->getOrder(),
     ];
 }
@@ -1121,6 +1122,7 @@ function listVolunteerPositions(Request $request, Response $response): Response
  *         @OA\Property(property="teamId", type="integer", description="Required: a position always belongs to a team"),
  *         @OA\Property(property="order", type="integer", description="Display order within the ministry"),
  *         @OA\Property(property="recruiting", type="boolean", default=false, description="Advertise this position by name on the Open Opportunities page. Strictly boolean - true/false/1/0 and their string spellings only; anything else is a 400")
+ *         @OA\Property(property="selfAssignable", type="boolean", default=true, description="Qualified volunteers may sign themselves up for open dates. False: only a team leader or coordinator assigns the position, and the Member Portal never offers it (2026-09-18)."),
  *     )),
  *     @OA\Response(response=400, description="The name or the teamId is missing, the team belongs to another ministry, or recruiting was not a boolean"),
  *     @OA\Response(response=401, description="Not authenticated"),
@@ -1175,6 +1177,16 @@ function createVolunteerPosition(Request $request, Response $response): Response
         }
     }
 
+    // "Self-assignable" defaults to true — what every position did before the
+    // switch existed — and, like recruiting, only a real boolean may turn it off.
+    $selfAssignable = true;
+    if (array_key_exists('selfAssignable', $body)) {
+        $selfAssignable = volunteerSetupStrictBoolean($body['selfAssignable']);
+        if ($selfAssignable === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Self-assignable must be true or false'), [], 400, null, $request);
+        }
+    }
+
     try {
         $position = (new VolunteerMinistryService())->createPosition(
             $ministry,
@@ -1183,7 +1195,8 @@ function createVolunteerPosition(Request $request, Response $response): Response
             isset($body['description']) ? (string) $body['description'] : null,
             isset($body['order']) ? (int) $body['order'] : 0,
             volunteerSetupActor(),
-            $recruiting
+            $recruiting,
+            $selfAssignable
         );
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
@@ -1236,6 +1249,7 @@ function getVolunteerPosition(Request $request, Response $response): Response
  *         @OA\Property(property="order", type="integer"),
  *         @OA\Property(property="active", type="boolean"),
  *         @OA\Property(property="recruiting", type="boolean", description="Advertise this position by name on the Open Opportunities page. Strictly boolean - true/false/1/0 and their string spellings only; anything else is a 400")
+ *         @OA\Property(property="selfAssignable", type="boolean", default=true, description="Qualified volunteers may sign themselves up for open dates. False: only a team leader or coordinator assigns the position, and the Member Portal never offers it (2026-09-18)."),
  *     )),
  *     @OA\Response(response=400, description="The name was sent empty, the team belongs to another ministry, or recruiting was not a boolean"),
  *     @OA\Response(response=401, description="Not authenticated"),
@@ -1271,6 +1285,13 @@ function updateVolunteerPosition(Request $request, Response $response): Response
             );
         }
         $fields['recruiting'] = $recruiting;
+    }
+    if (array_key_exists('selfAssignable', $body)) {
+        $selfAssignable = volunteerSetupStrictBoolean($body['selfAssignable']);
+        if ($selfAssignable === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Self-assignable must be true or false'), [], 400, null, $request);
+        }
+        $fields['selfAssignable'] = $selfAssignable;
     }
 
     try {

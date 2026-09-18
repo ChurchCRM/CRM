@@ -768,7 +768,8 @@ class VolunteerMinistryService
         ?string $description,
         int $order,
         User $actor,
-        bool $recruiting = false
+        bool $recruiting = false,
+        bool $selfAssignable = true
     ): VolunteerPosition {
         $ministryId = (int) $ministry->getId();
 
@@ -788,6 +789,10 @@ class VolunteerMinistryService
         $position->setDescription($this->normalizeDescription($description));
         $position->setActive(true);
         $position->setRecruiting($recruiting);
+        // "Self-assignable" (2026-09-18): off means the Member Portal never offers
+        // the position and self-signup is refused — a team leader or coordinator
+        // assigns it. On by default: that is what every position did before.
+        $position->setSelfAssignable($selfAssignable);
         $position->setOrder($order);
         $position->save();
 
@@ -813,7 +818,7 @@ class VolunteerMinistryService
      * There is no "move it out of every team" any more (D18): a null `teamId` is a
      * 400, not a promotion to ministry-wide.
      *
-     * @param array{name?: string, description?: string|null, teamId?: int, order?: int, active?: bool, recruiting?: bool} $fields
+     * @param array{name?: string, description?: string|null, teamId?: int, order?: int, active?: bool, recruiting?: bool, selfAssignable?: bool} $fields
      *
      * @throws VolunteerException
      */
@@ -864,6 +869,10 @@ class VolunteerMinistryService
         // not a real boolean, so the cast here can never invent a `true`.
         if (array_key_exists('recruiting', $fields)) {
             $position->setRecruiting((bool) $fields['recruiting']);
+        }
+
+        if (array_key_exists('selfAssignable', $fields)) {
+            $position->setSelfAssignable((bool) $fields['selfAssignable']);
         }
 
         $position->save();

@@ -118,6 +118,7 @@
                                 <th>{{ gettext('Description') }}</th>
                                 <th>{{ gettext('Team') }}</th>
                                 <th class="text-center">{{ gettext('Recruiting') }}</th>
+                                <th class="text-center">{{ gettext('Self sign-up') }}</th>
                                 <th class="text-center">{{ gettext('Status') }}</th>
                                 <th class="text-center no-export w-1">{{ gettext('Actions') }}</th>
                             </tr>
@@ -322,6 +323,13 @@
                 </div>
                 <div class="form-text" id="position-form-recruiting-hint">
                     {{ gettext('Name this position on the page where members look for something to help with.') }}
+                </div>
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input" type="checkbox" id="position-form-self-assignable" checked>
+                    <label class="form-check-label" for="position-form-self-assignable">{{ gettext('Self-assignable') }}</label>
+                </div>
+                <div class="form-text" id="position-form-self-assignable-hint">
+                    {{ gettext('Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them.') }}
                 </div>
                 <div class="alert alert-danger d-none mt-3" role="alert" id="position-form-error">
                     <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>

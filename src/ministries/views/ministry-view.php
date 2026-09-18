@@ -416,6 +416,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 coordinator can bring the advertised roles together.
               -->
               <th class="text-center"><?= gettext('Recruiting') ?></th>
+              <th class="text-center"><?= gettext('Self sign-up') ?></th>
               <th class="text-center"><?= gettext('Status') ?></th>
               <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
             </tr>
@@ -750,6 +751,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </label>
         <div class="form-text" id="position-form-recruiting-hint">
           <?= gettext('Advertise this position on the Member Portal Open Opportunities page.') ?>
+        </div>
+        <!--
+          Self-assignable (2026-09-18). Being qualified for a position does not mean a
+          volunteer may claim every open date of it: the preacher is chosen, not signed
+          up for. Off, the Member Portal never offers the position and self-signup is
+          refused; a team leader or coordinator assigns it.
+        -->
+        <label class="form-check form-switch mt-3">
+          <input class="form-check-input" type="checkbox" id="position-form-self-assignable" checked>
+          <span class="form-check-label"><?= gettext('Self-assignable') ?></span>
+        </label>
+        <div class="form-text" id="position-form-self-assignable-hint">
+          <?= gettext('Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them.') ?>
         </div>
         <div class="alert alert-danger d-none mt-3" role="alert" id="position-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>

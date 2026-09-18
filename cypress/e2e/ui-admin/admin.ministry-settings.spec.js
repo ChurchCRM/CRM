@@ -83,6 +83,12 @@ describe("Admin → Ministry Settings", () => {
         cy.get("#ministry-failed-count").should("exist");
         cy.get("#ministry-pending-count").should("exist");
         cy.get("#ministry-cron-hint").should("contain", "timerjobs");
+        // "Run background jobs now" forces a run past the minimum interval and
+        // reloads with a fresh "last ran" time (2026-09-18).
+        cy.intercept("POST", "**/api/background/timerjobs").as("run");
+        cy.get("#ministry-run-jobs-btn").should("be.visible").click();
+        cy.wait("@run").its("response.body.ran").should("eq", true);
+        cy.get("#ministry-last-run", { timeout: 10000 }).should("not.contain", "never");
         // V2 is on, so the header offers the dashboard.
         cy.get('a[href$="/ministries/dashboard"]').should("exist");
     });
