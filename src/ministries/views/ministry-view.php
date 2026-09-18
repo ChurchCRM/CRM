@@ -856,7 +856,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
       <div class="modal-body">
         <p class="text-body-secondary">
-          <?= gettext('For a date that follows no calendar event and no schedule. It is staffed like any other occurrence and disappears completely if it is deleted.') ?>
+          <?= gettext('For a date that follows no calendar event and no schedule.') ?>
         </p>
         <div class="mb-3">
           <label class="form-label" for="one-off-form-name"><?= gettext('Name') ?></label>

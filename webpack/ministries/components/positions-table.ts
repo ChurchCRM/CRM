@@ -19,6 +19,7 @@ import {
   createPosition,
   deletePosition,
   errorMessage,
+  listQualifications,
   notifyError,
   notifySuccess,
   updatePosition,
@@ -38,6 +39,7 @@ import {
   show,
   showModalError,
   statusBadge,
+  tText,
   wireModalFadeGuard,
 } from "./ui";
 
@@ -57,6 +59,20 @@ export interface PositionsTableOptions {
 export interface PositionsTableHandle {
   render(positions: VolunteerPosition[]): void;
   openModal(position?: VolunteerPosition): void;
+}
+
+/** The admin shell's cart, typed locally: the core bundle sets it, the portal does not. */
+function cartManager(): { addPerson(ids: number[], options?: { showNotification?: boolean }): unknown } | null {
+  const crm = (window as unknown as { CRM?: { cartManager?: unknown } }).CRM;
+  const manager = crm?.cartManager as { addPerson?: unknown } | undefined;
+
+  return manager && typeof manager.addPerson === "function"
+    ? (manager as { addPerson(ids: number[], options?: { showNotification?: boolean }): unknown })
+    : null;
+}
+
+function hasCart(): boolean {
+  return cartManager() !== null;
 }
 
 export function createPositionsTable(options: PositionsTableOptions): PositionsTableHandle {
@@ -88,16 +104,22 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
             className: "volunteer-position-edit",
             data: { "position-id": position.id },
           },
-          {
-            type: "button",
-            icon: position.active ? "fa-solid fa-toggle-off" : "fa-solid fa-toggle-on",
-            // Deactivation is the answer once a position has history; deleting one
-            // that is referenced is refused by the API with a 409 (§2.6).
-            label: position.active ? i18next.t("Deactivate") : i18next.t("Activate"),
-            className: "volunteer-position-toggle",
-            data: { "position-id": position.id, "position-active": position.active ? "1" : "0" },
-          },
-          { type: "divider" },
+          // Activate / Deactivate is the Active switch inside Edit (review, 2026-09-18).
+          // "Add Volunteers to Cart" puts everyone qualified for the position in the
+          // cart for a mailing; it needs the admin shell's cart, which the portal's
+          // My Teams page does not load.
+          ...(hasCart()
+            ? [
+                {
+                  type: "button" as const,
+                  icon: "fa-solid fa-cart-plus",
+                  label: i18next.t("Add Volunteers to Cart"),
+                  className: "volunteer-position-cart",
+                  data: { "position-id": position.id, "position-name": position.name },
+                },
+              ]
+            : []),
+          { type: "divider" as const },
           {
             type: "button",
             icon: "fa-solid fa-trash",
@@ -270,7 +292,7 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
     // would go stale.
     document.addEventListener("click", (event) => {
       const target = (event.target as HTMLElement | null)?.closest<HTMLElement>(
-        ".volunteer-position-edit, .volunteer-position-delete, .volunteer-position-toggle",
+        ".volunteer-position-edit, .volunteer-position-delete, .volunteer-position-cart",
       );
       if (!target) {
         return;
@@ -282,19 +304,23 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
         return;
       }
 
-      if (target.classList.contains("volunteer-position-toggle")) {
+      if (target.classList.contains("volunteer-position-cart")) {
         const positionId = Number(target.dataset.positionId);
-        const nowActive = target.dataset.positionActive !== "1";
-        updatePosition(positionId, { active: nowActive })
-          .then(() => {
-            notifySuccess(nowActive ? i18next.t("Position activated") : i18next.t("Position deactivated"));
-            // Only ACTIVE positions are columns (§2.6), so this adds or drops one.
-            options.invalidateMatrix();
+        listQualifications(positionId, true)
+          .then((result) => {
+            const ids = [...new Set(result.qualifications.map((q) => q.personId))];
+            if (ids.length === 0) {
+              notifyError(
+                tText("Nobody is qualified for {{position}} yet", { position: target.dataset.positionName ?? "" }),
+              );
 
-            return options.reload();
+              return;
+            }
+            // The core cart shows its own "N added" notification and refreshes the badge.
+            cartManager()?.addPerson(ids, { showNotification: true });
           })
           .catch((error: unknown) => {
-            notifyError(errorMessage(error, i18next.t("The position could not be saved")));
+            notifyError(errorMessage(error, i18next.t("The qualified volunteers could not be loaded")));
           });
 
         return;

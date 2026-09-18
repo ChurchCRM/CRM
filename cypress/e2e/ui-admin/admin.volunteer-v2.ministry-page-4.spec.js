@@ -377,6 +377,27 @@ describe("Volunteer v2 ministry page, round four (#9701)", () => {
             freshAdminLogin();
         });
 
+        it("adds everyone qualified for a position to the cart from the row menu, and has no Deactivate item (2026-09-18)", () => {
+            // Person 4 qualified for the quiet position, through the API, before the
+            // login: cy.request() rotates the session the page would otherwise use.
+            adminApi("POST", `${VOLUNTEER_URL}/positions/${quietPositionId}/qualifications`, { personId: 4, notes: "" }, [200, 201]);
+            adminApi("DELETE", "/api/cart/", null, [200, 404]);
+            freshAdminLogin();
+            cy.visit(ministryUrl());
+            openPositionsTab();
+
+            positionRow(POSITION_QUIET).find("[data-bs-toggle='dropdown']").click();
+            positionRow(POSITION_QUIET).should("not.contain", "Deactivate");
+            positionRow(POSITION_QUIET).find(".volunteer-position-cart").should("contain", "Add Volunteers to Cart").click();
+            // The core cart's own notification is the signal the POST came back.
+            cy.get(".notyf__toast", { timeout: 10000 }).should("be.visible");
+
+            adminApi("GET", "/api/cart/", null, 200).then((resp) => {
+                expect(resp.body.PeopleCart.map((row) => Number(row.PersonID ?? row.personId ?? row))).to.include(4);
+            });
+            adminApi("DELETE", "/api/cart/", null, [200, 404]);
+        });
+
         it("has Recruiting and Self sign-up headers between Team and Status", () => {
             cy.visit(ministryUrl());
             openPositionsTab();

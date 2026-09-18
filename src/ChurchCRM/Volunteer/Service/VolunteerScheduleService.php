@@ -771,9 +771,12 @@ class VolunteerScheduleService
      */
     public function createOneOffOccurrence(VolunteerMinistry $ministry, array $fields, User $actor): VolunteerOccurrence
     {
+        if (trim((string) ($fields['name'] ?? '')) === '') {
+            throw new \RuntimeException(gettext('Name is a required field'));
+        }
         $date = (string) ($fields['date'] ?? '');
         if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) !== 1) {
-            throw new \RuntimeException(gettext('A one-off occurrence needs a date'));
+            throw new \RuntimeException(gettext('Date is a required field'));
         }
         $day = DateTimeUtils::createDateTime($date);
         $day->setTime(0, 0, 0);
