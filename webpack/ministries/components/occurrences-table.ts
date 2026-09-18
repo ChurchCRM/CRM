@@ -19,15 +19,18 @@
  */
 
 import {
+  deleteOccurrence,
   errorMessage,
   listOccurrences,
+  notifyError,
+  notifySuccess,
   positionLabel,
   type VolunteerOccurrenceSummary,
   type VolunteerTeam,
 } from "../api";
 import {
-  actionMenu,
   byId,
+  confirmDelete,
   destroyDataTable,
   escapeAttribute,
   escapeHtml,
@@ -48,6 +51,9 @@ import {
  */
 const OCCURRENCES_TABLE_OPTIONS: Record<string, unknown> = {
   searching: false,
+  // Column 0 is the row's checkbox: never sorted, never exported.
+  columnDefs: [{ targets: 0, orderable: false, searchable: false }],
+  order: [[1, "asc"]],
   layout: {
     topStart: null,
     topEnd: null,
@@ -177,27 +183,93 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
           filled = `<span class="text-green" title="${escapeAttribute(label)}" aria-label="${escapeAttribute(label)}"><i class="fa-solid fa-circle-check fa-lg" aria-hidden="true"></i></span>`;
         }
 
+        const teamName = options.teams().find((team) => team.id === occurrence.teamId)?.name ?? "";
+
+        // No Actions column (review, 2026-09-18): the date IS the link to the
+        // staffing page, and the checkbox feeds the Delete button above the table.
         return `
         <tr>
+          <td class="w-1 no-export">
+            <input type="checkbox" class="form-check-input volunteer-occurrence-select"
+                   data-occurrence-id="${occurrence.id}" aria-label="${escapeAttribute(tText("Select {{when}}", { when }))}">
+          </td>
           <td><a href="${href}">${escapeHtml(when)}</a></td>
+          <td>${escapeHtml(teamName)}</td>
           <td>${escapeHtml(occurrence.scheduleName ?? "")}</td>
           <td class="text-center">${filled}</td>
-          <td class="text-center">
-            ${actionMenu([
-              {
-                type: "link",
-                href,
-                icon: "fa-solid fa-list-check",
-                label: i18next.t("Staff this occurrence"),
-              },
-            ])}
-          </td>
         </tr>`;
       })
       .join("");
 
     renderState("occurrences", "loaded");
     initDataTable("volunteerOccurrencesTable", OCCURRENCES_TABLE_OPTIONS, "occurrences-toolbar");
+    syncSelection();
+  }
+
+  // ── Selection and Delete (review, 2026-09-18) ────────────────────────────
+
+  function selectedIds(): number[] {
+    return Array.from(
+      document.querySelectorAll<HTMLInputElement>("#volunteerOccurrencesTable .volunteer-occurrence-select:checked"),
+    ).map((box) => Number(box.dataset.occurrenceId));
+  }
+
+  /** The Delete button is live only while something is ticked; Select All mirrors the rows. */
+  function syncSelection(): void {
+    const boxes = Array.from(
+      document.querySelectorAll<HTMLInputElement>("#volunteerOccurrencesTable .volunteer-occurrence-select"),
+    );
+    const checked = boxes.filter((box) => box.checked).length;
+    const button = byId<HTMLButtonElement>("occurrences-delete-btn");
+    if (button) {
+      button.disabled = checked === 0;
+      button.textContent = "";
+      button.insertAdjacentHTML(
+        "beforeend",
+        `<i class="fa-solid fa-trash me-1" aria-hidden="true"></i>${escapeHtml(
+          checked > 0 ? tText("Delete ({{count}})", { count: checked }) : i18next.t("Delete"),
+        )}`,
+      );
+    }
+    // DataTables may clone the header (a fixed or scrolling head), so every copy
+    // of the Select All box is kept in step, not just the one the markup shipped.
+    for (const all of document.querySelectorAll<HTMLInputElement>("#occurrences-select-all")) {
+      all.checked = boxes.length > 0 && checked === boxes.length;
+      all.indeterminate = checked > 0 && checked < boxes.length;
+      all.disabled = boxes.length === 0;
+    }
+  }
+
+  function deleteSelected(): void {
+    const ids = selectedIds();
+    if (ids.length === 0) {
+      return;
+    }
+    confirmDelete(
+      i18next.t("Delete occurrences"),
+      tText(
+        "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.",
+        { count: ids.length },
+      ),
+      () => {
+        const button = byId<HTMLButtonElement>("occurrences-delete-btn");
+        if (button) {
+          button.disabled = true;
+        }
+        Promise.allSettled(ids.map((id) => deleteOccurrence(id))).then((results) => {
+          const failed = results.filter((result) => result.status === "rejected").length;
+          if (failed === 0) {
+            notifySuccess(tText("{{count}} occurrences deleted", { count: ids.length }));
+          } else {
+            notifyError(
+              tText("{{failed}} of {{count}} occurrences could not be deleted", { failed, count: ids.length }),
+            );
+          }
+
+          return load(true);
+        });
+      },
+    );
   }
 
   /**
@@ -346,6 +418,26 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
       byId(id)?.addEventListener("input", reloadSoon);
       byId(id)?.addEventListener("change", reloadSoon);
     }
+
+    // Delegated on the document: the rows are re-rendered on every load, and
+    // DataTables may re-home or clone the header the Select All box lives in.
+    document.addEventListener("change", (event) => {
+      const target = event.target as HTMLInputElement | null;
+      if (!target) {
+        return;
+      }
+      if (target.classList.contains("volunteer-occurrence-select")) {
+        syncSelection();
+      } else if (target.id === "occurrences-select-all") {
+        for (const box of document.querySelectorAll<HTMLInputElement>(
+          "#volunteerOccurrencesTable .volunteer-occurrence-select",
+        )) {
+          box.checked = target.checked;
+        }
+        syncSelection();
+      }
+    });
+    byId("occurrences-delete-btn")?.addEventListener("click", deleteSelected);
   }
 
   wire();

@@ -502,7 +502,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         container is emptied before each re-init so a re-run of the query cannot
         leave two toolbars behind.
       -->
-      <div class="d-flex justify-content-end mb-2" id="occurrences-toolbar"></div>
+      <!-- Delete sits left of the export buttons and wakes up when a row is ticked. -->
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <button type="button" class="btn btn-outline-danger btn-sm" id="occurrences-delete-btn" disabled>
+          <i class="fa-solid fa-trash me-1" aria-hidden="true"></i><?= gettext('Delete') ?>
+        </button>
+        <div class="d-flex justify-content-end" id="occurrences-toolbar"></div>
+      </div>
       <div class="row g-2 align-items-end mb-3">
         <div class="col-12 col-md-3">
           <label class="form-label" for="occurrence-team-filter"><?= gettext('Team') ?></label>
@@ -542,10 +548,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <table class="table table-hover table-vcenter" id="volunteerOccurrencesTable">
           <thead>
             <tr>
+              <th class="w-1 no-export">
+                <input type="checkbox" class="form-check-input" id="occurrences-select-all" aria-label="<?= InputUtils::escapeAttribute(gettext('Select all')) ?>" disabled>
+              </th>
               <th><?= gettext('When') ?></th>
+              <th><?= gettext('Team') ?></th>
               <th><?= gettext('Schedule') ?></th>
               <th class="text-center"><?= gettext('Filled') ?></th>
-              <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -849,8 +858,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="form-text"><?= gettext('The date and time of every occurrence come from the calendar event, so moving the event moves the schedule.') ?></div>
         </div>
         <div class="mb-3 d-none" id="schedule-form-title-filter-row">
-          <label class="form-label" for="schedule-form-title-filter"><?= gettext('Only events whose title contains') ?></label>
-          <input type="text" class="form-control" id="schedule-form-title-filter" maxlength="100">
+          <label class="form-label" for="schedule-form-title-filter"><?= gettext('Event') ?></label>
+          <select class="form-select" id="schedule-form-title-filter"></select>
+          <div class="form-text"><?= gettext('One occurrence is made for each date of this event. "Any event of this type" follows every event of the type, which can be several on the same day.') ?></div>
         </div>
         <div class="row g-2 d-none" id="schedule-form-standalone-rows">
           <div class="col-12 col-md-6 mb-3">

@@ -120,6 +120,10 @@ function fillScheduleBasics(name) {
     cy.get("#schedule-form-link-mode").select("event_type");
     cy.get("#schedule-form-event-type option").should("have.length.at.least", 2);
     cy.get("#schedule-form-event-type").should("contain", "Church Service").and("contain", "Sunday School");
+    // The Event picker (2026-09-18): a schedule follows ONE event series of the
+    // type; "Any event of this type" is the explicit opt-out.
+    cy.get("#schedule-form-title-filter").should("be.visible");
+    cy.get("#schedule-form-title-filter option").first().should("have.value", "").and("contain", "Any event of this type");
     cy.get("#schedule-form-link-mode").select("standalone");
     cy.get("#schedule-form-dow").select("Wednesday");
     cy.get("#schedule-form-start-time").clear().type("19:00");
@@ -384,13 +388,67 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                         .within(() => {
                             // One Filled cell since 2026-09-18, icon only: red, with the
                             // count and the short position by name in the tooltip.
-                            cy.get("td").eq(2).invoke("text").invoke("trim").should("eq", "");
-                            cy.get("td").eq(2).find(".text-red .fa-triangle-exclamation").should("exist");
-                            cy.get("td").eq(2).find("[title]").invoke("attr", "title")
+                            cy.get("td").eq(4).invoke("text").invoke("trim").should("eq", "");
+                            cy.get("td").eq(4).find(".text-red .fa-triangle-exclamation").should("exist");
+                            cy.get("td").eq(4).find("[title]").invoke("attr", "title")
                                 .should("contain", "0 of 1")
                                 .and("contain", "1 ")
                                 .and("contain", "Lead Teacher");
                         });
+                });
+            });
+        });
+
+        it("deletes the ticked occurrences from the Delete button above the table (2026-09-18)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
+                {
+                    name: `${PREFIX} To Delete`,
+                    linkMode: "standalone",
+                    recurType: "weekly",
+                    recurDow: "Wednesday",
+                    startTime: "19:00:00",
+                    endTime: "20:30:00",
+                    windowStart: isoDate(0),
+                    teamId,
+                    requirements: [],
+                },
+                201,
+            ).then((created) => {
+                generateOccurrences(created.body.schedule.id).then(() => {
+                    freshAdminLogin();
+                    cy.visit(`/ministries/${ministryId}`);
+                    cy.get("#nav-item-occurrences").click();
+                    cy.get("#occurrences-loading").should("not.be.visible");
+
+                    // No Actions column; the checkbox column leads, Team follows When.
+                    cy.get("#volunteerOccurrencesTable thead th").should("have.length", 5);
+                    cy.get("#volunteerOccurrencesTable thead th").eq(2).should("contain", "Team");
+                    cy.get("#volunteerOccurrencesTable tbody tr").first().find("td").eq(2).should("contain", TEAM_NAME);
+                    cy.get("#occurrences-delete-btn").should("be.disabled");
+
+                    cy.get("#volunteerOccurrencesTable tbody tr").its("length").then((before) => {
+                        expect(before).to.be.greaterThan(1);
+                        cy.get("#volunteerOccurrencesTable tbody tr").eq(0).find(".volunteer-occurrence-select").check();
+                        cy.get("#volunteerOccurrencesTable tbody tr").eq(1).find(".volunteer-occurrence-select").check();
+                        cy.get("#occurrences-delete-btn").should("not.be.disabled").and("contain", "2");
+                        cy.get("#occurrences-delete-btn").click();
+                        cy.get(".bootbox").should("be.visible").and("contain", "2 occurrences");
+                        cy.get(".bootbox .btn-danger").click();
+                        cy.get(".notyf__toast").should("contain", "2 occurrences deleted");
+                        cy.get("#occurrences-loading").should("not.be.visible");
+                        cy.get("#volunteerOccurrencesTable tbody tr").should("have.length", before - 2);
+                        cy.get("#occurrences-delete-btn").should("be.disabled");
+                    });
+
+                    // Select All ticks every row and wakes the button; unticking sleeps it.
+                    // The confirm dialog's backdrop may still be fading out after the
+                    // delete above; the checkbox itself is live.
+                    cy.get("#occurrences-select-all").check({ force: true });
+                    cy.get("#occurrences-delete-btn").should("not.be.disabled");
+                    cy.get("#occurrences-select-all").uncheck({ force: true });
+                    cy.get("#occurrences-delete-btn").should("be.disabled");
                 });
             });
         });
@@ -421,11 +479,11 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                     cy.get("#volunteerOccurrencesTable tbody tr")
                         .first()
                         .within(() => {
-                            cy.get("td").eq(2).invoke("text").invoke("trim").should("eq", "");
-                            cy.get("td").eq(2).find("a").should("have.attr", "title", "No staffing needs set");
-                            cy.get("td").eq(2).find(".fa-circle-check").should("not.exist");
+                            cy.get("td").eq(4).invoke("text").invoke("trim").should("eq", "");
+                            cy.get("td").eq(4).find("a").should("have.attr", "title", "No staffing needs set");
+                            cy.get("td").eq(4).find(".fa-circle-check").should("not.exist");
                             // The icon is the way in to fixing it.
-                            cy.get("td").eq(2).find("a").should("have.attr", "href").and("include", "/occurrences/");
+                            cy.get("td").eq(4).find("a").should("have.attr", "href").and("include", "/occurrences/");
                         });
                 });
             });

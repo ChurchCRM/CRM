@@ -116,10 +116,15 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     // ── Occurrences ─────────────────────────────────────────────────────────
     // Declared before the {occurrenceId} group so the literal collection path is not
     // swallowed by the parameterised one.
+    // The event series a linked schedule may follow: the distinct titles of the
+    // upcoming events of one type (the Add schedule dialog's Event picker).
+    $group->get('/event-series', 'listVolunteerEventSeries');
+
     $group->get('/occurrences', 'listVolunteerOccurrences');
 
     $group->group('/occurrences/{occurrenceId:[0-9]+}', function (RouteCollectorProxy $occurrence): void {
         $occurrence->get('', 'getVolunteerOccurrence');
+        $occurrence->delete('', 'deleteVolunteerOccurrence');
         $occurrence->post('/status', 'setVolunteerOccurrenceStatus')
             ->add(new InputSanitizationMiddleware([
                 'status' => 'enum:' . implode(',', VolunteerOccurrence::allStatuses()),
@@ -1266,6 +1271,87 @@ function getVolunteerOccurrence(Request $request, Response $response): Response
  *     @OA\Response(response=200, description="Updated")
  * )
  */
+/**
+ * @OA\Delete(
+ *     path="/ministries/occurrences/{occurrenceId}",
+ *     operationId="deleteVolunteerOccurrence",
+ *     summary="Delete one occurrence and everything under it",
+ *     description="The Occurrences tab's Delete for dates that should not have been generated. Requirement overrides, assignments and their responses, swaps and queued notifications go with it. Scoped like every occurrence route: a coordinator of the ministry or a leader of the schedule's team. A deleted linked occurrence can be regenerated from its event; cancel it instead to keep the row.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="occurrenceId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not in scope, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such occurrence"),
+ *     @OA\Response(response=200, description="Deleted")
+ * )
+ */
+function deleteVolunteerOccurrence(Request $request, Response $response): Response
+{
+    /** @var VolunteerOccurrence $occurrence */
+    $occurrence = $request->getAttribute('volunteerOccurrence');
+
+    try {
+        (new VolunteerScheduleService())->deleteOccurrence($occurrence, AuthenticationManager::getCurrentUser());
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON($response, gettext('The occurrence could not be deleted'), [], 500, $e, $request);
+    }
+
+    return SlimUtils::renderSuccessJSON($response);
+}
+
+/**
+ * @OA\Get(
+ *     path="/ministries/event-series",
+ *     operationId="listVolunteerEventSeries",
+ *     summary="The event series a linked schedule may follow",
+ *     description="The distinct titles of the active events of one event type from a date (default today) onward, with the next date and how many there are. The Add schedule dialog offers these so a schedule follows ONE event series rather than every event of a type - the difference between one occurrence a Sunday and one per event that happens to share the type.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="eventTypeId", in="query", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="from", in="query", required=false, @OA\Schema(type="string", format="date")),
+ *     @OA\Response(response=400, description="eventTypeId missing"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="series", type="array", @OA\Items(type="object",
+ *             @OA\Property(property="title", type="string"),
+ *             @OA\Property(property="nextStart", type="string"),
+ *             @OA\Property(property="count", type="integer")
+ *         )))
+ *     )
+ * )
+ */
+function listVolunteerEventSeries(Request $request, Response $response): Response
+{
+    $params = $request->getQueryParams();
+    $eventTypeId = (int) ($params['eventTypeId'] ?? 0);
+    if ($eventTypeId <= 0) {
+        return SlimUtils::renderErrorJSON($response, gettext('eventTypeId is required'), [], 400, null, $request);
+    }
+    $from = isset($params['from']) && preg_match('/^\d{4}-\d{2}-\d{2}$/', (string) $params['from']) === 1
+        ? (string) $params['from']
+        : DateTimeUtils::getStartOfToday()->format('Y-m-d');
+
+    $series = [];
+    foreach (
+        EventQuery::create()
+            ->filterByType($eventTypeId)
+            ->filterByInActive(0)
+            ->filterByStart($from . ' 00:00:00', Criteria::GREATER_EQUAL)
+            ->orderByStart()
+            ->select(['Title', 'Start'])
+            ->find() as $row
+    ) {
+        $title = (string) $row['Title'];
+        if (!isset($series[$title])) {
+            $series[$title] = ['title' => $title, 'nextStart' => (string) $row['Start'], 'count' => 0];
+        }
+        $series[$title]['count']++;
+    }
+
+    return SlimUtils::renderJSON($response, ['series' => array_values($series)]);
+}
+
 function setVolunteerOccurrenceStatus(Request $request, Response $response): Response
 {
     $occurrence = $request->getAttribute('volunteerOccurrence');

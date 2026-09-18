@@ -17,6 +17,7 @@ import {
   deleteSchedule,
   errorMessage,
   generateOccurrences,
+  listEventSeries,
   listScheduleRequirements,
   notifyError,
   notifySuccess,
@@ -33,6 +34,7 @@ import {
   byId,
   confirmDelete,
   destroyDataTable,
+  escapeAttribute,
   escapeHtml,
   hideModal,
   initDataTable,
@@ -42,6 +44,7 @@ import {
   show,
   showModalError,
   statusBadge,
+  tText,
   wireModalFadeGuard,
 } from "./ui";
 
@@ -220,6 +223,48 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     }
   }
 
+  /**
+   * The Event picker: the distinct upcoming titles of the chosen type, so a schedule
+   * follows ONE event series (review, 2026-09-18 — a type alone matched every event
+   * of that type on a Sunday and made an occurrence for each). The current value is
+   * kept, and an unlisted one (an edit of a schedule whose events have passed) is
+   * offered as its own option rather than silently dropped.
+   */
+  async function fillEventSeries(keep?: string): Promise<void> {
+    const select = byId<HTMLSelectElement>("schedule-form-title-filter");
+    const typeId = Number(byId<HTMLSelectElement>("schedule-form-event-type")?.value ?? 0);
+    if (!select) {
+      return;
+    }
+    const wanted = keep ?? select.value;
+    let series: Array<{ title: string; count: number }> = [];
+    if (typeId > 0) {
+      try {
+        series = (
+          await listEventSeries(typeId, byId<HTMLInputElement>("schedule-form-window-start")?.value || undefined)
+        ).series;
+      } catch {
+        series = [];
+      }
+    }
+    if (wanted !== "" && !series.some((row) => row.title === wanted)) {
+      series = [{ title: wanted, count: 0 }, ...series];
+    }
+    select.innerHTML = [
+      `<option value="">${escapeHtml(i18next.t("Any event of this type"))}</option>`,
+      ...series.map(
+        (row) =>
+          `<option value="${escapeAttribute(row.title)}">${escapeHtml(
+            row.count > 0 ? tText("{{title}} ({{count}} upcoming)", { title: row.title, count: row.count }) : row.title,
+          )}</option>`,
+      ),
+    ].join("");
+    select.value = wanted;
+    if (select.value !== wanted) {
+      select.value = "";
+    }
+  }
+
   /** Show only the fields the chosen link mode actually uses (§2.8's invariants). */
   function syncMode(): void {
     const mode = byId<HTMLSelectElement>("schedule-form-link-mode")?.value ?? "event_type";
@@ -305,7 +350,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         "schedule-form-event-type",
         schedule?.eventTypeId === null || schedule === undefined ? "" : String(schedule.eventTypeId),
       );
-      set("schedule-form-title-filter", schedule?.titleFilter ?? "");
+      void fillEventSeries(schedule?.titleFilter ?? "");
       set("schedule-form-dow", schedule?.recurDow ?? "Sunday");
       set("schedule-form-start-time", (schedule?.startTime ?? "").slice(0, 5));
       set("schedule-form-end-time", (schedule?.endTime ?? "").slice(0, 5));
@@ -403,6 +448,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     byId("schedule-add-btn")?.addEventListener("click", () => openModal());
     byId("schedule-form-save")?.addEventListener("click", save);
     byId("schedule-form-link-mode")?.addEventListener("change", syncMode);
+    byId("schedule-form-event-type")?.addEventListener("change", () => {
+      void fillEventSeries("");
+    });
     // Positions are team-scoped, so the list of things that can be needed changes with the
     // team. Re-rendering discards whatever was typed for the old team's positions, which is
     // correct: those rows are no longer part of this schedule's plan.

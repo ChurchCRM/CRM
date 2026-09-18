@@ -714,6 +714,31 @@ class VolunteerScheduleService
         return $this->setOccurrenceStatus($occurrence, VolunteerOccurrence::STATUS_CANCELLED, $actor);
     }
 
+    /**
+     * Delete one occurrence outright (product-owner decision, 2026-09-18) — the
+     * Occurrences tab's checkbox-and-Delete for dates that should never have been
+     * generated. Everything under it goes too: its requirement overrides, its
+     * assignments and, through them, their responses, swaps and queued
+     * notifications (all ON DELETE CASCADE, §2.9 / §2.11). Unlike cancelling, a
+     * deleted linked occurrence CAN come back from a later generation run, because
+     * the event it was made from still exists; that is what "delete" means here.
+     */
+    public function deleteOccurrence(VolunteerOccurrence $occurrence, User $actor): void
+    {
+        $occurrenceId = (int) $occurrence->getId();
+        $assignments = VolunteerAssignmentQuery::create()->filterByOccurrenceId($occurrenceId)->count();
+
+        $occurrence->delete();
+
+        $this->logger->info('Volunteer occurrence deleted', [
+            'occurrenceId' => $occurrenceId,
+            'scheduleId' => $occurrence->getScheduleId(),
+            'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
+            'assignments' => $assignments,
+            'actorPersonId' => $actor->getId(),
+        ]);
+    }
+
     // ── Effective time and requirements ────────────────────────────────────
 
     /**

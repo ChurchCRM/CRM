@@ -1061,6 +1061,27 @@ export function deleteSchedule(scheduleId: number): Promise<{ success: boolean }
 }
 
 /** Idempotent (§2.9): re-running it creates nothing that already exists. */
+/** Delete one occurrence and everything under it (assignments, responses, swaps, queued notifications). */
+export function deleteOccurrence(occurrenceId: number): Promise<{ success: boolean }> {
+  return request(`/occurrences/${occurrenceId}`, { method: "DELETE" });
+}
+
+export interface VolunteerEventSeries {
+  title: string;
+  nextStart: string;
+  count: number;
+}
+
+/** The distinct upcoming event titles of one event type — the Add schedule dialog's Event picker. */
+export function listEventSeries(eventTypeId: number, from?: string): Promise<{ series: VolunteerEventSeries[] }> {
+  const query = new URLSearchParams({ eventTypeId: String(eventTypeId) });
+  if (from) {
+    query.set("from", from);
+  }
+
+  return request(`/event-series?${query.toString()}`);
+}
+
 export function generateOccurrences(
   scheduleId: number,
   through?: string,
