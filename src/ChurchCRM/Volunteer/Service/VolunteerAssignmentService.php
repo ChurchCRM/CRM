@@ -252,18 +252,35 @@ class VolunteerAssignmentService
                     ? $opts['assignedBy']
                     : ($selfSignup ? null : (int) $actor->getId())
             );
-            $assignment->setRespondedDate(null);
+            // A coordinator may assign somebody as already ACCEPTED (the Generate
+            // Occurrences dialog's "Set as Accepted", 2026-09-18): the response is
+            // recorded on the volunteer's behalf, channel `coordinator`, exactly as
+            // respond() would record it, so the audit trail says who typed it.
+            $preAccepted = !$selfSignup && $assignment->getStatus() === VolunteerAssignment::STATUS_ACCEPTED;
+            $assignment->setRespondedDate($preAccepted ? DateTimeUtils::getToday() : null);
             $assignment->setNotes($this->normalizeNote($opts['notes'] ?? null));
             $assignment->save($connection);
+
+            if ($preAccepted) {
+                $this->appendResponse(
+                    $assignment,
+                    (int) $actor->getId(),
+                    VolunteerAssignment::STATUS_ACCEPTED,
+                    VolunteerResponse::CHANNEL_COORDINATOR,
+                    null,
+                    $connection
+                );
+            }
 
             // §3.6: assigning enqueues the "you are on the roster, please answer"
             // message. Self-signup is already answered, so #9712 enqueues the
             // `signup_confirm` receipt on that path instead — inside this same
             // transaction (§2.14), so a rolled-back signup leaves no confirmation
-            // behind.
+            // behind. A pre-accepted assignment is answered too, so it asks nothing;
+            // the reminder before the date still goes out like any other.
             if ($selfSignup) {
                 $this->notifications->enqueueSignupConfirm($assignment);
-            } else {
+            } elseif (!$preAccepted) {
                 $this->notifications->enqueueAssignment($assignment);
             }
 
@@ -1355,6 +1372,114 @@ class VolunteerAssignmentService
     {
         $schedule = $this->schedules->requireSchedule($occurrence);
 
+        return $this->buildEligibleList($schedule, $position, (int) $occurrence->getId(), $query);
+    }
+
+    /**
+     * The same picker for a schedule whose occurrences do not exist yet — the Generate
+     * Occurrences dialog's "Fill by default with" field (2026-09-18). Same people, same
+     * rotation order, same `inPool` annotation; only the double-duty annotation is absent,
+     * because there is no occurrence to hold another position on.
+     *
+     * @return array<int, array{personId: int, displayName: string, inPool: bool, lastServedDate: ?string, conflictPositionId: ?int, conflictPositionName: ?string}>
+     */
+    public function getEligiblePeopleForSchedule(VolunteerSchedule $schedule, VolunteerPosition $position, ?string $query = null): array
+    {
+        return $this->buildEligibleList($schedule, $position, null, $query);
+    }
+
+    /**
+     * Assign the defaults the Generate Occurrences dialog named, to the occurrences the run
+     * just created (2026-09-18).
+     *
+     * Every default is checked BEFORE the first assignment is written — the position must be
+     * one of the schedule's team's and the person actively qualified for it — so a bad
+     * default answers 4xx with nothing half done. The occurrences themselves are already
+     * saved by then (generation is its own transaction and idempotent), which is the
+     * intended order: a run that generated the dates but could not staff one of them has
+     * still done the reversible half of its job.
+     *
+     * The people came from the same list the picker showed, so `allowOutsidePool` is
+     * carried for them exactly as the Assign dialog carries it (I3). An assignment that
+     * fails on one occurrence (a cancelled row, a full position) is skipped and counted;
+     * it is not a reason to leave the other dates unstaffed.
+     *
+     * @param int[] $occurrenceIds
+     * @param array<int, array{positionId?: mixed, personId?: mixed, accepted?: mixed}> $defaults
+     *
+     * @return array{assigned: int, skipped: int}
+     *
+     * @throws VolunteerException when a default names a position or person that cannot be used
+     */
+    public function assignDefaults(VolunteerSchedule $schedule, array $occurrenceIds, array $defaults, User $actor): array
+    {
+        $plan = [];
+        foreach ($defaults as $default) {
+            if (!is_array($default)) {
+                continue;
+            }
+            $personId = (int) ($default['personId'] ?? 0);
+            if ($personId <= 0) {
+                // A blank "Fill by default with" — the field may be left empty.
+                continue;
+            }
+
+            $position = VolunteerPositionQuery::create()->findPk((int) ($default['positionId'] ?? 0));
+            if ($position === null) {
+                throw VolunteerException::invalid(gettext('Position not found'));
+            }
+            $this->assertPositionBelongsToSchedule($position, $schedule);
+            $this->assertPersonExists($personId);
+            $this->assertQualified($personId, $position);
+
+            $plan[] = [
+                'position' => $position,
+                'personId' => $personId,
+                'accepted' => filter_var($default['accepted'] ?? false, FILTER_VALIDATE_BOOLEAN),
+            ];
+        }
+
+        $assigned = 0;
+        $skipped = 0;
+        if ($plan === [] || $occurrenceIds === []) {
+            return ['assigned' => 0, 'skipped' => 0];
+        }
+
+        $occurrences = VolunteerOccurrenceQuery::create()
+            ->filterById($occurrenceIds, Criteria::IN)
+            ->orderByOccurrenceDate()
+            ->find();
+
+        foreach ($occurrences as $occurrence) {
+            foreach ($plan as $row) {
+                try {
+                    $this->assign($occurrence, $row['position'], $row['personId'], $actor, [
+                        'allowOutsidePool' => true,
+                        'status' => $row['accepted']
+                            ? VolunteerAssignment::STATUS_ACCEPTED
+                            : VolunteerAssignment::STATUS_PENDING,
+                    ]);
+                    $assigned++;
+                } catch (VolunteerException $e) {
+                    $skipped++;
+                    $this->logger->info('Volunteer default assignment skipped', [
+                        'occurrenceId' => $occurrence->getId(),
+                        'positionId' => $row['position']->getId(),
+                        'personId' => $row['personId'],
+                        'reason' => $e->getMessage(),
+                    ]);
+                }
+            }
+        }
+
+        return ['assigned' => $assigned, 'skipped' => $skipped];
+    }
+
+    /**
+     * @return array<int, array{personId: int, displayName: string, inPool: bool, lastServedDate: ?string, conflictPositionId: ?int, conflictPositionName: ?string}>
+     */
+    private function buildEligibleList(VolunteerSchedule $schedule, VolunteerPosition $position, ?int $occurrenceId, ?string $query): array
+    {
         $qualifiedIds = $this->qualifications->getQualifiedPersonIds((int) $position->getId());
         if ($qualifiedIds === []) {
             return [];
@@ -1366,7 +1491,9 @@ class VolunteerAssignmentService
         ));
 
         $lastServed = $this->lastServedDates($qualifiedIds, (int) $schedule->getMinistryId());
-        $conflicts = $this->conflictingPositions((int) $occurrence->getId(), $qualifiedIds, (int) $position->getId());
+        $conflicts = $occurrenceId === null
+            ? []
+            : $this->conflictingPositions($occurrenceId, $qualifiedIds, (int) $position->getId());
 
         $needle = $query === null ? '' : mb_strtolower(trim($query));
 

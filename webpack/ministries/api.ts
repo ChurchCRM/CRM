@@ -1114,14 +1114,52 @@ export function listEventSeries(eventTypeId: number, from?: string): Promise<{ s
   return request(`/event-series?${query.toString()}`);
 }
 
+/** One "Fill by default with" answer of the Generate Occurrences dialog. */
+export interface VolunteerGenerateDefault {
+  positionId: number;
+  personId: number;
+  /** Record them as having accepted every occurrence, so they are not asked to respond. */
+  accepted: boolean;
+}
+
+export interface VolunteerGenerateResult {
+  created: number;
+  existing: number;
+  through: string;
+  /** Default assignments written on the occurrences this run created. */
+  assigned: number;
+  /** Default assignments the server refused on one occurrence (full, cancelled). */
+  skipped: number;
+}
+
 export function generateOccurrences(
   scheduleId: number,
-  through?: string,
-): Promise<{ created: number; existing: number; through: string }> {
+  options: { through?: string; defaults?: VolunteerGenerateDefault[] } = {},
+): Promise<VolunteerGenerateResult> {
+  const body: Record<string, unknown> = {};
+  if (options.through) {
+    body.through = options.through;
+  }
+  if (options.defaults && options.defaults.length > 0) {
+    body.defaults = options.defaults;
+  }
+
   return request(`/schedules/${scheduleId}/generate`, {
     method: "POST",
-    body: JSON.stringify(through ? { through } : {}),
+    body: JSON.stringify(body),
   });
+}
+
+/**
+ * The Generate Occurrences dialog's picker: who may fill a position on the occurrences
+ * a schedule is about to generate. Same shape as `listEligiblePeople`, without the
+ * double-duty annotation (there is no occurrence yet).
+ */
+export function listScheduleEligiblePeople(
+  scheduleId: number,
+  positionId: number,
+): Promise<{ people: VolunteerEligiblePerson[] }> {
+  return request(`/schedules/${scheduleId}/eligible?positionId=${positionId}`);
 }
 
 // ─── The coordinator dashboard aggregate (#9711) ─────────────────────────────

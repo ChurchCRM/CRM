@@ -456,10 +456,11 @@ class VolunteerScheduleService
      * them. Neither mode ever writes to `events_event`, and neither touches an occurrence
      * that already exists — the unique keys make a repeat run a no-op.
      *
-     * @return array{created: int, existing: int, through: string} `through` is the date
-     *                                                            actually generated to,
-     *                                                            after the schedule's own
-     *                                                            window has clamped it
+     * @return array{created: int, existing: int, through: string, createdIds: int[]}
+     *         `through` is the date actually generated to, after the schedule's own window
+     *         has clamped it; `createdIds` are the rows THIS run inserted, so a caller can
+     *         act on the new occurrences only (the Generate dialog's default assignments)
+     *         and never touch the ones an earlier run made
      *
      * @throws \RuntimeException when the run would exceed MAX_GENERATED_OCCURRENCES
      */
@@ -471,7 +472,7 @@ class VolunteerScheduleService
         if ($range['start'] > $range['end']) {
             // A window entirely in the past, or one that closed before it opened: nothing
             // to materialise, and explicitly not an error.
-            return ['created' => 0, 'existing' => 0, 'through' => $reportedThrough];
+            return ['created' => 0, 'existing' => 0, 'through' => $reportedThrough, 'createdIds' => []];
         }
 
         $result = $schedule->getLinkMode() === VolunteerSchedule::LINK_MODE_EVENT_TYPE
@@ -537,7 +538,7 @@ class VolunteerScheduleService
      * Linked mode: the events already exist, so "generation" is a SELECT plus one
      * occurrence row per event found. V2 never creates an events_event row (D4).
      *
-     * @return array{created: int, existing: int}
+     * @return array{created: int, existing: int, createdIds: int[]}
      */
     private function generateLinkedOccurrences(VolunteerSchedule $schedule, \DateTime $start, \DateTime $end): array
     {
@@ -576,7 +577,7 @@ class VolunteerScheduleService
      * Standalone mode: the dates come from the one shared recurrence implementation
      * (#9735's RecurrenceDateGenerator), and the schedule's own times are stamped on them.
      *
-     * @return array{created: int, existing: int}
+     * @return array{created: int, existing: int, createdIds: int[]}
      */
     private function generateStandaloneOccurrences(VolunteerSchedule $schedule, \DateTime $start, \DateTime $end): array
     {
@@ -636,12 +637,13 @@ class VolunteerScheduleService
      *
      * @param array<int, array{eventId: ?int, occurrenceDate: string, startDateTime: ?string, endDateTime: ?string}> $candidates
      *
-     * @return array{created: int, existing: int}
+     * @return array{created: int, existing: int, createdIds: int[]}
      */
     private function persistOccurrences(VolunteerSchedule $schedule, array $candidates): array
     {
         $created = 0;
         $existing = 0;
+        $createdIds = [];
         $now = DateTimeUtils::getNowDateTime();
         $scheduleId = (int) $schedule->getId();
 
@@ -675,6 +677,7 @@ class VolunteerScheduleService
                 $occurrence->setGeneratedDate($now);
                 $occurrence->save($con);
                 $created++;
+                $createdIds[] = (int) $occurrence->getId();
             }
 
             $con->commit();
@@ -684,7 +687,7 @@ class VolunteerScheduleService
             throw $e;
         }
 
-        return ['created' => $created, 'existing' => $existing];
+        return ['created' => $created, 'existing' => $existing, 'createdIds' => $createdIds];
     }
 
     /**

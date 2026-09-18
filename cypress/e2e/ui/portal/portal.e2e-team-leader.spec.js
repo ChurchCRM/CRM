@@ -416,6 +416,11 @@ describe("Member Portal e2e — #9869 scenario 2, a team leader on a member logi
             .find("[data-bs-toggle='dropdown']")
             .click();
         cy.get(".volunteer-schedule-generate").first().click();
+        // The Generate occurrences dialog (2026-09-18): no defaults, just generate.
+        cy.get("#generateOccurrencesModal", { timeout: 10000 }).should("be.visible");
+        cy.get("#generate-form-loading").should("not.be.visible");
+        cy.get("#generate-form-save").should("be.enabled").click();
+        cy.get("#generateOccurrencesModal").should("not.be.visible");
 
         cy.get("#nav-item-occurrences").click();
         cy.get("#volunteerOccurrencesTable tbody tr", { timeout: 15000 }).should(

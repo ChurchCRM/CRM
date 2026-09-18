@@ -15,6 +15,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
+use ChurchCRM\Volunteer\VolunteerException;
 use ChurchCRM\Volunteer\Middleware\VolunteerMinistryMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerOccurrenceMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerScheduleCreateMiddleware;
@@ -117,8 +118,13 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
             ]));
         $schedule->delete('', 'deleteVolunteerSchedule');
 
+        // `defaults` (a nested array) has no sanitizer type; VolunteerAssignmentService
+        // validates each row itself. `through` is still proved here.
         $schedule->post('/generate', 'generateVolunteerOccurrences')
             ->add(new InputSanitizationMiddleware(['through' => 'date?']));
+        // The Generate Occurrences dialog's picker: who may fill a position on the
+        // occurrences about to be made (2026-09-18).
+        $schedule->get('/eligible', 'listVolunteerScheduleEligiblePeople');
 
         $schedule->get('/requirements', 'listVolunteerScheduleRequirements');
         $schedule->post('/requirements', 'upsertVolunteerScheduleRequirement')
@@ -646,33 +652,83 @@ function deleteVolunteerSchedule(Request $request, Response $response): Response
 }
 
 /**
+ * @OA\Get(
+ *     path="/ministries/schedules/{scheduleId}/eligible",
+ *     operationId="listVolunteerScheduleEligiblePeople",
+ *     summary="Who may fill a position on the occurrences this schedule is about to generate",
+ *     description="The Generate Occurrences dialog's 'Fill by default with' picker. The same list as /occurrences/{id}/eligible - actively qualified people, least recently served first, inPool reported rather than filtered on - minus the double-duty annotation, since no occurrence exists yet.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="scheduleId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="positionId", in="query", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="q", in="query", required=false, @OA\Schema(type="string"), description="Case-insensitive name filter"),
+ *     @OA\Response(response=400, description="positionId is missing, unknown, or belongs to another team"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this schedule, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such schedule"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="people", type="array", @OA\Items(type="object")))
+ *     )
+ * )
+ */
+function listVolunteerScheduleEligiblePeople(Request $request, Response $response): Response
+{
+    /** @var VolunteerSchedule $schedule */
+    $schedule = $request->getAttribute('volunteerSchedule');
+    $params = $request->getQueryParams();
+
+    if (!isset($params['positionId']) || !is_numeric($params['positionId'])) {
+        return SlimUtils::renderErrorJSON($response, gettext('A position is required'), [], 400, null, $request);
+    }
+
+    $position = VolunteerPositionQuery::create()->findPk((int) $params['positionId']);
+    if ($position === null || (int) $position->getTeamId() !== (int) $schedule->getTeamId()) {
+        return SlimUtils::renderErrorJSON($response, gettext('Position not found'), [], 400, null, $request);
+    }
+
+    $query = isset($params['q']) && $params['q'] !== '' ? InputUtils::sanitizeText((string) $params['q']) : null;
+
+    $people = (new VolunteerAssignmentService())->getEligiblePeopleForSchedule($schedule, $position, $query);
+
+    return SlimUtils::renderJSON($response, ['people' => $people]);
+}
+
+/**
  * @OA\Post(
  *     path="/ministries/schedules/{scheduleId}/generate",
  *     operationId="generateVolunteerOccurrences",
  *     summary="Materialise this schedule's occurrences up to a date",
- *     description="Idempotent. A linked schedule attaches one occurrence to each existing event of its type inside the window; a standalone schedule generates its own dates. No calendar event is ever created.",
+ *     description="Idempotent. A linked schedule attaches one occurrence to each existing event of its type inside the window; a standalone schedule generates its own dates. No calendar event is ever created. `defaults` names a person per position to assign on every occurrence THIS run creates (never on ones an earlier run made); with accepted=true they are recorded as having accepted and are not asked to respond.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="scheduleId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=false, @OA\JsonContent(
  *         @OA\Property(property="through", type="string", format="date", nullable=true,
- *             description="Defaults to today plus the schedule's generateAheadDays")
+ *             description="Defaults to today plus the schedule's generateAheadDays"),
+ *         @OA\Property(property="defaults", type="array", @OA\Items(type="object",
+ *             @OA\Property(property="positionId", type="integer"),
+ *             @OA\Property(property="personId", type="integer"),
+ *             @OA\Property(property="accepted", type="boolean")
+ *         ))
  *     )),
- *     @OA\Response(response=400, description="Malformed date, or the run would exceed the occurrence cap"),
+ *     @OA\Response(response=400, description="Malformed date, the run would exceed the occurrence cap, or a default names a position outside this schedule's team"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this schedule, or V2 is not enabled"),
- *     @OA\Response(response=404, description="No such schedule"),
+ *     @OA\Response(response=403, description="Not authorized for this schedule, a default is not qualified, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such schedule, or a default names an unknown person"),
  *     @OA\Response(response=200, description="OK",
  *         @OA\JsonContent(
  *             @OA\Property(property="created", type="integer"),
  *             @OA\Property(property="existing", type="integer"),
- *             @OA\Property(property="through", type="string", format="date")
+ *             @OA\Property(property="through", type="string", format="date"),
+ *             @OA\Property(property="assigned", type="integer", description="Default assignments written"),
+ *             @OA\Property(property="skipped", type="integer", description="Default assignments the server refused on one occurrence")
  *         )
  *     )
  * )
  */
 function generateVolunteerOccurrences(Request $request, Response $response): Response
 {
+    /** @var VolunteerSchedule $schedule */
     $schedule = $request->getAttribute('volunteerSchedule');
     $input = (array) $request->getParsedBody();
 
@@ -682,13 +738,36 @@ function generateVolunteerOccurrences(Request $request, Response $response): Res
         $through = DateTimeUtils::createDateTime((string) $input['through']);
     }
 
+    $defaults = isset($input['defaults']) && is_array($input['defaults']) ? $input['defaults'] : [];
+    $assignments = new VolunteerAssignmentService();
+    $actor = AuthenticationManager::getCurrentUser();
+
+    // The defaults are checked before a single occurrence is written, so a bad one is
+    // a clean 4xx and not a generated-but-unstaffed run.
+    try {
+        $assignments->assignDefaults($schedule, [], $defaults, $actor);
+    } catch (VolunteerException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
+    }
+
     try {
         $result = (new VolunteerScheduleService())->generateOccurrences($schedule, $through);
     } catch (\RuntimeException | \InvalidArgumentException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }
 
-    return SlimUtils::renderJSON($response, $result);
+    $staffed = ['assigned' => 0, 'skipped' => 0];
+    if ($defaults !== [] && $result['createdIds'] !== []) {
+        try {
+            $staffed = $assignments->assignDefaults($schedule, $result['createdIds'], $defaults, $actor);
+        } catch (VolunteerException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
+        }
+    }
+
+    unset($result['createdIds']);
+
+    return SlimUtils::renderJSON($response, $result + $staffed);
 }
 
 // ── Requirements ────────────────────────────────────────────────────────────

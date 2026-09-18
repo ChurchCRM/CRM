@@ -1111,6 +1111,207 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
     });
 
+    // ── Generate with defaults (review, 2026-09-18) ────────────────────────
+
+    describe("generation with default volunteers", () => {
+        let scheduleId = 0;
+        let through = "";
+
+        function qualify(personId, positionId) {
+            return dbOk(
+                `INSERT INTO volunteer_qualification_vqal (vqal_per_ID, vqal_vpos_ID, vqal_Active, vqal_GrantedDate)
+                 VALUES (?, ?, 1, NOW())`,
+                [personId, positionId],
+            );
+        }
+
+        before(() => {
+            through = isoDate(21);
+            // Two positions in the plan, one qualified person each. Neither is in a
+            // pool: the fixture ministry has no Group, and the defaults carry the
+            // same out-of-pool override the Assign dialog does.
+            qualify(PERSON_COORDINATOR, positionOne);
+            qualify(PERSON_PLAIN, positionTwo);
+            createSchedule(
+                ministryA,
+                standaloneScheduleBody({
+                    name: `${FIXTURE_PREFIX} Defaults`,
+                    recurDow: "Friday",
+                    requirements: [
+                        { positionId: positionOne, minCount: 1, maxCount: 1 },
+                        { positionId: positionTwo, minCount: 1, maxCount: 2 },
+                    ],
+                }),
+            ).then((id) => {
+                scheduleId = id;
+            });
+        });
+
+        it("lists who may fill a position before any occurrence exists", () => {
+            api(
+                ADMIN_KEY,
+                "GET",
+                `/api/ministries/schedules/${scheduleId}/eligible?positionId=${positionOne}`,
+            ).then((resp) => {
+                const ids = resp.body.people.map((p) => p.personId);
+                expect(ids).to.include(PERSON_COORDINATOR);
+                expect(ids).to.not.include(PERSON_PLAIN);
+                const me = resp.body.people.find((p) => p.personId === PERSON_COORDINATOR);
+                expect(me.lastServedDate).to.eq(null);
+                expect(me.inPool).to.eq(false);
+                expect(me.conflictPositionId).to.eq(null);
+            });
+            // A position of another team is not this schedule's to fill.
+            api(
+                ADMIN_KEY,
+                "GET",
+                `/api/ministries/schedules/${scheduleId}/eligible?positionId=999999`,
+                null,
+                400,
+            );
+            api(
+                ADMIN_KEY,
+                "GET",
+                `/api/ministries/schedules/${scheduleId}/eligible`,
+                null,
+                400,
+            );
+        });
+
+        it("refuses a default who is not qualified, and generates nothing", () => {
+            api(
+                ADMIN_KEY,
+                "POST",
+                `/api/ministries/schedules/${scheduleId}/generate`,
+                {
+                    through,
+                    defaults: [{ positionId: positionOne, personId: PERSON_PLAIN, accepted: true }],
+                },
+                403,
+            );
+            api(
+                ADMIN_KEY,
+                "GET",
+                `/api/ministries/occurrences?from=${isoDate(0)}&to=${through}&scheduleId=${scheduleId}`,
+            ).then((resp) => {
+                expect(resp.body.occurrences, "nothing was generated").to.have.length(0);
+            });
+        });
+
+        it("refuses a default on a position of another ministry (400)", () => {
+            dbOk(
+                `INSERT INTO volunteer_position_vpos (vpos_vmin_ID, vpos_vtem_ID, vpos_Name, vpos_Description, vpos_Active, vpos_Order)
+                 VALUES (?, ?, ?, 'volunteer v2 schedule fixture', 1, 9)`,
+                [ministryB, teamB1, `${FIXTURE_PREFIX} Foreign`],
+            ).then((rows) => {
+                api(
+                    ADMIN_KEY,
+                    "POST",
+                    `/api/ministries/schedules/${scheduleId}/generate`,
+                    {
+                        through,
+                        defaults: [{ positionId: rows.insertId, personId: PERSON_COORDINATOR }],
+                    },
+                    400,
+                );
+            });
+        });
+
+        it("assigns the defaults on every occurrence it creates, accepted or pending", () => {
+            let created = 0;
+            api(
+                ADMIN_KEY,
+                "POST",
+                `/api/ministries/schedules/${scheduleId}/generate`,
+                {
+                    through,
+                    defaults: [
+                        { positionId: positionOne, personId: PERSON_COORDINATOR, accepted: true },
+                        { positionId: positionTwo, personId: PERSON_PLAIN, accepted: false },
+                    ],
+                },
+            ).then((resp) => {
+                created = resp.body.created;
+                expect(created).to.be.greaterThan(0);
+                expect(resp.body.assigned).to.eq(created * 2);
+                expect(resp.body.skipped).to.eq(0);
+            });
+
+            cy.then(() => {
+                dbOk(
+                    `SELECT vasg.vasg_ID, vasg.vasg_per_ID, vasg.vasg_vpos_ID, vasg.vasg_Status, vasg.vasg_Source,
+                            vasg.vasg_RespondedDate,
+                            (SELECT COUNT(*) FROM volunteer_response_vrsp vrsp
+                              WHERE vrsp.vrsp_vasg_ID = vasg.vasg_ID AND vrsp.vrsp_Channel = 'coordinator'
+                                AND vrsp.vrsp_Response = 'accepted') AS responses,
+                            (SELECT COUNT(*) FROM volunteer_notification_vntf vntf
+                              WHERE vntf.vntf_vasg_ID = vasg.vasg_ID AND vntf.vntf_Type = 'assignment') AS asks
+                       FROM volunteer_assignment_vasg vasg
+                       JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
+                      WHERE vocc.vocc_vsch_ID = ?`,
+                    [scheduleId],
+                ).then((rows) => {
+                    expect(rows).to.have.length(created * 2);
+                    const accepted = rows.filter((r) => Number(r.vasg_per_ID) === PERSON_COORDINATOR);
+                    const pending = rows.filter((r) => Number(r.vasg_per_ID) === PERSON_PLAIN);
+                    expect(accepted).to.have.length(created);
+                    expect(pending).to.have.length(created);
+                    for (const row of accepted) {
+                        expect(row.vasg_Status).to.eq("accepted");
+                        expect(row.vasg_Source).to.eq("coordinator");
+                        expect(row.vasg_RespondedDate, "an accepted default carries its response date").to.not.eq(null);
+                        // Recorded as the coordinator's entry, and nobody is asked to answer
+                        // a question that has already been answered.
+                        expect(Number(row.responses)).to.eq(1);
+                        expect(Number(row.asks)).to.eq(0);
+                    }
+                    for (const row of pending) {
+                        expect(row.vasg_Status).to.eq("pending");
+                        expect(row.vasg_RespondedDate).to.eq(null);
+                        expect(Number(row.responses)).to.eq(0);
+                        expect(Number(row.asks)).to.eq(1);
+                    }
+                });
+            });
+        });
+
+        it("touches nothing on a second run: the occurrences exist, so no default is assigned again", () => {
+            api(
+                ADMIN_KEY,
+                "POST",
+                `/api/ministries/schedules/${scheduleId}/generate`,
+                {
+                    through,
+                    defaults: [{ positionId: positionOne, personId: PERSON_COORDINATOR, accepted: true }],
+                },
+            ).then((resp) => {
+                expect(resp.body.created).to.eq(0);
+                expect(resp.body.assigned).to.eq(0);
+            });
+        });
+
+        it("accepts a blank default and generates with no assignments", () => {
+            createSchedule(
+                ministryA,
+                standaloneScheduleBody({
+                    name: `${FIXTURE_PREFIX} Blank Defaults`,
+                    recurDow: "Saturday",
+                    requirements: [{ positionId: positionOne, minCount: 1, maxCount: 1 }],
+                }),
+            ).then((id) => {
+                api(
+                    ADMIN_KEY,
+                    "POST",
+                    `/api/ministries/schedules/${id}/generate`,
+                    { through, defaults: [{ positionId: positionOne, personId: "" }] },
+                ).then((resp) => {
+                    expect(resp.body.created).to.be.greaterThan(0);
+                    expect(resp.body.assigned).to.eq(0);
+                });
+            });
+        });
+    });
+
     // ── §3.3.2 / M9 window validation on the occurrence list ───────────────
 
     describe("occurrence list window (M9)", () => {

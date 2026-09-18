@@ -69,9 +69,11 @@ function isoDate(offsetDays) {
 
 /** Remove every schedule this spec's UI created, so each test starts from none. */
 function clearSchedules() {
-    // A one-off occurrence's schedule is hidden from the schedules listing on
-    // purpose (2026-09-18), so the residue is cleared through its occurrence, which
-    // takes the hidden schedule with it.
+    // Every occurrence first, through the Occurrences tab's recursive delete: a
+    // schedule whose occurrences carry assignments refuses to be deleted (service
+    // history), and the Generate dialog's tests leave exactly that behind. A one-off
+    // occurrence's schedule is hidden from the schedules listing on purpose
+    // (2026-09-18), and deleting its occurrence takes the hidden schedule with it.
     cy.makePrivateAdminAPICall(
         "GET",
         `${VOLUNTEER_URL}/occurrences?ministryId=${ministryId}&from=${isoDate(0)}&to=${isoDate(400)}`,
@@ -79,9 +81,7 @@ function clearSchedules() {
         200,
     ).then((resp) => {
         for (const occurrence of resp.body.occurrences) {
-            if (occurrence.scheduleOneOff) {
-                cy.makePrivateAdminAPICall("DELETE", `${VOLUNTEER_URL}/occurrences/${occurrence.id}`, null, [200, 404]);
-            }
+            cy.makePrivateAdminAPICall("DELETE", `${VOLUNTEER_URL}/occurrences/${occurrence.id}`, null, [200, 404]);
         }
     });
     cy.makePrivateAdminAPICall("GET", `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`, null, 200).then(
@@ -566,6 +566,158 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                         });
                 });
             });
+        });
+    });
+
+    describe("the Generate occurrences dialog (2026-09-18)", () => {
+        let scheduleId = 0;
+        // tony.wade (3) and the seed's plain member (900): both real people, neither
+        // in this ministry's pool until they are qualified.
+        const PERSON_DEFAULT = 3;
+
+        beforeEach(() => {
+            clearSchedules();
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${VOLUNTEER_URL}/positions/${posLead}/qualifications`,
+                { personId: PERSON_DEFAULT, notes: "" },
+                [200, 201],
+            );
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
+                {
+                    name: `${PREFIX} Generate Dialog`,
+                    linkMode: "standalone",
+                    recurType: "weekly",
+                    recurDow: "Thursday",
+                    startTime: "19:00:00",
+                    endTime: "20:30:00",
+                    windowStart: isoDate(0),
+                    windowEnd: isoDate(21),
+                    teamId,
+                    requirements: [
+                        { positionId: posLead, minCount: 1, maxCount: 1 },
+                        { positionId: posHelper, minCount: 1, maxCount: 2 },
+                    ],
+                },
+                201,
+            ).then((created) => {
+                scheduleId = created.body.schedule.id;
+            });
+            cy.then(freshAdminLogin);
+            openSchedulesTab();
+        });
+
+        /** Open the row's menu once the row has rendered, then the dialog, and wait for its rows. */
+        function openGenerateDialog() {
+            cy.get("#volunteerSchedulesTable tbody tr", { timeout: 15000 }).should("contain.text", `${PREFIX} Generate Dialog`);
+            cy.get(`.volunteer-schedule-generate[data-schedule-id="${scheduleId}"]`)
+                .closest("tr")
+                .find("[data-bs-toggle='dropdown']")
+                .click();
+            cy.get(`.volunteer-schedule-generate[data-schedule-id="${scheduleId}"]`).should("be.visible").click();
+            cy.get("#generateOccurrencesModal").should("be.visible");
+            cy.get("#generate-form-loading").should("not.be.visible");
+            cy.get("#generate-form-rows .generate-default-row").should("have.length", 2);
+        }
+
+        it("names the column and the action after occurrences, not dates", () => {
+            cy.get("#volunteerSchedulesTable thead").should("contain.text", "Occurrences").and("not.contain.text", "Dates");
+            cy.get("#volunteerSchedulesTable tbody tr", { timeout: 15000 }).should("contain.text", `${PREFIX} Generate Dialog`);
+            cy.get(`.volunteer-schedule-generate[data-schedule-id="${scheduleId}"]`)
+                .closest("tr")
+                .find("[data-bs-toggle='dropdown']")
+                .click();
+            cy.get(`.volunteer-schedule-generate[data-schedule-id="${scheduleId}"]`)
+                .should("be.visible")
+                .and("contain.text", "Generate occurrences")
+                .and("not.contain.text", "Generate dates");
+        });
+
+        it("offers a default per position, only the qualified, and assigns them accepted on every new occurrence", () => {
+            openGenerateDialog();
+
+            // The lead position has one qualified person to offer; the helper has none
+            // and says so rather than showing an empty picker.
+            cy.get(`.generate-default-row[data-position-id="${posLead}"]`).within(() => {
+                cy.contains(POSITION_LEAD);
+                cy.contains("1 needed");
+                cy.contains("label", "Fill by default with:");
+                cy.get("select.generate-default-select option").should("have.length", 2);
+                cy.get("select.generate-default-select option").eq(1).should("contain.text", "has not served yet");
+                // The Accepted box waits for a choice.
+                cy.get(".generate-default-accepted-wrap").should("not.be.visible");
+            });
+            cy.get(`.generate-default-row[data-position-id="${posHelper}"]`).within(() => {
+                cy.contains("1 to 2 needed");
+                cy.get("select.generate-default-select").should("not.exist");
+                cy.contains("Nobody is qualified for this position yet");
+            });
+
+            // Choose the default through the underlying select (TomSelect mirrors it and
+            // fires change), then tick Set as Accepted once it appears.
+            cy.get(`.generate-default-row[data-position-id="${posLead}"] select.generate-default-select`).then(($select) => {
+                const value = $select.find("option").eq(1).val();
+                cy.wrap($select).select(String(value), { force: true });
+            });
+            cy.get(`.generate-default-row[data-position-id="${posLead}"] .generate-default-accepted-wrap`).should("be.visible");
+            cy.get(`.generate-default-row[data-position-id="${posLead}"] .generate-default-accepted`).check({ force: true });
+
+            cy.intercept("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`).as("generate");
+            cy.get("#generate-form-save").click();
+            cy.wait("@generate").its("request.body.defaults").should("deep.eq", [
+                { positionId: posLead, personId: PERSON_DEFAULT, accepted: true },
+            ]);
+            cy.get("#generateOccurrencesModal").should("not.be.visible");
+            cy.get("#volunteerSchedulesTable tbody tr", { timeout: 15000 })
+                .first()
+                .find("td")
+                .eq(3)
+                .invoke("text")
+                .then((text) => {
+                    expect(Number(text.trim())).to.be.greaterThan(0);
+                });
+
+            // Every occurrence this run made carries the accepted assignment. The
+            // Occurrences tab shows them all green: assigned AND confirmed, no gaps
+            // on the lead position — the helper is still open, so the icon is red.
+            cy.get("#nav-item-occurrences").click();
+            cy.get("#volunteerOccurrencesTable tbody tr", { timeout: 15000 }).should("have.length.at.least", 1);
+
+            // Last: the request rotates the session.
+            cy.then(() => {
+                cy.dbQuery(
+                    `SELECT vasg.vasg_Status, vasg.vasg_per_ID, vasg.vasg_vpos_ID,
+                            (SELECT COUNT(*) FROM volunteer_occurrence_vocc o WHERE o.vocc_vsch_ID = ?) AS occurrences
+                       FROM volunteer_assignment_vasg vasg
+                       JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
+                      WHERE vocc.vocc_vsch_ID = ?`,
+                    [scheduleId, scheduleId],
+                ).then((result) => {
+                    expect(result.error).to.eq(null);
+                    expect(result.rows.length).to.be.greaterThan(0);
+                    expect(result.rows.length).to.eq(Number(result.rows[0].occurrences));
+                    for (const row of result.rows) {
+                        expect(row.vasg_Status).to.eq("accepted");
+                        expect(Number(row.vasg_per_ID)).to.eq(PERSON_DEFAULT);
+                        expect(Number(row.vasg_vpos_ID)).to.eq(posLead);
+                    }
+                });
+            });
+        });
+
+        it("generates with nothing chosen and assigns nobody", () => {
+            openGenerateDialog();
+
+            cy.intercept("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`).as("generate");
+            cy.get("#generate-form-save").click();
+            cy.wait("@generate").then(({ request, response }) => {
+                expect(request.body.defaults).to.eq(undefined);
+                expect(response.body.created).to.be.greaterThan(0);
+                expect(response.body.assigned).to.eq(0);
+            });
+            cy.get("#generateOccurrencesModal").should("not.be.visible");
         });
     });
 

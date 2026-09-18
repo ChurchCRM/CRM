@@ -428,7 +428,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     <!--
       Schedules (#9711). The recurring patterns #9708 built, made reachable: create
-      one, generate its dates, open the weeks it produced. Generation is idempotent
+      one, generate its occurrences, open the weeks it produced. Generation is idempotent
       server-side (§2.9), so the button is safe to press twice.
     -->
     <div class="tab-pane fade" id="schedules" role="tabpanel" aria-labelledby="nav-item-schedules">
@@ -450,7 +450,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="empty-icon"><i class="fa-solid fa-repeat fa-2x text-muted"></i></div>
         <p class="empty-title"><?= gettext('No schedules yet') ?></p>
         <p class="empty-subtitle text-body-secondary">
-          <?= gettext('A schedule is the recurring pattern this ministry staffs — a weekly service, a Wednesday class. Add one and generate its dates.') ?>
+          <?= gettext('A schedule is the recurring pattern this ministry staffs — a weekly service, a Wednesday class. Add one and generate its occurrences.') ?>
         </p>
       </div>
       <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="schedules-table-wrapper">
@@ -460,7 +460,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <th><?= gettext('Name') ?></th>
               <th><?= gettext('Pattern') ?></th>
               <th><?= gettext('Team') ?></th>
-              <th class="text-center"><?= gettext('Dates generated') ?></th>
+              <th class="text-center"><?= gettext('Occurrences') ?></th>
               <th class="text-center"><?= gettext('Status') ?></th>
               <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
             </tr>
@@ -547,7 +547,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="empty-icon"><i class="fa-solid fa-calendar-days fa-2x text-muted"></i></div>
         <p class="empty-title"><?= gettext('Nothing scheduled yet') ?></p>
         <p class="empty-subtitle text-body-secondary">
-          <?= gettext('Create a schedule and generate its dates, and the weeks to staff appear here.') ?>
+          <?= gettext('Create a schedule and generate its occurrences, and the weeks to staff appear here.') ?>
         </p>
       </div>
       <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="occurrences-table-wrapper">
@@ -893,6 +893,48 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
         <button type="button" class="btn btn-primary" id="one-off-form-save"><?= gettext('Add') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  Generate occurrences (review, 2026-09-18). One row per position the schedule's plan
+  asks for, each with a "Fill by default with" picker over the same rotation-ordered
+  list the Assign dialog uses. A chosen person is assigned on every occurrence THIS
+  run creates; "Set as Accepted" records their acceptance too, so they are not asked.
+-->
+<div class="modal fade" id="generateOccurrencesModal" tabindex="-1" aria-hidden="true" aria-labelledby="generateOccurrencesModalTitle">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="generateOccurrencesModalTitle"><?= gettext('Generate occurrences') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-body-secondary" id="generate-form-intro"></p>
+        <p class="text-body-secondary">
+          <?= gettext('Choose who fills each position by default. They are assigned on every occurrence made now, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week.') ?>
+        </p>
+        <div class="volunteer-loading text-center py-3" id="generate-form-loading">
+          <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+          <?= gettext('Loading') ?>
+        </div>
+        <div class="empty py-3 d-none" id="generate-form-empty">
+          <p class="empty-title"><?= gettext('This schedule has no staffing needs yet') ?></p>
+          <p class="empty-subtitle text-body-secondary">
+            <?= gettext('Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs.') ?>
+          </p>
+        </div>
+        <div id="generate-form-rows"></div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="generate-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i>
+          <span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" class="btn btn-primary" id="generate-form-save"><?= gettext('Generate') ?></button>
       </div>
     </div>
   </div>
