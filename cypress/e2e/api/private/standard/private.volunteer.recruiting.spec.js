@@ -37,7 +37,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = `${VOLUNTEER_URL}/ministries`;
 
 /** Every fixture name starts with this so cleanup deletes exactly what this spec made. */

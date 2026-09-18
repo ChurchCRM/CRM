@@ -23,7 +23,7 @@ const NAV_ID = "portal-nav";
 const NAV_TOGGLE_ID = "portal-nav-toggle";
 const VOLUNTEERING_CARD_ID = "portal-volunteering-card";
 
-/** The fields of `/api/volunteer/me/assignments` the home card reads. */
+/** The fields of `/api/ministries/me/assignments` the home card reads. */
 interface PortalHomeAssignment {
   positionName: string | null;
   ministryName: string | null;
@@ -211,7 +211,7 @@ async function loadVolunteeringCard(): Promise<void> {
   let assignments: PortalHomeAssignment[] = [];
   try {
     const root = window.CRM?.root ?? "";
-    const response = await fetch(`${root}/api/volunteer/me/assignments`, {
+    const response = await fetch(`${root}/api/ministries/me/assignments`, {
       credentials: "same-origin",
       headers: { Accept: "application/json" },
     });

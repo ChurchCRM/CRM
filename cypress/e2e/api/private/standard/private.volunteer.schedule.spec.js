@@ -33,7 +33,7 @@
  *
  * Fixtures. Ministries, teams and positions go in through `cy.dbQuery()`: the
  * setup API is #9715 and is not on this branch. Scopes go in through
- * `POST /api/volunteer/scopes` as admin — that surface shipped with #9706.
+ * `POST /api/ministries/scopes` as admin — that surface shipped with #9706.
  * The seeded calendar has only three events, all in 2016/2017 (seed.sql:311),
  * so the linked-schedule fixture creates its own future series through
  * `POST /api/events/repeat` and deletes it again afterwards.
@@ -235,7 +235,7 @@ function createSchedule(ministryId, body, key = ADMIN_KEY) {
     return api(
         key,
         "POST",
-        `/api/volunteer/ministries/${ministryId}/schedules`,
+        `/api/ministries/ministries/${ministryId}/schedules`,
         body,
         201,
     ).then((resp) => resp.body.schedule.id);
@@ -280,7 +280,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                "/api/volunteer/scopes",
+                "/api/ministries/scopes",
                 {
                     personId: PERSON_COORDINATOR,
                     scopeType: "ministry",
@@ -306,7 +306,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 ministryA,
                 linkedScheduleBody({ teamId: teamA1, titleFilter: "Worship" }),
             ).then((id) => {
-                api(ADMIN_KEY, "GET", `/api/volunteer/schedules/${id}`).then(
+                api(ADMIN_KEY, "GET", `/api/ministries/schedules/${id}`).then(
                     (resp) => {
                         const s = resp.body.schedule;
                         expect(s.ministryId).to.eq(ministryA);
@@ -321,13 +321,13 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                         expect(s.active).to.eq(true);
                     },
                 );
-                api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${id}`);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
             });
         });
 
         it("creates a standalone schedule with its own recurrence and times", () => {
             createSchedule(ministryA, standaloneScheduleBody()).then((id) => {
-                api(ADMIN_KEY, "GET", `/api/volunteer/schedules/${id}`).then(
+                api(ADMIN_KEY, "GET", `/api/ministries/schedules/${id}`).then(
                     (resp) => {
                         const s = resp.body.schedule;
                         expect(s.linkMode).to.eq("standalone");
@@ -338,7 +338,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                         expect(s.endTime).to.eq("20:30:00");
                     },
                 );
-                api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${id}`);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
             });
         });
 
@@ -347,20 +347,20 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "GET",
-                    `/api/volunteer/ministries/${ministryA}/schedules`,
+                    `/api/ministries/ministries/${ministryA}/schedules`,
                 ).then((resp) => {
                     const ids = resp.body.schedules.map((s) => s.id);
                     expect(ids).to.include(id);
                     const mine = resp.body.schedules.find((s) => s.id === id);
                     expect(mine.occurrenceCount).to.eq(0);
                 });
-                api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${id}`);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
             });
         });
 
         it("updates a schedule's name and window", () => {
             createSchedule(ministryA, standaloneScheduleBody()).then((id) => {
-                api(ADMIN_KEY, "POST", `/api/volunteer/schedules/${id}`, {
+                api(ADMIN_KEY, "POST", `/api/ministries/schedules/${id}`, {
                     name: `${FIXTURE_PREFIX} Renamed`,
                     windowEnd: isoDate(120),
                     active: false,
@@ -371,12 +371,12 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                     expect(resp.body.schedule.windowEnd).to.eq(isoDate(120));
                     expect(resp.body.schedule.active).to.eq(false);
                 });
-                api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${id}`);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
             });
         });
 
         it("404s an unknown schedule id", () => {
-            api(ADMIN_KEY, "GET", "/api/volunteer/schedules/99999999", null, 404);
+            api(ADMIN_KEY, "GET", "/api/ministries/schedules/99999999", null, 404);
         });
 
         describe("§2.8 invariants are rejected with 400", () => {
@@ -433,7 +433,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                     api(
                         ADMIN_KEY,
                         "POST",
-                        `/api/volunteer/ministries/${ministryA}/schedules`,
+                        `/api/ministries/ministries/${ministryA}/schedules`,
                         body,
                         400,
                     );
@@ -444,7 +444,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/ministries/${ministryA}/schedules`,
+                    `/api/ministries/ministries/${ministryA}/schedules`,
                     linkedScheduleBody({ linkMode: "sometimes" }),
                     400,
                 );
@@ -467,13 +467,13 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${id}/generate`,
+                    `/api/ministries/schedules/${id}/generate`,
                     { through: isoDate(14) },
                 ).then(() => {
                     api(
                         ADMIN_KEY,
                         "GET",
-                        `/api/volunteer/occurrences?from=${isoDate(0)}&to=${isoDate(14)}&ministryId=${ministryA}`,
+                        `/api/ministries/occurrences?from=${isoDate(0)}&to=${isoDate(14)}&ministryId=${ministryA}`,
                     ).then((resp) => {
                         occurrenceId = resp.body.occurrences[0].id;
                     });
@@ -482,14 +482,14 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
 
         afterEach(() => {
-            api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${scheduleId}`);
+            api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${scheduleId}`);
         });
 
         it("upserts a template requirement on the schedule", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/requirements`,
+                `/api/ministries/schedules/${scheduleId}/requirements`,
                 { positionId: positionOne, minCount: 1, maxCount: 1 },
                 201,
             ).then((first) => {
@@ -502,7 +502,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}/requirements`,
+                    `/api/ministries/schedules/${scheduleId}/requirements`,
                     { positionId: positionOne, minCount: 2, maxCount: 3 },
                     200,
                 ).then((second) => {
@@ -514,7 +514,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "GET",
-                    `/api/volunteer/schedules/${scheduleId}/requirements`,
+                    `/api/ministries/schedules/${scheduleId}/requirements`,
                 ).then((resp) => {
                     expect(resp.body.requirements).to.have.length(1);
                 });
@@ -525,14 +525,14 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/requirements`,
+                `/api/ministries/schedules/${scheduleId}/requirements`,
                 { positionId: positionOne, minCount: 3, maxCount: 1 },
                 400,
             );
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/requirements`,
+                `/api/ministries/schedules/${scheduleId}/requirements`,
                 { positionId: positionOne, minCount: -1 },
                 400,
             );
@@ -542,7 +542,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/requirements`,
+                `/api/ministries/schedules/${scheduleId}/requirements`,
                 { positionId: 987654, minCount: 1 },
                 400,
             );
@@ -552,14 +552,14 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/requirements`,
+                `/api/ministries/schedules/${scheduleId}/requirements`,
                 { positionId: positionOne, minCount: 1, maxCount: 1 },
                 201,
             );
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/requirements`,
+                `/api/ministries/schedules/${scheduleId}/requirements`,
                 { positionId: positionTwo, minCount: 1, maxCount: 1 },
                 201,
             );
@@ -569,7 +569,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/occurrences/${occurrenceId}/requirements`,
+                    `/api/ministries/occurrences/${occurrenceId}/requirements`,
                     { positionId: positionOne, minCount: 4, maxCount: 4 },
                     201,
                 ).then((resp) => {
@@ -582,7 +582,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "GET",
-                    `/api/volunteer/occurrences/${occurrenceId}`,
+                    `/api/ministries/occurrences/${occurrenceId}`,
                 ).then((resp) => {
                     const reqs = resp.body.requirements;
                     expect(reqs).to.have.length(2);
@@ -604,7 +604,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/requirements`,
+                `/api/ministries/schedules/${scheduleId}/requirements`,
                 { positionId: positionOne, minCount: 1 },
                 201,
             );
@@ -612,7 +612,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/occurrences/${occurrenceId}/requirements`,
+                    `/api/ministries/occurrences/${occurrenceId}/requirements`,
                     { positionId: positionOne, minCount: 2 },
                     201,
                 );
@@ -637,7 +637,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/requirements`,
+                `/api/ministries/schedules/${scheduleId}/requirements`,
                 { positionId: positionOne, minCount: 1 },
                 201,
             ).then((resp) => {
@@ -645,19 +645,19 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "DELETE",
-                    `/api/volunteer/requirements/${reqId}`,
+                    `/api/ministries/requirements/${reqId}`,
                 );
                 api(
                     ADMIN_KEY,
                     "GET",
-                    `/api/volunteer/schedules/${scheduleId}/requirements`,
+                    `/api/ministries/schedules/${scheduleId}/requirements`,
                 ).then((after) => {
                     expect(after.body.requirements).to.have.length(0);
                 });
                 api(
                     ADMIN_KEY,
                     "DELETE",
-                    `/api/volunteer/requirements/${reqId}`,
+                    `/api/ministries/requirements/${reqId}`,
                     null,
                     404,
                 );
@@ -720,7 +720,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}/generate`,
+                    `/api/ministries/schedules/${scheduleId}/generate`,
                     { through: seriesEnd },
                 ).then((resp) => {
                     expect(resp.body.created).to.eq(4);
@@ -737,7 +737,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
+                `/api/ministries/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
             ).then((resp) => {
                 const occ = resp.body.occurrences;
                 expect(occ).to.have.length(4);
@@ -758,7 +758,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
+                `/api/ministries/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
             ).then((resp) => {
                 const target = resp.body.occurrences[0];
                 const newStart = `${seriesStart} 14:15:00`;
@@ -772,7 +772,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "GET",
-                    `/api/volunteer/occurrences/${target.id}`,
+                    `/api/ministries/occurrences/${target.id}`,
                 ).then((after) => {
                     expect(after.body.occurrence.start).to.eq(newStart);
                     expect(after.body.occurrence.end).to.eq(newEnd);
@@ -795,7 +795,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/generate`,
+                `/api/ministries/schedules/${scheduleId}/generate`,
                 { through: seriesEnd },
             ).then((resp) => {
                 expect(resp.body.created).to.eq(0);
@@ -805,7 +805,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
+                `/api/ministries/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
             ).then((resp) => {
                 expect(resp.body.occurrences).to.have.length(4);
             });
@@ -824,7 +824,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "GET",
-                    `/api/volunteer/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}` +
+                    `/api/ministries/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}` +
                         `&text=${encodeURIComponent(text)}`,
                 );
 
@@ -875,7 +875,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "GET",
-                    `/api/volunteer/occurrences?from=${seriesStart}&to=${seriesEnd}&teamId=${teamA1}&text=Linked`,
+                    `/api/ministries/occurrences?from=${seriesStart}&to=${seriesEnd}&teamId=${teamA1}&text=Linked`,
                 ).then((resp) => {
                     expect(resp.body.occurrences).to.have.length(4);
                 });
@@ -883,7 +883,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "GET",
-                    `/api/volunteer/occurrences?from=${seriesStart}&to=${seriesEnd}&teamId=${teamB1}&text=Linked`,
+                    `/api/ministries/occurrences?from=${seriesStart}&to=${seriesEnd}&teamId=${teamB1}&text=Linked`,
                 ).then((resp) => {
                     expect(resp.body.occurrences, "another team owns no linked schedule").to.have.length(0);
                 });
@@ -905,12 +905,12 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${id}/generate`,
+                    `/api/ministries/schedules/${id}/generate`,
                     { through: seriesEnd },
                 ).then((resp) => {
                     expect(resp.body.created).to.eq(0);
                 });
-                api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${id}`);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
             });
         });
 
@@ -918,13 +918,13 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
+                `/api/ministries/occurrences?from=${seriesStart}&to=${seriesEnd}&ministryId=${ministryA}`,
             ).then((resp) => {
                 const target = resp.body.occurrences[1];
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/occurrences/${target.id}/status`,
+                    `/api/ministries/occurrences/${target.id}/status`,
                     { status: "cancelled" },
                 ).then((after) => {
                     expect(after.body.occurrence.status).to.eq("cancelled");
@@ -935,7 +935,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}/generate`,
+                    `/api/ministries/schedules/${scheduleId}/generate`,
                     { through: seriesEnd },
                 ).then((gen) => {
                     expect(gen.body.created).to.eq(0);
@@ -969,7 +969,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/generate`,
+                `/api/ministries/schedules/${scheduleId}/generate`,
                 { through },
             ).then((resp) => {
                 expect(resp.body.created).to.be.greaterThan(0);
@@ -979,7 +979,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${isoDate(0)}&to=${through}&ministryId=${ministryA}`,
+                `/api/ministries/occurrences?from=${isoDate(0)}&to=${through}&ministryId=${ministryA}`,
             ).then((resp) => {
                 const mine = resp.body.occurrences.filter(
                     (o) => o.scheduleId === scheduleId,
@@ -1002,7 +1002,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${isoDate(0)}&to=${through}&ministryId=${ministryA}`,
+                `/api/ministries/occurrences?from=${isoDate(0)}&to=${through}&ministryId=${ministryA}`,
             ).then((resp) => {
                 firstCount = resp.body.occurrences.filter(
                     (o) => o.scheduleId === scheduleId,
@@ -1013,7 +1013,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}/generate`,
+                    `/api/ministries/schedules/${scheduleId}/generate`,
                     { through },
                 ).then((resp) => {
                     expect(resp.body.created).to.eq(0);
@@ -1025,7 +1025,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "GET",
-                    `/api/volunteer/occurrences?from=${isoDate(0)}&to=${through}&ministryId=${ministryA}`,
+                    `/api/ministries/occurrences?from=${isoDate(0)}&to=${through}&ministryId=${ministryA}`,
                 ).then((resp) => {
                     const count = resp.body.occurrences.filter(
                         (o) => o.scheduleId === scheduleId,
@@ -1047,13 +1047,13 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${id}/generate`,
+                    `/api/ministries/schedules/${id}/generate`,
                     {},
                 ).then((resp) => {
                     expect(resp.body.through).to.eq(isoDate(14));
                     expect(resp.body.created).to.be.within(2, 3);
                 });
-                api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${id}`);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
             });
         });
 
@@ -1070,14 +1070,14 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${id}/generate`,
+                    `/api/ministries/schedules/${id}/generate`,
                     { through: isoDate(90) },
                 ).then((resp) => {
                     // windowEnd clamps the run; at most two Mondays fit in 10 days.
                     expect(resp.body.created).to.be.within(1, 2);
                     expect(resp.body.through).to.eq(isoDate(10));
                 });
-                api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${id}`);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
             });
         });
 
@@ -1092,11 +1092,11 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${id}/generate`,
+                    `/api/ministries/schedules/${id}/generate`,
                     { through: isoDate(365 * 20) },
                     400,
                 );
-                api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${id}`);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
             });
         });
 
@@ -1104,7 +1104,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}/generate`,
+                `/api/ministries/schedules/${scheduleId}/generate`,
                 { through: "not-a-date" },
                 400,
             );
@@ -1115,18 +1115,18 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
 
     describe("occurrence list window (M9)", () => {
         it("requires from and to", () => {
-            api(ADMIN_KEY, "GET", "/api/volunteer/occurrences", null, 400);
+            api(ADMIN_KEY, "GET", "/api/ministries/occurrences", null, 400);
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${isoDate(0)}`,
+                `/api/ministries/occurrences?from=${isoDate(0)}`,
                 null,
                 400,
             );
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?to=${isoDate(30)}`,
+                `/api/ministries/occurrences?to=${isoDate(30)}`,
                 null,
                 400,
             );
@@ -1136,14 +1136,14 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "GET",
-                "/api/volunteer/occurrences?from=yesterday&to=tomorrow",
+                "/api/ministries/occurrences?from=yesterday&to=tomorrow",
                 null,
                 400,
             );
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${isoDate(30)}&to=${isoDate(0)}`,
+                `/api/ministries/occurrences?from=${isoDate(30)}&to=${isoDate(0)}`,
                 null,
                 400,
             );
@@ -1153,7 +1153,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${isoDate(0)}&to=${isoDate(30)}`,
+                `/api/ministries/occurrences?from=${isoDate(0)}&to=${isoDate(30)}`,
             ).then((resp) => {
                 expect(resp.body).to.have.property("limit", 500);
                 expect(resp.body).to.have.property("capped", false);
@@ -1192,15 +1192,15 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
 
         after(() => {
-            api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${scheduleInA}`);
-            api(ADMIN_KEY, "DELETE", `/api/volunteer/schedules/${scheduleInB}`);
+            api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${scheduleInA}`);
+            api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${scheduleInB}`);
         });
 
         it("lets a ministry coordinator read and write their own ministry", () => {
             api(
                 COORDINATOR_KEY,
                 "GET",
-                `/api/volunteer/ministries/${ministryA}/schedules`,
+                `/api/ministries/ministries/${ministryA}/schedules`,
             ).then((resp) => {
                 expect(resp.body.schedules.map((s) => s.id)).to.include(
                     scheduleInA,
@@ -1209,12 +1209,12 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 COORDINATOR_KEY,
                 "GET",
-                `/api/volunteer/schedules/${scheduleInA}`,
+                `/api/ministries/schedules/${scheduleInA}`,
             );
             api(
                 COORDINATOR_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleInA}/generate`,
+                `/api/ministries/schedules/${scheduleInA}/generate`,
                 { through: isoDate(14) },
             );
         });
@@ -1223,42 +1223,42 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 COORDINATOR_KEY,
                 "GET",
-                `/api/volunteer/ministries/${ministryB}/schedules`,
+                `/api/ministries/ministries/${ministryB}/schedules`,
                 null,
                 403,
             );
             api(
                 COORDINATOR_KEY,
                 "POST",
-                `/api/volunteer/ministries/${ministryB}/schedules`,
+                `/api/ministries/ministries/${ministryB}/schedules`,
                 standaloneScheduleBody(),
                 403,
             );
             api(
                 COORDINATOR_KEY,
                 "GET",
-                `/api/volunteer/schedules/${scheduleInB}`,
+                `/api/ministries/schedules/${scheduleInB}`,
                 null,
                 403,
             );
             api(
                 COORDINATOR_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleInB}/generate`,
+                `/api/ministries/schedules/${scheduleInB}/generate`,
                 { through: isoDate(14) },
                 403,
             );
             api(
                 COORDINATOR_KEY,
                 "DELETE",
-                `/api/volunteer/schedules/${scheduleInB}`,
+                `/api/ministries/schedules/${scheduleInB}`,
                 null,
                 403,
             );
             api(
                 COORDINATOR_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleInB}/requirements`,
+                `/api/ministries/schedules/${scheduleInB}/requirements`,
                 { positionId: positionOne, minCount: 1 },
                 403,
             );
@@ -1268,14 +1268,14 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleInB}/generate`,
+                `/api/ministries/schedules/${scheduleInB}/generate`,
                 { through: isoDate(14) },
             );
             cy.then(() => {
                 api(
                     COORDINATOR_KEY,
                     "GET",
-                    `/api/volunteer/occurrences?from=${isoDate(0)}&to=${isoDate(14)}`,
+                    `/api/ministries/occurrences?from=${isoDate(0)}&to=${isoDate(14)}`,
                 ).then((resp) => {
                     const ministries = resp.body.occurrences.map(
                         (o) => o.ministryId,
@@ -1289,21 +1289,21 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 PLAINAUTH_KEY,
                 "GET",
-                `/api/volunteer/ministries/${ministryA}/schedules`,
+                `/api/ministries/ministries/${ministryA}/schedules`,
                 null,
                 403,
             );
             api(
                 PLAINAUTH_KEY,
                 "GET",
-                `/api/volunteer/schedules/${scheduleInA}`,
+                `/api/ministries/schedules/${scheduleInA}`,
                 null,
                 403,
             );
             api(
                 PLAINAUTH_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${isoDate(0)}&to=${isoDate(14)}`,
+                `/api/ministries/occurrences?from=${isoDate(0)}&to=${isoDate(14)}`,
                 null,
                 403,
             );
@@ -1322,14 +1322,14 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/ministries/${ministryA}/schedules`,
+                `/api/ministries/ministries/${ministryA}/schedules`,
                 null,
                 403,
             );
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${isoDate(0)}&to=${isoDate(7)}`,
+                `/api/ministries/occurrences?from=${isoDate(0)}&to=${isoDate(7)}`,
                 null,
                 403,
             );

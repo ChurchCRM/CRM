@@ -27,7 +27,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 
 const PREFIX = "UI9713";
 const MINISTRY_NAME = `${PREFIX} Sound Booth`;

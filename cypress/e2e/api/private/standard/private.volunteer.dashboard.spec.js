@@ -4,7 +4,7 @@
  * Volunteer v2 — the coordinator dashboard aggregate (#9711, epic #9701).
  *
  * Normative sections of `.agents/skills/churchcrm/volunteer-v2-design.md`:
- * §3.3.2 (`GET /api/volunteer/dashboard?days=28` →
+ * §3.3.2 (`GET /api/ministries/dashboard?days=28` →
  * `{upcoming, gaps, pendingResponses, proposedSwaps, failedNotifications}`),
  * §4.4 (read scoping happens in the QUERY — a global manager sees everything, a
  * ministry coordinator their ministries, a team leader their teams), §4.6 (the
@@ -46,7 +46,7 @@ const COORD_B_KEY = "nofinance.api.key";
 const TEAM_LEADER_KEY = "menuoptions.api.key";
 const PLAINAUTH_KEY = "plainauth.api.key";
 
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const DASHBOARD_URL = `${VOLUNTEER_URL}/dashboard`;
 
 const PERSON_COORD_A = 3;
@@ -516,7 +516,7 @@ after(() => {
 
 // ── tests ──────────────────────────────────────────────────────────────────
 
-describe("GET /api/volunteer/dashboard — shape and defaults (#9711, §3.3.2)", () => {
+describe("GET /api/ministries/dashboard — shape and defaults (#9711, §3.3.2)", () => {
     it("returns the five documented keys", () => {
         dashboard(ADMIN_KEY).then((resp) => {
             expect(resp.body).to.have.property("upcoming");
@@ -556,7 +556,7 @@ describe("GET /api/volunteer/dashboard — shape and defaults (#9711, §3.3.2)",
     });
 });
 
-describe("GET /api/volunteer/dashboard — the gap panel (#9711, §5.2)", () => {
+describe("GET /api/ministries/dashboard — the gap panel (#9711, §5.2)", () => {
     it("lists the unfilled Milk Station requirement, soonest first", () => {
         dashboard(ADMIN_KEY).then((resp) => {
             const mine = resp.body.gaps.filter((gap) => gap.ministryId === ministryA);
@@ -593,7 +593,7 @@ describe("GET /api/volunteer/dashboard — the gap panel (#9711, §5.2)", () => 
     });
 });
 
-describe("GET /api/volunteer/dashboard — pending responses and swaps (#9711, §5.2)", () => {
+describe("GET /api/ministries/dashboard — pending responses and swaps (#9711, §5.2)", () => {
     it("lists the pending assignment with its occurrence context", () => {
         dashboard(ADMIN_KEY).then((resp) => {
             const row = resp.body.pendingResponses.find(
@@ -682,7 +682,7 @@ describe("GET /api/volunteer/dashboard — pending responses and swaps (#9711, �
     });
 });
 
-describe("GET /api/volunteer/dashboard — failedNotifications (#9711, §2.14)", () => {
+describe("GET /api/ministries/dashboard — failedNotifications (#9711, §2.14)", () => {
     it("counts only terminal failed rows, not pending or skipped ones", () => {
         let assignmentId = 0;
 
@@ -728,7 +728,7 @@ describe("GET /api/volunteer/dashboard — failedNotifications (#9711, §2.14)",
     });
 });
 
-describe("GET /api/volunteer/dashboard — the days window (#9711, §3.3.2)", () => {
+describe("GET /api/ministries/dashboard — the days window (#9711, §3.3.2)", () => {
     it("excludes an occurrence beyond the requested window", () => {
         dashboard(ADMIN_KEY, "?days=1").then((resp) => {
             const ids = resp.body.upcoming.map((occurrence) => occurrence.id);
@@ -753,7 +753,7 @@ describe("GET /api/volunteer/dashboard — the days window (#9711, §3.3.2)", ()
     });
 });
 
-describe("GET /api/volunteer/dashboard — scoping happens in the query (#9711, §4.4)", () => {
+describe("GET /api/ministries/dashboard — scoping happens in the query (#9711, §4.4)", () => {
     it("an administrator sees both ministries", () => {
         dashboard(ADMIN_KEY, "?days=60").then((resp) => {
             const ministryIds = new Set(
@@ -832,7 +832,7 @@ describe("GET /api/volunteer/dashboard — scoping happens in the query (#9711, 
     });
 });
 
-describe("GET /api/volunteer/dashboard — the rollout gate (#9711, §3.3)", () => {
+describe("GET /api/ministries/dashboard — the rollout gate (#9711, §3.3)", () => {
     it("is refused when V2 is off, and reachable again when it is on", () => {
         setVersion("v1");
         dashboard(ADMIN_KEY, "", 403);

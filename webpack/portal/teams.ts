@@ -23,10 +23,10 @@
  *
  * Endpoints, all of them team-gated so a team leader may call them (§4.4):
  *
- *   GET  /api/volunteer/teams/{id}                       team + its positions
- *   GET  /api/volunteer/teams/{id}/qualification-matrix  the grid
- *   GET  /api/volunteer/teams/{id}/schedules             the schedules
- *   GET  /api/volunteer/occurrences?teamId=…             the dates
+ *   GET  /api/ministries/teams/{id}                       team + its positions
+ *   GET  /api/ministries/teams/{id}/qualification-matrix  the grid
+ *   GET  /api/ministries/teams/{id}/schedules             the schedules
+ *   GET  /api/ministries/occurrences?teamId=…             the dates
  *
  * and the writes go to the position, schedule, qualification and occurrence routes
  * the admin page uses, each of which authorizes its own record.

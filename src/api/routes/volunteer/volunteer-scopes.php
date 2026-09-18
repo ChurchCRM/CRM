@@ -21,10 +21,10 @@ use Slim\Routing\RouteCollectorProxy;
  *
  * Two surfaces in one file because they share the rollout gate and nothing else:
  *
- *   /api/volunteer/scopes           who coordinates what. Manager-only (design §3.2):
+ *   /api/ministries/scopes           who coordinates what. Manager-only (design §3.2):
  *                                   granting authority is the one thing a coordinator
  *                                   must not be able to do for themselves.
- *   /api/volunteer/me/permissions   "what may I manage?". Every authenticated person is
+ *   /api/ministries/me/permissions   "what may I manage?". Every authenticated person is
  *                                   potentially a volunteer, so this carries no role gate
  *                                   and derives the acting person from the session — it
  *                                   accepts no personId parameter (§3.3.3).
@@ -37,7 +37,7 @@ use Slim\Routing\RouteCollectorProxy;
  * rollout gate answers before the role gate, and the sanitizer runs last, once the caller
  * is known to be allowed in at all.
  */
-$app->group('/volunteer', function (RouteCollectorProxy $group): void {
+$app->group('/ministries', function (RouteCollectorProxy $group): void {
     $group->group('/scopes', function (RouteCollectorProxy $scopes): void {
         $scopes->get('', 'listVolunteerScopes');
         $scopes->post('', 'createVolunteerScope')
@@ -85,7 +85,7 @@ function volunteerScopeToArray(VolunteerScope $scope): array
 
 /**
  * @OA\Get(
- *     path="/volunteer/scopes",
+ *     path="/ministries/scopes",
  *     operationId="listVolunteerScopes",
  *     summary="List volunteer coordinator and team-leader scope grants",
  *     tags={"Volunteer"},
@@ -120,7 +120,7 @@ function listVolunteerScopes(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/scopes",
+ *     path="/ministries/scopes",
  *     operationId="createVolunteerScope",
  *     summary="Grant ministry-coordinator or team-leader authority to a person",
  *     tags={"Volunteer"},
@@ -187,7 +187,7 @@ function createVolunteerScope(Request $request, Response $response): Response
 
 /**
  * @OA\Delete(
- *     path="/volunteer/scopes/{scopeId}",
+ *     path="/ministries/scopes/{scopeId}",
  *     operationId="deleteVolunteerScope",
  *     summary="Revoke a volunteer coordinator or team-leader scope grant",
  *     tags={"Volunteer"},
@@ -217,7 +217,7 @@ function deleteVolunteerScope(Request $request, Response $response, array $args)
 
 /**
  * @OA\Get(
- *     path="/volunteer/me/permissions",
+ *     path="/ministries/me/permissions",
  *     operationId="getMyVolunteerPermissions",
  *     summary="What volunteer structure may the authenticated person manage?",
  *     tags={"Volunteer"},

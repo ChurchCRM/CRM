@@ -44,7 +44,7 @@ const COORDINATOR_KEY = "user.api.key";
 const PLAINAUTH_KEY = "plainauth.api.key";
 const SELFEDIT_KEY = "selfedit.api.key";
 
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const CART_URL = "/api/cart/";
 
 const PERSON_COORDINATOR = 3; // tony.wade — every flag but Admin

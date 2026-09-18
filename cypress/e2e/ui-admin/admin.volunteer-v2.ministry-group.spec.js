@@ -29,7 +29,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const MINISTRIES_URL = "/api/volunteer/ministries";
+const MINISTRIES_URL = "/api/ministries/ministries";
 
 const PREFIX = "UIMINGRP";
 const MINISTRY_NAME = `${PREFIX} Coffee Bar`;

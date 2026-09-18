@@ -41,7 +41,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
 const MINISTRIES_URL = "/ministries";
 // The member pages live in the Member Portal since #9867; the old URLs 302 here.

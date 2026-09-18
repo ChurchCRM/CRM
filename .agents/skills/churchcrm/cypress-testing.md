@@ -2754,7 +2754,7 @@ The Docker test database is MariaDB with `sql_mode = STRICT_TRANS_TABLES,...`, s
 ## The session cart cannot be seeded by an API-key call <!-- learned: 2026-09-12 -->
 
 `ChurchCRM\dto\Cart` is `$_SESSION` state, so anything that reads it —
-`/api/cart/*`, `POST /api/volunteer/ministries/{id}/pool/from-cart` — only sees
+`/api/cart/*`, `POST /api/ministries/ministries/{id}/pool/from-cart` — only sees
 the cart of **the PHP session the request arrives on**. Two things in a UI spec
 break that:
 
@@ -2844,8 +2844,8 @@ Create a persona whose scope is genuinely empty and assert the empty state as th
 
 ```js
 // Fixture: a second ministry with nothing in it, and a scope grant on it
-adminApi("POST", "/api/volunteer/ministries", { name: EMPTY_MINISTRY_NAME }, 201);
-adminApi("POST", "/api/volunteer/scopes",
+adminApi("POST", "/api/ministries/ministries", { name: EMPTY_MINISTRY_NAME }, 201);
+adminApi("POST", "/api/ministries/scopes",
     { personId: 3, scopeType: "ministry", scopeId: emptyMinistryId }, [200, 201]);
 
 // Test: log in as person 3, not admin

@@ -173,7 +173,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
    * Calendar event types for the editor's select.
    *
    * A plain `fetch` rather than a call through `../api`: that module is the client
-   * for `/api/volunteer/*` and this is a core calendar read, so routing it through
+   * for `/api/ministries/*` and this is a core calendar read, so routing it through
    * the volunteer prefix would be wrong. Failure is not fatal — the select is simply
    * empty and the standalone pattern still works.
    */

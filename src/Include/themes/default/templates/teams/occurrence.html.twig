@@ -8,7 +8,7 @@
   page's, unchanged**: `skin/v2/volunteer-occurrence.min.js` is
   `webpack/volunteer/occurrence.ts`, which was already page-agnostic — it names no
   ministry, reads its whole world from `window.CRM.volunteerOccurrence` and
-  `/api/volunteer/occurrences/{id}/*`, and addresses its markup by id. So nothing
+  `/api/ministries/occurrences/{id}/*`, and addresses its markup by id. So nothing
   had to be extracted from it for this page to exist; only the chrome moved, which
   is exactly what P15 did for the two volunteer member pages in MP6. Every id
   below is therefore one that bundle looks for and may not be renamed here.

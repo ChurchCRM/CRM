@@ -452,7 +452,7 @@ the home page renders its "My volunteering" card only then. `activeTab` is
 `#help-wanted-section` / `-content`, `#opportunities-loading` / `-error` / `-empty` /
 `-content` on the other — are read by `skin/v2/volunteer-my-schedule.min.js` and
 `skin/v2/volunteer-opportunities.min.js`, which fill them from
-`/api/volunteer/me/*`. A theme overriding either template must keep every id, or
+`/api/ministries/me/*`. A theme overriding either template must keep every id, or
 the page renders empty. Override the wrapper, the headings and the surrounding
 layout freely.
 

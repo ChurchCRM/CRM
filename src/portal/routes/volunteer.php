@@ -15,14 +15,14 @@ use Slim\Exception\HttpNotFoundException;
  * exactly the thing the portal exists to stop a member ever seeing. Only the
  * chrome moved: the templates reproduce the container ids the two existing
  * bundles look for, and `webpack/volunteer/{my-schedule,opportunities,member-ui}.ts`
- * and `/api/volunteer/me/*` are untouched.
+ * and `/api/ministries/me/*` are untouched.
  *
  * **No role gate here either, and for the same reason as before** (volunteer
  * design §3.2): every authenticated person is potentially a volunteer, so a gate
  * would lock out precisely the people the pages are for. What does apply is the
  * rollout flag — `PortalNav::isVolunteeringVisible()`, which is also what decides
  * whether the nav offers the entry, so the menu and the route can never disagree.
- * Everything on the pages comes from `/api/volunteer/me/*`, where the acting
+ * Everything on the pages comes from `/api/ministries/me/*`, where the acting
  * person is the session and no route accepts a `personId`.
  */
 

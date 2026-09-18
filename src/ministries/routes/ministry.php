@@ -30,7 +30,7 @@ use Slim\Views\PhpRenderer;
  * outside the caller's scope goes to the access-denied page, the same place
  * `BaseAuthRoleMiddleware` sends a browser it turns away.
  *
- * Route paths are module-relative: setBasePath() already carries '/volunteer'.
+ * Route paths are module-relative: setBasePath() already carries '/ministries'.
  */
 $app->group('', function (RouteCollectorProxy $group): void {
     // GET /ministries/{ministryId}

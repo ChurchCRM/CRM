@@ -198,12 +198,12 @@ function rootPath(): string {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  return requestAt(`/api/volunteer${path}`, init);
+  return requestAt(`/api/ministries${path}`, init);
 }
 
 /**
  * Same envelope handling as `request()`, for the few core endpoints V2 reuses
- * outside `/api/volunteer`.
+ * outside `/api/ministries`.
  */
 async function requestAt<T>(absolutePath: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${rootPath()}${absolutePath}`, {

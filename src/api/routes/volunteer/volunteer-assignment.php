@@ -48,7 +48,7 @@ use Slim\Routing\RouteCollectorProxy;
  * `VolunteerAuthorizationService` a third time because it is also reachable from the
  * member surface, where no entity middleware ran (§4.5, three layers).
  *
- * **This group opens its own `$app->group('/volunteer', …)` and chains
+ * **This group opens its own `$app->group('/ministries', …)` and chains
  * `VolunteerV2EnabledMiddleware` itself.** Slim 4 scopes `->add()` to the single
  * `RouteCollectorProxy` it is chained on; nothing propagates from the group in
  * `volunteer-status.php` or `volunteer-schedule.php`, and an ungated group would be
@@ -62,7 +62,7 @@ use Slim\Routing\RouteCollectorProxy;
  * `VolunteerAssignmentService`, and these handlers translate an exception's
  * `getStatusCode()` into a response and nothing more.
  */
-$app->group('/volunteer', function (RouteCollectorProxy $group): void {
+$app->group('/ministries', function (RouteCollectorProxy $group): void {
     // ── One occurrence: the staffing workhorse (§5.5) ───────────────────────
     $group->group('/occurrences/{occurrenceId:[0-9]+}', function (RouteCollectorProxy $occurrence): void {
         $occurrence->get('/staffing', 'getVolunteerOccurrenceStaffing');
@@ -351,7 +351,7 @@ function volunteerScopedOccurrenceIds(
 
 /**
  * @OA\Get(
- *     path="/volunteer/occurrences/{occurrenceId}/staffing",
+ *     path="/ministries/occurrences/{occurrenceId}/staffing",
  *     operationId="getVolunteerOccurrenceStaffing",
  *     summary="Requirements, live/gap counts and assignment rows for one occurrence",
  *     description="The workhorse coordinator read (design section 5.5). Requirements come from VolunteerScheduleService::getEffectiveRequirements(); the counts come from VolunteerAssignmentService::getGaps(), the single gap implementation. Assignments for a position that has no requirement are returned under otherAssignments rather than being hidden.",
@@ -438,7 +438,7 @@ function getVolunteerOccurrenceStaffing(Request $request, Response $response): R
 
 /**
  * @OA\Get(
- *     path="/volunteer/occurrences/{occurrenceId}/eligible",
+ *     path="/ministries/occurrences/{occurrenceId}/eligible",
  *     operationId="listVolunteerEligiblePeople",
  *     summary="Who may be assigned to a position on this occurrence",
  *     description="Actively qualified people, ordered by last served date ascending with never-served first - the rotation (design section 2.17). inPool reports pool membership rather than filtering on it, because an out-of-pool qualified person is assignable with the allowOutsidePool override. conflictPositionId names another position the person already holds on this occurrence (I7/D16) and is an annotation, never a filter.",
@@ -482,7 +482,7 @@ function listVolunteerEligiblePeople(Request $request, Response $response): Resp
 
 /**
  * @OA\Post(
- *     path="/volunteer/occurrences/{occurrenceId}/assignments",
+ *     path="/ministries/occurrences/{occurrenceId}/assignments",
  *     operationId="createVolunteerAssignment",
  *     summary="Assign a qualified person to a position on this occurrence",
  *     description="Enforces design section 2.11.2: I4 the position belongs to this schedule's ministry (400), I5 the occurrence is neither cancelled nor past (409), I2 an active qualification (403), I3 membership of the ministry's volunteer pool Group unless allowOutsidePool is passed (409) - NOT applied to self sign-up, which tests qualification only (design D19), I1 one row per person per position per occurrence (409). I8 re-uses a declined or cancelled row rather than inserting a second one. I7/D16 - a person already holding ANOTHER position on this occurrence - is allowed unconditionally and returns 201.",
@@ -547,7 +547,7 @@ function createVolunteerAssignment(Request $request, Response $response): Respon
 
 /**
  * @OA\Get(
- *     path="/volunteer/assignments/{assignmentId}",
+ *     path="/ministries/assignments/{assignmentId}",
  *     operationId="getVolunteerAssignment",
  *     summary="One assignment with its full response history",
  *     description="The history is returned because it is the only way to prove the idempotency rule of design section 2.12 from outside - accepting twice must leave exactly one response row (section 6.6). Swap rows are included for the same reason.",
@@ -607,7 +607,7 @@ function getVolunteerAssignment(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/assignments/{assignmentId}/status",
+ *     path="/ministries/assignments/{assignmentId}/status",
  *     operationId="setVolunteerAssignmentStatus",
  *     summary="Change an assignment's status, or record a response on the volunteer's behalf",
  *     description="accepted and declined write a response row with channel 'coordinator' and the COORDINATOR as vrsp_per_ID, so the audit trail shows who actually recorded it (design section 2.11.1). A coordinator-recorded decline deliberately enqueues no decline_alert - the coordinators already know (section 3.6). cancelled is a coordinator act. An illegal transition is a 409 whose body carries currentStatus.",
@@ -659,7 +659,7 @@ function setVolunteerAssignmentStatus(Request $request, Response $response): Res
 
 /**
  * @OA\Delete(
- *     path="/volunteer/assignments/{assignmentId}",
+ *     path="/ministries/assignments/{assignmentId}",
  *     operationId="deleteVolunteerAssignment",
  *     summary="Cancel an assignment (hard-deletes only a pending row with no history)",
  *     description="Design section 3.3.2: cancel, never hard-delete once responded. A pending row that carries no response, no swap and is not itself a substitution is a mis-click with nothing to preserve and is removed outright along with its pending outbox rows; everything else is cancelled and kept, because the audit trail is what issue 9709 promises.",
@@ -705,7 +705,7 @@ function deleteVolunteerAssignment(Request $request, Response $response): Respon
 
 /**
  * @OA\Post(
- *     path="/volunteer/assignments/{assignmentId}/notify",
+ *     path="/ministries/assignments/{assignmentId}/notify",
  *     operationId="notifyVolunteerAssignment",
  *     summary="Re-enqueue the assignment message for this volunteer",
  *     description="Idempotent through the dedupe key (design section 2.14): the row assign() already created is returned with created=false and nothing is duplicated. ?force=1 re-arms that SAME row to pending so the next drain sends it again - it never inserts a second one. Nothing is sent here; delivery is issue 9710's.",
@@ -778,7 +778,7 @@ function volunteerNotificationToArray(VolunteerNotification $notification): arra
 
 /**
  * @OA\Get(
- *     path="/volunteer/assignments/{assignmentId}/notifications",
+ *     path="/ministries/assignments/{assignmentId}/notifications",
  *     operationId="listVolunteerAssignmentNotifications",
  *     summary="The notification outbox rows for one assignment",
  *     description="Design section 6.6: the only way to prove from outside that a retried operation produced no second message. Newest first. Coordinator surface - the volunteer's own view of what they were sent is not this endpoint.",
@@ -805,10 +805,10 @@ function listVolunteerAssignmentNotifications(Request $request, Response $respon
 
 /**
  * @OA\Get(
- *     path="/volunteer/gaps",
+ *     path="/ministries/gaps",
  *     operationId="listVolunteerGaps",
  *     summary="Unfilled staffing requirements across the caller's scope",
- *     description="from and to are required, matching GET /volunteer/occurrences. Every count comes from VolunteerAssignmentService::getGaps() - there is no gap table (design section 2.11.3).",
+ *     description="from and to are required, matching GET /ministries/occurrences. Every count comes from VolunteerAssignmentService::getGaps() - there is no gap table (design section 2.11.3).",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="from", in="query", required=true, @OA\Schema(type="string", format="date")),
@@ -889,7 +889,7 @@ function listVolunteerGaps(Request $request, Response $response): Response
 
 /**
  * @OA\Get(
- *     path="/volunteer/swaps",
+ *     path="/ministries/swaps",
  *     operationId="listVolunteerSwaps",
  *     summary="The substitution queue for the caller's scope",
  *     tags={"Volunteer"},
@@ -967,7 +967,7 @@ function listVolunteerSwaps(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/swaps/{swapId}/approve",
+ *     path="/ministries/swaps/{swapId}/approve",
  *     operationId="approveVolunteerSwap",
  *     summary="Approve a proposed substitution",
  *     description="ONE transaction (design section 2.13): the original goes accepted to substituted, a new row is inserted for the substitute with source='substitute', status='accepted' and vasg_Replaces_vasg_ID pointing at the original, a response row is appended to both, and both parties get a swap_resolved outbox row. The original is never edited beyond its status, so the audit trail survives.",
@@ -1018,7 +1018,7 @@ function approveVolunteerSwap(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/swaps/{swapId}/reject",
+ *     path="/ministries/swaps/{swapId}/reject",
  *     operationId="rejectVolunteerSwap",
  *     summary="Reject a proposed substitution",
  *     description="The original assignment stays accepted and both parties are told (design section 2.13). The coordinator may then cancel it and assign someone else, which is the ordinary gap loop.",

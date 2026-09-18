@@ -36,7 +36,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = "/ministries";
 
 const PREFIX = "UIPAGE3";
@@ -383,7 +383,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
             cy.get("#volunteerQualificationsTable .volunteer-qual-status").should("not.exist");
             cy.get("#volunteerQualificationsTable .volunteer-qual-cell").should("not.exist");
 
-            cy.intercept("POST", "**/api/volunteer/positions/*/qualifications").as("grantQual");
+            cy.intercept("POST", "**/api/ministries/positions/*/qualifications").as("grantQual");
 
             // The box that is about to be ticked, and its neighbour to the right — the
             // inline badge used to widen its own cell and push everything after it.
@@ -403,7 +403,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
         });
 
         it("rolls the box back and shows the red toast when the write is refused", () => {
-            cy.intercept("POST", "**/api/volunteer/positions/*/qualifications", {
+            cy.intercept("POST", "**/api/ministries/positions/*/qualifications", {
                 statusCode: 403,
                 body: { message: "Not authorized for this position" },
             }).as("denied");
@@ -457,7 +457,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
         });
 
         it("adds the chosen person to the pool and their row appears in the grid", () => {
-            cy.intercept("POST", "**/api/volunteer/ministries/*/pool/*").as("addPool");
+            cy.intercept("POST", "**/api/ministries/ministries/*/pool/*").as("addPool");
 
             cy.visit(ministryUrl());
             openVolunteersTab();
@@ -487,7 +487,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
         });
 
         it("says so, and still refreshes, when they were already a volunteer here", () => {
-            cy.intercept("POST", "**/api/volunteer/ministries/*/pool/*").as("addPool");
+            cy.intercept("POST", "**/api/ministries/ministries/*/pool/*").as("addPool");
 
             cy.visit(ministryUrl());
             openVolunteersTab();
@@ -542,7 +542,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
         });
 
         it("adds everyone in the cart to the pool in one call and reports the counts", () => {
-            cy.intercept("POST", "**/api/volunteer/ministries/*/pool/from-cart").as("fromCart");
+            cy.intercept("POST", "**/api/ministries/ministries/*/pool/from-cart").as("fromCart");
 
             cy.visit(ministryUrl());
             seedCart(CART_PEOPLE);
@@ -572,7 +572,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
         });
 
         it("counts the ones that were already there rather than failing", () => {
-            cy.intercept("POST", "**/api/volunteer/ministries/*/pool/from-cart").as("fromCart");
+            cy.intercept("POST", "**/api/ministries/ministries/*/pool/from-cart").as("fromCart");
 
             cy.visit(ministryUrl());
             seedCart([...POOL_PEOPLE, CART_PEOPLE[0]]);
@@ -639,7 +639,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
         });
 
         it("narrows to one team's occurrences as soon as the Team select changes", () => {
-            cy.intercept("GET", "**/api/volunteer/occurrences?*").as("listOccurrences");
+            cy.intercept("GET", "**/api/ministries/occurrences?*").as("listOccurrences");
             cy.visit(ministryUrl());
             openOccurrencesTab();
 
@@ -652,7 +652,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
         });
 
         it("filters by the occurrence title as it is typed, case-insensitively", () => {
-            cy.intercept("GET", "**/api/volunteer/occurrences?*").as("listOccurrences");
+            cy.intercept("GET", "**/api/ministries/occurrences?*").as("listOccurrences");
             cy.visit(ministryUrl());
             openOccurrencesTab();
 
@@ -671,7 +671,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
         });
 
         it("reaches the past by moving From back, with no dialog anywhere", () => {
-            cy.intercept("GET", "**/api/volunteer/occurrences?*").as("listOccurrences");
+            cy.intercept("GET", "**/api/ministries/occurrences?*").as("listOccurrences");
             cy.visit(ministryUrl());
             openOccurrencesTab();
 
@@ -694,7 +694,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
                 return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
             };
 
-            cy.intercept("GET", "**/api/volunteer/occurrences?*").as("listOccurrences");
+            cy.intercept("GET", "**/api/ministries/occurrences?*").as("listOccurrences");
             cy.visit(ministryUrl());
             openOccurrencesTab();
 

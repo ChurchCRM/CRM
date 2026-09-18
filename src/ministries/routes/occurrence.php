@@ -23,7 +23,7 @@ use Slim\Views\PhpRenderer;
  *
  * The single most important coordinator screen: who is needed, who is on, who has
  * answered, and what is still short. Everything it shows comes from
- * `GET /api/volunteer/occurrences/{id}/staffing`; this route renders markup and the page
+ * `GET /api/ministries/occurrences/{id}/staffing`; this route renders markup and the page
  * config, and runs no query of its own beyond the header (groups-mvc-guidelines.md).
  *
  * The header is resolved server-side rather than waiting on the API because it is what
@@ -37,7 +37,7 @@ use Slim\Views\PhpRenderer;
  * that does not exist is a 404; one outside the caller's scope goes to the access-denied
  * page, the same place `BaseAuthRoleMiddleware` sends a browser it turns away.
  *
- * Route paths are module-relative: `setBasePath()` already carries '/volunteer'.
+ * Route paths are module-relative: `setBasePath()` already carries '/ministries'.
  */
 $app->group('', function (RouteCollectorProxy $group): void {
     // GET /ministries/occurrences/{occurrenceId}

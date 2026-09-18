@@ -7,7 +7,7 @@ use ChurchCRM\Utils\InputUtils;
  * S4 — the occurrence / staffing view (#9709, design §5.5).
  *
  * Markup only. The route decided what may be shown and everything below the header
- * comes from `GET /api/volunteer/occurrences/{id}/staffing` — no queries here
+ * comes from `GET /api/ministries/occurrences/{id}/staffing` — no queries here
  * (groups-mvc-guidelines.md).
  *
  * Every string is `gettext()`. The JS strings live in

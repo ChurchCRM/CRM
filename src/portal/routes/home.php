@@ -17,7 +17,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 // the calendar one the next three events from the calendars the church shares,
 // MP4 (#9865) did the same for My Family and Profile, and MP6 (#9867) turned
 // volunteering into a card filled client-side from
-// `/api/volunteer/me/assignments`. Themes typically override this page first.
+// `/api/ministries/me/assignments`. Themes typically override this page first.
 $homeHandler = function (Request $request, Response $response): Response {
     $actor = $request->getAttribute(PortalSelfService::ACTOR_ATTRIBUTE);
     $family = $actor instanceof Person ? $actor->getFamily() : null;

@@ -18,7 +18,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  * (SystemConfig `sVolunteerVersion`, see #9704) is 'v2' or 'both'.
  *
  * This is the server-side half of the rollout: hiding the menu entry is not a
- * gate. It guards both the /volunteer MVC module and the /api/volunteer API
+ * gate. It guards both the /ministries MVC module and the /api/ministries API
  * group, so an administrator cannot reach a disabled experience by typing the
  * URL, and neither can an API client.
  *

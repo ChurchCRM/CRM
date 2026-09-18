@@ -11,7 +11,7 @@
  * `User::isEditSelfExclusive()` is true and this login has no admin shell to fall
  * back to. `user_usr.usr_UserName` is `VARCHAR(32)` and the seeded address is 37
  * characters, so the login form must be given the truncated form. An
- * administrator grants her a `team` scope through `/api/volunteer/scopes`, which
+ * administrator grants her a `team` scope through `/api/ministries/scopes`, which
  * is the only way one is ever made (§4.6), and everything after that is her.
  *
  * The walk is the acceptance criterion of the issue, in order: the nav entry
@@ -30,7 +30,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const TEAMS_URL = "/portal/teams";
 
 /** The team leader (person 100). */

@@ -47,7 +47,7 @@ use Slim\Routing\RouteCollectorProxy;
  *
  * A volunteer is an EditSelf-exclusive user (D14), so `AuthMiddleware` would normally
  * turn them away entirely; `isLimitedAccessAllowedPath()` (#9706, §4.7) exempts exactly
- * `/api/volunteer/me/` behind the rollout flag. The exemption grants **reachability, not
+ * `/api/ministries/me/` behind the rollout flag. The exemption grants **reachability, not
  * authority**: every handler below still authorizes per record, and answers **403, never
  * 404**, for someone else's assignment — the record exists, and leaking its existence is
  * acceptable where leaking its content is not (§4.8).
@@ -66,7 +66,7 @@ use Slim\Routing\RouteCollectorProxy;
  */
 const VOLUNTEER_ME_DEFAULT_WINDOW_DAYS = 90;
 
-$app->group('/volunteer/me', function (RouteCollectorProxy $group): void {
+$app->group('/ministries/me', function (RouteCollectorProxy $group): void {
     $group->get('/assignments', 'listMyVolunteerAssignments');
 
     // #9712. Declared before the parameterised assignment routes so neither literal
@@ -187,7 +187,7 @@ function volunteerMeAssignmentToArray(
 
 /**
  * @OA\Get(
- *     path="/volunteer/me/assignments",
+ *     path="/ministries/me/assignments",
  *     operationId="listMyVolunteerAssignments",
  *     summary="My own volunteer commitments",
  *     description="The acting person comes from the session (AuthenticationManager::getCurrentUser()->getId(), which IS the person id). There is deliberately NO personId parameter - a personId in the query string is ignored, which is what makes substitution structurally impossible (design section 3.3.3). Upcoming only by default; includePast=1 adds what has already happened.",
@@ -232,7 +232,7 @@ function listMyVolunteerAssignments(Request $request, Response $response): Respo
 
 /**
  * @OA\Post(
- *     path="/volunteer/me/assignments/{assignmentId}/respond",
+ *     path="/ministries/me/assignments/{assignmentId}/respond",
  *     operationId="respondToMyVolunteerAssignment",
  *     summary="Accept or decline my own assignment",
  *     description="Idempotent (design section 2.12): responding with the status the assignment already has returns 200 with no second response row, so a double tap on a phone is harmless. A decline reopens the gap and enqueues a decline_alert for the coordinators (section 3.6) - which a coordinator-recorded decline on the other surface deliberately does not. Answering for someone else is 403, never 404.",
@@ -285,7 +285,7 @@ function respondToMyVolunteerAssignment(Request $request, Response $response): R
 
 /**
  * @OA\Post(
- *     path="/volunteer/me/assignments/{assignmentId}/propose-substitute",
+ *     path="/ministries/me/assignments/{assignmentId}/propose-substitute",
  *     operationId="proposeMyVolunteerSubstitute",
  *     summary="Propose a substitute who has already agreed",
  *     description="The core of D13/UC2. personId here is the SUBSTITUTE, never the actor - the actor is the session. Eligibility is re-checked server-side whatever the UI offered: the substitute must hold an active qualification for the position (I2 applies to the replacement too) and must not already hold that position on that occurrence (I1). At most one proposal may be pending per assignment; a second is 409. The original assignment is not changed - only a substitute_proposed response row is appended.",
@@ -349,7 +349,7 @@ function proposeMyVolunteerSubstitute(Request $request, Response $response): Res
 
 /**
  * @OA\Post(
- *     path="/volunteer/me/swaps/{swapId}/withdraw",
+ *     path="/ministries/me/swaps/{swapId}/withdraw",
  *     operationId="withdrawMyVolunteerSwap",
  *     summary="Withdraw my own pending substitution request",
  *     description="Proposer only (design section 2.13) - a coordinator approves or rejects, never withdraws on someone's behalf, so even a coordinator gets 403 here. Appends a substitute_withdrawn response row and changes nothing else: the original assignment stays exactly as it was. 409 unless the request is still proposed.",
@@ -398,7 +398,7 @@ function withdrawMyVolunteerSwap(Request $request, Response $response): Response
 
 /**
  * @OA\Get(
- *     path="/volunteer/me/opportunities",
+ *     path="/ministries/me/opportunities",
  *     operationId="listMyVolunteerOpportunities",
  *     summary="Open slots I am qualified for and could sign up to right now",
  *     description="Server-side eligibility, never the client's idea of it: the list is filtered to positions the SESSION person holds an active qualification for, on occurrences that are scheduled, not over, with capacity left. Pool membership is NOT tested - design D19 makes qualification the whole eligibility rule on this surface, and POST /me/signup applies exactly the same rule. Every row it returns is a row POST /me/signup would accept. There is no personId parameter (design section 3.3.3); one in the query string is ignored. Defaults to the next 90 days.",
@@ -438,7 +438,7 @@ function listMyVolunteerOpportunities(Request $request, Response $response): Res
 
 /**
  * @OA\Post(
- *     path="/volunteer/me/signup",
+ *     path="/ministries/me/signup",
  *     operationId="signUpForMyVolunteerOpportunity",
  *     summary="Put myself on an open slot",
  *     description="Creates an assignment for the SESSION person with status accepted and source self_signup - a volunteer who volunteered has already answered. Qualification AND capacity are re-validated server-side at signup time whatever the list offered: 403 when unqualified (I2), 409 when the requirement is already at MaxCount, when the occurrence is cancelled or past (I5), or when the person already holds that position (I1). A personId in the body names nobody: the actor is the session.",
@@ -492,7 +492,7 @@ function signUpForMyVolunteerOpportunity(Request $request, Response $response): 
 
 /**
  * @OA\Get(
- *     path="/volunteer/me/qualifications",
+ *     path="/ministries/me/qualifications",
  *     operationId="listMyVolunteerQualifications",
  *     summary="What I am qualified to do",
  *     description="Read-only, and read-only on purpose: volunteers cannot grant themselves anything, so there is no write counterpart on this surface. Scoped to the SESSION person - a personId in the query string is ignored (design section 3.3.3).",
@@ -570,7 +570,7 @@ function listMyVolunteerQualifications(Request $request, Response $response): Re
 
 /**
  * @OA\Get(
- *     path="/volunteer/me/assignments/{assignmentId}/substitutes",
+ *     path="/ministries/me/assignments/{assignmentId}/substitutes",
  *     operationId="listMyVolunteerSubstituteCandidates",
  *     summary="Who I may offer as my substitute",
  *     description="The picker behind section 5.6's Find a sub. Deliberately narrower than the coordinator's /eligible: it excludes the caller and anyone already holding this position on this occurrence - the exact two cases propose-substitute refuses - so the picker can never offer a name the server will then reject. 403, never 404, for someone else's assignment.",
@@ -709,7 +709,7 @@ function volunteerMeParseDate(?string $raw): ?\DateTimeInterface
 
 /**
  * @OA\Get(
- *     path="/volunteer/me/help-wanted",
+ *     path="/ministries/me/help-wanted",
  *     operationId="listMyVolunteerHelpWanted",
  *     summary="Ministries that are asking for help",
  *     description="Every ACTIVE ministry that is advertising, alphabetically. A ministry advertises in either of two ways (design D19 as amended in round four): its own Help wanted switch is on, or it has at least one ACTIVE position with Recruit Volunteers on - either is enough. helpWantedText is the coordinator's own prose and may be empty; recruitingPositions names the positions being recruited for, ordered by team name and then by the position's own order, and is an empty array when there are none. Not filtered by qualification or by pool membership - the whole point of the section is to reach people the ministry does not know yet. inPool says whether the caller is already one of its volunteers, so the page can word the button's result correctly.",
@@ -755,7 +755,7 @@ function listMyVolunteerHelpWanted(Request $request, Response $response): Respon
 
 /**
  * @OA\Post(
- *     path="/volunteer/me/help-wanted/{ministryId}",
+ *     path="/ministries/me/help-wanted/{ministryId}",
  *     operationId="offerToHelpVolunteerMinistry",
  *     summary="Tell a ministry you would like to help",
  *     description="The acting person comes from the session; there is deliberately NO personId parameter (design section 3.3.3), so nobody can volunteer somebody else. Adds the caller to the ministry's volunteer pool Group if they are not already in it, then enqueues one help_offer message per coordinator per day - a second tap the same day sends nothing. Answers 403 only when the ministry is advertising in NEITHER way - no Help wanted switch and no active recruiting position - so a pool cannot be joined by guessing an id, while every ministry the help-wanted listing returns accepts the offer its rendered button makes.",

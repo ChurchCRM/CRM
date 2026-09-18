@@ -22,12 +22,10 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 
 const SCHEDULE_URL = "/portal/volunteer/schedule";
 const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
-const LEGACY_SCHEDULE_URL = "/volunteer/my-schedule";
-const LEGACY_OPPORTUNITIES_URL = "/volunteer/opportunities";
 
 const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
 const MEMBER_PASSWORD = "changeme";
@@ -379,7 +377,7 @@ describe("Member Portal — finding volunteering (#9867)", () => {
 
     it("shows the next commitment on the home page's volunteering card", () => {
         cy.get("#portal-volunteering-card", { timeout: 10000 }).should("exist");
-        // Filled from /api/volunteer/me/assignments once the locales are ready.
+        // Filled from /api/ministries/me/assignments once the locales are ready.
         cy.get("#portal-volunteering-next", { timeout: 20000 })
             .should("be.visible")
             .and("contain", `${PREFIX} Door`);
@@ -515,33 +513,5 @@ describe("Member Portal — volunteering workflows (#9867)", () => {
                 expect(resp.body.members.map((m) => m.personId)).to.include(PERSON_MEMBER);
             },
         );
-    });
-});
-
-// ── the retired URLs ───────────────────────────────────────────────────────
-
-describe("Member Portal — the retired volunteer URLs (#9867)", () => {
-    beforeEach(() => {
-        freshMemberLogin();
-    });
-
-    it("302s /volunteer/my-schedule into the portal", () => {
-        cy.request({ url: LEGACY_SCHEDULE_URL, followRedirect: false }).then((resp) => {
-            expect(resp.status).to.eq(302);
-            expect(resp.headers.location).to.match(/\/portal\//);
-        });
-    });
-
-    it("302s /volunteer/opportunities into the portal", () => {
-        cy.request({ url: LEGACY_OPPORTUNITIES_URL, followRedirect: false }).then((resp) => {
-            expect(resp.status).to.eq(302);
-            expect(resp.headers.location).to.match(/\/portal\//);
-        });
-    });
-
-    it("never leaves a member in the admin shell when they follow an old link", () => {
-        cy.visit(LEGACY_SCHEDULE_URL, { failOnStatusCode: false });
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-        assertNoAdminShell();
     });
 });

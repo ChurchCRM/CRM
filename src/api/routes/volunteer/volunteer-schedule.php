@@ -53,7 +53,7 @@ use Slim\Routing\RouteCollectorProxy;
  * input sanitizer → handler. The sanitizer runs last on purpose: there is no point
  * normalising a payload for a caller who is about to be refused.
  */
-$app->group('/volunteer', function (RouteCollectorProxy $group): void {
+$app->group('/ministries', function (RouteCollectorProxy $group): void {
     // ── Schedules under a ministry ──────────────────────────────────────────
     //
     // The two verbs are gated DIFFERENTLY since #9868, which is why they are no
@@ -359,7 +359,7 @@ function volunteerOccurrenceLikePattern(string $needle): string
 
 /**
  * @OA\Get(
- *     path="/volunteer/ministries/{ministryId}/schedules",
+ *     path="/ministries/ministries/{ministryId}/schedules",
  *     operationId="listVolunteerSchedules",
  *     summary="List a ministry's volunteer schedules",
  *     tags={"Volunteer"},
@@ -400,7 +400,7 @@ function listVolunteerSchedules(Request $request, Response $response): Response
 
 /**
  * @OA\Get(
- *     path="/volunteer/teams/{teamId}/schedules",
+ *     path="/ministries/teams/{teamId}/schedules",
  *     operationId="listVolunteerTeamSchedules",
  *     summary="List one team's volunteer schedules",
  *     description="The team-keyed twin of the ministry list, gated per team so a team leader can see their own schedules without being authorized for the ministry above them (design section 4.4). Added for the Member Portal's My Teams page (#9868).",
@@ -437,7 +437,7 @@ function listVolunteerTeamSchedules(Request $request, Response $response): Respo
 
 /**
  * @OA\Post(
- *     path="/volunteer/ministries/{ministryId}/schedules",
+ *     path="/ministries/ministries/{ministryId}/schedules",
  *     operationId="createVolunteerSchedule",
  *     summary="Create a volunteer schedule, linked to an event type or standalone",
  *     tags={"Volunteer"},
@@ -496,7 +496,7 @@ function createVolunteerSchedule(Request $request, Response $response): Response
 
 /**
  * @OA\Get(
- *     path="/volunteer/schedules/{scheduleId}",
+ *     path="/ministries/schedules/{scheduleId}",
  *     operationId="getVolunteerSchedule",
  *     summary="Read one volunteer schedule",
  *     tags={"Volunteer"},
@@ -517,7 +517,7 @@ function getVolunteerSchedule(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/schedules/{scheduleId}",
+ *     path="/ministries/schedules/{scheduleId}",
  *     operationId="updateVolunteerSchedule",
  *     summary="Update a volunteer schedule",
  *     tags={"Volunteer"},
@@ -552,7 +552,7 @@ function updateVolunteerSchedule(Request $request, Response $response): Response
 
 /**
  * @OA\Delete(
- *     path="/volunteer/schedules/{scheduleId}",
+ *     path="/ministries/schedules/{scheduleId}",
  *     operationId="deleteVolunteerSchedule",
  *     summary="Delete a volunteer schedule and its generated occurrences",
  *     tags={"Volunteer"},
@@ -580,7 +580,7 @@ function deleteVolunteerSchedule(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/schedules/{scheduleId}/generate",
+ *     path="/ministries/schedules/{scheduleId}/generate",
  *     operationId="generateVolunteerOccurrences",
  *     summary="Materialise this schedule's occurrences up to a date",
  *     description="Idempotent. A linked schedule attaches one occurrence to each existing event of its type inside the window; a standalone schedule generates its own dates. No calendar event is ever created.",
@@ -628,7 +628,7 @@ function generateVolunteerOccurrences(Request $request, Response $response): Res
 
 /**
  * @OA\Get(
- *     path="/volunteer/schedules/{scheduleId}/requirements",
+ *     path="/ministries/schedules/{scheduleId}/requirements",
  *     operationId="listVolunteerScheduleRequirements",
  *     summary="List a schedule's template staffing requirements",
  *     tags={"Volunteer"},
@@ -658,7 +658,7 @@ function listVolunteerScheduleRequirements(Request $request, Response $response)
 
 /**
  * @OA\Post(
- *     path="/volunteer/schedules/{scheduleId}/requirements",
+ *     path="/ministries/schedules/{scheduleId}/requirements",
  *     operationId="upsertVolunteerScheduleRequirement",
  *     summary="Create or update a template staffing requirement on a schedule",
  *     description="Upsert on the (schedule, position) unique key: re-posting the same position updates the counts on the existing row.",
@@ -689,7 +689,7 @@ function upsertVolunteerScheduleRequirement(Request $request, Response $response
 
 /**
  * @OA\Post(
- *     path="/volunteer/occurrences/{occurrenceId}/requirements",
+ *     path="/ministries/occurrences/{occurrenceId}/requirements",
  *     operationId="upsertVolunteerOccurrenceRequirement",
  *     summary="Override a staffing requirement for one occurrence",
  *     description="'This week we need four, not two.' The override wins over the schedule's template for that position only.",
@@ -720,7 +720,7 @@ function upsertVolunteerOccurrenceRequirement(Request $request, Response $respon
 
 /**
  * @OA\Get(
- *     path="/volunteer/occurrences/{occurrenceId}/requirements",
+ *     path="/ministries/occurrences/{occurrenceId}/requirements",
  *     operationId="listVolunteerOccurrenceRequirements",
  *     summary="This occurrence's effective staffing needs, and the positions it could need",
  *     description="Everything the staffing-needs editor has to draw: the EFFECTIVE requirements from VolunteerScheduleService::getEffectiveRequirements() (each carrying `source`, so the caller can see which are the schedule's and which are this occurrence's own), plus the active positions of the owning team, so a position that has no requirement row can still be offered as an unchecked line. Served under the occurrence's own scope check, so a team leader can edit one week without reaching past their own team.",
@@ -765,7 +765,7 @@ function listVolunteerOccurrenceRequirements(Request $request, Response $respons
 
 /**
  * @OA\Post(
- *     path="/volunteer/occurrences/{occurrenceId}/requirements/replace",
+ *     path="/ministries/occurrences/{occurrenceId}/requirements/replace",
  *     operationId="replaceVolunteerOccurrenceRequirements",
  *     summary="Set this occurrence's whole staffing plan, overriding the schedule's",
  *     description="Writes occurrence-level override rows that match the payload exactly: positions not listed lose their override. An empty array means 'this occurrence needs nobody' and is a real, storable answer — it is NOT the same as having no overrides, which means 'follow the schedule'. Use DELETE on the same path for that.",
@@ -811,7 +811,7 @@ function replaceVolunteerOccurrenceRequirements(Request $request, Response $resp
 
 /**
  * @OA\Delete(
- *     path="/volunteer/occurrences/{occurrenceId}/requirements",
+ *     path="/ministries/occurrences/{occurrenceId}/requirements",
  *     operationId="clearVolunteerOccurrenceRequirements",
  *     summary="Drop this occurrence's overrides so it follows the schedule again",
  *     description="The 'use the schedule's needs' reset. Nothing was ever copied from the schedule at generation time — the merge is derived on every read (section 2.10) — so removing the override rows is the whole of the reset, and the occurrence immediately reflects the schedule's current plan, including requirements added long after it was generated.",
@@ -963,7 +963,7 @@ function volunteerUpsertRequirement(
 
 /**
  * @OA\Delete(
- *     path="/volunteer/requirements/{requirementId}",
+ *     path="/ministries/requirements/{requirementId}",
  *     operationId="deleteVolunteerRequirement",
  *     summary="Remove a staffing requirement",
  *     tags={"Volunteer"},
@@ -1008,7 +1008,7 @@ function deleteVolunteerRequirement(Request $request, Response $response, array 
 
 /**
  * @OA\Get(
- *     path="/volunteer/occurrences",
+ *     path="/ministries/occurrences",
  *     operationId="listVolunteerOccurrences",
  *     summary="List occurrences inside a date window, scoped to the caller",
  *     description="`from` and `to` are mandatory (design M9: no pagination protocol is invented for one module) and the result set is hard-capped.",
@@ -1205,7 +1205,7 @@ function listVolunteerOccurrences(Request $request, Response $response): Respons
 
 /**
  * @OA\Get(
- *     path="/volunteer/occurrences/{occurrenceId}",
+ *     path="/ministries/occurrences/{occurrenceId}",
  *     operationId="getVolunteerOccurrence",
  *     summary="Read one occurrence with its effective times and effective requirements",
  *     description="The reported start and end come from the linked calendar event when the occurrence is linked; the requirements are the occurrence's own overrides merged over the schedule's templates.",
@@ -1248,7 +1248,7 @@ function getVolunteerOccurrence(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/occurrences/{occurrenceId}/status",
+ *     path="/ministries/occurrences/{occurrenceId}/status",
  *     operationId="setVolunteerOccurrenceStatus",
  *     summary="Cancel or restore one occurrence without touching its schedule",
  *     description="Cancelling is not deleting: the row survives so a later generation run does not recreate it.",

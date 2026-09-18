@@ -590,7 +590,7 @@ The member-facing area (epic #8977, design
 open the portal. An `isEditSelfExclusive()` session is *confined* to it:
 `AuthMiddleware::isLimitedAccessAllowedPath()` (renamed from
 `isAuthFlowExemptPath`) lets `/portal`, `/api/portal`, the auth-flow pages and
-`/api/volunteer/me/` (the API the portal's volunteering pages call, #9867)
+`/api/ministries/me/` (the API the portal's volunteering pages call, #9867)
 through and 302s everything else to `/portal/`; `Include/PageInit.php` does the
 same for legacy pages; `AuthenticationManager::getDefaultLandingPath()` picks the
 post-login destination. `/external/limited-access` is now a 302 to `/portal/`.
@@ -719,14 +719,14 @@ cy.url().should('include', 'access-denied');
 
 Last updated: September 11, 2026
 
-## Volunteer v2 lives at /ministries, /volunteer is redirects only <!-- learned: 2026-09-17 -->
+## Volunteer v2 lives at /ministries — pages and API <!-- learned: 2026-09-18 -->
 
 The coordinator area of Volunteer Management v2 is the `src/ministries/` module
 (`MvcAppFactory::create('/ministries')`): `/ministries/dashboard`, `/ministries/{id}`,
-`/ministries/occurrences/{id}`. `src/volunteer/index.php` still exists but serves only
-redirects — `routes/member-redirects.php` (to the Member Portal) and
-`routes/coordinator-redirects.php` (301s to `/ministries/*`). The API is unchanged at
-`/api/volunteer/*`, and the webpack bundles keep their `volunteer-*` names. A new module
+`/ministries/occurrences/{id}`. Its API is `/api/ministries/*` (route files still under
+`src/api/routes/volunteer/`, each opening `$app->group('/ministries', …)`; the member surface is
+`/api/ministries/me/*`). There is no `/volunteer` module and no redirects from one: nothing
+under it ever shipped. The webpack bundles keep their `volunteer-*` names. A new module
 directory needs its own `.htaccess` (copy `src/fundraiser/.htaccess`): the root rewrite
 passes a real directory through, and the module's own rule sends everything to its
 `index.php`.

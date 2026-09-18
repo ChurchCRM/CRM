@@ -9,7 +9,7 @@ use ChurchCRM\Utils\InputUtils;
  * Six tabs, each loaded lazily on its first activation: **Overview · Positions ·
  * Volunteers · Schedules · Occurrences · Help Wanted**. Markup only: the route
  * decided what may be shown and the tab contents come from
- * `/api/volunteer/ministries/{id}` — no queries here
+ * `/api/ministries/ministries/{id}` — no queries here
  * (groups-mvc-guidelines.md).
  *
  * What moved, and why:
@@ -219,7 +219,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php if ($bIsManager): ?>
       <!--
         Ministry coordinators — the screen for #9706's scope API
-        (design §2.15, §4.4; the API is `/api/volunteer/scopes`).
+        (design §2.15, §4.4; the API is `/api/ministries/scopes`).
 
         A SELF-CONTAINED block on purpose: everything it needs lives between this
         comment and the closing endif below, and its behaviour lives in its own
@@ -470,7 +470,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <!--
       Occurrences (#9709). A minimal upcoming list with gap counts, so the staffing
       view (S4) is reachable from the ministry page. Deliberately small: the counts
-      come from GET /api/volunteer/occurrences, which serves them from the single gap
+      come from GET /api/ministries/occurrences, which serves them from the single gap
       implementation, and nothing is re-derived here.
     -->
     <div class="tab-pane fade" id="occurrences" role="tabpanel" aria-labelledby="nav-item-occurrences">
@@ -629,7 +629,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   changing the leader is the same Edit dialog everything else about the team is
   changed in.
 
-  Granting is manager-only (§3.2) — the `/api/volunteer/scopes` endpoints refuse
+  Granting is manager-only (§3.2) — the `/api/ministries/scopes` endpoints refuse
   anyone else — so only a manager gets the picker. Everybody else is shown the
   current leader as read-only text and told who may change it, which is honest
   about the permission rather than offering a control the API will refuse.

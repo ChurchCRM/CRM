@@ -37,7 +37,7 @@ const COORDINATOR_KEY = "user.api.key";
 const SELFEDIT_KEY = "selfedit.api.key";
 const SELFEDIT_NOTES_KEY = "selfedit.plus.notes.api.key";
 
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 
 const PERSON_COORDINATOR = 3; // tony.wade
 const PERSON_ASSIGNEE = 99; // EditSelf-exclusive — the volunteer persona (D14)

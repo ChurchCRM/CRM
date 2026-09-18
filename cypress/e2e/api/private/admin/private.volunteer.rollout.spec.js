@@ -7,7 +7,7 @@
  * `both`, default `v1`). This spec proves the rollout decision is enforced
  * SERVER-SIDE at every boundary the flag touches:
  *
- *   - `GET /api/volunteer/status`        — V2 API, gated by VolunteerV2EnabledMiddleware
+ *   - `GET /api/ministries/status`        — V2 API, gated by VolunteerV2EnabledMiddleware
  *   - `GET /api/volunteer-opportunities` — V1 API, deliberately enabled in EVERY state
  *                                          (design §3.8 surface 5; #9702 owns its retirement)
  *   - `GET /ministries/dashboard`         — V2 MVC module, gated by the same middleware
@@ -30,7 +30,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const STATUS_URL = "/api/volunteer/status";
+const STATUS_URL = "/api/ministries/status";
 const V1_API_URL = "/api/volunteer-opportunities";
 const DASHBOARD_URL = "/ministries/dashboard";
 
@@ -135,8 +135,8 @@ describe("Volunteer v2 rollout flag (#9704)", () => {
             });
         });
 
-        it("redirects /volunteer to /ministries/dashboard", () => {
-            adminPageRequest("/volunteer/").then((resp) => {
+        it("redirects the bare /ministries/ module URL to /ministries/dashboard", () => {
+            adminPageRequest("/ministries/").then((resp) => {
                 expect(resp.status).to.eq(302);
                 expect(resp.headers.location).to.include("/ministries/dashboard");
             });

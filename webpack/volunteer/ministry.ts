@@ -3,7 +3,7 @@
  *
  * Six tabs: **Overview · Positions · Volunteers · Schedules · Occurrences · Help
  * Wanted**. Overview (its three counts, its description and its teams card) and
- * Positions are rendered from ONE `GET /api/volunteer/ministries/{id}` response
+ * Positions are rendered from ONE `GET /api/ministries/ministries/{id}` response
  * that is fetched on first use and cached; Volunteers is one
  * `GET .../qualification-matrix` because it has its own `?teamId=` filter. Both
  * obey the same rule, which is the point §5.4 actually makes: the grid must
@@ -437,7 +437,7 @@ function openTeamModal(team?: VolunteerTeam): void {
  * Bring the team's scope rows into line with what the dialog was left holding.
  *
  * Only a manager reaches this: the field is read-only for everyone else, and the
- * `/api/volunteer/scopes` endpoints refuse them anyway. The grant goes first so a
+ * `/api/ministries/scopes` endpoints refuse them anyway. The grant goes first so a
  * failure leaves the existing leader in place rather than a team with nobody.
  */
 function syncTeamLeader(teamId: number, chosenPersonId: number): Promise<void> {

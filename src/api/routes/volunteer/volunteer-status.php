@@ -10,16 +10,16 @@ use Slim\Routing\RouteCollectorProxy;
 /**
  * Volunteer Management V2 API — rollout status (#9704).
  *
- * This /api/volunteer group is gated by VolunteerV2EnabledMiddleware. Slim 4
+ * This /api/ministries group is gated by VolunteerV2EnabledMiddleware. Slim 4
  * scopes ->add() to the one group instance it is chained on, so a later route
- * file that opens its own $app->group('/volunteer', ...) MUST chain
+ * file that opens its own $app->group('/ministries', ...) MUST chain
  * ->add(new VolunteerV2EnabledMiddleware()) itself — nothing propagates from
  * this file. An ungated V2 group would be reachable in every rollout state.
  */
-$app->group('/volunteer', function (RouteCollectorProxy $group): void {
+$app->group('/ministries', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
-     *     path="/volunteer/status",
+     *     path="/ministries/status",
      *     summary="Report the Volunteer Management rollout state",
      *     tags={"Volunteer"},
      *     security={{"ApiKeyAuth":{}}},

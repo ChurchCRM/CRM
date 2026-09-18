@@ -175,23 +175,23 @@ function standaloneBody(overrides = {}) {
 }
 
 function createSchedule(body, key = ADMIN_KEY, expectedStatus = 201) {
-    return api(key, "POST", `/api/volunteer/ministries/${ministryA}/schedules`, body, expectedStatus);
+    return api(key, "POST", `/api/ministries/ministries/${ministryA}/schedules`, body, expectedStatus);
 }
 
 function requirementsOf(scheduleId) {
-    return api(ADMIN_KEY, "GET", `/api/volunteer/schedules/${scheduleId}/requirements`).then(
+    return api(ADMIN_KEY, "GET", `/api/ministries/schedules/${scheduleId}/requirements`).then(
         (resp) => resp.body.requirements,
     );
 }
 
 /** Generate a fortnight of occurrences and hand back the first one's id. */
 function generateAndFirstOccurrence(scheduleId) {
-    return api(ADMIN_KEY, "POST", `/api/volunteer/schedules/${scheduleId}/generate`, { through: isoDate(14) }, 200)
+    return api(ADMIN_KEY, "POST", `/api/ministries/schedules/${scheduleId}/generate`, { through: isoDate(14) }, 200)
         .then(() =>
             api(
                 ADMIN_KEY,
                 "GET",
-                `/api/volunteer/occurrences?from=${isoDate(-1)}&to=${isoDate(14)}&scheduleId=${scheduleId}`,
+                `/api/ministries/occurrences?from=${isoDate(-1)}&to=${isoDate(14)}&scheduleId=${scheduleId}`,
             ),
         )
         .then((resp) => {
@@ -201,7 +201,7 @@ function generateAndFirstOccurrence(scheduleId) {
 }
 
 function occurrence(occurrenceId) {
-    return api(ADMIN_KEY, "GET", `/api/volunteer/occurrences/${occurrenceId}`).then((resp) => resp.body.occurrence);
+    return api(ADMIN_KEY, "GET", `/api/ministries/occurrences/${occurrenceId}`).then((resp) => resp.body.occurrence);
 }
 
 // ── suite ──────────────────────────────────────────────────────────────────
@@ -247,7 +247,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                "/api/volunteer/scopes",
+                "/api/ministries/scopes",
                 { personId: PERSON_COORDINATOR, scopeType: "ministry", scopeId: ministryB },
                 [200, 201],
             );
@@ -300,7 +300,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
 
         it("creates no schedule at all when the plan names an unknown position", () => {
-            api(ADMIN_KEY, "GET", `/api/volunteer/ministries/${ministryA}/schedules`).then((before) => {
+            api(ADMIN_KEY, "GET", `/api/ministries/ministries/${ministryA}/schedules`).then((before) => {
                 const countBefore = before.body.schedules.length;
 
                 createSchedule(
@@ -314,7 +314,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                 ).then(() => {
                     // The row and its plan are one transaction: a rejected plan must not
                     // leave a half-made schedule behind for a coordinator to find later.
-                    api(ADMIN_KEY, "GET", `/api/volunteer/ministries/${ministryA}/schedules`).then((after) => {
+                    api(ADMIN_KEY, "GET", `/api/ministries/ministries/${ministryA}/schedules`).then((after) => {
                         expect(after.body.schedules.length).to.eq(countBefore);
                         expect(after.body.schedules.find((s) => s.name === `${FIXTURE_PREFIX} Doomed`)).to.eq(
                             undefined,
@@ -343,7 +343,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
 
         it("creates, updates and DELETES to match the payload", () => {
-            api(ADMIN_KEY, "POST", `/api/volunteer/schedules/${scheduleId}`, {
+            api(ADMIN_KEY, "POST", `/api/ministries/schedules/${scheduleId}`, {
                 requirements: [
                     // Helper stays, with new counts; Spare is new; Lead is gone — and
                     // "gone" is the half a sequence of single upserts cannot express.
@@ -362,7 +362,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
 
         it("leaves the plan alone when the field is absent", () => {
-            api(ADMIN_KEY, "POST", `/api/volunteer/schedules/${scheduleId}`, {
+            api(ADMIN_KEY, "POST", `/api/ministries/schedules/${scheduleId}`, {
                 name: `${FIXTURE_PREFIX} Renamed`,
             }).then(() => {
                 requirementsOf(scheduleId).then((rows) => {
@@ -372,7 +372,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
 
         it("clears the plan when the field is an empty array", () => {
-            api(ADMIN_KEY, "POST", `/api/volunteer/schedules/${scheduleId}`, { requirements: [] }).then(() => {
+            api(ADMIN_KEY, "POST", `/api/ministries/schedules/${scheduleId}`, { requirements: [] }).then(() => {
                 requirementsOf(scheduleId).then((rows) => {
                     expect(rows).to.have.length(0);
                 });
@@ -384,7 +384,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}`,
+                    `/api/ministries/schedules/${scheduleId}`,
                     { requirements: [{ positionId: posLead, minCount: 3, maxCount: 2 }] },
                     400,
                 );
@@ -394,7 +394,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}`,
+                    `/api/ministries/schedules/${scheduleId}`,
                     { requirements: [{ positionId: posLead, minCount: -1, maxCount: 1 }] },
                     400,
                 );
@@ -404,7 +404,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}`,
+                    `/api/ministries/schedules/${scheduleId}`,
                     {
                         requirements: [
                             { positionId: posLead, minCount: 1, maxCount: 1 },
@@ -419,7 +419,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}`,
+                    `/api/ministries/schedules/${scheduleId}`,
                     { requirements: [{ positionId: posForeign, minCount: 1, maxCount: 1 }] },
                     400,
                 );
@@ -429,7 +429,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}`,
+                    `/api/ministries/schedules/${scheduleId}`,
                     { requirements: [{ positionId: posLead, minCount: 3, maxCount: 2 }] },
                     400,
                 ).then(() => {
@@ -456,7 +456,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                         expect(before.requiredCount).to.eq(0);
                     });
 
-                    api(ADMIN_KEY, "POST", `/api/volunteer/schedules/${scheduleId}`, {
+                    api(ADMIN_KEY, "POST", `/api/ministries/schedules/${scheduleId}`, {
                         requirements: [
                             { positionId: posLead, minCount: 1, maxCount: 1 },
                             { positionId: posHelper, minCount: 2, maxCount: 2 },
@@ -472,7 +472,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                             expect(after.requirementsOverridden).to.eq(false);
                         });
 
-                        api(ADMIN_KEY, "GET", `/api/volunteer/occurrences/${occurrenceId}/staffing`).then((st) => {
+                        api(ADMIN_KEY, "GET", `/api/ministries/occurrences/${occurrenceId}/staffing`).then((st) => {
                             expect(st.body.requirements.map((r) => r.positionId).sort()).to.deep.eq(
                                 [posLead, posHelper].sort(),
                             );
@@ -521,7 +521,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                     api(
                         ADMIN_KEY,
                         "GET",
-                        `/api/volunteer/occurrences?from=${isoDate(-1)}&to=${isoDate(14)}&scheduleId=${scheduleId}`,
+                        `/api/ministries/occurrences?from=${isoDate(-1)}&to=${isoDate(14)}&scheduleId=${scheduleId}`,
                     ).then((list) => {
                         const row = list.body.occurrences[0];
                         // "1 Lead Teacher, 2 Helper" is what a coordinator can act on; a
@@ -560,7 +560,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
 
         it("serves the editor its rows and its candidate positions", () => {
-            api(ADMIN_KEY, "GET", `/api/volunteer/occurrences/${occurrenceId}/requirements`).then((resp) => {
+            api(ADMIN_KEY, "GET", `/api/ministries/occurrences/${occurrenceId}/requirements`).then((resp) => {
                 expect(resp.body.overridden).to.eq(false);
                 expect(resp.body.requirements).to.have.length(2);
                 // Every active position of the team is offered, including the one with
@@ -572,7 +572,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
 
         it("writes overrides that win over the schedule's plan, position by position", () => {
-            api(ADMIN_KEY, "POST", `/api/volunteer/occurrences/${occurrenceId}/requirements/replace`, {
+            api(ADMIN_KEY, "POST", `/api/ministries/occurrences/${occurrenceId}/requirements/replace`, {
                 requirements: [{ positionId: posLead, minCount: 4, maxCount: 5 }],
             }).then((resp) => {
                 expect(resp.body.overridden).to.eq(true);
@@ -608,7 +608,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
             // "Not this week" has to be a row, because the union hands an omitted
             // position straight back from the schedule. This is what the occurrence
             // editor writes when a schedule-provided box is unchecked.
-            api(ADMIN_KEY, "POST", `/api/volunteer/occurrences/${occurrenceId}/requirements/replace`, {
+            api(ADMIN_KEY, "POST", `/api/ministries/occurrences/${occurrenceId}/requirements/replace`, {
                 requirements: [
                     { positionId: posLead, minCount: 1, maxCount: 1 },
                     { positionId: posHelper, minCount: 0, maxCount: 0 },
@@ -625,7 +625,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
 
         it("reports an occurrence whose every position is suppressed as having no needs", () => {
-            api(ADMIN_KEY, "POST", `/api/volunteer/occurrences/${occurrenceId}/requirements/replace`, {
+            api(ADMIN_KEY, "POST", `/api/ministries/occurrences/${occurrenceId}/requirements/replace`, {
                 requirements: [
                     { positionId: posLead, minCount: 0, maxCount: 0 },
                     { positionId: posHelper, minCount: 0, maxCount: 0 },
@@ -639,17 +639,17 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
 
         it("tells the editor which positions the schedule provides", () => {
-            api(ADMIN_KEY, "GET", `/api/volunteer/occurrences/${occurrenceId}/requirements`).then((resp) => {
+            api(ADMIN_KEY, "GET", `/api/ministries/occurrences/${occurrenceId}/requirements`).then((resp) => {
                 expect(resp.body.schedulePositionIds.sort()).to.deep.eq([posLead, posHelper].sort());
             });
         });
 
         it("goes back to the schedule's plan when the overrides are deleted", () => {
-            api(ADMIN_KEY, "POST", `/api/volunteer/occurrences/${occurrenceId}/requirements/replace`, {
+            api(ADMIN_KEY, "POST", `/api/ministries/occurrences/${occurrenceId}/requirements/replace`, {
                 requirements: [{ positionId: posLead, minCount: 4, maxCount: 5 }],
             });
 
-            api(ADMIN_KEY, "DELETE", `/api/volunteer/occurrences/${occurrenceId}/requirements`).then((resp) => {
+            api(ADMIN_KEY, "DELETE", `/api/ministries/occurrences/${occurrenceId}/requirements`).then((resp) => {
                 expect(resp.body.overridden).to.eq(false);
                 expect(resp.body.requirements).to.have.length(2);
             });
@@ -661,7 +661,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
 
         it("stores exactly one parent per override row (vreq_one_parent_chk)", () => {
-            api(ADMIN_KEY, "POST", `/api/volunteer/occurrences/${occurrenceId}/requirements/replace`, {
+            api(ADMIN_KEY, "POST", `/api/ministries/occurrences/${occurrenceId}/requirements/replace`, {
                 requirements: [{ positionId: posLead, minCount: 2, maxCount: 2 }],
             }).then(() => {
                 dbOk(`SELECT vreq_vsch_ID, vreq_vocc_ID FROM volunteer_requirement_vreq WHERE vreq_vocc_ID = ?`, [
@@ -678,14 +678,14 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/occurrences/${occurrenceId}/requirements/replace`,
+                `/api/ministries/occurrences/${occurrenceId}/requirements/replace`,
                 { requirements: [{ positionId: posLead, minCount: 3, maxCount: 1 }] },
                 400,
             );
         });
 
         it("rejects a body with no requirements field at all", () => {
-            api(ADMIN_KEY, "POST", `/api/volunteer/occurrences/${occurrenceId}/requirements/replace`, {}, 400);
+            api(ADMIN_KEY, "POST", `/api/ministries/occurrences/${occurrenceId}/requirements/replace`, {}, 400);
         });
     });
 
@@ -711,19 +711,19 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
 
         it("denies a coordinator of another ministry every new route", () => {
             // The persona is scoped to ministry B; every fixture here is in ministry A.
-            api(COORDINATOR_KEY, "GET", `/api/volunteer/occurrences/${occurrenceId}/requirements`, null, 403);
+            api(COORDINATOR_KEY, "GET", `/api/ministries/occurrences/${occurrenceId}/requirements`, null, 403);
             api(
                 COORDINATOR_KEY,
                 "POST",
-                `/api/volunteer/occurrences/${occurrenceId}/requirements/replace`,
+                `/api/ministries/occurrences/${occurrenceId}/requirements/replace`,
                 { requirements: [] },
                 403,
             );
-            api(COORDINATOR_KEY, "DELETE", `/api/volunteer/occurrences/${occurrenceId}/requirements`, null, 403);
+            api(COORDINATOR_KEY, "DELETE", `/api/ministries/occurrences/${occurrenceId}/requirements`, null, 403);
             api(
                 COORDINATOR_KEY,
                 "POST",
-                `/api/volunteer/schedules/${scheduleId}`,
+                `/api/ministries/schedules/${scheduleId}`,
                 { requirements: [] },
                 403,
             );

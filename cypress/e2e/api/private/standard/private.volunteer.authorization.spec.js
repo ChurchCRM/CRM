@@ -7,7 +7,7 @@
  * depend on assignments, occurrences, swaps and self-signup belong to
  * #9708/#9709/#9712 and are asserted in those issues' specs), plus:
  *
- *   - the scope CRUD surface  `/api/volunteer/scopes`
+ *   - the scope CRUD surface  `/api/ministries/scopes`
  *   - the idempotent grant    (§6.6: second POST is 200 with the SAME id, never 409)
  *   - the `usr_ManageMinistries` round trip through the user-administration
  *     surface (`/admin/system/users/{personId}/edit`), proving the new column
@@ -38,8 +38,8 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const SCOPES_URL = "/api/volunteer/scopes";
-const ME_PERMISSIONS_URL = "/api/volunteer/me/permissions";
+const SCOPES_URL = "/api/ministries/scopes";
+const ME_PERMISSIONS_URL = "/api/ministries/me/permissions";
 const DASHBOARD_URL = "/ministries/dashboard";
 
 const PERSON_COORDINATOR = 3; // tony.wade — user.api.key
@@ -113,7 +113,7 @@ function createTeam(ministryId, suffix) {
 
 /**
  * A page request against an MVC module, authenticated by API key.
- * x-api-key authenticates Slim MVC pages such as /volunteer (cypress-testing.md);
+ * x-api-key authenticates Slim MVC pages such as /ministries (cypress-testing.md);
  * redirects are not followed so the 302 target can be asserted.
  */
 function pageRequest(url, apiKey) {
@@ -207,7 +207,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             });
         });
 
-        it("returns 403 for every /api/volunteer call while the rollout state is v1", () => {
+        it("returns 403 for every /api/ministries call while the rollout state is v1", () => {
             setVersion("v1");
             // Admin is used deliberately here: this 403 comes from
             // VolunteerV2EnabledMiddleware, which an administrator does NOT bypass,
@@ -677,7 +677,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
     // ---------------------------------------------------------------------
     // The coordinator MVC gate (replaces #9704's AdminRoleAuthMiddleware)
     // ---------------------------------------------------------------------
-    describe("Coordinator gate on the /volunteer module", () => {
+    describe("Coordinator gate on the /ministries module", () => {
         beforeEach(() => {
             dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID IN (?, ?, ?)`, [
                 PERSON_COORDINATOR,
@@ -830,7 +830,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 expect(resp.body.isTeamLeader).to.eq(false);
             });
 
-            cy.makePrivateEditSelfAPICall("GET", `/api/volunteer/ministries`, null, 403);
+            cy.makePrivateEditSelfAPICall("GET", `/api/ministries/ministries`, null, 403);
 
             dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [
                 PERSON_VOLUNTEER,

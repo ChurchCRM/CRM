@@ -24,7 +24,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 
 const PREFIX = "UI9709";
 const MINISTRY_NAME = `${PREFIX} Coffee Bar`;
@@ -388,7 +388,7 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
             // Registering a second cy.intercept for the same pattern is unreliable here
             // — both stay registered and which one answers is not worth depending on.
             let failed = false;
-            cy.intercept("**/api/volunteer/occurrences/*/staffing", (req) => {
+            cy.intercept("**/api/ministries/occurrences/*/staffing", (req) => {
                 if (failed) {
                     req.continue();
 

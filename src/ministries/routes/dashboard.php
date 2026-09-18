@@ -11,13 +11,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-// Route paths are module-relative: setBasePath() already carries '/volunteer'.
+// Route paths are module-relative: setBasePath() already carries '/ministries'.
 //
 // The coordinator area is gated by VolunteerCoordinatorRoleAuthMiddleware (#9706):
 // an administrator, a global volunteer manager, a ministry coordinator or a team
 // leader. Which ministry or team a coordinator may actually touch is decided per
 // record by the entity middlewares and, on the aggregate, by the query scoping in
-// `GET /api/volunteer/dashboard` — never here (design §4.5).
+// `GET /api/ministries/dashboard` — never here (design §4.5).
 //
 // The Volunteer menu entry mirrors this gate exactly by calling the same predicate,
 // User::isVolunteerCoordinatorEnabled(), so nothing is advertised that cannot be
@@ -30,7 +30,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
      * GET /ministries/dashboard — S1, "what needs my attention" (#9711, §5.2).
      *
      * This route renders markup and the page config and runs no query of its own:
-     * all five panels come from ONE `GET /api/volunteer/dashboard` call made by the
+     * all five panels come from ONE `GET /api/ministries/dashboard` call made by the
      * bundle (§5.2 forbids fanning out), and that endpoint does the scoping in its
      * query. The only thing decided here is what an ADMINISTRATOR may additionally
      * see — the settings strip (U8) — because that is a server-side decision about

@@ -210,7 +210,7 @@ describe("Member Portal — responsive (#9869)", () => {
 
         cy.request({
             method: "POST",
-            url: "/api/volunteer/ministries",
+            url: "/api/ministries/ministries",
             headers: {
                 "content-type": "application/json",
                 "x-api-key": adminKey(),
@@ -222,13 +222,13 @@ describe("Member Portal — responsive (#9869)", () => {
             // The ministry came with one team (D18); make the persona its leader.
             cy.request({
                 method: "GET",
-                url: `/api/volunteer/ministries/${ministryId}/teams`,
+                url: `/api/ministries/ministries/${ministryId}/teams`,
                 headers: { "x-api-key": adminKey() },
             }).then((tResp) => {
                 teamId = tResp.body.teams[0].id;
                 cy.request({
                     method: "POST",
-                    url: "/api/volunteer/scopes",
+                    url: "/api/ministries/scopes",
                     headers: {
                         "content-type": "application/json",
                         "x-api-key": adminKey(),
@@ -250,14 +250,14 @@ describe("Member Portal — responsive (#9869)", () => {
             // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
             cy.request({
                 method: "POST",
-                url: `/api/volunteer/ministries/${ministryId}`,
+                url: `/api/ministries/ministries/${ministryId}`,
                 headers: { "x-api-key": adminKey() },
                 body: { active: false },
                 failOnStatusCode: false,
             });
             cy.request({
                 method: "DELETE",
-                url: `/api/volunteer/ministries/${ministryId}`,
+                url: `/api/ministries/ministries/${ministryId}`,
                 headers: { "x-api-key": adminKey() },
                 failOnStatusCode: false,
             });

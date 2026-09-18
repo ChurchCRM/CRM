@@ -36,7 +36,7 @@
  *
  * Fixtures. Ministries, teams and positions go in through `cy.dbQuery()` —
  * faster than the setup API and this spec is not testing that surface. Scopes
- * go in through `POST /api/volunteer/scopes`. The linked event series is
+ * go in through `POST /api/ministries/scopes`. The linked event series is
  * created through `POST /api/events/repeat` because the seeded calendar holds
  * only three events, all in 2016/2017.
  *
@@ -352,7 +352,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
 
         cy.then(() => {
             // Person 3 coordinates ministry A only.
-            api(ADMIN_KEY, "POST", "/api/volunteer/scopes", {
+            api(ADMIN_KEY, "POST", "/api/ministries/scopes", {
                 personId: PERSON_COORDINATOR,
                 scopeType: "ministry",
                 scopeId: ministryA,
@@ -381,7 +381,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/ministries/${ministryA}/schedules`,
+                `/api/ministries/ministries/${ministryA}/schedules`,
                 {
                     name: `${FIXTURE_PREFIX} Linked`,
                     // A schedule always names a team (D18).
@@ -398,7 +398,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}/requirements`,
+                    `/api/ministries/schedules/${scheduleId}/requirements`,
                     { positionId: positionOne, minCount: 2 },
                     [200, 201],
                 );
@@ -406,7 +406,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/volunteer/schedules/${scheduleId}/generate`,
+                    `/api/ministries/schedules/${scheduleId}/generate`,
                     { through: isoDate(first + 14) },
                     200,
                 );
@@ -414,7 +414,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                 api(
                     ADMIN_KEY,
                     "GET",
-                    `/api/volunteer/occurrences?scheduleId=${scheduleId}&from=${isoDate(0)}&to=${isoDate(first + 21)}`,
+                    `/api/ministries/occurrences?scheduleId=${scheduleId}&from=${isoDate(0)}&to=${isoDate(first + 21)}`,
                     null,
                     200,
                 ).then((listResp) => {
@@ -1096,7 +1096,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/occurrences/${linkedOccurrenceId}/assignments`,
+                `/api/ministries/occurrences/${linkedOccurrenceId}/assignments`,
                 {
                     personId: PERSON_COORDINATOR,
                     positionId: positionOne,
@@ -1153,7 +1153,7 @@ describe("Volunteer v2 — event ministry ownership and calendar integration (#9
                         api(
                             ADMIN_KEY,
                             "GET",
-                            `/api/volunteer/assignments/${assignmentId}`,
+                            `/api/ministries/assignments/${assignmentId}`,
                             null,
                             200,
                         );

@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * The gate on `POST /api/volunteer/ministries/{ministryId}/schedules` (#9868).
+ * The gate on `POST /api/ministries/ministries/{ministryId}/schedules` (#9868).
  *
  * `VolunteerMinistryMiddleware` — which this used to carry — asks "may you
  * administer this MINISTRY". That was too coarse the moment the volunteer design's

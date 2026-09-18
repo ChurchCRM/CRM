@@ -31,7 +31,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
 const MINISTRIES_URL = "/ministries";
 
@@ -216,23 +216,20 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
                 });
         });
 
-        it("302s the retired /volunteer URLs and the bare module URL to the dashboard", () => {
-            // The list page's old address, and the old dashboard address, are
-            // redirects in src/volunteer/routes/coordinator-redirects.php.
-            for (const retired of ["/volunteer/ministries", "/volunteer/dashboard"]) {
-                cy.request({ url: retired, followRedirect: false }).then((resp) => {
-                    expect(resp.status, retired).to.eq(302);
-                    expect(resp.headers.location).to.match(/\/ministries\/dashboard$/);
-                });
-            }
-            // The bare module URL: Apache adds the trailing slash (301) and the
-            // module's "/" route sends that to the dashboard (302).
+        it("302s the bare module URL to the dashboard, and 404s the retired /volunteer module", () => {
+            // Apache adds the trailing slash to /ministries (301); the module's
+            // "/" route sends that to the dashboard (302).
             cy.request({ url: `${MINISTRIES_URL}/`, followRedirect: false }).then((resp) => {
                 expect(resp.status).to.eq(302);
                 expect(resp.headers.location).to.match(/\/ministries\/dashboard$/);
             });
+            // The pre-release /volunteer module is gone without redirects: nothing
+            // shipped under it (product-owner decision, 2026-09-18).
+            cy.request({ url: "/volunteer/dashboard", failOnStatusCode: false }).then((resp) => {
+                expect(resp.status).to.eq(404);
+            });
 
-            cy.visit("/volunteer/ministries");
+            cy.visit(`${MINISTRIES_URL}/`);
             cy.url().should("include", DASHBOARD_URL);
             cy.get("#volunteer-dashboard").should("exist");
         });

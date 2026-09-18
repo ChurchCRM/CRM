@@ -43,7 +43,7 @@ use Slim\Routing\RouteCollectorProxy;
  * does not exist is "not found" whether or not the reader could have run it.
  *
  * The team and occurrence pages are container markup plus a page config; every
- * fact on them comes from `/api/volunteer/*`, where the SAME scope rules are
+ * fact on them comes from `/api/ministries/*`, where the SAME scope rules are
  * applied again per record. The index is server-rendered because it is a short
  * list of plain reads (`PortalTeams`).
  */

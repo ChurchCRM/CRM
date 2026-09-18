@@ -8,7 +8,7 @@ use ChurchCRM\Utils\InputUtils;
  * the sidebar's Ministries heading; the dashboard is the one place it lives now.
  *
  * Included only inside a manager-only branch: creating a ministry is manager-only
- * (design §4.6), and `POST /api/volunteer/ministries` enforces that independently
+ * (design §4.6), and `POST /api/ministries/ministries` enforces that independently
  * — the markup being absent is a courtesy, not the control (D5).
  *
  * Behaviour lives in webpack/volunteer/ministry-create.ts, which the dashboard

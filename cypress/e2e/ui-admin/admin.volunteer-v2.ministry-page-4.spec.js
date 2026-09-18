@@ -26,7 +26,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = "/ministries";
 
 const PREFIX = "UIPAGE4";
@@ -254,7 +254,7 @@ describe("Volunteer v2 ministry page, round four (#9701)", () => {
         });
 
         it("renders one toolbar, not one per reload of the table", () => {
-            cy.intercept("GET", "**/api/volunteer/occurrences?*").as("listOccurrences");
+            cy.intercept("GET", "**/api/ministries/occurrences?*").as("listOccurrences");
             cy.visit(ministryUrl());
             openOccurrencesTab();
 

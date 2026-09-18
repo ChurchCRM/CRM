@@ -47,13 +47,13 @@ use Slim\Routing\RouteCollectorProxy;
  * empty panels rather than being handed to a filter whose behaviour on `[]` would have
  * to be trusted.
  *
- * **This group opens its own `$app->group('/volunteer', …)` and chains
+ * **This group opens its own `$app->group('/ministries', …)` and chains
  * `VolunteerV2EnabledMiddleware` itself.** Slim 4 scopes `->add()` to the single
  * `RouteCollectorProxy` it is chained on; nothing propagates from the groups opened in
  * the other volunteer route files, and an ungated group would be reachable in every
  * rollout state (§3.3).
  */
-$app->group('/volunteer', function (RouteCollectorProxy $group): void {
+$app->group('/ministries', function (RouteCollectorProxy $group): void {
     $group->get('/dashboard', 'getVolunteerDashboard');
 })->add(VolunteerCoordinatorRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
 
@@ -75,7 +75,7 @@ const VOLUNTEER_DASHBOARD_PANEL_LIMIT = 100;
 
 /**
  * @OA\Get(
- *     path="/volunteer/dashboard",
+ *     path="/ministries/dashboard",
  *     operationId="getVolunteerDashboard",
  *     summary="Everything the coordinator dashboard needs, in one call",
  *     description="The S1 aggregate (design section 5.2): upcoming occurrences, the gaps that need filling, assignments still awaiting a reply, proposed substitutions, and the number of notifications that failed terminally. Scoped to the caller in the query (section 4.4) — a global manager sees every ministry, a coordinator their ministries, a team leader their teams. The scope block additionally names the ministries and teams the caller may navigate to, which is what gives a team-scope-only user an entry point.",

@@ -11,7 +11,7 @@ use ChurchCRM\Utils\InputUtils;
  * substitutions, upcoming occurrences, and — for an administrator only — the
  * settings strip with the two Volunteer settings and the cron hint.
  *
- * Markup only. Every panel is rendered from ONE `GET /api/volunteer/dashboard`
+ * Markup only. Every panel is rendered from ONE `GET /api/ministries/dashboard`
  * (§5.2: "Do not fan out to five endpoints"), and the route ran no query beyond
  * the page header (groups-mvc-guidelines.md).
  *

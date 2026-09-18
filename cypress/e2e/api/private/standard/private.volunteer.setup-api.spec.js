@@ -41,8 +41,8 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const MINISTRIES_URL = "/api/volunteer/ministries";
-const SCOPES_URL = "/api/volunteer/scopes";
+const MINISTRIES_URL = "/api/ministries/ministries";
+const SCOPES_URL = "/api/ministries/scopes";
 
 const PERSON_COORDINATOR = 3; // tony.wade — user.api.key
 const PERSON_PLAIN = 900; // john.plainauth — plainauth.api.key
@@ -598,7 +598,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             ).then((resp) => {
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer/teams/${resp.body.team.id}`,
+                    `/api/ministries/teams/${resp.body.team.id}`,
                     null,
                     200,
                 );
@@ -616,7 +616,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
             cy.makePrivateAdminAPICall(
                 "GET",
-                `/api/volunteer/teams/${teamA}`,
+                `/api/ministries/teams/${teamA}`,
                 null,
                 200,
             ).then((resp) => {
@@ -625,7 +625,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/volunteer/teams/${teamA}`,
+                `/api/ministries/teams/${teamA}`,
                 { description: "renamed description", active: false },
                 200,
             ).then((resp) => {
@@ -634,7 +634,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/volunteer/teams/${teamA}`,
+                `/api/ministries/teams/${teamA}`,
                 { active: true },
                 200,
             );
@@ -650,7 +650,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             ).then((resp) => {
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer/teams/${resp.body.team.id}`,
+                    `/api/ministries/teams/${resp.body.team.id}`,
                     null,
                     200,
                 );
@@ -667,7 +667,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
         it("returns 404 for a team that does not exist", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
-                "/api/volunteer/teams/99999999",
+                "/api/ministries/teams/99999999",
                 null,
                 404,
             );
@@ -682,19 +682,19 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             ).then((created) => {
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer/teams/${teamA}`,
+                    `/api/ministries/teams/${teamA}`,
                     null,
                     409,
                 );
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer/positions/${created.body.position.id}`,
+                    `/api/ministries/positions/${created.body.position.id}`,
                     null,
                     200,
                 );
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer/teams/${teamA}`,
+                    `/api/ministries/teams/${teamA}`,
                     null,
                     200,
                 );
@@ -788,7 +788,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 expect(resp.body.position.teamId).to.eq(teamId);
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer/positions/${resp.body.position.id}`,
+                    `/api/ministries/positions/${resp.body.position.id}`,
                     null,
                     200,
                 );
@@ -811,7 +811,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 );
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer/teams/${foreignTeam}`,
+                    `/api/ministries/teams/${foreignTeam}`,
                     null,
                     200,
                 );
@@ -821,7 +821,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
         it("reads, updates and reorders a position", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
-                `/api/volunteer/positions/${positionId}`,
+                `/api/ministries/positions/${positionId}`,
                 null,
                 200,
             ).then((resp) => {
@@ -829,7 +829,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/volunteer/positions/${positionId}`,
+                `/api/ministries/positions/${positionId}`,
                 { description: "Pulls shots, calls drinks", order: 1 },
                 200,
             ).then((resp) => {
@@ -843,7 +843,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
         it("deactivates a position instead of destroying it", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/volunteer/positions/${positionId}`,
+                `/api/ministries/positions/${positionId}`,
                 { active: false },
                 200,
             ).then((resp) => {
@@ -871,7 +871,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/volunteer/positions/${positionId}`,
+                `/api/ministries/positions/${positionId}`,
                 { active: true },
                 200,
             );
@@ -897,7 +897,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 });
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer/positions/${teamPosition}`,
+                    `/api/ministries/positions/${teamPosition}`,
                     null,
                     200,
                 );
@@ -915,7 +915,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
             cy.makePrivateAdminAPICall(
                 "DELETE",
-                `/api/volunteer/positions/${positionId}`,
+                `/api/ministries/positions/${positionId}`,
                 null,
                 409,
             ).then((resp) => {
@@ -929,7 +929,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
             cy.makePrivateAdminAPICall(
                 "DELETE",
-                `/api/volunteer/positions/${positionId}`,
+                `/api/ministries/positions/${positionId}`,
                 null,
                 200,
             );
@@ -938,7 +938,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
         it("returns 404 for a position that does not exist", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
-                "/api/volunteer/positions/99999999",
+                "/api/ministries/positions/99999999",
                 null,
                 404,
             );
@@ -954,7 +954,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             ).then((resp) => {
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer/positions/${resp.body.position.id}`,
+                    `/api/ministries/positions/${resp.body.position.id}`,
                     null,
                     200,
                 );

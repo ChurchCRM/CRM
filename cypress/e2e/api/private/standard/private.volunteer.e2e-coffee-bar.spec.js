@@ -46,7 +46,7 @@ const COORDINATOR_KEY = "user.api.key";
 const SELFEDIT_KEY = "selfedit.api.key"; // person 99 — signs up
 const SELFEDIT_NOTES_KEY = "selfedit.plus.notes.api.key"; // person 100 — declines
 
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 
 const PERSON_COORDINATOR = 3;
 const PERSON_SIGNS_UP = 99;

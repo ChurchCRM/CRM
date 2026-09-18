@@ -36,7 +36,7 @@ const SELFEDIT_KEY = "selfedit.api.key";
 const SELFEDIT_NOTES_KEY = "selfedit.plus.notes.api.key";
 const PLAINAUTH_KEY = "plainauth.api.key";
 
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 
 /** EditSelf-exclusive — THE volunteer persona (D14, §6.4). */
 const PERSON_VOLUNTEER = 99;
@@ -857,15 +857,6 @@ describe("Volunteer v2 member API — §4.8 negatives", () => {
 
     it("still refuses the coordinator surface to an EditSelf-exclusive volunteer", () => {
         api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/ministries`, null, 403);
-    });
-
-    it("302s the retired member MVC URLs, which are no longer exempt (§4.7, #9867)", () => {
-        // The pages moved into the Member Portal, so `isLimitedAccessAllowedPath()`
-        // names only `/api/volunteer/me/` now. An EditSelf-exclusive caller asking
-        // for either old URL is redirected — by AuthMiddleware first, and by the
-        // volunteer module's own forwarding route for anyone it lets through.
-        api(SELFEDIT_KEY, "GET", "/volunteer/my-schedule", null, [302, 403]);
-        api(SELFEDIT_KEY, "GET", "/volunteer/opportunities", null, [302, 403]);
     });
 
     it("still reaches the member API the exemption does name (§4.7)", () => {

@@ -45,7 +45,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = "/ministries";
 
 const PREFIX = "UIPAGE2";
@@ -362,8 +362,8 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
         });
 
         it("takes the 'not qualified yet' badge away as soon as a box is ticked", () => {
-            cy.intercept("POST", "**/api/volunteer/positions/*/qualifications").as("grantQual");
-            cy.intercept("DELETE", "**/api/volunteer/qualifications/*").as("revokeQual");
+            cy.intercept("POST", "**/api/ministries/positions/*/qualifications").as("grantQual");
+            cy.intercept("DELETE", "**/api/ministries/qualifications/*").as("revokeQual");
             cy.visit(ministryUrl());
             openVolunteersTab();
 
@@ -386,7 +386,7 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
             // "Saved" badge, so this case fails on the unchanged branch for the
             // REPORTED reason — the box comes back empty — rather than because the
             // badge it was looking for does not exist there yet.
-            cy.intercept("POST", "**/api/volunteer/positions/*/qualifications").as("grantQual");
+            cy.intercept("POST", "**/api/ministries/positions/*/qualifications").as("grantQual");
             cy.visit(ministryUrl());
             openVolunteersTab();
 
@@ -404,7 +404,7 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
         });
 
         it("keeps the tick across a reload of the page", () => {
-            cy.intercept("POST", "**/api/volunteer/positions/*/qualifications").as("grantQual");
+            cy.intercept("POST", "**/api/ministries/positions/*/qualifications").as("grantQual");
             cy.visit(ministryUrl());
             openVolunteersTab();
 
@@ -418,7 +418,7 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
         });
 
         it("keeps the tick when the team is switched away and back", () => {
-            cy.intercept("POST", "**/api/volunteer/positions/*/qualifications").as("grantQual");
+            cy.intercept("POST", "**/api/ministries/positions/*/qualifications").as("grantQual");
             cy.visit(ministryUrl());
             openVolunteersTab();
 
@@ -451,7 +451,7 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
             );
             freshAdminLogin();
 
-            cy.intercept("DELETE", "**/api/volunteer/qualifications/*").as("revokeQual");
+            cy.intercept("DELETE", "**/api/ministries/qualifications/*").as("revokeQual");
             cy.visit(ministryUrl());
             openVolunteersTab();
             qualBox(TICKED_PERSON, firstPositionId).should("be.checked").uncheck();

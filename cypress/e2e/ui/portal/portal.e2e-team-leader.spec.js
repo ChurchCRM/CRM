@@ -47,7 +47,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const TEAMS_URL = "/portal/teams";
 
 const LEADER_USERNAME = "lena.black.editself.notes@example.com";

@@ -6,7 +6,7 @@ namespace ChurchCRM\Slim\Middleware\Request\Auth;
  * Volunteer Management v2 (#9706): the coordinator-area gate.
  *
  * Guards the `/volunteer` coordinator MVC routes and the coordinator half of
- * `/api/volunteer` (design §3.2). It answers only "does this user have volunteer
+ * `/api/ministries` (design §3.2). It answers only "does this user have volunteer
  * coordination authority at all" — an administrator, a global volunteer manager, a
  * ministry coordinator or a team leader. Which ministry or team is decided per record
  * by the entity middlewares (§4.5); this class must never be asked.

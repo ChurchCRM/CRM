@@ -70,7 +70,7 @@ an admin page is not finished.
 | P12 | **Family scope = the member's own family**, via the existing `User::canViewFamily()` / `canEditPerson()` rules. | Nothing new to audit; the rules already exist for the Edit Self flag. |
 | P13 | **The administrator chooses which calendars the portal shows**, on the Admin → Member Portal page, from one list that holds the church calendars (the `calendars` rows) and the system calendars (Birthdays, Anniversaries, Holidays, Unpinned events). Stored as a JSON config value, not a column, because system calendars are virtual. Events inherit from the calendars they are pinned to. **Every volunteer ministry gets its own calendar**, created with the ministry (`calendars.ministry_id`), which its coordinators may pin events to and which the administrator may show in the portal like any other. | There is no per-event visibility flag; the system calendars are not table rows; ministries have no calendar today (§5.3). |
 | P14 | **Giving is not in the first version.** The portal is where contribution history and online giving will live; both wait for a payment-gateway module design (out of scope here, §5.7). | No gateway, giving model or payment flow exists in the codebase; designing one is its own epic. |
-| P15 | **The volunteer member pages move into the portal: Twig templates replace their PHP views; their TypeScript bundles and `/api/volunteer/me/*` are reused unchanged.** | The bundles render everything from the API; the PHP views were only chrome. |
+| P15 | **The volunteer member pages move into the portal: Twig templates replace their PHP views; their TypeScript bundles and `/api/ministries/me/*` are reused unchanged.** | The bundles render everything from the API; the PHP views were only chrome. |
 | P16 | **The admin shell loses its "Volunteer" heading. Member-facing volunteer functionality exists only in the portal; the admin side keeps "Ministries".** | One place for each audience. Staff reach their own schedule through the portal link in their user menu. |
 | P17 | **Volunteer v2 D14 is revised: scopes count for self-service accounts, and team leaders may create schedules for their own team.** Coordinators and managers stay staff accounts (D12 tiers unchanged). | UC2. D14's rationale (least authority for a volunteer login) still holds for volunteers; it never needed to deny scopes. |
 | P18 | **Release target 7.8.0**, migrations named `7.8.0-member-portal-*.sql`, not registered in `upgrade.json` until the block opens. | Maintainer's release policy, as for the volunteer epic. |
@@ -145,7 +145,7 @@ Verified 2026-09-15/16 on `feature/volunteer-v2-integration` (2d43e432b); file:l
 | Family verification | `Token`, `/external/verify`, `family-verify` bundle | **Reuse the token and the note, replace the page** | The portal's "Confirm your family details" writes the same `verify` note, so staff review is unchanged. |
 | Person / family edit | `/api/person`, `/api/family` (writes behind `EditRecords`) | **Do not reuse for writes** | New `/api/portal/me/*` endpoints with the field allow-list of §5.2. |
 | Calendar | `PublicCalendarMiddleware::getEvents()` logic, `external-calendar` bundle | **Reuse the event query, new gate** | `GET /api/portal/calendar/events` returns events of portal-visible calendars for the session; no access token in the URL. |
-| Volunteer member pages | `webpack/volunteer/{my-schedule,opportunities,member-ui}.ts`, `/api/volunteer/me/*` | **Reuse bundles and API; replace the PHP views with Twig** | §5.4. |
+| Volunteer member pages | `webpack/volunteer/{my-schedule,opportunities,member-ui}.ts`, `/api/ministries/me/*` | **Reuse bundles and API; replace the PHP views with Twig** | §5.4. |
 | Team-scoped ministry management | `VolunteerAuthorizationService` (`canManageTeam`, `getManagedTeamIds`), team-level APIs | **Reuse** | The scope model already narrows at query level; only the short-circuit for self-service accounts goes (P17). |
 | Church identity | `ChurchMetaData` | **Reuse** | Exposed to every template as `church`. |
 | Plugins in the portal | `PluginManager::getPluginHeadContent()`, `Hooks` | **Reuse + one new hook** | `Hooks::PORTAL_NAV_BUILDING` lets a plugin add a portal nav item. |
@@ -613,7 +613,7 @@ what does not:
 | Route file | `src/volunteer/routes/member.php` | `src/portal/routes/volunteer.php` |
 | Page chrome | PHP views requiring `Include/Header.php` (admin shell) | Twig templates `volunteer/schedule.html.twig`, `volunteer/opportunities.html.twig` extending the portal layout, providing the same container ids |
 | Rendering logic | `webpack/volunteer/my-schedule.ts`, `opportunities.ts`, `member-ui.ts` | **unchanged**; the templates load the same two bundles |
-| API | `/api/volunteer/me/*` | **unchanged** |
+| API | `/api/ministries/me/*` | **unchanged** |
 | Old URLs | — | 302 to the new ones for one release |
 | Admin sidebar | "Volunteer" heading with the two items | **removed** (P16) |
 
@@ -626,7 +626,7 @@ routes ask one predicate, `PortalNav::isVolunteeringVisible()` — `User::isVolu
 `bPortalShowVolunteer`, the latter read defensively because MP3 is what declares it — so the portal
 never offers a page it would then refuse. The home page's "My volunteering" card is real: the
 member's next live assignment and a count of the ones still waiting for an answer, read
-client-side from `/api/volunteer/me/assignments` by `portal.min.js`, best-effort and silent on
+client-side from `/api/ministries/me/assignments` by `portal.min.js`, best-effort and silent on
 failure. The layout also gained `bootbox` (the volunteer pages' prompts and confirmations) and
 `portal.min.js` now defines `window.CRM.escapeHtml` when the admin shell's `CRMJSOM.js` has not —
 without it the reused bundles would insert unescaped names into the DOM.
@@ -651,19 +651,19 @@ here rather than left for the next reader to rediscover:
    `ChurchCRM\Portal\PortalTeams` — and everything the other two pages need is already a volunteer
    endpoint that authorizes per record. Adding a portal-shaped copy of fifteen of those would have
    been a second surface to keep in step with the first. Two **team-keyed twins** were added to
-   `/api/volunteer` instead, because only the ministry-keyed versions existed:
+   `/api/ministries` instead, because only the ministry-keyed versions existed:
    `GET /volunteer/teams/{id}/qualification-matrix` and `GET /volunteer/teams/{id}/schedules`,
    both behind `VolunteerTeamMiddleware`.
 2. **`AuthMiddleware::isLimitedAccessAllowedPath()` had to widen.** It confined a self-service
-   login to `/portal`, the auth-flow pages and `/api/volunteer/me/`; a member-login team leader
-   now also reaches `/api/volunteer/`. `/volunteer` — the admin MVC area — is deliberately still
+   login to `/portal`, the auth-flow pages and `/api/ministries/me/`; a member-login team leader
+   now also reaches `/api/ministries/`. `/volunteer` — the admin MVC area — is deliberately still
    not on that list, so the admin shell stays shut to them, which is what P10 requires.
 3. **`VolunteerCoordinatorRoleAuthMiddleware` had to widen too**, to
    `isVolunteerCoordinatorEnabled() || isVolunteerTeamLeaderEnabled()`. The User predicate itself
    is unchanged — it still returns false for a self-service login, so `Menu::buildMenuItems()`
    keeps the Ministries heading hidden, which is the reason the short-circuit exists.
 4. **Nothing had to be extracted from `occurrence.ts`.** It was already page-agnostic: it names no
-   ministry, reads its world from `window.CRM.volunteerOccurrence` and `/api/volunteer/occurrences/*`,
+   ministry, reads its world from `window.CRM.volunteerOccurrence` and `/api/ministries/occurrences/*`,
    and addresses its markup by id. `teams/occurrence.html.twig` reproduces those ids and loads
    `volunteer-occurrence.min.js` unchanged — the same move P15 made for the two member pages. The
    one difference is that the linked calendar event is NAMED but not LINKED, because

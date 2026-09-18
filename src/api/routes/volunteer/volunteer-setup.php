@@ -72,7 +72,7 @@ use Slim\Routing\RouteCollectorProxy;
  * blocks below the position block; #9708 opens its own group in
  * volunteer-schedule.php.
  */
-$app->group('/volunteer', function (RouteCollectorProxy $group): void {
+$app->group('/ministries', function (RouteCollectorProxy $group): void {
     $group->group('', function (RouteCollectorProxy $setup): void {
         // ── Ministries ────────────────────────────────────────────────────
         $setup->get('/ministries', 'listVolunteerMinistries');
@@ -275,7 +275,7 @@ function volunteerMinistryToArray(VolunteerMinistry $ministry, array $counts = [
  *     the team-scope grants on this team, so the ministry page can render a "Team
  *     Leader" column without a `/scopes` call per row — and without needing the
  *     manager-only scope API at all, which a ministry coordinator does not have.
- *     Writing a grant is still `/api/volunteer/scopes`, still manager-only (§3.2).
+ *     Writing a grant is still `/api/ministries/scopes`, still manager-only (§3.2).
  */
 function volunteerTeamToArray(VolunteerTeam $team, int $positionCount = 0, array $leaders = []): array
 {
@@ -479,7 +479,7 @@ function volunteerSetupTeamNames(array $positions): array
 
 /**
  * @OA\Get(
- *     path="/volunteer/ministries",
+ *     path="/ministries/ministries",
  *     operationId="listVolunteerMinistries",
  *     summary="List the volunteer ministries the caller may administer",
  *     tags={"Volunteer"},
@@ -516,7 +516,7 @@ function listVolunteerMinistries(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/ministries",
+ *     path="/ministries/ministries",
  *     operationId="createVolunteerMinistry",
  *     summary="Create a volunteer ministry",
  *     description="Global volunteer managers and administrators only (design §4.6).",
@@ -574,7 +574,7 @@ function createVolunteerMinistry(Request $request, Response $response): Response
 
 /**
  * @OA\Get(
- *     path="/volunteer/ministries/{ministryId}",
+ *     path="/ministries/ministries/{ministryId}",
  *     operationId="getVolunteerMinistry",
  *     summary="One ministry with its teams and positions",
  *     tags={"Volunteer"},
@@ -684,7 +684,7 @@ function volunteerSetupMinistrySummary(
 
 /**
  * @OA\Get(
- *     path="/volunteer/ministries/{ministryId}/summary",
+ *     path="/ministries/ministries/{ministryId}/summary",
  *     operationId="getVolunteerMinistrySummary",
  *     summary="The three counts the ministry overview shows",
  *     description="teamCount, volunteerCount (members of the ministry's pool Group) and unfilledPositionCount - the sum of the open slots (required minus live, per effective requirement) across every future, scheduled occurrence the CALLER may see. A ministry coordinator, a global manager and an administrator are counted over the whole ministry; a team leader only over the occurrences whose schedule belongs to a team they lead, unioned across every such team. The same block is embedded in GET /ministries/{ministryId}, which is what the ministry page reads; this route exists for a caller who may see only part of the ministry and is therefore refused that one.",
@@ -740,7 +740,7 @@ function getVolunteerMinistrySummary(Request $request, Response $response): Resp
 
 /**
  * @OA\Post(
- *     path="/volunteer/ministries/{ministryId}",
+ *     path="/ministries/ministries/{ministryId}",
  *     operationId="updateVolunteerMinistry",
  *     summary="Update a ministry's name, description or active flag",
  *     tags={"Volunteer"},
@@ -785,7 +785,7 @@ function updateVolunteerMinistry(Request $request, Response $response): Response
 
 /**
  * @OA\Delete(
- *     path="/volunteer/ministries/{ministryId}",
+ *     path="/ministries/ministries/{ministryId}",
  *     operationId="deleteVolunteerMinistry",
  *     summary="Delete a deactivated ministry and everything under it",
  *     description="Global volunteer managers and administrators only, and only for a ministry whose active flag is off - an active ministry is refused with 409 (deactivate it first, through POST with active:false). The delete then removes the ministry's teams, positions, qualifications, schedules, occurrences and assignments, service history included, together with its scope grants, pool Group and calendar (design §4.6, §5.4 as amended 2026-09-17).",
@@ -817,7 +817,7 @@ function deleteVolunteerMinistry(Request $request, Response $response): Response
 
 /**
  * @OA\Get(
- *     path="/volunteer/ministries/{ministryId}/teams",
+ *     path="/ministries/ministries/{ministryId}/teams",
  *     operationId="listVolunteerTeams",
  *     summary="Teams inside a ministry",
  *     tags={"Volunteer"},
@@ -853,7 +853,7 @@ function listVolunteerTeams(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/ministries/{ministryId}/teams",
+ *     path="/ministries/ministries/{ministryId}/teams",
  *     operationId="createVolunteerTeam",
  *     summary="Create a team inside a ministry",
  *     tags={"Volunteer"},
@@ -894,7 +894,7 @@ function createVolunteerTeam(Request $request, Response $response): Response
 
 /**
  * @OA\Get(
- *     path="/volunteer/teams/{teamId}",
+ *     path="/ministries/teams/{teamId}",
  *     operationId="getVolunteerTeam",
  *     summary="One team with the positions scoped to it",
  *     tags={"Volunteer"},
@@ -931,7 +931,7 @@ function getVolunteerTeam(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/teams/{teamId}",
+ *     path="/ministries/teams/{teamId}",
  *     operationId="updateVolunteerTeam",
  *     summary="Update a team's name, description or active flag",
  *     tags={"Volunteer"},
@@ -970,7 +970,7 @@ function updateVolunteerTeam(Request $request, Response $response): Response
 
 /**
  * @OA\Delete(
- *     path="/volunteer/teams/{teamId}",
+ *     path="/ministries/teams/{teamId}",
  *     operationId="deleteVolunteerTeam",
  *     summary="Delete a team that is neither the ministry's last nor still in use",
  *     description="Returns 409 when this is the ministry's ONLY team - a ministry always has at least one, so the answer is to rename it - and also while the team still owns positions or schedules, which vpos_vtem_ID / vsch_vtem_ID would cascade away with it.",
@@ -1050,7 +1050,7 @@ function volunteerSetupVisibleTeamIds(VolunteerSetupService $service, User $acto
 
 /**
  * @OA\Get(
- *     path="/volunteer/ministries/{ministryId}/positions",
+ *     path="/ministries/ministries/{ministryId}/positions",
  *     operationId="listVolunteerPositions",
  *     summary="Positions of a ministry",
  *     description="A ministry coordinator sees every position; a team leader sees the positions of the teams they lead (design §4.4 - the narrowing happens in the query).",
@@ -1106,7 +1106,7 @@ function listVolunteerPositions(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/ministries/{ministryId}/positions",
+ *     path="/ministries/ministries/{ministryId}/positions",
  *     operationId="createVolunteerPosition",
  *     summary="Create a position in one of the ministry's teams",
  *     description="Every position belongs to a team. A ministry coordinator may create one in any of their teams; a team leader in their own only (design §4.6).
@@ -1195,7 +1195,7 @@ function createVolunteerPosition(Request $request, Response $response): Response
 
 /**
  * @OA\Get(
- *     path="/volunteer/positions/{positionId}",
+ *     path="/ministries/positions/{positionId}",
  *     operationId="getVolunteerPosition",
  *     summary="One position",
  *     tags={"Volunteer"},
@@ -1221,7 +1221,7 @@ function getVolunteerPosition(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/positions/{positionId}",
+ *     path="/ministries/positions/{positionId}",
  *     operationId="updateVolunteerPosition",
  *     summary="Update a position, including activating or deactivating it",
  *     description="Deactivation is the documented alternative to deletion once a position has history (design §2.6); it never touches existing assignments.",
@@ -1291,7 +1291,7 @@ function updateVolunteerPosition(Request $request, Response $response): Response
 
 /**
  * @OA\Delete(
- *     path="/volunteer/positions/{positionId}",
+ *     path="/ministries/positions/{positionId}",
  *     operationId="deleteVolunteerPosition",
  *     summary="Delete a position that nothing references",
  *     description="Returns 409, naming the counts, once qualifications, staffing requirements or assignments reference the position - deactivate it instead (design §2.6).",
@@ -1532,7 +1532,7 @@ function volunteerSetupTeamFilter(Request $request): ?int
 
 /**
  * @OA\Get(
- *     path="/volunteer/ministries/{ministryId}/pool",
+ *     path="/ministries/ministries/{ministryId}/pool",
  *     operationId="listVolunteerPoolMembers",
  *     summary="The people in this ministry's volunteer pool",
  *     description="The membership of the ministry's own Group (group_grp.grp_ministry_id), read live from person2group2role_p2g2r - V2 stores no people (design D1, D19). Alphabetical.",
@@ -1569,7 +1569,7 @@ function listVolunteerPoolMembers(Request $request, Response $response): Respons
 
 /**
  * @OA\Post(
- *     path="/volunteer/ministries/{ministryId}/pool/{personId}",
+ *     path="/ministries/ministries/{ministryId}/pool/{personId}",
  *     operationId="addVolunteerPoolMember",
  *     summary="Put a person in this ministry's volunteer pool",
  *     description="Writes a person2group2role_p2g2r row on the ministry's own Group with the group's default role, firing the same GROUP_MEMBER_ADDED plugin hook the Groups module fires. A ministry coordinator may do this WITHOUT the global Manage Groups permission (design D19) - the Propel hooks allow it because the group carries this ministry's id. Idempotent: somebody already in the pool is 200, not 409.",
@@ -1605,7 +1605,7 @@ function addVolunteerPoolMember(Request $request, Response $response): Response
 
 /**
  * @OA\Post(
- *     path="/volunteer/ministries/{ministryId}/pool/from-cart",
+ *     path="/ministries/ministries/{ministryId}/pool/from-cart",
  *     operationId="addVolunteerPoolMembersFromCart",
  *     summary="Put everyone in the session cart into this ministry's volunteer pool",
  *     description="The V2 Cart sink for the pool (design P5/P6, D19): the route reads Cart::getCartPeople() and hands the ids to VolunteerSetupService::addPoolMembers(), which writes one person2group2role_p2g2r row per person through the managed-write context so the GROUP_MEMBER_ADDED plugin hook fires exactly as it does for the single-person route. Idempotent per person: somebody already in the pool is counted in alreadyMembers rather than failing the batch, so pressing the button twice is safe. No qualification is granted - being in the pool is candidacy, the tick on the grid is eligibility (design section 2.5). The cart is NOT emptied. Takes no request body.",
@@ -1664,7 +1664,7 @@ function addVolunteerPoolMembersFromCart(Request $request, Response $response): 
 
 /**
  * @OA\Delete(
- *     path="/volunteer/ministries/{ministryId}/pool/{personId}",
+ *     path="/ministries/ministries/{ministryId}/pool/{personId}",
  *     operationId="removeVolunteerPoolMember",
  *     summary="Take a person out of this ministry's volunteer pool",
  *     description="Deletes the membership row and fires GROUP_MEMBER_REMOVED. Their qualifications are NOT revoked (design D19): the two are independent, and a qualified non-member is still assignable.",
@@ -1698,7 +1698,7 @@ function removeVolunteerPoolMember(Request $request, Response $response): Respon
 
 /**
  * @OA\Delete(
- *     path="/volunteer/ministries/{ministryId}/volunteers/{personId}",
+ *     path="/ministries/ministries/{ministryId}/volunteers/{personId}",
  *     operationId="removeVolunteerFromMinistry",
  *     summary="Take one person out of a ministry entirely",
  *     description="In one transaction: revokes every active qualification they hold for a position of this ministry (revocation is deactivation, design section 2.7), cancels every live assignment of theirs on a still-to-come occurrence of the ministry through the ordinary cancel path so the outbox rows are cancelled and the response trail is appended, and removes them from the ministry's pool Group through the managed-write context. Past assignments are service history and are left alone. Ministry-level authority: a team leader gets 403.",
@@ -1740,7 +1740,7 @@ function removeVolunteerFromMinistry(Request $request, Response $response): Resp
 
 /**
  * @OA\Get(
- *     path="/volunteer/ministries/{ministryId}/members",
+ *     path="/ministries/ministries/{ministryId}/members",
  *     operationId="listVolunteerMatrixMembers",
  *     summary="The rows of this ministry's qualification matrix",
  *     description="Everyone in the ministry's pool Group UNION everyone actively qualified for one of the positions in view (design D19). Each row carries inPool and the position ids that person is qualified for, so the matrix renders from one response (section 5.4).",
@@ -1773,7 +1773,7 @@ function listVolunteerMatrixMembers(Request $request, Response $response): Respo
 
 /**
  * @OA\Get(
- *     path="/volunteer/teams/{teamId}/members",
+ *     path="/ministries/teams/{teamId}/members",
  *     operationId="listVolunteerTeamMembers",
  *     summary="The people in one team's volunteer pools",
  *     description="The team's own pools UNION the parent ministry's pools, because a ministry-wide pool feeds every team under it.",
@@ -1805,7 +1805,7 @@ function listVolunteerTeamMembers(Request $request, Response $response): Respons
 
 /**
  * @OA\Get(
- *     path="/volunteer/ministries/{ministryId}/qualification-matrix",
+ *     path="/ministries/ministries/{ministryId}/qualification-matrix",
  *     operationId="getVolunteerQualificationMatrix",
  *     summary="Everything the qualification matrix needs, in one response",
  *     description="Pool members UNION everyone qualified for a position in view down the side (design D19), active positions across the top, and each person's qualified position ids - section 5.4 requires the matrix to handle 15-200 people without re-fetching per cell. A row's inPool flag says which half it is there for.",
@@ -1852,7 +1852,7 @@ function getVolunteerQualificationMatrix(Request $request, Response $response): 
 
 /**
  * @OA\Get(
- *     path="/volunteer/teams/{teamId}/qualification-matrix",
+ *     path="/ministries/teams/{teamId}/qualification-matrix",
  *     operationId="getVolunteerTeamQualificationMatrix",
  *     summary="One team's qualification matrix, in one response",
  *     description="The team-scoped twin of the ministry route: the same document, narrowed to one team, gated per team rather than per ministry so a team leader can open their own grid (design section 4.4). Added for the Member Portal's My Teams page (#9868).",
@@ -1897,7 +1897,7 @@ function getVolunteerTeamQualificationMatrix(Request $request, Response $respons
 
 /**
  * @OA\Get(
- *     path="/volunteer/positions/{positionId}/qualifications",
+ *     path="/ministries/positions/{positionId}/qualifications",
  *     operationId="listVolunteerQualifications",
  *     summary="Who is qualified for a position",
  *     description="Includes revoked rows by default: revocation is deactivation, so the grant history stays readable (design section 2.7). Pass active=1 for the eligibility list.",
@@ -1944,7 +1944,7 @@ function listVolunteerQualifications(Request $request, Response $response): Resp
 
 /**
  * @OA\Post(
- *     path="/volunteer/positions/{positionId}/qualifications",
+ *     path="/ministries/positions/{positionId}/qualifications",
  *     operationId="grantVolunteerQualification",
  *     summary="Qualify a person for a position",
  *     description="Idempotent by UNIQUE (vqal_per_ID, vqal_vpos_ID): 201 when the row is new, 200 when it already existed - a re-grant reactivates a revoked row rather than inserting a second. The person does NOT have to be in a linked pool: the pool is the candidate set, the qualification is the eligibility (design section 2.5).",
@@ -2005,7 +2005,7 @@ function grantVolunteerQualification(Request $request, Response $response): Resp
 
 /**
  * @OA\Delete(
- *     path="/volunteer/qualifications/{qualificationId}",
+ *     path="/ministries/qualifications/{qualificationId}",
  *     operationId="revokeVolunteerQualification",
  *     summary="Revoke a qualification by deactivating it",
  *     description="The row is KEPT with active=false (design section 2.7). Historical assignments stay valid because volunteer_assignment_vasg has no foreign key to a qualification - it references the person and the position directly.",
@@ -2047,7 +2047,7 @@ function revokeVolunteerQualification(Request $request, Response $response): Res
 
 /**
  * @OA\Get(
- *     path="/volunteer/people/{personId}/qualifications",
+ *     path="/ministries/people/{personId}/qualifications",
  *     operationId="listVolunteerQualificationsForPerson",
  *     summary="Everything one person is qualified for, scoped to the caller",
  *     description="A global manager sees every ministry; a coordinator sees only their own, and the narrowing happens in the query (design section 4.4).",

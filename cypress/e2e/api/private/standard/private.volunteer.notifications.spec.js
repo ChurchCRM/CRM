@@ -9,7 +9,7 @@
  * table, Reply-To resolution and the four-step drain), Appendix B
  * (`iVolunteerReminderLeadHours`), Appendix C (the seven `BaseEmail`
  * subclasses) and §6.6 ("duplicate notification enqueue", which is what
- * `GET /api/volunteer/assignments/{id}/notifications` exists for).
+ * `GET /api/ministries/assignments/{id}/notifications` exists for).
  *
  * #9709 built the ENQUEUE half: the real workflow already writes outbox rows at
  * every §3.6 trigger. This spec proves the other half — that those rows are
@@ -66,7 +66,7 @@ const COORDINATOR_KEY = "user.api.key";
 const PLAINAUTH_KEY = "plainauth.api.key";
 const SELFEDIT_KEY = "selfedit.api.key";
 
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 
 const PERSON_COORDINATOR = 3; // tony.wade@example.com — coordinates ministry A
 const PERSON_PLAIN = 900; // john.plainauth — no volunteer rights at all
@@ -1294,7 +1294,7 @@ describe("Volunteer v2 — GET /assignments/{id}/notifications is scoped (§4.8)
     });
 
     it("is refused to the volunteer whose assignment it is", () => {
-        // The member surface is /api/volunteer/me; the coordinator read is not
+        // The member surface is /api/ministries/me; the coordinator read is not
         // a self-service endpoint (§3.3.3).
         notifications(assignmentId, SELFEDIT_KEY, 403);
     });

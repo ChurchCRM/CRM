@@ -24,7 +24,7 @@ use Psr\Http\Message\ServerRequestInterface;
  * cannot see a ministry learns nothing from "not found" either way.
  *
  * COORDINATOR authority only. The volunteer's own "this is my assignment" right is a
- * different question (canRespondToAssignment()) on a different surface — /api/volunteer/me
+ * different question (canRespondToAssignment()) on a different surface — /api/ministries/me
  * — which derives the person from the session and takes no personId parameter (§3.3.3), so
  * this middleware is deliberately not reused there.
  */

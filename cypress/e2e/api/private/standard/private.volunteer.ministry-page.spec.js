@@ -42,7 +42,7 @@ const COORDINATOR_KEY = "user.api.key";
 /** person 95 — judith.matthews. Given TEAM scopes on two of the three teams. */
 const LEADER_KEY = "editrecords.api.key";
 
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = `${VOLUNTEER_URL}/ministries`;
 
 const PERSON_COORDINATOR = 3;

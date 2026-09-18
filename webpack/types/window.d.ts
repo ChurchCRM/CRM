@@ -172,7 +172,7 @@ interface CRMVolunteerMinistryConfig {
  *
  * `isAdmin` is advisory: it says whether the settings strip was rendered at all, and
  * the server decided that. It is never used to authorize anything — every read is
- * scoped server-side in `GET /api/volunteer/dashboard` (design §4.4).
+ * scoped server-side in `GET /api/ministries/dashboard` (design §4.4).
  */
 interface CRMVolunteerDashboardConfig {
   /** Initial window length in days; the select on the page can widen it. */

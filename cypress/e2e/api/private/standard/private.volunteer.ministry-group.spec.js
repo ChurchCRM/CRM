@@ -45,7 +45,7 @@
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const TIMERJOBS_LAST_RUN_URL =
     "/admin/api/system/config/sLastTimerJobsRunDateTime";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = `${VOLUNTEER_URL}/ministries`;
 const SCOPES_URL = `${VOLUNTEER_URL}/scopes`;
 

@@ -30,7 +30,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 
 /**
  * The two member pages live in the MEMBER PORTAL since #9867 — they are Twig
@@ -41,8 +41,6 @@ const VOLUNTEER_URL = "/api/volunteer";
  */
 const MY_SCHEDULE_URL = "/portal/volunteer/schedule";
 const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
-const LEGACY_MY_SCHEDULE_URL = "/volunteer/my-schedule";
-const LEGACY_OPPORTUNITIES_URL = "/volunteer/opportunities";
 
 const PREFIX = "UI9712";
 const EVENT_TITLE = `${PREFIX} Hospitality Service`;
@@ -467,7 +465,7 @@ describe("Volunteer v2 — S5 my schedule (#9712)", () => {
         // Registering a second cy.intercept for the same pattern is unreliable —
         // both stay registered and the earlier stub keeps answering (#9709).
         let failed = false;
-        cy.intercept("**/api/volunteer/me/assignments*", (req) => {
+        cy.intercept("**/api/ministries/me/assignments*", (req) => {
             if (failed) {
                 req.continue();
 
@@ -1015,17 +1013,4 @@ describe("Volunteer v2 — the member navigation (§3.5)", () => {
         cy.get("#sidebar-menu").should("not.exist");
     });
 
-    it("302s the retired member URLs to the portal", () => {
-        cy.request({ url: LEGACY_MY_SCHEDULE_URL, followRedirect: false }).then((resp) => {
-            expect(resp.status).to.eq(302);
-            // A self-service session is answered by AuthMiddleware before the
-            // volunteer module's redirect is reached, so the destination is the
-            // portal — the page itself for staff, the portal home for a member.
-            expect(resp.headers.location).to.match(/\/portal\//);
-        });
-        cy.request({ url: LEGACY_OPPORTUNITIES_URL, followRedirect: false }).then((resp) => {
-            expect(resp.status).to.eq(302);
-            expect(resp.headers.location).to.match(/\/portal\//);
-        });
-    });
 });

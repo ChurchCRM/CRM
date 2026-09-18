@@ -6,7 +6,7 @@
  * dialog and the same "Recruit Volunteers" switch, in the portal layout.
  *
  * §4.6 already lets a **team leader** create and edit positions in their own team
- * — `POST /api/volunteer/ministries/{id}/positions` deliberately carries no
+ * — `POST /api/ministries/ministries/{id}/positions` deliberately carries no
  * ministry entity middleware for exactly that reason — so nothing about the
  * authorization changed here either.
  *

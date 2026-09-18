@@ -97,7 +97,7 @@ function createMinistryViaApi(name) {
     return api(
         ADMIN_KEY,
         "POST",
-        "/api/volunteer/ministries",
+        "/api/ministries/ministries",
         { name: `${PREFIX} ${name}`, description: "ministry calendar fixture" },
         201,
     ).then((resp) => resp.body);
@@ -162,7 +162,7 @@ before(() => {
         api(
             ADMIN_KEY,
             "POST",
-            "/api/volunteer/scopes",
+            "/api/ministries/scopes",
             {
                 personId: PERSON_COORDINATOR,
                 scopeType: "ministry",
@@ -280,7 +280,7 @@ describe("Volunteer v2 — the ministry calendar (#9869)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/ministries/${ministryA}`,
+                `/api/ministries/ministries/${ministryA}`,
                 { name: `${PREFIX} Ministry A Renamed` },
                 200,
             );
@@ -295,7 +295,7 @@ describe("Volunteer v2 — the ministry calendar (#9869)", () => {
             api(
                 ADMIN_KEY,
                 "POST",
-                `/api/volunteer/ministries/${ministryA}`,
+                `/api/ministries/ministries/${ministryA}`,
                 { name: `${PREFIX} Ministry A` },
                 200,
             );
@@ -311,11 +311,11 @@ describe("Volunteer v2 — the ministry calendar (#9869)", () => {
                 expect(doomedCalendar).to.be.greaterThan(0);
 
                 // An active ministry cannot be deleted (409): deactivate first (2026-09-17 lifecycle rule).
-                api(ADMIN_KEY, "POST", `/api/volunteer/ministries/${doomedMinistry}`, { active: false }, 200);
+                api(ADMIN_KEY, "POST", `/api/ministries/ministries/${doomedMinistry}`, { active: false }, 200);
                 api(
                     ADMIN_KEY,
                     "DELETE",
-                    `/api/volunteer/ministries/${doomedMinistry}`,
+                    `/api/ministries/ministries/${doomedMinistry}`,
                     null,
                     200,
                 );

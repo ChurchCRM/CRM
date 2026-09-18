@@ -25,7 +25,7 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const LEAD_SETTING_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
 const MINISTRIES_URL = "/ministries";
 
@@ -405,7 +405,7 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         });
 
         it("shows the loading block first and hides it once content arrives (§5.8)", () => {
-            cy.intercept("GET", "**/api/volunteer/dashboard*", (req) => {
+            cy.intercept("GET", "**/api/ministries/dashboard*", (req) => {
                 req.on("response", (res) => {
                     res.setDelay(600);
                 });
@@ -419,7 +419,7 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         });
 
         it("shows the retry-able error block when the aggregate fails (§5.8)", () => {
-            cy.intercept("GET", "**/api/volunteer/dashboard*", {
+            cy.intercept("GET", "**/api/ministries/dashboard*", {
                 statusCode: 500,
                 body: { success: false, message: "boom" },
             }).as("dashboardFail");

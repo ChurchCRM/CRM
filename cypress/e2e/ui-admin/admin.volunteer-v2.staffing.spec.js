@@ -31,7 +31,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 
 const PREFIX = "UINEEDS";
 const MINISTRY_NAME = `${PREFIX} Children's Ministry`;

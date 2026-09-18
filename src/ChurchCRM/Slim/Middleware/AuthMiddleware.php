@@ -200,7 +200,7 @@ class AuthMiddleware implements MiddlewareInterface
      *  - /portal and /portal/…  — the Member Portal itself (#9863)
      *  - /api/portal/…          — the portal's own API surface
      *  - the self-service auth-flow paths in self::AUTH_FLOW_EXEMPT_PATHS
-     *  - /api/volunteer/me/…    — the Volunteer v2 member API (#9706,
+     *  - /api/ministries/me/…    — the Volunteer v2 member API (#9706,
      *    volunteer design §4.7), only while the rollout state includes V2. Every
      *    route behind it derives the acting person from the session and accepts
      *    no personId.
@@ -208,7 +208,7 @@ class AuthMiddleware implements MiddlewareInterface
      * The two Volunteer v2 MVC pages that used to be listed beside that API —
      * `/volunteer/my-schedule` and `/volunteer/opportunities` — moved into the
      * portal with MP6 (#9867), so the `/portal` prefix above covers them and
-     * they are no longer exempt. `/api/volunteer/me/` stays: the portal's
+     * they are no longer exempt. `/api/ministries/me/` stays: the portal's
      * volunteering templates load the same two bundles, and those bundles call
      * exactly that API. An old link to either retired URL therefore lands a
      * self-service member on `/portal/` rather than on the page itself — one
@@ -216,7 +216,7 @@ class AuthMiddleware implements MiddlewareInterface
      * exactly one home (design §0.2).
      *
      * **The team-leader exemption (#9868).** A self-service login that holds a
-     * volunteer `team` scope may reach the whole of `/api/volunteer/`, not just
+     * volunteer `team` scope may reach the whole of `/api/ministries/`, not just
      * `/me/`. That is the Member Portal's revision of D14 (P17, #9867) made
      * reachable: My Teams (MP7) is a portal page, and everything on it — the
      * qualification grid, the schedules, the occurrences, the assignments — is
@@ -257,14 +257,14 @@ class AuthMiddleware implements MiddlewareInterface
             return false;
         }
 
-        if (str_contains($path, '/api/volunteer/me/')) {
+        if (str_contains($path, '/api/ministries/me/')) {
             return true;
         }
 
         // The rest of the volunteer API, for a team leader only (#9868). The scope
         // lookup is memoised per request on the User model, so asking here costs
         // nothing on the paths that never reach this line.
-        if (str_contains($path, '/api/volunteer/')) {
+        if (str_contains($path, '/api/ministries/')) {
             $user = AuthenticationManager::getCurrentUser();
 
             return $user instanceof User && $user->isVolunteerTeamLeaderEnabled();

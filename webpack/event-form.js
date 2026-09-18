@@ -203,7 +203,7 @@ function renderTitleFieldInHeader(event) {
 /**
  * Volunteer v2 (#9713, design §2.16 item 10): fill and reveal the ministry select.
  *
- * `GET /api/volunteer/ministries` is already scoped to what the caller may administer —
+ * `GET /api/ministries/ministries` is already scoped to what the caller may administer —
  * `VolunteerSetupService::listMinistriesFor()` asks `isGlobalManager()` first and otherwise
  * filters by the caller's explicit grants — so no `?manageable=1` filter is needed and the
  * options are exactly the values `POST /api/events` will accept from this caller.
@@ -219,7 +219,7 @@ function loadVolunteerMinistries(event, onLoaded = null) {
 
   const root = window.CRM?.root ?? "";
 
-  fetch(`${root}/api/volunteer/ministries?active=1`, { credentials: "include" })
+  fetch(`${root}/api/ministries/ministries?active=1`, { credentials: "include" })
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => {
       const ministries = data?.ministries ?? [];

@@ -6,7 +6,7 @@ namespace ChurchCRM\Slim\Middleware\Request\Auth;
  * Volunteer Management v2 (#9706): the global-manager gate.
  *
  * Guards the routes that create or destroy volunteer structure across the whole
- * installation — today that is all of `/api/volunteer/scopes`, i.e. deciding who
+ * installation — today that is all of `/api/ministries/scopes`, i.e. deciding who
  * coordinates what (design §3.2, §4.6). Later issues add ministry create/delete.
  *
  * Coarse only. It runs before route arguments become domain objects, so it can never

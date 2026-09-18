@@ -35,7 +35,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = "/ministries";
 const DASHBOARD_URL = "/ministries/dashboard";
 

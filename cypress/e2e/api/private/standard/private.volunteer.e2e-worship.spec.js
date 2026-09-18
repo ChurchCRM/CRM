@@ -40,7 +40,7 @@ const COORDINATOR_KEY = "user.api.key";
 const SELFEDIT_KEY = "selfedit.api.key"; // person 99 — the assigned volunteer
 const SELFEDIT_NOTES_KEY = "selfedit.plus.notes.api.key"; // person 100 — the substitute
 
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 
 const PERSON_COORDINATOR = 3;
 const PERSON_VOLUNTEER = 99;

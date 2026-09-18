@@ -31,9 +31,9 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const MINISTRIES_URL = "/api/volunteer/ministries";
-const TEAMS_URL = "/api/volunteer/teams";
-const SCOPES_URL = "/api/volunteer/scopes";
+const MINISTRIES_URL = "/api/ministries/ministries";
+const TEAMS_URL = "/api/ministries/teams";
+const SCOPES_URL = "/api/ministries/scopes";
 
 const PERSON_COORDINATOR = 3; // tony.wade — user.api.key
 const EVENT_TYPE_CHURCH_SERVICE = 1; // "Church Service" in the seed
@@ -250,7 +250,7 @@ describe("Volunteer v2 — every ministry has at least one team (#9701)", () => 
             ).then((resp) => {
                 cy.makePrivateAdminAPICall(
                     "POST",
-                    `/api/volunteer/positions/${resp.body.position.id}`,
+                    `/api/ministries/positions/${resp.body.position.id}`,
                     { teamId: null },
                     400,
                 );

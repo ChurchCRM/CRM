@@ -22,7 +22,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
  * list a team leader reads and clicks through, and every fact on it — the team's
  * name, its ministry, how many positions it has and when it next meets — is a
  * plain read the route can do itself. The TEAM page is the one that needs a
- * bundle, and it talks to `/api/volunteer/*` like the admin page does.
+ * bundle, and it talks to `/api/ministries/*` like the admin page does.
  *
  * Read scoping happens in the QUERY (volunteer design §4.4): the team ids come
  * from `VolunteerAuthorizationService::getManagedTeamIds()` and are handed to the

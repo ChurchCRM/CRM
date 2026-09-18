@@ -29,7 +29,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
-const MINISTRIES_URL = "/api/volunteer/ministries";
+const MINISTRIES_URL = "/api/ministries/ministries";
 
 const PREFIX = "UIDEFTEAM";
 const MINISTRY_NAME = `${PREFIX} Childrens Ministry`;
@@ -106,7 +106,7 @@ describe("Volunteer v2 — every ministry has at least one team, on screen (#970
                     elementaryId = detail.body.teams[0].id;
                     cy.makePrivateAdminAPICall(
                         "POST",
-                        `/api/volunteer/teams/${elementaryId}`,
+                        `/api/ministries/teams/${elementaryId}`,
                         { name: TEAM_ELEMENTARY },
                         200,
                     );

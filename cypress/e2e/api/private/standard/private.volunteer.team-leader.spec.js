@@ -12,7 +12,7 @@
  *
  * **The persona is person 99, `selfedit.api.key`** — EditSelf-exclusive, the
  * least-authority account that can still log in, and exactly the person P17 is
- * about. Before #9868 that account could reach nothing under `/api/volunteer/`
+ * about. Before #9868 that account could reach nothing under `/api/ministries/`
  * except `/me/`: `AuthMiddleware` confined it and
  * `VolunteerCoordinatorRoleAuthMiddleware` refused it. Every 200/201 below fails
  * with 403 on the branch point, and every 403 below is the one that must SURVIVE
@@ -35,7 +35,7 @@ const LEADER_KEY = "selfedit.api.key";
 /** EditSelf + Notes, no scope of any kind — the negative persona. */
 const NOSCOPE_KEY = "selfedit.plus.notes.api.key";
 
-const VOLUNTEER_URL = "/api/volunteer";
+const VOLUNTEER_URL = "/api/ministries";
 const PORTAL_TEAMS_URL = "/portal/teams";
 
 const PERSON_LEADER = 99;
