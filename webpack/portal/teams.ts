@@ -38,6 +38,7 @@
 
 import { ensureCrmHelpers } from "../common/crm-helpers";
 import {
+  createOneOffOccurrence,
   errorMessage,
   getTeam,
   getTeamQualificationMatrix,
@@ -142,6 +143,8 @@ function buildComponents(): void {
     teams,
     ensureContext: ensureTeam,
     occurrenceUrl: (occurrenceId) => `${window.CRM?.root ?? ""}/portal/teams/${teamId}/occurrences/${occurrenceId}`,
+    positions,
+    addOneOff: (payload) => createOneOffOccurrence(ministryId, payload),
   });
 
   schedulesTable = createSchedulesTable({

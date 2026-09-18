@@ -726,17 +726,117 @@ class VolunteerScheduleService
     public function deleteOccurrence(VolunteerOccurrence $occurrence, User $actor): void
     {
         $occurrenceId = (int) $occurrence->getId();
+        $scheduleId = (int) $occurrence->getScheduleId();
         $assignments = VolunteerAssignmentQuery::create()->filterByOccurrenceId($occurrenceId)->count();
 
         $occurrence->delete();
 
+        // A one-off's private schedule has no life of its own: it exists to carry this
+        // one occurrence's team, times and staffing needs, so it goes with it. This is
+        // NOT a general "last occurrence deletes the schedule" rule — an ordinary
+        // schedule with no occurrences left is a plan waiting to be generated.
+        $schedule = VolunteerScheduleQuery::create()->findPk($scheduleId);
+        $removedSchedule = false;
+        if ($schedule !== null && $schedule->getOneOff()
+            && VolunteerOccurrenceQuery::create()->filterByScheduleId($scheduleId)->count() === 0) {
+            $schedule->delete();
+            $removedSchedule = true;
+        }
+
         $this->logger->info('Volunteer occurrence deleted', [
             'occurrenceId' => $occurrenceId,
-            'scheduleId' => $occurrence->getScheduleId(),
+            'scheduleId' => $scheduleId,
             'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
             'assignments' => $assignments,
+            'removedOneOffSchedule' => $removedSchedule,
             'actorPersonId' => $actor->getId(),
         ]);
+    }
+
+    /**
+     * A one-off occurrence (product-owner decision, 2026-09-18): a date that follows
+     * no calendar event and no recurring schedule — a special service, or a generated
+     * occurrence deleted by accident whose event has since passed.
+     *
+     * Every occurrence belongs to a schedule, because the schedule is where its team,
+     * its times and its staffing needs live. So a one-off gets a private schedule of
+     * its own: standalone, windowed to the one date, flagged `OneOff` so the Schedules
+     * tab never lists it and `deleteOccurrence()` removes it with its only occurrence.
+     * The occurrence itself is an ordinary one afterwards — staffed, cancelled, or
+     * overridden on its own page like any other.
+     *
+     * @param array{name: string, teamId: int, date: string, startTime: string, endTime: string, requirements?: array} $fields
+     *
+     * @throws \RuntimeException on a §2.8 violation, a past date, or an actor outside scope
+     */
+    public function createOneOffOccurrence(VolunteerMinistry $ministry, array $fields, User $actor): VolunteerOccurrence
+    {
+        $date = (string) ($fields['date'] ?? '');
+        if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) !== 1) {
+            throw new \RuntimeException(gettext('A one-off occurrence needs a date'));
+        }
+        $day = DateTimeUtils::createDateTime($date);
+        $day->setTime(0, 0, 0);
+        if ($day < DateTimeUtils::getStartOfToday()) {
+            throw new \RuntimeException(gettext('A one-off occurrence cannot be in the past'));
+        }
+        if (($fields['startTime'] ?? '') === '' || ($fields['endTime'] ?? '') === '') {
+            throw new \RuntimeException(gettext('A one-off occurrence needs a start and an end time'));
+        }
+
+        $scheduleFields = [
+            'name' => (string) ($fields['name'] ?? ''),
+            'teamId' => (int) ($fields['teamId'] ?? 0),
+            'linkMode' => VolunteerSchedule::LINK_MODE_STANDALONE,
+            'recurType' => VolunteerSchedule::RECUR_WEEKLY,
+            'recurDow' => $day->format('l'),
+            'startTime' => (string) $fields['startTime'],
+            'endTime' => (string) $fields['endTime'],
+            'windowStart' => $date,
+            'windowEnd' => $date,
+            'generateAheadDays' => 1,
+            'active' => true,
+        ];
+        if (array_key_exists('requirements', $fields)) {
+            $scheduleFields['requirements'] = $fields['requirements'];
+        }
+
+        $created = $this->createSchedule($ministry, $scheduleFields, $actor);
+        // Re-read through the Query before the UPDATE: Propel registers a table map
+        // lazily when a Query for the model runs, and an UPDATE on an object that
+        // was only ever INSERTed in this request fails with "undefined table" before
+        // any query has registered it (database-operations.md).
+        $schedule = VolunteerScheduleQuery::create()->findPk((int) $created->getId());
+        if ($schedule === null) {
+            throw new \RuntimeException(gettext('The one-off occurrence could not be created'));
+        }
+        $schedule->setOneOff(true);
+        $schedule->save();
+
+        try {
+            $this->generateOccurrences($schedule, $day);
+        } catch (\Throwable $e) {
+            $schedule->delete();
+            throw $e;
+        }
+
+        $occurrence = VolunteerOccurrenceQuery::create()
+            ->filterByScheduleId((int) $schedule->getId())
+            ->findOne();
+        if ($occurrence === null) {
+            $schedule->delete();
+            throw new \RuntimeException(gettext('The one-off occurrence could not be created'));
+        }
+
+        $this->logger->info('Volunteer one-off occurrence created', [
+            'occurrenceId' => $occurrence->getId(),
+            'scheduleId' => $schedule->getId(),
+            'ministryId' => $ministry->getId(),
+            'occurrenceDate' => $date,
+            'actorPersonId' => $actor->getId(),
+        ]);
+
+        return $occurrence;
     }
 
     // ── Effective time and requirements ────────────────────────────────────

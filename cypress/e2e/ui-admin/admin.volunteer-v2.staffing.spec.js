@@ -69,6 +69,21 @@ function isoDate(offsetDays) {
 
 /** Remove every schedule this spec's UI created, so each test starts from none. */
 function clearSchedules() {
+    // A one-off occurrence's schedule is hidden from the schedules listing on
+    // purpose (2026-09-18), so the residue is cleared through its occurrence, which
+    // takes the hidden schedule with it.
+    cy.makePrivateAdminAPICall(
+        "GET",
+        `${VOLUNTEER_URL}/occurrences?ministryId=${ministryId}&from=${isoDate(0)}&to=${isoDate(400)}`,
+        null,
+        200,
+    ).then((resp) => {
+        for (const occurrence of resp.body.occurrences) {
+            if (occurrence.scheduleOneOff) {
+                cy.makePrivateAdminAPICall("DELETE", `${VOLUNTEER_URL}/occurrences/${occurrence.id}`, null, [200, 404]);
+            }
+        }
+    });
     cy.makePrivateAdminAPICall("GET", `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`, null, 200).then(
         (resp) => {
             for (const schedule of resp.body.schedules) {
@@ -450,6 +465,70 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                     cy.get("#occurrences-select-all").uncheck({ force: true });
                     cy.get("#occurrences-delete-btn").should("be.disabled");
                 });
+            });
+        });
+
+        it("adds a one-off occurrence with a hidden schedule of its own, and deleting it takes the schedule too (2026-09-18)", () => {
+            const NAME = `${PREFIX} Harvest Supper`;
+            cy.visit(`/ministries/${ministryId}`);
+            cy.get("#nav-item-occurrences").click();
+            cy.get("#occurrences-loading").should("not.be.visible");
+
+            cy.get("#occurrences-add-btn").click();
+            cy.get("#oneOffOccurrenceModal").should("be.visible");
+            // The dialog focuses Name at `shown.bs.modal`; typing before the fade
+            // ends would lose the tail of the name to Bootstrap's own focus move.
+            cy.get("#one-off-form-name").should("have.focus").type(NAME);
+            cy.get("#one-off-form-team").select(TEAM_NAME);
+            cy.get("#one-off-form-date").clear().type(isoDate(3));
+            cy.get("#one-off-form-start-time").clear().type("18:00");
+            cy.get("#one-off-form-end-time").clear().type("20:00");
+            // The needs editor lists the team's positions, every one ticked at 1 / 1.
+            cy.get("#one-off-form-needs .volunteer-need-row").should("have.length.at.least", 1);
+            cy.intercept("POST", "**/api/ministries/ministries/*/occurrences").as("createOneOff");
+            cy.get("#one-off-form-save").click();
+            cy.wait("@createOneOff").then((call) => {
+                expect(call.request.body.name, "the name the dialog sent").to.eq(NAME);
+                expect(call.response.statusCode, JSON.stringify(call.response.body)).to.eq(201);
+            });
+            cy.get("#oneOffOccurrenceModal").should("not.be.visible");
+            cy.get(".notyf__toast").should("contain", "Occurrence added");
+
+            // Listed, flagged, on the right team and date. The Event box narrows the
+            // list server-side, so the row is on the page whatever else is scheduled.
+            cy.get("#occurrence-event-filter").clear().type(NAME);
+            cy.get("#occurrences-loading").should("not.be.visible");
+            cy.get("#volunteerOccurrencesTable tbody tr").should("have.length", 1);
+            cy.get("#volunteerOccurrencesTable tbody tr").first().as("row");
+            cy.get("@row").find("td").eq(2).should("contain", TEAM_NAME);
+            cy.get("@row").find("td").eq(3).should("contain", "one-off");
+            cy.get("@row").find("td").eq(1).should("contain", isoDate(3));
+
+            // Its private schedule is not on the Schedules tab, but does exist.
+            cy.get("#nav-item-schedules").click();
+            cy.get("#schedules-loading").should("not.be.visible");
+            cy.get("#volunteerSchedulesTable tbody").should("not.contain", NAME);
+            cy.dbQuery(`SELECT vsch_ID, vsch_Name, vsch_OneOff FROM volunteer_schedule_vsch WHERE vsch_Name LIKE ?`, [`${PREFIX} Harvest%`]).then((r) => {
+                expect(r.error).to.eq(null);
+                expect(r.rows, `the hidden schedule (found: ${JSON.stringify(r.rows)})`).to.have.length(1);
+                expect(r.rows[0].vsch_Name).to.eq(NAME);
+                expect(Number(r.rows[0].vsch_OneOff)).to.eq(1);
+            });
+
+            // Delete the occurrence: the schedule goes with it.
+            cy.get("#nav-item-occurrences").click();
+            cy.get("#occurrences-loading").should("not.be.visible");
+            cy.get("#occurrence-event-filter").clear().type(NAME);
+            cy.get("#occurrences-loading").should("not.be.visible");
+            cy.get("#volunteerOccurrencesTable tbody tr").should("have.length", 1);
+            cy.get("#volunteerOccurrencesTable tbody tr").first().find(".volunteer-occurrence-select").check();
+            cy.get("#occurrences-delete-btn").click();
+            cy.get(".bootbox .btn-danger").click();
+            cy.get(".notyf__toast").should("contain", "1 occurrences deleted");
+            cy.get("#occurrences-empty, #volunteerOccurrencesTable tbody").should("not.contain", NAME);
+            cy.dbQuery(`SELECT COUNT(*) AS c FROM volunteer_schedule_vsch WHERE vsch_Name = ?`, [NAME]).then((r) => {
+                expect(r.error).to.eq(null);
+                expect(Number(r.rows[0].c), "the hidden schedule is gone with its occurrence").to.eq(0);
             });
         });
 

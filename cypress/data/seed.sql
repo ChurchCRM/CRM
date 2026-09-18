@@ -2301,6 +2301,7 @@ CREATE TABLE `volunteer_schedule_vsch` (
   `vsch_WindowEnd`         date                                                    DEFAULT NULL,
   `vsch_GenerateAheadDays` int(11)                                        NOT NULL DEFAULT 56,
   `vsch_Active`            tinyint(1) unsigned                            NOT NULL DEFAULT 1,
+  `vsch_OneOff`            tinyint(1) unsigned                            NOT NULL DEFAULT 0,
   PRIMARY KEY (`vsch_ID`),
   KEY `vsch_ministry_idx`      (`vsch_vmin_ID`),
   KEY `vsch_team_idx`          (`vsch_vtem_ID`),

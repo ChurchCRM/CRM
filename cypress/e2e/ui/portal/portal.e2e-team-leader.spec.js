@@ -440,7 +440,12 @@ describe("Member Portal e2e — #9869 scenario 2, a team leader on a member logi
             1,
         );
         cy.get("#assign-person-select").select(String(POOL_MEMBER), { force: true });
+        // Wait for the assignment request itself: Cypress logs a fetch when it
+        // starts, so the database check below used to race the 201.
+        cy.intercept("POST", "**/api/ministries/occurrences/*/assignments").as("assign");
         cy.get("#assign-save").click();
+        cy.wait("@assign").its("response.statusCode").should("eq", 201);
+        cy.get("#volunteer-assign-modal").should("not.be.visible");
 
         cy.get("#requirements-content", { timeout: 15000 }).should("not.be.empty");
 

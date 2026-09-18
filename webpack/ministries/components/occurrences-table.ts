@@ -26,8 +26,11 @@ import {
   notifySuccess,
   positionLabel,
   type VolunteerOccurrenceSummary,
+  type VolunteerPosition,
+  type VolunteerRequirementInput,
   type VolunteerTeam,
 } from "../api";
+import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "../staffing-needs";
 import {
   byId,
   confirmDelete,
@@ -37,8 +40,12 @@ import {
   formatIsoDate,
   initDataTable,
   isoDate,
+  modal,
   renderState,
+  show,
+  showModalError,
   tText,
+  wireModalFadeGuard,
 } from "./ui";
 
 /**
@@ -92,6 +99,17 @@ export interface OccurrencesTableOptions {
   ensureContext(): Promise<void>;
   /** Where a row links to. */
   occurrenceUrl(occurrenceId: number): string;
+  /** Every position the caller knows about; the one-off dialog's needs editor filters it by team. */
+  positions?(): VolunteerPosition[];
+  /** Create a one-off occurrence (2026-09-18); absent when the page does not offer the dialog. */
+  addOneOff?(payload: {
+    name: string;
+    teamId: number;
+    date: string;
+    startTime: string;
+    endTime: string;
+    requirements: VolunteerRequirementInput[];
+  }): Promise<unknown>;
 }
 
 export interface OccurrencesTableHandle {
@@ -195,7 +213,11 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
           </td>
           <td><a href="${href}">${escapeHtml(when)}</a></td>
           <td>${escapeHtml(teamName)}</td>
-          <td>${escapeHtml(occurrence.scheduleName ?? "")}</td>
+          <td>${escapeHtml(occurrence.scheduleName ?? "")}${
+            occurrence.scheduleOneOff
+              ? ` <span class="badge bg-azure-lt text-azure ms-1">${escapeHtml(i18next.t("one-off"))}</span>`
+              : ""
+          }</td>
           <td class="text-center">${filled}</td>
         </tr>`;
       })
@@ -204,6 +226,99 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     renderState("occurrences", "loaded");
     initDataTable("volunteerOccurrencesTable", OCCURRENCES_TABLE_OPTIONS, "occurrences-toolbar");
     syncSelection();
+  }
+
+  // ── Add a one-off occurrence (2026-09-18) ────────────────────────────────
+
+  /** The dialog's team select, then the needs rows for whichever team it names. */
+  function fillOneOffTeams(): void {
+    const select = byId<HTMLSelectElement>("one-off-form-team");
+    if (!select) {
+      return;
+    }
+    select.innerHTML = options
+      .teams()
+      .map((team) => `<option value="${team.id}">${escapeHtml(team.name)}</option>`)
+      .join("");
+    const fixed = options.fixedTeamId();
+    if (fixed !== null) {
+      select.value = String(fixed);
+    }
+  }
+
+  function renderOneOffNeeds(): void {
+    const container = byId("one-off-form-needs");
+    if (!container) {
+      return;
+    }
+    const teamId = Number(byId<HTMLSelectElement>("one-off-form-team")?.value ?? 0);
+    const positions = (options.positions?.() ?? [])
+      .filter((position) => position.active && position.teamId === teamId)
+      .map((position) => ({
+        id: position.id,
+        name: position.name,
+        teamId: position.teamId,
+        teamName: position.teamName,
+        order: position.order,
+      }));
+    renderStaffingNeeds(container, positions, [], true);
+  }
+
+  function openOneOffModal(): void {
+    show(byId("one-off-form-error"), false);
+    fillOneOffTeams();
+    const set = (id: string, value: string): void => {
+      const el = byId<HTMLInputElement>(id);
+      if (el) {
+        el.value = value;
+      }
+    };
+    set("one-off-form-name", "");
+    set("one-off-form-date", isoDate(0));
+    set("one-off-form-start-time", "");
+    set("one-off-form-end-time", "");
+    renderOneOffNeeds();
+    // Focus the name once the fade has finished: Bootstrap moves focus to the
+    // dialog itself at `shown`, which would take it away from anything focused
+    // (or being typed into) during the 150 ms transition.
+    byId("oneOffOccurrenceModal")?.addEventListener(
+      "shown.bs.modal",
+      () => {
+        byId<HTMLInputElement>("one-off-form-name")?.focus();
+      },
+      { once: true },
+    );
+    modal("oneOffOccurrenceModal")?.show();
+  }
+
+  function saveOneOff(): void {
+    const value = (id: string): string => byId<HTMLInputElement | HTMLSelectElement>(id)?.value?.trim() ?? "";
+    const needs = byId("one-off-form-needs");
+    const invalid = needs === null ? null : validateStaffingNeeds(needs);
+    if (invalid !== null) {
+      showModalError("one-off", invalid);
+
+      return;
+    }
+    show(byId("one-off-form-error"), false);
+    options
+      .addOneOff?.({
+        name: value("one-off-form-name"),
+        teamId: Number(value("one-off-form-team")),
+        date: value("one-off-form-date"),
+        startTime: value("one-off-form-start-time"),
+        endTime: value("one-off-form-end-time"),
+        requirements: needs === null ? [] : readStaffingNeeds(needs),
+      })
+      .then(() => {
+        modal("oneOffOccurrenceModal")?.hide();
+        notifySuccess(i18next.t("Occurrence added"));
+
+        return load(true);
+      })
+      .catch((error: unknown) => {
+        showModalError("one-off", errorMessage(error, i18next.t("The occurrence could not be added")));
+      });
   }
 
   // ── Selection and Delete (review, 2026-09-18) ────────────────────────────
@@ -438,6 +553,15 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
       }
     });
     byId("occurrences-delete-btn")?.addEventListener("click", deleteSelected);
+
+    if (options.addOneOff) {
+      wireModalFadeGuard("oneOffOccurrenceModal");
+      byId("occurrences-add-btn")?.addEventListener("click", () => {
+        void options.ensureContext().then(openOneOffModal);
+      });
+      byId("one-off-form-team")?.addEventListener("change", renderOneOffNeeds);
+      byId("one-off-form-save")?.addEventListener("click", saveOneOff);
+    }
   }
 
   wire();

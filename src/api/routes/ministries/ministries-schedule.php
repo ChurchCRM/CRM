@@ -87,6 +87,18 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     // The same list, keyed on the team and gated per team, so a team leader can
     // see their own schedules without being authorized for the ministry above
     // them. The Member Portal's My Teams page is the caller.
+    // A one-off occurrence: its own hidden schedule plus the one date (2026-09-18).
+    // Same gate as creating a schedule: a coordinator of the ministry, or a leader
+    // of the team the payload names.
+    $group->post('/ministries/{ministryId:[0-9]+}/occurrences', 'createVolunteerOneOffOccurrence')
+        ->add(new InputSanitizationMiddleware([
+            'name' => 'text',
+            'date' => 'date',
+            'startTime' => 'text',
+            'endTime' => 'text',
+        ]))
+        ->add(new VolunteerScheduleCreateMiddleware());
+
     $group->get('/teams/{teamId:[0-9]+}/schedules', 'listVolunteerTeamSchedules')
         ->add(new VolunteerTeamMiddleware());
 
@@ -163,6 +175,7 @@ function volunteerScheduleToArray(VolunteerSchedule $schedule): array
         : EventTypeQuery::create()->findPk((int) $schedule->getEventTypeId());
 
     return [
+        'oneOff' => (bool) $schedule->getOneOff(),
         'id' => (int) $schedule->getId(),
         'ministryId' => (int) $schedule->getMinistryId(),
         'teamId' => (int) $schedule->getTeamId(),
@@ -222,6 +235,7 @@ function volunteerOccurrenceToArray(
         'id' => (int) $occurrence->getId(),
         'scheduleId' => (int) $occurrence->getScheduleId(),
         'scheduleName' => $schedule !== null ? $schedule->getName() : null,
+        'scheduleOneOff' => $schedule !== null && (bool) $schedule->getOneOff(),
         'ministryId' => $schedule !== null ? (int) $schedule->getMinistryId() : null,
         'teamId' => $schedule !== null ? (int) $schedule->getTeamId() : null,
         'eventId' => $occurrence->getEventId() === null ? null : (int) $occurrence->getEventId(),
@@ -387,7 +401,8 @@ function listVolunteerSchedules(Request $request, Response $response): Response
     $ministry = $request->getAttribute('volunteerMinistry');
     $params = $request->getQueryParams();
 
-    $query = VolunteerScheduleQuery::create()->filterByMinistryId((int) $ministry->getId());
+    // A one-off occurrence's private schedule is never listed (2026-09-18).
+    $query = VolunteerScheduleQuery::create()->filterByMinistryId((int) $ministry->getId())->filterByOneOff(false);
 
     if (isset($params['teamId']) && $params['teamId'] !== '') {
         $query->filterByTeamId((int) $params['teamId']);
@@ -427,7 +442,7 @@ function listVolunteerTeamSchedules(Request $request, Response $response): Respo
     $team = $request->getAttribute('volunteerTeam');
     $params = $request->getQueryParams();
 
-    $query = VolunteerScheduleQuery::create()->filterByTeamId((int) $team->getId());
+    $query = VolunteerScheduleQuery::create()->filterByTeamId((int) $team->getId())->filterByOneOff(false);
 
     if (isset($params['active']) && $params['active'] !== '') {
         $query->filterByActive(filter_var($params['active'], FILTER_VALIDATE_BOOLEAN));
@@ -513,6 +528,53 @@ function createVolunteerSchedule(Request $request, Response $response): Response
  *     @OA\Response(response=200, description="OK")
  * )
  */
+/**
+ * @OA\Post(
+ *     path="/ministries/ministries/{ministryId}/occurrences",
+ *     operationId="createVolunteerOneOffOccurrence",
+ *     summary="Create a one-off occurrence",
+ *     description="A date that follows no calendar event and no recurring schedule. It gets a private schedule of its own - standalone, windowed to the one date, hidden from the Schedules tab, deleted together with the occurrence - carrying the team, the times and the staffing needs. Same gate as creating a schedule.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"name","teamId","date","startTime","endTime"},
+ *         @OA\Property(property="name", type="string"),
+ *         @OA\Property(property="teamId", type="integer"),
+ *         @OA\Property(property="date", type="string", format="date"),
+ *         @OA\Property(property="startTime", type="string", example="19:00"),
+ *         @OA\Property(property="endTime", type="string", example="20:30"),
+ *         @OA\Property(property="requirements", type="array", @OA\Items(type="object"))
+ *     )),
+ *     @OA\Response(response=400, description="Missing field, past date, or a staffing row naming an unknown position"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not a coordinator of the ministry nor a leader of the team, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry"),
+ *     @OA\Response(response=201, description="Created",
+ *         @OA\JsonContent(@OA\Property(property="occurrence", type="object"), @OA\Property(property="schedule", type="object"))
+ *     )
+ * )
+ */
+function createVolunteerOneOffOccurrence(Request $request, Response $response): Response
+{
+    $ministry = $request->getAttribute('volunteerMinistry');
+    $input = (array) $request->getParsedBody();
+
+    try {
+        $service = new VolunteerScheduleService();
+        $occurrence = $service->createOneOffOccurrence($ministry, $input, AuthenticationManager::getCurrentUser());
+    } catch (\RuntimeException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
+    }
+
+    $schedule = $service->requireSchedule($occurrence);
+
+    return SlimUtils::renderJSON($response, [
+        'occurrence' => volunteerOccurrenceToArray($occurrence, $service, $schedule, []),
+        'schedule' => volunteerScheduleToArray($schedule),
+    ], 201);
+}
+
 function getVolunteerSchedule(Request $request, Response $response): Response
 {
     $schedule = $request->getAttribute('volunteerSchedule');

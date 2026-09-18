@@ -772,3 +772,26 @@ if ($occurrenceIds !== []) {
 ```
 
 `count()` and `find()` through the same join are fine; only `delete()` (and `update()`) refuse it.
+
+## UPDATE on a freshly INSERTed object: run a Query first <!-- learned: 2026-09-18 -->
+
+Propel registers a model's table map lazily — a `XxxQuery` resolves it by PHP name and
+adds it to the `DatabaseMap`. `save()` on an existing row (an UPDATE) and `delete()` look
+the map up by TABLE name instead, which has no fallback. So an object that was only
+`new`ed and INSERTed in this request, never fetched, fails on its second `save()`:
+
+```
+Propel\Runtime\Map\Exception\TableNotFoundException: Cannot fetch TableMap for
+undefined table `volunteer_schedule_vsch` in database `default`.
+```
+
+Any Query for the model run earlier in the request (a `findPk()`, a `count()`) makes it
+work, which is why the ordinary edit paths never see it. When a service creates a row and
+then updates it, re-read it through the Query first:
+
+```php
+$created = $this->createSchedule($ministry, $fields, $actor);      // INSERT
+$schedule = VolunteerScheduleQuery::create()->findPk($created->getId()); // registers the map
+$schedule->setOneOff(true);
+$schedule->save();                                                 // UPDATE now works
+```

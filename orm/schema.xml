@@ -1259,6 +1259,9 @@
                 defaultValue="56" description="How far ahead a generation run materialises occurrences"/>
         <column name="vsch_Active" phpName="Active" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
                 required="true" defaultValue="1"/>
+        <column name="vsch_OneOff" phpName="OneOff" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
+                required="true" defaultValue="0"
+                description="A one-off occurrence's private schedule (2026-09-18): hidden from the Schedules tab, deleted with its only occurrence"/>
         <foreign-key foreignTable="volunteer_ministry_vmin" name="VolunteerScheduleMinistry" phpName="Ministry"
                      refPhpName="VolunteerSchedule" onDelete="cascade">
             <reference local="vsch_vmin_ID" foreign="vmin_ID"/>

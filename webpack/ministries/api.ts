@@ -573,6 +573,8 @@ export interface VolunteerOccurrenceSummary {
   id: number;
   scheduleId: number;
   scheduleName: string | null;
+  /** The schedule is a one-off occurrence's private, hidden one (2026-09-18). */
+  scheduleOneOff?: boolean;
   ministryId: number | null;
   teamId: number | null;
   eventId: number | null;
@@ -1061,6 +1063,25 @@ export function deleteSchedule(scheduleId: number): Promise<{ success: boolean }
 }
 
 /** Idempotent (§2.9): re-running it creates nothing that already exists. */
+/**
+ * A one-off occurrence: a date with no event and no recurring schedule behind it.
+ * The server gives it a hidden schedule of its own (team, times, staffing needs)
+ * that goes away with it.
+ */
+export function createOneOffOccurrence(
+  ministryId: number,
+  payload: {
+    name: string;
+    teamId: number;
+    date: string;
+    startTime: string;
+    endTime: string;
+    requirements: VolunteerRequirementInput[];
+  },
+): Promise<{ occurrence: VolunteerOccurrenceSummary; schedule: VolunteerSchedule }> {
+  return request(`/ministries/${ministryId}/occurrences`, { method: "POST", body: JSON.stringify(payload) });
+}
+
 /** Delete one occurrence and everything under it (assignments, responses, swaps, queued notifications). */
 export function deleteOccurrence(occurrenceId: number): Promise<{ success: boolean }> {
   return request(`/occurrences/${occurrenceId}`, { method: "DELETE" });
