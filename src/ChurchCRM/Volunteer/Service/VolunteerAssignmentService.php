@@ -108,6 +108,8 @@ class VolunteerAssignmentService
 
     private VolunteerMinistryService $ministries;
 
+    private VolunteerQualificationService $qualifications;
+
     private VolunteerScheduleService $schedules;
 
     private VolunteerNotificationService $notifications;
@@ -115,6 +117,7 @@ class VolunteerAssignmentService
     public function __construct(
         ?VolunteerAuthorizationService $authz = null,
         ?VolunteerMinistryService $ministries = null,
+        ?VolunteerQualificationService $qualifications = null,
         ?VolunteerScheduleService $schedules = null,
         ?VolunteerNotificationService $notifications = null
     ) {
@@ -123,6 +126,7 @@ class VolunteerAssignmentService
         // handing the same instances down matters, but there is nothing to wire.
         $this->authz = $authz ?? new VolunteerAuthorizationService();
         $this->ministries = $ministries ?? new VolunteerMinistryService($this->authz);
+        $this->qualifications = $qualifications ?? new VolunteerQualificationService($this->authz, $this->ministries);
         $this->schedules = $schedules ?? new VolunteerScheduleService();
         $this->notifications = $notifications ?? new VolunteerNotificationService();
         $this->logger = LoggerUtils::getAppLogger();
@@ -1107,7 +1111,7 @@ class VolunteerAssignmentService
      * Three things, in ONE transaction, in this order:
      *
      *   1. every ACTIVE qualification they hold for a position of this ministry is
-     *      revoked through `VolunteerMinistryService::revokeQualification()`, so §2.7's
+     *      revoked through `VolunteerQualificationService::revokeQualification()`, so §2.7's
      *      "revocation is deactivation" still holds and the grant history survives;
      *   2. every LIVE assignment of theirs on a still-to-come occurrence of this
      *      ministry is cancelled through `cancel()` — the ordinary status-change path,
@@ -1151,7 +1155,7 @@ class VolunteerAssignmentService
             );
 
         $qualifications = array_filter(
-            $this->ministries->listQualificationsForPerson($personId, [$ministryId]),
+            $this->qualifications->listQualificationsForPerson($personId, [$ministryId]),
             static fn ($qualification): bool => (bool) $qualification->getActive()
         );
 
@@ -1160,7 +1164,7 @@ class VolunteerAssignmentService
 
         try {
             foreach ($qualifications as $qualification) {
-                $this->ministries->revokeQualification($qualification, $actor);
+                $this->qualifications->revokeQualification($qualification, $actor);
             }
 
             foreach ($assignments as $assignment) {
@@ -1347,7 +1351,7 @@ class VolunteerAssignmentService
     {
         $schedule = $this->schedules->requireSchedule($occurrence);
 
-        $qualifiedIds = $this->ministries->getQualifiedPersonIds((int) $position->getId());
+        $qualifiedIds = $this->qualifications->getQualifiedPersonIds((int) $position->getId());
         if ($qualifiedIds === []) {
             return [];
         }
@@ -1599,7 +1603,7 @@ class VolunteerAssignmentService
     private function activePositionsFor(int $personId): array
     {
         $positionIds = [];
-        foreach ($this->ministries->listQualificationsForPerson($personId) as $qualification) {
+        foreach ($this->qualifications->listQualificationsForPerson($personId) as $qualification) {
             if ($qualification->getActive()) {
                 $positionIds[(int) $qualification->getPositionId()] = true;
             }
@@ -2031,7 +2035,7 @@ class VolunteerAssignmentService
      */
     private function assertQualified(int $personId, VolunteerPosition $position): void
     {
-        $qualification = $this->ministries->findQualification($personId, (int) $position->getId());
+        $qualification = $this->qualifications->findQualification($personId, (int) $position->getId());
 
         if ($qualification === null || !$qualification->getActive()) {
             throw VolunteerException::forbidden(gettext('That person is not qualified for this position'));

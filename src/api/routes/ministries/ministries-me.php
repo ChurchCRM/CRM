@@ -15,6 +15,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerSwapQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
+use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -507,8 +508,7 @@ function listMyVolunteerQualifications(Request $request, Response $response): Re
 {
     $personId = (int) AuthenticationManager::getCurrentUser()->getId();
 
-    $ministries = new VolunteerMinistryService();
-    $qualifications = $ministries->listQualificationsForPerson($personId);
+    $qualifications = (new VolunteerQualificationService())->listQualificationsForPerson($personId);
 
     $positionIds = [];
     foreach ($qualifications as $qualification) {

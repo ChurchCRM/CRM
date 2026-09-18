@@ -17,6 +17,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
+use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
 use ChurchCRM\Volunteer\Middleware\VolunteerMinistryMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerPositionMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerQualificationMiddleware;
@@ -1475,7 +1476,7 @@ function volunteerSetupMemberRows(
     array $positionIds
 ): array {
     $membership = $service->getPoolMembership($ministryId, $teamId);
-    $qualifications = $service->getQualificationsByPerson($positionIds);
+    $qualifications = (new VolunteerQualificationService($service->getAuthorizationService(), $service))->getQualificationsByPerson($positionIds);
 
     $personIds = array_values(array_unique(array_merge(
         array_map('intval', array_keys($membership)),
@@ -1918,7 +1919,7 @@ function listVolunteerQualifications(Request $request, Response $response): Resp
     /** @var VolunteerPosition $position */
     $position = $request->getAttribute('volunteerPosition');
 
-    $service = new VolunteerMinistryService();
+    $service = new VolunteerQualificationService();
     $qualifications = $service->listQualifications(
         (int) $position->getId(),
         volunteerSetupActiveFilter($request)
@@ -1971,7 +1972,7 @@ function grantVolunteerQualification(Request $request, Response $response): Resp
     $body = (array) $request->getParsedBody();
     $personId = (int) ($body['personId'] ?? 0);
 
-    $service = new VolunteerMinistryService();
+    $service = new VolunteerQualificationService();
     // Asked BEFORE the write, which is the only moment the answer exists: the
     // grant itself is an upsert (ministries-scopes.php takes the same shape).
     $existing = $service->findQualification($personId, (int) $position->getId());
@@ -2024,7 +2025,7 @@ function revokeVolunteerQualification(Request $request, Response $response): Res
     $qualification = $request->getAttribute('volunteerQualification');
 
     try {
-        $qualification = (new VolunteerMinistryService())->revokeQualification(
+        $qualification = (new VolunteerQualificationService())->revokeQualification(
             $qualification,
             volunteerSetupActor()
         );
@@ -2065,7 +2066,7 @@ function listVolunteerQualificationsForPerson(Request $request, Response $respon
 {
     $personId = (int) SlimUtils::getRouteArgument($request, 'personId');
 
-    $service = new VolunteerMinistryService();
+    $service = new VolunteerQualificationService();
     $authz = $service->getAuthorizationService();
     $actor = volunteerSetupActor();
 

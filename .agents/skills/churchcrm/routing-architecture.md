@@ -726,7 +726,9 @@ The coordinator area of Volunteer Management v2 is the `src/ministries/` module
 `/ministries/occurrences/{id}`. Its API is `/api/ministries/*` (route files under
 `src/api/routes/ministries/`, each opening `$app->group('/ministries', …)`; the member surface is
 `/api/ministries/me/*`). There is no `/volunteer` module and no redirects from one: nothing
-under it ever shipped. The webpack bundles keep their `volunteer-*` names. A new module
+under it ever shipped. The PHP for the whole feature is under `src/ChurchCRM/Volunteer/`
+(`Service/`, `Middleware/`, `Email/`, `VolunteerException`), not spread over `Service/`,
+`Slim/Middleware/*` and `Emails/`. The webpack bundles keep their `volunteer-*` names. A new module
 directory needs its own `.htaccess` (copy `src/fundraiser/.htaccess`): the root rewrite
 passes a real directory through, and the module's own rule sends everything to its
 `index.php`.
