@@ -184,7 +184,7 @@ $("#myTable").DataTable(config);
 
 Guard the teardown with `$.fn.dataTable.isDataTable(selector)`; calling
 `.DataTable().destroy()` on a plain table re-initialises it as a side effect.
-Live example: `webpack/volunteer/ministry.ts` (`destroyDataTable` / `initDataTable`).
+Live example: `webpack/ministries/ministry.ts` (`destroyDataTable` / `initDataTable`).
 
 ## Asset Paths (SystemURLs)
 

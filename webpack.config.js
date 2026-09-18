@@ -110,11 +110,11 @@ module.exports = {
     'event-editor': './webpack/event-editor',
     'event-types-list': './webpack/event-types-list',
     'event-cart-to-event': './webpack/event-cart-to-event',
-    'volunteer-dashboard': './webpack/volunteer/dashboard',
-    'volunteer-ministry': './webpack/volunteer/ministry',
-    'volunteer-occurrence': './webpack/volunteer/occurrence',
-    'volunteer-my-schedule': './webpack/volunteer/my-schedule',
-    'volunteer-opportunities': './webpack/volunteer/opportunities',
+    'ministries-dashboard': './webpack/ministries/dashboard',
+    'ministries-ministry': './webpack/ministries/ministry',
+    'ministries-occurrence': './webpack/ministries/occurrence',
+    'portal-volunteer-schedule': './webpack/portal/volunteer-schedule',
+    'portal-volunteer-opportunities': './webpack/portal/volunteer-opportunities',
     'email-composer': './webpack/common/email-composer',
     // Member Portal: its own CSS/JS bundle, never part of the RTL-flipped core
     // bundle, so a church theme is not flipped twice (design §3.5).
@@ -126,8 +126,8 @@ module.exports = {
     // Member Portal calendar (#9866): FullCalendar for /portal/calendar. Its own
     // entry so the tiny `portal` bundle every page loads stays tiny.
     'portal-calendar': './webpack/portal/portal-calendar.ts',
-    // My Teams (#9868): the team page's four tabs, drawn by the shared volunteer
-    // components. The occurrence page reuses `volunteer-occurrence` unchanged.
+    // My Teams (#9868): the team page's four tabs, drawn by the shared ministries
+    // components. The occurrence page reuses `ministries-occurrence` unchanged.
     'portal-teams': './webpack/portal/teams.ts',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',

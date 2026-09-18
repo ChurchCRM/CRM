@@ -15,7 +15,7 @@
  * has finished, so anything user-visible waits for onLocalesReady.
  */
 import { ensureCrmHelpers } from "../common/crm-helpers";
-import { formatWhat, formatWhen } from "../volunteer/member-ui";
+import { formatWhat, formatWhen } from "./member-ui";
 import { type PortalToastType, portalToast, wireRenderedToasts } from "./portal-toast";
 import "./portal.scss";
 

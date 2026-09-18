@@ -42,7 +42,7 @@ use Slim\Routing\RouteCollectorProxy;
  *                                       not inherited: Slim scopes ->add() to the
  *                                       single RouteCollectorProxy it is chained
  *                                       on, so nothing propagates from the group
- *                                       in volunteer-status.php, and an ungated
+ *                                       in ministries-status.php, and an ungated
  *                                       group would answer in every rollout state.
  *   VolunteerCoordinatorRoleAuthMiddleware  on the inner group — "do you coordinate
  *                                       anything at all".
@@ -70,7 +70,7 @@ use Slim\Routing\RouteCollectorProxy;
  *
  * #9707 added the pool and qualification routes to this file, in their own
  * blocks below the position block; #9708 opens its own group in
- * volunteer-schedule.php.
+ * ministries-schedule.php.
  */
 $app->group('/ministries', function (RouteCollectorProxy $group): void {
     $group->group('', function (RouteCollectorProxy $setup): void {
@@ -1973,7 +1973,7 @@ function grantVolunteerQualification(Request $request, Response $response): Resp
 
     $service = new VolunteerSetupService();
     // Asked BEFORE the write, which is the only moment the answer exists: the
-    // grant itself is an upsert (volunteer-scopes.php takes the same shape).
+    // grant itself is an upsert (ministries-scopes.php takes the same shape).
     $existing = $service->findQualification($personId, (int) $position->getId());
 
     try {

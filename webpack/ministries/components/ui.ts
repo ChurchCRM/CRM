@@ -1,7 +1,7 @@
 /**
  * The small UI primitives the Volunteer v2 screens share (#9868).
  *
- * Every function here was lifted VERBATIM out of `webpack/volunteer/ministry.ts`
+ * Every function here was lifted VERBATIM out of `webpack/ministries/ministry.ts`
  * when the Member Portal's My Teams page (MP7) needed the same tables, dialogs
  * and state machine in the portal layout. Nothing about their behaviour changed
  * in the move — the admin ministry page's own Cypress specs are the proof — and

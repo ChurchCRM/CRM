@@ -3,7 +3,7 @@
  *
  * Four tabs — **Positions · Volunteers · Schedules · Dates** — narrowed to the one
  * team the page is about, and drawn by the SAME components the admin ministry page
- * draws (`webpack/volunteer/components/*`). There is no second implementation of
+ * draws (`webpack/ministries/components/*`). There is no second implementation of
  * the qualification grid, the positions table, the schedule dialog or the
  * occurrence list anywhere in this file; what is here is the CONTEXT those
  * components are missing — which team, which ministry, which endpoints, and where
@@ -44,15 +44,15 @@ import {
   listTeamSchedules,
   type VolunteerPosition,
   type VolunteerTeam,
-} from "../volunteer/api";
-import { createOccurrencesTable, type OccurrencesTableHandle } from "../volunteer/components/occurrences-table";
-import { createPositionsTable, type PositionsTableHandle } from "../volunteer/components/positions-table";
+} from "../ministries/api";
+import { createOccurrencesTable, type OccurrencesTableHandle } from "../ministries/components/occurrences-table";
+import { createPositionsTable, type PositionsTableHandle } from "../ministries/components/positions-table";
 import {
   createQualificationMatrix,
   type QualificationMatrixHandle,
-} from "../volunteer/components/qualification-matrix";
-import { createSchedulesTable, type SchedulesTableHandle } from "../volunteer/components/schedules-table";
-import { byId, renderState } from "../volunteer/components/ui";
+} from "../ministries/components/qualification-matrix";
+import { createSchedulesTable, type SchedulesTableHandle } from "../ministries/components/schedules-table";
+import { byId, renderState } from "../ministries/components/ui";
 
 /** The page config `teams/team.html.twig` writes in its inline script. */
 interface PortalTeamConfig {

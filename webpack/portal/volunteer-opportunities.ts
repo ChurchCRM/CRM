@@ -31,7 +31,7 @@ import {
   signUpForOpportunity,
   type VolunteerHelpWantedMinistry,
   type VolunteerMyOpportunity,
-} from "./api";
+} from "../ministries/api";
 import {
   byId,
   confirmAction,

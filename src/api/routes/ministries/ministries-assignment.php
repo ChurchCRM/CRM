@@ -38,7 +38,7 @@ use Slim\Routing\RouteCollectorProxy;
  * The coordinator surface: the staffing workhorse, the eligible picker, assign, the
  * status changes (including recording a response on a volunteer's behalf), cancel,
  * re-notify, the gap list and the swap queue. The volunteer's own four
- * endpoints live in `volunteer-me.php`, which carries no role gate at all — mixing the
+ * endpoints live in `ministries-me.php`, which carries no role gate at all — mixing the
  * two surfaces in one file is exactly how a `personId` parameter ends up somewhere it
  * must never be (§3.3.3, §4.7).
  *
@@ -51,7 +51,7 @@ use Slim\Routing\RouteCollectorProxy;
  * **This group opens its own `$app->group('/ministries', …)` and chains
  * `VolunteerV2EnabledMiddleware` itself.** Slim 4 scopes `->add()` to the single
  * `RouteCollectorProxy` it is chained on; nothing propagates from the group in
- * `volunteer-status.php` or `volunteer-schedule.php`, and an ungated group would be
+ * `ministries-status.php` or `ministries-schedule.php`, and an ungated group would be
  * reachable in every rollout state (§3.3).
  *
  * Middleware order is LIFO — the last `->add()` runs first. On every route:
@@ -114,12 +114,12 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     // per-person act with per-person eligibility rules (I1-I5), and a button that
     // half-succeeded and reported a list of reasons was a worse answer than the
     // single-person Assign flow beside it. The Cart still feeds V2 — it fills the
-    // ministry's volunteer POOL (`/ministries/{id}/pool/from-cart`, volunteer-setup.php).
+    // ministry's volunteer POOL (`/ministries/{id}/pool/from-cart`, ministries-setup.php).
 })->add(VolunteerCoordinatorRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
 
 // ─── Wire shapes ─────────────────────────────────────────────────────────────
 //
-// One array per entity, shared by every handler below (and by volunteer-me.php) so a
+// One array per entity, shared by every handler below (and by ministries-me.php) so a
 // field can never be spelled two ways across the two surfaces. Names that would need a
 // query per row are passed in from a single lookup instead.
 

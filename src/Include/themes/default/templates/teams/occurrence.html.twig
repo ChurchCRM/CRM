@@ -5,8 +5,8 @@
   Member Portal design §5.5, volunteer design §5.5).
 
   The portal twin of `/ministries/occurrences/{id}`. **The bundle is the admin
-  page's, unchanged**: `skin/v2/volunteer-occurrence.min.js` is
-  `webpack/volunteer/occurrence.ts`, which was already page-agnostic — it names no
+  page's, unchanged**: `skin/v2/ministries-occurrence.min.js` is
+  `webpack/ministries/occurrence.ts`, which was already page-agnostic — it names no
   ministry, reads its whole world from `window.CRM.volunteerOccurrence` and
   `/api/ministries/occurrences/{id}/*`, and addresses its markup by id. So nothing
   had to be extracted from it for this page to exist; only the chrome moved, which
@@ -229,7 +229,7 @@
 
 {#
   The staffing-needs editor (§2.10). The same position/checkbox/Min/Max rows the
-  schedule form draws — one shared module, `webpack/volunteer/staffing-needs.ts`.
+  schedule form draws — one shared module, `webpack/ministries/staffing-needs.ts`.
   Saving writes occurrence-level OVERRIDE rows; "Use the schedule's needs" deletes
   them so this date follows its schedule again.
 #}
@@ -275,5 +275,5 @@ window.CRM.volunteerOccurrence = {
     eventId: {{ occurrence.eventId }}
 };
 </script>
-<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/volunteer-occurrence.min.js') }}"></script>
+<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/ministries-occurrence.min.js') }}"></script>
 {% endblock %}

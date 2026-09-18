@@ -11,7 +11,7 @@ use ChurchCRM\Utils\InputUtils;
  * (design §4.6), and `POST /api/ministries/ministries` enforces that independently
  * — the markup being absent is a courtesy, not the control (D5).
  *
- * Behaviour lives in webpack/volunteer/ministry-create.ts, which the dashboard
+ * Behaviour lives in webpack/ministries/ministry-create.ts, which the dashboard
  * bundle imports; every JS-side string is `i18next.t()` there, because an
  * `i18next.t()` call inside a .php file is scanned by no extractor (§5.10, F31).
  */

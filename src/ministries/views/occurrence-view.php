@@ -11,7 +11,7 @@ use ChurchCRM\Utils\InputUtils;
  * (groups-mvc-guidelines.md).
  *
  * Every string is `gettext()`. The JS strings live in
- * `webpack/volunteer/occurrence.ts`, because an `i18next.t()` call inside a `.php` file
+ * `webpack/ministries/occurrence.ts`, because an `i18next.t()` call inside a `.php` file
  * is scanned by neither the PHP nor the JS extractor and is silently never translated
  * (design §5.10, F31).
  *
@@ -272,7 +272,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!--
   The staffing-needs editor (§2.10). The same position/checkbox/Min/Max rows the schedule
-  form draws — one shared module, `webpack/volunteer/staffing-needs.ts`, so a Max-below-Min
+  form draws — one shared module, `webpack/ministries/staffing-needs.ts`, so a Max-below-Min
   rule cannot be enforced on one screen and not the other.
 
   Saving writes occurrence-level OVERRIDE rows; "Use the schedule's needs" deletes them so
@@ -320,7 +320,7 @@ window.CRM.volunteerOccurrence = {
   eventId: <?= (int) $iEventId ?>
 };
 </script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/volunteer-occurrence.min.js') ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-occurrence.min.js') ?>"></script>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

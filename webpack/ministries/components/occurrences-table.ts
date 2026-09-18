@@ -2,7 +2,7 @@
  * The Occurrences tab — the upcoming weeks with their derived gap counts, and a
  * link into the staffing view (#9709, design §5.5 entry point).
  *
- * Extracted verbatim from `webpack/volunteer/ministry.ts` for #9868 so the Member
+ * Extracted verbatim from `webpack/ministries/ministry.ts` for #9868 so the Member
  * Portal's My Teams page lists a team leader's own occurrences with the same
  * search form and the same badges.
  *

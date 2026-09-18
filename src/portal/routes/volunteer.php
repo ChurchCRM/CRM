@@ -14,7 +14,7 @@ use Slim\Exception\HttpNotFoundException;
  * rendered by `src/volunteer/routes/member.php` into the ADMIN shell — which is
  * exactly the thing the portal exists to stop a member ever seeing. Only the
  * chrome moved: the templates reproduce the container ids the two existing
- * bundles look for, and `webpack/volunteer/{my-schedule,opportunities,member-ui}.ts`
+ * bundles look for, and `webpack/ministries/{my-schedule,opportunities,member-ui}.ts`
  * and `/api/ministries/me/*` are untouched.
  *
  * **No role gate here either, and for the same reason as before** (volunteer

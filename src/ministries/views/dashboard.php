@@ -338,7 +338,7 @@ window.CRM.volunteerDashboard = {
   isManager: <?= $bIsManager ? 'true' : 'false' ?>
 };
 </script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/volunteer-dashboard.min.js') ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-dashboard.min.js') ?>"></script>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

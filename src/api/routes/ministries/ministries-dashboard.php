@@ -35,8 +35,8 @@ use Slim\Routing\RouteCollectorProxy;
  * owns no business rules: gaps come from `VolunteerAssignmentService::getOpenGaps()`,
  * the single gap implementation (§2.11.3); times come from
  * `VolunteerScheduleService::resolveOccurrenceWindow()`, the one method allowed to
- * decide them (D4); the wire shapes are the ones `volunteer-schedule.php` and
- * `volunteer-assignment.php` already declare, reused verbatim so a field cannot be
+ * decide them (D4); the wire shapes are the ones `ministries-schedule.php` and
+ * `ministries-assignment.php` already declare, reused verbatim so a field cannot be
  * spelled two ways across surfaces.
  *
  * **Scoping happens in the QUERY** (§4.4). `volunteerScopedOccurrenceIds()` — the helper
@@ -125,7 +125,7 @@ function getVolunteerDashboard(Request $request, Response $response): Response
     $to = (clone $today)->modify('+' . $days . ' days')->format('Y-m-d');
 
     // One scoped allow-list; every panel below is derived from it. `volunteerScopedOccurrenceIds()`
-    // is #9709's helper in volunteer-assignment.php — the dashboard does not re-derive scope.
+    // is #9709's helper in ministries-assignment.php — the dashboard does not re-derive scope.
     $occurrenceIds = volunteerDashboardActiveOnly(
         volunteerScopedOccurrenceIds($currentUser, $authz, $from, $to)
     );

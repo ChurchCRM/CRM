@@ -2,7 +2,7 @@
  * The qualification matrix — people down the side, positions across the top, a
  * checkbox in every cell (#9707, design §5.4).
  *
- * Extracted verbatim from `webpack/volunteer/ministry.ts` for #9868 so the Member
+ * Extracted verbatim from `webpack/ministries/ministry.ts` for #9868 so the Member
  * Portal's My Teams page draws the same grid, with the same optimistic ticks, the
  * same tick-save toasts and the same horizontal-scroll / unclipped-menu rules, in
  * the portal layout. The only thing that differs between the two callers is the

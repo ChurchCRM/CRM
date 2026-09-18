@@ -36,7 +36,7 @@ import {
   type VolunteerEligiblePerson,
   type VolunteerMyAssignment,
   withdrawMySwap,
-} from "./api";
+} from "../ministries/api";
 import {
   byId,
   confirmAction,

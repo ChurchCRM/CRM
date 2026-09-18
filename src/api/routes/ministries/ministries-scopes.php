@@ -31,7 +31,7 @@ use Slim\Routing\RouteCollectorProxy;
  *
  * This group chains VolunteerV2EnabledMiddleware itself. Slim 4 scopes ->add() to the one
  * RouteCollectorProxy it is chained on, so nothing propagates from the group in
- * volunteer-status.php; an ungated group would be reachable in every rollout state.
+ * ministries-status.php; an ungated group would be reachable in every rollout state.
  *
  * Middleware order is LIFO — the last ->add() runs first — so on the scope group the
  * rollout gate answers before the role gate, and the sanitizer runs last, once the caller

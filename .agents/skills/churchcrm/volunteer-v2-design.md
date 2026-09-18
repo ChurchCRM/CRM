@@ -1352,22 +1352,22 @@ collections, **kebab-case** for multi-word, `{id:[0-9]+}` regex constraints on n
 Registered by adding three `require` lines to `src/api/index.php` next to the existing 36:
 
 ```php
-require __DIR__ . '/routes/ministries/volunteer-setup.php';
-require __DIR__ . '/routes/ministries/volunteer-schedule.php';
-require __DIR__ . '/routes/ministries/volunteer-me.php';
+require __DIR__ . '/routes/ministries/ministries-setup.php';
+require __DIR__ . '/routes/ministries/ministries-schedule.php';
+require __DIR__ . '/routes/ministries/ministries-me.php';
 ```
 
 > **Every one of those files opens its own `$app->group('/volunteer', …)` and must chain
 > `->add(new VolunteerV2EnabledMiddleware())` on that group itself.** Slim 4 scopes `->add()` to the
 > single `RouteCollectorProxy` it is chained on; nothing propagates from the group in
-> `volunteer-status.php` (#9704) to a group opened in another file, and an ungated group would be
+> `ministries-status.php` (#9704) to a group opened in another file, and an ungated group would be
 > reachable in every rollout state. The role middleware from #9706 is chained the same way.
 
 All responses are `SlimUtils::renderJSON()` envelopes; all errors are
 `SlimUtils::renderErrorJSON($response, gettext('…'), [], <status>, $e, $request)` — the single
 error contract that E-18 (#9737) establishes; see M5 for why there is no phrasing constraint.
 
-#### 3.3.1 Setup surface — `volunteer-setup.php`
+#### 3.3.1 Setup surface — `ministries-setup.php`
 
 | Method | Path | Purpose | Auth | Request → Response |
 |---|---|---|---|---|
@@ -1398,7 +1398,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | POST | `/api/ministries/scopes` | grant coordinator / team-leader authority | **Manager** (ministry scope) or coordinator of the ministry (team scope) | `{personId,scopeType,scopeId}` → `201`; idempotent |
 | DELETE | `/api/ministries/scopes/{scopeId}` | revoke | same as grant | `200` |
 
-#### 3.3.2 Schedule, occurrence and assignment surface — `volunteer-schedule.php`
+#### 3.3.2 Schedule, occurrence and assignment surface — `ministries-schedule.php`
 
 | Method | Path | Purpose | Auth | Request → Response |
 |---|---|---|---|---|
@@ -1427,7 +1427,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | GET | `/api/ministries/gaps` | gaps across the caller's scope | Coordinator / Team Leader | `from`,`to` required → `{gaps:[{occurrenceId,start,positionId,positionName,gapCount}]}` |
 | ~~POST~~ | ~~`/api/ministries/cart/assign`~~ | **RETIRED** with S4's "Assign everyone in the cart" button (§5.5). Assigning is a per-person act with per-person rules (I1–I5), so the batch half-succeeded and answered with a list of reasons — worse than the single-person picker beside it, which can only offer assignable people. `VolunteerAssignmentService::assignFromCart()` is removed with it | — | — |
 
-#### 3.3.3 Member surface — `volunteer-me.php`
+#### 3.3.3 Member surface — `ministries-me.php`
 
 Every route derives the acting person from `AuthenticationManager::getCurrentUser()->getId()`.
 **No endpoint on this surface accepts a `personId` parameter** — that is how #9712's "unauthorized
@@ -2219,25 +2219,25 @@ Sunday.
 
 | # | Screen | Route | Gate | Bundle |
 |---|---|---|---|---|
-| S1 | Coordinator dashboard — "what needs my attention" | `/ministries/dashboard` | Coordinator | `volunteer-dashboard` |
+| S1 | Coordinator dashboard — "what needs my attention" | `/ministries/dashboard` | Coordinator | `ministries-dashboard` |
 | S2 | ~~Setup flow (guided)~~ **removed** — see §5.3 | — | — | — |
 | S2b | ~~My ministries and teams (the module index)~~ **removed** — the sidebar's **Ministries** heading lists the same ministries (§5.0), and `/ministries` 302s to S1. Its "New ministry" button lives on S1 | — | — | — |
-| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, help wanted | `/ministries/{id}` | scope | `volunteer-ministry` |
-| S4 | Occurrence / staffing view | `/ministries/occurrences/{id}` | scope | `volunteer-occurrence` |
+| S3 | Ministry detail — overview, volunteers, positions, schedules, occurrences, help wanted | `/ministries/{id}` | scope | `ministries-ministry` |
+| S4 | Occurrence / staffing view | `/ministries/occurrences/{id}` | scope | `ministries-occurrence` |
 | S5 | My schedule (member) | `/portal/volunteer/schedule` | authenticated person | `volunteer-my-schedule` |
 | S6 | Open opportunities (member) | `/portal/volunteer/opportunities` | authenticated person | `volunteer-opportunities` |
 
 Webpack entries are **bare, module-prefixed keys** mapping to `src/skin/v2/<key>.min.js`
 (`webpack.config.js:72-119`); views include them with
-`<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/volunteer-dashboard.min.js') ?>"></script>`.
+`<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-dashboard.min.js') ?>"></script>`.
 Four existing views skip the nonce and the versioning — do not copy them.
 
 **S5 and S6 are Member Portal pages** since #9867 (Member Portal design §5.4, P15). Their PHP views
 are gone; the pages are the Twig templates `volunteer/schedule.html.twig` and
 `volunteer/opportunities.html.twig` in `src/Include/themes/default/templates/`, which reproduce the
 same container ids and load the same two bundles with
-`<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/volunteer-my-schedule.min.js') }}"></script>`.
-`webpack/volunteer/{my-schedule,opportunities,member-ui}.ts` and `/api/ministries/me/*` did not
+`<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/portal-volunteer-schedule.min.js') }}"></script>`.
+`webpack/ministries/{my-schedule,opportunities,member-ui}.ts` and `/api/ministries/me/*` did not
 change. Inside the portal the two pages are one nav entry, **Volunteering**, with a secondary tab
 bar between them; the `.volunteer-touch-target` rules the two views carried inline moved to
 `src/skin/scss/_portal-volunteer.scss` and ship in `portal.min.css`.
@@ -3140,7 +3140,7 @@ consume it. This is #9703 deliverable 8.
 | `webpack/common/person-select.ts` *(core, CR1)* | No shared person selector exists; four independent TomSelect instantiations with two class conventions (F13). | CR1 → #9707, #9709, #9711, #9712 |
 | `buildActionMenu()` in `CRMJSOM.js` *(core, CR2)* | No generic builder; three renderers sharing 22 verbatim lines (person↔family 48 of 58 identical) plus 35 hand-built dropdown triggers in 25 files (re-counted at `a22e68128`). #9709 forbids a Volunteer-only action-menu framework. | CR2 → #9711 |
 | `window.CRM.confirmAction()` *(core, CR3, optional)* | 47 `bootbox.confirm` literals in 32 files. | CR3 → #9709, #9711, #9712 |
-| Six webpack entries (`volunteer-dashboard`, `-ministries`, `-ministry`, `-occurrence`, `-my-schedule`, `-opportunities`) | One per screen, matching the module-prefixed bare-key convention. | #9711, #9712, #9715 |
+| Six webpack entries (`ministries-dashboard`, `-ministries`, `-ministry`, `-occurrence`, `-my-schedule`, `-opportunities`) | One per screen, matching the module-prefixed bare-key convention. | #9711, #9712, #9715 |
 
 **Nothing else is new.** No new UI framework, no new bulk-selection system, no second roster, no
 second person picker, no second calendar, no second messaging stack, no second authorization system,

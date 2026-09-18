@@ -35,7 +35,7 @@ use Slim\Routing\RouteCollectorProxy;
  * Volunteer Management V2 API — schedules, occurrences and staffing requirements (#9708).
  *
  * The schedule half of design §3.3.2. Assignments and the staffing workhorse
- * (`/occurrences/{id}/staffing`, `/eligible`, `/assignments`) live in `volunteer-assignment.php`
+ * (`/occurrences/{id}/staffing`, `/eligible`, `/assignments`) live in `ministries-assignment.php`
  * (#9709).
  *
  * The derived `liveCount` / `gapCount` / `openCount` / `pendingCount` columns of the occurrence
@@ -45,7 +45,7 @@ use Slim\Routing\RouteCollectorProxy;
  *
  * This group chains `VolunteerV2EnabledMiddleware` and the coordinator role gate itself:
  * Slim 4 scopes `->add()` to the single RouteCollectorProxy it is chained on, so nothing
- * propagates from the groups opened in volunteer-status.php or volunteer-scopes.php, and an
+ * propagates from the groups opened in ministries-status.php or ministries-scopes.php, and an
  * ungated group would be reachable in every rollout state.
  *
  * Middleware order is LIFO — the last `->add()` runs first. On every route the order is

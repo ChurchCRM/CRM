@@ -283,7 +283,7 @@ delegated row-action click handler keep working.
 ```
 
 ```ts
-// webpack/volunteer/ministry.ts — wireUnclippedRowMenus()
+// webpack/ministries/ministry.ts — wireUnclippedRowMenus()
 wrapper.addEventListener("shown.bs.dropdown", (event) => {
   // Bootstrap fires dropdown events on the TOGGLE, not on the `.dropdown` wrapper.
   const node = event.target as HTMLElement | null;

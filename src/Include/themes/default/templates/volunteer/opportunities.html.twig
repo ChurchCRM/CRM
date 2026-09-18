@@ -12,12 +12,12 @@
   eligibility, and the server re-validates at signup (§3.3.3, D5), so the button is
   never a trap.
 
-  Both card lists are rendered by `webpack/volunteer/opportunities.ts` from ONE
+  Both card lists are rendered by `webpack/portal/volunteer-opportunities.ts` from ONE
   markup builder (`memberCardHtml`), so the two sections read as one page rather
   than two features. The "nothing open" card below is the static third instance of
   that same shape — when the builder changes, change this block with it.
 
-  Every id below is one `webpack/volunteer/opportunities.ts` looks for: the bundle
+  Every id below is one `webpack/portal/volunteer-opportunities.ts` looks for: the bundle
   did not change when the page moved (P15), so none of them may be renamed here.
   What DID change is the markup inside them — `#opportunities-empty` is no longer a
   Tabler `.empty` block but a card in the availability list, carrying the page's only
@@ -102,5 +102,5 @@
 {% endblock %}
 
 {% block scripts_extra %}
-<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/volunteer-opportunities.min.js') }}"></script>
+<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/portal-volunteer-opportunities.min.js') }}"></script>
 {% endblock %}

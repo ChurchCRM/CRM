@@ -5,7 +5,7 @@
   design §5.4, volunteer design §5.6).
 
   Markup only, and deliberately the SAME markup the retired PHP view carried:
-  every id below is one `webpack/volunteer/my-schedule.ts` looks for
+  every id below is one `webpack/portal/volunteer-schedule.ts` looks for
   (`#volunteer-my-schedule` is its init guard, `assignments-*` is the §5.8 state
   machine, and the `substitute-*` ids are the "Find a sub" dialog). The bundle is
   unchanged by this move — that is the whole point of P15 — so nothing here may be
@@ -107,5 +107,5 @@
 {% endblock %}
 
 {% block scripts_extra %}
-<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/volunteer-my-schedule.min.js') }}"></script>
+<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/portal-volunteer-schedule.min.js') }}"></script>
 {% endblock %}

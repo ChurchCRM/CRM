@@ -145,7 +145,7 @@ Verified 2026-09-15/16 on `feature/volunteer-v2-integration` (2d43e432b); file:l
 | Family verification | `Token`, `/external/verify`, `family-verify` bundle | **Reuse the token and the note, replace the page** | The portal's "Confirm your family details" writes the same `verify` note, so staff review is unchanged. |
 | Person / family edit | `/api/person`, `/api/family` (writes behind `EditRecords`) | **Do not reuse for writes** | New `/api/portal/me/*` endpoints with the field allow-list of §5.2. |
 | Calendar | `PublicCalendarMiddleware::getEvents()` logic, `external-calendar` bundle | **Reuse the event query, new gate** | `GET /api/portal/calendar/events` returns events of portal-visible calendars for the session; no access token in the URL. |
-| Volunteer member pages | `webpack/volunteer/{my-schedule,opportunities,member-ui}.ts`, `/api/ministries/me/*` | **Reuse bundles and API; replace the PHP views with Twig** | §5.4. |
+| Volunteer member pages | `webpack/ministries/{my-schedule,opportunities,member-ui}.ts`, `/api/ministries/me/*` | **Reuse bundles and API; replace the PHP views with Twig** | §5.4. |
 | Team-scoped ministry management | `VolunteerAuthorizationService` (`canManageTeam`, `getManagedTeamIds`), team-level APIs | **Reuse** | The scope model already narrows at query level; only the short-circuit for self-service accounts goes (P17). |
 | Church identity | `ChurchMetaData` | **Reuse** | Exposed to every template as `church`. |
 | Plugins in the portal | `PluginManager::getPluginHeadContent()`, `Hooks` | **Reuse + one new hook** | `Hooks::PORTAL_NAV_BUILDING` lets a plugin add a portal nav item. |
@@ -612,7 +612,7 @@ what does not:
 |---|---|---|
 | Route file | `src/volunteer/routes/member.php` | `src/portal/routes/volunteer.php` |
 | Page chrome | PHP views requiring `Include/Header.php` (admin shell) | Twig templates `volunteer/schedule.html.twig`, `volunteer/opportunities.html.twig` extending the portal layout, providing the same container ids |
-| Rendering logic | `webpack/volunteer/my-schedule.ts`, `opportunities.ts`, `member-ui.ts` | **unchanged**; the templates load the same two bundles |
+| Rendering logic | `webpack/portal/volunteer-schedule.ts`, `opportunities.ts`, `member-ui.ts` | **unchanged**; the templates load the same two bundles |
 | API | `/api/ministries/me/*` | **unchanged** |
 | Old URLs | — | 302 to the new ones for one release |
 | Admin sidebar | "Volunteer" heading with the two items | **removed** (P16) |
@@ -665,7 +665,7 @@ here rather than left for the next reader to rediscover:
 4. **Nothing had to be extracted from `occurrence.ts`.** It was already page-agnostic: it names no
    ministry, reads its world from `window.CRM.volunteerOccurrence` and `/api/ministries/occurrences/*`,
    and addresses its markup by id. `teams/occurrence.html.twig` reproduces those ids and loads
-   `volunteer-occurrence.min.js` unchanged — the same move P15 made for the two member pages. The
+   `ministries-occurrence.min.js` unchanged — the same move P15 made for the two member pages. The
    one difference is that the linked calendar event is NAMED but not LINKED, because
    `/event/view/{id}` is an admin-shell page a member would be bounced away from.
 5. **The nav entry is narrower than the routes.** `My Teams` is shown only to somebody with an
@@ -675,7 +675,7 @@ here rather than left for the next reader to rediscover:
    otherwise in their navigation would be wrong, and refusing them the page would be pointless.
 
 The components the team page shares with the admin ministry page live in
-`webpack/volunteer/components/` — `ui.ts` (the §5.8 state machine, the modal fade guard, the
+`webpack/ministries/components/` — `ui.ts` (the §5.8 state machine, the modal fade guard, the
 DataTables and row-menu helpers), `positions-table.ts`, `qualification-matrix.ts`,
 `schedules-table.ts`, `occurrences-table.ts` — and take a context object rather than reading module
 state. Controls a caller does not want are omitted from ITS markup; every component looks its

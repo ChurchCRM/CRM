@@ -1,7 +1,7 @@
 /**
  * The Positions table and its Add / Edit dialog (design §5.4).
  *
- * Extracted verbatim from `webpack/volunteer/ministry.ts` for #9868 so the Member
+ * Extracted verbatim from `webpack/ministries/ministry.ts` for #9868 so the Member
  * Portal's My Teams page offers a team leader the same positions table, the same
  * dialog and the same "Recruit Volunteers" switch, in the portal layout.
  *

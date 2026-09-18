@@ -2583,8 +2583,8 @@ A dialog whose only content is a button — "Add All", a confirm — can finish 
 round trip inside the 150 ms fade, so `modal.hide()` in the `.then()` is dropped
 and the dialog stays open for a real user too. A gate in the spec only hides that.
 Fix it in the module: record `shown.bs.modal`, and queue a hide requested before
-it (`webpack/volunteer/ministry.ts` → `wireModalFadeGuard()` / `hideModal()`;
-`webpack/volunteer/occurrence.ts` carries the same idea as a pair of booleans).
+it (`webpack/ministries/ministry.ts` → `wireModalFadeGuard()` / `hideModal()`;
+`webpack/ministries/occurrence.ts` carries the same idea as a pair of booleans).
 
 ```ts
 const shownModals = new Set<string>();

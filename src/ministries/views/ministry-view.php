@@ -31,7 +31,7 @@ use ChurchCRM\Utils\InputUtils;
  *     Team · Event · From · To above the table, every field live.
  *
  * Every string is `gettext()`. The JS strings live in
- * webpack/volunteer/ministry.ts, because an `i18next.t()` call inside a .php file
+ * webpack/ministries/ministry.ts, because an `i18next.t()` call inside a .php file
  * is scanned by neither the PHP nor the JS extractor and is silently never
  * translated (design §5.10, F31).
  */
@@ -223,7 +223,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         A SELF-CONTAINED block on purpose: everything it needs lives between this
         comment and the closing endif below, and its behaviour lives in its own
-        bundle module (webpack/volunteer/scopes.ts), which ministry.ts only imports
+        bundle module (webpack/ministries/scopes.ts), which ministry.ts only imports
         and initialises.
 
         Team leaders are NOT here any more — a leader belongs to a team, so the
@@ -892,7 +892,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           Staffing needs (§2.10). A requirement is a separate entity from a position and
           nothing used to create one, so a schedule had none: its occurrences needed
           nobody, had no gaps, and reported "Fully staffed" at 0/0. The rows are rendered
-          by webpack/volunteer/staffing-needs.ts from the team's active positions; the
+          by webpack/ministries/staffing-needs.ts from the team's active positions; the
           empty-plan warning is created by that module as a sibling of the list, so a
           re-render on a team change cannot take it away.
         -->
@@ -925,7 +925,7 @@ window.CRM.volunteerMinistry = {
   isMinistryCoordinator: <?= $bIsMinistryCoordinator ? 'true' : 'false' ?>
 };
 </script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/volunteer-ministry.min.js') ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-ministry.min.js') ?>"></script>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

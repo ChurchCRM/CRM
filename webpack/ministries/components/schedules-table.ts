@@ -2,7 +2,7 @@
  * The Schedules table, its Add / Edit dialog (with the staffing-needs editor) and
  * the Generate dates action (#9708's API, surfaced by #9711, design §5.4).
  *
- * Extracted verbatim from `webpack/volunteer/ministry.ts` for #9868 so the Member
+ * Extracted verbatim from `webpack/ministries/ministry.ts` for #9868 so the Member
  * Portal's My Teams page gives a team leader the same table and the same dialog
  * for their own team.
  *
