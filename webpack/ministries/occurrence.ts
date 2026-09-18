@@ -61,6 +61,7 @@ import {
   type VolunteerStaffing,
   type VolunteerSwap,
 } from "./api";
+import { tText } from "./components/ui";
 import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "./staffing-needs";
 
 interface OccurrenceConfig {
@@ -455,10 +456,10 @@ function describeCandidate(person: VolunteerEligiblePerson): string {
   if (person.lastServedDate === null) {
     parts.push(i18next.t("has not served yet"));
   } else {
-    parts.push(i18next.t("last served {{date}}", { date: person.lastServedDate }));
+    parts.push(tText("last served {{date}}", { date: person.lastServedDate }));
   }
   if (person.conflictPositionName) {
-    parts.push(i18next.t("already serving as {{position}}", { position: person.conflictPositionName }));
+    parts.push(tText("already serving as {{position}}", { position: person.conflictPositionName }));
   }
 
   return `${person.displayName} — ${parts.join(", ")}`;
@@ -541,7 +542,7 @@ function openAssignModal(positionId: number, positionName: string): void {
 
   const label = byId("assign-position-label");
   if (label) {
-    label.textContent = i18next.t("Filling {{position}}", { position: positionName });
+    label.textContent = tText("Filling {{position}}", { position: positionName });
   }
   show(byId("assign-form-error"), false);
   show(byId("assign-conflict-warning"), false);

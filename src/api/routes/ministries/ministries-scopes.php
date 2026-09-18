@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerScope;
 use ChurchCRM\model\ChurchCRM\VolunteerScopeQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Volunteer\Middleware\ManageMinistriesRoleAuthMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
@@ -135,8 +136,8 @@ function listVolunteerScopes(Request $request, Response $response): Response
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Ministry management access is required, or V2 is not enabled"),
  *     @OA\Response(response=404, description="The person or the scope target does not exist"),
- *     @OA\Response(response=200, description="The grant already existed; the same row is returned"),
- *     @OA\Response(response=201, description="Granted")
+ *     @OA\Response(response=200, description="The grant already existed; the same row is returned. joinedPool says whether this call added the person to the ministry's volunteer pool (a grant always makes them a pool member; revoking never removes them)"),
+ *     @OA\Response(response=201, description="Granted, and the person is in the ministry's volunteer pool")
  * )
  */
 function createVolunteerScope(Request $request, Response $response): Response
@@ -172,6 +173,18 @@ function createVolunteerScope(Request $request, Response $response): Response
 
     try {
         $scope = $authz->grantScope($personId, $scopeType, $scopeId, $grantedBy);
+
+        // A coordinator or team leader is one of the ministry's volunteers
+        // (product-owner decision, 2026-09-18): the grant also puts them in the
+        // ministry's pool Group, the way a qualification does (D19). Revoking a
+        // grant does NOT take them out again — that is the Volunteers tab's or
+        // the Group editor's deliberate act, like every other pool removal.
+        $ministryId = $scopeType === VolunteerScope::TYPE_TEAM
+            ? (int) VolunteerTeamQuery::create()->findPk($scopeId)?->getMinistryId()
+            : $scopeId;
+        $ministries = new VolunteerMinistryService($authz);
+        $pool = $ministryId > 0 ? $ministries->getPoolGroup($ministryId) : null;
+        $joinedPool = $pool !== null && $ministries->joinPoolGroup($pool, $personId);
     } catch (\Throwable $e) {
         return SlimUtils::renderErrorJSON($response, gettext('Could not grant the scope'), [], 500, $e, $request);
     }
@@ -180,7 +193,7 @@ function createVolunteerScope(Request $request, Response $response): Response
     // same id, never 409 and never a second row (design §6.6).
     return SlimUtils::renderJSON(
         $response,
-        ['scope' => volunteerScopeToArray($scope)],
+        ['scope' => volunteerScopeToArray($scope), 'joinedPool' => $joinedPool],
         $existing === null ? 201 : 200
     );
 }

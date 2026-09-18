@@ -40,7 +40,9 @@ const VOLUNTEER_URL = "/api/ministries";
 const MINISTRIES_URL = "/ministries";
 
 const PREFIX = "UIPAGE3";
-const MINISTRY_NAME = `${PREFIX} Coffee Bar`;
+// An apostrophe and an ampersand on purpose: the Add dialogs' titles are set as
+// text, and both used to show as HTML entities (2026-09-18).
+const MINISTRY_NAME = `${PREFIX} Kids' Café & Crèche`;
 const SECOND_TEAM_NAME = `${PREFIX} Saturday Crew`;
 
 const POSITION_ONE = `${PREFIX} Espresso`;
@@ -437,7 +439,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
             cy.get("#qualification-add-person").click();
 
             cy.get("#addVolunteerModal").should("be.visible");
-            cy.get("#addVolunteerModalTitle").should("contain", `Add Volunteer to ${firstTeamName}`);
+            cy.get("#addVolunteerModalTitle").should("have.text", `Add Volunteer to ${MINISTRY_NAME}`);
             // The picker is only built on `shown.bs.modal`, so its TomSelect wrapper
             // appearing is the signal the 150 ms fade has finished.
             cy.get("#addVolunteerModal .ts-wrapper").should("exist");
@@ -527,10 +529,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
             cy.get("#qualification-cart-btn").click();
 
             cy.get("#addFromCartModal").should("be.visible");
-            cy.get("#addFromCartModalTitle").should(
-                "contain",
-                `Add Everyone in Cart to ${firstTeamName}`,
-            );
+            cy.get("#addFromCartModalTitle").should("have.text", `Add Everyone in Cart to ${MINISTRY_NAME}`);
             cy.get("#addFromCartModal").should(
                 "contain",
                 "Everyone in the cart joins this ministry's volunteers.",

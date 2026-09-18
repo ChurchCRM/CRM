@@ -28,6 +28,7 @@ import {
   type VolunteerRequirementInput,
   type VolunteerRequirementRow,
 } from "./api";
+import { tText } from "./components/ui";
 
 /** Hard ceiling on a count, matching the `number` inputs' own `max`. */
 const MAX_COUNT = 99;
@@ -106,14 +107,14 @@ export function renderStaffingNeeds(
             <label class="form-label small mb-1" for="${rowId}-min">${escapeHtml(i18next.t("Min"))}</label>
             <input type="number" class="form-control form-control-sm volunteer-need-min"
                    id="${rowId}-min" min="0" max="${MAX_COUNT}" step="1" value="${min}"
-                   aria-label="${escapeAttribute(i18next.t("Minimum needed for {{position}}", { position: label(position) }))}"
+                   aria-label="${escapeAttribute(tText("Minimum needed for {{position}}", { position: label(position) }))}"
                    ${checked ? "" : "disabled"}>
           </div>
           <div class="col-6 col-sm-3">
             <label class="form-label small mb-1" for="${rowId}-max">${escapeHtml(i18next.t("Max"))}</label>
             <input type="number" class="form-control form-control-sm volunteer-need-max"
                    id="${rowId}-max" min="0" max="${MAX_COUNT}" step="1" value="${max}"
-                   aria-label="${escapeAttribute(i18next.t("Maximum allowed for {{position}}", { position: label(position) }))}"
+                   aria-label="${escapeAttribute(tText("Maximum allowed for {{position}}", { position: label(position) }))}"
                    ${checked ? "" : "disabled"}>
           </div>
         </div>`;

@@ -25,7 +25,7 @@ use ChurchCRM\Utils\InputUtils;
       </div>
       <div class="modal-body">
         <p class="text-body-secondary">
-          <?= gettext('A ministry is created with its first team and its volunteer pool, so the only things to decide here are its name and what it does.') ?>
+          <?= gettext('A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does.') ?>
         </p>
         <div class="mb-3">
           <label class="form-label" for="ministry-create-name"><?= gettext('Ministry name') ?></label>

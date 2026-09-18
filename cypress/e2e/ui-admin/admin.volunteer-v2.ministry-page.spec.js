@@ -328,9 +328,11 @@ describe("Volunteer v2 ministry page (#9701)", () => {
                 `#volunteerQualificationsTable input.volunteer-qual-toggle[data-person-id="${POOL_NEVER_QUALIFIED}"]`,
             )
                 .parents("tr")
-                .find(".volunteer-pool-hint")
                 .should("be.visible")
-                .and("contain", "In the pool, not qualified yet");
+                .and("not.contain", "not qualified yet");
+            // Two people in the pool: the name filter stays hidden until there are
+            // more than five, because on a short list it read as a way to add someone.
+            cy.get("#qualification-filter-wrap").should("not.be.visible");
         });
 
         it("toggles a qualification and it survives a reload", () => {

@@ -314,7 +314,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <label class="form-label" for="qualification-team-filter"><?= gettext('Team') ?></label>
           <select class="form-select" id="qualification-team-filter"></select>
         </div>
-        <div class="col-12 col-md-4">
+        <!-- Hidden until the list is long enough to need it (more than five
+             names): on a short list it reads as a way to ADD a volunteer. -->
+        <div class="col-12 col-md-4" id="qualification-filter-wrap" hidden>
           <label class="form-label" for="qualification-filter"><?= gettext('Find a volunteer') ?></label>
           <input type="search" class="form-control" id="qualification-filter"
                  placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>">
@@ -566,7 +568,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="tab-pane fade" id="help-wanted" role="tabpanel" aria-labelledby="nav-item-help-wanted">
       <div id="volunteer-help-wanted">
         <p class="text-body-secondary">
-          <?= gettext('Put this ministry on the Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed.') ?>
+          <?= gettext('Put this ministry on the Member Portal Open Opportunities page, where any volunteer can see it and offer to help. They join the volunteer pool and you are emailed.') ?>
         </p>
         <label class="form-check form-switch mb-3">
           <input class="form-check-input" type="checkbox" id="help-wanted-toggle">
@@ -734,7 +736,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <span class="form-check-label"><?= gettext('Recruit Volunteers') ?></span>
         </label>
         <div class="form-text" id="position-form-recruiting-hint">
-          <?= gettext('Advertise this position on the Open Opportunities page.') ?>
+          <?= gettext('Advertise this position on the Member Portal Open Opportunities page.') ?>
         </div>
         <div class="alert alert-danger d-none mt-3" role="alert" id="position-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>

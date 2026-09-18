@@ -344,3 +344,14 @@ export function formatIsoDate(date: Date): string {
 
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
+
+/**
+ * `i18next.t()` for a PLAIN-TEXT sink — `textContent`, an input value, or a
+ * string the caller escapes itself. i18next HTML-escapes interpolated values by
+ * default, which is right when the result lands in `innerHTML` or a bootbox
+ * message, and wrong everywhere else: "Children's Ministry" would show as
+ * "Children&#39;s Ministry" in a modal title. Keep the default for HTML sinks.
+ */
+export function tText(key: string, vars?: Record<string, unknown>): string {
+  return i18next.t(key, { ...(vars ?? {}), interpolation: { escapeValue: false } });
+}

@@ -52,6 +52,7 @@ import {
   VolunteerApiError,
   type VolunteerScopeGrant,
 } from "./api";
+import { tText } from "./components/ui";
 
 let ministryId = 0;
 let coordinators: VolunteerScopeGrant[] = [];
@@ -231,7 +232,7 @@ function saveCoordinator(personId: number, personName: string): void {
   if (existing) {
     // The API would answer 200 with this very row (§6.6) — success that changed
     // nothing. Say what actually happened instead.
-    showModalError("scope-coordinator", i18next.t("{{name}} already coordinates this ministry", { name: personName }));
+    showModalError("scope-coordinator", tText("{{name}} already coordinates this ministry", { name: personName }));
     notifyWarning(i18next.t("{{name}} already coordinates this ministry", { name: personName }));
     return;
   }
@@ -240,6 +241,7 @@ function saveCoordinator(personId: number, personName: string): void {
     .then(() => {
       modal("scopeCoordinatorModal")?.hide();
       notifySuccess(i18next.t("{{name}} now coordinates this ministry", { name: personName }));
+      onChange?.();
 
       return load();
     })
@@ -275,6 +277,7 @@ function confirmRemove(target: HTMLElement): void {
       revokeScope(scopeId)
         .then(() => {
           notifySuccess(i18next.t("Coordinator removed"));
+          onChange?.();
 
           return load();
         })
@@ -340,12 +343,16 @@ function wire(): void {
  *               advisory — the API decides — but honouring it avoids a request
  *               that is certain to be refused.
  */
-export function initVolunteerScopes(config: { ministryId: number; isManager: boolean }): void {
+let onChange: (() => void) | null = null;
+
+/** `onChange` runs after a grant or a revoke, so the page can refresh what a grant touches (the Volunteers grid: a grant joins the pool). */
+export function initVolunteerScopes(config: { ministryId: number; isManager: boolean; onChange?: () => void }): void {
   if (config.ministryId === 0 || !config.isManager || !byId("volunteer-scope-panel")) {
     return;
   }
 
   ministryId = config.ministryId;
+  onChange = config.onChange ?? null;
   show(byId("volunteer-scope-panel"), true);
   wire();
   void load();

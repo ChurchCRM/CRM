@@ -37,6 +37,7 @@ import {
   type VolunteerMyAssignment,
   withdrawMySwap,
 } from "../ministries/api";
+import { tText } from "../ministries/components/ui";
 import {
   byId,
   confirmAction,
@@ -78,7 +79,7 @@ function statusBadge(assignment: VolunteerMyAssignment): { label: string; classN
   if (assignment.pendingSwapId !== null) {
     return {
       label: assignment.pendingSwapPersonName
-        ? i18next.t("Substitute asked: {{name}}", { name: assignment.pendingSwapPersonName })
+        ? tText("Substitute asked: {{name}}", { name: assignment.pendingSwapPersonName })
         : i18next.t("Substitute asked"),
       className: "bg-info",
     };

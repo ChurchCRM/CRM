@@ -266,6 +266,45 @@ describe("Volunteer v2 ministry-owned pool Group and Help wanted (D19)", () => {
             });
         });
 
+        it("gains a coordinator or team leader as a member when their scope is granted, and keeps them on revoke (2026-09-18)", () => {
+            const poolIds = () =>
+                cy
+                    .makePrivateAdminAPICall("GET", `${MINISTRIES_URL}/${ministryB}/pool`, null, 200)
+                    .then((resp) => resp.body.members.map((m) => m.personId));
+
+            poolIds().should("not.include", PERSON_COORDINATOR_NO_GROUPS);
+
+            // A ministry-coordinator grant joins the pool.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_COORDINATOR_NO_GROUPS, scopeType: "ministry", scopeId: ministryB },
+                201,
+            ).then((resp) => {
+                expect(resp.body).to.have.property("joinedPool", true);
+                poolIds().should("include", PERSON_COORDINATOR_NO_GROUPS);
+
+                // A team-leader grant joins it too — a no-op here because they are
+                // already a member, which `joinedPool` reports honestly.
+                cy.makePrivateAdminAPICall("GET", `${MINISTRIES_URL}/${ministryB}`, null, 200).then((detail) => {
+                    cy.makePrivateAdminAPICall(
+                        "POST",
+                        SCOPES_URL,
+                        { personId: PERSON_COORDINATOR_NO_GROUPS, scopeType: "team", scopeId: detail.body.teams[0].id },
+                        201,
+                    ).then((team) => {
+                        expect(team.body).to.have.property("joinedPool", false);
+                        cy.makePrivateAdminAPICall("DELETE", `${SCOPES_URL}/${team.body.scope.id}`, null, 200);
+                    });
+                });
+
+                // Revoking never removes them: that is the Volunteers tab's, or the
+                // Group editor's, deliberate act.
+                cy.makePrivateAdminAPICall("DELETE", `${SCOPES_URL}/${resp.body.scope.id}`, null, 200);
+                poolIds().should("include", PERSON_COORDINATOR_NO_GROUPS);
+            });
+        });
+
         it("reports the group on the create response and on the ministry detail", () => {
             createMinistry("Nursery").then((body) => {
                 expect(body.poolGroupId).to.be.a("number").and.to.be.greaterThan(0);

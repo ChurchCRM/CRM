@@ -32,6 +32,7 @@ import {
   type VolunteerHelpWantedMinistry,
   type VolunteerMyOpportunity,
 } from "../ministries/api";
+import { tText } from "../ministries/components/ui";
 import {
   byId,
   confirmAction,
@@ -106,7 +107,7 @@ function cardHtml(opportunity: VolunteerMyOpportunity): string {
   const warning = opportunity.alreadyServing
     ? `<div class="alert alert-warning mt-2 mb-0 py-2 volunteer-already-serving" role="alert">
          <i class="fa-solid fa-triangle-exclamation me-1"></i>${escapeHtml(
-           i18next.t("You are already helping that day as {{what}}.", {
+           tText("You are already helping that day as {{what}}.", {
              what: opportunity.alreadyServingPositionNames.join(", "),
            }),
          )}

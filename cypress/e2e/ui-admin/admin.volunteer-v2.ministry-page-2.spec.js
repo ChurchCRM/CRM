@@ -361,24 +361,19 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
             cy.get(".notyf__toast--success").should("be.visible");
         });
 
-        it("takes the 'not qualified yet' badge away as soon as a box is ticked", () => {
+        it("carries no 'not qualified yet' badge, ticked or not (retired 2026-09-18)", () => {
             cy.intercept("POST", "**/api/ministries/positions/*/qualifications").as("grantQual");
-            cy.intercept("DELETE", "**/api/ministries/qualifications/*").as("revokeQual");
             cy.visit(ministryUrl());
             openVolunteersTab();
 
-            const row = () =>
-                qualBox(TICKED_PERSON, firstPositionId).parents("tr").find(".volunteer-pool-hint");
+            const row = () => qualBox(TICKED_PERSON, firstPositionId).parents("tr");
 
-            row().should("be.visible").and("contain", "In the pool, not qualified yet");
+            // Being listed is the statement; the row says nothing else about a pool member.
+            row().should("be.visible").and("not.contain", "not qualified yet");
+            row().find(".volunteer-pool-hint").should("not.exist");
             qualBox(TICKED_PERSON, firstPositionId).check();
             cy.wait("@grantQual");
-            row().should("not.be.visible");
-
-            // …and it comes back when the last tick goes, without a re-render.
-            qualBox(TICKED_PERSON, firstPositionId).uncheck();
-            cy.wait("@revokeQual");
-            row().should("be.visible");
+            row().should("not.contain", "not qualified yet");
         });
 
         it("keeps the tick when the tab is left and come back to", () => {

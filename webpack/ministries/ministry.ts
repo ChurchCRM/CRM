@@ -160,6 +160,7 @@ function buildComponents(): void {
     addPoolFromCart: () => addPoolMembersFromCart(ministryId),
     removeVolunteer: (personId) => removeVolunteerFromMinistry(ministryId, personId),
     removeScopeName: () => detail?.ministry.name ?? "",
+    ministryName: () => detail?.ministry.name ?? "",
     reload: () => load(true),
   });
 
@@ -766,7 +767,8 @@ function init(): void {
   void load();
   // The coordinator/team-leader card (#9706) owns its own markup, state and
   // requests; this is the whole of its integration with the page.
-  initVolunteerScopes(config);
+  // A grant puts the person in the pool (2026-09-18), so the Volunteers grid is stale.
+  initVolunteerScopes({ ...config, onChange: () => matrixGrid.invalidate() });
 }
 
 document.addEventListener("DOMContentLoaded", () => {

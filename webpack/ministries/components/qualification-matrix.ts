@@ -45,6 +45,7 @@ import {
   setModalTitle,
   show,
   showModalError,
+  tText,
   wireModalFadeGuard,
   wireUnclippedRowMenus,
 } from "./ui";
@@ -75,6 +76,11 @@ export interface QualificationMatrixOptions {
   removeVolunteer?(personId: number): Promise<{ qualifications: number; assignments: number }>;
   /** What the "Remove {name} from …?" confirm names — the ministry. */
   removeScopeName?(): string;
+  /**
+   * The ministry's name for the two Add dialogs' titles: both put people in the
+   * MINISTRY's pool, so the team on screen is not what they add to.
+   */
+  ministryName?(): string;
   /** Re-fetch the caller's own document after a change that moved its counts. */
   reload(): Promise<void>;
 }
@@ -210,19 +216,17 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
           })
           .join("");
 
+        // The name filter earns its place only on a long list; on a short one it
+        // reads as a way to ADD somebody (product-owner review, 2026-09-18).
+        show(byId("qualification-filter-wrap"), data.people.length > 5);
+
         // D19: the rows are the pool UNION the qualified, so a row can be here for
-        // either reason and the screen has to say which. A pool member with no ticks
-        // yet is the one a coordinator opened this screen to deal with; a qualified
-        // non-member was taken out of the group and is still assignable.
-        //
-        // For a pool member the badge is always RENDERED and merely hidden when it
-        // does not apply, because a tick falsifies it there and then: the first tick
-        // must be able to take "not qualified yet" away, and the last untick must be
-        // able to bring it back, without re-rendering the grid under the coordinator.
+        // either reason. A pool member with no ticks needs no label — being listed
+        // IS the statement (the "not qualified yet" badge was retired 2026-09-18) —
+        // but a qualified non-member was taken out of the group and is still
+        // assignable, and that is worth saying.
         const hint = person.inPool
-          ? ` <span class="badge bg-secondary-lt text-secondary volunteer-pool-hint"${
-              person.qualifications.length === 0 ? "" : " hidden"
-            }>${escapeHtml(i18next.t("In the pool, not qualified yet"))}</span>`
+          ? ""
           : ` <span class="badge bg-secondary-lt text-secondary volunteer-outside-pool-hint">${escapeHtml(
               i18next.t("Not in the pool"),
             )}</span>`;
@@ -281,21 +285,6 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
       delete person.qualificationIds[String(positionId)];
     }
     person.qualifications = [...held];
-  }
-
-  /**
-   * "In the pool, not qualified yet" is a statement about the row that one tick
-   * makes false and the last untick makes true again, so it is re-decided from the
-   * cached model after every save rather than left until the next full render.
-   */
-  function refreshPoolHint(input: HTMLInputElement, personId: number): void {
-    const person = matrix?.people.find((row: VolunteerPoolPerson) => row.personId === personId);
-    const hint = input.closest("tr")?.querySelector<HTMLElement>(".volunteer-pool-hint");
-    if (!person || !hint) {
-      return;
-    }
-
-    hint.hidden = person.qualifications.length > 0;
   }
 
   /**
@@ -425,7 +414,10 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
       byId("qualification-add-person")?.addEventListener("click", () => {
         show(byId("add-volunteer-form-error"), false);
         personPicker?.getInstance()?.clear();
-        setModalTitle("addVolunteerModalTitle", i18next.t("Add Volunteer to {{team}}", { team: teamName() }));
+        setModalTitle(
+          "addVolunteerModalTitle",
+          tText("Add Volunteer to {{ministry}}", { ministry: options.ministryName?.() ?? teamName() }),
+        );
         modal("addVolunteerModal")?.show();
       });
 
@@ -467,7 +459,10 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
     if (addPoolFromCart) {
       byId("qualification-cart-btn")?.addEventListener("click", () => {
         show(byId("add-from-cart-form-error"), false);
-        setModalTitle("addFromCartModalTitle", i18next.t("Add Everyone in Cart to {{team}}", { team: teamName() }));
+        setModalTitle(
+          "addFromCartModalTitle",
+          tText("Add Everyone in Cart to {{ministry}}", { ministry: options.ministryName?.() ?? teamName() }),
+        );
         modal("addFromCartModal")?.show();
       });
 
@@ -550,7 +545,6 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
             const savedId = result.qualification.id;
             target.dataset.qualificationId = String(savedId);
             setCached(personId, positionId, savedId, true);
-            refreshPoolHint(target, personId);
             confirmSaved();
           })
           .catch((error: unknown) => rollback(error, i18next.t("The qualification could not be saved")));
@@ -574,7 +568,6 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
           // qualification is in neither list.
           setCached(personId, positionId, qualificationId, false);
           target.dataset.qualificationId = "0";
-          refreshPoolHint(target, personId);
           confirmSaved();
         })
         .catch((error: unknown) => rollback(error, i18next.t("The qualification could not be removed")));

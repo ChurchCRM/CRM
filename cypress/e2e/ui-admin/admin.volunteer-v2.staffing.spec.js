@@ -114,6 +114,12 @@ function openSchedulesTab() {
 function fillScheduleBasics(name) {
     cy.get("#schedule-form-name").clear().type(name);
     cy.get("#schedule-form-team").select(TEAM_NAME);
+    // "An existing calendar event type" lists the church's event types from the
+    // core endpoint, which answers `{ EventTypes: [...] }` (fixed 2026-09-18);
+    // the seed carries Church Service and Sunday School.
+    cy.get("#schedule-form-link-mode").select("event_type");
+    cy.get("#schedule-form-event-type option").should("have.length.at.least", 2);
+    cy.get("#schedule-form-event-type").should("contain", "Church Service").and("contain", "Sunday School");
     cy.get("#schedule-form-link-mode").select("standalone");
     cy.get("#schedule-form-dow").select("Wednesday");
     cy.get("#schedule-form-start-time").clear().type("19:00");

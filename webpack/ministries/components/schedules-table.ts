@@ -188,12 +188,14 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         headers: { Accept: "application/json" },
       });
       const body: unknown = response.ok ? await response.json() : [];
-      eventTypes = Array.isArray(body)
-        ? body.map((row: Record<string, unknown>) => ({
-            id: Number(row.Id ?? row.id ?? 0),
-            name: String(row.Name ?? row.name ?? ""),
-          }))
-        : [];
+      // The core endpoint answers `{ EventTypes: [...] }`, not a bare array.
+      const rows = Array.isArray(body) ? body : ((body as { EventTypes?: unknown } | null)?.EventTypes ?? []);
+      eventTypes = (Array.isArray(rows) ? rows : [])
+        .filter((row: Record<string, unknown>) => Number(row.Active ?? row.active ?? 1) !== 0)
+        .map((row: Record<string, unknown>) => ({
+          id: Number(row.Id ?? row.id ?? 0),
+          name: String(row.Name ?? row.name ?? ""),
+        }));
     } catch {
       eventTypes = [];
     }
