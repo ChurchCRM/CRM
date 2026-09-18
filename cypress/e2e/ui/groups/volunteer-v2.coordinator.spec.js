@@ -401,7 +401,10 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
             cy.get("#volunteer-pending-card").should("be.visible");
             cy.get("#volunteer-swaps-card").should("be.visible");
             cy.get("#volunteer-upcoming-card").should("be.visible");
-            cy.get("#volunteerSettings").should("exist");
+            // The settings moved to Admin → Ministry Settings (2026-09-18); the
+            // dashboard keeps the notification-health card with a link there.
+            cy.get("#volunteer-failed-card").should("be.visible");
+            cy.get("#volunteer-settings-link").should("have.attr", "href").and("match", /\/admin\/ministry-settings$/);
         });
 
         it("shows the loading block first and hides it once content arrives (§5.8)", () => {
@@ -503,20 +506,20 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         });
     });
 
-    describe("The admin-only settings strip (§5.2 item 5, U8)", () => {
+    describe("Admin → Ministry Settings (the settings' one home, 2026-09-18)", () => {
         it("changes the reminder lead time and the change persists", () => {
-            cy.visit(DASHBOARD_URL);
+            cy.visit("/admin/ministry-settings");
 
-            cy.get("#volunteerSettings").should("be.visible");
+            cy.get("#ministrySettingsPanel").should("be.visible");
             // The panel renders its inputs first and fills them from
             // `/admin/api/system/config` a moment later, so typing before that
             // second pass lands prepends to a value that is about to be replaced.
             // Waiting for the fetched value is what makes `clear()` mean anything.
-            cy.get('#volunteerSettings input[name="iVolunteerReminderLeadHours"]')
+            cy.get('#ministrySettingsPanel input[name="iVolunteerReminderLeadHours"]')
                 .should("have.value", originalLeadHours)
                 .clear()
                 .type("12");
-            cy.get("#volunteerSettings #settingsPanelSaveBtn").click();
+            cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();
 
             cy.then(() => {
                 adminApi("GET", LEAD_SETTING_URL, null, 200).then((resp) => {
@@ -526,8 +529,8 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
         });
 
         it("carries the cron hint §3.6 requires", () => {
-            cy.visit(DASHBOARD_URL);
-            cy.get("#volunteer-cron-hint").should("exist").and("contain", "timerjobs");
+            cy.visit("/admin/ministry-settings");
+            cy.get("#ministry-cron-hint").should("exist").and("contain", "timerjobs");
         });
     });
 
@@ -577,8 +580,10 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
             // point rather than a dead end.
             cy.get("#volunteer-scope-ministries").should("contain", EMPTY_MINISTRY_NAME);
 
-            // The settings strip is administrator-only (§5.2 item 5).
-            cy.get("#volunteerSettings").should("not.exist");
+            // Only an administrator gets the link to Ministry Settings; a coordinator
+            // is told to ask one (§5.2 item 5, amended 2026-09-18).
+            cy.get("#volunteer-settings-link").should("not.exist");
+            cy.get("#volunteer-settings-hint").should("be.visible");
         });
     });
 

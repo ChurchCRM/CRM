@@ -9,7 +9,7 @@ use ChurchCRM\Utils\InputUtils;
  * "What needs my attention", answered top to bottom in the order §5.2 fixes:
  * gaps that need filling, assignments still awaiting a reply, proposed
  * substitutions, upcoming occurrences, and — for an administrator only — the
- * settings strip with the two Volunteer settings and the cron hint.
+ * notification-health card (the settings themselves are on Admin → Ministry Settings).
  *
  * Markup only. Every panel is rendered from ONE `GET /api/ministries/dashboard`
  * (§5.2: "Do not fan out to five endpoints"), and the route ran no query beyond
@@ -29,7 +29,6 @@ use ChurchCRM\Utils\InputUtils;
 /** @var bool $bIsAdmin */
 /** @var bool $bIsManager */
 /** @var int $iDays */
-/** @var string $sTimerJobsHint */
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 ?>
@@ -259,9 +258,10 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
         </div>
       </div>
 
-      <?php if ($bIsAdmin): ?>
-      <!-- 5. The admin-only settings strip (§5.2 item 5, U8). Includes the
-           failed-notification count with a link, and §3.6's cron hint. -->
+      <!-- 5. Notification health (§5.2 item 5, amended 2026-09-18). Shown to every
+           viewer: a coordinator should know reminders are not going out even though
+           only an administrator can do anything about it. The settings themselves,
+           the cron hint and the failure list live on Admin → Ministry Settings. -->
       <div class="card mb-3" id="volunteer-failed-card">
         <div class="card-header">
           <h3 class="card-title mb-0">
@@ -273,58 +273,20 @@ $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
             <span class="badge bg-secondary-lt me-1" id="volunteer-failed-count">0</span>
             <span id="volunteer-failed-label"><?= gettext('messages could not be delivered') ?></span>
           </p>
-          <div class="list-group list-group-flush d-none" id="volunteer-failed-list"></div>
-          <p class="text-body-secondary small mb-0" id="volunteer-cron-hint">
-            <i class="fa-solid fa-clock me-1"></i>
-            <?= gettext('Reminders and alerts are only delivered when background jobs run. For on-time delivery, run the scheduled-task runner from cron every 15 minutes') ?> —
-            <code><?= InputUtils::escapeHTML($sTimerJobsHint) ?></code>
-          </p>
+          <?php if ($bIsAdmin): ?>
+            <a class="btn btn-sm btn-outline-secondary" id="volunteer-settings-link" href="<?= $sRootPath ?>/admin/ministry-settings">
+              <i class="fa-solid fa-sliders me-1"></i><?= gettext('Ministry Settings') ?>
+            </a>
+          <?php else: ?>
+            <p class="text-body-secondary small mb-0" id="volunteer-settings-hint">
+              <?= gettext('If messages are failing, ask an administrator to check Ministry Settings.') ?>
+            </p>
+          <?php endif; ?>
         </div>
       </div>
-
-      <div id="volunteerSettings"></div>
-      <?php endif; ?>
     </div>
   </div>
 </div>
-
-<?php if ($bIsAdmin): ?>
-<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function () {
-    window.CRM.settingsPanel.init({
-        container: '#volunteerSettings',
-        title: <?= InputUtils::jsonEncodeForScript(gettext('Volunteer Settings')) ?>,
-        icon: 'fa-solid fa-sliders',
-        settings: [
-            {
-                name: 'sVolunteerVersion',
-                type: 'choice',
-                label: <?= InputUtils::jsonEncodeForScript(gettext('Volunteer Experience')) ?>,
-                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Which volunteer experience this installation uses. "Both" shows the legacy and the new tabs side by side during a migration.')) ?>,
-                choices: [
-                    { value: 'v1', label: <?= InputUtils::jsonEncodeForScript(gettext('Legacy only')) ?> },
-                    { value: 'v2', label: <?= InputUtils::jsonEncodeForScript(gettext('New only')) ?> },
-                    { value: 'both', label: <?= InputUtils::jsonEncodeForScript(gettext('Both')) ?> }
-                ]
-            },
-            {
-                name: 'iVolunteerReminderLeadHours',
-                type: 'number',
-                min: 0,
-                max: 720,
-                label: <?= InputUtils::jsonEncodeForScript(gettext('Reminder Lead Time (hours)')) ?>,
-                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all.')) ?>
-            }
-        ],
-        onSave: function () {
-            setTimeout(function () { window.location.reload(); }, 1500);
-        }
-    });
-});
-</script>
-<?php endif; ?>
 
 <?php if ($bIsManager): ?>
   <?php require __DIR__ . '/partials/ministry-create-modal.php'; ?>

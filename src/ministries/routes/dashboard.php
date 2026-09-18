@@ -51,11 +51,6 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'bIsManager'    => $authz->isGlobalManager($currentUser),
             // The default window §3.3.2 fixes. The select on the page can widen it.
             'iDays'         => 28,
-            // §3.6: reminders are only punctual when a real scheduler drains the
-            // outbox, and the supported entry point is the CLI runner — the same
-            // command src/cli/timerjobs.php documents, quoted in one place so the
-            // hint cannot drift from the runner it names.
-            'sTimerJobsHint' => '0,15,30,45 * * * * /usr/bin/php /path/to/churchcrm/cli/timerjobs.php',
         ]);
     });
 })->add(VolunteerCoordinatorRoleAuthMiddleware::class);

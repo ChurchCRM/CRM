@@ -2257,7 +2257,7 @@ Answers, in this order, top to bottom:
 4. **Upcoming occurrences** — a DataTable (U2) over `GET /api/ministries/occurrences?from=today&to=+28d`,
    columns `Date · Time · Ministry/Team · Schedule · Staffed (n/m) · Status · Actions`. Staffed is a
    progress-style badge, green at full, amber when `pending` fills the gap, red when short.
-5. **Admin-only settings strip** — `window.CRM.settingsPanel` (U8) with `sVolunteerVersion` and
+5. **Notification-health card** *(revised 2026-09-18 — was the admin-only settings strip)*: the failed-send count for every viewer, with a link to **Admin → Ministry Settings** for an administrator and an "ask an administrator" hint for anyone else. The settings themselves — `sVolunteerVersion`, `iVolunteerReminderLeadHours` — the cron hint, the queued count, the last timer-job run and the recent-failure list live on that admin page (`src/admin/routes/ministry-settings.php`, `src/admin/views/ministry-settings.php`), which exists in every rollout state; it follows the Member Portal admin page, and both settings were removed from `buildCategories()` so they have one home. The page also explains V1, V2 and Both in prose. *Original text:* **Admin-only settings strip** — `window.CRM.settingsPanel` (U8) with `sVolunteerVersion` and
    `iVolunteerReminderLeadHours`, plus the failed-notification count with a link, inside
    `if ($isAdmin)`.
 

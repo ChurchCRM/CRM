@@ -120,9 +120,13 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
         });
 
         it("shows the coordinator entries as soon as the setting is saved, without a new login", () => {
-            cy.visit("/SystemSettings.php");
-            cy.get('select[name="new_value[sVolunteerVersion]"]').select("v2", { force: true });
-            cy.get('input[name="save"]').first().click({ force: true });
+            // The rollout switch lives on Admin → Ministry Settings (2026-09-18),
+            // which exists in every rollout state — the dashboard it used to sit
+            // on does not exist until V2 is on.
+            cy.visit("/admin/ministry-settings");
+            cy.get('#ministrySettingsPanel select[name="sVolunteerVersion"]').should("have.value", "v1").select("v2");
+            cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();
+            cy.get(".notyf__toast, .alert-success", { timeout: 10000 }).should("exist");
 
             cy.visit(PERSON_VIEW_URL);
             // "Setup" is gone from the menu: the guided wizard was removed and

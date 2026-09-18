@@ -543,8 +543,8 @@ describe("Volunteer v2 e2e (UI) — the shortest loop", () => {
             `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"][data-position-id="${posEspresso}"]`,
         ).should("not.exist");
 
-        // A scoped coordinator is not an administrator: no settings strip.
-        cy.get("#volunteerSettings").should("not.exist");
+        // A scoped coordinator is not an administrator: no link to Ministry Settings.
+        cy.get("#volunteer-settings-link").should("not.exist");
     });
 
     it("coordinator: one click reaches the staffing view and fills the gap", () => {
