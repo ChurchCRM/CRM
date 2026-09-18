@@ -130,7 +130,7 @@
             {# ── Volunteers ──────────────────────────────────────────────── #}
             <div class="tab-pane fade" id="volunteers" role="tabpanel" aria-labelledby="nav-item-volunteers">
                 <div class="row g-2 align-items-end mb-3">
-                    <div class="col-12 col-md-6" id="qualification-filter-wrap" hidden>
+                    <div class="col-12 col-md-6 d-none" id="qualification-filter-wrap">
                         <label class="form-label" for="qualification-filter">{{ gettext('Find a volunteer') }}</label>
                         <input type="search" class="form-control" id="qualification-filter"
                                placeholder="{{ gettext('Start typing a name') }}">
@@ -258,7 +258,6 @@
                                 <th>{{ gettext('When') }}</th>
                                 <th>{{ gettext('Schedule') }}</th>
                                 <th class="text-center">{{ gettext('Filled') }}</th>
-                                <th class="text-center">{{ gettext('Still needed') }}</th>
                                 <th class="text-center no-export w-1">{{ gettext('Actions') }}</th>
                             </tr>
                         </thead>

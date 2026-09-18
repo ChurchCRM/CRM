@@ -142,7 +142,10 @@ describe("Admin Login as User (masquerade)", () => {
         cy.get(".bootbox.modal .btn-warning").click();
 
         cy.url().should("include", "/portal");
-        cy.get("body").should("have.class", "impersonating");
+        // The portal layout marks a masqueraded session with its own body class
+        // (`portal-body-with-bar`, which makes room for the banner), not the admin
+        // shell's `impersonating`.
+        cy.get("body").should("have.class", "portal-body-with-bar");
         cy.get(".portal-home", { timeout: 10000 }).should("exist");
         // The staff bar would say "You are viewing the Member Portal as yourself",
         // which during a masquerade is exactly the wrong sentence.
@@ -160,6 +163,39 @@ describe("Admin Login as User (masquerade)", () => {
         cy.url().should("include", `/v2/user/${SELF_SERVICE_USER_ID}`);
         cy.get("#impersonationBanner").should("not.exist");
         cy.get(".navbar").should("contain.text", "Church Admin");
+    });
+
+    it("is not trapped by the account's forced password change, and Exit still works (2026-09-18)", () => {
+        // A user created by an administrator must change their password on
+        // first login. That obligation is the account owner's, not the
+        // masquerading administrator's: it used to bounce every request —
+        // including the banner's Exit — to the change-password page.
+        cy.dbQuery("UPDATE user_usr SET usr_NeedPasswordChange = 1 WHERE usr_per_ID = ?", [SELF_SERVICE_USER_ID]).then((r) => {
+            expect(r.error).to.eq(null);
+        });
+
+        cy.visit(`/v2/user/${SELF_SERVICE_USER_ID}`);
+        cy.get("#loginAsUser").click();
+        cy.get(".bootbox.modal .btn-warning").click();
+
+        cy.url().should("include", "/portal").and("not.include", "password");
+        cy.get(".portal-home", { timeout: 10000 }).should("exist");
+        cy.get("#impersonationBanner").should("be.visible");
+
+        // Another page of theirs, and still no password screen.
+        cy.visit("/portal/profile");
+        cy.url().should("not.include", "password");
+
+        cy.get("#impersonationExit").should("be.visible").click();
+        cy.url().should("include", `/v2/user/${SELF_SERVICE_USER_ID}`).and("not.include", "password");
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.get(".navbar").should("contain.text", "Church Admin");
+
+        // The flag itself is untouched: the owner still has to change it.
+        cy.dbQuery("SELECT usr_NeedPasswordChange AS f FROM user_usr WHERE usr_per_ID = ?", [SELF_SERVICE_USER_ID]).then((r) => {
+            expect(Number(r.rows[0].f)).to.eq(1);
+        });
+        cy.dbQuery("UPDATE user_usr SET usr_NeedPasswordChange = 0 WHERE usr_per_ID = ?", [SELF_SERVICE_USER_ID]);
     });
 
     it("does not render the banner or the offset on the anonymous login page", () => {

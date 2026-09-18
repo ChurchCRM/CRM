@@ -361,7 +361,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             freshAdminLogin();
         });
 
-        it("shows 0/1 and names the short position after a schedule is made in the UI", () => {
+        it("shows 0 of 1 in red and names the short position after a schedule is made in the UI", () => {
             openSchedulesTab();
             cy.get("#schedule-add-btn").click();
             fillScheduleBasics(`${PREFIX} Default Needs`);
@@ -382,16 +382,19 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                     cy.get("#volunteerOccurrencesTable tbody tr")
                         .first()
                         .within(() => {
-                            cy.get("td").eq(2).should("contain.text", "0 / 1");
-                            cy.get("td").eq(3).should("contain.text", "1 ");
-                            cy.get("td").eq(3).should("contain.text", "Lead Teacher");
-                            cy.get("td").eq(3).should("not.contain.text", "Fully staffed");
+                            // One Filled cell since 2026-09-18: red, the count and the
+                            // short position by name; no separate "Still needed" column.
+                            cy.get("td").eq(2).should("contain.text", "0 of 1");
+                            cy.get("td").eq(2).should("contain.text", "1 ");
+                            cy.get("td").eq(2).should("contain.text", "Lead Teacher");
+                            cy.get("td").eq(2).find(".badge").should("have.class", "text-red");
+                            cy.get("td").eq(2).should("not.contain.text", "Filled and confirmed");
                         });
                 });
             });
         });
 
-        it("says 'No staffing needs set' — never 'Fully staffed' — for an empty plan", () => {
+        it("says 'No staffing needs set' — never 'Filled and confirmed' — for an empty plan", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
@@ -417,10 +420,10 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                     cy.get("#volunteerOccurrencesTable tbody tr")
                         .first()
                         .within(() => {
-                            cy.get("td").eq(3).should("contain.text", "No staffing needs set");
-                            cy.get("td").eq(3).should("not.contain.text", "Fully staffed");
+                            cy.get("td").eq(2).should("contain.text", "No staffing needs set");
+                            cy.get("td").eq(2).should("not.contain.text", "Filled and confirmed");
                             // The badge is the way in to fixing it.
-                            cy.get("td").eq(3).find("a").should("have.attr", "href").and("include", "/occurrences/");
+                            cy.get("td").eq(2).find("a").should("have.attr", "href").and("include", "/occurrences/");
                         });
                 });
             });

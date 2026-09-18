@@ -152,7 +152,19 @@ function wire(container: HTMLElement): void {
 
   // `input`, not `change`: the Max-below-Min message has to appear while the number is
   // being typed, not only after the field is left.
-  container.addEventListener("input", () => {
+  container.addEventListener("input", (event) => {
+    // Raising Min above Max drags Max up with it: the coordinator said how many
+    // they need, and a Max below that is never what they meant (review, 2026-09-18).
+    // Lowering Max below Min is left alone and warned about — that one is a choice.
+    const target = event.target as HTMLInputElement | null;
+    if (target?.classList.contains("volunteer-need-min")) {
+      const row = target.closest<HTMLElement>(".volunteer-need-row");
+      const maxInput = row?.querySelector<HTMLInputElement>(".volunteer-need-max");
+      const min = Number.parseInt(target.value, 10);
+      if (maxInput && Number.isFinite(min) && Number.parseInt(maxInput.value, 10) < min) {
+        maxInput.value = String(min);
+      }
+    }
     refreshWarning(container);
   });
 }

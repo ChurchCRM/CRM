@@ -316,7 +316,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <!-- Hidden until the list is long enough to need it (more than five
              names): on a short list it reads as a way to ADD a volunteer. -->
-        <div class="col-12 col-md-4" id="qualification-filter-wrap" hidden>
+        <div class="col-12 col-md-4 d-none" id="qualification-filter-wrap">
           <label class="form-label" for="qualification-filter"><?= gettext('Find a volunteer') ?></label>
           <input type="search" class="form-control" id="qualification-filter"
                  placeholder="<?= InputUtils::escapeAttribute(gettext('Start typing a name')) ?>">
@@ -327,7 +327,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           the grid below are the second step, which is why neither dialog carries a
           position selector any more.
         -->
-        <div class="col-12 col-md-4 d-flex gap-2 justify-content-md-end">
+        <div class="col-12 col-md-4 ms-md-auto d-flex gap-2 justify-content-md-end">
           <button type="button" class="btn btn-outline-primary" id="qualification-add-person">
             <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Volunteer') ?>
           </button>
@@ -545,7 +545,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <th><?= gettext('When') ?></th>
               <th><?= gettext('Schedule') ?></th>
               <th class="text-center"><?= gettext('Filled') ?></th>
-              <th class="text-center"><?= gettext('Still needed') ?></th>
               <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
             </tr>
           </thead>

@@ -29,6 +29,7 @@ import {
   actionMenu,
   byId,
   destroyDataTable,
+  escapeAttribute,
   escapeHtml,
   formatIsoDate,
   initDataTable,
@@ -147,26 +148,37 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
       .map((occurrence) => {
         const href = options.occurrenceUrl(occurrence.id);
         const when = occurrence.start ?? occurrence.occurrenceDate ?? "";
-        // An EMPTY plan is not "fully staffed" (§2.10). It has no gaps only because nobody
-        // ever said what it needs, and reporting that in green is the whole of the defect
-        // this change fixes — the badge links straight to where the needs are set.
-        const gap =
-          occurrence.requirementCount === 0
-            ? `<a class="badge bg-secondary-lt text-secondary" href="${href}">${escapeHtml(i18next.t("No staffing needs set"))}</a>`
-            : occurrence.gapCount > 0
-              ? `<span class="badge bg-red-lt text-red">${escapeHtml(gapSummary(occurrence))}</span>`
-              : `<span class="badge bg-green-lt text-green">${escapeHtml(i18next.t("Fully staffed"))}</span>`;
-        const filled =
-          occurrence.requirementCount === 0
-            ? `<span class="text-body-secondary">&mdash;</span>`
-            : `${occurrence.liveCount} / ${occurrence.requiredCount}`;
+        // One cell says how the occurrence stands (review, 2026-09-18). An EMPTY
+        // plan is not "fully staffed" (§2.10): it has no gaps only because nobody
+        // said what it needs, so it links to where the needs are set. Otherwise:
+        // green when every position is assigned AND every assignment accepted,
+        // amber when every position is assigned but somebody has not answered
+        // yet, red when a position is still unassigned — named, so the reader
+        // knows what is short without opening the row.
+        let filled: string;
+        if (occurrence.requirementCount === 0) {
+          filled = `<a class="badge bg-secondary-lt text-secondary" href="${href}">${escapeHtml(i18next.t("No staffing needs set"))}</a>`;
+        } else if (occurrence.gapCount > 0) {
+          filled = `<span class="badge bg-red-lt text-red" title="${escapeAttribute(gapSummary(occurrence))}"><i class="fa-solid fa-triangle-exclamation me-1"></i>${escapeHtml(
+            i18next.t("{{live}} of {{required}} — {{needed}}", {
+              live: occurrence.liveCount,
+              required: occurrence.requiredCount,
+              needed: gapSummary(occurrence),
+            }),
+          )}</span>`;
+        } else if (occurrence.pendingCount > 0) {
+          filled = `<span class="badge bg-yellow-lt text-yellow"><i class="fa-solid fa-hourglass-half me-1"></i>${escapeHtml(
+            i18next.t("Assigned, {{count}} not yet confirmed", { count: occurrence.pendingCount }),
+          )}</span>`;
+        } else {
+          filled = `<span class="badge bg-green-lt text-green"><i class="fa-solid fa-circle-check me-1"></i>${escapeHtml(i18next.t("Filled and confirmed"))}</span>`;
+        }
 
         return `
         <tr>
           <td><a href="${href}">${escapeHtml(when)}</a></td>
           <td>${escapeHtml(occurrence.scheduleName ?? "")}</td>
           <td class="text-center">${filled}</td>
-          <td class="text-center">${gap}</td>
           <td class="text-center">
             ${actionMenu([
               {
