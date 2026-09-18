@@ -35,6 +35,7 @@ import {
   initDataTable,
   isoDate,
   renderState,
+  tText,
 } from "./ui";
 
 /**
@@ -148,30 +149,32 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
       .map((occurrence) => {
         const href = options.occurrenceUrl(occurrence.id);
         const when = occurrence.start ?? occurrence.occurrenceDate ?? "";
-        // One cell says how the occurrence stands (review, 2026-09-18). An EMPTY
-        // plan is not "fully staffed" (§2.10): it has no gaps only because nobody
-        // said what it needs, so it links to where the needs are set. Otherwise:
-        // green when every position is assigned AND every assignment accepted,
-        // amber when every position is assigned but somebody has not answered
-        // yet, red when a position is still unassigned — named, so the reader
-        // knows what is short without opening the row.
+        // One cell, one icon, says how the occurrence stands (review, 2026-09-18);
+        // the words live in the tooltip. An EMPTY plan is not "fully staffed"
+        // (§2.10): it has no gaps only because nobody said what it needs, so its
+        // icon links to where the needs are set. Otherwise: green when every
+        // position is assigned AND every assignment accepted, amber when every
+        // position is assigned but somebody has not answered yet, red when a
+        // position is still unassigned — the tooltip names what is short.
         let filled: string;
         if (occurrence.requirementCount === 0) {
-          filled = `<a class="badge bg-secondary-lt text-secondary" href="${href}">${escapeHtml(i18next.t("No staffing needs set"))}</a>`;
+          const label = i18next.t("No staffing needs set");
+          filled = `<a class="text-secondary" href="${href}" title="${escapeAttribute(label)}" aria-label="${escapeAttribute(label)}"><i class="fa-solid fa-circle-question fa-lg" aria-hidden="true"></i></a>`;
         } else if (occurrence.gapCount > 0) {
-          filled = `<span class="badge bg-red-lt text-red" title="${escapeAttribute(gapSummary(occurrence))}"><i class="fa-solid fa-triangle-exclamation me-1"></i>${escapeHtml(
-            i18next.t("{{live}} of {{required}} — {{needed}}", {
-              live: occurrence.liveCount,
-              required: occurrence.requiredCount,
-              needed: gapSummary(occurrence),
-            }),
-          )}</span>`;
+          const label = tText("{{live}} of {{required}} filled — {{needed}} still needed", {
+            live: occurrence.liveCount,
+            required: occurrence.requiredCount,
+            needed: gapSummary(occurrence),
+          });
+          filled = `<span class="text-red" title="${escapeAttribute(label)}" aria-label="${escapeAttribute(label)}"><i class="fa-solid fa-triangle-exclamation fa-lg" aria-hidden="true"></i></span>`;
         } else if (occurrence.pendingCount > 0) {
-          filled = `<span class="badge bg-yellow-lt text-yellow"><i class="fa-solid fa-hourglass-half me-1"></i>${escapeHtml(
-            i18next.t("Assigned, {{count}} not yet confirmed", { count: occurrence.pendingCount }),
-          )}</span>`;
+          const label = tText("Every position is assigned; {{count}} not yet confirmed", {
+            count: occurrence.pendingCount,
+          });
+          filled = `<span class="text-yellow" title="${escapeAttribute(label)}" aria-label="${escapeAttribute(label)}"><i class="fa-solid fa-hourglass-half fa-lg" aria-hidden="true"></i></span>`;
         } else {
-          filled = `<span class="badge bg-green-lt text-green"><i class="fa-solid fa-circle-check me-1"></i>${escapeHtml(i18next.t("Filled and confirmed"))}</span>`;
+          const label = i18next.t("Every position is filled and confirmed");
+          filled = `<span class="text-green" title="${escapeAttribute(label)}" aria-label="${escapeAttribute(label)}"><i class="fa-solid fa-circle-check fa-lg" aria-hidden="true"></i></span>`;
         }
 
         return `
