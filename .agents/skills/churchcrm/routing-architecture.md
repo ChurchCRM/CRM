@@ -723,8 +723,8 @@ Last updated: September 11, 2026
 
 The coordinator area of Volunteer Management v2 is the `src/ministries/` module
 (`MvcAppFactory::create('/ministries')`): `/ministries/dashboard`, `/ministries/{id}`,
-`/ministries/occurrences/{id}`. Its API is `/api/ministries/*` (route files still under
-`src/api/routes/volunteer/`, each opening `$app->group('/ministries', …)`; the member surface is
+`/ministries/occurrences/{id}`. Its API is `/api/ministries/*` (route files under
+`src/api/routes/ministries/`, each opening `$app->group('/ministries', …)`; the member surface is
 `/api/ministries/me/*`). There is no `/volunteer` module and no redirects from one: nothing
 under it ever shipped. The webpack bundles keep their `volunteer-*` names. A new module
 directory needs its own `.htaccess` (copy `src/fundraiser/.htaccess`): the root rewrite
