@@ -14,7 +14,15 @@ describe("Family verification — self-verify token link (no account)", () => {
         // No browser session needed: API call uses x-api-key header auth,
         // and the verify page is public (token-based, no login required)
         cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then((response) => {
-            cy.wrap(response.body.url).as("verifyUrl");
+            // The API returns an absolute URL built from SystemURLs::getURL(),
+            // which is Config.php's hard-coded $URL[0] (http://localhost/ in
+            // docker/Config.php). That's correct for real emailed links, but
+            // following it verbatim in a test breaks on any stack that isn't
+            // reachable on plain http://localhost — a different port, host,
+            // or scheme (#9871). Extract just the path (+ query) and visit/
+            // request it relative to cy.baseUrl instead.
+            const { pathname, search } = new URL(response.body.url);
+            cy.wrap(pathname + search).as("verifyUrl");
         });
     });
 
