@@ -42,8 +42,11 @@ describe("Mailing address on mailed reports (#9743)", () => {
         cy.contains("Family Info");
         cy.get("#FamilyName").type(familyName);
         members.forEach((firstName, index) => {
-            // Last name left blank: the editor fills in the family name.
+            // Last name left blank: the editor fills in the family name. The
+            // directory form pre-selects the member classifications, so each
+            // member is a Member (1) rather than Unassigned (0).
             cy.get(`input[name="FirstName${index + 1}"]`).type(firstName);
+            cy.get(`select[name="Classification${index + 1}"]`).select("1", { force: true });
         });
         cy.get('input[name="Address1"]').type("742 Evergreen Terrace");
         cy.get('input[name="City"]').clear().type("Springfield");
@@ -142,8 +145,10 @@ describe("Mailing address on mailed reports (#9743)", () => {
     });
 
     after(() => {
+        // deleteMembers: without it the family delete only unlinks the members,
+        // which would leave the directory suite's people behind as orphans.
         createdFamilyIds.forEach((id) => {
-            cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}`, null, 200);
+            cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}?deleteMembers=true`, null, 200);
         });
     });
 

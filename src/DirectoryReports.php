@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Directory reports');
@@ -265,5 +266,26 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     </form>
   </div>
 </div>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  // "Mailing Address if Different" prints beneath the primary address, so it only
+  // means something while "Primary Address" is on. Keep the two in step: turning
+  // the primary address off disables and clears the sub-option instead of
+  // silently ignoring it when the report is built.
+  (function () {
+    var primary = document.getElementById("bDirAddress");
+    var mailing = document.getElementById("bDirMailingAddress");
+    if (!primary || !mailing) {
+      return;
+    }
+    var sync = function () {
+      mailing.disabled = !primary.checked;
+      if (!primary.checked) {
+        mailing.checked = false;
+      }
+    };
+    primary.addEventListener("change", sync);
+    sync();
+  })();
+</script>
 <?php
 require_once __DIR__ . '/Include/Footer.php';
