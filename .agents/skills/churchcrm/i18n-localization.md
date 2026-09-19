@@ -794,6 +794,7 @@ Then `grep -rn -F "<the phrase>"` each variant's call sites and read the surroun
 | Extension / module names | `OPcache`, `SAPI`, `mod_rewrite`, `ionCube` |
 | Config keys & directives | `date.timezone`, `memory_limit`, `post_max_size`, `session.save_handler` |
 | Protocol / tech acronyms | `TLS`, `Auto-TLS`, `SSL`, `SMTP`, `IMAP`, `DNS`, `CSP`, `CORS`, `SHA1 Hash` |
+| File format / feature acronyms used as standalone labels (export buttons, badges, table headers) | `CSV`, `OFX`, `PDF`, `URL`, `2FA` — confirmed 2026-09-15: these were found wrapped as standalone `gettext('CSV')`/`gettext('OFX')`/`gettext('PDF')`/`gettext('2FA')`/`gettext('URL')` calls, unwrapped to bare literals. Note the distinction from `HTML URL` / `ICS URL` / `SHA1 Hash`, which stay wrapped because they already have real per-locale translations on POEditor — don't unwrap an established term without checking whether locales have already translated it. |
 | Brand names | `ChurchCRM`, `Vonage`, `MailChimp`, `GitHub`, `OpenLP`, `Nextcloud`, `Gravatar`, `WebDAV`, `POEditor`, `ownCloud`, `Stripe`, `PayPal` |
 | Placeholder examples | `name@example.com`, `+1-555-123-4567`, `https://example.com` |
 | Punctuation-only placeholders | `—` (em dash "no data" marker), `-`, `...`, `•` |
@@ -867,6 +868,18 @@ Terms at the top of the list that match the table above should be unwrapped in s
 **If you remove a wrapper**, the next automated extraction stops picking it up — you do **not** run `npm run locale:build` yourself to make that happen. New missing batches no longer include it; stale POEditor entries are harmless and can be cleaned up manually.
 
 **Related:** the locale translation commands (`/locale-translate`, `/locale-release`) list these same tokens under "Preserve exactly / never translate" — the fix here is to stop them entering the pipeline in the first place.
+
+### Avoid Wrapping a Single Bare Word Unless It's Truly Unambiguous <!-- learned: 2026-09-15 -->
+
+**Prefer a short phrase over a single word when the word alone doesn't carry its meaning.** A lone `gettext('ID')` or `gettext('OK')` gives a translator nothing to disambiguate against — every meaning that word could have in the target language becomes a guess. This is a different problem from the "never wrap at all" literals above: `ID` and `OK` genuinely differ by locale (unlike `CSV`/`PDF`), so they must stay translatable — they just need enough context to be translated *correctly*, and that context has to live in a place translators actually see.
+
+**Source-code comments do NOT solve this** — confirmed 2026-09-15: this project's `xgettext` extraction runs with `--no-location` and no `--add-comments` flag, and POEditor's own import does not surface `.po` translator-comment metadata as visible per-term context either. Adding a `/* TRANSLATORS: ... */` comment above a `gettext()` call does not reach the translator. (It's also fragile even if comment extraction were enabled: `xgettext` silently *drops* the comment entirely if the same msgid appears elsewhere in the codebase with different comment text — every occurrence must be byte-identical or the comment vanishes with no warning.)
+
+**What actually works:**
+
+1. **Best: make the string itself unambiguous.** If the UI has room, prefer `gettext('Record ID')` / a full label over bare `gettext('ID')`; prefer a specific phrase over a bare `gettext('OK')` badge where the surrounding markup doesn't already make "status passed" obvious. This fixes it for every translator, forever, with zero extra tooling.
+2. **When the short word can't change** (tight table-column width, existing established term with real translations already on POEditor), set context directly on the **POEditor term** via its web UI (Terms → term → Context field) or the `terms/add`/`terms/update` API's `context` parameter — this is what actually shows up next to the term for translators. This is a one-time manual step on POEditor itself, not a source-code or `.po` change.
+3. **Don't invent a new short ambiguous term if an existing full-phrase term already covers the same meaning** — reuse it instead (see Term Consolidation Patterns below).
 
 ### Never Split a Sentence Across Multiple gettext() Calls <!-- learned: 2026-04-22 -->
 
@@ -1059,6 +1072,29 @@ printf(
 echo $count > 1 ? gettext('people') : gettext('person');
 // Missing translation for singular + plural logic
 ```
+
+### Minimize `{{count}}` / Plural Interpolation — Prefer Simpler Phrasing <!-- learned: 2026-09-15 -->
+
+**Default to avoiding grammatical plural forms in new UI copy unless the sentence truly can't be phrased without one.** A CLDR plural object isn't just `one`/`other` — several supported locales require more forms than English has, and every one of them has to be filled in correctly for every count-bearing string:
+
+```json
+"Copied {{count}} members": {
+  "one": "Скопійовано {{count}} член",
+  "few": "Скопійовано {{count}} члени",
+  "many": "Скопійовано {{count}} членів",
+  "other": "Скопійовано {{count}} членів"
+}
+```
+Ukrainian needs all four forms (`one`/`few`/`many`/`other`); Czech, Polish, Russian, Arabic, and others have their own multi-form rules. Every count-bearing string multiplies translator effort by however many plural categories that locale's grammar requires, and a partially-filled plural object (some forms translated, some left `""`) is exactly the kind of gap this skill's translation-workflow review keeps finding across locales — see [[locale-translation-workflow]].
+
+**Alternatives, roughly in order of preference:**
+
+1. **Drop the count from the sentence if the UI doesn't need it inline** — e.g. a toast that says `gettext('Members copied')` with the number shown separately in a badge/counter element needs zero plural forms.
+2. **Rephrase as `label: number`, which doesn't grammatically inflect** — `"Members copied: {{count}}"` sidesteps subject–verb/noun agreement in most languages even though the raw count can still take a unit suffix in some (still simpler than a fully-conjugated sentence).
+3. **If a full sentence is unavoidable, keep exactly one count-bearing noun per string** — don't require translators to agree plural forms across two different nouns in the same sentence (e.g. avoid `"{{count}} recipients across {{n}} lists"`).
+4. **Only use the nested plural object (`{ one, other, ... }`) as a last resort**, and when you do, treat all of that locale's required CLDR categories as mandatory to fill — not just `one`/`other` — or the string will sit permanently incomplete for languages like Ukrainian, Polish, Czech, and Arabic.
+
+This is a UI-copy authoring guideline, not a hard block — some messages genuinely need the count inline. The point is to default to the phrasing that needs the least grammatical agreement, not to reach for `{{count}}` out of habit.
 
 ---
 

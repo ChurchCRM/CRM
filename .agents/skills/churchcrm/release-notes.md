@@ -339,4 +339,4 @@ Run this skill with the changelog file as context. It handles platform-specific 
 - [GitHub Interaction](./github-interaction.md) — publishing the release via `gh`
 - [Social Media Release](./social-media-release.md) — X, Facebook, Instagram, LinkedIn posts
 - [i18n & Localization](./i18n-localization.md) — locale details for the notes
-- [Locale AI Translation](./locale-ai-translation.md) — AI translation pipeline before release
+- [Locale Translation Workflow](./locale-translation-workflow.md) — translation pipeline before release

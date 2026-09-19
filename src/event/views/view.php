@@ -72,11 +72,11 @@ $inactive = (int) $event->getInActive() === 1;
           <?php endif; ?>
         </dl>
       </div>
-      <div class="card-footer d-flex justify-content-between">
+      <div class="card-footer d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2">
         <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-outline-secondary">
           <i class="fa-solid fa-chevron-left me-1"></i><?= gettext('Back to Events') ?>
         </a>
-        <div class="d-flex gap-2">
+        <div class="d-flex flex-wrap gap-2">
           <?php if (!$inactive && !$eventEnded): ?>
             <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>" class="btn btn-outline-primary">
               <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
@@ -117,7 +117,7 @@ $inactive = (int) $event->getInActive() === 1;
       </div>
       <?php if (empty($attendees)): ?>
         <div class="card-body text-center text-body-secondary py-4">
-          <i class="fa-solid fa-users-off fs-3 d-block mb-2"></i>
+          <i class="fa-solid fa-users-slash fs-3 d-block mb-2"></i>
           <?= gettext('No one has been checked in to this event yet.') ?>
         </div>
       <?php else: ?>

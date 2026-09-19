@@ -24,6 +24,11 @@ describe("API Private Map — POST /api/map/geocode-all", () => {
                 200,
                 120000,
             ).then((response) => {
+                // No skip key in the body: the API must default to 0 (#9846) —
+                // a client that omits it gets the first batch, not an error.
+                expect(response.body.skip).to.equal(0);
+                expect(response.body).to.have.property("processed").that.is.a("number").and.at.least(0);
+
                 // Core summary fields must all be present
                 expect(response.body).to.have.property("total");
                 expect(response.body).to.have.property("geocoded");
@@ -74,6 +79,63 @@ describe("API Private Map — POST /api/map/geocode-all", () => {
                     expect(response.body.failuresTruncated).to.equal(false);
                 }
             });
+        });
+    });
+
+    context("skip offset (#9846)", () => {
+        // The bulk action takes families in ID order. A client passes back the
+        // number of families that failed in its earlier batches as `skip`, so
+        // unresolvable families are not re-queried at the front of every batch.
+        // Neither call below reaches Nominatim for a skipped family, so this is
+        // deterministic regardless of what the seed addresses resolve to.
+        it("Skipping past every missing family processes nothing", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
+                (response) => {
+                    expect(response.body.skip).to.equal(100000);
+                    expect(response.body.processed).to.equal(0);
+                    expect(response.body.geocoded).to.equal(0);
+                    expect(response.body.failed).to.equal(0);
+                    expect(response.body.remaining).to.equal(response.body.total);
+                    expect(response.body.failures).to.have.length(0);
+                },
+            );
+        });
+
+        it("Skipping all but one missing family processes exactly one", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
+                (probe) => {
+                    const total = probe.body.total;
+                    if (total === 0) {
+                        cy.log("No families missing coordinates in this database — nothing to offset");
+                        return;
+                    }
+                    cy.makePrivateAdminAPICall(
+                        "POST",
+                        "/api/map/geocode-all",
+                        { skip: total - 1 },
+                        200,
+                        60000,
+                    ).then((response) => {
+                        expect(response.body.skip).to.equal(total - 1);
+                        expect(response.body.processed).to.equal(1);
+                        expect(response.body.geocoded + response.body.failed).to.equal(1);
+                    });
+                },
+            );
+        });
+
+        it("Rejects a negative skip with 400", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: -1 }, 400, 30000);
+        });
+
+        it("Echoes the requested skip and a processed count in the summary", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
+                (probe) => {
+                    // The default (no skip key) path is asserted by the happy-path test above.
+                    expect(probe.body.skip).to.equal(100000);
+                    expect(probe.body).to.have.property("processed").that.is.a("number");
+                },
+            );
         });
     });
 

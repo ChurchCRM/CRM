@@ -525,6 +525,9 @@ cy.contains(".card-title", "Properties").should("be.visible");
 
 Current Cypress best practice (2024+) is to clean up state at the **start** of the next test, not at the end of the previous one. Reason: `afterEach` does not run if a test crashes mid-way (uncaught exception, lost connection, process kill). Cleanup that only runs in `afterEach` can therefore leave the DB in a bad state that breaks every subsequent test.
 
+**Correction — use both hooks, for different jobs <!-- learned: 2026-09-12 -->**
+The sentence above overstates it: `afterEach` **does** run after an ordinary mid-test failure, assertion failures included. Only process termination (kill, crash of the runner) skips hooks — and it skips *all* of them, `beforeEach` included. So: `beforeEach` is the **safety net** that clears state a previously *killed* run left behind; `afterEach` is the **per-test restore**, so a test run on its own (`.only`) still leaves the DB as it found it. What `afterEach` does *not* rescue is cleanup queued **inside** a callback that threw: Cypress's command queue `onError` runs `cleanup()`, which advances the queue index to its length before failing the runnable, so commands still pending in that callback are abandoned ([command_queue.ts](https://github.com/cypress-io/cypress/blob/develop/packages/driver/src/cypress/command_queue.ts)). Put the cleanup in `afterEach`, never "enqueue it first" ahead of the assertions.
+
 ```javascript
 // ✅ CORRECT — cleanup and fixture setup both live in beforeEach
 describe("Group property management", () => {
@@ -1452,6 +1455,21 @@ cy.url().should('match', /people\/view\/\d+/);   // PersonSubmit redirects to th
 `PersonSubmitAndAdd` is the sibling button and reloads the editor instead —
 asserting on the `/people/view/{id}` redirect is what distinguishes them.
 `cy.createPersonWithBirthday` wraps all of this and yields the new person's id.
+
+### DataTables Empty Placeholder — Count Rows by a Server-Rendered Attribute <!-- learned: 2026-09-16 -->
+
+With zero rows DataTables injects `<tr><td class="dataTables_empty">No data available…</td></tr>`.
+The class is on the `<td>`, so `tr:not(.dataTables_empty)` still matches the placeholder
+row and a "table has rows" assertion passes against an empty table. Count only rows the
+page rendered for a record, via an attribute the view puts on the `<tr>`:
+
+```javascript
+// ❌ WRONG — :not() checks the tr's own classes; the placeholder tr has none
+cy.get("#depositsTable tbody tr:not(.dataTables_empty)").should("have.length.greaterThan", 0);
+
+// ✅ CORRECT — only real rows carry the attribute (verified: fails on an emptied table)
+cy.get("#depositsTable tbody tr[data-deposit-id]").should("have.length.greaterThan", 0);
+```
 
 ### Modal Testing Patterns <!-- learned: 2026-04-06 -->
 

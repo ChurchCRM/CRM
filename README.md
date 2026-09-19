@@ -22,7 +22,7 @@ You'll find step-by-step installation instructions, configuration notes, and use
 
 Quick start: see the "Quick Start" section in the Documentation for a fast setup.
 
-For detailed technical Documentation and developer guides, see our [Documentation](https://docs.churchcrm.io/).
+For core development setup, architecture, builds, and testing, see [DEVELOPING.md](DEVELOPING.md).
 
 To test the demo, visit our official demo page:
 
@@ -42,7 +42,7 @@ See the latest translation status and audit report: [locale/poeditor-audit.md](l
 
 We welcome contributions from everyone! Whether it's bug reports, feature requests, or code contributions, your input is invaluable.
 
-[See the [contribution guidelines](CONTRIBUTING.md) for how to file issues and submit pull requests.]
+[See the contribution guidelines](CONTRIBUTING.md) for how to file issues and submit pull requests.
 
 - Quick contributions: fork the repository, create a feature branch, run the test suite, and open a pull request; see CONTRIBUTING.md for details.
 
