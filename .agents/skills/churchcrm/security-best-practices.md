@@ -1153,6 +1153,50 @@ function createFund(Request $request, Response $response): Response
 }
 ```
 
+#### The full type surface <!-- learned: 2026-09-12 -->
+
+Six types, declared as the value of each field in the map (#9821):
+
+| Type | Behaviour | Present-only? |
+|------|-----------|---------------|
+| `'text'` | `InputUtils::sanitizeText()` — trims, strips tags. Also the fallback for any unrecognised type string. | yes — never rejects |
+| `'html'` | `InputUtils::sanitizeHTML()` — HTMLPurifier, safe rich text. | yes — never rejects |
+| `'int'` | `filter_var(FILTER_VALIDATE_INT)` on the trimmed value; writes back the **int**. | **required** — absent ⇒ 400 |
+| `'date'` | Strict `YYYY-MM-DD` — `createFromFormat('!Y-m-d', …)` plus a `format()` round-trip equality check. Normalised to `Y-m-d`. | **required**; `'date?'` is optional |
+| `'datetime'` | Strict `YYYY-MM-DD HH:MM:SS`, or `YYYY-MM-DD HH:MM`; same round-trip check. Normalised to `Y-m-d H:i:s`. | **required**; `'datetime?'` is optional |
+| `'enum:a,b,c'` | Exact, **case-sensitive** `in_array(..., true)` against the comma-separated list. | **required**; `'enum?:a,b,c'` is optional |
+
+```php
+$group->post('/repeat', 'createRepeatEvents')->add(new InputSanitizationMiddleware([
+    'Title'      => 'text',
+    'RecurType'  => 'enum?:weekly,monthly,yearly',
+    'RangeStart' => 'date?',
+    'RangeEnd'   => 'date?',
+]))->add(new AddEventsRoleAuthMiddleware());
+```
+
+Rules worth knowing before you pick a type:
+
+- **Every rejection is `400` with the canonical `SlimUtils::renderErrorJSON()` body,
+  `{"success": false, "message": "<message naming the field>"}`** (since #9821; the class used to
+  emit its own `{"error": …}` shape). Do not add another shape here — #9737 is unifying the API on
+  this one.
+- **The `?` optional form** (`'date?'`, `'datetime?'`, `'enum?:a,b,c'`) treats absent, `null` and
+  `''` as "not supplied" and leaves the value **exactly as it is** — an absent field stays absent,
+  it is never set to `''`. That is what lets a migrated handler keep its own
+  "Missing required field" message and its own defaulting. `'int'` has no optional form, which is
+  why it has a single caller.
+- **Prefer the optional form when migrating an existing hand-rolled check**, so the handler's
+  required-field error keeps firing with its original wording.
+- **No trimming** for `date` / `datetime` / `enum` — `" 2026-01-01"` is rejected. (`int` does trim.)
+- **Dates are naive wall-clock** in `sTimeZone` — the middleware attaches and converts no timezone.
+  See `timezone-handling.md`.
+- **`enum` splits on `,` only**, so a value cannot contain a comma; an empty list (`'enum:'`,
+  `'enum:a,,b'`) throws `\InvalidArgumentException` at route-registration time.
+- Validate closed value sets and dates **here**, not in the handler: the route table then shows the
+  contract without opening the handler, and there is one failure convention instead of four
+  (`events.php` alone used to have a strict check, a `strtotime()` check and an inline `in_array`).
+
 **Middleware order (LIFO rule):** In Slim 4, `->add()` is Last-In-First-Out —
 the **last** `->add()` call is outermost and runs **first**. Therefore:
 

@@ -1087,6 +1087,41 @@ describe('API - User Creation', () => {
 });
 ```
 
+### Testing Slim middleware — assert the message, not just the status <!-- learned: 2026-09-12 -->
+
+Middleware has no route of its own, so a spec can only reach it through a route that declares it.
+Pick (or migrate) a real route, then assert **which message came back as well as the status**.
+Since #9821 `InputSanitizationMiddleware` rejects with the same canonical body every handler uses
+(`SlimUtils::renderErrorJSON()` → `{"success": false, "message": "…"}`), so the shape alone no
+longer says *who* rejected the request — the message text does: the middleware names the offending
+field, the handler says what it always said.
+
+```js
+// Rejected by the middleware — the field is named in the message
+cy.makePrivateAdminAPICall("POST", "/api/events/repeat", body, 400).then((r) => {
+    expect(r.body.success).to.be.false;
+    expect(r.body.message).to.contain("RangeStart");
+});
+
+// Fell through to the handler — proof the middleware left the absent field alone
+cy.makePrivateAdminAPICall("POST", "/api/events/repeat", bodyWithoutRangeStart, 400).then((r) => {
+    expect(r.body.message).to.contain("Missing required field");
+});
+```
+
+Asserting only `400` makes a middleware spec pass against the unmigrated code, which is exactly the
+regression it is supposed to catch. Verified on #9821: the same spec was 10/16 before the middleware
+change and 16/16 after, and all six failures were on the body.
+
+### A fresh worktree needs `npm run build` before any UI spec <!-- learned: 2026-09-12 -->
+
+`npm run docker:test:start` mounts `src/` live, but the webpack bundles are **not** in git. In a
+new worktree (`npm ci` + `composer install` only, or after `build:php` alone) every UI spec fails
+with symptoms that look like app bugs — `expected '<window>' to have property 'showNewEventForm'`,
+`expected '<div#calendar>' to be 'visible'`, `ReferenceError` from application code. API specs pass
+fine, which makes the cause easy to misread. Run the full `npm run build` once, then re-run: 30
+"failures" became 0 on #9821 with no source change.
+
 ### Required Test Categories for Each Endpoint
 
 1. **Success Case** - Valid payload, correct status, expected data structure
