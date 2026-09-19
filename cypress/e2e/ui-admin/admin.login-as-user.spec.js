@@ -212,15 +212,12 @@ describe("Admin Login as User (masquerade)", () => {
         cy.get("#impersonationExit").click();
         cy.url().should("include", `/v2/user/${TARGET_USER_ID}`);
 
-        cy.request({
-            url: `/admin/api/system/logs/${authLogFileName()}`,
-            failOnStatusCode: false,
-        }).then((response) => {
-            expect(response.status, "auth log fetch").to.equal(200);
-            const body =
-                typeof response.body === "string"
-                    ? response.body
-                    : JSON.stringify(response.body);
+        // The tail of the log file itself, never the download endpoint: `src/logs`
+        // is bind-mounted from the host, and fetching the whole day's auth log
+        // through the API takes minutes once other specs have filled it (it hung
+        // the CI admin-ui job at the 30-minute limit).
+        cy.exec(`tail -n 400 src/logs/${authLogFileName()}`).then((result) => {
+            const body = result.stdout;
             expect(body).to.contain(
                 `Masquerade started: admin ${ADMIN_USER_ID} (Church Admin) as user ${TARGET_USER_ID} (${TARGET_USER_NAME})`,
             );
