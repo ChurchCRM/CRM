@@ -482,7 +482,9 @@ describe("Volunteer v2 e2e — #9714 scenario 1, Coffee Bar", () => {
             "GET",
             `${VOLUNTEER_URL}/ministries/${ministryId}/pool`,
         ).then((resp) => {
-            expect(resp.body.members).to.have.length(POOL_ALL.length);
+            // The fifteen volunteers plus the coordinator, who joined the pool
+            // Group with their scope grant (review, 2026-09-18).
+            expect(resp.body.members).to.have.length(POOL_ALL.length + 1);
             expect(POOL_ALL.length).to.eq(15);
         });
 

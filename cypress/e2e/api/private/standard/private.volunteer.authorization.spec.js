@@ -586,6 +586,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 expect(resp.body).to.deep.eq({
                     isAdmin: false,
                     isGlobalManager: false,
+                    isManageMyMinistries: false,
                     isCoordinator: false,
                     isTeamLeader: false,
                     managedMinistryIds: [],
@@ -752,6 +753,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 expect(resp.body).to.deep.eq({
                     isAdmin: false,
                     isGlobalManager: false,
+                    isManageMyMinistries: false,
                     isCoordinator: false,
                     isTeamLeader: false,
                     managedMinistryIds: [],
@@ -791,6 +793,7 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 expect(resp.body).to.deep.eq({
                     isAdmin: false,
                     isGlobalManager: false,
+                    isManageMyMinistries: false,
                     isCoordinator: false,
                     isTeamLeader: true,
                     managedMinistryIds: [],

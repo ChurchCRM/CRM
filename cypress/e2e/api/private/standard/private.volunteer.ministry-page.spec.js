@@ -496,7 +496,9 @@ describe("Volunteer v2 — the ministry overview summary (#9701)", () => {
             expect(summary.teamCount, "three teams").to.eq(3);
             // The volunteer arrived through the qualification, the bystander through
             // the pool route — both are members of the ministry's one Group (D19).
-            expect(summary.volunteerCount, "two people in the pool").to.eq(2);
+            // Two volunteers, plus the coordinator and the team leader: a scope
+            // grant puts its holder in the pool Group (review, 2026-09-18).
+            expect(summary.volunteerCount, "two volunteers and two scope holders in the pool").to.eq(4);
             // Three occurrences needing two each, one of the six slots filled.
             expect(summary.unfilledPositionCount).to.eq(5);
         });
@@ -619,7 +621,7 @@ describe("Volunteer v2 — removing a volunteer from a ministry (#9701)", () => 
 
     it("re-opens the slot the cancelled assignment held", () => {
         summaryFor(ADMIN_KEY).then((summary) => {
-            expect(summary.volunteerCount, "one pool member left").to.eq(1);
+            expect(summary.volunteerCount, "the bystander and the two scope holders left").to.eq(3);
             // Six slots, none of them filled any more.
             expect(summary.unfilledPositionCount).to.eq(6);
         });

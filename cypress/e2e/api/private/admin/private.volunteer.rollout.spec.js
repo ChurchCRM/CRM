@@ -131,7 +131,8 @@ describe("Volunteer v2 rollout flag (#9704)", () => {
         it("serves the V2 dashboard to an administrator", () => {
             adminPageRequest(DASHBOARD_URL).then((resp) => {
                 expect(resp.status).to.eq(200);
-                expect(resp.body).to.include("Volunteer");
+                // Renamed from "Volunteer Dashboard" on 2026-09-17.
+                expect(resp.body).to.include("Ministry Dashboard");
             });
         });
 

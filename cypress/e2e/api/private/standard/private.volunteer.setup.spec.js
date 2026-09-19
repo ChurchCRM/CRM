@@ -68,6 +68,7 @@ const EXPECTED_COLUMNS = {
         "vpos_Description",
         "vpos_Active",
         "vpos_Recruiting",
+        "vpos_SelfAssignable",
         "vpos_Order",
     ],
     volunteer_qualification_vqal: [
@@ -95,6 +96,7 @@ const EXPECTED_COLUMNS = {
         "vsch_WindowStart",
         "vsch_WindowEnd",
         "vsch_GenerateAheadDays",
+        "vsch_OneOff",
         "vsch_Active",
     ],
     volunteer_occurrence_vocc: [

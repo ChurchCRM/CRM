@@ -35,7 +35,12 @@ const PRIVATE_CALENDAR_ID = 2;
 const PRIVATE_CALENDAR_NAME = "Private Calendar";
 const BIRTHDAYS_CALENDAR_ID = 0;
 
-const CHURCH_NAME = "Main St. Cathedral";
+/**
+ * Read, never assumed: `private.admin.system.config.spec.js` sets sChurchName to
+ * "Example Church Name" to prove trimming and never restores it, so a hardcoded
+ * seed value passes alone and fails in a full-suite run.
+ */
+let churchName = "Main St. Cathedral";
 
 const SUBSCRIPTION_URL = "/api/portal/calendar/subscription";
 
@@ -128,6 +133,15 @@ const dayInWindow = (monthsAhead) => {
 const unfold = (ics) => ics.replace(/\r\n[ \t]/g, "");
 
 describe("Member Portal calendar subscription", () => {
+    before(() => {
+        cy.request({
+            url: "/admin/api/system/config/sChurchName",
+            headers: { "x-api-key": Cypress.env("admin.api.key") },
+        }).then((response) => {
+            churchName = response.body.value ?? response.body.data ?? churchName;
+        });
+    });
+
     after(() => {
         setVisibleCalendars([]);
     });
@@ -155,7 +169,7 @@ describe("Member Portal calendar subscription", () => {
 
             getSubscription().then((response) => {
                 expect(response.status).to.eq(200);
-                expect(response.body.title).to.eq(`${CHURCH_NAME} Calendar`);
+                expect(response.body.title).to.eq(`${churchName} Calendar`);
 
                 const ids = response.body.choices.map((choice) => choice.id);
                 expect(ids).to.have.members([
@@ -209,7 +223,7 @@ describe("Member Portal calendar subscription", () => {
                     expect(response.body.url).to.include("/api/public/portal-calendar/");
                     expect(response.body.url).to.match(/\/calendar\.ics$/);
                     expect(response.body.webcalUrl).to.match(/^webcal:\/\//);
-                    expect(response.body.title).to.eq(`${CHURCH_NAME} Calendar`);
+                    expect(response.body.title).to.eq(`${churchName} Calendar`);
 
                     const selected = response.body.choices
                         .filter((choice) => choice.selected)
@@ -249,7 +263,7 @@ describe("Member Portal calendar subscription", () => {
                         expect(ics).to.include("VERSION:2.0");
                         expect(ics).to.include("PRODID:");
                         expect(ics.trim()).to.match(/END:VCALENDAR$/);
-                        expect(ics).to.include(`X-WR-CALNAME:${CHURCH_NAME} Calendar`);
+                        expect(ics).to.include(`X-WR-CALNAME:${churchName} Calendar`);
                         expect(ics).to.include("BEGIN:VEVENT");
                         expect(ics).to.include(`SUMMARY:${churchEvent}`);
                         expect(ics).to.include(`CATEGORIES:${CHURCH_CALENDAR_NAME}`);
