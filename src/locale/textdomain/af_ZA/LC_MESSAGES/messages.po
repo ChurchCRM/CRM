@@ -5050,14 +5050,6 @@ msgid "Verification URL created"
 msgstr "Verifikasie-URL geskep"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Kon nie e-pos (s) stuur nie"
 
@@ -8449,10 +8441,6 @@ msgstr "U wagwoord is suksesvol opgedateer."
 #: 
 msgid "selected family has no coordinates"
 msgstr "gekose familie het geen koördinate nie"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
@@ -12214,10 +12202,6 @@ msgid "Database dump only (.sql)"
 msgstr "Slegs databasis-dump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Datumreeks kan nie 1 jaar oorskry nie"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Verwoestende Operasie"
 
@@ -12812,10 +12796,6 @@ msgstr "Groep nie gevind vir hierdie rollys nie"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Inaktiewe status kan slegs vir die klassifikasielys omgeskakel word"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Nuwe gebruikers sal nie 'n welkome e-pos met hul geloofsbriewe ontvang nie. Deel die wagwoord handmatig met hulle, of stel eers e-pos op."
 
 #: 
 msgid "Option name is required"
@@ -17346,10 +17326,6 @@ msgid "Back to Pledge Dashboard"
 msgstr "Terug na Belofte-paneelbord"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
 msgstr "Klik \"Genereer Koordnate\" om die kaartligging vir die adres hierbo op te soek, of voer breedtegraad/lengtegraad handmatig in. As dit leeg gelaat word, word koordinate ook outomaties bespeur wanneer u die vorm stoor."
 
@@ -17458,10 +17434,6 @@ msgstr "Geen betalings gevind vir die geselekteerde depositos nie"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Geen geldige deposito-IDs verskaf nie"
-
-#: 
-msgid "OFX"
-msgstr "OFX"
 
 #: 
 msgid "PDF successfully emailed to %d family."
@@ -17850,4 +17822,68 @@ msgstr "Geen gebeure gevind vir %s %d nie."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Probeer 'n ander tipe gebeurtenis, maand of jaar kies."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "'n Geokoderingsfout het voorgekom — probeer later weer"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adres is onvolledig (stad, provinsie en poskode ontbreek)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alle families het reeds koördinate."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Kon nie koördinate opdateer nie"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Kon nie familie se koördinate opdateer nie"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Alle {{geocoded}} families is gegeokodeer. Die kaart is nou op datum."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} families is gegeokodeer. {{failed}} kon nie opgelos word nie — sien besonderhede hieronder."
+
+#: 
+msgid "Geocoding…"
+msgstr "Besig om te geokodeer…"
+
+#: 
+msgid "No address on file"
+msgstr "Geen adres aangeteken nie"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Geen ooreenkoms gevind nie — kontroleer die straatadres, stad en poskode"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Maak 'n familie oop om die adres reg te stel, en loop dit dan weer."
+
+#: 
+msgid "Set up now"
+msgstr "Stel nou op"
+
+#: 
+msgid "Unknown family"
+msgstr "Onbekende familie"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Opdateer Alle Koördinate"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Opdateer Alle Familiekoördinate"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Opdateer Koördinate"
 

@@ -132,7 +132,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                         <th class="text-center"><?= gettext('Last Login') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
                         <th class="text-center"><?= gettext('Status') ?></th>
-                        <th class="text-center"><?= gettext('2FA') ?></th>
+                        <th class="text-center">2FA</th>
                         <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                     </tr>
                 </thead>
@@ -178,7 +178,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                 <?php if ($user->is2FactorAuthEnabled()) { ?>
                                     <span class="badge rounded-pill bg-success text-white"><i class="fa-solid fa-circle-check me-1"></i><?= gettext('Enabled') ?></span>
                                 <?php } else { ?>
-                                    <span class="badge rounded-pill bg-danger text-white"><i class="fa-solid fa-shield-slash me-1"></i><?= gettext('Disabled') ?></span>
+                                    <span class="badge rounded-pill bg-danger text-white"><i class="fa-solid fa-circle-xmark me-1"></i><?= gettext('Disabled') ?></span>
                                 <?php } ?>
                             </td>
                             <td class="w-1">

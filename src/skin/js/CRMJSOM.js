@@ -747,7 +747,8 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
   options = options || {};
   const inactive = options.inactive || false;
   const root = window.CRM.root;
-  const escapedTitle = window.CRM.escapeHtml(eventTitle || "");
+  // use escapeAttribute (encodes quotes) for data-* attribute context, as renderPersonActionMenu does
+  const escapedTitle = window.CRM.escapeAttribute(eventTitle || "");
 
   const statusButton = inactive
     ? '<button type="button" class="dropdown-item activate-event" data-event_id="' +
