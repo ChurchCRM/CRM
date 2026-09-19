@@ -44,6 +44,40 @@ cypress/e2e/api/private/
     └── family.spec.ts
 ```
 
+## Build the Worktree Before Running Cypress Against It <!-- learned: 2026-09-17 -->
+
+`src/skin/v2/*.min.js` and `src/skin/external/` are build artifacts (git-ignored). A
+fresh clone or `git worktree` that has only had `npm ci` + `composer install` serves
+pages without jQuery, i18next or the locale loader, so every spec fails with
+application errors that look like page bugs:
+
+```
+ReferenceError: $ is not defined          # any legacy page with an inline $(document).ready
+ReferenceError: i18next is not defined    # the cy.setupAdminSession() beforeEach hook
+```
+
+Run the full `npm run build` once (not just `build:webpack` — `grunt copy` in
+`build:js:legacy` is what populates `src/skin/external/`) before the first Cypress run
+in a new worktree. The Docker test stack bind-mounts the worktree, so no container
+rebuild is needed afterwards.
+
+## One Database Per CI Job: Never Assert Exact Lists or Counts of Live Data <!-- learned: 2026-09-17 -->
+
+Each CI job (`api`, `admin-ui`, each `ui` shard) seeds the database **once** and runs all
+of its specs against it in alphabetical order. Anything an earlier spec creates and does
+not delete is visible to later specs. Known leftovers in `admin-ui`:
+
+- `admin.people.spec.js` adds classifications (`CypressTestClass_<ts>`, `CypressRenamed_<ts>`)
+  to `list_lst` and leaves them.
+- `admin.csvimport.spec.js` imports unclassified people (`... ImportTest`) with July 4 birthdays.
+
+So a spec that renders a list from `list_lst`, or counts people, passes locally against a
+fresh seed and fails in CI. Assert the seeded rows and their relative order (`expectInOrder`
+style helper), use `have.length.at.least`, and check the generated SQL or specific seeded
+names instead of totals. If you need to prove "options come from the database", create a
+row in the test, check it appears, and delete it in the same test. Example:
+`cypress/e2e/ui-admin/admin.query-classification.spec.js`.
+
 ## Session-Based Login Pattern (REQUIRED)
 
 ### Modern Pattern (Cypress 13+)

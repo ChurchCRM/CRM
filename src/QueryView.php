@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -90,6 +91,10 @@ function ValidateInput()
         if ($qrp_Required && empty($_POST[$qrp_Alias])) {
             $bError = true;
             $aErrorText[$qrp_Alias] = gettext('This value is required.');
+        } elseif ((int) $qrp_Type === 3 && empty($_POST[$qrp_Alias])) {
+            // #9914: an optional multi-select left blank means "all options".
+            // Substitute every option value so the IN (...) clause matches everything.
+            $vPOST[$qrp_Alias] = getQueryParameterOptionValues($qrp_OptionSQL);
         } else {
             // Assuming there was no error above...
             // Validate differently depending on the contents of the qrp_Validation field
@@ -146,8 +151,16 @@ function ValidateInput()
                     break;
 
                 default:
-                    // Sanitize input to prevent SQL injection
-                    $vPOST[$qrp_Alias] = InputUtils::sanitizeText($_POST[$qrp_Alias]);
+                    // Sanitize input to prevent SQL injection. Multi-selects post an
+                    // array; sanitize each element (trim() on an array is a TypeError).
+                    if (is_array($_POST[$qrp_Alias])) {
+                        $vPOST[$qrp_Alias] = array_map(
+                            static fn ($val): string => InputUtils::sanitizeText((string) $val),
+                            $_POST[$qrp_Alias]
+                        );
+                    } else {
+                        $vPOST[$qrp_Alias] = InputUtils::sanitizeText((string) ($_POST[$qrp_Alias] ?? ''));
+                    }
                     break;
             }
         }
@@ -188,7 +201,12 @@ function escapeQueryParameter($value, $connection, $isIdentifier = false)
     }
 
     if (is_array($value)) {
-        // For arrays, escape each element and quote it, then join with commas
+        // For arrays, escape each element and quote it, then join with commas.
+        // An empty array would render "IN ()", which is a syntax error, so emit
+        // a value no row can match instead.
+        if ($value === []) {
+            return 'NULL';
+        }
         $escapedValues = array_map(function($val) use ($connection) {
             return"'" . $connection->real_escape_string((string)$val) ."'";
         }, $value);
@@ -418,6 +436,54 @@ function renderEmptyOptionState(string $qrp_Name, string $qrp_Alias): string
     return '<div class="text-muted small">' . $msg . '</div>';
 }
 
+/**
+ * Runs a parameter's qrp_OptionSQL and returns the option rows (Value / Display).
+ * Returns an empty array when there is no option SQL or the query fails.
+ *
+ * @return array<int, array{Value: string, Display: string}>
+ */
+function getQueryParameterOptionRows(?string $optionSQL): array
+{
+    if (empty($optionSQL)) {
+        return [];
+    }
+    $rsParameterOptions = RunQuery($optionSQL, false);
+    $aOptionRows = [];
+    while ($rsParameterOptions && $ThisRow = mysqli_fetch_array($rsParameterOptions)) {
+        $aOptionRows[] = $ThisRow;
+    }
+    return $aOptionRows;
+}
+
+/**
+ * Returns every option value a select-type parameter offers. Used to expand an
+ * optional multi-select that was left blank into "all options" (#9914).
+ *
+ * @return string[]
+ */
+function getQueryParameterOptionValues(?string $optionSQL): array
+{
+    return array_map(
+        static fn (array $row): string => (string) $row['Value'],
+        getQueryParameterOptionRows($optionSQL)
+    );
+}
+
+/**
+ * Localized month names keyed 1-12, for qrp_Type 4 ("month") parameters.
+ *
+ * @return array<int, string>
+ */
+function getQueryMonthNames(): array
+{
+    return [
+        1 => gettext('January'), 2 => gettext('February'), 3 => gettext('March'),
+        4 => gettext('April'), 5 => gettext('May'), 6 => gettext('June'),
+        7 => gettext('July'), 8 => gettext('August'), 9 => gettext('September'),
+        10 => gettext('October'), 11 => gettext('November'), 12 => gettext('December'),
+    ];
+}
+
 function getQueryFormInput($queryParameters)
 {
     global $aErrorText;
@@ -486,20 +552,15 @@ function getQueryFormInput($queryParameters)
             break;
 
         case 3:
-            // Run the SQL to get the options; guard against query failure
-            $rsParameterOptions = $qrp_OptionSQL ? RunQuery($qrp_OptionSQL, false) : false;
-
-            // Buffer all rows so we can detect empty results
-            $aOptionRows = [];
-            while ($rsParameterOptions && $ThisRow = mysqli_fetch_array($rsParameterOptions)) {
-                $aOptionRows[] = $ThisRow;
-            }
+            // Multi-select with OPTION tags provided via a SQL query
+            $aOptionRows = getQueryParameterOptionRows($qrp_OptionSQL);
 
             if (empty($aOptionRows)) {
                 // Same empty-state treatment as case 2 for multiselects (#8898 / #8899).
                 $input = renderEmptyOptionState($qrp_Name, $qrp_Alias);
             } else {
-                $input = '<select name="' . $qrp_Alias . '[]" class="form-select" size="10" multiple="multiple">';
+                $size = min(10, count($aOptionRows) + 1);
+                $input = '<select name="' . $qrp_Alias . '[]" class="form-select" size="' . $size . '" multiple="multiple">';
                 $input .= '<option disabled selected value> -- ' . gettext('select an option') . ' -- </option>';
                 foreach ($aOptionRows as $ThisRow) {
                     extract($ThisRow);
@@ -507,6 +568,18 @@ function getQueryFormInput($queryParameters)
                 }
                 $input .= '</select>';
             }
+            break;
+
+        // Month SELECT (1-12, localized names) defaulting to next month, so the
+        // reports people run at month end point at the month they are preparing.
+        case 4:
+            $nextMonth = DateTimeUtils::getCurrentMonth() % 12 + 1;
+            $input = '<select name="' . $qrp_Alias . '" class="form-select">';
+            foreach (getQueryMonthNames() as $monthNumber => $monthName) {
+                $selected = $monthNumber === $nextMonth ? ' selected' : '';
+                $input .= '<option value="' . $monthNumber . '"' . $selected . '>' . InputUtils::escapeHTML($monthName) . '</option>';
+            }
+            $input .= '</select>';
             break;
     }
 
