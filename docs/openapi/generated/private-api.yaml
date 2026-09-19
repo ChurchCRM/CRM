@@ -1826,9 +1826,17 @@ paths:
       tags:
         - Finance
       summary: 'Get all deposits (Finance role required)'
+      parameters:
+        -
+          name: fyid
+          in: query
+          description: 'Fiscal year ID to filter by deposit date; omit for all time'
+          required: false
+          schema:
+            type: integer
       responses:
         '200':
-          description: 'JSON array of all deposits'
+          description: 'JSON array of deposits'
         '401':
           description: Unauthorized
         '403':
@@ -2312,12 +2320,19 @@ paths:
       tags:
         - Finance
       summary: 'Get pledge and payment history for a family (Finance role required)'
-      description: "Results are filtered by the current user's ShowSince date and ShowPayments/ShowPledges preferences."
+      description: "Results are filtered by fyid (fiscal year) when a positive value is provided. fyid=0 means All Time (no date filter at all). Omitting fyid entirely falls back to the current user's ShowSince date preference. ShowPayments/ShowPledges preferences always apply."
       parameters:
         -
           name: familyId
           in: path
           required: true
+          schema:
+            type: integer
+        -
+          name: fyid
+          in: query
+          description: 'Fiscal year ID to filter by; 0 for All Time (no filter); omit to fall back to the ShowSince preference'
+          required: false
           schema:
             type: integer
       responses:

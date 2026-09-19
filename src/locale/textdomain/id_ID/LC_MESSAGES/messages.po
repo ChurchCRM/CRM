@@ -9226,10 +9226,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Perluas ChurchCRM dengan MailChimp, cadangan, dan lainnya"
 
 #: 
-msgid "FY %s"
-msgstr "TA %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Keluarga berbagi alamat dan nomor telepon."
 
@@ -15987,10 +15983,6 @@ msgid "Buyers Registered"
 msgstr "Pembeli Terdaftar"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Pembeli Tahun Ini"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16139,10 +16131,6 @@ msgid "Items Donated"
 msgstr "Item yang Disumbangkan"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Item yang Disumbangkan (Tahun Ini)"
-
-#: 
 msgid "Items Sold"
 msgstr "Item Terjual"
 
@@ -16221,10 +16209,6 @@ msgstr "Prasetel cepat"
 #: 
 msgid "Raised"
 msgstr "Terkumpul"
-
-#: 
-msgid "Raised This Year"
-msgstr "Terkumpul Tahun Ini"
 
 #: 
 msgid "Sample Amount"
