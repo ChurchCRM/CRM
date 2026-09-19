@@ -15,8 +15,8 @@ ChurchCRM is open-source and self-hosted, so a church can choose where its infor
 
 See the real product before you decide:
 
-- **[Try the live demo](https://churchcrm.io/demo.html)** — Softaculous creates a private, temporary ChurchCRM instance for you. It expires automatically; use fictional data only.
-- **[Install ChurchCRM](https://churchcrm.io/install.html)** — run it on your own hosting with the official installation guidance.
+- **[Try the live demo](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_demo)** — Softaculous creates a private, temporary ChurchCRM instance for you. It expires automatically; use fictional data only.
+- **[Install ChurchCRM](https://churchcrm.io/install.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_install)** — run it on your own hosting with the official installation guidance.
 - **[Read the documentation](https://docs.churchcrm.io/)** — installation, configuration, administration, and user guides.
 
 ## What churches use it for
@@ -79,7 +79,7 @@ A heartfelt thank you to all our contributors, past and present. Your efforts ma
 
 Follow us for release announcements, tips, and community highlights:
 
-[![Website](https://img.shields.io/badge/Website-churchcrm.io-blue)](https://churchcrm.io/)
+[![Website](https://img.shields.io/badge/Website-churchcrm.io-blue)](https://churchcrm.io/?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_badge)
 [![X / Twitter](https://img.shields.io/badge/X-@getChurchCRM-black?logo=x)](https://x.com/getChurchCRM)
 [![Facebook](https://img.shields.io/badge/Facebook-getChurchCRM-1877F2?logo=facebook&logoColor=white)](https://www.facebook.com/getChurchCRM)
 [![Instagram](https://img.shields.io/badge/Instagram-@getchurchcrm-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/getchurchcrm/)

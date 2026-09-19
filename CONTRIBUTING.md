@@ -76,7 +76,7 @@ You don't need to be a developer to test ChurchCRM. Browser testing, accessibili
 - Test new releases on different browsers and devices
 - Try common workflows (adding families, recording attendance, generating reports)
 - Report anything confusing or broken on [GitHub Issues](https://github.com/ChurchCRM/CRM/issues)
-- Test the [live demo](https://churchcrm.io/demo.html) and report issues
+- Test the [live demo](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_contributing_demo) and report issues
 
 **Use the [Bug Reporting Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)** to include useful information when filing issues.
 
@@ -162,7 +162,7 @@ The default development login is `admin` / `changeme`. Never use these credentia
 
 1. **Join Discord** — [discord.gg/tuWyFzj3Nj](https://discord.gg/tuWyFzj3Nj) — introduce yourself and tell us what you'd like to help with
 2. **Browse open issues** — [github.com/ChurchCRM/CRM/issues](https://github.com/ChurchCRM/CRM/issues) — filter by label to find work that matches your skill
-3. **Try the demo** — [churchcrm.io/demo.html](https://churchcrm.io/demo.html) — use ChurchCRM so you understand what you're helping with
+3. **Try the demo** — [churchcrm.io/demo.html](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_contributing_demo) — use ChurchCRM so you understand what you're helping with
 
 ---
 
