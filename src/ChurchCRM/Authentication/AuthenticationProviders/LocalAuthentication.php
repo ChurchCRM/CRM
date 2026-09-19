@@ -12,6 +12,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\users\LockedEmail;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Endroid\QrCode\QrCode;
@@ -330,7 +331,15 @@ class LocalAuthentication implements IAuthenticationProvider
         // Use str_contains for a tolerant check, matching the pattern used by
         // the 2FA enrollment branch a few lines below.
         $IsUserOnPasswordChangePageNow = str_contains($_SERVER['REQUEST_URI'] ?? '', '/v2/user/current/changepassword');
-        if ($this->currentUser->getNeedPasswordChange() && !$IsUserOnPasswordChangePageNow) {
+        // A masquerading administrator (#9843) is not the account's owner: the
+        // account's own obligations — a forced password change, 2FA enrolment —
+        // are theirs to meet on their next real login, not the administrator's
+        // to meet on their behalf. Enforcing them here trapped the administrator
+        // on the change-password page, and the banner's Exit request was
+        // redirected there too, so the masquerade could not be ended at all.
+        // The flags themselves are left untouched.
+        $impersonating = ImpersonationService::isActive();
+        if ($this->currentUser->getNeedPasswordChange() && !$IsUserOnPasswordChangePageNow && !$impersonating) {
             LoggerUtils::getAuthLogger()->info('User needs password change; redirecting to password change', $logCtx);
             $authenticationResult->isAuthenticated = false;
             $authenticationResult->nextStepURL = $this->getPasswordChangeURL();
@@ -342,7 +351,7 @@ class LocalAuthentication implements IAuthenticationProvider
         $requestUri = $_SERVER['REQUEST_URI'] ?? '';
         $isOnEnrollmentPage = str_contains($requestUri, '/v2/user/current/manage2fa')
             || str_contains($requestUri, '/v2/user/current/enroll2fa');
-        if (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
+        if (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled() && !$isOnEnrollmentPage && !$impersonating) {
             $graceStatus = $this->currentUser->getTwoFactorGraceStatus();
             if ($graceStatus === 'expired' || $graceStatus === 'immediate') {
                 LoggerUtils::getAuthLogger()->info('2FA grace period expired or immediate; redirecting to enrollment', $logCtx);
