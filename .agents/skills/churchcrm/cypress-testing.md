@@ -1087,24 +1087,23 @@ describe('API - User Creation', () => {
 });
 ```
 
-### Testing Slim middleware — and which error shape to assert <!-- learned: 2026-09-12 -->
+### Testing Slim middleware — assert the message, not just the status <!-- learned: 2026-09-12 -->
 
 Middleware has no route of its own, so a spec can only reach it through a route that declares it.
-Pick (or migrate) a real route, then assert **the shape as well as the status**, because the two
-shapes distinguish *who* rejected the request:
-
-| Emitter | Body |
-|---|---|
-| `InputSanitizationMiddleware` | `{"error": "…"}` |
-| A handler via `SlimUtils::renderErrorJSON()` | `{"success": false, "message": "…"}` |
+Pick (or migrate) a real route, then assert **which message came back as well as the status**.
+Since #9821 `InputSanitizationMiddleware` rejects with the same canonical body every handler uses
+(`SlimUtils::renderErrorJSON()` → `{"success": false, "message": "…"}`), so the shape alone no
+longer says *who* rejected the request — the message text does: the middleware names the offending
+field, the handler says what it always said.
 
 ```js
-// Rejected by the middleware
+// Rejected by the middleware — the field is named in the message
 cy.makePrivateAdminAPICall("POST", "/api/events/repeat", body, 400).then((r) => {
-    expect(r.body.error).to.contain("RangeStart");
+    expect(r.body.success).to.be.false;
+    expect(r.body.message).to.contain("RangeStart");
 });
 
-// Fell through to the handler — proof the middleware left the field alone
+// Fell through to the handler — proof the middleware left the absent field alone
 cy.makePrivateAdminAPICall("POST", "/api/events/repeat", bodyWithoutRangeStart, 400).then((r) => {
     expect(r.body.message).to.contain("Missing required field");
 });
@@ -1112,7 +1111,7 @@ cy.makePrivateAdminAPICall("POST", "/api/events/repeat", bodyWithoutRangeStart, 
 
 Asserting only `400` makes a middleware spec pass against the unmigrated code, which is exactly the
 regression it is supposed to catch. Verified on #9821: the same spec was 10/16 before the middleware
-change and 16/16 after, and all six failures were the missing `body.error`.
+change and 16/16 after, and all six failures were on the body.
 
 ### A fresh worktree needs `npm run build` before any UI spec <!-- learned: 2026-09-12 -->
 
