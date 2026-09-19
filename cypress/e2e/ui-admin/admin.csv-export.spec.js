@@ -106,6 +106,14 @@ describe("CSV Export Page", () => {
         const familyName = "CsvSecondAddr" + stamp;
         const members = ["Exporta" + stamp, "Exportb" + stamp];
 
+        // The export form always posts the four "to" dates as the server's
+        // date('Y-m-d'); CSVCreateFile.php adds a "<= that date" filter for any
+        // that differ from it (and "<= NULL" for a missing one), which drops every
+        // member with no membership date. The browser's UTC calendar day can be
+        // ahead of the server's time zone (CI at 03:00 UTC is still yesterday in
+        // America/Detroit), so read the dates off the form the way a submit would.
+        cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).as("serverToday");
+
         cy.visit("/FamilyEditor.php");
         cy.contains("Family Info");
         cy.get("#FamilyName").type(familyName);
@@ -128,12 +136,7 @@ describe("CSV Export Page", () => {
         cy.location("pathname").then((pathname) => {
             const familyId = Number(pathname.split("/").pop());
 
-            // The export page always posts the four "to" dates as today; when a
-            // request leaves one out, CSVCreateFile.php adds "<= NULL" for it and
-            // exports nobody, so send them the way the form does.
-            const today = new Date().toISOString().slice(0, 10);
-
-            cy.request({
+            cy.get("@serverToday").then((today) => cy.request({
                 method: "POST",
                 url: "/CSVCreateFile.php",
                 form: true,
@@ -151,7 +154,7 @@ describe("CSV Export Page", () => {
                     Format: "Default",
                     Submit: "Create File",
                 },
-            }).then((response) => {
+            })).then((response) => {
                 expect(response.status).to.eq(200);
                 const rows = response.body
                     .split("\n")
