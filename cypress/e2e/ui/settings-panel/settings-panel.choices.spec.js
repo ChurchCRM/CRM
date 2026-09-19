@@ -112,4 +112,20 @@ describe("Settings Panel — Choice Dropdowns", () => {
             });
         });
     });
+
+    describe("Family Map — Map Settings", () => {
+        it("shows the geocoding services ranking as a text field (#9848)", () => {
+            cy.visit("people/map");
+            cy.contains("Map Settings").click();
+            cy.get("#mapAdminSettings", { timeout: 10000 }).should("be.visible");
+
+            cy.get("#mapAdminSettings").within(() => {
+                cy.get("input[name='sGeocoderProviders']")
+                    .should("exist")
+                    .and("have.attr", "type", "text")
+                    .invoke("val")
+                    .should("match", /Nominatim/);
+            });
+        });
+    });
 });

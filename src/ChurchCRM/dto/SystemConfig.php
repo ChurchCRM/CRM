@@ -163,6 +163,7 @@ class   SystemConfig
             'bHideFamilyNewsletter'                => new ConfigItem('bHideFamilyNewsletter', 'boolean', '0', gettext('Set true to disable management of newsletter subscriptions in the Family Editor.')),
             'bHideWeddingDate'                     => new ConfigItem('bHideWeddingDate', 'boolean', '0', gettext('Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.')),
             'bHideLatLon'                          => new ConfigItem('bHideLatLon', 'boolean', '0', gettext('When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.')),
+            'sGeocoderProviders'                   => new ConfigItem('sGeocoderProviders', 'text', 'Nominatim, Census', gettext('Geocoding services to try, in order, separated by commas. Available: Nominatim (OpenStreetMap, worldwide) and Census (US Census Bureau, United States only). Remove a service to stop using it.')),
             'bUseDonationEnvelopes'                => new ConfigItem('bUseDonationEnvelopes', 'boolean', '0', gettext('Enable the use of numbered donation envelopes for tracking contributions')),
             'iChecksPerDepositForm'                => new ConfigItem('iChecksPerDepositForm', 'number', '14', gettext('How many checks to print per deposit slip page')),
             'bUseScannedChecks'                    => new ConfigItem('bUseScannedChecks', 'boolean', '0', gettext('Allow scanned check images to be attached to deposit records')),
