@@ -55,6 +55,14 @@ function freshAdminLogin() {
     cy.visit("/session/begin");
     cy.get("input[name=User]").type(Cypress.env("admin.username"));
     cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    // One retry: in CI a login page occasionally reloads while the name is being
+    // typed (the submit then goes out with an empty user and bounces back here).
+    cy.url().then((url) => {
+        if (url.includes("/session/begin")) {
+            cy.get("input[name=User]").clear().type(Cypress.env("admin.username"));
+            cy.get("input[name=Password]").clear().type(Cypress.env("admin.password") + "{enter}");
+        }
+    });
     cy.url().should("not.include", "/session/begin");
 }
 

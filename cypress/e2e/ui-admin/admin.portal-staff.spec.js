@@ -141,9 +141,21 @@ describe("Member Portal — account pages for staff", () => {
  * and restores them afterwards.
  */
 describe("Member Portal — a member with no family", () => {
-    const CHURCH_EMAIL = "demo@churchcrm.io";
-    const CHURCH_PHONE = "555 123 4234";
-    const CHURCH_PHONE_HREF = "tel:5551234234";
+    // Read at run time, never assumed: admin.church-info.spec.js changes the church
+    // email and phone and runs before this spec in the admin-ui suite.
+    let CHURCH_EMAIL = "demo@churchcrm.io";
+    let CHURCH_PHONE = "555 123 4234";
+    let CHURCH_PHONE_HREF = "tel:5551234234";
+
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/sChurchEmail", null, 200).then((resp) => {
+            CHURCH_EMAIL = resp.body.value ?? resp.body.data ?? CHURCH_EMAIL;
+        });
+        cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/sChurchPhone", null, 200).then((resp) => {
+            CHURCH_PHONE = resp.body.value ?? resp.body.data ?? CHURCH_PHONE;
+            CHURCH_PHONE_HREF = `tel:${CHURCH_PHONE.replace(/[^0-9+]/g, "")}`;
+        });
+    });
 
     const TITLE = "You are not currently associated with a family";
     const BODY = "Please contact the church office so we may correct our records.";
