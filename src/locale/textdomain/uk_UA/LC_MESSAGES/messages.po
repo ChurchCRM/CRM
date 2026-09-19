@@ -5050,14 +5050,6 @@ msgid "Verification URL created"
 msgstr "Створено URL-адресу для підтвердження"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Помилка надсилання електронних листів"
 
@@ -8467,10 +8459,6 @@ msgid "selected family has no coordinates"
 msgstr "обрана сім'я не має координат"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Вимагати від усіх користувачів реєстрації в двофакторній автентифікації"
 
@@ -9269,10 +9257,6 @@ msgstr "Експортуйте дані у формат CSV для зовніш�
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Розширте ChurchCRM за допомогою MailChimp, резервних копій та інших функцій"
-
-#: 
-msgid "FY %s"
-msgstr "Фінансовий рік %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12234,10 +12218,6 @@ msgid "Database dump only (.sql)"
 msgstr "Лише дамп бази даних (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Діапазон дат не може перевищувати 1 рік"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Деструктивна операція"
 
@@ -12832,10 +12812,6 @@ msgstr "Служіння для цього списку ролей не знай
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Статус неактивний можна змінити лише для списку класифікацій"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Нові парафіяни не отримають вітального листа з їхніми обліковими даними. Передайте пароль вручну або спочатку налаштуйте електронну пошту."
 
 #: 
 msgid "Option name is required"
@@ -16052,10 +16028,6 @@ msgid "Buyers Registered"
 msgstr "Зареєстровано покупців"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Покупців цього року"
-
-#: 
 msgid "Catalog"
 msgstr "Каталог"
 
@@ -16204,10 +16176,6 @@ msgid "Items Donated"
 msgstr "Пожертвуваних предметів"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Пожертвуваних предметів (цього року)"
-
-#: 
 msgid "Items Sold"
 msgstr "Продано предметів"
 
@@ -16286,10 +16254,6 @@ msgstr "Швидкі налаштування"
 #: 
 msgid "Raised"
 msgstr "Зібрано"
-
-#: 
-msgid "Raised This Year"
-msgstr "Зібрано цього року"
 
 #: 
 msgid "Sample Amount"
@@ -17856,4 +17820,68 @@ msgstr "Подій для %s %d не знайдено."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Спробуйте вибрати інший тип події, місяць або рік."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Сталася помилка геокодування — спробуйте пізніше"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Адреса неповна (відсутні місто, область та поштовий індекс)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Усі сім'ї вже мають координати."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Не вдалося оновити координати"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Не вдалося оновити координати сім'ї"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Геокодовано всі {{geocoded}} сімей. Карта тепер актуальна."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Геокодовано {{geocoded}} сімей. {{failed}} не вдалося визначити — див. деталі нижче."
+
+#: 
+msgid "Geocoding…"
+msgstr "Геокодування…"
+
+#: 
+msgid "No address on file"
+msgstr "Немає адреси в записі"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Збігів не знайдено — перевірте вулицю, місто та поштовий індекс"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Відкрийте сім'ю, щоб виправити її адресу, а потім запустіть це знову."
+
+#: 
+msgid "Set up now"
+msgstr "Налаштувати зараз"
+
+#: 
+msgid "Unknown family"
+msgstr "Невідома сім'я"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Оновити всі координати"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Оновити координати всіх сімей"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Оновити координати"
 

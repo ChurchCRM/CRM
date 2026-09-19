@@ -654,3 +654,30 @@ EventAttendQuery::create()
 
 This affects any `EventAttendQuery` (or similar) where `useXxxQuery()` contains a nested
 `leftJoinWithYyy()`. The bug only surfaces at runtime when the joined records exist.
+
+### Raw `where()` with `OR` — always parenthesise or use `condition()`/`combine()` <!-- learned: 2026-09-16 -->
+
+Propel appends every criterion to the `WHERE` clause joined by `AND` and does **not** wrap a raw
+`where('...')` string in parentheses. Because `OR` binds looser than `AND`, a top-level `OR` inside a
+raw clause escapes every other filter on the query and silently widens the result set — a security
+bug when the escaped filter was the access-control one (this is how a public calendar access token
+came to return every calendar's events, including private ones).
+
+```php
+// ❌ WRONG — becomes: calendar_id = ? AND event_end IS NULL OR event_end >= ?
+//            every event in the DB whose end is after the window start matches
+$events->where('events_event.event_end IS NULL OR events_event.event_end >= ?', $start);
+
+// ✅ CORRECT — combined criteria ARE parenthesised when the statement is built
+$events->condition('noEnd', EventTableMap::COL_EVENT_END . ' IS NULL');
+$events->condition('endsAfter', EventTableMap::COL_EVENT_END . ' >= ?', $start);
+$events->combine(['noEnd', 'endsAfter'], 'or', 'overlapsView');
+$events->where(['overlapsView']);
+
+// ✅ ALSO CORRECT — parenthesise the raw clause yourself when the parts are generated
+$families->where('(' . implode(' OR ', $conditions) . ')');
+```
+
+`where($namedConditions, 'or')` (the array form) is safe for the same reason — Propel builds a
+combined criterion. The trap is only the single raw SQL string. Audit with:
+`grep -rn --include="*.php" -e "->where(" src | grep -i " or "`.

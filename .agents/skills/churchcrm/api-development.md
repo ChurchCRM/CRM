@@ -400,12 +400,33 @@ Public spec: `Utility`, `Auth`, `Registration`, `Calendar`, `Lookups`
 
 Private spec: `Calendar`, `People`, `Families`, `Groups`, `Properties`, `Finance`, `Users`, `2FA`, `System`, `Admin`, `Cart`, `Search`, `Map`
 
-### Regenerating the spec
+### Regenerating the spec <!-- learned: 2026-09-12 -->
 
-After annotating, run from `CRM/src/`:
+`zircote/swagger-php` is a **dev dependency** (`require-dev` in `src/composer.json`) and
+`npm run build` runs `composer install --no-dev`, which removes it. On a freshly built tree the
+generator fatals on the missing class, so install the dev dependencies first:
+
 ```bash
+cd src
+composer install              # NOT --no-dev; swagger-php is require-dev
 composer run openapi:public   # → CRM/docs/openapi/generated/public-api.yaml
 composer run openapi:private  # → CRM/docs/openapi/generated/private-api.yaml
+```
+
+Each command prints `✓ OpenAPI spec written to: <path> (<bytes>, <n> file(s) scanned)` on
+stderr. **If the whole spec scrolls past on stdout instead, no file was written** — that was
+issue #9824: `generate.php` used `getopt()`, which stops at the first non-option argument, so the
+`--output` / `--format` / `--exclude` flags that came after the scan paths were discarded. The
+script now parses `$argv` itself and accepts flags anywhere (`--output=FILE`, `--output FILE`,
+`-o FILE`), and a missing info file, scan path or `--exclude` path is a hard error instead of a
+warning. Running it by hand:
+
+```bash
+cd src
+php ../docs/openapi/generate.php --output=../docs/openapi/generated/private-api.yaml \
+    --format=yaml --exclude=api/routes/public \
+    ../docs/openapi/openapi-private-info.php api/routes/ admin/routes/api/ \
+    finance/routes/api/ kiosk/routes/api/ plugins/routes/api/
 ```
 
 Commit the updated YAML files to the CRM repo. The rest is automated:
