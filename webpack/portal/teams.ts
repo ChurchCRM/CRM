@@ -53,7 +53,7 @@ import {
   type QualificationMatrixHandle,
 } from "../ministries/components/qualification-matrix";
 import { createSchedulesTable, type SchedulesTableHandle } from "../ministries/components/schedules-table";
-import { byId, renderState } from "../ministries/components/ui";
+import { byId, renderState, wireUnclippedRowMenus } from "../ministries/components/ui";
 
 /** The page config `teams/team.html.twig` writes in its inline script. */
 interface PortalTeamConfig {
@@ -179,6 +179,15 @@ function activate(tab: TabName): void {
 }
 
 function wire(): void {
+  // Every table here sits in a `.volunteer-scroll-x` wrapper so a narrow phone can
+  // scroll it sideways — and that same overflow clips an open row menu at the
+  // wrapper's edge (review, 2026-09-18: the Positions menu was cut off). The
+  // open menu is re-anchored with `position: fixed`, exactly as the volunteers
+  // grid already does for itself; see table-action-menu.md.
+  wireUnclippedRowMenus("positions-table-wrapper");
+  wireUnclippedRowMenus("schedules-table-wrapper");
+  wireUnclippedRowMenus("occurrences-table-wrapper");
+
   for (const [navId, tab] of [
     ["nav-item-positions", "positions"],
     ["nav-item-volunteers", "volunteers"],

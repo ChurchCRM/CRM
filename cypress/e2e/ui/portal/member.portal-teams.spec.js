@@ -297,6 +297,32 @@ describe("Member Portal — My Teams", () => {
             cy.get("#sidebar").should("not.exist");
         });
 
+        it("Shows a position's row menu in full on a phone, not clipped by the scrolling table (2026-09-18)", () => {
+            cy.viewport(375, 812);
+            login(LEADER_USERNAME, LEADER_PASSWORD);
+            cy.visit(`${TEAMS_URL}/${teamLed}`);
+            cy.get("#volunteerPositionsTable tbody tr", { timeout: 15000 }).should("contain.text", `${PREFIX} Door`);
+
+            cy.get("#volunteerPositionsTable tbody tr")
+                .contains(`${PREFIX} Door`)
+                .closest("tr")
+                .find("[data-bs-toggle='dropdown']")
+                .click();
+
+            // The open menu is lifted out of the wrapper's overflow box and sits
+            // entirely inside the viewport, every item reachable.
+            cy.get("#positions-table-wrapper .dropdown-menu.show")
+                .should("have.class", "volunteer-menu-fixed")
+                .then(($menu) => {
+                    const rect = $menu[0].getBoundingClientRect();
+                    expect(rect.left, "menu left edge").to.be.at.least(0);
+                    expect(rect.right, "menu right edge").to.be.at.most(375);
+                    expect(rect.bottom, "menu bottom edge").to.be.at.most(812);
+                    expect(rect.height, "menu is open").to.be.greaterThan(0);
+                });
+            cy.get("#positions-table-wrapper .dropdown-menu.show .volunteer-position-edit").should("be.visible");
+        });
+
         it("Ticks a qualification on the Volunteers tab and it saves", () => {
             login(LEADER_USERNAME, LEADER_PASSWORD);
             cy.visit(`${TEAMS_URL}/${teamLed}`);
