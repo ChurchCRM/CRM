@@ -273,12 +273,25 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <?php
+      // An uploaded church logo replaces both the stock icon and the church-name
+      // text — the logo is expected to carry the church's own wordmark. Without
+      // one, the stock ChurchCRM icon plus the church name stay exactly as they
+      // were. The name span is always rendered (hidden with d-none) so the
+      // Church Info uploader can toggle it without a page reload.
+      $bHasCustomLogo     = ChurchMetaData::hasCustomLogo();
+      $sDefaultBrandImage = SystemURLs::getRootPath() . '/Images/CRM_50x50.png';
+      $sBrandImage        = $bHasCustomLogo ? ChurchMetaData::getChurchLogoPath() : $sDefaultBrandImage;
+      ?>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
-        <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png"
+        <img src="<?= InputUtils::escapeAttribute($sBrandImage) ?>"
+             data-default-src="<?= InputUtils::escapeAttribute($sDefaultBrandImage) ?>"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             id="sidebar-brand-image"
              class="navbar-brand-image rounded"
              style="height: 42px; width: auto;">
-        <span class="navbar-brand-text ps-2 fs-4 fw-bold">
+        <span id="sidebar-brand-text"
+              class="navbar-brand-text ps-2 fs-4 fw-bold<?= $bHasCustomLogo ? ' d-none' : '' ?>">
           <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>
         </span>
       </a>

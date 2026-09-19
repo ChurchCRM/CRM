@@ -20,7 +20,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
         <!-- Header with Logo and Church Name -->
         <div class="login-form-header">
           <div class="login-header-logo">
-            <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" />
+            <img src="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchLogoPath()) ?>" alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>" />
           </div>
           <h2 class="login-header-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
         </div>
