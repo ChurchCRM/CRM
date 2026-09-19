@@ -312,7 +312,7 @@ foreach ($monthlyData as $monthData):
 <div class="card">
   <div class="card-body text-center py-5">
     <div class="mb-3">
-      <i class="fa-solid fa-calendar-off text-body-secondary" style="font-size: 3rem;"></i>
+      <i class="fa-solid fa-calendar-xmark text-body-secondary" style="font-size: 3rem;"></i>
     </div>
     <h3 class="text-body-secondary"><?= gettext('No Events Found') ?></h3>
     <p class="text-body-secondary mb-3">

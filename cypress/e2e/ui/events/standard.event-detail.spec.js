@@ -203,3 +203,51 @@ describe("Event Detail - Did Not Attend List", () => {
         });
     });
 });
+
+describe("Event Detail - Responsive Actions", () => {
+    let currentEventId;
+
+    before(() => {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/events/quick-create",
+            { eventTypeId: 1 },
+            200,
+        ).then((resp) => {
+            expect(resp.body).to.have.property("eventId");
+            currentEventId = resp.body.eventId;
+        });
+    });
+
+    beforeEach(() => cy.setupAdminSession({ forceLogin: true }));
+
+    [
+        { width: 375, height: 812 },
+        { width: 768, height: 1024 },
+    ].forEach(({ width, height }) => {
+        it(`Keeps current-event actions within a ${width}px viewport`, () => {
+            cy.viewport(width, height);
+            cy.visit(`event/view/${currentEventId}`);
+
+            cy.get(".card-footer")
+                .first()
+                .should(($footer) => {
+                    const footerRect = $footer[0].getBoundingClientRect();
+                    const buttons = $footer[0].querySelectorAll(".btn");
+
+                    expect(buttons.length).to.be.greaterThan(0);
+                    buttons.forEach((button) => {
+                        const buttonRect = button.getBoundingClientRect();
+
+                        expect(buttonRect.left).to.be.at.least(footerRect.left - 2);
+                        expect(buttonRect.right).to.be.at.most(footerRect.right + 2);
+                    });
+                });
+            cy.document().should((doc) => {
+                expect(doc.documentElement.scrollWidth).to.be.at.most(
+                    doc.documentElement.clientWidth + 2,
+                );
+            });
+        });
+    });
+});

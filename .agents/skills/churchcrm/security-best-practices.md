@@ -840,7 +840,7 @@ churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
 - [src/Include/HeaderNotLoggedIn.php](../../../src/Include/HeaderNotLoggedIn.php) — `churchWebSite` JS literal
 - [src/FamilyEditor.php](../../../src/FamilyEditor.php) — `data-system-default`, `data-phone-mask`, `placeholder`
 - [src/PersonEditor.php](../../../src/PersonEditor.php) — date picker `placeholder`
-- [src/CartToFamily.php](../../../src/CartToFamily.php) — `data-inputmask` phone format
+- [src/people/views/cart/to-family.php](../../../src/people/views/cart/to-family.php) — `data-inputmask` phone format
 - [src/ChurchCRM/utils/CustomFieldUtils.php](../../../src/ChurchCRM/utils/CustomFieldUtils.php) — `placeholder`, `data-phone-mask`
 - [src/DirectoryReports.php](../../../src/DirectoryReports.php) — form `value=`, textarea content
 - [src/external/templates/registration/family-register.php](../../../src/external/templates/registration/family-register.php) — JS literals, address/phone inputs
