@@ -34,6 +34,58 @@ describe(
             freshAdminLogin();
         });
 
+        // The importer creates real people and families, and nothing used to
+        // remove them — one pass left 22 people and 8 families behind (#9769).
+        // Every fixture gives its rows a distinctive LastName, so the imported
+        // records can be found again and deleted by family (which takes the
+        // members with it) and then by person for anyone unaffiliated.
+        const IMPORTED_LAST_NAMES = [
+            "ImportTest",
+            "ExtTest",
+            "ExtSfxTest",
+            "BareYrTest",
+            "CountryTest",
+            "ClsRoleTest",
+        ];
+
+        after(() => {
+            const personIds = [];
+
+            IMPORTED_LAST_NAMES.forEach((lastName) => {
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    `/api/persons/search/${lastName}`,
+                    null,
+                    200,
+                ).then((resp) => {
+                    (resp.body || []).forEach((hit) => {
+                        if (hit.objid) {
+                            personIds.push(hit.objid);
+                        }
+                    });
+                });
+            });
+
+            cy.then(() => {
+                const familyIds = [];
+                personIds.forEach((personId) => {
+                    cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, [
+                        200, 404,
+                    ]).then((resp) => {
+                        const familyId = Number(resp.body?.FamId || 0);
+                        if (familyId > 0 && !familyIds.includes(familyId)) {
+                            familyIds.push(familyId);
+                        }
+                    });
+                });
+
+                cy.then(() => {
+                    cy.cleanupFamilies(familyIds);
+                    cy.cleanupPeople(personIds);
+                });
+            });
+        });
+
         it("Verify CSV Import", () => {
             cy.visit("admin/import/csv");
             // Attach file to the hidden file input (force needed since it's d-none)
