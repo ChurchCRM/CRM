@@ -3070,9 +3070,10 @@ Constraints an implementer must respect:
 
 - **#9705 owns every `schema.xml` / `Install.sql` edit except two.** The exceptions are
   `usr_ManageMinistries` (#9706) and `events_event.event_ministry_id` (#9713), each in its own
-  `7.8.0-volunteer-v2-*.sql` script. **No V2 PR edits `upgrade.json`** (D17): the three scripts are
-  registered together, in the order schema → permission → event ministry, when the maintainer opens
-  the 7.8.0 block.
+  `7.8.0-volunteer-v2-*.sql` script. **No V2 PR edits `upgrade.json`** (D17): the scripts are
+  registered together when the maintainer opens the 7.8.0 block, in the order Appendix A step 3
+  gives (the Member Portal's calendars script first, then schema → permission → event ministry →
+  group ministry → portal activity).
 - **#9709 is the keystone.** Waves 5 and 6 all consume `VolunteerAssignmentService`. Do not start
   #9710/#9711/#9712 against a stub.
 - #9715 and #9707 both touch `VolunteerMinistryService`. Split it cleanly: #9715 owns ministry / team /
@@ -3167,9 +3168,14 @@ Corrected against the actual tooling in the tree.
    (2026-09-12): Volunteer v2 targets **7.8.0** and is excluded from 7.7.0; "do not register a
    future 7.8.0 migration in the active 7.7.0 upgrade graph — register it when the 7.8.0
    development/version boundary is opened". Until then fresh installs get the tables from
-   `Install.sql` and the Cypress database from `seed.sql`. When the 7.8.0 block exists, list the V2
-   scripts in it in this order: schema → manager permission → event ministry (each FKs the one
-   before). F29's "append to the `current` block" is superseded.
+   `Install.sql` and the Cypress database from `seed.sql`. When the 7.8.0 block exists, list the
+   scripts in it in this order: **member-portal-calendars → volunteer-v2-schema → manager permission
+   → event ministry → group ministry → member-portal-activity**. The portal calendars script must come
+   first because it adds `calendars.ministry_id`, and the volunteer schema script adds the
+   `calendars_ministry_fk` foreign key on that column (proven 2026-09-19: registering the schema
+   script first fails with "Key column 'ministry_id' doesn't exist"). Every CREATE in the schema
+   script is `IF NOT EXISTS`, so a half-applied run resumes cleanly. F29's "append to the `current`
+   block" is superseded.
 4. **`src/mysql/install/Install.sql`** — mirror every change. **Required, not optional**: nothing in
    the build validates Install.sql against `schema.xml`, and they have already drifted for
    `events_event` (nullability and defaults disagree today).
