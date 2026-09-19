@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-12 18:50+0000\n"
+"POT-Creation-Date: 2026-09-17 14:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -239,9 +239,6 @@ msgid "2. Event Type"
 msgstr ""
 
 msgid "2. Fill in your data"
-msgstr ""
-
-msgid "2FA"
 msgstr ""
 
 msgid "2FA Enabled"
@@ -1851,7 +1848,7 @@ msgstr ""
 msgid "Buyers Registered"
 msgstr ""
 
-msgid "Buyers This Year"
+msgid "Buyers This Fiscal Year"
 msgstr ""
 
 msgid "Buyers for this fundraiser"
@@ -1876,9 +1873,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr ""
 
 msgid "CRM Members Not Subscribed"
-msgstr ""
-
-msgid "CSV"
 msgstr ""
 
 msgid "CSV Column"
@@ -3106,6 +3100,9 @@ msgid "Currency presets"
 msgstr ""
 
 msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr ""
+
+msgid "Current"
 msgstr ""
 
 msgid "Current $URL[0] value"
@@ -4687,10 +4684,6 @@ msgstr ""
 msgid "F"
 msgstr ""
 
-#, php-format
-msgid "FY %s"
-msgstr ""
-
 msgid "Failed"
 msgstr ""
 
@@ -5775,13 +5768,13 @@ msgstr ""
 msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
 msgstr ""
 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr ""
-
 msgid "Geocoding failed"
 msgstr ""
 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr ""
+
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
 msgstr ""
 
 msgid "Geocoding request failed. Please try again."
@@ -6745,7 +6738,7 @@ msgstr ""
 msgid "Items Donated"
 msgstr ""
 
-msgid "Items Donated (This Year)"
+msgid "Items Donated (This Fiscal Year)"
 msgstr ""
 
 msgid "Items Sold"
@@ -7249,6 +7242,10 @@ msgid "Login Name is required"
 msgstr ""
 
 msgid "Login already in use, please select a different login!"
+msgstr ""
+
+#, php-format
+msgid "Login must be %d characters or fewer!"
 msgstr ""
 
 msgid "Login must be at least 3 characters!"
@@ -8592,9 +8589,6 @@ msgstr ""
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr ""
 
-msgid "OFX"
-msgstr ""
-
 msgid "OK"
 msgstr ""
 
@@ -8819,9 +8813,6 @@ msgid "Overview of church events, attendance, and activity"
 msgstr ""
 
 msgid "Owe"
-msgstr ""
-
-msgid "PDF"
 msgstr ""
 
 msgid ""
@@ -9800,7 +9791,7 @@ msgstr ""
 msgid "Raised"
 msgstr ""
 
-msgid "Raised This Year"
+msgid "Raised This Fiscal Year"
 msgstr ""
 
 msgid "Range end date must be on or after range start date."
@@ -11809,7 +11800,7 @@ msgstr ""
 msgid "This field is required"
 msgstr ""
 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
 msgstr ""
 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
@@ -12312,9 +12303,6 @@ msgstr ""
 
 #. Context: countries
 msgid "U.S. Virgin Islands"
-msgstr ""
-
-msgid "URL"
 msgstr ""
 
 msgid "URL cannot contain HTML tags"
@@ -13983,6 +13971,9 @@ msgstr ""
 msgid "selected family has no coordinates"
 msgstr ""
 
+msgid "skip must be zero or a positive integer"
+msgstr ""
+
 msgid "subscribers"
 msgstr ""
 
@@ -14084,9 +14075,9 @@ msgid ""
 msgstr ""
 
 msgctxt "one"
-msgid "…and {{count}} more. Run again to see the rest."
+msgid "…and {{count}} more not listed here."
 msgstr ""
 
 msgctxt "other"
-msgid "…and {{count}} more. Run again to see the rest."
+msgid "…and {{count}} more not listed here."
 msgstr ""

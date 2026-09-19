@@ -202,9 +202,16 @@ Use these translations for core ChurchCRM terms:
 
 ### Do NOT Translate (Technical Terms)
 
-Keep these as-is:
+Two different situations look similar but need different handling — check which one you're in before translating a term identically to its English key:
+
+1. **Term is embedded inside a longer sentence** (e.g. "Enable SMTP relay", "Export as JSON"). Translate the full sentence normally; the embedded acronym just stays spelled the same inside the translated sentence. Nothing special to do.
+2. **Term is a standalone acronym/token key by itself** (e.g. the missing-terms batch has an entry whose key is exactly `"CSV"` or `"API"` with nothing else). If it's a pure technical/format token that will **never** have a different translation in any locale, it should never have been wrapped in `gettext()`/`i18next.t()` in the first place — see `i18n-localization.md` → "Do Not Wrap Brand / Technical Literals". **Confirmed 2026-09-15 as never-wrap, unwrapped from source: `CSV`, `OFX`, `PDF`, `2FA`, `URL`.** If you see one of these (or something clearly in the same category — a bare file-format or protocol acronym with no other words) as a standalone key in a missing-terms batch, do not spend translation effort on it — flag it as a source-code bug (needs unwrapping) instead of translating it identically and adding it to `english-ok.json`.
+
+For a standalone acronym that genuinely **does** vary by locale (a real word some languages translate and others don't, e.g. `Data`, `Code`, `Auto`, `Access` in the Church Vocabulary sense above) — translate it normally, and if the correct translation for a given locale happens to be identical to the English key, that's valid: add it to `locale/terms/english-ok.json` for that locale (see the section below) so the upload script doesn't skip it as "suspect".
+
+**Always still spelled the same when embedded in a sentence, in any locale:**
 ```
-N/A, name@example.com, @, SMS, SMTP, API, HTTP, HTTPS, JSON, CSV, XML, HTML, CSS, URL, E.164, ICS, TLS, BCC, ChurchCRM, Vonage, MailChimp, OpenLP, GitHub, Gravatar, POEditor, MD5
+N/A, name@example.com, @, SMS, SMTP, API, HTTP, HTTPS, JSON, XML, HTML, CSS, E.164, ICS, TLS, BCC, ChurchCRM, Vonage, MailChimp, OpenLP, GitHub, Gravatar, POEditor, MD5
 ```
 
 ### Parallel Sub-Agents (Fastest for 10+ locales)

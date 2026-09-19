@@ -5044,14 +5044,6 @@ msgid "Verification URL created"
 msgstr "URL verifikasi dibuat"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Kesalahan mengirim email"
 
@@ -8437,10 +8429,6 @@ msgid "selected family has no coordinates"
 msgstr "keluarga yang dipilih tidak memiliki koordinat"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Haruskan semua pengguna mendaftar di autentikasi dua faktor"
 
@@ -9236,10 +9224,6 @@ msgstr "Ekspor data ke format CSV untuk aplikasi eksternal"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Perluas ChurchCRM dengan MailChimp, cadangan, dan lainnya"
-
-#: 
-msgid "FY %s"
-msgstr "TA %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12198,10 +12182,6 @@ msgid "Database dump only (.sql)"
 msgstr "Ekspor database saja (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Rentang tanggal tidak boleh melebihi 1 tahun"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operasi Merusak"
 
@@ -12796,10 +12776,6 @@ msgstr "Pelayanan tidak ditemukan untuk daftar peran ini"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Status tidak aktif hanya dapat diubah untuk daftar klasifikasi"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Pengguna baru tidak akan menerima email selamat datang dengan kredensial mereka. Bagikan kata sandi secara manual, atau konfigurasikan email terlebih dahulu."
 
 #: 
 msgid "Option name is required"
@@ -16007,10 +15983,6 @@ msgid "Buyers Registered"
 msgstr "Pembeli Terdaftar"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Pembeli Tahun Ini"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16159,10 +16131,6 @@ msgid "Items Donated"
 msgstr "Item yang Disumbangkan"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Item yang Disumbangkan (Tahun Ini)"
-
-#: 
 msgid "Items Sold"
 msgstr "Item Terjual"
 
@@ -16241,10 +16209,6 @@ msgstr "Prasetel cepat"
 #: 
 msgid "Raised"
 msgstr "Terkumpul"
-
-#: 
-msgid "Raised This Year"
-msgstr "Terkumpul Tahun Ini"
 
 #: 
 msgid "Sample Amount"
@@ -17847,14 +17811,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "Berhasil melakukan geocoding untuk {{geocoded}} keluarga. {{failed}} tidak dapat diselesaikan — lihat detail di bawah."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "Berhasil melakukan geocoding untuk {{geocoded}} dari {{total}} keluarga. {{overflow}} belum diproses — jalankan lagi untuk melanjutkan."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Sedang melakukan geocoding keluarga… ini dapat memakan waktu hingga satu menit. Anda dapat membiarkan halaman ini tetap terbuka."
-
-#: 
 msgid "Geocoding…"
 msgstr "Melakukan geocoding…"
 
@@ -17867,20 +17823,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Tidak ditemukan kecocokan — periksa alamat jalan, kota, dan kode pos"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Jumlah hari yang dimiliki pengguna untuk mendaftar 2FA setelah diwajibkan. Atur ke 0 untuk menerapkan segera (perilaku lama). Mempersingkat masa tenggang yang sedang berlaku dapat langsung mengunci pengguna."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Buka data keluarga untuk memperbaiki alamatnya, lalu jalankan ini lagi."
 
 #: 
 msgid "Set up now"
 msgstr "Atur sekarang"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Ini akan mencari koordinat peta untuk setiap keluarga yang belum memilikinya, menggunakan OpenStreetMap. Proses ini menangani hingga 50 keluarga per jalankan; satu batch penuh memakan waktu sekitar satu menit. Anda dapat membiarkan halaman ini tetap terbuka selama proses berjalan. Lanjutkan?"
 
 #: 
 msgid "Two-factor authentication is required. You have %d day to enroll."

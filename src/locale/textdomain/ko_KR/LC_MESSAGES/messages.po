@@ -5045,14 +5045,6 @@ msgid "Verification URL created"
 msgstr "확인 URL이 생성되었습니다"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "이메일 발송 중 오류가 발생했습니다"
 
@@ -8438,10 +8430,6 @@ msgid "selected family has no coordinates"
 msgstr "선택한 가족에 좌표가 없습니다"
 
 #: 
-msgid "2FA"
-msgstr "2단계 인증"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "모든 사용자에게 이중 인증 등록 요구"
 
@@ -9237,10 +9225,6 @@ msgstr "외부 응용 프로그램용 CSV 형식으로 데이터 내보내기"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, 백업 등으로 ChurchCRM 확장"
-
-#: 
-msgid "FY %s"
-msgstr "회계연도 %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12199,10 +12183,6 @@ msgid "Database dump only (.sql)"
 msgstr "데이터베이스 덤프만 (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "날짜 범위는 1년을 초과할 수 없습니다"
-
-#: 
 msgid "Destructive Operation"
 msgstr "파괴적인 작업"
 
@@ -12797,10 +12777,6 @@ msgstr "이 역할 목록에 해당하는 사역부서를 찾을 수 없습니�
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "비활성 상태는 분류 목록에서만 전환할 수 있습니다"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "새 사용자는 계정 정보가 포함된 환영 이메일을 받지 못합니다. 비밀번호를 직접 공유하거나 먼저 이메일을 설정하세요."
 
 #: 
 msgid "Option name is required"
@@ -16008,10 +15984,6 @@ msgid "Buyers Registered"
 msgstr "등록된 구매자"
 
 #: 
-msgid "Buyers This Year"
-msgstr "올해 구매자"
-
-#: 
 msgid "Catalog"
 msgstr "카탈로그"
 
@@ -16160,10 +16132,6 @@ msgid "Items Donated"
 msgstr "기증된 물품"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "기증된 물품 (올해)"
-
-#: 
 msgid "Items Sold"
 msgstr "판매된 물품"
 
@@ -16242,10 +16210,6 @@ msgstr "빠른 사전 설정"
 #: 
 msgid "Raised"
 msgstr "모금액"
-
-#: 
-msgid "Raised This Year"
-msgstr "올해 모금액"
 
 #: 
 msgid "Sample Amount"
@@ -17852,14 +17816,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "{{geocoded}}개 가족의 지오코딩을 완료했습니다. {{failed}}개는 해결할 수 없습니다 — 아래 세부 정보를 확인하세요."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "전체 {{total}}개 가족 중 {{geocoded}}개의 지오코딩을 완료했습니다. {{overflow}}개는 아직 처리되지 않았습니다 — 계속하려면 다시 실행하세요."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "가족 정보를 지오코딩하는 중입니다… 최대 1분 정도 걸릴 수 있습니다. 이 페이지를 열어 둔 채로 기다리셔도 됩니다."
-
-#: 
 msgid "Geocoding…"
 msgstr "지오코딩 중…"
 
@@ -17872,20 +17828,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "일치하는 항목을 찾을 수 없습니다 — 도로명 주소, 시/도, 우편번호를 확인하세요"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "2FA(이중 인증)가 의무화된 후 사용자가 등록해야 하는 유예 일수입니다. 즉시 적용하려면 0으로 설정하세요(기존 방식). 활성화된 유예 기간을 단축하면 사용자가 즉시 잠길 수 있습니다."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "가족 정보를 열어 주소를 수정한 후 다시 실행하세요."
 
 #: 
 msgid "Set up now"
 msgstr "지금 설정하기"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "OpenStreetMap을 사용하여 좌표가 없는 모든 가족의 지도 좌표를 찾습니다. 한 번 실행할 때 최대 50개 가족을 처리하며, 전체 배치는 약 1분이 걸립니다. 실행하는 동안 이 페이지를 열어 둔 채로 두셔도 됩니다. 계속하시겠습니까?"
 
 #: 
 msgid "Two-factor authentication is required. You have %d day to enroll."

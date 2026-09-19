@@ -5016,14 +5016,6 @@ msgid "Verification URL created"
 msgstr "സ്ഥിരീകരണ URL ഉണ്ടാക്കി"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "ഇമെയിൽ(കൾ) അയക്കുന്നതിൽ പിശക്"
 
@@ -8416,10 +8408,6 @@ msgid "selected family has no coordinates"
 msgstr "തിരഞ്ഞെടുത്ത കുടുംബത്തിന് കോർഡിനേറ്റ് ഇല്ല"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "എല്ലാ ഉപയോക്താക്കളും ഇരട്ടഘടക ആധികാരികതയിൽ ചേരണം"
 
@@ -9216,10 +9204,6 @@ msgstr "ബാഹ്യ ആപ്ലിക്കേഷനുകൾക്കാ�
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, ബാക്കപ്പുകൾ, കൂടുതൽ ഉപകരണങ്ങൾ ഉപയോഗിച്ച് ChurchCRM വിപുലീകരിക്കുക"
-
-#: 
-msgid "FY %s"
-msgstr "സാമ്പത്തിക വർഷം %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12179,10 +12163,6 @@ msgid "Database dump only (.sql)"
 msgstr "ഡേറ്റാബേസ് ഡമ്പ് മാത്രം (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "തീയതി ശ്രേണി 1 വർഷത്തിൽ കൂടരുത്"
-
-#: 
 msgid "Destructive Operation"
 msgstr "ഡേറ്റ ഇല്ലാതാക്കൽ"
 
@@ -12777,10 +12757,6 @@ msgstr "ഈ റോൾ ലിസ്‌റ്റിനായി ഗ്രൂപ്
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "നിഷ്ക്രിയ നില ക്ലാസ്സിഫിക്കേഷൻ ലിസ്‌റ്റിന് മാത്രമേ മാറ്റാൻ കഴിയൂ"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "പുതിയ ഉപയോക്താക്കൾക്ക് ക്രെഡൻഷ്യലുകൾ സഹിതം സ്വാഗത ഇമെയിൽ ലഭിക്കില്ല. പാസ്‌വേഡ് അവരുമായി സ്വമേധയാ പങ്കിടുക, അല്ലെങ്കിൽ ആദ്യം ഇമെയിൽ കോൺഫിഗർ ചെയ്യുക."
 
 #: 
 msgid "Option name is required"
@@ -15991,10 +15967,6 @@ msgid "Buyers Registered"
 msgstr "രജിസ്റ്റർ ചെയ്ത വാങ്ങുന്നവർ"
 
 #: 
-msgid "Buyers This Year"
-msgstr "ഈ വർഷം വാങ്ങുന്നവർ"
-
-#: 
 msgid "Catalog"
 msgstr "കാറ്റലോഗ്"
 
@@ -16143,10 +16115,6 @@ msgid "Items Donated"
 msgstr "സംഭാവന ചെയ്ത ഇനങ്ങൾ"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "സംഭാവന ചെയ്ത ഇനങ്ങൾ (ഈ വർഷം)"
-
-#: 
 msgid "Items Sold"
 msgstr "വിൽക്കപ്പെട്ട ഇനങ്ങൾ"
 
@@ -16225,10 +16193,6 @@ msgstr "ദ്രുത മുൻനിർണ്ണയങ്ങൾ"
 #: 
 msgid "Raised"
 msgstr "സ്വരൂപിച്ചത്"
-
-#: 
-msgid "Raised This Year"
-msgstr "ഈ വർഷം സ്വരൂപിച്ചത്"
 
 #: 
 msgid "Sample Amount"
@@ -17825,14 +17789,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "{{geocoded}} കുടുംബങ്ങൾ ജിയോകോഡ് ചെയ്തു. {{failed}} എണ്ണം പരിഹരിക്കാനായില്ല — താഴെയുള്ള വിശദാംശങ്ങൾ കാണുക."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "{{total}} കുടുംബങ്ങളിൽ {{geocoded}} എണ്ണം ജിയോകോഡ് ചെയ്തു. {{overflow}} എണ്ണം ഇനിയും പ്രോസസ്സ് ചെയ്തിട്ടില്ല — തുടരാൻ വീണ്ടും പ്രവർത്തിപ്പിക്കുക."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "കുടുംബങ്ങൾ ജിയോകോഡ് ചെയ്യുന്നു… ഇതിന് ഒരു മിനിറ്റ് വരെ എടുത്തേക്കാം. നിങ്ങൾക്ക് ഈ പേജ് തുറന്നിടാം."
-
-#: 
 msgid "Geocoding…"
 msgstr "ജിയോകോഡിംഗ്…"
 
@@ -17845,20 +17801,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "പൊരുത്തം കണ്ടെത്തിയില്ല — തെരുവ് വിലാസം, നഗരം, ZIP എന്നിവ പരിശോധിക്കുക"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "2FA നിർബന്ധമാക്കിയ ശേഷം ഉപയോക്താക്കൾക്ക് അതിൽ ചേരാൻ ലഭിക്കുന്ന ദിവസങ്ങളുടെ എണ്ണം. ഉടൻ നടപ്പിലാക്കാൻ (പഴയ രീതി) 0 ആയി സജ്ജമാക്കുക. സജീവമായ ഗ്രേസ് പിരീഡ് കുറയ്ക്കുന്നത് ഉപയോക്താക്കളെ ഉടൻ ലോക്ക് ഔട്ട് ചെയ്തേക്കാം."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "വിലാസം ശരിയാക്കാൻ ഒരു കുടുംബം തുറക്കുക, എന്നിട്ട് ഇത് വീണ്ടും പ്രവർത്തിപ്പിക്കുക."
 
 #: 
 msgid "Set up now"
 msgstr "ഇപ്പോൾ സജ്ജമാക്കുക"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "OpenStreetMap ഉപയോഗിച്ച് കോർഡിനേറ്റുകൾ ഇല്ലാത്ത എല്ലാ കുടുംബങ്ങൾക്കും ഇത് മാപ്പ് കോർഡിനേറ്റുകൾ കണ്ടെത്തുന്നു. ഓരോ പ്രാവശ്യവും ഇത് പരമാവധി 50 കുടുംബങ്ങൾ പ്രോസസ്സ് ചെയ്യുന്നു; ഒരു പൂർണ്ണ ബാച്ചിന് ഏകദേശം ഒരു മിനിറ്റ് എടുക്കും. ഇത് പ്രവർത്തിക്കുമ്പോൾ നിങ്ങൾക്ക് ഈ പേജ് തുറന്നിടാം. തുടരണോ?"
 
 #: 
 msgid "Unknown family"

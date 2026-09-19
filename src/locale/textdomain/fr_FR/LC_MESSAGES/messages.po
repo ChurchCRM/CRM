@@ -5046,14 +5046,6 @@ msgid "Verification URL created"
 msgstr "URL de vérification créée"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Erreur lors de l'envoi des mails"
 
@@ -8448,10 +8440,6 @@ msgid "selected family has no coordinates"
 msgstr "la famille sélectionnée n'a pas de coordonnées"
 
 #: 
-msgid "2FA"
-msgstr "A2F"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Exiger que tous les utilisateurs s'inscrivent à l'authentification à deux facteurs"
 
@@ -9248,10 +9236,6 @@ msgstr "Exporter les données au format CSV pour des applications externes"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Étendre ChurchCRM avec MailChimp, les sauvegardes et plus encore"
-
-#: 
-msgid "FY %s"
-msgstr "AF %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12211,10 +12195,6 @@ msgid "Database dump only (.sql)"
 msgstr "Export de base de données uniquement (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "La plage de dates ne peut pas dépasser 1 an"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Opération destructive"
 
@@ -12809,10 +12789,6 @@ msgstr "Ministère introuvable pour cette liste de rôles"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Le statut inactif ne peut être modifié que dans la liste des classifications"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Les nouveaux utilisateurs ne recevront pas d'e-mail de bienvenue avec leurs identifiants. Partagez le mot de passe manuellement ou configurez la messagerie d'abord."
 
 #: 
 msgid "Option name is required"
@@ -16023,10 +15999,6 @@ msgid "Buyers Registered"
 msgstr "Acheteurs inscrits"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Acheteurs cette année"
-
-#: 
 msgid "Catalog"
 msgstr "Catalogue"
 
@@ -16171,10 +16143,6 @@ msgid "Items Donated"
 msgstr "Articles donnés"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Articles donnés (cette année)"
-
-#: 
 msgid "Items Sold"
 msgstr "Articles vendus"
 
@@ -16253,10 +16221,6 @@ msgstr "Préréglages rapides"
 #: 
 msgid "Raised"
 msgstr "Collecté"
-
-#: 
-msgid "Raised This Year"
-msgstr "Collecté cette année"
 
 #: 
 msgid "Sample Amount"
@@ -17853,14 +17817,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "{{geocoded}} familles géocodées. {{failed}} n'ont pas pu être résolues — voir les détails ci-dessous."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "{{geocoded}} familles géocodées sur {{total}}. {{overflow}} pas encore traitées — relancez pour continuer."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Géocodage des familles en cours… cela peut prendre jusqu'à une minute. Vous pouvez laisser cette page ouverte."
-
-#: 
 msgid "Geocoding…"
 msgstr "Géocodage en cours…"
 
@@ -17873,20 +17829,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Aucune correspondance trouvée — vérifiez l'adresse, la ville et le code postal"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Nombre de jours dont disposent les utilisateurs pour activer l'authentification à deux facteurs après qu'elle devient obligatoire. Réglez sur 0 pour l'imposer immédiatement (comportement hérité). Réduire une période de grâce active peut bloquer immédiatement l'accès des utilisateurs."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Ouvrez une famille pour corriger son adresse, puis relancez cette opération."
 
 #: 
 msgid "Set up now"
 msgstr "Configurer maintenant"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Cette opération recherche les coordonnées cartographiques pour chaque famille qui n'en a pas, à l'aide d'OpenStreetMap. Elle traite jusqu'à 50 familles par exécution ; un lot complet prend environ une minute. Vous pouvez laisser cette page ouverte pendant l'exécution. Continuer ?"
 
 #: 
 msgid "Unknown family"

@@ -1,6 +1,4 @@
 {
-  "CSV": "",
-  "OFX": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
     "zero": "المصادقة الثنائية مطلوبة. لديك %d يوم للتسجيل.|المصادقة الثنائية مطلوبة. لديك يوم واحد للتسجيل.|المصادقة الثنائية مطلوبة. لديك يومان للتسجيل.|المصادقة الثنائية مطلوبة. لديك %d أيام للتسجيل.|المصادقة الثنائية مطلوبة. لديك %d يومًا للتسجيل.|المصادقة الثنائية مطلوبة. لديك %d يوم للتسجيل.",
     "one": "",
@@ -9,6 +7,19 @@
     "many": "",
     "other": ""
   },
+  "They are expected at least once every %d hour.": {
+    "zero": "من المتوقع أن يحضروا مرة واحدة على الأقل كل %d ساعة.|من المتوقع أن يحضروا مرة واحدة على الأقل كل ساعة.|من المتوقع أن يحضروا مرة واحدة على الأقل كل ساعتين.|من المتوقع أن يحضروا مرة واحدة على الأقل كل %d ساعات.|من المتوقع أن يحضروا مرة واحدة على الأقل كل %d ساعة.|من المتوقع أن يحضروا مرة واحدة على الأقل كل %d ساعة.",
+    "one": "",
+    "two": "",
+    "few": "",
+    "many": "",
+    "other": ""
+  },
+  "Buyers This Fiscal Year": "",
+  "Current": "",
+  "Items Donated (This Fiscal Year)": "",
+  "Login must be %d characters or fewer!": "",
+  "Raised This Fiscal Year": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""
@@ -29,7 +40,19 @@
     "one": "",
     "other": ""
   },
-  "…and {{count}} more. Run again to see the rest.": {
+  "Active for {{count}} seconds": {
+    "one": "",
+    "other": ""
+  },
+  "You are about to send confirmation emails to {{count}} families.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} families have no email address on file and will be skipped": {
+    "one": "",
+    "other": ""
+  },
+  "…and {{count}} more not listed here.": {
     "one": "",
     "other": ""
   }

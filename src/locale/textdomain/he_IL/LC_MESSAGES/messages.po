@@ -5049,14 +5049,6 @@ msgid "Verification URL created"
 msgstr "נוצר URL לאישור"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "שגיאה בשליחת אימייל/ים"
 
@@ -8449,10 +8441,6 @@ msgid "selected family has no coordinates"
 msgstr "למשפחה שנבחרה אין קואורדינטות"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "דרוש מכל המשתמשים להירשם לאימות דו-שלבי"
 
@@ -9249,10 +9237,6 @@ msgstr "ייצוא נתונים לפורמט CSV עבור יישומים חיצ�
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "הרחיבו את ChurchCRM עם MailChimp, גיבויים ועוד"
-
-#: 
-msgid "FY %s"
-msgstr "שנת כספים %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12212,10 +12196,6 @@ msgid "Database dump only (.sql)"
 msgstr "ייצוא מסד נתונים בלבד (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "טווח התאריכים אינו יכול לעלות על שנה אחת"
-
-#: 
 msgid "Destructive Operation"
 msgstr "פעולה הרסנית"
 
@@ -12810,10 +12790,6 @@ msgstr "הקבוצה לא נמצאה עבור רשימת תפקידים זו"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "ניתן לשנות סטטוס לא פעיל רק עבור רשימת הסיווגים"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "משתמשים חדשים לא יקבלו דואר אלקטרוני של ברוכים הבאים עם פרטי הגישה שלהם. שתפו איתם את הסיסמה באופן ידני, או הגדרו תחילה דואר אלקטרוני."
 
 #: 
 msgid "Option name is required"
@@ -16024,10 +16000,6 @@ msgid "Buyers Registered"
 msgstr "קונים רשומים"
 
 #: 
-msgid "Buyers This Year"
-msgstr "קונים השנה"
-
-#: 
 msgid "Catalog"
 msgstr "קטלוג"
 
@@ -16176,10 +16148,6 @@ msgid "Items Donated"
 msgstr "פריטים שנתרמו"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "פריטים שנתרמו (השנה)"
-
-#: 
 msgid "Items Sold"
 msgstr "פריטים שנמכרו"
 
@@ -16258,10 +16226,6 @@ msgstr "הגדרות מהירות מוגדרות מראש"
 #: 
 msgid "Raised"
 msgstr "גויס"
-
-#: 
-msgid "Raised This Year"
-msgstr "גויס השנה"
 
 #: 
 msgid "Sample Amount"
@@ -17870,14 +17834,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "בוצע מיקום גיאוגרפי ל-{{geocoded}} משפחות. {{failed}} לא ניתן היה לפתור — ראה פרטים למטה."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "בוצע מיקום גיאוגרפי ל-{{geocoded}} מתוך {{total}} משפחות. {{overflow}} טרם עובדו — הרץ שוב כדי להמשיך."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "מבצע מיקום גיאוגרפי למשפחות… פעולה זו עשויה להימשך עד דקה. ניתן להשאיר דף זה פתוח."
-
-#: 
 msgid "Geocoding…"
 msgstr "מבצע מיקום גיאוגרפי…"
 
@@ -17890,20 +17846,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "לא נמצאה התאמה — בדוק את הרחוב, העיר והמיקוד"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "מספר הימים העומדים לרשות המשתמשים להירשם לאימות דו-שלבי לאחר שהוא הופך לחובה. הגדר ל-0 כדי לאכוף באופן מיידי (התנהגות ישנה). קיצור תקופת חסד פעילה עלול לנעול משתמשים מחוץ למערכת באופן מיידי."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "פתח משפחה כדי לתקן את כתובתה, ולאחר מכן הרץ זאת שוב."
 
 #: 
 msgid "Set up now"
 msgstr "הגדר כעת"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "פעולה זו מוצאת קואורדינטות מפה עבור כל משפחה שחסרות לה, באמצעות OpenStreetMap. היא מעבדת עד 50 משפחות בכל הרצה; קבוצה מלאה אורכת כדקה אחת. ניתן להשאיר דף זה פתוח בזמן הפעולה. להמשיך?"
 
 #: 
 msgid "Unknown family"

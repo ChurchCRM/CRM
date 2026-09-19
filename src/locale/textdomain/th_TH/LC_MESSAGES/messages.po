@@ -5028,14 +5028,6 @@ msgid "Verification URL created"
 msgstr "สร้าง URL การยืนยันแล้ว"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "ข้อผิดพลาดในการส่งอีเมล"
 
@@ -8420,10 +8412,6 @@ msgid "selected family has no coordinates"
 msgstr "ครอบครัวที่เลือกไม่มีพิกัด"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "กำหนดให้ผู้ใช้ทั้งหมดลงทะเบียนการยืนยันตัวตนสองปัจจัย"
 
@@ -9219,10 +9207,6 @@ msgstr "ส่งออกข้อมูลเป็นรูปแบบ CSV �
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "ขยายความสามารถ ChurchCRM ด้วย MailChimp การสำรองข้อมูล และอื่นๆ"
-
-#: 
-msgid "FY %s"
-msgstr "ปีงบประมาณ %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12181,10 +12165,6 @@ msgid "Database dump only (.sql)"
 msgstr "ดัมพ์ฐานข้อมูลเท่านั้น (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "ช่วงวันที่ต้องไม่เกิน 1 ปี"
-
-#: 
 msgid "Destructive Operation"
 msgstr "การดำเนินการที่อันตราย"
 
@@ -12779,10 +12759,6 @@ msgstr "ไม่พบพันธกิจสำหรับรายการ
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "สถานะไม่ใช้งานสามารถสลับได้เฉพาะสำหรับรายการการจัดประเภทเท่านั้น"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "สมาชิกใหม่จะไม่ได้รับอีเมลต้อนรับพร้อมข้อมูลประจำตัว โปรดแชร์รหัสผ่านด้วยตนเอง หรือตั้งค่าอีเมลก่อน"
 
 #: 
 msgid "Option name is required"
@@ -15990,10 +15966,6 @@ msgid "Buyers Registered"
 msgstr "ผู้ซื้อที่ลงทะเบียน"
 
 #: 
-msgid "Buyers This Year"
-msgstr "ผู้ซื้อในปีนี้"
-
-#: 
 msgid "Catalog"
 msgstr "แคตาล็อก"
 
@@ -16142,10 +16114,6 @@ msgid "Items Donated"
 msgstr "รายการที่บริจาค"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "รายการที่บริจาค (ปีนี้)"
-
-#: 
 msgid "Items Sold"
 msgstr "รายการที่ขายได้"
 
@@ -16224,10 +16192,6 @@ msgstr "ค่าที่ตั้งไว้ล่วงหน้าแบบ
 #: 
 msgid "Raised"
 msgstr "ระดมทุนได้"
-
-#: 
-msgid "Raised This Year"
-msgstr "ระดมทุนได้ในปีนี้"
 
 #: 
 msgid "Sample Amount"
@@ -17834,14 +17798,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "ระบุพิกัดครอบครัวแล้ว {{geocoded}} ครอบครัว ไม่สามารถระบุได้ {{failed}} ครอบครัว — ดูรายละเอียดด้านล่าง"
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "ระบุพิกัดแล้ว {{geocoded}} จาก {{total}} ครอบครัว ยังไม่ได้ประมวลผล {{overflow}} ครอบครัว — เรียกใช้อีกครั้งเพื่อดำเนินการต่อ"
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "กำลังระบุพิกัดครอบครัว… อาจใช้เวลาถึงหนึ่งนาที คุณสามารถเปิดหน้านี้ค้างไว้ได้"
-
-#: 
 msgid "Geocoding…"
 msgstr "กำลังระบุพิกัด…"
 
@@ -17854,20 +17810,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "ไม่พบข้อมูลที่ตรงกัน — โปรดตรวจสอบที่อยู่ถนน เมือง และรหัสไปรษณีย์"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "จำนวนวันที่ผู้ใช้มีในการลงทะเบียนยืนยันตัวตนสองขั้นตอน (2FA) หลังจากมีการบังคับใช้ ตั้งค่าเป็น 0 เพื่อบังคับใช้ทันที (พฤติกรรมแบบเดิม) การลดระยะเวลาผ่อนผันที่ใช้งานอยู่อาจทำให้ผู้ใช้ถูกล็อกออกทันที"
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "เปิดข้อมูลครอบครัวเพื่อแก้ไขที่อยู่ แล้วเรียกใช้อีกครั้ง"
 
 #: 
 msgid "Set up now"
 msgstr "ตั้งค่าตอนนี้"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "ฟีเจอร์นี้จะค้นหาพิกัดแผนที่สำหรับทุกครอบครัวที่ยังไม่มีพิกัด โดยใช้ OpenStreetMap ในแต่ละครั้งจะประมวลผลได้สูงสุด 50 ครอบครัว ซึ่งใช้เวลาประมาณหนึ่งนาทีต่อชุด คุณสามารถเปิดหน้านี้ค้างไว้ระหว่างดำเนินการได้ ต้องการดำเนินการต่อหรือไม่?"
 
 #: 
 msgid "Two-factor authentication is required. You have %d day to enroll."

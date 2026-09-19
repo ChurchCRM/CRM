@@ -5078,14 +5078,6 @@ msgid "Verification URL created"
 msgstr "Ellenőrzés URL létrehozva"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Hiba az e-mail(ek) küldésekor"
 
@@ -8478,10 +8470,6 @@ msgid "selected family has no coordinates"
 msgstr "A kiválasztott családnak nincs koordinátája"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kötelezze az összes felhasználót a kétfaktoros hitelesítés aktiválására"
 
@@ -9278,10 +9266,6 @@ msgstr "Adatok exportálása CSV formátumba külső alkalmazásokhoz"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "A ChurchCRM bővítése MailChimp-pel, biztonsági mentésekkel és egyebekkel"
-
-#: 
-msgid "FY %s"
-msgstr "Pénzügyi év %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12241,10 +12225,6 @@ msgid "Database dump only (.sql)"
 msgstr "Csak adatbázis-mentés (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "A dátumtartomány nem haladhatja meg az 1 évet"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Visszafordíthatatlan művelet"
 
@@ -12839,10 +12819,6 @@ msgstr "A csoport nem található ehhez a szerepkörlistához"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Az inaktív állapot csak a besorolások listájánál kapcsolható át"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Az új felhasználók nem kapnak üdvözlő e-mailt a hitelesítő adataikkal. Ossza meg velük a jelszót manuálisan, vagy először konfigurálja az e-mailt."
 
 #: 
 msgid "Option name is required"
@@ -16053,10 +16029,6 @@ msgid "Buyers Registered"
 msgstr "Regisztrált vevők"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Vevők ebben az évben"
-
-#: 
 msgid "Catalog"
 msgstr "Katalógus"
 
@@ -16205,10 +16177,6 @@ msgid "Items Donated"
 msgstr "Adományozott tételek"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Adományozott tételek (ebben az évben)"
-
-#: 
 msgid "Items Sold"
 msgstr "Eladott tételek"
 
@@ -16287,10 +16255,6 @@ msgstr "Gyors előbeállítások"
 #: 
 msgid "Raised"
 msgstr "Összegyűjtve"
-
-#: 
-msgid "Raised This Year"
-msgstr "Ebben az évben összegyűjtve"
 
 #: 
 msgid "Sample Amount"
@@ -17895,14 +17859,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "{{geocoded}} család geokódolása megtörtént. {{failed}} nem volt feloldható — lásd a részleteket lent."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "{{geocoded}} család geokódolása megtörtént a(z) {{total}} közül. {{overflow}} még nincs feldolgozva — a folytatáshoz futtassa újra."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Családok geokódolása… ez akár egy percig is eltarthat. Nyitva tarthatja ezt az oldalt."
-
-#: 
 msgid "Geocoding…"
 msgstr "Geokódolás…"
 
@@ -17915,20 +17871,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Nem található egyezés — ellenőrizze az utca címét, a várost és az irányítószámot"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Azon napok száma, amelyeken belül a felhasználóknak be kell iratkozniuk a kétfaktoros hitelesítésre (2FA), miután az kötelezővé válik. Állítsa 0-ra az azonnali érvényesítéshez (korábbi működés). Egy aktív türelmi időszak lerövidítése azonnal kizárhatja a felhasználókat."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Nyissa meg a családot a cím javításához, majd futtassa újra ezt."
 
 #: 
 msgid "Set up now"
 msgstr "Beállítás most"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Ez megkeresi a térképkoordinátákat minden olyan családhoz, amelynél hiányoznak, az OpenStreetMap segítségével. Futtatásonként legfeljebb 50 családot dolgoz fel; egy teljes köteg körülbelül egy percet vesz igénybe. Az oldalt nyitva tarthatja futás közben. Folytatja?"
 
 #: 
 msgid "Unknown family"

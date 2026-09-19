@@ -1,0 +1,39 @@
+{
+  "Raised This Fiscal Year": "",
+  "Copied {{count}} members": {
+    "one": "",
+    "other": ""
+  },
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "",
+    "other": ""
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} min left": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} families could not be geocoded": {
+    "one": "",
+    "other": ""
+  },
+  "Active for {{count}} seconds": {
+    "one": "",
+    "other": ""
+  },
+  "You are about to send confirmation emails to {{count}} families.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} families have no email address on file and will be skipped": {
+    "one": "",
+    "other": ""
+  },
+  "…and {{count}} more not listed here.": {
+    "one": "",
+    "other": ""
+  }
+}

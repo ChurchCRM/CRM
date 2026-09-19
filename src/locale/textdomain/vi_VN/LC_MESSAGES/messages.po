@@ -5054,14 +5054,6 @@ msgid "Verification URL created"
 msgstr "URL xác minh đã được tạo"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Lỗi khi gửi (các) email"
 
@@ -8447,10 +8439,6 @@ msgid "selected family has no coordinates"
 msgstr "gia đình đã chọn không có tọa độ"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Yêu cầu tất cả người dùng đăng ký xác thực hai yếu tố"
 
@@ -9246,10 +9234,6 @@ msgstr "Xuat du lieu sang dinh dang CSV cho ung dung ben ngoai"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Mo rong ChurchCRM voi MailChimp, sao luu va nhieu hon nua"
-
-#: 
-msgid "FY %s"
-msgstr "Nam tai chinh %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12208,10 +12192,6 @@ msgid "Database dump only (.sql)"
 msgstr "Chỉ kết xuất cơ sở dữ liệu (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Phạm vi ngày không được vượt quá 1 năm"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Thao tác xóa dữ liệu"
 
@@ -12806,10 +12786,6 @@ msgstr "Không tìm thấy sứ vụ cho danh sách vai trò này"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Trạng thái không hoạt động chỉ có thể được bật/tắt cho danh sách phân loại"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Thành viên mới sẽ không nhận được email chào mừng kèm thông tin đăng nhập. Hãy chia sẻ mật khẩu với họ theo cách thủ công, hoặc cấu hình email trước."
 
 #: 
 msgid "Option name is required"
@@ -16017,10 +15993,6 @@ msgid "Buyers Registered"
 msgstr "Người mua đã đăng ký"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Người mua trong năm nay"
-
-#: 
 msgid "Catalog"
 msgstr "Danh mục"
 
@@ -16169,10 +16141,6 @@ msgid "Items Donated"
 msgstr "Các mục được hiến tặng"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Các mục được hiến tặng (Năm nay)"
-
-#: 
 msgid "Items Sold"
 msgstr "Các mục đã bán"
 
@@ -16251,10 +16219,6 @@ msgstr "Cài đặt nhanh"
 #: 
 msgid "Raised"
 msgstr "Đã gây quỹ"
-
-#: 
-msgid "Raised This Year"
-msgstr "Đã gây quỹ năm nay"
 
 #: 
 msgid "Sample Amount"
@@ -17861,14 +17825,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "Đã định vị địa lý cho {{geocoded}} gia đình. {{failed}} không thể xác định được — xem chi tiết bên dưới."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "Đã định vị địa lý {{geocoded}} trong số {{total}} gia đình. {{overflow}} chưa được xử lý — chạy lại để tiếp tục."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Đang định vị địa lý cho các gia đình… quá trình này có thể mất đến một phút. Bạn có thể để trang này mở."
-
-#: 
 msgid "Geocoding…"
 msgstr "Đang định vị địa lý…"
 
@@ -17881,20 +17837,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Không tìm thấy kết quả phù hợp — hãy kiểm tra địa chỉ đường, thành phố và mã ZIP"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Số ngày người dùng có để đăng ký xác thực hai yếu tố (2FA) sau khi bắt buộc áp dụng. Đặt thành 0 để bắt buộc ngay lập tức (hành vi cũ). Rút ngắn thời gian ân hạn đang áp dụng có thể khiến người dùng bị khóa ngay lập tức."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Mở một gia đình để sửa địa chỉ, sau đó chạy lại thao tác này."
 
 #: 
 msgid "Set up now"
 msgstr "Thiết lập ngay"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Thao tác này tìm tọa độ bản đồ cho mọi gia đình còn thiếu, sử dụng OpenStreetMap. Nó xử lý tối đa 50 gia đình mỗi lần chạy; một đợt đầy đủ mất khoảng một phút. Bạn có thể để trang này mở trong khi chạy. Tiếp tục?"
 
 #: 
 msgid "Two-factor authentication is required. You have %d day to enroll."

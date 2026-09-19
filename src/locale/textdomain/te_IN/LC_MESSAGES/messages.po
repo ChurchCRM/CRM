@@ -5028,14 +5028,6 @@ msgid "Verification URL created"
 msgstr "ధృవీకరణ URL సృష్టించబడింది"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "ఇమెయిల్(లు) పంపడంలో లోపం"
 
@@ -8428,10 +8420,6 @@ msgid "selected family has no coordinates"
 msgstr "ఎంచుకున్న కుటుంబానికి కోఆర్డినేట్‌లు లేవు"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "అన్ని వినియోగదారులు రెండు-కారకాల ప్రమాణీకరణలో నమోదు చేసుకోవడం అవసరం"
 
@@ -9228,10 +9216,6 @@ msgstr "బాహ్య అప్లికేషన్ల కోసం డేట
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, బ్యాకప్‌లు మరియు మరిన్నింటితో ChurchCRM విస్తరించండి"
-
-#: 
-msgid "FY %s"
-msgstr "ఆర్థిక సంవత్సరం %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12191,10 +12175,6 @@ msgid "Database dump only (.sql)"
 msgstr "డేటాబేస్ డంప్ మాత్రమే (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "తేదీ పరిధి 1 సంవత్సరం మించకూడదు"
-
-#: 
 msgid "Destructive Operation"
 msgstr "నాశనకరమైన చర్య"
 
@@ -12789,10 +12769,6 @@ msgstr "ఈ పాత్ర జాబితాకు సేవ కనుగొ�
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "నిష్క్రియ స్థితిని వర్గీకరణల జాబితాకు మాత్రమే టోగుల్ చేయవచ్చు"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "కొత్త సభ్యులు వారి క్రెడెన్షియల్స్‌తో స్వాగత ఇమెయిల్ అందుకోరు. పాస్‌వర్డ్‌ను వారితో మాన్యువల్‌గా పంచుకోండి, లేదా ముందు ఇమెయిల్‌ను కాన్ఫిగర్ చేయండి."
 
 #: 
 msgid "Option name is required"
@@ -16003,10 +15979,6 @@ msgid "Buyers Registered"
 msgstr "నమోదైన కొనుగోలుదారులు"
 
 #: 
-msgid "Buyers This Year"
-msgstr "ఈ సంవత్సరం కొనుగోలుదారులు"
-
-#: 
 msgid "Catalog"
 msgstr "కేటలాగ్"
 
@@ -16155,10 +16127,6 @@ msgid "Items Donated"
 msgstr "దానం చేసిన అంశాలు"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "దానం చేసిన అంశాలు (ఈ సంవత్సరం)"
-
-#: 
 msgid "Items Sold"
 msgstr "విక్రయించిన అంశాలు"
 
@@ -16237,10 +16205,6 @@ msgstr "త్వరిత ముందే నిర్ధారించిన 
 #: 
 msgid "Raised"
 msgstr "సేకరించబడింది"
-
-#: 
-msgid "Raised This Year"
-msgstr "ఈ సంవత్సరం సేకరించబడింది"
 
 #: 
 msgid "Sample Amount"
@@ -17837,14 +17801,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "{{geocoded}} కుటుంబాలను జియోకోడ్ చేసారు. {{failed}} పరిష్కరించలేకపోయాము — దిగువ వివరాలు చూడండి."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "{{total}} కుటుంబాలలో {{geocoded}} జియోకోడ్ చేసారు. {{overflow}} ఇంకా ప్రాసెస్ చేయలేదు — కొనసాగించడానికి మళ్ళీ అమలు చేయండి."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "కుటుంబాలను జియోకోడింగ్ చేస్తోంది… దీనికి ఒక నిమిషం వరకు పట్టవచ్చు. మీరు ఈ పేజీని తెరిచి ఉంచవచ్చు."
-
-#: 
 msgid "Geocoding…"
 msgstr "జియోకోడింగ్…"
 
@@ -17857,20 +17813,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "సరిపోలిక కనుగొనబడలేదు — వీధి చిరునామా, నగరం మరియు పిన్ కోడ్‌ని తనిఖీ చేయండి"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "2FA తప్పనిసరి చేసిన తర్వాత వినియోగదారులు నమోదు చేసుకోవడానికి ఉన్న రోజుల సంఖ్య. వెంటనే అమలు చేయడానికి (లెగసీ ప్రవర్తన) దీన్ని 0కి సెట్ చేయండి. యాక్టివ్ గ్రేస్ పీరియడ్‌ను తగ్గించడం వల్ల వినియోగదారులు వెంటనే లాక్ అవ్వవచ్చు."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "దాని చిరునామాను సరిచేయడానికి ఒక కుటుంబాన్ని తెరవండి, ఆపై దీన్ని మళ్ళీ అమలు చేయండి."
 
 #: 
 msgid "Set up now"
 msgstr "ఇప్పుడే సెటప్ చేయండి"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "ఇది OpenStreetMap ఉపయోగించి, కోఆర్డినేట్‌లు లేని ప్రతి కుటుంబానికి మ్యాప్ కోఆర్డినేట్‌లను కనుగొంటుంది. ఇది ఒక్కో రన్‌కు 50 కుటుంబాల వరకు ప్రాసెస్ చేస్తుంది; పూర్తి బ్యాచ్‌కు దాదాపు ఒక నిమిషం పడుతుంది. ఇది నడుస్తున్నప్పుడు మీరు ఈ పేజీని తెరిచి ఉంచవచ్చు. కొనసాగించాలా?"
 
 #: 
 msgid "Unknown family"

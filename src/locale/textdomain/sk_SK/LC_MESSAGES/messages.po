@@ -5018,14 +5018,6 @@ msgid "Verification URL created"
 msgstr "URL overenia vytvorené"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Chyba pri odosielaní e-mailu(-ov)"
 
@@ -8433,10 +8425,6 @@ msgid "selected family has no coordinates"
 msgstr "vybraná rodina nemá súradnice"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Vyžadovať od všetkých používateľov registráciu dvojfaktorovej autentifikácie"
 
@@ -9235,10 +9223,6 @@ msgstr "Exportovať dáta do formátu CSV pre externé aplikácie"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Rozšíriť ChurchCRM o MailChimp, zálohy a ďalšie"
-
-#: 
-msgid "FY %s"
-msgstr "FY %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12200,10 +12184,6 @@ msgid "Database dump only (.sql)"
 msgstr "Iba výpis databázy (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Dátumový rozsah nesmie presiahnuť 1 rok"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Deštruktívna operácia"
 
@@ -12798,10 +12778,6 @@ msgstr "Skupina nenájdená pre tento zoznam rolí"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Neaktívny stav môže byť prepínaný iba pre zoznam klasifikácií"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Noví používatelia nedostanú uvítací e-mail s prihlasovacími údajmi. Heslo im zdieľajte ručne alebo najprv nakonfigurujte e-mail."
 
 #: 
 msgid "Option name is required"
@@ -16018,10 +15994,6 @@ msgid "Buyers Registered"
 msgstr "Registrovaní kupujúci"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Kupujúci v tomto roku"
-
-#: 
 msgid "Catalog"
 msgstr "Katalóg"
 
@@ -16170,10 +16142,6 @@ msgid "Items Donated"
 msgstr "Darované položky"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Darované položky (tento rok)"
-
-#: 
 msgid "Items Sold"
 msgstr "Predané položky"
 
@@ -16252,10 +16220,6 @@ msgstr "Rýchle predvolené nastavenia"
 #: 
 msgid "Raised"
 msgstr "Vyzbierané"
-
-#: 
-msgid "Raised This Year"
-msgstr "Vyzbierané tento rok"
 
 #: 
 msgid "Sample Amount"
@@ -17852,14 +17816,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "Geokódovaných bolo {{geocoded}} rodín. {{failed}} sa nepodarilo vyriešiť — pozrite podrobnosti nižšie."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "Geokódovaných bolo {{geocoded}} z {{total}} rodín. {{overflow}} ešte nebolo spracovaných — spustite znova pre pokračovanie."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Geokódovanie rodín… môže to trvať až minútu. Túto stránku môžete nechať otvorenú."
-
-#: 
 msgid "Geocoding…"
 msgstr "Geokódovanie…"
 
@@ -17872,20 +17828,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Nenašla sa žiadna zhoda — skontrolujte ulicu, mesto a PSČ"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Počet dní, ktoré majú používatelia na zapojenie dvojfaktorového overenia (2FA) po jeho nariadení. Nastavením na 0 sa vynúti okamžite (pôvodné správanie). Skrátenie aktívnej ochrannej lehoty môže používateľov okamžite uzamknúť."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Otvorte rodinu, opravte jej adresu a potom spustite toto znova."
 
 #: 
 msgid "Set up now"
 msgstr "Nastaviť teraz"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Toto nájde súradnice na mape pre každú rodinu, ktorej chýbajú, pomocou OpenStreetMap. Spracuje až 50 rodín na jeden beh; celá dávka trvá približne minútu. Túto stránku môžete nechať otvorenú počas behu. Pokračovať?"
 
 #: 
 msgid "Unknown family"

@@ -3,6 +3,15 @@
     "one": "Twee-faktor-verifikasie word vereis. Jy het %d dag om te registreer.|Twee-faktor-verifikasie word vereis. Jy het %d dae om te registreer.",
     "other": ""
   },
+  "They are expected at least once every %d hour.": {
+    "one": "Hulle word ten minste een keer elke %d uur verwag.|Hulle word ten minste een keer elke %d uur verwag.",
+    "other": ""
+  },
+  "Buyers This Fiscal Year": "",
+  "Current": "",
+  "Items Donated (This Fiscal Year)": "",
+  "Login must be %d characters or fewer!": "",
+  "Raised This Fiscal Year": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""
@@ -23,7 +32,19 @@
     "one": "",
     "other": ""
   },
-  "…and {{count}} more. Run again to see the rest.": {
+  "Active for {{count}} seconds": {
+    "one": "",
+    "other": ""
+  },
+  "You are about to send confirmation emails to {{count}} families.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} families have no email address on file and will be skipped": {
+    "one": "",
+    "other": ""
+  },
+  "…and {{count}} more not listed here.": {
     "one": "",
     "other": ""
   }

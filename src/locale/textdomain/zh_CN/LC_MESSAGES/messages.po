@@ -5120,14 +5120,6 @@ msgid "Verification URL created"
 msgstr "验证网址已创建"
 
 #: 
-msgid "URL"
-msgstr "网址"
-
-#: 
-msgid "PDF"
-msgstr "PDF格式"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "发送电子邮件时出错"
 
@@ -8513,10 +8505,6 @@ msgid "selected family has no coordinates"
 msgstr "所选家庭没有坐标"
 
 #: 
-msgid "2FA"
-msgstr "双重验证"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "要求所有用户注册双重身份验证"
 
@@ -9312,10 +9300,6 @@ msgstr "将数据导出为 CSV 格式供外部应用使用"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "使用 MailChimp、备份等功能扩展 ChurchCRM"
-
-#: 
-msgid "FY %s"
-msgstr "财年 %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12274,10 +12258,6 @@ msgid "Database dump only (.sql)"
 msgstr "仅数据库转储（.sql）"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "日期范围不能超过1年"
-
-#: 
 msgid "Destructive Operation"
 msgstr "危险操作"
 
@@ -12872,10 +12852,6 @@ msgstr "未找到此角色列表对应的事工"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "非活跃状态只能在分类列表中切换"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "新用户将不会收到包含其凭据的欢迎电子邮件。请手动与他们分享密码，或先配置电子邮件。"
 
 #: 
 msgid "Option name is required"
@@ -16083,10 +16059,6 @@ msgid "Buyers Registered"
 msgstr "已注册买家"
 
 #: 
-msgid "Buyers This Year"
-msgstr "今年买家"
-
-#: 
 msgid "Catalog"
 msgstr "目录"
 
@@ -16235,10 +16207,6 @@ msgid "Items Donated"
 msgstr "捐赠物品"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "捐赠物品（本年度）"
-
-#: 
 msgid "Items Sold"
 msgstr "已售出物品"
 
@@ -16317,10 +16285,6 @@ msgstr "快速预设"
 #: 
 msgid "Raised"
 msgstr "已筹集"
-
-#: 
-msgid "Raised This Year"
-msgstr "本年度已筹集"
 
 #: 
 msgid "Sample Amount"
@@ -17927,14 +17891,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "已为 {{geocoded}} 个家庭完成地理编码。{{failed}} 个未能解析 — 详情见下文。"
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "已为 {{total}} 个家庭中的 {{geocoded}} 个完成地理编码。{{overflow}} 个尚未处理 — 请再次运行以继续。"
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "正在对家庭进行地理编码……这可能需要长达一分钟。您可以让此页面保持打开状态。"
-
-#: 
 msgid "Geocoding…"
 msgstr "正在进行地理编码……"
 
@@ -17947,20 +17903,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "未找到匹配项 — 请检查街道地址、城市和邮政编码"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "强制启用双重验证(2FA)后,用户可用于注册的天数。设为 0 表示立即强制执行(旧版行为)。缩短正在生效的宽限期可能会立即导致用户被锁定。"
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "打开一个家庭以修正其地址,然后再次运行此操作。"
 
 #: 
 msgid "Set up now"
 msgstr "立即设置"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "此操作使用 OpenStreetMap 为每个缺少地图坐标的家庭查找坐标。每次运行最多处理 50 个家庭;完成一整批大约需要一分钟。运行期间您可以让此页面保持打开状态。是否继续?"
 
 #: 
 msgid "Two-factor authentication is required. You have %d day to enroll."

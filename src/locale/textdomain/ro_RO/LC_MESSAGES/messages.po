@@ -5110,14 +5110,6 @@ msgid "Verification URL created"
 msgstr "URL de verificare creat"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Trimiterea email(urilor) a eșuat"
 
@@ -8518,10 +8510,6 @@ msgid "selected family has no coordinates"
 msgstr "familia selectată nu are coordonate"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Solicitați tuturor utilizatorilor să se înscrie pentru autentificarea în doi factori"
 
@@ -9319,10 +9307,6 @@ msgstr "Exportă datele în format CSV pentru aplicații externe"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Extindeți ChurchCRM cu MailChimp, copii de siguranță și altele"
-
-#: 
-msgid "FY %s"
-msgstr "An fiscal %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12283,10 +12267,6 @@ msgid "Database dump only (.sql)"
 msgstr "Doar export bază de date (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Intervalul de date nu poate depăși 1 an"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operațiune distructivă"
 
@@ -12881,10 +12861,6 @@ msgstr "Grupul nu a fost găsit pentru această listă de roluri"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Starea inactivă poate fi modificată numai pentru lista de clasificări"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Utilizatorii noi nu vor primi un e-mail de bun venit cu datele lor de autentificare. Partajați parola manual sau configurați mai întâi e-mailul."
 
 #: 
 msgid "Option name is required"
@@ -16090,10 +16066,6 @@ msgid "Buyers Registered"
 msgstr "Cumpărători înregistrați"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Cumpărători în acest an"
-
-#: 
 msgid "Certificates"
 msgstr "Certificate"
 
@@ -16238,10 +16210,6 @@ msgid "Items Donated"
 msgstr "Articole donate"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Articole donate (în acest an)"
-
-#: 
 msgid "Items Sold"
 msgstr "Articole vândute"
 
@@ -16320,10 +16288,6 @@ msgstr "Presetări rapide"
 #: 
 msgid "Raised"
 msgstr "Colectat"
-
-#: 
-msgid "Raised This Year"
-msgstr "Colectat în acest an"
 
 #: 
 msgid "Sample Amount"
@@ -17916,14 +17880,6 @@ msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see 
 msgstr "Au fost geocodate {{geocoded}} familii. {{failed}} nu au putut fi rezolvate — vedeți detaliile de mai jos."
 
 #: 
-msgid "Geocoded {{geocoded}} of {{total}} families. {{overflow}} not yet processed — run again to continue."
-msgstr "Au fost geocodate {{geocoded}} din {{total}} familii. {{overflow}} nu au fost încă procesate — rulați din nou pentru a continua."
-
-#: 
-msgid "Geocoding families… this can take up to a minute. You can keep this page open."
-msgstr "Se geocodează familiile… acest lucru poate dura până la un minut. Puteți lăsa această pagină deschisă."
-
-#: 
 msgid "Geocoding…"
 msgstr "Se geocodează…"
 
@@ -17936,20 +17892,12 @@ msgid "No match found — check the street address, city, and ZIP"
 msgstr "Nu s-a găsit nicio corespondență — verificați strada, orașul și codul poștal"
 
 #: 
-msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately."
-msgstr "Numărul de zile pe care utilizatorii le au la dispoziție pentru a activa autentificarea în doi factori (2FA) după ce aceasta devine obligatorie. Setați la 0 pentru a o impune imediat (comportament vechi). Scurtarea unei perioade de grație active poate bloca imediat accesul utilizatorilor."
-
-#: 
 msgid "Open a family to fix its address, then run this again."
 msgstr "Deschideți o familie pentru a-i corecta adresa, apoi rulați din nou."
 
 #: 
 msgid "Set up now"
 msgstr "Configurați acum"
-
-#: 
-msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It processes up to 50 families per run; a full batch takes about a minute. You can keep this page open while it runs. Continue?"
-msgstr "Aceasta găsește coordonatele pe hartă pentru fiecare familie căreia îi lipsesc, folosind OpenStreetMap. Procesează până la 50 de familii pe rulare; un lot complet durează aproximativ un minut. Puteți lăsa această pagină deschisă în timp ce rulează. Continuați?"
 
 #: 
 msgid "Unknown family"
