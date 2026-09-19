@@ -169,6 +169,10 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
                 // disappears with a system setting would be silently cleared by the next save,
                 // because extractModulePerms() reads every permission from the posted form.
                 ['name' => 'ManageMinistries', 'label' => gettext('Manage Ministries'),                'checked' => $perms['manageMinistries']],
+                // Manage My Ministries (2026-09-18): the coordinator's permission. Opens the
+                // Ministries heading for the ministries the person is made a coordinator of
+                // (on the ministry page), and grants nothing over any other ministry.
+                ['name' => 'ManageMyMinistries', 'label' => gettext('Manage My Ministries'),          'checked' => $perms['manageMyMinistries']],
             ];
             if ($eventsEnabled) {
                 $permissions[] = ['name' => 'AddEvent', 'label' => gettext('Manage Events'), 'checked' => !empty($perms['addEvent'])];

@@ -10,8 +10,10 @@ use ChurchCRM\Slim\Middleware\Request\Auth\BaseAuthRoleMiddleware;
  * Guards the `/volunteer` coordinator MVC routes and the coordinator half of
  * `/api/ministries` (design §3.2). It answers only "does this user have volunteer
  * coordination authority at all" — an administrator, a global volunteer manager, a
- * ministry coordinator or a team leader. Which ministry or team is decided per record
- * by the entity middlewares (§4.5); this class must never be asked.
+ * **Manage My Ministries** login that coordinates a ministry or leads a team
+ * (2026-09-18: the flag opens the area, the scope rows say which ministries), or a
+ * team leader. Which ministry or team is decided per record by the entity middlewares
+ * (§4.5); this class must never be asked.
  *
  * The predicate lives on the User model so that Menu::buildMenuItems() can mirror this
  * gate exactly with the same call, and so the scope query is memoised for the request
@@ -42,7 +44,7 @@ class VolunteerCoordinatorRoleAuthMiddleware extends BaseAuthRoleMiddleware
 
     protected function noRoleMessage(): string
     {
-        return gettext('Volunteer coordinator access is required');
+        return gettext('Manage My Ministries access, with a ministry or team to manage, is required');
     }
 
     protected function getRoleName(): string

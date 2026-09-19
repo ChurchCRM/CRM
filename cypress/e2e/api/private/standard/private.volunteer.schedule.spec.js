@@ -1132,11 +1132,15 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             // same out-of-pool override the Assign dialog does.
             qualify(PERSON_COORDINATOR, positionOne);
             qualify(PERSON_PLAIN, positionTwo);
+            // From tomorrow: an occurrence of TODAY whose start time has passed is
+            // "already happened" and refuses assignments, which would show up here
+            // as skipped defaults late in the day.
             createSchedule(
                 ministryA,
                 standaloneScheduleBody({
                     name: `${FIXTURE_PREFIX} Defaults`,
                     recurDow: "Friday",
+                    windowStart: isoDate(1),
                     requirements: [
                         { positionId: positionOne, minCount: 1, maxCount: 1 },
                         { positionId: positionTwo, minCount: 1, maxCount: 2 },
@@ -1296,6 +1300,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 standaloneScheduleBody({
                     name: `${FIXTURE_PREFIX} Blank Defaults`,
                     recurDow: "Saturday",
+                    windowStart: isoDate(1),
                     requirements: [{ positionId: positionOne, minCount: 1, maxCount: 1 }],
                 }),
             ).then((id) => {

@@ -13,7 +13,11 @@
  *     *Dashboard* and then one entry per ministry the viewer may administer,
  *     by name — every active ministry for an administrator or a global
  *     volunteer manager, exactly the ministry scopes for anybody else, and
- *     nothing at all for a pure team leader.
+ *     nothing at all for a pure team leader. Since 2026-09-18 "anybody else"
+ *     must also hold the **Manage My Ministries** permission: the flag opens
+ *     the area, the scope rows say which ministries are in it. The seed gives
+ *     person 3 the flag; one block below takes it away and proves the heading
+ *     and the dashboard go with it.
  *   - ~~**Volunteer**~~ — **gone** (#9867, Member Portal P16). The member
  *     surface lives only in the Member Portal now, so there is no "Volunteer"
  *     heading in the admin sidebar in ANY rollout state and for ANY user.
@@ -43,8 +47,17 @@ const TEAM_A = `${PREFIX} Greeters`;
 // characters to 22 plus " ...", exactly as it does for a long Group name.
 const CREATE_NAME = `${PREFIX} New`;
 
-/** tony.wade — every flag but Admin, and NOT a volunteer manager. */
+/** tony.wade — every flag but Admin, Manage My Ministries, and NOT a global volunteer manager. */
 const COORDINATOR_PERSON = 3;
+
+/** Flip person 3's Manage My Ministries flag; the seed value is 1. */
+function setManageMyMinistries(value) {
+    cy.dbQuery("UPDATE user_usr SET usr_ManageMyMinistries = ? WHERE usr_per_ID = ?", [value, COORDINATOR_PERSON]).then(
+        (result) => {
+            expect(result.error).to.eq(null);
+        },
+    );
+}
 
 let ministryA = 0;
 let ministryB = 0;
@@ -279,6 +292,77 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
             // created with a pool Group of the same name (D19), and the Groups
             // heading lists it — that is intended, and it is not this menu.
             menuSection("Ministries").should("not.contain", MINISTRY_B);
+        });
+
+        it("gets no New ministry action, and the create and delete routes refuse them (2026-09-18)", () => {
+            // Manage My Ministries is the coordinator's permission: their own
+            // ministry, and nothing over any other. The global actions stay with
+            // Manage Ministries and administrators.
+            cy.get("#volunteer-quick-actions").should("exist");
+            cy.get("#ministry-new-btn").should("not.exist");
+            // Their own ministry: they may deactivate it (§4.6, 2026-09-17) but
+            // never delete it — Delete only ever renders for a manager.
+            cy.visit(`${MINISTRIES_URL}/${ministryA}`);
+            cy.get("#volunteer-ministry").should("exist");
+            cy.get("#ministry-deactivate-btn").should("exist");
+            cy.get("#ministry-delete-btn").should("not.exist");
+            // Another ministry's page is refused outright.
+            cy.visit(`${MINISTRIES_URL}/${ministryB}`, { failOnStatusCode: false });
+            cy.get("#volunteer-ministry").should("not.exist");
+
+            // Last: cy.request() rotates the session cookie.
+            cy.makePrivateAPICall(
+                Cypress.env("user.api.key"),
+                "POST",
+                `${VOLUNTEER_URL}/ministries`,
+                { name: `${PREFIX} Forbidden`, description: "" },
+                403,
+            );
+            cy.makePrivateAPICall(Cypress.env("user.api.key"), "DELETE", `${VOLUNTEER_URL}/ministries/${ministryB}`, null, 403);
+            cy.makePrivateAPICall(
+                Cypress.env("user.api.key"),
+                "POST",
+                `${VOLUNTEER_URL}/ministries/${ministryB}`,
+                { active: false },
+                403,
+            );
+        });
+    });
+
+    describe("a ministry coordinator WITHOUT Manage My Ministries (2026-09-18)", () => {
+        before(() => {
+            cleanupScopes();
+            grantScope(COORDINATOR_PERSON, "ministry", ministryA);
+            setManageMyMinistries(0);
+        });
+
+        after(() => {
+            setManageMyMinistries(1);
+            cleanupScopes();
+        });
+
+        beforeEach(() => {
+            freshStandardLogin();
+        });
+
+        it("sees no Ministries heading and is turned away from the dashboard and the API", () => {
+            cy.visit("/people/view/1");
+            menuSectionShouldNotExist("Ministries");
+
+            cy.visit(DASHBOARD_URL, { failOnStatusCode: false });
+            cy.contains("Permission Required");
+            cy.contains("Manage My Ministries");
+            cy.get("#volunteer-dashboard").should("not.exist");
+
+            // The scope row is still there — only the permission is missing.
+            cy.makePrivateAPICall(Cypress.env("user.api.key"), "GET", `${VOLUNTEER_URL}/ministries/${ministryA}`, null, 403);
+            cy.makePrivateAPICall(Cypress.env("user.api.key"), "GET", `${VOLUNTEER_URL}/me/permissions`, null, 200).then(
+                (resp) => {
+                    expect(resp.body.isManageMyMinistries).to.eq(false);
+                    expect(resp.body.isCoordinator).to.eq(false);
+                    expect(resp.body.managedMinistryIds).to.deep.eq([ministryA]);
+                },
+            );
         });
 
         it("gets no Volunteer heading either", () => {

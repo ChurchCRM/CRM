@@ -335,10 +335,38 @@ class User extends BaseUser
     }
 
     /**
+     * Manage My Ministries (2026-09-18, product owner) — the permission an administrator
+     * gives a ministry coordinator.
+     *
+     * It opens the admin shell's coordinator area — the Ministries heading, the Ministry
+     * Dashboard and the ministry pages — for the ministries the login holds a scope for,
+     * and for nothing else. Which ministries is still `volunteer_scope_vscp`'s answer:
+     * this flag decides whether the area opens at all, the scope rows decide what is in
+     * it. A global manager (Manage Ministries) and an administrator hold it implicitly.
+     *
+     * Before this flag existed a scope row alone opened the area, so the only way to
+     * give a coordinator a login that reached their ministry was the global tier — which
+     * let them create, deactivate and delete every ministry in the church. That is the
+     * defect this permission exists to close.
+     */
+    public function isManageMyMinistriesEnabled(): bool
+    {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
+        return self::isVolunteerV2Enabled()
+            && ($this->isAdmin() || $this->isManageMinistries() || $this->isManageMyMinistries());
+    }
+
+    /**
      * May this user open the Volunteer coordinator area at all (#9706)?
      *
-     * True for an administrator, a global volunteer manager, and anyone holding at
-     * least one volunteer_scope_vscp row (ministry coordinator or team leader).
+     * True for an administrator, a global volunteer manager, and — since 2026-09-18 —
+     * a **Manage My Ministries** login holding at least one volunteer_scope_vscp row
+     * (ministry coordinator or team leader). A scope row alone no longer opens the
+     * admin shell: the flag says the login may use the coordinator area, the scopes
+     * say which ministries it sees there. A team leader without the flag runs their
+     * team from the Member Portal's My Teams page instead.
      *
      * Memoised per request because the scope half is a database query and both
      * VolunteerCoordinatorRoleAuthMiddleware and Menu::buildMenuItems() ask for it —
@@ -367,7 +395,8 @@ class User extends BaseUser
             return self::$volunteerCoordinatorMemo[$key] = true;
         }
 
-        if ($this->isEditSelfExclusive() || !self::isVolunteerV2Enabled()) {
+        if (!$this->isManageMyMinistriesEnabled()) {
+            // Carries the EditSelf-exclusive short-circuit and the rollout gate too.
             return self::$volunteerCoordinatorMemo[$key] = false;
         }
 

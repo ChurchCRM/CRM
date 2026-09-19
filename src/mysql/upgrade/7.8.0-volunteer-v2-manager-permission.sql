@@ -13,3 +13,8 @@
 -- release via installChurchCRMSchema() and never execute historical migration
 -- scripts. IF NOT EXISTS is a MariaDB-only extension unsupported by MySQL.
 ALTER TABLE `user_usr` ADD COLUMN `usr_ManageMinistries` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER `usr_ManageFundraisers`;
+-- Manage My Ministries (2026-09-18, product owner): the permission an administrator gives a
+-- ministry coordinator. It opens the Ministries heading, the Ministry Dashboard and the pages
+-- of the ministries the login holds a coordinator scope for - and nothing else. Manage
+-- Ministries above stays the global tier (every ministry, create, deactivate, delete).
+ALTER TABLE `user_usr` ADD COLUMN `usr_ManageMyMinistries` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER `usr_ManageMinistries`;

@@ -275,6 +275,7 @@ function getMyVolunteerPermissions(Request $request, Response $response): Respon
     return SlimUtils::renderJSON($response, [
         'isAdmin' => $currentUser->isAdmin(),
         'isGlobalManager' => $authz->isGlobalManager($currentUser),
+        'isManageMyMinistries' => $currentUser->isManageMyMinistriesEnabled(),
         'isCoordinator' => $currentUser->isVolunteerCoordinatorEnabled(),
         'isTeamLeader' => $currentUser->isVolunteerTeamLeaderEnabled(),
         'managedMinistryIds' => $authz->getManagedMinistryIds($currentUser),
