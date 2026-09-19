@@ -286,6 +286,20 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * Zero-permission user (noperm.user, id=901): every permission flag 0,
+     * usr_EditSelf=0, non-admin. Passes AuthMiddleware under the read-default
+     * policy (#9003) with read-only access, so every write route must answer
+     * 403 for it. Use to prove a write route carries a role gate at all.
+     */
+    makePrivateNoPermAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number | number[],
+      timeoutMs?: number
+    ): Chainable<any>;
+
+    /**
      * Make API request with specific API key
      * @param key - API key to use
      * @param method - HTTP method
