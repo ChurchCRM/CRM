@@ -70,6 +70,18 @@ abstract class BaseVolunteerEmail extends BaseEmail
     }
 
     /**
+     * Keep the rendered body in the email history (review, 2026-09-18). Safe here
+     * because no volunteer message carries a password, a one-time token or a
+     * one-click action link: every one of them says "log in to the portal". So a
+     * coordinator asking "what did we actually send them?" can read it on the
+     * person's Email History instead of hunting the mail server.
+     */
+    protected function logsBody(): bool
+    {
+        return true;
+    }
+
+    /**
      * Glue the three parts of a body together with blank lines between them.
      *
      * The shared template renders the body through `{{body|nl2br}}`, so
