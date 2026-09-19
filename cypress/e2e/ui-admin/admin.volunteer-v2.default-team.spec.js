@@ -45,6 +45,14 @@ function freshAdminLogin() {
     cy.visit("/session/begin");
     cy.get("input[name=User]").type(Cypress.env("admin.username"));
     cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    // One retry: under CI load the submit occasionally lands back on the login
+    // page although the server logged the login (a lost cookie on the redirect).
+    cy.url().then((url) => {
+        if (url.includes("/session/begin")) {
+            cy.get("input[name=User]").clear().type(Cypress.env("admin.username"));
+            cy.get("input[name=Password]").clear().type(Cypress.env("admin.password") + "{enter}");
+        }
+    });
     cy.url().should("not.include", "/session/begin");
 }
 
