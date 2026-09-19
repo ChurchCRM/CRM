@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Directory reports');
@@ -141,26 +142,31 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
         <label class="form-label"><?= gettext('Information to Include') ?>:</label>
         <div class="row row-cols-2 row-cols-md-3 g-1">
           <?php
+          // 'checked' is the default state of the option; 'indent' marks a sub-option
+          // of the entry above it. The options flow through a 2/3-column grid, so an
+          // indented entry reads as belonging to its neighbour rather than sitting
+          // underneath it.
           $checkFields = [
-              'bDirAddress'        => gettext('Address'),
-              'bDirWedding'        => gettext('Wedding Date'),
-              'bDirBirthday'       => gettext('Birthday'),
-              'bDirFamilyPhone'    => gettext('Family Home Phone'),
-              'bDirFamilyWork'     => gettext('Family Work Phone'),
-              'bDirFamilyCell'     => gettext('Family Cell Phone'),
-              'bDirFamilyEmail'    => gettext('Family Email'),
-              'bDirPersonalPhone'  => gettext('Personal Home Phone'),
-              'bDirPersonalWork'   => gettext('Personal Work Phone'),
-              'bDirPersonalCell'   => gettext('Personal Cell Phone'),
-              'bDirPersonalEmail'  => gettext('Personal Email'),
-              'bDirPersonalWorkEmail' => gettext('Personal Work/Other Email'),
-              'bDirPhoto'          => gettext('Photos'),
+              'bDirAddress'        => ['label' => gettext('Primary Address'), 'checked' => true],
+              'bDirMailingAddress' => ['label' => gettext('Mailing Address if Different'), 'checked' => false, 'indent' => true],
+              'bDirWedding'        => ['label' => gettext('Wedding Date'), 'checked' => true],
+              'bDirBirthday'       => ['label' => gettext('Birthday'), 'checked' => true],
+              'bDirFamilyPhone'    => ['label' => gettext('Family Home Phone'), 'checked' => true],
+              'bDirFamilyWork'     => ['label' => gettext('Family Work Phone'), 'checked' => true],
+              'bDirFamilyCell'     => ['label' => gettext('Family Cell Phone'), 'checked' => true],
+              'bDirFamilyEmail'    => ['label' => gettext('Family Email'), 'checked' => true],
+              'bDirPersonalPhone'  => ['label' => gettext('Personal Home Phone'), 'checked' => true],
+              'bDirPersonalWork'   => ['label' => gettext('Personal Work Phone'), 'checked' => true],
+              'bDirPersonalCell'   => ['label' => gettext('Personal Cell Phone'), 'checked' => true],
+              'bDirPersonalEmail'  => ['label' => gettext('Personal Email'), 'checked' => true],
+              'bDirPersonalWorkEmail' => ['label' => gettext('Personal Work/Other Email'), 'checked' => true],
+              'bDirPhoto'          => ['label' => gettext('Photos'), 'checked' => true],
           ];
-          foreach ($checkFields as $name => $label) : ?>
+          foreach ($checkFields as $name => $field) : ?>
             <div class="col">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="<?= $name ?>" value="1" id="<?= $name ?>" checked>
-                <label class="form-check-label" for="<?= $name ?>"><?= $label ?></label>
+              <div class="form-check<?= !empty($field['indent']) ? ' ms-4' : '' ?>">
+                <input class="form-check-input" type="checkbox" name="<?= $name ?>" value="1" id="<?= $name ?>" <?= $field['checked'] ? 'checked' : '' ?>>
+                <label class="form-check-label" for="<?= $name ?>"><?= $field['label'] ?></label>
               </div>
             </div>
           <?php endforeach;
@@ -260,5 +266,26 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
     </form>
   </div>
 </div>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  // "Mailing Address if Different" prints beneath the primary address, so it only
+  // means something while "Primary Address" is on. Keep the two in step: turning
+  // the primary address off disables and clears the sub-option instead of
+  // silently ignoring it when the report is built.
+  (function () {
+    var primary = document.getElementById("bDirAddress");
+    var mailing = document.getElementById("bDirMailingAddress");
+    if (!primary || !mailing) {
+      return;
+    }
+    var sync = function () {
+      mailing.disabled = !primary.checked;
+      if (!primary.checked) {
+        mailing.checked = false;
+      }
+    };
+    primary.addEventListener("change", sync);
+    sync();
+  })();
+</script>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

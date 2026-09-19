@@ -40,6 +40,140 @@ describe("CSV Export Page", () => {
         // Verify unchecked fields
         cy.get('.form-selectgroup-input[name="Title"]').should("not.be.checked");
         cy.get('.form-selectgroup-input[name="Envelope"]').should("not.be.checked");
+        // Second family address (#9743) is opt-in, so existing exports are unchanged.
+        cy.get('.form-selectgroup-input[name="SecondAddress"]').should("not.be.checked");
+    });
+
+    it("should append the second-address columns only when SecondAddress is requested", () => {
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            form: true,
+            body: {
+                FirstName: 1,
+                Address1: 1,
+                City: 1,
+                State: 1,
+                Zip: 1,
+                Country: 1,
+                SecondAddress: 1,
+                Source: "all",
+                Gender: 0,
+                Format: "Default",
+                Submit: "Create File",
+            },
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.headers["content-type"]).to.include("text/csv");
+            const headerRow = response.body.split("\n")[0];
+            expect(headerRow).to.include("Second Address 1");
+            expect(headerRow).to.include("Second Address 2");
+            expect(headerRow).to.include("Second City");
+            expect(headerRow).to.include("Second State");
+            expect(headerRow).to.include("Second Zip");
+            expect(headerRow).to.include("Second Country");
+            expect(headerRow).to.include("Mailing Address");
+        });
+
+        // Without the opt-in the header row is unchanged.
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            form: true,
+            body: {
+                FirstName: 1,
+                Address1: 1,
+                City: 1,
+                State: 1,
+                Zip: 1,
+                Country: 1,
+                Source: "all",
+                Gender: 0,
+                Format: "Default",
+                Submit: "Create File",
+            },
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.body.split("\n")[0]).to.not.include("Second Address 1");
+        });
+    });
+
+    it("exports the second address and mailing flag for each member of the family", () => {
+        // The export reads fam_Second* from the row its own query already joined
+        // (review on #9801: no per-person family lookup), so the values must
+        // still come out right for every member of one family.
+        const stamp = String(Cypress._.random(0, 1e6));
+        const familyName = "CsvSecondAddr" + stamp;
+        const members = ["Exporta" + stamp, "Exportb" + stamp];
+
+        // The export form always posts the four "to" dates as the server's
+        // date('Y-m-d'); CSVCreateFile.php adds a "<= that date" filter for any
+        // that differ from it (and "<= NULL" for a missing one), which drops every
+        // member with no membership date. The browser's UTC calendar day can be
+        // ahead of the server's time zone (CI at 03:00 UTC is still yesterday in
+        // America/Detroit), so read the dates off the form the way a submit would.
+        cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).as("serverToday");
+
+        cy.visit("/FamilyEditor.php");
+        cy.contains("Family Info");
+        cy.get("#FamilyName").type(familyName);
+        cy.get('input[name="Address1"]').type("11 Primary Street");
+        cy.get('input[name="City"]').clear().type("Springfield");
+        cy.get('select[name="State"]').select("IL", { force: true });
+        cy.get("#secondAddressToggle").click();
+        cy.get("#SecondAddress1").type("PO Box 1204");
+        cy.get("#SecondCity").type("Othertown");
+        cy.get("#SecondState").select("IL", { force: true });
+        cy.get("#SecondZip").type("62998");
+        cy.get("#SecondIsMailing").should("not.be.disabled").check();
+        cy.get('input[name="FirstName1"]').type(members[0]);
+        cy.get('select[name="Classification1"]').select("1", { force: true });
+        cy.get('input[name="FirstName2"]').type(members[1]);
+        cy.get('select[name="Classification2"]').select("1", { force: true });
+        cy.get('button[name="FamilySubmit"]').click();
+        cy.location("pathname").should("include", "/people/family/");
+
+        cy.location("pathname").then((pathname) => {
+            const familyId = Number(pathname.split("/").pop());
+
+            cy.get("@serverToday").then((today) => cy.request({
+                method: "POST",
+                url: "/CSVCreateFile.php",
+                form: true,
+                body: {
+                    FirstName: 1,
+                    Address1: 1,
+                    City: 1,
+                    SecondAddress: 1,
+                    Source: "all",
+                    Gender: 0,
+                    MembershipDate2: today,
+                    BirthDate2: today,
+                    AnniversaryDate2: today,
+                    EnterDate2: today,
+                    Format: "Default",
+                    Submit: "Create File",
+                },
+            })).then((response) => {
+                expect(response.status).to.eq(200);
+                const rows = response.body
+                    .split("\n")
+                    .filter((line) => members.some((name) => line.includes(name)));
+                expect(rows, "one row per member").to.have.length(members.length);
+                rows.forEach((row) => {
+                    expect(row).to.include("PO Box 1204");
+                    expect(row).to.include("Othertown");
+                    expect(row).to.include("62998");
+                    expect(row).to.include(",Yes");
+                });
+            });
+
+            cy.request({
+                method: "DELETE",
+                url: `/api/family/${familyId}?deleteMembers=true`,
+                failOnStatusCode: false,
+            });
+        });
     });
 
     it("should allow toggling field pills on and off", () => {

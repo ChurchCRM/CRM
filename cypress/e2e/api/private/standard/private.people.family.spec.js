@@ -87,6 +87,29 @@ describe("API Private Family", () => {
             // AbstractEntityMiddleware returns 404 Not Found for missing entity
             cy.makePrivateAdminAPICall("GET", "/api/family/99999", null, 404);
         });
+
+        // Optional second family address + mailing flag (#9743). Additive keys only —
+        // `Address` must keep meaning the primary/physical address.
+        it("Exposes the second-address keys, resolving MailingAddress to the primary when unflagged", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/family/1", null, 200).then((response) => {
+                expect(response.body).to.have.property("SecondAddress1");
+                expect(response.body).to.have.property("SecondAddress2");
+                expect(response.body).to.have.property("SecondCity");
+                expect(response.body).to.have.property("SecondState");
+                expect(response.body).to.have.property("SecondZip");
+                expect(response.body).to.have.property("SecondCountry");
+                expect(response.body).to.have.property("SecondIsMailing");
+                expect(response.body).to.have.property("HasSecondAddress");
+                expect(response.body).to.have.property("SecondAddressIsMailing");
+                expect(response.body).to.have.property("MailingAddress");
+
+                // Seeded families have no second address, so mailing resolves to the primary.
+                expect(response.body.HasSecondAddress).to.be.false;
+                expect(response.body.SecondAddressIsMailing).to.be.false;
+                expect(response.body.MailingAddress.Address1).to.equal(response.body.Address1);
+                expect(response.body.MailingAddress.City).to.equal(response.body.City);
+            });
+        });
     });
 
     describe("GET /api/family/{id}/nav - Family Navigation", () => {
