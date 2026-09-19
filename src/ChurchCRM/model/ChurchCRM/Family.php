@@ -174,7 +174,16 @@ class Family extends BaseFamily implements PhotoInterface
         $city = trim((string) ($parts['City'] ?? ''));
         $state = trim((string) ($parts['State'] ?? ''));
         $zip = trim((string) ($parts['Zip'] ?? ''));
-        $cityStateZip = trim($city . ($city !== '' && ($state !== '' || $zip !== '') ? ',' : '') . ' ' . trim($state . '  ' . $zip));
+        if ($city !== '') {
+            // The historical label layout: the comma follows the city and two spaces
+            // set the ZIP off from the state.
+            $stateZip = trim($state . '  ' . $zip);
+            $cityStateZip = $stateZip !== '' ? $city . ', ' . $stateZip : $city;
+        } else {
+            // A city-less address (a PO Box with only a state and ZIP on record) has
+            // nothing for a comma to follow, so the line is just "State Zip".
+            $cityStateZip = trim($state . ' ' . $zip);
+        }
         if ($cityStateZip !== '') {
             $lines[] = $cityStateZip;
         }
@@ -241,11 +250,16 @@ class Family extends BaseFamily implements PhotoInterface
     public static function sortByMailingZip(iterable $families): array
     {
         $sorted = [];
+        $mailingZips = [];
         $needsResort = false;
 
+        // getMailingAddressParts() is derived, not a cached column, so the sort key
+        // is resolved once per family here rather than on every comparison below.
         foreach ($families as $family) {
             $sorted[] = $family;
-            if ($family->getMailingAddressParts()['Zip'] !== trim((string) $family->getZip())) {
+            $mailingZip = $family->getMailingAddressParts()['Zip'];
+            $mailingZips[spl_object_id($family)] = $mailingZip;
+            if ($mailingZip !== trim((string) $family->getZip())) {
                 $needsResort = true;
             }
         }
@@ -259,8 +273,8 @@ class Family extends BaseFamily implements PhotoInterface
         usort(
             $sorted,
             static fn (self $a, self $b): int => strcasecmp(
-                $a->getMailingAddressParts()['Zip'],
-                $b->getMailingAddressParts()['Zip']
+                $mailingZips[spl_object_id($a)],
+                $mailingZips[spl_object_id($b)]
             )
         );
 
