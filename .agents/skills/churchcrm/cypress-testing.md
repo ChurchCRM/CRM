@@ -946,6 +946,52 @@ Before marking a test complete, verify:
 
 ## UI Test Best Practices
 
+### `to.have.length()` is wrong for a DETACHED jQuery collection <!-- learned: 2026-09-12 -->
+
+Cypress's chai-jquery `length` assertion resolves against the **live document**, not against the
+collection you hand it. On a detached collection — the normal way to inspect HTML a renderer
+returned — it always reports `Found '0'`, no matter what the collection actually holds. Confirmed
+with both the AUT's `win.jQuery` and `Cypress.$`.
+
+```javascript
+const $root = win.jQuery("<div></div>").html(win.CRM.renderPersonActionMenu(42, "x", {}));
+const $found = $root.find(".dropdown");
+$found.length;                          // 1
+
+expect($found).to.have.length(1);       // ❌ "Not enough elements found. Found '0', expected '1'."
+expect($found.length).to.equal(1);      // ✅
+```
+
+**Rule:** when the subject is not attached to the page, assert the numeric `.length` property.
+`to.have.length()` is fine only for collections that came from `cy.get()`. The failure message is
+actively misleading — it looks like your selector is wrong.
+
+### A successful login already lands on `/v2/dashboard` — `cy.visit()` there is a no-op <!-- learned: 2026-09-12 -->
+
+`cy.visit()` to the URL the browser is *already* on does not reload the page. Since a successful
+form login (and `cy.setupAdminSession()`) lands on `/v2/dashboard`, a test that logs in and then
+visits the dashboard never triggers a second page load — so the dashboard's DataTables AJAX
+(`/api/persons/latest`, `/api/families/latest`, …) has already fired, and an intercept registered
+inside the test body never sees it.
+
+```javascript
+// ❌ "cy.wait() timed out ... No request ever occurred" — the request happened during login
+beforeEach(() => freshAdminLogin());          // lands on /v2/dashboard
+it("...", () => {
+    cy.intercept("GET", "**/api/persons/latest").as("latest");
+    cy.visit("/v2/dashboard");                // no reload: same URL
+    cy.wait("@latest");                       // never resolves
+});
+
+// ✅ assert on the rendered result instead of the request
+cy.get('button.delete-person[data-person_id="123"]', { timeout: 15000 }).should("exist");
+
+// ✅ or capture what you need from the API in `before`, then assert the DOM against it
+```
+
+Applies to any page that is also the post-login landing page. If you genuinely need the
+interception, register it *before* the login, or navigate somewhere else first.
+
 ### Using Element IDs for Test Selectors
 
 ```html
