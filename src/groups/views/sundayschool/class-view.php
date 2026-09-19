@@ -552,7 +552,7 @@ if ($bCanManageGroups) {
 
             <?php if (count($groupEvents) === 0): ?>
             <div class="card-body text-center text-body-secondary py-4">
-                <i class="fa-solid fa-calendar-off mb-2 d-block" style="font-size: 2rem;"></i>
+                <i class="fa-solid fa-calendar-xmark mb-2 d-block" style="font-size: 2rem;"></i>
                 <p class="mb-2"><?= gettext('No events linked to this class.') ?></p>
                 <p class="small text-body-secondary mb-0">
                     <?= gettext("Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster.") ?>

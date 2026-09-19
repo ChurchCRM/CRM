@@ -115,7 +115,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php if (empty($peopleData)): ?>
             <div class="empty">
                 <div class="empty-icon">
-                    <i class="fa-solid fa-camera-off fs-1 text-body-secondary"></i>
+                    <i class="fa-solid fa-camera fs-1 text-body-secondary"></i>
                 </div>
                 <p class="empty-title"><?= gettext('No people found') ?></p>
                 <p class="empty-subtitle text-body-secondary">
