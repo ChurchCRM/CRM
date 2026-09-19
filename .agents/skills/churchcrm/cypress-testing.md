@@ -878,6 +878,53 @@ it('should reset the database via API', () => {
 
 UI login is only required when the test actually asserts against page content. For pure API tests, establish the session via API and skip the browser entirely.
 
+#### `x-api-key` authenticates MVC pages too — except where `PageInit.php` is required <!-- learned: 2026-09-11 -->
+
+`AuthMiddleware` handles `x-api-key` on **every** Slim app, not just `/api`, so a
+pure `cy.request()` with the admin key can assert an HTML page's status code and
+body without a browser login:
+
+```javascript
+cy.request({ url: '/event/dashboard', headers: { 'x-api-key': Cypress.env('admin.api.key') },
+             failOnStatusCode: false, followRedirect: false });   // → 200
+```
+
+**But** any page whose entry point requires `Include/PageInit.php` calls
+`AuthenticationManager::ensureAuthentication()` at *file-load* time, before Slim
+has built a single middleware — so the API key is never looked at and the request
+302s to `/session/begin`. That includes every legacy root-level `.php` page and
+the whole `/people` module (`src/people/routes/view.php:3`). `/event`,
+`/volunteer` and `/v2` have no such require and work fine.
+
+Practical rule: if a rollout/permission assertion targets `/people/*` or a legacy
+`*.php` page, it cannot live in an API spec — put it in `ui/` or `ui-admin/` with
+a real login. Verify with a one-line `curl -D -` before writing the spec.
+
+#### Driving an admin form POST from an API spec (CSRF skips API-key requests) <!-- learned: 2026-09-12 -->
+
+`CSRFMiddleware::process()` returns early when the `X-API-Key` header is present, so a
+CSRF-protected MVC form route — the user editor, for instance — can be driven straight
+from an API spec with no token round trip. Use `form: true`; the handler reads
+`$request->getParsedBody()` and a JSON body arrives as nothing.
+
+```javascript
+cy.request({
+    method: "POST",
+    url: `/admin/system/users/${personId}/edit`,
+    headers: { "x-api-key": Cypress.env("admin.api.key") },
+    form: true,                       // required — the route parses a form body
+    body: { UserName: "…", accessMode: "custom", Notes: "1", ManageMinistries: "1" },
+    failOnStatusCode: false, followRedirect: false, withCredentials: false,
+});                                   // → 302 back to the user list on success
+```
+
+This is how a permission column can be round-tripped end to end in an API spec —
+grant it through the real save path, assert the behaviour it unlocks, revoke it —
+instead of writing the flag straight into the database with `cy.dbQuery()` and
+proving only half the chain. Note the editor reads **every** permission from the
+posted body, so omit a field and you revoke it: send the account's full intended
+permission set every time, and restore the seeded state in an `afterEach`.
+
 ---
 
 ### 7. Avoid Tautological `cy.url().should('include', ...)` After Form Submit <!-- learned: 2026-04-21 -->
@@ -945,6 +992,52 @@ Before marking a test complete, verify:
 ---
 
 ## UI Test Best Practices
+
+### `to.have.length()` is wrong for a DETACHED jQuery collection <!-- learned: 2026-09-12 -->
+
+Cypress's chai-jquery `length` assertion resolves against the **live document**, not against the
+collection you hand it. On a detached collection — the normal way to inspect HTML a renderer
+returned — it always reports `Found '0'`, no matter what the collection actually holds. Confirmed
+with both the AUT's `win.jQuery` and `Cypress.$`.
+
+```javascript
+const $root = win.jQuery("<div></div>").html(win.CRM.renderPersonActionMenu(42, "x", {}));
+const $found = $root.find(".dropdown");
+$found.length;                          // 1
+
+expect($found).to.have.length(1);       // ❌ "Not enough elements found. Found '0', expected '1'."
+expect($found.length).to.equal(1);      // ✅
+```
+
+**Rule:** when the subject is not attached to the page, assert the numeric `.length` property.
+`to.have.length()` is fine only for collections that came from `cy.get()`. The failure message is
+actively misleading — it looks like your selector is wrong.
+
+### A successful login already lands on `/v2/dashboard` — `cy.visit()` there is a no-op <!-- learned: 2026-09-12 -->
+
+`cy.visit()` to the URL the browser is *already* on does not reload the page. Since a successful
+form login (and `cy.setupAdminSession()`) lands on `/v2/dashboard`, a test that logs in and then
+visits the dashboard never triggers a second page load — so the dashboard's DataTables AJAX
+(`/api/persons/latest`, `/api/families/latest`, …) has already fired, and an intercept registered
+inside the test body never sees it.
+
+```javascript
+// ❌ "cy.wait() timed out ... No request ever occurred" — the request happened during login
+beforeEach(() => freshAdminLogin());          // lands on /v2/dashboard
+it("...", () => {
+    cy.intercept("GET", "**/api/persons/latest").as("latest");
+    cy.visit("/v2/dashboard");                // no reload: same URL
+    cy.wait("@latest");                       // never resolves
+});
+
+// ✅ assert on the rendered result instead of the request
+cy.get('button.delete-person[data-person_id="123"]', { timeout: 15000 }).should("exist");
+
+// ✅ or capture what you need from the API in `before`, then assert the DOM against it
+```
+
+Applies to any page that is also the post-login landing page. If you genuinely need the
+interception, register it *before* the login, or navigate somewhere else first.
 
 ### Using Element IDs for Test Selectors
 
@@ -1086,6 +1179,42 @@ describe('API - User Creation', () => {
     });
 });
 ```
+
+### Testing Slim middleware — and which error shape to assert <!-- learned: 2026-09-12 -->
+
+Middleware has no route of its own, so a spec can only reach it through a route that declares it.
+Pick (or migrate) a real route, then assert **the shape as well as the status**, because the two
+shapes distinguish *who* rejected the request:
+
+| Emitter | Body |
+|---|---|
+| `InputSanitizationMiddleware` | `{"error": "…"}` |
+| A handler via `SlimUtils::renderErrorJSON()` | `{"success": false, "message": "…"}` |
+
+```js
+// Rejected by the middleware
+cy.makePrivateAdminAPICall("POST", "/api/events/repeat", body, 400).then((r) => {
+    expect(r.body.error).to.contain("RangeStart");
+});
+
+// Fell through to the handler — proof the middleware left the field alone
+cy.makePrivateAdminAPICall("POST", "/api/events/repeat", bodyWithoutRangeStart, 400).then((r) => {
+    expect(r.body.message).to.contain("Missing required field");
+});
+```
+
+Asserting only `400` makes a middleware spec pass against the unmigrated code, which is exactly the
+regression it is supposed to catch. Verified on #9821: the same spec was 10/16 before the middleware
+change and 16/16 after, and all six failures were the missing `body.error`.
+
+### A fresh worktree needs `npm run build` before any UI spec <!-- learned: 2026-09-12 -->
+
+`npm run docker:test:start` mounts `src/` live, but the webpack bundles are **not** in git. In a
+new worktree (`npm ci` + `composer install` only, or after `build:php` alone) every UI spec fails
+with symptoms that look like app bugs — `expected '<window>' to have property 'showNewEventForm'`,
+`expected '<div#calendar>' to be 'visible'`, `ReferenceError` from application code. API specs pass
+fine, which makes the cause easy to misread. Run the full `npm run build` once, then re-run: 30
+"failures" became 0 on #9821 with no source change.
 
 ### Required Test Categories for Each Endpoint
 
@@ -1571,6 +1700,38 @@ on('task', {
     }
 });
 ```
+
+## Cross-Spec Seed Mutation — Don't Hard-Code a Record Another Spec Edits <!-- learned: 2026-09-17 -->
+
+**GOTCHA:** the seed is loaded once per stack, not per spec. A spec that edits a
+seeded record and does not put it back changes what every *later* spec reads —
+and the order is alphabetical by filename, so "it passed in isolation" proves
+nothing.
+
+Real case: `member.portal-profile.spec.js` saves a new email and mobile number on
+person 100 (Lena Black) and leaves them. `member.portal-landing.spec.js` sorts
+after it and asserted the *seeded* values, so it passed alone and failed in a
+full run.
+
+```js
+// ❌ WRONG — the seeded values, which a sibling spec has already overwritten
+cy.get("[data-field=email]").should("contain.text", "lena.walker@example.com");
+
+// ✅ CORRECT — assert against the record the page renders
+cy.request("/api/portal/me").then(({ body }) => {
+    const me = body.profile;                       // note the envelope key
+    expect(me.email, "the seed gives Lena an email").to.contain("@");
+    cy.get("[data-field=email]").should("contain.text", me.email);
+});
+```
+
+**Rules:**
+- Hard-code a seeded value only for a field no spec writes (ids, family roles,
+  list-option names). Anything a self-service or admin edit test touches is a
+  moving target.
+- Better still: have the editing spec restore what it changed in `after()`.
+- When comparing to an API, check the response envelope —
+  `GET /api/portal/me` answers `{profile: {...}}`, not the profile itself.
 
 ## Related Knowledge
 - **Session Management**: Cypress documentation on `cy.session()`
@@ -2336,6 +2497,19 @@ cy.get("select#mySelect ~ .ts-wrapper > .ts-control").click();
 
 **Dropdown in body:** With `dropdownParent: "body"`, TomSelect appends `.ts-dropdown` to `<body>` at **init time** (constructor). So `cy.get("body > .ts-dropdown").should("exist")` passes even when no options are loaded and the dropdown is `display:none`.
 
+**Identifying ONE body-mounted dropdown: `#<select id>-ts-dropdown`.** <!-- learned: 2026-09-12 -->
+Once several pickers on a page use `dropdownParent: "body"`, `body > .ts-dropdown` is ambiguous: an `should("exist")` passes on a *neighbour's* dropdown even when the one under test is broken, and a teardown `should("not.exist")` fails because the neighbours legitimately survive. Scoping through `.next(".ts-wrapper")` does not help either — a body-mounted dropdown is no longer inside the wrapper. TomSelect gives its `.ts-dropdown-content` the id `` `${inputId}-ts-dropdown` `` in `setup()`, and `inputId` is the original element's `id` when it has one, so target that:
+
+```js
+// the dropdown for select#child specifically, and proof it is body-parented
+cy.get("body > .ts-dropdown > #child-ts-dropdown").should("exist");
+cy.get("#child-ts-dropdown .option").should("have.length.greaterThan", 0);
+// teardown: only THIS picker's dropdown must be gone
+cy.get("#checkoutBySelect-ts-dropdown").should("not.exist");
+```
+
+This is what `cypress/e2e/ui/groups/standard.tomselect-dropdownparent.spec.js` and `cypress/e2e/ui/events/standard.event-checkin-person-select.spec.js` use after #9819 made the check-in pickers body-mounted.
+
 **Counting rendered options — scope to the owning wrapper.** Without `dropdownParent`, each `.ts-dropdown` is nested *inside* its own sibling `.ts-wrapper`, so a bare `body .ts-dropdown .option` matches **every** TomSelect on the page at once (a country + state page yields 256 + 59 = 315, not 59). Always scope through the `<select>`:
 
 ```js
@@ -2344,3 +2518,386 @@ cy.get("select#State").next(".ts-wrapper").find(".ts-dropdown .option")
 ```
 
 Assert the **count**, not just that the dropdown opened — a rendered count of exactly 50 is the signature of the `maxOptions` cap (see the frontend-development skill). Derive `expected` from the API the select is populated from (`/api/public/data/countries`) rather than hardcoding it, so the test does not go stale when the data changes.
+
+## Typing into a modal: wait for focus, not for `visible` <!-- learned: 2026-09-12 -->
+
+`should("be.visible")` on a Bootstrap modal is satisfied **partway through** the
+150 ms fade, and at the end of that fade Bootstrap moves focus to the dialog
+element. A `.type()` started in between loses every keystroke after the focus
+jumps — silently, with no error:
+
+```js
+// ❌ FLAKY — "UI9715 Milk Station" arrives as "UI9715 Milk Stat"
+cy.get("#positionModal").should("be.visible");
+cy.get("#position-form-name").type("UI9715 Milk Station");
+
+// ✅ CORRECT — the app focuses the field on shown.bs.modal; wait for that
+cy.get("#positionModal").should("be.visible");
+cy.get("#position-form-name").should("be.focused").type("UI9715 Milk Station");
+```
+
+The truncation length tracks the fade duration, so it looks like a column-width
+or validation bug rather than a focus race. The fix is two-sided and both halves
+are worth having: the modal focuses its first field on `shown.bs.modal`
+(`frontend-development.md` → "Focus the first field on `shown.bs.modal`"), and the
+spec waits for that focus before typing.
+
+## Closing a modal: `hide()` is a no-op during the fade <!-- learned: 2026-09-12 -->
+
+The same race bites the *other* end of a modal's life, and this half is worse
+because nothing is even partially applied — the modal simply stays open.
+Bootstrap 5's `Modal.hide()` begins:
+
+```js
+hide() {
+  if (!this._isShown || this._isTransitioning) { return }
+```
+
+`_isTransitioning` is true for the whole 150 ms opening fade, and
+`should("be.visible")` goes true partway through it. So a click on `.btn-close`
+or a Cancel button in that window is silently dropped — the `data-bs-dismiss`
+handler runs, calls `hide()`, and `hide()` returns immediately. The next command
+then fails with a confusing *"element is covered by `<div class="modal fade
+show">`"*, which reads like a z-index bug:
+
+```js
+// ❌ FLAKY — the dismiss is swallowed and the modal never closes
+cy.get("#addVolunteerModal").should("be.visible");
+cy.get("#addVolunteerModal .btn-close").click();
+
+// ✅ CORRECT — wait for something that only exists after shown.bs.modal
+cy.get("#addVolunteerModal .ts-wrapper").should("exist");   // TomSelect is built there
+cy.get("#addVolunteerModal .btn-close").click();
+cy.get("#addVolunteerModal").should("not.be.visible");
+```
+
+Any post-`shown.bs.modal` side effect works as the gate: `should("be.focused")`
+on the auto-focused first field, or a widget the app initialises in that handler
+(`attachToModal()`'s TomSelect wrapper, above). Prefer one of those to
+`cy.wait()` — they are deterministic, and a fixed wait is what the rest of this
+skill tells you not to write.
+
+**The same trap bites the APP, not just the spec** <!-- learned: 2026-09-14 -->
+
+A dialog whose only content is a button — "Add All", a confirm — can finish its
+round trip inside the 150 ms fade, so `modal.hide()` in the `.then()` is dropped
+and the dialog stays open for a real user too. A gate in the spec only hides that.
+Fix it in the module: record `shown.bs.modal`, and queue a hide requested before
+it (`webpack/ministries/ministry.ts` → `wireModalFadeGuard()` / `hideModal()`;
+`webpack/ministries/occurrence.ts` carries the same idea as a pair of booleans).
+
+```ts
+const shownModals = new Set<string>();
+const pendingModalHides = new Set<string>();
+
+el.addEventListener("shown.bs.modal", () => {
+  shownModals.add(id);
+  if (pendingModalHides.delete(id)) modal(id)?.hide();   // the queued close
+});
+el.addEventListener("hidden.bs.modal", () => { shownModals.delete(id); pendingModalHides.delete(id); });
+
+function hideModal(id: string): void {
+  if (!shownModals.has(id)) { pendingModalHides.add(id); return; }
+  modal(id)?.hide();
+}
+```
+
+## A seeded login name may be TRUNCATED in the database <!-- learned: 2026-09-12 -->
+
+`user_usr.usr_UserName` is `VARCHAR(32)` (`orm/schema.xml:603`), and several
+`seed.sql` users are seeded with an email address longer than that. MySQL stores
+the first 32 characters and drops the rest **silently**, so the string a spec has
+to type into the login form is not the string in `seed.sql`.
+
+The one that bites: person 100 is seeded as
+`lena.black.editself.notes@example.com` (37 chars) and is actually
+`lena.black.editself.notes@exampl`. Logging in with the full address fails with
+no error of any kind — the form simply returns to `/session/begin`, and
+`src/logs/*-auth.log` shows `Processing local login` with **no** matching success
+line. It reads exactly like a wrong password.
+
+Before hardcoding any seeded username, read the stored value:
+
+```bash
+docker exec <project>-database-1 mysql -uchurchcrm -pchangeme churchcrm \
+  -e "SELECT usr_per_ID, usr_UserName FROM user_usr WHERE usr_per_ID = 100;"
+```
+
+The shared seeded password hash
+(`$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S`) is `changeme`;
+person **99** does not use it, so that account cannot be logged in through the
+form at all without setting a password first.
+
+## An isolated stack needs `DATABASE_PORT` exported for `cy.dbQuery` too <!-- learned: 2026-09-12 -->
+
+`dbTasks` reads `process.env.DATABASE_PORT` and **defaults to 3306**
+(`cypress/configs/_shared.ts`). `CYPRESS_BASE_URL` alone is not enough: a run
+against an isolated stack with only the base URL set drives the browser at the
+right app while every `cy.dbQuery()` reads and writes the **default** stack's
+database on port 3306. The failure is loud only if the two schemas differ
+(`ER_NO_SUCH_TABLE`); when they match, the spec quietly mutates the wrong
+database. Export the whole set for every Cypress invocation, not just for
+`docker:test:start`:
+
+```bash
+export COMPOSE_PROJECT_NAME=crmNNNN WEBSERVER_PORT=81xx DATABASE_PORT=33xx
+export CYPRESS_BASE_URL=http://localhost:81xx/
+npx cypress run --config-file cypress/configs/docker.config.ts --spec "..."
+```
+
+## Seeded group membership is NOT stable across a suite run <!-- learned: 2026-09-12 -->
+
+`cypress/e2e/api/private/standard/private.people.groups.spec.js` adds person 1
+to group 1 ("Angels class") and does not always remove them again, so group 1 has
+5 members when its spec runs alone and 6 after that spec has run. A spec that
+hardcodes a seed group's size passes in isolation and fails in the suite, in
+whichever order the runner happens to pick.
+
+Read the count instead — from the endpoint under test's own dependency, in a
+`before` hook:
+
+```js
+let angelsMemberCount = 0;
+before(() => {
+  cy.makePrivateAdminAPICall("GET", "/api/groups/1/members", null, 200)
+    .then((resp) => { angelsMemberCount = resp.body.Person2group2roleP2g2rs.length; });
+});
+```
+
+The same applies to any assertion derived from a seed group: pin the *property*
+(a union is de-duplicated, a count matches the group's own) rather than the
+number. Person ids are stable; group sizes are not.
+
+## Database Assertions via the `db:query` Node Task <!-- learned: 2026-09-12 -->
+
+Some guarantees have no HTTP surface — UNIQUE keys, foreign keys and their `ON DELETE` rules, enum domains. A spec cannot open a MySQL socket itself, so `cypress/configs/_shared.ts` exports `dbTasks`, a `db:query` node-event task built on the existing `mysql2` devDependency, wrapped as `cy.dbQuery(sql, params)`.
+
+It **returns** driver errors instead of throwing, because asserting that a write is *refused* is usually the point:
+
+```js
+cy.dbQuery("INSERT INTO volunteer_ministry_vmin (vmin_Name, vmin_Active, vmin_CreatedDate) VALUES ('dup', 1, NOW())")
+  .then((result) => {
+      expect(result.error.code).to.equal("ER_DUP_ENTRY");
+  });
+// result.rows is the OkPacket for an INSERT — result.rows.insertId is the new id.
+```
+
+Connection is `127.0.0.1` plus `DATABASE_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE` from the environment, defaulting to `docker/.env`. An isolated stack on another port needs `DATABASE_PORT` exported for the Cypress process, not just for `docker compose` — and so does CI's `ci-subdir` stack, whose database is on 3307 (`DATABASE_SUBDIR_PORT`); both workflows export `DATABASE_PORT: "3307"` on the subdir Cypress step for that reason.
+
+### `on('task', ...)` Replaces, It Does Not Merge
+
+Calling `on('task', {...})` a second time **overwrites** the first registration. Every task must go into one object:
+
+```js
+on('task', { ...verifyDownloadTasks, ...dbTasks });
+```
+
+Related trap: `docker.config.ts`, `docker-ui.config.ts` and `docker-admin.config.ts` each define their **own** `setupNodeEvents` and do **not** call `setupCommonNodeEvents` from `_shared.ts` (only `base.config.ts` and `locale.config.ts` do). Adding a task to `_shared.ts` alone leaves it undefined for `npm run test:api` — wire it into the config the spec actually runs under as well.
+
+## Asserting Delivered Mail with the `mail:*` Node Tasks <!-- learned: 2026-09-12 -->
+
+The `test` docker profile runs **Mailpit** (`docker/docker-compose.yaml`), so a spec can
+assert what was actually delivered — subject, body, and headers such as `Reply-To` — not
+merely that the application believed it sent something. `cypress/configs/_shared.ts`
+exports `mailTasks`: `mail:available`, `mail:clear`, `mail:list`, `mail:get`.
+
+```js
+cy.task("mail:clear");
+// … do the thing that sends …
+cy.task("mail:list", { limit: 100 }).then((r) => {
+    const hit = r.body.messages.find((m) => m.To[0].Address === "someone@example.com");
+    cy.task("mail:get", { id: hit.ID }).then((full) => {
+        expect(full.ReplyTo.map((x) => x.Address)).to.deep.eq(["coordinator@example.com"]);
+        expect(`${full.Text}${full.HTML}`).to.contain("Espresso");
+    });
+});
+```
+
+Two reasons these are **node tasks and not `cy.request()`**:
+
+- **Mailpit is optional.** The `ci-root` / `ci-subdir` profiles bring up no mail server at
+  all. `cy.request()` fails the test outright on a refused connection — `failOnStatusCode`
+  covers HTTP statuses, not `ECONNREFUSED` — whereas a task can catch it and *return*
+  `{ok: false}`. Probe `mail:available` in `before` and `this.skip()` the delivery
+  assertions when it says no; keep every assertion that reads application state (an outbox
+  row's status, say) running everywhere.
+- The base URL comes from `MAILPIT_URL`, else `MAILSERVER_GUI_PORT` on localhost, else
+  8025 — the same isolated-stack story as `DATABASE_PORT`.
+
+Remember the registration trap below: they must be added to `docker*.config.ts` too.
+
+### Never "restore" a captured setting the spec never actually read
+
+`ConfigItem::setValue()` **deletes** the `config_cfg` row when the value equals the item's
+default (`configuration-management.md`). So a spec that captures originals in `before` and
+puts them back in `after` will, on a run whose `before` died early, write the *initializer*
+over a real setting — and for `sSMTPHost` (default `''`) that silently disables email for
+every spec that runs afterwards, in a way nothing in the failing run reports.
+
+```js
+let originalSmtpHost = null;          // NOT "" — null means "never read it"
+
+function restoreConfig(url, captured) {
+    if (captured === null) { return; }
+    setConfig(url, captured);
+}
+
+after(() => {
+    restoreConfig(SMTP_HOST_URL, originalSmtpHost);
+});
+```
+
+### Strict Mode Decides Whether a Bad Enum Errors or Truncates
+
+The Docker test database is MariaDB with `sql_mode = STRICT_TRANS_TABLES,...`, so writing a value outside an `enum(...)` is an error, not a silent `''`. Read `@@sql_mode` in the spec and branch rather than hardcoding the expectation — the same spec must survive a server without strict mode.
+
+## The session cart cannot be seeded by an API-key call <!-- learned: 2026-09-12 -->
+
+`ChurchCRM\dto\Cart` is `$_SESSION` state, so anything that reads it —
+`/api/cart/*`, `POST /api/ministries/ministries/{id}/pool/from-cart` — only sees
+the cart of **the PHP session the request arrives on**. Two things in a UI spec
+break that:
+
+- `cy.makePrivateAdminAPICall()` sends `x-api-key` with `withCredentials: false`
+  and therefore **no session cookie**, so the cart it fills belongs to a session
+  the browser will never use.
+- `freshAdminLogin()` starts with `cy.clearCookies()`, so a cart seeded *before*
+  the login is discarded with the cookie that addressed it.
+
+The only thing that works is a plain `cy.request()` **after** the login, which
+rides the browser's session cookie:
+
+```js
+beforeEach(() => {
+    freshAdminLogin();
+});
+
+it("assigns everyone in the cart", () => {
+    cy.request({ method: "DELETE", url: "/api/cart/", failOnStatusCode: false });
+    cy.request({
+        method: "POST",
+        url: "/api/cart/",
+        headers: { "content-type": "application/json" },
+        body: { Persons: [8, 9] },
+    });
+
+    cy.visit("/ministries/occurrences/12");   // the page now sees those two
+});
+```
+
+An **API-only** spec has no such problem: every `cy.request()` in it shares one
+cookie jar and therefore one session, which is why the cart tests in
+`private.volunteer.pools-qualifications.spec.js` work with
+`cy.makePrivateAdminAPICall()` throughout. The mismatch only appears when a spec
+mixes an API-key call with a browser session. Learned in #9709.
+
+## Driving a TomSelect from a spec <!-- learned: 2026-09-12 -->
+
+`cy.get(sel).select(value, { force: true })` does **not** drive a TomSelect. It
+sets the value on the hidden original `<select>`, so TomSelect's `onChange` never
+fires, its own control still shows the old label, and any handler wired through
+TomSelect is silently skipped. Drive the widget the way a user does:
+
+```js
+cy.get("#my-modal .ts-control").click();                    // open the dropdown
+cy.get(".ts-dropdown .option").first().click();             // pick the first
+cy.get('.ts-dropdown .option[data-value="8"]').click();     // …or a known value
+```
+
+`.ts-dropdown` is **not** scoped to the modal when the control was created with
+`dropdownParent: "body"` (which `webpack/common/person-select.ts` sets by default
+to stop a `.card-body` or `.modal-content` clipping it, #9488) — so select it
+from the document root, not from inside the dialog. Learned in #9709.
+
+## The settings panel fills its inputs *after* it renders them <!-- learned: 2026-09-12 -->
+
+`window.CRM.settingsPanel.init()` renders the form first and then fetches the current
+values from `/admin/api/system/config` and writes them into the inputs
+(`webpack/system-settings-panel.js` → `_doInit()` → `render()` → `fetchAndApplyValues()`).
+A spec that types as soon as the input is `visible` is racing that second pass: `clear()`
+empties a field that is about to be overwritten, and the typed text ends up **prepended**
+to the fetched value.
+
+```js
+// ❌ FLAKY — "12" + the 48 that arrives a moment later = "1248"
+cy.get('#volunteerSettings input[name="iVolunteerReminderLeadHours"]').clear().type("12");
+
+// ✅ Wait for the fetched value first; then clear() has something real to clear
+cy.get('#volunteerSettings input[name="iVolunteerReminderLeadHours"]')
+    .should("have.value", originalLeadHours)   // read via the config API in `before`
+    .clear()
+    .type("12");
+```
+
+Same rule for `choice` (`<select>`) and `boolean` (radio pills) settings — assert the
+current value before changing it.
+
+## Assert "nothing to show" as a SCOPED user, never as an administrator <!-- learned: 2026-09-12 -->
+
+An admin-facing list is usually scoped to "everything", so its empty state depends on the
+whole database being clean — which it is not. Specs legitimately leave fixtures behind:
+`admin.volunteer-v2.occurrence.spec.js` uses a `findOrCreateMinistry()` fixture with no
+teardown, so its ministry and unstaffed occurrences persist for every later spec in the
+run, and any `cy.get("#...-empty").should("be.visible")` as admin becomes order-dependent.
+
+Create a persona whose scope is genuinely empty and assert the empty state as them:
+
+```js
+// Fixture: a second ministry with nothing in it, and a scope grant on it
+adminApi("POST", "/api/ministries/ministries", { name: EMPTY_MINISTRY_NAME }, 201);
+adminApi("POST", "/api/ministries/scopes",
+    { personId: 3, scopeType: "ministry", scopeId: emptyMinistryId }, [200, 201]);
+
+// Test: log in as person 3, not admin
+freshCoordinatorLogin();
+cy.visit("/ministries/dashboard");
+cy.get("#volunteer-gaps-empty").should("be.visible");
+```
+
+For the same reason, assert that a specific row **disappeared** (`[data-occurrence-id=…]`
+`.should("not.exist")`) rather than that the whole panel became empty.
+
+## A server-generated ABSOLUTE url points at port 80, not at your stack <!-- learned: 2026-09-13 -->
+
+Some endpoints return a **fully-qualified** URL built from the application's own
+configured root (`SystemURLs::getURL()` → `docker/Config.php`'s
+`http://localhost`), not from the host the request arrived on. A spec that feeds
+such a URL straight to `cy.visit()` therefore leaves its own stack:
+
+```js
+// cypress/e2e/ui/family/family.verify.spec.js
+cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200)
+  .then((response) => cy.wrap(response.body.url).as("verifyUrl"));
+// → { "url": "http://localhost/external/verify/<token>" }   ← no port
+
+cy.visit(this.verifyUrl);   // ← goes to whatever is on port 80
+```
+
+On the default `test` profile and in CI the app *is* on port 80, so this passes.
+On any **isolated stack** (`WEBSERVER_PORT=8107`, etc.) it silently navigates to
+the other container on port 80 — a different ChurchCRM with a different database
+— which answers `200` with the "Page not fond" shell and
+*"Unable to load verification info"*. The spec then fails on
+`.container-fluid` / `#confirmVerifyBtn` and looks like a broken feature.
+
+**Symptom:** `family.verify.spec.js` fails 7/7 on a freshly seeded isolated
+stack, and passes when the port is substituted by hand:
+
+```bash
+U=$(curl -s -H "x-api-key: $ADMIN_KEY" http://localhost:8107/api/family/1/verify/url \
+      | python3 -c 'import sys,json;print(json.load(sys.stdin)["url"])')
+curl -s "${U/http:\/\/localhost\//http://localhost:8107/}" | grep -o '<title>[^<]*'
+# → <title>ChurchCRM: Family Verification      ← the feature is fine
+```
+
+**Rule.** Never `cy.visit()` a URL the server generated. Take the **path** and
+let Cypress's `baseUrl` supply the origin:
+
+```js
+cy.wrap(new URL(response.body.url).pathname).as("verifyPath");
+// …
+cy.visit(this.verifyPath);   // resolves against CYPRESS_BASE_URL
+```
+
+The same applies to any absolute link read out of a page, an email body, or an
+API payload before handing it to `cy.visit()` or `cy.request()`.

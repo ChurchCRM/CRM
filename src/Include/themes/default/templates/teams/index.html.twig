@@ -1,0 +1,67 @@
+{% extends "layout.html.twig" %}
+
+{#
+  My Teams — the teams this member runs (MP7, #9868; Member Portal design §5.5).
+
+  Server-rendered, unlike the team page below it: this is a short list of plain
+  facts — the team, its ministry, how many positions it has and when it next
+  meets — and a route can read all four without a bundle.
+
+  Variables: `pageTitle`, and `teams`, a list of
+  `{id, name, ministryId, ministryName, active, positionCount, nextOccurrence, url}`
+  where `nextOccurrence` is `{id, date}` or null. The list is never empty here —
+  a login with no team is shown the portal's 403 page instead.
+#}
+
+{% block content %}
+<div class="portal-teams">
+
+    <h1 class="portal-page-title">{{ gettext('My Teams') }}</h1>
+
+    <p class="portal-card-text">
+        {{ gettext('These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead.') }}
+    </p>
+
+    <div class="portal-card-grid">
+        {% for team in teams %}
+        <section class="portal-card portal-team-card">
+            <h2 class="portal-card-title">
+                <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+                <span>{{ team.name }}</span>
+            </h2>
+
+            {% if team.ministryName %}
+            <p class="portal-card-text portal-team-ministry">{{ team.ministryName }}</p>
+            {% endif %}
+
+            {% if not team.active %}
+            <p class="portal-placeholder-badge">{{ gettext('Inactive') }}</p>
+            {% endif %}
+
+            {#
+              Two short facts, stacked — deliberately NOT `.portal-detail-list`,
+              whose two-column grid is for a full-width page and wraps every value
+              onto three lines inside a card of this width.
+            #}
+            <ul class="portal-team-facts">
+                <li>
+                    <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                    {{ ngettext('%s position', '%s positions', team.positionCount)|format(team.positionCount) }}
+                </li>
+                <li>
+                    <i class="fa-solid fa-calendar-day" aria-hidden="true"></i>
+                    {% if team.nextOccurrence %}
+                    {{ gettext('Next on %s')|format(team.nextOccurrence.date) }}
+                    {% else %}
+                    {{ gettext('Nothing scheduled yet') }}
+                    {% endif %}
+                </li>
+            </ul>
+
+            <a class="portal-card-link" href="{{ team.url }}">{{ gettext('Open this team') }}</a>
+        </section>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

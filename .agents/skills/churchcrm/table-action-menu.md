@@ -59,8 +59,9 @@ window.CRM.renderFamilyActionMenu(familyId, familyName, { inCart })
 window.CRM.renderEventActionMenu(eventId, eventTitle, { inactive })
 ```
 
-All three emit the canonical trigger verbatim
-(`src/skin/js/CRMJSOM.js:612-613`, `:683-684`, `:768-769`):
+All three are thin wrappers over `window.CRM.buildActionMenu(items, opts)`
+(`src/skin/js/CRMJSOM.js:629`), which emits the canonical trigger verbatim in one place
+(`:690-691`) — so the markup below can no longer drift between them: <!-- learned: 2026-09-12 -->
 
 ```html
 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -92,6 +93,40 @@ renderers.
     }
 }
 ```
+
+### `window.CRM.buildActionMenu(items, opts)` — the shared builder <!-- learned: 2026-09-12 -->
+
+New entity menus must go through the builder rather than concatenating a fourth copy of the
+scaffold. It owns the wrapper, the trigger, the menu container **and all escaping** — every
+`data-*` value goes through `window.CRM.escapeAttribute()` and every label through
+`window.CRM.escapeHtml()`, inside the builder. **Pass raw strings; never pre-escape.**
+
+```javascript
+window.CRM.buildActionMenu([
+    { type: "link", href: root + "/thing/view/" + id, icon: "fa-solid fa-eye", label: i18next.t("View") },
+    canEdit && { type: "link", href: editUrl, icon: "fa-solid fa-pencil", label: i18next.t("Edit") },
+    { type: "divider" },
+    {
+        type: "button",
+        danger: true,                       // prefixes text-danger
+        className: "delete-thing",          // the delegated handler's hook
+        icon: "fa-solid fa-trash",
+        label: i18next.t("Delete"),
+        data: { thing_id: id, thing_name: name },   // -> data-thing_id, data-thing_name
+    },
+]);
+```
+
+- Falsy entries are skipped, so `condition && item` works inline.
+- `labelClass` wraps the label in a `<span>` (the cart item uses `cart-label`).
+- `classBeforeType` emits `class=` before `type=`; it exists only to keep the cart button's
+  historical attribute order and is not needed for new items.
+- `opts` accepts `wrapperClass` and `menuClass` for the rare non-default container.
+
+**Escaping rule:** `escapeHtml()` encodes only `&`, `<` and `>` — it is *not* safe for an
+attribute value, because a `"` in the value terminates the attribute. `escapeAttribute()`
+also encodes both quote characters and is what every attribute position must use. Keeping
+that decision inside the builder is the point of the extraction.
 
 For PHP-rendered tables (non-DataTables), write the HTML directly using the standard pattern below.
 
@@ -208,6 +243,76 @@ convert it, but when you touch a table wrapper for any other reason, upgrade it 
 # Find the remaining ones
 grep -rn "overflow: visible" src/ --include="*.php"
 ```
+
+### A menu inside a horizontally SCROLLING table <!-- learned: 2026-09-14 -->
+
+`overflow-x: clip` above is the right answer when the table may be *clipped*
+horizontally. Some tables may not be: the Volunteer v2 qualification grid has one
+column per position and the number of positions is unlimited, so it has to scroll
+sideways, and the scrollbar has to appear and disappear as the window is resized.
+
+There is no CSS-only answer for that case. `overflow-x: auto` coerces
+`overflow-y` from `visible` to `auto` (the same spec rule as above), and
+`data-bs-display="static"` does not help — it only turns Popper off; the menu is
+still absolutely positioned *inside* the clipping box.
+
+**Rule: a scrolling wrapper keeps `overflow-x: auto`, and the OPEN menu is
+re-anchored to the viewport with `position: fixed`.** A fixed element is not
+clipped by an ancestor's overflow at all (as long as no ancestor creates a
+containing block with `transform` / `filter` / `perspective`). Nothing moves in
+the DOM, so Bootstrap's focus handling, `dropdown-menu-end` alignment and every
+delegated row-action click handler keep working.
+
+```scss
+// src/skin/scss/_volunteer.scss
+.volunteer-scroll-x {
+    overflow-x: auto;
+    overflow-y: visible;              // coerced to auto; the menu escapes via position: fixed
+
+    > .table { width: auto; min-width: 100%; }
+    > .table th, > .table td { white-space: nowrap; }   // or the cells squeeze instead of overflowing
+}
+
+.volunteer-menu-fixed {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    transform: none;
+    z-index: 1055;
+}
+```
+
+```ts
+// webpack/ministries/ministry.ts — wireUnclippedRowMenus()
+wrapper.addEventListener("shown.bs.dropdown", (event) => {
+  // Bootstrap fires dropdown events on the TOGGLE, not on the `.dropdown` wrapper.
+  const node = event.target as HTMLElement | null;
+  const toggle = node?.matches("[data-bs-toggle='dropdown']")
+    ? node
+    : node?.querySelector<HTMLElement>("[data-bs-toggle='dropdown']") ?? null;
+  const menu = toggle?.parentElement?.querySelector<HTMLElement>(".dropdown-menu");
+  // …add .volunteer-menu-fixed, then set top/left from toggle.getBoundingClientRect()
+});
+wrapper.addEventListener("hide.bs.dropdown", release);   // strip the class and the coordinates
+```
+
+Three details that are easy to get wrong:
+
+- **`shown`, not `show`.** A `.dropdown-menu` without `.show` is `display: none`,
+  so its width is 0 and right-alignment lands in the wrong place. `shown` runs
+  before the browser paints, so there is no visible flash.
+- **Bootstrap fires `show`/`shown.bs.dropdown` on the toggle button**, not on the
+  `.dropdown` wrapper — a handler that does `event.target.querySelector(".dropdown-menu")`
+  silently never fires.
+- **Re-place on `scroll` (capture) and `resize` while the menu is open**: a fixed
+  element does not follow the row it belongs to. The wrapper's own scroll event
+  does not bubble, so the listener must be registered with `capture: true`.
+
+Proving it in Cypress: at `cy.viewport(900, 800)` assert
+`wrapper.scrollWidth > wrapper.clientWidth`, then open the menu and check
+`getComputedStyle(menu).position === "fixed"`, that its rectangle is inside the
+viewport, and that `document.elementFromPoint()` at the menu's own centre lands
+*inside the menu* — a clipped menu is not what the browser draws there.
 
 ### Still required: `data-bs-display="static"` on each trigger
 

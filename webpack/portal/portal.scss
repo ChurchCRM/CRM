@@ -1,0 +1,24 @@
+// Entry stylesheet for the `portal` webpack bundle → skin/v2/portal.min.css.
+//
+// It is deliberately separate from the core `churchcrm` bundle, which has an
+// RTL-flipped twin: a church theme loads on top of this file and must never be
+// flipped twice. Everything it pulls in uses logical properties only.
+@use "../../src/skin/scss/portal";
+@use "../../src/skin/scss/portal-bar";
+@use "../../src/skin/scss/portal-volunteer";
+@use "../../src/skin/scss/portal-teams";
+// The two rules the shared volunteer components depend on — the sideways-scrolling
+// table wrapper and the viewport-anchored row menu that wrapper would otherwise
+// clip. They live in `_volunteer.scss` because the admin ministry page needs them
+// too; both are axis rules, not directional ones, so they are safe here.
+@use "../../src/skin/scss/volunteer";
+
+/* Status badges on the volunteering cards (review, 2026-09-18): tinted background,
+   matching dark text, a hairline border and real weight — Tabler's solid
+   badges put white on yellow and light blue, which was unreadable. */
+.volunteer-card-status,
+.volunteer-card-needed {
+  font-weight: 600;
+  border: 1px solid currentColor;
+  letter-spacing: 0.01em;
+}

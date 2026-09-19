@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -57,6 +58,39 @@ function _getExcludedPersonIdSet(string $configKey): array
  * @param string[] $phoneList
  * @return array{phones: string[], displayList: string}
  */
+/**
+ * Volunteer v2 (D19): a group that is a ministry's volunteer pool is renamed and
+ * removed from that ministry, never from here.
+ *
+ * Returns a `409` response for such a group, or null for an ordinary one — so the
+ * two handlers that must refuse read as one `if` rather than as a copied block.
+ *
+ * This is not decoration on top of a model rule: `Group::preDelete()` throws for a
+ * managed group outside the Volunteer v2 managed-write context, so without this the
+ * caller would get a 500 out of the ORM instead of a sentence saying where to go.
+ * Adding and removing MEMBERS is deliberately not affected — the Groups module
+ * stays the place anyone with Manage Groups edits any roster.
+ */
+function _renderManagedGroupConflict(Response $response, Group $group): ?Response
+{
+    if ($group->getMinistryId() === null) {
+        return null;
+    }
+
+    $ministry = VolunteerMinistryQuery::create()->findPk((int) $group->getMinistryId());
+    $ministryName = $ministry === null ? '' : (string) $ministry->getName();
+
+    return SlimUtils::renderErrorJSON(
+        $response,
+        sprintf(
+            gettext('This group is the volunteer pool of %s and is managed from that ministry.'),
+            $ministryName
+        ),
+        ['ministryId' => (int) $group->getMinistryId(), 'ministryName' => $ministryName],
+        409
+    );
+}
+
 function _buildPhoneResponse(array $phoneList): array
 {
     return [
@@ -106,12 +140,32 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $memberCounts[(int) $row['GroupId']] = (int) $row['cnt'];
         }
 
+        // Volunteer v2 (D19): a group owned by a ministry is edited and deleted from
+        // that ministry, never here. Resolved in ONE query for the whole list rather
+        // than one per row, and always present on the wire (null when there is no
+        // owner) so a client never has to treat a missing key as "not managed".
+        $ministryNames = [];
+        $ministryIds = [];
+        foreach ($groups as $g) {
+            if ($g->getMinistryId() !== null) {
+                $ministryIds[(int) $g->getMinistryId()] = true;
+            }
+        }
+        if ($ministryIds !== []) {
+            foreach (VolunteerMinistryQuery::create()->findPks(array_keys($ministryIds)) as $ministry) {
+                $ministryNames[(int) $ministry->getId()] = (string) $ministry->getName();
+            }
+        }
+
         $result = [];
         foreach ($groups as $g) {
             $data = $g->toArray();
             $data['groupType'] = $typeNames[(int) $g->getType()] ?? '';
             $data['memberCount'] = $memberCounts[(int) $g->getId()] ?? 0;
             $data['roles'] = $rolesByListId[(int) $g->getRoleListId()] ?? [];
+            $ministryId = $g->getMinistryId() === null ? null : (int) $g->getMinistryId();
+            $data['ministryId'] = $ministryId;
+            $data['ministryName'] = $ministryId === null ? null : ($ministryNames[$ministryId] ?? null);
             $result[] = $data;
         }
 
@@ -449,7 +503,13 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *                 description="All unique member email addresses (does not include sToEmailAddress)"),
      *             @OA\Property(property="byRole", type="object",
      *                 description="Emails grouped by group role name",
-     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))
+     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string"))),
+     *             @OA\Property(property="recipients", type="array", description="The same people with ids, for POST /api/email/send",
+     *                 @OA\Items(type="object",
+     *                     @OA\Property(property="personId", type="integer"),
+     *                     @OA\Property(property="familyId", type="integer", nullable=true),
+     *                     @OA\Property(property="name", type="string"),
+     *                     @OA\Property(property="email", type="string")))
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
@@ -475,7 +535,23 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Email contact info segmented by role (teachers/parents/kids)"),
+     *     @OA\Response(response=200, description="Email contact info segmented by role (teachers/parents/kids)",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="emails", type="array", @OA\Items(type="string"), description="All unique addresses"),
+     *             @OA\Property(property="byRole", type="object", description="Emails grouped by Teachers / Parents / Kids",
+     *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string"))),
+     *             @OA\Property(property="recipients", type="array", description="The same people with ids, for POST /api/email/send",
+     *                 @OA\Items(type="object",
+     *                     @OA\Property(property="personId", type="integer"),
+     *                     @OA\Property(property="familyId", type="integer", nullable=true),
+     *                     @OA\Property(property="name", type="string"),
+     *                     @OA\Property(property="email", type="string"))),
+     *             @OA\Property(property="all", type="string", description="Legacy CSV of all addresses"),
+     *             @OA\Property(property="teachers", type="string", description="Legacy CSV"),
+     *             @OA\Property(property="parents", type="string", description="Legacy CSV"),
+     *             @OA\Property(property="kids", type="string", description="Legacy CSV")
+     *         )
+     *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Email permission required"),
      *     @OA\Response(response=404, description="Group not found")
@@ -493,17 +569,27 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $teacherEmails = [];
             $parentEmails = [];
             $kidEmails = [];
-            $teacherEmailsSeen = [];
-            $kidEmailsSeen     = [];
-            $parentEmailsSeen  = [];
+            $recipients = [];
+            $emailsSeen = [];
+
+            // One entry per unique address, with the person id so the composer can send by id.
+            $addRecipient = static function (int $personId, string $name, string $email) use (&$recipients, &$emailsSeen): bool {
+                $key = strtolower($email);
+                if ($email === '' || isset($emailsSeen[$key])) {
+                    return false;
+                }
+                $emailsSeen[$key] = true;
+                $recipients[] = ['personId' => $personId, 'familyId' => null, 'name' => $name, 'email' => $email];
+
+                return true;
+            };
 
             foreach ($rsTeachers as $teacher) {
                 if (isset($doNotEmailSet[(int) $teacher->getId()])) {
                     continue;
                 }
-                $email = (string) $teacher->getEmail();
-                if (!empty($email) && !isset($teacherEmailsSeen[$email])) {
-                    $teacherEmailsSeen[$email] = true;
+                $email = trim((string) $teacher->getEmail());
+                if ($addRecipient((int) $teacher->getId(), $teacher->getFullName(), $email)) {
                     $teacherEmails[] = $email;
                 }
             }
@@ -511,21 +597,21 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             foreach ($thisClassChildren as $child) {
                 $kidId = (int) ($child['kidId'] ?? 0);
                 if ($kidId > 0 && !isset($doNotEmailSet[$kidId])) {
-                    $kidEmail = (string) ($child['kidEmail'] ?? '');
-                    if (!empty($kidEmail) && !isset($kidEmailsSeen[$kidEmail])) {
-                        $kidEmailsSeen[$kidEmail] = true;
+                    $kidEmail = trim((string) ($child['kidEmail'] ?? ''));
+                    $kidName = trim(($child['firstName'] ?? '') . ' ' . ($child['LastName'] ?? ''));
+                    if ($addRecipient($kidId, $kidName, $kidEmail)) {
                         $kidEmails[] = $kidEmail;
                     }
                 }
 
-                foreach (['dadId' => 'dadEmail', 'momId' => 'momEmail'] as $idField => $emailField) {
-                    $parentId = (int) ($child[$idField] ?? 0);
-                    if ($parentId > 0 && isset($doNotEmailSet[$parentId])) {
+                foreach (['dad', 'mom'] as $parent) {
+                    $parentId = (int) ($child[$parent . 'Id'] ?? 0);
+                    if ($parentId <= 0 || isset($doNotEmailSet[$parentId])) {
                         continue;
                     }
-                    $email = (string) ($child[$emailField] ?? '');
-                    if (!empty($email) && !isset($parentEmailsSeen[$email])) {
-                        $parentEmailsSeen[$email] = true;
+                    $email = trim((string) ($child[$parent . 'Email'] ?? ''));
+                    $parentName = trim(($child[$parent . 'FirstName'] ?? '') . ' ' . ($child[$parent . 'LastName'] ?? ''));
+                    if ($addRecipient($parentId, $parentName, $email)) {
                         $parentEmails[] = $email;
                     }
                 }
@@ -548,8 +634,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
 
             return SlimUtils::renderJSON($response, [
                 // New canonical shape consumed by the email-composer modal
-                'emails' => $allEmails,
-                'byRole' => $byRole,
+                'emails'     => $allEmails,
+                'byRole'     => $byRole,
+                'recipients' => $recipients,
                 // Legacy CSV fields retained for backward compatibility
                 'all'      => implode(',', $allEmails),
                 'teachers' => implode(',', $teacherEmails),
@@ -814,12 +901,17 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *         )
      *     ),
      *     @OA\Response(response=200, description="Updated group object"),
-     *     @OA\Response(response=403, description="ManageGroupRole role required")
+     *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=409, description="The group is a volunteer ministry's pool and is managed from that ministry (Volunteer v2, D19)")
      * )
      */
     $group->post('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $input = $request->getParsedBody();
         $group = $request->getAttribute('group');
+        $managed = _renderManagedGroupConflict($response, $group);
+        if ($managed !== null) {
+            return $managed;
+        }
         $group->setName($input['groupName']);
         $group->setType($input['groupType']);
         $group->setDescription($input['description'] ?? '');
@@ -832,17 +924,21 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * @OA\Delete(
      *     path="/groups/{groupID}",
      *     summary="Delete a group (ManageGroupRole role required)",
-     *     description="Deletes a group. Members and custom properties are cascade-deleted. Returns 409 Conflict if the group is the audience for one or more events, or is referenced by an event type — reassign those first.",
+     *     description="Deletes a group. Members and custom properties are cascade-deleted. Returns 409 Conflict if the group is the audience for one or more events, is referenced by an event type — reassign those first — or is a volunteer ministry's pool, which is deleted with the ministry.",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Group deleted successfully"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
-     *     @OA\Response(response=409, description="Group is the audience for active events or referenced by event types")
+     *     @OA\Response(response=409, description="Group is the audience for active events, referenced by event types, or is a volunteer ministry's pool (Volunteer v2, D19)")
      * )
      */
     $group->delete('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $group = $request->getAttribute('group');
+        $managed = _renderManagedGroupConflict($response, $group);
+        if ($managed !== null) {
+            return $managed;
+        }
         $groupId = (int) $group->getId();
 
         // Block if the group is attached to events (as audience or via event type default).

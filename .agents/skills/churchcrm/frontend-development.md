@@ -157,6 +157,35 @@ dataTableConfig.pageLength = 25;
 
 **Quick audit**: `grep -rEn "pageLength" src/ --include="*.js" --include="*.php"` — any `pageLength` line that appears *after* `$.extend(..., window.CRM.plugin.dataTable)` is a bug unless it's a dashboard widget.
 
+## DataTables: `destroy()` BEFORE rewriting the `<tbody>`, never after <!-- learned: 2026-09-12 -->
+
+On a page that re-renders its own rows (fetch → rebuild `<tbody>` → re-init), the
+teardown has to happen **first**. `destroy()` restores the rows DataTables cached
+when it was initialised, so destroying *after* writing the new HTML silently puts
+the old rows back and the update looks like it was ignored — no error, no warning,
+just stale content. The first render works (there is no instance yet), which is
+what makes this survive a quick manual test and only show up on the second save.
+
+```js
+// ✅ CORRECT
+function render(rows) {
+  if ($.fn.dataTable.isDataTable("#myTable")) {
+    $("#myTable").DataTable().destroy();   // 1. tear down
+  }
+  document.querySelector("#myTable tbody").innerHTML = rows.map(toRow).join("");  // 2. rewrite
+  $("#myTable").DataTable({ ...window.CRM.plugin.dataTable });                    // 3. re-init
+}
+
+// ❌ WRONG — destroy() resurrects the rows captured at init time
+document.querySelector("#myTable tbody").innerHTML = newHtml;
+$("#myTable").DataTable().destroy();
+$("#myTable").DataTable(config);
+```
+
+Guard the teardown with `$.fn.dataTable.isDataTable(selector)`; calling
+`.DataTable().destroy()` on a plain table re-initialises it as a side effect.
+Live example: `webpack/ministries/ministry.ts` (`destroyDataTable` / `initDataTable`).
+
 ## Asset Paths (SystemURLs)
 
 **ALWAYS use SystemURLs::getRootPath() for asset references:**
@@ -298,6 +327,110 @@ document.addEventListener("DOMContentLoaded", function() {
 
 **Rule of thumb:** Use bootbox for simple yes/no confirmations; use Bootstrap modals for anything
 that needs custom formatting or more control.
+
+### Focus the first field on `shown.bs.modal` <!-- learned: 2026-09-12 -->
+
+A form modal must put the cursor in its first input itself:
+
+```js
+modalEl.addEventListener("shown.bs.modal", () => {
+  document.getElementById("position-form-name")?.focus();
+});
+```
+
+It is not only a courtesy. Bootstrap's own `shown.bs.modal` handler moves focus to
+the **dialog element** at the end of the 150 ms fade. Anything typed into a field
+before that lands is fine; anything typed after it goes to the dialog and is
+dropped. A user typing immediately loses the tail of what they typed, and a
+Cypress `.type()` started as soon as the modal is `visible` silently truncates —
+`"Milk Station"` arriving as `"Milk Stat"` is the signature, and it looks like a
+server-side length problem rather than a focus one. Focusing the field in the
+handler makes the dialog's focus grab a no-op and fixes both.
+
+Test side, see `cypress-testing.md` → "Typing into a modal": assert
+`should("be.focused")` before `.type()`.
+
+### A modal cannot be dismissed during its own fade <!-- learned: 2026-09-12 -->
+
+The mirror image of the rule above, and the reason a "the X button does nothing"
+report is usually real. `Modal.hide()` starts with:
+
+```js
+if (!this._isShown || this._isTransitioning) { return }
+```
+
+`_isTransitioning` stays true for the whole 150 ms opening fade, so a click on a
+`data-bs-dismiss="modal"` control during it is accepted by the data-api handler
+and then thrown away by `hide()` — no error, no event, the modal stays open. A
+user who reflexively clicks the X the instant the dialog appears has to click
+again.
+
+Nothing in our code can shorten the fade, but do not paper over it with a second
+`hide()` call or a `setTimeout`: the second click already works, and a queued
+hide would fight Bootstrap's own state machine. What this **does** mean is that
+code must never assume `show()` followed by `hide()` in the same tick closes
+anything — drive a modal's lifecycle from `shown.bs.modal` / `hidden.bs.modal`,
+never from a timer.
+
+### The programmatic corollary: "close on success" can land inside the fade <!-- learned: 2026-09-12 -->
+
+The paragraph above is about a **user's** dismiss click, where the right answer
+is to do nothing because the second click works. A *programmatic* `hide()` has no
+second click coming, and there the same guard is a real bug.
+
+The shape is the common one: open a modal, submit, close it when the request
+resolves.
+
+```js
+modal.show();
+// …user picks something, clicks Save…
+save().then(() => {
+  modal.hide();          // ❌ swallowed if the dialog is still fading in
+  notifySuccess(msg);
+});
+```
+
+Against a local API that answers in single-digit milliseconds the whole
+open → populate → submit → resolve cycle can finish inside the 150 ms opening
+fade. `hide()` hits `if (!this._isShown || this._isTransitioning) { return }`,
+returns silently, and the dialog stays open **with the write already committed
+behind it** — no error, no event, nothing in any log. Reading the live instance a
+second later shows exactly that: `_isShown: true`, `_isTransitioning: false`.
+
+The fix is the one the paragraph above already prescribes — drive the lifecycle
+from `shown.bs.modal` — applied to the dismissal rather than to focus:
+
+```js
+let shown = false;
+let hidePending = false;
+
+modalEl.addEventListener("shown.bs.modal", () => {
+  shown = true;
+  if (hidePending) {
+    hidePending = false;
+    modal.hide();          // now it is genuinely not transitioning
+  }
+});
+modalEl.addEventListener("hidden.bs.modal", () => {
+  shown = false;
+  hidePending = false;
+});
+
+function hideModal() {
+  if (!shown) {
+    hidePending = true;    // queue it; never fire into the fade
+    return;
+  }
+  modal.hide();
+}
+```
+
+This is not the "queued hide" the paragraph above warns against — that one
+duplicates a dismissal the user is about to repeat. This one is the **only**
+dismissal there will ever be, and it is released by Bootstrap's own state
+machine rather than by a timer. Confirmed while implementing #9709's assign
+modal, which stayed open after a successful assignment on every fast run.
+
 
 ## Modals (Bootstrap 5 / Tabler) <!-- updated: 2026-03-22 -->
 
@@ -738,7 +871,32 @@ TomSelect renders at most `settings.maxOptions` entries — **default 50** — a
 new TomSelect(el, { maxOptions: null });
 ```
 
-Keep the default for **type-to-search** pickers (person/family/group), where capping results is the point. Issue #9677 fixed `DropdownManager.js`, `webpack/church-info.js` and `SystemSettings.php`. Typing still finds hidden entries because search runs before the cap — which is exactly why this bug survives casual testing.
+Keep the default for **type-to-search** pickers, where capping results is the point — with one exception: `webpack/common/person-select.ts` sets `maxOptions: null` (#9819) so a caller pointing it at a route with no server-side `limit` is not silently truncated. `/api/persons/search/` hardcodes `limit(15)`, so the cap was never reached there anyway. Issue #9677 fixed `DropdownManager.js`, `webpack/church-info.js` and `SystemSettings.php`. Typing still finds hidden entries because search runs before the cap — which is exactly why this bug survives casual testing.
+
+### Person pickers: use `webpack/common/person-select.ts`, never hand-roll <!-- learned: 2026-09-12 -->
+
+Every AJAX person search against `GET /api/persons/search/{query}` goes through the shared module
+(#9819). Do not write another `new TomSelect({ valueField: "objid", ... load: fetch(...) })`.
+
+```js
+import { attachToModal, initAllPersonSelects, initPersonSelect } from "./common/person-select";
+
+initPersonSelect(el, { mapResult, placeholder, render, onChange });  // one <select>
+initAllPersonSelects(opts);          // scans BOTH .personSearch and .person-search
+attachToModal(modalEl, "#sel", { onInit });  // owns shown.bs.modal → init / hidden → destroy()
+```
+
+It applies `dropdownParent: "body"` and `maxOptions: null` for every caller, and reads
+`window.CRM.root` lazily inside `load()`. `opts.endpoint` + `opts.mapResult` point it at a
+different search route. Scripts outside a bundle (plain `<script src>`, e.g.
+`src/skin/js/GroupView.js`) reach it as `window.CRM.initPersonSelect` / `initAllPersonSelects`,
+exported by `skin-core.js`.
+
+Two constraints worth knowing before extending it: the module takes its constructor from
+`window.TomSelect` rather than importing `tom-select`, because there is no `splitChunks` config
+and an import would give the page a second TomSelect class; and `tom-select` 2.6.2 ships **no**
+type declarations, so the instance members TS needs are hand-declared in
+`webpack/types/window.d.ts` next to `PersonSelectOptions`.
 
 ### Uppy v5 XHRUpload: Parse `response.responseText` to Surface Server Errors <!-- learned: 2026-04-21 -->
 
@@ -1524,3 +1682,28 @@ $("#MyTable").on("click", "[data-row-action]", function() {
 
 `$(...).data()` decodes the attribute value back to the original string — the
 JS-context concerns disappear because the string never enters a JS literal.
+
+## Bootstrap Modal Steals Focus at the End of Its Fade <!-- learned: 2026-09-16 -->
+
+`Modal.show()` returns before the fade transition ends; on `shown.bs.modal` Bootstrap calls
+`focus()` on the dialog element. Any field focused inside the modal before that moment
+(a form injected right after `show()`, a Send form opened within ~300 ms) loses focus and
+keystrokes go to the dialog. Cypress `type()` then silently truncates the value. Fix in the
+module that owns the modal, not in the test:
+
+```ts
+modalEl.addEventListener("shown.bs.modal", () => {
+  if (composeFormVisible && subjectInputEl) subjectInputEl.focus();
+});
+```
+
+(`webpack/common/email-composer.ts`.) Assert `should("have.value", text)` after typing in
+specs so a regression is visible.
+
+## Always Build Through `npm run build:frontend` <!-- learned: 2026-09-16 -->
+
+Running `npx webpack` directly produces a **development** build (`eval` source maps,
+`webpack-internal://` paths) because `NODE_ENV` is unset; the dashboard then fails with
+`ReferenceError: i18next is not defined` and every UI spec's login breaks. Use
+`npm run build:frontend` (sets `NODE_ENV=production`, then formats and regenerates the
+integrity signatures) or the full `npm run build`.

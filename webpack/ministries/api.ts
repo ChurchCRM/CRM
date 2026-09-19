@@ -1,0 +1,1246 @@
+/**
+ * Shared client for the Volunteer v2 setup API (#9715).
+ *
+ * One module so the setup flow and the ministry page cannot drift apart on a
+ * field name, a path or an error shape. #9707 and #9708 add their own calls
+ * here rather than re-deriving the envelope.
+ *
+ * The API layer answers with `SlimUtils` envelopes: success payloads are a plain
+ * object, failures are `{"success": false, "message": "…"}` with a meaningful
+ * status. `request()` turns a failure into a `VolunteerApiError` carrying both,
+ * so a caller can show the server's own sentence ("A ministry with that name
+ * already exists") instead of inventing one, and can branch on `status` when it
+ * needs to.
+ *
+ * `window.CRM.root` is read lazily, per call, never captured at module scope:
+ * the bundle is evaluated before the inline `<script>` in the view has
+ * necessarily run, and a subdirectory install ("/churchcrm") would otherwise get
+ * "".
+ */
+
+/** One ministry as `volunteerMinistryToArray()` shapes it. */
+export interface VolunteerMinistry {
+  id: number;
+  name: string;
+  description: string | null;
+  active: boolean;
+  createdDate: string | null;
+  createdByPersonId: number | null;
+  teamCount: number;
+  positionCount: number;
+  /** D19: advertise this ministry on the Open Opportunities page. */
+  helpWanted: boolean;
+  helpWantedText: string | null;
+}
+
+/** One team-scope grant, as carried on a team row by `volunteerTeamToArray()`. */
+export interface VolunteerTeamLeader {
+  /** The `volunteer_scope_vscp` row id, so revoking needs no lookup. */
+  scopeId: number;
+  personId: number;
+  personName: string;
+}
+
+/** One team as `volunteerTeamToArray()` shapes it. */
+export interface VolunteerTeam {
+  id: number;
+  ministryId: number;
+  name: string;
+  description: string | null;
+  active: boolean;
+  positionCount: number;
+  /**
+   * The team's leaders. Normally 0 or 1 — the UI treats a team as having at most
+   * one — but the scope table has no uniqueness constraint, so the API reports
+   * every row rather than silently truncating. Absent on the endpoints that do
+   * not resolve them.
+   */
+  leaders?: VolunteerTeamLeader[];
+}
+
+/**
+ * One position as `volunteerPositionToArray()` shapes it.
+ *
+ * `teamId` is never null: every position belongs to a team, and a ministry is
+ * never created without one.
+ */
+export interface VolunteerPosition {
+  id: number;
+  ministryId: number;
+  teamId: number;
+  teamName: string | null;
+  name: string;
+  description: string | null;
+  active: boolean;
+  /** "Recruit Volunteers": advertise this position by name on Open Opportunities. */
+  recruiting: boolean;
+  /** Off: the portal never offers it and self-signup is refused; a leader assigns it. */
+  selfAssignable: boolean;
+  order: number;
+}
+
+/** One qualification as `volunteerQualificationToArray()` shapes it (#9707). */
+export interface VolunteerQualification {
+  id: number;
+  personId: number;
+  displayName: string | null;
+  positionId: number;
+  positionName: string | null;
+  ministryId: number | null;
+  teamId: number | null;
+  active: boolean;
+  grantedDate: string | null;
+  grantedByPersonId: number | null;
+  notes: string | null;
+}
+
+/**
+ * One person in the pool, or on a row of the qualification matrix.
+ *
+ * D19: the matrix's rows are pool members UNION everyone qualified for a position
+ * in view, so `inPool` is what tells the two apart — a member with no ticks yet
+ * gets the "not qualified yet" hint, and a qualified non-member is somebody who
+ * was taken out of the group and is still perfectly assignable.
+ */
+export interface VolunteerPoolPerson {
+  personId: number;
+  displayName: string;
+  /** The pool groups this person arrived through; since D19 always 0 or 1 of them. */
+  groupIds: number[];
+  /** Is this person in the ministry's pool Group? */
+  inPool: boolean;
+  /** Position ids the person is actively qualified for (design §3.3.1). */
+  qualifications: number[];
+  /** Position id → qualification row id, so unticking revokes that exact row. */
+  qualificationIds: Record<string, number>;
+}
+
+/**
+ * The whole matrix in one document — positions across the top, pool people down
+ * the side, each person's qualified position ids inline. §5.4 requires this to
+ * be ONE fetch for 15–200 people, never a request per cell.
+ */
+export interface QualificationMatrix {
+  ministryId: number;
+  teamId: number | null;
+  positions: VolunteerPosition[];
+  people: VolunteerPoolPerson[];
+}
+
+/**
+ * The three numbers the ministry overview strip shows, computed server-side with
+ * the viewer's scope: a coordinator, global manager or administrator is counted
+ * over the whole ministry, a team leader over the teams they lead.
+ */
+export interface MinistrySummary {
+  teamCount: number;
+  /** Members of the ministry's pool Group. */
+  volunteerCount: number;
+  /** Open slots across every future, scheduled occurrence the viewer may see. */
+  unfilledPositionCount: number;
+  /** All-time, unscoped: what the Delete confirmation says goes with the ministry. */
+  occurrenceCount: number;
+  /** All-time, unscoped, any status: the service history the Delete confirmation names. */
+  assignmentCount: number;
+}
+
+export interface MinistryDetail {
+  ministry: VolunteerMinistry;
+  summary?: MinistrySummary;
+  teams: VolunteerTeam[];
+  positions: VolunteerPosition[];
+  /** D19: the ministry's own pool Group and who is in it, in the same document. */
+  poolGroupId?: number | null;
+  poolGroupName?: string | null;
+  pool?: VolunteerPoolPerson[];
+}
+
+/**
+ * One position a ministry is recruiting for, as `GET /me/help-wanted` shapes it.
+ *
+ * Already ordered by the server — team name, then the position's own order — so
+ * the page renders the array as it arrives and never sorts it again.
+ */
+export interface VolunteerHelpWantedPosition {
+  teamName: string;
+  positionName: string;
+  description: string | null;
+}
+
+/**
+ * One ministry advertising for help on the Open Opportunities page (D19, as
+ * amended in round four).
+ *
+ * A ministry is here because its own Help-wanted switch is on, or because it has
+ * at least one active recruiting position, or both — so `helpWantedText` and
+ * `recruitingPositions` are each independently allowed to be empty.
+ */
+export interface VolunteerHelpWantedMinistry {
+  ministryId: number;
+  ministryName: string;
+  helpWantedText: string | null;
+  recruitingPositions: VolunteerHelpWantedPosition[];
+  inPool: boolean;
+}
+
+/** A non-2xx answer from the API, carrying the server's message and status. */
+export class VolunteerApiError extends Error {
+  readonly status: number;
+
+  constructor(message: string, status: number) {
+    super(message);
+    this.name = "VolunteerApiError";
+    this.status = status;
+  }
+}
+
+/** The install's root path, read at call time (see the module docblock). */
+function rootPath(): string {
+  return window.CRM?.root ?? "";
+}
+
+async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  return requestAt(`/api/ministries${path}`, init);
+}
+
+/**
+ * Same envelope handling as `request()`, for the few core endpoints V2 reuses
+ * outside `/api/ministries`.
+ */
+async function requestAt<T>(absolutePath: string, init?: RequestInit): Promise<T> {
+  const response = await fetch(`${rootPath()}${absolutePath}`, {
+    credentials: "same-origin",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    ...init,
+  });
+
+  let body: unknown = null;
+  try {
+    body = await response.json();
+  } catch {
+    // A middleware denial can answer with an empty body; the status still speaks.
+    body = null;
+  }
+
+  if (!response.ok) {
+    const message =
+      (body as { message?: string; error?: string } | null)?.message ??
+      (body as { message?: string; error?: string } | null)?.error ??
+      "";
+    throw new VolunteerApiError(message, response.status);
+  }
+
+  return body as T;
+}
+
+export function listMinistries(activeOnly = false): Promise<{ ministries: VolunteerMinistry[] }> {
+  return request(`/ministries${activeOnly ? "?active=1" : ""}`);
+}
+
+export function createMinistry(name: string, description: string): Promise<{ ministry: VolunteerMinistry }> {
+  return request("/ministries", { method: "POST", body: JSON.stringify({ name, description }) });
+}
+
+export function getMinistry(ministryId: number): Promise<MinistryDetail> {
+  return request(`/ministries/${ministryId}`);
+}
+
+export function updateMinistry(
+  ministryId: number,
+  fields: Partial<Pick<VolunteerMinistry, "name" | "description" | "active" | "helpWanted" | "helpWantedText">>,
+): Promise<{ ministry: VolunteerMinistry }> {
+  return request(`/ministries/${ministryId}`, { method: "POST", body: JSON.stringify(fields) });
+}
+
+/**
+ * Manager-only. 403 for a coordinator, 409 while any occurrence or assignment
+ * still hangs off the ministry (the message names the counts); on 200 the
+ * ministry, its teams, positions, schedules, scope grants, pool Group and
+ * calendar are gone (`VolunteerMinistryService::deleteMinistry()`).
+ */
+export function deleteMinistry(ministryId: number): Promise<{ success: boolean }> {
+  return request(`/ministries/${ministryId}`, { method: "DELETE" });
+}
+
+export function listTeams(ministryId: number): Promise<{ teams: VolunteerTeam[] }> {
+  return request(`/ministries/${ministryId}/teams`);
+}
+
+export function createTeam(ministryId: number, name: string, description: string): Promise<{ team: VolunteerTeam }> {
+  return request(`/ministries/${ministryId}/teams`, {
+    method: "POST",
+    body: JSON.stringify({ name, description }),
+  });
+}
+
+export function updateTeam(
+  teamId: number,
+  fields: Partial<Pick<VolunteerTeam, "name" | "description" | "active">>,
+): Promise<{ team: VolunteerTeam }> {
+  return request(`/teams/${teamId}`, { method: "POST", body: JSON.stringify(fields) });
+}
+
+export function deleteTeam(teamId: number): Promise<{ success: boolean }> {
+  return request(`/teams/${teamId}`, { method: "DELETE" });
+}
+
+/**
+ * One team and its positions, in one document.
+ *
+ * Gated per TEAM rather than per ministry, so a team leader may read their own —
+ * which is what the Member Portal's My Teams page (#9868) opens with.
+ */
+export function getTeam(teamId: number): Promise<{ team: VolunteerTeam; positions: VolunteerPosition[] }> {
+  return request(`/teams/${teamId}`);
+}
+
+/**
+ * `teamId` narrows the list to one team. The handler scopes what it returns to
+ * the caller's own teams anyway (§4.4), so this is a filter, never a permission.
+ */
+export function listPositions(ministryId: number, teamId?: number | null): Promise<{ positions: VolunteerPosition[] }> {
+  return request(`/ministries/${ministryId}/positions${teamId ? `?teamId=${teamId}` : ""}`);
+}
+
+export function createPosition(
+  ministryId: number,
+  payload: {
+    name: string;
+    description: string;
+    teamId: number | null;
+    order: number;
+    recruiting?: boolean;
+    selfAssignable?: boolean;
+  },
+): Promise<{ position: VolunteerPosition }> {
+  return request(`/ministries/${ministryId}/positions`, { method: "POST", body: JSON.stringify(payload) });
+}
+
+export function updatePosition(
+  positionId: number,
+  fields: Partial<
+    Pick<VolunteerPosition, "name" | "description" | "teamId" | "order" | "active" | "recruiting" | "selfAssignable">
+  >,
+): Promise<{ position: VolunteerPosition }> {
+  return request(`/positions/${positionId}`, { method: "POST", body: JSON.stringify(fields) });
+}
+
+export function deletePosition(positionId: number): Promise<{ success: boolean }> {
+  return request(`/positions/${positionId}`, { method: "DELETE" });
+}
+
+// ─── The pool Group and qualifications (#9707, rewritten by D19) ─────────────
+
+/**
+ * Who is in the ministry's volunteer pool.
+ *
+ * There is no "link a group" call any more and no `createGroup` helper: the
+ * ministry owns exactly one Group and it was created with the ministry, so the
+ * only thing left to change is who is in it.
+ */
+export function listPoolMembers(
+  ministryId: number,
+): Promise<{ groupId: number | null; groupName: string | null; members: VolunteerPoolPerson[] }> {
+  return request(`/ministries/${ministryId}/pool`);
+}
+
+/** Idempotent: somebody already in the pool comes back `added: false`, not an error. */
+export function addPoolMember(ministryId: number, personId: number): Promise<{ personId: number; added: boolean }> {
+  return request(`/ministries/${ministryId}/pool/${personId}`, { method: "POST" });
+}
+
+/**
+ * The Cart sink for the pool (P5/P6): the people come from the session cart, not
+ * the body, so this takes no payload.
+ *
+ * One request for the whole cart rather than one `addPoolMember` per person — a
+ * coordinator with thirty people in the cart should pay for one round trip, and a
+ * batch that half-completed because the tenth call failed is not a state anything
+ * on the page could describe. Idempotent per person: somebody already in the pool
+ * is counted in `alreadyMembers` rather than failing the batch.
+ *
+ * Nobody is qualified for anything here — that is the ticks on the grid (§2.5).
+ */
+export function addPoolMembersFromCart(ministryId: number): Promise<{ added: number; alreadyMembers: number }> {
+  return request(`/ministries/${ministryId}/pool/from-cart`, { method: "POST" });
+}
+
+/** Their qualifications are NOT revoked — the two are independent since D19. */
+export function removePoolMember(ministryId: number, personId: number): Promise<{ success: boolean }> {
+  return request(`/ministries/${ministryId}/pool/${personId}`, { method: "DELETE" });
+}
+
+/**
+ * Take one person out of a ministry entirely: qualifications revoked, upcoming
+ * assignments cancelled, pool membership removed — one transaction server-side.
+ *
+ * Ministry-level authority; a team leader is refused with 403.
+ */
+export function removeVolunteerFromMinistry(
+  ministryId: number,
+  personId: number,
+): Promise<{ personId: number; qualifications: number; assignments: number; removedFromPool: boolean }> {
+  return request(`/ministries/${ministryId}/volunteers/${personId}`, { method: "DELETE" });
+}
+
+export function getQualificationMatrix(ministryId: number, teamId?: number | null): Promise<QualificationMatrix> {
+  return request(`/ministries/${ministryId}/qualification-matrix${teamId ? `?teamId=${teamId}` : ""}`);
+}
+
+/**
+ * The same matrix, asked for by TEAM (#9868).
+ *
+ * Identical document; the difference is the gate. The ministry route is refused
+ * to a team leader — correctly, a ministry-wide grid is a coordinator's screen —
+ * so the portal's one-team page asks for one team's.
+ */
+export function getTeamQualificationMatrix(teamId: number): Promise<QualificationMatrix> {
+  return request(`/teams/${teamId}/qualification-matrix`);
+}
+
+/** Idempotent: a repeat grant reactivates the same row rather than adding one. */
+export function grantQualification(
+  positionId: number,
+  personId: number,
+  notes = "",
+): Promise<{ qualification: VolunteerQualification }> {
+  return request(`/positions/${positionId}/qualifications`, {
+    method: "POST",
+    body: JSON.stringify({ personId, notes }),
+  });
+}
+
+export function listQualifications(
+  positionId: number,
+  activeOnly = false,
+): Promise<{ qualifications: VolunteerQualification[] }> {
+  return request(`/positions/${positionId}/qualifications${activeOnly ? "?active=1" : ""}`);
+}
+
+/** Revoke = deactivate; the row survives so history stays readable (§2.7). */
+export function revokeQualification(qualificationId: number): Promise<{ qualification: VolunteerQualification }> {
+  return request(`/qualifications/${qualificationId}`, { method: "DELETE" });
+}
+
+/**
+ * The message to put in front of a person, preferring the server's own sentence.
+ * `fallback` is used when a denial answered with no body at all.
+ */
+export function errorMessage(error: unknown, fallback: string): string {
+  if (error instanceof VolunteerApiError && error.message !== "") {
+    return error.message;
+  }
+
+  return fallback;
+}
+
+/** Toast helper — `"danger"`, never `"error"`: `"error"` renders blue (U5/E-7). */
+export function notifyError(message: string): void {
+  window.CRM?.notify?.(message, { type: "danger" });
+}
+
+export function notifySuccess(message: string): void {
+  window.CRM?.notify?.(message, { type: "success" });
+}
+
+/** Toast helper for "nothing broke, but nothing happened either" — an existing grant, say. */
+export function notifyWarning(message: string): void {
+  window.CRM?.notify?.(message, { type: "warning" });
+}
+
+// ─── Coordinator and team-leader scope (#9706, design §2.15 / §4.4) ──────────
+
+/**
+ * One scope grant as `volunteerScopeToArray()` shapes it.
+ *
+ * `scopeName` is null when the polymorphic target has been deleted: the column
+ * carries no foreign key (§2.15), so an orphan row is possible and a listing
+ * must survive one.
+ */
+export interface VolunteerScopeGrant {
+  id: number;
+  personId: number;
+  personName: string;
+  scopeType: "ministry" | "team";
+  scopeId: number;
+  scopeName: string | null;
+  grantedDate: string | null;
+  grantedByPersonId: number | null;
+}
+
+/**
+ * Grants filtered by person, by ministry or by team.
+ *
+ * `ministryId` and `teamId` are mutually exclusive by design — they filter one
+ * polymorphic column two ways, and the API answers a request carrying both with
+ * an empty list rather than a silent AND.
+ */
+export function listScopes(
+  filter: { personId?: number; ministryId?: number; teamId?: number } = {},
+): Promise<{ scopes: VolunteerScopeGrant[] }> {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(filter)) {
+    if (value !== undefined) {
+      params.set(key, String(value));
+    }
+  }
+  const query = params.toString();
+
+  return request(`/scopes${query === "" ? "" : `?${query}`}`);
+}
+
+/**
+ * Grant coordinator or team-leader authority. Manager-only, and idempotent by
+ * the `vscp_person_scope_uidx` unique key: a repeat grant answers 200 with the
+ * same row rather than 409 (§6.6). The status is not visible through this
+ * client, so a caller that needs to tell "granted" from "already there" compares
+ * against the list it is holding.
+ */
+export function grantScope(
+  personId: number,
+  scopeType: "ministry" | "team",
+  scopeId: number,
+): Promise<{ scope: VolunteerScopeGrant }> {
+  return request("/scopes", {
+    method: "POST",
+    body: JSON.stringify({ personId, scopeType, scopeId }),
+  });
+}
+
+export function revokeScope(scopeId: number): Promise<{ success: boolean }> {
+  return request(`/scopes/${scopeId}`, { method: "DELETE" });
+}
+
+/**
+ * How a position is named on a screen that can show more than one team's positions
+ * at once — "Elementary · Lead Teacher".
+ *
+ * This is the whole point of the "every ministry has at least one team" decision:
+ * two teams under "Children's Ministry" may each own a "Lead Teacher", and a
+ * coordinator looking at a qualification matrix, a dashboard gap list or a
+ * cross-team "still needed" line has to be able to tell them apart. Where the
+ * context is already ONE team — a schedule form after a team is chosen, the
+ * occurrence page, whose header already names the ministry and the team — the bare
+ * position name is right and this helper is not used.
+ *
+ * The separator is a middle dot with hair spaces around it, matching the
+ * "Ministry · Team" line the occurrence header already draws. Returns the bare
+ * position name when there is no team name to prefix, so a caller never has to
+ * guard.
+ */
+export function positionLabel(teamName: string | null | undefined, positionName: string | null): string {
+  const position = positionName ?? "";
+  const team = teamName ?? "";
+
+  return team === "" ? position : `${team} · ${position}`;
+}
+
+// ─── Assignments, gaps and swaps (#9709) ─────────────────────────────────────
+
+/** One assignment as `volunteerAssignmentToArray()` shapes it. */
+export interface VolunteerAssignment {
+  id: number;
+  occurrenceId: number;
+  positionId: number;
+  positionName: string | null;
+  personId: number;
+  displayName: string | null;
+  requirementId: number | null;
+  status: "pending" | "accepted" | "declined" | "cancelled" | "substituted" | "completed";
+  source: "coordinator" | "self_signup" | "substitute";
+  assignedDate: string | null;
+  assignedByPersonId: number | null;
+  respondedDate: string | null;
+  replacesAssignmentId: number | null;
+  notes: string | null;
+  /** Only ever set for a LINKED occurrence (design E10); read-only, V2 never writes it. */
+  attendance: "checked_in" | "checked_out" | "not_checked_in" | null;
+}
+
+/**
+ * One requirement with its derived counts and the rows filling it.
+ *
+ * `gapCount` is `max(0, min - live)` and `openCount` is the remaining self-signup
+ * capacity — they differ whenever a requirement has a `maxCount` above its `minCount`
+ * (the optional third volunteer of §2.17). Both come from the server's single gap
+ * implementation; nothing here re-derives them.
+ */
+export interface VolunteerStaffedRequirement {
+  requirementId: number | null;
+  positionId: number;
+  positionName: string | null;
+  minCount: number;
+  maxCount: number | null;
+  liveCount: number;
+  gapCount: number;
+  openCount: number;
+  pendingCount: number;
+  acceptedCount: number;
+  source: "schedule" | "occurrence";
+  assignments: VolunteerAssignment[];
+}
+
+export interface VolunteerOccurrenceSummary {
+  id: number;
+  scheduleId: number;
+  scheduleName: string | null;
+  /** The schedule is a one-off occurrence's private, hidden one (2026-09-18). */
+  scheduleOneOff?: boolean;
+  ministryId: number | null;
+  teamId: number | null;
+  eventId: number | null;
+  occurrenceDate: string | null;
+  start: string | null;
+  end: string | null;
+  status: "scheduled" | "cancelled";
+  requiredCount: number;
+  /**
+   * How many positions the effective plan names — NOT `requiredCount`, which adds their
+   * minimums up. A Min 0 / Max 1 requirement contributes a plan and no required body, so
+   * only this number can tell "nobody has set any staffing needs" apart from "everything
+   * that was asked for is filled". Zero must render as "No staffing needs set", never as
+   * "Fully staffed".
+   */
+  requirementCount: number;
+  /** The occurrence carries override rows, so "use the schedule's needs" has somewhere to go. */
+  requirementsOverridden: boolean;
+  liveCount: number;
+  gapCount: number;
+  openCount: number;
+  pendingCount: number;
+  /**
+   * The genuinely-short positions by name, so a list can say "1 Lead Teacher, 2 Helper"
+   * rather than a bare number nobody can act on. Sliced out of the same `getGaps()`
+   * result the totals come from.
+   */
+  gaps: VolunteerOccurrenceGap[];
+}
+
+export interface VolunteerOccurrenceGap {
+  positionId: number;
+  positionName: string | null;
+  gapCount: number;
+}
+
+/**
+ * One position the staffing-needs editor may offer, from the occurrence's own scope.
+ *
+ * `teamName` lets a caller that mixes several teams' positions label them
+ * "{Team} · {Position}"; an editor showing one team's positions uses the bare name.
+ */
+export interface VolunteerCandidatePosition {
+  id: number;
+  name: string;
+  teamId: number;
+  teamName?: string | null;
+  order: number;
+}
+
+/** One row of the staffing-needs editor as it is sent back to the server. */
+export interface VolunteerRequirementInput {
+  positionId: number;
+  minCount: number;
+  maxCount: number | null;
+}
+
+/** A requirement as `volunteerRequirementToArray()` shapes it. */
+export interface VolunteerRequirementRow {
+  id: number;
+  scheduleId: number | null;
+  occurrenceId: number | null;
+  positionId: number;
+  positionName: string | null;
+  minCount: number;
+  maxCount: number | null;
+  notes: string | null;
+  source: "schedule" | "occurrence";
+}
+
+export interface VolunteerOccurrenceRequirements {
+  occurrenceId: number;
+  scheduleId: number | null;
+  scheduleName: string | null;
+  requirements: VolunteerRequirementRow[];
+  /** At least one row is this occurrence's own override. */
+  overridden: boolean;
+  positions: VolunteerCandidatePosition[];
+  /**
+   * The positions the SCHEDULE asks for. The merge is a union (§2.10): an occurrence
+   * cannot remove a schedule's requirement by leaving it out, only outvote it — so
+   * "not this week" is an override of Min 0 / Max 0, and the editor needs this list to
+   * know which unchecked rows have to be written as one.
+   */
+  schedulePositionIds: number[];
+}
+
+export interface VolunteerStaffing {
+  occurrence: VolunteerOccurrenceSummary;
+  ministryId: number | null;
+  teamId: number | null;
+  requirements: VolunteerStaffedRequirement[];
+  /** Rows whose position is no longer part of the plan — surfaced, never hidden. */
+  otherAssignments: VolunteerAssignment[];
+  attendanceAvailable: boolean;
+}
+
+/**
+ * One candidate from the eligible picker.
+ *
+ * `inPool` is reported, never used to filter: an out-of-pool qualified person is
+ * assignable behind the `allowOutsidePool` confirm (I3), so hiding them would make the
+ * override unreachable. `conflictPositionId` is the I7/D16 annotation — the person
+ * already holds ANOTHER position on this occurrence, which is allowed and only warned
+ * about.
+ */
+export interface VolunteerEligiblePerson {
+  personId: number;
+  displayName: string;
+  inPool: boolean;
+  lastServedDate: string | null;
+  conflictPositionId: number | null;
+  conflictPositionName: string | null;
+}
+
+/** One substitution request as `volunteerSwapToArray()` shapes it. */
+export interface VolunteerSwap {
+  id: number;
+  assignmentId: number;
+  occurrenceId: number | null;
+  positionId: number | null;
+  positionName: string | null;
+  proposedByPersonId: number;
+  proposedByName: string | null;
+  proposedPersonId: number;
+  proposedPersonName: string | null;
+  status: "proposed" | "approved" | "rejected" | "withdrawn";
+  proposedDate: string | null;
+  decidedDate: string | null;
+  decidedByPersonId: number | null;
+  comment: string | null;
+}
+
+/**
+ * Everything the "Edit staffing needs" modal draws: the EFFECTIVE requirements (the
+ * schedule's, with this occurrence's overrides merged over them) and the positions this
+ * occurrence could name, both under the occurrence's own scope check.
+ */
+export function getOccurrenceRequirements(occurrenceId: number): Promise<VolunteerOccurrenceRequirements> {
+  return request(`/occurrences/${occurrenceId}/requirements`);
+}
+
+/** Write this occurrence's override rows to match `requirements` exactly. */
+export function replaceOccurrenceRequirements(
+  occurrenceId: number,
+  requirements: VolunteerRequirementInput[],
+): Promise<{ requirements: VolunteerRequirementRow[]; overridden: boolean }> {
+  return request(`/occurrences/${occurrenceId}/requirements/replace`, {
+    method: "POST",
+    body: JSON.stringify({ requirements }),
+  });
+}
+
+/**
+ * Drop the overrides so the occurrence follows its schedule again. Nothing was ever
+ * copied at generation time — the merge is derived on every read — so this is the whole
+ * of the reset.
+ */
+export function clearOccurrenceRequirements(
+  occurrenceId: number,
+): Promise<{ requirements: VolunteerRequirementRow[]; overridden: boolean }> {
+  return request(`/occurrences/${occurrenceId}/requirements`, { method: "DELETE" });
+}
+
+export function getStaffing(occurrenceId: number): Promise<VolunteerStaffing> {
+  return request(`/occurrences/${occurrenceId}/staffing`);
+}
+
+/** Ordered by last served, never-served first — that ordering IS the rotation (§2.17). */
+export function listEligiblePeople(
+  occurrenceId: number,
+  positionId: number,
+  query = "",
+): Promise<{ people: VolunteerEligiblePerson[] }> {
+  const q = query === "" ? "" : `&q=${encodeURIComponent(query)}`;
+
+  return request(`/occurrences/${occurrenceId}/eligible?positionId=${positionId}${q}`);
+}
+
+export function createAssignment(
+  occurrenceId: number,
+  payload: { positionId: number; personId: number; allowOutsidePool?: boolean; notes?: string },
+): Promise<{ assignment: VolunteerAssignment }> {
+  return request(`/occurrences/${occurrenceId}/assignments`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+/**
+ * Coordinator status change. `accepted` / `declined` record a response on the
+ * volunteer's behalf and are written with channel `coordinator`, so the audit trail
+ * shows who actually recorded it (§2.11.1).
+ */
+export function setAssignmentStatus(
+  assignmentId: number,
+  status: "accepted" | "declined" | "cancelled",
+  comment = "",
+): Promise<{ assignment: VolunteerAssignment }> {
+  return request(`/assignments/${assignmentId}/status`, {
+    method: "POST",
+    body: JSON.stringify({ status, comment }),
+  });
+}
+
+/** Cancels; hard-deletes only a pending row that carries no history (§3.3.2). */
+export function deleteAssignment(assignmentId: number): Promise<{ deleted: boolean }> {
+  return request(`/assignments/${assignmentId}`, { method: "DELETE" });
+}
+
+/** Idempotent through the dedupe key unless `force` (§2.14). Nothing is sent here. */
+export function notifyAssignment(
+  assignmentId: number,
+  force = false,
+): Promise<{ created: boolean; notification: { id: number; status: string } }> {
+  return request(`/assignments/${assignmentId}/notify${force ? "?force=1" : ""}`, {
+    method: "POST",
+    body: JSON.stringify({}),
+  });
+}
+
+export function listSwaps(occurrenceId: number, status = "proposed"): Promise<{ swaps: VolunteerSwap[] }> {
+  return request(`/swaps?occurrenceId=${occurrenceId}&status=${encodeURIComponent(status)}`);
+}
+
+/** One transaction server-side: original substituted, replacement inserted (§2.13). */
+export function approveSwap(swapId: number, comment = ""): Promise<{ swap: VolunteerSwap }> {
+  return request(`/swaps/${swapId}/approve`, { method: "POST", body: JSON.stringify({ comment }) });
+}
+
+export function rejectSwap(swapId: number, comment = ""): Promise<{ swap: VolunteerSwap }> {
+  return request(`/swaps/${swapId}/reject`, { method: "POST", body: JSON.stringify({ comment }) });
+}
+
+/**
+ * The coordinator occurrence list (#9708, with #9709's derived counts filled in).
+ *
+ * `from` and `to` are mandatory server-side — no pagination protocol is invented for
+ * one module (design M9). `hasGaps` filters to the weeks that are actually short.
+ *
+ * `teamId` and `text` are what the ministry page's Occurrences search form sends.
+ * `text` matches the occurrence's TITLE case-insensitively — its schedule's name, or
+ * for an event-linked occurrence the linked event's title — and is applied in the
+ * query server-side, never by hiding rows here.
+ */
+export function listOccurrences(params: {
+  from: string;
+  to: string;
+  ministryId?: number;
+  teamId?: number;
+  text?: string;
+  hasGaps?: boolean;
+}): Promise<{ occurrences: VolunteerOccurrenceSummary[]; capped: boolean }> {
+  const query = new URLSearchParams({ from: params.from, to: params.to });
+  if (params.ministryId) {
+    query.set("ministryId", String(params.ministryId));
+  }
+  if (params.teamId) {
+    query.set("teamId", String(params.teamId));
+  }
+  if (params.text) {
+    query.set("text", params.text);
+  }
+  if (params.hasGaps) {
+    query.set("hasGaps", "1");
+  }
+
+  return request(`/occurrences?${query.toString()}`);
+}
+
+// ─── The member surface (#9712, design §3.3.3) ───────────────────────────────
+//
+// Same `request()`, same envelope, same error type as everything above — the member
+// screens are not a second client. What makes them the member surface is what the
+// calls do NOT carry: there is no `personId` anywhere below, because every one of
+// these endpoints derives the acting person from the session (§3.3.3). The only
+// `personId` that appears is `proposeSubstitute()`'s, and it names the substitute.
+
+/** One of my own commitments, as the S5 card renders it. */
+export interface VolunteerMyAssignment {
+  id: number;
+  occurrenceId: number;
+  personId: number;
+  positionId: number;
+  positionName: string | null;
+  ministryName: string | null;
+  teamName: string | null;
+  start: string | null;
+  end: string | null;
+  occurrenceDate: string | null;
+  occurrenceStatus: "scheduled" | "cancelled" | null;
+  status: "pending" | "accepted" | "declined" | "cancelled" | "substituted" | "completed";
+  source: "coordinator" | "self_signup" | "substitute";
+  respondedDate: string | null;
+  canRespond: boolean;
+  canProposeSubstitute: boolean;
+  /** Set while a substitution request of mine is still `proposed` — drives Withdraw. */
+  pendingSwapId: number | null;
+  pendingSwapPersonName: string | null;
+}
+
+/**
+ * One open slot I could take.
+ *
+ * `alreadyServing` is §5.6's same-occurrence warning and D16's "allowed, with a
+ * warning, never blocked": the row is still offered, the card just says so.
+ */
+export interface VolunteerMyOpportunity {
+  occurrenceId: number;
+  positionId: number;
+  positionName: string | null;
+  ministryName: string | null;
+  teamName: string | null;
+  occurrenceDate: string | null;
+  start: string | null;
+  end: string | null;
+  openCount: number;
+  minCount: number;
+  liveCount: number;
+  alreadyServing: boolean;
+  alreadyServingPositionNames: string[];
+}
+
+export interface VolunteerMyQualification {
+  positionId: number;
+  positionName: string;
+  ministryId: number;
+  ministryName: string | null;
+  teamId: number | null;
+  teamName: string | null;
+}
+
+export function listMyAssignments(includePast = false): Promise<{ assignments: VolunteerMyAssignment[] }> {
+  return request(`/me/assignments${includePast ? "?includePast=1" : ""}`);
+}
+
+export function respondToMyAssignment(
+  assignmentId: number,
+  response: "accepted" | "declined",
+  comment = "",
+): Promise<{ assignment: VolunteerMyAssignment }> {
+  return request(`/me/assignments/${assignmentId}/respond`, {
+    method: "POST",
+    body: JSON.stringify({ response, comment }),
+  });
+}
+
+/** The picker source for "Find a sub" — already excludes me and anyone on this slot. */
+export function listMySubstituteCandidates(
+  assignmentId: number,
+  query = "",
+): Promise<{ people: VolunteerEligiblePerson[] }> {
+  const suffix = query ? `?q=${encodeURIComponent(query)}` : "";
+
+  return request(`/me/assignments/${assignmentId}/substitutes${suffix}`);
+}
+
+/** `personId` here is the SUBSTITUTE. The proposer is the session. */
+export function proposeMySubstitute(
+  assignmentId: number,
+  personId: number,
+  comment = "",
+): Promise<{ swap: VolunteerSwap }> {
+  return request(`/me/assignments/${assignmentId}/propose-substitute`, {
+    method: "POST",
+    body: JSON.stringify({ personId, comment }),
+  });
+}
+
+export function withdrawMySwap(swapId: number, comment = ""): Promise<{ swap: VolunteerSwap }> {
+  return request(`/me/swaps/${swapId}/withdraw`, {
+    method: "POST",
+    body: JSON.stringify({ comment }),
+  });
+}
+
+export function listMyOpportunities(
+  from?: string,
+  to?: string,
+): Promise<{ opportunities: VolunteerMyOpportunity[]; from: string; to: string }> {
+  const query = new URLSearchParams();
+  if (from) {
+    query.set("from", from);
+  }
+  if (to) {
+    query.set("to", to);
+  }
+  const suffix = query.toString() ? `?${query.toString()}` : "";
+
+  return request(`/me/opportunities${suffix}`);
+}
+
+/**
+ * The ministries advertising for help (D19). A separate call from
+ * `listMyOpportunities()` because it answers a different question and has no date
+ * in it; the page renders the two as two sections.
+ */
+export function listMyHelpWanted(): Promise<{ ministries: VolunteerHelpWantedMinistry[] }> {
+  return request("/me/help-wanted");
+}
+
+/**
+ * "I'd like to help." No person id anywhere: the actor is the session (§3.3.3).
+ *
+ * `joinedPool` is what the toast wording turns on — whether this tap is what put
+ * the volunteer in the ministry's pool, or whether they were already in it and are
+ * offering again.
+ */
+export function offerToHelp(ministryId: number): Promise<{ joinedPool: boolean; notified: number }> {
+  return request(`/me/help-wanted/${ministryId}`, { method: "POST" });
+}
+
+export function signUpForOpportunity(
+  occurrenceId: number,
+  positionId: number,
+): Promise<{ assignment: VolunteerMyAssignment }> {
+  return request("/me/signup", {
+    method: "POST",
+    body: JSON.stringify({ occurrenceId, positionId }),
+  });
+}
+
+export function listMyQualifications(): Promise<{ qualifications: VolunteerMyQualification[] }> {
+  return request("/me/qualifications");
+}
+
+// ─── Schedules (#9708, surfaced on the ministry page by #9711) ───────────────
+
+/** One schedule as `volunteerScheduleToArray()` shapes it. */
+export interface VolunteerSchedule {
+  id: number;
+  ministryId: number;
+  /** Never null: a schedule always belongs to one of its ministry's teams. */
+  teamId: number;
+  name: string;
+  linkMode: "event_type" | "standalone";
+  eventTypeId: number | null;
+  eventTypeName: string | null;
+  titleFilter: string | null;
+  recurType: string | null;
+  recurDow: string | null;
+  recurDom: number | null;
+  startTime: string | null;
+  endTime: string | null;
+  windowStart: string | null;
+  windowEnd: string | null;
+  generateAheadDays: number;
+  active: boolean;
+  /** Cheap "has this been generated yet?" signal — a COUNT, never a hydration. */
+  occurrenceCount: number;
+}
+
+export function listSchedules(ministryId: number): Promise<{ schedules: VolunteerSchedule[] }> {
+  return request(`/ministries/${ministryId}/schedules`);
+}
+
+/**
+ * One team's schedules, gated per team (#9868) — the list a team leader may read
+ * without being authorized for the ministry above them.
+ */
+export function listTeamSchedules(teamId: number): Promise<{ schedules: VolunteerSchedule[] }> {
+  return request(`/teams/${teamId}/schedules`);
+}
+
+/** A schedule's template staffing needs — what the edit form pre-fills its rows from. */
+export function listScheduleRequirements(scheduleId: number): Promise<{ requirements: VolunteerRequirementRow[] }> {
+  return request(`/schedules/${scheduleId}/requirements`);
+}
+
+export function createSchedule(
+  ministryId: number,
+  payload: Record<string, unknown>,
+): Promise<{ schedule: VolunteerSchedule }> {
+  return request(`/ministries/${ministryId}/schedules`, { method: "POST", body: JSON.stringify(payload) });
+}
+
+export function updateSchedule(
+  scheduleId: number,
+  fields: Record<string, unknown>,
+): Promise<{ schedule: VolunteerSchedule }> {
+  return request(`/schedules/${scheduleId}`, { method: "POST", body: JSON.stringify(fields) });
+}
+
+export function deleteSchedule(scheduleId: number): Promise<{ success: boolean }> {
+  return request(`/schedules/${scheduleId}`, { method: "DELETE" });
+}
+
+/** Idempotent (§2.9): re-running it creates nothing that already exists. */
+/**
+ * A one-off occurrence: a date with no event and no recurring schedule behind it.
+ * The server gives it a hidden schedule of its own (team, times, staffing needs)
+ * that goes away with it.
+ */
+export function createOneOffOccurrence(
+  ministryId: number,
+  payload: {
+    name: string;
+    teamId: number;
+    date: string;
+    startTime: string;
+    endTime: string;
+    requirements: VolunteerRequirementInput[];
+  },
+): Promise<{ occurrence: VolunteerOccurrenceSummary; schedule: VolunteerSchedule }> {
+  return request(`/ministries/${ministryId}/occurrences`, { method: "POST", body: JSON.stringify(payload) });
+}
+
+/** Delete one occurrence and everything under it (assignments, responses, swaps, queued notifications). */
+export function deleteOccurrence(occurrenceId: number): Promise<{ success: boolean }> {
+  return request(`/occurrences/${occurrenceId}`, { method: "DELETE" });
+}
+
+export interface VolunteerEventSeries {
+  title: string;
+  nextStart: string;
+  count: number;
+}
+
+/** The distinct upcoming event titles of one event type — the Add schedule dialog's Event picker. */
+export function listEventSeries(eventTypeId: number, from?: string): Promise<{ series: VolunteerEventSeries[] }> {
+  const query = new URLSearchParams({ eventTypeId: String(eventTypeId) });
+  if (from) {
+    query.set("from", from);
+  }
+
+  return request(`/event-series?${query.toString()}`);
+}
+
+/** One "Fill by default with" answer of the Generate Occurrences dialog. */
+export interface VolunteerGenerateDefault {
+  positionId: number;
+  personId: number;
+  /** Record them as having accepted every occurrence, so they are not asked to respond. */
+  accepted: boolean;
+}
+
+export interface VolunteerGenerateResult {
+  created: number;
+  existing: number;
+  through: string;
+  /** Default assignments written on the occurrences this run created. */
+  assigned: number;
+  /** Default assignments the server refused on one occurrence (full, cancelled). */
+  skipped: number;
+}
+
+export function generateOccurrences(
+  scheduleId: number,
+  options: { through?: string; defaults?: VolunteerGenerateDefault[] } = {},
+): Promise<VolunteerGenerateResult> {
+  const body: Record<string, unknown> = {};
+  if (options.through) {
+    body.through = options.through;
+  }
+  if (options.defaults && options.defaults.length > 0) {
+    body.defaults = options.defaults;
+  }
+
+  return request(`/schedules/${scheduleId}/generate`, {
+    method: "POST",
+    body: JSON.stringify(body),
+  });
+}
+
+/**
+ * The Generate Occurrences dialog's picker: who may fill a position on the occurrences
+ * a schedule is about to generate. Same shape as `listEligiblePeople`, without the
+ * double-duty annotation (there is no occurrence yet).
+ */
+export function listScheduleEligiblePeople(
+  scheduleId: number,
+  positionId: number,
+): Promise<{ people: VolunteerEligiblePerson[] }> {
+  return request(`/schedules/${scheduleId}/eligible?positionId=${positionId}`);
+}
+
+// ─── The coordinator dashboard aggregate (#9711) ─────────────────────────────
+
+/**
+ * The occurrence context every dashboard row carries, so a row can be rendered
+ * and clicked without a second request (design §5.2).
+ */
+export interface VolunteerDashboardContext {
+  occurrenceId: number;
+  occurrenceDate: string | null;
+  start: string | null;
+  end: string | null;
+  occurrenceStatus: string;
+  eventId: number | null;
+  scheduleId: number | null;
+  scheduleName: string | null;
+  ministryId: number | null;
+  ministryName: string | null;
+  teamId: number | null;
+  teamName: string | null;
+}
+
+export type VolunteerDashboardGap = {
+  positionId: number;
+  positionName: string | null;
+  minCount: number;
+  liveCount: number;
+  gapCount: number;
+} & VolunteerDashboardContext;
+
+export type VolunteerDashboardPending = VolunteerAssignment &
+  VolunteerDashboardContext & {
+    /** True when the occurrence is inside `iVolunteerReminderLeadHours` of now. */
+    withinReminderWindow: boolean;
+  };
+
+export type VolunteerDashboardSwap = VolunteerSwap & Partial<VolunteerDashboardContext>;
+
+export type VolunteerDashboardOccurrence = VolunteerOccurrenceSummary & VolunteerDashboardContext;
+
+/** One ministry the caller may navigate to; `manageable` is false for a team leader's parent. */
+export interface VolunteerScopeMinistry {
+  id: number;
+  name: string;
+  description: string | null;
+  active: boolean;
+  manageable: boolean;
+}
+
+export interface VolunteerScopeTeam {
+  id: number;
+  name: string;
+  ministryId: number;
+  ministryName: string | null;
+  active: boolean;
+}
+
+export interface VolunteerDashboard {
+  days: number;
+  from: string;
+  to: string;
+  upcoming: VolunteerDashboardOccurrence[];
+  gaps: VolunteerDashboardGap[];
+  pendingResponses: VolunteerDashboardPending[];
+  proposedSwaps: VolunteerDashboardSwap[];
+  failedNotifications: number;
+  scope: {
+    isAdmin: boolean;
+    isManager: boolean;
+    ministries: VolunteerScopeMinistry[];
+    teams: VolunteerScopeTeam[];
+  };
+  limit: number;
+  capped: boolean;
+}
+
+/**
+ * The ONE call S1 makes. §5.2: "The dashboard makes exactly one API call and
+ * renders all five panels from it. Do not fan out to five endpoints."
+ */
+export function getDashboard(days: number): Promise<VolunteerDashboard> {
+  return request(`/dashboard?days=${days}`);
+}

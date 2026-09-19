@@ -127,8 +127,13 @@ CREATE TABLE `events_event` (
   `location_id` INT DEFAULT NULL,
   `primary_contact_person_id` INT DEFAULT NULL,
   `secondary_contact_person_id` INT DEFAULT NULL,
+  -- Volunteer v2 (#9713, D9): optional owning volunteer ministry. The FOREIGN KEY is added
+  -- further down, after volunteer_ministry_vmin is created — this table is declared long
+  -- before it and MySQL will not accept a forward reference.
+  `event_ministry_id` int(11) DEFAULT NULL,
   `event_url` text,
-  PRIMARY KEY  (`event_id`)
+  PRIMARY KEY  (`event_id`),
+  KEY `event_ministry_idx` (`event_ministry_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1;
 
 --
@@ -203,13 +208,27 @@ CREATE TABLE `calendars` (
   `accesstoken` VARCHAR(255),
   `foregroundColor` VARCHAR(6),
   `backgroundColor` VARCHAR(6),
+  -- The volunteer ministry this calendar belongs to, NULL for a church-wide
+  -- calendar. The foreign key to `volunteer_ministry_vmin` is added by the
+  -- Volunteer v2 schema, which creates that table (see
+  -- mysql/upgrade/7.8.0-member-portal-calendars.sql).
+  `ministry_id` INT NULL DEFAULT NULL,
   PRIMARY KEY (`calendar_id`),
-  UNIQUE KEY `accesstoken` (`accesstoken`)
+  UNIQUE KEY `accesstoken` (`accesstoken`),
+  KEY `calendars_ministry_idx` (`ministry_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 INSERT INTO `calendars` (`calendar_id`,`name`,`accesstoken`,`foregroundColor`,`backgroundColor`) VALUES
  (1,"Public Calendar",NULL,"FFFFFF","00AA00"),
  (2,"Private Calendar",NULL,"FFFFFF","0000AA");
+
+-- A new install shows "Public Calendar" in the Member Portal; every other
+-- calendar, and every system calendar, starts switched off (Member Portal,
+-- #9866). An *upgrade* writes no row here, so an existing church falls back to
+-- the code default of `aPortalCalendars` — an empty list, i.e. nothing is
+-- shared with members until an administrator says so.
+INSERT INTO `config_cfg` (`cfg_name`,`cfg_value`) VALUES
+ ('aPortalCalendars','[{"type":"calendar","id":1}]');
 
 # This is a join-table to link an event with a calendar
 CREATE TABLE `calendar_events` (
@@ -323,7 +342,9 @@ CREATE TABLE `group_grp` (
   `grp_hasSpecialProps` BOOLEAN NOT NULL default 0,
   `grp_active` BOOLEAN NOT NULL default 1,
   `grp_include_email_export` BOOLEAN NOT NULL default 1,
-  PRIMARY KEY  (`grp_ID`)
+  `grp_ministry_id` int(11) default NULL,
+  PRIMARY KEY  (`grp_ID`),
+  KEY `grp_ministry_idx` (`grp_ministry_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -874,6 +895,8 @@ CREATE TABLE `user_usr` (
   `usr_ManageGroups` tinyint(1) unsigned NOT NULL default '0',
   `usr_Finance` tinyint(1) unsigned NOT NULL default '0',
   `usr_ManageFundraisers` tinyint(1) unsigned NOT NULL default '0',
+  `usr_ManageMinistries` tinyint(1) unsigned NOT NULL default '0',
+  `usr_ManageMyMinistries` tinyint(1) unsigned NOT NULL default '0',
   `usr_Notes` tinyint(1) unsigned NOT NULL default '0',
   `usr_Admin` tinyint(1) unsigned NOT NULL default '0',
   `usr_SearchLimit` tinyint(4) default '10',
@@ -901,9 +924,13 @@ CREATE TABLE `user_usr` (
   `usr_TwoFactorAuthLastKeyTimestamp` INT NULL,
   `usr_TwoFactorAuthRecoveryCodes` TEXT NULL,
   `usr_TwoFactorAuthGracePeriodStart` TIMESTAMP NULL DEFAULT NULL,
+  `usr_LastPortalActivity` datetime default NULL,
+  `usr_PortalCalendarToken` VARCHAR(64) default NULL,
+  `usr_PortalCalendarSelection` TEXT default NULL,
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
-  UNIQUE KEY `usr_apiKey` (`usr_apiKey`)
+  UNIQUE KEY `usr_apiKey` (`usr_apiKey`),
+  UNIQUE KEY `usr_PortalCalendarToken` (`usr_PortalCalendarToken`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
@@ -1109,6 +1136,401 @@ CREATE TABLE `pledge_denominations_pdem` (
   KEY `pdem_groupkey_idx`           (`pdem_plg_GroupKey`),
   KEY `pdem_deposit_denom_idx`      (`plg_depID`, `pdem_denominationID`),
   UNIQUE KEY `pdem_groupkey_denom_uidx` (`pdem_plg_GroupKey`, `pdem_denominationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volunteer Management v2 (#9705) - mirrors src/mysql/upgrade/7.8.0-volunteer-v2-schema.sql
+-- Ordered so that every foreign-key target already exists.
+--
+
+--
+-- Table structure for table `volunteer_ministry_vmin`
+--
+
+CREATE TABLE `volunteer_ministry_vmin` (
+  `vmin_ID`               int(11)               NOT NULL AUTO_INCREMENT,
+  `vmin_Name`             varchar(100)          NOT NULL,
+  `vmin_Description`      varchar(255)                   DEFAULT NULL,
+  `vmin_Active`           tinyint(1) unsigned   NOT NULL DEFAULT 1,
+  `vmin_CreatedDate`      datetime              NOT NULL,
+  `vmin_CreatedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vmin_HelpWanted`       tinyint(1)            NOT NULL DEFAULT 0,
+  `vmin_HelpWantedText`   text                           DEFAULT NULL,
+  PRIMARY KEY (`vmin_ID`),
+  UNIQUE KEY `vmin_name_uidx`  (`vmin_Name`),
+  KEY `vmin_active_idx`        (`vmin_Active`),
+  KEY `vmin_created_by_idx`    (`vmin_CreatedBy_per_ID`),
+  CONSTRAINT `fk_vmin_created_by` FOREIGN KEY (`vmin_CreatedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_team_vtem`
+--
+
+CREATE TABLE `volunteer_team_vtem` (
+  `vtem_ID`          int(11)             NOT NULL AUTO_INCREMENT,
+  `vtem_vmin_ID`     int(11)             NOT NULL,
+  `vtem_Name`        varchar(100)        NOT NULL,
+  `vtem_Description` varchar(255)                 DEFAULT NULL,
+  `vtem_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
+  PRIMARY KEY (`vtem_ID`),
+  UNIQUE KEY `vtem_ministry_name_uidx` (`vtem_vmin_ID`, `vtem_Name`),
+  KEY `vtem_ministry_idx`              (`vtem_vmin_ID`),
+  CONSTRAINT `fk_vtem_ministry` FOREIGN KEY (`vtem_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_position_vpos`
+--
+
+CREATE TABLE `volunteer_position_vpos` (
+  `vpos_ID`          int(11)             NOT NULL AUTO_INCREMENT,
+  `vpos_vmin_ID`     int(11)             NOT NULL,
+  `vpos_vtem_ID`     int(11)             NOT NULL,
+  `vpos_Name`        varchar(100)        NOT NULL,
+  `vpos_Description` varchar(255)                 DEFAULT NULL,
+  `vpos_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
+  `vpos_Recruiting`  tinyint(1)          NOT NULL DEFAULT 0,
+  `vpos_SelfAssignable` tinyint(1)        NOT NULL DEFAULT 1,
+  `vpos_Order`       int(11)             NOT NULL DEFAULT 0,
+  PRIMARY KEY (`vpos_ID`),
+  UNIQUE KEY `vpos_ministry_team_name_uidx` (`vpos_vmin_ID`, `vpos_vtem_ID`, `vpos_Name`),
+  KEY `vpos_ministry_active_idx`            (`vpos_vmin_ID`, `vpos_Active`),
+  KEY `vpos_team_idx`                       (`vpos_vtem_ID`),
+  CONSTRAINT `fk_vpos_ministry` FOREIGN KEY (`vpos_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vpos_team` FOREIGN KEY (`vpos_vtem_ID`)
+      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_qualification_vqal`
+--
+
+CREATE TABLE `volunteer_qualification_vqal` (
+  `vqal_ID`               int(11)               NOT NULL AUTO_INCREMENT,
+  `vqal_per_ID`           mediumint(9) unsigned NOT NULL,
+  `vqal_vpos_ID`          int(11)               NOT NULL,
+  `vqal_Active`           tinyint(1) unsigned   NOT NULL DEFAULT 1,
+  `vqal_GrantedDate`      datetime              NOT NULL,
+  `vqal_GrantedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vqal_Notes`            varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vqal_ID`),
+  UNIQUE KEY `vqal_person_position_uidx` (`vqal_per_ID`, `vqal_vpos_ID`),
+  KEY `vqal_position_active_idx`         (`vqal_vpos_ID`, `vqal_Active`),
+  KEY `vqal_person_idx`                  (`vqal_per_ID`),
+  KEY `vqal_granted_by_idx`              (`vqal_GrantedBy_per_ID`),
+  CONSTRAINT `fk_vqal_person` FOREIGN KEY (`vqal_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vqal_position` FOREIGN KEY (`vqal_vpos_ID`)
+      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vqal_granted_by` FOREIGN KEY (`vqal_GrantedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_schedule_vsch`
+--
+
+CREATE TABLE `volunteer_schedule_vsch` (
+  `vsch_ID`                int(11)                                        NOT NULL AUTO_INCREMENT,
+  `vsch_vmin_ID`           int(11)                                        NOT NULL,
+  `vsch_vtem_ID`           int(11)                                        NOT NULL,
+  `vsch_Name`              varchar(100)                                   NOT NULL,
+  `vsch_LinkMode`          enum('event_type','standalone')                NOT NULL,
+  `vsch_event_type_id`     int(11)                                                 DEFAULT NULL,
+  `vsch_TitleFilter`       varchar(255)                                            DEFAULT NULL,
+  `vsch_RecurType`         enum('none','weekly','monthly','yearly')       NOT NULL DEFAULT 'none',
+  `vsch_RecurDOW`          enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday') DEFAULT NULL,
+  `vsch_RecurDOM`          tinyint(3)                                              DEFAULT NULL,
+  `vsch_StartTime`         time                                                    DEFAULT NULL,
+  `vsch_EndTime`           time                                                    DEFAULT NULL,
+  `vsch_WindowStart`       date                                           NOT NULL,
+  `vsch_WindowEnd`         date                                                    DEFAULT NULL,
+  `vsch_GenerateAheadDays` int(11)                                        NOT NULL DEFAULT 56,
+  `vsch_Active`            tinyint(1) unsigned                            NOT NULL DEFAULT 1,
+  `vsch_OneOff`            tinyint(1) unsigned                            NOT NULL DEFAULT 0,
+  PRIMARY KEY (`vsch_ID`),
+  KEY `vsch_ministry_idx`      (`vsch_vmin_ID`),
+  KEY `vsch_team_idx`          (`vsch_vtem_ID`),
+  KEY `vsch_type_idx`          (`vsch_event_type_id`),
+  KEY `vsch_active_window_idx` (`vsch_Active`, `vsch_WindowStart`),
+  CONSTRAINT `fk_vsch_ministry` FOREIGN KEY (`vsch_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vsch_team` FOREIGN KEY (`vsch_vtem_ID`)
+      REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vsch_event_type` FOREIGN KEY (`vsch_event_type_id`)
+      REFERENCES `event_types` (`type_id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_occurrence_vocc`
+--
+
+CREATE TABLE `volunteer_occurrence_vocc` (
+  `vocc_ID`             int(11)                          NOT NULL AUTO_INCREMENT,
+  `vocc_vsch_ID`        int(11)                          NOT NULL,
+  `vocc_event_id`       int(11)                                   DEFAULT NULL,
+  `vocc_OccurrenceDate` date                             NOT NULL,
+  `vocc_StartDateTime`  datetime                                  DEFAULT NULL,
+  `vocc_EndDateTime`    datetime                                  DEFAULT NULL,
+  `vocc_Status`         enum('scheduled','cancelled')    NOT NULL DEFAULT 'scheduled',
+  `vocc_Notes`          varchar(255)                              DEFAULT NULL,
+  `vocc_GeneratedDate`  datetime                         NOT NULL,
+  PRIMARY KEY (`vocc_ID`),
+  UNIQUE KEY `vocc_schedule_event_uidx` (`vocc_vsch_ID`, `vocc_event_id`),
+  UNIQUE KEY `vocc_schedule_start_uidx` (`vocc_vsch_ID`, `vocc_StartDateTime`),
+  KEY `vocc_date_idx`  (`vocc_OccurrenceDate`),
+  KEY `vocc_event_idx` (`vocc_event_id`),
+  CONSTRAINT `fk_vocc_schedule` FOREIGN KEY (`vocc_vsch_ID`)
+      REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vocc_event` FOREIGN KEY (`vocc_event_id`)
+      REFERENCES `events_event` (`event_id`) ON DELETE SET NULL
+  -- No CHECK "standalone rows must have a start time": once fk_vocc_event has
+  -- SET NULL a deleted event, a formerly linked row legitimately has neither an
+  -- event nor a start time (its date lives in vocc_OccurrenceDate), and MariaDB
+  -- refuses a CHECK on a column an FK action can change anyway. The generator
+  -- (VolunteerScheduleService, #9708) always sets vocc_StartDateTime for
+  -- standalone schedules; vocc_schedule_start_uidx deduplicates those rows.
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_requirement_vreq`
+--
+
+CREATE TABLE `volunteer_requirement_vreq` (
+  `vreq_ID`       int(11)      NOT NULL AUTO_INCREMENT,
+  `vreq_vsch_ID`  int(11)               DEFAULT NULL,
+  `vreq_vocc_ID`  int(11)               DEFAULT NULL,
+  `vreq_vpos_ID`  int(11)      NOT NULL,
+  `vreq_MinCount` int(11)      NOT NULL DEFAULT 1,
+  `vreq_MaxCount` int(11)               DEFAULT NULL,
+  `vreq_Notes`    varchar(255)          DEFAULT NULL,
+  PRIMARY KEY (`vreq_ID`),
+  UNIQUE KEY `vreq_schedule_position_uidx`   (`vreq_vsch_ID`, `vreq_vpos_ID`),
+  UNIQUE KEY `vreq_occurrence_position_uidx` (`vreq_vocc_ID`, `vreq_vpos_ID`),
+  KEY `vreq_position_idx`                    (`vreq_vpos_ID`),
+  CONSTRAINT `fk_vreq_schedule` FOREIGN KEY (`vreq_vsch_ID`)
+      REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vreq_occurrence` FOREIGN KEY (`vreq_vocc_ID`)
+      REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vreq_position` FOREIGN KEY (`vreq_vpos_ID`)
+      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE CASCADE,
+  -- Exactly one parent: a template requirement belongs to a schedule, an
+  -- override to an occurrence, never both and never neither. Enforced on
+  -- MariaDB 10.2.1+ / MySQL 8.0.16+; parsed and ignored by MySQL 5.7.
+  CONSTRAINT `vreq_one_parent_chk`
+      CHECK ((`vreq_vsch_ID` IS NULL) <> (`vreq_vocc_ID` IS NULL))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_assignment_vasg`
+--
+
+CREATE TABLE `volunteer_assignment_vasg` (
+  `vasg_ID`                int(11)               NOT NULL AUTO_INCREMENT,
+  `vasg_vocc_ID`           int(11)               NOT NULL,
+  `vasg_vpos_ID`           int(11)               NOT NULL,
+  `vasg_per_ID`            mediumint(9) unsigned NOT NULL,
+  `vasg_vreq_ID`           int(11)                        DEFAULT NULL,
+  `vasg_Status`            enum('pending','accepted','declined','cancelled','substituted','completed')
+                                                 NOT NULL DEFAULT 'pending',
+  `vasg_Source`            enum('coordinator','self_signup','substitute')
+                                                 NOT NULL DEFAULT 'coordinator',
+  `vasg_AssignedDate`      datetime              NOT NULL,
+  `vasg_AssignedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vasg_RespondedDate`     datetime                       DEFAULT NULL,
+  `vasg_Replaces_vasg_ID`  int(11)                        DEFAULT NULL,
+  `vasg_Notes`             varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vasg_ID`),
+  UNIQUE KEY `vasg_occ_pos_per_uidx` (`vasg_vocc_ID`, `vasg_vpos_ID`, `vasg_per_ID`),
+  KEY `vasg_occurrence_idx`     (`vasg_vocc_ID`, `vasg_Status`),
+  KEY `vasg_person_status_idx`  (`vasg_per_ID`, `vasg_Status`),
+  KEY `vasg_position_idx`       (`vasg_vpos_ID`),
+  KEY `vasg_requirement_idx`    (`vasg_vreq_ID`),
+  KEY `vasg_assigned_by_idx`    (`vasg_AssignedBy_per_ID`),
+  KEY `vasg_replaces_idx`       (`vasg_Replaces_vasg_ID`),
+  CONSTRAINT `fk_vasg_occurrence` FOREIGN KEY (`vasg_vocc_ID`)
+      REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vasg_position` FOREIGN KEY (`vasg_vpos_ID`)
+      REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE RESTRICT,
+  CONSTRAINT `fk_vasg_person` FOREIGN KEY (`vasg_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vasg_requirement` FOREIGN KEY (`vasg_vreq_ID`)
+      REFERENCES `volunteer_requirement_vreq` (`vreq_ID`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vasg_assigned_by` FOREIGN KEY (`vasg_AssignedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vasg_replaces` FOREIGN KEY (`vasg_Replaces_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_response_vrsp`
+--
+
+CREATE TABLE `volunteer_response_vrsp` (
+  `vrsp_ID`           int(11)               NOT NULL AUTO_INCREMENT,
+  `vrsp_vasg_ID`      int(11)               NOT NULL,
+  `vrsp_per_ID`       mediumint(9) unsigned NOT NULL,
+  `vrsp_Response`     enum('accepted','declined','cancelled','substitute_proposed','substitute_approved','substitute_rejected','substitute_withdrawn')
+                                            NOT NULL,
+  `vrsp_ResponseDate` datetime              NOT NULL,
+  `vrsp_Channel`      enum('web','coordinator') NOT NULL DEFAULT 'web',
+  `vrsp_Comment`      varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vrsp_ID`),
+  KEY `vrsp_assignment_idx` (`vrsp_vasg_ID`, `vrsp_ResponseDate`),
+  KEY `vrsp_person_idx`     (`vrsp_per_ID`),
+  CONSTRAINT `fk_vrsp_assignment` FOREIGN KEY (`vrsp_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vrsp_person` FOREIGN KEY (`vrsp_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_swap_vswp`
+--
+
+CREATE TABLE `volunteer_swap_vswp` (
+  `vswp_ID`               int(11)               NOT NULL AUTO_INCREMENT,
+  `vswp_vasg_ID`          int(11)               NOT NULL,
+  `vswp_ProposedBy_per_ID` mediumint(9) unsigned NOT NULL,
+  `vswp_Proposed_per_ID`  mediumint(9) unsigned NOT NULL,
+  `vswp_Status`           enum('proposed','approved','rejected','withdrawn') NOT NULL DEFAULT 'proposed',
+  `vswp_ProposedDate`     datetime              NOT NULL,
+  `vswp_DecidedDate`      datetime                       DEFAULT NULL,
+  `vswp_DecidedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
+  `vswp_Comment`          varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vswp_ID`),
+  KEY `vswp_assignment_status_idx` (`vswp_vasg_ID`, `vswp_Status`),
+  KEY `vswp_proposed_person_idx`   (`vswp_Proposed_per_ID`),
+  KEY `vswp_proposed_by_idx`       (`vswp_ProposedBy_per_ID`),
+  KEY `vswp_decided_by_idx`        (`vswp_DecidedBy_per_ID`),
+  CONSTRAINT `fk_vswp_assignment` FOREIGN KEY (`vswp_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vswp_proposed_by` FOREIGN KEY (`vswp_ProposedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vswp_proposed_person` FOREIGN KEY (`vswp_Proposed_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vswp_decided_by` FOREIGN KEY (`vswp_DecidedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_notification_vntf`
+--
+
+CREATE TABLE `volunteer_notification_vntf` (
+  `vntf_ID`              int(11)               NOT NULL AUTO_INCREMENT,
+  `vntf_Type`            enum('assignment','reminder','decline_alert','gap_alert','signup_confirm','swap_proposed','swap_resolved','help_offer')
+                                               NOT NULL,
+  `vntf_Channel`         enum('email')         NOT NULL DEFAULT 'email',
+  `vntf_per_ID`          mediumint(9) unsigned NOT NULL,
+  `vntf_vasg_ID`         int(11)                        DEFAULT NULL,
+  `vntf_vocc_ID`         int(11)                        DEFAULT NULL,
+  -- D19: opaque, type-specific context for a row that hangs off NEITHER an assignment
+  -- nor an occurrence. `help_offer` is the first such type — it is about a ministry and
+  -- a person, and the one fact the message needs ("were they already in the pool?") is
+  -- true only at the moment of the click and cannot be recomputed at delivery time.
+  -- JSON, read only by the type that wrote it.
+  `vntf_Context`         varchar(190)                   DEFAULT NULL,
+  `vntf_DedupeKey`       varchar(190)          NOT NULL,
+  `vntf_ScheduledFor`    datetime              NOT NULL,
+  `vntf_Status`          enum('pending','sent','failed','skipped') NOT NULL DEFAULT 'pending',
+  `vntf_Attempts`        int(11)               NOT NULL DEFAULT 0,
+  `vntf_LastAttemptDate` datetime                       DEFAULT NULL,
+  `vntf_SentDate`        datetime                       DEFAULT NULL,
+  `vntf_LastError`       varchar(255)                   DEFAULT NULL,
+  PRIMARY KEY (`vntf_ID`),
+  UNIQUE KEY `vntf_dedupe_uidx` (`vntf_DedupeKey`),
+  KEY `vntf_due_idx`            (`vntf_Status`, `vntf_ScheduledFor`),
+  KEY `vntf_assignment_idx`     (`vntf_vasg_ID`),
+  KEY `vntf_person_idx`         (`vntf_per_ID`),
+  KEY `vntf_occurrence_idx`     (`vntf_vocc_ID`),
+  CONSTRAINT `fk_vntf_person` FOREIGN KEY (`vntf_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vntf_assignment` FOREIGN KEY (`vntf_vasg_ID`)
+      REFERENCES `volunteer_assignment_vasg` (`vasg_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vntf_occurrence` FOREIGN KEY (`vntf_vocc_ID`)
+      REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Table structure for table `volunteer_scope_vscp`
+--
+
+CREATE TABLE `volunteer_scope_vscp` (
+  `vscp_ID`               int(11)                 NOT NULL AUTO_INCREMENT,
+  `vscp_per_ID`           mediumint(9) unsigned   NOT NULL,
+  `vscp_ScopeType`        enum('ministry','team') NOT NULL,
+  `vscp_ScopeId`          int(11)                 NOT NULL,
+  `vscp_GrantedDate`      datetime                NOT NULL,
+  `vscp_GrantedBy_per_ID` mediumint(9) unsigned            DEFAULT NULL,
+  PRIMARY KEY (`vscp_ID`),
+  UNIQUE KEY `vscp_person_scope_uidx` (`vscp_per_ID`, `vscp_ScopeType`, `vscp_ScopeId`),
+  KEY `vscp_person_idx`               (`vscp_per_ID`),
+  KEY `vscp_scope_idx`                (`vscp_ScopeType`, `vscp_ScopeId`),
+  KEY `vscp_granted_by_idx`           (`vscp_GrantedBy_per_ID`),
+  CONSTRAINT `fk_vscp_person` FOREIGN KEY (`vscp_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vscp_granted_by` FOREIGN KEY (`vscp_GrantedBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volunteer v2 (#9713): the events_event -> volunteer_ministry_vmin ownership link.
+--
+-- Declared here rather than inside the events_event CREATE TABLE because that table is
+-- created hundreds of lines before volunteer_ministry_vmin exists. ON DELETE SET NULL so
+-- deleting a ministry never deletes church events (design §2.16).
+--
+ALTER TABLE `events_event`
+    ADD CONSTRAINT `events_event_FK_ministry` FOREIGN KEY (`event_ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
+--
+-- Volunteer v2 (D19): the group_grp -> volunteer_ministry_vmin ownership link.
+--
+-- Declared here rather than inside the group_grp CREATE TABLE because that table is
+-- created long before volunteer_ministry_vmin exists. ON DELETE SET NULL so a cascade
+-- can never remove a church group; the ministry-deletion path removes the pool group
+-- explicitly instead (design D19).
+--
+ALTER TABLE `group_grp`
+    ADD CONSTRAINT `group_grp_FK_ministry` FOREIGN KEY (`grp_ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
+--
+-- Member Portal (#9866 / #9869): the calendars -> volunteer_ministry_vmin ownership link.
+--
+-- Declared here rather than inside the calendars CREATE TABLE because that table is created
+-- long before volunteer_ministry_vmin exists. ON DELETE SET NULL so a cascade can never remove
+-- a church calendar; the ministry-deletion path removes the ministry's own calendar explicitly
+-- instead (design §5.3).
+--
+ALTER TABLE `calendars`
+    ADD CONSTRAINT `calendars_ministry_fk` FOREIGN KEY (`ministry_id`)
+    REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
+CREATE TABLE `email_log_eml` (
+  `eml_ID`        int(10) unsigned      NOT NULL AUTO_INCREMENT,
+  `eml_per_ID`    mediumint(8) unsigned DEFAULT NULL,
+  `eml_fam_ID`    mediumint(8) unsigned DEFAULT NULL,
+  `eml_usr_ID`    mediumint(9) unsigned DEFAULT NULL,
+  `eml_Address`   varchar(255)          NOT NULL,
+  `eml_Kind`      varchar(50)           NOT NULL,
+  `eml_Subject`   varchar(255)          NOT NULL DEFAULT '',
+  `eml_Body`      longtext              DEFAULT NULL,
+  `eml_Status`    varchar(20)           NOT NULL,
+  `eml_Error`     text                  DEFAULT NULL,
+  `eml_MessageID` varchar(255)          DEFAULT NULL,
+  `eml_DateSent`  datetime              NOT NULL,
+  PRIMARY KEY (`eml_ID`),
+  KEY `idx_eml_per_ID`   (`eml_per_ID`),
+  KEY `idx_eml_fam_ID`   (`eml_fam_ID`),
+  KEY `idx_eml_DateSent` (`eml_DateSent`),
+  KEY `idx_eml_Status`   (`eml_Status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 update version_ver set ver_update_end = now();

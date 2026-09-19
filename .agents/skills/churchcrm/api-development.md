@@ -84,6 +84,22 @@ $group->post('/endpoint', function (Request $request, Response $response, array 
 - **Sanitizes messages automatically**: detects and masks password/token/host patterns
 - **Status passed as parameter**: `int $status` parameter (NOT via `response->withStatus(...)`)
 
+#### The redaction regex eats ordinary English words, and it always logs at ERROR <!-- learned: 2026-09-11 -->
+
+Two behaviours that bite when `renderErrorJSON()` is used for an *expected* refusal
+(a feature-flag or permission gate) rather than a genuine failure:
+
+1. Until #9737 lands, the sanitizer matches `user`, `host` and `token` as bare
+   substrings, so a perfectly innocent message is silently replaced by the generic
+   "An error occurred. Please contact your system administrator." #9737 narrows
+   the regex to credential-shaped values (`password=…`, DSNs, key material); on a
+   tree without it, check the message against `SlimUtils::sanitizeErrorMessage()`
+   before relying on it.
+2. It logs at **ERROR** level unconditionally. An expected 403 therefore shows up
+   as an ERROR line in `src/logs/*-app.log`. If the gate is routine, log your own
+   `info()` line with the useful context first and accept the duplicate, or use a
+   hand-built response — `FundraiserEnabledMiddleware` does the latter.
+
 ### Signature
 
 ```php
@@ -216,6 +232,29 @@ class Photo {
 // WRONG - App-level applies to all routes
 $app->add(new Cache('public', 3600));
 ```
+
+## Composer Send Takes Ids, Never Addresses <!-- learned: 2026-09-16 -->
+
+`POST /api/email/send` (`src/api/routes/email.php`, `EmailComposerService`) accepts
+`personIds[]` / `familyIds[]` plus `subject` / `body` and refuses a `recipients` array of raw
+addresses with 400. The service resolves each id to its current address, applies the
+do-not-email property, skips deceased people, inactive families, ids without an address and
+duplicate addresses, and returns `{sent[], skipped[{name, reason}], failed[{name, error}],
+counts}`; one `ComposerEmail` is sent per recipient. Reasons for the contract: the church
+SMTP relay must never mail arbitrary addresses, every send must be attributable to a record
+(the email history log of #9877 hangs off it), and the caller gets "who was not emailed"
+by name instead of silently dropped strings.
+
+The list endpoints the composer reads (`/cart/emails`, `/people/emails`,
+`/groups/{id}/emails`, `/groups/{id}/sundayschool/emails`) return a `recipients` array
+(`{personId, familyId, name, email}`) next to `emails` — build it with
+`PersonService::mailingRecipient($person, $email)`. A page that wants a one-record send
+adds `data-email-composer data-email-person-id="N" data-email-address="…"
+data-email-name="…"` (or `data-email-family-id`) to a button and loads
+`/skin/v2/email-composer.min.js`; gate both on
+`AuthenticationManager::getCurrentUser()->isEmailEnabled() && SystemConfig::isEmailEnabled()`.
+The generated `docs/openapi/generated/*.yaml` is committed by the master workflow — never
+commit it from a branch.
 
 ## Email Handling in APIs
 

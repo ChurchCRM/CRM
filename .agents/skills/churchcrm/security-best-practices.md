@@ -607,6 +607,76 @@ $person->setFirstName($input);
 
 ---
 
+## Admin Masquerade ("Login as User") <!-- learned: 2026-09-14 -->
+
+`ChurchCRM\Service\ImpersonationService` lets an administrator open a session as
+another user (issue #9843). Because it deliberately bypasses every credential
+check, treat it as privileged code and keep these invariants when touching it.
+
+**How the session is swapped.** `LocalAuthentication::prepareSuccessfulLoginOperations()`
+is split in two: `establishSessionForUser()` (the `bManageGroups` / `bFinance` /
+cart / deposit / timestamp session payload) and the login-only work around it —
+`session_regenerate_id(true)` plus the bookkeeping (`usr_LastLogin`,
+`usr_LoginCount`, `usr_FailedLogins`). A masquerade calls only the payload half,
+through `AuthenticationManager::establishSessionAsUser()`, so the impersonated
+account is never made to look as though the user signed in. Never inline the
+flag-setting lines into a new code path — reuse `establishSessionAsUser()` so
+login and masquerade cannot drift apart.
+
+**Do not rotate the session id on a masquerade transition.** Both transitions
+happen inside an already-authenticated session in the same browser, so there is
+no fixation window to close. `session_regenerate_id(true)` there destroys the
+session out from under any XHR the page being left behind still has in flight;
+those requests 401, and the global jQuery 401 handler in `CRMJSOM.js` redirects
+the window to the login page — so exiting a masquerade from a busy page could
+dump the administrator at `/session/begin` instead of the user's record.
+Rotating with `delete_old_session=false` is worse: the previous identity stays
+reachable on the old id until GC.
+
+**What is skipped:** password check, 2FA prompt, failed-login counters, the
+"last login" stamp, the update check and remote notification fetch that
+`AuthenticationManager::authenticate()` performs, and every plugin hook. (There
+are no login hooks in `Plugin\Hooks` today; if one is added it must stay out of
+this path.)
+
+**Session key.** `$_SESSION['impersonator'] = ['userId' => adminId, 'startedAt' => ..., 'stashed' => ...]`.
+Its presence is the single source of truth for "this session is a masquerade".
+**Both** header layouts read it: `Include/Header.php` (which also turns the user
+menu's Sign out into an exit action) and `Include/HeaderNotLoggedIn.php`. The
+second one matters because an EditSelf-exclusive target is bounced by
+`AuthMiddleware` / `PageInit` to `/external/limited-access`, which renders that
+layout — without the banner there the administrator has no visible way back. For
+the same reason `/user/impersonate/exit` is on `AuthMiddleware`'s
+`isAuthFlowExemptPath()` list, or the exit POST would itself be redirected. Administrator-only session values (the `systemUpdate*` release
+notice) are stashed on the record at start and restored on exit so they cannot
+leak into the impersonated view.
+
+**Gating the routes.** `POST /v2/user/{id}/impersonate` and
+`POST /v2/user/impersonate/exit` are session-only. That is *not* automatic:
+`AuthMiddleware` authenticates an `x-api-key` header on every MVC route outside
+`/api/public`, so any route that must be unreachable by token needs
+`SessionOnlyMiddleware` (403). Middleware order matters — Slim 4 runs them in
+reverse of the `->add()` sequence, and `NoActiveMasqueradeMiddleware` (409) must
+run *before* `AdminRoleAuthMiddleware`, otherwise a nested start is reported as a
+bare 403 from the impersonated (non-admin) session.
+
+**Never another administrator.** `startImpersonation()` answers 403 and the button
+is hidden when the target `isAdmin()`. Every consequential action during a
+masquerade is attributed to the impersonated account in the operational logs, so
+admin-to-admin impersonation would let one administrator act under a colleague's
+identity; there is nothing to learn from another administrator's view anyway
+(pr-reviewer finding on #9844).
+
+**Logging.** Both ends are written to the auth log with both user ids:
+`Masquerade started: admin {id} ({name}) as user {id} ({name})` and
+`Masquerade ended: admin {id} back from user {id}`. An exit whose stored
+administrator no longer exists — or is no longer an administrator — logs
+`Masquerade aborted: …`, calls `AuthenticationManager::endSession()` and sends
+the browser to the login page. Never add a code path that changes who the
+session belongs to without an auth-log line naming both ids.
+
+---
+
 ## TLS/SSL Verification
 
 ### Secure by Default
@@ -1152,6 +1222,50 @@ function createFund(Request $request, Response $response): Response
     // ...
 }
 ```
+
+#### The full type surface <!-- learned: 2026-09-12 -->
+
+Six types, declared as the value of each field in the map (#9821):
+
+| Type | Behaviour | Present-only? |
+|------|-----------|---------------|
+| `'text'` | `InputUtils::sanitizeText()` — trims, strips tags. Also the fallback for any unrecognised type string. | yes — never rejects |
+| `'html'` | `InputUtils::sanitizeHTML()` — HTMLPurifier, safe rich text. | yes — never rejects |
+| `'int'` | `filter_var(FILTER_VALIDATE_INT)` on the trimmed value; writes back the **int**. | **required** — absent ⇒ 400 |
+| `'date'` | Strict `YYYY-MM-DD` — `createFromFormat('!Y-m-d', …)` plus a `format()` round-trip equality check. Normalised to `Y-m-d`. | **required**; `'date?'` is optional |
+| `'datetime'` | Strict `YYYY-MM-DD HH:MM:SS`, or `YYYY-MM-DD HH:MM`; same round-trip check. Normalised to `Y-m-d H:i:s`. | **required**; `'datetime?'` is optional |
+| `'enum:a,b,c'` | Exact, **case-sensitive** `in_array(..., true)` against the comma-separated list. | **required**; `'enum?:a,b,c'` is optional |
+
+```php
+$group->post('/repeat', 'createRepeatEvents')->add(new InputSanitizationMiddleware([
+    'Title'      => 'text',
+    'RecurType'  => 'enum?:weekly,monthly,yearly',
+    'RangeStart' => 'date?',
+    'RangeEnd'   => 'date?',
+]))->add(new AddEventsRoleAuthMiddleware());
+```
+
+Rules worth knowing before you pick a type:
+
+- **Every rejection is `400` with the canonical `SlimUtils::renderErrorJSON()` body,
+  `{"success": false, "message": "<message naming the field>"}`** (since #9821; the class used to
+  emit its own `{"error": …}` shape). Do not add another shape here — #9737 is unifying the API on
+  this one.
+- **The `?` optional form** (`'date?'`, `'datetime?'`, `'enum?:a,b,c'`) treats absent, `null` and
+  `''` as "not supplied" and leaves the value **exactly as it is** — an absent field stays absent,
+  it is never set to `''`. That is what lets a migrated handler keep its own
+  "Missing required field" message and its own defaulting. `'int'` has no optional form, which is
+  why it has a single caller.
+- **Prefer the optional form when migrating an existing hand-rolled check**, so the handler's
+  required-field error keeps firing with its original wording.
+- **No trimming** for `date` / `datetime` / `enum` — `" 2026-01-01"` is rejected. (`int` does trim.)
+- **Dates are naive wall-clock** in `sTimeZone` — the middleware attaches and converts no timezone.
+  See `timezone-handling.md`.
+- **`enum` splits on `,` only**, so a value cannot contain a comma; an empty list (`'enum:'`,
+  `'enum:a,,b'`) throws `\InvalidArgumentException` at route-registration time.
+- Validate closed value sets and dates **here**, not in the handler: the route table then shows the
+  contract without opening the handler, and there is one failure convention instead of four
+  (`events.php` alone used to have a strict check, a `strtotime()` check and an inline `in_array`).
 
 **Middleware order (LIFO rule):** In Slim 4, `->add()` is Last-In-First-Out —
 the **last** `->add()` call is outermost and runs **first**. Therefore:

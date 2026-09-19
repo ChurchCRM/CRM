@@ -1,0 +1,111 @@
+{#
+  Member Portal — the page shell every portal template extends.
+
+  Blocks a theme may override: head_extra, header, nav, hero, content, sidebar,
+  footer, scripts_extra. The full contract, with every variable and its shape,
+  is documented in docs/portal-templates.md.
+#}
+<!DOCTYPE html>
+{# portal.locale is a POSIX locale (en_US); an HTML lang attribute wants BCP 47. #}
+<html lang="{{ portal.locale|replace({'_': '-'}) }}"{% if portal.isRTL %} dir="rtl"{% endif %}{% if portal.colorMode == 'dark' %} data-bs-theme="dark"{% endif %}>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>{{ pageTitle|default(gettext('Member Portal')) }} · {{ church.name|default('ChurchCRM') }}</title>
+    <link rel="icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
+
+    {# Core ChurchCRM bundle: Tabler, Bootstrap 5, jQuery and the shared helpers. #}
+    {% if portal.isRTL %}
+    <link rel="stylesheet" href="{{ asset('/skin/v2/churchcrm-rtl.min.css') }}">
+    {% else %}
+    <link rel="stylesheet" href="{{ asset('/skin/v2/churchcrm.min.css') }}">
+    {% endif %}
+    <script src="{{ asset('/skin/v2/churchcrm.min.js') }}"></script>
+    <script src="{{ asset('/skin/external/moment/moment.min.js') }}"></script>
+
+    {{ portal.pluginHead }}
+
+    {# Portal styling, then the active theme's own stylesheet on top of it. #}
+    <link rel="stylesheet" href="{{ asset('/skin/v2/portal.min.css') }}">
+    {% if portal.hasThemeCss %}
+    <link rel="stylesheet" href="{{ theme_asset('theme.css') }}">
+    {% endif %}
+
+    {% if portal.colorMode == 'auto' %}
+    <script nonce="{{ nonce() }}">
+        // Follow the operating system before first paint, so the page never
+        // flashes the wrong theme.
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+        }
+    </script>
+    {% endif %}
+
+    {% block head_extra %}{% endblock %}
+</head>
+{# `portal-body-with-bar` makes room for a bar fixed to the top of the viewport.
+   A staff login used to get one — "You are viewing the Member Portal as
+   yourself." — but the account menu's "Admin Console" entry says the same thing
+   without spending a band of every page on it, so the only bar left is the
+   masquerade banner. #}
+<body class="portal-body{% if portal.impersonating %} portal-body-with-bar{% endif %}">
+
+{% if portal.impersonating %}
+{# The masquerade banner (#9843), rendered by Include/ImpersonationBanner.php —
+   the same include both admin header layouts use, so an administrator sees the
+   same sentence and the same way back wherever they are. A pre-rendered
+   fragment: print it without |escape and without |raw. A theme overriding this
+   layout MUST keep emitting it, or an administrator acting as a member has no
+   visible way out. #}
+{{ portal.impersonationBanner }}
+{% endif %}
+
+<div class="portal-shell">
+    {# The toast container. It is `position: fixed`, so it is outside the flow
+       wherever it sits; it lives here, ahead of the page, because a live region
+       belongs early in the document. A theme that replaces this layout must
+       keep the include — see partials/flash.html.twig. #}
+    {% include 'partials/flash.html.twig' %}
+
+    {% block header %}{% include 'partials/header.html.twig' %}{% endblock %}
+    {% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
+    {% block hero %}{% endblock %}
+
+    <main class="portal-main" id="portal-main">
+        <div class="portal-container">
+            <div class="portal-layout">
+                <div class="portal-content">{% block content %}{% endblock %}</div>
+                {% block sidebar %}{% endblock %}
+            </div>
+        </div>
+    </main>
+
+    {% block footer %}{% include 'partials/footer.html.twig' %}{% endblock %}
+</div>
+
+<script nonce="{{ nonce() }}">
+    window.CRM = Object.assign(window.CRM || {}, {{ portal.bootstrapJson }});
+</script>
+{# Confirmations and prompts. Not part of the core bundle — the admin shell loads
+   it from Include/Footer.php, and every portal page that asks a member "are you
+   sure?" needs the same dialog (design §1, "bootbox — reuse"). #}
+<script src="{{ asset('/skin/external/bootbox/bootbox.min.js') }}"></script>
+<script src="{{ asset('/skin/external/i18next/i18next.min.js') }}"></script>
+<script src="{{ asset('/skin/v2/locale-loader.min.js') }}"></script>
+<script nonce="{{ nonce() }}">
+    (function () {
+        var localeConfig = {{ portal.localeConfigJson }};
+        if (window.CRM && window.CRM.loadLocaleFiles) {
+            window.CRM.loadLocaleFiles(localeConfig);
+        }
+    })();
+</script>
+<script src="{{ asset('/skin/v2/portal.min.js') }}"></script>
+{% if portal.hasThemeJs %}
+<script src="{{ theme_asset('theme.js') }}"></script>
+{% endif %}
+
+{{ portal.pluginFooter }}
+{% block scripts_extra %}{% endblock %}
+</body>
+</html>

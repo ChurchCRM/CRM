@@ -1,9 +1,11 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\EventQuery;
 use ChurchCRM\model\ChurchCRM\Base\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
@@ -15,11 +17,15 @@ use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\EventService;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsOrMinistryRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -43,23 +49,32 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
     $group->get('/{id}/audience', 'getEventAudience')->add(new EventsMiddleware());
     $group->get('/{id}/roster', 'getEventRoster')->add(new EventsMiddleware());
 
-    $group->post('/quick-create', 'quickCreateEvent')->add(new AddEventsRoleAuthMiddleware());
+    $group->post('/quick-create', 'quickCreateEvent')->add(new InputSanitizationMiddleware(['date' => 'date?']))->add(new AddEventsRoleAuthMiddleware());
     $group->post('/generate-recurring', 'generateRecurringEvents')->add(new AddEventsRoleAuthMiddleware());
-    $group->post('/', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
-    $group->post('', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
-    $group->post('/repeat', 'createRepeatEvents')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
-    $group->post('/{id}', 'updateEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
-    $group->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+    $group->post('/', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsOrMinistryRoleAuthMiddleware());
+    $group->post('', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsOrMinistryRoleAuthMiddleware());
+    $group->post('/repeat', 'createRepeatEvents')->add(new InputSanitizationMiddleware([
+        'Title'      => 'text',
+        'Desc'       => 'html',
+        'Text'       => 'html',
+        // Declared optional so an absent field still reaches the handler's own
+        // "Missing required field" check with its existing message (#9821).
+        'RecurType'  => 'enum?:weekly,monthly,yearly',
+        'RangeStart' => 'date?',
+        'RangeEnd'   => 'date?',
+    ]))->add(new AddEventsRoleAuthMiddleware());
+    $group->post('/{id}', 'updateEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsOrMinistryRoleAuthMiddleware())->add(new EventsMiddleware());
+    $group->post('/{id}/time', 'setEventTime')->add(new AddEventsOrMinistryRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/checkin', 'checkinPerson')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/checkout', 'checkoutPerson')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/checkin-all', 'checkinAll')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/checkout-all', 'checkoutAll')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/checkin-people', 'checkinPeople')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 
-    $group->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+    $group->delete('/{id}', 'deleteEvent')->add(new AddEventsOrMinistryRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->delete('/{id}/attendance/{personId}', 'deleteAttendance')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 
-    $group->post('/{id}/status', 'setEventStatus')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+    $group->post('/{id}/status', 'setEventStatus')->add(new AddEventsOrMinistryRoleAuthMiddleware())->add(new EventsMiddleware());
 
     // Audit endpoints — find and clean up "stuck" events
     $group->get('/audit/stuck', 'getStuckEvents');
@@ -172,7 +187,9 @@ function getEventTypes(Request $request, Response $response, array $args): Respo
  *         @OA\Property(property="Id", type="integer"),
  *         @OA\Property(property="Title", type="string"),
  *         @OA\Property(property="Start", type="string", format="date-time"),
- *         @OA\Property(property="End", type="string", format="date-time")
+ *         @OA\Property(property="End", type="string", format="date-time"),
+ *         @OA\Property(property="MinistryId", type="integer", nullable=true, description="Owning volunteer ministry (Volunteer v2), or null"),
+ *         @OA\Property(property="MinistryName", type="string", nullable=true, description="Name of the owning volunteer ministry, or null")
  *     )),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=404, description="Event not found")
@@ -195,6 +212,18 @@ function getEvent(Request $request, Response $response, $args): Response
 
     $audience = EventAudienceQuery::create()->filterByEventId($eventId)->findOne();
     $data['LinkedGroupId'] = $audience ? (int) $audience->getGroupId() : 0;
+
+    // Volunteer v2 (#9713, §2.16 item 8). `MinistryId` is already in the Event JSON as a
+    // raw column; the name is resolved here so the editor and the event view do not each
+    // have to fetch the ministry list to render one label. Both stay null when the event
+    // has no ministry owner — never 0, because 0 is not a ministry.
+    $ministryId = $Event->getMinistryId() === null ? null : (int) $Event->getMinistryId();
+    $data['MinistryId'] = $ministryId;
+    $data['MinistryName'] = null;
+    if ($ministryId !== null) {
+        $ministry = VolunteerMinistryQuery::create()->findPk($ministryId);
+        $data['MinistryName'] = $ministry === null ? null : $ministry->getName();
+    }
 
     $counts = [];
     foreach (EventCountsQuery::create()->filterByEvtcntEventid($eventId)->orderByEvtcntCountid()->find() as $ec) {
@@ -226,10 +255,227 @@ function getEvent(Request $request, Response $response, $args): Response
     return SlimUtils::renderJSON($response, $data);
 }
 
+// ─── Volunteer v2: per-row event authorization (#9713, design §4.6, §2.16) ───────────
+//
+// There is no per-row event authorization in ChurchCRM. D9 adds exactly one rule, and these
+// three functions are its entire implementation — nothing else may re-derive it.
+//
+//     allowed = canManageEvents()                                  // the global right, unchanged
+//            || (rollout on && event.MinistryId !== null
+//                           && canManageMinistry(user, event.MinistryId))
+//
+// `AddEventsOrMinistryRoleAuthMiddleware` has already let the caller in the door (§4.5 layer
+// one); these decide the row (§4.5 layer three). They run BEFORE the event is saved, so a
+// refused create leaves no row behind.
+
+/**
+ * Per-request memo. `VolunteerAuthorizationService` caches the caller's scope rows, so the
+ * five handlers must share one instance rather than each triggering the same query.
+ */
+function eventVolunteerAuthz(): VolunteerAuthorizationService
+{
+    static $authz = null;
+
+    if ($authz === null) {
+        $authz = new VolunteerAuthorizationService();
+    }
+
+    return $authz;
+}
+
+/**
+ * The ministry id a write payload asks for.
+ *
+ * `''`, `0` and `null` all mean "no ministry" — the editor's select uses `0` for its
+ * "No ministry" option, the API accepts an explicit `null`, and neither may be confused
+ * with "the key was absent", which means "leave the current value alone".
+ *
+ * @return array{0: bool, 1: ?int} [the key was present, the requested ministry id]
+ */
+function eventMinistryFromInput(array $input): array
+{
+    if (!array_key_exists('MinistryId', $input)) {
+        return [false, null];
+    }
+
+    $raw = $input['MinistryId'];
+    if ($raw === null || $raw === '' || (int) $raw === 0) {
+        return [true, null];
+    }
+
+    return [true, (int) $raw];
+}
+
+/**
+ * May this caller write an event row whose ministry is `$eventMinistryId`?
+ *
+ * `null` (no ministry owner) means the event behaves exactly as it always has: only the
+ * global AddEvent right opens it.
+ */
+function eventWriteAllowed(User $user, ?int $eventMinistryId): bool
+{
+    if ($user->canManageEvents()) {
+        return true;
+    }
+
+    if (!User::isVolunteerV2Enabled() || $eventMinistryId === null) {
+        return false;
+    }
+
+    return eventVolunteerAuthz()->canManageMinistry($user, $eventMinistryId);
+}
+
+/**
+ * May this caller pin an event to `$calendar`?
+ *
+ * The global Add Events right opens every calendar, as it always has. A ministry
+ * coordinator who does NOT hold it may pin to exactly one kind of calendar: one their
+ * own ministry owns (`calendars.ministry_id`, Member Portal design §5.3). That is the
+ * whole of the exception — the same shape the Group hooks got for the ministry's pool
+ * (D19), and the reason every ministry is created with a calendar of its own.
+ *
+ * A coordinator therefore cannot quietly write onto "Public Calendar", which is what a
+ * church would notice; and "pin to my own ministry's calendar" needs no new permission,
+ * which is what makes a coordinator useful without Add Events.
+ */
+function eventCalendarPinAllowed(User $user, Calendar $calendar): bool
+{
+    if ($user->canManageEvents()) {
+        return true;
+    }
+
+    if (!User::isVolunteerV2Enabled()) {
+        return false;
+    }
+
+    $ministryId = $calendar->getMinistryId();
+    if ($ministryId === null) {
+        return false;
+    }
+
+    return eventVolunteerAuthz()->canManageMinistry($user, (int) $ministryId);
+}
+
+/**
+ * Guard for the pinned-calendar list on a create or an update. Returns a 403 naming the
+ * calendar that was refused, or null when every one of them is allowed.
+ *
+ * Runs BEFORE the event is saved, like `eventWriteGuard()`, so a refused pin leaves no row
+ * and no half-pinned event behind.
+ *
+ * @param iterable<Calendar> $calendars
+ */
+function eventCalendarPinGuard(Response $response, iterable $calendars): ?Response
+{
+    $user = AuthenticationManager::getCurrentUser();
+
+    foreach ($calendars as $calendar) {
+        if (!eventCalendarPinAllowed($user, $calendar)) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                sprintf(
+                    /* Translators: %s is the name of a calendar the user may not write to. */
+                    gettext('Not authorized to pin events to the calendar "%s"'),
+                    (string) $calendar->getName()
+                ),
+                [],
+                403
+            );
+        }
+    }
+
+    return null;
+}
+
+/**
+ * Guard for the four handlers that write an EXISTING event (update, time, status, delete).
+ * Returns a 403 response when the caller may not touch this row, null when they may.
+ */
+function eventWriteGuard(Request $request, Response $response, Event $event): ?Response
+{
+    $ministryId = $event->getMinistryId() === null ? null : (int) $event->getMinistryId();
+
+    if (eventWriteAllowed(AuthenticationManager::getCurrentUser(), $ministryId)) {
+        return null;
+    }
+
+    return SlimUtils::renderErrorJSON(
+        $response,
+        gettext('Not authorized to modify this event'),
+        [],
+        403
+    );
+}
+
+/**
+ * Decide what `event_ministry_id` a write should end up with, and whether the caller is
+ * allowed to put it there (§2.16 item 9).
+ *
+ * Setting a ministry requires authority over the NEW value; replacing or clearing one
+ * requires authority over the CURRENT value as well. Clearing to "no ministry" additionally
+ * requires the global AddEvent right, because nobody has ministry authority over an event
+ * that has no ministry — a coordinator clearing the field would put the event permanently
+ * out of their own reach, and §4.6 asks for authority over the value being set.
+ *
+ * Returns the id to store, or a Response to return instead (400 unknown ministry, 403 not
+ * authorized for it).
+ */
+function resolveEventMinistryId(Response $response, array $input, ?int $currentMinistryId): int|Response|null
+{
+    [$present, $requested] = eventMinistryFromInput($input);
+
+    if (!$present || $requested === $currentMinistryId) {
+        return $currentMinistryId;
+    }
+
+    $user = AuthenticationManager::getCurrentUser();
+    $authz = eventVolunteerAuthz();
+
+    if ($requested !== null) {
+        if (VolunteerMinistryQuery::create()->findPk($requested) === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Unknown volunteer ministry'), [], 400);
+        }
+        if (!$authz->canManageMinistry($user, $requested)) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Not authorized to assign events to that volunteer ministry'),
+                [],
+                403
+            );
+        }
+    } elseif (!$user->canManageEvents()) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Not authorized to remove the volunteer ministry from this event'),
+            [],
+            403
+        );
+    }
+
+    if ($currentMinistryId !== null && !$authz->canManageMinistry($user, $currentMinistryId)) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Not authorized to change the volunteer ministry of this event'),
+            [],
+            403
+        );
+    }
+
+    return $requested;
+}
+
 /**
  * Shared helper: apply LinkedGroupId + AttendanceCounts[] from the unified
  * editor payload to an existing Event row. Idempotent — call after each
  * newEvent / updateEvent save.
+ *
+ * `MinistryId` is deliberately NOT handled here even though it arrives in the same payload:
+ * it is a column on `events_event` and it carries an authorization decision, so it is
+ * resolved by `resolveEventMinistryId()` and written BEFORE the row is saved. A refused
+ * ministry must leave no event behind, which a post-save hook could not guarantee. See the
+ * explicit `setMinistryId()` calls in newEvent/updateEvent — and note that `updateEvent`'s
+ * `fromArray($input)` would otherwise copy `MinistryId` straight through unchecked (§2.16
+ * item 7), which is exactly why that call is followed by an authoritative overwrite.
  */
 function applyEventExtendedFields(Event $event, array $input): void
 {
@@ -388,19 +634,37 @@ function getEventAudience(Request $request, Response $response, array $args): Re
  *         @OA\Property(property="Start", type="string", format="date-time", example="2026-04-05T09:00:00"),
  *         @OA\Property(property="End", type="string", format="date-time", example="2026-04-05T11:00:00"),
  *         @OA\Property(property="Text", type="string", nullable=true, description="Rich text body (HTML allowed)"),
- *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), example={1})
+ *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), example={1}),
+ *         @OA\Property(property="MinistryId", type="integer", nullable=true, description="Volunteer v2: owning volunteer ministry. Only an administrator, a global volunteer manager or a coordinator of that ministry may set it. A volunteer coordinator without the global AddEvent right MUST supply one they manage.")
  *     )),
  *     @OA\Response(response=200, description="Event created",
  *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
  *     ),
- *     @OA\Response(response=400, description="Invalid event type or calendar ID"),
+ *     @OA\Response(response=400, description="Invalid event type, calendar ID or volunteer ministry"),
  *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="AddEvents role required")
+ *     @OA\Response(response=403, description="AddEvents role required, or the caller may not assign the event to that volunteer ministry")
  * )
  */
 function newEvent(Request $request, Response $response, array $args): Response
 {
     $input = $request->getParsedBody();
+
+    // Volunteer v2 (#9713, §4.6): the role middleware let this caller in either because they
+    // hold the global AddEvent right or because they coordinate a ministry. A coordinator may
+    // only create events that carry one of THEIR ministries, so the ownership decision is made
+    // — and refused — before any row is written.
+    $ministryId = resolveEventMinistryId($response, $input, null);
+    if ($ministryId instanceof Response) {
+        return $ministryId;
+    }
+    if (!eventWriteAllowed(AuthenticationManager::getCurrentUser(), $ministryId)) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Not authorized to create an event without a volunteer ministry you manage'),
+            [],
+            403
+        );
+    }
 
     //fetch all related event objects before committing this event.
     $type = EventTypeQuery::create()
@@ -414,6 +678,13 @@ function newEvent(Request $request, Response $response, array $args): Response
         ->find();
     if (count($calendars) !== count($input['PinnedCalendars'])) {
         return SlimUtils::renderErrorJSON($response, gettext('invalid calendar pinning'), [], 400);
+    }
+
+    // Existence was the only check this had. A coordinator without Add Events may pin to
+    // their own ministry's calendar and to nothing else (§5.3).
+    $pinRefusal = eventCalendarPinGuard($response, $calendars);
+    if ($pinRefusal !== null) {
+        return $pinRefusal;
     }
 
     // we have event type and pined calendars.  now create the event.
@@ -430,6 +701,7 @@ function newEvent(Request $request, Response $response, array $args): Response
     if (array_key_exists('InActive', $input)) {
         $event->setInActive((int) $input['InActive']);
     }
+    $event->setMinistryId($ministryId);
     $event->setCalendars($calendars);
     $event->save();
     HookManager::doAction(Hooks::EVENT_CREATED, $event);
@@ -493,21 +765,11 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
         }
     }
 
-    $validRecurTypes = ['weekly', 'monthly', 'yearly'];
+    // RecurType (enum) and RangeStart / RangeEnd (strict YYYY-MM-DD, no silent
+    // roll-over to "now") are validated and normalised declaratively by the
+    // InputSanitizationMiddleware on this route — see the route table above.
     $recurType = $input['RecurType'];
-    if (!in_array($recurType, $validRecurTypes, true)) {
-        return SlimUtils::renderErrorJSON($response, gettext('invalid recurrence type'), [], 400);
-    }
 
-    // Strict YYYY-MM-DD date validation — passing an empty/garbage string to
-    // DateTime defaults to "now", which would silently produce events outside
-    // the caller's intended range.
-    foreach (['RangeStart', 'RangeEnd'] as $dateField) {
-        $parsed = \DateTimeImmutable::createFromFormat('!Y-m-d', $input[$dateField]);
-        if ($parsed === false || $parsed->format('Y-m-d') !== $input[$dateField]) {
-            return SlimUtils::renderErrorJSON($response, sprintf(gettext('Invalid date for %s — expected YYYY-MM-DD'), $dateField), [], 400);
-        }
-    }
     if ($input['RangeEnd'] < $input['RangeStart']) {
         return SlimUtils::renderErrorJSON($response, gettext('RangeEnd must be on or after RangeStart'), [], 400);
     }
@@ -562,13 +824,15 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
  *         @OA\Property(property="Start", type="string", format="date-time"),
  *         @OA\Property(property="End", type="string", format="date-time"),
  *         @OA\Property(property="Text", type="string", nullable=true),
- *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"))
+ *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer")),
+ *         @OA\Property(property="MinistryId", type="integer", nullable=true, description="Volunteer v2: owning volunteer ministry. Omit the key to leave it unchanged; null or 0 clears it (global AddEvent right required to clear).")
  *     )),
  *     @OA\Response(response=200, description="Event updated",
  *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
  *     ),
+ *     @OA\Response(response=400, description="Unknown volunteer ministry"),
  *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="AddEvents role required"),
+ *     @OA\Response(response=403, description="AddEvents role required, or the event belongs to a volunteer ministry the caller does not manage"),
  *     @OA\Response(response=404, description="Event not found")
  * )
  */
@@ -579,14 +843,37 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     $Event = $request->getAttribute('event');
     $id = $Event->getId();
 
+    $guard = eventWriteGuard($request, $response, $Event);
+    if ($guard !== null) {
+        return $guard;
+    }
+
+    $currentMinistryId = $Event->getMinistryId() === null ? null : (int) $Event->getMinistryId();
+    $ministryId = resolveEventMinistryId($response, $input, $currentMinistryId);
+    if ($ministryId instanceof Response) {
+        return $ministryId;
+    }
+
     // fromArray copies matching property names (Title, Desc, Start, End,
     // Text, InActive) onto the Event. LinkedGroupId + AttendanceCounts
     // aren't Event columns; applyEventExtendedFields handles those.
     $Event->fromArray($input);
     $Event->setId($id);
+    // MinistryId IS an Event column, so fromArray() above has just copied whatever the
+    // payload said with no authorization at all (§2.16 item 7). Overwrite it with the value
+    // resolveEventMinistryId() authorized — this line is the whole reason that is safe.
+    $Event->setMinistryId($ministryId);
     $PinnedCalendars = CalendarQuery::create()
         ->filterById($input['PinnedCalendars'], Criteria::IN)
         ->find();
+
+    // Same rule as newEvent(): the pins a caller may set are the calendars they may write
+    // to (§5.3). Checked before the save, so a refused pin leaves the event as it was.
+    $pinRefusal = eventCalendarPinGuard($response, $PinnedCalendars);
+    if ($pinRefusal !== null) {
+        return $pinRefusal;
+    }
+
     $Event->setCalendars($PinnedCalendars);
 
     $Event->save();
@@ -621,6 +908,12 @@ function setEventTime(Request $request, Response $response, array $args): Respon
 {
     $input = $request->getParsedBody();
     $event = $request->getAttribute('event');
+
+    $guard = eventWriteGuard($request, $response, $event);
+    if ($guard !== null) {
+        return $guard;
+    }
+
     $event->setStart($input['startTime']);
     $event->setEnd($input['endTime']);
     $event->save();
@@ -648,6 +941,11 @@ function deleteEvent(Request $request, Response $response, array $args): Respons
 {
     $event = $request->getAttribute('event');
     $eventId = (int) $event->getId();
+
+    $guard = eventWriteGuard($request, $response, $event);
+    if ($guard !== null) {
+        return $guard;
+    }
 
     // Block if event is still open and people are currently checked in.
     if (!$event->getInActive()) {
@@ -706,6 +1004,12 @@ function setEventStatus(Request $request, Response $response, array $args): Resp
 
     /** @var Event $event */
     $event = $request->getAttribute('event');
+
+    $guard = eventWriteGuard($request, $response, $event);
+    if ($guard !== null) {
+        return $guard;
+    }
+
     $event->setInActive($active ? 0 : 1);
     $event->save();
 
@@ -732,7 +1036,7 @@ function setEventStatus(Request $request, Response $response, array $args): Resp
  *             @OA\Property(property="title", type="string", example="Youth Sunday School — Apr 5, 2026")
  *         )
  *     ),
- *     @OA\Response(response=400, description="Invalid event type ID"),
+ *     @OA\Response(response=400, description="Invalid event type ID, or a date that is not a valid YYYY-MM-DD"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="AddEvents role required")
  * )
@@ -743,14 +1047,12 @@ function quickCreateEvent(Request $request, Response $response, array $args): Re
     $eventTypeId = InputUtils::filterInt($input['eventTypeId'] ?? 0);
     $groupId = InputUtils::filterInt($input['groupId'] ?? 0);
 
-    // Validate date input (defaults to today)
-    $date = date('Y-m-d');
-    if (!empty($input['date'])) {
-        $parsedDate = \DateTimeImmutable::createFromFormat('!Y-m-d', (string) $input['date']);
-        if ($parsedDate === false || $parsedDate->format('Y-m-d') !== (string) $input['date']) {
-            return SlimUtils::renderErrorJSON($response, gettext('Invalid date; expected format YYYY-MM-DD'), [], 400);
-        }
-        $date = $parsedDate->format('Y-m-d');
+    // 'date' is an optional, strictly validated YYYY-MM-DD field: the
+    // InputSanitizationMiddleware on this route rejects anything else and
+    // leaves an unsupplied value untouched, so it only has to default here.
+    $date = (string) ($input['date'] ?? '');
+    if ($date === '') {
+        $date = date('Y-m-d');
     }
 
     $eventType = null;

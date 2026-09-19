@@ -1,0 +1,206 @@
+{% extends "layout.html.twig" %}
+
+{#
+  The Member Portal calendar (MP5, #9866).
+
+  Read-only: FullCalendar draws the months, a click opens the detail panel
+  below the grid, and nothing on this page can change an event. The events
+  themselves arrive from GET /api/portal/calendar/events; the legend is
+  server-rendered so the colours mean something before the first fetch lands.
+
+  Variables: `calendars` ({name, color, isMine} for each calendar switched on —
+  `isMine` is true for the calendar of a ministry whose team this member leads,
+  #9869), `hasCalendars`, `calendarConfigJson`. A theme overriding this page must
+  keep the ids `portal-calendar` and `portal-calendar-detail`, which the bundle
+  looks for, and should keep emitting `calendarConfigJson`.
+
+  The Subscribe dialog (design §5.3, "Subscribing") adds a second set of ids
+  the bundle looks for: `portal-calendar-subscribe` (the button),
+  `portal-calendar-subscribe-dialog`, `-choices`, `-save`, `-cancel`, `-close`,
+  `-result`, `-url`, `-copy`, `-open`, `-reset`, `-error`, `-notice`, and the confirm
+  dialog `portal-calendar-reset-dialog` with `-confirm` / `-cancel`. A theme
+  that drops the dialog should drop the button with it.
+#}
+
+{% block head_extra %}
+    {# FullCalendar's stylesheet, extracted from the portal-calendar bundle. #}
+    <link rel="stylesheet" href="{{ asset('/skin/v2/portal-calendar.min.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="portal-calendar-page">
+
+    {#
+      Title and the Subscribe button share a row on anything wider than a
+      phone; below that the button wraps underneath the title (the row is a
+      flex container that wraps, see _portal.scss).
+    #}
+    <div class="portal-page-heading">
+        <h1 class="portal-page-title">{{ gettext('Calendar') }}</h1>
+        {% if hasCalendars %}
+        <button type="button" class="portal-button portal-button-quiet" id="portal-calendar-subscribe">
+            <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i>
+            <span>{{ gettext('Subscribe') }}</span>
+        </button>
+        {% endif %}
+    </div>
+
+    {% if not hasCalendars %}
+    <section class="portal-card portal-calendar-empty" id="portal-calendar-empty">
+        <p class="portal-card-text">{{ gettext('No calendar has been shared with members yet.') }}</p>
+    </section>
+    {% else %}
+
+    <section class="portal-card portal-calendar-card">
+        <ul class="portal-calendar-legend" aria-label="{{ gettext('Calendars') }}">
+            {% for calendar in calendars %}
+            <li class="portal-calendar-legend-item{% if calendar.isMine %} portal-calendar-legend-mine{% endif %}">
+                <span class="portal-calendar-legend-swatch" style="background-color: {{ calendar.color }};" aria-hidden="true"></span>
+                <span class="portal-calendar-legend-name">{{ calendar.name }}</span>
+                {% if calendar.isMine %}
+                {# A team leader's own ministry, marked so it is findable in a long legend. #}
+                <span class="portal-calendar-legend-tag">{{ gettext('You lead this') }}</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+
+        {# FullCalendar renders into this element; until its bundle runs, the
+           paragraph inside is what a member sees. #}
+        <div class="portal-calendar-grid" id="portal-calendar">
+            <p class="portal-calendar-loading">{{ gettext('Loading the calendar…') }}</p>
+        </div>
+    </section>
+
+    {#
+      The detail panel. It is part of the page rather than a dialog so a phone
+      simply scrolls to it, and so a member using a screen reader is told about
+      it (aria-live) instead of having focus yanked away.
+    #}
+    <section class="portal-card portal-calendar-detail" id="portal-calendar-detail" aria-live="polite" hidden>
+        <button type="button" class="portal-calendar-detail-close" id="portal-calendar-detail-close"
+                aria-label="{{ gettext('Close event details') }}">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <h2 class="portal-calendar-detail-title" id="portal-calendar-detail-title"></h2>
+        <dl class="portal-calendar-detail-list">
+            <div class="portal-calendar-detail-row" id="portal-calendar-detail-when-row">
+                <dt>{{ gettext('When') }}</dt>
+                <dd id="portal-calendar-detail-when"></dd>
+            </div>
+            <div class="portal-calendar-detail-row" id="portal-calendar-detail-where-row" hidden>
+                <dt>{{ gettext('Where') }}</dt>
+                <dd id="portal-calendar-detail-where"></dd>
+            </div>
+            <div class="portal-calendar-detail-row" id="portal-calendar-detail-calendar-row">
+                <dt>{{ gettext('Calendar') }}</dt>
+                <dd id="portal-calendar-detail-calendar"></dd>
+            </div>
+            <div class="portal-calendar-detail-row" id="portal-calendar-detail-description-row" hidden>
+                <dt>{{ gettext('Details') }}</dt>
+                <dd id="portal-calendar-detail-description"></dd>
+            </div>
+        </dl>
+    </section>
+
+    {% endif %}
+</div>
+
+{% if hasCalendars %}
+{#
+  "Subscribe to the calendar". A plain <dialog> in the portal's own chrome, the
+  same pattern the family page's "add a family member" dialog uses: no
+  dependency on the admin bundle's modal machinery, and a theme restyles it by
+  restyling `.portal-dialog`.
+
+  The checkboxes are rendered by the bundle from
+  GET /api/portal/calendar/subscription rather than server-side, because the
+  same list has to be redrawn after every save and after a reset.
+#}
+<dialog class="portal-dialog portal-calendar-subscribe-dialog" id="portal-calendar-subscribe-dialog"
+        aria-labelledby="portal-calendar-subscribe-title">
+    <form class="portal-form" id="portal-calendar-subscribe-form" method="dialog" novalidate>
+    {{ csrf_field() }}
+    <h2 class="portal-card-title" id="portal-calendar-subscribe-title">{{ gettext('Subscribe to the calendar') }}</h2>
+    <p class="portal-card-text">
+        {{ gettext('Choose the calendars you want in your own calendar app.') }}
+    </p>
+
+    <p class="portal-field-error" id="portal-calendar-subscribe-error" role="alert"></p>
+    {# Confirmations live in the dialog, not in the page's flash list: a
+       `<dialog>` opened with showModal() sits in the browser's top layer, so a
+       toast on the page underneath would be behind the backdrop. #}
+    <p class="portal-field-hint portal-calendar-subscribe-notice" id="portal-calendar-subscribe-notice" role="status"></p>
+
+    <div class="portal-calendar-subscribe-choices" id="portal-calendar-subscribe-choices"
+         role="group" aria-labelledby="portal-calendar-subscribe-title"></div>
+
+    <div class="portal-calendar-subscribe-result" id="portal-calendar-subscribe-result" hidden>
+        <label class="portal-field-label" for="portal-calendar-subscribe-url">
+            {{ gettext('Calendar address') }}
+        </label>
+        <div class="portal-calendar-subscribe-url-row">
+            <input class="portal-input" type="text" id="portal-calendar-subscribe-url" readonly>
+            <button type="button" class="portal-button portal-button-quiet" id="portal-calendar-subscribe-copy">
+                <i class="fa-solid fa-copy" aria-hidden="true"></i>
+                <span>{{ gettext('Copy') }}</span>
+            </button>
+        </div>
+        <p class="portal-field-hint">
+            {{ gettext('Add this address to your calendar app. It updates on its own when the church calendar changes.') }}
+        </p>
+        {# Exactly one of these two is revealed by the bundle, once it knows
+           whether the feed address is https. See portal-calendar-subscribe.ts:
+           a webcal:// link is useless over plain http. Both start hidden so
+           neither flashes up before that is known. #}
+        <p class="portal-action-row" id="portal-calendar-subscribe-open-row" hidden>
+            <a class="portal-button portal-button-quiet" id="portal-calendar-subscribe-open" href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                <span>{{ gettext('Open in calendar app') }}</span>
+            </a>
+        </p>
+        <p class="portal-field-hint" id="portal-calendar-subscribe-manual-hint" hidden>
+            {{ gettext('Copy this address and add it to your calendar app as a new calendar subscription.') }}
+        </p>
+        <p class="portal-field-hint">
+            {{ gettext('If you have shared this address by mistake, get a new one. The old address stops working straight away.') }}
+        </p>
+        <p class="portal-action-row">
+            <button type="button" class="portal-button portal-button-quiet" id="portal-calendar-subscribe-reset">
+                <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+                <span>{{ gettext('Reset link') }}</span>
+            </button>
+        </p>
+    </div>
+
+    <div class="portal-form-actions">
+        <button type="button" class="portal-button" id="portal-calendar-subscribe-save">{{ gettext('Save') }}</button>
+        <button type="button" class="portal-button portal-button-quiet" id="portal-calendar-subscribe-close">{{ gettext('Close') }}</button>
+    </div>
+    </form>
+</dialog>
+
+{# The "are you sure" for Reset link. Its own dialog rather than bootbox, so the
+   portal keeps one confirmation style and one set of theme tokens. #}
+<dialog class="portal-dialog" id="portal-calendar-reset-dialog" aria-labelledby="portal-calendar-reset-title">
+    <h2 class="portal-card-title" id="portal-calendar-reset-title">{{ gettext('Get a new calendar address?') }}</h2>
+    <p class="portal-card-text">
+        {{ gettext('Your current address will stop working straight away. Anyone you gave it to will need the new one.') }}
+    </p>
+    <div class="portal-form-actions">
+        <button type="button" class="portal-button" id="portal-calendar-reset-confirm">{{ gettext('Reset link') }}</button>
+        <button type="button" class="portal-button portal-button-quiet" id="portal-calendar-reset-cancel">{{ gettext('Cancel') }}</button>
+    </div>
+</dialog>
+{% endif %}
+{% endblock %}
+
+{% block scripts_extra %}
+{% if hasCalendars %}
+<script nonce="{{ nonce() }}">
+    window.CRM = window.CRM || {};
+    window.CRM.portalCalendar = {{ calendarConfigJson }};
+</script>
+<script src="{{ asset('/skin/v2/portal-calendar.min.js') }}"></script>
+{% endif %}
+{% endblock %}

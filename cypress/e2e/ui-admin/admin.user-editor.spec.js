@@ -79,6 +79,36 @@ describe("User Editor - ORM Migration Tests", () => {
         deleteUser2();
     });
 
+    it("Should persist Manage My Ministries for a Custom user, and show it on the user page (2026-09-18)", () => {
+        // Person 10 has no seeded user account; a different row from the other tests
+        // so parallel workers never race on it.
+        const personId = 10;
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${personId}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+        cy.setupAdminSession();
+        cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
+        cy.visit(`admin/system/users/new?personId=${personId}`);
+        cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+
+        // Both switches exist, side by side, and only the coordinator's one is set.
+        cy.get("label[for='ManageMinistries']").should("contain.text", "Manage Ministries");
+        cy.get("label[for='ManageMyMinistries']").should("contain.text", "Manage My Ministries");
+        cy.get("#ManageMyMinistries").check();
+        cy.get("#ManageMinistries").should("not.be.checked");
+        cy.get("#SaveButton").click();
+        cy.wait("@saveUser");
+
+        cy.visit(`admin/system/users/${personId}/edit`);
+        cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+        cy.get("#ManageMyMinistries").should("be.checked");
+        cy.get("#ManageMinistries").should("not.be.checked");
+
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${personId}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+    });
+
     it("Should update username via ORM", () => {
         // The username field is independent of access level, so exercising it on
         // the admin user (PersonID 1) is safe — its mode/permissions are untouched.

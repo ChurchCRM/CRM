@@ -1,0 +1,11 @@
+{% extends "@default/layout.html.twig" %}
+
+{% block content %}
+<section class="portal-card portal-error portal-error-404">
+    <h1 class="portal-error-title">{{ gettext('This page was not found') }}</h1>
+    <p class="portal-error-text">
+        {{ gettext('The page you asked for does not exist. It may have been moved or removed.') }}
+    </p>
+    <p><a class="portal-button" href="{{ url('/portal/') }}">{{ gettext('Back to the Member Portal') }}</a></p>
+</section>
+{% endblock %}

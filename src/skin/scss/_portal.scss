@@ -1,0 +1,1371 @@
+// Member Portal
+//
+// Compiled into its own bundle (`skin/v2/portal.min.css`, webpack entry
+// `portal`) and deliberately NOT part of the core `churchcrm` bundle: the core
+// bundle has an RTL-flipped twin, and a church theme must never be flipped
+// twice. Everything here uses CSS logical properties only, so the same
+// stylesheet is correct in both directions.
+//
+// Every value a church might want to change is a custom property. The
+// fallbacks below are the system theme's; `Include/themes/default/theme.css`
+// carries the same block, and a church theme that redefines a handful of them
+// recolours every portal page (design §3.5).
+
+:root {
+    --portal-primary: #1f4e79;
+    --portal-primary-contrast: #ffffff;
+    --portal-accent: #c9a227;
+    --portal-surface: #ffffff;
+    --portal-surface-alt: #f4f6f8;
+    --portal-text: #1f1f1f;
+    --portal-muted: #6b6b6b;
+    --portal-border: #e3e6ea;
+    --portal-font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --portal-font-heading: Georgia, "Times New Roman", serif;
+    --portal-radius: 12px;
+    --portal-header-bg: var(--portal-primary);
+    --portal-header-text: var(--portal-primary-contrast);
+    --portal-hero-image: none;
+    --portal-content-width: 1100px;
+    --portal-gap: 1rem;
+    // Notice colours. Each is a solid background with the text drawn on it, the
+    // way the admin side's toasts read.
+    --portal-success: #2fb344;
+    --portal-success-contrast: #ffffff;
+    --portal-warning: var(--portal-accent);
+    --portal-warning-contrast: #1f1f1f;
+    --portal-danger: #d63939;
+    --portal-danger-contrast: #ffffff;
+    --portal-info: var(--portal-primary);
+    --portal-info-contrast: var(--portal-primary-contrast);
+    --portal-toast-width: 24rem;
+}
+
+[data-bs-theme="dark"] {
+    --portal-surface: #1a1d21;
+    --portal-surface-alt: #22262b;
+    --portal-text: #f1f3f5;
+    --portal-muted: #a6acb3;
+    --portal-border: #343a40;
+}
+
+.portal-body {
+    margin: 0;
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+    font-family: var(--portal-font-body);
+    min-block-size: 100vh;
+}
+
+.portal-shell {
+    display: flex;
+    flex-direction: column;
+    min-block-size: 100vh;
+}
+
+.portal-container {
+    inline-size: 100%;
+    max-inline-size: var(--portal-content-width);
+    margin-inline: auto;
+    padding-inline: var(--portal-gap);
+}
+
+// Header ---------------------------------------------------------------------
+
+.portal-header {
+    background-color: var(--portal-header-bg);
+    color: var(--portal-header-text);
+}
+
+.portal-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--portal-gap);
+    min-block-size: 4rem;
+    flex-wrap: wrap;
+}
+
+.portal-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+// The core bundle's `a:hover` (0,1,1) outweighs `.portal-brand` (0,1,0), so
+// without this the church's name turned link-blue and picked up an underline
+// under the pointer. The church's identity is not a link that lights up.
+.portal-brand:hover,
+.portal-brand:focus,
+.portal-brand:focus-visible {
+    color: inherit;
+    text-decoration: none;
+}
+
+// Nothing above removes the browser's focus ring, but the header's dark
+// background makes the default one hard to see, so draw our own.
+.portal-brand:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: 3px;
+    border-radius: var(--portal-radius);
+}
+
+.portal-brand-logo {
+    block-size: 2.25rem;
+    inline-size: auto;
+    max-inline-size: 12rem;
+    object-fit: contain;
+}
+
+.portal-brand-name {
+    font-family: var(--portal-font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.portal-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--portal-gap);
+    // The header wraps on a phone, and a wrapped line starts at the leading
+    // edge — which would put the account button on the left and hang its
+    // right-aligned menu off the side of the screen. Keep the actions on the
+    // trailing edge whether they wrap or not.
+    margin-inline-start: auto;
+}
+
+.portal-account-toggle,
+.portal-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    min-inline-size: 44px;
+    justify-content: center;
+    padding-inline: 0.75rem;
+    border: 0;
+    border-radius: var(--portal-radius);
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.portal-account-toggle:hover,
+.portal-account-toggle:focus-visible,
+.portal-nav-toggle:hover,
+.portal-nav-toggle:focus-visible {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: inherit;
+}
+
+.portal-nav-toggle {
+    display: inline-flex;
+}
+
+// Account menu ---------------------------------------------------------------
+//
+// "Hello <first name>" over a dropdown of the things a member does to their
+// account. Everything is a portal token, so a church theme restyles it with the
+// rest of the header.
+
+.portal-account {
+    position: relative;
+}
+
+.portal-account-label {
+    // The header is tight on a phone and a long first name must not push the
+    // caret off the edge.
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-inline-size: 10rem;
+}
+
+.portal-account-caret {
+    font-size: 0.75rem;
+    // The caret is decoration; it must not grow the button's hit area.
+    flex: 0 0 auto;
+}
+
+.portal-account-toggle[aria-expanded="true"] .portal-account-caret {
+    transform: rotate(180deg);
+}
+
+.portal-account-menu {
+    position: absolute;
+    inset-block-start: calc(100% + 0.25rem);
+    inset-inline-end: 0;
+    // Above the navigation band, below the toast stack (1050).
+    z-index: 1045;
+    min-inline-size: 13rem;
+    padding-block: 0.25rem;
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-surface);
+    color: var(--portal-text);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.18);
+}
+
+.portal-account-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    padding-inline: 0.75rem;
+    color: var(--portal-text);
+    text-decoration: none;
+}
+
+.portal-account-item:hover,
+.portal-account-item:focus-visible {
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+    text-decoration: none;
+}
+
+// Navigation -----------------------------------------------------------------
+
+.portal-nav {
+    // Collapsed on a phone until the header's toggle opens it; always open
+    // from the tablet breakpoint up.
+    display: none;
+    background-color: var(--portal-surface);
+    border-block-end: 1px solid var(--portal-border);
+}
+
+.portal-nav.is-open {
+    display: block;
+}
+
+.portal-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0.5rem 0;
+    list-style: none;
+}
+
+.portal-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    padding-inline: 0.75rem;
+    border-radius: var(--portal-radius);
+    color: var(--portal-text);
+    text-decoration: none;
+}
+
+.portal-nav-link:hover,
+.portal-nav-link:focus-visible {
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+}
+
+.portal-nav-link.is-active {
+    background-color: var(--portal-primary);
+    color: var(--portal-primary-contrast);
+}
+
+.portal-nav-badge {
+    margin-inline-start: auto;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background-color: var(--portal-accent);
+    color: var(--portal-text);
+    font-size: 0.75rem;
+}
+
+// Main -----------------------------------------------------------------------
+
+.portal-main {
+    flex: 1 1 auto;
+    padding-block: 1.5rem;
+}
+
+.portal-layout {
+    display: grid;
+    gap: var(--portal-gap);
+    // minmax(0, 1fr), not 1fr: a grid track sized 1fr is still floored at the
+    // item's min-content width, so one wide child — a calendar grid, a table —
+    // would stretch the whole page and make the body scroll sideways. This lets
+    // the column shrink and leaves the wide child to scroll inside its own card.
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.portal-card {
+    background-color: var(--portal-surface);
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    padding: 1.25rem;
+    margin-block-end: var(--portal-gap);
+}
+
+.portal-card-grid {
+    display: grid;
+    gap: var(--portal-gap);
+    grid-template-columns: 1fr;
+}
+
+.portal-card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.5rem;
+    font-family: var(--portal-font-heading);
+    font-size: 1.1rem;
+}
+
+.portal-card-text {
+    margin: 0;
+    color: var(--portal-muted);
+}
+
+.portal-welcome-title {
+    margin: 0;
+    font-family: var(--portal-font-heading);
+    font-size: 1.75rem;
+}
+
+.portal-welcome-family {
+    margin: 0.25rem 0 0.75rem;
+    color: var(--portal-muted);
+}
+
+.portal-welcome-intro {
+    margin: 0;
+}
+
+.portal-placeholder-badge {
+    display: inline-block;
+    margin: 0 0 0.5rem;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.portal-page-title {
+    margin: 0 0 0.5rem;
+    font-family: var(--portal-font-heading);
+    font-size: 1.5rem;
+}
+
+.portal-card-lead {
+    color: var(--portal-text);
+    font-weight: 600;
+}
+
+.portal-card-link {
+    color: var(--portal-primary);
+    text-decoration: none;
+}
+
+.portal-card-link:hover,
+.portal-card-link:focus-visible {
+    text-decoration: underline;
+}
+
+.portal-action-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block-end: 0;
+}
+
+// Avatars --------------------------------------------------------------------
+
+.portal-avatar {
+    inline-size: 3rem;
+    block-size: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+}
+
+.portal-avatar-lg {
+    inline-size: 5rem;
+    block-size: 5rem;
+}
+
+.portal-avatar-initials {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+// Detail lists ---------------------------------------------------------------
+//
+// One column on a phone, label beside value from the tablet breakpoint up.
+
+.portal-detail-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 1rem;
+    margin: 0;
+}
+
+.portal-detail-list dt {
+    color: var(--portal-muted);
+    font-size: 0.875rem;
+}
+
+.portal-detail-list dd {
+    margin: 0 0 0.75rem;
+    overflow-wrap: anywhere;
+}
+
+// The compact variant a card uses. A card in the home page's grid is a column,
+// not a page, so the label stays above its value at every width — the
+// two-column rule below would leave a long email address wrapping one
+// character at a time.
+
+.portal-card-details {
+    margin-block: 0.5rem 0.75rem;
+}
+
+.portal-card-details dt {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+}
+
+.portal-card-details dd {
+    margin-block-end: 0.5rem;
+}
+
+.portal-card-details dd:last-of-type {
+    margin-block-end: 0;
+}
+
+// Contact lines — the church office's email and phone, offered as links a
+// phone can act on.
+
+.portal-contact-list {
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.portal-contact-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-block: 0.25rem;
+}
+
+// Profile and family ---------------------------------------------------------
+
+.portal-profile-identity {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--portal-gap);
+}
+
+.portal-profile-identity-text {
+    flex: 1 1 12rem;
+}
+
+.portal-profile-identity-text .portal-page-title {
+    margin-block-end: 0.25rem;
+}
+
+.portal-photo-editor {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--portal-gap);
+}
+
+.portal-member-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.portal-member {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-block: 0.5rem;
+    border-block-end: 1px solid var(--portal-border);
+}
+
+.portal-member:last-child {
+    border-block-end: 0;
+}
+
+.portal-member.is-self {
+    background-color: var(--portal-surface-alt);
+    border-radius: var(--portal-radius);
+    padding-inline: 0.5rem;
+}
+
+.portal-member-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.portal-member-fullname {
+    font-weight: 600;
+}
+
+.portal-member-role {
+    color: var(--portal-muted);
+    font-size: 0.875rem;
+}
+
+.portal-member-badge {
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background-color: var(--portal-accent);
+    color: var(--portal-text);
+    font-size: 0.75rem;
+}
+
+// Forms ----------------------------------------------------------------------
+
+.portal-form .portal-card-text {
+    margin-block-end: 1rem;
+}
+
+.portal-field-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 var(--portal-gap);
+}
+
+.portal-field {
+    margin-block-end: 1rem;
+}
+
+.portal-field-label {
+    display: block;
+    margin-block-end: 0.25rem;
+    color: var(--portal-muted);
+    font-size: 0.875rem;
+}
+
+.portal-input {
+    inline-size: 100%;
+    min-block-size: 44px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-surface);
+    color: var(--portal-text);
+    font: inherit;
+}
+
+.portal-input:focus-visible {
+    outline: 2px solid var(--portal-primary);
+    outline-offset: 1px;
+}
+
+.portal-input.is-invalid {
+    border-color: #d63939;
+}
+
+textarea.portal-input {
+    min-block-size: 6rem;
+}
+
+.portal-field-hint {
+    margin: 0.25rem 0 0;
+    color: var(--portal-muted);
+    font-size: 0.8125rem;
+}
+
+.portal-field-error {
+    margin: 0.25rem 0 0;
+    color: #d63939;
+    font-size: 0.8125rem;
+}
+
+.portal-field-error:empty {
+    display: none;
+}
+
+.portal-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block-start: 0.5rem;
+}
+
+.portal-choice {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+}
+
+.portal-choice input {
+    inline-size: 1.15rem;
+    block-size: 1.15rem;
+}
+
+// Dialogs --------------------------------------------------------------------
+
+.portal-dialog {
+    inline-size: min(32rem, calc(100vw - 2rem));
+    padding: 1.25rem;
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-surface);
+    color: var(--portal-text);
+}
+
+.portal-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+// Flash ----------------------------------------------------------------------
+//
+// Every portal notice — the server's `flash` messages and anything a page
+// bundle raises after a fetch — is a toast in this one fixed container. Fixed
+// is the point: a notice must never take part in the document flow, or the
+// page jumps under the member's hands as it appears and again as it goes.
+// (It used to be inserted into the header's flex row, which pushed the church
+// logo halfway across the screen.)
+//
+// Phone first: the stack spans the viewport with a margin each side. From the
+// tablet breakpoint up it becomes a column in the top-right corner, where the
+// admin side's toasts live.
+
+.portal-toasts {
+    position: fixed;
+    inset-block-start: var(--portal-toast-offset, var(--portal-gap));
+    inset-inline: var(--portal-gap);
+    // Above the masquerade banner (1040) and the account menu (1045) — a
+    // message about what just happened outranks both.
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    // The container spans the viewport even when it is empty, so it must never
+    // swallow a click. Each toast takes its own clicks back.
+    pointer-events: none;
+}
+
+// The masquerade banner is fixed too, so the stack has to clear it by hand:
+// body padding moves the flow, not a fixed element.
+.portal-body-with-bar .portal-toasts {
+    --portal-toast-offset: calc(2.5rem + var(--portal-gap));
+}
+
+.portal-flash {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-info);
+    color: var(--portal-info-contrast);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.18);
+    animation: portal-toast-in 0.2s ease-out;
+}
+
+.portal-flash-success {
+    background-color: var(--portal-success);
+    color: var(--portal-success-contrast);
+}
+
+.portal-flash-warning {
+    background-color: var(--portal-warning);
+    color: var(--portal-warning-contrast);
+}
+
+.portal-flash-danger {
+    background-color: var(--portal-danger);
+    color: var(--portal-danger-contrast);
+}
+
+.portal-flash-text {
+    flex: 1 1 auto;
+}
+
+.portal-flash-icon {
+    flex: 0 0 auto;
+}
+
+.portal-flash-dismiss {
+    flex: 0 0 auto;
+    min-block-size: 44px;
+    min-inline-size: 44px;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.8;
+
+    &:hover,
+    &:focus-visible {
+        opacity: 1;
+    }
+}
+
+// The toast retires on a timer; this is how it leaves.
+.portal-flash-leaving {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes portal-toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+// A member who asked for less motion still gets the message and still gets it
+// taken away again — just without the movement.
+@media (prefers-reduced-motion: reduce) {
+    .portal-flash {
+        animation: none;
+    }
+
+    .portal-flash-leaving {
+        transition: none;
+    }
+}
+
+// Errors ---------------------------------------------------------------------
+
+.portal-error,
+.portal-unavailable,
+.portal-theme-error {
+    margin-block-start: 2rem;
+}
+
+.portal-error-title {
+    margin: 0 0 0.5rem;
+    font-family: var(--portal-font-heading);
+    font-size: 1.5rem;
+}
+
+.portal-error-text {
+    margin: 0 0 1rem;
+    color: var(--portal-muted);
+}
+
+.portal-theme-error-details {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.25rem 1rem;
+    margin: 0 0 1rem;
+}
+
+.portal-theme-error-details dt {
+    color: var(--portal-muted);
+}
+
+.portal-theme-error-details dd {
+    margin: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    overflow-wrap: anywhere;
+}
+
+.portal-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-block-size: 44px;
+    padding-inline: 1rem;
+    border: 0;
+    border-radius: var(--portal-radius);
+    background-color: var(--portal-primary);
+    color: var(--portal-primary-contrast);
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.portal-button:hover,
+.portal-button:focus-visible {
+    color: var(--portal-primary-contrast);
+    filter: brightness(1.1);
+}
+
+.portal-button[disabled] {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+// The secondary action: same shape, no fill. Declared after .portal-button so
+// its background wins — both are single-class selectors, so source order is
+// the only thing deciding it.
+.portal-button-quiet {
+    background-color: transparent;
+    border: 1px solid var(--portal-border);
+    color: var(--portal-text);
+}
+
+.portal-button-quiet:hover,
+.portal-button-quiet:focus-visible {
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-text);
+    filter: none;
+}
+
+// Footer ---------------------------------------------------------------------
+
+.portal-footer {
+    background-color: var(--portal-surface);
+    border-block-start: 1px solid var(--portal-border);
+    padding-block: 1rem;
+    color: var(--portal-muted);
+}
+
+.portal-footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.portal-footer-church-name {
+    font-weight: 600;
+    color: var(--portal-text);
+}
+
+.portal-footer-detail {
+    margin-inline-start: 0.75rem;
+    color: inherit;
+}
+
+// The church's social accounts (#9907). `margin-inline-start: auto` is what
+// keeps them on the trailing edge: `justify-content: space-between` only
+// right-aligns them while both halves share a line, and on a phone the row
+// wraps and the social block gets a line of its own.
+
+.portal-footer-social {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-inline-start: auto;
+}
+
+.portal-footer-social-link {
+    color: var(--portal-muted);
+    font-size: 1.125rem;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.portal-footer-social-link:hover,
+.portal-footer-social-link:focus-visible {
+    color: var(--portal-primary);
+    text-decoration: none;
+}
+
+// Hero -----------------------------------------------------------------------
+//
+// Empty in the system theme: a church theme sets --portal-hero-image and puts
+// its own markup in the `hero` block.
+
+.portal-hero {
+    background-image: var(--portal-hero-image);
+    background-size: cover;
+    background-position: center;
+}
+
+// Calendar (MP5, #9866) ------------------------------------------------------
+//
+// Mobile first: the page is one column, the legend wraps, and FullCalendar
+// opens in its list view below the tablet breakpoint (the bundle decides that,
+// because a CSS media query cannot change which view is rendered). The detail
+// panel is part of the page rather than a dialog, so a phone scrolls to it.
+
+.portal-page-title {
+    margin: 0 0 var(--portal-gap);
+    font-family: var(--portal-font-heading);
+    font-size: 1.5rem;
+}
+
+.portal-calendar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin: 0 0 var(--portal-gap);
+    padding: 0;
+    list-style: none;
+}
+
+.portal-calendar-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    color: var(--portal-muted);
+}
+
+.portal-calendar-legend-swatch {
+    inline-size: 0.75rem;
+    block-size: 0.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--portal-border);
+    flex-shrink: 0;
+}
+
+// A calendar belonging to a ministry this member leads (#9869). The row is given
+// the portal's own text colour rather than the muted one, and a small tag says why
+// — colour alone would be the only signal otherwise, and it is the swatch's job.
+.portal-calendar-legend-mine {
+    color: var(--portal-text);
+    font-weight: 600;
+}
+
+.portal-calendar-legend-tag {
+    padding: 0.05rem 0.4rem;
+    border: 1px solid var(--portal-border);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--portal-muted);
+    white-space: nowrap;
+}
+
+// FullCalendar's own toolbar buttons (#9869). FullCalendar 7 emits hashed class
+// names, so `headerToolbarClass` in portal-calendar.ts is the only stable hook;
+// the buttons inside it are 34px tall out of the box and the responsive
+// guidelines ask for 44px. Sizing the element rather than the class keeps working
+// if FullCalendar changes what it renders inside the toolbar.
+.portal-fc-toolbar button {
+    min-block-size: 44px;
+    min-inline-size: 44px;
+}
+
+.portal-calendar-grid {
+    // FullCalendar's own grid can be wider than a phone; let it scroll inside
+    // its card rather than making the page scroll sideways.
+    overflow-x: auto;
+}
+
+.portal-calendar-loading {
+    margin: 0;
+    color: var(--portal-muted);
+}
+
+.portal-calendar-detail {
+    position: relative;
+}
+
+.portal-calendar-detail-close {
+    position: absolute;
+    inset-block-start: 0.75rem;
+    inset-inline-end: 0.75rem;
+    border: 0;
+    background: transparent;
+    color: var(--portal-muted);
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0.35rem;
+    cursor: pointer;
+    // A comfortable touch target on a phone.
+    min-inline-size: 2.75rem;
+    min-block-size: 2.75rem;
+}
+
+.portal-calendar-detail-title {
+    margin: 0 2.75rem 0.75rem 0;
+    font-family: var(--portal-font-heading);
+    font-size: 1.25rem;
+}
+
+.portal-calendar-detail-list {
+    margin: 0;
+}
+
+.portal-calendar-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    margin-block-end: 0.75rem;
+
+    dt {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--portal-muted);
+    }
+
+    dd {
+        margin: 0;
+    }
+}
+
+// The home page's church-calendar card.
+
+.portal-upcoming-list {
+    margin: 0 0 0.75rem;
+    padding: 0;
+    list-style: none;
+}
+
+.portal-upcoming-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding-block: 0.5rem;
+    border-block-end: 1px solid var(--portal-border);
+
+    &:last-child {
+        border-block-end: 0;
+    }
+}
+
+.portal-upcoming-title {
+    font-weight: 600;
+}
+
+.portal-upcoming-when,
+.portal-upcoming-calendar {
+    font-size: 0.8125rem;
+    color: var(--portal-muted);
+}
+
+.portal-card-link {
+    display: inline-block;
+    color: var(--portal-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+// Calendar subscription (design §5.3) ----------------------------------------
+//
+// Mobile first: the page heading is a wrapping flex row, so on a phone the
+// Subscribe button sits under the title and from the tablet breakpoint up it
+// sits at the end of the title's row.
+
+.portal-page-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-block-end: var(--portal-gap);
+
+    .portal-page-title {
+        margin-block-end: 0;
+    }
+}
+
+.portal-calendar-subscribe-dialog {
+    // Wider than the default dialog: the feed address is a long single line and
+    // a member has to be able to see enough of it to recognise it.
+    inline-size: min(36rem, calc(100vw - 2rem));
+}
+
+.portal-calendar-subscribe-notice {
+    // Empty until something happens, so it must not reserve a line of space.
+    &:empty {
+        display: none;
+    }
+
+    color: var(--portal-primary);
+}
+
+.portal-calendar-subscribe-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-block: var(--portal-gap);
+}
+
+.portal-calendar-subscribe-result {
+    margin-block-start: var(--portal-gap);
+    padding-block-start: var(--portal-gap);
+    border-block-start: 1px solid var(--portal-border);
+}
+
+.portal-calendar-subscribe-url-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+
+    .portal-input {
+        flex: 1 1 14rem;
+        // The address is long and is read, not typed; a small monospace face
+        // makes a mistyped character visible.
+        font-family: var(--bs-font-monospace, monospace);
+        font-size: 0.8125rem;
+    }
+}
+
+// Email History --------------------------------------------------------------
+//
+// The list is one `<table>` at every width — the same markup, the same reading
+// order, so nothing is duplicated or hidden from a screen reader. On a phone it
+// is unrolled into a stack of blocks: each row is a card, each cell carries its
+// column name from `data-label`, and the header row goes away because every
+// cell now names itself. From the tablet breakpoint up the browser's own table
+// layout takes over again (see the media block below).
+
+.portal-table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    margin-block-end: var(--portal-gap);
+}
+
+.portal-table thead {
+    // Off-screen rather than `display: none`: a phone hides the header row, but
+    // the table still has one, so assistive technology that reads the table
+    // structure is not left guessing what a cell is.
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.portal-table-row {
+    display: block;
+    padding-block: 0.75rem;
+    border-block-end: 1px solid var(--portal-border);
+
+    &:last-child {
+        border-block-end: 0;
+    }
+}
+
+.portal-table-cell {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-block: 0.15rem;
+
+    // The column's name, printed beside the value only while the table is
+    // unrolled. `attr()` keeps it in the markup's own language, already
+    // translated by Twig.
+    &::before {
+        content: attr(data-label);
+        flex: 0 0 5.5rem;
+        color: var(--portal-muted);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+}
+
+.portal-email-subject {
+    font-size: 1rem;
+    font-weight: 600;
+    // A long subject wraps rather than pushing the row sideways.
+    overflow-wrap: anywhere;
+}
+
+.portal-email-date {
+    color: var(--portal-muted);
+}
+
+.portal-email-kind {
+    display: inline-block;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-muted);
+    font-size: 0.75rem;
+}
+
+// Sent is the ordinary case and stays quiet; a member only needs to notice the
+// other two, so those carry the palette's notice colours.
+.portal-email-status {
+    display: inline-block;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    background-color: var(--portal-surface-alt);
+    color: var(--portal-muted);
+
+    &.is-failed {
+        background-color: var(--portal-danger);
+        color: var(--portal-danger-contrast);
+    }
+
+    &.is-skipped {
+        background-color: var(--portal-warning);
+        color: var(--portal-warning-contrast);
+    }
+}
+
+.portal-pager {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.portal-pager-position {
+    color: var(--portal-muted);
+    font-size: 0.875rem;
+    // With only one of the two buttons present the position still sits between
+    // them rather than jumping to an edge.
+    order: 0;
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+// The stored email body, in its sandboxed frame. It cannot be measured from
+// here (see email/show.html.twig), so it gets a generous height and scrolls.
+.portal-email-body {
+    inline-size: 100%;
+    block-size: min(60vh, 32rem);
+    border: 1px solid var(--portal-border);
+    border-radius: var(--portal-radius);
+    background-color: #ffffff;
+}
+
+// Tablet and up --------------------------------------------------------------
+
+@media (min-width: 768px) {
+    // Off the phone the stack stops spanning the screen and becomes a column in
+    // the top-right corner, beside nothing and on top of everything.
+    .portal-toasts {
+        inset-inline-start: auto;
+        inline-size: var(--portal-toast-width);
+    }
+
+    .portal-account-label {
+        max-inline-size: 16rem;
+    }
+
+    .portal-nav-toggle {
+        display: none;
+    }
+
+    .portal-nav {
+        display: block;
+    }
+
+    .portal-nav-list {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .portal-nav-badge {
+        margin-inline-start: 0.25rem;
+    }
+
+    .portal-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .portal-detail-list {
+        grid-template-columns: minmax(8rem, max-content) 1fr;
+    }
+
+    // …except inside a card, which is a column and stays one.
+    .portal-card-details {
+        grid-template-columns: 1fr;
+    }
+
+    .portal-field-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .portal-field-wide {
+        grid-column: 1 / -1;
+    }
+
+    .portal-calendar-detail-row {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 1rem;
+
+        dt {
+            flex: 0 0 7rem;
+        }
+    }
+
+    // Off the phone the email list rolls back up into a real table: the header
+    // row comes back, each cell is a cell again, and the per-cell column names
+    // are not needed because the header says them once.
+    .portal-table thead {
+        position: static;
+        inline-size: auto;
+        block-size: auto;
+        clip-path: none;
+    }
+
+    .portal-table th {
+        padding: 0.5rem 0.75rem 0.5rem 0;
+        border-block-end: 1px solid var(--portal-border);
+        text-align: start;
+        color: var(--portal-muted);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+    }
+
+    .portal-table-row {
+        display: table-row;
+        padding-block: 0;
+    }
+
+    .portal-table-cell {
+        display: table-cell;
+        padding: 0.6rem 0.75rem 0.6rem 0;
+        vertical-align: baseline;
+        border-block-end: 1px solid var(--portal-border);
+
+        &::before {
+            content: none;
+        }
+    }
+
+    // The subject is the column that should take the space a long one needs;
+    // the other three are as narrow as their content.
+    .portal-table-cell:nth-child(1),
+    .portal-table-cell:nth-child(2),
+    .portal-table-cell:nth-child(4) {
+        white-space: nowrap;
+        inline-size: 1%;
+    }
+}
+
+@media (min-width: 992px) {
+    .portal-card-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    // The calendar card carries a list rather than one sentence, so it gets two
+    // of the four columns while the other cards keep one each.
+    .portal-card-calendar {
+        grid-column: span 2;
+    }
+}
