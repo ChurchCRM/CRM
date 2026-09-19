@@ -11,15 +11,19 @@
  *
  *   1. **An administrator being themselves.** They opened the portal from their own
  *      user menu to see what members see. They are not a member of anything here, and
- *      the way out is a click. The bar says "as yourself".
+ *      the way out is a click: the portal account menu offers **Admin Console**. (The
+ *      "You are viewing the Member Portal as yourself." bar this used to assert was
+ *      retired with the account menu — the entry says the same thing without a band
+ *      across every page.)
  *   2. **An administrator being somebody else.** They are masquerading, every action is
  *      recorded against the member, and the page they are looking at is the member's,
- *      not a staff preview of it. The bar says whose account it is, and is the only
- *      way back — the portal has no admin user menu to escape through.
+ *      not a staff preview of it. The banner says whose account it is, and is the only
+ *      way back — the account menu offers no Admin Console during a masquerade.
  *
  * Getting this wrong is not a cosmetic bug. An administrator who forgets which of the
  * two they are edits the wrong person's record and has no way to notice. So the run
- * asserts, on every page: exactly one bar, the right one, with the right words in it.
+ * asserts, on every page: the banner exactly when masquerading, and the Admin Console
+ * entry exactly when not.
  *
  * MP8 is what makes case 2 possible at all. Before it, the banner lived in the two
  * admin header layouts and the portal used neither, so a masquerade into a
@@ -46,7 +50,7 @@ const MEMBER_FIRST_NAME = "Amanda";
 
 const OTHER_MEMBER_NAME = "Lena";
 
-const STAFF_BAR_TEXT = "You are viewing the Member Portal as yourself.";
+const ADMIN_CONSOLE_TEXT = "Admin Console";
 const MASQUERADE_TEXT = `You are logged in as ${MEMBER_NAME}. Actions are recorded as them.`;
 
 /**
@@ -79,21 +83,35 @@ function assertPortalNotAdminShell() {
     cy.get(".navbar-vertical").should("not.exist");
 }
 
-/** Exactly one bar, and it is the "as yourself" one. */
-function assertStaffBar() {
-    cy.get(".portal-staff-bar", { timeout: 10000 }).should("be.visible");
-    cy.contains(STAFF_BAR_TEXT).should("exist");
-    cy.get("#impersonationBanner").should("not.exist");
-    cy.get("body").should("not.have.class", "impersonating");
+/** Open the portal account menu and hand back its items. */
+function accountMenuItems() {
+    cy.get("#portal-account-toggle", { timeout: 10000 }).click();
+    cy.get("#portal-account-menu").should("be.visible");
+
+    return cy.get('#portal-account-menu [role="menuitem"]');
 }
 
-/** Exactly one bar, and it is the masquerade one. */
+/** No banner, and the account menu offers the way back to the admin shell. */
+function assertStaffSelf() {
+    cy.get(".portal-shell", { timeout: 10000 }).should("exist");
+    cy.get("#impersonationBanner").should("not.exist");
+    cy.get("body").should("not.have.class", "portal-body-with-bar");
+    accountMenuItems()
+        .filter(`:contains("${ADMIN_CONSOLE_TEXT}")`)
+        .should("have.length", 1)
+        .and("have.attr", "href")
+        .and("include", ADMIN_DASHBOARD);
+    cy.get("body").type("{esc}");
+}
+
+/** The masquerade banner, and no Admin Console to escape through. */
 function assertMasqueradeBanner() {
     cy.get("#impersonationBanner", { timeout: 10000 }).should("be.visible");
     cy.get("#impersonationBanner").should("contain.text", MASQUERADE_TEXT);
-    cy.get("body").should("have.class", "impersonating");
-    // "Viewing as yourself" is the opposite of what is happening.
-    cy.get(".portal-staff-bar").should("not.exist");
+    cy.get("body").should("have.class", "portal-body-with-bar");
+    // The banner is the only way back: no Admin Console while acting as a member.
+    accountMenuItems().should("not.contain.text", ADMIN_CONSOLE_TEXT);
+    cy.get("body").type("{esc}");
 }
 
 describe("Member Portal e2e — #9869 scenario 3, staff in the portal", () => {
@@ -113,23 +131,21 @@ describe("Member Portal e2e — #9869 scenario 3, staff in the portal", () => {
             cy.get(".portal-home").should("exist");
         });
 
-        it("is told, on every page, that this is their own account", () => {
+        it("is offered Admin Console on every page, and never a masquerade banner", () => {
             for (const url of PORTAL_PAGES) {
                 cy.visit(url);
-                assertStaffBar();
+                assertStaffSelf();
                 assertPortalNotAdminShell();
             }
         });
 
-        it("leaves through the bar, back to the admin shell", () => {
+        it("leaves through the account menu's Admin Console, back to the admin shell", () => {
             cy.visit(PORTAL_HOME);
-            cy.get('.portal-staff-bar [aria-label="Exit to the admin area"]', {
-                timeout: 10000,
-            }).click();
+            accountMenuItems().filter(`:contains("${ADMIN_CONSOLE_TEXT}")`).click();
 
             cy.url({ timeout: 10000 }).should("include", ADMIN_DASHBOARD);
             cy.get("#sidebar").should("exist");
-            cy.get(".portal-staff-bar").should("not.exist");
+            cy.get("#impersonationBanner").should("not.exist");
         });
     });
 
@@ -158,7 +174,7 @@ describe("Member Portal e2e — #9869 scenario 3, staff in the portal", () => {
             });
         });
 
-        it("lands in the portal wearing the masquerade banner, not the staff bar", () => {
+        it("lands in the portal wearing the masquerade banner", () => {
             assertMasqueradeBanner();
             assertPortalNotAdminShell();
             cy.get(".portal-home").should("exist");
@@ -193,12 +209,12 @@ describe("Member Portal e2e — #9869 scenario 3, staff in the portal", () => {
 
             cy.url({ timeout: 10000 }).should("include", `/v2/user/${MEMBER_USER_ID}`);
             cy.get("#impersonationBanner").should("not.exist");
-            cy.get("body").should("not.have.class", "impersonating");
+            cy.get("body").should("not.have.class", "portal-body-with-bar");
             cy.get(".navbar").should("contain.text", "Church Admin");
 
-            // And the portal is theirs again, with the other bar.
+            // And the portal is theirs again, Admin Console back in the menu.
             cy.visit(PORTAL_HOME);
-            assertStaffBar();
+            assertStaffSelf();
         });
     });
 });
