@@ -738,7 +738,32 @@ TomSelect renders at most `settings.maxOptions` entries — **default 50** — a
 new TomSelect(el, { maxOptions: null });
 ```
 
-Keep the default for **type-to-search** pickers (person/family/group), where capping results is the point. Issue #9677 fixed `DropdownManager.js`, `webpack/church-info.js` and `SystemSettings.php`. Typing still finds hidden entries because search runs before the cap — which is exactly why this bug survives casual testing.
+Keep the default for **type-to-search** pickers, where capping results is the point — with one exception: `webpack/common/person-select.ts` sets `maxOptions: null` (#9819) so a caller pointing it at a route with no server-side `limit` is not silently truncated. `/api/persons/search/` hardcodes `limit(15)`, so the cap was never reached there anyway. Issue #9677 fixed `DropdownManager.js`, `webpack/church-info.js` and `SystemSettings.php`. Typing still finds hidden entries because search runs before the cap — which is exactly why this bug survives casual testing.
+
+### Person pickers: use `webpack/common/person-select.ts`, never hand-roll <!-- learned: 2026-09-12 -->
+
+Every AJAX person search against `GET /api/persons/search/{query}` goes through the shared module
+(#9819). Do not write another `new TomSelect({ valueField: "objid", ... load: fetch(...) })`.
+
+```js
+import { attachToModal, initAllPersonSelects, initPersonSelect } from "./common/person-select";
+
+initPersonSelect(el, { mapResult, placeholder, render, onChange });  // one <select>
+initAllPersonSelects(opts);          // scans BOTH .personSearch and .person-search
+attachToModal(modalEl, "#sel", { onInit });  // owns shown.bs.modal → init / hidden → destroy()
+```
+
+It applies `dropdownParent: "body"` and `maxOptions: null` for every caller, and reads
+`window.CRM.root` lazily inside `load()`. `opts.endpoint` + `opts.mapResult` point it at a
+different search route. Scripts outside a bundle (plain `<script src>`, e.g.
+`src/skin/js/GroupView.js`) reach it as `window.CRM.initPersonSelect` / `initAllPersonSelects`,
+exported by `skin-core.js`.
+
+Two constraints worth knowing before extending it: the module takes its constructor from
+`window.TomSelect` rather than importing `tom-select`, because there is no `splitChunks` config
+and an import would give the page a second TomSelect class; and `tom-select` 2.6.2 ships **no**
+type declarations, so the instance members TS needs are hand-declared in
+`webpack/types/window.d.ts` next to `PersonSelectOptions`.
 
 ### Uppy v5 XHRUpload: Parse `response.responseText` to Surface Server Errors <!-- learned: 2026-04-21 -->
 
