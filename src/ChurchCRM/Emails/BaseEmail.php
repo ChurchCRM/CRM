@@ -3,6 +3,7 @@
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
@@ -91,6 +92,15 @@ abstract class BaseEmail
             'churchEmail'          => ChurchMetaData::getChurchEmail(),
             'churchCRMURL'         => SystemURLs::getURL(),
             'churchLogo'           => ChurchMetaData::getChurchLogoURL(),
+            // Footer: the same lines as the Display Preview on Admin -> Church Information.
+            'churchStreet'         => ChurchMetaData::getChurchAddress(),
+            'churchCityLine'       => self::getChurchCityLine(),
+            'churchCountry'        => self::getChurchCountryName(),
+            'churchWebSite'        => ChurchMetaData::getChurchWebSite(),
+            // The link is rebuilt in the template from a literal scheme plus the validated
+            // host/path, so a configured value can never inject another URL scheme.
+            'churchWebSiteHost'    => self::getChurchWebSiteParts()['host'],
+            'churchWebSiteSecure'  => self::getChurchWebSiteParts()['secure'],
             'dear'                 => SystemConfig::getValue('sDear'),
             'confirmSincerely'     => SystemConfig::getValue('sConfirmSincerely'),
             'confirmSigner'        => SystemConfig::getValue('sConfirmSigner'),
@@ -110,6 +120,51 @@ abstract class BaseEmail
         }
 
         return $commonTokens;
+    }
+
+    /** "City, State Zip" as the Church Information preview shows it; empty when unset. */
+    private static function getChurchCityLine(): string
+    {
+        $cityState = implode(', ', array_filter([ChurchMetaData::getChurchCity(), ChurchMetaData::getChurchState()]));
+        $zip = ChurchMetaData::getChurchZip();
+
+        return trim($cityState . ($zip !== '' ? ' ' . $zip : ''));
+    }
+
+    /**
+     * The configured website split into a literal-scheme flag and the rest of the URL.
+     * Only http(s) URLs with a host qualify; anything else yields an empty host and no link.
+     *
+     * @return array{host: string, secure: bool}
+     */
+    private static function getChurchWebSiteParts(): array
+    {
+        $site = trim(ChurchMetaData::getChurchWebSite());
+        if ($site !== '' && !preg_match('#^[a-z][a-z0-9+.-]*://#i', $site)) {
+            $site = 'https://' . $site;
+        }
+        $parts = $site !== '' ? parse_url($site) : false;
+        $scheme = strtolower((string) ($parts['scheme'] ?? ''));
+        if ($parts === false || !in_array($scheme, ['http', 'https'], true) || empty($parts['host'])) {
+            return ['host' => '', 'secure' => true];
+        }
+        $host = $parts['host']
+            . (isset($parts['port']) ? ':' . (int) $parts['port'] : '')
+            . ($parts['path'] ?? '')
+            . (isset($parts['query']) ? '?' . $parts['query'] : '');
+
+        return ['host' => $host, 'secure' => $scheme === 'https'];
+    }
+
+    /** Country display name for the configured code, or the raw value when unknown. */
+    private static function getChurchCountryName(): string
+    {
+        $code = ChurchMetaData::getChurchCountry();
+        if ($code === '') {
+            return '';
+        }
+
+        return Countries::getNames()[$code] ?? $code;
     }
 
     /**
