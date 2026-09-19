@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
+use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Service\TimelineService;
@@ -208,6 +209,9 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $timelineService = new TimelineService();
     $personTimeline  = $timelineService->getForPerson($iPersonID);
 
+    // ── Email history (5 most recent; the full list is /people/view/{id}/emails) ──
+    $emailHistory = (new EmailLogService())->getForPerson($iPersonID, 1, 5);
+
     // ── Render ───────────────────────────────────────────────────────────────
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
@@ -253,7 +257,49 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'personMapConfig'        => $personMapConfig,
         'familyHasCoords'        => $familyHasCoords,
         'personTimeline'         => $personTimeline,
+        // Email history
+        'emailHistory'           => $emailHistory,
     ];
 
     return $renderer->render($response, 'person-view.php', $pageArgs);
+});
+
+// ─── GET: full email history for a person ───────────────────────────────────
+$app->get('/view/{personID:[0-9]+}/emails', function (Request $request, Response $response, array $args): Response {
+    $iPersonID   = (int) $args['personID'];
+    $currentUser = AuthenticationManager::getCurrentUser();
+
+    $person = PersonQuery::create()->findPk($iPersonID);
+    if (empty($person)) {
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/person/not-found?id=' . $iPersonID);
+    }
+    if (!$currentUser->canReadPerson($iPersonID)) {
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
+    }
+
+    $page = max(1, (int) ($request->getQueryParams()['page'] ?? 1));
+    $emailHistory = (new EmailLogService())->getForPerson($iPersonID, $page, EmailLogService::DEFAULT_PAGE_SIZE);
+
+    // Home / People / Family / Person / Email History — PageHeader takes [label, url] pairs.
+    $emailBreadcrumbs = [[gettext('People'), '/people/dashboard']];
+    if ($person->getFamId() !== '' && $person->getFamily() !== null) {
+        $emailBreadcrumbs[] = [InputUtils::escapeHTML($person->getFamily()->getName()), '/people/family/' . $person->getFamId()];
+    }
+    $emailBreadcrumbs[] = [InputUtils::escapeHTML($person->getFullName()), '/people/view/' . $iPersonID];
+    $emailBreadcrumbs[] = [gettext('Email History')];
+
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+    return $renderer->render($response, 'person-emails.php', [
+        'sRootPath'     => SystemURLs::getRootPath(),
+        'sPageTitle'    => InputUtils::escapeHTML($person->getFullName()),
+        'sPageSubtitle' => gettext('Email History'),
+        'aBreadcrumbs'  => PageHeader::breadcrumbs($emailBreadcrumbs),
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Back to Person'), 'url' => '/people/view/' . $iPersonID, 'icon' => 'fa-arrow-left'],
+        ]),
+        'person'        => $person,
+        'iPersonID'     => $iPersonID,
+        'emailHistory'  => $emailHistory,
+    ]);
 });

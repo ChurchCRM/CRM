@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -35,6 +36,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 // Load compiled webpack assets for people list
 echo '<link rel="stylesheet" href="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.css">';
 echo '<script src="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.js"></script>';
+// Server-side "Send email" needs the Email permission and a working, enabled SMTP setup.
+$canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && SystemConfig::isEmailEnabled();
+if ($canSendEmail) {
+    echo '<script src="' . SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') . '" defer nonce="' . SystemURLs::getCSPNonce() . '"></script>';
+}
 // Classification list — each entry is {id, name} so the JS can set option values to
 // the real DB OptionId (not a positional index). This fixes mismatched Classification
 // filter links when OptionId and insertion-sequence diverge (issue #9182).
@@ -383,6 +389,14 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         elseif ($column->displayFunction === 'getEmail') {
                             if (!empty($columnData)) {
                                 echo '<a href="mailto:' . InputUtils::escapeAttribute($columnData) . '" target="_blank" rel="noopener noreferrer">' . InputUtils::escapeHTML($columnData) . '</a>';
+                                if ($canSendEmail) {
+                                    echo ' <button type="button" class="btn btn-sm btn-ghost-primary py-0 px-1" data-email-composer'
+                                        . ' data-email-person-id="' . (int) $person->getId() . '"'
+                                        . ' data-email-address="' . InputUtils::escapeAttribute($columnData) . '"'
+                                        . ' data-email-name="' . InputUtils::escapeAttribute($person->getFullName()) . '"'
+                                        . ' data-email-title="' . InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $person->getFullName())) . '"'
+                                        . ' title="' . gettext('Send email from ChurchCRM') . '"><i class="fa-solid fa-paper-plane"></i></button>';
+                                }
                             } else {
                                 echo '<span class="text-body-secondary">—</span>';
                             }
