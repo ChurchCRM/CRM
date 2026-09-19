@@ -511,7 +511,9 @@ $this->setConfigValue('lastSync', date('c'));        // Sets plugin.mailchimp.la
 - `DEPOSIT_CLOSED` - When deposit is finalized
 
 **Events:**
-- `EVENT_CREATED` - When event is created
+- `EVENT_CREATED` - When event is created (every path, including bulk repeat / recurring generation)
+- `EVENT_UPDATED` - When event is edited — receives `Event $event, array $oldData`
+- `EVENT_DELETED` - When event is removed — receives `int $eventId, array $eventData`
 - `EVENT_CHECKIN` - When person checks in
 - `EVENT_CHECKOUT` - When person checks out
 - `SYSTEM_CALENDARS_REGISTER` - Register custom calendars
@@ -600,9 +602,11 @@ Hook constants in `Hooks.php` are inert — nothing fires automatically. Each ho
 | `SYSTEM_CALENDARS_REGISTER` | Calendar system initialization | ✅ Wired |
 | `PERSON_DELETED` | `src/ChurchCRM/model/ChurchCRM/Person.php` `postDelete()` — payload snapshotted in `preDelete()` | ✅ Wired |
 | `FAMILY_DELETED` | `src/ChurchCRM/model/ChurchCRM/Family.php` `postDelete()` — payload snapshotted in `preDelete()` | ✅ Wired |
-| `EVENT_CREATED` | Needs wiring in `EventService::createEvent()` | ⏳ Pending |
-| `EVENT_CHECKIN` | Needs wiring in `Event::checkInPerson()` | ⏳ Pending |
-| `EVENT_CHECKOUT` | Needs wiring in `Event::checkOutPerson()` | ⏳ Pending |
+| `EVENT_CREATED` | `src/api/routes/calendar/events.php` `newEvent()`, `quickCreateEvent()` + `src/ChurchCRM/Service/EventService.php` `createRecurringEvents()` (the one generator behind `generateRecurringEvents()` and `createRepeatEvents()`, dispatched after the series commits) — every creation path (#9734) | ✅ Wired |
+| `EVENT_UPDATED` | `src/ChurchCRM/model/ChurchCRM/Event.php` `postUpdate()` — one dispatch covering every update path (#9734) | ✅ Wired |
+| `EVENT_DELETED` | `src/ChurchCRM/model/ChurchCRM/Event.php` `postDelete()` — one dispatch covering every delete path (#9734) | ✅ Wired |
+| `EVENT_CHECKIN` | `src/ChurchCRM/model/ChurchCRM/Event.php` `checkInPerson()` | ✅ Wired |
+| `EVENT_CHECKOUT` | `src/ChurchCRM/model/ChurchCRM/Event.php` `checkOutPerson()` | ✅ Wired |
 | `GROUP_MEMBER_ADDED` | Needs wiring in groups membership route | ⏳ Pending |
 | `GROUP_MEMBER_REMOVED` | Needs wiring in groups membership route | ⏳ Pending |
 | `DONATION_RECEIVED` | Needs wiring in financial donation route | ⏳ Pending |

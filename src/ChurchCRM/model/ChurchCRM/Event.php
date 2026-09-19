@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\CalendarEventQuery;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
 use ChurchCRM\model\ChurchCRM\EventCountsQuery;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
@@ -30,6 +31,79 @@ class Event extends BaseEvent
     private bool $editable = true;
 
     /**
+     * Snapshot of the persisted row, taken in preUpdate()/preDelete() and
+     * handed to the EVENT_UPDATED / EVENT_DELETED listeners afterwards.
+     *
+     * Null means "nothing listening" — the snapshot query is skipped when no
+     * plugin has registered for the hook, so installs with no plugins pay
+     * nothing for this.
+     *
+     * @var array<string, mixed>|null
+     */
+    private ?array $hookDataSnapshot = null;
+
+    /**
+     * Capture the pre-update state so EVENT_UPDATED can report what changed.
+     *
+     * select() is used rather than a normal find so the read bypasses object
+     * hydration and the instance pool — findPk() would just hand back $this,
+     * which already holds the new values. Runs on the save connection, inside
+     * the same transaction, before doSave() writes the new row.
+     */
+    public function preUpdate(?ConnectionInterface $con = null): bool
+    {
+        $this->hookDataSnapshot = null;
+
+        if (HookManager::hasAction(Hooks::EVENT_UPDATED)) {
+            $row = EventQuery::create()
+                ->filterById((int) $this->getId())
+                ->select('*')
+                ->findOne($con);
+
+            $this->hookDataSnapshot = is_array($row) ? self::toPhpNameKeys($row) : [];
+        }
+
+        return parent::preUpdate($con);
+    }
+
+    /**
+     * Re-key a select('*') row from "Fully\Qualified\Model.PhpName" to just
+     * "PhpName", so EVENT_UPDATED's $oldData matches the shape of
+     * EVENT_DELETED's $eventData (which comes from toArray(TYPE_PHPNAME)).
+     *
+     * @param array<string, mixed> $row
+     *
+     * @return array<string, mixed>
+     */
+    private static function toPhpNameKeys(array $row): array
+    {
+        $keyed = [];
+        foreach ($row as $column => $value) {
+            $lastDot = strrpos((string) $column, '.');
+            $keyed[$lastDot === false ? $column : substr((string) $column, $lastDot + 1)] = $value;
+        }
+
+        return $keyed;
+    }
+
+    /**
+     * Fire EVENT_UPDATED for every path that edits an event.
+     *
+     * This lives on the model rather than in the API routes because events are
+     * updated from a lot of places — updateEvent(), setEventTime(),
+     * setEventStatus() and closeStuckEvents() in the events API, the
+     * /event/dashboard MVC action, and the kiosk flows. Propel calls
+     * postUpdate() exactly once per save() of an existing row, so dispatching
+     * here means every path fires the hook exactly once and no future caller
+     * can forget to.
+     */
+    public function postUpdate(?ConnectionInterface $con = null): void
+    {
+        HookManager::doAction(Hooks::EVENT_UPDATED, $this, $this->hookDataSnapshot ?? []);
+        $this->hookDataSnapshot = null;
+    }
+
+    /**
      * Cascade-delete child rows that reference this event before the row
      * itself is removed.
      *
@@ -48,9 +122,16 @@ class Event extends BaseEvent
      *
      * See #8670.
      */
-    public function preDelete(ConnectionInterface $con = null): bool
+    public function preDelete(?ConnectionInterface $con = null): bool
     {
         $eventId = (int) $this->getId();
+
+        // Snapshot before the cascade below removes the child rows that
+        // toArray() reads (PinnedCalendars), so EVENT_DELETED listeners see
+        // the event as it actually was.
+        $this->hookDataSnapshot = HookManager::hasAction(Hooks::EVENT_DELETED)
+            ? $this->toArray()
+            : null;
 
         CalendarEventQuery::create()->filterByEventId($eventId)->delete($con);
         EventAudienceQuery::create()->filterByEventId($eventId)->delete($con);
@@ -59,6 +140,20 @@ class Event extends BaseEvent
         KioskAssignmentQuery::create()->filterByEventId($eventId)->delete($con);
 
         return parent::preDelete($con);
+    }
+
+    /**
+     * Fire EVENT_DELETED for every path that removes an event.
+     *
+     * Same reasoning as postUpdate(): events are deleted from the events API
+     * (DELETE /events/{id}) and from the /event/dashboard MVC action, and
+     * Propel calls postDelete() exactly once per delete(), after the row is
+     * gone but while the object still holds its column values.
+     */
+    public function postDelete(?ConnectionInterface $con = null): void
+    {
+        HookManager::doAction(Hooks::EVENT_DELETED, (int) $this->getId(), $this->hookDataSnapshot ?? []);
+        $this->hookDataSnapshot = null;
     }
 
     public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
