@@ -196,6 +196,39 @@ describe("API Private Group Operations", () => {
                 expect(membership.RoleId).to.equal(updatedRoleId);
             });
         });
+
+        // Regression coverage for issue #9830: addperson/removeperson write an
+        // audit Note via AuthenticationManager::getCurrentUser()->getId(), and a
+        // second, service-level permission check (AuthService::requireUserGroupMembership)
+        // used to only recognize the browser-session $_SESSION flag set by
+        // LocalAuthentication — never populated for API-key auth — so an
+        // authorized non-admin API-key caller (anyone but Admin) got a 500 on
+        // every add/remove instead of a 200. user.api.key (tony.wade, id 3) has
+        // usr_ManageGroups=1 and is not an Admin, so it is the right fixture to
+        // prove the fix.
+        it("Authorized non-admin (ManageGroups) can add and remove group members without a 500", () => {
+            cy.makePrivateUserAPICall(
+                "POST",
+                `/api/groups/${groupID}/addperson/${testPersonId}`,
+                { RoleID: initialRoleId },
+                200
+            );
+
+            getMemberIds().then((ids) => {
+                expect(ids, "group members after non-admin add").to.include(
+                    testPersonId
+                );
+            });
+
+            cy.makePrivateUserAPICall(
+                "DELETE",
+                `/api/groups/${groupID}/removeperson/${testPersonId}`,
+                null,
+                200
+            );
+
+            expectTestPersonAbsent();
+        });
     });
 
     describe("Group Role Operations", () => {
@@ -435,14 +468,18 @@ describe("API Private Group Operations", () => {
 
     describe("Authorization Tests - Non-Admin Users", () => {
         it("Non-admin should be denied adding group members", () => {
-            // Test that a user without bManageGroups permission is denied
-            cy.makePrivateUserAPICall(
+            // plainauth (john.plainauth, id 900) passes AuthMiddleware and lacks
+            // usr_ManageGroups, so the 403 comes from ManageGroupRoleAuthMiddleware
+            // — the gate this test's name promises to cover. user.api.key
+            // (tony.wade) holds usr_ManageGroups, so it can't be used to prove a
+            // denial here.
+            cy.makePrivatePlainAuthAPICall(
                 "POST",
                 `/api/groups/${groupID}/addperson/1`,
                 {
                     RoleID: 1,
                 },
-                [401, 403, 500]
+                [403]
             );
         });
 
@@ -466,24 +503,32 @@ describe("API Private Group Operations", () => {
         });
 
         it("Non-admin should be denied adding group roles", () => {
-            // Test that a user without bManageGroups permission is denied
-            cy.makePrivateUserAPICall(
+            // plainauth (john.plainauth, id 900) passes AuthMiddleware and lacks
+            // usr_ManageGroups, so the 403 comes from ManageGroupRoleAuthMiddleware
+            // — the gate this test's name promises to cover. user.api.key
+            // (tony.wade) holds usr_ManageGroups, so it can't be used to prove a
+            // denial here.
+            cy.makePrivatePlainAuthAPICall(
                 "POST",
                 `/api/groups/${groupID}/roles`,
                 {
                     roleName: "Unauthorized Role",
                 },
-                [401, 403, 500]
+                [403]
             );
         });
 
         it("Non-admin should be denied deleting group roles", () => {
-            // Test that a user without bManageGroups permission is denied
-            cy.makePrivateUserAPICall(
+            // plainauth (john.plainauth, id 900) passes AuthMiddleware and lacks
+            // usr_ManageGroups, so the 403 comes from ManageGroupRoleAuthMiddleware
+            // — the gate this test's name promises to cover. user.api.key
+            // (tony.wade) holds usr_ManageGroups, so it can't be used to prove a
+            // denial here.
+            cy.makePrivatePlainAuthAPICall(
                 "DELETE",
                 `/api/groups/${groupID}/roles/1`,
                 null,
-                [401, 403, 500]
+                [403]
             );
         });
     });
