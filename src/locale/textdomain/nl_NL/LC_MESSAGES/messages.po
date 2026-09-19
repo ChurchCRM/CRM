@@ -5019,14 +5019,6 @@ msgid "Verification URL created"
 msgstr "Verificatie-URL gemaakt"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Fout bij het verzenden van e-mail(s)"
 
@@ -8420,10 +8412,6 @@ msgid "selected family has no coordinates"
 msgstr "geselecteerde familie heeft geen coördinaten"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Vereis dat alle gebruikers zich inschrijven voor tweefactorauthenticatie"
 
@@ -9220,10 +9208,6 @@ msgstr "Gegevens exporteren naar CSV-formaat voor externe toepassingen"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "ChurchCRM uitbreiden met MailChimp, back-ups en meer"
-
-#: 
-msgid "FY %s"
-msgstr "BJ %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12183,10 +12167,6 @@ msgid "Database dump only (.sql)"
 msgstr "Alleen database-dump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Datumbereik mag niet meer dan 1 jaar bedragen"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destructieve bewerking"
 
@@ -12781,10 +12761,6 @@ msgstr "Groep niet gevonden voor deze rollenlijst"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Inactieve status kan alleen worden gewijzigd voor de classificatielijst"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Nieuwe gebruikers ontvangen geen welkomstmail met hun inloggegevens. Deel het wachtwoord handmatig met hen of configureer eerst e-mail."
 
 #: 
 msgid "Option name is required"
@@ -15995,10 +15971,6 @@ msgid "Buyers Registered"
 msgstr "Kopers geregistreerd"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Kopers dit jaar"
-
-#: 
 msgid "Catalog"
 msgstr "Catalogus"
 
@@ -16139,10 +16111,6 @@ msgid "Items Donated"
 msgstr "Gedoneerde items"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Gedoneerde items (dit jaar)"
-
-#: 
 msgid "Items Sold"
 msgstr "Verkochte items"
 
@@ -16217,10 +16185,6 @@ msgstr "Snelle voorinstellingen"
 #: 
 msgid "Raised"
 msgstr "Opgehaald"
-
-#: 
-msgid "Raised This Year"
-msgstr "Dit jaar opgehaald"
 
 #: 
 msgid "Sample Amount"
@@ -17787,4 +17751,68 @@ msgstr "Geen evenementen gevonden voor %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Probeer een ander gebeurtenistype, maand of jaar te selecteren."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Er is een geocoderingsfout opgetreden — probeer het later opnieuw"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adres is onvolledig (plaats, provincie en postcode ontbreken)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alle gezinnen hebben al coördinaten."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Bijwerken van coördinaten mislukt"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Bijwerken van coördinaten van het gezin mislukt"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Alle {{geocoded}} gezinnen zijn gegeocodeerd. De kaart is nu up-to-date."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} gezinnen zijn gegeocodeerd. {{failed}} konden niet worden herleid — zie details hieronder."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geocoderen…"
+
+#: 
+msgid "No address on file"
+msgstr "Geen adres bekend"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Geen overeenkomst gevonden — controleer straatnaam, plaats en postcode"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Open een gezin om het adres te corrigeren en voer dit daarna opnieuw uit."
+
+#: 
+msgid "Set up now"
+msgstr "Nu instellen"
+
+#: 
+msgid "Unknown family"
+msgstr "Onbekend gezin"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Alle coördinaten bijwerken"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Alle gezinscoördinaten bijwerken"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Coördinaten bijwerken"
 

@@ -128,6 +128,35 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
     </div>
     <?php endif; ?>
 
+    <?php if (!empty($timerJobsStale)): ?>
+    <!-- Scheduled tasks (timer jobs) have not run recently — issue #9724 -->
+    <div class="alert alert-warning" role="alert" id="timer-jobs-stale-warning">
+        <div class="d-flex align-items-start">
+            <div class="me-3">
+                <i class="fa-solid fa-clock-rotate-left fa-2x"></i>
+            </div>
+            <div class="flex-grow-1">
+                <h4 class="alert-heading mb-2"><?= gettext('Scheduled tasks are not running') ?></h4>
+                <p class="mb-2">
+                    <?php if (empty($timerJobsLastRun)): ?>
+                        <?= gettext('Background jobs (birthday emails and every plugin scheduled task) have never run on this installation.') ?>
+                    <?php else: ?>
+                        <?= sprintf(gettext('Background jobs (birthday emails and every plugin scheduled task) last ran on %s.'), InputUtils::escapeHTML($timerJobsLastRun)) ?>
+                    <?php endif; ?>
+                    <?= sprintf(ngettext('They are expected at least once every %d hour.', 'They are expected at least once every %d hours.', (int) $timerJobsStaleHours), (int) $timerJobsStaleHours) ?>
+                </p>
+                <p class="mb-2">
+                    <?= gettext('Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as') ?>:
+                </p>
+                <pre class="mb-2 p-2 bg-light border rounded"><code id="timer-jobs-cron-command">0 * * * * <?= InputUtils::escapeHTML($timerJobsCronCommand ?? '') ?></code></pre>
+                <p class="mb-0 small text-muted">
+                    <?= sprintf(gettext('The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it.'), 'iTimerJobsStaleHours') ?>
+                </p>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <?php if ($showTelemetryPrompt): ?>
     <!-- Telemetry consent card -->
     <div class="card mb-4 border-info" id="telemetry-consent-card">

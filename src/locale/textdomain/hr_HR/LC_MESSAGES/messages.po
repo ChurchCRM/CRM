@@ -5014,14 +5014,6 @@ msgid "Verification URL created"
 msgstr "URL provjere stvoren"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Greška pri slanju e-poruke/e-poruka"
 
@@ -8421,10 +8413,6 @@ msgid "selected family has no coordinates"
 msgstr "odabrana obitelj nema koordinate"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Zahtijevaj od svih korisnika upis u dvofaktorsku autentifikaciju"
 
@@ -9222,10 +9210,6 @@ msgstr "Izvezite podatke u CSV format za vanjske aplikacije"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Proširite ChurchCRM s MailChimpom, sigurnosnim kopijama i više"
-
-#: 
-msgid "FY %s"
-msgstr "FG %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12186,10 +12170,6 @@ msgid "Database dump only (.sql)"
 msgstr "Samo ispis baze podataka (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Datumski raspon ne može prelaziti 1 godinu"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destruktivna operacija"
 
@@ -12784,10 +12764,6 @@ msgstr "Skupini nije pronađena za ovaj popis uloga"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Status neaktivnosti može se mijenjati samo za popis klasifikacija"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Novi korisnici neće primati poruku dobrodošlice s vjerodajnicama. Ručno podijelite lozinku ili prvo konfigurirajte e-poštu."
 
 #: 
 msgid "Option name is required"
@@ -16001,10 +15977,6 @@ msgid "Buyers Registered"
 msgstr "Registrirani kupci"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Kupci ove godine"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16153,10 +16125,6 @@ msgid "Items Donated"
 msgstr "Donirane stavke"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Donirane stavke (ove godine)"
-
-#: 
 msgid "Items Sold"
 msgstr "Prodane stavke"
 
@@ -16235,10 +16203,6 @@ msgstr "Brze unaprijed postavljene vrijednosti"
 #: 
 msgid "Raised"
 msgstr "Prikupljeno"
-
-#: 
-msgid "Raised This Year"
-msgstr "Prikupljeno ove godine"
 
 #: 
 msgid "Sample Amount"
@@ -17819,4 +17783,68 @@ msgstr "Nisu pronađeni događaji za %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Pokušajte odabrati drugi tip događaja, mjesec ili godinu."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Došlo je do pogreške geokodiranja — pokušajte ponovno kasnije"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa je nepotpuna (nedostaju grad, županija i poštanski broj)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Sve obitelji već imaju koordinate."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Ažuriranje koordinata nije uspjelo"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Ažuriranje koordinata obitelji nije uspjelo"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodirano je svih {{geocoded}} obitelji. Karta je sada ažurirana."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodirano je {{geocoded}} obitelji. {{failed}} nije bilo moguće razriješiti — pogledajte pojedinosti u nastavku."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokodiranje…"
+
+#: 
+msgid "No address on file"
+msgstr "Nema zabilježene adrese"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nije pronađeno podudaranje — provjerite adresu, grad i poštanski broj"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Otvorite obitelj kako biste ispravili njezinu adresu, a zatim ponovno pokrenite ovo."
+
+#: 
+msgid "Set up now"
+msgstr "Postavi sada"
+
+#: 
+msgid "Unknown family"
+msgstr "Nepoznata obitelj"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Ažuriraj sve koordinate"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Ažuriraj koordinate svih obitelji"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Ažuriraj koordinate"
 
