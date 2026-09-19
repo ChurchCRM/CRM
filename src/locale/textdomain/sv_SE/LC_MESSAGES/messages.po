@@ -5141,14 +5141,6 @@ msgid "Verification URL created"
 msgstr "Verifierings-URL skapad"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Fel vid skicka e-post (er)"
 
@@ -8542,10 +8534,6 @@ msgid "selected family has no coordinates"
 msgstr "vald familj har inga koordinater"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kräv att alla användare registrerar sig för tvåfaktorsautentisering"
 
@@ -9342,10 +9330,6 @@ msgstr "Exportera data till CSV-format för externa applikationer"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Utöka ChurchCRM med MailChimp, säkerhetskopior och mer"
-
-#: 
-msgid "FY %s"
-msgstr "RA %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12305,10 +12289,6 @@ msgid "Database dump only (.sql)"
 msgstr "Enbart databasdump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Datumintervallet får inte överstiga 1 år"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destruktiv åtgärd"
 
@@ -12903,10 +12883,6 @@ msgstr "Grupp hittades inte för den här rollistan"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Inaktiv status kan bara växlas för klassificeringslistan"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Nya användare kommer inte att få ett välkomstmejl med sina inloggningsuppgifter. Dela lösenordet manuellt med dem eller konfigurera e-post först."
 
 #: 
 msgid "Option name is required"
@@ -16117,10 +16093,6 @@ msgid "Buyers Registered"
 msgstr "Registrerade köpare"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Köpare detta år"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16269,10 +16241,6 @@ msgid "Items Donated"
 msgstr "Donerade objekt"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Donerade objekt (detta år)"
-
-#: 
 msgid "Items Sold"
 msgstr "Sålda objekt"
 
@@ -16351,10 +16319,6 @@ msgstr "Snabbförinställningar"
 #: 
 msgid "Raised"
 msgstr "Insamlat"
-
-#: 
-msgid "Raised This Year"
-msgstr "Insamlat detta år"
 
 #: 
 msgid "Sample Amount"
@@ -17913,4 +17877,68 @@ msgstr "Inga händelser hittades för %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Prova att välja en annan händelsetyp, månad eller år."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Ett geokodningsfel uppstod — försök igen senare"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adressen är ofullständig (saknar stad, delstat och postnummer)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alla familjer har redan koordinater."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Det gick inte att uppdatera koordinaterna"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Det gick inte att uppdatera familjens koordinater"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodade alla {{geocoded}} familjer. Kartan är nu uppdaterad."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodade {{geocoded}} familjer. {{failed}} kunde inte lösas — se detaljer nedan."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokodar…"
+
+#: 
+msgid "No address on file"
+msgstr "Ingen adress registrerad"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Ingen träff hittades — kontrollera gatuadress, stad och postnummer"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Öppna en familj för att åtgärda dess adress och kör sedan detta igen."
+
+#: 
+msgid "Set up now"
+msgstr "Konfigurera nu"
+
+#: 
+msgid "Unknown family"
+msgstr "Okänd familj"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Uppdatera alla koordinater"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Uppdatera alla familjekoordinater"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Uppdatera koordinater"
 

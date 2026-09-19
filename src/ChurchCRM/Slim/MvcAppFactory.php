@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Slim;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
@@ -24,19 +25,26 @@ class MvcAppFactory
      *
      * @param string      $endpoint       The URL prefix for this module (e.g. '/admin', '/finance')
      * @param array{
-     *     dashboardUrl?:   string,
-     *     dashboardText?:  string,
-     *     roleMiddleware?: class-string|null,
+     *     dashboardUrl?:        string,
+     *     dashboardText?:       string,
+     *     roleMiddleware?:      class-string|null,
+     *     displayErrorDetails?: bool,
      * } $config Module-specific configuration:
      *   - dashboardUrl:  path (relative to root) for the error-page "go back" button
      *   - dashboardText: label for the "go back" button
      *   - roleMiddleware: FQCN of a role-auth middleware (e.g. AdminRoleAuthMiddleware::class)
+     *   - displayErrorDetails: override the debug-driven default; omit to follow
+     *     SystemConfig::debugEnabled()
      */
     public static function create(string $endpoint, array $config = []): App
     {
         $dashboardUrl = $config['dashboardUrl'] ?? $endpoint . '/';
         $dashboardText = $config['dashboardText'] ?? gettext('Return to Dashboard');
         $roleMiddleware = $config['roleMiddleware'] ?? null;
+        // Mirrors src/api/index.php: technical error details are shown only when
+        // debug logging is enabled, so production installs never leak raw exception
+        // messages on the MVC error page.
+        $displayErrorDetails = $config['displayErrorDetails'] ?? SystemConfig::debugEnabled();
 
         $app = AppFactory::create();
         $app->setBasePath(SlimUtils::getBasePath($endpoint));
@@ -46,7 +54,7 @@ class MvcAppFactory
         $app->addRoutingMiddleware();
 
         // Error middleware — added AFTER routing so it wraps routing in LIFO order
-        $errorMiddleware = $app->addErrorMiddleware(true, true, true);
+        $errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, true, true);
         SlimUtils::registerDefaultHtmlErrorHandler($errorMiddleware, $dashboardUrl, $dashboardText);
 
         // Standard middleware stack (LIFO — last added runs first)

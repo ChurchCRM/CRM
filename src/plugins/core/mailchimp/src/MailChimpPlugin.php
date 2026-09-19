@@ -272,7 +272,8 @@ class MailChimpPlugin extends AbstractPlugin
         }
 
         $newEmail = $person->getEmail();
-        $oldEmail = $oldData['email'] ?? null;
+        // PERSON_UPDATED's $oldData is keyed by Propel phpName (see #9768).
+        $oldEmail = $oldData['Email'] ?? null;
 
         // If email changed, update in MailChimp
         if ($oldEmail !== null && $oldEmail !== $newEmail) {
@@ -289,7 +290,8 @@ class MailChimpPlugin extends AbstractPlugin
             return;
         }
 
-        $email = $personData['email'] ?? null;
+        // PERSON_DELETED's $personData is keyed by Propel phpName (see #9768).
+        $email = $personData['Email'] ?? null;
         if (!empty($email)) {
             $this->service->unsubscribeFromAllLists($email);
         }

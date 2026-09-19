@@ -5041,14 +5041,6 @@ msgid "Verification URL created"
 msgstr "URL e verifikimit u krijua"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Gabim gjatë dërgimit të email-eve"
 
@@ -8441,10 +8433,6 @@ msgid "selected family has no coordinates"
 msgstr "familja e zgjedhur nuk ka koordinata"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kërko që të gjithë përdoruesit të regjistrohen në vërtetimin me dy faktorë"
 
@@ -9241,10 +9229,6 @@ msgstr "Eksporto të dhëna në formatin CSV për aplikacione të jashtme"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Zgjero ChurchCRM me MailChimp, rezerve dhe më shumë"
-
-#: 
-msgid "FY %s"
-msgstr "VF %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12204,10 +12188,6 @@ msgid "Database dump only (.sql)"
 msgstr "Vetëm dump i bazës së të dhënave (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Intervali i datave nuk mund të kalojë 1 vit"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operacion Shkatërrues"
 
@@ -12802,10 +12782,6 @@ msgstr "Grupi nuk u gjet për këtë listë rolesh"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Statusi joaktiv mund të ndryshohet vetëm për listën e klasifikimeve"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Përdoruesit e rinj nuk do të marrin një email mirëseardhje me kredencialet e tyre. Ndani fjalëkalimin me ta manualisht, ose konfiguroni emailin fillimisht."
 
 #: 
 msgid "Option name is required"
@@ -16016,10 +15992,6 @@ msgid "Buyers Registered"
 msgstr "Blerës të Regjistruar"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Blerës Këtë Vit"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16168,10 +16140,6 @@ msgid "Items Donated"
 msgstr "Artikuj të Dhuruar"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Artikuj të Dhuruar (Këtë Vit)"
-
-#: 
 msgid "Items Sold"
 msgstr "Artikuj të Shitur"
 
@@ -16250,10 +16218,6 @@ msgstr "Paracaktime të Shpejta"
 #: 
 msgid "Raised"
 msgstr "Mbledhur"
-
-#: 
-msgid "Raised This Year"
-msgstr "Mbledhur Këtë Vit"
 
 #: 
 msgid "Sample Amount"
@@ -17816,4 +17780,68 @@ msgstr "Nuk u gjetën ngjarje për %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Provoni të zgjidhni një lloj tjetër ngjarjeje, muaji ose viti."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Ndodhi një gabim gjatë gjeokodimit — provoni përsëri më vonë"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa është e paplotë (mungon qyteti, shteti dhe kodi postar)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Të gjitha familjet kanë tashmë koordinata."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Dështoi përditësimi i koordinatave"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Dështoi përditësimi i koordinatave të familjes"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "U gjeokoduan të gjitha {{geocoded}} familjet. Harta tani është e përditësuar."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "U gjeokoduan {{geocoded}} familje. {{failed}} nuk u zgjidhën dot — shihni detajet më poshtë."
+
+#: 
+msgid "Geocoding…"
+msgstr "Duke gjeokoduar…"
+
+#: 
+msgid "No address on file"
+msgstr "Nuk ka adresë të regjistruar"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nuk u gjet asnjë përputhje — kontrolloni adresën e rrugës, qytetin dhe kodin postar"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Hapni një familje për të korrigjuar adresën e saj, më pas ekzekutojeni këtë përsëri."
+
+#: 
+msgid "Set up now"
+msgstr "Konfiguro tani"
+
+#: 
+msgid "Unknown family"
+msgstr "Familje e panjohur"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Përditëso të Gjitha Koordinatat"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Përditëso të Gjitha Koordinatat e Familjeve"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Përditëso Koordinatat"
 
