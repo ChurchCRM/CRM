@@ -287,7 +287,18 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
         const MISSING_PERSON = 987654;
 
         /** GET an image URL on the current session, without failing on 404. */
-        const getPhoto = (url) => cy.request({ url, encoding: "binary", failOnStatusCode: false });
+        /**
+         * A URL the API handed out already carries the install's root path, so it is
+         * resolved against the base URL's origin; a subdirectory install would
+         * otherwise get the prefix twice. A literal route in this spec stays relative
+         * to the base URL, which includes that prefix.
+         */
+        const getPhoto = (url, fromApi = false) =>
+            cy.request({
+                url: fromApi ? new URL(url, Cypress.config("baseUrl")).href : url,
+                encoding: "binary",
+                failOnStatusCode: false,
+            });
 
         const expectImage = (response) => {
             expect(response.status).to.eq(200);
@@ -326,7 +337,7 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
             cy.request("/api/portal/me").then((profile) => {
                 const photoUrl = profile.body.profile.photoUrl;
                 expect(photoUrl, "the profile carries a photo URL").to.match(/\/api\/portal\/me\/photo/);
-                getPhoto(photoUrl).then(expectImage);
+                getPhoto(photoUrl, true).then(expectImage);
             });
         });
 
@@ -347,7 +358,7 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
                 expect(withPhotos.length, "at least one seeded family member has a photo").to.be.greaterThan(0);
                 for (const member of withPhotos) {
                     expect(member.photoUrl).to.match(/\/api\/portal\/(me|family\/members\/\d+)\/photo/);
-                    getPhoto(member.photoUrl).then(expectImage);
+                    getPhoto(member.photoUrl, true).then(expectImage);
                 }
             });
         });

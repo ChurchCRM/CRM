@@ -664,7 +664,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.get(`.generate-default-row[data-position-id="${posLead}"] .generate-default-accepted-wrap`).should("be.visible");
             cy.get(`.generate-default-row[data-position-id="${posLead}"] .generate-default-accepted`).check({ force: true });
 
-            cy.intercept("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`).as("generate");
+            cy.intercept("POST", `**/api/ministries/schedules/${scheduleId}/generate`).as("generate");
             cy.get("#generate-form-save").click();
             cy.wait("@generate").its("request.body.defaults").should("deep.eq", [
                 { positionId: posLead, personId: PERSON_DEFAULT, accepted: true },
@@ -710,7 +710,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
         it("generates with nothing chosen and assigns nobody", () => {
             openGenerateDialog();
 
-            cy.intercept("POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`).as("generate");
+            cy.intercept("POST", `**/api/ministries/schedules/${scheduleId}/generate`).as("generate");
             cy.get("#generate-form-save").click();
             cy.wait("@generate").then(({ request, response }) => {
                 expect(request.body.defaults).to.eq(undefined);
