@@ -1,8 +1,8 @@
 # How to Contribute to ChurchCRM
 
-ChurchCRM is a community project. Every church that uses it does so because someone — a volunteer, a developer, a designer, a pastor's assistant — gave a little of their time to make it better.
+ChurchCRM is a community project. Every church that uses it benefits from the time given by volunteers, developers, designers, translators, testers, documentation writers, and church staff.
 
-**You don't need to write code to make a meaningful contribution.** Churches need to find ChurchCRM, understand it, and feel confident choosing it. That takes writers, designers, testers, social media managers, translators, and developers working together.
+**You don't need to write code to make a meaningful contribution.** The project needs people who improve the product, documentation, translations, testing, design, and community experience.
 
 ---
 
@@ -28,15 +28,15 @@ ChurchCRM is a community project. Every church that uses it does so because some
 
 ### Write Content
 
-ChurchCRM's story needs to be told. Blog posts, tutorials, how-to guides, and church testimonials help other congregations understand what ChurchCRM can do and feel confident choosing it.
+Clear, accurate content helps congregations understand what ChurchCRM can do and helps existing users succeed.
 
 **What's needed:**
 - Blog posts about ChurchCRM features and use cases
 - Church testimonials ("how we use ChurchCRM at our church")
 - Tutorial articles for common workflows
-- Comparison guides for churches evaluating software
+- Evaluation guides based on verified ChurchCRM workflows and current product behavior
 
-**Where to contribute:** Open an issue on [GitHub](https://github.com/ChurchCRM/CRM/issues) with the `documentation` label, or share your draft on [Discord](https://discord.gg/tuWyFzj3Nj).
+**Where to contribute:** Open an issue on [GitHub](https://github.com/ChurchCRM/CRM/issues) with the `documentation` label, or share your draft on [Discord](https://discord.gg/tuWyFzj3Nj). Keep public claims aligned with the current application and approved website messaging.
 
 ---
 
@@ -56,7 +56,7 @@ The [official documentation site](https://docs.churchcrm.io) covers every featur
 
 ### Translate
 
-ChurchCRM is used in 46 languages. Every new translation opens ChurchCRM to thousands of churches that couldn't use it before.
+ChurchCRM currently lists 49 supported locales in its generated locale audit. Translation coverage varies by locale, and every improvement helps more churches use the application in a familiar language.
 
 **Translate via POEditor (no Git required):**
 1. Join the [ChurchCRM POEditor project](https://poeditor.com/join/project/RABdnDSqAt)
@@ -97,9 +97,9 @@ ChurchCRM's marketing site, documentation, and social presence all need visual a
 
 ---
 
-### Social Media & Marketing
+### Share ChurchCRM
 
-ChurchCRM has thousands of users but most churches have never heard of it. Spreading the word is one of the highest-leverage ways to help — every church that switches from a paid subscription to ChurchCRM saves money they can redirect to ministry.
+Churches discover ChurchCRM through people who share clear, accurate information about the project.
 
 **What's needed:**
 - Share ChurchCRM on social media (Facebook church groups, LinkedIn, X/Twitter, Instagram)
