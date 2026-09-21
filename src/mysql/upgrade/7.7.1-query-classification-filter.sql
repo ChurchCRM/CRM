@@ -1,4 +1,4 @@
--- ChurchCRM 7.7.0 — Classification filter on every people query in Data & Reports (#9914)
+-- ChurchCRM 7.7.1 — Classification filter on every people query in Data & Reports (#9914)
 --
 -- Every predefined query that returns people gets a multi-select Classification
 -- parameter (alias ~percls~). The option list is read live from list_lst
