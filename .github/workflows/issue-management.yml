@@ -10,9 +10,9 @@ concurrency:
 #
 #   1. Security guard on newly opened issues: a CVE/GHSA reference gets the
 #      private-disclosure template, labels, and is closed; other
-#      vulnerability-shaped wording is labelled `security` with NO public
-#      comment (a public "thanks, we'll look" on a vulnerability report is
-#      itself a disclosure).
+#      vulnerability-shaped wording is labelled `security` and left for the
+#      community agent, which posts the neutral redirect (no confirm, no
+#      deny) and sends the maintainer a risk-reality read of the claim.
 #   2. Normalize bug issue types when "bug" label is applied
 #   3. Mark stale inactive issues
 #   4. Review closed issues that may have been auto-closed without resolution
@@ -105,7 +105,7 @@ jobs:
             }
             if (looksSecurity) {
               await github.rest.issues.addLabels({ ...ref, labels: ['security'] });
-              console.log('Vulnerability-shaped wording: labelled `security`, no public comment.');
+              console.log('Vulnerability-shaped wording: labelled `security`; the community agent posts the redirect and triages the claim.');
               return;
             }
             console.log('Nothing security-shaped; the community agent handles the first reply.');
