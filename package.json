@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "7.7.0",
+    "version": "7.7.1",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -150,7 +150,7 @@
         "tom-select": "^2.6.2"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.5.12",
+        "@biomejs/biome": "^2.5.13",
         "@playwright/test": "^1.63.0",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
@@ -177,8 +177,8 @@
         "style-loader": "^4.0.0",
         "ts-loader": "^9.6.2",
         "typescript": "^6.0.3",
-        "webpack": "^5.109.0",
-        "webpack-cli": "^7.2.1"
+        "webpack": "^5.111.0",
+        "webpack-cli": "^7.2.3"
     },
     "overrides": {
         "archiver": {

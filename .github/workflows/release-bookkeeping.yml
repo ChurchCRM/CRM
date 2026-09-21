@@ -1,4 +1,4 @@
-name: "Release: Changelog, Milestones & Marketing"
+name: "Release Bookkeeping: Changelog & Milestones"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -8,14 +8,23 @@ concurrency:
 # Fires automatically when a release is published.
 # Can also be triggered manually to re-sync or back-fill any version.
 #
-# For full releases (non-pre-release):
-#   1. Writes changelog/<tag>.md from the GitHub Release title + body.
-#   2. Inserts a new row in CHANGELOG.md and commits to master.
-#   3. Generates X / Facebook / LinkedIn marketing posts and attaches
-#      them as a downloadable artifact on this Actions run.
-#   4. Closes the release milestone and moves pending issues/PRs to next version.
+# Deterministic bookkeeping only — no model call, ever. GitHub Actions never
+# calls an LLM: Actions logs on this public repo are world-readable, and a
+# model API key would be a secret exposed to every job on every trigger.
 #
-# For pre-releases: Only runs steps 1-3 (skips milestone cleanup).
+# For full releases (non-pre-release):
+#   1. Writes changelog/<tag>.md from the GitHub Release title + body. The
+#      one-line highlight is extracted from the release body's own ## headings
+#      — never model-generated.
+#   2. Inserts a new row in CHANGELOG.md and commits to master.
+#   3. Closes the release milestone and moves pending issues/PRs to next version.
+#
+# For pre-releases: Only runs step 1-2 (skips milestone cleanup).
+#
+# Marketing copy (social posts) is deliberately NOT here: it needs judgment
+# — which feature to lead with, what tone fits the release — and is drafted
+# by a maintainer running the `.agents/skills/churchcrm/social-media-release.md`
+# skill (via the community agent or Claude Code directly), never by Actions.
 
 on:
   release:
@@ -38,10 +47,9 @@ jobs:
     permissions:
       contents: write
     env:
-      GH_TOKEN:          ${{ github.token }}
-      GH_REPO:           ${{ github.repository }}
-      GITHUB_TOKEN:      ${{ github.token }}
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GH_TOKEN:     ${{ github.token }}
+      GH_REPO:      ${{ github.repository }}
+      GITHUB_TOKEN: ${{ github.token }}
       # Auto-trigger: release tag. Manual trigger: workflow_dispatch input.
       TAG: ${{ github.event.release.tag_name || inputs.tag }}
     steps:
@@ -69,18 +77,6 @@ jobs:
             git commit -m "chore(changelog): sync ${TAG} release notes"
             git push origin master
           fi
-
-      - name: Generate marketing posts
-        run: |
-          mkdir -p /tmp/marketing
-          node scripts/release-marketing.js "$TAG" > "/tmp/marketing/${TAG}-social-posts.md"
-
-      - name: Attach marketing posts as artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: marketing-posts-${{ env.TAG }}
-          path: /tmp/marketing/${{ env.TAG }}-social-posts.md
-          retention-days: 15
 
   # ───────────────────────────────────────────────────────────────────
   # Close release milestone and move pending items to next version
