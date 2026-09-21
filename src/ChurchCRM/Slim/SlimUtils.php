@@ -223,6 +223,11 @@ class SlimUtils
                 $returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
                 $returnText = gettext('Return to Dashboard');
                 $extraHtml = '';
+                // This handler never requires Header.php/Footer.php (it serves
+                // apps like session/index.php that can't safely assume an
+                // authenticated header renders), so the partial must supply
+                // its own <html>/<head>/CSS or the page renders unstyled.
+                $bStandalone = true;
 
                 ob_start();
                 // Include the shared error partial (path relative to src/ChurchCRM/Slim)
