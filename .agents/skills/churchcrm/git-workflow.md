@@ -757,6 +757,10 @@ git push origin fix/issue-1234-description --force-with-lease
 
 The repo uses grouped Dependabot updates configured in [.github/dependabot.yml](../../../.github/dependabot.yml). When reviewing or maintaining these PRs:
 
+### Automated first-pass review <!-- learned: 2026-09-21 -->
+
+Every Dependabot PR gets one comment from `.github/workflows/dependabot-review.yml` (`scripts/dependabot-review.js`): Claude Haiku reads the PR metadata, the lockfile version pairs, any backing Dependabot alert and the deprecated-`@types` check, applies the rules in this section, and posts a verdict (`Safe to merge` / `Merge, expect …` / `Do not merge yet`) plus what it did not check. A rebase edits the same comment. It runs on `pull_request_target` without ever checking out the PR head, and it never approves or merges. Treat it as a reviewer's first read, not a green light: tests are not run by it, so CI status stays the gate.
+
 ### Pinning away from a specific version
 
 When a published release has regressions we don't want, add a scoped `ignore:` under the npm `updates` entry — **never** rely on `@dependabot ignore` PR comments alone. Comments live in Dependabot's internal state and can be lost when the config is rewritten; the YAML is durable.

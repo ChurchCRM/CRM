@@ -1,0 +1,53 @@
+name: "Dependabot: PR review"
+
+# One automated review comment per Dependabot PR, written by Claude Haiku from
+# PR metadata (packages, major vs patch, backing security alert, lockfile
+# transitive changes, deprecated @types stubs) and the Dependabot rules in
+# .agents/skills/churchcrm/git-workflow.md. A rebase updates the same comment.
+#
+# It never approves, merges or labels. A human decides.
+#
+# Why pull_request_target: Dependabot-triggered `pull_request` runs get a
+# read-only token and no secrets, so they cannot comment or call the model.
+# pull_request_target runs in the base repo's context with secrets — which is
+# only safe because this job NEVER checks out or executes the PR head. It
+# checks out the base branch for the script and reads the PR via the API.
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: 'Dependabot PR number to (re)review'
+        required: true
+        type: number
+
+concurrency:
+  group: dependabot-review-${{ github.event.pull_request.number || inputs.pr }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      # Base branch only — never the PR head (see header).
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: Review the Dependabot PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr }}
+        run: node scripts/dependabot-review.js
