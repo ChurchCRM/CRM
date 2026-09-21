@@ -176,6 +176,7 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 | [Documentation Architecture & Wiki](./wiki-documentation.md) | Which doc home to use (end user / 3rd-party dev / core dev), MDX gotchas, wiki article structure |
 | [Release Notes](./release-notes.md) | Authoring GitHub release notes for any version type |
 | [Social Media Release](./social-media-release.md) | Generating platform posts for X, Facebook, Instagram, LinkedIn |
+| [Release Announcement](./release-announcement.md) | After a release is published: Discord announcement, notify reporters of fixed issues, list docs PRs held for the release |
 
 ## Example Workflows
 
