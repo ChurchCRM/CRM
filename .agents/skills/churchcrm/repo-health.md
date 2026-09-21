@@ -1,13 +1,13 @@
 ---
 title: "Repo Health Check"
-intent: "On-demand GitHub health snapshot: approved PRs waiting to merge, the good-first-issue pipeline, and community-profile hygiene"
+intent: "On-demand GitHub health snapshot: approved PRs waiting to merge, the good-first-issue pipeline, community-profile hygiene, and stale-branch cleanup"
 tags: ["workflow", "github", "maintenance", "community"]
 prereqs: ["[[github-interaction]]"]
 complexity: "beginner"
 ---
 # Skill: Repo Health Check
 
-Use when asked "how healthy is the repo", "any approved PRs waiting", "is the good-first-issue pipeline empty", or "run a repo hygiene check". Three independent checks, each a single `gh` query; run one or all. These used to be recurring gated agent tasks (NanoClaw); they are now point-in-time checks a maintainer asks for, so **report the current state** — there is no "changed since last run".
+Use when asked "how healthy is the repo", "any approved PRs waiting", "is the good-first-issue pipeline empty", "run a repo hygiene check", or "clean up stale branches". Four independent checks, each a single `gh` query; run one or all. These used to be recurring gated agent tasks (NanoClaw); they are now point-in-time checks a maintainer asks for, so **report the current state** — there is no "changed since last run".
 
 ## Setup
 
@@ -101,9 +101,56 @@ Terse Markdown, one `###` heading per check run, **findings only**. "Nothing to 
 
 ### Repo hygiene — health 86%
 - Missing `pull_request_template`: every PR starts from a blank description.
+
+### Stale branches — 92 with no PR
+- 76 dead (30d+, no PR) — ready to delete, listed below
+- 16 locale snapshot branches — always safe to delete
+- 3 named `security/*` or `fix/*ghsa*` — checked; already fixed on master via different code, safe to delete
+- 4 recent, real-looking work — needs your call: `copilot/add-giving-history-tab`, `pr-9789` (external contributor @carlhorton), ...
 ```
 
 Order checks worst-first when running all three. Findings about the Discord community (onboarding friction, unanswered newcomer questions surfaced while investigating) are **out of scope for this skill's output** — hand them to the community agent rather than posting them here.
+
+## Check 4 — Stale branch cleanup
+
+Branches nobody ever opened a PR for pile up from bot automation, abandoned drafts, and old feature work. Report and act on **PR-less** branches only — a branch with an open or merged PR is that PR's business, not this check's.
+
+```bash
+git fetch -q origin
+git branch -r | grep -v "origin/HEAD\|origin/$(gh api "repos/$REPO" --jq .default_branch)$" | sed 's#.*origin/##' | sort > /tmp/remote_branches.txt
+gh pr list -R "$REPO" --state all --limit 500 --json headRefName -q '.[].headRefName' | sort -u > /tmp/pr_branches.txt
+comm -23 /tmp/remote_branches.txt /tmp/pr_branches.txt > /tmp/no_pr_branches.txt
+while read -r b; do
+  printf '%s\t%s\t%s\t%s\n' "$b" \
+    "$(git log -1 --format=%cd --date=short "origin/$b")" \
+    "$(git log -1 --format=%an "origin/$b")" \
+    "$(git log -1 --format=%s "origin/$b")"
+done < /tmp/no_pr_branches.txt
+```
+
+### Classify before touching anything
+
+- **Dead by age — default rule: no commit in the last 30 days.** A branch nobody opened a PR for in a month was abandoned, not forgotten. Delete by default.
+- **Always-safe patterns, regardless of age** — these regenerate from their source, so losing the branch loses nothing:
+  - `locale/*` and `locales/*-YYYY-MM-DD-*` — dated snapshots from the POEditor sync automation. Translations are cumulative; a later sync always supersedes an earlier one, and the source of truth is POEditor, not the branch. **All locale branches can be rebuilt — always safe to delete**, no age check needed.
+  - A bot-authored branch (`copilot-swe-agent[bot]`, `github-actions[bot]`) whose only commit is a placeholder (`"Initial plan"` and nothing else, or the tool's own auto-generated open/sync message) — an abandoned scaffold with no real diff.
+- **Never delete on age alone: anything named `security/*`, `fix/*ghsa*`, or `fix/*cve*`.** A stale security branch might mean "abandoned" or it might mean "the fix shipped a different way and nobody deleted the branch" — those look identical from the branch list. Before deleting *or* opening a PR for one of these, check whether the CVE/GHSA it names is **already fixed on the current default branch**, possibly via different code:
+  1. `git log --oneline origin/<default>..origin/<branch>` — read what it actually changed.
+  2. `git diff --stat "origin/<default>...origin/<branch>"` — a near-empty diff against a branch with real commits means the substance already landed elsewhere and only a trivial remainder is left.
+  3. `grep -rn "<GHSA-id>"` on the default branch — the fix, once shipped, is usually cited in a comment or commit message near where it landed.
+  4. If the code path the branch touches no longer exists on the default branch (renamed, migrated, removed), that is itself strong evidence the vulnerability moved with it and was closed by the migration — confirm by checking the replacement path has equivalent protection (e.g. moved from a page-specific check to a global middleware).
+  - **Already fixed differently → delete, do not PR.** A PR that reintroduces an already-solved problem via an older, superseded approach is worse than no PR.
+  - **Not fixed and still relevant → open a PR** so it gets real review, rather than leaving a live vulnerability sitting unreviewed in an unlinked branch.
+- **Everything else** (real-looking feature/fix work, no clear staleness signal, or owned by an external contributor): **do not delete, do not decide alone.** List it for the maintainer with date/author/last-commit-message and let them say PR, delete, or leave it.
+
+### Acting
+
+- **Deleting a branch is a destructive action outside a PR's own lifecycle — always confirm with the maintainer before deleting anything, even a branch that matches an "always-safe" pattern**, by listing what you are about to delete first. The one exception a maintainer can grant in advance: a standing instruction to auto-delete a specific always-safe pattern (e.g. "all locale snapshot branches can always be deleted, don't ask each time").
+- Delete via the API, not `git push --delete` — a local pre-push hook (lint, etc.) has nothing to do with deleting a remote ref and will only get in the way:
+  ```bash
+  gh api -X DELETE "repos/$REPO/git/refs/heads/$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "$BRANCH")"
+  ```
+- A branch protection rule can refuse the delete (`422 Cannot delete this branch`) — that is deliberate, leave it and move on, don't fight the protection.
 
 ## Related Skills
 

@@ -178,7 +178,7 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 | [Release Notes](./release-notes.md) | Transform and fact-check the GitHub-generated draft changelog into user-focused release notes |
 | [Social Media Release](./social-media-release.md) | Generating platform posts for X, Facebook, Instagram, LinkedIn |
 | [Release Announcement](./release-announcement.md) | After a release is published: Discord announcement, notify reporters of fixed issues, list docs PRs held for the release |
-| [Repo Health Check](./repo-health.md) | On-demand GitHub snapshot: approved PRs waiting to merge, good-first-issue pipeline staleness, community-profile hygiene |
+| [Repo Health Check](./repo-health.md) | On-demand GitHub snapshot: approved PRs waiting to merge, good-first-issue pipeline staleness, community-profile hygiene, stale-branch cleanup |
 
 ## Example Workflows
 
