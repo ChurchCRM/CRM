@@ -5,17 +5,22 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'issues' }}
 
 # ==============================================================================
-# PURPOSE: Unified issue triage, stale detection, and auto-response workflow
+# PURPOSE: Deterministic issue hygiene — the parts that must fire even when
+# the community agent is down, rate-limited, or out of budget.
 #
-# This workflow handles all non-notification issue management:
-#   1. Auto-comment on newly opened issues with templates
+#   1. Security guard on newly opened issues: a CVE/GHSA reference gets the
+#      private-disclosure template, labels, and is closed; other
+#      vulnerability-shaped wording is labelled `security` with NO public
+#      comment (a public "thanks, we'll look" on a vulnerability report is
+#      itself a disclosure).
 #   2. Normalize bug issue types when "bug" label is applied
 #   3. Mark stale inactive issues
 #   4. Review closed issues that may have been auto-closed without resolution
 #
-# Discord notifications are handled separately in dedicated workflows:
-#   - bug-discord-notify.yml
-#   - security-discord-notify.yml
+# Deliberately NOT here: the first human-quality reply to a new issue (reading
+# it, asking only for what is missing, pointing at a duplicate or a doc). That
+# needs judgment and belongs to the community agent's `github-first-response`
+# task. The old template auto-comment was retired for the same reason.
 # ==============================================================================
 
 on:
@@ -31,7 +36,7 @@ on:
         required: false
         type: choice
         options:
-          - 'comment-and-triage'
+          - 'triage-only'
           - 'review-stale-only'
           - 'all'
         default: 'all'
@@ -48,136 +53,62 @@ permissions:
 
 jobs:
   # =========================================================================
-  # Auto-comment on newly opened issues with appropriate templates
+  # Security guard on newly opened issues (no model, no judgment)
   # =========================================================================
-  auto-comment:
-    if: false
-    name: Auto-comment on new issues
+  security-guard:
+    if: github.event_name == 'issues' && github.event.action == 'opened'
+    name: Security guard on new issues
     timeout-minutes: 5
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
           fetch-depth: 1
+          persist-credentials: false
 
-      - name: Comment on issue with template
+      - name: Redirect vulnerability reports to private disclosure
         uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
             const path = require('path');
-            const workspace = process.env.GITHUB_WORKSPACE || process.cwd();
-
-            // Load comment templates
-            let bugComment = '';
-            let questionComment = '';
-            let genericComment = '';
-            let systemInfoComment = '';
-            let securityComment = '';
-
-            try {
-              bugComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/bug.md'), 'utf8');
-            } catch (e) {
-              console.log('Could not read bug.md:', e.message);
-            }
-            try {
-              questionComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/question.md'), 'utf8');
-            } catch (e) {
-              console.log('Could not read question.md:', e.message);
-            }
-            try {
-              genericComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/generic.md'), 'utf8');
-            } catch (e) {
-              console.log('Could not read generic.md:', e.message);
-            }
-            try {
-              systemInfoComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/system-info.md'), 'utf8');
-            } catch (e) {
-              console.log('Could not read system-info.md:', e.message);
-            }
-            try {
-              securityComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/security.md'), 'utf8');
-            } catch (e) {
-              console.log('Could not read security.md:', e.message);
-            }
-
             const issue = context.payload.issue || {};
-            const author = (issue.user && issue.user.login) ? issue.user.login.toLowerCase() : '';
-
-            // Skip auto-comments for repository owner/bot
-            if (author === 'dawoudio') {
-              console.log('Skipping auto-comment: issue opened by repository owner');
+            const login = (issue.user && issue.user.login) || '';
+            if ((issue.user && issue.user.type) === 'Bot' || /\[bot\]$/.test(login)) {
+              console.log(`Author ${login} is a bot — skipping.`);
+              return;
+            }
+            if (['OWNER', 'MEMBER', 'COLLABORATOR'].includes(issue.author_association)) {
+              console.log(`Author ${login} is ${issue.author_association} — maintainers handle their own security issues.`);
               return;
             }
 
-            const title = (issue.title || '').toLowerCase();
-            const body = (issue.body || '').toLowerCase();
+            // Issue text is untrusted input: matched, never interpreted.
+            const text = `${issue.title || ''}\n${issue.body || ''}`;
+            const hasCVE = /cve-\d{4}-\d+/i.test(text) || /ghsa-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}/i.test(text);
+            const looksSecurity = /\b(vulnerabilit(y|ies)|exploit|xss|cross-site scripting|sql injection|sqli|csrf|remote code execution|rce|privilege escalation|authentication bypass|path traversal)\b/i.test(text);
+            const ref = { owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number };
 
-            // Classify issue
-            const cvePattern = /cve-(\d{4}-\d+)?/i;
-            const ghsaPattern = /ghsa-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}/i;
-            const hasCVE = cvePattern.test(title) || cvePattern.test(body) || ghsaPattern.test(title) || ghsaPattern.test(body);
-            const hasSystemInfo = body.includes('collected value title');
-
-            const labels = (issue.labels || []).map(l => (l && l.name ? l.name.toLowerCase() : ''));
-            const hasBugLabel = labels.includes('bug') || labels.includes('type:bug') || labels.includes('type: bug');
-            const isBug = body.includes('describe the issue') || body.includes('### what happened?') || hasBugLabel || title.startsWith('bug:');
-
-            const hasQuestionLabel = labels.includes('question');
-            const isQuestion = body.includes('how can we help') || body.includes('### what are you trying to do?') || hasQuestionLabel || title.startsWith('question:');
-
-            // Select appropriate template
-            let comment = '';
-            if (hasCVE && securityComment) {
-              console.log('Posting security comment');
-              comment = securityComment;
-            } else if (hasSystemInfo && systemInfoComment) {
-              console.log('Posting system-info comment');
-              comment = systemInfoComment;
-            } else if (isBug && bugComment) {
-              console.log('Posting bug comment');
-              comment = bugComment;
-            } else if (isQuestion && questionComment) {
-              console.log('Posting question comment');
-              comment = questionComment;
-            } else if (genericComment) {
-              console.log('Posting generic comment');
-              comment = genericComment;
+            if (hasCVE) {
+              // Existing maintainer policy: redirect to private disclosure, label, close.
+              const body = fs.readFileSync(path.join(process.env.GITHUB_WORKSPACE, '.github/issue-comments/security.md'), 'utf8');
+              await github.rest.issues.createComment({ ...ref, body });
+              await github.rest.issues.addLabels({ ...ref, labels: ['security', 'security-delete-required'] });
+              await github.rest.issues.update({ ...ref, state: 'closed', state_reason: 'not_planned' });
+              console.log('CVE/GHSA reference: template posted, labelled, closed — manual deletion required by an admin.');
+              return;
             }
-
-            // Post comment and handle security issues
-            if (comment) {
-              await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: comment
-              });
-
-              // Security handling: close CVE/GHSA issues immediately
-              if (hasCVE) {
-                console.log('⚠️ SECURITY: Closing issue due to CVE/GHSA disclosure');
-
-                await github.rest.issues.addLabels({
-                  issue_number: context.issue.number,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  labels: ['security', 'security-delete-required']
-                });
-
-                await github.rest.issues.update({
-                  issue_number: context.issue.number,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  state: 'closed',
-                  state_reason: 'not_planned'
-                });
-
-                console.log('Issue closed and labeled - manual deletion required by admin');
-              }
+            if (looksSecurity) {
+              await github.rest.issues.addLabels({ ...ref, labels: ['security'] });
+              console.log('Vulnerability-shaped wording: labelled `security`, no public comment.');
+              return;
             }
+            console.log('Nothing security-shaped; the community agent handles the first reply.');
 
   # =========================================================================
   # Normalize bug issue types when "bug" label is applied
@@ -186,7 +117,7 @@ jobs:
     if: |
       github.event_name == 'issues' && github.event.action == 'labeled' &&
       github.event.label.name == 'bug' ||
-      (inputs.operation == 'comment-and-triage' || inputs.operation == 'all')
+      (inputs.operation == 'triage-only' || inputs.operation == 'all')
     name: Normalize bug issue type
     timeout-minutes: 5
     runs-on: ubuntu-latest
