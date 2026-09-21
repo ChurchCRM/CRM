@@ -36,22 +36,9 @@ const send = (body, expectedStatus = 200) => cy.makePrivateAdminAPICall("POST", 
 describe("API POST /api/email/send", () => {
     describe("resolution and delivery", () => {
         const tag = `crm-9876-${Date.now()}`;
-        // Read, never assumed: other specs rename the church and change its email
-        // (private.admin.system.config, admin.church-info) and do not restore them.
-        let churchName = "Main St. Cathedral";
-        let churchEmail = "demo@churchcrm.io";
 
         before(() => {
             clearMailpit();
-            for (const [key, apply] of [
-                ["sChurchName", (v) => (churchName = v)],
-                ["sChurchEmail", (v) => (churchEmail = v)],
-            ]) {
-                cy.makePrivateAdminAPICall("GET", `/admin/api/system/config/${key}`, null, 200).then((resp) => {
-                    const value = resp.body.value ?? resp.body.data;
-                    if (value) apply(value);
-                });
-            }
         });
 
         it("sends one message per resolvable recipient and reports every skipped one by name", () => {
@@ -95,11 +82,16 @@ describe("API POST /api/email/send", () => {
                     expect(full.body.HTML).to.not.include("Dear ");
                     expect(full.body.HTML).to.not.include("Sincerely");
                     expect(full.body.HTML).to.not.include("You received this email");
-                    // Footer = the Church Information display preview: name, address, phone, email
-                    expect(full.body.HTML).to.include(`<strong>${churchName}</strong>`);
-                    expect(full.body.HTML).to.include(churchEmail);
                     expect(full.body.HTML).to.include("Line one<br");
                     expect(full.body.HTML).to.not.include("<script");
+                    // Footer = the Church Information display preview: name, address, phone, email.
+                    // Read the live values: other specs in the same run change the church name.
+                    cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/sChurchName").then((name) => {
+                        expect(full.body.HTML).to.include(`<strong>${name.body.value}</strong>`);
+                    });
+                    cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/sChurchEmail").then((email) => {
+                        expect(full.body.HTML).to.include(`mailto:${email.body.value}`);
+                    });
                 });
             });
         });

@@ -165,6 +165,7 @@
                     </td>
                 </tr>
                 <!-- end copy -->
+                {% block notice %}{% endblock %}
 
                 {% if fullURL %}
                 <!-- start button -->
@@ -235,7 +236,7 @@
                     {% if churchCountry %}<p style="margin: 0;">{{ churchCountry }}</p>{% endif %}
                     {% if churchPhone %}<p style="margin: 0;">{{ churchPhone }}</p>{% endif %}
                     {% if churchEmail %}<p style="margin: 0;"><a href="mailto:{{ churchEmail }}" style="color: #666;">{{ churchEmail }}</a></p>{% endif %}
-                    {% if churchWebSite %}<p style="margin: 0;"><a href="{{ churchWebSite }}" target="_blank" style="color: #666;">{{ churchWebSite }}</a></p>{% endif %}
+                    {% if churchWebSiteHost %}<p style="margin: 0;"><a href="{% if churchWebSiteSecure %}https://{% else %}http://{% endif %}{{ churchWebSiteHost }}" target="_blank" style="color: #666;">{{ churchWebSite }}</a></p>{% endif %}
                 </td>
             </tr>
         </table>

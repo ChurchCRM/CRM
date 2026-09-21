@@ -48,7 +48,7 @@ describe("Email history on the person view", () => {
     it("Show all opens the full, paginated history newest first", () => {
         cy.visit("/people/view/2");
         cy.get("#email-history-show-all").click();
-        // A subdirectory install prefixes the path, so match the tail rather than the whole.
+        // Base path may be a sub-directory in CI (/churchcrm/…), so match the tail only
         cy.location("pathname").should("match", /\/people\/view\/2\/emails$/);
         cy.contains("h3", "Email History").should("be.visible");
         cy.get("[data-email-history-table] tbody tr").should("have.length.at.least", 6);
