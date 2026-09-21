@@ -18,11 +18,14 @@ This used to be a scheduled poll in the community agent. It is a skill now
 because the maintainer already knows when a release happened; polling for it
 cost wakes and occasionally announced late.
 
-**Not covered here** — already automated by
-[`sync-changelog.yml`](../../../.github/workflows/sync-changelog.yml) on
-`release: published`: CHANGELOG sync, the social-media post drafts (see
-`social-media-release.md`; the generated drafts are the `marketing-posts-<tag>`
-workflow artifact), and closing/moving the milestone.
+**Not covered here:**
+- CHANGELOG sync and closing/moving the milestone — automated by
+  [`release-bookkeeping.yml`](../../../.github/workflows/release-bookkeeping.yml)
+  on `release: published`. Deterministic, no model call.
+- Social media post drafts — a maintainer runs `social-media-release.md`
+  directly (via the community agent or Claude Code); drafting them needs
+  judgment about tone and which feature to lead with, so it is never done
+  from Actions.
 
 ---
 

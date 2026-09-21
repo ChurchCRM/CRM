@@ -13,7 +13,10 @@
  *
  * Env vars:
  *   GH_TOKEN / GITHUB_TOKEN   Optional — higher API rate limits
- *   ANTHROPIC_API_KEY          Optional — AI-generated one-line highlights
+ *
+ * No model call: the one-line highlight is always extracted from the
+ * release body's own `## ` headings, deterministically. GitHub Actions
+ * never calls an LLM (see release-bookkeeping.yml for why).
  *
  * Examples:
  *   node scripts/release-changelog.js 7.3.0
@@ -82,47 +85,15 @@ async function fetchRelease(tag) {
 }
 
 // ---------------------------------------------------------------------------
-// Optional AI highlights (falls back to H2 extraction)
+// Highlights — deterministic H2 extraction, no model call
 // ---------------------------------------------------------------------------
 
-async function generateHighlights(tag, body) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-
-  if (!apiKey) {
-    const h2s = [...body.matchAll(/^## (.+)$/gm)]
-      .map(m => m[1].replace(/^\p{Emoji_Presentation}+\s*/u, '').trim())
-      .filter(Boolean)
-      .slice(0, 3);
-    return h2s.length ? h2s.join(', ') : 'See release notes';
-  }
-
-  const prompt =
-    `Summarize the ChurchCRM ${tag} release in one short line (max 100 chars). ` +
-    `Give a comma-separated list of 3–5 key changes. No markdown, no quotes, no trailing period.\n\n` +
-    `Release notes:\n${body}`;
-
-  try {
-    const data = await request(
-      'https://api.anthropic.com/v1/messages',
-      {
-        method:  'POST',
-        headers: {
-          'x-api-key':         apiKey,
-          'anthropic-version': '2023-06-01',
-          'content-type':      'application/json',
-        },
-      },
-      { model: 'claude-haiku-4-5-20251001', max_tokens: 120, messages: [{ role: 'user', content: prompt }] },
-    );
-    return data.content[0].text.trim().replace(/^["']|["']$/g, '');
-  } catch (err) {
-    console.warn(`Anthropic API error: ${err.message} — falling back to H2 extraction`);
-    const saved = process.env.ANTHROPIC_API_KEY;
-    delete process.env.ANTHROPIC_API_KEY;
-    const result = await generateHighlights(tag, body);
-    process.env.ANTHROPIC_API_KEY = saved;
-    return result;
-  }
+function generateHighlights(body) {
+  const h2s = [...body.matchAll(/^## (.+)$/gm)]
+    .map(m => m[1].replace(/^\p{Emoji_Presentation}+\s*/u, '').trim())
+    .filter(Boolean)
+    .slice(0, 3);
+  return h2s.length ? h2s.join(', ') : 'See release notes';
 }
 
 // ---------------------------------------------------------------------------
@@ -199,8 +170,8 @@ async function main() {
 
   writeChangelogFile(tag, title, body, publishedAt, force);
 
-  console.log('Generating highlights...');
-  const highlights = await generateHighlights(tag, body);
+  console.log('Extracting highlights from release body headings...');
+  const highlights = generateHighlights(body);
   console.log(`  → ${highlights}`);
 
   updateChangelogIndex(tag, publishedAt, highlights);
