@@ -10,6 +10,7 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.7.0](./changelog/7.7.0.md) | September 2026 | Exciting New Features, 🛠️ Enhancements & Improvements, Global Language Polish |
 | [7.6.4](./changelog/7.6.4.md) | September 2026 | ChurchCRM 7.6.4 adds event dashboard filtering and anonymous giving support
 
 Event Dashboard month filtering, Anonymous donations without Family records, Zero-padded date field fixes, Alphabetical waiting list sorting, Dashboard error suppression and stability improvements |
