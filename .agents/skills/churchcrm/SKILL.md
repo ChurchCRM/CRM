@@ -174,9 +174,10 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 | [Development Workflows](./development-workflows.md) | Setup, build, Docker management |
 | [Code Standards](./code-standards.md) | General coding, quality checks, PR reviews |
 | [Documentation Architecture & Wiki](./wiki-documentation.md) | Which doc home to use (end user / 3rd-party dev / core dev), MDX gotchas, wiki article structure |
-| [Release Notes](./release-notes.md) | Authoring GitHub release notes for any version type |
+| [Release Management](./release-management.md) | **Canonical end-to-end release process** — scope review, SHA-based CI/nightly gate, draft creation, approvals, publishing, and post-release verification |\n| [Release Notes](./release-notes.md) | Transform and fact-check the GitHub-generated draft changelog into user-focused release notes |
 | [Social Media Release](./social-media-release.md) | Generating platform posts for X, Facebook, Instagram, LinkedIn |
 | [Release Announcement](./release-announcement.md) | After a release is published: Discord announcement, notify reporters of fixed issues, list docs PRs held for the release |
+| [Repo Health Check](./repo-health.md) | On-demand GitHub snapshot: approved PRs waiting to merge, good-first-issue pipeline staleness, community-profile hygiene |
 
 ## Example Workflows
 
@@ -194,5 +195,6 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 - **Publish a release**: `release-notes.md` → `social-media-release.md` → `github-interaction.md`
 - **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
 - **Address PR comments**: `pr-review.md` → `github-interaction.md` → `git-workflow.md`
+- **Check repo health** (approved PRs waiting, good-first-issue pipeline, hygiene): `repo-health.md` → `github-interaction.md`
 - **Add print support to a page**: `frontend-development.md` (Print Support section) → `security-best-practices.md` (CSP) → `git-workflow.md`
 - **Add or edit a table with row actions**: `table-action-menu.md` → `tabler-components.md` → `git-workflow.md`
