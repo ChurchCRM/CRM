@@ -44,6 +44,23 @@ Open `http://localhost` and sign in with `admin` / `changeme`.
 
 The repository does not define an `npm run docker:test` script. Use `npm run docker:test:start` to start the test stack.
 
+## Building Without a Local PHP/Composer/Node.js Toolchain
+
+The development Docker image already has PHP 8.4, Composer, and Node 24/npm installed, so none of that toolchain needs to exist on the host — only `docker`, `docker compose`, and `npm` itself (just to invoke the wrapper scripts below) are assumed. If even `npm` isn't available on the host, skip straight to the raw `docker compose exec` command at the end of this section.
+
+```bash
+npm run docker:dev:start   # bring up the development stack (builds the image on first run)
+npm run docker:dev:build   # composer install + the full `npm run build`, inside the container
+npm run docker:dev:watch   # webpack --watch, inside the container, for an active edit session
+```
+
+These mirror `npm install && npm run build` from the primary setup above, but executed inside the `webserver` container against the repository bind-mounted at `/home/ChurchCRM`. If `npm` itself is not available on the host either, run the equivalent directly:
+
+```bash
+docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \
+  "source /root/.nvm/nvm.sh && cd /home/ChurchCRM && npm ci && npm run build"
+```
+
 ## Optional community environment
 
 The repository also contains a community-requested DDEV configuration. It is an alternative to the maintainer workflow, not the primary development path.
@@ -104,6 +121,9 @@ Use the smallest relevant test while developing, then run the broader required c
 | `npm run docker:test:logs` | Follow test-service logs |
 | `npm run docker:test:login:web` | Open a shell in the web container |
 | `npm run docker:test:reset:db` | Restore the test database seed |
+| `npm run docker:dev:start` | Start the development stack (PHP/Composer/Node all available in-container) |
+| `npm run docker:dev:build` | Run `composer install` + the full `npm run build` inside the development container |
+| `npm run docker:dev:watch` | Run `webpack --watch` inside the development container |
 | `npm run lint` | Run the repository's static checks |
 | `npm run test` | Run all Cypress tests |
 

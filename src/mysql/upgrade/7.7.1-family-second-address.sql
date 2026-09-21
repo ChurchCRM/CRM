@@ -1,4 +1,4 @@
--- ChurchCRM 7.7.0 — Optional second family address plus a "mailing address" flag
+-- ChurchCRM 7.7.1 — Optional second family address plus a "mailing address" flag
 -- Feature #9743: a family can record a second address (PO box, winter address,
 -- care-of address). When `fam_SecondIsMailing` is set that second address is
 -- where mail goes; the primary address stays the physical location used for
