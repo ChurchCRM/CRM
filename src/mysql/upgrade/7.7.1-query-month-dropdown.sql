@@ -1,4 +1,4 @@
--- ChurchCRM 7.7.0 — Month parameters on Data & Reports queries become a dropdown
+-- ChurchCRM 7.7.1 — Month parameters on Data & Reports queries become a dropdown
 --
 -- The month filter on Birthdays (qrp 18), Membership anniversaries (qrp 22),
 -- Wedding Anniversaries (qrp 300) and Birthdays & Anniversaries (qrp 301) was a
