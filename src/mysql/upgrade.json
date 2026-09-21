@@ -104,7 +104,7 @@
     "scripts": ["/mysql/upgrade/7.6.4-pledge-denominations.sql"],
     "dbVersion": "7.6.4"
   },
-  "current": {
+  "pre-7.7.0": {
     "versions": ["7.6.4"],
     "scripts": [
       "/mysql/upgrade/7.7.0-2fa-grace-period.sql",
@@ -114,5 +114,10 @@
       "/mysql/upgrade/7.7.0-query-classification-filter.sql"
     ],
     "dbVersion": "7.7.0"
+  },
+  "current": {
+    "versions": ["7.7.0"],
+    "scripts": [],
+    "dbVersion": "7.7.1"
   }
 }
