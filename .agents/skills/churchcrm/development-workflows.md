@@ -55,6 +55,27 @@ npm run docker:dev:logs      # View logs
 npm run docker:dev:login:web # Shell into web container
 ```
 
+### Building Without a Local PHP/Composer/Node.js Toolchain <!-- learned: 2026-09-17 -->
+
+The `dev` Docker image (`docker/Dockerfile.churchcrm-apache-php8`, `target: dev`) already has PHP, Composer, and Node 24/npm installed, so none of that toolchain needs to exist on the host — only `docker`/`docker compose` and `npm` itself (just to invoke the wrapper scripts below) are assumed, with `docker:dev:start` running. If even `npm` isn't available on the host, skip straight to the raw `docker compose exec` fallback at the end of this section.
+
+```bash
+npm run docker:dev:start   # bring the stack up first
+npm run docker:dev:build   # composer install + full npm run build, inside the container
+npm run docker:dev:watch   # webpack --watch, inside the container
+```
+
+`docker:dev:build`/`docker:dev:watch` run the whole repo (mounted at `/home/ChurchCRM` in the container — `src/` alone is separately mounted at `/var/www/html`, the Apache document root) through `npm ci && npm run build` inside `webserver`. `npm run build:php`'s validators (`scripts/validate-php-syntax.js` etc.) shell out to `php -l`, so the full chain needs PHP too, not just Node — the container has both, a bare host doesn't need either.
+
+**Gotcha:** Node/npm are installed via `nvm` into `/root/.nvm`, whose installer only wires itself into `~/.bashrc`. `docker compose exec ... bash -c "..."` is a **non-interactive** shell and never sources `~/.bashrc`, so a raw `bash -c "npm ..."` exec fails with `npm: command not found` even though `composer` (installed straight to `/usr/local/bin`) works fine. `docker:dev:build`/`docker:dev:watch` must `source /root/.nvm/nvm.sh &&` before any `npm`/`node` call — the same requirement applies to any new script or manual `docker compose exec` invocation that touches Node in this container (#9890).
+
+If npm itself isn't available on the host either (so `npm run docker:dev:build` can't even be typed), run the equivalent directly:
+
+```bash
+docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \
+  "source /root/.nvm/nvm.sh && cd /home/ChurchCRM && npm ci && npm run build"
+```
+
 ### Testing Containers
 
 ```bash

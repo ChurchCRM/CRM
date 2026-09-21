@@ -9231,10 +9231,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Zgjero ChurchCRM me MailChimp, rezerve dhe më shumë"
 
 #: 
-msgid "FY %s"
-msgstr "VF %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Familjet ndajnë një adresë dhe numër telefoni."
 
@@ -15996,10 +15992,6 @@ msgid "Buyers Registered"
 msgstr "Blerës të Regjistruar"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Blerës Këtë Vit"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16148,10 +16140,6 @@ msgid "Items Donated"
 msgstr "Artikuj të Dhuruar"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Artikuj të Dhuruar (Këtë Vit)"
-
-#: 
 msgid "Items Sold"
 msgstr "Artikuj të Shitur"
 
@@ -16230,10 +16218,6 @@ msgstr "Paracaktime të Shpejta"
 #: 
 msgid "Raised"
 msgstr "Mbledhur"
-
-#: 
-msgid "Raised This Year"
-msgstr "Mbledhur Këtë Vit"
 
 #: 
 msgid "Sample Amount"
