@@ -4,6 +4,7 @@ namespace ChurchCRM\Reports;
 
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -306,6 +307,7 @@ class PdfDirectory extends ChurchInfoReport
         global $bDirFamilyEmail;
         global $bDirWedding;
         global $bDirAddress;
+        global $bDirMailingAddress;
 
         extract($aRow);
 
@@ -326,6 +328,14 @@ class PdfDirectory extends ChurchInfoReport
             }
             if (Countries::isForeign($fam_Country)) {
                 $sFamilyStr .= $fam_Country . "\n";
+            }
+            // Only families that actually mail somewhere other than their primary
+            // address get a second block, and only when the reader asked for it (#9743).
+            if ($bDirMailingAddress && Family::rowHasDistinctMailingAddress($aRow)) {
+                $mailingBlock = Family::formatAddressBlock(Family::mailingAddressPartsFromRow($aRow));
+                if ($mailingBlock !== '') {
+                    $sFamilyStr .= '   ' . gettext('Mailing Address') . ': ' . str_replace("\n", "\n   ", $mailingBlock) . "\n";
+                }
             }
         }
 
