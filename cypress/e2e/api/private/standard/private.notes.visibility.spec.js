@@ -23,6 +23,12 @@
  *      Use this fixture whenever you need to test the "no Notes flag → 403" path.
  */
 describe("Notes Visibility Policy (#9036)", () => {
+
+    // Every note this spec creates is deleted again. DELETE /api/note/{id}
+    // still writes a `delete-note` audit row onto the same timeline in its
+    // place, so note_nte does not come back to its seed count — that is the
+    // application's audit trail, not spec litter, which is why the row-count
+    // guard only reports note_nte rather than failing on it (#9769).
     // Note IDs created in before() and cleaned up in after()
     const fixtures = {};
 

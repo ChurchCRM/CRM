@@ -20,6 +20,43 @@ describe("API Calendar - Timezone Round-trip", () => {
     // event specs, avoids a dependency on type-listing order.
     const eventTypeId = 1;
 
+    // Every event this spec creates, so after() can remove them again (#9769).
+    // Without this the spec left 6 events and a pinned calendar row behind on
+    // every run. Deleting the event cascades its calendar_events row.
+    const createdEventIds = [];
+
+    after(() => {
+        cy.cleanupEvents(createdEventIds);
+    });
+
+    /**
+     * Record an event for cleanup, but only when the API actually created one:
+     * POST /events/quick-create returns `created: false` and the existing
+     * event's id when one already exists for that date+type, and deleting that
+     * would destroy a row the spec did not create.
+     */
+    const trackQuickCreated = (response) => {
+        if (
+            response?.body?.created !== false &&
+            typeof response?.body?.eventId === "number"
+        ) {
+            createdEventIds.push(response.body.eventId);
+        }
+    };
+
+    /**
+     * POST /api/events/ returns only {success:true}, so resolve the id the
+     * same way the rest of the event specs do — by title, off the listing.
+     */
+    const trackEventByTitle = (title) =>
+        cy.makePrivateAdminAPICall("GET", "/api/events/", null, 200).then((resp) => {
+            const match = resp.body.Events.find((e) => e.Title === title);
+            if (match) {
+                createdEventIds.push(match.Id);
+            }
+            return match;
+        });
+
     /**
      * Extract the HH:MM:SS component from a datetime string that may be
      * either "YYYY-MM-DD HH:MM:SS" (Propel toArray default for naive columns)
@@ -76,9 +113,8 @@ describe("API Calendar - Timezone Round-trip", () => {
             );
 
             // Find the event we just created and verify its stored times
-            cy.makePrivateAdminAPICall("GET", "/api/events/", null, 200).then(
-                (resp) => {
-                    const mine = resp.body.Events.find((e) => e.Title === title);
+            trackEventByTitle(title).then(
+                (mine) => {
                     expect(mine, `event "${title}" must exist in /api/events`).to.exist;
 
                     // Date component must match exactly — no overflow into
@@ -106,6 +142,7 @@ describe("API Calendar - Timezone Round-trip", () => {
             ).then((createResp) => {
                 const eventId = createResp.body.eventId;
                 expect(eventId).to.be.a("number");
+                trackQuickCreated(createResp);
 
                 cy.makePrivateAdminAPICall(
                     "GET",
@@ -164,6 +201,7 @@ describe("API Calendar - Timezone Round-trip", () => {
                 expect(resp.body.count).to.equal(3);
                 const ids = resp.body.eventIds;
                 expect(ids).to.have.length(3);
+                createdEventIds.push(...ids);
 
                 // Check each occurrence preserves the 09:00 / 10:30 contract.
                 ids.forEach((id) => {
@@ -231,6 +269,8 @@ describe("API Calendar - Timezone Round-trip", () => {
                 },
                 200,
             );
+
+            trackEventByTitle(title);
 
             const rangeStart = "2030-08-01";
             const rangeEnd = "2030-08-31";

@@ -26,8 +26,18 @@ describe("Person Attendance History API", () => {
     });
 
     after(() => {
-        // Cleanup: checkout person 2 from event 1 (removes the attendance record)
+        // Cleanup: checkout person 2 from event 1, then remove the attendance
+        // row itself. Checking out only stamps a checkout date — the
+        // event_attend row stays, which used to leave one behind per run
+        // (#9769). DELETE /events/{id}/attendance/{personId} is what actually
+        // removes it.
         cy.makePrivateAdminAPICall("POST", `/api/events/${EVENT_ID}/checkout`, { personId: PERSON_WITH_ATTENDANCE }, 200);
+        cy.makePrivateAdminAPICall(
+            "DELETE",
+            `/api/events/${EVENT_ID}/attendance/${PERSON_WITH_ATTENDANCE}`,
+            null,
+            [200, 404],
+        );
     });
 
     context("GET /api/attendance/person/:id — admin caller", () => {

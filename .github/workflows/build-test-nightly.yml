@@ -213,6 +213,11 @@ jobs:
     - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP 8.5)
       run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
       env:
+        # Test-database drift guard (#9769): the ci-root database is published on
+        # 3306 (docker-compose.parallel.yaml). Required, so a guard that cannot
+        # reach the database fails the job instead of silently switching off.
+        ROW_GUARD_DB_PORT: "3306"
+        ROW_GUARD_REQUIRED: "1"
         SPLIT: ${{ matrix.shard-total || '' }}
         SPLIT_INDEX: ${{ matrix.split-index }}
 
@@ -340,6 +345,10 @@ jobs:
       run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
+        # Test-database drift guard (#9769): the ci-subdir database is published on
+        # DATABASE_SUBDIR_PORT (3307), not the 3306 default the guard would try.
+        ROW_GUARD_DB_PORT: "3307"
+        ROW_GUARD_REQUIRED: "1"
         SPLIT: ${{ matrix.shard-total || '' }}
         SPLIT_INDEX: ${{ matrix.split-index }}
 
