@@ -9,9 +9,11 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\TelemetryService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -48,6 +50,9 @@ $MenuFirst = 1;
 // a valid CSS string literal without breaking the declaration.
 $_currencyAttrs     = ' data-currency-position="' . InputUtils::escapeAttribute(CurrencyFormatter::position()) . '"';
 $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+// Admin masquerade (#9843): `body.impersonating` offsets the page and the fixed
+// navbars so nothing hides under the fixed banner rendered just below.
+$_isImpersonating = ImpersonationService::isActive();
 ?>
 <!DOCTYPE html>
 <html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
@@ -111,7 +116,8 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 
 </head>
 
-<body class="antialiased">
+<body class="antialiased<?= $_isImpersonating ? ' impersonating' : '' ?>">
+<?php require __DIR__ . '/ImpersonationBanner.php'; ?>
 <div class="page">
 
   <!-- Issue Report Modal -->
@@ -456,9 +462,26 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <i class="fa-solid fa-shield me-2"></i><?= gettext("Manage Two-Factor Authentication") ?>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="dropdown-item">
+            <?php if ($_isImpersonating): ?>
+            <!--
+              Masquerade (#9843): signing out mid-masquerade must not drop the
+              administrator at the login page — it returns them to their own
+              account, exactly like the banner's exit control. The item is
+              relabelled so it says what it actually does. /session/end performs
+              the same substitution for anyone who reaches it directly.
+            -->
+            <form method="post"
+                  action="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/user/impersonate/exit') ?>">
+              <?= CSRFUtils::getTokenInputField('user_impersonate') ?>
+              <button type="submit" id="userMenuSignOut" class="dropdown-item">
+                <i class="fa-solid fa-right-from-bracket me-2"></i><?= gettext('Exit to your account') ?>
+              </button>
+            </form>
+            <?php else: ?>
+            <a href="<?= SystemURLs::getRootPath() ?>/session/end" id="userMenuSignOut" class="dropdown-item">
               <i class="fa-solid fa-arrow-right-from-bracket me-2"></i><?= gettext('Sign out') ?>
             </a>
+            <?php endif; ?>
           </div>
         </div>
 

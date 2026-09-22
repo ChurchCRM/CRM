@@ -133,6 +133,11 @@ class AuthMiddleware implements MiddlewareInterface
      *  - /v2/user/current/changepassword — forced password change on first login
      *  - /v2/user/current/manage2fa      — forced 2FA enrollment when bRequire2FA is on
      *  - /v2/user/current/enroll2fa      — backward-compat alias for manage2fa
+     *  - /v2/user/impersonate/exit       — the way out of an admin masquerade (#9843).
+     *    Without this, an administrator who logs in as an EditSelf-exclusive user
+     *    is bounced to /external/limited-access on the very request that would
+     *    hand them their own session back, and the masquerade cannot be ended
+     *    from the banner at all. The handler acts only on the requesting session.
      *
      * APIs called by the manage2fa page bundle (webpack/two-factor-enrollment.js):
      *  - /api/user/current/2fa-status
@@ -146,6 +151,7 @@ class AuthMiddleware implements MiddlewareInterface
         '/v2/user/current/changepassword',
         '/v2/user/current/manage2fa',
         '/v2/user/current/enroll2fa',
+        '/v2/user/impersonate/exit',
         '/api/user/current/2fa-status',
         '/api/user/current/get2faqrcode',
         '/api/user/current/refresh2fasecret',
