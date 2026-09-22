@@ -31,7 +31,13 @@ test('mark-member-deceased', async ({ page }, testInfo) => {
   await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
   await humanPause(page, 800);
 
-  await humanClick(page.locator('a[href*="PersonEditor.php"]').first());
+  // person-view.php has several links matching this href: a hidden "Add
+  // New Person" FAB (bare /PersonEditor.php, no PersonID) that renders
+  // earlier in the DOM than this person's own toolbar Edit link, plus
+  // hidden dropdown-item Edit links for other family members. Scoping to
+  // .btn (the toolbar button's class) excludes all of those — verified
+  // live that this resolves to exactly one match, the visible Edit link.
+  await humanClick(page.locator('a.btn[href*="PersonEditor.php"]').first());
   await page.waitForURL(/PersonEditor\.php/, { timeout: 15000 });
   await expect(page.locator('#IsDeceased')).toBeVisible({ timeout: 10000 });
   await humanPause(page, 800);

@@ -31,7 +31,11 @@ test('find-neighbors-search', async ({ page }, testInfo) => {
   await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
   await humanPause(page, 1000);
 
-  await humanClick(page.locator('a[href*="map/neighbors"]').first());
+  // family-view.php has two links to this URL: a hidden dropdown-item
+  // (inside the closed "Actions" menu) and this visible .btn — .first()
+  // would grab the hidden one, which scrollIntoViewIfNeeded can never
+  // make visible since it's display:none, not just off-screen.
+  await humanClick(page.locator('a.btn[href*="map/neighbors"]').first());
   await page.waitForURL(/\/people\/map\/neighbors/, { timeout: 15000 });
   await expect(page.locator('#neighborsMap')).toBeVisible({ timeout: 15000 });
 
