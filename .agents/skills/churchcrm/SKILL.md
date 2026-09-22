@@ -24,6 +24,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 |-------|------------|
 | [Slim MVC Skill](./slim-mvc-skill.md) | Inventory of the Slim apps under `src/`, their role gates, and the shared API entity middleware |
 | [Configuration Management](./configuration-management.md) | Settings, SystemConfig, admin panels |
+| [Member Portal Design](./member-portal-design.md) | **Read before any Member Portal (`/portal`) or theme work** — the implementation-ready design for epic #8977: `/portal` module, Twig + theme override loader, `Include/themes/` themes, Admin → Member Portal page, landing rule, calendars, volunteer pages in the portal, team leaders on member logins |
 
 ## Database
 
