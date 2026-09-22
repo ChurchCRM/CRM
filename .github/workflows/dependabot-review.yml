@@ -1,0 +1,58 @@
+name: "Dependabot: PR fact-check"
+
+# One automated, facts-only comment per Dependabot PR: the packages bumped,
+# major vs minor/patch, any backing Dependabot alert, lockfile transitive
+# changes, and any bumped @types/* package that is a deprecated stub.
+#
+# NO MODEL CALL. By policy, GitHub Actions never calls an LLM: Actions logs on
+# a public repo are world-readable, and a model API key would be a secret
+# exposed to every job on every trigger, including forked-PR runs. The
+# written review — "does this actually break anything, should it merge" —
+# is done by a person or by a maintainer running the community agent /
+# Claude Code directly against the PR, never by this workflow.
+#
+# It never approves, merges or labels. A rebase updates the same comment.
+#
+# Why pull_request_target: Dependabot-triggered `pull_request` runs get a
+# read-only token and no ability to comment. pull_request_target runs in the
+# base repo's context — which is only safe because this job NEVER checks out
+# or executes the PR head. It checks out the base branch for the script and
+# reads the PR via the API.
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: 'Dependabot PR number to (re)check'
+        required: true
+        type: number
+
+concurrency:
+  group: dependabot-review-${{ github.event.pull_request.number || inputs.pr }}
+  cancel-in-progress: true
+
+jobs:
+  fact-check:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      # Base branch only — never the PR head (see header).
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: Post the Dependabot fact-check comment
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr }}
+        run: node scripts/dependabot-review.js
