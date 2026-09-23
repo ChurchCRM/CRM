@@ -5044,14 +5044,6 @@ msgid "Verification URL created"
 msgstr "URL verifikasi dibuat"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Kesalahan mengirim email"
 
@@ -8437,10 +8429,6 @@ msgid "selected family has no coordinates"
 msgstr "keluarga yang dipilih tidak memiliki koordinat"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Haruskan semua pengguna mendaftar di autentikasi dua faktor"
 
@@ -9236,10 +9224,6 @@ msgstr "Ekspor data ke format CSV untuk aplikasi eksternal"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Perluas ChurchCRM dengan MailChimp, cadangan, dan lainnya"
-
-#: 
-msgid "FY %s"
-msgstr "TA %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12198,10 +12182,6 @@ msgid "Database dump only (.sql)"
 msgstr "Ekspor database saja (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Rentang tanggal tidak boleh melebihi 1 tahun"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operasi Merusak"
 
@@ -12796,10 +12776,6 @@ msgstr "Pelayanan tidak ditemukan untuk daftar peran ini"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Status tidak aktif hanya dapat diubah untuk daftar klasifikasi"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Pengguna baru tidak akan menerima email selamat datang dengan kredensial mereka. Bagikan kata sandi secara manual, atau konfigurasikan email terlebih dahulu."
 
 #: 
 msgid "Option name is required"
@@ -13506,7 +13482,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 harus berupa string heksadesimal 64 karakter."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Pengelola ChurchCRM belum meninjaunya. Anda bertanggung jawab atas keamanan dan perilaku dari segala sesuatu yang Anda instal di sini. Lebih baik gunakan alur Telusuri yang Disetujui bila memungkinkan."
 
 #: 
@@ -16006,10 +15983,6 @@ msgid "Buyers Registered"
 msgstr "Pembeli Terdaftar"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Pembeli Tahun Ini"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16158,10 +16131,6 @@ msgid "Items Donated"
 msgstr "Item yang Disumbangkan"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Item yang Disumbangkan (Tahun Ini)"
-
-#: 
 msgid "Items Sold"
 msgstr "Item Terjual"
 
@@ -16240,10 +16209,6 @@ msgstr "Prasetel cepat"
 #: 
 msgid "Raised"
 msgstr "Terkumpul"
-
-#: 
-msgid "Raised This Year"
-msgstr "Terkumpul Tahun Ini"
 
 #: 
 msgid "Sample Amount"
@@ -17816,4 +17781,73 @@ msgstr "Tidak ada acara yang ditemukan untuk %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Coba pilih jenis acara, bulan, atau tahun yang berbeda."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Terjadi kesalahan geocoding — coba lagi nanti"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Alamat tidak lengkap (kota, provinsi, dan kode pos tidak ada)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Semua keluarga sudah memiliki koordinat."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Gagal memperbarui koordinat"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Gagal memperbarui koordinat keluarga"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Berhasil melakukan geocoding untuk semua {{geocoded}} keluarga. Peta kini sudah diperbarui."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Berhasil melakukan geocoding untuk {{geocoded}} keluarga. {{failed}} tidak dapat diselesaikan — lihat detail di bawah."
+
+#: 
+msgid "Geocoding…"
+msgstr "Melakukan geocoding…"
+
+#: 
+msgid "No address on file"
+msgstr "Tidak ada alamat yang tercatat"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Tidak ditemukan kecocokan — periksa alamat jalan, kota, dan kode pos"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Buka data keluarga untuk memperbaiki alamatnya, lalu jalankan ini lagi."
+
+#: 
+msgid "Set up now"
+msgstr "Atur sekarang"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Autentikasi dua faktor diwajibkan. Anda memiliki %d hari untuk mendaftar."
+
+#: 
+msgid "Unknown family"
+msgstr "Keluarga tidak dikenal"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Perbarui Semua Koordinat"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Perbarui Semua Koordinat Keluarga"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Perbarui Koordinat"
 

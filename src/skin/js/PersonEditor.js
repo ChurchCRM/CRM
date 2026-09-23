@@ -7,4 +7,14 @@ $(document).ready(function () {
     stateInputDivId: "stateInputDiv",
     stateTextboxId: "StateTextbox",
   });
+
+  // Toggle date-of-death picker visibility when the Deceased checkbox is changed
+  $("#IsDeceased").on("change", function () {
+    if ($(this).is(":checked")) {
+      $("#DeceasedDateGroup").show();
+    } else {
+      $("#DeceasedDateGroup").hide();
+      $("#DateDeceased").val("");
+    }
+  });
 });

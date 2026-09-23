@@ -89,10 +89,16 @@ class Bootstrapper
 
         try {
             SystemURLs::init($sRootPath, $URL, dirname(__DIR__));
-            // Debug: Output document root and log path
-            $docRoot = SystemURLs::getDocumentRoot();
-            $logPath = LoggerUtils::buildLogFilePath('debug');
-            error_log("[Bootstrap Debug] DocumentRoot: $docRoot, LogPath: $logPath");
+            // Report where the application thinks its document root and log file
+            // are. Only emitted when $debugBootstrapper is enabled in Config.php:
+            // the application logger is not configured yet at this point (and the
+            // whole purpose of the line is to find out where that log would go),
+            // so this diagnostic has to use error_log().
+            if (!empty($debugBootstrapper)) {
+                $docRoot = SystemURLs::getDocumentRoot();
+                $logPath = LoggerUtils::buildLogFilePath('debug');
+                error_log("[Bootstrap Debug] DocumentRoot: $docRoot, LogPath: $logPath");
+            }
         } catch (\Exception $e) {
             self::handleBootstrapFailure($e, 'SystemURLs initialization failed');
         }

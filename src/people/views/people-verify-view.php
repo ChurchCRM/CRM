@@ -27,7 +27,7 @@ if ($emailErrorReason !== '') {
     switch ($emailErrorReason) {
         case ConfirmReportEmailResult::STATUS_NO_RECIPIENTS:
             $emailAlertClass = 'danger';
-            $emailAlertIcon  = 'fa-solid fa-envelope-off';
+            $emailAlertIcon  = 'fa-solid fa-envelope';
             break;
         case ConfirmReportEmailResult::STATUS_SMTP_FAILURE:
             $emailAlertClass = 'danger';
@@ -35,7 +35,7 @@ if ($emailErrorReason !== '') {
             break;
         case ConfirmReportEmailResult::STATUS_EMAIL_DISABLED:
             $emailAlertClass = 'danger';
-            $emailAlertIcon  = 'fa-solid fa-envelope-off';
+            $emailAlertIcon  = 'fa-solid fa-envelope';
             break;
         case ConfirmReportEmailResult::STATUS_PARTIAL_FAILURE:
             $emailAlertClass = 'warning';
@@ -357,7 +357,7 @@ if ($emailErrorReason !== '') {
             var isSuccess = (data.status === 'success');
             var isPartial = (data.status === 'partial_failure');
             var alertClass = isSuccess ? 'success' : (isPartial ? 'warning' : 'danger');
-            var icon       = isSuccess ? 'ti-circle-check' : (isPartial ? 'ti-alert-triangle' : 'ti-alert-circle');
+            var icon       = isSuccess ? 'fa-circle-check' : (isPartial ? 'fa-triangle-exclamation' : 'fa-circle-exclamation');
 
             // Cancel any listener registered by a previous call
             if (_pendingHiddenListener) {
@@ -368,7 +368,7 @@ if ($emailErrorReason !== '') {
             banner.innerHTML =
                 '<div class="alert alert-' + alertClass + ' alert-dismissible fade show mt-0 mb-0 rounded-0" ' +
                 'data-cy="modal-result-banner">' +
-                '<i class="ti ' + icon + ' me-2" aria-hidden="true"></i>' +
+                '<i class="fa-solid ' + icon + ' me-2" aria-hidden="true"></i>' +
                 escapeHtml(data.message || '') +
                 '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                 '</div>';

@@ -247,6 +247,16 @@ EOF
 
 **Rule:** The description must always accurately reflect *what the PR actually contains* at the time of review — not just what it contained when first opened. A reviewer reading the description should not be surprised by the diff.
 
+**HARD RULE — any big change to a PR requires updating its description in the same session.** <!-- learned: 2026-09-10 -->
+Whenever you materially change a PR — rebase, squash/rewrite history, resolve conflicts that shift the diff, add/remove files or features, rename a migration or route, or drop out-of-scope work during an audit — you MUST run `gh pr edit <n> --body ...` before ending the turn so the Summary / Changes / Files Changed / Testing sections match the new state. The description update is part of the change, not a follow-up. Do not report the PR work as done until the body is current.
+
+**HARD RULE — always resolve review threads that are addressed or outdated.** <!-- learned: 2026-09-10 -->
+After any PR work (push, rebase, review pass), walk every open review thread and resolve it if:
+- the change it asked for is now in the branch, **or**
+- it is superseded / no longer applicable — the code it points at was rewritten, moved, or deleted (GitHub's `isOutdated` is a strong signal but confirm the concern is genuinely gone).
+
+Leave a one-line reply saying what addressed it (commit SHA, or "obsoleted by <change>") before resolving, so the reviewer sees the trail. Only leave a thread open when it raises a real, still-unaddressed concern — then call it out explicitly in your summary. Use the GraphQL `reviewThreads` query + `resolveReviewThread` mutation (see [`code-standards.md → Resolving Review Threads After Addressing Comments`](./code-standards.md)).
+
 ### Keeping Branches Up to Date
 
 **Always merge master into a PR branch before reviewing or testing it.** A branch that has diverged from master may have hidden conflicts or stale code that makes the review misleading.
@@ -501,6 +511,46 @@ Build and lint passed. Please review the changes above. Shall I commit with:
 
 This is non-negotiable. Even when changes are correct, tested, and ready, the user must see the diff and explicitly approve before pushing. The cost of an accidental bad push is higher than the inconvenience of waiting for approval.
 
+#### Commit freely, push only on approval — HARD RULE <!-- learned: 2026-09-10 -->
+
+**Committing and pushing are separate steps with different gates.**
+
+| Step | Gate |
+|------|------|
+| `git commit` | Run lint + build first, show the diff, then commit. A clean build + shown diff is enough to commit — no standing "wait for yes". |
+| `git push` | **Explicit per-push approval, every time.** The user must say "push" / "push it" / "go ahead and push" in their most recent message. Nothing else counts — not "lgtm" on a diff, not silence, not a follow-up question. |
+
+**Why push is gated harder than commit:** every push to GitHub kicks off the
+full CI matrix — ~15–20 minutes of billable runner time across ~25 jobs
+(root/subdir × api/admin-ui/ui-shards, new-system, security scans, build).
+Pushing a branch that isn't ready, or pushing repeatedly while iterating,
+burns CI hours the team may not have. Batch local commits and push once, when
+the user says the branch is ready.
+
+**Enforcement:** a `PreToolUse` Bash hook forces a permission prompt on any
+`git push`. `.claude/settings.json` is gitignored, so each machine adds it
+locally — the block below is the canonical copy. A push that reaches the
+prompt without the user having just asked for it is a mistake to abort, not a
+prompt to click through.
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -c 'if (.tool_input.command // \"\" | test(\"(^|[;&|]|\\\\s)git\\\\s+push(\\\\s|$)\")) then {hookSpecificOutput:{hookEventName:\"PreToolUse\",permissionDecision:\"ask\",permissionDecisionReason:\"HARD RULE (git-workflow.md): git push kicks off GitHub CI (billable runner minutes, ~15-20 min/run). Push ONLY after the user has explicitly approved THIS push in their most recent message. Committing needs no approval; pushing is the gated step.\"}} else empty end'"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 **Before push, always:**
 1. Run lint + build
 2. Show the full `git diff` output to the user
@@ -512,14 +562,15 @@ This is non-negotiable. Even when changes are correct, tested, and ready, the us
 - A wrong branch or unintended commits can cause serious issues
 - Approval is the gate that prevents mistakes from reaching production CI
 
-**What counts as explicit approval:**
-- "yes"
-- "looks good"
-- "lgtm" (looks good to me)
-- "commit it" / "push it"
-- "go ahead" / "ship it"
+**What counts as explicit push approval:**
+- "yes" (when the user's most recent message explicitly asked about pushing)
+- "push it"
+- "go ahead and push"
+- "push"
 
-**What does NOT count:**
+**What does NOT count as push approval:**
+- "lgtm" / "looks good" / "ship it" — these approve the *diff/commit*, not the push
+- Standalone "go ahead" (ambiguous — does not name pushing)
 - Silence or no response
 - Follow-up questions
 - Continuing the conversation
@@ -705,6 +756,12 @@ git push origin fix/issue-1234-description --force-with-lease
 ## Dependabot Workflow <!-- learned: 2026-04-21 -->
 
 The repo uses grouped Dependabot updates configured in [.github/dependabot.yml](../../../.github/dependabot.yml). When reviewing or maintaining these PRs:
+
+### Automated fact-check (no model) <!-- learned: 2026-09-21 -->
+
+Every Dependabot PR gets one deterministic comment from `.github/workflows/dependabot-review.yml` (`scripts/dependabot-review.js`): the packages bumped, major vs minor/patch classification, any backing Dependabot alert, lockfile transitive version changes, and any bumped `@types/*` package that is a deprecated stub. **No model call** — GitHub Actions never calls an LLM here, by policy (Actions logs on this public repo are world-readable, and a model API key would be a secret exposed to every job on every trigger, including forked-PR `pull_request_target` runs). A rebase updates the same comment; it never approves or merges.
+
+The written review — read the release notes for a major bump, say what breaks, decide safe-to-merge — is judgment this script does not have. Do that yourself, or ask the community agent / Claude Code to review the PR directly against the rules below; never wire that verdict into Actions.
 
 ### Pinning away from a specific version
 

@@ -5046,14 +5046,6 @@ msgid "Verification URL created"
 msgstr "சரிபார்ப்பு URL உருவாக்கப்பட்டது"
 
 #: 
-msgid "URL"
-msgstr "யு ஆர் எல் (URL)"
-
-#: 
-msgid "PDF"
-msgstr "பி டி எஃப் (PDF)  "
-
-#: 
 msgid "Error sending email(s)"
 msgstr "மின்னஞ்சல்(களை) அனுப்புவதில் பிழை"
 
@@ -8458,10 +8450,6 @@ msgid "selected family has no coordinates"
 msgstr "தேர்ந்தெடுத்த குடும்பத்திற்கு ஆயங்கள் இல்லை"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "அனைத்து பயனர்களும் இரு காரணி அங்கீகாரத்தில் சேர வேண்டும்"
 
@@ -9258,10 +9246,6 @@ msgstr "வெளிப்புற பயன்பாடுகளுக்க�
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, காப்புப் பிரதிகள் மற்றும் பலவற்றுடன் ChurchCRM ஐ நீட்டிக்கவும்"
-
-#: 
-msgid "FY %s"
-msgstr "நிதி ஆண்டு %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12225,10 +12209,6 @@ msgid "Database dump only (.sql)"
 msgstr "தரவுத்தளம் மட்டும் (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "தேதி வரம்பு 1 ஆண்டை தாண்டக்கூடாது"
-
-#: 
 msgid "Destructive Operation"
 msgstr "அழிவு சார்ந்த செயல்பாடு"
 
@@ -12823,10 +12803,6 @@ msgstr "இந்த பாத்திர பட்டியலுக்கா�
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "செயலற்ற நிலையை வகைப்பாடுகள் பட்டியலுக்கு மட்டுமே மாற்ற முடியும்"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "புதிய உறுப்பினர்கள் தங்கள் சான்றுகளுடன் வரவேற்பு மின்னஞ்சலைப் பெற மாட்டார்கள். கடவுச்சொற்றை கைமுறையாக பகிரவும் அல்லது முதலில் மின்னஞ்சலை உள்ளமைக்கவும்."
 
 #: 
 msgid "Option name is required"
@@ -13533,7 +13509,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 ஒரு 64-எழுத்து hex சரமாக இருக்க வேண்டும்."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM பராமரிப்பாளர்கள் இதை மதிப்பாய்வு செய்யவில்லை. இங்கே நீங்கள் நிறுவும் எதன் பாதுகாப்பு மற்றும் நடத்தைக்கும் நீங்களே பொறுப்பு. முடிந்தவரை அங்கீகரிக்கப்பட்டவைகளை உலாவுக வழிமுறையை விரும்பவும்."
 
 #: 
@@ -16038,10 +16015,6 @@ msgid "Buyers Registered"
 msgstr "பதிவு செய்த வாங்குவோர்"
 
 #: 
-msgid "Buyers This Year"
-msgstr "இந்த ஆண்டு வாங்குவோர்"
-
-#: 
 msgid "Catalog"
 msgstr "பட்டியல்"
 
@@ -16190,10 +16163,6 @@ msgid "Items Donated"
 msgstr "நன்கொடையளிக்கப்பட்ட பொருட்கள்"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "நன்கொடையளிக்கப்பட்ட பொருட்கள் (இந்த ஆண்டு)"
-
-#: 
 msgid "Items Sold"
 msgstr "விற்கப்பட்ட பொருட்கள்"
 
@@ -16272,10 +16241,6 @@ msgstr "விரைவு முன்னமைவுகள்"
 #: 
 msgid "Raised"
 msgstr "திரட்டப்பட்டது"
-
-#: 
-msgid "Raised This Year"
-msgstr "இந்த ஆண்டு திரட்டப்பட்டது"
 
 #: 
 msgid "Sample Amount"
@@ -17900,4 +17865,68 @@ msgstr "%s %d க்கான நிகழ்வுகள் எதுவும�
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "வேறு நிகழ்வு வகை, மாதம் அல்லது ஆண்டை தேர்வு செய்து பாருங்கள்."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "புவிக்குறியீட்டில் பிழை ஏற்பட்டது — பின்னர் மீண்டும் முயற்சிக்கவும்"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "முகவரி முழுமையடையவில்லை (நகரம், மாநிலம் மற்றும் அஞ்சல் குறியீடு இல்லை)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "அனைத்து குடும்பங்களுக்கும் ஏற்கனவே ஆயத்தொலைவுகள் உள்ளன."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "ஆயத்தொலைவுகளைப் புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "குடும்ப ஆயத்தொலைவுகளைப் புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "அனைத்து {{geocoded}} குடும்பங்களும் புவிக்குறியிடப்பட்டன. வரைபடம் இப்போது புதுப்பித்த நிலையில் உள்ளது."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} குடும்பங்கள் புவிக்குறியிடப்பட்டன. {{failed}} தீர்க்க முடியவில்லை — கீழே உள்ள விவரங்களைப் பார்க்கவும்."
+
+#: 
+msgid "Geocoding…"
+msgstr "புவிக்குறியிடுகிறது…"
+
+#: 
+msgid "No address on file"
+msgstr "பதிவில் முகவரி இல்லை"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "பொருத்தம் எதுவும் கிடைக்கவில்லை — தெரு முகவரி, நகரம் மற்றும் அஞ்சல் குறியீட்டைச் சரிபார்க்கவும்"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "முகவரியைச் சரிசெய்ய ஒரு குடும்பத்தைத் திறந்து, பின்னர் இதை மீண்டும் இயக்கவும்."
+
+#: 
+msgid "Set up now"
+msgstr "இப்போது அமைக்கவும்"
+
+#: 
+msgid "Unknown family"
+msgstr "தெரியாத குடும்பம்"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "அனைத்து ஆயத்தொலைவுகளையும் புதுப்பிக்கவும்"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "அனைத்து குடும்ப ஆயத்தொலைவுகளையும் புதுப்பிக்கவும்"
+
+#: 
+msgid "Update Coordinates"
+msgstr "ஆயத்தொலைவுகளைப் புதுப்பிக்கவும்"
 

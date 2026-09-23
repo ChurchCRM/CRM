@@ -159,6 +159,7 @@ class   SystemConfig
             'iChurchLongitude'                     => new ConfigItem('iChurchLongitude', 'number', '', ''),
             'bHidePersonAddress'                   => new ConfigItem('bHidePersonAddress', 'boolean', '1', gettext('When enabled, hides the address field for people not assigned to a family')),
             'bHideFriendDate'                      => new ConfigItem('bHideFriendDate', 'boolean', '0', gettext('Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.')),
+            'bHideDeceasedFromDirectory'            => new ConfigItem('bHideDeceasedFromDirectory', 'boolean', '1', gettext('Hide deceased members from the printed directory and CSV exports.')),
             'bHideFamilyNewsletter'                => new ConfigItem('bHideFamilyNewsletter', 'boolean', '0', gettext('Set true to disable management of newsletter subscriptions in the Family Editor.')),
             'bHideWeddingDate'                     => new ConfigItem('bHideWeddingDate', 'boolean', '0', gettext('Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.')),
             'bHideLatLon'                          => new ConfigItem('bHideLatLon', 'boolean', '0', gettext('When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.')),
@@ -261,6 +262,9 @@ class   SystemConfig
             'bEnabledEmail'                        => new ConfigItem('bEnabledEmail', 'boolean', '1', gettext('Enable email sending from ChurchCRM. Required for password reset, notifications, and email links.')),
             'bEnableBirthdayEmails'                => new ConfigItem('bEnableBirthdayEmails', 'boolean', '0', gettext('Automatically send a birthday greeting email to people on their birthday')),
             'sLastBirthdayEmailRunDate'            => new ConfigItem('sLastBirthdayEmailRunDate', 'text', '', gettext('Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually.')),
+            'sLastTimerJobsRunDateTime'            => new ConfigItem('sLastTimerJobsRunDateTime', 'text', '', gettext('Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually.')),
+            'iTimerJobsStaleHours'                 => new ConfigItem('iTimerJobsStaleHours', 'number', '26', gettext('Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning.')),
+            'iTimerJobsMinIntervalMinutes'         => new ConfigItem('iTimerJobsMinIntervalMinutes', 'number', '15', gettext('Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load.')),
             'sEmailPreheader'                      => new ConfigItem('sEmailPreheader', 'text', '', gettext('Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback.')),
             'sGreeterCustomMsg1'                   => new ConfigItem('sGreeterCustomMsg1', 'text', '', gettext('Custom message for church greeter email 1, max 255 characters')),
             'sGreeterCustomMsg2'                   => new ConfigItem('sGreeterCustomMsg2', 'text', '', gettext('Custom message for church greeter email 2, max 255 characters')),
@@ -270,13 +274,14 @@ class   SystemConfig
             'bSearchIncludeCalendarEvents'         => new ConfigItem('bSearchIncludeCalendarEvents', 'boolean', '1', gettext('Search Calendar Events')),
             'bSearchIncludeCalendarEventsMax'      => new ConfigItem('bSearchIncludeCalendarEventsMax', 'text', '15', gettext('Maximum number of Calendar Events')),
             'bRequire2FA'                          => new ConfigItem('bRequire2FA', 'boolean', '0', gettext('Require all users to enroll in two-factor authentication')),
+            'i2FAGracePeriodDays'                  => new ConfigItem('i2FAGracePeriodDays', 'number', '7', gettext('Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately.')),
             's2FAApplicationName'                  => new ConfigItem('s2FAApplicationName', 'text', 'ChurchCRM', gettext('Specify the application name to be displayed in authenticator app')),
             'sTwoFASecretKey'                      => new ConfigItem('sTwoFASecretKey', 'password', '', gettext('Encryption key for storing 2FA secret keys in the database')),
             'bSendUserDeletedEmail'                => new ConfigItem('bSendUserDeletedEmail', 'boolean', '0', gettext('Send an email notifying users when their account has been deleted')),
             'sInactiveClassification'              => new ConfigItem('sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
             'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
-            // Telemetry — collection level and internal state (sTelemetryAskedVersion excluded from UI)
+
             'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'none', gettext('Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent.'), '', json_encode(self::getTelemetryLevelChoices())),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
         ];
@@ -291,6 +296,7 @@ class   SystemConfig
             gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser', 'sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts', 'bUseScannedChecks', 'bEnableNonDeductible', 'iFYMonth', 'bUseDonationEnvelopes', 'aFinanceQueries', 'sCurrencySymbol', 'sCurrencyPosition', 'sThousandsSeparator', 'sDecimalSeparator'],
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
+            gettext('Scheduled Tasks')    => ['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'],
             gettext('Report Settings')    => ['sQBDTSettings', 'leftX', 'incrementY', 'sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDear', 'sConfirmSincerely', 'sConfirmSigner', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'bDirLetterHead', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3', 'iPDFOutputType'],
         ];
     }

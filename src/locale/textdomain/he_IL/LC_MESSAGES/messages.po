@@ -5049,14 +5049,6 @@ msgid "Verification URL created"
 msgstr "נוצר URL לאישור"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "שגיאה בשליחת אימייל/ים"
 
@@ -8449,10 +8441,6 @@ msgid "selected family has no coordinates"
 msgstr "למשפחה שנבחרה אין קואורדינטות"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "דרוש מכל המשתמשים להירשם לאימות דו-שלבי"
 
@@ -9249,10 +9237,6 @@ msgstr "ייצוא נתונים לפורמט CSV עבור יישומים חיצ�
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "הרחיבו את ChurchCRM עם MailChimp, גיבויים ועוד"
-
-#: 
-msgid "FY %s"
-msgstr "שנת כספים %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12212,10 +12196,6 @@ msgid "Database dump only (.sql)"
 msgstr "ייצוא מסד נתונים בלבד (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "טווח התאריכים אינו יכול לעלות על שנה אחת"
-
-#: 
 msgid "Destructive Operation"
 msgstr "פעולה הרסנית"
 
@@ -12810,10 +12790,6 @@ msgstr "הקבוצה לא נמצאה עבור רשימת תפקידים זו"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "ניתן לשנות סטטוס לא פעיל רק עבור רשימת הסיווגים"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "משתמשים חדשים לא יקבלו דואר אלקטרוני של ברוכים הבאים עם פרטי הגישה שלהם. שתפו איתם את הסיסמה באופן ידני, או הגדרו תחילה דואר אלקטרוני."
 
 #: 
 msgid "Option name is required"
@@ -13520,7 +13496,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 חייב להיות מחרוזת הקסדצימלית באורך 64 תווים."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "מתחזקי ChurchCRM לא בדקו תוסף זה. אתה אחראי לאבטחה ולהתנהגות של כל מה שאתה מתקין כאן. העדף את תהליך עיין במאושרים בכל עת שאפשר."
 
 #: 
@@ -16023,10 +16000,6 @@ msgid "Buyers Registered"
 msgstr "קונים רשומים"
 
 #: 
-msgid "Buyers This Year"
-msgstr "קונים השנה"
-
-#: 
 msgid "Catalog"
 msgstr "קטלוג"
 
@@ -16175,10 +16148,6 @@ msgid "Items Donated"
 msgstr "פריטים שנתרמו"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "פריטים שנתרמו (השנה)"
-
-#: 
 msgid "Items Sold"
 msgstr "פריטים שנמכרו"
 
@@ -16257,10 +16226,6 @@ msgstr "הגדרות מהירות מוגדרות מראש"
 #: 
 msgid "Raised"
 msgstr "גויס"
-
-#: 
-msgid "Raised This Year"
-msgstr "גויס השנה"
 
 #: 
 msgid "Sample Amount"
@@ -17839,4 +17804,68 @@ msgstr "לא נמצאו אירועים עבור %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "נסה לבחור סוג אירוע, חודש או שנה שונים."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "אירעה שגיאת מיקום גיאוגרפי — נסה שוב מאוחר יותר"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "הכתובת אינה שלמה (חסרים עיר, מדינה ומיקוד)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "לכל המשפחות כבר יש קואורדינטות."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "עדכון הקואורדינטות נכשל"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "עדכון קואורדינטות המשפחה נכשל"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "בוצע מיקום גיאוגרפי לכל {{geocoded}} המשפחות. המפה מעודכנת כעת."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "בוצע מיקום גיאוגרפי ל-{{geocoded}} משפחות. {{failed}} לא ניתן היה לפתור — ראה פרטים למטה."
+
+#: 
+msgid "Geocoding…"
+msgstr "מבצע מיקום גיאוגרפי…"
+
+#: 
+msgid "No address on file"
+msgstr "אין כתובת רשומה"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "לא נמצאה התאמה — בדוק את הרחוב, העיר והמיקוד"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "פתח משפחה כדי לתקן את כתובתה, ולאחר מכן הרץ זאת שוב."
+
+#: 
+msgid "Set up now"
+msgstr "הגדר כעת"
+
+#: 
+msgid "Unknown family"
+msgstr "משפחה לא ידועה"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "עדכן את כל הקואורדינטות"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "עדכן את כל קואורדינטות המשפחות"
+
+#: 
+msgid "Update Coordinates"
+msgstr "עדכן קואורדינטות"
 

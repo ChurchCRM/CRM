@@ -327,6 +327,12 @@ $(document).ready(function () {
                 type: 'boolean',
                 label: <?= InputUtils::jsonEncodeForScript(gettext('Self Registration')) ?>,
                 tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Allow visitors to self-register as new families.')) ?>
+            },
+            {
+                name: 'bHideDeceasedFromDirectory',
+                type: 'boolean',
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Deceased from Directory')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Exclude deceased members from the printed directory and CSV exports.')) ?>
             }
         ],
         onSave: function () {

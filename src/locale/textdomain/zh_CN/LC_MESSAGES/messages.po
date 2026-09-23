@@ -5120,14 +5120,6 @@ msgid "Verification URL created"
 msgstr "验证网址已创建"
 
 #: 
-msgid "URL"
-msgstr "网址"
-
-#: 
-msgid "PDF"
-msgstr "PDF格式"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "发送电子邮件时出错"
 
@@ -8513,10 +8505,6 @@ msgid "selected family has no coordinates"
 msgstr "所选家庭没有坐标"
 
 #: 
-msgid "2FA"
-msgstr "双重验证"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "要求所有用户注册双重身份验证"
 
@@ -9312,10 +9300,6 @@ msgstr "将数据导出为 CSV 格式供外部应用使用"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "使用 MailChimp、备份等功能扩展 ChurchCRM"
-
-#: 
-msgid "FY %s"
-msgstr "财年 %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12274,10 +12258,6 @@ msgid "Database dump only (.sql)"
 msgstr "仅数据库转储（.sql）"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "日期范围不能超过1年"
-
-#: 
 msgid "Destructive Operation"
 msgstr "危险操作"
 
@@ -12872,10 +12852,6 @@ msgstr "未找到此角色列表对应的事工"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "非活跃状态只能在分类列表中切换"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "新用户将不会收到包含其凭据的欢迎电子邮件。请手动与他们分享密码，或先配置电子邮件。"
 
 #: 
 msgid "Option name is required"
@@ -13582,7 +13558,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 必须为 64 位十六进制字符串。"
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM 维护者尚未审核此插件。您对此处安装的任何内容的安全性和行为负全责。请尽可能使用“浏览已审核插件”流程。"
 
 #: 
@@ -16082,10 +16059,6 @@ msgid "Buyers Registered"
 msgstr "已注册买家"
 
 #: 
-msgid "Buyers This Year"
-msgstr "今年买家"
-
-#: 
 msgid "Catalog"
 msgstr "目录"
 
@@ -16234,10 +16207,6 @@ msgid "Items Donated"
 msgstr "捐赠物品"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "捐赠物品（本年度）"
-
-#: 
 msgid "Items Sold"
 msgstr "已售出物品"
 
@@ -16316,10 +16285,6 @@ msgstr "快速预设"
 #: 
 msgid "Raised"
 msgstr "已筹集"
-
-#: 
-msgid "Raised This Year"
-msgstr "本年度已筹集"
 
 #: 
 msgid "Sample Amount"
@@ -17896,4 +17861,73 @@ msgstr "未找到 %s %d 的任何活动。"
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "请尝试选择不同的活动类型、月份或年份。"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "发生地理编码错误 — 请稍后重试"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "地址不完整(缺少城市、州/省和邮政编码)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "所有家庭都已具有坐标。"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "更新坐标失败"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "更新家庭坐标失败"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "已为全部 {{geocoded}} 个家庭完成地理编码。地图现已更新。"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "已为 {{geocoded}} 个家庭完成地理编码。{{failed}} 个未能解析 — 详情见下文。"
+
+#: 
+msgid "Geocoding…"
+msgstr "正在进行地理编码……"
+
+#: 
+msgid "No address on file"
+msgstr "没有存档地址"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "未找到匹配项 — 请检查街道地址、城市和邮政编码"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "打开一个家庭以修正其地址,然后再次运行此操作。"
+
+#: 
+msgid "Set up now"
+msgstr "立即设置"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "需要进行双重验证。您还有 %d 天可以完成注册。"
+
+#: 
+msgid "Unknown family"
+msgstr "未知家庭"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "更新所有坐标"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "更新所有家庭坐标"
+
+#: 
+msgid "Update Coordinates"
+msgstr "更新坐标"
 

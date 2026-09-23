@@ -5015,14 +5015,6 @@ msgid "Verification URL created"
 msgstr "सत्यापन URL बनाया गया"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "ईमेल भेजने में त्रुटि"
 
@@ -8415,10 +8407,6 @@ msgid "selected family has no coordinates"
 msgstr "चयनित परिवार के पास कोई निर्देशांक नहीं है"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "सभी उपयोगकर्ताओं को दो-कारक प्रमाणीकरण में नामांकन की आवश्यकता है"
 
@@ -9215,10 +9203,6 @@ msgstr "बाहरी अनुप्रयोगों के लिए CSV �
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, बैकअप और अन्य के साथ ChurchCRM का विस्तार करें"
-
-#: 
-msgid "FY %s"
-msgstr "वित्तीय वर्ष %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12178,10 +12162,6 @@ msgid "Database dump only (.sql)"
 msgstr "केवल डेटाबेस डंप (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "तारीख सीमा 1 वर्ष से अधिक नहीं हो सकती"
-
-#: 
 msgid "Destructive Operation"
 msgstr "विनाशकारी क्रिया"
 
@@ -12776,10 +12756,6 @@ msgstr "इस भूमिका सूची के लिए मंत्र�
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "निष्क्रिय स्थिति केवल वर्गीकरण सूची के लिए बदली जा सकती है"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "नए उपयोगकर्ताओं को उनके क्रेडेंशियल के साथ स्वागत ईमेल नहीं मिलेगा। पासवर्ड मैन्युअल रूप से साझा करें, या पहले ईमेल कॉन्फ़िगर करें।"
 
 #: 
 msgid "Option name is required"
@@ -13486,7 +13462,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 एक 64-अक्षर की hex स्ट्रिंग होनी चाहिए।"
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM अनुरक्षकों ने इसकी समीक्षा नहीं की है। यहाँ आप जो भी स्थापित करते हैं उसकी सुरक्षा और व्यवहार के लिए आप स्वयं जिम्मेदार हैं। जब भी संभव हो अनुमोदित ब्राउज़ प्रवाह को प्राथमिकता दें।"
 
 #: 
@@ -15989,10 +15966,6 @@ msgid "Buyers Registered"
 msgstr "पंजीकृत क्रेता"
 
 #: 
-msgid "Buyers This Year"
-msgstr "इस वर्ष के क्रेता"
-
-#: 
 msgid "Catalog"
 msgstr "सूचीपत्र"
 
@@ -16141,10 +16114,6 @@ msgid "Items Donated"
 msgstr "दान की गई वस्तुएँ"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "दान की गई वस्तुएँ (इस वर्ष)"
-
-#: 
 msgid "Items Sold"
 msgstr "बेची गई वस्तुएँ"
 
@@ -16223,10 +16192,6 @@ msgstr "त्वरित प्रीसेट"
 #: 
 msgid "Raised"
 msgstr "एकत्रित"
-
-#: 
-msgid "Raised This Year"
-msgstr "इस वर्ष एकत्रित"
 
 #: 
 msgid "Sample Amount"
@@ -17805,4 +17770,68 @@ msgstr "%s %d के लिए कोई इवेंट नहीं मिल�
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "कोई अलग इवेंट प्रकार, महीना या वर्ष चुनने का प्रयास करें।"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "जियोकोडिंग में त्रुटि हुई — बाद में पुनः प्रयास करें"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "पता अधूरा है (शहर, राज्य और ZIP कोड गायब है)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "सभी परिवारों के पास पहले से ही निर्देशांक मौजूद हैं।"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "निर्देशांक अपडेट करने में विफल"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "परिवार के निर्देशांक अपडेट करने में विफल"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "सभी {{geocoded}} परिवारों को जियोकोड किया गया। मानचित्र अब अद्यतित है।"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} परिवारों को जियोकोड किया गया। {{failed}} को हल नहीं किया जा सका — नीचे विवरण देखें।"
+
+#: 
+msgid "Geocoding…"
+msgstr "जियोकोडिंग हो रही है…"
+
+#: 
+msgid "No address on file"
+msgstr "कोई पता दर्ज नहीं है"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "कोई मिलान नहीं मिला — सड़क का पता, शहर और ZIP कोड जांचें"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "पता ठीक करने के लिए परिवार को खोलें, फिर इसे फिर से चलाएं।"
+
+#: 
+msgid "Set up now"
+msgstr "अभी सेट अप करें"
+
+#: 
+msgid "Unknown family"
+msgstr "अज्ञात परिवार"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "सभी निर्देशांक अपडेट करें"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "सभी परिवार के निर्देशांक अपडेट करें"
+
+#: 
+msgid "Update Coordinates"
+msgstr "निर्देशांक अपडेट करें"
 

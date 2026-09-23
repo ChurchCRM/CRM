@@ -59,6 +59,10 @@ if ($bHasProps) {
 $sSQL .= 'LEFT JOIN person2group2role_p2g2r ON p2g2r_per_ID = person_per.per_ID
             WHERE p2g2r_grp_ID = ' . $iGroupID;
 
+if (SystemConfig::getBooleanValue('bHideDeceasedFromDirectory')) {
+    $sSQL .= ' AND per_DateDeceased IS NULL';
+}
+
 if ($iRoleID > 0) {
     $sSQL .= ' AND p2g2r_rle_ID = ' . $iRoleID;
 }

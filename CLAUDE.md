@@ -207,6 +207,25 @@ When fixing a failed test:
 - Do not commit even when the user says "fix it" — build + review first
 - Silence or follow-up questions from the user are NOT approval to commit
 
+### Commit freely, push only on explicit approval (HARD RULE)
+
+**`git commit` and `git push` are separate gates.**
+
+- **Commit**: after lint + build pass and the diff is shown, commit. Batch
+  related work into local commits as you go.
+- **Push**: requires the user to explicitly say "push" (or "push it", "go
+  ahead and push") **in their most recent message** — every time, per push.
+  A "lgtm" on a diff, silence, or a follow-up question is approval to
+  *commit*, never to *push*.
+
+**Why:** every push runs the full GitHub CI matrix (~15–20 min of billable
+runner time across ~25 jobs). Pushing a not-ready branch, or pushing
+repeatedly while iterating, burns CI hours the team may not have. A
+`PreToolUse` hook in `.claude/settings.json` forces a permission prompt on
+every `git push`; a prompt that appears when the user did not just ask to
+push means stop, not click through. Canonical hook + rationale:
+[`git-workflow.md → Commit freely, push only on approval`](.agents/skills/churchcrm/git-workflow.md).
+
 ### Pre-push enforcement (Biome lint)
 
 **Biome lint must pass before any `git push`.** This is enforced both ways:

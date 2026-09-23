@@ -128,7 +128,7 @@ class VonagePlugin extends AbstractPlugin
         $apiSecret  = $settings['apiSecret']  ?? '';
         $fromNumber = $settings['fromNumber'] ?? '';
 
-        // Fall back to the saved secret when the form omits it (password field behaviour)
+        // Fall back to the saved secret when the form omits it (password field behavior)
         if (empty($apiSecret)) {
             $apiSecret = $this->apiSecret ?? '';
         }

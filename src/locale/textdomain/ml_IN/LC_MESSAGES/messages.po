@@ -5016,14 +5016,6 @@ msgid "Verification URL created"
 msgstr "സ്ഥിരീകരണ URL ഉണ്ടാക്കി"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "ഇമെയിൽ(കൾ) അയക്കുന്നതിൽ പിശക്"
 
@@ -8416,10 +8408,6 @@ msgid "selected family has no coordinates"
 msgstr "തിരഞ്ഞെടുത്ത കുടുംബത്തിന് കോർഡിനേറ്റ് ഇല്ല"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "എല്ലാ ഉപയോക്താക്കളും ഇരട്ടഘടക ആധികാരികതയിൽ ചേരണം"
 
@@ -9216,10 +9204,6 @@ msgstr "ബാഹ്യ ആപ്ലിക്കേഷനുകൾക്കാ�
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, ബാക്കപ്പുകൾ, കൂടുതൽ ഉപകരണങ്ങൾ ഉപയോഗിച്ച് ChurchCRM വിപുലീകരിക്കുക"
-
-#: 
-msgid "FY %s"
-msgstr "സാമ്പത്തിക വർഷം %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12179,10 +12163,6 @@ msgid "Database dump only (.sql)"
 msgstr "ഡേറ്റാബേസ് ഡമ്പ് മാത്രം (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "തീയതി ശ്രേണി 1 വർഷത്തിൽ കൂടരുത്"
-
-#: 
 msgid "Destructive Operation"
 msgstr "ഡേറ്റ ഇല്ലാതാക്കൽ"
 
@@ -12777,10 +12757,6 @@ msgstr "ഈ റോൾ ലിസ്‌റ്റിനായി ഗ്രൂപ്
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "നിഷ്ക്രിയ നില ക്ലാസ്സിഫിക്കേഷൻ ലിസ്‌റ്റിന് മാത്രമേ മാറ്റാൻ കഴിയൂ"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "പുതിയ ഉപയോക്താക്കൾക്ക് ക്രെഡൻഷ്യലുകൾ സഹിതം സ്വാഗത ഇമെയിൽ ലഭിക്കില്ല. പാസ്‌വേഡ് അവരുമായി സ്വമേധയാ പങ്കിടുക, അല്ലെങ്കിൽ ആദ്യം ഇമെയിൽ കോൺഫിഗർ ചെയ്യുക."
 
 #: 
 msgid "Option name is required"
@@ -13487,7 +13463,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 ഒരു 64-അക്ഷര hex സ്‌ട്രിങ് ആയിരിക്കണം."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM മെയിൻടെയ്‌നർമാർ ഇത് അവലോകനം ചെയ്‌തിട്ടില്ല. നിങ്ങൾ ഇവിടെ ഇൻസ്‌റ്റോൾ ചെയ്യുന്ന ഏതിന്റെയും സുരക്ഷയ്ക്കും പ്രവർത്തനത്തിനും നിങ്ങൾ ഉത്തരവാദിയാണ്. സാദ്ധ്യമാകുമ്പോഴൊക്കെ Browse Approved ഫ്ലോ ഉപയോഗിക്കുക."
 
 #: 
@@ -15990,10 +15967,6 @@ msgid "Buyers Registered"
 msgstr "രജിസ്റ്റർ ചെയ്ത വാങ്ങുന്നവർ"
 
 #: 
-msgid "Buyers This Year"
-msgstr "ഈ വർഷം വാങ്ങുന്നവർ"
-
-#: 
 msgid "Catalog"
 msgstr "കാറ്റലോഗ്"
 
@@ -16142,10 +16115,6 @@ msgid "Items Donated"
 msgstr "സംഭാവന ചെയ്ത ഇനങ്ങൾ"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "സംഭാവന ചെയ്ത ഇനങ്ങൾ (ഈ വർഷം)"
-
-#: 
 msgid "Items Sold"
 msgstr "വിൽക്കപ്പെട്ട ഇനങ്ങൾ"
 
@@ -16224,10 +16193,6 @@ msgstr "ദ്രുത മുൻനിർണ്ണയങ്ങൾ"
 #: 
 msgid "Raised"
 msgstr "സ്വരൂപിച്ചത്"
-
-#: 
-msgid "Raised This Year"
-msgstr "ഈ വർഷം സ്വരൂപിച്ചത്"
 
 #: 
 msgid "Sample Amount"
@@ -17794,4 +17759,68 @@ msgstr "%s %d-നായി ഒരു ഇവന്റും കണ്ടെത്
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "മറ്റൊരു ഇവന്റ് തരം, മാസം അല്ലെങ്കിൽ വർഷം തിരഞ്ഞെടുക്കാൻ ശ്രമിക്കുക."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "ജിയോകോഡിംഗ് പിശക് സംഭവിച്ചു — പിന്നീട് വീണ്ടും ശ്രമിക്കുക"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "വിലാസം അപൂർണ്ണമാണ് (നഗരം, സംസ്ഥാനം, ZIP എന്നിവ ഇല്ല)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "എല്ലാ കുടുംബങ്ങൾക്കും ഇതിനകം കോർഡിനേറ്റുകൾ ഉണ്ട്."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "കോർഡിനേറ്റുകൾ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "കുടുംബത്തിന്റെ കോർഡിനേറ്റുകൾ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "എല്ലാ {{geocoded}} കുടുംബങ്ങളും ജിയോകോഡ് ചെയ്തു. മാപ്പ് ഇപ്പോൾ കാലികമാണ്."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} കുടുംബങ്ങൾ ജിയോകോഡ് ചെയ്തു. {{failed}} എണ്ണം പരിഹരിക്കാനായില്ല — താഴെയുള്ള വിശദാംശങ്ങൾ കാണുക."
+
+#: 
+msgid "Geocoding…"
+msgstr "ജിയോകോഡിംഗ്…"
+
+#: 
+msgid "No address on file"
+msgstr "ഫയലിൽ വിലാസം ലഭ്യമല്ല"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "പൊരുത്തം കണ്ടെത്തിയില്ല — തെരുവ് വിലാസം, നഗരം, ZIP എന്നിവ പരിശോധിക്കുക"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "വിലാസം ശരിയാക്കാൻ ഒരു കുടുംബം തുറക്കുക, എന്നിട്ട് ഇത് വീണ്ടും പ്രവർത്തിപ്പിക്കുക."
+
+#: 
+msgid "Set up now"
+msgstr "ഇപ്പോൾ സജ്ജമാക്കുക"
+
+#: 
+msgid "Unknown family"
+msgstr "അജ്ഞാത കുടുംബം"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "എല്ലാ കോർഡിനേറ്റുകളും അപ്ഡേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "എല്ലാ കുടുംബ കോർഡിനേറ്റുകളും അപ്ഡേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Update Coordinates"
+msgstr "കോർഡിനേറ്റുകൾ അപ്ഡേറ്റ് ചെയ്യുക"
 

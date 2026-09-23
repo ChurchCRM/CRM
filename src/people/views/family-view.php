@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -18,6 +19,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $familyAddress = $family->getAddress();
 
 $memberCount = count($family->getPeople());
+$livingMemberCount = count($family->getLivingPeople());
 
 // Get unique family emails for the verification modal
 $familyEmails = $family->getEmails();
@@ -27,7 +29,7 @@ $showFamilyCheckin = AuthenticationManager::getCurrentUser()->canManageEvents();
 $activeEventsForCheckin = [];
 $familyPersonIds = [];
 if ($showFamilyCheckin) {
-    foreach ($family->getPeople() as $member) {
+    foreach ($family->getLivingPeople() as $member) {
         $familyPersonIds[] = (int) $member->getId();
     }
     $activeEvents = EventQuery::create()
@@ -55,6 +57,14 @@ $keyPeople = array_merge($headPeople, $spousePeople);
 $childPeople = $family->getChildPeople();
 $otherPeople = $family->getOtherPeople();
 
+// Identify any deceased persons who were the family Head (for succession prompt)
+$deceasedHeadNames = [];
+foreach ($headPeople as $headPerson) {
+    if ($headPerson->isDeceased()) {
+        $deceasedHeadNames[] = $headPerson->getFullName();
+    }
+}
+
 $assignedFamilyProperties = PropertyService::getAssigned($family);
 $allFamilyProperties = PropertyService::getAll($family);
 
@@ -66,6 +76,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
     window.CRM.currentFamilyName = <?= InputUtils::jsonEncodeForScript($family->getName()) ?>;
     window.CRM.currentActive = <?= $family->isActive() ?"true" :"false" ?>;
     window.CRM.currentFamilyView = 2;
+    window.CRM.currentFYId = <?= (int) $currentFYId ?>;
     window.CRM.familyEmail ="<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
     window.CRM.familyEmailMD5 ="<?= $familyEmailMD5 ?>";
     <?php if ($showFamilyCheckin): ?>
@@ -121,7 +132,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <?php if ($showFamilyCheckin && $memberCount > 0) { ?>
+                    <?php if ($showFamilyCheckin && $livingMemberCount > 0) { ?>
                     <button type="button" class="dropdown-item text-success fw-semibold" id="checkInFamilyBtn" data-bs-toggle="modal" data-bs-target="#familyCheckinModal">
                         <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Check In Family') ?>
                     </button>
@@ -205,11 +216,16 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                         </thead>
                         <tbody>
                             <?php foreach ($members as $person) { ?>
-                                <tr>
+                                <tr class="<?= $person->isDeceased() ? 'text-body-secondary opacity-75' : '' ?>">
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-sm me-2">
                                             <a href="<?= $person->getViewURI() ?>"><?= InputUtils::escapeHTML($person->getTitle()) ?> <?= InputUtils::escapeHTML($person->getFullName()) ?></a>
+                                            <?php if ($person->isDeceased()) { ?>
+                                                <span class="badge bg-secondary-lt text-secondary ms-2" title="<?= gettext('Deceased') ?>">
+                                                    <i class="fa-solid fa-cross"></i>
+                                                </span>
+                                            <?php } ?>
                                         </div>
                                     </td>
                                     <td class="text-center">
@@ -316,10 +332,23 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             </div>
         <?php } ?>
 
+        <?php if (!empty($deceasedHeadNames)) { ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <i class="fa-solid fa-triangle-exclamation me-2"></i>
+            <strong><?= gettext('Head of Household Update Needed') ?></strong>
+            <?= sprintf(
+                gettext('%s was the Head of this family and has been marked deceased. Please assign a new Head of Household.'),
+                InputUtils::escapeHTML(implode(', ', $deceasedHeadNames))
+            ) ?>
+            <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>" class="btn btn-sm btn-warning ms-2"><?= gettext('Edit Family') ?></a>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+        </div>
+        <?php } ?>
+
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof me-1"></i> <?= gettext("Family Members") ?></h3>
-                <span class="badge bg-primary-lt text-primary ms-2"><?= $memberCount ?></span>
+                <span class="badge bg-primary-lt text-primary ms-2"><?= $livingMemberCount ?></span>
                 <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
                 <a class="btn btn-sm btn-outline-primary ms-auto" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>">
                     <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Member') ?>
@@ -388,7 +417,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <li class="mb-1">
                         <i class="fa-solid fa-circle me-2 <?= $family->isActive() ? 'text-success' : 'text-secondary' ?>" style="width: 1rem; text-align: center;"></i><?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
                     </li>
-                    <li class="mb-1"><i class="fa-solid fa-person-half-dress me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-person-half-dress me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $livingMemberCount ?> <?= $livingMemberCount == 1 ? gettext('Member') : gettext('Members') ?><?= ($memberCount > $livingMemberCount) ? ' <span class="text-body-secondary small">(+' . ($memberCount - $livingMemberCount) . ' ' . gettext('deceased') . ')</span>' : '' ?></li>
                     <?php if (!empty($family->getHomePhone())) { ?>
                     <li class="mb-1">
                         <i class="fa-solid fa-phone me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><a href="tel:<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"><?= InputUtils::escapeHTML($family->getHomePhone()) ?></a>
@@ -635,8 +664,23 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     </ul>
                     <span class="vr mx-1"></span>
                     <ul class="nav nav-pills" role="tablist">
-                        <li class="nav-item"><a class="nav-link pledge-fy-pill" href="#" data-fy=""><?= gettext("All Time") ?></a></li>
-                        <li class="nav-item"><a class="nav-link active pledge-fy-pill" href="#" data-fy="<?= $currentFY ?>"><?= sprintf(gettext("FY %s"), $currentFY) ?></a></li>
+                        <li class="nav-item"><a class="nav-link pledge-fy-pill" href="#" data-fy="0"><?= gettext("All Time") ?></a></li>
+                        <!-- Current FY is always rendered and active by default -->
+                        <li class="nav-item">
+                            <a class="nav-link active pledge-fy-pill" href="#" data-fy="<?= (int) $currentFYId ?>">
+                                <?= InputUtils::escapeHTML(FinancialService::formatFiscalYear($currentFYId)) ?>
+                            </a>
+                        </li>
+                        <!-- Additional years from this family's historical data (skip current FY, already shown) -->
+                        <?php foreach ($familyAvailableFyids as $fyId): ?>
+                        <?php if ($fyId !== $currentFYId): ?>
+                        <li class="nav-item">
+                            <a class="nav-link pledge-fy-pill" href="#" data-fy="<?= (int) $fyId ?>">
+                                <?= InputUtils::escapeHTML(FinancialService::formatFiscalYear($fyId)) ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -672,7 +716,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
             </div>
             <div class="modal-body">
                 <p class="text-secondary">
-                    <?= sprintf(gettext('Check in all %d family members to a single event.'), $memberCount) ?>
+                    <?= sprintf(gettext('Check in all %d family members to a single event.'), $livingMemberCount) ?>
                 </p>
                 <div class="mb-3">
                     <label for="familyCheckinEventSelect" class="form-label fw-bold"><?= gettext('Select Event') ?></label>
@@ -821,9 +865,9 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     <?php
                 } ?>
                 <button type="button" id="verifyURL"
-                        class="btn btn-secondary"><i class="fa-solid fa-link"></i><?= gettext("URL") ?></button>
+                        class="btn btn-secondary"><i class="fa-solid fa-link"></i>URL</button>
                 <button type="button" id="verifyDownloadPDF"
-                        class="btn btn-info"><i class="fa-solid fa-download"></i><?= gettext("PDF") ?></button>
+                        class="btn btn-info"><i class="fa-solid fa-download"></i>PDF</button>
                 <button type="button" id="verifyNow"
                         class="btn btn-success"><i class="fa-solid fa-check"></i><?= gettext("Verified In Person") ?>
                 </button>

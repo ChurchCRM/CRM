@@ -5046,14 +5046,6 @@ msgid "Verification URL created"
 msgstr "URL de vérification créée"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "Erreur lors de l'envoi des mails"
 
@@ -8448,10 +8440,6 @@ msgid "selected family has no coordinates"
 msgstr "la famille sélectionnée n'a pas de coordonnées"
 
 #: 
-msgid "2FA"
-msgstr "A2F"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Exiger que tous les utilisateurs s'inscrivent à l'authentification à deux facteurs"
 
@@ -9248,10 +9236,6 @@ msgstr "Exporter les données au format CSV pour des applications externes"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Étendre ChurchCRM avec MailChimp, les sauvegardes et plus encore"
-
-#: 
-msgid "FY %s"
-msgstr "AF %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12211,10 +12195,6 @@ msgid "Database dump only (.sql)"
 msgstr "Export de base de données uniquement (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "La plage de dates ne peut pas dépasser 1 an"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Opération destructive"
 
@@ -12809,10 +12789,6 @@ msgstr "Ministère introuvable pour cette liste de rôles"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Le statut inactif ne peut être modifié que dans la liste des classifications"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Les nouveaux utilisateurs ne recevront pas d'e-mail de bienvenue avec leurs identifiants. Partagez le mot de passe manuellement ou configurez la messagerie d'abord."
 
 #: 
 msgid "Option name is required"
@@ -13519,7 +13495,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "Le SHA-256 doit être une chaîne hexadécimale de 64 caractères."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Les mainteneurs de ChurchCRM ne l'ont pas vérifiée. Vous êtes responsable de la sécurité et du comportement de tout ce que vous installez ici. Privilégiez autant que possible la procédure Parcourir les approuvées."
 
 #: 
@@ -16022,10 +15999,6 @@ msgid "Buyers Registered"
 msgstr "Acheteurs inscrits"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Acheteurs cette année"
-
-#: 
 msgid "Catalog"
 msgstr "Catalogue"
 
@@ -16170,10 +16143,6 @@ msgid "Items Donated"
 msgstr "Articles donnés"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Articles donnés (cette année)"
-
-#: 
 msgid "Items Sold"
 msgstr "Articles vendus"
 
@@ -16252,10 +16221,6 @@ msgstr "Préréglages rapides"
 #: 
 msgid "Raised"
 msgstr "Collecté"
-
-#: 
-msgid "Raised This Year"
-msgstr "Collecté cette année"
 
 #: 
 msgid "Sample Amount"
@@ -17822,4 +17787,68 @@ msgstr "Aucun événement trouvé pour %s %d."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Essayez de sélectionner un type d'événement, un mois ou une année différent."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Une erreur de géocodage s'est produite — réessayez plus tard"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "L'adresse est incomplète (ville, région et code postal manquants)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Toutes les familles ont déjà des coordonnées."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Échec de la mise à jour des coordonnées"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Échec de la mise à jour des coordonnées de la famille"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Géocodage effectué pour les {{geocoded}} familles. La carte est maintenant à jour."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} familles géocodées. {{failed}} n'ont pas pu être résolues — voir les détails ci-dessous."
+
+#: 
+msgid "Geocoding…"
+msgstr "Géocodage en cours…"
+
+#: 
+msgid "No address on file"
+msgstr "Aucune adresse enregistrée"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Aucune correspondance trouvée — vérifiez l'adresse, la ville et le code postal"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Ouvrez une famille pour corriger son adresse, puis relancez cette opération."
+
+#: 
+msgid "Set up now"
+msgstr "Configurer maintenant"
+
+#: 
+msgid "Unknown family"
+msgstr "Famille inconnue"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Mettre à jour toutes les coordonnées"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Mettre à jour les coordonnées de toutes les familles"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Mettre à jour les coordonnées"
 

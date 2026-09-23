@@ -325,7 +325,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
             <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="dropdown-item"
                title="<?= gettext('New Release') ?>">
-              <i class="fa-solid fa-party-horn me-2"></i><?= gettext('New Release') ?>
+              <i class="fa-solid fa-champagne-glasses me-2"></i><?= gettext('New Release') ?>
               <?php if ($updateVersion) { ?>
                 <span id="upgradeToVersion" class="ms-1">
                   <?= $updateVersion->MAJOR ?>.<?= $updateVersion->MINOR ?>.<?= $updateVersion->PATCH ?>
@@ -335,7 +335,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <?php } ?>
             <a href="https://github.com/ChurchCRM/CRM/releases/latest" target="_blank"
                class="dropdown-item" title="<?= gettext('Release Notes') ?>">
-              <i class="fa-solid fa-notebook me-2"></i><?= gettext('Release Notes') ?>
+              <i class="fa-solid fa-book me-2"></i><?= gettext('Release Notes') ?>
             </a>
           </div>
         </div>
@@ -577,3 +577,36 @@ if (TelemetryService::isEnabled()):
 ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/telemetry.min.js') ?>" defer></script>
 <?php endif; ?>
+<?php
+// 2FA grace-period banner — shown inside the page body when the current user
+// is within the mandatory-2FA grace window. Uses Tabler alert colours:
+//   - alert-warning (yellow) while > 1 day remains
+//   - alert-danger  (red)    when <= 1 day remains
+$_twoFAGraceUser = AuthenticationManager::getCurrentUser();
+if ($_twoFAGraceUser !== null):
+    $_twoFAGraceStatus = $_twoFAGraceUser->getTwoFactorGraceStatus();
+    if ($_twoFAGraceStatus === 'within-grace'):
+        $_twoFADaysLeft   = $_twoFAGraceUser->getTwoFactorGraceDaysRemaining();
+        $_twoFAAlertClass = $_twoFADaysLeft <= 1 ? 'alert-danger' : 'alert-warning';
+?>
+<div class="alert <?= InputUtils::escapeHTML($_twoFAAlertClass) ?> alert-dismissible mb-0" role="alert" id="two-fa-grace-banner">
+  <div class="d-flex align-items-center">
+    <div class="me-2"><i class="fa-solid fa-shield-halved"></i></div>
+    <div>
+      <?= InputUtils::escapeHTML(sprintf(
+          ngettext(
+              'Two-factor authentication is required. You have %d day to enroll.',
+              'Two-factor authentication is required. You have %d days to enroll.',
+              $_twoFADaysLeft
+          ),
+          $_twoFADaysLeft
+      )) ?>
+      <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/v2/user/current/manage2fa" class="alert-link ms-1">
+        <?= gettext('Set up now') ?>
+      </a>
+    </div>
+  </div>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php endif; // within-grace ?>
+<?php endif; // currentUser !== null ?>

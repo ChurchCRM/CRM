@@ -212,6 +212,7 @@ class PersonService
             ->useQuery('Family')
                 ->filterByDateDeactivated(null)
             ->endUse()
+            ->filterByLiving()
             ->filterByEmail('', Criteria::NOT_EQUAL)
             ->find();
 
@@ -280,6 +281,9 @@ class PersonService
         foreach ($memberships as $membership) {
             $person = $membership->getPerson();
             if ($person === null) {
+                continue;
+            }
+            if ($person->isDeceased()) {
                 continue;
             }
             if (isset($doNotEmailSet[(int) $person->getId()])) {

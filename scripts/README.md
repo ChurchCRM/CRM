@@ -6,7 +6,6 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `setup-dev-environment.sh` | Automated development setup | `./scripts/setup-dev-environment.sh` |
 | `generate-signatures-node.js` | Generate file integrity checksums | `npm run build:signatures` |
 | `validate-php-syntax.js` | Validate PHP syntax in build | `npm run build:php:validate` |
 | `package-release.js` | Create release ZIP package | `npm run package` |
@@ -18,28 +17,6 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 ---
 
 ## Script Details
-
-### setup-dev-environment.sh
-
-**Automated setup for new developers.** Checks prerequisites, installs dependencies, and starts Docker containers.
-
-```bash
-./scripts/setup-dev-environment.sh
-```
-
-**What it does:**
-1. Checks for Docker and npm
-2. Runs `npm ci` to install dependencies
-3. Initializes Git LFS (if available)
-4. Starts Docker dev containers
-5. Builds ChurchCRM inside the container
-
-**Prerequisites:**
-- Docker installed and running
-- Node.js/npm installed
-- Git (with optional Git LFS)
-
----
 
 ### generate-signatures-node.js
 

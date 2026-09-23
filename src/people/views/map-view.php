@@ -13,6 +13,11 @@ if (!$mapConfig['hasLocation']) {
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
+<!-- Results container for the "Update All Coordinates" bulk geocode action.
+     Populated by map-view.js; always rendered so the button works even when
+     the church has no location configured. -->
+<div id="geocodeAllResults" class="mt-2" aria-live="polite"></div>
+
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
 
 <?php if (!$mapConfig['hasLocation']): ?>
@@ -113,7 +118,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bHidePersonAddress')) ?>
                 }
             ],
-            showAllSettingsLink: false
+            showAllSettingsLink: false,
+            // No reload: map-view.js listens for this and applies the saved default zoom in
+            // place, then the pane collapses just as if the Map Settings button were clicked.
+            onSave: function (savedValues) {
+                document.dispatchEvent(new CustomEvent('crm:mapsettings-saved', { detail: savedValues }));
+                var pane = document.getElementById('mapAdminSettings');
+                var collapse = window.bootstrap.Collapse.getOrCreateInstance(pane, { toggle: false });
+                if (pane.classList.contains('collapsing')) {
+                    // Bootstrap ignores hide() while the open animation is still running
+                    pane.addEventListener('shown.bs.collapse', function () { collapse.hide(); }, { once: true });
+                } else {
+                    collapse.hide();
+                }
+            }
         });
     });
     <?php endif; ?>

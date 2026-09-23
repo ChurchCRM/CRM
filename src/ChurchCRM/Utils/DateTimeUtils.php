@@ -338,7 +338,7 @@ class DateTimeUtils
      * the shared source of truth for CSV importers, which must handle both
      * month-day-only values (valid for Person.BirthYear) and full dates
      * (required for SQL DATE custom-field columns) with the same rules. The
-     * previous behaviour called `strtotime()` directly, which silently
+     * previous behavior called `strtotime()` directly, which silently
      * assigned the current year to "7/4" and corrupted user data. It also
      * misread a bare year like "2020" as a time (8:20 PM) and returned
      * today's date.

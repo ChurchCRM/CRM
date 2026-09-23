@@ -59,7 +59,7 @@ describe("Family verification — self-verify token link (no account)", () => {
         // Photos must work without a session: the page renders avatars inline
         // (base64 <img> when a photo exists, initials fallback otherwise). There
         // is deliberately no /api/*/photo sub-request here — that would 403 for a
-        // sessionless visitor. Asserting avatars exist guards that behaviour.
+        // sessionless visitor. Asserting avatars exist guards that behavior.
         cy.get(".avatar").should("have.length.greaterThan", 0);
 
         // Privacy invariant: notes are private and must NEVER appear on the

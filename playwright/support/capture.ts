@@ -39,6 +39,23 @@ export interface CaptureOptions {
  * attachment back to the deterministic path claimed here by test title +
  * project name.
  */
+interface ViewportConfig {
+  device: 'desktop' | 'tablet' | 'mobile';
+  width: number;
+  height: number;
+}
+
+const VIEWPORTS: ViewportConfig[] = [
+  { device: 'desktop', width: 1440, height: 900 },
+  { device: 'tablet', width: 1024, height: 768 },
+  { device: 'mobile', width: 430, height: 932 },
+];
+
+// Playwright project names (see playwright.config.ts) that record video at
+// a single fixed viewport instead of the desktop/tablet/mobile screenshot
+// sweep — used as both the capture-mode switch and the artifact device dir.
+const VIDEO_ONLY_PROJECTS = new Set(['setup', 'recordings']);
+
 export async function captureScreen(page: Page, testInfo: TestInfo, opts: CaptureOptions): Promise<void> {
   if (testInfo.title !== opts.name) {
     throw new Error(
@@ -47,7 +64,27 @@ export async function captureScreen(page: Page, testInfo: TestInfo, opts: Captur
     );
   }
 
-  const device = testInfo.project.name;
+  // Video-only projects (the bootstrap 'setup' recordings, plus any other
+  // standalone recorded workflow like the self-registration video) capture
+  // once at their configured viewport — no viewport-resize loop, no PNG.
+  if (VIDEO_ONLY_PROJECTS.has(testInfo.project.name)) {
+    await captureAtViewport(page, testInfo, opts, testInfo.project.name);
+    return;
+  }
+
+  // For screenshot tests, capture all viewports in a single test run (3x faster)
+  for (const vp of VIEWPORTS) {
+    await page.setViewportSize({ width: vp.width, height: vp.height });
+    await captureAtViewport(page, testInfo, opts, vp.device);
+  }
+}
+
+async function captureAtViewport(
+  page: Page,
+  testInfo: TestInfo,
+  opts: CaptureOptions,
+  device: string
+): Promise<void> {
   const viewport = page.viewportSize();
   if (!viewport) {
     throw new Error(`No viewport configured for project "${device}"`);
@@ -64,7 +101,7 @@ export async function captureScreen(page: Page, testInfo: TestInfo, opts: Captur
   await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => undefined);
 
   let screenshotPath: string | null = null;
-  if (device !== 'setup') {
+  if (!VIDEO_ONLY_PROJECTS.has(device)) {
     const screenshotDir = path.join(ARTIFACTS_ROOT, 'screenshots', device);
     fs.mkdirSync(screenshotDir, { recursive: true });
     screenshotPath = path.join(screenshotDir, `${opts.name}.png`);

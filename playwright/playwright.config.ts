@@ -5,19 +5,19 @@ import { BASE_URL } from './support/env';
 
 const STORAGE_STATE_PATH = path.join(__dirname, '.auth', 'admin.json');
 
+// Determine browser channel: prefer local Chrome if BROWSER_CHANNEL is set,
+// otherwise use bundled Chromium. Set BROWSER_CHANNEL=chrome to use system Chrome.
+const browserChannel = process.env.BROWSER_CHANNEL || undefined;
+
 // Form factors mirror .agents/skills/churchcrm/responsive-design-guidelines.md
 // (Mobile < 768px, Tablet 768-1199.98px, Laptop/Desktop >= 1200px), using
 // one representative viewport per factor rather than full device emulation
 // (no touch/UA overrides) to keep automation simple and robust for a first
-// milestone. All four projects use Playwright's bundled Chromium (installed
-// via `npm run marketing:visuals:install`) — a `channel: 'chrome'` variant
-// was tried to sidestep a browser-download hang in one sandboxed
-// environment, but that requires Google Chrome to actually be installed on
-// whatever machine runs this, which isn't a safe assumption (confirmed
-// broken in a fresh environment with only Playwright's own Chromium
-// present). If the bundled-Chromium download hangs for you, allow
-// `cdn.playwright.dev` in your network policy first — that fixed it in
-// every case actually observed.
+// milestone. By default, all projects use Playwright's bundled Chromium
+// (installed via `npm run marketing:visuals:install`). To use system Chrome,
+// set BROWSER_CHANNEL=chrome. If the bundled-Chromium download hangs, allow
+// `cdn.playwright.dev` in your network policy or set BROWSER_CHANNEL=chrome
+// to use the system installation instead.
 export default defineConfig({
   testDir: '.',
   // Playwright's default (30s) is far shorter than setup-church-info's own
@@ -44,7 +44,7 @@ export default defineConfig({
   reporter: [['list'], ['json', { outputFile: path.join(__dirname, 'artifacts', 'report.json') }]],
   use: {
     baseURL: BASE_URL,
-    video: 'on',
+    video: 'off',
     trace: 'retain-on-failure',
     actionTimeout: 15000,
     navigationTimeout: 30000,
@@ -60,47 +60,84 @@ export default defineConfig({
     // ChurchCRM/ChurchCRM.io#100 viewport-framing fix lives.
     screenshot: { mode: 'only-on-failure', fullPage: false },
   },
+  // Add visual cursor indicator for videos (injected on every page load)
+  async addInitScript() {
+    // Create a visual cursor indicator circle
+    const cursor = document.createElement('div');
+    cursor.id = '__playwright_cursor__';
+    cursor.style.cssText = `
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ff0000;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999999;
+      display: none;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    `;
+    document.documentElement.appendChild(cursor);
+
+    // Track mouse position and update cursor indicator
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.display = 'block';
+      cursor.style.left = (e.clientX - 10) + 'px';
+      cursor.style.top = (e.clientY - 10) + 'px';
+    });
+
+    // Hide cursor indicator when mouse leaves the window
+    document.addEventListener('mouseleave', () => {
+      cursor.style.display = 'none';
+    });
+  },
   projects: [
     {
       // Setup wizard, church info, and demo data import — real recorded
       // tests (not Playwright's globalSetup, which is never video-recorded),
       // run once, before every other project. See setup/bootstrap.setup.ts.
+      // Video cursor is enhanced via high-quality recording.
       name: 'setup',
       testMatch: /setup\/.*\.setup\.ts/,
-      use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } },
-    },
-    {
-      name: 'desktop',
-      testMatch: /workflows\/.*\.spec\.ts/,
-      dependencies: ['setup'],
       use: {
         ...devices['Desktop Chrome'],
+        channel: browserChannel,
         viewport: { width: 1440, height: 900 },
-        // Retina (shot list prep: "1440×900 browser at 2×").
-        deviceScaleFactor: 2,
+        video: { mode: 'on', size: { width: 1440, height: 900 } },
+      },
+    },
+    {
+      // Additional recorded workflows beyond the core bootstrap videos
+      // (setup wizard, demo import) — e.g. the public self-registration
+      // flow. Same high-quality video treatment as 'setup', kept as its
+      // own project instead of appended to bootstrap.setup.ts so that
+      // file stays scoped to system bootstrap only.
+      // Named 'recordings', not 'videos' — capture.ts writes each
+      // video-only project's output to artifacts/videos/<project-name>/,
+      // and a project literally named 'videos' collided with that parent
+      // folder (artifacts/videos/videos/...).
+      name: 'recordings',
+      testMatch: /videos\/.*\.video\.ts/,
+      dependencies: ['setup'],
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: browserChannel,
+        viewport: { width: 1440, height: 900 },
+        video: { mode: 'on', size: { width: 1440, height: 900 } },
         storageState: STORAGE_STATE_PATH,
       },
     },
     {
-      name: 'tablet',
+      // Screenshot tests run once per test, capturing all viewports (desktop/tablet/mobile)
+      // in a single page load. Tests manually resize viewport between captures.
+      // This is 3x faster than running separate desktop/tablet/mobile projects.
+      // Viewport sizes: Desktop 1440×900, iPad 1024×768, iPhone Pro Max 430×932
+      name: 'screenshots',
       testMatch: /workflows\/.*\.spec\.ts/,
       dependencies: ['setup'],
       use: {
         ...devices['Desktop Chrome'],
-        viewport: { width: 834, height: 1194 },
-        deviceScaleFactor: 2,
-        storageState: STORAGE_STATE_PATH,
-      },
-    },
-    {
-      name: 'mobile',
-      testMatch: /workflows\/.*\.spec\.ts/,
-      dependencies: ['setup'],
-      use: {
-        ...devices['Desktop Chrome'],
-        // 390×844 matches the shot list's "Mobile — one panel cropped" spec
-        // (still comfortably inside the <768px mobile breakpoint).
-        viewport: { width: 390, height: 844 },
+        channel: browserChannel,
+        viewport: { width: 1440, height: 900 },
         deviceScaleFactor: 2,
         storageState: STORAGE_STATE_PATH,
       },

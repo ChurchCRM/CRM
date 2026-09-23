@@ -5028,14 +5028,6 @@ msgid "Verification URL created"
 msgstr "ధృవీకరణ URL సృష్టించబడింది"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "ఇమెయిల్(లు) పంపడంలో లోపం"
 
@@ -8428,10 +8420,6 @@ msgid "selected family has no coordinates"
 msgstr "ఎంచుకున్న కుటుంబానికి కోఆర్డినేట్‌లు లేవు"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "అన్ని వినియోగదారులు రెండు-కారకాల ప్రమాణీకరణలో నమోదు చేసుకోవడం అవసరం"
 
@@ -9228,10 +9216,6 @@ msgstr "బాహ్య అప్లికేషన్ల కోసం డేట
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, బ్యాకప్‌లు మరియు మరిన్నింటితో ChurchCRM విస్తరించండి"
-
-#: 
-msgid "FY %s"
-msgstr "ఆర్థిక సంవత్సరం %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12191,10 +12175,6 @@ msgid "Database dump only (.sql)"
 msgstr "డేటాబేస్ డంప్ మాత్రమే (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "తేదీ పరిధి 1 సంవత్సరం మించకూడదు"
-
-#: 
 msgid "Destructive Operation"
 msgstr "నాశనకరమైన చర్య"
 
@@ -12789,10 +12769,6 @@ msgstr "ఈ పాత్ర జాబితాకు సేవ కనుగొ�
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "నిష్క్రియ స్థితిని వర్గీకరణల జాబితాకు మాత్రమే టోగుల్ చేయవచ్చు"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "కొత్త సభ్యులు వారి క్రెడెన్షియల్స్‌తో స్వాగత ఇమెయిల్ అందుకోరు. పాస్‌వర్డ్‌ను వారితో మాన్యువల్‌గా పంచుకోండి, లేదా ముందు ఇమెయిల్‌ను కాన్ఫిగర్ చేయండి."
 
 #: 
 msgid "Option name is required"
@@ -13499,7 +13475,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 64-అక్షరాల హెక్స్ స్ట్రింగ్ అయి ఉండాలి."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM నిర్వాహకులు దీన్ని సమీక్షించలేదు. మీరు ఇక్కడ ఇన్‌స్టాల్ చేసే దేని భద్రత మరియు ప్రవర్తనకు మీరే బాధ్యులు. వీలైనప్పుడల్లా ఆమోదించబడినవి చూడండి విధానాన్ని ప్రాధాన్యత ఇవ్వండి."
 
 #: 
@@ -16002,10 +15979,6 @@ msgid "Buyers Registered"
 msgstr "నమోదైన కొనుగోలుదారులు"
 
 #: 
-msgid "Buyers This Year"
-msgstr "ఈ సంవత్సరం కొనుగోలుదారులు"
-
-#: 
 msgid "Catalog"
 msgstr "కేటలాగ్"
 
@@ -16154,10 +16127,6 @@ msgid "Items Donated"
 msgstr "దానం చేసిన అంశాలు"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "దానం చేసిన అంశాలు (ఈ సంవత్సరం)"
-
-#: 
 msgid "Items Sold"
 msgstr "విక్రయించిన అంశాలు"
 
@@ -16236,10 +16205,6 @@ msgstr "త్వరిత ముందే నిర్ధారించిన 
 #: 
 msgid "Raised"
 msgstr "సేకరించబడింది"
-
-#: 
-msgid "Raised This Year"
-msgstr "ఈ సంవత్సరం సేకరించబడింది"
 
 #: 
 msgid "Sample Amount"
@@ -17806,4 +17771,68 @@ msgstr "%s %d కోసం ఏ ఈవెంట్లూ కనుగొనబడ
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "వేరే ఈవెంట్ రకం, నెల లేదా సంవత్సరాన్ని ఎంచుకోవడానికి ప్రయత్నించండి."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "జియోకోడింగ్ లోపం సంభవించింది — దయచేసి తర్వాత మళ్ళీ ప్రయత్నించండి"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "చిరునామా అసంపూర్ణంగా ఉంది (నగరం, రాష్ట్రం మరియు పిన్ కోడ్ లేవు)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "అన్ని కుటుంబాలకు ఇప్పటికే కోఆర్డినేట్‌లు ఉన్నాయి."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "కోఆర్డినేట్‌లను నవీకరించడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "కుటుంబ కోఆర్డినేట్‌లను నవీకరించడంలో విఫలమైంది"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "మొత్తం {{geocoded}} కుటుంబాలను జియోకోడ్ చేసారు. మ్యాప్ ఇప్పుడు తాజాగా ఉంది."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} కుటుంబాలను జియోకోడ్ చేసారు. {{failed}} పరిష్కరించలేకపోయాము — దిగువ వివరాలు చూడండి."
+
+#: 
+msgid "Geocoding…"
+msgstr "జియోకోడింగ్…"
+
+#: 
+msgid "No address on file"
+msgstr "ఫైల్‌లో చిరునామా లేదు"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "సరిపోలిక కనుగొనబడలేదు — వీధి చిరునామా, నగరం మరియు పిన్ కోడ్‌ని తనిఖీ చేయండి"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "దాని చిరునామాను సరిచేయడానికి ఒక కుటుంబాన్ని తెరవండి, ఆపై దీన్ని మళ్ళీ అమలు చేయండి."
+
+#: 
+msgid "Set up now"
+msgstr "ఇప్పుడే సెటప్ చేయండి"
+
+#: 
+msgid "Unknown family"
+msgstr "తెలియని కుటుంబం"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "అన్ని కోఆర్డినేట్‌లను నవీకరించండి"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "అన్ని కుటుంబ కోఆర్డినేట్‌లను నవీకరించండి"
+
+#: 
+msgid "Update Coordinates"
+msgstr "కోఆర్డినేట్‌లను నవీకరించండి"
 

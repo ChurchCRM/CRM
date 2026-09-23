@@ -5050,14 +5050,6 @@ msgid "Verification URL created"
 msgstr "Doğrulama URL'si oluşturuldu"
 
 #: 
-msgid "URL"
-msgstr "Url"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "E -posta gönderme hatası"
 
@@ -8451,10 +8443,6 @@ msgid "selected family has no coordinates"
 msgstr "seçilen ailenin koordinatları yok"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Tüm kullanıcıların iki faktörlü kimlik doğrulamaya kaydolmasını zorunlu kılın"
 
@@ -9251,10 +9239,6 @@ msgstr "Harici uygulamalar için verileri CSV biçiminde dışa aktar"
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "ChurchCRM'i MailChimp, yedekleme ve daha fazlasıyla genişletin"
-
-#: 
-msgid "FY %s"
-msgstr "MY %s"
 
 #: 
 msgid "Families share an address and phone number."
@@ -12214,10 +12198,6 @@ msgid "Database dump only (.sql)"
 msgstr "Yalnızca veritabanı dökümü (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Tarih aralığı 1 yılı aşamaz"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Yıkıcı İşlem"
 
@@ -12812,10 +12792,6 @@ msgstr "Bu rol listesi için grup bulunamadı"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Pasif durum yalnızca sınıflandırma listesi için değiştirilebilir"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Yeni kullanıcılar kimlik bilgileriyle birlikte hoş geldiniz e-postası almayacak. Şifreyi onlarla manuel olarak paylaşın veya önce e-postayı yapılandırın."
 
 #: 
 msgid "Option name is required"
@@ -13522,7 +13498,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256, 64 karakterlik bir onaltılık dize olmalıdır."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM geliştiricileri bunu incelememiştir. Buraya yüklediğiniz her şeyin güvenliği ve davranışından siz sorumlusunuz. Mümkün olduğunda Onaylıları İncele akışını tercih edin."
 
 #: 
@@ -16025,10 +16002,6 @@ msgid "Buyers Registered"
 msgstr "Kayıtlı Alıcılar"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Bu Yılki Alıcılar"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16177,10 +16150,6 @@ msgid "Items Donated"
 msgstr "Bağışlanan Öğeler"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Bağışlanan Öğeler (Bu Yıl)"
-
-#: 
 msgid "Items Sold"
 msgstr "Satılan Öğeler"
 
@@ -16259,10 +16228,6 @@ msgstr "Hızlı ön ayarlar"
 #: 
 msgid "Raised"
 msgstr "Toplanan"
-
-#: 
-msgid "Raised This Year"
-msgstr "Bu Yıl Toplanan"
 
 #: 
 msgid "Sample Amount"
@@ -17829,4 +17794,68 @@ msgstr "%s %d için etkinlik bulunamadı."
 #: 
 msgid "Try selecting a different event type, month, or year."
 msgstr "Farklı bir etkinlik türü, ay veya yıl seçmeyi deneyin."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Bir coğrafi kodlama hatası oluştu — lütfen daha sonra tekrar deneyin"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adres eksik (şehir, eyalet ve posta kodu eksik)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Tüm ailelerin zaten koordinatları var."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Koordinatlar güncellenemedi"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Aile koordinatları güncellenemedi"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "{{geocoded}} ailenin tümü coğrafi olarak kodlandı. Harita artık güncel."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} aile coğrafi olarak kodlandı. {{failed}} tanesi çözümlenemedi — ayrıntılar için aşağıya bakın."
+
+#: 
+msgid "Geocoding…"
+msgstr "Coğrafi kodlama…"
+
+#: 
+msgid "No address on file"
+msgstr "Kayıtlı adres yok"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Eşleşme bulunamadı — sokak adresini, şehri ve posta kodunu kontrol edin"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Adresini düzeltmek için bir aileyi açın, ardından bunu tekrar çalıştırın."
+
+#: 
+msgid "Set up now"
+msgstr "Şimdi kur"
+
+#: 
+msgid "Unknown family"
+msgstr "Bilinmeyen aile"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Tüm Koordinatları Güncelle"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Tüm Aile Koordinatlarını Güncelle"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Koordinatları Güncelle"
 

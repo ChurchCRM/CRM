@@ -1,6 +1,6 @@
 ---
 name: icon-management
-description: Standard patterns for Font Awesome icons across ChurchCRM. Single source of truth for icon usage, free tier compliance, and common substitutions.
+description: Standard patterns for Font Awesome icons across ChurchCRM. Use for icon selection, free-tier compliance, markup, accessibility, and validation.
 tags: ["frontend", "icons", "font-awesome", "ui"]
 learned: "2026-08-15"
 ---
@@ -119,7 +119,7 @@ Use Bootstrap margin utilities: `me-1` (small), `me-2` (standard), `me-3` (large
 | **Settings/Config** | `fa-cog` or `fa-sliders` | `<i class="fa-solid fa-cog me-2"></i>` |
 | **Search/Find** | `fa-magnifying-glass` | `<i class="fa-solid fa-magnifying-glass me-2"></i>` |
 | **Filter** | `fa-filter` | `<i class="fa-solid fa-filter me-2"></i>` |
-| **Menu/Dropdown** | `fa-ellipsis-v` (vertical) or `fa-ellipsis` (horizontal) | `<i class="fa-solid fa-ellipsis-v"></i>` |
+| **Menu/Dropdown** | `fa-ellipsis-vertical` (vertical) or `fa-ellipsis` (horizontal) | `<i class="fa-solid fa-ellipsis-vertical"></i>` — row action menus: see [`table-action-menu.md`](./table-action-menu.md) |
 
 ### Dashboard / Status Icons
 
@@ -144,60 +144,60 @@ Use Bootstrap margin utilities: `me-1` (small), `me-2` (standard), `me-3` (large
 |------------|------|---------|
 | **Success/Check** | `fa-check-circle` or `fa-circle-check` | `<i class="fa-solid fa-circle-check text-success"></i>` |
 | **Warning/Caution** | `fa-triangle-exclamation` or `fa-exclamation` | `<i class="fa-solid fa-triangle-exclamation text-warning"></i>` |
-| **Error/Alert** | `fa-circle-xmark` or `fa-x-circle` | `<i class="fa-solid fa-circle-xmark text-danger"></i>` |
+| **Error/Alert** | `fa-circle-xmark` or `fa-xmark` | `<i class="fa-solid fa-circle-xmark text-danger"></i>` |
 | **Info** | `fa-circle-info` or `fa-info-circle` | `<i class="fa-solid fa-circle-info text-info"></i>` |
 | **Question/Help** | `fa-circle-question` or `fa-question` | `<i class="fa-solid fa-circle-question"></i>` |
 
-### Tabler → Font Awesome Equivalents (Legacy Migration)
 
-When migrating from Tabler icons (deprecated), use this mapping:
+### Verify the target exists in the free tier <!-- learned: 2026-09-11 -->
 
-| Tabler | Font Awesome |
-|--------|--------------|
-| `ti-alert-circle` | `fa-circle-info` |
-| `ti-alert-triangle` | `fa-triangle-exclamation` |
-| `ti-arrow-down` | `fa-arrow-down` |
-| `ti-arrow-up` | `fa-arrow-up` |
-| `ti-brand-github` | `fa-brands fa-github` |
-| `ti-building` | `fa-building` |
-| `ti-calendar` | `fa-calendar` |
-| `ti-calendar-off` | `fa-calendar-slash` |
-| `ti-cart` | `fa-cart-shopping` |
-| `ti-check` | `fa-check` |
-| `ti-circle-check` | `fa-circle-check` |
-| `ti-credit-card` | `fa-credit-card` |
-| `ti-device-floppy` | `fa-floppy-disk` |
-| `ti-dots-vertical` | `fa-ellipsis-v` |
-| `ti-download` | `fa-download` |
-| `ti-edit` | `fa-pencil` |
-| `ti-eye` | `fa-eye` |
-| `ti-file` | `fa-file` |
-| `ti-filter` | `fa-filter` |
-| `ti-flag` | `fa-flag` |
-| `ti-folder` | `fa-folder` |
-| `ti-home` | `fa-house` |
-| `ti-home-plus` | `fa-house-plus` |
-| `ti-info-circle` | `fa-circle-info` |
-| `ti-key` | `fa-key` |
-| `ti-location` | `fa-location-dot` |
-| `ti-logout` | `fa-sign-out` |
-| `ti-map-pin` | `fa-map-pin` |
-| `ti-menu-2` | `fa-bars` |
-| `ti-message` | `fa-message` |
-| `ti-mood-sad` | `fa-face-sad-tear` |
-| `ti-pencil` | `fa-pencil` |
-| `ti-phone` | `fa-phone` |
-| `ti-pin` | `fa-thumbtack` |
-| `ti-plus` | `fa-plus` |
-| `ti-search` | `fa-magnifying-glass` |
-| `ti-settings` | `fa-cog` |
-| `ti-shield` | `fa-shield` |
-| `ti-shopping-cart` | `fa-cart-shopping` |
-| `ti-stack-2` | `fa-layer-group` |
-| `ti-trash` | `fa-trash` |
-| `ti-upload` | `fa-upload` |
-| `ti-users` | `fa-users` |
-| `ti-x` | `fa-xmark` |
+Font Awesome free has no slashed/“off” variants for several glyphs Tabler
+provides (`fa-calendar-slash`, `fa-house-plus`, `fa-map-pin-slash`,
+`fa-shield-check`, `fa-users-group` are all **Pro-only or nonexistent**), and a
+missing class renders as blank space with no console error. Before using a
+name that is not in the table above, confirm it is really shipped:
+
+```bash
+grep -E '^\.fa-<name>[ ,{]' node_modules/@fortawesome/fontawesome-free/css/all.css
+```
+
+(FA 7 declares each icon as `.fa-<name> { --fa: "\eXXX"; }` — grepping for the
+old `:before` form gives a false negative for every icon.)
+
+### The guard that enforces this <!-- learned: 2026-09-11 -->
+
+`npm run lint:icons` runs **two** checks (both also run in the `code-quality`
+CI job):
+
+| Script | Rejects |
+|--------|---------|
+| `scripts/validate-no-tabler-icons.js` | any `ti` / `ti-*` class — the Tabler webfont is not shipped (#9752) |
+| `scripts/validate-fa-icons-exist.js` | any `fa-*` class with no `.fa-<name>` rule in the shipped `node_modules/@fortawesome/fontawesome-free/css/all.css` (#9753) |
+
+The second script needs no allow-list of style tokens: `fa-solid`, `fa-fw`,
+`fa-lg`, `fa-spin`, `fa-2x` and friends are themselves `.fa-*` rules in
+`all.css`, so they pass for free. Both scripts share
+`scripts/lib/icon-source-files.js` and scan `src/` + `webpack/`, skipping
+`node_modules/`, `vendor/`, Propel `Base/` and `Map/`, `src/skin/external/`
+and `src/skin/v2/` (the build output — note that the application's own
+`src/v2/` source tree *is* scanned).
+
+**Dynamic icon names must be complete.** A token that is only a prefix —
+`'fa-' . $icon`, `` `fa-${name}` ``, `fa-chevron-<?= $dir ?>` — cannot be
+verified statically and is silently ignored by the guard. So build lookup maps
+out of whole class names, never out of fragments:
+
+```php
+// Good — the guard can see and verify every name
+$icons = ['person' => 'fa-user', 'family' => 'fa-people-roof'];
+echo '<i class="fa-solid ' . $icons[$type] . '"></i>';
+
+// Bad — invisible to the guard, blank icons ship unnoticed
+echo '<i class="fa-solid fa-' . $suffix . '"></i>';
+```
+
+If a name really must be assembled at runtime, verify each possible result by
+hand against `all.css` before shipping.
 
 ---
 
@@ -318,7 +318,8 @@ Before committing icon-related changes:
 - [ ] No paid Font Awesome variants (`fa-light`, `fa-thin`, `fa-duotone`, `fa-sharp`)
 - [ ] All icons have both variant class (e.g. `fa-solid`) and icon class (e.g. `fa-pencil`)
 - [ ] Icon spacing uses Bootstrap utilities (`me-2`, `ms-2`)
-- [ ] No hardcoded Tabler icons (`ti ti-*`) remain in production code
+- [ ] No Tabler icons (`ti`, `ti-*`) remain — `npm run lint:icons` enforces this
+- [ ] Every `fa-*` class exists in the shipped free build — `npm run lint:icons` enforces this too
 - [ ] Dynamic icons are escaped if sourced from untrusted input
 - [ ] Decorative icons use `aria-hidden="true"` when appropriate
 - [ ] Icon-only buttons have `aria-label` when not self-evident
@@ -328,7 +329,6 @@ Before committing icon-related changes:
 ## Related Skills
 
 - `[[frontend-development.md]]` — General UI patterns and component structure
-- `[[bootstrap-5-migration.md]]` — Bootstrap 5 utilities for styling and spacing
 - `[[table-action-menu.md]]` — Standard dropdown menu patterns with icon usage
 - `[[code-standards.md]]` — Pre-commit checklist includes icon usage rules
 
