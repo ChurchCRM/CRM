@@ -46,7 +46,7 @@ Plugin registry URL: `CentralServices::PLUGIN_REGISTRY_URL` (External branch tod
 - Do not merge or close issues unless the maintainer answers yes to a direct question
 - User-visible behavior: open a docs tracking issue on ChurchCRM/CRM. It does not block feature merge. Docs PRs wait for the release. See `docs/contributing-pr-review.md`
 - Write little. Names and tests carry intent. Do not narrate the next line in a comment.
-- Do not post review comments on PRs authored by DawoudIO — fix the branch.
+- If the PR author is the same GitHub user the agent is acting as, do not post a review comment. Fix the branch.
 
 ## Tests
 
