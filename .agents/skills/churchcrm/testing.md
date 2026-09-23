@@ -215,6 +215,10 @@ npx cypress run --spec "cypress/e2e/ui/path/to/test.spec.js"
 # Interactive browser testing
 npm run test:ui
 
+# PHP-level regression tests (no Docker or database needed): /api error
+# redaction rules and the canonical error payload
+npm run test:php
+
 # CRITICAL: Clear logs before every test run
 rm -f src/logs/$(date +%Y-%m-%d)-*.log
 

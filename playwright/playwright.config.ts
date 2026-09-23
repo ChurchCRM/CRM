@@ -123,6 +123,7 @@ export default defineConfig({
         channel: browserChannel,
         viewport: { width: 1440, height: 900 },
         video: { mode: 'on', size: { width: 1440, height: 900 } },
+        storageState: STORAGE_STATE_PATH,
       },
     },
     {

@@ -484,25 +484,13 @@ function initializeGroupView() {
     initDataTable();
   });
 
-  // Person search for "Add Member" — uses BS5 modal for role selection
+  // Person search for "Add Member" — uses BS5 modal for role selection.
+  // The picker itself is the shared helper from webpack/common/person-select.ts
+  // (#9819), re-exported on window.CRM by skin-core.js because this file is
+  // loaded as a plain <script src> and is not part of any webpack bundle.
   $(".personSearch").each(function () {
     if (this.tomselect) return;
-    new TomSelect(this, {
-      valueField: "objid",
-      labelField: "text",
-      searchField: "text",
-      dropdownParent: "body",
-      load: (query, callback) => {
-        if (query.length < 2) return callback();
-        fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))
-          .then((res) => res.json())
-          .then((data) => {
-            callback(data);
-          })
-          .catch(() => {
-            callback();
-          });
-      },
+    window.CRM.initPersonSelect(this, {
       onChange: function (value) {
         if (!value) return;
 
