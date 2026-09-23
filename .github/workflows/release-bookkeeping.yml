@@ -1,30 +1,13 @@
-name: "Release Bookkeeping: Changelog & Milestones"
+name: "Release: bookkeeping"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-
 # Fires automatically when a release is published.
 # Can also be triggered manually to re-sync or back-fill any version.
 #
-# Deterministic bookkeeping only — no model call, ever. GitHub Actions never
-# calls an LLM: Actions logs on this public repo are world-readable, and a
-# model API key would be a secret exposed to every job on every trigger.
-#
-# For full releases (non-pre-release):
-#   1. Writes changelog/<tag>.md from the GitHub Release title + body. The
-#      one-line highlight is extracted from the release body's own ## headings
-#      — never model-generated.
-#   2. Inserts a new row in CHANGELOG.md and commits to master.
-#   3. Closes the release milestone and moves pending issues/PRs to next version.
-#
-# For pre-releases: Only runs step 1-2 (skips milestone cleanup).
-#
-# Marketing copy (social posts) is deliberately NOT here: it needs judgment
-# — which feature to lead with, what tone fits the release — and is drafted
-# by a maintainer running the `.agents/skills/churchcrm/social-media-release.md`
-# skill (via the community agent or Claude Code directly), never by Actions.
+# Deterministic bookkeeping only — no model call.
 
 on:
   release:
@@ -50,7 +33,6 @@ jobs:
       GH_TOKEN:     ${{ github.token }}
       GH_REPO:      ${{ github.repository }}
       GITHUB_TOKEN: ${{ github.token }}
-      # Auto-trigger: release tag. Manual trigger: workflow_dispatch input.
       TAG: ${{ github.event.release.tag_name || inputs.tag }}
     steps:
       - uses: actions/checkout@v7
@@ -78,12 +60,7 @@ jobs:
             git push origin master
           fi
 
-  # ───────────────────────────────────────────────────────────────────
-  # Close release milestone and move pending items to next version
-  # ───────────────────────────────────────────────────────────────────
   manage-milestones:
-    # Only runs on automatic trigger (when release is published) and NOT pre-releases
-    # Manual sync runs and pre-releases don't close/move milestones
     if: github.event_name == 'release' && !github.event.release.prerelease
     needs: sync
     name: Close release milestone
@@ -114,20 +91,17 @@ jobs:
           echo "=== Release Milestone Management ==="
           echo "Current release: $CURRENT_TAG"
           echo "Next version: $NEXT_VERSION"
-          echo ""
 
-          # Find the current milestone by title (matching the tag)
           current_milestone=$(gh api repos/$GH_REPO/milestones \
             --jq ".[] | select(.title == \"$CURRENT_TAG\") | .number" | head -n 1)
 
           if [ -z "$current_milestone" ]; then
-            echo "⚠️  No milestone found for tag $CURRENT_TAG — skipping milestone management"
+            echo "No milestone found for tag $CURRENT_TAG — skipping"
             exit 0
           fi
 
           echo "Found current milestone #$current_milestone for $CURRENT_TAG"
 
-          # Find or create the next milestone
           next_milestone=$(gh api repos/$GH_REPO/milestones \
             --jq ".[] | select(.title == \"$NEXT_VERSION\") | .number" | head -n 1)
 
@@ -141,35 +115,31 @@ jobs:
             echo "Found existing milestone #$next_milestone for $NEXT_VERSION"
           fi
 
-          echo ""
           echo "Moving open issues and PRs from #$current_milestone to #$next_milestone..."
-          echo ""
 
-          # Find all open issues in current milestone (exclude PRs)
           issue_count=0
           while IFS= read -r issue_num; do
+            [ -z "$issue_num" ] && continue
             gh issue edit "$issue_num" -m "$next_milestone" 2>/dev/null || true
-            ((issue_count++))
+            issue_count=$((issue_count + 1))
             echo "  Moved issue #$issue_num"
           done < <(gh api repos/$GH_REPO/issues \
             --jq ".[] | select(.milestone.number == $current_milestone and .state == \"open\" and .pull_request == null) | .number")
 
-          # Find all open PRs in current milestone
           pr_count=0
           while IFS= read -r pr_num; do
+            [ -z "$pr_num" ] && continue
             gh pr edit "$pr_num" -m "$next_milestone" 2>/dev/null || true
-            ((pr_count++))
+            pr_count=$((pr_count + 1))
             echo "  Moved PR #$pr_num"
           done < <(gh api repos/$GH_REPO/issues \
             --jq ".[] | select(.milestone.number == $current_milestone and .state == \"open\" and .pull_request != null) | .number")
 
-          echo ""
           echo "Closing milestone #$current_milestone ($CURRENT_TAG)..."
           gh api repos/$GH_REPO/milestones/$current_milestone \
             -f state="closed" \
             --silent
 
-          echo ""
-          echo "✓ Release milestone management complete"
+          echo "Release milestone management complete"
           echo "  Moved $issue_count issues and $pr_count PRs to $NEXT_VERSION"
           echo "  Closed milestone #$current_milestone"
