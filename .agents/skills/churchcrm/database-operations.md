@@ -611,6 +611,8 @@ EventQuery::create()
 Always use full `HH:MM:SS` timestamps on the boundaries — see "Datetime Year-Range Filters"
 above for why a bare `YYYY-MM-DD` max silently drops same-day afternoon records.
 
+When the year must not matter (birthdays, anniversaries in any year) a date range cannot express it; bind the month into a raw clause on the TableMap constant: `->where('MONTH(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') = ?', $month, \PDO::PARAM_INT)` (`PeopleReportService`). The phpName form `Family.WeddingDate` is not rewritten inside a SQL function and fails with "Unknown column 'family_fam.WeddingDate'".
+
 ### Shared Date Parser — `DateTimeUtils::parsePartialDate()` <!-- learned: 2026-04-21 -->
 
 `src/ChurchCRM/utils/DateTimeUtils.php` contains a static helper for parsing the partial-date formats accepted by CSV imports and person/family edit forms:
