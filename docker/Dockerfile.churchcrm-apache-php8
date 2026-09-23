@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 # Production Apache Dockerfile for ChurchCRM
 # Includes compiled ChurchCRM release code (no rebuild needed)
 #
@@ -6,10 +7,11 @@
 # The release code is copied into the image during build.
 # When container starts, ChurchCRM is ready to serve.
 
-ARG PHP_VERSION=8.4
+ARG PHP_IMAGE=php:8.4.25-apache-trixie@sha256:d54a6bdfaaa4b516264617b2ac6a3692f23f29510278e02494154f8e260e9ce3
 
 # Base stage: Apache + PHP runtime
-FROM php:${PHP_VERSION}-apache AS base
+FROM ${PHP_IMAGE} AS base
+WORKDIR /var/www/html
 LABEL maintainer="ChurchCRM"
 
 EXPOSE 80
@@ -70,27 +72,30 @@ COPY apache/default.conf /etc/apache2/apache2.conf
 
 
 # Production stage: minimal runtime, no compilers, dev headers, or git
-FROM php:${PHP_VERSION}-apache AS prod
+FROM ${PHP_IMAGE} AS prod
+WORKDIR /var/www/html
 LABEL maintainer="ChurchCRM" \
-      org.opencontainers.image.description="ChurchCRM with Apache (production-ready, includes release code)"
+      org.opencontainers.image.source="https://github.com/ChurchCRM/CRM" \
+      org.opencontainers.image.description="ChurchCRM with Apache (includes release code)"
 
-EXPOSE 80
+EXPOSE 8080
 
 # Install only runtime libraries (no dev headers, no build toolchain)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        libcurl4 \
+        libcurl4t64 \
         libfreetype6 \
         libicu76 \
         libjpeg62-turbo \
         libonig5 \
-        libpng16-16 \
+        libpng16-16t64 \
         libxml2 \
         libzip5 \
         gettext \
         locales \
         locales-all \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get purge -y --auto-remove $PHPIZE_DEPS libc6-dev libc-dev-bin libcrypt-dev linux-libc-dev rpcsvc-proto && \
+    rm -rf /var/lib/apt/lists/* /usr/src/php.tar.xz /usr/local/include/php
 
 RUN a2enmod rewrite && mkdir -p /run/apache2 /var/www/html
 
@@ -109,7 +114,13 @@ COPY --chown=www-data:www-data . .
 # The build context also carries docker/apache/default.conf (already consumed
 # above into /etc/apache2/apache2.conf) — strip it so it can't be served out
 # of the docroot at /apache/default.conf.
-RUN rm -rf apache
+RUN rm -rf apache && \
+    sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf && \
+    sed -i 's/:80>/:8080>/' /etc/apache2/sites-available/000-default.conf && \
+    chown -R www-data:www-data /var/run/apache2 /var/lock/apache2 && \
+    chmod 0755 /var/www/html
+
+USER www-data
 
 
 # Test stage: includes dev tools for CI testing
