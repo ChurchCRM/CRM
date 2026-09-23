@@ -1,4 +1,4 @@
-name: 'Security Analysis'
+name: "Security: CodeQL"
 
 on:
   push:
@@ -24,7 +24,6 @@ on:
       - '**/*.yaml'
       - '**/*.sql'
   schedule:
-    # Run weekly on Mondays at 6:00 AM UTC
     - cron: '0 6 * * 1'
   workflow_dispatch:
 
@@ -37,8 +36,6 @@ permissions:
   security-events: write
 
 jobs:
-  # CodeQL: Semantic analysis for JavaScript/TypeScript
-  # Understands data flow, tracks tainted input through function calls
   codeql-analysis:
     name: 'CodeQL (JS/TS)'
     runs-on: ubuntu-latest
@@ -56,7 +53,6 @@ jobs:
         uses: github/codeql-action/init@v4.38.0
         with:
           languages: javascript-typescript
-          # Use security-extended for more comprehensive scanning
           queries: security-extended
 
       - name: Autobuild
@@ -67,8 +63,6 @@ jobs:
         with:
           category: "/language:javascript-typescript"
 
-  # Semgrep: Pattern-based scanning for PHP, JavaScript, and config files
-  # Detects security vulnerabilities and code quality issues
   semgrep-analysis:
     name: 'Semgrep (PHP/JS/Config)'
     runs-on: ubuntu-latest
