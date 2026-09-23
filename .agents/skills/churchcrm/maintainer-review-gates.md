@@ -12,6 +12,8 @@ If the PR author is the same GitHub user the agent is acting as, do not post a r
 
 Passing this checklist does not mean the PR should merge.
 
+Do not mention CI status in the review. Failed CI is never merged; branch protection already owns that.
+
 ## Tone
 
 The author is a volunteer. Be thankful. Be specific. Do not nitpick.
@@ -25,7 +27,7 @@ The author is a volunteer. Be thankful. Be specific. Do not nitpick.
 5. Localization wrap — new user-visible strings not in `gettext()` / `i18next.t()`. Do not require translations or `locale:build` in the feature PR.
 6. Locale-sensitive values — dates, times, numbers, currency, or timezone that ignore ChurchCRM conventions. See below.
 7. Tests — feature or bug fix with no new or updated tests.
-8. Repo process — no linked issue; lint/build clearly failing; title or body that describes different work than the diff.
+8. Repo process — no linked issue; title or body that describes different work than the diff.
 9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Raw SQL substitution, not ORM, leak history. Point the author at Slim/Tabler MVC + Propel, or a reports plugin. Security-only patches on Query View need an explicit maintainer exception. See #9995.
 
 Missing comments are not a hard block. Do not ask the author to add more comments. Wrong or essay comments can be deleted; that is not Request changes.
@@ -57,7 +59,7 @@ If hard blocks stay open and the author goes quiet, maintainers may close the PR
 1. Thank the contributor. Say what the PR does after reading the file list.
 2. Check title + body against the current file list.
 3. Hard blocks first (Request changes).
-4. Then a **checkbox list of what is still open**.
+4. Then a **checkbox list of what is still open** (never CI).
 5. If there are no hard blocks, event is Comment.
 6. Never approve. Never merge. Never close unless the maintainer answers yes.
 
