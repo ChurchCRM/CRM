@@ -757,6 +757,12 @@ git push origin fix/issue-1234-description --force-with-lease
 
 The repo uses grouped Dependabot updates configured in [.github/dependabot.yml](../../../.github/dependabot.yml). When reviewing or maintaining these PRs:
 
+### Automated fact-check (no model) <!-- learned: 2026-09-21 -->
+
+Every Dependabot PR gets one deterministic comment from `.github/workflows/dependabot-review.yml` (`scripts/dependabot-review.js`): the packages bumped, major vs minor/patch classification, any backing Dependabot alert, lockfile transitive version changes, and any bumped `@types/*` package that is a deprecated stub. **No model call** — GitHub Actions never calls an LLM here, by policy (Actions logs on this public repo are world-readable, and a model API key would be a secret exposed to every job on every trigger, including forked-PR `pull_request_target` runs). A rebase updates the same comment; it never approves or merges.
+
+The written review — read the release notes for a major bump, say what breaks, decide safe-to-merge — is judgment this script does not have. Do that yourself, or ask the community agent / Claude Code to review the PR directly against the rules below; never wire that verdict into Actions.
+
 ### Pinning away from a specific version
 
 When a published release has regressions we don't want, add a scoped `ignore:` under the npm `updates` entry — **never** rely on `@dependabot ignore` PR comments alone. Comments live in Dependabot's internal state and can be lost when the config is rewritten; the YAML is durable.

@@ -9238,10 +9238,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Rozšiřte ChurchCRM o MailChimp, zálohy a další"
 
 #: 
-msgid "FY %s"
-msgstr "RR %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Rodiny sdílejí adresu a telefonní číslo."
 
@@ -16007,10 +16003,6 @@ msgid "Buyers Registered"
 msgstr "Registrovaní kupující"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Kupující v tomto roce"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16159,10 +16151,6 @@ msgid "Items Donated"
 msgstr "Darované položky"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Darované položky (tento rok)"
-
-#: 
 msgid "Items Sold"
 msgstr "Prodané položky"
 
@@ -16241,10 +16229,6 @@ msgstr "Rychlá přednastavení"
 #: 
 msgid "Raised"
 msgstr "Vybráno"
-
-#: 
-msgid "Raised This Year"
-msgstr "Vybráno letos"
 
 #: 
 msgid "Sample Amount"

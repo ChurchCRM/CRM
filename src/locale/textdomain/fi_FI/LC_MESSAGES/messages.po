@@ -9208,10 +9208,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Laajenna ChurchCRM:ää MailChimpillä, varmuuskopioilla ja muulla"
 
 #: 
-msgid "FY %s"
-msgstr "TV %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Perheet jakavat osoitteen ja puhelinnumeron."
 
@@ -15973,10 +15969,6 @@ msgid "Buyers Registered"
 msgstr "Rekisteröityjä ostajia"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Ostajia tänä vuonna"
-
-#: 
 msgid "Catalog"
 msgstr "Luettelo"
 
@@ -16125,10 +16117,6 @@ msgid "Items Donated"
 msgstr "Lahjoitetut kohteet"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Lahjoitetut kohteet (tänä vuonna)"
-
-#: 
 msgid "Items Sold"
 msgstr "Myydyt kohteet"
 
@@ -16207,10 +16195,6 @@ msgstr "Pikavalinnat"
 #: 
 msgid "Raised"
 msgstr "Kerätty"
-
-#: 
-msgid "Raised This Year"
-msgstr "Kerätty tänä vuonna"
 
 #: 
 msgid "Sample Amount"
