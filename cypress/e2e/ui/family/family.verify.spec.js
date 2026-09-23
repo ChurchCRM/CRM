@@ -18,7 +18,14 @@ describe("Family verification — self-verify token link (no account)", () => {
             // the docker stack). Keep only the path so the spec follows the token flow against
             // whatever baseUrl this run uses (another port, a sub-directory install) — see #9871.
             const url = new URL(response.body.url);
-            cy.wrap(url.pathname + url.search).as("verifyUrl");
+            // On a sub-directory install (baseUrl http://host/churchcrm/) the path already carries
+            // the prefix; drop it so cy.visit() does not double it.
+            const basePath = new URL(Cypress.config("baseUrl")).pathname.replace(/\/$/, "");
+            let path = url.pathname + url.search;
+            if (basePath !== "" && path.startsWith(`${basePath}/`)) {
+                path = path.slice(basePath.length);
+            }
+            cy.wrap(path).as("verifyUrl");
         });
     });
 
