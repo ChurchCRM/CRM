@@ -1,0 +1,22 @@
+name: Validate Docker development boundaries
+
+on:
+  pull_request:
+    paths:
+      - 'docker/docker-compose*.yaml'
+      - 'docker/examples/docker-compose*.yaml'
+      - 'docker/test-compose-security.py'
+      - '.github/workflows/docker-security-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - run: python3 docker/test-compose-security.py
