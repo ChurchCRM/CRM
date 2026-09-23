@@ -8,12 +8,10 @@ namespace ChurchCRM\Remote;
  * These are NOT user-configurable — they are set by the ChurchCRM
  * maintainers and shipped with the software.
  *
- * Broadcast notifications live on the `Notifications` orphan branch so
- * maintainers can push updates without requiring an install upgrade.
- * The approved plugin registry is also fetched from that branch when
- * present; the product ships `src/plugins/approved-plugins.json` as a
- * fallback when the remote file is missing (the old `External` branch
- * was deleted).
+ * Broadcast notifications and the approved plugin registry live on the
+ * `Notifications` orphan branch so maintainers can push updates without
+ * requiring an install upgrade. There is no copy of the registry inside
+ * the release zip.
  *
  * ── HOW TO UPDATE THE HOSTED FILES ───────────────────────────────────
  *
@@ -28,7 +26,7 @@ namespace ChurchCRM\Remote;
  * 3. Commit and push:
  *
  *      git add notifications.json approved-plugins.json
- *      git commit -m "chore(external): describe your change"
+ *      git commit -m "chore(notifications): describe your change"
  *      git push origin Notifications
  *
  * Changes go live to ALL installs on the next user login — no deploy needed.
@@ -65,9 +63,7 @@ class CentralServices
 
     /**
      * Registry of community plugins approved for URL-based install.
-     * Adding an entry requires a maintainer-reviewed PR — see approved-plugins.json schema.
-     * Hosted next to notifications.json; ApprovedPluginRegistry falls back to the
-     * copy shipped in src/plugins/approved-plugins.json when this URL 404s.
+     * Source of truth is the Notifications branch only.
      */
     public const PLUGIN_REGISTRY_URL = 'https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/approved-plugins.json';
 }
