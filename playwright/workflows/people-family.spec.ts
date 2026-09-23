@@ -93,9 +93,9 @@ test.describe('People & Families', () => {
     const rows = page.locator('#members tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
 
-    await humanType(page.locator('.dt-search input'), 'Anthony Anderson');
+    await humanType(page.locator('.dt-search input'), 'Joseph Hall');
     await humanPause(page, 500);
-    const targetRow = rows.filter({ hasText: 'Anthony Anderson' }).first();
+    const targetRow = rows.filter({ hasText: 'Joseph Hall' }).first();
     await expect(targetRow).toBeVisible({ timeout: 15000 });
     await humanClick(targetRow.locator('a').first());
     await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
@@ -108,7 +108,7 @@ test.describe('People & Families', () => {
 
     const confirmDialog = page.locator('.bootbox');
     await expect(confirmDialog).toBeVisible({ timeout: 5000 });
-    await expect(confirmDialog).toContainText('Anthony Anderson');
+    await expect(confirmDialog).toContainText('Joseph Hall');
     await humanClick(page.locator('.bootbox-accept'));
 
     await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });

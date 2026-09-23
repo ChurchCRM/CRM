@@ -12,9 +12,9 @@ import { humanClick, humanPause, humanType } from '../support/human';
  * safely inside the accepted range.
  *
  * "Matthew Davis" (src/admin/demo/people.json's Davis family, Lenexa) is
- * used deliberately — not Scott/Garcia/Baker/Clark/Whitfield/Anderson,
- * which other specs in this pipeline depend on staying in their original
- * demo state.
+ * used deliberately — not Scott/Garcia/Baker/Clark/Whitfield/Hall, which
+ * other specs in this pipeline depend on staying in their original demo
+ * state.
  */
 test('mark-member-deceased', async ({ page }, testInfo) => {
   await page.goto('/people/list');
