@@ -9241,10 +9241,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Επεκτείνετε το ChurchCRM με MailChimp, αντίγραφα ασφαλείας και άλλα"
 
 #: 
-msgid "FY %s"
-msgstr "ΔΕ %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Οι οικογένειες μοιράζονται διεύθυνση και τηλέφωνο."
 
@@ -16006,10 +16002,6 @@ msgid "Buyers Registered"
 msgstr "Εγγεγραμμένοι Αγοραστές"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Αγοραστές Φέτος"
-
-#: 
 msgid "Catalog"
 msgstr "Κατάλογος"
 
@@ -16158,10 +16150,6 @@ msgid "Items Donated"
 msgstr "Δωρισμένα Στοιχεία"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Δωρισμένα Στοιχεία (Φέτος)"
-
-#: 
 msgid "Items Sold"
 msgstr "Στοιχεία που Πωλήθηκαν"
 
@@ -16240,10 +16228,6 @@ msgstr "Γρήγορες Προεπιλογές"
 #: 
 msgid "Raised"
 msgstr "Συγκεντρώθηκαν"
-
-#: 
-msgid "Raised This Year"
-msgstr "Συγκεντρώθηκαν Φέτος"
 
 #: 
 msgid "Sample Amount"
@@ -17886,4 +17870,580 @@ msgstr "Ενημέρωση Όλων των Συντεταγμένων Οικογ
 #: 
 msgid "Update Coordinates"
 msgstr "Ενημέρωση Συντεταγμένων"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "Ο/Η %s ήταν ο επικεφαλής αυτής της οικογένειας και έχει σημειωθεί ως αποβιώσας/-σασα. Παρακαλώ ορίστε νέο επικεφαλής νοικοκυριού."
+
+#: 
+msgid "Accept"
+msgstr "Αποδοχή"
+
+#: 
+msgid "Active Now"
+msgstr "Ενεργό τώρα"
+
+#: 
+msgid "Adding..."
+msgstr "Προσθήκη..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Όλα τα μέλη του CRM με email είναι εγγεγραμμένα σε αυτή τη λίστα!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Όλοι οι συνδρομητές του MailChimp βρίσκονται στο ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη διαγραφή αρχείων."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Είστε απολύτως σίγουροι; Αυτό θα διαγράψει όλα τα δεδομένα και θα επαναφέρει τις εργοστασιακές ρυθμίσεις."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε ΟΛΑ τα αρχεία καταγραφής; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε το kiosk"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε τον σύνδεσμο"
+
+#: 
+msgid "Assignment"
+msgstr "Ανάθεση"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Οι εργασίες παρασκηνίου (email γενεθλίων και κάθε προγραμματισμένη εργασία προσθέτου) δεν έχουν εκτελεστεί ποτέ σε αυτή την εγκατάσταση."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Οι εργασίες παρασκηνίου (email γενεθλίων και κάθε προγραμματισμένη εργασία προσθέτου) εκτελέστηκαν τελευταία φορά στις %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Δημιουργία αντιγράφου ασφαλείας..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Το αντίγραφο ασφαλείας λήφθηκε."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Το αντίγραφο ασφαλείας μεταφορτώθηκε με επιτυχία"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Δεν μπορείτε να αλλάξετε τη δική σας κατάσταση ενεργοποίησης"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Η εξαγωγή ChMeetings ολοκληρώθηκε με επιτυχία"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Οι αλλαγές αποθηκεύτηκαν με επιτυχία"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Αποχώρηση όλων και απενεργοποίηση όλων"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Αποχώρηση όλων και απενεργοποίηση αυτής της εκδήλωσης;"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Ελέγξτε το email σας για τον σύνδεσμο επαναφοράς κωδικού πρόσβασης"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Κλείσιμο κολλημένων εκδηλώσεων;"
+
+#: 
+msgid "Comments"
+msgstr "Σχόλια"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Δεν ήταν δυνατή η φόρτωση της προεπισκόπησης email. Παρακαλώ κλείστε και δοκιμάστε ξανά."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Δημιουργία και μεταφόρτωση αντιγράφου ασφαλείας. Αυτό μπορεί να διαρκέσει αρκετά λεπτά..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Η επαναφορά της βάσης δεδομένων απέτυχε."
+
+#: 
+msgid "Deceased"
+msgstr "Αποβιώσας"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Προεπιλεγμένα διαπιστευτήρια διαχειριστή"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Διαγραφή Kiosk"
+
+#: 
+msgid "Deleted Files"
+msgstr "Διαγραμμένα Αρχεία"
+
+#: 
+msgid "Deleting..."
+msgstr "Διαγραφή..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Η λήψη επέστρεψε χωρίς κεφαλίδες συνημμένου."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Σφάλμα κατά τη διαγραφή του αρχείου καταγραφής."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Σφάλμα κατά τη διαγραφή των αρχείων καταγραφής."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Σφάλμα κατά τη λήψη του αρχείου καταγραφής."
+
+#: 
+msgid "Error initiating download."
+msgstr "Σφάλμα κατά την έναρξη της λήψης."
+
+#: 
+msgid "Error loading log file."
+msgstr "Σφάλμα κατά τη φόρτωση του αρχείου καταγραφής."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Σφάλμα κατά τη φόρτωση εγγραφών αυτοεγγραφής"
+
+#: 
+msgid "Errors"
+msgstr "Σφάλματα"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Εξαίρεση αποβιωσάντων μελών από τον έντυπο κατάλογο και τις εξαγωγές CSV."
+
+#: 
+msgid "Failed Files"
+msgstr "Αρχεία που Απέτυχαν"
+
+#: 
+msgid "Failed to add link"
+msgstr "Αποτυχία προσθήκης συνδέσμου"
+
+#: 
+msgid "Failed to add option"
+msgstr "Αποτυχία προσθήκης επιλογής"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Αποτυχία κλεισίματος εκδηλώσεων. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to delete"
+msgstr "Αποτυχία διαγραφής"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Αποτυχία ενεργοποίησης εγγραφής kiosk"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Αποτυχία εξαγωγής CSV ChMeetings"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Αποτυχία φόρτωσης ελέγχου. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Αποτυχία μετονομασίας kiosk"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Αποτυχία αποθήκευσης αλλαγών"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Αποτυχία ενημέρωσης προσθέτου"
+
+#: 
+msgid "Family Id"
+msgstr "Αναγνωριστικό Οικογένειας"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Τελική Επιβεβαίωση"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Γεωκωδικοποίηση οικογενειών… αυτό μπορεί να διαρκέσει μερικά λεπτά. Μπορείτε να αφήσετε αυτή τη σελίδα ανοιχτή."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Γεωκωδικοποίηση οικογενειών… {{done}} από {{total}} επεξεργάστηκαν, {{geocoded}} εντοπίστηκαν."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Απαιτείται Ενημέρωση Επικεφαλής Νοικοκυριού"
+
+#: 
+msgid "Helpful Links"
+msgstr "Χρήσιμοι Σύνδεσμοι"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Απόκρυψη Αποβιωσάντων από τον Κατάλογο"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Απόκρυψη αποβιωσάντων μελών από τον έντυπο κατάλογο και τις εξαγωγές CSV."
+
+#: 
+msgid "Identify"
+msgstr "Αναγνώριση"
+
+#: 
+msgid "Identify command sent"
+msgstr "Η εντολή αναγνώρισης στάλθηκε"
+
+#: 
+msgid "Individual"
+msgstr "Άτομο"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Εσωτερικό: τελευταία ημερομηνία και ώρα ολοκλήρωσης των προγραμματισμένων εργασιών παρασκηνίου (YYYY-MM-DD HH:MM:SS). Μην το επεξεργάζεστε χειροκίνητα."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Το στοιχείο διαγράφηκε με επιτυχία"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Όνομα Kiosk"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Το kiosk έγινε αποδεκτό"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Το kiosk διαγράφηκε με επιτυχία"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Το kiosk πρέπει να γίνει αποδεκτό"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Το kiosk μετονομάστηκε"
+
+#: 
+msgid "Last seen"
+msgstr "Τελευταία εμφάνιση"
+
+#: 
+msgid "Link"
+msgstr "Σύνδεσμος"
+
+#: 
+msgid "Link added successfully"
+msgstr "Ο σύνδεσμος προστέθηκε με επιτυχία"
+
+#: 
+msgid "Link deleted"
+msgstr "Ο σύνδεσμος διαγράφηκε"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Το όνομα συνδέσμου δεν μπορεί να περιέχει ετικέτες HTML"
+
+#: 
+msgid "Living"
+msgstr "Εν ζωή"
+
+#: 
+msgid "Log settings saved"
+msgstr "Οι ρυθμίσεις καταγραφής αποθηκεύτηκαν"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Το Όνομα Σύνδεσης είναι Υποχρεωτικό"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Το άτομο σημειώθηκε ως Ενεργό"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Το άτομο σημειώθηκε ως Ανενεργό"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Ελάχιστος αριθμός λεπτών μεταξύ των εκτελέσεων προγραμματισμένων εργασιών παρασκηνίου που ενεργοποιούνται από τη φόρτωση σελίδας. Αποτρέπει την εκτέλεση των εργασιών σε κάθε προβολή σελίδας κατά τη διάρκεια μιας πολυάσχολης Κυριακής πρωί. Δεν ισχύει για την εκτέλεση μέσω γραμμής εντολών. Ορίστε 0 για εκτέλεση σε κάθε φόρτωση σελίδας."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Οι νέοι χρήστες δεν θα λάβουν email καλωσορίσματος και ο δημιουργημένος κωδικός πρόσβασης δεν εμφανίζεται ποτέ. Μετά τη δημιουργία του λογαριασμού, ορίστε έναν κωδικό από τους Χρήστες Συστήματος χρησιμοποιώντας την Αλλαγή Κωδικού Πρόσβασης — ή διαμορφώστε πρώτα το email."
+
+#: 
+msgid "No changes to save"
+msgstr "Δεν υπάρχουν αλλαγές για αποθήκευση"
+
+#: 
+msgid "No contact info"
+msgstr "Δεν υπάρχουν στοιχεία επικοινωνίας"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Δεν έχουν διαμορφωθεί προσαρμοσμένοι σύνδεσμοι. Προσθέστε έναν παραπάνω!"
+
+#: 
+msgid "No email"
+msgstr "Χωρίς email"
+
+#: 
+msgid "No files were deleted."
+msgstr "Δεν διαγράφηκαν αρχεία."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Δεν υπάρχει διαθέσιμη βοήθεια για αυτό το πρόσθετο."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Δεν υπάρχουν άτομα για προσθήκη - όλα βρίσκονται ήδη στην επιλογή"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Δεν υπάρχουν άτομα για προσθήκη - το φίλτρο δεν επέστρεψε αποτελέσματα"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Μη έγκυρη ημερομηνία θανάτου"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Αριθμός ημερών που έχουν οι χρήστες για εγγραφή στον έλεγχο ταυτότητας δύο παραγόντων αφότου καταστεί υποχρεωτικός. Ορίστε 0 για άμεση επιβολή. Η μείωση μιας ενεργής περιόδου χάριτος μπορεί να αποκλείσει άμεσα τους χρήστες."
+
+#: 
+msgid "Offline"
+msgstr "Εκτός σύνδεσης"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Κάντε το μόνο αφού διορθωθεί το υποκείμενο πρόβλημα. Θα πρέπει ακόμα να πατήσετε Ενεργοποίηση για να λειτουργήσει ξανά το πρόσθετο."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Παρακαλώ επιβεβαιώστε την ενεργοποίηση του ατόμου"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Παρακαλώ επιβεβαιώστε την απενεργοποίηση του ατόμου"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Η κατάσταση του προσθέτου ενημερώθηκε"
+
+#: 
+msgid "Registered"
+msgstr "Εγγεγραμμένο"
+
+#: 
+msgid "Reload"
+msgstr "Επαναφόρτωση"
+
+#: 
+msgid "Reload command sent"
+msgstr "Η εντολή επαναφόρτωσης στάλθηκε"
+
+#: 
+msgid "Rename"
+msgstr "Μετονομασία"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Μετονομασία Kiosk"
+
+#: 
+msgid "Reset Complete"
+msgstr "Η Επαναφορά Ολοκληρώθηκε"
+
+#: 
+msgid "Reset Settings"
+msgstr "Επαναφορά Ρυθμίσεων"
+
+#: 
+msgid "Resetting..."
+msgstr "Επαναφορά..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Οι προγραμματισμένες εργασίες δεν εκτελούνται"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Λείπει το διακριτικό ασφαλείας. Παρακαλώ ανανεώστε τη σελίδα."
+
+#: 
+msgid "Select…"
+msgstr "Επιλέξτε…"
+
+#: 
+msgid "Sending..."
+msgstr "Αποστολή..."
+
+#: 
+msgid "Sending…"
+msgstr "Αποστολή…"
+
+#: 
+msgid "Settings reset"
+msgstr "Οι ρυθμίσεις επαναφέρθηκαν"
+
+#: 
+msgid "Settings saved"
+msgstr "Οι ρυθμίσεις αποθηκεύτηκαν"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Οι ρυθμίσεις αποθηκεύτηκαν. Ανανέωση πληροφοριών αναβάθμισης..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Εμφάνιση μόνο ενεργών ατόμων."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Εμφάνιση μόνο ανενεργών ατόμων."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Διαγράφηκε με επιτυχία"
+
+#: 
+msgid "Testing..."
+msgstr "Δοκιμή..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Η βάση δεδομένων έχει διαγραφεί. Το σύστημα είναι έτοιμο για ένα νέο ξεκίνημα."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Η εναλλακτική λύση φόρτωσης σελίδας συνεχίζει να λειτουργεί στο μεταξύ. Αλλάξτε πόσο χρόνο περιμένει το ChurchCRM πριν εμφανίσει αυτή την προειδοποίηση με τη ρύθμιση %1$s, ή ορίστε την σε 0 για να την αποκρύψετε."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Αυτό το Άτομο είναι Ανενεργό"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Αυτό βρίσκει τις συντεταγμένες χάρτη για κάθε οικογένεια που δεν τις έχει, χρησιμοποιώντας το OpenStreetMap. Επεξεργάζεται τις οικογένειες σε παρτίδες των 50, περίπου ένα λεπτό ανά παρτίδα. Μπορείτε να αφήσετε αυτή τη σελίδα ανοιχτή όσο εκτελείται. Συνέχεια;"
+
+#: 
+msgid "This person is deceased"
+msgstr "Αυτό το άτομο έχει αποβιώσει"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Αυτό θα διαγράψει όλες τις διαμορφωμένες τιμές για αυτό το πρόσθετο. Δεν μπορεί να αναιρεθεί."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Αυτό θα διαγράψει μόνιμα τα αρχεία του προσθέτου από τον δίσκο και θα διαγράψει τις ρυθμίσεις του. Δεν μπορεί να αναιρεθεί."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "Το URL δεν μπορεί να περιέχει ετικέτες HTML"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Απροσδόκητο σφάλμα. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Απεγκατάσταση Προσθέτου"
+
+#: 
+msgid "Upcoming"
+msgstr "Προσεχώς"
+
+#: 
+msgid "Valid Until"
+msgstr "Ισχύει Έως"
+
+#: 
+msgid "View active only"
+msgstr "Προβολή μόνο ενεργών"
+
+#: 
+msgid "View all"
+msgstr "Προβολή όλων"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Προβολή όλων (συμπεριλαμβανομένων ανενεργών)"
+
+#: 
+msgid "View inactive only"
+msgstr "Προβολή μόνο ανενεργών"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Προειδοποίηση στον πίνακα διαχείρισης όταν οι προγραμματισμένες εργασίες παρασκηνίου δεν έχουν εκτελεστεί για τόσες ώρες. Η τιμή 26 επιτρέπει ένα ημερήσιο cron συν κάποια απόκλιση. Ορίστε 0 για απενεργοποίηση της προειδοποίησης."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Χωρίς προγραμματιστή εργασιών, αυτές οι εργασίες εκτελούνται μόνο όταν κάποιος φορτώνει μια σελίδα, οπότε μια ήσυχη καθημερινή δεν στέλνει καθόλου προγραμματισμένα email. Προσθέστε μια καταχώρηση cron που εκτελεί τον εκτελεστή εργασιών ανά ώρα, με τον ίδιο χρήστη με τον οποίο εκτελείται ο web server σας"
+
+#: 
+msgid "check-outs"
+msgstr "αποχωρήσεις"
+
+#: 
+msgid "deceased"
+msgstr "αποβιώσας"
+
+#: 
+msgid "event"
+msgstr "εκδήλωση"
+
+#: 
+msgid "events?"
+msgstr "εκδηλώσεις;"
+
+#: 
+msgid "files"
+msgstr "αρχεία"
+
+#: 
+msgid "people from cart?"
+msgstr "άτομα από την επιλογή;"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "το skip πρέπει να είναι μηδέν ή θετικός ακέραιος"
+
+#: 
+msgid "view families missing an email"
+msgstr "προβολή οικογενειών χωρίς email"
 
