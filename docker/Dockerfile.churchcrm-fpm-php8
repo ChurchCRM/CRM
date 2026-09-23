@@ -1,16 +1,18 @@
+# syntax=docker/dockerfile:1
 # Production PHP-FPM Dockerfile for ChurchCRM
 # Includes compiled ChurchCRM release code (no rebuild needed)
 #
 # Build:
-#   docker build -f Dockerfile.churchcrm-fpm-php8 -t churchcrm/crm:7.7.0-php8-fpm .
+#   docker build --target prod -f Dockerfile.churchcrm-fpm-php8 -t churchcrm/crm:7.7.0-php8-fpm .
 #
 # The release code is copied into the image during build.
 # When container starts, ChurchCRM is ready to serve.
 
-ARG PHP_VERSION=8.4
+ARG PHP_IMAGE=php:8.4.25-fpm-trixie@sha256:223115611852f585846b5d30f0cd95de8af9b486ca3bf310174a143704fc71e3
 
 # Builder stage: compile PHP extensions only (code comes from release artifact)
-FROM php:${PHP_VERSION}-fpm AS builder
+FROM ${PHP_IMAGE} AS builder
+WORKDIR /var/www/html
 LABEL maintainer="ChurchCRM"
 
 # Install system dependencies required by PHP extensions
@@ -57,52 +59,56 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
 
 
 # Production stage: minimal runtime with compiled ChurchCRM
-# Uses standard PHP base with security best practices equivalent to DHI approach
-FROM php:${PHP_VERSION}-fpm AS prod
+FROM ${PHP_IMAGE} AS prod
+WORKDIR /var/www/html
 LABEL maintainer="ChurchCRM" \
-      org.opencontainers.image.description="ChurchCRM with PHP-FPM (production-ready, includes release code)"
+      org.opencontainers.image.source="https://github.com/ChurchCRM/CRM" \
+      org.opencontainers.image.description="ChurchCRM with PHP-FPM (includes release code)"
 
 EXPOSE 9000
 
 # Install only runtime libraries (no dev tools)
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        libcurl4 \
+        libcurl4t64 \
         libfreetype6 \
         libicu76 \
         libjpeg62-turbo \
         libonig5 \
-        libpng16-16 \
+        libpng16-16t64 \
         libxml2 \
         libzip5 \
         gettext \
         locales \
         locales-all \
-    && apt-get remove -y --purge apt-utils && \
-    rm -rf /var/lib/apt/lists/* /var/cache/apt
+    && apt-get purge -y --auto-remove $PHPIZE_DEPS libc6-dev libc-dev-bin libcrypt-dev linux-libc-dev rpcsvc-proto && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt /usr/src/php.tar.xz /usr/local/include/php
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy compiled PHP extensions and configuration from builder
-COPY --from=builder /usr/local/lib/php/extensions/no-debug-non-zts-20240924/ \
-     /usr/local/lib/php/extensions/no-debug-non-zts-20240924/
+# Copy compiled PHP extensions and configuration from builder. Copying the
+# whole extensions/ dir (rather than hardcoding the no-debug-non-zts-<abi>
+# subdirectory name) keeps this working if PHP_IMAGE is ever bumped.
+COPY --from=builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
 COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
 COPY --from=builder /usr/local/etc/php/php.ini /usr/local/etc/php/php.ini
 
-# Create non-root user
-RUN groupadd -r www && useradd -r -g www www
-
 # Copy ChurchCRM release code (provided from release artifact during docker build)
 # The build context should include the extracted release code
-COPY --chown=www:www . .
+COPY --chown=www-data:www-data . .
+
+# The build context also carries docker/apache/default.conf, added so the
+# Apache image's Dockerfile can consume it — strip it here so this image
+# doesn't ship an unrelated, unused Apache config file.
+RUN rm -rf apache && chmod 0755 /var/www/html
 
 # Set non-root user for PHP-FPM
-USER www
+USER www-data
 
 
 # Dev stage: includes build tools (for developers, not production)
-FROM php:${PHP_VERSION}-fpm AS dev
+FROM ${PHP_IMAGE} AS dev
 LABEL maintainer="ChurchCRM"
 
 # Install system dependencies required by PHP extensions
