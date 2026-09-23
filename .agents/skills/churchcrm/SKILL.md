@@ -12,6 +12,8 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 
 These files apply to **every agent family** that reads this repo. Do not assume Claude, Copilot, or a local `~/.claude/` path. Product floor is PHP 8.4+. Community plugins are current. Do not invent `/metrics`, SaaS hosting, or the retired `External` plugin-registry branch.
 
+Load `skill-architecture.md` only when adding or editing a skill.
+
 ## Architecture & API
 
 **Reading order for API development:**
@@ -44,144 +46,81 @@ These files apply to **every agent family** that reads this repo. Do not assume 
 |-------|------------|
 | [Icon Management](./icon-management.md) | **Font Awesome only** — icon patterns, free tier compliance (no paid variants), Tabler→FA migration reference, common substitutions, accessibility |
 | [Table Action Menu](./table-action-menu.md) | **Required for every table with row-level actions** — dropdown pattern, overflow fix, cart buttons, checklist |
-| [Frontend Development](./frontend-development.md) | **Settings Panel (gold-standard pattern), UI changes, Bootstrap 5, i18n, notifications, confirmations, modals, asset management** |
-| [Timezone Handling](./timezone-handling.md) | **Required for any datetime-aware change** — wall-clock-in-sTimeZone storage, FullCalendar marker quirks, Propel space format Chrome misparse, kiosk timing, cross-tz banner. Read before touching event-form.js, event-calendars.js, calendar-event-editor.js, kiosk-jsom.ts, KioskDevice::heartbeat(), or events.php API |
-| [Responsive Design Guidelines](./responsive-design-guidelines.md) | **Canonical mobile / tablet / laptop form factors, breakpoints, grid patterns, touch targets — read before any page layout or responsive bug fix** |
+| [Frontend Development](./frontend-development.md) | **Settings Panel, UI changes, Bootstrap 5, i18n, notifications, modals, assets** |
+| [Timezone Handling](./timezone-handling.md) | Datetime-aware changes. Read before event calendar / kiosk time code |
+| [Responsive Design Guidelines](./responsive-design-guidelines.md) | Mobile / tablet / laptop layout |
 | [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts |
-| [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, vanilla JS/TS modules, asset management |
-| [i18n & Localization](./i18n-localization.md) | Adding UI text, translations |
-| [Locale Translation Workflow](./locale-translation-workflow.md) | Authoritative translate → upload → download workflow, including durability and prioritization |
-| [Currency Localization](./currency-localization.md) | **NEW** — Displaying money with configurable symbol / position / separators (PHP, JS, DataTables, Chart.js, CSS, PDFs). Required for any finance-adjacent change. Epic: [#8459](https://github.com/ChurchCRM/CRM/issues/8459) |
-| [Error Reporting & Issue Filing](./error-reporting.md) | Shared Tabler-styled error pages (4xx/5xx), consistent UX, wiring to Issue Reporter modal, and E2E testing patterns |
+| [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling |
+| [i18n & Localization](./i18n-localization.md) | Adding UI text. Wrap only; `locale:build` on merge to master |
+| [Locale Translation Workflow](./locale-translation-workflow.md) | POEditor translate → upload → download |
+| [Currency Localization](./currency-localization.md) | Money display. Epic: [#8459](https://github.com/ChurchCRM/CRM/issues/8459) |
+| [Error Reporting & Issue Filing](./error-reporting.md) | Tabler error pages and Issue Reporter |
 
 ## Security
 
 | Skill | When to Use |
 |-------|------------|
 | [Authorization & Security](./authorization-security.md) | Permission checks, authentication |
-| [Security Best Practices](./security-best-practices.md) | Security features, sensitive operations, output escaping (incl. data-* attributes) |
-| [Security Advisory Review](./security-advisory-review.md) | Analyzing/fixing GitHub security advisories — access draft advisories via gh CLI, understand vulnerability scope, write tests, create PRs |
-| [GitHub Interaction](./github-interaction.md) | Security Advisory lifecycle: draft → publish → CVE request, notifying reporters |
+| [Security Best Practices](./security-best-practices.md) | Escaping, sensitive operations |
+| [Security Advisory Review](./security-advisory-review.md) | Draft GHSA analysis |
+| [GitHub Interaction](./github-interaction.md) | Advisory publish / CVE / reporters |
 
 ## Plugins
 
 | Skill | Audience | When to Use |
 |-------|----------|------------|
-| [Plugin System](./plugin-system.md) | All | Runtime architecture — PluginManager, hooks, install flow, plugin-local localization loader |
-| [Plugin Development](./plugin-development.md) | Plugin authors | Building a plugin end-to-end. **Start here, and read the security-scan preamble at the top before writing code.** Covers allowed/forbidden capabilities, hooks, sandboxed config, and plugin-local translations. |
-| [Plugin Create (Community)](./plugin-create.md) | Community plugin authors | Quickstart + submission flow: scaffold a community plugin, run the security scan against your own tree, build a reproducible zip, and open the `approved-plugins.json` PR |
-| [Plugin Migration (Core only)](./plugin-migration.md) | Core plugin maintainers | Checklist when a core API change affects `src/plugins/core/*`. **Not for community plugins** — they follow `plugin-create.md` instead |
-| [Plugin Security Scan](./plugin-security-scan.md) | ChurchCRM maintainers | **Required** review checklist before approving a community plugin for `src/plugins/approved-plugins.json`. Covers intake, static analysis, risk classification, and the 2026 plugin standards reference. |
-| [Plugin Compliance (Admin Audit)](./plugin-compliance.md) | Site admins | Monthly/quarterly scans of already-installed community plugins. Read the approved list, verify on-disk state, re-run the orphan scan, respond to revoked plugins. |
+| [Plugin System](./plugin-system.md) | All | Runtime architecture |
+| [Plugin Development](./plugin-development.md) | Plugin authors | Start here |
+| [Plugin Create (Community)](./plugin-create.md) | Community authors | Scaffold + submit |
+| [Plugin Migration (Core only)](./plugin-migration.md) | Core maintainers | `src/plugins/core/*` |
+| [Plugin Security Scan](./plugin-security-scan.md) | Maintainers | Before `approved-plugins.json` |
+| [Plugin Compliance (Admin Audit)](./plugin-compliance.md) | Site admins | Installed-plugin audit |
 
 ## Testing
 
 | Skill | When to Use |
 |-------|------------|
-| [Testing](./testing.md) | Writing tests, debugging, test suites |
-| [Cypress Testing](./cypress-testing.md) | E2E tests, CI/CD testing, API test patterns |
-| [Testing Migration & E2E](./testing-migration-e2e.md) | Testing strategy for migrations |
-| [Marketing Visual-Media Pipeline](./marketing-visuals-pipeline.md) | Playwright-based screenshot/video capture for marketing (`playwright/`) — separate from Cypress E2E |
-
-### Running Cypress Locally
-
-Follow these steps to run Cypress tests locally and generate machine-readable reports useful for CI parity:
-
-- Install dependencies:
-
-  ```bash
-  npm ci
-  ```
-
-- Run a single spec (headless, Electron):
-
-  ```bash
-  npx cypress run --spec "cypress/e2e/path/to/specfile.spec.js" --browser electron
-  ```
-
-- Run the full test suite with JUnit output (for CI-like reports):
-
-  ```bash
-  npx cypress run --reporter junit --reporter-options "mochaFile=cypress/reports/junit-[name].xml"
-  ```
-
-- Run with a specific base URL (useful for docker/local server):
-
-  ```bash
-  CYPRESS_BASE_URL=http://127.0.0.1:8080/churchcrm/ npx cypress run --config-file cypress/configs/docker.config.ts
-  ```
-
-- Run a spec in headed mode for interactive debugging:
-
-  ```bash
-  npx cypress open --config-file cypress/configs/docker.config.ts
-  ```
-
-- Generate an HTML report (mochawesome) locally (optional):
-
-  1. Install reporters:
-
-     ```bash
-     npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
-     ```
-
-  2. Run and write JSON output:
-
-     ```bash
-     npx cypress run --reporter mochawesome --reporter-options "reportDir=cypress/reports,overwrite=false,html=false,json=true"
-     ```
-
-  3. Merge and generate HTML:
-
-     ```bash
-     npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged.json
-     npx mochawesome-report-generator cypress/reports/merged.json -o cypress/reports/html
-     ```
-
-- Tips & diagnostics:
-  - Use `--headed --browser chrome` to visually reproduce failures.
-  - Use `--config video=true,screenshotOnRunFailure=true` to capture artifacts.
-  - When testing admin routes, ensure the local app is running and reachable (see `docker/` compose profiles used in CI).
-  - Use `--reporter json` to produce structured output you can parse for automated triage.
-  - For flaky selectors after UI changes, prefer stable selectors: `id`, `data-cy`, `input[name=]`, link href/text, and avoid visual utility classes.
-
-
-**Before committing ANY test changes:** See repo root `CLAUDE.md` / `MEMORY.md` (agent conventions for this repo, not Claude-only) for the test review checklist before committing test changes
+| [Testing](./testing.md) | Writing tests |
+| [Cypress Testing](./cypress-testing.md) | E2E / API tests. Commands live in `package.json` |
+| [Testing Migration & E2E](./testing-migration-e2e.md) | Migration test strategy |
+| [Marketing Visual-Media Pipeline](./marketing-visuals-pipeline.md) | Playwright marketing captures |
 
 ## MVC Migration
 
 | Skill | When to Use |
 |-------|------------|
-| [Admin MVC Migration](./admin-mvc-migration.md) | Migrating legacy pages to modern MVC |
-| [Groups MVC Guidelines](./groups-mvc-guidelines.md) | Groups module MVC patterns |
-| [Refactor](./refactor.md) | Refactoring legacy code to services/MVC |
+| [Admin MVC Migration](./admin-mvc-migration.md) | Legacy pages → MVC |
+| [Groups MVC Guidelines](./groups-mvc-guidelines.md) | Groups module |
+| [Refactor](./refactor.md) | Legacy → services/MVC |
 
 ## PHP & Performance
 
 | Skill | When to Use |
 |-------|------------|
-| [PHP Best Practices](./php-best-practices.md) | ChurchCRM PHP patterns, Perpl ORM |
-| [Modern PHP Frameworks](./modern-php-frameworks.md) | Security hardening, framework features |
-| [Performance Optimization](./performance-optimization.md) | Query optimization, scaling, response times |
-| [Observability, Logging & Metrics](./observability-logging-metrics.md) | Logging, metrics, monitoring |
+| [PHP Best Practices](./php-best-practices.md) | ChurchCRM PHP / Perpl |
+| [Modern PHP Frameworks](./modern-php-frameworks.md) | Hardening |
+| [Performance Optimization](./performance-optimization.md) | Query / scale |
+| [Observability, Logging & Metrics](./observability-logging-metrics.md) | Logging |
 
 ## Development Process
 
 | Skill | When to Use |
 |-------|------------|
-| [Git Workflow](./git-workflow.md) | Commits, PRs, pre-commit validation |
-| [GitHub Interaction](./github-interaction.md) | Reviews, commits, PR management |
-| [PR Review](./pr-review.md) | Full PR review: fetch changes, validate standards, check docs/wiki, manual testing, address comments, capture learnings |
-| [PR Description Guidelines](../pr-description-guidelines.md) | Ensure PR bodies are written in Markdown with required sections (Summary, Changes, Files Changed, Validation, Testing) |
-| [Development Workflows](./development-workflows.md) | Setup, build, Docker management |
-| [Code Standards](./code-standards.md) | General coding, quality checks, PR reviews |
-| [Documentation Architecture & Wiki](./wiki-documentation.md) | Which doc home to use (end user / 3rd-party dev / core dev), MDX gotchas, wiki article structure |
-| [Release Management](./release-management.md) | **Canonical end-to-end release process** — scope review, SHA-based CI/nightly gate, draft creation, approvals, publishing, and post-release verification |
-| [Security Report Triage](./security-report-triage.md) | A vulnerability report arrives: read it against the code and tell the maintainer how much of the claimed risk stands up, before any public reply |
-| [Release Notes](./release-notes.md) | Transform and fact-check the GitHub-generated draft changelog into user-focused release notes |
-| [Social Media Release](./social-media-release.md) | Generating platform posts for X, Facebook, Instagram, LinkedIn |
-| [Release Announcement](./release-announcement.md) | After a release is published: Discord announcement, notify reporters of fixed issues, list docs PRs held for the release |
-| [Repo Health Check](./repo-health.md) | On-demand GitHub snapshot: approved PRs waiting to merge, good-first-issue pipeline staleness, community-profile hygiene, stale-branch cleanup |
+| [Git Workflow](./git-workflow.md) | Commits, PRs |
+| [GitHub Interaction](./github-interaction.md) | Reviews, GHSA |
+| [Maintainer Review Gates](./maintainer-review-gates.md) | Review a PR first. Agents never approve or merge |
+| [PR Review](./pr-review.md) | Fetch PR + standards checklist |
+| [Skill architecture](./skill-architecture.md) | Editing skills only |
+| [PR Description Guidelines](../pr-description-guidelines.md) | PR body sections |
+| [Development Workflows](./development-workflows.md) | Setup, Docker |
+| [Code Standards](./code-standards.md) | Coding checks |
+| [Documentation Architecture & Wiki](./wiki-documentation.md) | Which doc home |
+| [Release Management](./release-management.md) | Ship a release |
+| [Security Report Triage](./security-report-triage.md) | Private vuln read |
+| [Release Notes](./release-notes.md) | Changelog rewrite |
+| [Social Media Release](./social-media-release.md) | Social posts |
+| [Release Announcement](./release-announcement.md) | After publish |
+| [Repo Health Check](./repo-health.md) | GitHub hygiene snapshot |
 
 ## Example Workflows
 
@@ -189,17 +128,6 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 - **Migrate legacy page**: `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` → `database-operations.md` → `git-workflow.md`
 - **Fix security issue**: `security-best-practices.md` → `authorization-security.md` → `php-best-practices.md` → `git-workflow.md`
 - **Add a community plugin**: `plugin-system.md` → `plugin-development.md` → `plugin-create.md` → `plugin-security-scan.md` → `git-workflow.md`
-- **Update a core plugin** (`src/plugins/core/*`): `plugin-system.md` → `plugin-development.md` → `plugin-migration.md` → `git-workflow.md`
-- **Audit installed plugins (admin)**: `plugin-compliance.md`
-- **Optimize queries**: `performance-optimization.md` → `database-operations.md` → `service-layer.md`
-- **Add UI text**: `i18n-localization.md` → `frontend-development.md` → `git-workflow.md`
-- **Render money / currency anywhere**: `currency-localization.md` → `configuration-management.md` → `frontend-development.md` → `git-workflow.md`
-- **Triage a vulnerability report** (is it real, what is the true severity): `security-report-triage.md` → `authorization-security.md` → `github-interaction.md`
-- **Manage security advisory** (publish GHSA, request CVE, notify reporters): `github-interaction.md` (Security Advisory Management section) → `security-best-practices.md`
-- **Write release notes**: `release-notes.md` → `github-interaction.md`
-- **Publish a release**: `release-notes.md` → `social-media-release.md` → `github-interaction.md`
-- **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
-- **Address PR comments**: `pr-review.md` → `github-interaction.md` → `git-workflow.md`
-- **Check repo health** (approved PRs waiting, good-first-issue pipeline, hygiene): `repo-health.md` → `github-interaction.md`
-- **Add print support to a page**: `frontend-development.md` (Print Support section) → `security-best-practices.md` (CSP) → `git-workflow.md`
-- **Add or edit a table with row actions**: `table-action-menu.md` → `tabler-components.md` → `git-workflow.md`
+- **Add UI text**: `i18n-localization.md` → `git-workflow.md`. Do not run `locale:build` in the PR.
+- **Review a PR**: `maintainer-review-gates.md` → `pr-review.md` → `code-standards.md`. Draft only. Never approve or merge.
+- **Address PR comments**: `pr-review-fix.md` → `git-workflow.md`
