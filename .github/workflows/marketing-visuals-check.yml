@@ -104,8 +104,10 @@ jobs:
 
       - name: Fail — branch visuals are stale
         if: github.ref_name != github.event.repository.default_branch && steps.changes.outputs.has_changes == 'true'
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
         run: |
-          echo "::error::Marketing visuals committed on '${{ github.ref_name }}' are out of date with the current code. Run 'npm run marketing' locally and commit the updated files under playwright/artifacts/screenshots and playwright/artifacts/videos."
+          echo "::error::Marketing visuals committed on '$BRANCH_NAME' are out of date with the current code. Run 'npm run marketing' locally and commit the updated files under playwright/artifacts/screenshots and playwright/artifacts/videos."
           exit 1
 
       - name: Configure git for automated commit
@@ -116,7 +118,7 @@ jobs:
 
       - name: Create Pull Request with updated visuals
         if: github.ref_name == github.event.repository.default_branch && steps.changes.outputs.has_changes == 'true'
-        uses: peter-evans/create-pull-request@v8
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: marketing/update-visuals
