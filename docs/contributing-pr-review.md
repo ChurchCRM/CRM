@@ -9,7 +9,7 @@ Thank you for donating time (and often tokens). We try not to nitpick. We will s
 1. Link an open issue. PRs without an issue are rejected.
 2. Run lint and build.
 3. Add or update tests for the change.
-4. Wrap every new user-visible string in `gettext()` (PHP) or `i18next.t()` (JS). Translations happen outside this PR.
+4. Wrap every new user-visible string in `gettext()` (PHP) or `i18next.t()` (JS). Translations happen outside this PR. `locale:build` runs on merge to `master`.
 5. If you change the UI in a non-trivial way, attach screenshots (or a short recording) for desktop, tablet, and mobile sizes we support, and keep the Tabler / Bootstrap 5 look.
 6. Think about churches already running ChurchCRM. New config must default safely. Do not change behavior by surprise. If the database or permissions change, include a safe upgrade path.
 7. Do not add work that is likely to slow a common path (login, people list, Sunday workflow) without measuring or fixing it.

@@ -24,7 +24,7 @@ Fix in this PR:
 2. Performance — extra queries, N+1, heavy work on login, people list, or other common paths, unless measured as fine.
 3. Existing installs — required new fields with no default, surprise behavior change, destructive migration, surprise permission change.
 4. Non-trivial UI — no screenshots or recording covering supported desktop, tablet, and mobile, or it does not match Tabler / Bootstrap 5 UX. Tiny tweaks can follow up.
-5. Localization wrap — new user-visible strings not in `gettext()` (PHP) or `i18next.t()` (JS). Do not require completed translations or locale dumps in the feature PR.
+5. Localization wrap — new user-visible strings not in `gettext()` (PHP) or `i18next.t()` (JS). Do not require completed translations or locale dumps in the feature PR. `locale:build` runs on merge to `master`.
 6. Tests — feature or bug fix with no new or updated tests.
 7. Repo process — no linked issue; lint/build clearly failing.
 
