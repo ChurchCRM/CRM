@@ -9,16 +9,13 @@ use ChurchCRM\Utils\LoggerUtils;
  * Queries the list of community plugins that ChurchCRM maintainers have vetted
  * and approved for installation via the URL-based installer.
  *
- * Preferred source is CentralServices::PLUGIN_REGISTRY_URL (Notifications
- * branch). When that fetch fails or returns no valid entries, the copy
- * shipped at src/plugins/approved-plugins.json is used so Browse Approved
- * and CI stay usable if the remote branch is missing.
+ * The registry lives at CentralServices::PLUGIN_REGISTRY_URL (Notifications
+ * branch). It is fetched lazily on first use within a session and stored in
+ * $_SESSION['RemotePluginRegistry']. There is no local copy in the release
+ * zip — if the remote fetch fails, the list is empty until a later session
+ * can reach the URL.
  *
- * The result is stored in $_SESSION['RemotePluginRegistry'] for the rest of
- * the login session.
- *
- * Adding an approved plugin requires a PR that updates the shipped JSON
- * (and the hosted copy on Notifications when that branch is in use).
+ * Adding an approved plugin is a commit on the Notifications branch.
  * See .agents/skills/churchcrm/plugin-security-scan.md for the review checklist.
  */
 class ApprovedPluginRegistry
@@ -26,49 +23,35 @@ class ApprovedPluginRegistry
     /** @see CentralServices::PLUGIN_REGISTRY_URL */
     public const REGISTRY_URL = CentralServices::PLUGIN_REGISTRY_URL;
 
-    /** Bundled allowlist used when the remote registry cannot be fetched. */
-    private const LOCAL_REGISTRY_PATH = __DIR__ . '/../../../plugins/approved-plugins.json';
-
     /** Required keys on every entry. */
     private const REQUIRED_KEYS = ['id', 'name', 'version', 'downloadUrl', 'sha256', 'risk', 'riskSummary'];
 
     /** Allowed values for the `risk` field. Ordered low → high for display. */
     public const RISK_LEVELS = ['low', 'medium', 'high'];
 
-    /**
-     * Capability tags that may appear in the `permissions` array. Review-time
-     * classification is enforced by keeping this list short — anything not in
-     * here must be added to the list in the same PR that uses it, so the
-     * reviewer has to look at plugin-security-scan.md before approving.
-     */
     public const KNOWN_PERMISSIONS = [
-        'network.outbound',   // plugin makes outbound HTTP(S) calls
-        'network.inbound',    // plugin exposes new HTTP routes
-        'db.read',            // plugin reads from ChurchCRM tables
-        'db.write',           // plugin writes to ChurchCRM tables
-        'fs.read',            // plugin reads from the filesystem outside its own dir
-        'fs.write',           // plugin writes to the filesystem outside its own dir
-        'secrets.store',      // plugin stores credentials / API keys in its config
-        'ui.inject',          // plugin injects HTML/JS/CSS into core pages
-        'cron',               // plugin runs on a schedule
-        'hooks.person',       // plugin listens for PERSON_* hooks (PII reach)
-        'hooks.family',       // plugin listens for FAMILY_* hooks (PII reach)
-        'hooks.financial',    // plugin listens for DONATION_* / DEPOSIT_* hooks
-        'hooks.email',        // plugin listens for EMAIL_* hooks
-        'email.send',         // plugin sends email on behalf of the church
-        'sms.send',           // plugin sends SMS on behalf of the church
-        'calendar.register',  // plugin contributes SystemCalendar instances via systemcalendars.register hook
+        'network.outbound',
+        'network.inbound',
+        'db.read',
+        'db.write',
+        'fs.read',
+        'fs.write',
+        'secrets.store',
+        'ui.inject',
+        'cron',
+        'hooks.person',
+        'hooks.family',
+        'hooks.financial',
+        'hooks.email',
+        'email.send',
+        'sms.send',
+        'calendar.register',
     ];
 
     /** @var array<string, array<string, mixed>>|null */
     private static ?array $cache = null;
 
     /**
-     * Return all approved plugin entries keyed by plugin id.
-     * Fetches the remote registry on the first call within a login session
-     * (lazy — never at login time). Subsequent calls within the same session
-     * return the cached result without a network round-trip.
-     *
      * @return array<string, array<string, mixed>>
      */
     public static function all(): array
@@ -77,9 +60,6 @@ class ApprovedPluginRegistry
             return self::$cache;
         }
 
-        // Fetch once per login session. array_key_exists distinguishes "never
-        // fetched" from "fetched but empty" so a failed fetch doesn't retry
-        // on every request within the same session.
         if (!array_key_exists('RemotePluginRegistry', $_SESSION)) {
             self::fetchRemoteRegistry();
         }
@@ -90,8 +70,6 @@ class ApprovedPluginRegistry
     }
 
     /**
-     * Look up a single approved plugin by id.
-     *
      * @return array<string, mixed>|null
      */
     public static function find(string $pluginId): ?array
@@ -100,8 +78,6 @@ class ApprovedPluginRegistry
     }
 
     /**
-     * Look up an approved plugin by the download URL supplied by the user.
-     *
      * @return array<string, mixed>|null
      */
     public static function findByDownloadUrl(string $downloadUrl): ?array
@@ -115,36 +91,17 @@ class ApprovedPluginRegistry
         return null;
     }
 
-    /**
-     * Fetch the approved-plugins registry from the remote URL configured in
-     * CentralServices::PLUGIN_REGISTRY_URL and store the validated entries in
-     * the session. Falls back to the bundled JSON when the remote fetch fails
-     * or yields no valid entries. Always sets $_SESSION['RemotePluginRegistry']
-     * so the once-per-session gate in all() does not retry on error.
-     */
     public static function fetchRemoteRegistry(): void
     {
         try {
-            $validated = self::loadAndValidateFromUrl(self::REGISTRY_URL);
-            if ($validated === []) {
-                LoggerUtils::getAppLogger()->warning('Remote plugin registry empty or unreachable; using bundled fallback', [
-                    'url' => self::REGISTRY_URL,
-                    'fallback' => self::LOCAL_REGISTRY_PATH,
-                ]);
-                $validated = self::loadAndValidateFromFile(self::LOCAL_REGISTRY_PATH);
-            }
-            $_SESSION['RemotePluginRegistry'] = $validated;
+            $_SESSION['RemotePluginRegistry'] = self::loadAndValidateFromUrl(self::REGISTRY_URL);
             self::$cache = null;
         } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning('Error processing remote plugin registry', ['error' => $e->getMessage()]);
-            $_SESSION['RemotePluginRegistry'] = self::loadAndValidateFromFile(self::LOCAL_REGISTRY_PATH);
+            $_SESSION['RemotePluginRegistry'] = [];
         }
     }
 
-    /**
-     * Reset the in-memory cache. Intended for tests or after a remote refresh
-     * in the same request.
-     */
     public static function reset(): void
     {
         self::$cache = null;
@@ -163,25 +120,6 @@ class ApprovedPluginRegistry
         }
 
         return self::parseAndValidate($contents, $url);
-    }
-
-    /**
-     * @return array<string, array<string, mixed>>
-     */
-    private static function loadAndValidateFromFile(string $path): array
-    {
-        if (!is_readable($path)) {
-            LoggerUtils::getAppLogger()->warning('Bundled plugin registry is not readable', ['path' => $path]);
-
-            return [];
-        }
-
-        $contents = file_get_contents($path);
-        if ($contents === false) {
-            return [];
-        }
-
-        return self::parseAndValidate($contents, $path);
     }
 
     /**
