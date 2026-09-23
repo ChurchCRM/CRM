@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-17 14:51+0000\n"
+"POT-Creation-Date: 2026-09-23 16:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -372,6 +372,9 @@ msgid "Account Recovery"
 msgstr ""
 
 msgid "Account Unlocked"
+msgstr ""
+
+msgid "Account has limited permissions. Contact an administrator."
 msgstr ""
 
 msgid "Account locked"
@@ -1039,6 +1042,9 @@ msgid "An error occurred while deleting the family."
 msgstr ""
 
 msgid "An error occurred while moving donations."
+msgstr ""
+
+msgid "An error occurred while rendering the error page."
 msgstr ""
 
 msgid "An error occurred while saving. Please try again."
@@ -10468,6 +10474,9 @@ msgid "Scan QR Code"
 msgstr ""
 
 msgid "Schedule"
+msgstr ""
+
+msgid "Scheduled Tasks"
 msgstr ""
 
 msgid "Scheduled tasks are not running"
