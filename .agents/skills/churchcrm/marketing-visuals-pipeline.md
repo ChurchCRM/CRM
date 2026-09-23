@@ -157,6 +157,83 @@ automate it.
   image will build. If you hit a `403`/`no matching allow rule` error
   building the image in a similar sandboxed environment, that's almost
   certainly it, not a bug in this code.
+
+## Recorded-workflow tests: storageState, duplicate-link traps, pagination <!-- learned: 2026-09-22 -->
+
+Debugging five failing tests (three `*.video.ts` recordings, two `workflows/*.spec.ts`
+screenshots added alongside maps + member-status-video features) surfaced four
+reusable lessons:
+
+- **A `dependencies: ['setup']` project does NOT inherit the setup project's
+  authenticated session by itself.** The dependency only guarantees ordering
+  (setup runs first) — it does not share `storageState`. The `recordings`
+  project (`playwright/videos/*.video.ts`) was missing `storageState:
+  STORAGE_STATE_PATH` in its `use` block while the `screenshots` project had
+  it; every recorded-video test ran unauthenticated, landing on empty tables
+  or redirects instead of the seeded demo data. Any new project added to
+  `playwright.config.ts` that depends on `setup` and needs to be logged in
+  must set `storageState` explicitly too.
+
+- **A bare `.first()` (or unscoped `getByText()`) can silently resolve to a
+  hidden duplicate of the element you meant to click/assert on.** Several
+  ChurchCRM pages render the *same* href or text twice: once as the visible,
+  intended element, and once as a hidden decoy — a closed dropdown-menu item
+  (`family-view.php`'s "Find Neighbors", `person-view.php`'s per-family-member
+  "Edit"), a hidden global widget (`cartview.php`'s "Map cart items" button,
+  `/people/map?groupId=0`), or a hidden sidebar nav link
+  (`<span class="nav-link-title">{groupName}</span>`, matched by
+  `getByText(groupName)`). The symptom is distinctive: `scrollIntoViewIfNeeded`
+  times out with **"element is not visible"** repeated for the full timeout —
+  not a "not found" error, because an element genuinely exists, it's just the
+  wrong (CSS-hidden) one.
+  - **Fix**: scope the locator to what makes the real element unique — a
+    `.btn` class the decoy lacks (`a.btn[href*="PersonEditor.php"]`), a
+    `:not([href*=...])` exclusion for a known decoy pattern
+    (`:not([href*="groupId=0"])`), or a containing element the decoy isn't
+    inside (`.text-body-secondary` for a page subtitle vs. a sidebar nav
+    link).
+  - **Diagnose fast**: don't guess from stack traces alone — write a
+    throwaway Playwright script using the saved `storageState` at
+    `playwright/.auth/admin.json` to list every match with `.isVisible()`
+    and `.boundingBox()`:
+    ```js
+    import { chromium } from '@playwright/test';
+    const browser = await chromium.launch();
+    const context = await browser.newContext({ storageState: 'playwright/.auth/admin.json' });
+    const page = await context.newPage();
+    await page.goto('http://127.0.0.1:8081/people/view/139');
+    for (const l of await page.locator('a[href*="PersonEditor.php"]').all()) {
+      console.log({ href: await l.getAttribute('href'), visible: await l.isVisible() });
+    }
+    await browser.close();
+    ```
+    Run from the repo root (not `/tmp`) so `@playwright/test` resolves.
+
+- **DataTables-backed tables (`#families`, `#members`, `#groupsTable`, etc.)
+  paginate by default — 10 rows/page.** `rows.filter({ hasText: 'X' })`
+  only searches whatever rows are *currently rendered*; if the target isn't
+  on the default first page (e.g. "Worship Service" is 11th of 12 demo
+  groups alphabetically), the filter silently matches nothing and
+  `toBeVisible()` times out with "element(s) not found". Always type into
+  `.dt-search input` first to filter server/client-side, exactly like the
+  existing family/member search pattern in `people-family.spec.ts`, before
+  locating a specific row.
+
+- **For `workflows/*.spec.ts` screenshot tests (landing-page views), prefer
+  direct URL navigation over a full UI click-through once an id is known
+  from an earlier navigation** — e.g. after clicking into a family's profile,
+  extract the id from `page.url()` and `page.goto('/people/map/neighbors?familyId=' + id)`
+  instead of also clicking the page's "Find Neighbors" link. This matches
+  the existing Cypress pattern for the same pages
+  (`cypress/e2e/ui/people/standard.map.spec.js`:
+  `cy.visit("people/map/neighbors?familyId=1")`;
+  `cypress/e2e/ui/people/standard.deceased-person.spec.js`:
+  `cy.visit("/PersonEditor.php")`) and sidesteps the duplicate-link and
+  pagination pitfalls above entirely, since there's one fewer click to get
+  wrong. **Reserve the full click-through for `*.video.ts` usability-demo
+  tests**, where showing the real click path *is* the point — don't
+  simplify those away.
+
 - **Browser download hangs — use system Chrome instead.**
   `playwright install`'s download of its bundled Chromium from
   `cdn.playwright.dev` (redirects to `storage.googleapis.com`) hung

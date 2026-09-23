@@ -159,12 +159,6 @@
   "people from cart?": "",
   "skip must be zero or a positive integer": "",
   "view families missing an email": "",
-  "Copied {{count}} members": {
-    "one": "",
-    "other": ""
-  },
-  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  }
+  "Buyers This Fiscal Year": "",
+  "Current": ""
 }

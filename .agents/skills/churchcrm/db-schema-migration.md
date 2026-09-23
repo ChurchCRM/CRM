@@ -111,21 +111,47 @@ Checklist for any `ALTER TABLE` migration:
 | `cypress/data/seed.sql` | Update the `CREATE TABLE` block — **ask user first** |
 | `orm/schema.xml` | Update column/table attributes if Propel schema tracks this |
 
-### MySQL-Compatible Conditional Column Drops <!-- learned: 2026-07-27 -->
+### MySQL-Compatible Conditional Column Changes <!-- learned: 2026-07-27, corrected/expanded: 2026-09-16 -->
 
-`ALTER TABLE ... DROP COLUMN IF EXISTS` is a **MariaDB-only extension** — MySQL (any version including 9.x) rejects it with `SQLSTATE[42000] error 1064`. This breaks upgrade paths on MySQL silently passing on MariaDB.
+**Column-level `IF EXISTS` / `IF NOT EXISTS` is a MariaDB-only extension on
+`ADD COLUMN`, `DROP COLUMN`, `CHANGE COLUMN`, and `MODIFY COLUMN` alike** —
+not just `DROP COLUMN` as an earlier version of this note said. MySQL (any
+version including 9.x) rejects all four with `SQLSTATE[42000] error 1064`.
+This breaks upgrade paths on MySQL while silently passing on MariaDB, since
+`docker/docker-compose.mysql.yaml`'s nightly matrix is the only CI job that
+catches it — the default MariaDB-based test/CI jobs never will.
 
-**Wrong (MariaDB-only):**
+**Confirmed the hard way:** `src/mysql/upgrade/7.7.0-2fa-grace-period.sql`
+shipped with `ADD COLUMN IF NOT EXISTS` (#5169) and broke every nightly
+"Build, Test and Package" MySQL-matrix run (`churchcrm-mysql`, `v6-mysql`,
+both PHP 8.4/8.5) from 2026-09-10 onward — the upgrade script threw a 1064,
+`UpgradeService::upgradeDatabaseVersion()` caught it, and the app was
+permanently parked on `/external/system/db-upgrade`. Fixed by removing the
+guard (the version-gated runner already guarantees the column doesn't exist
+yet — see below) and adding `scripts/validate-mysql-upgrade-syntax.js`,
+which now runs in CI (`.github/workflows/code-quality.yml`) and in
+`.githooks/pre-commit` (`--staged` mode) to catch this class of mistake
+before it ships again.
+
+**Wrong (MariaDB-only, all four forms):**
 ```sql
+ALTER TABLE my_table ADD COLUMN IF NOT EXISTS new_col INT;
 ALTER TABLE my_table DROP COLUMN IF EXISTS old_col;
+ALTER TABLE my_table CHANGE COLUMN IF EXISTS old_col new_col INT;
+ALTER TABLE my_table MODIFY COLUMN IF EXISTS some_col INT;
 ```
 
 **Correct (MySQL 8.0+ and MariaDB 10.2+):**
 ```sql
--- When version-gating GUARANTEES the column exists: just plain DROP COLUMN
+-- When version-gating GUARANTEES the column's existence state: just plain DDL,
+-- no guard. mysql/upgrade.json gates every script by its exact starting
+-- dbVersion, so a script that ADDs a column can assume it doesn't exist yet,
+-- and a script that DROPs one can assume it still does.
+ALTER TABLE my_table ADD COLUMN new_col INT;
 ALTER TABLE my_table DROP COLUMN old_col;
 
--- When the column might not exist (use information_schema guard):
+-- When the column might not exist (e.g. reachable via more than one upgrade
+-- path) — use an information_schema guard instead of IF EXISTS:
 SET @_sql = IF(
     (SELECT COUNT(*) FROM information_schema.COLUMNS
      WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='my_table' AND COLUMN_NAME='old_col')>0,
@@ -137,7 +163,11 @@ EXECUTE _s;
 DEALLOCATE PREPARE _s;
 ```
 
-Also note: `DROP TABLE IF EXISTS` and `DROP INDEX IF EXISTS` work fine on MySQL. Only `DROP COLUMN IF EXISTS` in ALTER TABLE is MariaDB-only.
+Also note: `CREATE TABLE IF NOT EXISTS`, `DROP TABLE IF EXISTS`,
+`ADD INDEX IF NOT EXISTS`, and `DROP INDEX IF EXISTS` all work fine on both
+MySQL and MariaDB (confirmed: `src/mysql/upgrade/7.6.2-add-missing-fk-indexes.sql`
+uses `ADD INDEX IF NOT EXISTS` and passes the MySQL nightly matrix). Only the
+**column-level** variant is MariaDB-only.
 
 Similarly, `@var:=expr` assignments inside DML (UPDATE SET, SELECT) are deprecated since MySQL 8.0.22 and may cause warnings; prefer `ROW_NUMBER() OVER (ORDER BY ...)` for row numbering in migrations.
 
