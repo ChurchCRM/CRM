@@ -23,11 +23,6 @@ on:
       - '!docs/openapi/generated/**'
       - 'src/kiosk/routes/api/**'
       - 'src/plugins/routes/api/**'
-  workflow_dispatch:
-    inputs:
-      reason:
-        description: 'Optional reason for rebuild'
-        required: false
 
 permissions:
   contents: write
@@ -35,7 +30,7 @@ permissions:
 
 jobs:
   validate:
-    if: github.ref != 'refs/heads/master' && github.event_name != 'workflow_dispatch'
+    if: github.ref != 'refs/heads/master'
     name: Generate and validate OpenAPI specs
     timeout-minutes: 15
     runs-on: ubuntu-latest
@@ -117,32 +112,3 @@ jobs:
           name: openapi-specs-${{ github.run_id }}
           path: docs/openapi/generated/*.yaml
           retention-days: 7
-
-  trigger-rebuild:
-    if: github.event_name == 'workflow_dispatch'
-    name: Send repository_dispatch to docs.churchcrm.io
-    timeout-minutes: 5
-    runs-on: ubuntu-latest
-    steps:
-      - name: Require DOCS_REPO_TOKEN
-        env:
-          TOKEN: ${{ secrets.DOCS_REPO_TOKEN }}
-        run: |
-          if [ -z "$TOKEN" ]; then
-            echo "::error::Set repo secret DOCS_REPO_TOKEN with repo scope on ChurchCRM/docs.churchcrm.io. GITHUB_TOKEN cannot dispatch another repo."
-            exit 1
-          fi
-      - name: Trigger docs rebuild via repository_dispatch
-        uses: actions/github-script@v9
-        with:
-          github-token: ${{ secrets.DOCS_REPO_TOKEN }}
-          script: |
-            const reason = (context.payload && context.payload.inputs && context.payload.inputs.reason) ? context.payload.inputs.reason : 'manual';
-            await github.rest.repos.createDispatchEvent({
-              owner: 'ChurchCRM',
-              repo: 'docs.churchcrm.io',
-              event_type: 'openapi-updated',
-              client_payload: { triggered_by: process.env.GITHUB_ACTOR, reason },
-            });
-      - name: Log
-        run: echo "Dispatched openapi-updated to ChurchCRM/docs.churchcrm.io"
