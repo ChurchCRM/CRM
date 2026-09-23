@@ -1,4 +1,4 @@
-name: 'Security Analysis'
+name: "Security: CodeQL"
 
 on:
   push:
@@ -24,7 +24,6 @@ on:
       - '**/*.yaml'
       - '**/*.sql'
   schedule:
-    # Run weekly on Mondays at 6:00 AM UTC
     - cron: '0 6 * * 1'
   workflow_dispatch:
 
@@ -37,50 +36,40 @@ permissions:
   security-events: write
 
 jobs:
-  # CodeQL: Semantic analysis for JavaScript/TypeScript
-  # Understands data flow, tracks tainted input through function calls
   codeql-analysis:
     name: 'CodeQL (JS/TS)'
+    timeout-minutes: 30
     runs-on: ubuntu-latest
     env:
       CODEQL_ACTION_FILE_COVERAGE_ON_PRS: 'true'
     permissions:
       security-events: write
       contents: read
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
-
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4.38.0
         with:
           languages: javascript-typescript
-          # Use security-extended for more comprehensive scanning
           queries: security-extended
-
       - name: Autobuild
         uses: github/codeql-action/autobuild@v4.38.0
-
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4.38.0
         with:
           category: "/language:javascript-typescript"
 
-  # Semgrep: Pattern-based scanning for PHP, JavaScript, and config files
-  # Detects security vulnerabilities and code quality issues
   semgrep-analysis:
     name: 'Semgrep (PHP/JS/Config)'
+    timeout-minutes: 20
     runs-on: ubuntu-latest
-
     permissions:
       contents: read
       security-events: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
-
       - name: Run Semgrep
         run: |
           pip install semgrep
@@ -92,7 +81,6 @@ jobs:
             --output semgrep.sarif \
             --error
         continue-on-error: true
-
       - name: Upload Semgrep results to GitHub Security tab
         if: always() && hashFiles('semgrep.sarif') != ''
         uses: github/codeql-action/upload-sarif@v4.38.0
