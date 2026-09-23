@@ -30,6 +30,7 @@ Answer before reading code:
 - Bug fix, feature, refactor, or migration?
 - Is there a linked issue? PRs without an issue are a hard block.
 - Does the goal belong in this milestone? Passing gates still does not mean merge if maintainers disagree with the goal.
+- Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin (#9995).
 
 Do **not** merge `master` into a contributor branch, resolve their conflicts, or push to their branch unless the maintainer explicitly asks.
 
@@ -52,6 +53,7 @@ Look for:
 - Debug leftovers
 - Scope that should be a second PR
 - Commit messages vs `git-workflow.md`
+- `QueryView.php`, `QueryList.php`, or upgrade/seed edits that add predefined queries — hard block unless a maintainer excepted a security-only patch
 
 ---
 
@@ -64,8 +66,9 @@ Apply only the sections that match the changed files. Hard-block items are also 
 - [ ] PHP 8.4+ — no deprecated patterns
 - [ ] Explicit nullable params: `?int $param = null`
 - [ ] `use` statements at top of file
-- [ ] No deleted `Functions.php` globals (`\MakeFYString()`, `\FormatDate()`, …) — use `ChurchCRM\Utils\*`
+- [ ] No deleted `Functions.php` globals (`\\MakeFYString()`, `\\FormatDate()`, …) — use `ChurchCRM\\Utils\\*`
 - [ ] ORM for DB work — no `RunQuery()` or raw SQL
+- [ ] Do not add features to Query View (frozen; #9995)
 - [ ] Dynamic IDs cast to `(int)`
 - [ ] Object properties as `$obj->prop`, never `$obj['prop']`
 - [ ] Services hold business logic
@@ -109,7 +112,7 @@ Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
 
 ### OpenAPI
 
-- [ ] New or changed endpoints have `@OA\` annotations
+- [ ] New or changed endpoints have `@OA\\` annotations
 - [ ] Spec regenerated when annotations changed
 
 ### Testing (hard block if a feature or bug fix has none)

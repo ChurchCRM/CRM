@@ -5,6 +5,7 @@
  * Uses TomSelect AJAX for person search.
  */
 
+import { attachToModal, initAllPersonSelects } from "./common/person-select";
 import { escapeHtml } from "./utils/escape-html";
 
 $(() => {
@@ -22,48 +23,24 @@ $(() => {
  * Called on document ready and can be called again if new fields are added dynamically
  */
 function initializePersonSearchFields() {
-  // Initialize TomSelect on all person search fields that haven't been initialized yet
-  $(".person-search").each(function () {
-    const el = this;
-
-    // Skip if already initialized
-    if (el.tomselect) {
-      return;
-    }
-
-    const placeholder = $(el).data("placeholder") || "";
-
-    new TomSelect(el, {
-      valueField: "objid",
-      labelField: "text",
-      searchField: "text",
-      placeholder: placeholder,
-      load: (query, callback) => {
-        if (query.length < 2) return callback();
-        fetch(`${window.CRM.root}/api/persons/search/${encodeURIComponent(query)}`)
-          .then((response) => response.json())
-          .then((data) => {
-            callback(
-              data.map((person) => ({
-                objid: person.objid,
-                text: person.text,
-                uri: person.uri,
-              })),
-            );
-          })
-          .catch(() => {
-            callback();
-          });
-      },
-      render: {
-        option: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
-        item: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
-      },
-      onChange: function (value) {
-        // Dispatch a custom event so bindPersonSearchEvents can react
-        $(el).trigger("tomselect:change", [value, this]);
-      },
-    });
+  // Shared person-search TomSelect (#9819). The valueField/labelField/searchField
+  // triple, the 2-character-guarded load callback and the placeholder read from
+  // data-placeholder all live in webpack/common/person-select.ts now; only the
+  // check-in specific mapping, rendering and change handler stay here.
+  initAllPersonSelects({
+    mapResult: (person) => ({
+      objid: person.objid,
+      text: person.text,
+      uri: person.uri,
+    }),
+    render: {
+      option: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
+      item: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
+    },
+    onChange: function (value, el) {
+      // Dispatch a custom event so bindPersonSearchEvents can react
+      $(el).trigger("tomselect:change", [value, this]);
+    },
   });
 
   // Bind event handlers (use .off first to prevent duplicate bindings)
@@ -556,52 +533,15 @@ $(() => {
     document.body.appendChild(wrapper);
     const bsModal = new window.bootstrap.Modal(wrapper, { backdrop: "static" });
 
-    let tomSelectInstance = null;
-
-    // Destroy TomSelect and remove modal element once hidden
-    wrapper.addEventListener(
-      "hidden.bs.modal",
-      () => {
-        if (tomSelectInstance) {
-          try {
-            tomSelectInstance.destroy();
-          } catch (_e) {
-            // ignore
-          }
-          tomSelectInstance = null;
-        }
-        try {
-          bsModal.dispose();
-        } catch (_e) {
-          // ignore
-        }
-        if (wrapper.parentNode) wrapper.remove();
-      },
-      { once: true },
-    );
-
-    // Initialize TomSelect once the modal is fully visible (needs layout dimensions).
-    // shown.bs.modal fires after the CSS transition, so elements are measured correctly.
-    wrapper.addEventListener(
-      "shown.bs.modal",
-      () => {
-        const el = wrapper.querySelector("#checkoutBySelect");
-        if (!el || el.tomselect) return;
-        tomSelectInstance = new TomSelect(el, {
-          valueField: "objid",
-          labelField: "text",
-          searchField: "text",
-          placeholder: i18next.t("Search for supervisor..."),
-          dropdownParent: "body",
-          load: (query, callback) => {
-            if (query.length < 2) return callback();
-            fetch(`${window.CRM.root}/api/persons/search/${encodeURIComponent(query)}`)
-              .then((res) => res.json())
-              .then((data) => callback(data.map((p) => ({ objid: p.objid, text: p.text }))))
-              .catch(() => callback());
-          },
-        });
-
+    // Shared person-search TomSelect (#9819). attachToModal owns the
+    // shown.bs.modal → init / hidden.bs.modal → destroy() pair: TomSelect needs
+    // the modal's CSS transition to have finished before it can measure the
+    // control. Registered BEFORE the wrapper's own hidden handler below so the
+    // picker is torn down before the modal element leaves the DOM.
+    attachToModal(wrapper, "#checkoutBySelect", {
+      placeholder: i18next.t("Search for supervisor..."),
+      mapResult: (p) => ({ objid: p.objid, text: p.text }),
+      onInit: (tomSelectInstance) => {
         // Pre-populate with the person who checked them in (if available)
         if (checkinId && checkinName) {
           tomSelectInstance.addOption({ objid: checkinId, text: checkinName });
@@ -620,6 +560,19 @@ $(() => {
             }
           });
         }
+      },
+    });
+
+    // Remove the modal element once hidden
+    wrapper.addEventListener(
+      "hidden.bs.modal",
+      () => {
+        try {
+          bsModal.dispose();
+        } catch (_e) {
+          // ignore
+        }
+        if (wrapper.parentNode) wrapper.remove();
       },
       { once: true },
     );
