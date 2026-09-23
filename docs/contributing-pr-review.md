@@ -14,6 +14,7 @@ Thank you for donating time (and often tokens). We try not to nitpick. We will s
 6. Think about churches already running ChurchCRM. New config must default safely. Do not change behavior by surprise. If the database or permissions change, include a safe upgrade path.
 7. Do not add work that is likely to slow a common path (login, people list, Sunday workflow) without measuring or fixing it.
 8. Do not introduce security issues (XSS, injection, auth bypass, open redirects, leaking member data).
+9. Keep the PR **title and description true to the current diff**. If the work grows, update them.
 
 ## Hard blocks (expect Request changes)
 
@@ -25,6 +26,7 @@ These must be fixed in the same PR:
 - Non-trivial UI change with no desktop / tablet / mobile proof
 - New user-visible strings not wrapped for translation
 - No tests for a feature or bug fix
+- Title or description that describes different work than the files in the PR
 
 If those stay open and the PR goes quiet, maintainers may close it for inactivity or finish the work themselves when the direction is good. We do not publish a deadline.
 
