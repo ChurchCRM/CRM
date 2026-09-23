@@ -21,8 +21,22 @@ The author is a volunteer. Be thankful. Be specific. Do not nitpick.
 3. Existing installs — required new fields with no default, surprise behavior, destructive migration, surprise permission change.
 4. UI that does not match Tabler / Bootstrap 5, or a UI change with **no manual tablet/mobile pass stated**. Missing screenshots alone is not a hard block if the author (or reviewer) will still do that pass. Tiny tweaks can follow up.
 5. Localization wrap — new user-visible strings not in `gettext()` / `i18next.t()`. Do not require translations or `locale:build` in the feature PR.
-6. Tests — feature or bug fix with no new or updated tests.
-7. Repo process — no linked issue; lint/build clearly failing; title or body that describes different work than the diff.
+6. Locale-sensitive values — dates, times, numbers, currency, or timezone that ignore ChurchCRM conventions. See below.
+7. Tests — feature or bug fix with no new or updated tests.
+8. Repo process — no linked issue; lint/build clearly failing; title or body that describes different work than the diff.
+9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Raw SQL substitution, not ORM, leak history. Point the author at Slim/Tabler MVC + Propel, or a reports plugin. Security-only patches on Query View need an explicit maintainer exception. See #9995.
+
+### Locale-sensitive values
+
+Applies when the PR reads, writes, validates, or displays a date, time, number, currency, or timezone.
+
+- API and storage dates are ISO `Y-m-d`, or naive `Y-m-d H:i:s` wall-clock in `sTimeZone`. See `timezone-handling.md`.
+- Do not parse input with `sDateFormat*` or the browser timezone. Those settings are for **display**.
+- Do not store UTC in event DATETIME columns.
+- Do not invent a second calendar contract (locale `d/m/Y` in JSON, ISO `T` on a field typed as space-separated datetime, etc.) unless the route already uses that shape.
+- Display uses `sDateFormat*`, `sTimeZone`, and `sLanguage`.
+
+ISO-only validation on an API field is **correct**. Parsing `23/09/2026` because the church display format is `d/m/Y` is a hard block.
 
 If hard blocks stay open and the author goes quiet, maintainers may close the PR for inactivity. Do not name a timeline.
 
