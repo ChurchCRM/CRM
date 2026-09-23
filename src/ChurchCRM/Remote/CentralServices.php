@@ -6,17 +6,22 @@ namespace ChurchCRM\Remote;
  * Hardcoded URLs for ChurchCRM maintainer-managed remote services.
  *
  * These are NOT user-configurable — they are set by the ChurchCRM
- * maintainers and shipped with the software. All URLs point to files
- * on the `External` orphan branch of ChurchCRM/CRM so maintainers
- * can push updates without requiring an install upgrade.
+ * maintainers and shipped with the software.
+ *
+ * Broadcast notifications live on the `Notifications` orphan branch so
+ * maintainers can push updates without requiring an install upgrade.
+ * The approved plugin registry is also fetched from that branch when
+ * present; the product ships `src/plugins/approved-plugins.json` as a
+ * fallback when the remote file is missing (the old `External` branch
+ * was deleted).
  *
  * ── HOW TO UPDATE THE HOSTED FILES ───────────────────────────────────
  *
- * 1. Check out the External branch as a worktree:
+ * 1. Check out the Notifications branch as a worktree:
  *
- *      git fetch origin External
- *      git worktree add /tmp/crm-external External
- *      cd /tmp/crm-external
+ *      git fetch origin Notifications
+ *      git worktree add /tmp/crm-notifications Notifications
+ *      cd /tmp/crm-notifications
  *
  * 2. Edit notifications.json  OR  approved-plugins.json
  *
@@ -24,7 +29,7 @@ namespace ChurchCRM\Remote;
  *
  *      git add notifications.json approved-plugins.json
  *      git commit -m "chore(external): describe your change"
- *      git push origin External
+ *      git push origin Notifications
  *
  * Changes go live to ALL installs on the next user login — no deploy needed.
  * The notifications TTL (default 300 s) controls how long previous fetch
@@ -56,11 +61,13 @@ class CentralServices
      *   ]
      * }
      */
-    public const NOTIFICATIONS_URL = 'https://raw.githubusercontent.com/ChurchCRM/CRM/External/notifications.json';
+    public const NOTIFICATIONS_URL = 'https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/notifications.json';
 
     /**
      * Registry of community plugins approved for URL-based install.
      * Adding an entry requires a maintainer-reviewed PR — see approved-plugins.json schema.
+     * Hosted next to notifications.json; ApprovedPluginRegistry falls back to the
+     * copy shipped in src/plugins/approved-plugins.json when this URL 404s.
      */
-    public const PLUGIN_REGISTRY_URL = 'https://raw.githubusercontent.com/ChurchCRM/CRM/External/approved-plugins.json';
+    public const PLUGIN_REGISTRY_URL = 'https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/approved-plugins.json';
 }
