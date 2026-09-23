@@ -17,6 +17,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - Redirects: `RedirectUtils` — not raw `header('Location')`
 - UI: Tabler + Bootstrap 5. Wrap `gettext()` / `i18next.t()`
 - Tests with behavior changes. Linked issue on every PR
+- Comments are rare. Names and tests carry intent. Do not restate the next line. Comment only a *why* that the code cannot say (CI trap, security invariant, deliberate deviation). Do not add paragraph comments in specs.
 
 ## Strict vs Loose Comparisons
 
