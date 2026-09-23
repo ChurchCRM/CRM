@@ -151,5 +151,10 @@ jobs:
           path: |
             playwright/artifacts/
             playwright/.playwright-output/
+          # playwright/.playwright-output/ is a dot-directory, and
+          # actions/upload-artifact silently drops dotfiles/dot-dirs unless
+          # told otherwise — without this, failure screenshots/videos/traces
+          # never make it into the uploaded artifact.
+          include-hidden-files: true
           retention-days: 14
           if-no-files-found: warn
