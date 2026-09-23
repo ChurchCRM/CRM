@@ -1,11 +1,11 @@
 name: Stamp milestone on merged PRs
 
-# When a PR is merged with no milestone, put the linked issue(s) and the PR
-# on the open milestone whose title matches package.json version.
-# Deterministic only — no model call.
+# When a PR is merged with no milestone, put the PR and every attached issue
+# (open or already closed) on the milestone whose title matches package.json
+# version. Deterministic only — no model call.
 
 concurrency:
-  group: pr-milestone-${{ github.event.pull_request.number }}
+  group: pr-milestone-${{ github.event.pull_request.number || inputs.pr_number }}
   cancel-in-progress: false
 
 on:
@@ -43,6 +43,8 @@ jobs:
 
       - name: Stamp milestone from package.json version
         uses: actions/github-script@v9
+        env:
+          PR_NUMBER: ${{ inputs.pr_number }}
         with:
           script: |
             const fs = require('fs');
@@ -70,13 +72,16 @@ jobs:
               return;
             }
 
-            const milestones = await github.paginate(github.rest.issues.listMilestones, {
-              owner,
-              repo,
-              state: 'open',
-              per_page: 100,
+            const openMilestones = await github.paginate(github.rest.issues.listMilestones, {
+              owner, repo, state: 'open', per_page: 100,
             });
-            let milestone = milestones.find((m) => m.title === version);
+            let milestone = openMilestones.find((m) => m.title === version);
+            if (!milestone) {
+              const closedMilestones = await github.paginate(github.rest.issues.listMilestones, {
+                owner, repo, state: 'closed', per_page: 100,
+              });
+              milestone = closedMilestones.find((m) => m.title === version);
+            }
             if (!milestone) {
               console.log(`Creating open milestone ${version}`);
               milestone = (await github.rest.issues.createMilestone({
@@ -89,13 +94,14 @@ jobs:
             console.log(`Using milestone #${milestone.number} (${milestone.title})`);
 
             const linked = new Set();
+
             try {
               const gql = await github.graphql(
                 `query($owner:String!, $repo:String!, $number:Int!) {
                   repository(owner:$owner, name:$repo) {
                     pullRequest(number:$number) {
                       closingIssuesReferences(first: 50) {
-                        nodes { number }
+                        nodes { number state }
                       }
                     }
                   }
@@ -109,6 +115,19 @@ jobs:
               console.log('GraphQL closingIssuesReferences failed:', e.message);
             }
 
+            const timeline = await github.paginate(github.rest.issues.listEventsForTimeline, {
+              owner, repo, issue_number: prNumber, per_page: 100,
+            });
+            for (const event of timeline) {
+              const src = event.source && event.source.issue;
+              if (event.event === 'cross-referenced' && src && !src.pull_request) {
+                linked.add(src.number);
+              }
+              if (event.event === 'connected' && src && !src.pull_request) {
+                linked.add(src.number);
+              }
+            }
+
             const text = `${pr.title || ''}\n${pr.body || ''}`;
             const re = /\b(?:fix(?:es|ed)?|close[sd]?|resolve[sd]?|refs?|references)\s+#(\d+)/gi;
             let match;
@@ -117,14 +136,25 @@ jobs:
             }
             linked.delete(prNumber);
 
-            console.log(`Linked issues: ${[...linked].join(', ') || '(none)'}`);
+            console.log(`Attached issues: ${[...linked].join(', ') || '(none)'}`);
 
-            async function stamp(issueNumber, kind) {
+            async function stamp(issueNumber, kind, { forceIfClosed = false } = {}) {
               const issue = (await github.rest.issues.get({
                 owner, repo, issue_number: issueNumber,
               })).data;
-              if (issue.milestone) {
-                console.log(`${kind} #${issueNumber} already on ${issue.milestone.title} — leave it`);
+              if (issue.pull_request && issueNumber !== prNumber) {
+                console.log(`#${issueNumber} is another PR — skip`);
+                return;
+              }
+              const current = issue.milestone && issue.milestone.title;
+              const isClosed = issue.state === 'closed';
+              const shouldForce = forceIfClosed && isClosed;
+              if (current === version) {
+                console.log(`${kind} #${issueNumber} already on ${version}`);
+                return;
+              }
+              if (current && !shouldForce) {
+                console.log(`${kind} #${issueNumber} already on ${current} — leave open item`);
                 return;
               }
               await github.rest.issues.update({
@@ -133,7 +163,7 @@ jobs:
                 issue_number: issueNumber,
                 milestone: milestone.number,
               });
-              console.log(`Stamped ${kind} #${issueNumber} → ${version}`);
+              console.log(`Stamped ${kind} #${issueNumber} (${issue.state}) → ${version}`);
             }
 
             if (!pr.milestone) {
@@ -143,7 +173,5 @@ jobs:
             }
 
             for (const n of linked) {
-              await stamp(n, 'issue');
+              await stamp(n, 'issue', { forceIfClosed: true });
             }
-        env:
-          PR_NUMBER: ${{ inputs.pr_number }}
