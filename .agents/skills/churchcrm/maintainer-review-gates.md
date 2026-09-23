@@ -6,7 +6,7 @@ tags: [pr, review, process]
 
 # Maintainer PR review gates
 
-Draft the GitHub review in chat. Do not post, approve, or merge until a maintainer says to post. Most reviews go out as DawoudIO.
+Draft the GitHub review in chat as **normal Markdown** (the same text we would post). Do not dump a label block. Do not post, approve, or merge until a maintainer says to post. Most reviews go out as DawoudIO.
 
 Passing this checklist does not mean the PR should merge.
 
@@ -39,20 +39,28 @@ If hard blocks stay open and the author goes quiet, maintainers may close the PR
 1. Thank the contributor. Say what the PR does after reading the file list.
 2. Check title + body against the current file list.
 3. Hard blocks first (Request changes).
-4. Then a **checkbox list of what is still open** (manual tablet/mobile pass, demo import, docs issue, storage-only consumer). That list is how we track pending work on the PR.
+4. Then a **checkbox list of what is still open**.
 5. If there are no hard blocks, event is Comment.
 6. Never approve. Never merge. Never close unless the maintainer answers yes.
 
-## Output in chat before any GitHub post
+## Draft format (chat + GitHub)
 
-```
-Post as: DawoudIO (ask before posting)
-Event: REQUEST_CHANGES | COMMENT
-Title/body match diff: yes/no
-Summary: …
-Hard blocks: …
-Pending (checkboxes to put on the PR):
+Write headings and lists. One line at the top for the maintainer only:
+
+`Draft — Comment | Request changes. Title matches. Do not post until yes.`
+
+Then the body that would go on GitHub:
+
+```markdown
+Thanks @author. One short paragraph of what the PR does.
+
+## Still open
+
 - [ ] …
-Marketing flag for George: yes/no
-Do not approve.
+
+## Not blocking
+
+- …
 ```
+
+If there is a hard block, say so in a **Hard blocks** heading before **Still open**. Ask George in chat whether to post. Do not approve.
