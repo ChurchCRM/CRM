@@ -88,14 +88,19 @@ test.describe('People & Families', () => {
     });
   });
 
+  // "Charles Green" (src/admin/demo/people.json's Green family) — deliberately
+  // not Joseph Hall, who mark-member-inactive.video.ts already marks inactive
+  // earlier in this same pipeline run. Reusing that subject here means this
+  // test's own search on the default (active-only) list finds no row, since
+  // the video test already flipped it out of the active set.
   test('person-inactive-profile', async ({ page }, testInfo) => {
     await page.goto('/people/list');
     const rows = page.locator('#members tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
 
-    await humanType(page.locator('.dt-search input'), 'Joseph Hall');
+    await humanType(page.locator('.dt-search input'), 'Charles Green');
     await humanPause(page, 500);
-    const targetRow = rows.filter({ hasText: 'Joseph Hall' }).first();
+    const targetRow = rows.filter({ hasText: 'Charles Green' }).first();
     await expect(targetRow).toBeVisible({ timeout: 15000 });
     await humanClick(targetRow.locator('a').first());
     await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
@@ -108,7 +113,7 @@ test.describe('People & Families', () => {
 
     const confirmDialog = page.locator('.bootbox');
     await expect(confirmDialog).toBeVisible({ timeout: 5000 });
-    await expect(confirmDialog).toContainText('Joseph Hall');
+    await expect(confirmDialog).toContainText('Charles Green');
     await humanClick(page.locator('.bootbox-accept'));
 
     await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
@@ -121,14 +126,17 @@ test.describe('People & Families', () => {
     });
   });
 
+  // "Timothy Torres" — deliberately not Matthew Davis, who
+  // mark-member-deceased.video.ts already marks deceased earlier in this
+  // same pipeline run; see the comment on person-inactive-profile above.
   test('person-deceased-profile', async ({ page }, testInfo) => {
     await page.goto('/people/list');
     const rows = page.locator('#members tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
 
-    await humanType(page.locator('.dt-search input'), 'Matthew Davis');
+    await humanType(page.locator('.dt-search input'), 'Timothy Torres');
     await humanPause(page, 500);
-    const targetRow = rows.filter({ hasText: 'Matthew Davis' }).first();
+    const targetRow = rows.filter({ hasText: 'Timothy Torres' }).first();
     await expect(targetRow).toBeVisible({ timeout: 15000 });
     await humanClick(targetRow.locator('a').first());
     await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
