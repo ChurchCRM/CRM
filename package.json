@@ -102,10 +102,10 @@
         "docker:dev:watch": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"source /root/.nvm/nvm.sh && cd /home/ChurchCRM && npm run build:webpack:watch\"",
         "marketing:install": "playwright install --with-deps chromium",
         "marketing:install:chrome": "playwright install --with-deps chrome",
-        "marketing": "run-s docker:ci:new-system:start marketing:screenshots marketing:videos",
+        "marketing": "rm -rf playwright/artifacts/ && run-s docker:ci:new-system:down docker:ci:new-system:start build:signatures marketing:screenshots marketing:videos",
         "marketing:screenshots": "playwright test --config=playwright/playwright.config.ts",
         "marketing:screenshots:chrome": "BROWSER_CHANNEL=chrome playwright test --config=playwright/playwright.config.ts",
-        "marketing:chrome": "run-s docker:ci:new-system:start marketing:screenshots:chrome marketing:videos",
+        "marketing:chrome": "run-s docker:ci:new-system:down docker:ci:new-system:start build:signatures marketing:screenshots:chrome marketing:videos",
         "marketing:videos": "node scripts/finalize-marketing-videos.js",
         "publish:visuals": "./scripts/publish-marketing-visuals.sh"
     },
