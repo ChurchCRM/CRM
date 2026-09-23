@@ -52,19 +52,39 @@ describe("Email history on the person view", () => {
         cy.location("pathname").should("match", /\/people\/view\/2\/emails$/);
         cy.contains("h3", "Email History").should("be.visible");
         cy.get("[data-email-history-table] tbody tr").should("have.length.at.least", 6);
-        cy.get("[data-email-history-table] tbody tr").should("contain.text", "Welcome to the choir");
-        cy.get("[data-email-history-table] tbody tr").last().should("contain.text", "Oldest message");
-        // subject link works here too
-        cy.get(".email-history-open[data-email-log-id='6']").click();
-        cy.get("#email-history-modal").should("be.visible");
-        cy.get("#email-history-modal-title").should("have.text", "Oldest message");
+        // newest first on the page
+        cy.get("[data-email-history-table] tbody tr td:first-child").then(($cells) => {
+            const dates = [...$cells].map((c) => c.textContent.trim());
+            expect([...dates].sort().reverse()).to.deep.equal(dates);
+        });
+        // The oldest seeded row is the last row of the last page, however many pages there are
+        cy.makePrivateAdminAPICall("GET", "/api/email/log?personId=2&limit=25").then((resp) => {
+            const lastPage = resp.body.pages;
+            cy.visit(`/people/view/2/emails?page=${lastPage}`);
+            cy.get("[data-email-history-table] tbody tr").last().should("contain.text", "Oldest message");
+            // subject link works here too
+            cy.get(".email-history-open[data-email-log-id='6']").click();
+            cy.get("#email-history-modal").should("be.visible");
+            cy.get("#email-history-modal-title").should("have.text", "Oldest message");
+        });
     });
 
-    it("paginates the full history", () => {
-        cy.visit("/people/view/2/emails?page=1");
-        cy.get("[data-email-history-table] tbody tr").should("have.length.at.least", 6);
-        // With 25 per page and fewer than 25 seeded rows there is a single page: no pagination
-        cy.get("#email-history-pagination").should("not.exist");
+    it("paginates the full history at 25 rows per page", () => {
+        cy.makePrivateAdminAPICall("GET", "/api/email/log?personId=2&limit=25").then((resp) => {
+            const { total, pages } = resp.body;
+            cy.visit("/people/view/2/emails?page=1");
+            cy.get("[data-email-history-table] tbody tr").should("have.length", Math.min(25, total));
+            if (pages > 1) {
+                cy.get("#email-history-pagination").should("be.visible");
+                cy.get("#email-history-pagination .page-item.active").should("contain.text", "1");
+                cy.contains("#email-history-pagination a", "Next").click();
+                cy.location("search").should("eq", "?page=2");
+                cy.get("[data-email-history-table] tbody tr").should("have.length.at.least", 1);
+            } else {
+                // a single page shows no pagination controls
+                cy.get("#email-history-pagination").should("not.exist");
+            }
+        });
     });
 
     it("the timeline lists emails under an Emails filter", () => {
