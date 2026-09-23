@@ -17,6 +17,7 @@ Thank you for donating time (and often tokens). We try not to nitpick. We will s
 9. No security holes.
 10. Keep the PR title and description true to the current diff.
 11. Do **not** add features to Query View (`QueryView.php`, `QueryList.php`, or new/rewritten predefined `query_qry` rows). New reports use Slim/Tabler MVC + Propel, or a reports plugin.
+12. Prefer names and tests over comments. Do not narrate the next line.
 
 ## Hard blocks (expect Request changes)
 
@@ -30,7 +31,7 @@ Thank you for donating time (and often tokens). We try not to nitpick. We will s
 - Title or body that describes different work than the files
 - New Query View / predefined-query work (see above). Security-only patches on that page need an explicit maintainer exception.
 
-Missing screenshots alone is not a hard block. If you already captured tablet or mobile, add them.
+Missing screenshots alone is not a hard block. If you already captured tablet or mobile, add them. Missing comments are not a hard block. Wrong comments can be deleted in the same PR.
 
 ## Not merge blockers (Comment + follow-up)
 

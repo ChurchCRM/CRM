@@ -23,6 +23,7 @@ App under test: `DEVELOPING.md` (`npm run docker:test:start`).
 - Stable selectors: `id`, `data-cy`, `name`, href/text — not visual utility classes
 - Do not put optional demo values in Cypress seed if that would break the suite. Demo import is `src/admin/demo/config.json`
 - No `.only` / `.skip` in committed specs
+- No narrative comments that repeat the `it()` title. One line only when Cypress or CI would otherwise surprise the next editor.
 
 ```bash
 npx cypress run --config-file cypress/configs/docker.config.ts \
