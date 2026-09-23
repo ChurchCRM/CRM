@@ -10,11 +10,12 @@ Thank you for donating time (and often tokens). We try not to nitpick. We will s
 2. Run lint and build.
 3. Add or update tests.
 4. Wrap new user-visible strings in `gettext()` / `i18next.t()`. `locale:build` runs on merge to `master`.
-5. If you change the UI, keep Tabler / Bootstrap 5 and **check tablet and mobile** as well as desktop. Attach screenshots if you have them — they help, they are not the whole gate.
-6. Existing installs must keep working. New config defaults safely.
-7. Do not slow login / people list / Sunday paths without measuring.
-8. No security holes.
-9. Keep the PR title and description true to the current diff.
+5. Dates, times, numbers, and currency: API/storage is ISO `Y-m-d` or naive church wall-clock. Display uses `sDateFormat*`, `sTimeZone`, and `sLanguage`. Do not parse JSON dates with the display format or the browser timezone.
+6. If you change the UI, keep Tabler / Bootstrap 5 and **check tablet and mobile** as well as desktop. Attach screenshots if you have them — they help, they are not the whole gate.
+7. Existing installs must keep working. New config defaults safely.
+8. Do not slow login / people list / Sunday paths without measuring.
+9. No security holes.
+10. Keep the PR title and description true to the current diff.
 
 ## Hard blocks (expect Request changes)
 
@@ -23,6 +24,7 @@ Thank you for donating time (and often tokens). We try not to nitpick. We will s
 - Unsafe upgrade or surprise behavior
 - UI that does not look like ChurchCRM, or a UI change with no tablet/mobile check
 - New strings not wrapped
+- Dates/times/numbers/currency that ignore the storage vs display rules above
 - No tests for a feature or bug fix
 - Title or body that describes different work than the files
 
