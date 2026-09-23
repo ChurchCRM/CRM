@@ -96,7 +96,7 @@ Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
 ### i18n
 
 - [ ] New user-visible strings wrapped in `gettext()` / `i18next.t()` (hard block if missing)
-- [ ] Do **not** require `npm run locale:build` or a `messages.po` commit — translations are extracted outside this repo
+- [ ] Do **not** require `npm run locale:build` or a `messages.po` commit — that job runs on every merge to `master`
 - [ ] Canonical terms: `People` not `Persons` in UI; `Active` / `Inactive` not `Deactivated`
 - [ ] Do not invent new verb+noun concatenations (`gettext('Delete') . ' ' . gettext('Group')`) — use a whole phrase or `sprintf(gettext('Delete %s'), …)`
 - [ ] ChurchCRM lists **49 locales** in `locales.json` — do not invent a different count
