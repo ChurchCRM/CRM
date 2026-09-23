@@ -18,6 +18,9 @@ EXPOSE 80
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         libxml2-dev \
+        libcurl4-openssl-dev \
+        libicu-dev \
+        libonig-dev \
         gettext \
         locales \
         locales-all \
@@ -30,8 +33,22 @@ RUN apt-get update && \
 
 # Install and configure PHP extensions (compiled against this image's PHP
 # build — do NOT install php-* packages via apt, which pull in a separate
-# Debian-packaged PHP instead of extending this one)
-RUN docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip && \
+# Debian-packaged PHP instead of extending this one). Kept in sync with
+# Dockerfile.churchcrm-fpm-php8's extension list so both published images
+# support the same ChurchCRM features.
+RUN docker-php-ext-install -j$(nproc) \
+        bcmath \
+        curl \
+        exif \
+        gettext \
+        iconv \
+        intl \
+        mbstring \
+        mysqli \
+        opcache \
+        pdo_mysql \
+        xml \
+        zip && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) gd
 
@@ -44,7 +61,7 @@ RUN a2enmod rewrite && \
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" 2>/dev/null || true && \
     sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2M/g' $PHP_INI_DIR/php.ini && \
     sed -i 's/^post_max_size.*$/post_max_size = 2G/g' $PHP_INI_DIR/php.ini && \
-    sed -i 's/^memory_limit.*$/memory_limit = 2G/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^memory_limit.*$/memory_limit = 256M/g' $PHP_INI_DIR/php.ini && \
     sed -i 's/^max_execution_time.*$/max_execution_time = 120/g' $PHP_INI_DIR/php.ini && \
     sed -i 's/^display_errors.*$/display_errors = Off/g' $PHP_INI_DIR/php.ini
 
@@ -52,18 +69,47 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" 2>/dev/null || t
 COPY apache/default.conf /etc/apache2/apache2.conf
 
 
-# Production stage: minimal runtime with compiled ChurchCRM
-FROM base AS prod
+# Production stage: minimal runtime, no compilers, dev headers, or git
+FROM php:${PHP_VERSION}-apache AS prod
 LABEL maintainer="ChurchCRM" \
       org.opencontainers.image.description="ChurchCRM with Apache (production-ready, includes release code)"
+
+EXPOSE 80
+
+# Install only runtime libraries (no dev headers, no build toolchain)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        libcurl4 \
+        libfreetype6 \
+        libicu76 \
+        libjpeg62-turbo \
+        libonig5 \
+        libpng16-16 \
+        libxml2 \
+        libzip5 \
+        gettext \
+        locales \
+        locales-all \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN a2enmod rewrite && mkdir -p /run/apache2 /var/www/html
+
+# Copy compiled PHP extensions and php.ini from the base stage (avoids
+# hardcoding the PHP build's internal extension-ABI directory name here)
+COPY --from=base /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --from=base /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
+COPY --from=base /usr/local/etc/php/php.ini /usr/local/etc/php/php.ini
+COPY apache/default.conf /etc/apache2/apache2.conf
 
 WORKDIR /var/www/html
 
 # Copy ChurchCRM release code (provided from release artifact during docker build)
-COPY . .
+COPY --chown=www-data:www-data . .
 
-# Set proper ownership (www-data is Apache user in Debian)
-RUN chown -R www-data:www-data /var/www/html
+# The build context also carries docker/apache/default.conf (already consumed
+# above into /etc/apache2/apache2.conf) — strip it so it can't be served out
+# of the docroot at /apache/default.conf.
+RUN rm -rf apache
 
 
 # Test stage: includes dev tools for CI testing

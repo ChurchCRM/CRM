@@ -10,6 +10,9 @@ env:
 
 jobs:
   build-and-push:
+    # Never publish a pre-release build as :latest-* — operators pull that tag
+    # expecting the last stable release.
+    if: github.event.release.prerelease == false
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -20,10 +23,12 @@ jobs:
           - dockerfile: docker/Dockerfile.churchcrm-fpm-php8
             tag-suffix: php8-fpm
             platforms: linux/amd64,linux/arm64
+            needs-apache-config: false
 
           - dockerfile: docker/Dockerfile.churchcrm-apache-php8
             tag-suffix: php8-apache
             platforms: linux/amd64,linux/arm64
+            needs-apache-config: true
 
     steps:
       - name: Checkout Dockerfiles
@@ -53,6 +58,7 @@ jobs:
           fi
 
       - name: Add Apache config to build context
+        if: matrix.needs-apache-config
         run: |
           mkdir -p build-context/apache
           cp docker/apache/default.conf build-context/apache/default.conf
