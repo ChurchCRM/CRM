@@ -38,6 +38,38 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+    "makePrivateFinanceOnlyAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // grace.financeonly (id=904): Finance=1, non-admin.
+        // Used to verify Finance-role (not Admin) can access /finance/api/funds CRUD.
+        return cy.makePrivateAPICall(
+            Cypress.env("finance.only.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
+    "makePrivateManageGroupsOnlyAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // kyle.kioskonly (id=905): ManageGroups=1, non-admin.
+        // Used to verify ManageGroups-role can access /kiosk/api/* endpoints.
+        return cy.makePrivateAPICall(
+            Cypress.env("managegroups.only.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
     "makePrivateNoFinanceAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
         return cy.makePrivateAPICall(
@@ -175,6 +207,25 @@ Cypress.Commands.add(
         // is blocked by EditRecordsRoleAuthMiddleware (expects 403 on record routes).
         return cy.makePrivateAPICall(
             Cypress.env("menuoptions.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
+    "makePrivateNoPermAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // noperm.user (id=901): every permission flag 0, usr_EditSelf=0,
+        // non-admin. The genuinely zero-permission user — it passes
+        // AuthMiddleware under the read-default policy (#9003) and gets
+        // read-only access, so every write route must answer 403 for it.
+        // Use this to prove a write route carries a role gate at all.
+        return cy.makePrivateAPICall(
+            Cypress.env("noperm.api.key"),
             method,
             url,
             body,

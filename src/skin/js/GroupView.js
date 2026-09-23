@@ -6,6 +6,11 @@ var GV_MODAL_ID = "groupViewModal";
 function _createModal(title, bodyHtml) {
   var existing = document.getElementById(GV_MODAL_ID);
   if (existing) {
+    existing.querySelectorAll("select").forEach(function (sel) {
+      try {
+        if (sel.tomselect) sel.tomselect.destroy();
+      } catch (e) {}
+    });
     var old = window.bootstrap.Modal.getInstance(existing);
     if (old) old.dispose();
     existing.remove();
@@ -93,11 +98,23 @@ function _showRoleModal(title, callback) {
   result.el.addEventListener(
     "shown.bs.modal",
     () => {
-      new window.TomSelect(roleEl, {
+      var ts = new window.TomSelect(roleEl, {
+        dropdownParent: "body",
         onChange: (value) => {
           selectedRoleId = value || null;
         },
       });
+      // Destroy the TomSelect to remove body > .ts-dropdown when the modal closes.
+      // Must use a closure reference because wrapper.remove() leaves ts.dropdown in <body>.
+      result.el.addEventListener(
+        "hidden.bs.modal",
+        () => {
+          try {
+            ts.destroy();
+          } catch (e) {}
+        },
+        { once: true },
+      );
     },
     { once: true },
   );
@@ -146,10 +163,17 @@ function _showGroupAndRoleModal(title, callback) {
       () => {
         var roleWrapper = document.getElementById("gv-role-wrapper");
         var roleEl = document.getElementById("gv-role-select");
+        var tsGroup = null;
+        var tsRole = null;
+        // Guard: if the modal closes before getRoles() AJAX resolves, bail out
+        // of the .done() callback to prevent creating a TomSelect on a detached
+        // element (which would leave orphaned body > .ts-dropdown nodes).
+        var isOpen = true;
 
-        new window.TomSelect(groupEl, {
+        tsGroup = new window.TomSelect(groupEl, {
           placeholder: i18next.t("Search groups..."),
           items: [],
+          dropdownParent: "body",
           onChange: (value) => {
             selectedGroupId = value || null;
             if (!value) {
@@ -158,11 +182,17 @@ function _showGroupAndRoleModal(title, callback) {
               return;
             }
             // Load roles for selected group
-            if (roleEl.tomselect) roleEl.tomselect.destroy();
+            if (tsRole) {
+              try {
+                tsRole.destroy();
+              } catch (e) {}
+              tsRole = null;
+            }
             roleEl.innerHTML = "";
             roleWrapper.classList.add("d-none");
 
             window.CRM.groups.getRoles(value).done((roles) => {
+              if (!isOpen) return; // modal closed before AJAX resolved
               if (roles.length === 0) {
                 selectedRoleId = null;
                 result.confirm.disabled = false;
@@ -179,7 +209,8 @@ function _showGroupAndRoleModal(title, callback) {
               );
               roleWrapper.classList.remove("d-none");
               result.confirm.disabled = false;
-              new window.TomSelect(roleEl, {
+              tsRole = new window.TomSelect(roleEl, {
+                dropdownParent: "body",
                 onChange: (v) => {
                   selectedRoleId = v || null;
                 },
@@ -188,6 +219,20 @@ function _showGroupAndRoleModal(title, callback) {
             });
           },
         });
+        // Destroy TomSelect instances on close so body > .ts-dropdown is removed.
+        result.el.addEventListener(
+          "hidden.bs.modal",
+          () => {
+            isOpen = false; // prevent in-flight getRoles() from creating orphaned TomSelect
+            try {
+              if (tsGroup) tsGroup.destroy();
+            } catch (e) {}
+            try {
+              if (tsRole) tsRole.destroy();
+            } catch (e) {}
+          },
+          { once: true },
+        );
       },
       { once: true },
     );
@@ -446,6 +491,7 @@ function initializeGroupView() {
       valueField: "objid",
       labelField: "text",
       searchField: "text",
+      dropdownParent: "body",
       load: (query, callback) => {
         if (query.length < 2) return callback();
         fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))
@@ -807,18 +853,18 @@ function initDataTable() {
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static">' +
-            '<i class="ti ti-dots-vertical"></i></button>' +
+            '<i class="fa-solid fa-ellipsis-vertical"></i></button>' +
             '<div class="dropdown-menu dropdown-menu-end">' +
             '<a class="dropdown-item" href="' +
             window.CRM.root +
             "/people/view/" +
             full.PersonId +
-            '"><i class="ti ti-eye me-2"></i>' +
+            '"><i class="fa-solid fa-eye me-2"></i>' +
             i18next.t("View") +
             "</a>" +
             '<button class="dropdown-item changeMembership" data-personid="' +
             full.PersonId +
-            '"><i class="ti ti-users me-2"></i>' +
+            '"><i class="fa-solid fa-users me-2"></i>' +
             i18next.t("Change Role") +
             "</button>" +
             '<button class="dropdown-item AddToCart" data-cart-id="' +
@@ -827,7 +873,7 @@ function initDataTable() {
             i18next.t("Add to Cart") +
             '" data-label-remove="' +
             i18next.t("Remove from Cart") +
-            '"><i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">' +
+            '"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">' +
             i18next.t("Add to Cart") +
             "</span></button>" +
             '<div class="dropdown-divider"></div>' +
@@ -835,7 +881,7 @@ function initDataTable() {
             full.PersonId +
             '" data-name="' +
             escapedName +
-            '"><i class="ti ti-user-minus me-2"></i>' +
+            '"><i class="fa-solid fa-user-minus me-2"></i>' +
             i18next.t("Remove") +
             "</button></div></div>"
           );

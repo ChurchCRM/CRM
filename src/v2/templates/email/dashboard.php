@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
+use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
@@ -93,7 +94,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#emailSettings',
-        title: <?= json_encode(gettext('Email Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        title: <?= InputUtils::jsonEncodeForScript(gettext('Email Settings')) ?>,
         icon: 'fa-solid fa-envelope',
         presets: [
             {
@@ -120,17 +121,17 @@ $(document).ready(function() {
             }
         ],
         settings: [
-            { name: 'bEnabledEmail',         type: 'boolean', label: <?= json_encode(gettext('Enable Email'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,            tooltip: <?= json_encode(SystemConfig::getTooltip('bEnabledEmail'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'sSMTPHost',             type: 'text',    label: <?= json_encode(gettext('SMTP Host'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,               tooltip: <?= json_encode(SystemConfig::getTooltip('sSMTPHost'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'iSMTPTimeout',          type: 'number',  label: <?= json_encode(gettext('SMTP Timeout'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,            tooltip: <?= json_encode(SystemConfig::getTooltip('iSMTPTimeout'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'sPHPMailerSMTPSecure',  type: 'choice',  label: <?= json_encode(gettext('Encryption'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,             tooltip: <?= json_encode(SystemConfig::getTooltip('sPHPMailerSMTPSecure'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, choices: <?= json_encode(SystemConfig::getChoices('sPHPMailerSMTPSecure'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'bPHPMailerAutoTLS',     type: 'boolean', label: <?= json_encode(gettext('Auto TLS'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,               tooltip: <?= json_encode(SystemConfig::getTooltip('bPHPMailerAutoTLS'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'bSMTPAuth',             type: 'boolean', label: <?= json_encode(gettext('SMTP Authentication'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,    tooltip: <?= json_encode(SystemConfig::getTooltip('bSMTPAuth'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'sSMTPUser',             type: 'text',    label: <?= json_encode(gettext('SMTP Username'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,          tooltip: <?= json_encode(SystemConfig::getTooltip('sSMTPUser'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'sSMTPPass',             type: 'password',label: <?= json_encode(gettext('SMTP Password'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,          tooltip: <?= json_encode(SystemConfig::getTooltip('sSMTPPass'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'sToEmailAddress',       type: 'text',    label: <?= json_encode(gettext('Copy Church Email'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,        tooltip: <?= json_encode(SystemConfig::getTooltip('sToEmailAddress'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'iDoNotEmailPropertyId', type: 'ajax',    label: <?= json_encode(gettext('Do Not Email Property'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,  tooltip: <?= json_encode(SystemConfig::getTooltip('iDoNotEmailPropertyId'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, ajaxUrl: '/api/system/properties/person' },
-            { name: 'sEmailPreheader',       type: 'text',    label: <?= json_encode(gettext('Default Inbox Preview Text'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, tooltip: <?= json_encode(SystemConfig::getTooltip('sEmailPreheader'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> }
+            { name: 'bEnabledEmail',         type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable Email')) ?>,            tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bEnabledEmail')) ?> },
+            { name: 'sSMTPHost',             type: 'text',    label: <?= InputUtils::jsonEncodeForScript(gettext('SMTP Host')) ?>,               tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sSMTPHost')) ?> },
+            { name: 'iSMTPTimeout',          type: 'number',  label: <?= InputUtils::jsonEncodeForScript(gettext('SMTP Timeout')) ?>,            tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('iSMTPTimeout')) ?> },
+            { name: 'sPHPMailerSMTPSecure',  type: 'choice',  label: <?= InputUtils::jsonEncodeForScript(gettext('Encryption')) ?>,             tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sPHPMailerSMTPSecure')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('sPHPMailerSMTPSecure')) ?> },
+            { name: 'bPHPMailerAutoTLS',     type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Auto TLS')) ?>,               tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bPHPMailerAutoTLS')) ?> },
+            { name: 'bSMTPAuth',             type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('SMTP Authentication')) ?>,    tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('bSMTPAuth')) ?> },
+            { name: 'sSMTPUser',             type: 'text',    label: <?= InputUtils::jsonEncodeForScript(gettext('SMTP Username')) ?>,          tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sSMTPUser')) ?> },
+            { name: 'sSMTPPass',             type: 'password',label: <?= InputUtils::jsonEncodeForScript(gettext('SMTP Password')) ?>,          tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sSMTPPass')) ?> },
+            { name: 'sToEmailAddress',       type: 'text',    label: <?= InputUtils::jsonEncodeForScript(gettext('Copy Church Email')) ?>,        tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sToEmailAddress')) ?> },
+            { name: 'iDoNotEmailPropertyId', type: 'ajax',    label: <?= InputUtils::jsonEncodeForScript(gettext('Do Not Email Property')) ?>,  tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('iDoNotEmailPropertyId')) ?>, ajaxUrl: '/api/system/properties/person' },
+            { name: 'sEmailPreheader',       type: 'text',    label: <?= InputUtils::jsonEncodeForScript(gettext('Default Inbox Preview Text')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sEmailPreheader')) ?> }
         ],
         showAllSettingsLink: true
     });

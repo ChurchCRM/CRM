@@ -16,9 +16,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // Import flag-icons CSS - flags are automatically bundled by webpack
 import "flag-icons/css/flag-icons.min.css";
 
-// Import Tabler Icons webfont - font files bundled automatically by webpack
-import "@tabler/icons-webfont/dist/tabler-icons.min.css";
-
 // DataTables Bootstrap 5 integration CSS
 import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
 import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";

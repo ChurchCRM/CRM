@@ -9,16 +9,17 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-// Use FinancialService for all dashboard data
-$financialService = new FinancialService();
-$dashboardData = $financialService->getDashboardData();
-
-// Extract data for template use
+// $dashboardData is injected by the route controller (finance/routes/dashboard.php)
+// It includes FY-scoped data for the selectedFyid passed in the GET ?fyid param.
 $fiscalYear = $dashboardData['fiscalYear'];
 $fyStartDate = $fiscalYear['startDate'];
 $fyEndDate = $fiscalYear['endDate'];
 $fyLabel = $fiscalYear['label'];
 $iFYMonth = $fiscalYear['month'];
+
+$selectedFyid  = $dashboardData['selectedFyid'];
+$availableYears = $dashboardData['availableYears'];
+$currentFyid   = $dashboardData['currentFyid'];
 
 $depositStats = $dashboardData['depositStats'];
 $totalDeposits = $depositStats['total'];
@@ -39,6 +40,7 @@ $currentDeposit = $dashboardData['currentDeposit'];
 $currentDepositId = $dashboardData['currentDepositId'];
 
 $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
+$isFinanceEnabled = AuthenticationManager::getCurrentUser()->isFinanceEnabled();
 
 $sRootPath = SystemURLs::getRootPath();
 ?>
@@ -154,8 +156,8 @@ $sRootPath = SystemURLs::getRootPath();
                     <i class="fa-solid fa-gavel me-1"></i><?= gettext('Fundraisers') ?>
                 </a>
                 <?php endif; ?>
-                <?php if ($isAdmin): ?>
-                <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-outline-secondary">
+                <?php if ($isFinanceEnabled): ?>
+                <a href="<?= $sRootPath ?>/finance/funds" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-piggy-bank me-1"></i><?= gettext('Manage Funds') ?>
                 </a>
                 <?php endif; ?>
@@ -206,7 +208,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <?php if ($activeFundCount > 0): ?>
                                 <span class="badge bg-green-lt text-green rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
+                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-xmark"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">
@@ -215,7 +217,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div>
                                 <span class="badge bg-blue-lt text-blue"><?= $activeFundCount ?> <?= gettext('active') ?></span>
-                                <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary ms-2">
+                                <a href="<?= $sRootPath ?>/finance/funds" class="btn btn-sm btn-outline-secondary ms-2">
                                     <i class="fa-solid fa-cog"></i> <?= gettext('Edit') ?>
                                 </a>
                             </div>
@@ -230,7 +232,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <?php if ($hasChurchInfo): ?>
                                 <span class="badge bg-green-lt text-green rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
+                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-xmark"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">
@@ -242,7 +244,7 @@ $sRootPath = SystemURLs::getRootPath();
                                 <a href="<?= $sRootPath ?>/admin/system/church-info" class="btn btn-sm btn-outline-secondary">
                                     <i class="fa-solid fa-cog"></i> <?= gettext('Settings') ?>
                                 </a>
-                                <?php endif; ?>
+                                <?php endif; ?><!-- Only admins can edit church info (system-level config) -->
                             </div>
                         </div>
 
@@ -285,6 +287,19 @@ $sRootPath = SystemURLs::getRootPath();
             <div class="card mb-3">
                 <div class="card-header d-flex align-items-center">
                     <h3 class="card-title"><i class="fa-solid fa-clock-rotate-left me-2"></i><?= gettext('Recent Deposits') ?></h3>
+                    <!-- Fiscal Year selector -->
+                    <form method="GET" class="ms-3 d-inline-flex align-items-center gap-2">
+                        <label for="deposit-fyid" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Fiscal Year') ?>:</label>
+                        <select name="fyid" id="deposit-fyid" class="form-select form-select-sm" style="width: auto;" onchange="this.form.submit();">
+                            <option value="0" <?= $selectedFyid === $currentFyid ? '' : ($selectedFyid === 0 ? 'selected' : '') ?>><?= gettext('All Time') ?></option>
+                            <?php foreach ($availableYears as $year): ?>
+                            <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
+                                <?= InputUtils::escapeHTML($year['label']) ?>
+                                <?php if ((int) $year['id'] === $currentFyid): ?> (<?= gettext('Current') ?>)<?php endif; ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </form>
                     <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-sm btn-outline-secondary ms-auto">
                         <i class="fa-solid fa-list me-1"></i><?= gettext('View All') ?>
                     </a>
@@ -456,7 +471,6 @@ $sRootPath = SystemURLs::getRootPath();
 </div>
 
 <?php if ($isAdmin): ?>
-<!-- System Settings Panel Component -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

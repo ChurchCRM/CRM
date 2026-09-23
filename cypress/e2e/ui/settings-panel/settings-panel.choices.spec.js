@@ -95,7 +95,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
 
     describe("Map View — Zoom Level", () => {
         it("zoom level dropdown has geographic scale options", () => {
-            cy.visit("v2/map");
+            cy.visit("people/map");
             // Map settings may not render if church address is not geocoded;
             // skip gracefully if the settings panel container doesn't exist
             cy.get("body").then(($body) => {

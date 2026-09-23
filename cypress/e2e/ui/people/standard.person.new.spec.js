@@ -13,8 +13,11 @@ describe("Standard Person", () => {
         cy.get("#Gender").select("1");
         cy.get("#FirstName").type(name);
         cy.get("#LastName").type("Hall");
-        cy.get("#BirthMonth").select("12");
-        cy.get("#BirthDay").select("21");
+        // Use zero-padded single-digit month/day values ("09") to guard against
+        // regression of issue #9623 where filterInt() collapsed "09" to 0 via
+        // FILTER_VALIDATE_INT treating the leading zero as an octal prefix.
+        cy.get("#BirthMonth").select("09");
+        cy.get("#BirthDay").select("09");
         cy.get("#BirthYear").clear().type("1950");
         cy.get("#Email").type("boby@example.com");
         cy.get("#Classification").select("1");
@@ -24,10 +27,12 @@ describe("Standard Person", () => {
         cy.url().should("contain", personViewPath);
         cy.contains(name);
 
-        // make sure edit works - click Edit button in toolbar
+        // Re-open editor and verify the zero-padded month/day were saved correctly.
+        // With the bug the saved month and day are 0 and the selects show "-" (value "0").
         cy.contains('a.btn', 'Edit').first().click();
-
         cy.url().should("contain", personEditorPath);
+        cy.get("#BirthMonth").should("have.value", "09");
+        cy.get("#BirthDay").should("have.value", "09");
 
         cy.get("#BirthYear").clear().type("1980");
         cy.get("#Email").clear().type(`bobby${uniqueSeed}@example.com`);

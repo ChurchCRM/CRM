@@ -190,29 +190,71 @@ function loadEnglishOkAllowlist() {
 
 // ── Plural form restructuring ───────────────────────────────────────────────
 
+// CLDR plural category names, in canonical order.
+const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
+
 /**
- * Defensive restructure for malformed plural forms from POEditor export.
- * If batch file has top-level "one"/"other", fixes to proper nesting.
+ * Defensive restructure for batch files that contain POEditor's inverted plural
+ * format at the top level (can arrive if the downloader skipped re-nesting).
+ *
+ * Handles all 6 CLDR plural categories (zero/one/two/few/many/other) and triggers
+ * whenever ANY plural-form bucket is present, not only when both one and other
+ * exist. Plain string terms and already-nested plural terms are passed through.
  */
 function restructurePluralForms(data) {
-    if (!data.one && !data.other) return data;
-    if (typeof data.one === 'object' && typeof data.other === 'object') {
-        const restructured = {};
-        for (const [key, value] of Object.entries(data)) {
-            if (key !== 'one' && key !== 'other' && typeof value === 'string') {
-                restructured[key] = value;
-            }
-        }
-        const termKeys = new Set([...Object.keys(data.one || {}), ...Object.keys(data.other || {})]);
-        for (const term of termKeys) {
-            const pluralForms = {};
-            if (data.one != null && data.one[term] !== undefined && data.one[term] !== null) pluralForms.one = data.one[term];
-            if (data.other != null && data.other[term] !== undefined && data.other[term] !== null) pluralForms.other = data.other[term];
-            if (Object.keys(pluralForms).length > 0) restructured[term] = pluralForms;
-        }
-        return restructured;
+    if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
+
+    // Detect inverted buckets: top-level keys whose name is a CLDR plural form, whose
+    // value is a plain object, AND whose own values are all strings (or null/undefined).
+    // The string-values check is the key guard: POEditor's inverted layout always stores
+    // translation strings inside the bucket, whereas a legitimate i18next namespace
+    // segment would contain nested objects as values — so that case is not triggered.
+    const invertedFormKeys = CLDR_PLURAL_FORMS.filter((form) => {
+        const v = data[form];
+        return (
+            v != null &&
+            typeof v === 'object' &&
+            !Array.isArray(v) &&
+            Object.values(v).length > 0 &&
+            Object.values(v).every(
+                (val) => val === null || val === undefined || typeof val === 'string'
+            )
+        );
+    });
+    if (invertedFormKeys.length === 0) return data;
+
+    const restructured = {};
+
+    // Pass through everything that is not an inverted bucket:
+    //   - plain string terms  (e.g. { "term": "translation" })
+    //   - already-nested plural terms  (e.g. { "term": { "one": "...", "other": "..." } })
+    for (const [key, value] of Object.entries(data)) {
+        if (invertedFormKeys.includes(key)) continue;
+        restructured[key] = value;
     }
-    return data;
+
+    // Re-nest each term found across the inverted plural-form buckets.
+    const termKeys = new Set();
+    for (const form of invertedFormKeys) {
+        for (const term of Object.keys(data[form])) termKeys.add(term);
+    }
+    for (const term of termKeys) {
+        const pluralForms = {};
+        for (const form of invertedFormKeys) {
+            const val = data[form][term];
+            if (val !== undefined && val !== null) pluralForms[form] = val;
+        }
+        if (Object.keys(pluralForms).length > 0) {
+            if (Object.prototype.hasOwnProperty.call(restructured, term)) {
+                // A pass-through key shares the same name as a bucket term.
+                // The re-nested plural value takes precedence.
+                console.warn(`restructurePluralForms: key "${term}" exists both as a pass-through entry and inside plural buckets; plural re-nesting takes precedence.`);
+            }
+            restructured[term] = pluralForms;
+        }
+    }
+
+    return restructured;
 }
 
 // ── Term analysis ────────────────────────────────────────────────────────────
@@ -246,11 +288,35 @@ function isNotIdenticalToKey(termKey, value) {
 }
 
 /**
- * Analyzes a single batch file and splits its terms into three buckets:
- *   localizedTerms – have translations that differ from the source key,
- *                    OR are in the english-ok allowlist (intentionally English)
- *   suspectTerms   – translation is identical to the source key and NOT in allowlist
- *   emptyTerms     – no translation found at all
+ * Returns true when a plural-form object has SOME forms filled in and OTHERS
+ * present-but-blank (e.g. `{ one: "X", few: "", other: "" }`) — a translation
+ * that was started but not finished for every CLDR category this locale needs.
+ *
+ * This must be checked BEFORE the term is allowed anywhere near
+ * `convertPluralsToSeparated()`. That function silently drops any blank form
+ * and joins the survivors by position — so a partially-filled Czech object
+ * missing "few" would collapse from 3 slots to 2 and shift "other" into the
+ * "few" position with no error from POEditor or this script. Skipping
+ * incomplete plurals entirely (never uploading them) avoids depending on
+ * exactly how POEditor's pipe-separated plural import resolves a form-count
+ * mismatch, which cannot be verified without a live API call.
+ */
+function hasIncompleteForms(value) {
+    if (typeof value !== 'object' || value === null) return false;
+    const strings = Object.values(value).filter(v => typeof v === 'string');
+    const hasFilled = strings.some(v => v.trim() !== '');
+    const hasBlank = strings.some(v => v.trim() === '');
+    return hasFilled && hasBlank;
+}
+
+/**
+ * Analyzes a single batch file and splits its terms into four buckets:
+ *   localizedTerms  – have translations that differ from the source key,
+ *                     OR are in the english-ok allowlist (intentionally English)
+ *   suspectTerms    – translation is identical to the source key and NOT in allowlist
+ *   emptyTerms      – no translation found at all
+ *   incompleteTerms – a plural object with some CLDR forms filled and others
+ *                     left blank (see hasIncompleteForms) — never safe to upload
  *
  * @param {string} filePath - path to the batch JSON file
  * @param {Set<string>} [englishOkSet] - optional set of terms safe to upload as-is
@@ -261,9 +327,12 @@ function analyzeFile(filePath, englishOkSet = new Set()) {
     const localizedTerms = {};
     const suspectTerms = {};
     const emptyTerms = {};
+    const incompleteTerms = {};
 
     for (const [term, value] of Object.entries(raw)) {
-        if (!hasAnyTranslation(value)) {
+        if (hasIncompleteForms(value)) {
+            incompleteTerms[term] = value;
+        } else if (!hasAnyTranslation(value)) {
             emptyTerms[term] = value;
         } else if (!isNotIdenticalToKey(term, value)) {
             // Value is identical to the source key — check the allowlist
@@ -277,14 +346,66 @@ function analyzeFile(filePath, englishOkSet = new Set()) {
         }
     }
 
-    return { localizedTerms, suspectTerms, emptyTerms };
+    return { localizedTerms, suspectTerms, emptyTerms, incompleteTerms };
 }
 
 // ── POEditor API helpers ─────────────────────────────────────────────────────
 
 /**
+ * Converts i18next nested plural structure to pipe-separated plural format for POEditor.
+ *
+ * POEditor's key_value_json format understands pipe-separated plurals (standard gettext):
+ *   "term": "singular form|plural form"
+ *
+ * i18next nested plural structure:
+ *   "term": { "one": "singular", "other": "plural" }
+ *
+ * This converts nested → pipe-separated so POEditor properly recognizes plural forms
+ * in terms with numeric tokens like {{count}} and {{max}}.
+ *
+ * Handles all CLDR plural categories (zero/one/two/few/many/other), preserving order:
+ * zero, one, two, few, many, other.
+ */
+function convertPluralsToSeparated(data) {
+    if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
+
+    const result = {};
+
+    for (const [term, value] of Object.entries(data)) {
+        if (typeof value === 'string') {
+            // Plain string term — pass through unchanged
+            result[term] = value;
+        } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+            // Check if this is a plural form object (has CLDR keys)
+            const pluralKeys = Object.keys(value).filter(k =>
+                CLDR_PLURAL_FORMS.includes(k)
+            );
+
+            if (pluralKeys.length > 0) {
+                // This is a plural term — convert to pipe-separated format
+                // Order matters: use CLDR canonical order, but only include forms that exist
+                const forms = CLDR_PLURAL_FORMS
+                    .filter(form => pluralKeys.includes(form) && value[form])
+                    .map(form => value[form]);
+
+                // Pipe-separate the forms (POEditor standard for plural support)
+                result[term] = forms.join('|');
+            } else {
+                // Non-plural object (namespace segment) — pass through unchanged
+                result[term] = value;
+            }
+        } else {
+            result[term] = value;
+        }
+    }
+
+    return result;
+}
+
+/**
  * Builds a key_value_json object ready for file import.
  * Only includes terms that have at least one non-empty translated form.
+ * Converts nested plurals to pipe-separated format for POEditor compatibility.
  */
 function buildKeyValueJson(terms) {
     const out = {};
@@ -301,7 +422,8 @@ function buildKeyValueJson(terms) {
             if (Object.keys(filled).length > 0) out[term] = filled;
         }
     }
-    return out;
+    // Convert nested plural forms to pipe-separated format (POEditor standard for plurals)
+    return convertPluralsToSeparated(out);
 }
 
 /**
@@ -495,6 +617,9 @@ async function fetchUntranslatedTerms(poEditorCode) {
  * Clears existing batch files first for a clean rebuild.
  */
 function saveBatchedMissingTerms(poEditorCode, missingTerms) {
+    // Callers are responsible for calling restructurePluralForms before this
+    // function.  Do NOT call it here — a second pass would re-invert any term
+    // whose key happens to be a CLDR plural form name (e.g. "one", "other").
     const localeOutDir = path.join(MISSING_DIR, poEditorCode);
     if (!fs.existsSync(localeOutDir)) fs.mkdirSync(localeOutDir, { recursive: true });
 
@@ -541,7 +666,10 @@ function removeBatchedMissingTerms(poEditorCode) {
  * After upload, re-fetch missing terms from POEditor and update local batch files.
  */
 async function refreshMissingTerms(poEditorCode) {
-    const missing = await fetchUntranslatedTerms(poEditorCode);
+    let missing = await fetchUntranslatedTerms(poEditorCode);
+    // Restructure before counting so termCount reflects actual terms, not CLDR
+    // form buckets (POEditor's untranslated export may use the inverted layout).
+    missing = restructurePluralForms(missing);
     const termCount = Object.keys(missing).length;
 
     if (termCount === 0) {
@@ -636,7 +764,7 @@ async function main() {
 
         if (!localeEntry) {
             console.warn(`\n  ⚠️  [${localeNum}/${totalLocales}] Folder "${folder}" does not match any locale in locales.json — skipping.`);
-            results.push({ locale: folder, name: folder, status: 'no-match', uploaded: 0, empty: 0, remaining: '?' });
+            results.push({ locale: folder, name: folder, status: 'no-match', uploaded: 0, empty: 0, remaining: '?', incomplete: 0 });
             totalSkipped++;
             continue;
         }
@@ -654,13 +782,14 @@ async function main() {
 
         if (jsonFiles.length === 0) {
             console.log('  No JSON batch files found, skipping.\n');
-            results.push({ locale: poEditorCode, name: localeName, status: 'no-files', uploaded: 0, empty: 0, remaining: '?' });
+            results.push({ locale: poEditorCode, name: localeName, status: 'no-files', uploaded: 0, empty: 0, remaining: '?', incomplete: 0 });
             continue;
         }
 
         // Aggregate across all batch files for this locale
         const allLocalized = {};
         const allSuspect = {};
+        const allIncomplete = {};
         let totalEmpty = 0;
 
         const englishOkSet = englishOkAllowlist.get(folderKey) ?? new Set();
@@ -668,26 +797,35 @@ async function main() {
 
         for (const file of jsonFiles) {
             const filePath = path.join(folderPath, file);
-            const { localizedTerms, suspectTerms, emptyTerms } = analyzeFile(filePath, englishOkSet);
+            const { localizedTerms, suspectTerms, emptyTerms, incompleteTerms } = analyzeFile(filePath, englishOkSet);
             Object.assign(allLocalized, localizedTerms);
             Object.assign(allSuspect, suspectTerms);
+            Object.assign(allIncomplete, incompleteTerms);
             totalEmpty += Object.keys(emptyTerms).length;
         }
 
         const localizedCount = Object.keys(allLocalized).length;
         const suspectCount = Object.keys(allSuspect).length;
+        const incompleteCount = Object.keys(allIncomplete).length;
 
         console.log(
             `  Files: ${jsonFiles.length}` +
             `  |  Ready to upload: ${localizedCount}` +
             (englishOkCount > 0 ? `  |  English-OK (allowlisted): ${englishOkCount}` : '') +
             `  |  Suspect (skipped): ${suspectCount}` +
-            `  |  Empty: ${totalEmpty}`
+            `  |  Empty: ${totalEmpty}` +
+            (incompleteCount > 0 ? `  |  Incomplete plurals (skipped): ${incompleteCount}` : '')
         );
+        if (incompleteCount > 0) {
+            console.log(`  ⚠️  Incomplete plural form(s) — some CLDR forms filled, others left blank — will NOT be uploaded until complete:`);
+            for (const term of Object.keys(allIncomplete)) {
+                console.log(`      "${term}"`);
+            }
+        }
 
         if (localizedCount === 0) {
             console.log('  No valid translated terms found — nothing to upload.\n');
-            results.push({ locale: poEditorCode, name: localeName, status: 'nothing-to-upload', uploaded: 0, empty: totalEmpty, remaining: '?' });
+            results.push({ locale: poEditorCode, name: localeName, status: 'nothing-to-upload', uploaded: 0, empty: totalEmpty, remaining: '?', incomplete: incompleteCount });
             totalSkipped++;
             continue;
         }
@@ -708,7 +846,7 @@ async function main() {
 
             if (choice !== '' && choice !== 'y' && choice !== 'yes') {
                 console.log('  ⏭️  Skipped.');
-                results.push({ locale: poEditorCode, name: localeName, status: 'user-skipped', uploaded: 0, empty: totalEmpty, remaining: '?' });
+                results.push({ locale: poEditorCode, name: localeName, status: 'user-skipped', uploaded: 0, empty: totalEmpty, remaining: '?', incomplete: incompleteCount });
                 totalSkipped++;
                 continue;
             }
@@ -716,7 +854,7 @@ async function main() {
 
         if (dryRun) {
             console.log(`  🔸 DRY RUN: would upload ${localizedCount} term(s) to "${poEditorCode}"`);
-            results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: '(dry run)' });
+            results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: '(dry run)', incomplete: incompleteCount });
             totalUploaded += localizedCount;
             continue;
         }
@@ -733,7 +871,7 @@ async function main() {
             totalUploaded += localizedCount;
         } catch (err) {
             console.error(`  ❌ Upload failed: ${sanitize(err.message)}`); // lgtm[js/log-injection] Error message sanitized before logging
-            results.push({ locale: poEditorCode, name: localeName, status: 'upload-failed', uploaded: 0, empty: totalEmpty, remaining: '?' });
+            results.push({ locale: poEditorCode, name: localeName, status: 'upload-failed', uploaded: 0, empty: totalEmpty, remaining: '?', incomplete: incompleteCount });
             totalSkipped++;
             continue;
         }
@@ -752,7 +890,7 @@ async function main() {
             console.log(`\n  ⏭️  Skipping download (--no-download)`);
         }
 
-        results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: remainingCount });
+        results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: remainingCount, incomplete: incompleteCount });
 
         // ── Rate-limit guard ─────────────────────────────────────────────────
         console.log(`  ⏱️  Waiting ${BETWEEN_LOCALES_DELAY_MS / 1000}s before next locale...`);
@@ -772,12 +910,14 @@ async function main() {
         const colStatus = 18;
         const colUp = 10;
         const colEmpty = 8;
+        const colIncomplete = 12;
         const colLeft = 10;
         const header =
             'Locale'.padEnd(colLocale) +
             'Status'.padEnd(colStatus) +
             'Uploaded'.padStart(colUp) +
             'Empty'.padStart(colEmpty) +
+            'Incomplete'.padStart(colIncomplete) +
             'Remaining'.padStart(colLeft);
         console.log(`\n  ${header}`);
         console.log(`  ${'─'.repeat(header.length)}`);
@@ -796,14 +936,16 @@ async function main() {
             const status = (statusIcon[r.status] || r.status).slice(0, colStatus - 1);
             const up = String(r.uploaded).padStart(colUp);
             const empty = String(r.empty).padStart(colEmpty);
+            const incomplete = String(r.incomplete ?? 0).padStart(colIncomplete);
             const left = String(r.remaining).padStart(colLeft);
-            console.log(`  ${label.padEnd(colLocale)}${status.padEnd(colStatus)}${up}${empty}${left}`);
+            console.log(`  ${label.padEnd(colLocale)}${status.padEnd(colStatus)}${up}${empty}${incomplete}${left}`);
         }
 
         console.log(`  ${'─'.repeat(header.length)}`);
 
         // Totals
         const totalUp = results.reduce((s, r) => s + r.uploaded, 0);
+        const totalIncompleteAll = results.reduce((s, r) => s + (r.incomplete ?? 0), 0);
         const successCount = results.filter(r => r.status === 'uploaded').length;
         const failCount = results.filter(r => r.status === 'upload-failed').length;
         const skipCount = results.filter(r => r.status !== 'uploaded' && r.status !== 'upload-failed').length;
@@ -811,6 +953,7 @@ async function main() {
         console.log(`\n  Total uploaded: ${totalUp} term(s) across ${successCount} locale(s)`);
         if (failCount > 0) console.log(`  Failed: ${failCount} locale(s)`);
         if (skipCount > 0) console.log(`  Skipped: ${skipCount} locale(s)`);
+        if (totalIncompleteAll > 0) console.log(`  ⚠️  Incomplete plural forms (not uploaded, need every CLDR form filled): ${totalIncompleteAll} term(s)`);
     }
 
     if (!skipDownload) {

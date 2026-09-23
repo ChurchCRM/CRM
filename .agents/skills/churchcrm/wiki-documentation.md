@@ -1,11 +1,66 @@
 ---
-title: "Creating Wiki Documentation"
-intent: "When to create GitHub Wiki articles and how to structure them for complex documentation and admin guides"
+title: "Documentation Content Architecture"
+intent: "Which documentation home to use for end users, 3rd-party API devs, and ChurchCRM core developers"
 tags: ["documentation", "workflow"]
 prereqs: []
 complexity: "beginner"
 ---
-# Skill: Creating Wiki Documentation
+# Skill: Documentation Content Architecture
+
+## Three Audiences — Three Homes <!-- learned: 2026-08-20 -->
+
+ChurchCRM has three distinct documentation audiences, each with a dedicated home. **Never mix tiers.**
+
+| Audience | Home | Tooling |
+|---|---|---|
+| **End users** (church staff, volunteers) | https://docs.churchcrm.io — `docs/user-guide/` and `docs/administration/` | Docusaurus, plain Markdown |
+| **3rd-party app developers** (API consumers) | https://docs.churchcrm.io — `docs/api/` sidebar | `docusaurus-plugin-openapi-docs` generating from OpenAPI spec; hand-written `index.md` overview pages for auth context only |
+| **ChurchCRM core developers** (contributors) | GitHub Wiki (`ChurchCRM/CRM.wiki`) | Plain Markdown wiki pages |
+
+### What goes where
+
+**End-user docs (`docs/user-guide/`, `docs/administration/`):**
+- How to use features (what buttons do, what screens mean)
+- Plain language — no HTTP endpoints, no JSON, no code
+- Admin docs may assume basic server knowledge but never developer knowledge
+- No raw API endpoint tables — link to `docs/api/` instead
+
+**3rd-party API docs (`docs/api/`):**
+- Driven by the OpenAPI YAML spec in `ChurchCRM/CRM` (`openapi/*.yaml`)
+- Individual endpoint docs must come from the spec via `npm run gen-api-docs` / `npm run regen`
+- Hand-written `index.md` overview pages are allowed for: authentication flow, API key setup, role tables, base URL
+- Never duplicate endpoint tables in user-guide pages
+
+**GitHub Wiki (ChurchCRM core dev docs):**
+- Architecture decisions and ADRs
+- Plugin system internals (hook lifecycle, manifest schema)
+- Contributing guidelines, dev setup, release process
+- Anything that requires understanding the codebase to be meaningful
+
+### Anti-patterns to avoid
+
+- ❌ Adding an "API Reference" section to a user-guide page (e.g. `kiosk-devices.md`) — belongs in `docs/api/`
+- ❌ Documenting ChurchCRM architecture/internals on docs.churchcrm.io — belongs on GitHub Wiki
+- ❌ Putting contributor/PR/dev-setup guides in the docs site — belongs on GitHub Wiki
+- ❌ Hand-writing endpoint docs in Markdown instead of maintaining the OpenAPI spec
+
+---
+
+## MDX Gotcha: `{variable}` in headings causes CI failure <!-- learned: 2026-08-20 -->
+
+Docs.churchcrm.io uses Docusaurus 3 / MDX 3. Bare `{...}` in headings or plain prose is treated as a JSX expression and raises `ReferenceError: id is not defined` during SSG, breaking CI.
+
+```md
+<!-- ❌ breaks CI -->
+### GET /api/groups/{id}/emails
+
+<!-- ✅ correct -->
+### GET /api/groups/\{id\}/emails
+```
+
+No escaping needed inside backtick code spans (`` `/api/{id}` ``) or fenced code blocks.
+
+---
 
 ## Context
 ChurchCRM uses GitHub Wiki for complex documentation, admin guides, and developer reference materials. This skill covers when to create wiki articles and how to structure them for GitHub's wiki system.

@@ -570,16 +570,8 @@ msgid "Picture URL"
 msgstr "Đường dẫn hình ảnh"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Biên tập viên Quỹ đóng góp"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Các trường hoặc lựa chọn không hợp lệ. Thay đổi không được lưu! Vui lòng sửa và thử lại!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Chưa có tiền nào được thêm vào"
 
 #: 
 msgid "Active"
@@ -1175,48 +1167,9 @@ msgid "Minimum Price"
 msgstr "Giá thấp nhất"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Tìm kiếm các tín hữu ở gần nhau"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Lựa chọn Gia đình"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Hiển thị tối đa các tín hữu ở gần nhau"
-
-#: 
-msgid "Maximum distance"
-msgstr "Khoảng cách tối đa"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Định dạng tệp dữ liệu"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "Trình hiển thị GPS"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Bao gồm các họ trong tệp tọa độ"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Gia đình hàng xóm"
-
-#: 
-msgid "Make Data File"
-msgstr "Tạo tập tin dữ liệu"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Hiển thị tín hữu"
 
 #: 
 msgid "Distance"
@@ -1237,10 +1190,6 @@ msgstr "Kinh độ"
 #: 
 msgid "Add to Cart"
 msgstr "Thêm vào giỏ"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Giao với giỏ"
 
 #: 
 msgid "Remove from Cart"
@@ -1419,10 +1368,6 @@ msgstr "Email cho tất cả"
 #: 
 msgid "Family Roles"
 msgstr "Vai trò Gia đình"
-
-#: 
-msgid "Family Geographic"
-msgstr "Trợ giúp địa lý"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -2179,14 +2124,6 @@ msgstr "Các mặt hàng được tặng"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Các mặt hàng đã mua"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Tổng tất cả các giao dịch mua: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Tổng số lần mua: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4281,26 +4218,8 @@ msgid "Profile Image uploaded"
 msgstr "Đã cập nhật hình ảnh đại diện"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Hiển thị tín hữu với các phân loại này"
-
-#: 
-msgid "Please select a Family."
-msgstr "Vui lòng lựa chọn gia đình."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Tên tệp cơ sở dữ liệu tọa độ"
-
-#: 
 msgid "select an option"
 msgstr "lựa chọn giá trị này"
-
-#: 
-msgid "Direct me"
-msgstr "Trực tiếp cho tôi"
 
 #: 
 msgid "Your cart is empty"
@@ -5133,14 +5052,6 @@ msgstr "Mọi người xác minh trang tổng quan"
 #: 
 msgid "Verification URL created"
 msgstr "URL xác minh đã được tạo"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -7349,10 +7260,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Bằng cách xóa trường này, bạn sẽ mất vĩnh viễn tất cả dữ liệu thành viên nhóm được gán cho trường này!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Bằng cách xóa quỹ này, bạn có thể ảnh hưởng đến các bản ghi quyên góp lịch sử!"
-
-#: 
 msgid "Category Name"
 msgstr "Tên Danh mục"
 
@@ -7405,10 +7312,6 @@ msgid "Filter by Class"
 msgstr "Lọc theo Lớp"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Quỹ đã được xóa thành công"
-
-#: 
 msgid "In Use"
 msgstr "Đang Sử dụng"
 
@@ -7455,10 +7358,6 @@ msgstr "Xóa số đếm điểm danh này?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Chọn loại bản ghi mà thuộc tính này áp dụng"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Tên quỹ đó đã tồn tại."
 
 #: 
 msgid "Total Pledges"
@@ -8540,10 +8439,6 @@ msgid "selected family has no coordinates"
 msgstr "gia đình đã chọn không có tọa độ"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Yêu cầu tất cả người dùng đăng ký xác thực hai yếu tố"
 
@@ -9341,10 +9236,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Mo rong ChurchCRM voi MailChimp, sao luu va nhieu hon nua"
 
 #: 
-msgid "FY %s"
-msgstr "Nam tai chinh %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Cac gia dinh dung chung dia chi va so dien thoai."
 
@@ -9427,10 +9318,6 @@ msgstr "Tao bao cao ve thanh vien nhom va hoat dong"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "Tao tai lieu bao cao thue cho nguoi dang hien"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "Tien ich dia ly"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10163,10 +10050,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Xem va quan ly cac khoan thanh toan phieu thu hien"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Xem va quan ly du lieu vi tri gia dinh"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Xem va quan ly tep nhat ky he thong de go loi"
 
@@ -10505,10 +10388,6 @@ msgstr "Thao tac nay se tai lai va ap dung lai phien ban hien tai. No co the sua
 #: 
 msgid "Total Check-ins"
 msgstr "Tong so dang ky vao"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Thu chon loai su kien hoac nam khac."
 
 #: 
 msgid "Up to Date"
@@ -12313,10 +12192,6 @@ msgid "Database dump only (.sql)"
 msgstr "Chỉ kết xuất cơ sở dữ liệu (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Phạm vi ngày không được vượt quá 1 năm"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Thao tác xóa dữ liệu"
 
@@ -12911,10 +12786,6 @@ msgstr "Không tìm thấy sứ vụ cho danh sách vai trò này"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Trạng thái không hoạt động chỉ có thể được bật/tắt cho danh sách phân loại"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Thành viên mới sẽ không nhận được email chào mừng kèm thông tin đăng nhập. Hãy chia sẻ mật khẩu với họ theo cách thủ công, hoặc cấu hình email trước."
 
 #: 
 msgid "Option name is required"
@@ -13621,7 +13492,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 phải là chuỗi hex 64 ký tự."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Nhóm duy trì ChurchCRM chưa xem xét tiện ích này. Bạn chịu trách nhiệm về bảo mật và hoạt động của bất kỳ thứ gì bạn cài đặt ở đây. Ưu tiên sử dụng quy trình Duyệt danh sách đã phê duyệt bất cứ khi nào có thể."
 
 #: 
@@ -14498,10 +14370,6 @@ msgid "Group removed from cart"
 msgstr "Đã xóa nhóm khỏi danh sách"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Cần có GroupID cho lời nhắc lựa chọn vai trò"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14879,20 +14747,8 @@ msgid "Please select a role."
 msgstr "Vui lòng chọn một chức vụ."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Vui lòng chọn cả nhóm và chức vụ."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Vui lòng chọn các hàng để xóa"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Vui lòng lựa chọn vai trò cho thành viên"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Vui lòng lựa chọn nhóm tế bào cho thành viên"
 
 #: 
 msgid "Please try again"
@@ -15787,24 +15643,12 @@ msgid "Account status"
 msgstr "Trạng thái tài khoản"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Nâng cao: chọn phiên bản đích cụ thể"
-
-#: 
 msgid "Bug Fix"
 msgstr "Sửa lỗi"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Theo mặc định, trình hướng dẫn tải xuống bản phát hành được đề xuất tiếp theo. Bạn có thể chọn bất kỳ phiên bản nào có sẵn bên dưới."
-
-#: 
 msgid "Change required"
 msgstr "Yêu cầu thay đổi"
-
-#: 
-msgid "Changelog"
-msgstr "Nhật ký thay đổi"
 
 #: 
 msgid "Continue Anyway"
@@ -15813,10 +15657,6 @@ msgstr "Tiếp tục dù sao"
 #: 
 msgid "Could not load release information."
 msgstr "Không thể tải thông tin bản phát hành."
-
-#: 
-msgid "Download & Install"
-msgstr "Tải xuống & Cài đặt"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15845,10 +15685,6 @@ msgstr "Nhật ký thay đổi đầy đủ"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Cài đặt phiên bản ổn định {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Đang cài đặt bản phát hành tiếp theo"
 
 #: 
 msgid "Invalid file path"
@@ -15919,10 +15755,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Hiển thị toàn bộ lộ trình nâng cấp"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Bản phát hành ổn định mới nhất là {{version}}. Bạn có thể cài đặt lại bên dưới."
 
@@ -15949,10 +15781,6 @@ msgstr "Xem ghi chú phát hành"
 #: 
 msgid "What's New"
 msgstr "Có gì mới"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Có gì mới trong {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16165,10 +15993,6 @@ msgid "Buyers Registered"
 msgstr "Người mua đã đăng ký"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Người mua trong năm nay"
-
-#: 
 msgid "Catalog"
 msgstr "Danh mục"
 
@@ -16317,10 +16141,6 @@ msgid "Items Donated"
 msgstr "Các mục được hiến tặng"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Các mục được hiến tặng (Năm nay)"
-
-#: 
 msgid "Items Sold"
 msgstr "Các mục đã bán"
 
@@ -16399,10 +16219,6 @@ msgstr "Cài đặt nhanh"
 #: 
 msgid "Raised"
 msgstr "Đã gây quỹ"
-
-#: 
-msgid "Raised This Year"
-msgstr "Đã gây quỹ năm nay"
 
 #: 
 msgid "Sample Amount"
@@ -16569,10 +16385,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Chức năng email hiện đang bị tắt. Các tính năng sau sẽ không hoạt động cho đến khi email được bật"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Giá trị ước tính $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Quy trình làm việc nhanh nhất"
 
@@ -16615,10 +16427,6 @@ msgstr "Phát triển cục bộ"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Tổng số tiền tối thiểu"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Giá đặt tối thiểu $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16921,10 +16729,6 @@ msgid "Working..."
 msgstr "Đang xử lý..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Bạn đang chậm {{releaseCount}} phiên bản. Đây là những gì bạn sẽ nhận được"
-
-#: 
 msgid "click to expand"
 msgstr "nhấp để mở rộng"
 
@@ -17137,10 +16941,6 @@ msgid "Deleted successfully"
 msgstr "Đã xóa thành công"
 
 #: 
-msgid "Deposit #"
-msgstr "Số Ký gửi #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Phiếu Ký gửi"
 
@@ -17181,20 +16981,12 @@ msgid "Failed to delete pledge"
 msgstr "Không thể xóa cam kết dâng"
 
 #: 
-msgid "Failed to encode payment response"
-msgstr "Không thể mã hóa phản hồi dâng hiến"
-
-#: 
 msgid "Failed to retrieve pledge"
 msgstr "Không thể truy xuất cam kết dâng"
 
 #: 
 msgid "Failed to update pledge"
 msgstr "Không thể cập nhật cam kết dâng"
-
-#: 
-msgid "Family is required"
-msgstr "Gia đình là bắt buộc"
 
 #: 
 msgid "Financial data"
@@ -17323,10 +17115,6 @@ msgstr "Lên kế hoạch hỗ trợ thời gian chạy"
 #: 
 msgid "Please enter a date"
 msgstr "Vui lòng nhập ngày"
-
-#: 
-msgid "Please select a family"
-msgstr "Vui lòng chọn một gia đình"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17545,6 +17333,11 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Email chưa được cấu hình. Vui lòng cấu hình cài đặt SMTP trong Cài đặt hệ thống."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Đã gửi email đến %d gia đình."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Vui lòng nhập địa chỉ đường phố trước."
 
@@ -17593,6 +17386,10 @@ msgid "Manage Events"
 msgstr "Quản lý sự kiện"
 
 #: 
+msgid "N/A"
+msgstr "Không áp dụng"
+
+#: 
 msgid "New Deposit"
 msgstr "Khoản nộp mới"
 
@@ -17611,6 +17408,11 @@ msgstr "Không tìm thấy khoản thanh toán nào cho các khoản nộp đã 
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Không có mã khoản nộp hợp lệ nào được cung cấp"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "Đã gửi email PDF thành công đến %d gia đình."
 
 #: 
 msgid "Partial Send"
@@ -17715,4 +17517,351 @@ msgstr "hàng đã chọn"
 #: 
 msgid "rows selected"
 msgstr "hàng đã chọn"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Sinh nhật & Ngày kỷ niệm"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Giá trị ước tính %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Giá đặt tối thiểu %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Những người có sinh nhật hoặc ngày kỷ niệm hôn nhân trong một tháng cụ thể"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Tháng bạn muốn tra cứu sinh nhật và ngày kỷ niệm."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Tháng kỷ niệm hôn nhân bạn muốn tra cứu hồ sơ."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Tổng tất cả giao dịch mua: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Tổng giao dịch mua: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Ngày kỷ niệm hôn nhân"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Những người có ngày kỷ niệm hôn nhân trong một tháng cụ thể"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Đã xảy ra lỗi. Vui lòng thử lại."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Bạn có chắc muốn xóa quỹ này không?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Không thể xóa: quỹ có các cam kết dâng hiến liên quan"
+
+#: 
+msgid "Delete Fund"
+msgstr "Xóa Quỹ"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Hướng phải là 'up' hoặc 'down'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Chỉnh sửa Quỹ Dâng hiến"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Không thể sắp xếp lại quỹ dâng hiến"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Đã thêm quỹ thành công."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Đã xóa quỹ thành công."
+
+#: 
+msgid "Fund name"
+msgstr "Tên quỹ"
+
+#: 
+msgid "Fund name is required."
+msgstr "Tên quỹ là bắt buộc."
+
+#: 
+msgid "Fund order updated."
+msgstr "Đã cập nhật thứ tự quỹ."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Đã lưu quỹ thành công."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Chưa có quỹ nào được thêm. Hãy sử dụng biểu mẫu bên trên để thêm quỹ đầu tiên."
+
+#: 
+msgid "Optional description"
+msgstr "Mô tả tùy chọn"
+
+#: 
+msgid "Private Calendar"
+msgstr "Lịch Riêng tư"
+
+#: 
+msgid "Public Calendar"
+msgstr "Lịch Công khai"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Nâng cao: Cài đặt một phiên bản cụ thể thay thế"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Theo mặc định, trình hướng dẫn nâng cấp lên phiên bản mới nhất. Bạn có thể chọn một phiên bản cụ thể bên dưới thay thế."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Không thể chỉnh sửa khoản thanh toán trong một đợt nộp đã đóng"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Tải xuống & Áp dụng {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Mỗi bản phát hành ChurchCRM đều bao gồm các bản vá bảo mật. Chúng tôi khuyến nghị luôn nâng cấp lên phiên bản mới nhất."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Không thể giải mã yêu cầu thanh toán"
+
+#: 
+msgid "Full release notes"
+msgstr "Ghi chú phát hành đầy đủ"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Dữ liệu thanh toán không hợp lệ"
+
+#: 
+msgid "No release notes available."
+msgstr "Không có ghi chú phát hành nào."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Cảnh báo: {{chosen}} thiếu các bản vá bảo mật có trong {{latest}}. Chỉ tiếp tục nếu bạn có lý do cụ thể."
+
+#: 
+msgid "What you'll gain"
+msgstr "Những gì bạn sẽ nhận được"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Không thể lấy số lượng tiền gửi"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Kỷ niệm: %s"
+
+#: 
+msgid "Church"
+msgstr "Nhà thờ"
+
+#: 
+msgid "Classifications"
+msgstr "Phân loại"
+
+#: 
+msgid "Closest"
+msgstr "Gần nhất"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Tiền gửi #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Không lấy được số lượng sự kiện gây quỹ"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Không tải được danh sách hàng xóm."
+
+#: 
+msgid "Farther"
+msgstr "Xa hơn"
+
+#: 
+msgid "Farthest"
+msgstr "Xa nhất"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Tìm hàng xóm"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Tìm các gia đình lân cận và thêm vào giỏ hàng"
+
+#: 
+msgid "Map centered on"
+msgstr "Bản đồ tập trung vào"
+
+#: 
+msgid "Max distance"
+msgstr "Khoảng cách tối đa"
+
+#: 
+msgid "Max neighbors"
+msgstr "Số hàng xóm tối đa"
+
+#: 
+msgid "Near"
+msgstr "Gần"
+
+#: 
+msgid "Please select a family."
+msgstr "Vui lòng chọn một gia đình."
+
+#: 
+msgid "Results"
+msgstr "Kết quả"
+
+#: 
+msgid "Same location"
+msgstr "Cùng vị trí"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Tìm kiếm hàng xóm"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Chọn một gia đình và nhấp vào Tìm hàng xóm để xem kết quả."
+
+#: 
+msgid "Selected family"
+msgstr "Gia đình được chọn"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Giá trị này phải là tên trường hợp lệ."
+
+#: 
+msgid "Could not load data"
+msgstr "Không thể tải dữ liệu"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Vui lòng làm mới trang hoặc thử lại sau."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Trước tiên hãy thêm các bản ghi liên quan."
+
+#: 
+msgid "All Months"
+msgstr "Tất cả các tháng"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Chưa có tùy chọn \"%s\" nào được xác định."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Không tìm thấy sự kiện nào cho %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Hãy thử chọn loại sự kiện, tháng hoặc năm khác."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Đã xảy ra lỗi định vị địa lý — vui lòng thử lại sau"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Địa chỉ không đầy đủ (thiếu thành phố, tỉnh/bang và mã ZIP)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Tất cả các gia đình đều đã có tọa độ."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Không thể cập nhật tọa độ"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Không thể cập nhật tọa độ gia đình"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Đã định vị địa lý cho tất cả {{geocoded}} gia đình. Bản đồ hiện đã được cập nhật."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Đã định vị địa lý cho {{geocoded}} gia đình. {{failed}} không thể xác định được — xem chi tiết bên dưới."
+
+#: 
+msgid "Geocoding…"
+msgstr "Đang định vị địa lý…"
+
+#: 
+msgid "No address on file"
+msgstr "Không có địa chỉ được lưu"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Không tìm thấy kết quả phù hợp — hãy kiểm tra địa chỉ đường, thành phố và mã ZIP"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Mở một gia đình để sửa địa chỉ, sau đó chạy lại thao tác này."
+
+#: 
+msgid "Set up now"
+msgstr "Thiết lập ngay"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Yêu cầu xác thực hai yếu tố. Bạn có %d ngày để đăng ký."
+
+#: 
+msgid "Unknown family"
+msgstr "Gia đình không xác định"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Cập nhật tất cả tọa độ"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Cập nhật tất cả tọa độ gia đình"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Cập nhật tọa độ"
 

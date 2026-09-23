@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -42,6 +43,7 @@ $statusClasses = [
                 <label for="fyid" class="fw-bold"><?= gettext('Fiscal Year') ?></label>
                 <form method="GET" class="d-inline">
                     <select name="fyid" id="fyid" class="form-select d-inline-block" style="width: auto;">
+                        <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
                         <?php foreach ($availableYears as $year): ?>
                             <option value="<?= (int) $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
                                 <?= InputUtils::escapeHTML($year['label']) ?>
@@ -60,8 +62,8 @@ $statusClasses = [
                 <i class="fa-solid fa-arrow-left me-1"></i>
                 <?= gettext('Back to Pledge Dashboard') ?>
             </a>
-            <?php if (\ChurchCRM\Authentication\AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-            <a href="<?= $sRootPathEsc ?>/DonationFundEditor.php" class="btn btn-outline-secondary">
+            <?php if (\ChurchCRM\Authentication\AuthenticationManager::getCurrentUser()->isFinanceEnabled()): ?>
+            <a href="<?= $sRootPathEsc ?>/finance/funds" class="btn btn-outline-secondary">
                 <i class="fa-solid fa-cog me-1"></i>
                 <?= gettext('Manage Funds') ?>
             </a>
@@ -167,7 +169,7 @@ $statusClasses = [
             <div class="card-header py-2">
                 <h3 class="card-title">
                     <i class="fa-solid fa-users me-1"></i>
-                    <?= gettext('Contributors') ?> &mdash; <?= InputUtils::escapeHTML(FinancialService::formatFiscalYear($selectedFyid)) ?>
+                    <?= gettext('Contributors') ?> &mdash; <?= InputUtils::escapeHTML(FiscalYearUtils::formatFiscalYearLabel($selectedFyid)) ?>
                 </h3>
             </div>
             <div style="overflow: visible;">
@@ -228,12 +230,12 @@ $statusClasses = [
                                         <button class="btn btn-sm btn-ghost-secondary" type="button"
                                                 data-bs-toggle="dropdown" data-bs-display="static"
                                                 aria-expanded="false">
-                                            <i class="ti ti-dots-vertical"></i>
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a class="dropdown-item contributor-view-link"
                                                href="<?= $sRootPathEsc ?>/finance/pledge/<?= urlencode($groupKey) ?>">
-                                                <i class="ti ti-eye me-2"></i><?= $contributor['status'] === 'payment-only' ? gettext('View Payment') : gettext('View Pledge') ?>
+                                                <i class="fa-solid fa-eye me-2"></i><?= $contributor['status'] === 'payment-only' ? gettext('View Payment') : gettext('View Pledge') ?>
                                             </a>
                                         </div>
                                     </div>

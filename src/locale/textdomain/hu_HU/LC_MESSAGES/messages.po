@@ -561,16 +561,8 @@ msgid "Picture URL"
 msgstr "Kép URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Adomány Alap szerkesztő"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Érvénytelen mező vagy kiválasztást. Változtatások nem lettek elmentve! Kérjük, javítsa ki és próbálja újra!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Semmiféle pénzeszközt adtak még"
 
 #: 
 msgid "Active"
@@ -1170,48 +1162,9 @@ msgid "Minimum Price"
 msgstr "Minimum ár"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Family Geographic Utilities"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Válassza Család"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maximális száma szomszédok"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maximális távolság"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Adat formátum"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Beleértve a családok koordináta fájlban"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Szomszéd családok"
-
-#: 
-msgid "Make Data File"
-msgstr "Gyártó Data File"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Megjelenítés Szomszédok"
 
 #: 
 msgid "Distance"
@@ -1232,10 +1185,6 @@ msgstr "Hosszúság"
 #: 
 msgid "Add to Cart"
 msgstr "A kosárban"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Metszet kosár"
 
 #: 
 msgid "Remove from Cart"
@@ -1420,10 +1369,6 @@ msgstr "E-mail mindenkinek"
 #: 
 msgid "Family Roles"
 msgstr "Családi szerepkörök"
-
-#: 
-msgid "Family Geographic"
-msgstr "Családi földrajzi adatok"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -2203,14 +2148,6 @@ msgstr "Adományozott tárgyak"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Vásárolt elemek"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Összesen vásárlások: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Beszerzése összesen: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4304,24 +4241,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilkép feltöltve"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Szomszédok mutatása ezekkel a besorolásokkal"
-
-#: 
-msgid "Please select a Family."
-msgstr "Kérjük, válasszon egy családot."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Koordináta adatbázis fájlneve"
-
-#: 
 msgid "select an option"
 msgstr "válasszon egy opciót"
-
-#: 
-msgid "Direct me"
-msgstr "Irányítson"
 
 #: 
 msgid "Your cart is empty"
@@ -5155,14 +5076,6 @@ msgstr "Emberek ellenőrzés irányítópultja"
 #: 
 msgid "Verification URL created"
 msgstr "Ellenőrzés URL létrehozva"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -7376,10 +7289,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "A mező törlésével visszavonhatatlanul elveszíti az ehhez a mezőhöz rendelt összes csoporttag adatot!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Az alap törlésével befolyásolhatja a korábbi adományrekordokat!"
-
-#: 
 msgid "Category Name"
 msgstr "Kategória Neve"
 
@@ -7432,10 +7341,6 @@ msgid "Filter by Class"
 msgstr "Szűrés Osztály szerint"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Alap sikeresen törölve"
-
-#: 
 msgid "In Use"
 msgstr "Használatban"
 
@@ -7482,10 +7387,6 @@ msgstr "Eltávolítja ezt a jelenléti számot?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Válassza ki a rekord típusát, amelyre ez a tulajdonság vonatkozik"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Ez az alap név már létezik."
 
 #: 
 msgid "Total Pledges"
@@ -8569,10 +8470,6 @@ msgid "selected family has no coordinates"
 msgstr "A kiválasztott családnak nincs koordinátája"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kötelezze az összes felhasználót a kétfaktoros hitelesítés aktiválására"
 
@@ -9371,10 +9268,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "A ChurchCRM bővítése MailChimp-pel, biztonsági mentésekkel és egyebekkel"
 
 #: 
-msgid "FY %s"
-msgstr "Pénzügyi év %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "A családok közös címmel és telefonszámmal rendelkeznek."
 
@@ -9457,10 +9350,6 @@ msgstr "Csoporttagsági és tevékenységi jelentések készítése"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "Adóigazolások készítése adományozók számára"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "Földrajzi segédeszközök"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10193,10 +10082,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Letéti bizonylatok befizetéseinek megtekintése és kezelése"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Családi helyadatok megtekintése és kezelése"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Rendszernaplófájlok megtekintése és kezelése hibakereséshez"
 
@@ -10535,10 +10420,6 @@ msgstr "Ez újra letölti és alkalmazza a jelenlegi verziót. Javíthatja a sé
 #: 
 msgid "Total Check-ins"
 msgstr "Összes bejelentkezés"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Próbáljon másik eseménytípust vagy évet választani."
 
 #: 
 msgid "Up to Date"
@@ -12344,10 +12225,6 @@ msgid "Database dump only (.sql)"
 msgstr "Csak adatbázis-mentés (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "A dátumtartomány nem haladhatja meg az 1 évet"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Visszafordíthatatlan művelet"
 
@@ -12942,10 +12819,6 @@ msgstr "A csoport nem található ehhez a szerepkörlistához"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Az inaktív állapot csak a besorolások listájánál kapcsolható át"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Az új felhasználók nem kapnak üdvözlő e-mailt a hitelesítő adataikkal. Ossza meg velük a jelszót manuálisan, vagy először konfigurálja az e-mailt."
 
 #: 
 msgid "Option name is required"
@@ -13652,7 +13525,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "A SHA-256 egy 64 karakteres hexadecimális karakterlánc kell legyen."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "A ChurchCRM karbantartói nem ellenőrizték. Ön felelős az itt telepített szoftverek biztonságáért és viselkedéséért. Ha lehetséges, részesítse előnyben a Jóváhagyottak böngészése folyamatot."
 
 #: 
@@ -14529,10 +14403,6 @@ msgid "Group removed from cart"
 msgstr "Csoport eltávolítva a kosárból"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "Csoportazonosító (GroupID) szükséges a szerepkörválasztáshoz"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML URL"
 
@@ -14910,20 +14780,8 @@ msgid "Please select a role."
 msgstr "Kérjük, válasszon szerepkört."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Kérjük, válasszon csoportot és szerepkört is."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Kérjük, válasszon az sorokból törléshez"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Kérjük, válassza ki a tagok cél szerepkörét"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Kérjük, válassza ki a tagok célcsoportját"
 
 #: 
 msgid "Please try again"
@@ -15819,24 +15677,12 @@ msgid "Account status"
 msgstr "Fiók állapota"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Speciális: válasszon egy konkrét célverziót"
-
-#: 
 msgid "Bug Fix"
 msgstr "Hibajavítás"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Alapértelmezés szerint a varázsló a következő ajánlott kiadást tölti le. Ehelyett az alábbi elérhető verziók közül is választhat."
-
-#: 
 msgid "Change required"
 msgstr "Változtatás szükséges"
-
-#: 
-msgid "Changelog"
-msgstr "Változásnapló"
 
 #: 
 msgid "Continue Anyway"
@@ -15845,10 +15691,6 @@ msgstr "Folytatás mindenképpen"
 #: 
 msgid "Could not load release information."
 msgstr "Nem sikerült betölteni a kiadási információkat."
-
-#: 
-msgid "Download & Install"
-msgstr "Letöltés és telepítés"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15877,10 +15719,6 @@ msgstr "Teljes változásnapló"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Stabil {{version}} telepítése"
-
-#: 
-msgid "Installing next release"
-msgstr "A következő kiadás telepítése"
 
 #: 
 msgid "Invalid file path"
@@ -15951,10 +15789,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Teljes frissítési útvonal megjelenítése"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "A legújabb stabil kiadás a {{version}}. Alább újratelepítheti."
 
@@ -15981,10 +15815,6 @@ msgstr "Kiadási megjegyzések megtekintése"
 #: 
 msgid "What's New"
 msgstr "Újdonságok"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Újdonságok a {{version}} verzióban"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16199,10 +16029,6 @@ msgid "Buyers Registered"
 msgstr "Regisztrált vevők"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Vevők ebben az évben"
-
-#: 
 msgid "Catalog"
 msgstr "Katalógus"
 
@@ -16351,10 +16177,6 @@ msgid "Items Donated"
 msgstr "Adományozott tételek"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Adományozott tételek (ebben az évben)"
-
-#: 
 msgid "Items Sold"
 msgstr "Eladott tételek"
 
@@ -16433,10 +16255,6 @@ msgstr "Gyors előbeállítások"
 #: 
 msgid "Raised"
 msgstr "Összegyűjtve"
-
-#: 
-msgid "Raised This Year"
-msgstr "Ebben az évben összegyűjtve"
 
 #: 
 msgid "Sample Amount"
@@ -16603,10 +16421,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "Az e-mail funkció jelenleg le van tiltva. A következő funkciók nem működnek, amíg az e-mail nincs engedélyezve"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Becsült érték: $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Leggyorsabb munkafolyamat"
 
@@ -16649,10 +16463,6 @@ msgstr "Helyi fejlesztés"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minimális összeg"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimális ajánlat: $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16955,10 +16765,6 @@ msgid "Working..."
 msgstr "Folyamatban..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "{{releaseCount}} kiadással le van maradva. Íme, amit nyerni fog"
-
-#: 
 msgid "click to expand"
 msgstr "kattintson a kibontáshoz"
 
@@ -17171,10 +16977,6 @@ msgid "Deleted successfully"
 msgstr "Sikeresen törölve"
 
 #: 
-msgid "Deposit #"
-msgstr "Befizetés #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Befizetési bizonylat"
 
@@ -17215,20 +17017,12 @@ msgid "Failed to delete pledge"
 msgstr "A fogadalom törlése sikertelen"
 
 #: 
-msgid "Failed to encode payment response"
-msgstr "Az adomány-válasz kódolása sikertelen"
-
-#: 
 msgid "Failed to retrieve pledge"
 msgstr "A fogadalom lekérése sikertelen"
 
 #: 
 msgid "Failed to update pledge"
 msgstr "A fogadalom frissítése sikertelen"
-
-#: 
-msgid "Family is required"
-msgstr "A család megadása kötelező"
 
 #: 
 msgid "Financial data"
@@ -17357,10 +17151,6 @@ msgstr "Futásidei támogatás tervezése"
 #: 
 msgid "Please enter a date"
 msgstr "Kérjük, adjon meg egy dátumot"
-
-#: 
-msgid "Please select a family"
-msgstr "Kérjük, válasszon egy családot"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17579,6 +17369,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Az e-mail nincs konfigurálva. Kerjuk, konfigurálja az SMTP-beallitasokat a Rendszerbeallitasokban."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-mail elküldve %d családnak."
+msgstr[1] "E-mail elküldve %d családnak."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Eloszor adjon meg egy utcacimet."
 
@@ -17645,6 +17441,12 @@ msgstr "Nem talalhatok kifizetesek a kivalasztott befizetesekhez"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nem adtak meg ervenyes befizetes azonositokat"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "A PDF sikeresen elküldve %d családnak."
+msgstr[1] "A PDF sikeresen elküldve %d családnak."
 
 #: 
 msgid "Partial Send"
@@ -17749,4 +17551,346 @@ msgstr "sor kijolve"
 #: 
 msgid "rows selected"
 msgstr "sor kijolve"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Születésnapok és évfordulók"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Becsült érték: %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Minimális licit: %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Adott hónapban születésnapot vagy házassági évfordulót ünneplő személyek"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Az a hónap, amelyre a születésnapokat és évfordulókat le kívánja kérdezni."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Az a hónap, amelyre a házassági évfordulókat le kívánja kérdezni."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Összes vásárlás összege: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Összes vásárlás: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Házassági évfordulók"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Adott hónapban házassági évfordulót ünneplő személyek"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Hiba történt. Kérjük, próbálja újra."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Biztosan törölni szeretné ezt az alapot?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Nem törölhető: az alaphoz adományígéretek tartoznak"
+
+#: 
+msgid "Delete Fund"
+msgstr "Alap törlése"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Az irány csak 'fel' vagy 'le' lehet."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Adományalap szerkesztése"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Az adományalap átrendezése sikertelen"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Az alap sikeresen hozzáadva."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Az alap sikeresen törölve."
+
+#: 
+msgid "Fund name"
+msgstr "Alap neve"
+
+#: 
+msgid "Fund name is required."
+msgstr "Az alap neve kötelező."
+
+#: 
+msgid "Fund order updated."
+msgstr "Az alapok sorrendje frissítve."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Az alap sikeresen mentve."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Még nem lett alap hozzáadva. Használja a fenti űrlapot az első alap hozzáadásához."
+
+#: 
+msgid "Optional description"
+msgstr "Opcionális leírás"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privát naptár"
+
+#: 
+msgid "Public Calendar"
+msgstr "Nyilvános naptár"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Speciális: Adott verzió telepítése"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Alapértelmezés szerint a varázsló a legújabb verzióra frissít. Ehelyett alább egy adott verziót is kiválaszthat."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Lezárt betétben lévő befizetés nem szerkeszthető"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "{{version}} letöltése és alkalmazása"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Minden ChurchCRM kiadás tartalmaz biztonsági javításokat. Erősen ajánljuk, hogy mindig a legújabb verzióra frissítsen."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "A fizetési kérelem dekódolása sikertelen"
+
+#: 
+msgid "Full release notes"
+msgstr "Teljes kiadási megjegyzések"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Érvénytelen fizetési adatok"
+
+#: 
+msgid "No release notes available."
+msgstr "Nem áll rendelkezésre kiadási megjegyzés."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Figyelmeztetés: a {{chosen}} verzióból hiányoznak a {{latest}} verzióban szereplő biztonsági javítások. Csak akkor folytassa, ha erre konkrét oka van."
+
+#: 
+msgid "What you'll gain"
+msgstr "Mit nyer ezzel"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Nem sikerült lekérni a befizetések számát"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Évforduló: %s"
+
+#: 
+msgid "Church"
+msgstr "Gyülekezet"
+
+#: 
+msgid "Classifications"
+msgstr "Besorolások"
+
+#: 
+msgid "Closest"
+msgstr "Legközelebb"
+
+#: 
+msgid "Deposit #%d"
+msgstr "%d. sz. befizetés"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Nem sikerült lekérni a gyűjtések számát"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Nem sikerült betölteni a szomszédokat."
+
+#: 
+msgid "Farther"
+msgstr "Távolabb"
+
+#: 
+msgid "Farthest"
+msgstr "Legtávolabb"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Szomszédok keresése"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Közeli családok keresése és hozzáadása a kosárhoz"
+
+#: 
+msgid "Map centered on"
+msgstr "Térkép középpontja:"
+
+#: 
+msgid "Max distance"
+msgstr "Maximális távolság"
+
+#: 
+msgid "Max neighbors"
+msgstr "Szomszédok maximuma"
+
+#: 
+msgid "Near"
+msgstr "Közel"
+
+#: 
+msgid "Please select a family."
+msgstr "Kérjük, válasszon egy családot."
+
+#: 
+msgid "Results"
+msgstr "Eredmények"
+
+#: 
+msgid "Same location"
+msgstr "Azonos helyszín"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Szomszédok keresése"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Válasszon egy családot, majd kattintson a Szomszédok keresése gombra az eredmények megtekintéséhez."
+
+#: 
+msgid "Selected family"
+msgstr "Kiválasztott család"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Ennek az értéknek érvényes mezőnévnek kell lennie."
+
+#: 
+msgid "Could not load data"
+msgstr "Az adatok nem tölthetők be"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Kérjük, frissítse az oldalt, vagy próbálja meg később."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Először adja hozzá a kapcsolódó rekordokat."
+
+#: 
+msgid "All Months"
+msgstr "Minden hónap"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Még nem lettek megadva \"%s\" lehetőségek."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Nem találhatók események ehhez: %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Próbáljon más eseménytípust, hónapot vagy évet választani."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Geokódolási hiba történt — próbálja újra később"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "A cím hiányos (hiányzik a város, a megye/állam és az irányítószám)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Minden családnak már vannak koordinátái."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Nem sikerült frissíteni a koordinátákat"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Nem sikerült frissíteni a család koordinátáit"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Mind a(z) {{geocoded}} család geokódolása megtörtént. A térkép most már naprakész."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} család geokódolása megtörtént. {{failed}} nem volt feloldható — lásd a részleteket lent."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokódolás…"
+
+#: 
+msgid "No address on file"
+msgstr "Nincs rögzített cím"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nem található egyezés — ellenőrizze az utca címét, a várost és az irányítószámot"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Nyissa meg a családot a cím javításához, majd futtassa újra ezt."
+
+#: 
+msgid "Set up now"
+msgstr "Beállítás most"
+
+#: 
+msgid "Unknown family"
+msgstr "Ismeretlen család"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Összes koordináta frissítése"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Összes családi koordináta frissítése"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Koordináták frissítése"
 

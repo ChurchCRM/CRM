@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Exceptions\DonationFundNotFoundException;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
@@ -75,12 +76,13 @@ class DonationFundService
     /**
      * Create a new donation fund.
      *
-     * @param string $name Fund name (max 30 chars)
-     * @param string $desc Fund description (max 100 chars)
+     * @param string $name   Fund name (max 30 chars)
+     * @param string $desc   Fund description (max 100 chars)
+     * @param bool   $active Whether the fund is active (default true)
      * @return DonationFund The newly created fund
      * @throws \InvalidArgumentException if name is empty or already exists
      */
-    public function createFund(string $name, string $desc): DonationFund
+    public function createFund(string $name, string $desc, bool $active = true): DonationFund
     {
         $name = InputUtils::sanitizeText($name);
         if (strlen($name) === 0) {
@@ -100,6 +102,7 @@ class DonationFundService
         $fund = new DonationFund();
         $fund->setName($name);
         $fund->setDescription(InputUtils::sanitizeText($desc));
+        $fund->setActive($active ? 'true' : 'false');
         $fund->setOrder($nextOrder);
         $fund->save();
 
@@ -120,13 +123,18 @@ class DonationFundService
     {
         $fund = DonationFundQuery::create()->findOneById($id);
         if ($fund === null) {
-            throw new \InvalidArgumentException("Donation fund with ID {$id} not found.");
+            throw new DonationFundNotFoundException("Donation fund with ID {$id} not found.");
         }
 
         if (array_key_exists('name', $data)) {
             $name = InputUtils::sanitizeText((string) $data['name']);
             if (strlen($name) === 0) {
                 throw new \InvalidArgumentException('Fund name cannot be empty.');
+            }
+            // Reject rename to a name already used by another fund
+            $existing = DonationFundQuery::create()->findOneByName($name);
+            if ($existing !== null && (int) $existing->getId() !== $id) {
+                throw new \InvalidArgumentException("A fund named '{$name}' already exists.");
             }
             $fund->setName($name);
         }
@@ -155,7 +163,7 @@ class DonationFundService
     {
         $fund = DonationFundQuery::create()->findOneById($id);
         if ($fund === null) {
-            throw new \InvalidArgumentException("Donation fund with ID {$id} not found.");
+            throw new DonationFundNotFoundException("Donation fund with ID {$id} not found.");
         }
 
         $pledgeCount = PledgeQuery::create()->filterByFundId($id)->count();
@@ -192,7 +200,7 @@ class DonationFundService
 
         $fund = DonationFundQuery::create()->findOneById($id);
         if ($fund === null) {
-            throw new \InvalidArgumentException("Donation fund with ID {$id} not found.");
+            throw new DonationFundNotFoundException("Donation fund with ID {$id} not found.");
         }
 
         $currentOrder = $fund->getOrder();

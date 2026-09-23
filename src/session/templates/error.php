@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext("Password Reset Error");
 $sBodyClass = 'page-auth page-login';
@@ -16,7 +17,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
         <div class="login-header-logo">
           <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" />
         </div>
-        <h2 class="login-header-church-name"><?= ChurchMetaData::getChurchName() ?></h2>
+        <h2 class="login-header-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
         <p class="login-header-tagline"><?= gettext('Account Recovery') ?></p>
       </div>
 
@@ -40,10 +41,10 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
       <!-- Action Buttons -->
       <div class="alert-buttons">
         <a href="<?= SystemURLs::getRootPath() ?>/session/forgot-password/reset-request" class="btn btn-primary">
-          <i class="fa-solid fa-refresh me-2"></i><?= gettext('Request Password Reset') ?>
+          <i class="fa-solid fa-rotate me-2"></i><?= gettext('Request Password Reset') ?>
         </a>
         <a href="<?= SystemURLs::getRootPath() ?>/session/begin" class="btn btn-secondary">
-          <i class="fa-solid fa-sign-in me-2"></i><?= gettext('Back to Login') ?>
+          <i class="fa-solid fa-arrow-right-to-bracket me-2"></i><?= gettext('Back to Login') ?>
         </a>
       </div>
     </div>

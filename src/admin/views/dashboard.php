@@ -128,6 +128,35 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
     </div>
     <?php endif; ?>
 
+    <?php if (!empty($timerJobsStale)): ?>
+    <!-- Scheduled tasks (timer jobs) have not run recently — issue #9724 -->
+    <div class="alert alert-warning" role="alert" id="timer-jobs-stale-warning">
+        <div class="d-flex align-items-start">
+            <div class="me-3">
+                <i class="fa-solid fa-clock-rotate-left fa-2x"></i>
+            </div>
+            <div class="flex-grow-1">
+                <h4 class="alert-heading mb-2"><?= gettext('Scheduled tasks are not running') ?></h4>
+                <p class="mb-2">
+                    <?php if (empty($timerJobsLastRun)): ?>
+                        <?= gettext('Background jobs (birthday emails and every plugin scheduled task) have never run on this installation.') ?>
+                    <?php else: ?>
+                        <?= sprintf(gettext('Background jobs (birthday emails and every plugin scheduled task) last ran on %s.'), InputUtils::escapeHTML($timerJobsLastRun)) ?>
+                    <?php endif; ?>
+                    <?= sprintf(ngettext('They are expected at least once every %d hour.', 'They are expected at least once every %d hours.', (int) $timerJobsStaleHours), (int) $timerJobsStaleHours) ?>
+                </p>
+                <p class="mb-2">
+                    <?= gettext('Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as') ?>:
+                </p>
+                <pre class="mb-2"><code id="timer-jobs-cron-command">0 * * * * <?= InputUtils::escapeHTML($timerJobsCronCommand ?? '') ?></code></pre>
+                <p class="mb-0 small text-muted">
+                    <?= sprintf(gettext('The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it.'), 'iTimerJobsStaleHours') ?>
+                </p>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <?php if ($showTelemetryPrompt): ?>
     <!-- Telemetry consent card -->
     <div class="card mb-4 border-info" id="telemetry-consent-card">
@@ -135,7 +164,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
         <div class="card-body">
             <div class="d-flex align-items-start gap-3">
                 <div class="pt-1">
-                    <i class="ti ti-chart-bar fs-2 text-info"></i>
+                    <i class="fa-solid fa-chart-bar fs-2 text-info"></i>
                 </div>
                 <div class="flex-grow-1">
                     <h5 class="mb-1"><?= gettext('Help improve ChurchCRM') ?></h5>
@@ -147,10 +176,10 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     </p>
                     <div class="d-flex gap-2 flex-wrap">
                         <button type="button" class="btn btn-info js-telemetry-consent" data-level="full">
-                            <i class="ti ti-check me-1"></i><?= gettext('Enable (full)') ?>
+                            <i class="fa-solid fa-check me-1"></i><?= gettext('Enable (full)') ?>
                         </button>
                         <button type="button" class="btn btn-ghost-info js-telemetry-consent" data-level="errors">
-                            <i class="ti ti-alert-circle me-1"></i><?= gettext('Errors only') ?>
+                            <i class="fa-solid fa-circle-exclamation me-1"></i><?= gettext('Errors only') ?>
                         </button>
                         <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="none">
                             <?= gettext('No thanks') ?>
@@ -376,7 +405,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i><?= gettext('Register Now') ?>
                     </a>
-                    <p class="small text-body-secondary mt-3 mb-0"><i class="fa-solid fa-shield-alt"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
+                    <p class="small text-body-secondary mt-3 mb-0"><i class="fa-solid fa-shield-halved"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
                 </div>
             </div>
 
@@ -415,7 +444,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                 <div class="card-status-top <?= $healthStatus ? 'bg-success' : 'bg-warning' ?>"></div>
                 <div class="card-header py-2">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-heartbeat"></i> <?= gettext('System Health') ?>
+                        <i class="fa-solid fa-heart-pulse"></i> <?= gettext('System Health') ?>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -424,7 +453,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                         <?php if ($integrityPassed): ?>
                             <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php else: ?>
-                            <span class="badge bg-danger-lt text-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
+                            <span class="badge bg-danger-lt text-danger"><i class="fa-solid fa-xmark"></i> <?= gettext('Failed') ?></span>
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2">

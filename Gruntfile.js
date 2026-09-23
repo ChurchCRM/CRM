@@ -9,13 +9,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: ["node_modules/fullcalendar/index.global.min.js"],
-                        dest: "src/skin/external/fullcalendar/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         src: ["node_modules/moment/min/moment.min.js"],
                         dest: "src/skin/external/moment/",
                     },
@@ -161,17 +154,6 @@ module.exports = function (grunt) {
                         cwd: "node_modules/bootstrap-datepicker/dist",
                         src: ["locales/*.js", "locales/*.min.js"],
                         dest: "src/locale/vendor/bootstrap-datepicker/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        cwd: "node_modules/@fullcalendar/core",
-                        src: ["locales/*.global.min.js"],
-                        dest: "src/locale/vendor/fullcalendar/",
-                        rename: function (dest, src) {
-                            return dest + src.replace(/\.global\.min\.js$/, ".js");
-                        },
                     },
                 ],
             },

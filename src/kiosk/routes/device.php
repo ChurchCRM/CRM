@@ -54,7 +54,7 @@ function getAdultFamilyMembers(Person $person): array
     $today = DateTimeUtils::getToday();
     $members = [];
 
-    foreach ($family->getPeople() as $member) {
+    foreach ($family->getLivingPeople() as $member) {
         if ((int) $member->getId() === (int) $person->getId()) {
             continue; // Exclude the person themselves
         }
@@ -83,7 +83,7 @@ function getAdultFamilyMembers(Person $person): array
         } else {
             // No complete birth date: fall back to role-based adult check
             // (Head/Spouse roles — same criterion as Family::getAdults()).
-            // Preserves existing behaviour for members with no recorded DOB.
+            // Preserves existing behavior for members with no recorded DOB.
             if (!in_array((int) $member->getId(), $roleBasedAdultIds, true)) {
                 continue;
             }

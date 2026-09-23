@@ -583,16 +583,8 @@ msgid "Picture URL"
 msgstr "Bilde URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "Donasjon Fund Editor"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ugyldige felt eller valg. Endringer ikke lagret! Rett opp og prøv igjen!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "Ingen midler har blitt lagt til ennå"
 
 #: 
 msgid "Active"
@@ -1201,48 +1193,9 @@ msgid "Minimum Price"
 msgstr "Maksimal avstand"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Familie Geographic Utilities"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Velg Familie:"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maksimalt antall naboer"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maksimal avstand"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Data filformat"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Inkludere familier i koordinatsystem fil"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Nabo Familier"
-
-#: 
-msgid "Make Data File"
-msgstr "Gjør datafil"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Vis Naboer"
 
 #: 
 msgid "Distance"
@@ -1263,10 +1216,6 @@ msgstr "Lengde"
 #: 
 msgid "Add to Cart"
 msgstr "Legg til handlevogn"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Snitt med Cart"
 
 #: 
 msgid "Remove from Cart"
@@ -1457,10 +1406,6 @@ msgstr "Send Epost til Alle"
 #: 
 msgid "Family Roles"
 msgstr "Familie Rolle"
-
-#: 
-msgid "Family Geographic"
-msgstr "Familie geografi"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -2251,14 +2196,6 @@ msgstr "Donert elementer"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "Kjøpte elementer"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Summen av alle kjøpene: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Totalt kjøp: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4353,24 +4290,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilbilde lastet opp"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Vis naboer med disse klassifiseringene"
-
-#: 
-msgid "Please select a Family."
-msgstr "Vennligst velg en familie."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Filnavn for koordinatdatabase"
-
-#: 
 msgid "select an option"
 msgstr "velg et alternativ"
-
-#: 
-msgid "Direct me"
-msgstr "Led meg"
 
 #: 
 msgid "Your cart is empty"
@@ -5199,14 +5120,6 @@ msgstr "Oversikt for personverifisering"
 #: 
 msgid "Verification URL created"
 msgstr "Verifiserings-URL opprettet"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -7420,10 +7333,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "Ved å slette dette feltet vil du ugjenkallelig miste alle gruppemedlemsdata tildelt dette feltet!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "Ved å slette dette fondet kan du påvirke historiske donasjonsregistre!"
-
-#: 
 msgid "Category Name"
 msgstr "Kategorinavn"
 
@@ -7476,10 +7385,6 @@ msgid "Filter by Class"
 msgstr "Filtrer etter Klasse"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "Fondet ble slettet"
-
-#: 
 msgid "In Use"
 msgstr "I Bruk"
 
@@ -7526,10 +7431,6 @@ msgstr "Fjerne denne oppmøtetellingen?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "Velg posttypen denne egenskapen gjelder for"
-
-#: 
-msgid "That fund name already exists."
-msgstr "Det fondnavnet eksisterer allerede."
 
 #: 
 msgid "Total Pledges"
@@ -8613,10 +8514,6 @@ msgid "selected family has no coordinates"
 msgstr "valgt familie har ingen koordinater"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Krev at alle brukere registrerer seg for tofaktorautentisering"
 
@@ -9415,10 +9312,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Utvid ChurchCRM med MailChimp, sikkerhetskopier og mer"
 
 #: 
-msgid "FY %s"
-msgstr "Regnskapsår %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Familier deler adresse og telefonnummer."
 
@@ -9501,10 +9394,6 @@ msgstr "Generer rapporter om gruppemedlemskap og aktiviteter"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "Generer skatteoppgaver for givere"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "Geografiske verktøy"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10237,10 +10126,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Vis og administrer kollektinnskuddsbetalinger"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Vis og administrer familiens stedsdata"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Vis og administrer systemloggfiler for feilsøking"
 
@@ -10579,10 +10464,6 @@ msgstr "Dette vil laste ned og bruke gjeldende versjon på nytt. Det kan reparer
 #: 
 msgid "Total Check-ins"
 msgstr "Totalt antall oppmøteregistreringer"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Prøv å velge en annen arrangementstype eller et annet år."
 
 #: 
 msgid "Up to Date"
@@ -12388,10 +12269,6 @@ msgid "Database dump only (.sql)"
 msgstr "Kun databasedump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Datoperioden kan ikke overskride 1 år"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destruktiv operasjon"
 
@@ -12986,10 +12863,6 @@ msgstr "Gruppe ikke funnet for denne rollelisten"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Inaktiv status kan bare endres for klassifiseringslisten"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Nye brukere vil ikke motta en velkomst-e-post med legitimasjon. Del passordet med dem manuelt, eller konfigurer e-post først."
 
 #: 
 msgid "Option name is required"
@@ -13696,7 +13569,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 må være en 64-tegns heksadesimal streng."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM-vedlikeholderne har ikke gjennomgått det. Du er ansvarlig for sikkerheten og oppførselen til alt du installerer her. Foretrekk prosessen Bla gjennom godkjente når det er mulig."
 
 #: 
@@ -14573,10 +14447,6 @@ msgid "Group removed from cart"
 msgstr "Gruppe fjernet fra handlekurven"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "GroupID kreves for valg av rolle"
-
-#: 
 msgid "HTML URL"
 msgstr "HTML-URL"
 
@@ -14954,20 +14824,8 @@ msgid "Please select a role."
 msgstr "Vennligst velg en rolle."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "Vennligst velg både en gruppe og en rolle."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "Vennligst velg rader som skal slettes"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "Vennligst velg målrolle for medlemmer"
-
-#: 
-msgid "Please select target group for members"
-msgstr "Velg målgruppe for Medlemmer"
 
 #: 
 msgid "Please try again"
@@ -15863,24 +15721,12 @@ msgid "Account status"
 msgstr "Kontostatus"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "Avansert: velg en bestemt målversjon"
-
-#: 
 msgid "Bug Fix"
 msgstr "Feilretting"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "Som standard laster veiviseren ned neste anbefalte versjon. Du kan i stedet velge en tilgjengelig versjon nedenfor."
-
-#: 
 msgid "Change required"
 msgstr "Endring påkrevd"
-
-#: 
-msgid "Changelog"
-msgstr "Endringslogg"
 
 #: 
 msgid "Continue Anyway"
@@ -15889,10 +15735,6 @@ msgstr "Fortsett likevel"
 #: 
 msgid "Could not load release information."
 msgstr "Kunne ikke laste inn versjonsinformasjon."
-
-#: 
-msgid "Download & Install"
-msgstr "Last ned og installer"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15921,10 +15763,6 @@ msgstr "Fullstendig endringslogg"
 #: 
 msgid "Install stable {{version}}"
 msgstr "Installer stabil {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "Installerer neste versjon"
 
 #: 
 msgid "Invalid file path"
@@ -15995,10 +15833,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "Vis fullstendig oppgraderingsbane"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "Den nyeste stabile versjonen er {{version}}. Du kan installere den på nytt nedenfor."
 
@@ -16025,10 +15859,6 @@ msgstr "Vis versjonsmerknader"
 #: 
 msgid "What's New"
 msgstr "Hva er nytt"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "Hva er nytt i {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16243,10 +16073,6 @@ msgid "Buyers Registered"
 msgstr "Registrerte kjøpere"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Kjøpere dette året"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16395,10 +16221,6 @@ msgid "Items Donated"
 msgstr "Donerte gjenstander"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Donerte gjenstander (i år)"
-
-#: 
 msgid "Items Sold"
 msgstr "Solgte gjenstander"
 
@@ -16477,10 +16299,6 @@ msgstr "Hurtigforhåndsinnstillinger"
 #: 
 msgid "Raised"
 msgstr "Samlet inn"
-
-#: 
-msgid "Raised This Year"
-msgstr "Samlet inn i år"
 
 #: 
 msgid "Sample Amount"
@@ -16647,10 +16465,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "E-postfunksjonalitet er for øyeblikket deaktivert. Følgende funksjoner vil ikke fungere før e-post er aktivert"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "Anslått verdi $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "Raskeste arbeidsflyt"
 
@@ -16693,10 +16507,6 @@ msgstr "Lokal utvikling"
 #: 
 msgid "Minimum Total Amount"
 msgstr "Minste totale beløp"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "Minimumsbud $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16999,10 +16809,6 @@ msgid "Working..."
 msgstr "Arbeider..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "Du er {{releaseCount}} versjoner etter. Her er hva du vil få"
-
-#: 
 msgid "click to expand"
 msgstr "klikk for å utvide"
 
@@ -17211,10 +17017,6 @@ msgid "Deleted successfully"
 msgstr "Slettet"
 
 #: 
-msgid "Deposit #"
-msgstr "Innskuddsnr."
-
-#: 
 msgid "Deposit Slip"
 msgstr "Innskuddskvittering"
 
@@ -17255,20 +17057,12 @@ msgid "Failed to delete pledge"
 msgstr "Kunne ikke slette løfte"
 
 #: 
-msgid "Failed to encode payment response"
-msgstr "Kunne ikke kode betalingsrespons"
-
-#: 
 msgid "Failed to retrieve pledge"
 msgstr "Kunne ikke hente løfte"
 
 #: 
 msgid "Failed to update pledge"
 msgstr "Kunne ikke oppdatere løfte"
-
-#: 
-msgid "Family is required"
-msgstr "Familie er påkrevd"
 
 #: 
 msgid "Financial data"
@@ -17397,10 +17191,6 @@ msgstr "Planlegg kjøretidsstøtte"
 #: 
 msgid "Please enter a date"
 msgstr "Vennligst angi en dato"
-
-#: 
-msgid "Please select a family"
-msgstr "Vennligst velg en familie"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17663,6 +17453,10 @@ msgid "Manage Events"
 msgstr "Administrer arrangementer"
 
 #: 
+msgid "N/A"
+msgstr "Ikke tilgjengelig"
+
+#: 
 msgid "New Deposit"
 msgstr "Ny innbetaling"
 
@@ -17785,4 +17579,346 @@ msgstr "rad valgt"
 #: 
 msgid "rows selected"
 msgstr "rader valgt"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "Fødselsdager og jubileer"
+
+#: 
+msgid "Estimated value %s."
+msgstr "Estimert verdi %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "Minimumsanbud %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "Personer med fødselsdager eller bryllupsjubileer i en bestemt måned"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "Måneden du ønsker å hente fødselsdager og jubileer for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "Bryllupsjubileumsmåneden du ønsker å hente poster for."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "Totalt for alle kjøp: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "Totale kjøp: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "Bryllupsjubileer"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "Personer med bryllupsjubileer i en bestemt måned"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "Det oppstod en feil. Prøv igjen."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Er du sikker på at du vil slette dette fondet?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "Kan ikke slette: fondet har tilknyttede løfter"
+
+#: 
+msgid "Delete Fund"
+msgstr "Slett fond"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "Retning må være 'opp' eller 'ned'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "Rediger gavefond"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "Kunne ikke endre rekkefølge på gavefondet"
+
+#: 
+msgid "Fund added successfully."
+msgstr "Fondet ble lagt til."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "Fondet ble slettet."
+
+#: 
+msgid "Fund name"
+msgstr "Fondsnavn"
+
+#: 
+msgid "Fund name is required."
+msgstr "Fondsnavn er påkrevd."
+
+#: 
+msgid "Fund order updated."
+msgstr "Fondrekkefølge oppdatert."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "Fondet ble lagret."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "Ingen fond er lagt til ennå. Bruk skjemaet ovenfor for å legge til det første fondet."
+
+#: 
+msgid "Optional description"
+msgstr "Valgfri beskrivelse"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privat kalender"
+
+#: 
+msgid "Public Calendar"
+msgstr "Offentlig kalender"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "Avansert: Installer en bestemt versjon i stedet"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "Som standard oppgraderer veiviseren til den nyeste versjonen. Du kan i stedet velge en bestemt versjon nedenfor."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "Kan ikke redigere en betaling i et lukket innskudd"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "Last ned og bruk {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "Hver ChurchCRM-utgivelse inkluderer sikkerhetsfikser. Vi anbefaler sterkt å alltid oppgradere til den nyeste versjonen."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "Kunne ikke dekode betalingsforespørsel"
+
+#: 
+msgid "Full release notes"
+msgstr "Fullstendige utgivelsesnotater"
+
+#: 
+msgid "Invalid payment data"
+msgstr "Ugyldige betalingsdata"
+
+#: 
+msgid "No release notes available."
+msgstr "Ingen utgivelsesnotater tilgjengelig."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "Advarsel: {{chosen}} mangler sikkerhetsfikser som er inkludert i {{latest}}. Fortsett bare hvis du har en spesifikk grunn."
+
+#: 
+msgid "What you'll gain"
+msgstr "Hva du vil oppnå"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "Kunne ikke hente antall innskudd"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Jubileum: %s"
+
+#: 
+msgid "Church"
+msgstr "Menighet"
+
+#: 
+msgid "Classifications"
+msgstr "Klassifiseringer"
+
+#: 
+msgid "Closest"
+msgstr "Nærmest"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Innskudd nr. %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Kunne ikke hente antall innsamlingsaksjoner"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Kunne ikke laste inn naboer."
+
+#: 
+msgid "Farther"
+msgstr "Lenger unna"
+
+#: 
+msgid "Farthest"
+msgstr "Lengst unna"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Finn naboer"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Finn familier i nærheten og legg dem til i handlekurven"
+
+#: 
+msgid "Map centered on"
+msgstr "Kart sentrert på"
+
+#: 
+msgid "Max distance"
+msgstr "Maksimal avstand"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maksimalt antall naboer"
+
+#: 
+msgid "Near"
+msgstr "Nær"
+
+#: 
+msgid "Please select a family."
+msgstr "Velg en familie."
+
+#: 
+msgid "Results"
+msgstr "Resultater"
+
+#: 
+msgid "Same location"
+msgstr "Samme sted"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Søk etter naboer"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Velg en familie og klikk på Finn naboer for å se resultatene."
+
+#: 
+msgid "Selected family"
+msgstr "Valgt familie"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Denne verdien må være et gyldig feltnavn."
+
+#: 
+msgid "Could not load data"
+msgstr "Kunne ikke laste inn data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Oppdater siden eller prøv igjen senere."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Legg til de relevante postene først."
+
+#: 
+msgid "All Months"
+msgstr "Alle måneder"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Ingen \"%s\"-alternativer er definert ennå."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Ingen hendelser funnet for %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Prøv å velge en annen hendelsestype, måned eller år."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Det oppstod en geokodingsfeil — prøv igjen senere"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adressen er ufullstendig (mangler by, fylke og postnummer)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alle familier har allerede koordinater."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Kunne ikke oppdatere koordinater"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Kunne ikke oppdatere familiekoordinater"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodet alle {{geocoded}} familier. Kartet er nå oppdatert."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodet {{geocoded}} familier. {{failed}} kunne ikke løses — se detaljer nedenfor."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokoder …"
+
+#: 
+msgid "No address on file"
+msgstr "Ingen adresse registrert"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Ingen treff funnet — sjekk gateadresse, by og postnummer"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Åpne en familie for å rette adressen, og kjør deretter dette igjen."
+
+#: 
+msgid "Set up now"
+msgstr "Sett opp nå"
+
+#: 
+msgid "Unknown family"
+msgstr "Ukjent familie"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Oppdater alle koordinater"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Oppdater alle familiekoordinater"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Oppdater koordinater"
 

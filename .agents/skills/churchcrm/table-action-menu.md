@@ -6,6 +6,12 @@ tags: ["frontend", "tabler", "tables", "dropdowns", "cart", "ux"]
 
 # Skill: Table Action Menu <!-- learned: 2026-03-23 -->
 
+> **This file is the single source of truth for row action menus** — the trigger markup,
+> the trigger icon, and the wrapper that stops the dropdown being clipped.
+> `responsive-design-guidelines.md`, `tabler-components.md` and `icon-management.md` defer
+> to it. If any of them disagrees, this file wins and the other one is the bug.
+> <!-- learned: 2026-09-11 -->
+
 ## Rule
 
 Every table row that has per-row actions **must** use the standard Tabler action dropdown. No exceptions. This applies to PHP templates and JS-rendered DataTables columns alike.
@@ -19,15 +25,15 @@ Every table row that has per-row actions **must** use the standard Tabler action
     <div class="dropdown">
         <button class="btn btn-sm btn-ghost-secondary" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="ti ti-dots-vertical"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
         </button>
         <div class="dropdown-menu dropdown-menu-end">
             <a class="dropdown-item" href="Editor.php?ID=<?= $id ?>">
-                <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
             </a>
             <div class="dropdown-divider"></div>
             <button type="submit" class="dropdown-item text-danger">
-                <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
             </button>
         </div>
     </div>
@@ -40,7 +46,7 @@ Add `w-1` to the `<th>` / `<td>` so the column shrinks to fit the icon button an
 
 ## Shared JS Renderers (use these — do NOT duplicate inline) <!-- learned: 2026-03-24 -->
 
-`CRMJSOM.js` exposes two shared renderers on `window.CRM`. **Always use these** in DataTable `render:` functions instead of writing raw HTML strings.
+`CRMJSOM.js` exposes three shared renderers on `window.CRM`. **Always use these** in DataTable `render:` functions instead of writing raw HTML strings.
 
 ```javascript
 // Standard person action menu: View → Edit → [View Family?] → [divider] → Cart → [divider] → Delete
@@ -48,11 +54,29 @@ window.CRM.renderPersonActionMenu(personId, fullName, { familyId, inCart })
 
 // Standard family action menu: View → Edit → [divider] → Cart → [divider] → Delete
 window.CRM.renderFamilyActionMenu(familyId, familyName, { inCart })
+
+// Standard event action menu: View → Edit → Check-in → [divider] → Activate/Deactivate → [divider] → Delete
+window.CRM.renderEventActionMenu(eventId, eventTitle, { inactive })
 ```
+
+All three emit the canonical trigger verbatim
+(`src/skin/js/CRMJSOM.js:612-613`, `:683-684`, `:768-769`):
+
+```html
+<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+  <i class="fa-solid fa-ellipsis-vertical"></i>
+</button>
+```
+
+**`fa-ellipsis-vertical`, never `fa-ellipsis-v`.** Font Awesome 7.3.1 ships `.fa-ellipsis-v`
+as a backwards-compatibility alias so both render, but the codebase uses
+`fa-ellipsis-vertical` in all 37 places and hand-written markup must match the shared
+renderers.
 
 - `familyId` — optional; when provided, adds a "View Family" item after Edit
 - `inCart` — optional; flips cart button to RemoveFromCart state
 - The global `.delete-person` delegated handler is registered in `CRMJSOM.js` — **no per-page copy needed**
+- Any user-supplied string going into a `data-*` (or other) attribute must be encoded with `window.CRM.escapeAttribute()`, which encodes quotes as well; `window.CRM.escapeHtml()` is for HTML text context only <!-- learned: 2026-09-12 -->
 - These functions call `i18next.t()` at render time (safe: DataTables render after locales load)
 
 ```javascript
@@ -79,13 +103,13 @@ All person and family action menus must have these 4 items in this exact order:
 
 | # | Item | Condition |
 |---|------|-----------|
-| 1 | **View** (`ti ti-eye`) | Always |
-| 2 | **Edit** (`ti ti-pencil`) | Always |
-| 2b | **View Family** (`ti ti-users`) | Only if `familyId` is available |
+| 1 | **View** (`fa-solid fa-eye`) | Always |
+| 2 | **Edit** (`fa-solid fa-pencil`) | Always |
+| 2b | **View Family** (`fa-solid fa-users`) | Only if `familyId` is available |
 | — | `dropdown-divider` | Always |
 | 3 | **Cart** (Add/Remove, `.AddToCart` / `.RemoveFromCart`) | Always |
 | — | `dropdown-divider` | Always |
-| 4 | **Delete** (`ti ti-trash`, `text-danger`) | Always |
+| 4 | **Delete** (`fa-solid fa-trash`, `text-danger`) | Always |
 
 For persons, Delete uses a `.delete-person` button with `data-person_id` + `data-person_name` — handled globally by `CRMJSOM.js`.
 For families, Delete links to `SelectDelete.php?FamilyID={id}`.
@@ -97,12 +121,12 @@ For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 | Rule | ✅ Correct | ❌ Wrong |
 |------|-----------|---------|
 | Trigger class | `btn-ghost-secondary` | `btn-outline-secondary`, `btn-secondary` |
-| Trigger icon | `ti ti-dots-vertical` | `fa-solid fa-ellipsis-v`, `fa-ellipsis-v` |
+| Trigger icon | `fa-solid fa-ellipsis-vertical` | `fa-solid fa-ellipsis-v`, `fa-ellipsis-v` |
 | Menu alignment | `dropdown-menu-end` | `dropdown-menu-right` |
 | Aria attribute | `aria-expanded="false"` only | `aria-haspopup="true"` |
 | Inline styles | none | `style="z-index:..."`, `style="position:..."` |
 | stopPropagation | never | `onclick="event.stopPropagation()"` |
-| Icon spacing | `ti ti-pencil me-2` | icon only, no `me-2` |
+| Icon spacing | `fa-solid fa-pencil me-2` | icon only, no `me-2` |
 | Dividers | before destructive actions | none, or between every item |
 | Destructive items | `dropdown-item text-danger` | `dropdown-item btn-danger` |
 
@@ -136,7 +160,7 @@ codebase audit of three still-broken instances that already had it.
                         <button class="btn btn-sm btn-ghost-secondary"
                                 data-bs-toggle="dropdown"
                                 data-bs-display="static">
-                            <i class="ti ti-dots-vertical"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">...</div>
                     </div>
@@ -160,15 +184,30 @@ content to overflow the viewport. `overflow-x: clip` clips horizontal overflow (
 `scroll`, not `clip`. This preserves horizontal containment while letting the dropdown
 menu escape downward.
 
-**Reference implementations** (canonical per-wrapper pattern):
+**Reference implementations** (every `overflow-x: clip` wrapper in the tree):
 - `src/people/views/self-register.php:55` ← canonical reference
-- `src/event/views/list-events.php`
-- `src/groups/views/group-view.php`
-- `src/event/views/types-list.php`
-- `src/people/views/family-view.php:190, 264, 636`
+- `src/people/views/family-view.php:204, 283, 670`
 - `src/people/views/family-list.php:62`
-- `src/people/views/person-view.php:408`
-- `src/DepositSlipEditor.php:277`
+- `src/people/views/person-view.php:417`
+- `src/finance/views/funds/index.php:111`
+- `src/DepositSlipEditor.php:281`
+
+### The superseded form: `overflow: visible` <!-- learned: 2026-09-11 -->
+
+Before #9373/#9383 the documented wrapper was `<div style="overflow: visible;">`. It does
+stop the clipping, but it removes **all** overflow containment, so a wide table spills out
+of its card and pushes the page into horizontal scroll on a phone. Roughly 19 views still
+carry it — e.g. `src/event/views/list-events.php:196-197`,
+`src/groups/views/group-view.php:210`, `src/event/views/types-list.php:14`.
+
+Treat `overflow: visible` as **legacy, not wrong-and-broken**: do not churn a file just to
+convert it, but when you touch a table wrapper for any other reason, upgrade it to
+`overflow-x: clip; overflow-y: visible;`.
+
+```bash
+# Find the remaining ones
+grep -rn "overflow: visible" src/ --include="*.php"
+```
 
 ### Still required: `data-bs-display="static"` on each trigger
 
@@ -182,7 +221,7 @@ on its own, but still needed.
         data-bs-toggle="dropdown"
         data-bs-display="static"
         aria-expanded="false">
-    <i class="ti ti-dots-vertical"></i>
+    <i class="fa-solid fa-ellipsis-vertical"></i>
 </button>
 ```
 
@@ -202,12 +241,12 @@ When a row action toggles cart membership, use this pattern. It works with `cart
     data-cart-type="person"
     data-label-add="<?= gettext('Add to Cart') ?>"
     data-label-remove="<?= gettext('Remove from Cart') ?>">
-    <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+    <i class="<?= $inCart ? 'fa-solid fa-trash' : 'fa-solid fa-cart-shopping' ?> me-2"></i>
     <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
 </button>
 ```
 
-`cart.js::updateButtonState` detects `isDropdownItem` via `.hasClass("dropdown-item")` and swaps Tabler icons + `.cart-label` text accordingly. Never use `stopPropagation` — it silently breaks this delegation.
+`cart.js::updateButtonState` detects `isDropdownItem` via `.hasClass("dropdown-item")` and swaps Font Awesome icons + `.cart-label` text accordingly. Never use `stopPropagation` — it silently breaks this delegation.
 
 ---
 
@@ -219,18 +258,18 @@ When rows support reordering (move up / move down), show the divider **only when
 echo '<div class="dropdown-menu dropdown-menu-end">';
 if ($row !== 1) {
     echo '<a class="dropdown-item" href="Editor.php?act=up&row_num=' . $row . '">
-            <i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+            <i class="fa-solid fa-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
 }
 if ($row !== $numRows) {
     echo '<a class="dropdown-item" href="Editor.php?act=down&row_num=' . $row . '">
-            <i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+            <i class="fa-solid fa-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
 }
 // Only show divider when at least one move action is present
 if ($row !== 1 || $row !== $numRows) {
     echo '<div class="dropdown-divider"></div>';
 }
 echo '<a class="dropdown-item text-danger" href="Editor.php?act=delete&ID=' . $id . '">
-        <i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
+        <i class="fa-solid fa-trash me-2"></i>' . gettext('Delete') . '</a>';
 echo '</div>';
 ```
 
@@ -275,7 +314,7 @@ On the cart view (`/v2/cart`), every person is already in the cart, so the cart 
     data-cart-type="person"
     data-label-add="<?= gettext('Add to Cart') ?>"
     data-label-remove="<?= gettext('Remove from Cart') ?>">
-    <i class="ti ti-trash me-2"></i>
+    <i class="fa-solid fa-trash me-2"></i>
     <span class="cart-label"><?= gettext('Remove from Cart') ?></span>
 </button>
 ```
@@ -286,7 +325,7 @@ No Delete action is shown on the cart page — users can only remove from cart, 
 
 ## Checklist Before Committing Any Table Change
 
-- [ ] Trigger uses `btn-ghost-secondary` + `ti ti-dots-vertical`
+- [ ] Trigger uses `btn-ghost-secondary` + `fa-solid fa-ellipsis-vertical`
 - [ ] Menu uses `dropdown-menu-end` (not `dropdown-menu-right`)
 - [ ] No `aria-haspopup` attribute
 - [ ] No inline styles on trigger, menu, `<td>`, or `.dropdown`

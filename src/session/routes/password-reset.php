@@ -85,7 +85,7 @@ function forgotPassword(Request $request, Response $response, array $args): Resp
 function userPasswordReset(Request $request, Response $response, array $args)
 {
     $logger = LoggerUtils::getAppLogger();
-    $body = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
+    $body = json_decode($request->getBody(), null, 512);
     $userName = strtolower(trim($body->userName));
     if (empty($userName)) {
         throw new HttpBadRequestException($request, gettext('UserName not set'));

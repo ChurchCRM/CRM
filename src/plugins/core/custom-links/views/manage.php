@@ -39,7 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="invalid-feedback"><?= gettext('Please enter a link name (2-50 characters)') ?></div>
                     </div>
                     <div class="mb-3">
-                        <label for="LINK_URL"><?= gettext('URL') ?></label>
+                        <label for="LINK_URL">URL</label>
                         <input type="url" name="LINK_URL" id="LINK_URL" class="form-control"
                                aria-describedby="LINK_URL_HELP" required 
                                placeholder="https://example.com">
@@ -70,7 +70,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <thead>
                 <tr>
                     <th><?= gettext('Name') ?></th>
-                    <th><?= gettext('URL') ?></th>
+                    <th>URL</th>
                     <th class="no-export w-1"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>

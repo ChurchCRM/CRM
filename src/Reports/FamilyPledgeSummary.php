@@ -7,6 +7,7 @@ require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
@@ -322,11 +323,11 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
                 }
 
                 $pdf->writeAtCell($famNameX, $y, $famNameWid, $pdf->makeSalutation($fam_ID));
-                $pdf->writeAtCell($famPledgeX, $y, $famPledgeWid, $fundPledgeTotal[$fun_name]);
+                $pdf->writeAtCell($famPledgeX, $y, $famPledgeWid, CurrencyFormatter::format($fundPledgeTotal[$fun_name]));
                 $pdf->writeAtCell($famMethodX, $y, $famMethodWid, $fundPledgeMethod[$fun_name]);
                 $pdf->writeAtCell($famFundX, $y, $famFundWid, $fun_name);
-                $pdf->writeAtCell($famPayX, $y, $famPayWid, $fundPaymentTotal[$fun_name]);
-                $pdf->writeAtCell($famOweX, $y, $famOweWid, $amountDue);
+                $pdf->writeAtCell($famPayX, $y, $famPayWid, CurrencyFormatter::format($fundPaymentTotal[$fun_name]));
+                $pdf->writeAtCell($famOweX, $y, $famOweWid, CurrencyFormatter::format($amountDue));
                 $y += $lineInc;
                 if ($y > 250) {
                     $pdf->addPage();

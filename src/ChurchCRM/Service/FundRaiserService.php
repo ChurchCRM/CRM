@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Map\PaddleNumTableMap;
 use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
@@ -197,11 +198,11 @@ class FundRaiserService
     }
 
     /**
-     * Returns this-year aggregates for the landing-page stat widgets.
+     * Returns this-fiscal-year aggregates for the landing-page stat widgets.
      *
-     * "This year" means fundraisers whose fr_date falls in the current calendar year.
-     * Two-step approach: first fetch the IDs of this-year's fundraisers via FundRaiserQuery,
-     * then aggregate donated items and paddle numbers for those IDs — no raw SQL join needed.
+     * "This fiscal year" means fundraisers whose fr_date falls within the current fiscal year
+     * as determined by FiscalYearUtils (respects the iFYMonth system configuration).
+     * Previously used a calendar year (Jan 1–Dec 31); this was updated in issue #9378.
      *
      * @return array{activeCount:int, raisedThisYear:float, itemsThisYear:int, buyersThisYear:int}
      */
@@ -209,17 +210,15 @@ class FundRaiserService
     {
         $this->logger->debug('FundRaiserService::getWidgetStats');
 
-        $year = DateTimeUtils::getCurrentYear();
+        // Use fiscal year boundaries instead of calendar year
+        $fyDates   = FiscalYearUtils::getFiscalYearDatesById(FiscalYearUtils::getCurrentFiscalYearId());
+        $yearStart = $fyDates['startDate'];
+        $yearEnd   = $fyDates['endDate'];
 
-        // Active fundraisers count (Active + Planning)
-        $activeCount = FundRaiserQuery::create()
-            ->filterByStatus(['Active', 'Planning'])
-            ->count();
+        $activeCount = count($this->getActiveFundraiserCollection());
 
-        // This-year fundraiser IDs (step 1 of 2-step approach — no FK relations defined)
-        $yearStart = $year . '-01-01';
-        $yearEnd   = $year . '-12-31';
-        $yearIds   = FundRaiserQuery::create()
+        // This-fiscal-year fundraiser IDs (step 1 of 2-step approach)
+        $yearIds = FundRaiserQuery::create()
             ->filterByDate(['min' => $yearStart, 'max' => $yearEnd])
             ->select(['Id'])
             ->find()
@@ -230,8 +229,7 @@ class FundRaiserService
         $buyersThisYear = 0;
 
         if (!empty($yearIds)) {
-            // Item stats for this year's fundraisers
-            // "Raised" mirrors getViewModel(): sold items only (buyer > 0 AND sell > 0).
+            // Item stats for this fiscal year's fundraisers
             $itemRow = DonatedItemQuery::create()
                 ->filterByFrId($yearIds)
                 ->addAsColumn('items', 'COUNT(*)')
@@ -247,7 +245,7 @@ class FundRaiserService
             $raisedThisYear = (float) ($itemRow['raised'] ?? 0);
             $itemsThisYear  = (int)   ($itemRow['items']  ?? 0);
 
-            // Buyer count for this year's fundraisers
+            // Buyer count for this fiscal year's fundraisers
             $buyersThisYear = PaddleNumQuery::create()
                 ->filterByPnFrId($yearIds)
                 ->count();
@@ -262,18 +260,65 @@ class FundRaiserService
     }
 
     /**
-     * Returns the count of fundraisers in Active or Planning status.
+     * Returns the count of fundraisers not Closed AND not archived by end date.
      *
      * Used by the navigation menu counter. Callers are responsible for any
      * session-level caching (e.g. storing in $_SESSION['iFundraiserActiveCount']
      * and invalidating on state changes).
+     *
+     * Mirrors getWidgetStats() and fundraiser.php active/archived split logic
+     * so the sidebar badge matches the stat card and table.
      */
     public function getActiveFundraiserCount(): int
     {
         $this->logger->debug('FundRaiserService::getActiveFundraiserCount');
-        return FundRaiserQuery::create()
-            ->filterByStatus(['Active', 'Planning'])
-            ->count();
+        return count($this->getActiveFundraiserCollection());
+    }
+
+    /**
+     * Returns scalar rows for fundraisers that are not Closed AND not past their end date.
+     * Used by both getWidgetStats() and getActiveFundraiserCount() to avoid code duplication.
+     * Mirrors the active/archived split logic in fundraiser.php.
+     *
+     * Uses a DB-level status filter and column projection to avoid full ORM hydration —
+     * returns lightweight associative rows instead of hydrated FundRaiser objects.
+     *
+     * @return array<int, array{Id:string, Date:string|null, EndDate:string|null, Status:string|null}>
+     */
+    private function getActiveFundraiserCollection(): array
+    {
+        $todayDate = DateTimeUtils::getTodayDate();
+        $activeFundraisers = [];
+
+        // Filter Closed fundraisers at the DB level; project only the columns we need
+        // to avoid fully hydrating every row as a Propel object.
+        $candidates = FundRaiserQuery::create()
+            ->filterByStatus('Closed', \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+            ->_or()->filterByStatus(null)  // MySQL: NULL != 'Closed' is UNKNOWN, not TRUE — include NULL-status rows explicitly
+            ->select(['Id', 'Date', 'EndDate', 'Status'])
+            ->find();
+
+        foreach ($candidates as $row) {
+            $status  = $row['Status'] ?? 'Active';
+            $endDate = $row['EndDate'];
+
+            // Fundraisers with Active or Planning status and no explicit end date are
+            // open-ended — always count them as active. Falling back to the start date
+            // (Date) would silently archive such fundraisers the day after they started.
+            if ($endDate === null && in_array($status, ['Active', 'Planning'], true)) {
+                $activeFundraisers[] = $row;
+                continue;
+            }
+
+            $effectiveEnd = $endDate ?? $row['Date'];
+            if ($effectiveEnd !== null && $effectiveEnd < $todayDate) {
+                continue;
+            }
+
+            $activeFundraisers[] = $row;
+        }
+
+        return $activeFundraisers;
     }
 
     /**

@@ -16,7 +16,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
 
 <?php if (!empty($sErrorText)): ?>
 <div class="alert alert-danger alert-dismissible" role="alert">
-    <i class="ti ti-alert-circle me-2"></i><?= InputUtils::escapeHTML($sErrorText) ?>
+    <i class="fa-solid fa-circle-exclamation me-2"></i><?= InputUtils::escapeHTML($sErrorText) ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 </div>
 <?php endif; ?>
@@ -26,7 +26,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
     <i class="fa-solid fa-triangle-exclamation me-2 fs-3"></i>
     <div class="flex-grow-1">
         <strong><?= gettext('Email is disabled') ?></strong>
-        <div class="text-secondary"><?= gettext('New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first.') ?></div>
+        <div class="text-secondary"><?= gettext('New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first.') ?></div>
     </div>
     <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="btn btn-warning ms-3">
         <i class="fa-solid fa-envelope me-1"></i><?= gettext('Set up Email') ?>
@@ -64,7 +64,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
         <div class="row mb-3">
             <label class="col-sm-3 col-form-label" for="UserName"><?= gettext('Login Name') ?></label>
             <div class="col-sm-9">
-                <input type="text" name="UserName" id="UserName" value="<?= InputUtils::escapeAttribute($sUserName) ?>" class="form-control">
+                <input type="text" name="UserName" id="UserName" value="<?= InputUtils::escapeAttribute($sUserName) ?>" class="form-control" maxlength="50">
             </div>
         </div>
     </div>
@@ -76,14 +76,14 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
     </div>
     <div class="card-body">
         <div class="alert alert-info mb-3">
-            <i class="ti ti-info-circle me-2"></i><?= gettext('Changes will not take effect until next logon.') ?>
+            <i class="fa-solid fa-circle-info me-2"></i><?= gettext('Changes will not take effect until next logon.') ?>
         </div>
 
         <?php
         $accessModes = [
-            ['value' => 'admin', 'icon' => 'ti-shield-check', 'label' => gettext('Administrator'), 'desc' => gettext('Full access — grants all privileges.')],
-            ['value' => 'self',  'icon' => 'ti-user-check',   'label' => gettext('Self-service only'), 'desc' => gettext('Can only review and verify their own family. No other access.')],
-            ['value' => 'custom','icon' => 'ti-adjustments',  'label' => gettext('Custom'), 'desc' => gettext('Choose specific permissions below.')],
+            ['value' => 'admin', 'icon' => 'fa-user-shield',  'label' => gettext('Administrator'), 'desc' => gettext('Full access — grants all privileges.')],
+            ['value' => 'self',  'icon' => 'fa-user-check',   'label' => gettext('Self-service only'), 'desc' => gettext('Can only review and verify their own family. No other access.')],
+            ['value' => 'custom','icon' => 'fa-sliders',      'label' => gettext('Custom'), 'desc' => gettext('Choose specific permissions below.')],
         ];
         ?>
         <div class="mb-3">
@@ -94,7 +94,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
                     <input type="radio" name="accessMode" value="<?= $mode['value'] ?>" class="form-selectgroup-input"<?= $accessMode === $mode['value'] ? ' checked' : '' ?>>
                     <span class="form-selectgroup-label d-block text-start p-3">
                         <span class="d-flex align-items-center mb-1">
-                            <i class="ti <?= $mode['icon'] ?> me-2 text-primary fs-3"></i>
+                            <i class="fa-solid <?= $mode['icon'] ?> me-2 text-primary fs-3"></i>
                             <span class="fw-bold"><?= $mode['label'] ?></span>
                         </span>
                         <span class="d-block text-body-secondary small"><?= $mode['desc'] ?></span>
@@ -111,14 +111,14 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
         <!-- People & Families panel: shown only in Custom mode -->
         <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
             <div class="px-3 py-2 border-bottom bg-light">
-                <strong><i class="ti ti-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
+                <strong><i class="fa-solid fa-users me-2"></i><?= gettext('People &amp; Families') ?></strong>
                 <p class="text-body-secondary small mb-0 mt-1"><?= gettext('All users can view congregation members. This permission cannot be removed.') ?></p>
             </div>
             <div class="row align-items-center px-3 py-2">
                 <label class="col-sm-5 col-form-label text-body-secondary"><?= gettext('View') ?></label>
                 <div class="col-sm-7 d-flex align-items-center gap-2">
-                    <span class="badge bg-success-lt text-success"><i class="ti ti-eye me-1"></i><?= gettext('View') ?></span>
-                    <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-lock me-1"></i><?= gettext('Always granted') ?></span>
+                    <span class="badge bg-success-lt text-success"><i class="fa-solid fa-eye me-1"></i><?= gettext('View') ?></span>
+                    <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-lock me-1"></i><?= gettext('Always granted') ?></span>
                 </div>
             </div>
             <div class="row align-items-center border-top px-3 py-2 permission-row">
@@ -194,7 +194,7 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
     </div>
     <div class="card-body">
         <div class="alert alert-info mb-3">
-            <i class="ti ti-info-circle me-2"></i><?= gettext('Set Permission to True to allow this user to change the setting themselves.') ?>
+            <i class="fa-solid fa-circle-info me-2"></i><?= gettext('Set Permission to True to allow this user to change the setting themselves.') ?>
         </div>
         <div class="table-responsive">
             <table class="table table-hover align-middle">

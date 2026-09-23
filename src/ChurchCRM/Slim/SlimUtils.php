@@ -3,6 +3,7 @@ namespace ChurchCRM\Slim;
 
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\LoggerUtils;
 use Exception;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -87,7 +88,7 @@ class SlimUtils
             ];
             return $container->get('response')->withStatus(500)
                 ->withHeader('Content-Type', 'application/json')
-                ->write(json_encode($data, JSON_THROW_ON_ERROR));
+                ->write(json_encode($data));
         });
 
         // Not found handler: returns HTML 404
@@ -222,6 +223,11 @@ class SlimUtils
                 $returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
                 $returnText = gettext('Return to Dashboard');
                 $extraHtml = '';
+                // This handler never requires Header.php/Footer.php (it serves
+                // apps like session/index.php that can't safely assume an
+                // authenticated header renders), so the partial must supply
+                // its own <html>/<head>/CSS or the page renders unstyled.
+                $bStandalone = true;
 
                 ob_start();
                 // Include the shared error partial (path relative to src/ChurchCRM/Slim)
@@ -349,9 +355,9 @@ class SlimUtils
                     $nonce = SystemURLs::getCSPNonce();
                     $extraHtml = '<div class="mb-4"><details class="card card-outline border-secondary">'
                         . '<summary class="card-header cursor-pointer d-flex justify-content-between align-items-center">'
-                        . '<span><i class="ti ti-code"></i> ' . gettext('Technical Details') . ' (Development Mode)</span>'
+                        . '<span><i class="fa-solid fa-code"></i> ' . gettext('Technical Details') . ' (Development Mode)</span>'
                         . '<button type="button" class="btn btn-sm btn-outline-secondary copy-error-btn" style="border: none; padding: 0.25rem 0.5rem;" title="' . gettext('Copy error message') . '">'
-                        . '<i class="ti ti-copy"></i></button></summary>'
+                        . '<i class="fa-solid fa-copy"></i></button></summary>'
                         . '<div class="card-body"><pre class="mb-0"><code id="errorMessage">' . $escaped . '</code></pre></div>'
                         . '</details></div>'
                         . '<script nonce="' . $nonce . '">'
@@ -361,7 +367,7 @@ class SlimUtils
                         . 'navigator.clipboard.writeText(errorText).then(() => {'
                         . 'const btn = this;'
                         . 'const originalHTML = btn.innerHTML;'
-                        . 'btn.innerHTML = \'<i class="ti ti-check"></i>\';'
+                        . 'btn.innerHTML = \'<i class="fa-solid fa-check"></i>\';'
                         . 'setTimeout(() => {btn.innerHTML = originalHTML;}, 2000);'
                         . '}).catch(() => { /* clipboard unavailable — no-op */ });'
                         . '});'
@@ -396,7 +402,7 @@ class SlimUtils
      */
     public static function renderJSON(Response $response, array $obj, int $status = 200): Response
     {
-        return self::renderStringJSON($response, json_encode($obj, JSON_THROW_ON_ERROR), $status);
+        return self::renderStringJSON($response, json_encode($obj), $status);
     }
 
     /**
@@ -475,6 +481,56 @@ class SlimUtils
         }
 
         return $route->getArgument($name);
+    }
+
+    /**
+     * Whether PHP discarded this request's body because it was larger than the
+     * server accepts, which is the only case that justifies answering 413.
+     *
+     * PHP throws the *whole* body away when it exceeds the accepted size, so
+     * "nothing arrived at all" is the only honest signal: an empty parsed body,
+     * a raw body reporting size 0 (or unknown), and no raw bytes. A body that
+     * did arrive but is missing an expected field is a malformed request (400)
+     * no matter what its Content-Length claims — the limit here is
+     * `min(upload_max_filesize, post_max_size, memory_limit)`, which on a stock
+     * config is upload_max_filesize (2M) and sits far below post_max_size, so
+     * judging on the header alone turns every complete body over 2 MB into a
+     * misleading size error (issues #9719, #9771).
+     *
+     * Re-reading the body here is safe even though `BodyParsingMiddleware`
+     * already consumed it: slim/psr7's `ServerRequestFactory` wraps
+     * `php://input` in a `Stream` backed by a `php://temp` cache
+     * (`ServerRequestFactory::createFromGlobals()`), and `Stream::__toString()`
+     * replays that cache once the stream is finished, ahead of its
+     * `isSeekable()` branch. So `(string) $body` returns the original bytes
+     * for a body that arrived but could not be parsed — invalid JSON, or a
+     * content type with no registered parser — and only returns '' when
+     * nothing arrived at all. `getSize()` is null for `php://input`, which is
+     * why it cannot carry this check on its own.
+     *
+     * Residual, and not fixable from here: a short body sent with a huge,
+     * lying Content-Length truncates the request, PHP receives nothing, and
+     * that is indistinguishable from a body discarded for size.
+     */
+    public static function isBodyDiscardedForSize(Request $request): bool
+    {
+        if (!empty($request->getParsedBody())) {
+            return false;
+        }
+
+        $body = $request->getBody();
+        $bodySize = $body->getSize();
+        if ($bodySize !== null && $bodySize !== 0) {
+            return false;
+        }
+
+        if ((string) $body !== '') {
+            return false;
+        }
+
+        $contentLength = (int) ($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
+
+        return $contentLength > SystemService::getMaxUploadFileSize(false);
     }
 
     /**

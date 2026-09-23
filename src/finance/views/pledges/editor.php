@@ -84,9 +84,9 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
 
                 <!-- Family Selector -->
                 <div class="col-lg-6">
-                    <label class="form-label" for="FamilyName"><?= gettext('Family') ?> <span class="text-danger">*</span></label>
+                    <label class="form-label" for="FamilyName"><?= gettext('Family') ?></label>
                     <input type="hidden" id="FamilyID" name="FamilyID" value="<?= (int) $familyId ?>">
-                    <select class="form-select" id="FamilyName" name="FamilyName" required>
+                    <select class="form-select" id="FamilyName" name="FamilyName">
                         <?php if ($familyId && $familyName): ?>
                             <option value="<?= (int) $familyId ?>" selected><?= InputUtils::escapeHTML($familyName) ?></option>
                         <?php endif; ?>
@@ -138,7 +138,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                         <?php foreach ($openDeposits as $deposit): ?>
                             <option value="<?= (int) $deposit->getId() ?>"
                                 <?= ($deposit->getId() == $pledgeDepositId) ? 'selected' : '' ?>>
-                                <?= gettext('Deposit #') . (int) $deposit->getId() ?>
+                                <?= sprintf(gettext('Deposit #%d'), (int) $deposit->getId()) ?>
                                 (<?= InputUtils::escapeHTML($deposit->getDate('Y-m-d')) ?>
                                 - <?= InputUtils::escapeHTML($deposit->getType() ?? '') ?>)
                             </option>
@@ -228,7 +228,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                             <td>
                                 <button type="button" class="btn btn-sm btn-outline-danger remove-fund-row"
                                     title="<?= gettext('Remove') ?>">
-                                    <i class="fa-solid fa-trash-alt"></i>
+                                    <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
@@ -264,7 +264,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                             <td>
                                 <button type="button" class="btn btn-sm btn-outline-danger remove-fund-row"
                                     title="<?= gettext('Remove') ?>">
-                                    <i class="fa-solid fa-trash-alt"></i>
+                                    <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
@@ -301,7 +301,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             </a>
             <?php if ($isEdit): ?>
             <button type="button" class="btn btn-danger ms-auto" id="deletePledgeBtn">
-                <i class="fa-solid fa-trash-alt me-1"></i><?= gettext('Delete') ?>
+                <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete') ?>
             </button>
             <?php endif; ?>
         </div>
@@ -337,7 +337,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         <td>
             <button type="button" class="btn btn-sm btn-outline-danger remove-fund-row"
                 title="<?= gettext('Remove') ?>">
-                <i class="fa-solid fa-trash-alt"></i>
+                <i class="fa-solid fa-trash"></i>
             </button>
         </td>
     </tr>
@@ -351,7 +351,6 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
     const GROUP_KEY = <?= InputUtils::jsonEncodeForScript($groupKey) ?>;
     const PLEDGE_TYPE = <?= InputUtils::jsonEncodeForScript($type) ?>;
     const FY_MONTH    = <?= (int) SystemConfig::getIntValue('iFYMonth') ?>;
-    const DEPOSIT_ID  = <?= (int) $depositId ?>;
     const LINK_BACK_RAW = <?= InputUtils::jsonEncodeForScript($linkBack) ?>;
     const LINK_BACK_TARGET = <?= InputUtils::jsonEncodeForScript($linkBack !== '' ? $linkBackTarget : '') ?>;
 
@@ -481,10 +480,6 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         const schedEl  = document.getElementById('Schedule');
         const schedule = schedEl ? schedEl.value : 'Once';
 
-        if (!familyId) {
-            showToast(<?= InputUtils::jsonEncodeForScript(gettext('Please select a family')) ?>, true);
-            return null;
-        }
         if (!date) {
             showToast(<?= InputUtils::jsonEncodeForScript(gettext('Please enter a date')) ?>, true);
             return null;
@@ -539,7 +534,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         }
 
         return {
-            FamilyID:  familyId,
+            FamilyID:  familyId || null,
             Date:      date,
             FYID:      fyid,
             type:      PLEDGE_TYPE,
@@ -580,7 +575,9 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             if (redirectAfter === 'new') {
                 setTimeout(function () {
                     var newUrl = ROOT + '/finance/pledge/new?type=' + encodeURIComponent(PLEDGE_TYPE);
-                    if (DEPOSIT_ID) newUrl += '&depositId=' + encodeURIComponent(DEPOSIT_ID);
+                    var depEl = document.getElementById('DepositID');
+                    var currentDepId = depEl ? parseInt(depEl.value, 10) : 0;
+                    if (currentDepId) newUrl += '&depositId=' + encodeURIComponent(currentDepId);
                     if (LINK_BACK_RAW) newUrl += '&linkBack=' + encodeURIComponent(LINK_BACK_RAW);
                     window.location.href = newUrl;
                 }, 800);

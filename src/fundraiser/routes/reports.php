@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Reports\PdfCertificatesReport;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -181,7 +182,7 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
         $pdf->SetFont('Times', '', 16);
         $pdf->Write(8, stripslashes($di_description) . "\n");
         if ($di_estprice > 0) {
-            $pdf->Write(8, sprintf(gettext('Estimated value $%s.'), $di_estprice) . '  ');
+            $pdf->Write(8, ChurchInfoReport::convertToLatin1(sprintf(gettext('Estimated value %s.'), CurrencyFormatter::format($di_estprice))) . '  ');
         }
         if ($per_LastName !== '') {
             $pdf->Write(8, sprintf(gettext('Donated by %1$s %2$s.'), $per_FirstName, $per_LastName) . "\n");
@@ -201,7 +202,7 @@ $app->get('/{fundraiserId}/reports/bid-sheets', function (Request $request, Resp
         if ($di_minimum > 0) {
             $pdf->Cell($widName, $lineHeight, '', 1, 0);
             $pdf->Cell($widPaddle, $lineHeight, '', 1, 0);
-            $pdf->Cell($widBid, $lineHeight, '$' . $di_minimum, 1, 1);
+            $pdf->Cell($widBid, $lineHeight, CurrencyFormatter::formatForPdf($di_minimum), 1, 1);
         }
         for ($i = 0; $i < 20; $i++) {
             $pdf->Cell($widName, $lineHeight, '', 1, 0);
@@ -269,7 +270,7 @@ $app->get('/{fundraiserId}/reports/certificates', function (Request $request, Re
         $pdf->SetFont('Times', '', 16);
         $pdf->Write(8, stripslashes($di_description) . "\n");
         if ($di_estprice > 0) {
-            $pdf->Write(8, sprintf(gettext('Estimated value $%s.'), $di_estprice) . '  ');
+            $pdf->Write(8, ChurchInfoReport::convertToLatin1(sprintf(gettext('Estimated value %s.'), CurrencyFormatter::format($di_estprice))) . '  ');
         }
         if ($per_LastName !== '') {
             $pdf->Write(8, sprintf(gettext('Donated by %1$s %2$s.'), $per_FirstName, $per_LastName) . "\n\n");
@@ -355,10 +356,10 @@ $app->get('/{fundraiserId}/reports/catalog', function (Request $request, Respons
         $pdf->SetFont('Times', '', 12);
         $pdf->Write(6, stripslashes($di_description) . "\n");
         if ($di_minimum > 0) {
-            $pdf->Write(6, sprintf(gettext('Minimum bid $%s.'), $di_minimum) . '  ');
+            $pdf->Write(6, ChurchInfoReport::convertToLatin1(sprintf(gettext('Minimum bid %s.'), CurrencyFormatter::format($di_minimum))) . '  ');
         }
         if ($di_estprice > 0) {
-            $pdf->Write(6, sprintf(gettext('Estimated value $%s.'), $di_estprice) . '  ');
+            $pdf->Write(6, ChurchInfoReport::convertToLatin1(sprintf(gettext('Estimated value %s.'), CurrencyFormatter::format($di_estprice))) . '  ');
         }
         if ($per_LastName !== '') {
             $pdf->Write(6, sprintf(gettext('Donated by %1$s %2$s.'), $per_FirstName, $per_LastName) . "\n");
@@ -486,7 +487,7 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $DonorWid, $tableCellY, $buyerFirstName . ' ' . $buyerLastName, 0, 'L');
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $buyerPhone, 0, 'L');
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $buyerEmail, 0, 'L');
-                $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, $di_sellprice, 0, 'R');
+                $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, CurrencyFormatter::formatForPdf($di_sellprice), 0, 'R');
                 $curY  = $nextY;
             }
 
@@ -537,7 +538,7 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $DonorWid, $tableCellY, $donorFirstName . ' ' . $donorLastName, 0, 'L');
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
-                $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, '$' . $di_sellprice, 0, 'R');
+                $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, CurrencyFormatter::formatForPdf($di_sellprice), 0, 'R');
                 $curY  = $nextY;
                 $totalAmount += (float) $di_sellprice;
             }
@@ -585,18 +586,18 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $DonorWid, $tableCellY, $donorFirstName . ' ' . $donorLastName, 0, 'L');
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
                 $nextY = $pdf->cellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
-                $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, '$' . ($mb_count * $di_sellprice), 0, 'R');
+                $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, CurrencyFormatter::formatForPdf($mb_count * $di_sellprice), 0, 'R');
                 $curY  = $nextY;
                 $totalAmount += $mb_count * (float) $di_sellprice;
             }
 
-            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Total of all purchases: $') . $totalAmount);
+            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, sprintf(gettext('Total of all purchases: %s'), CurrencyFormatter::format($totalAmount)));
             $curY += 2 * SystemConfig::getValue('incrementY');
 
             $curY = 240;
             $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, '-----------------------------------------------------------------------------------------------------------------------------------------------');
             $curY += 2 * SystemConfig::getValue('incrementY');
-            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Buyer #') . ' ' . $pn_Num . ' : ' . $paddleFirstName . ' ' . $paddleLastName . ' : ' . gettext('Total purchases: $') . $totalAmount . ' : ' . gettext('Amount paid: ________________'));
+            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Buyer #') . ' ' . $pn_Num . ' : ' . $paddleFirstName . ' ' . $paddleLastName . ' : ' . sprintf(gettext('Total purchases: %s'), CurrencyFormatter::format($totalAmount)) . ' : ' . gettext('Amount paid: ________________'));
             $curY += 2 * SystemConfig::getValue('incrementY');
             $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __'));
             $curY += 2 * SystemConfig::getValue('incrementY');

@@ -15,7 +15,7 @@ if (empty($trackingId)) {
 
 // Use InputUtils for HTML attribute escaping, json_encode for JS string
 $trackingIdAttr = InputUtils::escapeAttribute($trackingId);
-$trackingIdJs = json_encode($trackingId, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT);
+$trackingIdJs = json_encode($trackingId, JSON_HEX_TAG);
 if ($trackingIdJs === false) {
     return; // Invalid tracking ID
 }

@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
 use PragmaRX\Google2FA\Google2FA;
@@ -56,7 +57,44 @@ class User extends BaseUser
     // The naming convention is `isXxxEnabled()` for all permissions,
     // regardless of which storage layer backs the raw flag.
     //
-    // See #8667, #8458 for the consolidation rationale.
+    // ── Two-tier storage architecture ───────────────────────────────
+    //
+    // Permissions are stored in two places:
+    //
+    //   TIER 1 — user_usr boolean columns (fast, indexed, ORM-generated getters):
+    //     usr_Admin, usr_EditSelf, usr_AddRecords, usr_EditRecords,
+    //     usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups,
+    //     usr_Finance, usr_ManageFundraisers, usr_Notes.
+    //     These are the "core" record permissions accessible via isXxx() getters
+    //     (e.g. isAddRecords(), isFinance()) or the corresponding isXxxEnabled()
+    //     helper that applies the admin bypass and the EditSelf-exclusive guard.
+    //
+    //   TIER 2 — userconfig_ucfg rows (per-user config table, name/value pairs):
+    //     bAddEvent    → isAddEventEnabled() / canManageEvents()
+    //     bEmailMailto → isEmailEnabled()
+    //     These are read via isEnabledSecurity('bXxx') which scans the user's
+    //     UserConfig collection. They appear in the UserEditor under the
+    //     Permissions card (AddEvent) or the User Config table (bEmailMailto).
+    //
+    // ── EditSelf-exclusive invariant ────────────────────────────────
+    //
+    // EditSelf is an exclusive mode. When isEditSelfExclusive() is true
+    // (non-admin + EditSelf=1), ALL module permissions — both Tier 1 and
+    // Tier 2 — evaluate to false, regardless of stored flags. This invariant
+    // is enforced at three layers:
+    //   1. DB write-time: UserService::normalizeAccessMode() (server) and
+    //      user-editor.js (client) zero all module perms before saving.
+    //   2. Read-time: every isXxxEnabled() method short-circuits on
+    //      isEditSelfExclusive() before checking the stored flag.
+    //   3. Entry gate: AuthMiddleware and PageInit redirect EditSelf-exclusive
+    //      users to /external/limited-access before any route runs.
+    //
+    // Zero-permission users (all flags 0, EditSelf=0) are NOT blocked at the
+    // entry gate — they retain read-only access under the read-default policy
+    // (#9003). Writes are denied by per-page/per-route role middleware.
+    //
+    // See #8667, #8458 for the consolidation rationale; #9003 for read-default;
+    // #9079 for the EditSelf-exclusive enforcement.
     // ─────────────────────────────────────────────────────────────────
 
     // -- Per-user permissions (backed by user_usr columns) --
@@ -191,65 +229,6 @@ class User extends BaseUser
     public static function isEventsEnabled(): bool
     {
         return SystemConfig::getBooleanValue('bEnabledEvents');
-    }
-
-    // -- Consolidated permission map for API/UI consumption --
-
-    /**
-     * Return a structured map of all permissions for this user.
-     * Useful for the user editor UI (/admin/system/users/{personId}/edit) and the user settings API.
-     * Every value reflects the effective permission (with admin bypass applied).
-     *
-     * @return array<string, bool>
-     */
-    public function getAllPermissions(): array
-    {
-        return [
-            // Core record permissions (user_usr columns)
-            'isAdmin'             => $this->isAdmin(),
-            'addRecords'          => $this->isAddRecordsEnabled(),
-            'editRecords'         => $this->isEditRecordsEnabled(),
-            'deleteRecords'       => $this->isDeleteRecordsEnabled(),
-            'menuOptions'         => $this->isMenuOptionsEnabled(),
-            'manageGroups'        => $this->isManageGroupsEnabled(),
-            'finance'             => $this->isFinanceEnabled(),
-            'manageFundraisers'   => $this->isManageFundraisersEnabled(),
-            'notes'               => $this->isNotesEnabled(),
-            'editSelf'            => $this->isEditSelfEnabled(),
-            // Module permissions (userconfig_ucfg rows)
-            'addEvent'            => $this->isAddEventEnabled(),
-            'emailMailto'         => $this->isEmailEnabled(),
-            // Computed module-level gates
-            'canViewEvents'       => $this->canViewEvents(),
-            'canManageEvents'     => $this->canManageEvents(),
-        ];
-    }
-
-    /**
-     * Check if the user lacks all functional admin permissions.
-     * Users with no permissions (or only EditSelf) cannot use the admin interface
-     * and should be redirected to a self-service flow or blocked.
-     *
-     * @see https://github.com/ChurchCRM/CRM/issues/8617
-     */
-    public function hasNoAdminPermissions(): bool
-    {
-        if ($this->isAdmin()) {
-            return false;
-        }
-        if ($this->isEditSelf()) {
-            // EditSelf is exclusive — no module permissions apply
-            return true;
-        }
-
-        return !$this->isAddRecords()
-            && !$this->isEditRecords()
-            && !$this->isDeleteRecords()
-            && !$this->isMenuOptions()
-            && !$this->isManageGroups()
-            && !$this->isFinance()
-            && !$this->isManageFundraisers()
-            && !$this->isNotes();
     }
 
     /**
@@ -728,6 +707,8 @@ class User extends BaseUser
         $isKeyValid = $google2fa->verifyKey($pw, $twoFACode, $window);
         if ($isKeyValid) {
             $this->setTwoFactorAuthSecret($this->provisional2FAKey);
+            // Clear grace period start: enrollment completed, fresh window on any future re-enroll
+            $this->setTwoFactorAuthGracePeriodStart(null);
             $this->save();
 
             return true;
@@ -764,12 +745,99 @@ class User extends BaseUser
     {
         $this->setTwoFactorAuthRecoveryCodes(null);
         $this->setTwoFactorAuthSecret(null);
+        // If the 2FA mandate is active, stamp a fresh grace period start so the user
+        // gets a new window rather than being instantly locked out after disabling.
+        if (SystemConfig::getBooleanValue('bRequire2FA')) {
+            $this->setTwoFactorAuthGracePeriodStart(DateTimeUtils::getToday());
+        }
         $this->save();
     }
 
     public function is2FactorAuthEnabled(): bool
     {
         return !empty($this->getTwoFactorAuthSecret());
+    }
+
+    /**
+     * Returns the mandatory-2FA grace status for this user.
+     *
+     * Possible values:
+     *   'enrolled'     — user already has 2FA set up
+     *   'not-required' — bRequire2FA is off
+     *   'immediate'    — mandate active, grace period is 0 (legacy hard-block)
+     *   'within-grace' — mandate active, deadline not yet reached
+     *   'expired'      — mandate active, deadline has passed
+     *
+     * Side-effect: lazy-stamps usr_TwoFactorAuthGracePeriodStart on the first
+     * call for a user who has not yet been marked under the mandate.
+     */
+    public function getTwoFactorGraceStatus(): string
+    {
+        if ($this->is2FactorAuthEnabled()) {
+            return 'enrolled';
+        }
+
+        if (!SystemConfig::getBooleanValue('bRequire2FA')) {
+            return 'not-required';
+        }
+
+        $graceDays = SystemConfig::getIntValue('i2FAGracePeriodDays');
+        if ($graceDays <= 0) {
+            return 'immediate';
+        }
+
+        // Lazy-stamp: record when this user first encountered the active mandate.
+        $start = $this->getTwoFactorAuthGracePeriodStart();
+        if ($start === null) {
+            $now = DateTimeUtils::getToday();
+            $this->setTwoFactorAuthGracePeriodStart($now);
+            $this->save();
+
+            return 'within-grace';
+        }
+
+        $deadline = (clone $start)->modify('+' . $graceDays . ' days');
+        $now = DateTimeUtils::getToday();
+
+        return $now >= $deadline ? 'expired' : 'within-grace';
+    }
+
+    /**
+     * Returns the absolute DateTime at which this user's grace window closes,
+     * or null if the grace period has not been started yet.
+     */
+    public function getTwoFactorGraceDeadline(): ?\DateTimeInterface
+    {
+        $start = $this->getTwoFactorAuthGracePeriodStart();
+        if ($start === null) {
+            return null;
+        }
+        $graceDays = SystemConfig::getIntValue('i2FAGracePeriodDays');
+
+        return (clone $start)->modify('+' . max($graceDays, 0) . ' days');
+    }
+
+    /**
+     * Returns the number of whole days remaining in this user's grace window,
+     * rounded UP so that any partial day (even <24 h) counts as 1.
+     * Returns 0 when the deadline has passed or no deadline has been set.
+     */
+    public function getTwoFactorGraceDaysRemaining(): int
+    {
+        $deadline = $this->getTwoFactorGraceDeadline();
+        if ($deadline === null) {
+            return 0;
+        }
+        $now = DateTimeUtils::getToday();
+        if ($deadline <= $now) {
+            return 0;
+        }
+        $diff = $now->diff($deadline);
+        // $diff->days is a floor value; add 1 whenever any sub-day component
+        // remains so that, e.g., "23 h 59 m" shows as 1 day, not 0.
+        $hasSubDayRemainder = $diff->h > 0 || $diff->i > 0 || $diff->s > 0;
+
+        return $diff->days + ($hasSubDayRemainder ? 1 : 0);
     }
 
     public function getNewTwoFARecoveryCodes(): array

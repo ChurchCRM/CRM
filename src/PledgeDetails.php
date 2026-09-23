@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\model\ChurchCRM\ResultResQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -30,7 +31,7 @@ if ($pledge === null) {
     RedirectUtils::redirect($linkBack);
 }
 
-$rsResultRec = RunPreparedQuery('SELECT * FROM result_res WHERE res_ID = ?', 'i', [(int) $pledge->getAutResultId()]);
+$result = ResultResQuery::create()->findPk((int) $pledge->getAutResultId());
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Finance'), '/finance/'],
@@ -38,10 +39,8 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 ]);
 require_once __DIR__ . '/Include/Header.php';
 
-$resArr = mysqli_fetch_array($rsResultRec);
-if ($resArr) {
-    extract($resArr);
-    echo $res_echotype2;
+if ($result !== null) {
+    echo htmlspecialchars($result->getResEchotype2(), ENT_QUOTES, 'UTF-8');
 }
 
 ?>

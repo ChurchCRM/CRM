@@ -302,7 +302,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       message: i18next.t("Are you sure you want to delete kiosk") + ': <strong>' + window.CRM.escapeHtml(name) + '</strong>?',
       buttons: {
         cancel: {
-          label: '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel")
+          label: '<i class="fa-solid fa-xmark"></i> ' + i18next.t("Cancel")
         },
         confirm: {
           label: '<i class="fa-solid fa-trash"></i> ' + i18next.t("Delete"),
@@ -508,7 +508,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               buttons += '<button class="btn btn-success" data-kiosk-action="accept" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check me-1"></i>' + i18next.t('Accept') + '</button>';
             }
             buttons += '<button class="btn btn-outline-secondary" data-kiosk-action="rename" data-kiosk-id="' + full.Id + '" data-kiosk-name="' + nameAttr + '" title="' + i18next.t('Rename') + '"><i class="fa-solid fa-pen"></i></button>';
-            buttons += '<button class="btn btn-outline-primary" data-kiosk-action="reload" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-sync"></i></button>';
+            buttons += '<button class="btn btn-outline-primary" data-kiosk-action="reload" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-arrows-rotate"></i></button>';
             buttons += '<button class="btn btn-outline-info" data-kiosk-action="identify" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Identify') + '"><i class="fa-solid fa-eye"></i></button>';
             buttons += '<button class="btn btn-outline-danger" data-kiosk-action="delete" data-kiosk-id="' + full.Id + '" data-kiosk-name="' + nameAttr + '" title="' + i18next.t('Delete') + '"><i class="fa-solid fa-trash"></i></button>';
             buttons += '</div>';

@@ -52,7 +52,10 @@
 // Floating Action Buttons — menu toggle, add person, add family
 @include meta.load-css("scss/fab");
 
-// Tabler custom styles — color overrides, DataTables/TomSelect skins
+// TomSelect theme skin — all .ts-wrapper and body > .ts-dropdown overrides
+@include meta.load-css("scss/_tomselect");
+
+// Tabler custom styles — color overrides, DataTables skin
 @include meta.load-css("scss/_tabler-bridge");
 
 html,

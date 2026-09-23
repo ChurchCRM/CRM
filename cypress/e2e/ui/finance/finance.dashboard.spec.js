@@ -101,12 +101,12 @@ describe("Finance Dashboard", () => {
         cy.contains("Donation Funds");
     });
 
-    it("should link to Donation Fund Editor from Manage Funds button", () => {
+    it("should link to Donation Fund admin page from Manage Funds button", () => {
         cy.visit("/finance/");
 
         // Admin should see Manage Funds link
         cy.contains("a", "Manage Funds").click();
-        cy.url().should("contain", "DonationFundEditor.php");
+        cy.url().should("contain", "/finance/funds");
     });
 
     it("should navigate to settings from Church Information checklist item", () => {
@@ -159,6 +159,47 @@ describe("Finance Dashboard - Standard User Access", () => {
         cy.contains(".list-group-item", "Church Information").should("exist");
 
         // But the Settings link to admin/system/church-info should NOT be visible
+        cy.contains(".list-group-item", "Church Information")
+            .find("a[href*='admin/system/church-info']")
+            .should("not.exist");
+    });
+});
+
+describe("Finance Dashboard - Finance Role (non-admin) Access", () => {
+    // Verifies issue #9476: Finance role users should see and use all Finance
+    // module features without needing Admin.
+    beforeEach(() => {
+        cy.setupFinanceOnlySession();
+    });
+
+    it("Finance-only user can access the finance dashboard", () => {
+        cy.visit("/finance/");
+        cy.url().should("not.include", "access-denied");
+        cy.get("h2.page-title").should("contain", "Finance Dashboard");
+    });
+
+    it("Finance-only user sees the Financial Settings button in page header", () => {
+        cy.visit("/finance/");
+        // Financial Settings button is admin-only; Finance-only users must not see it
+        cy.get("button").contains("Financial Settings").should("not.exist");
+    });
+
+    it("Finance-only user sees Manage Funds button on dashboard", () => {
+        cy.visit("/finance/");
+        // Manage Funds quick-action button (gated by isFinanceEnabled, not isAdmin)
+        cy.get("a").contains("Manage Funds").should("exist");
+    });
+
+    it("Finance-only user can access /finance/funds page", () => {
+        cy.visit("/finance/funds");
+        cy.url().should("not.include", "access-denied");
+        cy.contains("Donation Funds");
+    });
+
+    it("Finance-only user should NOT see the Church Information settings link", () => {
+        // Church Information settings link points to /admin — remains Admin-only
+        cy.visit("/finance/");
+        cy.contains(".list-group-item", "Church Information").should("exist");
         cy.contains(".list-group-item", "Church Information")
             .find("a[href*='admin/system/church-info']")
             .should("not.exist");

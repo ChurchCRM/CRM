@@ -340,7 +340,7 @@ if ($output === 'pdf') {
         $pdf->Cell(40, $summaryIntervalY, $fun_Name);
         $pdf->Cell(40, $summaryIntervalY, $plg_comment);
         $pdf->SetFont('Courier', '', 9);
-        $pdf->Cell(25, $summaryIntervalY, $plg_amount, 0, 1, 'R');
+        $pdf->Cell(25, $summaryIntervalY, CurrencyFormatter::formatForPdf($plg_amount), 0, 1, 'R');
         $totalAmount += $plg_amount;
         $totalNonDeductible += $plg_NonDeductible;
         $cnt += 1;

@@ -4,10 +4,11 @@
 
 Security patch announcements, CVE disclosures, and dependency update notices are posted in the **#security** channel on our Discord server.
 
-> 👉 **Join Discord:** [https://discord.gg/XGppbeTw](https://discord.gg/tuWyFzj3Nj) — then follow **#security** for announcements.
+> 👉 **Join Discord:** [https://discord.gg/w4mmYPSnE](https://discord.gg/w4mmYPSnE) — then follow **#security** for announcements.
 
 **Please do not:**
 - DM maintainers directly about security issues
+- Email individual maintainers or any role-specific address about security issues (no such contacts exist — use GitHub Security Advisories)
 - Post vulnerability details in any other Discord channel
 - Ask about undisclosed vulnerabilities in public channels
 
@@ -55,10 +56,17 @@ If you're unsure whether an issue is security-related, err on the side of cautio
 
 ## Scope
 
-Please note that the following activities are considered within the scope of our responsible disclosure process:
+The following activities are within the scope of our responsible disclosure process:
 
-- Reporting security vulnerabilities directly to us via GitHub Security Advisory
-- Providing details necessary for us to reproduce and validate the vulnerability
+- Reporting security vulnerabilities directly to us via [GitHub Security Advisory](https://github.com/ChurchCRM/CRM/security/advisories)
+- Providing steps to reproduce and validate the vulnerability
+- Sharing proof-of-concept code or test cases (privately, through the advisory)
+
+**Out of scope:**
+
+- General bugs with no security impact — please use [GitHub Issues](https://github.com/ChurchCRM/CRM/issues) instead
+- Feature requests or usability concerns — please use [GitHub Issues](https://github.com/ChurchCRM/CRM/issues) instead
+- Vulnerabilities in self-hosted infrastructure outside of the ChurchCRM application and its bundled dependencies — please contact the affected site's administrator directly
 
 ## Security Best Practices
 
@@ -89,12 +97,5 @@ Only the latest release branch receives security fixes.
 
 ## Developer Security
 
-For developers contributing to ChurchCRM, see the [Developer Security Guide](https://github.com/ChurchCRM/CRM/wiki/Developer-Security) which covers security best practices including Content Security Policy (CSP) compliance.
+For developers contributing to ChurchCRM, see the [Developer Security Guide](https://github.com/ChurchCRM/CRM/wiki/Developer-Security), which covers security best practices including Content Security Policy (CSP) compliance.
 
-## Community
-
-Join us on Discord: https://discord.gg/XGppbeTw
-
-- **#security** — Security announcements only (patches, CVEs, advisories). Do not post vulnerability reports or tag maintainers here.
-- **#bugs** — Non-security bug reports and general troubleshooting
-- General chat, feature requests, and questions in their respective channels

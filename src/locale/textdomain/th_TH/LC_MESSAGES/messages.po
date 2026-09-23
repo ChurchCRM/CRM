@@ -564,16 +564,8 @@ msgid "Picture URL"
 msgstr "URL รูปภาพ"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "ตัวแก้ไขกองทุนบริจาค"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "ฟิลด์หรือการเลือกไม่ถูกต้อง การเปลี่ยนแปลงไม่ได้บันทึก! กรุณาแก้ไขและลองอีกครั้ง!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "ยังไม่มีกองทุนที่เพิ่ม"
 
 #: 
 msgid "Active"
@@ -1161,44 +1153,8 @@ msgid "Minimum Price"
 msgstr "ราคาขั้นต่ำ"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "เครื่องมือภูมิศาสตร์ครอบครัว"
-
-#: 
 msgid "Select Family"
 msgstr "เลือกครอบครัว"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "จำนวนเพื่อนบ้านสูงสุด"
-
-#: 
-msgid "Maximum distance"
-msgstr "ระยะทางสูงสุด"
-
-#: 
-msgid "Data file format"
-msgstr "รูปแบบไฟล์ข้อมูล"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "ตัวแสดงผล GPS"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "รวมครอบครัวในไฟล์พิกัด"
-
-#: 
-msgid "Neighbor Families"
-msgstr "ครอบครัวเพื่อนบ้าน"
-
-#: 
-msgid "Make Data File"
-msgstr "สร้างไฟล์ข้อมูล"
-
-#: 
-msgid "Show Neighbors"
-msgstr "แสดงเพื่อนบ้าน"
 
 #: 
 msgid "Distance"
@@ -1219,10 +1175,6 @@ msgstr "ลองจิจูด"
 #: 
 msgid "Add to Cart"
 msgstr "เพิ่มลงในตะกร้า"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "ตัดกับตะกร้า"
 
 #: 
 msgid "Remove from Cart"
@@ -1399,10 +1351,6 @@ msgstr "ส่งอีเมลทั้งหมด"
 #: 
 msgid "Family Roles"
 msgstr "บทบาทครอบครัว"
-
-#: 
-msgid "Family Geographic"
-msgstr "ภูมิศาสตร์ครอบครัว"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -2157,14 +2105,6 @@ msgstr "รายการบริจาค"
 #: 
 msgid "Purchased Items"
 msgstr "รายการที่ซื้อ"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "ยอดรวมการซื้อทั้งหมด: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "ยอดซื้อรวม: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4251,24 +4191,8 @@ msgid "Profile Image uploaded"
 msgstr "อัปโหลดรูปโปรไฟล์แล้ว"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "แสดงเพื่อนบ้านที่มีการจัดประเภทเหล่านี้"
-
-#: 
-msgid "Please select a Family."
-msgstr "กรุณาเลือกครอบครัว"
-
-#: 
-msgid "Coordinate database file name"
-msgstr "ชื่อไฟล์ฐานข้อมูลพิกัด"
-
-#: 
 msgid "select an option"
 msgstr "เลือกตัวเลือก"
-
-#: 
-msgid "Direct me"
-msgstr "นำทางฉัน"
 
 #: 
 msgid "Your cart is empty"
@@ -5102,14 +5026,6 @@ msgstr "แดชบอร์ดการยืนยันคน"
 #: 
 msgid "Verification URL created"
 msgstr "สร้าง URL การยืนยันแล้ว"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -7317,10 +7233,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr "การลบฟิลด์นี้จะทำให้คุณสูญเสียข้อมูลสมาชิกกลุ่มทั้งหมดที่กำหนดสำหรับฟิลด์นี้อย่างถาวร!"
 
 #: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "การลบกองทุนนี้อาจส่งผลต่อระเบียนการบริจาคในอดีต!"
-
-#: 
 msgid "Category Name"
 msgstr "ชื่อหมวดหมู่"
 
@@ -7373,10 +7285,6 @@ msgid "Filter by Class"
 msgstr "กรองตามชั้นเรียน"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "ลบกองทุนสำเร็จ"
-
-#: 
 msgid "In Use"
 msgstr "ใช้งานอยู่"
 
@@ -7423,10 +7331,6 @@ msgstr "ลบการนับการเข้าร่วมนี้?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "เลือกประเภทระเบียนที่คุณสมบัตินี้ใช้กับ"
-
-#: 
-msgid "That fund name already exists."
-msgstr "ชื่อกองทุนนั้นมีอยู่แล้ว"
 
 #: 
 msgid "Total Pledges"
@@ -8508,10 +8412,6 @@ msgid "selected family has no coordinates"
 msgstr "ครอบครัวที่เลือกไม่มีพิกัด"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "กำหนดให้ผู้ใช้ทั้งหมดลงทะเบียนการยืนยันตัวตนสองปัจจัย"
 
@@ -9309,10 +9209,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "ขยายความสามารถ ChurchCRM ด้วย MailChimp การสำรองข้อมูล และอื่นๆ"
 
 #: 
-msgid "FY %s"
-msgstr "ปีงบประมาณ %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "ครอบครัวใช้ที่อยู่และหมายเลขโทรศัพท์ร่วมกัน"
 
@@ -9395,10 +9291,6 @@ msgstr "สร้างรายงานสมาชิกกลุ่มแล
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "สร้างเอกสารใบแจ้งภาษีสำหรับผู้ถวาย"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "เครื่องมือทางภูมิศาสตร์"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10131,10 +10023,6 @@ msgid "View and manage deposit slip payments"
 msgstr "ดูและจัดการการถวายในใบรับถวาย"
 
 #: 
-msgid "View and manage family location data"
-msgstr "ดูและจัดการข้อมูลตำแหน่งครอบครัว"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "ดูและจัดการไฟล์บันทึกระบบสำหรับการแก้ไขปัญหา"
 
@@ -10473,10 +10361,6 @@ msgstr "จะดาวน์โหลดและใช้เวอร์ชั
 #: 
 msgid "Total Check-ins"
 msgstr "จำนวนการลงเวลาเข้าทั้งหมด"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "ลองเลือกประเภทกิจกรรมหรือปีอื่น"
 
 #: 
 msgid "Up to Date"
@@ -12281,10 +12165,6 @@ msgid "Database dump only (.sql)"
 msgstr "ดัมพ์ฐานข้อมูลเท่านั้น (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "ช่วงวันที่ต้องไม่เกิน 1 ปี"
-
-#: 
 msgid "Destructive Operation"
 msgstr "การดำเนินการที่อันตราย"
 
@@ -12879,10 +12759,6 @@ msgstr "ไม่พบพันธกิจสำหรับรายการ
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "สถานะไม่ใช้งานสามารถสลับได้เฉพาะสำหรับรายการการจัดประเภทเท่านั้น"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "สมาชิกใหม่จะไม่ได้รับอีเมลต้อนรับพร้อมข้อมูลประจำตัว โปรดแชร์รหัสผ่านด้วยตนเอง หรือตั้งค่าอีเมลก่อน"
 
 #: 
 msgid "Option name is required"
@@ -13589,7 +13465,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 ต้องเป็นสตริงเลขฐานสิบหกขนาด 64 ตัวอักษร"
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ผู้ดูแล ChurchCRM ยังไม่ได้ตรวจสอบปลั๊กอินนี้ คุณรับผิดชอบด้านความปลอดภัยและพฤติกรรมของสิ่งที่ติดตั้งที่นี่ ควรใช้เส้นทางเรียกดูที่ผ่านการรับรองเมื่อเป็นไปได้"
 
 #: 
@@ -14466,10 +14343,6 @@ msgid "Group removed from cart"
 msgstr "ลบกลุ่มออกจากตะกร้าแล้ว"
 
 #: 
-msgid "GroupID required for role selection prompt"
-msgstr "ต้องการ GroupID สำหรับการแจ้งเตือนเลือกบทบาท"
-
-#: 
 msgid "HTML URL"
 msgstr "URL HTML"
 
@@ -14847,20 +14720,8 @@ msgid "Please select a role."
 msgstr "กรุณาเลือกบทบาท"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "กรุณาเลือกทั้งกลุ่มและบทบาท"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "กรุณาเลือกแถวที่จะลบ"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "กรุณาเลือกบทบาทเป้าหมายสำหรับสมาชิก"
-
-#: 
-msgid "Please select target group for members"
-msgstr "กรุณาเลือกกลุ่มเป้าหมายสำหรับสมาชิก"
 
 #: 
 msgid "Please try again"
@@ -15755,24 +15616,12 @@ msgid "Account status"
 msgstr "สถานะบัญชี"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "ขั้นสูง: เลือกเวอร์ชันเป้าหมายที่ต้องการ"
-
-#: 
 msgid "Bug Fix"
 msgstr "แก้ไขข้อผิดพลาด"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "โดยค่าเริ่มต้น ตัวช่วยสร้างจะดาวน์โหลดรุ่นที่แนะนำถัดไป คุณสามารถเลือกเวอร์ชันที่มีให้ด้านล่างแทนได้"
-
-#: 
 msgid "Change required"
 msgstr "จำเป็นต้องเปลี่ยนแปลง"
-
-#: 
-msgid "Changelog"
-msgstr "บันทึกการเปลี่ยนแปลง"
 
 #: 
 msgid "Continue Anyway"
@@ -15781,10 +15630,6 @@ msgstr "ดำเนินการต่อไป"
 #: 
 msgid "Could not load release information."
 msgstr "ไม่สามารถโหลดข้อมูลรุ่นได้"
-
-#: 
-msgid "Download & Install"
-msgstr "ดาวน์โหลดและติดตั้ง"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15813,10 +15658,6 @@ msgstr "บันทึกการเปลี่ยนแปลงทั้ง
 #: 
 msgid "Install stable {{version}}"
 msgstr "ติดตั้งเวอร์ชันเสถียร {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "กำลังติดตั้งรุ่นถัดไป"
 
 #: 
 msgid "Invalid file path"
@@ -15887,10 +15728,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "แสดงเส้นทางการอัปเกรดทั้งหมด"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "รุ่นเสถียรล่าสุดคือ {{version}} คุณสามารถติดตั้งใหม่ได้ด้านล่าง"
 
@@ -15917,10 +15754,6 @@ msgstr "ดูบันทึกรุ่น"
 #: 
 msgid "What's New"
 msgstr "มีอะไรใหม่"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "มีอะไรใหม่ใน {{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16009,6 +15842,16 @@ msgstr "บุคคลนี้มีบัญชีผู้ใช้อยู
 #: 
 msgid "User must be an Admin or have Manage Fundraisers permission"
 msgstr "ผู้ใช้ต้องเป็นผู้ดูแลระบบหรือมีสิทธิ์จัดการกิจกรรมระดมทุน"
+
+#: 
+msgid "%d archived fundraiser"
+msgid_plural "%d archived fundraisers"
+msgstr[0] "%d กิจกรรมระดมทุนที่เก็บถาวร"
+
+#: 
+msgid "%d person successfully added to selected family."
+msgid_plural "%d people successfully added to selected family."
+msgstr[0] "เพิ่ม %d คนเข้าครอบครัวที่เลือกเรียบร้อยแล้ว"
 
 #: 
 msgid "%s Fundraisers"
@@ -16121,10 +15964,6 @@ msgstr "รายการของผู้ซื้อ"
 #: 
 msgid "Buyers Registered"
 msgstr "ผู้ซื้อที่ลงทะเบียน"
-
-#: 
-msgid "Buyers This Year"
-msgstr "ผู้ซื้อในปีนี้"
 
 #: 
 msgid "Catalog"
@@ -16275,10 +16114,6 @@ msgid "Items Donated"
 msgstr "รายการที่บริจาค"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "รายการที่บริจาค (ปีนี้)"
-
-#: 
 msgid "Items Sold"
 msgstr "รายการที่ขายได้"
 
@@ -16357,10 +16192,6 @@ msgstr "ค่าที่ตั้งไว้ล่วงหน้าแบบ
 #: 
 msgid "Raised"
 msgstr "ระดมทุนได้"
-
-#: 
-msgid "Raised This Year"
-msgstr "ระดมทุนได้ในปีนี้"
 
 #: 
 msgid "Sample Amount"
@@ -16527,10 +16358,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ฟังก์ชันอีเมลถูกปิดใช้งานอยู่ในขณะนี้ คุณสมบัติต่อไปนี้จะไม่ทำงานจนกว่าจะเปิดใช้งานอีเมล"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "มูลค่าประมาณ $%s"
-
-#: 
 msgid "Fastest workflow"
 msgstr "ขั้นตอนการทำงานที่เร็วที่สุด"
 
@@ -16573,10 +16400,6 @@ msgstr "การพัฒนาในเครื่อง"
 #: 
 msgid "Minimum Total Amount"
 msgstr "จำนวนเงินรวมขั้นต่ำ"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "ราคาเสนอขั้นต่ำ $%s"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16879,10 +16702,6 @@ msgid "Working..."
 msgstr "กำลังดำเนินการ..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "คุณล้าหลัง {{releaseCount}} เวอร์ชัน นี่คือสิ่งที่คุณจะได้รับ"
-
-#: 
 msgid "click to expand"
 msgstr "คลิกเพื่อขยาย"
 
@@ -17095,10 +16914,6 @@ msgid "Deleted successfully"
 msgstr "ลบเรียบร้อยแล้ว"
 
 #: 
-msgid "Deposit #"
-msgstr "เลขที่เงินฝาก"
-
-#: 
 msgid "Deposit Slip"
 msgstr "ใบนำฝากเงิน"
 
@@ -17139,20 +16954,12 @@ msgid "Failed to delete pledge"
 msgstr "ไม่สามารถลบคำมั่นสัญญาได้"
 
 #: 
-msgid "Failed to encode payment response"
-msgstr "ไม่สามารถเข้ารหัสการตอบสนองการถวายได้"
-
-#: 
 msgid "Failed to retrieve pledge"
 msgstr "ไม่สามารถดึงข้อมูลคำมั่นสัญญาได้"
 
 #: 
 msgid "Failed to update pledge"
 msgstr "ไม่สามารถอัปเดตคำมั่นสัญญาได้"
-
-#: 
-msgid "Family is required"
-msgstr "ต้องระบุครอบครัว"
 
 #: 
 msgid "Financial data"
@@ -17281,10 +17088,6 @@ msgstr "วางแผนการสนับสนุนรันไทม์
 #: 
 msgid "Please enter a date"
 msgstr "กรุณาระบุวันที่"
-
-#: 
-msgid "Please select a family"
-msgstr "กรุณาเลือกครอบครัว"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17503,6 +17306,11 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "ยังไม่ได้ตั้งค่าอีเมล กรุณาตั้งค่า SMTP ในการตั้งค่าระบบ"
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "ส่งอีเมลถึง %d ครอบครัวแล้ว"
+
+#: 
 msgid "Enter a street address first."
 msgstr "กรุณาป้อนที่อยู่ถนนก่อน"
 
@@ -17551,6 +17359,10 @@ msgid "Manage Events"
 msgstr "จัดการกิจกรรม"
 
 #: 
+msgid "N/A"
+msgstr "ไม่มีข้อมูล"
+
+#: 
 msgid "New Deposit"
 msgstr "รายการฝากเงินใหม่"
 
@@ -17569,6 +17381,11 @@ msgstr "ไม่พบการชำระเงินสำหรับรา
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "ไม่มีรหัสรายการฝากที่ถูกต้อง"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "ส่ง PDF ทางอีเมลถึง %d ครอบครัวเรียบร้อยแล้ว"
 
 #: 
 msgid "Partial Send"
@@ -17673,4 +17490,351 @@ msgstr "แถวที่เลือก"
 #: 
 msgid "rows selected"
 msgstr "แถวที่เลือก"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "วันเกิดและวันครบรอบ"
+
+#: 
+msgid "Estimated value %s."
+msgstr "มูลค่าประมาณ %s"
+
+#: 
+msgid "Minimum bid %s."
+msgstr "ราคาเสนอขั้นต่ำ %s"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "สมาชิกที่มีวันเกิดหรือวันครบรอบแต่งงานในเดือนที่ระบุ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "เดือนที่ต้องการดูข้อมูลวันเกิดและวันครบรอบ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "เดือนครบรอบแต่งงานที่ต้องการดูข้อมูล"
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "ยอดรวมการซื้อทั้งหมด: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "ยอดรวมการซื้อ: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "วันครบรอบแต่งงาน"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "สมาชิกที่มีวันครบรอบแต่งงานในเดือนที่ระบุ"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "เกิดข้อผิดพลาด โปรดลองอีกครั้ง"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบกองทุนนี้?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "ไม่สามารถลบได้: กองทุนมีคำมั่นสัญญาการถวายที่เกี่ยวข้อง"
+
+#: 
+msgid "Delete Fund"
+msgstr "ลบกองทุน"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "ทิศทางต้องเป็น 'up' หรือ 'down' เท่านั้น"
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "แก้ไขกองทุนการถวาย"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "ไม่สามารถจัดเรียงกองทุนการถวายใหม่ได้"
+
+#: 
+msgid "Fund added successfully."
+msgstr "เพิ่มกองทุนเรียบร้อยแล้ว"
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "ลบกองทุนเรียบร้อยแล้ว"
+
+#: 
+msgid "Fund name"
+msgstr "ชื่อกองทุน"
+
+#: 
+msgid "Fund name is required."
+msgstr "กรุณาระบุชื่อกองทุน"
+
+#: 
+msgid "Fund order updated."
+msgstr "อัปเดตลำดับกองทุนแล้ว"
+
+#: 
+msgid "Fund saved successfully."
+msgstr "บันทึกกองทุนเรียบร้อยแล้ว"
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "ยังไม่มีการเพิ่มกองทุน โปรดใช้แบบฟอร์มด้านบนเพื่อเพิ่มกองทุนแรก"
+
+#: 
+msgid "Optional description"
+msgstr "คำอธิบาย (ไม่บังคับ)"
+
+#: 
+msgid "Private Calendar"
+msgstr "ปฏิทินส่วนตัว"
+
+#: 
+msgid "Public Calendar"
+msgstr "ปฏิทินสาธารณะ"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "ขั้นสูง: ติดตั้งเวอร์ชันเฉพาะแทน"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "โดยค่าเริ่มต้น ตัวช่วยจะอัปเกรดเป็นเวอร์ชันล่าสุด คุณสามารถเลือกเวอร์ชันเฉพาะด้านล่างแทนได้"
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "ไม่สามารถแก้ไขการชำระเงินในรายการฝากที่ปิดแล้ว"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "ดาวน์โหลดและใช้งาน {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "ChurchCRM ทุกเวอร์ชันมีการแก้ไขความปลอดภัย เราแนะนำอย่างยิ่งให้อัปเกรดเป็นเวอร์ชันล่าสุดเสมอ"
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "ไม่สามารถถอดรหัสคำขอการชำระเงินได้"
+
+#: 
+msgid "Full release notes"
+msgstr "บันทึกการเผยแพร่ฉบับเต็ม"
+
+#: 
+msgid "Invalid payment data"
+msgstr "ข้อมูลการชำระเงินไม่ถูกต้อง"
+
+#: 
+msgid "No release notes available."
+msgstr "ไม่มีบันทึกการเผยแพร่"
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "คำเตือน: {{chosen}} ขาดการแก้ไขความปลอดภัยที่มีอยู่ใน {{latest}} ดำเนินการต่อเฉพาะเมื่อมีเหตุผลเฉพาะเจาะจงเท่านั้น"
+
+#: 
+msgid "What you'll gain"
+msgstr "สิ่งที่คุณจะได้รับ"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "ไม่สามารถดึงจำนวนเงินฝากได้"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "วันครบรอบ: %s"
+
+#: 
+msgid "Church"
+msgstr "คริสตจักร"
+
+#: 
+msgid "Classifications"
+msgstr "การจัดประเภท"
+
+#: 
+msgid "Closest"
+msgstr "ใกล้ที่สุด"
+
+#: 
+msgid "Deposit #%d"
+msgstr "เงินฝาก #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "ไม่สามารถดึงข้อมูลจำนวนการระดมทุนได้"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "ไม่สามารถโหลดเพื่อนบ้านได้"
+
+#: 
+msgid "Farther"
+msgstr "ไกลกว่า"
+
+#: 
+msgid "Farthest"
+msgstr "ไกลที่สุด"
+
+#: 
+msgid "Find Neighbors"
+msgstr "ค้นหาเพื่อนบ้าน"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "ค้นหาครอบครัวใกล้เคียงและเพิ่มลงในตะกร้า"
+
+#: 
+msgid "Map centered on"
+msgstr "แผนที่ศูนย์กลางที่"
+
+#: 
+msgid "Max distance"
+msgstr "ระยะทางสูงสุด"
+
+#: 
+msgid "Max neighbors"
+msgstr "จำนวนเพื่อนบ้านสูงสุด"
+
+#: 
+msgid "Near"
+msgstr "ใกล้"
+
+#: 
+msgid "Please select a family."
+msgstr "กรุณาเลือกครอบครัว"
+
+#: 
+msgid "Results"
+msgstr "ผลลัพธ์"
+
+#: 
+msgid "Same location"
+msgstr "สถานที่เดียวกัน"
+
+#: 
+msgid "Search Neighbors"
+msgstr "ค้นหาเพื่อนบ้าน"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "เลือกครอบครัวและคลิก ค้นหาเพื่อนบ้าน เพื่อดูผลลัพธ์"
+
+#: 
+msgid "Selected family"
+msgstr "ครอบครัวที่เลือก"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "ค่านี้ต้องเป็นชื่อฟิลด์ที่ถูกต้อง"
+
+#: 
+msgid "Could not load data"
+msgstr "ไม่สามารถโหลดข้อมูลได้"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "กรุณารีเฟรชหน้าหรือลองใหม่ภายหลัง"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "เพิ่มระเบียนที่เกี่ยวข้องก่อน"
+
+#: 
+msgid "All Months"
+msgstr "ทุกเดือน"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "ยังไม่มีการกำหนดตัวเลือก \"%s\""
+
+#: 
+msgid "No events found for %s %d."
+msgstr "ไม่พบกิจกรรมสำหรับ %s %d"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "ลองเลือกประเภทกิจกรรม เดือน หรือปีอื่น"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "เกิดข้อผิดพลาดในการระบุพิกัดทางภูมิศาสตร์ — โปรดลองอีกครั้งในภายหลัง"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "ที่อยู่ไม่สมบูรณ์ (ไม่มีเมือง รัฐ และรหัสไปรษณีย์)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "ทุกครอบครัวมีพิกัดแล้ว"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "ไม่สามารถอัปเดตพิกัดได้"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "ไม่สามารถอัปเดตพิกัดของครอบครัวได้"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "ระบุพิกัดครอบครัวทั้งหมด {{geocoded}} ครอบครัวแล้ว แผนที่เป็นข้อมูลล่าสุดแล้ว"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "ระบุพิกัดครอบครัวแล้ว {{geocoded}} ครอบครัว ไม่สามารถระบุได้ {{failed}} ครอบครัว — ดูรายละเอียดด้านล่าง"
+
+#: 
+msgid "Geocoding…"
+msgstr "กำลังระบุพิกัด…"
+
+#: 
+msgid "No address on file"
+msgstr "ไม่มีที่อยู่ในระบบ"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "ไม่พบข้อมูลที่ตรงกัน — โปรดตรวจสอบที่อยู่ถนน เมือง และรหัสไปรษณีย์"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "เปิดข้อมูลครอบครัวเพื่อแก้ไขที่อยู่ แล้วเรียกใช้อีกครั้ง"
+
+#: 
+msgid "Set up now"
+msgstr "ตั้งค่าตอนนี้"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "จำเป็นต้องใช้การยืนยันตัวตนสองขั้นตอน คุณมีเวลา %d วันในการลงทะเบียน"
+
+#: 
+msgid "Unknown family"
+msgstr "ครอบครัวที่ไม่รู้จัก"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "อัปเดตพิกัดทั้งหมด"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "อัปเดตพิกัดครอบครัวทั้งหมด"
+
+#: 
+msgid "Update Coordinates"
+msgstr "อัปเดตพิกัด"
 

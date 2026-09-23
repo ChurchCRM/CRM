@@ -52,7 +52,8 @@ class DashboardService
             ->filterByClsId($aInactiveClassificationIds, Criteria::NOT_IN)
             ->useFamilyQuery('fam', 'left join')
             ->filterByDateDeactivated(null)
-            ->endUse();
+            ->endUse()
+            ->filterByLiving();
 
         foreach ($people as $person) {
             $personCount++;
@@ -192,6 +193,7 @@ class DashboardService
         return PersonQuery::create()
             ->leftJoinWithFamily()
             ->where('Family.DateDeactivated is null')
+            ->filterByLiving()
             ->orderByDateLastEdited('DESC')
             ->limit($limit)
             ->find();
@@ -209,6 +211,7 @@ class DashboardService
         return PersonQuery::create()
             ->leftJoinWithFamily()
             ->where('Family.DateDeactivated is null')
+            ->filterByLiving()
             ->orderByDateEntered('DESC')
             ->limit($limit)
             ->find();

@@ -48,6 +48,11 @@ interface CRMNamespace {
   escapeHtml?: (s: string) => string;
   escapeAttribute?: (s: string) => string;
   emailComposer?: CRMEmailComposer;
+  /** Set by locale-loader.js once i18next has finished initializing. Calls back
+   * immediately if locales are already loaded, otherwise waits for the
+   * "CRM.localesReady" event — the ordering hook other modules should use before
+   * calling i18next.t() on page load. */
+  onLocalesReady?: (callback: () => void) => void;
   comm?: {
     smtpConfigured?: boolean;
     vonageEnabled?: boolean;

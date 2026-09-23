@@ -21,11 +21,10 @@ This skill covers frontend patterns, UI components, notifications, international
 
 **Verified versions in this repo (package.json):**
 - `@tabler/core` ^1.4.0
-- `@tabler/icons-webfont` ^3.40.0
 - `bootstrap` ^5.3.8
 - `apexcharts` ^5.10.4
-- `typescript` ^5.9.3
-- `webpack` ^5.105.4
+- `typescript` ^6.0.3
+- `webpack` ^5.109.0
 
 **For detailed component reference**, see `tabler-components.md`.
 
@@ -129,7 +128,7 @@ For tables with many potential columns:
 
 ## DataTables: Always Inherit the User's Page-Length Preference <!-- learned: 2026-04-22 -->
 
-Every user has a **"Rows per page"** preference (Edit Profile → Preferences → Tables). It's stored in the `ui.table.size` user setting and exposed globally as `window.CRM.plugin.dataTable` by [src/Include/Header.php](src/Include/Header.php#L85-L163). Every list-page DataTable MUST merge this global config so the user's choice wins.
+Every user has a **"Rows per page"** preference (Edit Profile → Preferences → Tables). It's stored in the `ui.table.size` user setting and exposed globally as `window.CRM.plugin.dataTable` by [src/Include/Header.php](../../../src/Include/Header.php#L85-L163). Every list-page DataTable MUST merge this global config so the user's choice wins.
 
 **Correct pattern** — put any local defaults *first*, then extend with the global config so `window.CRM.plugin.dataTable.pageLength` overrides them:
 
@@ -153,7 +152,7 @@ dataTableConfig.pageLength = 25;
 
 **Intentional exceptions** (do NOT copy these for list pages):
 
-- Home dashboard widgets in [MainDashboard.js](src/skin/js/MainDashboard.js#L47-L57) set `paging: false` via `dataTableDashboardDefaults` — compact widgets, not paginated lists.
+- Home dashboard widgets in [MainDashboard.js](../../../src/skin/js/MainDashboard.js#L47-L57) set `paging: false` via `dataTableDashboardDefaults` — compact widgets, not paginated lists.
 - Birthdays / Anniversaries dashboard widgets override back to `pageLength: 5` *after* the extend on purpose (tight widget constraint).
 
 **Quick audit**: `grep -rEn "pageLength" src/ --include="*.js" --include="*.php"` — any `pageLength` line that appears *after* `$.extend(..., window.CRM.plugin.dataTable)` is a bug unless it's a dashboard widget.
@@ -189,22 +188,25 @@ window.CRM.notify(i18next.t('Operation completed'), {
 });
 
 window.CRM.notify(i18next.t('An error occurred'), {
-    type: 'error'
+    type: 'danger'
 });
 
 // ❌ WRONG - Never use alert()
 alert('Operation completed');
 ```
 
-**Notification types:**
+**Notification types:** <!-- learned: 2026-09-11 -->
+- `danger` - Red, failures (`error` is an accepted alias — see issue #9726)
 - `success` - Green, success operations
-- `error` - Red, failures
-- `warning` - Orange, warnings
+- `warning` - Orange/yellow, warnings
 - `info` - Blue, informational
 
+Any other value falls through to the `info` style, so a typo silently renders
+a blue notice instead of failing.
+
 **Options:**
-- `delay` - Auto-dismiss time in milliseconds (default: 5000)
-- `type` - Notification type (default: 'success')
+- `delay` - Auto-dismiss time in milliseconds (default: 3000)
+- `type` - Notification type (default: 'info')
 
 ## Confirmations (CRITICAL)
 
@@ -726,6 +728,17 @@ TomSelect hides options with `value=""` (treats them as placeholder/clear state)
 ### TomSelect dropdownParent for Cards <!-- learned: 2026-03-30 -->
 
 When TomSelect is inside a card with `table-responsive` or constrained overflow, dropdowns get clipped. Fix: pass `dropdownParent: 'body'` to TomSelect init and add a `body > .ts-dropdown` SCSS rule in `_tabler-bridge.scss` to preserve Tabler styling.
+
+### TomSelect silently truncates long lists: `maxOptions` defaults to 50 <!-- learned: 2026-09-10 -->
+
+TomSelect renders at most `settings.maxOptions` entries — **default 50** — and applies the cap to the already-filtered result set, with no scrollbar and no "more results" hint. Any `<select>` backed by a fixed enumeration longer than 50 silently loses its tail: the country list (256) stopped at China, leaving **United States** unreachable by scrolling; US states (59) stopped at Tennessee; `sTimeZone` (419) was cut inside `America/*`. `TomSelect.defaults` is module-private in v2, so there is no global override — set it per call site:
+
+```js
+// Fixed enumeration the user picks by scrolling — render every option.
+new TomSelect(el, { maxOptions: null });
+```
+
+Keep the default for **type-to-search** pickers (person/family/group), where capping results is the point. Issue #9677 fixed `DropdownManager.js`, `webpack/church-info.js` and `SystemSettings.php`. Typing still finds hidden entries because search runs before the cap — which is exactly why this bug survives casual testing.
 
 ### Uppy v5 XHRUpload: Parse `response.responseText` to Surface Server Errors <!-- learned: 2026-04-21 -->
 
@@ -1378,7 +1391,7 @@ updateCalendarsEmptyHint(); // initial sync
 Hint markup:
 ```html
 <div class="form-text text-warning d-none" id="calendarsEmptyHint">
-  <i class="ti ti-info-circle me-1"></i>No calendar selected — this event will be saved but won't appear on any calendar view.
+  <i class="fa-solid fa-circle-info me-1"></i>No calendar selected — this event will be saved but won't appear on any calendar view.
 </div>
 ```
 
@@ -1478,13 +1491,20 @@ literal `</script>` before saving.
 3. CSP forbids inline `onclick` outright (the project rule lives in
    MEMORY.md → "no inline `onclick` (CSP)").
 
-**Pattern:** put the user string into an HTML attribute (`escapeHtml()` IS the
-right encoding here — attribute context), then read it from a delegated click
-handler.
+**Pattern:** put the user string into an HTML attribute, then read it from a
+delegated click handler.
+
+Use `window.CRM.escapeAttribute()` for **every** attribute context (`data-*`,
+`title=`, `value=`, …). `escapeHtml()` encodes only `&`, `<` and `>`, so a `"`
+or `'` in the value closes the quoted attribute early and the rest of the
+string is parsed as further attributes on the element; `escapeAttribute()`
+wraps `escapeHtml()` and additionally encodes both quote characters. Reserve
+`escapeHtml()` for HTML *text* context (element bodies, bootbox message
+strings). <!-- learned: 2026-09-12 -->
 
 ```js
 // In the row renderer (DataTables, list, etc.)
-var nameAttr = window.CRM.escapeHtml(row.Name);  // attribute-safe
+var nameAttr = window.CRM.escapeAttribute(row.Name);  // attribute-safe: also encodes " and '
 var html = '<button class="btn btn-outline-secondary"' +
   ' data-row-action="rename"' +
   ' data-row-id="' + row.Id + '"' +

@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-secondary text-white avatar rounded-circle">
-                            <i class="ti ti-users icon"></i>
+                            <i class="fa-solid fa-users icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -29,7 +29,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-success text-white avatar rounded-circle">
-                            <i class="ti ti-user icon"></i>
+                            <i class="fa-solid fa-user icon"></i>
                         </span>
                     </div>
                     <div class="col">

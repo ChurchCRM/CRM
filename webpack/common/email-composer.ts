@@ -316,7 +316,7 @@ function renderLoading(title: string): void {
   spinIcon.setAttribute("role", "status");
   spinIcon.setAttribute("aria-hidden", "true");
   const spinText = document.createElement("span");
-  spinText.textContent = i18next.t("Loading recipients\u2026");
+  spinText.textContent = i18next.t("Loading recipients…");
   spinner.appendChild(spinIcon);
   spinner.appendChild(spinText);
   modalBody.appendChild(spinner);
@@ -395,7 +395,7 @@ function updateCountBadge(): void {
     // Use baseRecipients.length (not currentEmails.length) — the expandable
     // list shows member emails only; defaultToAddress has its own checkbox.
     const word = baseRecipients.length === 1 ? i18next.t("recipient") : i18next.t("recipients");
-    recipientSummaryEl.textContent = `${baseRecipients.length} ${word} \u2014 ${i18next.t("click to expand")}`;
+    recipientSummaryEl.textContent = `${baseRecipients.length} ${word} — ${i18next.t("click to expand")}`;
   }
 }
 
@@ -438,7 +438,7 @@ function updateActionButtons(): void {
       const textNode = tooManyHintEl.lastChild;
       if (textNode instanceof Text) {
         textNode.nodeValue = i18next.t(
-          "This list has {{count}} recipients \u2014 too many for a mailto: link. Use Copy Addresses instead.",
+          "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.",
           { count: currentEmails.length },
         );
       }
@@ -600,7 +600,6 @@ function renderRecipients(
       listWrapper.appendChild(roleHeader);
       for (const email of roleEmails) {
         const line = document.createElement("div");
-        line.className = "ps-2";
         line.textContent = email;
         listWrapper.appendChild(line);
       }
@@ -788,31 +787,44 @@ function wireDataAttributes(): void {
 // ─────────────────────────────────────────────
 
 document.addEventListener("DOMContentLoaded", () => {
-  ensureModalExists();
-  wireDataAttributes();
+  const init = (): void => {
+    ensureModalExists();
+    wireDataAttributes();
 
-  // Reset the tooManyHintEl reference when the modal fully hides so it is
-  // re-created fresh on the next open (avoids stale DOM references).
-  if (modalEl) {
-    modalEl.addEventListener("hidden.bs.modal", () => {
-      // Abort any in-flight fetch so it doesn't write to the now-hidden DOM.
-      fetchController?.abort();
-      fetchController = null;
-      // Cancel any pending copy-feedback timer so it doesn't fire on the next open.
-      if (copyFeedbackTimer) {
-        clearTimeout(copyFeedbackTimer);
-        copyFeedbackTimer = null;
-      }
-      tooManyHintEl = null;
-      recipientListWrapperEl = null;
-      recipientSummaryEl = null;
-      byRoleMap = {};
-      activeRoles = new Set();
-      if (bccToggle) bccToggle.setAttribute("aria-pressed", "false");
-    });
+    // Reset the tooManyHintEl reference when the modal fully hides so it is
+    // re-created fresh on the next open (avoids stale DOM references).
+    if (modalEl) {
+      modalEl.addEventListener("hidden.bs.modal", () => {
+        // Abort any in-flight fetch so it doesn't write to the now-hidden DOM.
+        fetchController?.abort();
+        fetchController = null;
+        // Cancel any pending copy-feedback timer so it doesn't fire on the next open.
+        if (copyFeedbackTimer) {
+          clearTimeout(copyFeedbackTimer);
+          copyFeedbackTimer = null;
+        }
+        tooManyHintEl = null;
+        recipientListWrapperEl = null;
+        recipientSummaryEl = null;
+        byRoleMap = {};
+        activeRoles = new Set();
+        if (bccToggle) bccToggle.setAttribute("aria-pressed", "false");
+      });
+    }
+
+    // Expose on window.CRM for legacy callers (GroupView.js etc.)
+    window.CRM = window.CRM || {};
+    window.CRM.emailComposer = { open: openEmailComposer };
+  };
+
+  // ensureModalExists() calls i18next.t() synchronously while building the modal
+  // template. locale-loader.js loads translations asynchronously and only finishes
+  // i18next.init() after this DOMContentLoaded handler runs, so for any locale other
+  // than en_US, i18next.t() here would return undefined. Defer until locale-loader
+  // signals readiness (see #9609); fall back to immediate init if it isn't present.
+  if (window.CRM && typeof window.CRM.onLocalesReady === "function") {
+    window.CRM.onLocalesReady(init);
+  } else {
+    init();
   }
-
-  // Expose on window.CRM for legacy callers (GroupView.js etc.)
-  window.CRM = window.CRM || {};
-  window.CRM.emailComposer = { open: openEmailComposer };
 });

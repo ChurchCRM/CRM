@@ -2,8 +2,6 @@
 
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
-use ChurchCRM\Service\DonationFundService;
-use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -11,12 +9,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 /**
- * REST API for DonationFund CRUD — replaces legacy DonationFundEditor.php /
- * DonationFundRowOps.php workflow.
+ * Public (Finance-role) read-only REST API for DonationFund.
  *
- * Funds have a name, description, active enum ('true'|'false'), and an
- * ordering column. The API surfaces `active` as a JSON boolean to keep
- * clients from having to learn the quirky legacy enum.
+ * Admin CRUD (POST / PUT / DELETE / PATCH order) has been moved to
+ * /finance/api/funds (AdminRoleAuth) — see src/finance/routes/api/funds-api.php.
+ *
+ * These endpoints are used by forms that need a fund dropdown (e.g. pledge
+ * editor, payment entry) and are accessible to any finance-enabled user.
  */
 
 /**
@@ -40,13 +39,26 @@ $app->group('/donation-funds', function (RouteCollectorProxy $group): void {
      *     summary="List all donation funds (Finance role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Parameter(name="activeOnly", in="query", required=false, @OA\Schema(type="boolean")),
-     *     @OA\Response(response=200, description="Array of donation funds"),
+     *     @OA\Parameter(name="activeOnly", in="query", required=false, @OA\Schema(type="boolean"),
+     *         description="When true, return only active funds"),
+     *     @OA\Response(response=200, description="Array of donation funds",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="funds", type="array",
+     *                 @OA\Items(
+     *                     @OA\Property(property="id", type="integer"),
+     *                     @OA\Property(property="name", type="string"),
+     *                     @OA\Property(property="description", type="string"),
+     *                     @OA\Property(property="active", type="boolean"),
+     *                     @OA\Property(property="order", type="integer")
+     *                 )
+     *             )
+     *         )
+     *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required")
      * )
      */
-    $group->get('', function (Request $request, Response $response, array $args): Response {
+    $group->get('', function (Request $request, Response $response): Response {
         $params = $request->getQueryParams();
         $activeOnly = filter_var($params['activeOnly'] ?? false, FILTER_VALIDATE_BOOLEAN);
 
@@ -64,68 +76,13 @@ $app->group('/donation-funds', function (RouteCollectorProxy $group): void {
     });
 
     /**
-     * @OA\Post(
-     *     path="/donation-funds",
-     *     summary="Create a new donation fund (Finance role required)",
-     *     tags={"Finance"},
-     *     security={{"ApiKeyAuth":{}}},
-     *     @OA\RequestBody(required=true,
-     *         @OA\JsonContent(
-     *             required={"name"},
-     *             @OA\Property(property="name", type="string", maxLength=30),
-     *             @OA\Property(property="description", type="string", maxLength=100),
-     *             @OA\Property(property="active", type="boolean")
-     *         )
-     *     ),
-     *     @OA\Response(response=201, description="Newly created fund"),
-     *     @OA\Response(response=400, description="Validation error (missing name or duplicate)"),
-     *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Finance role required")
-     * )
-     */
-    $group->post('', function (Request $request, Response $response, array $args): Response {
-        try {
-            $input = (array) $request->getParsedBody();
-            $name = (string) ($input['name'] ?? '');
-            $description = (string) ($input['description'] ?? '');
-            $active = array_key_exists('active', $input)
-                ? filter_var($input['active'], FILTER_VALIDATE_BOOLEAN)
-                : true;
-
-            if ($name === '') {
-                return SlimUtils::renderErrorJSON($response, gettext('You must enter a name'), [], 400);
-            }
-
-            if (DonationFundQuery::create()->findOneByName($name) !== null) {
-                return SlimUtils::renderErrorJSON($response, gettext('That fund name already exists.'), [], 400);
-            }
-
-            // Append to the end of the current order
-            $maxOrderFund = DonationFundQuery::create()
-                ->orderByOrder('desc')
-                ->findOne();
-            $nextOrder = $maxOrderFund !== null ? ((int) $maxOrderFund->getOrder()) + 1 : 1;
-
-            $fund = new DonationFund();
-            $fund->setName($name);
-            $fund->setDescription($description);
-            $fund->setActive($active ? 'true' : 'false');
-            $fund->setOrder($nextOrder);
-            $fund->save();
-
-            return SlimUtils::renderJSON($response, ['fund' => donationFundToArray($fund)], 201);
-        } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to create donation fund'), [], 500, $e, $request);
-        }
-    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
-
-    /**
      * @OA\Get(
      *     path="/donation-funds/{id}",
      *     summary="Get a single donation fund (Finance role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer"),
+     *         description="Fund ID"),
      *     @OA\Response(response=200, description="Donation fund object"),
      *     @OA\Response(response=404, description="Fund not found"),
      *     @OA\Response(response=401, description="Unauthorized"),
@@ -139,105 +96,5 @@ $app->group('/donation-funds', function (RouteCollectorProxy $group): void {
         }
 
         return SlimUtils::renderJSON($response, ['fund' => donationFundToArray($fund)]);
-    });
-
-    /**
-     * @OA\Put(
-     *     path="/donation-funds/{id}",
-     *     summary="Update a donation fund (Finance role required)",
-     *     tags={"Finance"},
-     *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\RequestBody(required=true,
-     *         @OA\JsonContent(
-     *             @OA\Property(property="name", type="string", maxLength=30),
-     *             @OA\Property(property="description", type="string", maxLength=100),
-     *             @OA\Property(property="active", type="boolean")
-     *         )
-     *     ),
-     *     @OA\Response(response=200, description="Updated fund"),
-     *     @OA\Response(response=400, description="Validation error (blank or duplicate name)"),
-     *     @OA\Response(response=404, description="Fund not found"),
-     *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Finance role required")
-     * )
-     */
-    $group->put('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        try {
-            $id = (int) $args['id'];
-            $fund = DonationFundQuery::create()->findPk($id);
-            if ($fund === null) {
-                return SlimUtils::renderErrorJSON($response, gettext('Donation fund not found'), [], 404);
-            }
-
-            $input = (array) $request->getParsedBody();
-
-            if (array_key_exists('name', $input)) {
-                $name = (string) $input['name'];
-                if ($name === '') {
-                    return SlimUtils::renderErrorJSON($response, gettext('You must enter a name'), [], 400);
-                }
-                // Reject duplicate rename — allow keeping own name
-                $existing = DonationFundQuery::create()->findOneByName($name);
-                if ($existing !== null && (int) $existing->getId() !== $id) {
-                    return SlimUtils::renderErrorJSON($response, gettext('That fund name already exists.'), [], 400);
-                }
-                $fund->setName($name);
-            }
-
-            if (array_key_exists('description', $input)) {
-                $fund->setDescription((string) $input['description']);
-            }
-
-            if (array_key_exists('active', $input)) {
-                $fund->setActive(filter_var($input['active'], FILTER_VALIDATE_BOOLEAN) ? 'true' : 'false');
-            }
-
-            $fund->save();
-
-            return SlimUtils::renderJSON($response, ['fund' => donationFundToArray($fund)]);
-        } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to update donation fund'), [], 500, $e, $request);
-        }
-    })->add(new InputSanitizationMiddleware(['name' => 'text', 'description' => 'text']));
-
-    /**
-     * @OA\Delete(
-     *     path="/donation-funds/{id}",
-     *     summary="Delete a donation fund (Finance role required)",
-     *     tags={"Finance"},
-     *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Deleted"),
-     *     @OA\Response(response=404, description="Fund not found"),
-     *     @OA\Response(response=409, description="Fund is still referenced by one or more pledges"),
-     *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Finance role required")
-     * )
-     */
-    $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        try {
-            $id = (int) $args['id'];
-            // Delegate to DonationFundService::deleteFund which:
-            //   1. Throws InvalidArgumentException when the fund is missing (→ 404)
-            //   2. Throws RuntimeException when associated pledges exist (→ 409)
-            //   3. Full-renumbers remaining funds' fun_Order on success
-            (new DonationFundService())->deleteFund($id);
-
-            return SlimUtils::renderSuccessJSON($response);
-        } catch (\InvalidArgumentException $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Donation fund not found'), [], 404);
-        } catch (\RuntimeException $e) {
-            return SlimUtils::renderErrorJSON(
-                $response,
-                gettext('Cannot delete donation fund: it is still referenced by one or more pledges.'),
-                [],
-                409,
-                $e,
-                $request
-            );
-        } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to delete donation fund'), [], 500, $e, $request);
-        }
     });
 })->add(FinanceRoleAuthMiddleware::class);

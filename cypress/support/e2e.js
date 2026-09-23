@@ -51,6 +51,12 @@ Cypress.on('uncaught:exception', (err) => {
   if (/^An unknown error has occurred:\s*\[object Object\]$/.test(message)) {
     return false;
   }
+  // FC v7 fires a benign ResizeObserver notification in some CI environments
+  // (Chrome/Electron). The notification is not an error; suppress it so it
+  // doesn't fail unrelated calendar tests.
+  if (message.includes('ResizeObserver loop')) {
+    return false;
+  }
 });
 
 window.addEventListener('error', (event) => {

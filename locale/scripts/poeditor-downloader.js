@@ -139,30 +139,226 @@ async function fetchUntranslatedTerms(poEditorLocale) {
     });
 }
 
+// CLDR plural category names, in canonical order.
+const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
+
+// Cache of poEditorLocale -> ordered CLDR categories (or null when Intl can't resolve
+// a category set for that language code), so we only ask Intl.PluralRules once per locale.
+const pluralCategoriesCache = new Map();
+
+// Every i18next `{{count}}` / `%d` interpolation in this codebase is a plain
+// whole number — never a formatted decimal. `Intl.PluralRules.resolvedOptions()
+// .pluralCategories` reports every category the locale's grammar EVER uses,
+// including ones that only trigger for numbers with visible decimal digits
+// (v != 0) — e.g. Czech/Slovak "many" and French "many" are exclusively
+// decimal-only and can never be selected by `.select(<integer>)`. Trusting
+// the raw resolved list would ask translators to fill in a category that
+// production code can never actually reach. Sample `.select()` across a wide
+// integer range instead, so only categories reachable for real whole-number
+// counts are required.
+const PLURAL_SAMPLE_MAX = 1000;
+
 /**
- * Restructure POEditor export from malformed to correct format for upload.
- * POEditor returns: { "one": { term1: "...", term2: "..." }, "other": { ... } }
- * We need: { "term1": { "one": "...", "other": "..." }, "term2": { ... } }
+ * Returns this locale's required CLDR plural categories, in canonical order
+ * (zero, one, two, few, many, other), using the real language code from
+ * src/locale/locales.json and the platform's Intl.PluralRules data — scoped
+ * to categories actually reachable for integer counts (see PLURAL_SAMPLE_MAX
+ * comment above). "other" is always included: i18next treats it as the
+ * mandatory fallback category regardless of whether a locale's grammar ever
+ * selects it for a plain integer.
+ *
+ * Returns null when the language code can't be resolved or Intl doesn't
+ * recognise it — callers must fall back to the old one/other-only behaviour
+ * in that case rather than guessing.
  */
-function restructurePluralForms(data) {
-    if (!data.one && !data.other) return data;
-    if (typeof data.one === 'object' && typeof data.other === 'object') {
-        const restructured = {};
-        for (const [key, value] of Object.entries(data)) {
-            if (key !== 'one' && key !== 'other' && typeof value === 'string') {
-                restructured[key] = value;
+function getPluralCategoriesForLocale(poEditorLocale) {
+    if (pluralCategoriesCache.has(poEditorLocale)) {
+        return pluralCategoriesCache.get(poEditorLocale);
+    }
+
+    let result = null;
+    const entry = Object.values(localesConfig).find(
+        (config) => config.poEditor && config.poEditor.toLowerCase() === poEditorLocale.toLowerCase()
+    );
+    const languageCode = entry && entry.languageCode;
+
+    if (languageCode) {
+        try {
+            const pluralRules = new Intl.PluralRules(languageCode);
+            const reachable = new Set(['other']);
+            for (let n = 0; n <= PLURAL_SAMPLE_MAX; n++) reachable.add(pluralRules.select(n));
+            result = CLDR_PLURAL_FORMS.filter((form) => reachable.has(form));
+        } catch (err) {
+            // The expected failure here is Intl.PluralRules throwing a RangeError for
+            // an unrecognised BCP-47 language tag — leave result null so the caller
+            // falls back to the legacy one/other-only behaviour. Anything else (e.g. a
+            // future refactor breaking CLDR_PLURAL_FORMS) would otherwise be silently
+            // absorbed with no diagnostic, so surface those.
+            if (!(err instanceof RangeError)) {
+                console.warn(`  ⚠️  getPluralCategoriesForLocale("${poEditorLocale}"): unexpected error, falling back to one/other — ${err.message}`);
             }
         }
-        const termKeys = new Set([...Object.keys(data.one || {}), ...Object.keys(data.other || {})]);
-        for (const term of termKeys) {
-            const pluralForms = {};
-            if (data.one != null && data.one[term] !== undefined && data.one[term] !== null) pluralForms.one = data.one[term];
-            if (data.other != null && data.other[term] !== undefined && data.other[term] !== null) pluralForms.other = data.other[term];
-            if (Object.keys(pluralForms).length > 0) restructured[term] = pluralForms;
-        }
-        return restructured;
     }
-    return data;
+
+    pluralCategoriesCache.set(poEditorLocale, result);
+    return result;
+}
+
+/**
+ * Convert pipe-separated plurals to nested plural format for i18next.
+ *
+ * POEditor's key_value_json format with plural support uses pipe-separated strings:
+ *   "Copied {{count}} members": "Copied {{count}} member|Copied {{count}} members"
+ *
+ * i18next expects nested structure:
+ *   "Copied {{count}} members": { "one": "...", "other": "..." }
+ *
+ * This function detects pipe-separated plurals and converts them to nested format.
+ * Handles all CLDR plural categories in order: zero, one, two, few, many, other.
+ */
+// Term keys that carry a counting placeholder — the only kind of term
+// `poeditor-upload-missing.js`'s convertPluralsToSeparated() ever pipe-joins.
+// Gates the pipe-split heuristic below so an ordinary translated string that
+// happens to contain a literal "|" (e.g. "Ctrl | Cmd") is never mistaken for
+// an encoded plural.
+const COUNT_PLACEHOLDER_PATTERN = /\{\{\s*\w*count\w*\s*\}\}|%\d*d/i;
+
+function convertPipeSeparatedPlurals(data, poEditorLocale) {
+    if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
+
+    const requiredForms = poEditorLocale ? getPluralCategoriesForLocale(poEditorLocale) : null;
+    const result = {};
+
+    for (const [term, value] of Object.entries(data)) {
+        if (typeof value === 'string' && COUNT_PLACEHOLDER_PATTERN.test(term)) {
+            // Check if this is a pipe-separated plural (contains | and multiple non-empty parts)
+            const parts = value.split('|').map(s => s.trim());
+            if (parts.length > 1 && parts.every(p => p.length > 0)) {
+                let pluralForms = null;
+                if (requiredForms && parts.length === requiredForms.length) {
+                    // Exact match against this locale's real CLDR category count —
+                    // map positions directly onto the canonical order Intl.PluralRules
+                    // reports for this language. Resolves cases (3+ forms) that used
+                    // to be ambiguous without per-locale metadata.
+                    //
+                    // NOTE: this positional mapping is only correct when POEditor's pipe
+                    // export order matches CLDR canonical order for this locale. That
+                    // holds for every locale ChurchCRM currently supports, but is not a
+                    // language-universal guarantee — e.g. Latvian's gettext plural-index
+                    // order ([one, other, zero]) diverges from its CLDR canonical order
+                    // ([zero, one, other]). Verify this still holds before adding any new
+                    // locale whose gettext plural-index order might diverge from CLDR.
+                    pluralForms = {};
+                    requiredForms.forEach((form, i) => { pluralForms[form] = parts[i]; });
+                } else if (parts.length === 2) {
+                    // Legacy/no-metadata fallback: the upload side's universal 2-part
+                    // convention is always [one, other] (see poeditor-upload-missing.js
+                    // convertPluralsToSeparated). If this locale actually needs more
+                    // categories than that (e.g. Arabic needs 6, Russian needs 4), pad
+                    // the missing ones as empty stubs so translators/agents are prompted
+                    // to fill them in — instead of silently leaving the term as a
+                    // 2-category object that can never represent the other CLDR forms.
+                    pluralForms = { one: parts[0], other: parts[1] };
+                    if (requiredForms && requiredForms.length > 2) {
+                        const expanded = {};
+                        for (const form of requiredForms) {
+                            expanded[form] = Object.prototype.hasOwnProperty.call(pluralForms, form) ? pluralForms[form] : '';
+                        }
+                        pluralForms = expanded;
+                    }
+                } else if (parts.length >= 3 && parts.length <= CLDR_PLURAL_FORMS.length) {
+                    // 3+ segments with no matching per-locale category count — there is no
+                    // fixed order that is correct for every language without metadata.
+                    // Guessing wrong would silently attach a translation to the wrong
+                    // plural category, which is worse than leaving the term as an
+                    // unconverted pipe string. Warn and pass through.
+                    console.warn(`  ⚠️  convertPipeSeparatedPlurals: "${term}" has ${parts.length} pipe-separated forms — cannot determine CLDR category order without per-locale plural metadata; leaving as a literal string. Fix manually if this term needs true plural forms.`);
+                }
+                result[term] = pluralForms && Object.keys(pluralForms).length > 1 ? pluralForms : value;
+            } else {
+                result[term] = value;
+            }
+        } else {
+            // Already nested, non-string, or a term with no counting placeholder — pass through
+            result[term] = value;
+        }
+    }
+
+    return result;
+}
+
+/**
+ * Restructure POEditor's inverted plural export into i18next's nested shape.
+ *
+ * POEditor's key_value_json format groups translated plural terms BY plural
+ * form (the inverted layout):
+ *   { "one": { term1: "...", term2: "..." }, "few": { ... }, "many": { ... }, "other": { ... } }
+ *
+ * i18next expects each term to own its plural forms (the nested layout):
+ *   { term1: { "one": "...", "few": "...", "many": "...", "other": "..." }, term2: { ... } }
+ *
+ * This function handles every CLDR plural category (zero/one/two/few/many/other),
+ * not just one/other, and triggers whenever ANY plural-form bucket is present at
+ * the top level — so languages that export e.g. { "one": {...}, "many": {...} }
+ * without an "other" bucket are still correctly re-nested.
+ *
+ * Terms already in the nested shape (Type A: stored as plain JSON objects in
+ * POEditor) and plain string terms are passed through untouched.
+ */
+function restructurePluralForms(data) {
+    if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
+
+    // Detect inverted buckets: top-level keys whose name is a CLDR plural form, whose
+    // value is a plain object, AND whose own values are all strings (or null/undefined).
+    // The string-values check is the key guard: POEditor's inverted layout always stores
+    // translation strings inside the bucket, whereas a legitimate i18next namespace
+    // segment would contain nested objects as values — so that case is not triggered.
+    const invertedFormKeys = CLDR_PLURAL_FORMS.filter((form) => {
+        const v = data[form];
+        return (
+            v != null &&
+            typeof v === 'object' &&
+            !Array.isArray(v) &&
+            Object.values(v).length > 0 &&
+            Object.values(v).every(
+                (val) => val === null || val === undefined || typeof val === 'string'
+            )
+        );
+    });
+    if (invertedFormKeys.length === 0) return data;
+
+    const restructured = {};
+
+    // Pass through everything that is not an inverted bucket:
+    //   - plain string terms  (e.g. { "term": "translation" })
+    //   - already-nested plural terms  (e.g. { "term": { "one": "...", "other": "..." } })
+    for (const [key, value] of Object.entries(data)) {
+        if (invertedFormKeys.includes(key)) continue;
+        restructured[key] = value;
+    }
+
+    // Re-nest each term found across the inverted plural-form buckets.
+    const termKeys = new Set();
+    for (const form of invertedFormKeys) {
+        for (const term of Object.keys(data[form])) termKeys.add(term);
+    }
+    for (const term of termKeys) {
+        const pluralForms = {};
+        for (const form of invertedFormKeys) {
+            const val = data[form][term];
+            if (val !== undefined && val !== null) pluralForms[form] = val;
+        }
+        if (Object.keys(pluralForms).length > 0) {
+            if (Object.prototype.hasOwnProperty.call(restructured, term)) {
+                // A pass-through key shares the same name as a bucket term.
+                // The re-nested plural value takes precedence.
+                console.warn(`restructurePluralForms: key "${term}" exists both as a pass-through entry and inside plural buckets; plural re-nesting takes precedence.`);
+            }
+            restructured[term] = pluralForms;
+        }
+    }
+
+    return restructured;
 }
 
 /**
@@ -170,8 +366,9 @@ function restructurePluralForms(data) {
  * Returns array of written file paths.
  */
 function saveBatchedMissingTerms(poEditorCode, missingTerms) {
-    missingTerms = restructurePluralForms(missingTerms);
-
+    // Callers are responsible for calling restructurePluralForms before this
+    // function.  Do NOT call it here — a second pass would re-invert any term
+    // whose key happens to be a CLDR plural form name (e.g. "one", "other").
     const localeOutDir = path.join(MISSING_OUTPUT_DIR, poEditorCode);
 
     if (!fs.existsSync(localeOutDir)) {
@@ -328,11 +525,6 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                 fs.mkdirSync(outputFileDir, { recursive: true });
             }
             
-            // Delete old file if it exists (just before download to minimize downtime)
-            if (fs.existsSync(outputPath)) {
-                fs.unlinkSync(outputPath);
-            }
-            
             return new Promise((resolve, reject) => {
                 https.get(downloadUrl, (res) => {
                     // Check for non-2xx HTTP status
@@ -352,11 +544,42 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
                             reject(new Error(`Downloaded file is empty (0 bytes) for ${format.type}`));
                             return;
                         }
-                        // Add trailing newline for JSON files (POSIX standard)
-                        if (format.ext === 'json' && fileData[fileData.length - 1] !== 0x0A) {
-                            fileData = Buffer.concat([fileData, Buffer.from('\n')]);
-                        }                        
-                        fs.writeFileSync(outputPath, fileData);
+                        if (format.ext === 'json') {
+                            // Convert POEditor formats (pipe-separated and inverted plurals) to i18next nested format:
+                            // 1. Pipe-separated plurals: "singular|plural" → { one: "singular", other: "plural" }
+                            // 2. Inverted plural buckets: { one: { term: "..." } } → { term: { one: "..." } }
+                            // Then normalise formatting and add newline.
+                            try {
+                                const parsed = JSON.parse(fileData.toString('utf8'));
+                                let converted = convertPipeSeparatedPlurals(parsed, poEditorLocale);
+                                const restructured = restructurePluralForms(converted);
+                                fileData = Buffer.from(JSON.stringify(restructured, null, 2) + '\n', 'utf8');
+                            } catch (err) {
+                                reject(new Error(`Failed to restructure plural forms for ${format.type}: ${err.message}`));
+                                return;
+                            }
+                        }
+                        // Write to a temp file first, then atomically rename to outputPath.
+                        // This ensures the original file is never deleted if the write or
+                        // restructure fails — the original stays in place until we succeed.
+                        const tempPath = outputPath + '.tmp';
+                        try {
+                            // False positive — two independent reasons this write is safe:
+                            // 1. Path safety: outputPath is derived solely from hardcoded __dirname-relative
+                            //    directory constants and a locale code from our own src/locale/locales.json;
+                            //    no part of the path comes from the network response (no path traversal).
+                            // 2. Content safety: for JSON, fileData is fully re-serialised via
+                            //    JSON.parse → restructurePluralForms → JSON.stringify before reaching this
+                            //    point, so the bytes written are locally generated.  For PO/MO, the bytes
+                            //    are raw but are data-only locale files from our own authenticated POEditor
+                            //    project (POEDITOR_TOKEN required) written to a controlled dev directory.
+                            fs.writeFileSync(tempPath, fileData); // lgtm[js/network-data-written-to-file]
+                            fs.renameSync(tempPath, outputPath);
+                        } catch (err) {
+                            try { fs.unlinkSync(tempPath); } catch (_) {}
+                            reject(new Error(`Failed to write file for ${format.type}: ${err.message}`));
+                            return;
+                        }
                         const fileSize = fileData.length;
                         console.log(`    ✅ ${format.ext.toUpperCase()}: ${fileSize} bytes`);
                         resolve();
@@ -457,7 +680,9 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
         if (localeCfg && localeCfg.skip_audit === true) {
             console.log(`  ⏭️  Skipping missing-terms for ${locale} (skip_audit)`);
         } else {
-            const missing = await fetchUntranslatedTerms(poEditorLocale);
+            let missing = await fetchUntranslatedTerms(poEditorLocale);
+            missing = convertPipeSeparatedPlurals(missing, poEditorLocale);
+            missing = restructurePluralForms(missing);
             const termCount = Object.keys(missing).length;
 
             if (termCount === 0) {

@@ -87,9 +87,9 @@ use Slim\Views\PhpRenderer;
 
 use ChurchCRM\view\PageHeader;
 
-$app->get('/admin/system/users', function (Request $request, Response $response): Response {
-    $container = $this->getContainer();
-    $userService = $container->get('UserService');
+// Path is relative to the /admin base path set by MvcAppFactory::create()
+$app->get('/system/users', function (Request $request, Response $response): Response {
+    $userService = new UserService();
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
     return $renderer->render($response, 'users.php', [
@@ -160,12 +160,12 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/admin/api/users', function (RouteCollectorProxy $group): void {
+// Path is relative to the /admin base path — do not repeat the '/admin' prefix
+$app->group('/api/users', function (RouteCollectorProxy $group): void {
     $group->post('/{userId}/reset-password', function (Request $request, Response $response, array $args): Response {
         try {
-            $container = $this->getContainer();
-            $userService = $container->get('UserService');
-            
+            $userService = new UserService();
+
             $userId = (int)$args['userId'];
             $result = $userService->resetPassword($userId);
             

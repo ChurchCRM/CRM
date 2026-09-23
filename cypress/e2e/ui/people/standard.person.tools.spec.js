@@ -27,9 +27,9 @@ describe("People Tools", () => {
         cy.get("#selfRegistrations tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
     });
 
-    it("Geo Page", () => {
-        cy.visit("GeoPage.php");
-        cy.contains("Family Geographic Utilities");
+    it("Find Neighbors", () => {
+        cy.visit("people/map/neighbors");
+        cy.contains("Find Neighbors");
     });
 
 });

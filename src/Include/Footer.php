@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
 
+use ChurchCRM\Utils\InputUtils;
 $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 ?>
       </div><!-- /.container-xl -->
@@ -94,7 +95,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.select.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/select.bootstrap5.min.js') ?>"></script>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
+<!-- temporal-polyfill and FullCalendar v7 are now bundled in event-calendars.min.js via webpack.
+     They are no longer loaded as global scripts here. -->
 <script src="<?= SystemURLs::assetVersioned('/skin/external/bootbox/bootbox.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/i18next/i18next.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/just-validate/just-validate.production.min.js') ?>"></script>
@@ -104,7 +106,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     // Load locale files dynamically
     (function() {
-        const localeConfig = <?= json_encode(Bootstrapper::getCurrentLocale()->getLocaleConfigArray()) ?>;
+        const localeConfig = <?= InputUtils::jsonEncodeForScript(Bootstrapper::getCurrentLocale()->getLocaleConfigArray()) ?>;
         if (window.CRM && window.CRM.loadLocaleFiles) {
             window.CRM.loadLocaleFiles(localeConfig);
         }
@@ -118,10 +120,10 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
         var icon = this.querySelector('i');
         if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen();
-            if (icon) { icon.className = 'ti ti-minimize'; }
+            if (icon) { icon.className = 'fa-solid fa-compress'; }
         } else {
             document.exitFullscreen();
-            if (icon) { icon.className = 'ti ti-maximize'; }
+            if (icon) { icon.className = 'fa-solid fa-maximize'; }
         }
     });
 </script>
@@ -129,7 +131,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <?php if (isset($sGlobalMessage) && !empty($sGlobalMessage)) { ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $("document").ready(function () {
-            showGlobalMessage(<?= json_encode($sGlobalMessage) ?>, <?= json_encode($sGlobalMessageClass) ?>);
+            showGlobalMessage(<?= InputUtils::jsonEncodeForScript($sGlobalMessage) ?>, <?= InputUtils::jsonEncodeForScript($sGlobalMessageClass) ?>);
         });
     </script>
 <?php } ?>

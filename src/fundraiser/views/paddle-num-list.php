@@ -68,21 +68,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="dropdown">
               <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown"
                       data-bs-display="static" aria-expanded="false">
-                <i class="ti ti-dots-vertical"></i>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
               </button>
               <div class="dropdown-menu dropdown-menu-end">
                 <a class="dropdown-item"
                    href="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/paddle-numbers/editor/<?= $pn_ID ?>">
-                  <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                  <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                 </a>
                 <div class="dropdown-divider"></div>
                 <?php /* Standalone form — NOT nested inside the statement form above */ ?>
                 <form method="post"
                       action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/paddle-numbers/<?= $pn_ID ?>/delete"
-                      onsubmit="return confirm(<?= htmlspecialchars(json_encode(gettext('Delete this paddle number?'))) ?>)">
+                      onsubmit="return confirm(<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript(gettext('Delete this paddle number?'))) ?>)">
                   <?= $csrfPaddleDeleteField ?>
                   <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
-                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                    <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                   </button>
                 </form>
               </div>
@@ -97,7 +97,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 (function () {
-  var noSelectionMsg = <?= json_encode(gettext('Please select at least one buyer to generate statements.')) ?>;
+  var noSelectionMsg = <?= InputUtils::jsonEncodeForScript(gettext('Please select at least one buyer to generate statements.')) ?>;
 
   document.getElementById('generateStatementsForm').addEventListener('submit', function (e) {
     var checked = document.querySelectorAll('.pledge-select:checked');

@@ -7,7 +7,7 @@ use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\FamilyPledgeSummaryService;
-use ChurchCRM\utils\FiscalYearUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -211,6 +211,18 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         $familyId = $pledge['familyId'];
         $familyName = $pledge['familyName'];
         $depositId = $pledge['depositId'] ?? 0;
+
+        // Defence-in-depth: if this payment belongs to a closed deposit, editing
+        // is not permitted — redirect to the read-only detail view.
+        if ($depositId > 0) {
+            $deposit = DepositQuery::create()->findOneById($depositId);
+            if ($deposit !== null && $deposit->getClosed()) {
+                return $response
+                    ->withHeader('Location', SystemURLs::getRootPath() . '/finance/pledge/' . rawurlencode($groupKey))
+                    ->withStatus(302);
+            }
+        }
+
         $linkBack = RedirectUtils::getLinkBackFromRequest('');
 
         // Active donation funds

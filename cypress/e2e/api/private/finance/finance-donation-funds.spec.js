@@ -1,16 +1,16 @@
 /// <reference types="cypress" />
 
 /**
- * API tests for DonationFund CRUD endpoints
+ * API tests for DonationFund READ-ONLY endpoints
+ *
+ * Write operations (POST / PUT / DELETE) have moved to the admin-only
+ * /finance/api/funds endpoint (see finance-funds.spec.js).
  *
  * Covers:
  *   GET    /api/donation-funds
- *   POST   /api/donation-funds
  *   GET    /api/donation-funds/{id}
- *   PUT    /api/donation-funds/{id}
- *   DELETE /api/donation-funds/{id}
  */
-describe("API Private Donation Funds", () => {
+describe("API Private Donation Funds (read-only)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -43,65 +43,6 @@ describe("API Private Donation Funds", () => {
         });
     });
 
-    describe("POST /api/donation-funds - Create fund", () => {
-        it("Creates a fund and returns 201", () => {
-            const name = `Cypress Fund ${Date.now()}`;
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/donation-funds",
-                { name, description: "Test desc", active: true },
-                201,
-            ).then((response) => {
-                const fund = response.body.fund;
-                expect(fund.id).to.be.a("number");
-                expect(fund.name).to.equal(name);
-                expect(fund.description).to.equal("Test desc");
-                expect(fund.active).to.equal(true);
-                expect(fund.order).to.be.a("number");
-
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `/api/donation-funds/${fund.id}`,
-                    null,
-                    200,
-                );
-            });
-        });
-
-        it("Returns 400 when name is empty", () => {
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/donation-funds",
-                { name: "", description: "x" },
-                400,
-            );
-        });
-
-        it("Returns 400 when name is a duplicate", () => {
-            const name = `Cypress Dup Fund ${Date.now()}`;
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/donation-funds",
-                { name },
-                201,
-            ).then((resp) => {
-                const id = resp.body.fund.id;
-                cy.makePrivateAdminAPICall(
-                    "POST",
-                    "/api/donation-funds",
-                    { name },
-                    400,
-                );
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `/api/donation-funds/${id}`,
-                    null,
-                    200,
-                );
-            });
-        });
-    });
-
     describe("GET /api/donation-funds/{id}", () => {
         it("Returns 404 for non-existent fund", () => {
             cy.makePrivateAdminAPICall(
@@ -112,177 +53,24 @@ describe("API Private Donation Funds", () => {
             );
         });
 
-        it("Returns 200 with fund object for existing fund", () => {
+        it("Returns 200 with fund object for seeded fund", () => {
+            // Use fund id=1 which always exists in the test seed data
             cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/donation-funds",
-                { name: `Cypress GetFund ${Date.now()}` },
-                201,
-            ).then((createResp) => {
-                const id = createResp.body.fund.id;
-                cy.makePrivateAdminAPICall(
-                    "GET",
-                    `/api/donation-funds/${id}`,
-                    null,
-                    200,
-                ).then((getResp) => {
-                    expect(getResp.body.fund.id).to.equal(id);
-                });
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `/api/donation-funds/${id}`,
-                    null,
-                    200,
-                );
-            });
-        });
-    });
-
-    describe("PUT /api/donation-funds/{id}", () => {
-        it("Returns 404 for non-existent fund", () => {
-            cy.makePrivateAdminAPICall(
-                "PUT",
-                "/api/donation-funds/999999",
-                { name: "nope" },
-                404,
-            );
-        });
-
-        it("Updates name, description, and active", () => {
-            const orig = `Cypress Orig ${Date.now()}`;
-            const updated = `Cypress Upd ${Date.now()}`;
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/donation-funds",
-                { name: orig, active: true },
-                201,
-            ).then((createResp) => {
-                const id = createResp.body.fund.id;
-                cy.makePrivateAdminAPICall(
-                    "PUT",
-                    `/api/donation-funds/${id}`,
-                    { name: updated, description: "desc2", active: false },
-                    200,
-                ).then((updateResp) => {
-                    expect(updateResp.body.fund.name).to.equal(updated);
-                    expect(updateResp.body.fund.description).to.equal("desc2");
-                    expect(updateResp.body.fund.active).to.equal(false);
-                });
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `/api/donation-funds/${id}`,
-                    null,
-                    200,
-                );
-            });
-        });
-
-        it("Allows keeping the same name without triggering duplicate check", () => {
-            const name = `Cypress SameName ${Date.now()}`;
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/donation-funds",
-                { name },
-                201,
-            ).then((createResp) => {
-                const id = createResp.body.fund.id;
-                cy.makePrivateAdminAPICall(
-                    "PUT",
-                    `/api/donation-funds/${id}`,
-                    { name, description: "updated" },
-                    200,
-                );
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `/api/donation-funds/${id}`,
-                    null,
-                    200,
-                );
-            });
-        });
-
-        it("Returns 400 when name is blank", () => {
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/donation-funds",
-                { name: `Cypress PutEmpty ${Date.now()}` },
-                201,
-            ).then((createResp) => {
-                const id = createResp.body.fund.id;
-                cy.makePrivateAdminAPICall(
-                    "PUT",
-                    `/api/donation-funds/${id}`,
-                    { name: "" },
-                    400,
-                );
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `/api/donation-funds/${id}`,
-                    null,
-                    200,
-                );
-            });
-        });
-    });
-
-    describe("DELETE /api/donation-funds/{id}", () => {
-        it("Returns 404 for non-existent fund", () => {
-            cy.makePrivateAdminAPICall(
-                "DELETE",
-                "/api/donation-funds/999999",
-                null,
-                404,
-            );
-        });
-
-        it("Returns 409 when deleting a fund that is still referenced by pledges", () => {
-            // Seed data: fund id=1 ("Pledges") is referenced by rows in pledge_plg.
-            // The DELETE route must block with 409 Conflict — it delegates to
-            // DonationFundService::deleteFund, which throws RuntimeException.
-            cy.makePrivateAdminAPICall(
-                "DELETE",
+                "GET",
                 "/api/donation-funds/1",
                 null,
-                409,
-            ).then((resp) => {
-                expect(resp.body).to.have.property("success", false);
-                expect(resp.body).to.have.property("message");
-                expect(resp.body.message).to.match(/pledge/i);
-            });
-        });
-
-        it("Deletes an existing fund", () => {
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/donation-funds",
-                { name: `Cypress Del ${Date.now()}` },
-                201,
-            ).then((createResp) => {
-                const id = createResp.body.fund.id;
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `/api/donation-funds/${id}`,
-                    null,
-                    200,
-                ).then((delResp) => {
-                    expect(delResp.body).to.have.property("success", true);
-                });
-                cy.makePrivateAdminAPICall(
-                    "GET",
-                    `/api/donation-funds/${id}`,
-                    null,
-                    404,
-                );
+                200,
+            ).then((response) => {
+                expect(response.body).to.have.property("fund");
+                expect(response.body.fund.id).to.equal(1);
+                expect(response.body.fund).to.have.property("name");
+                expect(response.body.fund).to.have.property("active");
             });
         });
     });
 
     describe("Access control", () => {
         it("Returns 401 when no API key is provided", () => {
-            // cy.clearCookies() removes the session cookie from Cypress's cookie jar
-            // so the request is truly unauthenticated (no API key, no session cookie).
-            // Note: withCredentials:false is NOT effective for cy.request() — it uses a
-            // Node-side HTTP client that ignores that XHR option.
             cy.clearCookies();
             cy.request({
                 method: "GET",
@@ -295,9 +83,6 @@ describe("API Private Donation Funds", () => {
         });
 
         it("Denies a caller without Finance permission", () => {
-            // The no-finance API key may resolve to a user that lacks the
-            // Finance role (403) or to a key that isn't seeded at all (401).
-            // Matches the existing finance-deposits.spec.js convention.
             cy.makePrivateNoFinanceAPICall(
                 "GET",
                 "/api/donation-funds",

@@ -30,7 +30,15 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
     // ?? → ?: fix enables — if the fix regresses the /fullcalendar endpoint
     // will return 400 and the test will fail.
     const viewStart = `${dateStr.slice(0, 7)}-01T00:00:00`; // first of the month
-    const viewEnd   = `${dateStr.slice(0, 7)}-31T00:00:00`; // past month end (safe)
+    // Use the first instant of the *next* month as viewEnd (exclusive bound).
+    // "-31T00:00:00" is wrong for events on the 31st: the PHP filter is
+    // event_start < viewEnd (strict), so an event at 14:00 on the 31st is
+    // excluded when viewEnd is "...-31T00:00:00". Using next-month-01 is the
+    // standard FullCalendar convention and is always safe.
+    // Use UTC methods throughout so viewEnd is consistent with dateStr (also UTC).
+    const _nextYear  = target.getUTCMonth() === 11 ? target.getUTCFullYear() + 1 : target.getUTCFullYear();
+    const _nextMon   = target.getUTCMonth() === 11 ? 1 : target.getUTCMonth() + 2; // +2: getUTCMonth is 0-based
+    const viewEnd    = `${_nextYear}-${String(_nextMon).padStart(2, "0")}-01T00:00:00`;
 
     let calendarId;
     let accessToken;
@@ -199,8 +207,10 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
             expect(resp.status, "HTML calendar page must return 200").to.equal(200);
             expect(resp.headers["content-type"]).to.include("text/html");
 
-            // FullCalendar bundle must be loaded
-            expect(resp.body).to.include("fullcalendar/index.global.min.js");
+            // FullCalendar webpack bundle must be loaded (temporal-polyfill + FC bundled via ESM).
+            // v6: fullcalendar/index.global.min.js (old, removed)
+            // v7 webpack: external-calendar.min.js
+            expect(resp.body).to.include("external-calendar.min.js");
 
             // The stale moment-with-locales.min.js (which 404ed and broke the page)
             // must no longer be referenced
@@ -209,8 +219,10 @@ describe("Public Calendar - Event Visibility (regression: PR #8981)", () => {
                 "moment-with-locales.min.js must be removed (file does not exist on disk)",
             ).not.to.include("moment-with-locales.min.js");
 
-            // FullCalendar's timeZone option must be wired up
-            expect(resp.body).to.include("timeZone:");
+            // FullCalendar's timeZone option must be wired up.
+            // The value is passed as a JSON blob (window.CRM.externalCalendarArgs),
+            // so the key is quoted: '"timeZone":' not 'timeZone:'.
+            expect(resp.body).to.include('"timeZone":');
 
             // --- Framing headers: calendar.php (happy path) ---
             // The page must be embeddable in a cross-origin <iframe>.

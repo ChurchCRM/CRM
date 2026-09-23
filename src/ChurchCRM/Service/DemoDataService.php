@@ -149,7 +149,7 @@ class DemoDataService
         }
 
         try {
-            $json = json_decode(file_get_contents($filePath), true, 512, JSON_THROW_ON_ERROR);
+            $json = json_decode(file_get_contents($filePath), true, 512);
         } catch (JsonException $e) {
             $this->addWarning('Demo config.json parse failed', ['error' => $e->getMessage()]);
             $logger->error('Demo config.json parse failed', ['error' => $e->getMessage(), 'file' => $filePath]);
@@ -205,7 +205,7 @@ class DemoDataService
 
         $filePath = self::DATA_PATH . '/people.json';
         try {
-            $json = json_decode(file_get_contents($filePath), true, 512, JSON_THROW_ON_ERROR);
+            $json = json_decode(file_get_contents($filePath), true, 512);
         } catch (JsonException $e) {
             $msg = 'Invalid demo JSON: ' . $e->getMessage();
             $this->addWarning($msg, ['exception' => $e->getMessage()]);
@@ -373,6 +373,17 @@ class DemoDataService
                         }
                         if ($familySelfRegistered) {
                             $person->setEnteredBy(Person::SELF_REGISTER);
+                        }
+                        if (!empty($m['dateDeceased'])) {
+                            try {
+                                $person->setDateDeceased(new DateTime($m['dateDeceased']));
+                            } catch (Exception $e) {
+                                $this->addWarning("Invalid dateDeceased for person '{$person->getFirstName()} {$person->getLastName()}': {$e->getMessage()}");
+                                $logger->warning('Person dateDeceased parse failed', [
+                                    'dateDeceased' => $m['dateDeceased'] ?? null,
+                                    'error' => $e->getMessage(),
+                                ]);
+                            }
                         }
                         $person->save();
                         $this->personMap[$person->getId()] = $person;
@@ -1072,7 +1083,7 @@ class DemoDataService
 
         try {
             $json = file_get_contents($filepath);
-            $data = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+            $data = json_decode($json, true, 512);
 
             if (!is_array($data)) {
                 $this->importResult['errors'][] = "Invalid JSON in file: {$filename}";

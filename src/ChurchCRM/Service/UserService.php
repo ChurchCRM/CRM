@@ -19,6 +19,11 @@ use Propel\Runtime\Collection\ObjectCollection;
 class UserService
 {
     /**
+     * Matches the usr_UserName column width in orm/schema.xml / Install.sql.
+     */
+    public const MAX_USERNAME_LENGTH = 50;
+
+    /**
      * Get all users
      * @return User[]|ObjectCollection
      */
@@ -125,6 +130,7 @@ class UserService
             'iMinPasswordChange',
             'aDisallowedPasswords',
             'bRequire2FA',
+            'i2FAGracePeriodDays',
             's2FAApplicationName'
         ];
 
@@ -225,7 +231,7 @@ class UserService
     /**
      * Create a new user account for the given person.
      *
-     * Validates username length (>= 3 chars) and uniqueness, then creates the
+     * Validates username length (3-50 chars) and uniqueness, then creates the
      * account with a random password. Sends a NewAccountEmail when email is
      * configured.
      *
@@ -233,7 +239,7 @@ class UserService
      * @param array  $perms    Normalized perms from normalizeAccessMode()
      * @param string $userName Desired login name
      * @return User The newly created user
-     * @throws \RuntimeException on validation failure (duplicate username, too short)
+     * @throws \RuntimeException on validation failure (duplicate username, too short/long)
      */
     public function createUser(int $personId, array $perms, string $userName): User
     {
@@ -251,6 +257,10 @@ class UserService
 
         if (strlen($userName) < 3) {
             throw new \RuntimeException(gettext('Login must be at least 3 characters!'));
+        }
+
+        if (strlen($userName) > self::MAX_USERNAME_LENGTH) {
+            throw new \RuntimeException(sprintf(gettext('Login must be %d characters or fewer!'), self::MAX_USERNAME_LENGTH));
         }
 
         $dupCount = UserQuery::create()
@@ -364,6 +374,10 @@ class UserService
     {
         if (strlen($userName) < 3) {
             throw new \RuntimeException(gettext('Login must be at least 3 characters!'));
+        }
+
+        if (strlen($userName) > self::MAX_USERNAME_LENGTH) {
+            throw new \RuntimeException(sprintf(gettext('Login must be %d characters or fewer!'), self::MAX_USERNAME_LENGTH));
         }
 
         $dupCount = UserQuery::create()

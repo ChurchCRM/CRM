@@ -1,8 +1,20 @@
 {
   "Code": "",
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "Two-factor authentication is required. You have %d day to enroll.": {
+    "one": "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tag Zeit, sich zu registrieren.|Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tage Zeit, sich zu registrieren.",
+    "other": ""
+  },
+  "Link": "",
+  "Offline": "",
+  "They are expected at least once every %d hour.": {
+    "one": "Sie werden mindestens einmal alle %d Stunde erwartet.|Sie werden mindestens einmal alle %d Stunden erwartet.",
+    "other": ""
+  },
+  "Buyers This Fiscal Year": "",
+  "Current": "",
+  "Items Donated (This Fiscal Year)": "",
+  "Login must be %d characters or fewer!": "",
+  "Raised This Fiscal Year": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""
@@ -16,6 +28,26 @@
     "other": ""
   },
   "{{count}} min left": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} families could not be geocoded": {
+    "one": "",
+    "other": ""
+  },
+  "Active for {{count}} seconds": {
+    "one": "",
+    "other": ""
+  },
+  "You are about to send confirmation emails to {{count}} families.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} families have no email address on file and will be skipped": {
+    "one": "",
+    "other": ""
+  },
+  "…and {{count}} more not listed here.": {
     "one": "",
     "other": ""
   }

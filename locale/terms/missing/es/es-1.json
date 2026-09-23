@@ -1,7 +1,18 @@
 {
-  "CSV": "",
-  "N/A": "",
-  "OFX": "",
+  "Two-factor authentication is required. You have %d day to enroll.": {
+    "one": "Se requiere la autenticación de dos factores. Tiene %d día para inscribirse.|Se requiere la autenticación de dos factores. Tiene %d días para inscribirse.",
+    "other": ""
+  },
+  "Individual": "",
+  "They are expected at least once every %d hour.": {
+    "one": "Se espera que asista al menos una vez cada %d hora.|Se espera que asista al menos una vez cada %d horas.",
+    "other": ""
+  },
+  "Buyers This Fiscal Year": "",
+  "Current": "",
+  "Items Donated (This Fiscal Year)": "",
+  "Login must be %d characters or fewer!": "",
+  "Raised This Fiscal Year": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""
@@ -15,6 +26,26 @@
     "other": ""
   },
   "{{count}} min left": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} families could not be geocoded": {
+    "one": "",
+    "other": ""
+  },
+  "Active for {{count}} seconds": {
+    "one": "",
+    "other": ""
+  },
+  "You are about to send confirmation emails to {{count}} families.": {
+    "one": "",
+    "other": ""
+  },
+  "{{count}} families have no email address on file and will be skipped": {
+    "one": "",
+    "other": ""
+  },
+  "…and {{count}} more not listed here.": {
     "one": "",
     "other": ""
   }
