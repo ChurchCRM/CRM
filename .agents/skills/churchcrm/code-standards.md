@@ -17,3 +17,9 @@ Review gates: `maintainer-review-gates.md`.
 - Redirects: `RedirectUtils`
 - UI: Tabler + Bootstrap 5. Wrap `gettext()` / `i18next.t()`
 - Tests with behavior changes. Linked issue on every PR
+
+## Strict vs Loose Comparisons
+
+`mysqli_fetch_array()` / `extract()` / raw `$_GET` values are strings.
+When you switch `==` to `===`, cast first: `(int)$type_ID === 11`.
+Do not `(int)` a string slug getter.
