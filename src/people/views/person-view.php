@@ -477,6 +477,17 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                                     <?php $tmpEmail = $familyMember->getEmail();
                                     if ($tmpEmail !== '') { ?>
                                         <a href="mailto:<?= InputUtils::escapeAttribute($tmpEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($tmpEmail) ?></a>
+                                        <?php if ($canSendEmail && !$isSelf) { // the person's own line above already has the button ?>
+                                        <button class="btn btn-sm btn-ghost-primary ms-1 py-0 px-1" type="button"
+                                                data-email-composer
+                                                data-email-person-id="<?= (int) $familyMember->getId() ?>"
+                                                data-email-address="<?= InputUtils::escapeAttribute($tmpEmail) ?>"
+                                                data-email-name="<?= InputUtils::escapeAttribute($familyMember->getFullName()) ?>"
+                                                data-email-title="<?= InputUtils::escapeAttribute(sprintf(gettext('Email %s'), $familyMember->getFullName())) ?>"
+                                                title="<?= gettext('Send email from ChurchCRM') ?>">
+                                            <i class="fa-solid fa-paper-plane"></i>
+                                        </button>
+                                        <?php } ?>
                                     <?php } ?>
                                 </td>
                                 <td>
