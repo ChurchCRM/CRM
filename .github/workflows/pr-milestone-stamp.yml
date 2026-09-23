@@ -1,4 +1,4 @@
-name: Stamp milestone on merged PRs
+name: "Issues: stamp milestone on merge"
 
 # When a PR is merged with no milestone, put the PR and every attached issue
 # (open or already closed) on the milestone whose title matches package.json
