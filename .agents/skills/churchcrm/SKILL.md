@@ -10,6 +10,8 @@ metadata:
 
 Project-specific skills for AI agents and developers working on ChurchCRM. Each skill covers a focused workflow area with ChurchCRM-specific patterns, conventions, and examples.
 
+These files apply to **every agent family** that reads this repo. Do not assume Claude, Copilot, or a local `~/.claude/` path. Product floor is PHP 8.4+. Community plugins are current. Do not invent `/metrics`, SaaS hosting, or the retired `External` plugin-registry branch.
+
 ## Architecture & API
 
 **Reading order for API development:**
@@ -144,7 +146,7 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
   - For flaky selectors after UI changes, prefer stable selectors: `id`, `data-cy`, `input[name=]`, link href/text, and avoid visual utility classes.
 
 
-**Before committing ANY test changes:** See `CLAUDE.md` → Test Review & Commit Workflow for mandatory checklist
+**Before committing ANY test changes:** See repo root `CLAUDE.md` / `MEMORY.md` (agent conventions for this repo, not Claude-only) for the test review checklist before committing test changes
 
 ## MVC Migration
 
@@ -174,7 +176,8 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 | [Development Workflows](./development-workflows.md) | Setup, build, Docker management |
 | [Code Standards](./code-standards.md) | General coding, quality checks, PR reviews |
 | [Documentation Architecture & Wiki](./wiki-documentation.md) | Which doc home to use (end user / 3rd-party dev / core dev), MDX gotchas, wiki article structure |
-| [Release Management](./release-management.md) | **Canonical end-to-end release process** — scope review, SHA-based CI/nightly gate, draft creation, approvals, publishing, and post-release verification |\n| [Security Report Triage](./security-report-triage.md) | A vulnerability report arrives: read it against the code and tell the maintainer how much of the claimed risk stands up, before any public reply |
+| [Release Management](./release-management.md) | **Canonical end-to-end release process** — scope review, SHA-based CI/nightly gate, draft creation, approvals, publishing, and post-release verification |
+| [Security Report Triage](./security-report-triage.md) | A vulnerability report arrives: read it against the code and tell the maintainer how much of the claimed risk stands up, before any public reply |
 | [Release Notes](./release-notes.md) | Transform and fact-check the GitHub-generated draft changelog into user-focused release notes |
 | [Social Media Release](./social-media-release.md) | Generating platform posts for X, Facebook, Instagram, LinkedIn |
 | [Release Announcement](./release-announcement.md) | After a release is published: Discord announcement, notify reporters of fixed issues, list docs PRs held for the release |
