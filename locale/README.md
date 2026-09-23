@@ -8,12 +8,10 @@ Do not run `npm run locale:build` and do not commit `locale/terms/messages.po`.
 Extraction runs on every merge to `master`:
 `.github/workflows/locale-generate-terms.yml`
 
-Locale list: `locale/locales.json` (or `src/locale/locales.json` if that is the checked-in file).
-Agent rules: `.agents/skills/churchcrm/i18n-localization.md`
+Locale list: `src/locale/locales.json`.
+Agent rules: `.agents/skills/churchcrm/i18n-localization.md`.
 
 ## Operator commands (CI / maintainers)
-
-Run from the CRM root:
 
 | Command | Purpose |
 |---------|---------|
@@ -24,4 +22,4 @@ Run from the CRM root:
 
 Add a language: `node locale/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR"`
 
-Scripts live in `locale/scripts/`.
+Scripts: `locale/scripts/`.
