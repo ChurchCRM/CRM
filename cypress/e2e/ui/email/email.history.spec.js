@@ -57,8 +57,10 @@ describe("Email history on the person view", () => {
             const dates = [...$cells].map((c) => c.textContent.trim());
             expect([...dates].sort().reverse()).to.deep.equal(dates);
         });
-        // The oldest seeded row is the last row of the last page, however many pages there are
-        cy.makePrivateAdminAPICall("GET", "/api/email/log?personId=2&limit=25").then((resp) => {
+        // The oldest seeded row is the last row of the last page, however many pages there are.
+        // Read the API with the browser session: an API-key request would replace the
+        // logged-in session cookie and the next visit would land on the login page.
+        cy.request("/api/email/log?personId=2&limit=25").then((resp) => {
             const lastPage = resp.body.pages;
             cy.visit(`/people/view/2/emails?page=${lastPage}`);
             cy.get("[data-email-history-table] tbody tr").last().should("contain.text", "Oldest message");
@@ -70,7 +72,7 @@ describe("Email history on the person view", () => {
     });
 
     it("paginates the full history at 25 rows per page", () => {
-        cy.makePrivateAdminAPICall("GET", "/api/email/log?personId=2&limit=25").then((resp) => {
+        cy.request("/api/email/log?personId=2&limit=25").then((resp) => {
             const { total, pages } = resp.body;
             cy.visit("/people/view/2/emails?page=1");
             cy.get("[data-email-history-table] tbody tr").should("have.length", Math.min(25, total));
