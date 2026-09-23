@@ -1,23 +1,32 @@
 /// <reference types="cypress" />
 
 /**
- * People Dashboard — Settings Panel tests
- *
- * The People Settings panel on the dashboard allows admins to toggle:
- * - Self Registration (bEnableSelfRegistration)
- * - Hide Deceased from Directory (bHideDeceasedFromDirectory)
+ * People Dashboard — Settings Panel tests (#9994).
  *
  * Boolean settings render as Yes/No radio pills (value 1 / 0), not a checkbox.
- * Values are applied asynchronously after GET /admin/api/system/config/{name}.
+ * Values are applied after GET /admin/api/system/config/{name}.
+ * Toggle must restore bEnableSelfRegistration so later specs keep the seed default.
  */
+
+function setSelfReg(value) {
+    cy.makePrivateAdminAPICall(
+        "POST",
+        "admin/api/system/config/bEnableSelfRegistration",
+        { value },
+    );
+}
 
 describe("People Dashboard — Settings Panel", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    it("shows the 'People Settings' button in the page header for admins", () => {
+    after(() => {
+        setSelfReg("0");
+    });
+
+    it("shows the People Settings button in the page header for admins", () => {
         cy.visit("/people/dashboard");
         cy.contains("button", "People Settings").should("be.visible");
-        cy.get("button").contains("People Settings").parent().find(".fa-sliders").should("exist");
+        cy.contains("button", "People Settings").find(".fa-sliders").should("exist");
     });
 
     it("expands the People Settings panel when the button is clicked", () => {
@@ -66,7 +75,7 @@ describe("People Dashboard — Settings Panel", () => {
         });
     });
 
-    it("displays the Self Registration tooltip on hover", () => {
+    it("shows the Self Registration help text in the panel", () => {
         cy.visit("/people/dashboard");
         cy.contains("button", "People Settings").click();
         cy.get("#peopleSettings.show", { timeout: 5000 }).should("be.visible");
