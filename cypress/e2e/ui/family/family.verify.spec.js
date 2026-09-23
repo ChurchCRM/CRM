@@ -14,7 +14,11 @@ describe("Family verification — self-verify token link (no account)", () => {
         // No browser session needed: API call uses x-api-key header auth,
         // and the verify page is public (token-based, no login required)
         cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then((response) => {
-            cy.wrap(response.body.url).as("verifyUrl");
+            // The API returns an absolute URL built from Config.php's $URL[0] (http://localhost/ on
+            // the docker stack). Keep only the path so the spec follows the token flow against
+            // whatever baseUrl this run uses (another port, a sub-directory install) — see #9871.
+            const url = new URL(response.body.url);
+            cy.wrap(url.pathname + url.search).as("verifyUrl");
         });
     });
 
@@ -38,9 +42,11 @@ describe("Family verification — self-verify token link (no account)", () => {
         cy.get("#confirmVerifyBtn").click();
         cy.get("#confirm-Verify").should("be.visible");
         cy.get("#UpdateNeeded").click();
-        // Click textarea first to ensure focus after modal animation settles
-        cy.get("#confirm-info-data").should("be.visible").click().type("Update needed");
-        cy.get("#confirm-info-data").invoke("val").should("include", "Update");
+        // Bootstrap moves focus to the dialog when its fade-in ends; typing that started
+        // before that moment gets cut off ("Updat"). Let the fade finish, then type.
+        cy.get("#confirm-info-data").should("be.visible");
+        cy.wait(400);
+        cy.get("#confirm-info-data").click().type("Update needed").should("have.value", "Update needed");
     });
 
     it("Should display modal footer buttons", function() {
