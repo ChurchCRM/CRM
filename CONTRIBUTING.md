@@ -138,6 +138,8 @@ Fix bugs, add features, improve performance, and expand test coverage in the mai
 
 **All PRs must be linked to an open issue.** If the issue doesn't exist yet, open it first.
 
+Read [What maintainers look for](docs/contributing-pr-review.md) before you open a PR. That page lists hard blocks (security, performance, existing installs, tests, gettext wrappers, non-trivial UI screenshots) versus follow-ups (demo data, user-manual issues, marketing). Matching the list does not guarantee merge. Approve and merge are always a human maintainer decision.
+
 ### Build a Community Plugin
 
 Add a feature ChurchCRM doesn't include yet — a third-party API integration, a custom workflow, a specialized report — without modifying core code. Plugins survive upgrades and can be shared in the community registry.
