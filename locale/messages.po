@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 16:44+0000\n"
+"POT-Creation-Date: 2026-09-23 17:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6618,17 +6618,10 @@ msgstr ""
 msgid "Invalid country name supplied"
 msgstr ""
 
-#, php-format
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr ""
-
 msgid "Invalid date format"
 msgstr ""
 
 msgid "Invalid date format for rangeStart or rangeEnd"
-msgstr ""
-
-msgid "Invalid date; expected format YYYY-MM-DD"
 msgstr ""
 
 msgid "Invalid endpoint URL. Must be a full URL starting with https://"
@@ -13799,9 +13792,6 @@ msgid "invalid export value"
 msgstr ""
 
 msgid "invalid group request"
-msgstr ""
-
-msgid "invalid recurrence type"
 msgstr ""
 
 msgid "invalid status value"
