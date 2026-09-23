@@ -250,6 +250,9 @@ describe("Standard Calendar — save (admin-session)", () => {
         // therefore not stable. Instead, force-click and let the @createEvent
         // intercept be the sole correctness gate: it verifies both the API
         // round-trip and the request body (Type + PinnedCalendars).
+        // Wait for eventTypeSelect TomSelect to finish init before clicking
+        // (same race as the no-calendar test; root CI is slower to init).
+        cy.get("#eventTypeSelect + .ts-wrapper").should("exist");
         cy.get("#eventSaveBtn").click({ force: true });
 
         cy.wait("@createEvent").then((intercepted) => {
@@ -288,7 +291,12 @@ describe("Standard Calendar — save (admin-session)", () => {
         // Empty-state hint should be visible since no calendar is pinned.
         cy.get("#calendarsEmptyHint").should("be.visible");
 
-        cy.get("#eventSaveBtn").should("not.be.disabled").click();
+        // Wait for TomSelect on eventTypeSelect to finish initializing;
+        // its validate() callback re-disables the save button while
+        // TomSelect is still booting, causing the POST to never fire
+        // in the root (non-subdir) CI environment.
+        cy.get("#eventTypeSelect + .ts-wrapper").should("exist");
+        cy.get("#eventSaveBtn").click({ force: true });
 
         cy.wait("@createEvent").then((intercepted) => {
             expect(intercepted.request.body.PinnedCalendars).to.deep.equal([]);
@@ -392,7 +400,10 @@ describe("Standard Calendar — save (admin-session)", () => {
             if (nonEmpty) cy.get("#linkedGroupSelect").select(nonEmpty);
         });
 
-        cy.get("#eventSaveBtn").click();
+        // Same TomSelect→validate() race as the first save-path test above;
+        // wait for eventTypeSelect TomSelect init, then force-click.
+        cy.get("#eventTypeSelect + .ts-wrapper").should("exist");
+        cy.get("#eventSaveBtn").click({ force: true });
         cy.wait("@createEvent").then((intercepted) => {
             expect(intercepted.request.body.InActive).to.eq(1);
             expect(intercepted.request.body).to.have.property("LinkedGroupId");

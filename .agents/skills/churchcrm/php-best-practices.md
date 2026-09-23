@@ -26,6 +26,7 @@ ChurchCRM uses PHP 8.4+ with modern development patterns. This skill covers esse
 - **Global functions**: mostly gone — `Functions.php` was migrated to `ChurchCRM\Utils\*`. Use `\` only for survivors like `\getQuillEditorContainer()`
 - **Version checks**: Use `version_compare(phpversion(), '8.3.0', '<')`
 - **Constants**: Use public constants for shared values: `public const PHOTO_WIDTH = 200;`
+- **`mb_internal_encoding('UTF-8')` is a no-op — don't add it** <!-- learned: 2026-08-03 --> — the `mbstring.internal_encoding` ini directive it used to influence was removed in PHP 8.0; mbstring functions already default to UTF-8 (`default_charset`) with no config anywhere in this repo overriding it. Found while removing a dead call in `src/index.php`.
 
 ### File Structure Order
 
@@ -139,6 +140,24 @@ use ChurchCRM\Utils\MiscUtils;
 $dob  = DateTimeUtils::formatDate($person->getBirthDate());
 $name = MiscUtils::formatFullName($title, $first, $middle, $last, $suffix, $style);
 ```
+
+### `src/ChurchCRM/utils/` directory is lowercase on disk — this is not a bug <!-- learned: 2026-08-03 -->
+
+`git ls-files` / `ls` show the physical directory as `src/ChurchCRM/utils/` (lowercase), even
+though every `use ChurchCRM\Utils\SomeClass;` statement in the codebase capitalizes it. This
+resolves correctly because `composer.json`'s autoload config uses `"classmap": ["ChurchCRM/"]`
+for this tree, not strict PSR-4 — the classmap indexes files by their declared
+`namespace`/`class` text, not by matching directory casing. Don't "fix" the casing and don't
+be confused when a file you just wrote to `ChurchCRM/Utils/Foo.php` shows up under
+`ChurchCRM/utils/Foo.php` in `git status` on a case-insensitive filesystem (macOS/Windows) —
+that's the pre-existing lowercase directory, not a duplicate. New classes must still run
+`composer dump-autoload` (or `npm run build:php`, which runs `composer install`) before the
+class resolves.
+
+**`PathUtils`** (`src/ChurchCRM/utils/PathUtils.php`) is a good example — added to hold
+`resolveSafeRequirePath()` (the `index.php` traversal guard) and `resolveRealPathWithin()`
+(the general path-containment primitive, see `security-best-practices.md` → "Path Traversal
+& Directory Containment Checks").
 
 ### Quill Rich Text Editor Functions
 

@@ -129,7 +129,7 @@ CREATE TABLE `events_event` (
   `secondary_contact_person_id` INT DEFAULT NULL,
   `event_url` text,
   PRIMARY KEY  (`event_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1;
 
 --
 -- Dumping data for table `events_event`
@@ -185,7 +185,7 @@ CREATE TABLE `event_types` (
   `type_grpid` mediumint(9),
 
   PRIMARY KEY  (`type_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `event_types`
@@ -514,6 +514,7 @@ CREATE TABLE `person_per` (
   `per_BirthDay` tinyint(3) unsigned NOT NULL default '0',
   `per_BirthYear` smallint(4) unsigned default NULL,
   `per_MembershipDate` date default NULL,
+  `per_DateDeceased` date default NULL,
   `per_Gender` tinyint(1) unsigned NOT NULL default '0',
   `per_fmr_ID` tinyint(3) unsigned NOT NULL default '0',
   `per_cls_ID` tinyint(3) unsigned NOT NULL default '0',
@@ -528,6 +529,7 @@ CREATE TABLE `person_per` (
   `per_Facebook` varchar(50) default NULL,
   `per_Twitter` varchar(50) default NULL,
   `per_LinkedIn` varchar(50) default NULL,
+  `per_DateDeactivated` date DEFAULT NULL,
   PRIMARY KEY  (`per_ID`),
   INDEX `idx_per_fam_ID` (`per_fam_ID`),
   INDEX `idx_per_cls_ID` (`per_cls_ID`),
@@ -898,6 +900,7 @@ CREATE TABLE `user_usr` (
   `usr_TwoFactorAuthSecret` VARCHAR(255) NULL,
   `usr_TwoFactorAuthLastKeyTimestamp` INT NULL,
   `usr_TwoFactorAuthRecoveryCodes` TEXT NULL,
+  `usr_TwoFactorAuthGracePeriodStart` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
   UNIQUE KEY `usr_apiKey` (`usr_apiKey`)
@@ -1091,5 +1094,21 @@ CREATE TABLE `menu_links` (
   `linkOrder` INT NOT NULL,
   PRIMARY KEY (`linkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `pledge_denominations_pdem`
+--
+
+CREATE TABLE `pledge_denominations_pdem` (
+  `pdem_id`                   mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `pdem_plg_GroupKey`         varchar(64)           NOT NULL,
+  `plg_depID`                 mediumint(9) unsigned DEFAULT NULL,
+  `pdem_denominationID`       mediumint(9) unsigned NOT NULL DEFAULT '0',
+  `pdem_denominationQuantity` int(11)               DEFAULT NULL,
+  PRIMARY KEY (`pdem_id`),
+  KEY `pdem_groupkey_idx`           (`pdem_plg_GroupKey`),
+  KEY `pdem_deposit_denom_idx`      (`plg_depID`, `pdem_denominationID`),
+  UNIQUE KEY `pdem_groupkey_denom_uidx` (`pdem_plg_GroupKey`, `pdem_denominationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 update version_ver set ver_update_end = now();

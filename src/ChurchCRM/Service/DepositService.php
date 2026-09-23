@@ -14,6 +14,7 @@ use ChurchCRM\Service\AuthService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -43,8 +44,8 @@ class DepositService {
     {
         AuthService::requireUserGroupMembership('bFinance');
         $query = PledgeQuery::create()
-            ->joinWithDonationFund()
-            ->joinWithFamily();
+            ->joinWithDonationFund()    // DonationFund is always required — INNER JOIN preserves data-integrity guard
+            ->leftJoinWithFamily();      // Family is optional (anonymous donors have no Family row)
         if ($depID) {
             $query->filterByDepId($depID);
         }
@@ -208,11 +209,23 @@ class DepositService {
         // and adds the totalAmount virtual column.
         $query = DepositQuery::create();
 
-        if (!empty($filters['dateStart'])) {
-            $query->filterByDate(['min' => $filters['dateStart']]);
-        }
-        if (!empty($filters['dateEnd'])) {
-            $query->filterByDate(['max' => $filters['dateEnd']]);
+        // An explicitly typed date range always wins over the ambient FY
+        // selector: the search form submits both together (the FY <select>
+        // always has a value, defaulting to the current FY), so a user who
+        // fills in dateStart/dateEnd without first switching the dropdown to
+        // "All Time" must still get the date range they asked for, not have
+        // it silently discarded in favor of whatever FY happened to be
+        // selected.
+        if (!empty($filters['dateStart']) || !empty($filters['dateEnd'])) {
+            if (!empty($filters['dateStart'])) {
+                $query->filterByDate(['min' => $filters['dateStart']]);
+            }
+            if (!empty($filters['dateEnd'])) {
+                $query->filterByDate(['max' => $filters['dateEnd']]);
+            }
+        } elseif (!empty($filters['fyid']) && (int) $filters['fyid'] > 0) {
+            $fyDates = FiscalYearUtils::getFiscalYearDatesById((int) $filters['fyid']);
+            $query->filterByDate(['min' => $fyDates['startDate'], 'max' => $fyDates['endDate']]);
         }
         if (!empty($filters['depositId'])) {
             $query->filterById((int) $filters['depositId']);

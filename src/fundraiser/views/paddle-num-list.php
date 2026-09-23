@@ -79,7 +79,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php /* Standalone form — NOT nested inside the statement form above */ ?>
                 <form method="post"
                       action="<?= $sRootPath ?>/fundraiser/<?= (int) $fundraiserId ?>/paddle-numbers/<?= $pn_ID ?>/delete"
-                      onsubmit="return confirm(<?= htmlspecialchars(json_encode(gettext('Delete this paddle number?'))) ?>)">
+                      onsubmit="return confirm(<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript(gettext('Delete this paddle number?'))) ?>)">
                   <?= $csrfPaddleDeleteField ?>
                   <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
                     <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
@@ -97,7 +97,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 (function () {
-  var noSelectionMsg = <?= json_encode(gettext('Please select at least one buyer to generate statements.')) ?>;
+  var noSelectionMsg = <?= InputUtils::jsonEncodeForScript(gettext('Please select at least one buyer to generate statements.')) ?>;
 
   document.getElementById('generateStatementsForm').addEventListener('submit', function (e) {
     var checked = document.querySelectorAll('.pledge-select:checked');

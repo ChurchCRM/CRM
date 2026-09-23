@@ -58,15 +58,15 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
 
                     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                         window.CRM = window.CRM || {};
-                        window.CRM.localeStats = <?= json_encode($localeStats, JSON_THROW_ON_ERROR) ?>;
+                        window.CRM.localeStats = <?= InputUtils::jsonEncodeForScript($localeStats) ?>;
                         window.CRM.localeSystemCheckEnabled = <?= $systemCheckEnabled ? 'true' : 'false' ?>;
                         window.CRM.localePreviewI18n = {
-                            translated: <?= json_encode(gettext('%d% of interface text is translated for this language.'), JSON_THROW_ON_ERROR) ?>,
-                            fullyTranslated: <?= json_encode(gettext('Fully translated.'), JSON_THROW_ON_ERROR) ?>,
-                            notTracked: <?= json_encode(gettext('Translation tracking is not available for this language.'), JSON_THROW_ON_ERROR) ?>,
-                            supported: <?= json_encode(gettext('Supported — this locale is installed on the server.'), JSON_THROW_ON_ERROR) ?>,
-                            notSupported: <?= json_encode(gettext('Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen).'), JSON_THROW_ON_ERROR) ?>,
-                            checkUnavailable: <?= json_encode(gettext('Server locale support could not be checked (exec is disabled).'), JSON_THROW_ON_ERROR) ?>,
+                            translated: <?= InputUtils::jsonEncodeForScript(gettext('%d% of interface text is translated for this language.')) ?>,
+                            fullyTranslated: <?= InputUtils::jsonEncodeForScript(gettext('Fully translated.')) ?>,
+                            notTracked: <?= InputUtils::jsonEncodeForScript(gettext('Translation tracking is not available for this language.')) ?>,
+                            supported: <?= InputUtils::jsonEncodeForScript(gettext('Supported — this locale is installed on the server.')) ?>,
+                            notSupported: <?= InputUtils::jsonEncodeForScript(gettext('Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen).')) ?>,
+                            checkUnavailable: <?= InputUtils::jsonEncodeForScript(gettext('Server locale support could not be checked (exec is disabled).')) ?>,
                         };
                     </script>
 

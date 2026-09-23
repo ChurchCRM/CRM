@@ -286,7 +286,7 @@ $app->get('/fundraisers/active-count', function (Request $request, Response $res
         $activeCount = $service->getActiveFundraiserCount();
         $logger->debug('[fundraisers/active-count] Got count', ['count' => $activeCount]);
 
-        $json = json_encode(['count' => $activeCount], JSON_THROW_ON_ERROR);
+        $json = json_encode(['count' => $activeCount]);
         $logger->debug('[fundraisers/active-count] Encoded JSON', ['json' => $json]);
 
         $response->getBody()->write($json);

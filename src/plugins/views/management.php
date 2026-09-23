@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 
+use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 /**
@@ -490,7 +491,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
             <div class="modal-body">
                 <div class="alert alert-warning" role="alert">
                     <strong><?= gettext('This plugin will be installed as UNVERIFIED.') ?></strong><br>
-                    <?= gettext('The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.') ?>
+                    <?= gettext('The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.') ?>
                 </div>
                 <form id="installFromUrlForm">
                     <div class="mb-3">
@@ -915,13 +916,13 @@ $(document).ready(function() {
             url: window.CRM.root + '/plugins/api/plugins/' + encodeURIComponent(pluginId),
             method: 'DELETE',
             success: function() {
-                window.CRM.notify(<?= json_encode(gettext('Plugin uninstalled')) ?>, { type: 'success' });
+                window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('Plugin uninstalled')) ?>, { type: 'success' });
                 setTimeout(function() { window.location.reload(); }, 400);
             },
             error: function(xhr) {
                 const msg = (xhr.responseJSON && xhr.responseJSON.message)
                     ? xhr.responseJSON.message
-                    : <?= json_encode(gettext('Failed to uninstall plugin')) ?>;
+                    : <?= InputUtils::jsonEncodeForScript(gettext('Failed to uninstall plugin')) ?>;
                 window.CRM.notify(msg, { type: 'error', delay: 0 });
             }
         });
@@ -949,7 +950,7 @@ $(document).ready(function() {
                     error: function(xhr) {
                         const msg = (xhr.responseJSON && xhr.responseJSON.message)
                             ? xhr.responseJSON.message
-                            : <?= json_encode(gettext('Failed to clear quarantine')) ?>;
+                            : <?= InputUtils::jsonEncodeForScript(gettext('Failed to clear quarantine')) ?>;
                         window.CRM.notify(msg, { type: 'error', delay: 0 });
                     }
                 });

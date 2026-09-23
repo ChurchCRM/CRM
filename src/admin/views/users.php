@@ -132,7 +132,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                         <th class="text-center"><?= gettext('Last Login') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
                         <th class="text-center"><?= gettext('Status') ?></th>
-                        <th class="text-center"><?= gettext('2FA') ?></th>
+                        <th class="text-center">2FA</th>
                         <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                     </tr>
                 </thead>
@@ -178,7 +178,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                 <?php if ($user->is2FactorAuthEnabled()) { ?>
                                     <span class="badge rounded-pill bg-success text-white"><i class="fa-solid fa-circle-check me-1"></i><?= gettext('Enabled') ?></span>
                                 <?php } else { ?>
-                                    <span class="badge rounded-pill bg-danger text-white"><i class="fa-solid fa-shield-slash me-1"></i><?= gettext('Disabled') ?></span>
+                                    <span class="badge rounded-pill bg-danger text-white"><i class="fa-solid fa-circle-xmark me-1"></i><?= gettext('Disabled') ?></span>
                                 <?php } ?>
                             </td>
                             <td class="w-1">
@@ -247,10 +247,10 @@ $(document).ready(function() {
     // Initialize the user settings panel
     window.CRM.settingsPanel.init({
         container: '#userSettingsPanel',
-        title: <?= json_encode(gettext('Quick Settings')) ?>,
+        title: <?= InputUtils::jsonEncodeForScript(gettext('Quick Settings')) ?>,
         icon: 'fa-solid fa-user-gear',
         headerClass: 'bg-primary',
-        settings: <?= json_encode($userSettingsConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        settings: <?= InputUtils::jsonEncodeForScript($userSettingsConfig) ?>,
         onSave: function() {
             // Reload page after settings save to reflect changes
             setTimeout(function() {

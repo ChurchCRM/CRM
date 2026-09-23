@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
 
+use ChurchCRM\Utils\InputUtils;
 $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 ?>
       </div><!-- /.container-xl -->
@@ -105,7 +106,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     // Load locale files dynamically
     (function() {
-        const localeConfig = <?= json_encode(Bootstrapper::getCurrentLocale()->getLocaleConfigArray()) ?>;
+        const localeConfig = <?= InputUtils::jsonEncodeForScript(Bootstrapper::getCurrentLocale()->getLocaleConfigArray()) ?>;
         if (window.CRM && window.CRM.loadLocaleFiles) {
             window.CRM.loadLocaleFiles(localeConfig);
         }
@@ -130,7 +131,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <?php if (isset($sGlobalMessage) && !empty($sGlobalMessage)) { ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $("document").ready(function () {
-            showGlobalMessage(<?= json_encode($sGlobalMessage) ?>, <?= json_encode($sGlobalMessageClass) ?>);
+            showGlobalMessage(<?= InputUtils::jsonEncodeForScript($sGlobalMessage) ?>, <?= InputUtils::jsonEncodeForScript($sGlobalMessageClass) ?>);
         });
     </script>
 <?php } ?>

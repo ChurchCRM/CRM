@@ -1188,48 +1188,9 @@ msgid "Minimum Price"
 msgstr "最低價格"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "家庭地理公用事業"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "選擇家庭"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "鄰居的最大數量"
-
-#: 
-msgid "Maximum distance"
-msgstr "最大距離"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "數據文件格式"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS可視化"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "包括家庭中的坐標文件"
-
-#: 
-msgid "Neighbor Families"
-msgstr "鄰居的家庭"
-
-#: 
-msgid "Make Data File"
-msgstr "數據文件"
-
-#: 
-msgid "Show Neighbors"
-msgstr "顯示鄰居"
 
 #: 
 msgid "Distance"
@@ -1250,10 +1211,6 @@ msgstr "經度"
 #: 
 msgid "Add to Cart"
 msgstr "添加到購物車"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "相交的購物車"
 
 #: 
 msgid "Remove from Cart"
@@ -1440,10 +1397,6 @@ msgstr "電郵所有人"
 #, fuzzy
 msgid "Family Roles"
 msgstr "家庭角色"
-
-#: 
-msgid "Family Geographic"
-msgstr "家庭地理位置"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4341,26 +4294,8 @@ msgid "Profile Image uploaded"
 msgstr "個人資料圖片已上傳"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "顯示具有以下類別的鄰居"
-
-#: 
-msgid "Please select a Family."
-msgstr "請選擇一個家庭。"
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "協調數據庫文件名"
-
-#: 
 msgid "select an option"
 msgstr "選擇一個項目"
-
-#: 
-msgid "Direct me"
-msgstr "指導我"
 
 #: 
 msgid "Your cart is empty"
@@ -5218,16 +5153,6 @@ msgstr "人員驗證儀表板"
 #, fuzzy
 msgid "Verification URL created"
 msgstr "驗證網址已創建"
-
-#: 
-#, fuzzy
-msgid "URL"
-msgstr "網址"
-
-#: 
-#, fuzzy
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 #, fuzzy
@@ -8657,10 +8582,6 @@ msgid "selected family has no coordinates"
 msgstr "所選家庭沒有座標"
 
 #: 
-msgid "2FA"
-msgstr "雙重驗證"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "要求所有使用者註冊雙重身份驗證"
 
@@ -9458,10 +9379,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "使用 MailChimp、備份等功能擴充 ChurchCRM"
 
 #: 
-msgid "FY %s"
-msgstr "會計年度 %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "家庭成員共用地址和電話號碼。"
 
@@ -9544,10 +9461,6 @@ msgstr "產生小組成員和活動報告"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "為奉獻者產生稅務報表文件"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "地理工具"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10280,10 +10193,6 @@ msgid "View and manage deposit slip payments"
 msgstr "檢視和管理奉獻存款單"
 
 #: 
-msgid "View and manage family location data"
-msgstr "檢視和管理家庭位置資料"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "檢視和管理系統日誌檔案以進行除錯"
 
@@ -10622,10 +10531,6 @@ msgstr "這將重新下載並重新套用目前的版本。它可以修復損壞
 #: 
 msgid "Total Check-ins"
 msgstr "簽到總數"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "請嘗試選擇不同的活動類型或年份。"
 
 #: 
 msgid "Up to Date"
@@ -12430,10 +12335,6 @@ msgid "Database dump only (.sql)"
 msgstr "僅資料庫轉儲（.sql）"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "日期範圍不能超過1年"
-
-#: 
 msgid "Destructive Operation"
 msgstr "危險操作"
 
@@ -13028,10 +12929,6 @@ msgstr "找不到此角色清單的事工"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "停用狀態只能在分類清單中切換"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "新使用者將不會收到包含其登入資訊的歡迎電子郵件。請手動與他們分享密碼，或先設定電子郵件。"
 
 #: 
 msgid "Option name is required"
@@ -13738,7 +13635,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 必須是 64 個字元的十六進位字串。"
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM 維護者尚未審閱此外掛。您安裝的任何內容，其安全性與行為由您自行負責。請盡可能優先使用「瀏覽已核准的外掛」流程。"
 
 #: 
@@ -16238,10 +16136,6 @@ msgid "Buyers Registered"
 msgstr "已登記買家"
 
 #: 
-msgid "Buyers This Year"
-msgstr "今年買家"
-
-#: 
 msgid "Catalog"
 msgstr "目錄"
 
@@ -16390,10 +16284,6 @@ msgid "Items Donated"
 msgstr "捐贈項目"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "捐贈項目（今年）"
-
-#: 
 msgid "Items Sold"
 msgstr "已售項目"
 
@@ -16472,10 +16362,6 @@ msgstr "快速預設值"
 #: 
 msgid "Raised"
 msgstr "已籌得"
-
-#: 
-msgid "Raised This Year"
-msgstr "今年已籌得"
 
 #: 
 msgid "Sample Amount"
@@ -17198,10 +17084,6 @@ msgid "Deleted successfully"
 msgstr "刪除成功"
 
 #: 
-msgid "Deposit #"
-msgstr "存款編號"
-
-#: 
 msgid "Deposit Slip"
 msgstr "存款單"
 
@@ -17248,10 +17130,6 @@ msgstr "擷取承諾奉獻失敗"
 #: 
 msgid "Failed to update pledge"
 msgstr "更新承諾奉獻失敗"
-
-#: 
-msgid "Family is required"
-msgstr "家庭為必填項"
 
 #: 
 msgid "Financial data"
@@ -17380,10 +17258,6 @@ msgstr "規劃執行時間支援"
 #: 
 msgid "Please enter a date"
 msgstr "請輸入日期"
-
-#: 
-msgid "Please select a family"
-msgstr "請選擇家庭"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17800,14 +17674,6 @@ msgstr "估計價值 %s。"
 msgid "Minimum bid %s."
 msgstr "最低出價 %s。"
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "目前尚無\"%s\"選項可用。請先新增相關記錄。"
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "目前尚未設定\"%s\"選項。請先新增相關記錄。"
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17956,4 +17822,189 @@ msgstr "您將獲得的改進"
 #: 
 msgid "Failed to get deposit count"
 msgstr "取得存款數量失敗"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "周年紀念：%s"
+
+#: 
+msgid "Church"
+msgstr "教會"
+
+#: 
+msgid "Classifications"
+msgstr "分類"
+
+#: 
+msgid "Closest"
+msgstr "最近"
+
+#: 
+msgid "Deposit #%d"
+msgstr "存款 #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "無法取得募款活動數量"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "載入鄰近家庭失敗。"
+
+#: 
+msgid "Farther"
+msgstr "更遠"
+
+#: 
+msgid "Farthest"
+msgstr "最遠"
+
+#: 
+msgid "Find Neighbors"
+msgstr "尋找鄰近家庭"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "尋找鄰近家庭並加入購物車"
+
+#: 
+msgid "Map centered on"
+msgstr "地圖中心位於"
+
+#: 
+msgid "Max distance"
+msgstr "最大距離"
+
+#: 
+msgid "Max neighbors"
+msgstr "最多鄰居數"
+
+#: 
+msgid "Near"
+msgstr "附近"
+
+#: 
+msgid "Please select a family."
+msgstr "請選擇一個家庭。"
+
+#: 
+msgid "Results"
+msgstr "結果"
+
+#: 
+msgid "Same location"
+msgstr "相同位置"
+
+#: 
+msgid "Search Neighbors"
+msgstr "搜尋鄰近家庭"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "選擇一個家庭，然後點擊尋找鄰近家庭以查看結果。"
+
+#: 
+msgid "Selected family"
+msgstr "已選家庭"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "此值必須是有效的欄位名稱。"
+
+#: 
+msgid "Could not load data"
+msgstr "無法載入資料"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "請重新整理頁面或稍後再試。"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "請先新增相關記錄。"
+
+#: 
+msgid "All Months"
+msgstr "所有月份"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "尚未定義任何「%s」選項。"
+
+#: 
+msgid "No events found for %s %d."
+msgstr "未找到 %s %d 的任何活動。"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "請嘗試選擇不同的活動類型、月份或年份。"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "發生地理編碼錯誤，請稍後再試"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "地址不完整（缺少城市、州/省和郵遞區號）"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "所有家庭都已有座標。"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "更新座標失敗"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "更新家庭座標失敗"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "已為全部 {{geocoded}} 個家庭完成地理編碼。地圖現已更新。"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "已為 {{geocoded}} 個家庭完成地理編碼。{{failed}} 個無法解析 — 詳見下方說明。"
+
+#: 
+msgid "Geocoding…"
+msgstr "地理編碼中……"
+
+#: 
+msgid "No address on file"
+msgstr "沒有存檔地址"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "找不到相符結果 — 請檢查街道地址、城市和郵遞區號"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "開啟該家庭以修正其地址，然後再次執行此操作。"
+
+#: 
+msgid "Set up now"
+msgstr "立即設定"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "需要雙因素驗證。您還有 %d 天可以完成註冊。"
+
+#: 
+msgid "Unknown family"
+msgstr "未知家庭"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "更新所有座標"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "更新所有家庭座標"
+
+#: 
+msgid "Update Coordinates"
+msgstr "更新座標"
 

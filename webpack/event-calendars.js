@@ -103,7 +103,7 @@ window.moveEventModal = {
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
-      title: `<i class="fa-solid fa-calendar-arrow-up me-2 text-primary"></i>${event.title}`,
+      title: `<i class="fa-solid fa-calendar-days me-2 text-primary"></i>${event.title}`,
       message: window.moveEventModal.buildMessage(event.title, "From", originalStart, "To", newStart),
       buttons: window.moveEventModal.getButtons("Move"),
       callback: window.moveEventModal.modalCallBack,
@@ -598,7 +598,7 @@ function initializeCalendar() {
   });
 
   // FullCalendar v7 removed the windowResize option. Replicate the debounced
-  // resize behaviour with a native event listener. Clean up the old handler
+  // resize behavior with a native event listener. Clean up the old handler
   // when initializeCalendar() is called again (e.g. after locale reload).
   if (window.CRM._calendarResizeHandler) {
     window.removeEventListener("resize", window.CRM._calendarResizeHandler);

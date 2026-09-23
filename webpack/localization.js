@@ -199,7 +199,10 @@ document.addEventListener("DOMContentLoaded", () => {
     window.CRM.populateLocaleDropdown(langSelect, selected)
       .then(() => {
         if (window.TomSelect && !langSelect.tomselect) {
-          new window.TomSelect(langSelect, { allowEmptyOption: false, dropdownParent: "body" });
+          // maxOptions defaults to 50; the locale list (49 today) sits right at
+          // that boundary and would truncate the moment another locale is added.
+          // See issue #9677.
+          new window.TomSelect(langSelect, { allowEmptyOption: false, dropdownParent: "body", maxOptions: null });
         }
         // Locale dropdown is now populated — render the preview for the selection.
         if (renderLocalePreview) {
@@ -216,6 +219,9 @@ document.addEventListener("DOMContentLoaded", () => {
         new window.TomSelect(el, {
           allowEmptyOption: true,
           placeholder: "Search or select...",
+          // #sTimeZone carries 419 options; without this the list truncates at 50
+          // (inside America/*), so most of the world is unreachable. See issue #9677.
+          maxOptions: null,
         });
       }
     });

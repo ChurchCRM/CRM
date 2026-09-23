@@ -10,6 +10,8 @@ metadata:
 
 Project-specific skills for AI agents and developers working on ChurchCRM. Each skill covers a focused workflow area with ChurchCRM-specific patterns, conventions, and examples.
 
+These files apply to **every agent family** that reads this repo. Do not assume Claude, Copilot, or a local `~/.claude/` path. Product floor is PHP 8.4+. Community plugins are current. Do not invent `/metrics`, SaaS hosting, or the retired `External` plugin-registry branch.
+
 ## Architecture & API
 
 **Reading order for API development:**
@@ -22,7 +24,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 **Additional skills:**
 | Skill | When to Use |
 |-------|------------|
-| [Slim MVC Skill](./slim-mvc-skill.md) | MVC route groups, security patterns, migration guidance (optional) |
+| [Slim MVC Skill](./slim-mvc-skill.md) | Inventory of the Slim apps under `src/`, their role gates, and the shared API entity middleware |
 | [Configuration Management](./configuration-management.md) | Settings, SystemConfig, admin panels |
 
 ## Database
@@ -48,22 +50,9 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts |
 | [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, vanilla JS/TS modules, asset management |
 | [i18n & Localization](./i18n-localization.md) | Adding UI text, translations |
-| [AI Locale Translation](./locale-ai-translation.md) | Translating missing terms via Claude AI before a release |
-| [Locale Stack Ranking](./locale-stack-ranking.md) | **NEW** — Prioritize translation effort by impact (TIER-1: 53% world pop, TIER-2: 80%, etc.) |
+| [Locale Translation Workflow](./locale-translation-workflow.md) | Authoritative translate → upload → download workflow, including durability and prioritization |
 | [Currency Localization](./currency-localization.md) | **NEW** — Displaying money with configurable symbol / position / separators (PHP, JS, DataTables, Chart.js, CSS, PDFs). Required for any finance-adjacent change. Epic: [#8459](https://github.com/ChurchCRM/CRM/issues/8459) |
-
-## Tabler Migration (Vision 2026)
-
-| Skill | When to Use |
-|-------|------------|
-| [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts — the new UI reference |
-| [Library Replacement Guide](./tabler-library-replacement.md) | Which 3rd-party libs to swap (Select2→Tom Select, etc.), npm/webpack/Grunt changes |
-| [Migration Playbook](./tabler-migration-playbook.md) | Per-page migration steps, full codebase audit inventory, phased execution plan |
 | [Error Reporting & Issue Filing](./error-reporting.md) | Shared Tabler-styled error pages (4xx/5xx), consistent UX, wiring to Issue Reporter modal, and E2E testing patterns |
-
-**Agent-only skill file**: `.claudecode/migration-rules.md` — strict rules for the Tabler shell, personas, iconography, and legacy bridge.
-
-**Epic Issue**: [#8301 — UI Migration: AdminLTE to Tabler 2026](https://github.com/ChurchCRM/CRM/issues/8301)
 
 ## Security
 
@@ -92,6 +81,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Testing](./testing.md) | Writing tests, debugging, test suites |
 | [Cypress Testing](./cypress-testing.md) | E2E tests, CI/CD testing, API test patterns |
 | [Testing Migration & E2E](./testing-migration-e2e.md) | Testing strategy for migrations |
+| [Marketing Visual-Media Pipeline](./marketing-visuals-pipeline.md) | Playwright-based screenshot/video capture for marketing (`playwright/`) — separate from Cypress E2E |
 
 ### Running Cypress Locally
 
@@ -156,7 +146,7 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
   - For flaky selectors after UI changes, prefer stable selectors: `id`, `data-cy`, `input[name=]`, link href/text, and avoid visual utility classes.
 
 
-**Before committing ANY test changes:** See `CLAUDE.md` → Test Review & Commit Workflow for mandatory checklist
+**Before committing ANY test changes:** See repo root `CLAUDE.md` / `MEMORY.md` (agent conventions for this repo, not Claude-only) for the test review checklist before committing test changes
 
 ## MVC Migration
 
@@ -186,8 +176,12 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 | [Development Workflows](./development-workflows.md) | Setup, build, Docker management |
 | [Code Standards](./code-standards.md) | General coding, quality checks, PR reviews |
 | [Documentation Architecture & Wiki](./wiki-documentation.md) | Which doc home to use (end user / 3rd-party dev / core dev), MDX gotchas, wiki article structure |
-| [Release Notes](./release-notes.md) | Authoring GitHub release notes for any version type |
+| [Release Management](./release-management.md) | **Canonical end-to-end release process** — scope review, SHA-based CI/nightly gate, draft creation, approvals, publishing, and post-release verification |
+| [Security Report Triage](./security-report-triage.md) | A vulnerability report arrives: read it against the code and tell the maintainer how much of the claimed risk stands up, before any public reply |
+| [Release Notes](./release-notes.md) | Transform and fact-check the GitHub-generated draft changelog into user-focused release notes |
 | [Social Media Release](./social-media-release.md) | Generating platform posts for X, Facebook, Instagram, LinkedIn |
+| [Release Announcement](./release-announcement.md) | After a release is published: Discord announcement, notify reporters of fixed issues, list docs PRs held for the release |
+| [Repo Health Check](./repo-health.md) | On-demand GitHub snapshot: approved PRs waiting to merge, good-first-issue pipeline staleness, community-profile hygiene, stale-branch cleanup |
 
 ## Example Workflows
 
@@ -200,12 +194,12 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 - **Optimize queries**: `performance-optimization.md` → `database-operations.md` → `service-layer.md`
 - **Add UI text**: `i18n-localization.md` → `frontend-development.md` → `git-workflow.md`
 - **Render money / currency anywhere**: `currency-localization.md` → `configuration-management.md` → `frontend-development.md` → `git-workflow.md`
+- **Triage a vulnerability report** (is it real, what is the true severity): `security-report-triage.md` → `authorization-security.md` → `github-interaction.md`
 - **Manage security advisory** (publish GHSA, request CVE, notify reporters): `github-interaction.md` (Security Advisory Management section) → `security-best-practices.md`
 - **Write release notes**: `release-notes.md` → `github-interaction.md`
 - **Publish a release**: `release-notes.md` → `social-media-release.md` → `github-interaction.md`
 - **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
 - **Address PR comments**: `pr-review.md` → `github-interaction.md` → `git-workflow.md`
+- **Check repo health** (approved PRs waiting, good-first-issue pipeline, hygiene): `repo-health.md` → `github-interaction.md`
 - **Add print support to a page**: `frontend-development.md` (Print Support section) → `security-best-practices.md` (CSP) → `git-workflow.md`
-- **Migrate a page to Tabler**: `tabler-migration-playbook.md` → `tabler-components.md` → `table-action-menu.md` → `bootstrap-5-migration.md` → `git-workflow.md`
 - **Add or edit a table with row actions**: `table-action-menu.md` → `tabler-components.md` → `git-workflow.md`
-- **Swap a 3rd-party library**: `tabler-library-replacement.md` → `webpack-typescript.md` → `git-workflow.md`

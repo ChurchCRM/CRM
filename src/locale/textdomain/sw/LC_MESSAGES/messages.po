@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Bei ya chini"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Huduma za Kijiografia za Familia"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Chagua Familia"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Idadi ya juu zaidi ya majirani"
-
-#: 
-msgid "Maximum distance"
-msgstr "Umbali wa juu zaidi"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Umbizo la faili ya data"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Jumuisha familia katika faili ya kuratibu"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Familia za Jirani"
-
-#: 
-msgid "Make Data File"
-msgstr "Tengeneza Faili ya Data"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Onyesha Majirani"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Longitude"
 #: 
 msgid "Add to Cart"
 msgstr "Ongeza kwenye Cart"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Pitana na Cart"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "Tuma barua pepe kwa Wote"
 #: 
 msgid "Family Roles"
 msgstr "Majukumu ya Familia"
-
-#: 
-msgid "Family Geographic"
-msgstr "Kijiografia cha Familia"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4252,26 +4205,8 @@ msgid "Profile Image uploaded"
 msgstr "Picha ya Wasifu imepakiwa"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Onyesha majirani na uainishaji huu"
-
-#: 
-msgid "Please select a Family."
-msgstr "Tafadhali chagua Familia."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Kuratibu jina la faili la msingi wa data"
-
-#: 
 msgid "select an option"
 msgstr "chagua chaguo"
-
-#: 
-msgid "Direct me"
-msgstr "Nielekeze"
 
 #: 
 msgid "Your cart is empty"
@@ -5110,14 +5045,6 @@ msgstr "Watu Wanathibitisha Dashibodi"
 #: 
 msgid "Verification URL created"
 msgstr "URL ya uthibitishaji imeundwa"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8512,10 +8439,6 @@ msgid "selected family has no coordinates"
 msgstr "familia iliyochaguliwa haina kuratibu"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Lazimisha watumiaji wote kujiandikisha katika uthibitishaji wa hatua mbili"
 
@@ -9314,10 +9237,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Panua ChurchCRM na MailChimp, nakala rudufu, na zaidi"
 
 #: 
-msgid "FY %s"
-msgstr "MF %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Familia zinashiriki anwani na nambari ya simu."
 
@@ -9400,10 +9319,6 @@ msgstr "Tengeneza ripoti za uanachama wa kikundi na shughuli"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "Tengeneza nyaraka za taarifa ya kodi kwa wafadhili"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "Zana za Kijiografia"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10136,10 +10051,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Tazama na simamia malipo ya risiti za amana"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Tazama na simamia data ya mahali pa familia"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Tazama na simamia faili za kumbukumbu za mfumo kwa utatuzi"
 
@@ -10478,10 +10389,6 @@ msgstr "Hii itapakia upya na kutumia tena toleo la sasa. Inaweza kurekebisha fai
 #: 
 msgid "Total Check-ins"
 msgstr "Jumla ya Usajili"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Jaribu kuchagua aina tofauti ya tukio au mwaka."
 
 #: 
 msgid "Up to Date"
@@ -12287,10 +12194,6 @@ msgid "Database dump only (.sql)"
 msgstr "Nakala ya hifadhidata peke yake (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Kipindi cha tarehe haiwezi kuzidi mwaka 1"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operesheni ya Uharibifu"
 
@@ -12885,10 +12788,6 @@ msgstr "Huduma haikupatikana kwa orodha hii ya majukumu"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Hali ya kutokuwa hai inaweza kubadilishwa tu kwa orodha ya uainishaji"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Waumini wapya hawatapokea barua pepe ya karibu na vitambulisho vyao. Shiriki nywila nao kwa mkono, au sanidi barua pepe kwanza."
 
 #: 
 msgid "Option name is required"
@@ -13595,7 +13494,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 lazima iwe mfuatano wa herufi 64 za hex."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Watunzaji wa ChurchCRM hawajakagua. Unawajibika kwa usalama na tabia ya chochote unachosakinisha hapa. Pendelea mtiririko wa Vinjari Zilizoidhinishwa inapowezekana."
 
 #: 
@@ -16098,10 +15998,6 @@ msgid "Buyers Registered"
 msgstr "Wanunuzi Waliojisajili"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Wanunuzi Mwaka Huu"
-
-#: 
 msgid "Catalog"
 msgstr "Katalogi"
 
@@ -16250,10 +16146,6 @@ msgid "Items Donated"
 msgstr "Vipengele Vilivyochangiwa"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Vipengele Vilivyochangiwa (Mwaka Huu)"
-
-#: 
 msgid "Items Sold"
 msgstr "Vipengele Vilivyouzwa"
 
@@ -16332,10 +16224,6 @@ msgstr "Mipangilio ya haraka"
 #: 
 msgid "Raised"
 msgstr "Imekusanywa"
-
-#: 
-msgid "Raised This Year"
-msgstr "Iliyokusanywa Mwaka Huu"
 
 #: 
 msgid "Sample Amount"
@@ -17054,10 +16942,6 @@ msgid "Deleted successfully"
 msgstr "Imefutwa kwa mafanikio"
 
 #: 
-msgid "Deposit #"
-msgstr "Amana #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Stakabadhi ya Amana"
 
@@ -17104,10 +16988,6 @@ msgstr "Imeshindwa kupata ahadi ya mchango"
 #: 
 msgid "Failed to update pledge"
 msgstr "Imeshindwa kusasisha ahadi ya mchango"
-
-#: 
-msgid "Family is required"
-msgstr "Familia inahitajika"
 
 #: 
 msgid "Financial data"
@@ -17236,10 +17116,6 @@ msgstr "Panga msaada wa wakati wa utekelezaji"
 #: 
 msgid "Please enter a date"
 msgstr "Tafadhali ingiza tarehe"
-
-#: 
-msgid "Please select a family"
-msgstr "Tafadhali chagua familia"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17646,14 +17522,6 @@ msgstr "Thamani ya makadirio %s."
 msgid "Minimum bid %s."
 msgstr "Zabuni ya chini kabisa %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Hakuna chaguo za \"%s\" zinazopatikana bado. Ongeza rekodi zinazohusika kwanza."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Hakuna chaguo za \"%s\" zilizosanidiwa bado. Ongeza rekodi zinazohusika kwanza."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17802,4 +17670,184 @@ msgstr "Utachopata"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Imeshindwa kupata idadi ya amana"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Kumbukumbu ya mwaka: %s"
+
+#: 
+msgid "Church"
+msgstr "Kanisa"
+
+#: 
+msgid "Classifications"
+msgstr "Uainishaji"
+
+#: 
+msgid "Closest"
+msgstr "Karibu zaidi"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Amana #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Imeshindwa kupata idadi ya ukusanyaji wa fedha"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Imeshindwa kupakia majirani."
+
+#: 
+msgid "Farther"
+msgstr "Mbali zaidi"
+
+#: 
+msgid "Farthest"
+msgstr "Mbali sana"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Tafuta Majirani"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Tafuta familia zilizo karibu na uziongeze kwenye mkoba wako"
+
+#: 
+msgid "Map centered on"
+msgstr "Ramani imewekwa katikati ya"
+
+#: 
+msgid "Max distance"
+msgstr "Umbali wa juu zaidi"
+
+#: 
+msgid "Max neighbors"
+msgstr "Idadi ya juu ya majirani"
+
+#: 
+msgid "Near"
+msgstr "Karibu"
+
+#: 
+msgid "Please select a family."
+msgstr "Tafadhali chagua familia."
+
+#: 
+msgid "Results"
+msgstr "Matokeo"
+
+#: 
+msgid "Same location"
+msgstr "Mahali pamoja"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Tafuta Majirani"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Chagua familia na ubonyeze Tafuta Majirani kuona matokeo."
+
+#: 
+msgid "Selected family"
+msgstr "Familia iliyochaguliwa"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Thamani hii lazima iwe jina halali la sehemu."
+
+#: 
+msgid "Could not load data"
+msgstr "Imeshindwa kupakia data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Tafadhali onyesha upya ukurasa au jaribu tena baadaye."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Ongeza kwanza rekodi zinazohusiana."
+
+#: 
+msgid "All Months"
+msgstr "Miezi Yote"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Hakuna chaguo za \"%s\" zilizowekwa bado."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Hakuna matukio yaliyopatikana kwa %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Jaribu kuchagua aina nyingine ya tukio, mwezi, au mwaka."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Hitilafu ya kutafuta kuratibu za ramani imetokea — jaribu tena baadaye"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Anwani haijakamilika (jiji, jimbo, na msimbo wa posta havipo)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Familia zote tayari zina kuratibu."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Imeshindwa kusasisha kuratibu"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Imeshindwa kusasisha kuratibu za familia"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Familia zote {{geocoded}} zimepatiwa kuratibu. Ramani sasa imesasishwa."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Familia {{geocoded}} zimepatiwa kuratibu. {{failed}} hazikuweza kutatuliwa — angalia maelezo hapa chini."
+
+#: 
+msgid "Geocoding…"
+msgstr "Inatafuta kuratibu…"
+
+#: 
+msgid "No address on file"
+msgstr "Hakuna anwani iliyohifadhiwa"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Hakuna kinachofanana kilichopatikana — angalia anwani ya mtaa, jiji, na msimbo wa posta"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Fungua familia ili kurekebisha anwani yake, kisha endesha hii tena."
+
+#: 
+msgid "Set up now"
+msgstr "Sanidi sasa"
+
+#: 
+msgid "Unknown family"
+msgstr "Familia isiyojulikana"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Sasisha Kuratibu Zote"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Sasisha Kuratibu Zote za Familia"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Sasisha Kuratibu"
 

@@ -194,7 +194,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </a>
                     <div class="dropdown-divider"></div>
                     <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/<?= (int) $item->getId() ?>/delete"
-                          onsubmit="return confirm(<?= htmlspecialchars(json_encode(gettext('Delete this item?'))) ?>)">
+                          onsubmit="return confirm(<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript(gettext('Delete this item?'))) ?>)">
                       <?= $csrfItemDeleteField ?>
                       <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
                         <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>

@@ -66,10 +66,11 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      * @OA\Get(
      *     path="/payments/family/{familyId}/list",
      *     summary="Get pledge and payment history for a family (Finance role required)",
-     *     description="Results are filtered by the current user's ShowSince date and ShowPayments/ShowPledges preferences.",
+     *     description="Results are filtered by fyid (fiscal year) when a positive value is provided. fyid=0 means All Time (no date filter at all). Omitting fyid entirely falls back to the current user's ShowSince date preference. ShowPayments/ShowPledges preferences always apply.",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="fyid", in="query", required=false, description="Fiscal year ID to filter by; 0 for All Time (no filter); omit to fall back to the ShowSince preference", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Pledge/payment rows for the family",
      *         @OA\JsonContent(@OA\Property(property="data", type="array", @OA\Items(
      *             @OA\Property(property="FormattedFY", type="string"),
@@ -88,10 +89,27 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      */
     $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args): Response {
         $familyId = SlimUtils::getRouteArgument($request, 'familyId');
+        $queryParams = $request->getQueryParams();
+        $fyid = isset($queryParams['fyid']) ? (int) $queryParams['fyid'] : null;
+
         $query = PledgeQuery::create()->filterByFamId($familyId);
-        if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
-            $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
+
+        // Three distinct states, not two: a specific FY, an explicit "All Time"
+        // (fyid=0 — no date filter of any kind, not even ShowSince), and no
+        // fyid param at all (legacy/default — fall back to ShowSince). Treating
+        // "fyid=0" and "no fyid param" the same would make the All-Time pill a
+        // lie for any user with a ShowSince preference configured.
+        if ($fyid !== null && $fyid > 0) {
+            // Server-side FY filter: exact FYID match
+            $query->filterByFyId($fyid);
+        } elseif ($fyid === null) {
+            // No fyid param at all: fall back to ShowSince user preference
+            if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
+                $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
+            }
         }
+        // $fyid === 0 (explicit All Time): no filter of any kind — every record.
+
         if (!AuthenticationManager::getCurrentUser()->isShowPayments()) {
             $query->filterByPledgeOrPayment('Payment', Criteria::NOT_EQUAL);
         }
@@ -142,8 +160,8 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *         description="Pledge group details",
      *         @OA\JsonContent(
      *             @OA\Property(property="groupKey", type="string", example="abc123"),
-     *             @OA\Property(property="familyId", type="integer", example=42),
-     *             @OA\Property(property="familyName", type="string", example="Smith Family"),
+     *             @OA\Property(property="familyId", type="integer", nullable=true, description="Family ID; 0 or null for anonymous donations", example=42),
+     *             @OA\Property(property="familyName", type="string", description="Family display name; empty string for anonymous donations", example="Smith Family"),
      *             @OA\Property(property="date", type="string", format="date", example="2025-01-15"),
      *             @OA\Property(property="fyId", type="integer", example=29),
      *             @OA\Property(property="method", type="string", example="CHECK"),
@@ -197,8 +215,8 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
-     *             required={"FamilyID","Date","FYID","type","FundSplit","iMethod"},
-     *             @OA\Property(property="FamilyID", type="integer", description="Family ID", example=42),
+     *             required={"Date","FYID","type","FundSplit","iMethod"},
+     *             @OA\Property(property="FamilyID", type="integer", nullable=true, description="Family ID — omit or pass null for anonymous/cash donations with no associated family", example=42),
      *             @OA\Property(property="Date", type="string", format="date", description="Pledge/payment date", example="2025-01-15"),
      *             @OA\Property(property="FYID", type="integer", description="Fiscal year ID", example=29),
      *             @OA\Property(property="type", type="string", enum={"Pledge","Payment"}, description="Record type", example="Payment"),
@@ -231,9 +249,6 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $payment = (object) $body;
 
             // Validate required fields
-            if (empty($payment->FamilyID)) {
-                return SlimUtils::renderErrorJSON($response, gettext('Family is required'), [], 400);
-            }
             if (empty($payment->Date)) {
                 return SlimUtils::renderErrorJSON($response, gettext('Date is required'), [], 400);
             }
@@ -252,7 +267,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to create pledge'), [], 500, $e, $request);
         }
         try {
-            $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
+            $paymentObj = json_decode($groupPayment, true, 512);
         } catch (\JsonException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }
@@ -278,7 +293,15 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(description="Pledge or payment fields (FamilyID, Date, FYID, type, FundSplit, iMethod, etc.)")
+     *         @OA\JsonContent(
+     *             required={"Date","FYID","type","FundSplit","iMethod"},
+     *             @OA\Property(property="FamilyID", type="integer", nullable=true, description="Family ID — omit or pass null for anonymous/cash donations with no associated family", example=42),
+     *             @OA\Property(property="Date", type="string", format="date", description="Pledge/payment date", example="2025-01-15"),
+     *             @OA\Property(property="FYID", type="integer", description="Fiscal year ID", example=29),
+     *             @OA\Property(property="type", type="string", enum={"Pledge","Payment"}, description="Record type", example="Payment"),
+     *             @OA\Property(property="iMethod", type="string", enum={"CHECK","CASH","CREDITCARD","BANKDRAFT"}, description="Payment method", example="CHECK"),
+     *             @OA\Property(property="FundSplit", type="string", description="JSON-encoded array of fund allocations")
+     *         )
      *     ),
      *     @OA\Response(
      *         response=200,
@@ -305,9 +328,6 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $body = $request->getParsedBody() ?? [];
             $payment = (object) $body;
 
-            if (empty($payment->FamilyID)) {
-                return SlimUtils::renderErrorJSON($response, gettext('Family is required'), [], 400);
-            }
             if (empty($payment->Date)) {
                 return SlimUtils::renderErrorJSON($response, gettext('Date is required'), [], 400);
             }
@@ -355,7 +375,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update pledge'), [], 500, $e, $request);
         }
         try {
-            $paymentObj = json_decode($groupPayment, true, 512, JSON_THROW_ON_ERROR);
+            $paymentObj = json_decode($groupPayment, true, 512);
         } catch (\JsonException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }

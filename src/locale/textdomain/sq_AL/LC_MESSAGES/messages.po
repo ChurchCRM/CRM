@@ -1155,48 +1155,9 @@ msgid "Minimum Price"
 msgstr "Çmimi minimal"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Familjare gjeografike Utilities"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Zgjidh Family"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Numri maksimal i fqinjëve"
-
-#: 
-msgid "Maximum distance"
-msgstr "Distanca maksimale"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "File format e të dhënave"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Përfshijnë familjet në koordinojnë skedë"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Familjet fqinje"
-
-#: 
-msgid "Make Data File"
-msgstr "Bëni dhënat e file"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Shfaq Fqinjët"
 
 #: 
 msgid "Distance"
@@ -1217,10 +1178,6 @@ msgstr "Gjatësi"
 #: 
 msgid "Add to Cart"
 msgstr "Shtoni në kartën e"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Ndërpritet me Shportë"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "Dërgo email të gjithëve"
 #: 
 msgid "Family Roles"
 msgstr "Rolet familjare"
-
-#: 
-msgid "Family Geographic"
-msgstr "Gjeografia e familjes"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4251,24 +4204,8 @@ msgid "Profile Image uploaded"
 msgstr "Imazhi i profilit u ngarkua"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Trego fqinjët me këto klasifikime"
-
-#: 
-msgid "Please select a Family."
-msgstr "Ju lutemi zgjidhni një familje."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Emri i skedarit të bazës së të dhënave të koordinatave"
-
-#: 
 msgid "select an option"
 msgstr "zgjidhni një opsion"
-
-#: 
-msgid "Direct me"
-msgstr "Më drejto"
 
 #: 
 msgid "Your cart is empty"
@@ -5102,14 +5039,6 @@ msgstr "Paneli i verifikimit të personave"
 #: 
 msgid "Verification URL created"
 msgstr "URL e verifikimit u krijua"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8504,10 +8433,6 @@ msgid "selected family has no coordinates"
 msgstr "familja e zgjedhur nuk ka koordinata"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kërko që të gjithë përdoruesit të regjistrohen në vërtetimin me dy faktorë"
 
@@ -9306,10 +9231,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Zgjero ChurchCRM me MailChimp, rezerve dhe më shumë"
 
 #: 
-msgid "FY %s"
-msgstr "VF %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Familjet ndajnë një adresë dhe numër telefoni."
 
@@ -9392,10 +9313,6 @@ msgstr "Gjenero raporte mbi anëtarësinë dhe aktivitetet e grupmesionit"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "Gjenero dokumente të deklaratës tatimore për donatorët"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "Shërbime Gjeografike"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10128,10 +10045,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Shiko dhe menaxho pagesat e fletë-depozitave të ofertave"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Shiko dhe menaxho të dhënat e vendndodhjes së familjes"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Shiko dhe menaxho skedarët e regjistrave të sistemit për korrigjim gabimesh"
 
@@ -10470,10 +10383,6 @@ msgstr "Kjo do të ribëj ngarkim dhe rizbatim të versionit aktual. Mund të rr
 #: 
 msgid "Total Check-ins"
 msgstr "Regjistrimet Totale"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Provo të zgjidhësh një lloj ose vit tjetër ngjarjesh."
 
 #: 
 msgid "Up to Date"
@@ -12279,10 +12188,6 @@ msgid "Database dump only (.sql)"
 msgstr "Vetëm dump i bazës së të dhënave (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Intervali i datave nuk mund të kalojë 1 vit"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operacion Shkatërrues"
 
@@ -12877,10 +12782,6 @@ msgstr "Grupi nuk u gjet për këtë listë rolesh"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Statusi joaktiv mund të ndryshohet vetëm për listën e klasifikimeve"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Përdoruesit e rinj nuk do të marrin një email mirëseardhje me kredencialet e tyre. Ndani fjalëkalimin me ta manualisht, ose konfiguroni emailin fillimisht."
 
 #: 
 msgid "Option name is required"
@@ -13587,7 +13488,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 duhet të jetë një varg heksadecimal 64 karakteresh."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Mirëmbajtësit e ChurchCRM nuk e kanë rishikuar atë. Ju jeni përgjegjës për sigurinë dhe sjelljen e çdo gjëje që instaloni këtu. Preferoni rrjedhën e Shfletimit të aprovuarave sa herë që është e mundur."
 
 #: 
@@ -16090,10 +15992,6 @@ msgid "Buyers Registered"
 msgstr "Blerës të Regjistruar"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Blerës Këtë Vit"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16242,10 +16140,6 @@ msgid "Items Donated"
 msgstr "Artikuj të Dhuruar"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Artikuj të Dhuruar (Këtë Vit)"
-
-#: 
 msgid "Items Sold"
 msgstr "Artikuj të Shitur"
 
@@ -16324,10 +16218,6 @@ msgstr "Paracaktime të Shpejta"
 #: 
 msgid "Raised"
 msgstr "Mbledhur"
-
-#: 
-msgid "Raised This Year"
-msgstr "Mbledhur Këtë Vit"
 
 #: 
 msgid "Sample Amount"
@@ -17050,10 +16940,6 @@ msgid "Deleted successfully"
 msgstr "Fshirë me sukses"
 
 #: 
-msgid "Deposit #"
-msgstr "Depozitë #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Faturë Depozite"
 
@@ -17100,10 +16986,6 @@ msgstr "Dështoi marrja e premtimit"
 #: 
 msgid "Failed to update pledge"
 msgstr "Dështoi përditësimi i premtimit"
-
-#: 
-msgid "Family is required"
-msgstr "Familja është e detyrueshme"
 
 #: 
 msgid "Financial data"
@@ -17232,10 +17114,6 @@ msgstr "Plano mbështetjen e kohës së ekzekutimit"
 #: 
 msgid "Please enter a date"
 msgstr "Ju lutemi vendosni një datë"
-
-#: 
-msgid "Please select a family"
-msgstr "Ju lutemi zgjidhni një familje"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17638,14 +17516,6 @@ msgstr "Vlera e vlerësuar %s."
 msgid "Minimum bid %s."
 msgstr "Oferta minimale %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Nuk ka ende opsione \"%s\" të disponueshme. Shtoni fillimisht rekordet përkatëse."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Nuk ka ende opsione \"%s\" të konfiguruara. Shtoni fillimisht rekordet përkatëse."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17794,4 +17664,184 @@ msgstr "Çfarë do të fitoni"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Dështoi marrja e numrit të depozitave"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Përvjetori: %s"
+
+#: 
+msgid "Church"
+msgstr "Kisha"
+
+#: 
+msgid "Classifications"
+msgstr "Klasifikimet"
+
+#: 
+msgid "Closest"
+msgstr "Më i afërt"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Depozita #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Dështoi marrja e numrit të mbledhjes së fondeve"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Dështoi ngarkimi i fqinjëve."
+
+#: 
+msgid "Farther"
+msgstr "Më larg"
+
+#: 
+msgid "Farthest"
+msgstr "Më i largëti"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Gjej Fqinjët"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Gjeni familjet afër dhe shtojini në shportën tuaj"
+
+#: 
+msgid "Map centered on"
+msgstr "Harta e centruar te"
+
+#: 
+msgid "Max distance"
+msgstr "Distanca maksimale"
+
+#: 
+msgid "Max neighbors"
+msgstr "Numri maksimal i fqinjëve"
+
+#: 
+msgid "Near"
+msgstr "Afër"
+
+#: 
+msgid "Please select a family."
+msgstr "Ju lutem zgjidhni një familje."
+
+#: 
+msgid "Results"
+msgstr "Rezultatet"
+
+#: 
+msgid "Same location"
+msgstr "I njëjti vend"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Kërko Fqinjët"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Zgjidhni një familje dhe klikoni Gjej Fqinjët për të parë rezultatet."
+
+#: 
+msgid "Selected family"
+msgstr "Familja e zgjedhur"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Kjo vlerë duhet të jetë një emër fushe i vlefshëm."
+
+#: 
+msgid "Could not load data"
+msgstr "Nuk mund të ngarkoheshin të dhënat"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Ju lutem rifreskoni faqen ose provoni sërish më vonë."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Shtoni fillimisht regjistrimet përkatëse."
+
+#: 
+msgid "All Months"
+msgstr "Të gjithë muajt"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Nuk janë përcaktuar ende asnjë opsion \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Nuk u gjetën ngjarje për %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Provoni të zgjidhni një lloj tjetër ngjarjeje, muaji ose viti."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Ndodhi një gabim gjatë gjeokodimit — provoni përsëri më vonë"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adresa është e paplotë (mungon qyteti, shteti dhe kodi postar)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Të gjitha familjet kanë tashmë koordinata."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Dështoi përditësimi i koordinatave"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Dështoi përditësimi i koordinatave të familjes"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "U gjeokoduan të gjitha {{geocoded}} familjet. Harta tani është e përditësuar."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "U gjeokoduan {{geocoded}} familje. {{failed}} nuk u zgjidhën dot — shihni detajet më poshtë."
+
+#: 
+msgid "Geocoding…"
+msgstr "Duke gjeokoduar…"
+
+#: 
+msgid "No address on file"
+msgstr "Nuk ka adresë të regjistruar"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nuk u gjet asnjë përputhje — kontrolloni adresën e rrugës, qytetin dhe kodin postar"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Hapni një familje për të korrigjuar adresën e saj, më pas ekzekutojeni këtë përsëri."
+
+#: 
+msgid "Set up now"
+msgstr "Konfiguro tani"
+
+#: 
+msgid "Unknown family"
+msgstr "Familje e panjohur"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Përditëso të Gjitha Koordinatat"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Përditëso të Gjitha Koordinatat e Familjeve"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Përditëso Koordinatat"
 

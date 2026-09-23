@@ -17,6 +17,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Service\AuthService;
@@ -195,8 +196,8 @@ class FinancialService
 
         $pledges = PledgeQuery::create()
             ->filterByGroupKey($groupKey)
-            ->joinWithDonationFund()
-            ->joinWithFamily()
+            ->leftJoinWithDonationFund()
+            ->leftJoinWithFamily()
             ->find();
 
         if ($pledges->count() === 0) {
@@ -357,7 +358,7 @@ class FinancialService
             return;
         }
         global $cnInfoCentral;
-        $currencyDenoms = json_decode($payment->cashDenominations, null, 512, JSON_THROW_ON_ERROR);
+        $currencyDenoms = json_decode($payment->cashDenominations, null, 512);
         foreach ($currencyDenoms as $cdom) {
             if (empty($payment->DepositID) || empty($cdom->currencyID) || empty($cdom->Count)) {
                 continue;
@@ -378,7 +379,7 @@ class FinancialService
         // FundSplit may arrive as a JSON string (legacy callers) or as an already-
         // decoded array (when called via submitPledgeOrPayment after normalisation).
         $FundSplit = is_string($payment->FundSplit)
-            ? json_decode($payment->FundSplit, false, 512, JSON_THROW_ON_ERROR)
+            ? json_decode($payment->FundSplit, false, 512)
             : $payment->FundSplit;
 
         // $presetGroupKey reuses the caller's GroupKey (updatePledgeOrPayment) instead of
@@ -389,20 +390,23 @@ class FinancialService
             if ($Fund->Amount > 0) {  // Only insert a row if this fund has a non-zero amount.
                 if ($sGroupKey === null) {  // GroupKey is shared across all fund rows for one payment.
                     $iAutID = $payment->iAutID ?? null;
+                    // Normalize to string: null/absent FamilyID becomes '' so genGroupKey
+                    // (typed string) doesn't receive null and trigger a PHP 8 deprecation.
+                    $famIdStr = (string) ($payment->FamilyID ?? '');
                     if ($payment->iMethod === 'CHECK') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo, $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($payment->iCheckNo, $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'BANKDRAFT') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'draft', $famIdStr, $Fund->FundID, $payment->Date);
                     } elseif ($payment->iMethod === 'CREDITCARD') {
-                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'credit', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID ?? 'credit', $famIdStr, $Fund->FundID, $payment->Date);
                     } else {
-                        $sGroupKey = FunctionsUtils::genGroupKey('cash', $payment->FamilyID, $Fund->FundID, $payment->Date);
+                        $sGroupKey = FunctionsUtils::genGroupKey('cash', $famIdStr, $Fund->FundID, $payment->Date);
                     }
                 }
 
                 $pledge = new Pledge();
                 $pledge
-                    ->setFamId($payment->FamilyID)
+                    ->setFamId(!empty($payment->FamilyID) ? (int) $payment->FamilyID : null)
                     ->setFyId($payment->FYID)
                     ->setDate($payment->Date)
                     ->setAmount($Fund->Amount)
@@ -457,7 +461,7 @@ class FinancialService
     {
         $raw = $payment->FundSplit ?? [];
         if (is_string($raw)) {
-            $raw = json_decode($raw, false, 512, JSON_THROW_ON_ERROR);
+            $raw = json_decode($raw, false, 512);
         }
         if ($raw instanceof \stdClass) {
             $raw = [$raw];
@@ -523,10 +527,24 @@ class FinancialService
             // Remove orphaned denomination rows. pledge_denominations_pdem has no FK
             // constraint and no Propel model, so we use a parameterized statement on
             // the same connection to keep the deletion within this transaction.
-            $stmt = $con->prepare(
-                'DELETE FROM pledge_denominations_pdem WHERE pdem_plg_GroupKey = :groupKey'
-            );
-            $stmt->execute([':groupKey' => $groupKey]);
+            // The table is an optional legacy feature and may not exist in all
+            // installations (it is absent from the default Install.sql), so we
+            // swallow any PDOException here rather than aborting the whole update.
+            try {
+                $stmt = $con->prepare(
+                    'DELETE FROM pledge_denominations_pdem WHERE pdem_plg_GroupKey = :groupKey'
+                );
+                $stmt->execute([':groupKey' => $groupKey]);
+            } catch (\PDOException $e) {
+                // Only suppress SQLSTATE 42S02 / MySQL error 1146 (table does not exist).
+                // All other PDO errors (deadlock, timeout, disk-full, permission denied, …)
+                // must propagate so the outer \Throwable catch can roll back the transaction.
+                $sqlState = $e->getCode();
+                $mysqlCode = $e->errorInfo[1] ?? null;
+                if ($sqlState !== '42S02' || $mysqlCode !== 1146) {
+                    throw $e;
+                }
+            }
             PledgeQuery::create()->filterByGroupKey($groupKey)->delete($con);
             $this->insertPledgeorPayment($payment, $groupKey);
             $con->commit();
@@ -569,7 +587,7 @@ class FinancialService
         $payment->total = $total;
         $payment->total_formatted = CurrencyFormatter::format($total);
 
-        return json_encode($payment, JSON_THROW_ON_ERROR);
+        return json_encode($payment);
     }
 
     public function getDepositPDF($depID): void
@@ -775,10 +793,11 @@ class FinancialService
     {
         AuthService::requireUserGroupMembership('bFinance');
 
-        // Get all families with at least one member (classification ID 1)
+        // Get all families with at least one living member (classification ID 1)
         $familyQuery = FamilyQuery::create()
             ->usePersonQuery()
                 ->filterByClsId(1)
+                ->filterByLiving()
             ->endUse();
 
         // Get family IDs that made payments in the date range
@@ -810,49 +829,6 @@ class FinancialService
     // =========================================================================
 
     /**
-     * Calculate fiscal year date range based on system configuration.
-     *
-     * @return array{startDate: string, endDate: string, label: string, month: int}
-     */
-    public function getFiscalYearDates(): array
-    {
-        $iFYMonth = SystemConfig::getIntValue('iFYMonth');
-        $currentYear = (int) date('Y');
-        $currentMonth = (int) date('n');
-
-        if ($iFYMonth === 1) {
-            // Calendar year fiscal year
-            $fyStartDate = $currentYear . '-01-01';
-            $fyEndDate = $currentYear . '-12-31';
-            $fyLabel = (string) $currentYear;
-        } else {
-            // Non-calendar fiscal year
-            if ($currentMonth >= $iFYMonth) {
-                $fyStartYear = $currentYear;
-                $fyEndYear = $currentYear + 1;
-            } else {
-                $fyStartYear = $currentYear - 1;
-                $fyEndYear = $currentYear;
-            }
-            $fyStartDate = $fyStartYear . '-' . str_pad($iFYMonth, 2, '0', STR_PAD_LEFT) . '-01';
-            // Calculate end date (last day of month before fiscal year month)
-            $endMonth = $iFYMonth - 1;
-            if ($endMonth === 0) {
-                $endMonth = 12;
-            }
-            $fyEndDate = $fyEndYear . '-' . str_pad($endMonth, 2, '0', STR_PAD_LEFT) . '-' . date('t', strtotime($fyEndYear . '-' . $endMonth . '-01'));
-            $fyLabel = $fyStartYear . '/' . substr((string) $fyEndYear, 2, 2);
-        }
-
-        return [
-            'startDate' => $fyStartDate,
-            'endDate' => $fyEndDate,
-            'label' => $fyLabel,
-            'month' => $iFYMonth,
-        ];
-    }
-
-    /**
      * Get deposit statistics (total, open, closed counts).
      *
      * @return array{total: int, open: int, closed: int}
@@ -867,87 +843,156 @@ class FinancialService
     }
 
     /**
-     * Get recent deposits within the current fiscal year.
+     * Get recent deposits, optionally scoped to a specific fiscal year.
      *
      * @param int $limit Maximum number of deposits to return
-     * @param string|null $fyStartDate Optional fiscal year start date filter
+     * @param int|null $fyid Fiscal year ID to filter by; null or 0 returns all time
      * @return ObjectCollection Collection of Deposit objects
      */
-    public function getRecentDeposits(int $limit = 5, ?string $fyStartDate = null): ObjectCollection
+    public function getRecentDeposits(int $limit = 5, ?int $fyid = null): ObjectCollection
     {
         $query = DepositQuery::create()
             ->orderByDate(Criteria::DESC)
             ->limit($limit);
 
-        // Filter to only show deposits from current fiscal year
-        if ($fyStartDate !== null) {
-            $query->filterByDate($fyStartDate, Criteria::GREATER_EQUAL);
+        if ($fyid !== null && $fyid > 0) {
+            $fyDates = FiscalYearUtils::getFiscalYearDatesById($fyid);
+            $query->filterByDate(['min' => $fyDates['startDate'], 'max' => $fyDates['endDate']]);
         }
 
         return $query->find();
     }
 
     /**
-     * Get Year-to-Date payment total for a fiscal year.
+     * Get the oldest fiscal year ID that has deposit data.
      *
-     * @param string $fyStartDate Fiscal year start date
-     * @param string $fyEndDate Fiscal year end date
+     * Used to build the FY selector on the Finance Dashboard and Find Deposit Slip.
+     *
+     * @return int Oldest fiscal year ID (falls back to current FY when no deposits exist)
+     */
+    public function getOldestDepositFyId(): int
+    {
+        $oldest = DepositQuery::create()
+            ->orderByDate(Criteria::ASC)
+            ->findOne();
+        if ($oldest === null) {
+            return FiscalYearUtils::getCurrentFiscalYearId();
+        }
+        $dateStr = $oldest->getDate('Y-m-d');
+        return FiscalYearUtils::getFiscalYearIdForDate(is_string($dateStr) ? $dateStr : '');
+    }
+
+    /**
+     * Get available fiscal years for the deposit-based FY selector.
+     *
+     * @return array<int, array{id: int, label: string}>
+     */
+    public function getAvailableDepositFiscalYears(): array
+    {
+        return FiscalYearUtils::buildFiscalYearList($this->getOldestDepositFyId());
+    }
+
+    /**
+     * Get the oldest fiscal year ID that has pledge/payment data (plg_date).
+     *
+     * Used to build the FY selector on the Finance Dashboard, where YTD stat
+     * methods filter by pledge date — not deposit date. FYs that have pledges
+     * but no deposit slips would be absent from the dropdown if we used the
+     * deposit-based helper instead.
+     *
+     * @return int Oldest pledge FY ID (falls back to current FY when no pledges exist)
+     */
+    public function getOldestPledgeFyId(): int
+    {
+        $oldest = PledgeQuery::create()
+            ->orderByFyId()          // plg_FYID is integer — no NULL risk (unlike plg_date)
+            ->select(['FyId'])
+            ->findOne();
+        return $oldest !== null ? (int) $oldest : FiscalYearUtils::getCurrentFiscalYearId();
+    }
+
+    /**
+     * Get available fiscal years for the pledge-based FY selector (Finance Dashboard).
+     *
+     * @return array<int, array{id: int, label: string}>
+     */
+    public function getAvailablePledgeFiscalYears(): array
+    {
+        return FiscalYearUtils::buildFiscalYearList($this->getOldestPledgeFyId());
+    }
+
+    /**
+     * Get Year-to-Date payment total for a fiscal year (or all time when dates are null).
+     *
+     * @param string|null $fyStartDate Fiscal year start date; null = all time
+     * @param string|null $fyEndDate   Fiscal year end date;   null = all time
      * @return float|null
      */
-    public function getYtdPaymentTotal(string $fyStartDate, string $fyEndDate): ?float
+    public function getYtdPaymentTotal(?string $fyStartDate = null, ?string $fyEndDate = null): ?float
     {
-        return PledgeQuery::create()
-            ->filterByPledgeOrPayment('Payment')
-            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
+        $query = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment');
+        if ($fyStartDate !== null && $fyEndDate !== null) {
+            $query->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate]);
+        }
+        return $query
             ->addAsColumn('TotalAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->select(['TotalAmount'])
             ->findOne();
     }
 
     /**
-     * Get Year-to-Date pledge total for a fiscal year.
+     * Get Year-to-Date pledge total for a fiscal year (or all time when dates are null).
      *
-     * @param string $fyStartDate Fiscal year start date
-     * @param string $fyEndDate Fiscal year end date
+     * @param string|null $fyStartDate Fiscal year start date; null = all time
+     * @param string|null $fyEndDate   Fiscal year end date;   null = all time
      * @return float|null
      */
-    public function getYtdPledgeTotal(string $fyStartDate, string $fyEndDate): ?float
+    public function getYtdPledgeTotal(?string $fyStartDate = null, ?string $fyEndDate = null): ?float
     {
-        return PledgeQuery::create()
-            ->filterByPledgeOrPayment('Pledge')
-            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
+        $query = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Pledge');
+        if ($fyStartDate !== null && $fyEndDate !== null) {
+            $query->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate]);
+        }
+        return $query
             ->addAsColumn('TotalAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->select(['TotalAmount'])
             ->findOne();
     }
 
     /**
-     * Get Year-to-Date payment count for a fiscal year.
+     * Get Year-to-Date payment count for a fiscal year (or all time when dates are null).
      *
-     * @param string $fyStartDate Fiscal year start date
-     * @param string $fyEndDate Fiscal year end date
+     * @param string|null $fyStartDate Fiscal year start date; null = all time
+     * @param string|null $fyEndDate   Fiscal year end date;   null = all time
      * @return int
      */
-    public function getYtdPaymentCount(string $fyStartDate, string $fyEndDate): int
+    public function getYtdPaymentCount(?string $fyStartDate = null, ?string $fyEndDate = null): int
     {
-        return PledgeQuery::create()
-            ->filterByPledgeOrPayment('Payment')
-            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
-            ->count();
+        $query = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment');
+        if ($fyStartDate !== null && $fyEndDate !== null) {
+            $query->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate]);
+        }
+        return $query->count();
     }
 
     /**
-     * Get count of unique donor families for a fiscal year.
+     * Get count of unique donor families for a fiscal year (or all time when dates are null).
      *
-     * @param string $fyStartDate Fiscal year start date
-     * @param string $fyEndDate Fiscal year end date
+     * @param string|null $fyStartDate Fiscal year start date; null = all time
+     * @param string|null $fyEndDate   Fiscal year end date;   null = all time
      * @return int|null
      */
-    public function getYtdDonorFamilyCount(string $fyStartDate, string $fyEndDate): ?int
+    public function getYtdDonorFamilyCount(?string $fyStartDate = null, ?string $fyEndDate = null): ?int
     {
-        return PledgeQuery::create()
-            ->filterByPledgeOrPayment('Payment')
-            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
+        $query = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment');
+        if ($fyStartDate !== null && $fyEndDate !== null) {
+            $query->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate]);
+        }
+        return $query
             ->addAsColumn('FamilyCount', 'COUNT(DISTINCT ' . PledgeTableMap::COL_PLG_FAMID . ')')
             ->select(['FamilyCount'])
             ->findOne();
@@ -979,32 +1024,45 @@ class FinancialService
 
     /**
      * Get all dashboard data in a single call.
-     * 
-     * This method consolidates all the dashboard queries into a single 
-     * service call to simplify the view layer.
      *
+     * - null  → current fiscal year (backward-compatible default for callers with no opinion)
+     * - 0     → "All Time": no date-range filter on stats or recent-deposits
+     * - n > 0 → specific fiscal year n
+     *
+     * @param int|null $fyid Fiscal year ID (null = current FY, 0 = All Time, >0 = specific FY)
      * @return array Dashboard data including fiscal year info, statistics, and deposits
      */
-    public function getDashboardData(): array
+    public function getDashboardData(?int $fyid = null): array
     {
-        $fiscalYear = $this->getFiscalYearDates();
-        $depositStats = $this->getDepositStatistics();
-        $currentDeposit = $this->getCurrentDeposit();
+        $allTime    = ($fyid === 0);
+        $actualFyid = $allTime
+            ? null
+            : (($fyid !== null && $fyid > 0) ? $fyid : FiscalYearUtils::getCurrentFiscalYearId());
+
+        $fiscalYear = $allTime
+            ? ['startDate' => null, 'endDate' => null, 'label' => gettext('All Time'), 'month' => 1]
+            : FiscalYearUtils::getFiscalYearDatesById($actualFyid);
+
+        $depositStats        = $this->getDepositStatistics();
+        $currentDeposit      = $this->getCurrentDeposit();
         $donationFundService = new DonationFundService();
-        $activeFunds = $donationFundService->getAll();
+        $activeFunds         = $donationFundService->getAll();
 
         return [
-            'fiscalYear' => $fiscalYear,
-            'depositStats' => $depositStats,
-            'recentDeposits' => $this->getRecentDeposits(5, $fiscalYear['startDate']),
-            'activeFunds' => $activeFunds,
-            'activeFundCount' => $activeFunds->count(),
-            'totalFundCount' => $donationFundService->getCount(),
-            'ytdPaymentTotal' => $this->getYtdPaymentTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
-            'ytdPledgeTotal' => $this->getYtdPledgeTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
-            'ytdPaymentCount' => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
+            'fiscalYear'       => $fiscalYear,
+            'selectedFyid'     => $allTime ? 0 : $actualFyid,
+            'availableYears'   => $this->getAvailablePledgeFiscalYears(),
+            'currentFyid'      => FiscalYearUtils::getCurrentFiscalYearId(),
+            'depositStats'     => $depositStats,
+            'recentDeposits'   => $this->getRecentDeposits(5, $allTime ? null : $actualFyid),
+            'activeFunds'      => $activeFunds,
+            'activeFundCount'  => $activeFunds->count(),
+            'totalFundCount'   => $donationFundService->getCount(),
+            'ytdPaymentTotal'  => $this->getYtdPaymentTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
+            'ytdPledgeTotal'   => $this->getYtdPledgeTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
+            'ytdPaymentCount'  => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdDonorFamilies' => $this->getYtdDonorFamilyCount($fiscalYear['startDate'], $fiscalYear['endDate']),
-            'currentDeposit' => $currentDeposit,
+            'currentDeposit'   => $currentDeposit,
             'currentDepositId' => $this->getCurrentDepositId(),
         ];
     }

@@ -1144,44 +1144,8 @@ msgid "Minimum Price"
 msgstr "न्यूनतम मूल्य"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "पारिवारिक भौगोलिक उपयोगिताएँ"
-
-#: 
 msgid "Select Family"
 msgstr "परिवार चुनें"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "पड़ोसियों की अधिकतम संख्या"
-
-#: 
-msgid "Maximum distance"
-msgstr "अधिकतम दूरी"
-
-#: 
-msgid "Data file format"
-msgstr "डेटा फ़ाइल स्वरूप"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS विज़ुअलाइज़र"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "निर्देशांक फ़ाइल में परिवारों को शामिल करें"
-
-#: 
-msgid "Neighbor Families"
-msgstr "पड़ोसी परिवार"
-
-#: 
-msgid "Make Data File"
-msgstr "डेटा फ़ाइल बनाएँ"
-
-#: 
-msgid "Show Neighbors"
-msgstr "पड़ोसी दिखाएं"
 
 #: 
 msgid "Distance"
@@ -1202,10 +1166,6 @@ msgstr "देशांतर"
 #: 
 msgid "Add to Cart"
 msgstr "कार्ट में जोड़ें"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "कार्ट के साथ इंटरसेक्ट करें"
 
 #: 
 msgid "Remove from Cart"
@@ -1382,10 +1342,6 @@ msgstr "सभी को ईमेल करें"
 #: 
 msgid "Family Roles"
 msgstr "पारिवारिक भूमिकाएँ"
-
-#: 
-msgid "Family Geographic"
-msgstr "पारिवारिक भौगोलिक"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4226,24 +4182,8 @@ msgid "Profile Image uploaded"
 msgstr "प्रोफ़ाइल छवि अपलोड की गई"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "इन वर्गीकरणों वाले पड़ोसियों को दिखाएं"
-
-#: 
-msgid "Please select a Family."
-msgstr "कृपया एक परिवार चुनें।"
-
-#: 
-msgid "Coordinate database file name"
-msgstr "समन्वय डेटाबेस फ़ाइल का नाम"
-
-#: 
 msgid "select an option"
 msgstr "एक विकल्प चुनें"
-
-#: 
-msgid "Direct me"
-msgstr "मुझे निर्देशित करें"
 
 #: 
 msgid "Your cart is empty"
@@ -5073,14 +5013,6 @@ msgstr "लोग सत्यापन डैशबोर्ड"
 #: 
 msgid "Verification URL created"
 msgstr "सत्यापन URL बनाया गया"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8475,10 +8407,6 @@ msgid "selected family has no coordinates"
 msgstr "चयनित परिवार के पास कोई निर्देशांक नहीं है"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "सभी उपयोगकर्ताओं को दो-कारक प्रमाणीकरण में नामांकन की आवश्यकता है"
 
@@ -9277,10 +9205,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, बैकअप और अन्य के साथ ChurchCRM का विस्तार करें"
 
 #: 
-msgid "FY %s"
-msgstr "वित्तीय वर्ष %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "परिवार एक पता और फ़ोन नंबर साझा करते हैं।"
 
@@ -9363,10 +9287,6 @@ msgstr "समूह सदस्यता और गतिविधियों
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "दानदाताओं के लिए कर विवरण दस्तावेज़ तैयार करें"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "भौगोलिक उपकरण"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10099,10 +10019,6 @@ msgid "View and manage deposit slip payments"
 msgstr "चढ़ावा जमा पर्ची भुगतान देखें और प्रबंधित करें"
 
 #: 
-msgid "View and manage family location data"
-msgstr "परिवार स्थान डेटा देखें और प्रबंधित करें"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "डिबगिंग के लिए सिस्टम लॉग फ़ाइलें देखें और प्रबंधित करें"
 
@@ -10441,10 +10357,6 @@ msgstr "यह वर्तमान संस्करण को पुनः �
 #: 
 msgid "Total Check-ins"
 msgstr "कुल चेक-इन"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "कोई भिन्न कार्यक्रम प्रकार या वर्ष चुनने का प्रयास करें।"
 
 #: 
 msgid "Up to Date"
@@ -12250,10 +12162,6 @@ msgid "Database dump only (.sql)"
 msgstr "केवल डेटाबेस डंप (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "तारीख सीमा 1 वर्ष से अधिक नहीं हो सकती"
-
-#: 
 msgid "Destructive Operation"
 msgstr "विनाशकारी क्रिया"
 
@@ -12848,10 +12756,6 @@ msgstr "इस भूमिका सूची के लिए मंत्र�
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "निष्क्रिय स्थिति केवल वर्गीकरण सूची के लिए बदली जा सकती है"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "नए उपयोगकर्ताओं को उनके क्रेडेंशियल के साथ स्वागत ईमेल नहीं मिलेगा। पासवर्ड मैन्युअल रूप से साझा करें, या पहले ईमेल कॉन्फ़िगर करें।"
 
 #: 
 msgid "Option name is required"
@@ -13558,7 +13462,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 एक 64-अक्षर की hex स्ट्रिंग होनी चाहिए।"
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM अनुरक्षकों ने इसकी समीक्षा नहीं की है। यहाँ आप जो भी स्थापित करते हैं उसकी सुरक्षा और व्यवहार के लिए आप स्वयं जिम्मेदार हैं। जब भी संभव हो अनुमोदित ब्राउज़ प्रवाह को प्राथमिकता दें।"
 
 #: 
@@ -16061,10 +15966,6 @@ msgid "Buyers Registered"
 msgstr "पंजीकृत क्रेता"
 
 #: 
-msgid "Buyers This Year"
-msgstr "इस वर्ष के क्रेता"
-
-#: 
 msgid "Catalog"
 msgstr "सूचीपत्र"
 
@@ -16213,10 +16114,6 @@ msgid "Items Donated"
 msgstr "दान की गई वस्तुएँ"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "दान की गई वस्तुएँ (इस वर्ष)"
-
-#: 
 msgid "Items Sold"
 msgstr "बेची गई वस्तुएँ"
 
@@ -16295,10 +16192,6 @@ msgstr "त्वरित प्रीसेट"
 #: 
 msgid "Raised"
 msgstr "एकत्रित"
-
-#: 
-msgid "Raised This Year"
-msgstr "इस वर्ष एकत्रित"
 
 #: 
 msgid "Sample Amount"
@@ -17021,10 +16914,6 @@ msgid "Deleted successfully"
 msgstr "सफलतापूर्वक हटाया गया"
 
 #: 
-msgid "Deposit #"
-msgstr "जमा #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "जमा पर्ची"
 
@@ -17071,10 +16960,6 @@ msgstr "प्रतिज्ञा प्राप्त करने में
 #: 
 msgid "Failed to update pledge"
 msgstr "प्रतिज्ञा अपडेट करने में विफल"
-
-#: 
-msgid "Family is required"
-msgstr "परिवार आवश्यक है"
 
 #: 
 msgid "Financial data"
@@ -17203,10 +17088,6 @@ msgstr "रनटाइम समर्थन की योजना बना�
 #: 
 msgid "Please enter a date"
 msgstr "कृपया एक तारीख दर्ज करें"
-
-#: 
-msgid "Please select a family"
-msgstr "कृपया एक परिवार चुनें"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17625,14 +17506,6 @@ msgstr "अनुमानित मूल्य %s।"
 msgid "Minimum bid %s."
 msgstr "न्यूनतम बोली %s।"
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "अभी कोई \"%s\" विकल्प उपलब्ध नहीं है। पहले संबंधित रिकॉर्ड जोड़ें।"
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "अभी कोई \"%s\" विकल्प कॉन्फ़िगर नहीं किया गया है। पहले संबंधित रिकॉर्ड जोड़ें।"
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17781,4 +17654,184 @@ msgstr "आपको क्या मिलेगा"
 #: 
 msgid "Failed to get deposit count"
 msgstr "जमा राशि की गणना प्राप्त करने में विफल"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "वर्षगांठ: %s"
+
+#: 
+msgid "Church"
+msgstr "चर्च"
+
+#: 
+msgid "Classifications"
+msgstr "वर्गीकरण"
+
+#: 
+msgid "Closest"
+msgstr "सबसे नज़दीक"
+
+#: 
+msgid "Deposit #%d"
+msgstr "जमा #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "धन संग्रह की संख्या प्राप्त करने में विफल"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "पड़ोसियों को लोड करने में विफल।"
+
+#: 
+msgid "Farther"
+msgstr "और दूर"
+
+#: 
+msgid "Farthest"
+msgstr "सबसे दूर"
+
+#: 
+msgid "Find Neighbors"
+msgstr "पड़ोसी खोजें"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "पास के परिवारों को खोजें और कार्ट में जोड़ें"
+
+#: 
+msgid "Map centered on"
+msgstr "मानचित्र केंद्रित:"
+
+#: 
+msgid "Max distance"
+msgstr "अधिकतम दूरी"
+
+#: 
+msgid "Max neighbors"
+msgstr "अधिकतम पड़ोसी"
+
+#: 
+msgid "Near"
+msgstr "नज़दीक"
+
+#: 
+msgid "Please select a family."
+msgstr "कृपया एक परिवार चुनें।"
+
+#: 
+msgid "Results"
+msgstr "परिणाम"
+
+#: 
+msgid "Same location"
+msgstr "समान स्थान"
+
+#: 
+msgid "Search Neighbors"
+msgstr "पड़ोसी खोजें"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "एक परिवार चुनें और परिणाम देखने के लिए पड़ोसी खोजें पर क्लिक करें।"
+
+#: 
+msgid "Selected family"
+msgstr "चुना गया परिवार"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "यह मान एक वैध फ़ील्ड नाम होना चाहिए।"
+
+#: 
+msgid "Could not load data"
+msgstr "डेटा लोड नहीं हो सका"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "कृपया पृष्ठ रीफ़्रेश करें या बाद में पुनः प्रयास करें।"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "पहले संबंधित रिकॉर्ड जोड़ें।"
+
+#: 
+msgid "All Months"
+msgstr "सभी महीने"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "अभी तक कोई \"%s\" विकल्प परिभाषित नहीं है।"
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d के लिए कोई इवेंट नहीं मिला।"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "कोई अलग इवेंट प्रकार, महीना या वर्ष चुनने का प्रयास करें।"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "जियोकोडिंग में त्रुटि हुई — बाद में पुनः प्रयास करें"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "पता अधूरा है (शहर, राज्य और ZIP कोड गायब है)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "सभी परिवारों के पास पहले से ही निर्देशांक मौजूद हैं।"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "निर्देशांक अपडेट करने में विफल"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "परिवार के निर्देशांक अपडेट करने में विफल"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "सभी {{geocoded}} परिवारों को जियोकोड किया गया। मानचित्र अब अद्यतित है।"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} परिवारों को जियोकोड किया गया। {{failed}} को हल नहीं किया जा सका — नीचे विवरण देखें।"
+
+#: 
+msgid "Geocoding…"
+msgstr "जियोकोडिंग हो रही है…"
+
+#: 
+msgid "No address on file"
+msgstr "कोई पता दर्ज नहीं है"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "कोई मिलान नहीं मिला — सड़क का पता, शहर और ZIP कोड जांचें"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "पता ठीक करने के लिए परिवार को खोलें, फिर इसे फिर से चलाएं।"
+
+#: 
+msgid "Set up now"
+msgstr "अभी सेट अप करें"
+
+#: 
+msgid "Unknown family"
+msgstr "अज्ञात परिवार"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "सभी निर्देशांक अपडेट करें"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "सभी परिवार के निर्देशांक अपडेट करें"
+
+#: 
+msgid "Update Coordinates"
+msgstr "निर्देशांक अपडेट करें"
 

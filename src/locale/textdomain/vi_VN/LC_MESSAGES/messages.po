@@ -1167,48 +1167,9 @@ msgid "Minimum Price"
 msgstr "Giá thấp nhất"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Tìm kiếm các tín hữu ở gần nhau"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Lựa chọn Gia đình"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Hiển thị tối đa các tín hữu ở gần nhau"
-
-#: 
-msgid "Maximum distance"
-msgstr "Khoảng cách tối đa"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Định dạng tệp dữ liệu"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "Trình hiển thị GPS"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Bao gồm các họ trong tệp tọa độ"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Gia đình hàng xóm"
-
-#: 
-msgid "Make Data File"
-msgstr "Tạo tập tin dữ liệu"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Hiển thị tín hữu"
 
 #: 
 msgid "Distance"
@@ -1229,10 +1190,6 @@ msgstr "Kinh độ"
 #: 
 msgid "Add to Cart"
 msgstr "Thêm vào giỏ"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Giao với giỏ"
 
 #: 
 msgid "Remove from Cart"
@@ -1411,10 +1368,6 @@ msgstr "Email cho tất cả"
 #: 
 msgid "Family Roles"
 msgstr "Vai trò Gia đình"
-
-#: 
-msgid "Family Geographic"
-msgstr "Trợ giúp địa lý"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4265,26 +4218,8 @@ msgid "Profile Image uploaded"
 msgstr "Đã cập nhật hình ảnh đại diện"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Hiển thị tín hữu với các phân loại này"
-
-#: 
-msgid "Please select a Family."
-msgstr "Vui lòng lựa chọn gia đình."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Tên tệp cơ sở dữ liệu tọa độ"
-
-#: 
 msgid "select an option"
 msgstr "lựa chọn giá trị này"
-
-#: 
-msgid "Direct me"
-msgstr "Trực tiếp cho tôi"
 
 #: 
 msgid "Your cart is empty"
@@ -5117,14 +5052,6 @@ msgstr "Mọi người xác minh trang tổng quan"
 #: 
 msgid "Verification URL created"
 msgstr "URL xác minh đã được tạo"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8512,10 +8439,6 @@ msgid "selected family has no coordinates"
 msgstr "gia đình đã chọn không có tọa độ"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Yêu cầu tất cả người dùng đăng ký xác thực hai yếu tố"
 
@@ -9313,10 +9236,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Mo rong ChurchCRM voi MailChimp, sao luu va nhieu hon nua"
 
 #: 
-msgid "FY %s"
-msgstr "Nam tai chinh %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Cac gia dinh dung chung dia chi va so dien thoai."
 
@@ -9399,10 +9318,6 @@ msgstr "Tao bao cao ve thanh vien nhom va hoat dong"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "Tao tai lieu bao cao thue cho nguoi dang hien"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "Tien ich dia ly"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10135,10 +10050,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Xem va quan ly cac khoan thanh toan phieu thu hien"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Xem va quan ly du lieu vi tri gia dinh"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Xem va quan ly tep nhat ky he thong de go loi"
 
@@ -10477,10 +10388,6 @@ msgstr "Thao tac nay se tai lai va ap dung lai phien ban hien tai. No co the sua
 #: 
 msgid "Total Check-ins"
 msgstr "Tong so dang ky vao"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Thu chon loai su kien hoac nam khac."
 
 #: 
 msgid "Up to Date"
@@ -12285,10 +12192,6 @@ msgid "Database dump only (.sql)"
 msgstr "Chỉ kết xuất cơ sở dữ liệu (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Phạm vi ngày không được vượt quá 1 năm"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Thao tác xóa dữ liệu"
 
@@ -12883,10 +12786,6 @@ msgstr "Không tìm thấy sứ vụ cho danh sách vai trò này"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Trạng thái không hoạt động chỉ có thể được bật/tắt cho danh sách phân loại"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Thành viên mới sẽ không nhận được email chào mừng kèm thông tin đăng nhập. Hãy chia sẻ mật khẩu với họ theo cách thủ công, hoặc cấu hình email trước."
 
 #: 
 msgid "Option name is required"
@@ -13593,7 +13492,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 phải là chuỗi hex 64 ký tự."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Nhóm duy trì ChurchCRM chưa xem xét tiện ích này. Bạn chịu trách nhiệm về bảo mật và hoạt động của bất kỳ thứ gì bạn cài đặt ở đây. Ưu tiên sử dụng quy trình Duyệt danh sách đã phê duyệt bất cứ khi nào có thể."
 
 #: 
@@ -16093,10 +15993,6 @@ msgid "Buyers Registered"
 msgstr "Người mua đã đăng ký"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Người mua trong năm nay"
-
-#: 
 msgid "Catalog"
 msgstr "Danh mục"
 
@@ -16245,10 +16141,6 @@ msgid "Items Donated"
 msgstr "Các mục được hiến tặng"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Các mục được hiến tặng (Năm nay)"
-
-#: 
 msgid "Items Sold"
 msgstr "Các mục đã bán"
 
@@ -16327,10 +16219,6 @@ msgstr "Cài đặt nhanh"
 #: 
 msgid "Raised"
 msgstr "Đã gây quỹ"
-
-#: 
-msgid "Raised This Year"
-msgstr "Đã gây quỹ năm nay"
 
 #: 
 msgid "Sample Amount"
@@ -17053,10 +16941,6 @@ msgid "Deleted successfully"
 msgstr "Đã xóa thành công"
 
 #: 
-msgid "Deposit #"
-msgstr "Số Ký gửi #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Phiếu Ký gửi"
 
@@ -17103,10 +16987,6 @@ msgstr "Không thể truy xuất cam kết dâng"
 #: 
 msgid "Failed to update pledge"
 msgstr "Không thể cập nhật cam kết dâng"
-
-#: 
-msgid "Family is required"
-msgstr "Gia đình là bắt buộc"
 
 #: 
 msgid "Financial data"
@@ -17235,10 +17115,6 @@ msgstr "Lên kế hoạch hỗ trợ thời gian chạy"
 #: 
 msgid "Please enter a date"
 msgstr "Vui lòng nhập ngày"
-
-#: 
-msgid "Please select a family"
-msgstr "Vui lòng chọn một gia đình"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17655,14 +17531,6 @@ msgstr "Giá trị ước tính %s."
 msgid "Minimum bid %s."
 msgstr "Giá đặt tối thiểu %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Chưa có tùy chọn \"%s\" nào. Vui lòng thêm các bản ghi liên quan trước."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Chưa có tùy chọn \"%s\" nào được cấu hình. Vui lòng thêm các bản ghi liên quan trước."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17811,4 +17679,189 @@ msgstr "Những gì bạn sẽ nhận được"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Không thể lấy số lượng tiền gửi"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Kỷ niệm: %s"
+
+#: 
+msgid "Church"
+msgstr "Nhà thờ"
+
+#: 
+msgid "Classifications"
+msgstr "Phân loại"
+
+#: 
+msgid "Closest"
+msgstr "Gần nhất"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Tiền gửi #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Không lấy được số lượng sự kiện gây quỹ"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Không tải được danh sách hàng xóm."
+
+#: 
+msgid "Farther"
+msgstr "Xa hơn"
+
+#: 
+msgid "Farthest"
+msgstr "Xa nhất"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Tìm hàng xóm"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Tìm các gia đình lân cận và thêm vào giỏ hàng"
+
+#: 
+msgid "Map centered on"
+msgstr "Bản đồ tập trung vào"
+
+#: 
+msgid "Max distance"
+msgstr "Khoảng cách tối đa"
+
+#: 
+msgid "Max neighbors"
+msgstr "Số hàng xóm tối đa"
+
+#: 
+msgid "Near"
+msgstr "Gần"
+
+#: 
+msgid "Please select a family."
+msgstr "Vui lòng chọn một gia đình."
+
+#: 
+msgid "Results"
+msgstr "Kết quả"
+
+#: 
+msgid "Same location"
+msgstr "Cùng vị trí"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Tìm kiếm hàng xóm"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Chọn một gia đình và nhấp vào Tìm hàng xóm để xem kết quả."
+
+#: 
+msgid "Selected family"
+msgstr "Gia đình được chọn"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Giá trị này phải là tên trường hợp lệ."
+
+#: 
+msgid "Could not load data"
+msgstr "Không thể tải dữ liệu"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Vui lòng làm mới trang hoặc thử lại sau."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Trước tiên hãy thêm các bản ghi liên quan."
+
+#: 
+msgid "All Months"
+msgstr "Tất cả các tháng"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Chưa có tùy chọn \"%s\" nào được xác định."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Không tìm thấy sự kiện nào cho %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Hãy thử chọn loại sự kiện, tháng hoặc năm khác."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Đã xảy ra lỗi định vị địa lý — vui lòng thử lại sau"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Địa chỉ không đầy đủ (thiếu thành phố, tỉnh/bang và mã ZIP)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Tất cả các gia đình đều đã có tọa độ."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Không thể cập nhật tọa độ"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Không thể cập nhật tọa độ gia đình"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Đã định vị địa lý cho tất cả {{geocoded}} gia đình. Bản đồ hiện đã được cập nhật."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Đã định vị địa lý cho {{geocoded}} gia đình. {{failed}} không thể xác định được — xem chi tiết bên dưới."
+
+#: 
+msgid "Geocoding…"
+msgstr "Đang định vị địa lý…"
+
+#: 
+msgid "No address on file"
+msgstr "Không có địa chỉ được lưu"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Không tìm thấy kết quả phù hợp — hãy kiểm tra địa chỉ đường, thành phố và mã ZIP"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Mở một gia đình để sửa địa chỉ, sau đó chạy lại thao tác này."
+
+#: 
+msgid "Set up now"
+msgstr "Thiết lập ngay"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Yêu cầu xác thực hai yếu tố. Bạn có %d ngày để đăng ký."
+
+#: 
+msgid "Unknown family"
+msgstr "Gia đình không xác định"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Cập nhật tất cả tọa độ"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Cập nhật tất cả tọa độ gia đình"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Cập nhật tọa độ"
 

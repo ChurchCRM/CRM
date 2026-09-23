@@ -483,7 +483,8 @@
           "classification": "Member",
           "maidenName": null,
           "familyRole": 2,
-          "photo": "stephanie.scott.jpg"
+          "photo": "stephanie.scott.jpg",
+          "dateDeceased": "2018-05-09"
         },
         {
           "title": null,
@@ -1547,7 +1548,8 @@
           "birthDay": 3,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "dateDeceased": "2022-09-30"
         },
         {
           "title": null,

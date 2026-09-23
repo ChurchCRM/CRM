@@ -119,7 +119,7 @@ if ($bCanManageGroups) {
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Class') ?>
             </a>
             <?php endif; ?>
-            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/v2/map?groupId=<?= $iGroupId ?>">
+            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/people/map?groupId=<?= $iGroupId ?>">
                 <i class="fa-solid fa-map-location-dot me-1"></i><?= gettext('Map') ?>
             </a>
             <?php if ($canEmail): ?>
@@ -552,7 +552,7 @@ if ($bCanManageGroups) {
 
             <?php if (count($groupEvents) === 0): ?>
             <div class="card-body text-center text-body-secondary py-4">
-                <i class="fa-solid fa-calendar-off mb-2 d-block" style="font-size: 2rem;"></i>
+                <i class="fa-solid fa-calendar-xmark mb-2 d-block" style="font-size: 2rem;"></i>
                 <p class="mb-2"><?= gettext('No events linked to this class.') ?></p>
                 <p class="small text-body-secondary mb-0">
                     <?= gettext("Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster.") ?>
@@ -613,7 +613,7 @@ if ($bCanManageGroups) {
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentGroup = <?= (int) $iGroupId ?>;
-    window.CRM.currentGroupName = <?= json_encode($iGroupName, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+    window.CRM.currentGroupName = <?= InputUtils::jsonEncodeForScript($iGroupName) ?>;
 </script>
 <script src="<?= $sRootPath ?>/skin/js/sundayschool-actions.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/sundayschool-actions.js') ?>"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/groups-sundayschool-class-view.min.js"></script>

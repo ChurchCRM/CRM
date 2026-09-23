@@ -1193,48 +1193,9 @@ msgid "Minimum Price"
 msgstr "Maksimal avstand"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Familie Geographic Utilities"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Velg Familie:"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maksimalt antall naboer"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maksimal avstand"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Data filformat"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Inkludere familier i koordinatsystem fil"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Nabo Familier"
-
-#: 
-msgid "Make Data File"
-msgstr "Gjør datafil"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Vis Naboer"
 
 #: 
 msgid "Distance"
@@ -1255,10 +1216,6 @@ msgstr "Lengde"
 #: 
 msgid "Add to Cart"
 msgstr "Legg til handlevogn"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Snitt med Cart"
 
 #: 
 msgid "Remove from Cart"
@@ -1449,10 +1406,6 @@ msgstr "Send Epost til Alle"
 #: 
 msgid "Family Roles"
 msgstr "Familie Rolle"
-
-#: 
-msgid "Family Geographic"
-msgstr "Familie geografi"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4337,24 +4290,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilbilde lastet opp"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Vis naboer med disse klassifiseringene"
-
-#: 
-msgid "Please select a Family."
-msgstr "Vennligst velg en familie."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Filnavn for koordinatdatabase"
-
-#: 
 msgid "select an option"
 msgstr "velg et alternativ"
-
-#: 
-msgid "Direct me"
-msgstr "Led meg"
 
 #: 
 msgid "Your cart is empty"
@@ -5183,14 +5120,6 @@ msgstr "Oversikt for personverifisering"
 #: 
 msgid "Verification URL created"
 msgstr "Verifiserings-URL opprettet"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8585,10 +8514,6 @@ msgid "selected family has no coordinates"
 msgstr "valgt familie har ingen koordinater"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Krev at alle brukere registrerer seg for tofaktorautentisering"
 
@@ -9387,10 +9312,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Utvid ChurchCRM med MailChimp, sikkerhetskopier og mer"
 
 #: 
-msgid "FY %s"
-msgstr "Regnskapsår %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Familier deler adresse og telefonnummer."
 
@@ -9473,10 +9394,6 @@ msgstr "Generer rapporter om gruppemedlemskap og aktiviteter"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "Generer skatteoppgaver for givere"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "Geografiske verktøy"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10209,10 +10126,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Vis og administrer kollektinnskuddsbetalinger"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Vis og administrer familiens stedsdata"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Vis og administrer systemloggfiler for feilsøking"
 
@@ -10551,10 +10464,6 @@ msgstr "Dette vil laste ned og bruke gjeldende versjon på nytt. Det kan reparer
 #: 
 msgid "Total Check-ins"
 msgstr "Totalt antall oppmøteregistreringer"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Prøv å velge en annen arrangementstype eller et annet år."
 
 #: 
 msgid "Up to Date"
@@ -12360,10 +12269,6 @@ msgid "Database dump only (.sql)"
 msgstr "Kun databasedump (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Datoperioden kan ikke overskride 1 år"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destruktiv operasjon"
 
@@ -12958,10 +12863,6 @@ msgstr "Gruppe ikke funnet for denne rollelisten"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Inaktiv status kan bare endres for klassifiseringslisten"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Nye brukere vil ikke motta en velkomst-e-post med legitimasjon. Del passordet med dem manuelt, eller konfigurer e-post først."
 
 #: 
 msgid "Option name is required"
@@ -13668,7 +13569,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 må være en 64-tegns heksadesimal streng."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM-vedlikeholderne har ikke gjennomgått det. Du er ansvarlig for sikkerheten og oppførselen til alt du installerer her. Foretrekk prosessen Bla gjennom godkjente når det er mulig."
 
 #: 
@@ -16171,10 +16073,6 @@ msgid "Buyers Registered"
 msgstr "Registrerte kjøpere"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Kjøpere dette året"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16323,10 +16221,6 @@ msgid "Items Donated"
 msgstr "Donerte gjenstander"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Donerte gjenstander (i år)"
-
-#: 
 msgid "Items Sold"
 msgstr "Solgte gjenstander"
 
@@ -16405,10 +16299,6 @@ msgstr "Hurtigforhåndsinnstillinger"
 #: 
 msgid "Raised"
 msgstr "Samlet inn"
-
-#: 
-msgid "Raised This Year"
-msgstr "Samlet inn i år"
 
 #: 
 msgid "Sample Amount"
@@ -17127,10 +17017,6 @@ msgid "Deleted successfully"
 msgstr "Slettet"
 
 #: 
-msgid "Deposit #"
-msgstr "Innskuddsnr."
-
-#: 
 msgid "Deposit Slip"
 msgstr "Innskuddskvittering"
 
@@ -17177,10 +17063,6 @@ msgstr "Kunne ikke hente løfte"
 #: 
 msgid "Failed to update pledge"
 msgstr "Kunne ikke oppdatere løfte"
-
-#: 
-msgid "Family is required"
-msgstr "Familie er påkrevd"
 
 #: 
 msgid "Financial data"
@@ -17309,10 +17191,6 @@ msgstr "Planlegg kjøretidsstøtte"
 #: 
 msgid "Please enter a date"
 msgstr "Vennligst angi en dato"
-
-#: 
-msgid "Please select a family"
-msgstr "Vennligst velg en familie"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17715,14 +17593,6 @@ msgstr "Estimert verdi %s."
 msgid "Minimum bid %s."
 msgstr "Minimumsanbud %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Ingen \"%s\"-alternativer er tilgjengelige ennå. Legg til de relevante postene først."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Ingen \"%s\"-alternativer er konfigurert ennå. Legg til de relevante postene først."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17871,4 +17741,184 @@ msgstr "Hva du vil oppnå"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Kunne ikke hente antall innskudd"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Jubileum: %s"
+
+#: 
+msgid "Church"
+msgstr "Menighet"
+
+#: 
+msgid "Classifications"
+msgstr "Klassifiseringer"
+
+#: 
+msgid "Closest"
+msgstr "Nærmest"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Innskudd nr. %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Kunne ikke hente antall innsamlingsaksjoner"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Kunne ikke laste inn naboer."
+
+#: 
+msgid "Farther"
+msgstr "Lenger unna"
+
+#: 
+msgid "Farthest"
+msgstr "Lengst unna"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Finn naboer"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Finn familier i nærheten og legg dem til i handlekurven"
+
+#: 
+msgid "Map centered on"
+msgstr "Kart sentrert på"
+
+#: 
+msgid "Max distance"
+msgstr "Maksimal avstand"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maksimalt antall naboer"
+
+#: 
+msgid "Near"
+msgstr "Nær"
+
+#: 
+msgid "Please select a family."
+msgstr "Velg en familie."
+
+#: 
+msgid "Results"
+msgstr "Resultater"
+
+#: 
+msgid "Same location"
+msgstr "Samme sted"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Søk etter naboer"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Velg en familie og klikk på Finn naboer for å se resultatene."
+
+#: 
+msgid "Selected family"
+msgstr "Valgt familie"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Denne verdien må være et gyldig feltnavn."
+
+#: 
+msgid "Could not load data"
+msgstr "Kunne ikke laste inn data"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Oppdater siden eller prøv igjen senere."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Legg til de relevante postene først."
+
+#: 
+msgid "All Months"
+msgstr "Alle måneder"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Ingen \"%s\"-alternativer er definert ennå."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Ingen hendelser funnet for %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Prøv å velge en annen hendelsestype, måned eller år."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Det oppstod en geokodingsfeil — prøv igjen senere"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adressen er ufullstendig (mangler by, fylke og postnummer)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Alle familier har allerede koordinater."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Kunne ikke oppdatere koordinater"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Kunne ikke oppdatere familiekoordinater"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Geokodet alle {{geocoded}} familier. Kartet er nå oppdatert."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "Geokodet {{geocoded}} familier. {{failed}} kunne ikke løses — se detaljer nedenfor."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokoder …"
+
+#: 
+msgid "No address on file"
+msgstr "Ingen adresse registrert"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Ingen treff funnet — sjekk gateadresse, by og postnummer"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Åpne en familie for å rette adressen, og kjør deretter dette igjen."
+
+#: 
+msgid "Set up now"
+msgstr "Sett opp nå"
+
+#: 
+msgid "Unknown family"
+msgstr "Ukjent familie"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Oppdater alle koordinater"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Oppdater alle familiekoordinater"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Oppdater koordinater"
 

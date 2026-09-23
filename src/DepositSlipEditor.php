@@ -434,8 +434,8 @@ code {
   var depositType = '<?php echo $thisDeposit->getType(); ?>';
   var depositSlipID = <?php echo $iDepositSlipID; ?>;
   var isDepositClosed = Boolean(<?=  $thisDeposit->getClosed(); ?>);
-  var fundLabels = <?= json_encode(array_values($fundLabels)) ?>;
-  var fundData = <?= json_encode(array_values($fundData)) ?>;
+  var fundLabels = <?= InputUtils::jsonEncodeForScript(array_values($fundLabels)) ?>;
+  var fundData = <?= InputUtils::jsonEncodeForScript(array_values($fundData)) ?>;
   $(document).ready(function() {
     window.CRM.onLocalesReady(function() {
       initPaymentTable();

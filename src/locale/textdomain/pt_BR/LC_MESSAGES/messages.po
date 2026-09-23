@@ -1141,44 +1141,8 @@ msgid "Minimum Price"
 msgstr "Preço mínimo"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Utilitários para geografia da Família"
-
-#: 
 msgid "Select Family"
 msgstr "Selecione a Família"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "Número máximo de vizinhos"
-
-#: 
-msgid "Maximum distance"
-msgstr "Máxima distância"
-
-#: 
-msgid "Data file format"
-msgstr "Formato do arquivo de dados"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "Visualizador GPS"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "Incluir famílias no arquivo de coordenadas"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Famílias vizinhas"
-
-#: 
-msgid "Make Data File"
-msgstr "Criar arquivo de dados"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Mostrar vizinhos"
 
 #: 
 msgid "Distance"
@@ -1199,10 +1163,6 @@ msgstr "Longitude"
 #: 
 msgid "Add to Cart"
 msgstr "Adicionar ao Carrinho"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Cruzam com carrinho"
 
 #: 
 msgid "Remove from Cart"
@@ -1379,10 +1339,6 @@ msgstr "Enviar E-mail para Todos"
 #: 
 msgid "Family Roles"
 msgstr "Editar Papéis"
-
-#: 
-msgid "Family Geographic"
-msgstr "Geografia da Família"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4223,24 +4179,8 @@ msgid "Profile Image uploaded"
 msgstr "Imagem do Perfil Enviada"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Mostre os vizinhos com estas classificações"
-
-#: 
-msgid "Please select a Family."
-msgstr "Por favor, selecione a família"
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Nome do arquivo da base de dados de coordenadas"
-
-#: 
 msgid "select an option"
 msgstr "selecione uma opção"
-
-#: 
-msgid "Direct me"
-msgstr "Me direcione"
 
 #: 
 msgid "Your cart is empty"
@@ -5075,14 +5015,6 @@ msgstr "Painel para verificar pessoas"
 #: 
 msgid "Verification URL created"
 msgstr "URL de verificação criada"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8477,10 +8409,6 @@ msgid "selected family has no coordinates"
 msgstr "a família selecionada não tem coordenadas"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Exigir que todos os usuários se inscrevam na autenticação de dois fatores"
 
@@ -9279,10 +9207,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Expandir o ChurchCRM com MailChimp, cópias de segurança e muito mais"
 
 #: 
-msgid "FY %s"
-msgstr "AF %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "As famílias partilham um endereço e número de telefone."
 
@@ -9365,10 +9289,6 @@ msgstr "Gerar relatórios sobre participação em grupos e atividades"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "Gerar documentos de declaração fiscal para doadores"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "Utilitários Geográficos"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10101,10 +10021,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Ver e gerir pagamentos de talões de depósito"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Ver e gerir dados de localização da família"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Ver e gerir arquivos de registo do sistema para depuração"
 
@@ -10443,10 +10359,6 @@ msgstr "Isso irá baixar novamente e reaplicar a versão atual. Pode corrigir ar
 #: 
 msgid "Total Check-ins"
 msgstr "Total de registros de presença"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Tente selecionar um tipo de evento ou ano diferente."
 
 #: 
 msgid "Up to Date"
@@ -12252,10 +12164,6 @@ msgid "Database dump only (.sql)"
 msgstr "Somente dump do banco de dados (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "O intervalo de datas não pode exceder 1 ano"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operação destrutiva"
 
@@ -12850,10 +12758,6 @@ msgstr "Ministério não encontrado para esta lista de funções"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "O status inativo só pode ser alterado na lista de classificações"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Novos usuários não receberão um e-mail de boas-vindas com suas credenciais. Compartilhe a senha manualmente ou configure o e-mail primeiro."
 
 #: 
 msgid "Option name is required"
@@ -13560,7 +13464,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "O SHA-256 deve ser uma string hexadecimal de 64 caracteres."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "Os mantenedores do ChurchCRM não o revisaram. Você é responsável pela segurança e comportamento de tudo o que instalar aqui. Prefira o fluxo Navegar Aprovados sempre que possível."
 
 #: 
@@ -16063,10 +15968,6 @@ msgid "Buyers Registered"
 msgstr "Compradores Cadastrados"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Compradores Neste Ano"
-
-#: 
 msgid "Catalog"
 msgstr "Catálogo"
 
@@ -16215,10 +16116,6 @@ msgid "Items Donated"
 msgstr "Itens Doados"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Itens Doados (Este Ano)"
-
-#: 
 msgid "Items Sold"
 msgstr "Itens Vendidos"
 
@@ -16297,10 +16194,6 @@ msgstr "Predefinições rápidas"
 #: 
 msgid "Raised"
 msgstr "Arrecadado"
-
-#: 
-msgid "Raised This Year"
-msgstr "Arrecadado Neste Ano"
 
 #: 
 msgid "Sample Amount"
@@ -17023,10 +16916,6 @@ msgid "Deleted successfully"
 msgstr "Excluído com sucesso"
 
 #: 
-msgid "Deposit #"
-msgstr "Depósito nº"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Comprovante de Depósito"
 
@@ -17073,10 +16962,6 @@ msgstr "Falha ao recuperar promessa"
 #: 
 msgid "Failed to update pledge"
 msgstr "Falha ao atualizar promessa"
-
-#: 
-msgid "Family is required"
-msgstr "A família é obrigatória"
 
 #: 
 msgid "Financial data"
@@ -17205,10 +17090,6 @@ msgstr "Planejar suporte de tempo de execução"
 #: 
 msgid "Please enter a date"
 msgstr "Por favor, insira uma data"
-
-#: 
-msgid "Please select a family"
-msgstr "Por favor, selecione uma família"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17615,14 +17496,6 @@ msgstr "Valor estimado %s."
 msgid "Minimum bid %s."
 msgstr "Lance mínimo %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Nenhuma opção de \"%s\" está disponível ainda. Adicione os registros relevantes primeiro."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Nenhuma opção de \"%s\" está configurada ainda. Adicione os registros relevantes primeiro."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17771,4 +17644,184 @@ msgstr "O que você vai obter"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Falha ao obter contagem de depósitos"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Aniversário: %s"
+
+#: 
+msgid "Church"
+msgstr "Igreja"
+
+#: 
+msgid "Classifications"
+msgstr "Classificações"
+
+#: 
+msgid "Closest"
+msgstr "Mais próximo"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Depósito nº %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Não foi possível obter a contagem de arrecadadores"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Não foi possível carregar os vizinhos."
+
+#: 
+msgid "Farther"
+msgstr "Mais distante"
+
+#: 
+msgid "Farthest"
+msgstr "O mais distante"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Encontrar vizinhos"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Encontrar famílias próximas e adicioná-las ao carrinho"
+
+#: 
+msgid "Map centered on"
+msgstr "Mapa centralizado em"
+
+#: 
+msgid "Max distance"
+msgstr "Distância máxima"
+
+#: 
+msgid "Max neighbors"
+msgstr "Máximo de vizinhos"
+
+#: 
+msgid "Near"
+msgstr "Perto"
+
+#: 
+msgid "Please select a family."
+msgstr "Por favor, selecione uma família."
+
+#: 
+msgid "Results"
+msgstr "Resultados"
+
+#: 
+msgid "Same location"
+msgstr "Mesma localização"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Buscar vizinhos"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Selecione uma família e clique em Encontrar vizinhos para ver os resultados."
+
+#: 
+msgid "Selected family"
+msgstr "Família selecionada"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Este valor deve ser um nome de campo válido."
+
+#: 
+msgid "Could not load data"
+msgstr "Não foi possível carregar os dados"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Atualize a página ou tente novamente mais tarde."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Adicione os registros relevantes primeiro."
+
+#: 
+msgid "All Months"
+msgstr "Todos os meses"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Nenhuma opção de \"%s\" foi definida ainda."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Nenhum evento encontrado para %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Tente selecionar um tipo de evento, mês ou ano diferente."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Ocorreu um erro de geocodificação — tente novamente mais tarde"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "O endereço está incompleto (faltando cidade, estado e CEP)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Todas as famílias já têm coordenadas."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Falha ao atualizar coordenadas"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Falha ao atualizar as coordenadas da família"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Todas as {{geocoded}} famílias foram geocodificadas. O mapa está atualizado agora."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} famílias foram geocodificadas. {{failed}} não puderam ser resolvidas — veja os detalhes abaixo."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geocodificando…"
+
+#: 
+msgid "No address on file"
+msgstr "Nenhum endereço registrado"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Nenhuma correspondência encontrada — verifique o endereço, a cidade e o CEP"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Abra uma família para corrigir seu endereço e execute isso novamente."
+
+#: 
+msgid "Set up now"
+msgstr "Configurar agora"
+
+#: 
+msgid "Unknown family"
+msgstr "Família desconhecida"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Atualizar Todas as Coordenadas"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Atualizar Todas as Coordenadas das Famílias"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Atualizar Coordenadas"
 

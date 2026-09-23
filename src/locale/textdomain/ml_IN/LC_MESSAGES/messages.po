@@ -1141,44 +1141,8 @@ msgid "Minimum Price"
 msgstr "ഏറ്റവും കുറഞ്ഞ വില"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "കുടുംബ ഭൂമിശാസ്ത്ര ഉപകരണങ്ങൾ"
-
-#: 
 msgid "Select Family"
 msgstr "കുടുംബം തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "ഏറ്റവും കൂടിയ അയൽക്കാരുടെ എണ്ണം"
-
-#: 
-msgid "Maximum distance"
-msgstr "ഏറ്റവും കൂടിയ ദൂരം"
-
-#: 
-msgid "Data file format"
-msgstr "ഡേറ്റ ഫയൽ ഫോർമാറ്റ്"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS വിഷ്വലൈസർ"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "കോർഡിനേറ്റ് ഫയലിൽ കുടുംബങ്ങൾ ഉൾപ്പെടുത്തുക"
-
-#: 
-msgid "Neighbor Families"
-msgstr "അയൽ കുടുംബങ്ങൾ"
-
-#: 
-msgid "Make Data File"
-msgstr "ഡേറ്റ ഫയൽ ഉണ്ടാക്കുക"
-
-#: 
-msgid "Show Neighbors"
-msgstr "അയൽക്കാരെ കാണിക്കുക"
 
 #: 
 msgid "Distance"
@@ -1199,10 +1163,6 @@ msgstr "രേഖാംശം"
 #: 
 msgid "Add to Cart"
 msgstr "കാർട്ടിൽ ചേർക്കുക"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "കാർട്ടുമായി വിഭജിക്കുക"
 
 #: 
 msgid "Remove from Cart"
@@ -1379,10 +1339,6 @@ msgstr "എല്ലാവർക്കും ഇമെയിൽ"
 #: 
 msgid "Family Roles"
 msgstr "കുടുംബ പങ്കുകൾ"
-
-#: 
-msgid "Family Geographic"
-msgstr "കുടുംബ ഭൂമിശാസ്ത്രം"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4223,24 +4179,8 @@ msgid "Profile Image uploaded"
 msgstr "പ്രൊഫൈൽ ചിത്രം അപ്‌ലോഡ് ചെയ്തു"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "ഈ വർഗ്ഗീകരണങ്ങളുള്ള അയൽക്കാരെ കാണിക്കുക"
-
-#: 
-msgid "Please select a Family."
-msgstr "ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "കോർഡിനേറ്റ് ഡേറ്റാബേസ് ഫയൽ നാമം"
-
-#: 
 msgid "select an option"
 msgstr "ഒരു ഓപ്ഷൻ തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Direct me"
-msgstr "എന്നെ നയിക്കൂ"
 
 #: 
 msgid "Your cart is empty"
@@ -5074,14 +5014,6 @@ msgstr "ആളുകൾ സ്ഥിരീകരണ ഡാഷ്‌ബോർഡ�
 #: 
 msgid "Verification URL created"
 msgstr "സ്ഥിരീകരണ URL ഉണ്ടാക്കി"
-
-#: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8476,10 +8408,6 @@ msgid "selected family has no coordinates"
 msgstr "തിരഞ്ഞെടുത്ത കുടുംബത്തിന് കോർഡിനേറ്റ് ഇല്ല"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "എല്ലാ ഉപയോക്താക്കളും ഇരട്ടഘടക ആധികാരികതയിൽ ചേരണം"
 
@@ -9278,10 +9206,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, ബാക്കപ്പുകൾ, കൂടുതൽ ഉപകരണങ്ങൾ ഉപയോഗിച്ച് ChurchCRM വിപുലീകരിക്കുക"
 
 #: 
-msgid "FY %s"
-msgstr "സാമ്പത്തിക വർഷം %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "കുടുംബങ്ങൾ ഒരു വിലാസവും ഫോൺ നമ്പറും പങ്കിടുന്നു."
 
@@ -9364,10 +9288,6 @@ msgstr "ഗ്രൂപ്പ് അംഗത്വത്തെയും പ്�
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "ദാതാക്കൾക്ക് നികുതി പ്രസ്താവന രേഖകൾ സൃഷ്ടിക്കുക"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "ഭൂമിശാസ്ത്ര ഉപകരണങ്ങൾ"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10100,10 +10020,6 @@ msgid "View and manage deposit slip payments"
 msgstr "നിക്ഷേപ സ്ലിപ്പ് പേമെന്റുകൾ കാണുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക"
 
 #: 
-msgid "View and manage family location data"
-msgstr "കുടുംബ ലൊക്കേഷൻ ഡേറ്റ കാണുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "ഡീബഗ്ഗിംഗിനായി സിസ്റ്റം ലോഗ് ഫയലുകൾ കാണുകയും നിയന്ത്രിക്കുകയും ചെയ്യുക"
 
@@ -10442,10 +10358,6 @@ msgstr "ഇത് നിലവിലെ പതിപ്പ് വീണ്ടു
 #: 
 msgid "Total Check-ins"
 msgstr "ആകെ ചെക്ക്-ഇനുകൾ"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "ഒരു വ്യത്യസ്ത ഇവന്റ് തരം അല്ലെങ്കിൽ വർഷം തിരഞ്ഞെടുക്കാൻ ശ്രമിക്കുക."
 
 #: 
 msgid "Up to Date"
@@ -12251,10 +12163,6 @@ msgid "Database dump only (.sql)"
 msgstr "ഡേറ്റാബേസ് ഡമ്പ് മാത്രം (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "തീയതി ശ്രേണി 1 വർഷത്തിൽ കൂടരുത്"
-
-#: 
 msgid "Destructive Operation"
 msgstr "ഡേറ്റ ഇല്ലാതാക്കൽ"
 
@@ -12849,10 +12757,6 @@ msgstr "ഈ റോൾ ലിസ്‌റ്റിനായി ഗ്രൂപ്
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "നിഷ്ക്രിയ നില ക്ലാസ്സിഫിക്കേഷൻ ലിസ്‌റ്റിന് മാത്രമേ മാറ്റാൻ കഴിയൂ"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "പുതിയ ഉപയോക്താക്കൾക്ക് ക്രെഡൻഷ്യലുകൾ സഹിതം സ്വാഗത ഇമെയിൽ ലഭിക്കില്ല. പാസ്‌വേഡ് അവരുമായി സ്വമേധയാ പങ്കിടുക, അല്ലെങ്കിൽ ആദ്യം ഇമെയിൽ കോൺഫിഗർ ചെയ്യുക."
 
 #: 
 msgid "Option name is required"
@@ -13559,7 +13463,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 ഒരു 64-അക്ഷര hex സ്‌ട്രിങ് ആയിരിക്കണം."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM മെയിൻടെയ്‌നർമാർ ഇത് അവലോകനം ചെയ്‌തിട്ടില്ല. നിങ്ങൾ ഇവിടെ ഇൻസ്‌റ്റോൾ ചെയ്യുന്ന ഏതിന്റെയും സുരക്ഷയ്ക്കും പ്രവർത്തനത്തിനും നിങ്ങൾ ഉത്തരവാദിയാണ്. സാദ്ധ്യമാകുമ്പോഴൊക്കെ Browse Approved ഫ്ലോ ഉപയോഗിക്കുക."
 
 #: 
@@ -16062,10 +15967,6 @@ msgid "Buyers Registered"
 msgstr "രജിസ്റ്റർ ചെയ്ത വാങ്ങുന്നവർ"
 
 #: 
-msgid "Buyers This Year"
-msgstr "ഈ വർഷം വാങ്ങുന്നവർ"
-
-#: 
 msgid "Catalog"
 msgstr "കാറ്റലോഗ്"
 
@@ -16214,10 +16115,6 @@ msgid "Items Donated"
 msgstr "സംഭാവന ചെയ്ത ഇനങ്ങൾ"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "സംഭാവന ചെയ്ത ഇനങ്ങൾ (ഈ വർഷം)"
-
-#: 
 msgid "Items Sold"
 msgstr "വിൽക്കപ്പെട്ട ഇനങ്ങൾ"
 
@@ -16296,10 +16193,6 @@ msgstr "ദ്രുത മുൻനിർണ്ണയങ്ങൾ"
 #: 
 msgid "Raised"
 msgstr "സ്വരൂപിച്ചത്"
-
-#: 
-msgid "Raised This Year"
-msgstr "ഈ വർഷം സ്വരൂപിച്ചത്"
 
 #: 
 msgid "Sample Amount"
@@ -17022,10 +16915,6 @@ msgid "Deleted successfully"
 msgstr "വിജയകരമായി ഇല്ലാതാക്കി"
 
 #: 
-msgid "Deposit #"
-msgstr "നിക്ഷേപം #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "നിക്ഷേപ സ്ലിപ്പ്"
 
@@ -17072,10 +16961,6 @@ msgstr "പ്രതിജ്ഞ വീണ്ടെടുക്കുന്ന�
 #: 
 msgid "Failed to update pledge"
 msgstr "പ്രതിജ്ഞ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
-
-#: 
-msgid "Family is required"
-msgstr "കുടുംബം ആവശ്യമാണ്"
 
 #: 
 msgid "Financial data"
@@ -17204,10 +17089,6 @@ msgstr "റൺടൈം പിന്തുണ ആസൂത്രണം ചെയ
 #: 
 msgid "Please enter a date"
 msgstr "ദയവായി ഒരു തീയതി നൽകുക"
-
-#: 
-msgid "Please select a family"
-msgstr "ദയവായി ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17614,14 +17495,6 @@ msgstr "കണക്കാക്കിയ മൂല്യം %s."
 msgid "Minimum bid %s."
 msgstr "കുറഞ്ഞ ലേലം %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "ഇതുവരെ \"%s\" ഓപ്ഷനുകൾ ലഭ്യമല്ല. ആദ്യം അനുബന്ധ രേഖകൾ ചേർക്കുക."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "ഇതുവരെ \"%s\" ഓപ്ഷനുകൾ കോൺഫിഗർ ചെയ്തിട്ടില്ല. ആദ്യം അനുബന്ധ രേഖകൾ ചേർക്കുക."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17770,4 +17643,184 @@ msgstr "നിങ്ങൾക്ക് ലഭിക്കുന്നത്"
 #: 
 msgid "Failed to get deposit count"
 msgstr "നിക്ഷേപ എണ്ണം ലഭ്യമായില്ല"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "വാർഷികം: %s"
+
+#: 
+msgid "Church"
+msgstr "പള്ളി"
+
+#: 
+msgid "Classifications"
+msgstr "വർഗ്ഗീകരണങ്ങൾ"
+
+#: 
+msgid "Closest"
+msgstr "ഏറ്റവും അടുത്ത്"
+
+#: 
+msgid "Deposit #%d"
+msgstr "നിക്ഷേപം #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "ഫണ്ട്‌ സ്വരൂപണ എണ്ണം ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "അയൽക്കാരെ ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു."
+
+#: 
+msgid "Farther"
+msgstr "കൂടുതൽ അകലെ"
+
+#: 
+msgid "Farthest"
+msgstr "ഏറ്റവും അകലെ"
+
+#: 
+msgid "Find Neighbors"
+msgstr "അയൽക്കാരെ കണ്ടെത്തുക"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "അടുത്തുള്ള കുടുംബങ്ങളെ കണ്ടെത്തി കാർട്ടിൽ ചേർക്കുക"
+
+#: 
+msgid "Map centered on"
+msgstr "ഭൂപടം കേന്ദ്രീകരിച്ചിരിക്കുന്നത്:"
+
+#: 
+msgid "Max distance"
+msgstr "പരമാവധി ദൂരം"
+
+#: 
+msgid "Max neighbors"
+msgstr "പരമാവധി അയൽക്കാർ"
+
+#: 
+msgid "Near"
+msgstr "അടുത്ത്"
+
+#: 
+msgid "Please select a family."
+msgstr "ദയവായി ഒരു കുടുംബം തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Results"
+msgstr "ഫലങ്ങൾ"
+
+#: 
+msgid "Same location"
+msgstr "ഒരേ സ്ഥലം"
+
+#: 
+msgid "Search Neighbors"
+msgstr "അയൽക്കാരെ തിരയുക"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "ഒരു കുടുംബം തിരഞ്ഞെടുത്ത് ഫലങ്ങൾ കാണാൻ അയൽക്കാരെ കണ്ടെത്തുക ക്ലിക്ക് ചെയ്യുക."
+
+#: 
+msgid "Selected family"
+msgstr "തിരഞ്ഞെടുത്ത കുടുംബം"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "ഈ മൂല്യം സാധുവായ ഒരു ഫീൽഡ് നാമം ആയിരിക്കണം."
+
+#: 
+msgid "Could not load data"
+msgstr "ഡാറ്റ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "ദയവായി പേജ് പുതുക്കുക അല്ലെങ്കിൽ പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "ആദ്യം ബന്ധപ്പെട്ട രേഖകൾ ചേർക്കുക."
+
+#: 
+msgid "All Months"
+msgstr "എല്ലാ മാസങ്ങളും"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "\"%s\" ഓപ്ഷനുകൾ ഇതുവരെ നിർവ്വചിച്ചിട്ടില്ല."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d-നായി ഒരു ഇവന്റും കണ്ടെത്തിയില്ല."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "മറ്റൊരു ഇവന്റ് തരം, മാസം അല്ലെങ്കിൽ വർഷം തിരഞ്ഞെടുക്കാൻ ശ്രമിക്കുക."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "ജിയോകോഡിംഗ് പിശക് സംഭവിച്ചു — പിന്നീട് വീണ്ടും ശ്രമിക്കുക"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "വിലാസം അപൂർണ്ണമാണ് (നഗരം, സംസ്ഥാനം, ZIP എന്നിവ ഇല്ല)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "എല്ലാ കുടുംബങ്ങൾക്കും ഇതിനകം കോർഡിനേറ്റുകൾ ഉണ്ട്."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "കോർഡിനേറ്റുകൾ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "കുടുംബത്തിന്റെ കോർഡിനേറ്റുകൾ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "എല്ലാ {{geocoded}} കുടുംബങ്ങളും ജിയോകോഡ് ചെയ്തു. മാപ്പ് ഇപ്പോൾ കാലികമാണ്."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} കുടുംബങ്ങൾ ജിയോകോഡ് ചെയ്തു. {{failed}} എണ്ണം പരിഹരിക്കാനായില്ല — താഴെയുള്ള വിശദാംശങ്ങൾ കാണുക."
+
+#: 
+msgid "Geocoding…"
+msgstr "ജിയോകോഡിംഗ്…"
+
+#: 
+msgid "No address on file"
+msgstr "ഫയലിൽ വിലാസം ലഭ്യമല്ല"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "പൊരുത്തം കണ്ടെത്തിയില്ല — തെരുവ് വിലാസം, നഗരം, ZIP എന്നിവ പരിശോധിക്കുക"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "വിലാസം ശരിയാക്കാൻ ഒരു കുടുംബം തുറക്കുക, എന്നിട്ട് ഇത് വീണ്ടും പ്രവർത്തിപ്പിക്കുക."
+
+#: 
+msgid "Set up now"
+msgstr "ഇപ്പോൾ സജ്ജമാക്കുക"
+
+#: 
+msgid "Unknown family"
+msgstr "അജ്ഞാത കുടുംബം"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "എല്ലാ കോർഡിനേറ്റുകളും അപ്ഡേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "എല്ലാ കുടുംബ കോർഡിനേറ്റുകളും അപ്ഡേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Update Coordinates"
+msgstr "കോർഡിനേറ്റുകൾ അപ്ഡേറ്റ് ചെയ്യുക"
 

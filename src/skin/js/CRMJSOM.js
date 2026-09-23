@@ -270,13 +270,6 @@ window.CRM.groups = {
 
     wrapper.addEventListener("hidden.bs.modal", cleanup, { once: true });
 
-    // Fallback timeout: ensure cleanup happens if hidden.bs.modal doesn't fire
-    setTimeout(() => {
-      if (wrapper.parentNode) {
-        cleanup();
-      }
-    }, 2000);
-
     const confirmBtn = wrapper.querySelector("#crm-gs-confirm");
     const roleWrapper = wrapper.querySelector("#crm-gs-role-wrapper");
 
@@ -576,13 +569,14 @@ window.CRM.dashboard = {
    * Replaces session-cached count, ensuring always fresh data.
    */
   loadFundraiserCount: () => {
+    const el = document.getElementById("activeFundraisers");
+    if (!el) return; // Fundraiser menu badge not present for this user (feature disabled or no permission)
     window.CRM.APIRequest({
       method: "GET",
       path: "fundraisers/active-count",
       suppressErrorDialog: true,
     }).done((data) => {
-      const el = document.getElementById("activeFundraisers");
-      if (el) el.innerText = data.count;
+      el.innerText = data.count;
     });
   },
 };
@@ -753,7 +747,8 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
   options = options || {};
   const inactive = options.inactive || false;
   const root = window.CRM.root;
-  const escapedTitle = window.CRM.escapeHtml(eventTitle || "");
+  // use escapeAttribute (encodes quotes) for data-* attribute context, as renderPersonActionMenu does
+  const escapedTitle = window.CRM.escapeAttribute(eventTitle || "");
 
   const statusButton = inactive
     ? '<button type="button" class="dropdown-item activate-event" data-event_id="' +

@@ -1156,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "Minimum fiyat"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Aile Coğrafi Kamu Hizmetleri"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "Aile seçin:"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maksimum komşu sayısı"
-
-#: 
-msgid "Maximum distance"
-msgstr "Maksimum mesafe"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "Veri Dosyası Biçimi"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS görselleştiricisi"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "Aileleri koordinat dosyasına ekleyin"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Komşu aileler"
-
-#: 
-msgid "Make Data File"
-msgstr "Veri dosyası yap"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Komşuları Göster"
 
 #: 
 msgid "Distance"
@@ -1218,10 +1179,6 @@ msgstr "Boylam"
 #: 
 msgid "Add to Cart"
 msgstr "Sepete ekle"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Sepetle kesişmek"
 
 #: 
 msgid "Remove from Cart"
@@ -1400,10 +1357,6 @@ msgstr "Hepsini e -posta ile gönder"
 #: 
 msgid "Family Roles"
 msgstr "Aile rolleri"
-
-#: 
-msgid "Family Geographic"
-msgstr "Aile Geographic"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4254,26 +4207,8 @@ msgid "Profile Image uploaded"
 msgstr "Profil resmi yüklendi"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Komşuları bu sınıflandırmalarla gösterin"
-
-#: 
-msgid "Please select a Family."
-msgstr "Lütfen bir aile seçin."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "Veri tabanı dosya adını koordine edin"
-
-#: 
 msgid "select an option"
 msgstr "bir seçenek seçin"
-
-#: 
-msgid "Direct me"
-msgstr "Beni yönlendir"
 
 #: 
 msgid "Your cart is empty"
@@ -5113,14 +5048,6 @@ msgstr "İnsanlar gösterge panosun"
 #: 
 msgid "Verification URL created"
 msgstr "Doğrulama URL'si oluşturuldu"
-
-#: 
-msgid "URL"
-msgstr "Url"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8516,10 +8443,6 @@ msgid "selected family has no coordinates"
 msgstr "seçilen ailenin koordinatları yok"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Tüm kullanıcıların iki faktörlü kimlik doğrulamaya kaydolmasını zorunlu kılın"
 
@@ -9318,10 +9241,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "ChurchCRM'i MailChimp, yedekleme ve daha fazlasıyla genişletin"
 
 #: 
-msgid "FY %s"
-msgstr "MY %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Aileler bir adres ve telefon numarasını paylaşır."
 
@@ -9404,10 +9323,6 @@ msgstr "Grup üyeliği ve faaliyetler hakkında raporlar oluştur"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "Bağışçılar için vergi beyanı belgeleri oluştur"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "Coğrafi Araçlar"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10140,10 +10055,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Bağış kayıt fişi ödemelerini görüntüle ve yönet"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Aile konum verilerini görüntüle ve yönet"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Hata ayıklama için sistem günlük dosyalarını görüntüle ve yönet"
 
@@ -10482,10 +10393,6 @@ msgstr "Bu, mevcut sürümü yeniden indirecek ve yeniden uygulayacaktır. Bozul
 #: 
 msgid "Total Check-ins"
 msgstr "Toplam Giriş Sayısı"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Farklı bir etkinlik türü veya yıl seçmeyi deneyin."
 
 #: 
 msgid "Up to Date"
@@ -12291,10 +12198,6 @@ msgid "Database dump only (.sql)"
 msgstr "Yalnızca veritabanı dökümü (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Tarih aralığı 1 yılı aşamaz"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Yıkıcı İşlem"
 
@@ -12889,10 +12792,6 @@ msgstr "Bu rol listesi için grup bulunamadı"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Pasif durum yalnızca sınıflandırma listesi için değiştirilebilir"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Yeni kullanıcılar kimlik bilgileriyle birlikte hoş geldiniz e-postası almayacak. Şifreyi onlarla manuel olarak paylaşın veya önce e-postayı yapılandırın."
 
 #: 
 msgid "Option name is required"
@@ -13599,7 +13498,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256, 64 karakterlik bir onaltılık dize olmalıdır."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM geliştiricileri bunu incelememiştir. Buraya yüklediğiniz her şeyin güvenliği ve davranışından siz sorumlusunuz. Mümkün olduğunda Onaylıları İncele akışını tercih edin."
 
 #: 
@@ -16102,10 +16002,6 @@ msgid "Buyers Registered"
 msgstr "Kayıtlı Alıcılar"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Bu Yılki Alıcılar"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16254,10 +16150,6 @@ msgid "Items Donated"
 msgstr "Bağışlanan Öğeler"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Bağışlanan Öğeler (Bu Yıl)"
-
-#: 
 msgid "Items Sold"
 msgstr "Satılan Öğeler"
 
@@ -16336,10 +16228,6 @@ msgstr "Hızlı ön ayarlar"
 #: 
 msgid "Raised"
 msgstr "Toplanan"
-
-#: 
-msgid "Raised This Year"
-msgstr "Bu Yıl Toplanan"
 
 #: 
 msgid "Sample Amount"
@@ -17062,10 +16950,6 @@ msgid "Deleted successfully"
 msgstr "Başarıyla silindi"
 
 #: 
-msgid "Deposit #"
-msgstr "Depozito #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Depozito Makbuzu"
 
@@ -17112,10 +16996,6 @@ msgstr "Taahhüt alınamadı"
 #: 
 msgid "Failed to update pledge"
 msgstr "Taahhüt güncellenemedi"
-
-#: 
-msgid "Family is required"
-msgstr "Aile zorunludur"
 
 #: 
 msgid "Financial data"
@@ -17244,10 +17124,6 @@ msgstr "Çalışma zamanı desteğini planla"
 #: 
 msgid "Please enter a date"
 msgstr "Lütfen bir tarih girin"
-
-#: 
-msgid "Please select a family"
-msgstr "Lütfen bir aile seçin"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17654,14 +17530,6 @@ msgstr "Tahmini değer %s."
 msgid "Minimum bid %s."
 msgstr "Minimum teklif %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Henüz \"%s\" seçeneği mevcut değil. Önce ilgili kayıtları ekleyin."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Henüz \"%s\" seçeneği yapılandırılmamış. Önce ilgili kayıtları ekleyin."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17810,4 +17678,184 @@ msgstr "Ne kazanacaksınız"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Depozito sayısı alınamadı"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Yıldönümü: %s"
+
+#: 
+msgid "Church"
+msgstr "Kilise"
+
+#: 
+msgid "Classifications"
+msgstr "Sınıflandırmalar"
+
+#: 
+msgid "Closest"
+msgstr "En yakın"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Mevduat #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Bağış kampanyası sayısı alınamadı"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Komşular yüklenemedi."
+
+#: 
+msgid "Farther"
+msgstr "Daha uzak"
+
+#: 
+msgid "Farthest"
+msgstr "En uzak"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Komşuları Bul"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Yakın aileleri bulun ve sepetinize ekleyin"
+
+#: 
+msgid "Map centered on"
+msgstr "Harita merkezi:"
+
+#: 
+msgid "Max distance"
+msgstr "Maksimum mesafe"
+
+#: 
+msgid "Max neighbors"
+msgstr "Maksimum komşu sayısı"
+
+#: 
+msgid "Near"
+msgstr "Yakın"
+
+#: 
+msgid "Please select a family."
+msgstr "Lütfen bir aile seçin."
+
+#: 
+msgid "Results"
+msgstr "Sonuçlar"
+
+#: 
+msgid "Same location"
+msgstr "Aynı konum"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Komşuları Ara"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Bir aile seçin ve sonuçları görmek için Komşuları Bul'a tıklayın."
+
+#: 
+msgid "Selected family"
+msgstr "Seçilen aile"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Bu değer geçerli bir alan adı olmalıdır."
+
+#: 
+msgid "Could not load data"
+msgstr "Veriler yüklenemedi"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Lütfen sayfayı yenileyin veya daha sonra tekrar deneyin."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Önce ilgili kayıtları ekleyin."
+
+#: 
+msgid "All Months"
+msgstr "Tüm Aylar"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "Henüz \"%s\" seçeneği tanımlanmamış."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d için etkinlik bulunamadı."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Farklı bir etkinlik türü, ay veya yıl seçmeyi deneyin."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Bir coğrafi kodlama hatası oluştu — lütfen daha sonra tekrar deneyin"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Adres eksik (şehir, eyalet ve posta kodu eksik)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Tüm ailelerin zaten koordinatları var."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Koordinatlar güncellenemedi"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Aile koordinatları güncellenemedi"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "{{geocoded}} ailenin tümü coğrafi olarak kodlandı. Harita artık güncel."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} aile coğrafi olarak kodlandı. {{failed}} tanesi çözümlenemedi — ayrıntılar için aşağıya bakın."
+
+#: 
+msgid "Geocoding…"
+msgstr "Coğrafi kodlama…"
+
+#: 
+msgid "No address on file"
+msgstr "Kayıtlı adres yok"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Eşleşme bulunamadı — sokak adresini, şehri ve posta kodunu kontrol edin"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Adresini düzeltmek için bir aileyi açın, ardından bunu tekrar çalıştırın."
+
+#: 
+msgid "Set up now"
+msgstr "Şimdi kur"
+
+#: 
+msgid "Unknown family"
+msgstr "Bilinmeyen aile"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Tüm Koordinatları Güncelle"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Tüm Aile Koordinatlarını Güncelle"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Koordinatları Güncelle"
 

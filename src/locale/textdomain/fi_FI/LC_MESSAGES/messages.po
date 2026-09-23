@@ -1148,44 +1148,8 @@ msgid "Minimum Price"
 msgstr "Vähimmäishinta"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "Perheiden maantieteelliset työkalut"
-
-#: 
 msgid "Select Family"
 msgstr "Valitse perhe"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "Naapureiden enimmäismäärä"
-
-#: 
-msgid "Maximum distance"
-msgstr "Enimmäisetäisyys"
-
-#: 
-msgid "Data file format"
-msgstr "Tiedostomuoto"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS-visualisoija"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "Sisällytä perheet koordinaattitiedostoon"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Naapuriperheet"
-
-#: 
-msgid "Make Data File"
-msgstr "Luo tiedosto"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Näytä naapurit"
 
 #: 
 msgid "Distance"
@@ -1206,10 +1170,6 @@ msgstr "Pituusaste"
 #: 
 msgid "Add to Cart"
 msgstr "Lisää ostoskoriin"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "Risteä ostoskorin kanssa"
 
 #: 
 msgid "Remove from Cart"
@@ -1386,10 +1346,6 @@ msgstr "Sähköpostia kaikille"
 #: 
 msgid "Family Roles"
 msgstr "Perheroolit"
-
-#: 
-msgid "Family Geographic"
-msgstr "Perheiden maantiede"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -4230,24 +4186,8 @@ msgid "Profile Image uploaded"
 msgstr "Profiilikuva ladattu"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "Näytä naapurit näillä luokituksilla"
-
-#: 
-msgid "Please select a Family."
-msgstr "Valitse perhe."
-
-#: 
-msgid "Coordinate database file name"
-msgstr "Koordinaattitietokannan tiedostonimi"
-
-#: 
 msgid "select an option"
 msgstr "valitse vaihtoehto"
-
-#: 
-msgid "Direct me"
-msgstr "Opasta minut"
 
 #: 
 msgid "Your cart is empty"
@@ -5076,14 +5016,6 @@ msgstr "Henkilöiden vahvistuksen ohjauspaneeli"
 #: 
 msgid "Verification URL created"
 msgstr "Vahvistus-URL luotu"
-
-#: 
-msgid "URL"
-msgstr "URL-osoite"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
@@ -8478,10 +8410,6 @@ msgid "selected family has no coordinates"
 msgstr "valitulla perheellä ei ole koordinaatteja"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Edellytä kaikkien käyttäjien rekisteröitymistä kaksivaiheiseen todennukseen"
 
@@ -9280,10 +9208,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Laajenna ChurchCRM:ää MailChimpillä, varmuuskopioilla ja muulla"
 
 #: 
-msgid "FY %s"
-msgstr "TV %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Perheet jakavat osoitteen ja puhelinnumeron."
 
@@ -9366,10 +9290,6 @@ msgstr "Luo raportit ryhmäjäsenyydestä ja toiminnasta"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "Luo verotodistukset lahjoittajille"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "Maantieteelliset työkalut"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -10102,10 +10022,6 @@ msgid "View and manage deposit slip payments"
 msgstr "Näytä ja hallitse kolehtikeräysmaksuja"
 
 #: 
-msgid "View and manage family location data"
-msgstr "Näytä ja hallitse perheiden sijaintitietoja"
-
-#: 
 msgid "View and manage system log files for debugging"
 msgstr "Näytä ja hallitse järjestelmän lokitiedostoja vianmääritystä varten"
 
@@ -10444,10 +10360,6 @@ msgstr "Tämä lataa ja ottaa uudelleen käyttöön nykyisen version. Se voi kor
 #: 
 msgid "Total Check-ins"
 msgstr "Kirjautumisia yhteensä"
-
-#: 
-msgid "Try selecting a different event type or year."
-msgstr "Kokeile valita eri tapahtumatyyppi tai vuosi."
 
 #: 
 msgid "Up to Date"
@@ -12253,10 +12165,6 @@ msgid "Database dump only (.sql)"
 msgstr "Vain tietokannan vedos (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "Aikaväli ei voi ylittää yhtä vuotta"
-
-#: 
 msgid "Destructive Operation"
 msgstr "Tuhoava toiminto"
 
@@ -12851,10 +12759,6 @@ msgstr "Ryhmää ei löydy tälle rooliluettelolle"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "Passiivinen tila voidaan vaihtaa vain luokitteluluettelossa"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "Uudet käyttäjät eivät saa tervetulosähköpostia tunnistetietoineen. Jaa salasana heille manuaalisesti tai määritä ensin sähköposti."
 
 #: 
 msgid "Option name is required"
@@ -13561,7 +13465,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256:n täytyy olla 64 merkin pituinen heksadesimaalinen merkkijono."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM-ylläpitäjät eivät ole tarkistaneet sitä. Olet vastuussa tänne asentamiesi asioiden tietoturvasta ja toiminnasta. Käytä Selaa hyväksyttyjä -prosessia aina kun mahdollista."
 
 #: 
@@ -16064,10 +15969,6 @@ msgid "Buyers Registered"
 msgstr "Rekisteröityjä ostajia"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Ostajia tänä vuonna"
-
-#: 
 msgid "Catalog"
 msgstr "Luettelo"
 
@@ -16216,10 +16117,6 @@ msgid "Items Donated"
 msgstr "Lahjoitetut kohteet"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Lahjoitetut kohteet (tänä vuonna)"
-
-#: 
 msgid "Items Sold"
 msgstr "Myydyt kohteet"
 
@@ -16298,10 +16195,6 @@ msgstr "Pikavalinnat"
 #: 
 msgid "Raised"
 msgstr "Kerätty"
-
-#: 
-msgid "Raised This Year"
-msgstr "Kerätty tänä vuonna"
 
 #: 
 msgid "Sample Amount"
@@ -17024,10 +16917,6 @@ msgid "Deleted successfully"
 msgstr "Poistettu onnistuneesti"
 
 #: 
-msgid "Deposit #"
-msgstr "Talletus #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "Talletustosite"
 
@@ -17074,10 +16963,6 @@ msgstr "Sitoumuksen hakeminen epäonnistui"
 #: 
 msgid "Failed to update pledge"
 msgstr "Sitoumuksen päivittäminen epäonnistui"
-
-#: 
-msgid "Family is required"
-msgstr "Perhe vaaditaan"
 
 #: 
 msgid "Financial data"
@@ -17206,10 +17091,6 @@ msgstr "Suunnittele ajonaikainen tuki"
 #: 
 msgid "Please enter a date"
 msgstr "Anna päivämäärä"
-
-#: 
-msgid "Please select a family"
-msgstr "Valitse perhe"
 
 #: 
 msgid "Please select a fund for all rows"
@@ -17628,14 +17509,6 @@ msgstr "Arvioitu arvo %s."
 msgid "Minimum bid %s."
 msgstr "Vähimmäistarjous %s."
 
-#: 
-msgid "No \"%s\" options are available yet. Add the relevant records first."
-msgstr "Ei \"%s\"-vaihtoehtoja saatavilla vielä. Lisää tarvittavat tietueet ensin."
-
-#: 
-msgid "No \"%s\" options are configured yet. Add the relevant records first."
-msgstr "Ei \"%s\"-vaihtoehtoja määritetty vielä. Lisää tarvittavat tietueet ensin."
-
 #. Context: query_qry
 #: 
 msgid "People with birthdays or wedding anniversaries in a particular month"
@@ -17784,4 +17657,184 @@ msgstr "Mitä saat"
 #: 
 msgid "Failed to get deposit count"
 msgstr "Talletusten määrän hakeminen epäonnistui"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "Vuosipäivä: %s"
+
+#: 
+msgid "Church"
+msgstr "Seurakunta"
+
+#: 
+msgid "Classifications"
+msgstr "Luokittelut"
+
+#: 
+msgid "Closest"
+msgstr "Lähin"
+
+#: 
+msgid "Deposit #%d"
+msgstr "Talletus nro %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "Varainkeruun määrää ei voitu hakea"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Naapureita ei voitu ladata."
+
+#: 
+msgid "Farther"
+msgstr "Kauempana"
+
+#: 
+msgid "Farthest"
+msgstr "Kauimpana"
+
+#: 
+msgid "Find Neighbors"
+msgstr "Etsi naapureita"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "Etsi lähellä olevia perheitä ja lisää ne ostoskoriin"
+
+#: 
+msgid "Map centered on"
+msgstr "Kartta keskitetty kohteeseen"
+
+#: 
+msgid "Max distance"
+msgstr "Enimmäisetäisyys"
+
+#: 
+msgid "Max neighbors"
+msgstr "Enimmäisnaapurit"
+
+#: 
+msgid "Near"
+msgstr "Lähellä"
+
+#: 
+msgid "Please select a family."
+msgstr "Valitse perhe."
+
+#: 
+msgid "Results"
+msgstr "Tulokset"
+
+#: 
+msgid "Same location"
+msgstr "Sama sijainti"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Hae naapureita"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Valitse perhe ja napsauta Etsi naapureita nähdäksesi tulokset."
+
+#: 
+msgid "Selected family"
+msgstr "Valittu perhe"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "Tämän arvon on oltava kelvollinen kenttänimi."
+
+#: 
+msgid "Could not load data"
+msgstr "Tietoja ei voitu ladata"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "Päivitä sivu tai yritä myöhemmin uudelleen."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "Lisää ensin asiaankuuluvat tietueet."
+
+#: 
+msgid "All Months"
+msgstr "Kaikki kuukaudet"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "\"%s\"-vaihtoehtoja ei ole vielä määritetty."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "Kohteelle %s %d ei löytynyt tapahtumia."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "Yritä valita eri tapahtumatyyppi, kuukausi tai vuosi."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "Geokoodauksessa tapahtui virhe — yritä myöhemmin uudelleen"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Osoite on puutteellinen (kaupunki, alue ja postinumero puuttuvat)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "Kaikilla perheillä on jo koordinaatit."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "Koordinaattien päivittäminen epäonnistui"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "Perheen koordinaattien päivittäminen epäonnistui"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "Kaikki {{geocoded}} perhettä geokoodattu. Kartta on nyt ajan tasalla."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} perhettä geokoodattu. {{failed}} ei voitu ratkaista — katso tiedot alta."
+
+#: 
+msgid "Geocoding…"
+msgstr "Geokoodataan…"
+
+#: 
+msgid "No address on file"
+msgstr "Osoitetta ei ole tallennettu"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "Osumaa ei löytynyt — tarkista katuosoite, kaupunki ja postinumero"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "Avaa perhe korjataksesi sen osoitteen ja suorita tämä sitten uudelleen."
+
+#: 
+msgid "Set up now"
+msgstr "Ota käyttöön nyt"
+
+#: 
+msgid "Unknown family"
+msgstr "Tuntematon perhe"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "Päivitä kaikki koordinaatit"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Päivitä kaikkien perheiden koordinaatit"
+
+#: 
+msgid "Update Coordinates"
+msgstr "Päivitä koordinaatit"
 
