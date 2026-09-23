@@ -16,6 +16,7 @@ Thank you for donating time (and often tokens). We try not to nitpick. We will s
 8. Do not slow login / people list / Sunday paths without measuring.
 9. No security holes.
 10. Keep the PR title and description true to the current diff.
+11. Do **not** add features to Query View (`QueryView.php`, `QueryList.php`, or new/rewritten predefined `query_qry` rows). New reports use Slim/Tabler MVC + Propel, or a reports plugin.
 
 ## Hard blocks (expect Request changes)
 
@@ -27,6 +28,7 @@ Thank you for donating time (and often tokens). We try not to nitpick. We will s
 - Dates/times/numbers/currency that ignore the storage vs display rules above
 - No tests for a feature or bug fix
 - Title or body that describes different work than the files
+- New Query View / predefined-query work (see above). Security-only patches on that page need an explicit maintainer exception.
 
 Missing screenshots alone is not a hard block. If you already captured tablet or mobile, add them.
 

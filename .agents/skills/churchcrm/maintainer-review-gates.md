@@ -24,6 +24,7 @@ The author is a volunteer. Be thankful. Be specific. Do not nitpick.
 6. Locale-sensitive values — dates, times, numbers, currency, or timezone that ignore ChurchCRM conventions. See below.
 7. Tests — feature or bug fix with no new or updated tests.
 8. Repo process — no linked issue; lint/build clearly failing; title or body that describes different work than the diff.
+9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Raw SQL substitution, not ORM, leak history. Point the author at Slim/Tabler MVC + Propel, or a reports plugin. Security-only patches on Query View need an explicit maintainer exception. See #9995.
 
 ### Locale-sensitive values
 
