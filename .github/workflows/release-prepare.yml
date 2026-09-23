@@ -1,12 +1,7 @@
-name: Start New Release
+name: "Release: start next version"
 
 # Manually bump the version on master, push a build/<version> branch, and open
-# a "Start <version> release" PR. Use this:
-#
-#   • Standalone (workflow_dispatch) — when a mid-cycle scope change forces
-#     you to re-bump (e.g. patch → minor because a new feature landed).
-#   • Reusable (workflow_call) — invoked by create-release.yml so the
-#     end-of-cycle workflow can publish and start the next version in one go.
+# a "Start <version> release" PR.
 
 on:
   workflow_dispatch:
@@ -30,51 +25,51 @@ jobs:
   start-release:
     timeout-minutes: 20
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      
+
       - name: Setup Node.js (from .nvmrc)
         uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-      
+
       - name: Run release script
         run: ./scripts/startNewRelease.js ${{ inputs.version }}
-      
+
       - name: Format web
         run: npm run format:web
-      
+
       - name: Build project
         run: npm run build
-      
+
       - name: Create release branch
         run: |
           BRANCH_NAME="build/${{ inputs.version }}"
           git checkout -b "$BRANCH_NAME"
-      
+
       - name: Commit version changes
         run: |
           git add package.json package-lock.json src/composer.json src/composer.lock src/mysql/upgrade.json cypress/data/seed.sql
           git commit -m "Start ${{ inputs.version }} release"
-      
+
       - name: Push branch
         run: |
           BRANCH_NAME="build/${{ inputs.version }}"
           git push -f origin "$BRANCH_NAME"
-      
+
       - name: Create Pull Request
         env:
           GH_TOKEN: ${{ github.token }}

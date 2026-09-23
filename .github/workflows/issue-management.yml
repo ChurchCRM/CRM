@@ -1,4 +1,4 @@
-name: Issue Management
+name: "Issues: hygiene"
 
 concurrency:
   group: ${{ github.event_name == 'issues' && format('issue-{0}', github.event.issue.number) || github.workflow }}-${{ github.ref }}
@@ -8,26 +8,16 @@ concurrency:
 # PURPOSE: Deterministic issue hygiene — the parts that must fire even when
 # the community agent is down, rate-limited, or out of budget.
 #
-#   1. Security guard on newly opened issues: a CVE/GHSA reference gets the
-#      private-disclosure template, labels, and is closed; other
-#      vulnerability-shaped wording is labelled `security` and left for the
-#      community agent, which posts the neutral redirect (no confirm, no
-#      deny) and sends the maintainer a risk-reality read of the claim.
+#   1. Security guard on newly opened issues
 #   2. Normalize bug issue types when "bug" label is applied
 #   3. Mark stale inactive issues
-#   4. Review closed issues that may have been auto-closed without resolution
-#
-# Deliberately NOT here: the first human-quality reply to a new issue (reading
-# it, asking only for what is missing, pointing at a duplicate or a doc). That
-# needs judgment and belongs to the community agent's `github-first-response`
-# task. The old template auto-comment was retired for the same reason.
+#   4. Review closed stale issues that have no linked PR
 # ==============================================================================
 
 on:
   issues:
     types: [opened, labeled]
   schedule:
-    # Review stale issues weekly on Monday at 2:00 AM UTC
     - cron: '0 2 * * 1'
   workflow_dispatch:
     inputs:
@@ -52,9 +42,6 @@ permissions:
   pull-requests: write
 
 jobs:
-  # =========================================================================
-  # Security guard on newly opened issues (no model, no judgment)
-  # =========================================================================
   security-guard:
     if: github.event_name == 'issues' && github.event.action == 'opened'
     name: Security guard on new issues
@@ -88,36 +75,31 @@ jobs:
               return;
             }
 
-            // Issue text is untrusted input: matched, never interpreted.
             const text = `${issue.title || ''}\n${issue.body || ''}`;
             const hasCVE = /cve-\d{4}-\d+/i.test(text) || /ghsa-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}/i.test(text);
             const looksSecurity = /\b(vulnerabilit(y|ies)|exploit|xss|cross-site scripting|sql injection|sqli|csrf|remote code execution|rce|privilege escalation|authentication bypass|path traversal)\b/i.test(text);
             const ref = { owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number };
 
             if (hasCVE) {
-              // Existing maintainer policy: redirect to private disclosure, label, close.
               const body = fs.readFileSync(path.join(process.env.GITHUB_WORKSPACE, '.github/issue-comments/security.md'), 'utf8');
               await github.rest.issues.createComment({ ...ref, body });
               await github.rest.issues.addLabels({ ...ref, labels: ['security', 'security-delete-required'] });
               await github.rest.issues.update({ ...ref, state: 'closed', state_reason: 'not_planned' });
-              console.log('CVE/GHSA reference: template posted, labelled, closed — manual deletion required by an admin.');
+              console.log('CVE/GHSA reference: template posted, labelled, closed.');
               return;
             }
             if (looksSecurity) {
               await github.rest.issues.addLabels({ ...ref, labels: ['security'] });
-              console.log('Vulnerability-shaped wording: labelled `security`; the community agent posts the redirect and triages the claim.');
+              console.log('Vulnerability-shaped wording: labelled security.');
               return;
             }
-            console.log('Nothing security-shaped; the community agent handles the first reply.');
+            console.log('Nothing security-shaped.');
 
-  # =========================================================================
-  # Normalize bug issue types when "bug" label is applied
-  # =========================================================================
   ensure-bug-type:
     if: |
-      github.event_name == 'issues' && github.event.action == 'labeled' &&
-      github.event.label.name == 'bug' ||
-      (inputs.operation == 'triage-only' || inputs.operation == 'all')
+      github.event_name == 'issues' &&
+      github.event.action == 'labeled' &&
+      github.event.label.name == 'bug'
     name: Normalize bug issue type
     timeout-minutes: 5
     runs-on: ubuntu-latest
@@ -128,39 +110,35 @@ jobs:
         with:
           script: |
             const issue = context.payload.issue || {};
+            if (!issue.node_id) {
+              console.log('No issue payload — skip');
+              return;
+            }
             const currentType = issue.type?.name || null;
-
-            if (currentType !== 'Bug') {
-              try {
-                // Update issue type via GraphQL
-                const result = await github.graphql(`
-                  mutation($issueId:ID!, $issueType:IssueType!) {
-                    updateIssue(input: {id: $issueId, issueType: $issueType}) {
-                      issue {
-                        type
-                      }
-                    }
+            if (currentType === 'Bug') {
+              console.log('Issue type is already Bug');
+              return;
+            }
+            try {
+              const result = await github.graphql(`
+                mutation($issueId:ID!, $issueType:IssueType!) {
+                  updateIssue(input: {id: $issueId, issueType: $issueType}) {
+                    issue { type }
                   }
-                `, {
-                  issueId: context.payload.issue.node_id,
-                  issueType: 'BUG'
-                });
-
-                console.log('Updated issue type to Bug:', result);
-              } catch (e) {
-                console.log('Note: Could not update issue type (may require admin permissions):', e.message);
-              }
-            } else {
-              console.log('Issue type is already set to Bug');
+                }
+              `, {
+                issueId: issue.node_id,
+                issueType: 'BUG'
+              });
+              console.log('Updated issue type to Bug:', result);
+            } catch (e) {
+              console.log('Could not update issue type:', e.message);
             }
 
-  # =========================================================================
-  # Mark inactive issues as stale
-  # =========================================================================
   mark-stale:
     if: |
       github.event_name == 'schedule' ||
-      (inputs.operation == 'all' || inputs.operation == 'review-stale-only')
+      (github.event_name == 'workflow_dispatch' && (inputs.operation == 'all' || inputs.operation == 'review-stale-only'))
     name: Mark stale inactive issues
     timeout-minutes: 5
     runs-on: ubuntu-latest
@@ -181,149 +159,70 @@ jobs:
           remove-stale-when-updated: true
           remove-stale-when-commented: true
 
-  # =========================================================================
-  # Review closed stale issues for resolution
-  # =========================================================================
   review-closed-issues:
     if: |
       github.event_name == 'schedule' ||
-      (inputs.operation == 'review-stale-only' || inputs.operation == 'all')
-    name: Review closed issues without PRs
+      (github.event_name == 'workflow_dispatch' && (inputs.operation == 'review-stale-only' || inputs.operation == 'all'))
+    name: Review closed stale issues without PRs
     timeout-minutes: 10
     runs-on: ubuntu-latest
 
     steps:
-      - name: Review closed issues without PRs
+      - name: Review closed stale issues without PRs
         uses: actions/github-script@v9
         with:
           script: |
             const dryRun = ${{ inputs.dry_run || false }};
+            console.log('Review closed stale issues (issues only, not PRs)');
+            console.log('Dry run:', dryRun);
 
-            console.log('===============================================');
-            console.log('Starting review of closed issues without PRs');
-            console.log('Dry run mode:', dryRun);
-            console.log('===============================================\n');
+            const q = `repo:${context.repo.owner}/${context.repo.repo} is:issue is:closed label:stale`;
+            const issues = await github.paginate(
+              github.rest.search.issuesAndPullRequests,
+              { q, per_page: 100 }
+            );
+            console.log(`Closed issues with stale: ${issues.length}`);
 
-            // Fetch all closed issues
-            let page = 1;
-            let allClosedIssues = [];
-            let hasMorePages = true;
-
-            console.log('Fetching closed issues from repository...');
-
-            while (hasMorePages) {
-              const response = await github.rest.issues.listForRepo({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                state: 'closed',
-                per_page: 100,
-                page: page
-              });
-
-              const issues = response.data.filter(issue => !issue.pull_request);
-              allClosedIssues = allClosedIssues.concat(issues);
-
-              console.log(`  Page ${page}: Found ${issues.length} closed issues`);
-
-              hasMorePages = response.data.length === 100;
-              page++;
-
-              if (page > 50) {
-                console.log('  Reached page limit (50), stopping pagination');
-                break;
+            const needsReview = [];
+            for (const issue of issues) {
+              const labels = (issue.labels || []).map((l) => (typeof l === 'string' ? l : l.name));
+              if (labels.includes('needs-manual-review')) {
+                continue;
               }
-            }
-
-            console.log(`\nTotal closed issues found: ${allClosedIssues.length}\n`);
-
-            // Filter for issues with "stale" label
-            const staleIssues = allClosedIssues.filter(issue => {
-              const labels = issue.labels.map(label => label.name);
-              return labels.includes('stale');
-            });
-
-            console.log(`Issues with "stale" label: ${staleIssues.length}\n`);
-
-            // Check each issue for associated PRs
-            let issuesNeedingReview = [];
-
-            console.log('Checking for associated PRs...\n');
-
-            for (const issue of staleIssues) {
               const timeline = await github.paginate(
                 github.rest.issues.listEventsForTimeline,
-                {
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: issue.number,
-                  per_page: 100
-                }
+                { owner: context.repo.owner, repo: context.repo.repo, issue_number: issue.number, per_page: 100 }
               );
-
-              const linkedPRs = timeline.filter(event =>
+              const linkedPRs = timeline.filter((event) =>
                 event.event === 'cross-referenced' &&
                 event.source &&
                 event.source.issue &&
                 event.source.issue.pull_request
               );
-
               if (linkedPRs.length === 0) {
-                console.log(
-                  `  Issue #${issue.number}: No linked PRs found - needs review`
-                );
-                issuesNeedingReview.push(issue);
-              } else {
-                console.log(
-                  `  Issue #${issue.number}: Has ${linkedPRs.length} linked PR(s) - skipping`
-                );
+                needsReview.push(issue);
               }
             }
 
-            console.log(`\n===============================================`);
-            console.log(`Issues needing manual review: ${issuesNeedingReview.length}`);
-            console.log(`===============================================\n`);
+            console.log(`Closed stale issues with no linked PR: ${needsReview.length}`);
 
-            // Tag issues with "needs-manual-review" label
-            if (issuesNeedingReview.length > 0) {
-              console.log('Tagging issues for manual review...\n');
-
-              for (const issue of issuesNeedingReview) {
-                const labels = issue.labels.map(label => label.name);
-
-                if (!labels.includes('needs-manual-review')) {
-                  if (!dryRun) {
-                    await github.rest.issues.addLabels({
-                      owner: context.repo.owner,
-                      repo: context.repo.repo,
-                      issue_number: issue.number,
-                      labels: ['needs-manual-review']
-                    });
-                    console.log(`  ✓ Added "needs-manual-review" label to issue #${issue.number}`);
-                  } else {
-                    console.log(`  [DRY RUN] Would add "needs-manual-review" label to issue #${issue.number}`);
-                  }
-                } else {
-                  console.log(`  - Issue #${issue.number} already has "needs-manual-review" label`);
-                }
+            let tagged = 0;
+            for (const issue of needsReview) {
+              if (dryRun) {
+                console.log(`[DRY RUN] would tag #${issue.number} ${issue.title}`);
+                continue;
               }
-
-              console.log('\n===============================================');
-              console.log('Review complete!');
-              console.log('===============================================');
-
-              console.log('\n📊 Summary:');
-              console.log(`  Total closed issues: ${allClosedIssues.length}`);
-              console.log(`  Issues with "stale" label: ${staleIssues.length}`);
-              console.log(`  Issues without PRs: ${issuesNeedingReview.length}`);
-              console.log(`  Issues tagged for review: ${issuesNeedingReview.length}`);
-
-              if (issuesNeedingReview.length > 0) {
-                console.log('\n🔍 Issues tagged for manual review:');
-                for (const issue of issuesNeedingReview) {
-                  console.log(`  - Issue #${issue.number}: ${issue.title}`);
-                  console.log(`    URL: ${issue.html_url}`);
-                }
-              }
-            } else {
-              console.log('No issues need manual review at this time.\n');
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: ['needs-manual-review'],
+              });
+              tagged += 1;
+              console.log(`Tagged #${issue.number}: ${issue.title}`);
             }
+
+            console.log('Counts');
+            console.log(`  closed+stale issues: ${issues.length}`);
+            console.log(`  no linked PR: ${needsReview.length}`);
+            console.log(`  tagged: ${tagged}`);
