@@ -2237,7 +2237,6 @@
     "Explore with Demo Data": "",
     "Export data to CSV format for external applications": "",
     "Extend ChurchCRM with MailChimp, backups, and more": "",
-    "FY %s": "",
     "Families share an address and phone number.": "",
     "Family Pledge Summary": "",
     "Family Profile": "",
@@ -3840,7 +3839,6 @@
     "Bid Sheets": "",
     "Buyer Statements": "",
     "Buyers Registered": "",
-    "Buyers This Year": "",
     "Catalog": "",
     "Certificates": "",
     "Character used as the decimal point in monetary amounts (e.g. . or ,)": "",
@@ -3878,7 +3876,6 @@
     "Invalid type value": "",
     "Items": "",
     "Items Donated": "",
-    "Items Donated (This Year)": "",
     "Items Sold": "",
     "Last Attendance": "",
     "Linked Donation Fund": "",
@@ -3899,7 +3896,6 @@
     "Position of the currency symbol relative to the amount.": "",
     "Quick presets": "",
     "Raised": "",
-    "Raised This Year": "",
     "Sample Amount": "",
     "Sell-through": "",
     "Single character used as the decimal point (e.g. . or ,). Default: .": "",
@@ -4487,5 +4483,10 @@
     "files": "",
     "people from cart?": "",
     "skip must be zero or a positive integer": "",
-    "view families missing an email": ""
+    "view families missing an email": "",
+    "Buyers This Fiscal Year": "",
+    "Current": "",
+    "Items Donated (This Fiscal Year)": "",
+    "Login must be %d characters or fewer!": "",
+    "Raised This Fiscal Year": ""
 }

@@ -9248,10 +9248,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "ChurchCRM ማራኘት MailChimp ለጀምሮ ተጠቀጥቦች እና ተጨማሪ ላይ"
 
 #: 
-msgid "FY %s"
-msgstr "የገንዘብ ዓመት %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "ቤተሰቦች አድራሻ እና ስልክ ቁጥር ይጋራሉ።"
 
@@ -16014,10 +16010,6 @@ msgid "Buyers Registered"
 msgstr "የተመዘገቡ ገዢዎች"
 
 #: 
-msgid "Buyers This Year"
-msgstr "በዚህ ዓመት ገዢዎች"
-
-#: 
 msgid "Catalog"
 msgstr "ካታሎግ"
 
@@ -16166,10 +16158,6 @@ msgid "Items Donated"
 msgstr "የተሰጡ ንጥሎች"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "የተሰጡ ንጥሎች (በዚህ ዓመት)"
-
-#: 
 msgid "Items Sold"
 msgstr "የተሸጡ ንጥሎች"
 
@@ -16248,10 +16236,6 @@ msgstr "ፈጣን ቀደም ቅንብሮች"
 #: 
 msgid "Raised"
 msgstr "የተሰበሰበ"
-
-#: 
-msgid "Raised This Year"
-msgstr "በዚህ ዓመት የተሰበሰበ"
 
 #: 
 msgid "Sample Amount"
