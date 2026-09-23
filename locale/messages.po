@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-15 19:09+0000\n"
+"POT-Creation-Date: 2026-09-19 14:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1848,7 +1848,7 @@ msgstr ""
 msgid "Buyers Registered"
 msgstr ""
 
-msgid "Buyers This Year"
+msgid "Buyers This Fiscal Year"
 msgstr ""
 
 msgid "Buyers for this fundraiser"
@@ -3100,6 +3100,9 @@ msgid "Currency presets"
 msgstr ""
 
 msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr ""
+
+msgid "Current"
 msgstr ""
 
 msgid "Current $URL[0] value"
@@ -4679,10 +4682,6 @@ msgid "Extraction completed but upgrade files not found. The upgrade archive may
 msgstr ""
 
 msgid "F"
-msgstr ""
-
-#, php-format
-msgid "FY %s"
 msgstr ""
 
 msgid "Failed"
@@ -6739,7 +6738,7 @@ msgstr ""
 msgid "Items Donated"
 msgstr ""
 
-msgid "Items Donated (This Year)"
+msgid "Items Donated (This Fiscal Year)"
 msgstr ""
 
 msgid "Items Sold"
@@ -7243,6 +7242,10 @@ msgid "Login Name is required"
 msgstr ""
 
 msgid "Login already in use, please select a different login!"
+msgstr ""
+
+#, php-format
+msgid "Login must be %d characters or fewer!"
 msgstr ""
 
 msgid "Login must be at least 3 characters!"
@@ -9788,7 +9791,7 @@ msgstr ""
 msgid "Raised"
 msgstr ""
 
-msgid "Raised This Year"
+msgid "Raised This Fiscal Year"
 msgstr ""
 
 msgid "Range end date must be on or after range start date."
@@ -10465,6 +10468,9 @@ msgid "Scan QR Code"
 msgstr ""
 
 msgid "Schedule"
+msgstr ""
+
+msgid "Scheduled Tasks"
 msgstr ""
 
 msgid "Scheduled tasks are not running"

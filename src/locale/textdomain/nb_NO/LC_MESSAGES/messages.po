@@ -9312,10 +9312,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Utvid ChurchCRM med MailChimp, sikkerhetskopier og mer"
 
 #: 
-msgid "FY %s"
-msgstr "Regnskapsår %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Familier deler adresse og telefonnummer."
 
@@ -16077,10 +16073,6 @@ msgid "Buyers Registered"
 msgstr "Registrerte kjøpere"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Kjøpere dette året"
-
-#: 
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -16229,10 +16221,6 @@ msgid "Items Donated"
 msgstr "Donerte gjenstander"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Donerte gjenstander (i år)"
-
-#: 
 msgid "Items Sold"
 msgstr "Solgte gjenstander"
 
@@ -16311,10 +16299,6 @@ msgstr "Hurtigforhåndsinnstillinger"
 #: 
 msgid "Raised"
 msgstr "Samlet inn"
-
-#: 
-msgid "Raised This Year"
-msgstr "Samlet inn i år"
 
 #: 
 msgid "Sample Amount"
