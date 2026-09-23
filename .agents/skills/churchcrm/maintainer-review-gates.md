@@ -6,7 +6,7 @@ tags: [pr, review, process]
 
 # Maintainer PR review gates
 
-Draft the GitHub review in chat as **normal Markdown** (the same text we would post). Do not dump a label block. Do not post, approve, or merge until a maintainer says to post. Most reviews go out as DawoudIO.
+Draft the GitHub review in chat as **normal Markdown** (the same text we would post). Do not dump a label block. Do not post, approve, or merge until a maintainer says to post. Most reviews go out as DawoudIO. Do not post review comments on PRs authored by DawoudIO — fix the branch.
 
 Passing this checklist does not mean the PR should merge.
 
@@ -25,6 +25,8 @@ The author is a volunteer. Be thankful. Be specific. Do not nitpick.
 7. Tests — feature or bug fix with no new or updated tests.
 8. Repo process — no linked issue; lint/build clearly failing; title or body that describes different work than the diff.
 9. Query View freeze — any new feature or filter on `QueryView.php`, `QueryList.php`, or predefined `query_qry` / `queryparameters_qrp` rows for that UI. Raw SQL substitution, not ORM, leak history. Point the author at Slim/Tabler MVC + Propel, or a reports plugin. Security-only patches on Query View need an explicit maintainer exception. See #9995.
+
+Missing comments are not a hard block. Do not ask the author to add more comments. Wrong or essay comments can be deleted; that is not Request changes.
 
 ### Locale-sensitive values
 
