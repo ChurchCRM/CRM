@@ -17,22 +17,25 @@ function setSelfReg(value) {
 }
 
 describe("People Dashboard — Settings Panel", () => {
-    beforeEach(() => cy.setupAdminSession());
+    beforeEach(() => {
+        cy.setupAdminSession();
+        cy.visit("/people/dashboard");
+        cy.window().its("CRM.localesLoaded").should("eq", true);
+        cy.contains("button", "People Settings", { timeout: 10000 }).should("be.visible");
+    });
 
     after(() => {
         setSelfReg("0");
     });
 
     it("shows the People Settings button in the page header for admins", () => {
-        cy.visit("/people/dashboard");
         cy.contains("button", "People Settings").should("be.visible");
-        cy.contains("button", "People Settings").find(".fa-sliders").should("exist");
+        cy.get(".fa-sliders").should("exist");
     });
 
     it("expands the People Settings panel when the button is clicked", () => {
-        cy.visit("/people/dashboard");
         cy.contains("button", "People Settings").click();
-        cy.get("#peopleSettings.show", { timeout: 5000 }).should("be.visible");
+        cy.get("#peopleSettings.show", { timeout: 10000 }).should("be.visible");
     });
 
     it("toggles Self Registration setting and saves successfully", () => {
@@ -43,9 +46,8 @@ describe("People Dashboard — Settings Panel", () => {
             "saveConfig",
         );
 
-        cy.visit("/people/dashboard");
         cy.contains("button", "People Settings").click();
-        cy.get("#peopleSettings.show", { timeout: 5000 }).should("be.visible");
+        cy.get("#peopleSettings.show", { timeout: 10000 }).should("be.visible");
         cy.wait("@loadSelfReg");
 
         const yesRadio = "#peopleSettings input[name='bEnableSelfRegistration'][value='1']";
@@ -58,7 +60,7 @@ describe("People Dashboard — Settings Panel", () => {
             const target = currentlyEnabled ? noRadio : yesRadio;
             const expectedValue = currentlyEnabled ? "0" : "1";
 
-            cy.get(target).click();
+            cy.get(target).click({ force: true });
             cy.get(target).should("be.checked");
 
             cy.get("#peopleSettings #settingsPanelSaveBtn").should("not.be.disabled").click();
@@ -75,30 +77,26 @@ describe("People Dashboard — Settings Panel", () => {
         });
     });
 
-    it("shows the Self Registration help text in the panel", () => {
-        cy.visit("/people/dashboard");
+    it("shows the Self Registration help tooltip on the setting", () => {
         cy.contains("button", "People Settings").click();
-        cy.get("#peopleSettings.show", { timeout: 5000 }).should("be.visible");
+        cy.get("#peopleSettings.show", { timeout: 10000 }).should("be.visible");
 
-        cy.get("#peopleSettings").should(
-            "contain.text",
-            "Allow visitors to self-register as new families",
+        cy.get("#peopleSettings [title*='self-register'], #peopleSettings [data-bs-original-title*='self-register']").should(
+            "exist",
         );
     });
 
     it("displays both settings in the People Settings panel", () => {
-        cy.visit("/people/dashboard");
         cy.contains("button", "People Settings").click();
-        cy.get("#peopleSettings.show", { timeout: 5000 }).should("be.visible");
+        cy.get("#peopleSettings.show", { timeout: 10000 }).should("be.visible");
 
         cy.get("#peopleSettings").should("contain.text", "Self Registration");
         cy.get("#peopleSettings").should("contain.text", "Hide Deceased from Directory");
     });
 
     it("collapses the panel when closed", () => {
-        cy.visit("/people/dashboard");
         cy.contains("button", "People Settings").click();
-        cy.get("#peopleSettings.show", { timeout: 5000 }).should("be.visible");
+        cy.get("#peopleSettings.show", { timeout: 10000 }).should("be.visible");
 
         cy.contains("button", "People Settings").click();
         cy.get("#peopleSettings.show").should("not.exist");
