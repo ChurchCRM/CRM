@@ -6,7 +6,9 @@ tags: [pr, review, process]
 
 # Maintainer PR review gates
 
-Draft the GitHub review in chat as **normal Markdown** (the same text we would post). Do not dump a label block. Do not post, approve, or merge until a maintainer says to post. Most reviews go out as DawoudIO. Do not post review comments on PRs authored by DawoudIO — fix the branch.
+Draft the GitHub review in chat as **normal Markdown** (the same text we would post). Do not dump a label block. Do not post, approve, or merge until a maintainer says to post. Most reviews go out as the acting maintainer.
+
+If the PR author is the same GitHub user the agent is acting as, do not post a review comment. Fix the branch instead.
 
 Passing this checklist does not mean the PR should merge.
 
