@@ -1,4 +1,4 @@
-name: Issues: hygiene
+name: "Issues: hygiene"
 
 concurrency:
   group: ${{ github.event_name == 'issues' && format('issue-{0}', github.event.issue.number) || github.workflow }}-${{ github.ref }}
