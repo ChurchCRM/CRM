@@ -66,6 +66,7 @@
         "logs:clear": "rm -rf src/logs/*.log",
         "package": "npm run build && node scripts/package-release.js",
         "test": "npx cypress run --config-file cypress/configs/docker.config.ts",
+        "test:php": "php scripts/test-error-redaction.php",
         "test:open": "npx cypress open --e2e --config-file cypress/configs/docker.config.ts --browser chrome",
         "test:api": "npx cypress run --config-file cypress/configs/docker.config.ts --spec 'cypress/e2e/api/**/*.spec.js'",
         "test:ui": "npx cypress run --config-file cypress/configs/docker.config.ts --spec 'cypress/e2e/ui/**/*.spec.js'",
