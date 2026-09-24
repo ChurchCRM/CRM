@@ -51,9 +51,12 @@ actually exists and its size, purpose text, viewport, commit, etc. It's
 for scanning/looking up a whole run's output at a glance (open it in a
 spreadsheet) without opening 90+ individual JSON files; it isn't a
 correctness gate — `marketing:check` (which runs just before it) is what
-fails the build. Not committed (same `.gitignore` rule as the JSON
-sidecars it summarizes — regenerate, don't hand-edit), but included in the
-`marketing-visuals-check` workflow's full artifact upload.
+fails the build. Unlike the JSON sidecars it summarizes, it **is**
+committed (see `.gitignore`) — regenerate it with `npm run
+marketing:manifest` after any run that changes captures, don't hand-edit
+it, and don't be surprised if its `commit`/`timestamp` columns lag the
+repo by a commit or two (it reflects whatever run last regenerated it, not
+necessarily HEAD).
 
 Full details, directory layout, and troubleshooting: `playwright/README.md`.
 

@@ -95,7 +95,9 @@ inspect it — `docker:ci:new-system:down` tears it down explicitly.
   timestamp, seed version, and artifact filenames. `npm run marketing`
   rolls every sidecar into one `playwright/artifacts/manifest.csv` for a
   quick, spreadsheet-friendly look at a whole run (see "How to run" above).
-- **Artifacts** are all gitignored — see `.gitignore`.
+- **Artifacts**: screenshots, videos, and `manifest.csv` are committed;
+  everything else (the metadata JSON sidecars, `report.json`) is
+  gitignored — see `.gitignore`.
 
 ## How to add a workflow
 
