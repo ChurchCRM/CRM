@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 18:37+0000\n"
+"POT-Creation-Date: 2026-09-24 20:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5706,6 +5706,9 @@ msgstr ""
 msgid "Generate Coordinates"
 msgstr ""
 
+msgid "Generate Labels"
+msgstr ""
+
 msgid "Generate Report"
 msgstr ""
 
@@ -5743,6 +5746,9 @@ msgid "Generate financial statements and giving reports"
 msgstr ""
 
 msgid "Generate letters and mailing labels"
+msgstr ""
+
+msgid "Generate mailing labels"
 msgstr ""
 
 msgid "Generate mailing labels and form letters"
@@ -6897,6 +6903,9 @@ msgstr ""
 msgid "Label Type"
 msgstr ""
 
+msgid "Labels"
+msgstr ""
+
 msgid "Language"
 msgstr ""
 
@@ -7320,6 +7329,9 @@ msgid "Mailchimp Not Configured"
 msgstr ""
 
 msgid "Mailchimp is not active"
+msgstr ""
+
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
 msgstr ""
 
 msgid "Major"
@@ -8772,6 +8784,9 @@ msgid "Optional. Links to the church's own accounts, shown to members on pages s
 msgstr ""
 
 msgid "Optional. URL for your church website."
+msgstr ""
+
+msgid "Options"
 msgstr ""
 
 msgid "Orange"
