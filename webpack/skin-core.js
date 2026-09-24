@@ -40,6 +40,9 @@ import "../src/skin/js/cart.js";
 // Import avatar loader (for person and family photos with client-side initials/gravatar)
 import "./avatar-loader";
 
+// Bundled brand marks: rewrite removed PNG/JPG paths and follow data-bs-theme.
+import "./brand-logo";
+
 // Import photo utilities (lightbox and delete functions for Person/Family views)
 import { deletePhoto, showPhotoLightbox } from "./photo-utils";
 
