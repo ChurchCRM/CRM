@@ -1,4 +1,18 @@
 {
+  "Login must be %d characters or fewer!": "",
+  "Raised This Fiscal Year": "",
+  "Copied {{count}} members": {
+    "one": "",
+    "other": ""
+  },
+  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
+    "one": "",
+    "other": ""
+  },
+  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
+    "one": "",
+    "other": ""
+  },
   "{{count}} min left": {
     "one": "",
     "other": ""

@@ -9379,10 +9379,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "使用 MailChimp、備份等功能擴充 ChurchCRM"
 
 #: 
-msgid "FY %s"
-msgstr "會計年度 %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "家庭成員共用地址和電話號碼。"
 
@@ -16140,10 +16136,6 @@ msgid "Buyers Registered"
 msgstr "已登記買家"
 
 #: 
-msgid "Buyers This Year"
-msgstr "今年買家"
-
-#: 
 msgid "Catalog"
 msgstr "目錄"
 
@@ -16292,10 +16284,6 @@ msgid "Items Donated"
 msgstr "捐贈項目"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "捐贈項目（今年）"
-
-#: 
 msgid "Items Sold"
 msgstr "已售項目"
 
@@ -16374,10 +16362,6 @@ msgstr "快速預設值"
 #: 
 msgid "Raised"
 msgstr "已籌得"
-
-#: 
-msgid "Raised This Year"
-msgstr "今年已籌得"
 
 #: 
 msgid "Sample Amount"

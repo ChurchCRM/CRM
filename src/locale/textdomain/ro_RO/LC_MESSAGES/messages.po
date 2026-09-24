@@ -9309,10 +9309,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Extindeți ChurchCRM cu MailChimp, copii de siguranță și altele"
 
 #: 
-msgid "FY %s"
-msgstr "An fiscal %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Familiile au aceeași adresă și număr de telefon."
 
@@ -16070,10 +16066,6 @@ msgid "Buyers Registered"
 msgstr "Cumpărători înregistrați"
 
 #: 
-msgid "Buyers This Year"
-msgstr "Cumpărători în acest an"
-
-#: 
 msgid "Certificates"
 msgstr "Certificate"
 
@@ -16218,10 +16210,6 @@ msgid "Items Donated"
 msgstr "Articole donate"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "Articole donate (în acest an)"
-
-#: 
 msgid "Items Sold"
 msgstr "Articole vândute"
 
@@ -16300,10 +16288,6 @@ msgstr "Presetări rapide"
 #: 
 msgid "Raised"
 msgstr "Colectat"
-
-#: 
-msgid "Raised This Year"
-msgstr "Colectat în acest an"
 
 #: 
 msgid "Sample Amount"

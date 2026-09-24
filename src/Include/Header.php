@@ -280,16 +280,19 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
       // were. The name span is always rendered (hidden with d-none) so the
       // Church Info uploader can toggle it without a page reload.
       $bHasCustomLogo     = ChurchMetaData::hasCustomLogo();
-      $sDefaultBrandImage = SystemURLs::getRootPath() . '/Images/CRM_50x50.png';
-      $sBrandImage        = $bHasCustomLogo ? ChurchMetaData::getChurchLogoPath() : $sDefaultBrandImage;
       ?>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
-        <img src="<?= InputUtils::escapeAttribute($sBrandImage) ?>"
-             data-default-src="<?= InputUtils::escapeAttribute($sDefaultBrandImage) ?>"
+        <img src="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchLogoPath()) ?>"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
              id="sidebar-brand-image"
-             class="navbar-brand-image rounded"
+             class="navbar-brand-image rounded<?= $bHasCustomLogo ? '' : ' d-none' ?>"
              style="height: 42px; width: auto;">
+        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-ink-blue.svg"
+             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-light crm-brand-default<?= $bHasCustomLogo ? ' d-none' : '' ?>">
+        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-paper-blue.svg"
+             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark crm-brand-default<?= $bHasCustomLogo ? ' d-none' : '' ?>">
         <span id="sidebar-brand-text"
               class="navbar-brand-text ps-2 fs-4 fw-bold<?= $bHasCustomLogo ? ' d-none' : '' ?>">
           <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>

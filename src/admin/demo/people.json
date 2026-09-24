@@ -36,7 +36,7 @@
           "birthMonth": 1,
           "birthDay": 15,
           "maidenName": null,
-          "familyRole": 2,
+          "familyRole": 1,
           "photo": "rebecca.garcia.jpg"
         },
         {
@@ -255,12 +255,12 @@
         },
         {
           "title": null,
-          "firstName": "Jason",
+          "firstName": "Jessica",
           "middleName": null,
           "lastName": "Johnson",
           "birthYear": 1980,
-          "gender": "male",
-          "email": "jason.johnson32@demo.churchcrm.io",
+          "gender": "female",
+          "email": "jessica.johnson32@demo.churchcrm.io",
           "phone": null,
           "notes": [],
           "createdAt": "2024-01-05T08:00:00.000Z",
@@ -269,7 +269,7 @@
           "classification": "Guest",
           "maidenName": null,
           "familyRole": 3,
-          "photo": "jason.johnson32.jpg"
+          "photo": "jessica.johnson32.jpg"
         }
       ],
       "notes": [
@@ -346,7 +346,7 @@
           "birthDay": 13,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2,
+          "familyRole": 3,
           "photo": "mary.williams.jpg"
         },
         {
@@ -410,7 +410,6 @@
         }
       ],
       "createdAt": "2024-01-04",
-      "weddingDate": "2000-04-15T00:00:00.000Z",
       "active": true,
       "verified": true
     },
@@ -483,8 +482,7 @@
           "classification": "Member",
           "maidenName": null,
           "familyRole": 2,
-          "photo": "stephanie.scott.jpg",
-          "dateDeceased": "2018-05-09"
+          "photo": "stephanie.scott.jpg"
         },
         {
           "title": null,
@@ -618,7 +616,7 @@
           "firstName": "Kenneth",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2007,
+          "birthYear": 1968,
           "gender": "male",
           "email": "kenneth.johnson22@demo.churchcrm.io",
           "phone": null,
@@ -636,7 +634,8 @@
           "firstName": "Daniel",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2009,
+          "dateDeceased": "2025-11-02",
+          "birthYear": 1941,
           "gender": "male",
           "email": "daniel.johnson@demo.churchcrm.io",
           "phone": null,
@@ -646,13 +645,12 @@
           "birthDay": 25,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 3,
+          "familyRole": 4,
           "photo": "daniel.johnson.jpg"
         }
       ],
       "notes": [],
       "createdAt": "2024-01-06",
-      "weddingDate": "2000-06-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -747,7 +745,7 @@
       ],
       "notes": [],
       "createdAt": "2024-01-07",
-      "weddingDate": "2000-07-15T00:00:00.000Z",
+      "weddingDate": "2016-07-15T00:00:00.000Z",
       "active": true,
       "verified": true
     },
@@ -1038,7 +1036,7 @@
       ],
       "notes": [],
       "createdAt": "2024-01-09",
-      "weddingDate": "2000-09-15T00:00:00.000Z",
+      "weddingDate": "2018-09-15T00:00:00.000Z",
       "active": true,
       "verified": false
     },
@@ -1679,7 +1677,7 @@
           "birthDay": 9,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -1708,7 +1706,6 @@
         }
       ],
       "createdAt": "2024-01-15",
-      "weddingDate": "2019-03-14",
       "active": false,
       "verified": false
     },
@@ -2037,12 +2034,11 @@
           "birthMonth": 5,
           "birthDay": 23,
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         }
       ],
       "notes": [],
       "createdAt": "2024-01-19",
-      "weddingDate": "2019-07-18",
       "active": true,
       "verified": true
     },
@@ -2513,8 +2509,7 @@
           "birthDay": 12,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1,
-          "photo": "ryan.rodriguez.jpg"
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -2662,7 +2657,7 @@
           "birthDay": 19,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -2718,7 +2713,6 @@
       ],
       "notes": [],
       "createdAt": "2024-01-27",
-      "weddingDate": "2019-03-16",
       "active": true,
       "verified": false
     },
@@ -3413,6 +3407,7 @@
     },
     {
       "name": "Campbell",
+      "photo": "family.campbell.jpg",
       "address": {
         "line1": "2655 Prairie Ln",
         "line2": null,
@@ -3841,7 +3836,7 @@
           "birthDay": 11,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -3880,7 +3875,6 @@
       ],
       "notes": [],
       "createdAt": "2024-02-09",
-      "weddingDate": "2019-04-19",
       "active": true,
       "verified": true
     },
@@ -3920,8 +3914,7 @@
           "birthDay": 14,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1,
-          "photo": "richard.harris.jpg"
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -3938,8 +3931,7 @@
           "birthDay": 15,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2,
-          "photo": "nancy.harris.jpg"
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -3974,6 +3966,7 @@
           "firstName": "Mark",
           "middleName": null,
           "lastName": "King",
+          "active": false,
           "birthYear": 1993,
           "gender": "male",
           "email": "mark.king@demo.churchcrm.io",
@@ -4988,7 +4981,7 @@
           "birthDay": 5,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5044,7 +5037,6 @@
       ],
       "notes": [],
       "createdAt": "2024-02-20",
-      "weddingDate": "2019-03-10",
       "active": true,
       "verified": false
     },
@@ -5102,12 +5094,11 @@
           "birthDay": 10,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         }
       ],
       "notes": [],
       "createdAt": "2024-02-21",
-      "weddingDate": "2019-04-11",
       "active": true,
       "verified": true
     },
@@ -5463,7 +5454,6 @@
         },
         "email": "family.torres57@demo.churchcrm.io"
       },
-      "photo": "family.torres57.jpg",
       "members": [
         {
           "title": "Mr",
@@ -5497,7 +5487,7 @@
           "birthDay": 24,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5519,7 +5509,6 @@
       ],
       "notes": [],
       "createdAt": "2024-02-26",
-      "weddingDate": "2019-09-16",
       "active": false,
       "verified": false
     },
@@ -5844,7 +5833,7 @@
           "birthDay": 12,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 3
         },
         {
           "title": null,
@@ -5866,7 +5855,6 @@
       ],
       "notes": [],
       "createdAt": "2024-02-29",
-      "weddingDate": "2019-12-19",
       "active": true,
       "verified": false
     },

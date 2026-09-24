@@ -179,12 +179,15 @@ describe("Admin - Church Logo", () => {
         cy.get("#sidebar-brand-text").should("not.have.class", "d-none");
 
         cy.reload();
-        cy.get("#sidebar-brand-image").should(($img) => {
-            expect($img.attr("src")).to.include("CRM_50x50.png");
+        // Without an uploaded logo the sidebar shows the bundled brand mark, not the upload slot
+        cy.get("#sidebar-brand-image").should("have.class", "d-none");
+        cy.get(".crm-brand-default.crm-brand-logo-light").should(($img) => {
+            expect($img.attr("src")).to.include("churchcrm-symbol-ink-blue.svg");
+            expect($img.hasClass("d-none")).to.eq(false);
         });
         cy.get("#sidebar-brand-text").should("not.have.class", "d-none");
         cy.get("#church-logo-preview").should(($img) => {
-            expect($img.attr("src")).to.include("logo-churchcrm-350.jpg");
+            expect($img.attr("src")).to.include("churchcrm-logo-ink-blue.svg");
         });
     });
 
@@ -207,7 +210,7 @@ describe("Admin - Church Logo", () => {
         cy.clearCookies();
         cy.visit("/session/begin");
         cy.get("#login-logo").should(($img) => {
-            expect($img.attr("src")).to.include("logo-churchcrm-350.jpg");
+            expect($img.attr("src")).to.include("churchcrm-logo-ink-blue.svg");
         });
     });
 });

@@ -104,7 +104,7 @@ describe("API Private Admin Church Logo", () => {
                         false,
                     );
                     expect(response.body.url).to.include(
-                        "logo-churchcrm-350.jpg",
+                        "churchcrm-logo-ink-blue.svg",
                     );
                 },
             );
@@ -150,7 +150,7 @@ describe("API Private Admin Church Logo", () => {
                         false,
                     );
                     expect(response.body.url).to.match(
-                        /\/Images\/logo-churchcrm-350\.jpg$/,
+                        /\/Images\/churchcrm-logo-ink-blue\.svg$/,
                     );
                     expect(response.body.url).to.not.include("example.com");
                 },
@@ -485,7 +485,7 @@ describe("API Private Admin Church Logo", () => {
                         false,
                     );
                     expect(response.body.url).to.include(
-                        "logo-churchcrm-350.jpg",
+                        "churchcrm-logo-ink-blue.svg",
                     );
                 },
             );

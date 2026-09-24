@@ -1,556 +1,188 @@
 ---
 title: "PR Review"
-intent: "Full pull request review workflow: fetch changes, validate standards, check docs/wiki, identify manual testing, address comments, and capture learnings"
+intent: "Fetch a PR, apply maintainer gates, then run the code-standards checklist. Agents never approve or merge."
 tags: ["pr","review","code-quality","standards","workflow"]
-prereqs: ["[[code-standards]]","[[git-workflow]]","[[github-interaction]]"]
+prereqs: ["[[maintainer-review-gates]]","[[code-standards]]","[[git-workflow]]","[[github-interaction]]"]
 complexity: "intermediate"
 ---
 
 # Skill: Pull Request Review
 
-## Context
+**Read [maintainer-review-gates.md](./maintainer-review-gates.md) first.** That file is the product/process source of truth: hard blocks vs follow-ups, human-only approve/merge, gettext wrap without locale dumps, docs issues on CRM, docs PRs after the release.
 
-This skill covers the full lifecycle of reviewing a PR: fetching all changes, validating them against ChurchCRM standards, identifying required documentation updates, specifying manual validation steps, addressing reviewer comments, resolving threads, and feeding learnings back into skills.
+This file is the mechanics checklist (fetch the PR, code standards, how to draft a review). When the two disagree, the gates file wins.
 
-Use this skill whenever asked to:
-- Review a PR or branch
-- Check if a PR meets standards
-- Respond to review comments
-- Triage what manual testing is needed
+Use this skill when asked to review a PR or branch, check standards, or triage manual testing. Draft in chat. Do not post until a maintainer says to post. Do not approve. Do not merge.
 
 ---
 
 ## Phase 1 — Understand the PR
 
-### Fetch full PR context
-
 ```bash
-# Summary + metadata
 gh pr view <NUMBER>
-
-# All review comments (inline + top-level)
 gh pr view <NUMBER> --comments
-
-# JSON — reviews + inline comment threads
 gh pr view <NUMBER> --json title,body,headRefName,baseRefName,state,latestReviews,reviews,comments
-
-# Inline review threads (GraphQL — most complete)
-gh api graphql -f query='
-{
-  repository(owner: "ChurchCRM", name: "CRM") {
-    pullRequest(number: NUMBER) {
-      reviewThreads(first: 50) {
-        nodes {
-          id
-          isResolved
-          comments(first: 3) {
-            nodes { author { login } body path line }
-          }
-        }
-      }
-    }
-  }
-}'
 ```
 
-### Understand scope
+Answer before reading code:
 
-Before reading code, answer:
-- What is the stated purpose of this PR?
-- Which modules/files are in scope?
-- Is this a bug fix, feature, refactor, or migration?
-- Are there linked issues? (`Fixes #XXXX` in description)
-- Are there open review threads or change requests?
+- What is the stated purpose?
+- Bug fix, feature, refactor, or migration?
+- Is there a linked issue? PRs without an issue are a hard block.
+- Does the goal belong in this milestone? Passing gates still does not mean merge if maintainers disagree with the goal.
+- Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin (#9995).
+
+Do **not** merge `master` into a contributor branch, resolve their conflicts, or push to their branch unless the maintainer explicitly asks.
 
 ---
 
-## Phase 2 — Sync Branch with Master, Then Review Changes
+## Phase 2 — Review the full branch diff
 
-**Always checkout the PR branch and merge master before reviewing or testing. This ensures you are reviewing code in its current merged state and avoids reviewing conflicts or stale diffs.**
-
-### Step 1: Checkout and sync the branch
+Review `origin/master...<branch>`, not only the latest commit.
 
 ```bash
-# Fetch all remote state
 git fetch origin
-
-# Checkout the PR branch (creates local tracking branch)
-git checkout -b <branch-name> origin/<branch-name>
-# or if branch already exists locally:
-git checkout <branch-name>
-git pull origin <branch-name>
-
-# Merge master into the branch to bring it up to date
-git merge origin/master
+git diff origin/master...origin/<branch-name>
+git log origin/master...origin/<branch-name> --oneline
+git diff --name-status origin/master...origin/<branch-name>
 ```
 
-### Step 2: Resolve conflicts if any
+Look for:
 
-If `git merge` reports conflicts:
-
-```bash
-# See which files conflict
-git status
-
-# For each conflicting file: resolve manually, then stage
-git add <resolved-file>
-
-# Finish the merge
-git commit -m "Merge master into <branch-name> to resolve conflicts"
-
-# Push the updated branch back to origin
-git push origin <branch-name>
-```
-
-**Rules for conflict resolution:**
-- Preserve the intent of the PR change — do not silently drop it
-- Prefer master's version for infrastructure/shared files unless the PR explicitly changes them
-- If the conflict is complex, describe what was resolved in the merge commit message
-- After pushing the conflict-resolution merge, notify the PR author (leave a comment)
-
-```bash
-gh pr comment <NUMBER> --body "Merged master into branch to resolve conflicts. Please review the merge commit to ensure your changes are preserved correctly."
-```
-
-### Step 3: Verify the branch is up to date
-
-```bash
-# Should show "Already up to date" or your merge commit
-git log origin/master..<branch-name> --oneline
-
-# Confirm no divergence from origin/<branch-name>
-git status
-```
-
-### Step 4: Review the full branch diff
-
-**Always review the full branch diff, not just the latest commit.**
-
-```bash
-# Full diff against master (after sync)
-git diff origin/master...<branch-name>
-
-# All commits in branch (excluding the merge commit)
-git log origin/master..<branch-name> --oneline
-
-# Changed files summary
-git diff --name-status origin/master...<branch-name>
-
-# Diff of a specific file
-git diff origin/master...<branch-name> -- path/to/file.php
-```
-
-### What to look for in the diff
-
-- Are all changes directly related to the stated purpose of the PR?
-- Are there any unintended changes (whitespace, unrelated files, debug code)?
-- Is the scope appropriate — one issue per PR?
-- Do commit messages follow the format from `git-workflow.md`?
+- Changes unrelated to the stated purpose
+- Debug leftovers
+- Scope that should be a second PR
+- Commit messages vs `git-workflow.md`
+- `QueryView.php`, `QueryList.php`, or upgrade/seed edits that add predefined queries — hard block unless a maintainer excepted a security-only patch
 
 ---
 
-## Phase 3 — Standards Compliance Checklist
+## Phase 3 — Standards checklist
 
-Work through each section that applies to the changed files.
+Apply only the sections that match the changed files. Hard-block items are also listed in `maintainer-review-gates.md`.
 
 ### PHP & Architecture
 
-- [ ] PHP 8.4+ compatible — no deprecated patterns
-- [ ] Explicit nullable params: `?int $param = null` not `int $param = null`
-- [ ] `use` statements at top of file — no inline fully-qualified class names
-- [ ] Dynamic properties annotated with `#[\AllowDynamicProperties]` if needed
-- [ ] No calls to deleted `Functions.php` globals (`\MakeFYString()`, `\FormatDate()`, …) — those are fatals now; use `ChurchCRM\Utils\*`. Reserve the `\` prefix for survivors like `\getQuillEditorContainer()`
-- [ ] Propel/Perpl ORM used for all DB operations — no `RunQuery()` or raw SQL
-- [ ] Dynamic IDs cast to `(int)`: `(int)$_GET['id']`
-- [ ] Object properties accessed as `$obj->prop`, never `$obj['prop']`
-- [ ] `=== null` checks used, not `empty()` for objects
-- [ ] Service classes used for business logic (not controllers/routes/views)
-- [ ] Critical files use `require` (Header.php, Footer.php), optional use `include`
-- [ ] Algorithm complexity: no O(N×M) nested loops — use hash lookups
-- [ ] Email failures: logged, not thrown as exceptions
-- [ ] `LoggerUtils::getAppLogger()` used for logging — not `error_log()` directly
+- [ ] PHP 8.4+ — no deprecated patterns
+- [ ] Explicit nullable params: `?int $param = null`
+- [ ] `use` statements at top of file
+- [ ] No deleted `Functions.php` globals (`\\MakeFYString()`, `\\FormatDate()`, …) — use `ChurchCRM\\Utils\\*`
+- [ ] ORM for DB work — no `RunQuery()` or raw SQL
+- [ ] Do not add features to Query View (frozen; #9995)
+- [ ] Dynamic IDs cast to `(int)`
+- [ ] Object properties as `$obj->prop`, never `$obj['prop']`
+- [ ] Services hold business logic
+- [ ] No obvious N+1 or O(N×M) on login, people list, or other common paths
+- [ ] Email failures logged, not thrown
+- [ ] `LoggerUtils::getAppLogger()` — not `error_log()`
 
-### Security
+### Security (hard block)
 
-- [ ] `InputUtils::escapeHTML()` for body output, `escapeAttribute()` for attributes
-- [ ] `RedirectUtils::redirect()` for redirects — not `header()` or `withHeader()`
-- [ ] `SlimUtils::renderErrorJSON()` for API errors — not raw exceptions
-- [ ] TLS verification enabled for outbound HTTPS requests
-- [ ] User input validated at system boundaries
-- [ ] Authorization checks present for protected routes
-- [ ] No SQL injection risk — all queries use ORM or bound parameters
+- [ ] `InputUtils::escapeHTML()` / `escapeAttribute()`
+- [ ] `RedirectUtils::redirect()` — not raw `header()`
+- [ ] `SlimUtils::renderErrorJSON()` for API errors
+- [ ] TLS verification on outbound HTTPS
+- [ ] AuthZ on protected routes
+- [ ] No injection, XSS, open redirect, or member-data leak
 
 ### Frontend & UI
 
-- [ ] Bootstrap **4.6.2** classes only — not Bootstrap 5
-  - ✅ `d-flex`, `w-100`, `mt-3`, `font-weight-bold`, `text-left`
-  - ❌ `gap-4`, `d-grid`, `fw-bold`, `fs-5`, `w-full`, `text-start`
-- [ ] Asset paths use `SystemURLs::getRootPath()` — no hardcoded `/skin/v2/`
-- [ ] UI text wrapped with `gettext()` (PHP) or `i18next.t()` (JS)
-- [ ] No `alert()` calls — use `window.CRM.notify()` instead
-- [ ] No deprecated HTML attributes — use CSS equivalents
-- [ ] Server-side initial state rendered to avoid JS-only flash
+Current stack is **Tabler + Bootstrap 5**. Do not reject Bootstrap 5 classes.
 
-### i18n & Locale
+- [ ] BS5 / Tabler utilities (`ms-`/`me-`, `fw-bold`, `text-end`, `btn-close`, `data-bs-*`)
+- [ ] Non-trivial UI has desktop, tablet, and mobile proof
+- [ ] Asset paths use `SystemURLs::getRootPath()`
+- [ ] UI text wrapped with `gettext()` or `i18next.t()`
+- [ ] No `alert()` / `confirm()` — `window.CRM.notify()` and bootbox or a Bootstrap modal
+- [ ] Server-side initial state where a JS-only flash would show
 
-- [ ] If new `gettext()` strings added: `npm run locale:build` was run
-- [ ] If new `i18next.t()` strings added: `npm run locale:build` was run
-- [ ] Updated `locale/terms/messages.po` committed with the changes
-- [ ] Canonical UI terms used: `People` not `Persons`; `Active/Inactive` not `Deactivated`
-- [ ] No compound terms that create duplicate translations (consolidate via concatenation)
+### i18n
 
-### Database / Schema
+- [ ] New user-visible strings wrapped in `gettext()` / `i18next.t()` (hard block if missing)
+- [ ] Do **not** require `npm run locale:build` or a `messages.po` commit — that job runs on every merge to `master`
+- [ ] Canonical terms: `People` not `Persons` in UI; `Active` / `Inactive` not `Deactivated`
+- [ ] Do not invent new verb+noun concatenations (`gettext('Delete') . ' ' . gettext('Group')`) — use a whole phrase or `sprintf(gettext('Delete %s'), …)`
+- [ ] ChurchCRM lists **49 locales** in `locales.json` — do not invent a different count
 
-- [ ] If schema changed: migration script added in `src/mysql/upgrade/`
-- [ ] If migration added: `src/mysql/upgrade.json` updated with version entry
-- [ ] New columns: nullable or have default — no breaking schema changes
-- [ ] ORM schema.xml updated + Perpl classes regenerated (if schema changed)
+### Database / existing installs (hard block if upgrade is unsafe)
 
-### OpenAPI / API Documentation
+- [ ] Schema change has a script under `src/mysql/upgrade/` and `upgrade.json`
+- [ ] New columns nullable or defaulted
+- [ ] ORM schema regenerated when the schema changed
 
-- [ ] If new API endpoint added: `@OA\` annotations present
-- [ ] If endpoint changed: annotations updated
-- [ ] Named functions annotated above the `function` keyword
-- [ ] Closures: standalone `@OA\` docblock above the `$group->get(...)` call with explicit `operationId`
-- [ ] After annotation changes: `composer run openapi:public` or `openapi:private` regenerated
+### OpenAPI
 
-### Testing
+- [ ] New or changed endpoints have `@OA\\` annotations
+- [ ] Spec regenerated when annotations changed
 
-- [ ] No debug code left: no `console.log`, `var_dump`, `dd()`, `dump()`
-- [ ] No skipped tests: no `.skip` or `.only`
-- [ ] New API endpoints have Cypress API tests in `cypress/e2e/api/`
-- [ ] Critical UI flows have Cypress UI tests in `cypress/e2e/ui/`
-- [ ] Cypress tests clear logs before running: `rm -f src/logs/$(date +%Y-%m-%d)-*.log`
-- [ ] PHP logs reviewed after test runs (even on pass) for hidden 500s
+### Testing (hard block if a feature or bug fix has none)
 
-### Git & Commits
+- [ ] No `console.log`, `var_dump`, `dd()`, `.skip`, `.only`
+- [ ] New API endpoints have Cypress API coverage when that is the project pattern
+- [ ] Critical UI flows have Cypress UI coverage
+- [ ] Do not put optional demo values in Cypress seed if that would break tests
 
-- [ ] Branch name follows pattern: `fix/issue-NUMBER-description` or `feature/description`
-- [ ] Commit messages: imperative mood, < 72 chars, no file paths, reference issue number
-- [ ] No commented-out code blocks
-- [ ] No TODO/FIXME comments (remove or create a GitHub issue)
-- [ ] No debug files or temporary files committed
+### Git
+
+- [ ] Linked issue
+- [ ] No commented-out blocks, debug files, or drive-by refactors
 
 ---
 
-## Phase 4 — Documentation Requirements
+## Phase 4 — Docs, demo, marketing (not merge blockers)
 
-For each type of change, determine what docs need updating:
+| Change | Follow-up, not a merge gate |
+|--------|-----------------------------|
+| User-visible feature that could trip a non-technical user, or a complex workflow | Tracking issue on **ChurchCRM/CRM**. Docs live in docs.churchcrm.io. Merge those PRs only after this release ships. |
+| Demo-worthy feature | Follow-up to add `src/admin/demo/config.json` values |
+| Full end-to-end feature | Flag "ask George if this is a campaign item". George decides. Skip for bug fixes and security-only PRs. |
+| Storage-only admin setting | Say so. Open a consumer follow-up. |
 
-| Change type | Required doc update |
-|-------------|---------------------|
-| New feature / user-visible behaviour | Documentation user docs page |
-| New admin setting or config option | Documentation admin docs |
-| New API endpoint or changed response | OpenAPI annotations + `CRM/openapi/*.yaml` + Documentation site MDX |
-| Breaking change | Release notes + migration guide |
-| New architectural pattern | Relevant skill file in `.agents/skills/churchcrm/` |
-| Complex multi-step admin procedure | GitHub Wiki article |
-| Plugin interface change | `plugin-system.md` + wiki |
-| DB schema change | `db-schema-migration.md` pattern + upgrade script comment |
-
-### Checking if docs are needed
-
-```bash
-# Has the feature touched user-facing UI text, settings, or API contracts?
-git diff origin/master...origin/<branch> -- 'src/**/*.php' 'src/**/*.js' 'webpack/**/*.js'
-
-# Are there new routes?
-git diff origin/master...origin/<branch> -- 'src/api/routes/' 'src/admin/routes/'
-```
-
-### Updating Documentation
-
-```bash
-# Docs site is in the docs repository (Documentation)
-cd ../docs.churchcrm.io
-
-# Regenerate OpenAPI MDX if API annotations changed
-npm run regen
-
-# Push to main — auto-deploys in ~90 seconds
-git add . && git commit -m "Update Documentation for PR #NUMBER" && git push
-```
-
-### Updating wiki
-
-```bash
-# Wiki is a separate git repo
-git clone https://github.com/ChurchCRM/CRM.wiki.git
-cd CRM.wiki
-# Edit or create relevant .md files
-git add . && git commit -m "Update wiki for feature X" && git push
-```
-
-See `wiki-documentation.md` for article structure guidelines.
+Do not push docs.churchcrm.io to `main` as part of the feature PR.
 
 ---
 
-## Phase 5 — Manual Validation Requirements
+## Phase 5 — Manual validation
 
-After code review, identify what cannot be validated by automated tests alone:
+- Non-trivial UI: desktop, tablet, and mobile
+- Forms and error messages
+- Unauthorized users cannot hit the new route
+- English UI still reads correctly after new strings
+- Migrations boot an existing-style database
 
-### Always check manually
-- Visual rendering in browser (Bootstrap classes, layout)
-- Form validation UX and error messages
-- Authentication/authorization flows (can an unauthorized user access the route?)
-- Any i18n text changes (does the UI look right in English?)
+---
 
-### Check if applicable
-| Scenario | Manual test |
-|----------|-------------|
-| DB migration added | Run migration locally, verify schema, verify app still boots |
-| Email functionality | Trigger email, verify delivery, check logs |
-| File upload/download | Upload a file, verify stored correctly, download |
-| Plugin changes | Enable/disable plugin, verify no conflicts |
-| Config setting changed | Toggle setting, verify behaviour changes |
-| OpenAPI spec changed | Load Swagger UI or docs site, verify endpoint renders correctly |
-| Bootstrap class changes | View page on mobile (375px) and desktop (1440px) |
-| i18n strings added | Switch to a non-English locale, verify no broken strings |
+## Phase 6 — Draft the review (do not post yet)
 
-### Local test workflow
+Use the output block in `maintainer-review-gates.md`.
+
+- Hard blocks → `REQUEST_CHANGES`
+- Follow-ups only → `COMMENT`
+- Never `--approve`
+- Never merge
+- Be thankful. No nits that do not pay for themselves
+- You may say old PRs with blocking issues may be closed for inactivity. Do not name a timeline
 
 ```bash
-# 1. Fetch and checkout the branch (sync with master first — see Phase 2)
-git fetch origin
-git checkout -b <branch-name> origin/<branch-name> 2>/dev/null || git checkout <branch-name>
-git merge origin/master   # Bring branch up to date; fix conflicts if needed
-
-# 2. Build
-npm run build:php   # Composer deps
-npm run build       # Frontend assets
-
-# 3. Start dev environment
-npm run docker:dev:start
-
-# 4. Clear logs before testing
-rm -f src/logs/$(date +%Y-%m-%d)-*.log
-
-# 5. Run targeted Cypress tests
-npx cypress run --e2e --spec "cypress/e2e/api/path/to/test.spec.js"
-
-# 6. Review logs even if tests pass
-cat src/logs/$(date +%Y-%m-%d)-php.log
-cat src/logs/$(date +%Y-%m-%d)-app.log
+# Only after a maintainer says to post:
+gh pr review <NUMBER> --request-changes --body "..."
+gh pr review <NUMBER> --comment --body "..."
 ```
 
 ---
 
-## Phase 6 — Submitting a Review
+## Phase 7 — Addressing review comments (author-side)
 
-### Approving / requesting changes
+When implementing review feedback on a branch you were asked to fix:
 
-```bash
-# Approve the PR
-gh pr review <NUMBER> --approve --body "LGTM. Verified locally: [what you tested]."
-
-# Request changes
-gh pr review <NUMBER> --request-changes --body "Please address the following:
-- [specific issue 1]
-- [specific issue 2]"
-
-# Leave a comment without approval/rejection
-gh pr review <NUMBER> --comment --body "Some thoughts: ..."
-```
-
-### Inline comment (single line)
-
-```bash
-gh api repos/ChurchCRM/CRM/pulls/<NUMBER>/comments \
-  --method POST \
-  -f body="Comment text" \
-  -f path="src/path/to/file.php" \
-  -f commit_id="$(gh pr view <NUMBER> --json headRefOid --jq .headRefOid)" \
-  -f line=42 \
-  -f side=RIGHT
-```
-
-### Review comment best practices
-
-- Be specific: quote the code and explain the expected pattern
-- Reference the relevant skill file where the standard is documented
-- Suggest a fix when possible — don't just flag problems
-- Distinguish blocking issues from nits: use prefixes like **[blocking]**, **[nit]**, **[suggestion]**
+1. Confirm each thread is still true on the current HEAD
+2. Fix, show the diff, wait for push approval
+3. Do not resolve threads unless the maintainer asks
 
 ---
 
-## Phase 7 — Addressing Review Comments
+## Phase 8 — Skills follow-up
 
-When working on a PR that has received review comments:
+If the review taught a durable rule, propose a skill edit in a follow-up. Do not silently rewrite skills on a feature branch.
 
-```bash
-# 1. Fetch all unresolved threads
-gh api graphql -f query='
-{
-  repository(owner: "ChurchCRM", name: "CRM") {
-    pullRequest(number: NUMBER) {
-      reviewThreads(first: 50) {
-        nodes {
-          id
-          isResolved
-          comments(first: 1) {
-            nodes { databaseId body path }
-          }
-        }
-      }
-    }
-  }
-}' --jq '.data.repository.pullRequest.reviewThreads.nodes[] | select(.isResolved == false) | {id, preview: (.comments.nodes[0].body | .[0:80])}'
-```
-
-### Fix → push → resolve threads
-
-```bash
-# After fixing all issues and pushing:
-
-# 2. Resolve each thread
-for thread_id in <id1> <id2>; do
-  gh api graphql -f query="mutation {
-    resolveReviewThread(input: {threadId: \"$thread_id\"}) {
-      thread { isResolved }
-    }
-  }"
-done
-
-# 3. Post a follow-up summary comment
-gh pr comment <NUMBER> --body "## Follow-up changes pushed
-
-Addressed all review comments:
-- [comment 1 summary]: [what was done]
-- [comment 2 summary]: [what was done]
-
-All threads resolved."
-```
-
-**Rule:** Never leave addressed threads unresolved. Always resolve them after pushing fixes.
-
-### Review comments may reference older commits <!-- learned: 2026-03-29 -->
-
-A PR with multiple commits will have review comments pinned to the commit SHA they were posted on. **Comments posted on an earlier commit may already be fixed by a later commit.** Before making any code changes, always verify the issue still exists in the current branch state:
-
-```bash
-# Check current branch file state
-git show origin/<branch>:<path/to/file>
-
-# Then compare to what the review comment describes
-# If the issue is already fixed: just resolve the thread, don't re-edit the code
-```
-
-**Workflow when review comments exist:**
-1. Fetch open threads (GraphQL above)
-2. `git show origin/<branch>:<file>` to read the current branch state
-3. For each thread: determine if it's **already fixed**, **needs a code change**, or **should be accepted as-is**
-4. Make any needed code changes, push, then resolve ALL addressed threads
-5. Post a single follow-up comment summarising each thread's resolution
-
-Resolving a thread without pushing code is valid when the issue was already fixed in a later commit — explain this in the follow-up comment.
-
----
-
-## Phase 8 — Capture Learnings Back to Skills
-
-When a PR review reveals a pattern or mistake that isn't yet documented:
-
-### Decision: where does the learning live?
-
-| Type of learning | Where to document |
-|------------------|-------------------|
-| Project-specific coding pattern | Relevant `churchcrm/*.md` skill file |
-| ChurchCRM-specific standard (Bootstrap, ORM, etc.) | `code-standards.md` |
-| Git / PR workflow rule | `git-workflow.md` or `github-interaction.md` |
-| Security rule | `security-best-practices.md` or `authorization-security.md` |
-| Frontend pattern | `frontend-development.md` or `tabler-components.md` |
-| i18n pattern | `i18n-localization.md` |
-| Performance pattern | `performance-optimization.md` |
-| Generic PR/GitHub behaviour | `pr-description-guidelines.md` |
-| Something totally new | Create a new skill file, add to SKILL.md + README.md |
-
-### How to update a skill
-
-1. Open the relevant skill file
-2. Find the closest existing section
-3. Add the new pattern with:
-   - Brief description of the rule
-   - A `✅ CORRECT` code example
-   - An `❌ WRONG` code example (if applicable)
-   - One sentence explaining why
-4. Update the `Last updated` date if present
-
-### How to create a new skill
-
-1. Create `CRM/.agents/skills/churchcrm/<new-skill>.md`
-2. Add entry to `CRM/.agents/skills/churchcrm/SKILL.md` in the right category table
-3. Add entry to `CRM/.agents/skills/README.md` under the matching section
-4. If it's a workflow that belongs in the PR review checklist, add it to Phase 3 above
-
-### Example — capturing a learning
-
-> [!NOTE] Scenario
-> A PR review comment flags that `SystemConfig::getValue()` was used for a boolean check instead of `SystemConfig::getBooleanValue()`.
-
-Add to `development-workflows.md` (already documented there — no change needed).
-
-> [!NOTE] Scenario
-> A PR adds a Tabler card component but uses inline `style` attributes instead of utility classes.
-
-Add to `tabler-components.md` under a "Cards" section:
-
-```markdown
-### Cards — Use utility classes, not inline styles
-
-// ✅ CORRECT
-<div class="card card-sm">
-
-// ❌ WRONG — inline styles break Tabler theming
-<div class="card" style="border-top: 3px solid #206bc4;">
-```
-
----
-
-## Related Skills
-
-- [Git Workflow](./git-workflow.md) — commits, branch naming, pre-commit checklist
-- [GitHub Interaction](./github-interaction.md) — gh CLI commands for reviews and comments
-- [PR Description Guidelines](../pr-description-guidelines.md) — writing PR descriptions
-- [Code Standards](./code-standards.md) — detailed coding rules
-- [Security Best Practices](./security-best-practices.md) — security review items
-- [Wiki Documentation](./wiki-documentation.md) — when/how to update the wiki
-- [API Development](./api-development.md) — OpenAPI annotation patterns
-
----
-
-## Phase 7 — Post-PR Skill Updates (MANDATORY) <!-- learned: 2026-03-28 -->
-
-**After every PR is merged or ready for merge, update skill files with learnings from the session.**
-
-This is not optional — every PR teaches something. Capture it immediately while context is fresh.
-
-### What to Capture
-
-- **New patterns** discovered during implementation (e.g., print support, CSP-safe event binding)
-- **Gotchas** caught by PR reviewers (e.g., inline `onclick` blocked by CSP)
-- **Architecture decisions** made (e.g., global `@media print` vs per-page rules)
-- **Narrowed selectors** or corrections from review feedback
-- **New files/conventions** introduced (e.g., print button IDs, JS file mappings)
-
-### How to Update
-
-1. Identify which skill files are relevant to the PR's learnings
-2. Add a subsection with `<!-- learned: YYYY-MM-DD -->` on the heading
-3. Include a short explanation + code example (prefer examples over prose)
-4. Update the SKILL.md index if a new category was added
-5. Check if `MEMORY.md` needs a one-liner under Critical Patterns
-
-### Example Learnings by PR Type
-
-| PR Type | Skills to Update |
-|---------|-----------------|
-| UI/UX change | `frontend-development.md`, `tabler-components.md` |
-| Security fix | `security-best-practices.md`, `authorization-security.md` |
-| API change | `api-development.md`, `service-layer.md` |
-| CSP/inline JS fix | `security-best-practices.md`, `frontend-development.md` |
-| Test fix | `cypress-testing.md`, `testing.md` |
-| Print/PDF | `frontend-development.md` (Print Support section) |
-
----
-
-Last updated: 2026-03-28
+Related: [maintainer-review-gates.md](./maintainer-review-gates.md), [git-workflow.md](./git-workflow.md), [github-interaction.md](./github-interaction.md), [code-standards.md](./code-standards.md), [i18n-localization.md](./i18n-localization.md), [frontend-development.md](./frontend-development.md).
