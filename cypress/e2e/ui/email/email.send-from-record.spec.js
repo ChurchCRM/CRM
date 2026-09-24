@@ -48,8 +48,13 @@ describe("Send email from a record", () => {
 
         // Compose Message opens the form with the closing pre-filled under two blank lines
         cy.get("#crm-email-send-btn").should("contain.text", "Compose Message").click();
-        // "Sincerely," + the logged-in user's name + the church name
-        cy.get("#crm-email-body").invoke("val").should("eq", "\n\nSincerely,\nChurch Admin\nMain St. Cathedral");
+        // "Sincerely," + the logged-in user's name + the church name (read live: other specs
+        // rename the church and do not restore it)
+        cy.request("/admin/api/system/config/sChurchName").then((cfg) => {
+            cy.get("#crm-email-body")
+                .invoke("val")
+                .should("eq", `\n\nSincerely,\nChurch Admin\n${cfg.body.value}`);
+        });
         cy.get("#crm-email-send-btn").should("contain.text", "Cancel").click();
 
         composeAndSend(`Hello ${tag}`, "See you Sunday.").then(({ request, response }) => {
