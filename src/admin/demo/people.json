@@ -255,12 +255,12 @@
         },
         {
           "title": null,
-          "firstName": "Jason",
+          "firstName": "Jessica",
           "middleName": null,
           "lastName": "Johnson",
           "birthYear": 1980,
-          "gender": "male",
-          "email": "jason.johnson32@demo.churchcrm.io",
+          "gender": "female",
+          "email": "jessica.johnson32@demo.churchcrm.io",
           "phone": null,
           "notes": [],
           "createdAt": "2024-01-05T08:00:00.000Z",
@@ -269,7 +269,7 @@
           "classification": "Guest",
           "maidenName": null,
           "familyRole": 3,
-          "photo": "jason.johnson32.jpg"
+          "photo": "jessica.johnson32.jpg"
         }
       ],
       "notes": [
@@ -616,7 +616,7 @@
           "firstName": "Kenneth",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2007,
+          "birthYear": 1968,
           "gender": "male",
           "email": "kenneth.johnson22@demo.churchcrm.io",
           "phone": null,
@@ -626,7 +626,7 @@
           "birthDay": 24,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 3,
+          "familyRole": 2,
           "photo": "kenneth.johnson22.jpg"
         },
         {
@@ -634,7 +634,8 @@
           "firstName": "Daniel",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2009,
+          "dateDeceased": "2025-11-02",
+          "birthYear": 1941,
           "gender": "male",
           "email": "daniel.johnson@demo.churchcrm.io",
           "phone": null,
@@ -644,7 +645,7 @@
           "birthDay": 25,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 3,
+          "familyRole": 4,
           "photo": "daniel.johnson.jpg"
         }
       ],
@@ -2508,8 +2509,7 @@
           "birthDay": 12,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1,
-          "photo": "ryan.rodriguez.jpg"
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -3407,6 +3407,7 @@
     },
     {
       "name": "Campbell",
+      "photo": "family.campbell.jpg",
       "address": {
         "line1": "2655 Prairie Ln",
         "line2": null,
@@ -3913,8 +3914,7 @@
           "birthDay": 14,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1,
-          "photo": "richard.harris.jpg"
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -3931,8 +3931,7 @@
           "birthDay": 15,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2,
-          "photo": "nancy.harris.jpg"
+          "familyRole": 2
         }
       ],
       "notes": [],
@@ -3967,6 +3966,7 @@
           "firstName": "Mark",
           "middleName": null,
           "lastName": "King",
+          "active": false,
           "birthYear": 1993,
           "gender": "male",
           "email": "mark.king@demo.churchcrm.io",
@@ -5454,7 +5454,6 @@
         },
         "email": "family.torres57@demo.churchcrm.io"
       },
-      "photo": "family.torres57.jpg",
       "members": [
         {
           "title": "Mr",

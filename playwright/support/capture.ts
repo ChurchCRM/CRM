@@ -79,6 +79,35 @@ export async function captureScreen(page: Page, testInfo: TestInfo, opts: Captur
   }
 }
 
+// Leaflet only adds .leaflet-tile-loaded to tiles that loaded successfully,
+// so a blocked or failing tile server times out here instead of shipping a
+// gray map.
+async function waitForMapTiles(page: Page, name: string): Promise<void> {
+  const hasVisibleMap = await page
+    .locator('.leaflet-container')
+    .evaluateAll((maps) => maps.some((m) => (m as HTMLElement).offsetWidth > 0 && (m as HTMLElement).offsetHeight > 0));
+  if (!hasVisibleMap) {
+    return;
+  }
+
+  await page
+    .waitForFunction(
+      () => {
+        const tiles = Array.from(document.querySelectorAll<HTMLImageElement>('.leaflet-container img.leaflet-tile')).filter(
+          (t) => t.offsetWidth > 0
+        );
+        return tiles.length > 0 && tiles.every((t) => t.classList.contains('leaflet-tile-loaded'));
+      },
+      undefined,
+      { timeout: 20000 }
+    )
+    .catch(() => {
+      throw new Error(`Map tiles did not finish loading for "${name}" — check access to tile.openstreetmap.org.`);
+    });
+  // Leaflet fades tiles in over 200ms.
+  await page.waitForTimeout(300);
+}
+
 async function captureAtViewport(
   page: Page,
   testInfo: TestInfo,
@@ -99,6 +128,7 @@ async function captureAtViewport(
   // detail. Bounded and best-effort: some pages keep a background poll
   // alive indefinitely, which would make a strict wait hang forever.
   await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => undefined);
+  await waitForMapTiles(page, opts.name);
 
   let screenshotPath: string | null = null;
   if (!VIDEO_ONLY_PROJECTS.has(device)) {

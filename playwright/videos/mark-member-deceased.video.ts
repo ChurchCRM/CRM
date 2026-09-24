@@ -50,8 +50,9 @@ test('mark-member-deceased', async ({ page }, testInfo) => {
   // One week before the run — a realistic recent date, and safely in the
   // past for the server's date-not-in-the-future validation.
   const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-  const dateString = `${String(weekAgo.getMonth() + 1).padStart(2, '0')}/${String(weekAgo.getDate()).padStart(2, '0')}/${weekAgo.getFullYear()}`;
+  const dateString = `${weekAgo.getFullYear()}-${String(weekAgo.getMonth() + 1).padStart(2, '0')}-${String(weekAgo.getDate()).padStart(2, '0')}`;
   await humanType(dateField, dateString);
+  await expect(dateField).toHaveValue(dateString);
   await humanPause(page, 800);
 
   await humanClick(page.locator('button[name="PersonSubmit"]'));

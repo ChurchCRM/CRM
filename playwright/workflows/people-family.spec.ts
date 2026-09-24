@@ -88,79 +88,63 @@ test.describe('People & Families', () => {
     });
   });
 
-  // "Charles Green" (src/admin/demo/people.json's Green family) — deliberately
-  // not Joseph Hall, who mark-member-inactive.video.ts already marks inactive
-  // earlier in this same pipeline run. Reusing that subject here means this
-  // test's own search on the default (active-only) list finds no row, since
-  // the video test already flipped it out of the active set.
+  // Inactive and deceased subjects come from src/admin/demo/people.json
+  // (Mark King: active false; Daniel Johnson: dateDeceased; Campbell:
+  // inactive family) so screenshots never mutate data another spec reads.
   test('person-inactive-profile', async ({ page }, testInfo) => {
-    await page.goto('/people/list');
+    await page.goto('/people/list?personActiveStatus=inactive');
     const rows = page.locator('#members tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
 
-    await humanType(page.locator('.dt-search input'), 'Charles Green');
+    await humanType(page.locator('.dt-search input'), 'Mark King');
     await humanPause(page, 500);
-    const targetRow = rows.filter({ hasText: 'Charles Green' }).first();
+    const targetRow = rows.filter({ hasText: 'Mark King' }).first();
     await expect(targetRow).toBeVisible({ timeout: 15000 });
     await humanClick(targetRow.locator('a').first());
-    await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
-
-    await humanClick(page.locator('#person-actions-dropdown'));
-    const setInactiveItem = page.locator('#activateDeactivatePerson');
-    await expect(setInactiveItem).toBeVisible({ timeout: 5000 });
-    await expect(setInactiveItem).toHaveText(/Set Inactive/);
-    await humanClick(setInactiveItem);
-
-    const confirmDialog = page.locator('.bootbox');
-    await expect(confirmDialog).toBeVisible({ timeout: 5000 });
-    await expect(confirmDialog).toContainText('Charles Green');
-    await humanClick(page.locator('.bootbox-accept'));
-
     await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
     await expect(page.locator('#person-deactivated')).toBeVisible({ timeout: 10000 });
     await humanPause(page, 800);
 
     await captureScreen(page, testInfo, {
       name: 'person-inactive-profile',
-      purpose: 'Show a person profile after the member has been marked inactive, including the inactive status banner',
+      purpose: 'Show a person profile for an inactive member, including the inactive status banner',
     });
   });
 
-  // "Timothy Torres" — deliberately not Matthew Davis, who
-  // mark-member-deceased.video.ts already marks deceased earlier in this
-  // same pipeline run; see the comment on person-inactive-profile above.
   test('person-deceased-profile', async ({ page }, testInfo) => {
-    await page.goto('/people/list');
-    const rows = page.locator('#members tbody tr');
-    await expect(rows.first()).toBeVisible({ timeout: 15000 });
+    // The people list always opens filtered to Living, so read the profile
+    // link from the server-rendered rows instead.
+    const listHtml = await (await page.request.get('/people/list')).text();
+    const profilePath = listHtml.match(/href="([^"]*\/people\/view\/\d+)" class="fw-bold">Daniel Johnson</)?.[1];
+    expect(profilePath).toBeTruthy();
 
-    await humanType(page.locator('.dt-search input'), 'Timothy Torres');
-    await humanPause(page, 500);
-    const targetRow = rows.filter({ hasText: 'Timothy Torres' }).first();
-    await expect(targetRow).toBeVisible({ timeout: 15000 });
-    await humanClick(targetRow.locator('a').first());
-    await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
-
-    await humanClick(page.locator('a.btn[href*="PersonEditor.php"]').first());
-    await page.waitForURL(/PersonEditor\.php/, { timeout: 15000 });
-    await expect(page.locator('#IsDeceased')).toBeVisible({ timeout: 10000 });
-
-    await humanClick(page.locator('#IsDeceased'));
-    const dateField = page.locator('#DateDeceased');
-    await expect(dateField).toBeVisible({ timeout: 5000 });
-
-    const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-    const dateString = `${String(weekAgo.getMonth() + 1).padStart(2, '0')}/${String(weekAgo.getDate()).padStart(2, '0')}/${weekAgo.getFullYear()}`;
-    await humanType(dateField, dateString);
-    await humanClick(page.locator('button[name="PersonSubmit"]'));
-
-    await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
-    await expect(page.getByText('Deceased', { exact: false }).first()).toBeVisible({ timeout: 10000 });
+    await page.goto(profilePath!);
+    await expect(page.locator('.badge', { hasText: 'Deceased' })).toBeVisible({ timeout: 10000 });
     await humanPause(page, 800);
 
     await captureScreen(page, testInfo, {
       name: 'person-deceased-profile',
-      purpose: 'Show a person profile after recording a deceased date, including the Deceased badge and date',
+      purpose: 'Show a person profile for a deceased member, including the Deceased badge and date',
+    });
+  });
+
+  test('family-inactive-profile', async ({ page }, testInfo) => {
+    await page.goto('/people/family?familyActiveStatus=inactive');
+    const rows = page.locator('#families tbody tr');
+    await expect(rows.first()).toBeVisible({ timeout: 15000 });
+
+    await humanType(page.locator('.dt-search input'), 'Campbell');
+    await humanPause(page, 500);
+    const targetRow = rows.filter({ hasText: 'Campbell' }).first();
+    await expect(targetRow).toBeVisible({ timeout: 15000 });
+    await humanClick(targetRow.locator('td').first().locator('a').first());
+    await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
+    await expect(page.locator('#family-deactivated')).toBeVisible({ timeout: 10000 });
+    await humanPause(page, 800);
+
+    await captureScreen(page, testInfo, {
+      name: 'family-inactive-profile',
+      purpose: 'Show a family profile for an inactive family, including the inactive status banner',
     });
   });
 });
