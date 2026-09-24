@@ -18,12 +18,7 @@ function isDark(): boolean {
 }
 
 function symbolSrc(): string {
-  return (
-    rootPath() +
-    (isDark()
-      ? "/Images/churchcrm-symbol-paper-blue.svg"
-      : "/Images/churchcrm-symbol-ink-blue.svg")
-  );
+  return rootPath() + (isDark() ? "/Images/churchcrm-symbol-paper-blue.svg" : "/Images/churchcrm-symbol-ink-blue.svg");
 }
 
 function fullSrc(): string {
