@@ -535,12 +535,14 @@ function initChurchLogoUploader() {
     const brandImage = document.getElementById("sidebar-brand-image");
     const brandText = document.getElementById("sidebar-brand-text");
     if (brandImage) {
-      const defaultSrc = brandImage.dataset.defaultSrc;
       if (hasCustomLogo && url) {
         brandImage.src = url;
-      } else if (defaultSrc) {
-        brandImage.src = defaultSrc;
       }
+      brandImage.classList.toggle("d-none", !hasCustomLogo);
+    }
+    // The bundled theme-aware marks (light/dark) show only when no logo is uploaded.
+    for (const mark of document.querySelectorAll(".crm-brand-default")) {
+      mark.classList.toggle("d-none", hasCustomLogo);
     }
     brandText?.classList.toggle("d-none", hasCustomLogo);
   }
