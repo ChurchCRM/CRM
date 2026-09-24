@@ -1,7 +1,12 @@
+import path from 'node:path';
+
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
 import { humanClick, humanPause, humanSelect, humanType } from '../support/human';
+import { uploadDemoPhoto } from '../support/photo';
+
+const KEVIN_THOMAS_PHOTO = path.join(__dirname, '..', '..', 'src', 'admin', 'demo', 'images', 'people', 'kevin.thomas.jpg');
 
 test.describe('People & Families', () => {
   test('people-family-overview', async ({ page }, testInfo) => {
@@ -11,11 +16,15 @@ test.describe('People & Families', () => {
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
     await humanPause(page, 500);
 
-    await humanType(page.locator('.dt-search input'), 'Scott');
+    // Two families are named "Baker" in the seed data — the unique contact
+    // email (visible in the row's Email column) picks the one with a real
+    // family portrait and photographed parents (src/admin/demo/people.json),
+    // not the other, photo-less Baker family.
+    await humanType(page.locator('.dt-search input'), 'family.baker7');
     await humanPause(page, 500);
-    const scottRow = rows.filter({ hasText: 'Scott' }).first();
-    await expect(scottRow).toBeVisible({ timeout: 15000 });
-    await humanClick(scottRow.locator('td').first().locator('a').first());
+    const bakerRow = rows.filter({ hasText: 'family.baker7' }).first();
+    await expect(bakerRow).toBeVisible({ timeout: 15000 });
+    await humanClick(bakerRow.locator('td').first().locator('a').first());
     await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
     await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
     await humanPause(page, 1000);
@@ -49,7 +58,22 @@ test.describe('People & Families', () => {
 
     await humanPause(page, 500);
     await humanClick(page.locator('button[name="FamilySubmit"]'));
-    await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
+    await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 15000 });
+    const michaelLink = page.getByText('Michael Whitfield', { exact: false }).first();
+    await expect(michaelLink).toBeVisible({ timeout: 10000 });
+    await humanPause(page, 500);
+
+    // A family created live by this test starts with no photo of its own
+    // (there's no seed-data fixture to pull one from, unlike every other
+    // family in this pipeline) — upload one via the same API the app's own
+    // photo-uploader widget calls, so the resulting profile doesn't show
+    // initials placeholders in what's supposed to be the payoff screenshot.
+    const familyId = Number(new URL(page.url()).pathname.match(/\/people\/family\/(\d+)/)?.[1]);
+    const personHref = await michaelLink.getAttribute('href');
+    const personId = Number(personHref?.match(/\/people\/view\/(\d+)/)?.[1]);
+    await uploadDemoPhoto(page, 'family', familyId, KEVIN_THOMAS_PHOTO);
+    await uploadDemoPhoto(page, 'person', personId, KEVIN_THOMAS_PHOTO);
+    await page.reload();
     await expect(page.getByText('Whitfield', { exact: false }).first()).toBeVisible({ timeout: 10000 });
     await humanPause(page, 500);
 
