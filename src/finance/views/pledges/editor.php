@@ -288,14 +288,15 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
     <!-- Action Buttons -->
     <div class="card mb-3">
         <div class="card-body d-flex gap-2">
-            <button type="button" class="btn btn-primary" id="savePledgeBtn">
+            <button type="button" class="btn btn-primary" id="savePledgeBtn"<?= $isEdit ? ' aria-keyshortcuts="Control+Enter Meta+Enter"' : '' ?>>
                 <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save') ?>
             </button>
             <?php if (!$isEdit): ?>
-            <button type="button" class="btn btn-success" id="saveAndAddBtn">
+            <button type="button" class="btn btn-success" id="saveAndAddBtn" aria-keyshortcuts="Control+Enter Meta+Enter">
                 <i class="fa-solid fa-plus me-1"></i><?= gettext('Save and Add Another') ?>
             </button>
             <?php endif; ?>
+            <small class="text-body-secondary align-self-center d-none" id="saveShortcutHint"><kbd class="shortcut-mod">Ctrl</kbd>+<kbd>Enter</kbd></small>
             <a href="<?= InputUtils::escapeAttribute($linkBackTarget) ?>" class="btn btn-secondary">
                 <i class="fa-solid fa-xmark me-1"></i><?= gettext('Cancel') ?>
             </a>
@@ -388,6 +389,9 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
                 document.getElementById('FamilyID').value = value;
             }
         });
+        if (!GROUP_KEY && !familyNameEl.value) {
+            familyNameEl.tomselect.focus();
+        }
     }
 
     // ---- Fund total calculation ----
@@ -548,10 +552,20 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
     }
 
     // ---- Save (POST /api/payments/pledges) ----
+    const actionButtons = document.querySelectorAll('#savePledgeBtn, #saveAndAddBtn, #deletePledgeBtn');
+    let saving = false;
+
+    function setSaving(value) {
+        saving = value;
+        actionButtons.forEach(function (btn) { btn.disabled = value; });
+    }
+
     async function savePledge(redirectAfter) {
+        if (saving) return;
         const payload = collectPayload();
         if (!payload) return;
 
+        setSaving(true);
         try {
             const isEditMode = !!GROUP_KEY;
             const url = isEditMode
@@ -567,6 +581,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             if (!res.ok) {
                 const msg = (data && (data.error || data.message)) || <?= InputUtils::jsonEncodeForScript(gettext('Save failed')) ?>;
                 showToast(msg, true);
+                setSaving(false);
                 return;
             }
 
@@ -596,6 +611,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             }
         } catch (err) {
             showToast(<?= InputUtils::jsonEncodeForScript(gettext('Network error, please try again')) ?>, true);
+            setSaving(false);
         }
     }
 
@@ -609,6 +625,21 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             savePledge('new');
         });
     }
+
+    // ---- Ctrl+Enter / Cmd+Enter: Save and Add Another (Save when editing) ----
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const hint = document.getElementById('saveShortcutHint');
+        if (/Mac/.test(navigator.userAgent)) {
+            hint.querySelector('.shortcut-mod').textContent = '⌘';
+        }
+        hint.classList.remove('d-none');
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' || !(e.ctrlKey || e.metaKey) || e.isComposing) return;
+        e.preventDefault();
+        savePledge(saveAndAddBtn ? 'new' : 'view');
+    });
 
     // ---- Delete ----
     const deleteBtn = document.getElementById('deletePledgeBtn');
