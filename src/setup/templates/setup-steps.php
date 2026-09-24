@@ -26,7 +26,7 @@ require_once __DIR__ . '/header.php';
 <div class="setup-container">
     <!-- Hero Section -->
     <div class="setup-hero">
-        <img src="<?= $rootPath ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" class="setup-logo">
+        <img src="<?= $rootPath ?>/Images/churchcrm-logo-ink-blue.svg" alt="ChurchCRM" class="setup-logo">
         <div class="setup-version">Version <?= htmlspecialchars($softwareVersion, ENT_QUOTES, 'UTF-8') ?></div>
         <p class="setup-tagline">Let's get your church management system up and running.</p>
     </div>

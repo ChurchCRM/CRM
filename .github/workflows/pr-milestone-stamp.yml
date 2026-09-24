@@ -1,0 +1,177 @@
+name: "Issues: stamp milestone on merge"
+
+# When a PR is merged with no milestone, put the PR and every attached issue
+# (open or already closed) on the milestone whose title matches package.json
+# version. Deterministic only — no model call.
+
+concurrency:
+  group: pr-milestone-${{ github.event.pull_request.number || inputs.pr_number }}
+  cancel-in-progress: false
+
+on:
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "Merged PR number to stamp (manual backfill)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  stamp:
+    name: Stamp package.json milestone
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.pull_request.merged == true && github.event.pull_request.milestone == null)
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout package.json
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout: |
+            package.json
+          sparse-checkout-cone-mode: false
+
+      - name: Stamp milestone from package.json version
+        uses: actions/github-script@v9
+        env:
+          PR_NUMBER: ${{ inputs.pr_number }}
+        with:
+          script: |
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            const version = String(pkg.version || '').trim();
+            if (!/^\d+\.\d+\.\d+/.test(version)) {
+              core.setFailed(`package.json version is not semver-like: ${version}`);
+              return;
+            }
+            console.log(`Target milestone title: ${version}`);
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const prNumber = context.payload.pull_request
+              ? context.payload.pull_request.number
+              : parseInt(process.env.PR_NUMBER, 10);
+            if (!prNumber) {
+              core.setFailed('No PR number');
+              return;
+            }
+
+            const pr = (await github.rest.pulls.get({ owner, repo, pull_number: prNumber })).data;
+            if (!pr.merged) {
+              console.log(`PR #${prNumber} is not merged — skip`);
+              return;
+            }
+
+            const openMilestones = await github.paginate(github.rest.issues.listMilestones, {
+              owner, repo, state: 'open', per_page: 100,
+            });
+            let milestone = openMilestones.find((m) => m.title === version);
+            if (!milestone) {
+              const closedMilestones = await github.paginate(github.rest.issues.listMilestones, {
+                owner, repo, state: 'closed', per_page: 100,
+              });
+              milestone = closedMilestones.find((m) => m.title === version);
+            }
+            if (!milestone) {
+              console.log(`Creating open milestone ${version}`);
+              milestone = (await github.rest.issues.createMilestone({
+                owner,
+                repo,
+                title: version,
+                description: `Development toward ${version}`,
+              })).data;
+            }
+            console.log(`Using milestone #${milestone.number} (${milestone.title})`);
+
+            const linked = new Set();
+
+            try {
+              const gql = await github.graphql(
+                `query($owner:String!, $repo:String!, $number:Int!) {
+                  repository(owner:$owner, name:$repo) {
+                    pullRequest(number:$number) {
+                      closingIssuesReferences(first: 50) {
+                        nodes { number state }
+                      }
+                    }
+                  }
+                }`,
+                { owner, repo, number: prNumber }
+              );
+              for (const node of gql.repository.pullRequest.closingIssuesReferences.nodes || []) {
+                linked.add(node.number);
+              }
+            } catch (e) {
+              console.log('GraphQL closingIssuesReferences failed:', e.message);
+            }
+
+            const timeline = await github.paginate(github.rest.issues.listEventsForTimeline, {
+              owner, repo, issue_number: prNumber, per_page: 100,
+            });
+            for (const event of timeline) {
+              const src = event.source && event.source.issue;
+              if (event.event === 'cross-referenced' && src && !src.pull_request) {
+                linked.add(src.number);
+              }
+              if (event.event === 'connected' && src && !src.pull_request) {
+                linked.add(src.number);
+              }
+            }
+
+            const text = `${pr.title || ''}\n${pr.body || ''}`;
+            const re = /\b(?:fix(?:es|ed)?|close[sd]?|resolve[sd]?|refs?|references)\s+#(\d+)/gi;
+            let match;
+            while ((match = re.exec(text)) !== null) {
+              linked.add(parseInt(match[1], 10));
+            }
+            linked.delete(prNumber);
+
+            console.log(`Attached issues: ${[...linked].join(', ') || '(none)'}`);
+
+            async function stamp(issueNumber, kind, { forceIfClosed = false } = {}) {
+              const issue = (await github.rest.issues.get({
+                owner, repo, issue_number: issueNumber,
+              })).data;
+              if (issue.pull_request && issueNumber !== prNumber) {
+                console.log(`#${issueNumber} is another PR — skip`);
+                return;
+              }
+              const current = issue.milestone && issue.milestone.title;
+              const isClosed = issue.state === 'closed';
+              const shouldForce = forceIfClosed && isClosed;
+              if (current === version) {
+                console.log(`${kind} #${issueNumber} already on ${version}`);
+                return;
+              }
+              if (current && !shouldForce) {
+                console.log(`${kind} #${issueNumber} already on ${current} — leave open item`);
+                return;
+              }
+              await github.rest.issues.update({
+                owner,
+                repo,
+                issue_number: issueNumber,
+                milestone: milestone.number,
+              });
+              console.log(`Stamped ${kind} #${issueNumber} (${issue.state}) → ${version}`);
+            }
+
+            if (!pr.milestone) {
+              await stamp(prNumber, 'PR');
+            } else {
+              console.log(`PR already on ${pr.milestone.title}`);
+            }
+
+            for (const n of linked) {
+              await stamp(n, 'issue', { forceIfClosed: true });
+            }

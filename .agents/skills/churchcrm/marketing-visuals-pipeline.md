@@ -28,29 +28,34 @@ checkmark.
 ## Running it
 
 ```bash
-npm run marketing:visuals           # fresh instance → seed → run all workflows
+npm run marketing                   # fresh instance → setup → screenshots → videos → check
+npm run marketing:screenshots -- --grep "person-.*-profile"   # re-run a subset (setup runs first)
 npm run docker:ci:new-system:down   # tear down when done
 ```
 
-Requires Google Chrome installed — the pipeline drives it via
-`channel: 'chrome'` in `playwright.config.ts`, not Playwright's bundled
-Chromium, so no `playwright install` step is needed (see the "Browser
-download hangs" gotcha below).
+Uses Playwright's bundled Chromium (`npm run marketing:install`). Set
+`BROWSER_CHANNEL=chrome` (or `npm run marketing:chrome`) to drive system
+Chrome instead. A green run is not enough: open the PNGs under
+`playwright/artifacts/screenshots/` and look at them.
 
 Full details, directory layout, and troubleshooting: `playwright/README.md`.
 
 ## Architecture
 
-Four Playwright projects, run in this order (`playwright/playwright.config.ts`):
+Three Playwright projects, run in this order (`playwright/playwright.config.ts`):
 
 1. **`setup`** (`playwright/setup/bootstrap.setup.ts`) — drives the setup
    wizard, forced admin password change, church info, and demo data import
    as two real, recorded tests (`setup-church-info`, `demo-data-import`).
    Saves a Playwright `storageState` at the end.
-2. **`desktop` / `tablet` / `mobile`** (`playwright/workflows/*.spec.ts`) —
-   the three end-user workflows (People & Families, Groups & Ministry,
-   Events & Attendance), each declaring `dependencies: ['setup']` and
-   reusing the saved `storageState` so they don't need to log in again.
+2. **`recordings`** (`playwright/videos/*.video.ts`) — click-through videos.
+3. **`screenshots`** (`playwright/workflows/*.spec.ts`) — each test captures
+   desktop 1440×900, tablet 1024×768 and mobile 430×932 in one page load
+   (`VIEWPORTS` in `support/capture.ts`).
+
+Both depend on `setup` and set `storageState`. `workers: 1`, so they share
+one database in order: a video that edits a person changes what later
+screenshots see.
 
 ## Shot list mapping <!-- learned: 2026-09-08 -->
 
@@ -124,16 +129,9 @@ automate it.
     `use.timezoneId: 'America/Chicago'` to match the demo data's
     `sTimeZone` (`src/admin/demo/config.json`), so the mismatch never
     exists in the first place.
-  - **Demo data includes inactive groups and families** — clicking "the
-    first row" in a list can land you on a group/family flagged
-    "Inactive", which is a bad look for a marketing screenshot.
-    `groups-ministry.spec.ts` walks rows until it finds one where
-    `window.CRM.groupIsActive === true` (exposed by `group-view.php`
-    specifically for this); `people-family.spec.ts` filters out any row
-    already showing an "Inactive" badge before clicking. If you add a new
-    workflow that lists records, check whether the underlying data can
-    include an inactive/disabled/error state and filter it out the same
-    way — don't assume "row 1" is presentable.
+  - **Demo data includes inactive groups and families** — don't assume
+    "row 1" is presentable. `groups-ministry.spec.ts` walks rows until
+    `window.CRM.groupIsActive === true`.
   - Church info entered during `setup-church-info` (e.g. "Grace Community
     Church") gets **overwritten** moments later by the demo data import's
     own fixture (`sChurchName: "Main St. Cathedral"` in
@@ -141,34 +139,116 @@ automate it.
     church-info save is only there to satisfy
     `ChurchInfoRequiredMiddleware`'s required-fields gate before you can
     reach anything else; the specific values you enter there don't survive.
-- **Three form factors, one engine**: `desktop` (1440×900), `tablet`
-  (834×1194), `mobile` (375×812) — matching the breakpoints in
-  `responsive-design-guidelines.md` — all on Chromium with a fixed viewport
-  only (no touch/UA emulation). Full device emulation was deliberately
-  skipped for the first milestone to keep automation robust; see
-  `playwright/README.md` → Known limitations.
 - **Sequential workers only** (`workers: 1` in `playwright.config.ts`).
   Concurrent workers hit a filesystem race creating `outputDir`
   (`ENOTDIR` from parallel mkdir/rm on the same path) in this environment.
   A handful of screenshot workflows don't need the speed either way.
-- **This sandbox's network policy blocks `deb.debian.org`** (the
-  `docker:ci:new-system` image build's `apt-get update`) by default — needs
-  an explicit `sbx policy allow network deb.debian.org` before the Docker
-  image will build. If you hit a `403`/`no matching allow rule` error
-  building the image in a similar sandboxed environment, that's almost
-  certainly it, not a bug in this code.
-- **Browser download hangs — use system Chrome instead.**
-  `playwright install`'s download of its bundled Chromium from
-  `cdn.playwright.dev` (redirects to `storage.googleapis.com`) hung
-  indefinitely (30s socket timeout, repeated) in this sandbox even after
-  both hosts were added to `sbx policy allow network` — a plain `curl`/
-  `node -e "https.get(...)"` to the exact same URLs returned instantly, so
-  it's specific to Playwright's downloader (most likely its forced
-  `autoSelectFamily`/Happy-Eyeballs socket option, set directly in its
-  request code rather than inherited from Node's `--network-family-
-  autoselection` flag, so that flag can't override it), not a general
-  network block. Fix: `playwright.config.ts`'s top-level `use.channel:
-  'chrome'` makes every project launch the machine's already-installed
-  Google Chrome instead — no download, no `playwright install` step at
-  all. Requires Chrome to actually be installed on the machine running the
-  pipeline.
+- **Sandboxed runs need these hosts allowed**: `deb.debian.org` (webserver
+  image `apt-get`), `tile.openstreetmap.org` (map tiles — captures fail
+  without it), `download.cypress.io` (else `CYPRESS_INSTALL_BINARY=0 npm ci`).
+  `composer:install` needs PHP `ext-bcmath` on the host.
+
+## Recorded-workflow tests: storageState, duplicate-link traps, pagination <!-- learned: 2026-09-22 -->
+
+Debugging five failing tests (three `*.video.ts` recordings, two `workflows/*.spec.ts`
+screenshots added alongside maps + member-status-video features) surfaced four
+reusable lessons:
+
+- **A `dependencies: ['setup']` project does NOT inherit the setup project's
+  authenticated session by itself.** The dependency only guarantees ordering
+  (setup runs first) — it does not share `storageState`. The `recordings`
+  project (`playwright/videos/*.video.ts`) was missing `storageState:
+  STORAGE_STATE_PATH` in its `use` block while the `screenshots` project had
+  it; every recorded-video test ran unauthenticated, landing on empty tables
+  or redirects instead of the seeded demo data. Any new project added to
+  `playwright.config.ts` that depends on `setup` and needs to be logged in
+  must set `storageState` explicitly too.
+
+- **A bare `.first()` (or unscoped `getByText()`) can silently resolve to a
+  hidden duplicate of the element you meant to click/assert on.** Several
+  ChurchCRM pages render the *same* href or text twice: once as the visible,
+  intended element, and once as a hidden decoy — a closed dropdown-menu item
+  (`family-view.php`'s "Find Neighbors", `person-view.php`'s per-family-member
+  "Edit"), a hidden global widget (`cartview.php`'s "Map cart items" button,
+  `/people/map?groupId=0`), or a hidden sidebar nav link
+  (`<span class="nav-link-title">{groupName}</span>`, matched by
+  `getByText(groupName)`). The symptom is distinctive: `scrollIntoViewIfNeeded`
+  times out with **"element is not visible"** repeated for the full timeout —
+  not a "not found" error, because an element genuinely exists, it's just the
+  wrong (CSS-hidden) one.
+  - **Fix**: scope the locator to what makes the real element unique — a
+    `.btn` class the decoy lacks (`a.btn[href*="PersonEditor.php"]`), a
+    `:not([href*=...])` exclusion for a known decoy pattern
+    (`:not([href*="groupId=0"])`), or a containing element the decoy isn't
+    inside (`.text-body-secondary` for a page subtitle vs. a sidebar nav
+    link).
+  - **Diagnose fast**: don't guess from stack traces alone — write a
+    throwaway Playwright script using the saved `storageState` at
+    `playwright/.auth/admin.json` to list every match with `.isVisible()`
+    and `.boundingBox()`:
+    ```js
+    import { chromium } from '@playwright/test';
+    const browser = await chromium.launch();
+    const context = await browser.newContext({ storageState: 'playwright/.auth/admin.json' });
+    const page = await context.newPage();
+    await page.goto('http://127.0.0.1:8081/people/view/139');
+    for (const l of await page.locator('a[href*="PersonEditor.php"]').all()) {
+      console.log({ href: await l.getAttribute('href'), visible: await l.isVisible() });
+    }
+    await browser.close();
+    ```
+    Run from the repo root (not `/tmp`) so `@playwright/test` resolves.
+
+- **DataTables-backed tables (`#families`, `#members`, `#groupsTable`, etc.)
+  paginate by default — 10 rows/page.** `rows.filter({ hasText: 'X' })`
+  only searches whatever rows are *currently rendered*; if the target isn't
+  on the default first page (e.g. "Worship Service" is 11th of 12 demo
+  groups alphabetically), the filter silently matches nothing and
+  `toBeVisible()` times out with "element(s) not found". Always type into
+  `.dt-search input` first to filter server/client-side, exactly like the
+  existing family/member search pattern in `people-family.spec.ts`, before
+  locating a specific row.
+
+- **For `workflows/*.spec.ts` screenshot tests (landing-page views), prefer
+  direct URL navigation over a full UI click-through once an id is known
+  from an earlier navigation** — e.g. after clicking into a family's profile,
+  extract the id from `page.url()` and `page.goto('/people/map/neighbors?familyId=' + id)`
+  instead of also clicking the page's "Find Neighbors" link. This matches
+  the existing Cypress pattern for the same pages
+  (`cypress/e2e/ui/people/standard.map.spec.js`:
+  `cy.visit("people/map/neighbors?familyId=1")`;
+  `cypress/e2e/ui/people/standard.deceased-person.spec.js`:
+  `cy.visit("/PersonEditor.php")`) and sidesteps the duplicate-link and
+  pagination pitfalls above entirely, since there's one fewer click to get
+  wrong. **Reserve the full click-through for `*.video.ts` usability-demo
+  tests**, where showing the real click path *is* the point — don't
+  simplify those away.
+
+- **Browser download hangs** — if `playwright install` stalls in a sandbox,
+  set `BROWSER_CHANNEL=chrome` to use installed Chrome, or point
+  `PLAYWRIGHT_BROWSERS_PATH` at a preinstalled Chromium.
+
+## Demo subjects, status and photos
+
+- **Status screenshots use imported data, never UI edits.** The demo
+  importer (`DemoDataService::importCongregation`) honors family
+  `"active": false`, member `"active": false` and `"dateDeceased"` in
+  `src/admin/demo/people.json`. Current subjects: Mark King (inactive
+  person), Daniel Johnson (deceased), Campbell (inactive family).
+- **Videos own their subjects.** `mark-member-inactive.video.ts` edits Joseph
+  Hall and `mark-member-deceased.video.ts` edits Matthew Davis. Screenshots
+  must not search for them. Grep `playwright/` before picking a name.
+- **Default lists hide status.** `/people/list` shows only active people in
+  active families and forces "Living"; use `?personActiveStatus=inactive`,
+  `/people/family?familyActiveStatus=inactive`, or read the profile link from
+  the server-rendered rows for a deceased person.
+- **Pick subjects whose whole family has photos**, and a unique full name.
+  Person profiles show the family table, not the family photo; family
+  profiles show the family photo (`images/families/`).
+- **Photos must match name, gender and rough age, and suit a church**: no
+  shirtless, smoking or glamour shots. Check by rendering a labelled contact
+  sheet of `images/people/*` with Playwright and viewing it.
+- **Date pickers use `sDatePickerFormat` (`Y-m-d`).** Type `YYYY-MM-DD` and
+  assert `toHaveValue` before submit; `MM/DD/YYYY` saves a wrong date.
+- **Maps**: `captureScreen()` waits for every visible Leaflet tile to get
+  `.leaflet-tile-loaded` and throws if tiles fail, so gray maps never ship.

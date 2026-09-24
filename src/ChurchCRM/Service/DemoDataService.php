@@ -312,6 +312,9 @@ class DemoDataService
                 if ($familySelfRegistered) {
                     $family->setEnteredBy(Person::SELF_REGISTER);
                 }
+                if (($famData['active'] ?? true) === false) {
+                    $family->setDateDeactivated($today);
+                }
                 $family->save();
 
                 $this->familyMap[$family->getId()] = $family;
@@ -374,17 +377,7 @@ class DemoDataService
                         if ($familySelfRegistered) {
                             $person->setEnteredBy(Person::SELF_REGISTER);
                         }
-                        if (!empty($m['dateDeceased'])) {
-                            try {
-                                $person->setDateDeceased(new DateTime($m['dateDeceased']));
-                            } catch (Exception $e) {
-                                $this->addWarning("Invalid dateDeceased for person '{$person->getFirstName()} {$person->getLastName()}': {$e->getMessage()}");
-                                $logger->warning('Person dateDeceased parse failed', [
-                                    'dateDeceased' => $m['dateDeceased'] ?? null,
-                                    'error' => $e->getMessage(),
-                                ]);
-                            }
-                        }
+                        $this->applyDemoPersonStatus($person, $m, $today);
                         $person->save();
                         $this->personMap[$person->getId()] = $person;
                         $this->importResult['imported']['people']++;
@@ -502,6 +495,7 @@ class DemoDataService
                 if (!empty($m['selfRegistered'])) {
                     $person->setEnteredBy(Person::SELF_REGISTER);
                 }
+                $this->applyDemoPersonStatus($person, $m, $today);
                 $person->save();
                 $this->personMap[$person->getId()] = $person;
                 $this->importResult['imported']['people']++;
@@ -550,6 +544,24 @@ class DemoDataService
         }
         
         return $emailMap;
+    }
+
+    private function applyDemoPersonStatus(Person $person, array $m, DateTime $today): void
+    {
+        if (($m['active'] ?? true) === false) {
+            $person->setDateDeactivated($today);
+        }
+        if (!empty($m['dateDeceased'])) {
+            try {
+                $person->setDateDeceased(new DateTime($m['dateDeceased']));
+            } catch (Exception $e) {
+                $this->addWarning("Invalid dateDeceased for person '{$person->getFirstName()} {$person->getLastName()}': {$e->getMessage()}");
+                LoggerUtils::getAppLogger()->warning('Person dateDeceased parse failed', [
+                    'dateDeceased' => $m['dateDeceased'],
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        }
     }
 
     /**
