@@ -19,6 +19,12 @@ describe("Payment editor Ctrl+Enter shortcut (#8942)", () => {
         cy.get(".fund-amount").first().should("be.visible");
     });
 
+    afterEach(() => {
+        cy.get("@depositId").then((depositId) => {
+            cy.makePrivateAdminAPICall("DELETE", `/api/deposits/${depositId}`, {}, [200, 404]);
+        });
+    });
+
     function fillCashPayment(amount) {
         cy.get("#Method").select("CASH");
         cy.get("#FamilyID").invoke("val", "1");
