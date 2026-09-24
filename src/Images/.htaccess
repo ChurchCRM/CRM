@@ -18,15 +18,15 @@
 # SVG in Images/ would enable stored-XSS for any visitor. Photo.php excludes
 # SVG upload for the same reason.
 #
-# The four bundled ChurchCRM brand marks below are an explicit exception:
-# they are shipped in the release tarball (not user-uploaded) and have fixed
-# filenames. Do not add other SVG names here.
+# The bundled ChurchCRM brand marks below are an explicit exception: they are
+# shipped in the release tarball (not user-uploaded) and have fixed filenames.
+# Do not add other SVG names here.
 #
 # Allowed extensions (must stay in sync with ALLOWED_IMAGE_EXTENSIONS in
 # src/ChurchCRM/Backup/RestoreJob.php and the nginx location block in
 # docker/examples/nginx/default.conf):
 #   jpg, jpeg, png, gif, webp, ico, bmp, tiff, tif
-# plus the four bundled brand SVG filenames listed in the rewrite rules.
+# plus the bundled brand SVG filenames matched below.
 
 # ── 1. Disable PHP execution ─────────────────────────
 <IfModule mod_php.c>
@@ -54,10 +54,6 @@
     # Allow directories (needed for subdirectory traversal)
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
-
-    # Removed legacy marks → bundled SVGs (files deleted in this PR).
-    RewriteRule ^CRM_50x50\.png$ churchcrm-symbol-ink-blue.svg [L]
-    RewriteRule ^logo-churchcrm-350\.jpg$ churchcrm-logo-ink-blue.svg [L]
 
     # Bundled brand marks only — exact filenames, not a general SVG allowlist.
     RewriteCond %{REQUEST_URI} /Images/churchcrm-(logo|symbol)-(ink|paper)-blue\.svg$ [NC]
