@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 17:41+0000\n"
+"POT-Creation-Date: 2026-09-23 18:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,6 +152,10 @@ msgstr ""
 
 #, php-format
 msgid "%s Fundraisers"
+msgstr ""
+
+#, php-format
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr ""
 
 #, php-format
@@ -3909,6 +3913,9 @@ msgid "ENE"
 msgstr ""
 
 msgid "ESE"
+msgstr ""
+
+msgid "Each address must start with https://"
 msgstr ""
 
 #. plugin:holidays:section:2:content
@@ -8759,6 +8766,9 @@ msgid "Optional — record who is checking this person out (e.g. a parent pickin
 msgstr ""
 
 msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr ""
+
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
 msgstr ""
 
 msgid "Optional. URL for your church website."
