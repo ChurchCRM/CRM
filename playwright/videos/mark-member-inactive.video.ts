@@ -10,10 +10,10 @@ import { humanClick, humanPause, humanType } from '../support/human';
  * field — see src/skin/js/PersonView.js's activateDeactivatePerson handler,
  * which POSTs to /person/{id}/activate/false behind a bootbox confirm.
  *
- * "Anthony Anderson" (src/admin/demo/people.json's Anderson family,
- * Overland Park) is used deliberately — not Scott/Garcia/Baker/Clark/
- * Whitfield, which other specs in this pipeline depend on staying in their
- * original demo state.
+ * "Joseph Hall" (src/admin/demo/people.json's Hall family — Joseph, not
+ * the other same-surname Hall family) has his own photo and is used
+ * deliberately — not Scott/Garcia/Baker/Clark/Whitfield/Davis, which other
+ * specs in this pipeline depend on staying in their original demo state.
  */
 test('mark-member-inactive', async ({ page }, testInfo) => {
   await page.goto('/people/list');
@@ -21,9 +21,9 @@ test('mark-member-inactive', async ({ page }, testInfo) => {
   await expect(rows.first()).toBeVisible({ timeout: 15000 });
   await humanPause(page, 500);
 
-  await humanType(page.locator('.dt-search input'), 'Anthony Anderson');
+  await humanType(page.locator('.dt-search input'), 'Joseph Hall');
   await humanPause(page, 800);
-  const targetRow = rows.filter({ hasText: 'Anthony Anderson' }).first();
+  const targetRow = rows.filter({ hasText: 'Joseph Hall' }).first();
   await expect(targetRow).toBeVisible({ timeout: 15000 });
   await humanClick(targetRow.locator('a').first());
   await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
@@ -43,7 +43,7 @@ test('mark-member-inactive', async ({ page }, testInfo) => {
   // stable regardless of the "OK" label's locale.
   const confirmDialog = page.locator('.bootbox');
   await expect(confirmDialog).toBeVisible({ timeout: 5000 });
-  await expect(confirmDialog).toContainText('Anthony Anderson');
+  await expect(confirmDialog).toContainText('Joseph Hall');
   await humanPause(page, 1500);
   await humanClick(page.locator('.bootbox-accept'));
 
