@@ -64,6 +64,27 @@ If marketing claims don't match product reality:
 
 ---
 
+## Hosted remote config — never prune External <!-- learned: 2026-09-22 -->
+
+`CentralServices` on master and shipped 7.7.0 fetches:
+
+- `https://raw.githubusercontent.com/ChurchCRM/CRM/External/approved-plugins.json`
+- `https://raw.githubusercontent.com/ChurchCRM/CRM/External/notifications.json`
+
+`External` is an orphan hosting branch (root JSON only). It will never have a PR into master. Repo-health Check 4 deleted it on 21 Sep 2026 (#9961). The registry 404'd, `ApprovedPluginRegistry` stored `[]`, and UI shard 2 timed out waiting for `#approvedPluginsList .btn-install-approved` (#9969).
+
+**Rules:**
+- Never delete `External` or `Notifications`.
+- Ruleset [23858586](https://github.com/ChurchCRM/CRM/rules/23858586) blocks deletion and force-push. A 422 on delete is success — stop.
+- Registry changes: PR with base `External`, edit root `approved-plugins.json`.
+- Keep `hello-world` on the allowlist until `community-plugin-lifecycle.spec.js` is retargeted.
+- Current allowlist: hello-world 1.0.1, meeting-outlines 1.0.2.
+- Last historical file before the prune: commit `d5902d02` / PR #8928.
+
+Agent skills: `.agents/skills/churchcrm/hosted-remote-config.md`, `plugin-registry.md`, `repo-health.md`.
+
+---
+
 ## Related Skills
 
 - [Plugin System](https://github.com/ChurchCRM/CRM/blob/master/.agents/skills/churchcrm/plugin-system.md) — How plugins define features
@@ -72,4 +93,4 @@ If marketing claims don't match product reality:
 
 ---
 
-Last updated: 2026-09-05
+Last updated: 2026-09-22

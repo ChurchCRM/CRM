@@ -120,10 +120,13 @@ $rsFamilies = RunQuery($sSQL);
 $sSQLFundCriteria = '';
 $fundParams = [];
 $fundTypes = '';
+// No fund selected means every fund in the chosen fiscal year: the fund
+// criteria stays empty and the letter text carries no fund clause.
+$fundCount = 0;
+$fundOnlyString = '';
 
 // Build parameterized criteria for funds (? placeholders bound in $fundParams)
 if (!empty($_POST['funds'])) {
-    $fundCount = 0;
     foreach ($_POST['funds'] as $fundID) {
         $fund[$fundCount++] = (int) InputUtils::legacyFilterInput($fundID, 'int');
     }
@@ -285,7 +288,10 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     if (mysqli_num_rows($rsPledges) === 0) {
         $curY += $summaryIntervalY;
-        $noPledgeString = SystemConfig::getValue('sReminderNoPledge') . '(' . $fundOnlyString . ')';
+        $noPledgeString = SystemConfig::getValue('sReminderNoPledge');
+        if ($fundOnlyString !== '') {
+            $noPledgeString .= '(' . $fundOnlyString . ')';
+        }
         $pdf->writeAt($summaryDateX, $curY, $noPledgeString);
         $curY += 2 * $summaryIntervalY;
     } else {
