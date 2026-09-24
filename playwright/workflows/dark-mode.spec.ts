@@ -49,12 +49,13 @@ test.describe('Dark Mode', () => {
   });
 
   test('people-family-overview-dark', async ({ page }, testInfo) => {
-    // Same Scott family as people-family.spec.ts's people-family-overview —
-    // every member has a real demo photo and the address is geocoded, so
-    // the dark variant shows the same fully-populated photos. The map
-    // itself is below the fold at this viewport (see that spec's comment
-    // and marketing-visuals-pipeline.md's "Map visibility" note) — the
-    // "Geocoded" badge, not the rendered map, is what's actually in frame.
+    // Same Baker family as people-family.spec.ts's people-family-overview —
+    // both parents and the family itself have real demo photos and the
+    // address is geocoded, so the dark variant shows the same
+    // fully-populated photos. The map itself is below the fold at this
+    // viewport (see that spec's comment and marketing-visuals-pipeline.md's
+    // "Map visibility" note) — the "Geocoded" badge, not the rendered map,
+    // is what's actually in frame.
     await page.goto('/people/family');
     const rows = page.locator('#families tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
@@ -66,15 +67,17 @@ test.describe('Dark Mode', () => {
       await expect(rows.first()).toBeVisible({ timeout: 15000 });
       await humanPause(page, 500);
 
-      // With 62 demo families, "Scott" isn't on the default first page —
+      // With 62 demo families, "Baker" isn't on the default first page —
       // search for it (same DataTables 2.x `.dt-search input`, not the
-      // 1.x `#{table}_filter` wrapper, as people-family.spec.ts).
-      await humanType(page.locator('.dt-search input'), 'Scott');
+      // 1.x `#{table}_filter` wrapper, as people-family.spec.ts). Two
+      // families are named "Baker"; the unique contact email picks the one
+      // with the family portrait, same as that spec.
+      await humanType(page.locator('.dt-search input'), 'family.baker7');
       await humanPause(page, 500);
 
-      const scottRow = rows.filter({ hasText: 'Scott' }).first();
-      await expect(scottRow).toBeVisible({ timeout: 15000 });
-      await humanClick(scottRow.locator('td').first().locator('a').first());
+      const bakerRow = rows.filter({ hasText: 'family.baker7' }).first();
+      await expect(bakerRow).toBeVisible({ timeout: 15000 });
+      await humanClick(bakerRow.locator('td').first().locator('a').first());
       await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
       await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
       await humanPause(page, 1000);

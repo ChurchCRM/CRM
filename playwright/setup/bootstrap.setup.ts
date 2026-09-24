@@ -6,8 +6,19 @@ import { captureScreen } from '../support/capture';
 import { ADMIN_INITIAL_PASSWORD, ADMIN_USERNAME, ADMIN_WORKING_PASSWORD, CHURCH_NAME, DB } from '../support/env';
 import { humanClick, humanPause, humanSelect, humanType } from '../support/human';
 import { dismissSystemNotifications } from '../support/marketing-clean';
+import { uploadDemoPhoto } from '../support/photo';
 
 const STORAGE_STATE_PATH = path.join(__dirname, '..', '.auth', 'admin.json');
+
+// The very first admin account, created by the setup wizard itself before
+// the demo importer ever runs — it's always Person id 1 on the fresh,
+// empty database this pipeline seeds (docker:ci:new-system). It has no
+// entry in src/admin/demo/people.json to pull a photo from like everyone
+// else, so every screenshot's top-right avatar would otherwise show
+// initials — upload one directly via the same API the app's own
+// photo-uploader widget calls.
+const ADMIN_PERSON_ID = 1;
+const ADMIN_PHOTO = path.join(__dirname, '..', '..', 'src', 'admin', 'demo', 'images', 'people', 'andrew.adams.jpg');
 
 /**
  * These two tests are real, recorded workflows — not plumbing — because
@@ -111,6 +122,8 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   await humanPause(page, 300);
   await page.locator('input[name=Password]').press('Enter');
   await page.waitForURL((url) => !url.pathname.includes('/session/begin'), { timeout: 15000 });
+
+  await uploadDemoPhoto(page, 'person', ADMIN_PERSON_ID, ADMIN_PHOTO);
 
   await page.goto('/admin/get-started');
   await humanPause(page, 500);
