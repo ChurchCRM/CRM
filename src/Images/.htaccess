@@ -28,7 +28,7 @@
 #   jpg, jpeg, png, gif, webp, ico, bmp, tiff, tif
 # plus the four bundled brand SVG filenames listed in the rewrite rules.
 
-# ── 1. Disable PHP execution ─────────────────────────────────
+# ── 1. Disable PHP execution ─────────────────────────────
 <IfModule mod_php.c>
     php_flag engine off
 </IfModule>
@@ -47,13 +47,16 @@
     SetHandler default-handler
 </FilesMatch>
 
-# ── 2. Extension allowlist — block everything except safe image types ─────────
+# ── 2. Extension allowlist — block everything except safe image types ─────
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
     # Allow directories (needed for subdirectory traversal)
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
+
+    # Old sidebar PNG → bundled symbol (file was removed in this PR).
+    RewriteRule ^CRM_50x50\.png$ churchcrm-symbol-ink-blue.svg [L]
 
     # Bundled brand marks only — exact filenames, not a general SVG allowlist.
     RewriteCond %{REQUEST_URI} /Images/churchcrm-(logo|symbol)-(ink|paper)-blue\.svg$ [NC]
