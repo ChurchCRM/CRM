@@ -3450,7 +3450,7 @@
           "firstName": "Jennifer",
           "middleName": null,
           "lastName": "Campbell",
-          "birthYear": 2002,
+          "birthYear": 1996,
           "gender": "female",
           "email": "jennifer.campbell@demo.churchcrm.io",
           "phone": "(598) 564-6812",
@@ -3462,6 +3462,23 @@
           "maidenName": "Campbell",
           "familyRole": 2,
           "photo": "jennifer.campbell.jpg"
+        },
+        {
+          "title": null,
+          "firstName": "Ethan",
+          "middleName": null,
+          "lastName": "Campbell",
+          "birthYear": 2016,
+          "gender": "male",
+          "email": "ethan.campbell@demo.churchcrm.io",
+          "phone": null,
+          "notes": [],
+          "createdAt": "2024-02-07T08:00:00.000Z",
+          "birthMonth": 6,
+          "birthDay": 14,
+          "classification": "Member",
+          "maidenName": null,
+          "familyRole": 3
         }
       ],
       "notes": [],
