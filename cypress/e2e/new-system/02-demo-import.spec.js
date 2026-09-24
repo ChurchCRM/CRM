@@ -141,9 +141,10 @@ describe('02 - Demo Data Import', () => {
 
         it('should import dateDeceased as deceased', () => {
             cy.request('/people/list').its('body').then((html) => {
-                const row = Cypress.$(html).find('#members tbody tr').filter((_, tr) => tr.textContent.includes('Emily Clark'));
-                expect(row).to.have.length(1);
-                expect(row.find('.fa-cross')).to.have.length(1);
+                ['Emily Clark', 'Daniel Johnson'].forEach((name) => {
+                    expect(html).to.match(new RegExp(`>${name}</a>\\s*<span[^>]*title="Deceased"`));
+                });
+                expect(html).not.to.match(/>Charles Green<\/a>\s*<span[^>]*title="Deceased"/);
             });
         });
 
