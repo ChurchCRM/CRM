@@ -20,9 +20,14 @@ test.describe('People & Families', () => {
     await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
     await humanPause(page, 1000);
 
+    // Not "...and a geocoded map": family-view.php stacks the photo above
+    // the Address card in a narrow right column, so the map itself renders
+    // below the fold at this viewport regardless of family — the
+    // "Geocoded" badge is what's actually visible in frame. See
+    // marketing-visuals-pipeline.md's "Map visibility" note.
     await captureScreen(page, testInfo, {
       name: 'people-family-overview',
-      purpose: 'Show how ChurchCRM organizes people and families, with member photos and a geocoded map',
+      purpose: 'Show how ChurchCRM organizes people and families, with member photos and a geocoded address',
     });
   });
 

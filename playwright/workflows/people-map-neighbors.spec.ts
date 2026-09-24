@@ -8,8 +8,8 @@ test.describe('Maps', () => {
     // "Find Neighbors" (src/people/routes/map.php's getMapNeighborsView) —
     // nearest-family search from a given family, with a distance-banded
     // Leaflet map and results table. Opened via the Scott family's profile
-    // link (same family as people-family-overview.spec.ts — real demo photo
-    // + geocoded address, see src/admin/demo/people.json) rather than
+    // link (same family as people-family-overview.spec.ts — real member
+    // photos + geocoded address, see src/admin/demo/people.json) rather than
     // building the URL directly, since the deep link's familyId is only
     // known after the demo import assigns it. That query param also makes
     // webpack/people/map-neighbors.js auto-run the search on load (see its

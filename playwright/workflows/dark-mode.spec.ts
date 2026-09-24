@@ -51,7 +51,10 @@ test.describe('Dark Mode', () => {
   test('people-family-overview-dark', async ({ page }, testInfo) => {
     // Same Scott family as people-family.spec.ts's people-family-overview —
     // every member has a real demo photo and the address is geocoded, so
-    // the dark variant shows the same fully-populated photos + map.
+    // the dark variant shows the same fully-populated photos. The map
+    // itself is below the fold at this viewport (see that spec's comment
+    // and marketing-visuals-pipeline.md's "Map visibility" note) — the
+    // "Geocoded" badge, not the rendered map, is what's actually in frame.
     await page.goto('/people/family');
     const rows = page.locator('#families tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
@@ -78,7 +81,7 @@ test.describe('Dark Mode', () => {
 
       await captureScreen(page, testInfo, {
         name: 'people-family-overview-dark',
-        purpose: 'Show family profile with member photos and geocoded map in dark mode',
+        purpose: 'Show family profile with member photos and a geocoded address in dark mode',
       });
     } finally {
       await setThemeMode(page, 'default');
