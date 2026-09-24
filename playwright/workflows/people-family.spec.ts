@@ -89,7 +89,7 @@ test.describe('People & Families', () => {
   });
 
   // Inactive and deceased subjects come from src/admin/demo/people.json
-  // (Mark King: active false; Richard Harris: dateDeceased; Campbell:
+  // (Mark King: active false; Daniel Johnson: dateDeceased; Campbell:
   // inactive family) so screenshots never mutate data another spec reads.
   test('person-inactive-profile', async ({ page }, testInfo) => {
     await page.goto('/people/list?personActiveStatus=inactive');
@@ -115,7 +115,7 @@ test.describe('People & Families', () => {
     // The people list always opens filtered to Living, so read the profile
     // link from the server-rendered rows instead.
     const listHtml = await (await page.request.get('/people/list')).text();
-    const profilePath = listHtml.match(/href="([^"]*\/people\/view\/\d+)" class="fw-bold">Richard Harris</)?.[1];
+    const profilePath = listHtml.match(/href="([^"]*\/people\/view\/\d+)" class="fw-bold">Daniel Johnson</)?.[1];
     expect(profilePath).toBeTruthy();
 
     await page.goto(profilePath!);

@@ -616,7 +616,7 @@
           "firstName": "Kenneth",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2007,
+          "birthYear": 1968,
           "gender": "male",
           "email": "kenneth.johnson22@demo.churchcrm.io",
           "phone": null,
@@ -626,7 +626,7 @@
           "birthDay": 24,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 3,
+          "familyRole": 2,
           "photo": "kenneth.johnson22.jpg"
         },
         {
@@ -634,7 +634,8 @@
           "firstName": "Daniel",
           "middleName": null,
           "lastName": "Johnson",
-          "birthYear": 2009,
+          "dateDeceased": "2025-11-02",
+          "birthYear": 1941,
           "gender": "male",
           "email": "daniel.johnson@demo.churchcrm.io",
           "phone": null,
@@ -644,7 +645,7 @@
           "birthDay": 25,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 3,
+          "familyRole": 4,
           "photo": "daniel.johnson.jpg"
         }
       ],
@@ -2508,8 +2509,7 @@
           "birthDay": 12,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1,
-          "photo": "ryan.rodriguez.jpg"
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -3904,7 +3904,6 @@
           "firstName": "Richard",
           "middleName": null,
           "lastName": "Harris",
-          "dateDeceased": "2025-11-02",
           "birthYear": 1995,
           "gender": "male",
           "email": "richard.harris@demo.churchcrm.io",
@@ -3915,8 +3914,7 @@
           "birthDay": 14,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1,
-          "photo": "richard.harris.jpg"
+          "familyRole": 1
         },
         {
           "title": "Mrs",
@@ -3933,8 +3931,7 @@
           "birthDay": 15,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2,
-          "photo": "nancy.harris.jpg"
+          "familyRole": 2
         }
       ],
       "notes": [],
