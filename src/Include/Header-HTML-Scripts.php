@@ -27,3 +27,33 @@ use ChurchCRM\Utils\InputUtils;
 <script src="<?= SystemURLs::assetVersioned('/skin/js/card-widgets.js') ?>"></script>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment.min.js') ?>"></script>
+
+<?php
+// Header.php still references the removed CRM_50x50.png until that file is
+// switched to BrandLogo.php. Replace it client-side so the sidebar shows
+// the current brand mark in both themes.
+$brandRoot = SystemURLs::getRootPath();
+?>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  (function () {
+    var root = <?= InputUtils::jsonEncodeForScript($brandRoot) ?>;
+    function brandSrc() {
+      var dark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+      return root + (dark
+        ? '/Images/churchcrm-symbol-paper-blue.svg'
+        : '/Images/churchcrm-symbol-ink-blue.svg');
+    }
+    function swap() {
+      document.querySelectorAll('img[src*="CRM_50x50.png"]').forEach(function (img) {
+        img.src = brandSrc();
+        img.classList.add('crm-brand-logo');
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', swap);
+    } else {
+      swap();
+    }
+    document.addEventListener('CRM.theme.changed', swap);
+  }());
+</script>
