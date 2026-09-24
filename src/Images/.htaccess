@@ -12,18 +12,23 @@
 #      this provides defence-in-depth: a file that slips through the upload
 #      check still cannot be served to a browser.
 #
-# SVG is intentionally excluded from the allowlist: SVG files served as
-# image/svg+xml can execute embedded <script> tags in browsers. Static files
-# served directly by Apache do not carry the CSP headers sent by PHP responses,
-# so an SVG in Images/ would enable stored-XSS for any visitor. Photo.php
-# excludes SVG upload for the same reason.
+# SVG is excluded from the general allowlist: SVG files served as image/svg+xml
+# can execute embedded <script> tags in browsers. Static files served directly
+# by Apache do not carry the CSP headers sent by PHP responses, so an arbitrary
+# SVG in Images/ would enable stored-XSS for any visitor. Photo.php excludes
+# SVG upload for the same reason.
+#
+# The four bundled ChurchCRM brand marks below are an explicit exception:
+# they are shipped in the release tarball (not user-uploaded) and have fixed
+# filenames. Do not add other SVG names here.
 #
 # Allowed extensions (must stay in sync with ALLOWED_IMAGE_EXTENSIONS in
 # src/ChurchCRM/Backup/RestoreJob.php and the nginx location block in
 # docker/examples/nginx/default.conf):
 #   jpg, jpeg, png, gif, webp, ico, bmp, tiff, tif
+# plus the four bundled brand SVG filenames listed in the rewrite rules.
 
-# ── 1. Disable PHP execution ─────────────────────────────────────────────────
+# ── 1. Disable PHP execution ─────────────────────────────────
 <IfModule mod_php.c>
     php_flag engine off
 </IfModule>
@@ -50,11 +55,15 @@
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
+    # Bundled brand marks only — exact filenames, not a general SVG allowlist.
+    RewriteCond %{REQUEST_URI} /Images/churchcrm-(logo|symbol)-(ink|paper)-blue\.svg$ [NC]
+    RewriteRule ^ - [L]
+
     # Allow safe image extensions (case-insensitive via [NC] flag)
     RewriteCond %{REQUEST_URI} \.(jpg|jpeg|png|gif|webp|ico|bmp|tiff|tif)$ [NC]
     RewriteRule ^ - [L]
 
-    # Block everything else (including extension-less files and SVG)
+    # Block everything else (including extension-less files and other SVG)
     RewriteRule ^ - [F,L]
 </IfModule>
 
