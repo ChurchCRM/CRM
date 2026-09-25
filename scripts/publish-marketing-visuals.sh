@@ -38,16 +38,26 @@ echo ""
 # site. See README.md "Screenshots are stored in static/images/ and
 # static/images/screenshots/".
 #
-# Metadata JSON sidecars (playwright/artifacts/metadata/) are
-# deliberately NOT published — nothing in the destination repo reads
-# them. Hugo can't load JSON sidecars per-image at template time
-# without extra plumbing, so screenshots/single.html hand-copies each
-# shot's title/purpose instead (see that file's own comment). They
+# manifest.json and screenshot-metadata.json are published to data/ so
+# the website can load screenshot metadata dynamically without manual
+# template updates. Per-image metadata JSON sidecars (metadata/*.json)
 # stay CRM-local for pipeline debugging only.
 # ─────────────────────────────────────────────────────────────
 echo "📁 Publishing to ChurchCRM.io..."
 mkdir -p "$CHURCHCRM_IO_DIR/static/images/screenshots"
 mkdir -p "$CHURCHCRM_IO_DIR/static/images/videos"
+mkdir -p "$CHURCHCRM_IO_DIR/data"
+
+# Copy manifest and metadata for dynamic gallery loading
+if [ -f "$ARTIFACTS_DIR/manifest.json" ]; then
+  cp "$ARTIFACTS_DIR/manifest.json" "$CHURCHCRM_IO_DIR/data/manifest.json"
+  echo "   ✓ Manifest → data/manifest.json"
+fi
+
+if [ -f "$CRM_DIR/playwright/screenshot-metadata.json" ]; then
+  cp "$CRM_DIR/playwright/screenshot-metadata.json" "$CHURCHCRM_IO_DIR/data/screenshot-metadata.json"
+  echo "   ✓ Metadata → data/screenshot-metadata.json"
+fi
 
 if [ -d "$ARTIFACTS_DIR/screenshots" ]; then
   cp -r "$ARTIFACTS_DIR/screenshots"/* "$CHURCHCRM_IO_DIR/static/images/screenshots/" 2>/dev/null || true
@@ -64,9 +74,10 @@ echo "✅ Marketing visuals published to ChurchCRM.io!"
 echo ""
 echo "Next steps:"
 echo "   cd $CHURCHCRM_IO_DIR"
-echo "   git add static/images/screenshots static/images/videos"
+echo "   git add data/manifest.json data/screenshot-metadata.json static/images/screenshots static/images/videos"
 echo "   git commit -m 'chore: update product screenshots and videos'"
 echo "   git push"
 echo ""
-echo "Reference these from marketing/docs content as:"
+echo "The manifest.json enables dynamic screenshot gallery loading."
+echo "Reference images from marketing/docs content as:"
 echo "   https://churchcrm.io/images/screenshots/<device>/<name>.png"
