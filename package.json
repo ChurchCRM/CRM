@@ -97,6 +97,7 @@
         "docker:ci:new-system:down": "docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system down -v",
         "docker:ci:new-system:subdir:start": "rm -f src/Include/Config.php && docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system up -d --build",
         "docker:ci:new-system:subdir:down": "docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system down -v",
+        "docker:ci:new-system:reset:db": "docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system exec -T database sh -c 'MYSQL_PWD=\"$MYSQL_PASSWORD\" exec mysql -u\"$MYSQL_USER\" \"$MYSQL_DATABASE\"' < cypress/data/seed.sql",
         "docker:dev:login:web": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash",
         "docker:dev:login:db": "docker compose -f docker/docker-compose.dev.yaml exec database bash",
         "docker:dev:build": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"source /root/.nvm/nvm.sh && cd /home/ChurchCRM && npm ci && npm run build\"",
