@@ -25,6 +25,8 @@
 #
 # Usage: ./scripts/capture-all-locales.sh [locale ...]
 #   Defaults to all 8 CRM #10048 locales if none are given.
+#   Optional environment variables:
+#     BROWSER_CHANNEL=chrome  (to use Chrome instead of Chromium)
 
 set -euo pipefail
 
@@ -36,6 +38,9 @@ if [ "$#" -gt 0 ]; then
 else
   LOCALES=(en es pt zh fr ru de ar)
 fi
+
+# Optional browser channel (e.g., 'chrome')
+BROWSER_CHANNEL="${BROWSER_CHANNEL:-}"
 
 FIRST_LOCALE="${LOCALES[0]}"
 REMAINING_LOCALES=("${LOCALES[@]:1}")
@@ -51,10 +56,13 @@ echo "▶ [1/${#LOCALES[@]}] ${FIRST_LOCALE} — full install + capture"
 rm -rf playwright/artifacts/
 npm run composer:install
 npm run build:js
-npm run docker:ci:new-system:down || true
 npm run docker:ci:new-system:start
 npm run build:signatures
-CHURCHCRM_LOCALE="$FIRST_LOCALE" npm run marketing:screenshots
+if [ -n "$BROWSER_CHANNEL" ]; then
+  CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npm run marketing:screenshots
+else
+  CHURCHCRM_LOCALE="$FIRST_LOCALE" npm run marketing:screenshots
+fi
 npm run marketing:videos
 
 # ── Passes 2..N: re-apply locale, re-capture, no reinstall ───────────────
@@ -62,14 +70,27 @@ i=2
 for locale in "${REMAINING_LOCALES[@]}"; do
   echo ""
   echo "▶ [${i}/${#LOCALES[@]}] ${locale} — locale switch + capture (no reinstall)"
-  CHURCHCRM_LOCALE="$locale" npx playwright test \
-    --config=playwright/playwright.config.ts \
-    --project=locale-set
+  if [ -n "$BROWSER_CHANNEL" ]; then
+    CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test \
+      --config=playwright/playwright.config.ts \
+      --project=locale-set
+  else
+    CHURCHCRM_LOCALE="$locale" npx playwright test \
+      --config=playwright/playwright.config.ts \
+      --project=locale-set
+  fi
 
-  CHURCHCRM_LOCALE="$locale" npx playwright test \
-    --config=playwright/playwright.config.ts \
-    --project=screenshots \
-    --no-deps
+  if [ -n "$BROWSER_CHANNEL" ]; then
+    CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test \
+      --config=playwright/playwright.config.ts \
+      --project=screenshots \
+      --no-deps
+  else
+    CHURCHCRM_LOCALE="$locale" npx playwright test \
+      --config=playwright/playwright.config.ts \
+      --project=screenshots \
+      --no-deps
+  fi
   i=$((i + 1))
 done
 
