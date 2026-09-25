@@ -148,7 +148,7 @@ test.describe('People & Families', () => {
     expect(profilePath).toBeTruthy();
 
     await page.goto(profilePath!);
-    await expect(page.locator('.badge', { hasText: 'Deceased' })).toBeVisible({ timeout: 10000 });
+    await expect(page.locator('.badge', { has: page.locator('.fa-cross') })).toBeVisible({ timeout: 10000 });
     await humanPause(page, 800);
 
     await captureScreen(page, testInfo, {

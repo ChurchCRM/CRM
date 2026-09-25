@@ -16,7 +16,7 @@ test.describe('Communication', () => {
     // "SMTP Not Configured", which is not a usable marketing shot.
     await gotoFirstActiveGroup(page);
 
-    await humanClick(page.locator('#group-view-toolbar .dropdown-toggle', { hasText: 'Cart' }));
+    await humanClick(page.locator('#group-view-toolbar .dropdown-toggle', { has: page.locator('.fa-cart-plus') }));
     await page.locator('#addAllToCart').waitFor({ state: 'visible', timeout: 5000 });
     await humanClick(page.locator('#addAllToCart'));
     await humanPause(page, 500);
