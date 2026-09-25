@@ -41,7 +41,7 @@ test.describe('Events & Attendance', () => {
     await humanSelect(eventSelector, { value: eventValue });
 
     await page.waitForURL(/\/event\/checkin\/\d+/, { timeout: 15000 });
-    await expect(page.getByText('Event:', { exact: false })).toBeVisible({ timeout: 10000 });
+    await expect(page.locator('.card', { has: page.locator('.fa-calendar-check') })).toBeVisible({ timeout: 10000 });
     await humanPause(page, 600);
 
     await captureScreen(page, testInfo, {
