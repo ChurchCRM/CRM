@@ -1,4 +1,4 @@
-name: "Marketing: visuals check"
+name: "Marketing: generate and publish"
 
 # Manually run the marketing screenshot/video pipeline (npm run marketing)
 # end-to-end against a chosen branch — installs its own PHP/Composer and
@@ -156,16 +156,16 @@ jobs:
       # git's index/HEAD still holds whatever was last committed on this
       # ref — `git add` + `git diff --cached` is exactly the delta between
       # the two.
-      - name: Detect changes to committed marketing visuals
+      - name: Detect changes to committed marketing visuals and manifest
         id: changes
         run: |
-          git add -A -- playwright/artifacts/screenshots playwright/artifacts/videos
-          if git diff --cached --quiet -- playwright/artifacts/screenshots playwright/artifacts/videos; then
-            echo "Committed marketing visuals are up to date."
+          git add -A -- playwright/artifacts/screenshots playwright/artifacts/videos playwright/artifacts/manifest.json
+          if git diff --cached --quiet -- playwright/artifacts/screenshots playwright/artifacts/videos playwright/artifacts/manifest.json; then
+            echo "Committed marketing visuals and manifest are up to date."
             echo "has_changes=false" >> "$GITHUB_OUTPUT"
           else
-            echo "Committed marketing visuals are out of date. Changed files:"
-            git diff --cached --stat -- playwright/artifacts/screenshots playwright/artifacts/videos
+            echo "Committed marketing visuals and manifest are out of date. Changed files:"
+            git diff --cached --stat -- playwright/artifacts/screenshots playwright/artifacts/videos playwright/artifacts/manifest.json
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -174,7 +174,7 @@ jobs:
         env:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
-          echo "::error::Marketing visuals committed on '$BRANCH_NAME' are out of date with the current code. Run 'npm run marketing' locally and commit the updated files under playwright/artifacts/screenshots and playwright/artifacts/videos."
+          echo "::error::Marketing visuals and manifest committed on '$BRANCH_NAME' are out of date with the current code. Run 'npm run marketing' locally and commit the updated files under playwright/artifacts/screenshots, playwright/artifacts/videos, and playwright/artifacts/manifest.json."
           exit 1
 
       # Stage 3 runs on a separate, fresh runner with no access to this
@@ -182,9 +182,9 @@ jobs:
       # to open the PR — packaged as one archive to keep the up/download
       # step (and the actions/upload-artifact path-flattening it would
       # otherwise do with two directory inputs) simple.
-      - name: Package updated visuals for the PR-create stage
+      - name: Package updated visuals and manifest for the PR-create stage
         if: github.ref_name == github.event.repository.default_branch && steps.changes.outputs.has_changes == 'true'
-        run: tar -czf visuals-update.tar.gz playwright/artifacts/screenshots playwright/artifacts/videos
+        run: tar -czf visuals-update.tar.gz playwright/artifacts/screenshots playwright/artifacts/videos playwright/artifacts/manifest.json
 
       - name: Upload updated visuals for PR creation
         if: github.ref_name == github.event.repository.default_branch && steps.changes.outputs.has_changes == 'true'
@@ -245,6 +245,7 @@ jobs:
           add-paths: |
             playwright/artifacts/screenshots
             playwright/artifacts/videos
+            playwright/artifacts/manifest.json
           commit-message: |
             chore(marketing): update marketing visuals
 
