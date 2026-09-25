@@ -28,17 +28,22 @@
 #   Optional environment variables:
 #     BROWSER_CHANNEL=chrome  (to use Chrome instead of Chromium)
 
+#!/bin/bash
 set -euo pipefail
 
 # Ensure all output is unbuffered and visible immediately
 export PYTHONUNBUFFERED=1
-exec 1> >(tee -a /dev/stderr)
+
+# Function to log and execute commands
+run_step() {
+  local step_name="$1"
+  shift
+  echo "  ↳ $step_name" >&2
+  "$@" || { echo "❌ $step_name failed" >&2; exit 1; }
+}
 
 CRM_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$CRM_DIR"
-
-# Trap to log exits
-trap 'echo "❌ Script exited with status $?" >&2' EXIT
 
 if [ "$#" -gt 0 ]; then
   LOCALES=("$@")
@@ -52,81 +57,59 @@ BROWSER_CHANNEL="${BROWSER_CHANNEL:-}"
 FIRST_LOCALE="${LOCALES[0]}"
 REMAINING_LOCALES=("${LOCALES[@]:1}")
 
-echo "📸 CRM #10048 — capturing ${#LOCALES[@]} locale(s): ${LOCALES[*]}"
-echo ""
+echo "📸 CRM #10048 — capturing ${#LOCALES[@]} locale(s): ${LOCALES[*]}" >&2
+echo "" >&2
 
 # ── Pass 1: full install + first locale ──────────────────────────────────
 # Same step chain as the `marketing` script in package.json, minus its
 # trailing marketing:check/marketing:manifest — those run once at the end
 # below, after every locale has captured, not after just the first.
-echo "▶ [1/${#LOCALES[@]}] ${FIRST_LOCALE} — full install + capture"
+echo "▶ [1/${#LOCALES[@]}] ${FIRST_LOCALE} — full install + capture" >&2
 
-echo "  ↳ Removing old artifacts..."
-rm -rf playwright/artifacts/
+run_step "Removing old artifacts" rm -rf playwright/artifacts/
+run_step "Installing Composer dependencies" npm run composer:install
+run_step "Building JavaScript" npm run build:js
+run_step "Starting Docker CI environment" npm run docker:ci:new-system:start
+run_step "Building signatures" npm run build:signatures
 
-echo "  ↳ Installing Composer dependencies..."
-npm run composer:install || { echo "❌ composer:install failed"; exit 1; }
-
-echo "  ↳ Building JavaScript..."
-npm run build:js || { echo "❌ build:js failed"; exit 1; }
-
-echo "  ↳ Starting Docker CI environment..."
-npm run docker:ci:new-system:start || { echo "❌ docker:ci:new-system:start failed"; exit 1; }
-
-echo "  ↳ Building signatures..."
-npm run build:signatures || { echo "❌ build:signatures failed"; exit 1; }
-
-echo "  ↳ Capturing marketing screenshots for ${FIRST_LOCALE}..."
+echo "  ↳ Capturing marketing screenshots for ${FIRST_LOCALE}..." >&2
 if [ -n "$BROWSER_CHANNEL" ]; then
-  CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npm run marketing:screenshots || { echo "❌ marketing:screenshots failed"; exit 1; }
+  run_step "marketing:screenshots (${FIRST_LOCALE})" env CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npm run marketing:screenshots
 else
-  CHURCHCRM_LOCALE="$FIRST_LOCALE" npm run marketing:screenshots || { echo "❌ marketing:screenshots failed"; exit 1; }
+  run_step "marketing:screenshots (${FIRST_LOCALE})" env CHURCHCRM_LOCALE="$FIRST_LOCALE" npm run marketing:screenshots
 fi
 
-echo "  ↳ Generating marketing videos..."
-npm run marketing:videos || { echo "❌ marketing:videos failed"; exit 1; }
+run_step "Generating marketing videos" npm run marketing:videos
 
 # ── Passes 2..N: re-apply locale, re-capture, no reinstall ───────────────
 i=2
 for locale in "${REMAINING_LOCALES[@]}"; do
-  echo ""
-  echo "▶ [${i}/${#LOCALES[@]}] ${locale} — locale switch + capture (no reinstall)"
+  echo "" >&2
+  echo "▶ [${i}/${#LOCALES[@]}] ${locale} — locale switch + capture (no reinstall)" >&2
 
-  echo "  ↳ Switching to locale: ${locale}..."
   if [ -n "$BROWSER_CHANNEL" ]; then
-    CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test \
-      --config=playwright/playwright.config.ts \
-      --project=locale-set || { echo "❌ locale-set for ${locale} failed"; exit 1; }
+    run_step "Switching to locale: ${locale}" env CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test --config=playwright/playwright.config.ts --project=locale-set
   else
-    CHURCHCRM_LOCALE="$locale" npx playwright test \
-      --config=playwright/playwright.config.ts \
-      --project=locale-set || { echo "❌ locale-set for ${locale} failed"; exit 1; }
+    run_step "Switching to locale: ${locale}" env CHURCHCRM_LOCALE="$locale" npx playwright test --config=playwright/playwright.config.ts --project=locale-set
   fi
 
-  echo "  ↳ Capturing screenshots for ${locale}..."
   if [ -n "$BROWSER_CHANNEL" ]; then
-    CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test \
-      --config=playwright/playwright.config.ts \
-      --project=screenshots \
-      --no-deps || { echo "❌ screenshots for ${locale} failed"; exit 1; }
+    run_step "Capturing screenshots for ${locale}" env CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps
   else
-    CHURCHCRM_LOCALE="$locale" npx playwright test \
-      --config=playwright/playwright.config.ts \
-      --project=screenshots \
-      --no-deps || { echo "❌ screenshots for ${locale} failed"; exit 1; }
+    run_step "Capturing screenshots for ${locale}" env CHURCHCRM_LOCALE="$locale" npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps
   fi
   i=$((i + 1))
 done
 
-echo ""
-echo "▶ Validating captures"
-npm run marketing:check || { echo "❌ marketing:check failed"; exit 1; }
+echo "" >&2
+echo "▶ Validating captures" >&2
+run_step "Validating captures" npm run marketing:check
 
-echo ""
-echo "▶ Regenerating manifest.json (once, across all locales)"
-npm run marketing:manifest || { echo "❌ marketing:manifest failed"; exit 1; }
+echo "" >&2
+echo "▶ Regenerating manifest.json (once, across all locales)" >&2
+run_step "Regenerating manifest" npm run marketing:manifest
 
-echo ""
-echo "✅ Done. Expect ~175 PNGs across 8 locales — verify with:"
-echo "   find playwright/artifacts/screenshots -name '*.png' | wc -l"
-echo "   node -e \"const m=require('./playwright/artifacts/manifest.json'); const byLocale={}; m.forEach(e=>byLocale[e.locale]=(byLocale[e.locale]||0)+1); console.log(byLocale)\""
+echo "" >&2
+echo "✅ Done. Expect ~175 PNGs across 8 locales — verify with:" >&2
+echo "   find playwright/artifacts/screenshots -name '*.png' | wc -l" >&2
+echo "   node -e \"const m=require('./playwright/artifacts/manifest.json'); const byLocale={}; m.forEach(e=>byLocale[e.locale]=(byLocale[e.locale]||0)+1); console.log(byLocale)\"" >&2
