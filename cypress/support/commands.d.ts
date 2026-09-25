@@ -128,6 +128,20 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * Effective value of a SystemConfig key, as a string
+     * @param name - Config key, e.g. "bEnableSelfRegistration"
+     */
+    getSystemConfig(name: string): Chainable<string>;
+
+    /**
+     * Restore a SystemConfig key to a value captured with getSystemConfig and verify it.
+     * Does nothing when value is undefined (the capture never ran).
+     * @param name - Config key
+     * @param value - Value captured before the spec changed it
+     */
+    restoreSystemConfig(name: string, value: string | undefined): Chainable<void>;
+
+    /**
      * Make API request with user privileges
      * @param method - HTTP method
      * @param url - Request URL
