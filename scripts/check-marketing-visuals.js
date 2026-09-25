@@ -35,19 +35,39 @@ const VIDEO_DEVICES = new Set(['recordings', 'setup']);
 const MIN_SCREENSHOT_BYTES = 5 * 1024;
 const MIN_VIDEO_BYTES = 20 * 1024;
 
+// See the matching comment in generate-marketing-manifest.js — same
+// CRM #10048 two-level nesting (metadata/<locale>/<device>/*.json for
+// screenshots), same flat exception for video-only project dirs.
 function listMetadataFiles(dir) {
   if (!fs.existsSync(dir)) {
     return [];
   }
   const out = [];
-  for (const device of fs.readdirSync(dir)) {
-    const deviceDir = path.join(dir, device);
-    if (!fs.statSync(deviceDir).isDirectory()) {
+  for (const entry of fs.readdirSync(dir)) {
+    const entryPath = path.join(dir, entry);
+    if (!fs.statSync(entryPath).isDirectory()) {
       continue;
     }
-    for (const file of fs.readdirSync(deviceDir)) {
-      if (file.endsWith('.json')) {
-        out.push({ device, file: path.join(deviceDir, file) });
+
+    if (VIDEO_DEVICES.has(entry)) {
+      for (const file of fs.readdirSync(entryPath)) {
+        if (file.endsWith('.json')) {
+          out.push({ locale: 'en', device: entry, file: path.join(entryPath, file) });
+        }
+      }
+      continue;
+    }
+
+    const locale = entry;
+    for (const device of fs.readdirSync(entryPath)) {
+      const deviceDir = path.join(entryPath, device);
+      if (!fs.statSync(deviceDir).isDirectory()) {
+        continue;
+      }
+      for (const file of fs.readdirSync(deviceDir)) {
+        if (file.endsWith('.json')) {
+          out.push({ locale, device, file: path.join(deviceDir, file) });
+        }
       }
     }
   }
@@ -75,7 +95,7 @@ function main() {
   const problems = [];
   let checked = 0;
 
-  for (const { device, file } of metadataFiles) {
+  for (const { locale, device, file } of metadataFiles) {
     const meta = JSON.parse(fs.readFileSync(file, 'utf8'));
 
     if (VIDEO_DEVICES.has(device)) {
@@ -86,8 +106,8 @@ function main() {
     } else if (meta.artifact) {
       checkFile(
         problems,
-        `screenshot (${meta.workflow})`,
-        path.join(ARTIFACTS_ROOT, 'screenshots', device, meta.artifact),
+        `screenshot (${meta.workflow}, ${locale})`,
+        path.join(ARTIFACTS_ROOT, 'screenshots', locale, device, meta.artifact),
         MIN_SCREENSHOT_BYTES
       );
       checked++;
