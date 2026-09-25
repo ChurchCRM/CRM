@@ -31,31 +31,66 @@ const MANIFEST_CSV_PATH = path.join(ARTIFACTS_ROOT, 'manifest.csv');
 const SCREENSHOT_METADATA_PATH = path.join(__dirname, '..', 'playwright', 'screenshot-metadata.json');
 const VIDEO_DEVICES = new Set(['recordings', 'setup']);
 
+/**
+ * CRM #10048 — metadata sidecars now live two directory levels deep for
+ * screenshot captures (metadata/<locale>/<device>/<name>.json) instead of
+ * one (metadata/<device>/<name>.json), because capture.ts nests artifacts
+ * under locale to avoid every locale overwriting the same {device}/{name}
+ * path. Video-only project dirs (setup/recordings) are unaffected — they
+ * never got a locale segment (see capture.ts) — so they're still read the
+ * old, flat way here.
+ */
 function listMetadataFiles(dir) {
   if (!fs.existsSync(dir)) {
     return [];
   }
   const out = [];
-  for (const device of fs.readdirSync(dir)) {
-    const deviceDir = path.join(dir, device);
-    if (!fs.statSync(deviceDir).isDirectory()) {
+  for (const entry of fs.readdirSync(dir)) {
+    const entryPath = path.join(dir, entry);
+    if (!fs.statSync(entryPath).isDirectory()) {
       continue;
     }
-    for (const file of fs.readdirSync(deviceDir)) {
-      if (file.endsWith('.json')) {
-        out.push({ device, file: path.join(deviceDir, file) });
+
+    if (VIDEO_DEVICES.has(entry)) {
+      // entry is a video-only device dir (setup/recordings) — flat, as before.
+      for (const file of fs.readdirSync(entryPath)) {
+        if (file.endsWith('.json')) {
+          out.push({ locale: 'en', device: entry, file: path.join(entryPath, file) });
+        }
+      }
+      continue;
+    }
+
+    // entry is a locale dir — descend one more level into each device.
+    const locale = entry;
+    for (const device of fs.readdirSync(entryPath)) {
+      const deviceDir = path.join(entryPath, device);
+      if (!fs.statSync(deviceDir).isDirectory()) {
+        continue;
+      }
+      for (const file of fs.readdirSync(deviceDir)) {
+        if (file.endsWith('.json')) {
+          out.push({ locale, device, file: path.join(deviceDir, file) });
+        }
       }
     }
   }
   return out;
 }
 
-function buildArtifactEntry(device, meta) {
+function buildArtifactEntry(locale, device, meta) {
   const isVideo = VIDEO_DEVICES.has(device);
   const type = isVideo ? 'video' : 'screenshot';
   const filename = isVideo ? meta.video : meta.artifact;
   const subdir = isVideo ? 'videos' : 'screenshots';
-  const relativePath = filename ? path.posix.join(subdir, device, filename) : null;
+  // Video paths stay flat (videos/<device>/<name>.webm) to match
+  // finalize-marketing-videos.js; screenshot paths gain the locale
+  // segment capture.ts now writes to (screenshots/<locale>/<device>/<name>.png).
+  const relativePath = filename
+    ? isVideo
+      ? path.posix.join(subdir, device, filename)
+      : path.posix.join(subdir, locale, device, filename)
+    : null;
   const absolutePath = relativePath ? path.join(ARTIFACTS_ROOT, relativePath) : null;
   const exists = absolutePath ? fs.existsSync(absolutePath) : false;
   const size = exists ? fs.statSync(absolutePath).size : 0;
@@ -71,7 +106,7 @@ function buildArtifactEntry(device, meta) {
     width: meta.viewport?.width ?? null,
     height: meta.viewport?.height ?? null,
     product: meta.product ?? 'ChurchCRM',
-    locale: meta.locale ?? 'en',
+    locale: meta.locale ?? locale,
     seed: meta.seed ?? null,
     commit: meta.commit ?? null,
     timestamp: meta.timestamp ?? null,
@@ -97,22 +132,22 @@ function main() {
 
   // Group artifacts by workflow name
   const workflowMap = new Map();
-  for (const { device, file } of metadataFiles) {
+  for (const { locale, device, file } of metadataFiles) {
     const meta = JSON.parse(fs.readFileSync(file, 'utf8'));
     const workflow = meta.workflow;
     if (!workflowMap.has(workflow)) {
       workflowMap.set(workflow, []);
     }
-    workflowMap.get(workflow).push({ device, meta });
+    workflowMap.get(workflow).push({ locale, device, meta });
   }
 
   // Build manifest array with merged data
   const artifacts = [];
   for (const [workflow, entries] of workflowMap) {
     const metadata = screenshotMetadata[workflow] || {};
-    for (const { device, meta } of entries) {
+    for (const { locale, device, meta } of entries) {
       artifacts.push({
-        ...buildArtifactEntry(device, meta),
+        ...buildArtifactEntry(locale, device, meta),
         title: metadata.title || workflow,
         category: metadata.category || null,
         dark: metadata.dark || null,
