@@ -28,11 +28,7 @@
 #   Optional environment variables:
 #     BROWSER_CHANNEL=chrome  (to use Chrome instead of Chromium)
 
-#!/bin/bash
 set -euo pipefail
-
-# Ensure all output is unbuffered and visible immediately
-export PYTHONUNBUFFERED=1
 
 # Function to log and execute commands
 run_step() {
@@ -67,6 +63,7 @@ echo "" >&2
 echo "▶ [1/${#LOCALES[@]}] ${FIRST_LOCALE} — full install + capture" >&2
 
 run_step "Removing old artifacts" rm -rf playwright/artifacts/
+run_step "Tearing down old Docker CI environment" npm run docker:ci:new-system:down || true
 run_step "Installing Composer dependencies" npm run composer:install
 run_step "Building JavaScript" npm run build:js
 run_step "Starting Docker CI environment" npm run docker:ci:new-system:start
