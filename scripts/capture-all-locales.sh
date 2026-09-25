@@ -57,7 +57,6 @@ rm -rf playwright/artifacts/
 npm run composer:install
 npm run build:js
 npm run docker:ci:new-system:start
-npm run docker:ci:new-system:reset:db
 npm run build:signatures
 if [ -n "$BROWSER_CHANNEL" ]; then
   CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npm run marketing:screenshots
