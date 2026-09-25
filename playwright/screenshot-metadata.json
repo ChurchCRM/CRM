@@ -61,6 +61,14 @@
     "title": "Photo Directory",
     "category": "People & Families"
   },
+  "person-inactive-profile": {
+    "title": "Inactive Member Profile",
+    "category": "People & Families"
+  },
+  "person-deceased-profile": {
+    "title": "Deceased Member Profile",
+    "category": "People & Families"
+  },
   "groups-ministry-overview": {
     "title": "Ministry Groups",
     "category": "Groups & Events"
