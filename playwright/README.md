@@ -199,7 +199,7 @@ Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
 - No content-hash/change-detection field in the metadata sidecars — see
   #9663 for what was deliberately descoped there (closed not-planned).
   `manifest.csv` (above) is a rollup of the existing sidecars, not that.
-- CI wiring (`.github/workflows/marketing-visuals-check.yml`,
+- CI wiring (`.github/workflows/marketing-capture-assets.yml`,
   `workflow_dispatch`) and its automated update-PR on `master` both exist
   now — this is no longer a gap.
 - Media-quality passes so far only cover what was actually visually
