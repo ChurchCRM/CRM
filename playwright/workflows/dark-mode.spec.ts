@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanType } from '../support/human';
+import { humanClick, humanPause, humanType, settle } from '../support/human';
 
 /**
  * themeMode ('ui.style': 'auto' | 'default' | 'dark') is a per-user setting
@@ -37,7 +37,7 @@ test.describe('Dark Mode', () => {
       await page.reload();
       await expect(page.locator('html[data-bs-theme="dark"]')).toBeAttached({ timeout: 10000 });
       await expect(page.locator('h2')).toBeVisible({ timeout: 15000 });
-      await humanPause(page, 800);
+      await settle(page, 800);
 
       await captureScreen(page, testInfo, {
         name: 'dashboard-hero-dark',
@@ -80,7 +80,7 @@ test.describe('Dark Mode', () => {
       await humanClick(bakerRow.locator('td').first().locator('a').first());
       await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
       await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
-      await humanPause(page, 1000);
+      await settle(page, 1000);
 
       await captureScreen(page, testInfo, {
         name: 'people-family-overview-dark',

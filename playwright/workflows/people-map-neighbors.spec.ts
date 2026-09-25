@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanType } from '../support/human';
+import { humanClick, humanPause, humanType, settle } from '../support/human';
 
 test.describe('Maps', () => {
   test('people-map-find-neighbors', async ({ page }, testInfo) => {
@@ -41,7 +41,7 @@ test.describe('Maps', () => {
     // Auto-run search populates the table and unhides it from its initial
     // d-none state — wait for that rather than a fixed timer.
     await expect(page.locator('#neighborsTable')).toBeVisible({ timeout: 15000 });
-    await humanPause(page, 1500);
+    await settle(page, 1500);
 
     await captureScreen(page, testInfo, {
       name: 'people-map-find-neighbors',
@@ -93,7 +93,7 @@ test.describe('Maps', () => {
     });
     // Leaflet tiles/pins and the role-based legend load asynchronously
     // after the container itself is visible.
-    await humanPause(page, 2000);
+    await settle(page, 2000);
 
     await captureScreen(page, testInfo, {
       name: 'people-map-group-view',

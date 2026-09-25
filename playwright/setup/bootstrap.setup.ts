@@ -4,7 +4,7 @@ import path from 'node:path';
 
 import { captureScreen } from '../support/capture';
 import { ADMIN_INITIAL_PASSWORD, ADMIN_USERNAME, ADMIN_WORKING_PASSWORD, CHURCH_NAME, DB } from '../support/env';
-import { humanClick, humanPause, humanSelect, humanType } from '../support/human';
+import { humanClick, humanPause, humanSelect, humanType, settle } from '../support/human';
 import { applyLocale } from '../support/locale-session';
 import { dismissSystemNotifications } from '../support/marketing-clean';
 import { uploadDemoPhoto } from '../support/photo';
@@ -108,7 +108,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await humanPause(page, 500);
   await humanClick(page.locator('#church-info-form button[type=submit]'));
   await page.getByText('Church information saved successfully').first().waitFor({ state: 'visible', timeout: 10000 });
-  await humanPause(page, 800);
+  await settle(page, 800);
 
   await captureScreen(page, testInfo, {
     name: 'setup-church-info',
@@ -151,7 +151,7 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   // the get-started page.
   await page.goto('/people/dashboard');
   await page.locator('h2').waitFor({ state: 'visible', timeout: 15000 });
-  await humanPause(page, 600);
+  await settle(page, 600);
 
   await captureScreen(page, testInfo, {
     name: 'demo-data-import',

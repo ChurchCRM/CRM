@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
 import { gotoFirstActiveGroup } from '../support/groups';
-import { humanClick, humanPause } from '../support/human';
+import { humanClick, settle } from '../support/human';
 
 test.describe('Communication', () => {
   test('communication-mailing-list', async ({ page }, testInfo) => {
@@ -19,11 +19,12 @@ test.describe('Communication', () => {
     await humanClick(page.locator('#group-view-toolbar .dropdown-toggle', { has: page.locator('.fa-cart-plus') }));
     await page.locator('#addAllToCart').waitFor({ state: 'visible', timeout: 5000 });
     await humanClick(page.locator('#addAllToCart'));
-    await humanPause(page, 500);
+    // Lets the add-to-cart request land before navigating to the cart.
+    await settle(page, 500);
 
     await page.goto('/v2/cart');
     await expect(page.locator('#cart-listing-table tbody tr').first()).toBeVisible({ timeout: 15000 });
-    await humanPause(page, 600);
+    await settle(page, 600);
 
     await captureScreen(page, testInfo, {
       name: 'communication-mailing-list',
