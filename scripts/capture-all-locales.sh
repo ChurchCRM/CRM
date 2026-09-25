@@ -30,8 +30,15 @@
 
 set -euo pipefail
 
+# Ensure all output is unbuffered and visible immediately
+export PYTHONUNBUFFERED=1
+exec 1> >(tee -a /dev/stderr)
+
 CRM_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$CRM_DIR"
+
+# Trap to log exits
+trap 'echo "❌ Script exited with status $?" >&2' EXIT
 
 if [ "$#" -gt 0 ]; then
   LOCALES=("$@")
@@ -53,54 +60,71 @@ echo ""
 # trailing marketing:check/marketing:manifest — those run once at the end
 # below, after every locale has captured, not after just the first.
 echo "▶ [1/${#LOCALES[@]}] ${FIRST_LOCALE} — full install + capture"
+
+echo "  ↳ Removing old artifacts..."
 rm -rf playwright/artifacts/
-npm run composer:install
-npm run build:js
-npm run docker:ci:new-system:start
-npm run build:signatures
+
+echo "  ↳ Installing Composer dependencies..."
+npm run composer:install || { echo "❌ composer:install failed"; exit 1; }
+
+echo "  ↳ Building JavaScript..."
+npm run build:js || { echo "❌ build:js failed"; exit 1; }
+
+echo "  ↳ Starting Docker CI environment..."
+npm run docker:ci:new-system:start || { echo "❌ docker:ci:new-system:start failed"; exit 1; }
+
+echo "  ↳ Building signatures..."
+npm run build:signatures || { echo "❌ build:signatures failed"; exit 1; }
+
+echo "  ↳ Capturing marketing screenshots for ${FIRST_LOCALE}..."
 if [ -n "$BROWSER_CHANNEL" ]; then
-  CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npm run marketing:screenshots
+  CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npm run marketing:screenshots || { echo "❌ marketing:screenshots failed"; exit 1; }
 else
-  CHURCHCRM_LOCALE="$FIRST_LOCALE" npm run marketing:screenshots
+  CHURCHCRM_LOCALE="$FIRST_LOCALE" npm run marketing:screenshots || { echo "❌ marketing:screenshots failed"; exit 1; }
 fi
-npm run marketing:videos
+
+echo "  ↳ Generating marketing videos..."
+npm run marketing:videos || { echo "❌ marketing:videos failed"; exit 1; }
 
 # ── Passes 2..N: re-apply locale, re-capture, no reinstall ───────────────
 i=2
 for locale in "${REMAINING_LOCALES[@]}"; do
   echo ""
   echo "▶ [${i}/${#LOCALES[@]}] ${locale} — locale switch + capture (no reinstall)"
+
+  echo "  ↳ Switching to locale: ${locale}..."
   if [ -n "$BROWSER_CHANNEL" ]; then
     CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test \
       --config=playwright/playwright.config.ts \
-      --project=locale-set
+      --project=locale-set || { echo "❌ locale-set for ${locale} failed"; exit 1; }
   else
     CHURCHCRM_LOCALE="$locale" npx playwright test \
       --config=playwright/playwright.config.ts \
-      --project=locale-set
+      --project=locale-set || { echo "❌ locale-set for ${locale} failed"; exit 1; }
   fi
 
+  echo "  ↳ Capturing screenshots for ${locale}..."
   if [ -n "$BROWSER_CHANNEL" ]; then
     CHURCHCRM_LOCALE="$locale" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test \
       --config=playwright/playwright.config.ts \
       --project=screenshots \
-      --no-deps
+      --no-deps || { echo "❌ screenshots for ${locale} failed"; exit 1; }
   else
     CHURCHCRM_LOCALE="$locale" npx playwright test \
       --config=playwright/playwright.config.ts \
       --project=screenshots \
-      --no-deps
+      --no-deps || { echo "❌ screenshots for ${locale} failed"; exit 1; }
   fi
   i=$((i + 1))
 done
 
 echo ""
 echo "▶ Validating captures"
-npm run marketing:check
+npm run marketing:check || { echo "❌ marketing:check failed"; exit 1; }
 
 echo ""
 echo "▶ Regenerating manifest.json (once, across all locales)"
-npm run marketing:manifest
+npm run marketing:manifest || { echo "❌ marketing:manifest failed"; exit 1; }
 
 echo ""
 echo "✅ Done. Expect ~175 PNGs across 8 locales — verify with:"
