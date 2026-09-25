@@ -5,6 +5,7 @@ import path from 'node:path';
 import { captureScreen } from '../support/capture';
 import { ADMIN_INITIAL_PASSWORD, ADMIN_USERNAME, ADMIN_WORKING_PASSWORD, CHURCH_NAME, DB } from '../support/env';
 import { humanClick, humanPause, humanSelect, humanType } from '../support/human';
+import { applyLocale } from '../support/locale-session';
 import { dismissSystemNotifications } from '../support/marketing-clean';
 import { uploadDemoPhoto } from '../support/photo';
 
@@ -156,6 +157,11 @@ setup('demo-data-import', async ({ page }, testInfo) => {
     name: 'demo-data-import',
     purpose: 'Show importing the sample data set and the resulting seeded families',
   });
+
+  // CRM #10048 — set the admin account's UI locale (no-op for the default
+  // 'en' run) before saving storageState, so every downstream
+  // screenshots/tablet/mobile project inherits it along with the session.
+  await applyLocale(page);
 
   fs.mkdirSync(path.dirname(STORAGE_STATE_PATH), { recursive: true });
   await page.context().storageState({ path: STORAGE_STATE_PATH });
