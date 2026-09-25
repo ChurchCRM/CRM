@@ -46,7 +46,7 @@ concurrency:
 jobs:
   setup:
     name: "1 — System setup"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - name: Checkout
@@ -93,7 +93,7 @@ jobs:
   test:
     name: "2 — Run marketing pipeline"
     needs: setup
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     outputs:
       has_changes: ${{ steps.changes.outputs.has_changes }}
@@ -214,7 +214,7 @@ jobs:
     name: "3 — Open visuals-update PR"
     needs: test
     if: github.ref_name == github.event.repository.default_branch && needs.test.outputs.has_changes == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       contents: write

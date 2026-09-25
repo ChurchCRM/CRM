@@ -26,7 +26,7 @@ on:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     env:
@@ -65,7 +65,7 @@ jobs:
     needs: sync
     name: Advance CRM release milestone
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       issues: write
       pull-requests: write
@@ -120,7 +120,7 @@ jobs:
     needs: sync
     name: Synchronize docs milestones
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       DOCS_REPO: ChurchCRM/docs.churchcrm.io
       CURRENT_TAG: ${{ github.event.release.tag_name }}
