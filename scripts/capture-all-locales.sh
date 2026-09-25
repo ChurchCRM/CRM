@@ -69,14 +69,18 @@ run_step "Building JavaScript" npm run build:js
 run_step "Starting Docker CI environment" npm run docker:ci:new-system:start
 run_step "Building signatures" npm run build:signatures
 
-echo "  ↳ Capturing marketing screenshots for ${FIRST_LOCALE}..." >&2
-if [ -n "$BROWSER_CHANNEL" ]; then
+# The recorded videos are English-only marketing material, so a run that
+# starts on another locale (e.g. one CI matrix job per locale) captures
+# screenshots only; 'setup' still runs as the screenshots dependency.
+if [ "$FIRST_LOCALE" = "en" ]; then
   run_step "marketing:screenshots (${FIRST_LOCALE})" env CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npm run marketing:screenshots
+  run_step "Generating marketing videos" npm run marketing:videos
 else
-  run_step "marketing:screenshots (${FIRST_LOCALE})" env CHURCHCRM_LOCALE="$FIRST_LOCALE" npm run marketing:screenshots
+  run_step "Capturing screenshots for ${FIRST_LOCALE}" env CHURCHCRM_LOCALE="$FIRST_LOCALE" BROWSER_CHANNEL="$BROWSER_CHANNEL" npx playwright test --config=playwright/playwright.config.ts --project=screenshots
+  # 'setup' still wrote metadata claiming its videos; with no finalize step
+  # those files never land, so drop the claims before marketing:check.
+  run_step "Dropping unpublished video metadata" rm -rf playwright/artifacts/metadata/setup playwright/artifacts/metadata/recordings
 fi
-
-run_step "Generating marketing videos" npm run marketing:videos
 
 # ── Passes 2..N: re-apply locale, re-capture, no reinstall ───────────────
 i=2
