@@ -1,0 +1,108 @@
+{
+  "dashboard-hero": {
+    "title": "Dashboard",
+    "category": "Dashboards",
+    "dark": "dashboard-hero-dark"
+  },
+  "dashboard-hero-dark": {
+    "title": "Dashboard (Dark Mode)",
+    "category": "Dashboards"
+  },
+  "dashboard-admin": {
+    "title": "Admin Dashboard",
+    "category": "Dashboards"
+  },
+  "dashboard-people": {
+    "title": "People Dashboard",
+    "category": "Dashboards"
+  },
+  "dashboard-groups": {
+    "title": "Groups Dashboard",
+    "category": "Dashboards"
+  },
+  "dashboard-events": {
+    "title": "Events Dashboard",
+    "category": "Dashboards"
+  },
+  "dashboard-finance": {
+    "title": "Finance Dashboard",
+    "category": "Dashboards"
+  },
+  "dashboard-fundraiser": {
+    "title": "Fundraiser Dashboard",
+    "category": "Dashboards"
+  },
+  "dashboard-sundayschool": {
+    "title": "Sunday School Dashboard",
+    "category": "Dashboards"
+  },
+  "people-directory-list": {
+    "title": "People Directory",
+    "category": "People & Families"
+  },
+  "people-family-overview": {
+    "title": "Family Profile",
+    "category": "People & Families",
+    "dark": "people-family-overview-dark"
+  },
+  "people-family-overview-dark": {
+    "title": "Family Profile (Dark Mode)",
+    "category": "People & Families"
+  },
+  "people-family-new-family": {
+    "title": "Add a New Family",
+    "category": "People & Families"
+  },
+  "people-map-overview": {
+    "title": "Family Map",
+    "category": "People & Families"
+  },
+  "people-photo-gallery": {
+    "title": "Photo Directory",
+    "category": "People & Families"
+  },
+  "groups-ministry-overview": {
+    "title": "Ministry Groups",
+    "category": "Groups & Events"
+  },
+  "events-calendar-overview": {
+    "title": "Events Calendar",
+    "category": "Groups & Events"
+  },
+  "events-attendance-overview": {
+    "title": "Check-In & Attendance",
+    "category": "Groups & Events"
+  },
+  "finance-deposit-entry": {
+    "title": "Deposit Entry",
+    "category": "Finance & Giving"
+  },
+  "finance-pledge-report": {
+    "title": "Pledges & Funds",
+    "category": "Finance & Giving"
+  },
+  "communication-mailing-list": {
+    "title": "Mailing Lists",
+    "category": "Communication"
+  },
+  "settings-user-permissions": {
+    "title": "User Permissions",
+    "category": "Admin & Settings"
+  },
+  "admin-plugin-management": {
+    "title": "Plugin Management",
+    "category": "Admin & Settings"
+  },
+  "family-self-register": {
+    "title": "Self-Register Family",
+    "category": "Recordings"
+  },
+  "demo-data-import": {
+    "title": "Demo Data Import",
+    "category": "Setup"
+  },
+  "setup-church-info": {
+    "title": "Setup - Church Info",
+    "category": "Setup"
+  }
+}
