@@ -3,7 +3,7 @@ import path from 'node:path';
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanSelect, humanType } from '../support/human';
+import { humanClick, humanPause, humanSelect, humanType, settle } from '../support/human';
 import { uploadDemoPhoto } from '../support/photo';
 
 const KEVIN_THOMAS_PHOTO = path.join(__dirname, '..', '..', 'src', 'admin', 'demo', 'images', 'people', 'kevin.thomas.jpg');
@@ -27,7 +27,7 @@ test.describe('People & Families', () => {
     await humanClick(bakerRow.locator('td').first().locator('a').first());
     await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
     await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
-    await humanPause(page, 1000);
+    await settle(page, 1000);
 
     // Not "...and a geocoded map": family-view.php stacks the photo above
     // the Address card in a narrow right column, so the map itself renders
@@ -75,7 +75,7 @@ test.describe('People & Families', () => {
     await uploadDemoPhoto(page, 'person', personId, KEVIN_THOMAS_PHOTO);
     await page.reload();
     await expect(page.getByText('Whitfield', { exact: false }).first()).toBeVisible({ timeout: 10000 });
-    await humanPause(page, 500);
+    await settle(page, 500);
 
     await captureScreen(page, testInfo, {
       name: 'people-family-new-family',
@@ -86,7 +86,7 @@ test.describe('People & Families', () => {
   test('people-map-overview', async ({ page }, testInfo) => {
     await page.goto('/people/map');
     await expect(page.locator('#map')).toBeVisible({ timeout: 15000 });
-    await humanPause(page, 1500);
+    await settle(page, 1500);
 
     await captureScreen(page, testInfo, {
       name: 'people-map-overview',
@@ -97,7 +97,7 @@ test.describe('People & Families', () => {
   test('people-photo-gallery', async ({ page }, testInfo) => {
     await page.goto('/people/photos');
     await expect(page.locator('#photo-grid')).toBeVisible({ timeout: 15000 });
-    await humanPause(page, 800);
+    await settle(page, 800);
 
     await captureScreen(page, testInfo, {
       name: 'people-photo-gallery',
@@ -109,7 +109,7 @@ test.describe('People & Families', () => {
     await page.goto('/people/list');
     const rows = page.locator('#members tbody tr');
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
-    await humanPause(page, 500);
+    await settle(page, 500);
 
     await captureScreen(page, testInfo, {
       name: 'people-directory-list',
@@ -132,7 +132,7 @@ test.describe('People & Families', () => {
     await humanClick(targetRow.locator('a').first());
     await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
     await expect(page.locator('#person-deactivated')).toBeVisible({ timeout: 10000 });
-    await humanPause(page, 800);
+    await settle(page, 800);
 
     await captureScreen(page, testInfo, {
       name: 'person-inactive-profile',
@@ -149,7 +149,7 @@ test.describe('People & Families', () => {
 
     await page.goto(profilePath!);
     await expect(page.locator('.badge', { has: page.locator('.fa-cross') })).toBeVisible({ timeout: 10000 });
-    await humanPause(page, 800);
+    await settle(page, 800);
 
     await captureScreen(page, testInfo, {
       name: 'person-deceased-profile',
@@ -169,7 +169,7 @@ test.describe('People & Families', () => {
     await humanClick(targetRow.locator('td').first().locator('a').first());
     await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
     await expect(page.locator('#family-deactivated')).toBeVisible({ timeout: 10000 });
-    await humanPause(page, 800);
+    await settle(page, 800);
 
     await captureScreen(page, testInfo, {
       name: 'family-inactive-profile',

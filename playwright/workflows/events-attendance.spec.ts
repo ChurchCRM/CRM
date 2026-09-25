@@ -1,14 +1,14 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanPause, humanSelect } from '../support/human';
+import { humanPause, humanSelect, settle } from '../support/human';
 
 test.describe('Events & Attendance', () => {
   test('events-calendar-overview', async ({ page }, testInfo) => {
     // A church user checking the event calendar.
     await page.goto('/event/calendars');
     await expect(page.getByRole('grid')).toBeVisible({ timeout: 20000 });
-    await humanPause(page, 800);
+    await settle(page, 800);
 
     await captureScreen(page, testInfo, {
       name: 'events-calendar-overview',
@@ -42,7 +42,7 @@ test.describe('Events & Attendance', () => {
 
     await page.waitForURL(/\/event\/checkin\/\d+/, { timeout: 15000 });
     await expect(page.locator('.card', { has: page.locator('.fa-calendar-check') })).toBeVisible({ timeout: 10000 });
-    await humanPause(page, 600);
+    await settle(page, 600);
 
     await captureScreen(page, testInfo, {
       name: 'events-attendance-overview',

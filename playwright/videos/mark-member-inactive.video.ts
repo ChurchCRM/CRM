@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanType } from '../support/human';
+import { humanClick, humanPause, humanType, settle } from '../support/human';
 
 /**
  * Mark a member inactive via the profile's Actions menu and land on the
@@ -51,7 +51,7 @@ test('mark-member-inactive', async ({ page }, testInfo) => {
   // from window.CRM.currentPersonActive.
   await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
   await expect(page.locator('#person-deactivated')).toBeVisible({ timeout: 10000 });
-  await humanPause(page, 2000);
+  await settle(page, 2000);
 
   await captureScreen(page, testInfo, {
     name: 'mark-member-inactive',
