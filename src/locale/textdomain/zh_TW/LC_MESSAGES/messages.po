@@ -12431,16 +12431,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "主日學、活動與簽到台如何協同工作"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "%s 的日期無效，期望格式為 YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart 或 rangeEnd 的日期格式無效"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "日期無效；期望格式為 YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12669,10 +12661,6 @@ msgstr "endDate 必須晚於 startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds 必須是非空陣列"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "無效的重複類型"
 
 #: 
 msgid "personIds must be a non-empty array"

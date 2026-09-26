@@ -12279,16 +12279,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "주일학교 + 이벤트 + Kiosk 연동 방법"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "%s의 날짜가 유효하지 않습니다 — YYYY-MM-DD 형식이 필요합니다"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart 또는 rangeEnd의 날짜 형식이 유효하지 않습니다"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "날짜가 유효하지 않습니다. YYYY-MM-DD 형식이 필요합니다"
 
 #: 
 msgid "Invalid event type ID"
@@ -12517,10 +12509,6 @@ msgstr "endDate는 startDate 이후여야 합니다"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds는 비어 있지 않은 배열이어야 합니다"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "유효하지 않은 반복 유형"
 
 #: 
 msgid "personIds must be a non-empty array"

@@ -12293,16 +12293,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Kuidas pühapäevakool + sündmused + kioskid sobivad kokku"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Vigane kuupäev %s jaoks — oodatakse AAAA-KK-PP"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Vigane kuupäevavorming vahemiku alguse või lõpu jaoks"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Vigane kuupäev; oodatav vorming AAAA-KK-PP"
 
 #: 
 msgid "Invalid event type ID"
@@ -12531,10 +12523,6 @@ msgstr "lõppkuupäev peab olema pärast alguskuupäeva"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds peab olema mittetühi massiiv"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "vigane korduvuse tüüp"
 
 #: 
 msgid "personIds must be a non-empty array"

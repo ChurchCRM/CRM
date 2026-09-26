@@ -12363,16 +12363,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cum se conectează Școala Duminicală + Evenimente + Chioșcuri"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Dată invalidă pentru %s — formatul așteptat este YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Format de dată invalid pentru rangeStart sau rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Dată invalidă; formatul așteptat este YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12601,10 +12593,6 @@ msgstr "endDate trebuie să fie după startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds trebuie să fie un array nevid"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "tip de recurență invalid"
 
 #: 
 msgid "personIds must be a non-empty array"
