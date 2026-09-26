@@ -17811,6 +17811,12 @@ msgid "Set up now"
 msgstr "Ota käyttöön nyt"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Kaksivaiheinen tunnistautuminen on pakollinen. Sinulla on %d päivä aikaa ottaa se käyttöön."
+msgstr[1] "Kaksivaiheinen tunnistautuminen on pakollinen. Sinulla on %d päivää aikaa ottaa se käyttöön."
+
+#: 
 msgid "Unknown family"
 msgstr "Tuntematon perhe"
 
@@ -17825,4 +17831,684 @@ msgstr "Päivitä kaikkien perheiden koordinaatit"
 #: 
 msgid "Update Coordinates"
 msgstr "Päivitä koordinaatit"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s oli tämän perheen pää ja on merkitty kuolleeksi. Määritä perheelle uusi perheen pää."
+
+#: 
+msgid "Accept"
+msgstr "Hyväksy"
+
+#: 
+msgid "Active Now"
+msgstr "Aktiivinen nyt"
+
+#: 
+msgid "Adding..."
+msgstr "Lisätään..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Kaikki sähköpostiosoitteelliset CRM-jäsenet on tilattu tälle listalle!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Kaikki MailChimp-tilaajat ovat ChurchCRM:ssä!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Tiedostojen poistamisessa tapahtui virhe."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Oletko aivan varma? Tämä poistaa kaikki tiedot ja palauttaa tehdasasetukset."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Haluatko varmasti poistaa KAIKKI lokitiedostot? Tätä toimintoa ei voi perua."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Haluatko varmasti poistaa kioskin"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Haluatko varmasti poistaa linkin"
+
+#: 
+msgid "Assignment"
+msgstr "Määritys"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Taustatehtäviä (syntymäpäiväsähköpostit ja kaikkien lisäosien ajastetut tehtävät) ei ole koskaan suoritettu tässä asennuksessa."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Taustatehtävät (syntymäpäiväsähköpostit ja kaikkien lisäosien ajastetut tehtävät) suoritettiin viimeksi %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Varmuuskopioidaan..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Varmuuskopio ladattu."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Varmuuskopio lähetetty onnistuneesti"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Et voi muuttaa omaa aktiivisuustilaasi"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-vienti valmistui onnistuneesti"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Muutokset tallennettu onnistuneesti"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Kirjaa kaikki ulos ja deaktivoi kaikki"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Kirjataanko kaikki ulos ja deaktivoidaanko tämä tapahtuma?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Tarkista sähköpostisi löytääksesi salasanan nollauslinkin"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Suljetaanko jumiin jääneet tapahtumat?"
+
+#: 
+msgid "Comments"
+msgstr "Kommentit"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Sähköpostin esikatselua ei voitu ladata. Sulje ja yritä uudelleen."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Luodaan ja lähetetään varmuuskopiota. Tämä voi kestää useita minuutteja..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Tietokannan nollaus epäonnistui."
+
+#: 
+msgid "Deceased"
+msgstr "Kuollut"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Oletusarvoiset ylläpitäjän tunnukset"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Poista kioski"
+
+#: 
+msgid "Deleted Files"
+msgstr "Poistetut tiedostot"
+
+#: 
+msgid "Deleting..."
+msgstr "Poistetaan..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Lataus palautui ilman liitetiedoston otsikoita."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Virhe poistettaessa lokitiedostoa."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Virhe poistettaessa lokitiedostoja."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Virhe ladattaessa lokitiedostoa."
+
+#: 
+msgid "Error initiating download."
+msgstr "Virhe latauksen käynnistämisessä."
+
+#: 
+msgid "Error loading log file."
+msgstr "Virhe ladattaessa lokitiedostoa."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Virhe ladattaessa itserekisteröityjä merkintöjä"
+
+#: 
+msgid "Errors"
+msgstr "Virheet"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Jätä kuolleet jäsenet pois tulostettavasta hakemistosta ja CSV-vienneistä."
+
+#: 
+msgid "Failed Files"
+msgstr "Epäonnistuneet tiedostot"
+
+#: 
+msgid "Failed to add link"
+msgstr "Linkin lisääminen epäonnistui"
+
+#: 
+msgid "Failed to add option"
+msgstr "Vaihtoehdon lisääminen epäonnistui"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Tapahtumien sulkeminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to delete"
+msgstr "Poistaminen epäonnistui"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Kioskin rekisteröinnin ottaminen käyttöön epäonnistui"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV -vienti epäonnistui"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Tarkastuslokin lataaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Kioskin uudelleennimeäminen epäonnistui"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Muutosten tallentaminen epäonnistui"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Lisäosan päivittäminen epäonnistui"
+
+#: 
+msgid "Family Id"
+msgstr "Perhetunnus"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Lopullinen vahvistus"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Geokoodataan perheitä… tämä voi kestää muutaman minuutin. Voit pitää tämän sivun auki."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Geokoodataan perheitä… {{done}}/{{total}} käsitelty, {{geocoded}} paikannettu."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Perheen pää vaatii päivityksen"
+
+#: 
+msgid "Helpful Links"
+msgstr "Hyödylliset linkit"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Piilota kuolleet hakemistosta"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Piilota kuolleet jäsenet tulostettavasta hakemistosta ja CSV-vienneistä."
+
+#: 
+msgid "Identify"
+msgstr "Tunnista"
+
+#: 
+msgid "Identify command sent"
+msgstr "Tunnistuskomento lähetetty"
+
+#: 
+msgid "Individual"
+msgstr "Henkilö"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Sisäinen: taustan ajastettujen tehtävien viimeisin suoritusaika (VVVV-KK-PP TT:MM:SS). Älä muokkaa manuaalisesti."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Kohde poistettu onnistuneesti"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Kioskin nimi"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Kioski hyväksytty"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Kioski poistettu onnistuneesti"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Kioski on hyväksyttävä"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Kioski nimetty uudelleen"
+
+#: 
+msgid "Last seen"
+msgstr "Viimeksi nähty"
+
+#: 
+msgid "Link"
+msgstr "Linkki"
+
+#: 
+msgid "Link added successfully"
+msgstr "Linkki lisätty onnistuneesti"
+
+#: 
+msgid "Link deleted"
+msgstr "Linkki poistettu"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Linkin nimi ei voi sisältää HTML-tageja"
+
+#: 
+msgid "Living"
+msgstr "Elossa"
+
+#: 
+msgid "Log settings saved"
+msgstr "Lokiasetukset tallennettu"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Kirjautumistunnus on pakollinen"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Henkilö merkitty aktiiviseksi"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Henkilö merkitty epäaktiiviseksi"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Pienin sallittu minuuttimäärä sivun latauksen käynnistämien tausta-ajastintehtävien suoritusten välillä. Estää kiireisenä sunnuntaiaamuna tehtävien suorittamisen jokaisella sivunlatauksella. Ei koske komentorivikäynnistintä. Aseta arvoksi 0, jos haluat suorituksen jokaisella sivunlatauksella."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Uudet käyttäjät eivät saa tervetulosähköpostia, eikä luotua salasanaa koskaan näytetä. Aseta salasana tilin luomisen jälkeen Järjestelmän käyttäjät -näkymässä Vaihda salasana -toiminnolla — tai määritä sähköposti ensin."
+
+#: 
+msgid "No changes to save"
+msgstr "Ei tallennettavia muutoksia"
+
+#: 
+msgid "No contact info"
+msgstr "Ei yhteystietoja"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Ei mukautettuja linkkejä määritetty. Lisää yksi yllä!"
+
+#: 
+msgid "No email"
+msgstr "Ei sähköpostia"
+
+#: 
+msgid "No files were deleted."
+msgstr "Yhtään tiedostoa ei poistettu."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Tälle lisäosalle ei ole ohjetta saatavilla."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Ei lisättäviä henkilöitä - kaikki ovat jo ostoskorissa"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Ei lisättäviä henkilöitä - suodatin ei palauttanut tuloksia"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Virheellinen kuolinpäivä"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Päivien määrä, jonka käyttäjillä on aikaa ottaa käyttöön 2FA sen jälkeen, kun se on tehty pakolliseksi. Aseta arvoksi 0 pakottaaksesi sen käyttöön välittömästi. Aktiivisen siirtymäajan lyhentäminen voi lukita käyttäjiä ulos välittömästi."
+
+#: 
+msgid "Offline"
+msgstr "Ei verkossa"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Tee tämä vasta sen jälkeen, kun taustalla oleva ongelma on korjattu. Sinun on silti napsautettava Ota käyttöön, ennen kuin lisäosa toimii uudelleen."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Vahvista henkilön aktivointi"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Vahvista henkilön deaktivointi"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Lisäosan tila päivitetty"
+
+#: 
+msgid "Registered"
+msgstr "Rekisteröity"
+
+#: 
+msgid "Reload"
+msgstr "Lataa uudelleen"
+
+#: 
+msgid "Reload command sent"
+msgstr "Uudelleenlatauskomento lähetetty"
+
+#: 
+msgid "Rename"
+msgstr "Nimeä uudelleen"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Nimeä kioski uudelleen"
+
+#: 
+msgid "Reset Complete"
+msgstr "Nollaus valmis"
+
+#: 
+msgid "Reset Settings"
+msgstr "Nollaa asetukset"
+
+#: 
+msgid "Resetting..."
+msgstr "Nollataan..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Ajastetut tehtävät eivät ole käynnissä"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Suojaustunniste puuttuu. Päivitä sivu."
+
+#: 
+msgid "Select…"
+msgstr "Valitse…"
+
+#: 
+msgid "Sending..."
+msgstr "Lähetetään..."
+
+#: 
+msgid "Sending…"
+msgstr "Lähetetään…"
+
+#: 
+msgid "Settings reset"
+msgstr "Asetukset nollattu"
+
+#: 
+msgid "Settings saved"
+msgstr "Asetukset tallennettu"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Asetukset tallennettu. Päivitetään päivitystietoja..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Näytetään vain aktiiviset henkilöt."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Näytetään vain epäaktiiviset henkilöt."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Poistettu onnistuneesti"
+
+#: 
+msgid "Testing..."
+msgstr "Testataan..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Tietokanta on tyhjennetty. Järjestelmä on valmis uuteen alkuun."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Sivunlatauksen varajärjestelmä toimii sillä välin edelleen. Muuta, kuinka kauan ChurchCRM odottaa ennen tämän varoituksen näyttämistä, %1$s-asetuksella, tai aseta se arvoon 0 piilottaaksesi sen."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Tämä henkilö on epäaktiivinen"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Tämä etsii karttakoordinaatit jokaiselle perheelle, joilta ne puuttuvat, käyttäen OpenStreetMapia. Se käy läpi perheet 50 kappaleen erissä, noin minuutti erää kohden. Voit pitää tämän sivun auki suorituksen ajan. Jatketaanko?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Tämä henkilö on kuollut"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Tämä tyhjentää kaikki tämän lisäosan määritetyt arvot. Tätä ei voi perua."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Tämä poistaa pysyvästi lisäosan tiedostot levyltä ja tyhjentää sen asetukset. Tätä ei voi perua."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL-osoite ei voi sisältää HTML-tageja"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Odottamaton virhe. Yritä uudelleen."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Poista lisäosa"
+
+#: 
+msgid "Upcoming"
+msgstr "Tulevat"
+
+#: 
+msgid "Valid Until"
+msgstr "Voimassa asti"
+
+#: 
+msgid "View active only"
+msgstr "Näytä vain aktiiviset"
+
+#: 
+msgid "View all"
+msgstr "Näytä kaikki"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Näytä kaikki (mukaan lukien epäaktiiviset)"
+
+#: 
+msgid "View inactive only"
+msgstr "Näytä vain epäaktiiviset"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Varoita ylläpitäjän kojelaudalla, jos tausta-ajastetut tehtävät eivät ole suorittuneet näin moneen tuntiin. 26 sallii päivittäisen cron-ajon ja hieman poikkeamaa. Aseta arvoksi 0 poistaaksesi varoituksen käytöstä."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Ilman ajastinta nämä tehtävät suoritetaan vain, kun joku lataa sivun, joten hiljainen arkipäivä ei lähetä lainkaan ajastettua sähköpostia. Lisää cron-merkintä, joka suorittaa tehtäväajastimen tunnin välein samalla käyttäjällä, jolla verkkopalvelimesi toimii"
+
+#: 
+msgid "check-outs"
+msgstr "uloskirjausta"
+
+#: 
+msgid "deceased"
+msgstr "kuollutta"
+
+#: 
+msgid "event"
+msgstr "tapahtuma"
+
+#: 
+msgid "events?"
+msgstr "tapahtumaa?"
+
+#: 
+msgid "files"
+msgstr "tiedostoa"
+
+#: 
+msgid "people from cart?"
+msgstr "henkilöä ostoskorista?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip on oltava nolla tai positiivinen kokonaisluku"
+
+#: 
+msgid "view families missing an email"
+msgstr "näytä perheet, joilta puuttuu sähköposti"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Ostajat kuluvana tilivuonna"
+
+#: 
+msgid "Current"
+msgstr "Nykyinen"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Lahjoitetut tuotteet (kuluva tilivuosi)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Käyttäjätunnuksessa saa olla enintään %d merkkiä!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Kerätty kuluvana tilivuonna"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s:n on oltava täydellinen https://-verkko-osoite, esimerkiksi https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Tilillä on rajoitetut käyttöoikeudet. Ota yhteyttä ylläpitäjään."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Virhesivun näyttämisessä tapahtui virhe."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Jokaisen osoitteen on alettava https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Luo tarrat"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Luo postitustarrat"
+
+#: 
+msgid "Labels"
+msgstr "Tarrat"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Postitustarrat ostoskorisi henkilöille. Henkilö, jolla ei ole omaa osoitetta, osoitetaan perheensä osoitteeseen."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Valinnainen. Linkit seurakunnan omiin tileihin, jotka näytetään jäsenille esimerkiksi portaalin alatunnisteessa. Jätä kenttä tyhjäksi piilottaaksesi kyseisen kanavan."
+
+#: 
+msgid "Options"
+msgstr "Asetukset"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Ajastetut tehtävät"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktiivinen, sekunteja jäljellä: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Odotettu suoritusten välinen aikaväli (tuntia): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Ohitetut perheet (ei sähköpostiosoitetta tiedossa): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Perheet, joita ei voitu geokoodata: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Perheet, jotka saavat vahvistussähköpostin: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Jäseniä kopioitu: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Ei listattuna tässä: {{total}} lisää"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Vastaanottajia: {{total}} — liikaa mailto:-linkille. Käytä sen sijaan Kopioi osoitteet -toimintoa."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Liikaa vastaanottajia sähköpostiohjelmalle ({{total}} > {{max}}). Käytä sen sijaan Kopioi osoitteet -toimintoa."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} min jäljellä"
 

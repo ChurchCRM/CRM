@@ -17812,6 +17812,12 @@ msgid "Set up now"
 msgstr "Configurar ahora"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Se requiere la autenticación de dos factores. Tenés %d día para habilitarla."
+msgstr[1] "Se requiere la autenticación de dos factores. Tenés %d días para habilitarla."
+
+#: 
 msgid "Unknown family"
 msgstr "Familia desconocida"
 
@@ -18078,6 +18084,10 @@ msgstr "Identificar"
 #: 
 msgid "Identify command sent"
 msgstr "Comando de identificación enviado"
+
+#: 
+msgid "Individual"
+msgstr "Individuo"
 
 #: 
 msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
@@ -18398,4 +18408,108 @@ msgstr "skip debe ser cero o un entero positivo"
 #: 
 msgid "view families missing an email"
 msgstr "ver familias sin correo electrónico"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Compradores en este año fiscal"
+
+#: 
+msgid "Current"
+msgstr "Actual"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Artículos donados (este año fiscal)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "¡El inicio de sesión debe tener %d caracteres o menos!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Recaudado en este año fiscal"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s debe ser una dirección web https:// completa, por ejemplo https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "La cuenta tiene permisos limitados. Contactá a un administrador."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Ocurrió un error al mostrar la página de error."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Cada dirección debe comenzar con https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Generar etiquetas"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Generar etiquetas de correspondencia"
+
+#: 
+msgid "Labels"
+msgstr "Etiquetas"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Etiquetas de correspondencia para las personas de tu carrito. Una persona sin dirección propia se etiqueta con la dirección de su familia."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Opcional. Enlaces a las cuentas propias de la iglesia, mostrados a los miembros en páginas como el pie del portal. Dejá un campo en blanco para ocultar esa red."
+
+#: 
+msgid "Options"
+msgstr "Opciones"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Tareas programadas"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Activo, quedan {{seconds}} segundos"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Intervalo esperado entre ejecuciones (horas): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Familias omitidas (sin dirección de correo electrónico registrada): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Familias que no se pudieron geocodificar: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Familias que recibirán correos de confirmación: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Miembros copiados: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "No listados aquí: {{total}} más"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Destinatarios: {{total}} — demasiados para un enlace mailto:. Usá Copiar direcciones en su lugar."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Demasiados destinatarios para el cliente de correo ({{total}} > {{max}}). Usá Copiar direcciones en su lugar."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "Quedan {{minutes}} min"
 
