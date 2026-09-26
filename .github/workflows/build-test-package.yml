@@ -140,7 +140,7 @@ jobs:
           -v ${{ github.workspace }}:/app \
           -w /app/src \
           composer:latest \
-          composer install --no-dev --no-interaction --prefer-dist
+          composer install --no-dev --no-interaction --prefer-dist --ignore-platform-reqs
       env:
         COMPOSER_MEMORY_LIMIT: -1
 
