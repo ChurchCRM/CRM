@@ -721,7 +721,7 @@ async function main() {
             continue;
         }
 
-        const { poEditorCode, locale: localeCode, name: localeName, skipAudit } = localeEntry;
+        const { poEditorCode, name: localeName, skipAudit } = localeEntry;
 
         console.log(`\n${'─'.repeat(62)}`);
         console.log(`📂  [${localeNum}/${totalLocales}]  ${localeName}  (${poEditorCode})`);
