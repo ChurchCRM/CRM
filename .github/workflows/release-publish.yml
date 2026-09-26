@@ -274,7 +274,7 @@ jobs:
           # created. Passed to --notes-start-tag so the generated draft always
           # compares against the last public release, not the nearest tag.
           prev=$(gh release list --exclude-drafts --exclude-pre-releases --limit 20 --json tagName --jq '.[].tagName' \
-            | grep -vx "$TAG" | head -n 1 || true)
+            | grep -vFx -- "$TAG" | head -n 1 || true)
           if [ -z "$prev" ]; then
             echo "::error::Could not find a previous published release to compare against."
             exit 1

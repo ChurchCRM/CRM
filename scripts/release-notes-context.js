@@ -79,13 +79,23 @@ async function ghPaged(path) {
 }
 
 async function commitsBetween(from, to) {
-  // compare returns at most 250 commits per page; follow pages.
+  // GET /compare/{basehead} caps its embedded commits array at 250 and does
+  // not paginate it via `page` (that param is silently ignored), so looping
+  // on it never terminates for a release with >=100 commits. Walk the
+  // target ref's history with the commits list endpoint instead, which does
+  // paginate correctly, and stop once we reach the base ref.
+  const fromSha = (await gh(`/repos/${REPO}/commits/${encodeURIComponent(from)}`)).sha;
   const commits = [];
   for (let page = 1; ; page++) {
-    const cmp = await gh(`/repos/${REPO}/compare/${encodeURIComponent(from)}...${encodeURIComponent(to)}?per_page=100&page=${page}`);
-    commits.push(...cmp.commits);
-    if (cmp.commits.length < 100) return commits;
+    const batch = await gh(`/repos/${REPO}/commits?sha=${encodeURIComponent(to)}&per_page=100&page=${page}`);
+    if (batch.length === 0) break;
+    for (const c of batch) {
+      if (c.sha === fromSha) return commits;
+      commits.push(c);
+    }
+    if (batch.length < 100) break;
   }
+  return commits;
 }
 
 function prNumberFrom(message) {
@@ -181,13 +191,13 @@ async function main() {
     const pr = await gh(`/repos/${REPO}/pulls/${number}`);
     const files = (await ghPaged(`/repos/${REPO}/pulls/${number}/files`)).map(f => f.filename);
     const areas = [...new Set(files.map(f => f.split('/').slice(0, 2).join('/')))].slice(0, 8);
-    const bot = pr.user.type === 'Bot' || /\[bot\]$/.test(pr.user.login);
+    const bot = pr.user ? pr.user.type === 'Bot' || /\[bot\]$/.test(pr.user.login) : false;
     const noise = NOISE.some(re => re.test(pr.title));
     prs.push({
       number,
       title: pr.title,
       url: pr.html_url,
-      author: pr.user.login,
+      author: pr.user ? pr.user.login : '(deleted user)',
       bot,
       body: pr.body,
       labels: pr.labels.map(l => l.name),
