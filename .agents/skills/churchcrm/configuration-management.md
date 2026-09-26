@@ -63,7 +63,7 @@ untouched.
 ### Location
 
 ```
-src/ChurchCRM/Utils/SystemConfig.php
+src/ChurchCRM/dto/SystemConfig.php
 ```
 
 ### Common Methods

@@ -15,7 +15,8 @@ Live URL is `CentralServices::PLUGIN_REGISTRY_URL` in `src/ChurchCRM/Remote/Cent
 Today that is the **External** branch:
 `https://raw.githubusercontent.com/ChurchCRM/CRM/External/approved-plugins.json`
 
-Bundled copy: `src/plugins/approved-plugins.json`.
+No bundled local-fallback file exists — see `hosted-remote-config.md` for what
+happens when the fetch fails.
 Loader: `src/ChurchCRM/Plugin/ApprovedPluginRegistry.php`.
 Do not invent a different branch. If the constant changes, this card follows the constant.
 
