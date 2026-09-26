@@ -1,14 +1,14 @@
 {
   "Code": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tag Zeit, sich zu registrieren.|Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tage Zeit, sich zu registrieren.",
-    "other": ""
+    "one": "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tag Zeit, sich zu registrieren.",
+    "other": "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tage Zeit, sich zu registrieren."
   },
   "Link": "",
   "Offline": "",
   "They are expected at least once every %d hour.": {
-    "one": "Sie werden mindestens einmal alle %d Stunde erwartet.|Sie werden mindestens einmal alle %d Stunden erwartet.",
-    "other": ""
+    "one": "Sie werden mindestens einmal alle %d Stunde erwartet.",
+    "other": "Sie werden mindestens einmal alle %d Stunden erwartet."
   },
   "Buyers This Fiscal Year": "",
   "Current": "",

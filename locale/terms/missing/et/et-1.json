@@ -1,12 +1,12 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päev.|Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päeva.",
-    "other": ""
+    "one": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päev.",
+    "other": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päeva."
   },
   "Link": "",
   "They are expected at least once every %d hour.": {
-    "one": "Neid oodatakse vähemalt korra iga %d tunni jooksul.|Neid oodatakse vähemalt korra iga %d tunni jooksul.",
-    "other": ""
+    "one": "Neid oodatakse vähemalt korra iga %d tunni jooksul.",
+    "other": "Neid oodatakse vähemalt korra iga %d tunni jooksul."
   },
   "Buyers This Fiscal Year": "",
   "Current": "",

@@ -1,12 +1,12 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Se requiere autenticación de dos factores. Tiene %d día para inscribirse.|Se requiere autenticación de dos factores. Tiene %d días para inscribirse.",
-    "other": ""
+    "one": "Se requiere autenticación de dos factores. Tiene %d día para inscribirse.",
+    "other": "Se requiere autenticación de dos factores. Tiene %d días para inscribirse."
   },
   "Individual": "",
   "They are expected at least once every %d hour.": {
-    "one": "Se espera que asista al menos una vez cada %d hora.|Se espera que asista al menos una vez cada %d horas.",
-    "other": ""
+    "one": "Se espera que asista al menos una vez cada %d hora.",
+    "other": "Se espera que asista al menos una vez cada %d horas."
   },
   "Buyers This Fiscal Year": "",
   "Current": "",

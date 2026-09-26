@@ -1,7 +1,7 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "द्विकारक प्रमाणीकरण (2FA) आवश्यक है। आपके पास नामांकन करने के लिए %d दिन है।|द्विकारक प्रमाणीकरण (2FA) आवश्यक है। आपके पास नामांकन करने के लिए %d दिन हैं।",
-    "other": ""
+    "one": "द्विकारक प्रमाणीकरण (2FA) आवश्यक है। आपके पास नामांकन करने के लिए %d दिन है।",
+    "other": "द्विकारक प्रमाणीकरण (2FA) आवश्यक है। आपके पास नामांकन करने के लिए %d दिन हैं।"
   },
   "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household.": "",
   "Accept": "",
