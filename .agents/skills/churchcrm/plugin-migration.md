@@ -10,8 +10,8 @@ complexity: "intermediate"
 
 > [!NOTE] Scope — core plugins only
 > This skill covers the plugins shipped
-> in `src/plugins/core/` (custom-links, external-backup, google-analytics,
-> gravatar, holidays, mailchimp, openlp, vonage) and any future
+> in `src/plugins/core/` (current list: `ls src/plugins/core/`, or the
+> table in `plugin-development.md` → "Core Plugins Reference") and any future
 > plugin maintained in this repository. **Community plugins do not
 > use this document** — they live at `src/plugins/community/`, are
 > installed through the URL installer, and have their own create
