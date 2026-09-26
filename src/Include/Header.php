@@ -183,7 +183,11 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             sDateTimeFormat:<?= DateTimeUtils::getDateTimeFormatForJs() ?>,
           },
           comm: {
-            smtpConfigured: <?= InputUtils::jsonEncodeForScript(SystemConfig::hasValidMailServerSettings()) ?>,
+            // True only when bEnabledEmail is on AND SMTP is configured: the same check BaseEmail::send()
+            // and POST /api/email/send apply, so the composer never offers a Send that would be refused.
+            emailSendingEnabled: <?= InputUtils::jsonEncodeForScript(SystemConfig::isEmailEnabled()) ?>,
+            // Closing the composer pre-fills at the end of a new message: "Sincerely," + the current user's name + the church name.
+            emailSignature: <?= InputUtils::jsonEncodeForScript(\ChurchCRM\Service\EmailComposerService::defaultSignature(AuthenticationManager::getCurrentUser())) ?>,
             vonageEnabled: <?= InputUtils::jsonEncodeForScript(PluginManager::getPlugin('vonage')?->isConfigured() ?? false) ?>,
             // Church default "to" address (sToEmailAddress); exposed only to email-enabled
             // users. The email composer offers it as a removable default recipient.
