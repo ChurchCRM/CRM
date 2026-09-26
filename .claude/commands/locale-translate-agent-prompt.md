@@ -125,7 +125,7 @@ If the locale has multiple files (`<CODE>-2.json`, etc.), read and translate eac
 
 **Leave as `""` (do NOT translate):** `N/A`, `name@example.com`, `SHA1 Hash`, `BCC`
 
-**Plural forms:** For languages that require them (ar, ru, pl, cs, etc.), fill all required plural forms (`zero`, `one`, `two`, `few`, `many`, `other`).
+**Plural forms:** Fill every key the batch file gives for that term, one form per key. Do not add or remove keys, and never join forms with `|`.
 
 ### 3c. Apply translations
 
