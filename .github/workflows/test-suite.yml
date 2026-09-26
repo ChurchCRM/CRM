@@ -1,0 +1,92 @@
+name: Test Suite
+on:
+  workflow_call:
+    inputs:
+      php-version:
+        required: true
+        type: string
+      deployment:
+        required: true
+        type: string
+      docker-profile:
+        required: true
+        type: string
+      docker-url:
+        required: true
+        type: string
+      docker-files:
+        required: false
+        type: string
+        default: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml'
+      artifact-id:
+        required: true
+        type: string
+
+jobs:
+  test-root:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    strategy:
+      fail-fast: false
+      matrix:
+        test-type:
+          - name: api
+            spec: "cypress/e2e/api/**/*.spec.js"
+            config: "cypress/configs/docker.config.ts"
+          - name: admin-ui
+            spec: "cypress/e2e/ui-admin/**/*.spec.js"
+            config: "cypress/configs/docker-admin.config.ts"
+        include:
+          - test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "0"
+            shard-total: 3
+          - test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "1"
+            shard-total: 3
+          - test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
+            split-index: "2"
+            shard-total: 3
+    steps:
+      - uses: ./.github/actions/checkout-node-npm@v1
+        with:
+          cache-cypress: 'true'
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v8.0.1
+        with:
+          name: ${{ inputs.artifact-id }}
+          path: .
+
+      - name: Load Docker image
+        run: |
+          docker load < temp/docker-image-${{ inputs.php-version }}.tar.gz
+          docker tag churchcrm/crm:php${{ inputs.php-version }}-test churchcrm/crm:php8-debian
+
+      - name: Start Docker
+        run: |
+          cp docker/Config.${{ inputs.deployment }}.php src/Include/Config.php 2>/dev/null || \
+          cp docker/Config.root.php src/Include/Config.php
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ${{ inputs.docker-profile }} up -d
+
+      - uses: ./.github/workflows/wait-for-server.yml@master
+        with:
+          url: ${{ inputs.docker-url }}
+          docker-compose-profile: ${{ inputs.docker-profile }}
+          docker-compose-files: ${{ inputs.docker-files }}
+
+      - uses: ./.github/workflows/run-cypress-tests.yml@master
+        with:
+          config-file: ${{ matrix.test-type.config }}
+          spec: ${{ matrix.test-type.spec }}
+          test-name: ${{ matrix.test-type.name }}
+          php-version: ${{ inputs.php-version }}
+          deployment: ${{ inputs.deployment }}
+          shard-total: ${{ matrix.shard-total || '' }}
+          shard-index: ${{ matrix.split-index || '' }}
+
+      - name: Stop Docker
+        if: always()
+        run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ${{ inputs.docker-profile }} down
