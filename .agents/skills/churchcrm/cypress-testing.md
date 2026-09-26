@@ -29,3 +29,11 @@ App under test: `DEVELOPING.md` (`npm run docker:test:start`).
 npx cypress run --config-file cypress/configs/docker.config.ts \
   --spec "cypress/e2e/path/to/spec.js"
 ```
+
+### In UI Specs, Read APIs With the Browser Session, Not an API Key <!-- learned: 2026-09-23 -->
+
+`cy.makePrivateAdminAPICall()` (and the other `makePrivate*APICall` helpers) send `X-API-Key`;
+the server answers with a fresh PHP session cookie, which Cypress stores and which replaces the
+`setupAdminSession()` login. The next `cy.visit()` then lands on the login page and every
+selector times out. Inside a UI spec use `cy.request("/api/…")` (same origin, cookies sent) to
+read data between visits; keep the API-key helpers for API specs.

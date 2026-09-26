@@ -57,4 +57,9 @@ class TestEmail extends BaseEmail
     {
         return '';
     }
+
+    protected function getLogKind(): string
+    {
+        return 'test';
+    }
 }

@@ -183,7 +183,11 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             sDateTimeFormat:<?= DateTimeUtils::getDateTimeFormatForJs() ?>,
           },
           comm: {
-            smtpConfigured: <?= InputUtils::jsonEncodeForScript(SystemConfig::hasValidMailServerSettings()) ?>,
+            // True only when bEnabledEmail is on AND SMTP is configured: the same check BaseEmail::send()
+            // and POST /api/email/send apply, so the composer never offers a Send that would be refused.
+            emailSendingEnabled: <?= InputUtils::jsonEncodeForScript(SystemConfig::isEmailEnabled()) ?>,
+            // Closing the composer pre-fills at the end of a new message: "Sincerely," + the current user's name + the church name.
+            emailSignature: <?= InputUtils::jsonEncodeForScript(\ChurchCRM\Service\EmailComposerService::defaultSignature(AuthenticationManager::getCurrentUser())) ?>,
             vonageEnabled: <?= InputUtils::jsonEncodeForScript(PluginManager::getPlugin('vonage')?->isConfigured() ?? false) ?>,
             // Church default "to" address (sToEmailAddress); exposed only to email-enabled
             // users. The email composer offers it as a removable default recipient.
@@ -273,14 +277,28 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <?php
+      // An uploaded church logo replaces both the stock icon and the church-name
+      // text — the logo is expected to carry the church's own wordmark. Without
+      // one, the stock ChurchCRM icon plus the church name stay exactly as they
+      // were. The name span is always rendered (hidden with d-none) so the
+      // Church Info uploader can toggle it without a page reload.
+      $bHasCustomLogo     = ChurchMetaData::hasCustomLogo();
+      ?>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
+        <img src="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchLogoPath()) ?>"
+             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             id="sidebar-brand-image"
+             class="navbar-brand-image rounded<?= $bHasCustomLogo ? '' : ' d-none' ?>"
+             style="height: 42px; width: auto;">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-ink-blue.svg"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-light">
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-light crm-brand-default<?= $bHasCustomLogo ? ' d-none' : '' ?>">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-paper-blue.svg"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark">
-        <span class="navbar-brand-text ps-2 fs-4 fw-bold">
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark crm-brand-default<?= $bHasCustomLogo ? ' d-none' : '' ?>">
+        <span id="sidebar-brand-text"
+              class="navbar-brand-text ps-2 fs-4 fw-bold<?= $bHasCustomLogo ? ' d-none' : '' ?>">
           <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>
         </span>
       </a>

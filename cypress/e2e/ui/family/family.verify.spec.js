@@ -48,8 +48,11 @@ describe("Family verification — self-verify token link (no account)", () => {
         cy.get("#confirmVerifyBtn").click();
         cy.get("#confirm-Verify").should("be.visible");
         cy.get("#UpdateNeeded").click();
-        cy.get("#confirm-info-data").should("be.visible").click().type("Update needed");
-        cy.get("#confirm-info-data").invoke("val").should("include", "Update");
+        // Bootstrap moves focus to the dialog when its fade-in ends; typing that started
+        // before that moment gets cut off ("Updat"). Let the fade finish, then type.
+        cy.get("#confirm-info-data").should("be.visible");
+        cy.wait(400);
+        cy.get("#confirm-info-data").click().type("Update needed").should("have.value", "Update needed");
     });
 
     it("Should display modal footer buttons", function() {
