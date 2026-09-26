@@ -17844,6 +17844,12 @@ msgid "Set up now"
 msgstr "Stel nou op"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Twee-faktor-verifikasie word vereis. Jy het %d dag om te registreer."
+msgstr[1] "Twee-faktor-verifikasie word vereis. Jy het %d dae om te registreer."
+
+#: 
 msgid "Unknown family"
 msgstr "Onbekende familie"
 
@@ -18434,4 +18440,108 @@ msgstr "skip moet nul of 'n positiewe heelgetal wees"
 #: 
 msgid "view families missing an email"
 msgstr "wys families sonder 'n e-pos"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Kopers Hierdie Fiskale Jaar"
+
+#: 
+msgid "Current"
+msgstr "Huidig"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Geskenkte Items (Hierdie Fiskale Jaar)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Gebruikersnaam moet %d karakters of minder wees!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Ingesamel Hierdie Fiskale Jaar"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s moet 'n volledige https://-webadres wees, byvoorbeeld https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Rekening het beperkte toestemmings. Kontak 'n administrateur."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "'n Fout het voorgekom tydens die vertoon van die foutbladsy."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Elke adres moet met https:// begin"
+
+#: 
+msgid "Generate Labels"
+msgstr "Genereer Etikette"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Genereer posetikette"
+
+#: 
+msgid "Labels"
+msgstr "Etikette"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Posetikette vir die persone in jou mandjie. 'n Persoon sonder 'n eie adres word aan sy/haar gesinsadres geadresseer."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Opsioneel. Skakels na die kerk se eie rekeninge, wat aan lede gewys word op bladsye soos die portaal se voetskrif. Los 'n veld leeg om daardie netwerk te verberg."
+
+#: 
+msgid "Options"
+msgstr "Opsies"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Geskeduleerde Take"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktief, sekondes oor: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Verwagte interval tussen lopies (ure): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Gesinne oorgeslaan (geen e-posadres aangeteken nie): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Gesinne wat nie geokodeer kon word nie: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Gesinne wat bevestigings-e-posse sal ontvang: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Lede gekopieer: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Nie hier gelys nie: {{total}} meer"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Ontvangers: {{total}} — te veel vir 'n mailto:-skakel. Gebruik eerder Kopieer Adresse."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Te veel ontvangers vir e-posprogram ({{total}} > {{max}}). Gebruik eerder Kopieer Adresse."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} min oor"
 
