@@ -1,0 +1,68 @@
+name: Wait for Server
+description: Poll a URL until server is ready, with retries
+
+on:
+  workflow_call:
+    inputs:
+      url:
+        description: 'Health check URL (e.g., http://127.0.0.1/api/public/echo)'
+        required: true
+        type: string
+      max-attempts:
+        description: 'Max retry attempts'
+        required: false
+        type: string
+        default: '12'
+      retry-delay-seconds:
+        description: 'Delay between retries'
+        required: false
+        type: string
+        default: '5'
+      docker-compose-files:
+        description: 'Docker compose files (comma-separated, e.g., docker/docker-compose.yaml,docker/docker-compose.parallel.yaml)'
+        required: false
+        type: string
+        default: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml'
+      docker-compose-profile:
+        description: 'Docker compose profile (e.g., ci-root, ci-subdir)'
+        required: true
+        type: string
+
+jobs:
+  wait:
+    name: Wait for Server
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Wait for server
+        run: |
+          max_attempts=${{ inputs.max-attempts }}
+          attempt=1
+          retry_delay=${{ inputs.retry-delay-seconds }}
+
+          # Convert comma-separated docker-compose files to proper format
+          compose_files=""
+          for file in $(echo "${{ inputs.docker-compose-files }}" | tr ',' '\n'); do
+            compose_files="$compose_files -f $file"
+          done
+
+          until curl -sf "${{ inputs.url }}"; do
+            if [ $attempt -eq $max_attempts ]; then
+              echo "Server failed to respond after $max_attempts attempts at ${{ inputs.url }}"
+              echo ""
+              echo "Docker compose status:"
+              docker compose $compose_files --profile ${{ inputs.docker-compose-profile }} ps -a || true
+              echo ""
+              echo "Docker compose logs:"
+              docker compose $compose_files --profile ${{ inputs.docker-compose-profile }} logs || true
+              exit 1
+            fi
+            echo "Attempt $attempt/$max_attempts — retrying in ${retry_delay}s... (URL: ${{ inputs.url }})"
+            sleep $retry_delay
+            attempt=$((attempt + 1))
+          done
+
+          echo "✓ Server ready at ${{ inputs.url }}"

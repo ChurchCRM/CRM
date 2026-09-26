@@ -263,21 +263,11 @@ jobs:
         docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
 
     - name: Wait for server (root path)
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -sf http://127.0.0.1/api/public/echo; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/workflows/wait-for-server.yml@master
+      with:
+        url: 'http://127.0.0.1/api/public/echo'
+        docker-compose-profile: 'ci-root'
+        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml'
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP ${{ matrix.php-version }})
       run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
