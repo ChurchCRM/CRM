@@ -282,7 +282,7 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
  * @OA\Post(
  *     path="/map/geocode-all",
  *     summary="Geocode all active families missing coordinates",
- *     description="Iterates active families that have a street address but no usable coordinates, geocoding each via Nominatim at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Admin-only.",
+ *     description="Iterates active families that have a street address but no usable coordinates, geocoding each via the configured geocoding services (Map Settings) at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Admin-only.",
  *     tags={"Map"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(
