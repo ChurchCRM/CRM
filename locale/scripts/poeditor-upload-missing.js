@@ -922,6 +922,8 @@ async function main() {
     console.log(`  1. Share translations with POEditor reviewers`);
     console.log(`  2. Run locale-release workflow to download full translations (JSON + PO/MO)`);
     console.log(`${'═'.repeat(72)}\n`);
+
+    if (results.some((r) => r.status === 'upload-failed')) process.exitCode = 1;
 }
 
 main().catch((err) => {
