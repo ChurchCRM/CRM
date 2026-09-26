@@ -160,6 +160,7 @@ function buildLocaleMap() {
                 poEditorCode: entry.poEditor,
                 locale: entry.locale || entry.poEditor,
                 name,
+                skipAudit: entry.skip_audit === true,
             };
         }
     }
@@ -720,7 +721,7 @@ async function main() {
             continue;
         }
 
-        const { poEditorCode, locale: localeCode, name: localeName } = localeEntry;
+        const { poEditorCode, name: localeName, skipAudit } = localeEntry;
 
         console.log(`\n${'─'.repeat(62)}`);
         console.log(`📂  [${localeNum}/${totalLocales}]  ${localeName}  (${poEditorCode})`);
@@ -836,7 +837,14 @@ async function main() {
 
         // ── Refresh missing terms ────────────────────────────────────────────
         let remainingCount = '?';
-        if (!skipDownload) {
+        if (skipAudit) {
+            // English variants (skip_audit in locales.json) are the project's
+            // source language or a variant of it — POEditor's "untranslated"
+            // filter has no real meaning for them and would just re-list every
+            // term, recreating a missing-terms folder that shouldn't exist.
+            // poeditor-downloader.js skips the same fetch for the same reason.
+            console.log(`\n  ⏭️  Skipping missing-terms refresh for ${poEditorCode} (skip_audit)`);
+        } else if (!skipDownload) {
             console.log(`\n  ⬇️  Refreshing missing terms from POEditor...`);
             try {
                 await sleep(3000); // brief pause before download to let POEditor process
