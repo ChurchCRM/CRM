@@ -123,7 +123,10 @@ test('buildPoeditorPayload skips plurals it cannot place', () => {
 
 test('every plural in the real messages.po is classified', () => {
     const messagesPo = fs.readFileSync(path.join(__dirname, '../../messages.po'), 'utf8');
+    const entries = parsePoEntries(messagesPo);
     const real = loadSourceTermKinds(messagesPo);
-    assert.ok(real.gettextPlurals.has('Two-factor authentication is required. You have %d day to enroll.'));
-    assert.deepEqual([...real.contextForms.get('Copied {{count}} members')].sort(), ['one', 'other']);
+    for (const { msgid, msgidPlural, msgctxt } of entries) {
+        if (msgidPlural !== undefined) assert.ok(real.gettextPlurals.has(msgid), msgid);
+        if (['one', 'other'].includes(msgctxt)) assert.ok(real.contextForms.get(msgid)?.has(msgctxt), msgid);
+    }
 });
