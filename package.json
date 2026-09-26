@@ -117,7 +117,7 @@
         "@fortawesome/fontawesome-free": "^7.3.1",
         "@tabler/core": "^1.4.0",
         "@uppy/core": "^5.2.0",
-        "@uppy/dashboard": "^5.1.1",
+        "@uppy/dashboard": "^6.0.0",
         "@uppy/image-editor": "^4.2.0",
         "@uppy/webcam": "^5.1.0",
         "@uppy/xhr-upload": "^5.2.0",
