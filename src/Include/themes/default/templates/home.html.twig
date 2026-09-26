@@ -1,0 +1,148 @@
+{% extends "layout.html.twig" %}
+
+{#
+  The member's landing page. Every section is a real card now: the welcome card,
+  the church calendar card (MP5, #9866 — the next three events from the
+  calendars the church shares), the volunteering card (MP6, #9867), and the
+  My Family and Profile cards (MP4, #9865). MP2's "coming soon" placeholders are
+  gone, so nothing on this page is a promise any more.
+
+  The volunteering card's two lines — what the member is on for next, and how
+  many of their assignments are still waiting for an answer — are filled in by
+  `portal.min.js` from `/api/ministries/me/assignments`. The card is
+  server-rendered empty and stays useful if that request fails.
+
+  The section switches on Admin → Member Portal (#9864) still decide whether a
+  section belongs on the page at all: `portal.showCalendar` for the calendar
+  card, `showVolunteering` for the volunteering one. A theme drawing its own
+  home page filters the same way.
+
+  Variables: `pageTitle`; `upcomingEvents` ({title, when, calendarName} for each
+  of the next three events, already formatted) and `hasVisibleCalendars`;
+  `showVolunteering` (whether the volunteering card is rendered at all);
+  `familySummary` (`{name, memberCount}`, or null when the member has no family
+  record); `profile` (the same view-model the Profile page renders, or null for
+  an account with no person record).
+#}
+
+{% block content %}
+<div class="portal-home">
+
+    <section class="portal-card portal-welcome">
+        <h1 class="portal-welcome-title">{{ gettext('Welcome, %s')|format(member.firstName|default(member.fullName)) }}</h1>
+        {% if member.familyName %}
+        <p class="portal-welcome-family">{{ gettext('%s family')|format(member.familyName) }}</p>
+        {% endif %}
+        <p class="portal-welcome-intro">
+            {{ gettext('This is your church account. Everything you can do for yourself and your family lives here.') }}
+        </p>
+    </section>
+
+    <div class="portal-card-grid">
+        {% if portal.showCalendar %}
+        <section class="portal-card portal-card-calendar">
+            <h2 class="portal-card-title">
+                <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+                <span>{{ gettext('Church calendar') }}</span>
+            </h2>
+            {% if not hasVisibleCalendars %}
+            <p class="portal-card-text">{{ gettext('No calendar has been shared with members yet.') }}</p>
+            {% elseif upcomingEvents is empty %}
+            <p class="portal-card-text">{{ gettext('Nothing is on the calendar just now.') }}</p>
+            {% else %}
+            <ul class="portal-upcoming-list">
+                {% for event in upcomingEvents %}
+                <li class="portal-upcoming-item">
+                    <span class="portal-upcoming-title">{{ event.title }}</span>
+                    <span class="portal-upcoming-when">{{ event.when }}</span>
+                    {% if event.calendarName %}
+                    <span class="portal-upcoming-calendar">{{ event.calendarName }}</span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <a class="portal-card-link" href="{{ url('/portal/calendar') }}">{{ gettext('See the whole calendar') }}</a>
+        </section>
+        {% endif %}
+
+        {% if showVolunteering %}
+        <section class="portal-card portal-card-volunteering" id="portal-volunteering-card">
+            <h2 class="portal-card-title">
+                <i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>
+                <span>{{ gettext('My volunteering') }}</span>
+            </h2>
+
+            <p class="portal-card-text" id="portal-volunteering-loading">{{ gettext('Loading') }}</p>
+
+            {# Filled by portal.min.js; the strings it writes are i18next.t() there. #}
+            <p class="portal-card-text d-none" id="portal-volunteering-next"></p>
+            <p class="portal-volunteering-pending d-none" id="portal-volunteering-pending"></p>
+
+            <p class="portal-card-text d-none" id="portal-volunteering-empty">
+                {{ gettext('Nothing on your list yet. Have a look at what needs filling.') }}
+            </p>
+
+            <a class="portal-card-link" href="{{ url('/portal/volunteer/schedule') }}">
+                {{ gettext('Go to my volunteering') }}
+            </a>
+        </section>
+        {% endif %}
+
+        <section class="portal-card" id="portal-home-family-card">
+            <h2 class="portal-card-title">
+                <i class="fa-solid fa-people-roof" aria-hidden="true"></i>
+                <span>{{ gettext('My Family') }}</span>
+            </h2>
+            {% if familySummary %}
+            <p class="portal-card-text">
+                <span class="portal-card-lead">{{ gettext('%s family')|format(familySummary.name) }}</span><br>
+                {{ ngettext('%s person in your household', '%s people in your household', familySummary.memberCount)|format(familySummary.memberCount) }}
+            </p>
+            <p><a class="portal-card-link" href="{{ url('/portal/family') }}">{{ gettext('Update your details') }}</a></p>
+            {% else %}
+            {# The same fact My Family itself reports, in one line. The page it
+               links to carries the church office's contact details. #}
+            <p class="portal-card-text">{{ gettext('You are not currently associated with a family') }}</p>
+            <p><a class="portal-card-link" href="{{ url('/portal/family') }}">{{ gettext('How to correct this') }}</a></p>
+            {% endif %}
+        </section>
+
+        <section class="portal-card" id="portal-home-profile-card">
+            <h2 class="portal-card-title">
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+                <span>{{ gettext('Profile') }}</span>
+            </h2>
+            <p class="portal-card-text">
+                <span class="portal-card-lead">{{ member.fullName }}</span>
+            </p>
+            {#
+              The details themselves, not a description of them. Empty fields are
+              left out, so the card is as long as the church's record is full.
+              The birthday follows the Profile page, which shows it only while
+              `bPortalAllowBirthdayEdit` is on; the family role is meaningless
+              for a member with no family, so it waits for one.
+            #}
+            {% set profileRows = [
+                { 'field': 'email', 'label': gettext('Email'), 'icon': 'fa-solid fa-envelope', 'value': profile.email },
+                { 'field': 'cellPhone', 'label': gettext('Mobile Phone'), 'icon': 'fa-solid fa-mobile-screen', 'value': profile.cellPhone },
+                { 'field': 'homePhone', 'label': gettext('Home Phone'), 'icon': 'fa-solid fa-phone', 'value': profile.homePhone },
+                { 'field': 'birthday', 'label': gettext('Birthday'), 'icon': 'fa-solid fa-cake-candles', 'value': profile.canEditBirthday ? profile.birthday : '' },
+                { 'field': 'familyRole', 'label': gettext('Family Role'), 'icon': 'fa-solid fa-people-roof', 'value': profile.familyId ? profile.familyRole : '' }
+            ]|filter(row => row.value) %}
+            {% if profileRows is empty %}
+            <p class="portal-card-text">{{ gettext('No contact details on file yet.') }}</p>
+            {% else %}
+            <dl class="portal-detail-list portal-card-details" id="portal-home-profile-details">
+                {% for row in profileRows %}
+                <dt><i class="{{ row.icon }}" aria-hidden="true"></i> {{ row.label }}</dt>
+                <dd data-field="{{ row.field }}">{{ row.value }}</dd>
+                {% endfor %}
+            </dl>
+            {% endif %}
+            <p><a class="portal-card-link" href="{{ url('/portal/profile') }}">{{ gettext('Update your details') }}</a></p>
+        </section>
+    </div>
+
+</div>
+{% endblock %}

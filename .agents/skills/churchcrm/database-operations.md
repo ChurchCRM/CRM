@@ -242,6 +242,52 @@ $record = PersonCustomMasterQuery::create()
 // This tells us custom_Field → Id in phpName
 ```
 
+## Idempotent Writes: a UNIQUE key + `findOneOrCreate()` <!-- learned: 2026-09-12 -->
+
+To make a write safe to repeat — a generator that may run twice, an enqueue that may
+be retried, a grant that may be re-posted — put a `UNIQUE` key on the natural identity
+and reach it with `findOneOrCreate()` inside the caller's transaction. Do **not**
+pre-flight with a `SELECT` and then `INSERT`: two concurrent requests both pass the
+check. The index is the guarantee; the query is only the fast path.
+
+```php
+$con = Propel::getWriteConnection(VolunteerOccurrenceTableMap::DATABASE_NAME);
+$con->beginTransaction();
+try {
+    // findOneOrCreate() ACCEPTS a connection, so it sees the transaction's own
+    // uncommitted rows — a default read connection would not.
+    $row = VolunteerOccurrenceQuery::create()
+        ->filterByScheduleId($scheduleId)
+        ->filterByEventId($eventId)
+        ->findOneOrCreate($con);
+
+    if ($row->isNew()) {          // the only reliable "did I create it?" test
+        $row->setGeneratedDate(DateTimeUtils::getNowDateTime());
+        $row->save($con);
+    }
+    $con->commit();
+} catch (\Throwable $e) {
+    $con->rollBack();
+    throw $e;
+}
+```
+
+Three details that are easy to get wrong:
+
+- **`filterByCol(null)` builds an `IS NULL` criterion, and the created object inherits
+  it.** That is what makes an upsert on a polymorphic "exactly one parent" table work:
+  `->filterByScheduleId($id)->filterByOccurrenceId(null)` finds the template row and, when
+  absent, creates one with the right parent already set.
+- **MySQL permits multiple `NULL`s in a `UNIQUE` index.** Two unique keys over the same
+  table, each with a nullable column, therefore do not collide with each other — rows that
+  are `NULL` in one key are deduplicated only by the other. `volunteer_occurrence_vocc`
+  uses exactly this: `(schedule, event)` dedupes event-linked rows and `(schedule, start)`
+  dedupes standalone ones.
+- **`findOneOrCreate()` throws if the query has joins.** Filter on the table's own columns.
+
+Existing call sites: `Event::checkInPerson()` (`Event.php:87-90`, `UNIQUE(event_id,
+person_id)`) and `VolunteerAuthorizationService::grantScope()`.
+
 ## Database Access Example
 
 ```php
@@ -260,6 +306,26 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 
 **ORM Configuration:** `orm/schema.xml`, `orm/propel.php.dist`
 **Generated Models:** `src/ChurchCRM/model/ChurchCRM/` (don't edit directly)
+
+### There is no `Criteria::BETWEEN` <!-- learned: 2026-09-12 -->
+
+`Propel\Runtime\ActiveQuery\Criteria` has no `BETWEEN` constant. Writing one is a
+**runtime** `Error: Undefined constant`, not a lint or build failure, so it surfaces only
+when the code path actually runs — which for a background job can be days later, inside a
+`runTimerJob()` try/catch that logs and keeps going.
+
+```php
+// ❌ WRONG — fatal at runtime, and nothing catches it at build time
+->filterByOccurrenceDate(['min' => $from, 'max' => $to], Criteria::BETWEEN)
+
+// ✅ CORRECT — two filters, explicit and greppable
+->filterByOccurrenceDate($from, Criteria::GREATER_EQUAL)
+->filterByOccurrenceDate($to, Criteria::LESS_EQUAL)
+```
+
+The generated `filterBy*()` range form (`['min' => …, 'max' => …]` with **no** second
+argument) also works, but it reads like an `IN (…)` to anyone skimming, so prefer the two
+explicit filters.
 
 ### MySQL 8.0 Strict Mode: DATE Comparisons <!-- learned: 2026-03-02 -->
 
@@ -681,3 +747,51 @@ $families->where('(' . implode(' OR ', $conditions) . ')');
 `where($namedConditions, 'or')` (the array form) is safe for the same reason — Propel builds a
 combined criterion. The trap is only the single raw SQL string. Audit with:
 `grep -rn --include="*.php" -e "->where(" src | grep -i " or "`.
+
+## Propel Cannot DELETE Through a Join <!-- learned: 2026-09-17 -->
+
+`ModelCriteria::delete()` throws `PropelException: ModelCriteria::delete is unable to delete.`
+(HTTP 500 through the API error handler) when the query carries a `useXxxQuery()` join.
+Resolve the ids through the join first, then delete by `IN`:
+
+```php
+// ❌ 500 — a joined DELETE
+VolunteerAssignmentQuery::create()
+    ->useOccurrenceQuery()->useScheduleQuery()->filterByMinistryId($id)->endUse()->endUse()
+    ->delete($connection);
+
+// ✅ two steps
+$occurrenceIds = VolunteerOccurrenceQuery::create()
+    ->useScheduleQuery()->filterByMinistryId($id)->endUse()
+    ->select('Id')->find()->toArray();
+if ($occurrenceIds !== []) {
+    VolunteerAssignmentQuery::create()
+        ->filterByOccurrenceId(array_map('intval', $occurrenceIds), Criteria::IN)
+        ->delete($connection);
+}
+```
+
+`count()` and `find()` through the same join are fine; only `delete()` (and `update()`) refuse it.
+
+## UPDATE on a freshly INSERTed object: run a Query first <!-- learned: 2026-09-18 -->
+
+Propel registers a model's table map lazily — a `XxxQuery` resolves it by PHP name and
+adds it to the `DatabaseMap`. `save()` on an existing row (an UPDATE) and `delete()` look
+the map up by TABLE name instead, which has no fallback. So an object that was only
+`new`ed and INSERTed in this request, never fetched, fails on its second `save()`:
+
+```
+Propel\Runtime\Map\Exception\TableNotFoundException: Cannot fetch TableMap for
+undefined table `volunteer_schedule_vsch` in database `default`.
+```
+
+Any Query for the model run earlier in the request (a `findPk()`, a `count()`) makes it
+work, which is why the ordinary edit paths never see it. When a service creates a row and
+then updates it, re-read it through the Query first:
+
+```php
+$created = $this->createSchedule($ministry, $fields, $actor);      // INSERT
+$schedule = VolunteerScheduleQuery::create()->findPk($created->getId()); // registers the map
+$schedule->setOneOff(true);
+$schedule->save();                                                 // UPDATE now works
+```

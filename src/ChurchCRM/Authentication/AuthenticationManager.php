@@ -99,6 +99,25 @@ class AuthenticationManager
         }
     }
 
+    /**
+     * Replace the current session's authentication provider with a local
+     * provider already established as `$user`, without authenticating them.
+     *
+     * This bypasses every credential check, so it is reserved for the admin
+     * masquerade flow: {@see \ChurchCRM\Service\ImpersonationService} performs
+     * the authorization checks and the auth-log bookkeeping, and is the only
+     * supported caller. None of the one-time login side effects run here — no
+     * session id rotation, no `usr_LastLogin` / `usr_LoginCount` update, no
+     * failed-login reset, no update check, no remote notification fetch and no
+     * plugin hooks.
+     */
+    public static function establishSessionAsUser(User $user): void
+    {
+        $authenticationProvider = new LocalAuthentication();
+        self::setAuthenticationProvider($authenticationProvider);
+        $authenticationProvider->establishSessionAsUser($user);
+    }
+
     public static function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult
     {
         $logger = LoggerUtils::getAppLogger();
@@ -136,7 +155,7 @@ class AuthenticationManager
         if ($result->isAuthenticated && !$result->preventRedirect) {
             $redirectLocation = self::validateRedirectPath($_SESSION['location'] ?? null);
             unset($_SESSION['location']); // clear post-login redirect (one-time use)
-            $redirectLocation ??= 'v2/dashboard';
+            $redirectLocation ??= self::getDefaultLandingPath();
             
             // One-time login tasks: check for system updates and fetch remote notifications
             self::checkSystemUpdates();
@@ -243,6 +262,23 @@ class AuthenticationManager
         if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
             RedirectUtils::securityRedirect('Admin');
         }
+    }
+
+    /**
+     * Where a login lands when nothing else asked for a specific page.
+     *
+     * One rule (Member Portal design P10, #9863): a self-service account —
+     * EditSelf and nothing else — lands in the Member Portal and cannot reach
+     * the admin shell; every other login lands on the admin dashboard as before.
+     */
+    private static function getDefaultLandingPath(): string
+    {
+        $currentUser = self::getCurrentUser();
+        if ($currentUser !== null && $currentUser->isEditSelfExclusive()) {
+            return 'portal/';
+        }
+
+        return 'v2/dashboard';
     }
 
     /**

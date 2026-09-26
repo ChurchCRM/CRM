@@ -1,0 +1,279 @@
+{% extends "layout.html.twig" %}
+
+{#
+  One date of one team, staffed from inside the Member Portal (MP7, #9868;
+  Member Portal design §5.5, volunteer design §5.5).
+
+  The portal twin of `/ministries/occurrences/{id}`. **The bundle is the admin
+  page's, unchanged**: `skin/v2/ministries-occurrence.min.js` is
+  `webpack/ministries/occurrence.ts`, which was already page-agnostic — it names no
+  ministry, reads its whole world from `window.CRM.volunteerOccurrence` and
+  `/api/ministries/occurrences/{id}/*`, and addresses its markup by id. So nothing
+  had to be extracted from it for this page to exist; only the chrome moved, which
+  is exactly what P15 did for the two volunteer member pages in MP6. Every id
+  below is therefore one that bundle looks for and may not be renamed here.
+
+  Two differences from the admin view, both about the member's world rather than
+  the coordinator's:
+
+    * the linked event is NAMED but not LINKED. `/event/view/{id}` is an admin
+      shell page; a self-service login asking for it is bounced to `/portal/`
+      (AuthMiddleware), so a link would be a dead end dressed up as a way out.
+      The title and the location still tell the leader where the time came from,
+      which is the whole of what D4 needs to be visible.
+    * a breadcrumb back to the team, because the portal has no admin breadcrumb
+      bar of its own.
+
+  Variables: `pageTitle`, `team` — `{id, name, ministryId, ministryName}` — and
+  `occurrence` — `{id, scheduleName, status, date, start, end, eventId,
+  eventTitle, eventLocation}`.
+#}
+
+{% block content %}
+<div class="portal-occurrence" id="volunteer-occurrence">
+
+    <p class="portal-breadcrumb">
+        <a href="{{ url('/portal/teams/' ~ team.id) }}">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+            {{ team.name }}
+        </a>
+    </p>
+
+    {# Header: when, where the time comes from, and what state this date is in #}
+    <section class="portal-card">
+        <h1 class="portal-page-title">{{ occurrence.scheduleName }}</h1>
+
+        <p class="portal-card-text" id="occurrence-when">
+            <i class="fa-solid fa-clock me-1" aria-hidden="true"></i>
+            {{ occurrence.start ?: occurrence.date }}{% if occurrence.end %} &ndash; {{ occurrence.end }}{% endif %}
+        </p>
+
+        <p class="portal-card-text" id="occurrence-ministry">
+            <i class="fa-solid fa-people-group me-1" aria-hidden="true"></i>
+            {{ team.ministryName }} &middot; {{ team.name }}
+        </p>
+
+        <p>
+            {% if occurrence.status == 'cancelled' %}
+            <span class="badge bg-red-lt text-red" id="occurrence-status">{{ gettext('Cancelled') }}</span>
+            {% else %}
+            <span class="badge bg-green-lt text-green" id="occurrence-status">{{ gettext('Scheduled') }}</span>
+            {% endif %}
+        </p>
+
+        {% if occurrence.eventId %}
+        <div class="portal-card-text small" id="occurrence-event">
+            <i class="fa-solid fa-calendar-day me-1" aria-hidden="true"></i>
+            {{ occurrence.eventTitle ?: gettext('A calendar event') }}
+            <div class="text-body-secondary">{{ gettext('Times come from this event') }}</div>
+            {% if occurrence.eventLocation %}
+            <div class="text-body-secondary">
+                <i class="fa-solid fa-location-dot me-1" aria-hidden="true"></i>{{ occurrence.eventLocation }}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </section>
+
+    {# Requirements and their assignment rows #}
+    <section class="portal-card">
+        <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
+            <h2 class="portal-card-title">
+                <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                <span>{{ gettext('Staffing') }}</span>
+            </h2>
+            <div class="d-flex flex-wrap gap-2">
+                <button type="button" class="btn btn-sm btn-outline-primary" id="requirements-edit">
+                    <i class="fa-solid fa-sliders me-1" aria-hidden="true"></i>{{ gettext('Edit staffing needs') }}
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" id="requirements-refresh">
+                    <i class="fa-solid fa-rotate me-1" aria-hidden="true"></i>{{ gettext('Refresh') }}
+                </button>
+            </div>
+        </div>
+
+        <div class="volunteer-loading text-center py-4" id="requirements-loading">
+            <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+            {{ gettext('Loading') }}
+        </div>
+        <div class="alert alert-danger d-none" role="alert" id="requirements-error">
+            <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+            <span class="volunteer-error-text"></span>
+            <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry">{{ gettext('Retry') }}</button>
+        </div>
+        <div class="empty d-none" id="requirements-empty">
+            <div class="empty-icon"><i class="fa-solid fa-calendar-check fa-2x text-muted" aria-hidden="true"></i></div>
+            <p class="empty-title">{{ gettext('No staffing needs set') }}</p>
+            <p class="empty-subtitle text-body-secondary">
+                {{ gettext('Nobody has said how many volunteers each position needs, so there is nothing to fill.') }}
+            </p>
+            <div class="empty-action">
+                <button type="button" class="btn btn-primary" id="requirements-empty-edit">
+                    <i class="fa-solid fa-sliders me-1" aria-hidden="true"></i>{{ gettext('Set staffing needs') }}
+                </button>
+            </div>
+        </div>
+        <div class="row g-3 d-none" id="requirements-content"></div>
+    </section>
+
+    {# Assignments whose position no longer has a requirement #}
+    <section class="portal-card d-none" id="other-assignments-card">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+            <span>{{ gettext('Assigned outside the current plan') }}</span>
+        </h2>
+        <p class="portal-card-text text-body-secondary">
+            {{ gettext('These people are still assigned, but the position they hold is no longer part of this date\'s staffing plan.') }}
+        </p>
+        <div class="volunteer-scroll-x">
+            <table class="table table-vcenter" id="other-assignments-table">
+                <thead>
+                    <tr>
+                        <th>{{ gettext('Position') }}</th>
+                        <th>{{ gettext('Volunteer') }}</th>
+                        <th class="text-center">{{ gettext('Status') }}</th>
+                        <th class="text-center no-export w-1">{{ gettext('Actions') }}</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+
+    {# The swap queue for this date #}
+    <section class="portal-card" id="swaps-card">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-right-left" aria-hidden="true"></i>
+            <span>{{ gettext('Substitution requests') }}</span>
+        </h2>
+        <div class="volunteer-loading text-center py-4" id="swaps-loading">
+            <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+            {{ gettext('Loading') }}
+        </div>
+        <div class="alert alert-danger d-none" role="alert" id="swaps-error">
+            <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+            <span class="volunteer-error-text"></span>
+            <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry">{{ gettext('Retry') }}</button>
+        </div>
+        <div class="empty d-none" id="swaps-empty">
+            <div class="empty-icon"><i class="fa-solid fa-right-left fa-2x text-muted" aria-hidden="true"></i></div>
+            <p class="empty-title">{{ gettext('No substitution requests') }}</p>
+            <p class="empty-subtitle text-body-secondary">
+                {{ gettext('When a volunteer proposes someone to take their place, it appears here for you to approve or reject.') }}
+            </p>
+        </div>
+        <div class="volunteer-scroll-x d-none" id="swaps-table-wrapper">
+            <table class="table table-vcenter" id="volunteerSwapsTable">
+                <thead>
+                    <tr>
+                        <th>{{ gettext('Position') }}</th>
+                        <th>{{ gettext('Volunteer') }}</th>
+                        <th>{{ gettext('Proposed substitute') }}</th>
+                        <th>{{ gettext('Proposed') }}</th>
+                        <th class="text-center no-export w-1">{{ gettext('Actions') }}</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+{#
+  The eligible picker (§5.5). The list is fetched whole when the dialog opens
+  rather than searched over AJAX: it is bounded (people qualified for one
+  position), it is ORDERED — last served first, which is the rotation — and each
+  entry carries annotations a generic person search cannot express.
+#}
+<div class="modal fade" id="volunteer-assign-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ gettext('Assign a volunteer') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ gettext('Close') }}"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger d-none" role="alert" id="assign-form-error">
+                    <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+                    <span class="volunteer-error-text"></span>
+                </div>
+                <div class="mb-2 text-body-secondary" id="assign-position-label"></div>
+                <div class="mb-3">
+                    <label class="form-label" for="assign-person-select">{{ gettext('Volunteer') }}</label>
+                    <select class="form-select" id="assign-person-select"></select>
+                    <div class="form-hint">{{ gettext('Whoever served least recently is listed first.') }}</div>
+                </div>
+                <div class="empty d-none" id="assign-empty">
+                    <div class="empty-icon"><i class="fa-solid fa-user-slash fa-2x text-muted" aria-hidden="true"></i></div>
+                    <p class="empty-title">{{ gettext('Nobody is qualified for this position yet') }}</p>
+                    <p class="empty-subtitle text-body-secondary">
+                        {{ gettext('Tick them on the Volunteers tab of this team, then assign them here.') }}
+                    </p>
+                </div>
+                <div class="alert alert-warning d-none" role="alert" id="assign-conflict-warning">
+                    <i class="fa-solid fa-triangle-exclamation me-1" aria-hidden="true"></i>
+                    <span class="assign-conflict-text"></span>
+                </div>
+                <div class="alert alert-warning d-none" role="alert" id="assign-outside-pool-warning">
+                    <i class="fa-solid fa-user-plus me-1" aria-hidden="true"></i>
+                    <span class="assign-outside-pool-text"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-bs-dismiss="modal">{{ gettext('Cancel') }}</button>
+                <button type="button" class="btn btn-primary" id="assign-save">{{ gettext('Assign') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{#
+  The staffing-needs editor (§2.10). The same position/checkbox/Min/Max rows the
+  schedule form draws — one shared module, `webpack/ministries/staffing-needs.ts`.
+  Saving writes occurrence-level OVERRIDE rows; "Use the schedule's needs" deletes
+  them so this date follows its schedule again.
+#}
+<div class="modal fade" id="volunteer-needs-modal" tabindex="-1" aria-hidden="true" aria-labelledby="needsModalTitle">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="needsModalTitle">{{ gettext('Edit staffing needs') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ gettext('Close') }}"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger d-none" role="alert" id="needs-form-error">
+                    <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+                    <span class="volunteer-error-text"></span>
+                </div>
+                <p class="text-body-secondary" id="needs-form-hint"></p>
+                <div class="volunteer-loading text-center py-4" id="needs-loading">
+                    <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+                    {{ gettext('Loading') }}
+                </div>
+                <div id="needs-form-rows"></div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-link text-danger d-none" id="needs-form-reset">
+                    <i class="fa-solid fa-rotate-left me-1" aria-hidden="true"></i>{{ gettext('Use the schedule\'s needs') }}
+                </button>
+                <div class="d-flex gap-2 ms-auto">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ gettext('Cancel') }}</button>
+                    <button type="button" class="btn btn-primary" id="needs-form-save">{{ gettext('Save') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script nonce="{{ nonce() }}">
+window.CRM = window.CRM || {};
+window.CRM.volunteerOccurrence = {
+    occurrenceId: {{ occurrence.id }},
+    ministryId: {{ team.ministryId }},
+    eventId: {{ occurrence.eventId }}
+};
+</script>
+<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/ministries-occurrence.min.js') }}"></script>
+{% endblock %}

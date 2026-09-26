@@ -145,5 +145,28 @@ $(document).ready(function() {
 </script>
 <?php endif; ?>
 
+<?php if (!empty($recentEmails)) : ?>
+<!-- Recent sends (admin) -->
+<div class="card mt-3" id="email-recent-sends">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title m-0"><i class="fa-solid fa-envelope-open-text me-2"></i><?= gettext('Recent Sends') ?>
+            <span class="badge bg-secondary-lt text-secondary ms-2"><?= (int) $recentEmails['total'] ?></span>
+        </h3>
+        <?php if (!empty($failedEmailCount)) : ?>
+            <span class="badge bg-danger-lt text-danger ms-3"><i class="fa-solid fa-triangle-exclamation me-1"></i><?= sprintf(gettext('%d failed'), (int) $failedEmailCount) ?></span>
+        <?php endif; ?>
+        <span class="ms-auto text-body-secondary small"><?= gettext('Every email ChurchCRM sent, newest first. Open a person to see their full history.') ?></span>
+    </div>
+    <div class="card-body p-0">
+        <?php
+        $emailHistoryRows = $recentEmails['rows'];
+        $emailHistoryShowTo = true;
+        include SystemURLs::getDocumentRoot() . '/people/views/partials/email-history-table.php';
+        ?>
+    </div>
+</div>
+<?php include SystemURLs::getDocumentRoot() . '/people/views/partials/email-history-modal.php'; ?>
+<?php endif; ?>
+
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

@@ -4,12 +4,21 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\ImpersonationService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext("Settings");
 $sPageSubtitle = $user->getFullName();
 $isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
+// Admin masquerade (#9843): offered only to an administrator, never on their own
+// record, never on another administrator's record, and never while a masquerade
+// is already running — the same four conditions the POST route enforces.
+$canImpersonateViewedUser = AuthenticationManager::getCurrentUser()->isAdmin()
+    && !$isOwnProfile
+    && !$user->isAdmin()
+    && !ImpersonationService::isActive();
 // Use distinct variable names so Header.php's reassignment of $personId,
 // $avatarApiUrl, $hasUploadedPhoto, and $photo (always reads the logged-in
 // user's values) cannot clobber the viewed user's values. Same pattern as
@@ -205,6 +214,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-outline-secondary">
                   <i class="fa-solid fa-cog me-1"></i><?= gettext("Advanced Settings") ?>
                 </a>
+                <?php if ($canImpersonateViewedUser): ?>
+                <!--
+                  Admin masquerade (#9843). The form is submitted by user.js after a
+                  bootbox confirmation; it is a real form so the action still works
+                  with JavaScript disabled.
+                -->
+                <form id="impersonateForm" class="d-inline" method="post"
+                      action="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/user/' . $user->getId() . '/impersonate') ?>"
+                      data-user-name="<?= InputUtils::escapeAttribute($user->getName()) ?>">
+                  <?= CSRFUtils::getTokenInputField('user_impersonate') ?>
+                  <button type="submit" id="loginAsUser" class="btn btn-outline-warning ms-2">
+                    <i class="fa-solid fa-user-secret me-1"></i><?= gettext("Login as User") ?>
+                  </button>
+                </form>
+                <?php endif; ?>
                 <small class="form-hint mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
               </div>
             </div>
@@ -454,6 +478,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isManageGroups()],
                 ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isFinance()],
                 ['label' => gettext("Manage Fundraisers"), 'granted' => $user->isManageFundraisers()],
+                ['label' => gettext("Manage Ministries"), 'granted' => $user->isManageMinistries()],
+                ['label' => gettext("Manage My Ministries"), 'granted' => $user->isManageMyMinistries()],
             ];
             foreach ($permissions as $perm):
             ?>

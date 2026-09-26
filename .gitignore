@@ -18,6 +18,8 @@ locale/.work
 # Uploaded Images
 src/Images/Family/*
 src/Images/Person/*
+# Uploaded church logo (Admin -> Church Information)
+src/Images/church-logo.png
 # Keep the directories for CI/fresh installs
 !src/Images/Family/.gitkeep
 !src/Images/Person/.gitkeep
@@ -40,6 +42,13 @@ src/generated-conf/
 src/plugins/community/*
 # ...except the checked-in .htaccess deny block (GHSA-37mf-vq43-5qp9)
 !src/plugins/community/.htaccess
+
+# Member Portal themes are uploaded by the church and live in their own repo;
+# only the system theme that ships with the release is committed here.
+src/Include/themes/*
+!src/Include/themes/default
+# Twig's compile cache for the portal (created at runtime)
+src/Include/cache/
 
 src/admin/data/signatures.json
 src/ChurchCRM/model/ChurchCRM/Base

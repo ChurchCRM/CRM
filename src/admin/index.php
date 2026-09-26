@@ -19,6 +19,7 @@ require __DIR__ . '/routes/api/database.php';
 require __DIR__ . '/routes/api/birthday-emails.php';
 require __DIR__ . '/routes/api/orphaned-files.php';
 require __DIR__ . '/routes/api/options.php';
+require __DIR__ . '/routes/api/member-portal.php';
 require __DIR__ . '/routes/api/system/system-config.php';
 require __DIR__ . '/routes/api/system/system-logs.php';
 require __DIR__ . '/routes/api/upgrade.php';
@@ -27,5 +28,7 @@ require __DIR__ . '/routes/api/import.php';
 require __DIR__ . '/routes/import.php';
 require __DIR__ . '/routes/export.php';
 require __DIR__ . '/routes/system.php';
+require __DIR__ . '/routes/member-portal.php';
+require __DIR__ . '/routes/ministry-settings.php';
 
 $app->run();

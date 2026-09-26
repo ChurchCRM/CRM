@@ -5,11 +5,15 @@ namespace ChurchCRM\Config\Menu;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
-use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\FundRaiserService;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 
 class Menu
 {
@@ -35,14 +39,23 @@ class Menu
         $isMenuOptions = $currentUser->isMenuOptionsEnabled();
         $isManageGroups = $currentUser->isManageGroupsEnabled();
         $canViewEvents = $currentUser->canViewEvents();
+        $isVolunteerV1Enabled = User::isVolunteerV1Enabled();
+        // #9706: the Volunteer menu mirrors VolunteerCoordinatorRoleAuthMiddleware exactly.
+        // Computed once here like every other visibility boolean; the predicate memoises
+        // the scope query on the User instance so the route gate reuses it.
+        $isVolunteerCoordinator = $currentUser->isVolunteerCoordinatorEnabled();
         $menus = [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-gauge'),
             'Calendar'     => self::getCalendarMenu($canViewEvents),
-            'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
+            'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled(), $isVolunteerV1Enabled),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
             'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
-            'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents),
+            'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents, $currentUser->canWriteEvents()),
+            // No "Volunteer" heading: the member surface lives only in the
+            // Member Portal now (#9867, Member Portal design P16). "Ministries"
+            // below is the administration surface and is unchanged.
+            'Ministries'   => self::getMinistriesMenu($currentUser, $isVolunteerCoordinator),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
             'Reports'      => self::getReportsMenu($isAdmin),
@@ -92,7 +105,7 @@ class Menu
         return $calendarMenu;
     }
 
-    private static function getPeopleMenu(bool $isAdmin, bool $isMenuOptions, bool $isAddRecordsEnabled): MenuItem
+    private static function getPeopleMenu(bool $isAdmin, bool $isMenuOptions, bool $isAddRecordsEnabled, bool $isVolunteerV1Enabled): MenuItem
     {
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-people-group');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'people/dashboard', true, 'fa-gauge'));
@@ -111,7 +124,7 @@ class Menu
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Classifications'), 'admin/system/options?mode=classes', $isAdmin, 'fa-tags'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Properties'), 'PropertyList.php?Type=p', $isMenuOptions, 'fa-person-half-dress'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin, 'fa-handshake-angle'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin && $isVolunteerV1Enabled, 'fa-handshake-angle'));
     
             $peopleMenu->addSubMenu($adminMenu);
         }
@@ -263,11 +276,20 @@ class Menu
         }
     }
 
-    private static function getEventsMenu(bool $isAddEventEnabled, bool $canViewEvents): MenuItem
+    /**
+     * @param bool $isAddEventEnabled the global AddEvent right — gates the Event Types admin entry
+     * @param bool $canViewEvents     the Events module is on
+     * @param bool $canWriteEvents    AddEvent **or** a volunteer-ministry coordinator (#9713,
+     *                                design §4.6). Menu visibility must mirror the route
+     *                                middleware exactly (§3.5, A11), and `/event/editor` is
+     *                                gated by AddEventsOrMinistryRoleAuthMiddleware, which asks
+     *                                exactly this question.
+     */
+    private static function getEventsMenu(bool $isAddEventEnabled, bool $canViewEvents, bool $canWriteEvents): MenuItem
     {
         $eventsMenu = new MenuItem(gettext('Events'), '', $canViewEvents, 'fa-ticket');
         $eventsMenu->addSubMenu(new MenuItem(gettext('Events Dashboard'), 'event/dashboard', true, 'fa-gauge'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'event/editor', $isAddEventEnabled, 'fa-circle-plus'));
+        $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'event/editor', $canWriteEvents, 'fa-circle-plus'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'event/checkin', true, 'fa-user-check'));
 
         if ($isAddEventEnabled) {
@@ -277,6 +299,142 @@ class Menu
         }
 
         return $eventsMenu;
+    }
+
+    // There is no getVolunteerMenu() any more (#9867, Member Portal design P16).
+    //
+    // The "Volunteer" heading held exactly two items — *My Volunteer Schedule*
+    // and *Open Opportunities* — and both pages moved into the Member Portal,
+    // where they are reached from its own "Volunteering" nav entry
+    // (ChurchCRM\Portal\PortalNav). Member-facing volunteer functionality now
+    // exists in one place, and the admin sidebar carries only the
+    // administration surface: the "Ministries" heading below, unchanged.
+    //
+    // Staff who also volunteer reach their own schedule through the Member
+    // Portal, which their user menu links to.
+    //
+    // The legacy "Volunteer Opportunities" item under People → Admin covers the
+    // 'v1' and 'both' rollout states and is unaffected.
+
+    /**
+     * Volunteer Management v2 — the ADMINISTRATION surface (epic #9701).
+     *
+     * A heading of its own, built the way the Groups block builds its per-group
+     * entries: a Dashboard entry and then one entry per ministry, by name, each
+     * linking straight to `/ministries/{id}`. It replaces the retired
+     * "My ministries and teams" list page — a list of the same links, one click
+     * further away.
+     *
+     * $isCoordinator is User::isVolunteerCoordinatorEnabled() — the SAME predicate
+     * VolunteerCoordinatorRoleAuthMiddleware calls — so nothing here advertises a
+     * page that 302s away and nothing openable is hidden (§3.5, A11). It already
+     * carries the rollout state, the administrator bypass, the global-manager flag,
+     * the EditSelf-exclusive short-circuit and the ministry/team scope lookup.
+     *
+     * A pure **team leader** passes that predicate and gets the heading with
+     * Dashboard alone: `getManageableMinistries()` returns nothing for them,
+     * because leading a team is not administering the ministry above it (§4.6) and
+     * the ministry page would refuse them. The dashboard is their entry point, and
+     * its "My ministries and teams" card names the teams they lead. A manager who
+     * has not created a ministry yet sees the same Dashboard-only heading, and the
+     * dashboard's "New ministry" action is right there. Only ACTIVE ministries are
+     * listed here; deactivated ones move to the Deactivated Ministries heading.
+     *
+     * One query per request, ids and names only — see
+     * `VolunteerAuthorizationService::getManageableMinistries()` for the memo and
+     * the reason it is static. The early return keeps even that query off every
+     * page load for the overwhelming majority of users, who coordinate nothing.
+     */
+    private static function getMinistriesMenu(User $currentUser, bool $isCoordinator): MenuItem
+    {
+        $ministriesMenu = new MenuItem(gettext('Ministries'), '', $isCoordinator, 'fa-sitemap');
+        if (!$isCoordinator) {
+            // Every /volunteer coordinator route is behind
+            // VolunteerCoordinatorRoleAuthMiddleware; skip the lookup entirely.
+            return $ministriesMenu;
+        }
+
+        $ministriesMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'ministries/dashboard', true, 'fa-gauge'));
+        self::addMinistryEntries($ministriesMenu, $currentUser, true);
+        // Last under the heading: the nested Deactivated Ministries group, which
+        // MenuItem::isVisible() drops whenever it would be empty.
+        $ministriesMenu->addSubMenu(self::getDeactivatedMinistriesMenu($currentUser));
+
+        return $ministriesMenu;
+    }
+
+    /**
+     * **Deactivated Ministries** — the lifecycle group NESTED under the Ministries
+     * heading, after the active entries (product-owner decision, 2026-09-17; the
+     * Groups heading's per-type sub-groups are the precedent, and MenuRenderer
+     * recurses). A ministry is deactivated from its page, leaves the list of
+     * active entries and appears here; its page then offers Reactivate and, to a
+     * manager, Delete. The group has no fixed content, so `MenuItem::isVisible()`
+     * drops it whenever the viewer manages no deactivated ministry — for most
+     * installations, most of the time. `openMenu()` recurses too, so opening a
+     * deactivated ministry expands both levels.
+     *
+     * Same memoised query as the active entries: the group costs nothing extra.
+     */
+    private static function getDeactivatedMinistriesMenu(User $currentUser): MenuItem
+    {
+        $menu = new MenuItem(gettext('Deactivated Ministries'), '', true, 'fa-box-archive');
+        self::addMinistryEntries($menu, $currentUser, false);
+
+        return $menu;
+    }
+
+    /**
+     * One entry per ministry the viewer may administer whose active flag matches,
+     * by name, linking to `/ministries/{id}`. The name is data, rendered
+     * by MenuRenderer through `InputUtils::escapeHTML()` like every other label.
+     */
+    private static function addMinistryEntries(MenuItem $heading, User $currentUser, bool $active): void
+    {
+        $currentMinistryId = self::getVolunteerMinistryIdForCurrentRoute();
+        foreach ((new VolunteerAuthorizationService())->getManageableMinistries($currentUser) as $ministryId => $ministry) {
+            if ($ministry['active'] !== $active) {
+                continue;
+            }
+            $item = new MenuItem($ministry['name'], 'ministries/' . $ministryId, true, 'fa-handshake-angle');
+            if ($currentMinistryId === $ministryId) {
+                $item->setActiveOverride(true);
+            }
+            $heading->addSubMenu($item);
+        }
+    }
+
+    /**
+     * The ministry the current request belongs to when the URL does not name it.
+     *
+     * `/ministries/{id}` needs nothing: `MenuItem::isActive()` matches it
+     * against the entry's own URI. `/ministries/occurrences/{id}` does — an
+     * occurrence belongs to a schedule and a schedule to a ministry, and without
+     * this the sidebar would show nothing highlighted on the one page a coordinator
+     * spends the most time. Two primary-key lookups of a single column, and only on
+     * that route: every other page returns before touching the database.
+     */
+    private static function getVolunteerMinistryIdForCurrentRoute(): ?int
+    {
+        $path = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
+        if (!is_string($path) || preg_match('{/ministries/occurrences/([0-9]+)$}', $path, $matches) !== 1) {
+            return null;
+        }
+
+        $scheduleId = VolunteerOccurrenceQuery::create()
+            ->filterById((int) $matches[1])
+            ->select('ScheduleId')
+            ->findOne();
+        if ($scheduleId === null) {
+            return null;
+        }
+
+        $ministryId = VolunteerScheduleQuery::create()
+            ->filterById((int) $scheduleId)
+            ->select('MinistryId')
+            ->findOne();
+
+        return $ministryId === null ? null : (int) $ministryId;
     }
 
     private static function getDepositsMenu(bool $isAdmin, bool $isFinanceEnabled): MenuItem
@@ -369,6 +527,8 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Localization & Formats'), 'admin/system/localization', $isAdmin, 'fa-globe'));
         $menu->addSubMenu(new MenuItem(gettext('Get Started'), 'admin/get-started', $isAdmin, 'fa-rocket'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-gear'));
+        $menu->addSubMenu(new MenuItem(gettext('Member Portal'), 'admin/member-portal', $isAdmin, 'fa-house-user'));
+        $menu->addSubMenu(new MenuItem(gettext('Ministry Settings'), 'admin/ministry-settings', $isAdmin, 'fa-handshake-angle'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-gear'));
         $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins/management', $isAdmin, 'fa-plug'));
         $menu->addSubMenu(new MenuItem(gettext('Export'), 'admin/export', $isAdmin, 'fa-file-export'));

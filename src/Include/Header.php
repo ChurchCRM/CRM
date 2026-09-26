@@ -9,9 +9,11 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\TelemetryService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -48,6 +50,9 @@ $MenuFirst = 1;
 // a valid CSS string literal without breaking the declaration.
 $_currencyAttrs     = ' data-currency-position="' . InputUtils::escapeAttribute(CurrencyFormatter::position()) . '"';
 $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+// Admin masquerade (#9843): `body.impersonating` offsets the page and the fixed
+// navbars so nothing hides under the fixed banner rendered just below.
+$_isImpersonating = ImpersonationService::isActive();
 ?>
 <!DOCTYPE html>
 <html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
@@ -111,7 +116,8 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 
 </head>
 
-<body class="antialiased">
+<body class="antialiased<?= $_isImpersonating ? ' impersonating' : '' ?>">
+<?php require __DIR__ . '/ImpersonationBanner.php'; ?>
 <div class="page">
 
   <!-- Issue Report Modal -->
@@ -183,7 +189,11 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             sDateTimeFormat:<?= DateTimeUtils::getDateTimeFormatForJs() ?>,
           },
           comm: {
-            smtpConfigured: <?= InputUtils::jsonEncodeForScript(SystemConfig::hasValidMailServerSettings()) ?>,
+            // True only when bEnabledEmail is on AND SMTP is configured: the same check BaseEmail::send()
+            // and POST /api/email/send apply, so the composer never offers a Send that would be refused.
+            emailSendingEnabled: <?= InputUtils::jsonEncodeForScript(SystemConfig::isEmailEnabled()) ?>,
+            // Closing the composer pre-fills at the end of a new message: "Sincerely," + the current user's name + the church name.
+            emailSignature: <?= InputUtils::jsonEncodeForScript(\ChurchCRM\Service\EmailComposerService::defaultSignature(AuthenticationManager::getCurrentUser())) ?>,
             vonageEnabled: <?= InputUtils::jsonEncodeForScript(PluginManager::getPlugin('vonage')?->isConfigured() ?? false) ?>,
             // Church default "to" address (sToEmailAddress); exposed only to email-enabled
             // users. The email composer offers it as a removable default recipient.
@@ -273,14 +283,26 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <?php
+      // An uploaded church logo replaces the stock mark and the church-name text. All
+      // three are always rendered (hidden with d-none) so the Church Info uploader can
+      // swap them without a page reload.
+      $bHasCustomLogo = ChurchMetaData::hasCustomLogo();
+      ?>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
+        <img src="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchLogoPath()) ?>"
+             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             id="sidebar-brand-image"
+             class="navbar-brand-image rounded<?= $bHasCustomLogo ? '' : ' d-none' ?>"
+             style="height: 42px; width: auto;">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-ink-blue.svg"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-light">
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-light sidebar-brand-stock<?= $bHasCustomLogo ? ' d-none' : '' ?>">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-paper-blue.svg"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark">
-        <span class="navbar-brand-text ps-2 fs-4 fw-bold">
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark sidebar-brand-stock<?= $bHasCustomLogo ? ' d-none' : '' ?>">
+        <span id="sidebar-brand-text"
+              class="navbar-brand-text ps-2 fs-4 fw-bold<?= $bHasCustomLogo ? ' d-none' : '' ?>">
           <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>
         </span>
       </a>
@@ -454,13 +476,34 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <i class="fa-solid fa-cog me-2"></i><?= gettext('Change Settings') ?>
             </a>
             <div class="dropdown-divider"></div>
+            <a href="<?= SystemURLs::getRootPath() ?>/portal/" class="dropdown-item">
+              <i class="fa-solid fa-church me-2"></i><?= gettext('Member Portal') ?>
+            </a>
+            <div class="dropdown-divider"></div>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
               <i class="fa-solid fa-shield me-2"></i><?= gettext("Manage Two-Factor Authentication") ?>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="dropdown-item">
+            <?php if ($_isImpersonating): ?>
+            <!--
+              Masquerade (#9843): signing out mid-masquerade must not drop the
+              administrator at the login page — it returns them to their own
+              account, exactly like the banner's exit control. The item is
+              relabelled so it says what it actually does. /session/end performs
+              the same substitution for anyone who reaches it directly.
+            -->
+            <form method="post"
+                  action="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/user/impersonate/exit') ?>">
+              <?= CSRFUtils::getTokenInputField('user_impersonate') ?>
+              <button type="submit" id="userMenuSignOut" class="dropdown-item">
+                <i class="fa-solid fa-right-from-bracket me-2"></i><?= gettext('Exit to your account') ?>
+              </button>
+            </form>
+            <?php else: ?>
+            <a href="<?= SystemURLs::getRootPath() ?>/session/end" id="userMenuSignOut" class="dropdown-item">
               <i class="fa-solid fa-arrow-right-from-bracket me-2"></i><?= gettext('Sign out') ?>
             </a>
+            <?php endif; ?>
           </div>
         </div>
 

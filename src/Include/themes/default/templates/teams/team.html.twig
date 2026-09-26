@@ -1,0 +1,536 @@
+{% extends "layout.html.twig" %}
+
+{#
+  One team, run from inside the Member Portal (MP7, #9868; Member Portal design
+  §5.5, volunteer design §5.4 narrowed to a team).
+
+  Four tabs — **Positions · Volunteers · Schedules · Occurrences** — each loaded on
+  its first activation by `portal-teams.min.js`, which is `webpack/portal/teams.ts`
+  driving the same components the admin ministry page drives
+  (`webpack/ministries/components/*`). That is why every id below is the id the
+  admin view carries: the components address their markup by id, so a rename here
+  breaks the page silently. Container markup and a page config only; every fact
+  comes from `/api/ministries/*`, which authorizes each record independently.
+
+  What the admin ministry page has and this deliberately does NOT (design §5.5):
+
+    * the Overview tab, its three counts and the **Teams card** — this page IS one
+      team, so there is nothing above it to list;
+    * **Ministry Coordinators** — granting scope is a manager's act (§4.6);
+    * **Help Wanted** — a property of the ministry, not of a team;
+    * **Remove Volunteer** — a ministry-level act the API refuses a team leader
+      (D5), so it is not offered; it is absent here rather than disabled;
+    * **Add Volunteer / Add from Cart** — both write the ministry's pool, same
+      reason;
+    * team **rename and delete** — a team is created and named by whoever runs the
+      ministry;
+    * the Volunteers grid's team picker and the Occurrences tab's **All Teams**
+      entry — both selects are omitted, because the page is fixed to one team and
+      a control with one option that cannot change is furniture.
+
+  Every one of those is omitted from the MARKUP, not hidden with a flag: the
+  components look their controls up by id and are inert when an id is not there.
+
+  Variables: `pageTitle`, and `team` — `{id, name, description, active,
+  ministryId, ministryName}`.
+
+  Every user-visible string the bundle renders lives in the bundle, as
+  `i18next.t()`: the extractor reads `gettext()` from templates and `i18next.t()`
+  from `webpack/`, never the other way round (volunteer design §5.10, F31).
+#}
+
+{% block content %}
+<div class="portal-team" id="portal-team">
+
+    <p class="portal-breadcrumb">
+        <a href="{{ url('/portal/teams') }}">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+            {{ gettext('My Teams') }}
+        </a>
+    </p>
+
+    <h1 class="portal-page-title">{{ team.name }}</h1>
+    <p class="portal-card-text portal-team-ministry">
+        {{ team.ministryName }}
+        {% if not team.active %}
+        <span class="badge bg-secondary-lt">{{ gettext('Inactive') }}</span>
+        {% endif %}
+    </p>
+    {% if team.description %}
+    <p class="portal-card-text">{{ team.description }}</p>
+    {% endif %}
+
+    <div class="card">
+        <ul class="nav nav-tabs" id="portal-team-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="nav-item-positions" href="#positions" data-bs-toggle="tab" role="tab" aria-controls="positions" aria-selected="true">
+                    <i class="fa-solid fa-list-check me-1" aria-hidden="true"></i>{{ gettext('Positions') }}
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="nav-item-volunteers" href="#volunteers" data-bs-toggle="tab" role="tab" aria-controls="volunteers" aria-selected="false">
+                    <i class="fa-solid fa-user-check me-1" aria-hidden="true"></i>{{ gettext('Volunteers') }}
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="nav-item-schedules" href="#schedules" data-bs-toggle="tab" role="tab" aria-controls="schedules" aria-selected="false">
+                    <i class="fa-solid fa-repeat me-1" aria-hidden="true"></i>{{ gettext('Schedules') }}
+                </a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="nav-item-occurrences" href="#occurrences" data-bs-toggle="tab" role="tab" aria-controls="occurrences" aria-selected="false">
+                    <i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i>{{ gettext('Dates') }}
+                </a>
+            </li>
+        </ul>
+
+        <div class="card-body tab-content">
+
+            {# ── Positions ───────────────────────────────────────────────── #}
+            <div class="tab-pane fade show active" id="positions" role="tabpanel" aria-labelledby="nav-item-positions">
+                <div class="d-flex justify-content-end mb-2">
+                    <button type="button" class="btn btn-primary btn-sm" id="position-add-btn">
+                        <i class="fa-solid fa-plus me-1" aria-hidden="true"></i>{{ gettext('Add position') }}
+                    </button>
+                </div>
+                <div class="volunteer-loading text-center py-4" id="positions-loading">
+                    <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+                    {{ gettext('Loading') }}
+                </div>
+                <div class="alert alert-danger d-none" role="alert" id="positions-error">
+                    <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+                    <span class="volunteer-error-text"></span>
+                    <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry">{{ gettext('Retry') }}</button>
+                </div>
+                <div class="empty d-none" id="positions-empty">
+                    <div class="empty-icon"><i class="fa-solid fa-list-check fa-2x text-muted" aria-hidden="true"></i></div>
+                    <p class="empty-title">{{ gettext('No positions yet') }}</p>
+                    <p class="empty-subtitle text-body-secondary">
+                        {{ gettext('A position is a job someone does on this team, such as Espresso or Song Leader.') }}
+                    </p>
+                </div>
+                <div class="volunteer-scroll-x d-none" id="positions-table-wrapper">
+                    <table class="table table-hover table-vcenter" id="volunteerPositionsTable">
+                        <thead>
+                            <tr>
+                                <th class="text-center w-1">{{ gettext('Order') }}</th>
+                                <th>{{ gettext('Name') }}</th>
+                                <th>{{ gettext('Description') }}</th>
+                                <th>{{ gettext('Team') }}</th>
+                                <th class="text-center">{{ gettext('Recruiting') }}</th>
+                                <th class="text-center">{{ gettext('Self sign-up') }}</th>
+                                <th class="text-center">{{ gettext('Status') }}</th>
+                                <th class="text-center no-export w-1">{{ gettext('Actions') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            {# ── Volunteers ──────────────────────────────────────────────── #}
+            <div class="tab-pane fade" id="volunteers" role="tabpanel" aria-labelledby="nav-item-volunteers">
+                <div class="row g-2 align-items-end mb-3">
+                    <div class="col-12 col-md-6 d-none" id="qualification-filter-wrap">
+                        <label class="form-label" for="qualification-filter">{{ gettext('Find a volunteer') }}</label>
+                        <input type="search" class="form-control" id="qualification-filter"
+                               placeholder="{{ gettext('Start typing a name') }}">
+                    </div>
+                </div>
+
+                <div class="volunteer-loading text-center py-4" id="volunteers-loading">
+                    <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+                    {{ gettext('Loading') }}
+                </div>
+                <div class="alert alert-danger d-none" role="alert" id="volunteers-error">
+                    <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+                    <span class="volunteer-error-text"></span>
+                    <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry">{{ gettext('Retry') }}</button>
+                </div>
+                <div class="empty d-none" id="volunteers-empty">
+                    <div class="empty-icon"><i class="fa-solid fa-user-check fa-2x text-muted" aria-hidden="true"></i></div>
+                    <p class="empty-title">{{ gettext('Nothing to qualify yet') }}</p>
+                    <p class="empty-subtitle text-body-secondary">
+                        {{ gettext('Add at least one position to this team, then tick who can serve where.') }}
+                    </p>
+                </div>
+                {#
+                  No Save button, on purpose: each tick is its own write and confirms
+                  itself in the top-right notification. The hint says so, because a
+                  grid of checkboxes with no Save otherwise reads as unsaved work.
+                #}
+                <p class="text-body-secondary small mb-2 d-none" id="volunteers-save-hint">
+                    <i class="fa-solid fa-circle-info me-1" aria-hidden="true"></i>{{ gettext('Ticks save as you make them.') }}
+                </p>
+                <div class="volunteer-scroll-x d-none" id="volunteers-table-wrapper">
+                    <table class="table table-hover table-vcenter" id="volunteerQualificationsTable">
+                        <thead>
+                            <tr>
+                                <th>{{ gettext('Volunteer') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            {# ── Schedules ───────────────────────────────────────────────── #}
+            <div class="tab-pane fade" id="schedules" role="tabpanel" aria-labelledby="nav-item-schedules">
+                <div class="d-flex justify-content-end mb-2">
+                    <button type="button" class="btn btn-sm btn-primary" id="schedule-add-btn">
+                        <i class="fa-solid fa-plus me-1" aria-hidden="true"></i>{{ gettext('Add schedule') }}
+                    </button>
+                </div>
+                <div class="volunteer-loading text-center py-4" id="schedules-loading">
+                    <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+                    {{ gettext('Loading') }}
+                </div>
+                <div class="alert alert-danger d-none" role="alert" id="schedules-error">
+                    <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+                    <span class="volunteer-error-text"></span>
+                    <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry">{{ gettext('Retry') }}</button>
+                </div>
+                <div class="empty d-none" id="schedules-empty">
+                    <div class="empty-icon"><i class="fa-solid fa-repeat fa-2x text-muted" aria-hidden="true"></i></div>
+                    <p class="empty-title">{{ gettext('No schedules yet') }}</p>
+                    <p class="empty-subtitle text-body-secondary">
+                        {{ gettext('A schedule is the recurring pattern this team serves — a weekly service, a Wednesday class. Add one and generate its occurrences.') }}
+                    </p>
+                </div>
+                <div class="volunteer-scroll-x d-none" id="schedules-table-wrapper">
+                    <table class="table table-hover table-vcenter" id="volunteerSchedulesTable">
+                        <thead>
+                            <tr>
+                                <th>{{ gettext('Name') }}</th>
+                                <th>{{ gettext('Pattern') }}</th>
+                                <th>{{ gettext('Team') }}</th>
+                                <th class="text-center">{{ gettext('Occurrences') }}</th>
+                                <th class="text-center">{{ gettext('Status') }}</th>
+                                <th class="text-center no-export w-1">{{ gettext('Actions') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            {# ── Dates (occurrences) ─────────────────────────────────────── #}
+            <div class="tab-pane fade" id="occurrences" role="tabpanel" aria-labelledby="nav-item-occurrences">
+                {# The admin page's export toolbar has nothing to hold here: the
+                   portal does not load DataTables, so there are no export buttons.
+                   The container stays so the shared component's "empty it" step is
+                   a no-op rather than a missing element. #}
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-outline-danger btn-sm" id="occurrences-delete-btn" disabled>
+                            <i class="fa-solid fa-trash me-1" aria-hidden="true"></i>{{ gettext('Delete') }}
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" id="occurrences-add-btn">
+                            <i class="fa-solid fa-calendar-plus me-1" aria-hidden="true"></i>{{ gettext('Add occurrence') }}
+                        </button>
+                    </div>
+                    <div class="d-flex justify-content-end" id="occurrences-toolbar"></div>
+                </div>
+                <div class="row g-2 align-items-end mb-3">
+                    <div class="col-12 col-md-4">
+                        <label class="form-label" for="occurrence-event-filter">{{ gettext('Event') }}</label>
+                        <input type="search" class="form-control" id="occurrence-event-filter" maxlength="100"
+                               placeholder="{{ gettext('Any event') }}">
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label class="form-label" for="occurrence-from">{{ gettext('From') }}</label>
+                        <input type="date" class="form-control" id="occurrence-from">
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label class="form-label" for="occurrence-to">{{ gettext('To') }}</label>
+                        <input type="date" class="form-control" id="occurrence-to">
+                    </div>
+                </div>
+                <div class="volunteer-loading text-center py-4" id="occurrences-loading">
+                    <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+                    {{ gettext('Loading') }}
+                </div>
+                <div class="alert alert-danger d-none" role="alert" id="occurrences-error">
+                    <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+                    <span class="volunteer-error-text"></span>
+                    <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry">{{ gettext('Retry') }}</button>
+                </div>
+                <div class="empty d-none" id="occurrences-empty">
+                    <div class="empty-icon"><i class="fa-solid fa-calendar-days fa-2x text-muted" aria-hidden="true"></i></div>
+                    <p class="empty-title">{{ gettext('Nothing scheduled yet') }}</p>
+                    <p class="empty-subtitle text-body-secondary">
+                        {{ gettext('Create a schedule and generate its occurrences, and the weeks to fill appear here.') }}
+                    </p>
+                </div>
+                <div class="volunteer-scroll-x d-none" id="occurrences-table-wrapper">
+                    <table class="table table-hover table-vcenter" id="volunteerOccurrencesTable">
+                        <thead>
+                            <tr>
+                                <th class="w-1 no-export">
+                                    <input type="checkbox" class="form-check-input" id="occurrences-select-all" aria-label="{{ gettext('Select all') }}" disabled>
+                                </th>
+                                <th>{{ gettext('When') }}</th>
+                                <th>{{ gettext('Team') }}</th>
+                                <th>{{ gettext('Schedule') }}</th>
+                                <th class="text-center">{{ gettext('Filled') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{# ── The position dialog ─────────────────────────────────────────────────── #}
+<div class="modal fade" id="positionModal" tabindex="-1" aria-hidden="true" aria-labelledby="positionModalTitle">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="positionModalTitle">{{ gettext('Position') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ gettext('Close') }}"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label" for="position-form-name">{{ gettext('Name') }}</label>
+                    <input type="text" class="form-control" id="position-form-name" maxlength="100">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="position-form-description">{{ gettext('Description') }}</label>
+                    <input type="text" class="form-control" id="position-form-description" maxlength="255">
+                </div>
+                <div class="row g-2">
+                    <div class="col-8">
+                        {# One option, and it is this team: a position always belongs to
+                           a team and a team leader may only create one on their own. #}
+                        <label class="form-label" for="position-form-team">{{ gettext('Team') }}</label>
+                        <select class="form-select" id="position-form-team" required></select>
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label" for="position-form-order">{{ gettext('Order') }}</label>
+                        <input type="number" class="form-control" id="position-form-order" min="0" value="0">
+                    </div>
+                </div>
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input" type="checkbox" id="position-form-active" checked>
+                    <label class="form-check-label" for="position-form-active">{{ gettext('Active') }}</label>
+                </div>
+                <div class="form-check form-switch mt-2">
+                    <input class="form-check-input" type="checkbox" id="position-form-recruiting">
+                    <label class="form-check-label" for="position-form-recruiting">{{ gettext('Recruit Volunteers') }}</label>
+                </div>
+                <div class="form-text" id="position-form-recruiting-hint">
+                    {{ gettext('Name this position on the page where members look for something to help with.') }}
+                </div>
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input" type="checkbox" id="position-form-self-assignable" checked>
+                    <label class="form-check-label" for="position-form-self-assignable">{{ gettext('Self-assignable') }}</label>
+                </div>
+                <div class="form-text" id="position-form-self-assignable-hint">
+                    {{ gettext('Qualified volunteers may sign themselves up for open dates of this position. Turn off for positions only a team leader or coordinator should assign; the Member Portal will not offer them.') }}
+                </div>
+                <div class="alert alert-danger d-none mt-3" role="alert" id="position-form-error">
+                    <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+                    <span class="volunteer-error-text"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-bs-dismiss="modal">{{ gettext('Cancel') }}</button>
+                <button type="button" class="btn btn-primary" id="position-form-save">{{ gettext('Save') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── The schedule dialog, with the staffing-needs editor ─────────────────── #}
+<!-- One-off occurrence (2026-09-18): a date with no event and no recurring schedule. -->
+<div class="modal fade" id="oneOffOccurrenceModal" tabindex="-1" aria-hidden="true" aria-labelledby="oneOffOccurrenceModalTitle">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="oneOffOccurrenceModalTitle">{{ gettext('Add a one-off occurrence') }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ gettext('Close') }}"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-body-secondary">
+          {{ gettext('For a date that follows no calendar event and no schedule.') }}
+        </p>
+        <div class="mb-3">
+          <label class="form-label" for="one-off-form-name">{{ gettext('Name') }}</label>
+          <input type="text" class="form-control" id="one-off-form-name" maxlength="100">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="one-off-form-team">{{ gettext('Team') }}</label>
+          <select class="form-select" id="one-off-form-team"></select>
+        </div>
+        <div class="row g-2">
+          <div class="col-12 col-md-4 mb-3">
+            <label class="form-label" for="one-off-form-date">{{ gettext('Date') }}</label>
+            <input type="date" class="form-control" id="one-off-form-date">
+          </div>
+          <div class="col-6 col-md-4 mb-3">
+            <label class="form-label" for="one-off-form-start-time">{{ gettext('Starts') }}</label>
+            <input type="time" class="form-control" id="one-off-form-start-time">
+          </div>
+          <div class="col-6 col-md-4 mb-3">
+            <label class="form-label" for="one-off-form-end-time">{{ gettext('Ends') }}</label>
+            <input type="time" class="form-control" id="one-off-form-end-time">
+          </div>
+        </div>
+        <hr class="my-3">
+        <div class="mb-2">
+          <h6 class="mb-1"><i class="fa-solid fa-list-check me-2"></i>{{ gettext('Staffing needs') }}</h6>
+          <div class="form-text">{{ gettext('How many volunteers this occurrence needs. Uncheck a position it does not use.') }}</div>
+        </div>
+        <div id="one-off-form-needs"></div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="one-off-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">{{ gettext('Cancel') }}</button>
+        <button type="button" class="btn btn-primary" id="one-off-form-save">{{ gettext('Add') }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{# Generate occurrences (review, 2026-09-18): the same dialog the ministry page has. #}
+<div class="modal fade" id="generateOccurrencesModal" tabindex="-1" aria-hidden="true" aria-labelledby="generateOccurrencesModalTitle">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="generateOccurrencesModalTitle">{{ gettext('Generate occurrences') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ gettext('Close') }}"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-body-secondary" id="generate-form-intro"></p>
+                <p class="text-body-secondary">
+                    {{ gettext('Choose who fills each position by default. They are assigned on every occurrence made now, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week.') }}
+                </p>
+                <div class="volunteer-loading text-center py-3" id="generate-form-loading">
+                    <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+                    {{ gettext('Loading') }}
+                </div>
+                <div class="empty py-3 d-none" id="generate-form-empty">
+                    <p class="empty-title">{{ gettext('This schedule has no staffing needs yet') }}</p>
+                    <p class="empty-subtitle text-body-secondary">
+                        {{ gettext('Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs.') }}
+                    </p>
+                </div>
+                <div id="generate-form-rows"></div>
+                <div class="alert alert-danger d-none mt-3" role="alert" id="generate-form-error">
+                    <i class="fa-solid fa-circle-exclamation me-1"></i>
+                    <span class="volunteer-error-text"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-bs-dismiss="modal">{{ gettext('Cancel') }}</button>
+                <button type="button" class="btn btn-primary" id="generate-form-save">{{ gettext('Generate') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="scheduleModal" tabindex="-1" aria-hidden="true" aria-labelledby="scheduleModalTitle">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="scheduleModalTitle">{{ gettext('Schedule') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ gettext('Close') }}"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label" for="schedule-form-name">{{ gettext('Name') }}</label>
+                    <input type="text" class="form-control" id="schedule-form-name" maxlength="100">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="schedule-form-team">{{ gettext('Team') }}</label>
+                    <select class="form-select" id="schedule-form-team" required></select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="schedule-form-link-mode">{{ gettext('Pattern') }}</label>
+                    <select class="form-select" id="schedule-form-link-mode">
+                        <option value="event_type">{{ gettext('Follow a calendar event type') }}</option>
+                        <option value="standalone">{{ gettext('Repeat weekly on its own') }}</option>
+                    </select>
+                </div>
+                <div class="mb-3 d-none" id="schedule-form-event-type-row">
+                    <label class="form-label" for="schedule-form-event-type">{{ gettext('Event type') }}</label>
+                    <select class="form-select" id="schedule-form-event-type"></select>
+                </div>
+                <div class="mb-3 d-none" id="schedule-form-title-filter-row">
+                    <label class="form-label" for="schedule-form-title-filter">{{ gettext('Event') }}</label>
+                    <select class="form-select" id="schedule-form-title-filter"></select>
+                    <div class="form-text">{{ gettext('One occurrence is made for each date of this event. "Any event of this type" follows every event of the type, which can be several on the same day.') }}</div>
+                </div>
+                <div class="row g-2 d-none" id="schedule-form-standalone-rows">
+                    <div class="col-12 col-md-4">
+                        <label class="form-label" for="schedule-form-dow">{{ gettext('Day') }}</label>
+                        <select class="form-select" id="schedule-form-dow">
+                            <option value="Sunday">{{ gettext('Sunday') }}</option>
+                            <option value="Monday">{{ gettext('Monday') }}</option>
+                            <option value="Tuesday">{{ gettext('Tuesday') }}</option>
+                            <option value="Wednesday">{{ gettext('Wednesday') }}</option>
+                            <option value="Thursday">{{ gettext('Thursday') }}</option>
+                            <option value="Friday">{{ gettext('Friday') }}</option>
+                            <option value="Saturday">{{ gettext('Saturday') }}</option>
+                        </select>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label class="form-label" for="schedule-form-start-time">{{ gettext('Starts') }}</label>
+                        <input type="time" class="form-control" id="schedule-form-start-time">
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label class="form-label" for="schedule-form-end-time">{{ gettext('Ends') }}</label>
+                        <input type="time" class="form-control" id="schedule-form-end-time">
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col-6">
+                        <label class="form-label" for="schedule-form-window-start">{{ gettext('From') }}</label>
+                        <input type="date" class="form-control" id="schedule-form-window-start">
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label" for="schedule-form-window-end">{{ gettext('Until') }}</label>
+                        <input type="date" class="form-control" id="schedule-form-window-end">
+                    </div>
+                </div>
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input" type="checkbox" id="schedule-form-active" checked>
+                    <label class="form-check-label" for="schedule-form-active">{{ gettext('Active') }}</label>
+                </div>
+
+                <hr>
+                <h6 class="mb-1"><i class="fa-solid fa-list-check me-2" aria-hidden="true"></i>{{ gettext('Staffing needs') }}</h6>
+                <div class="form-text" id="schedule-form-needs-hint">
+                    {{ gettext('How many people each position needs, every time this runs. One date can be changed on its own later.') }}
+                </div>
+                <div id="schedule-form-needs"></div>
+
+                <div class="alert alert-danger d-none mt-3" role="alert" id="schedule-form-error">
+                    <i class="fa-solid fa-circle-exclamation me-1" aria-hidden="true"></i>
+                    <span class="volunteer-error-text"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-bs-dismiss="modal">{{ gettext('Cancel') }}</button>
+                <button type="button" class="btn btn-primary" id="schedule-form-save">{{ gettext('Save') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script nonce="{{ nonce() }}">
+window.CRM = window.CRM || {};
+window.CRM.portalTeam = {
+    teamId: {{ team.id }},
+    ministryId: {{ team.ministryId }}
+};
+</script>
+<script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/portal-teams.min.js') }}"></script>
+{% endblock %}

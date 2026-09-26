@@ -1019,7 +1019,8 @@ function adminUserEditorNew(Request $request, Response $response): Response
             $pageArgs['perms']            = ['admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
                                              'editRecords' => 0, 'deleteRecords' => 0,
                                              'menuOptions' => 0, 'manageGroups' => 0,
-                                             'finance' => 0, 'manageFundraisers' => 0, 'notes' => 0,
+                                             'finance' => 0, 'manageFundraisers' => 0,
+                                             'manageMinistries' => 0, 'manageMyMinistries' => 0, 'notes' => 0,
                                              'addEvent' => 0];
             return $renderer->render($response, 'user-editor.php', $pageArgs);
         }
@@ -1070,7 +1071,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
         'admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
         'editRecords' => 0, 'deleteRecords' => 0,
         'menuOptions' => 0, 'manageGroups' => 0,
-        'finance' => 0, 'manageFundraisers' => 0, 'notes' => 0,
+        'finance' => 0, 'manageFundraisers' => 0, 'manageMinistries' => 0, 'manageMyMinistries' => 0, 'notes' => 0,
         'addEvent' => 0,
     ];
     $pageArgs['formAction'] = SystemURLs::getRootPath() . '/admin/system/users/new';
@@ -1161,6 +1162,8 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
         'manageGroups'       => $user->getManageGroups(),
         'finance'            => $user->getFinance(),
         'manageFundraisers'  => $user->getManageFundraisers(),
+        'manageMinistries'   => $user->getManageMinistries(),
+        'manageMyMinistries' => $user->getManageMyMinistries(),
         'notes'              => $user->getNotes(),
         'addEvent'           => $userService->getAddEventPermission($personId),
     ];

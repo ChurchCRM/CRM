@@ -15,7 +15,9 @@ services:
       retries: 10
 
   mailserver:
-    profiles: [test]
+    # Also part of the CI profiles: the seeded SMTP host is mailserver:1025, so without it
+    # every send in CI fails and nothing can assert delivery. Specs read the sink at :8025.
+    profiles: [test, ci-root, ci-subdir]
     image: axllent/mailpit:latest
     ports:
       - ${MAILSERVER_PORT:-1025}:1025

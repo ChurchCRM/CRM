@@ -340,6 +340,9 @@ jobs:
       run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
+        # The ci-subdir database is published on DATABASE_SUBDIR_PORT (3307,
+        # docker-compose.parallel.yaml); the db:query Cypress task reads this.
+        DATABASE_PORT: "3307"
         SPLIT: ${{ matrix.shard-total || '' }}
         SPLIT_INDEX: ${{ matrix.split-index }}
 

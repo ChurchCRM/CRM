@@ -1,9 +1,11 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Utils\InputUtils;
 
 require_once __DIR__ . '/Header-Security.php';
@@ -13,6 +15,16 @@ $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
 PluginManager::init($pluginsPath);
 
 $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo object
+
+// Admin masquerade (#9843). This header is used by pages a *logged-in* user can
+// be sent to — the self-service password and 2FA pages — as well as by pages with
+// no session at all (login, password reset, 404, the Bootstrapper error page). An
+// EditSelf-exclusive user is confined to the Member Portal (#9863), whose own Twig
+// layout renders the same banner include (#9869). The
+// banner must follow the session, so it is rendered here too, guarded by both
+// "a user is authenticated" and "that session is a masquerade" so it can never
+// appear on an anonymous page.
+$_isImpersonating = ImpersonationService::isActive() && AuthenticationManager::isUserAuthenticated();
 ?>
 <!DOCTYPE html>
 <html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
@@ -37,7 +49,8 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     <?= PluginManager::getPluginHeadContent() ?>
 
 </head>
-<body class="antialiased <?= InputUtils::escapeAttribute($sBodyClass ?? 'page-auth') ?>">
+<body class="antialiased <?= InputUtils::escapeAttribute($sBodyClass ?? 'page-auth') ?><?= $_isImpersonating ? ' impersonating' : '' ?>">
+<?php require __DIR__ . '/ImpersonationBanner.php'; ?>
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     // Initialize window.CRM if not already created by webpack bundles

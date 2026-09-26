@@ -50,6 +50,9 @@
 @include meta.load-css("scss/finance");
 @include meta.load-css("scss/quill");
 
+// Volunteer Management V2 — the scrolling qualification grid and its row menus
+@include meta.load-css("scss/volunteer");
+
 // Floating Action Buttons — menu toggle, add person, add family
 @include meta.load-css("scss/fab");
 
@@ -58,6 +61,9 @@
 
 // Tabler custom styles — color overrides, DataTables skin
 @include meta.load-css("scss/_tabler-bridge");
+
+// Admin masquerade banner (#9843) — fixed top bar + layout offsets
+@include meta.load-css("scss/_impersonation");
 
 html,
 body {

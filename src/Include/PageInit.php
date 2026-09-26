@@ -17,13 +17,14 @@ $systemService = new SystemService();
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
 
-    // Confine EditSelf-only users to the self-service flow. Zero-permission users
-    // are NOT blocked here — they keep read-only access to people and family
-    // records (read-default policy, #9003). Writes are denied by the per-page
-    // permission guards.
+    // Confine EditSelf-only users to the Member Portal — every legacy page is
+    // part of the admin shell, which a self-service account never sees (#9863).
+    // Zero-permission users are NOT blocked here — they keep read-only access to
+    // people and family records (read-default policy, #9003). Writes are denied
+    // by the per-page permission guards.
     $currentUser = AuthenticationManager::getCurrentUser();
     if ($currentUser->isEditSelfExclusive()) {
-        RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
+        RedirectUtils::redirect(SystemURLs::getRootPath() . '/portal/');
     }
 
     // Boot plugins early so hook listeners are registered before any ORM saves.

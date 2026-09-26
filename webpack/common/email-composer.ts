@@ -21,17 +21,45 @@
  * - Loading / error states while fetching
  * - Recipient count badge
  * - Collapsible recipient list (scrollable for large sets)
- * - BCC toggle (changes mailto: mode)
+ * - BCC toggle
  * - "Copy Addresses" — clipboard (works for any list size)
- * - "Open in Email Client" — enabled ≤50 recipients; disabled with tooltip otherwise
+ * - "Send" (server-side via SMTP) when window.CRM.comm.emailSendingEnabled is true —
+ *   expands an inline subject + body form and POSTs person/family ids (never addresses)
+ *   to POST /api/email/send, which sends one message per recipient
+ * - "Open in Email Client" — always available as a fallback (mailto:); limited to
+ *   ≤50 recipients due to URL-length constraints in most mail clients
  */
 
 import { buildAPIUrl } from "../api-utils";
 
-/** Response shape from /api/people/emails and /api/cart/emails */
+/** Response shape from /api/people/emails, /api/cart/emails and /api/groups/{id}/emails */
 interface EmailListResponse {
   emails?: string[];
   byRole?: Record<string, string[]>;
+  /** The same people with ids: the server-side Send posts ids, never addresses. */
+  recipients?: CRMEmailRecipient[];
+}
+
+/** One recipient outcome in the POST /api/email/send response */
+interface EmailSendOutcome {
+  personId: number | null;
+  familyId: number | null;
+  name: string;
+  email?: string;
+  /** skipped: not-found | no-email | do-not-email | deceased | inactive | duplicate-address */
+  reason?: string;
+  /** failed: SMTP error text */
+  error?: string;
+}
+
+/** Response shape from POST /api/email/send */
+interface EmailSendResponse {
+  sent?: EmailSendOutcome[];
+  skipped?: EmailSendOutcome[];
+  failed?: EmailSendOutcome[];
+  counts?: { sent: number; skipped: number; failed: number };
+  message?: string;
+  error?: string;
 }
 
 const MAX_MAILTO_RECIPIENTS = 50;
@@ -46,6 +74,8 @@ let modalBody: HTMLElement | null = null;
 let bccToggle: HTMLButtonElement | null = null;
 let copyBtn: HTMLButtonElement | null = null;
 let clientBtn: HTMLButtonElement | null = null;
+/** "Send" button — shown only when SMTP is configured */
+let sendBtn: HTMLButtonElement | null = null;
 /** Title count badge — kept as a ref so toggling the default recipient can update it in place */
 let countBadge: HTMLElement | null = null;
 /** Hint element showing "too many recipients" alert. Created on first renderRecipients() call per
@@ -55,6 +85,19 @@ let tooManyHintEl: HTMLElement | null = null;
 let recipientListWrapperEl: HTMLElement | null = null;
 /** The <summary> element inside the collapsible recipient list — updated by updateCountBadge() */
 let recipientSummaryEl: HTMLElement | null = null;
+/** The inline compose form appended to modal body when "Send" is clicked */
+let composeFormEl: HTMLElement | null = null;
+/** Subject input inside the compose form */
+let subjectInputEl: HTMLInputElement | null = null;
+/** Body textarea inside the compose form */
+let bodyTextareaEl: HTMLTextAreaElement | null = null;
+/** Preview modal (created once) and its iframe */
+let previewModalEl: HTMLElement | null = null;
+let previewFrameEl: HTMLIFrameElement | null = null;
+let previewTitleEl: HTMLElement | null = null;
+let previewErrorEl: HTMLElement | null = null;
+/** AbortController for an in-flight POST /api/email/send */
+let sendController: AbortController | null = null;
 
 /** Current resolved email list (member recipients plus the default "to" when included) */
 let currentEmails: string[] = [];
@@ -79,8 +122,70 @@ let activeRoles: Set<string> = new Set();
 let copyFeedbackTimer: ReturnType<typeof setTimeout> | null = null;
 /** Whether the BCC toggle is active */
 let bccMode = false;
+/** Whether the compose form (subject/body) is currently expanded */
+let composeFormVisible = false;
+/** Lower-cased address → recipient record (person/family id + name) for the current list.
+ * Addresses without an entry (the church default "to", legacy callers that pass bare
+ * addresses) can be copied or opened in a mail client but are not sent server-side. */
+let recipientIndex: Map<string, CRMEmailRecipient> = new Map();
+
+// ─────────────────────────────────────────────
+//  Helpers
+// ─────────────────────────────────────────────
+
+/** Returns true when SMTP is configured and the server can send email. */
+function isSmtpConfigured(): boolean {
+  return window.CRM?.comm?.emailSendingEnabled === true;
+}
 
 /** Helper: create an icon+text button element */
+/**
+ * The ids behind the currently selected addresses. `unknown` lists addresses with no
+ * record behind them; they are left out of a server-side send.
+ */
+function sendableIds(): { personIds: number[]; familyIds: number[]; unknown: string[] } {
+  const personIds: number[] = [];
+  const familyIds: number[] = [];
+  const unknown: string[] = [];
+  for (const email of currentEmails) {
+    const r = recipientIndex.get(email.toLowerCase());
+    if (r?.personId) {
+      personIds.push(r.personId);
+    } else if (r?.familyId) {
+      familyIds.push(r.familyId);
+    } else {
+      unknown.push(email);
+    }
+  }
+  return { personIds, familyIds, unknown };
+}
+
+/** Human wording for a skip reason from POST /api/email/send. */
+function skipReasonText(reason: string | undefined): string {
+  switch (reason) {
+    case "no-email":
+      return i18next.t("no email address");
+    case "do-not-email":
+      return i18next.t("marked do not email");
+    case "deceased":
+      return i18next.t("deceased");
+    case "inactive":
+      return i18next.t("inactive family");
+    case "duplicate-address":
+      return i18next.t("same address as another recipient");
+    case "not-found":
+      return i18next.t("record not found");
+    default:
+      return reason ?? "";
+  }
+}
+
+/** Display text for one address in the recipient list: "Name <address>" when the record is known. */
+function recipientLineText(email: string): string {
+  const r = recipientIndex.get(email.toLowerCase());
+  return r?.name ? `${r.name} <${email}>` : email;
+}
+
 function makeBtn(id: string, cls: string, iconCls: string, label: string): HTMLButtonElement {
   const btn = document.createElement("button");
   btn.type = "button";
@@ -93,6 +198,361 @@ function makeBtn(id: string, cls: string, iconCls: string, label: string): HTMLB
   return btn;
 }
 
+function escapeHtml(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+// ─────────────────────────────────────────────
+//  Compose-form helpers
+// ─────────────────────────────────────────────
+
+/**
+ * Show/hide the inline subject+body compose form appended to modal body.
+ * The form is created on first call and reused; the content is cleared on close.
+ */
+function toggleComposeForm(show: boolean): void {
+  if (!modalBody) return;
+
+  composeFormVisible = show;
+
+  // Update the Send button label/icon to reflect expanded/collapsed state
+  if (sendBtn) {
+    const icon = sendBtn.querySelector("i");
+    const label = sendBtn.lastChild;
+    if (icon) icon.className = show ? "fa-solid fa-chevron-up me-1" : "fa-solid fa-pen-to-square me-1";
+    if (label instanceof Text) label.nodeValue = show ? i18next.t("Cancel") : i18next.t("Compose Message");
+  }
+
+  if (!show) {
+    if (composeFormEl) {
+      composeFormEl.remove();
+      composeFormEl = null;
+      subjectInputEl = null;
+      bodyTextareaEl = null;
+    }
+    return;
+  }
+
+  // Build the form
+  composeFormEl = document.createElement("div");
+  composeFormEl.className = "mt-3 border rounded p-3 bg-body-secondary";
+  composeFormEl.id = "crm-email-compose-form";
+
+  // Subject field
+  const subjectGroup = document.createElement("div");
+  subjectGroup.className = "mb-3";
+  const subjectLabel = document.createElement("label");
+  subjectLabel.className = "form-label fw-semibold";
+  subjectLabel.setAttribute("for", "crm-email-subject");
+  subjectLabel.textContent = i18next.t("Subject");
+  subjectInputEl = document.createElement("input");
+  subjectInputEl.type = "text";
+  subjectInputEl.id = "crm-email-subject";
+  subjectInputEl.className = "form-control";
+  subjectInputEl.placeholder = i18next.t("Enter email subject…");
+  subjectInputEl.required = true;
+  subjectGroup.appendChild(subjectLabel);
+  subjectGroup.appendChild(subjectInputEl);
+  composeFormEl.appendChild(subjectGroup);
+
+  // Body field
+  const bodyGroup = document.createElement("div");
+  bodyGroup.className = "mb-3";
+  const bodyLabel = document.createElement("label");
+  bodyLabel.className = "form-label fw-semibold";
+  bodyLabel.setAttribute("for", "crm-email-body");
+  bodyLabel.textContent = i18next.t("Message");
+  bodyTextareaEl = document.createElement("textarea");
+  bodyTextareaEl.id = "crm-email-body";
+  bodyTextareaEl.className = "form-control";
+  bodyTextareaEl.rows = 6;
+  bodyTextareaEl.placeholder = i18next.t("Enter your message…");
+  bodyTextareaEl.required = true;
+  // The author writes the greeting; the closing is pre-filled under two blank lines and
+  // stays editable. Nothing else is generated around the message.
+  const signature = window.CRM?.comm?.emailSignature ?? "";
+  bodyTextareaEl.value = signature ? `\n\n${signature}` : "";
+  bodyTextareaEl.addEventListener("focus", () => bodyTextareaEl?.setSelectionRange(0, 0), { once: true });
+  bodyGroup.appendChild(bodyLabel);
+  bodyGroup.appendChild(bodyTextareaEl);
+  composeFormEl.appendChild(bodyGroup);
+
+  // Preview + Submit buttons
+  const submitRow = document.createElement("div");
+  submitRow.className = "d-flex justify-content-end gap-2";
+  const previewBtn = makeBtn(
+    "crm-email-preview-btn",
+    "btn btn-outline-secondary",
+    "fa-solid fa-eye",
+    i18next.t("Preview"),
+  );
+  const submitBtn = makeBtn(
+    "crm-email-send-submit",
+    "btn btn-primary",
+    "fa-solid fa-paper-plane",
+    i18next.t("Send Email"),
+  );
+  submitRow.appendChild(previewBtn);
+  submitRow.appendChild(submitBtn);
+  composeFormEl.appendChild(submitRow);
+  previewBtn.addEventListener("click", () => {
+    doPreviewEmail(previewBtn).catch(console.error);
+  });
+
+  // Addresses with no person/family record behind them cannot be sent server-side.
+  const { personIds, familyIds, unknown } = sendableIds();
+  if (unknown.length > 0) {
+    const note = document.createElement("div");
+    note.className = "text-body-secondary small mb-2";
+    note.id = "crm-email-unsendable-note";
+    note.textContent = i18next.t(
+      "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}",
+      { count: personIds.length + familyIds.length, list: unknown.join(", ") },
+    );
+    composeFormEl.insertBefore(note, submitRow);
+  }
+
+  modalBody.appendChild(composeFormEl);
+
+  // Focus the subject field
+  subjectInputEl.focus();
+
+  // Handle submit
+  submitBtn.addEventListener("click", () => {
+    doSendEmail(submitBtn).catch(console.error);
+  });
+}
+
+/** Adds a "Not sent:" list (name and reason) under a result banner. */
+function appendNotSentList(banner: HTMLElement, notSent: EmailSendOutcome[]): void {
+  if (notSent.length === 0) return;
+  const list = document.createElement("ul");
+  list.className = "mb-0 mt-2 small";
+  list.id = "crm-email-not-sent";
+  for (const r of notSent) {
+    const li = document.createElement("li");
+    li.textContent = `${r.name || r.email || "?"} — ${r.error ? r.error : skipReasonText(r.reason)}`;
+    list.appendChild(li);
+  }
+  const heading = document.createElement("div");
+  heading.className = "mt-2 fw-semibold small";
+  heading.textContent = `${i18next.t("Not sent")}:`;
+  banner.appendChild(heading);
+  banner.appendChild(list);
+}
+
+/**
+ * Execute the server-side send via POST /api/email/send.
+ * Shows progress on the submit button, then a success/error banner in the form.
+ */
+/** Validates the compose form and returns the payload, or null after focusing the bad field. */
+function composePayload(): { personIds: number[]; familyIds: number[]; subject: string; body: string } | null {
+  if (!subjectInputEl || !bodyTextareaEl) return null;
+
+  const subject = subjectInputEl.value.trim();
+  const body = bodyTextareaEl.value.trim();
+
+  if (!subject) {
+    subjectInputEl.classList.add("is-invalid");
+    subjectInputEl.focus();
+    return null;
+  }
+  subjectInputEl.classList.remove("is-invalid");
+
+  if (!body) {
+    bodyTextareaEl.classList.add("is-invalid");
+    bodyTextareaEl.focus();
+    return null;
+  }
+  bodyTextareaEl.classList.remove("is-invalid");
+
+  const { personIds, familyIds } = sendableIds();
+  if (personIds.length + familyIds.length === 0) return null;
+  return { personIds, familyIds, subject, body };
+}
+
+/** Builds the preview modal once: header with the addressee, sandboxed iframe for the HTML. */
+function ensurePreviewModal(): void {
+  if (previewModalEl) return;
+  previewModalEl = document.createElement("div");
+  previewModalEl.className = "modal fade";
+  previewModalEl.id = "crm-email-preview-modal";
+  previewModalEl.setAttribute("tabindex", "-1");
+  previewModalEl.setAttribute("aria-labelledby", "crm-email-preview-title");
+  previewModalEl.innerHTML = [
+    '<div class="modal-dialog modal-lg modal-dialog-scrollable">',
+    '  <div class="modal-content">',
+    '    <div class="modal-header">',
+    '      <h5 class="modal-title" id="crm-email-preview-title"></h5>',
+    `      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${escapeHtml(i18next.t("Close"))}"></button>`,
+    "    </div>",
+    '    <div class="modal-body">',
+    '      <div class="alert alert-danger d-none" id="crm-email-preview-error"></div>',
+    `      <iframe id="crm-email-preview-frame" class="w-100 border rounded" sandbox="" title="${escapeHtml(i18next.t("Email preview"))}" style="min-height: 520px; background: #fff;"></iframe>`,
+    "    </div>",
+    '    <div class="modal-footer">',
+    `      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${escapeHtml(i18next.t("Back to editing"))}</button>`,
+    "    </div>",
+    "  </div>",
+    "</div>",
+  ].join("");
+  document.body.appendChild(previewModalEl);
+  previewFrameEl = previewModalEl.querySelector("#crm-email-preview-frame");
+  previewTitleEl = previewModalEl.querySelector("#crm-email-preview-title");
+  previewErrorEl = previewModalEl.querySelector("#crm-email-preview-error");
+}
+
+/** POST /api/email/preview and show the rendered message for the first recipient. */
+async function doPreviewEmail(previewBtn: HTMLButtonElement): Promise<void> {
+  const payload = composePayload();
+  if (!payload) return;
+  ensurePreviewModal();
+  if (!previewModalEl || !previewFrameEl || !previewTitleEl || !previewErrorEl) return;
+
+  previewBtn.disabled = true;
+  previewErrorEl.classList.add("d-none");
+  previewFrameEl.removeAttribute("srcdoc");
+  previewTitleEl.textContent = i18next.t("Preview");
+  try {
+    const res = await fetch(buildAPIUrl("email/preview"), {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = (await res.json().catch(() => ({}))) as {
+      html?: string;
+      recipient?: { name: string; email: string };
+      recipientCount?: number;
+      message?: string;
+    };
+    if (!res.ok || typeof data.html !== "string") {
+      previewErrorEl.textContent = data.message ?? i18next.t("Could not build the preview.");
+      previewErrorEl.classList.remove("d-none");
+    } else {
+      const who = data.recipient ? `${data.recipient.name} <${data.recipient.email}>` : "";
+      const more = (data.recipientCount ?? 1) > 1 ? ` (+${(data.recipientCount ?? 1) - 1})` : "";
+      previewTitleEl.textContent = `${i18next.t("Preview")} — ${i18next.t("To")}: ${who}${more}`;
+      previewFrameEl.setAttribute("srcdoc", data.html);
+    }
+    window.bootstrap.Modal.getOrCreateInstance(previewModalEl).show();
+  } catch (err) {
+    console.error("[email-composer] preview failed:", err);
+    previewErrorEl.textContent = i18next.t("Could not build the preview.");
+    previewErrorEl.classList.remove("d-none");
+    window.bootstrap.Modal.getOrCreateInstance(previewModalEl).show();
+  } finally {
+    previewBtn.disabled = false;
+  }
+}
+
+async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
+  const payload = composePayload();
+  if (!payload) return;
+  const { personIds, familyIds, subject, body } = payload;
+  if (!subjectInputEl || !bodyTextareaEl) return;
+
+  // Abort any previous send
+  sendController?.abort();
+  sendController = new AbortController();
+
+  // Show spinner on submit button
+  submitBtn.disabled = true;
+  const submitIcon = submitBtn.querySelector("i");
+  if (submitIcon) submitIcon.className = "spinner-border spinner-border-sm me-1";
+  const submitLabel = submitBtn.lastChild;
+  if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Sending…");
+
+  // Remove any previous result banner
+  const oldBanner = composeFormEl?.querySelector(".crm-send-result");
+  oldBanner?.remove();
+
+  try {
+    const url = buildAPIUrl("email/send");
+    const res = await fetch(url, {
+      method: "POST",
+      credentials: "same-origin",
+      signal: sendController.signal,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        personIds,
+        familyIds,
+        subject,
+        body,
+      }),
+    });
+
+    const data = (await res.json().catch(() => ({}))) as EmailSendResponse;
+    const sentCount = data.counts?.sent ?? data.sent?.length ?? 0;
+    const notSent = [...(data.skipped ?? []), ...(data.failed ?? [])];
+
+    if (res.ok && sentCount > 0) {
+      // ── Success (possibly partial) ───────────────────────────────── //
+      const banner = document.createElement("div");
+      banner.className = `alert ${notSent.length > 0 ? "alert-warning" : "alert-success"} crm-send-result mt-2 mb-0`;
+      const bannerIcon = document.createElement("i");
+      bannerIcon.className = `fa-solid ${notSent.length > 0 ? "fa-triangle-exclamation" : "fa-circle-check"} me-2`;
+      banner.appendChild(bannerIcon);
+      banner.appendChild(
+        document.createTextNode(i18next.t("Email sent to {{count}} recipient(s).", { count: sentCount })),
+      );
+      appendNotSentList(banner, notSent);
+      composeFormEl?.appendChild(banner);
+
+      // Disable form so user can't accidentally re-send
+      if (subjectInputEl) subjectInputEl.disabled = true;
+      if (bodyTextareaEl) bodyTextareaEl.disabled = true;
+      submitBtn.disabled = true;
+      if (submitIcon) submitIcon.className = "fa-solid fa-check me-1";
+      if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Sent");
+    } else {
+      // ── Failure, or nothing could be sent ────────────────────────── //
+      const errMsg =
+        data.message ??
+        data.error ??
+        data.failed?.[0]?.error ??
+        (res.ok
+          ? i18next.t("No email was sent.")
+          : i18next.t("Failed to send email. Please try again or use 'Open in Email Client'."));
+      const banner = document.createElement("div");
+      banner.className = "alert alert-danger crm-send-result mt-2 mb-0";
+      const bannerIcon = document.createElement("i");
+      bannerIcon.className = "fa-solid fa-triangle-exclamation me-2";
+      banner.appendChild(bannerIcon);
+      banner.appendChild(document.createTextNode(errMsg));
+      appendNotSentList(banner, notSent);
+      composeFormEl?.appendChild(banner);
+
+      // Re-enable submit so user can retry
+      submitBtn.disabled = false;
+      if (submitIcon) submitIcon.className = "fa-solid fa-paper-plane me-1";
+      if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Send Email");
+    }
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "AbortError") return;
+    console.error("[email-composer] send failed:", err);
+    const banner = document.createElement("div");
+    banner.className = "alert alert-danger crm-send-result mt-2 mb-0";
+    const bannerIcon = document.createElement("i");
+    bannerIcon.className = "fa-solid fa-triangle-exclamation me-2";
+    banner.appendChild(bannerIcon);
+    banner.appendChild(
+      document.createTextNode(i18next.t("Failed to send email. Please try again or use 'Open in Email Client'.")),
+    );
+    composeFormEl?.appendChild(banner);
+
+    submitBtn.disabled = false;
+    if (submitIcon) submitIcon.className = "fa-solid fa-paper-plane me-1";
+    if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Send Email");
+  } finally {
+    sendController = null;
+  }
+}
+
+// ─────────────────────────────────────────────
+//  Modal DOM bootstrap
+// ─────────────────────────────────────────────
+
 function ensureModalExists(): void {
   if (modalEl) return;
 
@@ -104,7 +564,6 @@ function ensureModalExists(): void {
   modalEl.setAttribute("role", "dialog");
   modalEl.setAttribute("aria-modal", "true");
   modalEl.setAttribute("aria-labelledby", "crm-email-composer-title");
-  // Set aria-label via i18next since Bootstrap doesn't localize it automatically.
   modalEl.innerHTML = [
     '<div class="modal-dialog modal-lg modal-dialog-scrollable">',
     '  <div class="modal-content">',
@@ -127,7 +586,7 @@ function ensureModalExists(): void {
   modalTitle = document.getElementById("crm-email-composer-title");
   modalBody = document.getElementById("crm-email-composer-body");
 
-  // ── Footer buttons (text via i18next so they are translatable) ────
+  // ── Footer buttons ────────────────────────────────────────────────
   const footer = document.getElementById("crm-email-composer-footer");
 
   bccToggle = makeBtn(
@@ -136,22 +595,36 @@ function ensureModalExists(): void {
     "fa-solid fa-user-secret",
     i18next.t("BCC Mode"),
   );
+  bccToggle.setAttribute("aria-pressed", "false");
 
   copyBtn = makeBtn(
     "crm-email-copy-btn",
-    "btn btn-sm btn-outline-primary",
+    "btn btn-sm btn-outline-secondary",
     "fa-solid fa-copy",
     i18next.t("Copy Addresses"),
   );
   copyBtn.disabled = true;
 
+  // "Open in Email Client" — always present as a mailto: fallback
   clientBtn = makeBtn(
     "crm-email-client-btn",
-    "btn btn-sm btn-primary",
-    "fa-solid fa-paper-plane",
+    "btn btn-sm btn-outline-secondary",
+    "fa-solid fa-envelope",
     i18next.t("Open in Email Client"),
   );
   clientBtn.disabled = true;
+  clientBtn.title = i18next.t("Open recipients in your local email application");
+
+  // "Compose Message" button — only shown when email sending is enabled (created unconditionally, visibility controlled)
+  // "Compose Message" — outline style like the other footer actions; the primary-coloured
+  // action is the "Send Email" submit inside the form it opens.
+  sendBtn = makeBtn(
+    "crm-email-send-btn",
+    "btn btn-sm btn-outline-primary",
+    "fa-solid fa-pen-to-square",
+    i18next.t("Compose Message"),
+  );
+  sendBtn.disabled = true;
 
   const closeBtn = document.createElement("button");
   closeBtn.type = "button";
@@ -162,9 +635,10 @@ function ensureModalExists(): void {
   footer?.appendChild(bccToggle);
   footer?.appendChild(copyBtn);
   footer?.appendChild(clientBtn);
+  footer?.appendChild(sendBtn);
   footer?.appendChild(closeBtn);
 
-  // BCC toggle handler
+  // ── BCC toggle ────────────────────────────────────────────────────
   bccToggle.addEventListener("click", () => {
     bccMode = !bccMode;
     bccToggle?.setAttribute("aria-pressed", String(bccMode));
@@ -172,7 +646,7 @@ function ensureModalExists(): void {
     updateClientButtonHref();
   });
 
-  // Copy handler — uses clipboard API, falls back to execCommand
+  // ── Copy handler ──────────────────────────────────────────────────
   copyBtn.addEventListener("click", () => {
     const csv = currentEmails.join(", ");
     if (navigator.clipboard) {
@@ -185,19 +659,25 @@ function ensureModalExists(): void {
     }
   });
 
-  // Open in client handler
+  // ── Open-in-client handler ────────────────────────────────────────
   clientBtn.addEventListener("click", () => {
-    // Guard aria-disabled: the button stays focusable/hoverable so the tooltip
-    // remains discoverable, so we must block the action in the event handler.
     if (clientBtn?.getAttribute("aria-disabled") === "true") return;
     if (currentEmails.length === 0) return;
-    // Match CommunicationUtils.openMailto/openBcc: encode the full CSV string so
-    // commas between addresses are percent-encoded (%2C), not left as bare separators.
     const csv = currentEmails.join(",");
     const href = bccMode ? `mailto:?bcc=${encodeURIComponent(csv)}` : `mailto:${encodeURIComponent(csv)}`;
     window.open(href, "_blank", "noopener,noreferrer");
   });
+
+  // ── Send button — toggle compose form ────────────────────────────
+  sendBtn.addEventListener("click", () => {
+    if (sendBtn?.getAttribute("aria-disabled") === "true") return;
+    toggleComposeForm(!composeFormVisible);
+  });
 }
+
+// ─────────────────────────────────────────────
+//  Copy-feedback helpers
+// ─────────────────────────────────────────────
 
 function showCopyFeedback(success: boolean): void {
   if (!copyBtn) return;
@@ -214,7 +694,6 @@ function showCopyFeedback(success: boolean): void {
   copyFeedbackTimer = setTimeout(() => {
     copyFeedbackTimer = null;
     if (!copyBtn) return;
-    // Only re-enable if we are still in a valid state (non-empty recipient list)
     if (currentEmails.length === 0) return;
     if (icon) icon.className = "fa-solid fa-copy me-1";
     if (label instanceof Text) label.nodeValue = i18next.t("Copy Addresses");
@@ -238,6 +717,10 @@ function legacyCopy(text: string): void {
   document.body.removeChild(ta);
 }
 
+// ─────────────────────────────────────────────
+//  Button-state helpers
+// ─────────────────────────────────────────────
+
 function updateBccToggleAppearance(): void {
   if (!bccToggle) return;
   if (bccMode) {
@@ -249,13 +732,11 @@ function updateBccToggleAppearance(): void {
 
 function updateClientButtonHref(): void {
   if (!clientBtn) return;
-  // Always clear the native disabled attribute first so aria-disabled logic
-  // is the sole authority on interactivity (prevents permanent lock-out).
   clientBtn.removeAttribute("disabled");
   const tooMany = currentEmails.length > MAX_MAILTO_RECIPIENTS;
-  const unavailable = tooMany || currentEmails.length === 0;
-  // Use aria-disabled instead of the disabled attribute so the element remains
-  // focusable/hoverable and the title tooltip is still discoverable by users.
+  const noEmails = currentEmails.length === 0;
+  const unavailable = tooMany || noEmails;
+
   if (unavailable) {
     clientBtn.setAttribute("aria-disabled", "true");
     clientBtn.classList.add("disabled");
@@ -263,9 +744,10 @@ function updateClientButtonHref(): void {
     clientBtn.removeAttribute("aria-disabled");
     clientBtn.classList.remove("disabled");
   }
+
   if (tooMany) {
     const reason = i18next.t(
-      "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead.",
+      "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses or Send instead.",
       { total: currentEmails.length, max: MAX_MAILTO_RECIPIENTS },
     );
     clientBtn.title = reason;
@@ -273,7 +755,7 @@ function updateClientButtonHref(): void {
     const reasonEl = document.getElementById("crm-email-client-reason");
     if (reasonEl) reasonEl.textContent = reason;
   } else {
-    clientBtn.title = "";
+    clientBtn.title = i18next.t("Open recipients in your local email application");
     clientBtn.removeAttribute("aria-describedby");
     const reasonEl = document.getElementById("crm-email-client-reason");
     if (reasonEl) reasonEl.textContent = "";
@@ -283,13 +765,33 @@ function updateClientButtonHref(): void {
 function resetClientButton(): void {
   if (!clientBtn) return;
   clientBtn.disabled = false;
-  clientBtn.removeAttribute("disabled"); // belt-and-suspenders: clear any setAttribute path too
+  clientBtn.removeAttribute("disabled");
   clientBtn.removeAttribute("aria-disabled");
   clientBtn.removeAttribute("aria-describedby");
   clientBtn.classList.remove("disabled");
-  clientBtn.title = "";
+  clientBtn.title = i18next.t("Open recipients in your local email application");
   const reasonEl = document.getElementById("crm-email-client-reason");
   if (reasonEl) reasonEl.textContent = "";
+}
+
+/** Show/hide and enable/disable the Send button depending on SMTP config and recipient state. */
+function updateSendButton(): void {
+  if (!sendBtn) return;
+  const smtp = isSmtpConfigured();
+  // Hide the entire button when SMTP is not configured — no point confusing users.
+  sendBtn.style.display = smtp ? "" : "none";
+  if (!smtp) return;
+
+  const ids = sendableIds();
+  const hasRecipients = ids.personIds.length + ids.familyIds.length > 0;
+  if (hasRecipients) {
+    sendBtn.removeAttribute("disabled");
+    sendBtn.removeAttribute("aria-disabled");
+    sendBtn.classList.remove("disabled");
+  } else {
+    sendBtn.setAttribute("aria-disabled", "true");
+    sendBtn.classList.add("disabled");
+  }
 }
 
 function getModal(): BootstrapModalInstance {
@@ -302,7 +804,7 @@ function getModal(): BootstrapModalInstance {
 
 function renderLoading(title: string): void {
   if (!modalTitle || !modalBody) return;
-  currentEmails = []; // clear stale recipients so pending copy-feedback cannot act on them
+  currentEmails = [];
   if (copyFeedbackTimer) {
     clearTimeout(copyFeedbackTimer);
     copyFeedbackTimer = null;
@@ -322,17 +824,16 @@ function renderLoading(title: string): void {
   modalBody.appendChild(spinner);
   if (copyBtn) copyBtn.disabled = true;
   resetClientButton();
-  // Client button stays disabled until recipients load — updateClientButtonHref
-  // will re-evaluate once renderRecipients() is called with real data.
   if (clientBtn) {
     clientBtn.setAttribute("aria-disabled", "true");
     clientBtn.classList.add("disabled");
   }
+  updateSendButton();
 }
 
 function renderError(title: string, message: string): void {
   if (!modalTitle || !modalBody) return;
-  currentEmails = []; // clear stale recipients so no button can act on them
+  currentEmails = [];
   if (copyFeedbackTimer) {
     clearTimeout(copyFeedbackTimer);
     copyFeedbackTimer = null;
@@ -346,23 +847,17 @@ function renderError(title: string, message: string): void {
   alert.appendChild(document.createTextNode(message));
   modalBody.textContent = "";
   modalBody.appendChild(alert);
-  // Explicitly reset both footer buttons to a safe inert state so no
-  // stale enabled/disabled styling leaks through from a previous render.
   if (copyBtn) copyBtn.disabled = true;
   resetClientButton();
   if (clientBtn) {
     clientBtn.setAttribute("aria-disabled", "true");
     clientBtn.classList.add("disabled");
   }
+  updateSendButton();
 }
 
-/** Recompute baseRecipients from the currently active roles.
- * Only called when the role-filter UI is shown (byRole has ≥2 keys).
- * When all checkboxes are unchecked (activeRoles.size === 0) the payload
- * must be empty so Copy/mailto don't use a stale previous list. */
 function recomputeBaseRecipients(): void {
   if (activeRoles.size === 0) {
-    // User unchecked every role checkbox — payload must be empty, not stale.
     baseRecipients = [];
     return;
   }
@@ -380,7 +875,6 @@ function recomputeBaseRecipients(): void {
   }
 }
 
-/** Recompute currentEmails from the member list plus the optional default recipient. */
 function recomputeCurrentEmails(): void {
   currentEmails =
     baseRecipients.length > 0 && defaultToAddress !== "" && includeDefaultTo
@@ -388,22 +882,14 @@ function recomputeCurrentEmails(): void {
       : [...baseRecipients];
 }
 
-/** Update the title count badge and the collapsible-list summary text to match the current total. */
 function updateCountBadge(): void {
   if (countBadge) countBadge.textContent = String(currentEmails.length);
   if (recipientSummaryEl) {
-    // Use baseRecipients.length (not currentEmails.length) — the expandable
-    // list shows member emails only; defaultToAddress has its own checkbox.
     const word = baseRecipients.length === 1 ? i18next.t("recipient") : i18next.t("recipients");
     recipientSummaryEl.textContent = `${baseRecipients.length} ${word} — ${i18next.t("click to expand")}`;
   }
 }
 
-/**
- * Rebuild the scrollable recipient list to show only the emails for the
- * currently active roles. Called after a role checkbox is toggled so the
- * visible list stays in sync with the Copy/mailto payload.
- */
 function rebuildRecipientList(): void {
   if (!recipientListWrapperEl) return;
   recipientListWrapperEl.textContent = "";
@@ -418,29 +904,31 @@ function rebuildRecipientList(): void {
       for (const email of roleEmails) {
         const line = document.createElement("div");
         line.className = "ps-2";
-        line.textContent = email;
+        line.textContent = recipientLineText(email);
         recipientListWrapperEl.appendChild(line);
       }
     }
   }
 }
 
-/** Sync the footer action buttons (Copy / Open in client) with the current recipient total. */
 function updateActionButtons(): void {
   if (copyBtn) copyBtn.disabled = currentEmails.length === 0;
   updateClientButtonHref();
-  // Keep the hint in sync with the button state so they never contradict each other.
+  updateSendButton();
+
+  // Keep the "too many for mailto" hint in sync.
   if (tooManyHintEl) {
     const tooMany = currentEmails.length > MAX_MAILTO_RECIPIENTS;
-    tooManyHintEl.hidden = !tooMany;
+    // When SMTP is configured the hint isn't needed — Send handles large lists fine.
+    tooManyHintEl.hidden = !tooMany || isSmtpConfigured();
     if (tooMany) {
-      // Update the count in the hint text when the recipient total changes.
       const textNode = tooManyHintEl.lastChild;
       if (textNode instanceof Text) {
-        textNode.nodeValue = i18next.t(
-          "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead.",
-          { total: currentEmails.length },
-        );
+        textNode.nodeValue = isSmtpConfigured()
+          ? ""
+          : i18next.t("Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead.", {
+              total: currentEmails.length,
+            });
       }
     }
   }
@@ -451,23 +939,26 @@ function renderRecipients(
   emails: string[],
   byRole: Record<string, string[]> = {},
   defaultTo = "",
+  recipients: CRMEmailRecipient[] = [],
 ): void {
   if (!modalTitle || !modalBody) return;
 
-  // Store byRole for role-filter recomputation and set up the active roles set.
+  recipientIndex = new Map();
+  for (const r of recipients) {
+    if (typeof r?.email === "string" && r.email.trim() !== "") {
+      recipientIndex.set(r.email.trim().toLowerCase(), r);
+    }
+  }
   byRoleMap = byRole;
   const roleKeys = Object.keys(byRole);
   const hasRoles = roleKeys.length > 0;
   const showRoleFilter = roleKeys.length >= 2;
-  // All roles active by default on each open.
   activeRoles = showRoleFilter ? new Set(roleKeys) : new Set();
 
-  // When byRole is present, derive baseRecipients from the active roles (dedup across roles).
   if (hasRoles) {
     if (showRoleFilter) {
       recomputeBaseRecipients();
     } else {
-      // Single role or flat list — no filter UI, just flatten.
       const seen = new Set<string>();
       baseRecipients = Object.values(byRole)
         .flat()
@@ -482,10 +973,6 @@ function renderRecipients(
     baseRecipients = [...emails];
   }
 
-  // Offer the church default "to" address (sToEmailAddress) as a removable recipient only
-  // when it is configured, there is at least one member recipient, and it is not already
-  // present among the members (case-insensitive). The composer — not the backend — owns
-  // whether it is actually sent, so the user can uncheck it.
   const trimmedDefault = defaultTo.trim();
   const alreadyPresent =
     trimmedDefault !== "" && baseRecipients.some((e) => e.toLowerCase() === trimmedDefault.toLowerCase());
@@ -493,7 +980,7 @@ function renderRecipients(
 
   recomputeCurrentEmails();
 
-  // Update title with count badge (kept as a ref so the toggle can update it in place)
+  // Title with count badge
   modalTitle.textContent = "";
   const titleSpan = document.createElement("span");
   titleSpan.textContent = title;
@@ -505,7 +992,7 @@ function renderRecipients(
 
   modalBody.textContent = "";
 
-  // Role filter checkboxes (shown only when ≥2 roles present)
+  // Role filter checkboxes (≥2 roles)
   if (showRoleFilter) {
     const filterSection = document.createElement("div");
     filterSection.className = "mb-3";
@@ -566,11 +1053,11 @@ function renderRecipients(
       clientBtn.classList.add("disabled");
       clientBtn.title = "";
     }
+    updateSendButton();
     return;
   }
 
-  // Recipient list (collapsible) — shows member recipients only; the default "to" address
-  // is represented by its own checkbox below, not mixed into the role groups.
+  // Collapsible recipient list (member emails only)
   const details = document.createElement("details");
   const summary = document.createElement("summary");
   summary.className = "text-body-secondary small mb-2";
@@ -583,13 +1070,9 @@ function renderRecipients(
   listWrapper.style.maxHeight = "200px";
   listWrapper.style.overflowY = "auto";
   listWrapper.className = "mt-2 border rounded p-2 small font-monospace";
-  // Store module-level reference so rebuildRecipientList() can update
-  // the visible list when role checkboxes are toggled.
   recipientListWrapperEl = listWrapper;
 
   if (hasRoles) {
-    // Render only the active roles — initially all roles are active, and
-    // rebuildRecipientList() keeps this in sync with the checkboxes.
     const rolesToRender = showRoleFilter ? activeRoles : new Set(Object.keys(byRole));
     for (const role of rolesToRender) {
       const roleEmails = byRoleMap[role] ?? [];
@@ -600,14 +1083,14 @@ function renderRecipients(
       listWrapper.appendChild(roleHeader);
       for (const email of roleEmails) {
         const line = document.createElement("div");
-        line.textContent = email;
+        line.textContent = recipientLineText(email);
         listWrapper.appendChild(line);
       }
     }
   } else {
     for (const email of baseRecipients) {
       const line = document.createElement("div");
-      line.textContent = email;
+      line.textContent = recipientLineText(email);
       listWrapper.appendChild(line);
     }
   }
@@ -615,8 +1098,7 @@ function renderRecipients(
   details.appendChild(listWrapper);
   modalBody.appendChild(details);
 
-  // Removable default recipient (church sToEmailAddress). Checked by default; unchecking
-  // drops it from the badge count and the Copy / Open-in-client payloads.
+  // Removable default recipient (church sToEmailAddress)
   if (defaultToAddress !== "") {
     const check = document.createElement("div");
     check.className = "form-check mt-3";
@@ -640,8 +1122,7 @@ function renderRecipients(
     modalBody.appendChild(check);
   }
 
-  // Hint for large lists — create once and toggle hidden rather than recreating,
-  // so updateActionButtons() can keep it in sync with the Email Client button state.
+  // "Too many for mailto" hint (shown only when SMTP is NOT configured)
   if (!tooManyHintEl) {
     tooManyHintEl = document.createElement("div");
     tooManyHintEl.className = "alert alert-info mt-3 mb-0 small";
@@ -651,32 +1132,25 @@ function renderRecipients(
     tooManyHintEl.appendChild(document.createTextNode(""));
   }
   const tooManyNow = currentEmails.length > MAX_MAILTO_RECIPIENTS;
-  tooManyHintEl.hidden = !tooManyNow;
+  tooManyHintEl.hidden = !tooManyNow || isSmtpConfigured();
   const tooManyText = tooManyHintEl.lastChild;
   if (tooManyText instanceof Text) {
-    tooManyText.nodeValue = i18next.t(
-      "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead.",
-      { total: currentEmails.length },
-    );
+    tooManyText.nodeValue =
+      tooManyNow && !isSmtpConfigured()
+        ? i18next.t("Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead.", {
+            total: currentEmails.length,
+          })
+        : "";
   }
   modalBody.appendChild(tooManyHintEl);
 
   updateActionButtons();
 }
 
-function escapeHtml(s: string): string {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-}
-
 // ─────────────────────────────────────────────
 //  Public API
 // ─────────────────────────────────────────────
 
-/**
- * Single source of truth for the church default "to" address (sToEmailAddress).
- * Rendered once into window.CRM.comm by Header.php for email-enabled users; empty
- * string otherwise. The composer offers it as a removable default recipient.
- */
 function getConfiguredDefaultTo(): string {
   const v = window.CRM?.comm?.defaultEmailToAddress;
   return typeof v === "string" ? v : "";
@@ -684,13 +1158,12 @@ function getConfiguredDefaultTo(): string {
 
 export function openEmailComposer(options: CRMEmailComposerOptions): void {
   ensureModalExists();
-  fetchController?.abort(); // cancel any in-flight openFromEndpoint fetch
+  fetchController?.abort();
   fetchController = null;
   bccMode = false;
   updateBccToggleAppearance();
-  includeDefaultTo = true; // reset: each open starts with the default recipient included
+  includeDefaultTo = true;
 
-  // Sanitize programmatic inputs the same way the fetch path does
   const sanitizedEmails = (options.emails ?? [])
     .filter((v): v is string => typeof v === "string" && v.trim() !== "")
     .map((v) => v.trim());
@@ -703,24 +1176,22 @@ export function openEmailComposer(options: CRMEmailComposerOptions): void {
         .map((v) => v.trim());
     }
   }
-  // Callers may override, but the default comes from the single window.CRM.comm config.
   const defaultTo = typeof options.defaultTo === "string" ? options.defaultTo : getConfiguredDefaultTo();
+  const recipients = Array.isArray(options.recipients) ? options.recipients : [];
 
-  renderRecipients(options.title, sanitizedEmails, sanitizedByRole, defaultTo);
+  renderRecipients(options.title, sanitizedEmails, sanitizedByRole, defaultTo, recipients);
   getModal().show();
 }
 
 async function openFromEndpoint(endpoint: string, title: string): Promise<void> {
   ensureModalExists();
-  // Abort any in-flight fetch from a previous openFromEndpoint call so that
-  // a stale response cannot overwrite the fresher modal state that this call sets.
   if (fetchController) fetchController.abort();
   fetchController = new AbortController();
   const signal = fetchController.signal;
 
   bccMode = false;
   updateBccToggleAppearance();
-  includeDefaultTo = true; // reset: each open starts with the default recipient included
+  includeDefaultTo = true;
   renderLoading(title);
   getModal().show();
 
@@ -738,8 +1209,6 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
       ? data.emails.filter((v): v is string => typeof v === "string" && v.trim() !== "").map((v) => v.trim())
       : [];
     const rawByRole = data.byRole && typeof data.byRole === "object" ? data.byRole : {};
-    // Use a null-prototype object to prevent prototype-pollution if a role
-    // name ever matches special keys like '__proto__' or 'constructor'.
     const safeByRole = Object.create(null) as Record<string, string[]>;
     for (const [role, val] of Object.entries(rawByRole)) {
       if (Array.isArray(val)) {
@@ -748,12 +1217,9 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
           .map((v) => v.trim());
       }
     }
-    // The church default address (sToEmailAddress) is a system setting read from the
-    // single window.CRM.comm config, not returned by the email-list API.
-    renderRecipients(title, emails, safeByRole, getConfiguredDefaultTo());
+    const recipients = Array.isArray(data.recipients) ? data.recipients : [];
+    renderRecipients(title, emails, safeByRole, getConfiguredDefaultTo(), recipients);
   } catch (err) {
-    // AbortError is expected when a newer openFromEndpoint() call aborts this fetch.
-    // Silently discard — the newer call's renderLoading/renderRecipients is already running.
     if (err instanceof DOMException && err.name === "AbortError") return;
     console.error("[email-composer] fetch failed:", err);
     renderError(title, i18next.t("Failed to load recipients. Please try again."));
@@ -773,6 +1239,29 @@ function wireDataAttributes(): void {
     const endpoint = btn.dataset.emailEndpoint ?? "";
     const title = btn.dataset.emailTitle ?? i18next.t("Email");
 
+    // Single record: <button data-email-composer data-email-person-id="12"
+    //   data-email-address="a@b.c" data-email-name="Jane Doe"> (or data-email-family-id).
+    // No fetch needed; the church default "to" is not offered for a one-to-one message.
+    const personId = Number.parseInt(btn.dataset.emailPersonId ?? "", 10);
+    const familyId = Number.parseInt(btn.dataset.emailFamilyId ?? "", 10);
+    const address = (btn.dataset.emailAddress ?? "").trim();
+    if ((personId > 0 || familyId > 0) && address !== "") {
+      openEmailComposer({
+        title,
+        emails: [address],
+        defaultTo: "",
+        recipients: [
+          {
+            personId: personId > 0 ? personId : null,
+            familyId: familyId > 0 ? familyId : null,
+            name: btn.dataset.emailName ?? "",
+            email: address,
+          },
+        ],
+      });
+      return;
+    }
+
     if (!endpoint) {
       console.warn("[email-composer] missing data-email-endpoint on button", btn);
       return;
@@ -791,23 +1280,52 @@ document.addEventListener("DOMContentLoaded", () => {
     ensureModalExists();
     wireDataAttributes();
 
+    // Bootstrap moves focus to the dialog when the fade-in ends. If the user has already
+    // opened the compose form by then, give the focus back to the subject field so typing
+    // is not interrupted.
+    if (modalEl) {
+      modalEl.addEventListener("shown.bs.modal", () => {
+        if (composeFormVisible && subjectInputEl && !subjectInputEl.disabled) {
+          subjectInputEl.focus();
+        }
+      });
+    }
+
     // Reset the tooManyHintEl reference when the modal fully hides so it is
     // re-created fresh on the next open (avoids stale DOM references).
     if (modalEl) {
       modalEl.addEventListener("hidden.bs.modal", () => {
-        // Abort any in-flight fetch so it doesn't write to the now-hidden DOM.
+        // Abort any in-flight fetch or send so it doesn't write to the now-hidden DOM.
         fetchController?.abort();
         fetchController = null;
+        sendController?.abort();
+        sendController = null;
         // Cancel any pending copy-feedback timer so it doesn't fire on the next open.
         if (copyFeedbackTimer) {
           clearTimeout(copyFeedbackTimer);
           copyFeedbackTimer = null;
+        }
+        // Collapse the compose form without triggering its toggle animation
+        if (composeFormEl) {
+          composeFormEl.remove();
+          composeFormEl = null;
+          subjectInputEl = null;
+          bodyTextareaEl = null;
+        }
+        composeFormVisible = false;
+        // Reset Send button appearance
+        if (sendBtn) {
+          const icon = sendBtn.querySelector("i");
+          if (icon) icon.className = "fa-solid fa-pen-to-square me-1";
+          const label = sendBtn.lastChild;
+          if (label instanceof Text) label.nodeValue = i18next.t("Compose Message");
         }
         tooManyHintEl = null;
         recipientListWrapperEl = null;
         recipientSummaryEl = null;
         byRoleMap = {};
         activeRoles = new Set();
+        recipientIndex = new Map();
         if (bccToggle) bccToggle.setAttribute("aria-pressed", "false");
       });
     }

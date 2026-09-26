@@ -473,6 +473,9 @@ class AppIntegrityService
             '/^propel\/propel\.php$/',
             '/^integrityCheck\.json$/',
             '/^Images\/Person\/thumbnails\//',
+            // Uploaded church logo — runtime data, never part of signatures.json.
+            // Keep in sync with scripts/generate-signatures-node.js and package-release.js.
+            '/^Images\/church-logo\.png$/',
             '/^vendor\/.*\/example\//',
             '/^vendor\/.*\/examples\//',
             '/^vendor\/.*\/tests\//',
@@ -483,6 +486,14 @@ class AppIntegrityService
             // They are never part of the shipped signatures.json and must not
             // be reported as orphans. See plugin-system.md / plugin-security-scan.md.
             '/^plugins\/community\//',
+            // Church-supplied Member Portal themes and, later, other
+            // church-supplied module types. They are uploaded by the church's
+            // administrator, survive every upgrade, and are never part of the
+            // shipped signatures.json. See member-portal-design.md §3.8.
+            '/^Include\/themes\//',
+            '/^Include\/modules\//',
+            // Twig's compile cache for the portal — generated at runtime.
+            '/^Include\/cache\//',
         ];
 
         foreach ($excludePatterns as $pattern) {

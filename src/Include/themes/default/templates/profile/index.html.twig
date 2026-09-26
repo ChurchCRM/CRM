@@ -1,0 +1,104 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Profile — what the church has on file for this member, read-only.
+
+  Variables: `profile` (see docs/portal-templates.md). Everything on the page
+  comes from the acting member's own person record; there is no id anywhere.
+#}
+
+{% block content %}
+<div class="portal-profile">
+
+    <section class="portal-card portal-profile-identity">
+        {# The photo endpoint 404s when nobody has uploaded one, so the initials
+           stand in rather than a broken image. #}
+        {% if profile.hasPhoto %}
+        <img class="portal-avatar portal-avatar-lg" id="portal-profile-photo"
+             src="{{ profile.photoUrl }}" alt="{{ gettext('Your photo') }}">
+        {% else %}
+        <span class="portal-avatar portal-avatar-lg portal-avatar-initials" id="portal-profile-photo" aria-hidden="true">
+            {{ profile.firstName|first }}{{ profile.lastName|first }}
+        </span>
+        {% endif %}
+        <div class="portal-profile-identity-text">
+            <h1 class="portal-page-title">{{ profile.fullName }}</h1>
+            {% if profile.familyName %}
+            <p class="portal-card-text">{{ gettext('%s family')|format(profile.familyName) }}{% if profile.familyRole %} · {{ profile.familyRole }}{% endif %}</p>
+            {% endif %}
+        </div>
+        <a class="portal-button" href="{{ url('/portal/profile/edit') }}" id="portal-profile-edit-link">
+            <i class="fa-solid fa-pen" aria-hidden="true"></i>
+            <span>{{ gettext('Update your details') }}</span>
+        </a>
+    </section>
+
+    <section class="portal-card">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-address-card" aria-hidden="true"></i>
+            <span>{{ gettext('Your details') }}</span>
+        </h2>
+        <dl class="portal-detail-list" id="portal-profile-details">
+            <dt>{{ gettext('First Name') }}</dt>
+            <dd data-field="firstName">{{ profile.firstName|default('—') }}</dd>
+
+            {% if profile.middleName %}
+            <dt>{{ gettext('Middle Name') }}</dt>
+            <dd data-field="middleName">{{ profile.middleName }}</dd>
+            {% endif %}
+
+            <dt>{{ gettext('Last Name') }}</dt>
+            <dd data-field="lastName">{{ profile.lastName|default('—') }}</dd>
+
+            {% if profile.title %}
+            <dt>{{ gettext('Title') }}</dt>
+            <dd data-field="title">{{ profile.title }}</dd>
+            {% endif %}
+
+            {% if profile.suffix %}
+            <dt>{{ gettext('Suffix') }}</dt>
+            <dd data-field="suffix">{{ profile.suffix }}</dd>
+            {% endif %}
+
+            <dt>{{ gettext('Email') }}</dt>
+            <dd data-field="email">{{ profile.email|default('—') }}</dd>
+
+            <dt>{{ gettext('Work Email') }}</dt>
+            <dd data-field="workEmail">{{ profile.workEmail|default('—') }}</dd>
+
+            <dt>{{ gettext('Mobile Phone') }}</dt>
+            <dd data-field="cellPhone">{{ profile.cellPhone|default('—') }}</dd>
+
+            <dt>{{ gettext('Home Phone') }}</dt>
+            <dd data-field="homePhone">{{ profile.homePhone|default('—') }}</dd>
+
+            <dt>{{ gettext('Work Phone') }}</dt>
+            <dd data-field="workPhone">{{ profile.workPhone|default('—') }}</dd>
+
+            {% if profile.canEditBirthday %}
+            <dt>{{ gettext('Birthday') }}</dt>
+            <dd data-field="birthday">{{ profile.birthday|default('—') }}</dd>
+            {% endif %}
+        </dl>
+    </section>
+
+    <section class="portal-card" id="portal-profile-security">
+        <h2 class="portal-card-title">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            <span>{{ gettext('Sign-in and security') }}</span>
+        </h2>
+        <p class="portal-card-text">
+            {{ gettext('Change the password you sign in with, or add a second step so a password alone is not enough.') }}
+        </p>
+        <p class="portal-action-row">
+            <a class="portal-button" href="{{ url('/portal/profile/password') }}" id="portal-change-password-link">
+                {{ gettext('Change your password') }}
+            </a>
+            <a class="portal-button portal-button-quiet" href="{{ url('/portal/profile/two-factor') }}" id="portal-two-factor-link">
+                {{ gettext('Two-factor authentication') }}
+            </a>
+        </p>
+    </section>
+
+</div>
+{% endblock %}

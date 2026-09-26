@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
@@ -25,6 +26,34 @@ use Propel\Runtime\Connection\ConnectionInterface;
 class User extends BaseUser
 {
     private $provisional2FAKey;
+
+    /**
+     * Per-request memo for isVolunteerCoordinatorEnabled(); null means "not computed yet".
+     * The scope half of that predicate is a query, and both the route middleware and the
+     * menu builder ask for it on the same request (#9706).
+     */
+    /**
+     * Per-request memo for isVolunteerCoordinatorEnabled(), keyed by person id.
+     *
+     * STATIC on purpose: the logged-in User object is serialized into the PHP
+     * session, and an instance property would be serialized with it — so an
+     * answer computed while the rollout flag was still 'v1' would follow the
+     * session until the next login. A static is never serialized and lives for
+     * exactly one request (#9706, found in review).
+     *
+     * @var array<int, bool>
+     */
+    private static array $volunteerCoordinatorMemo = [];
+
+    /**
+     * Per-request memo for isVolunteerTeamLeaderEnabled(), keyed by person id.
+     *
+     * Static for exactly the reason above: never serialized into the session, so
+     * it cannot outlive the request that computed it (#9867).
+     *
+     * @var array<int, bool>
+     */
+    private static array $volunteerTeamLeaderMemo = [];
 
     public function getId()
     {
@@ -87,7 +116,7 @@ class User extends BaseUser
     //   2. Read-time: every isXxxEnabled() method short-circuits on
     //      isEditSelfExclusive() before checking the stored flag.
     //   3. Entry gate: AuthMiddleware and PageInit redirect EditSelf-exclusive
-    //      users to /external/limited-access before any route runs.
+    //      users to /portal before any route runs.
     //
     // Zero-permission users (all flags 0, EditSelf=0) are NOT blocked at the
     // entry gate — they retain read-only access under the read-default policy
@@ -109,7 +138,7 @@ class User extends BaseUser
      *
      * A non-admin user with EditSelf=1 has no module permissions and cannot use
      * the CRM interface — PageInit and AuthMiddleware redirect them to
-     * /external/limited-access.
+     * the Member Portal at /portal.
      *
      * Deliberately NOT true for a zero-permission user (all flags 0). Those users
      * retain read-only access to people and family records under the read-default
@@ -223,12 +252,194 @@ class User extends BaseUser
     }
 
     /**
+     * May this user reach the event WRITE surface at all (#9713, design §4.6, D9)?
+     *
+     * `canManageEvents()` is the global AddEvent right and is unchanged. Volunteer v2 adds
+     * one more way in: a ministry coordinator may create and edit events that carry THEIR
+     * ministry id, without holding AddEvent. That is a coarse "let them past the door"
+     * answer — which particular event row they may write is a per-row question the API
+     * handlers ask `VolunteerAuthorizationService::canManageMinistry()` (§4.5, layer three).
+     *
+     * The Events module must still be enabled system-wide for the coordinator branch, for
+     * the same defense-in-depth reason `canManageEvents()` requires it.
+     *
+     * Used by `AddEventsOrMinistryRoleAuthMiddleware` and by the "Add Church Event" menu
+     * item, so menu visibility mirrors the route gate exactly (design §3.5, A11).
+     */
+    public function canWriteEvents(): bool
+    {
+        if ($this->canManageEvents()) {
+            return true;
+        }
+
+        return self::isEventsEnabled() && $this->isVolunteerCoordinatorEnabled();
+    }
+
+    /**
      * Whether the Events module is enabled system-wide via SystemConfig.
      * Pure system check — no per-user permission gate.
      */
     public static function isEventsEnabled(): bool
     {
         return SystemConfig::getBooleanValue('bEnabledEvents');
+    }
+
+    /**
+     * The Volunteer Management rollout state (#9704): 'v1', 'v2' or 'both'.
+     *
+     * Pure system check — no per-user permission gate, mirroring
+     * isEventsEnabled(). Anything not in the choice list degrades to 'v1',
+     * so a hand-edited or half-migrated config_cfg row can never expose V2.
+     */
+    public static function getVolunteerVersion(): string
+    {
+        $version = SystemConfig::getValue('sVolunteerVersion');
+
+        return in_array($version, ['v1', 'v2', 'both'], true) ? $version : 'v1';
+    }
+
+    /**
+     * Whether the V2 Volunteer Management experience is active ('v2' or 'both').
+     */
+    public static function isVolunteerV2Enabled(): bool
+    {
+        return in_array(self::getVolunteerVersion(), ['v2', 'both'], true);
+    }
+
+    /**
+     * Whether the legacy V1 Volunteer Opportunities experience is active ('v1' or 'both').
+     */
+    public static function isVolunteerV1Enabled(): bool
+    {
+        return in_array(self::getVolunteerVersion(), ['v1', 'both'], true);
+    }
+
+    /**
+     * Global Volunteer Manager (#9706) — authority over every ministry and every team.
+     *
+     * Same three-line shape as isManageFundraisersEnabled(): the EditSelf-exclusive
+     * short-circuit first (a volunteer is never a manager), then the module feature
+     * flag, then admin-or-flag. `sVolunteerVersion` takes the place bEnabledFundraiser
+     * holds for fundraisers — the manager tier only exists while V2 is rolled out.
+     *
+     * This is the ONE place the administrator bypass for volunteer management is
+     * decided; VolunteerAuthorizationService::isGlobalManager() delegates here and
+     * every other volunteer predicate flows through that (design §4.1).
+     */
+    public function isManageMinistriesEnabled(): bool
+    {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
+        return self::isVolunteerV2Enabled() && ($this->isAdmin() || $this->isManageMinistries());
+    }
+
+    /**
+     * Manage My Ministries (2026-09-18, product owner) — the permission an administrator
+     * gives a ministry coordinator.
+     *
+     * It opens the admin shell's coordinator area — the Ministries heading, the Ministry
+     * Dashboard and the ministry pages — for the ministries the login holds a scope for,
+     * and for nothing else. Which ministries is still `volunteer_scope_vscp`'s answer:
+     * this flag decides whether the area opens at all, the scope rows decide what is in
+     * it. A global manager (Manage Ministries) and an administrator hold it implicitly.
+     *
+     * Before this flag existed a scope row alone opened the area, so the only way to
+     * give a coordinator a login that reached their ministry was the global tier — which
+     * let them create, deactivate and delete every ministry in the church. That is the
+     * defect this permission exists to close.
+     */
+    public function isManageMyMinistriesEnabled(): bool
+    {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
+        return self::isVolunteerV2Enabled()
+            && ($this->isAdmin() || $this->isManageMinistries() || $this->isManageMyMinistries());
+    }
+
+    /**
+     * May this user open the Volunteer coordinator area at all (#9706)?
+     *
+     * True for an administrator, a global volunteer manager, and — since 2026-09-18 —
+     * a **Manage My Ministries** login holding at least one volunteer_scope_vscp row
+     * (ministry coordinator or team leader). A scope row alone no longer opens the
+     * admin shell: the flag says the login may use the coordinator area, the scopes
+     * say which ministries it sees there. A team leader without the flag runs their
+     * team from the Member Portal's My Teams page instead.
+     *
+     * Memoised per request because the scope half is a database query and both
+     * VolunteerCoordinatorRoleAuthMiddleware and Menu::buildMenuItems() ask for it —
+     * menu visibility must mirror the route gate exactly (design §3.5, A11), so both
+     * must call this single predicate rather than re-deriving the rule.
+     *
+     * **Still false for a self-service (EditSelf-exclusive) account**, and that is
+     * load-bearing. The Member Portal's revision of D14 (#9867) made scopes count
+     * for those accounts, so `VolunteerAuthorizationService::loadScopes()` now
+     * returns their grants — but the coordinator tier stays a staff tier: the
+     * short-circuit below is what keeps the admin dashboard and the sidebar's
+     * Ministries heading closed to a member login. A self-service account that
+     * leads a team is answered by isVolunteerTeamLeaderEnabled() instead, and
+     * exercises it in the portal.
+     */
+    public function isVolunteerCoordinatorEnabled(): bool
+    {
+        $key = (int) $this->getId();
+        if (array_key_exists($key, self::$volunteerCoordinatorMemo)) {
+            return self::$volunteerCoordinatorMemo[$key];
+        }
+
+        if ($this->isManageMinistriesEnabled()) {
+            // Covers the administrator bypass, the manager flag, the rollout flag
+            // and the EditSelf-exclusive short-circuit in one call.
+            return self::$volunteerCoordinatorMemo[$key] = true;
+        }
+
+        if (!$this->isManageMyMinistriesEnabled()) {
+            // Carries the EditSelf-exclusive short-circuit and the rollout gate too.
+            return self::$volunteerCoordinatorMemo[$key] = false;
+        }
+
+        return self::$volunteerCoordinatorMemo[$key] = (new VolunteerAuthorizationService())->hasAnyScope($this);
+    }
+
+    /**
+     * Does this person lead at least one volunteer team (#9867, Member Portal P17)?
+     *
+     * The Member Portal's revision of Volunteer v2 decision D14: a team leader may
+     * hold an ordinary member login. Tony Smith leads the Wednesday Evening team of
+     * Children's Ministry with a self-service account, and must be able to run his
+     * team — from the Member Portal (MP7), never from the admin shell.
+     *
+     * So this predicate deliberately does NOT short-circuit on
+     * `isEditSelfExclusive()`, unlike every module permission getter above it. It
+     * is not a module permission: it opens no admin page and grants no authority
+     * by itself. It answers one question — "is there a `team` grant for this
+     * person" — and `VolunteerAuthorizationService::canManageTeam()` is still what
+     * decides any individual action.
+     *
+     * A ministry coordinator, a global manager and an administrator are all
+     * `false` here even though they may manage every team under them: leading a
+     * team is an explicit `team` scope row, not something inherited downwards
+     * (volunteer design §4.4). Callers wanting "may this user manage team T" want
+     * `canManageTeam()`.
+     *
+     * Memoised per request in a static, for the same reason
+     * isVolunteerCoordinatorEnabled() is.
+     */
+    public function isVolunteerTeamLeaderEnabled(): bool
+    {
+        $key = (int) $this->getId();
+        if (array_key_exists($key, self::$volunteerTeamLeaderMemo)) {
+            return self::$volunteerTeamLeaderMemo[$key];
+        }
+
+        if (!self::isVolunteerV2Enabled()) {
+            return self::$volunteerTeamLeaderMemo[$key] = false;
+        }
+
+        return self::$volunteerTeamLeaderMemo[$key] =
+            (new VolunteerAuthorizationService())->getOwnTeamScopeIds($this) !== [];
     }
 
     /**

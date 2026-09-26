@@ -1,0 +1,1837 @@
+<?php
+
+namespace ChurchCRM\Volunteer\Service;
+
+use ChurchCRM\model\ChurchCRM\Calendar;
+use ChurchCRM\model\ChurchCRM\CalendarEventQuery;
+use ChurchCRM\model\ChurchCRM\CalendarQuery;
+use ChurchCRM\model\ChurchCRM\Group;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Map\VolunteerMinistryTableMap;
+use ChurchCRM\model\ChurchCRM\Map\VolunteerTeamTableMap;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerPosition;
+use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerQualificationQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerRequirementQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerScope;
+use ChurchCRM\model\ChurchCRM\VolunteerScopeQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerTeam;
+use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Volunteer\VolunteerException;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\ActiveQuery\ModelCriteria;
+use Propel\Runtime\Propel;
+use Psr\Log\LoggerInterface;
+
+/**
+ * Volunteer Management v2 — the setup half of the domain: ministries, teams,
+ * positions (#9715) and, since #9707, volunteer pools and qualifications
+ * (epic #9701, design §2.3, §2.4, §2.5, §2.6, §2.7, §3.4).
+ *
+ * Every mutating method takes the acting `User` and asks
+ * `VolunteerAuthorizationService` before it touches a row, so the API layer can
+ * never be the only thing standing between a caller and a write — design §4.5
+ * layer three. The role middleware answers "may this caller coordinate anything
+ * at all", the entity middleware answers "may they touch THIS record", and this
+ * class answers "is this particular operation on this record allowed", which is
+ * the only layer that can see the payload (a team id from another ministry, a
+ * team another leader owns).
+ *
+ * Two rules run through the whole file and are worth stating once:
+ *
+ *   **Deactivate to keep history; delete takes everything.** Deactivating is
+ *   how a ministry, team or position is retired with its service history intact
+ *   (§2.6, #9715). Deleting is total: the row goes with everything under it,
+ *   past assignments included, and the confirmation dialog says so. A ministry
+ *   must be deactivated first (2026-09-17); a team or a position deletes
+ *   straight away (2026-09-26). The one refusal left is structural — a
+ *   ministry's last team (D18). The earlier "409 once referenced" rule was
+ *   dropped because revoked qualifications, which no screen lists, counted as
+ *   references: a position anybody had ever been qualified for could never be
+ *   deleted, and so neither could its team.
+ *
+ *   **Names are checked in PHP, not left to the index.** `vmin_name_uidx`,
+ *   `vtem_ministry_name_uidx` and `vpos_ministry_team_name_uidx` would each raise
+ *   a driver error rather than a 409, and none of them is case-insensitive by
+ *   design — only by collation. So each create/update does its own
+ *   case-insensitive check and throws a conflict the route renders as 409.
+ *
+ * #9707 added the pool and qualification halves to this same class rather than
+ * a parallel service: they share the authorization helpers, the exception type
+ * and the "names are checked in PHP" discipline above, and a coordinator's
+ * setup screen calls both halves in one request. The sections are separated by
+ * banner comments, so each half is still readable on its own.
+ *
+ * D19 rewrote the pool half. There is no `volunteer_pool_vpol` and no linking
+ * step: a ministry owns exactly ONE core Group, created with it here, carrying
+ * `group_grp.grp_ministry_id`. This class is therefore the only place that
+ * writes a pool Group's membership from V2, and it does so through the Propel
+ * model inside `VolunteerPoolWriter::run()` — so the plugin hooks still fire and
+ * the model's `bManageGroups` rule is bypassed only where this class has already
+ * answered the authorization question itself.
+ */
+class VolunteerMinistryService
+{
+    /** `list_lst.lst_ID` of the group-type list (F11). */
+    private const GROUP_TYPE_LIST_ID = 3;
+
+    /** The group type a ministry's volunteer pool Group is given (D19). */
+    private const MINISTRY_GROUP_TYPE_NAME = 'Ministry';
+
+    /**
+     * Background/foreground pairs a ministry calendar is born with (Member Portal
+     * design §5.3).
+     *
+     * Six pairs, each a mid-to-dark background under white text, so a swatch in the
+     * portal legend and a block in the month grid are both legible without anyone
+     * choosing anything. They are hex WITHOUT the leading `#`, which is how
+     * `calendars.backgroundColor` stores colour and how `NewCalendar` writes it.
+     *
+     * The pair is picked by ministry id modulo the palette, so two ministries created
+     * one after another never look the same, and a coordinator who wants their own
+     * colour changes it on the admin calendar page like any other calendar — nothing
+     * here is re-applied after creation.
+     *
+     * @var array<int, array{background: string, foreground: string}>
+     */
+    private const MINISTRY_CALENDAR_PALETTE = [
+        ['background' => '2E7D32', 'foreground' => 'FFFFFF'],
+        ['background' => '1565C0', 'foreground' => 'FFFFFF'],
+        ['background' => '6A1B9A', 'foreground' => 'FFFFFF'],
+        ['background' => 'C62828', 'foreground' => 'FFFFFF'],
+        ['background' => 'EF6C00', 'foreground' => 'FFFFFF'],
+        ['background' => '00838F', 'foreground' => 'FFFFFF'],
+    ];
+
+    private LoggerInterface $logger;
+
+    private VolunteerAuthorizationService $authz;
+
+    public function __construct(?VolunteerAuthorizationService $authz = null)
+    {
+        $this->logger = LoggerUtils::getAppLogger();
+        // Injectable so one request's scope cache is shared with the middlewares
+        // that already resolved the same entities (§4.4); defaults to its own.
+        $this->authz = $authz ?? new VolunteerAuthorizationService();
+    }
+
+    public function getAuthorizationService(): VolunteerAuthorizationService
+    {
+        return $this->authz;
+    }
+
+    // ══ Ministries ════════════════════════════════════════════════════════
+
+    /**
+     * Create a ministry **and its first team**. **Manager-only** (§4.6): a ministry
+     * coordinator may run the ministry they were given, never mint themselves
+     * another one.
+     *
+     * D18: a ministry is never team-less. The first team is created here, in the
+     * same transaction, so that every caller gets it — the API, the setup wizard
+     * and any future importer alike — and so that positions and schedules, which
+     * are now `NOT NULL` on their team column, always have somewhere to go. The
+     * team is an ordinary row: it can be renamed, and more can be added beside it.
+     *
+     * D19: a ministry is never pool-less either. Its volunteer pool is one ordinary
+     * core Group, created here in the SAME transaction, named after the ministry,
+     * typed "Ministry" and carrying `grp_ministry_id`. That column is what the
+     * Propel hooks read to let this ministry's coordinator write the group without
+     * the global Manage Groups flag, and what the Groups module reads to say the
+     * group is managed elsewhere. There is no link table and nothing to link: the
+     * Group IS the roster (D1), and now it has an owner.
+     *
+     * @throws VolunteerException 403 when the actor is not a global manager,
+     *                                 400 on an empty name, 409 on a duplicate
+     */
+    public function createMinistry(string $name, ?string $description, User $actor): VolunteerMinistry
+    {
+        if (!$this->authz->isGlobalManager($actor)) {
+            throw VolunteerException::forbidden(gettext('Creating a ministry requires volunteer manager access'));
+        }
+
+        $name = $this->requireName($name, gettext('A ministry name is required'));
+        $this->assertMinistryNameFree($name, null);
+
+        $ministry = new VolunteerMinistry();
+        $ministry->setName($name);
+        $ministry->setDescription($this->normalizeDescription($description));
+        $ministry->setActive(true);
+        // Naive wall-clock in sTimeZone, like every other V2 timestamp (§2.0).
+        $ministry->setCreatedDate(DateTimeUtils::getNowDateTime());
+        $ministry->setCreatedByPersonId((int) $actor->getId());
+
+        $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            $ministry->save($connection);
+
+            $team = new VolunteerTeam();
+            $team->setMinistryId((int) $ministry->getId());
+            $team->setName($this->defaultTeamName($name));
+            $team->setActive(true);
+            $team->save($connection);
+
+            // The actor is a global volunteer manager, which is NOT the same thing as
+            // holding `bManageGroups` — so the model hooks would refuse this save on the
+            // way in. The managed-write context is how a V2 service says "I have already
+            // authorized this" (D19); the authorization is the isGlobalManager() check
+            // at the top of this method.
+            $group = VolunteerPoolWriter::run(fn (): Group => $this->createPoolGroup($ministry, $connection));
+
+            // The ministry's own calendar, in the same transaction and for the same
+            // reason as the pool group: a ministry is never calendar-less, so a
+            // coordinator creating "Car Wash" for Youth Ministry has somewhere of their
+            // own to pin it (Member Portal design §5.3).
+            $calendar = $this->createMinistryCalendar($ministry, $connection);
+
+            $connection->commit();
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
+
+        $this->logger->info('Volunteer ministry created', [
+            'ministryId' => $ministry->getId(),
+            'name' => $ministry->getName(),
+            'defaultTeamId' => $team->getId(),
+            'poolGroupId' => $group->getId(),
+            'calendarId' => $calendar->getId(),
+            'actor' => $actor->getId(),
+        ]);
+
+        return $ministry;
+    }
+
+    /**
+     * The ministry's volunteer pool Group (D19).
+     *
+     * `grp_Name` is `VARCHAR(50)` and `vmin_Name` is `VARCHAR(100)` (F2), so a long
+     * ministry name is TRUNCATED rather than refused: the ministry name is the thing
+     * people read, the group name is a label on the same object, and failing to create a
+     * ministry because its name is 63 characters long would be absurd. Group names are
+     * not unique in `group_grp`, so a collision with an existing group is legal and is
+     * left alone.
+     */
+    private function createPoolGroup(VolunteerMinistry $ministry, $connection): Group
+    {
+        $group = new Group();
+        $group->setName(mb_substr((string) $ministry->getName(), 0, 50));
+        $group->setType($this->ministryGroupTypeId());
+        $group->setDescription(sprintf(
+            gettext('The volunteer pool of the %s ministry.'),
+            (string) $ministry->getName()
+        ));
+        $group->setActive(true);
+        $group->setIncludeInEmailExport(true);
+        $group->setMinistryId((int) $ministry->getId());
+        $group->save($connection);
+
+        return $group;
+    }
+
+    /**
+     * The ministry's own calendar (Member Portal design §5.3).
+     *
+     * The same shape as the pool Group above: one ordinary core row, created with the
+     * ministry, named after it, carrying `calendars.ministry_id`. That column is what
+     * the events API reads to let this ministry's coordinator pin an event here without
+     * the global Add Events right, what the admin calendar page reads to list the
+     * calendar under "Ministry Calendars", and what the portal reads to tell a member
+     * which calendars belong to a ministry they serve.
+     *
+     * `calendars.name` is `VARCHAR(99)`, `vmin_Name` is `VARCHAR(100)`, so a maximum-length
+     * ministry name is TRUNCATED rather than refused — the same call the pool group makes.
+     * Calendar names are not unique, so a collision with an existing church calendar is
+     * legal and left alone.
+     *
+     * No access token: a ministry calendar is a church-internal thing, and publishing it
+     * is a decision an administrator makes afterwards on the admin calendar page.
+     */
+    private function createMinistryCalendar(VolunteerMinistry $ministry, $connection): Calendar
+    {
+        $palette = self::MINISTRY_CALENDAR_PALETTE[
+            (int) $ministry->getId() % count(self::MINISTRY_CALENDAR_PALETTE)
+        ];
+
+        $calendar = new Calendar();
+        $calendar->setName($this->ministryCalendarName($ministry));
+        $calendar->setBackgroundColor($palette['background']);
+        $calendar->setForegroundColor($palette['foreground']);
+        $calendar->setMinistryId((int) $ministry->getId());
+        $calendar->save($connection);
+
+        return $calendar;
+    }
+
+    /**
+     * The name a ministry's calendar carries: the ministry's own name, trimmed to the
+     * column. Kept in one place so the create and the rename can never disagree.
+     */
+    private function ministryCalendarName(VolunteerMinistry $ministry): string
+    {
+        return mb_substr((string) $ministry->getName(), 0, 99);
+    }
+
+    /**
+     * A ministry's calendar, or null when it has none — an upgraded installation whose
+     * ministries predate §5.3, or one whose administrator deleted the calendar on the
+     * admin calendar page. Every caller treats the absence as ordinary.
+     */
+    public function getMinistryCalendar(int $ministryId): ?Calendar
+    {
+        return CalendarQuery::create()->findOneByMinistryId($ministryId);
+    }
+
+    /**
+     * The `list_lst` option id of the "Ministry" group type (F11).
+     *
+     * Looked up by NAME rather than hardcoded to 1: the group-type list is editable in
+     * every installation and the seed's numbering is a fact about the seed, not about
+     * ChurchCRM. When an installation has renamed or removed the option the type is
+     * created rather than guessed, so the pool group still lands in a type that says
+     * what it is.
+     */
+    private function ministryGroupTypeId(): int
+    {
+        $existing = ListOptionQuery::create()
+            ->filterById(self::GROUP_TYPE_LIST_ID)
+            ->findOneByOptionName(self::MINISTRY_GROUP_TYPE_NAME);
+
+        if ($existing !== null) {
+            return (int) $existing->getOptionId();
+        }
+
+        $highest = 0;
+        foreach (ListOptionQuery::create()->filterById(self::GROUP_TYPE_LIST_ID)->find() as $option) {
+            $highest = max($highest, (int) $option->getOptionId(), (int) $option->getOptionSequence());
+        }
+
+        $created = new ListOption();
+        $created->setId(self::GROUP_TYPE_LIST_ID);
+        $created->setOptionId($highest + 1);
+        $created->setOptionSequence($highest + 1);
+        $created->setOptionName(self::MINISTRY_GROUP_TYPE_NAME);
+        $created->save();
+
+        $this->logger->info('Created the "Ministry" group type for a volunteer pool group', [
+            'optionId' => $created->getOptionId(),
+        ]);
+
+        return (int) $created->getOptionId();
+    }
+
+    /**
+     * The name a ministry's first team is born with — "Coffee Bar" → "Coffee Bar
+     * Team" (D18).
+     *
+     * `vtem_Name` is `VARCHAR(100)` and so is `vmin_Name`, so the suffix can push a
+     * maximum-length ministry name over the column; the ministry name is trimmed
+     * rather than the suffix dropped, because the word "Team" is what makes the
+     * label read as one. Uniqueness inside the ministry is free: the ministry has
+     * no other team yet.
+     */
+    private function defaultTeamName(string $ministryName): string
+    {
+        $suffix = ' ' . gettext('Team');
+        $room = 100 - mb_strlen($suffix);
+
+        return rtrim(mb_substr($ministryName, 0, $room)) . $suffix;
+    }
+
+    /**
+     * Update a ministry's name, description or active flag. Coordinator scope
+     * (§4.6) — the entity middleware has usually decided this already, but the
+     * service repeats it so a non-HTTP caller cannot skip it.
+     *
+     * Only keys actually present in $fields are written, so a partial payload
+     * never silently blanks a column.
+     *
+     * D19 adds two more writable keys and one side effect. `helpWanted` /
+     * `helpWantedText` are the Open Opportunities advert (§5.6); renaming the ministry
+     * RENAMES ITS POOL GROUP, because a group called "Coffee Bar" sitting under a
+     * ministry now called "Cafe" is exactly the drift the owning column exists to stop.
+     *
+     * @param array{name?: string, description?: string|null, active?: bool, helpWanted?: bool, helpWantedText?: string|null} $fields
+     *
+     * @throws VolunteerException
+     */
+    public function updateMinistry(VolunteerMinistry $ministry, array $fields, User $actor): VolunteerMinistry
+    {
+        $this->assertCanManageMinistry($actor, (int) $ministry->getId());
+
+        $renamed = false;
+        if (array_key_exists('name', $fields)) {
+            $name = $this->requireName((string) $fields['name'], gettext('A ministry name is required'));
+            $this->assertMinistryNameFree($name, (int) $ministry->getId());
+            $renamed = $name !== (string) $ministry->getName();
+            $ministry->setName($name);
+        }
+
+        if (array_key_exists('description', $fields)) {
+            $ministry->setDescription($this->normalizeDescription($fields['description']));
+        }
+
+        if (array_key_exists('active', $fields)) {
+            $ministry->setActive((bool) $fields['active']);
+        }
+
+        if (array_key_exists('helpWanted', $fields)) {
+            $ministry->setHelpWanted((bool) $fields['helpWanted']);
+        }
+
+        if (array_key_exists('helpWantedText', $fields)) {
+            $ministry->setHelpWantedText($this->normalizeHelpWantedText($fields['helpWantedText']));
+        }
+
+        $ministry->save();
+
+        if ($renamed) {
+            $group = $this->getPoolGroup((int) $ministry->getId());
+            if ($group !== null) {
+                // Same managed-write reason as createMinistry(): the coordinator doing
+                // the rename need not hold `bManageGroups`, and this service has already
+                // decided they may (assertCanManageMinistry above).
+                VolunteerPoolWriter::run(function () use ($group, $ministry): void {
+                    $group->setName(mb_substr((string) $ministry->getName(), 0, 50));
+                    $group->save();
+                });
+            }
+
+            // …and its calendar, for the same reason: a calendar still called "Coffee
+            // Bar" under a ministry now called "Cafe" is the drift the owning column
+            // exists to stop (§5.3). No managed-write context here — `calendars` has no
+            // model-level permission hook; the authorization is assertCanManageMinistry
+            // at the top of this method.
+            $calendar = $this->getMinistryCalendar((int) $ministry->getId());
+            if ($calendar !== null) {
+                $calendar->setName($this->ministryCalendarName($ministry));
+                $calendar->save();
+            }
+        }
+
+        $this->logger->info('Volunteer ministry updated', [
+            'ministryId' => $ministry->getId(),
+            'renamedPoolGroup' => $renamed,
+            'renamedCalendar' => $renamed,
+            'actor' => $actor->getId(),
+        ]);
+
+        return $ministry;
+    }
+
+    /**
+     * Delete a ministry. **Manager-only** (§4.6), and only once it has been
+     * **deactivated** (product-owner decision, 2026-09-17): an active ministry is
+     * refused with 409. Deactivation is the pause that makes a deletion deliberate
+     * — the ministry leaves the Ministries heading for "Deactivated Ministries",
+     * and only that page offers Delete.
+     *
+     * Once it goes through, EVERYTHING under the ministry goes with it, service
+     * history included: teams, positions, qualifications, schedules, requirements,
+     * occurrences, assignments with their responses, swaps and outbox rows. The
+     * foreign keys cascade most of that. Three things they do not, or must not be
+     * trusted to, are handled explicitly inside the same transaction:
+     *
+     *   * assignments are deleted FIRST, through their occurrences: the
+     *     assignment→position key is RESTRICT (so a position can never be deleted
+     *     from under a live roster by an ordinary edit), and the order in which
+     *     InnoDB fires the ministry's own cascades is not something to rely on;
+     *   * `volunteer_scope_vscp` — its target column is polymorphic and carries no
+     *     foreign key (§2.15), so the installation would be left with grants pointing
+     *     at nothing;
+     *   * the ministry's **pool Group** — `group_grp.grp_ministry_id` is `ON DELETE SET
+     *     NULL` on purpose (D19), because a cascade from a V2 table to a core table is
+     *     how a church loses a group to a foreign key it never knew about. Removing it
+     *     is this method's decision, taken in the open, and it is the ONLY path allowed
+     *     to: `Group::preDelete()` refuses a group with a ministry id unless the
+     *     managed-write context is open.
+     *
+     * @throws VolunteerException
+     */
+    public function deleteMinistry(VolunteerMinistry $ministry, User $actor): void
+    {
+        if (!$this->authz->isGlobalManager($actor)) {
+            throw VolunteerException::forbidden(gettext('Deleting a ministry requires volunteer manager access'));
+        }
+
+        $ministryId = (int) $ministry->getId();
+
+        if ($ministry->getActive()) {
+            throw VolunteerException::conflict(
+                gettext('Deactivate this ministry before deleting it.')
+            );
+        }
+
+        $occurrenceCount = $this->countMinistryOccurrences($ministryId);
+        $assignmentCount = $this->countMinistryAssignments($ministryId);
+        $teamIds = $this->getTeamIds($ministryId);
+
+        $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            // Assignments first (see the docblock): responses, swaps and outbox rows
+            // cascade from them, so nothing pending survives the ministry. Two steps,
+            // because Propel refuses a DELETE that carries a join.
+            $occurrenceIds = VolunteerOccurrenceQuery::create()
+                ->useScheduleQuery()
+                    ->filterByMinistryId($ministryId)
+                ->endUse()
+                ->select('Id')
+                ->find()
+                ->toArray();
+            $removedAssignments = $occurrenceIds === []
+                ? 0
+                : VolunteerAssignmentQuery::create()
+                    ->filterByOccurrenceId(array_map('intval', $occurrenceIds), Criteria::IN)
+                    ->delete($connection);
+
+            $scopeQuery = VolunteerScopeQuery::create()
+                ->filterByScopeType(VolunteerScope::TYPE_MINISTRY)
+                ->filterByScopeId($ministryId);
+            $removedScopes = $scopeQuery->delete($connection);
+
+            if ($teamIds !== []) {
+                $removedScopes += VolunteerScopeQuery::create()
+                    ->filterByScopeType(VolunteerScope::TYPE_TEAM)
+                    ->filterByScopeId($teamIds, Criteria::IN)
+                    ->delete($connection);
+            }
+
+            // Before the ministry row goes, or `grp_ministry_id` is already NULL and the
+            // group has become an ordinary orphan nobody will recognise.
+            $poolGroup = $this->getPoolGroup($ministryId);
+            $removedGroupId = null;
+            if ($poolGroup !== null) {
+                $removedGroupId = (int) $poolGroup->getId();
+                VolunteerPoolWriter::run(function () use ($poolGroup, $removedGroupId, $connection): void {
+                    // The membership rows are the group's own and mean nothing without
+                    // it — the same cascade `DELETE /api/groups/{id}` performs.
+                    Person2group2roleP2g2rQuery::create()
+                        ->filterByGroupId($removedGroupId)
+                        ->delete($connection);
+                    $poolGroup->delete($connection);
+                });
+            }
+
+            // The ministry's calendar goes the same way, and for the same reason:
+            // `calendars.ministry_id` is ON DELETE SET NULL (§5.3), so leaving it would
+            // turn the calendar into an unnamed orphan on the admin calendar page.
+            // Its pin rows go with it — an event pinned elsewhere too keeps that pin,
+            // and one pinned only here becomes an unpinned event, which is a state the
+            // "Unpinned events" system calendar already shows an administrator.
+            $calendar = $this->getMinistryCalendar($ministryId);
+            $removedCalendarId = null;
+            if ($calendar !== null) {
+                $removedCalendarId = (int) $calendar->getId();
+                CalendarEventQuery::create()
+                    ->filterByCalendarId($removedCalendarId)
+                    ->delete($connection);
+                $calendar->delete($connection);
+            }
+
+            $ministry->delete($connection);
+            $connection->commit();
+
+            $this->logger->info('Volunteer ministry deleted', [
+                'ministryId' => $ministryId,
+                'occurrences' => $occurrenceCount,
+                'assignments' => $assignmentCount,
+                'removedAssignmentRows' => $removedAssignments,
+                'removedScopeRows' => $removedScopes,
+                'removedPoolGroupId' => $removedGroupId,
+                'removedCalendarId' => $removedCalendarId,
+                'actor' => $actor->getId(),
+            ]);
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Ministries the caller may administer, as a QUERY-level filter rather than a
+     * post-hydration sieve (§4.4). A global manager sees everything; a coordinator
+     * sees their grants; anyone else sees nothing, and the empty allow-list is
+     * short-circuited rather than handed to `filterById([])`.
+     *
+     * @return VolunteerMinistry[]
+     */
+    public function listMinistriesFor(User $actor, ?bool $activeOnly = null): array
+    {
+        $query = VolunteerMinistryQuery::create();
+
+        if (!$this->authz->isGlobalManager($actor)) {
+            $ministryIds = $this->authz->getManagedMinistryIds($actor);
+            if ($ministryIds === []) {
+                return [];
+            }
+            $query->filterById($ministryIds, Criteria::IN);
+        }
+
+        if ($activeOnly !== null) {
+            $query->filterByActive($activeOnly);
+        }
+
+        return iterator_to_array($query->orderByName()->find(), false);
+    }
+
+    // ══ Teams ═════════════════════════════════════════════════════════════
+
+    /**
+     * Create a team under a ministry. Ministry-coordinator scope: a team leader
+     * may not create teams (§4.6).
+     *
+     * @throws VolunteerException
+     */
+    public function createTeam(VolunteerMinistry $ministry, string $name, ?string $description, User $actor): VolunteerTeam
+    {
+        $this->assertCanManageMinistry($actor, (int) $ministry->getId());
+
+        $name = $this->requireName($name, gettext('A team name is required'));
+        $this->assertTeamNameFree((int) $ministry->getId(), $name, null);
+
+        $team = new VolunteerTeam();
+        $team->setMinistryId((int) $ministry->getId());
+        $team->setName($name);
+        $team->setDescription($this->normalizeDescription($description));
+        $team->setActive(true);
+        $team->save();
+
+        $this->logger->info('Volunteer team created', [
+            'teamId' => $team->getId(),
+            'ministryId' => $ministry->getId(),
+            'actor' => $actor->getId(),
+        ]);
+
+        return $team;
+    }
+
+    /**
+     * @param array{name?: string, description?: string|null, active?: bool} $fields
+     *
+     * @throws VolunteerException
+     */
+    public function updateTeam(VolunteerTeam $team, array $fields, User $actor): VolunteerTeam
+    {
+        // The parent ministry's coordinator, not the team leader: renaming a team
+        // is a ministry-structure change (§4.6 "Create / edit team").
+        $this->assertCanManageMinistry($actor, (int) $team->getMinistryId());
+
+        if (array_key_exists('name', $fields)) {
+            $name = $this->requireName((string) $fields['name'], gettext('A team name is required'));
+            $this->assertTeamNameFree((int) $team->getMinistryId(), $name, (int) $team->getId());
+            $team->setName($name);
+        }
+
+        if (array_key_exists('description', $fields)) {
+            $team->setDescription($this->normalizeDescription($fields['description']));
+        }
+
+        if (array_key_exists('active', $fields)) {
+            $team->setActive((bool) $fields['active']);
+        }
+
+        $team->save();
+
+        $this->logger->info('Volunteer team updated', [
+            'teamId' => $team->getId(),
+            'actor' => $actor->getId(),
+        ]);
+
+        return $team;
+    }
+
+    /**
+     * Delete a team and EVERYTHING under it (product-owner decision, 2026-09-26):
+     * its positions with their qualifications — revoked ones included — and staffing
+     * requirements, its schedules with their occurrences, every assignment on any of
+     * those with its responses, swaps and outbox rows, and its team-leader grants.
+     * Service history goes too; deactivating the team is how to keep it, and the
+     * confirmation dialog says so.
+     *
+     * D18 still holds: a ministry always has at least one team, so the last one
+     * cannot be deleted — the 409 says to rename it instead, because renaming is what
+     * a coordinator who wants "a different team" actually wants, and the only other
+     * way out would be to leave the ministry in a state positions and schedules
+     * cannot be created in at all.
+     *
+     * The foreign keys do most of the work: `vpos_vtem_ID` and `vsch_vtem_ID` are
+     * `ON DELETE CASCADE`, and everything under a position or a schedule cascades
+     * from it. Two things are done by hand in the same transaction, for the reasons
+     * `deleteMinistry()` gives: assignments FIRST, because their position key is
+     * RESTRICT and InnoDB's cascade order is not something to rely on, and the
+     * team-leader scope rows, whose polymorphic target carries no foreign key (§2.15).
+     *
+     * @throws VolunteerException
+     */
+    public function deleteTeam(VolunteerTeam $team, User $actor): void
+    {
+        $this->assertCanManageMinistry($actor, (int) $team->getMinistryId());
+
+        $teamId = (int) $team->getId();
+
+        $siblingCount = VolunteerTeamQuery::create()
+            ->filterByMinistryId((int) $team->getMinistryId())
+            ->filterById($teamId, Criteria::NOT_EQUAL)
+            ->count();
+
+        if ($siblingCount === 0) {
+            throw VolunteerException::conflict(
+                gettext('A ministry needs at least one team. Rename it instead.')
+            );
+        }
+
+        $positionIds = $this->idsOf(VolunteerPositionQuery::create()->filterByTeamId($teamId));
+        $scheduleIds = $this->idsOf(VolunteerScheduleQuery::create()->filterByTeamId($teamId));
+        $occurrenceIds = $scheduleIds === []
+            ? []
+            : $this->idsOf(VolunteerOccurrenceQuery::create()->filterByScheduleId($scheduleIds, Criteria::IN));
+
+        $connection = Propel::getWriteConnection(VolunteerTeamTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            $removedAssignments = $this->deleteAssignments($positionIds, $occurrenceIds, $connection);
+            $removedScopes = VolunteerScopeQuery::create()
+                ->filterByScopeType(VolunteerScope::TYPE_TEAM)
+                ->filterByScopeId($teamId)
+                ->delete($connection);
+            $team->delete($connection);
+            $connection->commit();
+
+            $this->logger->info('Volunteer team deleted', [
+                'teamId' => $teamId,
+                'ministryId' => (int) $team->getMinistryId(),
+                'positions' => count($positionIds),
+                'schedules' => count($scheduleIds),
+                'occurrences' => count($occurrenceIds),
+                'removedAssignmentRows' => $removedAssignments,
+                'removedScopeRows' => $removedScopes,
+                'actor' => $actor->getId(),
+            ]);
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
+    }
+
+    /**
+     * @return VolunteerTeam[]
+     */
+    public function listTeams(int $ministryId, ?bool $activeOnly = null): array
+    {
+        $query = VolunteerTeamQuery::create()->filterByMinistryId($ministryId);
+
+        if ($activeOnly !== null) {
+            $query->filterByActive($activeOnly);
+        }
+
+        return iterator_to_array($query->orderByName()->find(), false);
+    }
+
+    // ══ Positions ═════════════════════════════════════════════════════════
+
+    /**
+     * Create a position in one of the ministry's teams.
+     *
+     * D18: a position ALWAYS belongs to a team, so `$team` is not optional. The
+     * "ministry-wide position" that used to exist was the mechanism behind the
+     * ambiguity this decision removes — two teams under one ministry could each
+     * own a "Lead Teacher", and a ministry-wide list showed the name twice with
+     * nothing to tell them apart.
+     *
+     * Authorization follows the ownership of the row being created, which is
+     * exactly what `canManagePosition()` already decides for an existing row: a
+     * position belongs to its team, so a team leader may create one in their own
+     * team and a ministry coordinator in any of theirs (§4.6).
+     *
+     * `$recruiting` is the "Recruit Volunteers" switch and defaults to FALSE: a
+     * position is advertised on the Open Opportunities page only when somebody
+     * has said so, never as a side effect of creating it.
+     *
+     * @throws VolunteerException
+     */
+    public function createPosition(
+        VolunteerMinistry $ministry,
+        VolunteerTeam $team,
+        string $name,
+        ?string $description,
+        int $order,
+        User $actor,
+        bool $recruiting = false,
+        bool $selfAssignable = true
+    ): VolunteerPosition {
+        $ministryId = (int) $ministry->getId();
+
+        if ((int) $team->getMinistryId() !== $ministryId) {
+            throw VolunteerException::invalid(gettext('That team belongs to a different ministry'));
+        }
+        $this->assertCanManageTeam($actor, (int) $team->getId());
+
+        $name = $this->requireName($name, gettext('A position name is required'));
+        $teamId = (int) $team->getId();
+        $this->assertPositionNameFree($ministryId, $teamId, $name, null);
+
+        $position = new VolunteerPosition();
+        $position->setMinistryId($ministryId);
+        $position->setTeamId($teamId);
+        $position->setName($name);
+        $position->setDescription($this->normalizeDescription($description));
+        $position->setActive(true);
+        $position->setRecruiting($recruiting);
+        // "Self-assignable" (2026-09-18): off means the Member Portal never offers
+        // the position and self-signup is refused — a team leader or coordinator
+        // assigns it. On by default: that is what every position did before.
+        $position->setSelfAssignable($selfAssignable);
+        $position->setOrder($order);
+        $position->save();
+
+        $this->logger->info('Volunteer position created', [
+            'positionId' => $position->getId(),
+            'ministryId' => $ministryId,
+            'teamId' => $teamId,
+            'actor' => $actor->getId(),
+        ]);
+
+        return $position;
+    }
+
+    /**
+     * Update a position's name, description, team scope, display order or active
+     * flag.
+     *
+     * Moving a position between teams is authorized against **both** ends: the
+     * caller must be allowed to touch the position where it is now (that is the
+     * entity check) and to own it where it is going. Without the second half a
+     * team leader could push their team's position into somebody else's team.
+     *
+     * There is no "move it out of every team" any more (D18): a null `teamId` is a
+     * 400, not a promotion to ministry-wide.
+     *
+     * @param array{name?: string, description?: string|null, teamId?: int, order?: int, active?: bool, recruiting?: bool, selfAssignable?: bool} $fields
+     *
+     * @throws VolunteerException
+     */
+    public function updatePosition(VolunteerPosition $position, array $fields, User $actor): VolunteerPosition
+    {
+        $this->assertCanManagePosition($actor, (int) $position->getId());
+
+        $ministryId = (int) $position->getMinistryId();
+        $targetTeamId = (int) $position->getTeamId();
+
+        if (array_key_exists('teamId', $fields)) {
+            if ($fields['teamId'] === null || $fields['teamId'] === '') {
+                throw VolunteerException::invalid(gettext('A position belongs to a team; choose one'));
+            }
+
+            $targetTeamId = (int) $fields['teamId'];
+            $team = VolunteerTeamQuery::create()->findPk($targetTeamId);
+            if ($team === null || (int) $team->getMinistryId() !== $ministryId) {
+                throw VolunteerException::invalid(gettext('That team belongs to a different ministry'));
+            }
+            $this->assertCanManageTeam($actor, $targetTeamId);
+
+            $position->setTeamId($targetTeamId);
+        }
+
+        if (array_key_exists('name', $fields)) {
+            $name = $this->requireName((string) $fields['name'], gettext('A position name is required'));
+            $this->assertPositionNameFree($ministryId, $targetTeamId, $name, (int) $position->getId());
+            $position->setName($name);
+        } elseif (array_key_exists('teamId', $fields)) {
+            // The scope moved; the existing name has to be free in the new scope too.
+            $this->assertPositionNameFree($ministryId, $targetTeamId, (string) $position->getName(), (int) $position->getId());
+        }
+
+        if (array_key_exists('description', $fields)) {
+            $position->setDescription($this->normalizeDescription($fields['description']));
+        }
+
+        if (array_key_exists('order', $fields)) {
+            $position->setOrder((int) $fields['order']);
+        }
+
+        if (array_key_exists('active', $fields)) {
+            $position->setActive((bool) $fields['active']);
+        }
+
+        // "Recruit Volunteers". The route has already rejected anything that is
+        // not a real boolean, so the cast here can never invent a `true`.
+        if (array_key_exists('recruiting', $fields)) {
+            $position->setRecruiting((bool) $fields['recruiting']);
+        }
+
+        if (array_key_exists('selfAssignable', $fields)) {
+            $position->setSelfAssignable((bool) $fields['selfAssignable']);
+        }
+
+        $position->save();
+
+        $this->logger->info('Volunteer position updated', [
+            'positionId' => $position->getId(),
+            'actor' => $actor->getId(),
+        ]);
+
+        return $position;
+    }
+
+    /**
+     * The #9715 acceptance criterion "position activation/deactivation does not
+     * destroy historical assignments", as one call. Deliberately separate from
+     * `updatePosition()` so the UI's toggle and the API's `active` field cannot
+     * drift apart.
+     *
+     * @throws VolunteerException
+     */
+    public function setPositionActive(VolunteerPosition $position, bool $active, User $actor): VolunteerPosition
+    {
+        $this->assertCanManagePosition($actor, (int) $position->getId());
+
+        $position->setActive($active);
+        $position->save();
+
+        $this->logger->info('Volunteer position activation changed', [
+            'positionId' => $position->getId(),
+            'active' => $active,
+            'actor' => $actor->getId(),
+        ]);
+
+        return $position;
+    }
+
+    /**
+     * Delete a position and everything that references it (product-owner decision,
+     * 2026-09-26): its qualifications — revoked ones included, which no screen lists
+     * and so must never be what blocks the delete — its staffing requirements, and
+     * every assignment to it, service history included. Deactivating is how to retire
+     * a position and keep its history (§2.6, #9715); the confirmation dialog says so.
+     *
+     * Assignments go first by hand because `vasg_vpos_ID` is RESTRICT; the
+     * qualification and requirement keys cascade from the position row.
+     *
+     * @throws VolunteerException
+     */
+    public function deletePosition(VolunteerPosition $position, User $actor): void
+    {
+        $this->assertCanManagePosition($actor, (int) $position->getId());
+
+        $positionId = (int) $position->getId();
+        $qualificationCount = VolunteerQualificationQuery::create()->filterByPositionId($positionId)->count();
+        $requirementCount = VolunteerRequirementQuery::create()->filterByPositionId($positionId)->count();
+
+        $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            $removedAssignments = $this->deleteAssignments([$positionId], [], $connection);
+            $position->delete($connection);
+            $connection->commit();
+
+            $this->logger->info('Volunteer position deleted', [
+                'positionId' => $positionId,
+                'qualifications' => $qualificationCount,
+                'requirements' => $requirementCount,
+                'removedAssignmentRows' => $removedAssignments,
+                'actor' => $actor->getId(),
+            ]);
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Delete the assignments on any of these positions or occurrences and return how
+     * many went; their responses, swaps and outbox rows cascade from them. Done by
+     * hand before a position is deleted because `vasg_vpos_ID` is RESTRICT. Two
+     * statements rather than one OR, so an empty list never becomes `IN ()`.
+     *
+     * @param int[] $positionIds
+     * @param int[] $occurrenceIds
+     */
+    private function deleteAssignments(array $positionIds, array $occurrenceIds, $connection): int
+    {
+        $removed = 0;
+
+        if ($positionIds !== []) {
+            $removed += VolunteerAssignmentQuery::create()
+                ->filterByPositionId($positionIds, Criteria::IN)
+                ->delete($connection);
+        }
+
+        if ($occurrenceIds !== []) {
+            $removed += VolunteerAssignmentQuery::create()
+                ->filterByOccurrenceId($occurrenceIds, Criteria::IN)
+                ->delete($connection);
+        }
+
+        return $removed;
+    }
+
+    /**
+     * Positions of a ministry, optionally narrowed to one team and/or to the
+     * active ones, ordered the way the coordinator arranged them.
+     *
+     * `$visibleTeamIds` is the read-scoping hook for a team leader (§4.4): pass
+     * the ids they manage and the filter happens in the query. Passing `null`
+     * means "no narrowing", which is what a ministry coordinator gets.
+     *
+     * @param int[]|null $visibleTeamIds
+     *
+     * @return VolunteerPosition[]
+     */
+    public function listPositions(
+        int $ministryId,
+        ?int $teamId = null,
+        ?bool $activeOnly = null,
+        ?array $visibleTeamIds = null
+    ): array {
+        $query = VolunteerPositionQuery::create()->filterByMinistryId($ministryId);
+
+        if ($teamId !== null) {
+            $query->filterByTeamId($teamId);
+        }
+
+        if ($activeOnly !== null) {
+            $query->filterByActive($activeOnly);
+        }
+
+        if ($visibleTeamIds !== null) {
+            if ($visibleTeamIds === []) {
+                return [];
+            }
+            // A team leader sees their own teams' positions and nobody else's
+            // (§4.4). Every position has a team now, so there is no third case.
+            $query->filterByTeamId($visibleTeamIds, Criteria::IN);
+        }
+
+        return iterator_to_array($query->orderByOrder()->orderByName()->find(), false);
+    }
+
+    // ══ The pool Group (D19) ══════════════════════════════════════════════
+    //
+    // D1 still holds — a Group IS the roster, and V2 copies nobody. What D19
+    // changed is the link: there is no `volunteer_pool_vpol` and no link table
+    // at all, because a ministry owns exactly ONE Group and that Group carries
+    // `grp_ministry_id`. Everything below therefore reads
+    // `person2group2role_p2g2r` live through that one group; there is no cache
+    // to invalidate and no second source of truth.
+    //
+    // Writes go through the Propel membership model rather than raw SQL, so the
+    // `Hooks::GROUP_MEMBER_ADDED` / `GROUP_MEMBER_REMOVED` plugin events and the
+    // person timeline Note the Groups module writes keep firing for a pool edit
+    // exactly as they do for a Groups-module edit.
+
+    /**
+     * The ministry's pool Group, or null on an installation upgraded mid-flight.
+     *
+     * `GroupQuery::preSelect()` injects a LEFT JOIN, a `COUNT()` and a `GROUP BY` into
+     * every query built from it (F22), and this inherits them. Accepted rather than
+     * worked around: it is one indexed single-row lookup, and the alternative is raw
+     * SQL against `group_grp` — the first ORM bypass for a read anywhere in V2. Member
+     * COUNTS still come from `countGroupMembers()`, never from that virtual column.
+     */
+    public function getPoolGroup(int $ministryId): ?Group
+    {
+        return GroupQuery::create()->findOneByMinistryId($ministryId);
+    }
+
+    /**
+     * The pool Group, or a 404 — for the endpoints that cannot do anything useful
+     * without one.
+     *
+     * @throws VolunteerException
+     */
+    public function requirePoolGroup(int $ministryId): Group
+    {
+        $group = $this->getPoolGroup($ministryId);
+        if ($group === null) {
+            throw VolunteerException::notFound(gettext('This ministry has no volunteer pool group'));
+        }
+
+        return $group;
+    }
+
+    /**
+     * Add somebody to the ministry's volunteer pool, with the Group's default role.
+     *
+     * Idempotent: already being in the pool is success, not a 409 — "put this person
+     * in the pool" is a statement about the end state, and the qualification path
+     * and the "I'd like to help" button both rely on being able to say it without
+     * asking first.
+     *
+     * `$actor` is checked here even though the route's middleware usually has too,
+     * so a non-HTTP caller cannot skip it (§4.5 layer three). The managed-write
+     * context is opened AFTER that check, never before it.
+     *
+     * @throws VolunteerException 403 outside scope, 404 for an unknown person
+     */
+    public function addPoolMember(int $ministryId, int $personId, User $actor): bool
+    {
+        $this->assertCanManageMinistry($actor, $ministryId);
+
+        if (PersonQuery::create()->findPk($personId) === null) {
+            throw VolunteerException::notFound(gettext('Person not found'));
+        }
+
+        return $this->joinPoolGroup($this->requirePoolGroup($ministryId), $personId);
+    }
+
+    /**
+     * Put a list of people in the ministry's volunteer pool — the Cart sink (P5/P6).
+     *
+     * The loop lives here rather than in `Cart`, matching the precedent the design
+     * names: the route reads `Cart::getCartPeople()` and hands the ids to the service.
+     * Authorization is checked ONCE, before the loop, because every row targets the
+     * same ministry — and the pool Group is resolved once for the same reason.
+     *
+     * Per person this is exactly `addPoolMember()`: idempotent, and somebody already
+     * in the pool is counted rather than thrown over. Ids that name nobody are skipped
+     * silently — a cart can outlive a deleted person, and failing the whole batch over
+     * one stale id would be worse than ignoring it.
+     *
+     * Nothing is qualified here. Being in the pool is candidacy; the tick on the
+     * Volunteers grid is eligibility (§2.5), and the coordinator does that second.
+     *
+     * @param int[] $personIds
+     *
+     * @return array{added: int, alreadyMembers: int}
+     *
+     * @throws VolunteerException 403 outside scope, 404 when the ministry has no pool group
+     */
+    public function addPoolMembers(int $ministryId, array $personIds, User $actor): array
+    {
+        $this->assertCanManageMinistry($actor, $ministryId);
+
+        $group = $this->requirePoolGroup($ministryId);
+
+        $added = 0;
+        $alreadyMembers = 0;
+        $seen = [];
+
+        foreach ($personIds as $rawId) {
+            $personId = (int) $rawId;
+            if ($personId <= 0 || isset($seen[$personId])) {
+                continue;
+            }
+            $seen[$personId] = true;
+
+            if (PersonQuery::create()->findPk($personId) === null) {
+                continue;
+            }
+
+            if ($this->joinPoolGroup($group, $personId)) {
+                ++$added;
+            } else {
+                ++$alreadyMembers;
+            }
+        }
+
+        $this->logger->info('Volunteer pool members added in bulk', [
+            'ministryId' => $ministryId,
+            'groupId' => $group->getId(),
+            'added' => $added,
+            'alreadyMembers' => $alreadyMembers,
+            'actor' => $actor->getId(),
+        ]);
+
+        return ['added' => $added, 'alreadyMembers' => $alreadyMembers];
+    }
+
+    /**
+     * Put a person in a pool Group whose authorization the CALLER has already
+     * decided — the qualification path (§4.6 puts no membership condition on
+     * granting, so qualifying somebody simply brings them in) and the member-side
+     * "I'd like to help" action.
+     *
+     * Returns true when a row was created, false when the person was already there.
+     * The `Hooks::GROUP_MEMBER_ADDED` plugin event fires on the create, matching
+     * `POST /api/groups/{id}/addperson/{id}` (G3).
+     */
+    public function joinPoolGroup(Group $group, int $personId): bool
+    {
+        $existing = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId((int) $group->getId())
+            ->filterByPersonId($personId)
+            ->findOne();
+
+        if ($existing !== null) {
+            return false;
+        }
+
+        VolunteerPoolWriter::run(function () use ($group, $personId): void {
+            $membership = new Person2group2roleP2g2r();
+            $membership->setGroupId((int) $group->getId());
+            $membership->setPersonId($personId);
+            $membership->setRoleId((int) $group->getDefaultRole());
+            $membership->save();
+
+            HookManager::doAction(
+                Hooks::GROUP_MEMBER_ADDED,
+                $membership,
+                $group,
+                PersonQuery::create()->findPk($personId)
+            );
+        });
+
+        $this->logger->info('Volunteer pool member added', [
+            'ministryId' => $group->getMinistryId(),
+            'groupId' => $group->getId(),
+            'personId' => $personId,
+        ]);
+
+        return true;
+    }
+
+    /**
+     * Take somebody out of the ministry's volunteer pool.
+     *
+     * Removing them from the pool does NOT revoke their qualifications: the two are
+     * independent since D19, and silently un-qualifying somebody because a
+     * coordinator tidied a roster would be a surprise with service history attached.
+     *
+     * @throws VolunteerException 403 outside scope, 404 when they are not in it
+     */
+    public function removePoolMember(int $ministryId, int $personId, User $actor): void
+    {
+        $this->assertCanManageMinistry($actor, $ministryId);
+
+        $group = $this->requirePoolGroup($ministryId);
+        $membership = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId((int) $group->getId())
+            ->filterByPersonId($personId)
+            ->findOne();
+
+        if ($membership === null) {
+            throw VolunteerException::notFound(gettext('That person is not in this volunteer pool'));
+        }
+
+        VolunteerPoolWriter::run(static function () use ($membership, $group, $personId): void {
+            $membership->delete();
+            HookManager::doAction(Hooks::GROUP_MEMBER_REMOVED, $personId, $group);
+        });
+
+        $this->logger->info('Volunteer pool member removed', [
+            'ministryId' => $ministryId,
+            'groupId' => $group->getId(),
+            'personId' => $personId,
+            'actor' => $actor->getId(),
+        ]);
+    }
+
+    /** Is this person in the ministry's pool Group? One indexed row lookup. */
+    public function isInPool(int $ministryId, int $personId): bool
+    {
+        $group = $this->getPoolGroup($ministryId);
+        if ($group === null) {
+            return false;
+        }
+
+        return Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId((int) $group->getId())
+            ->filterByPersonId($personId)
+            ->count() > 0;
+    }
+
+    /**
+     * The people in the pool. Nothing is copied and nothing is cached — the group
+     * membership table is read every time, so somebody added in the Groups module
+     * appears here on the next page load (D1).
+     *
+     * The `$teamId` parameter is accepted and ignored: a ministry has ONE pool since
+     * D19, and every team under it draws on the same people. It is kept so the two
+     * dozen call sites that pass a schedule's team id do not each have to learn that,
+     * and so a future per-team pool is a change here rather than everywhere.
+     *
+     * @return int[] person ids, ascending
+     */
+    public function getPoolPersonIds(int $ministryId, ?int $teamId = null): array
+    {
+        return array_keys($this->getPoolMembership($ministryId, $teamId));
+    }
+
+    /**
+     * The same people, keyed the way the qualification matrix wants them: person id
+     * → the pool group ids they arrived through. Since D19 that list is always the
+     * ministry's one group, and the shape is kept because the matrix and the member
+     * rows already speak it.
+     *
+     * One query over `person2group2role_p2g2r`.
+     *
+     * @param int[]|null $visibleTeamIds accepted and ignored — see getPoolPersonIds()
+     *
+     * @return array<int, int[]>
+     */
+    public function getPoolMembership(int $ministryId, ?int $teamId = null, ?array $visibleTeamIds = null): array
+    {
+        $group = $this->getPoolGroup($ministryId);
+        if ($group === null) {
+            return [];
+        }
+
+        $groupId = (int) $group->getId();
+        $membership = [];
+        $rows = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId($groupId)
+            ->select(['PersonId'])
+            ->find();
+
+        foreach ($rows as $personId) {
+            $membership[(int) $personId] = [$groupId];
+        }
+
+        ksort($membership);
+
+        return $membership;
+    }
+
+    /**
+     * Member counts for a set of groups, in ONE query.
+     *
+     * Deliberately not `GroupQuery`'s `memberCount` virtual column: that comes from a
+     * `preSelect()` which also injects a second LEFT JOIN and a `GROUP BY` into every
+     * query built from it (F22). Counting the membership table directly is one plain
+     * aggregate and says what it does.
+     *
+     * @param int[] $groupIds
+     *
+     * @return array<int, int> group id → member count, zero-filled
+     */
+    public function countGroupMembers(array $groupIds): array
+    {
+        $counts = array_fill_keys(array_map('intval', $groupIds), 0);
+        if ($groupIds === []) {
+            return $counts;
+        }
+
+        $rows = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId($groupIds, Criteria::IN)
+            ->select(['GroupId'])
+            ->find();
+
+        foreach ($rows as $groupId) {
+            $key = (int) $groupId;
+            $counts[$key] = ($counts[$key] ?? 0) + 1;
+        }
+
+        return $counts;
+    }
+
+    // ══ Help wanted (D19) ═════════════════════════════════════════════════
+
+    /**
+     * Every ministry currently advertising for help, active ones only.
+     *
+     * **There are two ways to be advertising.** The ministry-level Help-wanted
+     * switch is one; having at least one ACTIVE position with "Recruit Volunteers"
+     * on is the other, and either is enough. A coordinator who has named the roles
+     * they need has already said everything the section needs to show, and making
+     * them tick a second switch somewhere else to be listed at all was the defect
+     * this rule removes.
+     *
+     * No authorization: this is what the Open Opportunities page shows to any
+     * signed-in volunteer, and a ministry that has switched either advert ON has
+     * asked to be seen. Deactivated ministries are excluded whatever their flags
+     * say — an inactive ministry is not running, and inviting somebody to join it
+     * would be a dead end.
+     *
+     * @return VolunteerMinistry[]
+     */
+    public function listHelpWantedMinistries(): array
+    {
+        $recruitingMinistryIds = $this->recruitingMinistryIds();
+
+        return iterator_to_array(
+            VolunteerMinistryQuery::create()
+                ->filterByActive(true)
+                ->condition('vminHelpWanted', 'VolunteerMinistry.HelpWanted = ?', true)
+                // `[0]` rather than `[]`: an empty IN list is not valid SQL, and a
+                // primary key is never 0, so this is the "matches nothing" spelling
+                // the rest of V2 uses.
+                ->condition('vminRecruiting', 'VolunteerMinistry.Id IN ?', $recruitingMinistryIds === [] ? [0] : $recruitingMinistryIds)
+                ->where(['vminHelpWanted', 'vminRecruiting'], Criteria::LOGICAL_OR)
+                ->orderByName()
+                ->find(),
+            false
+        );
+    }
+
+    /**
+     * The ids of every ministry with at least one active recruiting position.
+     *
+     * One `SELECT DISTINCT` over `volunteer_position_vpos`, so the listing above
+     * stays a single extra query however many ministries exist.
+     *
+     * @return int[]
+     */
+    private function recruitingMinistryIds(): array
+    {
+        $ids = [];
+        $rows = VolunteerPositionQuery::create()
+            ->filterByRecruiting(true)
+            ->filterByActive(true)
+            ->select(['MinistryId'])
+            ->distinct()
+            ->find();
+
+        foreach ($rows as $ministryId) {
+            $ids[] = (int) $ministryId;
+        }
+
+        return $ids;
+    }
+
+    /**
+     * The positions a set of ministries is recruiting for, keyed by ministry id.
+     *
+     * Ordered **team name, then the position's own order, then its name** — the
+     * same order the Positions table uses, decided here rather than in the browser
+     * so every client and every export agrees on it.
+     *
+     * Inactive positions are excluded: deactivation is how a coordinator retires a
+     * role without destroying its history (§2.6), and advertising a retired role
+     * would be the one place that history leaked back onto a member screen.
+     *
+     * @param int[] $ministryIds
+     *
+     * @return array<int, array<int, array{teamName: string, positionName: string, description: string|null}>>
+     */
+    public function listRecruitingPositionsByMinistry(array $ministryIds): array
+    {
+        if ($ministryIds === []) {
+            return [];
+        }
+
+        $positions = VolunteerPositionQuery::create()
+            ->filterByMinistryId($ministryIds, Criteria::IN)
+            ->filterByRecruiting(true)
+            ->filterByActive(true)
+            ->useTeamQuery()
+                ->orderByName(Criteria::ASC)
+            ->endUse()
+            // `with()` hydrates the team the join already fetched, so naming it on
+            // every row costs no query at all.
+            ->with('Team')
+            ->orderByOrder(Criteria::ASC)
+            ->orderByName(Criteria::ASC)
+            ->find();
+
+        $byMinistry = [];
+        foreach ($positions as $position) {
+            $byMinistry[(int) $position->getMinistryId()][] = [
+                'teamName' => (string) ($position->getTeam()?->getName() ?? ''),
+                'positionName' => (string) $position->getName(),
+                'description' => $position->getDescription(),
+            ];
+        }
+
+        return $byMinistry;
+    }
+
+    /**
+     * Is this ministry asking for help at all?
+     *
+     * The read side of the same rule `listHelpWantedMinistries()` applies, kept in
+     * one place because `recordHelpOffer()` has to agree with it exactly: the "I'd
+     * like to help" button is rendered for every ministry that listing returns, and
+     * a 403 behind a rendered button is a dead control.
+     */
+    public function isAdvertisingForHelp(VolunteerMinistry $ministry): bool
+    {
+        if ($ministry->getHelpWanted()) {
+            return true;
+        }
+
+        return VolunteerPositionQuery::create()
+            ->filterByMinistryId((int) $ministry->getId())
+            ->filterByRecruiting(true)
+            ->filterByActive(true)
+            ->count() > 0;
+    }
+
+    /**
+     * "I'd like to help" (D19): put the person in the ministry's pool if they are not
+     * already there, and tell whoever runs it.
+     *
+     * The actor is the SESSION person and is passed as an id rather than a `User`,
+     * because there is no permission to check — any signed-in volunteer may offer to
+     * help a ministry that has asked for help, and that is the whole authorization
+     * rule. What there IS to check is the ministry's own consent: `403` when NEITHER
+     * advert is on — not the ministry-level switch and not a single active recruiting
+     * position — so a volunteer cannot add themselves to an arbitrary roster by
+     * guessing an id. The test is `isAdvertisingForHelp()`, the same one the listing
+     * uses, because the button is rendered for exactly the ministries it lists.
+     *
+     * The pool write is a managed write for exactly this reason: the person is neither
+     * an administrator nor a coordinator, and this method — having checked the advert —
+     * is the thing that decided they may.
+     *
+     * Notification goes to every coordinator of the ministry, or to the global
+     * volunteer managers when it has none. When there is nobody at all the offer still
+     * succeeds: the volunteer did their part, and a silent failure on their screen
+     * would be the wrong half to punish.
+     *
+     * @return array{joinedPool: bool, notified: int}
+     *
+     * @throws VolunteerException 403 when the ministry is not asking for help
+     */
+    public function recordHelpOffer(VolunteerMinistry $ministry, int $personId): array
+    {
+        if (!$this->isAdvertisingForHelp($ministry)) {
+            throw VolunteerException::forbidden(gettext('This ministry is not asking for help right now'));
+        }
+
+        $ministryId = (int) $ministry->getId();
+        $group = $this->requirePoolGroup($ministryId);
+        $joinedPool = $this->joinPoolGroup($group, $personId);
+
+        $recipients = $this->authz->getCoordinatorPersonIds($ministryId);
+        if ($recipients === []) {
+            $recipients = $this->authz->getGlobalManagerPersonIds();
+        }
+
+        // Never tell somebody about their own offer: a coordinator who volunteers for
+        // their own ministry does not need mail from themselves.
+        $recipients = array_values(array_filter(
+            $recipients,
+            static fn (int $candidate): bool => $candidate !== $personId
+        ));
+
+        if ($recipients === []) {
+            $this->logger->warning('Volunteer help offer has nobody to notify', [
+                'ministryId' => $ministryId,
+                'personId' => $personId,
+            ]);
+        } else {
+            (new VolunteerNotificationService())
+                ->enqueueHelpOffer($ministryId, $personId, $recipients, $joinedPool);
+        }
+
+        $this->logger->info('Volunteer help offered', [
+            'ministryId' => $ministryId,
+            'personId' => $personId,
+            'joinedPool' => $joinedPool,
+            'notified' => count($recipients),
+        ]);
+
+        return ['joinedPool' => $joinedPool, 'notified' => count($recipients)];
+    }
+
+    // ══ Qualifications (#9707) ════════════════════════════════════════════
+    //
+    // D2/§2.7: person ↔ position, many-to-many, in its own table. Not a Group
+    // Role — `person2group2role_p2g2r` has PK (PersonId, GroupId) and so allows
+    // exactly one role per person per group (F19), which would make the
+    // multi-position case D16 requires structurally impossible.
+    //
+    // Two rules are load-bearing and are implemented once, here:
+    //
+    //   **Revocation is deactivation.** `revokeQualification()` sets
+    //   `vqal_Active = 0` and keeps the row, and a re-grant reactivates that
+    //   same row rather than inserting a second — which is also what makes
+    //   `UNIQUE (vqal_per_ID, vqal_vpos_ID)` survivable. Qualification changes
+    //   then affect *future* eligibility without rewriting history, because
+    //   `volunteer_assignment_vasg` carries no foreign key to a qualification:
+    //   it references the person and the position directly, so a past
+    //   assignment stays valid and readable whatever happens here.
+    //
+    //   **Authorization is per position, not per ministry.** A position belongs
+    //   to its team, so its team leader may grant on it and so may the ministry
+    //   coordinator above them (§4.6). That is exactly `canManagePosition()`, so
+    //   nothing is re-derived.
+    //
+    // Note what is deliberately NOT enforced: the person does **not** have to
+    // be in the pool first. §2.5 is explicit that "pool ≠ eligibility", and §4.6
+    // puts no membership condition on granting — the picker may name ANYONE.
+    //
+    // D19 adds the other half of that: qualifying somebody who is not in the
+    // ministry's pool Group PUTS THEM IN IT, in the same transaction. A person a
+    // coordinator has just said may serve is by definition one of the ministry's
+    // volunteers, and leaving them outside the roster was the source of the
+    // "qualified but the rotation never offers them" surprise. Revoking a
+    // qualification never takes them back out: that would quietly remove somebody
+    // from a roster because one of several qualifications ended.
+
+    // ══ Counts for list rendering ═════════════════════════════════════════
+
+    /**
+     * Team counts for a set of ministries, in ONE query rather than one per row.
+     *
+     * A ministry list is the place an N+1 would hide most comfortably — it looks
+     * harmless at three ministries and is not at thirty. Only the foreign key
+     * column is hydrated; the tallying is a loop over ints.
+     *
+     * @param int[] $ministryIds
+     *
+     * @return array<int, int> ministry id → count, zero-filled for every id asked about
+     */
+    public function countTeamsByMinistry(array $ministryIds): array
+    {
+        return $this->tally(
+            $ministryIds,
+            VolunteerTeamQuery::create()
+        );
+    }
+
+    /**
+     * @param int[] $ministryIds
+     *
+     * @return array<int, int>
+     */
+    public function countPositionsByMinistry(array $ministryIds): array
+    {
+        return $this->tally(
+            $ministryIds,
+            VolunteerPositionQuery::create()
+        );
+    }
+
+    /**
+     * Team counts for a set of teams, keyed by team id. Used by the ministry
+     * detail page so each team row can show how many positions it owns.
+     *
+     * @param int[] $teamIds
+     *
+     * @return array<int, int>
+     */
+    public function countPositionsByTeam(array $teamIds): array
+    {
+        $counts = array_fill_keys(array_map('intval', $teamIds), 0);
+        if ($teamIds === []) {
+            return $counts;
+        }
+
+        $rows = VolunteerPositionQuery::create()
+            ->filterByTeamId($teamIds, Criteria::IN)
+            ->select(['TeamId'])
+            ->find();
+
+        foreach ($rows as $teamId) {
+            $key = (int) $teamId;
+            $counts[$key] = ($counts[$key] ?? 0) + 1;
+        }
+
+        return $counts;
+    }
+
+    /**
+     * Shared body of the two counters above: hydrate only the `MinistryId`
+     * column for every child row of the given ministries and tally in PHP.
+     *
+     * @param int[]        $ministryIds
+     * @param ModelCriteria $query a query whose model has a MinistryId column
+     *
+     * @return array<int, int>
+     */
+    private function tally(array $ministryIds, ModelCriteria $query): array
+    {
+        $counts = array_fill_keys(array_map('intval', $ministryIds), 0);
+        if ($ministryIds === []) {
+            return $counts;
+        }
+
+        $rows = $query
+            ->filterByMinistryId($ministryIds, Criteria::IN)
+            ->select(['MinistryId'])
+            ->find();
+
+        foreach ($rows as $ministryId) {
+            $key = (int) $ministryId;
+            $counts[$key] = ($counts[$key] ?? 0) + 1;
+        }
+
+        return $counts;
+    }
+
+    // ══ Internals ═════════════════════════════════════════════════════════
+
+    /** @throws VolunteerException */
+    private function assertCanManageMinistry(User $actor, int $ministryId): void
+    {
+        if (!$this->authz->canManageMinistry($actor, $ministryId)) {
+            throw VolunteerException::forbidden(gettext('Not authorized for this ministry'));
+        }
+    }
+
+    /** @throws VolunteerException */
+    private function assertCanManageTeam(User $actor, int $teamId): void
+    {
+        if (!$this->authz->canManageTeam($actor, $teamId)) {
+            throw VolunteerException::forbidden(gettext('Not authorized for this team'));
+        }
+    }
+
+    /** @throws VolunteerException */
+    private function assertCanManagePosition(User $actor, int $positionId): void
+    {
+        if (!$this->authz->canManagePosition($actor, $positionId)) {
+            throw VolunteerException::forbidden(gettext('Not authorized for this position'));
+        }
+    }
+
+    /**
+     * "Help wanted" prose (D19). Blank is stored as NULL, never as '', so the advert
+     * is either something to show or nothing at all — an empty string would render as
+     * a ministry card with a blank paragraph under it.
+     */
+    private function normalizeHelpWantedText(?string $text): ?string
+    {
+        if ($text === null) {
+            return null;
+        }
+
+        $text = trim($text);
+
+        return $text === '' ? null : $text;
+    }
+
+    /** @throws VolunteerException */
+    private function requireName(string $name, string $message): string
+    {
+        $name = trim($name);
+        if ($name === '') {
+            throw VolunteerException::invalid($message);
+        }
+
+        return $name;
+    }
+
+    /** An absent or blank description is stored as NULL, never as ''. */
+    private function normalizeDescription(?string $description): ?string
+    {
+        if ($description === null) {
+            return null;
+        }
+
+        $description = trim($description);
+
+        return $description === '' ? null : $description;
+    }
+
+    /**
+     * `vmin_name_uidx` would raise a driver error rather than a 409, so the check
+     * happens here. `Criteria::NOT_EQUAL` on the id is what makes a no-op rename
+     * (saving a record under its own name) succeed.
+     *
+     * @throws VolunteerException
+     */
+    private function assertMinistryNameFree(string $name, ?int $exceptMinistryId): void
+    {
+        $query = VolunteerMinistryQuery::create()->filterByName($name);
+
+        if ($exceptMinistryId !== null) {
+            $query->filterById($exceptMinistryId, Criteria::NOT_EQUAL);
+        }
+
+        if ($query->count() > 0) {
+            throw VolunteerException::conflict(gettext('A ministry with that name already exists'));
+        }
+    }
+
+    /** @throws VolunteerException */
+    private function assertTeamNameFree(int $ministryId, string $name, ?int $exceptTeamId): void
+    {
+        $query = VolunteerTeamQuery::create()
+            ->filterByMinistryId($ministryId)
+            ->filterByName($name);
+
+        if ($exceptTeamId !== null) {
+            $query->filterById($exceptTeamId, Criteria::NOT_EQUAL);
+        }
+
+        if ($query->count() > 0) {
+            throw VolunteerException::conflict(gettext('A team with that name already exists in this ministry'));
+        }
+    }
+
+    /**
+     * The check §2.6 explicitly calls for, kept in PHP even though
+     * `vpos_ministry_team_name_uidx` now covers every position (D18 made
+     * `vpos_vtem_ID` `NOT NULL`, so the "MySQL treats NULLs as distinct" hole is
+     * closed). The index would raise a driver error rather than a 409, and its
+     * case-insensitivity is a property of the collation rather than of the design
+     * — this check owns both the status code and the message.
+     *
+     * @throws VolunteerException
+     */
+    private function assertPositionNameFree(int $ministryId, int $teamId, string $name, ?int $exceptPositionId): void
+    {
+        $query = VolunteerPositionQuery::create()
+            ->filterByMinistryId($ministryId)
+            ->filterByTeamId($teamId)
+            ->filterByName($name);
+
+        if ($exceptPositionId !== null) {
+            $query->filterById($exceptPositionId, Criteria::NOT_EQUAL);
+        }
+
+        if ($query->count() > 0) {
+            throw VolunteerException::conflict(gettext('A position with that name already exists in this ministry'));
+        }
+    }
+
+    /**
+     * The primary keys a query matches, as ints, without hydrating a row.
+     *
+     * @return int[]
+     */
+    private function idsOf(ModelCriteria $query): array
+    {
+        return array_map('intval', $query->select('Id')->find()->toArray());
+    }
+
+    /**
+     * @return int[]
+     */
+    private function getTeamIds(int $ministryId): array
+    {
+        $ids = [];
+        foreach (VolunteerTeamQuery::create()->filterByMinistryId($ministryId)->select(['Id'])->find() as $id) {
+            $ids[] = (int) $id;
+        }
+
+        return $ids;
+    }
+
+    /** Every occurrence of the ministry, past and future — the Delete dialog's number. */
+    public function countMinistryOccurrences(int $ministryId): int
+    {
+        return VolunteerOccurrenceQuery::create()
+            ->useScheduleQuery()
+                ->filterByMinistryId($ministryId)
+            ->endUse()
+            ->count();
+    }
+
+    /** Every assignment of the ministry in any status — the Delete dialog's number. */
+    public function countMinistryAssignments(int $ministryId): int
+    {
+        return VolunteerAssignmentQuery::create()
+            ->usePositionQuery()
+                ->filterByMinistryId($ministryId)
+            ->endUse()
+            ->count();
+    }
+}

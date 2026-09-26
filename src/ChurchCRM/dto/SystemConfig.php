@@ -128,6 +128,23 @@ class   SystemConfig
         ];
     }
 
+    /**
+     * The V1/V2 Volunteer Management rollout states (#9704).
+     *
+     * An explicit version choice rather than a boolean, so the transition
+     * state ("both") is representable while V1 data is migrated (#9702).
+     */
+    public static function getVolunteerVersionChoices(): array
+    {
+        return [
+            'Choices' => [
+                gettext('V1 — legacy Volunteer Opportunities') . ':v1',
+                gettext('V2 — Volunteer Management') . ':v2',
+                gettext('Both — V1 and V2 side by side (transition)') . ':both',
+            ],
+        ];
+    }
+
     private static function buildConfigs(): array
     {
         return [
@@ -238,7 +255,25 @@ class   SystemConfig
             'sChurchYouTube'                       => new ConfigItem('sChurchYouTube', 'text', '', ''),
             'sChurchFacebook'                      => new ConfigItem('sChurchFacebook', 'text', '', ''),
             'sChurchInstagram'                     => new ConfigItem('sChurchInstagram', 'text', '', ''),
-            'sChurchLogoURL'                     => new ConfigItem('sChurchLogoURL', 'text', '', gettext('Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo.')),
+            // Member Portal (#9863, #9864). Deliberately declared without a
+            // System Settings category so they never appear on
+            // src/SystemSettings.php: the portal's settings live on their own
+            // admin page, Admin → Member Portal (design P9, §4).
+            'sMemberPortalTheme'                   => new ConfigItem('sMemberPortalTheme', 'text', 'default', gettext('Folder name of the Member Portal theme to use, from Include/themes/. "default" is the system theme that ships with ChurchCRM.')),
+            'bPortalDeveloperMode'                 => new ConfigItem('bPortalDeveloperMode', 'boolean', '0', gettext('Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use.')),
+            'bPortalShowCalendar'                  => new ConfigItem('bPortalShowCalendar', 'boolean', '1', gettext('Show the church calendar in the Member Portal.')),
+            'bPortalShowVolunteer'                 => new ConfigItem('bPortalShowVolunteer', 'boolean', '1', gettext('Show volunteering and team pages in the Member Portal.')),
+            'bPortalAllowBirthdayEdit'             => new ConfigItem('bPortalAllowBirthdayEdit', 'boolean', '0', gettext('Let members change their own and their family members\' birthdays in the Member Portal.')),
+            // The calendars the Member Portal shows, as a JSON list of
+            // {"type":"calendar"|"system","id":<int>} entries — church and
+            // ministry calendars by `calendars.calendar_id`, system calendars
+            // (Birthdays, Anniversaries, …) by their virtual id. Empty means
+            // nothing is shared with members, which is what an upgraded
+            // installation gets; Install.sql seeds the one church calendar a new
+            // install starts with. Read and written through
+            // ChurchCRM\Portal\PortalCalendarService, never by hand.
+            'aPortalCalendars'                     => new ConfigItem('aPortalCalendars', 'json', '[]', gettext('Calendars the Member Portal shows to members, chosen on Admin -> Member Portal -> Calendars.')),
+            'sChurchLogoURL'                       => new ConfigItem('sChurchLogoURL', 'text', '', gettext('Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application\'s own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo.')),
             'bEnableExternalCalendarAPI'           => new ConfigItem('bEnableExternalCalendarAPI', 'boolean', '0', gettext('Allow unauthenticated reads of events from the external calendar API')),
             'sCalendarEmbedOrigins'                => new ConfigItem('sCalendarEmbedOrigins', 'text', '*', gettext('Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any origin. Restrict to specific origins for tighter security, e.g. "https://mysite.org https://embed.example.com".')),
             
@@ -268,6 +303,10 @@ class   SystemConfig
             'bEnabledFinance'                      => new ConfigItem('bEnabledFinance', 'boolean', '1', gettext('Enable Finance menu')),
             'bEnabledEvents'                       => new ConfigItem('bEnabledEvents', 'boolean', '1', gettext('Show or hide the Events section in the main navigation menu')),
             'bEnabledFundraiser'                   => new ConfigItem('bEnabledFundraiser', 'boolean', '1', gettext('Enable Fundraiser menu.')),
+            // Volunteer Management v2 (#9704, #9710). Deliberately declared without a
+            // category (2026-09-18): their one home is Admin → Ministry Settings.
+            'sVolunteerVersion'                    => new ConfigItem('sVolunteerVersion', 'choice', 'v1', gettext('Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. "Both" shows each side by side during migration.'), '', json_encode(self::getVolunteerVersionChoices())),
+            'iVolunteerReminderLeadHours'          => new ConfigItem('iVolunteerReminderLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup.')),
             'bEnabledEmail'                        => new ConfigItem('bEnabledEmail', 'boolean', '1', gettext('Enable email sending from ChurchCRM. Required for password reset, notifications, and email links.')),
             'bEnableBirthdayEmails'                => new ConfigItem('bEnableBirthdayEmails', 'boolean', '0', gettext('Automatically send a birthday greeting email to people on their birthday')),
             'sLastBirthdayEmailRunDate'            => new ConfigItem('sLastBirthdayEmailRunDate', 'text', '', gettext('Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually.')),

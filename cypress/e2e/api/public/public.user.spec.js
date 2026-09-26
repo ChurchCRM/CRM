@@ -180,11 +180,25 @@ describe("API Public User", () => {
 
     // Lockout tests
     // Uses `limited.user` (seeded, password "changeme") so admin credentials are not affected.
-    // The DB is reset between Cypress runs so lockout state does not persist across suites.
     describe("Account Lockout", () => {
         const LOCKOUT_USER = "limited.user";
+        const LOCKOUT_USER_ID = 4;
         const LOCKOUT_PASS = "changeme";
         const MAX_FAILURES = 5; // matches iMaxFailedLogins default in SystemConfig
+
+        // Unlock it again. This used to rely on "the DB is reset between Cypress
+        // runs", which is true per CI JOB but not per spec: `private.portal.me.spec.js`
+        // signs in as this very user later in the same run and could not, because the
+        // account was still locked from here (#9869 found it running the whole api
+        // glob on one stack, which is exactly what CI's `test-root api` job does).
+        after(() => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/admin/api/user/${LOCKOUT_USER_ID}/login/reset`,
+                null,
+                200,
+            );
+        });
 
         it("Correct password still returns 401 after account is locked", () => {
             // Trigger lockout by exhausting failed login attempts

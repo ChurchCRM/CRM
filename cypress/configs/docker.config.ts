@@ -2,6 +2,7 @@ import { defineConfig } from 'cypress'
 import { verifyDownloadTasks } from 'cy-verify-downloads';
 
 import base from './base.config'
+import { dbTasks, mailTasks } from './_shared'
 export default defineConfig({
   chromeWebSecurity: false,
   video: false,
@@ -70,7 +71,11 @@ export default defineConfig({
         printLogsToConsole: 'onFail',
         printLogsToFile: 'always'
       });
-      on('task', verifyDownloadTasks);
+      // One registration only — a second on('task', ...) replaces the first.
+      // dbTasks adds db:query, the direct-MySQL task the Volunteer v2 schema;
+      // mailTasks adds the Mailpit reads #9710 asserts delivery with.
+      // specs use to assert constraints that have no HTTP surface (#9705).
+      on('task', { ...verifyDownloadTasks, ...dbTasks, ...mailTasks });
       on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
           launchOptions.args.push('--disable-dev-shm-usage');

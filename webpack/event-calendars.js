@@ -806,6 +806,13 @@ function registerCalendarSelectionEvents() {
   });
 }
 
+/**
+ * Draw the two lists of `calendars` rows: church calendars, and the ministry
+ * calendars that name an owning ministry (`MinistryId`, #9866). A ministry
+ * calendar behaves exactly like a church one — same source, same switch, same
+ * Focus and properties actions — it is only listed under its own heading, and
+ * the heading stays hidden when no calendar has a ministry.
+ */
 function showAllUserCalendars() {
   window.CRM.APIRequest({
     method: "GET",
@@ -813,10 +820,20 @@ function showAllUserCalendars() {
     suppressErrorDialog: true,
   }).done((calendars) => {
     $("#calendarUserList").empty();
+    $("#calendarMinistryList").empty();
+    let ministryCount = 0;
+
     $.each(calendars.Calendars, (_idx, calendar) => {
-      $("#calendarUserList").append(getCalendarFilterElement(calendar, "user"));
+      const isMinistryCalendar = calendar.MinistryId !== null && calendar.MinistryId !== undefined;
+      const list = isMinistryCalendar ? "#calendarMinistryList" : "#calendarUserList";
+      if (isMinistryCalendar) {
+        ministryCount += 1;
+      }
+      $(list).append(getCalendarFilterElement(calendar, "user"));
       addCalendarEventSource("user", calendar.Id);
     });
+
+    $("#calendarMinistrySection").toggleClass("d-none", ministryCount === 0);
   });
 }
 
