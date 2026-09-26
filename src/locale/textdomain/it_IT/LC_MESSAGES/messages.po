@@ -12313,16 +12313,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Come si collegano Catechismo Domenicale + Eventi + Chioschi"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Data non valida per %s — previsto YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Formato data non valido per rangeStart o rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Data non valida; formato previsto YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12551,10 +12543,6 @@ msgstr "endDate deve essere successiva a startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds deve essere un array non vuoto"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "tipo di ricorrenza non valido"
 
 #: 
 msgid "personIds must be a non-empty array"

@@ -12288,16 +12288,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cách Giáo lý Chúa nhật + Sự kiện + Kiosk hoạt động cùng nhau"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Ngày không hợp lệ cho %s — dự kiến YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Định dạng ngày không hợp lệ cho rangeStart hoặc rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Ngày không hợp lệ; định dạng dự kiến YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12526,10 +12518,6 @@ msgstr "endDate phải sau startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds phải là mảng không rỗng"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "loại lặp lại không hợp lệ"
 
 #: 
 msgid "personIds must be a non-empty array"

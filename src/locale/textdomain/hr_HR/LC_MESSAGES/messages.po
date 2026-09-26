@@ -12266,16 +12266,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Kako se Nedjeljna škola + Događaji + Kiosci uklapaju zajedno"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Nevažeći datum za %s — očekivano GGGG-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Nevažeći format datuma za rangeStart ili rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Nevažeći datum; očekivani format GGGG-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12504,10 +12496,6 @@ msgstr "endDate mora biti nakon startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds mora biti neprazan niz"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "nevažeća vrsta ponavljanja"
 
 #: 
 msgid "personIds must be a non-empty array"

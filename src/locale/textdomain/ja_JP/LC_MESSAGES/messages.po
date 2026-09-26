@@ -12249,16 +12249,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "日曜学校・イベント・Kioskの連携方法"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "%s の日付が無効です — YYYY-MM-DD 形式が必要です"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart または rangeEnd の日付形式が無効です"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "日付が無効です。YYYY-MM-DD 形式が必要です"
 
 #: 
 msgid "Invalid event type ID"
@@ -12487,10 +12479,6 @@ msgstr "endDate は startDate より後でなければなりません"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds は空でない配列でなければなりません"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "無効な繰り返しタイプです"
 
 #: 
 msgid "personIds must be a non-empty array"

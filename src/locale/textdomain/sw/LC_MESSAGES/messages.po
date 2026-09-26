@@ -12290,16 +12290,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jinsi Shule ya Jumapili + Matukio + Vioski unavyofanya kazi pamoja"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Tarehe batili kwa %s — inatarajiwa YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Muundo batili wa tarehe kwa rangeStart au rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Tarehe batili; muundo unaotarajiwa YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12528,10 +12520,6 @@ msgstr "endDate lazima iwe baada ya startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds lazima iwe safu isiyokuwa tupu"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "aina batili ya kurudia"
 
 #: 
 msgid "personIds must be a non-empty array"

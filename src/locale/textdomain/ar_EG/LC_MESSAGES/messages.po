@@ -12325,16 +12325,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "كيف تتكامل مدرسة الأحد والأحداث والـ Kiosks"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "تاريخ غير صالح لـ %s — الصيغة المتوقعة YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "صيغة تاريخ غير صالحة لـ rangeStart أو rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "تاريخ غير صالح؛ الصيغة المتوقعة YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12563,10 +12555,6 @@ msgstr "يجب أن يكون تاريخ الانتهاء بعد تاريخ ال�
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "يجب أن تكون eventIds مصفوفة غير فارغة"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "نوع تكرار غير صالح"
 
 #: 
 msgid "personIds must be a non-empty array"

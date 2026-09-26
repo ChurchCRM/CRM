@@ -12294,16 +12294,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Pazar Okulu + Etkinlikler + Kiosk'lar nasıl birlikte çalışır"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "%s için geçersiz tarih — YYYY-AA-GG bekleniyor"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart veya rangeEnd için geçersiz tarih biçimi"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Geçersiz tarih; beklenen biçim YYYY-AA-GG"
 
 #: 
 msgid "Invalid event type ID"
@@ -12532,10 +12524,6 @@ msgstr "endDate, startDate'den sonra olmalıdır"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds boş olmayan bir dizi olmalıdır"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "geçersiz tekrarlama türü"
 
 #: 
 msgid "personIds must be a non-empty array"

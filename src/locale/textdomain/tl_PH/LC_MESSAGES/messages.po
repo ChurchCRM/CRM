@@ -12259,16 +12259,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Paano Magkasya ang Sunday School + Mga Kaganapan + Mga Kiosk"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Hindi wastong petsa para sa %s — inaasahang YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Hindi wastong format ng petsa para sa rangeStart o rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Hindi wastong petsa; inaasahang format na YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12497,10 +12489,6 @@ msgstr "Ang endDate ay dapat pagkatapos ng startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "Ang eventIds ay dapat na hindi walang laman na array"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "hindi wastong uri ng paulit-ulit"
 
 #: 
 msgid "personIds must be a non-empty array"

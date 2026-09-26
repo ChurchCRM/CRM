@@ -12271,16 +12271,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "సండే స్కూల్ + కార్యక్రమాలు + కియోస్క్‌లు ఎలా కలిసి పనిచేస్తాయి"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "%s కోసం చెల్లని తేదీ — YYYY-MM-DD రూపంలో ఉండాలి"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart లేదా rangeEnd కోసం చెల్లని తేదీ ఆకృతి"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "చెల్లని తేదీ; YYYY-MM-DD ఆకృతి అవసరం"
 
 #: 
 msgid "Invalid event type ID"
@@ -12509,10 +12501,6 @@ msgstr "endDate, startDate తర్వాత ఉండాలి"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds ఖాళీ కాని శ్రేణి అయి ఉండాలి"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "చెల్లని పునరావృత రకం"
 
 #: 
 msgid "personIds must be a non-empty array"
