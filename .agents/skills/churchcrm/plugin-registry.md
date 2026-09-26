@@ -48,9 +48,9 @@ Review checklist: [`plugin-security-scan.md`](./plugin-security-scan.md).
 
 ## Core plugins (shipped in the zip)
 
-`src/plugins/core/`: `custom-links`, `external-backup`, `google-analytics`, `gravatar`, `holidays`, `mailchimp`, `openlp`, `vonage`.
-
-If you add a core plugin, update this list and the tables in `plugin-system.md` / `plugin-development.md` / `plugin-migration.md` in the same PR.
+Current list: `ls src/plugins/core/`. The one curated table (with per-plugin
+routes/views) lives in `plugin-development.md` → "Core Plugins Reference" —
+update that table, not a second copy here, when you add a core plugin.
 
 ## Related
 

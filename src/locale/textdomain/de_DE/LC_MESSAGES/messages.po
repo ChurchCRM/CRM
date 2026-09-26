@@ -17918,6 +17918,12 @@ msgid "Set up now"
 msgstr "Jetzt einrichten"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tag Zeit, sich zu registrieren."
+msgstr[1] "Die Zwei-Faktor-Authentifizierung ist erforderlich. Sie haben noch %d Tage Zeit, sich zu registrieren."
+
+#: 
 msgid "Unknown family"
 msgstr "Unbekannte Familie"
 
@@ -18500,4 +18506,108 @@ msgstr "skip muss null oder eine positive ganze Zahl sein"
 #: 
 msgid "view families missing an email"
 msgstr "Familien ohne E-Mail-Adresse anzeigen"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Käufer in diesem Geschäftsjahr"
+
+#: 
+msgid "Current"
+msgstr "Aktuell"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Gespendete Artikel (dieses Geschäftsjahr)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Der Login darf höchstens %d Zeichen lang sein!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Gesammelt in diesem Geschäftsjahr"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s muss eine vollständige https://-Webadresse sein, zum Beispiel https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Das Konto hat eingeschränkte Berechtigungen. Wenden Sie sich an einen Administrator."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Beim Rendern der Fehlerseite ist ein Fehler aufgetreten."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Jede Adresse muss mit https:// beginnen."
+
+#: 
+msgid "Generate Labels"
+msgstr "Etiketten generieren"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Adressetiketten generieren"
+
+#: 
+msgid "Labels"
+msgstr "Etiketten"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Adressetiketten für die Personen in Ihrem Warenkorb. Eine Person ohne eigene Adresse wird an die Adresse ihrer Familie adressiert."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Optional. Links zu den eigenen Konten der Kirche, die den Mitgliedern auf Seiten wie der Portal-Fußzeile angezeigt werden. Lassen Sie ein Feld leer, um dieses Netzwerk auszublenden."
+
+#: 
+msgid "Options"
+msgstr "Optionen"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Geplante Aufgaben"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktiv, verbleibende Sekunden: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Erwartetes Intervall zwischen den Ausführungen (Stunden): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Übersprungene Familien (keine E-Mail-Adresse hinterlegt): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Familien, die nicht geokodiert werden konnten: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Familien, die Bestätigungs-E-Mails erhalten: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Kopierte Mitglieder: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Hier nicht aufgeführt: {{total}} weitere"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Empfänger: {{total}} — zu viele für einen mailto:-Link. Verwenden Sie stattdessen 'Adressen kopieren'."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Zu viele Empfänger für den E-Mail-Client ({{total}} > {{max}}). Verwenden Sie stattdessen 'Adressen kopieren'."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} Min. verbleibend"
 

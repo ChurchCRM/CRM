@@ -17844,3 +17844,683 @@ msgstr "모든 가족 좌표 업데이트"
 msgid "Update Coordinates"
 msgstr "좌표 업데이트"
 
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s 님은 이 가정의 세대주였으며 별세하신 것으로 표시되었습니다. 새로운 세대주를 지정해 주세요."
+
+#: 
+msgid "Accept"
+msgstr "수락"
+
+#: 
+msgid "Active Now"
+msgstr "현재 활동 중"
+
+#: 
+msgid "Adding..."
+msgstr "추가 중..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "이메일이 등록된 모든 CRM 성도가 이 목록에 구독되어 있습니다!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "모든 MailChimp 구독자가 ChurchCRM에 등록되어 있습니다!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "파일을 삭제하는 중 오류가 발생했습니다."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "정말 확실합니까? 모든 데이터가 삭제되고 초기 설정으로 복원됩니다."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "모든 로그 파일을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "키오스크를 삭제하시겠습니까"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "이 링크를 삭제하시겠습니까"
+
+#: 
+msgid "Assignment"
+msgstr "배정"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "백그라운드 작업(생일 이메일 및 모든 플러그인 예약 작업)이 이 설치본에서 한 번도 실행된 적이 없습니다."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "백그라운드 작업(생일 이메일 및 모든 플러그인 예약 작업)이 마지막으로 실행된 시각은 %s입니다."
+
+#: 
+msgid "Backing up..."
+msgstr "백업 중..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "백업이 다운로드되었습니다."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "백업이 성공적으로 업로드되었습니다"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "자신의 활성 상태는 변경할 수 없습니다"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings 내보내기가 성공적으로 완료되었습니다"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "변경 사항이 성공적으로 저장되었습니다"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "전원 체크아웃 후 모두 비활성화"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "전원을 체크아웃하고 이 이벤트를 비활성화하시겠습니까?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "비밀번호 재설정 링크가 포함된 이메일을 확인해 주세요"
+
+#: 
+msgid "Close stuck events?"
+msgstr "멈춘 이벤트를 종료하시겠습니까?"
+
+#: 
+msgid "Comments"
+msgstr "비고"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "이메일 미리보기를 불러올 수 없습니다. 닫은 후 다시 시도해 주세요."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "백업을 생성하여 업로드하는 중입니다. 몇 분 정도 걸릴 수 있습니다..."
+
+#: 
+msgid "Database reset failed."
+msgstr "데이터베이스 초기화에 실패했습니다."
+
+#: 
+msgid "Deceased"
+msgstr "별세"
+
+#: 
+msgid "Default admin credentials"
+msgstr "기본 관리자 자격 증명"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "키오스크 삭제"
+
+#: 
+msgid "Deleted Files"
+msgstr "삭제된 파일"
+
+#: 
+msgid "Deleting..."
+msgstr "삭제 중..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "다운로드 응답에 첨부 파일 헤더가 없습니다."
+
+#: 
+msgid "Error deleting log file."
+msgstr "로그 파일 삭제 중 오류가 발생했습니다."
+
+#: 
+msgid "Error deleting log files."
+msgstr "로그 파일들을 삭제하는 중 오류가 발생했습니다."
+
+#: 
+msgid "Error downloading log file."
+msgstr "로그 파일 다운로드 중 오류가 발생했습니다."
+
+#: 
+msgid "Error initiating download."
+msgstr "다운로드를 시작하는 중 오류가 발생했습니다."
+
+#: 
+msgid "Error loading log file."
+msgstr "로그 파일을 불러오는 중 오류가 발생했습니다."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "자율 등록 항목을 불러오는 중 오류가 발생했습니다"
+
+#: 
+msgid "Errors"
+msgstr "오류"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "별세한 성도를 인쇄용 명부 및 CSV 내보내기에서 제외합니다."
+
+#: 
+msgid "Failed Files"
+msgstr "실패한 파일"
+
+#: 
+msgid "Failed to add link"
+msgstr "링크 추가에 실패했습니다"
+
+#: 
+msgid "Failed to add option"
+msgstr "옵션 추가에 실패했습니다"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "이벤트 종료에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to delete"
+msgstr "삭제에 실패했습니다"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "키오스크 등록 활성화에 실패했습니다"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV 내보내기에 실패했습니다"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "감사 기록을 불러오지 못했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "키오스크 이름 변경에 실패했습니다"
+
+#: 
+msgid "Failed to save changes"
+msgstr "변경 사항 저장에 실패했습니다"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "플러그인 업데이트에 실패했습니다"
+
+#: 
+msgid "Family Id"
+msgstr "가정 ID"
+
+#: 
+msgid "Final Confirmation"
+msgstr "최종 확인"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "가정 주소의 좌표를 확인하는 중입니다… 몇 분 정도 걸릴 수 있습니다. 이 페이지를 열어 두셔도 됩니다."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "가정 주소의 좌표를 확인하는 중입니다… {{total}}건 중 {{done}}건 처리, {{geocoded}}건 위치 확인 완료."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "세대주 정보 업데이트 필요"
+
+#: 
+msgid "Helpful Links"
+msgstr "유용한 링크"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "명부에서 별세자 숨기기"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "별세한 성도를 인쇄용 명부 및 CSV 내보내기에서 숨깁니다."
+
+#: 
+msgid "Identify"
+msgstr "식별"
+
+#: 
+msgid "Identify command sent"
+msgstr "식별 명령이 전송되었습니다"
+
+#: 
+msgid "Individual"
+msgstr "개인"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "내부용: 백그라운드 타이머 작업이 마지막으로 완료된 날짜와 시간입니다 (YYYY-MM-DD HH:MM:SS). 수동으로 편집하지 마세요."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "항목이 성공적으로 삭제되었습니다"
+
+#: 
+msgid "Kiosk Name"
+msgstr "키오스크 이름"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "키오스크가 승인되었습니다"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "키오스크가 성공적으로 삭제되었습니다"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "키오스크를 먼저 승인해야 합니다"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "키오스크 이름이 변경되었습니다"
+
+#: 
+msgid "Last seen"
+msgstr "마지막 접속"
+
+#: 
+msgid "Link"
+msgstr "링크"
+
+#: 
+msgid "Link added successfully"
+msgstr "링크가 성공적으로 추가되었습니다"
+
+#: 
+msgid "Link deleted"
+msgstr "링크가 삭제되었습니다"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "링크 이름에는 HTML 태그를 포함할 수 없습니다"
+
+#: 
+msgid "Living"
+msgstr "생존"
+
+#: 
+msgid "Log settings saved"
+msgstr "로그 설정이 저장되었습니다"
+
+#: 
+msgid "Login Name is Required"
+msgstr "로그인 이름은 필수입니다"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "이 사람을 활성 상태로 표시했습니다"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "이 사람을 비활성 상태로 표시했습니다"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "페이지 로드로 실행되는 백그라운드 타이머 작업 사이의 최소 간격(분)입니다. 바쁜 주일 아침에 페이지 조회마다 작업이 실행되는 것을 방지합니다. 명령줄 실행기에는 적용되지 않습니다. 페이지가 로드될 때마다 실행하려면 0으로 설정하세요."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "새 사용자는 환영 이메일을 받지 않으며, 생성된 비밀번호는 화면에 표시되지 않습니다. 계정을 생성한 후 시스템 사용자에서 비밀번호 변경을 이용해 설정하거나, 먼저 이메일을 설정하세요."
+
+#: 
+msgid "No changes to save"
+msgstr "저장할 변경 사항이 없습니다"
+
+#: 
+msgid "No contact info"
+msgstr "연락처 정보 없음"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "설정된 사용자 지정 링크가 없습니다. 위에서 추가해 보세요!"
+
+#: 
+msgid "No email"
+msgstr "이메일 없음"
+
+#: 
+msgid "No files were deleted."
+msgstr "삭제된 파일이 없습니다."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "이 플러그인에는 도움말이 제공되지 않습니다."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "추가할 사람이 없습니다 - 모두 이미 장바구니에 있습니다"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "추가할 사람이 없습니다 - 필터 결과가 없습니다"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "유효한 별세일이 아닙니다"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "2FA가 의무화된 후 사용자가 등록할 수 있는 유예 기간(일)입니다. 즉시 적용하려면 0으로 설정하세요. 진행 중인 유예 기간을 단축하면 사용자가 즉시 잠길 수 있습니다."
+
+#: 
+msgid "Offline"
+msgstr "오프라인"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "근본적인 문제를 해결한 후에만 이 작업을 수행하세요. 플러그인을 다시 실행하려면 여전히 활성화를 클릭해야 합니다."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "이 사람의 활성화를 확인해 주세요"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "이 사람의 비활성화를 확인해 주세요"
+
+#: 
+msgid "Plugin status updated"
+msgstr "플러그인 상태가 업데이트되었습니다"
+
+#: 
+msgid "Registered"
+msgstr "등록됨"
+
+#: 
+msgid "Reload"
+msgstr "새로고침"
+
+#: 
+msgid "Reload command sent"
+msgstr "새로고침 명령이 전송되었습니다"
+
+#: 
+msgid "Rename"
+msgstr "이름 변경"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "키오스크 이름 변경"
+
+#: 
+msgid "Reset Complete"
+msgstr "초기화 완료"
+
+#: 
+msgid "Reset Settings"
+msgstr "설정 초기화"
+
+#: 
+msgid "Resetting..."
+msgstr "초기화 중..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "예약된 작업이 실행되지 않고 있습니다"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "보안 토큰이 없습니다. 페이지를 새로고침해 주세요."
+
+#: 
+msgid "Select…"
+msgstr "선택…"
+
+#: 
+msgid "Sending..."
+msgstr "전송 중..."
+
+#: 
+msgid "Sending…"
+msgstr "전송 중…"
+
+#: 
+msgid "Settings reset"
+msgstr "설정이 초기화되었습니다"
+
+#: 
+msgid "Settings saved"
+msgstr "설정이 저장되었습니다"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "설정이 저장되었습니다. 업그레이드 정보를 새로고침하는 중..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "활성 상태인 사람만 표시합니다."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "비활성 상태인 사람만 표시합니다."
+
+#: 
+msgid "Successfully deleted"
+msgstr "성공적으로 삭제되었습니다"
+
+#: 
+msgid "Testing..."
+msgstr "테스트 중..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "데이터베이스가 초기화되었습니다. 시스템이 새로 시작할 준비가 되었습니다."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "그동안 페이지 로드 대체 방식은 계속 작동합니다. ChurchCRM이 이 경고를 표시하기까지 기다리는 시간은 %1$s 설정으로 변경하거나, 0으로 설정하여 숨길 수 있습니다."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "이 사람은 비활성 상태입니다"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "OpenStreetMap을 사용하여 좌표가 없는 모든 가정의 지도 좌표를 찾습니다. 50가정씩 배치로 처리하며, 배치당 약 1분이 소요됩니다. 실행되는 동안 이 페이지를 열어 두셔도 됩니다. 계속하시겠습니까?"
+
+#: 
+msgid "This person is deceased"
+msgstr "이 사람은 별세했습니다"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "이 플러그인에 설정된 모든 값이 삭제됩니다. 이 작업은 되돌릴 수 없습니다."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "이 작업은 디스크에서 플러그인 파일을 영구적으로 삭제하고 설정을 초기화합니다. 이 작업은 되돌릴 수 없습니다."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL에는 HTML 태그를 포함할 수 없습니다"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "예상치 못한 오류가 발생했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "플러그인 제거"
+
+#: 
+msgid "Upcoming"
+msgstr "예정"
+
+#: 
+msgid "Valid Until"
+msgstr "유효 기한"
+
+#: 
+msgid "View active only"
+msgstr "활성만 보기"
+
+#: 
+msgid "View all"
+msgstr "전체 보기"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "전체 보기 (비활성 포함)"
+
+#: 
+msgid "View inactive only"
+msgstr "비활성만 보기"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "백그라운드 타이머 작업이 이 시간(시간 단위) 이상 실행되지 않은 경우 관리자 대시보드에 경고를 표시합니다. 26으로 설정하면 매일 실행되는 cron과 약간의 오차를 허용합니다. 경고를 비활성화하려면 0으로 설정하세요."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "스케줄러가 없으면 이 작업은 누군가 페이지를 로드할 때만 실행되므로, 조용한 평일에는 예약된 메일이 전혀 발송되지 않습니다. 웹 서버를 실행하는 동일한 사용자로 매시간 작업 실행기를 실행하는 cron 항목을 추가하세요"
+
+#: 
+msgid "check-outs"
+msgstr "체크아웃"
+
+#: 
+msgid "deceased"
+msgstr "별세"
+
+#: 
+msgid "event"
+msgstr "이벤트"
+
+#: 
+msgid "events?"
+msgstr "이벤트?"
+
+#: 
+msgid "files"
+msgstr "파일"
+
+#: 
+msgid "people from cart?"
+msgstr "장바구니에서 제거하시겠습니까?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip 값은 0 또는 양의 정수여야 합니다"
+
+#: 
+msgid "view families missing an email"
+msgstr "이메일이 없는 가정 보기"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "이번 회계연도 구매자"
+
+#: 
+msgid "Current"
+msgstr "현재"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "기부된 물품 (이번 회계연도)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "로그인 이름은 %d자 이하이어야 합니다!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "이번 회계연도 모금액"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s은(는) https://example.org/yourchurch 와 같은 전체 https:// 웹 주소여야 합니다."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "계정 권한이 제한되어 있습니다. 관리자에게 문의하세요."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "오류 페이지를 표시하는 중 오류가 발생했습니다."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "각 주소는 https://로 시작해야 합니다"
+
+#: 
+msgid "Generate Labels"
+msgstr "라벨 생성"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "우편 라벨 생성"
+
+#: 
+msgid "Labels"
+msgstr "라벨"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "장바구니에 있는 사람들의 우편 라벨입니다. 개인 주소가 없는 사람은 가정 주소로 표시됩니다."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "선택 사항입니다. 교회 자체 계정으로 연결되는 링크로, 포털 하단 등 성도에게 표시되는 페이지에 나타납니다. 해당 네트워크를 숨기려면 필드를 비워 두세요."
+
+#: 
+msgid "Options"
+msgstr "옵션"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "예약된 작업"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "진행 중, 남은 시간: {{seconds}}초"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "예상 실행 간격(시간): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "건너뛴 가정 (등록된 이메일 주소 없음): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "좌표를 확인할 수 없었던 가정: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "확인 이메일을 받을 가정: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "복사된 성도 수: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "여기에 표시되지 않음: {{total}}건 더"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "수신자: {{total}}명 — mailto: 링크로 처리하기에는 너무 많습니다. 대신 주소 복사를 사용하세요."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "이메일 클라이언트가 처리하기에 수신자가 너무 많습니다 ({{total}} > {{max}}). 대신 주소 복사를 사용하세요."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}}분 남음"
+

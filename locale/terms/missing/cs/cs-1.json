@@ -1,36 +1,5 @@
 {
   "Data": "Data",
   "N/A": "",
-  "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den.",
-    "few": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny.",
-    "other": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní."
-  },
-  "Offline": "Offline",
-  "Buyers This Fiscal Year": "Kupující v tomto fiskálním roce",
-  "Current": "Aktuální",
-  "Items Donated (This Fiscal Year)": "Darované položky (tento fiskální rok)",
-  "Login must be %d characters or fewer!": "Přihlašovací jméno musí mít nejvýše %d znaků!",
-  "Raised This Fiscal Year": "Vybráno v tomto fiskálním roce",
-  "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s musí být úplná webová adresa https://, například https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Účet má omezená oprávnění. Kontaktujte administrátora.",
-  "An error occurred while rendering the error page.": "Při vykreslování chybové stránky došlo k chybě.",
-  "Each address must start with https://": "Každá adresa musí začínat na https://",
-  "Generate Labels": "Generovat štítky",
-  "Generate mailing labels": "Generovat poštovní štítky",
-  "Labels": "Štítky",
-  "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address.": "Poštovní štítky pro osoby ve vašem košíku. Osoba bez vlastní adresy je adresována na adresu své rodiny.",
-  "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network.": "Volitelné. Odkazy na účty církve na sociálních sítích, zobrazené členům na stránkách, jako je patička portálu. Ponecháte-li pole prázdné, daná síť se skryje.",
-  "Options": "Možnosti",
-  "Scheduled Tasks": "Naplánované úlohy",
-  "Active, seconds left: {{seconds}}": "Aktivní, zbývá sekund: {{seconds}}",
-  "Expected interval between runs (hours): %d.": "Očekávaný interval mezi spuštěními (hodiny): %d.",
-  "Families skipped (no email address on file): {{total}}": "Přeskočené rodiny (bez uvedené e-mailové adresy): {{total}}",
-  "Families that could not be geocoded: {{total}}": "Rodiny, které se nepodařilo geokódovat: {{total}}",
-  "Families to receive confirmation emails: {{total}}": "Rodiny, kterým bude odeslán potvrzovací e-mail: {{total}}",
-  "Members copied: {{total}}": "Zkopírovaní členové: {{total}}",
-  "Not listed here: {{total}} more": "Zde neuvedeno: dalších {{total}}",
-  "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead.": "Příjemci: {{total}} — příliš mnoho pro odkaz mailto:. Použijte místo toho Kopírovat adresy.",
-  "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead.": "Příliš mnoho příjemců pro e-mailového klienta ({{total}} > {{max}}). Použijte místo toho Kopírovat adresy.",
-  "{{minutes}} min left": "zbývá {{minutes}} min"
+  "Offline": "Offline"
 }

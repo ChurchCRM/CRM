@@ -17287,6 +17287,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "E-mail is niet geconfigureerd. Configureer de SMTP-instellingen in de systeeminstellingen."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-mail verzonden naar %d gezin."
+msgstr[1] "E-mail verzonden naar %d gezinnen."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Voer eerst een straatadres in."
 
@@ -17357,6 +17363,12 @@ msgstr "Geen betalingen gevonden voor de geselecteerde stortingen"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Geen geldige stortings-ID's opgegeven"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF succesvol gemaild naar %d gezin."
+msgstr[1] "PDF succesvol gemaild naar %d gezinnen."
 
 #: 
 msgid "Partial Send"
@@ -17789,6 +17801,12 @@ msgid "Set up now"
 msgstr "Nu instellen"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Tweefactorauthenticatie is verplicht. U heeft %d dag om u in te schrijven."
+msgstr[1] "Tweefactorauthenticatie is verplicht. U heeft %d dagen om u in te schrijven."
+
+#: 
 msgid "Unknown family"
 msgstr "Onbekend gezin"
 
@@ -17803,4 +17821,672 @@ msgstr "Alle gezinscoördinaten bijwerken"
 #: 
 msgid "Update Coordinates"
 msgstr "Coördinaten bijwerken"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s was het gezinshoofd van dit gezin en is als overleden gemarkeerd. Wijs een nieuw gezinshoofd toe."
+
+#: 
+msgid "Accept"
+msgstr "Accepteren"
+
+#: 
+msgid "Active Now"
+msgstr "Nu actief"
+
+#: 
+msgid "Adding..."
+msgstr "Toevoegen..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Alle CRM-leden met een e-mailadres zijn op deze lijst geabonneerd!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Alle MailChimp-abonnees staan in ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Er is een fout opgetreden bij het verwijderen van bestanden."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Weet u het absoluut zeker? Dit wist alle gegevens en herstelt de fabrieksinstellingen."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Weet u zeker dat u ALLE logbestanden wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Weet u zeker dat u de kiosk wilt verwijderen"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Weet u zeker dat u de link wilt verwijderen"
+
+#: 
+msgid "Assignment"
+msgstr "Toewijzing"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Achtergrondtaken (verjaardagsmails en alle geplande plugintaken) zijn nog nooit uitgevoerd op deze installatie."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Achtergrondtaken (verjaardagsmails en alle geplande plugintaken) zijn voor het laatst uitgevoerd op %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Back-up maken..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Back-up gedownload."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Back-up succesvol geüpload"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "U kunt uw eigen actieve status niet wijzigen"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-export succesvol voltooid"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Wijzigingen succesvol opgeslagen"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Iedereen uitchecken en alles deactiveren"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Iedereen uitchecken en dit evenement deactiveren?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Controleer uw e-mail voor een link om uw wachtwoord opnieuw in te stellen"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Vastgelopen evenementen sluiten?"
+
+#: 
+msgid "Comments"
+msgstr "Opmerkingen"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Kon het e-mailvoorbeeld niet laden. Sluit dit en probeer het opnieuw."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Back-up wordt gemaakt en geüpload. Dit kan enkele minuten duren..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Resetten van database is mislukt."
+
+#: 
+msgid "Deceased"
+msgstr "Overleden"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Standaard beheerdersgegevens"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Kiosk verwijderen"
+
+#: 
+msgid "Deleted Files"
+msgstr "Verwijderde bestanden"
+
+#: 
+msgid "Deleting..."
+msgstr "Verwijderen..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Download is teruggekomen zonder bijlage-headers."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Fout bij het verwijderen van logbestand."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Fout bij het verwijderen van logbestanden."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Fout bij het downloaden van logbestand."
+
+#: 
+msgid "Error initiating download."
+msgstr "Fout bij het starten van de download."
+
+#: 
+msgid "Error loading log file."
+msgstr "Fout bij het laden van logbestand."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Fout bij het laden van zelfgeregistreerde inschrijvingen"
+
+#: 
+msgid "Errors"
+msgstr "Fouten"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Sluit overleden leden uit van de gedrukte ledenlijst en CSV-exports."
+
+#: 
+msgid "Failed Files"
+msgstr "Mislukte bestanden"
+
+#: 
+msgid "Failed to add link"
+msgstr "Toevoegen van link mislukt"
+
+#: 
+msgid "Failed to add option"
+msgstr "Toevoegen van optie mislukt"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Sluiten van evenementen mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to delete"
+msgstr "Verwijderen mislukt"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Inschakelen van kioskregistratie mislukt"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Exporteren van ChMeetings-CSV mislukt"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Laden van audit mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Hernoemen van kiosk mislukt"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Opslaan van wijzigingen mislukt"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Bijwerken van plugin mislukt"
+
+#: 
+msgid "Family Id"
+msgstr "Gezins-ID"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Laatste bevestiging"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Gezinnen worden gegeocodeerd… dit kan enkele minuten duren. U kunt deze pagina open laten staan."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Gezinnen worden gegeocodeerd… {{done}} van {{total}} verwerkt, {{geocoded}} gelokaliseerd."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Gezinshoofd moet worden bijgewerkt"
+
+#: 
+msgid "Helpful Links"
+msgstr "Handige links"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Overledenen verbergen in ledenlijst"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Verberg overleden leden in de gedrukte ledenlijst en CSV-exports."
+
+#: 
+msgid "Identify"
+msgstr "Identificeren"
+
+#: 
+msgid "Identify command sent"
+msgstr "Identificatieopdracht verzonden"
+
+#: 
+msgid "Individual"
+msgstr "Individueel"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Intern: laatste datum en tijd waarop de achtergrondtaken zijn voltooid (YYYY-MM-DD HH:MM:SS). Niet handmatig bewerken."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Item succesvol verwijderd"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Kiosknaam"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Kiosk geaccepteerd"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Kiosk succesvol verwijderd"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Kiosk moet worden geaccepteerd"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Kiosk hernoemd"
+
+#: 
+msgid "Last seen"
+msgstr "Laatst gezien"
+
+#: 
+msgid "Link added successfully"
+msgstr "Link succesvol toegevoegd"
+
+#: 
+msgid "Link deleted"
+msgstr "Link verwijderd"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Linknaam mag geen HTML-tags bevatten"
+
+#: 
+msgid "Living"
+msgstr "In leven"
+
+#: 
+msgid "Log settings saved"
+msgstr "Loginstellingen opgeslagen"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Inlognaam is verplicht"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Persoon als actief gemarkeerd"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Persoon als inactief gemarkeerd"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Minimumaantal minuten tussen uitvoeringen van achtergrondtaken die worden gestart door een paginabezoek. Voorkomt dat op een drukke zondagochtend de taken bij elke paginaweergave opnieuw worden uitgevoerd. Geldt niet voor de opdrachtregeluitvoering. Stel in op 0 om bij elk paginabezoek uit te voeren."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Nieuwe gebruikers ontvangen geen welkomstmail en het gegenereerde wachtwoord wordt nooit getoond. Stel na het aanmaken van het account een wachtwoord in via Systeemgebruikers met Wachtwoord wijzigen — of configureer eerst e-mail."
+
+#: 
+msgid "No changes to save"
+msgstr "Geen wijzigingen om op te slaan"
+
+#: 
+msgid "No contact info"
+msgstr "Geen contactgegevens"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Geen aangepaste links geconfigureerd. Voeg er hierboven een toe!"
+
+#: 
+msgid "No email"
+msgstr "Geen e-mail"
+
+#: 
+msgid "No files were deleted."
+msgstr "Er zijn geen bestanden verwijderd."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Geen hulp beschikbaar voor deze plugin."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Geen personen om toe te voegen - iedereen staat al in de selectie"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Geen personen om toe te voegen - het filter leverde geen resultaten op"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Geen geldige overlijdensdatum"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Aantal dagen dat gebruikers hebben om zich aan te melden voor 2FA nadat dit verplicht is gesteld. Stel in op 0 om dit direct af te dwingen. Het verkorten van een actieve overgangsperiode kan gebruikers direct buitensluiten."
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Doe dit alleen nadat het onderliggende probleem is opgelost. U moet nog steeds op Inschakelen klikken voordat de plugin weer wordt uitgevoerd."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Bevestig de activering van de persoon"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Bevestig de deactivering van de persoon"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Pluginstatus bijgewerkt"
+
+#: 
+msgid "Registered"
+msgstr "Geregistreerd"
+
+#: 
+msgid "Reload"
+msgstr "Herladen"
+
+#: 
+msgid "Reload command sent"
+msgstr "Herlaadopdracht verzonden"
+
+#: 
+msgid "Rename"
+msgstr "Hernoemen"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Kiosk hernoemen"
+
+#: 
+msgid "Reset Complete"
+msgstr "Reset voltooid"
+
+#: 
+msgid "Reset Settings"
+msgstr "Instellingen resetten"
+
+#: 
+msgid "Resetting..."
+msgstr "Bezig met resetten..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Geplande taken worden niet uitgevoerd"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Beveiligingstoken ontbreekt. Vernieuw de pagina."
+
+#: 
+msgid "Select…"
+msgstr "Selecteren…"
+
+#: 
+msgid "Sending..."
+msgstr "Verzenden..."
+
+#: 
+msgid "Sending…"
+msgstr "Verzenden…"
+
+#: 
+msgid "Settings reset"
+msgstr "Instellingen gereset"
+
+#: 
+msgid "Settings saved"
+msgstr "Instellingen opgeslagen"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Instellingen opgeslagen. Upgrade-informatie wordt vernieuwd..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Alleen actieve personen worden weergegeven."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Alleen inactieve personen worden weergegeven."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Succesvol verwijderd"
+
+#: 
+msgid "Testing..."
+msgstr "Testen..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "De database is geleegd. Het systeem is klaar voor een nieuwe start."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "De terugvaloptie bij paginabezoek blijft ondertussen werken. Wijzig via de instelling %1$s hoe lang ChurchCRM wacht voordat deze waarschuwing wordt getoond, of stel deze in op 0 om de waarschuwing te verbergen."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Deze persoon is inactief"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Dit zoekt kaartcoördinaten voor elk gezin waarvan deze ontbreken, met behulp van OpenStreetMap. De gezinnen worden verwerkt in groepen van 50, ongeveer een minuut per groep. U kunt deze pagina open laten staan terwijl dit wordt uitgevoerd. Doorgaan?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Deze persoon is overleden"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Dit wist alle geconfigureerde waarden voor deze plugin. Dit kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Dit verwijdert de pluginbestanden permanent van de schijf en wist de instellingen. Dit kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL mag geen HTML-tags bevatten"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Onverwachte fout. Probeer het opnieuw."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Plugin verwijderen"
+
+#: 
+msgid "Upcoming"
+msgstr "Aankomend"
+
+#: 
+msgid "Valid Until"
+msgstr "Geldig tot"
+
+#: 
+msgid "View active only"
+msgstr "Alleen actieve weergeven"
+
+#: 
+msgid "View all"
+msgstr "Alles weergeven"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Alles weergeven (inclusief inactieve)"
+
+#: 
+msgid "View inactive only"
+msgstr "Alleen inactieve weergeven"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Waarschuw op het beheerdersdashboard wanneer de achtergrondtaken dit aantal uren niet zijn uitgevoerd. 26 biedt ruimte voor een dagelijkse cron plus wat afwijking. Stel in op 0 om de waarschuwing uit te schakelen."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Zonder planner worden deze taken alleen uitgevoerd wanneer iemand een pagina laadt, waardoor er op een rustige doordeweekse dag helemaal geen geplande e-mail wordt verzonden. Voeg een cron-item toe dat de taakuitvoerder elk uur uitvoert, als dezelfde gebruiker waaronder uw webserver draait"
+
+#: 
+msgid "check-outs"
+msgstr "uitchecks"
+
+#: 
+msgid "deceased"
+msgstr "overleden"
+
+#: 
+msgid "event"
+msgstr "evenement"
+
+#: 
+msgid "events?"
+msgstr "evenementen?"
+
+#: 
+msgid "files"
+msgstr "bestanden"
+
+#: 
+msgid "people from cart?"
+msgstr "personen uit de selectie?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip moet nul of een positief geheel getal zijn"
+
+#: 
+msgid "view families missing an email"
+msgstr "gezinnen zonder e-mailadres bekijken"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Kopers dit boekjaar"
+
+#: 
+msgid "Current"
+msgstr "Huidig"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Gedoneerde items (dit boekjaar)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Inlognaam mag maximaal %d tekens bevatten!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Opgehaald dit boekjaar"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s moet een volledig https://-webadres zijn, bijvoorbeeld https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Account heeft beperkte rechten. Neem contact op met een beheerder."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Er is een fout opgetreden bij het weergeven van de foutpagina."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Elk adres moet beginnen met https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Labels genereren"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Verzendlabels genereren"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Verzendlabels voor de personen in uw selectie. Een persoon zonder eigen adres wordt geadresseerd op het gezinsadres."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Optioneel. Links naar de eigen accounts van de kerk, getoond aan leden op pagina's zoals de voettekst van het portaal. Laat een veld leeg om dat netwerk te verbergen."
+
+#: 
+msgid "Options"
+msgstr "Opties"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Geplande taken"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Actief, seconden resterend: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Verwacht interval tussen uitvoeringen (uren): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Overgeslagen gezinnen (geen e-mailadres bekend): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Gezinnen die niet konden worden gegeocodeerd: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Gezinnen die een bevestigingsmail ontvangen: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Leden gekopieerd: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Niet hier vermeld: nog {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Ontvangers: {{total}} — te veel voor een mailto:-link. Gebruik in plaats daarvan Adressen kopiëren."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Te veel ontvangers voor de e-mailclient ({{total}} > {{max}}). Gebruik in plaats daarvan Adressen kopiëren."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} min resterend"
 
