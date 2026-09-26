@@ -1,5 +1,4 @@
 {
-  "Current": "",
   "Items Donated (This Fiscal Year)": "",
   "Login must be %d characters or fewer!": "",
   "Raised This Fiscal Year": "",
@@ -14,40 +13,14 @@
   "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network.": "",
   "Options": "",
   "Scheduled Tasks": "",
-  "Copied {{count}} members": {
-    "one": "",
-    "other": ""
-  },
-  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} min left": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
-  },
-  "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
-  },
-  "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
-  },
-  "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
-  }
+  "Active, seconds left: {{seconds}}": "",
+  "Expected interval between runs (hours): %d.": "",
+  "Families skipped (no email address on file): {{total}}": "",
+  "Families that could not be geocoded: {{total}}": "",
+  "Families to receive confirmation emails: {{total}}": "",
+  "Members copied: {{total}}": "",
+  "Not listed here: {{total}} more": "",
+  "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead.": "",
+  "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead.": "",
+  "{{minutes}} min left": ""
 }
