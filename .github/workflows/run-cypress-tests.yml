@@ -1,0 +1,92 @@
+name: Run Cypress Tests & Report
+description: Run Cypress tests with JUnit reporting and debug artifact upload
+
+on:
+  workflow_call:
+    inputs:
+      config-file:
+        description: 'Path to Cypress config (e.g., cypress/configs/docker.config.ts)'
+        required: true
+        type: string
+      spec:
+        description: 'Spec glob pattern (e.g., cypress/e2e/api/**/*.spec.js)'
+        required: true
+        type: string
+      test-name:
+        description: 'Test name for artifacts/report (e.g., api, ui-shard-0)'
+        required: true
+        type: string
+      php-version:
+        description: 'PHP version for artifact naming (e.g., 8.4, 8.5)'
+        required: true
+        type: string
+      deployment:
+        description: 'Deployment type for naming (root, subdir, new-system)'
+        required: true
+        type: string
+      shard-total:
+        description: 'Total shards for UI sharding (optional)'
+        required: false
+        type: string
+      shard-index:
+        description: 'Shard index for UI sharding (optional, 0-indexed)'
+        required: false
+        type: string
+      base-url:
+        description: 'CYPRESS_BASE_URL override (optional)'
+        required: false
+        type: string
+
+jobs:
+  run-tests:
+    name: 'Cypress: ${{ inputs.test-name }} (PHP ${{ inputs.php-version }})'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Run Cypress
+        id: cypress
+        run: |
+          report_file="cypress/reports/junit-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}-[suiteName]-[hash].xml"
+          npx cypress run \
+            --config-file "${{ inputs.config-file }}" \
+            --spec "${{ inputs.spec }}" \
+            --headless --browser electron \
+            --reporter junit \
+            --reporter-options "mochaFile=$report_file"
+          echo "report-path=$report_file" >> $GITHUB_OUTPUT
+        env:
+          SPLIT: ${{ inputs.shard-total || '' }}
+          SPLIT_INDEX: ${{ inputs.shard-index || '' }}
+          CYPRESS_BASE_URL: ${{ inputs.base-url || '' }}
+
+      - name: Upload debug artifacts
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: cypress-artifacts-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}-${{ github.run_id }}
+          path: |
+            cypress/logs
+            cypress/screenshots
+            cypress/videos
+          retention-days: 15
+          if-no-files-found: ignore
+
+      - name: Test Report
+        uses: dorny/test-reporter@v3
+        if: always()
+        with:
+          name: 'PHP ${{ inputs.php-version }}: ${{ inputs.deployment }} (${{ inputs.test-name }})'
+          path: ${{ steps.cypress.outputs.report-path }}
+          reporter: java-junit
+          fail-on-error: true
+          fail-on-empty: false
+          list-suites: all
+          list-tests: failed
+          max-annotations: 50
+          use-actions-summary: true
