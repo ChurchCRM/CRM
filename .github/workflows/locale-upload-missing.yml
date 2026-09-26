@@ -30,9 +30,15 @@ on:
         type: boolean
         default: true
 
-# One upload at a time: POEditor allows one upload per ~20s per project.
+# Serialize uploads per branch so a push doesn't race its own retriggers.
+# A single global group would work too, but GitHub Actions cancels any
+# previously *queued* run in a concurrency group the moment a new run for
+# a different branch joins the same group (cancel-in-progress only affects
+# the *running* job) -- so a shared group here would silently drop other
+# branches' pushes. POEditor's ~1 upload/20s project-wide limit is instead
+# handled by poeditor-upload-missing.js's own retry/backoff on HTTP 429.
 concurrency:
-  group: locale-upload-missing
+  group: locale-upload-missing-${{ github.ref }}
   cancel-in-progress: false
 
 permissions:
