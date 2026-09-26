@@ -273,8 +273,8 @@ if ($emailErrorReason !== '') {
 
             // Recipient count sentence
             document.getElementById('recipientCountText').textContent = i18next.t(
-                'You are about to send confirmation emails to {{count}} families.',
-                { count: recipientCount }
+                'Families to receive confirmation emails: {{total}}',
+                { total: recipientCount }
             );
 
             // No-email warning with link to /v2/email/missing
@@ -282,8 +282,8 @@ if ($emailErrorReason !== '') {
             if (noEmailCount > 0) {
                 var linkHref = window.CRM.root + '/v2/email/missing';
                 var sentence = i18next.t(
-                    '{{count}} families have no email address on file and will be skipped',
-                    { count: noEmailCount }
+                    'Families skipped (no email address on file): {{total}}',
+                    { total: noEmailCount }
                 );
                 // Build via DOM APIs so linkHref is never concatenated raw into innerHTML
                 var link = document.createElement('a');
