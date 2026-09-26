@@ -59,8 +59,9 @@ window.CRM.renderFamilyActionMenu(familyId, familyName, { inCart })
 window.CRM.renderEventActionMenu(eventId, eventTitle, { inactive })
 ```
 
-All three emit the canonical trigger verbatim
-(`src/skin/js/CRMJSOM.js:612-613`, `:683-684`, `:768-769`):
+All three are thin wrappers over `window.CRM.buildActionMenu(items, opts)`
+(`src/skin/js/CRMJSOM.js:629`), which emits the canonical trigger verbatim in one place
+(`:690-691`) — so the markup below can no longer drift between them: <!-- learned: 2026-09-12 -->
 
 ```html
 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -92,6 +93,40 @@ hand-written markup must match the shared renderers.
     }
 }
 ```
+
+### `window.CRM.buildActionMenu(items, opts)` — the shared builder <!-- learned: 2026-09-12 -->
+
+New entity menus must go through the builder rather than concatenating a fourth copy of the
+scaffold. It owns the wrapper, the trigger, the menu container **and all escaping** — every
+`data-*` value goes through `window.CRM.escapeAttribute()` and every label through
+`window.CRM.escapeHtml()`, inside the builder. **Pass raw strings; never pre-escape.**
+
+```javascript
+window.CRM.buildActionMenu([
+    { type: "link", href: root + "/thing/view/" + id, icon: "fa-solid fa-eye", label: i18next.t("View") },
+    canEdit && { type: "link", href: editUrl, icon: "fa-solid fa-pencil", label: i18next.t("Edit") },
+    { type: "divider" },
+    {
+        type: "button",
+        danger: true,                       // prefixes text-danger
+        className: "delete-thing",          // the delegated handler's hook
+        icon: "fa-solid fa-trash",
+        label: i18next.t("Delete"),
+        data: { thing_id: id, thing_name: name },   // -> data-thing_id, data-thing_name
+    },
+]);
+```
+
+- Falsy entries are skipped, so `condition && item` works inline.
+- `labelClass` wraps the label in a `<span>` (the cart item uses `cart-label`).
+- `classBeforeType` emits `class=` before `type=`; it exists only to keep the cart button's
+  historical attribute order and is not needed for new items.
+- `opts` accepts `wrapperClass` and `menuClass` for the rare non-default container.
+
+**Escaping rule:** `escapeHtml()` encodes only `&`, `<` and `>` — it is *not* safe for an
+attribute value, because a `"` in the value terminates the attribute. `escapeAttribute()`
+also encodes both quote characters and is what every attribute position must use. Keeping
+that decision inside the builder is the point of the extraction.
 
 For PHP-rendered tables (non-DataTables), write the HTML directly using the standard pattern below.
 
