@@ -30,6 +30,7 @@
 | `th` | Thai | 4434 | 100% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 4434 | 100% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 4434 | 100% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 4434 | 100% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 4433 | 99.98% | 🟢 Complete | ✅ Yes |
 | `et` | Estonian | 4433 | 99.98% | 🟢 Complete | ✅ Yes |
 | `sk` | Slovak | 4433 | 99.98% | 🟢 Complete | ✅ Yes |
@@ -52,7 +53,6 @@
 | `nl` | Dutch | 4428 | 99.86% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 4428 | 99.86% | 🟢 Complete | ✅ Yes |
 | `fil` | Filipino | 4425 | 99.8% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 4264 | 96.17% | 🟢 Complete | ✅ Yes |
 | `sl` | Slovenian | 64 | 1.44% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 60 | 1.35% | 🟠 Needs Work | ❌ No |
 | `en-za` | English (ZA) | 59 | 1.33% | N/A | ✅ Yes |
