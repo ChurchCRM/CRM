@@ -64,7 +64,7 @@ Put each PR in exactly one place:
 
 Enhancement categories. Use only the ones that have content, and add one when nothing fits:
 
-- **💰 Financial Tools & Giving Insights**: pledges, funds, deposits, finance reports, currency
+- **💰 Giving & Financial Tracking**: pledges, funds, deposits, finance reports, currency
 - **👥 Usability & Directory Enhancements**: people, families, groups, cart, pickers, dashboards, exports, demo data
 - **📱 Mobile & Display Enhancements**: responsive layouts, themes, branding, icons
 - **📍 Mapping & Geocoding Fixes**: coordinates, addresses, maps
@@ -83,12 +83,12 @@ Rules:
 ### Template
 
 ```markdown
-# [Emoji] ChurchCRM [Version] — The "[Theme Name]" Release
+# [Emoji] ChurchCRM [Version]: The "[Theme Name]" Release
 
 **Release Date**: [Publish date]
 **Theme**: [3–4 core highlights, comma separated]
 
-[2–3 sentences on what this release changes in day-to-day ministry work.]
+[2–3 sentences. Start with the church task that got easier, then the change that makes it easier.]
 
 ---
 
@@ -108,7 +108,7 @@ Rules:
 ---
 
 ## 🌍 Global Language Polish
-* **Complete Localization:** ChurchCRM supports [verified count] locales, and the new features and updates in this release are ready for translation in all of them.
+* **Complete Localization:** ChurchCRM is available in [verified count] languages, and the new features and updates in this release are ready for translation in all of them.
 * [Specific translation fixes, if any.]
 
 ---
@@ -119,11 +119,16 @@ Rules:
 
 ---
 
+## 🙌 See It for Yourself
+[Try the demo](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_VERSION_demo) or [install ChurchCRM](https://churchcrm.io/install.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_VERSION_install).
+
+---
+
 ## ❤️ Thank You to Our Contributors
-* **@handle** — [what they shipped in this release]
+* **@handle:** [what they shipped in this release]
 
 ### 👋 Welcome, New Contributors!
-* **@handle** — [first contribution]
+* **@handle:** [first contribution]
 
 ---
 
@@ -141,10 +146,25 @@ Rules:
 - Never claim a benefit the change does not deliver. A refactor is not "faster"; a dependency bump is not "more secure" unless it fixes an advisory.
 - State breaking changes, removed features, new runtime requirements and required upgrade steps plainly, in their own `## ⚠️ Before You Upgrade` section placed above New Features.
 - Security: use calm, routine-maintenance framing. If the release fixes a published advisory users must act on, name it accurately. Never hide required security information.
-- Localization: count the entries in `src/locale/locales.json` at `TARGET` and use that number instead of copying last release's. Say "ready for translation": shipping a string does not mean it is translated.
+- Localization: count the entries in `src/locale/locales.json` at `TARGET` and write "[count] languages" (the Product Truth wording) instead of copying last release's number or "45+". Say "ready for translation": shipping a string does not mean it is translated.
 - Contributors: credit each human author with what they shipped. A **New Contributor** is anyone whose first merged PR to ChurchCRM/CRM is in this release (`gh search prs --repo ChurchCRM/CRM --author <login> --merged --limit 2`). Leave out bots, and leave out the whole section if there are no human authors besides the maintainer.
 - Output GitHub-Flavored Markdown only: no HTML, inline CSS, citation markers, `end_span` artifacts, commit hashes or upgrade-utility reminders.
 - Leave out empty sections.
+
+### Marketing alignment
+
+Release notes are the third source in the marketing evidence hierarchy, after the running app and the docs. Blog posts, social posts and the Discord announcement all reuse them, so they follow the marketing strategy in the private `ChurchCRM/marketing` repo (`strategy/marketing-strategy.md`, `product-truth.md`, `Brand_Voice_System_Prompt.md`, `ai-writing-quality-and-anti-slop.md`). Read those files when you have access. When you don't, these rules cover the release notes:
+
+- **Lead with the human benefit.** Name the church job that got easier before the feature, then use the feature as proof. Voice: warm, capable, uncomplicated; "we" and "your church".
+- **No tech-speak in the user-facing sections.** Avoid SQL, schema, API, endpoint, back-end and optimization; describe what the admin or volunteer sees. Only the two Behind the Scenes lines may be technical.
+- **Product Truth vocabulary.** Say "giving and financial tracking", not "online giving" or "payments", unless payment processing actually shipped. Don't describe ChurchCRM as a native mobile app or as cloud/SaaS. Never state download, install or church counts.
+- **Today only.** The notes describe what shipped in this release. Planned work is left out, or labeled "Coming" when it genuinely helps the reader.
+- **Anti-slop pass.** Before handing the notes to George, remove:
+  - em dashes that don't earn their place (use a colon or a period instead),
+  - "empower", "seamlessly", "unlock", "transform", "robust" and "powerful",
+  - three-item lists used only for rhythm, and "not just X, but Y",
+  - generic sentences that could describe any product.
+- **Adoption is the goal.** Keep the *See It for Yourself* Demo/Install links, given equal weight. Tag them `utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_<VERSION>_<demo|install>`, matching the other CRM-to-website links, and leave out UTMs on github.com links.
 
 ---
 
@@ -158,6 +178,7 @@ Rules:
 - [ ] The compare link uses `PREV...TAG`.
 - [ ] No HTML, citation markers or model/tool metadata.
 - [ ] Breaking changes and upgrade actions, if any, are stated first.
+- [ ] Marketing alignment: benefit-first, no tech-speak outside Behind the Scenes, Product Truth wording, anti-slop pass done, Demo/Install links carry the release UTM.
 
 ---
 
