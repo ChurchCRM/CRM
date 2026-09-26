@@ -32,31 +32,44 @@ paths), not just the green checkmark.
 ## Running it
 
 ```bash
-npm run marketing                   # fresh instance → setup → screenshots → videos → check
+npm run marketing                   # scripts/capture-all-locales.sh: fresh instance → all 8 locales → check → manifest
 npm run marketing:screenshots -- --grep "person-.*-profile"   # re-run a subset (setup runs first)
 npm run docker:ci:new-system:down   # tear down when done
 ```
+
+`npm run marketing` runs `scripts/capture-all-locales.sh` (CRM #10048): it
+installs a fresh instance once (the same step chain below, minus the
+trailing check/manifest steps), captures the first locale, then re-applies
+each remaining locale (`en es pt zh fr ru de ar` by default) via the
+`locale-set` project and re-runs `screenshots --no-deps` — no reinstall or
+re-seeding needed, since ChurchCRM resolves locale per-request from a
+DB-stored user preference. `marketing:check` and `marketing:manifest` run
+once at the end, across all captured locales. Pass explicit locales as
+arguments to capture a subset instead of all 8.
 
 Uses Playwright's bundled Chromium (`npm run marketing:install`). Set
 `BROWSER_CHANNEL=chrome` (or `npm run marketing:chrome`) to drive system
 Chrome instead. A green run is not enough: open the PNGs under
 `playwright/artifacts/screenshots/` and look at them.
 
-`npm run marketing` ends with `marketing:manifest`
+The run ends with `marketing:manifest`
 (`scripts/generate-marketing-manifest.js`), which reads every per-capture
-JSON sidecar under `playwright/artifacts/metadata/` and writes them as one
-row-per-device-per-capture table to `playwright/artifacts/manifest.csv` —
+JSON sidecar under `playwright/artifacts/metadata/` and consolidates them
+into one JSON manifest at `playwright/artifacts/manifest.json` — one
+object per capture, organized by workflow name, with all devices grouped
+together, plus title/category metadata from `screenshot-metadata.json` —
 name, device, screenshot-or-video, relative path, whether that file
 actually exists and its size, purpose text, viewport, commit, etc. It's
-for scanning/looking up a whole run's output at a glance (open it in a
-spreadsheet) without opening 90+ individual JSON files; it isn't a
-correctness gate — `marketing:check` (which runs just before it) is what
-fails the build. Unlike the JSON sidecars it summarizes, it **is**
-committed (see `.gitignore`) — regenerate it with `npm run
+for scanning/looking up a whole run's output at a glance without opening
+90+ individual JSON files, and it's what the website's screenshot gallery
+reads; it isn't a correctness gate — `marketing:check` (which runs just
+before it) is what fails the build. Unlike the JSON sidecars it
+summarizes, it **is** committed — regenerate it with `npm run
 marketing:manifest` after any run that changes captures, don't hand-edit
 it, and don't be surprised if its `commit`/`timestamp` columns lag the
 repo by a commit or two (it reflects whatever run last regenerated it, not
-necessarily HEAD).
+necessarily HEAD). An older `manifest.csv` format is obsolete: the script
+deletes any leftover `manifest.csv` on each run, and it's gitignored.
 
 Full details, directory layout, and troubleshooting: `playwright/README.md`.
 

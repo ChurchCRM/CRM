@@ -110,8 +110,10 @@ into a different Slim group), also update:
 
 After any core plugin migration:
 
-1. Run `npm run build:php` to regenerate `src/admin/data/signatures.json`
-   and confirm the renamed or moved files show up.
+1. Run `npm run build:signatures` to regenerate `src/admin/data/signatures.json`
+   and confirm the renamed or moved files show up. (`npm run build:php`'s
+   syntax-validate step only generates this file if it's missing — it won't
+   refresh a stale one.)
 2. Run the Cypress test that guards the orphan-scan community
    exclusion so you know the generator didn't accidentally pull in
    `plugins/community/`:

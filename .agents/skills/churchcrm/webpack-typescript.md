@@ -10,11 +10,8 @@ complexity: "intermediate"
 ## Context
 ChurchCRM uses Webpack to bundle frontend JavaScript/TypeScript and CSS. This skill covers entry points, API utilities, type safety, and best practices for building modern webpack modules.
 
-**Verified versions in this repo (package.json):**
-- `typescript` 5.9.3
-- `webpack` 5.105.4
-- `webpack-cli` 7.0.2
-- `ts-loader` 9.5.4
+**Exact versions drift — check `package.json` directly** (`devDependencies.typescript`,
+`webpack`, `webpack-cli`, `ts-loader`) rather than trusting a pinned number here.
 
 > [!NOTE]
 > React was removed in 7.2.0. All interactive UI uses vanilla JS + Bootstrap 5.
