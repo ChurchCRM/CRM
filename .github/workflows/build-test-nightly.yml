@@ -56,6 +56,9 @@ jobs:
       contents: read
     runs-on: ubuntu-24.04
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
 
     - name: Set up PHP 8.4
@@ -148,6 +151,9 @@ jobs:
             split-index: "2"
             shard-total: 3
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
       with:
         cache-cypress: 'true'
@@ -259,6 +265,9 @@ jobs:
             split-index: "2"
             shard-total: 3
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
       with:
         cache-cypress: 'true'
@@ -350,6 +359,9 @@ jobs:
       checks: write
     runs-on: ubuntu-24.04
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
 
     - name: Download build artifact
@@ -441,6 +453,9 @@ jobs:
       checks: write
     runs-on: ubuntu-24.04
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
 
     - name: Download build artifact

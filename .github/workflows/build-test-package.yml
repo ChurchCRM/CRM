@@ -106,6 +106,9 @@ jobs:
       contents: read
     runs-on: ubuntu-24.04
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
 
     - name: Declare variables
@@ -217,6 +220,9 @@ jobs:
             split-index: "2"
             shard-total: 3
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
       with:
         cache-cypress: 'true'
@@ -332,6 +338,9 @@ jobs:
             split-index: "2"
             shard-total: 3
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
       with:
         cache-cypress: 'true'
@@ -426,6 +435,9 @@ jobs:
       matrix:
         php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
 
     - name: Download build artifact
@@ -520,6 +532,9 @@ jobs:
       matrix:
         php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
 
     - name: Download build artifact
@@ -624,6 +639,9 @@ jobs:
       matrix:
         php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
       with:
         cache-cypress: 'true'
@@ -722,6 +740,9 @@ jobs:
       matrix:
         php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
       with:
         cache-cypress: 'true'
@@ -821,6 +842,9 @@ jobs:
       contents: write
     runs-on: ubuntu-24.04
     steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
     - uses: ./.github/actions/checkout-node-npm
 
     - name: Declare variables
