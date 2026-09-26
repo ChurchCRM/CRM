@@ -176,15 +176,13 @@ class Menu
             $groupMenu->addSubMenu($tmpMenu);
         }
 
-        $canSeeGroupAdmin = $isAdmin || $isMenuOptions || $isManageGroups;
-        if ($canSeeGroupAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-users'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
-
-            $groupMenu->addSubMenu($adminMenu);
-        }
+        // Each entry mirrors its route's permission: PropertyList.php requires MenuOptions,
+        // group types require Admin, the kiosk manager requires ManageGroups.
+        $adminMenu = new MenuItem(gettext('Admin'), '', true);
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isMenuOptions, 'fa-users'));
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
+        $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
+        $groupMenu->addSubMenu($adminMenu);
 
         return $groupMenu;
     }
