@@ -5,18 +5,19 @@
  *
  * Boolean settings render as Yes/No radio pills (value 1 / 0), not a checkbox.
  * Values are applied after GET /admin/api/system/config/{name}.
- * Toggle must restore bEnableSelfRegistration so later specs keep the seed default.
+ * The toggle test changes bEnableSelfRegistration; after() puts back the value
+ * captured in before().
  */
 
-function setSelfReg(value) {
-    cy.makePrivateAdminAPICall(
-        "POST",
-        "admin/api/system/config/bEnableSelfRegistration",
-        { value },
-    );
-}
-
 describe("People Dashboard — Settings Panel", () => {
+    let savedSelfReg;
+
+    before(() => {
+        cy.getSystemConfig("bEnableSelfRegistration").then((value) => {
+            savedSelfReg = value;
+        });
+    });
+
     beforeEach(() => {
         cy.setupAdminSession();
         cy.visit("/people/dashboard");
@@ -25,7 +26,7 @@ describe("People Dashboard — Settings Panel", () => {
     });
 
     after(() => {
-        setSelfReg("0");
+        cy.restoreSystemConfig("bEnableSelfRegistration", savedSelfReg);
     });
 
     it("shows the People Settings button in the page header for admins", () => {
