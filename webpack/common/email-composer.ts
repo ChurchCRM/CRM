@@ -747,8 +747,8 @@ function updateClientButtonHref(): void {
 
   if (tooMany) {
     const reason = i18next.t(
-      "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses or Send instead.",
-      { count: currentEmails.length, max: MAX_MAILTO_RECIPIENTS },
+      "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead.",
+      { total: currentEmails.length, max: MAX_MAILTO_RECIPIENTS },
     );
     clientBtn.title = reason;
     clientBtn.setAttribute("aria-describedby", "crm-email-client-reason");
@@ -926,8 +926,8 @@ function updateActionButtons(): void {
       if (textNode instanceof Text) {
         textNode.nodeValue = isSmtpConfigured()
           ? ""
-          : i18next.t("This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.", {
-              count: currentEmails.length,
+          : i18next.t("Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead.", {
+              total: currentEmails.length,
             });
       }
     }
@@ -1137,8 +1137,8 @@ function renderRecipients(
   if (tooManyText instanceof Text) {
     tooManyText.nodeValue =
       tooManyNow && !isSmtpConfigured()
-        ? i18next.t("This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.", {
-            count: currentEmails.length,
+        ? i18next.t("Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead.", {
+            total: currentEmails.length,
           })
         : "";
   }

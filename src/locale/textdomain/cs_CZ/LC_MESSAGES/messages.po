@@ -12292,16 +12292,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jak spolu fungují Nedělní škola + Události + Kiosky"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Neplatné datum pro %s — očekáváno RRRR-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Neplatný formát data pro rangeStart nebo rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Neplatné datum; očekávaný formát RRRR-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12530,10 +12522,6 @@ msgstr "endDate musí být po startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds musí být neprázdné pole"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "neplatný typ opakování"
 
 #: 
 msgid "personIds must be a non-empty array"

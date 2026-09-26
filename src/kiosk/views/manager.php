@@ -262,7 +262,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         window.CRM.discoverInterval = setInterval(function() {
           window.CRM.secondsLeft -= 1;
           if (window.CRM.secondsLeft > 0) {
-            $("#kioskRegistrationStatus").text(i18next.t('Active for {{count}} seconds', { count: window.CRM.secondsLeft })).removeClass('bg-secondary-lt text-secondary').addClass('bg-success-lt text-success');
+            $("#kioskRegistrationStatus").text(i18next.t('Active, seconds left: {{seconds}}', { seconds: window.CRM.secondsLeft })).removeClass('bg-secondary-lt text-secondary').addClass('bg-success-lt text-success');
           } else {
             clearInterval(window.CRM.discoverInterval);
             $('#isNewKioskRegistrationActive').prop('checked', false);

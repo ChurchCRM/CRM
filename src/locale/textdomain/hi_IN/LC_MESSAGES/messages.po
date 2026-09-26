@@ -12258,16 +12258,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "संडे स्कूल + कार्यक्रम + कियोस्क कैसे एक साथ काम करते हैं"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "%s के लिए अमान्य तारीख — YYYY-MM-DD अपेक्षित"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart या rangeEnd के लिए अमान्य तारीख प्रारूप"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "अमान्य तारीख; अपेक्षित प्रारूप YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12496,10 +12488,6 @@ msgstr "समाप्ति तिथि प्रारंभ तिथि �
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds एक गैर-रिक्त सरणी होनी चाहिए"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "अमान्य आवर्तन प्रकार"
 
 #: 
 msgid "personIds must be a non-empty array"

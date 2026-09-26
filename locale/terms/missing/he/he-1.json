@@ -1,7 +1,7 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "נדרש אימות דו-שלבי. יש לך %d יום להירשם.|נדרש אימות דו-שלבי. יש לך %d ימים להירשם.",
-    "other": ""
+    "one": "נדרש אימות דו-שלבי. יש לך %d יום להירשם.",
+    "other": "נדרש אימות דו-שלבי. יש לך %d ימים להירשם."
   },
   "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household.": "",
   "Accept": "",

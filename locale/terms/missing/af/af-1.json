@@ -1,17 +1,28 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Twee-faktor-verifikasie word vereis. Jy het %d dag om te registreer.|Twee-faktor-verifikasie word vereis. Jy het %d dae om te registreer.",
-    "other": ""
+    "one": "Twee-faktor-verifikasie word vereis. Jy het %d dag om te registreer.",
+    "other": "Twee-faktor-verifikasie word vereis. Jy het %d dae om te registreer."
   },
   "They are expected at least once every %d hour.": {
-    "one": "Hulle word ten minste een keer elke %d uur verwag.|Hulle word ten minste een keer elke %d uur verwag.",
-    "other": ""
+    "one": "Hulle word ten minste een keer elke %d uur verwag.",
+    "other": "Hulle word ten minste een keer elke %d uur verwag."
   },
   "Buyers This Fiscal Year": "",
   "Current": "",
   "Items Donated (This Fiscal Year)": "",
   "Login must be %d characters or fewer!": "",
   "Raised This Fiscal Year": "",
+  "%s must be a full https:// web address, for example https://example.org/yourchurch.": "",
+  "Account has limited permissions. Contact an administrator.": "",
+  "An error occurred while rendering the error page.": "",
+  "Each address must start with https://": "",
+  "Generate Labels": "",
+  "Generate mailing labels": "",
+  "Labels": "",
+  "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address.": "",
+  "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network.": "",
+  "Options": "",
+  "Scheduled Tasks": "",
   "Copied {{count}} members": {
     "one": "",
     "other": ""

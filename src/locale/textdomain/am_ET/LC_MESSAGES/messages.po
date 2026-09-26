@@ -12301,16 +12301,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "ሰንበት ትምህርት ቤት + ዝግጅቶች + ኪዮስኮች እንዴት አብረው ይሰሩ"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "ለ %s ወቅታዊ ቀን አይደለም — ሚጠበቀው YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "ለ rangeStart ወይም rangeEnd የቀን ቅርጸ ትክክለኛ አይደለም"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "ትክክለኛ ያልሆነ ቀን; ሚጠበቀው ቅርጸ YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12539,10 +12531,6 @@ msgstr "endDate ከ startDate በኋላ መሆን አለበት"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds ባዶ ያልሆነ ድርድር መሆን አለበት"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "ትክክለኛ ያልሆነ ድግግሞሽ ዓይነት"
 
 #: 
 msgid "personIds must be a non-empty array"

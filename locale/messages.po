@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 18:37+0000\n"
+"POT-Creation-Date: 2026-09-26 05:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -420,12 +420,7 @@ msgstr ""
 msgid "Active Users"
 msgstr ""
 
-msgctxt "one"
-msgid "Active for {{count}} seconds"
-msgstr ""
-
-msgctxt "other"
-msgid "Active for {{count}} seconds"
+msgid "Active, seconds left: {{seconds}}"
 msgstr ""
 
 msgid "Add"
@@ -2864,14 +2859,6 @@ msgstr ""
 msgid "Copied to clipboard"
 msgstr ""
 
-msgctxt "one"
-msgid "Copied {{count}} members"
-msgstr ""
-
-msgctxt "other"
-msgid "Copied {{count}} members"
-msgstr ""
-
 msgid "Copied!"
 msgstr ""
 
@@ -4628,6 +4615,10 @@ msgstr ""
 msgid "Expected"
 msgstr ""
 
+#, php-format
+msgid "Expected interval between runs (hours): %d."
+msgstr ""
+
 msgid "Explore with Demo Data"
 msgstr ""
 
@@ -5074,6 +5065,15 @@ msgid "Families"
 msgstr ""
 
 msgid "Families share an address and phone number."
+msgstr ""
+
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr ""
+
+msgid "Families that could not be geocoded: {{total}}"
+msgstr ""
+
+msgid "Families to receive confirmation emails: {{total}}"
 msgstr ""
 
 msgid "Family"
@@ -5706,6 +5706,9 @@ msgstr ""
 msgid "Generate Coordinates"
 msgstr ""
 
+msgid "Generate Labels"
+msgstr ""
+
 msgid "Generate Report"
 msgstr ""
 
@@ -5743,6 +5746,9 @@ msgid "Generate financial statements and giving reports"
 msgstr ""
 
 msgid "Generate letters and mailing labels"
+msgstr ""
+
+msgid "Generate mailing labels"
 msgstr ""
 
 msgid "Generate mailing labels and form letters"
@@ -6897,6 +6903,9 @@ msgstr ""
 msgid "Label Type"
 msgstr ""
 
+msgid "Labels"
+msgstr ""
+
 msgid "Language"
 msgstr ""
 
@@ -7322,6 +7331,9 @@ msgstr ""
 msgid "Mailchimp is not active"
 msgstr ""
 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr ""
+
 msgid "Major"
 msgstr ""
 
@@ -7629,6 +7641,9 @@ msgid "Members"
 msgstr ""
 
 msgid "Members added to cart."
+msgstr ""
+
+msgid "Members copied: {{total}}"
 msgstr ""
 
 #. Context: query_qry
@@ -8521,6 +8536,9 @@ msgstr ""
 msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
 msgstr ""
 
+msgid "Not listed here: {{total}} more"
+msgstr ""
+
 msgid "Not pinned to any calendar"
 msgstr ""
 
@@ -8772,6 +8790,9 @@ msgid "Optional. Links to the church's own accounts, shown to members on pages s
 msgstr ""
 
 msgid "Optional. URL for your church website."
+msgstr ""
+
+msgid "Options"
 msgstr ""
 
 msgid "Orange"
@@ -9850,6 +9871,9 @@ msgid "Recent friends"
 msgstr ""
 
 msgid "Recipient Naming Method"
+msgstr ""
+
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
 msgstr ""
 
 msgid "Recommended"
@@ -11770,12 +11794,6 @@ msgstr ""
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
 msgstr ""
 
-#, php-format
-msgid "They are expected at least once every %d hour."
-msgid_plural "They are expected at least once every %d hours."
-msgstr[0] ""
-msgstr[1] ""
-
 msgid "Third-party extensions."
 msgstr ""
 
@@ -11834,14 +11852,6 @@ msgid "This is the only role in this group."
 msgstr ""
 
 msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
-msgstr ""
-
-msgctxt "one"
-msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
-msgstr ""
-
-msgctxt "other"
-msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
 msgstr ""
 
 msgid "This may take a few minutes for large databases."
@@ -12116,12 +12126,7 @@ msgstr ""
 msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
 msgstr ""
 
-msgctxt "one"
-msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
-msgstr ""
-
-msgctxt "other"
-msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
 msgstr ""
 
 msgid "Total"
@@ -13387,14 +13392,6 @@ msgstr ""
 msgid "You are about to email copy of the family information to the following emails"
 msgstr ""
 
-msgctxt "one"
-msgid "You are about to send confirmation emails to {{count}} families."
-msgstr ""
-
-msgctxt "other"
-msgid "You are about to send confirmation emails to {{count}} families."
-msgstr ""
-
 msgid "You are running a pre-release version."
 msgstr ""
 
@@ -14044,31 +14041,10 @@ msgstr ""
 msgid "yrs"
 msgstr ""
 
-msgctxt "one"
-msgid "{{count}} families could not be geocoded"
-msgstr ""
-
-msgctxt "other"
-msgid "{{count}} families could not be geocoded"
-msgstr ""
-
-msgctxt "one"
-msgid "{{count}} families have no email address on file and will be skipped"
-msgstr ""
-
-msgctxt "other"
-msgid "{{count}} families have no email address on file and will be skipped"
-msgstr ""
-
-msgctxt "one"
-msgid "{{count}} min left"
-msgstr ""
-
-msgctxt "other"
-msgid "{{count}} min left"
-msgstr ""
-
 msgid "{{hours}}h {{mins}}m left"
+msgstr ""
+
+msgid "{{minutes}} min left"
 msgstr ""
 
 #. Context: countries
@@ -14081,12 +14057,4 @@ msgid ""
 "• Session duration and engagement\n"
 "• User demographics (if enabled in GA4)\n"
 "• Device and browser information"
-msgstr ""
-
-msgctxt "one"
-msgid "…and {{count}} more not listed here."
-msgstr ""
-
-msgctxt "other"
-msgid "…and {{count}} more not listed here."
 msgstr ""

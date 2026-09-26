@@ -1,7 +1,7 @@
 {
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "இரு-காரணி அங்கீகாரம் தேவை. பதிவு செய்ய உங்களுக்கு %d நாள் உள்ளது.|இரு-காரணி அங்கீகாரம் தேவை. பதிவு செய்ய உங்களுக்கு %d நாட்கள் உள்ளன.",
-    "other": ""
+    "one": "இரு-காரணி அங்கீகாரம் தேவை. பதிவு செய்ய உங்களுக்கு %d நாள் உள்ளது.",
+    "other": "இரு-காரணி அங்கீகாரம் தேவை. பதிவு செய்ய உங்களுக்கு %d நாட்கள் உள்ளன."
   },
   "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household.": "",
   "Accept": "",
