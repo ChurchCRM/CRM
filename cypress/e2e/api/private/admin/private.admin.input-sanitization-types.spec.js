@@ -15,9 +15,9 @@
  * What each block pins:
  *  - a valid value passes and is normalised (the created events land on the
  *    dates that were posted);
- *  - a malformed value is rejected with 400 and the middleware's own error
- *    shape — `{"error": "…"}` (`InputSanitizationMiddleware:55/:63`) — with the
- *    field named in the message;
+ *  - a malformed value is rejected with 400 in the canonical API error body
+ *    (`{"success": false, "message": "…"}`, the same shape the handlers use via
+ *    `SlimUtils::renderErrorJSON()`) with the field named in the message;
  *  - an out-of-set enum value (including a wrong-case one) is rejected;
  *  - an absent optional field is left absent, not coerced to "": the handler's
  *    own "Missing required field" / default-to-today behaviour still fires.
@@ -191,7 +191,7 @@ describe("API InputSanitizationMiddleware date/enum types (#9821)", () => {
                 body,
                 400,
             ).then((response) => {
-                // Handler shape (SlimUtils::renderErrorJSON), not the
+                // The handler's own "Missing required field" message, not the
                 // middleware's — proof the middleware did not claim the field
                 // and did not substitute an empty string for it.
                 expect(response.body.message).to.contain(

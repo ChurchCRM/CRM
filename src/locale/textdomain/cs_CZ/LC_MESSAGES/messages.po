@@ -12292,16 +12292,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jak spolu fungují Nedělní škola + Události + Kiosky"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Neplatné datum pro %s — očekáváno RRRR-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Neplatný formát data pro rangeStart nebo rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Neplatné datum; očekávaný formát RRRR-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12530,10 +12522,6 @@ msgstr "endDate musí být po startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds musí být neprázdné pole"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "neplatný typ opakování"
 
 #: 
 msgid "personIds must be a non-empty array"
@@ -17851,6 +17839,13 @@ msgid "Set up now"
 msgstr "Nastavit nyní"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den."
+msgstr[1] "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny."
+msgstr[2] "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní."
+
+#: 
 msgid "Unknown family"
 msgstr "Neznámá rodina"
 
@@ -18437,4 +18432,108 @@ msgstr "skip musí být nula nebo kladné celé číslo"
 #: 
 msgid "view families missing an email"
 msgstr "zobrazit rodiny bez e-mailu"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Kupující v tomto fiskálním roce"
+
+#: 
+msgid "Current"
+msgstr "Aktuální"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Darované položky (tento fiskální rok)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Přihlašovací jméno musí mít nejvýše %d znaků!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Vybráno v tomto fiskálním roce"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s musí být úplná webová adresa https://, například https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Účet má omezená oprávnění. Kontaktujte administrátora."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Při vykreslování chybové stránky došlo k chybě."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Každá adresa musí začínat na https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Generovat štítky"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Generovat poštovní štítky"
+
+#: 
+msgid "Labels"
+msgstr "Štítky"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Poštovní štítky pro osoby ve vašem košíku. Osoba bez vlastní adresy je adresována na adresu své rodiny."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Volitelné. Odkazy na účty církve na sociálních sítích, zobrazené členům na stránkách, jako je patička portálu. Ponecháte-li pole prázdné, daná síť se skryje."
+
+#: 
+msgid "Options"
+msgstr "Možnosti"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Naplánované úlohy"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktivní, zbývá sekund: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Očekávaný interval mezi spuštěními (hodiny): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Přeskočené rodiny (bez uvedené e-mailové adresy): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Rodiny, které se nepodařilo geokódovat: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Rodiny, kterým bude odeslán potvrzovací e-mail: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Zkopírovaní členové: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Zde neuvedeno: dalších {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Příjemci: {{total}} — příliš mnoho pro odkaz mailto:. Použijte místo toho Kopírovat adresy."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Příliš mnoho příjemců pro e-mailového klienta ({{total}} > {{max}}). Použijte místo toho Kopírovat adresy."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "zbývá {{minutes}} min"
 

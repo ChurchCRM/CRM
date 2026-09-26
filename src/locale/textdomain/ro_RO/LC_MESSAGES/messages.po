@@ -12363,16 +12363,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cum se conectează Școala Duminicală + Evenimente + Chioșcuri"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Dată invalidă pentru %s — formatul așteptat este YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Format de dată invalid pentru rangeStart sau rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Dată invalidă; formatul așteptat este YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12601,10 +12593,6 @@ msgstr "endDate trebuie să fie după startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds trebuie să fie un array nevid"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "tip de recurență invalid"
 
 #: 
 msgid "personIds must be a non-empty array"
@@ -17402,6 +17390,13 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "E-mailul nu este configurat. Configurati setarile SMTP din Setarile sistemului."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-mail trimis către %d familie."
+msgstr[1] "E-mail trimis către %d familii."
+msgstr[2] "E-mail trimis către %d de familii."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Introduceti mai intai o adresa stradala."
 
@@ -17468,6 +17463,13 @@ msgstr "Nu s-au gasit plati pentru depozitele selectate"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nu au fost furnizate ID-uri valide de depozit"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF trimis cu succes prin e-mail către %d familie."
+msgstr[1] "PDF trimis cu succes prin e-mail către %d familii."
+msgstr[2] "PDF trimis cu succes prin e-mail către %d de familii."
 
 #: 
 msgid "Partial Send"
@@ -17900,6 +17902,13 @@ msgid "Set up now"
 msgstr "Configurați acum"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Autentificarea în doi factori este obligatorie. Aveți %d zi pentru a vă înscrie."
+msgstr[1] "Autentificarea în doi factori este obligatorie. Aveți %d zile pentru a vă înscrie."
+msgstr[2] "Autentificarea în doi factori este obligatorie. Aveți %d de zile pentru a vă înscrie."
+
+#: 
 msgid "Unknown family"
 msgstr "Familie necunoscută"
 
@@ -17914,4 +17923,676 @@ msgstr "Actualizează toate coordonatele familiilor"
 #: 
 msgid "Update Coordinates"
 msgstr "Actualizează coordonatele"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s a fost capul acestei familii și a fost marcat ca decedat. Vă rugăm să atribuiți un nou cap al gospodăriei."
+
+#: 
+msgid "Accept"
+msgstr "Acceptă"
+
+#: 
+msgid "Active Now"
+msgstr "Activ acum"
+
+#: 
+msgid "Adding..."
+msgstr "Se adaugă..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Toți membrii CRM cu adresă de e-mail sunt abonați la această listă!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Toți abonații MailChimp sunt în ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "A apărut o eroare la ștergerea fișierelor."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Sunteți absolut sigur? Această acțiune va șterge toate datele și va restabili setările implicite din fabrică."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Sigur doriți să ștergeți TOATE fișierele jurnal? Această acțiune nu poate fi anulată."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Sigur doriți să ștergeți chioșcul"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Sigur doriți să ștergeți linkul"
+
+#: 
+msgid "Assignment"
+msgstr "Atribuire"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Sarcinile de fundal (e-mailurile de ziua de naștere și toate sarcinile programate ale pluginurilor) nu au rulat niciodată pe această instalare."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Sarcinile de fundal (e-mailurile de ziua de naștere și toate sarcinile programate ale pluginurilor) au rulat ultima dată pe %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Se creează copia de rezervă..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Copia de rezervă a fost descărcată."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Copia de rezervă a fost încărcată cu succes"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Nu vă puteți schimba propriul statut de activitate"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Exportul ChMeetings s-a finalizat cu succes"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Modificările au fost salvate cu succes"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Marchează pe toată lumea ca ieșită și dezactivează tot"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Marcați pe toată lumea ca ieșită și dezactivați acest eveniment?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Verificați-vă e-mailul pentru linkul de resetare a parolei"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Închideți evenimentele blocate?"
+
+#: 
+msgid "Comments"
+msgstr "Comentarii"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Nu s-a putut încărca previzualizarea e-mailului. Închideți și încercați din nou."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Se creează și se încarcă copia de rezervă. Acest lucru poate dura câteva minute..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Resetarea bazei de date a eșuat."
+
+#: 
+msgid "Deceased"
+msgstr "Decedat"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Datele de autentificare implicite ale administratorului"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Șterge chioșcul"
+
+#: 
+msgid "Deleted Files"
+msgstr "Fișiere șterse"
+
+#: 
+msgid "Deleting..."
+msgstr "Se șterge..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Descărcarea a fost returnată fără anteturi de atașament."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Eroare la ștergerea fișierului jurnal."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Eroare la ștergerea fișierelor jurnal."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Eroare la descărcarea fișierului jurnal."
+
+#: 
+msgid "Error initiating download."
+msgstr "Eroare la inițierea descărcării."
+
+#: 
+msgid "Error loading log file."
+msgstr "Eroare la încărcarea fișierului jurnal."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Eroare la încărcarea înregistrărilor auto-înregistrate"
+
+#: 
+msgid "Errors"
+msgstr "Erori"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Exclude membrii decedați din directorul tipărit și din exporturile CSV."
+
+#: 
+msgid "Failed Files"
+msgstr "Fișiere eșuate"
+
+#: 
+msgid "Failed to add link"
+msgstr "Adăugarea linkului a eșuat"
+
+#: 
+msgid "Failed to add option"
+msgstr "Adăugarea opțiunii a eșuat"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Închiderea evenimentelor a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to delete"
+msgstr "Ștergerea a eșuat"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Activarea înregistrării la chioșc a eșuat"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Exportul CSV ChMeetings a eșuat"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Încărcarea auditului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Redenumirea chioșcului a eșuat"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Salvarea modificărilor a eșuat"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Actualizarea pluginului a eșuat"
+
+#: 
+msgid "Family Id"
+msgstr "ID familie"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Confirmare finală"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Se geocodează familiile… acest lucru poate dura câteva minute. Puteți lăsa această pagină deschisă."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Se geocodează familiile… {{done}} din {{total}} procesate, {{geocoded}} localizate."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Este necesară actualizarea capului gospodăriei"
+
+#: 
+msgid "Helpful Links"
+msgstr "Linkuri utile"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Ascunde decedații din director"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Ascunde membrii decedați din directorul tipărit și din exporturile CSV."
+
+#: 
+msgid "Identify"
+msgstr "Identifică"
+
+#: 
+msgid "Identify command sent"
+msgstr "Comanda de identificare a fost trimisă"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Intern: data și ora la care s-au finalizat ultima dată sarcinile programate de fundal (AAAA-LL-ZZ OO:MM:SS). Nu editați manual."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Elementul a fost șters cu succes"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Nume chioșc"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Chioșc acceptat"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Chioșcul a fost șters cu succes"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Chioșcul trebuie acceptat"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Chioșc redenumit"
+
+#: 
+msgid "Last seen"
+msgstr "Ultima activitate"
+
+#: 
+msgid "Link added successfully"
+msgstr "Linkul a fost adăugat cu succes"
+
+#: 
+msgid "Link deleted"
+msgstr "Link șters"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Numele linkului nu poate conține etichete HTML"
+
+#: 
+msgid "Living"
+msgstr "În viață"
+
+#: 
+msgid "Log settings saved"
+msgstr "Setările jurnalului au fost salvate"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Numele de utilizator este obligatoriu"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Persoana a fost marcată ca activă"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Persoana a fost marcată ca inactivă"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Numărul minim de minute dintre execuțiile sarcinilor programate de fundal declanșate de încărcarea unei pagini. Împiedică rularea sarcinilor la fiecare vizualizare de pagină într-o dimineață de duminică aglomerată. Nu se aplică executării din linia de comandă. Setați la 0 pentru a rula la fiecare încărcare de pagină."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Utilizatorii noi nu vor primi un e-mail de bun venit, iar parola generată nu este niciodată afișată. După crearea contului, setați una din Utilizatori de sistem folosind Schimbă parola — sau configurați mai întâi e-mailul."
+
+#: 
+msgid "No changes to save"
+msgstr "Nu există modificări de salvat"
+
+#: 
+msgid "No contact info"
+msgstr "Nicio informație de contact"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Niciun link personalizat configurat. Adăugați unul mai sus!"
+
+#: 
+msgid "No email"
+msgstr "Fără e-mail"
+
+#: 
+msgid "No files were deleted."
+msgstr "Niciun fișier nu a fost șters."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Nu există ajutor disponibil pentru acest plugin."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Nu există persoane de adăugat - toate sunt deja în coș"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Nu există persoane de adăugat - filtrul nu a returnat niciun rezultat"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Data decesului nu este validă"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Numărul de zile pe care utilizatorii le au pentru a se înscrie la 2FA după ce devine obligatoriu. Setați la 0 pentru a impune imediat. Scurtarea unei perioade de grație active poate bloca imediat utilizatorii."
+
+#: 
+msgid "Offline"
+msgstr "Deconectat"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Faceți acest lucru doar după ce problema de bază a fost rezolvată. Va trebui totuși să apăsați Activează pentru ca pluginul să ruleze din nou."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Vă rugăm să confirmați activarea persoanei"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Vă rugăm să confirmați dezactivarea persoanei"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Starea pluginului a fost actualizată"
+
+#: 
+msgid "Registered"
+msgstr "Înregistrat"
+
+#: 
+msgid "Reload"
+msgstr "Reîncarcă"
+
+#: 
+msgid "Reload command sent"
+msgstr "Comanda de reîncărcare a fost trimisă"
+
+#: 
+msgid "Rename"
+msgstr "Redenumește"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Redenumește chioșcul"
+
+#: 
+msgid "Reset Complete"
+msgstr "Resetare finalizată"
+
+#: 
+msgid "Reset Settings"
+msgstr "Resetează setările"
+
+#: 
+msgid "Resetting..."
+msgstr "Se resetează..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Sarcinile programate nu rulează"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Token de securitate lipsă. Vă rugăm să reîmprospătați pagina."
+
+#: 
+msgid "Select…"
+msgstr "Selectați…"
+
+#: 
+msgid "Sending..."
+msgstr "Se trimite..."
+
+#: 
+msgid "Sending…"
+msgstr "Se trimite…"
+
+#: 
+msgid "Settings reset"
+msgstr "Setările au fost resetate"
+
+#: 
+msgid "Settings saved"
+msgstr "Setările au fost salvate"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Setările au fost salvate. Se actualizează informațiile despre actualizare..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Se afișează doar persoanele active."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Se afișează doar persoanele inactive."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Șters cu succes"
+
+#: 
+msgid "Testing..."
+msgstr "Se testează..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Baza de date a fost golită. Sistemul este pregătit pentru un nou început."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Mecanismul de rezervă la încărcarea paginii continuă să funcționeze între timp. Modificați cât timp așteaptă ChurchCRM înainte de a afișa acest avertisment cu setarea %1$s, sau setați-o la 0 pentru a-l ascunde."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Această persoană este inactivă"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Aceasta găsește coordonatele pe hartă pentru fiecare familie căreia îi lipsesc, folosind OpenStreetMap. Procesează familiile în loturi de 50, aproximativ un minut pe lot. Puteți lăsa această pagină deschisă cât timp rulează. Continuați?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Această persoană este decedată"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Aceasta va șterge toate valorile configurate pentru acest plugin. Această acțiune nu poate fi anulată."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Aceasta va șterge definitiv fișierele pluginului de pe disc și va reseta setările acestuia. Această acțiune nu poate fi anulată."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL-ul nu poate conține etichete HTML"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Eroare neașteptată. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Dezinstalează pluginul"
+
+#: 
+msgid "Upcoming"
+msgstr "Viitoare"
+
+#: 
+msgid "Valid Until"
+msgstr "Valabil până la"
+
+#: 
+msgid "View active only"
+msgstr "Vizualizează doar activ"
+
+#: 
+msgid "View all"
+msgstr "Vizualizează tot"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Vizualizează tot (inclusiv inactiv)"
+
+#: 
+msgid "View inactive only"
+msgstr "Vizualizează doar inactiv"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Avertizează pe panoul de administrare atunci când sarcinile programate de fundal nu au rulat de atâtea ore. 26 permite un cron zilnic plus o anumită abatere. Setați la 0 pentru a dezactiva avertismentul."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Fără un planificator, aceste sarcini rulează doar atunci când cineva încarcă o pagină, astfel încât o zi de lucru liniștită nu trimite deloc e-mailuri programate. Adăugați o intrare cron care rulează executorul de sarcini la fiecare oră, sub același utilizator sub care rulează serverul dvs. web"
+
+#: 
+msgid "check-outs"
+msgstr "ieșiri"
+
+#: 
+msgid "deceased"
+msgstr "decedat"
+
+#: 
+msgid "event"
+msgstr "eveniment"
+
+#: 
+msgid "events?"
+msgstr "evenimente?"
+
+#: 
+msgid "files"
+msgstr "fișiere"
+
+#: 
+msgid "people from cart?"
+msgstr "persoane din coș?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip trebuie să fie zero sau un număr întreg pozitiv"
+
+#: 
+msgid "view families missing an email"
+msgstr "vizualizează familiile fără adresă de e-mail"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Cumpărători în acest an fiscal"
+
+#: 
+msgid "Current"
+msgstr "Curent"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Articole donate (acest an fiscal)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Numele de utilizator trebuie să aibă cel mult %d caractere!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Sumă strânsă în acest an fiscal"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s trebuie să fie o adresă web completă https://, de exemplu https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Contul are permisiuni limitate. Contactați un administrator."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "A apărut o eroare la randarea paginii de eroare."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Fiecare adresă trebuie să înceapă cu https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Generează etichete"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Generează etichete poștale"
+
+#: 
+msgid "Labels"
+msgstr "Etichete"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Etichete poștale pentru persoanele din coșul dvs. O persoană fără adresă proprie este adresată la adresa familiei sale."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Opțional. Linkuri către conturile proprii ale bisericii, afișate membrilor pe pagini precum subsolul portalului. Lăsați un câmp gol pentru a ascunde acea rețea."
+
+#: 
+msgid "Options"
+msgstr "Opțiuni"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Sarcini programate"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Activ, secunde rămase: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Interval așteptat între execuții (ore): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Familii omise (fără adresă de e-mail înregistrată): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Familii care nu au putut fi geocodate: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Familii care vor primi e-mailuri de confirmare: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Membri copiați: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Nelistate aici: încă {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Destinatari: {{total}} — prea mulți pentru un link mailto:. Folosiți în schimb Copiază adresele."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Prea mulți destinatari pentru clientul de e-mail ({{total}} > {{max}}). Folosiți în schimb Copiază adresele."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} min rămase"
 

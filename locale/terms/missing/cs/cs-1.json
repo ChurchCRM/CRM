@@ -1,56 +1,5 @@
 {
   "Data": "",
   "N/A": "",
-  "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d den.|Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dny.|Je vyžadováno dvoufaktorové ověření. Na aktivaci máte %d dní.",
-    "few": "",
-    "other": ""
-  },
-  "Offline": "",
-  "They are expected at least once every %d hour.": {
-    "one": "Očekává se, že se dostaví alespoň jednou za %d hodinu.|Očekává se, že se dostaví alespoň jednou za %d hodiny.|Očekává se, že se dostaví alespoň jednou za %d hodin.",
-    "few": "",
-    "other": ""
-  },
-  "Buyers This Fiscal Year": "",
-  "Current": "",
-  "Items Donated (This Fiscal Year)": "",
-  "Login must be %d characters or fewer!": "",
-  "Raised This Fiscal Year": "",
-  "Copied {{count}} members": {
-    "one": "",
-    "other": ""
-  },
-  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} min left": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
-  },
-  "Active for {{count}} seconds": {
-    "one": "",
-    "other": ""
-  },
-  "You are about to send confirmation emails to {{count}} families.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} families have no email address on file and will be skipped": {
-    "one": "",
-    "other": ""
-  },
-  "…and {{count}} more not listed here.": {
-    "one": "",
-    "other": ""
-  }
+  "Offline": ""
 }

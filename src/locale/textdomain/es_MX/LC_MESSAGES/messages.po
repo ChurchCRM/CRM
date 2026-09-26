@@ -12261,16 +12261,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cómo se integran Escuela Dominical + Eventos + Quioscos"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Fecha inválida para %s — se esperaba YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Formato de fecha inválido para rangeStart o rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Fecha inválida; se esperaba el formato YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12499,10 +12491,6 @@ msgstr "endDate debe ser posterior a startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds debe ser un arreglo no vacío"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "tipo de recurrencia inválido"
 
 #: 
 msgid "personIds must be a non-empty array"
@@ -17824,6 +17812,12 @@ msgid "Set up now"
 msgstr "Configurar ahora"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Se requiere autenticación de dos factores. Tiene %d día para inscribirse."
+msgstr[1] "Se requiere autenticación de dos factores. Tiene %d días para inscribirse."
+
+#: 
 msgid "Unknown family"
 msgstr "Familia desconocida"
 
@@ -18410,4 +18404,108 @@ msgstr "skip debe ser cero o un entero positivo"
 #: 
 msgid "view families missing an email"
 msgstr "ver familias sin correo electrónico"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Compradores en este año fiscal"
+
+#: 
+msgid "Current"
+msgstr "Actual"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Artículos donados (este año fiscal)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "¡El nombre de usuario debe tener %d caracteres o menos!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Recaudado en este año fiscal"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s debe ser una dirección web completa con https://, por ejemplo, https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "La cuenta tiene permisos limitados. Contacte a un administrador."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Ocurrió un error al mostrar la página de error."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Cada dirección debe comenzar con https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Generar etiquetas"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Generar etiquetas de correo"
+
+#: 
+msgid "Labels"
+msgstr "Etiquetas"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Etiquetas de correo para las personas en su carrito. Una persona sin dirección propia se etiqueta con la dirección de su familia."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Opcional. Enlaces a las cuentas propias de la iglesia, que se muestran a los miembros en páginas como el pie de página del portal. Deje un campo en blanco para ocultar esa red."
+
+#: 
+msgid "Options"
+msgstr "Opciones"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Tareas programadas"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Activo, segundos restantes: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Intervalo esperado entre ejecuciones (horas): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Familias omitidas (sin dirección de correo electrónico registrada): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Familias que no se pudieron geocodificar: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Familias que recibirán correos de confirmación: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Miembros copiados: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "No listados aquí: {{total}} más"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Destinatarios: {{total}} — demasiados para un enlace mailto:. Use Copiar direcciones en su lugar."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Demasiados destinatarios para el cliente de correo ({{total}} > {{max}}). Use Copiar direcciones en su lugar."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} min restantes"
 

@@ -531,18 +531,16 @@ function initChurchLogoUploader() {
     removeBtn?.classList.toggle("d-none", !hasCustomLogo);
 
     // Keep the sidebar in sync without a page reload: a custom logo replaces the
-    // stock icon and hides the church-name text.
+    // stock mark and hides the church-name text.
     const brandImage = document.getElementById("sidebar-brand-image");
-    const brandText = document.getElementById("sidebar-brand-text");
-    if (brandImage) {
-      const defaultSrc = brandImage.dataset.defaultSrc;
-      if (hasCustomLogo && url) {
-        brandImage.src = url;
-      } else if (defaultSrc) {
-        brandImage.src = defaultSrc;
-      }
+    if (brandImage && hasCustomLogo && url) {
+      brandImage.src = url;
     }
-    brandText?.classList.toggle("d-none", hasCustomLogo);
+    brandImage?.classList.toggle("d-none", !hasCustomLogo);
+    for (const stock of document.querySelectorAll(".sidebar-brand-stock")) {
+      stock.classList.toggle("d-none", hasCustomLogo);
+    }
+    document.getElementById("sidebar-brand-text")?.classList.toggle("d-none", hasCustomLogo);
   }
 
   function sendDeleteRequest() {

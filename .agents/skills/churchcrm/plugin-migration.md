@@ -10,8 +10,8 @@ complexity: "intermediate"
 
 > [!NOTE] Scope — core plugins only
 > This skill covers the plugins shipped
-> in `src/plugins/core/` (mailchimp, vonage, gravatar, openlp,
-> google-analytics, external-backup, custom-links) and any future
+> in `src/plugins/core/` (current list: `ls src/plugins/core/`, or the
+> table in `plugin-development.md` → "Core Plugins Reference") and any future
 > plugin maintained in this repository. **Community plugins do not
 > use this document** — they live at `src/plugins/community/`, are
 > installed through the URL installer, and have their own create
@@ -110,8 +110,10 @@ into a different Slim group), also update:
 
 After any core plugin migration:
 
-1. Run `npm run build:php` to regenerate `src/admin/data/signatures.json`
-   and confirm the renamed or moved files show up.
+1. Run `npm run build:signatures` to regenerate `src/admin/data/signatures.json`
+   and confirm the renamed or moved files show up. (`npm run build:php`'s
+   syntax-validate step only generates this file if it's missing — it won't
+   refresh a stale one.)
 2. Run the Cypress test that guards the orphan-scan community
    exclusion so you know the generator didn't accidentally pull in
    `plugins/community/`:

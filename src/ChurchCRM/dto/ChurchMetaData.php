@@ -14,13 +14,6 @@ use ChurchCRM\Utils\GeoUtils;
  */
 class ChurchMetaData
 {
-    /**
-     * The church's social media networks, in the order they are rendered
-     * everywhere (Church Info preview, member portal footer, ...). Each entry
-     * names the SystemConfig key holding the URL and the Font Awesome *Free*
-     * brand class used for its icon — `fa-brands fa-x-twitter` is the free
-     * build's name for the X glyph.
-     */
     private const SOCIAL_NETWORKS = [
         ['id' => 'x', 'label' => 'X', 'config' => 'sChurchX', 'icon' => 'fa-brands fa-x-twitter'],
         ['id' => 'youtube', 'label' => 'YouTube', 'config' => 'sChurchYouTube', 'icon' => 'fa-brands fa-youtube'],
@@ -28,7 +21,6 @@ class ChurchMetaData
         ['id' => 'instagram', 'label' => 'Instagram', 'config' => 'sChurchInstagram', 'icon' => 'fa-brands fa-instagram'],
     ];
 
-    /** Read a SystemConfig key as a trimmed string, coalescing null. */
     private static function readString(string $key): string
     {
         return trim((string) SystemConfig::getValue($key));
@@ -104,14 +96,6 @@ class ChurchMetaData
         return self::readString('sChurchWebSite');
     }
 
-    /**
-     * The church's configured social media links, in the stable order
-     * X, YouTube, Facebook, Instagram. Networks with no URL configured are
-     * omitted entirely, so a caller can render the result directly and show
-     * nothing when the array is empty.
-     *
-     * @return array<int, array{id: string, label: string, url: string, icon: string}>
-     */
     public static function getChurchSocialLinks(): array
     {
         $links = [];
@@ -132,13 +116,6 @@ class ChurchMetaData
         return $links;
     }
 
-    /**
-     * The social networks as the Church Info editor needs them: every network
-     * (not just the configured ones), each carrying its SystemConfig key and
-     * current value so the form can render an input per network.
-     *
-     * @return array<int, array{id: string, label: string, config: string, icon: string, url: string}>
-     */
     public static function getChurchSocialNetworkFields(): array
     {
         $fields = [];
@@ -149,12 +126,6 @@ class ChurchMetaData
         return $fields;
     }
 
-    /**
-     * Validation rule for a church social media URL: empty means "not set",
-     * anything else must be an absolute `https://` URL with a host. Plain
-     * `http://`, scheme-relative and bare handles are rejected — these links
-     * are rendered as outbound anchors on pages members see.
-     */
     public static function isValidSocialUrl(string $url): bool
     {
         if ($url === '') {
@@ -229,13 +200,9 @@ class ChurchMetaData
             }
         }
 
-        return $prefix . '/Images/logo-churchcrm-350.jpg';
+        return $prefix . '/Images/churchcrm-logo-ink-blue.svg';
     }
 
-    /**
-     * Church latitude as a float; `0.0` when unset. Triggers a geocode
-     * against the configured full address on first read if missing.
-     */
     public static function getChurchLatitude(): float
     {
         if (self::readString('iChurchLatitude') === '') {
@@ -254,7 +221,6 @@ class ChurchMetaData
         return (float) SystemConfig::getValue('iChurchLongitude');
     }
 
-    /** True when a geocoded latitude is stored; use in place of the old `!== ''` check. */
     public static function hasChurchLocation(): bool
     {
         return self::readString('iChurchLatitude') !== '' && self::readString('iChurchLongitude') !== '';

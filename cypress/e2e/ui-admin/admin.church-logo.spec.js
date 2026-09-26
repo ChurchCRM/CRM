@@ -130,6 +130,8 @@ describe("Admin - Church Logo", () => {
         cy.get("#church-logo-default-note").should("not.have.class", "d-none");
         cy.get("#church-logo-remove-btn").should("have.class", "d-none");
         cy.get("#sidebar-brand-text").should("not.have.class", "d-none");
+        cy.get("#sidebar-brand-image").should("have.class", "d-none");
+        cy.get(".sidebar-brand-stock").should("not.have.class", "d-none");
 
         cy.intercept("POST", `**${LOGO_API_URL}`).as("uploadLogo");
         uploadLogoThroughUppy();
@@ -144,10 +146,12 @@ describe("Admin - Church Logo", () => {
         cy.get("#church-logo-default-note").should("have.class", "d-none");
         cy.get("#church-logo-remove-btn").should("not.have.class", "d-none");
 
-        // Sidebar updates in place: logo shown, church-name text hidden.
+        // Sidebar updates in place: logo shown, stock mark and church-name text hidden.
         cy.get("#sidebar-brand-image").should(($img) => {
             expect($img.attr("src")).to.include("church-logo.png");
         });
+        cy.get("#sidebar-brand-image").should("not.have.class", "d-none");
+        cy.get(".sidebar-brand-stock").should("have.class", "d-none");
         cy.get("#sidebar-brand-text").should("have.class", "d-none");
 
         // The server-rendered page agrees after a reload.
@@ -155,6 +159,7 @@ describe("Admin - Church Logo", () => {
         cy.get("#sidebar-brand-image").should(($img) => {
             expect($img.attr("src")).to.include("church-logo.png");
         });
+        cy.get(".sidebar-brand-stock").should("have.class", "d-none");
         cy.get("#sidebar-brand-text").should("have.class", "d-none");
         cy.get("#church-logo-preview").should(($img) => {
             expect($img.attr("src")).to.include("church-logo.png");
@@ -177,14 +182,15 @@ describe("Admin - Church Logo", () => {
         cy.get("#church-logo-default-note").should("not.have.class", "d-none");
         cy.get("#church-logo-remove-btn").should("have.class", "d-none");
         cy.get("#sidebar-brand-text").should("not.have.class", "d-none");
+        cy.get("#sidebar-brand-image").should("have.class", "d-none");
+        cy.get(".sidebar-brand-stock").should("not.have.class", "d-none");
 
         cy.reload();
-        cy.get("#sidebar-brand-image").should(($img) => {
-            expect($img.attr("src")).to.include("CRM_50x50.png");
-        });
+        cy.get("#sidebar-brand-image").should("have.class", "d-none");
+        cy.get(".sidebar-brand-stock").should("not.have.class", "d-none");
         cy.get("#sidebar-brand-text").should("not.have.class", "d-none");
         cy.get("#church-logo-preview").should(($img) => {
-            expect($img.attr("src")).to.include("logo-churchcrm-350.jpg");
+            expect($img.attr("src")).to.include("churchcrm-logo-ink-blue.svg");
         });
     });
 
@@ -207,7 +213,7 @@ describe("Admin - Church Logo", () => {
         cy.clearCookies();
         cy.visit("/session/begin");
         cy.get("#login-logo").should(($img) => {
-            expect($img.attr("src")).to.include("logo-churchcrm-350.jpg");
+            expect($img.attr("src")).to.include("churchcrm-logo-ink-blue.svg");
         });
     });
 });

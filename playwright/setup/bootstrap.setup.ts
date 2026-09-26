@@ -4,10 +4,22 @@ import path from 'node:path';
 
 import { captureScreen } from '../support/capture';
 import { ADMIN_INITIAL_PASSWORD, ADMIN_USERNAME, ADMIN_WORKING_PASSWORD, CHURCH_NAME, DB } from '../support/env';
-import { humanClick, humanPause, humanSelect, humanType } from '../support/human';
+import { humanClick, humanPause, humanSelect, humanType, settle } from '../support/human';
+import { applyLocale } from '../support/locale-session';
 import { dismissSystemNotifications } from '../support/marketing-clean';
+import { uploadDemoPhoto } from '../support/photo';
 
 const STORAGE_STATE_PATH = path.join(__dirname, '..', '.auth', 'admin.json');
+
+// The very first admin account, created by the setup wizard itself before
+// the demo importer ever runs — it's always Person id 1 on the fresh,
+// empty database this pipeline seeds (docker:ci:new-system). It has no
+// entry in src/admin/demo/people.json to pull a photo from like everyone
+// else, so every screenshot's top-right avatar would otherwise show
+// initials — upload one directly via the same API the app's own
+// photo-uploader widget calls.
+const ADMIN_PERSON_ID = 1;
+const ADMIN_PHOTO = path.join(__dirname, '..', '..', 'src', 'admin', 'demo', 'images', 'people', 'andrew.adams.jpg');
 
 /**
  * These two tests are real, recorded workflows — not plumbing — because
@@ -96,7 +108,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await humanPause(page, 500);
   await humanClick(page.locator('#church-info-form button[type=submit]'));
   await page.getByText('Church information saved successfully').first().waitFor({ state: 'visible', timeout: 10000 });
-  await humanPause(page, 800);
+  await settle(page, 800);
 
   await captureScreen(page, testInfo, {
     name: 'setup-church-info',
@@ -111,6 +123,8 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   await humanPause(page, 300);
   await page.locator('input[name=Password]').press('Enter');
   await page.waitForURL((url) => !url.pathname.includes('/session/begin'), { timeout: 15000 });
+
+  await uploadDemoPhoto(page, 'person', ADMIN_PERSON_ID, ADMIN_PHOTO);
 
   await page.goto('/admin/get-started');
   await humanPause(page, 500);
@@ -137,12 +151,17 @@ setup('demo-data-import', async ({ page }, testInfo) => {
   // the get-started page.
   await page.goto('/people/dashboard');
   await page.locator('h2').waitFor({ state: 'visible', timeout: 15000 });
-  await humanPause(page, 600);
+  await settle(page, 600);
 
   await captureScreen(page, testInfo, {
     name: 'demo-data-import',
     purpose: 'Show importing the sample data set and the resulting seeded families',
   });
+
+  // CRM #10048 — set the admin account's UI locale (no-op for the default
+  // 'en' run) before saving storageState, so every downstream
+  // screenshots/tablet/mobile project inherits it along with the session.
+  await applyLocale(page);
 
   fs.mkdirSync(path.dirname(STORAGE_STATE_PATH), { recursive: true });
   await page.context().storageState({ path: STORAGE_STATE_PATH });

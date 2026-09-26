@@ -70,9 +70,9 @@ All three are thin wrappers over `window.CRM.buildActionMenu(items, opts)`
 ```
 
 **`fa-ellipsis-vertical`, never `fa-ellipsis-v`.** Font Awesome 7.3.1 ships `.fa-ellipsis-v`
-as a backwards-compatibility alias so both render, but the codebase uses
-`fa-ellipsis-vertical` in all 37 places and hand-written markup must match the shared
-renderers.
+as a backwards-compatibility alias so both render, but the codebase is consistently on
+`fa-ellipsis-vertical` (`grep -rn fa-ellipsis-vertical src/` for every current site) and
+hand-written markup must match the shared renderers.
 
 - `familyId` — optional; when provided, adds a "View Family" item after Edit
 - `inCart` — optional; flips cart button to RemoveFromCart state

@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Screenshot Metadata Schema",
+  "description": "Display metadata for marketing screenshots captured by Playwright workflows. Used by the website to render the screenshots gallery dynamically.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["title", "category"],
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Display title shown in screenshots gallery (20-40 chars). Examples: 'Dashboard', 'People Directory', 'Plugin Management'",
+        "minLength": 3,
+        "maxLength": 50
+      },
+      "category": {
+        "type": "string",
+        "enum": [
+          "Dashboards",
+          "People & Families",
+          "Groups & Events",
+          "Finance & Giving",
+          "Communication",
+          "Admin & Settings",
+          "Recordings",
+          "Setup"
+        ],
+        "description": "Gallery section this screenshot belongs to. Must match one of the predefined categories."
+      },
+      "dark": {
+        "type": ["string", "null"],
+        "description": "Name of dark-mode variant of this screenshot (if captured). Leave null if no dark variant exists. Example: 'dashboard-hero-dark'",
+        "default": null
+      }
+    },
+    "additionalProperties": false
+  },
+  "examples": [
+    {
+      "dashboard-hero": {
+        "title": "Dashboard",
+        "category": "Dashboards",
+        "dark": "dashboard-hero-dark"
+      }
+    },
+    {
+      "people-directory-list": {
+        "title": "People Directory",
+        "category": "People & Families",
+        "dark": null
+      }
+    }
+  ]
+}

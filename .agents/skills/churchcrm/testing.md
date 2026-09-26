@@ -215,6 +215,10 @@ npx cypress run --spec "cypress/e2e/ui/path/to/test.spec.js"
 # Interactive browser testing
 npm run test:ui
 
+# PHP-level regression tests (no Docker or database needed): /api error
+# redaction rules and the canonical error payload
+npm run test:php
+
 # CRITICAL: Clear logs before every test run
 rm -f src/logs/$(date +%Y-%m-%d)-*.log
 
@@ -236,7 +240,7 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 
 ### CI/CD Testing (GitHub Actions)
 
-- Docker profiles: `dev`, `test`, `ci` in `docker-compose.yaml`
+- Docker profiles: `test`/`ci` in `docker/docker-compose.yaml`; `dev` is a separate file with no profiles (`docker/docker-compose.dev.yaml`); CI is actually split into `ci-root`/`ci-subdir`/`ci-new-system` profiles in `docker/docker-compose.parallel.yaml`
 - CI uses the exact `docker:ci:*` scripts defined in `package.json`
 - Artifacts uploaded: `cypress-artifacts-{run_id}` contains logs, screenshots, videos
 - Access via Actions → Workflow run → Artifacts section
@@ -392,5 +396,5 @@ Four patterns cause most timing-related flaky failures. Full detail and code exa
 **API Tests:** `cypress/e2e/api/`
 **UI Tests:** `cypress/e2e/ui/`
 **Config:** `cypress/configs/docker.config.ts`, `cypress/configs/new-system.config.ts`
-**Support:** `cypress/support/commands.js`
+**Support:** `cypress/support/ui-commands.js`, `cypress/support/api-commands.js` (both imported from `cypress/support/e2e.js`)
 **Logs:** `src/logs/`

@@ -60,7 +60,7 @@ use Slim\Routing\RouteCollectorProxy;
  *         @OA\JsonContent(
  *             @OA\Property(property="success", type="boolean", example=true),
  *             @OA\Property(property="hasCustomLogo", type="boolean", example=false),
- *             @OA\Property(property="url", type="string", example="/Images/logo-churchcrm-350.jpg")
+ *             @OA\Property(property="url", type="string", example="/Images/churchcrm-logo-ink-blue.svg")
  *         )
  *     ),
  *     @OA\Response(response=403, description="Admin role required"),

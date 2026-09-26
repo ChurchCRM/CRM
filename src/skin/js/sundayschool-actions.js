@@ -280,7 +280,7 @@
             window.CRM.groups.addPerson(data.GroupID, personId, data.RoleID);
           });
           if (ids.length > 0) {
-            window.CRM.notify(i18next.t("Copied {{count}} members", { count: ids.length }), {
+            window.CRM.notify(i18next.t("Members copied: {{total}}", { total: ids.length }), {
               type: "success",
               delay: 3000,
             });

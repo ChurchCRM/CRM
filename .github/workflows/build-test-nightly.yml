@@ -54,7 +54,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -134,7 +134,7 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -261,7 +261,7 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -391,7 +391,7 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -492,7 +492,7 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -595,7 +595,7 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -697,7 +697,7 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Checkout
       uses: actions/checkout@v7
@@ -806,7 +806,7 @@ jobs:
     permissions:
       contents: read
       checks: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       COMPOSE_MYSQL: ${{ matrix.group.database == 'mysql' && '-f docker/docker-compose.mysql.yaml' || '' }}
     strategy:
@@ -956,7 +956,7 @@ jobs:
       - test-locale-subdir
       - test-upgrade
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - name: Write summary
       run: |

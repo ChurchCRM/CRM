@@ -2,6 +2,7 @@ import type { Page, TestInfo } from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { LOCALE } from './env';
 import { writeMetadata } from './metadata';
 
 export const ARTIFACTS_ROOT = path.join(__dirname, '..', 'artifacts');
@@ -79,6 +80,35 @@ export async function captureScreen(page: Page, testInfo: TestInfo, opts: Captur
   }
 }
 
+// Leaflet only adds .leaflet-tile-loaded to tiles that loaded successfully,
+// so a blocked or failing tile server times out here instead of shipping a
+// gray map.
+async function waitForMapTiles(page: Page, name: string): Promise<void> {
+  const hasVisibleMap = await page
+    .locator('.leaflet-container')
+    .evaluateAll((maps) => maps.some((m) => (m as HTMLElement).offsetWidth > 0 && (m as HTMLElement).offsetHeight > 0));
+  if (!hasVisibleMap) {
+    return;
+  }
+
+  await page
+    .waitForFunction(
+      () => {
+        const tiles = Array.from(document.querySelectorAll<HTMLImageElement>('.leaflet-container img.leaflet-tile')).filter(
+          (t) => t.offsetWidth > 0
+        );
+        return tiles.length > 0 && tiles.every((t) => t.classList.contains('leaflet-tile-loaded'));
+      },
+      undefined,
+      { timeout: 20000 }
+    )
+    .catch(() => {
+      throw new Error(`Map tiles did not finish loading for "${name}" — check access to tile.openstreetmap.org.`);
+    });
+  // Leaflet fades tiles in over 200ms.
+  await page.waitForTimeout(300);
+}
+
 async function captureAtViewport(
   page: Page,
   testInfo: TestInfo,
@@ -90,7 +120,22 @@ async function captureAtViewport(
     throw new Error(`No viewport configured for project "${device}"`);
   }
 
-  const metadataDir = path.join(ARTIFACTS_ROOT, 'metadata', device);
+  // CRM #10048 — nest screenshot artifacts under their locale so an
+  // 8-locale run doesn't overwrite the same {device}/{name} path 8 times.
+  // Applies to a plain English run too (screenshots/en/desktop/...), not
+  // just the multi-locale codes, so the layout is uniform and Phase 2's
+  // website integration (ChurchCRM/ChurchCRM.io#142) only has to handle
+  // one shape.
+  //
+  // Video-only projects ('setup'/'recordings') are deliberately excluded:
+  // they're the bootstrap/setup-wizard videos, not part of #10048's 7
+  // screenshots, they never run multi-locale, and
+  // scripts/finalize-marketing-videos.js independently hardcodes the flat
+  // videos/<project>/<title>.webm path when it renames Playwright's own
+  // recordings — inserting LOCALE here would desync capture.ts's metadata
+  // from where that script actually puts the file.
+  const localeSegment = VIDEO_ONLY_PROJECTS.has(device) ? [] : [LOCALE];
+  const metadataDir = path.join(ARTIFACTS_ROOT, 'metadata', ...localeSegment, device);
   fs.mkdirSync(metadataDir, { recursive: true });
 
   // Let AJAX-loaded content (DataTables, dashboard widgets, etc.) finish
@@ -99,15 +144,18 @@ async function captureAtViewport(
   // detail. Bounded and best-effort: some pages keep a background poll
   // alive indefinitely, which would make a strict wait hang forever.
   await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => undefined);
+  await waitForMapTiles(page, opts.name);
 
   let screenshotPath: string | null = null;
   if (!VIDEO_ONLY_PROJECTS.has(device)) {
-    const screenshotDir = path.join(ARTIFACTS_ROOT, 'screenshots', device);
+    const screenshotDir = path.join(ARTIFACTS_ROOT, 'screenshots', LOCALE, device);
     fs.mkdirSync(screenshotDir, { recursive: true });
     screenshotPath = path.join(screenshotDir, `${opts.name}.png`);
     await page.screenshot({ path: screenshotPath, fullPage: false });
   }
 
+  // Left flat (no locale segment) to match finalize-marketing-videos.js —
+  // see the comment on metadataDir above.
   const videoPath = path.join(ARTIFACTS_ROOT, 'videos', device, `${opts.name}.webm`);
 
   writeMetadata(path.join(metadataDir, `${opts.name}.json`), {

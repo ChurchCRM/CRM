@@ -12294,16 +12294,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Pazar Okulu + Etkinlikler + Kiosk'lar nasıl birlikte çalışır"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "%s için geçersiz tarih — YYYY-AA-GG bekleniyor"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart veya rangeEnd için geçersiz tarih biçimi"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Geçersiz tarih; beklenen biçim YYYY-AA-GG"
 
 #: 
 msgid "Invalid event type ID"
@@ -12532,10 +12524,6 @@ msgstr "endDate, startDate'den sonra olmalıdır"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds boş olmayan bir dizi olmalıdır"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "geçersiz tekrarlama türü"
 
 #: 
 msgid "personIds must be a non-empty array"
@@ -17342,6 +17330,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "E-posta yapilandirilmamis. Lutfen Sistem Ayarlarinda SMTP ayarlarini yapilandirin."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "%d aileye e-posta gönderildi."
+msgstr[1] "%d aileye e-posta gönderildi."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Once bir sokak adresi girin."
 
@@ -17412,6 +17406,12 @@ msgstr "Secilen depozitolar icin odeme bulunamadi"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Gecerli depozito kimligi saglanmadi"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "%d aileye PDF başarıyla e-postayla gönderildi."
+msgstr[1] "%d aileye PDF başarıyla e-postayla gönderildi."
 
 #: 
 msgid "Partial Send"
@@ -17844,6 +17844,12 @@ msgid "Set up now"
 msgstr "Şimdi kur"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var."
+msgstr[1] "İki faktörlü kimlik doğrulama zorunludur. Kaydolmak için %d gününüz var."
+
+#: 
 msgid "Unknown family"
 msgstr "Bilinmeyen aile"
 
@@ -17858,4 +17864,684 @@ msgstr "Tüm Aile Koordinatlarını Güncelle"
 #: 
 msgid "Update Coordinates"
 msgstr "Koordinatları Güncelle"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s bu ailenin Aile Reisiydi ve vefat etmiş olarak işaretlendi. Lütfen yeni bir Aile Reisi atayın."
+
+#: 
+msgid "Accept"
+msgstr "Kabul Et"
+
+#: 
+msgid "Active Now"
+msgstr "Şu Anda Aktif"
+
+#: 
+msgid "Adding..."
+msgstr "Ekleniyor..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "E-postası olan tüm CRM üyeleri bu listeye abone!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Tüm MailChimp aboneleri ChurchCRM'de mevcut!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Dosyalar silinirken bir hata oluştu."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Kesinlikle emin misiniz? Bu işlem tüm verileri silecek ve fabrika ayarlarını geri yükleyecektir."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "TÜM günlük dosyalarını silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Kiosk'u silmek istediğinizden emin misiniz"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Bağlantıyı silmek istediğinizden emin misiniz"
+
+#: 
+msgid "Assignment"
+msgstr "Atama"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Arka plan görevleri (doğum günü e-postaları ve her eklentinin zamanlanmış görevleri) bu kurulumda hiç çalışmadı."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Arka plan görevleri (doğum günü e-postaları ve her eklentinin zamanlanmış görevleri) en son %s tarihinde çalıştı."
+
+#: 
+msgid "Backing up..."
+msgstr "Yedekleniyor..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Yedek indirildi."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Yedek başarıyla yüklendi"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Kendi aktiflik durumunuzu değiştiremezsiniz"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings dışa aktarımı başarıyla tamamlandı"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Değişiklikler başarıyla kaydedildi"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Herkesin çıkışını yap ve tümünü devre dışı bırak"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Herkesin çıkışını yapıp bu etkinlik devre dışı bırakılsın mı?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Parola sıfırlama bağlantısı için e-postanızı kontrol edin"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Takılı kalan etkinlikler kapatılsın mı?"
+
+#: 
+msgid "Comments"
+msgstr "Yorumlar"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "E-posta önizlemesi yüklenemedi. Lütfen kapatıp tekrar deneyin."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Yedek oluşturuluyor ve yükleniyor. Bu birkaç dakika sürebilir..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Veritabanı sıfırlama başarısız oldu."
+
+#: 
+msgid "Deceased"
+msgstr "Vefat Etmiş"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Varsayılan yönetici kimlik bilgileri"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Kiosk'u Sil"
+
+#: 
+msgid "Deleted Files"
+msgstr "Silinen Dosyalar"
+
+#: 
+msgid "Deleting..."
+msgstr "Siliniyor..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "İndirme, ek başlıkları olmadan döndü."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Günlük dosyası silinirken hata oluştu."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Günlük dosyaları silinirken hata oluştu."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Günlük dosyası indirilirken hata oluştu."
+
+#: 
+msgid "Error initiating download."
+msgstr "İndirme başlatılırken hata oluştu."
+
+#: 
+msgid "Error loading log file."
+msgstr "Günlük dosyası yüklenirken hata oluştu."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Kendi kendine kayıt olan girişler yüklenirken hata oluştu"
+
+#: 
+msgid "Errors"
+msgstr "Hatalar"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Vefat etmiş üyeleri basılı rehberden ve CSV dışa aktarımlarından hariç tut."
+
+#: 
+msgid "Failed Files"
+msgstr "Başarısız Dosyalar"
+
+#: 
+msgid "Failed to add link"
+msgstr "Bağlantı eklenemedi"
+
+#: 
+msgid "Failed to add option"
+msgstr "Seçenek eklenemedi"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Etkinlikler kapatılamadı. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to delete"
+msgstr "Silinemedi"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Kiosk kaydı etkinleştirilemedi"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV dışa aktarılamadı"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Denetim kaydı yüklenemedi. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Kiosk yeniden adlandırılamadı"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Değişiklikler kaydedilemedi"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Eklenti güncellenemedi"
+
+#: 
+msgid "Family Id"
+msgstr "Aile Kimliği"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Son Onay"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Aileler için konum belirleniyor… bu birkaç dakika sürebilir. Bu sayfayı açık tutabilirsiniz."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Aileler için konum belirleniyor… {{total}} ailenin {{done}} tanesi işlendi, {{geocoded}} tanesinin konumu bulundu."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Aile Reisi Güncellemesi Gerekli"
+
+#: 
+msgid "Helpful Links"
+msgstr "Yararlı Bağlantılar"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Vefat Edenleri Rehberden Gizle"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Vefat etmiş üyeleri basılı rehberden ve CSV dışa aktarımlarından gizle."
+
+#: 
+msgid "Identify"
+msgstr "Tanımla"
+
+#: 
+msgid "Identify command sent"
+msgstr "Tanımlama komutu gönderildi"
+
+#: 
+msgid "Individual"
+msgstr "Birey"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Dahili: arka plan zamanlayıcı görevlerinin en son tamamlandığı tarih ve saat (YYYY-MM-DD HH:MM:SS). Elle düzenlemeyin."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Öğe başarıyla silindi"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Kiosk Adı"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Kiosk kabul edildi"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Kiosk başarıyla silindi"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Kiosk kabul edilmelidir"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Kiosk yeniden adlandırıldı"
+
+#: 
+msgid "Last seen"
+msgstr "Son görülme"
+
+#: 
+msgid "Link"
+msgstr "Bağlantı"
+
+#: 
+msgid "Link added successfully"
+msgstr "Bağlantı başarıyla eklendi"
+
+#: 
+msgid "Link deleted"
+msgstr "Bağlantı silindi"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Bağlantı adı HTML etiketleri içeremez"
+
+#: 
+msgid "Living"
+msgstr "Hayatta"
+
+#: 
+msgid "Log settings saved"
+msgstr "Günlük ayarları kaydedildi"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Giriş Adı Gereklidir"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Kişi Aktif Olarak İşaretlendi"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Kişi Pasif Olarak İşaretlendi"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Bir sayfa yüklemesinin tetiklediği arka plan zamanlayıcı görevi çalıştırmaları arasındaki minimum dakika sayısı. Yoğun bir pazar sabahında görevlerin her sayfa görüntülemesinde bir kez çalışmasını önler. Komut satırı çalıştırıcısı için geçerli değildir. Her sayfa yüklemesinde çalıştırmak için 0 olarak ayarlayın."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Yeni kullanıcılar hoş geldiniz e-postası almayacak ve oluşturulan parola hiçbir zaman görüntülenmeyecektir. Hesabı oluşturduktan sonra Sistem Kullanıcıları bölümünden Parola Değiştir seçeneğini kullanarak bir parola belirleyin — ya da önce e-postayı yapılandırın."
+
+#: 
+msgid "No changes to save"
+msgstr "Kaydedilecek değişiklik yok"
+
+#: 
+msgid "No contact info"
+msgstr "İletişim bilgisi yok"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Yapılandırılmış özel bağlantı yok. Yukarıdan bir tane ekleyin!"
+
+#: 
+msgid "No email"
+msgstr "E-posta yok"
+
+#: 
+msgid "No files were deleted."
+msgstr "Hiçbir dosya silinmedi."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Bu eklenti için yardım mevcut değil."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Eklenecek kişi yok - hepsi zaten sepette"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Eklenecek kişi yok - filtre sonuç döndürmedi"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Geçerli bir vefat tarihi değil"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "2FA zorunlu kılındıktan sonra kullanıcıların kayıt olması için tanınan gün sayısı. Hemen zorunlu kılmak için 0 olarak ayarlayın. Aktif bir geçiş süresini kısaltmak, kullanıcıları anında sistem dışında bırakabilir."
+
+#: 
+msgid "Offline"
+msgstr "Çevrimdışı"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Bunu yalnızca altta yatan sorun çözüldükten sonra yapın. Eklentinin tekrar çalışması için yine de Etkinleştir'e tıklamanız gerekecektir."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Kişinin etkinleştirilmesini onaylayın"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Kişinin devre dışı bırakılmasını onaylayın"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Eklenti durumu güncellendi"
+
+#: 
+msgid "Registered"
+msgstr "Kayıtlı"
+
+#: 
+msgid "Reload"
+msgstr "Yeniden Yükle"
+
+#: 
+msgid "Reload command sent"
+msgstr "Yeniden yükleme komutu gönderildi"
+
+#: 
+msgid "Rename"
+msgstr "Yeniden Adlandır"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Kiosk'u Yeniden Adlandır"
+
+#: 
+msgid "Reset Complete"
+msgstr "Sıfırlama Tamamlandı"
+
+#: 
+msgid "Reset Settings"
+msgstr "Ayarları Sıfırla"
+
+#: 
+msgid "Resetting..."
+msgstr "Sıfırlanıyor..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Zamanlanmış görevler çalışmıyor"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Güvenlik jetonu eksik. Lütfen sayfayı yenileyin."
+
+#: 
+msgid "Select…"
+msgstr "Seçiniz…"
+
+#: 
+msgid "Sending..."
+msgstr "Gönderiliyor..."
+
+#: 
+msgid "Sending…"
+msgstr "Gönderiliyor…"
+
+#: 
+msgid "Settings reset"
+msgstr "Ayarlar sıfırlandı"
+
+#: 
+msgid "Settings saved"
+msgstr "Ayarlar kaydedildi"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Ayarlar kaydedildi. Güncelleme bilgisi yenileniyor..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Yalnızca aktif kişiler gösteriliyor."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Yalnızca pasif kişiler gösteriliyor."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Başarıyla silindi"
+
+#: 
+msgid "Testing..."
+msgstr "Test ediliyor..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Veritabanı temizlendi. Sistem yeni bir başlangıç için hazır."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Bu sırada sayfa yükleme yedek mekanizması çalışmaya devam eder. ChurchCRM'in bu uyarıyı göstermeden önce ne kadar bekleyeceğini %1$s ayarıyla değiştirin veya gizlemek için 0 olarak ayarlayın."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Bu Kişi Pasif"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Bu işlem, OpenStreetMap kullanarak konum bilgisi eksik olan her aile için harita koordinatlarını bulur. Aileleri 50'şerlik gruplar halinde işler, her grup yaklaşık bir dakika sürer. İşlem çalışırken bu sayfayı açık tutabilirsiniz. Devam edilsin mi?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Bu kişi vefat etmiş"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Bu işlem bu eklenti için yapılandırılmış tüm değerleri temizleyecektir. Bu işlem geri alınamaz."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Bu işlem eklenti dosyalarını diskten kalıcı olarak silecek ve ayarlarını temizleyecektir. Bu işlem geri alınamaz."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL, HTML etiketleri içeremez"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Beklenmeyen hata. Lütfen tekrar deneyin."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Eklentiyi Kaldır"
+
+#: 
+msgid "Upcoming"
+msgstr "Yaklaşan"
+
+#: 
+msgid "Valid Until"
+msgstr "Geçerlilik Tarihi"
+
+#: 
+msgid "View active only"
+msgstr "Yalnızca aktifleri görüntüle"
+
+#: 
+msgid "View all"
+msgstr "Tümünü görüntüle"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Tümünü görüntüle (pasifler dahil)"
+
+#: 
+msgid "View inactive only"
+msgstr "Yalnızca pasifleri görüntüle"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Arka plan zamanlayıcı görevleri bu kadar saat çalışmadığında yönetici panelinde uyarı ver. 26, günlük bir cron görevine ve biraz sapmaya olanak tanır. Uyarıyı devre dışı bırakmak için 0 olarak ayarlayın."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Bir zamanlayıcı olmadan bu görevler yalnızca biri bir sayfa yüklediğinde çalışır, bu yüzden sakin bir hafta içi gününde hiç zamanlanmış e-posta gönderilmez. Web sunucunuzun çalıştığı kullanıcıyla aynı kullanıcı olarak görev çalıştırıcısını saatlik çalıştıran bir cron girdisi ekleyin"
+
+#: 
+msgid "check-outs"
+msgstr "çıkışlar"
+
+#: 
+msgid "deceased"
+msgstr "vefat etmiş"
+
+#: 
+msgid "event"
+msgstr "etkinlik"
+
+#: 
+msgid "events?"
+msgstr "etkinlikler?"
+
+#: 
+msgid "files"
+msgstr "dosyalar"
+
+#: 
+msgid "people from cart?"
+msgstr "kişi sepetten çıkarılsın mı?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip değeri sıfır veya pozitif bir tam sayı olmalıdır"
+
+#: 
+msgid "view families missing an email"
+msgstr "e-postası eksik olan aileleri görüntüle"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Bu Mali Yılın Alıcıları"
+
+#: 
+msgid "Current"
+msgstr "Güncel"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Bağışlanan Ürünler (Bu Mali Yıl)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Giriş adı en fazla %d karakter olmalıdır!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Bu Mali Yılda Toplanan"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s, https://example.org/yourchurch gibi tam bir https:// web adresi olmalıdır."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Hesabın izinleri sınırlıdır. Bir yöneticiyle iletişime geçin."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Hata sayfası oluşturulurken bir hata meydana geldi."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Her adres https:// ile başlamalıdır"
+
+#: 
+msgid "Generate Labels"
+msgstr "Etiket Oluştur"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Posta etiketleri oluştur"
+
+#: 
+msgid "Labels"
+msgstr "Etiketler"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Sepetinizdeki kişiler için posta etiketleri. Kendi adresi olmayan bir kişi, aile adresiyle etiketlenir."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "İsteğe bağlı. Kilisenin kendi hesaplarına bağlantılar, portal alt bilgisi gibi sayfalarda üyelere gösterilir. Bir ağı gizlemek için ilgili alanı boş bırakın."
+
+#: 
+msgid "Options"
+msgstr "Seçenekler"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Zamanlanmış Görevler"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktif, kalan saniye: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Çalıştırmalar arasındaki beklenen aralık (saat): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Atlanan aileler (kayıtlı e-posta adresi yok): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Konumu belirlenemeyen aileler: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Onay e-postası alacak aileler: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Kopyalanan üyeler: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Burada listelenmeyen: {{total}} tane daha"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Alıcılar: {{total}} — bir mailto: bağlantısı için çok fazla. Bunun yerine Adresleri Kopyala'yı kullanın."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "E-posta istemcisi için çok fazla alıcı ({{total}} > {{max}}). Bunun yerine Adresleri Kopyala'yı kullanın."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} dk kaldı"
 
