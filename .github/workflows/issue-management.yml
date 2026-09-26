@@ -46,7 +46,7 @@ jobs:
     if: github.event_name == 'issues' && github.event.action == 'opened'
     name: Security guard on new issues
     timeout-minutes: 5
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       issues: write
@@ -102,7 +102,7 @@ jobs:
       github.event.label.name == 'bug'
     name: Normalize bug issue type
     timeout-minutes: 5
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Ensure Issue Type is "Bug"
@@ -141,7 +141,7 @@ jobs:
       (github.event_name == 'workflow_dispatch' && (inputs.operation == 'all' || inputs.operation == 'review-stale-only'))
     name: Mark stale inactive issues
     timeout-minutes: 5
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Mark stale issues
@@ -165,7 +165,7 @@ jobs:
       (github.event_name == 'workflow_dispatch' && (inputs.operation == 'review-stale-only' || inputs.operation == 'all'))
     name: Review closed stale issues without PRs
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Review closed stale issues without PRs

@@ -15,7 +15,7 @@ Uses Playwright's bundled Chromium (`npm run marketing:install` once). Set
 Google Chrome instead.
 
 ```bash
-npm run marketing                   # fresh instance, seed it, capture, finalize videos, check
+npm run marketing                   # fresh instance, seed it, capture, finalize videos, check, manifest
 npm run marketing:screenshots -- --grep "person-.*-profile"   # re-run a subset against a fresh DB
 npm run docker:ci:new-system:down   # tear down the instance when you're done
 ```
@@ -44,6 +44,8 @@ npm run docker:ci:new-system:down   # tear down the instance when you're done
    closes, which happens after the test itself has already returned.
 4. `marketing:check` — `scripts/check-marketing-visuals.js` verifies every
    capture produced its artifacts.
+5. `marketing:manifest` — `scripts/generate-marketing-manifest.js` rolls
+   every metadata sidecar (see below) into one `playwright/artifacts/manifest.csv`.
 
 The instance is left running after a successful (or failed) run so you can
 inspect it — `docker:ci:new-system:down` tears it down explicitly.
@@ -77,18 +79,25 @@ inspect it — `docker:ci:new-system:down` tears it down explicitly.
   screenshot. See the "Marketing-clean" section in
   `.agents/skills/churchcrm/marketing-visuals-pipeline.md` for the full list
   of what's been handled and what to watch for in a new workflow.
-- **Screenshots**: full-page, one per test, at
-  `playwright/artifacts/screenshots/<device>/<name>.png`, where `<device>`
-  is `setup` (the two bootstrap videos), `desktop` (1440×900), `tablet`
-  (834×1194), or `mobile` (375×812) — the three form factors from
+- **Screenshots**: viewport-cropped (not full-page — see `captureScreen()`'s
+  doc comment in `playwright/support/capture.ts` for why), one per test per
+  form factor, at `playwright/artifacts/screenshots/<device>/<name>.png`,
+  where `<device>` is `desktop` (1440×900), `tablet` (1024×768), or
+  `mobile` (430×932) — see
   `.agents/skills/churchcrm/responsive-design-guidelines.md`.
 - **Videos**: one per test, at
-  `playwright/artifacts/videos/<device>/<name>.webm`.
-- **Metadata**: one JSON file per screenshot, at
+  `playwright/artifacts/videos/<device>/<name>.webm`, where `<device>` is
+  `setup` (the two bootstrap recordings) or `recordings` (other click-through
+  demos).
+- **Metadata**: one JSON file per screenshot/video, at
   `playwright/artifacts/metadata/<device>/<name>.json`, containing the
   workflow name, purpose, product, git commit SHA, locale, device, viewport,
-  timestamp, seed version, and artifact filenames.
-- **Artifacts** are all gitignored — see `.gitignore`.
+  timestamp, seed version, and artifact filenames. `npm run marketing`
+  rolls every sidecar into one `playwright/artifacts/manifest.csv` for a
+  quick, spreadsheet-friendly look at a whole run (see "How to run" above).
+- **Artifacts**: screenshots, videos, and `manifest.csv` are committed;
+  everything else (the metadata JSON sidecars, `report.json`) is
+  gitignored — see `.gitignore`.
 
 ## How to add a workflow
 
@@ -119,10 +128,14 @@ Seed data lives entirely in `src/admin/demo/` (`people.json`, `groups.json`,
 copy. Edit those fixtures directly; the next pipeline run picks them up
 automatically via the existing `/admin/api/demo/load` import.
 
-`playwright/setup/bootstrap.setup.ts` additionally creates one family of its
-own ("Johnson") as part of the People & Families workflow, to demonstrate
-the *create a new family* flow — that is workflow behavior, not seed data,
-and lives in `playwright/workflows/people-family.spec.ts`.
+`playwright/workflows/people-family.spec.ts`'s `people-family-new-family`
+test additionally creates one family of its own ("Whitfield") as part of
+the People & Families workflow, to demonstrate the *create a new family*
+flow — that is workflow behavior, not seed data. Pick a family/person name
+here (and anywhere else a spec creates or edits a demo record) that's
+confirmed absent from `src/admin/demo/people.json` — grep `playwright/`
+first regardless, since a name already claimed by a *different* spec is
+just as real a collision as one already in the seed data.
 
 ## How to troubleshoot
 
@@ -183,8 +196,12 @@ Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
 - One fixed viewport per form factor (no touch/UA emulation).
 - English locale only.
 - Root-path install only (no subdirectory variant).
-- No artifact manifest, change detection, or automated PR generation — see
-  the bootstrap issue for what's intentionally deferred to later work.
+- No content-hash/change-detection field in the metadata sidecars — see
+  #9663 for what was deliberately descoped there (closed not-planned).
+  `manifest.csv` (above) is a rollup of the existing sidecars, not that.
+- CI wiring (`.github/workflows/marketing-capture-assets.yml`,
+  `workflow_dispatch`) and its automated update-PR on `master` both exist
+  now — this is no longer a gap.
 - Media-quality passes so far only cover what was actually visually
   inspected in this milestone (the system-update banner, timezone warning,
   inactive-record filtering). A new workflow should get the same visual

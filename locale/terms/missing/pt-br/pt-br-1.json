@@ -1,15 +1,15 @@
 {
   "Email sent to %d family.": {
-    "one": "E-mail enviado para %d família.|E-mail enviado para %d famílias.",
-    "other": ""
+    "one": "E-mail enviado para %d família.",
+    "other": "E-mail enviado para %d famílias."
   },
   "PDF successfully emailed to %d family.": {
-    "one": "PDF enviado com sucesso por e-mail para %d família.|PDF enviado com sucesso por e-mail para %d famílias.",
-    "other": ""
+    "one": "PDF enviado com sucesso por e-mail para %d família.",
+    "other": "PDF enviado com sucesso por e-mail para %d famílias."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "A autenticação de dois fatores é obrigatória. Você tem %d dia para se cadastrar.|A autenticação de dois fatores é obrigatória. Você tem %d dias para se cadastrar.",
-    "other": ""
+    "one": "A autenticação de dois fatores é obrigatória. Você tem %d dia para se cadastrar.",
+    "other": "A autenticação de dois fatores é obrigatória. Você tem %d dias para se cadastrar."
   },
   "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household.": "",
   "Accept": "",

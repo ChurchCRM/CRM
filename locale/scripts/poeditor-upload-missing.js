@@ -36,6 +36,12 @@ const readline = require('readline');
 const { URLSearchParams } = require('url');
 
 const localeConfig = require('./locale-config');
+const {
+    CLDR_PLURAL_FORMS,
+    loadSourceTermKinds,
+    repairJoinedPlural,
+    buildPoeditorPayload,
+} = require('./lib/poeditor-plurals');
 
 // ── Configuration ────────────────────────────────────────────────────────────
 
@@ -190,9 +196,6 @@ function loadEnglishOkAllowlist() {
 
 // ── Plural form restructuring ───────────────────────────────────────────────
 
-// CLDR plural category names, in canonical order.
-const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
-
 /**
  * Defensive restructure for batch files that contain POEditor's inverted plural
  * format at the top level (can arrive if the downloader skipped re-nesting).
@@ -292,14 +295,8 @@ function isNotIdenticalToKey(termKey, value) {
  * present-but-blank (e.g. `{ one: "X", few: "", other: "" }`) — a translation
  * that was started but not finished for every CLDR category this locale needs.
  *
- * This must be checked BEFORE the term is allowed anywhere near
- * `convertPluralsToSeparated()`. That function silently drops any blank form
- * and joins the survivors by position — so a partially-filled Czech object
- * missing "few" would collapse from 3 slots to 2 and shift "other" into the
- * "few" position with no error from POEditor or this script. Skipping
- * incomplete plurals entirely (never uploading them) avoids depending on
- * exactly how POEditor's pipe-separated plural import resolves a form-count
- * mismatch, which cannot be verified without a live API call.
+ * POEditor would store the blank forms as untranslated, so the term would
+ * come straight back as missing; hold it until every form is filled.
  */
 function hasIncompleteForms(value) {
     if (typeof value !== 'object' || value === null) return false;
@@ -324,6 +321,7 @@ function hasIncompleteForms(value) {
 function analyzeFile(filePath, englishOkSet = new Set()) {
     let raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     raw = restructurePluralForms(raw); // Defensive: fix malformed plural structure if present
+    for (const [term, value] of Object.entries(raw)) raw[term] = repairJoinedPlural(value);
     const localizedTerms = {};
     const suspectTerms = {};
     const emptyTerms = {};
@@ -351,61 +349,12 @@ function analyzeFile(filePath, englishOkSet = new Set()) {
 
 // ── POEditor API helpers ─────────────────────────────────────────────────────
 
-/**
- * Converts i18next nested plural structure to pipe-separated plural format for POEditor.
- *
- * POEditor's key_value_json format understands pipe-separated plurals (standard gettext):
- *   "term": "singular form|plural form"
- *
- * i18next nested plural structure:
- *   "term": { "one": "singular", "other": "plural" }
- *
- * This converts nested → pipe-separated so POEditor properly recognizes plural forms
- * in terms with numeric tokens like {{count}} and {{max}}.
- *
- * Handles all CLDR plural categories (zero/one/two/few/many/other), preserving order:
- * zero, one, two, few, many, other.
- */
-function convertPluralsToSeparated(data) {
-    if (data == null || typeof data !== 'object' || Array.isArray(data)) return data;
-
-    const result = {};
-
-    for (const [term, value] of Object.entries(data)) {
-        if (typeof value === 'string') {
-            // Plain string term — pass through unchanged
-            result[term] = value;
-        } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-            // Check if this is a plural form object (has CLDR keys)
-            const pluralKeys = Object.keys(value).filter(k =>
-                CLDR_PLURAL_FORMS.includes(k)
-            );
-
-            if (pluralKeys.length > 0) {
-                // This is a plural term — convert to pipe-separated format
-                // Order matters: use CLDR canonical order, but only include forms that exist
-                const forms = CLDR_PLURAL_FORMS
-                    .filter(form => pluralKeys.includes(form) && value[form])
-                    .map(form => value[form]);
-
-                // Pipe-separate the forms (POEditor standard for plural support)
-                result[term] = forms.join('|');
-            } else {
-                // Non-plural object (namespace segment) — pass through unchanged
-                result[term] = value;
-            }
-        } else {
-            result[term] = value;
-        }
-    }
-
-    return result;
-}
+let sourceTermKinds = null;
 
 /**
  * Builds a key_value_json object ready for file import.
  * Only includes terms that have at least one non-empty translated form.
- * Converts nested plurals to pipe-separated format for POEditor compatibility.
+ * Plural shapes follow locale/messages.po (see lib/poeditor-plurals.js).
  */
 function buildKeyValueJson(terms) {
     const out = {};
@@ -422,8 +371,8 @@ function buildKeyValueJson(terms) {
             if (Object.keys(filled).length > 0) out[term] = filled;
         }
     }
-    // Convert nested plural forms to pipe-separated format (POEditor standard for plurals)
-    return convertPluralsToSeparated(out);
+    sourceTermKinds ??= loadSourceTermKinds(fs.readFileSync(localeConfig.messagesPo, 'utf8'));
+    return buildPoeditorPayload(out, sourceTermKinds);
 }
 
 /**
@@ -517,8 +466,8 @@ function makeMultipartRequest(url, fields, fileContent) {
  * transport-level retries in makeMultipartRequest.
  */
 async function uploadTranslations(poEditorCode, terms) {
-    const kvJson = buildKeyValueJson(terms);
-    if (Object.keys(kvJson).length === 0) return { parsed: 0, added: 0, updated: 0 };
+    const { payload: kvJson, skipped } = buildKeyValueJson(terms);
+    if (Object.keys(kvJson).length === 0) return { parsed: 0, added: 0, updated: 0, skipped };
 
     const fileContent = JSON.stringify(kvJson, null, 2);
 
@@ -564,6 +513,7 @@ async function uploadTranslations(poEditorCode, terms) {
         parsed:  stats.parsed  ?? Object.keys(kvJson).length,
         added:   stats.added   ?? 'n/a',
         updated: stats.updated ?? 'n/a',
+        skipped,
     };
 }
 
@@ -670,6 +620,7 @@ async function refreshMissingTerms(poEditorCode) {
     // Restructure before counting so termCount reflects actual terms, not CLDR
     // form buckets (POEditor's untranslated export may use the inverted layout).
     missing = restructurePluralForms(missing);
+    for (const [term, value] of Object.entries(missing)) missing[term] = repairJoinedPlural(value);
     const termCount = Object.keys(missing).length;
 
     if (termCount === 0) {
@@ -853,7 +804,10 @@ async function main() {
         }
 
         if (dryRun) {
-            console.log(`  🔸 DRY RUN: would upload ${localizedCount} term(s) to "${poEditorCode}"`);
+            const payloadPath = path.join(localeConfig.temp.root, 'upload', `${poEditorCode}.json`);
+            fs.mkdirSync(path.dirname(payloadPath), { recursive: true });
+            fs.writeFileSync(payloadPath, JSON.stringify(buildKeyValueJson(allLocalized).payload, null, 2) + '\n');
+            console.log(`  🔸 DRY RUN: would upload ${localizedCount} term(s) to "${poEditorCode}" — payload written to ${path.relative(localeConfig.projectRoot, payloadPath)}`);
             results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: '(dry run)', incomplete: incompleteCount });
             totalUploaded += localizedCount;
             continue;
@@ -868,7 +822,11 @@ async function main() {
             const added   = uploadStats.added   ?? 'n/a';
             const updated = uploadStats.updated ?? 'n/a';
             console.log(`  ✅ Upload complete — parsed: ${parsed}, added: ${added}, updated: ${updated}`);
-            totalUploaded += localizedCount;
+            if (uploadStats.skipped.length > 0) {
+                console.warn(`  ⚠️  ${uploadStats.skipped.length} plural term(s) not in locale/messages.po with these forms — not uploaded:`);
+                for (const term of uploadStats.skipped) console.warn(`      "${sanitize(term)}"`);
+            }
+            totalUploaded += localizedCount - uploadStats.skipped.length;
         } catch (err) {
             console.error(`  ❌ Upload failed: ${sanitize(err.message)}`); // lgtm[js/log-injection] Error message sanitized before logging
             results.push({ locale: poEditorCode, name: localeName, status: 'upload-failed', uploaded: 0, empty: totalEmpty, remaining: '?', incomplete: incompleteCount });
@@ -890,7 +848,7 @@ async function main() {
             console.log(`\n  ⏭️  Skipping download (--no-download)`);
         }
 
-        results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: remainingCount, incomplete: incompleteCount });
+        results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount - uploadStats.skipped.length, empty: totalEmpty, remaining: remainingCount, incomplete: incompleteCount });
 
         // ── Rate-limit guard ─────────────────────────────────────────────────
         console.log(`  ⏱️  Waiting ${BETWEEN_LOCALES_DELAY_MS / 1000}s before next locale...`);
@@ -964,6 +922,8 @@ async function main() {
     console.log(`  1. Share translations with POEditor reviewers`);
     console.log(`  2. Run locale-release workflow to download full translations (JSON + PO/MO)`);
     console.log(`${'═'.repeat(72)}\n`);
+
+    if (results.some((r) => r.status === 'upload-failed')) process.exitCode = 1;
 }
 
 main().catch((err) => {

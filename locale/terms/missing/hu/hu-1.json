@@ -1,8 +1,8 @@
 {
   "N/A": "",
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Kétfaktoros hitelesítés szükséges. %d napja van a beiratkozásra.|Kétfaktoros hitelesítés szükséges. %d napja van a beiratkozásra.",
-    "other": ""
+    "one": "Kétfaktoros hitelesítés szükséges. %d napja van a beiratkozásra.",
+    "other": "Kétfaktoros hitelesítés szükséges. %d napja van a beiratkozásra."
   },
   "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household.": "",
   "Accept": "",

@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanPause } from '../support/human';
+import { settle } from '../support/human';
 
 /**
  * One shot per module dashboard, all populated by the demo data import —
@@ -34,7 +34,7 @@ test.describe('Module Dashboards', () => {
     test(name, async ({ page }, testInfo) => {
       await page.goto(path);
       await expect(page.locator('h2')).toBeVisible({ timeout: 15000 });
-      await humanPause(page, 700);
+      await settle(page, 700);
 
       await captureScreen(page, testInfo, { name, purpose });
     });

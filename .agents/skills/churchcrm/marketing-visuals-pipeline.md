@@ -19,11 +19,15 @@ marketing artifact generation) and neither needs the other's capabilities.
 **This is a media-generation pipeline, not a test suite.** A run "passing"
 is necessary but not sufficient — the resulting screenshots/videos must
 also look like something you'd actually put in front of a church deciding
-whether to adopt ChurchCRM: no error banners, no "Inactive" records, no
-half-loaded AJAX content. When adding or changing a workflow, look at the
-actual generated screenshot before considering it done (see
-`playwright/README.md` for the exact artifact paths), not just the green
-checkmark.
+whether to adopt ChurchCRM: no error banners, no half-loaded AJAX content,
+and no *unintended* "Inactive"/placeholder state. (Some captures show an
+inactive/deceased status **on purpose** — `person-inactive-profile`,
+`person-deceased-profile`, `family-inactive-profile` — because that status
+*is* the feature being shown off; see "Demo subjects, status and photos"
+below for how those stay deliberate instead of accidental.) When adding or
+changing a workflow, look at the actual generated screenshot before
+considering it done (see `playwright/README.md` for the exact artifact
+paths), not just the green checkmark.
 
 ## Running it
 
@@ -37,6 +41,22 @@ Uses Playwright's bundled Chromium (`npm run marketing:install`). Set
 `BROWSER_CHANNEL=chrome` (or `npm run marketing:chrome`) to drive system
 Chrome instead. A green run is not enough: open the PNGs under
 `playwright/artifacts/screenshots/` and look at them.
+
+`npm run marketing` ends with `marketing:manifest`
+(`scripts/generate-marketing-manifest.js`), which reads every per-capture
+JSON sidecar under `playwright/artifacts/metadata/` and writes them as one
+row-per-device-per-capture table to `playwright/artifacts/manifest.csv` —
+name, device, screenshot-or-video, relative path, whether that file
+actually exists and its size, purpose text, viewport, commit, etc. It's
+for scanning/looking up a whole run's output at a glance (open it in a
+spreadsheet) without opening 90+ individual JSON files; it isn't a
+correctness gate — `marketing:check` (which runs just before it) is what
+fails the build. Unlike the JSON sidecars it summarizes, it **is**
+committed (see `.gitignore`) — regenerate it with `npm run
+marketing:manifest` after any run that changes captures, don't hand-edit
+it, and don't be surprised if its `commit`/`timestamp` columns lag the
+repo by a commit or two (it reflects whatever run last regenerated it, not
+necessarily HEAD).
 
 Full details, directory layout, and troubleshooting: `playwright/README.md`.
 
@@ -64,10 +84,11 @@ directory, group manager, calendar, attendance, communication, deposit
 entry, pledge/fund report, mobile panel, settings/permissions) is fully
 covered by `playwright/workflows/*.spec.ts` — see the table in
 `playwright/README.md` → "Shot list coverage" for the test-name mapping.
-Two shot-list requirements live in `playwright.config.ts` rather than a
-spec: **retina** (`deviceScaleFactor: 2` on every device project) and the
-**mobile viewport** (390×844, not an arbitrary breakpoint width — matches
-the shot list's "narrow viewport (390×844)" line exactly). The shot list's
+Two shot-list requirements live outside any one spec: **retina**
+(`deviceScaleFactor: 2` on every device project, `playwright.config.ts`)
+and the **mobile viewport** (430×932 — `VIEWPORTS` in
+`playwright/support/capture.ts`, the actual current value; don't trust an
+older shot-list doc's exact px figure over that file). The shot list's
 "UI detail texture crop" is a manual post-production crop of an existing
 screenshot, not something a new page/test can produce — don't try to
 automate it.
@@ -248,7 +269,33 @@ reusable lessons:
 - **Photos must match name, gender and rough age, and suit a church**: no
   shirtless, smoking or glamour shots. Check by rendering a labelled contact
   sheet of `images/people/*` with Playwright and viewing it.
+- **Family *portrait* photos are scarce — don't swap a family in just to
+  chase one.** Only 2 of 62 demo families have an uploaded group photo
+  (`family.hernandez60.jpg`, `family.campbell.jpg`); every other family's
+  profile card shows the app's real initials-avatar fallback, which is
+  correct/expected behavior, not a bug. Before swapping a screenshot's
+  family to "fix" a placeholder, check the trade fully: Hernandez's own
+  *members* have no individual photos (worse than the placeholder — see
+  the "whole family has photos" rule above), and Campbell is the
+  `family-inactive-profile` subject, so using it for a shot meant to show
+  a normal active family would (wrongly) show the inactive banner. Given
+  that, `people-family-overview`/`-dark` keep Scott (real member photos,
+  no family portrait) — accurate purpose text over a forced swap.
 - **Date pickers use `sDatePickerFormat` (`Y-m-d`).** Type `YYYY-MM-DD` and
   assert `toHaveValue` before submit; `MM/DD/YYYY` saves a wrong date.
 - **Maps**: `captureScreen()` waits for every visible Leaflet tile to get
   `.leaflet-tile-loaded` and throws if tiles fail, so gray maps never ship.
+- **Map visibility depends on page layout, not on the wait above.** At the
+  1440×900 desktop viewport, `person-view.php` puts the photo in a narrow
+  *left* column and the Family Members + Address/map cards in a wide
+  *right* column, so the map lands within the fold (confirmed on
+  `person-inactive-profile`/`person-deceased-profile` — real street tiles
+  render). `family-view.php` instead stacks the photo *above* the
+  Address/map card in one narrow right column — regardless of family size,
+  since that stack's height doesn't depend on the member count — which
+  pushes the map below the fold every time. So `people-family-overview`
+  and its dark variant only show the "Geocoded" badge, not the rendered
+  map; their purpose text says "geocoded address", not "map", on purpose.
+  If a future shot needs the family map actually in frame, that's a real
+  UI/copy call (taller capture just for that one shot, or scroll-and-crop),
+  not a one-line fix — ask before doing either.

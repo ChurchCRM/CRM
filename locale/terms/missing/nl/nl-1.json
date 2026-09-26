@@ -3,16 +3,16 @@
   "Items": "",
   "Planning": "",
   "Email sent to %d family.": {
-    "one": "E-mail verzonden naar %d gezin.|E-mail verzonden naar %d gezinnen.",
-    "other": ""
+    "one": "E-mail verzonden naar %d gezin.",
+    "other": "E-mail verzonden naar %d gezinnen."
   },
   "PDF successfully emailed to %d family.": {
-    "one": "PDF succesvol gemaild naar %d gezin.|PDF succesvol gemaild naar %d gezinnen.",
-    "other": ""
+    "one": "PDF succesvol gemaild naar %d gezin.",
+    "other": "PDF succesvol gemaild naar %d gezinnen."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Tweefactorauthenticatie is verplicht. U heeft %d dag om u in te schrijven.|Tweefactorauthenticatie is verplicht. U heeft %d dagen om u in te schrijven.",
-    "other": ""
+    "one": "Tweefactorauthenticatie is verplicht. U heeft %d dag om u in te schrijven.",
+    "other": "Tweefactorauthenticatie is verplicht. U heeft %d dagen om u in te schrijven."
   },
   "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household.": "",
   "Accept": "",

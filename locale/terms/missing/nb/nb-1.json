@@ -2,16 +2,16 @@
   "Data": "",
   "Auto": "",
   "Email sent to %d family.": {
-    "one": "E-post sendt til %d familie.|E-post sendt til %d familier.",
-    "other": ""
+    "one": "E-post sendt til %d familie.",
+    "other": "E-post sendt til %d familier."
   },
   "PDF successfully emailed to %d family.": {
-    "one": "PDF sendt på e-post til %d familie.|PDF sendt på e-post til %d familier.",
-    "other": ""
+    "one": "PDF sendt på e-post til %d familie.",
+    "other": "PDF sendt på e-post til %d familier."
   },
   "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Tofaktorautentisering er påkrevd. Du har %d dag til å registrere deg.|Tofaktorautentisering er påkrevd. Du har %d dager til å registrere deg.",
-    "other": ""
+    "one": "Tofaktorautentisering er påkrevd. Du har %d dag til å registrere deg.",
+    "other": "Tofaktorautentisering er påkrevd. Du har %d dager til å registrere deg."
   },
   "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household.": "",
   "Accept": "",

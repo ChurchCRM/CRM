@@ -142,5 +142,23 @@ export default defineConfig({
         storageState: STORAGE_STATE_PATH,
       },
     },
+    {
+      // CRM #10048 — re-applies ui.locale between capture passes against
+      // the already-installed instance (see locale-set.spec.ts for why
+      // this can't just be another 'setup' run). Deliberately has NO
+      // 'setup' dependency: scripts/capture-all-locales.sh runs this with
+      // --no-deps between locale passes, reusing the storageState the
+      // one-time 'setup' run already saved to disk. No viewport-specific
+      // behavior — the API call doesn't render anything — so a single
+      // fixed viewport is fine here.
+      name: 'locale-set',
+      testMatch: /setup\/locale-set\.spec\.ts/,
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: browserChannel,
+        viewport: { width: 1440, height: 900 },
+        storageState: STORAGE_STATE_PATH,
+      },
+    },
   ],
 });

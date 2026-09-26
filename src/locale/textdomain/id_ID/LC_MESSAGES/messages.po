@@ -12278,16 +12278,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cara Sekolah Minggu + Acara + Kios bekerja bersama"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Tanggal tidak valid untuk %s — diharapkan YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Format tanggal tidak valid untuk rangeStart atau rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Tanggal tidak valid; format yang diharapkan YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12516,10 +12508,6 @@ msgstr "endDate harus setelah startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds harus berupa larik yang tidak kosong"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "jenis perulangan tidak valid"
 
 #: 
 msgid "personIds must be a non-empty array"

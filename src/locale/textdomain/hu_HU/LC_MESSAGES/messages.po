@@ -12321,16 +12321,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Hogyan illeszkedik össze a Vasárnapi iskola + Események + Kioszkok"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Érvénytelen dátum: %s — várt formátum: ÉÉÉÉ-HH-NN"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Érvénytelen dátumformátum a rangeStart vagy rangeEnd mezőhöz"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Érvénytelen dátum; várt formátum: ÉÉÉÉ-HH-NN"
 
 #: 
 msgid "Invalid event type ID"
@@ -12559,10 +12551,6 @@ msgstr "Az endDate a startDate után kell legyen"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "Az eventIds nem lehet üres tömb"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "érvénytelen ismétlődési típus"
 
 #: 
 msgid "personIds must be a non-empty array"

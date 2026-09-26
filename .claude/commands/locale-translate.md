@@ -12,7 +12,7 @@ Translate missing ChurchCRM UI terms for one or all locales.
 
 1. **ALWAYS create a BRAND-NEW branch** before translating ANY locale — never reuse an existing `locale/*` or `copilot/*` branch, even from earlier the same day
 2. **ALWAYS commit + push after EVERY locale** — never accumulate uncommitted translations
-3. **ALWAYS upload to POEditor after EVERY locale** — reduces manual steps
+3. **The push uploads to POEditor** — `locale-upload-missing.yml` runs on every push to `locale/translate/**`
 4. **If any step fails, STOP and report** — do not continue without saving work
 
 **Why:** Cloud/remote agent sessions can timeout at any moment. Uncommitted translations are LOST FOREVER. We have lost hours of work from agents that translated 20+ locales without committing. Reusing old branches also causes review-thread churn and can silently overwrite reviewer edits from the prior run.
@@ -27,13 +27,13 @@ Translate missing ChurchCRM UI terms for one or all locales.
 
 ```bash
 node locale/scripts/locale-branch-manager.js --init
-# Output: locales/<VERSION>-<YYYY-MM-DD>-<HHMMSS>  (e.g. locales/7.2.0-2026-04-22-174530)
+# Output: locale/translate/<VERSION>-<YYYY-MM-DD>-<HHMMSS>  (e.g. locale/translate/7.2.0-2026-04-22-174530)
 # If it errors on push, ignore the error — branch was created locally
 ```
 
 If the branch manager fails entirely, create manually (include the time suffix):
 ```bash
-git checkout -b "locales/$(node -p "require('./package.json').version")-$(date -u +%Y-%m-%d-%H%M%S)"
+git checkout -b "locale/translate/$(node -p "require('./package.json').version")-$(date -u +%Y-%m-%d-%H%M%S)"
 ```
 
 **Do not reuse the current branch even if it looks like a locale branch.** If you are already on a `locale/*` branch from an earlier session, still run `--init` to cut a fresh one.
@@ -123,36 +123,20 @@ node locale/scripts/locale-branch-manager.js --commit-and-push \
 
 **If push fails with 403:** Try `report_progress` instead. If that also fails, at minimum `git commit` locally so work is not lost, then report the push failure.
 
-### 4e. Upload to POEditor IMMEDIATELY (MANDATORY) <!-- learned: 2026-04-09 -->
+### 4e. The push uploads it
 
-**⛔ After EVERY locale is committed, upload it to POEditor right away.**
+Every push to a `locale/translate/**` branch runs [`Locale: upload missing terms`](../../.github/workflows/locale-upload-missing.yml). It uploads the locales that push changed to POEditor, then starts `Locale Sync POEditor`, which brings the translations back to `master` as a PR. Do not upload by hand, and do not commit refreshed batch files: the translation branch is never merged.
+
+Upload by hand only when that run cannot happen or failed:
+
+- your session pushes with the Actions `GITHUB_TOKEN` (such pushes start no workflows), or
+- the run for your push is red.
 
 ```bash
 node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
 ```
 
-- `--yes` skips confirmation prompts (agent should not wait for human input)
-- The script automatically refreshes local missing-term files after upload (removes translated terms from batch files)
-- The script reads `POEDITOR_TOKEN` from `.env` automatically
-- Rate limit: POEditor allows 1 upload per 20s — the script handles retries
-
-### 4f. Commit the refreshed batch files (only if 4e succeeded) <!-- learned: 2026-04-09 -->
-
-If the upload succeeded and the batch files were refreshed by POEditor, commit the updated files:
-
-```bash
-git add locale/terms/missing/<CODE>/
-git commit -m "locale: update missing terms for <CODE> after POEditor upload"
-git push origin $(git branch --show-current)
-```
-
-This keeps the branch in sync with POEditor's state — the next agent session (or resume) sees accurate remaining work.
-
-**Skip this step if upload failed** — nothing changed locally, nothing to commit.
-
-**If upload fails:** Log the error, **skip step 4f**, and continue to the next locale. The upload can be retried later with `npm run locale:upload:missing -- --locale <CODE>`. The committed+pushed translations are safe on the branch regardless.
-
-**Why upload immediately?** If the agent times out, all committed+uploaded locales are already in POEditor. Without this step, someone must manually run the upload for all translated locales.
+The script reads `POEDITOR_TOKEN` from `.env`. POEditor allows one upload per ~20s; the script retries.
 
 ---
 
@@ -197,9 +181,8 @@ Return: "✅ Applied N translations to locale/terms/missing/<CODE>/<CODE>-1.json
 **Critical:** The sub-agent MUST apply before returning. If it only produces translations without applying, the work is lost.
 
 **After sub-agent returns:** The parent agent MUST immediately:
-1. `git add locale/terms/missing/<CODE>/` + `git commit` + `git push` (or `report_progress`)
-2. `node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`
-3. Only THEN proceed to the next locale
+1. `git add locale/terms/missing/<CODE>/` + `git commit` + `git push` (or `report_progress`); the push uploads it (4e)
+2. Only THEN proceed to the next locale
 
 ---
 
@@ -278,7 +261,6 @@ print(f\"fil: {len(d.get('fil', []))} terms\")
 
 - [`/locale-release`](./locale-release.md) — release-time wrapper: regenerates missing terms, invokes this command, then downloads approved translations.
 - [`/locale-translate-agent-prompt`](./locale-translate-agent-prompt.md) — copy-paste prompt template for Copilot / remote agents (same workflow, different framing).
-- [`locale-cloud-safe-translation.md`](../../.agents/skills/churchcrm/locale-cloud-safe-translation.md) — branch-manager internals, branch naming (`locale/{v}-{YYYY-MM-DD}-{HHMMSS}`), cloud-resume mechanics.
-- [`locale-stack-ranking.md`](../../.agents/skills/churchcrm/locale-stack-ranking.md) — **authoritative** TIER-1/2/3 prioritization (the list in Step 5 above mirrors this).
-- [`locale-ai-translation.md`](../../.agents/skills/churchcrm/locale-ai-translation.md) — **authoritative** church vocabulary / denomination context (the summary in Step 4b above mirrors this).
+- [`locale-branch-manager.js`](../../locale/scripts/locale-branch-manager.js) — branch naming (`locale/translate/{v}-{YYYY-MM-DD}-{HHMMSS}`), commit-and-push helper.
+- [`locale-translate-agent-prompt.md`](./locale-translate-agent-prompt.md) — church vocabulary and denomination context (Step 4b mirrors it).
 - [`i18n-localization.md`](../../.agents/skills/churchcrm/i18n-localization.md) — adding UI terms, `gettext`/`i18next.t` usage, and what NOT to wrap (brand/technical literals).

@@ -24,7 +24,7 @@ permissions:
 jobs:
   start-release:
     timeout-minutes: 20
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository

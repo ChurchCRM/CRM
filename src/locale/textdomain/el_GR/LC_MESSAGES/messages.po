@@ -12294,16 +12294,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Πώς συνδέονται το Κατηχητικό + Εκδηλώσεις + Κιόσκια"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Μη έγκυρη ημερομηνία για %s — αναμένεται YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Μη έγκυρη μορφή ημερομηνίας για rangeStart ή rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Μη έγκυρη ημερομηνία· αναμένεται μορφή YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12532,10 +12524,6 @@ msgstr "Η ημερομηνία λήξης πρέπει να είναι μετά
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "Το eventIds πρέπει να είναι μη κενός πίνακας"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "μη έγκυρος τύπος επανάληψης"
 
 #: 
 msgid "personIds must be a non-empty array"

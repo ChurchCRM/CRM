@@ -33,7 +33,7 @@ jobs:
     if: github.ref != 'refs/heads/master'
     name: Generate and validate OpenAPI specs
     timeout-minutes: 15
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
@@ -67,7 +67,7 @@ jobs:
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     name: Generate, validate, and publish OpenAPI specs
     timeout-minutes: 15
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     steps:

@@ -12261,16 +12261,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Kuinka pyhäkoulu, tapahtumat ja kioskitoiminnot liittyvät yhteen"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Virheellinen päivämäärä kohteelle %s — odotetaan muotoa VVVV-KK-PP"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Virheellinen päivämäärämuoto rangeStart- tai rangeEnd-kentässä"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Virheellinen päivämäärä; odotetaan muotoa VVVV-KK-PP"
 
 #: 
 msgid "Invalid event type ID"
@@ -12499,10 +12491,6 @@ msgstr "endDate-arvon on oltava startDate-arvon jälkeen"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds-arvon on oltava ei-tyhjä taulukko"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "virheellinen toistuvuustyyppi"
 
 #: 
 msgid "personIds must be a non-empty array"
