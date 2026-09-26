@@ -73,7 +73,7 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}:/app \
           -w /app/src \
-          php:8.4-cli \
+          composer:latest \
           composer install --no-dev --no-interaction --prefer-dist
       env:
         COMPOSER_MEMORY_LIMIT: -1
@@ -81,13 +81,8 @@ jobs:
     - name: Build app
       run: npm run package
 
-    - name: Validate PHP syntax (via Docker)
-      run: |
-        docker run --rm \
-          -v ${{ github.workspace }}:/app \
-          -w /app \
-          php:8.4-cli \
-          npm run build:php:validate:all
+    - name: Validate PHP syntax
+      run: npm run build:php:validate:all
 
     - name: Build Docker images (PHP 8.4 and 8.5)
       run: |
