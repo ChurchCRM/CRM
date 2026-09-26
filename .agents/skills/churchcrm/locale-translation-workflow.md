@@ -55,7 +55,7 @@ ChurchCRM translations follow a **three-phase process** with durability guarante
 # MANDATORY: Branch is created automatically by /locale-translate --init
 # Never reuse a prior run's locale/* branch, even from earlier the same day
 ```
-Branch format: `locale/{VERSION}-{YYYY-MM-DD}-{HHMMSS}` (e.g., `locale/7.2.0-2026-04-22-174530`)
+Branch format: `locale/translate/{VERSION}-{YYYY-MM-DD}-{HHMMSS}` (e.g., `locale/translate/7.2.0-2026-04-22-174530`). Pushing to it runs `locale-upload-missing.yml`. See [`docs/locale-pipeline.md`](../../../docs/locale-pipeline.md).
 
 **Why:** Unique timestamps prevent collisions when running multiple sessions per day.
 
@@ -76,11 +76,8 @@ git push origin $(git branch --show-current)
 
 **Why:** Remote work survives cloud session timeouts.
 
-### Rule 4: Upload to POEditor after EVERY push
-```bash
-# MANDATORY: Saves work to cloud
-node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
-```
+### Rule 4: The push uploads to POEditor
+Every push to `locale/translate/**` runs `locale-upload-missing.yml`, which uploads the changed locales and starts the POEditor sync. Upload by hand (`node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`) only if that run failed or your push used the Actions `GITHUB_TOKEN`.
 
 **Why:** POEditor is the source of truth for what's been reviewed. Uploaded terms won't be retranslated if you resume.
 
@@ -90,7 +87,7 @@ node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
 # Do: Run /locale-translate --all again
 
 /locale-translate --all
-# → Automatically creates a fresh locale/{version}-{date}-{time} branch
+# → Automatically creates a fresh locale/translate/{version}-{date}-{time} branch
 # → Already-uploaded terms are skipped by POEditor
 # → No duplicates
 ```
@@ -171,7 +168,7 @@ et
 2. **Apply church-appropriate vocabulary** (see Church Vocabulary table below)
 3. **Commit immediately** — one commit per locale, never batched
 4. **Push immediately** — work is on remote, safe from session timeout
-5. **Upload to POEditor immediately** — `node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`
+5. **The push uploads it** — `locale-upload-missing.yml` sends the locale to POEditor
 
 **Example commit message:**
 ```
@@ -350,7 +347,7 @@ git push origin --delete locale/7.2.0-2026-04-27-143015
 |----------|---------|
 | **Cloud timeout at locale 20 of 39** | First 20 locales are committed, pushed, and already in POEditor. Resume with a new branch — remaining locales continue; no duplicates. |
 | **Local machine crash** | All completed work was pushed — nothing lost. |
-| **Want to inspect a specific run** | `git log origin/locale/{version}-*` — each session's work is immutable on its own branch. |
+| **Want to inspect a specific run** | `git log origin/locale/translate/{version}-*` — each session's work is immutable on its own branch. |
 | **Upload failure for one locale** | Translation is still committed + pushed. Retry upload with `npm run locale:upload:missing -- --locale <CODE>`. |
 
 ---

@@ -1,0 +1,118 @@
+name: "Locale: upload missing terms"
+
+# Uploads translated missing-term batches (locale/terms/missing/<locale>/) to
+# POEditor, then starts "Locale Sync POEditor" so the translations come back
+# to master as a PR. Replaces running poeditor-upload-missing.js by hand.
+#
+# Triggers:
+#   - push to a translation branch (locale/translate/**, cut by
+#     locale-branch-manager.js): uploads only the locales changed by that push
+#   - manual run: the locales you list, or every locale with batch files
+#
+# Pushes made with GITHUB_TOKEN do not start workflows, so a translation agent
+# must push with its own credentials for the push trigger to fire.
+
+on:
+  push:
+    branches:
+      - 'locale/translate/**'
+    paths:
+      - 'locale/terms/missing/**'
+  workflow_dispatch:
+    inputs:
+      locales:
+        description: 'Comma-separated POEditor codes (e.g. de,ru,es-CO). Blank = every locale with batch files.'
+        required: false
+        type: string
+      sync:
+        description: 'Start "Locale Sync POEditor" afterwards'
+        required: false
+        type: boolean
+        default: true
+
+# One upload at a time: POEditor allows one upload per ~20s per project.
+concurrency:
+  group: locale-upload-missing
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  upload:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      actions: write
+    env:
+      POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js (from .nvmrc)
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install locale script dependencies
+        run: npm ci --prefix locale/scripts
+
+      - name: Check POEditor token
+        run: |
+          if [ -z "$POEDITOR_TOKEN" ]; then
+            echo "::error::POEDITOR_TOKEN secret is not set."
+            exit 1
+          fi
+
+      - name: Resolve locales to upload
+        id: locales
+        env:
+          EVENT: ${{ github.event_name }}
+          INPUT_LOCALES: ${{ inputs.locales }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          changed_locales() {
+            git diff --name-only "$1" HEAD -- locale/terms/missing \
+              | awk -F/ 'NF >= 5 { print $4 }' | sort -u | paste -sd, -
+          }
+
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            locales="${INPUT_LOCALES// /}"
+          elif [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            locales=$(changed_locales "$(git merge-base origin/master HEAD)")
+          else
+            locales=$(changed_locales "$BEFORE")
+          fi
+
+          if ! [[ "$locales" =~ ^[A-Za-z,-]*$ ]]; then
+            echo "::error::Unexpected locale list: $locales"
+            exit 1
+          fi
+          if [ "$EVENT" = "push" ] && [ -z "$locales" ]; then
+            echo "No locale batch files changed in this push."
+          fi
+          echo "locales=$locales" >> "$GITHUB_OUTPUT"
+          echo "Locales: ${locales:-<all>}"
+
+      - name: Upload to POEditor
+        if: github.event_name == 'workflow_dispatch' || steps.locales.outputs.locales != ''
+        env:
+          LOCALES: ${{ steps.locales.outputs.locales }}
+        run: |
+          set -euo pipefail
+          args=(--yes --no-download)
+          if [ -n "$LOCALES" ]; then args+=(--locale "$LOCALES"); fi
+          node locale/scripts/poeditor-upload-missing.js "${args[@]}"
+
+      - name: Start POEditor sync
+        if: (github.event_name == 'push' && steps.locales.outputs.locales != '') || (github.event_name == 'workflow_dispatch' && inputs.sync)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh workflow run locale-sync-poeditor.yml --ref master

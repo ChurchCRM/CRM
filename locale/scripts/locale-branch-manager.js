@@ -5,7 +5,7 @@
  *
  * Manages git branch creation, detection, and resumption for /locale-translate skill.
  * Prevents data loss on cloud system timeouts by:
- * - Creating a dedicated locale branch (locale/{VERSION}-{DATE})
+ * - Creating a dedicated locale branch (locale/translate/{VERSION}-{DATE}-{TIME})
  * - Committing and pushing after every locale
  * - Supporting resume from interrupted sessions
  *
@@ -94,32 +94,33 @@ function getAutoVersion() {
  * Build branch name from version, date, and time.
  * A HHMMSS suffix is appended to guarantee each invocation produces a
  * fresh, unique branch — never reusing a prior day's or prior run's branch.
- * Example: locales/7.1.0-2026-04-01-174530
+ * Example: locale/translate/7.1.0-2026-04-01-174530
+ * The `locale/translate/` prefix triggers .github/workflows/locale-upload-missing.yml.
  */
 function buildBranchName(version) {
     const date = getTodayDate();
     const time = getCurrentTime();
-    return `locales/${version}-${date}-${time}`;
+    return `locale/translate/${version}-${date}-${time}`;
 }
 
 /**
  * Check if current branch is a locale branch.
- * Accepts both the current `locales/{v}-YYYY-MM-DD-HHMMSS` form and the
- * legacy `locale/{v}-YYYY-MM-DD` form (so existing in-flight branches
- * still detect correctly during the rollout).
+ * Accepts the current `locale/translate/{v}-YYYY-MM-DD-HHMMSS` form and the
+ * legacy `locales/{v}-…` / `locale/{v}-YYYY-MM-DD` forms, so in-flight
+ * branches still detect correctly.
  */
+const LOCALE_BRANCH_PATTERN = /^(?:locale\/translate|locales?)\/([\w.-]+)-\d{4}-\d{2}-\d{2}(?:-\d{6})?$/;
+
 function isLocaleBranch(branchName) {
-    return /^locales?\/[\w.-]+-\d{4}-\d{2}-\d{2}(?:-\d{6})?$/.test(branchName);
+    return LOCALE_BRANCH_PATTERN.test(branchName);
 }
 
 /**
  * Extract version from locale branch name.
- * Handles both the current `locales/{v}-YYYY-MM-DD-HHMMSS` form and the
- * legacy `locale/{v}-YYYY-MM-DD` form.
- * Example: locales/7.1.0-2026-04-01-174530 → 7.1.0
+ * Example: locale/translate/7.1.0-2026-04-01-174530 → 7.1.0
  */
 function extractVersionFromBranch(branchName) {
-    const match = branchName.match(/^locales?\/([\w.-]+)-\d{4}-\d{2}-\d{2}(?:-\d{6})?$/);
+    const match = branchName.match(LOCALE_BRANCH_PATTERN);
     return match ? match[1] : null;
 }
 
