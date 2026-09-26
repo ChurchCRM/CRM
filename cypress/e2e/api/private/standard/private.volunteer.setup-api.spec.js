@@ -16,8 +16,10 @@
  * Plus the §2.3 / §2.6 data rules: a unique ministry name, a team name unique
  * inside its ministry, a case-insensitive position-name duplicate check inside
  * one (ministry, team) scope — the explicit check that compensates for MySQL
- * treating NULLs as distinct in `vpos_ministry_team_name_uidx` — and the two
- * "deactivate before delete" 409 rule (2026-09-17: an active ministry is never deleted; a deactivated one takes everything with it).
+ * treating NULLs as distinct in `vpos_ministry_team_name_uidx` — and the delete
+ * rules: an active ministry is refused with 409 and a deactivated one takes
+ * everything with it (2026-09-17); a team or a position deletes straight away and
+ * takes everything under it, service history included (2026-09-26).
  *
  * Tiers exercised (design §6.4 fixture table):
  *   person 1   `admin.api.key`      administrator — bypasses every ROLE gate
@@ -35,8 +37,8 @@
  * never assert on wording.
  *
  * Rows that have no endpoint yet (schedules, occurrences, qualifications) go in
- * through `cy.dbQuery()` — they exist as tables from #9705 and are what the two
- * 409 rules are about. Cleanup runs in `before` AND `after` (cypress-testing.md:
+ * through `cy.dbQuery()` — they exist as tables from #9705 and are what the delete
+ * rules are about. Cleanup runs in `before` AND `after` (cypress-testing.md:
  * an `after` hook does not run when the runner crashes mid-spec).
  */
 
@@ -673,31 +675,87 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             );
         });
 
-        it("refuses (409) to delete a team that still owns positions", () => {
+        it("deletes a team together with everything under it (2026-09-26)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${MINISTRIES_URL}/${ministryA}/positions`,
                 { name: `${PREFIX} Team Scoped`, teamId: teamA },
                 201,
             ).then((created) => {
+                const positionId = created.body.position.id;
+
+                // A revoked qualification is listed on no screen, and it used to be
+                // what kept both the position and its team from ever being deleted.
                 cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `/api/ministries/teams/${teamA}`,
-                    null,
-                    409,
-                );
+                    "POST",
+                    `/api/ministries/positions/${positionId}/qualifications`,
+                    { personId: 4 },
+                    [200, 201],
+                ).then((resp) => {
+                    cy.makePrivateAdminAPICall(
+                        "DELETE",
+                        `/api/ministries/qualifications/${resp.body.qualification.id}`,
+                        null,
+                        200,
+                    );
+                });
                 cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `/api/ministries/positions/${created.body.position.id}`,
-                    null,
-                    200,
+                    "POST",
+                    SCOPES_URL,
+                    { personId: PERSON_COORDINATOR, scopeType: "team", scopeId: teamA },
+                    [200, 201],
                 );
-                cy.makePrivateAdminAPICall(
-                    "DELETE",
-                    `/api/ministries/teams/${teamA}`,
-                    null,
-                    200,
-                );
+
+                dbOk(
+                    `INSERT INTO volunteer_schedule_vsch
+                       (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
+                     VALUES (?, ?, ?, 'standalone', '2026-09-13', 56, 1)`,
+                    [ministryA, teamA, `${PREFIX} Team Weekly`],
+                ).then((scheduleRows) => {
+                    const scheduleId = scheduleRows.insertId;
+                    dbOk(
+                        `INSERT INTO volunteer_requirement_vreq (vreq_vsch_ID, vreq_vpos_ID, vreq_MinCount)
+                         VALUES (?, ?, 1)`,
+                        [scheduleId, positionId],
+                    );
+                    dbOk(
+                        `INSERT INTO volunteer_occurrence_vocc
+                           (vocc_vsch_ID, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
+                         VALUES (?, '2026-09-13', 'scheduled', NOW())`,
+                        [scheduleId],
+                    ).then((occurrenceRows) => {
+                        const occurrenceId = occurrenceRows.insertId;
+                        // Past service history: the delete removes it on purpose.
+                        dbOk(
+                            `INSERT INTO volunteer_assignment_vasg
+                               (vasg_vocc_ID, vasg_vpos_ID, vasg_per_ID, vasg_Status, vasg_Source, vasg_AssignedDate)
+                             VALUES (?, ?, 4, 'accepted', 'coordinator', NOW())`,
+                            [occurrenceId, positionId],
+                        );
+
+                        cy.makePrivateAdminAPICall("DELETE", `/api/ministries/teams/${teamA}`, null, 200);
+                        cy.makePrivateAdminAPICall("GET", `/api/ministries/teams/${teamA}`, null, 404);
+
+                        const gone = [
+                            ["positions", "SELECT COUNT(*) AS c FROM volunteer_position_vpos WHERE vpos_ID = ?", positionId],
+                            ["qualifications", "SELECT COUNT(*) AS c FROM volunteer_qualification_vqal WHERE vqal_vpos_ID = ?", positionId],
+                            ["requirements", "SELECT COUNT(*) AS c FROM volunteer_requirement_vreq WHERE vreq_vpos_ID = ?", positionId],
+                            ["schedules", "SELECT COUNT(*) AS c FROM volunteer_schedule_vsch WHERE vsch_ID = ?", scheduleId],
+                            ["occurrences", "SELECT COUNT(*) AS c FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?", scheduleId],
+                            ["assignments", "SELECT COUNT(*) AS c FROM volunteer_assignment_vasg WHERE vasg_vocc_ID = ?", occurrenceId],
+                            [
+                                "team-leader grants",
+                                "SELECT COUNT(*) AS c FROM volunteer_scope_vscp WHERE vscp_ScopeType = 'team' AND vscp_ScopeId = ?",
+                                teamA,
+                            ],
+                        ];
+                        gone.forEach(([label, sql, id]) => {
+                            dbOk(sql, [id]).then((rows) => {
+                                expect(Number(rows[0].c), label).to.eq(0);
+                            });
+                        });
+                    });
+                });
             });
         });
     });
@@ -933,35 +991,64 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
             });
         });
 
-        it("refuses (409) to delete a position that is already referenced", () => {
+        it("deletes a position together with its qualifications, staffing needs and assignments (2026-09-26)", () => {
             cy.then(() => {
+                // One active and one REVOKED qualification: the revoked row is listed on
+                // no screen, and it used to be what made the delete impossible.
                 dbOk(
                     `INSERT INTO volunteer_qualification_vqal
                        (vqal_per_ID, vqal_vpos_ID, vqal_Active, vqal_GrantedDate)
-                     VALUES (1, ?, 1, NOW())`,
-                    [positionId],
+                     VALUES (1, ?, 1, NOW()), (4, ?, 0, NOW())`,
+                    [positionId, positionId],
                 );
-            });
-            cy.makePrivateAdminAPICall(
-                "DELETE",
-                `/api/ministries/positions/${positionId}`,
-                null,
-                409,
-            ).then((resp) => {
-                expect(resp.body).to.have.property("success", false);
-            });
-            cy.then(() => {
                 dbOk(
-                    `DELETE FROM volunteer_qualification_vqal WHERE vqal_vpos_ID = ?`,
-                    [positionId],
-                );
+                    `INSERT INTO volunteer_schedule_vsch
+                       (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
+                     VALUES (?, ?, ?, 'standalone', '2026-09-13', 56, 1)`,
+                    [ministryA, homeTeamId, `${PREFIX} Position Weekly`],
+                ).then((scheduleRows) => {
+                    const scheduleId = scheduleRows.insertId;
+                    dbOk(
+                        `INSERT INTO volunteer_requirement_vreq (vreq_vsch_ID, vreq_vpos_ID, vreq_MinCount)
+                         VALUES (?, ?, 1)`,
+                        [scheduleId, positionId],
+                    );
+                    dbOk(
+                        `INSERT INTO volunteer_occurrence_vocc
+                           (vocc_vsch_ID, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
+                         VALUES (?, '2026-09-13', 'scheduled', NOW())`,
+                        [scheduleId],
+                    ).then((occurrenceRows) => {
+                        const occurrenceId = occurrenceRows.insertId;
+                        dbOk(
+                            `INSERT INTO volunteer_assignment_vasg
+                               (vasg_vocc_ID, vasg_vpos_ID, vasg_per_ID, vasg_Status, vasg_Source, vasg_AssignedDate)
+                             VALUES (?, ?, 4, 'accepted', 'coordinator', NOW())`,
+                            [occurrenceId, positionId],
+                        );
+
+                        cy.makePrivateAdminAPICall("DELETE", `/api/ministries/positions/${positionId}`, null, 200);
+                        cy.makePrivateAdminAPICall("GET", `/api/ministries/positions/${positionId}`, null, 404);
+
+                        const gone = [
+                            ["qualifications", "SELECT COUNT(*) AS c FROM volunteer_qualification_vqal WHERE vqal_vpos_ID = ?", positionId],
+                            ["requirements", "SELECT COUNT(*) AS c FROM volunteer_requirement_vreq WHERE vreq_vpos_ID = ?", positionId],
+                            ["assignments", "SELECT COUNT(*) AS c FROM volunteer_assignment_vasg WHERE vasg_vpos_ID = ?", positionId],
+                        ];
+                        gone.forEach(([label, sql, id]) => {
+                            dbOk(sql, [id]).then((rows) => {
+                                expect(Number(rows[0].c), label).to.eq(0);
+                            });
+                        });
+                        // The schedule and its occurrence belong to the team, not the position.
+                        dbOk("SELECT COUNT(*) AS c FROM volunteer_occurrence_vocc WHERE vocc_ID = ?", [occurrenceId]).then(
+                            (rows) => {
+                                expect(Number(rows[0].c), "occurrence kept").to.eq(1);
+                            },
+                        );
+                    });
+                });
             });
-            cy.makePrivateAdminAPICall(
-                "DELETE",
-                `/api/ministries/positions/${positionId}`,
-                null,
-                200,
-            );
         });
 
         it("returns 404 for a position that does not exist", () => {

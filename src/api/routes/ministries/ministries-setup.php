@@ -974,15 +974,15 @@ function updateVolunteerTeam(Request $request, Response $response): Response
  * @OA\Delete(
  *     path="/ministries/teams/{teamId}",
  *     operationId="deleteVolunteerTeam",
- *     summary="Delete a team that is neither the ministry's last nor still in use",
- *     description="Returns 409 when this is the ministry's ONLY team - a ministry always has at least one, so the answer is to rename it - and also while the team still owns positions or schedules, which vpos_vtem_ID / vsch_vtem_ID would cascade away with it.",
+ *     summary="Delete a team and everything under it",
+ *     description="Removes the team's positions with their qualifications and staffing requirements, its schedules and occurrences, every assignment on them (service history included) and its team-leader grants, in one transaction. Deactivate the team instead to keep its history. Returns 409 when this is the ministry's ONLY team - a ministry always has at least one, so the answer is to rename it.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such team"),
- *     @OA\Response(response=409, description="This is the ministry's only team, or it still owns positions or schedules"),
+ *     @OA\Response(response=409, description="This is the ministry's only team"),
  *     @OA\Response(response=200, description="Deleted")
  * )
  */
@@ -1315,15 +1315,14 @@ function updateVolunteerPosition(Request $request, Response $response): Response
  * @OA\Delete(
  *     path="/ministries/positions/{positionId}",
  *     operationId="deleteVolunteerPosition",
- *     summary="Delete a position that nothing references",
- *     description="Returns 409, naming the counts, once qualifications, staffing requirements or assignments reference the position - deactivate it instead (design §2.6).",
+ *     summary="Delete a position and everything that references it",
+ *     description="Removes the position's qualifications (revoked ones included), staffing requirements and assignments, service history included, in one transaction. Deactivate the position instead to keep its history (design §2.6).",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="positionId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this position, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such position"),
- *     @OA\Response(response=409, description="The position is still referenced"),
  *     @OA\Response(response=200, description="Deleted")
  * )
  */

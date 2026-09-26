@@ -54,13 +54,16 @@ use Psr\Log\LoggerInterface;
  *
  * Two rules run through the whole file and are worth stating once:
  *
- *   **Deactivate, never delete, once referenced.** A position with
- *   qualifications, requirements or assignments is refused with 409 and a count
- *   (§2.6); a ministry with occurrences or assignments likewise (§3.3.1). Both
- *   mirror `DELETE /api/volunteer-opportunities/{id}`
- *   (`src/api/routes/system/volunteer-opportunities.php`), which deliberately
- *   diverges from V1's cascading editor. History is not a coordinator's to
- *   destroy by accident.
+ *   **Deactivate to keep history; delete takes everything.** Deactivating is
+ *   how a ministry, team or position is retired with its service history intact
+ *   (§2.6, #9715). Deleting is total: the row goes with everything under it,
+ *   past assignments included, and the confirmation dialog says so. A ministry
+ *   must be deactivated first (2026-09-17); a team or a position deletes
+ *   straight away (2026-09-26). The one refusal left is structural — a
+ *   ministry's last team (D18). The earlier "409 once referenced" rule was
+ *   dropped because revoked qualifications, which no screen lists, counted as
+ *   references: a position anybody had ever been qualified for could never be
+ *   deleted, and so neither could its team.
  *
  *   **Names are checked in PHP, not left to the index.** `vmin_name_uidx`,
  *   `vtem_ministry_name_uidx` and `vpos_ministry_team_name_uidx` would each raise
@@ -659,19 +662,25 @@ class VolunteerMinistryService
     }
 
     /**
-     * Delete a team, but only while nothing hangs off it **and it is not the last
-     * team its ministry has**.
+     * Delete a team and EVERYTHING under it (product-owner decision, 2026-09-26):
+     * its positions with their qualifications — revoked ones included — and staffing
+     * requirements, its schedules with their occurrences, every assignment on any of
+     * those with its responses, swaps and outbox rows, and its team-leader grants.
+     * Service history goes too; deactivating the team is how to keep it, and the
+     * confirmation dialog says so.
      *
-     * D18: a ministry always has at least one team, so the last one cannot be
-     * deleted — the 409 says to rename it instead, because renaming is what a
-     * coordinator who wants "a different team" actually wants, and the only other
+     * D18 still holds: a ministry always has at least one team, so the last one
+     * cannot be deleted — the 409 says to rename it instead, because renaming is what
+     * a coordinator who wants "a different team" actually wants, and the only other
      * way out would be to leave the ministry in a state positions and schedules
      * cannot be created in at all.
      *
-     * A team that still owns positions or schedules is refused too: `vpos_vtem_ID`
-     * and `vsch_vtem_ID` are `ON DELETE CASCADE`, so deleting such a team would
-     * silently take real setup — and, through the schedule, real occurrences —
-     * with it. Empty, non-last teams delete.
+     * The foreign keys do most of the work: `vpos_vtem_ID` and `vsch_vtem_ID` are
+     * `ON DELETE CASCADE`, and everything under a position or a schedule cascades
+     * from it. Two things are done by hand in the same transaction, for the reasons
+     * `deleteMinistry()` gives: assignments FIRST, because their position key is
+     * RESTRICT and InnoDB's cascade order is not something to rely on, and the
+     * team-leader scope rows, whose polymorphic target carries no foreign key (§2.15).
      *
      * @throws VolunteerException
      */
@@ -692,22 +701,18 @@ class VolunteerMinistryService
             );
         }
 
-        $positionCount = VolunteerPositionQuery::create()->filterByTeamId($teamId)->count();
-        $scheduleCount = VolunteerScheduleQuery::create()->filterByTeamId($teamId)->count();
-
-        if ($positionCount > 0 || $scheduleCount > 0) {
-            throw VolunteerException::conflict(sprintf(
-                gettext('This team still has %1$d positions and %2$d schedules. Move or remove them first, or deactivate the team.'),
-                $positionCount,
-                $scheduleCount
-            ));
-        }
+        $positionIds = $this->idsOf(VolunteerPositionQuery::create()->filterByTeamId($teamId));
+        $scheduleIds = $this->idsOf(VolunteerScheduleQuery::create()->filterByTeamId($teamId));
+        $occurrenceIds = $scheduleIds === []
+            ? []
+            : $this->idsOf(VolunteerOccurrenceQuery::create()->filterByScheduleId($scheduleIds, Criteria::IN));
 
         $connection = Propel::getWriteConnection(VolunteerTeamTableMap::DATABASE_NAME);
         $connection->beginTransaction();
 
         try {
-            VolunteerScopeQuery::create()
+            $removedAssignments = $this->deleteAssignments($positionIds, $occurrenceIds, $connection);
+            $removedScopes = VolunteerScopeQuery::create()
                 ->filterByScopeType(VolunteerScope::TYPE_TEAM)
                 ->filterByScopeId($teamId)
                 ->delete($connection);
@@ -716,6 +721,12 @@ class VolunteerMinistryService
 
             $this->logger->info('Volunteer team deleted', [
                 'teamId' => $teamId,
+                'ministryId' => (int) $team->getMinistryId(),
+                'positions' => count($positionIds),
+                'schedules' => count($scheduleIds),
+                'occurrences' => count($occurrenceIds),
+                'removedAssignmentRows' => $removedAssignments,
+                'removedScopeRows' => $removedScopes,
                 'actor' => $actor->getId(),
             ]);
         } catch (\Throwable $e) {
@@ -910,10 +921,14 @@ class VolunteerMinistryService
     }
 
     /**
-     * Delete a position, but only while nothing references it: qualifications,
-     * staffing requirements or assignments all make it history (§2.6). The 409
-     * message names the counts so the coordinator knows why, and deactivation is
-     * the documented alternative.
+     * Delete a position and everything that references it (product-owner decision,
+     * 2026-09-26): its qualifications — revoked ones included, which no screen lists
+     * and so must never be what blocks the delete — its staffing requirements, and
+     * every assignment to it, service history included. Deactivating is how to retire
+     * a position and keep its history (§2.6, #9715); the confirmation dialog says so.
+     *
+     * Assignments go first by hand because `vasg_vpos_ID` is RESTRICT; the
+     * qualification and requirement keys cascade from the position row.
      *
      * @throws VolunteerException
      */
@@ -924,23 +939,55 @@ class VolunteerMinistryService
         $positionId = (int) $position->getId();
         $qualificationCount = VolunteerQualificationQuery::create()->filterByPositionId($positionId)->count();
         $requirementCount = VolunteerRequirementQuery::create()->filterByPositionId($positionId)->count();
-        $assignmentCount = VolunteerAssignmentQuery::create()->filterByPositionId($positionId)->count();
 
-        if ($qualificationCount > 0 || $requirementCount > 0 || $assignmentCount > 0) {
-            throw VolunteerException::conflict(sprintf(
-                gettext('This position is referenced by %1$d qualifications, %2$d staffing requirements and %3$d assignments. Deactivate it instead of deleting it.'),
-                $qualificationCount,
-                $requirementCount,
-                $assignmentCount
-            ));
+        $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            $removedAssignments = $this->deleteAssignments([$positionId], [], $connection);
+            $position->delete($connection);
+            $connection->commit();
+
+            $this->logger->info('Volunteer position deleted', [
+                'positionId' => $positionId,
+                'qualifications' => $qualificationCount,
+                'requirements' => $requirementCount,
+                'removedAssignmentRows' => $removedAssignments,
+                'actor' => $actor->getId(),
+            ]);
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Delete the assignments on any of these positions or occurrences and return how
+     * many went; their responses, swaps and outbox rows cascade from them. Done by
+     * hand before a position is deleted because `vasg_vpos_ID` is RESTRICT. Two
+     * statements rather than one OR, so an empty list never becomes `IN ()`.
+     *
+     * @param int[] $positionIds
+     * @param int[] $occurrenceIds
+     */
+    private function deleteAssignments(array $positionIds, array $occurrenceIds, $connection): int
+    {
+        $removed = 0;
+
+        if ($positionIds !== []) {
+            $removed += VolunteerAssignmentQuery::create()
+                ->filterByPositionId($positionIds, Criteria::IN)
+                ->delete($connection);
         }
 
-        $position->delete();
+        if ($occurrenceIds !== []) {
+            $removed += VolunteerAssignmentQuery::create()
+                ->filterByOccurrenceId($occurrenceIds, Criteria::IN)
+                ->delete($connection);
+        }
 
-        $this->logger->info('Volunteer position deleted', [
-            'positionId' => $positionId,
-            'actor' => $actor->getId(),
-        ]);
+        return $removed;
     }
 
     /**
@@ -1743,6 +1790,16 @@ class VolunteerMinistryService
         if ($query->count() > 0) {
             throw VolunteerException::conflict(gettext('A position with that name already exists in this ministry'));
         }
+    }
+
+    /**
+     * The primary keys a query matches, as ints, without hydrating a row.
+     *
+     * @return int[]
+     */
+    private function idsOf(ModelCriteria $query): array
+    {
+        return array_map('intval', $query->select('Id')->find()->toArray());
     }
 
     /**

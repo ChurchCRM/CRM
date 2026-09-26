@@ -329,7 +329,10 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
       const positionId = Number(target.dataset.positionId);
       confirmDelete(
         i18next.t("Delete position"),
-        i18next.t("Delete {{name}}? This cannot be undone.", { name: target.dataset.positionName ?? "" }),
+        i18next.t(
+          "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone.",
+          { name: target.dataset.positionName ?? "" },
+        ),
         () => {
           deletePosition(positionId)
             .then(() => {

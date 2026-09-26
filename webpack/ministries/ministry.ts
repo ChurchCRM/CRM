@@ -734,7 +734,10 @@ function wire(): void {
     const teamId = Number(target.dataset.teamId);
     confirmDelete(
       i18next.t("Delete team"),
-      i18next.t("Delete {{name}}? This cannot be undone.", { name: target.dataset.teamName ?? "" }),
+      i18next.t(
+        "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone.",
+        { name: target.dataset.teamName ?? "" },
+      ),
       () => {
         deleteTeam(teamId)
           .then(() => {

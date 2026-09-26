@@ -545,6 +545,16 @@ has nowhere to put a position or a schedule, both of which are now `NOT NULL` on
 Deleting the **ministry** still cascades its teams away as before. UC1 is exactly this shape: Coffee
 Bar is one ministry with the one team it was born with (§5.3).
 
+**Deleting any other team takes everything under it** *(revised 2026-09-26, product owner)*: its
+positions with their qualifications (revoked ones included) and staffing requirements, its schedules
+and occurrences, every assignment on them with their responses, swaps and outbox rows — service
+history included — and its team-leader scope rows, in one transaction. There is no deactivate-first
+gate as there is for a ministry; the confirmation dialog names what goes and points at **Deactivate**
+as the way to keep the history. `deleteTeam()` deletes the assignments by hand first (their position
+key is `RESTRICT`) and the scope rows (no FK, §2.15); the FKs cascade the rest. The earlier rule —
+`409` while the team still owned positions or schedules — was dropped because it chained onto the
+position rule in §2.6, which revoked qualifications made impossible to satisfy.
+
 ### 2.5 Volunteer Pool — the ministry's own Group (D19)
 
 **Purpose.** D1: a Group *is* the roster. D19: **the ministry owns one**, and says so with a
@@ -618,10 +628,10 @@ Teacher. Owned by a ministry; optionally narrowed to a team.
 |---|---|---|---|
 | `vpos_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vpos_vmin_ID` | `MinistryId` | `INTEGER` required | FK → `volunteer_ministry_vmin.vmin_ID`, `ON DELETE CASCADE` |
-| `vpos_vtem_ID` | `TeamId` | `INTEGER` required | FK → `volunteer_team_vtem.vtem_ID`, `ON DELETE CASCADE`. **Every position belongs to a team** (D18); there is no ministry-wide position. `CASCADE` rather than `SET NULL` because the column is `NOT NULL`; it never actually fires, since `deleteTeam()` refuses a team that still owns positions. |
+| `vpos_vtem_ID` | `TeamId` | `INTEGER` required | FK → `volunteer_team_vtem.vtem_ID`, `ON DELETE CASCADE`. **Every position belongs to a team** (D18); there is no ministry-wide position. `CASCADE` rather than `SET NULL` because the column is `NOT NULL`, and it is how `deleteTeam()` takes the team's positions with it (§2.4, revised 2026-09-26). |
 | `vpos_Name` | `Name` | `VARCHAR(100)` required | |
 | `vpos_Description` | `Description` | `VARCHAR(255)` null | "operational requirements" per #9715 live here as prose. |
-| `vpos_Active` | `Active` | `BOOLEAN` required default `1` | #9715: deactivation must not destroy history — so **deactivate, never delete**, once assignments exist. |
+| `vpos_Active` | `Active` | `BOOLEAN` required default `1` | #9715: deactivation must not destroy history — **deactivate** is how a position is retired with its history kept; **delete** removes the history with it (revised 2026-09-26). |
 | `vpos_Recruiting` | `Recruiting` | `tinyint(1)` required default `0` | **"Recruit Volunteers"** (round four): advertise this position **by name** on the Open Opportunities page (§5.6). Independent of the ministry-level `vmin_HelpWanted`, and default **off** — turning V2 on must never publish a position nobody chose. An INACTIVE position is never advertised whatever this says, so `vpos_Active` is the outer gate. |
 | `vpos_Order` | `Order` | `INTEGER` required default `0` | display order within the ministry |
 
@@ -638,10 +648,15 @@ Indexes: `vpos_ministry_team_name_uidx UNIQUE (vpos_vmin_ID, vpos_vtem_ID, vpos_
 > a team, **not** via a `NOT NULL DEFAULT 0` sentinel — that is the `event_types.type_grpid`
 > anti-pattern and it would break the FK.
 
-**Deleting a position** is allowed only when it has no qualifications, requirements or assignments;
-otherwise the API returns `409` with a count, mirroring `DELETE /api/volunteer-opportunities/{id}`
-(`src/api/routes/system/volunteer-opportunities.php:232-264`, which deliberately diverges from V1's
-cascading editor). Coordinators deactivate instead.
+**Deleting a position** *(revised 2026-09-26, product owner)* removes it with its qualifications —
+revoked ones included — its staffing requirements and every assignment to it, service history
+included, in one transaction; `deletePosition()` deletes the assignments by hand first because
+`vasg_vpos_ID` is `RESTRICT`, and the other keys cascade. The confirmation dialog names what goes and
+points at **Deactivate** as the way to keep the history. The original rule — `409` with a count while
+anything referenced the position, mirroring `DELETE /api/volunteer-opportunities/{id}` — was dropped
+because unticking a qualification only revokes it (§2.7): the row stays, no screen lists it, and it
+still counted, so a position anybody had ever been qualified for could never be deleted, and neither
+could its team.
 
 ### 2.7 Qualification — `volunteer_qualification_vqal`
 
@@ -834,7 +849,7 @@ requirements of `MinCount = 1, MaxCount = 1`, one per named position.
 |---|---|---|---|
 | `vasg_ID` | `Id` | `INTEGER` PK autoinc | |
 | `vasg_vocc_ID` | `OccurrenceId` | `INTEGER` required | FK → occurrence, `ON DELETE CASCADE` |
-| `vasg_vpos_ID` | `PositionId` | `INTEGER` required | FK → position, `ON DELETE RESTRICT` (a position with assignments cannot be deleted — §2.6) |
+| `vasg_vpos_ID` | `PositionId` | `INTEGER` required | FK → position, `ON DELETE RESTRICT`, so no ordinary edit can delete a position from under a roster; `deletePosition()`, `deleteTeam()` and `deleteMinistry()` delete the assignments explicitly first (§2.6) |
 | `vasg_per_ID` | `PersonId` | `mediumint(9) unsigned` required | FK → `person_per.per_ID`, `ON DELETE CASCADE` |
 | `vasg_vreq_ID` | `RequirementId` | `INTEGER` null | FK → requirement, `ON DELETE SET NULL`. Which requirement this fills; nullable so an assignment survives a requirement being restructured. |
 | `vasg_Status` | `Status` | `enum('pending','accepted','declined','cancelled','substituted','completed')` required default `'pending'` | §2.11.1 |
@@ -1378,7 +1393,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | DELETE | `/api/ministries/ministries/{ministryId}` | delete | **Manager** | `409` while the ministry is still **active** ("Deactivate this ministry before deleting it."). Once deactivated the delete is total — teams, positions, qualifications, schedules, occurrences, assignments and their responses/swaps/outbox rows, service history included — plus the scope rows (§2.15), the pool Group and the calendar, in one transaction *(revised 2026-09-17; the earlier occurrence/assignment 409 is gone)* |
 | GET | `/api/ministries/ministries/{ministryId}/teams` | list | Coordinator of it | `{teams:[…]}` |
 | POST | `/api/ministries/ministries/{ministryId}/teams` | create | Coordinator of it | `{name,description}` → `201 {team}` |
-| GET/POST/DELETE | `/api/ministries/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware` |
+| GET/POST/DELETE | `/api/ministries/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware`. `DELETE` → `409` only for the ministry's last team (D18); otherwise it takes positions, schedules, occurrences, assignments and team-leader grants with it (§2.4, revised 2026-09-26) |
 | GET | `/api/ministries/ministries/{ministryId}/pool` | who is in the ministry's pool Group (D19) | Coordinator of it | `{groupId,groupName,members:[{personId,displayName,inPool,qualifications[]}]}`, alphabetical |
 | POST | `/api/ministries/ministries/{ministryId}/pool/{personId}` | add to the pool | Coordinator of it — **no `ManageGroups` needed** (§4.6) | `201 {personId,added:true}`; `200 {added:false}` when already there. Writes through the Propel membership model, so `Hooks::GROUP_MEMBER_ADDED` fires (G3) |
 | POST | `/api/ministries/ministries/{ministryId}/pool/from-cart` | **cart sink** (P5/P6): put everyone in the session cart in the pool | Coordinator of it | no body — the people come from `Cart::getCartPeople()` → `200 {added:int, alreadyMembers:int}`; `400` when the cart is empty. Idempotent per person; grants **no** qualification, and the cart is not emptied. This is what "Add from Cart" on S3 calls |
@@ -1388,7 +1403,7 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | GET | `/api/ministries/teams/{teamId}/members` | the same, narrowed to one team's positions | Coordinator / Team Leader | as above |
 | GET | `/api/ministries/ministries/{ministryId}/positions` | list | Coordinator / Team Leader | `?active=1&teamId=` → `{positions:[…]}` |
 | POST | `/api/ministries/ministries/{ministryId}/positions` | create | Coordinator of it | `{name,description,teamId?,order?,recruiting?}` → `201`; `409` duplicate. `recruiting` defaults **false** and is **strictly** boolean — `true`/`false`/`1`/`0` and their string spellings, anything else `400` (the sanitizer has no bool type, and `(bool) "no"` is `true`) |
-| GET/POST/DELETE | `/api/ministries/positions/{positionId}` | read / update / deactivate-or-delete | Coordinator of the ministry | `POST {…,recruiting?}` with the same strict boolean rule; `DELETE` → `409` when referenced (§2.6). Every position on the wire carries `recruiting`, so an absent key never has to be read as "off" |
+| GET/POST/DELETE | `/api/ministries/positions/{positionId}` | read / update / deactivate-or-delete | Coordinator of the ministry | `POST {…,recruiting?}` with the same strict boolean rule; `DELETE` takes qualifications, staffing requirements and assignments with it (§2.6, revised 2026-09-26). Every position on the wire carries `recruiting`, so an absent key never has to be read as "off" |
 | GET | `/api/ministries/positions/{positionId}/qualifications` | who is qualified | Coordinator / Team Leader | `{qualifications:[{id,personId,displayName,active,grantedDate}]}` |
 | POST | `/api/ministries/positions/{positionId}/qualifications` | grant | Coordinator / Team Leader **of that position** | `{personId,notes?}` → `201`; idempotent — re-granting a deactivated row reactivates it |
 | ~~POST~~ | ~~`/api/ministries/positions/{positionId}/qualifications/from-cart`~~ | **RETIRED.** Bulk-qualifying the cart for one position had no caller left once S3's cart dialog stopped asking for a position; the cart now fills the pool instead (`/pool/from-cart` above) | — | — |
