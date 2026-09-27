@@ -93,6 +93,30 @@ class VolunteerCalendarService
     }
 
     /**
+     * Every ministry, ordered by name, for the admin calendar page's "Ministries that may add
+     * events" field. Empty unless the rollout is on and the user may manage the grants.
+     *
+     * @return array<int, array{id: int, name: string, active: bool}>
+     */
+    public function grantableMinistries(User $user): array
+    {
+        if (!User::isVolunteerV2Enabled() || !$user->canManageEvents()) {
+            return [];
+        }
+
+        $ministries = [];
+        foreach (VolunteerMinistryQuery::create()->orderByName()->find() as $ministry) {
+            $ministries[] = [
+                'id' => (int) $ministry->getId(),
+                'name' => (string) $ministry->getName(),
+                'active' => (bool) $ministry->getActive(),
+            ];
+        }
+
+        return $ministries;
+    }
+
+    /**
      * The ministries a calendar is opened to, ordered by name.
      *
      * @return array<int, array{id: int, name: string, active: bool}>

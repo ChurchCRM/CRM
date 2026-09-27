@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Volunteer\Service\VolunteerCalendarService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -25,6 +26,7 @@ $app->get('/calendars', function (Request $request, Response $response) {
 
     $calendarJSArgs = [
         'isModifiable'               => AuthenticationManager::getCurrentUser()->isAddEvent(),
+        'grantMinistries'            => (new VolunteerCalendarService())->grantableMinistries(AuthenticationManager::getCurrentUser()),
         'countCalendarAccessTokens'  => CalendarQuery::create()->filterByAccessToken(null, Criteria::NOT_EQUAL)->count(),
         'bEnableExternalCalendarAPI' => SystemConfig::getBooleanValue('bEnableExternalCalendarAPI'),
         'sTimeZone'                  => SystemConfig::getValue('sTimeZone'),
