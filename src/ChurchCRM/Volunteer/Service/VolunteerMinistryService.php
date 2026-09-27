@@ -601,10 +601,20 @@ class VolunteerMinistryService
      * Create a team under a ministry. Ministry-coordinator scope: a team leader
      * may not create teams (§4.6).
      *
+     * `$classLink` takes the Sunday School class keys of `updateTeam()`, so a team
+     * can be born linked to its class (D23).
+     *
+     * @param array{classGroupId?: int|null, importPositionId?: int|null, importPositionName?: string|null} $classLink
+     *
      * @throws VolunteerException
      */
-    public function createTeam(VolunteerMinistry $ministry, string $name, ?string $description, User $actor): VolunteerTeam
-    {
+    public function createTeam(
+        VolunteerMinistry $ministry,
+        string $name,
+        ?string $description,
+        User $actor,
+        array $classLink = []
+    ): VolunteerTeam {
         $this->assertCanManageMinistry($actor, (int) $ministry->getId());
 
         $name = $this->requireName($name, gettext('A team name is required'));
@@ -615,11 +625,25 @@ class VolunteerMinistryService
         $team->setName($name);
         $team->setDescription($this->normalizeDescription($description));
         $team->setActive(true);
-        $team->save();
+
+        $connection = Propel::getWriteConnection(VolunteerTeamTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            $team->save();
+            $imported = $this->applyClassLink($team, $classLink, $actor);
+            $connection->commit();
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
 
         $this->logger->info('Volunteer team created', [
             'teamId' => $team->getId(),
             'ministryId' => $ministry->getId(),
+            'classGroupId' => $team->getClassGroupId(),
+            'importedTeachers' => $imported,
             'actor' => $actor->getId(),
         ]);
 
@@ -627,14 +651,15 @@ class VolunteerMinistryService
     }
 
     /**
-     * @param array{name?: string, description?: string|null, active?: bool} $fields
+     * @param array{name?: string, description?: string|null, active?: bool, classGroupId?: int|null, importPositionId?: int|null, importPositionName?: string|null} $fields
      *
      * @throws VolunteerException
      */
     public function updateTeam(VolunteerTeam $team, array $fields, User $actor): VolunteerTeam
     {
         // The parent ministry's coordinator, not the team leader: renaming a team
-        // is a ministry-structure change (§4.6 "Create / edit team").
+        // is a ministry-structure change (§4.6 "Create / edit team"), and so is
+        // linking it to a Sunday School class (D23).
         $this->assertCanManageMinistry($actor, (int) $team->getMinistryId());
 
         if (array_key_exists('name', $fields)) {
@@ -651,14 +676,102 @@ class VolunteerMinistryService
             $team->setActive((bool) $fields['active']);
         }
 
-        $team->save();
+        $connection = Propel::getWriteConnection(VolunteerTeamTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            $team->save();
+            $imported = $this->applyClassLink($team, $fields, $actor);
+            $connection->commit();
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
 
         $this->logger->info('Volunteer team updated', [
             'teamId' => $team->getId(),
+            'classGroupId' => $team->getClassGroupId(),
+            'importedTeachers' => $imported,
             'actor' => $actor->getId(),
         ]);
 
         return $team;
+    }
+
+    /**
+     * D23: link the team to a Sunday School class, move it to another, or unlink it,
+     * from `classGroupId` (absent = leave alone, null = unlink). Linking qualifies the
+     * class's current teachers for `importPositionId` — a position of this team — or
+     * for a new position named `importPositionName`, so nobody is entered twice.
+     * Unlinking leaves the class's membership exactly as it is.
+     *
+     * Runs inside the caller's transaction, after the caller asserted ministry
+     * scope, so a team leader never gets here.
+     *
+     * @return int how many teachers were imported
+     *
+     * @throws VolunteerException
+     */
+    private function applyClassLink(VolunteerTeam $team, array $fields, User $actor): int
+    {
+        if (!array_key_exists('classGroupId', $fields)) {
+            return 0;
+        }
+
+        $classGroupId = (int) ($fields['classGroupId'] ?? 0);
+        $classGroupId = $classGroupId > 0 ? $classGroupId : null;
+        $current = $team->getClassGroupId() === null ? null : (int) $team->getClassGroupId();
+        if ($classGroupId === $current) {
+            return 0;
+        }
+
+        if ($classGroupId === null) {
+            $team->setClassGroupId(null);
+            $team->save();
+
+            return 0;
+        }
+
+        $classLinks = new VolunteerClassLinkService();
+        $class = $classLinks->requireLinkableClass($classGroupId, (int) $team->getId());
+        $teacherIds = $classLinks->teacherPersonIds($class);
+        $position = $teacherIds === [] ? null : $this->resolveImportPosition($team, $class, count($teacherIds), $fields, $actor);
+
+        $team->setClassGroupId($classGroupId);
+        $team->save();
+
+        if ($position === null) {
+            return 0;
+        }
+
+        return (new VolunteerQualificationService($this->authz, $this))->importQualifications($teacherIds, $position, $actor);
+    }
+
+    /** @throws VolunteerException 400 when no position of this team was named */
+    private function resolveImportPosition(VolunteerTeam $team, Group $class, int $teacherCount, array $fields, User $actor): VolunteerPosition
+    {
+        $positionId = (int) ($fields['importPositionId'] ?? 0);
+        if ($positionId > 0) {
+            $position = VolunteerPositionQuery::create()->findPk($positionId);
+            if ($position === null || (int) $position->getTeamId() !== (int) $team->getId()) {
+                throw VolunteerException::invalid(gettext('The teachers can only be imported into a position of this team'));
+            }
+
+            return $position;
+        }
+
+        $positionName = trim((string) ($fields['importPositionName'] ?? ''));
+        if ($positionName !== '') {
+            return $this->createPosition($team->getMinistry(), $team, $positionName, null, 0, $actor);
+        }
+
+        throw VolunteerException::invalid(sprintf(
+            gettext('Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d'),
+            $team->getName(),
+            $class->getName(),
+            $teacherCount
+        ))->withExtra(['classGroupId' => (int) $class->getId(), 'teacherCount' => $teacherCount]);
     }
 
     /**
@@ -681,6 +794,9 @@ class VolunteerMinistryService
      * `deleteMinistry()` gives: assignments FIRST, because their position key is
      * RESTRICT and InnoDB's cascade order is not something to rely on, and the
      * team-leader scope rows, whose polymorphic target carries no foreign key (§2.15).
+     *
+     * A linked Sunday School class keeps its membership, teachers included, exactly
+     * as unlinking would leave it (D23): the class is core's, and it goes on meeting.
      *
      * @throws VolunteerException
      */
@@ -851,6 +967,9 @@ class VolunteerMinistryService
                 throw VolunteerException::invalid(gettext('That team belongs to a different ministry'));
             }
             $this->assertCanManageTeam($actor, $targetTeamId);
+            if ($targetTeamId !== (int) $position->getTeamId()) {
+                $this->assertPositionMayChangeTeam($position, $team);
+            }
 
             $position->setTeamId($targetTeamId);
         }
@@ -897,6 +1016,29 @@ class VolunteerMinistryService
     }
 
     /**
+     * D23: a qualification for a position of a linked team is what makes somebody a
+     * teacher of its class, so moving a position that has qualified people into or
+     * out of such a team would change who teaches the class as a side effect.
+     *
+     * @throws VolunteerException 409
+     */
+    private function assertPositionMayChangeTeam(VolunteerPosition $position, VolunteerTeam $target): void
+    {
+        $linked = $target->getClassGroupId() !== null || $position->getTeam()?->getClassGroupId() !== null;
+        if (!$linked) {
+            return;
+        }
+
+        $qualified = VolunteerQualificationQuery::create()
+            ->filterByPositionId((int) $position->getId())
+            ->filterByActive(true)
+            ->count();
+        if ($qualified > 0) {
+            throw VolunteerException::conflict(gettext('A position with qualified volunteers cannot move into or out of a team linked to a Sunday School class, because that would change who teaches the class. Create the position in the other team instead.'));
+        }
+    }
+
+    /**
      * The #9715 acceptance criterion "position activation/deactivation does not
      * destroy historical assignments", as one call. Deliberately separate from
      * `updatePosition()` so the UI's toggle and the API's `active` field cannot
@@ -930,6 +1072,10 @@ class VolunteerMinistryService
      * Assignments go first by hand because `vasg_vpos_ID` is RESTRICT; the
      * qualification and requirement keys cascade from the position row.
      *
+     * D23: on a team linked to a Sunday School class the deleted qualifications end
+     * teaching exactly as revoking them would — whoever held their last one in the
+     * team through this position leaves the class's Teacher role.
+     *
      * @throws VolunteerException
      */
     public function deletePosition(VolunteerPosition $position, User $actor): void
@@ -940,12 +1086,27 @@ class VolunteerMinistryService
         $qualificationCount = VolunteerQualificationQuery::create()->filterByPositionId($positionId)->count();
         $requirementCount = VolunteerRequirementQuery::create()->filterByPositionId($positionId)->count();
 
+        $team = $position->getTeam();
+        $class = $team?->getClassGroup();
+        $qualifiedPersonIds = $class === null ? [] : array_map('intval', VolunteerQualificationQuery::create()
+            ->filterByPositionId($positionId)
+            ->filterByActive(true)
+            ->select(['PersonId'])
+            ->find()
+            ->toArray());
+
         $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
         $connection->beginTransaction();
 
         try {
             $removedAssignments = $this->deleteAssignments([$positionId], [], $connection);
             $position->delete($connection);
+
+            $removedTeachers = 0;
+            $classLinks = new VolunteerClassLinkService();
+            foreach ($qualifiedPersonIds as $personId) {
+                $removedTeachers += $classLinks->removeTeacherIfUnqualified($team, $class, $personId) ? 1 : 0;
+            }
             $connection->commit();
 
             $this->logger->info('Volunteer position deleted', [
@@ -953,6 +1114,7 @@ class VolunteerMinistryService
                 'qualifications' => $qualificationCount,
                 'requirements' => $requirementCount,
                 'removedAssignmentRows' => $removedAssignments,
+                'removedTeachers' => $removedTeachers,
                 'actor' => $actor->getId(),
             ]);
         } catch (\Throwable $e) {

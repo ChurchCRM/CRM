@@ -25,7 +25,10 @@ use Psr\Log\LoggerInterface;
  * structure — ministries, teams, positions, the pool Group — and this class
  * keeps the grants. The one place the two meet is D19: granting a
  * qualification also puts the person in the ministry's pool, which is why this
- * service holds a ministry service and asks it for the pool Group.
+ * service holds a ministry service and asks it for the pool Group. D23 adds
+ * the second meeting point: on a team linked to a Sunday School class, a grant
+ * gives the class's Teacher role and the last revocation takes it away
+ * (`VolunteerClassLinkService`).
  *
  * Revocation is deactivation (`vqal_Active = 0`), never deletion, so grant
  * history and every assignment that predates the revocation stay readable.
@@ -42,10 +45,13 @@ class VolunteerQualificationService
 
     private VolunteerMinistryService $ministries;
 
+    private VolunteerClassLinkService $classLinks;
+
     public function __construct(?VolunteerAuthorizationService $authz = null, ?VolunteerMinistryService $ministries = null)
     {
         $this->authz = $authz ?? new VolunteerAuthorizationService();
         $this->ministries = $ministries ?? new VolunteerMinistryService($this->authz);
+        $this->classLinks = new VolunteerClassLinkService();
         $this->logger = LoggerUtils::getAppLogger();
     }
 
@@ -61,7 +67,11 @@ class VolunteerQualificationService
      * row. Use `findQualification()` first when the caller needs to answer 201
      * vs 200.
      *
-     * @throws VolunteerException 403 outside scope, 404 for an unknown person
+     * D23: on a team linked to a Sunday School class the person also becomes one of
+     * its teachers; somebody already in the class under another role is refused.
+     *
+     * @throws VolunteerException 403 outside scope, 404 for an unknown person, 409 for a
+     *                            member of the linked class who is not a teacher
      */
     public function grantQualification(
         int $personId,
@@ -75,12 +85,18 @@ class VolunteerQualificationService
             throw VolunteerException::notFound(gettext('Person not found'));
         }
 
+        $class = $position->getTeam()?->getClassGroup();
+        if ($class !== null) {
+            $this->classLinks->assertMayTeach($class, $personId);
+        }
+
         $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
         $connection->beginTransaction();
 
         try {
             $qualification = $this->writeQualification($personId, $position, $actor, $notes);
             $joinedPool = $this->qualifyIntoPool((int) $position->getMinistryId(), $personId);
+            $addedAsTeacher = $class !== null && $this->classLinks->addTeacher($class, $personId);
             $connection->commit();
         } catch (\Throwable $e) {
             $connection->rollBack();
@@ -93,10 +109,48 @@ class VolunteerQualificationService
             'personId' => $personId,
             'positionId' => $position->getId(),
             'addedToPool' => $joinedPool,
+            'addedAsTeacher' => $addedAsTeacher,
             'actor' => $actor->getId(),
         ]);
 
         return $qualification;
+    }
+
+    /**
+     * D23 (b): linking a team to a class qualifies the class's current teachers for
+     * the position the coordinator chose, so nobody is entered twice. Each one also
+     * joins the pool, as any grant does; an active qualification is left as it is.
+     * They are teachers already, so the class is not written.
+     *
+     * @param int[] $personIds
+     *
+     * @return int how many qualifications were granted or reactivated
+     *
+     * @throws VolunteerException 403 outside scope
+     */
+    public function importQualifications(array $personIds, VolunteerPosition $position, User $actor): int
+    {
+        $this->assertCanManagePosition($actor, (int) $position->getId());
+
+        $imported = 0;
+        foreach ($personIds as $personId) {
+            $existing = $this->findQualification($personId, (int) $position->getId());
+            if ($existing !== null && $existing->getActive()) {
+                continue;
+            }
+
+            $this->writeQualification($personId, $position, $actor, null);
+            $this->qualifyIntoPool((int) $position->getMinistryId(), $personId);
+            ++$imported;
+        }
+
+        $this->logger->info('Volunteer class teachers imported as qualifications', [
+            'positionId' => $position->getId(),
+            'imported' => $imported,
+            'actor' => $actor->getId(),
+        ]);
+
+        return $imported;
     }
 
     /**
@@ -128,19 +182,40 @@ class VolunteerQualificationService
      * a coordinator cannot undo without noticing it happened. Removing them from the
      * pool is `removePoolMember()`, a separate, deliberate act.
      *
+     * D23 does take something away: on a team linked to a Sunday School class, the
+     * person's LAST active qualification in that team ending ends their Teacher-role
+     * membership of the class. A Student, or a teacher still qualified for another
+     * position of the team, is left as they are.
+     *
      * @throws VolunteerException
      */
     public function revokeQualification(VolunteerQualification $qualification, User $actor): VolunteerQualification
     {
         $this->assertCanManagePosition($actor, (int) $qualification->getPositionId());
 
-        $qualification->setActive(false);
-        $qualification->save();
+        $team = $qualification->getPosition()?->getTeam();
+        $class = $team?->getClassGroup();
+
+        $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+
+        try {
+            $qualification->setActive(false);
+            $qualification->save();
+            $removedAsTeacher = $class !== null
+                && $this->classLinks->removeTeacherIfUnqualified($team, $class, (int) $qualification->getPersonId());
+            $connection->commit();
+        } catch (\Throwable $e) {
+            $connection->rollBack();
+
+            throw $e;
+        }
 
         $this->logger->info('Volunteer qualification revoked', [
             'qualificationId' => $qualification->getId(),
             'personId' => $qualification->getPersonId(),
             'positionId' => $qualification->getPositionId(),
+            'removedAsTeacher' => $removedAsTeacher,
             'actor' => $actor->getId(),
         ]);
 
