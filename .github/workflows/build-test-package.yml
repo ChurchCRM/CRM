@@ -136,6 +136,21 @@ jobs:
 
     - name: Install Composer dependencies (via Docker)
       run: |
+        # Docker Hub occasionally resets connections from GitHub-hosted runners.
+        # Pull explicitly with bounded retries so a transient registry failure
+        # does not fail the build before Composer starts.
+        for attempt in 1 2 3; do
+          if docker pull composer:latest; then
+            break
+          fi
+          if [ "$attempt" -eq 3 ]; then
+            echo "::error::Failed to pull composer:latest after 3 attempts"
+            exit 1
+          fi
+          echo "::warning::Composer image pull failed (attempt $attempt/3); retrying in 5s"
+          sleep 5
+        done
+
         docker run --rm \
           -v ${{ github.workspace }}:/app \
           -w /app/src \
