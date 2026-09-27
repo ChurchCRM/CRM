@@ -23,6 +23,7 @@ const PERSON_STUDENT = 21;
 
 let ministryId = 0;
 let classId = 0;
+let teamId = 0;
 
 function freshAdminLogin() {
     cy.clearCookies();
@@ -105,6 +106,7 @@ describe("Volunteer v2 — a team linked to a Sunday School class, on screen (D2
         admin("GET", `${MINISTRIES_URL}/${ministryId}`, null).then((resp) => {
             const team = resp.body.teams.find((t) => t.name === TEAM_NAME);
             expect(team.classGroupId).to.eq(classId);
+            teamId = team.id;
             const position = resp.body.positions.find((p) => p.teamId === team.id);
             expect(position.name).to.eq("Teacher");
             admin("GET", `/api/ministries/positions/${position.id}/qualifications`, null).then((quals) => {
@@ -145,6 +147,12 @@ describe("Volunteer v2 — a team linked to a Sunday School class, on screen (D2
         cy.get(`#membersTable .remove-member-btn[data-personid="${PERSON_STUDENT}"]`).should("exist");
         cy.get(`#membersTable .remove-member-btn[data-personid="${PERSON_TEACHER}"]`).should("not.exist");
         cy.get(`#membersTable .changeMembership[data-personid="${PERSON_TEACHER}"]`).should("not.exist");
+    });
+
+    it("the portal team page names the class, read-only", () => {
+        freshAdminLogin();
+        cy.visit(`/portal/teams/${teamId}`);
+        cy.get("#portal-team-class").should("contain", CLASS_NAME).find("a").should("not.exist");
     });
 
     it("the role editor refuses to make a student a teacher", () => {

@@ -59,6 +59,7 @@ const EXPECTED_COLUMNS = {
         "vtem_Name",
         "vtem_Description",
         "vtem_Active",
+        "vtem_grp_ID",
     ],
     volunteer_position_vpos: [
         "vpos_ID",
@@ -187,6 +188,7 @@ const V2_TABLES = Object.keys(EXPECTED_COLUMNS);
 const EXPECTED_DELETE_RULES = {
     "volunteer_ministry_vmin.vmin_CreatedBy_per_ID": "SET NULL",
     "volunteer_team_vtem.vtem_vmin_ID": "CASCADE",
+    "volunteer_team_vtem.vtem_grp_ID": "SET NULL",
     "volunteer_position_vpos.vpos_vmin_ID": "CASCADE",
     // D18 made the column NOT NULL, so SET NULL is no longer expressible; CASCADE
     // never actually fires, because deleting a team that owns positions is refused
@@ -803,6 +805,18 @@ describe("API Private Volunteer v2 core schema", () => {
                         rows.insertId,
                     ]);
                 });
+            });
+
+            it("rejects a second team linked to one class (vtem_class_group_uidx)", () => {
+                dbOk(`UPDATE volunteer_team_vtem SET vtem_grp_ID = 1 WHERE vtem_ID = ?`, [f.teamCoffee]);
+                dbRejects(
+                    `INSERT INTO volunteer_team_vtem (vtem_vmin_ID, vtem_Name, vtem_Active, vtem_grp_ID)
+                     VALUES (?, 'Second Class Team', 1, 1)`,
+                    [f.ministryCoffee],
+                ).then((err) => {
+                    expect(err.code).to.equal(DUP_ENTRY);
+                });
+                dbOk(`UPDATE volunteer_team_vtem SET vtem_grp_ID = NULL WHERE vtem_ID = ?`, [f.teamCoffee]);
             });
 
             it("rejects a duplicate position name in one ministry+team (vpos_ministry_team_name_uidx)", () => {
