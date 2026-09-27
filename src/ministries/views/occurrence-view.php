@@ -41,6 +41,7 @@ use ChurchCRM\Utils\InputUtils;
 /** @var string $sEventTitle */
 /** @var string $sEventLocation */
 /** @var string $sOffsetNote */
+/** @var array{recorded: bool, total: int, counts: array<int, array{name: string, count: int}>, editPath: ?string, roster: ?array{checkedIn: int, members: int}}|null $aHeadcount */
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 
@@ -150,6 +151,47 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="row g-3 d-none" id="requirements-content"></div>
     </div>
   </div>
+
+  <?php if (($aHeadcount ?? null) !== null): ?>
+  <!--
+    D26: the anchored event's headcount — core's attendance counts, read-only. They are
+    entered in the core event editor, which the button opens for a viewer who may edit
+    the event; V2 writes nothing to counts or check-ins.
+  -->
+  <div class="card mb-3" id="occurrence-headcount">
+    <div class="card-header d-flex flex-wrap gap-2 align-items-center justify-content-between">
+      <h4 class="card-title mb-0"><i class="fa-solid fa-users-line me-2"></i><?= gettext('Headcount') ?></h4>
+      <?php if ($aHeadcount['editPath'] !== null): ?>
+        <a class="btn btn-sm btn-outline-primary" id="occurrence-headcount-edit" href="<?= $sRootPath . InputUtils::escapeAttribute($aHeadcount['editPath']) ?>">
+          <i class="fa-solid fa-pen me-1"></i><?= gettext('Enter counts') ?>
+        </a>
+      <?php endif; ?>
+    </div>
+    <div class="card-body">
+      <?php if ($aHeadcount['recorded']): ?>
+        <dl class="row mb-0" id="occurrence-headcount-counts">
+          <?php foreach ($aHeadcount['counts'] as $count): ?>
+            <dt class="col-8 col-sm-4 fw-normal"><?= InputUtils::escapeHTML($count['name']) ?></dt>
+            <dd class="col-4 col-sm-8 mb-1"><?= (int) $count['count'] ?></dd>
+          <?php endforeach; ?>
+          <dt class="col-8 col-sm-4"><?= gettext('Total') ?></dt>
+          <dd class="col-4 col-sm-8 mb-0 fw-bold" id="occurrence-headcount-total"><?= (int) $aHeadcount['total'] ?></dd>
+        </dl>
+      <?php else: ?>
+        <p class="text-body-secondary mb-0" id="occurrence-headcount-empty"><?= gettext('No headcount recorded yet') ?></p>
+      <?php endif; ?>
+      <?php if ($aHeadcount['roster'] !== null): ?>
+        <p class="mt-2 mb-0 text-body-secondary" id="occurrence-headcount-checkins">
+          <i class="fa-solid fa-clipboard-check me-1"></i><?= InputUtils::escapeHTML(sprintf(
+              gettext('Checked in: %1$d of %2$d on the class roster'),
+              $aHeadcount['roster']['checkedIn'],
+              $aHeadcount['roster']['members']
+          )) ?>
+        </p>
+      <?php endif; ?>
+    </div>
+  </div>
+  <?php endif; ?>
 
   <!-- Assignments whose position no longer has a requirement (vasg_vreq_ID is SET NULL) -->
   <div class="card mb-3 d-none" id="other-assignments-card">

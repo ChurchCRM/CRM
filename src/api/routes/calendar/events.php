@@ -315,15 +315,7 @@ function eventMinistryFromInput(array $input): array
  */
 function eventWriteAllowed(User $user, ?int $eventMinistryId): bool
 {
-    if ($user->canManageEvents()) {
-        return true;
-    }
-
-    if (!User::isVolunteerV2Enabled() || $eventMinistryId === null) {
-        return false;
-    }
-
-    return eventVolunteerAuthz()->canManageMinistry($user, $eventMinistryId);
+    return eventVolunteerAuthz()->canWriteEvent($user, $eventMinistryId);
 }
 
 /** Per-request memo, for the same reason as `eventVolunteerAuthz()`. */
@@ -711,23 +703,17 @@ function newEvent(Request $request, Response $response, array $args): Response
         return $pinRefusal;
     }
 
-    // we have event type and pined calendars.  now create the event.
-    $event = new Event();
-    $event->setTitle($input['Title']);
-    $event->setEventType($type);
-    // InputSanitizationMiddleware already sanitizes these HTML fields; just ensure they're set
-    $desc = isset($input['Desc']) ? $input['Desc'] : '';
-    $text = isset($input['Text']) ? $input['Text'] : '';
-    $event->setDesc($desc);
-    $event->setText($text);
-    $event->setStart(str_replace('T', ' ', $input['Start']));
-    $event->setEnd(str_replace('T', ' ', $input['End']));
-    if (array_key_exists('InActive', $input)) {
-        $event->setInActive((int) $input['InActive']);
-    }
-    $event->setMinistryId($ministryId);
-    $event->setCalendars($calendars);
-    $event->save();
+    // InputSanitizationMiddleware already sanitizes the HTML fields.
+    $event = (new EventService())->createEvent($type, [
+        'title' => $input['Title'],
+        'desc' => $input['Desc'] ?? '',
+        'text' => $input['Text'] ?? '',
+        'start' => str_replace('T', ' ', $input['Start']),
+        'end' => str_replace('T', ' ', $input['End']),
+        'inactive' => array_key_exists('InActive', $input) ? (int) $input['InActive'] : null,
+        'ministryId' => $ministryId,
+        'calendars' => $calendars,
+    ]);
     HookManager::doAction(Hooks::EVENT_CREATED, $event);
 
     applyEventExtendedFields($event, $input);

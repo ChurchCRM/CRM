@@ -1342,3 +1342,95 @@ export interface VolunteerDashboard {
 export function getDashboard(days: number): Promise<VolunteerDashboard> {
   return request(`/dashboard?days=${days}`);
 }
+
+// ─── A ministry's own calendar events (D24, D26) ─────────────────────────────
+
+/** One team's staffing of this ministry's occurrences anchored to one event. */
+export interface VolunteerMinistryEventStaffing {
+  teamId: number;
+  teamName: string;
+  occurrenceIds: number[];
+  needed: number;
+  filled: number;
+  pending: number;
+  gap: number;
+  requirementCount: number;
+  /** `unplanned` = no staffing needs set (§2.10). */
+  status: "unplanned" | "gap" | "pending" | "filled";
+}
+
+/** One event the ministry owns, as the Calendar tab lists it. */
+export interface VolunteerMinistryEvent {
+  id: number;
+  title: string;
+  start: string;
+  end: string;
+  eventTypeId: number;
+  eventTypeName: string | null;
+  inactive: boolean;
+  calendars: Array<{ id: number; name: string }>;
+  linkedGroups: Array<{ id: number; name: string }>;
+  staffing: VolunteerMinistryEventStaffing[];
+  headcount: { recorded: boolean; total: number };
+}
+
+export function listMinistryEvents(
+  ministryId: number,
+  past: boolean,
+): Promise<{ events: VolunteerMinistryEvent[]; from: string; to: string; capped: boolean }> {
+  return request(`/ministries/${ministryId}/events${past ? "?past=1" : ""}`);
+}
+
+/** What the new-event dialog sends: one event (`date`) or a series (`recurrence` + range). */
+export interface VolunteerMinistryEventInput {
+  title: string;
+  eventTypeId: number;
+  description?: string;
+  linkedGroupId?: number | null;
+  calendarIds: number[];
+  startTime: string;
+  endTime: string;
+  date?: string;
+  recurrence?: { type: "weekly" | "monthly" | "yearly"; dow?: string; dom?: number; doy?: string };
+  rangeStart?: string;
+  rangeEnd?: string;
+  staff?: {
+    teamId: number;
+    requirements: VolunteerRequirementInput[];
+    startOffsetMinutes: number;
+    endOffsetMinutes: number;
+    defaults: VolunteerGenerateDefault[];
+  };
+}
+
+export function createMinistryEvents(
+  ministryId: number,
+  payload: VolunteerMinistryEventInput,
+): Promise<{
+  events: Array<{ id: number; title: string; start: string; end: string }>;
+  schedule?: VolunteerSchedule;
+  occurrences?: Array<{ id: number; eventId: number; occurrenceDate: string }>;
+  assigned?: number;
+  skipped?: number;
+}> {
+  return request(`/ministries/${ministryId}/events`, { method: "POST", body: JSON.stringify(payload) });
+}
+
+/** "Fill by default with" for a schedule that does not exist yet: the position's team's list. */
+export function listPositionEligiblePeople(positionId: number): Promise<{ people: VolunteerEligiblePerson[] }> {
+  return request(`/positions/${positionId}/eligible`);
+}
+
+/** Every calendar, for the names the pinnable ids need (core `GET /api/calendars`). */
+export function listCalendars(): Promise<{
+  Calendars: Array<{ Id: number; Name: string; MinistryId: number | null }>;
+}> {
+  return requestAt("/api/calendars");
+}
+
+/** The calendars this user may pin an event of the ministry to (D25). */
+export function listPinnableCalendars(
+  ministryId: number,
+): Promise<{ ministryId: number | null; calendarIds: number[] }> {
+  return requestAt(`/api/calendars/pinnable?ministryId=${ministryId}`);
+}

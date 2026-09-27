@@ -1389,6 +1389,22 @@ class VolunteerAssignmentService
     }
 
     /**
+     * The same list for a schedule that does not exist yet — the new-event dialog's "Fill by
+     * default with" (D24), whose schedule is created with the events. The pool it annotates
+     * is the position's team's, which is exactly what that schedule's would be.
+     *
+     * @return array<int, array{personId: int, displayName: string, inPool: bool, lastServedDate: ?string, conflictPositionId: ?int, conflictPositionName: ?string}>
+     */
+    public function getEligiblePeopleForPosition(VolunteerPosition $position, ?string $query = null): array
+    {
+        $unsaved = (new VolunteerSchedule())
+            ->setMinistryId((int) $position->getMinistryId())
+            ->setTeamId((int) $position->getTeamId());
+
+        return $this->buildEligibleList($unsaved, $position, null, $query);
+    }
+
+    /**
      * Assign the defaults the Generate Occurrences dialog named, to the occurrences the run
      * just created (2026-09-18).
      *

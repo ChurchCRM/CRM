@@ -72,6 +72,7 @@ require __DIR__ . '/routes/ministries/ministries-status.php';
 require __DIR__ . '/routes/ministries/ministries-scopes.php';
 require __DIR__ . '/routes/ministries/ministries-setup.php';
 require __DIR__ . '/routes/ministries/ministries-schedule.php';
+require __DIR__ . '/routes/ministries/ministries-events.php';
 require __DIR__ . '/routes/ministries/ministries-assignment.php';
 require __DIR__ . '/routes/ministries/ministries-me.php';
 require __DIR__ . '/routes/ministries/ministries-dashboard.php';

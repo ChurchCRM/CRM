@@ -1,8 +1,8 @@
 /**
  * S3 — ministry detail (#9715 and #9707, design §5.4 as amended).
  *
- * Six tabs: **Overview · Positions · Volunteers · Schedules · Occurrences · Help
- * Wanted**. Overview (its three counts, its description and its teams card) and
+ * Seven tabs: **Overview · Positions · Volunteers · Schedules · Occurrences ·
+ * Calendar · Help Wanted**. Overview (its three counts, its description and its teams card) and
  * Positions are rendered from ONE `GET /api/ministries/ministries/{id}` response
  * that is fetched on first use and cached; Volunteers is one
  * `GET .../qualification-matrix` because it has its own `?teamId=` filter. Both
@@ -67,6 +67,7 @@ import {
   type VolunteerTeam,
   type VolunteerTeamLeader,
 } from "./api";
+import { createMinistryEventsTab, type MinistryEventsHandle } from "./components/ministry-events";
 import { createOccurrencesTable, type OccurrencesTableHandle } from "./components/occurrences-table";
 import { createPositionsTable, type PositionsTableHandle } from "./components/positions-table";
 import { createQualificationMatrix, type QualificationMatrixHandle } from "./components/qualification-matrix";
@@ -113,7 +114,7 @@ type PaneName = "overview" | "teams" | "positions";
  * their own fetch — a different document with a different filter — so they carry
  * their own names and load themselves rather than riding on the ministry detail.
  */
-type TabName = "overview" | "positions" | "volunteers" | "occurrences" | "schedules" | "help-wanted";
+type TabName = "overview" | "positions" | "volunteers" | "occurrences" | "schedules" | "calendar" | "help-wanted";
 
 let ministryId = 0;
 let isManager = false;
@@ -153,6 +154,7 @@ let positionsTable: PositionsTableHandle;
 let matrixGrid: QualificationMatrixHandle;
 let occurrencesTable: OccurrencesTableHandle;
 let schedulesTable: SchedulesTableHandle;
+let ministryEvents: MinistryEventsHandle;
 
 function buildComponents(): void {
   positionsTable = createPositionsTable({
@@ -185,6 +187,13 @@ function buildComponents(): void {
     occurrenceUrl: (occurrenceId) => `${window.CRM?.root ?? ""}/ministries/occurrences/${occurrenceId}`,
     positions,
     staffEvent: (payload) => createStaffedEvent(ministryId, payload),
+    // Staffing an event from the Calendar tab changes that tab's staffing column.
+    onStaffed: () => {
+      ministryEvents.invalidate();
+      if (byId("calendar")?.classList.contains("active")) {
+        void ministryEvents.load();
+      }
+    },
   });
 
   schedulesTable = createSchedulesTable({
@@ -193,6 +202,22 @@ function buildComponents(): void {
     positions,
     fetch: () => listSchedules(ministryId),
     invalidateOccurrences: () => occurrencesTable.invalidate(),
+  });
+
+  ministryEvents = createMinistryEventsTab({
+    ministryId: () => ministryId,
+    teams,
+    positions,
+    ensureContext: ensureDetail,
+    occurrenceUrl: (occurrenceId) => `${window.CRM?.root ?? ""}/ministries/occurrences/${occurrenceId}`,
+    staffEvent: (event) => {
+      void occurrencesTable.openStaff(event);
+    },
+    invalidateStaffing: () => {
+      schedulesTable.invalidate();
+      occurrencesTable.invalidate();
+      void load(true);
+    },
   });
 }
 
@@ -393,6 +418,13 @@ function activate(tab: TabName): void {
   // And so is the schedule list: its own collection under the ministry.
   if (tab === "schedules") {
     void schedulesTable.load();
+
+    return;
+  }
+
+  // And the ministry's own events (D24).
+  if (tab === "calendar") {
+    void ministryEvents.load();
 
     return;
   }
@@ -789,6 +821,7 @@ function wire(): void {
     ["nav-item-volunteers", "volunteers"],
     ["nav-item-schedules", "schedules"],
     ["nav-item-occurrences", "occurrences"],
+    ["nav-item-calendar", "calendar"],
     ["nav-item-help-wanted", "help-wanted"],
   ] as Array<[string, TabName]>) {
     byId(navId)?.addEventListener("shown.bs.tab", () => activate(pane));
@@ -800,6 +833,7 @@ function wire(): void {
     const inMatrix = button.closest("#volunteers") !== null;
     const inOccurrences = button.closest("#occurrences") !== null;
     const inSchedules = button.closest("#schedules") !== null;
+    const inCalendar = button.closest("#calendar") !== null;
     button.addEventListener("click", () => {
       if (inMatrix) {
         void matrixGrid.load(true);
@@ -807,6 +841,8 @@ function wire(): void {
         void occurrencesTable.load(true);
       } else if (inSchedules) {
         void schedulesTable.load(true);
+      } else if (inCalendar) {
+        void ministryEvents.load(true);
       } else {
         void load(true);
       }

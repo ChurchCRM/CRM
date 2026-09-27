@@ -24,9 +24,10 @@
     * a breadcrumb back to the team, because the portal has no admin breadcrumb
       bar of its own.
 
-  Variables: `pageTitle`, `team` — `{id, name, ministryId, ministryName}` — and
+  Variables: `pageTitle`, `team` — `{id, name, ministryId, ministryName}` —
   `occurrence` — `{id, scheduleName, status, date, start, end, eventId,
-  eventTitle, eventLocation}`.
+  eventTitle, eventLocation}` — and `headcount` (D26), null without an event:
+  `{recorded, total, counts[{name, count}], editPath, roster{checkedIn, members}}`.
 #}
 
 {% block content %}
@@ -118,6 +119,40 @@
         </div>
         <div class="row g-3 d-none" id="requirements-content"></div>
     </section>
+
+    {# D26: the anchored event's headcount, read-only; entered in the core event editor #}
+    {% if headcount %}
+    <section class="portal-card" id="occurrence-headcount">
+        <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between">
+            <h2 class="portal-card-title">
+                <i class="fa-solid fa-users-line" aria-hidden="true"></i>
+                <span>{{ gettext('Headcount') }}</span>
+            </h2>
+            {% if headcount.editPath %}
+            <a class="btn btn-sm btn-outline-primary" id="occurrence-headcount-edit" href="{{ url(headcount.editPath) }}">
+                <i class="fa-solid fa-pen me-1" aria-hidden="true"></i>{{ gettext('Enter counts') }}
+            </a>
+            {% endif %}
+        </div>
+        {% if headcount.recorded %}
+        <dl class="row mb-0" id="occurrence-headcount-counts">
+            {% for count in headcount.counts %}
+            <dt class="col-8 col-sm-4 fw-normal">{{ count.name }}</dt>
+            <dd class="col-4 col-sm-8 mb-1">{{ count.count }}</dd>
+            {% endfor %}
+            <dt class="col-8 col-sm-4">{{ gettext('Total') }}</dt>
+            <dd class="col-4 col-sm-8 mb-0 fw-bold" id="occurrence-headcount-total">{{ headcount.total }}</dd>
+        </dl>
+        {% else %}
+        <p class="portal-card-text text-body-secondary mb-0" id="occurrence-headcount-empty">{{ gettext('No headcount recorded yet') }}</p>
+        {% endif %}
+        {% if headcount.roster %}
+        <p class="portal-card-text text-body-secondary mt-2 mb-0" id="occurrence-headcount-checkins">
+            <i class="fa-solid fa-clipboard-check me-1" aria-hidden="true"></i>{{ gettext('Checked in: %1$d of %2$d on the class roster')|format(headcount.roster.checkedIn, headcount.roster.members) }}
+        </p>
+        {% endif %}
+    </section>
+    {% endif %}
 
     {# Assignments whose position no longer has a requirement #}
     <section class="portal-card d-none" id="other-assignments-card">

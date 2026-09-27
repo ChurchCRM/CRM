@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Collection\Collection;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
 
@@ -92,10 +93,12 @@ class EventService
      *   rangeStart: string,
      *   rangeEnd: string,
      *   linkedGroupId?: int,
+     *   ministryId?: int|null,
      *   pinnedCalendars?: int[],
      *   inactive?: int,
      *   skipExisting?: bool
-     * } $data Event template and recurrence parameters
+     * } $data Event template and recurrence parameters. `ministryId` sets
+     *   `event_ministry_id` on every event (D24); authorizing it is the caller's.
      *
      * @return int[] Array of created event IDs
      *
@@ -154,6 +157,7 @@ class EventService
         $text = $data['text'] ?? '';
         $inactive = (int) ($data['inactive'] ?? 0);
         $linkedGroupId = (int) ($data['linkedGroupId'] ?? 0);
+        $ministryId = (int) ($data['ministryId'] ?? 0);
         $skipExisting = (bool) ($data['skipExisting'] ?? false);
         $typeId = (int) $type->getId();
 
@@ -212,6 +216,9 @@ class EventService
                 $event->setStart($date . ' ' . $startTime);
                 $event->setEnd($this->occurrenceEnd($occurrenceDate, $endTime, $endsNextDay));
                 $event->setInActive($inactive);
+                if ($ministryId > 0) {
+                    $event->setMinistryId($ministryId);
+                }
 
                 if ($calendars !== null) {
                     $event->setCalendars($calendars);
@@ -224,10 +231,7 @@ class EventService
                 $eventId = $event->getId();
 
                 if ($linkedGroupId > 0) {
-                    $audience = new EventAudience();
-                    $audience->setEventId($eventId);
-                    $audience->setGroupId($linkedGroupId);
-                    $audience->save($con);
+                    $this->linkGroup((int) $eventId, $linkedGroupId, $con);
                 }
 
                 $created[] = [
@@ -248,6 +252,72 @@ class EventService
             'events' => $created,
             'skipped' => $skipped,
         ];
+    }
+
+    /**
+     * Create one event: the single-event half of the calendar's write path, shared by
+     * POST /api/events and a ministry's New event (D24) so both write the same row.
+     *
+     * Validation and authorization are the caller's. The row, its calendar pins and its
+     * Linked Group are written in one transaction, which nests into the caller's own.
+     * Plugin hooks are the caller's too: only it knows when its transaction commits.
+     *
+     * @param array{
+     *   title: string,
+     *   desc?: string,
+     *   text?: string,
+     *   start: string,
+     *   end: string,
+     *   inactive?: int|null,
+     *   ministryId?: int|null,
+     *   calendars?: Collection,
+     *   linkedGroupId?: int
+     * } $data `start`/`end` are "Y-m-d H:i:s" wall-clock values; a null `inactive`
+     *   leaves the column's default; `calendars` holds the Calendar rows to pin
+     */
+    public function createEvent(EventType $type, array $data): Event
+    {
+        $con = Propel::getWriteConnection(EventTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+
+        try {
+            $event = new Event();
+            $event->setTitle($data['title']);
+            $event->setEventType($type);
+            $event->setDesc($data['desc'] ?? '');
+            $event->setText($data['text'] ?? '');
+            $event->setStart($data['start']);
+            $event->setEnd($data['end']);
+            if (isset($data['inactive'])) {
+                $event->setInActive((int) $data['inactive']);
+            }
+            $event->setMinistryId($data['ministryId'] ?? null);
+            if (isset($data['calendars'])) {
+                $event->setCalendars($data['calendars']);
+            }
+            $event->save($con);
+
+            $linkedGroupId = (int) ($data['linkedGroupId'] ?? 0);
+            if ($linkedGroupId > 0) {
+                $this->linkGroup((int) $event->getId(), $linkedGroupId, $con);
+            }
+
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            throw $e;
+        }
+
+        return $event;
+    }
+
+    private function linkGroup(int $eventId, int $groupId, ConnectionInterface $con): void
+    {
+        $audience = new EventAudience();
+        $audience->setEventId($eventId);
+        $audience->setGroupId($groupId);
+        $audience->save($con);
     }
 
     /**
