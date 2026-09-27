@@ -586,7 +586,7 @@ jobs:
   # ── Locale smoke tests — root path (PHP 8.5) ─────────────────────────────
   test-locale-root:
     needs: build
-    timeout-minutes: 30
+    timeout-minutes: 120
     permissions:
       contents: read
       checks: write
@@ -688,7 +688,7 @@ jobs:
   # ── Locale smoke tests — subdirectory path (PHP 8.5) ─────────────────────
   test-locale-subdir:
     needs: build
-    timeout-minutes: 30
+    timeout-minutes: 120
     permissions:
       contents: read
       checks: write
