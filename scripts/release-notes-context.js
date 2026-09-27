@@ -133,6 +133,19 @@ async function releaseDate(tag) {
   }
 }
 
+// gh() throws "HTTP <status> for <path>: <body>". Keep the path (useful for
+// diagnosing which repo/endpoint failed) and call out rate-limiting
+// separately from an actual permissions problem, instead of collapsing
+// every cause into the same "get a better token" message.
+function describeError(err) {
+  const m = /^HTTP (\d+) for (\S+):/.exec(err.message);
+  if (!m) return err.message;
+  const [, status, path] = m;
+  if (status === '403' || status === '429') return `HTTP ${status} for ${path} (rate-limited, or no read access)`;
+  if (status === '404' || status === '401') return `HTTP ${status} for ${path} (no read access)`;
+  return `HTTP ${status} for ${path}`;
+}
+
 const isBot = user => !user || user.type === 'Bot' || /\[bot\]$/.test(user.login);
 
 // Merged PRs plus direct pushes in [since, now). A merge or squash commit is
@@ -282,16 +295,22 @@ async function main() {
   let md = render(from, to, prs, unlinked);
 
   if (relatedRepos.length) {
-    const since = await releaseDate(from);
-    const related = [];
-    for (const repo of relatedRepos) {
-      try {
-        related.push({ repo, people: await relatedContributors(repo, since) });
-      } catch (err) {
-        related.push({ repo, error: err.message.split(' for ')[0] });
+    // A failure here (bad from-tag, transient API error) must not discard
+    // the primary render above, which already cost many API calls.
+    try {
+      const since = await releaseDate(from);
+      const related = [];
+      for (const repo of relatedRepos) {
+        try {
+          related.push({ repo, people: await relatedContributors(repo, since) });
+        } catch (err) {
+          related.push({ repo, error: describeError(err) });
+        }
       }
+      md += `\n${renderRelated(since, related)}`;
+    } catch (err) {
+      console.error(`Skipping related-repo contributors: ${err.message}`);
     }
-    md += `\n${renderRelated(since, related)}`;
   }
   if (out) {
     fs.writeFileSync(out, md);
