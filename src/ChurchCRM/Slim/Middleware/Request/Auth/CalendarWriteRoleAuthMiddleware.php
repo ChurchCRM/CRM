@@ -26,9 +26,9 @@ use Psr\Http\Server\RequestHandlerInterface;
  *            || (rollout on && calendar.ministry_id !== null
  *                           && canManageMinistry(user, calendar.ministry_id))
  *
- * It is the same rule `eventCalendarPinAllowed()` applies to pinning, in the same words,
- * so a coordinator who may pin to their ministry's calendar may also publish and unpublish
- * it — and may still touch no other calendar in the church.
+ * Pinning is a wider question (`VolunteerCalendarService::mayPin()`, D25): a church calendar
+ * an administrator opened to a ministry takes that ministry's events, yet only the ministry's
+ * own calendar is its coordinators' to publish, unpublish or otherwise administer.
  *
  * **Chain it AFTER `CalendarMiddleware`**, which means listing it FIRST in the `->add()`
  * chain: Slim runs the last-added middleware first, and this one needs the `calendar`

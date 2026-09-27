@@ -36,6 +36,9 @@ $calendarHandler = function (Request $request, Response $response): Response {
     foreach (PortalCalendarService::listChoices() as $choice) {
         if ($choice['visible']) {
             $calendars[] = [
+                // Matches `calendarType:calendarId` on every event of the feed, so the legend
+                // can switch one calendar's events on and off (D27).
+                'key' => $choice['type'] . ':' . $choice['id'],
                 'name' => $choice['name'],
                 'color' => $choice['colors']['background'],
                 'isMine' => $choice['ministryId'] !== null

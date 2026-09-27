@@ -23,6 +23,7 @@ use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\EventService;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerCalendarService;
 use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsOrMinistryRoleAuthMiddleware;
@@ -325,57 +326,80 @@ function eventWriteAllowed(User $user, ?int $eventMinistryId): bool
     return eventVolunteerAuthz()->canManageMinistry($user, $eventMinistryId);
 }
 
-/**
- * May this caller pin an event to `$calendar`?
- *
- * The global Add Events right opens every calendar, as it always has. A ministry
- * coordinator who does NOT hold it may pin to exactly one kind of calendar: one their
- * own ministry owns (`calendars.ministry_id`, Member Portal design §5.3). That is the
- * whole of the exception — the same shape the Group hooks got for the ministry's pool
- * (D19), and the reason every ministry is created with a calendar of its own.
- *
- * A coordinator therefore cannot quietly write onto "Public Calendar", which is what a
- * church would notice; and "pin to my own ministry's calendar" needs no new permission,
- * which is what makes a coordinator useful without Add Events.
- */
-function eventCalendarPinAllowed(User $user, Calendar $calendar): bool
+/** Per-request memo, for the same reason as `eventVolunteerAuthz()`. */
+function eventVolunteerCalendars(): VolunteerCalendarService
 {
-    if ($user->canManageEvents()) {
-        return true;
+    static $calendars = null;
+
+    if ($calendars === null) {
+        $calendars = new VolunteerCalendarService(eventVolunteerAuthz());
     }
 
-    if (!User::isVolunteerV2Enabled()) {
-        return false;
-    }
-
-    $ministryId = $calendar->getMinistryId();
-    if ($ministryId === null) {
-        return false;
-    }
-
-    return eventVolunteerAuthz()->canManageMinistry($user, (int) $ministryId);
+    return $calendars;
 }
 
 /**
- * Guard for the pinned-calendar list on a create or an update. Returns a 403 naming the
- * calendar that was refused, or null when every one of them is allowed.
+ * Guard for the pins a create or an update writes. Returns a 403 naming the first calendar
+ * refused, or null. Whether one calendar may take one event is
+ * `VolunteerCalendarService::mayPin()` (D25); this decides which pins it is asked about.
  *
- * Runs BEFORE the event is saved, like `eventWriteGuard()`, so a refused pin leaves no row
- * and no half-pinned event behind.
+ * Only pins that CHANGE are judged, so a pin somebody with Add Events made survives a
+ * coordinator's edit and cannot be removed by it. An added pin must be allowed for the event's
+ * resolved ministry, a removed one for its current or its resolved ministry. When the ministry
+ * itself changes, every pin that stays is judged again against the new one: otherwise moving an
+ * event between two ministries one coordinator runs would carry it onto a calendar opened only
+ * to the first.
  *
- * @param iterable<Calendar> $calendars
+ * Runs BEFORE the event is saved, like `eventWriteGuard()`, so a refused pin leaves no row and
+ * no half-pinned event behind.
+ *
+ * @param int[]              $currentCalendarIds the event's pins before this write
+ * @param iterable<Calendar> $calendars          the pins this write asks for
  */
-function eventCalendarPinGuard(Response $response, iterable $calendars): ?Response
-{
+function eventCalendarPinGuard(
+    Response $response,
+    ?int $currentMinistryId,
+    ?int $ministryId,
+    array $currentCalendarIds,
+    iterable $calendars
+): ?Response {
     $user = AuthenticationManager::getCurrentUser();
+    $rule = eventVolunteerCalendars();
 
+    $requestedIds = [];
     foreach ($calendars as $calendar) {
-        if (!eventCalendarPinAllowed($user, $calendar)) {
+        $calendarId = (int) $calendar->getId();
+        $requestedIds[] = $calendarId;
+
+        if (in_array($calendarId, $currentCalendarIds, true) && $ministryId === $currentMinistryId) {
+            continue;
+        }
+        if (!$rule->mayPin($user, $ministryId, $calendar)) {
             return SlimUtils::renderErrorJSON(
                 $response,
                 sprintf(
                     /* Translators: %s is the name of a calendar the user may not write to. */
                     gettext('Not authorized to pin events to the calendar "%s"'),
+                    (string) $calendar->getName()
+                ),
+                [],
+                403
+            );
+        }
+    }
+
+    $removedIds = array_values(array_diff($currentCalendarIds, $requestedIds));
+    if ($removedIds === []) {
+        return null;
+    }
+
+    foreach (CalendarQuery::create()->filterById($removedIds, Criteria::IN)->find() as $calendar) {
+        if (!$rule->mayPin($user, $currentMinistryId, $calendar) && !$rule->mayPin($user, $ministryId, $calendar)) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                sprintf(
+                    /* Translators: %s is the name of a calendar the user may not write to. */
+                    gettext('Not authorized to remove events from the calendar "%s"'),
                     (string) $calendar->getName()
                 ),
                 [],
@@ -634,7 +658,7 @@ function getEventAudience(Request $request, Response $response, array $args): Re
  *         @OA\Property(property="Start", type="string", format="date-time", example="2026-04-05T09:00:00"),
  *         @OA\Property(property="End", type="string", format="date-time", example="2026-04-05T11:00:00"),
  *         @OA\Property(property="Text", type="string", nullable=true, description="Rich text body (HTML allowed)"),
- *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), example={1}),
+ *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), example={1}, description="Without the global AddEvent right: only the event ministry's own calendar and the church calendars opened to that ministry (GET /calendars/pinnable)"),
  *         @OA\Property(property="MinistryId", type="integer", nullable=true, description="Volunteer v2: owning volunteer ministry. Only an administrator, a global volunteer manager or a coordinator of that ministry may set it. A volunteer coordinator without the global AddEvent right MUST supply one they manage.")
  *     )),
  *     @OA\Response(response=200, description="Event created",
@@ -642,7 +666,7 @@ function getEventAudience(Request $request, Response $response, array $args): Re
  *     ),
  *     @OA\Response(response=400, description="Invalid event type, calendar ID or volunteer ministry"),
  *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="AddEvents role required, or the caller may not assign the event to that volunteer ministry")
+ *     @OA\Response(response=403, description="AddEvents role required, or the caller may not assign the event to that volunteer ministry or pin it to one of those calendars")
  * )
  */
 function newEvent(Request $request, Response $response, array $args): Response
@@ -680,9 +704,9 @@ function newEvent(Request $request, Response $response, array $args): Response
         return SlimUtils::renderErrorJSON($response, gettext('invalid calendar pinning'), [], 400);
     }
 
-    // Existence was the only check this had. A coordinator without Add Events may pin to
-    // their own ministry's calendar and to nothing else (§5.3).
-    $pinRefusal = eventCalendarPinGuard($response, $calendars);
+    // A coordinator without Add Events may pin to their ministry's own calendar and to the
+    // church calendars opened to that ministry (D25).
+    $pinRefusal = eventCalendarPinGuard($response, null, $ministryId, [], $calendars);
     if ($pinRefusal !== null) {
         return $pinRefusal;
     }
@@ -824,7 +848,7 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
  *         @OA\Property(property="Start", type="string", format="date-time"),
  *         @OA\Property(property="End", type="string", format="date-time"),
  *         @OA\Property(property="Text", type="string", nullable=true),
- *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer")),
+ *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), description="Replaces the pins. Omit the key to leave them unchanged. Without the global AddEvent right, only pins that change are checked, against the same calendars POST /events allows"),
  *         @OA\Property(property="MinistryId", type="integer", nullable=true, description="Volunteer v2: owning volunteer ministry. Omit the key to leave it unchanged; null or 0 clears it (global AddEvent right required to clear).")
  *     )),
  *     @OA\Response(response=200, description="Event updated",
@@ -832,7 +856,7 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
  *     ),
  *     @OA\Response(response=400, description="Unknown volunteer ministry"),
  *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="AddEvents role required, or the event belongs to a volunteer ministry the caller does not manage"),
+ *     @OA\Response(response=403, description="AddEvents role required, the event belongs to a volunteer ministry the caller does not manage, or a pin it adds or removes is not the caller's to change"),
  *     @OA\Response(response=404, description="Event not found")
  * )
  */
@@ -863,18 +887,26 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     // payload said with no authorization at all (§2.16 item 7). Overwrite it with the value
     // resolveEventMinistryId() authorized — this line is the whole reason that is safe.
     $Event->setMinistryId($ministryId);
-    $PinnedCalendars = CalendarQuery::create()
-        ->filterById($input['PinnedCalendars'], Criteria::IN)
-        ->find();
 
-    // Same rule as newEvent(): the pins a caller may set are the calendars they may write
-    // to (§5.3). Checked before the save, so a refused pin leaves the event as it was.
-    $pinRefusal = eventCalendarPinGuard($response, $PinnedCalendars);
+    $currentCalendarIds = [];
+    foreach ($Event->getCalendars() as $calendar) {
+        $currentCalendarIds[] = (int) $calendar->getId();
+    }
+
+    // An absent key leaves the pins alone, as an absent MinistryId leaves the ministry alone.
+    $pinsRequested = array_key_exists('PinnedCalendars', $input);
+    $PinnedCalendars = $pinsRequested
+        ? CalendarQuery::create()->filterById((array) $input['PinnedCalendars'], Criteria::IN)->find()
+        : $Event->getCalendars();
+
+    $pinRefusal = eventCalendarPinGuard($response, $currentMinistryId, $ministryId, $currentCalendarIds, $PinnedCalendars);
     if ($pinRefusal !== null) {
         return $pinRefusal;
     }
 
-    $Event->setCalendars($PinnedCalendars);
+    if ($pinsRequested) {
+        $Event->setCalendars($PinnedCalendars);
+    }
 
     $Event->save();
 

@@ -367,7 +367,9 @@ override it or not. Fonts must come from `self` or `fonts.googleapis.com`/`fonts
 `footer`, `scripts_extra`. Page templates fill `content` and optionally `hero` and `sidebar`.
 Partials are named, so a theme can override `partials/nav.html.twig` alone. The view-model of every
 page is documented in `docs/portal-templates.md` in the repo (each template, its variables, their
-shapes). Rules for core changes: adding a variable or block is compatible; renaming or removing is
+shapes, and the ids and `data-` hooks a page's bundle looks for). A bundle treats a missing hook as
+"this theme does without the feature", never as an error: the calendar legend's toggles
+(`button[data-calendar-key]`, D27) are the model — without them the legend is a plain legend. Rules for core changes: adding a variable or block is compatible; renaming or removing is
 called out in the release notes and the old name is kept as an alias for one release. The
 validator's "not used by this version" warning is how a theme learns a template it overrode has
 moved.
@@ -539,10 +541,14 @@ must pin it to some existing church calendar.
 - **Every volunteer ministry gets a calendar.** `calendars.ministry_id` (nullable, FK to the
   ministry, `ON DELETE SET NULL`) — the same pattern as the ministry's Group (D19) and the
   ministry's events (D9). Created with the ministry, named after it, renamed and deleted with it.
-  Its coordinators may pin their ministry's events to it without Add Events (the calendar
-  middleware gains the same "coordinator of the owning ministry" exception the Group hooks got).
-  When a coordinator creates an event with a ministry, the event editor pre-pins that ministry's
-  calendar. Administrators decide per ministry calendar whether the portal shows it, like any
+  Its coordinators may pin their ministry's events to it without Add Events, and to every church
+  calendar an administrator has opened to the ministry (Volunteer v2 D25, `volunteer_calendar_vcal`:
+  the calendar dialog's "Ministries that may add events", shown while V2 is on and never on a
+  ministry's own calendar). The rule is `VolunteerCalendarService::mayPin()`, judged against the
+  event's ministry; administering a calendar stays with Add Events or the coordinators of the
+  calendar's own ministry (`CalendarWriteRoleAuthMiddleware`). When a coordinator creates an event
+  with a ministry, the event editor offers only the calendars they may pin to and pre-pins that
+  ministry's calendar. Administrators decide per ministry calendar whether the portal shows it, like any
   other. The admin calendar page lists ministry calendars under their own heading, "Ministry
   Calendars", between church and system calendars.
 - **Rename "My Calendars" to "Church Calendars"** on the admin calendar page (label only; a
@@ -555,6 +561,12 @@ must pin it to some existing church calendar.
   colour per calendar as on the admin page; event click opens a detail panel (title, when, location,
   description, ministry name when set). A member who leads a team sees their ministry's calendar
   highlighted.
+- **Legend toggles (Volunteer v2 D27).** Each legend entry is a `<button aria-pressed>` that hides
+  and shows that calendar's events in place, without refetching, so a member who shares both the
+  Public and the Bible Classes calendars can hide the 9:30 detail. The choice is remembered per
+  browser (`localStorage` `churchcrm.portal.calendar.hidden`, every access guarded); with every
+  calendar off the grid stays. A theme template without the toggle markup keeps a plain legend and
+  shows every event (§3.6).
 - **Subscribing.** A member may take the calendar with them. The calendar page
   carries a **Subscribe** button in the top-right of the title row; it opens a
   dialog with one checkbox per calendar the administrator shares, and saving
@@ -592,7 +604,7 @@ table, and the rest is an MP7 follow-up on the volunteer branch:
 | `aPortalCalendars`, the Calendars tab, `/portal/calendar`, `GET /api/portal/calendar/events` | MP5 (#9866) |
 | The foreign key to `volunteer_ministry_vmin`, `ON DELETE SET NULL` | Volunteer v2 schema, once its table exists |
 | Creating, renaming and deleting a ministry's calendar with the ministry | Volunteer v2 (#9701) |
-| The calendar middleware's "coordinator of the owning ministry may pin without Add Events" exception | Volunteer v2 (MP7 follow-up) |
+| The "coordinator of the owning ministry may pin without Add Events" exception (in the event API, widened by D25's calendar grants) | Volunteer v2 (MP7 follow-up) |
 | The event editor pre-pinning a ministry's calendar when the event has a ministry | Volunteer v2 (MP7 follow-up) |
 | "A member who leads a team sees their ministry's calendar highlighted" | Volunteer v2 (MP7 follow-up), since it needs team leadership, which reaches self-service logins in MP6 |
 
