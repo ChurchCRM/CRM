@@ -1236,26 +1236,26 @@
     </table>
 
     <table name="volunteer_schedule_vsch" idMethod="native" phpName="VolunteerSchedule"
-           description="Volunteer v2: the recurring series V2 owns. Either linked to a ChurchCRM event type, in which case the event occurrences are authoritative, or standalone, in which case V2 generates its own dates">
+           description="Volunteer v2: which calendar events a team staffs. Every occurrence is anchored to an event (D20); the link mode says how the events are found (D22)">
         <column name="vsch_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="vsch_vmin_ID" phpName="MinistryId" type="INTEGER" required="true"/>
         <column name="vsch_vtem_ID" phpName="TeamId" type="INTEGER" required="true"
                 description="Every schedule belongs to a team; a ministry is never created without one"/>
         <column name="vsch_Name" phpName="Name" type="VARCHAR" size="100" required="true"/>
-        <column name="vsch_LinkMode" phpName="LinkMode" type="CHAR" sqlType="enum('event_type','standalone')"
-                required="true"/>
+        <column name="vsch_LinkMode" phpName="LinkMode" type="CHAR"
+                sqlType="enum('event_type','class','ministry','event')" required="true"/>
         <column name="vsch_event_type_id" phpName="EventTypeId" type="INTEGER"
                 description="Required when LinkMode is event_type"/>
         <column name="vsch_TitleFilter" phpName="TitleFilter" type="VARCHAR" size="255"
-                description="Optional LIKE narrowing when one event type carries several distinct services"/>
-        <column name="vsch_RecurType" phpName="RecurType" type="CHAR"
-                sqlType="enum('none','weekly','monthly','yearly')" required="true" defaultValue="none"
-                description="Standalone schedules only; a linked schedule never carries its own recurrence"/>
-        <column name="vsch_RecurDOW" phpName="RecurDow" type="CHAR"
-                sqlType="enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday')"/>
-        <column name="vsch_RecurDOM" phpName="RecurDom" type="TINYINT" size="3"/>
-        <column name="vsch_StartTime" phpName="StartTime" type="TIME"/>
-        <column name="vsch_EndTime" phpName="EndTime" type="TIME"/>
+                description="Optional LIKE narrowing of the event title (event_type and ministry modes)"/>
+        <column name="vsch_grp_ID" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+                description="Required when LinkMode is class: the events whose Linked Group this is"/>
+        <column name="vsch_event_id" phpName="EventId" type="INTEGER"
+                description="Required when LinkMode is event: the one event a Staff this event schedule staffs"/>
+        <column name="vsch_StartOffsetMinutes" phpName="StartOffsetMinutes" type="INTEGER" required="true"
+                defaultValue="0" description="Added to the event start to give the volunteers' start, within +/-720"/>
+        <column name="vsch_EndOffsetMinutes" phpName="EndOffsetMinutes" type="INTEGER" required="true"
+                defaultValue="0" description="Added to the event end to give the volunteers' end, within +/-720"/>
         <column name="vsch_WindowStart" phpName="WindowStart" type="DATE" required="true"
                 description="No occurrence is ever generated before this date"/>
         <column name="vsch_WindowEnd" phpName="WindowEnd" type="DATE" description="NULL means open ended"/>
@@ -1265,7 +1265,7 @@
                 required="true" defaultValue="1"/>
         <column name="vsch_OneOff" phpName="OneOff" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
                 required="true" defaultValue="0"
-                description="A one-off occurrence's private schedule (2026-09-18): hidden from the Schedules tab, deleted with its only occurrence"/>
+                description="A Staff this event schedule (D22): hidden from the Schedules tab, deleted with its only occurrence"/>
         <foreign-key foreignTable="volunteer_ministry_vmin" name="VolunteerScheduleMinistry" phpName="Ministry"
                      refPhpName="VolunteerSchedule" onDelete="cascade">
             <reference local="vsch_vmin_ID" foreign="vmin_ID"/>
@@ -1278,6 +1278,14 @@
                      refPhpName="VolunteerSchedule" onDelete="setnull">
             <reference local="vsch_event_type_id" foreign="type_id"/>
         </foreign-key>
+        <foreign-key foreignTable="group_grp" name="VolunteerScheduleGroup" phpName="Group"
+                     refPhpName="VolunteerSchedule" onDelete="setnull">
+            <reference local="vsch_grp_ID" foreign="grp_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="events_event" name="VolunteerScheduleEvent" phpName="Event"
+                     refPhpName="VolunteerSchedule" onDelete="setnull">
+            <reference local="vsch_event_id" foreign="event_id"/>
+        </foreign-key>
         <index name="vsch_ministry_idx">
             <index-column name="vsch_vmin_ID"/>
         </index>
@@ -1286,6 +1294,12 @@
         </index>
         <index name="vsch_type_idx">
             <index-column name="vsch_event_type_id"/>
+        </index>
+        <index name="vsch_group_idx">
+            <index-column name="vsch_grp_ID"/>
+        </index>
+        <index name="vsch_event_idx">
+            <index-column name="vsch_event_id"/>
         </index>
         <index name="vsch_active_window_idx">
             <index-column name="vsch_Active"/>
@@ -1297,16 +1311,13 @@
     </table>
 
     <table name="volunteer_occurrence_vocc" idMethod="native" phpName="VolunteerOccurrence"
-           description="Volunteer v2: one concrete opportunity to serve. When linked to an event the start and end times are read lazily from events_event and are NULL here; several occurrences from different schedules may point at the same event">
+           description="Volunteer v2: one concrete opportunity to serve, anchored to a calendar event (D20). Its times are read lazily from events_event plus the schedule's offsets; several occurrences from different schedules may point at the same event">
         <column name="vocc_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="vocc_vsch_ID" phpName="ScheduleId" type="INTEGER" required="true"/>
         <column name="vocc_event_id" phpName="EventId" type="INTEGER"
-                description="When set, events_event is authoritative for date and time"/>
+                description="Set on every insert; NULL only after the event was deleted, so service history survives"/>
         <column name="vocc_OccurrenceDate" phpName="OccurrenceDate" type="DATE" required="true"
-                description="Sort and range-filter key. Non-authoritative when the occurrence is linked to an event"/>
-        <column name="vocc_StartDateTime" phpName="StartDateTime" type="TIMESTAMP"
-                description="Standalone occurrences only; naive wall-clock in sTimeZone"/>
-        <column name="vocc_EndDateTime" phpName="EndDateTime" type="TIMESTAMP"/>
+                description="Sort and range-filter key, copied from the event; the only date left once the event is deleted"/>
         <column name="vocc_Status" phpName="Status" type="CHAR" sqlType="enum('scheduled','cancelled')"
                 required="true" defaultValue="scheduled"/>
         <column name="vocc_Notes" phpName="Notes" type="VARCHAR" size="255"/>
@@ -1322,10 +1333,6 @@
         <unique name="vocc_schedule_event_uidx">
             <unique-column name="vocc_vsch_ID"/>
             <unique-column name="vocc_event_id"/>
-        </unique>
-        <unique name="vocc_schedule_start_uidx">
-            <unique-column name="vocc_vsch_ID"/>
-            <unique-column name="vocc_StartDateTime"/>
         </unique>
         <index name="vocc_date_idx">
             <index-column name="vocc_OccurrenceDate"/>

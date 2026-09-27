@@ -7,7 +7,9 @@ use ChurchCRM\model\ChurchCRM\Base\VolunteerSchedule as BaseVolunteerSchedule;
 /**
  * Skeleton subclass for representing a row from the 'volunteer_schedule_vsch' table.
  *
- * Volunteer Management v2 (#9705). The recurring series V2 owns: either linked to an event type or standalone.
+ * Volunteer Management v2 (#9705). Which calendar events a team staffs: every
+ * occurrence is anchored to an event (D20), and the link mode says how the events are
+ * found (D22).
  *
  * Deliberately holds no business logic and no pre* authorization hooks: the
  * Group and Person2group2roleP2g2r models gate saves through AuthService, which
@@ -17,10 +19,17 @@ use ChurchCRM\model\ChurchCRM\Base\VolunteerSchedule as BaseVolunteerSchedule;
  */
 class VolunteerSchedule extends BaseVolunteerSchedule
 {
-    // A linked schedule never carries its own recurrence - the event
-    // occurrences are authoritative. Only standalone schedules recur here.
+    /** Events of one type, optionally narrowed by title (church-wide services). */
     public const LINK_MODE_EVENT_TYPE = 'event_type';
-    public const LINK_MODE_STANDALONE = 'standalone';
+    /** Events whose Linked Group (`event_audience`) is `vsch_grp_ID` — a class's meetings. */
+    public const LINK_MODE_CLASS = 'class';
+    /** Events the schedule's ministry owns (`events_event.event_ministry_id`), optionally narrowed by title. */
+    public const LINK_MODE_MINISTRY = 'ministry';
+    /** Exactly one event, `vsch_event_id` — the hidden schedule behind Staff this event. */
+    public const LINK_MODE_EVENT = 'event';
+
+    /** The volunteers' start and end may move at most this far from the event's (D21). */
+    public const MAX_OFFSET_MINUTES = 720;
 
     /**
      * Every legal value of vsch_LinkMode.
@@ -31,54 +40,24 @@ class VolunteerSchedule extends BaseVolunteerSchedule
     {
         return [
             self::LINK_MODE_EVENT_TYPE,
-            self::LINK_MODE_STANDALONE,
+            self::LINK_MODE_CLASS,
+            self::LINK_MODE_MINISTRY,
+            self::LINK_MODE_EVENT,
         ];
     }
 
-    public const RECUR_NONE = 'none';
-    public const RECUR_WEEKLY = 'weekly';
-    public const RECUR_MONTHLY = 'monthly';
-    public const RECUR_YEARLY = 'yearly';
-
     /**
-     * Every legal value of vsch_RecurType.
+     * The link modes a schedule may be created or edited with directly. The `event`
+     * mode is reachable only through Staff this event.
      *
      * @return string[]
      */
-    public static function allRecurTypes(): array
+    public static function editableLinkModes(): array
     {
         return [
-            self::RECUR_NONE,
-            self::RECUR_WEEKLY,
-            self::RECUR_MONTHLY,
-            self::RECUR_YEARLY,
-        ];
-    }
-
-    // Same value domain as event_types.type_defrecurDOW.
-    public const DOW_SUNDAY = 'Sunday';
-    public const DOW_MONDAY = 'Monday';
-    public const DOW_TUESDAY = 'Tuesday';
-    public const DOW_WEDNESDAY = 'Wednesday';
-    public const DOW_THURSDAY = 'Thursday';
-    public const DOW_FRIDAY = 'Friday';
-    public const DOW_SATURDAY = 'Saturday';
-
-    /**
-     * Every legal value of vsch_RecurDOW.
-     *
-     * @return string[]
-     */
-    public static function allRecurDows(): array
-    {
-        return [
-            self::DOW_SUNDAY,
-            self::DOW_MONDAY,
-            self::DOW_TUESDAY,
-            self::DOW_WEDNESDAY,
-            self::DOW_THURSDAY,
-            self::DOW_FRIDAY,
-            self::DOW_SATURDAY,
+            self::LINK_MODE_EVENT_TYPE,
+            self::LINK_MODE_CLASS,
+            self::LINK_MODE_MINISTRY,
         ];
     }
 }
