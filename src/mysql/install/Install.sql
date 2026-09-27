@@ -1174,11 +1174,16 @@ CREATE TABLE `volunteer_team_vtem` (
   `vtem_Name`        varchar(100)        NOT NULL,
   `vtem_Description` varchar(255)                 DEFAULT NULL,
   `vtem_Active`      tinyint(1) unsigned NOT NULL DEFAULT 1,
+  -- D23: the Sunday School class this team staffs; qualifications write its Teacher role.
+  `vtem_grp_ID`      mediumint(8) unsigned          DEFAULT NULL,
   PRIMARY KEY (`vtem_ID`),
   UNIQUE KEY `vtem_ministry_name_uidx` (`vtem_vmin_ID`, `vtem_Name`),
+  UNIQUE KEY `vtem_class_group_uidx`   (`vtem_grp_ID`),
   KEY `vtem_ministry_idx`              (`vtem_vmin_ID`),
   CONSTRAINT `fk_vtem_ministry` FOREIGN KEY (`vtem_vmin_ID`)
-      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vtem_class_group` FOREIGN KEY (`vtem_grp_ID`)
+      REFERENCES `group_grp` (`grp_ID`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
