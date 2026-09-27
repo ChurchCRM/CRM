@@ -542,10 +542,17 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     }
   }
 
+  /** A class the staffing team suggested goes away with the staffing; one chosen by hand stays. */
   function syncStaffing(): void {
     show(field("staff"), staffing());
     if (staffing()) {
       applyTeamClass();
+    } else if (classFromTeam) {
+      const select = field<HTMLSelectElement>("class");
+      if (select) {
+        select.value = "";
+      }
+      classFromTeam = false;
     }
   }
 
@@ -561,6 +568,8 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       return;
     }
 
+    // Qualifications may have changed on the Volunteers tab since the last open.
+    eligible.clear();
     fillSelects();
     renderOffsetFields("ministry-event-form");
     writeOffsets("ministry-event-form", 0, 0);
