@@ -667,7 +667,10 @@ jobs:
       group: release-${{ github.ref }}
       cancel-in-progress: false
     # Package only after the normal integration suite succeeds. Heavy exhaustive
-    # sweeps belong in the nightly workflow, not in the push/PR critical path.
+    # sweeps (incl. the full locale sweep) belong in the nightly workflow, not
+    # in the push/PR critical path. build-test-nightly.yml also triggers on
+    # every push to release/**, so release-branch commits still get an
+    # automatic full-locale run — it just doesn't block this package job.
     if: ${{ needs.build.result == 'success' && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') }}
     timeout-minutes: 15
     permissions:

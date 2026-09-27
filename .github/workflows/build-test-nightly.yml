@@ -3,7 +3,10 @@ name: Build, Test and Package (Nightly)
 # Consolidated nightly workflow covering all test types that are too heavy or
 # slow to run on every push/PR. This workflow supersedes upgrade-tests.yml
 # (which is deleted). The on-release trigger for upgrade tests is now
-# included in this file's on: block below.
+# included in this file's on: block below. It also runs on every push to a
+# release/** branch, since build-test-package.yml no longer runs the full
+# locale sweep for those pushes (PR #10103) — this is the automatic
+# full-locale gate for release-branch commits.
 #
 # What this workflow covers
 # ─────────────────────────
@@ -26,11 +29,14 @@ name: Build, Test and Package (Nightly)
 # Stage 3 – Summary
 #   • nightly-summary: always() — reports pass/fail counts to the step summary
 #
-# Concurrency: a new run cancels any in-progress nightly run (safe for both
-# scheduled and manual dispatch triggers — you always want the latest code).
+# Concurrency: a new run cancels any in-progress nightly run (safe for
+# scheduled/dispatch/release-publish triggers — you always want the latest
+# code). Release-branch pushes use their own concurrency group below so a
+# rapid string of pushes to release/** doesn't get cancelled mid-sweep by the
+# unrelated nightly schedule.
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -44,6 +50,14 @@ on:
   workflow_dispatch:
   release:
     types: [published]
+  push:
+    # Release branches get the exhaustive suite (incl. full locale sweep) on
+    # every push, not just nightly/dispatch/publish — build-test-package.yml
+    # no longer runs a full-locale job on these pushes (PR #10103), so this is
+    # the only automatic full-locale validation a release/** commit gets
+    # before it can be selected for release-publish.yml.
+    branches:
+      - 'release/**'
 
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
