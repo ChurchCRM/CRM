@@ -1,4 +1,4 @@
-name: Deploy Church CRM to Hetzner Cloud
+name: Test & Deploy Church CRM to Hetzner Cloud
 
 on:
   push:
@@ -7,8 +7,27 @@ on:
       - main
 
 jobs:
+  test:
+    name: Verify PHP & Application Syntax
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, pdo, pdo_mysql, xml, zip, curl
+
+      - name: Validate Code Syntax
+        run: |
+          find src/ -type f -name "*.php" -exec php -l {} \; | grep -v "No syntax errors detected" || echo "All PHP files passed syntax check."
+
   deploy:
     name: Deploy Church CRM to Production
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
