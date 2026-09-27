@@ -936,11 +936,16 @@ describe("Volunteer v2 — the eligible picker (§3.3.2, §2.17 rotation)", () =
         // They are inserted directly: I5 refuses to create an assignment on an
         // occurrence that has already ended, which is exactly what these are.
         dbOk(
-            `INSERT INTO volunteer_occurrence_vocc
-                 (vocc_vsch_ID, vocc_OccurrenceDate, vocc_StartDateTime, vocc_EndDateTime,
-                  vocc_Status, vocc_GeneratedDate)
-             VALUES (?, ?, ?, ?, 'scheduled', NOW())`,
-            [scheduleA, isoDate(-28), `${isoDate(-28)} 10:30:00`, `${isoDate(-28)} 11:45:00`],
+            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (?, ?, '', '', ?, ?, 0)`,
+            [CHURCH_SERVICE_TYPE, `${EVENT_TITLE} Past`, `${isoDate(-28)} 10:30:00`, `${isoDate(-28)} 11:45:00`],
+        ).then((event) =>
+            dbOk(
+                `INSERT INTO volunteer_occurrence_vocc
+                     (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
+                 VALUES (?, ?, ?, 'scheduled', NOW())`,
+                [scheduleA, event.insertId, isoDate(-28)],
+            ),
         ).then((rows) => {
             const oldOccurrence = rows.insertId;
             dbOk(

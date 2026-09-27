@@ -430,8 +430,8 @@ function getVolunteerOccurrenceStaffing(Request $request, Response $response): R
         'teamId' => $schedule !== null && $schedule->getTeamId() !== null ? (int) $schedule->getTeamId() : null,
         'requirements' => $requirements,
         'otherAssignments' => $other,
-        // Attendance is only meaningful for a linked occurrence (E10); saying so
-        // explicitly keeps a client from rendering an empty column for a standalone one.
+        // Attendance needs the anchored event (E10); once the event is deleted there
+        // is none, and saying so keeps a client from rendering an empty column.
         'attendanceAvailable' => $occurrence->getEventId() !== null,
     ]);
 }

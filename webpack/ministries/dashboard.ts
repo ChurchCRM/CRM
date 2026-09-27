@@ -126,9 +126,9 @@ function confirmAction(title: string, message: string, onConfirm: () => void, da
  * When an occurrence happens, in the viewer's own locale.
  *
  * The server sends `start` as `Y-m-d H:i:s` already resolved in the church's timezone —
- * for a LINKED occurrence that value came from the event row (D4) — so it is rendered as
- * a wall-clock reading and never re-zoned here. A row with no time at all (a standalone
- * schedule that carries only a date) falls back to the date.
+ * the anchored event's time moved by the schedule's offsets (D20, D21) — so it is rendered
+ * as a wall-clock reading and never re-zoned here. A row with no time at all (its event was
+ * deleted) falls back to the date.
  */
 function whenLabel(start: string | null, occurrenceDate: string | null): string {
   const raw = start ?? occurrenceDate;

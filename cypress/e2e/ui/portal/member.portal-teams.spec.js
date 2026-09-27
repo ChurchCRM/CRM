@@ -179,6 +179,7 @@ function cleanupFixtures() {
     // unowned church calendar. It goes first, matched on the same prefix.
     dbOk(`DELETE FROM calendars WHERE name LIKE ?`, like);
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, like);
+    dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, like);
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
@@ -233,6 +234,20 @@ before(() => {
     // Somebody for the grid to have a row for.
     cy.then(() => {
         adminApi("POST", `${VOLUNTEER_URL}/ministries/${ministryId}/pool/${POOL_MEMBER}`, null, [200, 201]);
+    });
+
+    // Four Sunday mornings the ministry owns, for the team's "This ministry's
+    // events" schedule to follow (D22).
+    cy.then(() => {
+        const first = (7 - new Date().getDay()) % 7 || 7;
+        [0, 7, 14, 21].forEach((week) => {
+            const day = isoDate(first + week);
+            dbOk(
+                `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive, event_ministry_id)
+                 VALUES (1, ?, '', '', ?, ?, 0, ?)`,
+                [`${PREFIX} Greeters Sunday`, `${day} 09:00:00`, `${day} 10:00:00`, ministryId],
+            );
+        });
     });
 });
 
@@ -363,12 +378,14 @@ describe("Member Portal — My Teams", () => {
             cy.get("#scheduleModal", { timeout: 10000 }).should("be.visible");
 
             cy.get("#schedule-form-name").clear().type(`${PREFIX} Greeters — Sunday`);
-            cy.get("#schedule-form-link-mode").select("standalone");
-            cy.get("#schedule-form-dow").select("Sunday");
-            cy.get("#schedule-form-start-time").clear().type("09:00");
-            cy.get("#schedule-form-end-time").clear().type("10:00");
             cy.get("#schedule-form-window-start").clear().type(isoDate(0));
             cy.get("#schedule-form-window-end").clear().type(isoDate(28));
+            cy.get("#schedule-form-link-mode").select("ministry");
+            cy.get("#schedule-form-event-type-row").should("not.be.visible");
+            cy.get(`#schedule-form-title-filter option[value="${PREFIX} Greeters Sunday"]`, { timeout: 10000 }).should(
+                "exist",
+            );
+            cy.get("#schedule-form-title-filter").select(`${PREFIX} Greeters Sunday`);
             cy.get("#schedule-form-save").click();
 
             cy.get("#volunteerSchedulesTable tbody tr", { timeout: 15000 })

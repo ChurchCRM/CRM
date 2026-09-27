@@ -106,6 +106,19 @@ function isoDate(offsetDays) {
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
+/** A Church Service event every Sunday for `weeks` weeks from the next one. */
+function createSundayEvents(title, weeks) {
+    const first = (7 - new Date().getDay()) % 7 || 7;
+    for (let week = 0; week < weeks; week++) {
+        const day = isoDate(first + week * 7);
+        cy.dbQuery(
+            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (1, ?, '', '', ?, ?, 0)`,
+            [title, `${day} 09:00:00`, `${day} 10:30:00`],
+        );
+    }
+}
+
 /**
  * Teams, positions and the pool Group cascade from the ministry row, but
  * OCCURRENCES do not: a ministry that still has any is refused with a 409 and
@@ -138,6 +151,7 @@ function cleanupFixtures() {
             );
         }
     });
+    cy.dbQuery("DELETE FROM events_event WHERE event_title LIKE ?", [`${PREFIX}%`]);
 }
 
 function ministryUrl() {
@@ -216,19 +230,18 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
                     });
                 });
 
-                // A standalone weekly schedule, generated forward. Its occurrences
-                // are the "upcoming" half; the past one is inserted below.
+                // A weekly schedule following eight Sunday events, generated forward.
+                // Its occurrences are the "upcoming" half; the past one is inserted below.
+                createSundayEvents(`${PREFIX} Sunday Morning`, 8);
                 adminApi(
                     "POST",
                     `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
                     {
                         name: `${PREFIX} Sunday Morning`,
                         teamId: firstTeamId,
-                        linkMode: "standalone",
-                        recurType: "weekly",
-                        recurDow: "Sunday",
-                        startTime: "09:00",
-                        endTime: "10:30",
+                        linkMode: "event_type",
+                        eventTypeId: 1,
+                        titleFilter: `${PREFIX} Sunday Morning`,
                         windowStart: isoDate(0),
                         windowEnd: isoDate(60),
                     },
@@ -484,11 +497,17 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
             // Generation deliberately refuses to back-fill (§2.9), so the one thing
             // this section needs cannot be made through the API.
             cy.dbQuery(
-                `INSERT INTO volunteer_occurrence_vocc
-                    (vocc_vsch_ID, vocc_OccurrenceDate, vocc_StartDateTime, vocc_EndDateTime, vocc_Status, vocc_GeneratedDate)
-                 VALUES (?, ?, ?, ?, 'scheduled', NOW())`,
-                [scheduleId, PAST_DATE, `${PAST_DATE} 09:00:00`, `${PAST_DATE} 10:30:00`],
-            );
+                `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+                 VALUES (1, ?, '', '', ?, ?, 0)`,
+                [`${PREFIX} Past Sunday`, `${PAST_DATE} 09:00:00`, `${PAST_DATE} 10:30:00`],
+            ).then((event) => {
+                cy.dbQuery(
+                    `INSERT INTO volunteer_occurrence_vocc
+                        (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
+                     VALUES (?, ?, ?, 'scheduled', NOW())`,
+                    [scheduleId, event.rows.insertId, PAST_DATE],
+                );
+            });
         });
 
         beforeEach(() => {

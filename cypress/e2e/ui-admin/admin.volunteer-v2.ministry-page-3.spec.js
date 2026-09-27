@@ -104,6 +104,32 @@ function isoDate(offsetDays) {
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
+/** A Church Service event on weekday `dow` (0 = Sunday) for `weeks` weeks from the next one. */
+function createWeeklyEvents(title, dow, weeks, startTime, endTime) {
+    const first = (dow - new Date().getDay() + 7) % 7 || 7;
+    for (let week = 0; week < weeks; week++) {
+        const day = isoDate(first + week * 7);
+        cy.dbQuery(
+            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (1, ?, '', '', ?, ?, 0)`,
+            [title, `${day} ${startTime}`, `${day} ${endTime}`],
+        );
+    }
+}
+
+/** A schedule following the events titled like itself. */
+function followEvents(name, teamId) {
+    return {
+        name,
+        teamId,
+        linkMode: "event_type",
+        eventTypeId: 1,
+        titleFilter: name,
+        windowStart: isoDate(0),
+        windowEnd: isoDate(60),
+    };
+}
+
 function cleanupFixtures() {
     adminApi("GET", `${VOLUNTEER_URL}/ministries`, null, 200).then((resp) => {
         for (const ministry of resp.body.ministries) {
@@ -130,6 +156,7 @@ function cleanupFixtures() {
             );
         }
     });
+    cy.dbQuery("DELETE FROM events_event WHERE event_title LIKE ?", [`${PREFIX}%`]);
 }
 
 function ministryUrl() {
@@ -265,20 +292,11 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
                         secondTeamPositionId = position.body.position.id;
                     });
 
+                    createWeeklyEvents(SCHEDULE_WEDNESDAY, 3, 8, "19:00:00", "20:00:00");
                     adminApi(
                         "POST",
                         `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-                        {
-                            name: SCHEDULE_WEDNESDAY,
-                            teamId: secondTeamId,
-                            linkMode: "standalone",
-                            recurType: "weekly",
-                            recurDow: "Wednesday",
-                            startTime: "19:00",
-                            endTime: "20:00",
-                            windowStart: isoDate(0),
-                            windowEnd: isoDate(60),
-                        },
+                        followEvents(SCHEDULE_WEDNESDAY, secondTeamId),
                         201,
                     ).then((schedule) => {
                         wednesdayScheduleId = schedule.body.schedule.id;
@@ -291,20 +309,11 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
                     });
                 });
 
+                createWeeklyEvents(SCHEDULE_SUNDAY, 0, 8, "09:00:00", "10:30:00");
                 adminApi(
                     "POST",
                     `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-                    {
-                        name: SCHEDULE_SUNDAY,
-                        teamId: firstTeamId,
-                        linkMode: "standalone",
-                        recurType: "weekly",
-                        recurDow: "Sunday",
-                        startTime: "09:00",
-                        endTime: "10:30",
-                        windowStart: isoDate(0),
-                        windowEnd: isoDate(60),
-                    },
+                    followEvents(SCHEDULE_SUNDAY, firstTeamId),
                     201,
                 ).then((schedule) => {
                     sundayScheduleId = schedule.body.schedule.id;
@@ -607,11 +616,17 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
 
         before(() => {
             cy.dbQuery(
-                `INSERT INTO volunteer_occurrence_vocc
-                    (vocc_vsch_ID, vocc_OccurrenceDate, vocc_StartDateTime, vocc_EndDateTime, vocc_Status, vocc_GeneratedDate)
-                 VALUES (?, ?, ?, ?, 'scheduled', NOW())`,
-                [sundayScheduleId, PAST_DATE, `${PAST_DATE} 09:00:00`, `${PAST_DATE} 10:30:00`],
-            );
+                `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+                 VALUES (1, ?, '', '', ?, ?, 0)`,
+                [SCHEDULE_SUNDAY, `${PAST_DATE} 09:00:00`, `${PAST_DATE} 10:30:00`],
+            ).then((event) => {
+                cy.dbQuery(
+                    `INSERT INTO volunteer_occurrence_vocc
+                        (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
+                     VALUES (?, ?, ?, 'scheduled', NOW())`,
+                    [sundayScheduleId, event.rows.insertId, PAST_DATE],
+                );
+            });
         });
 
         beforeEach(() => {

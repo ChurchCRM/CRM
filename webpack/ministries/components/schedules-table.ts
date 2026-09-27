@@ -6,8 +6,9 @@
  * Portal's My Teams page gives a team leader the same table and the same dialog
  * for their own team.
  *
- * Per row: the pattern in one readable phrase, how many occurrences have been
- * generated, and the three actions that matter — generate more, edit, delete.
+ * Per row: where its dates come from in one readable phrase (D22), how many
+ * occurrences have been generated, and the three actions that matter — generate
+ * more, edit, delete.
  * Generation is idempotent server-side (§2.9), so pressing Generate twice creates
  * nothing the second time; the toast reports what the server actually did rather
  * than assuming.
@@ -24,13 +25,16 @@ import {
   deleteSchedule,
   errorMessage,
   generateOccurrences,
+  listClasses,
   listEventSeries,
+  listEventTypes,
   listScheduleEligiblePeople,
   listScheduleRequirements,
   notifyError,
   notifySuccess,
   updateSchedule,
   type VolunteerCandidatePosition,
+  type VolunteerClassGroup,
   type VolunteerEligiblePerson,
   type VolunteerGenerateDefault,
   type VolunteerPosition,
@@ -39,6 +43,7 @@ import {
   type VolunteerTeam,
 } from "../api";
 import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "../staffing-needs";
+import { offsetSummary, readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
 import {
   actionMenu,
   byId,
@@ -84,6 +89,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   let schedules: VolunteerSchedule[] | null = null;
   /** Calendar event types, fetched once for the schedule editor's select. */
   let eventTypes: Array<{ id: number; name: string }> | null = null;
+  /** The groups a class schedule may follow, fetched once per page. */
+  let classes: VolunteerClassGroup[] | null = null;
   /** Which schedule the modal is editing; 0 means "new". */
   let editingScheduleId = 0;
   /**
@@ -110,10 +117,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
     body.innerHTML = rows
       .map((schedule) => {
-        const pattern =
-          schedule.linkMode === "event_type"
-            ? i18next.t("Calendar event type: {{name}}", { name: schedule.eventTypeName ?? "" })
-            : i18next.t("Every {{day}}", { day: schedule.recurDow ?? "" });
+        const offsets = offsetSummary(schedule.startOffsetMinutes, schedule.endOffsetMinutes);
         const team = options.teams().find((candidate) => candidate.id === schedule.teamId);
         // Every schedule names a team; an empty cell here would mean the caller's
         // document is stale, not that the schedule is ministry-wide.
@@ -121,7 +125,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         return `
         <tr>
           <td>${escapeHtml(schedule.name)}</td>
-          <td>${escapeHtml(pattern)}</td>
+          <td>${escapeHtml(describeSource(schedule))}${
+            offsets === "" ? "" : `<div class="small text-body-secondary">${escapeHtml(offsets)}</div>`
+          }</td>
           <td>${escapeHtml(team?.name ?? "")}</td>
           <td class="text-center">${schedule.occurrenceCount}</td>
           <td class="text-center">${statusBadge(schedule.active)}</td>
@@ -159,6 +165,34 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     initDataTable("volunteerSchedulesTable");
   }
 
+  /** Where a schedule's dates come from, in words (D22). */
+  function describeSource(schedule: VolunteerSchedule): string {
+    switch (schedule.linkMode) {
+      case "class":
+        if (schedule.groupName === null) {
+          return i18next.t("A class that no longer exists");
+        }
+
+        return schedule.groupSundaySchool
+          ? tText("Sunday School: {{name}}", { name: schedule.groupName })
+          : tText("Meetings of {{name}}", { name: schedule.groupName });
+      case "ministry":
+        return schedule.titleFilter
+          ? tText("This ministry's events titled {{title}}", { title: schedule.titleFilter })
+          : i18next.t("All of this ministry's events");
+      case "event":
+        return tText("One event: {{title}}", { title: schedule.eventTitle ?? "" });
+      default:
+        if (schedule.eventTypeName === null) {
+          return i18next.t("An event type that no longer exists");
+        }
+
+        return schedule.titleFilter
+          ? tText("{{type}} events titled {{title}}", { type: schedule.eventTypeName, title: schedule.titleFilter })
+          : tText("All {{type}} events", { type: schedule.eventTypeName });
+    }
+  }
+
   async function load(force = false): Promise<void> {
     if (schedules !== null && !force) {
       render(schedules);
@@ -183,12 +217,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   }
 
   /**
-   * Calendar event types for the editor's select.
-   *
-   * A plain `fetch` rather than a call through `../api`: that module is the client
-   * for `/api/ministries/*` and this is a core calendar read, so routing it through
-   * the volunteer prefix would be wrong. Failure is not fatal — the select is simply
-   * empty and the standalone pattern still works.
+   * Calendar event types for the editor's select, from the ministries surface: a
+   * portal team leader cannot reach the core `/api/events/types`. Failure is not
+   * fatal — the select is simply empty and the other two sources still work.
    */
   async function loadEventTypes(): Promise<void> {
     if (eventTypes !== null) {
@@ -196,25 +227,25 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     }
 
     try {
-      const response = await fetch(`${window.CRM?.root ?? ""}/api/events/types`, {
-        credentials: "same-origin",
-        headers: { Accept: "application/json" },
-      });
-      const body: unknown = response.ok ? await response.json() : [];
-      // The core endpoint answers `{ EventTypes: [...] }`, not a bare array.
-      const rows = Array.isArray(body) ? body : ((body as { EventTypes?: unknown } | null)?.EventTypes ?? []);
-      eventTypes = (Array.isArray(rows) ? rows : [])
-        .filter((row: Record<string, unknown>) => Number(row.Active ?? row.active ?? 1) !== 0)
-        .map((row: Record<string, unknown>) => ({
-          id: Number(row.Id ?? row.id ?? 0),
-          name: String(row.Name ?? row.name ?? ""),
-        }));
+      eventTypes = (await listEventTypes()).eventTypes;
     } catch {
       eventTypes = [];
     }
   }
 
-  function fillSelects(): void {
+  async function loadClasses(): Promise<void> {
+    if (classes !== null) {
+      return;
+    }
+
+    try {
+      classes = (await listClasses()).classes;
+    } catch {
+      classes = [];
+    }
+  }
+
+  function fillSelects(schedule?: VolunteerSchedule): void {
     const teamSelect = byId<HTMLSelectElement>("schedule-form-team");
     if (teamSelect) {
       // No "no team" entry: a schedule always belongs to a team, and there is
@@ -231,27 +262,56 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         .map((type) => `<option value="${type.id}">${escapeHtml(type.name)}</option>`)
         .join("");
     }
+
+    // The class picker, keeping a stored class the list no longer offers (it lost its
+    // upcoming events, or stopped being a Sunday School class) rather than dropping it.
+    const groupSelect = byId<HTMLSelectElement>("schedule-form-group");
+    if (groupSelect) {
+      const rows = [...(classes ?? [])];
+      if (schedule?.groupId && schedule.groupName && !rows.some((row) => row.groupId === schedule.groupId)) {
+        rows.unshift({
+          groupId: schedule.groupId,
+          name: schedule.groupName,
+          sundaySchool: schedule.groupSundaySchool,
+          upcomingCount: 0,
+          nextStart: null,
+        });
+      }
+      groupSelect.innerHTML = [
+        `<option value="">${escapeHtml(i18next.t("Choose a class"))}</option>`,
+        ...rows.map(
+          (row) =>
+            `<option value="${row.groupId}">${escapeHtml(
+              row.upcomingCount > 0
+                ? tText("{{name}} ({{count}} upcoming)", { name: row.name, count: row.upcomingCount })
+                : row.name,
+            )}</option>`,
+        ),
+      ].join("");
+    }
   }
 
   /**
-   * The Event picker: the distinct upcoming titles of the chosen type, so a schedule
-   * follows ONE event series (review, 2026-09-18 — a type alone matched every event
-   * of that type on a Sunday and made an occurrence for each). The current value is
-   * kept, and an unlisted one (an edit of a schedule whose events have passed) is
-   * offered as its own option rather than silently dropped.
+   * The Event picker: the distinct upcoming titles of the chosen type's events, or of
+   * this ministry's, so a schedule follows ONE event series (review, 2026-09-18 — a type
+   * alone matched every event of that type on a Sunday and made an occurrence for
+   * each). The current value is kept, and an unlisted one (an edit of a schedule whose
+   * events have passed) is offered as its own option rather than silently dropped.
    */
   async function fillEventSeries(keep?: string): Promise<void> {
     const select = byId<HTMLSelectElement>("schedule-form-title-filter");
-    const typeId = Number(byId<HTMLSelectElement>("schedule-form-event-type")?.value ?? 0);
     if (!select) {
       return;
     }
+    const byMinistry = byId<HTMLSelectElement>("schedule-form-link-mode")?.value === "ministry";
+    const typeId = Number(byId<HTMLSelectElement>("schedule-form-event-type")?.value ?? 0);
+    const from = byId<HTMLInputElement>("schedule-form-window-start")?.value || undefined;
     const wanted = keep ?? select.value;
     let series: Array<{ title: string; count: number }> = [];
-    if (typeId > 0) {
+    if (byMinistry || typeId > 0) {
       try {
         series = (
-          await listEventSeries(typeId, byId<HTMLInputElement>("schedule-form-window-start")?.value || undefined)
+          await listEventSeries(byMinistry ? { ministryId: options.ministryId() } : { eventTypeId: typeId }, from)
         ).series;
       } catch {
         series = [];
@@ -261,7 +321,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       series = [{ title: wanted, count: 0 }, ...series];
     }
     select.innerHTML = [
-      `<option value="">${escapeHtml(i18next.t("Any event of this type"))}</option>`,
+      `<option value="">${escapeHtml(
+        byMinistry ? i18next.t("Any of this ministry's events") : i18next.t("Any event of this type"),
+      )}</option>`,
       ...series.map(
         (row) =>
           `<option value="${escapeAttribute(row.title)}">${escapeHtml(
@@ -278,10 +340,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   /** Show only the fields the chosen link mode actually uses (§2.8's invariants). */
   function syncMode(): void {
     const mode = byId<HTMLSelectElement>("schedule-form-link-mode")?.value ?? "event_type";
-    const linked = mode === "event_type";
-    show(byId("schedule-form-event-type-row"), linked);
-    show(byId("schedule-form-title-filter-row"), linked);
-    show(byId("schedule-form-standalone-rows"), !linked);
+    show(byId("schedule-form-event-type-row"), mode === "event_type");
+    show(byId("schedule-form-group-row"), mode === "class");
+    show(byId("schedule-form-title-filter-row"), mode === "event_type" || mode === "ministry");
   }
 
   /**
@@ -341,8 +402,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
               scheduleRequirements = [];
             });
 
-    void Promise.all([loadEventTypes(), requirements]).then(() => {
-      fillSelects();
+    void Promise.all([loadEventTypes(), loadClasses(), requirements]).then(() => {
+      fillSelects(schedule);
+      renderOffsetFields("schedule-form");
 
       const set = (id: string, value: string): void => {
         const el = byId<HTMLInputElement | HTMLSelectElement>(id);
@@ -356,14 +418,11 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       // because "nothing" is no longer a storable answer.
       set("schedule-form-team", String(schedule?.teamId ?? options.teams()[0]?.id ?? ""));
       set("schedule-form-link-mode", schedule?.linkMode ?? "event_type");
-      set(
-        "schedule-form-event-type",
-        schedule?.eventTypeId === null || schedule === undefined ? "" : String(schedule.eventTypeId),
-      );
-      void fillEventSeries(schedule?.titleFilter ?? "");
-      set("schedule-form-dow", schedule?.recurDow ?? "Sunday");
-      set("schedule-form-start-time", (schedule?.startTime ?? "").slice(0, 5));
-      set("schedule-form-end-time", (schedule?.endTime ?? "").slice(0, 5));
+      if (schedule?.eventTypeId) {
+        set("schedule-form-event-type", String(schedule.eventTypeId));
+      }
+      set("schedule-form-group", schedule?.groupId ? String(schedule.groupId) : "");
+      writeOffsets("schedule-form", schedule?.startOffsetMinutes ?? 0, schedule?.endOffsetMinutes ?? 0);
       set("schedule-form-window-start", schedule?.windowStart ?? isoDate(0));
       set("schedule-form-window-end", schedule?.windowEnd ?? "");
 
@@ -378,6 +437,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       }
 
       syncMode();
+      void fillEventSeries(schedule?.titleFilter ?? "");
       renderNeeds();
       modal("scheduleModal")?.show();
     });
@@ -399,12 +459,18 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
     if (linkMode === "event_type") {
       payload.eventTypeId = Number(value("schedule-form-event-type")) || null;
+    }
+    if (linkMode === "event_type" || linkMode === "ministry") {
       payload.titleFilter = value("schedule-form-title-filter");
-    } else {
-      payload.recurType = "weekly";
-      payload.recurDow = value("schedule-form-dow");
-      payload.startTime = value("schedule-form-start-time");
-      payload.endTime = value("schedule-form-end-time");
+    }
+    if (linkMode === "class") {
+      payload.groupId = Number(value("schedule-form-group")) || null;
+    }
+
+    const offsets = readOffsets("schedule-form");
+    if (typeof offsets !== "string") {
+      payload.startOffsetMinutes = offsets.start;
+      payload.endOffsetMinutes = offsets.end;
     }
 
     // The whole plan, in the same request as the schedule row: the server writes both in
@@ -420,7 +486,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
   function save(): void {
     const needs = byId("schedule-form-needs");
-    const invalid = needs === null ? null : validateStaffingNeeds(needs);
+    const offsets = readOffsets("schedule-form");
+    const invalid = typeof offsets === "string" ? offsets : needs === null ? null : validateStaffingNeeds(needs);
     if (invalid !== null) {
       showModalError("schedule", invalid, notifyError);
 
@@ -720,7 +787,10 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
     byId("schedule-add-btn")?.addEventListener("click", () => openModal());
     byId("schedule-form-save")?.addEventListener("click", save);
-    byId("schedule-form-link-mode")?.addEventListener("change", syncMode);
+    byId("schedule-form-link-mode")?.addEventListener("change", () => {
+      syncMode();
+      void fillEventSeries("");
+    });
     byId("schedule-form-event-type")?.addEventListener("change", () => {
       void fillEventSeries("");
     });

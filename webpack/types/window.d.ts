@@ -185,7 +185,7 @@ interface CRMVolunteerDashboardConfig {
  * Per-page config for S4, handed to the bundle by
  * `src/volunteer/views/occurrence-view.php` (issue #9709).
  *
- * `eventId` is 0 for a standalone occurrence. It is advisory only — the page asks
+ * `eventId` is 0 once the anchored event was deleted. It is advisory only — the page asks
  * the API whether attendance is available (`attendanceAvailable`) rather than
  * inferring it, because only the server knows whether the linked event still exists.
  */

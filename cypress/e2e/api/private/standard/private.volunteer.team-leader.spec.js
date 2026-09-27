@@ -56,6 +56,8 @@ let occurrenceLed = 0;
 let originalVersion = "v1";
 let windowStart = "";
 let windowEnd = "";
+/** The four Sunday-morning events the led team's schedule follows, soonest first. */
+let sundayEventIds = [];
 
 // ── helpers ────────────────────────────────────────────────────────────────
 
@@ -94,15 +96,15 @@ function daysToNext(dow) {
     return ((dow - today + 7) % 7) || 7;
 }
 
+const SUNDAY_TITLE = `${FIXTURE_PREFIX} Sunday Morning`;
+
 function schedulePayload(teamId, name) {
     return {
         name: `${FIXTURE_PREFIX} ${name}`,
-        linkMode: "standalone",
+        linkMode: "event_type",
+        eventTypeId: 1,
+        titleFilter: SUNDAY_TITLE,
         teamId,
-        recurType: "weekly",
-        recurDow: "Sunday",
-        startTime: "09:00",
-        endTime: "10:00",
         windowStart,
         windowEnd,
     };
@@ -185,6 +187,7 @@ function cleanupFixtures() {
     // unowned church calendar. It goes first, matched on the same prefix.
     dbOk(`DELETE FROM calendars WHERE name LIKE ?`, like);
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, like);
+    dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, like);
 }
 
 // ── fixture ────────────────────────────────────────────────────────────────
@@ -199,6 +202,17 @@ before(() => {
 
     windowStart = isoDate(daysToNext(0));
     windowEnd = isoDate(daysToNext(0) + 21);
+    sundayEventIds = [];
+    [0, 7, 14, 21].forEach((week) => {
+        const day = isoDate(daysToNext(0) + week);
+        dbOk(
+            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (1, ?, '', '', ?, ?, 0)`,
+            [SUNDAY_TITLE, `${day} 09:00:00`, `${day} 10:00:00`],
+        ).then((result) => {
+            sundayEventIds.push(result.insertId);
+        });
+    });
 
     api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/ministries`, {
         name: `${FIXTURE_PREFIX} Hospitality`,
@@ -373,6 +387,64 @@ describe("Volunteer v2 — a team leader on their own team", () => {
             }, 200).then((resp) => {
                 expect(resp.body.created).to.be.greaterThan(0);
             });
+        });
+    });
+
+    describe("Staffing one event (D22)", () => {
+        let staffedScheduleId = 0;
+
+        it("Staffs an event for the team they lead", () => {
+            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
+                eventId: sundayEventIds[3],
+                teamId: teamLed,
+                requirements: [{ positionId: posLedDoor, minCount: 1, maxCount: 1 }],
+            }, 201).then((resp) => {
+                expect(resp.body.occurrence.eventId).to.eq(sundayEventIds[3]);
+                expect(resp.body.occurrence.teamId).to.eq(teamLed);
+                expect(resp.body.schedule.linkMode).to.eq("event");
+                expect(resp.body.schedule.oneOff).to.eq(true);
+                staffedScheduleId = resp.body.schedule.id;
+            });
+        });
+
+        it("Is refused a second staffing of the same event for the same team (409)", () => {
+            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
+                eventId: sundayEventIds[3],
+                teamId: teamLed,
+            }, 409);
+        });
+
+        it("Is refused staffing an event for a team they do not lead", () => {
+            api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
+                eventId: sundayEventIds[2],
+                teamId: teamOther,
+            }, 403);
+            dbOk(`SELECT vsch_ID FROM volunteer_schedule_vsch WHERE vsch_vtem_ID = ?`, [teamOther]).then((rows) => {
+                expect(rows, "nothing written for the refused team").to.have.length(0);
+            });
+        });
+
+        it("A login with no scope is refused", () => {
+            api(NOSCOPE_KEY, "POST", `${VOLUNTEER_URL}/ministries/${ministryId}/staffed-events`, {
+                eventId: sundayEventIds[2],
+                teamId: teamLed,
+            }, 403);
+        });
+
+        it("Keeps the staffed event's schedule off the team's schedule list", () => {
+            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/teams/${teamLed}/schedules`).then((resp) => {
+                expect(resp.body.schedules.map((row) => row.id)).to.not.include(staffedScheduleId);
+            });
+        });
+
+        it("Searches upcoming events for their own team only", () => {
+            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/upcoming-events?q=${encodeURIComponent(SUNDAY_TITLE)}&teamId=${teamLed}`).then(
+                (resp) => {
+                    const staffed = resp.body.events.find((row) => row.id === sundayEventIds[3]);
+                    expect(staffed.staffedByTeam).to.eq(true);
+                },
+            );
+            api(LEADER_KEY, "GET", `${VOLUNTEER_URL}/upcoming-events?teamId=${teamOther}`, null, 403);
         });
     });
 

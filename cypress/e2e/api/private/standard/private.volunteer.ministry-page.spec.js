@@ -108,41 +108,33 @@ function isoDate(offsetDays) {
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
-const DAY_NAMES = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-];
-
-function dayNameIn(offsetDays) {
-    const d = new Date();
-    d.setHours(12, 0, 0, 0);
-    d.setDate(d.getDate() + offsetDays);
-    return DAY_NAMES[d.getDay()];
+/** A Church Service event at 10:30–11:45, `offsetDays` from today. */
+function makeEvent(title, offsetDays) {
+    return dbOk(
+        `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+         VALUES (1, ?, '', '', ?, ?, 0)`,
+        [title, `${isoDate(offsetDays)} 10:30:00`, `${isoDate(offsetDays)} 11:45:00`],
+    ).then((rows) => rows.insertId);
 }
 
 /**
- * One standalone weekly schedule whose window is exactly the next week, so it
- * generates EXACTLY ONE occurrence — three days out, comfortably in the future
- * whatever time of day the suite runs.
+ * One schedule following one event of its own, three days out, with a window of
+ * exactly the next week — so it generates EXACTLY ONE occurrence, comfortably in
+ * the future whatever time of day the suite runs.
  */
 function makeSchedule(name, teamId, positionId, minCount) {
+    makeEvent(name, 3);
+
     return api(
         ADMIN_KEY,
         "POST",
         `${MINISTRIES_URL}/${ministryId}/schedules`,
         {
             name,
-            linkMode: "standalone",
+            linkMode: "event_type",
+            eventTypeId: 1,
+            titleFilter: name,
             teamId,
-            recurType: "weekly",
-            recurDow: dayNameIn(3),
-            startTime: "10:30",
-            endTime: "11:45",
             windowStart: isoDate(0),
             windowEnd: isoDate(6),
         },
@@ -276,6 +268,7 @@ function cleanupFixtures() {
     // unowned church calendar. It goes first, matched on the same prefix.
     dbOk(`DELETE FROM calendars WHERE name LIKE ?`, like);
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, like);
+    dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, like);
 }
 
 /** The summary as the ministry PAGE reads it — embedded in the detail document. */
@@ -463,12 +456,13 @@ before(() => {
     // directly: generation never back-fills (§2.9) and I5 refuses an assignment on
     // an occurrence that has already ended — which is exactly what this is.
     cy.then(() => {
-        dbOk(
-            `INSERT INTO volunteer_occurrence_vocc
-                 (vocc_vsch_ID, vocc_OccurrenceDate, vocc_StartDateTime, vocc_EndDateTime,
-                  vocc_Status, vocc_GeneratedDate)
-             VALUES (?, ?, ?, ?, 'scheduled', NOW())`,
-            [schedAlpha, isoDate(-28), `${isoDate(-28)} 10:30:00`, `${isoDate(-28)} 11:45:00`],
+        makeEvent(`${PREFIX} Elementary Sunday Past`, -28).then((pastEventId) =>
+            dbOk(
+                `INSERT INTO volunteer_occurrence_vocc
+                     (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
+                 VALUES (?, ?, ?, 'scheduled', NOW())`,
+                [schedAlpha, pastEventId, isoDate(-28)],
+            ),
         ).then((rows) => {
             pastOccurrence = rows.insertId;
             dbOk(

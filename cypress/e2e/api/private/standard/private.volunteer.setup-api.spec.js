@@ -428,7 +428,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 dbOk(
                     `INSERT INTO volunteer_schedule_vsch
                        (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
-                     VALUES (?, ?, ?, 'standalone', '2026-09-13', 56, 1)`,
+                     VALUES (?, ?, ?, 'ministry', '2026-09-13', 56, 1)`,
                     [id, teamId, `${PREFIX} Weekly`],
                 ).then((scheduleRows) => {
                     const scheduleId = scheduleRows.insertId;
@@ -709,7 +709,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 dbOk(
                     `INSERT INTO volunteer_schedule_vsch
                        (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
-                     VALUES (?, ?, ?, 'standalone', '2026-09-13', 56, 1)`,
+                     VALUES (?, ?, ?, 'ministry', '2026-09-13', 56, 1)`,
                     [ministryA, teamA, `${PREFIX} Team Weekly`],
                 ).then((scheduleRows) => {
                     const scheduleId = scheduleRows.insertId;
@@ -1004,7 +1004,7 @@ describe("Volunteer v2 ministry/team/position setup API (#9715)", () => {
                 dbOk(
                     `INSERT INTO volunteer_schedule_vsch
                        (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
-                     VALUES (?, ?, ?, 'standalone', '2026-09-13', 56, 1)`,
+                     VALUES (?, ?, ?, 'ministry', '2026-09-13', 56, 1)`,
                     [ministryA, homeTeamId, `${PREFIX} Position Weekly`],
                 ).then((scheduleRows) => {
                     const scheduleId = scheduleRows.insertId;

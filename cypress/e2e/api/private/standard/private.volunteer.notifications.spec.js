@@ -1019,30 +1019,34 @@ describe("Volunteer v2 — skipped is not failed (§2.14, N2/N3)", () => {
     });
 
     it("skips a reminder whose occurrence has already ended", () => {
-        // The occurrence is detached from its event so its OWN start/end decide
-        // the window (VolunteerScheduleService::resolveOccurrenceWindow), which
-        // is the only way to put a generated occurrence in the past without
-        // rewriting a shared church event.
+        // The occurrence is re-anchored to a past event of its own, which is the
+        // only way to put a generated occurrence in the past without rewriting a
+        // shared church event: its window comes from the event it points at
+        // (VolunteerScheduleService::resolveOccurrenceWindow).
         let savedEventId = null;
+        let pastEventId = null;
 
         dbOk(`SELECT vocc_event_id FROM volunteer_occurrence_vocc WHERE vocc_ID = ?`, [
             occurrenceTwo,
         ]).then((rows) => {
             savedEventId = rows[0].vocc_event_id;
         });
+        dbOk(
+            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (?, ?, '', '', DATE_SUB(NOW(), INTERVAL 3 DAY), DATE_SUB(NOW(), INTERVAL 3 DAY), 0)`,
+            [CHURCH_SERVICE_TYPE, `${EVENT_TITLE} Past`],
+        ).then((result) => {
+            pastEventId = result.insertId;
+        });
 
         assign(COORDINATOR_KEY, occurrenceTwo, posMilk, POOL_MEMBER_B).then(
             (assignment) => {
                 const key = `reminder:${assignment.id}:${POOL_MEMBER_B}`;
 
-                dbOk(
-                    `UPDATE volunteer_occurrence_vocc
-                        SET vocc_event_id = NULL,
-                            vocc_StartDateTime = DATE_SUB(NOW(), INTERVAL 3 DAY),
-                            vocc_EndDateTime = DATE_SUB(NOW(), INTERVAL 3 DAY)
-                      WHERE vocc_ID = ?`,
-                    [occurrenceTwo],
-                );
+                dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_event_id = ? WHERE vocc_ID = ?`, [
+                    pastEventId,
+                    occurrenceTwo,
+                ]);
 
                 dbOk(
                     `INSERT INTO volunteer_notification_vntf
@@ -1060,12 +1064,11 @@ describe("Volunteer v2 — skipped is not failed (§2.14, N2/N3)", () => {
                 });
 
                 cy.then(() => {
-                    dbOk(
-                        `UPDATE volunteer_occurrence_vocc
-                            SET vocc_event_id = ?, vocc_StartDateTime = NULL, vocc_EndDateTime = NULL
-                          WHERE vocc_ID = ?`,
-                        [savedEventId, occurrenceTwo],
-                    );
+                    dbOk(`UPDATE volunteer_occurrence_vocc SET vocc_event_id = ? WHERE vocc_ID = ?`, [
+                        savedEventId,
+                        occurrenceTwo,
+                    ]);
+                    dbOk(`DELETE FROM events_event WHERE event_id = ?`, [pastEventId]);
                 });
             },
         );
@@ -1211,6 +1214,29 @@ describe("Volunteer v2 — reminders (D11, Appendix B, §3.6)", () => {
                 });
             },
         );
+    });
+
+    it("counts the lead back from the SHIFT start, the schedule's offsets included (D21)", () => {
+        const lead = 21 * 24;
+
+        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleA}`, { startOffsetMinutes: -45 });
+        assign(COORDINATOR_KEY, occurrenceTwo, posEspresso, POOL_MEMBER_A).then(
+            (assignment) => {
+                api(ADMIN_KEY, "GET", `${VOLUNTEER_URL}/occurrences/${occurrenceTwo}`).then((resp) => {
+                    expect(resp.body.occurrence.start).to.eq(minusHours(occurrenceTwoStart, 0.75));
+                });
+
+                setConfig(LEAD_HOURS_URL, String(lead));
+                drain();
+
+                outboxRow(`reminder:${assignment.id}:${POOL_MEMBER_A}`).then((row) => {
+                    expect(row.vntf_ScheduledFor).to.eq(minusHours(occurrenceTwoStart, lead + 0.75));
+                });
+            },
+        );
+        cy.then(() => {
+            api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleA}`, { startOffsetMinutes: 0 });
+        });
     });
 
     it("schedules no reminder for an assignment that is no longer live", () => {

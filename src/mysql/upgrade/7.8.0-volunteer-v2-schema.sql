@@ -15,7 +15,8 @@
 --                        (person, group), i.e. one role per person per group.
 --   schedule/occurrence  There is no event series identifier anywhere in core —
 --                        "repeat" bulk-inserts N unlinked events_event rows — so
---                        V2 must own the series, and an occurrence row is what
+--                        a schedule records how a team's events are found, and an
+--                        occurrence row (always anchored to an event, D20) is what
 --                        lets several ministries staff one event independently.
 --   requirement          "This occurrence needs 2–3 espresso people" has no home;
 --                        eventcounts_evtcnt is a per-type head count with no
@@ -146,14 +147,13 @@ CREATE TABLE IF NOT EXISTS `volunteer_schedule_vsch` (
   `vsch_vmin_ID`           int(11)                                        NOT NULL,
   `vsch_vtem_ID`           int(11)                                        NOT NULL,
   `vsch_Name`              varchar(100)                                   NOT NULL,
-  `vsch_LinkMode`          enum('event_type','standalone')                NOT NULL,
+  `vsch_LinkMode`          enum('event_type','class','ministry','event')  NOT NULL,
   `vsch_event_type_id`     int(11)                                                 DEFAULT NULL,
   `vsch_TitleFilter`       varchar(255)                                            DEFAULT NULL,
-  `vsch_RecurType`         enum('none','weekly','monthly','yearly')       NOT NULL DEFAULT 'none',
-  `vsch_RecurDOW`          enum('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday') DEFAULT NULL,
-  `vsch_RecurDOM`          tinyint(3)                                              DEFAULT NULL,
-  `vsch_StartTime`         time                                                    DEFAULT NULL,
-  `vsch_EndTime`           time                                                    DEFAULT NULL,
+  `vsch_grp_ID`            mediumint(8) unsigned                                   DEFAULT NULL,
+  `vsch_event_id`          int(11)                                                 DEFAULT NULL,
+  `vsch_StartOffsetMinutes` int(11)                                       NOT NULL DEFAULT 0,
+  `vsch_EndOffsetMinutes`  int(11)                                        NOT NULL DEFAULT 0,
   `vsch_WindowStart`       date                                           NOT NULL,
   `vsch_WindowEnd`         date                                                    DEFAULT NULL,
   `vsch_GenerateAheadDays` int(11)                                        NOT NULL DEFAULT 56,
@@ -163,13 +163,19 @@ CREATE TABLE IF NOT EXISTS `volunteer_schedule_vsch` (
   KEY `vsch_ministry_idx`      (`vsch_vmin_ID`),
   KEY `vsch_team_idx`          (`vsch_vtem_ID`),
   KEY `vsch_type_idx`          (`vsch_event_type_id`),
+  KEY `vsch_group_idx`         (`vsch_grp_ID`),
+  KEY `vsch_event_idx`         (`vsch_event_id`),
   KEY `vsch_active_window_idx` (`vsch_Active`, `vsch_WindowStart`),
   CONSTRAINT `fk_vsch_ministry` FOREIGN KEY (`vsch_vmin_ID`)
       REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vsch_team` FOREIGN KEY (`vsch_vtem_ID`)
       REFERENCES `volunteer_team_vtem` (`vtem_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vsch_event_type` FOREIGN KEY (`vsch_event_type_id`)
-      REFERENCES `event_types` (`type_id`) ON DELETE SET NULL
+      REFERENCES `event_types` (`type_id`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vsch_group` FOREIGN KEY (`vsch_grp_ID`)
+      REFERENCES `group_grp` (`grp_ID`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vsch_event` FOREIGN KEY (`vsch_event_id`)
+      REFERENCES `events_event` (`event_id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `volunteer_occurrence_vocc` (
@@ -177,33 +183,24 @@ CREATE TABLE IF NOT EXISTS `volunteer_occurrence_vocc` (
   `vocc_vsch_ID`        int(11)                          NOT NULL,
   `vocc_event_id`       int(11)                                   DEFAULT NULL,
   `vocc_OccurrenceDate` date                             NOT NULL,
-  `vocc_StartDateTime`  datetime                                  DEFAULT NULL,
-  `vocc_EndDateTime`    datetime                                  DEFAULT NULL,
   `vocc_Status`         enum('scheduled','cancelled')    NOT NULL DEFAULT 'scheduled',
   `vocc_Notes`          varchar(255)                              DEFAULT NULL,
   `vocc_GeneratedDate`  datetime                         NOT NULL,
   PRIMARY KEY (`vocc_ID`),
-  -- Two unique keys, one per link mode, each idempotent for its own generation
-  -- path. MySQL permits several NULLs in a unique index, so linked rows never
-  -- collide on the standalone key and vice versa. The keys are per SCHEDULE, so
+  -- Generation is idempotent through this key. It is per SCHEDULE, so
   -- occurrences of different schedules may share one events_event row — that is
   -- two ministries staffing the same service, and it is by design.
   UNIQUE KEY `vocc_schedule_event_uidx` (`vocc_vsch_ID`, `vocc_event_id`),
-  UNIQUE KEY `vocc_schedule_start_uidx` (`vocc_vsch_ID`, `vocc_StartDateTime`),
   KEY `vocc_date_idx`  (`vocc_OccurrenceDate`),
   KEY `vocc_event_idx` (`vocc_event_id`),
   CONSTRAINT `fk_vocc_schedule` FOREIGN KEY (`vocc_vsch_ID`)
       REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
   -- SET NULL, not CASCADE: deleting a church event must not erase the record
-  -- that people served. The occurrence survives on vocc_OccurrenceDate.
+  -- that people served. The occurrence survives on vocc_OccurrenceDate. That is
+  -- the only reason the column is nullable: VolunteerScheduleService sets it on
+  -- every insert (D20).
   CONSTRAINT `fk_vocc_event` FOREIGN KEY (`vocc_event_id`)
       REFERENCES `events_event` (`event_id`) ON DELETE SET NULL
-  -- No CHECK "standalone rows must have a start time": once fk_vocc_event has
-  -- SET NULL a deleted event, a formerly linked row legitimately has neither an
-  -- event nor a start time (its date lives in vocc_OccurrenceDate), and MariaDB
-  -- refuses a CHECK on a column an FK action can change anyway. The generator
-  -- (VolunteerScheduleService, #9708) always sets vocc_StartDateTime for
-  -- standalone schedules; vocc_schedule_start_uidx deduplicates those rows.
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `volunteer_requirement_vreq` (

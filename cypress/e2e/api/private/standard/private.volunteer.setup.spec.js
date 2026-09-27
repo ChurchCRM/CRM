@@ -89,11 +89,10 @@ const EXPECTED_COLUMNS = {
         "vsch_LinkMode",
         "vsch_event_type_id",
         "vsch_TitleFilter",
-        "vsch_RecurType",
-        "vsch_RecurDOW",
-        "vsch_RecurDOM",
-        "vsch_StartTime",
-        "vsch_EndTime",
+        "vsch_grp_ID",
+        "vsch_event_id",
+        "vsch_StartOffsetMinutes",
+        "vsch_EndOffsetMinutes",
         "vsch_WindowStart",
         "vsch_WindowEnd",
         "vsch_GenerateAheadDays",
@@ -105,8 +104,6 @@ const EXPECTED_COLUMNS = {
         "vocc_vsch_ID",
         "vocc_event_id",
         "vocc_OccurrenceDate",
-        "vocc_StartDateTime",
-        "vocc_EndDateTime",
         "vocc_Status",
         "vocc_Notes",
         "vocc_GeneratedDate",
@@ -200,6 +197,8 @@ const EXPECTED_DELETE_RULES = {
     "volunteer_schedule_vsch.vsch_vmin_ID": "CASCADE",
     "volunteer_schedule_vsch.vsch_vtem_ID": "CASCADE",
     "volunteer_schedule_vsch.vsch_event_type_id": "SET NULL",
+    "volunteer_schedule_vsch.vsch_grp_ID": "SET NULL",
+    "volunteer_schedule_vsch.vsch_event_id": "SET NULL",
     "volunteer_occurrence_vocc.vocc_vsch_ID": "CASCADE",
     "volunteer_occurrence_vocc.vocc_event_id": "SET NULL",
     "volunteer_requirement_vreq.vreq_vsch_ID": "CASCADE",
@@ -589,8 +588,8 @@ describe("API Private Volunteer v2 core schema", () => {
                 insertReturningId(
                     `INSERT INTO volunteer_schedule_vsch
                         (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_event_type_id,
-                         vsch_RecurType, vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
-                     VALUES (?, ?, 'Coffee Bar — Sunday', 'event_type', ?, 'none', '2026-09-13', 56, 1)`,
+                         vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
+                     VALUES (?, ?, 'Coffee Bar — Sunday', 'event_type', ?, '2026-09-13', 56, 1)`,
                     [f.ministryCoffee, f.teamCoffee, EVENT_TYPE_CHURCH_SERVICE],
                 ).then((id) => {
                     f.schedCoffee = id;
@@ -693,8 +692,8 @@ describe("API Private Volunteer v2 core schema", () => {
                 insertReturningId(
                     `INSERT INTO volunteer_schedule_vsch
                         (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_event_type_id,
-                         vsch_RecurType, vsch_WindowStart, vsch_Active)
-                     VALUES (?, ?, 'Sunday Morning Worship', 'event_type', ?, 'none', '2026-09-13', 1)`,
+                         vsch_WindowStart, vsch_Active)
+                     VALUES (?, ?, 'Sunday Morning Worship', 'event_type', ?, '2026-09-13', 1)`,
                     [
                         f.ministryWorship,
                         f.teamWorship,
@@ -906,14 +905,11 @@ describe("API Private Volunteer v2 core schema", () => {
             // MariaDB 4025 ER_CONSTRAINT_FAILED, MySQL 3819 ER_CHECK_CONSTRAINT_VIOLATED.
             const CHECK_ERRNOS = [4025, 3819];
 
-            it("accepts a formerly linked occurrence left with no event and no start time (fk_vocc_event SET NULL)", () => {
-                // Why there is deliberately no CHECK on vocc_StartDateTime: see the
-                // comment in the migration. The standalone dedupe key still applies
-                // to rows the generator creates with a start time.
+            it("accepts an occurrence whose event was deleted (fk_vocc_event SET NULL keeps the history, D20)", () => {
                 dbOk(
                     `INSERT INTO volunteer_occurrence_vocc
-                        (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_StartDateTime, vocc_Status, vocc_GeneratedDate)
-                     VALUES (?, NULL, '2026-09-20', NULL, 'scheduled', NOW())`,
+                        (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
+                     VALUES (?, NULL, '2026-09-20', 'scheduled', NOW())`,
                     [f.schedCoffee],
                 ).then((res) => {
                     expect(res.insertId).to.be.greaterThan(0);
@@ -1085,8 +1081,8 @@ describe("API Private Volunteer v2 core schema", () => {
                 let asgId;
                 insertReturningId(
                     `INSERT INTO volunteer_occurrence_vocc
-                        (vocc_vsch_ID, vocc_OccurrenceDate, vocc_StartDateTime, vocc_Status, vocc_GeneratedDate)
-                     VALUES (?, '2026-10-04', '2026-10-04 10:30:00', 'scheduled', NOW())`,
+                        (vocc_vsch_ID, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
+                     VALUES (?, '2026-10-04', 'scheduled', NOW())`,
                     [f.schedCoffee],
                 )
                     .then((id) => {

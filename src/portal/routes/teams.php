@@ -147,10 +147,10 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
 
             $ministry = VolunteerMinistryQuery::create()->findPk((int) $schedule->getMinistryId());
 
-            // D4 made visible: for a linked occurrence this reads the event row, so
-            // the page shows the event's time and says where it came from. The one
-            // method allowed to decide an occurrence's window.
-            $window = (new VolunteerScheduleService())->resolveOccurrenceWindow($occurrence);
+            // D20/D21 made visible: the anchored event's time moved by the schedule's
+            // offsets, through the one method allowed to decide an occurrence's window.
+            $schedules = new VolunteerScheduleService();
+            $window = $schedules->resolveOccurrenceWindow($occurrence);
 
             $linkedEvent = $occurrence->getEventId() === null
                 ? null
@@ -178,6 +178,7 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
                         'eventId' => $occurrence->getEventId() === null ? 0 : (int) $occurrence->getEventId(),
                         'eventTitle' => $linkedEvent === null ? '' : (string) $linkedEvent->getTitle(),
                         'eventLocation' => $eventLocation === null ? '' : (string) $eventLocation->getLocationName(),
+                        'offsetNote' => $schedules->offsetSummary($schedule),
                     ],
                 ],
                 PortalNav::TEAMS

@@ -428,8 +428,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 
     <!--
-      Schedules (#9711). The recurring patterns #9708 built, made reachable: create
-      one, generate its occurrences, open the weeks it produced. Generation is idempotent
+      Schedules (#9711). Which calendar events each team staffs (D22): create one,
+      generate its occurrences, open the dates it produced. Generation is idempotent
       server-side (§2.9), so the button is safe to press twice.
     -->
     <div class="tab-pane fade" id="schedules" role="tabpanel" aria-labelledby="nav-item-schedules">
@@ -451,7 +451,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="empty-icon"><i class="fa-solid fa-repeat fa-2x text-muted"></i></div>
         <p class="empty-title"><?= gettext('No schedules yet') ?></p>
         <p class="empty-subtitle text-body-secondary">
-          <?= gettext('A schedule is the recurring pattern this ministry staffs — a weekly service, a Wednesday class. Add one and generate its occurrences.') ?>
+          <?= gettext('A schedule says which calendar events a team staffs: a type of church service, a class\'s meetings, or this ministry\'s own events. Add one and generate its occurrences.') ?>
         </p>
       </div>
       <div style="overflow-x: clip; overflow-y: visible;" class=" d-none" id="schedules-table-wrapper">
@@ -459,7 +459,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <thead>
             <tr>
               <th><?= gettext('Name') ?></th>
-              <th><?= gettext('Pattern') ?></th>
+              <th><?= gettext('Which events') ?></th>
               <th><?= gettext('Team') ?></th>
               <th class="text-center"><?= gettext('Occurrences') ?></th>
               <th class="text-center"><?= gettext('Status') ?></th>
@@ -510,8 +510,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <button type="button" class="btn btn-outline-danger btn-sm" id="occurrences-delete-btn" disabled>
             <i class="fa-solid fa-trash me-1" aria-hidden="true"></i><?= gettext('Delete') ?>
           </button>
-          <button type="button" class="btn btn-outline-primary btn-sm" id="occurrences-add-btn">
-            <i class="fa-solid fa-calendar-plus me-1" aria-hidden="true"></i><?= gettext('Add occurrence') ?>
+          <button type="button" class="btn btn-outline-primary btn-sm" id="occurrences-staff-event-btn">
+            <i class="fa-solid fa-calendar-plus me-1" aria-hidden="true"></i><?= gettext('Staff an event') ?>
           </button>
         </div>
         <div class="d-flex justify-content-end" id="occurrences-toolbar"></div>
@@ -864,53 +864,58 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
-<!-- One-off occurrence (2026-09-18): a date with no event and no recurring schedule. -->
-<div class="modal fade" id="oneOffOccurrenceModal" tabindex="-1" aria-hidden="true" aria-labelledby="oneOffOccurrenceModalTitle">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<!-- Staff an event (D22): one calendar event, one team, its staffing needs and one occurrence. -->
+<div class="modal fade" id="staffEventModal" tabindex="-1" aria-hidden="true" aria-labelledby="staffEventModalTitle">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="oneOffOccurrenceModalTitle"><?= gettext('Add a one-off occurrence') ?></h5>
+        <h5 class="modal-title" id="staffEventModalTitle"><?= gettext('Staff an event') ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
       </div>
       <div class="modal-body">
         <p class="text-body-secondary">
-          <?= gettext('For a date that follows no calendar event and no schedule.') ?>
+          <?= gettext('Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead.') ?>
         </p>
-        <div class="mb-3">
-          <label class="form-label" for="one-off-form-name"><?= gettext('Name') ?></label>
-          <input type="text" class="form-control" id="one-off-form-name" maxlength="100">
+        <div class="row g-2">
+          <div class="col-12 col-md-8 mb-3">
+            <label class="form-label" for="staff-event-form-search"><?= gettext('Find an event') ?></label>
+            <input type="search" class="form-control" id="staff-event-form-search" maxlength="100"
+                   placeholder="<?= InputUtils::escapeAttribute(gettext('Event title')) ?>">
+          </div>
+          <div class="col-12 col-md-4 mb-3">
+            <label class="form-label" for="staff-event-form-date"><?= gettext('Date') ?></label>
+            <input type="date" class="form-control" id="staff-event-form-date">
+          </div>
         </div>
         <div class="mb-3">
-          <label class="form-label" for="one-off-form-team"><?= gettext('Team') ?></label>
-          <select class="form-select" id="one-off-form-team"></select>
+          <label class="form-label" for="staff-event-form-event"><?= gettext('Event') ?></label>
+          <select class="form-select" id="staff-event-form-event"></select>
         </div>
         <div class="row g-2">
-          <div class="col-12 col-md-4 mb-3">
-            <label class="form-label" for="one-off-form-date"><?= gettext('Date') ?></label>
-            <input type="date" class="form-control" id="one-off-form-date">
+          <div class="col-12 col-md-6 mb-3">
+            <label class="form-label" for="staff-event-form-team"><?= gettext('Team') ?></label>
+            <select class="form-select" id="staff-event-form-team"></select>
           </div>
-          <div class="col-6 col-md-4 mb-3">
-            <label class="form-label" for="one-off-form-start-time"><?= gettext('Starts') ?></label>
-            <input type="time" class="form-control" id="one-off-form-start-time">
-          </div>
-          <div class="col-6 col-md-4 mb-3">
-            <label class="form-label" for="one-off-form-end-time"><?= gettext('Ends') ?></label>
-            <input type="time" class="form-control" id="one-off-form-end-time">
+          <div class="col-12 col-md-6 mb-3">
+            <label class="form-label" for="staff-event-form-name"><?= gettext('Name') ?></label>
+            <input type="text" class="form-control" id="staff-event-form-name" maxlength="100"
+                   placeholder="<?= InputUtils::escapeAttribute(gettext('The event title')) ?>">
           </div>
         </div>
+        <div class="mb-3" id="staff-event-form-offsets"></div>
         <hr class="my-3">
         <div class="mb-2">
           <h6 class="mb-1"><i class="fa-solid fa-list-check me-2"></i><?= gettext('Staffing needs') ?></h6>
-          <div class="form-text"><?= gettext('How many volunteers this occurrence needs. Uncheck a position it does not use.') ?></div>
+          <div class="form-text"><?= gettext('How many volunteers this event needs. Uncheck a position it does not use.') ?></div>
         </div>
-        <div id="one-off-form-needs"></div>
-        <div class="alert alert-danger d-none mt-3" role="alert" id="one-off-form-error">
+        <div id="staff-event-form-needs"></div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="staff-event-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-        <button type="button" class="btn btn-primary" id="one-off-form-save"><?= gettext('Add') ?></button>
+        <button type="button" class="btn btn-primary" id="staff-event-form-save"><?= gettext('Staff this event') ?></button>
       </div>
     </div>
   </div>
@@ -979,42 +984,27 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="mb-3">
           <label class="form-label" for="schedule-form-link-mode"><?= gettext('Where the dates come from') ?></label>
           <select class="form-select" id="schedule-form-link-mode">
-            <option value="event_type"><?= gettext('An existing calendar event type') ?></option>
-            <option value="standalone"><?= gettext('A weekly pattern of its own') ?></option>
+            <option value="event_type"><?= gettext('Church events of a type') ?></option>
+            <option value="class"><?= gettext("A class's meetings") ?></option>
+            <option value="ministry"><?= gettext("This ministry's events") ?></option>
           </select>
+          <div class="form-text"><?= gettext('The date and time of every occurrence come from its calendar event, so moving the event moves the schedule.') ?></div>
         </div>
         <div class="mb-3 d-none" id="schedule-form-event-type-row">
           <label class="form-label" for="schedule-form-event-type"><?= gettext('Event type') ?></label>
           <select class="form-select" id="schedule-form-event-type"></select>
-          <div class="form-text"><?= gettext('The date and time of every occurrence come from the calendar event, so moving the event moves the schedule.') ?></div>
+        </div>
+        <div class="mb-3 d-none" id="schedule-form-group-row">
+          <label class="form-label" for="schedule-form-group"><?= gettext('Class') ?></label>
+          <select class="form-select" id="schedule-form-group"></select>
+          <div class="form-text"><?= gettext('One occurrence is made for each calendar event whose Linked Group is this class.') ?></div>
         </div>
         <div class="mb-3 d-none" id="schedule-form-title-filter-row">
           <label class="form-label" for="schedule-form-title-filter"><?= gettext('Event') ?></label>
           <select class="form-select" id="schedule-form-title-filter"></select>
-          <div class="form-text"><?= gettext('One occurrence is made for each date of this event. "Any event of this type" follows every event of the type, which can be several on the same day.') ?></div>
+          <div class="form-text"><?= gettext('One occurrence is made for each date of this event. Choosing any event follows them all, which can be several on the same day.') ?></div>
         </div>
-        <div class="row g-2 d-none" id="schedule-form-standalone-rows">
-          <div class="col-12 col-md-6 mb-3">
-            <label class="form-label" for="schedule-form-dow"><?= gettext('Day of the week') ?></label>
-            <select class="form-select" id="schedule-form-dow">
-              <option value="Sunday"><?= gettext('Sunday') ?></option>
-              <option value="Monday"><?= gettext('Monday') ?></option>
-              <option value="Tuesday"><?= gettext('Tuesday') ?></option>
-              <option value="Wednesday"><?= gettext('Wednesday') ?></option>
-              <option value="Thursday"><?= gettext('Thursday') ?></option>
-              <option value="Friday"><?= gettext('Friday') ?></option>
-              <option value="Saturday"><?= gettext('Saturday') ?></option>
-            </select>
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <label class="form-label" for="schedule-form-start-time"><?= gettext('Starts') ?></label>
-            <input type="time" class="form-control" id="schedule-form-start-time">
-          </div>
-          <div class="col-6 col-md-3 mb-3">
-            <label class="form-label" for="schedule-form-end-time"><?= gettext('Ends') ?></label>
-            <input type="time" class="form-control" id="schedule-form-end-time">
-          </div>
-        </div>
+        <div class="mb-3" id="schedule-form-offsets"></div>
         <div class="row g-2">
           <div class="col-12 col-md-6 mb-3">
             <label class="form-label" for="schedule-form-window-start"><?= gettext('First date') ?></label>

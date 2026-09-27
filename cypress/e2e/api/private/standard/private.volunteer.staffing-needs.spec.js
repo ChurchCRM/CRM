@@ -130,6 +130,7 @@ function cleanupFixtures() {
     // unowned church calendar. It goes first, matched on the same prefix.
     dbOk(`DELETE FROM calendars WHERE name LIKE ?`, [`${FIXTURE_PREFIX}%`]);
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, [`${FIXTURE_PREFIX}%`]);
+    dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${FIXTURE_PREFIX}%`]);
 }
 
 function createMinistry(suffix) {
@@ -156,19 +157,29 @@ function createPosition(ministryId, teamId, name, order) {
     ).then((rows) => rows.insertId);
 }
 
-/**
- * A standalone weekly schedule. The seeded calendar holds only 2016/2017 events, and
- * this spec is about the plan rather than about where the dates come from, so V2 owning
- * them keeps the fixture to one request.
- */
-function standaloneBody(overrides = {}) {
+/** The weekly Wednesday events every schedule here follows (the seed's calendar is all 2016/2017). */
+const EVENT_TITLE = `${FIXTURE_PREFIX} Wednesday Night`;
+
+/** Five Wednesday-night Church Service events, the first one from tomorrow on. */
+function createWednesdayEvents() {
+    const first = ((3 - new Date().getDay() + 7) % 7) || 7;
+    [0, 7, 14, 21, 28].forEach((week) => {
+        const day = isoDate(first + week);
+        dbOk(
+            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (1, ?, '', '', ?, ?, 0)`,
+            [EVENT_TITLE, `${day} 19:00:00`, `${day} 20:30:00`],
+        );
+    });
+}
+
+/** A schedule following those events; this spec is about the plan, not about where the dates come from. */
+function seriesBody(overrides = {}) {
     return {
         name: `${FIXTURE_PREFIX} Wednesday Night`,
-        linkMode: "standalone",
-        recurType: "weekly",
-        recurDow: "Wednesday",
-        startTime: "19:00:00",
-        endTime: "20:30:00",
+        linkMode: "event_type",
+        eventTypeId: 1,
+        titleFilter: EVENT_TITLE,
         windowStart: isoDate(0),
         ...overrides,
     };
@@ -214,6 +225,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         setVersion("v2");
 
         cleanupFixtures();
+        createWednesdayEvents();
 
         createMinistry("Children's Ministry").then((id) => {
             ministryA = id;
@@ -264,7 +276,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
     describe("a schedule is created with its whole plan", () => {
         it("writes one requirement per listed position", () => {
             createSchedule(
-                standaloneBody({
+                seriesBody({
                     teamId: teamA1,
                     requirements: [
                         { positionId: posLead, minCount: 1, maxCount: 1 },
@@ -292,7 +304,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         });
 
         it("accepts an empty array as a real answer — the plan is simply empty", () => {
-            createSchedule(standaloneBody({ teamId: teamA1, requirements: [] })).then((resp) => {
+            createSchedule(seriesBody({ teamId: teamA1, requirements: [] })).then((resp) => {
                 requirementsOf(resp.body.schedule.id).then((rows) => {
                     expect(rows).to.have.length(0);
                 });
@@ -304,7 +316,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
                 const countBefore = before.body.schedules.length;
 
                 createSchedule(
-                    standaloneBody({
+                    seriesBody({
                         name: `${FIXTURE_PREFIX} Doomed`,
                         teamId: teamA1,
                         requirements: [{ positionId: 999999, minCount: 1, maxCount: 1 }],
@@ -330,7 +342,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
 
         beforeEach(() => {
             createSchedule(
-                standaloneBody({
+                seriesBody({
                     teamId: teamA1,
                     requirements: [
                         { positionId: posLead, minCount: 1, maxCount: 1 },
@@ -447,7 +459,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
         it("an occurrence generated BEFORE the plan existed picks it up immediately", () => {
             // This is the reported defect in miniature: schedule first, occurrences
             // second, plan third — and the occurrences must not be stuck at 0/0.
-            createSchedule(standaloneBody({ teamId: teamA1 })).then((resp) => {
+            createSchedule(seriesBody({ teamId: teamA1 })).then((resp) => {
                 const scheduleId = resp.body.schedule.id;
 
                 generateAndFirstOccurrence(scheduleId).then((occurrenceId) => {
@@ -490,7 +502,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
             // requirementCount can tell it apart from "nobody set any needs", which is
             // why a screen must not decide "fully staffed" from the counts alone.
             createSchedule(
-                standaloneBody({
+                seriesBody({
                     teamId: teamA1,
                     requirements: [{ positionId: posSpare, minCount: 0, maxCount: 1 }],
                 }),
@@ -507,7 +519,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
 
         it("names the short positions in the occurrence list", () => {
             createSchedule(
-                standaloneBody({
+                seriesBody({
                     teamId: teamA1,
                     requirements: [
                         { positionId: posLead, minCount: 1, maxCount: 1 },
@@ -544,7 +556,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
 
         beforeEach(() => {
             createSchedule(
-                standaloneBody({
+                seriesBody({
                     teamId: teamA1,
                     requirements: [
                         { positionId: posLead, minCount: 1, maxCount: 1 },
@@ -697,7 +709,7 @@ describe("Volunteer v2 — staffing needs as a whole plan (§2.10)", () => {
 
         before(() => {
             createSchedule(
-                standaloneBody({
+                seriesBody({
                     teamId: teamA1,
                     requirements: [{ positionId: posLead, minCount: 1, maxCount: 1 }],
                 }),

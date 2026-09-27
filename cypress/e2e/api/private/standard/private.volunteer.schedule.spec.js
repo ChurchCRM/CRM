@@ -12,31 +12,27 @@
  * What the issue actually promises, and where each promise is proven here:
  *
  *   "linked event occurrences remain authoritative"
- *       → `linked schedules` block: every occurrence carries `eventId`, its own
- *         `startDateTime` is null, the reported `start`/`end` come from
- *         `events_event`, and moving the event through the **events** API moves
- *         the occurrence's reported time with no V2 write at all (asserted
- *         against the raw row through `cy.dbQuery`).
+ *       → `linked schedules` block: every occurrence carries `eventId`, the
+ *         reported `start`/`end` come from `events_event`, and moving the event
+ *         through the **events** API moves the occurrence's reported time with
+ *         no V2 write at all (asserted against the raw row through `cy.dbQuery`).
  *
  *   "no second competing event occurrence is created for linked events"
  *       → the same block counts `events_event` before and after generation.
  *
  *   "occurrences can be generated idempotently"
- *       → `generation is idempotent` block: the same POST twice returns
- *         `created: 0` the second time and the occurrence count is unchanged,
- *         for BOTH link modes (the two unique keys in §2.9 are what makes it
- *         true, so both have to be exercised).
+ *       → the same POST twice returns `created: 0` the second time and the
+ *         occurrence count is unchanged (`vocc_schedule_event_uidx`, §2.9).
  *
- *   "volunteer-specific schedules where no ChurchCRM event exists"
- *       → `standalone schedules` block: V2 generates the dates itself and the
- *         times are its own.
+ * Every occurrence is anchored to an event (D20), so there is no standalone
+ * mode to prove here any more; the class, ministry and event modes, the
+ * offsets and Staff this event live in `private.volunteer.anchored.spec.js`.
  *
- * Fixtures. Ministries, teams and positions go in through `cy.dbQuery()`: the
- * setup API is #9715 and is not on this branch. Scopes go in through
- * `POST /api/ministries/scopes` as admin — that surface shipped with #9706.
- * The seeded calendar has only three events, all in 2016/2017 (seed.sql:311),
- * so the linked-schedule fixture creates its own future series through
- * `POST /api/events/repeat` and deletes it again afterwards.
+ * Fixtures. Ministries, teams and positions go in through `cy.dbQuery()`. Scopes
+ * go in through `POST /api/ministries/scopes` as admin. The seeded calendar has
+ * only three events, all in 2016/2017, so the spec makes its own future events:
+ * a weekly Wednesday series straight into `events_event`, and the linked block's
+ * Sunday series through `POST /api/events/repeat`; both are deleted afterwards.
  *
  * Cleanup runs in `before` as well as `after` (cypress-testing.md): an `after`
  * hook does not run when the runner crashes mid-spec, and the next run must not
@@ -57,6 +53,8 @@ const CHURCH_SERVICE_TYPE = 1; // seed.sql:410 — weekly, Sunday, 10:30
 const FIXTURE_PREFIX = "SCHED9708";
 /** Title of the generated event series; also the schedule's title filter. */
 const EVENT_TITLE = `${FIXTURE_PREFIX} Linked Service`;
+/** The Wednesday series most schedules here follow — five weeks from the next Wednesday. */
+const WEDNESDAY_TITLE = `${FIXTURE_PREFIX} Wednesday Night`;
 
 let ministryA = 0;
 let ministryB = 0;
@@ -172,10 +170,21 @@ function cleanupFixtures() {
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, [
         `${FIXTURE_PREFIX}%`,
     ]);
-    // The linked fixture's events, identified by the unique title this spec uses.
+    // Every event this spec made, identified by its prefix.
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [
-        `${EVENT_TITLE}%`,
+        `${FIXTURE_PREFIX}%`,
     ]);
+}
+
+/** One Church Service event per day offset, at the given wall-clock times. */
+function createEvents(title, dayOffsets, startTime = "19:00:00", endTime = "20:30:00") {
+    dayOffsets.forEach((offset) => {
+        dbOk(
+            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (?, ?, '', '', ?, ?, 0)`,
+            [CHURCH_SERVICE_TYPE, title, `${isoDate(offset)} ${startTime}`, `${isoDate(offset)} ${endTime}`],
+        );
+    });
 }
 
 function createMinistry(suffix) {
@@ -216,19 +225,13 @@ function linkedScheduleBody(overrides = {}) {
     };
 }
 
-/** A minimal valid standalone-schedule body. */
-function standaloneScheduleBody(overrides = {}) {
-    return {
-        name: `${FIXTURE_PREFIX} Standalone`,
-        teamId: teamA1,
-        linkMode: "standalone",
-        recurType: "weekly",
-        recurDow: "Tuesday",
-        startTime: "19:00:00",
-        endTime: "20:30:00",
-        windowStart: isoDate(0),
+/** A schedule following this spec's own Wednesday series. */
+function wednesdayScheduleBody(overrides = {}) {
+    return linkedScheduleBody({
+        name: `${FIXTURE_PREFIX} Wednesday`,
+        titleFilter: WEDNESDAY_TITLE,
         ...overrides,
-    };
+    });
 }
 
 function createSchedule(ministryId, body, key = ADMIN_KEY) {
@@ -253,6 +256,9 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         setVersion("v2");
 
         cleanupFixtures();
+
+        const firstWednesday = daysToNext(3);
+        createEvents(WEDNESDAY_TITLE, [0, 7, 14, 21, 28].map((week) => firstWednesday + week));
 
         createMinistry("Ministry A").then((id) => {
             ministryA = id;
@@ -314,9 +320,13 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                         expect(s.linkMode).to.eq("event_type");
                         expect(s.eventTypeId).to.eq(CHURCH_SERVICE_TYPE);
                         expect(s.titleFilter).to.eq("Worship");
-                        // A linked schedule never carries its own recurrence (D4).
-                        expect(s.recurType).to.eq("none");
-                        expect(s.startTime).to.eq(null);
+                        expect(s.groupId).to.eq(null);
+                        expect(s.eventId).to.eq(null);
+                        expect(s.startOffsetMinutes).to.eq(0);
+                        expect(s.endOffsetMinutes).to.eq(0);
+                        // No recurrence or times of its own (D20).
+                        expect(s).to.not.have.property("recurType");
+                        expect(s).to.not.have.property("startTime");
                         expect(s.generateAheadDays).to.eq(56);
                         expect(s.active).to.eq(true);
                     },
@@ -325,25 +335,8 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             });
         });
 
-        it("creates a standalone schedule with its own recurrence and times", () => {
-            createSchedule(ministryA, standaloneScheduleBody()).then((id) => {
-                api(ADMIN_KEY, "GET", `/api/ministries/schedules/${id}`).then(
-                    (resp) => {
-                        const s = resp.body.schedule;
-                        expect(s.linkMode).to.eq("standalone");
-                        expect(s.eventTypeId).to.eq(null);
-                        expect(s.recurType).to.eq("weekly");
-                        expect(s.recurDow).to.eq("Tuesday");
-                        expect(s.startTime).to.eq("19:00:00");
-                        expect(s.endTime).to.eq("20:30:00");
-                    },
-                );
-                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
-            });
-        });
-
         it("lists a ministry's schedules and reports the occurrence count", () => {
-            createSchedule(ministryA, standaloneScheduleBody()).then((id) => {
+            createSchedule(ministryA, wednesdayScheduleBody()).then((id) => {
                 api(
                     ADMIN_KEY,
                     "GET",
@@ -359,7 +352,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
 
         it("updates a schedule's name and window", () => {
-            createSchedule(ministryA, standaloneScheduleBody()).then((id) => {
+            createSchedule(ministryA, wednesdayScheduleBody()).then((id) => {
                 api(ADMIN_KEY, "POST", `/api/ministries/schedules/${id}`, {
                     name: `${FIXTURE_PREFIX} Renamed`,
                     windowEnd: isoDate(120),
@@ -386,34 +379,20 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                     linkedScheduleBody({ eventTypeId: null }),
                 ],
                 [
-                    "linked schedule carrying its own recurrence",
+                    "a schedule carrying its own recurrence",
                     linkedScheduleBody({ recurType: "weekly" }),
                 ],
                 [
-                    "linked schedule carrying its own start time",
+                    "a schedule carrying its own start time",
                     linkedScheduleBody({ startTime: "10:30:00" }),
                 ],
                 [
-                    "standalone schedule naming an event type",
-                    standaloneScheduleBody({
-                        eventTypeId: CHURCH_SERVICE_TYPE,
-                    }),
-                ],
-                [
-                    "standalone schedule with recurType none",
-                    standaloneScheduleBody({ recurType: "none" }),
-                ],
-                [
-                    "standalone schedule with no start time",
-                    standaloneScheduleBody({ startTime: null }),
-                ],
-                [
-                    "standalone weekly schedule with no day of week",
-                    standaloneScheduleBody({ recurDow: null }),
+                    "the retired standalone link mode",
+                    linkedScheduleBody({ linkMode: "standalone", eventTypeId: null }),
                 ],
                 [
                     "window that ends before it starts",
-                    standaloneScheduleBody({
+                    wednesdayScheduleBody({
                         windowStart: isoDate(30),
                         windowEnd: isoDate(10),
                     }),
@@ -461,7 +440,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         beforeEach(() => {
             createSchedule(
                 ministryA,
-                standaloneScheduleBody({ recurDow: "Wednesday" }),
+                wednesdayScheduleBody(),
             ).then((id) => {
                 scheduleId = id;
                 api(
@@ -744,10 +723,8 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 occ.forEach((o) => {
                     expect(o.eventId).to.be.a("number");
                     expect(seriesEventIds).to.include(o.eventId);
-                    // §2.9: a linked occurrence stores NO times of its own.
-                    expect(o.startDateTime).to.eq(null);
-                    expect(o.endDateTime).to.eq(null);
-                    // …but reports the event's.
+                    // §2.9: the occurrence stores no times of its own and reports the event's.
+                    expect(o).to.not.have.property("startDateTime");
                     expect(o.start).to.contain("10:30:00");
                     expect(o.end).to.contain("11:45:00");
                 });
@@ -778,15 +755,15 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                     expect(after.body.occurrence.end).to.eq(newEnd);
                 });
 
-                // The V2 row itself was never written: still no times, and the
-                // generated timestamp is untouched. That is what "the event is
-                // the source of truth" means operationally (§2.9).
+                // The V2 row itself was never written: same event, same date, same
+                // generated timestamp. That is what "the event is the source of
+                // truth" means operationally (§2.9).
                 dbOk(
-                    `SELECT vocc_StartDateTime, vocc_EndDateTime FROM volunteer_occurrence_vocc WHERE vocc_ID = ?`,
+                    `SELECT vocc_event_id, DATE_FORMAT(vocc_OccurrenceDate, '%Y-%m-%d') AS d FROM volunteer_occurrence_vocc WHERE vocc_ID = ?`,
                     [target.id],
                 ).then((rows) => {
-                    expect(rows[0].vocc_StartDateTime).to.eq(null);
-                    expect(rows[0].vocc_EndDateTime).to.eq(null);
+                    expect(Number(rows[0].vocc_event_id)).to.eq(target.eventId);
+                    expect(rows[0].d).to.eq(target.occurrenceDate);
                 });
             });
         });
@@ -944,103 +921,14 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
     });
 
-    // ── §6.5 scenario 5, standalone half ───────────────────────────────────
+    // ── The generation range: window, generate-ahead, cap ──────────────────
 
-    describe("standalone schedules — V2 owns the dates and the times", () => {
-        let scheduleId = 0;
-        let through = "";
-
-        before(() => {
-            through = isoDate(28);
-            createSchedule(
-                ministryA,
-                standaloneScheduleBody({
-                    name: `${FIXTURE_PREFIX} Standalone Weekly`,
-                    recurDow: "Thursday",
-                    startTime: "19:00:00",
-                    endTime: "20:30:00",
-                }),
-            ).then((id) => {
-                scheduleId = id;
-            });
-        });
-
-        it("generates its own dates with its own times and no event link", () => {
-            api(
-                ADMIN_KEY,
-                "POST",
-                `/api/ministries/schedules/${scheduleId}/generate`,
-                { through },
-            ).then((resp) => {
-                expect(resp.body.created).to.be.greaterThan(0);
-                expect(resp.body.existing).to.eq(0);
-            });
-
-            api(
-                ADMIN_KEY,
-                "GET",
-                `/api/ministries/occurrences?from=${isoDate(0)}&to=${through}&ministryId=${ministryA}`,
-            ).then((resp) => {
-                const mine = resp.body.occurrences.filter(
-                    (o) => o.scheduleId === scheduleId,
-                );
-                expect(mine.length).to.be.greaterThan(0);
-                mine.forEach((o) => {
-                    expect(o.eventId).to.eq(null);
-                    // §2.9: a standalone row ALWAYS carries its own start.
-                    expect(o.startDateTime).to.contain("19:00:00");
-                    expect(o.start).to.eq(o.startDateTime);
-                    expect(o.end).to.contain("20:30:00");
-                    // Thursday.
-                    expect(new Date(`${o.occurrenceDate}T12:00:00`).getDay()).to.eq(4);
-                });
-            });
-        });
-
-        it("is idempotent: a second generation over the same window creates nothing", () => {
-            let firstCount = 0;
-            api(
-                ADMIN_KEY,
-                "GET",
-                `/api/ministries/occurrences?from=${isoDate(0)}&to=${through}&ministryId=${ministryA}`,
-            ).then((resp) => {
-                firstCount = resp.body.occurrences.filter(
-                    (o) => o.scheduleId === scheduleId,
-                ).length;
-            });
-
-            cy.then(() => {
-                api(
-                    ADMIN_KEY,
-                    "POST",
-                    `/api/ministries/schedules/${scheduleId}/generate`,
-                    { through },
-                ).then((resp) => {
-                    expect(resp.body.created).to.eq(0);
-                    expect(resp.body.existing).to.eq(firstCount);
-                });
-            });
-
-            cy.then(() => {
-                api(
-                    ADMIN_KEY,
-                    "GET",
-                    `/api/ministries/occurrences?from=${isoDate(0)}&to=${through}&ministryId=${ministryA}`,
-                ).then((resp) => {
-                    const count = resp.body.occurrences.filter(
-                        (o) => o.scheduleId === scheduleId,
-                    ).length;
-                    expect(count).to.eq(firstCount);
-                });
-            });
-        });
-
+    describe("the generation range", () => {
         it("defaults `through` to today + generateAheadDays", () => {
             createSchedule(
                 ministryA,
-                standaloneScheduleBody({
-                    name: `${FIXTURE_PREFIX} Standalone Default`,
-                    recurDow: "Friday",
+                wednesdayScheduleBody({
+                    name: `${FIXTURE_PREFIX} Default Through`,
                     generateAheadDays: 14,
                 }),
             ).then((id) => {
@@ -1051,7 +939,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                     {},
                 ).then((resp) => {
                     expect(resp.body.through).to.eq(isoDate(14));
-                    expect(resp.body.created).to.be.within(2, 3);
+                    expect(resp.body.created).to.be.within(1, 2);
                 });
                 api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
             });
@@ -1060,9 +948,8 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         it("never generates outside the schedule's own window", () => {
             createSchedule(
                 ministryA,
-                standaloneScheduleBody({
-                    name: `${FIXTURE_PREFIX} Standalone Windowed`,
-                    recurDow: "Monday",
+                wednesdayScheduleBody({
+                    name: `${FIXTURE_PREFIX} Windowed`,
                     windowStart: isoDate(0),
                     windowEnd: isoDate(10),
                 }),
@@ -1073,7 +960,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                     `/api/ministries/schedules/${id}/generate`,
                     { through: isoDate(90) },
                 ).then((resp) => {
-                    // windowEnd clamps the run; at most two Mondays fit in 10 days.
+                    // windowEnd clamps the run; at most two Wednesdays fit in 10 days.
                     expect(resp.body.created).to.be.within(1, 2);
                     expect(resp.body.through).to.eq(isoDate(10));
                 });
@@ -1082,18 +969,29 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
 
         it("rejects a generation run that would blow the occurrence cap", () => {
+            const title = `${FIXTURE_PREFIX} Daily`;
+            // 367 daily events, one more than MAX_GENERATED_OCCURRENCES.
+            dbOk(
+                `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+                 SELECT ?, ?, '', '', CURDATE() + INTERVAL n DAY + INTERVAL 18 HOUR, CURDATE() + INTERVAL n DAY + INTERVAL 19 HOUR, 0
+                   FROM (SELECT a.d + b.d * 10 + c.d * 100 AS n
+                           FROM (SELECT 0 d UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4
+                                 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) a
+                          CROSS JOIN (SELECT 0 d UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4
+                                 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) b
+                          CROSS JOIN (SELECT 0 d UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3) c) seq
+                  WHERE n BETWEEN 1 AND 367`,
+                [CHURCH_SERVICE_TYPE, title],
+            );
             createSchedule(
                 ministryA,
-                standaloneScheduleBody({
-                    name: `${FIXTURE_PREFIX} Standalone Huge`,
-                    recurDow: "Saturday",
-                }),
+                linkedScheduleBody({ name: `${FIXTURE_PREFIX} Huge`, titleFilter: title }),
             ).then((id) => {
                 api(
                     ADMIN_KEY,
                     "POST",
                     `/api/ministries/schedules/${id}/generate`,
-                    { through: isoDate(365 * 20) },
+                    { through: isoDate(400) },
                     400,
                 );
                 api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
@@ -1101,13 +999,16 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
 
         it("rejects a malformed `through`", () => {
-            api(
-                ADMIN_KEY,
-                "POST",
-                `/api/ministries/schedules/${scheduleId}/generate`,
-                { through: "not-a-date" },
-                400,
-            );
+            createSchedule(ministryA, wednesdayScheduleBody({ name: `${FIXTURE_PREFIX} Malformed` })).then((id) => {
+                api(
+                    ADMIN_KEY,
+                    "POST",
+                    `/api/ministries/schedules/${id}/generate`,
+                    { through: "not-a-date" },
+                    400,
+                );
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
+            });
         });
     });
 
@@ -1137,9 +1038,8 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             // as skipped defaults late in the day.
             createSchedule(
                 ministryA,
-                standaloneScheduleBody({
+                wednesdayScheduleBody({
                     name: `${FIXTURE_PREFIX} Defaults`,
-                    recurDow: "Friday",
                     windowStart: isoDate(1),
                     requirements: [
                         { positionId: positionOne, minCount: 1, maxCount: 1 },
@@ -1297,9 +1197,8 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         it("accepts a blank default and generates with no assignments", () => {
             createSchedule(
                 ministryA,
-                standaloneScheduleBody({
+                wednesdayScheduleBody({
                     name: `${FIXTURE_PREFIX} Blank Defaults`,
-                    recurDow: "Saturday",
                     windowStart: isoDate(1),
                     requirements: [{ positionId: positionOne, minCount: 1, maxCount: 1 }],
                 }),
@@ -1376,20 +1275,18 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         before(() => {
             createSchedule(
                 ministryA,
-                standaloneScheduleBody({
+                wednesdayScheduleBody({
                     name: `${FIXTURE_PREFIX} Scope A`,
-                    recurDow: "Saturday",
                 }),
             ).then((id) => {
                 scheduleInA = id;
             });
-            // standaloneScheduleBody() defaults to ministry A's team, which is the
+            // wednesdayScheduleBody() defaults to ministry A's team, which is the
             // wrong ministry here — a schedule has to name a team of its OWN ministry.
             createSchedule(
                 ministryB,
-                standaloneScheduleBody({
+                wednesdayScheduleBody({
                     name: `${FIXTURE_PREFIX} Scope B`,
-                    recurDow: "Saturday",
                     teamId: teamB1,
                 }),
             ).then((id) => {
@@ -1437,7 +1334,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 COORDINATOR_KEY,
                 "POST",
                 `/api/ministries/ministries/${ministryB}/schedules`,
-                standaloneScheduleBody(),
+                wednesdayScheduleBody(),
                 403,
             );
             api(

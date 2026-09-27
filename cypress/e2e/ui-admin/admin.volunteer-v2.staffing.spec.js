@@ -40,6 +40,9 @@ const TEAM_NAME = `${PREFIX} Wednesday Night`;
 const DEFAULT_TEAM_NAME = `${MINISTRY_NAME} Team`;
 const POSITION_LEAD = `${PREFIX} Lead Teacher`;
 const POSITION_HELPER = `${PREFIX} Helper`;
+/** The calendar events the schedules here follow (D20): the seed's calendar is all 2016/2017. */
+const WEDNESDAY_EVENTS = `${PREFIX} Wednesday Night`;
+const THURSDAY_EVENTS = `${PREFIX} Thursday Night`;
 
 let ministryId = 0;
 let teamId = 0;
@@ -75,13 +78,39 @@ function isoDate(offsetDays) {
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
+/** A Church Service event on weekday `dow` (0 = Sunday) for `weeks` weeks from the next one. */
+function createWeeklyEvents(title, dow, weeks, startTime, endTime) {
+    const first = (dow - new Date().getDay() + 7) % 7 || 7;
+    for (let week = 0; week < weeks; week++) {
+        const day = isoDate(first + week * 7);
+        cy.dbQuery(
+            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (1, ?, '', '', ?, ?, 0)`,
+            [title, `${day} ${startTime}`, `${day} ${endTime}`],
+        );
+    }
+}
+
+/** A schedule body following the events titled `title`. */
+function followBody(name, title, extra = {}) {
+    return {
+        name,
+        linkMode: "event_type",
+        eventTypeId: 1,
+        titleFilter: title,
+        windowStart: isoDate(0),
+        teamId,
+        ...extra,
+    };
+}
+
 /** Remove every schedule this spec's UI created, so each test starts from none. */
 function clearSchedules() {
     // Every occurrence first, through the Occurrences tab's recursive delete: a
     // schedule whose occurrences carry assignments refuses to be deleted (service
-    // history), and the Generate dialog's tests leave exactly that behind. A one-off
-    // occurrence's schedule is hidden from the schedules listing on purpose
-    // (2026-09-18), and deleting its occurrence takes the hidden schedule with it.
+    // history), and the Generate dialog's tests leave exactly that behind. A Staff
+    // this event schedule is hidden from the schedules listing on purpose (D22),
+    // and deleting its occurrence takes the hidden schedule with it.
     cy.makePrivateAdminAPICall(
         "GET",
         `${VOLUNTEER_URL}/occurrences?ministryId=${ministryId}&from=${isoDate(0)}&to=${isoDate(400)}`,
@@ -130,28 +159,24 @@ function openSchedulesTab() {
     cy.get("#schedules-loading").should("not.be.visible");
 }
 
-/**
- * Fill the schedule form's non-staffing half. Standalone weekly, so V2 owns the dates
- * and the fixture needs no calendar events.
- */
+/** Fill the schedule form's non-staffing half: this spec's Wednesday events. */
 function fillScheduleBasics(name) {
     cy.get("#schedule-form-name").clear().type(name);
     cy.get("#schedule-form-team").select(TEAM_NAME);
-    // "An existing calendar event type" lists the church's event types from the
-    // core endpoint, which answers `{ EventTypes: [...] }` (fixed 2026-09-18);
-    // the seed carries Church Service and Sunday School.
+    cy.get("#schedule-form-window-start").clear().type(isoDate(0));
+    // "Church events of a type" lists the church's event types from the core
+    // endpoint, which answers `{ EventTypes: [...] }` (fixed 2026-09-18); the seed
+    // carries Church Service and Sunday School.
     cy.get("#schedule-form-link-mode").select("event_type");
     cy.get("#schedule-form-event-type option").should("have.length.at.least", 2);
     cy.get("#schedule-form-event-type").should("contain", "Church Service").and("contain", "Sunday School");
+    cy.get("#schedule-form-event-type").select("Church Service");
     // The Event picker (2026-09-18): a schedule follows ONE event series of the
     // type; "Any event of this type" is the explicit opt-out.
     cy.get("#schedule-form-title-filter").should("be.visible");
     cy.get("#schedule-form-title-filter option").first().should("have.value", "").and("contain", "Any event of this type");
-    cy.get("#schedule-form-link-mode").select("standalone");
-    cy.get("#schedule-form-dow").select("Wednesday");
-    cy.get("#schedule-form-start-time").clear().type("19:00");
-    cy.get("#schedule-form-end-time").clear().type("20:30");
-    cy.get("#schedule-form-window-start").clear().type(isoDate(0));
+    cy.get(`#schedule-form-title-filter option[value="${WEDNESDAY_EVENTS}"]`).should("exist");
+    cy.get("#schedule-form-title-filter").select(WEDNESDAY_EVENTS);
 }
 
 /** Generate this schedule's occurrences through the API and return the first id. */
@@ -248,10 +273,14 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
         });
 
         cy.then(clearSchedules);
+        cy.dbQuery("DELETE FROM events_event WHERE event_title LIKE ?", [`${PREFIX}%`]);
+        createWeeklyEvents(WEDNESDAY_EVENTS, 3, 5, "19:00:00", "20:30:00");
+        createWeeklyEvents(THURSDAY_EVENTS, 4, 3, "19:00:00", "20:30:00");
     });
 
     after(() => {
         clearSchedules();
+        cy.dbQuery("DELETE FROM events_event WHERE event_title LIKE ?", [`${PREFIX}%`]);
         setVersion("v1");
     });
 
@@ -352,17 +381,9 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-                {
-                    name: `${PREFIX} Stored Plan`,
-                    linkMode: "standalone",
-                    recurType: "weekly",
-                    recurDow: "Wednesday",
-                    startTime: "19:00:00",
-                    endTime: "20:30:00",
-                    windowStart: isoDate(0),
-                    teamId,
+                followBody(`${PREFIX} Stored Plan`, WEDNESDAY_EVENTS, {
                     requirements: [{ positionId: posLead, minCount: 2, maxCount: 3 }],
-                },
+                }),
                 201,
             );
 
@@ -426,17 +447,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-                {
-                    name: `${PREFIX} To Delete`,
-                    linkMode: "standalone",
-                    recurType: "weekly",
-                    recurDow: "Wednesday",
-                    startTime: "19:00:00",
-                    endTime: "20:30:00",
-                    windowStart: isoDate(0),
-                    teamId,
-                    requirements: [],
-                },
+                followBody(`${PREFIX} To Delete`, WEDNESDAY_EVENTS, { requirements: [] }),
                 201,
             ).then((created) => {
                 generateOccurrences(created.body.schedule.id).then(() => {
@@ -476,54 +487,71 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             });
         });
 
-        it("adds a one-off occurrence with a hidden schedule of its own, and deleting it takes the schedule too (2026-09-18)", () => {
+        it("staffs one event with a hidden schedule of its own, and deleting it takes the schedule too (D22)", () => {
             const NAME = `${PREFIX} Harvest Supper`;
+            cy.dbQuery(
+                `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+                 VALUES (1, ?, '', '', ?, ?, 0)`,
+                [NAME, `${isoDate(3)} 18:00:00`, `${isoDate(3)} 20:00:00`],
+            );
+            cy.then(freshAdminLogin);
             cy.visit(`/ministries/${ministryId}`);
             cy.get("#nav-item-occurrences").click();
             cy.get("#occurrences-loading").should("not.be.visible");
 
-            cy.get("#occurrences-add-btn").click();
-            cy.get("#oneOffOccurrenceModal").should("be.visible");
-            // The dialog focuses Name at `shown.bs.modal`; typing before the fade
-            // ends would lose the tail of the name to Bootstrap's own focus move.
-            cy.get("#one-off-form-name").should("have.focus").type(NAME);
-            cy.get("#one-off-form-team").select(TEAM_NAME);
-            cy.get("#one-off-form-date").clear().type(isoDate(3));
-            cy.get("#one-off-form-start-time").clear().type("18:00");
-            cy.get("#one-off-form-end-time").clear().type("20:00");
+            cy.get("#occurrences-staff-event-btn").should("contain", "Staff an event").click();
+            cy.get("#staffEventModal").should("be.visible");
+            // The dialog focuses the search at `shown.bs.modal`; typing before the fade
+            // ends would lose the tail of it to Bootstrap's own focus move.
+            cy.get("#staff-event-form-search").should("have.focus").type("Harvest");
+            cy.get("#staff-event-form-event option").should("have.length", 2);
+            cy.get("#staff-event-form-event option").eq(1).should("contain", NAME).and("contain", isoDate(3));
+            cy.get("#staff-event-form-event option").eq(1).then(($option) => {
+                cy.get("#staff-event-form-event").select(String($option.val()));
+            });
+            cy.get("#staff-event-form-team").select(TEAM_NAME);
             // The needs editor lists the team's positions, every one ticked at 1 / 1.
-            cy.get("#one-off-form-needs .volunteer-need-row").should("have.length.at.least", 1);
-            cy.intercept("POST", "**/api/ministries/ministries/*/occurrences").as("createOneOff");
-            cy.get("#one-off-form-save").click();
-            cy.wait("@createOneOff").then((call) => {
-                expect(call.request.body.name, "the name the dialog sent").to.eq(NAME);
+            cy.get("#staff-event-form-needs .volunteer-need-row").should("have.length.at.least", 1);
+            // Volunteers arrive half an hour early.
+            cy.get("#staff-event-form-start-offset").clear().type("30");
+            cy.get("#staff-event-form-start-offset-direction").select("before");
+            cy.intercept("POST", "**/api/ministries/ministries/*/staffed-events").as("staffEvent");
+            cy.get("#staff-event-form-save").click();
+            cy.wait("@staffEvent").then((call) => {
+                expect(call.request.body.teamId, "the team the dialog sent").to.eq(teamId);
+                expect(call.request.body.startOffsetMinutes).to.eq(-30);
                 expect(call.response.statusCode, JSON.stringify(call.response.body)).to.eq(201);
             });
-            cy.get("#oneOffOccurrenceModal").should("not.be.visible");
-            cy.get(".notyf__toast").should("contain", "Occurrence added");
+            cy.get("#staffEventModal").should("not.be.visible");
+            cy.get(".notyf__toast").should("contain", "Event staffed");
 
-            // Listed, flagged, on the right team and date. The Event box narrows the
-            // list server-side, so the row is on the page whatever else is scheduled.
+            // Listed, flagged, on the right team, date and SHIFT time. The Event box
+            // narrows the list server-side, so the row is on the page whatever else is
+            // scheduled.
             cy.get("#occurrence-event-filter").clear().type(NAME);
             cy.get("#occurrences-loading").should("not.be.visible");
             cy.get("#volunteerOccurrencesTable tbody tr").should("have.length", 1);
             cy.get("#volunteerOccurrencesTable tbody tr").first().as("row");
             cy.get("@row").find("td").eq(2).should("contain", TEAM_NAME);
-            cy.get("@row").find("td").eq(3).should("contain", "one-off");
-            cy.get("@row").find("td").eq(1).should("contain", isoDate(3));
+            cy.get("@row").find("td").eq(3).should("contain", "single event");
+            cy.get("@row").find("td").eq(1).should("contain", `${isoDate(3)} 17:30`);
 
-            // Its private schedule is not on the Schedules tab, but does exist.
+            // Its hidden schedule is not on the Schedules tab, but does exist.
             cy.get("#nav-item-schedules").click();
             cy.get("#schedules-loading").should("not.be.visible");
             cy.get("#volunteerSchedulesTable tbody").should("not.contain", NAME);
-            cy.dbQuery(`SELECT vsch_ID, vsch_Name, vsch_OneOff FROM volunteer_schedule_vsch WHERE vsch_Name LIKE ?`, [`${PREFIX} Harvest%`]).then((r) => {
+            cy.dbQuery(
+                `SELECT vsch_Name, vsch_OneOff, vsch_LinkMode, vsch_StartOffsetMinutes FROM volunteer_schedule_vsch WHERE vsch_Name = ?`,
+                [NAME],
+            ).then((r) => {
                 expect(r.error).to.eq(null);
                 expect(r.rows, `the hidden schedule (found: ${JSON.stringify(r.rows)})`).to.have.length(1);
-                expect(r.rows[0].vsch_Name).to.eq(NAME);
                 expect(Number(r.rows[0].vsch_OneOff)).to.eq(1);
+                expect(r.rows[0].vsch_LinkMode).to.eq("event");
+                expect(Number(r.rows[0].vsch_StartOffsetMinutes)).to.eq(-30);
             });
 
-            // Delete the occurrence: the schedule goes with it.
+            // Delete the occurrence: the schedule goes with it, the event stays.
             cy.get("#nav-item-occurrences").click();
             cy.get("#occurrences-loading").should("not.be.visible");
             cy.get("#occurrence-event-filter").clear().type(NAME);
@@ -538,23 +566,16 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                 expect(r.error).to.eq(null);
                 expect(Number(r.rows[0].c), "the hidden schedule is gone with its occurrence").to.eq(0);
             });
+            cy.dbQuery(`SELECT COUNT(*) AS c FROM events_event WHERE event_title = ?`, [NAME]).then((r) => {
+                expect(Number(r.rows[0].c), "the calendar event is untouched").to.eq(1);
+            });
         });
 
         it("shows the 'No staffing needs set' icon — never the green check — for an empty plan", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-                {
-                    name: `${PREFIX} Empty Plan`,
-                    linkMode: "standalone",
-                    recurType: "weekly",
-                    recurDow: "Wednesday",
-                    startTime: "19:00:00",
-                    endTime: "20:30:00",
-                    windowStart: isoDate(0),
-                    teamId,
-                    requirements: [],
-                },
+                followBody(`${PREFIX} Empty Plan`, WEDNESDAY_EVENTS, { requirements: [] }),
                 201,
             ).then((created) => {
                 generateOccurrences(created.body.schedule.id).then(() => {
@@ -594,21 +615,13 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-                {
-                    name: `${PREFIX} Generate Dialog`,
-                    linkMode: "standalone",
-                    recurType: "weekly",
-                    recurDow: "Thursday",
-                    startTime: "19:00:00",
-                    endTime: "20:30:00",
-                    windowStart: isoDate(0),
+                followBody(`${PREFIX} Generate Dialog`, THURSDAY_EVENTS, {
                     windowEnd: isoDate(21),
-                    teamId,
                     requirements: [
                         { positionId: posLead, minCount: 1, maxCount: 1 },
                         { positionId: posHelper, minCount: 1, maxCount: 2 },
                     ],
-                },
+                }),
                 201,
             ).then((created) => {
                 scheduleId = created.body.schedule.id;
@@ -739,17 +752,9 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `${VOLUNTEER_URL}/ministries/${ministryId}/schedules`,
-                {
-                    name: `${PREFIX} Occurrence Editor`,
-                    linkMode: "standalone",
-                    recurType: "weekly",
-                    recurDow: "Wednesday",
-                    startTime: "19:00:00",
-                    endTime: "20:30:00",
-                    windowStart: isoDate(0),
-                    teamId,
+                followBody(`${PREFIX} Occurrence Editor`, WEDNESDAY_EVENTS, {
                     requirements: [{ positionId: posLead, minCount: 1, maxCount: 1 }],
-                },
+                }),
                 201,
             ).then((created) => {
                 scheduleId = created.body.schedule.id;

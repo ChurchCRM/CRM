@@ -1821,8 +1821,8 @@ class VolunteerAssignmentService
     }
 
     /**
-     * Read-only attendance beside the roster (UC4, E10). Null for an unlinked
-     * occurrence — there is no event to have checked in to.
+     * Read-only attendance beside the roster (UC4, E10). Null once the anchored event
+     * was deleted — there is no event to have checked in to.
      *
      * @param int[] $personIds
      *
@@ -2339,8 +2339,7 @@ class VolunteerAssignmentService
     /**
      * The occurrence's real end, through the ONE method allowed to decide it
      * (`VolunteerScheduleService::resolveOccurrenceWindow()`, §3.4). Null when the
-     * occurrence has no end at all — a standalone all-day row, or one whose linked event
-     * was deleted — in which case nothing here treats it as past.
+     * anchored event was deleted, in which case nothing here treats it as past.
      */
     private function occurrenceEnd(VolunteerOccurrence $occurrence): ?\DateTimeInterface
     {
