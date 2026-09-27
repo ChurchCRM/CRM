@@ -36,13 +36,19 @@ import {
   type VolunteerCandidatePosition,
   type VolunteerClassGroup,
   type VolunteerEligiblePerson,
-  type VolunteerGenerateDefault,
   type VolunteerPosition,
   type VolunteerRequirementRow,
   type VolunteerSchedule,
   type VolunteerTeam,
 } from "../api";
 import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "../staffing-needs";
+import {
+  destroyDefaultFillPickers,
+  mountDefaultFillPickers,
+  readDefaultFills,
+  renderDefaultFillRow,
+  wireDefaultFillRows,
+} from "./default-fill";
 import { offsetSummary, readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
 import {
   actionMenu,
@@ -556,102 +562,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   let generateSelects: TomSelectInstance[] = [];
 
   function destroyGenerateSelects(): void {
-    for (const instance of generateSelects) {
-      try {
-        instance.destroy();
-      } catch (_e) {
-        // The rows may already be gone; nothing left to tear down.
-      }
-    }
+    destroyDefaultFillPickers(generateSelects);
     generateSelects = [];
-  }
-
-  function describeCandidate(person: VolunteerEligiblePerson): string {
-    const served =
-      person.lastServedDate === null
-        ? i18next.t("has not served yet")
-        : tText("last served {{date}}", { date: person.lastServedDate });
-
-    return `${person.displayName} — ${served}`;
-  }
-
-  /** The picker's options: blank first, then the pool, then the rest — the Assign dialog's grouping. */
-  function candidateOptions(people: VolunteerEligiblePerson[]): string {
-    const option = (person: VolunteerEligiblePerson): string =>
-      `<option value="${person.personId}" data-in-pool="${person.inPool ? "1" : "0"}">${escapeHtml(
-        describeCandidate(person),
-      )}</option>`;
-    const inPool = people.filter((person) => person.inPool);
-    const outside = people.filter((person) => !person.inPool);
-
-    return [
-      `<option value="">${escapeHtml(i18next.t("Leave open"))}</option>`,
-      inPool.length === 0
-        ? ""
-        : `<optgroup label="${escapeAttribute(i18next.t("In the volunteer pool"))}">${inPool.map(option).join("")}</optgroup>`,
-      outside.length === 0
-        ? ""
-        : `<optgroup label="${escapeAttribute(i18next.t("Not in the pool"))}">${outside.map(option).join("")}</optgroup>`,
-    ].join("");
-  }
-
-  function needsPhrase(min: number, max: number | null): string {
-    if (max !== null && max > min) {
-      return tText("{{min}} to {{max}} needed", { min, max });
-    }
-
-    return tText("{{count}} needed", { count: min });
-  }
-
-  function syncAcceptedBox(select: HTMLSelectElement): void {
-    const row = select.closest<HTMLElement>(".generate-default-row");
-    const wrap = row?.querySelector<HTMLElement>(".generate-default-accepted-wrap") ?? null;
-    const chosen = select.value !== "";
-    show(wrap, chosen);
-    if (!chosen) {
-      const box = row?.querySelector<HTMLInputElement>(".generate-default-accepted");
-      if (box) {
-        box.checked = false;
-      }
-    }
-  }
-
-  function renderGenerateRow(
-    positionId: number,
-    positionName: string,
-    min: number,
-    max: number | null,
-    people: VolunteerEligiblePerson[],
-  ): string {
-    const selectId = `generate-default-${positionId}`;
-
-    return `
-      <div class="generate-default-row mb-3" data-position-id="${positionId}">
-        <div class="fw-medium mb-1">
-          ${escapeHtml(positionName)}
-          <span class="text-body-secondary fw-normal">— ${escapeHtml(needsPhrase(min, max))}</span>
-        </div>
-        ${
-          people.length === 0
-            ? `<div class="form-hint generate-default-empty">${escapeHtml(
-                i18next.t("Nobody is qualified for this position yet, so it stays open."),
-              )}</div>`
-            : `<div class="row g-2 align-items-end">
-                <div class="col-12 col-md-8">
-                  <label class="form-label mb-1" for="${selectId}">${escapeHtml(i18next.t("Fill by default with"))}:</label>
-                  <select class="form-select generate-default-select" id="${selectId}" data-position-id="${positionId}">
-                    ${candidateOptions(people)}
-                  </select>
-                </div>
-                <div class="col-12 col-md-4 pb-md-2">
-                  <label class="form-check d-none generate-default-accepted-wrap">
-                    <input class="form-check-input generate-default-accepted" type="checkbox">
-                    <span class="form-check-label">${escapeHtml(i18next.t("Set as Accepted"))}</span>
-                  </label>
-                </div>
-              </div>`
-        }
-      </div>`;
   }
 
   function openGenerateModal(schedule: VolunteerSchedule): void {
@@ -695,7 +607,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
           } catch {
             people = [];
           }
-          html.push(renderGenerateRow(row.positionId, name, row.minCount, row.maxCount, people));
+          html.push(renderDefaultFillRow("generate-default", row.positionId, name, row.minCount, row.maxCount, people));
         }
 
         if (generatingScheduleId !== schedule.id) {
@@ -706,19 +618,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         }
         show(byId("generate-form-empty"), wanted.length === 0);
 
-        // The same shared TomSelect every other picker uses, body-mounted so the
-        // dialog cannot clip its dropdown, with no option cap (#9819).
-        if (window.TomSelect) {
-          for (const select of rows?.querySelectorAll<HTMLSelectElement>("select.generate-default-select") ?? []) {
-            generateSelects.push(
-              new window.TomSelect(select, {
-                dropdownParent: "body",
-                maxOptions: null,
-                onChange: () => syncAcceptedBox(select),
-              }),
-            );
-          }
-        }
+        generateSelects = mountDefaultFillPickers(rows);
       })
       .catch((error: unknown) => {
         showModalError(
@@ -735,24 +635,6 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       });
   }
 
-  function readGenerateDefaults(): VolunteerGenerateDefault[] {
-    const defaults: VolunteerGenerateDefault[] = [];
-    for (const row of byId("generate-form-rows")?.querySelectorAll<HTMLElement>(".generate-default-row") ?? []) {
-      const select = row.querySelector<HTMLSelectElement>("select.generate-default-select");
-      const personId = Number(select?.value ?? 0);
-      if (!select || personId <= 0) {
-        continue;
-      }
-      defaults.push({
-        positionId: Number(row.dataset.positionId),
-        personId,
-        accepted: row.querySelector<HTMLInputElement>(".generate-default-accepted")?.checked ?? false,
-      });
-    }
-
-    return defaults;
-  }
-
   function runGenerate(): void {
     const scheduleId = generatingScheduleId;
     if (scheduleId === 0) {
@@ -763,7 +645,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       save.disabled = true;
     }
 
-    generateOccurrences(scheduleId, { defaults: readGenerateDefaults() })
+    generateOccurrences(scheduleId, { defaults: readDefaultFills(byId("generate-form-rows")) })
       .then((result) => {
         hideModal("generateOccurrencesModal");
         // The server's own numbers, not an assumption: generation is idempotent,
@@ -804,15 +686,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     wireModalFadeGuard("generateOccurrencesModal");
     byId("generate-form-save")?.addEventListener("click", runGenerate);
     byId("generateOccurrencesModal")?.addEventListener("hidden.bs.modal", destroyGenerateSelects);
-    // The Accepted box only means something once a person is named, so it appears
-    // with the choice and goes away with it. Delegated: the rows are re-rendered per
-    // open, and TomSelect fires a native `change` on the wrapped select as well.
-    byId("generate-form-rows")?.addEventListener("change", (event) => {
-      const select = (event.target as HTMLElement | null)?.closest<HTMLSelectElement>("select.generate-default-select");
-      if (select) {
-        syncAcceptedBox(select);
-      }
-    });
+    wireDefaultFillRows(byId("generate-form-rows"));
 
     // Focus the first field once the modal has finished animating. Without it
     // Bootstrap's own `shown.bs.modal` handler moves focus to the dialog partway

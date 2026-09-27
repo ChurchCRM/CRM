@@ -6,8 +6,8 @@ use ChurchCRM\Utils\InputUtils;
 /**
  * S3 — ministry detail (design §5.4, as amended by the product owner).
  *
- * Six tabs, each loaded lazily on its first activation: **Overview · Positions ·
- * Volunteers · Schedules · Occurrences · Help Wanted**. Markup only: the route
+ * Seven tabs, each loaded lazily on its first activation: **Overview · Positions ·
+ * Volunteers · Schedules · Occurrences · Calendar · Help Wanted**. Markup only: the route
  * decided what may be shown and the tab contents come from
  * `/api/ministries/ministries/{id}` — no queries here
  * (groups-mvc-guidelines.md).
@@ -110,6 +110,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <li class="nav-item" role="presentation">
       <a class="nav-link" id="nav-item-occurrences" href="#occurrences" data-bs-toggle="tab" role="tab" aria-controls="occurrences" aria-selected="false">
         <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Occurrences') ?>
+      </a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="nav-item-calendar" href="#calendar" data-bs-toggle="tab" role="tab" aria-controls="calendar" aria-selected="false">
+        <i class="fa-solid fa-calendar-plus me-1"></i><?= gettext('Calendar') ?>
       </a>
     </li>
     <li class="nav-item" role="presentation">
@@ -562,6 +567,65 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <th><?= gettext('Team') ?></th>
               <th><?= gettext('Schedule') ?></th>
               <th class="text-center"><?= gettext('Filled') ?></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!--
+      Calendar (D24): the events this ministry owns, created here through core's event
+      code and edited in the core event editor. Upcoming by default; the switch shows the
+      past year instead, with each event's headcount (D26).
+    -->
+    <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="nav-item-calendar">
+      <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between mb-3">
+        <label class="form-check form-switch mb-0">
+          <input class="form-check-input" type="checkbox" id="ministry-events-past">
+          <span class="form-check-label"><?= gettext('Show past events') ?></span>
+        </label>
+        <div class="d-flex flex-wrap gap-2">
+          <button type="button" class="btn btn-primary btn-sm" id="ministry-event-add-btn">
+            <i class="fa-solid fa-plus me-1" aria-hidden="true"></i><?= gettext('New event') ?>
+          </button>
+          <button type="button" class="btn btn-outline-primary btn-sm" id="ministry-event-add-series-btn">
+            <i class="fa-solid fa-repeat me-1" aria-hidden="true"></i><?= gettext('New recurring event') ?>
+          </button>
+        </div>
+      </div>
+      <div class="volunteer-loading text-center py-4" id="ministry-events-loading">
+        <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
+        <?= gettext('Loading') ?>
+      </div>
+      <div class="alert alert-danger d-none" role="alert" id="ministry-events-error">
+        <i class="fa-solid fa-circle-exclamation me-1"></i>
+        <span class="volunteer-error-text"></span>
+        <button type="button" class="btn btn-sm btn-outline-danger ms-2 volunteer-retry"><?= gettext('Retry') ?></button>
+      </div>
+      <div class="empty d-none" id="ministry-events-empty">
+        <div class="empty-icon"><i class="fa-solid fa-calendar-check fa-2x text-muted"></i></div>
+        <div id="ministry-events-empty-upcoming">
+          <p class="empty-title"><?= gettext('No upcoming events') ?></p>
+          <p class="empty-subtitle text-body-secondary">
+            <?= gettext('Add this ministry\'s events here: a workday, a class that meets every Sunday. They go on the church calendar, and you can staff them as you create them.') ?>
+          </p>
+        </div>
+        <div class="d-none" id="ministry-events-empty-past">
+          <p class="empty-title"><?= gettext('No past events') ?></p>
+          <p class="empty-subtitle text-body-secondary"><?= gettext('Nothing this ministry owns happened in the last year.') ?></p>
+        </div>
+      </div>
+      <div class="volunteer-scroll-x d-none" id="ministry-events-table-wrapper">
+        <table class="table table-hover table-vcenter" id="volunteerMinistryEventsTable">
+          <thead>
+            <tr>
+              <th><?= gettext('Date and time') ?></th>
+              <th><?= gettext('Event') ?></th>
+              <th><?= gettext('Calendars') ?></th>
+              <th><?= gettext('Class') ?></th>
+              <th><?= gettext('Staffing') ?></th>
+              <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -1044,6 +1108,138 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
         <button type="button" class="btn btn-primary" id="schedule-form-save"><?= gettext('Save') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  New event / New recurring event (D24). One dialog with a One-time / Recurring switch. The
+  events are created through core with this ministry's id; "Staff these events" creates the
+  schedule that staffs them in the same request (the staffing-needs editor, the Volunteer
+  times rows and the Generate dialog's "Fill by default with" rows, reused).
+-->
+<div class="modal fade" id="ministryEventModal" tabindex="-1" aria-hidden="true" aria-labelledby="ministryEventModalTitle">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg modal-fullscreen-sm-down" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ministryEventModalTitle"><?= gettext('New event') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <div class="btn-group w-100 mb-3" role="group" aria-label="<?= InputUtils::escapeAttribute(gettext('How often')) ?>">
+          <input type="radio" class="btn-check" name="ministry-event-kind" id="ministry-event-form-once" value="once" checked>
+          <label class="btn btn-outline-primary" for="ministry-event-form-once"><?= gettext('One-time') ?></label>
+          <input type="radio" class="btn-check" name="ministry-event-kind" id="ministry-event-form-series" value="series">
+          <label class="btn btn-outline-primary" for="ministry-event-form-series"><?= gettext('Recurring') ?></label>
+        </div>
+        <div class="row g-2">
+          <div class="col-12 col-md-7 mb-3">
+            <label class="form-label" for="ministry-event-form-title"><?= gettext('Title') ?></label>
+            <input type="text" class="form-control" id="ministry-event-form-title" maxlength="255">
+          </div>
+          <div class="col-12 col-md-5 mb-3">
+            <label class="form-label" for="ministry-event-form-type"><?= gettext('Event type') ?></label>
+            <select class="form-select" id="ministry-event-form-type"></select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="ministry-event-form-description"><?= gettext('Description') ?></label>
+          <textarea class="form-control" id="ministry-event-form-description" rows="2" maxlength="255"></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="ministry-event-form-class"><?= gettext('Class') ?></label>
+          <select class="form-select" id="ministry-event-form-class"></select>
+          <div class="form-text"><?= gettext('Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events.') ?></div>
+        </div>
+        <div class="row g-2" id="ministry-event-form-once-fields">
+          <div class="col-12 col-md-4 mb-3">
+            <label class="form-label" for="ministry-event-form-date"><?= gettext('Date') ?></label>
+            <input type="date" class="form-control" id="ministry-event-form-date">
+          </div>
+        </div>
+        <div class="d-none" id="ministry-event-form-series-fields">
+          <div class="row g-2">
+            <div class="col-12 col-md-4 mb-3">
+              <label class="form-label" for="ministry-event-form-recur-type"><?= gettext('Repeats') ?></label>
+              <select class="form-select" id="ministry-event-form-recur-type">
+                <option value="weekly"><?= gettext('Weekly') ?></option>
+                <option value="monthly"><?= gettext('Monthly') ?></option>
+                <option value="yearly"><?= gettext('Yearly') ?></option>
+              </select>
+            </div>
+            <div class="col-12 col-md-8 mb-3" id="ministry-event-form-dow-row">
+              <label class="form-label" for="ministry-event-form-dow"><?= gettext('Day of the week') ?></label>
+              <select class="form-select" id="ministry-event-form-dow"></select>
+            </div>
+            <div class="col-12 col-md-8 mb-3 d-none" id="ministry-event-form-dom-row">
+              <label class="form-label" for="ministry-event-form-dom"><?= gettext('Day of the month') ?></label>
+              <input type="number" class="form-control" id="ministry-event-form-dom" min="1" max="31" step="1">
+              <div class="form-text"><?= gettext('A day a month does not have falls on its last day.') ?></div>
+            </div>
+            <div class="col-12 col-md-8 mb-3 d-none" id="ministry-event-form-doy-row">
+              <label class="form-label" for="ministry-event-form-doy-month"><?= gettext('Date each year') ?></label>
+              <div class="d-flex gap-2">
+                <select class="form-select" id="ministry-event-form-doy-month" aria-label="<?= InputUtils::escapeAttribute(gettext('Month')) ?>"></select>
+                <input type="number" class="form-control w-auto" id="ministry-event-form-doy-day" min="1" max="31" step="1" aria-label="<?= InputUtils::escapeAttribute(gettext('Day')) ?>">
+              </div>
+            </div>
+          </div>
+          <div class="row g-2">
+            <div class="col-12 col-md-6 mb-3">
+              <label class="form-label" for="ministry-event-form-range-start"><?= gettext('First date') ?></label>
+              <input type="date" class="form-control" id="ministry-event-form-range-start">
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <label class="form-label" for="ministry-event-form-range-end"><?= gettext('Last date') ?></label>
+              <input type="date" class="form-control" id="ministry-event-form-range-end">
+            </div>
+          </div>
+        </div>
+        <div class="row g-2">
+          <div class="col-6 col-md-4 mb-3">
+            <label class="form-label" for="ministry-event-form-start-time"><?= gettext('Start time') ?></label>
+            <input type="time" class="form-control" id="ministry-event-form-start-time">
+          </div>
+          <div class="col-6 col-md-4 mb-3">
+            <label class="form-label" for="ministry-event-form-end-time"><?= gettext('End time') ?></label>
+            <input type="time" class="form-control" id="ministry-event-form-end-time">
+          </div>
+        </div>
+        <p class="alert alert-info py-2 d-none" id="ministry-event-form-preview"></p>
+        <div class="mb-3">
+          <div class="form-label"><?= gettext('Calendars') ?></div>
+          <div id="ministry-event-form-calendars"></div>
+          <div class="form-text"><?= gettext('Only the calendars this ministry may add events to are listed. Its own calendar is ticked to start with.') ?></div>
+        </div>
+        <hr class="my-3">
+        <label class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="ministry-event-form-staff-toggle">
+          <span class="form-check-label fw-medium"><?= gettext('Staff these events') ?></span>
+        </label>
+        <div class="d-none mt-2" id="ministry-event-form-staff">
+          <div class="mb-3">
+            <label class="form-label" for="ministry-event-form-team"><?= gettext('Team') ?></label>
+            <select class="form-select" id="ministry-event-form-team"></select>
+          </div>
+          <div class="mb-3" id="ministry-event-form-offsets"></div>
+          <div class="mb-2">
+            <h6 class="mb-1"><i class="fa-solid fa-list-check me-2"></i><?= gettext('Staffing needs') ?></h6>
+            <div class="form-text"><?= gettext('How many volunteers each event needs. Uncheck a position these events do not use.') ?></div>
+          </div>
+          <div id="ministry-event-form-needs"></div>
+          <p class="text-body-secondary mt-3 mb-2">
+            <?= gettext('Choose who fills each position by default. They are assigned on every event made now, and asked to respond unless you set them as accepted.') ?>
+          </p>
+          <div id="ministry-event-form-defaults"></div>
+        </div>
+        <div class="alert alert-danger d-none mt-3" role="alert" id="ministry-event-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" class="btn btn-primary" id="ministry-event-form-save"><?= gettext('Create') ?></button>
       </div>
     </div>
   </div>

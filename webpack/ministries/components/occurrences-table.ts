@@ -107,11 +107,15 @@ export interface OccurrencesTableOptions {
   positions?(): VolunteerPosition[];
   /** Staff one calendar event (D22); absent when the page does not offer the dialog. */
   staffEvent?(payload: VolunteerStaffEventInput): Promise<unknown>;
+  /** After Staff an event succeeded, for a caller that shows staffing elsewhere too. */
+  onStaffed?(): void;
 }
 
 export interface OccurrencesTableHandle {
   load(force?: boolean): Promise<void>;
   invalidate(): void;
+  /** Open Staff an event, with this event already chosen when one is given. */
+  openStaff(event?: { id: number; title: string; start: string }): Promise<void>;
 }
 
 export function createOccurrencesTable(options: OccurrencesTableOptions): OccurrencesTableHandle {
@@ -231,6 +235,8 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
   let searchTimer = 0;
   /** Only the newest search may fill the picker; an older answer arriving late is dropped. */
   let searchSequence = 0;
+  /** The event the dialog was opened for (the Calendar tab's "Staff this event"), chosen once the search lands. */
+  let preselectEventId = 0;
 
   /** The dialog's team select, then the needs rows for whichever team it names. */
   function fillStaffTeams(): void {
@@ -320,8 +326,10 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
       option.textContent = describeEvent(event);
       select.append(option);
     }
-    select.value = previous;
-    if (select.value !== previous) {
+    const wanted = preselectEventId > 0 ? String(preselectEventId) : previous;
+    preselectEventId = 0;
+    select.value = wanted;
+    if (select.value !== wanted) {
       select.value = "";
     }
   }
@@ -333,7 +341,7 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     }, OCCURRENCE_TEXT_DEBOUNCE_MS);
   }
 
-  function openStaffModal(): void {
+  function openStaffModal(event?: { id: number; title: string; start: string }): void {
     show(byId("staff-event-form-error"), false);
     fillStaffTeams();
     renderOffsetFields("staff-event-form");
@@ -343,6 +351,18 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
       if (el) {
         el.value = "";
       }
+    }
+    if (event) {
+      // Narrowed to the event's title and day so the chosen event is in the list the search returns.
+      const search = byId<HTMLInputElement>("staff-event-form-search");
+      const date = byId<HTMLInputElement>("staff-event-form-date");
+      if (search) {
+        search.value = event.title;
+      }
+      if (date) {
+        date.value = event.start.slice(0, 10);
+      }
+      preselectEventId = event.id;
     }
     const select = byId<HTMLSelectElement>("staff-event-form-event");
     if (select) {
@@ -402,6 +422,7 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
       .then(() => {
         hideModal("staffEventModal");
         notifySuccess(i18next.t("Event staffed"));
+        options.onStaffed?.();
 
         return load(true);
       })
@@ -651,7 +672,7 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     if (options.staffEvent) {
       wireModalFadeGuard("staffEventModal");
       byId("occurrences-staff-event-btn")?.addEventListener("click", () => {
-        void options.ensureContext().then(openStaffModal);
+        void options.ensureContext().then(() => openStaffModal());
       });
       byId("staff-event-form-team")?.addEventListener("change", () => {
         renderStaffNeeds();
@@ -667,5 +688,9 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
 
   wire();
 
-  return { load, invalidate };
+  return {
+    load,
+    invalidate,
+    openStaff: (event) => options.ensureContext().then(() => openStaffModal(event)),
+  };
 }
