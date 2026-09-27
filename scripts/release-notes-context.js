@@ -15,11 +15,12 @@
  * directly helps users of this release.
  *
  * Usage:
- *   node scripts/release-notes-context.js <from-tag> [to-ref] [--out file] [--related a/b,c/d]
+ *   node scripts/release-notes-context.js <from-tag> [to-ref] [--related a/b,c/d] > context.md
  *
  *   from-tag   previous public release (e.g. 7.7.0)
  *   to-ref     tag, branch or SHA being released (default: master)
- *   --out      write to a file instead of stdout
+ *   Output goes to stdout; redirect it to a file. The script never writes files
+ *   itself, so API text can't reach the filesystem through it.
  *   --related  sibling repos to list (default: RELATED below; "none" to skip).
  *              A repo the token cannot read is listed as skipped, not fatal.
  *
@@ -27,11 +28,10 @@
  *   GH_TOKEN / GITHUB_TOKEN   Strongly recommended — one API call per PR.
  *
  * Examples:
- *   node scripts/release-notes-context.js 7.7.0 master --out /tmp/7.7.1-context.md
+ *   node scripts/release-notes-context.js 7.7.0 master > /tmp/7.7.1-context.md
  *   node scripts/release-notes-context.js 7.7.0 7.7.1
  */
 
-const fs = require('fs');
 
 const REPO = process.env.GH_REPO || 'ChurchCRM/CRM';
 const API = 'https://api.github.com';
@@ -249,17 +249,15 @@ function render(from, to, prs, unlinked) {
 
 async function main() {
   const args = process.argv.slice(2);
-  const outIdx = args.indexOf('--out');
-  const out = outIdx >= 0 ? args[outIdx + 1] : null;
   const relIdx = args.indexOf('--related');
   const relatedArg = relIdx >= 0 ? args[relIdx + 1] : null;
-  const valueIdx = new Set([outIdx, relIdx].filter(i => i >= 0).map(i => i + 1));
+  const valueIdx = new Set(relIdx >= 0 ? [relIdx + 1] : []);
   const positional = args.filter((a, i) => !a.startsWith('--') && !valueIdx.has(i));
   const relatedRepos = relatedArg === 'none' ? [] : relatedArg ? relatedArg.split(',') : RELATED;
   const [from, to = 'master'] = positional;
 
   if (!from) {
-    console.error('Usage: node scripts/release-notes-context.js <from-tag> [to-ref] [--out file]');
+    console.error('Usage: node scripts/release-notes-context.js <from-tag> [to-ref] [--related a/b,c/d] > context.md');
     process.exit(1);
   }
 
@@ -313,12 +311,8 @@ async function main() {
       console.error(`Skipping related-repo contributors: ${err.message}`);
     }
   }
-  if (out) {
-    fs.writeFileSync(out, md);
-    console.log(`Wrote ${out} (${prs.length} PRs)`);
-  } else {
-    process.stdout.write(md);
-  }
+  process.stdout.write(md);
+  console.error(`Listed ${prs.length} PRs`);
 }
 
 main().catch(err => {

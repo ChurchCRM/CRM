@@ -39,7 +39,7 @@ gh run download -R ChurchCRM/CRM -n "release-notes-context-$TAG" -D /tmp/rn
 Otherwise build it locally. It is the same script and needs a token for the GitHub API:
 
 ```bash
-node scripts/release-notes-context.js "$PREV" "$TARGET" --out /tmp/rn/release-notes-context-$TAG.md
+node scripts/release-notes-context.js "$PREV" "$TARGET" > /tmp/rn/release-notes-context-$TAG.md
 ```
 
 The file lists every PR merged between `PREV` and `TARGET` with its **full description**, author, labels, linked issues and a bucket derived from the files it touched (User-facing, Localization, Dependencies, Testing, CI & tooling, Marketing capture, Docs & agent guidance, Automated).
