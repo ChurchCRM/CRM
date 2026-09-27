@@ -11,6 +11,7 @@ use ChurchCRM\Portal\PortalTeams;
 use ChurchCRM\Portal\PortalTwig;
 use ChurchCRM\Volunteer\Middleware\VolunteerTeamLeaderMiddleware;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerEventService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -180,6 +181,8 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
                         'eventLocation' => $eventLocation === null ? '' : (string) $eventLocation->getLocationName(),
                         'offsetNote' => $schedules->offsetSummary($schedule),
                     ],
+                    // D26: read-only; the edit link only for a login that can open the admin editor.
+                    'headcount' => $linkedEvent === null ? null : (new VolunteerEventService())->headcount($linkedEvent, $user),
                 ],
                 PortalNav::TEAMS
             );

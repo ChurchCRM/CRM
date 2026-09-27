@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerEventService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
 use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -108,6 +109,8 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'sEventTitle' => $linkedEvent === null ? '' : (string) $linkedEvent->getTitle(),
             'sEventLocation' => $eventLocation === null ? '' : (string) $eventLocation->getLocationName(),
             'sOffsetNote' => $schedule === null ? '' : $schedules->offsetSummary($schedule),
+            // D26: the anchored event's headcount, read-only; null once the event was deleted.
+            'aHeadcount' => $linkedEvent === null ? null : (new VolunteerEventService($authz))->headcount($linkedEvent, $currentUser),
         ]);
     });
 })->add(VolunteerCoordinatorRoleAuthMiddleware::class);
