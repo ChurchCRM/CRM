@@ -60,6 +60,7 @@ Put each PR in exactly one place:
 | **🛠️ Enhancements & Improvements** | Bug fixes, usability polish and visible behavior changes, grouped by the categories below. |
 | **🌍 Global Language Polish** | Translation fixes, plural/wording fixes and the standard localization line. |
 | **🧰 Behind the Scenes** | Exactly **two lines**: one for *Security & Dependencies*, one for *Testing & Tooling*. |
+| **🤝 For Contributors & AI Agents** | Optional, at most two lines: developer/agent onboarding and project automation changes that matter to contributors (for example, fewer agent tokens or automation that makes no model call). |
 | Omitted | Bot syncs (locale imports, marketing visuals, OpenAPI regeneration, changelog sync), version bumps, and docs/agent-guidance changes, unless contributors or integrators need to know. |
 
 Enhancement categories. Use only the ones that have content, and add one when nothing fits:
@@ -119,8 +120,14 @@ Rules:
 
 ---
 
+## 🤝 For Contributors & AI Agents
+* **[Onboarding or automation change]:** [What got easier or cheaper for contributors and agents.]
+
+---
+
 ## 🙌 See It for Yourself
-[Try the demo](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_VERSION_demo) or [install ChurchCRM](https://churchcrm.io/install.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_VERSION_install).
+* **Real Screenshots, True to the Release:** [Only when relevant. Website and docs screenshots are refreshed after the release is published, never before. Describe what the refresh adds (for example, new languages) as something that follows the release.]
+* **Try It:** [Try the demo](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_VERSION_demo) or [install ChurchCRM](https://churchcrm.io/install.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_VERSION_install).
 
 ---
 
