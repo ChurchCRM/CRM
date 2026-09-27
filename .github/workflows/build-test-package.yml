@@ -82,8 +82,8 @@ jobs:
   # Determine which PHP versions to test based on trigger
   # matrix decision:
   #   workflow_dispatch → ["8.4","8.5"]  (manual full-matrix sweep)
-  #   everything else   → ["8.4"]        (push, PR, schedule — 8.5 nightly
-  #                                        coverage lives in build-test-nightly.yml, PR #9541)
+  #   everything else   → ["8.4"]        (push/PR — 8.5 and exhaustive
+  #                                        coverage live in build-test-nightly.yml)
   configure:
     runs-on: ubuntu-24.04
     outputs:
