@@ -32,7 +32,7 @@
   components look their controls up by id and are inert when an id is not there.
 
   Variables: `pageTitle`, and `team` — `{id, name, description, active,
-  ministryId, ministryName}`.
+  ministryId, ministryName, classGroupName}` (the linked Sunday School class, D23).
 
   Every user-visible string the bundle renders lives in the bundle, as
   `i18next.t()`: the extractor reads `gettext()` from templates and `i18next.t()`
@@ -58,6 +58,12 @@
     </p>
     {% if team.description %}
     <p class="portal-card-text">{{ team.description }}</p>
+    {% endif %}
+    {% if team.classGroupName %}
+    <p class="portal-card-text portal-team-class" id="portal-team-class">
+        <i class="fa-solid fa-chalkboard-user me-1" aria-hidden="true"></i>
+        {{ gettext('Sunday School Class') }}: {{ team.classGroupName }}
+    </p>
     {% endif %}
 
     <div class="card">

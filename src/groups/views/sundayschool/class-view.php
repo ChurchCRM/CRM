@@ -33,6 +33,24 @@ if ($bCanManageGroups) {
 }
 ?>
 
+<?php if ($aTeacherLink !== null): ?>
+<div class="alert alert-info d-flex align-items-center" role="alert" id="class-teachers-managed-note">
+    <i class="fa-solid fa-circle-info me-2"></i>
+    <div>
+        <?= sprintf(
+            gettext('Teachers of this class are managed in Ministries → %1$s → %2$s.'),
+            '<strong>' . InputUtils::escapeHTML($aTeacherLink['ministryName']) . '</strong>',
+            '<strong>' . InputUtils::escapeHTML($aTeacherLink['teamName']) . '</strong>'
+        ) ?>
+        <?php if ($aTeacherLink['canOpenMinistry']): ?>
+        <a href="<?= $sRootPath ?>/ministries/<?= (int) $aTeacherLink['ministryId'] ?>" class="alert-link ms-1">
+            <?= gettext('Open the ministry') ?>
+        </a>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
+
 <!-- Stat Cards Row -->
 <div class="row mb-3">
     <div class="col-6 col-lg">
@@ -145,14 +163,22 @@ if ($bCanManageGroups) {
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <h6 class="dropdown-header"><?= gettext('Copy to Group') ?></h6>
+                    <?php if ($aTeacherLink === null): ?>
                     <a class="dropdown-item ss-copy-role" data-role="all" href="#"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
+                    <?php endif; ?>
                     <a class="dropdown-item ss-copy-role" data-role="Student" href="#"><i class="fa-solid fa-child me-2"></i><?= gettext('Students') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $totalStudents ?></span></a>
+                    <?php if ($aTeacherLink === null): ?>
                     <a class="dropdown-item ss-copy-role" data-role="Teacher" href="#"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $teacherCount ?></span></a>
+                    <?php endif; ?>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header"><?= gettext('Move to Group') ?></h6>
+                    <?php if ($aTeacherLink === null): ?>
                     <a class="dropdown-item ss-move-role" data-role="all" href="#"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
+                    <?php endif; ?>
                     <a class="dropdown-item ss-move-role" data-role="Student" href="#"><i class="fa-solid fa-child me-2"></i><?= gettext('Students') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $totalStudents ?></span></a>
+                    <?php if ($aTeacherLink === null): ?>
                     <a class="dropdown-item ss-move-role" data-role="Teacher" href="#"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?> <span class="badge bg-secondary-lt text-secondary ms-1"><?= $teacherCount ?></span></a>
+                    <?php endif; ?>
                     <div class="dropdown-divider"></div>
                     <?php if ($thisGroup && $thisGroup->getHasSpecialProps()): ?>
                     <a class="dropdown-item" href="<?= $sRootPath ?>/groups/<?= $iGroupId ?>/properties/form">

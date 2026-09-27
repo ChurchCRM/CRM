@@ -145,6 +145,39 @@ final class VolunteerClassLinkService
     }
 
     /**
+     * What the class page and the group view say about a link (D23): null unless
+     * V2 is on and a team is linked. `canOpenMinistry` decides whether the ministry
+     * is offered as a link or named as plain text.
+     *
+     * @return array{ministryId: int, ministryName: string, teamId: int, teamName: string, teacherRoleId: int|null, canOpenMinistry: bool}|null
+     */
+    public static function describeLink(int $groupId, User $viewer): ?array
+    {
+        if (!User::isVolunteerV2Enabled()) {
+            return null;
+        }
+
+        $team = self::findLinkedTeam($groupId);
+        $group = $team?->getClassGroup();
+        if ($team === null || $group === null) {
+            return null;
+        }
+
+        $ministryId = (int) $team->getMinistryId();
+        $ministry = $team->getMinistry();
+
+        return [
+            'ministryId' => $ministryId,
+            'ministryName' => $ministry === null ? '' : (string) $ministry->getName(),
+            'teamId' => (int) $team->getId(),
+            'teamName' => (string) $team->getName(),
+            'teacherRoleId' => self::teacherRoleId($group),
+            'canOpenMinistry' => $viewer->isVolunteerCoordinatorEnabled()
+                && (new VolunteerAuthorizationService())->canManageMinistry($viewer, $ministryId),
+        ];
+    }
+
+    /**
      * The Sunday School classes a team may link: every type-4 group not linked to
      * another team, the one `$teamId` already holds included, each with how many
      * teachers linking it would import.

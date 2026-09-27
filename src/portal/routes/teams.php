@@ -99,6 +99,8 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
                     'active' => (bool) $team->getActive(),
                     'ministryId' => (int) $team->getMinistryId(),
                     'ministryName' => $ministry === null ? '' : (string) $ministry->getName(),
+                    // D23: read-only here — linking is the ministry coordinator's.
+                    'classGroupName' => (string) ($team->getClassGroup()?->getName() ?? ''),
                 ],
             ],
             PortalNav::TEAMS
