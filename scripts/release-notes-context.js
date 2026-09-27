@@ -9,9 +9,10 @@
  * single Markdown file an agent (or a person) reads end to end; nothing here
  * decides wording. No model call — see release-bookkeeping.yml.
  *
- * It also lists who contributed to the sibling repos (docs, website,
- * marketing) since the previous release was published. Their work is not in
- * the CRM compare, but those people belong in the release credits.
+ * It also lists, for information, who contributed to the sibling repos (docs,
+ * website, marketing) since the previous release was published. That work is
+ * not part of the release; the notes thank someone for it only when it
+ * directly helps users of this release.
  *
  * Usage:
  *   node scripts/release-notes-context.js <from-tag> [to-ref] [--out file] [--related a/b,c/d]
@@ -19,7 +20,7 @@
  *   from-tag   previous public release (e.g. 7.7.0)
  *   to-ref     tag, branch or SHA being released (default: master)
  *   --out      write to a file instead of stdout
- *   --related  sibling repos to credit (default: RELATED below; "none" to skip).
+ *   --related  sibling repos to list (default: RELATED below; "none" to skip).
  *              A repo the token cannot read is listed as skipped, not fatal.
  *
  * Env vars:
@@ -179,8 +180,8 @@ async function relatedContributors(repo, since) {
 }
 
 function renderRelated(since, related) {
-  const lines = ['---', '', `## Contributors outside CRM (since ${since.slice(0, 10)})`, ''];
-  lines.push('Docs, website and marketing work ships alongside the release but is not in the compare above. Credit these people too, and ask George about work that left no trace on GitHub (design files, translations, testing).', '');
+  const lines = ['---', '', `## FYI: work in other repos (since ${since.slice(0, 10)})`, ''];
+  lines.push('For information only: this work is not part of the release. Thank someone in the notes only when their work directly helps users of this release, such as artwork that ships in the app or a docs guide for a feature in this release. Ask George about work that left no trace on GitHub.', '');
   for (const r of related) {
     lines.push(`### ${r.repo}`, '');
     if (r.error) {
