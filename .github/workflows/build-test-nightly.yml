@@ -70,10 +70,25 @@ jobs:
 
     - name: Install Composer dependencies (via Docker)
       run: |
+        COMPOSER_IMAGE="composer@sha256:9715c7f69044da2a212a5fbde29ee7da24e364d426560ae6367b060236f847d7"
+
+        # Pin the image for reproducible CI and retry transient Docker Hub failures.
+        for attempt in 1 2 3; do
+          if docker pull "$COMPOSER_IMAGE"; then
+            break
+          fi
+          if [ "$attempt" -eq 3 ]; then
+            echo "::error::Failed to pull pinned Composer image after 3 attempts"
+            exit 1
+          fi
+          echo "::warning::Composer image pull failed (attempt $attempt/3); retrying in 5s"
+          sleep 5
+        done
+
         docker run --rm \
           -v ${{ github.workspace }}:/app \
           -w /app/src \
-          composer:latest \
+          "$COMPOSER_IMAGE" \
           composer install --no-dev --no-interaction --prefer-dist --ignore-platform-reqs
       env:
         COMPOSER_MEMORY_LIMIT: -1
