@@ -98,6 +98,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
    * for a new schedule, which is what makes every position start checked.
    */
   let scheduleRequirements: VolunteerRequirementRow[] = [];
+  /** The link mode of the open new-schedule dialog was set by its team's class (D23), not by hand. */
+  let modeFromTeamClass = false;
 
   function render(rows: VolunteerSchedule[]): void {
     const body = byId("volunteerSchedulesTable")?.querySelector("tbody");
@@ -337,6 +339,38 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     }
   }
 
+  /**
+   * D23 (d): a NEW schedule for a team linked to a Sunday School class starts on that class's
+   * meetings. Picking another team undoes only a mode this default chose; a mode the user
+   * picked stays theirs, and an edit is never touched. Answers whether the mode changed.
+   */
+  function applyTeamClassDefault(): boolean {
+    const mode = byId<HTMLSelectElement>("schedule-form-link-mode");
+    const group = byId<HTMLSelectElement>("schedule-form-group");
+    if (editingScheduleId !== 0 || !mode || !group) {
+      return false;
+    }
+    const before = mode.value;
+
+    const teamId = Number(byId<HTMLSelectElement>("schedule-form-team")?.value ?? 0);
+    const team = options.teams().find((candidate) => candidate.id === teamId);
+    if (team?.classGroupId) {
+      if (!Array.from(group.options).some((option) => option.value === String(team.classGroupId))) {
+        group.append(new Option(team.classGroupName ?? "", String(team.classGroupId)));
+      }
+      mode.value = "class";
+      group.value = String(team.classGroupId);
+      modeFromTeamClass = true;
+    } else if (modeFromTeamClass) {
+      mode.value = "event_type";
+      group.value = "";
+      modeFromTeamClass = false;
+    }
+    syncMode();
+
+    return mode.value !== before;
+  }
+
   /** Show only the fields the chosen link mode actually uses (§2.8's invariants). */
   function syncMode(): void {
     const mode = byId<HTMLSelectElement>("schedule-form-link-mode")?.value ?? "event_type";
@@ -385,6 +419,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
   function openModal(schedule?: VolunteerSchedule): void {
     editingScheduleId = schedule?.id ?? 0;
+    modeFromTeamClass = false;
     show(byId("schedule-form-error"), false);
     scheduleRequirements = [];
 
@@ -437,6 +472,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       }
 
       syncMode();
+      applyTeamClassDefault();
       void fillEventSeries(schedule?.titleFilter ?? "");
       renderNeeds();
       modal("scheduleModal")?.show();
@@ -788,6 +824,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     byId("schedule-add-btn")?.addEventListener("click", () => openModal());
     byId("schedule-form-save")?.addEventListener("click", save);
     byId("schedule-form-link-mode")?.addEventListener("change", () => {
+      modeFromTeamClass = false;
       syncMode();
       void fillEventSeries("");
     });
@@ -797,7 +834,12 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     // Positions are team-scoped, so the list of things that can be needed changes with the
     // team. Re-rendering discards whatever was typed for the old team's positions, which is
     // correct: those rows are no longer part of this schedule's plan.
-    byId("schedule-form-team")?.addEventListener("change", renderNeeds);
+    byId("schedule-form-team")?.addEventListener("change", () => {
+      renderNeeds();
+      if (applyTeamClassDefault()) {
+        void fillEventSeries("");
+      }
+    });
 
     // Delegated: the rows are re-rendered on every load, so per-row listeners
     // would go stale.
