@@ -583,7 +583,7 @@ jobs:
       if: always()
       run: npm run docker:ci:new-system:subdir:down
 
-  # ── Locale smoke tests — root path (PHP 8.5) ─────────────────────────────
+  # ── Full locale sweep — root path (PHP 8.5) ─────────────────────────────
   test-locale-root:
     needs: build
     timeout-minutes: 120
@@ -685,7 +685,7 @@ jobs:
       if: always()
       run: npm run docker:ci:root:down
 
-  # ── Locale smoke tests — subdirectory path (PHP 8.5) ─────────────────────
+  # ── Full locale sweep — subdirectory path (PHP 8.5) ─────────────────────
   test-locale-subdir:
     needs: build
     timeout-minutes: 120
@@ -964,8 +964,8 @@ jobs:
         echo "| PHP 8.5 subdir (api / admin-ui / ui ×3) | ${{ needs.test-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| PHP 8.5 new-system setup (root) | ${{ needs.test-new-system.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| PHP 8.5 new-system setup (subdir) | ${{ needs.test-new-system-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 locale smoke (root) | ${{ needs.test-locale-root.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 locale smoke (subdir) | ${{ needs.test-locale-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| PHP 8.5 full locale sweep (root) | ${{ needs.test-locale-root.result }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| PHP 8.5 full locale sweep (subdir) | ${{ needs.test-locale-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| Upgrade tests (8.4+8.5 × 4 groups) | ${{ needs.test-upgrade.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         # Determine overall status — check for non-success so skipped/cancelled
