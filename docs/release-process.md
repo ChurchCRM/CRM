@@ -10,7 +10,7 @@ Principle: follow the automation. Do not run by hand what a workflow already run
 
 ## Status
 
-_Last updated: 2026-09-27 20:15 UTC · 7.7.1 released · `master` is 7.8.0_
+_Last updated: 2026-09-27 20:20 UTC · 7.7.1 released · `master` is 7.8.0_
 
 ### Next release (7.8.0) checklist
 
@@ -56,7 +56,7 @@ The order below is the process as it now runs, including the guards added after 
 | `release-bookkeeping.yml` · sync | ✅ ran, but recorded the placeholder tag | #10086, #10088 |
 | `release-bookkeeping.yml` · milestones | ❌ empty tag, HTTP 422 | Fixed in #10086; issues moved by hand |
 | `release-bookkeeping.yml` · docs milestones | ❌ no `DOCS_RELEASE_TOKEN` | #10097 |
-| `build-test-nightly.yml` on release | ⏳ run 36345266355 still in progress at last check (19 of 23 jobs green) | Check the Actions tab |
+| `build-test-nightly.yml` on release | ✅ [run 36345266355](https://github.com/ChurchCRM/CRM/actions/runs/36345266355) passed all 23 jobs (26 min), including the upgrade matrix | — |
 | Marketing capture | not triggered: `workflow_dispatch` only | #10098 |
 
 ### Still manual (one-time, on GitHub)
