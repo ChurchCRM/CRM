@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
@@ -71,15 +72,23 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     $group->post('/ministries/{ministryId:[0-9]+}/schedules', 'createVolunteerSchedule')
         ->add(new InputSanitizationMiddleware([
             'name' => 'text',
-            'linkMode' => 'enum:' . VolunteerSchedule::LINK_MODE_EVENT_TYPE . ',' . VolunteerSchedule::LINK_MODE_STANDALONE,
+            'linkMode' => 'enum:' . implode(',', VolunteerSchedule::editableLinkModes()),
             'titleFilter' => 'text',
             // Optional so an absent field still reaches the service's own §2.8
-            // invariant check with its specific message, rather than being rejected
-            // here with a generic "is required".
-            'recurType' => 'enum?:' . implode(',', VolunteerSchedule::allRecurTypes()),
-            'recurDow' => 'enum?:' . implode(',', VolunteerSchedule::allRecurDows()),
+            // invariant check with its specific message.
             'windowStart' => 'date?',
             'windowEnd' => 'date?',
+        ]))
+        ->add(new VolunteerScheduleCreateMiddleware());
+
+    // Staff this event (D22): a hidden single-event schedule, its staffing needs and
+    // its one occurrence. Same gate as creating a schedule: a coordinator of the
+    // ministry, or a leader of the team the payload names.
+    $group->post('/ministries/{ministryId:[0-9]+}/staffed-events', 'createVolunteerStaffedEvent')
+        ->add(new InputSanitizationMiddleware([
+            'eventId' => 'int',
+            'teamId' => 'int',
+            'name' => 'text',
         ]))
         ->add(new VolunteerScheduleCreateMiddleware());
 
@@ -88,18 +97,6 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     // The same list, keyed on the team and gated per team, so a team leader can
     // see their own schedules without being authorized for the ministry above
     // them. The Member Portal's My Teams page is the caller.
-    // A one-off occurrence: its own hidden schedule plus the one date (2026-09-18).
-    // Same gate as creating a schedule: a coordinator of the ministry, or a leader
-    // of the team the payload names.
-    $group->post('/ministries/{ministryId:[0-9]+}/occurrences', 'createVolunteerOneOffOccurrence')
-        ->add(new InputSanitizationMiddleware([
-            'name' => 'text',
-            'date' => 'date',
-            'startTime' => 'text',
-            'endTime' => 'text',
-        ]))
-        ->add(new VolunteerScheduleCreateMiddleware());
-
     $group->get('/teams/{teamId:[0-9]+}/schedules', 'listVolunteerTeamSchedules')
         ->add(new VolunteerTeamMiddleware());
 
@@ -109,10 +106,8 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
         $schedule->post('', 'updateVolunteerSchedule')
             ->add(new InputSanitizationMiddleware([
                 'name' => 'text',
-                'linkMode' => 'enum?:' . VolunteerSchedule::LINK_MODE_EVENT_TYPE . ',' . VolunteerSchedule::LINK_MODE_STANDALONE,
+                'linkMode' => 'enum?:' . implode(',', VolunteerSchedule::allLinkModes()),
                 'titleFilter' => 'text',
-                'recurType' => 'enum?:' . implode(',', VolunteerSchedule::allRecurTypes()),
-                'recurDow' => 'enum?:' . implode(',', VolunteerSchedule::allRecurDows()),
                 'windowStart' => 'date?',
                 'windowEnd' => 'date?',
             ]));
@@ -134,9 +129,13 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     // ── Occurrences ─────────────────────────────────────────────────────────
     // Declared before the {occurrenceId} group so the literal collection path is not
     // swallowed by the parameterised one.
-    // The event series a linked schedule may follow: the distinct titles of the
-    // upcoming events of one type (the Add schedule dialog's Event picker).
+    // What the schedule and Staff an event dialogs pick from: the distinct upcoming
+    // titles of an event type or of a ministry's events, the classes a schedule may
+    // follow, and upcoming events to staff. Read-only references to core events and
+    // groups (D22).
     $group->get('/event-series', 'listVolunteerEventSeries');
+    $group->get('/classes', 'listVolunteerClasses');
+    $group->get('/upcoming-events', 'listVolunteerUpcomingEvents');
 
     $group->get('/occurrences', 'listVolunteerOccurrences');
 
@@ -179,6 +178,12 @@ function volunteerScheduleToArray(VolunteerSchedule $schedule): array
     $eventType = $schedule->getEventTypeId() === null
         ? null
         : EventTypeQuery::create()->findPk((int) $schedule->getEventTypeId());
+    $group = $schedule->getGroupId() === null
+        ? null
+        : GroupQuery::create()->findPk((int) $schedule->getGroupId());
+    $event = $schedule->getEventId() === null
+        ? null
+        : EventQuery::create()->findPk((int) $schedule->getEventId());
 
     return [
         'oneOff' => (bool) $schedule->getOneOff(),
@@ -190,11 +195,14 @@ function volunteerScheduleToArray(VolunteerSchedule $schedule): array
         'eventTypeId' => $schedule->getEventTypeId() === null ? null : (int) $schedule->getEventTypeId(),
         'eventTypeName' => $eventType !== null ? $eventType->getName() : null,
         'titleFilter' => $schedule->getTitleFilter(),
-        'recurType' => $schedule->getRecurType(),
-        'recurDow' => $schedule->getRecurDow(),
-        'recurDom' => $schedule->getRecurDom() === null ? null : (int) $schedule->getRecurDom(),
-        'startTime' => $schedule->getStartTime('H:i:s'),
-        'endTime' => $schedule->getEndTime('H:i:s'),
+        'groupId' => $group === null ? null : (int) $group->getId(),
+        'groupName' => $group === null ? null : $group->getName(),
+        'groupSundaySchool' => $group !== null && (int) $group->getType() === VolunteerScheduleService::SUNDAY_SCHOOL_GROUP_TYPE,
+        'eventId' => $event === null ? null : (int) $event->getId(),
+        'eventTitle' => $event === null ? null : $event->getTitle(),
+        'eventStart' => $event === null ? null : $event->getStart('Y-m-d H:i:s'),
+        'startOffsetMinutes' => (int) $schedule->getStartOffsetMinutes(),
+        'endOffsetMinutes' => (int) $schedule->getEndOffsetMinutes(),
         'windowStart' => $schedule->getWindowStart('Y-m-d'),
         'windowEnd' => $schedule->getWindowEnd('Y-m-d'),
         'generateAheadDays' => (int) $schedule->getGenerateAheadDays(),
@@ -206,12 +214,9 @@ function volunteerScheduleToArray(VolunteerSchedule $schedule): array
 }
 
 /**
- * One occurrence for the wire.
- *
- * `startDateTime` / `endDateTime` are the raw columns — **null for a linked occurrence**, so
- * a client can see for itself that V2 keeps no copy — while `start` / `end` are the effective
- * times resolved by VolunteerScheduleService::resolveOccurrenceWindow(), which reads the
- * event row when the occurrence is linked. That pair is the whole of D4 made visible.
+ * One occurrence for the wire. `start` / `end` are the volunteers' times, resolved by
+ * VolunteerScheduleService::resolveOccurrenceWindow() from the anchored event plus the
+ * schedule's offsets (D20, D21); both are null once the event was deleted.
  */
 function volunteerOccurrenceToArray(
     VolunteerOccurrence $occurrence,
@@ -246,8 +251,6 @@ function volunteerOccurrenceToArray(
         'teamId' => $schedule !== null ? (int) $schedule->getTeamId() : null,
         'eventId' => $occurrence->getEventId() === null ? null : (int) $occurrence->getEventId(),
         'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
-        'startDateTime' => $occurrence->getStartDateTime('Y-m-d H:i:s'),
-        'endDateTime' => $occurrence->getEndDateTime('Y-m-d H:i:s'),
         'start' => $window['start'] === null ? null : $window['start']->format('Y-m-d H:i:s'),
         'end' => $window['end'] === null ? null : $window['end']->format('Y-m-d H:i:s'),
         'status' => $occurrence->getStatus(),
@@ -407,7 +410,7 @@ function listVolunteerSchedules(Request $request, Response $response): Response
     $ministry = $request->getAttribute('volunteerMinistry');
     $params = $request->getQueryParams();
 
-    // A one-off occurrence's private schedule is never listed (2026-09-18).
+    // A Staff this event schedule is never listed (D22).
     $query = VolunteerScheduleQuery::create()->filterByMinistryId((int) $ministry->getId())->filterByOneOff(false);
 
     if (isset($params['teamId']) && $params['teamId'] !== '') {
@@ -465,22 +468,21 @@ function listVolunteerTeamSchedules(Request $request, Response $response): Respo
  * @OA\Post(
  *     path="/ministries/ministries/{ministryId}/schedules",
  *     operationId="createVolunteerSchedule",
- *     summary="Create a volunteer schedule, linked to an event type or standalone",
+ *     summary="Create a volunteer schedule: which calendar events a team staffs",
+ *     description="Every occurrence is anchored to a calendar event (D20); the link mode says how the events are found (D22). A single event is staffed through POST /ministries/ministries/{ministryId}/staffed-events instead. The removed recurrence fields (recurType, recurDow, recurDom, startTime, endTime) are refused with 400.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=true, @OA\JsonContent(
  *         required={"name","linkMode","teamId","windowStart"},
  *         @OA\Property(property="name", type="string"),
- *         @OA\Property(property="linkMode", type="string", enum={"event_type","standalone"}),
+ *         @OA\Property(property="linkMode", type="string", enum={"event_type","class","ministry"}, description="event_type: events of a type, optionally narrowed by title. class: events whose Linked Group is groupId. ministry: events this ministry owns, optionally narrowed by title."),
  *         @OA\Property(property="teamId", type="integer", description="Required: a schedule always belongs to one of the ministry's teams. A team leader may only name a team they lead (design section 4.6)."),
  *         @OA\Property(property="eventTypeId", type="integer", nullable=true, description="Required when linkMode is event_type"),
- *         @OA\Property(property="titleFilter", type="string", nullable=true, description="Optional LIKE narrowing on the event title"),
- *         @OA\Property(property="recurType", type="string", nullable=true, enum={"none","weekly","monthly","yearly"}, description="Standalone schedules only"),
- *         @OA\Property(property="recurDow", type="string", nullable=true, description="Standalone weekly schedules"),
- *         @OA\Property(property="recurDom", type="integer", nullable=true, description="Standalone monthly schedules"),
- *         @OA\Property(property="startTime", type="string", nullable=true, example="19:00:00"),
- *         @OA\Property(property="endTime", type="string", nullable=true, example="20:30:00"),
+ *         @OA\Property(property="titleFilter", type="string", nullable=true, description="Optional LIKE narrowing on the event title (event_type and ministry modes)"),
+ *         @OA\Property(property="groupId", type="integer", nullable=true, description="Required when linkMode is class: an existing group"),
+ *         @OA\Property(property="startOffsetMinutes", type="integer", example=-45, description="Added to the event's start to give the volunteers' start; within +/-720. Default 0."),
+ *         @OA\Property(property="endOffsetMinutes", type="integer", example=15, description="Added to the event's end to give the volunteers' end; within +/-720. Default 0."),
  *         @OA\Property(property="windowStart", type="string", format="date"),
  *         @OA\Property(property="windowEnd", type="string", format="date", nullable=true),
  *         @OA\Property(property="generateAheadDays", type="integer", nullable=true, example=56),
@@ -495,7 +497,7 @@ function listVolunteerTeamSchedules(Request $request, Response $response): Respo
  *             )
  *         )
  *     )),
- *     @OA\Response(response=400, description="A design section 2.8 invariant was violated"),
+ *     @OA\Response(response=400, description="A design section 2.8 invariant was violated: a missing or unknown event type or group, an offset outside +/-720, an eventId, or a removed recurrence field"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized: you neither administer this ministry nor lead the team named by teamId (design section 4.6), or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
@@ -513,6 +515,8 @@ function createVolunteerSchedule(Request $request, Response $response): Response
             $input,
             AuthenticationManager::getCurrentUser()
         );
+    } catch (VolunteerException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
     } catch (\RuntimeException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }
@@ -536,39 +540,46 @@ function createVolunteerSchedule(Request $request, Response $response): Response
  */
 /**
  * @OA\Post(
- *     path="/ministries/ministries/{ministryId}/occurrences",
- *     operationId="createVolunteerOneOffOccurrence",
- *     summary="Create a one-off occurrence",
- *     description="A date that follows no calendar event and no recurring schedule. It gets a private schedule of its own - standalone, windowed to the one date, hidden from the Schedules tab, deleted together with the occurrence - carrying the team, the times and the staffing needs. Same gate as creating a schedule.",
+ *     path="/ministries/ministries/{ministryId}/staffed-events",
+ *     operationId="createVolunteerStaffedEvent",
+ *     summary="Staff this event: one calendar event, one team, one occurrence",
+ *     description="Creates a hidden schedule in the event link mode (never listed on the Schedules tab, deleted together with its occurrence) carrying the team, the staffing needs and the optional offsets, and the one occurrence anchored to the event, in one transaction (D22). Any upcoming active event may be staffed: anchoring is a read-only reference. Same gate as creating a schedule.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=true, @OA\JsonContent(
- *         required={"name","teamId","date","startTime","endTime"},
- *         @OA\Property(property="name", type="string"),
+ *         required={"eventId","teamId"},
+ *         @OA\Property(property="eventId", type="integer"),
  *         @OA\Property(property="teamId", type="integer"),
- *         @OA\Property(property="date", type="string", format="date"),
- *         @OA\Property(property="startTime", type="string", example="19:00"),
- *         @OA\Property(property="endTime", type="string", example="20:30"),
- *         @OA\Property(property="requirements", type="array", @OA\Items(type="object"))
+ *         @OA\Property(property="name", type="string", nullable=true, description="Defaults to the event's title"),
+ *         @OA\Property(property="startOffsetMinutes", type="integer", nullable=true, description="Within +/-720; default 0"),
+ *         @OA\Property(property="endOffsetMinutes", type="integer", nullable=true, description="Within +/-720; default 0"),
+ *         @OA\Property(property="requirements", type="array", @OA\Items(type="object",
+ *             @OA\Property(property="positionId", type="integer"),
+ *             @OA\Property(property="minCount", type="integer"),
+ *             @OA\Property(property="maxCount", type="integer", nullable=true)
+ *         ))
  *     )),
- *     @OA\Response(response=400, description="Missing field, past date, or a staffing row naming an unknown position"),
+ *     @OA\Response(response=400, description="Unknown, inactive or past event, a team of another ministry, an offset outside +/-720, or a staffing row naming an unknown position"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not a coordinator of the ministry nor a leader of the team, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
+ *     @OA\Response(response=409, description="This team is already staffing this event"),
  *     @OA\Response(response=201, description="Created",
  *         @OA\JsonContent(@OA\Property(property="occurrence", type="object"), @OA\Property(property="schedule", type="object"))
  *     )
  * )
  */
-function createVolunteerOneOffOccurrence(Request $request, Response $response): Response
+function createVolunteerStaffedEvent(Request $request, Response $response): Response
 {
     $ministry = $request->getAttribute('volunteerMinistry');
     $input = (array) $request->getParsedBody();
+    $service = new VolunteerScheduleService();
 
     try {
-        $service = new VolunteerScheduleService();
-        $occurrence = $service->createOneOffOccurrence($ministry, $input, AuthenticationManager::getCurrentUser());
+        $occurrence = $service->staffEvent($ministry, $input, AuthenticationManager::getCurrentUser());
+    } catch (VolunteerException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
     } catch (\RuntimeException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }
@@ -597,7 +608,7 @@ function getVolunteerSchedule(Request $request, Response $response): Response
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="scheduleId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=true, @OA\JsonContent(type="object",
- *         description="Any subset of the create payload; omitted fields keep their stored value. A `requirements` array replaces the whole staffing plan — positions not listed are removed, an empty array clears it, and an absent field leaves it untouched.")),
+ *         description="Any subset of the create payload; omitted fields keep their stored value, and the columns the link mode does not use are cleared. A `requirements` array replaces the whole staffing plan — positions not listed are removed, an empty array clears it, and an absent field leaves it untouched. A Staff this event schedule keeps its link mode and its event.")),
  *     @OA\Response(response=400, description="A design section 2.8 invariant was violated"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this schedule, or V2 is not enabled"),
@@ -616,6 +627,8 @@ function updateVolunteerSchedule(Request $request, Response $response): Response
             $input,
             AuthenticationManager::getCurrentUser()
         );
+    } catch (VolunteerException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
     } catch (\RuntimeException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }
@@ -698,7 +711,7 @@ function listVolunteerScheduleEligiblePeople(Request $request, Response $respons
  *     path="/ministries/schedules/{scheduleId}/generate",
  *     operationId="generateVolunteerOccurrences",
  *     summary="Materialise this schedule's occurrences up to a date",
- *     description="Idempotent. A linked schedule attaches one occurrence to each existing event of its type inside the window; a standalone schedule generates its own dates. No calendar event is ever created. `defaults` names a person per position to assign on every occurrence THIS run creates (never on ones an earlier run made); with accepted=true they are recorded as having accepted and are not asked to respond.",
+ *     description="Idempotent. Attaches one occurrence to each active event the schedule follows (by type, class, ministry or the one event) inside the window. No calendar event is ever created or changed. `defaults` names a person per position to assign on every occurrence THIS run creates (never on ones an earlier run made); with accepted=true they are recorded as having accepted and are not asked to respond.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="scheduleId", in="path", required=true, @OA\Schema(type="integer")),
@@ -1164,7 +1177,7 @@ function deleteVolunteerRequirement(Request $request, Response $response, array 
  *     @OA\Parameter(name="to", in="query", required=true, @OA\Schema(type="string", format="date")),
  *     @OA\Parameter(name="ministryId", in="query", required=false, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer"), description="Only the occurrences whose schedule belongs to this team."),
- *     @OA\Parameter(name="text", in="query", required=false, @OA\Schema(type="string", maxLength=100), description="Case-insensitive substring of the occurrence's title - its schedule's name, or for an event-linked occurrence the linked event's title. The narrowing happens in the query; % and _ are escaped so they are matched literally rather than as LIKE wildcards."),
+ *     @OA\Parameter(name="text", in="query", required=false, @OA\Schema(type="string", maxLength=100), description="Case-insensitive substring of the occurrence's schedule name or of its anchored event's title. The narrowing happens in the query; % and _ are escaped so they are matched literally rather than as LIKE wildcards."),
  *     @OA\Parameter(name="hasGaps", in="query", required=false, @OA\Schema(type="boolean"), description="Return only occurrences that are short of at least one required volunteer (#9709). The filter is applied AFTER the counts are derived, because a gap is derived and there is nothing in the occurrence table to filter on."),
  *     @OA\Parameter(name="scheduleId", in="query", required=false, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="status", in="query", required=false, @OA\Schema(type="string", enum={"scheduled","cancelled"})),
@@ -1261,10 +1274,9 @@ function listVolunteerOccurrences(Request $request, Response $response): Respons
 
     // `?text=` — the Event box of the ministry page's Occurrences tab.
     //
-    // An occurrence's title is its schedule's name, EXCEPT when it is linked to a
-    // calendar event, where the event owns the words a coordinator would search for
-    // (D4: a linked occurrence keeps no times and no title of its own). So the needle
-    // is matched against both, and an occurrence is kept when either half matches.
+    // A coordinator may search by the schedule's name or by the anchored event's
+    // title (D20: the occurrence keeps no title of its own). So the needle is
+    // matched against both, and an occurrence is kept when either half matches.
     //
     // Both halves resolve to an id list first and the OR lands on the OCCURRENCE
     // query, which is the one that could return hundreds of rows — the narrowing is
@@ -1354,7 +1366,7 @@ function listVolunteerOccurrences(Request $request, Response $response): Respons
  *     path="/ministries/occurrences/{occurrenceId}",
  *     operationId="getVolunteerOccurrence",
  *     summary="Read one occurrence with its effective times and effective requirements",
- *     description="The reported start and end come from the linked calendar event when the occurrence is linked; the requirements are the occurrence's own overrides merged over the schedule's templates.",
+ *     description="The reported start and end are the anchored calendar event's, moved by the schedule's offsets (null once the event was deleted); the requirements are the occurrence's own overrides merged over the schedule's templates.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="occurrenceId", in="path", required=true, @OA\Schema(type="integer")),
@@ -1417,7 +1429,7 @@ function getVolunteerOccurrence(Request $request, Response $response): Response
  *     path="/ministries/occurrences/{occurrenceId}",
  *     operationId="deleteVolunteerOccurrence",
  *     summary="Delete one occurrence and everything under it",
- *     description="The Occurrences tab's Delete for dates that should not have been generated. Requirement overrides, assignments and their responses, swaps and queued notifications go with it. Scoped like every occurrence route: a coordinator of the ministry or a leader of the schedule's team. A deleted linked occurrence can be regenerated from its event; cancel it instead to keep the row.",
+ *     description="The Occurrences tab's Delete for dates that should not have been generated. Requirement overrides, assignments and their responses, swaps and queued notifications go with it. Scoped like every occurrence route: a coordinator of the ministry or a leader of the schedule's team. A deleted occurrence can be regenerated from its event; cancel it instead to keep the row. Deleting the only occurrence of a Staff this event schedule deletes that hidden schedule too.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="occurrenceId", in="path", required=true, @OA\Schema(type="integer")),
@@ -1445,13 +1457,14 @@ function deleteVolunteerOccurrence(Request $request, Response $response): Respon
  * @OA\Get(
  *     path="/ministries/event-series",
  *     operationId="listVolunteerEventSeries",
- *     summary="The event series a linked schedule may follow",
- *     description="The distinct titles of the active events of one event type from a date (default today) onward, with the next date and how many there are. The Add schedule dialog offers these so a schedule follows ONE event series rather than every event of a type - the difference between one occurrence a Sunday and one per event that happens to share the type.",
+ *     summary="The event titles a schedule may be narrowed to",
+ *     description="The distinct titles of the active events of one event type (event_type mode) or owned by one ministry (ministry mode) from a date (default today) onward, with the next date and how many there are. The schedule dialog offers these so a schedule follows ONE series rather than every event of a type.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="eventTypeId", in="query", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="eventTypeId", in="query", required=false, @OA\Schema(type="integer"), description="One of eventTypeId and ministryId is required"),
+ *     @OA\Parameter(name="ministryId", in="query", required=false, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="from", in="query", required=false, @OA\Schema(type="string", format="date")),
- *     @OA\Response(response=400, description="eventTypeId missing"),
+ *     @OA\Response(response=400, description="Neither eventTypeId nor ministryId given"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=200, description="OK",
  *         @OA\JsonContent(@OA\Property(property="series", type="array", @OA\Items(type="object",
@@ -1466,31 +1479,109 @@ function listVolunteerEventSeries(Request $request, Response $response): Respons
 {
     $params = $request->getQueryParams();
     $eventTypeId = (int) ($params['eventTypeId'] ?? 0);
-    if ($eventTypeId <= 0) {
-        return SlimUtils::renderErrorJSON($response, gettext('eventTypeId is required'), [], 400, null, $request);
+    $ministryId = (int) ($params['ministryId'] ?? 0);
+    if ($eventTypeId <= 0 && $ministryId <= 0) {
+        return SlimUtils::renderErrorJSON($response, gettext('An event type or a ministry is required'), [], 400, null, $request);
     }
-    $from = isset($params['from']) && preg_match('/^\d{4}-\d{2}-\d{2}$/', (string) $params['from']) === 1
-        ? (string) $params['from']
-        : DateTimeUtils::getStartOfToday()->format('Y-m-d');
+    $from = volunteerParseDateParam($params['from'] ?? null) ?? DateTimeUtils::getStartOfToday()->format('Y-m-d');
 
-    $series = [];
-    foreach (
-        EventQuery::create()
-            ->filterByType($eventTypeId)
-            ->filterByInActive(0)
-            ->filterByStart($from . ' 00:00:00', Criteria::GREATER_EQUAL)
-            ->orderByStart()
-            ->select(['Title', 'Start'])
-            ->find() as $row
-    ) {
-        $title = (string) $row['Title'];
-        if (!isset($series[$title])) {
-            $series[$title] = ['title' => $title, 'nextStart' => (string) $row['Start'], 'count' => 0];
-        }
-        $series[$title]['count']++;
+    return SlimUtils::renderJSON($response, [
+        'series' => (new VolunteerScheduleService())->listEventTitles(
+            $eventTypeId > 0 ? $eventTypeId : null,
+            $ministryId > 0 ? $ministryId : null,
+            $from
+        ),
+    ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/ministries/classes",
+ *     operationId="listVolunteerClasses",
+ *     summary="The groups a class schedule may follow",
+ *     description="Every active Sunday School class (group type 4), and any other group that has an upcoming active event linked to it, alphabetically, with how many upcoming events are linked and the next one's start.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="from", in="query", required=false, @OA\Schema(type="string", format="date"), description="Counts events from this date; default today"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="classes", type="array", @OA\Items(type="object",
+ *             @OA\Property(property="groupId", type="integer"),
+ *             @OA\Property(property="name", type="string"),
+ *             @OA\Property(property="sundaySchool", type="boolean"),
+ *             @OA\Property(property="upcomingCount", type="integer"),
+ *             @OA\Property(property="nextStart", type="string", nullable=true)
+ *         )))
+ *     )
+ * )
+ */
+function listVolunteerClasses(Request $request, Response $response): Response
+{
+    $from = volunteerParseDateParam($request->getQueryParams()['from'] ?? null) ?? DateTimeUtils::getStartOfToday()->format('Y-m-d');
+
+    return SlimUtils::renderJSON($response, [
+        'classes' => (new VolunteerScheduleService())->listClassGroups($from),
+    ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/ministries/upcoming-events",
+ *     operationId="listVolunteerUpcomingEvents",
+ *     summary="Search upcoming calendar events to staff",
+ *     description="The Staff an event dialog's picker: active events from `from` (default today) up to `to`, whose title contains `q` (case-insensitive, % and _ literal), soonest first, at most 50. With `teamId`, each row says whether that team already has an occurrence anchored to the event.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="q", in="query", required=false, @OA\Schema(type="string", maxLength=100)),
+ *     @OA\Parameter(name="from", in="query", required=false, @OA\Schema(type="string", format="date")),
+ *     @OA\Parameter(name="to", in="query", required=false, @OA\Schema(type="string", format="date")),
+ *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer")),
+ *     @OA\Response(response=400, description="A malformed date, or to before from"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="teamId names a team the caller does not manage, or V2 is not enabled"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="events", type="array", @OA\Items(type="object",
+ *             @OA\Property(property="id", type="integer"),
+ *             @OA\Property(property="title", type="string"),
+ *             @OA\Property(property="start", type="string"),
+ *             @OA\Property(property="end", type="string"),
+ *             @OA\Property(property="eventTypeId", type="integer"),
+ *             @OA\Property(property="eventTypeName", type="string", nullable=true),
+ *             @OA\Property(property="staffedByTeam", type="boolean")
+ *         )))
+ *     )
+ * )
+ */
+function listVolunteerUpcomingEvents(Request $request, Response $response): Response
+{
+    $params = $request->getQueryParams();
+    $today = DateTimeUtils::getStartOfToday()->format('Y-m-d');
+
+    $from = volunteerParseDateParam($params['from'] ?? null);
+    $to = volunteerParseDateParam($params['to'] ?? null);
+    if ((($params['from'] ?? '') !== '' && $from === null) || (($params['to'] ?? '') !== '' && $to === null)) {
+        return SlimUtils::renderErrorJSON($response, gettext('Dates must be in YYYY-MM-DD form'), [], 400, null, $request);
+    }
+    // Upcoming only: a past date is moved up to today rather than refused.
+    $from = $from === null || $from < $today ? $today : $from;
+    if ($to !== null && $to < $from) {
+        return SlimUtils::renderErrorJSON($response, gettext('The window ends before it starts'), [], 400, null, $request);
     }
 
-    return SlimUtils::renderJSON($response, ['series' => array_values($series)]);
+    $teamId = isset($params['teamId']) && $params['teamId'] !== '' ? (int) $params['teamId'] : null;
+    if ($teamId !== null
+        && !(new VolunteerAuthorizationService())->canManageTeam(AuthenticationManager::getCurrentUser(), $teamId)) {
+        return SlimUtils::renderErrorJSON($response, gettext('Not authorized for this team'), [], 403, null, $request);
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'events' => (new VolunteerScheduleService())->searchUpcomingEvents(
+            volunteerOccurrenceTextFilter($params['q'] ?? null),
+            $from,
+            $to,
+            $teamId
+        ),
+    ]);
 }
 
 function setVolunteerOccurrenceStatus(Request $request, Response $response): Response

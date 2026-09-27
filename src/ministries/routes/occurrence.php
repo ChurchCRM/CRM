@@ -67,9 +67,10 @@ $app->group('', function (RouteCollectorProxy $group): void {
             ? VolunteerTeamQuery::create()->findPk((int) $schedule->getTeamId())
             : null;
 
-        // D4 made visible: for a linked occurrence this reads the event row, so the page
-        // shows the event's time and says where it came from.
-        $window = (new VolunteerScheduleService())->resolveOccurrenceWindow($occurrence);
+        // D20/D21 made visible: the time is the anchored event's, moved by the schedule's
+        // offsets, and the page says where it came from.
+        $schedules = new VolunteerScheduleService();
+        $window = $schedules->resolveOccurrenceWindow($occurrence);
 
         // #9713: name the event rather than just linking to it, and show where it happens —
         // "Times come from this event" on its own does not tell a coordinator WHICH event,
@@ -106,6 +107,7 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'iEventId' => $occurrence->getEventId() === null ? 0 : (int) $occurrence->getEventId(),
             'sEventTitle' => $linkedEvent === null ? '' : (string) $linkedEvent->getTitle(),
             'sEventLocation' => $eventLocation === null ? '' : (string) $eventLocation->getLocationName(),
+            'sOffsetNote' => $schedule === null ? '' : $schedules->offsetSummary($schedule),
         ]);
     });
 })->add(VolunteerCoordinatorRoleAuthMiddleware::class);

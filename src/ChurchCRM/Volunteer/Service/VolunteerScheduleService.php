@@ -2,8 +2,11 @@
 
 namespace ChurchCRM\Volunteer\Service;
 
+use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\VolunteerOccurrenceTableMap;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
@@ -18,10 +21,10 @@ use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Service\EventService;
-use ChurchCRM\Service\RecurrenceDateGenerator;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Volunteer\VolunteerException;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
 use Psr\Log\LoggerInterface;
@@ -30,94 +33,74 @@ use Psr\Log\LoggerInterface;
  * Volunteer Management v2 (#9708, epic #9701): schedules, occurrence generation and
  * staffing requirements.
  *
- * The one rule this class exists to implement is D4: **when a schedule is linked to a
- * ChurchCRM event type, the event rows are the source of truth.** Generation in that mode
- * only ever *selects* `events_event` rows and attaches an occurrence to each one; it never
- * creates, edits or deletes an event, and the occurrence stores no times of its own — they
- * are resolved lazily from the event by resolveOccurrenceWindow(). Only a *standalone*
- * schedule has dates of its own, and those come from the shared
- * {@see RecurrenceDateGenerator} that #9735 extracted, never from a private copy of the
- * same switch statement.
+ * **Every occurrence is anchored to a calendar event (D20).** V2 generates no dates of its
+ * own: generation only ever *selects* `events_event` rows and attaches one occurrence to
+ * each, and it never creates, edits or deletes an event. A schedule's link mode says how
+ * its events are found (D22):
  *
- * There is no event series identifier in the schema (design F7): "repeat" bulk-inserts N
- * independent rows and discards the id list. The de-facto series key the core itself
- * trusts is **event type + a date window** (F8, `events.php` skipExisting and
- * quickCreateEvent's find-or-create), and §2.8 adds an optional title filter for the case
- * where one type carries several distinct services (UC4). That triple is the binding a
- * linked schedule resolves at generation time.
+ *   event_type  events of one type, optionally narrowed by title (church-wide services)
+ *   class       events whose Linked Group (`event_audience`) is the schedule's group
+ *   ministry    events the schedule's ministry owns (`event_ministry_id`), optionally by title
+ *   event       exactly one event — the hidden schedule behind Staff this event
  *
- * Idempotency is a *database* property, not a code path: `vocc_schedule_event_uidx`
- * dedupes linked rows and `vocc_schedule_start_uidx` dedupes standalone ones, and
- * generation uses findOneOrCreate() inside one transaction — the same idiom
- * Event::checkInPerson() uses. That is how `skipExisting` is re-expressed here (§2.9).
+ * Anchoring is a read-only reference: any event may be anchored, not only the ministry's.
+ *
+ * The occurrence stores no times. resolveOccurrenceWindow() reads them lazily from the
+ * event and adds the schedule's offsets (D21), so moving the event moves the shift.
+ *
+ * Idempotency is a *database* property: `vocc_schedule_event_uidx` dedupes, and generation
+ * uses findOneOrCreate() inside one transaction — the same idiom Event::checkInPerson()
+ * uses (§2.9).
  *
  * Time handling follows the storage convention: every DATETIME is naive wall-clock in
- * `sTimeZone` and every "now"/"today" comes from DateTimeUtils, never from `new \DateTime()`
- * or `date()` (F24, timezone-handling.md).
+ * `sTimeZone` and every "now"/"today" comes from DateTimeUtils (F24, timezone-handling.md).
  *
- * Deliberately NOT here: authorization. The route's entity middleware has already decided
- * whether the caller may touch the schedule or occurrence (§4.5); a service that re-asked
- * would either duplicate or contradict it.
+ * The route's entity middleware decides whether the caller may touch an existing schedule
+ * or occurrence (§4.5); creation re-checks the resolved team here because the team comes
+ * from the payload.
  */
 class VolunteerScheduleService
 {
     /**
-     * The most occurrences one generation run may materialise.
-     *
-     * Same number and same purpose as EventService::MAX_REPEAT_OCCURRENCES — "at most a
-     * daily series for a year" — so a coordinator who types a silly `through` gets the
-     * same answer from the volunteer module as from the calendar.
+     * The most occurrences one generation run may materialise — the same number the
+     * calendar's repeat-event cap uses, so a silly `through` gets the same answer here.
      */
     public const MAX_GENERATED_OCCURRENCES = EventService::MAX_REPEAT_OCCURRENCES;
 
     /** Hard cap on a coordinator occurrence listing (design M9). */
     public const MAX_OCCURRENCE_LIST = 500;
 
-    private RecurrenceDateGenerator $recurrenceDateGenerator;
+    /** Hard cap on the Staff this event search. */
+    public const MAX_EVENT_SEARCH = 50;
+
+    /** `group_grp.grp_Type` of a Sunday School class (list_lst 3, option 4). */
+    public const SUNDAY_SCHOOL_GROUP_TYPE = 4;
+
+    /** The removed standalone mode's fields. A payload naming one is refused, never ignored (D20). */
+    private const RETIRED_FIELDS = ['recurType', 'recurDow', 'recurDom', 'startTime', 'endTime'];
 
     private LoggerInterface $logger;
 
-    public function __construct(?RecurrenceDateGenerator $recurrenceDateGenerator = null)
+    public function __construct()
     {
-        $this->recurrenceDateGenerator = $recurrenceDateGenerator ?? new RecurrenceDateGenerator();
         $this->logger = LoggerUtils::getAppLogger();
     }
 
     // ── Schedule CRUD ──────────────────────────────────────────────────────
 
     /**
+     * Create a schedule in one of the editable link modes (`event_type`, `class`,
+     * `ministry`). The `event` mode is reachable only through {@see self::staffEvent()}.
+     *
      * @param array<string, mixed> $fields
      *
-     * @throws \RuntimeException when a §2.8 invariant is violated, or when the actor
-     *                            may neither administer the ministry nor lead the team
-     *                            the payload names (§4.6, #9868)
+     * @throws VolunteerException 403 when the actor may neither administer the ministry nor
+     *                            lead the team the payload names (§4.6, #9868)
+     * @throws \RuntimeException  when a §2.8 invariant is violated
      */
     public function createSchedule(VolunteerMinistry $ministry, array $fields, User $actor): VolunteerSchedule
     {
-        $schedule = new VolunteerSchedule();
-        $schedule->setMinistryId((int) $ministry->getId());
-
-        // One transaction around the row and its staffing needs: a `requirements` array
-        // that names an unknown position must not leave a half-made schedule behind for
-        // the coordinator to discover later (§2.10).
-        $con = Propel::getWriteConnection(VolunteerOccurrenceTableMap::DATABASE_NAME);
-        $con->beginTransaction();
-
-        try {
-            $this->applyScheduleFields($schedule, $fields, true);
-            $this->assertMayCreateForTeam($schedule, $actor);
-            $schedule->save();
-
-            if (array_key_exists('requirements', $fields)) {
-                $this->replaceRequirements($schedule, null, $fields['requirements']);
-            }
-
-            $con->commit();
-        } catch (\Throwable $e) {
-            $con->rollBack();
-
-            throw $e;
-        }
+        $schedule = $this->insertSchedule($ministry, $fields, $actor, false);
 
         $this->logger->info('Volunteer schedule created', [
             'scheduleId' => $schedule->getId(),
@@ -127,6 +110,39 @@ class VolunteerScheduleService
         ]);
 
         return $schedule;
+    }
+
+    /**
+     * Create a schedule and materialise its occurrences in one transaction — the entry
+     * point for another service that creates events and wants them staffed at once
+     * (D24's ministry Calendar tab). A caller already inside a transaction nests into it.
+     *
+     * @param array<string, mixed> $fields
+     *
+     * @return array{schedule: VolunteerSchedule, created: int, existing: int, through: string, createdIds: int[]}
+     *
+     * @throws \RuntimeException
+     */
+    public function createScheduleAndGenerate(
+        VolunteerMinistry $ministry,
+        array $fields,
+        User $actor,
+        ?\DateTimeInterface $through = null
+    ): array {
+        $con = Propel::getWriteConnection(VolunteerOccurrenceTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+
+        try {
+            $schedule = $this->createSchedule($ministry, $fields, $actor);
+            $result = $this->generateOccurrences($schedule, $through);
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            throw $e;
+        }
+
+        return ['schedule' => $schedule] + $result;
     }
 
     /**
@@ -140,7 +156,7 @@ class VolunteerScheduleService
         $con->beginTransaction();
 
         try {
-            $this->applyScheduleFields($schedule, $fields, false);
+            $this->applyScheduleFields($schedule, $fields, false, false);
             $schedule->save();
 
             if (array_key_exists('requirements', $fields)) {
@@ -216,30 +232,48 @@ class VolunteerScheduleService
     }
 
     /**
-     * Validate and apply the §2.8 field set.
-     *
-     * MySQL cannot express "this column is NOT NULL only when that one has this value", so
-     * every invariant in §2.8 is enforced here and nowhere else. On an update the current
-     * row is the baseline, so a caller may flip `linkMode` and have the now-meaningless
-     * columns cleared for them rather than being told to null each one by hand.
+     * The row, its staffing needs and the authorization re-check, in one transaction: a
+     * `requirements` array naming an unknown position must not leave a half-made schedule
+     * behind (§2.10).
      *
      * @param array<string, mixed> $fields
      *
      * @throws \RuntimeException
      */
+    private function insertSchedule(VolunteerMinistry $ministry, array $fields, User $actor, bool $allowEventMode): VolunteerSchedule
+    {
+        $schedule = new VolunteerSchedule();
+        $schedule->setMinistryId((int) $ministry->getId());
+        $schedule->setOneOff($allowEventMode);
+
+        $con = Propel::getWriteConnection(VolunteerOccurrenceTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+
+        try {
+            $this->applyScheduleFields($schedule, $fields, true, $allowEventMode);
+            $this->assertMayCreateForTeam($schedule, $actor);
+            $schedule->save();
+
+            if (array_key_exists('requirements', $fields)) {
+                $this->replaceRequirements($schedule, null, $fields['requirements']);
+            }
+
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            throw $e;
+        }
+
+        return $schedule;
+    }
+
     /**
-     * Layer three of §4.5 for schedule creation (#9868).
-     *
-     * `VolunteerScheduleCreateMiddleware` has already decided the same question
-     * from the raw payload, and this asks it again from the RESOLVED row — after
-     * `applyScheduleFields()` has turned `teamId` into a team that provably belongs
-     * to this ministry. The design is explicit that a middleware reading a body is
-     * never the last word on a write; a caller reaching this service by any other
-     * path (a future route, a console command) gets the same answer.
-     *
+     * Layer three of §4.5 for schedule creation (#9868): asked again from the RESOLVED
+     * row, after `applyScheduleFields()` has proved the team belongs to this ministry.
      * The rule is §4.6's: administer the ministry, or lead the team.
      *
-     * @throws \RuntimeException when the actor may do neither
+     * @throws VolunteerException 403
      */
     private function assertMayCreateForTeam(VolunteerSchedule $schedule, User $actor): void
     {
@@ -253,13 +287,29 @@ class VolunteerScheduleService
             return;
         }
 
-        throw new \RuntimeException(gettext('You may only create a schedule for a team you lead'));
+        throw VolunteerException::forbidden(gettext('You may only create a schedule for a team you lead'));
     }
 
-    private function applyScheduleFields(VolunteerSchedule $schedule, array $fields, bool $isCreate): void
+    /**
+     * Validate and apply the §2.8 field set.
+     *
+     * MySQL cannot express "this column is NOT NULL only when that one has this value", so
+     * every invariant in §2.8 is enforced here. The columns a link mode does not use are
+     * cleared, so switching modes never leaves a stale binding behind.
+     *
+     * @param array<string, mixed> $fields
+     *
+     * @throws \RuntimeException
+     */
+    private function applyScheduleFields(VolunteerSchedule $schedule, array $fields, bool $isCreate, bool $allowEventMode): void
     {
         $has = static fn (string $key): bool => array_key_exists($key, $fields);
         $value = static fn (string $key) => $fields[$key] ?? null;
+
+        $this->refuseRetiredFields($fields);
+
+        $linkMode = $this->resolveLinkMode($schedule, $fields, $isCreate, $allowEventMode);
+        $schedule->setLinkMode($linkMode);
 
         if ($has('name') || $isCreate) {
             $name = trim((string) $value('name'));
@@ -269,16 +319,7 @@ class VolunteerScheduleService
             $schedule->setName($name);
         }
 
-        $linkMode = $has('linkMode') ? (string) $value('linkMode') : (string) $schedule->getLinkMode();
-        if (!in_array($linkMode, VolunteerSchedule::allLinkModes(), true)) {
-            throw new \RuntimeException(gettext('Unknown schedule link mode'));
-        }
-        $schedule->setLinkMode($linkMode);
-
-        // D18: a schedule ALWAYS belongs to a team. `vsch_vtem_ID` is NOT NULL, and a
-        // ministry is never created without a team, so there is somewhere for every
-        // schedule to go — the old "ministry-wide schedule" is gone along with the
-        // ambiguity it caused when two teams shared a position name.
+        // D18: a schedule ALWAYS belongs to a team of its own ministry.
         if ($has('teamId') || $isCreate) {
             $raw = $value('teamId');
             if ($raw === null || $raw === '') {
@@ -294,8 +335,7 @@ class VolunteerScheduleService
         }
 
         if ($has('windowStart') || $isCreate) {
-            $windowStart = $this->requireDate((string) $value('windowStart'), gettext('window start'));
-            $schedule->setWindowStart($windowStart);
+            $schedule->setWindowStart($this->requireDate((string) $value('windowStart'), gettext('window start')));
         }
 
         if ($has('windowEnd') || $isCreate) {
@@ -322,19 +362,20 @@ class VolunteerScheduleService
             $schedule->setActive((bool) filter_var($value('active'), FILTER_VALIDATE_BOOLEAN));
         }
 
+        if ($has('startOffsetMinutes')) {
+            $schedule->setStartOffsetMinutes($this->requireOffset($value('startOffsetMinutes'), gettext('start offset')));
+        }
+        if ($has('endOffsetMinutes')) {
+            $schedule->setEndOffsetMinutes($this->requireOffset($value('endOffsetMinutes'), gettext('end offset')));
+        }
+
         if ($has('titleFilter') || $isCreate) {
             $raw = $value('titleFilter');
             $filter = $raw === null ? '' : trim((string) $raw);
             $schedule->setTitleFilter($filter === '' ? null : $filter);
         }
 
-        if ($linkMode === VolunteerSchedule::LINK_MODE_EVENT_TYPE) {
-            $this->applyLinkedFields($schedule, $fields, $isCreate);
-
-            return;
-        }
-
-        $this->applyStandaloneFields($schedule, $fields, $isCreate);
+        $this->applyBinding($schedule, $fields, $isCreate);
     }
 
     /**
@@ -342,125 +383,251 @@ class VolunteerScheduleService
      *
      * @throws \RuntimeException
      */
-    private function applyLinkedFields(VolunteerSchedule $schedule, array $fields, bool $isCreate): void
+    private function refuseRetiredFields(array $fields): void
     {
-        // "A linked schedule never carries its own recurrence" (D4). Rejecting the fields
-        // rather than quietly dropping them is the difference between a coordinator who
-        // learns the rule and one who thinks they configured something that does nothing.
-        foreach (['recurDow', 'recurDom', 'startTime', 'endTime'] as $key) {
-            if (array_key_exists($key, $fields) && $fields[$key] !== null && $fields[$key] !== '') {
-                throw new \RuntimeException(gettext('A schedule linked to an event type carries no recurrence or times of its own; the event is the source of truth'));
+        $sent = array_values(array_intersect(self::RETIRED_FIELDS, array_keys($fields)));
+        if ($sent !== []) {
+            throw new \RuntimeException(sprintf(
+                gettext('Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s'),
+                implode(', ', $sent)
+            ));
+        }
+    }
+
+    /**
+     * The mode the row ends up in. A Staff this event schedule keeps its one event for
+     * life; the other three may be switched between freely.
+     *
+     * @param array<string, mixed> $fields
+     *
+     * @throws \RuntimeException
+     */
+    private function resolveLinkMode(VolunteerSchedule $schedule, array $fields, bool $isCreate, bool $allowEventMode): string
+    {
+        $current = $isCreate ? null : (string) $schedule->getLinkMode();
+
+        if (!array_key_exists('linkMode', $fields)) {
+            if ($current === null) {
+                throw new \RuntimeException(gettext('Choose where the schedule\'s dates come from'));
             }
-        }
-        if (
-            array_key_exists('recurType', $fields)
-            && $fields['recurType'] !== null
-            && $fields['recurType'] !== ''
-            && $fields['recurType'] !== VolunteerSchedule::RECUR_NONE
-        ) {
-            throw new \RuntimeException(gettext('A schedule linked to an event type carries no recurrence or times of its own; the event is the source of truth'));
+
+            return $current;
         }
 
-        $eventTypeId = array_key_exists('eventTypeId', $fields)
-            ? ($fields['eventTypeId'] === null || $fields['eventTypeId'] === '' ? null : (int) $fields['eventTypeId'])
-            : ($isCreate ? null : $schedule->getEventTypeId());
-
-        if ($eventTypeId === null) {
-            throw new \RuntimeException(gettext('A schedule linked to an event type must name the event type'));
+        $requested = (string) $fields['linkMode'];
+        if (!in_array($requested, VolunteerSchedule::allLinkModes(), true)) {
+            throw new \RuntimeException(gettext('Unknown schedule link mode'));
         }
-        if (EventTypeQuery::create()->findPk($eventTypeId) === null) {
-            throw new \RuntimeException(gettext('The event type does not exist'));
+
+        if ($current === VolunteerSchedule::LINK_MODE_EVENT && $requested !== VolunteerSchedule::LINK_MODE_EVENT) {
+            throw new \RuntimeException(gettext('A schedule that staffs one event cannot follow other events; delete it and add a schedule instead'));
+        }
+        if ($requested === VolunteerSchedule::LINK_MODE_EVENT && $current !== VolunteerSchedule::LINK_MODE_EVENT && !$allowEventMode) {
+            throw new \RuntimeException(gettext('Use Staff this event to staff a single event'));
+        }
+
+        return $requested;
+    }
+
+    /**
+     * The columns that say which events the schedule follows, per link mode (D22).
+     *
+     * @param array<string, mixed> $fields
+     *
+     * @throws \RuntimeException
+     */
+    private function applyBinding(VolunteerSchedule $schedule, array $fields, bool $isCreate): void
+    {
+        $mode = (string) $schedule->getLinkMode();
+        $idField = static function (string $key, ?int $stored) use ($fields, $isCreate): ?int {
+            if (!array_key_exists($key, $fields)) {
+                return $isCreate ? null : $stored;
+            }
+            $raw = $fields[$key];
+
+            return $raw === null || $raw === '' ? null : (int) $raw;
+        };
+
+        if ($mode !== VolunteerSchedule::LINK_MODE_EVENT && array_key_exists('eventId', $fields)) {
+            throw new \RuntimeException(gettext('Use Staff this event to staff a single event'));
+        }
+
+        $eventTypeId = null;
+        $groupId = null;
+        $eventId = null;
+
+        switch ($mode) {
+            case VolunteerSchedule::LINK_MODE_EVENT_TYPE:
+                $eventTypeId = $idField('eventTypeId', $schedule->getEventTypeId() === null ? null : (int) $schedule->getEventTypeId());
+                if ($eventTypeId === null) {
+                    throw new \RuntimeException(gettext('A schedule that follows an event type must name the event type'));
+                }
+                if (EventTypeQuery::create()->findPk($eventTypeId) === null) {
+                    throw new \RuntimeException(gettext('The event type does not exist'));
+                }
+                break;
+
+            case VolunteerSchedule::LINK_MODE_CLASS:
+                $groupId = $idField('groupId', $schedule->getGroupId() === null ? null : (int) $schedule->getGroupId());
+                if ($groupId === null) {
+                    throw new \RuntimeException(gettext('A schedule that follows a class must name the class'));
+                }
+                if (GroupQuery::create()->findPk($groupId) === null) {
+                    throw new \RuntimeException(gettext('The class does not exist'));
+                }
+                $schedule->setTitleFilter(null);
+                break;
+
+            case VolunteerSchedule::LINK_MODE_EVENT:
+                $eventId = $idField('eventId', $schedule->getEventId() === null ? null : (int) $schedule->getEventId());
+                if ($eventId === null) {
+                    throw new \RuntimeException(gettext('Choose the event to staff'));
+                }
+                if (!$isCreate && $eventId !== (int) $schedule->getEventId()) {
+                    throw new \RuntimeException(gettext('A schedule that staffs one event cannot follow other events; delete it and add a schedule instead'));
+                }
+                if (EventQuery::create()->findPk($eventId) === null) {
+                    throw new \RuntimeException(gettext('The event does not exist'));
+                }
+                $schedule->setTitleFilter(null);
+                break;
         }
 
         $schedule->setEventTypeId($eventTypeId);
-        $schedule->setRecurType(VolunteerSchedule::RECUR_NONE);
-        $schedule->setRecurDow(null);
-        $schedule->setRecurDom(null);
-        $schedule->setStartTime(null);
-        $schedule->setEndTime(null);
+        $schedule->setGroupId($groupId);
+        $schedule->setEventId($eventId);
     }
 
     /**
-     * @param array<string, mixed> $fields
+     * A signed whole number of minutes within ±MAX_OFFSET_MINUTES (D21).
      *
      * @throws \RuntimeException
      */
-    private function applyStandaloneFields(VolunteerSchedule $schedule, array $fields, bool $isCreate): void
+    private function requireOffset(mixed $raw, string $label): int
     {
-        if (array_key_exists('eventTypeId', $fields) && $fields['eventTypeId'] !== null && $fields['eventTypeId'] !== '') {
-            throw new \RuntimeException(gettext('A standalone schedule names no event type; use the event_type link mode instead'));
+        if ($raw === null || $raw === '') {
+            $minutes = 0;
+        } elseif (is_int($raw)) {
+            $minutes = $raw;
+        } elseif (is_string($raw) && preg_match('/^[+-]?\d+$/', trim($raw)) === 1) {
+            $minutes = (int) trim($raw);
+        } else {
+            throw new \RuntimeException(sprintf(gettext('The %s must be a whole number of minutes'), $label));
         }
-        $schedule->setEventTypeId(null);
 
-        $recurType = array_key_exists('recurType', $fields)
-            ? (string) ($fields['recurType'] ?? '')
-            : ($isCreate ? '' : (string) $schedule->getRecurType());
-
-        if (!in_array($recurType, VolunteerSchedule::allRecurTypes(), true)) {
-            throw new \RuntimeException(gettext('Unknown recurrence type'));
+        if (abs($minutes) > VolunteerSchedule::MAX_OFFSET_MINUTES) {
+            throw new \RuntimeException(sprintf(
+                gettext('The %s must be within %d minutes of the event'),
+                $label,
+                VolunteerSchedule::MAX_OFFSET_MINUTES
+            ));
         }
-        if ($recurType === VolunteerSchedule::RECUR_NONE) {
-            throw new \RuntimeException(gettext('A standalone schedule needs a recurrence pattern'));
-        }
-        $schedule->setRecurType($recurType);
 
-        if (array_key_exists('recurDow', $fields) || $isCreate) {
-            $raw = $fields['recurDow'] ?? null;
-            $dow = $raw === null || $raw === '' ? null : (string) $raw;
-            if ($dow !== null && !in_array($dow, VolunteerSchedule::allRecurDows(), true)) {
-                throw new \RuntimeException(gettext('Unknown day of week'));
+        return $minutes;
+    }
+
+    // ── Staff this event (D22) ─────────────────────────────────────────────
+
+    /**
+     * Staff one calendar event: a hidden `event`-mode schedule (`vsch_OneOff = 1`) with its
+     * staffing needs and exactly one occurrence, in one transaction. The schedule is where
+     * the team, the offsets and the needs live; the Schedules tab never lists it and
+     * deleteOccurrence() removes it with its only occurrence.
+     *
+     * @param array<string, mixed> $fields eventId, teamId, requirements?, name?, startOffsetMinutes?, endOffsetMinutes?
+     *
+     * @throws VolunteerException 409 when this team already staffs this event this way,
+     *                            403 when the actor may not create for the team
+     * @throws \RuntimeException  on an unknown, inactive or past event, or a §2.8 violation
+     */
+    public function staffEvent(VolunteerMinistry $ministry, array $fields, User $actor): VolunteerOccurrence
+    {
+        $this->refuseRetiredFields($fields);
+
+        $eventId = isset($fields['eventId']) && is_numeric($fields['eventId']) ? (int) $fields['eventId'] : 0;
+        $event = $eventId > 0 ? EventQuery::create()->findPk($eventId) : null;
+        if ($event === null) {
+            throw new \RuntimeException(gettext('The event does not exist'));
+        }
+        if ((int) $event->getInActive() !== 0) {
+            throw new \RuntimeException(gettext('The event is inactive'));
+        }
+
+        $day = DateTimeUtils::createDateTime($event->getStart('Y-m-d'));
+        $day->setTime(0, 0, 0);
+        if ($day < DateTimeUtils::getStartOfToday()) {
+            throw new \RuntimeException(gettext('This event has already happened'));
+        }
+
+        $teamId = isset($fields['teamId']) && is_numeric($fields['teamId']) ? (int) $fields['teamId'] : 0;
+        $alreadyStaffed = VolunteerScheduleQuery::create()
+            ->filterByLinkMode(VolunteerSchedule::LINK_MODE_EVENT)
+            ->filterByEventId($eventId)
+            ->filterByTeamId($teamId)
+            ->exists();
+        if ($alreadyStaffed) {
+            throw VolunteerException::conflict(gettext('This team is already staffing this event'));
+        }
+
+        $name = trim((string) ($fields['name'] ?? ''));
+        $scheduleFields = [
+            'name' => $name !== '' ? $name : mb_substr((string) $event->getTitle(), 0, 100),
+            'teamId' => $teamId,
+            'linkMode' => VolunteerSchedule::LINK_MODE_EVENT,
+            'eventId' => $eventId,
+            'windowStart' => $day->format('Y-m-d'),
+            'windowEnd' => $day->format('Y-m-d'),
+            'active' => true,
+        ];
+        foreach (['startOffsetMinutes', 'endOffsetMinutes', 'requirements'] as $key) {
+            if (array_key_exists($key, $fields)) {
+                $scheduleFields[$key] = $fields[$key];
             }
-            $schedule->setRecurDow($dow);
         }
 
-        if (array_key_exists('recurDom', $fields) || $isCreate) {
-            $raw = $fields['recurDom'] ?? null;
-            $dom = $raw === null || $raw === '' ? null : (int) $raw;
-            if ($dom !== null && ($dom < 1 || $dom > 31)) {
-                throw new \RuntimeException(gettext('Day of month must be between 1 and 31'));
+        $con = Propel::getWriteConnection(VolunteerOccurrenceTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+
+        try {
+            $schedule = $this->insertSchedule($ministry, $scheduleFields, $actor, true);
+            $this->generateOccurrences($schedule, $day);
+
+            $occurrence = VolunteerOccurrenceQuery::create()
+                ->filterByScheduleId((int) $schedule->getId())
+                ->findOne($con);
+            if ($occurrence === null) {
+                throw new \RuntimeException(gettext('The event could not be staffed'));
             }
-            $schedule->setRecurDom($dom);
+
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            throw $e;
         }
 
-        if ($recurType === VolunteerSchedule::RECUR_WEEKLY && $schedule->getRecurDow() === null) {
-            throw new \RuntimeException(gettext('A weekly schedule needs a day of week'));
-        }
-        if ($recurType === VolunteerSchedule::RECUR_MONTHLY && $schedule->getRecurDom() === null) {
-            throw new \RuntimeException(gettext('A monthly schedule needs a day of month'));
-        }
+        $this->logger->info('Volunteer event staffed', [
+            'occurrenceId' => $occurrence->getId(),
+            'scheduleId' => $schedule->getId(),
+            'ministryId' => $ministry->getId(),
+            'eventId' => $eventId,
+            'actorPersonId' => $actor->getId(),
+        ]);
 
-        if (array_key_exists('startTime', $fields) || $isCreate) {
-            $raw = $fields['startTime'] ?? null;
-            $schedule->setStartTime($raw === null || $raw === '' ? null : $this->requireTime((string) $raw, gettext('start time')));
-        }
-        if (array_key_exists('endTime', $fields) || $isCreate) {
-            $raw = $fields['endTime'] ?? null;
-            $schedule->setEndTime($raw === null || $raw === '' ? null : $this->requireTime((string) $raw, gettext('end time')));
-        }
-
-        // §2.8: a standalone schedule must have a start time, because §2.9 requires every
-        // standalone occurrence to carry one and there is deliberately no CHECK enforcing it.
-        if ($schedule->getStartTime() === null) {
-            throw new \RuntimeException(gettext('A standalone schedule needs a start time'));
-        }
+        return $occurrence;
     }
 
     // ── Occurrence generation ──────────────────────────────────────────────
 
     /**
-     * Materialise occurrences up to `$through`, idempotently.
-     *
-     * Linked mode resolves (event type + optional title filter + window) to concrete
-     * `events_event` rows and attaches one occurrence to each. Standalone mode asks the
-     * shared RecurrenceDateGenerator for the dates and stamps the schedule's own times on
-     * them. Neither mode ever writes to `events_event`, and neither touches an occurrence
-     * that already exists — the unique keys make a repeat run a no-op.
+     * Materialise occurrences up to `$through`, idempotently: find the schedule's events
+     * inside the range (active ones only) and attach one occurrence to each. Never writes
+     * to `events_event`, and never touches an occurrence that already exists.
      *
      * @return array{created: int, existing: int, through: string, createdIds: int[]}
      *         `through` is the date actually generated to, after the schedule's own window
      *         has clamped it; `createdIds` are the rows THIS run inserted, so a caller can
      *         act on the new occurrences only (the Generate dialog's default assignments)
-     *         and never touch the ones an earlier run made
      *
      * @throws \RuntimeException when the run would exceed MAX_GENERATED_OCCURRENCES
      */
@@ -475,9 +642,10 @@ class VolunteerScheduleService
             return ['created' => 0, 'existing' => 0, 'through' => $reportedThrough, 'createdIds' => []];
         }
 
-        $result = $schedule->getLinkMode() === VolunteerSchedule::LINK_MODE_EVENT_TYPE
-            ? $this->generateLinkedOccurrences($schedule, $range['start'], $range['end'])
-            : $this->generateStandaloneOccurrences($schedule, $range['start'], $range['end']);
+        $events = $this->findEvents($schedule, $range['start'], $range['end']);
+        $this->assertWithinCap(count($events));
+
+        $result = $this->persistOccurrences($schedule, $events);
 
         $this->logger->info('Volunteer occurrences generated', [
             'scheduleId' => $schedule->getId(),
@@ -494,10 +662,8 @@ class VolunteerScheduleService
      * The inclusive date range one run materialises.
      *
      * Start is the later of the schedule's window start and today: historical occurrences
-     * are immutable (§2.9) and back-filling services that already happened would create
-     * staffing rows nobody can act on. End is the earliest of the caller's `through`, the
-     * schedule's window end, and — when the caller named nothing — today plus the
-     * schedule's own GenerateAheadDays.
+     * are immutable (§2.9). End is the earliest of the caller's `through`, the schedule's
+     * window end, and — when the caller named nothing — today plus GenerateAheadDays.
      *
      * @return array{start: \DateTime, end: \DateTime}
      */
@@ -535,84 +701,58 @@ class VolunteerScheduleService
     }
 
     /**
-     * Linked mode: the events already exist, so "generation" is a SELECT plus one
-     * occurrence row per event found. V2 never creates an events_event row (D4).
+     * The active events a schedule follows inside a date range, per link mode (D22). A
+     * binding whose target was deleted (the FK set it to NULL) finds nothing.
      *
-     * @return array{created: int, existing: int, createdIds: int[]}
+     * @return Event[]
      */
-    private function generateLinkedOccurrences(VolunteerSchedule $schedule, \DateTime $start, \DateTime $end): array
+    public function findEvents(VolunteerSchedule $schedule, \DateTimeInterface $start, \DateTimeInterface $end): array
     {
         $query = EventQuery::create()
-            ->filterByType((int) $schedule->getEventTypeId())
+            ->filterByInActive(0)
             ->filterByStart($start->format('Y-m-d') . ' 00:00:00', Criteria::GREATER_EQUAL)
-            ->filterByStart($end->format('Y-m-d') . ' 23:59:59', Criteria::LESS_EQUAL)
-            ->filterByInActive(0);
+            ->filterByStart($end->format('Y-m-d') . ' 23:59:59', Criteria::LESS_EQUAL);
 
-        $titleFilter = $schedule->getTitleFilter();
-        if ($titleFilter !== null && $titleFilter !== '') {
-            // The optional narrowing of §2.8: one event type, several distinct services.
-            $query->filterByTitle('%' . $titleFilter . '%', Criteria::LIKE);
+        switch ((string) $schedule->getLinkMode()) {
+            case VolunteerSchedule::LINK_MODE_EVENT_TYPE:
+                if ($schedule->getEventTypeId() === null) {
+                    return [];
+                }
+                $query->filterByType((int) $schedule->getEventTypeId());
+                $this->applyTitleFilter($query, $schedule->getTitleFilter());
+                break;
+
+            case VolunteerSchedule::LINK_MODE_CLASS:
+                if ($schedule->getGroupId() === null) {
+                    return [];
+                }
+                $query->useEventAudienceQuery()->filterByGroupId((int) $schedule->getGroupId())->endUse();
+                break;
+
+            case VolunteerSchedule::LINK_MODE_MINISTRY:
+                $query->filterByMinistryId((int) $schedule->getMinistryId());
+                $this->applyTitleFilter($query, $schedule->getTitleFilter());
+                break;
+
+            case VolunteerSchedule::LINK_MODE_EVENT:
+                if ($schedule->getEventId() === null) {
+                    return [];
+                }
+                $query->filterById((int) $schedule->getEventId());
+                break;
+
+            default:
+                return [];
         }
 
-        $events = $query->orderByStart()->find();
-        $this->assertWithinCap(count($events));
-
-        $candidates = [];
-        foreach ($events as $event) {
-            $candidates[] = [
-                'eventId' => (int) $event->getId(),
-                'occurrenceDate' => $event->getStart('Y-m-d'),
-                // Deliberately no denormalised copy of the event's times: they are read
-                // lazily by resolveOccurrenceWindow(), so there is nothing to keep in sync
-                // and no EVENT_UPDATED hook to add (§2.9, E-15).
-                'startDateTime' => null,
-                'endDateTime' => null,
-            ];
-        }
-
-        return $this->persistOccurrences($schedule, $candidates);
+        return iterator_to_array($query->orderByStart()->find(), false);
     }
 
-    /**
-     * Standalone mode: the dates come from the one shared recurrence implementation
-     * (#9735's RecurrenceDateGenerator), and the schedule's own times are stamped on them.
-     *
-     * @return array{created: int, existing: int, createdIds: int[]}
-     */
-    private function generateStandaloneOccurrences(VolunteerSchedule $schedule, \DateTime $start, \DateTime $end): array
+    private function applyTitleFilter(EventQuery $query, ?string $titleFilter): void
     {
-        $dates = $this->recurrenceDateGenerator->generate(
-            (string) $schedule->getRecurType(),
-            $schedule->getRecurDow(),
-            $schedule->getRecurDom() === null ? null : (int) $schedule->getRecurDom(),
-            // The schedule table has no day-of-year column (§2.8), so a yearly standalone
-            // schedule recurs on its window start's month and day — the only anniversary
-            // the row actually carries.
-            $this->resolveYearlyMonthDay($schedule),
-            $start,
-            $end
-        );
-
-        $this->assertWithinCap(count($dates));
-
-        $startTime = $this->formatTime($schedule->getStartTime());
-        $endTime = $this->formatTime($schedule->getEndTime());
-
-        $candidates = [];
-        foreach ($dates as $date) {
-            $candidates[] = [
-                'eventId' => null,
-                'occurrenceDate' => $date->format('Y-m-d'),
-                // §2.9: a standalone row ALWAYS carries its own start. There is
-                // deliberately no CHECK enforcing that (MariaDB refuses one on a column an
-                // FK action can change), so this is the only thing that guarantees it —
-                // and it is also what vocc_schedule_start_uidx deduplicates on.
-                'startDateTime' => $this->occurrenceStart($date, $startTime),
-                'endDateTime' => $this->occurrenceEnd($date, $startTime, $endTime),
-            ];
+        if ($titleFilter !== null && $titleFilter !== '') {
+            $query->filterByTitle('%' . $titleFilter . '%', Criteria::LIKE);
         }
-
-        return $this->persistOccurrences($schedule, $candidates);
     }
 
     /**
@@ -630,16 +770,15 @@ class VolunteerScheduleService
     }
 
     /**
-     * One transaction, findOneOrCreate per candidate: the two unique keys of §2.9 do the
+     * One transaction, findOneOrCreate per event: `vocc_schedule_event_uidx` does the
      * deduplication, so a second run over the same window inserts nothing and reports every
-     * candidate as `existing`. This is `skipExisting` (F8) re-expressed as a database
-     * guarantee instead of a pre-flight SELECT that a concurrent run could race.
+     * event as `existing` — `skipExisting` (F8) re-expressed as a database guarantee.
      *
-     * @param array<int, array{eventId: ?int, occurrenceDate: string, startDateTime: ?string, endDateTime: ?string}> $candidates
+     * @param Event[] $events
      *
      * @return array{created: int, existing: int, createdIds: int[]}
      */
-    private function persistOccurrences(VolunteerSchedule $schedule, array $candidates): array
+    private function persistOccurrences(VolunteerSchedule $schedule, array $events): array
     {
         $created = 0;
         $existing = 0;
@@ -651,15 +790,11 @@ class VolunteerScheduleService
         $con->beginTransaction();
 
         try {
-            foreach ($candidates as $candidate) {
-                $query = VolunteerOccurrenceQuery::create()->filterByScheduleId($scheduleId);
-                if ($candidate['eventId'] !== null) {
-                    $query->filterByEventId($candidate['eventId']);
-                } else {
-                    $query->filterByStartDateTime($candidate['startDateTime']);
-                }
-
-                $occurrence = $query->findOneOrCreate($con);
+            foreach ($events as $event) {
+                $occurrence = VolunteerOccurrenceQuery::create()
+                    ->filterByScheduleId($scheduleId)
+                    ->filterByEventId((int) $event->getId())
+                    ->findOneOrCreate($con);
 
                 if (!$occurrence->isNew()) {
                     // Historical occurrences are immutable: an existing row is never
@@ -669,10 +804,8 @@ class VolunteerScheduleService
                 }
 
                 $occurrence->setScheduleId($scheduleId);
-                $occurrence->setEventId($candidate['eventId']);
-                $occurrence->setOccurrenceDate($candidate['occurrenceDate']);
-                $occurrence->setStartDateTime($candidate['startDateTime']);
-                $occurrence->setEndDateTime($candidate['endDateTime']);
+                $occurrence->setEventId((int) $event->getId());
+                $occurrence->setOccurrenceDate($event->getStart('Y-m-d'));
                 $occurrence->setStatus(VolunteerOccurrence::STATUS_SCHEDULED);
                 $occurrence->setGeneratedDate($now);
                 $occurrence->save($con);
@@ -723,8 +856,8 @@ class VolunteerScheduleService
      * generated. Everything under it goes too: its requirement overrides, its
      * assignments and, through them, their responses, swaps and queued
      * notifications (all ON DELETE CASCADE, §2.9 / §2.11). Unlike cancelling, a
-     * deleted linked occurrence CAN come back from a later generation run, because
-     * the event it was made from still exists; that is what "delete" means here.
+     * deleted occurrence CAN come back from a later generation run, because the event
+     * it was made from still exists; that is what "delete" means here.
      */
     public function deleteOccurrence(VolunteerOccurrence $occurrence, User $actor): void
     {
@@ -734,10 +867,10 @@ class VolunteerScheduleService
 
         $occurrence->delete();
 
-        // A one-off's private schedule has no life of its own: it exists to carry this
-        // one occurrence's team, times and staffing needs, so it goes with it. This is
-        // NOT a general "last occurrence deletes the schedule" rule — an ordinary
-        // schedule with no occurrences left is a plan waiting to be generated.
+        // A Staff this event schedule has no life of its own: it exists to carry this one
+        // occurrence's team, offsets and staffing needs, so it goes with it. This is NOT a
+        // general "last occurrence deletes the schedule" rule — an ordinary schedule with
+        // no occurrences left is a plan waiting to be generated.
         $schedule = VolunteerScheduleQuery::create()->findPk($scheduleId);
         $removedSchedule = false;
         if ($schedule !== null && $schedule->getOneOff()
@@ -751,124 +884,243 @@ class VolunteerScheduleService
             'scheduleId' => $scheduleId,
             'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
             'assignments' => $assignments,
-            'removedOneOffSchedule' => $removedSchedule,
+            'removedStaffedEventSchedule' => $removedSchedule,
             'actorPersonId' => $actor->getId(),
         ]);
     }
 
-    /**
-     * A one-off occurrence (product-owner decision, 2026-09-18): a date that follows
-     * no calendar event and no recurring schedule — a special service, or a generated
-     * occurrence deleted by accident whose event has since passed.
-     *
-     * Every occurrence belongs to a schedule, because the schedule is where its team,
-     * its times and its staffing needs live. So a one-off gets a private schedule of
-     * its own: standalone, windowed to the one date, flagged `OneOff` so the Schedules
-     * tab never lists it and `deleteOccurrence()` removes it with its only occurrence.
-     * The occurrence itself is an ordinary one afterwards — staffed, cancelled, or
-     * overridden on its own page like any other.
-     *
-     * @param array{name: string, teamId: int, date: string, startTime: string, endTime: string, requirements?: array} $fields
-     *
-     * @throws \RuntimeException on a §2.8 violation, a past date, or an actor outside scope
-     */
-    public function createOneOffOccurrence(VolunteerMinistry $ministry, array $fields, User $actor): VolunteerOccurrence
-    {
-        if (trim((string) ($fields['name'] ?? '')) === '') {
-            throw new \RuntimeException(gettext('Name is a required field'));
-        }
-        $date = (string) ($fields['date'] ?? '');
-        if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date) !== 1) {
-            throw new \RuntimeException(gettext('Date is a required field'));
-        }
-        $day = DateTimeUtils::createDateTime($date);
-        $day->setTime(0, 0, 0);
-        if ($day < DateTimeUtils::getStartOfToday()) {
-            throw new \RuntimeException(gettext('A one-off occurrence cannot be in the past'));
-        }
-        if (($fields['startTime'] ?? '') === '' || ($fields['endTime'] ?? '') === '') {
-            throw new \RuntimeException(gettext('A one-off occurrence needs a start and an end time'));
-        }
-
-        $scheduleFields = [
-            'name' => (string) ($fields['name'] ?? ''),
-            'teamId' => (int) ($fields['teamId'] ?? 0),
-            'linkMode' => VolunteerSchedule::LINK_MODE_STANDALONE,
-            'recurType' => VolunteerSchedule::RECUR_WEEKLY,
-            'recurDow' => $day->format('l'),
-            'startTime' => (string) $fields['startTime'],
-            'endTime' => (string) $fields['endTime'],
-            'windowStart' => $date,
-            'windowEnd' => $date,
-            'generateAheadDays' => 1,
-            'active' => true,
-        ];
-        if (array_key_exists('requirements', $fields)) {
-            $scheduleFields['requirements'] = $fields['requirements'];
-        }
-
-        $created = $this->createSchedule($ministry, $scheduleFields, $actor);
-        // Re-read through the Query before the UPDATE: Propel registers a table map
-        // lazily when a Query for the model runs, and an UPDATE on an object that
-        // was only ever INSERTed in this request fails with "undefined table" before
-        // any query has registered it (database-operations.md).
-        $schedule = VolunteerScheduleQuery::create()->findPk((int) $created->getId());
-        if ($schedule === null) {
-            throw new \RuntimeException(gettext('The one-off occurrence could not be created'));
-        }
-        $schedule->setOneOff(true);
-        $schedule->save();
-
-        try {
-            $this->generateOccurrences($schedule, $day);
-        } catch (\Throwable $e) {
-            $schedule->delete();
-            throw $e;
-        }
-
-        $occurrence = VolunteerOccurrenceQuery::create()
-            ->filterByScheduleId((int) $schedule->getId())
-            ->findOne();
-        if ($occurrence === null) {
-            $schedule->delete();
-            throw new \RuntimeException(gettext('The one-off occurrence could not be created'));
-        }
-
-        $this->logger->info('Volunteer one-off occurrence created', [
-            'occurrenceId' => $occurrence->getId(),
-            'scheduleId' => $schedule->getId(),
-            'ministryId' => $ministry->getId(),
-            'occurrenceDate' => $date,
-            'actorPersonId' => $actor->getId(),
-        ]);
-
-        return $occurrence;
-    }
-
-    // ── Effective time and requirements ────────────────────────────────────
+    // ── Effective time ─────────────────────────────────────────────────────
 
     /**
-     * The occurrence's real start and end — read from the event row when the occurrence is
-     * linked, from its own columns when it is standalone. **The single source of truth**:
-     * nothing else in V2 may decide what time an occurrence happens at.
+     * The volunteers' real start and end: the anchored event's, moved by the schedule's
+     * offsets (D21). **The single source of truth** — nothing else in V2 may decide what
+     * time an occurrence happens at.
      *
-     * Both may be null for a formerly-linked occurrence whose event was deleted: the FK is
-     * ON DELETE SET NULL, so such a row survives on `vocc_OccurrenceDate` alone (§2.9).
+     * Both are null once the event was deleted: the FK is ON DELETE SET NULL, so such a row
+     * survives on `vocc_OccurrenceDate` alone (§2.9).
      *
      * @return array{start: ?\DateTime, end: ?\DateTime}
      */
     public function resolveOccurrenceWindow(VolunteerOccurrence $occurrence): array
     {
         $eventId = $occurrence->getEventId();
-        if ($eventId !== null) {
-            $event = EventQuery::create()->findPk((int) $eventId);
-            if ($event !== null) {
-                return ['start' => $event->getStart(), 'end' => $event->getEnd()];
+        $event = $eventId === null ? null : EventQuery::create()->findPk((int) $eventId);
+        if ($event === null) {
+            return ['start' => null, 'end' => null];
+        }
+
+        return $this->shiftedWindow($event, VolunteerScheduleQuery::create()->findPk((int) $occurrence->getScheduleId()));
+    }
+
+    /**
+     * An event's start and end moved by a schedule's offsets.
+     *
+     * @return array{start: ?\DateTime, end: ?\DateTime}
+     */
+    public function shiftedWindow(Event $event, ?VolunteerSchedule $schedule): array
+    {
+        $start = $this->shift($event->getStart(), $schedule === null ? 0 : (int) $schedule->getStartOffsetMinutes());
+        $end = $this->shift($event->getEnd(), $schedule === null ? 0 : (int) $schedule->getEndOffsetMinutes());
+
+        // Offsets that cross on a short event would end the shift before it starts.
+        if ($start !== null && $end !== null && $end < $start) {
+            $end = clone $start;
+        }
+
+        return ['start' => $start, 'end' => $end];
+    }
+
+    /**
+     * The schedule's offsets in words, for a page that shows the event beside the shift;
+     * empty when the volunteers keep the event's own times.
+     */
+    public function offsetSummary(VolunteerSchedule $schedule): string
+    {
+        $parts = [];
+
+        $start = (int) $schedule->getStartOffsetMinutes();
+        if ($start !== 0) {
+            $parts[] = sprintf(
+                $start < 0
+                    ? ngettext('Volunteers start %d minute before the event starts.', 'Volunteers start %d minutes before the event starts.', abs($start))
+                    : ngettext('Volunteers start %d minute after the event starts.', 'Volunteers start %d minutes after the event starts.', abs($start)),
+                abs($start)
+            );
+        }
+
+        $end = (int) $schedule->getEndOffsetMinutes();
+        if ($end !== 0) {
+            $parts[] = sprintf(
+                $end > 0
+                    ? ngettext('They finish %d minute after the event ends.', 'They finish %d minutes after the event ends.', abs($end))
+                    : ngettext('They finish %d minute before the event ends.', 'They finish %d minutes before the event ends.', abs($end)),
+                abs($end)
+            );
+        }
+
+        return implode(' ', $parts);
+    }
+
+    private function shift(mixed $at, int $minutes): ?\DateTime
+    {
+        if (!$at instanceof \DateTimeInterface) {
+            return null;
+        }
+
+        // A copy: Propel hands out the model's own DateTime, and modifying it in place
+        // would move the event.
+        $shifted = \DateTime::createFromInterface($at);
+        if ($minutes !== 0) {
+            $shifted->modify(sprintf('%+d minutes', $minutes));
+        }
+
+        return $shifted;
+    }
+
+    // ── What the schedule dialogs offer ────────────────────────────────────
+
+    /**
+     * The distinct titles of the upcoming active events a title filter could name — of one
+     * event type (`event_type` mode) or owned by one ministry (`ministry` mode) — with the
+     * next date and how many there are.
+     *
+     * @return array<int, array{title: string, nextStart: string, count: int}>
+     */
+    public function listEventTitles(?int $eventTypeId, ?int $ministryId, string $from): array
+    {
+        $query = EventQuery::create()
+            ->filterByInActive(0)
+            ->filterByStart($from . ' 00:00:00', Criteria::GREATER_EQUAL);
+        if ($eventTypeId !== null) {
+            $query->filterByType($eventTypeId);
+        }
+        if ($ministryId !== null) {
+            $query->filterByMinistryId($ministryId);
+        }
+
+        $series = [];
+        foreach ($query->orderByStart()->select(['Title', 'Start'])->find() as $row) {
+            $title = (string) $row['Title'];
+            if (!isset($series[$title])) {
+                $series[$title] = ['title' => $title, 'nextStart' => (string) $row['Start'], 'count' => 0];
+            }
+            $series[$title]['count']++;
+        }
+
+        return array_values($series);
+    }
+
+    /**
+     * The groups a `class` schedule may follow: every active Sunday School class, and any
+     * other group that has an upcoming active event linked to it. Alphabetical.
+     *
+     * @return array<int, array{groupId: int, name: string, sundaySchool: bool, upcomingCount: int, nextStart: ?string}>
+     */
+    public function listClassGroups(string $from): array
+    {
+        $upcoming = [];
+        $rows = EventAudienceQuery::create()
+            ->useEventQuery()
+                ->filterByInActive(0)
+                ->filterByStart($from . ' 00:00:00', Criteria::GREATER_EQUAL)
+            ->endUse()
+            ->withColumn('Event.Start', 'EventStart')
+            ->select(['GroupId', 'EventStart'])
+            ->find();
+        foreach ($rows as $row) {
+            $groupId = (int) $row['GroupId'];
+            $start = (string) $row['EventStart'];
+            $upcoming[$groupId] ??= ['count' => 0, 'next' => $start];
+            $upcoming[$groupId]['count']++;
+            if ($start < $upcoming[$groupId]['next']) {
+                $upcoming[$groupId]['next'] = $start;
             }
         }
 
-        return ['start' => $occurrence->getStartDateTime(), 'end' => $occurrence->getEndDateTime()];
+        $groups = GroupQuery::create()
+            ->condition('isClass', 'Group.Type = ?', self::SUNDAY_SCHOOL_GROUP_TYPE)
+            ->condition('isActive', 'Group.Active = ?', 1)
+            ->combine(['isClass', 'isActive'], Criteria::LOGICAL_AND, 'activeClass')
+            ->condition('hasEvents', 'Group.Id IN ?', $upcoming === [] ? [0] : array_keys($upcoming))
+            ->where(['activeClass', 'hasEvents'], Criteria::LOGICAL_OR)
+            ->orderByName()
+            ->find();
+
+        $result = [];
+        foreach ($groups as $group) {
+            $groupId = (int) $group->getId();
+            $result[] = [
+                'groupId' => $groupId,
+                'name' => (string) $group->getName(),
+                'sundaySchool' => (int) $group->getType() === self::SUNDAY_SCHOOL_GROUP_TYPE,
+                'upcomingCount' => $upcoming[$groupId]['count'] ?? 0,
+                'nextStart' => $upcoming[$groupId]['next'] ?? null,
+            ];
+        }
+
+        return $result;
     }
+
+    /**
+     * Upcoming active events for the Staff this event picker: title substring, date range,
+     * soonest first, capped. `staffedByTeam` says whether `$teamId` already has an
+     * occurrence anchored to the event, from any of its schedules.
+     *
+     * @return array<int, array{id: int, title: string, start: string, end: string, eventTypeId: int, eventTypeName: ?string, staffedByTeam: bool}>
+     */
+    public function searchUpcomingEvents(?string $text, string $from, ?string $to, ?int $teamId): array
+    {
+        $query = EventQuery::create()
+            ->filterByInActive(0)
+            ->filterByStart($from . ' 00:00:00', Criteria::GREATER_EQUAL);
+        if ($to !== null) {
+            $query->filterByStart($to . ' 23:59:59', Criteria::LESS_EQUAL);
+        }
+        if ($text !== null && $text !== '') {
+            $query->filterByTitle('%' . str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $text) . '%', Criteria::LIKE);
+        }
+
+        $events = iterator_to_array($query->orderByStart()->limit(self::MAX_EVENT_SEARCH)->find(), false);
+        if ($events === []) {
+            return [];
+        }
+
+        $staffed = [];
+        if ($teamId !== null) {
+            $eventIds = array_map(static fn (Event $event): int => (int) $event->getId(), $events);
+            $rows = VolunteerOccurrenceQuery::create()
+                ->filterByEventId($eventIds, Criteria::IN)
+                ->useScheduleQuery()->filterByTeamId($teamId)->endUse()
+                ->select(['EventId'])
+                ->find();
+            foreach ($rows as $eventId) {
+                $staffed[(int) $eventId] = true;
+            }
+        }
+
+        $typeNames = [];
+        $result = [];
+        foreach ($events as $event) {
+            $typeId = (int) $event->getType();
+            if (!array_key_exists($typeId, $typeNames)) {
+                $type = EventTypeQuery::create()->findPk($typeId);
+                $typeNames[$typeId] = $type === null ? null : (string) $type->getName();
+            }
+            $result[] = [
+                'id' => (int) $event->getId(),
+                'title' => (string) $event->getTitle(),
+                'start' => (string) $event->getStart('Y-m-d H:i:s'),
+                'end' => (string) $event->getEnd('Y-m-d H:i:s'),
+                'eventTypeId' => $typeId,
+                'eventTypeName' => $typeNames[$typeId],
+                'staffedByTeam' => isset($staffed[(int) $event->getId()]),
+            ];
+        }
+
+        return $result;
+    }
+
+    // ── Effective requirements ─────────────────────────────────────────────
 
     /**
      * The occurrence's own requirement rows, unioned with its schedule's templates for
@@ -1162,68 +1414,5 @@ class VolunteerScheduleService
         }
 
         return $raw;
-    }
-
-    /**
-     * `HH:MM` or `HH:MM:SS`, normalised to `HH:MM:SS`.
-     *
-     * @throws \RuntimeException
-     */
-    private function requireTime(string $raw, string $label): string
-    {
-        foreach (['!H:i:s', '!H:i'] as $format) {
-            $parsed = \DateTimeImmutable::createFromFormat($format, $raw, DateTimeUtils::getConfiguredTimezone());
-            if ($parsed !== false && $parsed->format(ltrim($format, '!')) === $raw) {
-                return $parsed->format('H:i:s');
-            }
-        }
-
-        throw new \RuntimeException(sprintf(gettext('The %s must be a time in HH:MM form'), $label));
-    }
-
-    /** A TIME column hydrates as a DateTime; a freshly-set one may still be a string. */
-    private function formatTime(mixed $value): ?string
-    {
-        if ($value instanceof \DateTimeInterface) {
-            return $value->format('H:i:s');
-        }
-        if (is_string($value) && $value !== '') {
-            return substr($value, 0, 8);
-        }
-
-        return null;
-    }
-
-    /** Naive wall-clock in sTimeZone, exactly as every event DATETIME is stored (F24). */
-    private function occurrenceStart(\DateTimeInterface $date, ?string $startTime): string
-    {
-        return $date->format('Y-m-d') . ' ' . ($startTime ?? '00:00:00');
-    }
-
-    /**
-     * The end timestamp, rolled into the next day when the end time is at or before the
-     * start — the same rule EventService::occurrenceEnd() applies, so a 22:00–01:00 shift
-     * does not end before it began.
-     */
-    private function occurrenceEnd(\DateTimeInterface $date, ?string $startTime, ?string $endTime): ?string
-    {
-        if ($endTime === null) {
-            return null;
-        }
-
-        $day = $date->format('Y-m-d');
-        if ($startTime !== null && $endTime <= $startTime) {
-            $day = DateTimeUtils::createDateTime($day)->modify('+1 day')->format('Y-m-d');
-        }
-
-        return $day . ' ' . $endTime;
-    }
-
-    /** MM-DD for a yearly standalone schedule — see the note at the call site. */
-    private function resolveYearlyMonthDay(VolunteerSchedule $schedule): ?string
-    {
-        $windowStart = $schedule->getWindowStart();
-
-        return $windowStart instanceof \DateTimeInterface ? $windowStart->format('m-d') : null;
     }
 }

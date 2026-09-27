@@ -66,6 +66,9 @@
             <i class="fa-solid fa-calendar-day me-1" aria-hidden="true"></i>
             {{ occurrence.eventTitle ?: gettext('A calendar event') }}
             <div class="text-body-secondary">{{ gettext('Times come from this event') }}</div>
+            {% if occurrence.offsetNote %}
+            <div class="text-body-secondary" id="occurrence-offsets">{{ occurrence.offsetNote }}</div>
+            {% endif %}
             {% if occurrence.eventLocation %}
             <div class="text-body-secondary">
                 <i class="fa-solid fa-location-dot me-1" aria-hidden="true"></i>{{ occurrence.eventLocation }}

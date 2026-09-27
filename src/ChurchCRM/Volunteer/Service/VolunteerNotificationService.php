@@ -934,7 +934,7 @@ class VolunteerNotificationService
         );
     }
 
-    /** The linked event's location, when there is one. Unlinked occurrences have none. */
+    /** The anchored event's location, when there is one and the event still exists. */
     private function locationNameFor(VolunteerOccurrence $occurrence): ?string
     {
         $eventId = $occurrence->getEventId();
