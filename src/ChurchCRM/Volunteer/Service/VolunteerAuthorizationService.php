@@ -139,6 +139,24 @@ class VolunteerAuthorizationService
     }
 
     /**
+     * May this user write a calendar event whose ministry is `$eventMinistryId` (§4.6
+     * "Ministry-linked events")? The global AddEvent right, or — with the rollout on — the
+     * coordinators of the event's ministry. An event with no ministry stays AddEvent-only.
+     */
+    public function canWriteEvent(User $user, ?int $eventMinistryId): bool
+    {
+        if ($user->canManageEvents()) {
+            return true;
+        }
+
+        if (!User::isVolunteerV2Enabled() || $eventMinistryId === null) {
+            return false;
+        }
+
+        return $this->canManageMinistry($user, $eventMinistryId);
+    }
+
+    /**
      * A position belongs to its team (D18 — there is no team-less position), so its
      * team leader may touch it, and so may the ministry coordinator above them
      * through `canManageTeam()` (§4.4, §4.6).
