@@ -280,9 +280,9 @@ Three details that are easy to get wrong:
   absent, creates one with the right parent already set.
 - **MySQL permits multiple `NULL`s in a `UNIQUE` index.** Two unique keys over the same
   table, each with a nullable column, therefore do not collide with each other — rows that
-  are `NULL` in one key are deduplicated only by the other. `volunteer_occurrence_vocc`
-  uses exactly this: `(schedule, event)` dedupes event-linked rows and `(schedule, start)`
-  dedupes standalone ones.
+  are `NULL` in one key are deduplicated only by the other. `volunteer_requirement_vreq`
+  uses exactly this: `(schedule, position)` dedupes template rows and `(occurrence, position)`
+  dedupes override rows.
 - **`findOneOrCreate()` throws if the query has joins.** Filter on the table's own columns.
 
 Existing call sites: `Event::checkInPerson()` (`Event.php:87-90`, `UNIQUE(event_id,
