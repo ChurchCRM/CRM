@@ -17853,3 +17853,683 @@ msgstr "Cập nhật tất cả tọa độ gia đình"
 msgid "Update Coordinates"
 msgstr "Cập nhật tọa độ"
 
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s là Chủ hộ của gia đình này và đã được đánh dấu là đã qua đời. Vui lòng chỉ định Chủ hộ mới."
+
+#: 
+msgid "Accept"
+msgstr "Chấp nhận"
+
+#: 
+msgid "Active Now"
+msgstr "Đang hoạt động"
+
+#: 
+msgid "Adding..."
+msgstr "Đang thêm..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Tất cả thành viên CRM có email đều đã đăng ký danh sách này!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Tất cả người đăng ký MailChimp đều có trong ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Đã xảy ra lỗi khi xóa tệp."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Bạn có chắc chắn tuyệt đối không? Thao tác này sẽ xóa toàn bộ dữ liệu và khôi phục cài đặt gốc."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Bạn có chắc chắn muốn xóa TẤT CẢ tệp nhật ký không? Hành động này không thể hoàn tác."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Bạn có chắc chắn muốn xóa kiosk"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Bạn có chắc chắn muốn xóa liên kết"
+
+#: 
+msgid "Assignment"
+msgstr "Phân công"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Các tác vụ nền (email sinh nhật và mọi tác vụ theo lịch của plugin) chưa từng chạy trên bản cài đặt này."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Các tác vụ nền (email sinh nhật và mọi tác vụ theo lịch của plugin) đã chạy lần cuối vào %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Đang sao lưu..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Đã tải xuống bản sao lưu."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Tải lên bản sao lưu thành công"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Không thể thay đổi trạng thái hoạt động của chính bạn"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Xuất dữ liệu ChMeetings hoàn tất thành công"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Đã lưu thay đổi thành công"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Cho tất cả check-out và vô hiệu hóa tất cả"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Cho tất cả check-out và vô hiệu hóa sự kiện này?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Kiểm tra email của bạn để tìm liên kết đặt lại mật khẩu"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Đóng các sự kiện bị treo?"
+
+#: 
+msgid "Comments"
+msgstr "Ghi chú"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Không thể tải xem trước email. Vui lòng đóng lại và thử lại."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Đang tạo và tải lên bản sao lưu. Việc này có thể mất vài phút..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Đặt lại cơ sở dữ liệu thất bại."
+
+#: 
+msgid "Deceased"
+msgstr "Đã qua đời"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Thông tin đăng nhập quản trị mặc định"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Xóa Kiosk"
+
+#: 
+msgid "Deleted Files"
+msgstr "Tệp đã xóa"
+
+#: 
+msgid "Deleting..."
+msgstr "Đang xóa..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Tải xuống trả về không có tiêu đề tệp đính kèm."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Lỗi khi xóa tệp nhật ký."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Lỗi khi xóa các tệp nhật ký."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Lỗi khi tải xuống tệp nhật ký."
+
+#: 
+msgid "Error initiating download."
+msgstr "Lỗi khi bắt đầu tải xuống."
+
+#: 
+msgid "Error loading log file."
+msgstr "Lỗi khi tải tệp nhật ký."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Lỗi khi tải các mục tự đăng ký"
+
+#: 
+msgid "Errors"
+msgstr "Lỗi"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Loại trừ các thành viên đã qua đời khỏi danh bạ in và tệp xuất CSV."
+
+#: 
+msgid "Failed Files"
+msgstr "Tệp thất bại"
+
+#: 
+msgid "Failed to add link"
+msgstr "Không thể thêm liên kết"
+
+#: 
+msgid "Failed to add option"
+msgstr "Không thể thêm tùy chọn"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Không thể đóng sự kiện. Vui lòng thử lại."
+
+#: 
+msgid "Failed to delete"
+msgstr "Không thể xóa"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Không thể bật đăng ký kiosk"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Không thể xuất CSV ChMeetings"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Không thể tải nhật ký kiểm tra. Vui lòng thử lại."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Không thể đổi tên kiosk"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Không thể lưu thay đổi"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Không thể cập nhật plugin"
+
+#: 
+msgid "Family Id"
+msgstr "Mã gia đình"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Xác nhận cuối cùng"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Đang định vị địa lý cho các gia đình… việc này có thể mất vài phút. Bạn có thể để trang này mở."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Đang định vị địa lý cho các gia đình… đã xử lý {{done}}/{{total}}, đã định vị được {{geocoded}}."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Cần cập nhật Chủ hộ"
+
+#: 
+msgid "Helpful Links"
+msgstr "Liên kết hữu ích"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Ẩn người đã qua đời khỏi danh bạ"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Ẩn các thành viên đã qua đời khỏi danh bạ in và tệp xuất CSV."
+
+#: 
+msgid "Identify"
+msgstr "Nhận diện"
+
+#: 
+msgid "Identify command sent"
+msgstr "Đã gửi lệnh nhận diện"
+
+#: 
+msgid "Individual"
+msgstr "Cá nhân"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Nội bộ: ngày giờ cuối cùng các tác vụ hẹn giờ nền hoàn tất (YYYY-MM-DD HH:MM:SS). Không chỉnh sửa thủ công."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Đã xóa mục thành công"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Tên Kiosk"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Đã chấp nhận Kiosk"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Đã xóa Kiosk thành công"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Kiosk phải được chấp nhận"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Đã đổi tên Kiosk"
+
+#: 
+msgid "Last seen"
+msgstr "Lần cuối hoạt động"
+
+#: 
+msgid "Link"
+msgstr "Liên kết"
+
+#: 
+msgid "Link added successfully"
+msgstr "Đã thêm liên kết thành công"
+
+#: 
+msgid "Link deleted"
+msgstr "Đã xóa liên kết"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Tên liên kết không được chứa thẻ HTML"
+
+#: 
+msgid "Living"
+msgstr "Còn sống"
+
+#: 
+msgid "Log settings saved"
+msgstr "Đã lưu cài đặt nhật ký"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Tên đăng nhập là bắt buộc"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Đã đánh dấu người này là đang hoạt động"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Đã đánh dấu người này là không hoạt động"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Số phút tối thiểu giữa các lần chạy tác vụ hẹn giờ nền được kích hoạt bởi việc tải trang. Giúp tránh việc chạy tác vụ mỗi lần tải trang vào một sáng Chủ nhật bận rộn. Không áp dụng cho trình chạy dòng lệnh. Đặt là 0 để chạy ở mỗi lần tải trang."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Người dùng mới sẽ không nhận được email chào mừng, và mật khẩu được tạo sẽ không bao giờ được hiển thị. Sau khi tạo tài khoản, hãy đặt mật khẩu từ Người dùng hệ thống bằng chức năng Đổi mật khẩu — hoặc cấu hình email trước."
+
+#: 
+msgid "No changes to save"
+msgstr "Không có thay đổi để lưu"
+
+#: 
+msgid "No contact info"
+msgstr "Không có thông tin liên hệ"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Chưa cấu hình liên kết tùy chỉnh nào. Thêm một liên kết ở trên!"
+
+#: 
+msgid "No email"
+msgstr "Không có email"
+
+#: 
+msgid "No files were deleted."
+msgstr "Không có tệp nào bị xóa."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Không có trợ giúp cho plugin này."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Không có người để thêm - tất cả đã có trong giỏ"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Không có người để thêm - bộ lọc không trả về kết quả nào"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Ngày mất không hợp lệ"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Số ngày người dùng có để đăng ký 2FA sau khi bắt buộc. Đặt là 0 để bắt buộc ngay lập tức. Rút ngắn thời gian ân hạn đang hoạt động có thể khóa người dùng ngay lập tức."
+
+#: 
+msgid "Offline"
+msgstr "Ngoại tuyến"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Chỉ thực hiện điều này sau khi vấn đề gốc đã được khắc phục. Bạn vẫn cần nhấp vào Bật để plugin chạy lại."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Vui lòng xác nhận kích hoạt người này"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Vui lòng xác nhận vô hiệu hóa người này"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Đã cập nhật trạng thái plugin"
+
+#: 
+msgid "Registered"
+msgstr "Đã đăng ký"
+
+#: 
+msgid "Reload"
+msgstr "Tải lại"
+
+#: 
+msgid "Reload command sent"
+msgstr "Đã gửi lệnh tải lại"
+
+#: 
+msgid "Rename"
+msgstr "Đổi tên"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Đổi tên Kiosk"
+
+#: 
+msgid "Reset Complete"
+msgstr "Đặt lại hoàn tất"
+
+#: 
+msgid "Reset Settings"
+msgstr "Đặt lại cài đặt"
+
+#: 
+msgid "Resetting..."
+msgstr "Đang đặt lại..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Các tác vụ theo lịch không chạy"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Thiếu mã bảo mật. Vui lòng làm mới trang."
+
+#: 
+msgid "Select…"
+msgstr "Chọn…"
+
+#: 
+msgid "Sending..."
+msgstr "Đang gửi..."
+
+#: 
+msgid "Sending…"
+msgstr "Đang gửi…"
+
+#: 
+msgid "Settings reset"
+msgstr "Đã đặt lại cài đặt"
+
+#: 
+msgid "Settings saved"
+msgstr "Đã lưu cài đặt"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Đã lưu cài đặt. Đang làm mới thông tin nâng cấp..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Chỉ hiển thị người đang hoạt động."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Chỉ hiển thị người không hoạt động."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Đã xóa thành công"
+
+#: 
+msgid "Testing..."
+msgstr "Đang kiểm tra..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Cơ sở dữ liệu đã được xóa sạch. Hệ thống đã sẵn sàng để bắt đầu lại."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Trong khi đó, cơ chế dự phòng khi tải trang vẫn tiếp tục hoạt động. Thay đổi thời gian ChurchCRM chờ trước khi hiển thị cảnh báo này bằng cài đặt %1$s, hoặc đặt là 0 để ẩn nó."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Người này không hoạt động"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Chức năng này tìm tọa độ bản đồ cho mọi gia đình còn thiếu, sử dụng OpenStreetMap. Nó xử lý các gia đình theo từng đợt 50, khoảng một phút mỗi đợt. Bạn có thể để trang này mở trong khi nó chạy. Tiếp tục?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Người này đã qua đời"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Thao tác này sẽ xóa tất cả các giá trị đã cấu hình cho plugin này. Không thể hoàn tác."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Thao tác này sẽ xóa vĩnh viễn các tệp plugin khỏi ổ đĩa và xóa cài đặt của nó. Không thể hoàn tác."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL không được chứa thẻ HTML"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Lỗi không mong muốn. Vui lòng thử lại."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Gỡ cài đặt Plugin"
+
+#: 
+msgid "Upcoming"
+msgstr "Sắp tới"
+
+#: 
+msgid "Valid Until"
+msgstr "Có hiệu lực đến"
+
+#: 
+msgid "View active only"
+msgstr "Chỉ xem đang hoạt động"
+
+#: 
+msgid "View all"
+msgstr "Xem tất cả"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Xem tất cả (bao gồm không hoạt động)"
+
+#: 
+msgid "View inactive only"
+msgstr "Chỉ xem không hoạt động"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Cảnh báo trên bảng điều khiển quản trị khi các tác vụ hẹn giờ nền chưa chạy trong số giờ này. 26 cho phép chạy cron hàng ngày cộng thêm một chút sai lệch. Đặt là 0 để tắt cảnh báo."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Nếu không có bộ lập lịch, các tác vụ này chỉ chạy khi có người tải trang, vì vậy một ngày trong tuần yên ắng sẽ không gửi bất kỳ email theo lịch nào. Thêm một mục cron chạy trình chạy tác vụ mỗi giờ, với cùng người dùng mà máy chủ web của bạn đang chạy"
+
+#: 
+msgid "check-outs"
+msgstr "lượt check-out"
+
+#: 
+msgid "deceased"
+msgstr "đã qua đời"
+
+#: 
+msgid "event"
+msgstr "sự kiện"
+
+#: 
+msgid "events?"
+msgstr "sự kiện?"
+
+#: 
+msgid "files"
+msgstr "tệp"
+
+#: 
+msgid "people from cart?"
+msgstr "người khỏi giỏ?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip phải là số không hoặc số nguyên dương"
+
+#: 
+msgid "view families missing an email"
+msgstr "xem các gia đình thiếu email"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Người mua trong năm tài chính này"
+
+#: 
+msgid "Current"
+msgstr "Hiện tại"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Vật phẩm đã quyên góp (Năm tài chính này)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Tên đăng nhập phải có tối đa %d ký tự!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Số tiền quyên góp được trong năm tài chính này"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s phải là một địa chỉ web https:// đầy đủ, ví dụ: https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Tài khoản có quyền hạn chế. Vui lòng liên hệ quản trị viên."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Đã xảy ra lỗi khi hiển thị trang lỗi."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Mỗi địa chỉ phải bắt đầu bằng https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Tạo nhãn"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Tạo nhãn thư"
+
+#: 
+msgid "Labels"
+msgstr "Nhãn"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Nhãn thư cho những người trong giỏ của bạn. Người không có địa chỉ riêng sẽ được gửi theo địa chỉ gia đình của họ."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Tùy chọn. Liên kết đến các tài khoản của nhà thờ, được hiển thị cho thành viên trên các trang như chân trang cổng thông tin. Để trống một trường để ẩn mạng đó."
+
+#: 
+msgid "Options"
+msgstr "Tùy chọn"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Tác vụ theo lịch"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Đang hoạt động, còn lại {{seconds}} giây"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Khoảng thời gian dự kiến giữa các lần chạy (giờ): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Gia đình bị bỏ qua (không có địa chỉ email lưu trữ): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Gia đình không thể định vị địa lý: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Gia đình sẽ nhận email xác nhận: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Thành viên đã sao chép: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Không được liệt kê ở đây: còn {{total}} nữa"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Người nhận: {{total}} — quá nhiều cho liên kết mailto:. Hãy sử dụng Sao chép địa chỉ thay thế."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Quá nhiều người nhận cho ứng dụng email ({{total}} > {{max}}). Hãy sử dụng Sao chép địa chỉ thay thế."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "còn lại {{minutes}} phút"
+

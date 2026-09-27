@@ -17814,3 +17814,683 @@ msgstr "すべての家族の座標を更新"
 msgid "Update Coordinates"
 msgstr "座標を更新"
 
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%sはこの家族の世帯主でしたが、故人としてマークされました。新しい世帯主を割り当ててください。"
+
+#: 
+msgid "Accept"
+msgstr "承認"
+
+#: 
+msgid "Active Now"
+msgstr "現在アクティブ"
+
+#: 
+msgid "Adding..."
+msgstr "追加中..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "メールアドレスをお持ちの会員は全員、このリストに登録されています!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "すべてのMailChimp購読者はChurchCRMに登録されています!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "ファイルの削除中にエラーが発生しました。"
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "本当によろしいですか?この操作はすべてのデータを消去し、工場出荷時の設定に戻します。"
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "すべてのログファイルを削除してもよろしいですか?この操作は元に戻せません。"
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "キオスクを削除してもよろしいですか"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "リンクを削除してもよろしいですか"
+
+#: 
+msgid "Assignment"
+msgstr "割り当て"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "バックグラウンドジョブ(誕生日メールおよびすべてのプラグインのスケジュールタスク)は、このインストールでまだ一度も実行されていません。"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "バックグラウンドジョブ(誕生日メールおよびすべてのプラグインのスケジュールタスク)は、最後に%sに実行されました。"
+
+#: 
+msgid "Backing up..."
+msgstr "バックアップ中..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "バックアップをダウンロードしました。"
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "バックアップが正常にアップロードされました"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "自分自身の有効状態は変更できません"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetingsのエクスポートが正常に完了しました"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "変更が正常に保存されました"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "全員をチェックアウトしてすべて無効化する"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "全員をチェックアウトしてこのイベントを無効化しますか?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "パスワードリセットのリンクが記載されたメールをご確認ください"
+
+#: 
+msgid "Close stuck events?"
+msgstr "停止したイベントを終了しますか?"
+
+#: 
+msgid "Comments"
+msgstr "コメント"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "メールのプレビューを読み込めませんでした。閉じてから、もう一度お試しください。"
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "バックアップを作成してアップロードしています。数分かかる場合があります..."
+
+#: 
+msgid "Database reset failed."
+msgstr "データベースのリセットに失敗しました。"
+
+#: 
+msgid "Deceased"
+msgstr "故人"
+
+#: 
+msgid "Default admin credentials"
+msgstr "デフォルトの管理者認証情報"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "キオスクを削除"
+
+#: 
+msgid "Deleted Files"
+msgstr "削除されたファイル"
+
+#: 
+msgid "Deleting..."
+msgstr "削除中..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "ダウンロードが添付ファイルヘッダーなしで返されました。"
+
+#: 
+msgid "Error deleting log file."
+msgstr "ログファイルの削除中にエラーが発生しました。"
+
+#: 
+msgid "Error deleting log files."
+msgstr "ログファイルの削除中にエラーが発生しました。"
+
+#: 
+msgid "Error downloading log file."
+msgstr "ログファイルのダウンロード中にエラーが発生しました。"
+
+#: 
+msgid "Error initiating download."
+msgstr "ダウンロードの開始中にエラーが発生しました。"
+
+#: 
+msgid "Error loading log file."
+msgstr "ログファイルの読み込み中にエラーが発生しました。"
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "自己登録エントリの読み込み中にエラーが発生しました"
+
+#: 
+msgid "Errors"
+msgstr "エラー"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "印刷用ディレクトリおよびCSVエクスポートから故人の会員を除外します。"
+
+#: 
+msgid "Failed Files"
+msgstr "失敗したファイル"
+
+#: 
+msgid "Failed to add link"
+msgstr "リンクの追加に失敗しました"
+
+#: 
+msgid "Failed to add option"
+msgstr "オプションの追加に失敗しました"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "イベントの終了に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to delete"
+msgstr "削除に失敗しました"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "キオスク登録の有効化に失敗しました"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSVのエクスポートに失敗しました"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "監査ログの読み込みに失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "キオスクの名前変更に失敗しました"
+
+#: 
+msgid "Failed to save changes"
+msgstr "変更の保存に失敗しました"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "プラグインの更新に失敗しました"
+
+#: 
+msgid "Family Id"
+msgstr "家族ID"
+
+#: 
+msgid "Final Confirmation"
+msgstr "最終確認"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "家族の位置情報を取得しています…数分かかる場合があります。このページは開いたままにしておけます。"
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "家族の位置情報を取得しています…{{total}}件中{{done}}件処理済み、{{geocoded}}件の位置を特定しました。"
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "世帯主の更新が必要です"
+
+#: 
+msgid "Helpful Links"
+msgstr "便利なリンク"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "ディレクトリから故人を非表示にする"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "印刷用ディレクトリおよびCSVエクスポートから故人の会員を非表示にします。"
+
+#: 
+msgid "Identify"
+msgstr "識別"
+
+#: 
+msgid "Identify command sent"
+msgstr "識別コマンドを送信しました"
+
+#: 
+msgid "Individual"
+msgstr "個人"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "内部設定: バックグラウンドタイマージョブが最後に完了した日時(YYYY-MM-DD HH:MM:SS)。手動で編集しないでください。"
+
+#: 
+msgid "Item deleted successfully"
+msgstr "項目が正常に削除されました"
+
+#: 
+msgid "Kiosk Name"
+msgstr "キオスク名"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "キオスクが承認されました"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "キオスクが正常に削除されました"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "キオスクを承認する必要があります"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "キオスクの名前が変更されました"
+
+#: 
+msgid "Last seen"
+msgstr "最終アクセス"
+
+#: 
+msgid "Link"
+msgstr "リンク"
+
+#: 
+msgid "Link added successfully"
+msgstr "リンクが正常に追加されました"
+
+#: 
+msgid "Link deleted"
+msgstr "リンクが削除されました"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "リンク名にHTMLタグを含めることはできません"
+
+#: 
+msgid "Living"
+msgstr "生存"
+
+#: 
+msgid "Log settings saved"
+msgstr "ログ設定が保存されました"
+
+#: 
+msgid "Login Name is Required"
+msgstr "ログイン名は必須です"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "この人物を有効としてマークしました"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "この人物を無効としてマークしました"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "ページの読み込みによって起動されるバックグラウンドタイマージョブの実行間隔(分)の最小値です。忙しい日曜日の朝にページビューのたびにジョブが実行されるのを防ぎます。コマンドラインでの実行には適用されません。ページを読み込むたびに実行するには0に設定してください。"
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "新規ユーザーはウェルカムメールを受信せず、生成されたパスワードが表示されることもありません。アカウント作成後は、システムユーザーの「パスワード変更」から設定するか、事前にメールを設定してください。"
+
+#: 
+msgid "No changes to save"
+msgstr "保存する変更はありません"
+
+#: 
+msgid "No contact info"
+msgstr "連絡先情報がありません"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "カスタムリンクが設定されていません。上のフォームから追加してください!"
+
+#: 
+msgid "No email"
+msgstr "メールアドレスなし"
+
+#: 
+msgid "No files were deleted."
+msgstr "ファイルは削除されませんでした。"
+
+#: 
+msgid "No help available for this plugin."
+msgstr "このプラグインのヘルプはありません。"
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "追加できる人物がいません - 全員すでにカートに入っています"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "追加できる人物がいません - フィルターの結果が0件でした"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "有効な死亡日ではありません"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "2FAが義務化された後、ユーザーが登録するまでの猶予日数です。0に設定するとすぐに強制されます。有効な猶予期間を短縮すると、ユーザーが即座にロックアウトされる可能性があります。"
+
+#: 
+msgid "Offline"
+msgstr "オフライン"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "これは根本的な問題を修正した後にのみ行ってください。プラグインを再度実行するには、有効化をクリックする必要があります。"
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "この人物の有効化を確認してください"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "この人物の無効化を確認してください"
+
+#: 
+msgid "Plugin status updated"
+msgstr "プラグインのステータスが更新されました"
+
+#: 
+msgid "Registered"
+msgstr "登録済み"
+
+#: 
+msgid "Reload"
+msgstr "再読み込み"
+
+#: 
+msgid "Reload command sent"
+msgstr "再読み込みコマンドを送信しました"
+
+#: 
+msgid "Rename"
+msgstr "名前を変更"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "キオスクの名前を変更"
+
+#: 
+msgid "Reset Complete"
+msgstr "リセット完了"
+
+#: 
+msgid "Reset Settings"
+msgstr "設定をリセット"
+
+#: 
+msgid "Resetting..."
+msgstr "リセット中..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "スケジュールされたタスクが実行されていません"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "セキュリティトークンがありません。ページを更新してください。"
+
+#: 
+msgid "Select…"
+msgstr "選択…"
+
+#: 
+msgid "Sending..."
+msgstr "送信中..."
+
+#: 
+msgid "Sending…"
+msgstr "送信中…"
+
+#: 
+msgid "Settings reset"
+msgstr "設定をリセットしました"
+
+#: 
+msgid "Settings saved"
+msgstr "設定が保存されました"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "設定が保存されました。アップグレード情報を更新しています..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "有効な人物のみを表示しています。"
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "無効な人物のみを表示しています。"
+
+#: 
+msgid "Successfully deleted"
+msgstr "正常に削除されました"
+
+#: 
+msgid "Testing..."
+msgstr "テスト中..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "データベースがクリアされました。システムは新規スタートの準備ができています。"
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "その間もページ読み込み時のフォールバックは機能し続けます。この警告が表示されるまでの待機時間は%1$s設定で変更できます。0に設定すると非表示になります。"
+
+#: 
+msgid "This Person is Inactive"
+msgstr "この人物は無効です"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "OpenStreetMapを使用して、地図座標が未設定のすべての家族の座標を検索します。50件ずつのバッチで処理され、1バッチあたり約1分かかります。実行中もこのページを開いたままにしておけます。続行しますか?"
+
+#: 
+msgid "This person is deceased"
+msgstr "この人物は故人です"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "これにより、このプラグインの設定値がすべてクリアされます。この操作は元に戻せません。"
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "これにより、プラグインファイルがディスクから完全に削除され、設定もクリアされます。この操作は元に戻せません。"
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URLにHTMLタグを含めることはできません"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "予期しないエラーが発生しました。もう一度お試しください。"
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "プラグインをアンインストール"
+
+#: 
+msgid "Upcoming"
+msgstr "今後の予定"
+
+#: 
+msgid "Valid Until"
+msgstr "有効期限"
+
+#: 
+msgid "View active only"
+msgstr "有効のみ表示"
+
+#: 
+msgid "View all"
+msgstr "すべて表示"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "すべて表示(無効を含む)"
+
+#: 
+msgid "View inactive only"
+msgstr "無効のみ表示"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "バックグラウンドタイマージョブがこの時間数(時間)実行されていない場合、管理ダッシュボードに警告を表示します。26時間にすると、1日1回のcronと多少のずれを許容できます。警告を無効にするには0に設定してください。"
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "スケジューラーがない場合、これらのジョブは誰かがページを読み込んだときにのみ実行されるため、アクセスの少ない平日にはスケジュールされたメールがまったく送信されません。Webサーバーを実行しているのと同じユーザーで、タスクランナーを1時間ごとに実行するcronエントリを追加してください"
+
+#: 
+msgid "check-outs"
+msgstr "チェックアウト"
+
+#: 
+msgid "deceased"
+msgstr "故人"
+
+#: 
+msgid "event"
+msgstr "イベント"
+
+#: 
+msgid "events?"
+msgstr "イベント?"
+
+#: 
+msgid "files"
+msgstr "ファイル"
+
+#: 
+msgid "people from cart?"
+msgstr "人をカートから削除しますか?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skipは0または正の整数である必要があります"
+
+#: 
+msgid "view families missing an email"
+msgstr "メールアドレスが未設定の家族を表示"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "今会計年度の購入者"
+
+#: 
+msgid "Current"
+msgstr "現在"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "寄付された品目(今会計年度)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "ログイン名は%d文字以下でなければなりません!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "今会計年度の集計額"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%sは完全なhttps://のウェブアドレスである必要があります。例: https://example.org/yourchurch"
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "アカウントの権限が制限されています。管理者にお問い合わせください。"
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "エラーページの表示中にエラーが発生しました。"
+
+#: 
+msgid "Each address must start with https://"
+msgstr "各アドレスはhttps://で始まる必要があります"
+
+#: 
+msgid "Generate Labels"
+msgstr "ラベルを生成"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "郵送ラベルを生成"
+
+#: 
+msgid "Labels"
+msgstr "ラベル"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "カート内の人物の郵送ラベルです。個人の住所がない場合は、家族の住所が使用されます。"
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "任意項目です。教会自身のアカウントへのリンクで、ポータルのフッターなどのページで会員に表示されます。フィールドを空欄にすると、そのネットワークは非表示になります。"
+
+#: 
+msgid "Options"
+msgstr "オプション"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "スケジュールされたタスク"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "実行中、残り{{seconds}}秒"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "実行間隔の目安(時間): %d"
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "スキップされた家族(登録されたメールアドレスなし): {{total}}件"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "位置情報を取得できなかった家族: {{total}}件"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "確認メールを受け取る家族: {{total}}件"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "コピーされた会員: {{total}}件"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "ここに表示されていない件数: あと{{total}}件"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "宛先: {{total}}件 — mailto:リンクには多すぎます。代わりに「アドレスをコピー」を使用してください。"
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "メールクライアントに対して宛先が多すぎます({{total}} > {{max}})。代わりに「アドレスをコピー」を使用してください。"
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "残り{{minutes}}分"
+
