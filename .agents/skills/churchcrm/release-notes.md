@@ -204,14 +204,26 @@ Release notes are the third source in the marketing evidence hierarchy, after th
 
 ## Step 5 — Apply to the draft (no paste)
 
-Write the notes to `/tmp/rn/$TAG.md`, show George the full text, and after George approves:
+Show George the full text. After George approves, apply the notes file **from the branch that holds the approved text**, not whatever is checked out locally:
 
 ```bash
+BRANCH=<branch with changelog/$TAG.md>        # e.g. the release-notes PR branch
+git fetch origin "$BRANCH"
+git show "origin/$BRANCH:changelog/$TAG.md" > "/tmp/rn/$TAG.md"
+
 gh release edit "$TAG" -R ChurchCRM/CRM \
+  --tag "$TAG" \
   --notes-file "/tmp/rn/$TAG.md"
+
+# Verify before anyone clicks Publish.
+gh release view "$TAG" -R ChurchCRM/CRM --json tagName,isDraft,targetCommitish
 ```
 
+`--tag "$TAG"` is required. A draft has no git tag yet, and editing it without an explicit tag can leave it on GitHub's placeholder tag (`untagged-<hash>`). Publishing would then ship that as the version, and every ChurchCRM install reads the version from the tag. 7.7.1 shipped that way. Stop if `tagName` is not exactly `$TAG`.
+
 Only edit a **draft**. If the release is already published, show George the diff and apply it only after George explicitly approves. Never publish from this skill: publishing is George's separate approval in `release-management.md`.
+
+Before George publishes, the "Start <next> release" PR must be merged, so that `release-bookkeeping.yml` reads the next version from master. Otherwise it stops.
 
 After George publishes, `release-bookkeeping.yml` copies the notes into `changelog/$TAG.md` and CHANGELOG.md, and `release-announcement.md` / `social-media-release.md` reuse them. There is nothing further to paste.
 

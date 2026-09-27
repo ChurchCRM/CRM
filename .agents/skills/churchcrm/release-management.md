@@ -203,6 +203,7 @@ Never infer publication approval from approval to create the draft.
 After publication, verify:
 
 - Public GitHub release exists at the expected version.
+- Its tag is exactly the version (`gh release view <version> --json tagName`), never an `untagged-<hash>` placeholder. Installs read their update version from the tag.
 - Tag points to the intended release commit.
 - Release ZIP exists, has the expected version/name, and is non-empty.
 - Release-triggered nightly/post-release automation starts and completes as expected.
