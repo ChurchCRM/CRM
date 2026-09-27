@@ -425,16 +425,16 @@ before(() => {
     // exception `private.volunteer.assignment.spec.js` documents.
     cy.then(() => {
         dbOk(
-            `INSERT INTO volunteer_occurrence_vocc
-               (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_StartDateTime,
-                vocc_EndDateTime, vocc_Status, vocc_GeneratedDate)
-             VALUES (?, NULL, ?, ?, ?, 'scheduled', NOW())`,
-            [
-                scheduleId,
-                isoDate(-21),
-                `${isoDate(-21)} 10:30:00`,
-                `${isoDate(-21)} 11:45:00`,
-            ],
+            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (?, ?, '', '', ?, ?, 0)`,
+            [CHURCH_SERVICE_TYPE, `${EVENT_TITLE} Past`, `${isoDate(-21)} 10:30:00`, `${isoDate(-21)} 11:45:00`],
+        ).then((event) =>
+            dbOk(
+                `INSERT INTO volunteer_occurrence_vocc
+                   (vocc_vsch_ID, vocc_event_id, vocc_OccurrenceDate, vocc_Status, vocc_GeneratedDate)
+                 VALUES (?, ?, ?, 'scheduled', NOW())`,
+                [scheduleId, event.insertId, isoDate(-21)],
+            ),
         );
         dbOk(
             `SELECT vocc_ID FROM volunteer_occurrence_vocc

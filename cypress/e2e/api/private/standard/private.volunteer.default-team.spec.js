@@ -322,8 +322,8 @@ describe("Volunteer v2 — every ministry has at least one team (#9701)", () => 
             cy.dbQuery(
                 `INSERT INTO volunteer_schedule_vsch
                     (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_event_type_id,
-                     vsch_RecurType, vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
-                 VALUES (?, NULL, ?, 'event_type', ?, 'none', '2026-09-13', 56, 1)`,
+                     vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
+                 VALUES (?, NULL, ?, 'event_type', ?, '2026-09-13', 56, 1)`,
                 [ministryId, `${PREFIX} Direct Insert`, EVENT_TYPE_CHURCH_SERVICE],
             ).then((result) => {
                 expect(result.error, "vsch_vtem_ID is NOT NULL").to.not.eq(null);

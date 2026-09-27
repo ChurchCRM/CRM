@@ -585,16 +585,18 @@ describe("Volunteer v2 e2e — #9714 scenario 1, Coffee Bar", () => {
         ).then((resp) => {
             const occurrence = resp.body.occurrence;
             expect(occurrence.eventId).to.be.a("number");
-            expect(occurrence.startDateTime).to.eq(null);
+            expect(occurrence).to.not.have.property("startDateTime");
             expect(occurrence.start).to.include("10:30:00");
             expect(occurrence.end).to.include("11:45:00");
         });
 
+        // The occurrence row has nowhere to keep a time of its own (D20).
         dbOk(
-            `SELECT vocc_StartDateTime FROM volunteer_occurrence_vocc WHERE vocc_ID = ?`,
-            [occurrenceId],
+            `SELECT COUNT(*) AS c FROM information_schema.COLUMNS
+              WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'volunteer_occurrence_vocc'
+                AND COLUMN_NAME IN ('vocc_StartDateTime', 'vocc_EndDateTime')`,
         ).then((rows) => {
-            expect(rows[0].vocc_StartDateTime).to.eq(null);
+            expect(Number(rows[0].c)).to.eq(0);
         });
     });
 
