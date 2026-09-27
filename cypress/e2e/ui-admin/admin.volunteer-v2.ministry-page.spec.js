@@ -195,7 +195,7 @@ describe("Volunteer v2 ministry page (#9701)", () => {
             freshAdminLogin();
         });
 
-        it("names six tabs in the order the product owner chose", () => {
+        it("names seven tabs in the order the product owner chose", () => {
             cy.visit(ministryUrl());
             cy.get("#volunteer-ministry-tabs").should("be.visible");
 
@@ -207,6 +207,7 @@ describe("Volunteer v2 ministry page (#9701)", () => {
                     "Volunteers",
                     "Schedules",
                     "Occurrences",
+                    "Calendar",
                     "Help Wanted",
                 ]);
             });
