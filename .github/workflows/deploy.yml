@@ -1,0 +1,38 @@
+name: Deploy Church CRM to Hetzner Cloud
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  deploy:
+    name: Deploy Church CRM to Production
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+            WEB_ROOT="/var/www/html/churchcrm"
+            echo "[CI/CD] Deploying Church CRM to $WEB_ROOT..."
+            
+            cd "$WEB_ROOT"
+            if [ -d ".git" ]; then
+              sudo git fetch origin
+              sudo git pull origin master || sudo git pull origin main
+            fi
+            
+            sudo chown -R www-data:www-data "$WEB_ROOT"
+            sudo chmod -R 755 "$WEB_ROOT"
+            sudo systemctl reload apache2
+            echo "[CI/CD] Church CRM deployment successful!"
