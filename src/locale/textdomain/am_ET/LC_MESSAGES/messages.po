@@ -17852,6 +17852,12 @@ msgid "Set up now"
 msgstr "አሁን ያዋቅሩ"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "ባለሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀን አለዎት።"
+msgstr[1] "ባለሁለት-ደረጃ ማረጋገጫ ያስፈልጋል። ለመመዝገብ %d ቀናት አሉዎት።"
+
+#: 
 msgid "Unknown family"
 msgstr "ያልታወቀ ቤተሰብ"
 
@@ -18442,4 +18448,108 @@ msgstr "skip ዜሮ ወይም አዎንታዊ ኢንቲጀር መሆን አለ�
 #: 
 msgid "view families missing an email"
 msgstr "ኢሜይል የሌላቸውን ቤተሰቦች ይመልከቱ"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "በዚህ በጀት ዓመት ገዢዎች"
+
+#: 
+msgid "Current"
+msgstr "የአሁኑ"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "በዚህ በጀት ዓመት የተለገሱ ዕቃዎች"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "መግቢያ ስም %d ወይም ከዚያ ያነሱ ፊደላት ሊኖረው ይገባል!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "በዚህ በጀት ዓመት የተሰበሰበ መጠን"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s ሙሉ የ https:// ድረ-ገጽ አድራሻ መሆን አለበት፣ ለምሳሌ https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "መለያው የተገደበ ፈቃድ አለው። አስተዳዳሪን ያነጋግሩ።"
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "የስህተት ገጹን በማሳየት ላይ ሳለ ስህተት ተከስቷል።"
+
+#: 
+msgid "Each address must start with https://"
+msgstr "እያንዳንዱ አድራሻ በ https:// መጀመር አለበት"
+
+#: 
+msgid "Generate Labels"
+msgstr "ስያሜዎችን ፍጠር"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "የፖስታ ስያሜዎችን ፍጠር"
+
+#: 
+msgid "Labels"
+msgstr "ስያሜዎች"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "በቅርጫትዎ ውስጥ ላሉ ሰዎች የፖስታ ስያሜዎች። የራሱ አድራሻ የሌለው ሰው በቤተሰቡ አድራሻ ይላካል።"
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "አማራጭ ነው። ወደ ቤተክርስቲያኗ የራሷ መለያዎች የሚያገናኙ አገናኞች፣ ለምእመናን በፖርታል ግርጌ ገጽ ባሉ ገጾች ላይ ይታያሉ። ያንን አውታረ መረብ ለመደበቅ መስኩን ባዶ ይተውት።"
+
+#: 
+msgid "Options"
+msgstr "አማራጮች"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "የተያዙ ተግባራት"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "ገቢር ነው፣ የቀሩ ሰከንዶች፦ {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "በሩጫዎች መካከል የሚጠበቅ ልዩነት (ሰዓታት)፦ %d።"
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "የታለፉ ቤተሰቦች (የኢሜይል አድራሻ ስለሌላቸው)፦ {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "በጂኦኮድ ሊገለጹ ያልቻሉ ቤተሰቦች፦ {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "የማረጋገጫ ኢሜይል የሚደርሳቸው ቤተሰቦች፦ {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "የተቀዱ አባላት፦ {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "እዚህ ያልተዘረዘሩ፦ ተጨማሪ {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "ተቀባዮች፦ {{total}} — ለ mailto: አገናኝ በጣም ብዙ ናቸው። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።"
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባዮች አሉ ({{total}} > {{max}})። በምትኩ አድራሻዎችን ቅዳ የሚለውን ይጠቀሙ።"
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} ደቂቃ ቀርቷል"
 

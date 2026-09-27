@@ -17295,6 +17295,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "ഇമെയിൽ കോൺഫിഗർ ചെയ്തിട്ടില്ല. സിസ്റ്റം ക്രമീകരണങ്ങളിൽ SMTP ക്രമീകരണങ്ങൾ കോൺഫിഗർ ചെയ്യുക."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "%d കുടുംബത്തിന് ഇമെയിൽ അയച്ചു."
+msgstr[1] "%d കുടുംബങ്ങൾക്ക് ഇമെയിൽ അയച്ചു."
+
+#: 
 msgid "Enter a street address first."
 msgstr "ആദ്യം ഒരു തെരുവ് വിലാസം നൽകുക."
 
@@ -17365,6 +17371,12 @@ msgstr "തിരഞ്ഞെടുത്ത നിക്ഷേപങ്ങൾ�
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "സാധുതയുള്ള നിക്ഷേപ ഐഡികളൊന്നും നൽകിയിട്ടില്ല"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF %d കുടുംബത്തിന് വിജയകരമായി ഇമെയിൽ ചെയ്തു."
+msgstr[1] "PDF %d കുടുംബങ്ങൾക്ക് വിജയകരമായി ഇമെയിൽ ചെയ്തു."
 
 #: 
 msgid "Partial Send"
@@ -17797,6 +17809,12 @@ msgid "Set up now"
 msgstr "ഇപ്പോൾ സജ്ജമാക്കുക"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "ദ്വിഘടക പ്രാമാണീകരണം ആവശ്യമാണ്. ചേരാൻ നിങ്ങൾക്ക് %d ദിവസം ഉണ്ട്."
+msgstr[1] "ദ്വിഘടക പ്രാമാണീകരണം ആവശ്യമാണ്. ചേരാൻ നിങ്ങൾക്ക് %d ദിവസങ്ങൾ ഉണ്ട്."
+
+#: 
 msgid "Unknown family"
 msgstr "അജ്ഞാത കുടുംബം"
 
@@ -17811,4 +17829,684 @@ msgstr "എല്ലാ കുടുംബ കോർഡിനേറ്റുക�
 #: 
 msgid "Update Coordinates"
 msgstr "കോർഡിനേറ്റുകൾ അപ്ഡേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s ഈ കുടുംബത്തിന്റെ കുടുംബനാഥനായിരുന്നു, മരണപ്പെട്ടതായി രേഖപ്പെടുത്തിയിരിക്കുന്നു. ദയവായി പുതിയൊരു കുടുംബനാഥനെ നിശ്ചയിക്കുക."
+
+#: 
+msgid "Accept"
+msgstr "അംഗീകരിക്കുക"
+
+#: 
+msgid "Active Now"
+msgstr "ഇപ്പോൾ സജീവം"
+
+#: 
+msgid "Adding..."
+msgstr "ചേർക്കുന്നു..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "ഇമെയിൽ ഉള്ള എല്ലാ CRM അംഗങ്ങളും ഈ ലിസ്റ്റിൽ സബ്സ്ക്രൈബ് ചെയ്തിട്ടുണ്ട്!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "എല്ലാ MailChimp സബ്സ്ക്രൈബർമാരും ChurchCRM-ൽ ഉണ്ട്!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "ഫയലുകൾ ഇല്ലാതാക്കുന്നതിനിടെ ഒരു പിശക് സംഭവിച്ചു."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "നിങ്ങൾക്ക് പൂർണ്ണമായും ഉറപ്പുണ്ടോ? ഇത് എല്ലാ ഡാറ്റയും മായ്ച്ച് ഫാക്ടറി ഡിഫോൾട്ട് പുനഃസ്ഥാപിക്കും."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "എല്ലാ ലോഗ് ഫയലുകളും ഇല്ലാതാക്കണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ? ഈ പ്രവർത്തനം പഴയപടിയാക്കാൻ കഴിയില്ല."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "കിയോസ്ക് ഇല്ലാതാക്കണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "ലിങ്ക് ഇല്ലാതാക്കണമെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ"
+
+#: 
+msgid "Assignment"
+msgstr "നിയമനം"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "ബാക്ക്ഗ്രൗണ്ട് ജോലികൾ (ജന്മദിന ഇമെയിലുകളും എല്ലാ പ്ലഗിൻ ഷെഡ്യൂൾഡ് ടാസ്കുകളും) ഈ ഇൻസ്റ്റലേഷനിൽ ഇതുവരെ പ്രവർത്തിച്ചിട്ടില്ല."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "ബാക്ക്ഗ്രൗണ്ട് ജോലികൾ (ജന്മദിന ഇമെയിലുകളും എല്ലാ പ്ലഗിൻ ഷെഡ്യൂൾഡ് ടാസ്കുകളും) അവസാനമായി %s-ന് പ്രവർത്തിച്ചു."
+
+#: 
+msgid "Backing up..."
+msgstr "ബാക്കപ്പ് എടുക്കുന്നു..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "ബാക്കപ്പ് ഡൗൺലോഡ് ചെയ്തു."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "ബാക്കപ്പ് വിജയകരമായി അപ്‌ലോഡ് ചെയ്തു"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "സ്വന്തം ആക്റ്റീവ് സ്റ്റാറ്റസ് മാറ്റാൻ കഴിയില്ല"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings എക്സ്പോർട്ട് വിജയകരമായി പൂർത്തിയായി"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "മാറ്റങ്ങൾ വിജയകരമായി സേവ് ചെയ്തു"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "എല്ലാവരെയും ചെക്ക്-ഔട്ട് ചെയ്ത് നിർജ്ജീവമാക്കുക"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "എല്ലാവരെയും ചെക്ക്-ഔട്ട് ചെയ്ത് ഈ ഇവന്റ് നിർജ്ജീവമാക്കണോ?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "പാസ്‌വേഡ് പുനഃസജ്ജീകരണ ലിങ്കിനായി നിങ്ങളുടെ ഇമെയിൽ പരിശോധിക്കുക"
+
+#: 
+msgid "Close stuck events?"
+msgstr "കുടുങ്ങിക്കിടക്കുന്ന ഇവന്റുകൾ അടയ്ക്കണോ?"
+
+#: 
+msgid "Comments"
+msgstr "അഭിപ്രായങ്ങൾ"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "ഇമെയിൽ പ്രിവ്യൂ ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി അടച്ച് വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "ബാക്കപ്പ് സൃഷ്ടിച്ച് അപ്‌ലോഡ് ചെയ്യുന്നു. ഇതിന് കുറച്ച് മിനിറ്റുകൾ എടുത്തേക്കാം..."
+
+#: 
+msgid "Database reset failed."
+msgstr "ഡാറ്റാബേസ് റീസെറ്റ് പരാജയപ്പെട്ടു."
+
+#: 
+msgid "Deceased"
+msgstr "മരണപ്പെട്ടവർ"
+
+#: 
+msgid "Default admin credentials"
+msgstr "ഡിഫോൾട്ട് അഡ്മിൻ ക്രെഡൻഷ്യലുകൾ"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "കിയോസ്ക് ഇല്ലാതാക്കുക"
+
+#: 
+msgid "Deleted Files"
+msgstr "ഇല്ലാതാക്കിയ ഫയലുകൾ"
+
+#: 
+msgid "Deleting..."
+msgstr "ഇല്ലാതാക്കുന്നു..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "ഡൗൺലോഡ് അറ്റാച്ച്മെന്റ് ഹെഡറുകളില്ലാതെ തിരികെ ലഭിച്ചു."
+
+#: 
+msgid "Error deleting log file."
+msgstr "ലോഗ് ഫയൽ ഇല്ലാതാക്കുന്നതിൽ പിശക്."
+
+#: 
+msgid "Error deleting log files."
+msgstr "ലോഗ് ഫയലുകൾ ഇല്ലാതാക്കുന്നതിൽ പിശക്."
+
+#: 
+msgid "Error downloading log file."
+msgstr "ലോഗ് ഫയൽ ഡൗൺലോഡ് ചെയ്യുന്നതിൽ പിശക്."
+
+#: 
+msgid "Error initiating download."
+msgstr "ഡൗൺലോഡ് ആരംഭിക്കുന്നതിൽ പിശക്."
+
+#: 
+msgid "Error loading log file."
+msgstr "ലോഗ് ഫയൽ ലോഡ് ചെയ്യുന്നതിൽ പിശക്."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "സ്വയം-രജിസ്റ്റർ ചെയ്ത എൻട്രികൾ ലോഡ് ചെയ്യുന്നതിൽ പിശക്"
+
+#: 
+msgid "Errors"
+msgstr "പിശകുകൾ"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "മരണപ്പെട്ട അംഗങ്ങളെ പ്രിന്റ് ചെയ്ത ഡയറക്ടറിയിൽ നിന്നും CSV എക്സ്പോർട്ടുകളിൽ നിന്നും ഒഴിവാക്കുക."
+
+#: 
+msgid "Failed Files"
+msgstr "പരാജയപ്പെട്ട ഫയലുകൾ"
+
+#: 
+msgid "Failed to add link"
+msgstr "ലിങ്ക് ചേർക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to add option"
+msgstr "ഓപ്ഷൻ ചേർക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "ഇവന്റുകൾ അടയ്ക്കുന്നതിൽ പരാജയപ്പെട്ടു. ദയവായി വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Failed to delete"
+msgstr "ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "കിയോസ്ക് രജിസ്ട്രേഷൻ പ്രവർത്തനക്ഷമമാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV എക്സ്പോർട്ട് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "ഓഡിറ്റ് ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു. ദയവായി വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "കിയോസ്കിന്റെ പേര് മാറ്റുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to save changes"
+msgstr "മാറ്റങ്ങൾ സേവ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "പ്ലഗിൻ അപ്ഡേറ്റ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Family Id"
+msgstr "കുടുംബ ഐഡി"
+
+#: 
+msgid "Final Confirmation"
+msgstr "അന്തിമ സ്ഥിരീകരണം"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "കുടുംബങ്ങളെ ജിയോകോഡ് ചെയ്യുന്നു… ഇതിന് കുറച്ച് മിനിറ്റുകൾ എടുത്തേക്കാം. ഈ പേജ് തുറന്നു തന്നെ വയ്ക്കാം."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "കുടുംബങ്ങളെ ജിയോകോഡ് ചെയ്യുന്നു… {{total}}-ൽ {{done}} പ്രോസസ് ചെയ്തു, {{geocoded}} സ്ഥാനം കണ്ടെത്തി."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "കുടുംബനാഥനെ അപ്ഡേറ്റ് ചെയ്യേണ്ടതുണ്ട്"
+
+#: 
+msgid "Helpful Links"
+msgstr "സഹായകരമായ ലിങ്കുകൾ"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "മരണപ്പെട്ടവരെ ഡയറക്ടറിയിൽ നിന്ന് മറയ്ക്കുക"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "മരണപ്പെട്ട അംഗങ്ങളെ പ്രിന്റ് ചെയ്ത ഡയറക്ടറിയിൽ നിന്നും CSV എക്സ്പോർട്ടുകളിൽ നിന്നും മറയ്ക്കുക."
+
+#: 
+msgid "Identify"
+msgstr "തിരിച്ചറിയുക"
+
+#: 
+msgid "Identify command sent"
+msgstr "തിരിച്ചറിയൽ കമാൻഡ് അയച്ചു"
+
+#: 
+msgid "Individual"
+msgstr "വ്യക്തി"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "ആന്തരികം: ബാക്ക്ഗ്രൗണ്ട് ടൈമർ ജോലികൾ പൂർത്തിയാക്കിയ അവസാന തീയതിയും സമയവും (YYYY-MM-DD HH:MM:SS). സ്വമേധയാ എഡിറ്റ് ചെയ്യരുത്."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "ഇനം വിജയകരമായി ഇല്ലാതാക്കി"
+
+#: 
+msgid "Kiosk Name"
+msgstr "കിയോസ്ക് പേര്"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "കിയോസ്ക് അംഗീകരിച്ചു"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "കിയോസ്ക് വിജയകരമായി ഇല്ലാതാക്കി"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "കിയോസ്ക് അംഗീകരിക്കേണ്ടതുണ്ട്"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "കിയോസ്കിന്റെ പേര് മാറ്റി"
+
+#: 
+msgid "Last seen"
+msgstr "അവസാനം കണ്ടത്"
+
+#: 
+msgid "Link"
+msgstr "ലിങ്ക്"
+
+#: 
+msgid "Link added successfully"
+msgstr "ലിങ്ക് വിജയകരമായി ചേർത്തു"
+
+#: 
+msgid "Link deleted"
+msgstr "ലിങ്ക് ഇല്ലാതാക്കി"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "ലിങ്ക് പേരിൽ HTML ടാഗുകൾ ഉപയോഗിക്കാൻ പാടില്ല"
+
+#: 
+msgid "Living"
+msgstr "ജീവിച്ചിരിക്കുന്നവർ"
+
+#: 
+msgid "Log settings saved"
+msgstr "ലോഗ് ക്രമീകരണങ്ങൾ സേവ് ചെയ്തു"
+
+#: 
+msgid "Login Name is Required"
+msgstr "ലോഗിൻ പേര് ആവശ്യമാണ്"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "വ്യക്തിയെ സജീവം എന്ന് അടയാളപ്പെടുത്തി"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "വ്യക്തിയെ നിർജ്ജീവം എന്ന് അടയാളപ്പെടുത്തി"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "പേജ് ലോഡ് വഴി ട്രിഗർ ചെയ്യുന്ന ബാക്ക്ഗ്രൗണ്ട് ടൈമർ-ജോലി റണ്ണുകൾ തമ്മിലുള്ള കുറഞ്ഞ മിനിറ്റുകൾ. തിരക്കേറിയ ഒരു ഞായറാഴ്ച രാവിലെ ഓരോ പേജ് വ്യൂവിലും ജോലികൾ പ്രവർത്തിക്കുന്നത് ഇത് തടയുന്നു. കമാൻഡ്-ലൈൻ റണ്ണറിന് ഇത് ബാധകമല്ല. എല്ലാ പേജ് ലോഡിലും പ്രവർത്തിക്കാൻ 0 ആയി സജ്ജമാക്കുക."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "പുതിയ ഉപയോക്താക്കൾക്ക് സ്വാഗത ഇമെയിൽ ലഭിക്കില്ല, ജനറേറ്റ് ചെയ്ത പാസ്‌വേഡ് ഒരിക്കലും പ്രദർശിപ്പിക്കുകയുമില്ല. അക്കൗണ്ട് സൃഷ്ടിച്ച ശേഷം, സിസ്റ്റം യൂസേഴ്സിൽ നിന്ന് പാസ്‌വേഡ് മാറ്റുക ഉപയോഗിച്ച് ഒന്ന് സജ്ജമാക്കുക — അല്ലെങ്കിൽ ആദ്യം ഇമെയിൽ ക്രമീകരിക്കുക."
+
+#: 
+msgid "No changes to save"
+msgstr "സേവ് ചെയ്യാൻ മാറ്റങ്ങളൊന്നുമില്ല"
+
+#: 
+msgid "No contact info"
+msgstr "ബന്ധപ്പെടാനുള്ള വിവരങ്ങളില്ല"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "കസ്റ്റം ലിങ്കുകളൊന്നും ക്രമീകരിച്ചിട്ടില്ല. മുകളിൽ ഒന്ന് ചേർക്കുക!"
+
+#: 
+msgid "No email"
+msgstr "ഇമെയിൽ ഇല്ല"
+
+#: 
+msgid "No files were deleted."
+msgstr "ഒരു ഫയലും ഇല്ലാതാക്കിയിട്ടില്ല."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "ഈ പ്ലഗിനായി സഹായം ലഭ്യമല്ല."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "ചേർക്കാൻ ആളുകളില്ല - എല്ലാവരും ഇതിനകം കാർട്ടിലുണ്ട്"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "ചേർക്കാൻ ആളുകളില്ല - ഫിൽട്ടർ ഫലങ്ങളൊന്നും നൽകിയില്ല"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "സാധുവായ മരണ തീയതിയല്ല"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "2FA നിർബന്ധമാക്കിയ ശേഷം ഉപയോക്താക്കൾക്ക് അതിൽ ചേരാൻ ലഭിക്കുന്ന ദിവസങ്ങളുടെ എണ്ണം. ഉടനടി നിർബന്ധമാക്കാൻ 0 ആയി സജ്ജമാക്കുക. സജീവമായ ഒരു ഗ്രേസ് പിരീഡ് ചുരുക്കുന്നത് ഉപയോക്താക്കളെ ഉടനടി ലോക്ക് ഔട്ട് ചെയ്തേക്കാം."
+
+#: 
+msgid "Offline"
+msgstr "ഓഫ്‌ലൈൻ"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "അടിസ്ഥാന പ്രശ്നം പരിഹരിച്ച ശേഷം മാത്രം ഇത് ചെയ്യുക. പ്ലഗിൻ വീണ്ടും പ്രവർത്തിക്കുന്നതിന് മുമ്പ് നിങ്ങൾ പ്രവർത്തനക്ഷമമാക്കുക എന്നതിൽ ക്ലിക്ക് ചെയ്യേണ്ടതുണ്ട്."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "വ്യക്തിയെ സജീവമാക്കുന്നത് സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "വ്യക്തിയെ നിർജ്ജീവമാക്കുന്നത് സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Plugin status updated"
+msgstr "പ്ലഗിൻ സ്റ്റാറ്റസ് അപ്ഡേറ്റ് ചെയ്തു"
+
+#: 
+msgid "Registered"
+msgstr "രജിസ്റ്റർ ചെയ്തു"
+
+#: 
+msgid "Reload"
+msgstr "വീണ്ടും ലോഡ് ചെയ്യുക"
+
+#: 
+msgid "Reload command sent"
+msgstr "റീലോഡ് കമാൻഡ് അയച്ചു"
+
+#: 
+msgid "Rename"
+msgstr "പേര് മാറ്റുക"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "കിയോസ്കിന്റെ പേര് മാറ്റുക"
+
+#: 
+msgid "Reset Complete"
+msgstr "റീസെറ്റ് പൂർത്തിയായി"
+
+#: 
+msgid "Reset Settings"
+msgstr "ക്രമീകരണങ്ങൾ റീസെറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Resetting..."
+msgstr "റീസെറ്റ് ചെയ്യുന്നു..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "ഷെഡ്യൂൾ ചെയ്ത ടാസ്കുകൾ പ്രവർത്തിക്കുന്നില്ല"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "സെക്യൂരിറ്റി ടോക്കൺ കാണുന്നില്ല. ദയവായി പേജ് പുതുക്കുക."
+
+#: 
+msgid "Select…"
+msgstr "തിരഞ്ഞെടുക്കുക…"
+
+#: 
+msgid "Sending..."
+msgstr "അയക്കുന്നു..."
+
+#: 
+msgid "Sending…"
+msgstr "അയക്കുന്നു…"
+
+#: 
+msgid "Settings reset"
+msgstr "ക്രമീകരണങ്ങൾ റീസെറ്റ് ചെയ്തു"
+
+#: 
+msgid "Settings saved"
+msgstr "ക്രമീകരണങ്ങൾ സേവ് ചെയ്തു"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "ക്രമീകരണങ്ങൾ സേവ് ചെയ്തു. അപ്ഗ്രേഡ് വിവരങ്ങൾ പുതുക്കുന്നു..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "സജീവരായ വ്യക്തികളെ മാത്രം കാണിക്കുന്നു."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "നിർജ്ജീവരായ വ്യക്തികളെ മാത്രം കാണിക്കുന്നു."
+
+#: 
+msgid "Successfully deleted"
+msgstr "വിജയകരമായി ഇല്ലാതാക്കി"
+
+#: 
+msgid "Testing..."
+msgstr "പരിശോധിക്കുന്നു..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "ഡാറ്റാബേസ് മായ്ച്ചു കഴിഞ്ഞു. സിസ്റ്റം ഒരു പുതിയ തുടക്കത്തിന് തയ്യാറാണ്."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "ഇതിനിടയിൽ പേജ്-ലോഡ് ഫോൾബാക്ക് പ്രവർത്തിച്ചു കൊണ്ടിരിക്കും. ഈ മുന്നറിയിപ്പ് കാണിക്കുന്നതിന് മുമ്പ് ChurchCRM എത്ര നേരം കാത്തിരിക്കണം എന്നത് %1$s ക്രമീകരണം ഉപയോഗിച്ച് മാറ്റുക, അല്ലെങ്കിൽ ഇത് മറയ്ക്കാൻ 0 ആയി സജ്ജമാക്കുക."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "ഈ വ്യക്തി നിർജ്ജീവമാണ്"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "OpenStreetMap ഉപയോഗിച്ച് മാപ്പ് കോർഡിനേറ്റുകൾ ഇല്ലാത്ത എല്ലാ കുടുംബങ്ങൾക്കും ഇത് കണ്ടെത്തുന്നു. ഇത് 50 വീതമുള്ള ബാച്ചുകളായി കുടുംബങ്ങളെ പ്രോസസ് ചെയ്യുന്നു, ഓരോ ബാച്ചിനും ഏകദേശം ഒരു മിനിറ്റ്. ഇത് പ്രവർത്തിക്കുമ്പോൾ ഈ പേജ് തുറന്നു തന്നെ വയ്ക്കാം. തുടരണോ?"
+
+#: 
+msgid "This person is deceased"
+msgstr "ഈ വ്യക്തി മരണപ്പെട്ടു"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "ഇത് ഈ പ്ലഗിനായി ക്രമീകരിച്ച എല്ലാ മൂല്യങ്ങളും മായ്ക്കും. ഇത് പഴയപടിയാക്കാൻ കഴിയില്ല."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "ഇത് പ്ലഗിൻ ഫയലുകൾ ഡിസ്കിൽ നിന്ന് ശാശ്വതമായി ഇല്ലാതാക്കുകയും അതിന്റെ ക്രമീകരണങ്ങൾ മായ്ക്കുകയും ചെയ്യും. ഇത് പഴയപടിയാക്കാൻ കഴിയില്ല."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL-ൽ HTML ടാഗുകൾ ഉപയോഗിക്കാൻ പാടില്ല"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "അപ്രതീക്ഷിത പിശക്. ദയവായി വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "പ്ലഗിൻ അൺഇൻസ്റ്റാൾ ചെയ്യുക"
+
+#: 
+msgid "Upcoming"
+msgstr "വരാനിരിക്കുന്നത്"
+
+#: 
+msgid "Valid Until"
+msgstr "സാധുതയുള്ളത് ഇത് വരെ"
+
+#: 
+msgid "View active only"
+msgstr "സജീവമായവ മാത്രം കാണുക"
+
+#: 
+msgid "View all"
+msgstr "എല്ലാം കാണുക"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "എല്ലാം കാണുക (നിർജ്ജീവം ഉൾപ്പെടെ)"
+
+#: 
+msgid "View inactive only"
+msgstr "നിർജ്ജീവമായവ മാത്രം കാണുക"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "ബാക്ക്ഗ്രൗണ്ട് ടൈമർ ജോലികൾ ഇത്ര മണിക്കൂറുകളായി പ്രവർത്തിച്ചിട്ടില്ലെങ്കിൽ അഡ്മിൻ ഡാഷ്ബോർഡിൽ മുന്നറിയിപ്പ് നൽകുക. 26 എന്നത് ഒരു ദൈനംദിന ക്രോണിനും അല്പം വ്യതിയാനത്തിനും ഇടം നൽകുന്നു. മുന്നറിയിപ്പ് പ്രവർത്തനരഹിതമാക്കാൻ 0 ആയി സജ്ജമാക്കുക."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "ഒരു ഷെഡ്യൂളർ ഇല്ലാതെ, ഈ ജോലികൾ ആരെങ്കിലും ഒരു പേജ് ലോഡ് ചെയ്യുമ്പോൾ മാത്രമേ പ്രവർത്തിക്കൂ, അതിനാൽ തിരക്കില്ലാത്ത ഒരു പ്രവൃത്തിദിവസം ഷെഡ്യൂൾ ചെയ്ത മെയിൽ ഒന്നും അയക്കപ്പെടില്ല. നിങ്ങളുടെ വെബ് സെർവർ പ്രവർത്തിക്കുന്ന അതേ ഉപയോക്താവായി, ടാസ്ക് റണ്ണർ മണിക്കൂറിൽ ഒരിക്കൽ പ്രവർത്തിപ്പിക്കുന്ന ഒരു ക്രോൺ എൻട്രി ചേർക്കുക"
+
+#: 
+msgid "check-outs"
+msgstr "ചെക്ക്-ഔട്ടുകൾ"
+
+#: 
+msgid "deceased"
+msgstr "മരണപ്പെട്ട"
+
+#: 
+msgid "event"
+msgstr "ഇവന്റ്"
+
+#: 
+msgid "events?"
+msgstr "ഇവന്റുകൾ?"
+
+#: 
+msgid "files"
+msgstr "ഫയലുകൾ"
+
+#: 
+msgid "people from cart?"
+msgstr "കാർട്ടിൽ നിന്നുള്ള ആളുകൾ?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip പൂജ്യമോ ഒരു പോസിറ്റീവ് സംഖ്യയോ ആയിരിക്കണം"
+
+#: 
+msgid "view families missing an email"
+msgstr "ഇമെയിൽ ഇല്ലാത്ത കുടുംബങ്ങൾ കാണുക"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "ഈ സാമ്പത്തിക വർഷത്തിലെ വാങ്ങുന്നവർ"
+
+#: 
+msgid "Current"
+msgstr "നിലവിലുള്ളത്"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "സംഭാവന ചെയ്ത ഇനങ്ങൾ (ഈ സാമ്പത്തിക വർഷം)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "ലോഗിൻ %d അക്ഷരങ്ങളോ അതിൽ കുറവോ ആയിരിക്കണം!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "ഈ സാമ്പത്തിക വർഷത്തിൽ സമാഹരിച്ചത്"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s ഒരു പൂർണ്ണമായ https:// വെബ് വിലാസം ആയിരിക്കണം, ഉദാഹരണത്തിന് https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "അക്കൗണ്ടിന് പരിമിതമായ അനുമതികൾ മാത്രമേയുള്ളൂ. ഒരു അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "പിശക് പേജ് റെൻഡർ ചെയ്യുന്നതിനിടെ ഒരു പിശക് സംഭവിച്ചു."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "ഓരോ വിലാസവും https:// എന്ന് തുടങ്ങണം"
+
+#: 
+msgid "Generate Labels"
+msgstr "ലേബലുകൾ ജനറേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "മെയിലിംഗ് ലേബലുകൾ ജനറേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "Labels"
+msgstr "ലേബലുകൾ"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "നിങ്ങളുടെ കാർട്ടിലുള്ള ആളുകൾക്കുള്ള മെയിലിംഗ് ലേബലുകൾ. സ്വന്തമായി വിലാസമില്ലാത്ത ഒരു വ്യക്തിക്ക് അവരുടെ കുടുംബ വിലാസം ഉപയോഗിക്കും."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "ഓപ്ഷണൽ. ചർച്ചിന്റെ സ്വന്തം അക്കൗണ്ടുകളിലേക്കുള്ള ലിങ്കുകൾ, പോർട്ടൽ ഫൂട്ടർ പോലുള്ള പേജുകളിൽ അംഗങ്ങൾക്ക് കാണിക്കുന്നത്. ആ നെറ്റ്‌വർക്ക് മറയ്ക്കാൻ ഒരു ഫീൽഡ് ശൂന്യമായി വിടുക."
+
+#: 
+msgid "Options"
+msgstr "ഓപ്ഷനുകൾ"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "ഷെഡ്യൂൾ ചെയ്ത ടാസ്കുകൾ"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "സജീവം, ബാക്കിയുള്ള സെക്കൻഡുകൾ: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "റണ്ണുകൾ തമ്മിലുള്ള പ്രതീക്ഷിത ഇടവേള (മണിക്കൂറുകൾ): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "ഒഴിവാക്കിയ കുടുംബങ്ങൾ (ഇമെയിൽ വിലാസം രേഖയിലില്ല): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "ജിയോകോഡ് ചെയ്യാൻ കഴിയാത്ത കുടുംബങ്ങൾ: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "സ്ഥിരീകരണ ഇമെയിലുകൾ ലഭിക്കുന്ന കുടുംബങ്ങൾ: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "പകർത്തിയ അംഗങ്ങൾ: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "ഇവിടെ പട്ടികപ്പെടുത്താത്തത്: വേറെ {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "സ്വീകർത്താക്കൾ: {{total}} — mailto: ലിങ്കിന് വളരെ കൂടുതൽ. പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "ഇമെയിൽ ക്ലയന്റിന് സ്വീകർത്താക്കൾ വളരെ കൂടുതൽ ({{total}} > {{max}}). പകരം വിലാസങ്ങൾ പകർത്തുക ഉപയോഗിക്കുക."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} മിനിറ്റ് ബാക്കി"
 
