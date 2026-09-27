@@ -16,8 +16,8 @@ name: Build, Test and Package (Nightly)
 #   • test-subdir:           api, admin-ui, ui (3 shards) — subdirectory path
 #   • test-new-system:       setup-wizard (root path)
 #   • test-new-system-subdir setup-wizard (subdir path)
-#   • test-locale-root:      locale smoke tests (root)
-#   • test-locale-subdir:    locale smoke tests (subdir)
+#   • test-locale-root:      full locale sweep (root)
+#   • test-locale-subdir:    full locale sweep (subdir)
 #
 # Stage 2b – Upgrade tests (PHP 8.4 × PHP 8.5, 4 DB groups — parallel with 2a)
 #   • test-upgrade:  churchcrm-mysql | churchcrm-mariadb | v6-mysql | v6-mariadb
@@ -644,8 +644,8 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run locale smoke tests (root, PHP 8.5)
-      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-locale-[hash].xml
+    - name: Run full locale sweep (root, PHP 8.5)
+      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-locale-[hash].xml
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -746,8 +746,8 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run locale smoke tests (subdir, PHP 8.5)
-      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-locale-[hash].xml
+    - name: Run full locale sweep (subdir, PHP 8.5)
+      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-locale-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
 
