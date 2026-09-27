@@ -134,6 +134,7 @@ Rules:
 
 ## 🙌 See It for Yourself
 * **Real Screenshots, True to the Release:** [Only when relevant. Website and docs screenshots are refreshed after the release is published, never before. Describe what the refresh adds (for example, new languages) as something that follows the release.]
+* **Documentation Caught Up:** [Only when docs.churchcrm.io changed since the last release. One line on what users can now find there, whether or not it's tied to this release's features.]
 * **Try It:** [Try the demo](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_VERSION_demo) or [install ChurchCRM](https://churchcrm.io/install.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_VERSION_install).
 
 ---
@@ -163,6 +164,7 @@ Rules:
 - Localization: count the entries in `src/locale/locales.json` at `TARGET` and write "[count] languages" (the Product Truth wording) instead of copying last release's number or "45+". Say "ready for translation": shipping a string does not mean it is translated.
 - Contributors: credit each human author with what they shipped in CRM.
   - The context file's *FYI: work in other repos* section is information, not a credit list. Docs, website and marketing work isn't part of the release. Thank someone for it only when it directly helps users of this release, such as artwork that ships in the app or a docs guide for a feature in this release. Website upkeep, blog posts and social graphics don't qualify.
+  - Docs are the exception to FYI-only in the notes body. If docs.churchcrm.io was brought up to date since the last release, add the one *Documentation Caught Up* line under See It for Yourself, even when the pages cover earlier releases.
   - Some adjacent work leaves no PR under the contributor's name, such as a logo or images that someone else committed. Ask George before finalizing whether anyone else should be thanked, and credit them by GitHub handle with what they made.
   - A **New Contributor** is anyone whose first merged PR to ChurchCRM/CRM is in this release (`gh search prs --repo ChurchCRM/CRM --author <login> --merged --limit 2`).
   - Leave out bots, and leave out the whole section if there are no human authors besides the maintainer.
