@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -113,6 +114,22 @@ $app->post('/cart/add', function (Request $request, Response $response) {
         if ($group !== null) {
             $iGroupRole = isset($body['GroupRole']) ? (int) $body['GroupRole'] : 0;
             $iCount     = count($_SESSION['aPeopleCart']);
+
+            // Volunteer v2 (D23): the Teacher role of a linked class is given by a team's
+            // qualifications. Refused here because addUserToGroup() swallows the refusal.
+            $teacherLock = VolunteerClassLinkService::findTeacherWriteConflict(
+                $iGroupID,
+                null,
+                $iGroupRole > 0 ? $iGroupRole : (int) $group->getDefaultRole()
+            );
+            if ($teacherLock !== null) {
+                $_SESSION['sGlobalMessage']      = $teacherLock->getMessage();
+                $_SESSION['sGlobalMessageClass'] = 'danger';
+
+                return $response
+                    ->withHeader('Location', SystemURLs::getRootPath() . '/groups/cart/add')
+                    ->withStatus(302);
+            }
 
             Cart::emptyToGroup($iGroupID, $iGroupRole);
 

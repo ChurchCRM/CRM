@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Volunteer\VolunteerException;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
@@ -16,6 +17,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerScopeQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
+use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
 use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
 use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
 use ChurchCRM\Volunteer\Middleware\VolunteerMinistryMiddleware;
@@ -118,7 +120,12 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
             ->add(new InputSanitizationMiddleware([
                 'name' => 'text',
                 'description' => 'text',
+                'importPositionName' => 'text',
             ]))
+            ->add(new VolunteerMinistryMiddleware());
+
+        // D23: the Sunday School classes a team of this ministry may be linked to.
+        $setup->get('/ministries/{ministryId:[0-9]+}/linkable-classes', 'listVolunteerLinkableClasses')
             ->add(new VolunteerMinistryMiddleware());
 
         $setup->get('/teams/{teamId:[0-9]+}', 'getVolunteerTeam')
@@ -128,6 +135,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
             ->add(new InputSanitizationMiddleware([
                 'name' => 'text',
                 'description' => 'text',
+                'importPositionName' => 'text',
             ]))
             ->add(new VolunteerTeamMiddleware());
 
@@ -277,9 +285,12 @@ function volunteerMinistryToArray(VolunteerMinistry $ministry, array $counts = [
  *     Leader" column without a `/scopes` call per row — and without needing the
  *     manager-only scope API at all, which a ministry coordinator does not have.
  *     Writing a grant is still `/api/ministries/scopes`, still manager-only (§3.2).
+ * @param array<int, string> $classNames group id → name, from volunteerSetupClassNames()
  */
-function volunteerTeamToArray(VolunteerTeam $team, int $positionCount = 0, array $leaders = []): array
+function volunteerTeamToArray(VolunteerTeam $team, int $positionCount = 0, array $leaders = [], array $classNames = []): array
 {
+    $classGroupId = $team->getClassGroupId() === null ? null : (int) $team->getClassGroupId();
+
     return [
         'id' => (int) $team->getId(),
         'ministryId' => (int) $team->getMinistryId(),
@@ -290,6 +301,69 @@ function volunteerTeamToArray(VolunteerTeam $team, int $positionCount = 0, array
         // Normally 0 or 1. The column carries no uniqueness constraint, so more than
         // one is representable and is reported rather than silently truncated.
         'leaders' => array_values($leaders),
+        // D23: the Sunday School class whose Teacher role this team's qualifications write.
+        'classGroupId' => $classGroupId,
+        'classGroupName' => $classGroupId === null ? null : ($classNames[$classGroupId] ?? null),
+    ];
+}
+
+/**
+ * Linked class id → name for a set of teams, in one query.
+ *
+ * @param VolunteerTeam[] $teams
+ *
+ * @return array<int, string>
+ */
+function volunteerSetupClassNames(array $teams): array
+{
+    $groupIds = [];
+    foreach ($teams as $team) {
+        if ($team->getClassGroupId() !== null) {
+            $groupIds[] = (int) $team->getClassGroupId();
+        }
+    }
+
+    if ($groupIds === []) {
+        return [];
+    }
+
+    $names = [];
+    foreach (GroupQuery::create()->findPks($groupIds) as $group) {
+        $names[(int) $group->getId()] = (string) $group->getName();
+    }
+
+    return $names;
+}
+
+/**
+ * The D23 keys of a team create/update, validated: `classGroupId` is absent (leave
+ * the link alone), null (unlink) or a positive id; the import keys ride along.
+ *
+ * @return array{classGroupId?: int|null, importPositionId?: int|null, importPositionName?: string|null}
+ *
+ * @throws VolunteerException 400
+ */
+function volunteerSetupClassLinkFields(Request $request): array
+{
+    $body = (array) $request->getParsedBody();
+    if (!array_key_exists('classGroupId', $body)) {
+        return [];
+    }
+
+    $raw = $body['classGroupId'];
+    if ($raw !== null && $raw !== '' && (filter_var($raw, FILTER_VALIDATE_INT) === false || (int) $raw < 1)) {
+        throw VolunteerException::invalid(gettext('classGroupId must be a group id or null'));
+    }
+
+    $importPositionId = $body['importPositionId'] ?? null;
+    if ($importPositionId !== null && $importPositionId !== '' && filter_var($importPositionId, FILTER_VALIDATE_INT) === false) {
+        throw VolunteerException::invalid(gettext('importPositionId must be a position id'));
+    }
+
+    return [
+        'classGroupId' => $raw === null || $raw === '' ? null : (int) $raw,
+        'importPositionId' => $importPositionId === null || $importPositionId === '' ? null : (int) $importPositionId,
+        'importPositionName' => isset($body['importPositionName']) ? (string) $body['importPositionName'] : null,
     ];
 }
 
@@ -617,6 +691,7 @@ function getVolunteerMinistry(Request $request, Response $response): Response
     $teamPositionCounts = $service->countPositionsByTeam($teamIds);
     $teamLeaders = volunteerSetupTeamLeaders($teamIds);
     $teamNames = volunteerSetupTeamNames($positions);
+    $classNames = volunteerSetupClassNames($teams);
 
     return SlimUtils::renderJSON($response, [
         'ministry' => volunteerMinistryToArray($ministry, [
@@ -631,7 +706,8 @@ function getVolunteerMinistry(Request $request, Response $response): Response
             static fn (VolunteerTeam $t): array => volunteerTeamToArray(
                 $t,
                 $teamPositionCounts[(int) $t->getId()] ?? 0,
-                $teamLeaders[(int) $t->getId()] ?? []
+                $teamLeaders[(int) $t->getId()] ?? [],
+                $classNames
             ),
             $teams
         ),
@@ -844,10 +920,11 @@ function listVolunteerTeams(Request $request, Response $response): Response
     $counts = $service->countPositionsByTeam(
         array_map(static fn (VolunteerTeam $t): int => (int) $t->getId(), $teams)
     );
+    $classNames = volunteerSetupClassNames($teams);
 
     return SlimUtils::renderJSON($response, [
         'teams' => array_map(
-            static fn (VolunteerTeam $t): array => volunteerTeamToArray($t, $counts[(int) $t->getId()] ?? 0),
+            static fn (VolunteerTeam $t): array => volunteerTeamToArray($t, $counts[(int) $t->getId()] ?? 0, [], $classNames),
             $teams
         ),
     ]);
@@ -864,13 +941,16 @@ function listVolunteerTeams(Request $request, Response $response): Response
  *     @OA\RequestBody(required=true, @OA\JsonContent(
  *         required={"name"},
  *         @OA\Property(property="name", type="string", maxLength=100),
- *         @OA\Property(property="description", type="string", maxLength=255)
+ *         @OA\Property(property="description", type="string", maxLength=255),
+ *         @OA\Property(property="classGroupId", type="integer", nullable=true, description="D23: link the team to this Sunday School class (group type 4); its Teacher role is then written from the team's qualifications"),
+ *         @OA\Property(property="importPositionId", type="integer", nullable=true, description="D23: the position of this team the class's current teachers are qualified for when it is linked"),
+ *         @OA\Property(property="importPositionName", type="string", nullable=true, description="D23: instead of importPositionId, create a position of this name in the team and qualify the teachers for it")
  *     )),
- *     @OA\Response(response=400, description="The name is missing or empty"),
+ *     @OA\Response(response=400, description="The name is missing or empty; the class is not a Sunday School class or has no Teacher role; or the class has teachers and no position to import them into was given"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
- *     @OA\Response(response=409, description="A team with that name already exists in this ministry"),
+ *     @OA\Response(response=409, description="A team with that name already exists in this ministry, or the class is linked to another team"),
  *     @OA\Response(response=201, description="Created")
  * )
  */
@@ -885,13 +965,51 @@ function createVolunteerTeam(Request $request, Response $response): Response
             $ministry,
             (string) ($body['name'] ?? ''),
             isset($body['description']) ? (string) $body['description'] : null,
-            volunteerSetupActor()
+            volunteerSetupActor(),
+            volunteerSetupClassLinkFields($request)
         );
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
     }
 
-    return SlimUtils::renderJSON($response, ['team' => volunteerTeamToArray($team)], 201);
+    return SlimUtils::renderJSON($response, ['team' => volunteerTeamToArray($team, 0, [], volunteerSetupClassNames([$team]))], 201);
+}
+
+/**
+ * @OA\Get(
+ *     path="/ministries/ministries/{ministryId}/linkable-classes",
+ *     operationId="listVolunteerLinkableClasses",
+ *     summary="Sunday School classes a team of this ministry may be linked to (D23)",
+ *     description="Every group of type 4 not linked to another team, with how many living members hold its Teacher role - the qualifications linking it would import. With teamId, the class that team is linked to is included.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="teamId", in="query", required=false, @OA\Schema(type="integer")),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="classes", type="array", @OA\Items(type="object",
+ *             @OA\Property(property="id", type="integer"),
+ *             @OA\Property(property="name", type="string"),
+ *             @OA\Property(property="teacherCount", type="integer")
+ *         )))
+ *     )
+ * )
+ */
+function listVolunteerLinkableClasses(Request $request, Response $response): Response
+{
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
+    $teamId = (int) ($request->getQueryParams()['teamId'] ?? 0);
+
+    // A team of another ministry would let its linked class through the filter.
+    $team = $teamId > 0 ? VolunteerTeamQuery::create()->findPk($teamId) : null;
+    $ownTeamId = $team !== null && (int) $team->getMinistryId() === (int) $ministry->getId() ? $teamId : null;
+
+    return SlimUtils::renderJSON($response, [
+        'classes' => (new VolunteerClassLinkService())->listLinkableClasses($ownTeamId),
+    ]);
 }
 
 /**
@@ -923,7 +1041,7 @@ function getVolunteerTeam(Request $request, Response $response): Response
     $teamNames = [(int) $team->getId() => $team->getName()];
 
     return SlimUtils::renderJSON($response, [
-        'team' => volunteerTeamToArray($team, count($positions)),
+        'team' => volunteerTeamToArray($team, count($positions), [], volunteerSetupClassNames([$team])),
         'positions' => array_map(
             static fn (VolunteerPosition $p): array => volunteerPositionToArray($p, $teamNames),
             $positions
@@ -942,13 +1060,16 @@ function getVolunteerTeam(Request $request, Response $response): Response
  *     @OA\RequestBody(required=true, @OA\JsonContent(
  *         @OA\Property(property="name", type="string", maxLength=100),
  *         @OA\Property(property="description", type="string", maxLength=255),
- *         @OA\Property(property="active", type="boolean")
+ *         @OA\Property(property="active", type="boolean"),
+ *         @OA\Property(property="classGroupId", type="integer", nullable=true, description="D23: link to this Sunday School class, or null to unlink (the class's membership is left as it is). Absent = unchanged"),
+ *         @OA\Property(property="importPositionId", type="integer", nullable=true, description="D23: when linking a class that has teachers, the position of this team they are qualified for"),
+ *         @OA\Property(property="importPositionName", type="string", nullable=true, description="D23: instead of importPositionId, create a position of this name in the team and qualify the teachers for it")
  *     )),
- *     @OA\Response(response=400, description="The name was sent empty"),
+ *     @OA\Response(response=400, description="The name was sent empty; the class is not a Sunday School class or has no Teacher role; or the class has teachers and no position of this team to import them into was given"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Not authorized for this team (a team leader may not edit it), or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such team"),
- *     @OA\Response(response=409, description="A team with that name already exists in this ministry"),
+ *     @OA\Response(response=409, description="A team with that name already exists in this ministry, or the class is linked to another team"),
  *     @OA\Response(response=200, description="Updated")
  * )
  */
@@ -960,14 +1081,17 @@ function updateVolunteerTeam(Request $request, Response $response): Response
     try {
         $team = (new VolunteerMinistryService())->updateTeam(
             $team,
-            volunteerSetupFields($request, ['name', 'description', 'active'], ['active']),
+            array_merge(
+                volunteerSetupFields($request, ['name', 'description', 'active'], ['active']),
+                volunteerSetupClassLinkFields($request)
+            ),
             volunteerSetupActor()
         );
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
     }
 
-    return SlimUtils::renderJSON($response, ['team' => volunteerTeamToArray($team)]);
+    return SlimUtils::renderJSON($response, ['team' => volunteerTeamToArray($team, 0, [], volunteerSetupClassNames([$team]))]);
 }
 
 /**
@@ -1255,7 +1379,7 @@ function getVolunteerPosition(Request $request, Response $response): Response
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this position, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such position"),
- *     @OA\Response(response=409, description="A position with that name already exists in this scope"),
+ *     @OA\Response(response=409, description="A position with that name already exists in this scope, or a position with qualified volunteers would move into or out of a team linked to a Sunday School class (D23)"),
  *     @OA\Response(response=200, description="Updated")
  * )
  */
@@ -1316,7 +1440,7 @@ function updateVolunteerPosition(Request $request, Response $response): Response
  *     path="/ministries/positions/{positionId}",
  *     operationId="deleteVolunteerPosition",
  *     summary="Delete a position and everything that references it",
- *     description="Removes the position's qualifications (revoked ones included), staffing requirements and assignments, service history included, in one transaction. Deactivate the position instead to keep its history (design §2.6).",
+ *     description="Removes the position's qualifications (revoked ones included), staffing requirements and assignments, service history included, in one transaction. Deactivate the position instead to keep its history (design §2.6). On a team linked to a Sunday School class, anybody left with no active qualification in the team leaves the class's Teacher role (D23).",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="positionId", in="path", required=true, @OA\Schema(type="integer")),
@@ -1981,6 +2105,7 @@ function listVolunteerQualifications(Request $request, Response $response): Resp
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this position, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such position or person"),
+ *     @OA\Response(response=409, description="The position's team is linked to a Sunday School class and the person is in that class under another role, a Student above all (D23). A grant on a linked team otherwise also gives the class's Teacher role"),
  *     @OA\Response(response=200, description="The qualification already existed and is active"),
  *     @OA\Response(response=201, description="Granted")
  * )
@@ -2029,7 +2154,7 @@ function grantVolunteerQualification(Request $request, Response $response): Resp
  *     path="/ministries/qualifications/{qualificationId}",
  *     operationId="revokeVolunteerQualification",
  *     summary="Revoke a qualification by deactivating it",
- *     description="The row is KEPT with active=false (design section 2.7). Historical assignments stay valid because volunteer_assignment_vasg has no foreign key to a qualification - it references the person and the position directly.",
+ *     description="The row is KEPT with active=false (design section 2.7). Historical assignments stay valid because volunteer_assignment_vasg has no foreign key to a qualification - it references the person and the position directly. On a team linked to a Sunday School class, revoking the person's last active qualification in the team also ends their Teacher-role membership of the class (D23).",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="qualificationId", in="path", required=true, @OA\Schema(type="integer")),
