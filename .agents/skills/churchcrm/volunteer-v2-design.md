@@ -1613,12 +1613,32 @@ final class VolunteerAuthorizationService
 ```
 
 ```php
+final class VolunteerClassLinkService   // D23, §2.4 — the team ↔ Sunday School class link
+{
+    public static function findLinkedTeam(int $groupId): ?VolunteerTeam;
+    public static function teacherRoleId(Group $class): ?int;                      // by role NAME, as core reads it
+    /** The hooks' and /api/groups' question: null, or the 409 naming the ministry and team. Free at v1. */
+    public static function findTeacherWriteConflict(int $groupId, ?int $fromRoleId, ?int $toRoleId): ?VolunteerException;
+    public static function findTeacherRoleLock(int $groupId, int $roleId): ?VolunteerException;   // rename/delete the Teacher role
+    public static function findClassTypeLock(int $groupId): ?VolunteerException;                  // type away from Sunday School
+    public static function describeLink(int $groupId, User $viewer): ?array;       // the class page / group view note
+    public function listLinkableClasses(?int $teamId = null): array;                // [{id,name,teacherCount}]
+    public function requireLinkableClass(int $groupId, ?int $teamId): Group;       // 400 / 409
+    public function teacherPersonIds(Group $class): array;                          // who linking imports
+    public function assertMayTeach(Group $class, int $personId): void;              // 409 for a Student
+    public function addTeacher(Group $class, int $personId): bool;                  // managed write
+    public function removeTeacherIfUnqualified(VolunteerTeam $t, Group $class, int $personId): bool;
+}
+```
+
+```php
 final class VolunteerMinistryService
 {
     public function createMinistry(string $name, string $description, User $actor): VolunteerMinistry;
     public function updateMinistry(VolunteerMinistry $m, array $fields, User $actor): VolunteerMinistry;
     public function deleteMinistry(VolunteerMinistry $m, User $actor): void;   // 409 while the ministry is active (§3.3.1, 2026-09-17); otherwise deletes everything — assignments explicitly first (their position key is RESTRICT), then the row, whose FK cascades take teams/positions/qualifications/schedules/occurrences; the polymorphic volunteer_scope_vscp rows (no FK, §2.15), the pool Group and the calendar are removed explicitly in the same transaction
-    public function createTeam(VolunteerMinistry $m, string $name, string $description, User $actor): VolunteerTeam;
+    public function createTeam(VolunteerMinistry $m, string $name, string $description, User $actor, array $classLink = []): VolunteerTeam;
+    public function updateTeam(VolunteerTeam $t, array $fields, User $actor): VolunteerTeam;   // D23: classGroupId / importPositionId / importPositionName link, relink or unlink a class
     // D19 — the ministry's own pool Group. No link/unlink: createMinistry() made it.
     public function getPoolGroup(int $ministryId): ?Group;
     public function addPoolMember(int $ministryId, int $personId, User $actor): bool;      // true when a row was created
