@@ -488,6 +488,7 @@ Derived from `db-schema-migration.md` and from the newest real table in the tree
 | Substitution / Swap | `volunteer_swap_vswp` | proposed replacement + coordinator decision | (D13) |
 | Notification outbox | `volunteer_notification_vntf` | idempotent enqueue + send log | (#9710, D15) |
 | Scope | `volunteer_scope_vscp` | user → ministry/team authority | (#9706) |
+| Calendar grant | `volunteer_calendar_vcal` | church calendar ↔ ministry allowed to pin to it | (D25) |
 
 Plus **two nullable columns on core tables**: `events_event.event_ministry_id` (§2.16) and
 `group_grp.grp_ministry_id` (§2.5, D19).
@@ -506,6 +507,8 @@ erDiagram
     volunteer_ministry_vmin ||--o{ volunteer_position_vpos  : "defines positions"
     volunteer_ministry_vmin ||--o{ volunteer_schedule_vsch  : "schedules"
     volunteer_ministry_vmin ||--o{ events_event             : "optionally owns"
+    volunteer_ministry_vmin ||--o{ volunteer_calendar_vcal  : "may pin to"
+    calendars               ||--o{ volunteer_calendar_vcal  : "is opened to"
 
     volunteer_team_vtem     ||--o{ volunteer_position_vpos  : "owns"
     volunteer_team_vtem     ||--o{ volunteer_schedule_vsch  : "owns"
@@ -1168,6 +1171,7 @@ match `vmin_ID`. `ON DELETE SET NULL` so deleting a ministry never deletes churc
 | 11 | Per-row event authorization | `AddEventsRoleAuthMiddleware` is a global boolean; there is no per-row event authorization anywhere today. A coordinator editing *their* ministry's event needs a handler-level check in `updateEvent`/`setEventTime`/`setEventStatus`/`deleteEvent`. §4.6. |
 | 12 | Tests | `cypress/e2e/ui-admin/event-editor.spec.js`, `cypress/e2e/api/private/standard/private.calendar.*.spec.js` |
 | 13 | Docs | `CLAUDE.md` → a user-visible field change **requires a sibling documentation issue** linked from the PR |
+| 14 | Calendar pins (D25) | A caller without Add Events may pin an event only to calendars `VolunteerCalendarService::mayPin()` allows for the event's **resolved** ministry: that ministry's own calendar (`calendars.ministry_id`) and every church calendar opened to it in `volunteer_calendar_vcal` (§4.6). `eventCalendarPinGuard()` in `events.php` asks it for every pin `newEvent`/`updateEvent` adds or removes, and re-asks for kept pins when the ministry changes. An update without `PinnedCalendars` leaves the pins alone. The editor offers what `GET /api/calendars/pinnable?ministryId=` returns and lists pins the user cannot change under the select |
 
 ### 2.17 Worked examples — the three use cases as concrete rows
 
@@ -1519,6 +1523,17 @@ annotate every route with `@OA\*` DocBlocks above the named function or above th
 `$group->get(...)` call, then `cd src && composer run openapi:private` and commit
 `docs/openapi/generated/private-api.yaml`. Security annotations follow `api-development.md`:
 `AuthMiddleware` ⇒ `security={{"ApiKeyAuth":{}}}` + `401`; a role middleware ⇒ also `403`.
+
+#### 3.3.5 Calendar grants — core `src/api/routes/calendar/calendar.php` (D25)
+
+They live beside the calendar routes they extend, not under `/api/ministries`; the service is
+`VolunteerCalendarService`.
+
+| Method | Path | Purpose | Auth | Request → Response |
+|---|---|---|---|---|
+| GET | `/api/calendars/{id}/ministries` | the ministries a church calendar is opened to | Add Events, rollout on | `{calendarId, ministries:[{id,name,active}]}` ordered by name; `404` unknown calendar |
+| PUT | `/api/calendars/{id}/ministries` | replace them | Add Events, rollout on | `{ministryIds:[int]}` (`[]` closes it) → same shape; `400` not a list of positive ids or an unknown ministry, `409` for a ministry's own calendar |
+| GET | `/api/calendars/pinnable` | the calendars the caller may pin an event of a ministry to | any signed-in user | `?ministryId=` (omit for none) → `{ministryId, calendarIds:[int]}`: every calendar with Add Events; otherwise the ministry's own calendar plus the calendars opened to it when the caller manages the ministry, else `[]` |
 
 ### 3.4 Service classes
 
@@ -2006,6 +2021,8 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 | View attendance beside the roster | ✓ | ✓ | scope | scope | ✗ |
 | Create / edit an event **with** a ministry id | ✓ | ✓ (their ministries) | scope | ✗ | ✗ |
 | Create / edit an event with **no** ministry id | existing `AddEvent` rules, unchanged | | | | |
+| Pin a ministry's event to its own calendar, or to a church calendar opened to that ministry | ✓ | ✓ | scope | ✗ | ✗ |
+| Open a church calendar to ministries (D25) | ✓ | ✗ unless they hold Add Events | ✗ | ✗ | ✗ |
 | Change the rollout setting / reminder lead time | ✓ | ✗ | ✗ | ✗ | ✗ |
 
 Three rows need explaining.
@@ -2092,6 +2109,26 @@ allowed = isAdmin()
 Setting or clearing `MinistryId` additionally requires authority over the **new** value and over the
 **current** value respectively. A coordinator with no `AddEvent` permission can therefore create
 and edit events for their ministry and nothing else — which is exactly D9.
+
+**Calendar pins (D25).** Which calendars such an event may be pinned to is one rule,
+`VolunteerCalendarService::mayPin()`, judged against the event's **resolved** ministry (after
+`resolveEventMinistryId()`), never the calendar's:
+
+```
+allowed = canManageEvents()
+       || (rollout on && eventMinistry !== null && canManageMinistry(user, eventMinistry)
+           && (calendar.ministry_id === eventMinistry
+               || (calendar.ministry_id === null && volunteer_calendar_vcal has (calendar, eventMinistry))))
+```
+
+`eventCalendarPinGuard()` asks it only for pins that change: an added pin under the resolved
+ministry, a removed pin under the current or the resolved one, and — when the ministry changes —
+every pin that stays, under the new one. So a pin somebody with Add Events made survives a
+coordinator's edit and cannot be removed by it, and a coordinator of two ministries cannot carry an
+event onto a calendar opened only to the other. The repeat editor, quick-create and
+`generate-recurring` stay Add Events only. Administering a calendar (name, colours, public link,
+delete) is unaffected: `CalendarWriteRoleAuthMiddleware` still allows Add Events, or a coordinator
+of the calendar's **own** ministry, and a grant confers nothing there.
 
 ### 4.7 The EditSelf-exclusive volunteer — the one core auth change
 
@@ -3170,6 +3207,7 @@ consume it. This is #9703 deliverable 8.
 | `volunteer_response_vrsp` | #9709 requires that swap and response history survive; nothing in core stores a response to anything. The nearest audit trail is a `note_nte` timeline note, which is prose and unqueryable. | #9705, #9709, #9712 |
 | `volunteer_swap_vswp` | No proposal/approval workflow exists anywhere in the codebase. Modelling a swap as two assignment rows alone would lose the proposer, the decision, the decider and the rejection case. | #9705, #9709, #9712 |
 | `volunteer_notification_vntf` | **There is no queue, outbox, send log or delivery-status storage in the schema** (F16). The only idempotency marker in the entire messaging stack is one global `config_cfg` string (`sLastBirthdayEmailRunDate`) with a check-then-set race — it cannot express "the reminder for assignment 4711 has been sent". #9710 requires duplicate suppression on retry and #9712 requires idempotent responses. | #9705, #9710 |
+| `volunteer_calendar_vcal` | D25. `calendars` carries no notion of who may write to it beyond the global Add Events right, and `calendars.ministry_id` can name one owner, not several ministries that may pin to a shared church calendar. A link table with a composite PK and two cascading FKs; `vcal_calendar_id` is `int(11)` because `calendars.calendar_id` is `int(11)` on every SQL path (the `mediumint` in `schema.xml` is not what the database holds, and a mismatched FK is refused). | D25 |
 | `volunteer_scope_vscp` | **No table in `orm/schema.xml` persists a user→object scope** (F10). Every existing gate is a global boolean on `user_usr`. The RBAC tables from #8758 do not exist in code. Group Roles cannot carry it (§4.2, five pieces of evidence). | #9705, #9706 |
 
 ### 8.2 New columns on existing tables
@@ -3191,6 +3229,7 @@ consume it. This is #9703 deliverable 8.
 | `VolunteerPoolWriter` | D19's managed-write context and the hook predicate, in one small final class so the two core models share exactly one implementation of "may this caller write a ministry's pool Group". Deliberately not a method on `VolunteerMinistryService`: the models must not depend on the setup service, and a depth counter with `try`/`finally` is the whole of it (§4.6). | D19 |
 | `VolunteerScheduleService` | Occurrence generation, the linked/unlinked window resolution, and the effective-requirement merge. Cannot live in `EventService`, which exists to *create* events — precisely what #9713 forbids. | #9708, #9713 |
 | `VolunteerAssignmentService` | The whole assignment/response/gap/swap workflow, including the single gap implementation. No analogue exists. | #9709, #9711, #9712 |
+| `VolunteerCalendarService` | D25: the one pin rule (`mayPin()`), the editor's `pinnableCalendarIds()`, and reading/replacing a calendar's grants. Not in `VolunteerAuthorizationService`, which answers who manages what; this answers where a ministry's events may go, and reads a table that service does not own. | D25 |
 | `VolunteerNotificationService` | `dto\Notification` cannot carry a message body (no-op setters, hard-coded text, `sendSMS()` always returns `true`) and `NotificationService` is an in-app banner registry with no table. Neither can enqueue, deduplicate, schedule or retry. | #9710 |
 | `RecurrenceDateGenerator` *(core, CR4)* | Not V2-specific: it removes one of the **two** existing duplicate recurrence implementations while giving V2 the date math it needs for standalone schedules. | CR4 → #9708 |
 
@@ -3451,6 +3490,7 @@ mistaking a pre-existing defect for a V2 regression.
 | E-17 | **`events_event` is `utf8`, not `utf8mb4`** — so an emoji in an event title fails, against the project's own rule. | `Install.sql:118-131`; `db-schema-migration.md` | A cheap in-policy win, but it must be its own issue — **do not smuggle a charset conversion into a V2 PR**. | **Minimal complete fix:** one upgrade script doing `ALTER TABLE events_event CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`, with the matching `Install.sql` and `seed.sql` edits — preceded by an audit of that table's index key lengths and of the charset of every column on either side of an FK it participates in, since `utf8mb4` widens index prefixes and MySQL refuses a charset mismatch across an FK. Scoped to `events_event` and its FK partners; a tree-wide legacy-charset migration is a different, larger issue and must not be smuggled in here — nor into a V2 PR. | M | #9736 |
 | E-18 | **Two API error shapes** — `{"error", "code"}` from middleware vs `{"success", "message"}` from `SlimUtils::renderErrorJSON()`; and the redaction regex in `renderErrorJSON()`/`sanitizeErrorMessage()` swallows the innocuous words *user* and *token*. | `BaseAuthRoleMiddleware.php:42-44`, `:62-64`; `SlimUtils.php:41-43`, `:68` | V2 must phrase error messages around it (M5) and assert the right shape in tests. | **Minimal complete fix:** make `BaseAuthRoleMiddleware` emit the `SlimUtils::renderErrorJSON()` shape so the API has exactly one documented error contract, and narrow the redaction regex to match credential-shaped assignments (`password=`, `api_key:`) instead of the bare English words *user*, *token* and *host*. Both halves are needed — one shape without a sane regex still swallows legitimate messages. | M | #9737 |
 | E-19 | **Stale skill files.** `routing-architecture.md` and `slim-mvc-skill.md` describe a `return function ($app)` route convention, module-prefixed route paths, `src/<module>/middleware/` directories and a `MenuSection` class — **none of which exist**, and following them produces `/finance/finance/`-style double prefixes. `table-action-menu.md`, `tabler-components.md` §14 and `responsive-design-guidelines.md` disagree with each other and with the code about the action-menu trigger icon and the dropdown-overflow fix. `service-layer.md` shows a DI container that does not exist. `webpack-typescript.md` shows entry keys and `.tsx` files that do not exist. | as cited throughout | An agent implementing a V2 issue from those files will produce broken routes. §0.2 rule 4 exists because of this. | **Minimal complete fix:** rewrite the files that are demonstrably wrong against the code, one small PR each, every claim grep-verified — `routing-architecture.md` and `slim-mvc-skill.md` (route convention, module prefixes, non-existent `src/<module>/middleware/` and `MenuSection`), `service-layer.md` (the DI container that does not exist), `webpack-typescript.md` (entry keys and `.tsx` files that do not exist), and one reconciliation pass over `table-action-menu.md` / `tabler-components.md` §14 / `responsive-design-guidelines.md` so the three agree with the code and each other. Not a docs-system overhaul and not a pass over all 50 skill files — but genuinely large, because each file has to be re-derived from source. | L | #9738 (a), #9739 (b), #9740 (c), #9741 (d), #9742 (e) |
+| E-20 | **The admin calendar page's New Calendar dialog cannot create a calendar** — `webpack/event-calendars.js` strips the `#` from both colours, and `NewCalendar()` refuses any colour without one (`400 Invalid color format`), so every save fails silently. Found 2026-09-26 while building D25's dialog; the Cypress "Create New Calendar" test never checks the result. | `webpack/event-calendars.js` (`saveButtonCallback`); `src/api/routes/calendar/calendar.php` (`NewCalendar`) | D25 adds "Ministries that may add events" to that dialog. | Send the colours with their `#` (the API strips it before storing); assert the created row in the Cypress test. Fixed on `feature/vreuse-calendar-grants` because D25's dialog cannot work without it — split it out as its own upstream PR. | S | not yet filed |
 
 ---
 
