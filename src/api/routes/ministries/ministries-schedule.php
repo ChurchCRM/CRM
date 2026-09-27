@@ -133,6 +133,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     // titles of an event type or of a ministry's events, the classes a schedule may
     // follow, and upcoming events to staff. Read-only references to core events and
     // groups (D22).
+    $group->get('/event-types', 'listVolunteerEventTypes');
     $group->get('/event-series', 'listVolunteerEventSeries');
     $group->get('/classes', 'listVolunteerClasses');
     $group->get('/upcoming-events', 'listVolunteerUpcomingEvents');
@@ -1492,6 +1493,34 @@ function listVolunteerEventSeries(Request $request, Response $response): Respons
             $from
         ),
     ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/ministries/event-types",
+ *     operationId="listVolunteerEventTypes",
+ *     summary="The active calendar event types a schedule may follow",
+ *     description="Served on the ministries surface because a portal team leader (a self-service login) cannot reach /api/events/types.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="No ministry or team to manage, or V2 is not enabled"),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(@OA\Property(property="eventTypes", type="array", @OA\Items(type="object",
+ *             @OA\Property(property="id", type="integer"),
+ *             @OA\Property(property="name", type="string")
+ *         )))
+ *     )
+ * )
+ */
+function listVolunteerEventTypes(Request $request, Response $response): Response
+{
+    $types = [];
+    foreach (EventTypeQuery::create()->filterByActive(1)->orderByName()->find() as $type) {
+        $types[] = ['id' => (int) $type->getId(), 'name' => (string) $type->getName()];
+    }
+
+    return SlimUtils::renderJSON($response, ['eventTypes' => $types]);
 }
 
 /**

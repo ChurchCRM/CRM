@@ -27,6 +27,7 @@ import {
   generateOccurrences,
   listClasses,
   listEventSeries,
+  listEventTypes,
   listScheduleEligiblePeople,
   listScheduleRequirements,
   notifyError,
@@ -216,12 +217,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   }
 
   /**
-   * Calendar event types for the editor's select.
-   *
-   * A plain `fetch` rather than a call through `../api`: that module is the client
-   * for `/api/ministries/*` and this is a core calendar read, so routing it through
-   * the volunteer prefix would be wrong. Failure is not fatal — the select is simply
-   * empty and the other two sources still work.
+   * Calendar event types for the editor's select, from the ministries surface: a
+   * portal team leader cannot reach the core `/api/events/types`. Failure is not
+   * fatal — the select is simply empty and the other two sources still work.
    */
   async function loadEventTypes(): Promise<void> {
     if (eventTypes !== null) {
@@ -229,19 +227,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     }
 
     try {
-      const response = await fetch(`${window.CRM?.root ?? ""}/api/events/types`, {
-        credentials: "same-origin",
-        headers: { Accept: "application/json" },
-      });
-      const body: unknown = response.ok ? await response.json() : [];
-      // The core endpoint answers `{ EventTypes: [...] }`, not a bare array.
-      const rows = Array.isArray(body) ? body : ((body as { EventTypes?: unknown } | null)?.EventTypes ?? []);
-      eventTypes = (Array.isArray(rows) ? rows : [])
-        .filter((row: Record<string, unknown>) => Number(row.Active ?? row.active ?? 1) !== 0)
-        .map((row: Record<string, unknown>) => ({
-          id: Number(row.Id ?? row.id ?? 0),
-          name: String(row.Name ?? row.name ?? ""),
-        }));
+      eventTypes = (await listEventTypes()).eventTypes;
     } catch {
       eventTypes = [];
     }
