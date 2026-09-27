@@ -25,7 +25,7 @@
  *        ├─ open the team ───► four tabs, and none of the ministry-level controls
  *        ├─ add a position ──► from nothing; it lands in the table
  *        ├─ tick a qualification ► somebody is now allowed to do it
- *        ├─ create a schedule ──► standalone, weekly
+ *        ├─ create a schedule ──► following Sunday church events
  *        ├─ generate its dates ─► occurrences appear
  *        └─ staff one ──────────► the qualified volunteer is on it
  *
@@ -204,7 +204,11 @@ function cleanupFixtures() {
         like,
     );
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, like);
+    dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, like);
 }
+
+/** The Sunday services the team's schedule follows (D20): the seed's calendar is all 2016/2017. */
+const SUNDAY_EVENTS = `${PREFIX} Sunday Welcome`;
 
 // ── the church, the day before the volunteer was asked ─────────────────────
 
@@ -215,6 +219,16 @@ before(() => {
     setVersion("v2");
 
     cleanupFixtures();
+
+    const firstSunday = (7 - new Date().getDay()) % 7 || 7;
+    [0, 7, 14, 21].forEach((week) => {
+        const day = isoDate(firstSunday + week);
+        dbOk(
+            `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+             VALUES (1, ?, '', '', ?, ?, 0)`,
+            [SUNDAY_EVENTS, `${day} 09:00:00`, `${day} 10:00:00`],
+        );
+    });
 
     adminApi(
         "POST",
@@ -395,12 +409,12 @@ describe("Member Portal e2e — #9869 scenario 2, a team leader on a member logi
         cy.get("#scheduleModal", { timeout: 10000 }).should("be.visible");
 
         cy.get("#schedule-form-name").clear().type(SCHEDULE_NAME);
-        cy.get("#schedule-form-link-mode").select("standalone");
-        cy.get("#schedule-form-dow").select("Sunday");
-        cy.get("#schedule-form-start-time").clear().type("09:00");
-        cy.get("#schedule-form-end-time").clear().type("10:00");
         cy.get("#schedule-form-window-start").clear().type(isoDate(0));
         cy.get("#schedule-form-window-end").clear().type(isoDate(28));
+        cy.get("#schedule-form-link-mode").select("event_type");
+        cy.get("#schedule-form-event-type").select("Church Service");
+        cy.get(`#schedule-form-title-filter option[value="${SUNDAY_EVENTS}"]`, { timeout: 10000 }).should("exist");
+        cy.get("#schedule-form-title-filter").select(SUNDAY_EVENTS);
         cy.get("#schedule-form-save").click();
 
         cy.get("#volunteerSchedulesTable tbody tr", { timeout: 15000 }).should(
