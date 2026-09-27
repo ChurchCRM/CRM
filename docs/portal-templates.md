@@ -386,10 +386,12 @@ The card is only rendered when `portal.showCalendar` is on.
 
 ### The calendar page
 
-`calendars` is the legend: `{name, color}` for each calendar an administrator
-switched on, in the order Admin → Member Portal → Calendars lists them, with
-`color` a CSS colour ready for a swatch. `hasCalendars` is `false` when nothing
-is shared, and the page then says so instead of drawing a grid.
+`calendars` is the legend: `{key, name, color, isMine}` for each calendar an
+administrator switched on, in the order Admin → Member Portal → Calendars lists
+them, with `color` a CSS colour ready for a swatch and `key` the
+`calendar:<id>` / `system:<id>` string that every event of that calendar carries.
+`hasCalendars` is `false` when nothing is shared, and the page then says so
+instead of drawing a grid.
 
 The events are **not** in the template. FullCalendar fetches
 `GET /api/portal/calendar/events?from=…&to=…` for the window it is showing, so
@@ -401,6 +403,14 @@ keep three things, which the page's bundle looks for:
 | `<div id="portal-calendar">` | Where FullCalendar renders |
 | `<section id="portal-calendar-detail">` and its `portal-calendar-detail-*` ids | The panel an event click fills in — title, when, where, calendar, details |
 | `window.CRM.portalCalendar = {{ calendarConfigJson }}` plus `asset('/skin/v2/portal-calendar.min.js')` | The endpoint, the church's timezone, the window cap, and the two subscription endpoints |
+
+Each legend entry may also be a switch. A `<button type="button" data-calendar-key="{{ calendar.key }}"
+aria-pressed="true">` hides and shows that calendar's events without reloading, and the bundle
+remembers the choice in the member's browser (`localStorage`, key
+`churchcrm.portal.calendar.hidden`). The bundle sets `aria-pressed` itself; style the off state with
+`[aria-pressed="false"]`. The default theme sets the swatch colour as `--portal-calendar-swatch` on
+the swatch, so the off state can draw it hollow. A legend without such buttons stays a plain legend
+and every event is shown, whatever the browser stored earlier.
 
 ### Subscribing to the calendar
 

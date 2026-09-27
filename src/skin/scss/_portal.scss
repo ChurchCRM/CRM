@@ -927,7 +927,48 @@ textarea.portal-input {
     block-size: 0.75rem;
     border-radius: 50%;
     border: 1px solid var(--portal-border);
+    background-color: var(--portal-calendar-swatch, transparent);
     flex-shrink: 0;
+}
+
+// Legend toggles (D27). The "off" state is a hollow swatch and a struck-through
+// name, so it does not rest on colour; 44px tall for a thumb.
+.portal-calendar-legend-hint {
+    margin: 0 0 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--portal-muted);
+}
+
+.portal-calendar-legend-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-block-size: 44px;
+    padding: 0 0.75rem;
+    border: 1px solid var(--portal-border);
+    border-radius: 999px;
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.portal-calendar-legend-toggle:hover {
+    background-color: var(--portal-surface-alt);
+}
+
+.portal-calendar-legend-toggle:focus-visible {
+    outline: 2px solid var(--portal-primary);
+    outline-offset: 2px;
+}
+
+.portal-calendar-legend-toggle[aria-pressed="false"] .portal-calendar-legend-name {
+    text-decoration: line-through;
+}
+
+.portal-calendar-legend-toggle[aria-pressed="false"] .portal-calendar-legend-swatch {
+    background-color: transparent;
+    border: 2px solid var(--portal-calendar-swatch, var(--portal-border));
 }
 
 // A calendar belonging to a ministry this member leads (#9869). The row is given

@@ -81,6 +81,74 @@ interface PortalCalendarEvent {
 const GRID_ID = "portal-calendar";
 const DETAIL_ID = "portal-calendar-detail";
 
+/** Where the legend remembers which calendars this browser has switched off (D27). */
+const HIDDEN_STORAGE_KEY = "churchcrm.portal.calendar.hidden";
+
+/** `calendarType:calendarId`, the key the legend's `data-calendar-key` carries. */
+function calendarKey(props: PortalCalendarEvent["extendedProps"] | Record<string, unknown>): string {
+  return `${String(props.calendarType ?? "")}:${String(props.calendarId ?? "")}`;
+}
+
+/** Every read and write is guarded: storage may be blocked, full or absent, and the page must still work. */
+function readHiddenKeys(): Set<string> {
+  try {
+    const parsed: unknown = JSON.parse(window.localStorage.getItem(HIDDEN_STORAGE_KEY) ?? "[]");
+    return new Set(Array.isArray(parsed) ? parsed.filter((key): key is string => typeof key === "string") : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function writeHiddenKeys(keys: Set<string>): void {
+  try {
+    window.localStorage.setItem(HIDDEN_STORAGE_KEY, JSON.stringify([...keys]));
+  } catch {
+    // Unavailable storage only means the choice is not remembered.
+  }
+}
+
+/**
+ * The legend's calendar toggles. A theme whose template has no `button[data-calendar-key]`
+ * gets a plain legend and every event shown, whatever this browser stored earlier.
+ */
+function legendToggles(): HTMLButtonElement[] {
+  return Array.from(document.querySelectorAll<HTMLButtonElement>("button[data-calendar-key]"));
+}
+
+/**
+ * Wire the toggles and return the keys switched off now. Keys stored for calendars this page
+ * does not list are kept, so un-sharing and re-sharing a calendar does not lose the choice.
+ */
+function initLegendToggles(onChange: (hidden: Set<string>) => void): Set<string> {
+  const toggles = legendToggles();
+  const onPage = new Set(toggles.map((toggle) => toggle.dataset.calendarKey ?? ""));
+  const stored = readHiddenKeys();
+  const hidden = new Set([...stored].filter((key) => onPage.has(key)));
+
+  const render = (toggle: HTMLButtonElement): void => {
+    toggle.setAttribute("aria-pressed", hidden.has(toggle.dataset.calendarKey ?? "") ? "false" : "true");
+  };
+
+  for (const toggle of toggles) {
+    render(toggle);
+    toggle.addEventListener("click", () => {
+      const key = toggle.dataset.calendarKey ?? "";
+      if (hidden.has(key)) {
+        hidden.delete(key);
+        stored.delete(key);
+      } else {
+        hidden.add(key);
+        stored.add(key);
+      }
+      render(toggle);
+      writeHiddenKeys(stored);
+      onChange(hidden);
+    });
+  }
+
+  return hidden;
+}
+
 /** Below this width the list view is the one that opens (responsive-design-guidelines.md). */
 const TABLET_BREAKPOINT = 768;
 
@@ -204,6 +272,8 @@ function initCalendar(): void {
 
   const isNarrow = window.matchMedia(`(max-width: ${TABLET_BREAKPOINT - 1}px)`).matches;
 
+  let hidden = new Set<string>();
+
   const calendar = new Calendar(grid, {
     plugins: [formaTheme],
     initialView: isNarrow ? "listMonth" : "dayGridMonth",
@@ -229,7 +299,13 @@ function initCalendar(): void {
     noEventsText: t("Nothing is on the calendar for this period."),
     events: (info, success, failure) => {
       fetchEvents(settings.eventsUrl, info)
-        .then((events) => success(events as never))
+        .then((events) =>
+          success(
+            events.map((event) =>
+              hidden.has(calendarKey(event.extendedProps)) ? { ...event, display: "none" } : event,
+            ) as never,
+          ),
+        )
         .catch((error: Error) => failure(error));
     },
     eventClick: (info) => {
@@ -242,6 +318,12 @@ function initCalendar(): void {
 
   window.CRM = window.CRM || {};
   window.CRM.fullcalendar = calendar;
+
+  hidden = initLegendToggles((nowHidden) => {
+    for (const event of calendar.getEvents()) {
+      event.setProp("display", nowHidden.has(calendarKey(event.extendedProps)) ? "none" : "auto");
+    }
+  });
 
   wireDetailClose();
 
