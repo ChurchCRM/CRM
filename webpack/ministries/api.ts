@@ -584,7 +584,7 @@ export interface VolunteerOccurrenceSummary {
   id: number;
   scheduleId: number;
   scheduleName: string | null;
-  /** The schedule is a one-off occurrence's private, hidden one (2026-09-18). */
+  /** The schedule is the hidden one behind Staff this event (D22). */
   scheduleOneOff?: boolean;
   ministryId: number | null;
   teamId: number | null;
@@ -1014,6 +1014,9 @@ export function listMyQualifications(): Promise<{ qualifications: VolunteerMyQua
 
 // ─── Schedules (#9708, surfaced on the ministry page by #9711) ───────────────
 
+/** How a schedule finds its calendar events (D22). `event` is Staff this event's hidden mode. */
+export type VolunteerLinkMode = "event_type" | "class" | "ministry" | "event";
+
 /** One schedule as `volunteerScheduleToArray()` shapes it. */
 export interface VolunteerSchedule {
   id: number;
@@ -1021,15 +1024,22 @@ export interface VolunteerSchedule {
   /** Never null: a schedule always belongs to one of its ministry's teams. */
   teamId: number;
   name: string;
-  linkMode: "event_type" | "standalone";
+  linkMode: VolunteerLinkMode;
   eventTypeId: number | null;
   eventTypeName: string | null;
   titleFilter: string | null;
-  recurType: string | null;
-  recurDow: string | null;
-  recurDom: number | null;
-  startTime: string | null;
-  endTime: string | null;
+  /** The class a `class` schedule follows; null in the other modes or once the group was deleted. */
+  groupId: number | null;
+  groupName: string | null;
+  groupSundaySchool: boolean;
+  /** The one event an `event` schedule staffs. */
+  eventId: number | null;
+  eventTitle: string | null;
+  eventStart: string | null;
+  /** Minutes added to the event's start and end to give the volunteers' (D21). */
+  startOffsetMinutes: number;
+  endOffsetMinutes: number;
+  oneOff: boolean;
   windowStart: string | null;
   windowEnd: string | null;
   generateAheadDays: number;
@@ -1073,24 +1083,26 @@ export function deleteSchedule(scheduleId: number): Promise<{ success: boolean }
   return request(`/schedules/${scheduleId}`, { method: "DELETE" });
 }
 
-/** Idempotent (§2.9): re-running it creates nothing that already exists. */
+/** What Staff an event sends (D22). */
+export interface VolunteerStaffEventInput {
+  eventId: number;
+  teamId: number;
+  /** Blank means the event's title. */
+  name?: string;
+  startOffsetMinutes: number;
+  endOffsetMinutes: number;
+  requirements: VolunteerRequirementInput[];
+}
+
 /**
- * A one-off occurrence: a date with no event and no recurring schedule behind it.
- * The server gives it a hidden schedule of its own (team, times, staffing needs)
- * that goes away with it.
+ * Staff one calendar event: the server makes a hidden single-event schedule (team,
+ * offsets, staffing needs) and its one occurrence, and deletes the schedule with it.
  */
-export function createOneOffOccurrence(
+export function createStaffedEvent(
   ministryId: number,
-  payload: {
-    name: string;
-    teamId: number;
-    date: string;
-    startTime: string;
-    endTime: string;
-    requirements: VolunteerRequirementInput[];
-  },
+  payload: VolunteerStaffEventInput,
 ): Promise<{ occurrence: VolunteerOccurrenceSummary; schedule: VolunteerSchedule }> {
-  return request(`/ministries/${ministryId}/occurrences`, { method: "POST", body: JSON.stringify(payload) });
+  return request(`/ministries/${ministryId}/staffed-events`, { method: "POST", body: JSON.stringify(payload) });
 }
 
 /** Delete one occurrence and everything under it (assignments, responses, swaps, queued notifications). */
@@ -1104,14 +1116,65 @@ export interface VolunteerEventSeries {
   count: number;
 }
 
-/** The distinct upcoming event titles of one event type — the Add schedule dialog's Event picker. */
-export function listEventSeries(eventTypeId: number, from?: string): Promise<{ series: VolunteerEventSeries[] }> {
-  const query = new URLSearchParams({ eventTypeId: String(eventTypeId) });
+/**
+ * The distinct upcoming titles of one event type's events, or of one ministry's — the
+ * schedule dialog's Event picker.
+ */
+export function listEventSeries(
+  source: { eventTypeId: number } | { ministryId: number },
+  from?: string,
+): Promise<{ series: VolunteerEventSeries[] }> {
+  const query = new URLSearchParams(
+    "eventTypeId" in source ? { eventTypeId: String(source.eventTypeId) } : { ministryId: String(source.ministryId) },
+  );
   if (from) {
     query.set("from", from);
   }
 
   return request(`/event-series?${query.toString()}`);
+}
+
+/** A group a `class` schedule may follow. */
+export interface VolunteerClassGroup {
+  groupId: number;
+  name: string;
+  sundaySchool: boolean;
+  upcomingCount: number;
+  nextStart: string | null;
+}
+
+/** Every active Sunday School class, plus any group with upcoming linked events. */
+export function listClasses(): Promise<{ classes: VolunteerClassGroup[] }> {
+  return request("/classes");
+}
+
+/** One row of the Staff an event picker. */
+export interface VolunteerUpcomingEvent {
+  id: number;
+  title: string;
+  start: string;
+  end: string;
+  eventTypeId: number;
+  eventTypeName: string | null;
+  /** The team asked about already has an occurrence anchored to this event. */
+  staffedByTeam: boolean;
+}
+
+/** Upcoming active events by title and date, soonest first (at most 50). */
+export function listUpcomingEvents(params: {
+  q?: string;
+  from?: string;
+  to?: string;
+  teamId?: number;
+}): Promise<{ events: VolunteerUpcomingEvent[] }> {
+  const query = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value !== undefined && value !== "") {
+      query.set(key, String(value));
+    }
+  }
+
+  return request(`/upcoming-events?${query.toString()}`);
 }
 
 /** One "Fill by default with" answer of the Generate Occurrences dialog. */

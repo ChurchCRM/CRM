@@ -44,7 +44,7 @@ import { attachToModal } from "../common/person-select";
 import {
   addPoolMember,
   addPoolMembersFromCart,
-  createOneOffOccurrence,
+  createStaffedEvent,
   createTeam,
   deleteMinistry,
   deleteTeam,
@@ -173,7 +173,7 @@ function buildComponents(): void {
     ensureContext: ensureDetail,
     occurrenceUrl: (occurrenceId) => `${window.CRM?.root ?? ""}/ministries/occurrences/${occurrenceId}`,
     positions,
-    addOneOff: (payload) => createOneOffOccurrence(ministryId, payload),
+    staffEvent: (payload) => createStaffedEvent(ministryId, payload),
   });
 
   schedulesTable = createSchedulesTable({

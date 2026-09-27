@@ -22,15 +22,18 @@ import {
   deleteOccurrence,
   errorMessage,
   listOccurrences,
+  listUpcomingEvents,
   notifyError,
   notifySuccess,
   positionLabel,
   type VolunteerOccurrenceSummary,
   type VolunteerPosition,
-  type VolunteerRequirementInput,
+  type VolunteerStaffEventInput,
   type VolunteerTeam,
+  type VolunteerUpcomingEvent,
 } from "../api";
 import { readStaffingNeeds, renderStaffingNeeds, validateStaffingNeeds } from "../staffing-needs";
+import { readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
 import {
   byId,
   confirmDelete,
@@ -38,6 +41,7 @@ import {
   escapeAttribute,
   escapeHtml,
   formatIsoDate,
+  hideModal,
   initDataTable,
   isoDate,
   modal,
@@ -99,17 +103,10 @@ export interface OccurrencesTableOptions {
   ensureContext(): Promise<void>;
   /** Where a row links to. */
   occurrenceUrl(occurrenceId: number): string;
-  /** Every position the caller knows about; the one-off dialog's needs editor filters it by team. */
+  /** Every position the caller knows about; the Staff an event dialog's needs editor filters it by team. */
   positions?(): VolunteerPosition[];
-  /** Create a one-off occurrence (2026-09-18); absent when the page does not offer the dialog. */
-  addOneOff?(payload: {
-    name: string;
-    teamId: number;
-    date: string;
-    startTime: string;
-    endTime: string;
-    requirements: VolunteerRequirementInput[];
-  }): Promise<unknown>;
+  /** Staff one calendar event (D22); absent when the page does not offer the dialog. */
+  staffEvent?(payload: VolunteerStaffEventInput): Promise<unknown>;
 }
 
 export interface OccurrencesTableHandle {
@@ -215,7 +212,7 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
           <td>${escapeHtml(teamName)}</td>
           <td>${escapeHtml(occurrence.scheduleName ?? "")}${
             occurrence.scheduleOneOff
-              ? ` <span class="badge bg-azure-lt text-azure ms-1">${escapeHtml(i18next.t("one-off"))}</span>`
+              ? ` <span class="badge bg-azure-lt text-azure ms-1">${escapeHtml(i18next.t("single event"))}</span>`
               : ""
           }</td>
           <td class="text-center">${filled}</td>
@@ -228,11 +225,16 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     syncSelection();
   }
 
-  // ── Add a one-off occurrence (2026-09-18) ────────────────────────────────
+  // ── Staff an event (D22) ─────────────────────────────────────────────────
+
+  /** Pending debounce for the dialog's search fields. */
+  let searchTimer = 0;
+  /** Only the newest search may fill the picker; an older answer arriving late is dropped. */
+  let searchSequence = 0;
 
   /** The dialog's team select, then the needs rows for whichever team it names. */
-  function fillOneOffTeams(): void {
-    const select = byId<HTMLSelectElement>("one-off-form-team");
+  function fillStaffTeams(): void {
+    const select = byId<HTMLSelectElement>("staff-event-form-team");
     if (!select) {
       return;
     }
@@ -246,12 +248,12 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     }
   }
 
-  function renderOneOffNeeds(): void {
-    const container = byId("one-off-form-needs");
+  function renderStaffNeeds(): void {
+    const container = byId("staff-event-form-needs");
     if (!container) {
       return;
     }
-    const teamId = Number(byId<HTMLSelectElement>("one-off-form-team")?.value ?? 0);
+    const teamId = Number(byId<HTMLSelectElement>("staff-event-form-team")?.value ?? 0);
     const positions = (options.positions?.() ?? [])
       .filter((position) => position.active && position.teamId === teamId)
       .map((position) => ({
@@ -264,60 +266,152 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     renderStaffingNeeds(container, positions, [], true);
   }
 
-  function openOneOffModal(): void {
-    show(byId("one-off-form-error"), false);
-    fillOneOffTeams();
-    const set = (id: string, value: string): void => {
+  function describeEvent(event: VolunteerUpcomingEvent): string {
+    const parts = [`${event.start.slice(0, 16)} — ${event.title}`];
+    if (event.eventTypeName) {
+      parts.push(`(${event.eventTypeName})`);
+    }
+    if (event.staffedByTeam) {
+      parts.push(`· ${i18next.t("already staffed by this team")}`);
+    }
+
+    return parts.join(" ");
+  }
+
+  /** Re-run the event search from the dialog's fields and refill the picker. */
+  async function searchEvents(): Promise<void> {
+    const select = byId<HTMLSelectElement>("staff-event-form-event");
+    if (!select) {
+      return;
+    }
+    const sequence = ++searchSequence;
+    const previous = select.value;
+    const date = byId<HTMLInputElement>("staff-event-form-date")?.value ?? "";
+    const teamId = Number(byId<HTMLSelectElement>("staff-event-form-team")?.value ?? 0) || undefined;
+
+    let rows: VolunteerUpcomingEvent[] = [];
+    try {
+      rows = (
+        await listUpcomingEvents({
+          q: byId<HTMLInputElement>("staff-event-form-search")?.value.trim() ?? "",
+          from: date || undefined,
+          to: date || undefined,
+          teamId,
+        })
+      ).events;
+    } catch (error) {
+      if (sequence === searchSequence) {
+        showModalError("staff-event", errorMessage(error, i18next.t("Could not load the upcoming events")));
+      }
+      return;
+    }
+    if (sequence !== searchSequence) {
+      return;
+    }
+
+    select.textContent = "";
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = rows.length === 0 ? i18next.t("No upcoming event matches") : i18next.t("Choose an event");
+    select.append(placeholder);
+    for (const event of rows) {
+      const option = document.createElement("option");
+      option.value = String(event.id);
+      option.textContent = describeEvent(event);
+      select.append(option);
+    }
+    select.value = previous;
+    if (select.value !== previous) {
+      select.value = "";
+    }
+  }
+
+  function searchSoon(): void {
+    window.clearTimeout(searchTimer);
+    searchTimer = window.setTimeout(() => {
+      void searchEvents();
+    }, OCCURRENCE_TEXT_DEBOUNCE_MS);
+  }
+
+  function openStaffModal(): void {
+    show(byId("staff-event-form-error"), false);
+    fillStaffTeams();
+    renderOffsetFields("staff-event-form");
+    writeOffsets("staff-event-form", 0, 0);
+    for (const id of ["staff-event-form-search", "staff-event-form-date", "staff-event-form-name"]) {
       const el = byId<HTMLInputElement>(id);
       if (el) {
-        el.value = value;
+        el.value = "";
       }
-    };
-    set("one-off-form-name", "");
-    set("one-off-form-date", isoDate(0));
-    set("one-off-form-start-time", "");
-    set("one-off-form-end-time", "");
-    renderOneOffNeeds();
-    // Focus the name once the fade has finished: Bootstrap moves focus to the
+    }
+    const select = byId<HTMLSelectElement>("staff-event-form-event");
+    if (select) {
+      select.textContent = "";
+    }
+    renderStaffNeeds();
+    void searchEvents();
+    // Focus the search once the fade has finished: Bootstrap moves focus to the
     // dialog itself at `shown`, which would take it away from anything focused
     // (or being typed into) during the 150 ms transition.
-    byId("oneOffOccurrenceModal")?.addEventListener(
+    byId("staffEventModal")?.addEventListener(
       "shown.bs.modal",
       () => {
-        byId<HTMLInputElement>("one-off-form-name")?.focus();
+        byId<HTMLInputElement>("staff-event-form-search")?.focus();
       },
       { once: true },
     );
-    modal("oneOffOccurrenceModal")?.show();
+    modal("staffEventModal")?.show();
   }
 
-  function saveOneOff(): void {
+  function saveStaffEvent(): void {
     const value = (id: string): string => byId<HTMLInputElement | HTMLSelectElement>(id)?.value?.trim() ?? "";
-    const needs = byId("one-off-form-needs");
-    const invalid = needs === null ? null : validateStaffingNeeds(needs);
-    if (invalid !== null) {
-      showModalError("one-off", invalid);
+    const eventId = Number(value("staff-event-form-event"));
+    const needs = byId("staff-event-form-needs");
+    const offsets = readOffsets("staff-event-form");
+
+    if (typeof offsets === "string") {
+      showModalError("staff-event", offsets);
 
       return;
     }
-    show(byId("one-off-form-error"), false);
+    const invalid = !eventId
+      ? i18next.t("Choose the event to staff")
+      : needs === null
+        ? null
+        : validateStaffingNeeds(needs);
+    if (invalid !== null) {
+      showModalError("staff-event", invalid);
+
+      return;
+    }
+
+    show(byId("staff-event-form-error"), false);
+    const save = byId<HTMLButtonElement>("staff-event-form-save");
+    if (save) {
+      save.disabled = true;
+    }
     options
-      .addOneOff?.({
-        name: value("one-off-form-name"),
-        teamId: Number(value("one-off-form-team")),
-        date: value("one-off-form-date"),
-        startTime: value("one-off-form-start-time"),
-        endTime: value("one-off-form-end-time"),
+      .staffEvent?.({
+        eventId,
+        teamId: Number(value("staff-event-form-team")),
+        name: value("staff-event-form-name"),
+        startOffsetMinutes: offsets.start,
+        endOffsetMinutes: offsets.end,
         requirements: needs === null ? [] : readStaffingNeeds(needs),
       })
       .then(() => {
-        modal("oneOffOccurrenceModal")?.hide();
-        notifySuccess(i18next.t("Occurrence added"));
+        hideModal("staffEventModal");
+        notifySuccess(i18next.t("Event staffed"));
 
         return load(true);
       })
       .catch((error: unknown) => {
-        showModalError("one-off", errorMessage(error, i18next.t("The occurrence could not be added")));
+        showModalError("staff-event", errorMessage(error, i18next.t("The event could not be staffed")));
+      })
+      .finally(() => {
+        if (save) {
+          save.disabled = false;
+        }
       });
   }
 
@@ -554,13 +648,20 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     });
     byId("occurrences-delete-btn")?.addEventListener("click", deleteSelected);
 
-    if (options.addOneOff) {
-      wireModalFadeGuard("oneOffOccurrenceModal");
-      byId("occurrences-add-btn")?.addEventListener("click", () => {
-        void options.ensureContext().then(openOneOffModal);
+    if (options.staffEvent) {
+      wireModalFadeGuard("staffEventModal");
+      byId("occurrences-staff-event-btn")?.addEventListener("click", () => {
+        void options.ensureContext().then(openStaffModal);
       });
-      byId("one-off-form-team")?.addEventListener("change", renderOneOffNeeds);
-      byId("one-off-form-save")?.addEventListener("click", saveOneOff);
+      byId("staff-event-form-team")?.addEventListener("change", () => {
+        renderStaffNeeds();
+        void searchEvents();
+      });
+      byId("staff-event-form-search")?.addEventListener("input", searchSoon);
+      for (const type of ["input", "change"]) {
+        byId("staff-event-form-date")?.addEventListener(type, searchSoon);
+      }
+      byId("staff-event-form-save")?.addEventListener("click", saveStaffEvent);
     }
   }
 
