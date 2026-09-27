@@ -1636,4 +1636,27 @@
         </vendor>
     </table>
 
+    <table name="volunteer_calendar_vcal" idMethod="native" phpName="VolunteerCalendarGrant"
+           description="Volunteer v2 (D25): a church calendar an administrator has opened to a ministry. That ministry's coordinators may pin the ministry's own events to it without Add Events">
+        <!-- INTEGER, not the mediumint the calendars table above declares: calendars.calendar_id
+             is int(11) in Install.sql, seed.sql and every upgrade path, and MySQL refuses a
+             foreign key whose column type differs from its parent's. -->
+        <column name="vcal_calendar_id" phpName="CalendarId" type="INTEGER" primaryKey="true" required="true"/>
+        <column name="vcal_vmin_ID" phpName="MinistryId" type="INTEGER" primaryKey="true" required="true"/>
+        <foreign-key foreignTable="calendars" name="VolunteerCalendarGrantCalendar" phpName="Calendar"
+                     refPhpName="VolunteerCalendarGrant" onDelete="cascade">
+            <reference local="vcal_calendar_id" foreign="calendar_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="volunteer_ministry_vmin" name="VolunteerCalendarGrantMinistry" phpName="Ministry"
+                     refPhpName="VolunteerCalendarGrant" onDelete="cascade">
+            <reference local="vcal_vmin_ID" foreign="vmin_ID"/>
+        </foreign-key>
+        <index name="vcal_ministry_idx">
+            <index-column name="vcal_vmin_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
 </database>

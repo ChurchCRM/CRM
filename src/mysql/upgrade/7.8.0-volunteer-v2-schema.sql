@@ -28,6 +28,8 @@
 --                        config_cfg string with a check-then-set race.
 --   scope                No table persists a user→object scope; every existing
 --                        gate is a global boolean on user_usr.
+--   calendar grant       Only Add Events may write to a church calendar; nothing
+--                        can open one calendar to one ministry (D25).
 --
 -- Deliberately NOT here:
 --   * Open Gap is derived (requirement minus live assignments), never stored — a
@@ -394,3 +396,22 @@ CREATE TABLE IF NOT EXISTS `volunteer_scope_vscp` (
 ALTER TABLE `calendars`
     ADD CONSTRAINT `calendars_ministry_fk` FOREIGN KEY (`ministry_id`)
     REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
+
+--
+-- D25: church calendars an administrator has opened to a ministry. A coordinator without Add
+-- Events may pin the ministry's own events to these as well as to the ministry's own calendar.
+--
+-- vcal_calendar_id is int(11) because calendars.calendar_id is, on every install and upgrade
+-- path; MySQL refuses a foreign key whose type differs from its parent's. Both keys cascade:
+-- a grant means nothing once either side is gone.
+--
+CREATE TABLE IF NOT EXISTS `volunteer_calendar_vcal` (
+  `vcal_calendar_id` int(11) NOT NULL,
+  `vcal_vmin_ID`     int(11) NOT NULL,
+  PRIMARY KEY (`vcal_calendar_id`, `vcal_vmin_ID`),
+  KEY `vcal_ministry_idx` (`vcal_vmin_ID`),
+  CONSTRAINT `fk_vcal_calendar` FOREIGN KEY (`vcal_calendar_id`)
+      REFERENCES `calendars` (`calendar_id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vcal_ministry` FOREIGN KEY (`vcal_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

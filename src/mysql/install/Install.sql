@@ -1513,6 +1513,22 @@ ALTER TABLE `calendars`
     ADD CONSTRAINT `calendars_ministry_fk` FOREIGN KEY (`ministry_id`)
     REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE SET NULL;
 
+--
+-- Table structure for table `volunteer_calendar_vcal`
+-- Volunteer v2 (D25): church calendars opened to a ministry. int(11) to match calendars.calendar_id.
+--
+
+CREATE TABLE `volunteer_calendar_vcal` (
+  `vcal_calendar_id` int(11) NOT NULL,
+  `vcal_vmin_ID`     int(11) NOT NULL,
+  PRIMARY KEY (`vcal_calendar_id`, `vcal_vmin_ID`),
+  KEY `vcal_ministry_idx` (`vcal_vmin_ID`),
+  CONSTRAINT `fk_vcal_calendar` FOREIGN KEY (`vcal_calendar_id`)
+      REFERENCES `calendars` (`calendar_id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vcal_ministry` FOREIGN KEY (`vcal_vmin_ID`)
+      REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE `email_log_eml` (
   `eml_ID`        int(10) unsigned      NOT NULL AUTO_INCREMENT,
   `eml_per_ID`    mediumint(8) unsigned DEFAULT NULL,
