@@ -1130,13 +1130,23 @@
         <column name="vtem_Description" phpName="Description" type="VARCHAR" size="255"/>
         <column name="vtem_Active" phpName="Active" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
                 required="true" defaultValue="1"/>
+        <column name="vtem_grp_ID" phpName="ClassGroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"
+                required="false"
+                description="Volunteer v2 (D23): the Sunday School class (group_grp type 4) this team staffs; qualifications write its Teacher role. NULL = not linked"/>
         <foreign-key foreignTable="volunteer_ministry_vmin" name="VolunteerTeamMinistry" phpName="Ministry"
                      refPhpName="VolunteerTeam" onDelete="cascade">
             <reference local="vtem_vmin_ID" foreign="vmin_ID"/>
         </foreign-key>
+        <foreign-key foreignTable="group_grp" name="VolunteerTeamClassGroup" phpName="ClassGroup"
+                     refPhpName="LinkedVolunteerTeam" onDelete="setnull">
+            <reference local="vtem_grp_ID" foreign="grp_ID"/>
+        </foreign-key>
         <unique name="vtem_ministry_name_uidx">
             <unique-column name="vtem_vmin_ID"/>
             <unique-column name="vtem_Name"/>
+        </unique>
+        <unique name="vtem_class_group_uidx">
+            <unique-column name="vtem_grp_ID"/>
         </unique>
         <index name="vtem_ministry_idx">
             <index-column name="vtem_vmin_ID"/>

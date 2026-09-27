@@ -3,7 +3,9 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2r as BasePerson2group2roleP2g2r;
+use ChurchCRM\model\ChurchCRM\Map\Person2group2roleP2g2rTableMap;
 use ChurchCRM\Service\AuthService;
+use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
 use ChurchCRM\Volunteer\Service\VolunteerPoolWriter;
 use Propel\Runtime\Connection\ConnectionInterface;
 
@@ -46,8 +48,41 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
             return;
         }
 
+        if ($group !== null && VolunteerPoolWriter::mayWriteLinkedClass((int) $group->getId())) {
+            return;
+        }
+
         // Unchanged V1 behaviour, including the message and the 401 code.
         AuthService::requireUserGroupMembership('bManageGroups');
+    }
+
+    /**
+     * D23 (c): while V2 is on, the Teacher role of a class linked to a volunteer team
+     * is written by V2 alone — for everyone, Manage Groups or not. Asked after the
+     * permission check, so a caller who may not write the group learns nothing more.
+     */
+    private function assertTeacherRoleUnlocked(?int $fromRoleId, ?int $toRoleId): void
+    {
+        if ($this->getGroupId() === null) {
+            return;
+        }
+
+        $conflict = VolunteerClassLinkService::findTeacherWriteConflict((int) $this->getGroupId(), $fromRoleId, $toRoleId);
+        if ($conflict !== null) {
+            throw $conflict;
+        }
+    }
+
+    /** The role this row holds in the database, before the pending update. */
+    private function storedRoleId(): ?int
+    {
+        $stored = Person2group2roleP2g2rQuery::create()
+            ->filterByPersonId($this->getPersonId())
+            ->filterByGroupId($this->getGroupId())
+            ->select(['RoleId'])
+            ->findOne();
+
+        return $stored === null ? null : (int) $stored;
     }
 
     public function preSave(ConnectionInterface $con = null): bool
@@ -61,6 +96,9 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
     public function preUpdate(ConnectionInterface $con = null): bool
     {
         $this->assertMembershipWritable();
+        if ($this->isColumnModified(Person2group2roleP2g2rTableMap::COL_P2G2R_RLE_ID)) {
+            $this->assertTeacherRoleUnlocked($this->storedRoleId(), (int) $this->getRoleId());
+        }
         parent::preUpdate($con);
 
         return true;
@@ -69,6 +107,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
     public function preDelete(ConnectionInterface $con = null): bool
     {
         $this->assertMembershipWritable();
+        $this->assertTeacherRoleUnlocked((int) $this->getRoleId(), null);
         parent::preDelete($con);
 
         return true;
@@ -77,6 +116,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
     public function preInsert(ConnectionInterface $con = null): bool
     {
         $this->assertMembershipWritable();
+        $this->assertTeacherRoleUnlocked(null, (int) $this->getRoleId());
         parent::preInsert($con);
 
         return true;

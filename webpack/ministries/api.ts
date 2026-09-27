@@ -56,6 +56,26 @@ export interface VolunteerTeam {
    * not resolve them.
    */
   leaders?: VolunteerTeamLeader[];
+  /** D23: the Sunday School class whose Teacher role this team's qualifications write. */
+  classGroupId?: number | null;
+  classGroupName?: string | null;
+}
+
+/** A Sunday School class a team may be linked to, with how many teachers linking would import. */
+export interface LinkableClass {
+  id: number;
+  name: string;
+  teacherCount: number;
+}
+
+/**
+ * D23 keys of a team create/update. `classGroupId: null` unlinks; a class with
+ * teachers needs `importPositionId` (a position of the team) or `importPositionName`.
+ */
+export interface TeamClassLink {
+  classGroupId?: number | null;
+  importPositionId?: number | null;
+  importPositionName?: string | null;
 }
 
 /**
@@ -266,18 +286,28 @@ export function listTeams(ministryId: number): Promise<{ teams: VolunteerTeam[] 
   return request(`/ministries/${ministryId}/teams`);
 }
 
-export function createTeam(ministryId: number, name: string, description: string): Promise<{ team: VolunteerTeam }> {
+export function createTeam(
+  ministryId: number,
+  name: string,
+  description: string,
+  classLink: TeamClassLink = {},
+): Promise<{ team: VolunteerTeam }> {
   return request(`/ministries/${ministryId}/teams`, {
     method: "POST",
-    body: JSON.stringify({ name, description }),
+    body: JSON.stringify({ name, description, ...classLink }),
   });
 }
 
 export function updateTeam(
   teamId: number,
-  fields: Partial<Pick<VolunteerTeam, "name" | "description" | "active">>,
+  fields: Partial<Pick<VolunteerTeam, "name" | "description" | "active">> & TeamClassLink,
 ): Promise<{ team: VolunteerTeam }> {
   return request(`/teams/${teamId}`, { method: "POST", body: JSON.stringify(fields) });
+}
+
+/** D23: classes a team of this ministry may link — `teamId` keeps that team's own class in the list. */
+export function listLinkableClasses(ministryId: number, teamId = 0): Promise<{ classes: LinkableClass[] }> {
+  return request(`/ministries/${ministryId}/linkable-classes${teamId > 0 ? `?teamId=${teamId}` : ""}`);
 }
 
 export function deleteTeam(teamId: number): Promise<{ success: boolean }> {

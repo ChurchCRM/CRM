@@ -75,7 +75,7 @@ the epic (#9701) and from the church driving this work.
 | **UC1** | **Coffee Bar.** One ministry with one team — the team the ministry was created with (D18). 15 volunteers in one existing ChurchCRM Group. Five positions (Setup, Cleanup, Espresso, Milk Station, Expeditor). 2–3 people needed each Sunday. Volunteers hold multiple qualifications. Assignments rotate. Weekly notification; accept/decline; declines create gaps; qualified volunteers self-sign-up. | Group-as-pool; many-to-many qualification; a *count* requirement that is not one-per-position; self-service signup. |
 | **UC2** | **Sunday Worship.** "Sunday Morning Worship" is a recurring ChurchCRM calendar event, Sundays 10:30–11:45. A coordinator (**not** a system administrator) fills Song Leader, Communion Leader, Opening Prayer, Closing Prayer and Preacher for each occurrence, weeks ahead, from qualified people. Volunteers confirm, decline, or propose a substitute who has already agreed; the coordinator approves or rejects. | Occurrence must be the **event** row; exactly-one-per-position requirements; substitution/swap as a first-class, coordinator-approved workflow; non-admin coordinator. |
 | **UC3** | **Parallel ministries on the same occurrence.** The sound booth needs Audio Engineers during that same service, under a **different** coordinator, in a different team/ministry. | Occurrence↔event is many-to-one: several V2 occurrences (different schedules, different ministries) may point at the same `events_event` row. Authorization is per ministry/team, not per event. |
-| **UC4** | **Children's Ministry.** One Ministry, several Teams, five weekly "events" (Elementary Bible Hour Sun 09:30–10:15, Nursery Bible Hour Sun 09:30–10:15, Children's Church Sun 10:30–11:45, Wednesday Night Elementary Wed 19:00–20:00, Wednesday Night Preschool Wed 19:00–20:00). Each team may have its own leader, or one coordinator manages all. For class-type events the coordinator also wants to see **attendance** (existing event check-in) alongside who served. | Teams under a Ministry; per-team leader scope; one schedule per weekly event; read-only reuse of `event_attend`. |
+| **UC4** | **Children's Ministry.** One Ministry, several Teams, five weekly "events" (Elementary Bible Hour Sun 09:30–10:15, Nursery Bible Hour Sun 09:30–10:15, Children's Church Sun 10:30–11:45, Wednesday Night Elementary Wed 19:00–20:00, Wednesday Night Preschool Wed 19:00–20:00). A Sunday School class such as Faith City (about eight volunteers, one team leader) is a team of its own, linked to its class (D23). Each team may have its own leader, or one coordinator manages all. For class-type events the coordinator also wants to see **attendance** (existing event check-in) alongside who served. | Teams under a Ministry; a team linked to its class, whose Teacher role V2 writes; per-team leader scope; one schedule per weekly event; read-only reuse of `event_attend`. |
 | **UC5** | **Reminder.** A reminder email goes out a configurable, system-level time before the occurrence. | A notification outbox with a due time, drained by whatever passes for a scheduler in ChurchCRM. |
 
 Non-hierarchical by design: **Teams under Ministry is sufficient. There are no nested ministries.**
@@ -583,8 +583,10 @@ finest authorization scope (Team Leader) and the usual owner of a pool and a sch
 | `vtem_Name` | `Name` | `VARCHAR(100)` required | |
 | `vtem_Description` | `Description` | `VARCHAR(255)` null | |
 | `vtem_Active` | `Active` | `BOOLEAN` required default `1` | |
+| `vtem_grp_ID` | `ClassGroupId` | `mediumint(8) unsigned` null | **D23.** FK → `group_grp.grp_ID`, `ON DELETE SET NULL`. The Sunday School class (group type 4) this team staffs; NULL = not linked. See "Linked Sunday School class" below. |
 
-Indexes: `vtem_ministry_name_uidx UNIQUE (vtem_vmin_ID, vtem_Name)`, `vtem_ministry_idx (vtem_vmin_ID)`.
+Indexes: `vtem_ministry_name_uidx UNIQUE (vtem_vmin_ID, vtem_Name)`, `vtem_class_group_uidx UNIQUE (vtem_grp_ID)`
+(a class has at most one team; MySQL lets any number of NULLs through), `vtem_ministry_idx (vtem_vmin_ID)`.
 
 **A ministry never has zero teams (D18).** `VolunteerMinistryService::createMinistry()` creates the
 first one — `"{Ministry name} Team"` — inside the same transaction as the ministry, so the API, the
@@ -604,6 +606,33 @@ as the way to keep the history. `deleteTeam()` deletes the assignments by hand f
 key is `RESTRICT`) and the scope rows (no FK, §2.15); the FKs cascade the rest. The earlier rule —
 `409` while the team still owned positions or schedules — was dropped because it chained onto the
 position rule in §2.6, which revoked qualifications made impossible to satisfy.
+
+#### Linked Sunday School class (D23)
+
+A team may be linked to one Sunday School class, and a class to one team. Core keeps the class —
+its roster, its Student role, attendance, the dashboard, the reports. The link hands V2 exactly one
+thing: who holds the class's **Teacher** role, found by NAME in the class's role list as every core
+Sunday School read finds it (`SundaySchoolService`, the class page, `ClassAttendance.php`, the cart's
+"Add Teachers"). Those reads keep working unchanged. `VolunteerClassLinkService` owns the rules.
+
+- **Linking** is part of team create/update (`classGroupId`; `null` unlinks) and is a
+  coordinator's act (§4.6) — a team leader gets `403`. The group must exist and be type 4 (`400`),
+  be linked to no other team (`409`), and have a role named Teacher (`400`). When it has teachers,
+  the caller names the position of THIS team they are qualified for — `importPositionId`, or
+  `importPositionName` to create one in the same transaction — or gets a `400` saying which team's
+  position is needed. Each living teacher gets an active qualification granted by the actor and,
+  like any qualified person, joins the pool (D19). Nobody is entered twice.
+- **Qualifications then write the Teacher role** (§2.7), through `VolunteerPoolWriter::run()`.
+- **Every other Teacher-role write is refused while V2 is on** — the class page, the group view,
+  the role editor, cart-to-group and `/api/groups` (§4.6). Student writes keep the core path. So
+  are renaming or deleting the Teacher role and changing the class's type, each of which would
+  un-teacher the class behind V2's back. Deleting the class is not refused: the FK unlinks the team.
+- **Lifecycle.** Unlinking, deleting the team and deactivating it leave the class's membership
+  exactly as it is — the class goes on meeting; unlinking also hands its teachers back to the class
+  page. Deactivating does not unlink. Deleting a position revokes as §2.7 says. A position with
+  active qualifications cannot move into or out of a linked team (`409`), because that would change
+  who teaches as a side effect. With the rollout at `v1` the link is inert: the V2 API is closed, so
+  nothing is projected, and nothing is refused.
 
 ### 2.5 Volunteer Pool — the ministry's own Group (D19)
 
@@ -748,6 +777,21 @@ changes affect *future* eligibility without rewriting historical assignments. Be
 `volunteer_assignment_vasg` carries **no FK to the qualification** — only to person and position —
 past assignments stay valid and readable no matter what happens to the qualification row. That is
 the whole reason the assignment does not reference a qualification.
+
+**Projection onto a linked class (D23).** On a team linked to a Sunday School class (§2.4), a
+qualification is also what makes somebody one of its teachers:
+
+| Qualification change on the team | The class's membership |
+|---|---|
+| Grant, any position of the team | joins with the Teacher role; already a Teacher: nothing. A member under **any other role** — a Student above all — is refused `409` naming the class, and nothing is written |
+| Revoke of the person's LAST active qualification among the team's positions (deactivated positions count as long as the qualification is active) | removed, if and only if the role is Teacher |
+| Revoke of any other; deactivating a position or the team | nothing |
+| Delete a position | as revoking each of its active qualifications |
+| Remove Volunteer (§5.4) | as revoking each — the Teacher role ends with the last |
+
+The membership write is in the same transaction as the qualification row, inside
+`VolunteerPoolWriter::run()`, so a team leader's grant writes the class without Manage Groups and
+`Hooks::GROUP_MEMBER_ADDED` / `GROUP_MEMBER_REMOVED` fire as for a Groups-module edit.
 
 ### 2.8 Schedule — `volunteer_schedule_vsch`
 
@@ -1275,34 +1319,43 @@ That is **UC3**: two ministries, two coordinators, one calendar event. The sound
 ministry with its own schedule against the same event type. Authorization is per ministry (§4), so
 the Worship coordinator cannot touch Coffee Bar's assignments on the shared occurrence.
 
-#### UC4 — Children's Ministry (one ministry, several teams, per-team leaders, attendance visible)
+#### UC4 — Children's Ministry (one ministry, a team per class, per-team leaders, attendance visible)
 
 ```
 volunteer_ministry_vmin (3, "Children's Ministry", active)
-volunteer_team_vtem     (3, min=3, 'Elementary')  (4, min=3, 'Nursery')  (5, min=3, 'Preschool')
+volunteer_team_vtem     (3, min=3, 'Faith City', vtem_grp_ID=41)   -- linked to its class (D23)
+                        (4, min=3, 'Nursery')    (5, min=3, 'Preschool')
 
 group_grp               (40, "Children's Ministry", type=Ministry, grp_ministry_id=3)
                         -- ONE pool for the whole ministry (D19): every team draws on the same people
+                        (41, 'Faith City', type=4 Sunday School Class)
+                        -- core's class: its Student rows are entered on the class page as always
 
 volunteer_scope_vscp    (…, per=61, 'ministry', 3)   -- one coordinator over everything
-                        (…, per=62, 'team',     4)   -- Nursery has its own leader
-                        (…, per=63, 'team',     5)   -- Preschool has its own leader
+                        (…, per=62, 'team',     3)   -- Faith City's one team leader
+                        (…, per=63, 'team',     4)   -- Nursery has its own leader
 
-volunteer_position_vpos (20, min=3, team=3, 'Elementary Teacher')   (21, min=3, team=3, 'Elementary Helper')
-                        (22, min=3, team=4, 'Nursery Teacher')      (23, min=3, team=5, 'Preschool Teacher')
+volunteer_position_vpos (20, min=3, team=3, 'Lead Teacher')   (21, min=3, team=3, 'Helper')
+                        (22, min=3, team=4, 'Nursery Teacher') (23, min=3, team=5, 'Preschool Teacher')
 
--- five weekly "events", five schedules, one per event type (or one type + a title filter):
-volunteer_schedule_vsch (3, min=3, team=3, 'Elementary Bible Hour',      LinkMode='event_type', type=2)
-                        (4, min=3, team=4, 'Nursery Bible Hour',         LinkMode='event_type', type=2,
-                                                                          TitleFilter='Nursery')
-                        (5, min=3, team=3, "Children's Church",          LinkMode='event_type', type=3)
-                        (6, min=3, team=3, 'Wednesday Night Elementary', LinkMode='event_type', type=4)
-                        (7, min=3, team=5, 'Wednesday Night Preschool',  LinkMode='event_type', type=5)
+volunteer_qualification_vqal  -- about eight people for positions 20 and 21 …
+person2group2role_p2g2r (…, grp=41, role=Teacher) × 8   -- … and V2 writes them into the class (D23)
+
+-- Faith City meets as events whose Linked Group is the class (D26); its schedule finds them by it (D22):
+volunteer_schedule_vsch (3, min=3, team=3, 'Faith City',                LinkMode='class', grp=41)
+                        (4, min=3, team=4, 'Nursery Bible Hour',        LinkMode='event_type', type=2,
+                                                                         TitleFilter='Nursery')
+                        (5, min=3, team=5, 'Wednesday Night Preschool', LinkMode='event_type', type=5)
 ```
 
-Two schedules (3 and 4) share event type 2 and are separated by `vsch_TitleFilter` — that is what
-the filter column is for. If the church instead creates distinct event types, the filter stays NULL
-and nothing else changes.
+Faith City is a stable class with about eight volunteers and one team leader. Linking the team to
+the class (§2.4) imported the class's existing teachers as Lead Teacher qualifications; from then
+on the coordinator or the team leader ticks the Volunteers grid, and the class page, the Sunday
+School dashboard's teacher count, the cart's "Add Teachers" and the Class Attendance PDF follow,
+because they read the class's Teacher role. The class page says where its teachers are managed
+and no longer changes them. The earlier shape — one "Elementary" team spanning several events —
+could not say which class a volunteer taught and gave check-in no roster, which is why a class is
+its own team. Schedule 4 shows what `vsch_TitleFilter` is for: several services of one event type.
 
 **Attendance beside who served (UC4)**: the occurrence view joins
 `volunteer_assignment_vasg → event_attend(event_id = vocc_event_id, person_id = vasg_per_ID)`
@@ -1438,12 +1491,13 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 |---|---|---|---|---|
 | GET | `/api/ministries/ministries` | list ministries **scoped** to the caller | Coordinator | `?manageable=1&active=1` → `{ministries:[{id,name,description,active,teamCount,openGapCount}]}` |
 | POST | `/api/ministries/ministries` | create | **Manager** | `{name,description}` → `201 {ministry:{…}}`; `409` on duplicate name |
-| GET | `/api/ministries/ministries/{ministryId}` | detail incl. teams (with their leaders), positions, pool and the overview `summary` | Coordinator of it | `MinistryMiddleware` → `{ministry, summary:{teamCount,volunteerCount,unfilledPositionCount}, teams[{…,leaders:[{scopeId,personId,personName}]}], positions[], poolGroupId, poolGroupName, pool[]}`. `unfilledPositionCount` is scoped to the caller — §5.4 |
+| GET | `/api/ministries/ministries/{ministryId}` | detail incl. teams (with their leaders and linked class), positions, pool and the overview `summary` | Coordinator of it | `MinistryMiddleware` → `{ministry, summary:{teamCount,volunteerCount,unfilledPositionCount}, teams[{…,leaders:[{scopeId,personId,personName}],classGroupId,classGroupName}], positions[], poolGroupId, poolGroupName, pool[]}`. `unfilledPositionCount` is scoped to the caller — §5.4 |
 | POST | `/api/ministries/ministries/{ministryId}` | update | Coordinator of it | `{name?,description?,active?,helpWanted?,helpWantedText?}` → `{ministry}`. Renaming renames the pool Group (D19) |
 | DELETE | `/api/ministries/ministries/{ministryId}` | delete | **Manager** | `409` while the ministry is still **active** ("Deactivate this ministry before deleting it."). Once deactivated the delete is total — teams, positions, qualifications, schedules, occurrences, assignments and their responses/swaps/outbox rows, service history included — plus the scope rows (§2.15), the pool Group and the calendar, in one transaction *(revised 2026-09-17; the earlier occurrence/assignment 409 is gone)* |
 | GET | `/api/ministries/ministries/{ministryId}/teams` | list | Coordinator of it | `{teams:[…]}` |
-| POST | `/api/ministries/ministries/{ministryId}/teams` | create | Coordinator of it | `{name,description}` → `201 {team}` |
-| GET/POST/DELETE | `/api/ministries/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware`. `DELETE` → `409` only for the ministry's last team (D18); otherwise it takes positions, schedules, occurrences, assignments and team-leader grants with it (§2.4, revised 2026-09-26) |
+| POST | `/api/ministries/ministries/{ministryId}/teams` | create | Coordinator of it | `{name,description,classGroupId?,importPositionId?,importPositionName?}` → `201 {team}`. The class keys are D23's (§2.4) |
+| GET | `/api/ministries/ministries/{ministryId}/linkable-classes` | Sunday School classes a team may link (D23) | Coordinator of it | `?teamId=` keeps that team's own class in the list → `{classes:[{id,name,teacherCount}]}`: every type-4 group not linked to another team, with its living Teacher-role members |
+| GET/POST/DELETE | `/api/ministries/teams/{teamId}` | read / update / delete | Coordinator of the parent ministry (delete: coordinator+) | `TeamMiddleware`. Every team on the wire carries `classGroupId` and `classGroupName`. `POST` also takes `classGroupId` (`null` unlinks, absent leaves it) with `importPositionId`/`importPositionName` — `400` for a group that is not a class or has no Teacher role, or for teachers with no position to import into; `409` for a class another team holds; `403` for a team leader (§2.4). `DELETE` → `409` only for the ministry's last team (D18); otherwise it takes positions, schedules, occurrences, assignments and team-leader grants with it (§2.4, revised 2026-09-26) — a linked class keeps its membership |
 | GET | `/api/ministries/ministries/{ministryId}/pool` | who is in the ministry's pool Group (D19) | Coordinator of it | `{groupId,groupName,members:[{personId,displayName,inPool,qualifications[]}]}`, alphabetical |
 | POST | `/api/ministries/ministries/{ministryId}/pool/{personId}` | add to the pool | Coordinator of it — **no `ManageGroups` needed** (§4.6) | `201 {personId,added:true}`; `200 {added:false}` when already there. Writes through the Propel membership model, so `Hooks::GROUP_MEMBER_ADDED` fires (G3) |
 | POST | `/api/ministries/ministries/{ministryId}/pool/from-cart` | **cart sink** (P5/P6): put everyone in the session cart in the pool | Coordinator of it | no body — the people come from `Cart::getCartPeople()` → `200 {added:int, alreadyMembers:int}`; `400` when the cart is empty. Idempotent per person; grants **no** qualification, and the cart is not emptied. This is what "Add from Cart" on S3 calls |
@@ -1455,9 +1509,9 @@ error contract that E-18 (#9737) establishes; see M5 for why there is no phrasin
 | POST | `/api/ministries/ministries/{ministryId}/positions` | create | Coordinator of it | `{name,description,teamId?,order?,recruiting?}` → `201`; `409` duplicate. `recruiting` defaults **false** and is **strictly** boolean — `true`/`false`/`1`/`0` and their string spellings, anything else `400` (the sanitizer has no bool type, and `(bool) "no"` is `true`) |
 | GET/POST/DELETE | `/api/ministries/positions/{positionId}` | read / update / deactivate-or-delete | Coordinator of the ministry | `POST {…,recruiting?}` with the same strict boolean rule; `DELETE` takes qualifications, staffing requirements and assignments with it (§2.6, revised 2026-09-26). Every position on the wire carries `recruiting`, so an absent key never has to be read as "off" |
 | GET | `/api/ministries/positions/{positionId}/qualifications` | who is qualified | Coordinator / Team Leader | `{qualifications:[{id,personId,displayName,active,grantedDate}]}` |
-| POST | `/api/ministries/positions/{positionId}/qualifications` | grant | Coordinator / Team Leader **of that position** | `{personId,notes?}` → `201`; idempotent — re-granting a deactivated row reactivates it |
+| POST | `/api/ministries/positions/{positionId}/qualifications` | grant | Coordinator / Team Leader **of that position** | `{personId,notes?}` → `201`; idempotent — re-granting a deactivated row reactivates it. On a team linked to a class the person also becomes a teacher; `409` for a member of the class under another role (D23, §2.7) |
 | ~~POST~~ | ~~`/api/ministries/positions/{positionId}/qualifications/from-cart`~~ | **RETIRED.** Bulk-qualifying the cart for one position had no caller left once S3's cart dialog stopped asking for a position; the cart now fills the pool instead (`/pool/from-cart` above) | — | — |
-| DELETE | `/api/ministries/qualifications/{qualificationId}` | revoke (**deactivates**) | Coordinator / Team Leader | `200 {qualification}` with `active:false` |
+| DELETE | `/api/ministries/qualifications/{qualificationId}` | revoke (**deactivates**) | Coordinator / Team Leader | `200 {qualification}` with `active:false`. The person's last one on a linked team ends their Teacher role in the class (D23, §2.7) |
 | GET | `/api/ministries/people/{personId}/qualifications` | one person's qualifications | Coordinator+, or self | scoped to the caller's ministries |
 | GET | `/api/ministries/scopes` | list scope grants | **Manager**, or coordinator of the named ministry | `?ministryId=&teamId=&personId=` |
 | POST | `/api/ministries/scopes` | grant coordinator / team-leader authority | **Manager** (ministry scope) or coordinator of the ministry (team scope) | `{personId,scopeType,scopeId}` → `201`; idempotent |
@@ -1559,12 +1613,32 @@ final class VolunteerAuthorizationService
 ```
 
 ```php
+final class VolunteerClassLinkService   // D23, §2.4 — the team ↔ Sunday School class link
+{
+    public static function findLinkedTeam(int $groupId): ?VolunteerTeam;
+    public static function teacherRoleId(Group $class): ?int;                      // by role NAME, as core reads it
+    /** The hooks' and /api/groups' question: null, or the 409 naming the ministry and team. Free at v1. */
+    public static function findTeacherWriteConflict(int $groupId, ?int $fromRoleId, ?int $toRoleId): ?VolunteerException;
+    public static function findTeacherRoleLock(int $groupId, int $roleId): ?VolunteerException;   // rename/delete the Teacher role
+    public static function findClassTypeLock(int $groupId): ?VolunteerException;                  // type away from Sunday School
+    public static function describeLink(int $groupId, User $viewer): ?array;       // the class page / group view note
+    public function listLinkableClasses(?int $teamId = null): array;                // [{id,name,teacherCount}]
+    public function requireLinkableClass(int $groupId, ?int $teamId): Group;       // 400 / 409
+    public function teacherPersonIds(Group $class): array;                          // who linking imports
+    public function assertMayTeach(Group $class, int $personId): void;              // 409 for a Student
+    public function addTeacher(Group $class, int $personId): bool;                  // managed write
+    public function removeTeacherIfUnqualified(VolunteerTeam $t, Group $class, int $personId): bool;
+}
+```
+
+```php
 final class VolunteerMinistryService
 {
     public function createMinistry(string $name, string $description, User $actor): VolunteerMinistry;
     public function updateMinistry(VolunteerMinistry $m, array $fields, User $actor): VolunteerMinistry;
     public function deleteMinistry(VolunteerMinistry $m, User $actor): void;   // 409 while the ministry is active (§3.3.1, 2026-09-17); otherwise deletes everything — assignments explicitly first (their position key is RESTRICT), then the row, whose FK cascades take teams/positions/qualifications/schedules/occurrences; the polymorphic volunteer_scope_vscp rows (no FK, §2.15), the pool Group and the calendar are removed explicitly in the same transaction
-    public function createTeam(VolunteerMinistry $m, string $name, string $description, User $actor): VolunteerTeam;
+    public function createTeam(VolunteerMinistry $m, string $name, string $description, User $actor, array $classLink = []): VolunteerTeam;
+    public function updateTeam(VolunteerTeam $t, array $fields, User $actor): VolunteerTeam;   // D23: classGroupId / importPositionId / importPositionName link, relink or unlink a class
     // D19 — the ministry's own pool Group. No link/unlink: createMinistry() made it.
     public function getPoolGroup(int $ministryId): ?Group;
     public function addPoolMember(int $ministryId, int $personId, User $actor): bool;      // true when a row was created
@@ -1660,6 +1734,8 @@ Naming note: `drainOutbox()` is `static` to match the `BirthdayEmailService::run
 | Access-denied page | `src/v2/routes/root.php:24-35` | add `'ManageMinistries'` and `'VolunteerCoordinator'` |
 | Header permission block | `src/Include/Header.php:230-233` | optionally add `window.CRM.permissions.volunteerCoordinator` — **advisory only**; the server gate is the control |
 | Auth entry gate | `src/ChurchCRM/Slim/Middleware/AuthMiddleware.php:60-64`, `:76`, `:130-137` | the narrow member-path exemption (§4.7) |
+| Group membership writes | `Person2group2roleP2g2r` hooks; `src/api/routes/people/people-groups.php` (`addperson`, `removeperson`, `userRole`, role rename/delete, group update); `src/groups/routes/member-role.php`; `src/groups/routes/cart.php` | D23: a Teacher-role write on a linked class is refused while V2 is on — `409` with `ministryId/ministryName/teamId/teamName` from the API, a flash message from the two pages (§4.6) |
+| Sunday School class page, group view | `src/groups/views/sundayschool/class-view.php`, `src/groups/views/group-view.php`, `src/skin/js/GroupView.js` | D23: while V2 is on and the class is linked, a note "Teachers of this class are managed in Ministries → {Ministry} → {Team}" (the ministry is a link only for a viewer who may open it), and no control adds, removes, re-roles, copies or moves a teacher; student controls are unchanged |
 
 ### 3.6 Notification delivery (D15) in detail
 
@@ -1983,6 +2059,9 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 | Grant ministry scope (make a coordinator) | ✓ | ✓ | ✗ | ✗ | ✗ |
 | Grant team scope (make a team leader) | ✓ | ✓ | scope | ✗ | ✗ |
 | Create / edit team | ✓ | ✓ | scope | ✗ | ✗ |
+| Link / unlink a team to a Sunday School class (D23) | ✓ | ✓ | scope | ✗ | ✗ |
+| Teacher-role write on a linked class outside V2 (Groups module, `/api/groups`, cart) while V2 is on | ✗ | ✗ | ✗ | ✗ | ✗ |
+| Student-role write on a linked class | Manage Groups, unchanged | | | | |
 | ~~Link / unlink a pool Group~~ | — | — | — | — | — | *(D19: there is nothing to link — a ministry owns its Group)* |
 | **Add/remove people in the pool Group** | ✓ | ✓ | scope | ✗ (ministry-level route) | ✗ |
 | Edit / delete the pool Group itself | ✗ — it is the ministry's | ✗ | ✗ | ✗ | ✗ |
@@ -2008,7 +2087,7 @@ protected function postEntityLoad(ServerRequestInterface $request, mixed $entity
 | Create / edit an event with **no** ministry id | existing `AddEvent` rules, unchanged | | | | |
 | Change the rollout setting / reminder lead time | ✓ | ✗ | ✗ | ✗ | ✗ |
 
-Three rows need explaining.
+Four rows need explaining.
 
 **Team-leader schedules (#9868).** "scope (own team)" on the schedule rows is not something a
 single middleware can say, because `POST /ministries/{ministryId}/schedules` is keyed on
@@ -2077,6 +2156,34 @@ calling `addUserToGroupInternal()` (auth-free, a **silent bypass**).
 id unless the managed-write context is open, so `VolunteerMinistryService::deleteMinistry()` is the
 only path, and the `409` from `DELETE /api/groups/{id}` is a statement about the model rather than
 a UI convention.
+
+**Linked Sunday School classes (D23).** The same hooks carry a refusal the other way round: a
+Teacher-role write on a class linked to a team, from outside V2, is refused for everyone —
+administrators and Manage Groups included, because the rule is one source of truth, not a
+permission.
+
+```php
+// Person2group2roleP2g2r::preInsert / preUpdate / preDelete, AFTER assertMembershipWritable()
+$conflict = VolunteerClassLinkService::findTeacherWriteConflict($groupId, $fromRoleId, $toRoleId);
+if ($conflict !== null) { throw $conflict; }   // 409, naming the ministry and team
+```
+
+1. **Free at `v1`.** The managed-write check and the rollout check come before any query; while
+   V2 is on it costs one indexed lookup on `vtem_class_group_uidx` per membership write, and a
+   `preUpdate` that does not touch the role asks nothing.
+2. **Asked after the permission check**, so a caller who may not write the group learns nothing
+   about links.
+3. **The managed-write context is the only way through, and D19's exception widens by exactly one
+   case:** `VolunteerPoolWriter::mayWriteLinkedClass()` lets a V2 service inside `run()` write a
+   class a team is linked to — the qualification service giving or taking the Teacher role after
+   authorizing the qualification change. A coordinator gets no standing write access to a class,
+   unlike to their ministry's pool.
+
+`/api/groups` asks the same predicate before writing and answers `409` with
+`ministryId/ministryName/teamId/teamName`, because `GroupService::addUserToGroup()` swallows the
+model's refusal and would report a success; the role editor and cart-to-group turn it into a flash
+message. Renaming or deleting the Teacher role and changing the class's type answer `409` the same
+way (`findTeacherRoleLock()`, `findClassTypeLock()`).
 
 **Ministry-linked events.** `AddEventsRoleAuthMiddleware` is a global boolean
 (`canManageEvents()`); there is no per-row event authorization anywhere today. The rule V2 adds, in
@@ -2404,6 +2511,14 @@ carries the **lifecycle buttons** *(product-owner decision, 2026-09-17)*:
   the ministry document, so a coordinator can see who leads what without the manager-only
   `/scopes` listing. A team is treated as having at most one leader; if the API ever holds
   more, all are named and "Remove Team Leader" revokes them all.
+
+  **Sunday School class (D23).** A linked team's name cell names its class — a link to the
+  class page for a viewer with Manage Groups, plain text otherwise. The Add/Edit team dialog has
+  an optional **Sunday School Class** select filled from `/linkable-classes`; choosing a class
+  that is not the team's current one and has teachers shows **"Qualify its current teachers
+  for"** with the team's positions and, when none is named Teacher, "New position: Teacher" —
+  the only choice while adding a team — and "Teachers to import: N" under it. Clearing the
+  select unlinks. The Member Portal's team page shows the class read-only.
 
   The **Ministry Coordinators** card (renamed from "Coordinators and team leaders") is
   ministry-coordinator grants and nothing else — no team-leader section, modal or copy.
@@ -2733,6 +2848,8 @@ Only three globs are wired into a Cypress config (F32):
 | `volunteer-v2.coordinator.spec.js` | `cypress/e2e/ui/groups/` | S1 → S4 coordinator path; gap visible; assign from the eligible picker; localized strings present |
 | `admin.volunteer-v2.ministry-page.spec.js` | `cypress/e2e/ui-admin/` | S3 end to end as admin: tab order, Overview counts + Teams card, Volunteers tab and Remove Volunteer, Help Wanted tab, the removed pool panel, `/volunteer/setup` 404, the "New ministry" modal |
 | `admin.volunteer-v2.event-ministry.spec.js` | `cypress/e2e/ui-admin/` | the ministry field on the event editor; authorization on set/clear |
+| `private.volunteer.team-class.spec.js` | `cypress/e2e/api/private/standard/` | D23: link validation (`400`/`409`/`403`), the teacher import, grant/revoke/position-delete projection, the Student `409`, the groups API's `409`s for Teacher writes, student writes, rollout `v1`, unlink and class deletion |
+| `admin.volunteer-v2.team-class.spec.js` | `cypress/e2e/ui-admin/` | D23 on screen: the team dialog's class select and import, the teams card's class link, the class page and group view notes and hidden teacher controls, the role editor's refusal |
 
 ### 6.4 Fixtures
 
@@ -3180,6 +3297,7 @@ consume it. This is #9703 deliverable 8.
 | `events_event.event_ministry_id` | D9: a coordinator must create and edit *their* ministry's events without the global `AddEvent` right, and there is no per-row event authorization today. `event_audience` cannot carry it — different semantics (F28), wrong cardinality in the API, and it points at groups. | #9713 |
 | `group_grp.grp_ministry_id` | D19: a ministry owns exactly one Group — its volunteer pool. Replaces the `volunteer_pool_vpol` link table, which never shipped: a link gives the model hooks nothing to reason about, which is why the pool was read-only (D-1). This column is what makes the `bManageGroups` exception expressible per-group rather than per-user (§2.5, §4.6). | D19 |
 | `volunteer_ministry_vmin.vmin_HelpWanted` / `vmin_HelpWantedText` | D19: a ministry advertises on the Open Opportunities page. Two columns on the row that owns the advert; nothing in core expresses "this area wants more people". | D19 |
+| `volunteer_team_vtem.vtem_grp_ID` | D23: a team staffs one Sunday School class, and V2 writes that class's Teacher role from the team's qualifications. The class stays a core group; nothing about it is copied, so a column naming it is the whole link. | D23 |
 | `volunteer_notification_vntf.vntf_Context` | D19: the outbox's first type that hangs off neither an assignment nor an occurrence. `help_offer` is about a ministry and a person, and the one fact its message needs — *were they already in the pool?* — is true only at the moment of the click and cannot be recomputed at delivery time. | D19 |
 
 ### 8.3 New services
@@ -3189,6 +3307,7 @@ consume it. This is #9703 deliverable 8.
 | `VolunteerAuthorizationService` | No scope primitive exists (F10). Must be one class so the admin bypass lives in exactly one place and so a future `AuthorizationService` (#8758) can absorb it without call-site churn. | #9706 and every later issue |
 | `VolunteerMinistryService` | Ministry/team/pool/position/qualification CRUD with scope checks. `GroupService` is deliberately not extended: ~60 % raw concatenated SQL, `bManageGroups`-only gating, and `addUserToGroup()` swallows failures (G10). | #9707, #9715, D19 |
 | `VolunteerPoolWriter` | D19's managed-write context and the hook predicate, in one small final class so the two core models share exactly one implementation of "may this caller write a ministry's pool Group". Deliberately not a method on `VolunteerMinistryService`: the models must not depend on the setup service, and a depth counter with `try`/`finally` is the whole of it (§4.6). | D19 |
+| `VolunteerClassLinkService` | D23's link to a Sunday School class: validation, the teachers linking imports, the Teacher-role writes, and the predicate the membership hooks and the groups API ask. Static entry points because the core membership model calls it and must not depend on the setup services — the reason `VolunteerPoolWriter` is its own class. | D23 |
 | `VolunteerScheduleService` | Occurrence generation, the linked/unlinked window resolution, and the effective-requirement merge. Cannot live in `EventService`, which exists to *create* events — precisely what #9713 forbids. | #9708, #9713 |
 | `VolunteerAssignmentService` | The whole assignment/response/gap/swap workflow, including the single gap implementation. No analogue exists. | #9709, #9711, #9712 |
 | `VolunteerNotificationService` | `dto\Notification` cannot carry a message body (no-op setters, hard-coded text, `sendSMS()` always returns `true`) and `NotificationService` is an in-app banner registry with no table. Neither can enqueue, deduplicate, schedule or retry. | #9710 |

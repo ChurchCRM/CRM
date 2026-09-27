@@ -50,6 +50,24 @@ $sManagedTitle = $bIsMinistryPool
 </div>
 <?php endif; ?>
 
+<?php if ($aTeacherLink !== null): ?>
+<div class="alert alert-info d-flex align-items-center" role="alert" id="class-teachers-managed-note">
+    <i class="fa-solid fa-circle-info me-2"></i>
+    <div>
+        <?= sprintf(
+            gettext('Teachers of this class are managed in Ministries → %1$s → %2$s.'),
+            '<strong>' . InputUtils::escapeHTML($aTeacherLink['ministryName']) . '</strong>',
+            '<strong>' . InputUtils::escapeHTML($aTeacherLink['teamName']) . '</strong>'
+        ) ?>
+        <?php if ($aTeacherLink['canOpenMinistry']): ?>
+        <a href="<?= $sRootPath ?>/ministries/<?= (int) $aTeacherLink['ministryId'] ?>" class="alert-link ms-1">
+            <?= gettext('Open the ministry') ?>
+        </a>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
+
 <!-- Stat Cards Row -->
 <div class="row mb-3">
     <div class="col-6 col-lg-3">
@@ -199,11 +217,15 @@ $sManagedTitle = $bIsMinistryPool
                     <div class="dropdown-divider"></div>
                     <?php endif; ?>
                     <h6 class="dropdown-header"><?= gettext('Copy to Group') ?></h6>
+                    <?php if ($aTeacherLink === null): ?>
                     <a class="dropdown-item copy-role-to-group" data-role-id="" href="#"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
+                    <?php endif; ?>
                     <div id="copyRoleItems"></div>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header"><?= gettext('Move to Group') ?></h6>
+                    <?php if ($aTeacherLink === null): ?>
                     <a class="dropdown-item move-role-to-group" data-role-id="" href="#"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
+                    <?php endif; ?>
                     <div id="moveRoleItems"></div>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header"><?= gettext('Settings') ?></h6>
@@ -395,6 +417,7 @@ $sManagedTitle = $bIsMinistryPool
     window.CRM.groupIsActive     = <?= $thisGroup->isActive() ? 'true' : 'false' ?>;
     window.CRM.groupEmailExport  = <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>;
     window.CRM.groupPhoneNumbers = <?= InputUtils::jsonEncodeForScript($sPhoneLink) ?>;
+    window.CRM.groupLockedRoleId = <?= InputUtils::jsonEncodeForScript($aTeacherLink['teacherRoleId'] ?? null) ?>;
 </script>
 <script src="<?= $sRootPath ?>/skin/js/GroupView.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/GroupView.js') ?>"></script>
 <?php if ($bEmailEnabled): ?>

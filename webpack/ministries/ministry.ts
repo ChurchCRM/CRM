@@ -52,12 +52,15 @@ import {
   getMinistry,
   getQualificationMatrix,
   grantScope,
+  type LinkableClass,
+  listLinkableClasses,
   listSchedules,
   type MinistryDetail,
   notifyError,
   notifySuccess,
   removeVolunteerFromMinistry,
   revokeScope,
+  type TeamClassLink,
   updateMinistry,
   updateTeam,
   type VolunteerPosition,
@@ -81,6 +84,7 @@ import {
   show,
   showModalError,
   statusBadge,
+  tText,
   wireModalFadeGuard,
 } from "./components/ui";
 import { initVolunteerScopes } from "./scopes";
@@ -94,6 +98,8 @@ interface MinistryConfig {
    * authorizes independently with the ministry-level entity middleware (D5).
    */
   isMinistryCoordinator: boolean;
+  /** Where a team's linked class opens (`…/{groupId}`), or null when the viewer cannot open groups. */
+  classUrlBase: string | null;
 }
 
 /**
@@ -113,6 +119,7 @@ let ministryId = 0;
 let isManager = false;
 /** Advisory only — see `MinistryConfig.isMinistryCoordinator`. */
 let isMinistryCoordinator = false;
+let classUrlBase: string | null = null;
 let detail: MinistryDetail | null = null;
 /**
  * The leader grants the open team dialog started with.
@@ -126,6 +133,10 @@ let detail: MinistryDetail | null = null;
 let teamLeadersOnOpen: VolunteerTeamLeader[] = [];
 /** Which record a modal is editing; 0 means "new". */
 let editingTeamId = 0;
+/** The class the open team dialog started with (D23); 0 means none. */
+let teamClassOnOpen = 0;
+/** The classes the open team dialog offers, with their teacher counts. */
+let linkableClasses: LinkableClass[] = [];
 
 // ─── The shared components, given this page's ministry-wide context ──────────
 //
@@ -233,6 +244,20 @@ function teamLeaderCell(team: VolunteerTeam): string {
     .join(", ");
 }
 
+/** D23: the Sunday School class a team is linked to, under its name — a link when the viewer may open groups. */
+function teamClassLine(team: VolunteerTeam): string {
+  if (!team.classGroupId) {
+    return "";
+  }
+
+  const name = escapeHtml(team.classGroupName ?? "");
+  const label = classUrlBase
+    ? `<a href="${window.CRM?.root ?? ""}${classUrlBase}${team.classGroupId}" class="volunteer-team-class-link">${name}</a>`
+    : name;
+
+  return `<div class="small text-body-secondary volunteer-team-class"><i class="fa-solid fa-chalkboard-user me-1"></i>${label}</div>`;
+}
+
 /**
  * The teams card on Overview — the list that used to open the Teams tab, plus the
  * team's leader.
@@ -281,7 +306,7 @@ function renderTeams(data: MinistryDetail): void {
       ]);
 
       return `<tr data-team-id="${team.id}">
-          <td class="fw-bold">${escapeHtml(team.name)}</td>
+          <td><span class="fw-bold">${escapeHtml(team.name)}</span>${teamClassLine(team)}</td>
           <td>${team.description ? escapeHtml(team.description) : '<span class="text-body-secondary">—</span>'}</td>
           <td class="volunteer-team-leader-cell">${teamLeaderCell(team)}</td>
           <td class="text-center"><span class="badge bg-blue-lt">${team.positionCount}</span></td>
@@ -434,7 +459,94 @@ function openTeamModal(team?: VolunteerTeam): void {
     readOnly.value = teamLeadersOnOpen.map((leader) => leader.personName).join(", ");
   }
 
+  teamClassOnOpen = team?.classGroupId ?? 0;
+  loadTeamClasses(team);
+
   modal("teamModal")?.show();
+}
+
+/**
+ * D23: fill the dialog's Sunday School class select. It starts out holding only
+ * the team's current class, so saving before the list arrives cannot unlink it.
+ */
+function loadTeamClasses(team?: VolunteerTeam): void {
+  const select = byId<HTMLSelectElement>("team-form-class");
+  if (!select) {
+    return;
+  }
+
+  const fill = (classes: LinkableClass[]): void => {
+    linkableClasses = classes;
+    select.replaceChildren(new Option(tText("None"), "0"));
+    for (const linkable of classes) {
+      select.append(new Option(linkable.name, String(linkable.id)));
+    }
+    select.value = String(teamClassOnOpen);
+    renderTeamImport();
+  };
+
+  fill(team?.classGroupId ? [{ id: team.classGroupId, name: team.classGroupName ?? "", teacherCount: 0 }] : []);
+  listLinkableClasses(ministryId, team?.id ?? 0)
+    .then((result) => fill(result.classes))
+    .catch((error: unknown) => {
+      notifyError(errorMessage(error, i18next.t("Could not load the Sunday School classes")));
+    });
+}
+
+/**
+ * "Qualify its current teachers for": shown when the chosen class is a NEW link
+ * and has teachers. It offers the team's positions, and a new "Teacher" position
+ * when the team has none of that name — the only choice for a team being added.
+ */
+function renderTeamImport(): void {
+  const chosen = Number(byId<HTMLSelectElement>("team-form-class")?.value ?? 0);
+  const linkable = linkableClasses.find((candidate) => candidate.id === chosen);
+  const importing = chosen !== 0 && chosen !== teamClassOnOpen && (linkable?.teacherCount ?? 0) > 0;
+  show(byId("team-form-import"), importing);
+
+  const select = byId<HTMLSelectElement>("team-form-import-position");
+  if (!importing || !select || !linkable) {
+    return;
+  }
+
+  const teamPositions = positions().filter((position) => position.teamId === editingTeamId && editingTeamId !== 0);
+  select.replaceChildren(...teamPositions.map((position) => new Option(position.name, String(position.id))));
+  const named = teamPositions.find(
+    (position) => position.name.toLowerCase() === newTeacherPositionName().toLowerCase(),
+  );
+  if (!named) {
+    select.append(new Option(tText("New position: {{name}}", { name: newTeacherPositionName() }), "new"));
+  }
+  select.value = named ? String(named.id) : "new";
+
+  const count = byId("team-form-import-count");
+  if (count) {
+    count.textContent = tText("Teachers to import: {{total}}", { total: linkable.teacherCount });
+  }
+}
+
+/** The position a team's imported teachers get when the coordinator picks "New position". */
+const newTeacherPositionName = (): string => tText("Teacher");
+
+/** The D23 keys to send with a team save — none when the class did not change. */
+function teamClassLink(): TeamClassLink {
+  const chosen = Number(byId<HTMLSelectElement>("team-form-class")?.value ?? teamClassOnOpen);
+  if (chosen === teamClassOnOpen) {
+    return {};
+  }
+  if (chosen === 0) {
+    return { classGroupId: null };
+  }
+
+  const importing = !byId("team-form-import")?.classList.contains("d-none");
+  const position = byId<HTMLSelectElement>("team-form-import-position")?.value ?? "";
+  if (!importing) {
+    return { classGroupId: chosen };
+  }
+
+  return position === "new"
+    ? { classGroupId: chosen, importPositionName: newTeacherPositionName() }
+    : { classGroupId: chosen, importPositionId: Number(position) };
 }
 
 /**
@@ -479,12 +591,13 @@ function saveTeam(): void {
 
   // A newly created team is active by construction (§2.4 default), so the switch
   // only needs a follow-up write when the coordinator turned it off while adding.
+  const classLink = teamClassLink();
   const saved: Promise<number> =
     editingTeamId === 0
-      ? createTeam(ministryId, name, description).then((result) =>
+      ? createTeam(ministryId, name, description, classLink).then((result) =>
           active ? result.team.id : updateTeam(result.team.id, { active: false }).then(() => result.team.id),
         )
-      : updateTeam(editingTeamId, { name, description, active }).then(() => editingTeamId);
+      : updateTeam(editingTeamId, { name, description, active, ...classLink }).then(() => editingTeamId);
 
   // The scope call happens BEFORE the dialog closes, so a refused grant is
   // reported in the dialog it was asked for in rather than as a toast over a
@@ -494,8 +607,8 @@ function saveTeam(): void {
     .then(() => {
       hideModal("teamModal");
       notifySuccess(editingTeamId === 0 ? i18next.t("Team added") : i18next.t("Team saved"));
-      // A team change can add or rename a column of the qualification grid, so
-      // the grid's own cached document is stale too.
+      // A team change can add or rename a column of the qualification grid, and
+      // linking a class can qualify its teachers, so the grid's cache is stale too.
       matrixGrid.invalidate();
 
       return load(true);
@@ -711,6 +824,7 @@ function wire(): void {
 
   byId("team-add-btn")?.addEventListener("click", () => openTeamModal());
   byId("team-form-save")?.addEventListener("click", saveTeam);
+  byId("team-form-class")?.addEventListener("change", renderTeamImport);
   wireTeamLeaderField();
   wireHelpWanted();
   wireMinistryLifecycle();
@@ -759,10 +873,12 @@ function init(): void {
     ministryId: 0,
     isManager: false,
     isMinistryCoordinator: false,
+    classUrlBase: null,
   }) as MinistryConfig;
   ministryId = config.ministryId;
   isManager = config.isManager;
   isMinistryCoordinator = config.isMinistryCoordinator;
+  classUrlBase = config.classUrlBase ?? null;
 
   if (ministryId === 0) {
     return;

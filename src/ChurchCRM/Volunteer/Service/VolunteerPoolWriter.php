@@ -33,6 +33,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
  *      nor a coordinator, and the service — not the model — is the thing that decided they
  *      may. The context is a depth counter with `try`/`finally`, so a throw inside the
  *      callable can never leave it open, and a nested call cannot close its parent's.
+ *      D23 reuses the same context for the Teacher role of a Sunday School class linked
+ *      to a team (`mayWriteLinkedClass()`), which the qualification service writes.
  *
  * ## What is deliberately unchanged
  *
@@ -115,5 +117,18 @@ final class VolunteerPoolWriter
         // Scope table, never $_SESSION — so an API-key caller gets the same answer
         // a browser session does (F21, the defect this whole class exists to fix).
         return (new VolunteerAuthorizationService())->canManageMinistry($currentUser, $ministryId);
+    }
+
+    /**
+     * May a V2 service write the membership of this Sunday School class (D23)?
+     *
+     * Only inside the managed-write context, and only for a class a team is linked
+     * to: that is the qualification service giving or taking the Teacher role after
+     * authorizing the qualification change. A coordinator gets no standing write
+     * access to a class, unlike to their ministry's pool.
+     */
+    public static function mayWriteLinkedClass(int $groupId): bool
+    {
+        return self::isManagedWriteOpen() && VolunteerClassLinkService::findLinkedTeam($groupId) !== null;
     }
 }

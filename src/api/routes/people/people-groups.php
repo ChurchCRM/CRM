@@ -28,6 +28,8 @@ use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
+use ChurchCRM\Volunteer\VolunteerException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
@@ -89,6 +91,36 @@ function _renderManagedGroupConflict(Response $response, Group $group): ?Respons
         ['ministryId' => (int) $group->getMinistryId(), 'ministryName' => $ministryName],
         409
     );
+}
+
+/**
+ * Volunteer v2 (D23): while V2 is on, the Teacher role of a Sunday School class linked
+ * to a volunteer team is given and taken by that team's qualifications. Any write here
+ * that would add, remove or change a role to or from Teacher answers 409 with the
+ * ministry and team to go to; student writes are untouched.
+ *
+ * Checked before the write because `GroupService::addUserToGroup()` swallows the
+ * model's refusal, which would otherwise read as a successful add.
+ */
+function _renderTeacherRoleConflict(Response $response, ?VolunteerException $conflict): ?Response
+{
+    if ($conflict === null) {
+        return null;
+    }
+
+    return SlimUtils::renderErrorJSON($response, $conflict->getMessage(), $conflict->getExtra(), 409);
+}
+
+/** The person's current role in the group, or null when they are not a member. */
+function _currentGroupRoleId(int $groupId, int $personId): ?int
+{
+    $roleId = Person2group2roleP2g2rQuery::create()
+        ->filterByGroupId($groupId)
+        ->filterByPersonId($personId)
+        ->select(['RoleId'])
+        ->findOne();
+
+    return $roleId === null ? null : (int) $roleId;
 }
 
 function _buildPhoneResponse(array $phoneList): array
@@ -902,7 +934,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     ),
      *     @OA\Response(response=200, description="Updated group object"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
-     *     @OA\Response(response=409, description="The group is a volunteer ministry's pool and is managed from that ministry (Volunteer v2, D19)")
+     *     @OA\Response(response=409, description="The group is a volunteer ministry's pool and is managed from that ministry (Volunteer v2, D19), or is a Sunday School class linked to a volunteer team and would stop being one (D23)")
      * )
      */
     $group->post('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -911,6 +943,12 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $managed = _renderManagedGroupConflict($response, $group);
         if ($managed !== null) {
             return $managed;
+        }
+        if (isset($input['groupType']) && (int) $input['groupType'] !== (int) $group->getType()) {
+            $linked = _renderTeacherRoleConflict($response, VolunteerClassLinkService::findClassTypeLock((int) $group->getId()));
+            if ($linked !== null) {
+                return $linked;
+            }
         }
         $group->setName($input['groupName']);
         $group->setType($input['groupType']);
@@ -977,12 +1015,21 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Parameter(name="userID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Person removed from group"),
-     *     @OA\Response(response=403, description="ManageGroupRole role required")
+     *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=409, description="The person is a teacher of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)")
      * )
      */
     $group->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $group = $request->getAttribute('group');
+        $locked = _renderTeacherRoleConflict($response, VolunteerClassLinkService::findTeacherWriteConflict(
+            (int) $group->getId(),
+            _currentGroupRoleId((int) $group->getId(), (int) $person->getId()),
+            null
+        ));
+        if ($locked !== null) {
+            return $locked;
+        }
         $groupRoleMemberships = $group->getPerson2group2roleP2g2rs();
         foreach ($groupRoleMemberships as $groupRoleMembership) {
             if ($groupRoleMembership->getPersonId() == $person->getId()) {
@@ -1013,7 +1060,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *         )
      *     ),
      *     @OA\Response(response=200, description="Updated membership records for the person in the group"),
-     *     @OA\Response(response=403, description="ManageGroupRole role required")
+     *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=409, description="The role is Teacher, or the person is a teacher, of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)")
      * )
      */
     $group->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -1024,6 +1072,15 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $group = $request->getAttribute('group');
 
         $roleID = $input['RoleID'] ?? $group->getDefaultRole();
+
+        $locked = _renderTeacherRoleConflict($response, VolunteerClassLinkService::findTeacherWriteConflict(
+            (int) $groupID,
+            _currentGroupRoleId((int) $groupID, (int) $userID),
+            (int) $roleID === 0 ? (int) $group->getDefaultRole() : (int) $roleID
+        ));
+        if ($locked !== null) {
+            return $locked;
+        }
 
         $groupService = new GroupService();
         $groupService->addUserToGroup($groupID, $userID, $roleID);
@@ -1060,7 +1117,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     ),
      *     @OA\Response(response=200, description="Updated membership object"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
-     *     @OA\Response(response=404, description="Membership not found")
+     *     @OA\Response(response=404, description="Membership not found"),
+     *     @OA\Response(response=409, description="The change is to or from Teacher in a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)")
      * )
      */
     $group->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -1070,6 +1128,13 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $membership = Person2group2roleP2g2rQuery::create()->filterByGroupId($groupID)->filterByPersonId($userID)->findOne();
         if ($membership === null) {
             throw new HttpNotFoundException($request, gettext('Membership not found'));
+        }
+        $locked = _renderTeacherRoleConflict(
+            $response,
+            VolunteerClassLinkService::findTeacherWriteConflict($groupID, (int) $membership->getRoleId(), $roleID)
+        );
+        if ($locked !== null) {
+            return $locked;
         }
         $membership->setRoleId($roleID);
         $membership->save();
@@ -1093,6 +1158,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=200, description="Role updated successfully"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
      *     @OA\Response(response=404, description="Group role not found"),
+     *     @OA\Response(response=409, description="Renaming the Teacher role of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)"),
      *     @OA\Response(response=500, description="Failed to update role")
      * )
      */
@@ -1102,6 +1168,13 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $input = $request->getParsedBody();
             $group = $request->getAttribute('group');
             if (isset($input['groupRoleName'])) {
+                $locked = _renderTeacherRoleConflict(
+                    $response,
+                    VolunteerClassLinkService::findTeacherRoleLock((int) $group->getId(), $roleID)
+                );
+                if ($locked !== null) {
+                    return $locked;
+                }
                 $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
                 if ($groupRole === null) {
                     throw new HttpNotFoundException($request, gettext('Group role not found'));
@@ -1138,6 +1211,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     @OA\Parameter(name="roleID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Role deleted successfully"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=409, description="Deleting the Teacher role of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)"),
      *     @OA\Response(response=500, description="Failed to delete role")
      * )
      */
@@ -1145,6 +1219,13 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         try {
             $groupID = $args['groupID'];
             $roleID = $args['roleID'];
+            $locked = _renderTeacherRoleConflict(
+                $response,
+                VolunteerClassLinkService::findTeacherRoleLock((int) $groupID, (int) $roleID)
+            );
+            if ($locked !== null) {
+                return $locked;
+            }
             $groupService = new GroupService();
 
             return SlimUtils::renderJSON($response, $groupService->deleteGroupRole($groupID, $roleID));

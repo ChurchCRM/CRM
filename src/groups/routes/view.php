@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -221,6 +222,10 @@ function viewGroup(Request $request, Response $response, array $args): Response
         'aPropTypes'            => $aPropTypes,
         'sGlobalMessage'        => $sGlobalMessage,
         'sGlobalMessageClass'   => $sGlobalMessageClass,
+        // Volunteer v2 (D23): null unless a volunteer team writes this class's teachers.
+        'aTeacherLink'          => $thisGroup->isSundaySchool()
+            ? VolunteerClassLinkService::describeLink($iGroupID, $currentUser)
+            : null,
     ];
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');

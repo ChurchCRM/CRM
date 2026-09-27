@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
@@ -73,6 +74,10 @@ $app->group('', function (RouteCollectorProxy $group): void {
             'bMinistryActive' => (bool) $ministry->getActive(),
             'bIsManager'     => $authz->isGlobalManager($currentUser),
             'bIsMinistryCoordinator' => $bIsMinistryCoordinator,
+            // D23: a team's linked class is a link only for a viewer the Groups module lets in.
+            'sClassUrlBase'  => $currentUser->isManageGroupsEnabled()
+                ? (SystemConfig::getBooleanValue('bEnabledSundaySchool') ? '/groups/sundayschool/class/' : '/groups/view/')
+                : null,
         ]);
     });
 })->add(VolunteerCoordinatorRoleAuthMiddleware::class);

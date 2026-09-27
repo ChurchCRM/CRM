@@ -42,6 +42,7 @@ use ChurchCRM\Utils\InputUtils;
 /** @var bool $bMinistryActive */
 /** @var bool $bIsManager */
 /** @var bool $bIsMinistryCoordinator */
+/** @var string|null $sClassUrlBase where a linked class opens, or null when the viewer cannot open groups */
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 
@@ -692,6 +693,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </div>
 <?php endif; ?>
         </div>
+        <!--
+          D23: the Sunday School class this team staffs. Its Teacher role is then
+          written from this team's qualifications, and linking qualifies the class's
+          current teachers for the position chosen below. Filled by ministry.ts.
+        -->
+        <div class="mb-3">
+          <label class="form-label" for="team-form-class"><?= gettext('Sunday School Class') ?></label>
+          <select class="form-select" id="team-form-class"></select>
+          <div class="form-text">
+            <?= gettext('Optional. Everyone qualified for a position of this team becomes a teacher of the class, and the class page no longer changes its teachers.') ?>
+          </div>
+        </div>
+        <div class="mb-3 d-none" id="team-form-import">
+          <label class="form-label" for="team-form-import-position"><?= gettext('Qualify its current teachers for') ?></label>
+          <select class="form-select" id="team-form-import-position"></select>
+          <div class="form-text" id="team-form-import-count"></div>
+        </div>
         <label class="form-check form-switch">
           <input class="form-check-input" type="checkbox" id="team-form-active" checked>
           <span class="form-check-label"><?= gettext('Active') ?></span>
@@ -1046,7 +1064,8 @@ window.CRM = window.CRM || {};
 window.CRM.volunteerMinistry = {
   ministryId: <?= (int) $iMinistryId ?>,
   isManager: <?= $bIsManager ? 'true' : 'false' ?>,
-  isMinistryCoordinator: <?= $bIsMinistryCoordinator ? 'true' : 'false' ?>
+  isMinistryCoordinator: <?= $bIsMinistryCoordinator ? 'true' : 'false' ?>,
+  classUrlBase: <?= InputUtils::jsonEncodeForScript($sClassUrlBase ?? null) ?>
 };
 </script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-ministry.min.js') ?>"></script>
