@@ -61,13 +61,15 @@ Put each PR in exactly one place:
 | **🌍 Global Language Polish** | Translation fixes, plural/wording fixes and the standard localization line. |
 | **🧰 Behind the Scenes** | Exactly **two lines**: one for *Security & Dependencies*, one for *Testing & Tooling*. |
 | **🤝 For Contributors & AI Agents** | Optional, at most two lines: developer/agent onboarding and project automation changes that matter to contributors (for example, fewer agent tokens or automation that makes no model call). |
-| Omitted | Bot syncs (locale imports, marketing visuals, OpenAPI regeneration, changelog sync), version bumps, and docs/agent-guidance changes, unless contributors or integrators need to know. |
+| **🙌 See It for Yourself** | Marketing-capture PRs become at most one line: website and docs screenshots come from the real app and are refreshed *after* publication, never before. |
+| Omitted | Bot syncs (locale imports, marketing visuals, OpenAPI regeneration, changelog sync), version bumps, and docs/agent-guidance changes that don't change how people contribute. |
 
 Enhancement categories. Use only the ones that have content, and add one when nothing fits:
 
 - **💰 Giving & Financial Tracking**: pledges, funds, deposits, finance reports, currency
-- **👥 Usability & Directory Enhancements**: people, families, groups, cart, pickers, dashboards, exports, demo data
-- **📱 Mobile & Display Enhancements**: responsive layouts, themes, branding, icons
+- **👥 Usability & Directory Enhancements**: people, families, groups, cart, pickers, dashboards, exports
+- **🧑‍🤝‍🧑 Demo Congregation**: demo data import (its own subsection when it adds records, photos or realism; the demo is where evaluating churches first meet the product)
+- **📱 Mobile & Display Enhancements**: responsive layouts, themes, icons
 - **📍 Mapping & Geocoding Fixes**: coordinates, addresses, maps
 - **⚙️ Administration & Ongoing Platform Safety**: settings, permissions, install/upgrade, API behavior, privacy
 
@@ -76,6 +78,11 @@ Rules:
 - Bug fixes never go under New Features.
 - A user-impacting security fix (for example, a permission check that now blocks access) goes under Administration & Ongoing Platform Safety. Only dependency bumps and hardening with no visible effect collapse into the Security line.
 - Merge PRs that ship one outcome, such as two favicon PRs, into one bullet.
+- **Weight by reach, not by PR size.** Ask who notices the change on day one:
+  - A brand or look change that every user sees on every screen (logo, sidebar, sign-in pages) is a feature. Put it under New Features.
+  - A capability nobody uses yet (for example, settings that nothing member-facing reads) gets one line under Administration, however large the PR. Keep it out of the title, theme and intro.
+  - Only the one or two changes with the widest reach go in the title, theme and intro.
+- The context script's **Brand & look**, **Demo data** and **Marketing capture** buckets map to the rows above. Check them before calling a release "fixes only".
 
 ---
 
@@ -154,7 +161,7 @@ Rules:
 - State breaking changes, removed features, new runtime requirements and required upgrade steps plainly, in their own `## ⚠️ Before You Upgrade` section placed above New Features.
 - Security: use calm, routine-maintenance framing. If the release fixes a published advisory users must act on, name it accurately. Never hide required security information.
 - Localization: count the entries in `src/locale/locales.json` at `TARGET` and write "[count] languages" (the Product Truth wording) instead of copying last release's number or "45+". Say "ready for translation": shipping a string does not mean it is translated.
-- Contributors: credit each human author with what they shipped. A **New Contributor** is anyone whose first merged PR to ChurchCRM/CRM is in this release (`gh search prs --repo ChurchCRM/CRM --author <login> --merged --limit 2`). Leave out bots, and leave out the whole section if there are no human authors besides the maintainer.
+- Contributors: credit each human author with what they shipped. Some contributions leave no PR under the contributor's name: design (logos, images), translation, testing, docs written by someone else. Ask George who else to credit before finalizing, and credit them by GitHub handle with what they made. A **New Contributor** is anyone whose first merged PR to ChurchCRM/CRM is in this release (`gh search prs --repo ChurchCRM/CRM --author <login> --merged --limit 2`). Leave out bots, and leave out the whole section if there are no human authors besides the maintainer.
 - Output GitHub-Flavored Markdown only: no HTML, inline CSS, citation markers, `end_span` artifacts, commit hashes or upgrade-utility reminders.
 - Leave out empty sections.
 

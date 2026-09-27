@@ -32,7 +32,9 @@ const API = 'https://api.github.com';
 // Order matters: the first bucket whose rule matches any touched file wins,
 // so a PR that changes src/ and cypress/ is user-facing, not "testing".
 const BUCKETS = [
-  { id: 'user', title: 'User-facing (application code)', match: f => /^(src|webpack|orm)\//.test(f) && !/^src\/(composer\.(json|lock)|locale\/)/.test(f) },
+  { id: 'brand', title: 'Brand & look (logos, icons, images)', match: f => /^src\/(Images\/|favicon\.ico$)/.test(f) },
+  { id: 'user', title: 'User-facing (application code)', match: f => /^(src|webpack|orm)\//.test(f) && !/^src\/(composer\.(json|lock)|locale\/|admin\/demo\/)/.test(f) },
+  { id: 'demo', title: 'Demo data', match: f => /^src\/admin\/demo\//.test(f) },
   { id: 'locale', title: 'Localization', match: f => /^(locale|src\/locale)\//.test(f) },
   { id: 'deps', title: 'Dependencies', match: f => /(^|\/)(package(-lock)?\.json|composer\.(json|lock))$/.test(f) },
   { id: 'testing', title: 'Testing', match: f => /^(cypress|tests?)\//.test(f) },
