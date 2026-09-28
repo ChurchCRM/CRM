@@ -43,11 +43,20 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
     $group->get('/{id}/audience', 'getEventAudience')->add(new EventsMiddleware());
     $group->get('/{id}/roster', 'getEventRoster')->add(new EventsMiddleware());
 
-    $group->post('/quick-create', 'quickCreateEvent')->add(new AddEventsRoleAuthMiddleware());
+    $group->post('/quick-create', 'quickCreateEvent')->add(new InputSanitizationMiddleware(['date' => 'date?']))->add(new AddEventsRoleAuthMiddleware());
     $group->post('/generate-recurring', 'generateRecurringEvents')->add(new AddEventsRoleAuthMiddleware());
     $group->post('/', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
     $group->post('', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
-    $group->post('/repeat', 'createRepeatEvents')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
+    $group->post('/repeat', 'createRepeatEvents')->add(new InputSanitizationMiddleware([
+        'Title'      => 'text',
+        'Desc'       => 'html',
+        'Text'       => 'html',
+        // Declared optional so an absent field still reaches the handler's own
+        // "Missing required field" check with its existing message (#9821).
+        'RecurType'  => 'enum?:weekly,monthly,yearly',
+        'RangeStart' => 'date?',
+        'RangeEnd'   => 'date?',
+    ]))->add(new AddEventsRoleAuthMiddleware());
     $group->post('/{id}', 'updateEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/checkin', 'checkinPerson')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
@@ -493,21 +502,11 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
         }
     }
 
-    $validRecurTypes = ['weekly', 'monthly', 'yearly'];
+    // RecurType (enum) and RangeStart / RangeEnd (strict YYYY-MM-DD, no silent
+    // roll-over to "now") are validated and normalised declaratively by the
+    // InputSanitizationMiddleware on this route — see the route table above.
     $recurType = $input['RecurType'];
-    if (!in_array($recurType, $validRecurTypes, true)) {
-        return SlimUtils::renderErrorJSON($response, gettext('invalid recurrence type'), [], 400);
-    }
 
-    // Strict YYYY-MM-DD date validation — passing an empty/garbage string to
-    // DateTime defaults to "now", which would silently produce events outside
-    // the caller's intended range.
-    foreach (['RangeStart', 'RangeEnd'] as $dateField) {
-        $parsed = \DateTimeImmutable::createFromFormat('!Y-m-d', $input[$dateField]);
-        if ($parsed === false || $parsed->format('Y-m-d') !== $input[$dateField]) {
-            return SlimUtils::renderErrorJSON($response, sprintf(gettext('Invalid date for %s — expected YYYY-MM-DD'), $dateField), [], 400);
-        }
-    }
     if ($input['RangeEnd'] < $input['RangeStart']) {
         return SlimUtils::renderErrorJSON($response, gettext('RangeEnd must be on or after RangeStart'), [], 400);
     }
@@ -732,7 +731,7 @@ function setEventStatus(Request $request, Response $response, array $args): Resp
  *             @OA\Property(property="title", type="string", example="Youth Sunday School — Apr 5, 2026")
  *         )
  *     ),
- *     @OA\Response(response=400, description="Invalid event type ID"),
+ *     @OA\Response(response=400, description="Invalid event type ID, or a date that is not a valid YYYY-MM-DD"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="AddEvents role required")
  * )
@@ -743,14 +742,12 @@ function quickCreateEvent(Request $request, Response $response, array $args): Re
     $eventTypeId = InputUtils::filterInt($input['eventTypeId'] ?? 0);
     $groupId = InputUtils::filterInt($input['groupId'] ?? 0);
 
-    // Validate date input (defaults to today)
-    $date = date('Y-m-d');
-    if (!empty($input['date'])) {
-        $parsedDate = \DateTimeImmutable::createFromFormat('!Y-m-d', (string) $input['date']);
-        if ($parsedDate === false || $parsedDate->format('Y-m-d') !== (string) $input['date']) {
-            return SlimUtils::renderErrorJSON($response, gettext('Invalid date; expected format YYYY-MM-DD'), [], 400);
-        }
-        $date = $parsedDate->format('Y-m-d');
+    // 'date' is an optional, strictly validated YYYY-MM-DD field: the
+    // InputSanitizationMiddleware on this route rejects anything else and
+    // leaves an unsupplied value untouched, so it only has to default here.
+    $date = (string) ($input['date'] ?? '');
+    if ($date === '') {
+        $date = date('Y-m-d');
     }
 
     $eventType = null;

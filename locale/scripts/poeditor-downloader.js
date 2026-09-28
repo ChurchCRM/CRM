@@ -35,6 +35,7 @@ const POEDITOR_API = 'https://api.poeditor.com/v2/projects/export';
 
 // Use centralized locale config for missing-terms paths and settings
 const localeConfig = require('./locale-config');
+const { repairJoinedPlural } = require('./lib/poeditor-plurals');
 const MISSING_OUTPUT_DIR = localeConfig.terms.missing;
 const TERMS_PER_FILE = localeConfig.settings?.missingTermsBatchSize || 150;
 const MIN_MISSING_TERMS = 0; // never skip missing terms
@@ -683,6 +684,7 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
             let missing = await fetchUntranslatedTerms(poEditorLocale);
             missing = convertPipeSeparatedPlurals(missing, poEditorLocale);
             missing = restructurePluralForms(missing);
+            for (const [term, value] of Object.entries(missing)) missing[term] = repairJoinedPlural(value);
             const termCount = Object.keys(missing).length;
 
             if (termCount === 0) {

@@ -128,6 +128,20 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * Effective value of a SystemConfig key, as a string
+     * @param name - Config key, e.g. "bEnableSelfRegistration"
+     */
+    getSystemConfig(name: string): Chainable<string>;
+
+    /**
+     * Restore a SystemConfig key to a value captured with getSystemConfig and verify it.
+     * Does nothing when value is undefined (the capture never ran).
+     * @param name - Config key
+     * @param value - Value captured before the spec changed it
+     */
+    restoreSystemConfig(name: string, value: string | undefined): Chainable<void>;
+
+    /**
      * Make API request with user privileges
      * @param method - HTTP method
      * @param url - Request URL
@@ -328,15 +342,16 @@ declare namespace Cypress {
     // ---------------------------------------------------------------
 
     /**
-     * Create a person with specific birthday data for testing
-     * @param personData - Object containing name, month, day, year for the person
+     * Create a person with a birthday through PersonEditor and yield their id
+     * @param personData - First name, birth month/day/year and optional last name
      */
     createPersonWithBirthday(personData: {
       name: string;
       month: number;
       day: number;
       year?: number | null;
-    }): Chainable<void>;
+      lastName?: string;
+    }): Chainable<number>;
 
     /**
      * Delete a person by searching for their name

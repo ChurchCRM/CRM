@@ -26,7 +26,7 @@ Review the list of locales and term counts.
 
 ### Step 3 — Translate all missing terms
 
-**Always on a brand-new branch.** `/locale-translate` creates a fresh `locale/{version}-{YYYY-MM-DD}-{HHMMSS}` branch on every invocation — it never reuses a prior run's branch. If you are resuming a release after a timeout, just rerun the command; a new branch will be cut and already-uploaded locales will be skipped by POEditor.
+**Always on a brand-new branch.** `/locale-translate` creates a fresh `locale/translate/{version}-{YYYY-MM-DD}-{HHMMSS}` branch on every invocation — it never reuses a prior run's branch. If you are resuming a release after a timeout, just rerun the command; a new branch will be cut and already-uploaded locales will be skipped by POEditor.
 
 Invoke the translation skill:
 
@@ -41,32 +41,22 @@ To translate a single locale instead:
 /locale-translate --locale <poEditorCode>
 ```
 
-### Step 3.5 — Commit + Push + Upload after EVERY locale (MANDATORY) <!-- learned: 2026-04-09 -->
+### Step 3.5 — Commit + Push after EVERY locale (MANDATORY) <!-- learned: 2026-04-09 -->
 
-**⛔ NON-NEGOTIABLE: After EVERY locale, immediately commit → push → upload to POEditor.**
+**⛔ NON-NEGOTIABLE: After EVERY locale, immediately commit → push.** The push uploads it: [`locale-upload-missing.yml`](../../.github/workflows/locale-upload-missing.yml) runs on every push to `locale/translate/**`, uploads the changed locales to POEditor, and starts the POEditor sync.
 
 ```bash
 # After each locale is translated and applied:
 git add locale/terms/missing/<CODE>/ locale/terms/english-ok.json
 git commit -m "locale: translate <CODE> (<LANGUAGE>, <N> terms)"
 git push origin $(git branch --show-current)
-node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
 ```
 
-**Never batch multiple locales into one commit. Never skip the push. Never skip the upload.**
+**Never batch multiple locales into one commit. Never skip the push.** Upload by hand (`node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`) only if the workflow run for your push failed, or your session pushes with the Actions `GITHUB_TOKEN` (those pushes start no workflows).
 
-After the upload script refreshes the local batch files (removes accepted terms), commit those too:
-```bash
-git add locale/terms/missing/<CODE>/
-git commit -m "locale: update missing terms for <CODE> after POEditor upload"
-git push origin $(git branch --show-current)
-```
-
-**Why all four steps?**
-- **Commit translations** = save point (protects against session crash)
-- **Push** = remote backup (protects against machine crash)
-- **Upload + download** = POEditor backup + local files reflect actual remaining work
-- **Commit refreshed files** = branch stays in sync with POEditor state
+**Why?**
+- **Commit** = save point (protects against session crash)
+- **Push** = remote backup, and it triggers the POEditor upload
 
 We have lost hours of translated work because agents translated 20+ locales without committing or pushing. This rule exists to prevent that from ever happening again.
 
@@ -133,5 +123,5 @@ Denomination context is applied per locale (Coptic Orthodox for Egyptian Arabic,
 
 ## Related Skills
 
-- [AI Locale Translation](.agents/skills/churchcrm/locale-ai-translation.md) — full reference
-- [i18n & Localization](.agents/skills/churchcrm/i18n-localization.md) — term consolidation and locale rebuild
+- [Locale pipeline](../../docs/locale-pipeline.md) — branches, workflows and plural handling
+- [i18n & Localization](../../.agents/skills/churchcrm/i18n-localization.md) — term consolidation and locale rebuild

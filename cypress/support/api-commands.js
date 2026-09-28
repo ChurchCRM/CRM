@@ -23,6 +23,26 @@ Cypress.Commands.add(
     },
 );
 
+// Effective value of a SystemConfig key (the default when no config_cfg row exists).
+Cypress.Commands.add("getSystemConfig", (name) => {
+    return cy
+        .makePrivateAdminAPICall("GET", `admin/api/system/config/${name}`, null, 200)
+        .then((response) => String(response.body.value));
+});
+
+// Put a SystemConfig key back to a value captured with getSystemConfig, then
+// confirm it. Restore the captured value, never a literal: setValue() deletes
+// the config_cfg row when the value equals the default, so writing the default
+// over a seeded non-default value removes the row (#9799).
+Cypress.Commands.add("restoreSystemConfig", (name, value) => {
+    if (value === undefined) {
+        cy.log(`restoreSystemConfig: no captured value for ${name}; leaving it unchanged`);
+        return;
+    }
+    cy.makePrivateAdminAPICall("POST", `admin/api/system/config/${name}`, { value }, 200);
+    cy.getSystemConfig(name).should("eq", value);
+});
+
 Cypress.Commands.add(
     "makePrivateUserAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
