@@ -124,6 +124,7 @@ git show {commit-sha}
 - Critical/High severity (CVSS ≥7.0)
 - Simple to fix (1–2 file changes)
 - Affects current/recent releases
+- Security boundaries (XSS, auth bypass, RCE)
 
 **Schedule next cycle:**
 - Moderate severity (CVSS 4–6)
@@ -134,6 +135,27 @@ git show {commit-sha}
 - Already patched and released
 - Requires major refactor
 - Duplicate of another advisory
+- Lower-impact info disclosure
+
+### Step 5: Detect Patterns (Cross-Advisory Analysis)
+
+When reviewing multiple advisories, look for:
+
+**Code pattern issues** (fix once, apply everywhere):
+- `escapeHtml()` in HTML attribute contexts (unsafe — use `escapeAttribute()`)
+- Missing authorization checks in similar forms/endpoints (batch IDOR fixes)
+- Inconsistent field-level access control across similar resources
+
+**Design issues** (systemic fixes):
+- Missing POST-only enforcement on state-changing endpoints
+- Unauthenticated template access via missing routing rules
+- Token/session validation gaps across API/calendar layer
+
+**Plugin/extension issues**:
+- Third-party integrations with SSRF/URL validation gaps
+- Plugin upload/restore file handling
+
+Grouping related fixes reduces review burden and catches copy-paste errors across similar code paths.
 
 ## Creating a Fix (When Needed)
 
@@ -259,6 +281,50 @@ After merging the fix and releasing a patched version:
      --header "X-GitHub-Api-Version:2022-11-28"
    ```
 
+## Batch Fixing Related Advisories
+
+When multiple advisories share the same root cause or code pattern, fix them together:
+
+### Benefits
+- Single code review (reduce context switching)
+- One test suite run (verify all vectors at once)
+- One PR (cleaner git history)
+- Catch similar bugs in unfiled advisories
+
+### Example: IDOR Pattern
+If two advisories report missing ID checks in similar forms:
+```bash
+# Create one branch for both fixes
+git checkout -b security/fix-idor-forms-{VERSION}
+
+# Fix both files together
+# Test both endpoints
+# Single PR covering both GHSA IDs in commit message:
+# Fixes GHSA-xxxx and GHSA-yyyy
+```
+
+### Example: Attribute Escaping Pattern
+If multiple advisories involve `escapeHtml()` in attributes:
+1. **Audit** all `escapeHtml()` calls in template/JS code
+2. **Replace unsafe** instances with `escapeAttribute()`
+3. **Test** all affected UI flows in one PR
+4. **Reference** all related GHSA IDs in commit message
+
+### Cross-Advisory References
+In commit messages, link related advisories:
+```
+security: fix GHSA-xxxx and GHSA-yyyy — replace escapeHtml with escapeAttribute
+
+Related advisories fixed in this commit:
+- GHSA-xxxx: Stored XSS in groups dashboard
+- GHSA-yyyy: Stored XSS in event action menu
+
+Root cause: escapeHtml() is unsafe for HTML attributes. Replaced with
+escapeAttribute() across templates.
+
+Tests: 12 XSS vectors verified for both locations.
+```
+
 ## Best Practices
 
 ✅ **DO:**
@@ -267,6 +333,8 @@ After merging the fix and releasing a patched version:
 - Include comprehensive test coverage (all threat vectors)
 - Document the root cause in commit messages
 - Update OpenAPI/API docs when endpoint behavior changes
+- **Audit for similar patterns** before and after fixing
+- **Group related fixes** under one PR when possible
 - Create a skill/wiki entry to prevent future regressions
 
 ❌ **DON'T:**
@@ -275,6 +343,8 @@ After merging the fix and releasing a patched version:
 - Reveal whether a username/email exists in error messages
 - Skip test coverage for "obvious" security code
 - Leave OpenAPI docs out of sync with code
+- **Fix one IDOR and leave identical ones unfixed** in other forms
+- **Fix one XSS pattern** without auditing similar code
 
 ## Related Skills
 
