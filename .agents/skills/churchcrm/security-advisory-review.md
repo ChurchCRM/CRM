@@ -2,7 +2,7 @@
 title: "Security Advisory Review Process"
 intent: "Regular review workflow for GitHub security advisories in triage/draft status"
 tags: ["security", "audit", "github", "recurring"]
-prereqs: ["[[security-best-practices]]"]
+prereqs: ["[[security-best-practices]]", "[[github-interaction]]"]
 complexity: "advanced"
 ---
 # Security Advisory Review Process
@@ -81,11 +81,15 @@ gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
     state: .state,
     severity: .severity,
     summary: .summary,
-    score: .cvss.score,
-    vulnerable_range: .vulnerabilities[0].vulnerable_version_range,
-    patched_versions: .vulnerabilities[0].patched_versions
+    score: (.cvss_severities[0].score // .cvss.score),
+    vulnerabilities: [.vulnerabilities[] | {
+      vulnerable_range: .vulnerable_version_range,
+      patched_versions: .patched_versions
+    }]
   }'
 ```
+
+**Note:** GitHub API uses `cvss_severities` (since April 2025); fallback to deprecated `cvss.score` for older APIs.
 
 ### Step 2: Analyze Each Advisory
 
@@ -135,39 +139,33 @@ git show {commit-sha}
 
 ### Recommended Workflow: Private Branch (No Public PR)
 
-**GitHub best practice:** Work in a private branch without opening a public pull request.
+**GitHub best practice:** Work in a private fork or private branch to keep the unpatched vulnerability hidden until release.
 
-1. **Create a private branch** (locally or on GitHub):
-   ```bash
-   git checkout master
-   git pull origin master
-   git checkout -b security/fix-{GHSA_ID}
-   ```
+**IMPORTANT: Do NOT push the security-fix branch to the public `ChurchCRM/CRM` repository.** Even without a PR, pushed branches and their diffs are visible via `git ls-remote`, the GitHub API, and the branches UI. Instead, use one of these approaches:
 
-2. **Make changes and commit** directly to this branch (no PR)
+**Option A: Private Fork (Recommended)**
+- Fork ChurchCRM/CRM to a private repository
+- Push the security-fix branch only to your private fork
+- After the fix is released in a public version, open a PR against the main repo with the published commit
 
-3. **Push when ready to merge:**
-   ```bash
-   git push -u origin security/fix-{GHSA_ID}
-   ```
+**Option B: Local-Only Branch**
+- Create and commit locally (`git checkout -b security/fix-{GHSA_ID}`)
+- Test locally
+- Have a maintainer pull from your local machine (`git pull /path/to/your/local/repo security/fix-{GHSA_ID}`)
+- Merge and push to master from their authenticated session
 
-4. **Merge directly to master** once tests pass (no review required for security fixes):
-   ```bash
-   git checkout master
-   git pull origin master
-   git merge --no-ff security/fix-{GHSA_ID}
-   git push origin master
-   ```
+**Merge to master after maintainer review:**
+```bash
+# Maintainer receives the fix via Option A or B
+git checkout master
+git pull origin master
+git merge --no-ff security/fix-{GHSA_ID}
+git push origin master
+```
 
-5. **Delete the private branch:**
-   ```bash
-   git push origin --delete security/fix-{GHSA_ID}
-   git branch -d security/fix-{GHSA_ID}
-   ```
-
-**Why no PR?**
-- Pull requests are public and expose the vulnerability before the fix is released
-- The branch stays private until merged to master
+**Why not a public branch?**
+- Branch names embed the GHSA ID, exposing the vulnerability before release
+- Full diffs are fetchable before patches are available
 - The advisory is published only when the patched version is released
 
 ### Code Changes
@@ -221,15 +219,23 @@ Before merging to master:
 - [ ] API/docs updated (if applicable)
 - [ ] No regressions in other tests
 - [ ] Commit message follows security format (see above)
+- [ ] **Maintainer review and approval obtained** ⚠️
 
-### Final Validation
+### Obtaining Maintainer Review
+
+Per `maintainer-review-gates.md`, security fixes **require explicit maintainer review and sign-off** before merging to master, even though no public PR is opened. This prevents unauthorized or incomplete fixes from reaching released versions.
+
+Contact a maintainer with:
+- Advisory summary and CVSS score
+- Affected versions and fix approach
+- Test coverage summary
+- Private fork or branch location (Option A/B above)
+
+### Merge to Master (After Approval)
+
+Once maintainer approves:
 
 ```bash
-# Run full test suite
-npm run lint
-npm run build:webpack
-npm test
-
 # Merge to master
 git checkout master
 git pull origin master
@@ -237,7 +243,7 @@ git merge --no-ff security/fix-{GHSA_ID}
 git push origin master
 ```
 
-**Note:** No public pull request is created for security fixes. The branch merges directly to master after passing tests.
+**Note:** No public pull request is created for security fixes. The branch stays private until the patched version is released.
 
 ## Publishing the Advisory
 
@@ -290,7 +296,14 @@ gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
 
 ### Update Patched Version
 
-Use a JSON file to avoid escaping issues:
+First, fetch the current advisory to get all existing vulnerability entries:
+
+```bash
+gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
+  --header "X-GitHub-Api-Version:2022-11-28" | jq '.vulnerabilities' > current_vulns.json
+```
+
+Then, update the entries and send the complete array:
 
 ```bash
 cat > /tmp/advisory-patch.json <<'EOF'
@@ -301,8 +314,8 @@ cat > /tmp/advisory-patch.json <<'EOF'
         "ecosystem": "composer",
         "name": "ChurchCRM/CRM"
       },
-      "vulnerable_version_range": "< 7.3.1",
-      "patched_versions": "7.3.1",
+      "vulnerable_version_range": "{INSERT_AFFECTED_VERSIONS}",
+      "patched_versions": "{INSERT_PATCHED_VERSION}",
       "vulnerable_functions": []
     }
   ]
@@ -315,7 +328,10 @@ gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
   --header "X-GitHub-Api-Version:2022-11-28"
 ```
 
-**Important:** Use `--input` for arrays; `-f field=value` fails with HTTP 422.
+**IMPORTANT:** 
+- Use `--input` for arrays; `-f field=value` fails with HTTP 422
+- Send the **complete** `vulnerabilities` array to avoid removing other entries
+- Replace `{INSERT_AFFECTED_VERSIONS}` and `{INSERT_PATCHED_VERSION}` with values verified for this advisory
 
 ### Version Format Rules
 
