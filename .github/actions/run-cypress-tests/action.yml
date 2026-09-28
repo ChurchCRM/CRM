@@ -36,9 +36,13 @@ runs:
       shell: bash
       run: |
         report_file="cypress/reports/junit-php${PHP_VERSION}-${DEPLOYMENT}-${TEST_NAME}-[suiteName]-[hash].xml"
+        spec_args=()
+        if [[ -z "$SPLIT" ]]; then
+          spec_args+=(--spec "$SPEC")
+        fi
         npx cypress run \
           --config-file "$CONFIG_FILE" \
-          --spec "$SPEC" \
+          "${spec_args[@]}" \
           --headless --browser electron \
           --reporter junit \
           --reporter-options "mochaFile=$report_file"
