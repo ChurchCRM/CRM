@@ -229,12 +229,14 @@ class AuthMiddleware implements MiddlewareInterface
      * refuse every record outside the teams they lead, and the ministry-level
      * routes refuse them outright (volunteer design §4.4, §4.5).
      *
-     * The two prefixes match whole path segments; the exempt paths are compared
-     * whole against SystemURLs::getRootPath() . $exemptPath, so a subdirectory
-     * installation (/crm/v2/user/current/manage2fa) still matches, while a path
-     * that merely contains or ends with an exempt path — /evil/api/user/current/
-     * 2fa-status — does not, so the gate cannot be widened by a future
-     * catch-all route.
+     * Every prefix — `/portal`, `/api/portal`, `/api/ministries/me/`,
+     * `/api/ministries/` — is anchored at SystemURLs::getRootPath() and matches
+     * whole path segments, and the exempt paths are compared whole against
+     * SystemURLs::getRootPath() . $exemptPath, so a subdirectory installation
+     * (/crm/v2/user/current/manage2fa) still matches, while a path that merely
+     * contains or ends with an allowed path — /evil/api/user/current/2fa-status,
+     * /api/person/1/api/ministries/me/permissions — does not, so the gate cannot
+     * be widened by a future catch-all route.
      */
     private function isLimitedAccessAllowedPath(ServerRequestInterface $request): bool
     {
@@ -258,20 +260,21 @@ class AuthMiddleware implements MiddlewareInterface
             return false;
         }
 
-        if (str_contains($path, '/api/ministries/me/')) {
+        $ministriesApiPath = $rootPath . '/api/ministries/';
+        if (!str_starts_with($path, $ministriesApiPath)) {
+            return false;
+        }
+
+        if (str_starts_with($path, $ministriesApiPath . 'me/')) {
             return true;
         }
 
         // The rest of the volunteer API, for a team leader only (#9868). The scope
         // lookup is memoised per request on the User model, so asking here costs
         // nothing on the paths that never reach this line.
-        if (str_contains($path, '/api/ministries/')) {
-            $user = AuthenticationManager::getCurrentUser();
+        $user = AuthenticationManager::getCurrentUser();
 
-            return $user instanceof User && $user->isVolunteerTeamLeaderEnabled();
-        }
-
-        return false;
+        return $user instanceof User && $user->isVolunteerTeamLeaderEnabled();
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool

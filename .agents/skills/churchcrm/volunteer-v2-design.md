@@ -2333,11 +2333,12 @@ D14 makes volunteers EditSelf-exclusive users. `AuthMiddleware` currently blocks
 private function isLimitedAccessAllowedPath(ServerRequestInterface $request): bool
 {
     $path = $request->getUri()->getPath();
+    $rootPath = SystemURLs::getRootPath();
 
-    if (str_contains($path, '/user/current/changepassword')
-        || str_contains($path, '/user/current/manage2fa')
-        || str_contains($path, '/user/current/enroll2fa')) {
-        return true;                                        // existing #8680 exemptions
+    foreach (self::AUTH_FLOW_EXEMPT_PATHS as $exemptPath) {  // existing #8680 exemptions
+        if ($path === $rootPath . $exemptPath) {
+            return true;
+        }
     }
 
     // Volunteer v2 member self-service: the EditSelf-exclusive member persona IS the
@@ -2347,7 +2348,7 @@ private function isLimitedAccessAllowedPath(ServerRequestInterface $request): bo
         return false;
     }
 
-    return str_contains($path, '/api/ministries/me/');
+    return str_starts_with($path, $rootPath . '/api/ministries/me/');
 }
 ```
 
@@ -2358,7 +2359,9 @@ private function isLimitedAccessAllowedPath(ServerRequestInterface $request): bo
 
 3. Give the volunteer somewhere to go from the self-service landing page.
 
-**Why this is safe.** The allowed paths are enumerated literally, are all behind the rollout flag,
+**Why this is safe.** The allowed paths are enumerated literally, **anchored at the install's root
+path** (never `str_contains()`, which would let `/api/person/1/api/ministries/me/…` or a future
+catch-all route through the gate; review finding on #9933), are all behind the rollout flag,
 derive the acting person from the session (never a parameter), and are additionally gated by
 `VolunteerV2EnabledMiddleware`. The exemption grants *reachability*, not authority: every one of
 those routes still authorizes per record.

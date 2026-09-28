@@ -856,6 +856,31 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             cy.makePrivateEditSelfAPICall("GET", "/api/family/20", null, 403);
         });
 
+        it("is refused a path that only contains the member API path", () => {
+            cy.makePrivateEditSelfAPICall(
+                "GET",
+                `/api/person/${PERSON_VOLUNTEER}${ME_PERMISSIONS_URL}`,
+                null,
+                403,
+            );
+        });
+
+        it("is refused, as a team leader, a path that only contains the volunteer API path", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                SCOPES_URL,
+                { personId: PERSON_VOLUNTEER, scopeType: "team", scopeId: teamA1 },
+                201,
+            );
+
+            cy.makePrivateEditSelfAPICall("GET", `/api/ministries/teams/${teamA1}`, null, 200);
+            cy.makePrivateEditSelfAPICall("GET", `/api/family/20/api/ministries/teams/${teamA1}`, null, 403);
+
+            dbOk(`DELETE FROM volunteer_scope_vscp WHERE vscp_per_ID = ?`, [
+                PERSON_VOLUNTEER,
+            ]);
+        });
+
         it("is redirected away from the coordinator dashboard", () => {
             pageRequest(DASHBOARD_URL, Cypress.env("selfedit.api.key")).then(
                 (resp) => {
