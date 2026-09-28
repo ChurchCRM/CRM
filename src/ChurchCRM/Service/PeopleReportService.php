@@ -360,7 +360,7 @@ class PeopleReportService
         $cutoff = DateTimeUtils::getToday()->modify('-' . $months . ' months');
         $query = PersonQuery::create()
             ->filterByFriendDate($cutoff, Criteria::GREATER_THAN)
-            ->orderByMembershipDate()
+            ->orderByFriendDate(Criteria::DESC)
             ->orderByLastName();
 
         return $this->rows($this->applyClassification($query, $classifications)->find());
