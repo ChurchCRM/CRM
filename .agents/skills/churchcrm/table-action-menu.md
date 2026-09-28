@@ -340,7 +340,7 @@ Any table that lists people (attendees, members, visitors, etc.) **must** includ
 
 ## Cart Page: "Remove Only" Variant <!-- learned: 2026-03-25 -->
 
-On the cart view (`/v2/cart`), every person is already in the cart, so the cart button is always in `RemoveFromCart` state. Do **not** add a custom click handler — the global `CartManager` in `cart.js` handles `.RemoveFromCart` clicks via event delegation. The standard dropdown still applies (View, Edit, View Family, divider, Remove from Cart).
+On the cart view (`/people/cart`), every person is already in the cart, so the cart button is always in `RemoveFromCart` state. Do **not** add a custom click handler — the global `CartManager` in `cart.js` handles `.RemoveFromCart` clicks via event delegation. The standard dropdown still applies (View, Edit, View Family, divider, Remove from Cart).
 
 ```php
 <button type="button"

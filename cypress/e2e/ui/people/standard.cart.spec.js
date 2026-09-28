@@ -17,7 +17,7 @@ describe("Standard Cart", () => {
     beforeEach(() => {
         cy.setupStandardSession();
         // Empty cart before each test and verify it's empty
-        cy.visit("v2/cart");
+        cy.visit("people/cart");
         
         // Wait for cart to be fully ready
         waitForCartReady();
@@ -36,13 +36,13 @@ describe("Standard Cart", () => {
             }
         });
         // Verify cart is empty
-        cy.visit("v2/cart");
+        cy.visit("people/cart");
         waitForCartReady();
         cy.contains("You have no items in your cart").should("be.visible");
     });
 
     it("Cart Add and Remove Person", () => {
-        cy.visit("v2/cart");
+        cy.visit("people/cart");
         cy.contains("You have no items in your cart");
         cy.visit("/people/view/1");
         
@@ -54,7 +54,7 @@ describe("Standard Cart", () => {
         // Wait for cart count to update instead of arbitrary timeout
         cy.get("#iconCount").should('not.contain', '0');
         
-        cy.visit("v2/cart");
+        cy.visit("people/cart");
         cy.contains("Cart Functions");
         cy.contains("Church Admin");
         
@@ -70,7 +70,7 @@ describe("Standard Cart", () => {
     });
 
     it("Cart Add and Remove Family", () => {
-        cy.visit("v2/cart");
+        cy.visit("people/cart");
         cy.contains("You have no items in your cart");
         cy.visit("people/family/6");
         
@@ -82,7 +82,7 @@ describe("Standard Cart", () => {
         // Wait for cart count to update instead of arbitrary timeout
         cy.get("#iconCount").should('not.contain', '0');
         
-        cy.visit("v2/cart");
+        cy.visit("people/cart");
         cy.contains("Kenzi Dixon");
         cy.contains("Cart Functions");
         
@@ -98,7 +98,7 @@ describe("Standard Cart", () => {
     });
 
     it("Cart prevents duplicate person additions", () => {
-        cy.visit("v2/cart");
+        cy.visit("people/cart");
         cy.contains("You have no items in your cart");
         
         // Add person first time
@@ -119,7 +119,7 @@ describe("Standard Cart", () => {
         cy.get("#iconCount").should('contain', '1');
         
         // Verify cart still only has one person
-        cy.visit("v2/cart");
+        cy.visit("people/cart");
         
         // Wait for cart to be ready
         waitForCartReady();
