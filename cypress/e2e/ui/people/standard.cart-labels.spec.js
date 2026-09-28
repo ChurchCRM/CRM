@@ -6,7 +6,7 @@
  * Two regressions are pinned here:
  *
  * 1. The cart page lost its "Generate Labels" form when the cart moved to
- *    /v2/cart (#4377). Nothing linked to Reports/PDFLabel.php any more.
+ *    /people/cart (#4377). Nothing linked to Reports/PDFLabel.php any more.
  * 2. Reports/PDFLabel.php read the address from the person record only
  *    (0190da3d2), so a household whose address lives on the family record
  *    produced blank labels — every one skipped by "Ignore Incomplete
@@ -95,7 +95,7 @@ describe("Cart mailing labels (#9873)", () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ Family: familyId }),
         });
-        cy.visit("/v2/cart");
+        cy.visit("/people/cart");
         cy.contains("Cart Functions");
         cy.contains(memberFirstName);
     });
