@@ -308,6 +308,8 @@ class VolunteerScheduleService
 
         $this->refuseRetiredFields($fields);
 
+        $storedMode = $isCreate ? null : (string) $schedule->getLinkMode();
+        $storedGroupId = $isCreate ? null : $schedule->getGroupId();
         $linkMode = $this->resolveLinkMode($schedule, $fields, $isCreate, $allowEventMode);
         $schedule->setLinkMode($linkMode);
 
@@ -376,6 +378,12 @@ class VolunteerScheduleService
         }
 
         $this->applyBinding($schedule, $fields, $isCreate);
+
+        // D29. A class schedule the ministry already had keeps working when edited.
+        if ($linkMode === VolunteerSchedule::LINK_MODE_CLASS
+            && ($storedMode !== VolunteerSchedule::LINK_MODE_CLASS || (int) $storedGroupId !== (int) $schedule->getGroupId())) {
+            VolunteerClassLinkService::assertMinistryTeaches((int) $schedule->getMinistryId());
+        }
     }
 
     /**

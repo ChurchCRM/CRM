@@ -111,7 +111,7 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         admin("POST", SETTING_URL, { value: "v2" });
         cleanupFixtures();
 
-        admin("POST", MINISTRIES_URL, { name: MINISTRY_NAME, description: "Calendar tab fixture" }, 201).then((resp) => {
+        admin("POST", MINISTRIES_URL, { name: MINISTRY_NAME, description: "Calendar tab fixture", sundaySchool: true }, 201).then((resp) => {
             ministryId = resp.body.ministry.id;
             calendarId = resp.body.calendarId;
             admin("GET", `${MINISTRIES_URL}/${ministryId}`).then((detail) => {

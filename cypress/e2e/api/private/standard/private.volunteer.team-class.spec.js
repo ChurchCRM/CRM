@@ -136,7 +136,7 @@ describe("Volunteer v2 — a team linked to a Sunday School class (D23)", () => 
         setVersion("v2");
         cleanupFixtures();
 
-        admin("POST", MINISTRIES_URL, { name: `${PREFIX} Children` }, 201).then((resp) => {
+        admin("POST", MINISTRIES_URL, { name: `${PREFIX} Children`, sundaySchool: true }, 201).then((resp) => {
             ministryId = resp.body.ministry.id;
             poolGroupId = resp.body.poolGroupId;
             admin("POST", `${MINISTRIES_URL}/${ministryId}/teams`, { name: "Faith City" }, 201).then((team) => {

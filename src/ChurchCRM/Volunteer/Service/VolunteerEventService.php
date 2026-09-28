@@ -163,6 +163,7 @@ class VolunteerEventService
         $linkedGroupId = 0;
         $rawGroup = $input['linkedGroupId'] ?? null;
         if (!in_array($rawGroup, [null, '', 0, '0'], true)) {
+            VolunteerClassLinkService::assertMinistryTeaches($ministryId);
             $linkedGroupId = $this->positiveInt($rawGroup) ?? 0;
             if ($linkedGroupId === 0 || GroupQuery::create()->findPk($linkedGroupId) === null) {
                 throw VolunteerException::invalid(gettext('The class does not exist'));

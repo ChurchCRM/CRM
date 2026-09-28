@@ -276,6 +276,8 @@ function volunteerMinistryToArray(VolunteerMinistry $ministry, array $counts = [
         // absent key means off.
         'helpWanted' => (bool) $ministry->getHelpWanted(),
         'helpWantedText' => $ministry->getHelpWantedText(),
+        // D29: may its teams link a class, its schedules follow one and its events have one.
+        'sundaySchool' => (bool) $ministry->getSundaySchool(),
     ];
 }
 
@@ -513,6 +515,26 @@ function volunteerSetupStrictBoolean(mixed $value): ?bool
     return null;
 }
 
+/**
+ * D29's `sundaySchool` from the body: null when absent, a strict boolean otherwise.
+ *
+ * @throws VolunteerException 400 for anything that is not a boolean
+ */
+function volunteerSetupSundaySchool(Request $request): ?bool
+{
+    $body = (array) $request->getParsedBody();
+    if (!array_key_exists('sundaySchool', $body)) {
+        return null;
+    }
+
+    $value = volunteerSetupStrictBoolean($body['sundaySchool']);
+    if ($value === null) {
+        throw VolunteerException::invalid(gettext('sundaySchool must be true or false'));
+    }
+
+    return $value;
+}
+
 /** `?active=1` / `?active=0`; absent means "both". */
 function volunteerSetupActiveFilter(Request $request): ?bool
 {
@@ -601,9 +623,10 @@ function listVolunteerMinistries(Request $request, Response $response): Response
  *     @OA\RequestBody(required=true, @OA\JsonContent(
  *         required={"name"},
  *         @OA\Property(property="name", type="string", maxLength=100),
- *         @OA\Property(property="description", type="string", maxLength=255)
+ *         @OA\Property(property="description", type="string", maxLength=255),
+ *         @OA\Property(property="sundaySchool", type="boolean", default=false, description="D29: the ministry may provide teachers for Sunday School (link teams to classes, schedule class meetings, give its events a class)")
  *     )),
- *     @OA\Response(response=400, description="The name is missing or empty"),
+ *     @OA\Response(response=400, description="The name is missing or empty, or sundaySchool is not a boolean"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Ministry management access is required, or V2 is not enabled"),
  *     @OA\Response(response=409, description="A ministry with that name already exists"),
@@ -618,7 +641,8 @@ function createVolunteerMinistry(Request $request, Response $response): Response
         $ministry = (new VolunteerMinistryService())->createMinistry(
             (string) ($body['name'] ?? ''),
             isset($body['description']) ? (string) $body['description'] : null,
-            volunteerSetupActor()
+            volunteerSetupActor(),
+            volunteerSetupSundaySchool($request) ?? false
         );
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
@@ -829,13 +853,14 @@ function getVolunteerMinistrySummary(Request $request, Response $response): Resp
  *         @OA\Property(property="description", type="string", maxLength=255),
  *         @OA\Property(property="active", type="boolean"),
  *         @OA\Property(property="helpWanted", type="boolean", description="Advertise this ministry on the Open Opportunities page (design D19)"),
- *         @OA\Property(property="helpWantedText", type="string", description="What the ministry wants to say there; rendered escaped with line breaks preserved")
+ *         @OA\Property(property="helpWantedText", type="string", description="What the ministry wants to say there; rendered escaped with line breaks preserved"),
+ *         @OA\Property(property="sundaySchool", type="boolean", description="D29: the ministry may provide teachers for Sunday School. Only a global volunteer manager or an administrator may change it; a coordinator may send the current value")
  *     )),
- *     @OA\Response(response=400, description="The name was sent empty"),
+ *     @OA\Response(response=400, description="The name was sent empty, or sundaySchool is not a boolean"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Not authorized for this ministry, a coordinator changing sundaySchool, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
- *     @OA\Response(response=409, description="A ministry with that name already exists"),
+ *     @OA\Response(response=409, description="A ministry with that name already exists, or sundaySchool was turned off while teams of the ministry are linked to a class (the message and `teams` name them)"),
  *     @OA\Response(response=200, description="Updated")
  * )
  */
@@ -845,15 +870,16 @@ function updateVolunteerMinistry(Request $request, Response $response): Response
     $ministry = $request->getAttribute('volunteerMinistry');
 
     try {
-        $ministry = (new VolunteerMinistryService())->updateMinistry(
-            $ministry,
-            volunteerSetupFields(
-                $request,
-                ['name', 'description', 'active', 'helpWanted', 'helpWantedText'],
-                ['active', 'helpWanted']
-            ),
-            volunteerSetupActor()
+        $fields = volunteerSetupFields(
+            $request,
+            ['name', 'description', 'active', 'helpWanted', 'helpWantedText'],
+            ['active', 'helpWanted']
         );
+        $sundaySchool = volunteerSetupSundaySchool($request);
+        if ($sundaySchool !== null) {
+            $fields['sundaySchool'] = $sundaySchool;
+        }
+        $ministry = (new VolunteerMinistryService())->updateMinistry($ministry, $fields, volunteerSetupActor());
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
     }
@@ -946,7 +972,7 @@ function listVolunteerTeams(Request $request, Response $response): Response
  *         @OA\Property(property="importPositionId", type="integer", nullable=true, description="D23: the position of this team the class's current teachers are qualified for when it is linked"),
  *         @OA\Property(property="importPositionName", type="string", nullable=true, description="D23: instead of importPositionId, create a position of this name in the team and qualify the teachers for it")
  *     )),
- *     @OA\Response(response=400, description="The name is missing or empty; the class is not a Sunday School class or has no Teacher role; or the class has teachers and no position to import them into was given"),
+ *     @OA\Response(response=400, description="The name is missing or empty; the ministry does not provide teachers for Sunday School (D29); the class is not a Sunday School class or has no Teacher role; or the class has teachers and no position to import them into was given"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this ministry, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
@@ -980,7 +1006,7 @@ function createVolunteerTeam(Request $request, Response $response): Response
  *     path="/ministries/ministries/{ministryId}/linkable-classes",
  *     operationId="listVolunteerLinkableClasses",
  *     summary="Sunday School classes a team of this ministry may be linked to (D23)",
- *     description="Every group of type 4 not linked to another team, with how many living members hold its Teacher role - the qualifications linking it would import. With teamId, the class that team is linked to is included.",
+ *     description="Every group of type 4 not linked to another team, with how many living members hold its Teacher role - the qualifications linking it would import. With teamId, the class that team is linked to is included. Empty, with sundaySchool false, for a ministry that does not provide teachers for Sunday School (D29).",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
@@ -1007,8 +1033,11 @@ function listVolunteerLinkableClasses(Request $request, Response $response): Res
     $team = $teamId > 0 ? VolunteerTeamQuery::create()->findPk($teamId) : null;
     $ownTeamId = $team !== null && (int) $team->getMinistryId() === (int) $ministry->getId() ? $teamId : null;
 
+    $sundaySchool = (bool) $ministry->getSundaySchool();
+
     return SlimUtils::renderJSON($response, [
-        'classes' => (new VolunteerClassLinkService())->listLinkableClasses($ownTeamId),
+        'sundaySchool' => $sundaySchool,
+        'classes' => $sundaySchool ? (new VolunteerClassLinkService())->listLinkableClasses($ownTeamId) : [],
     ]);
 }
 

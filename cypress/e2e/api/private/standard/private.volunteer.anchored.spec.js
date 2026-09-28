@@ -152,8 +152,8 @@ function cleanupFixtures() {
 
 function createMinistry(suffix) {
     return dbOk(
-        `INSERT INTO volunteer_ministry_vmin (vmin_Name, vmin_Description, vmin_Active, vmin_CreatedDate)
-         VALUES (?, 'anchored occurrences fixture', 1, NOW())`,
+        `INSERT INTO volunteer_ministry_vmin (vmin_Name, vmin_Description, vmin_Active, vmin_CreatedDate, vmin_SundaySchool)
+         VALUES (?, 'anchored occurrences fixture', 1, NOW(), 1)`,
         [`${PREFIX} ${suffix}`],
     ).then((rows) => rows.insertId);
 }
