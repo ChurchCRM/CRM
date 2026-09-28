@@ -1,54 +1,104 @@
-# Docker Release Images
+# ChurchCRM Docker release images
 
-ChurchCRM releases are automatically built as Docker images and pushed to DockerHub on every GitHub release.
+Stable releases publish `churchcrm/crm:<version>-php8-apache` and
+`churchcrm/crm:<version>-php8-fpm`. Only the release currently marked latest on
+GitHub updates `latest-php8-apache` / `latest-php8-fpm`. Prefer a version tag or
+image digest for production deployments. Re-running a build can replace a
+version tag; DockerHub tag immutability is a separate registry policy.
 
-## Available Images
+## Runtime and ports
 
-- **`churchcrm/crm:7.7.0-php8-apache`** / **`churchcrm/crm:latest-php8-apache`** — Apache + mod_php, serves HTTP directly on port 80. Simplest single-container option.
-- **`churchcrm/crm:7.7.0-php8-fpm`** / **`churchcrm/crm:latest-php8-fpm`** — PHP-FPM only, listens on port 9000 via the FastCGI protocol (not HTTP). Requires a separate web server (e.g. nginx) in front — see below.
+- Apache serves HTTP on **8080** and runs as `www-data` (UID/GID 33).
+  This changes the initial PR's production port 80. Test/dev stages retain 80.
+- FPM runs as UID/GID 33 and speaks **FastCGI on 9000**, not HTTP. Never publish
+  9000 to an untrusted network. A separate web server must serve the matching
+  static assets and forward PHP requests to FPM on the private container network.
+- Both images contain the compiled release, PHP extensions, and locales. They
+  omit Xdebug and purge the inherited PHP compiler toolchain from the final
+  filesystem. The upstream base layers still contain the original toolchain;
+  purging does not reclaim bytes in those layers.
 
-## Quick Start
+To preview the Apache setup page locally:
 
 ```bash
-# Simplest: Apache image serves HTTP directly
-docker pull churchcrm/crm:latest-php8-apache
-docker run -d -p 8080:80 churchcrm/crm:latest-php8-apache
+docker run --rm --cap-drop ALL --security-opt no-new-privileges \
+  -p 127.0.0.1:8080:8080 churchcrm/crm:latest-php8-apache
 ```
 
-The FPM image speaks FastCGI, not HTTP — `docker run -p 80:9000 ...` will not
-serve a working site. It needs an nginx (or Apache) reverse proxy in front
-that forwards PHP requests to port 9000 over FastCGI; see
-[`docker/examples/docker-compose.nginx.yaml`](examples/docker-compose.nginx.yaml)
-for the general shape (that example builds its own image from source, so
-adapt its `php-fpm` service to use `image: churchcrm/crm:latest-php8-fpm`
-instead of `build:`, and drop the shared `churchcrm-www` volume — the release
-image already has the code baked in, and mounting an empty volume over
-`/var/www/html` would hide it).
+This preview does not configure a database or persist application data. A real
+installation needs a reachable MariaDB/MySQL service, a configured
+`Include/Config.php`, persistent uploaded images, and backups. Place a TLS reverse
+proxy in front for remote access. Configure memory, CPU and PID limits according
+to deployment size.
 
-## Setup
+The files under `docker/examples/` illustrate alternative architectures; they
+are not working release-image recipes. In particular, the nginx example refers
+to an absent `nginx/default.conf` and needs an explicit static-asset deployment.
+Removing its shared volume without provisioning nginx's files will break it.
+An empty named volume normally receives image contents on first mount; a bind
+mount obscures the contents, and a reused named volume keeps stale application
+code across image upgrades. Do not persist the whole document root as an upgrade
+strategy. Keep nginx and FPM on the same application version.
 
-To enable automatic builds, add DockerHub credentials to GitHub Secrets:
+## Writable files and upgrades
 
-1. Create a Personal Access Token scoped to Read & Write on this repository only: https://hub.docker.com/settings/personal-access-tokens
-2. Add GitHub Secrets (Settings → Secrets → Actions):
-   - `DOCKERHUB_USERNAME`
-   - `DOCKERHUB_TOKEN`
+Application files currently remain writable by UID 33 to support ChurchCRM's
+installer, updater and plugin operations. Non-root execution therefore does not
+prevent a compromised PHP process from changing application code. A read-only
+root filesystem needs an explicit writable-path design and application-level
+setup, upload, plugin and upgrade testing before it can become the default.
+Mount an existing production `Include/Config.php` read-only where possible, keep
+credentials out of images, and provision volume ownership for UID/GID 33.
+Use image replacement for container upgrades; back up the database, configuration
+and uploaded data first. A full persistence/restore acceptance test remains a
+prerequisite for a production deployment recipe.
 
-Full (non-pre-release) releases trigger automatic builds and push to DockerHub.
+## Publishing
 
-## Images Include
+Configure `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` in GitHub Actions secrets.
+Use a dedicated publishing identity with the narrowest repository write access
+available for the DockerHub account/plan. Do not grant delete or organization
+administration access. A personal token's Read/Write scope alone is not a claim
+of per-repository restriction.
 
-- Compiled ChurchCRM release code (in `/var/www/html`)
-- PHP 8.4 with all required extensions
-- Non-root user (www for PHP-FPM)
-- Ready to run — no additional build steps
+The workflow:
 
-## Workflow
+1. Rejects drafts, prereleases and unsupported version tags.
+2. Downloads `ChurchCRM-<version>.zip` from the exact triggering release.
+3. Checks its GitHub asset SHA-256 digest, then validates and extracts the
+   `churchcrm/` wrapper while preserving `.htaccess`. This verifies transport and
+   asset consistency, not independent producer authenticity.
+4. Builds the explicit `prod` target for amd64 and arm64, with SBOM and provenance.
+5. Publishes version tags and conditionally the stable latest tags.
 
-When you publish a GitHub Release (pre-releases are skipped, so `latest` always
-tracks a stable release):
-1. Workflow downloads the ChurchCRM-*.zip artifact
-2. Builds Docker images for amd64 and arm64
-3. Pushes to DockerHub with version and `latest` tags
+A release published by a workflow using `GITHUB_TOKEN` does not trigger another
+release workflow. For that path, or a retry, use **Build & Push Docker Images →
+Run workflow** with the existing stable `release_tag`. Run a ref containing these
+Dockerfiles and workflow helpers. Human publication of a draft triggers the
+normal release event. Workflow runs are serialized; GitHub concurrency retains
+only one pending run, so rerun any displaced release explicitly.
 
-Done. Images are ready for deployment.
+PHP image references pin PHP 8.4.25, Debian Trixie and the multi-platform digest.
+Update both the tag and digest together, keep builder and runtime references
+identical, and rerun production image tests. The `PHP_IMAGE` build argument must
+remain a compatible PHP 8.4+ image of the same server flavor and Debian suite.
+Pinning does not replace regular security updates. Debian packages are still
+resolved from live repositories, so builds are not bit-for-bit reproducible.
+
+## Validation
+
+```bash
+python3 docker/test-release-context.py
+python3 docker/prepare-release-context.py ChurchCRM-7.7.0.zip build-context
+mkdir -p build-context/apache
+cp docker/apache/default.conf build-context/apache/default.conf
+docker build --target prod -f docker/Dockerfile.churchcrm-apache-php8 -t churchcrm-check:apache build-context
+docker build --target prod -f docker/Dockerfile.churchcrm-fpm-php8 -t churchcrm-check:fpm build-context
+bash docker/test-production-image.sh churchcrm-check:apache apache
+bash docker/test-production-image.sh churchcrm-check:fpm fpm
+```
+
+The PR validation workflow repeats these builds on amd64 without registry
+credentials. Smoke tests check non-root startup under dropped capabilities,
+extensions, compiler absence and Apache's first HTTP response. They do not cover
+database setup, FPM request routing, uploads, restoration or application upgrades.
