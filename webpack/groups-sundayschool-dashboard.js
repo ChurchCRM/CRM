@@ -140,13 +140,18 @@ document.addEventListener("DOMContentLoaded", () => {
       callback: (result) => {
         if (!result) return;
 
-        fetch(`${window.CRM.root}/api/groups/${groupId}`, { method: "DELETE" })
-          .then((res) => {
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            window.location.reload();
+        const fallback = i18next.t("Failed to delete class. Please try again.");
+        fetch(buildAPIUrl(`groups/${groupId}`), { method: "DELETE" })
+          .then(async (res) => {
+            if (res.ok) {
+              window.location.reload();
+              return;
+            }
+            const body = await res.json().catch(() => ({}));
+            window.CRM.notify(body.message || fallback, { type: "danger", delay: 5000 });
           })
-          .catch((_error) => {
-            window.CRM.notify(i18next.t("Failed to delete class. Please try again."), { type: "danger", delay: 5000 });
+          .catch(() => {
+            window.CRM.notify(fallback, { type: "danger", delay: 5000 });
           });
       },
     });

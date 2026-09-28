@@ -98,4 +98,40 @@ describe("Standard Groups", () => {
         cy.url().should("contain", "groups/reports");
         cy.contains("Select Fields to Include");
     });
+
+    describe("Delete a group that is an event's audience (#10126)", () => {
+        const groupName = `Audience Group ${Date.now()}`;
+        let groupId;
+        let eventId;
+
+        before(() => {
+            cy.makePrivateAdminAPICall("POST", "/api/groups/", { groupName })
+                .then((resp) => {
+                    groupId = resp.body.Id;
+                    return cy.makePrivateAdminAPICall("POST", "/api/events/quick-create", { groupId });
+                })
+                .then((resp) => {
+                    eventId = resp.body.eventId;
+                });
+        });
+
+        after(() => {
+            if (eventId) cy.makePrivateAdminAPICall("DELETE", `/api/events/${eventId}`);
+            if (groupId) cy.makePrivateAdminAPICall("DELETE", `/api/groups/${groupId}`);
+        });
+
+        it("shows the server's reason instead of a generic error", () => {
+            cy.intercept("DELETE", `**/api/groups/${groupId}`).as("deleteGroup");
+            cy.visit("/groups/dashboard");
+            cy.get("#groupsTable_wrapper input[type='search']").type(groupName);
+            cy.contains("#groupsTable tbody tr", groupName).find('[data-bs-toggle="dropdown"]').click();
+            cy.get(`.delete-group[data-group-id="${groupId}"]`).click();
+            cy.get(".bootbox .btn-danger").click();
+
+            cy.wait("@deleteGroup").then(({ response }) => {
+                expect(response.statusCode).to.eq(409);
+                cy.waitForNotification(response.body.message);
+            });
+        });
+    });
 });

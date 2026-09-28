@@ -116,11 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
             window.CRM.notify(i18next.t("Person removed from class."), { type: "success", delay: 3000 });
             dataTable.row($btn.closest("tr")).remove().draw();
           })
-          .fail(() => {
-            window.CRM.notify(i18next.t("Failed to remove from class. Please try again."), {
-              type: "danger",
-              delay: 5000,
-            });
+          .fail((jqXHR) => {
+            const msg = jqXHR.responseJSON?.message || i18next.t("Failed to remove from class. Please try again.");
+            window.CRM.notify(msg, { type: "danger", delay: 5000 });
           });
       },
     });

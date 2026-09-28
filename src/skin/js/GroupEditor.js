@@ -214,7 +214,7 @@ function initializeGroupEditor() {
       .fail((xhr, status, error) => {
         console.error("Failed to delete role:", error);
         $("#confirmDeleteRole").prop("disabled", false);
-        window.CRM.notify(i18next.t("Failed to delete role. Please try again."), {
+        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to delete role. Please try again."), {
           type: "danger",
           delay: 5000,
         });
