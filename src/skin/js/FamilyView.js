@@ -258,8 +258,8 @@ function initializeFamilyView() {
     ])
       .catch(() => {}) // ignore errors
       .then(() => {
-        // Capture active FY once; used in both initComplete and pill click handlers (closure)
-        let currentFY = $(".pledge-fy-pill.active").data("fy") || "";
+        // FY pills hold numeric IDs; payment rows expose the formatted fiscal year.
+        let currentFY = window.CRM.currentFY || "";
 
         dataTableConfig.initComplete = function () {
           let table = $("#pledge-payment-v2-table").DataTable();
