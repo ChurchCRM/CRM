@@ -94,9 +94,50 @@ function initializeFamilyView() {
 
   // Pledges & Payments table — init after ensuring both types are returned by API
   if ($("#pledge-payment-v2-table").length) {
-    const dataTableConfig = {
+    // Build the ajax URL, always sending fyid explicitly (including 0 for All
+    // Time). The API distinguishes fyid=0 ("All Time", no date filter at all)
+    // from an absent fyid param (falls back to the user's ShowSince
+    // preference) — this client always has a resolved value (current FY by
+    // default, or an explicit selection), so it must never omit the param,
+    // or an explicit All-Time selection would silently be reinterpreted
+    // server-side as "nothing selected, use ShowSince".
+    function getPledgeAjaxUrl(fyid) {
+      var base = window.CRM.root + "/api/payments/family/" + window.CRM.currentFamily + "/list";
+      return base + "?fyid=" + fyid;
+    }
+
+    // Determine initial FY from URL param, falling back to the active pill's data-fy
+    // (the active pill is set server-side to the current FY by default).
+    // Must distinguish an ABSENT fyid param (fall back to current FY) from an
+    // EXPLICIT fyid=0 (All Time) — `parseInt(...) || activePillFy` treated 0 as
+    // falsy and silently reverted an explicit All-Time selection back to the
+    // current FY on refresh or when opening a copied/bookmarked URL.
+    var urlParams = new URLSearchParams(window.location.search);
+    var activePillFy = parseInt($(".pledge-fy-pill.active").data("fy") || "0", 10) || 0;
+    // Use rawFyid-null check rather than parseInt()|| to correctly preserve
+    // an explicit fyid=0 (All Time): parseInt("0") is falsy and would
+    // incorrectly revert to activePillFy on refresh.
+    var rawFyid = urlParams.get("fyid");
+    var initialFyid = rawFyid !== null ? parseInt(rawFyid, 10) : activePillFy;
+
+    // If the resolved FY doesn't correspond to any rendered pill (e.g. a
+    // stale bookmark for a fiscal year this family has no history in), fall
+    // back to the current-FY default for BOTH the fetched data and the
+    // highlighted pill — rather than fetching data for a mismatched FY while
+    // a different pill (previously: whichever pill happened to be first,
+    // i.e. All Time) lit up as if it were active.
+    // Also fix the browser URL so a refresh doesn't loop the same mismatch.
+    if (initialFyid !== 0 && !$(".pledge-fy-pill[data-fy='" + initialFyid + "']").length) {
+      initialFyid = activePillFy;
+      // Correct the URL so refreshing/sharing doesn't loop the same mismatch.
+      var fixParams = new URLSearchParams(window.location.search);
+      fixParams.set("fyid", String(initialFyid));
+      window.history.replaceState({}, "", window.location.pathname + "?" + fixParams.toString());
+    }
+
+    var dataTableConfig = {
       ajax: {
-        url: `${window.CRM.root}/api/payments/family/${window.CRM.currentFamily}/list`,
+        url: getPledgeAjaxUrl(initialFyid),
         dataSrc: "data",
       },
       columns: [
@@ -177,7 +218,15 @@ function initializeFamilyView() {
       .then(() => {
         const pledgeTable = $("#pledge-payment-v2-table").DataTable(dataTableConfig);
 
-        // Type filter pills: client-side column 0 (Type) search
+        // Set the active FY pill based on the initial fyid
+        $(".pledge-fy-pill").removeClass("active");
+        $(".pledge-fy-pill[data-fy='" + (initialFyid || 0) + "']").addClass("active");
+        if (!$(".pledge-fy-pill.active").length) {
+          // If no pill matched (e.g. initialFyid not in list), default to first pill
+          $(".pledge-fy-pill").first().addClass("active");
+        }
+
+        // Type filter pills: client-side column 0 (Type) search — unchanged
         $(".pledge-type-pill").on("click", function (e) {
           e.preventDefault();
           $(".pledge-type-pill").removeClass("active");
@@ -188,22 +237,27 @@ function initializeFamilyView() {
             .draw();
         });
 
-        // Fiscal year filter pills: client-side column 4 (Fiscal Year) search
+        // Fiscal year filter pills: server-side reload via fyid param
         $(".pledge-fy-pill").on("click", function (e) {
           e.preventDefault();
           $(".pledge-fy-pill").removeClass("active");
           $(this).addClass("active");
-          pledgeTable
-            .column(4)
-            .search($(this).data("fy") || "")
-            .draw();
+          var fy = parseInt($(this).data("fy") || "0", 10) || 0;
+          // Persist selection in URL without page reload. All Time is written
+          // as an explicit fyid=0 (not by deleting the param) so a refresh or
+          // shared/bookmarked URL can tell "All Time was chosen" apart from
+          // "no selection yet, use the current-FY default" — see initialFyid
+          // parsing above.
+          var params = new URLSearchParams(window.location.search);
+          params.set("fyid", fy);
+          window.history.replaceState(
+            {},
+            "",
+            window.location.pathname + (params.toString() ? "?" + params.toString() : ""),
+          );
+          // Reload DataTable with the new server-side fyid
+          pledgeTable.ajax.url(getPledgeAjaxUrl(fy)).load();
         });
-
-        // Apply default FY filter (Current FY pill is active by default)
-        const defaultFY = $(".pledge-fy-pill.active").data("fy") || "";
-        if (defaultFY) {
-          pledgeTable.column(4).search(defaultFY).draw();
-        }
       });
   }
 

@@ -1,32 +1,3 @@
 {
-  "CSV": "",
-  "OFX": "",
-  "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päev.|Kaheastmeline autentimine on kohustuslik. Teil on selle seadistamiseks %d päeva.",
-    "other": ""
-  },
-  "Copied {{count}} members": {
-    "one": "",
-    "other": ""
-  },
-  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} min left": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
-  },
-  "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
-  }
+  "Link": ""
 }

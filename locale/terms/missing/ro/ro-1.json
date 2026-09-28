@@ -2,46 +2,7 @@
   "Important": "",
   "Major": "",
   "Catalog": "",
-  "CSV": "",
-  "Email sent to %d family.": {
-    "one": "E-mail trimis către %d familie.|E-mail trimis către %d familii.|E-mail trimis către %d de familii.",
-    "few": "",
-    "other": ""
-  },
   "N/A": "",
-  "OFX": "",
-  "PDF successfully emailed to %d family.": {
-    "one": "PDF trimis cu succes prin e-mail către %d familie.|PDF trimis cu succes prin e-mail către %d familii.|PDF trimis cu succes prin e-mail către %d de familii.",
-    "few": "",
-    "other": ""
-  },
-  "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Autentificarea în doi factori este obligatorie. Aveți %d zi pentru a vă înscrie.|Autentificarea în doi factori este obligatorie. Aveți %d zile pentru a vă înscrie.|Autentificarea în doi factori este obligatorie. Aveți %d de zile pentru a vă înscrie.",
-    "few": "",
-    "other": ""
-  },
-  "Copied {{count}} members": {
-    "one": "",
-    "other": ""
-  },
-  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} min left": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
-  },
-  "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
-  }
+  "Individual": "",
+  "Link": ""
 }

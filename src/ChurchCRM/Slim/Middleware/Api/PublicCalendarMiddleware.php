@@ -175,8 +175,18 @@ class PublicCalendarMiddleware implements MiddlewareInterface
             ->orderBy(EventTableMap::COL_EVENT_START);
 
         if ($start_date !== null) {
-            // Keep events that overlap the view: event ends after view starts, or has no end (all-day/open)
-            $events->where('events_event.event_end IS NULL OR events_event.event_end >= ?', $start_date->format('Y-m-d H:i:s'));
+            // Keep events that overlap the view: event ends after view starts, or has no end (all-day/open).
+            //
+            // This MUST be built with condition()/combine() rather than a raw
+            // where('... IS NULL OR ... >= ?'). Propel ANDs every criterion onto the WHERE
+            // clause verbatim, without wrapping it in parentheses, so a raw top-level OR
+            // escapes the calendar filter above (`cal AND end IS NULL OR end >= ?` — OR binds
+            // looser than AND) and the query returns every calendar's events. Combined
+            // criteria, by contrast, are parenthesised when the statement is built.
+            $events->condition('noEnd', EventTableMap::COL_EVENT_END . ' IS NULL');
+            $events->condition('endsAfterViewStart', EventTableMap::COL_EVENT_END . ' >= ?', $start_date->format('Y-m-d H:i:s'));
+            $events->combine(['noEnd', 'endsAfterViewStart'], 'or', 'overlapsView');
+            $events->where(['overlapsView']);
         }
 
         if ($end_date !== null) {

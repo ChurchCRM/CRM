@@ -6,19 +6,17 @@ This directory contains modular, task-focused development skills for AI coding a
 
 ```
 .agents/skills/
-├── churchcrm/          ← ChurchCRM-specific skills (48 Markdown files)
+├── churchcrm/          ← ChurchCRM-specific skills (see churchcrm/SKILL.md for the index)
 │   ├── SKILL.md        ← Entry point index for ChurchCRM skills
 │   ├── api-development.md
 │   ├── database-operations.md
 │   └── ...             (all project-specific skills)
 └── README.md           ← This file
-
-~/.claude/skills/       ← Generic/upstream skills (shared across all projects)
-├── gh-cli/             ← GitHub CLI comprehensive reference
-├── interface-design/   ← Interface design patterns for dashboards and admin panels
-├── php-best-practices/ ← Generic PHP 8.5+ best practices
-└── web-design-guidelines/ ← Web Interface Guidelines compliance
 ```
+
+These skills are repo-owned and apply to every agent family
+(Claude, Copilot, Cursor, Grok, Codex, and anything else that
+reads `.agents/skills/`). Do not assume a `~/.claude/` layout.
 
 ## ChurchCRM Skills
 
@@ -78,27 +76,27 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 - [Observability, Logging & Metrics](./churchcrm/observability-logging-metrics.md)
 
 ### Development Process
+- [Maintainer Review Gates](./churchcrm/maintainer-review-gates.md) — product/process gates; agents never approve or merge
+- [PR Review](./churchcrm/pr-review.md) — fetch the PR and run the standards checklist after the gates file
 - [Git Workflow](./churchcrm/git-workflow.md)
 - [GitHub Interaction](./churchcrm/github-interaction.md)
-- [PR Review](./churchcrm/pr-review.md)
 - [Development Workflows](./churchcrm/development-workflows.md)
 - [Code Standards](./churchcrm/code-standards.md)
 - [Wiki Documentation](./churchcrm/wiki-documentation.md)
 
-## Generic / Upstream Skills
+## Agent-family notes
 
-These skills are not ChurchCRM-specific and have been moved to `~/.claude/skills/` so they are available across **all projects** on this machine.
+- Read `churchcrm/SKILL.md` first. That index is the source of truth.
+- Also in this folder (not under `churchcrm/`): `milestone-sweep.md`, `pr-description-guidelines.md`, `pr-review-fix.md`.
+- Product floor is **PHP 8.4+**. Do not document older PHP as supported.
+- UI stack is **Tabler + Bootstrap 5**. Do not enforce Bootstrap 4 class names.
+- Never invent install counts, SaaS hosting, native apps, payment processing, or endpoints that are not in `src/`.
+- Locale count is **49** from `locales.json`. Wrap new UI strings; do not run `locale:build` in a feature PR.
+- Push only after the maintainer approves the diff. See `churchcrm/git-workflow.md`.
+- Community plugins are current product, not future work.
+- Approved plugin registry: bundled `src/plugins/approved-plugins.json` plus remote `https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/approved-plugins.json`. Do not use the dead `External` branch URL.
 
-| Skill | Location | Description |
-|-------|----------|-------------|
-| `gh-cli` | `~/.claude/skills/gh-cli/` | GitHub CLI comprehensive reference |
-| `interface-design` | `~/.claude/skills/interface-design/` | Interface design patterns for dashboards and admin panels |
-| `php-best-practices` | `~/.claude/skills/php-best-practices/` | Generic PHP 8.5+, PSR standards, SOLID principles |
-| `web-design-guidelines` | `~/.claude/skills/web-design-guidelines/` | Web Interface Guidelines compliance |
-
-They are registered in `~/.claude/CLAUDE.md` for automatic discovery.
-
-> **Note:** For generic guidance (language best practices, generic testing patterns, web-design templates), prefer upstream skills from https://skills.sh/ and add a small ChurchCRM-specific wrapper in `churchcrm/` noting repo-specific overrides.
+Generic language skills may live on a developer's own machine. ChurchCRM overrides always win when they conflict.
 
 ## How to Use These Skills
 
@@ -111,7 +109,7 @@ They are registered in `~/.claude/CLAUDE.md` for automatic discovery.
 
 **Example workflows:**
 
-- **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
+- **Review a PR**: `maintainer-review-gates.md` → `pr-review.md` → `code-standards.md` → `security-best-practices.md`. Draft only. Never approve or merge.
 - **New API endpoint**: `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` → `cypress-testing.md` → `git-workflow.md`
 - **Migrate legacy page**: `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` → `database-operations.md` → `git-workflow.md`
 - **Fix security issue**: `security-best-practices.md` → `authorization-security.md` → `php-best-practices.md` → `git-workflow.md`
@@ -126,7 +124,7 @@ They are registered in `~/.claude/CLAUDE.md` for automatic discovery.
 - **Quick reference** — Jump to the skill in `churchcrm/` covering your current task
 - **Learning guide** — Read skills to understand ChurchCRM patterns
 - **Quality check** — Use skills to verify your code follows standards
-- **Pre-commit review** — Check relevant skills before submitting PRs
+- **Pre-commit review** — Check relevant skills before submitting PRs. Contributors should also read [What maintainers look for](../../docs/contributing-pr-review.md).
 
 ## Maintaining These Skills
 
@@ -145,9 +143,8 @@ They are registered in `~/.claude/CLAUDE.md` for automatic discovery.
 
 ### Adding Generic/Upstream Skills
 
-1. Create a new skill folder (e.g., `my-skill/SKILL.md`)
-2. Add an entry to the Generic Skills table above
-3. For skills.sh upstream skills: `npx skills add https://skills.sh/ --skill <skill-name>`
+1. Prefer a ChurchCRM-specific wrapper in `churchcrm/` over a machine-local skill.
+2. Add the new file to `churchcrm/SKILL.md` and this README.
 
 ---
 

@@ -1,42 +1,4 @@
 {
   "Data": "",
-  "Auto": "",
-  "CSV": "",
-  "Email sent to %d family.": {
-    "one": "E-post sendt til %d familie.|E-post sendt til %d familier.",
-    "other": ""
-  },
-  "OFX": "",
-  "PDF successfully emailed to %d family.": {
-    "one": "PDF sendt på e-post til %d familie.|PDF sendt på e-post til %d familier.",
-    "other": ""
-  },
-  "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "Tofaktorautentisering er påkrevd. Du har %d dag til å registrere deg.|Tofaktorautentisering er påkrevd. Du har %d dager til å registrere deg.",
-    "other": ""
-  },
-  "Copied {{count}} members": {
-    "one": "",
-    "other": ""
-  },
-  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} min left": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
-  },
-  "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
-  }
+  "Auto": ""
 }

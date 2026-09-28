@@ -51,14 +51,14 @@ describe("Cart view — email composer button", () => {
     });
 
     it("shows a single 'Email' composer button (not a mailto: link)", () => {
-        cy.visit("/v2/cart");
+        cy.visit("/people/cart");
         cy.get("[data-email-composer][data-email-endpoint='cart/emails']").should("be.visible");
         // No old-style mailto To/BCC btn-group
         cy.get("a[href^='mailto:']").should("not.exist");
     });
 
     it("clicking Email opens the composer modal with recipients", () => {
-        cy.visit("/v2/cart");
+        cy.visit("/people/cart");
 
         cy.intercept("GET", "**/api/cart/emails").as("cartEmailsApi");
 
@@ -76,7 +76,7 @@ describe("Cart view — email composer button", () => {
     });
 
     it("modal shows a positive recipient count badge", () => {
-        cy.visit("/v2/cart");
+        cy.visit("/people/cart");
         cy.intercept("GET", "**/api/cart/emails").as("cartEmailsApi");
 
         cy.get("[data-email-composer][data-email-endpoint='cart/emails']").click();

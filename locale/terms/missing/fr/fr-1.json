@@ -2,35 +2,6 @@
   "Code": "",
   "Signature": "",
   "Auto": "",
-  "CSV": "",
-  "OFX": "",
   "Classifications": "",
-  "Two-factor authentication is required. You have %d day to enroll.": {
-    "one": "L'authentification à deux facteurs est requise. Vous avez %d jour pour vous inscrire.|L'authentification à deux facteurs est requise. Vous avez %d jours pour vous inscrire.",
-    "other": ""
-  },
-  "Copied {{count}} members": {
-    "one": "",
-    "other": ""
-  },
-  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} min left": {
-    "one": "",
-    "other": ""
-  },
-  "{{count}} families could not be geocoded": {
-    "one": "",
-    "other": ""
-  },
-  "…and {{count}} more. Run again to see the rest.": {
-    "one": "",
-    "other": ""
-  }
+  "Options": ""
 }

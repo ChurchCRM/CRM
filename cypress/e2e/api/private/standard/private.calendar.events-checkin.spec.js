@@ -15,6 +15,16 @@ describe("API Event Check-in Endpoints", () => {
     // No browser login — these are pure API tests using x-api-key auth
     // (cy.makePrivateAdminAPICall sets the header for us).
 
+    // quick-create returns the existing event when one already exists for that
+    // date and type, so tests that write attendance give it a date no other
+    // spec or run uses. Their check-ins then land only on events this run
+    // created, never on a seeded or shared event (#9799).
+    const runDayOffset = Math.floor(Date.now() / 1000) % 3000;
+    const ownEventDate = (slot) => {
+        const d = new Date(Date.UTC(2090, 0, 1 + runDayOffset * 3 + slot));
+        return d.toISOString().slice(0, 10);
+    };
+
     describe("GET /api/events", () => {
         it("Returns the events list wrapped in an Events array", () => {
             // Make sure at least one event exists so the response shape is meaningful
@@ -180,10 +190,11 @@ describe("API Event Check-in Endpoints", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
-                { eventTypeId: 2, groupId: 1 },
+                { eventTypeId: 2, groupId: 1, date: ownEventDate(0) },
                 200,
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
+                expect(response.body.created, "event must be new, not a reused one").to.be.true;
                 testEventId = response.body.eventId;
             });
         });
@@ -376,11 +387,18 @@ describe("API Event Check-in Endpoints", () => {
                 expect(testEventId, "before() must have populated testEventId").to.be.a("number");
 
                 cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/events/${testEventId}/checkin-all`,
+                    null,
+                    200,
+                );
+                cy.makePrivateAdminAPICall(
                     "GET",
                     `/api/events/${testEventId}/roster`,
                     null,
                     200,
                 ).then((response) => {
+                    expect(response.body.members, "group 1 roster").to.have.length.greaterThan(0);
                     const notCheckedIn = response.body.members.filter(
                         (m) => m.status === "not_checked_in",
                     );
@@ -561,10 +579,11 @@ describe("API Event Check-in Endpoints", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
-                { eventTypeId: 1 },
+                { eventTypeId: 1, date: ownEventDate(1) },
                 200,
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
+                expect(response.body.created, "event must be new, not a reused one").to.be.true;
                 eventId = response.body.eventId;
             });
         });
@@ -641,10 +660,11 @@ describe("API Event Check-in Endpoints", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
-                { eventTypeId: 1 },
+                { eventTypeId: 1, date: ownEventDate(2) },
                 200,
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
+                expect(response.body.created, "event must be new, not a reused one").to.be.true;
                 eventId = response.body.eventId;
                 // Check someone in so we have an attendance record to delete
                 cy.makePrivateAdminAPICall(
