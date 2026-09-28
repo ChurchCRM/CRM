@@ -274,10 +274,12 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         <span class="navbar-toggler-icon"></span>
       </button>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
-        <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png"
+        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-ink-blue.svg"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image rounded"
-             style="height: 42px; width: auto;">
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-light">
+        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-paper-blue.svg"
+             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark">
         <span class="navbar-brand-text ps-2 fs-4 fw-bold">
           <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>
         </span>

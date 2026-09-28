@@ -12278,16 +12278,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cara Sekolah Minggu + Acara + Kios bekerja bersama"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Tanggal tidak valid untuk %s — diharapkan YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Format tanggal tidak valid untuk rangeStart atau rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Tanggal tidak valid; format yang diharapkan YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12516,10 +12508,6 @@ msgstr "endDate harus setelah startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds harus berupa larik yang tidak kosong"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "jenis perulangan tidak valid"
 
 #: 
 msgid "personIds must be a non-empty array"
@@ -17850,4 +17838,680 @@ msgstr "Perbarui Semua Koordinat Keluarga"
 #: 
 msgid "Update Coordinates"
 msgstr "Perbarui Koordinat"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s adalah Kepala Keluarga ini dan telah ditandai meninggal dunia. Silakan tetapkan Kepala Keluarga yang baru."
+
+#: 
+msgid "Accept"
+msgstr "Terima"
+
+#: 
+msgid "Active Now"
+msgstr "Aktif Sekarang"
+
+#: 
+msgid "Adding..."
+msgstr "Menambahkan..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Semua jemaat CRM yang memiliki email telah berlangganan daftar ini!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Semua pelanggan MailChimp sudah ada di ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Terjadi kesalahan saat menghapus berkas."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Apakah Anda benar-benar yakin? Tindakan ini akan menghapus semua data dan mengembalikan ke pengaturan pabrik."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Apakah Anda yakin ingin menghapus SEMUA berkas log? Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Apakah Anda yakin ingin menghapus kiosk"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Apakah Anda yakin ingin menghapus tautan"
+
+#: 
+msgid "Assignment"
+msgstr "Penugasan"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Tugas latar belakang (email ulang tahun dan setiap tugas terjadwal plugin) belum pernah berjalan pada instalasi ini."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Tugas latar belakang (email ulang tahun dan setiap tugas terjadwal plugin) terakhir berjalan pada %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Mencadangkan..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Cadangan berhasil diunduh."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Cadangan berhasil diunggah"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Tidak dapat mengubah status aktif Anda sendiri"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Ekspor ChMeetings berhasil diselesaikan"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Perubahan berhasil disimpan"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Check-out semua orang dan nonaktifkan semuanya"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Check-out semua orang dan nonaktifkan acara ini?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Periksa email Anda untuk tautan atur ulang kata sandi"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Tutup acara yang macet?"
+
+#: 
+msgid "Comments"
+msgstr "Komentar"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Tidak dapat memuat pratinjau email. Silakan tutup dan coba lagi."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Membuat dan mengunggah cadangan. Ini mungkin memerlukan beberapa menit..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Reset database gagal."
+
+#: 
+msgid "Deceased"
+msgstr "Meninggal Dunia"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Kredensial admin bawaan"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Hapus Kiosk"
+
+#: 
+msgid "Deleted Files"
+msgstr "Berkas yang Dihapus"
+
+#: 
+msgid "Deleting..."
+msgstr "Menghapus..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Unduhan dikembalikan tanpa header lampiran."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Kesalahan saat menghapus berkas log."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Kesalahan saat menghapus berkas log."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Kesalahan saat mengunduh berkas log."
+
+#: 
+msgid "Error initiating download."
+msgstr "Kesalahan saat memulai unduhan."
+
+#: 
+msgid "Error loading log file."
+msgstr "Kesalahan saat memuat berkas log."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Kesalahan saat memuat entri pendaftaran mandiri"
+
+#: 
+msgid "Errors"
+msgstr "Kesalahan"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Kecualikan jemaat yang telah meninggal dunia dari direktori cetak dan ekspor CSV."
+
+#: 
+msgid "Failed Files"
+msgstr "Berkas yang Gagal"
+
+#: 
+msgid "Failed to add link"
+msgstr "Gagal menambahkan tautan"
+
+#: 
+msgid "Failed to add option"
+msgstr "Gagal menambahkan opsi"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Gagal menutup acara. Silakan coba lagi."
+
+#: 
+msgid "Failed to delete"
+msgstr "Gagal menghapus"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Gagal mengaktifkan pendaftaran kiosk"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Gagal mengekspor CSV ChMeetings"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Gagal memuat audit. Silakan coba lagi."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Gagal mengganti nama kiosk"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Gagal menyimpan perubahan"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Gagal memperbarui plugin"
+
+#: 
+msgid "Family Id"
+msgstr "ID Keluarga"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Konfirmasi Akhir"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Melakukan geocoding keluarga… ini mungkin memerlukan beberapa menit. Anda dapat membiarkan halaman ini tetap terbuka."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Melakukan geocoding keluarga… {{done}} dari {{total}} telah diproses, {{geocoded}} ditemukan lokasinya."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Kepala Keluarga Perlu Diperbarui"
+
+#: 
+msgid "Helpful Links"
+msgstr "Tautan Bermanfaat"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Sembunyikan yang Meninggal dari Direktori"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Sembunyikan jemaat yang telah meninggal dunia dari direktori cetak dan ekspor CSV."
+
+#: 
+msgid "Identify"
+msgstr "Identifikasi"
+
+#: 
+msgid "Identify command sent"
+msgstr "Perintah identifikasi terkirim"
+
+#: 
+msgid "Individual"
+msgstr "Individu"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Internal: tanggal dan waktu terakhir tugas timer latar belakang selesai (YYYY-MM-DD HH:MM:SS). Jangan diubah secara manual."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Item berhasil dihapus"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Nama Kiosk"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Kiosk diterima"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Kiosk berhasil dihapus"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Kiosk harus diterima"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Nama kiosk diganti"
+
+#: 
+msgid "Last seen"
+msgstr "Terakhir dilihat"
+
+#: 
+msgid "Link"
+msgstr "Tautan"
+
+#: 
+msgid "Link added successfully"
+msgstr "Tautan berhasil ditambahkan"
+
+#: 
+msgid "Link deleted"
+msgstr "Tautan dihapus"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Nama tautan tidak boleh mengandung tag HTML"
+
+#: 
+msgid "Living"
+msgstr "Hidup"
+
+#: 
+msgid "Log settings saved"
+msgstr "Pengaturan log disimpan"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Nama Login Wajib Diisi"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Menandai Orang ini sebagai Aktif"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Menandai Orang ini sebagai Tidak Aktif"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Jumlah menit minimum antara jalannya tugas timer latar belakang yang dipicu oleh pemuatan halaman. Mencegah tugas berjalan setiap kali halaman dimuat pada Minggu pagi yang sibuk. Tidak berlaku untuk runner baris perintah. Atur ke 0 untuk menjalankan pada setiap pemuatan halaman."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Pengguna baru tidak akan menerima email selamat datang, dan kata sandi yang dibuat tidak pernah ditampilkan. Setelah membuat akun, atur kata sandi dari Pengguna Sistem menggunakan Ubah Kata Sandi — atau konfigurasikan email terlebih dahulu."
+
+#: 
+msgid "No changes to save"
+msgstr "Tidak ada perubahan untuk disimpan"
+
+#: 
+msgid "No contact info"
+msgstr "Tidak ada informasi kontak"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Belum ada tautan khusus yang dikonfigurasi. Tambahkan satu di atas!"
+
+#: 
+msgid "No email"
+msgstr "Tidak ada email"
+
+#: 
+msgid "No files were deleted."
+msgstr "Tidak ada berkas yang dihapus."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Tidak ada bantuan yang tersedia untuk plugin ini."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Tidak ada orang untuk ditambahkan - semua sudah ada di keranjang"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Tidak ada orang untuk ditambahkan - filter tidak menghasilkan hasil apa pun"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Bukan tanggal kematian yang valid"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Jumlah hari yang dimiliki pengguna untuk mendaftar 2FA setelah diwajibkan. Atur ke 0 untuk menerapkan segera. Memperpendek masa tenggang yang sedang berlangsung dapat langsung mengunci pengguna."
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Lakukan ini hanya setelah masalah yang mendasarinya diperbaiki. Anda tetap perlu mengklik Aktifkan agar plugin berjalan kembali."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Silakan konfirmasi pengaktifan orang ini"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Silakan konfirmasi penonaktifan orang ini"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Status plugin diperbarui"
+
+#: 
+msgid "Registered"
+msgstr "Terdaftar"
+
+#: 
+msgid "Reload"
+msgstr "Muat Ulang"
+
+#: 
+msgid "Reload command sent"
+msgstr "Perintah muat ulang terkirim"
+
+#: 
+msgid "Rename"
+msgstr "Ganti Nama"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Ganti Nama Kiosk"
+
+#: 
+msgid "Reset Complete"
+msgstr "Reset Selesai"
+
+#: 
+msgid "Reset Settings"
+msgstr "Reset Pengaturan"
+
+#: 
+msgid "Resetting..."
+msgstr "Mereset..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Tugas terjadwal tidak berjalan"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Token keamanan tidak ditemukan. Silakan segarkan halaman."
+
+#: 
+msgid "Select…"
+msgstr "Pilih…"
+
+#: 
+msgid "Sending..."
+msgstr "Mengirim..."
+
+#: 
+msgid "Sending…"
+msgstr "Mengirim…"
+
+#: 
+msgid "Settings reset"
+msgstr "Pengaturan direset"
+
+#: 
+msgid "Settings saved"
+msgstr "Pengaturan disimpan"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Pengaturan disimpan. Menyegarkan informasi pembaruan..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Hanya menampilkan orang yang aktif."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Hanya menampilkan orang yang tidak aktif."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Berhasil dihapus"
+
+#: 
+msgid "Testing..."
+msgstr "Menguji..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Database telah dikosongkan. Sistem siap untuk memulai dari awal."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Sementara itu, mekanisme cadangan saat pemuatan halaman tetap berfungsi. Ubah berapa lama ChurchCRM menunggu sebelum menampilkan peringatan ini melalui pengaturan %1$s, atau atur ke 0 untuk menyembunyikannya."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Orang ini Tidak Aktif"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Ini akan mencari koordinat peta untuk setiap keluarga yang belum memilikinya, menggunakan OpenStreetMap. Prosesnya berjalan per kelompok 50 keluarga, sekitar satu menit per kelompok. Anda dapat membiarkan halaman ini tetap terbuka selama proses berjalan. Lanjutkan?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Orang ini telah meninggal dunia"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Ini akan menghapus semua nilai yang dikonfigurasi untuk plugin ini. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Ini akan menghapus secara permanen berkas plugin dari disk dan menghapus pengaturannya. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL tidak boleh mengandung tag HTML"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Terjadi kesalahan tak terduga. Silakan coba lagi."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Copot Pemasangan Plugin"
+
+#: 
+msgid "Upcoming"
+msgstr "Akan Datang"
+
+#: 
+msgid "Valid Until"
+msgstr "Berlaku Hingga"
+
+#: 
+msgid "View active only"
+msgstr "Lihat yang aktif saja"
+
+#: 
+msgid "View all"
+msgstr "Lihat semua"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Lihat semua (termasuk yang tidak aktif)"
+
+#: 
+msgid "View inactive only"
+msgstr "Lihat yang tidak aktif saja"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Beri peringatan pada dasbor admin apabila tugas timer latar belakang belum berjalan selama sekian jam ini. Nilai 26 memberi ruang untuk cron harian ditambah sedikit pergeseran waktu. Atur ke 0 untuk menonaktifkan peringatan."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Tanpa penjadwal, tugas-tugas ini hanya berjalan ketika seseorang memuat halaman, sehingga pada hari kerja yang sepi tidak ada email terjadwal yang terkirim sama sekali. Tambahkan entri cron yang menjalankan task runner setiap jam, menggunakan pengguna yang sama dengan yang menjalankan server web Anda"
+
+#: 
+msgid "check-outs"
+msgstr "check-out"
+
+#: 
+msgid "deceased"
+msgstr "meninggal dunia"
+
+#: 
+msgid "event"
+msgstr "acara"
+
+#: 
+msgid "events?"
+msgstr "acara?"
+
+#: 
+msgid "files"
+msgstr "berkas"
+
+#: 
+msgid "people from cart?"
+msgstr "orang dari keranjang?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip harus berupa nol atau bilangan bulat positif"
+
+#: 
+msgid "view families missing an email"
+msgstr "lihat keluarga yang belum memiliki email"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Pembeli Tahun Fiskal Ini"
+
+#: 
+msgid "Current"
+msgstr "Saat Ini"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Barang yang Disumbangkan (Tahun Fiskal Ini)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Login harus %d karakter atau kurang!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Dana Terkumpul Tahun Fiskal Ini"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s harus berupa alamat web https:// yang lengkap, misalnya https://example.org/gerejaanda."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Akun memiliki izin terbatas. Hubungi administrator."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Terjadi kesalahan saat menampilkan halaman kesalahan."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Setiap alamat harus dimulai dengan https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Buat Label"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Buat label surat"
+
+#: 
+msgid "Labels"
+msgstr "Label"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Label surat untuk orang-orang di keranjang Anda. Orang yang tidak memiliki alamat sendiri akan dialamatkan menggunakan alamat keluarganya."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Opsional. Tautan ke akun gereja sendiri, ditampilkan kepada jemaat pada halaman seperti footer portal. Kosongkan kolom untuk menyembunyikan jejaring tersebut."
+
+#: 
+msgid "Options"
+msgstr "Opsi"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Tugas Terjadwal"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktif, sisa waktu: {{seconds}} detik"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Interval yang diharapkan antar-eksekusi (jam): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Keluarga yang dilewati (tidak memiliki alamat email tercatat): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Keluarga yang tidak dapat di-geocode: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Keluarga yang akan menerima email konfirmasi: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Jemaat yang disalin: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Tidak tercantum di sini: {{total}} lagi"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Penerima: {{total}} — terlalu banyak untuk tautan mailto:. Gunakan Salin Alamat sebagai gantinya."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Terlalu banyak penerima untuk klien email ({{total}} > {{max}}). Gunakan Salin Alamat sebagai gantinya."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "Sisa {{minutes}} menit"
 

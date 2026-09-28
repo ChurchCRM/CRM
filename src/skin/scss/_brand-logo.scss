@@ -1,0 +1,19 @@
+// Bundled ChurchCRM mark: ink+blue on light, paper+blue on dark.
+.crm-brand-logo-dark {
+  display: none;
+}
+
+html[data-bs-theme="dark"] {
+  .crm-brand-logo-light {
+    display: none;
+  }
+
+  .crm-brand-logo-dark {
+    display: inline;
+  }
+}
+
+.navbar-brand-image.crm-brand-logo {
+  height: 42px;
+  width: auto;
+}

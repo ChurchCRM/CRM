@@ -19,7 +19,7 @@ if ($isForced) {
         <!-- Card header: logo -->
         <div class="login-card-header">
             <div class="login-header-logo">
-                <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" />
+                <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-logo-ink-blue.svg" alt="ChurchCRM" />
             </div>
         </div>
 

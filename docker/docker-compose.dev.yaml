@@ -27,12 +27,12 @@ services:
     image: mariadb:10.11
     restart: unless-stopped
     ports:
-      - "${DATABASE_PORT:-3306}:3306"
+      - "${DOCKER_BIND_ADDRESS:-127.0.0.1}:${DATABASE_PORT:-3306}:3306"
     env_file:
       - .env
     volumes:
       # Seed with demo data on first start
-      - ../cypress/data:/docker-entrypoint-initdb.d
+      - ../cypress/data:/docker-entrypoint-initdb.d:ro
       - churchcrm-dev-db:/var/lib/mysql
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
@@ -48,7 +48,7 @@ services:
     image: churchcrm/crm:php8-debian-dev
     restart: unless-stopped
     ports:
-      - "${WEBSERVER_PORT:-80}:80"
+      - "${DOCKER_BIND_ADDRESS:-127.0.0.1}:${WEBSERVER_PORT:-80}:80"
     volumes:
       # Bind mount source code — changes appear instantly
       - ../src:/var/www/html
@@ -69,8 +69,8 @@ services:
     image: axllent/mailpit:latest
     restart: unless-stopped
     ports:
-      - "${MAILSERVER_PORT:-1025}:1025"
-      - "${MAILSERVER_GUI_PORT:-8025}:8025"
+      - "${DOCKER_BIND_ADDRESS:-127.0.0.1}:${MAILSERVER_PORT:-1025}:1025"
+      - "${DOCKER_BIND_ADDRESS:-127.0.0.1}:${MAILSERVER_GUI_PORT:-8025}:8025"
     hostname: crm-mailserver
 
 volumes:
