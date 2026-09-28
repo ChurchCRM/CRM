@@ -9,12 +9,14 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\ChurchLogo;
 use ChurchCRM\view\MenuRenderer;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
@@ -273,30 +275,20 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <?php
-      // An uploaded church logo replaces both the stock icon and the church-name
-      // text — the logo is expected to carry the church's own wordmark. Without
-      // one, the stock ChurchCRM icon plus the church name stay exactly as they
-      // were. The name span is always rendered (hidden with d-none) so the
-      // Church Info uploader can toggle it without a page reload.
-      $bHasCustomLogo     = ChurchMetaData::hasCustomLogo();
-      ?>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
-        <img src="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchLogoPath()) ?>"
-             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             id="sidebar-brand-image"
-             class="navbar-brand-image rounded<?= $bHasCustomLogo ? '' : ' d-none' ?>"
-             style="height: 42px; width: auto;">
+        <?php if (ChurchLogoService::hasCustomLogo()): ?>
+        <?= ChurchLogo::img(['class' => 'navbar-brand-image crm-brand-logo']) ?>
+        <?php else: ?>
         <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-ink-blue.svg"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-light crm-brand-default<?= $bHasCustomLogo ? ' d-none' : '' ?>">
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-light">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-paper-blue.svg"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark crm-brand-default<?= $bHasCustomLogo ? ' d-none' : '' ?>">
-        <span id="sidebar-brand-text"
-              class="navbar-brand-text ps-2 fs-4 fw-bold<?= $bHasCustomLogo ? ' d-none' : '' ?>">
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark">
+        <span class="navbar-brand-text ps-2 fs-4 fw-bold">
           <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>
         </span>
+        <?php endif; ?>
       </a>
       <div class="collapse navbar-collapse" id="sidebar-menu">
         <ul class="navbar-nav pt-xl-3">

@@ -70,14 +70,16 @@ use Slim\Routing\RouteCollectorProxy;
  * )
  */
 $app->group('/api/system/church-logo', function (RouteCollectorProxy $group): void {
-    $group->get('', function (Request $request, Response $response, array $args): Response {
-        return SlimUtils::renderJSON($response, [
-            'hasCustomLogo' => ChurchMetaData::hasCustomLogo(),
-            'url'           => ChurchMetaData::getChurchLogoPath(),
-        ]);
+    $logoState = static fn (): array => [
+        'hasCustomLogo' => ChurchLogoService::hasCustomLogo(),
+        'url'           => ChurchMetaData::getChurchLogoPath(),
+    ];
+
+    $group->get('', function (Request $request, Response $response, array $args) use ($logoState): Response {
+        return SlimUtils::renderJSON($response, $logoState());
     });
 
-    $group->post('', function (Request $request, Response $response, array $args): Response {
+    $group->post('', function (Request $request, Response $response, array $args) use ($logoState): Response {
         $input = $request->getParsedBody();
 
         if (empty($input) || !isset($input['imgBase64'])) {
@@ -111,11 +113,7 @@ $app->group('/api/system/church-logo', function (RouteCollectorProxy $group): vo
         try {
             ChurchLogoService::setImageFromBase64((string) $input['imgBase64']);
 
-            return SlimUtils::renderJSON($response, [
-                'success'       => true,
-                'hasCustomLogo' => ChurchMetaData::hasCustomLogo(),
-                'url'           => ChurchMetaData::getChurchLogoPath(),
-            ]);
+            return SlimUtils::renderJSON($response, ['success' => true] + $logoState());
         } catch (PhotoSizeException $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 413, $e, $request);
         } catch (\Throwable $e) {
@@ -123,7 +121,7 @@ $app->group('/api/system/church-logo', function (RouteCollectorProxy $group): vo
         }
     });
 
-    $group->delete('', function (Request $request, Response $response, array $args): Response {
+    $group->delete('', function (Request $request, Response $response, array $args) use ($logoState): Response {
         // delete() is idempotent: it returns true when there is no logo to remove,
         // so false means unlink() genuinely failed (permissions, read-only mount)
         // and the logo is still being served. Reporting that as 200 lies to the UI.
@@ -131,10 +129,6 @@ $app->group('/api/system/church-logo', function (RouteCollectorProxy $group): vo
             return SlimUtils::renderErrorJSON($response, gettext('Failed to remove church logo'), [], 500);
         }
 
-        return SlimUtils::renderJSON($response, [
-            'success'       => true,
-            'hasCustomLogo' => ChurchMetaData::hasCustomLogo(),
-            'url'           => ChurchMetaData::getChurchLogoPath(),
-        ]);
+        return SlimUtils::renderJSON($response, ['success' => true] + $logoState());
     });
 });

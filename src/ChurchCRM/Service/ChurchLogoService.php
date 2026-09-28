@@ -48,32 +48,20 @@ class ChurchLogoService
     }
 
     /**
-     * Content-derived version token for the cache-busting `?v=` query, or an
-     * empty string when no logo exists.
+     * URL of the uploaded logo relative to the application root, or null when
+     * none is stored.
      *
-     * A hash of the stored bytes guarantees a different URL whenever the
-     * logo's content changes, including two replacements inside the same
-     * second, which a filemtime() token (Photo's approach, #8662) cannot
-     * promise. xxh3 is bundled with ext/hash since PHP 8.1 and hashes the
-     * at-most-1200x400 PNG in well under a millisecond, so this is cheap
-     * enough for every page render.
+     * The `?v=` token is a hash of the stored bytes, so the URL changes whenever
+     * the content does, even for two replacements inside the same second, which
+     * a filemtime() token (Photo's approach, #8662) cannot promise. xxh3 hashes
+     * the at-most-1200x400 PNG in well under a millisecond.
      */
-    public static function getVersion(): string
+    public static function getUrlPath(): ?string
     {
         $path = self::getLogoPath();
-        if (!is_file($path)) {
-            return '';
-        }
+        $hash = is_file($path) ? hash_file('xxh3', $path) : false;
 
-        $hash = @hash_file('xxh3', $path);
-        if ($hash === false) {
-            // Unreadable at this instant (e.g. mid-replacement on a filesystem
-            // without atomic rename); fall back to stat data rather than fail.
-            clearstatcache(true, $path);
-            $hash = sprintf('%x-%x', (int) @filemtime($path), (int) @filesize($path));
-        }
-
-        return $hash;
+        return $hash === false ? null : '/Images/' . self::LOGO_FILENAME . '?v=' . $hash;
     }
 
     /**
