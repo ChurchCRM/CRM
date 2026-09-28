@@ -156,10 +156,12 @@ class VolunteerMinistryService
      * group is managed elsewhere. There is no link table and nothing to link: the
      * Group IS the roster (D1), and now it has an owner.
      *
+     * `$sundaySchool` is D29's switch: may this ministry provide teachers for Sunday School.
+     *
      * @throws VolunteerException 403 when the actor is not a global manager,
      *                                 400 on an empty name, 409 on a duplicate
      */
-    public function createMinistry(string $name, ?string $description, User $actor): VolunteerMinistry
+    public function createMinistry(string $name, ?string $description, User $actor, bool $sundaySchool = false): VolunteerMinistry
     {
         if (!$this->authz->isGlobalManager($actor)) {
             throw VolunteerException::forbidden(gettext('Creating a ministry requires volunteer manager access'));
@@ -172,6 +174,7 @@ class VolunteerMinistryService
         $ministry->setName($name);
         $ministry->setDescription($this->normalizeDescription($description));
         $ministry->setActive(true);
+        $ministry->setSundaySchool($sundaySchool);
         // Naive wall-clock in sTimeZone, like every other V2 timestamp (§2.0).
         $ministry->setCreatedDate(DateTimeUtils::getNowDateTime());
         $ministry->setCreatedByPersonId((int) $actor->getId());
@@ -369,7 +372,11 @@ class VolunteerMinistryService
      * RENAMES ITS POOL GROUP, because a group called "Coffee Bar" sitting under a
      * ministry now called "Cafe" is exactly the drift the owning column exists to stop.
      *
-     * @param array{name?: string, description?: string|null, active?: bool, helpWanted?: bool, helpWantedText?: string|null} $fields
+     * D29's `sundaySchool` is a global manager's to change: a coordinator may send the
+     * current value, never a different one. Turning it off is refused while a team of the
+     * ministry is linked to a class.
+     *
+     * @param array{name?: string, description?: string|null, active?: bool, helpWanted?: bool, helpWantedText?: string|null, sundaySchool?: bool} $fields
      *
      * @throws VolunteerException
      */
@@ -399,6 +406,16 @@ class VolunteerMinistryService
 
         if (array_key_exists('helpWantedText', $fields)) {
             $ministry->setHelpWantedText($this->normalizeHelpWantedText($fields['helpWantedText']));
+        }
+
+        if (array_key_exists('sundaySchool', $fields) && (bool) $fields['sundaySchool'] !== (bool) $ministry->getSundaySchool()) {
+            if (!$this->authz->isGlobalManager($actor)) {
+                throw VolunteerException::forbidden(gettext('Only a volunteer manager can change whether a ministry provides teachers for Sunday School'));
+            }
+            if (!$fields['sundaySchool']) {
+                $this->assertNoTeamTeaches($ministry);
+            }
+            $ministry->setSundaySchool((bool) $fields['sundaySchool']);
         }
 
         $ministry->save();
@@ -435,6 +452,32 @@ class VolunteerMinistryService
         ]);
 
         return $ministry;
+    }
+
+    /** @throws VolunteerException 409 naming the teams still linked to a class */
+    private function assertNoTeamTeaches(VolunteerMinistry $ministry): void
+    {
+        $linked = VolunteerTeamQuery::create()
+            ->filterByMinistryId((int) $ministry->getId())
+            ->filterByClassGroupId(null, Criteria::ISNOTNULL)
+            ->orderByName()
+            ->find();
+        if ($linked->count() === 0) {
+            return;
+        }
+
+        $names = [];
+        $teams = [];
+        foreach ($linked as $team) {
+            $names[] = (string) $team->getName();
+            $teams[] = ['id' => (int) $team->getId(), 'name' => (string) $team->getName()];
+        }
+
+        throw VolunteerException::conflict(sprintf(
+            gettext('These teams of %1$s are linked to a Sunday School class: %2$s. Unlink them first.'),
+            $ministry->getName(),
+            implode(', ', $names)
+        ))->withExtra(['teams' => $teams]);
     }
 
     /**
@@ -651,7 +694,11 @@ class VolunteerMinistryService
     }
 
     /**
-     * @param array{name?: string, description?: string|null, active?: bool, classGroupId?: int|null, importPositionId?: int|null, importPositionName?: string|null} $fields
+     * `classEvents` (D28) says what happens to the ministry's own events of the class the
+     * team leaves when `classGroupId` changes: `keep` (the default), `remove` the class from
+     * them, or `move` them to the new class — in the same transaction.
+     *
+     * @param array{name?: string, description?: string|null, active?: bool, classGroupId?: int|null, importPositionId?: int|null, importPositionName?: string|null, classEvents?: string|null} $fields
      *
      * @throws VolunteerException
      */
@@ -661,6 +708,12 @@ class VolunteerMinistryService
         // is a ministry-structure change (§4.6 "Create / edit team"), and so is
         // linking it to a Sunday School class (D23).
         $this->assertCanManageMinistry($actor, (int) $team->getMinistryId());
+
+        $classEvents = VolunteerEventService::readClassEventsChoice(
+            $fields['classEvents'] ?? null,
+            [VolunteerEventService::CLASS_EVENTS_KEEP, VolunteerEventService::CLASS_EVENTS_REMOVE, VolunteerEventService::CLASS_EVENTS_MOVE]
+        );
+        $oldClassId = $team->getClassGroupId() === null ? null : (int) $team->getClassGroupId();
 
         if (array_key_exists('name', $fields)) {
             $name = $this->requireName((string) $fields['name'], gettext('A team name is required'));
@@ -682,6 +735,16 @@ class VolunteerMinistryService
         try {
             $team->save();
             $imported = $this->applyClassLink($team, $fields, $actor);
+            $newClassId = $team->getClassGroupId() === null ? null : (int) $team->getClassGroupId();
+            if ($oldClassId !== null && $newClassId !== $oldClassId) {
+                (new VolunteerEventService($this->authz))->applyClassEventsChoice(
+                    (int) $team->getMinistryId(),
+                    $oldClassId,
+                    $newClassId,
+                    $classEvents,
+                    $actor
+                );
+            }
             $connection->commit();
         } catch (\Throwable $e) {
             $connection->rollBack();
@@ -733,6 +796,7 @@ class VolunteerMinistryService
             return 0;
         }
 
+        VolunteerClassLinkService::assertMinistryTeaches((int) $team->getMinistryId());
         $classLinks = new VolunteerClassLinkService();
         $class = $classLinks->requireLinkableClass($classGroupId, (int) $team->getId());
         $teacherIds = $classLinks->teacherPersonIds($class);
@@ -797,12 +861,18 @@ class VolunteerMinistryService
      *
      * A linked Sunday School class keeps its membership, teachers included, exactly
      * as unlinking would leave it (D23): the class is core's, and it goes on meeting.
+     * The ministry's own events of that class are kept, have the class removed, or are
+     * deleted through core as `$classEvents` says (D28), in the same transaction.
      *
      * @throws VolunteerException
      */
-    public function deleteTeam(VolunteerTeam $team, User $actor): void
+    public function deleteTeam(VolunteerTeam $team, User $actor, string $classEvents = VolunteerEventService::CLASS_EVENTS_KEEP): void
     {
         $this->assertCanManageMinistry($actor, (int) $team->getMinistryId());
+        $classEvents = VolunteerEventService::readClassEventsChoice(
+            $classEvents,
+            [VolunteerEventService::CLASS_EVENTS_KEEP, VolunteerEventService::CLASS_EVENTS_REMOVE, VolunteerEventService::CLASS_EVENTS_DELETE]
+        );
 
         $teamId = (int) $team->getId();
 
@@ -827,6 +897,13 @@ class VolunteerMinistryService
         $connection->beginTransaction();
 
         try {
+            $classEventCount = $team->getClassGroupId() === null ? 0 : (new VolunteerEventService($this->authz))->applyClassEventsChoice(
+                (int) $team->getMinistryId(),
+                (int) $team->getClassGroupId(),
+                null,
+                $classEvents,
+                $actor
+            );
             $removedAssignments = $this->deleteAssignments($positionIds, $occurrenceIds, $connection);
             $removedScopes = VolunteerScopeQuery::create()
                 ->filterByScopeType(VolunteerScope::TYPE_TEAM)
@@ -843,6 +920,8 @@ class VolunteerMinistryService
                 'occurrences' => count($occurrenceIds),
                 'removedAssignmentRows' => $removedAssignments,
                 'removedScopeRows' => $removedScopes,
+                'classEvents' => $classEvents,
+                'classEventCount' => $classEventCount,
                 'actor' => $actor->getId(),
             ]);
         } catch (\Throwable $e) {

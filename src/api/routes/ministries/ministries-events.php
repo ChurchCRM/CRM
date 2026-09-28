@@ -2,8 +2,10 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPosition;
+use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -11,6 +13,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Volunteer\Middleware\VolunteerCoordinatorRoleAuthMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerMinistryMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerPositionMiddleware;
+use ChurchCRM\Volunteer\Middleware\VolunteerTeamMiddleware;
 use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerEventService;
@@ -46,6 +49,14 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
             'rangeEnd' => 'date?',
         ]))
         ->add(new VolunteerMinistryMiddleware());
+
+    // D28: the Calendar tab's Delete events — owned events only, through core's delete path.
+    $group->delete('/ministries/{ministryId:[0-9]+}/events', 'deleteVolunteerMinistryEvents')
+        ->add(new VolunteerMinistryMiddleware());
+
+    // D28: the ministry's own events of the team's class, which the team dialog asks about.
+    $group->get('/teams/{teamId:[0-9]+}/class-events', 'getVolunteerTeamClassEvents')
+        ->add(new VolunteerTeamMiddleware());
 
     // The new-event dialog's "Fill by default with": the schedule it would ask does not exist yet.
     $group->get('/positions/{positionId:[0-9]+}/eligible', 'listVolunteerPositionEligiblePeople')
@@ -195,6 +206,11 @@ function createVolunteerMinistryEvents(Request $request, Response $response): Re
  *                     @OA\Property(property="recorded", type="boolean"),
  *                     @OA\Property(property="total", type="integer")
  *                 ),
+ *                 @OA\Property(property="otherStaffing", type="array", description="D28: other ministries with an occurrence on the event and how many of their volunteers are assigned (pending or accepted)", @OA\Items(type="object",
+ *                     @OA\Property(property="ministryId", type="integer"),
+ *                     @OA\Property(property="ministryName", type="string"),
+ *                     @OA\Property(property="assigned", type="integer")
+ *                 )),
  *                 @OA\Property(property="staffing", type="array", @OA\Items(type="object",
  *                     @OA\Property(property="teamId", type="integer"),
  *                     @OA\Property(property="teamName", type="string"),
@@ -284,4 +300,100 @@ function listVolunteerPositionEligiblePeople(Request $request, Response $respons
     return SlimUtils::renderJSON($response, [
         'people' => (new VolunteerAssignmentService())->getEligiblePeopleForPosition($position, $query),
     ]);
+}
+
+/**
+ * @OA\Delete(
+ *     path="/ministries/ministries/{ministryId}/events",
+ *     operationId="deleteVolunteerMinistryEvents",
+ *     summary="Delete events this ministry owns (D28)",
+ *     description="The Calendar tab's Delete events. Every id must be an event whose event_ministry_id is this ministry, and each is deleted through core's event delete in one transaction - all or none. Refused while another ministry has volunteers assigned (pending or accepted) on any of them unless the caller holds Add Events, and whenever core refuses one (people checked in, a kiosk assigned).",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"eventIds"},
+ *         @OA\Property(property="eventIds", type="array", @OA\Items(type="integer"))
+ *     )),
+ *     @OA\Response(response=200, description="Deleted", @OA\JsonContent(@OA\Property(property="deleted", type="integer"))),
+ *     @OA\Response(response=400, description="eventIds is missing, empty or not a list of ids"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not a coordinator of this ministry, an event another ministry or nobody owns, a self-service login, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry or event"),
+ *     @OA\Response(response=409, description="Another ministry has volunteers on one of the events (`ministries` names them), or core refused one (the reason and `eventId`); nothing is deleted")
+ * )
+ */
+function deleteVolunteerMinistryEvents(Request $request, Response $response): Response
+{
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
+    $raw = ((array) $request->getParsedBody())['eventIds'] ?? null;
+
+    $eventIds = [];
+    foreach (is_array($raw) ? $raw : [null] as $value) {
+        $id = filter_var($value, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+        if ($id === false) {
+            return SlimUtils::renderErrorJSON($response, gettext('eventIds must be a list of event ids'), [], 400, null, $request);
+        }
+        $eventIds[] = $id;
+    }
+
+    try {
+        $deleted = (new VolunteerEventService())->deleteOwnedEvents($ministry, $eventIds, AuthenticationManager::getCurrentUser());
+    } catch (VolunteerException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), $e->getExtra(), $e->getStatusCode(), null, $request);
+    }
+
+    return SlimUtils::renderJSON($response, ['deleted' => $deleted]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/ministries/teams/{teamId}/class-events",
+ *     operationId="getVolunteerTeamClassEvents",
+ *     summary="The events this team's ministry owns for the team's class (D28)",
+ *     description="What the team dialog asks about before the class changes or the team is deleted: how many events whose event_ministry_id is the team's ministry have the team's current class as Linked Group, how many of them are today or later, and which other ministries staff them. Events an administrator created are not counted. All zero for a team with no class.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=200, description="OK",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="teamId", type="integer"),
+ *             @OA\Property(property="ministryId", type="integer"),
+ *             @OA\Property(property="ministryName", type="string"),
+ *             @OA\Property(property="classGroupId", type="integer", nullable=true),
+ *             @OA\Property(property="classGroupName", type="string", nullable=true),
+ *             @OA\Property(property="total", type="integer"),
+ *             @OA\Property(property="upcoming", type="integer"),
+ *             @OA\Property(property="otherStaffing", type="array", @OA\Items(type="object",
+ *                 @OA\Property(property="ministryId", type="integer"),
+ *                 @OA\Property(property="ministryName", type="string"),
+ *                 @OA\Property(property="assigned", type="integer"),
+ *                 @OA\Property(property="eventCount", type="integer")
+ *             ))
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such team")
+ * )
+ */
+function getVolunteerTeamClassEvents(Request $request, Response $response): Response
+{
+    /** @var VolunteerTeam $team */
+    $team = $request->getAttribute('volunteerTeam');
+    $ministryId = (int) $team->getMinistryId();
+    $class = $team->getClassGroup();
+
+    $summary = $class === null
+        ? ['total' => 0, 'upcoming' => 0, 'otherStaffing' => []]
+        : (new VolunteerEventService())->summarizeOwnedClassEvents($ministryId, (int) $class->getId());
+
+    return SlimUtils::renderJSON($response, [
+        'teamId' => (int) $team->getId(),
+        'ministryId' => $ministryId,
+        'ministryName' => (string) ($team->getMinistry()?->getName() ?? ''),
+        'classGroupId' => $class === null ? null : (int) $class->getId(),
+        'classGroupName' => $class === null ? null : (string) $class->getName(),
+    ] + $summary);
 }

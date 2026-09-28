@@ -59,12 +59,15 @@ import { byId, renderState, wireUnclippedRowMenus } from "../ministries/componen
 interface PortalTeamConfig {
   teamId: number;
   ministryId: number;
+  /** D29: the ministry provides teachers for Sunday School, so a schedule may follow a class. */
+  sundaySchool?: boolean;
 }
 
 type TabName = "positions" | "volunteers" | "schedules" | "occurrences";
 
 let teamId = 0;
 let ministryId = 0;
+let sundaySchool = false;
 /**
  * The team document — the team row and its positions, in one response. Cached
  * exactly as `ministry.ts` caches its ministry document, and cleared on error so
@@ -153,6 +156,7 @@ function buildComponents(): void {
     positions,
     fetch: () => listTeamSchedules(teamId),
     invalidateOccurrences: () => occurrencesTable.invalidate(),
+    classesAllowed: () => sundaySchool,
   });
 }
 
@@ -221,6 +225,7 @@ function init(): void {
   const config = (window.CRM?.portalTeam ?? { teamId: 0, ministryId: 0 }) as PortalTeamConfig;
   teamId = config.teamId;
   ministryId = config.ministryId;
+  sundaySchool = config.sundaySchool ?? false;
 
   if (teamId === 0) {
     return;

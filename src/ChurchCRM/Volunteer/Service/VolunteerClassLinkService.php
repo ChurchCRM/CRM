@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualificationQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
@@ -38,6 +39,25 @@ final class VolunteerClassLinkService
 
     /** Core reads teachers by this role NAME (SundaySchoolService, ClassAttendance, the class page). */
     public const TEACHER_ROLE_NAME = 'Teacher';
+
+    /**
+     * D29: only a ministry that provides teachers for Sunday School may link a team to a
+     * class, follow a class's meetings or give its events a class.
+     *
+     * @throws VolunteerException 400
+     */
+    public static function assertMinistryTeaches(int $ministryId): void
+    {
+        $ministry = VolunteerMinistryQuery::create()->findPk($ministryId);
+        if ($ministry === null || $ministry->getSundaySchool()) {
+            return;
+        }
+
+        throw VolunteerException::invalid(sprintf(
+            gettext('%s does not provide teachers for Sunday School, so its teams, schedules and events cannot use a class. A volunteer manager can change that under Edit ministry.'),
+            $ministry->getName()
+        ));
+    }
 
     public static function findLinkedTeam(int $groupId): ?VolunteerTeam
     {

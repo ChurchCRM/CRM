@@ -94,7 +94,7 @@ describe("Volunteer v2 — where a schedule's dates come from, and Staff an even
         adminApi("POST", SETTING_URL, { value: "v2" }, 200);
         cleanupFixtures();
 
-        adminApi("POST", `${VOLUNTEER_URL}/ministries`, { name: MINISTRY_NAME, description: "anchored UI fixture" }, 201).then(
+        adminApi("POST", `${VOLUNTEER_URL}/ministries`, { name: MINISTRY_NAME, description: "anchored UI fixture", sundaySchool: true }, 201).then(
             (resp) => {
                 ministryId = resp.body.ministry.id;
             },

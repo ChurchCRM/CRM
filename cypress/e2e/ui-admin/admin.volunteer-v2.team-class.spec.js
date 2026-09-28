@@ -66,7 +66,7 @@ describe("Volunteer v2 — a team linked to a Sunday School class, on screen (D2
     before(() => {
         admin("POST", SETTING_URL, { value: "v2" });
         cleanupFixtures();
-        admin("POST", MINISTRIES_URL, { name: MINISTRY_NAME }, 201).then((resp) => {
+        admin("POST", MINISTRIES_URL, { name: MINISTRY_NAME, sundaySchool: true }, 201).then((resp) => {
             ministryId = resp.body.ministry.id;
         });
         admin("POST", `${GROUPS_URL}/`, { groupName: CLASS_NAME, isSundaySchool: true }).then((resp) => {

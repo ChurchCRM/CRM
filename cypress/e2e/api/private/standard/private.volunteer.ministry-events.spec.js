@@ -200,7 +200,7 @@ before(() => {
     cleanupFixtures();
 
     for (const key of ["A", "B", "C"]) {
-        api(ADMIN_KEY, "POST", `${URL}/ministries`, { name: `${PREFIX} Ministry ${key}`, description: "D24 fixture" }, 201).then(
+        api(ADMIN_KEY, "POST", `${URL}/ministries`, { name: `${PREFIX} Ministry ${key}`, description: "D24 fixture", sundaySchool: true }, 201).then(
             (resp) => {
                 ministry[key] = resp.body.ministry.id;
                 ownCalendar[key] = resp.body.calendarId;

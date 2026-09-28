@@ -80,6 +80,11 @@ export interface SchedulesTableOptions {
   fetch(): Promise<{ schedules: VolunteerSchedule[] }>;
   /** Generating or deleting moves the occurrence list, which the caller caches. */
   invalidateOccurrences(): void;
+  /**
+   * D29: may a schedule follow a class's meetings. Absent means yes; when no, "A class's
+   * meetings" is offered only to a schedule that already follows a class.
+   */
+  classesAllowed?(): boolean;
 }
 
 export interface SchedulesTableHandle {
@@ -106,6 +111,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   let scheduleRequirements: VolunteerRequirementRow[] = [];
   /** The link mode of the open new-schedule dialog was set by its team's class (D23), not by hand. */
   let modeFromTeamClass = false;
+  /** "A class's meetings", kept while it is taken out of the select (D29). */
+  let classModeOption: HTMLOptionElement | null = null;
 
   function render(rows: VolunteerSchedule[]): void {
     const body = byId("volunteerSchedulesTable")?.querySelector("tbody");
@@ -377,6 +384,22 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     return mode.value !== before;
   }
 
+  /** D29: offer "A class's meetings" only to a ministry that may use classes, or to a schedule already on one. */
+  function syncClassMode(schedule?: VolunteerSchedule): void {
+    const mode = byId<HTMLSelectElement>("schedule-form-link-mode");
+    classModeOption ??= mode?.querySelector<HTMLOptionElement>('option[value="class"]') ?? null;
+    if (!mode || !classModeOption) {
+      return;
+    }
+
+    const allowed = (options.classesAllowed?.() ?? true) || schedule?.linkMode === "class";
+    if (!allowed) {
+      classModeOption.remove();
+    } else if (classModeOption.parentElement !== mode) {
+      mode.insertBefore(classModeOption, mode.querySelector('option[value="ministry"]'));
+    }
+  }
+
   /** Show only the fields the chosen link mode actually uses (§2.8's invariants). */
   function syncMode(): void {
     const mode = byId<HTMLSelectElement>("schedule-form-link-mode")?.value ?? "event_type";
@@ -445,6 +468,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
     void Promise.all([loadEventTypes(), loadClasses(), requirements]).then(() => {
       fillSelects(schedule);
+      syncClassMode(schedule);
       renderOffsetFields("schedule-form");
 
       const set = (id: string, value: string): void => {

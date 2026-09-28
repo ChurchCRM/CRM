@@ -2188,6 +2188,7 @@ CREATE TABLE `volunteer_ministry_vmin` (
   `vmin_CreatedBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
   `vmin_HelpWanted`       tinyint(1)            NOT NULL DEFAULT 0,
   `vmin_HelpWantedText`   text                           DEFAULT NULL,
+  `vmin_SundaySchool`     tinyint(1) unsigned   NOT NULL DEFAULT 0,
   PRIMARY KEY (`vmin_ID`),
   UNIQUE KEY `vmin_name_uidx`  (`vmin_Name`),
   KEY `vmin_active_idx`        (`vmin_Active`),

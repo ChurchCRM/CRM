@@ -2,10 +2,12 @@
 
 namespace ChurchCRM\Volunteer\Service;
 
+use ChurchCRM\Exceptions\EventDeleteRefusedException;
 use ChurchCRM\model\ChurchCRM\CalendarEventQuery;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
+use ChurchCRM\model\ChurchCRM\EventAudience;
 use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
 use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventCountsQuery;
@@ -15,7 +17,9 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
@@ -49,6 +53,12 @@ class VolunteerEventService
     public const MAX_EVENT_LIST = VolunteerScheduleService::MAX_OCCURRENCE_LIST;
 
     private const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    /** D28: what happens to a ministry's own events of a class its team stops staffing. */
+    public const CLASS_EVENTS_KEEP = 'keep';
+    public const CLASS_EVENTS_REMOVE = 'remove';
+    public const CLASS_EVENTS_MOVE = 'move';
+    public const CLASS_EVENTS_DELETE = 'delete';
 
     private LoggerInterface $logger;
 
@@ -163,6 +173,7 @@ class VolunteerEventService
         $linkedGroupId = 0;
         $rawGroup = $input['linkedGroupId'] ?? null;
         if (!in_array($rawGroup, [null, '', 0, '0'], true)) {
+            VolunteerClassLinkService::assertMinistryTeaches($ministryId);
             $linkedGroupId = $this->positiveInt($rawGroup) ?? 0;
             if ($linkedGroupId === 0 || GroupQuery::create()->findPk($linkedGroupId) === null) {
                 throw VolunteerException::invalid(gettext('The class does not exist'));
@@ -503,6 +514,8 @@ class VolunteerEventService
         $headcounts = $this->headcountTotals($eventIds);
 
         $events = [];
+        $otherStaffing = $this->otherMinistriesStaffing($ministryId, $eventIds);
+
         foreach ($rows as $event) {
             $eventId = (int) $event->getId();
             $events[] = [
@@ -516,6 +529,7 @@ class VolunteerEventService
                 'calendars' => $calendars[$eventId] ?? [],
                 'linkedGroups' => $groups[$eventId] ?? [],
                 'staffing' => $staffing[$eventId] ?? [],
+                'otherStaffing' => $otherStaffing[$eventId] ?? [],
                 'headcount' => $headcounts[$eventId] ?? ['recorded' => false, 'total' => 0],
             ];
         }
@@ -667,6 +681,333 @@ class VolunteerEventService
         }
 
         return $result;
+    }
+
+    /**
+     * Per event, the OTHER ministries with an occurrence anchored to it and how many of their
+     * volunteers are assigned there (pending or accepted) — what deleting the event would pull
+     * from under them.
+     *
+     * @param int[] $eventIds
+     *
+     * @return array<int, array<int, array{ministryId: int, ministryName: string, assigned: int}>>
+     */
+    public function otherMinistriesStaffing(int $ministryId, array $eventIds): array
+    {
+        if ($eventIds === []) {
+            return [];
+        }
+
+        $occurrences = VolunteerOccurrenceQuery::create()
+            ->filterByEventId($eventIds, Criteria::IN)
+            ->select(['Id', 'EventId', 'ScheduleId'])
+            ->find()
+            ->toArray();
+        if ($occurrences === []) {
+            return [];
+        }
+
+        $ministryOfSchedule = [];
+        foreach (
+            VolunteerScheduleQuery::create()
+                ->filterById(array_unique(array_map('intval', array_column($occurrences, 'ScheduleId'))), Criteria::IN)
+                ->filterByMinistryId($ministryId, Criteria::NOT_EQUAL)
+                ->select(['Id', 'MinistryId'])
+                ->find() as $row
+        ) {
+            $ministryOfSchedule[(int) $row['Id']] = (int) $row['MinistryId'];
+        }
+        $occurrences = array_values(array_filter(
+            $occurrences,
+            static fn (array $row): bool => isset($ministryOfSchedule[(int) $row['ScheduleId']])
+        ));
+        if ($occurrences === []) {
+            return [];
+        }
+
+        $assignedPerOccurrence = array_count_values(array_map('intval', VolunteerAssignmentQuery::create()
+            ->filterByOccurrenceId(array_map('intval', array_column($occurrences, 'Id')), Criteria::IN)
+            ->filterByStatus(VolunteerAssignmentService::LIVE_STATUSES, Criteria::IN)
+            ->select(['OccurrenceId'])
+            ->find()
+            ->toArray()));
+
+        $names = [];
+        foreach (VolunteerMinistryQuery::create()->filterById(array_unique(array_values($ministryOfSchedule)), Criteria::IN)->find() as $ministry) {
+            $names[(int) $ministry->getId()] = (string) $ministry->getName();
+        }
+
+        $byEvent = [];
+        foreach ($occurrences as $row) {
+            $eventId = (int) $row['EventId'];
+            $otherId = $ministryOfSchedule[(int) $row['ScheduleId']];
+            $byEvent[$eventId][$otherId] ??= ['ministryId' => $otherId, 'ministryName' => $names[$otherId] ?? '', 'assigned' => 0];
+            $byEvent[$eventId][$otherId]['assigned'] += $assignedPerOccurrence[(int) $row['Id']] ?? 0;
+        }
+
+        $result = [];
+        foreach ($byEvent as $eventId => $ministries) {
+            usort($ministries, static fn (array $a, array $b): int => strcasecmp($a['ministryName'], $b['ministryName']));
+            $result[$eventId] = $ministries;
+        }
+
+        return $result;
+    }
+
+    // ── A class's events when its team changes (D28) ───────────────────────
+
+    /**
+     * The events this ministry owns whose Linked Group is the class. An event an administrator
+     * created carries another ministry's id or none, so it is never among them.
+     *
+     * @return Event[]
+     */
+    public function findOwnedClassEvents(int $ministryId, int $groupId): array
+    {
+        return iterator_to_array(
+            EventQuery::create()
+                ->filterByMinistryId($ministryId)
+                ->useEventAudienceQuery()
+                    ->filterByGroupId($groupId)
+                ->endUse()
+                ->orderByStart()
+                ->find(),
+            false
+        );
+    }
+
+    /**
+     * What the team dialog asks about: how many of those events there are, how many are still
+     * to come, and which other ministries staff them.
+     *
+     * @return array{total: int, upcoming: int, otherStaffing: array<int, array{ministryId: int, ministryName: string, assigned: int, eventCount: int}>}
+     */
+    public function summarizeOwnedClassEvents(int $ministryId, int $groupId): array
+    {
+        $events = $this->findOwnedClassEvents($ministryId, $groupId);
+        $today = DateTimeUtils::getTodayDate() . ' 00:00:00';
+
+        $others = [];
+        foreach ($this->otherMinistriesStaffing($ministryId, $this->eventIds($events)) as $ministries) {
+            foreach ($ministries as $other) {
+                $id = $other['ministryId'];
+                $others[$id] ??= ['ministryId' => $id, 'ministryName' => $other['ministryName'], 'assigned' => 0, 'eventCount' => 0];
+                $others[$id]['assigned'] += $other['assigned'];
+                $others[$id]['eventCount']++;
+            }
+        }
+        $others = array_values($others);
+        usort($others,static fn (array $a, array $b): int => strcasecmp($a['ministryName'], $b['ministryName']));
+
+        return [
+            'total' => count($events),
+            'upcoming' => count(array_filter($events, static fn (Event $event): bool => $event->getStart('Y-m-d H:i:s') >= $today)),
+            'otherStaffing' => $others,
+        ];
+    }
+
+    /**
+     * @param string[] $allowed the choices this caller offers
+     *
+     * @throws VolunteerException 400
+     */
+    public static function readClassEventsChoice(mixed $raw, array $allowed): string
+    {
+        if ($raw === null || $raw === '') {
+            return self::CLASS_EVENTS_KEEP;
+        }
+        if (!is_string($raw) || !in_array($raw, $allowed, true)) {
+            throw VolunteerException::invalid(sprintf(
+                gettext('classEvents must be one of: %s'),
+                implode(', ', $allowed)
+            ));
+        }
+
+        return $raw;
+    }
+
+    /**
+     * D28: the team → class link and an event's Linked Group are different facts, so when a
+     * team stops staffing a class its ministry's own events of that class change only as the
+     * coordinator chose — kept, the class removed from them, moved to the team's new class,
+     * or deleted through core. Runs in the caller's transaction.
+     *
+     * @return int how many events were changed or deleted
+     *
+     * @throws VolunteerException 400 for `move` with no new class, 403 for an event the actor
+     *                            may not write, 409 when a delete is refused
+     */
+    public function applyClassEventsChoice(int $ministryId, int $groupId, ?int $newGroupId, string $choice, User $actor): int
+    {
+        if ($choice === self::CLASS_EVENTS_KEEP) {
+            return 0;
+        }
+        if ($choice === self::CLASS_EVENTS_MOVE && $newGroupId === null) {
+            throw VolunteerException::invalid(gettext('The events can only be moved to a class the team is linked to'));
+        }
+
+        $events = $this->findOwnedClassEvents($ministryId, $groupId);
+        if ($events === []) {
+            return 0;
+        }
+        $this->assertMayWriteEvents($events, $actor);
+
+        if ($choice === self::CLASS_EVENTS_DELETE) {
+            $this->deleteEvents($ministryId, $events, $actor);
+        } else {
+            foreach ($events as $event) {
+                $eventId = (int) $event->getId();
+                EventAudienceQuery::create()->filterByEventId($eventId)->filterByGroupId($groupId)->delete();
+                if ($choice === self::CLASS_EVENTS_MOVE
+                    && !EventAudienceQuery::create()->filterByEventId($eventId)->filterByGroupId($newGroupId)->exists()) {
+                    $audience = new EventAudience();
+                    $audience->setEventId($eventId);
+                    $audience->setGroupId($newGroupId);
+                    $audience->save();
+                }
+            }
+        }
+
+        $this->logger->info('Volunteer class events ' . $choice, [
+            'ministryId' => $ministryId,
+            'groupId' => $groupId,
+            'newGroupId' => $newGroupId,
+            'eventIds' => $this->eventIds($events),
+            'actorPersonId' => $actor->getId(),
+        ]);
+
+        return count($events);
+    }
+
+    /**
+     * The Calendar tab's Delete events (D28): only events this ministry owns, through core's
+     * delete path, all or none.
+     *
+     * @param int[] $eventIds
+     *
+     * @throws VolunteerException 400 for no ids, 404 for an unknown event, 403 for an event
+     *                            this ministry does not own or the actor may not write, 409
+     *                            when another ministry has volunteers there or core refuses
+     */
+    public function deleteOwnedEvents(VolunteerMinistry $ministry, array $eventIds, User $actor): int
+    {
+        $ministryId = (int) $ministry->getId();
+        $eventIds = array_values(array_unique($eventIds));
+        if ($eventIds === []) {
+            throw VolunteerException::invalid(gettext('Choose the events to delete'));
+        }
+
+        $events = iterator_to_array(EventQuery::create()->filterById($eventIds, Criteria::IN)->orderByStart()->find(), false);
+        if (count($events) !== count($eventIds)) {
+            throw VolunteerException::notFound(gettext('One of the events does not exist'));
+        }
+        foreach ($events as $event) {
+            if ((int) $event->getMinistryId() !== $ministryId) {
+                throw VolunteerException::forbidden(sprintf(
+                    gettext('%1$s is not an event of %2$s'),
+                    $event->getTitle(),
+                    $ministry->getName()
+                ));
+            }
+        }
+        $this->assertMayWriteEvents($events, $actor);
+
+        $con = Propel::getWriteConnection(EventTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+
+        try {
+            $this->deleteEvents($ministryId, $events, $actor);
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            throw $e;
+        }
+
+        $this->logger->info('Volunteer ministry events deleted', [
+            'ministryId' => $ministryId,
+            'eventIds' => $this->eventIds($events),
+            'actorPersonId' => $actor->getId(),
+        ]);
+
+        return count($events);
+    }
+
+    /**
+     * Refused while another ministry has volunteers on any of the events — they would be left
+     * serving at an event that no longer exists — unless the actor manages the calendar
+     * outright (Add Events). Core's own refusals come back as a 409 carrying its reason; the
+     * caller's transaction then leaves every event in place.
+     *
+     * @param Event[] $events
+     *
+     * @throws VolunteerException 409
+     */
+    private function deleteEvents(int $ministryId, array $events, User $actor): void
+    {
+        if (!$actor->canManageEvents()) {
+            $staffed = [];
+            foreach ($this->otherMinistriesStaffing($ministryId, $this->eventIds($events)) as $ministries) {
+                foreach ($ministries as $other) {
+                    if ($other['assigned'] > 0) {
+                        $staffed[$other['ministryId']] = $other['ministryName'];
+                    }
+                }
+            }
+            if ($staffed !== []) {
+                natcasesort($staffed);
+
+                throw VolunteerException::conflict(sprintf(
+                    gettext('Volunteers of %s are assigned to these events, so they cannot be deleted here. Ask that ministry to remove its staffing, or ask someone who manages the calendar.'),
+                    implode(', ', $staffed)
+                ))->withExtra(['ministries' => array_map(
+                    static fn (int $id, string $name): array => ['ministryId' => $id, 'ministryName' => $name],
+                    array_keys($staffed),
+                    array_values($staffed)
+                )]);
+            }
+        }
+
+        foreach ($events as $event) {
+            try {
+                $this->events->deleteEvent($event);
+            } catch (EventDeleteRefusedException $e) {
+                throw VolunteerException::conflict(sprintf(
+                    '%1$s (%2$s): %3$s',
+                    $event->getTitle(),
+                    $event->getStart('Y-m-d'),
+                    $e->getMessage()
+                ))->withExtra(['eventId' => (int) $event->getId()]);
+            }
+        }
+    }
+
+    /**
+     * Every event is asked again whether this actor may write it (§4.6), and a self-service
+     * login never writes church events whatever scope it holds (§4.7).
+     *
+     * @param Event[] $events
+     *
+     * @throws VolunteerException 403
+     */
+    private function assertMayWriteEvents(array $events, User $actor): void
+    {
+        foreach ($events as $event) {
+            $ministryId = $event->getMinistryId() === null ? null : (int) $event->getMinistryId();
+            if ($actor->isEditSelfExclusive() || !$this->authz->canWriteEvent($actor, $ministryId)) {
+                throw VolunteerException::forbidden(sprintf(gettext('Not authorized to change the event %s'), $event->getTitle()));
+            }
+        }
+    }
+
+    /**
+     * @param Event[] $events
+     *
+     * @return int[]
+     */
+    private function eventIds(array $events): array
+    {
+        return array_map(static fn (Event $event): int => (int) $event->getId(), $events);
     }
 
     // ── Headcount (D26) ────────────────────────────────────────────────────

@@ -51,6 +51,7 @@ import {
   errorMessage,
   getMinistry,
   getQualificationMatrix,
+  getTeamClassEvents,
   grantScope,
   type LinkableClass,
   listLinkableClasses,
@@ -60,6 +61,7 @@ import {
   notifySuccess,
   removeVolunteerFromMinistry,
   revokeScope,
+  type TeamClassEvents,
   type TeamClassLink,
   updateMinistry,
   updateTeam,
@@ -138,6 +140,8 @@ let editingTeamId = 0;
 let teamClassOnOpen = 0;
 /** The classes the open team dialog offers, with their teacher counts. */
 let linkableClasses: LinkableClass[] = [];
+/** D28: the ministry's own events of the class the open team dialog started with. */
+let teamClassEvents: TeamClassEvents | null = null;
 
 // ─── The shared components, given this page's ministry-wide context ──────────
 //
@@ -148,6 +152,8 @@ let linkableClasses: LinkableClass[] = [];
 
 const teams = (): VolunteerTeam[] => detail?.teams ?? [];
 const positions = (): VolunteerPosition[] => detail?.positions ?? [];
+/** D29: may this ministry's teams, schedules and events use a Sunday School class. */
+const sundaySchool = (): boolean => detail?.ministry.sundaySchool ?? false;
 const ensureDetail = (): Promise<void> => (detail === null ? load() : Promise.resolve());
 
 let positionsTable: PositionsTableHandle;
@@ -202,10 +208,12 @@ function buildComponents(): void {
     positions,
     fetch: () => listSchedules(ministryId),
     invalidateOccurrences: () => occurrencesTable.invalidate(),
+    classesAllowed: sundaySchool,
   });
 
   ministryEvents = createMinistryEventsTab({
     ministryId: () => ministryId,
+    sundaySchool,
     teams,
     positions,
     ensureContext: ensureDetail,
@@ -492,9 +500,81 @@ function openTeamModal(team?: VolunteerTeam): void {
   }
 
   teamClassOnOpen = team?.classGroupId ?? 0;
+  show(byId("team-form-class-row"), sundaySchool() || teamClassOnOpen !== 0);
   loadTeamClasses(team);
+  loadTeamClassEvents(team);
 
   modal("teamModal")?.show();
+}
+
+/** D28: how many events this ministry made for the team's class, fetched once per open. */
+function loadTeamClassEvents(team?: VolunteerTeam): void {
+  teamClassEvents = null;
+  const keep = document.querySelector<HTMLInputElement>('input[name="team-form-class-events"][value="keep"]');
+  if (keep) {
+    keep.checked = true;
+  }
+  renderTeamClassEvents();
+  if (!team?.classGroupId) {
+    return;
+  }
+
+  const teamId = team.id;
+  getTeamClassEvents(teamId)
+    .then((result) => {
+      if (editingTeamId === teamId) {
+        teamClassEvents = result;
+        renderTeamClassEvents();
+      }
+    })
+    .catch((error: unknown) => {
+      notifyError(errorMessage(error, i18next.t("Could not count the class's events")));
+    });
+}
+
+/**
+ * "{Ministry} created N events for {old class} (M upcoming)." with Keep / Remove / Move, shown
+ * once the class is changed away from one those events use. Move needs a new class.
+ */
+function renderTeamClassEvents(): void {
+  const select = byId<HTMLSelectElement>("team-form-class");
+  const chosen = Number(select?.value ?? teamClassOnOpen);
+  const counted = teamClassEvents;
+  const visible = counted !== null && counted.total > 0 && teamClassOnOpen !== 0 && chosen !== teamClassOnOpen;
+  show(byId("team-form-class-events"), visible);
+  if (!visible || counted === null) {
+    return;
+  }
+
+  const oldClass = counted.classGroupName ?? "";
+  const newClass = select?.selectedOptions[0]?.text ?? "";
+  const text = (id: string, value: string): void => {
+    const el = byId(id);
+    if (el) {
+      el.textContent = value;
+    }
+  };
+  text(
+    "team-form-class-events-text",
+    tText("{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming).", {
+      ministry: counted.ministryName,
+      total: counted.total,
+      className: oldClass,
+      upcoming: counted.upcoming,
+    }),
+  );
+  text("team-form-class-events-keep", tText("Keep them on {{className}}", { className: oldClass }));
+  text("team-form-class-events-remove", i18next.t("Remove the class from them"));
+  text("team-form-class-events-move", tText("Move them to {{className}}", { className: newClass }));
+
+  show(byId("team-form-class-events-move-row"), chosen !== 0);
+  const move = document.querySelector<HTMLInputElement>('input[name="team-form-class-events"][value="move"]');
+  if (chosen === 0 && move?.checked) {
+    const keep = document.querySelector<HTMLInputElement>('input[name="team-form-class-events"][value="keep"]');
+    if (keep) {
+      keep.checked = true;
+    }
+  }
 }
 
 /**
@@ -518,6 +598,9 @@ function loadTeamClasses(team?: VolunteerTeam): void {
   };
 
   fill(team?.classGroupId ? [{ id: team.classGroupId, name: team.classGroupName ?? "", teacherCount: 0 }] : []);
+  if (!sundaySchool()) {
+    return;
+  }
   listLinkableClasses(ministryId, team?.id ?? 0)
     .then((result) => fill(result.classes))
     .catch((error: unknown) => {
@@ -560,25 +643,30 @@ function renderTeamImport(): void {
 /** The position a team's imported teachers get when the coordinator picks "New position". */
 const newTeacherPositionName = (): string => tText("Teacher");
 
-/** The D23 keys to send with a team save — none when the class did not change. */
+/** The D23 keys to send with a team save — none when the class did not change — and D28's choice. */
 function teamClassLink(): TeamClassLink {
   const chosen = Number(byId<HTMLSelectElement>("team-form-class")?.value ?? teamClassOnOpen);
   if (chosen === teamClassOnOpen) {
     return {};
   }
+
+  const asked = !byId("team-form-class-events")?.classList.contains("d-none");
+  const checked = document.querySelector<HTMLInputElement>('input[name="team-form-class-events"]:checked')?.value;
+  const classEvents: Pick<TeamClassLink, "classEvents"> =
+    asked && (checked === "remove" || checked === "move") ? { classEvents: checked } : {};
   if (chosen === 0) {
-    return { classGroupId: null };
+    return { classGroupId: null, ...classEvents };
   }
 
   const importing = !byId("team-form-import")?.classList.contains("d-none");
   const position = byId<HTMLSelectElement>("team-form-import-position")?.value ?? "";
   if (!importing) {
-    return { classGroupId: chosen };
+    return { classGroupId: chosen, ...classEvents };
   }
 
   return position === "new"
-    ? { classGroupId: chosen, importPositionName: newTeacherPositionName() }
-    : { classGroupId: chosen, importPositionId: Number(position) };
+    ? { classGroupId: chosen, importPositionName: newTeacherPositionName(), ...classEvents }
+    : { classGroupId: chosen, importPositionId: Number(position), ...classEvents };
 }
 
 /**
@@ -692,6 +780,66 @@ function wireHelpWanted(): void {
       })
       .catch((error: unknown) => {
         showModalError("help-wanted", errorMessage(error, i18next.t("Help wanted could not be saved")), notifyError);
+      });
+  });
+}
+
+// ─── Edit ministry (D29) ──────────────────────────────────────────────────────
+
+/**
+ * Name, description and "Can this ministry provide teachers for Sunday School?". The switch is
+ * a volunteer manager's: the view renders it disabled for everyone else and this sends it only
+ * for a manager. Saving reloads the page, because the header, the sidebar and every dialog that
+ * offers a class read what was saved.
+ */
+function wireMinistryEdit(): void {
+  const button = byId<HTMLButtonElement>("ministry-edit-btn");
+  const name = byId<HTMLInputElement>("ministry-edit-name");
+  const description = byId<HTMLInputElement>("ministry-edit-description");
+  const teaches = byId<HTMLInputElement>("ministry-edit-sunday-school");
+  const save = byId<HTMLButtonElement>("ministry-edit-save");
+  if (!button || !name || !description || !teaches || !save) {
+    return;
+  }
+
+  wireModalFadeGuard("ministryEditModal");
+  byId("ministryEditModal")?.addEventListener("shown.bs.modal", () => {
+    name.focus();
+  });
+
+  button.addEventListener("click", () => {
+    void ensureDetail().then(() => {
+      if (detail === null) {
+        notifyError(i18next.t("Could not load this ministry"));
+
+        return;
+      }
+      show(byId("ministry-edit-form-error"), false);
+      name.value = detail.ministry.name;
+      description.value = detail.ministry.description ?? "";
+      teaches.checked = detail.ministry.sundaySchool;
+      modal("ministryEditModal")?.show();
+    });
+  });
+
+  save.addEventListener("click", () => {
+    if (name.value.trim() === "") {
+      showModalError("ministry-edit", i18next.t("Give the ministry a name"), notifyError);
+
+      return;
+    }
+    save.disabled = true;
+    updateMinistry(ministryId, {
+      name: name.value.trim(),
+      description: description.value.trim(),
+      ...(isManager ? { sundaySchool: teaches.checked } : {}),
+    })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((error: unknown) => {
+        save.disabled = false;
+        showModalError("ministry-edit", errorMessage(error, i18next.t("The ministry could not be saved")), notifyError);
       });
   });
 }
@@ -860,9 +1008,13 @@ function wire(): void {
 
   byId("team-add-btn")?.addEventListener("click", () => openTeamModal());
   byId("team-form-save")?.addEventListener("click", saveTeam);
-  byId("team-form-class")?.addEventListener("change", renderTeamImport);
+  byId("team-form-class")?.addEventListener("change", () => {
+    renderTeamImport();
+    renderTeamClassEvents();
+  });
   wireTeamLeaderField();
   wireHelpWanted();
+  wireMinistryEdit();
   wireMinistryLifecycle();
 
   // Delegated: the rows are re-rendered on every load, so per-row listeners
@@ -881,27 +1033,71 @@ function wire(): void {
       return;
     }
 
-    const teamId = Number(target.dataset.teamId);
-    confirmDelete(
-      i18next.t("Delete team"),
-      i18next.t(
-        "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone.",
-        { name: target.dataset.teamName ?? "" },
-      ),
-      () => {
-        deleteTeam(teamId)
-          .then(() => {
-            notifySuccess(i18next.t("Team deleted"));
-            matrixGrid.invalidate();
-
-            return load(true);
-          })
-          .catch((error: unknown) => {
-            notifyError(errorMessage(error, i18next.t("The team could not be deleted")));
-          });
-      },
-    );
+    confirmTeamDelete(Number(target.dataset.teamId), target.dataset.teamName ?? "");
   });
+}
+
+/**
+ * The Delete team confirmation. For a team linked to a class whose events this ministry made,
+ * it also asks what happens to those events (D28): keep them, remove the class from them, or
+ * delete them through core — which the API refuses while another ministry has volunteers there.
+ */
+function confirmTeamDelete(teamId: number, name: string): void {
+  const warning = i18next.t(
+    "Delete {{name}} and everything in it? Its positions, qualifications, staffing needs, schedules, occurrences and assignments — past service records included — and its team-leader grants are removed. To keep the history, deactivate the team instead. This cannot be undone.",
+    { name },
+  );
+  const ask = (counted: TeamClassEvents | null): void => {
+    const question = counted === null || counted.total === 0 ? "" : classEventsQuestion(counted);
+    confirmDelete(i18next.t("Delete team"), `<p>${warning}</p>${question}`, () => {
+      const choice = document.querySelector<HTMLInputElement>('input[name="team-delete-class-events"]:checked')?.value;
+      deleteTeam(teamId, choice === "remove" || choice === "delete" ? choice : "keep")
+        .then(() => {
+          notifySuccess(i18next.t("Team deleted"));
+          matrixGrid.invalidate();
+          ministryEvents.invalidate();
+
+          return load(true);
+        })
+        .catch((error: unknown) => {
+          notifyError(errorMessage(error, i18next.t("The team could not be deleted")));
+        });
+    });
+  };
+
+  if (!findTeam(teamId)?.classGroupId) {
+    ask(null);
+
+    return;
+  }
+  getTeamClassEvents(teamId)
+    .then(ask)
+    .catch(() => ask(null));
+}
+
+/** The radio group the Delete team confirmation carries (bootbox renders it as HTML). */
+function classEventsQuestion(counted: TeamClassEvents): string {
+  const className = counted.classGroupName ?? "";
+  const option = (value: string, label: string, checked = false): string =>
+    `<label class="form-check"><input class="form-check-input" type="radio" name="team-delete-class-events" value="${value}"${
+      checked ? " checked" : ""
+    }><span class="form-check-label">${label}</span></label>`;
+  const staffed = counted.otherStaffing.filter((other) => other.assigned > 0).map((other) => other.ministryName);
+
+  return `<fieldset id="team-delete-class-events">
+      <legend class="form-label mb-1">${i18next.t(
+        "{{ministry}} created {{total}} events for {{className}} ({{upcoming}} upcoming).",
+        { ministry: counted.ministryName, total: counted.total, className, upcoming: counted.upcoming },
+      )}</legend>
+      ${option("keep", i18next.t("Keep them on {{className}}", { className }), true)}
+      ${option("remove", i18next.t("Remove the class from them"))}
+      ${option("delete", i18next.t("Delete those events"))}
+      ${
+        staffed.length > 0
+          ? `<div class="form-text">${i18next.t("{{names}} also staff some of them.", { names: staffed.join(", ") })}</div>`
+          : ""
+      }
+    </fieldset>`;
 }
 
 function init(): void {
