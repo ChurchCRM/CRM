@@ -246,15 +246,21 @@ jobs:
         docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml'
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP ${{ matrix.php-version }})
-      run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
+      uses: ./.github/actions/run-cypress-tests
+      with:
+        config-file: ${{ matrix.test-type.config }}
+        spec: ${{ matrix.test-type.spec }}
+        test-name: ${{ matrix.test-type.name }}
+        php-version: ${{ matrix.php-version }}
+        deployment: root
+        shard-total: ${{ matrix.shard-total || '' }}
+        shard-index: ${{ matrix.split-index || '' }}
       env:
         # Test-database drift guard (#9769): the ci-root database is published on
         # 3306 (docker-compose.parallel.yaml). Required, so a guard that cannot
         # reach the database fails the job instead of silently switching off.
         ROW_GUARD_DB_PORT: "3306"
         ROW_GUARD_REQUIRED: "1"
-        SPLIT: ${{ matrix.shard-total || '' }}
-        SPLIT_INDEX: ${{ matrix.split-index }}
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -263,32 +269,6 @@ jobs:
         docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}.log 2>&1 || true
         docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}.log 2>&1 || true
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: actions/upload-artifact@v7
-      with:
-        name: cypress-artifacts-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: dorny/test-reporter@v3
-      if: always()
-      with:
-        name: 'PHP ${{ matrix.php-version }}: Root (${{ matrix.test-type.name }})'
-        path: cypress/reports/junit-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
