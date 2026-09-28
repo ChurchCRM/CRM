@@ -440,6 +440,13 @@ describe("Volunteer v2 D28 — the Calendar tab's Delete events", () => {
         existing([plain[0], kiosked]).should("deep.eq", [plain[0], kiosked].sort((a, b) => a - b));
     });
 
+    it("leaves core's own delete refusing the same event with the same reason", () => {
+        admin("DELETE", `/api/events/${kiosked}`, null, 409).then((resp) => {
+            expect(resp.body.message).to.eq("Cannot delete event: event is currently assigned to a kiosk.");
+        });
+        existing([kiosked]).should("deep.eq", [kiosked]);
+    });
+
     it("deletes the ministry's own events through core", () => {
         coordinator("DELETE", `${URL}/ministries/${ministryId}/events`, { eventIds: [plain[0], plain[1]] }).then((resp) => {
             expect(resp.body).to.deep.eq({ deleted: 2 });

@@ -52,6 +52,8 @@ const EXPECTED_COLUMNS = {
         // D19's advert, off by default.
         "vmin_HelpWanted",
         "vmin_HelpWantedText",
+        // D29: may the ministry provide teachers for Sunday School; off by default.
+        "vmin_SundaySchool",
     ],
     volunteer_team_vtem: [
         "vtem_ID",
