@@ -37,9 +37,14 @@ describe("Email history on the person view", () => {
     });
 
     it("tells the viewer when an email's content is not stored", () => {
-        // The full page lists every row, so the seeded reset-link row (id 7) is always there
-        cy.visit("/people/view/3/emails");
-        cy.get(".email-history-open[data-email-log-id='7']").click();
+        // Person 3 has the seeded reset-link row plus whatever other specs sent; pick the
+        // newest row without a stored body from the first page (API and page share the order).
+        cy.request("/api/email/log?personId=3&limit=25").then((resp) => {
+            const row = resp.body.rows.find((r) => !r.hasBody);
+            expect(row, "an account email without a stored body on page 1").to.exist;
+            cy.visit("/people/view/3/emails");
+            cy.get(`.email-history-open[data-email-log-id='${row.id}']`).click();
+        });
         cy.get("#email-history-modal").should("be.visible");
         cy.get("#email-history-modal-nobody").should("be.visible");
         cy.get("#email-history-modal-body").should("not.be.visible");
