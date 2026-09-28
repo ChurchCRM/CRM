@@ -12,7 +12,23 @@ function jitter(baseMs: number, spreadMs: number): number {
   return baseMs + Math.random() * spreadMs;
 }
 
+// Pacing only matters on camera: screenshot-only runs (no video) skip it.
+function isRecording(page: Page): boolean {
+  return page.video() !== null;
+}
+
+async function pace(page: Page, ms: number): Promise<void> {
+  if (isRecording(page)) {
+    await page.waitForTimeout(ms);
+  }
+}
+
 export async function humanPause(page: Page, ms = 600): Promise<void> {
+  await pace(page, ms);
+}
+
+/** Always waits — lets charts, maps and fades finish before a capture. */
+export async function settle(page: Page, ms = 600): Promise<void> {
   await page.waitForTimeout(ms);
 }
 
@@ -20,7 +36,7 @@ export async function humanPause(page: Page, ms = 600): Promise<void> {
 export async function humanClick(locator: Locator): Promise<void> {
   await locator.scrollIntoViewIfNeeded();
   await locator.hover();
-  await locator.page().waitForTimeout(jitter(350, 250));
+  await pace(locator.page(), jitter(350, 250));
   await locator.click();
 }
 
@@ -33,7 +49,7 @@ export async function humanClick(locator: Locator): Promise<void> {
 export async function humanType(locator: Locator, text: string): Promise<void> {
   await locator.click();
   await locator.clear();
-  await locator.pressSequentially(text, { delay: jitter(90, 70) });
+  await locator.pressSequentially(text, { delay: isRecording(locator.page()) ? jitter(90, 70) : 0 });
 }
 
 /**
@@ -49,7 +65,7 @@ export async function humanSelect(
   locator: Locator,
   value: string | { label: string } | { index: number }
 ): Promise<void> {
-  await locator.page().waitForTimeout(jitter(350, 150));
+  await pace(locator.page(), jitter(350, 150));
   await locator.selectOption(value);
-  await locator.page().waitForTimeout(jitter(350, 150));
+  await pace(locator.page(), jitter(350, 150));
 }

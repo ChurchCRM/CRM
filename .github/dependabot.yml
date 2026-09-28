@@ -21,7 +21,24 @@ updates:
       - dependency-name: "quill"
         versions: ["2.0.3"]
     groups:
-      # Group all minor/patch updates together
+      # UI-critical libraries get their own PR each: a bad patch bump in one of
+      # these regresses visible behavior (tables, calendars, page chrome), so
+      # each needs its own build/lint/CI verification rather than riding along
+      # in the catch-all group below. Groups are matched in order, so these
+      # must be declared before npm-minor-patch to take packages out of it.
+      tabler:
+        patterns:
+          - "@tabler/*"
+      datatables:
+        patterns:
+          - "datatables.net*"
+      fullcalendar:
+        patterns:
+          - "fullcalendar"
+          - "@fullcalendar/*"
+          - "@full-ui/*"
+          - "temporal-polyfill"
+      # Group all remaining minor/patch updates together
       npm-minor-patch:
         patterns:
           - "*"

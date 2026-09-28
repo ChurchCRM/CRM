@@ -26,7 +26,7 @@ class FundContributorsService
      * Get per-family pledge summary for a specific donation fund and fiscal year.
      *
      * @param int $fundId Donation fund ID
-     * @param int $fyid   Fiscal year ID
+     * @param int $fyid   Fiscal year ID, or 0/negative for All Time (no FY filter)
      * @return array{
      *   fund: array{id: int, name: string}|null,
      *   contributors: array,
@@ -59,25 +59,29 @@ class FundContributorsService
 
         $fundName = $fund->getName();
 
-        // -- Pledges for this fund / fiscal year ------------------------------------------
-        $pledges = PledgeQuery::create()
-            ->filterByFyId($fyid)
+        // -- Pledges for this fund / fiscal year (fyid <= 0 = All Time) -------------------
+        $pledgesQuery = PledgeQuery::create()
             ->filterByFundId($fundId)
             ->filterByPledgeOrPayment('Pledge')
             ->filterByAmount(0, Criteria::GREATER_THAN)
             ->joinWith('Pledge.Family')
-            ->orderByFamId()
-            ->find();
+            ->orderByFamId();
+        if ($fyid > 0) {
+            $pledgesQuery->filterByFyId($fyid);
+        }
+        $pledges = $pledgesQuery->find();
 
-        // -- Payments for this fund / fiscal year -----------------------------------------
-        $payments = PledgeQuery::create()
-            ->filterByFyId($fyid)
+        // -- Payments for this fund / fiscal year (fyid <= 0 = All Time) ------------------
+        $paymentsQuery = PledgeQuery::create()
             ->filterByFundId($fundId)
             ->filterByPledgeOrPayment('Payment')
             ->filterByAmount(0, Criteria::GREATER_THAN)
             ->joinWith('Pledge.Family')
-            ->orderByFamId()
-            ->find();
+            ->orderByFamId();
+        if ($fyid > 0) {
+            $paymentsQuery->filterByFyId($fyid);
+        }
+        $payments = $paymentsQuery->find();
 
         // Index payments by family ID
         $paymentsByFamily  = [];  // famId => float

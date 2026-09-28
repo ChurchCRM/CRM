@@ -11,6 +11,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\RequestParameterValidationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -73,17 +74,24 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
      *     summary="Get all deposits (Finance role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Response(response=200, description="JSON array of all deposits"),
+     *     @OA\Parameter(name="fyid", in="query", required=false, description="Fiscal year ID to filter by deposit date; omit for all time", @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="JSON array of deposits"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required")
      * )
      */
     $group->get(
         '',
-        fn (Request $request, Response $response, array $args): Response => SlimUtils::renderStringJSON(
-            $response,
-            DepositQuery::create()->find()->toJSON()
-        )
+        function (Request $request, Response $response, array $args): Response {
+            $queryParams = $request->getQueryParams();
+            $fyid = isset($queryParams['fyid']) ? (int) $queryParams['fyid'] : null;
+            $query = DepositQuery::create();
+            if ($fyid !== null && $fyid > 0) {
+                $fyDates = FiscalYearUtils::getFiscalYearDatesById($fyid);
+                $query->filterByDate(['min' => $fyDates['startDate'], 'max' => $fyDates['endDate']]);
+            }
+            return SlimUtils::renderStringJSON($response, $query->find()->toJSON());
+        }
     );
 
     /**

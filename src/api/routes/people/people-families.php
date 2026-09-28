@@ -307,7 +307,10 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
         ->filterByWeddingdate(null, Criteria::ISNOTNULL)
-        ->where(implode(' OR ', $conditions))
+        // Parentheses are required: Propel ANDs a raw where() onto the clause verbatim,
+        // so an unparenthesised top-level OR would escape the two filters above and pull
+        // in deactivated families.
+        ->where('(' . implode(' OR ', $conditions) . ')')
         ->orderByWeddingdate('DESC')
         ->find();
 

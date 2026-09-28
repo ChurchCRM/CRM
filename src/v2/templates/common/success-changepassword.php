@@ -17,7 +17,7 @@ if ($isForced) {
     <div class="card border border-success">
         <div class="card-header text-center">
             <a href="<?= SystemURLs::getRootPath() ?>" class="h1">
-                <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" style="max-width:280px; height:auto;" />
+                <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-logo-ink-blue.svg" alt="ChurchCRM" style="max-width:280px; height:auto;" />
             </a>
         </div>
         <div class="card-body text-center">

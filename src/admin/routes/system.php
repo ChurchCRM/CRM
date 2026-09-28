@@ -492,6 +492,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             ]),
             'churchInfo'         => $churchInfo,
             'countries'          => Countries::getNames(),
+            'socialNetworks'     => ChurchMetaData::getChurchSocialNetworkFields(),
             'sGlobalMessage'     => $sGlobalMessage,
             'sGlobalMessageClass' => $sGlobalMessageClass,
         ];
@@ -518,6 +519,13 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $rawLatInput = trim((string) ($body['iChurchLatitude'] ?? ''));
         $rawLngInput = trim((string) ($body['iChurchLongitude'] ?? ''));
 
+        // Social media links — every network is optional, so we only keep the
+        // posted values here and validate the non-empty ones further down.
+        $socialNetworks = ChurchMetaData::getChurchSocialNetworkFields();
+        foreach ($socialNetworks as $index => $network) {
+            $socialNetworks[$index]['url'] = trim($body[$network['config']] ?? '');
+        }
+
         // Validation: Required fields
         $validationError = '';
         if (empty($churchName)) {
@@ -536,6 +544,21 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             $validationError = gettext('Phone number is required.');
         } elseif (empty($churchEmail)) {
             $validationError = gettext('Email address is required.');
+        }
+
+        // Social link validation — blank is fine ("not set"); anything else
+        // must be an absolute https:// URL, since these render as outbound
+        // links on pages members see.
+        if ($validationError === '') {
+            foreach ($socialNetworks as $network) {
+                if (!ChurchMetaData::isValidSocialUrl($network['url'])) {
+                    $validationError = sprintf(
+                        gettext('%s must be a full https:// web address, for example https://example.org/yourchurch.'),
+                        $network['label']
+                    );
+                    break;
+                }
+            }
         }
 
         // Coordinate validation — only if the user provided one or both fields.
@@ -594,6 +617,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 ]),
                 'churchInfo'         => $churchInfo,
                 'countries'          => Countries::getNames(),
+                'socialNetworks'     => $socialNetworks,
                 'sGlobalMessage'     => $validationError,
                 'sGlobalMessageClass' => 'danger',
                 'validationError'    => $validationError,
@@ -648,6 +672,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('iChurchLatitude', $latitude);
         SystemConfig::setValue('iChurchLongitude', $longitude);
         SystemConfig::setValue('sChurchWebSite', $body['sChurchWebSite'] ?? '');
+        foreach ($socialNetworks as $network) {
+            SystemConfig::setValue($network['config'], $network['url']);
+        }
         SystemConfig::setValue('sDefaultCity', $body['sDefaultCity'] ?? '');
         SystemConfig::setValue('sDefaultState', $body['sDefaultState'] ?? '');
         SystemConfig::setValue('sDefaultZip', $body['sDefaultZip'] ?? '');
@@ -678,6 +705,10 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sChurchPhone'   => 'text',
         'sChurchEmail'   => 'text',
         'sChurchWebSite'  => 'text',
+        'sChurchX'         => 'text',
+        'sChurchYouTube'   => 'text',
+        'sChurchFacebook'  => 'text',
+        'sChurchInstagram' => 'text',
         'sDefaultCity'    => 'text',
         'sDefaultState'   => 'text',
         'sDefaultZip'     => 'text',

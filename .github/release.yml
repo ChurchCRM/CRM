@@ -4,8 +4,10 @@ changelog:
   exclude:
     labels:
       - ignore-for-release
+    # Locale syncs, marketing-visual refreshes, OpenAPI regeneration and
+    # changelog syncs. The release notes cover them with one standard line.
     authors:
-      - octocat
+      - github-actions[bot]
   categories:
     - title: 🛠 Breaking Changes 
       labels:

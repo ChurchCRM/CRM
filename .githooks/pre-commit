@@ -114,4 +114,17 @@ if [ -n "$SQL_FILES" ]; then
     echo "✓ pre-commit: SQL syntax validation passed."
 fi
 
+echo "→ pre-commit: checking staged upgrade scripts for MariaDB-only column syntax…"
+
+if ! node scripts/validate-mysql-upgrade-syntax.js --staged; then
+    echo ""
+    echo "✘ pre-commit: a staged src/mysql/upgrade/*.sql file uses a MariaDB-only"
+    echo "  column-level IF [NOT] EXISTS clause, which real MySQL rejects."
+    echo "  Fix the error above and re-stage, or bypass in an emergency with:"
+    echo "  git commit --no-verify (justify in PR)."
+    exit 1
+fi
+
+echo "✓ pre-commit: MySQL upgrade script syntax check passed."
+
 exit 0
