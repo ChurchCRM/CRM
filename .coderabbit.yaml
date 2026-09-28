@@ -1,0 +1,6 @@
+# CodeRabbit repository configuration
+# Review PRs targeting any branch, including stacked PRs whose base is not master.
+reviews:
+  auto_review:
+    base_branches:
+      - ".*"
