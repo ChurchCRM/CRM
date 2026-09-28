@@ -240,6 +240,16 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 
 ### CI/CD Testing (GitHub Actions)
 
+**CI boundary rule:** push/PR CI is for validation that needs a clean-room,
+integrated, matrix, packaging, or GitHub environment. A deterministic check
+that can fail locally must be wired into the commit/pre-push checkpoint before
+it is added to CI. Do not add late CI feedback for something we can reject
+before the push.
+
+Exhaustive suites that are too expensive for every push (for example the full
+locale matrix) belong in `.github/workflows/build-test-nightly.yml`, not in
+the normal build/package dependency graph.
+
 - Docker profiles: `test`/`ci` in `docker/docker-compose.yaml`; `dev` is a separate file with no profiles (`docker/docker-compose.dev.yaml`); CI is actually split into `ci-root`/`ci-subdir`/`ci-new-system` profiles in `docker/docker-compose.parallel.yaml`
 - CI uses the exact `docker:ci:*` scripts defined in `package.json`
 - Artifacts uploaded: `cypress-artifacts-{run_id}` contains logs, screenshots, videos

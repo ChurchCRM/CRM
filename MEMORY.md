@@ -85,6 +85,21 @@ Agent skills: `.agents/skills/churchcrm/hosted-remote-config.md`, `plugin-regist
 
 ---
 
+## Release notes and publishing <!-- learned: 2026-09-27 -->
+
+Lessons from 7.7.1. The how-to is in `.agents/skills/churchcrm/release-notes.md`; these are the traps.
+
+- **Never edit a draft release without `--tag`.** A draft has no git tag yet. `gh release edit <tag> --notes-file …` on the draft left it on GitHub's placeholder `untagged-<hash>`, and publishing shipped that as the version. Installs read the version from `tag_name` (`ChurchCRMRelease.php`), so every update check saw `untagged-…`. Always pass `--tag <version>`, then check `gh release view <version> --json tagName` before publishing.
+- **Recover in this order:** create the real tag on the release commit, move the release onto it with `gh release edit untagged-… --tag <version>`, verify, and only then delete the stray tag. Deleting the tag first turns the release back into a draft. Then re-run `release-bookkeeping.yml` with `tag=<version>`.
+- **Merge "Start <next> release" before publishing.** Bookkeeping reads the next version from master's `package.json`. If master still carries the released version, the milestone job now stops.
+- **Apply notes from the approved branch,** with `git show origin/<branch>:changelog/<tag>.md`, not the local checkout.
+- **Weight notes by reach, not PR size.** A brand change seen on every screen is a feature. A capability nobody uses yet (7.7.1's social links) gets one line.
+- **Work in other repos is FYI.** Thank people for it only when it directly helps users of the release (artwork shipped in the app, a docs guide for a shipped feature). Add one "Documentation Caught Up" line when the docs were trued up.
+- **Screenshots and videos are refreshed after publishing, never before,** so they always match the downloadable version.
+- **The Actions token can't read `ChurchCRM/marketing`** (private) or write docs milestones. Set `DOCS_RELEASE_TOKEN`, and re-run the context script locally for marketing contributors.
+
+---
+
 ## Related Skills
 
 - [Plugin System](https://github.com/ChurchCRM/CRM/blob/master/.agents/skills/churchcrm/plugin-system.md) — How plugins define features
