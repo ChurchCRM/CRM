@@ -38,7 +38,7 @@ runs:
         report_file="cypress/reports/junit-php${PHP_VERSION}-${DEPLOYMENT}-${TEST_NAME}-[suiteName]-[hash].xml"
         spec_args=()
         if [[ -z "$SPLIT" ]]; then
-          spec_args+=(--spec "$SPEC")
+          spec_args+=(--spec "$TEST_SPEC")
         fi
         npx cypress run \
           --config-file "$CONFIG_FILE" \
@@ -48,7 +48,8 @@ runs:
           --reporter-options "mochaFile=$report_file"
       env:
         CONFIG_FILE: ${{ inputs.config-file }}
-        SPEC: ${{ inputs.spec }}
+        # SPEC is consumed by cypress-split relative to the config working directory.
+        TEST_SPEC: ${{ inputs.spec }}
         PHP_VERSION: ${{ inputs.php-version }}
         DEPLOYMENT: ${{ inputs.deployment }}
         TEST_NAME: ${{ inputs.test-name }}
