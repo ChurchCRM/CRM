@@ -694,7 +694,11 @@ class VolunteerMinistryService
     }
 
     /**
-     * @param array{name?: string, description?: string|null, active?: bool, classGroupId?: int|null, importPositionId?: int|null, importPositionName?: string|null} $fields
+     * `classEvents` (D28) says what happens to the ministry's own events of the class the
+     * team leaves when `classGroupId` changes: `keep` (the default), `remove` the class from
+     * them, or `move` them to the new class — in the same transaction.
+     *
+     * @param array{name?: string, description?: string|null, active?: bool, classGroupId?: int|null, importPositionId?: int|null, importPositionName?: string|null, classEvents?: string|null} $fields
      *
      * @throws VolunteerException
      */
@@ -704,6 +708,12 @@ class VolunteerMinistryService
         // is a ministry-structure change (§4.6 "Create / edit team"), and so is
         // linking it to a Sunday School class (D23).
         $this->assertCanManageMinistry($actor, (int) $team->getMinistryId());
+
+        $classEvents = VolunteerEventService::readClassEventsChoice(
+            $fields['classEvents'] ?? null,
+            [VolunteerEventService::CLASS_EVENTS_KEEP, VolunteerEventService::CLASS_EVENTS_REMOVE, VolunteerEventService::CLASS_EVENTS_MOVE]
+        );
+        $oldClassId = $team->getClassGroupId() === null ? null : (int) $team->getClassGroupId();
 
         if (array_key_exists('name', $fields)) {
             $name = $this->requireName((string) $fields['name'], gettext('A team name is required'));
@@ -725,6 +735,16 @@ class VolunteerMinistryService
         try {
             $team->save();
             $imported = $this->applyClassLink($team, $fields, $actor);
+            $newClassId = $team->getClassGroupId() === null ? null : (int) $team->getClassGroupId();
+            if ($oldClassId !== null && $newClassId !== $oldClassId) {
+                (new VolunteerEventService($this->authz))->applyClassEventsChoice(
+                    (int) $team->getMinistryId(),
+                    $oldClassId,
+                    $newClassId,
+                    $classEvents,
+                    $actor
+                );
+            }
             $connection->commit();
         } catch (\Throwable $e) {
             $connection->rollBack();
@@ -841,12 +861,18 @@ class VolunteerMinistryService
      *
      * A linked Sunday School class keeps its membership, teachers included, exactly
      * as unlinking would leave it (D23): the class is core's, and it goes on meeting.
+     * The ministry's own events of that class are kept, have the class removed, or are
+     * deleted through core as `$classEvents` says (D28), in the same transaction.
      *
      * @throws VolunteerException
      */
-    public function deleteTeam(VolunteerTeam $team, User $actor): void
+    public function deleteTeam(VolunteerTeam $team, User $actor, string $classEvents = VolunteerEventService::CLASS_EVENTS_KEEP): void
     {
         $this->assertCanManageMinistry($actor, (int) $team->getMinistryId());
+        $classEvents = VolunteerEventService::readClassEventsChoice(
+            $classEvents,
+            [VolunteerEventService::CLASS_EVENTS_KEEP, VolunteerEventService::CLASS_EVENTS_REMOVE, VolunteerEventService::CLASS_EVENTS_DELETE]
+        );
 
         $teamId = (int) $team->getId();
 
@@ -871,6 +897,13 @@ class VolunteerMinistryService
         $connection->beginTransaction();
 
         try {
+            $classEventCount = $team->getClassGroupId() === null ? 0 : (new VolunteerEventService($this->authz))->applyClassEventsChoice(
+                (int) $team->getMinistryId(),
+                (int) $team->getClassGroupId(),
+                null,
+                $classEvents,
+                $actor
+            );
             $removedAssignments = $this->deleteAssignments($positionIds, $occurrenceIds, $connection);
             $removedScopes = VolunteerScopeQuery::create()
                 ->filterByScopeType(VolunteerScope::TYPE_TEAM)
@@ -887,6 +920,8 @@ class VolunteerMinistryService
                 'occurrences' => count($occurrenceIds),
                 'removedAssignmentRows' => $removedAssignments,
                 'removedScopeRows' => $removedScopes,
+                'classEvents' => $classEvents,
+                'classEventCount' => $classEventCount,
                 'actor' => $actor->getId(),
             ]);
         } catch (\Throwable $e) {

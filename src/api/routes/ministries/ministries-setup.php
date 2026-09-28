@@ -18,6 +18,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
+use ChurchCRM\Volunteer\Service\VolunteerEventService;
 use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
 use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
 use ChurchCRM\Volunteer\Middleware\VolunteerMinistryMiddleware;
@@ -1092,11 +1093,12 @@ function getVolunteerTeam(Request $request, Response $response): Response
  *         @OA\Property(property="active", type="boolean"),
  *         @OA\Property(property="classGroupId", type="integer", nullable=true, description="D23: link to this Sunday School class, or null to unlink (the class's membership is left as it is). Absent = unchanged"),
  *         @OA\Property(property="importPositionId", type="integer", nullable=true, description="D23: when linking a class that has teachers, the position of this team they are qualified for"),
- *         @OA\Property(property="importPositionName", type="string", nullable=true, description="D23: instead of importPositionId, create a position of this name in the team and qualify the teachers for it")
+ *         @OA\Property(property="importPositionName", type="string", nullable=true, description="D23: instead of importPositionId, create a position of this name in the team and qualify the teachers for it"),
+ *         @OA\Property(property="classEvents", type="string", enum={"keep","remove","move"}, default="keep", description="D28: when classGroupId changes, what happens to the events this ministry owns whose Linked Group is the old class - kept, the class removed from them, or moved to the new class (move needs a new class). GET /ministries/teams/{teamId}/class-events counts them")
  *     )),
- *     @OA\Response(response=400, description="The name was sent empty; the class is not a Sunday School class or has no Teacher role; or the class has teachers and no position of this team to import them into was given"),
+ *     @OA\Response(response=400, description="The name was sent empty; the ministry does not provide teachers for Sunday School (D29); the class is not a Sunday School class or has no Teacher role; the class has teachers and no position of this team to import them into was given; or classEvents is unknown, or move without a new class"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this team (a team leader may not edit it), or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Not authorized for this team (a team leader may not edit it) or for one of the class's events, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such team"),
  *     @OA\Response(response=409, description="A team with that name already exists in this ministry, or the class is linked to another team"),
  *     @OA\Response(response=200, description="Updated")
@@ -1111,7 +1113,7 @@ function updateVolunteerTeam(Request $request, Response $response): Response
         $team = (new VolunteerMinistryService())->updateTeam(
             $team,
             array_merge(
-                volunteerSetupFields($request, ['name', 'description', 'active'], ['active']),
+                volunteerSetupFields($request, ['name', 'description', 'active', 'classEvents'], ['active']),
                 volunteerSetupClassLinkFields($request)
             ),
             volunteerSetupActor()
@@ -1128,14 +1130,18 @@ function updateVolunteerTeam(Request $request, Response $response): Response
  *     path="/ministries/teams/{teamId}",
  *     operationId="deleteVolunteerTeam",
  *     summary="Delete a team and everything under it",
- *     description="Removes the team's positions with their qualifications and staffing requirements, its schedules and occurrences, every assignment on them (service history included) and its team-leader grants, in one transaction. Deactivate the team instead to keep its history. Returns 409 when this is the ministry's ONLY team - a ministry always has at least one, so the answer is to rename it.",
+ *     description="Removes the team's positions with their qualifications and staffing requirements, its schedules and occurrences, every assignment on them (service history included) and its team-leader grants, in one transaction. Deactivate the team instead to keep its history. Returns 409 when this is the ministry's ONLY team - a ministry always has at least one, so the answer is to rename it. For a team linked to a class, classEvents (D28) says what happens to the events this ministry owns whose Linked Group is that class: kept, the class removed from them, or deleted through core's event delete in the same transaction.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="teamId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=false, @OA\JsonContent(
+ *         @OA\Property(property="classEvents", type="string", enum={"keep","remove","delete"}, default="keep")
+ *     )),
+ *     @OA\Response(response=400, description="classEvents is unknown"),
  *     @OA\Response(response=401, description="Not authenticated"),
- *     @OA\Response(response=403, description="Not authorized for this team, or V2 is not enabled"),
+ *     @OA\Response(response=403, description="Not authorized for this team or for one of the class's events, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such team"),
- *     @OA\Response(response=409, description="This is the ministry's only team"),
+ *     @OA\Response(response=409, description="This is the ministry's only team; or classEvents delete while another ministry has volunteers assigned on one of the events (unless the caller holds Add Events), or core refuses to delete one (people checked in, a kiosk) - nothing is deleted"),
  *     @OA\Response(response=200, description="Deleted")
  * )
  */
@@ -1144,8 +1150,17 @@ function deleteVolunteerTeam(Request $request, Response $response): Response
     /** @var VolunteerTeam $team */
     $team = $request->getAttribute('volunteerTeam');
 
+    $body = (array) $request->getParsedBody();
+
     try {
-        (new VolunteerMinistryService())->deleteTeam($team, volunteerSetupActor());
+        (new VolunteerMinistryService())->deleteTeam(
+            $team,
+            volunteerSetupActor(),
+            VolunteerEventService::readClassEventsChoice(
+                $body['classEvents'] ?? $request->getQueryParams()['classEvents'] ?? null,
+                [VolunteerEventService::CLASS_EVENTS_KEEP, VolunteerEventService::CLASS_EVENTS_REMOVE, VolunteerEventService::CLASS_EVENTS_DELETE]
+            )
+        );
     } catch (\Throwable $e) {
         return volunteerSetupError($request, $response, $e);
     }
