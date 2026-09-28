@@ -33,6 +33,8 @@ Thank you for donating time (and often tokens). We try not to nitpick. We will s
 
 Missing screenshots alone is not a hard block. If you already captured tablet or mobile, add them. Missing comments are not a hard block. Wrong comments can be deleted in the same PR.
 
+Do not wait for a review comment about CI. Failed CI is never merged.
+
 ## Not merge blockers (Comment + follow-up)
 
 - Demo-import data in `src/admin/demo/config.json` (not Cypress seed if tests would break)
@@ -40,4 +42,4 @@ Missing screenshots alone is not a hard block. If you already captured tablet or
 - Blog or marketing (maintainer decides; skip for bug/security-only)
 - A later member-facing consumer for storage-only admin work
 
-Reviews will list what is still open as checkboxes on the PR.
+Reviews will list what is still open as checkboxes on the PR. CI is not one of those boxes.

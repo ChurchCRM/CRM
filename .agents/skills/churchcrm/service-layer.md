@@ -36,10 +36,10 @@ Located in `src/ChurchCRM/Service/`:
 
 **ChurchCRM has no dependency-injection container.** `src/composer.json` declares no
 container library, `MvcAppFactory::create()`
-(`src/ChurchCRM/Slim/MvcAppFactory.php:35-62`) never calls `AppFactory::setContainer()`, and
+(`src/ChurchCRM/Slim/MvcAppFactory.php:39`) never calls `AppFactory::setContainer()`, and
 `$app->getContainer()` is therefore `null` in every MVC module. The single surviving
 `$container->get(...)` in the tree is inside `SlimUtils::registerCustomErrorHandlers()`
-(`src/ChurchCRM/Slim/SlimUtils.php:80-105`), a method marked `@deprecated Slim 3 only`.
+(`src/ChurchCRM/Slim/SlimUtils.php:180`), a method marked `@deprecated Slim 3 only`.
 
 Instantiate the service where you need it:
 
@@ -65,7 +65,7 @@ $service = $app->getContainer()->get('FinancialService');
 Services are cheap value-less objects — construct one per request where you use it rather
 than threading a shared instance through the call stack. Other real call sites:
 `new PersonService()` / `new SystemService()` (`src/Include/PageInit.php:13-14`),
-`new UserService()` (`src/admin/views/users.php:14`, `src/admin/routes/system.php:944`),
+`new UserService()` (`src/admin/views/users.php:14`, `src/admin/routes/system.php:975,1091`),
 `(new PersonService())->buildDoNotEmailSet(...)` (`src/ChurchCRM/dto/Cart.php:269`).
 
 Some services expose **static** methods only and are never instantiated —

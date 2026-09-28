@@ -14,7 +14,11 @@ describe("User Editor - ORM Migration Tests", () => {
     });
 
     function createCustomUser() {
-        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
+        // Defensive pre-delete: the user may legitimately not exist yet, so 404 is allowed.
+        // The trailing slash is required — the route is declared as $group->delete('/') inside
+        // $app->group('/api/user/{userId}'), so the slash-less form 404s and the call no-ops
+        // (issue #9782).
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}/`, null, [200, 404]);
         // The API call's response Set-Cookie will overwrite the browser's session cookie
         // and contaminate the Cypress 'admin-session' cache when cy.session() implicitly
         // saves the current browser state. Clear all saved sessions then force a fresh
@@ -32,12 +36,16 @@ describe("User Editor - ORM Migration Tests", () => {
         // but the response Set-Cookie still updates the browser jar, contaminating
         // the 'admin-session' Cypress cache. Clear all sessions after cleanup so
         // the next test's beforeEach re-establishes a clean admin session.
-        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
+        //
+        // The user was created by createCustomUser(), so this must return 200.
+        // Accepting 404 would hide a cleanup that never ran (issue #9782).
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}/`, null, 200);
         cy.then(() => Cypress.session.clearAllSavedSessions());
     }
 
     function createCustomUser2() {
-        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}`, null, [200, 204, 404]);
+        // Defensive pre-delete — 404 allowed, see createCustomUser().
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}/`, null, [200, 404]);
         cy.then(() => Cypress.session.clearAllSavedSessions());
         cy.setupAdminSession();
         cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
@@ -47,7 +55,8 @@ describe("User Editor - ORM Migration Tests", () => {
     }
 
     function deleteUser2() {
-        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}`, null, [200, 204, 404]);
+        // Must succeed — the user was created by createCustomUser2().
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}/`, null, 200);
         cy.then(() => Cypress.session.clearAllSavedSessions());
     }
 
@@ -118,7 +127,8 @@ describe("User Editor - ORM Migration Tests", () => {
         //   - new user WITHOUT Manage Events → AddEvent unchecked after load (explicit FALSE row)
         //   - edit to enable Manage Events → AddEvent checked after reload (TRUE row)
         //   - switching to self-service mode clears the toggle (JS exclusivity)
-        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId3}`, null, [200, 204, 404]);
+        // Defensive pre-delete — 404 allowed, see createCustomUser().
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId3}/`, null, [200, 404]);
         cy.then(() => Cypress.session.clearAllSavedSessions());
         cy.setupAdminSession();
 
@@ -155,8 +165,8 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.contains('.form-selectgroup-item', 'Self').click();
         cy.get("#AddEvent").should("not.be.checked");
 
-        // Cleanup
-        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId3}`, null, [200, 204, 404]);
+        // Cleanup — the user was created above, so this must return 200.
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId3}/`, null, 200);
         cy.then(() => Cypress.session.clearAllSavedSessions());
     });
 });

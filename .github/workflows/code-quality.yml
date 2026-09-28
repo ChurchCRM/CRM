@@ -30,7 +30,7 @@ jobs:
     timeout-minutes: 15
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -49,6 +49,8 @@ jobs:
         run: npx biome format .
       - name: Lint check (biome)
         run: npx biome check webpack/
+      - name: Locale script unit tests
+        run: npm run locale:test
       - name: Seed schema charset check
         run: npm run validate:seed-charsets
       - name: MySQL upgrade script syntax check (no MariaDB-only column IF EXISTS)

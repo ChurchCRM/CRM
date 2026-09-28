@@ -1,13 +1,13 @@
 name: "Release: bookkeeping"
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 # Fires automatically when a release is published.
 # Can also be triggered manually to re-sync or back-fill any version.
 #
 # Deterministic bookkeeping only — no model call.
+#
+# Do not put `inputs.*` on workflow-level `env`. GitHub evaluates that on
+# every push of this file; `inputs` is not defined for the `release` trigger,
+# so parse fails and Actions records a 0-second failed `push` run with no jobs.
 
 on:
   release:
@@ -24,17 +24,31 @@ on:
         type: boolean
         default: false
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.release.tag_name || github.event.inputs.tag || github.run_id }}
+  cancel-in-progress: false
+
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     env:
       GH_TOKEN:     ${{ github.token }}
       GH_REPO:      ${{ github.repository }}
       GITHUB_TOKEN: ${{ github.token }}
-      TAG: ${{ github.event.release.tag_name || inputs.tag }}
+      TAG:          ${{ github.event.release.tag_name || github.event.inputs.tag }}
     steps:
+      - name: Validate release tag
+        run: |
+          # Editing a draft can leave it on GitHub's placeholder tag
+          # (untagged-<hash>); publishing then ships that as the version and
+          # every install's update check reads it. Stop before recording it.
+          if ! [[ "$TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Release tag '$TAG' is not a version. Fix it with: gh release edit '$TAG' -R $GH_REPO --tag <version>, delete the stray tag, then run this workflow manually with tag=<version>."
+            exit 1
+          fi
+
       - uses: actions/checkout@v7
         with:
           ref: master
@@ -45,7 +59,7 @@ jobs:
 
       - name: Sync changelog file and CHANGELOG.md table
         env:
-          FORCE: ${{ inputs.force == true && '--force' || '' }}
+          FORCE: ${{ github.event.inputs.force == 'true' && '--force' || '' }}
         run: node scripts/release-changelog.js "$TAG" $FORCE
 
       - name: Commit and push
@@ -61,17 +75,18 @@ jobs:
           fi
 
   manage-milestones:
-    if: github.event_name == 'release' && !github.event.release.prerelease
+    if: (github.event_name == 'release' && !github.event.release.prerelease) || github.event_name == 'workflow_dispatch'
     needs: sync
-    name: Close release milestone
+    name: Advance CRM release milestone
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       issues: write
       pull-requests: write
     env:
-      GH_TOKEN: ${{ github.token }}
-      GH_REPO: ${{ github.repository }}
+      GH_TOKEN:     ${{ github.token }}
+      GH_REPO:      ${{ github.repository }}
+      CURRENT_TAG:  ${{ github.event.release.tag_name || github.event.inputs.tag }}
     steps:
       - name: Determine next version from master package.json
         id: next_version
@@ -81,65 +96,105 @@ jobs:
           echo "next_version=$next_version" >> "$GITHUB_OUTPUT"
           echo "Next version from master: $next_version"
 
-      - name: Close current milestone and move pending items
+      - name: Close current CRM milestone and move pending items
         env:
-          CURRENT_TAG: ${{ env.TAG }}
           NEXT_VERSION: ${{ steps.next_version.outputs.next_version }}
         run: |
           set -euo pipefail
 
-          echo "=== Release Milestone Management ==="
-          echo "Current release: $CURRENT_TAG"
-          echo "Next version: $NEXT_VERSION"
-
-          current_milestone=$(gh api repos/$GH_REPO/milestones \
-            --jq ".[] | select(.title == \"$CURRENT_TAG\") | .number" | head -n 1)
-
-          if [ -z "$current_milestone" ]; then
-            echo "No milestone found for tag $CURRENT_TAG — skipping"
-            exit 0
+          if [ -z "$CURRENT_TAG" ]; then
+            echo "::error::No release tag. Re-run this workflow with tag=<version>."
+            exit 1
           fi
 
-          echo "Found current milestone #$current_milestone for $CURRENT_TAG"
+          if [ "$NEXT_VERSION" = "$CURRENT_TAG" ]; then
+            echo "::error::master package.json is still $CURRENT_TAG. Merge the 'Start <next> release' PR, then run this workflow manually with tag=$CURRENT_TAG."
+            exit 1
+          fi
 
-          next_milestone=$(gh api repos/$GH_REPO/milestones \
+          current_milestone=$(gh api "repos/$GH_REPO/milestones?state=all&per_page=100" \
+            --jq ".[] | select(.title == \"$CURRENT_TAG\") | .number" | head -n 1)
+
+          next_milestone=$(gh api "repos/$GH_REPO/milestones?state=all&per_page=100" \
             --jq ".[] | select(.title == \"$NEXT_VERSION\") | .number" | head -n 1)
 
           if [ -z "$next_milestone" ]; then
-            echo "Creating new milestone for $NEXT_VERSION..."
-            next_milestone=$(gh api repos/$GH_REPO/milestones \
-              -f title="$NEXT_VERSION" \
-              --jq ".number")
-            echo "Created milestone #$next_milestone"
-          else
-            echo "Found existing milestone #$next_milestone for $NEXT_VERSION"
+            next_milestone=$(gh api "repos/$GH_REPO/milestones" -f title="$NEXT_VERSION" --jq '.number')
+            echo "Created CRM milestone #$next_milestone ($NEXT_VERSION)"
           fi
 
-          echo "Moving open issues and PRs from #$current_milestone to #$next_milestone..."
+          if [ -z "$current_milestone" ]; then
+            echo "No CRM milestone found for $CURRENT_TAG; next milestone is still synchronized."
+            exit 0
+          fi
 
-          issue_count=0
-          while IFS= read -r issue_num; do
-            [ -z "$issue_num" ] && continue
-            gh issue edit "$issue_num" -m "$next_milestone" 2>/dev/null || true
-            issue_count=$((issue_count + 1))
-            echo "  Moved issue #$issue_num"
-          done < <(gh api repos/$GH_REPO/issues \
-            --jq ".[] | select(.milestone.number == $current_milestone and .state == \"open\" and .pull_request == null) | .number")
+          # CRM backlog items not shipped in this release roll forward to the next release.
+          gh api --paginate "repos/$GH_REPO/issues?state=open&milestone=$current_milestone&per_page=100" \
+            --jq '.[].number' | while read -r number; do
+              [ -z "$number" ] && continue
+              gh api -X PATCH "repos/$GH_REPO/issues/$number" -f milestone="$next_milestone" --silent
+              echo "Moved CRM #$number to $NEXT_VERSION"
+            done
 
-          pr_count=0
-          while IFS= read -r pr_num; do
-            [ -z "$pr_num" ] && continue
-            gh pr edit "$pr_num" -m "$next_milestone" 2>/dev/null || true
-            pr_count=$((pr_count + 1))
-            echo "  Moved PR #$pr_num"
-          done < <(gh api repos/$GH_REPO/issues \
-            --jq ".[] | select(.milestone.number == $current_milestone and .state == \"open\" and .pull_request != null) | .number")
+          gh api -X PATCH "repos/$GH_REPO/milestones/$current_milestone" -f state=closed --silent
+          echo "Closed CRM milestone $CURRENT_TAG"
 
-          echo "Closing milestone #$current_milestone ($CURRENT_TAG)..."
-          gh api repos/$GH_REPO/milestones/$current_milestone \
-            -f state="closed" \
-            --silent
+  sync-docs-milestones:
+    if: (github.event_name == 'release' && !github.event.release.prerelease) || github.event_name == 'workflow_dispatch'
+    needs: sync
+    name: Synchronize docs milestones
+    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    env:
+      DOCS_REPO:    ChurchCRM/docs.churchcrm.io
+      CURRENT_TAG:  ${{ github.event.release.tag_name || github.event.inputs.tag }}
+    steps:
+      - name: Determine next version from CRM master
+        id: next_version
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          pkg_b64=$(gh api "repos/$GH_REPO/contents/package.json?ref=master" --jq '.content')
+          next_version=$(echo "$pkg_b64" | base64 -d | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).version))")
+          echo "next_version=$next_version" >> "$GITHUB_OUTPUT"
 
-          echo "Release milestone management complete"
-          echo "  Moved $issue_count issues and $pr_count PRs to $NEXT_VERSION"
-          echo "  Closed milestone #$current_milestone"
+      - name: Synchronize released and next docs milestones
+        env:
+          # Cross-repository milestone writes require a fine-grained PAT or GitHub App token
+          # with Issues:write access to ChurchCRM/docs.churchcrm.io.
+          GH_TOKEN: ${{ secrets.DOCS_RELEASE_TOKEN }}
+          NEXT_VERSION: ${{ steps.next_version.outputs.next_version }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${GH_TOKEN:-}" ]; then
+            echo "::warning::DOCS_RELEASE_TOKEN is not set; skipping docs milestone sync. See #10097."
+            exit 0
+          fi
+
+          ensure_milestone() {
+            local version="$1"
+            local number
+            number=$(gh api "repos/$DOCS_REPO/milestones?state=all&per_page=100" \
+              --jq ".[] | select(.title == \"$version\") | .number" | head -n 1)
+            if [ -z "$number" ]; then
+              number=$(gh api "repos/$DOCS_REPO/milestones" -f title="$version" --jq '.number')
+              echo "Created docs milestone #$number ($version)"
+            else
+              echo "Docs milestone $version already exists (#$number)"
+            fi
+            echo "$number"
+          }
+
+          released_number=$(ensure_milestone "$CURRENT_TAG" | tail -n 1)
+          next_number=$(ensure_milestone "$NEXT_VERSION" | tail -n 1)
+
+          # Mark the released docs milestone as released, but DO NOT move its open docs PRs.
+          # They document that exact release and should remain associated with it until merged/closed.
+          gh api -X PATCH "repos/$DOCS_REPO/milestones/$released_number" -f state=open --silent
+          gh api -X PATCH "repos/$DOCS_REPO/milestones/$next_number" -f state=open --silent
+
+          echo "Docs milestones synchronized: released=$CURRENT_TAG, next=$NEXT_VERSION"

@@ -143,7 +143,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <?php else: ?>
                         <?= sprintf(gettext('Background jobs (birthday emails and every plugin scheduled task) last ran on %s.'), InputUtils::escapeHTML($timerJobsLastRun)) ?>
                     <?php endif; ?>
-                    <?= sprintf(ngettext('They are expected at least once every %d hour.', 'They are expected at least once every %d hours.', (int) $timerJobsStaleHours), (int) $timerJobsStaleHours) ?>
+                    <?= sprintf(gettext('Expected interval between runs (hours): %d.'), (int) $timerJobsStaleHours) ?>
                 </p>
                 <p class="mb-2">
                     <?= gettext('Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as') ?>:
