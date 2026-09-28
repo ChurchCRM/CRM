@@ -78,6 +78,20 @@ export interface TeamClassLink {
   classGroupId?: number | null;
   importPositionId?: number | null;
   importPositionName?: string | null;
+  /** D28: what happens to the ministry's own events of the class the team leaves. */
+  classEvents?: "keep" | "remove" | "move";
+}
+
+/** D28: the events a team's ministry owns for the team's class, which the team dialog asks about. */
+export interface TeamClassEvents {
+  teamId: number;
+  ministryId: number;
+  ministryName: string;
+  classGroupId: number | null;
+  classGroupName: string | null;
+  total: number;
+  upcoming: number;
+  otherStaffing: Array<{ ministryId: number; ministryName: string; assigned: number; eventCount: number }>;
 }
 
 /**
@@ -313,13 +327,27 @@ export function updateTeam(
   return request(`/teams/${teamId}`, { method: "POST", body: JSON.stringify(fields) });
 }
 
-/** D23: classes a team of this ministry may link — `teamId` keeps that team's own class in the list. */
-export function listLinkableClasses(ministryId: number, teamId = 0): Promise<{ classes: LinkableClass[] }> {
+/**
+ * D23: classes a team of this ministry may link — `teamId` keeps that team's own class in the list.
+ * Empty while the ministry does not provide teachers for Sunday School (D29).
+ */
+export function listLinkableClasses(
+  ministryId: number,
+  teamId = 0,
+): Promise<{ sundaySchool: boolean; classes: LinkableClass[] }> {
   return request(`/ministries/${ministryId}/linkable-classes${teamId > 0 ? `?teamId=${teamId}` : ""}`);
 }
 
-export function deleteTeam(teamId: number): Promise<{ success: boolean }> {
-  return request(`/teams/${teamId}`, { method: "DELETE" });
+/** D28: `classEvents` says what happens to the ministry's own events of the team's class. */
+export function deleteTeam(
+  teamId: number,
+  classEvents: "keep" | "remove" | "delete" = "keep",
+): Promise<{ success: boolean }> {
+  return request(`/teams/${teamId}`, { method: "DELETE", body: JSON.stringify({ classEvents }) });
+}
+
+export function getTeamClassEvents(teamId: number): Promise<TeamClassEvents> {
+  return request(`/teams/${teamId}/class-events`);
 }
 
 /**
@@ -1379,6 +1407,8 @@ export interface VolunteerMinistryEvent {
   calendars: Array<{ id: number; name: string }>;
   linkedGroups: Array<{ id: number; name: string }>;
   staffing: VolunteerMinistryEventStaffing[];
+  /** D28: other ministries staffing the event, and how many of their volunteers are assigned. */
+  otherStaffing: Array<{ ministryId: number; ministryName: string; assigned: number }>;
   headcount: { recorded: boolean; total: number };
 }
 
@@ -1422,6 +1452,11 @@ export function createMinistryEvents(
   skipped?: number;
 }> {
   return request(`/ministries/${ministryId}/events`, { method: "POST", body: JSON.stringify(payload) });
+}
+
+/** D28: the Calendar tab's Delete events — owned events only, all or none. */
+export function deleteMinistryEvents(ministryId: number, eventIds: number[]): Promise<{ deleted: number }> {
+  return request(`/ministries/${ministryId}/events`, { method: "DELETE", body: JSON.stringify({ eventIds }) });
 }
 
 /** "Fill by default with" for a schedule that does not exist yet: the position's team's list. */

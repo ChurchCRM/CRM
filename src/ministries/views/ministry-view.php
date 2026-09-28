@@ -589,6 +589,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <span class="form-check-label"><?= gettext('Show past events') ?></span>
         </label>
         <div class="d-flex flex-wrap gap-2">
+          <button type="button" class="btn btn-outline-danger btn-sm" id="ministry-events-delete-btn" disabled>
+            <i class="fa-solid fa-trash me-1" aria-hidden="true"></i><?= gettext('Delete events') ?>
+          </button>
           <button type="button" class="btn btn-primary btn-sm" id="ministry-event-add-btn">
             <i class="fa-solid fa-plus me-1" aria-hidden="true"></i><?= gettext('New event') ?>
           </button>
@@ -623,6 +626,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <table class="table table-hover table-vcenter" id="volunteerMinistryEventsTable">
           <thead>
             <tr>
+              <th class="w-1 no-export">
+                <input type="checkbox" class="form-check-input" id="ministry-events-select-all" aria-label="<?= InputUtils::escapeAttribute(gettext('Select all')) ?>" disabled>
+              </th>
               <th><?= gettext('Date and time') ?></th>
               <th><?= gettext('Event') ?></th>
               <th><?= gettext('Calendars') ?></th>
@@ -777,6 +783,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <select class="form-select" id="team-form-import-position"></select>
           <div class="form-text" id="team-form-import-count"></div>
         </div>
+        <!--
+          D28: the old class's events this ministry created, when the class changes. The
+          team → class link and an event's Linked Group are different facts, so nothing
+          happens to them unless the coordinator says so here. Filled by ministry.ts.
+        -->
+        <fieldset class="mb-3 d-none" id="team-form-class-events">
+          <legend class="form-label mb-1" id="team-form-class-events-text"></legend>
+          <label class="form-check">
+            <input class="form-check-input" type="radio" name="team-form-class-events" value="keep" checked>
+            <span class="form-check-label" id="team-form-class-events-keep"></span>
+          </label>
+          <label class="form-check">
+            <input class="form-check-input" type="radio" name="team-form-class-events" value="remove">
+            <span class="form-check-label" id="team-form-class-events-remove"></span>
+          </label>
+          <label class="form-check" id="team-form-class-events-move-row">
+            <input class="form-check-input" type="radio" name="team-form-class-events" value="move">
+            <span class="form-check-label" id="team-form-class-events-move"></span>
+          </label>
+        </fieldset>
         <label class="form-check form-switch">
           <input class="form-check-input" type="checkbox" id="team-form-active" checked>
           <span class="form-check-label"><?= gettext('Active') ?></span>

@@ -1,12 +1,14 @@
 /**
  * The ministry page's Calendar tab (D24, design §5.4): the events the ministry owns, with
- * each one's staffing per team and — for past events — its headcount total (D26), and the
- * one dialog behind **New event** and **New recurring event**.
+ * each one's staffing per team and — for past events — its headcount total (D26), the
+ * one dialog behind **New event** and **New recurring event**, and **Delete events** for
+ * the ticked rows (D28).
  *
  * The events are core's. The dialog posts to `POST /ministries/{id}/events`, which creates
  * them through the calendar's own code with the ministry's id and, when "Staff these
- * events" is on, the schedule that staffs them in the same transaction. Editing and
- * deleting an event stay in the core event editor, which the row menu links to.
+ * events" is on, the schedule that staffs them in the same transaction. Editing one event
+ * stays in the core event editor, which the row menu links to; Delete events goes through
+ * core's delete path too, on the server.
  *
  * The staffing section reuses what the Schedules and Generate dialogs already are: the
  * staffing-needs editor, the two Volunteer times rows and the "Fill by default with" rows.
@@ -14,6 +16,7 @@
 
 import {
   createMinistryEvents,
+  deleteMinistryEvents,
   errorMessage,
   listCalendars,
   listClasses,
@@ -43,6 +46,7 @@ import { readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
 import {
   actionMenu,
   byId,
+  confirmDelete,
   destroyDataTable,
   escapeAttribute,
   escapeHtml,
@@ -176,6 +180,10 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
 
     return `
       <tr data-event-id="${event.id}">
+        <td class="w-1 no-export">
+          <input type="checkbox" class="form-check-input ministry-event-select" data-event-id="${event.id}"
+                 aria-label="${escapeAttribute(tText("Select {{event}}", { event: `${when(event)} ${event.title}` }))}">
+        </td>
         <td data-order="${escapeAttribute(event.start)}">${escapeHtml(when(event))}</td>
         <td>
           <a class="fw-bold" href="${root()}/event/view/${event.id}">${escapeHtml(event.title)}</a>${
@@ -205,6 +213,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       show(byId("ministry-events-empty-upcoming"), !pastShown());
       show(byId("ministry-events-empty-past"), pastShown());
       renderState("ministry-events", "empty");
+      syncSelection();
 
       return;
     }
@@ -212,12 +221,101 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     body.innerHTML = rows.map(row).join("");
     renderState("ministry-events", "loaded");
     initDataTable("volunteerMinistryEventsTable", {
-      order: [[0, pastShown() ? "desc" : "asc"]],
+      order: [[1, pastShown() ? "desc" : "asc"]],
       // Sorted on the ISO start in `data-order`, left-aligned like the other text columns.
       columnDefs: [
-        { targets: 0, type: "string" },
-        { targets: 5, orderable: false, searchable: false },
+        { targets: 0, orderable: false, searchable: false },
+        { targets: 1, type: "string" },
+        { targets: 6, orderable: false, searchable: false },
       ],
+    });
+    syncSelection();
+  }
+
+  // ── Selection and Delete events (D28) ─────────────────────────────────────
+
+  function selectedIds(): number[] {
+    return Array.from(
+      document.querySelectorAll<HTMLInputElement>("#volunteerMinistryEventsTable .ministry-event-select:checked"),
+    ).map((box) => Number(box.dataset.eventId));
+  }
+
+  /** The button wakes up while something is ticked; every copy of Select All mirrors the rows. */
+  function syncSelection(): void {
+    const boxes = Array.from(
+      document.querySelectorAll<HTMLInputElement>("#volunteerMinistryEventsTable .ministry-event-select"),
+    );
+    const checked = boxes.filter((box) => box.checked).length;
+    const button = byId<HTMLButtonElement>("ministry-events-delete-btn");
+    if (button) {
+      button.disabled = checked === 0;
+      button.textContent = "";
+      button.insertAdjacentHTML(
+        "beforeend",
+        `<i class="fa-solid fa-trash me-1" aria-hidden="true"></i>${escapeHtml(
+          checked > 0 ? tText("Delete events ({{count}})", { count: checked }) : i18next.t("Delete events"),
+        )}`,
+      );
+    }
+    for (const all of document.querySelectorAll<HTMLInputElement>("#ministry-events-select-all")) {
+      all.checked = boxes.length > 0 && checked === boxes.length;
+      all.indeterminate = checked > 0 && checked < boxes.length;
+      all.disabled = boxes.length === 0;
+    }
+  }
+
+  /**
+   * Confirms with how many events go and which other ministries staff them — the server refuses
+   * while their volunteers are assigned, unless the user manages the calendar.
+   */
+  function deleteSelected(): void {
+    const ids = selectedIds();
+    if (ids.length === 0) {
+      return;
+    }
+    const staffedBy = new Set<string>();
+    for (const event of events ?? []) {
+      if (ids.includes(event.id)) {
+        for (const other of event.otherStaffing) {
+          if (other.assigned > 0) {
+            staffedBy.add(other.ministryName);
+          }
+        }
+      }
+    }
+
+    const message = [
+      i18next.t(
+        "Delete {{count}} events? They leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone.",
+        { count: ids.length },
+      ),
+      staffedBy.size > 0
+        ? i18next.t(
+            "Volunteers of {{names}} are assigned to some of them. Unless you manage the calendar, the delete is refused until that staffing is removed.",
+            { names: Array.from(staffedBy).join(", ") },
+          )
+        : "",
+    ]
+      .filter((part) => part !== "")
+      .map((part) => `<p>${part}</p>`)
+      .join("");
+
+    confirmDelete(i18next.t("Delete events"), message, () => {
+      const button = byId<HTMLButtonElement>("ministry-events-delete-btn");
+      if (button) {
+        button.disabled = true;
+      }
+      deleteMinistryEvents(options.ministryId(), ids)
+        .then((result) => {
+          notifySuccess(tText("{{count}} events deleted", { count: result.deleted }));
+          options.invalidateStaffing();
+
+          return load(true);
+        })
+        .catch((error: unknown) => {
+          notifyError(errorMessage(error, i18next.t("The events could not be deleted")));
+          syncSelection();
+        });
     });
   }
 
@@ -766,6 +864,23 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       destroyDefaultFillPickers(defaultPickers);
       defaultPickers = [];
     });
+
+    // Delegated on the document: the rows are re-rendered on every load, and DataTables may
+    // clone the header the Select All box lives in.
+    document.addEventListener("change", (event) => {
+      const target = event.target as HTMLInputElement | null;
+      if (target?.classList.contains("ministry-event-select")) {
+        syncSelection();
+      } else if (target?.id === "ministry-events-select-all") {
+        for (const box of document.querySelectorAll<HTMLInputElement>(
+          "#volunteerMinistryEventsTable .ministry-event-select",
+        )) {
+          box.checked = target.checked;
+        }
+        syncSelection();
+      }
+    });
+    byId("ministry-events-delete-btn")?.addEventListener("click", deleteSelected);
 
     // Delegated: the rows are re-rendered on every load.
     document.addEventListener("click", (event) => {
