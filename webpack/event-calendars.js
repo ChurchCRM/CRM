@@ -479,8 +479,8 @@ window.newCalendarModal = {
     }
     const newCalendar = {
       Name: $("#calendarName").val(),
-      ForegroundColor: $("#ForegroundColor").val().replace(/^#/, ""),
-      BackgroundColor: $("#BackgroundColor").val().replace(/^#/, ""),
+      ForegroundColor: $("#ForegroundColor").val(),
+      BackgroundColor: $("#BackgroundColor").val(),
     };
     window.CRM.APIRequest({
       method: "POST",
