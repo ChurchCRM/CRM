@@ -3,141 +3,64 @@
 describe("Finance Family", () => {
     beforeEach(() => {
         cy.setupAdminSession();
-
-        // Pre-set finance display settings for both users that may own the
-        // admin-session cookie cache (user 1 = admin, user 3 = tony.wade).
-        //
-        // Background: cy.session() cross-contamination from finance.deposits.spec.js
-        // (which calls both setupAdminSession and setupStandardSession) means the
-        // "admin-session" cache sometimes holds user 3's cookies.  User 3 starts
-        // with finance.show.pledges='0' and finance.show.payments='0' in a fresh DB.
-        // When those settings are '0', GET /api/payments/family/{id}/list filters
-        // them out and returns 0 rows — DataTables draws an empty-state row.
-        //
-        // cy.request reaches the real server through the current session and updates
-        // the DB before the page visits below fire their own XHRs.
-        // failOnStatusCode: false lets us inspect the status ourselves — we only
-        // tolerate 200 (success) and 401 (cross-user write rejected); anything else
-        // (4xx/5xx server error) throws so CI failures remain diagnosable.
-        const allowCrossUserReject = (url) => (res) => {
-            if (res.status !== 200 && res.status !== 401) {
-                throw new Error(
-                    `Unexpected status ${res.status} for POST ${url}`,
-                );
-            }
-        };
-        cy.request({
-            method: "POST",
-            url: "/api/user/1/setting/finance.show.pledges",
-            body: { value: "true" },
-            failOnStatusCode: false,
-        }).then(allowCrossUserReject("/api/user/1/setting/finance.show.pledges"));
-        cy.request({
-            method: "POST",
-            url: "/api/user/1/setting/finance.show.payments",
-            body: { value: "true" },
-            failOnStatusCode: false,
-        }).then(allowCrossUserReject("/api/user/1/setting/finance.show.payments"));
-        cy.request({
-            method: "POST",
-            url: "/api/user/3/setting/finance.show.pledges",
-            body: { value: "true" },
-            failOnStatusCode: false,
-        }).then(allowCrossUserReject("/api/user/3/setting/finance.show.pledges"));
-        cy.request({
-            method: "POST",
-            url: "/api/user/3/setting/finance.show.payments",
-            body: { value: "true" },
-            failOnStatusCode: false,
-        }).then(allowCrossUserReject("/api/user/3/setting/finance.show.payments"));
-
-        // Intercept the in-page setting POSTs that FamilyView.js fires on every
-        // page load.  The DB is already correct (above); intercepting them ensures
-        // Promise.all resolves instantly and eliminates any server-side side-effect
-        // (the source of the 3-4 page reload loop observed in CI).
-        cy.intercept("POST", "**/api/user/*/setting/finance.show.pledges", {
-            statusCode: 200,
-            body: { value: "true" },
-        }).as("showPledges");
-        cy.intercept("POST", "**/api/user/*/setting/finance.show.payments", {
-            statusCode: 200,
-            body: { value: "true" },
-        }).as("showPayments");
     });
 
-    it("View a Family with Pledges and Payments section", () => {
+    it("View a Family with Giving section", () => {
+        // Intercept the pledge API so we can wait for the initial load
+        cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeLoad");
         cy.visit("people/family/1");
-
-        // Basic page identity checks
+        // Page title is family name, subtitle has "Family Profile"
         cy.contains("Campbell");
         cy.contains("Family Profile");
         cy.contains("Darren Campbell");
 
-        // Finance section should be visible as Giving tab with pill filters
-        cy.contains("Giving").should("be.visible");
+        // Finance section should be visible with pill filters
+        cy.contains("Giving");
         cy.get(".pledge-type-pill").should("have.length", 3);
-        cy.get("#giving-fy-select").should("exist");
+        // FY options: at minimum All Time + current FY option (may include historical years too)
+        cy.get("#giving-fy-select option").should("have.length.at.least", 2);
 
-        // Gate: wait for initComplete to populate the FY dropdown.
-        //
-        // FamilyView.js initialises DataTable with ajax:... and pre-sets a
-        // column-5 filter to the current FY.  initComplete fires after the first
-        // Ajax draw, reads all rows, and appends one <option> per unique FY.
-        // ≥2 options (All Time + at least one FY year) proves initComplete ran.
-        //
-        // Explicit 30 s timeout overrides docker.config.ts's 5 s default.
-        cy.get("#giving-fy-select option", { timeout: 30000 }).should(
-            "have.length.at.least",
-            2,
-        );
+        // Table should load with data
+        cy.get("#pledge-payment-table").should("be.visible");
+        cy.wait("@pledgeLoad");
 
-        // Switch to "All Time" to clear the active FY column filter.
-        //
-        // The default view shows the current FY (2026 as of this writing).
-        // Family 1 has giving records in FY 2026, so initComplete does NOT
-        // auto-clear the filter — historical records like "Music Ministry"
-        // (from an earlier FY) are hidden.  Selecting the empty ("All Time")
-        // option fires the jQuery change handler which calls
-        // pledgeTable.column(5).search("").draw(), making all rows visible.
-        //
-        // This mirrors the old master spec's `.pledge-fy-pill[data-fy=""].click()`
-        // and is robust regardless of whether the family has current-year data.
-        cy.get("#giving-fy-select").select("");
+        // Default FY filter (current FY) hides older data — "Music Ministry" should NOT be visible
+        cy.contains("Music Ministry").should("not.exist");
 
-        // Content assertion: "Music Ministry" is a historical fund for this family.
-        // After selecting All Time, the redraw is synchronous (client-side mode),
-        // so a short timeout is sufficient.  30 s used defensively for CI latency.
-        cy.contains("#pledge-payment-table", "Music Ministry", {
-            timeout: 30000,
-        }).should("be.visible");
+        // Select "All Time" to reveal all records (server-side reload)
+        cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeAllTime");
+        cy.get("#giving-fy-select").select("0");
+        cy.wait("@pledgeAllTime");
+        cy.get("#giving-fy-select").should("have.value", "0");
+        cy.contains("Music Ministry").should("be.visible");
 
-        // Type filter pills: client-side filter on column 3 (independent of FY)
-        cy.get('.pledge-type-pill[data-filter="Pledge"]').click();
+        // Test type filter pills (still client-side column search)
+        cy.get(".pledge-type-pill[data-filter='Pledge']").click();
         cy.get(".pledge-type-pill.active").should("contain", "Pledges");
 
-        cy.get('.pledge-type-pill[data-filter=""]').click();
+        cy.get(".pledge-type-pill[data-filter='']").click();
         cy.get(".pledge-type-pill.active").should("contain", "All");
     });
 
     it("View another Family with finance data", () => {
+        cy.intercept("GET", "**/api/payments/family/20/list*").as("pledgeLoad");
         cy.visit("people/family/20");
         cy.contains("Black");
         cy.contains("Family Profile");
 
-        // Giving tab is present
-        cy.contains("Giving").should("be.visible");
+        // Wait for finance section and table to be ready
+        cy.contains("Giving");
+        cy.get("#pledge-payment-table").should("be.visible");
+        cy.wait("@pledgeLoad");
 
-        // Same gate as test 1 — FY options populated by initComplete.
-        cy.get("#giving-fy-select option", { timeout: 30000 }).should(
-            "have.length.at.least",
-            2,
-        );
+        // Default FY filter (current FY) hides older data
+        cy.contains("New Building Fund").should("not.exist");
 
-        // Switch to "All Time" for the same reason as test 1.
-        cy.get("#giving-fy-select").select("");
-
-        cy.contains("#pledge-payment-table", "New Building Fund", {
-            timeout: 30000,
-        }).should("be.visible");
+        // Select "All Time" to reveal all records (server-side reload)
+        cy.intercept("GET", "**/api/payments/family/20/list*").as("pledgeAllTime");
+        cy.get("#giving-fy-select").select("0");
+        cy.wait("@pledgeAllTime");
+        cy.get("#giving-fy-select").should("have.value", "0");
+        cy.contains("New Building Fund").should("be.visible");
     });
 });

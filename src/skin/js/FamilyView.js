@@ -99,6 +99,24 @@ function initializeFamilyView() {
     // HTML attributes (e.g. data-current-fy="2024") to the integer 2024.
     const escapeDTRegex = (str) => String(str).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
+    // Always send fyid explicitly: 0 means All Time; omission uses ShowSince.
+    function getPledgeAjaxUrl(fyid) {
+      return `${window.CRM.root}/api/payments/family/${window.CRM.currentFamily}/list?fyid=${fyid}`;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const rawFyid = params.get("fyid");
+    let initialFyid = rawFyid === null ? window.CRM.currentFYId : parseInt(rawFyid, 10);
+    if (
+      !$("#giving-fy-select option")
+        .toArray()
+        .some((option) => option.value === String(initialFyid))
+    ) {
+      initialFyid = window.CRM.currentFYId;
+      params.set("fyid", String(initialFyid));
+      window.history.replaceState({}, "", window.location.pathname + "?" + params.toString());
+    }
+
     // Recompute the Total Pledged / Total Paid summary bar from currently-filtered rows
     const updateGivingSummary = (api) => {
       let totalPledged = 0;
@@ -121,10 +139,9 @@ function initializeFamilyView() {
     // Columns: Date (0) | Fund (1) | Amount (2) | Type (3) | Method (4) | Fiscal Year hidden (5) | Comment hidden (6) | Actions (7)
     const dataTableConfig = {
       ajax: {
-        url: `${window.CRM.root}/api/payments/family/${window.CRM.currentFamily}/list`,
+        url: getPledgeAjaxUrl(initialFyid),
         dataSrc: "data",
-        // Silently handle ajax errors (e.g. 401 during session transitions in tests)
-        // so DataTables does not produce a browser alert() that could fail automated tests
+        // Report AJAX failures through the standard notification UI.
         error: function () {
           window.CRM.notify(i18next.t("Failed to load giving history"), "danger");
         },
@@ -192,54 +209,26 @@ function initializeFamilyView() {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
-    // initComplete fires after the first Ajax draw — used to populate FY dropdown & YTD badge
-    dataTableConfig.initComplete = function () {
-      const api = this.api();
-      // String() coercion: jQuery .data() silently converts numeric-looking attr values
+    // Recompute the YTD badge after each load, including fiscal-year changes.
+    function updateYtdBadge(api) {
       const currentFY = String($("#pledge-payment-table").data("current-fy") ?? "");
-      const allRows = api.rows().data().toArray();
-
-      // Populate fiscal-year dropdown from unique FormattedFY values, sorted descending
-      const fySet = new Set();
-      allRows.forEach((row) => {
-        if (row.FormattedFY) {
-          fySet.add(row.FormattedFY);
-        }
-      });
-      const fyList = Array.from(fySet).sort((a, b) => b.localeCompare(a));
-      const $fySelect = $("#giving-fy-select");
-      fyList.forEach((fy) => {
-        const $opt = $("<option>").val(fy).text(fy);
-        if (fy === currentFY) {
-          $opt.prop("selected", true);
-        }
-        $fySelect.append($opt);
-      });
-
-      // If the family has no giving records in the current FY the pre-init
-      // column-5 filter (^currentFY$) hides everything while the dropdown
-      // still shows "All Time" — an inconsistent state.  Auto-correct by
-      // clearing the filter so the table and the dropdown agree.
-      const hasCurrentFYData = allRows.some((row) => row.FormattedFY === currentFY);
-      if (currentFY && !hasCurrentFYData) {
-        api.column(5).search("", false, false).draw();
-        $fySelect.val("");
-        return; // No current-FY data → no YTD badge
-      }
-
-      // YTD badge: total Payments in the current fiscal year (always full dataset, not filtered)
       let ytdTotal = 0;
-      allRows.forEach((row) => {
-        if (row.PledgeOrPayment === "Payment" && row.FormattedFY === currentFY) {
-          ytdTotal += parseFloat(row.Amount || 0);
-        }
-      });
-      if (ytdTotal > 0) {
-        $("#giving-ytd-badge")
-          .attr("data-ytd-total", ytdTotal)
-          .text(window.CRM.currency.format(ytdTotal))
-          .removeClass("d-none");
-      }
+      api
+        .rows()
+        .data()
+        .each((row) => {
+          if (row.PledgeOrPayment === "Payment" && row.FormattedFY === currentFY) {
+            ytdTotal += parseFloat(row.Amount || 0);
+          }
+        });
+      $("#giving-ytd-badge")
+        .text(window.CRM.currency.format(ytdTotal))
+        .toggleClass("d-none", ytdTotal <= 0);
+    }
+
+    dataTableConfig.initComplete = function () {
+      updateGivingSummary(this.api());
+      updateYtdBadge(this.api());
     };
 
     // Force both types visible in API, then init DataTable
@@ -260,17 +249,11 @@ function initializeFamilyView() {
       .catch(() => {}) // ignore errors
       .then(() => {
         const pledgeTable = $("#pledge-payment-table").DataTable(dataTableConfig);
-        // String() coercion: jQuery .data() silently converts numeric-looking attr values
-        const currentFY = String($("#pledge-payment-table").data("current-fy") ?? "");
+        $("#giving-fy-select").val(String(initialFyid));
 
-        // Pre-set default FY filter on the hidden column 5 before ajax completes
-        if (currentFY) {
-          pledgeTable.column(5).search(`^${escapeDTRegex(currentFY)}$`, true, false);
-        }
-
-        // Summary bar: recompute on every draw
         pledgeTable.on("draw", () => {
           updateGivingSummary(pledgeTable);
+          updateYtdBadge(pledgeTable);
         });
 
         // Type filter pills: client-side column 3 (Type/PledgeOrPayment)
@@ -289,27 +272,13 @@ function initializeFamilyView() {
           }
         });
 
-        // Fiscal year select: client-side column 5 (Fiscal Year, hidden but searchable)
-        // Also toggles the YTD badge — badge only meaningful for the system current FY
+        // Preserve the server-side fiscal-year filter and bookmarkable selection.
         $("#giving-fy-select").on("change", function () {
-          const fy = $(this).val() || "";
-          if (fy) {
-            pledgeTable
-              .column(5)
-              .search(`^${escapeDTRegex(fy)}$`, true, false)
-              .draw();
-          } else {
-            pledgeTable.column(5).search("", false, false).draw();
-          }
-          // Hide the YTD badge when viewing a year other than the system current FY
-          if (fy && fy !== currentFY) {
-            $("#giving-ytd-badge").addClass("d-none");
-          } else {
-            // Restore badge (it was already computed in initComplete for currentFY)
-            if (parseFloat($("#giving-ytd-badge").data("ytd-total") || 0) > 0) {
-              $("#giving-ytd-badge").removeClass("d-none");
-            }
-          }
+          const fyid = parseInt($(this).val(), 10) || 0;
+          const params = new URLSearchParams(window.location.search);
+          params.set("fyid", String(fyid));
+          window.history.replaceState({}, "", window.location.pathname + "?" + params.toString());
+          pledgeTable.ajax.url(getPledgeAjaxUrl(fyid)).load();
         });
       });
   }

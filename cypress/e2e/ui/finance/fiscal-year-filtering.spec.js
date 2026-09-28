@@ -4,7 +4,7 @@
  * Cypress E2E spec: Fiscal-Year Scoping — Issue #9378
  *
  * Covers the four finance tables that received FY selectors:
- *   1. Family Pledges & Payments (server-side fyid pill filter)
+ *   1. Family Pledges & Payments (server-side fyid dropdown filter)
  *   2. Finance Dashboard → Recent Deposits (FY selector)
  *   3. Pledge Dashboard (FY selector, full-page reload)
  *   4. Deposit Search (/finance/deposit/search: FY selector, form GET reload)
@@ -27,20 +27,18 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
   // ──────────────────────────────────────────────────────────────────
   // 1. Family Pledges: default FY selection + All-Time toggle
   // ──────────────────────────────────────────────────────────────────
-  describe("Family Pledges — FY pill filter (server-side)", () => {
+  describe("Family Pledges — FY dropdown filter (server-side)", () => {
     beforeEach(() => {
       cy.setupAdminSession();
     });
 
-    it("shows current-FY pill active by default, data is FY-filtered", () => {
+    it("selects current FY by default, data is FY-filtered", () => {
       cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeInit");
       cy.visit("people/family/1");
       cy.wait("@pledgeInit").its("response.statusCode").should("eq", 200);
 
-      // Current-FY pill is the default active pill
-      cy.get(".pledge-fy-pill.active")
-        .should("exist")
-        .and("not.contain", "All Time");
+      // Current FY is selected by default
+      cy.get("#giving-fy-select").should("not.have.value", "0");
 
       // Table renders (even if empty for current FY — proves the call was made)
       cy.get("#pledge-payment-table").should("be.visible");
@@ -52,16 +50,16 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       );
     });
 
-    it("All-Time pill triggers server-side reload and shows historical rows", () => {
+    it("All-Time option triggers server-side reload and shows historical rows", () => {
       cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeInit");
       cy.visit("people/family/1");
       cy.wait("@pledgeInit");
 
-      // Click All Time (data-fy="0")
+      // Select All Time (fyid=0)
       cy.intercept("GET", "**/api/payments/family/1/list*").as(
         "pledgeAllTime"
       );
-      cy.get(".pledge-fy-pill[data-fy='0']").click();
+      cy.get("#giving-fy-select").select("0");
       cy.wait("@pledgeAllTime").then((interception) => {
         // The AJAX request must send fyid=0 explicitly, not omit the param —
         // an omitted param falls back server-side to the user's ShowSince
@@ -69,37 +67,35 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
         expect(interception.request.url).to.include("fyid=0");
       });
 
-      // All-Time pill is now active
-      cy.get(".pledge-fy-pill.active").should("contain", "All Time");
+      // All Time is selected
+      cy.get("#giving-fy-select").should("have.value", "0");
 
       // Historical rows (FY22) are now visible
       cy.contains("Music Ministry").should("be.visible");
     });
 
-    it("clicking a specific FY pill filters to that FY", () => {
+    it("clicking a specific FY dropdown filters to that FY", () => {
       cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeInit");
       cy.visit("people/family/1");
       cy.wait("@pledgeInit");
 
       // Switch to All Time first to confirm there are rows
       cy.intercept("GET", "**/api/payments/family/1/list*").as("allTime");
-      cy.get(".pledge-fy-pill[data-fy='0']").click();
+      cy.get("#giving-fy-select").select("0");
       cy.wait("@allTime");
       cy.get("#pledge-payment-table tbody tr").should(
         "have.length.at.least",
         1
       );
 
-      // Click FY22 pill (2018) — should still show the same rows
-      cy.get(`.pledge-fy-pill[data-fy='${SEED_FYID_2018}']`).should("exist").as("fy22Pill");
+      // Select FY22 (2018) — should still show the same rows
+      cy.get(`#giving-fy-select option[value='${SEED_FYID_2018}']`).should("exist");
       cy.intercept("GET", "**/api/payments/family/1/list*").as("fy22");
-      cy.get("@fy22Pill").click();
+      cy.get("#giving-fy-select").select(String(SEED_FYID_2018));
       cy.wait("@fy22").then((interception) => {
         expect(interception.request.url).to.include(`fyid=${SEED_FYID_2018}`);
       });
-      cy.get(".pledge-fy-pill.active")
-        .invoke("data", "fy")
-        .should("eq", SEED_FYID_2018);
+      cy.get("#giving-fy-select").should("have.value", String(SEED_FYID_2018));
     });
 
     it("persists FY selection in URL params", () => {
@@ -108,7 +104,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.wait("@pledgeInit");
 
       cy.intercept("GET", "**/api/payments/family/1/list*").as("allTime");
-      cy.get(".pledge-fy-pill[data-fy='0']").click();
+      cy.get("#giving-fy-select").select("0");
       cy.wait("@allTime");
 
       // All Time is persisted as an explicit fyid=0 (not by omitting the
@@ -123,7 +119,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.wait("@afterReload").then((interception) => {
         expect(interception.request.url).to.include("fyid=0");
       });
-      cy.get(".pledge-fy-pill.active").should("contain", "All Time");
+      cy.get("#giving-fy-select").should("have.value", "0");
     });
   });
 
