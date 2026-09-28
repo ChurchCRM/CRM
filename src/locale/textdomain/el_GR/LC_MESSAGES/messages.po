@@ -12294,16 +12294,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Πώς συνδέονται το Κατηχητικό + Εκδηλώσεις + Κιόσκια"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Μη έγκυρη ημερομηνία για %s — αναμένεται YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Μη έγκυρη μορφή ημερομηνίας για rangeStart ή rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Μη έγκυρη ημερομηνία· αναμένεται μορφή YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12532,10 +12524,6 @@ msgstr "Η ημερομηνία λήξης πρέπει να είναι μετά
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "Το eventIds πρέπει να είναι μη κενός πίνακας"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "μη έγκυρος τύπος επανάληψης"
 
 #: 
 msgid "personIds must be a non-empty array"
@@ -17856,6 +17844,12 @@ msgid "Set up now"
 msgstr "Ρύθμιση τώρα"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Απαιτείται έλεγχος ταυτότητας δύο παραγόντων. Έχετε %d ημέρα για εγγραφή."
+msgstr[1] "Απαιτείται έλεγχος ταυτότητας δύο παραγόντων. Έχετε %d ημέρες για εγγραφή."
+
+#: 
 msgid "Unknown family"
 msgstr "Άγνωστη οικογένεια"
 
@@ -18446,4 +18440,108 @@ msgstr "το skip πρέπει να είναι μηδέν ή θετικός ακ
 #: 
 msgid "view families missing an email"
 msgstr "προβολή οικογενειών χωρίς email"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Αγοραστές Αυτού του Οικονομικού Έτους"
+
+#: 
+msgid "Current"
+msgstr "Τρέχον"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Είδη που Δωρήθηκαν (Αυτό το Οικονομικό Έτος)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Το όνομα χρήστη πρέπει να έχει %d χαρακτήρες ή λιγότερους!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Συγκεντρωθέντα Αυτού του Οικονομικού Έτους"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "Το %s πρέπει να είναι πλήρης διεύθυνση ιστού https://, για παράδειγμα https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Ο λογαριασμός έχει περιορισμένα δικαιώματα. Επικοινωνήστε με έναν διαχειριστή."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Παρουσιάστηκε σφάλμα κατά την εμφάνιση της σελίδας σφάλματος."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Κάθε διεύθυνση πρέπει να ξεκινά με https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Δημιουργία Ετικετών"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Δημιουργία ετικετών αλληλογραφίας"
+
+#: 
+msgid "Labels"
+msgstr "Ετικέτες"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Ετικέτες αλληλογραφίας για τα άτομα στο καλάθι σας. Ένα άτομο χωρίς δική του διεύθυνση απευθύνεται στη διεύθυνση της οικογένειάς του."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Προαιρετικό. Σύνδεσμοι προς τους λογαριασμούς της εκκλησίας σας, οι οποίοι εμφανίζονται στα μέλη σε σελίδες όπως το υποσέλιδο της πύλης. Αφήστε ένα πεδίο κενό για να αποκρύψετε το συγκεκριμένο δίκτυο."
+
+#: 
+msgid "Options"
+msgstr "Επιλογές"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Προγραμματισμένες Εργασίες"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Ενεργό, δευτερόλεπτα που απομένουν: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Αναμενόμενο διάστημα μεταξύ εκτελέσεων (ώρες): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Οικογένειες που παραλείφθηκαν (δεν υπάρχει καταχωρημένη διεύθυνση email): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Οικογένειες που δεν ήταν δυνατό να γεωκωδικοποιηθούν: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Οικογένειες που θα λάβουν emails επιβεβαίωσης: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Μέλη που αντιγράφηκαν: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Δεν αναφέρονται εδώ: {{total}} ακόμη"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Παραλήπτες: {{total}} — πάρα πολλοί για σύνδεσμο mailto:. Χρησιμοποιήστε αντ' αυτού την Αντιγραφή Διευθύνσεων."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Πάρα πολλοί παραλήπτες για τον πελάτη email ({{total}} > {{max}}). Χρησιμοποιήστε αντ' αυτού την Αντιγραφή Διευθύνσεων."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} λεπτά απομένουν"
 

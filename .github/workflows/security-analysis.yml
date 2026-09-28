@@ -39,7 +39,7 @@ jobs:
   codeql-analysis:
     name: 'CodeQL (JS/TS)'
     timeout-minutes: 30
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       CODEQL_ACTION_FILE_COVERAGE_ON_PRS: 'true'
     permissions:
@@ -63,7 +63,7 @@ jobs:
   semgrep-analysis:
     name: 'Semgrep (PHP/JS/Config)'
     timeout-minutes: 20
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       security-events: write

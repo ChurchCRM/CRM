@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanType } from '../support/human';
+import { humanClick, humanPause, humanType, settle } from '../support/human';
 
 /**
  * Record a member as deceased (date = one week before the run) via the
@@ -60,7 +60,7 @@ test('mark-member-deceased', async ({ page }, testInfo) => {
   // PersonEditor.php redirects to Person::getViewURIForId() on success.
   await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
   await expect(page.getByText('Deceased', { exact: false }).first()).toBeVisible({ timeout: 10000 });
-  await humanPause(page, 2000);
+  await settle(page, 2000);
 
   await captureScreen(page, testInfo, {
     name: 'mark-member-deceased',

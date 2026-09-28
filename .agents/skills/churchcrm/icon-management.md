@@ -104,49 +104,17 @@ Use Bootstrap margin utilities: `me-1` (small), `me-2` (standard), `me-3` (large
 
 ---
 
-## Common Icon Patterns & Substitutions
+## Choosing an Icon Name
 
-### Navigation / UI Actions
+Generic Font Awesome name choice (edit → `fa-pencil`, delete → `fa-trash`, and
+so on) is common icon-library knowledge, not a ChurchCRM convention — pick the
+obvious free-tier name and let `npm run lint:icons` catch anything that
+doesn't exist. Before introducing a new one, `grep` for existing usage of the
+same concept in `src/` to stay consistent with precedent already in the code.
 
-| Action | Icon | Example |
-|--------|------|---------|
-| **Edit** | `fa-pencil` | `<i class="fa-solid fa-pencil me-2"></i>` |
-| **Delete/Remove** | `fa-trash` | `<i class="fa-solid fa-trash me-2"></i>` |
-| **View/Open** | `fa-eye` | `<i class="fa-solid fa-eye me-2"></i>` |
-| **Add/Create** | `fa-plus` or `fa-plus-circle` | `<i class="fa-solid fa-plus me-2"></i>` |
-| **Save/Confirm** | `fa-check` or `fa-floppy-disk` | `<i class="fa-solid fa-floppy-disk me-2"></i>` |
-| **Close/Cancel** | `fa-x` or `fa-xmark` | `<i class="fa-solid fa-xmark"></i>` |
-| **Settings/Config** | `fa-cog` or `fa-sliders` | `<i class="fa-solid fa-cog me-2"></i>` |
-| **Search/Find** | `fa-magnifying-glass` | `<i class="fa-solid fa-magnifying-glass me-2"></i>` |
-| **Filter** | `fa-filter` | `<i class="fa-solid fa-filter me-2"></i>` |
-| **Menu/Dropdown** | `fa-ellipsis-vertical` (vertical) or `fa-ellipsis` (horizontal) | `<i class="fa-solid fa-ellipsis-vertical"></i>` — row action menus: see [`table-action-menu.md`](./table-action-menu.md) |
-
-### Dashboard / Status Icons
-
-| Status | Icon | Example |
-|--------|------|---------|
-| **People/Users** | `fa-users` | `<i class="fa-solid fa-users me-2"></i>` |
-| **Family/Home** | `fa-house` | `<i class="fa-solid fa-house me-2"></i>` |
-| **Calendar/Events** | `fa-calendar` or `fa-calendar-days` | `<i class="fa-solid fa-calendar me-2"></i>` |
-| **Money/Finance** | `fa-dollar-sign` or `fa-credit-card` | `<i class="fa-solid fa-dollar-sign"></i>` |
-| **Clock/Time** | `fa-clock` or `fa-hourglass` | `<i class="fa-solid fa-clock me-2"></i>` |
-| **Location/Map** | `fa-map-pin` or `fa-map` | `<i class="fa-solid fa-map-pin me-2"></i>` |
-| **Email/Message** | `fa-envelope` or `fa-message` | `<i class="fa-solid fa-envelope me-2"></i>` |
-| **Phone/Call** | `fa-phone` | `<i class="fa-solid fa-phone me-2"></i>` |
-| **Document/File** | `fa-file` or `fa-file-lines` | `<i class="fa-solid fa-file me-2"></i>` |
-| **Download** | `fa-download` | `<i class="fa-solid fa-download me-2"></i>` |
-| **Upload** | `fa-upload` | `<i class="fa-solid fa-upload me-2"></i>` |
-| **Settings** | `fa-cog` or `fa-sliders` | `<i class="fa-solid fa-cog me-2"></i>` |
-
-### Alerts / Notifications
-
-| Alert Type | Icon | Example |
-|------------|------|---------|
-| **Success/Check** | `fa-check-circle` or `fa-circle-check` | `<i class="fa-solid fa-circle-check text-success"></i>` |
-| **Warning/Caution** | `fa-triangle-exclamation` or `fa-exclamation` | `<i class="fa-solid fa-triangle-exclamation text-warning"></i>` |
-| **Error/Alert** | `fa-circle-xmark` or `fa-xmark` | `<i class="fa-solid fa-circle-xmark text-danger"></i>` |
-| **Info** | `fa-circle-info` or `fa-info-circle` | `<i class="fa-solid fa-circle-info text-info"></i>` |
-| **Question/Help** | `fa-circle-question` or `fa-question` | `<i class="fa-solid fa-circle-question"></i>` |
+One real ChurchCRM-specific convention: row action menus always use
+`fa-ellipsis-vertical` (never `fa-ellipsis-v`) — see
+[`table-action-menu.md`](./table-action-menu.md).
 
 
 ### Verify the target exists in the free tier <!-- learned: 2026-09-11 -->
