@@ -693,6 +693,44 @@ if (!mail($to, $subject, $body)) {
 }
 ```
 
+### Outbound Email: `BaseEmail` and `Reply-To` <!-- learned: 2026-09-11 -->
+
+Every transactional email extends `ChurchCRM\Emails\BaseEmail`
+(`src/ChurchCRM/Emails/`), which wraps PHPMailer, applies the SMTP settings,
+and sets **`From` = the church address** (`ChurchMetaData::getChurchEmail()` /
+`getChurchName()`). `From` is deliberately the church address on every message
+so SPF/DKIM stay aligned — **never override it per-sender.**
+
+To make a reply reach the person or role that actually triggered the mail, set
+a `Reply-To` instead (issue #9733):
+
+```php
+$email = new VolunteerAssignmentEmail([$volunteer->getEmail()]);
+$email->setReplyTo($coordinator->getEmail(), $coordinator->getFullName());
+if (!$email->send()) {
+    LoggerUtils::getAppLogger()->warning('Assignment email failed', ['error' => $email->getError()]);
+}
+```
+
+Semantics worth knowing before you use it:
+
+- **Opt-in.** An email that never calls `setReplyTo()` sends exactly the message
+  it sent before — no `Reply-To` header at all. No existing subclass sets one.
+- **Applied in `send()`, not in the setter.** Calling `setReplyTo()` twice
+  replaces the address (last call wins) and the sent message carries exactly
+  one `Reply-To`; resending the same instance does not accumulate headers.
+- **An invalid address is ignored, not fatal.** `setReplyTo()` validates with
+  `filter_var(..., FILTER_VALIDATE_EMAIL)` and logs a warning
+  (`Ignoring invalid Reply-To address`) if it fails, so a bad coordinator
+  address never stops the mail going out. `getReplyTo()` returns `null` in that
+  case — assert on it if you need to know whether the address took.
+
+**Verifying mail locally:** the dev profile captures SMTP in Mailpit
+(`http://localhost:8025`). `curl -sS 'http://localhost:8025/api/v1/messages?limit=50'`
+returns a `ReplyTo` array per message. Note Mailpit is in the compose `test`
+profile only, **not** the `ci-root` / `ci-subdir` profiles — CI has no SMTP
+capture, so header-level email assertions cannot live in a Cypress spec.
+
 ### Algorithm Performance
 
 When matching items between collections, use hash-based lookups not nested loops:
