@@ -263,7 +263,7 @@ jobs:
         docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
 
     - name: Wait for server (root path)
-      uses: ./.github/workflows/wait-for-server.yml@master
+      uses: ./.github/actions/wait-for-server
       with:
         url: 'http://127.0.0.1/api/public/echo'
         docker-compose-profile: 'ci-root'
