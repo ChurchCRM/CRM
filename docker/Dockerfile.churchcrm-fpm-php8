@@ -16,7 +16,9 @@ WORKDIR /var/www/html
 LABEL maintainer="ChurchCRM"
 
 # Install system dependencies required by PHP extensions
-RUN apt-get update && \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
     apt-get install -y --no-install-recommends \
         libcurl4-openssl-dev \
         libfreetype6-dev \
@@ -29,8 +31,7 @@ RUN apt-get update && \
         gettext \
         locales \
         locales-all \
-        unzip \
-    && rm -rf /var/lib/apt/lists/*
+        unzip
 
 # Install and configure PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
@@ -68,7 +69,9 @@ LABEL maintainer="ChurchCRM" \
 EXPOSE 9000
 
 # Install only runtime libraries (no dev tools)
-RUN apt-get update && \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
     apt-get install -y --no-install-recommends \
         libcurl4t64 \
         libfreetype6 \
@@ -82,7 +85,7 @@ RUN apt-get update && \
         locales \
         locales-all \
     && apt-get purge -y --auto-remove $PHPIZE_DEPS libc6-dev libc-dev-bin libcrypt-dev linux-libc-dev rpcsvc-proto && \
-    rm -rf /var/lib/apt/lists/* /var/cache/apt /usr/src/php.tar.xz /usr/local/include/php
+    rm -rf /usr/src/php.tar.xz /usr/local/include/php
 
 # Set working directory
 WORKDIR /var/www/html
@@ -90,13 +93,15 @@ WORKDIR /var/www/html
 # Copy compiled PHP extensions and configuration from builder. Copying the
 # whole extensions/ dir (rather than hardcoding the no-debug-non-zts-<abi>
 # subdirectory name) keeps this working if PHP_IMAGE is ever bumped.
-COPY --from=builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
-COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
-COPY --from=builder /usr/local/etc/php/php.ini /usr/local/etc/php/php.ini
+COPY --link --from=builder /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --link --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
+COPY --link --from=builder /usr/local/etc/php/php.ini /usr/local/etc/php/php.ini
 
 # Copy ChurchCRM release code (provided from release artifact during docker build)
-# The build context should include the extracted release code
-COPY --chown=www-data:www-data . .
+# The build context should include the extracted release code.
+# --link requires a numeric --chown (www-data is uid:gid 33:33 in this image) —
+# a named owner fails to resolve when the linked layer is applied independently.
+COPY --link --chown=33:33 . .
 
 # The build context also carries docker/apache/default.conf, added so the
 # Apache image's Dockerfile can consume it — strip it here so this image
@@ -112,7 +117,9 @@ FROM ${PHP_IMAGE} AS dev
 LABEL maintainer="ChurchCRM"
 
 # Install system dependencies required by PHP extensions
-RUN apt-get update && \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
     apt-get install -y \
         libcurl4-openssl-dev \
         libfreetype6-dev \
@@ -125,8 +132,7 @@ RUN apt-get update && \
         gettext \
         locales \
         locales-all \
-        unzip \
-    && rm -rf /var/lib/apt/lists/*
+        unzip
 
 # Install and configure PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
@@ -153,13 +159,14 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
     sed -i 's/^max_execution_time.*$/max_execution_time = 120/g' $PHP_INI_DIR/php.ini
 
 # Install development tools and NVM + Node.js
-RUN apt-get update && \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
     apt-get install -y \
         git \
         make \
         python3 \
-        curl \
-    && rm -rf /var/lib/apt/lists/* && \
+        curl && \
     curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
     chmod a+x /opt/node-install.sh && \
     /opt/node-install.sh && \
