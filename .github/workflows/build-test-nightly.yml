@@ -3,7 +3,10 @@ name: Build, Test and Package (Nightly)
 # Consolidated nightly workflow covering all test types that are too heavy or
 # slow to run on every push/PR. This workflow supersedes upgrade-tests.yml
 # (which is deleted). The on-release trigger for upgrade tests is now
-# included in this file's on: block below.
+# included in this file's on: block below. It also runs on every push to a
+# release/** branch, since build-test-package.yml no longer runs the full
+# locale sweep for those pushes (PR #10103) — this is the automatic
+# full-locale gate for release-branch commits.
 #
 # What this workflow covers
 # ─────────────────────────
@@ -16,8 +19,8 @@ name: Build, Test and Package (Nightly)
 #   • test-subdir:           api, admin-ui, ui (3 shards) — subdirectory path
 #   • test-new-system:       setup-wizard (root path)
 #   • test-new-system-subdir setup-wizard (subdir path)
-#   • test-locale-root:      locale smoke tests (root)
-#   • test-locale-subdir:    locale smoke tests (subdir)
+#   • test-locale-root:      full locale sweep (root)
+#   • test-locale-subdir:    full locale sweep (subdir)
 #
 # Stage 2b – Upgrade tests (PHP 8.4 × PHP 8.5, 4 DB groups — parallel with 2a)
 #   • test-upgrade:  churchcrm-mysql | churchcrm-mariadb | v6-mysql | v6-mariadb
@@ -26,11 +29,14 @@ name: Build, Test and Package (Nightly)
 # Stage 3 – Summary
 #   • nightly-summary: always() — reports pass/fail counts to the step summary
 #
-# Concurrency: a new run cancels any in-progress nightly run (safe for both
-# scheduled and manual dispatch triggers — you always want the latest code).
+# Concurrency: a new run cancels any in-progress nightly run (safe for
+# scheduled/dispatch/release-publish triggers — you always want the latest
+# code). Release-branch pushes use their own concurrency group below so a
+# rapid string of pushes to release/** doesn't get cancelled mid-sweep by the
+# unrelated nightly schedule.
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -44,6 +50,14 @@ on:
   workflow_dispatch:
   release:
     types: [published]
+  push:
+    # Release branches get the exhaustive suite (incl. full locale sweep) on
+    # every push, not just nightly/dispatch/publish — build-test-package.yml
+    # no longer runs a full-locale job on these pushes (PR #10103), so this is
+    # the only automatic full-locale validation a release/** commit gets
+    # before it can be selected for release-publish.yml.
+    branches:
+      - 'release/**'
 
 jobs:
   # ═══════════════════════════════════════════════════════════════════════════
@@ -538,10 +552,10 @@ jobs:
       if: always()
       run: npm run docker:ci:new-system:subdir:down
 
-  # ── Locale smoke tests — root path (PHP 8.5) ─────────────────────────────
+  # ── Full locale sweep — root path (PHP 8.5) ─────────────────────────────
   test-locale-root:
     needs: build
-    timeout-minutes: 30
+    timeout-minutes: 120
     permissions:
       contents: read
       checks: write
@@ -599,8 +613,8 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run locale smoke tests (root, PHP 8.5)
-      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-locale-[hash].xml
+    - name: Run full locale sweep (root, PHP 8.5)
+      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-root-locale-[hash].xml
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -640,10 +654,10 @@ jobs:
       if: always()
       run: npm run docker:ci:root:down
 
-  # ── Locale smoke tests — subdirectory path (PHP 8.5) ─────────────────────
+  # ── Full locale sweep — subdirectory path (PHP 8.5) ─────────────────────
   test-locale-subdir:
     needs: build
-    timeout-minutes: 30
+    timeout-minutes: 120
     permissions:
       contents: read
       checks: write
@@ -701,8 +715,8 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run locale smoke tests (subdir, PHP 8.5)
-      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-locale-[hash].xml
+    - name: Run full locale sweep (subdir, PHP 8.5)
+      run: npx cypress run --config-file cypress/configs/locale.config.ts --headless --browser electron --env LOCALE_TIER=full --reporter junit --reporter-options mochaFile=cypress/reports/junit-php8.5-subdir-locale-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
 
@@ -919,8 +933,8 @@ jobs:
         echo "| PHP 8.5 subdir (api / admin-ui / ui ×3) | ${{ needs.test-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| PHP 8.5 new-system setup (root) | ${{ needs.test-new-system.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| PHP 8.5 new-system setup (subdir) | ${{ needs.test-new-system-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 locale smoke (root) | ${{ needs.test-locale-root.result }} |" >> $GITHUB_STEP_SUMMARY
-        echo "| PHP 8.5 locale smoke (subdir) | ${{ needs.test-locale-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| PHP 8.5 full locale sweep (root) | ${{ needs.test-locale-root.result }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| PHP 8.5 full locale sweep (subdir) | ${{ needs.test-locale-subdir.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "| Upgrade tests (8.4+8.5 × 4 groups) | ${{ needs.test-upgrade.result }} |" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         # Determine overall status — check for non-success so skipped/cancelled
