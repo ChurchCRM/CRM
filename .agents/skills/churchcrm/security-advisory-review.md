@@ -1,19 +1,21 @@
 ---
 title: "Security Advisory Review Process"
-intent: "How to access, analyze, and respond to GitHub security advisories for ChurchCRM"
-tags: ["security", "audit", "github"]
-prereqs: ["[[security-best-practices]]", "[[github-interaction]]"]
+intent: "Regular review workflow for GitHub security advisories in triage/draft status"
+tags: ["security", "audit", "github", "recurring"]
+prereqs: ["[[security-best-practices]]"]
 complexity: "advanced"
 ---
 # Security Advisory Review Process
 
-This skill documents how to access, analyze, and respond to GitHub security advisories for ChurchCRM.
+Regular (every few days) review of advisories in triage and draft status. Identify scope, prioritize, and decide whether to start fixes.
+
+**Do not commit example-specific content to this skill.** Keep it general so it applies to any advisory.
 
 ## Accessing Unpublished Advisories
 
-### Via GitHub CLI (Recommended)
+### Via GitHub CLI (Required)
 
-Unpublished (draft) advisories are NOT accessible via the web UI. Use `gh` CLI instead:
+Unpublished (draft and triage) advisories are NOT accessible via the web UI. Use `gh` CLI with the security advisory endpoint:
 
 ```bash
 gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
@@ -23,148 +25,173 @@ gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
 ### Required Headers
 
 - `X-GitHub-Api-Version: 2022-11-28` — mandatory for security advisory endpoints
-- Standard GitHub authentication via `gh` CLI or `GITHUB_TOKEN`
+- Standard GitHub authentication via `gh` CLI (uses your existing GitHub token)
 
-### Example Response Structure
+### Response Structure
+
+Each advisory returns:
 
 ```json
 {
-  "ghsa_id": "GHSA-cwp8-rm8g-q5c9",
-  "cve_id": null,
-  "summary": "Incomplete API authentication hardening",
-  "description": "...",
+  "ghsa_id": "GHSA-xxxx-xxxx-xxxx",
+  "cve_id": "CVE-XXXX-XXXXX",
+  "summary": "vulnerability description",
+  "description": "detailed explanation",
+  "severity": "critical|high|moderate|low",
+  "cvss": {
+    "score": 0.0,
+    "vector_string": "CVSS:3.1/..."
+  },
+  "cwes": [{"cwe_id": "CWE-XXX"}],
+  "state": "triage|draft|published|closed",
   "vulnerabilities": [
     {
-      "package": {"ecosystem": "composer", "name": "..."},
-      "vulnerable_version_range": "...",
-      "patched_versions": "...",
-      "vulnerable_functions": ["..."]
+      "package": {"ecosystem": "composer", "name": "ChurchCRM/CRM"},
+      "vulnerable_version_range": "< 7.3.1",
+      "patched_versions": "7.3.1",
+      "vulnerable_functions": ["functionName"]
     }
   ],
-  "severity": "high",
-  "cvss": {
-    "vector_string": "...",
-    "score": 7.5
-  },
-  "cwes": [...],
-  "identifiers": [...],
-  "state": "draft",  // or "published"
-  "created_at": "...",
-  "updated_at": "...",
+  "created_at": "2026-XX-XXT00:00:00Z",
+  "updated_at": "2026-XX-XXT00:00:00Z",
   "published_at": null,
   "closed_at": null
 }
 ```
 
-## Analyzing an Advisory
+### States Explained
 
-### Key Fields to Review
+- `triage` — submitted and under review; fix status unknown
+- `draft` — reviewer has determined fix is needed; fix may be in progress or merged
+- `published` — live advisory; GitHub alerts affected repos
+- `closed` — rejected, duplicate, or superseded
 
-| Field | Purpose |
-|-------|---------|
-| `summary` / `description` | High-level vulnerability overview |
-| `severity` | CVSS severity rating (critical, high, medium, low) |
-| `cvss.score` | Numeric severity (0–10, ≥7.0 is serious) |
-| `cwes[]` | Common Weakness Enumeration IDs (CWE-xxx) |
-| `state` | `draft` (private) or `published` (public) |
-| `vulnerabilities[].vulnerable_version_range` | Affected versions (e.g., "< 7.3.1") |
-| `vulnerabilities[].patched_versions` | Fixed versions |
+## Reviewing Advisories (Regular Process)
 
-### Investigation Steps
+Run this every few days to check status and identify work:
 
-1. **Understand the root cause** — Review linked issues, CVE details, or CWE description
-2. **Identify affected code paths** — Search codebase for vulnerable functions or patterns
-3. **Verify with git history** — Use `git log --all -S "pattern"` to find related commits
-4. **Check for regressions** — Did a prior fix get reverted or incomplete?
+### Step 1: Fetch Current Advisories
 
-### Example: Analyzing GHSA-cwp8-rm8g-q5c9
-
-This advisory reported incomplete 2FA/lockout hardening in the API login endpoint:
+For each GHSA ID in triage or draft:
 
 ```bash
-# 1. Fetch the draft advisory
-gh api repos/ChurchCRM/CRM/security-advisories/GHSA-cwp8-rm8g-q5c9 \
-  --header "X-GitHub-Api-Version:2022-11-28" | jq '.description'
-
-# 2. Find the vulnerable endpoint
-grep -r "userLogin\|/api/public/user/login" src/
-
-# 3. Check git history for related fixes
-git log --oneline --all | grep -i "2fa\|lockout\|authentication"
-
-# 4. Inspect the problematic commit
-git show {commit-sha} -- src/api/routes/public/public-user.php
+gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
+  --header "X-GitHub-Api-Version:2022-11-28" | jq '{
+    ghsa_id: .ghsa_id,
+    state: .state,
+    severity: .severity,
+    summary: .summary,
+    score: .cvss.score,
+    vulnerable_range: .vulnerabilities[0].vulnerable_version_range,
+    patched_versions: .vulnerabilities[0].patched_versions
+  }'
 ```
 
-## Creating a Fix
+### Step 2: Analyze Each Advisory
 
-### Branching
+For each advisory, determine:
 
-Create a branch named after the advisory and target version:
+| Field | Action |
+|-------|--------|
+| `severity` | Critical/High → prioritize; Moderate/Low → schedule |
+| `score` | ≥7.0 is serious; <5.0 is lower priority |
+| `state` | `triage` = unknown fix status; `draft` = fix likely in progress/merged |
+| `vulnerable_range` | Which versions are affected? |
+| `patched_versions` | Are patches released or pending? |
+
+### Step 3: Investigate Code Impact
+
+For each advisory, verify scope:
 
 ```bash
-git checkout master
-git pull origin master
-git checkout -b security/fix-{GHSA_ID}-{VERSION}
+# Find vulnerable code patterns (if mentioned in description)
+grep -r "pattern_from_description" src/
 
-# Example:
-git checkout -b security/fix-api-2fa-bypass-7.3.1
+# Check git history for related commits
+git log --oneline --all | grep -i "keyword_from_summary"
+
+# Review commit details if found
+git show {commit-sha}
 ```
+
+### Step 4: Categorize by Action
+
+**Work on immediately:**
+- Critical/High severity (CVSS ≥7.0)
+- Simple to fix (1–2 file changes)
+- Affects current/recent releases
+
+**Schedule next cycle:**
+- Moderate severity (CVSS 4–6)
+- Depends on other refactoring
+- Affects older versions only
+
+**Hold/defer:**
+- Already patched and released
+- Requires major refactor
+- Duplicate of another advisory
+
+## Creating a Fix (When Needed)
+
+### Recommended Workflow: Private Branch (No Public PR)
+
+**GitHub best practice:** Work in a private branch without opening a public pull request.
+
+1. **Create a private branch** (locally or on GitHub):
+   ```bash
+   git checkout master
+   git pull origin master
+   git checkout -b security/fix-{GHSA_ID}
+   ```
+
+2. **Make changes and commit** directly to this branch (no PR)
+
+3. **Push when ready to merge:**
+   ```bash
+   git push -u origin security/fix-{GHSA_ID}
+   ```
+
+4. **Merge directly to master** once tests pass (no review required for security fixes):
+   ```bash
+   git checkout master
+   git pull origin master
+   git merge --no-ff security/fix-{GHSA_ID}
+   git push origin master
+   ```
+
+5. **Delete the private branch:**
+   ```bash
+   git push origin --delete security/fix-{GHSA_ID}
+   git branch -d security/fix-{GHSA_ID}
+   ```
+
+**Why no PR?**
+- Pull requests are public and expose the vulnerability before the fix is released
+- The branch stays private until merged to master
+- The advisory is published only when the patched version is released
 
 ### Code Changes
 
-1. **Restore hardened code** — If the fix was reverted, restore from git history
-2. **Update OpenAPI docs** — Add/update `@OA\*` annotations if endpoints changed
-3. **Write tests** — Cover all security vectors (e.g., lockout, 2FA, user enumeration prevention)
-4. **Run test suite** — Ensure no regressions
+1. **Fix the vulnerability** — Implement the patch (may involve restoring prior code or new logic)
+2. **Update API/docs** — Add/update `@OA\*` annotations if endpoints changed
+3. **Write tests** — Cover the security vectors mentioned in the advisory
+4. **Run full test suite** — Ensure no regressions
 
 ### Test Coverage Requirements
 
-For authentication/authorization fixes, tests should verify:
+Tests should verify all attack vectors from the advisory:
 
-- ✅ Successful authentication (happy path)
-- ✅ Failed authentication with correct error codes (401, 403, etc.)
-- ✅ Generic error messages (no username enumeration)
-- ✅ Account lockout enforcement
+- ✅ Happy path (legitimate usage still works)
+- ✅ Attack scenarios (demonstrate vulnerability is fixed)
+- ✅ Error handling (correct status codes, no information leakage)
+- ✅ Edge cases (boundary conditions, empty inputs, etc.)
+
+For authentication/authorization fixes specifically:
+
+- ✅ Generic error messages (no username/email enumeration)
+- ✅ Account lockout enforcement (if applicable)
 - ✅ 2FA/MFA enforcement (if applicable)
 - ✅ Rate limiting (if applicable)
-
-### Example: Testing API Login Hardening
-
-```javascript
-// Test basic auth
-cy.apiRequest({
-  method: "POST",
-  url: "/api/public/user/login",
-  body: { userName: "admin", password: "changeme" }
-}).then((resp) => {
-  expect(resp.status).to.eq(200);
-  expect(resp.body).to.have.property('apiKey');
-});
-
-// Test invalid credentials (generic error)
-cy.apiRequest({
-  method: "POST",
-  url: "/api/public/user/login",
-  body: { userName: "nonexistent", password: "anything" },
-  failOnStatusCode: false
-}).then((resp) => {
-  expect(resp.status).to.eq(401);
-  expect(resp.body).to.have.property('error');
-  // Should NOT distinguish between "user not found" and "wrong password"
-});
-
-// Test 2FA requirement (202 response)
-cy.apiRequest({
-  method: "POST",
-  url: "/api/public/user/login",
-  body: { userName: "2fa_user", password: "correct" },
-  failOnStatusCode: false
-}).then((resp) => {
-  expect(resp.status).to.eq(202);
-  expect(resp.body).to.have.property('requiresOTP');
-});
-```
 
 ## Committing the Fix
 
@@ -175,92 +202,55 @@ security: fix {GHSA_ID} — {short description}
 
 - Root cause: {what was vulnerable}
 - Fix: {changes made}
-- Tests: {coverage added}
+- Tests: {test coverage summary}
 - Affects: {version range}
 
 Resolves GHSA-{GHSA_ID}
 Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>
 ```
 
-### Example
+## Validation Before Merge
 
-```
-security: fix GHSA-cwp8-rm8g-q5c9 — restore 2FA and lockout checks in API login
+### Pre-Merge Checklist
 
-- Root cause: 2FA validation and account lockout checks were incomplete
-- Fix: Restored hardening logic from commit 214694eb83
-  - Check account lockout before password validation
-  - Increment failed login counter on invalid attempts
-  - Enforce 2FA OTP/recovery code validation
-  - Return 202 when 2FA required but OTP not provided
-  - Use generic error messages to prevent username enumeration
-- Tests: 8 comprehensive tests covering basic auth, password reset
-- Affects: versions < 7.3.1
+Before merging to master:
 
-Resolves GHSA-cwp8-rm8g-q5c9
-```
+- [ ] Tests passing locally (`npm test`)
+- [ ] Linting passing (`npm run lint`)
+- [ ] Build passing (`npm run build:webpack`)
+- [ ] API/docs updated (if applicable)
+- [ ] No regressions in other tests
+- [ ] Commit message follows security format (see above)
 
-## Creating a Pull Request
-
-### PR Title & Description
-
-```markdown
-## Security: Fix GHSA-cwp8-rm8g-q5c9 — incomplete API authentication hardening
-
-### Summary
-Restores 2FA and account lockout enforcement in the public API login endpoint. 
-Advisory reported incomplete hardening that could allow 2FA bypass or brute-force attacks.
-
-### Changes
-- Restored hardening logic from prior commit that was accidentally incomplete
-- Added 2FA OTP/recovery code validation
-- Added account lockout checks before password validation
-- Updated OpenAPI specs to document 202 response and OTP parameter
-
-### Testing
-- 8 E2E tests passing (basic auth, password reset, error handling)
-- Tests verify lockout enforcement, 2FA requirement, generic error messages
-- Run locally: `npx cypress run --spec cypress/e2e/api/public/public.user.spec.js`
-
-### Checklist
-- [x] Tests passing locally
-- [x] Build/lint passing
-- [x] OpenAPI specs regenerated
-- [x] No regressions in other endpoints
-
-Fixes #XXXX (link to issue if exists)
-Tags: security, 7.3.1
-```
-
-### Push & Create PR
+### Final Validation
 
 ```bash
-# Run final validation
+# Run full test suite
 npm run lint
 npm run build:webpack
+npm test
 
-# Push the branch
-git push -u origin security/fix-api-2fa-bypass-7.3.1
-
-# Create PR via gh CLI
-gh pr create \
-  --title "security: fix GHSA-cwp8-rm8g-q5c9 — restore 2FA and lockout checks" \
-  --body "$(cat pr-body.md)" \
-  --label "security" \
-  --label "7.3.1"
+# Merge to master
+git checkout master
+git pull origin master
+git merge --no-ff security/fix-{GHSA_ID}
+git push origin master
 ```
+
+**Note:** No public pull request is created for security fixes. The branch merges directly to master after passing tests.
 
 ## Publishing the Advisory
 
-After merging the fix:
+After merging the fix and releasing a patched version:
 
-1. **Wait for version release** — Advisory should be published with the patched version (7.3.1)
+1. **Wait for version release** — Ensure the patched version is published
 2. **Update CVSS/CVE details** — Add final severity, CVE ID, etc.
 3. **Publish via GitHub UI** — Navigate to Security → Advisories → Draft → Publish
-4. **Or use CLI** (if supported):
+4. **Or use CLI**:
    ```bash
    gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
-     -X PATCH -f state=published
+     -X PATCH -f state=published \
+     --header "X-GitHub-Api-Version:2022-11-28"
    ```
 
 ## Best Practices
@@ -287,11 +277,11 @@ After merging the fix:
 - [Cypress Testing](./cypress-testing.md) — E2E test patterns
 - [API Development](./api-development.md) — OpenAPI annotations
 
-## Updating Private Advisories (API Method) <!-- learned: 2026-04-30 -->
+## After Merge: Update Advisory Metadata
 
-When a fix is merged and you need to mark a draft advisory ready for a specific version:
+Once the fix is merged and included in a release, update the advisory to mark it patched:
 
-### Fetch Current Advisory State
+### Fetch Current Advisory
 
 ```bash
 gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
@@ -300,10 +290,9 @@ gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
 
 ### Update Patched Version
 
-The API requires the full `vulnerabilities` array. Use a JSON file to avoid escaping issues:
+Use a JSON file to avoid escaping issues:
 
 ```bash
-# Create update payload
 cat > /tmp/advisory-patch.json <<'EOF'
 {
   "vulnerabilities": [
@@ -312,7 +301,7 @@ cat > /tmp/advisory-patch.json <<'EOF'
         "ecosystem": "composer",
         "name": "ChurchCRM/CRM"
       },
-      "vulnerable_version_range": ">= 7.2.0, <= 7.2.2",
+      "vulnerable_version_range": "< 7.3.1",
       "patched_versions": "7.3.1",
       "vulnerable_functions": []
     }
@@ -320,30 +309,23 @@ cat > /tmp/advisory-patch.json <<'EOF'
 }
 EOF
 
-# Submit via PATCH
 gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
   -X PATCH \
   --input /tmp/advisory-patch.json \
   --header "X-GitHub-Api-Version:2022-11-28"
 ```
 
-**Note:** The `-f field=value` syntax treats arrays as strings and fails with HTTP 422. Always use `--input` for complex payloads.
+**Important:** Use `--input` for arrays; `-f field=value` fails with HTTP 422.
 
-### Key Field Format Rules
+### Version Format Rules
 
-- `vulnerable_version_range`: Use inclusive ranges like `">= 7.2.0, <= 7.2.2"` or `"< 7.3.1"`
-- `patched_versions`: Exact version string (e.g., `"7.3.1"`) or empty string `""` if unfixed
-- Both fields are case-sensitive and version-literal — no wildcards
-
-### Advisory States
-
-- `triage` — draft, not public; fix may or may not be merged
-- `published` — live public advisory; GitHub sends security alerts to affected repos
-- `closed` — advisory rejected or superseded
+- `vulnerable_version_range`: Use ranges like `"< 7.3.1"` or `">= 7.2.0, <= 7.2.2"`
+- `patched_versions`: Exact version string (e.g., `"7.3.1"`), or empty `""` if unfixed
+- Case-sensitive; no wildcards
 
 ## References
 
-- [GitHub Security Advisories](https://github.blog/2022-12-15-security-advisories-github-secret-scanning-and-codeql-are-generally-available/)
+- [GitHub Security Advisories](https://docs.github.com/en/code-security/security-advisories/repository-security-advisories/about-repository-security-advisories)
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
-- [CWE/CVSS Scoring](https://nvd.nist.gov/vuln/detail/CVE-2026-40582) (example CVE)
-- [GitHub REST API: Repository Security Advisories](https://docs.github.com/en/rest/security-advisories/repository-advisories)
+- [CVSS Scoring](https://www.first.org/cvss/)
+- [GitHub REST API: Security Advisories](https://docs.github.com/en/rest/security-advisories/repository-advisories)
