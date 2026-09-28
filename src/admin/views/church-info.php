@@ -83,7 +83,7 @@ $socialPlaceholders = [
     <!-- Church Logo -->
     <!-- Not part of the Church Info POST: both buttons are type="button" and the
          Uppy dashboard renders outside this form, so nothing here is submitted
-         with it. Uploads go straight to /api/system/church-logo. -->
+         with it. Uploads go straight to /admin/api/system/church-logo. -->
     <div class="row">
         <div class="col-12">
             <div class="card" id="church-logo-card">

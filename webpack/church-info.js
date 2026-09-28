@@ -487,7 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /**
  * Church Logo card: opens the shared Uppy photo uploader (the same dashboard
- * used for person, family and user photos) against /api/system/church-logo,
+ * used for person, family and user photos) against /admin/api/system/church-logo,
  * then updates the preview, the Remove button, the default-logo note and the
  * sidebar brand in place. Deliberately not part of the Church Info form POST —
  * the dashboard renders outside the form and both buttons are type="button".
@@ -553,7 +553,7 @@ function initChurchLogoUploader() {
       removeBtn.disabled = true;
     }
 
-    return fetch(`${window.CRM.root}/api/system/church-logo`, {
+    return fetch(`${window.CRM.root}/admin/api/system/church-logo`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       credentials: "include",
@@ -605,7 +605,7 @@ function initChurchLogoUploader() {
   }
 
   const uploader = window.CRM.createPhotoUploader({
-    uploadUrl: `${window.CRM.root}/api/system/church-logo`,
+    uploadUrl: `${window.CRM.root}/admin/api/system/church-logo`,
     maxFileSize: window.CRM.maxUploadSizeBytes,
     // A logo is a banner, not a square portrait, so let the editor crop freely.
     aspectRatio: "free",

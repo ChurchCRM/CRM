@@ -16,7 +16,7 @@
 const LOGO_PNG_BASE64 =
     "iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoCAIAAAC6iKlyAAAAUklEQVR42u3QQQ0AAAgEoOtjJhsZ2hbOBxsJSPVwIApEi0a0aNEWRItGtGjRFkSLRrRo0YgWjWjRohEtGtGiRSNaNKJFi0a0aESLFo1o0Yj+ZwGy/zgts+HrHQAAAABJRU5ErkJggg==";
 
-const LOGO_API_URL = "/api/system/church-logo";
+const LOGO_API_URL = "/admin/api/system/church-logo";
 
 /**
  * cy.request()/cy.makePrivate*APICall() overwrite the PHP session's
