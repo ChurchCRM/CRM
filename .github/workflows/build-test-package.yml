@@ -255,7 +255,7 @@ jobs:
           --headless --browser electron \
           --reporter junit \
           --reporter-options "mochaFile=$report_file"
-        echo "report-path=$report_file" >> $GITHUB_OUTPUT
+        echo "report-path=${report_file}" >> "$GITHUB_OUTPUT"
       env:
         SPLIT: ${{ matrix.shard-total || '' }}
         SPLIT_INDEX: ${{ matrix.split-index }}
