@@ -66,6 +66,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       counts the Delete dialog quotes come from the ministry document's summary.
     -->
     <div class="d-flex gap-2">
+      <button type="button" class="btn btn-outline-primary btn-sm" id="ministry-edit-btn">
+        <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
+      </button>
       <?php if ($bMinistryActive): ?>
         <button type="button" class="btn btn-outline-secondary btn-sm" id="ministry-deactivate-btn"
                 data-ministry-name="<?= InputUtils::escapeHTML($sMinistryName) ?>">
@@ -762,7 +765,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           written from this team's qualifications, and linking qualifies the class's
           current teachers for the position chosen below. Filled by ministry.ts.
         -->
-        <div class="mb-3">
+        <div class="mb-3" id="team-form-class-row">
           <label class="form-label" for="team-form-class"><?= gettext('Sunday School Class') ?></label>
           <select class="form-select" id="team-form-class"></select>
           <div class="form-text">
@@ -785,6 +788,51 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
         <button type="button" class="btn btn-primary" id="team-form-save"><?= gettext('Save') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  Edit ministry: its name, description and whether it provides teachers for Sunday School
+  (D29). Anyone who may open this page may rename the ministry (§4.6); the Sunday School
+  switch is a volunteer manager's, so it is read-only for everybody else and the API refuses
+  a change from them regardless (D5).
+-->
+<div class="modal fade" id="ministryEditModal" tabindex="-1" aria-hidden="true" aria-labelledby="ministryEditModalTitle">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ministryEditModalTitle"><?= gettext('Edit ministry') ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= InputUtils::escapeAttribute(gettext('Close')) ?>"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label" for="ministry-edit-name"><?= gettext('Ministry name') ?></label>
+          <input type="text" class="form-control" id="ministry-edit-name" maxlength="100">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="ministry-edit-description"><?= gettext('Description') ?></label>
+          <input type="text" class="form-control" id="ministry-edit-description" maxlength="255">
+        </div>
+        <div class="mb-3">
+          <label class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" id="ministry-edit-sunday-school"<?= $bIsManager ? '' : ' disabled' ?>>
+            <span class="form-check-label"><?= gettext('Can this ministry provide teachers for Sunday School?') ?></span>
+          </label>
+          <div class="form-text" id="ministry-edit-sunday-school-note">
+            <?= $bIsManager
+                ? gettext('Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one.')
+                : gettext('Only a volunteer manager can change this.') ?>
+          </div>
+        </div>
+        <div class="alert alert-danger d-none" role="alert" id="ministry-edit-form-error">
+          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+        <button type="button" class="btn btn-primary" id="ministry-edit-save"><?= gettext('Save') ?></button>
       </div>
     </div>
   </div>
@@ -1147,7 +1195,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <label class="form-label" for="ministry-event-form-description"><?= gettext('Description') ?></label>
           <textarea class="form-control" id="ministry-event-form-description" rows="2" maxlength="255"></textarea>
         </div>
-        <div class="mb-3">
+        <div class="mb-3" id="ministry-event-form-class-row">
           <label class="form-label" for="ministry-event-form-class"><?= gettext('Class') ?></label>
           <select class="form-select" id="ministry-event-form-class"></select>
           <div class="form-text"><?= gettext('Optional. The class becomes the Linked Group: its roster is who checks in, and a schedule for the class finds these events.') ?></div>

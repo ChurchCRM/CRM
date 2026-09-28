@@ -66,6 +66,8 @@ const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Frida
 
 export interface MinistryEventsOptions {
   ministryId(): number;
+  /** D29: may the ministry's events have a class. */
+  sundaySchool(): boolean;
   teams(): VolunteerTeam[];
   positions(): VolunteerPosition[];
   ensureContext(): Promise<void>;
@@ -526,7 +528,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
   /** D23 (d): a team linked to a class suggests that class, until the class is chosen by hand. */
   function applyTeamClass(): void {
     const select = field<HTMLSelectElement>("class");
-    if (!select) {
+    if (!select || !options.sundaySchool()) {
       return;
     }
     const team = options.teams().find((candidate) => candidate.id === Number(value("team")));
@@ -594,6 +596,8 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     set("doy-month", "01");
     set("doy-day", "1");
 
+    show(field("class-row"), options.sundaySchool());
+
     const kind = field(series ? "series" : "once");
     if (kind) {
       (kind as HTMLInputElement).checked = true;
@@ -638,7 +642,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       title,
       eventTypeId,
       description: value("description"),
-      linkedGroupId: Number(value("class")) || null,
+      linkedGroupId: options.sundaySchool() ? Number(value("class")) || null : null,
       calendarIds: Array.from(
         document.querySelectorAll<HTMLInputElement>("#ministry-event-form-calendars .ministry-event-calendar:checked"),
       ).map((box) => Number(box.value)),

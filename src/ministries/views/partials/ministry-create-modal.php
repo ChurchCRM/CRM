@@ -35,6 +35,13 @@ use ChurchCRM\Utils\InputUtils;
           <label class="form-label" for="ministry-create-description"><?= gettext('Description') ?></label>
           <input type="text" class="form-control" id="ministry-create-description" maxlength="255">
         </div>
+        <div class="mb-3">
+          <label class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" id="ministry-create-sunday-school">
+            <span class="form-check-label"><?= gettext('Can this ministry provide teachers for Sunday School?') ?></span>
+          </label>
+          <div class="form-text"><?= gettext('Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one.') ?></div>
+        </div>
         <div class="alert alert-danger d-none" role="alert" id="ministry-create-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
         </div>

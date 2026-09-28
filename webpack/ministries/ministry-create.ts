@@ -56,13 +56,14 @@ function showError(message: string): void {
 function save(): void {
   const name = byId<HTMLInputElement>("ministry-create-name")?.value.trim() ?? "";
   const description = byId<HTMLInputElement>("ministry-create-description")?.value.trim() ?? "";
+  const sundaySchool = byId<HTMLInputElement>("ministry-create-sunday-school")?.checked ?? false;
 
   if (name === "") {
     showError(i18next.t("Give the ministry a name"));
     return;
   }
 
-  createMinistry(name, description)
+  createMinistry(name, description, sundaySchool)
     .then((result) => {
       notifySuccess(i18next.t("Ministry created"));
       // Straight to the new ministry's page: its first team and its pool Group
@@ -91,6 +92,10 @@ export function initMinistryCreate(): void {
     }
     if (description) {
       description.value = "";
+    }
+    const sundaySchool = byId<HTMLInputElement>("ministry-create-sunday-school");
+    if (sundaySchool) {
+      sundaySchool.checked = false;
     }
     modal("ministryCreateModal")?.show();
   };

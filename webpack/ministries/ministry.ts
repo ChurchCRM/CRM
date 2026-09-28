@@ -148,6 +148,8 @@ let linkableClasses: LinkableClass[] = [];
 
 const teams = (): VolunteerTeam[] => detail?.teams ?? [];
 const positions = (): VolunteerPosition[] => detail?.positions ?? [];
+/** D29: may this ministry's teams, schedules and events use a Sunday School class. */
+const sundaySchool = (): boolean => detail?.ministry.sundaySchool ?? false;
 const ensureDetail = (): Promise<void> => (detail === null ? load() : Promise.resolve());
 
 let positionsTable: PositionsTableHandle;
@@ -202,10 +204,12 @@ function buildComponents(): void {
     positions,
     fetch: () => listSchedules(ministryId),
     invalidateOccurrences: () => occurrencesTable.invalidate(),
+    classesAllowed: sundaySchool,
   });
 
   ministryEvents = createMinistryEventsTab({
     ministryId: () => ministryId,
+    sundaySchool,
     teams,
     positions,
     ensureContext: ensureDetail,
@@ -492,6 +496,7 @@ function openTeamModal(team?: VolunteerTeam): void {
   }
 
   teamClassOnOpen = team?.classGroupId ?? 0;
+  show(byId("team-form-class-row"), sundaySchool() || teamClassOnOpen !== 0);
   loadTeamClasses(team);
 
   modal("teamModal")?.show();
@@ -518,6 +523,9 @@ function loadTeamClasses(team?: VolunteerTeam): void {
   };
 
   fill(team?.classGroupId ? [{ id: team.classGroupId, name: team.classGroupName ?? "", teacherCount: 0 }] : []);
+  if (!sundaySchool()) {
+    return;
+  }
   listLinkableClasses(ministryId, team?.id ?? 0)
     .then((result) => fill(result.classes))
     .catch((error: unknown) => {
@@ -696,6 +704,66 @@ function wireHelpWanted(): void {
   });
 }
 
+// ─── Edit ministry (D29) ──────────────────────────────────────────────────────
+
+/**
+ * Name, description and "Can this ministry provide teachers for Sunday School?". The switch is
+ * a volunteer manager's: the view renders it disabled for everyone else and this sends it only
+ * for a manager. Saving reloads the page, because the header, the sidebar and every dialog that
+ * offers a class read what was saved.
+ */
+function wireMinistryEdit(): void {
+  const button = byId<HTMLButtonElement>("ministry-edit-btn");
+  const name = byId<HTMLInputElement>("ministry-edit-name");
+  const description = byId<HTMLInputElement>("ministry-edit-description");
+  const teaches = byId<HTMLInputElement>("ministry-edit-sunday-school");
+  const save = byId<HTMLButtonElement>("ministry-edit-save");
+  if (!button || !name || !description || !teaches || !save) {
+    return;
+  }
+
+  wireModalFadeGuard("ministryEditModal");
+  byId("ministryEditModal")?.addEventListener("shown.bs.modal", () => {
+    name.focus();
+  });
+
+  button.addEventListener("click", () => {
+    void ensureDetail().then(() => {
+      if (detail === null) {
+        notifyError(i18next.t("Could not load this ministry"));
+
+        return;
+      }
+      show(byId("ministry-edit-form-error"), false);
+      name.value = detail.ministry.name;
+      description.value = detail.ministry.description ?? "";
+      teaches.checked = detail.ministry.sundaySchool;
+      modal("ministryEditModal")?.show();
+    });
+  });
+
+  save.addEventListener("click", () => {
+    if (name.value.trim() === "") {
+      showModalError("ministry-edit", i18next.t("Give the ministry a name"), notifyError);
+
+      return;
+    }
+    save.disabled = true;
+    updateMinistry(ministryId, {
+      name: name.value.trim(),
+      description: description.value.trim(),
+      ...(isManager ? { sundaySchool: teaches.checked } : {}),
+    })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((error: unknown) => {
+        save.disabled = false;
+        showModalError("ministry-edit", errorMessage(error, i18next.t("The ministry could not be saved")), notifyError);
+      });
+  });
+}
+
 // ─── Lifecycle: Deactivate / Reactivate / Delete (design §4.6, §5.4) ─────────
 
 /**
@@ -863,6 +931,7 @@ function wire(): void {
   byId("team-form-class")?.addEventListener("change", renderTeamImport);
   wireTeamLeaderField();
   wireHelpWanted();
+  wireMinistryEdit();
   wireMinistryLifecycle();
 
   // Delegated: the rows are re-rendered on every load, so per-row listeners

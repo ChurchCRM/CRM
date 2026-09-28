@@ -102,6 +102,8 @@ $group->group('/teams', function (RouteCollectorProxy $teams): void {
                     'ministryName' => $ministry === null ? '' : (string) $ministry->getName(),
                     // D23: read-only here — linking is the ministry coordinator's.
                     'classGroupName' => (string) ($team->getClassGroup()?->getName() ?? ''),
+                    // D29: whether the schedule dialog may offer "A class's meetings".
+                    'sundaySchool' => $ministry !== null && (bool) $ministry->getSundaySchool(),
                 ],
             ],
             PortalNav::TEAMS

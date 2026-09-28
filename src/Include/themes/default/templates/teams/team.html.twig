@@ -32,7 +32,8 @@
   components look their controls up by id and are inert when an id is not there.
 
   Variables: `pageTitle`, and `team` — `{id, name, description, active,
-  ministryId, ministryName, classGroupName}` (the linked Sunday School class, D23).
+  ministryId, ministryName, classGroupName, sundaySchool}` (the linked Sunday School class,
+  D23, and whether its ministry may use classes at all, D29).
 
   Every user-visible string the bundle renders lives in the bundle, as
   `i18next.t()`: the extractor reads `gettext()` from templates and `i18next.t()`
@@ -524,7 +525,8 @@
 window.CRM = window.CRM || {};
 window.CRM.portalTeam = {
     teamId: {{ team.id }},
-    ministryId: {{ team.ministryId }}
+    ministryId: {{ team.ministryId }},
+    sundaySchool: {{ team.sundaySchool ? 'true' : 'false' }}
 };
 </script>
 <script nonce="{{ nonce() }}" src="{{ asset('/skin/v2/portal-teams.min.js') }}"></script>

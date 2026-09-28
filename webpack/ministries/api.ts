@@ -31,6 +31,8 @@ export interface VolunteerMinistry {
   /** D19: advertise this ministry on the Open Opportunities page. */
   helpWanted: boolean;
   helpWantedText: string | null;
+  /** D29: its teams may link a class, its schedules follow one and its events have one. */
+  sundaySchool: boolean;
 }
 
 /** One team-scope grant, as carried on a team row by `volunteerTeamToArray()`. */
@@ -257,8 +259,12 @@ export function listMinistries(activeOnly = false): Promise<{ ministries: Volunt
   return request(`/ministries${activeOnly ? "?active=1" : ""}`);
 }
 
-export function createMinistry(name: string, description: string): Promise<{ ministry: VolunteerMinistry }> {
-  return request("/ministries", { method: "POST", body: JSON.stringify({ name, description }) });
+export function createMinistry(
+  name: string,
+  description: string,
+  sundaySchool = false,
+): Promise<{ ministry: VolunteerMinistry }> {
+  return request("/ministries", { method: "POST", body: JSON.stringify({ name, description, sundaySchool }) });
 }
 
 export function getMinistry(ministryId: number): Promise<MinistryDetail> {
@@ -267,7 +273,9 @@ export function getMinistry(ministryId: number): Promise<MinistryDetail> {
 
 export function updateMinistry(
   ministryId: number,
-  fields: Partial<Pick<VolunteerMinistry, "name" | "description" | "active" | "helpWanted" | "helpWantedText">>,
+  fields: Partial<
+    Pick<VolunteerMinistry, "name" | "description" | "active" | "helpWanted" | "helpWantedText" | "sundaySchool">
+  >,
 ): Promise<{ ministry: VolunteerMinistry }> {
   return request(`/ministries/${ministryId}`, { method: "POST", body: JSON.stringify(fields) });
 }
