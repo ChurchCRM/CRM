@@ -8,6 +8,14 @@ describe("API Repeat Events", () => {
     // No browser login — these are pure API tests using x-api-key auth
     // (cy.makePrivateAdminAPICall sets the header for us).
 
+    // Every event this spec creates, so after() can remove them again (#9769).
+    // Without this the spec left 22 events in the database on every run.
+    const createdEventIds = [];
+
+    after(() => {
+        cy.cleanupEvents(createdEventIds);
+    });
+
     describe("POST /api/events/repeat", () => {
         // Use eventTypeId 1 (the seeded "Church Service" type) the same way
         // the other passing event API specs do, instead of fetching it.
@@ -42,6 +50,7 @@ describe("API Repeat Events", () => {
                 expect(response.body.count).to.be.at.least(0);
                 expect(response.body.eventIds).to.be.an("array");
                 expect(response.body.eventIds.length).to.equal(response.body.count);
+                createdEventIds.push(...response.body.eventIds);
             });
         });
 
@@ -66,6 +75,7 @@ describe("API Repeat Events", () => {
                 // Monthly on 1st Jan–Dec = 12 events
                 expect(response.body.count).to.equal(12);
                 expect(response.body.eventIds.length).to.equal(12);
+                createdEventIds.push(...response.body.eventIds);
             });
         });
 
@@ -89,6 +99,7 @@ describe("API Repeat Events", () => {
                 expect(response.body.success).to.be.true;
                 // Yearly on Dec 25, 2020-2025 = 6 events
                 expect(response.body.count).to.equal(6);
+                createdEventIds.push(...response.body.eventIds);
             });
         });
 

@@ -47,6 +47,25 @@ describe("Past Events Archiving (#8849)", () => {
     let pastByDateEventId;
     let pastByInactiveEventId;
 
+    // Events this spec quick-creates, removed again in after() so the seeded
+    // database does not grow with every run (#9769). quick-create returns
+    // `created: false` and an existing event's id when one already exists for
+    // that date+type, so only genuinely new ids are tracked.
+    const createdEventIds = [];
+
+    const trackQuickCreated = (response) => {
+        if (
+            response?.body?.created !== false &&
+            typeof response?.body?.eventId === "number"
+        ) {
+            createdEventIds.push(response.body.eventId);
+        }
+    };
+
+    after(() => {
+        cy.cleanupEvents(createdEventIds);
+    });
+
     before(() => {
         // Create a future event — will appear in the "Current Events" section.
         // We create it for next year so it won't flip to "past" mid-run.
@@ -58,6 +77,7 @@ describe("Past Events Archiving (#8849)", () => {
         ).then((resp) => {
             expect(resp.body).to.have.property("eventId");
             currentEventId = resp.body.eventId;
+            trackQuickCreated(resp);
         });
 
         // Create an event for a past date (last month) — End < NOW.
@@ -69,6 +89,7 @@ describe("Past Events Archiving (#8849)", () => {
         ).then((resp) => {
             expect(resp.body).to.have.property("eventId");
             pastByDateEventId = resp.body.eventId;
+            trackQuickCreated(resp);
         });
 
         // Create another event for today then deactivate it — InActive = 1.
@@ -80,6 +101,7 @@ describe("Past Events Archiving (#8849)", () => {
         ).then((resp) => {
             expect(resp.body).to.have.property("eventId");
             pastByInactiveEventId = resp.body.eventId;
+            trackQuickCreated(resp);
 
             // Now deactivate it so it appears in the "past" section.
             cy.makePrivateAdminAPICall(
