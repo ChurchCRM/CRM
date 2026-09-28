@@ -22,7 +22,7 @@ npm install              # Install dependencies
 npm run lint            # Required before every commit (Biome)
 npm run build           # Build the project
 npm run docker:test:start  # Run the test environment
-composer install        # PHP dependencies
+cd src && composer install  # PHP dependencies
 ```
 
 ## Next Steps
