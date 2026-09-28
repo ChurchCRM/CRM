@@ -10,11 +10,8 @@ complexity: "intermediate"
 ## Context
 ChurchCRM uses Webpack to bundle frontend JavaScript/TypeScript and CSS. This skill covers entry points, API utilities, type safety, and best practices for building modern webpack modules.
 
-**Verified versions in this repo (package.json):**
-- `typescript` 5.9.3
-- `webpack` 5.105.4
-- `webpack-cli` 7.0.2
-- `ts-loader` 9.5.4
+**Exact versions drift — check `package.json` directly** (`devDependencies.typescript`,
+`webpack`, `webpack-cli`, `ts-loader`) rather than trusting a pinned number here.
 
 > [!NOTE]
 > React was removed in 7.2.0. All interactive UI uses vanilla JS + Bootstrap 5.
@@ -83,17 +80,12 @@ const response = await fetchAPI('person/123/photo', {
 });
 ```
 
-### Available Functions in api-utils.ts
+### Functions in api-utils.ts
 
-| Function | Purpose | Returns |
-|----------|---------|---------|
-| `getRootPath()` | Get `window.CRM.root` dynamically | `string` (e.g., `/churchcrm`) |
-| `buildAPIUrl(path)` | Build `/api/` endpoint URL | `string` |
-| `buildAdminAPIUrl(path)` | Build `/admin/api/` endpoint URL | `string` |
-| `fetchAPI(path, options)` | Generic fetch wrapper | `Promise<Response>` |
-| `fetchAPIJSON<T>(path, options)` | Fetch and parse JSON | `Promise<T>` |
-| `fetchAdminAPI(path, options)` | Admin API fetch variant | `Promise<Response>` |
-| `fetchAdminAPIJSON<T>(path, options)` | Admin API JSON variant | `Promise<T>` |
+`webpack/api-utils.ts` is short and every export is JSDoc'd — read it directly rather
+than trusting a transcribed table here. The one non-obvious behavior: `fetchAPIJSON`
+throws on a non-OK response rather than returning a `{ success, data }` envelope, so
+wrap the call in `try`/`catch`.
 
 ## Skin Bundle Architecture (LTR + RTL) <!-- learned: 2026-03-28 -->
 
@@ -210,33 +202,15 @@ import './my-feature.css';  // In webpack/my-feature.ts
 > `'skin/v2/my-feature'` emits `src/skin/v2/skin/v2/my-feature.min.js` — one directory too
 > deep, and no page can load it.
 
+See webpack.config.js's `entry` object directly for the current, complete list — don't
+transcribe it here, it changes often and a copy just goes stale. One example showing the
+pattern (a directory source resolves via `resolve.extensions: ['.ts', '.tsx', '.js']`,
+and a source may sit in a subdirectory — only the **key** must stay flat):
+
 ```javascript
-// webpack.config.js:72-114 — every line below is a real, currently-registered entry
-// (the real block has 42 of them; 5 shown)
 entry: {
-    'calendar-event-editor': './webpack/calendar-event-editor.js',
-    churchcrm: './webpack/skin-main',
     kiosk: './webpack/kiosk',                          // → webpack/kiosk/index.ts
     'people-list': './webpack/people/person-list',
-    'event-checkin': './webpack/event-checkin',
-},
-output: {
-    path: path.resolve('./src/skin/v2'),
-    filename: '[name].min.js',
-    publicPath: 'auto',
-},
-```
-
-The source path may point at a directory (`'./webpack/kiosk'` resolves to
-`webpack/kiosk/index.ts` via `resolve.extensions: ['.ts', '.tsx', '.js']`) and may sit in a
-subdirectory (`'./webpack/people/person-list'`) — only the **key** must stay flat.
-
-**Adding your own entry** — illustrative only; `my-feature` is *not* registered today:
-
-```javascript
-// Example — add one line to the `entry` block in webpack.config.js
-entry: {
-    // …the 42 existing entries…
     'my-feature': './webpack/my-feature.js',           // → src/skin/v2/my-feature.min.js
 },
 ```
@@ -382,7 +356,7 @@ Separate concerns into different entry points — one per page or feature, with 
 (see "Output Configuration" above; a `skin/v2/` prefix would double the output path):
 
 ```javascript
-// webpack.config.js:72-114 (real entries)
+// illustrative — see webpack.config.js's entry object for the real, current list
 entry: {
     'admin-dashboard': './webpack/admin-dashboard',      // Admin dashboard page
     'photo-uploader': './webpack/photo-uploader-entry',  // Photo upload

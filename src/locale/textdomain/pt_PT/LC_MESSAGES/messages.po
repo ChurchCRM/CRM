@@ -17450,6 +17450,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "O e-mail não está configurado. Por favor, configure as definições SMTP nas Configurações do Sistema."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "E-mail enviado para %d família."
+msgstr[1] "E-mail enviado para %d famílias."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Introduza primeiro um endereço de rua."
 
@@ -17520,6 +17526,12 @@ msgstr "Nenhum pagamento encontrado para os depósitos selecionados"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nenhum ID de depósito válido fornecido"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF enviado com sucesso por e-mail para %d família."
+msgstr[1] "PDF enviado com sucesso por e-mail para %d famílias."
 
 #: 
 msgid "Partial Send"
@@ -17952,6 +17964,12 @@ msgid "Set up now"
 msgstr "Configurar agora"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "A autenticação de dois fatores é obrigatória. Tem %d dia para se registar."
+msgstr[1] "A autenticação de dois fatores é obrigatória. Tem %d dias para se registar."
+
+#: 
 msgid "Unknown family"
 msgstr "Família desconhecida"
 
@@ -17966,4 +17984,676 @@ msgstr "Atualizar Todas as Coordenadas das Famílias"
 #: 
 msgid "Update Coordinates"
 msgstr "Atualizar Coordenadas"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s era o Chefe de Família e foi marcado(a) como falecido(a). Por favor, atribua um novo Chefe de Família."
+
+#: 
+msgid "Accept"
+msgstr "Aceitar"
+
+#: 
+msgid "Active Now"
+msgstr "Ativo Agora"
+
+#: 
+msgid "Adding..."
+msgstr "A adicionar..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Todos os membros do CRM com email estão subscritos nesta lista!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Todos os subscritores do MailChimp estão no ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Ocorreu um erro ao eliminar os ficheiros."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Tem a certeza absoluta? Esta ação irá apagar todos os dados e repor as predefinições de fábrica."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Tem a certeza de que pretende eliminar TODOS os ficheiros de registo? Esta ação não pode ser anulada."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Tem a certeza de que pretende eliminar o quiosque"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Tem a certeza de que pretende eliminar a ligação"
+
+#: 
+msgid "Assignment"
+msgstr "Atribuição"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "As tarefas em segundo plano (emails de aniversário e todas as tarefas agendadas dos plugins) nunca foram executadas nesta instalação."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "As tarefas em segundo plano (emails de aniversário e todas as tarefas agendadas dos plugins) foram executadas pela última vez em %s."
+
+#: 
+msgid "Backing up..."
+msgstr "A criar cópia de segurança..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Cópia de segurança transferida."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Cópia de segurança enviada com sucesso"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Não é possível alterar o seu próprio estado de atividade"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Exportação para o ChMeetings concluída com sucesso"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Alterações guardadas com sucesso"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Registar a saída de todos e desativar tudo"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Registar a saída de todos e desativar este evento?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Verifique o seu email para obter uma ligação de reposição de palavra-passe"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Fechar eventos bloqueados?"
+
+#: 
+msgid "Comments"
+msgstr "Comentários"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Não foi possível carregar a pré-visualização do email. Feche e tente novamente."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "A criar e a enviar a cópia de segurança. Isto pode demorar vários minutos..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Falha ao repor a base de dados."
+
+#: 
+msgid "Deceased"
+msgstr "Falecido(a)"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Credenciais de administrador predefinidas"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Eliminar Quiosque"
+
+#: 
+msgid "Deleted Files"
+msgstr "Ficheiros Eliminados"
+
+#: 
+msgid "Deleting..."
+msgstr "A eliminar..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "A transferência foi devolvida sem cabeçalhos de anexo."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Erro ao eliminar o ficheiro de registo."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Erro ao eliminar os ficheiros de registo."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Erro ao transferir o ficheiro de registo."
+
+#: 
+msgid "Error initiating download."
+msgstr "Erro ao iniciar a transferência."
+
+#: 
+msgid "Error loading log file."
+msgstr "Erro ao carregar o ficheiro de registo."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Erro ao carregar os registos de autoinscrição"
+
+#: 
+msgid "Errors"
+msgstr "Erros"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Excluir membros falecidos do diretório impresso e das exportações CSV."
+
+#: 
+msgid "Failed Files"
+msgstr "Ficheiros com Falha"
+
+#: 
+msgid "Failed to add link"
+msgstr "Falha ao adicionar a ligação"
+
+#: 
+msgid "Failed to add option"
+msgstr "Falha ao adicionar a opção"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Falha ao fechar os eventos. Tente novamente."
+
+#: 
+msgid "Failed to delete"
+msgstr "Falha ao eliminar"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Falha ao ativar o registo por quiosque"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Falha ao exportar o CSV do ChMeetings"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Falha ao carregar a auditoria. Tente novamente."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Falha ao mudar o nome do quiosque"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Falha ao guardar as alterações"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Falha ao atualizar o plugin"
+
+#: 
+msgid "Family Id"
+msgstr "ID da Família"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Confirmação Final"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "A geocodificar as famílias… isto pode demorar alguns minutos. Pode manter esta página aberta."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "A geocodificar as famílias… {{done}} de {{total}} processadas, {{geocoded}} localizadas."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Necessária Atualização do Chefe de Família"
+
+#: 
+msgid "Helpful Links"
+msgstr "Ligações Úteis"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Ocultar Falecidos do Diretório"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Ocultar membros falecidos do diretório impresso e das exportações CSV."
+
+#: 
+msgid "Identify"
+msgstr "Identificar"
+
+#: 
+msgid "Identify command sent"
+msgstr "Comando de identificação enviado"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Interno: data e hora da última conclusão das tarefas agendadas em segundo plano (AAAA-MM-DD HH:MM:SS). Não editar manualmente."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Item eliminado com sucesso"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Nome do Quiosque"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Quiosque aceite"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Quiosque eliminado com sucesso"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "O quiosque tem de ser aceite"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Nome do quiosque alterado"
+
+#: 
+msgid "Last seen"
+msgstr "Visto pela última vez"
+
+#: 
+msgid "Link"
+msgstr "Ligação"
+
+#: 
+msgid "Link added successfully"
+msgstr "Ligação adicionada com sucesso"
+
+#: 
+msgid "Link deleted"
+msgstr "Ligação eliminada"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "O nome da ligação não pode conter etiquetas HTML"
+
+#: 
+msgid "Living"
+msgstr "Vivo(a)"
+
+#: 
+msgid "Log settings saved"
+msgstr "Definições de registo guardadas"
+
+#: 
+msgid "Login Name is Required"
+msgstr "O Nome de Utilizador é Obrigatório"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "A pessoa foi marcada como ativa"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "A pessoa foi marcada como inativa"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Número mínimo de minutos entre execuções das tarefas agendadas em segundo plano despoletadas pelo carregamento de uma página. Evita que uma manhã de domingo com muito movimento execute as tarefas em cada visualização de página. Não se aplica à execução por linha de comandos. Defina como 0 para executar em cada carregamento de página."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Os novos utilizadores não receberão um email de boas-vindas e a palavra-passe gerada nunca é apresentada. Após criar a conta, defina uma em Utilizadores do Sistema através de Alterar Palavra-passe — ou configure primeiro o email."
+
+#: 
+msgid "No changes to save"
+msgstr "Não há alterações para guardar"
+
+#: 
+msgid "No contact info"
+msgstr "Sem informação de contacto"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Não existem ligações personalizadas configuradas. Adicione uma acima!"
+
+#: 
+msgid "No email"
+msgstr "Sem email"
+
+#: 
+msgid "No files were deleted."
+msgstr "Nenhum ficheiro foi eliminado."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Não existe ajuda disponível para este plugin."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Não há pessoas para adicionar - já estão todas no carrinho"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Não há pessoas para adicionar - o filtro não devolveu resultados"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Não é uma data de falecimento válida"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Número de dias que os utilizadores têm para ativar a autenticação de dois fatores (2FA) depois de esta se tornar obrigatória. Defina como 0 para aplicar de imediato. Reduzir um período de tolerância já em curso pode bloquear o acesso dos utilizadores de imediato."
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Só deve fazer isto depois de o problema subjacente estar resolvido. Ainda assim, terá de clicar em Ativar para que o plugin volte a funcionar."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Confirme a ativação da pessoa"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Confirme a desativação da pessoa"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Estado do plugin atualizado"
+
+#: 
+msgid "Registered"
+msgstr "Registado(a)"
+
+#: 
+msgid "Reload"
+msgstr "Recarregar"
+
+#: 
+msgid "Reload command sent"
+msgstr "Comando de recarregamento enviado"
+
+#: 
+msgid "Rename"
+msgstr "Mudar o Nome"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Mudar o Nome do Quiosque"
+
+#: 
+msgid "Reset Complete"
+msgstr "Reposição Concluída"
+
+#: 
+msgid "Reset Settings"
+msgstr "Repor Definições"
+
+#: 
+msgid "Resetting..."
+msgstr "A repor..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "As tarefas agendadas não estão a ser executadas"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Token de segurança em falta. Atualize a página."
+
+#: 
+msgid "Select…"
+msgstr "Selecionar…"
+
+#: 
+msgid "Sending..."
+msgstr "A enviar..."
+
+#: 
+msgid "Sending…"
+msgstr "A enviar…"
+
+#: 
+msgid "Settings reset"
+msgstr "Definições repostas"
+
+#: 
+msgid "Settings saved"
+msgstr "Definições guardadas"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Definições guardadas. A atualizar informação sobre atualizações..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "A mostrar apenas pessoas ativas."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "A mostrar apenas pessoas inativas."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Eliminado com sucesso"
+
+#: 
+msgid "Testing..."
+msgstr "A testar..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "A base de dados foi limpa. O sistema está pronto para um novo começo."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Entretanto, o mecanismo de recurso ao carregamento de página continua a funcionar. Altere o tempo que o ChurchCRM aguarda antes de mostrar este aviso através da definição %1$s, ou defina-a como 0 para o ocultar."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Esta Pessoa está Inativa"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Isto encontra as coordenadas no mapa para todas as famílias a quem faltam, utilizando o OpenStreetMap. Processa as famílias em lotes de 50, cerca de um minuto por lote. Pode manter esta página aberta enquanto é executado. Continuar?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Esta pessoa está falecida"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Isto irá limpar todos os valores configurados para este plugin. Esta ação não pode ser anulada."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Isto irá eliminar permanentemente os ficheiros do plugin do disco e limpar as suas definições. Esta ação não pode ser anulada."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "O URL não pode conter etiquetas HTML"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Erro inesperado. Tente novamente."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Desinstalar Plugin"
+
+#: 
+msgid "Upcoming"
+msgstr "Próximos"
+
+#: 
+msgid "Valid Until"
+msgstr "Válido Até"
+
+#: 
+msgid "View active only"
+msgstr "Ver apenas ativos"
+
+#: 
+msgid "View all"
+msgstr "Ver todos"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Ver todos (incluindo inativos)"
+
+#: 
+msgid "View inactive only"
+msgstr "Ver apenas inativos"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Avisar no painel de administração quando as tarefas agendadas em segundo plano não são executadas há este número de horas. 26 permite uma tarefa cron diária mais alguma margem. Defina como 0 para desativar o aviso."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Sem um agendador, estas tarefas só são executadas quando alguém carrega uma página, pelo que um dia de semana tranquilo pode não enviar qualquer email agendado. Adicione uma entrada cron que execute o gestor de tarefas de hora a hora, com o mesmo utilizador com que o seu servidor web é executado"
+
+#: 
+msgid "check-outs"
+msgstr "saídas"
+
+#: 
+msgid "deceased"
+msgstr "falecido(a)"
+
+#: 
+msgid "event"
+msgstr "evento"
+
+#: 
+msgid "events?"
+msgstr "eventos?"
+
+#: 
+msgid "files"
+msgstr "ficheiros"
+
+#: 
+msgid "people from cart?"
+msgstr "pessoas do carrinho?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip deve ser zero ou um número inteiro positivo"
+
+#: 
+msgid "view families missing an email"
+msgstr "ver famílias sem email"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Compradores Neste Ano Fiscal"
+
+#: 
+msgid "Current"
+msgstr "Atual"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Itens Doados (Neste Ano Fiscal)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "O nome de utilizador deve ter %d caracteres ou menos!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Angariado Neste Ano Fiscal"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s deve ser um endereço web https:// completo, por exemplo https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "A conta tem permissões limitadas. Contacte um administrador."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Ocorreu um erro ao apresentar a página de erro."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Cada endereço deve começar com https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Gerar Etiquetas"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Gerar etiquetas de correspondência"
+
+#: 
+msgid "Labels"
+msgstr "Etiquetas"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Etiquetas de correspondência para as pessoas no seu carrinho. Uma pessoa sem morada própria é endereçada na morada da sua família."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Opcional. Ligações às contas próprias da igreja, mostradas aos membros em páginas como o rodapé do portal. Deixe um campo em branco para ocultar essa rede."
+
+#: 
+msgid "Options"
+msgstr "Opções"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Tarefas Agendadas"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Ativo, segundos restantes: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Intervalo esperado entre execuções (horas): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Famílias ignoradas (sem endereço de email registado): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Famílias que não puderam ser geocodificadas: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Famílias que irão receber emails de confirmação: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Membros copiados: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Não listados aqui: mais {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Destinatários: {{total}} — demasiados para uma ligação mailto:. Utilize antes Copiar Endereços."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Demasiados destinatários para o cliente de email ({{total}} > {{max}}). Utilize antes Copiar Endereços."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "faltam {{minutes}} min"
 
