@@ -65,6 +65,9 @@ CREATE TABLE IF NOT EXISTS `volunteer_ministry_vmin` (
   -- as it did before. The text is free prose written by the coordinator.
   `vmin_HelpWanted`       tinyint(1)            NOT NULL DEFAULT 0,
   `vmin_HelpWantedText`   text                           DEFAULT NULL,
+  -- D29: the ministry may provide teachers for Sunday School. Off by default; only
+  -- while it is on may its teams link a class and its schedules and events use one.
+  `vmin_SundaySchool`     tinyint(1) unsigned   NOT NULL DEFAULT 0,
   PRIMARY KEY (`vmin_ID`),
   UNIQUE KEY `vmin_name_uidx`  (`vmin_Name`),
   KEY `vmin_active_idx`        (`vmin_Active`),
@@ -417,3 +420,13 @@ CREATE TABLE IF NOT EXISTS `volunteer_calendar_vcal` (
   CONSTRAINT `fk_vcal_ministry` FOREIGN KEY (`vcal_vmin_ID`)
       REFERENCES `volunteer_ministry_vmin` (`vmin_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- D29: a ministry that already staffs a class — a team linked to one, or a schedule of class
+-- meetings — is a Sunday School ministry, so the switch starts on for it. Idempotent.
+--
+UPDATE `volunteer_ministry_vmin`
+   SET `vmin_SundaySchool` = 1
+ WHERE `vmin_SundaySchool` = 0
+   AND (`vmin_ID` IN (SELECT `vtem_vmin_ID` FROM `volunteer_team_vtem` WHERE `vtem_grp_ID` IS NOT NULL)
+        OR `vmin_ID` IN (SELECT `vsch_vmin_ID` FROM `volunteer_schedule_vsch` WHERE `vsch_LinkMode` = 'class'));

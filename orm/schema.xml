@@ -1104,6 +1104,9 @@
                 description="Volunteer v2 (D19): advertise this ministry on the Open Opportunities page"/>
         <column name="vmin_HelpWantedText" phpName="HelpWantedText" type="LONGVARCHAR"
                 description="Volunteer v2 (D19): what the ministry wants to say to a volunteer reading the Open Opportunities page"/>
+        <column name="vmin_SundaySchool" phpName="SundaySchool" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
+                required="true" defaultValue="0"
+                description="Volunteer v2 (D29): the ministry may provide teachers for Sunday School — link teams to classes, schedule class meetings, give its events a class"/>
         <foreign-key foreignTable="person_per" name="VolunteerMinistryCreatedBy" phpName="CreatedByPerson"
                      refPhpName="CreatedVolunteerMinistry" onDelete="setnull">
             <reference local="vmin_CreatedBy_per_ID" foreign="per_ID"/>
