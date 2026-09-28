@@ -282,10 +282,8 @@ function initializeGroupView() {
           window.CRM.APIRequest({
             method: "DELETE",
             path: "groups/" + window.CRM.currentGroup,
-          }).done((data) => {
-            if (data.status === "success") {
-              window.location.href = window.CRM.root + "/groups/dashboard";
-            }
+          }).done(() => {
+            window.location.href = window.CRM.root + "/groups/dashboard";
           });
         }
       },

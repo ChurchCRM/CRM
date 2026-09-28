@@ -60,6 +60,32 @@ describe("Standard Groups", () => {
         });
     });
 
+    describe("Delete Group from Group View (#10129)", () => {
+        let groupId;
+
+        before(() => {
+            cy.makePrivateAdminAPICall("POST", "/api/groups/", { groupName: `View Delete ${Date.now()}` }).then(
+                (resp) => {
+                    groupId = resp.body.Id;
+                },
+            );
+        });
+
+        after(() => {
+            if (groupId) cy.makePrivateAdminAPICall("DELETE", `/api/groups/${groupId}`, null, [200, 404]);
+        });
+
+        it("returns to the Groups list after the delete", () => {
+            cy.intercept("DELETE", `**/api/groups/${groupId}`).as("deleteGroup");
+            cy.visit(`/groups/view/${groupId}`);
+            cy.get("#group-view-toolbar").contains("button", "Actions").click();
+            cy.get("#deleteGroupButton").click();
+            cy.get(".bootbox .btn-danger").click();
+            cy.wait("@deleteGroup").its("response.statusCode").should("eq", 200);
+            cy.location("pathname").should("match", /\/groups\/dashboard$/);
+        });
+    });
+
     it("Groups dashboard table has action menus", () => {
         cy.visit("groups/dashboard");
         cy.get("#groupsTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
