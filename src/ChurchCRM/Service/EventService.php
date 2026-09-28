@@ -2,12 +2,15 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Exceptions\EventDeleteRefusedException;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventAudience;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\Collection;
@@ -310,6 +313,47 @@ class EventService
         }
 
         return $event;
+    }
+
+    /**
+     * Why core refuses to delete this event, or null: people are still checked in to it
+     * while it is open, or a kiosk is assigned to it.
+     */
+    public function deleteRefusal(Event $event): ?string
+    {
+        $eventId = (int) $event->getId();
+
+        if (!$event->getInActive()) {
+            $checkedInCount = EventAttendQuery::create()
+                ->filterByEventId($eventId)
+                ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
+                ->filterByCheckoutDate(null, Criteria::EQUAL)
+                ->count();
+            if ($checkedInCount > 0) {
+                return sprintf(gettext('Cannot delete event: %d people are currently checked in.'), $checkedInCount);
+            }
+        }
+
+        if (KioskAssignmentQuery::create()->filterByEventId($eventId)->exists()) {
+            return gettext('Cannot delete event: event is currently assigned to a kiosk.');
+        }
+
+        return null;
+    }
+
+    /**
+     * Delete an event the way `DELETE /api/events/{id}` does. Authorization is the caller's.
+     *
+     * @throws EventDeleteRefusedException carrying `deleteRefusal()`'s reason
+     */
+    public function deleteEvent(Event $event, ?ConnectionInterface $con = null): void
+    {
+        $refusal = $this->deleteRefusal($event);
+        if ($refusal !== null) {
+            throw new EventDeleteRefusedException($refusal);
+        }
+
+        $event->delete($con);
     }
 
     private function linkGroup(int $eventId, int $groupId, ConnectionInterface $con): void
