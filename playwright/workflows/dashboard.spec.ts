@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanPause } from '../support/human';
+import { settle } from '../support/human';
 
 test.describe('Dashboard', () => {
   test('dashboard-hero', async ({ page }, testInfo) => {
@@ -9,7 +9,7 @@ test.describe('Dashboard', () => {
     // summary widgets, populated by the seeded demo data.
     await page.goto('/v2/dashboard');
     await expect(page.locator('h2')).toBeVisible({ timeout: 15000 });
-    await humanPause(page, 800);
+    await settle(page, 800);
 
     await captureScreen(page, testInfo, {
       name: 'dashboard-hero',

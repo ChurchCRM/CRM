@@ -79,7 +79,7 @@ describe("External calendar — HTML surface", () => {
         cy.contains("External calendar sharing is disabled").should("be.visible");
         cy.contains("Go to home").should("be.visible");
         // Church logo renders (either configured sChurchLogoURL or the
-        // bundled fallback served via Images/logo-churchcrm-350.jpg).
+        // bundled fallback served via Images/churchcrm-logo-ink-blue.svg).
         cy.get("img[alt]").should("have.length.at.least", 1);
     });
 

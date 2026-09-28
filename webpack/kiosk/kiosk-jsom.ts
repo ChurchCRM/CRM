@@ -590,7 +590,7 @@ function heartbeat(): void {
           if (minutesLeft < 1) {
             label = i18next.t("Closing");
           } else if (minutesLeft < 60) {
-            label = i18next.t("{{count}} min left", { count: minutesLeft });
+            label = i18next.t("{{minutes}} min left", { minutes: minutesLeft });
           } else {
             const hours = Math.floor(minutesLeft / 60);
             const mins = minutesLeft % 60;

@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -42,6 +43,7 @@ $statusClasses = [
                 <label for="fyid" class="fw-bold"><?= gettext('Fiscal Year') ?></label>
                 <form method="GET" class="d-inline">
                     <select name="fyid" id="fyid" class="form-select d-inline-block" style="width: auto;">
+                        <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
                         <?php foreach ($availableYears as $year): ?>
                             <option value="<?= (int) $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
                                 <?= InputUtils::escapeHTML($year['label']) ?>
@@ -167,7 +169,7 @@ $statusClasses = [
             <div class="card-header py-2">
                 <h3 class="card-title">
                     <i class="fa-solid fa-users me-1"></i>
-                    <?= gettext('Contributors') ?> &mdash; <?= InputUtils::escapeHTML(FinancialService::formatFiscalYear($selectedFyid)) ?>
+                    <?= gettext('Contributors') ?> &mdash; <?= InputUtils::escapeHTML(FiscalYearUtils::formatFiscalYearLabel($selectedFyid)) ?>
                 </h3>
             </div>
             <div style="overflow: visible;">

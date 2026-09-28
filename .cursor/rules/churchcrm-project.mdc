@@ -6,7 +6,7 @@ alwaysApply: true
 # ChurchCRM Project Conventions
 
 ## Stack
-- PHP 8.4+, Node 24, Perpl ORM (Propel2 fork), Slim 4, Bootstrap 4.6.2 (AdminLTE), React + TypeScript, Webpack, Cypress
+- PHP 8.4+, Node 24, Perpl ORM (Propel2 fork), Slim 4, Tabler + Bootstrap 5, vanilla JS + TypeScript, Webpack, Cypress
 
 ## Key Conventions
 - **Service layer first**: Add/update services in `src/ChurchCRM/Service/` for business logic
@@ -20,12 +20,11 @@ alwaysApply: true
 ## Terminology & i18n
 - Prefer "Family Listing", "People" (not Persons) for UI strings; do NOT rename API routes/internal keys
 - Family status: **Active / Inactive** (not "Deactivated"); actions: `Set Active` / `Set Inactive`
-- Add new UI terms to `locale/messages.po` before templates; leave translations empty for translators
+- Wrap new UI terms in `gettext()` / `i18next.t()`. Do not edit `locale/messages.po` in a feature PR.
 
-## Locale Rebuild (CRITICAL)
-- **BEFORE committing**: If you added `gettext()` or `i18next.t()` strings, run `npm run locale:build`
-- Then `npm run build` to regenerate frontend translation assets
-- Commit updated `locale/terms/messages.po` with your changes
+## Locale extraction
+- `npm run locale:build` runs on every merge to `master`
+- Do not run it in a feature PR and do not commit `locale/terms/messages.po`
 
 ## Routing & Middleware
 - API routes: `src/api/routes/`; legacy pages: `src/*.php`
@@ -56,8 +55,8 @@ Use `src/ChurchCRM/Utils/RedirectUtils.php`:
 - Global functions: `\MakeFYString($id)` in namespaced code
 
 ## HTML & Bootstrap
-- **Bootstrap 4.6.2 only** — never Bootstrap 5 classes
-- AVOID: `w-100`, `gap-*`, `d-grid`; use `btn-block` not `w-100` on buttons
+- **Tabler + Bootstrap 5** — use `ms-`/`me-`, `fw-bold`, `text-end`, `btn-close`, `data-bs-*`
+- Do not reject Bootstrap 5 classes
 
 ## File Locations
 | Path | Purpose |

@@ -38,7 +38,7 @@ If a prior session branch exists with commits for some locales, those locales wi
 
 ```bash
 node locale/scripts/locale-branch-manager.js --init
-# Output: locale/<version>-<YYYY-MM-DD>-<HHMMSS>
+# Output: locale/translate/<version>-<YYYY-MM-DD>-<HHMMSS>
 ```
 
 If that fails:
@@ -125,7 +125,7 @@ If the locale has multiple files (`<CODE>-2.json`, etc.), read and translate eac
 
 **Leave as `""` (do NOT translate):** `N/A`, `name@example.com`, `SHA1 Hash`, `BCC`
 
-**Plural forms:** For languages that require them (ar, ru, pl, cs, etc.), fill all required plural forms (`zero`, `one`, `two`, `few`, `many`, `other`).
+**Plural forms:** Fill every key the batch file gives for that term, one form per key. Do not add or remove keys, and never join forms with `|`.
 
 ### 3c. Apply translations
 
@@ -182,12 +182,7 @@ For speed, run up to 4 sub-agents in parallel within a group. Each sub-agent tra
 node locale/scripts/locale-translate.js --list
 ```
 
-Report which locales were completed. The user will then run the POEditor upload manually:
-```bash
-for locale in <completed locales>; do
-  node locale/scripts/poeditor-upload-missing.js --locale $locale --yes
-done
-```
+Report which locales were completed. Each push already uploaded its locale ([`locale-upload-missing.yml`](../../.github/workflows/locale-upload-missing.yml)). If a push could not start workflows (Actions `GITHUB_TOKEN`), list those locales so the maintainer can run **Locale: upload missing terms** from the Actions tab with them.
 
 ---
 
@@ -203,6 +198,4 @@ done
 ## Related Skills & Docs
 
 - [`/locale-translate`](./locale-translate.md) — the canonical slash-command form of this workflow.
-- [`locale-cloud-safe-translation.md`](../../.agents/skills/churchcrm/locale-cloud-safe-translation.md) — branch-manager internals and cloud-resume rationale.
-- [`locale-stack-ranking.md`](../../.agents/skills/churchcrm/locale-stack-ranking.md) — original TIER priorities.
-- [`locale-ai-translation.md`](../../.agents/skills/churchcrm/locale-ai-translation.md) — church vocabulary + denomination context.
+- [`locale-pipeline.md`](../../docs/locale-pipeline.md) — branches, workflows and plural handling.
