@@ -43,10 +43,10 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
         .and("not.contain", "All Time");
 
       // Table renders (even if empty for current FY — proves the call was made)
-      cy.get("#pledge-payment-v2-table").should("be.visible");
+      cy.get("#pledge-payment-table").should("be.visible");
 
       // Seed data for family 1 is in FY22 (2018), not in current FY — table should be empty
-      cy.get("#pledge-payment-v2-table tbody tr").should(
+      cy.get("#pledge-payment-table tbody tr").should(
         "not.contain",
         "Music Ministry"
       );
@@ -85,7 +85,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.intercept("GET", "**/api/payments/family/1/list*").as("allTime");
       cy.get(".pledge-fy-pill[data-fy='0']").click();
       cy.wait("@allTime");
-      cy.get("#pledge-payment-v2-table tbody tr").should(
+      cy.get("#pledge-payment-table tbody tr").should(
         "have.length.at.least",
         1
       );

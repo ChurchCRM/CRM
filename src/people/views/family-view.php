@@ -649,7 +649,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
             <div class="tab-content">
                 <div class="tab-pane active show" id="giving" role="tabpanel" aria-labelledby="giving-tab">
                     <div style="overflow-x: clip; overflow-y: visible;">
-                        <table id="pledge-payment-v2-table"
+                        <table id="pledge-payment-table"
                                class="table table-vcenter card-table"
                                style="width: 100%;"
                                data-current-fy="<?= InputUtils::escapeAttribute($currentFY) ?>">

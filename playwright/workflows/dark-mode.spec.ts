@@ -68,7 +68,7 @@ test.describe('Dark Mode', () => {
       await humanPause(page, 500);
 
       // With 62 demo families, "Baker" isn't on the default first page —
-      // search for it (same DataTables 2.x `.dt-search input`, not the
+      // search for it (same `.dt-search input`, not the
       // 1.x `#{table}_filter` wrapper, as people-family.spec.ts). Two
       // families are named "Baker"; the unique contact email picks the one
       // with the family portrait, same as that spec.

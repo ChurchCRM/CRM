@@ -126,7 +126,7 @@ describe("Scenario 1 — Family View member table dropdown", () => {
 });
 
 // ── Scenario 2: Family View — Pledges and Payments DataTable row dropdown ─────
-// The pledges table (#pledge-payment-v2-table) sits in a wrapper fixed with
+// The pledges table (#pledge-payment-table) sits in a wrapper fixed with
 // `style="overflow-x: clip; overflow-y: visible;"` (formerly table-responsive,
 // direct child of .card). Uses the admin session (finance settings already
 // true in seed) with real seed data. The default FY filter hides all seed
@@ -141,7 +141,7 @@ describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
 
       // DataTable initialises after two async user-setting POSTs.
       // Wait for the DataTables wrapper element that appears on init.
-      cy.get("#pledge-payment-v2-table_wrapper", { timeout: 15000 }).should("exist");
+      cy.get("#pledge-payment-table_wrapper", { timeout: 15000 }).should("exist");
 
       // Seed pledges for family 1 are from 2018; the default FY filter hides them.
       // Select "All Time" in the FY dropdown to remove the filter and reveal all rows.
@@ -152,12 +152,12 @@ describe("Scenario 2 — Family View pledges DataTable dropdown", () => {
       // dt-empty (not the <tr>), so :not(.dataTables_empty) on tr always passes
       // before Ajax returns. "Music Ministry" is a 2018 seed pledge for family 1
       // (fund ID 3) and appears once the All Time filter is active.
-      cy.contains("#pledge-payment-v2-table", "Music Ministry", { timeout: 10000 }).should(
+      cy.contains("#pledge-payment-table", "Music Ministry", { timeout: 10000 }).should(
         "be.visible",
       );
 
       assertDropdownVisible(
-        "#pledge-payment-v2-table [data-bs-toggle='dropdown']",
+        "#pledge-payment-table [data-bs-toggle='dropdown']",
         `pledges DataTable @ ${label}`,
         assertContainerOverflow,
       );

@@ -68,7 +68,7 @@ describe("Admin User Password", () => {
         // Verify the page loaded and has the user table
         cy.get('#user-listing-table').should('exist');
         
-        // DataTables v2 uses class .dt-search (not #table_id_filter) for the search wrapper.
+        // The current DataTables layout uses class .dt-search (not #table_id_filter) for the search wrapper.
         // Search so Peyton Ray is visible regardless of pagination page.
         cy.get('.dt-search input').type('Peyton Ray');
         cy.get('#user-listing-table tbody').should('contain.text', 'Peyton Ray');

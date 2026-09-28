@@ -107,7 +107,7 @@ describe("Finance Family", () => {
         // Content assertion: "Music Ministry" is a historical fund for this family.
         // After selecting All Time, the redraw is synchronous (client-side mode),
         // so a short timeout is sufficient.  30 s used defensively for CI latency.
-        cy.contains("#pledge-payment-v2-table", "Music Ministry", {
+        cy.contains("#pledge-payment-table", "Music Ministry", {
             timeout: 30000,
         }).should("be.visible");
 
@@ -136,7 +136,7 @@ describe("Finance Family", () => {
         // Switch to "All Time" for the same reason as test 1.
         cy.get("#giving-fy-select").select("");
 
-        cy.contains("#pledge-payment-v2-table", "New Building Fund", {
+        cy.contains("#pledge-payment-table", "New Building Fund", {
             timeout: 30000,
         }).should("be.visible");
     });

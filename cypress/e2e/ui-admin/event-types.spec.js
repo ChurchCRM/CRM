@@ -49,7 +49,7 @@ describe('Event Type Management', () => {
     /**
      * Filter the eventTypesTable DataTable to a specific search string.
      *
-     * DataTables 2.x with the CRM `layout` config doesn't render the legacy
+     * The CRM `layout` config doesn't render the legacy
      * `#tableId_filter input[type=search]` element, so the selector-based
      * approach used elsewhere doesn't work here. Instead drive the DataTable
      * JS API directly — selector-independent and works with any layout.

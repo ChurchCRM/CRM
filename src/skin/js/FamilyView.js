@@ -93,7 +93,7 @@ function initializeFamilyView() {
   });
 
   // Giving History table (#8332) — init after ensuring both types are returned by API
-  if ($("#pledge-payment-v2-table").length) {
+  if ($("#pledge-payment-table").length) {
     // Escape a string for use in a DataTables regex column search.
     // String() coercion guards against jQuery .data() auto-converting numeric-looking
     // HTML attributes (e.g. data-current-fy="2024") to the integer 2024.
@@ -196,7 +196,7 @@ function initializeFamilyView() {
     dataTableConfig.initComplete = function () {
       const api = this.api();
       // String() coercion: jQuery .data() silently converts numeric-looking attr values
-      const currentFY = String($("#pledge-payment-v2-table").data("current-fy") ?? "");
+      const currentFY = String($("#pledge-payment-table").data("current-fy") ?? "");
       const allRows = api.rows().data().toArray();
 
       // Populate fiscal-year dropdown from unique FormattedFY values, sorted descending
@@ -259,9 +259,9 @@ function initializeFamilyView() {
     ])
       .catch(() => {}) // ignore errors
       .then(() => {
-        const pledgeTable = $("#pledge-payment-v2-table").DataTable(dataTableConfig);
+        const pledgeTable = $("#pledge-payment-table").DataTable(dataTableConfig);
         // String() coercion: jQuery .data() silently converts numeric-looking attr values
-        const currentFY = String($("#pledge-payment-v2-table").data("current-fy") ?? "");
+        const currentFY = String($("#pledge-payment-table").data("current-fy") ?? "");
 
         // Pre-set default FY filter on the hidden column 5 before ajax completes
         if (currentFY) {
