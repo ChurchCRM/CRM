@@ -88,7 +88,12 @@ describe("People Reports (#9914, #9915)", () => {
         cy.get("#reportResults tbody").should("contain", "Constance Hart");
         cy.get("#reportResults tbody").should("contain", "Ruben Ray");
         cy.get("#reportResults tbody").should("contain", "Austin Robertson");
-        cy.get("#reportResults tbody tr").first().find("td").first().should("have.text", "8");
+        // Other admin-ui specs (CSV import) add July birthdays to the shared
+        // database, so check the day order rather than which row comes first.
+        cy.get("#reportResults tbody tr td:first-child").then(($days) => {
+            const days = [...$days].map((td) => Number(td.textContent.trim()));
+            expect(days).to.deep.equal([...days].sort((a, b) => a - b));
+        });
         cy.get('#reportResults a[href$="/people/view/6"]').should("contain", "Constance Hart");
     });
 
@@ -141,9 +146,9 @@ describe("People Reports (#9914, #9915)", () => {
 
     it("Person by Property lists the value column and filters by classification", () => {
         cy.visit("/v2/reports/people/person-by-property?property=1&classification[]=0");
-        rows().should("have.length", 1);
-        cy.get("#reportResults tbody").should("contain", "Franklin Beck");
-        cy.get("#reportResults tbody").should("contain", "N/A");
+        // CSV import specs add unclassified people with this property too.
+        rows().should("have.length.at.least", 1);
+        cy.contains("#reportResults tbody tr", "Franklin Beck").should("contain", "N/A");
     });
 
     it("Missing People excludes the attendee of the chosen event", () => {
