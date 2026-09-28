@@ -22,7 +22,7 @@ test.describe('Communication', () => {
     // Lets the add-to-cart request land before navigating to the cart.
     await settle(page, 500);
 
-    await page.goto('/v2/cart');
+    await page.goto('/people/cart');
     await expect(page.locator('#cart-listing-table tbody tr').first()).toBeVisible({ timeout: 15000 });
     await settle(page, 600);
 
