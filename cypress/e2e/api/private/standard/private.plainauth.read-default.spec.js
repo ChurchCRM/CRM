@@ -4,7 +4,7 @@
  * Tests for the explicit read-default security policy (issues #8999, #9000, #9001).
  *
  * Verifies that ALL authenticated users — even those with no edit/admin role flags —
- * can read basic people and family metadata. This formalises the implicit behaviour
+ * can read basic people and family metadata. This formalises the implicit behavior
  * that was present before PR #8964 introduced object-level authorization.
  *
  * Test user: john.plainauth (user ID 900, `plainauth.api.key`)
@@ -17,7 +17,7 @@
  * Side-effect (intentional): Notes=1 users can also POST notes to any family/person
  * because canReadFamily() (and canViewFamily()) now returns true for all authenticated
  * users, and NotesRoleAuthMiddleware checks only the Notes flag. This is correct
- * behaviour — Notes permission has always implied "can write notes"; the read-default
+ * behavior — Notes permission has always implied "can write notes"; the read-default
  * policy simply removes the accidental read-block for non-EditSelf users.
  *
  * The EditSelf-only restriction (family 20 scoping) is separately covered in
@@ -177,7 +177,7 @@ describe("Read-default policy — plain authenticated user can read any family/p
     // POST /api/family/{familyId}/note — intentional side-effect
     // Notes=1 users can write notes to any family because canViewFamily() now
     // returns true for all authenticated users (read-default policy). This is
-    // correct behaviour: the Notes flag has always meant "can write notes";
+    // correct behavior: the Notes flag has always meant "can write notes";
     // the read-default policy only removes the accidental block for users without
     // EditSelf/EditRecords. FamilyMiddleware passes, NotesRoleAuthMiddleware
     // passes (Notes=1), so POST succeeds.

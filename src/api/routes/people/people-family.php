@@ -4,14 +4,13 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
-use ChurchCRM\Plugin\Hook\HookManager;
-use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
@@ -153,7 +152,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *         )
      *     ),
      *     @OA\Response(response=400, description="Failed to upload photo"),
-     *     @OA\Response(response=403, description="EditRecords role required")
+     *     @OA\Response(response=403, description="EditRecords role required"),
+     *     @OA\Response(response=413, description="PHP discarded the request body because it exceeded the server upload limit")
      * )
      */
     $group->post('/photo', function (Request $request, Response $response): Response {
@@ -161,11 +161,11 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family = $request->getAttribute('family');
         $input = $request->getParsedBody();
 
-        // Detect when PHP discarded the request body because post_max_size was exceeded
         if (empty($input) || !isset($input['imgBase64'])) {
-            $contentLength = (int)($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
-            $maxSize = SystemService::getMaxUploadFileSize(false);
-            if ($contentLength > 0 && $contentLength > $maxSize) {
+            // 413 only when PHP genuinely threw the body away for size; a body
+            // that arrived without imgBase64 is a malformed request whatever its
+            // Content-Length claims (issue #9771).
+            if (SlimUtils::isBodyDiscardedForSize($request)) {
                 return SlimUtils::renderErrorJSON(
                     $response,
                     sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
@@ -269,6 +269,15 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/verify', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
+
+        if (!SystemConfig::isEmailEnabled()) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Email is not configured. Please configure SMTP settings in System Settings.'),
+                [],
+                400
+            );
+        }
 
         try {
             $family->sendVerifyEmail();
@@ -377,10 +386,10 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             $note->setEntered($currentUserId);
             $note->save();
 
-            // Update last edited metadata
+            // Update last edited metadata (save without auto-note — the explicit note above is sufficient)
             $family->setDateLastEdited($currentDate);
             $family->setEditedBy($currentUserId);
-            $family->save();
+            $family->saveWithoutUpdateNote();
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);
@@ -537,8 +546,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         // Delete the family record itself. Family::preDelete() removes the
         // photo file from disk; member deletion above triggers Person::preDelete
         // for each member, which cleans up their photos too (#1697).
+        // FAMILY_DELETED is dispatched from Family::postDelete(). See #9768.
         $family->delete();
-        HookManager::doAction(Hooks::FAMILY_DELETED, $familyId);
 
         return SlimUtils::renderJSON($response, ['success' => true]);
     })->add(DeleteRecordRoleAuthMiddleware::class);

@@ -16,8 +16,9 @@ class ConfigItem
     private $dbConfigItem;
     private $section;
     private $category;
+    private $sanitizeInput;
 
-    public function __construct($name, $type, $default, $tooltip = '', $url = '', $data = '')
+    public function __construct($name, $type, $default, $tooltip = '', $url = '', $data = '', $sanitizeInput = true)
     {
         $this->name = $name;
         $this->type = $type;
@@ -25,6 +26,7 @@ class ConfigItem
         $this->tooltip = $tooltip;
         $this->data = $data;
         $this->url = $url;
+        $this->sanitizeInput = $sanitizeInput;
     }
 
     public function getName()
@@ -112,5 +114,10 @@ class ConfigItem
     public function getData()
     {
         return $this->data;
+    }
+
+    public function shouldSanitizeInput(): bool
+    {
+        return $this->sanitizeInput;
     }
 }

@@ -7,6 +7,13 @@
  * account users) reaches the SAME page and is covered in
  * cypress/e2e/ui/security/limited-access.spec.js.
  */
+function verifyPathFromApiUrl(absoluteUrl) {
+    const { pathname, search } = new URL(absoluteUrl);
+    const basePath = new URL(Cypress.config("baseUrl")).pathname.replace(/\/?$/, "/");
+    const path = pathname.startsWith(basePath) ? pathname.slice(basePath.length) : pathname.replace(/^\//, "");
+    return path + search;
+}
+
 describe("Family verification — self-verify token link (no account)", () => {
     const familyId = 1;
 
@@ -14,7 +21,10 @@ describe("Family verification — self-verify token link (no account)", () => {
         // No browser session needed: API call uses x-api-key header auth,
         // and the verify page is public (token-based, no login required)
         cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then((response) => {
-            cy.wrap(response.body.url).as("verifyUrl");
+            // API url is absolute from SystemURLs::getURL() ($URL[0]). Follow the
+            // path relative to cy.baseUrl. Strip baseUrl's own path so subdir CI
+            // (baseUrl .../churchcrm/) does not visit /churchcrm/churchcrm/... (#9871).
+            cy.wrap(verifyPathFromApiUrl(response.body.url)).as("verifyUrl");
         });
     });
 
@@ -38,7 +48,6 @@ describe("Family verification — self-verify token link (no account)", () => {
         cy.get("#confirmVerifyBtn").click();
         cy.get("#confirm-Verify").should("be.visible");
         cy.get("#UpdateNeeded").click();
-        // Click textarea first to ensure focus after modal animation settles
         cy.get("#confirm-info-data").should("be.visible").click().type("Update needed");
         cy.get("#confirm-info-data").invoke("val").should("include", "Update");
     });
@@ -52,18 +61,53 @@ describe("Family verification — self-verify token link (no account)", () => {
     });
 
     it("Should render avatars without a session and never expose private notes", function() {
-        // Path B: a token link opened by someone with NO account/session.
         cy.clearCookies();
         cy.visit(this.verifyUrl);
 
-        // Photos must work without a session: the page renders avatars inline
-        // (base64 <img> when a photo exists, initials fallback otherwise). There
-        // is deliberately no /api/*/photo sub-request here — that would 403 for a
-        // sessionless visitor. Asserting avatars exist guards that behaviour.
         cy.get(".avatar").should("have.length.greaterThan", 0);
-
-        // Privacy invariant: notes are private and must NEVER appear on the
-        // verification page. The visitor verifies everything *except* notes.
         cy.get("body").should("not.contain", "Notes");
+    });
+
+    it("Should submit verification and create a self-verify note in the database", function() {
+        const uniqueMessage = `Cypress self-verify ${Date.now()}`;
+
+        cy.intercept("POST", "**/external/verify/*").as("verifySubmit");
+
+        cy.visit(this.verifyUrl);
+        cy.get("#confirmVerifyBtn").click();
+        cy.get("#confirm-Verify").should("be.visible");
+
+        cy.get("#UpdateNeeded").click();
+        cy.get("#confirm-info-data").should("be.visible").invoke("val", uniqueMessage);
+        cy.get("#onlineVerifyBtn").click();
+
+        cy.wait("@verifySubmit").its("response.statusCode").should("eq", 200);
+
+        cy.get("#confirm-modal-done").should("not.have.class", "d-none");
+        cy.get("#onlineVerifyBtn").should("have.class", "d-none");
+        cy.get("#onlineVerifySiteBtn").should("not.have.class", "d-none");
+
+        cy.makePrivateAdminAPICall("GET", "/api/families/self-verify", null, 200).then((resp) => {
+            const notes = resp.body.families;
+            const found = notes.find(
+                (n) => Number(n.FamId) === familyId && n.Text === uniqueMessage
+            );
+            expect(found, "self-verify note for the family should exist with the submitted message").to.exist;
+        });
+
+        cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}`, null, 200).then((resp) => {
+            expect(resp.body.Id).to.equal(familyId);
+        });
+    });
+
+    it("Should reject the verify URL once all token uses are exhausted", function() {
+        Cypress._.times(5, () => {
+            cy.request(this.verifyUrl).its("body").should("include", "confirmVerifyBtn");
+        });
+
+        cy.request(this.verifyUrl)
+            .its("body")
+            .should("not.include", "confirmVerifyBtn")
+            .and("include", "Unable to load verification info");
     });
 });

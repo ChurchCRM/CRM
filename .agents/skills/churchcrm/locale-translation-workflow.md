@@ -55,7 +55,7 @@ ChurchCRM translations follow a **three-phase process** with durability guarante
 # MANDATORY: Branch is created automatically by /locale-translate --init
 # Never reuse a prior run's locale/* branch, even from earlier the same day
 ```
-Branch format: `locale/{VERSION}-{YYYY-MM-DD}-{HHMMSS}` (e.g., `locale/7.2.0-2026-04-22-174530`)
+Branch format: `locale/translate/{VERSION}-{YYYY-MM-DD}-{HHMMSS}` (e.g., `locale/translate/7.2.0-2026-04-22-174530`). Pushing to it runs `locale-upload-missing.yml`. See [`docs/locale-pipeline.md`](../../../docs/locale-pipeline.md).
 
 **Why:** Unique timestamps prevent collisions when running multiple sessions per day.
 
@@ -76,11 +76,8 @@ git push origin $(git branch --show-current)
 
 **Why:** Remote work survives cloud session timeouts.
 
-### Rule 4: Upload to POEditor after EVERY push
-```bash
-# MANDATORY: Saves work to cloud
-node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
-```
+### Rule 4: The push uploads to POEditor
+Every push to `locale/translate/**` runs `locale-upload-missing.yml`, which uploads the changed locales and starts the POEditor sync. Upload by hand (`node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`) only if that run failed or your push used the Actions `GITHUB_TOKEN`.
 
 **Why:** POEditor is the source of truth for what's been reviewed. Uploaded terms won't be retranslated if you resume.
 
@@ -90,7 +87,7 @@ node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
 # Do: Run /locale-translate --all again
 
 /locale-translate --all
-# → Automatically creates a fresh locale/{version}-{date}-{time} branch
+# → Automatically creates a fresh locale/translate/{version}-{date}-{time} branch
 # → Already-uploaded terms are skipped by POEditor
 # → No duplicates
 ```
@@ -171,7 +168,7 @@ et
 2. **Apply church-appropriate vocabulary** (see Church Vocabulary table below)
 3. **Commit immediately** — one commit per locale, never batched
 4. **Push immediately** — work is on remote, safe from session timeout
-5. **Upload to POEditor immediately** — `node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`
+5. **The push uploads it** — `locale-upload-missing.yml` sends the locale to POEditor
 
 **Example commit message:**
 ```
@@ -202,9 +199,16 @@ Use these translations for core ChurchCRM terms:
 
 ### Do NOT Translate (Technical Terms)
 
-Keep these as-is:
+Two different situations look similar but need different handling — check which one you're in before translating a term identically to its English key:
+
+1. **Term is embedded inside a longer sentence** (e.g. "Enable SMTP relay", "Export as JSON"). Translate the full sentence normally; the embedded acronym just stays spelled the same inside the translated sentence. Nothing special to do.
+2. **Term is a standalone acronym/token key by itself** (e.g. the missing-terms batch has an entry whose key is exactly `"CSV"` or `"API"` with nothing else). If it's a pure technical/format token that will **never** have a different translation in any locale, it should never have been wrapped in `gettext()`/`i18next.t()` in the first place — see `i18n-localization.md` → "Do Not Wrap Brand / Technical Literals". **Confirmed 2026-09-15 as never-wrap, unwrapped from source: `CSV`, `OFX`, `PDF`, `2FA`, `URL`.** If you see one of these (or something clearly in the same category — a bare file-format or protocol acronym with no other words) as a standalone key in a missing-terms batch, do not spend translation effort on it — flag it as a source-code bug (needs unwrapping) instead of translating it identically and adding it to `english-ok.json`.
+
+For a standalone acronym that genuinely **does** vary by locale (a real word some languages translate and others don't, e.g. `Data`, `Code`, `Auto`, `Access` in the Church Vocabulary sense above) — translate it normally, and if the correct translation for a given locale happens to be identical to the English key, that's valid: add it to `locale/terms/english-ok.json` for that locale (see the section below) so the upload script doesn't skip it as "suspect".
+
+**Always still spelled the same when embedded in a sentence, in any locale:**
 ```
-N/A, name@example.com, @, SMS, SMTP, API, HTTP, HTTPS, JSON, CSV, XML, HTML, CSS, URL, E.164, ICS, TLS, BCC, ChurchCRM, Vonage, MailChimp, OpenLP, GitHub, Gravatar, POEditor, MD5
+N/A, name@example.com, @, SMS, SMTP, API, HTTP, HTTPS, JSON, XML, HTML, CSS, E.164, ICS, TLS, BCC, ChurchCRM, Vonage, MailChimp, OpenLP, GitHub, Gravatar, POEditor, MD5
 ```
 
 ### Parallel Sub-Agents (Fastest for 10+ locales)
@@ -248,8 +252,14 @@ npm run locale:upload:missing -- --yes
 - Discovers all locale folders in `locale/terms/missing/`
 - Validates each locale: checks for proper translations, suspects identical to key, empties
 - Skips suspect and empty terms (keeps batch files clean)
+- **Plurals:** never pipe-joined. `locale/messages.po` decides the shape (`locale/scripts/lib/poeditor-plurals.js`, tested by `npm run locale:test`):
+  - gettext plural (`msgid_plural`, PHP `%d`) → `{ "term": { "one": "…", "few": "…", "other": "…" } }`, one key per slot the batch file shows
+  - i18next `{{count}}` term (`msgctxt "one"` / `"other"`) → `{ "one": { "term": "…" }, "other": { "term": "…" } }`
+  - a batch value still pipe-joined in its first slot is re-slotted when the part count matches, otherwise blanked for re-translation
 - Uploads to POEditor with metadata (parsing & update counts)
 - After successful upload, refreshes local missing-term files (removes accepted terms)
+
+A pipe-joined upload (`"A|B"`) is stored whole in POEditor's first plural slot, and one sent against a `{{count}}` term (which has no empty-context term in POEditor) is dropped. Both leave the term missing forever.
 
 ### Upload Flags
 
@@ -329,7 +339,7 @@ git push origin --delete locale/7.2.0-2026-04-27-143015
 |----------|---------|
 | **Cloud timeout at locale 20 of 39** | First 20 locales are committed, pushed, and already in POEditor. Resume with a new branch — remaining locales continue; no duplicates. |
 | **Local machine crash** | All completed work was pushed — nothing lost. |
-| **Want to inspect a specific run** | `git log origin/locale/{version}-*` — each session's work is immutable on its own branch. |
+| **Want to inspect a specific run** | `git log origin/locale/translate/{version}-*` — each session's work is immutable on its own branch. |
 | **Upload failure for one locale** | Translation is still committed + pushed. Retry upload with `npm run locale:upload:missing -- --locale <CODE>`. |
 
 ---
@@ -511,3 +521,25 @@ for locale, terms in sorted(d.items()):
     print(f'  {locale}: {len(terms)} terms — {terms[:3]}...' if len(terms) > 3 else f'  {locale}: {terms}')
 "
 ```
+
+---
+
+## Regional English Spelling Overrides (en-GB / en-AU / en-CA) <!-- learned: 2026-09-10 -->
+
+Source strings stay **US-spelled**. British/Australian/Canadian spellings (`behaviour`, `colour`, `neighbour`, `enrolment`, `centre`, `catalogue`, …) are ordinary translations of the `en` / `en-au` / `en-ca` POEditor languages.
+
+**Never hand-edit** `src/locale/i18n/en_{GB,AU,CA}.json` or `src/locale/textdomain/en_{GB,AU,CA}/LC_MESSAGES/messages.{po,mo}` — `poeditor-downloader.js` overwrites them on every sync.
+
+Put the overrides in the missing-terms batches instead, then upload:
+
+```
+locale/terms/missing/en/en-1.json          # "en"    = English - Great Britain
+locale/terms/missing/en-au/en-au-1.json     # "en-au"
+locale/terms/missing/en-ca/en-ca-1.json     # "en-ca"
+```
+
+Keyed by the exact US source string; plurals as `{ "one": "...", "other": "..." }`. These three variants are `skip_audit: true` in `src/locale/locales.json`, so the folders aren't auto-created — make them by hand. Then `npm run locale:upload:missing -- --locale en,en-au,en-ca` and let the download job open the sync PR.
+
+`en-ca` ≠ British: keeps `-ize` / `Recognized`, takes `-our` / `-re` / `cheque` / `catalogue` / `enrolment`.
+
+Full detail: [[i18n-localization]] → "Regional English Spelling Overrides".

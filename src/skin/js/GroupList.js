@@ -128,21 +128,21 @@ function initializeGroupList() {
           const hasMembers = full.memberCount > 0;
           const cartBtn = hasMembers
             ? inCart
-              ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="ti ti-shopping-cart-off me-2"></i><span class="cart-label">${i18next.t("Remove all from Cart")}</span></button>`
-              : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add all to Cart")}</span></button>`
+              ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="fa-solid fa-cart-arrow-down me-2"></i><span class="cart-label">${i18next.t("Remove all from Cart")}</span></button>`
+              : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add all to Cart")}</span></button>`
             : "";
           const escapedName = window.CRM.escapeHtml(full.Name || "");
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
-            '<i class="ti ti-dots-vertical"></i>' +
+            '<i class="fa-solid fa-ellipsis-vertical"></i>' +
             "</button>" +
             '<div class="dropdown-menu dropdown-menu-end">' +
-            `<a class="dropdown-item" href="${window.CRM.root}/groups/view/${full.Id}"><i class="ti ti-eye me-2"></i>${i18next.t("View")}</a>` +
-            `<a class="dropdown-item" href="${window.CRM.root}/groups/editor/${full.Id}"><i class="ti ti-pencil me-2"></i>${i18next.t("Edit")}</a>` +
+            `<a class="dropdown-item" href="${window.CRM.root}/groups/view/${full.Id}"><i class="fa-solid fa-eye me-2"></i>${i18next.t("View")}</a>` +
+            `<a class="dropdown-item" href="${window.CRM.root}/groups/editor/${full.Id}"><i class="fa-solid fa-pencil me-2"></i>${i18next.t("Edit")}</a>` +
             (hasMembers ? '<div class="dropdown-divider"></div>' + cartBtn : "") +
             '<div class="dropdown-divider"></div>' +
-            `<button type="button" class="dropdown-item text-danger delete-group" data-group-id="${full.Id}" data-group-name="${escapedName}"><i class="ti ti-trash me-2"></i>${i18next.t("Delete")}</button>` +
+            `<button type="button" class="dropdown-item text-danger delete-group" data-group-id="${full.Id}" data-group-name="${escapedName}"><i class="fa-solid fa-trash me-2"></i>${i18next.t("Delete")}</button>` +
             "</div></div>"
           );
         },

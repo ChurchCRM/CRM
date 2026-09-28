@@ -24,7 +24,7 @@ class States
             $statesFile = file_get_contents($stateFileName);
             MiscUtils::throwIfFailed($statesFile);
 
-            $this->states = json_decode($statesFile, true, 512, JSON_THROW_ON_ERROR);
+            $this->states = json_decode($statesFile, true, 512);
         }
     }
 

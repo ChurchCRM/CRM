@@ -55,5 +55,14 @@ Thumbs.db
 # Agent documentation (large; not needed for the application build)
 .agents/
 
-# DevContainer (not needed inside container)
-.devcontainer/
+# Credentials must never enter build contexts, including nested files.
+**/.env
+**/.env.*
+!**/.env.example
+**/.npmrc
+**/.netrc
+**/auth.json
+**/*.key
+**/*.pem
+**/id_rsa
+**/id_ed25519

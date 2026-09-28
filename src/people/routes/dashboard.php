@@ -44,7 +44,7 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'sPageHeaderButtons' => PageHeader::buttons(array_filter([
             ['label' => gettext('Person Properties'), 'url' => '/PropertyList.php?Type=p', 'icon' => 'fa-list'],
             ['label' => gettext('Family Properties'), 'url' => '/PropertyList.php?Type=f', 'icon' => 'fa-house'],
-            ['label' => gettext('Custom Fields'), 'url' => '/PersonCustomFieldsEditor.php', 'icon' => 'fa-pen-field'],
+            ['label' => gettext('Custom Fields'), 'url' => '/PersonCustomFieldsEditor.php', 'icon' => 'fa-pen-to-square'],
             $isAdmin ? ['label' => gettext('People Settings'), 'collapse' => '#peopleSettings', 'icon' => 'fa-sliders', 'adminOnly' => true] : null,
         ])),
         'sSettingsCollapseId' => $isAdmin ? 'peopleSettings' : null,

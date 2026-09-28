@@ -3,6 +3,7 @@
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext('Login');
 $sBodyClass = 'page-auth page-login';
@@ -28,9 +29,9 @@ $contactWebsite = ChurchMetaData::getChurchWebSite();
     <!-- Card header: logo + church name -->
     <div class="login-card-header">
       <div class="login-header-logo">
-        <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" />
+        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-logo-ink-blue.svg" alt="ChurchCRM" />
       </div>
-      <h2 class="login-header-church-name"><?= ChurchMetaData::getChurchName() ?></h2>
+      <h2 class="login-header-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
       <p class="login-header-tagline"><?= gettext('Community Management Platform') ?></p>
     </div>
 

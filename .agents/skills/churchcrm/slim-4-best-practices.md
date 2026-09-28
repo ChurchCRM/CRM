@@ -210,10 +210,14 @@ return $response
 ```
 
 ### PhpRenderer View Response
+
+There is no container-registered `view` service — construct the renderer in the route,
+pointing it at the module's `views/` directory (`src/admin/routes/system.php:56`).
+
 ```php
 use Slim\Views\PhpRenderer;
 
-$view = $container->get('view');
+$view = new PhpRenderer(__DIR__ . '/../views/');
 return $view->render($response, 'users.php', [
     'sRootPath' => SystemURLs::getRootPath(),
     'sPageTitle' => gettext('Users'),
@@ -222,41 +226,42 @@ return $view->render($response, 'users.php', [
 ]);
 ```
 
-## Dependency Injection via Constructor
+## Obtaining Services — No DI Container <!-- corrected: 2026-09-11 -->
 
-**Pattern:**
+Slim 4 supports a PSR-11 container, but **ChurchCRM does not use one**.
+`MvcAppFactory::create()` (`src/ChurchCRM/Slim/MvcAppFactory.php:35-62`) never calls
+`AppFactory::setContainer()`, so `$app->getContainer()` is `null` and there is no ambient
+`$container` variable in a route file. Services are constructed where they are used.
+
+**Pattern** (`src/admin/routes/system.php:941-997`, trimmed):
 ```php
-class UserService {
-    public function __construct(
-        private UserRepository $userRepo,
-        private LoggerInterface $logger
-    ) {}
-    
-    public function createUser($data): User {
-        $this->logger->info('Creating user', ['email' => $data['email']]);
-        return $this->userRepo->save($data);
-    }
+use ChurchCRM\Service\UserService;
+use ChurchCRM\Utils\InputUtils;
+
+function adminUserEditorNew(Request $request, Response $response): Response
+{
+    $userService = new UserService();
+
+    $body     = (array) $request->getParsedBody();
+    $personId = (int) ($body['PersonID'] ?? 0);
+    $userName = InputUtils::sanitizeText((string) ($body['UserName'] ?? ''));
+    $perms    = $userService->normalizeAccessMode($body);
+
+    $userService->createUser($personId, $perms, $userName);
+    // ...
 }
-
-// Register in container
-$container->set('UserService', fn(Container $c) => new UserService(
-    $c->get('UserRepository'),
-    $c->get('LoggerInterface')
-));
-
-// Use in routes
-$app->post('/users', function($request, $response) use ($container) {
-    $service = $container->get('UserService');
-    $user = $service->createUser($request->getParsedBody());
-    return SlimUtils::renderJSON($response, ['data' => $user]);
-});
 ```
 
+`UserService::createUser()` is `createUser(int $personId, array $perms, string $userName): User`
+(`src/ChurchCRM/Service/UserService.php:239`) — the raw parsed body is never passed straight
+through; the route unpacks and casts it first.
+
 **Key Points:**
-- NEVER use global `$container` directly
-- Always inject dependencies via constructor
-- Register services in container at startup
-- Use type hints for IDE support
+- Never reference `$container` or `$app->getContainer()` — both are fatal here
+- Construct the service inside the handler; services hold no per-request state worth sharing
+- Services that expose only static methods (`AppIntegrityService`, `LocaleService`, …) are
+  called statically and never instantiated
+- Full rules and real call sites: [`service-layer.md`](./service-layer.md)
 
 ## Common Patterns
 

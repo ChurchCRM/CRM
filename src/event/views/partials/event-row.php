@@ -34,7 +34,7 @@ $_eventRowId = (int) $event['id'];
   </td>
   <td class="text-center">
     <a href="<?= $sRootPath ?>/event/checkin/<?= $_eventRowId ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Manage Check-ins') ?>">
-      <i class="ti ti-clipboard-check me-1"></i>
+      <i class="fa-solid fa-clipboard-check me-1"></i>
       <?php if ($event['attendee_count'] > 0): ?>
         <span class="badge bg-primary text-white"><?= $event['attendee_count'] ?></span>
       <?php else: ?>

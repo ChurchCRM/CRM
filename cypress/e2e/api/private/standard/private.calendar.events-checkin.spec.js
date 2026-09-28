@@ -15,6 +15,16 @@ describe("API Event Check-in Endpoints", () => {
     // No browser login — these are pure API tests using x-api-key auth
     // (cy.makePrivateAdminAPICall sets the header for us).
 
+    // quick-create returns the existing event when one already exists for that
+    // date and type, so tests that write attendance give it a date no other
+    // spec or run uses. Their check-ins then land only on events this run
+    // created, never on a seeded or shared event (#9799).
+    const runDayOffset = Math.floor(Date.now() / 1000) % 3000;
+    const ownEventDate = (slot) => {
+        const d = new Date(Date.UTC(2090, 0, 1 + runDayOffset * 3 + slot));
+        return d.toISOString().slice(0, 10);
+    };
+
     describe("GET /api/events", () => {
         it("Returns the events list wrapped in an Events array", () => {
             // Make sure at least one event exists so the response shape is meaningful
@@ -180,10 +190,11 @@ describe("API Event Check-in Endpoints", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
-                { eventTypeId: 2, groupId: 1 },
+                { eventTypeId: 2, groupId: 1, date: ownEventDate(0) },
                 200,
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
+                expect(response.body.created, "event must be new, not a reused one").to.be.true;
                 testEventId = response.body.eventId;
             });
         });
@@ -316,7 +327,7 @@ describe("API Event Check-in Endpoints", () => {
 
             // Regression: the check-in/out flow now optionally records WHO
             // checked the person out (parent picking up child, etc.) via the
-            // checkedOutById field. The bootbox prompt in event-checkin.js
+            // checkedOutById field. The native BS5 modal in event-checkin.js
             // sends this; verify the API persists it on the EventAttend row.
             it("Records checkedOutById when supplied", () => {
                 expect(testEventId, "before() must have populated testEventId").to.be.a("number");
@@ -376,11 +387,18 @@ describe("API Event Check-in Endpoints", () => {
                 expect(testEventId, "before() must have populated testEventId").to.be.a("number");
 
                 cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/events/${testEventId}/checkin-all`,
+                    null,
+                    200,
+                );
+                cy.makePrivateAdminAPICall(
                     "GET",
                     `/api/events/${testEventId}/roster`,
                     null,
                     200,
                 ).then((response) => {
+                    expect(response.body.members, "group 1 roster").to.have.length.greaterThan(0);
                     const notCheckedIn = response.body.members.filter(
                         (m) => m.status === "not_checked_in",
                     );
@@ -514,17 +532,24 @@ describe("API Event Check-in Endpoints", () => {
             );
         });
 
-        it("Returns 400 when date range exceeds 1 year", () => {
+        // #9735 replaced this endpoint's private "1 year" range cap with the
+        // one shared occurrence cap (366) that POST /events/repeat also
+        // enforces, so a two-year weekly range (~104 events) is now accepted
+        // and an over-cap range is what returns 400. Parity between the two
+        // endpoints is pinned in private.calendar.recurring-parity.spec.js.
+        it("Returns 400 when the range exceeds the shared occurrence cap", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/generate-recurring",
                 {
                     eventTypeId: 1,
-                    startDate: "2026-01-01",
-                    endDate: "2028-01-01",
+                    startDate: "2040-01-01",
+                    endDate: "2050-01-01",
                 },
                 400,
-            );
+            ).then((resp) => {
+                expect(resp.body.message).to.contain("Too many occurrences");
+            });
         });
 
         it("Returns 401 when not authenticated", () => {
@@ -554,10 +579,11 @@ describe("API Event Check-in Endpoints", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
-                { eventTypeId: 1 },
+                { eventTypeId: 1, date: ownEventDate(1) },
                 200,
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
+                expect(response.body.created, "event must be new, not a reused one").to.be.true;
                 eventId = response.body.eventId;
             });
         });
@@ -634,10 +660,11 @@ describe("API Event Check-in Endpoints", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
-                { eventTypeId: 1 },
+                { eventTypeId: 1, date: ownEventDate(2) },
                 200,
             ).then((response) => {
                 expect(response.body).to.have.property("eventId");
+                expect(response.body.created, "event must be new, not a reused one").to.be.true;
                 eventId = response.body.eventId;
                 // Check someone in so we have an attendance record to delete
                 cy.makePrivateAdminAPICall(

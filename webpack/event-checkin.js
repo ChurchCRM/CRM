@@ -5,6 +5,9 @@
  * Uses TomSelect AJAX for person search.
  */
 
+import { attachToModal, initAllPersonSelects } from "./common/person-select";
+import { escapeHtml } from "./utils/escape-html";
+
 $(() => {
   // Initialize DataTable for already checked-in people
   if ($("#checkedinTable").length > 0) {
@@ -20,48 +23,24 @@ $(() => {
  * Called on document ready and can be called again if new fields are added dynamically
  */
 function initializePersonSearchFields() {
-  // Initialize TomSelect on all person search fields that haven't been initialized yet
-  $(".person-search").each(function () {
-    const el = this;
-
-    // Skip if already initialized
-    if (el.tomselect) {
-      return;
-    }
-
-    const placeholder = $(el).data("placeholder") || "";
-
-    new TomSelect(el, {
-      valueField: "objid",
-      labelField: "text",
-      searchField: "text",
-      placeholder: placeholder,
-      load: (query, callback) => {
-        if (query.length < 2) return callback();
-        fetch(`${window.CRM.root}/api/persons/search/${encodeURIComponent(query)}`)
-          .then((response) => response.json())
-          .then((data) => {
-            callback(
-              data.map((person) => ({
-                objid: person.objid,
-                text: person.text,
-                uri: person.uri,
-              })),
-            );
-          })
-          .catch(() => {
-            callback();
-          });
-      },
-      render: {
-        option: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
-        item: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
-      },
-      onChange: function (value) {
-        // Dispatch a custom event so bindPersonSearchEvents can react
-        $(el).trigger("tomselect:change", [value, this]);
-      },
-    });
+  // Shared person-search TomSelect (#9819). The valueField/labelField/searchField
+  // triple, the 2-character-guarded load callback and the placeholder read from
+  // data-placeholder all live in webpack/common/person-select.ts now; only the
+  // check-in specific mapping, rendering and change handler stay here.
+  initAllPersonSelects({
+    mapResult: (person) => ({
+      objid: person.objid,
+      text: person.text,
+      uri: person.uri,
+    }),
+    render: {
+      option: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
+      item: (data, escapeHtmlTs) => `<div>${escapeHtmlTs(data.text)}</div>`,
+    },
+    onChange: function (value, el) {
+      // Dispatch a custom event so bindPersonSearchEvents can react
+      $(el).trigger("tomselect:change", [value, this]);
+    },
   });
 
   // Bind event handlers (use .off first to prevent duplicate bindings)
@@ -146,19 +125,6 @@ function displayPersonDetails(element, person) {
   } else {
     element.html("").hide();
   }
-}
-
-/**
- * Escape HTML entities to prevent XSS
- *
- * @param {string} text - Text to escape
- * @returns {string} Escaped text
- */
-function escapeHtml(text) {
-  if (!text) return "";
-  const div = document.createElement("div");
-  div.textContent = text;
-  return div.innerHTML;
 }
 
 // =============================================================================
@@ -302,7 +268,7 @@ function loadRoster(eventId) {
 function buildMemberCard(member, eventId) {
   const isCheckedIn = member.status === "checked_in";
   const btnClass = isCheckedIn ? "btn-outline-secondary" : "btn-success";
-  const btnIcon = isCheckedIn ? "ti-door-exit" : "ti-check";
+  const btnIcon = isCheckedIn ? "fa-right-from-bracket" : "fa-check";
   const btnText = isCheckedIn ? i18next.t("Check Out") : i18next.t("Check In");
   const action = isCheckedIn ? "checkout" : "checkin";
 
@@ -354,7 +320,7 @@ function buildMemberCard(member, eventId) {
     '" data-event-id="' +
     eventId +
     '">' +
-    '<i class="ti ' +
+    '<i class="fa-solid ' +
     btnIcon +
     ' me-1"></i>' +
     btnText +
@@ -495,83 +461,140 @@ $(() => {
 
   function openCheckoutByDialog(personId, personName, checkinId, checkinName) {
     const safeName = window.CRM.escapeHtml(String(personName));
-    const dialog = bootbox.dialog({
-      title: `${i18next.t("Check out")}: ${safeName}`,
-      message:
-        '<p class="mb-2">' +
-        i18next.t("Optional — record who is checking this person out (e.g. a parent picking up a child).") +
-        "</p>" +
-        '<div class="input-group">' +
-        '<select class="form-select" id="checkoutBySelect" placeholder="' +
-        i18next.t("Search for supervisor...") +
-        '"></select>' +
-        '<button type="button" class="btn btn-outline-secondary" id="assignMeCheckout" title="' +
-        i18next.t("Assign to me") +
-        '">' +
-        '<i class="ti ti-user-check"></i>' +
-        "</button>" +
-        "</div>" +
-        '<small class="text-muted mt-2 d-block">' +
-        i18next.t("Leave blank to check out without recording the supervisor.") +
-        "</small>",
-      buttons: {
-        cancel: {
-          label: `<i class="ti ti-x"></i> ${i18next.t("Cancel")}`,
-          className: "btn-link",
-        },
-        skip: {
-          label: `<i class="ti ti-check"></i> ${i18next.t("Skip & Check Out")}`,
-          className: "btn-outline-warning",
-          callback: () => {
-            performCheckout(personId, null);
-          },
-        },
-        confirm: {
-          label: `<i class="ti ti-user-check"></i> ${i18next.t("Confirm Check Out")}`,
-          className: "btn-primary",
-          callback: () => {
-            const val = $("#checkoutBySelect").val();
-            const supervisorId = val ? parseInt(val, 10) : null;
-            performCheckout(personId, supervisorId);
-          },
-        },
+
+    // Use a fixed modal ID so concurrent calls can find and properly dispose
+    // any already-open instance before creating a new one. A Date.now()-based
+    // ID is always unique, making the getElementById dedup guard below
+    // unreachable dead code.
+    const modalId = "crm-checkout-by-modal";
+
+    const bodyHtml =
+      '<p class="mb-2">' +
+      i18next.t("Optional — record who is checking this person out (e.g. a parent picking up a child).") +
+      "</p>" +
+      '<div class="input-group">' +
+      '<select class="form-select" id="checkoutBySelect" placeholder="' +
+      i18next.t("Search for supervisor...") +
+      '"></select>' +
+      '<button type="button" class="btn btn-outline-secondary" id="assignMeCheckout" title="' +
+      i18next.t("Assign to me") +
+      '">' +
+      '<i class="fa-solid fa-user-check"></i>' +
+      "</button>" +
+      "</div>" +
+      '<small class="text-muted mt-2 d-block">' +
+      i18next.t("Leave blank to check out without recording the supervisor.") +
+      "</small>";
+
+    const existing = document.getElementById(modalId);
+    if (existing) {
+      // Dispose the BS5 Modal instance before removing the element to avoid
+      // event-listener and backdrop leaks.
+      window.bootstrap.Modal.getInstance(existing)?.dispose();
+      existing.remove();
+    }
+
+    const wrapper = document.createElement("div");
+    wrapper.id = modalId;
+    wrapper.className = "modal fade";
+    wrapper.setAttribute("tabindex", "-1");
+    wrapper.setAttribute("aria-modal", "true");
+    wrapper.setAttribute("role", "dialog");
+    wrapper.setAttribute("aria-labelledby", `${modalId}-title`);
+    wrapper.innerHTML =
+      '<div class="modal-dialog modal-dialog-centered">' +
+      '<div class="modal-content">' +
+      '<div class="modal-header">' +
+      `<h5 class="modal-title" id="${modalId}-title">` +
+      i18next.t("Check out") +
+      ": " +
+      safeName +
+      "</h5>" +
+      '<button type="button" class="btn-close" data-bs-dismiss="modal"></button>' +
+      "</div>" +
+      '<div class="modal-body">' +
+      bodyHtml +
+      "</div>" +
+      '<div class="modal-footer">' +
+      '<button type="button" class="btn btn-link" id="checkoutCancelBtn" data-bs-dismiss="modal">' +
+      '<i class="fa-solid fa-xmark"></i> ' +
+      i18next.t("Cancel") +
+      "</button>" +
+      '<button type="button" class="btn btn-outline-warning" id="checkoutSkipBtn">' +
+      '<i class="fa-solid fa-check"></i> ' +
+      i18next.t("Skip & Check Out") +
+      "</button>" +
+      '<button type="button" class="btn btn-primary" id="checkoutConfirmBtn">' +
+      '<i class="fa-solid fa-user-check"></i> ' +
+      i18next.t("Confirm Check Out") +
+      "</button>" +
+      "</div></div></div>";
+
+    document.body.appendChild(wrapper);
+    const bsModal = new window.bootstrap.Modal(wrapper, { backdrop: "static" });
+
+    // Shared person-search TomSelect (#9819). attachToModal owns the
+    // shown.bs.modal → init / hidden.bs.modal → destroy() pair: TomSelect needs
+    // the modal's CSS transition to have finished before it can measure the
+    // control. Registered BEFORE the wrapper's own hidden handler below so the
+    // picker is torn down before the modal element leaves the DOM.
+    attachToModal(wrapper, "#checkoutBySelect", {
+      placeholder: i18next.t("Search for supervisor..."),
+      mapResult: (p) => ({ objid: p.objid, text: p.text }),
+      onInit: (tomSelectInstance) => {
+        // Pre-populate with the person who checked them in (if available)
+        if (checkinId && checkinName) {
+          tomSelectInstance.addOption({ objid: checkinId, text: checkinName });
+          tomSelectInstance.setValue(checkinId);
+        }
+
+        // "Assign to me" button: set the current logged-in user as supervisor
+        const assignMeBtn = wrapper.querySelector("#assignMeCheckout");
+        if (assignMeBtn) {
+          assignMeBtn.addEventListener("click", () => {
+            const userId = window.CRM.userId;
+            const userName = window.CRM.userName;
+            if (userId && userName) {
+              tomSelectInstance.addOption({ objid: userId, text: userName });
+              tomSelectInstance.setValue(userId);
+            }
+          });
+        }
       },
     });
 
-    // Initialize TomSelect on the supervisor search field once the modal is shown
-    dialog.on("shown.bs.modal", () => {
-      const el = document.getElementById("checkoutBySelect");
-      if (!el || el.tomselect) return;
-      const ts = new TomSelect(el, {
-        valueField: "objid",
-        labelField: "text",
-        searchField: "text",
-        placeholder: i18next.t("Search for supervisor..."),
-        load: (query, callback) => {
-          if (query.length < 2) return callback();
-          fetch(`${window.CRM.root}/api/persons/search/${encodeURIComponent(query)}`)
-            .then((res) => res.json())
-            .then((data) => callback(data.map((p) => ({ objid: p.objid, text: p.text }))))
-            .catch(() => callback());
-        },
-      });
-
-      // Pre-populate with the person who checked them in (if available)
-      if (checkinId && checkinName) {
-        ts.addOption({ objid: checkinId, text: checkinName });
-        ts.setValue(checkinId);
-      }
-
-      // "Assign to me" button in checkout dialog
-      $("#assignMeCheckout").on("click", () => {
-        const userId = window.CRM.userId;
-        const userName = window.CRM.userName;
-        if (userId && userName) {
-          ts.addOption({ objid: userId, text: userName });
-          ts.setValue(userId);
+    // Remove the modal element once hidden
+    wrapper.addEventListener(
+      "hidden.bs.modal",
+      () => {
+        try {
+          bsModal.dispose();
+        } catch (_e) {
+          // ignore
         }
-      });
+        if (wrapper.parentNode) wrapper.remove();
+      },
+      { once: true },
+    );
+
+    // Skip: check out without recording a supervisor
+    const skipBtn = wrapper.querySelector("#checkoutSkipBtn");
+    skipBtn.addEventListener("click", () => {
+      bsModal.hide();
+      performCheckout(personId, null);
     });
+
+    // Confirm: check out with the selected supervisor (read via TomSelect API)
+    const confirmBtn = wrapper.querySelector("#checkoutConfirmBtn");
+    confirmBtn.addEventListener("click", () => {
+      const el = wrapper.querySelector("#checkoutBySelect");
+      const val = el?.tomselect ? el.tomselect.getValue() : null;
+      const supervisorId = val ? parseInt(val, 10) : null;
+      bsModal.hide();
+      performCheckout(personId, supervisorId);
+    });
+
+    bsModal.show();
   }
 
   function performCheckout(personId, checkedOutById) {
@@ -595,7 +618,7 @@ $(() => {
         $row
           .find(".checkout-btn")
           .replaceWith(
-            `<span class="dropdown-item disabled text-success"><i class="ti ti-check me-2"></i>${i18next.t("Checked Out")}</span>`,
+            `<span class="dropdown-item disabled text-success"><i class="fa-solid fa-check me-2"></i>${i18next.t("Checked Out")}</span>`,
           );
         window.CRM.notify(i18next.t("Person checked out."), { type: "success", delay: 3000 });
 
@@ -619,8 +642,8 @@ $(() => {
       title: i18next.t("Delete attendance record?"),
       message: `${i18next.t("Delete check-in record for")} <strong>${window.CRM.escapeHtml(String(personName || ""))}</strong>?`,
       buttons: {
-        cancel: { label: `<i class="ti ti-x"></i> ${i18next.t("Cancel")}` },
-        confirm: { label: `<i class="ti ti-trash"></i> ${i18next.t("Delete")}`, className: "btn-danger" },
+        cancel: { label: `<i class="fa-solid fa-xmark"></i> ${i18next.t("Cancel")}` },
+        confirm: { label: `<i class="fa-solid fa-trash"></i> ${i18next.t("Delete")}`, className: "btn-danger" },
       },
       callback: (confirmed) => {
         if (!confirmed) return;

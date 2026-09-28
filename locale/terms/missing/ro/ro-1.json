@@ -1,21 +1,8 @@
 {
-  "Important": "Important",
-  "Major": "Major",
-  "Catalog": "Catalog",
-  "Copied {{count}} members": {
-    "one": "{{count}} membru copiat",
-    "other": "{{count}} membri copiați"
-  },
-  "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": {
-    "one": "Această listă are {{count}} destinatar — prea mulți pentru un link mailto:. Folosiți Copiați adresele în schimb.",
-    "other": "Această listă are {{count}} destinatari — prea mulți pentru un link mailto:. Folosiți Copiați adresele în schimb."
-  },
-  "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": {
-    "one": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți Copiați adresele în schimb.",
-    "other": "Prea mulți destinatari pentru clientul de e-mail ({{count}} > {{max}}). Folosiți Copiați adresele în schimb."
-  },
-  "{{count}} min left": {
-    "one": "{{count}} minut rămas",
-    "other": "{{count}} minute rămase"
-  }
+  "Important": "",
+  "Major": "",
+  "Catalog": "",
+  "N/A": "",
+  "Individual": "",
+  "Link": ""
 }

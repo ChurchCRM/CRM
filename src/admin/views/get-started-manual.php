@@ -31,7 +31,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?= gettext('A family represents a household. It holds the shared address and home phone number for all family members living together.') ?>
                             </p>
                             <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php" class="btn btn-success btn-sm">
-                                <i class="fa-solid fa-house-circle-plus me-1"></i><?= gettext('Add First Family') ?>
+                                <i class="fa-solid fa-house-chimney me-1"></i><?= gettext('Add First Family') ?>
                             </a>
                         </div>
                     </div>
@@ -94,7 +94,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="row">
                         <div class="col-sm-4 mb-2 mb-sm-0">
                             <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php" class="btn btn-success w-100">
-                                <i class="fa-solid fa-house-circle-plus me-1"></i><?= gettext('Add First Family') ?>
+                                <i class="fa-solid fa-house-chimney me-1"></i><?= gettext('Add First Family') ?>
                             </a>
                         </div>
                         <div class="col-sm-4 mb-2 mb-sm-0">

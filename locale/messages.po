@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-08 19:21+0000\n"
+"POT-Creation-Date: 2026-09-26 05:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,11 +155,23 @@ msgid "%s Fundraisers"
 msgstr ""
 
 #, php-format
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr ""
+
+#, php-format
 msgid "%s of %s goal raised"
 msgstr ""
 
 #, php-format
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr ""
+
+#, php-format
 msgid "%s's Account"
+msgstr ""
+
+#, php-format
+msgid "%s: Please verify your family's information"
 msgstr ""
 
 msgid "(No assigned family)"
@@ -233,9 +245,6 @@ msgstr ""
 msgid "2. Fill in your data"
 msgstr ""
 
-msgid "2FA"
-msgstr ""
-
 msgid "2FA Enabled"
 msgstr ""
 
@@ -267,6 +276,9 @@ msgid "A downloadUrl is required to install a plugin."
 msgstr ""
 
 msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr ""
+
+msgid "A geocoding error occurred — try again later"
 msgstr ""
 
 msgid "A household. Stores the shared mailing address and home phone."
@@ -323,6 +335,9 @@ msgstr ""
 msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
 msgstr ""
 
+msgid "Accept"
+msgstr ""
+
 msgid "Accepted format: .csv"
 msgstr ""
 
@@ -363,6 +378,9 @@ msgstr ""
 msgid "Account Unlocked"
 msgstr ""
 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr ""
+
 msgid "Account locked"
 msgstr ""
 
@@ -396,7 +414,13 @@ msgstr ""
 msgid "Active Groups"
 msgstr ""
 
+msgid "Active Now"
+msgstr ""
+
 msgid "Active Users"
+msgstr ""
+
+msgid "Active, seconds left: {{seconds}}"
 msgstr ""
 
 msgid "Add"
@@ -537,6 +561,9 @@ msgstr ""
 msgid "Add Results to Cart"
 msgstr ""
 
+msgid "Add Role"
+msgstr ""
+
 msgid "Add Students"
 msgstr ""
 
@@ -588,6 +615,9 @@ msgstr ""
 msgid "Add custom external links to the navigation menu."
 msgstr ""
 
+msgid "Add custom properties specific to this group"
+msgstr ""
+
 msgid "Add event permission"
 msgstr ""
 
@@ -630,6 +660,9 @@ msgstr ""
 msgid "Add staff or volunteers as system users"
 msgstr ""
 
+msgid "Add the relevant records first."
+msgstr ""
+
 msgid "Add to Buyer List"
 msgstr ""
 
@@ -655,6 +688,9 @@ msgstr ""
 msgid "Adding Links"
 msgstr ""
 
+msgid "Adding..."
+msgstr ""
+
 msgid "Additional Information"
 msgstr ""
 
@@ -674,6 +710,9 @@ msgid "Address entered but coordinates not yet set"
 msgstr ""
 
 msgid "Address has been geocoded (coordinates stored)"
+msgstr ""
+
+msgid "Address is incomplete (missing city, state, and ZIP)"
 msgstr ""
 
 msgid "Address is required"
@@ -716,7 +755,7 @@ msgstr ""
 msgid "Advanced filtering by group, classification, and role"
 msgstr ""
 
-msgid "Advanced: choose a specific target version"
+msgid "Advanced: Install a specific version instead"
 msgstr ""
 
 msgid "Affected Files"
@@ -757,6 +796,9 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr ""
+
 msgid "All Checks Passed"
 msgstr ""
 
@@ -781,10 +823,16 @@ msgstr ""
 msgid "All Individuals"
 msgstr ""
 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr ""
+
 msgid "All Members"
 msgstr ""
 
 msgid "All Methods"
+msgstr ""
+
+msgid "All Months"
 msgstr ""
 
 msgid "All Payments"
@@ -797,6 +845,9 @@ msgid "All Statuses"
 msgstr ""
 
 msgid "All System Settings"
+msgstr ""
+
+msgid "All Tellers"
 msgstr ""
 
 msgid "All Time"
@@ -827,7 +878,13 @@ msgstr ""
 msgid "All deposits within date range"
 msgstr ""
 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr ""
+
 msgid "All events and attendance records"
+msgstr ""
+
+msgid "All families already have coordinates."
 msgstr ""
 
 msgid "All financial data (pledges, payments, deposits)"
@@ -947,6 +1004,12 @@ msgstr ""
 msgid "Amount ($)"
 msgstr ""
 
+msgid "Amount Max"
+msgstr ""
+
+msgid "Amount Min"
+msgstr ""
+
 msgid "Amount exceeds maximum allowed (999999.99)"
 msgstr ""
 
@@ -971,10 +1034,16 @@ msgstr ""
 msgid "An error occurred processing the plugin request"
 msgstr ""
 
+msgid "An error occurred while deleting files."
+msgstr ""
+
 msgid "An error occurred while deleting the family."
 msgstr ""
 
 msgid "An error occurred while moving donations."
+msgstr ""
+
+msgid "An error occurred while rendering the error page."
 msgstr ""
 
 msgid "An error occurred while saving. Please try again."
@@ -984,6 +1053,9 @@ msgid "An error occurred."
 msgstr ""
 
 msgid "An error occurred. Please contact your system administrator."
+msgstr ""
+
+msgid "An error occurred. Please try again."
 msgstr ""
 
 msgid "An individual church member. Stores name, birthday, personal email, and mobile."
@@ -996,6 +1068,9 @@ msgid "An option with that name already exists"
 msgstr ""
 
 msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr ""
+
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
 msgstr ""
 
 msgid "An unexpected error occurred."
@@ -1026,6 +1101,10 @@ msgid "Anniversary"
 msgstr ""
 
 msgid "Anniversary Date"
+msgstr ""
+
+#, php-format
+msgid "Anniversary: %s"
 msgstr ""
 
 msgid "Anonymous"
@@ -1106,22 +1185,34 @@ msgstr ""
 msgid "Arabic - Egypt"
 msgstr ""
 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr ""
+
 msgid "Are you sure you want to continue?"
 msgstr ""
 
 msgid "Are you sure you want to delete"
 msgstr ""
 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr ""
+
 msgid "Are you sure you want to delete all orphaned files?"
+msgstr ""
+
+msgid "Are you sure you want to delete kiosk"
+msgstr ""
+
+msgid "Are you sure you want to delete the link"
 msgstr ""
 
 msgid "Are you sure you want to delete the selected"
 msgstr ""
 
-msgid "Are you sure you want to delete this deposit?"
+msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr ""
 
-msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgid "Are you sure you want to delete this fund?"
 msgstr ""
 
 msgid "Are you sure you want to delete this fundraiser?"
@@ -1146,6 +1237,9 @@ msgid "Are you sure you want to remove"
 msgstr ""
 
 msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr ""
+
+msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr ""
 
 msgid "Are you sure you want to remove this person from"
@@ -1224,6 +1318,9 @@ msgstr ""
 msgid "Assigned event not found"
 msgstr ""
 
+msgid "Assignment"
+msgstr ""
+
 msgid "Associated Fund"
 msgstr ""
 
@@ -1300,7 +1397,13 @@ msgstr ""
 msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
 msgstr ""
 
+msgid "Auto"
+msgstr ""
+
 msgid "Auto TLS"
+msgstr ""
+
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
 msgstr ""
 
 #. plugin:external-backup:section:2:title
@@ -1392,9 +1495,6 @@ msgstr ""
 msgid "Back to Group"
 msgstr ""
 
-msgid "Back to Group List"
-msgstr ""
-
 msgid "Back to Groups Dashboard"
 msgstr ""
 
@@ -1423,6 +1523,16 @@ msgid "Back up modified files before upgrading if you want to keep your changes.
 msgstr ""
 
 msgid "Background Color"
+msgstr ""
+
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr ""
+
+#, php-format
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr ""
+
+msgid "Backing up..."
 msgstr ""
 
 msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
@@ -1464,6 +1574,9 @@ msgstr ""
 msgid "Backup created but failed to copy to remote server"
 msgstr ""
 
+msgid "Backup downloaded."
+msgstr ""
+
 msgid "Backup downloaded. Server copy removed."
 msgstr ""
 
@@ -1489,6 +1602,9 @@ msgid "Backup to External Storage Now"
 msgstr ""
 
 msgid "Backup to WebDAV Now"
+msgstr ""
+
+msgid "Backup uploaded successfully"
 msgstr ""
 
 #. Context: countries
@@ -1606,6 +1722,10 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Birthdays"
+msgstr ""
+
+#. Context: query_qry
+msgid "Birthdays & Anniversaries"
 msgstr ""
 
 msgid "Birthdays and anniversaries. Default: m/d"
@@ -1733,7 +1853,7 @@ msgstr ""
 msgid "Buyers Registered"
 msgstr ""
 
-msgid "Buyers This Year"
+msgid "Buyers This Fiscal Year"
 msgstr ""
 
 msgid "Buyers for this fundraiser"
@@ -1742,7 +1862,7 @@ msgstr ""
 msgid "By"
 msgstr ""
 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
 msgstr ""
 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
@@ -1752,9 +1872,6 @@ msgid "By deleting this field, you will irrevocably lose all group member data a
 msgstr ""
 
 msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
-msgstr ""
-
-msgid "By deleting this fund, you may affect historical donation records!"
 msgstr ""
 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
@@ -1820,6 +1937,9 @@ msgid "Campaigns Sent"
 msgstr ""
 
 msgid "Can only review and verify their own family. No other access."
+msgstr ""
+
+msgid "Can't change your own active status"
 msgstr ""
 
 msgid "Can't delete yourself"
@@ -1897,6 +2017,12 @@ msgstr ""
 
 #, php-format
 msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr ""
+
+msgid "Cannot delete: fund has associated pledges"
+msgstr ""
+
+msgid "Cannot edit a payment in a closed deposit"
 msgstr ""
 
 msgid "Cannot execute query."
@@ -1979,6 +2105,9 @@ msgstr ""
 msgid "ChMeetings Export"
 msgstr ""
 
+msgid "ChMeetings export completed successfully"
+msgstr ""
+
 msgid "ChMeetings-compatible column format"
 msgstr ""
 
@@ -2019,10 +2148,10 @@ msgstr ""
 msgid "Change this in System Settings."
 msgstr ""
 
-msgid "Changelog"
+msgid "Changes not saved! Please correct and try again!"
 msgstr ""
 
-msgid "Changes not saved! Please correct and try again!"
+msgid "Changes saved successfully"
 msgstr ""
 
 msgid "Changes will not take effect until next logon."
@@ -2067,6 +2196,12 @@ msgstr ""
 msgid "Check Out All"
 msgstr ""
 
+msgid "Check everyone out and deactivate all"
+msgstr ""
+
+msgid "Check everyone out and deactivate this event?"
+msgstr ""
+
 msgid "Check for Updates"
 msgstr ""
 
@@ -2087,6 +2222,9 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr ""
 
 msgid "Check out"
+msgstr ""
+
+msgid "Check your email for a password reset link"
 msgstr ""
 
 msgid "Check-in"
@@ -2180,9 +2318,6 @@ msgstr ""
 msgid "Choose an event..."
 msgstr ""
 
-msgid "Choose between light and dark color scheme"
-msgstr ""
-
 #. Context: queryparameters_qrp
 msgid "Choose customer person field"
 msgstr ""
@@ -2216,6 +2351,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Christmas Island"
+msgstr ""
+
+msgid "Church"
 msgstr ""
 
 msgid "Church Address"
@@ -2319,6 +2457,9 @@ msgstr ""
 msgid "Classification"
 msgstr ""
 
+msgid "Classifications"
+msgstr ""
+
 msgid "Clean Up Files"
 msgstr ""
 
@@ -2404,6 +2545,9 @@ msgstr ""
 msgid "Close All Stuck Events"
 msgstr ""
 
+msgid "Close stuck events?"
+msgstr ""
+
 msgid "Closed"
 msgstr ""
 
@@ -2411,6 +2555,9 @@ msgid "Closed Deposits"
 msgstr ""
 
 msgid "Closed vs Total"
+msgstr ""
+
+msgid "Closest"
 msgstr ""
 
 msgid "Closing"
@@ -2452,6 +2599,9 @@ msgid "Comma-separated query IDs that require finance permissions to view"
 msgstr ""
 
 msgid "Comment"
+msgstr ""
+
+msgid "Comments"
 msgstr ""
 
 msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
@@ -2703,21 +2853,10 @@ msgstr ""
 msgid "Cook Islands"
 msgstr ""
 
-msgid "Coordinate database file name"
-msgstr ""
-
 msgid "Coordinates Updated"
 msgstr ""
 
 msgid "Copied to clipboard"
-msgstr ""
-
-msgctxt "one"
-msgid "Copied {{count}} members"
-msgstr ""
-
-msgctxt "other"
-msgid "Copied {{count}} members"
 msgstr ""
 
 msgid "Copied!"
@@ -2771,6 +2910,12 @@ msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
 msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr ""
+
+msgid "Could not load data"
+msgstr ""
+
+msgid "Could not load email preview. Please close and try again."
 msgstr ""
 
 msgid "Could not load note."
@@ -2908,6 +3053,9 @@ msgstr ""
 msgid "Creating Backup..."
 msgstr ""
 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr ""
+
 msgid "Creating backup..."
 msgstr ""
 
@@ -2949,6 +3097,9 @@ msgid "Currency presets"
 msgstr ""
 
 msgid "Currency symbol to display next to monetary amounts (e.g. $, €, £, CHF, CAD $)."
+msgstr ""
+
+msgid "Current"
 msgstr ""
 
 msgid "Current $URL[0] value"
@@ -3047,6 +3198,9 @@ msgstr ""
 msgid "Custom port"
 msgstr ""
 
+msgid "Custom properties for this group"
+msgstr ""
+
 msgid "Customizable report with filtering by date, fund, family, and payment method."
 msgstr ""
 
@@ -3091,9 +3245,6 @@ msgstr ""
 msgid "Data Quality"
 msgstr ""
 
-msgid "Data file format"
-msgstr ""
-
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr ""
 
@@ -3131,6 +3282,9 @@ msgid "Database information confirmation and correction report signer"
 msgstr ""
 
 msgid "Database reset failed"
+msgstr ""
+
+msgid "Database reset failed."
 msgstr ""
 
 msgid "Database restore failed"
@@ -3181,9 +3335,6 @@ msgstr ""
 msgid "Date is required"
 msgstr ""
 
-msgid "Date range cannot exceed 1 year"
-msgstr ""
-
 msgid "Day"
 msgstr ""
 
@@ -3206,6 +3357,9 @@ msgid "Debug Info"
 msgstr ""
 
 msgid "Dec"
+msgstr ""
+
+msgid "Deceased"
 msgstr ""
 
 msgid "December"
@@ -3261,6 +3415,9 @@ msgid "Default State - Must be 2-letter abbreviation!"
 msgstr ""
 
 msgid "Default Zip"
+msgstr ""
+
+msgid "Default admin credentials"
 msgstr ""
 
 msgid "Default number of rows shown in data tables. Takes effect on next page load."
@@ -3326,7 +3483,13 @@ msgstr ""
 msgid "Delete Family Record ONLY"
 msgstr ""
 
+msgid "Delete Fund"
+msgstr ""
+
 msgid "Delete Group"
+msgstr ""
+
+msgid "Delete Kiosk"
 msgstr ""
 
 msgid "Delete Person"
@@ -3336,9 +3499,6 @@ msgid "Delete Photo"
 msgstr ""
 
 msgid "Delete Selected"
-msgstr ""
-
-msgid "Delete Selected Rows"
 msgstr ""
 
 msgid "Delete User"
@@ -3354,6 +3514,9 @@ msgid "Delete failed"
 msgstr ""
 
 msgid "Delete records permission"
+msgstr ""
+
+msgid "Delete role"
 msgstr ""
 
 msgid "Delete this event?"
@@ -3378,6 +3541,9 @@ msgstr ""
 msgid "Deleted %d files, %d failed"
 msgstr ""
 
+msgid "Deleted Files"
+msgstr ""
+
 msgid "Deleted from group"
 msgstr ""
 
@@ -3391,6 +3557,9 @@ msgid "Deleting this event will also delete all attendance records. This cannot 
 msgstr ""
 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr ""
+
+msgid "Deleting..."
 msgstr ""
 
 msgid "Deletion Results"
@@ -3424,7 +3593,8 @@ msgstr ""
 msgid "Deposit"
 msgstr ""
 
-msgid "Deposit #"
+#, php-format
+msgid "Deposit #%d"
 msgstr ""
 
 msgid "Deposit Comment"
@@ -3442,9 +3612,6 @@ msgstr ""
 msgid "Deposit ID"
 msgstr ""
 
-msgid "Deposit Listing"
-msgstr ""
-
 msgid "Deposit Navigation"
 msgstr ""
 
@@ -3458,9 +3625,6 @@ msgid "Deposit Slip Number"
 msgstr ""
 
 msgid "Deposit Statistics"
-msgstr ""
-
-msgid "Deposit Total"
 msgstr ""
 
 msgid "Deposit Tracking"
@@ -3518,13 +3682,13 @@ msgstr ""
 msgid "Diego Garcia"
 msgstr ""
 
-msgid "Direct me"
-msgstr ""
-
 msgid "Direction"
 msgstr ""
 
 msgid "Direction must be \"up\" or \"down\""
+msgstr ""
+
+msgid "Direction must be 'up' or 'down'."
 msgstr ""
 
 msgid "Directions"
@@ -3648,9 +3812,6 @@ msgstr ""
 msgid "Donated items for this fundraiser"
 msgstr ""
 
-msgid "Donation Fund Editor"
-msgstr ""
-
 msgid "Donation Funds"
 msgstr ""
 
@@ -3675,7 +3836,7 @@ msgstr ""
 msgid "Download & Apply"
 msgstr ""
 
-msgid "Download & Install"
+msgid "Download & Apply {{version}}"
 msgstr ""
 
 msgid "Download Backup & Continue"
@@ -3689,6 +3850,9 @@ msgid "Download OpenLP"
 msgstr ""
 
 msgid "Download failed"
+msgstr ""
+
+msgid "Download returned without attachment headers."
 msgstr ""
 
 msgid "Download the latest release and apply it to your installation."
@@ -3738,6 +3902,9 @@ msgstr ""
 msgid "ESE"
 msgstr ""
 
+msgid "Each address must start with https://"
+msgstr ""
+
 #. plugin:holidays:section:2:content
 msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
 msgstr ""
@@ -3773,6 +3940,9 @@ msgstr ""
 msgid "Edit Deposit Slip"
 msgstr ""
 
+msgid "Edit Donation Fund"
+msgstr ""
+
 msgid "Edit Event"
 msgstr ""
 
@@ -3789,9 +3959,6 @@ msgid "Edit Fundraiser"
 msgstr ""
 
 msgid "Edit Group"
-msgstr ""
-
-msgid "Edit Group-Specific Properties Form"
 msgstr ""
 
 msgid "Edit JSON Settings"
@@ -3886,6 +4053,9 @@ msgstr ""
 msgid "Email Debug"
 msgstr ""
 
+msgid "Email Error"
+msgstr ""
+
 msgid "Email Export"
 msgstr ""
 
@@ -3931,11 +4101,20 @@ msgstr ""
 msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
 msgstr ""
 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr ""
+
 msgid "Email links in group and people views"
 msgstr ""
 
 msgid "Email lists are synced with Mailchimp."
 msgstr ""
+
+#, php-format
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Email/Username"
 msgstr ""
@@ -4135,6 +4314,9 @@ msgstr ""
 msgid "Enter one of your backup recovery codes to access your account"
 msgstr ""
 
+msgid "Enter role name"
+msgstr ""
+
 msgid "Enter sermon notes or event text..."
 msgstr ""
 
@@ -4209,13 +4391,31 @@ msgstr ""
 msgid "Error decoding signature definition file"
 msgstr ""
 
+msgid "Error deleting log file."
+msgstr ""
+
+msgid "Error deleting log files."
+msgstr ""
+
 msgid "Error deleting note."
 msgstr ""
 
 msgid "Error deleting payments"
 msgstr ""
 
+msgid "Error downloading log file."
+msgstr ""
+
+msgid "Error initiating download."
+msgstr ""
+
+msgid "Error loading log file."
+msgstr ""
+
 msgid "Error loading payments"
+msgstr ""
+
+msgid "Error loading self-registered entries"
 msgstr ""
 
 msgid "Error saving deposit"
@@ -4225,6 +4425,9 @@ msgid "Error sending email(s)"
 msgstr ""
 
 msgid "Error: Invalid Editor ID!"
+msgstr ""
+
+msgid "Errors"
 msgstr ""
 
 msgid "Errors only"
@@ -4243,7 +4446,7 @@ msgid "Estimated Price"
 msgstr ""
 
 #, php-format
-msgid "Estimated value $%s."
+msgid "Estimated value %s."
 msgstr ""
 
 #. Context: countries
@@ -4343,6 +4546,9 @@ msgstr ""
 msgid "Events Today"
 msgstr ""
 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr ""
+
 msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
 msgstr ""
 
@@ -4368,6 +4574,9 @@ msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other charac
 msgstr ""
 
 msgid "Exclude Inactive Families"
+msgstr ""
+
+msgid "Exclude deceased members from the printed directory and CSV exports."
 msgstr ""
 
 msgid "Exclude from Email Export"
@@ -4406,6 +4615,10 @@ msgstr ""
 msgid "Expected"
 msgstr ""
 
+#, php-format
+msgid "Expected interval between runs (hours): %d."
+msgstr ""
+
 msgid "Explore with Demo Data"
 msgstr ""
 
@@ -4413,12 +4626,6 @@ msgid "Export"
 msgstr ""
 
 msgid "Export Options"
-msgstr ""
-
-msgid "Export Selected Rows (CSV)"
-msgstr ""
-
-msgid "Export Selected Rows (OFX)"
 msgstr ""
 
 msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
@@ -4481,11 +4688,10 @@ msgstr ""
 msgid "F"
 msgstr ""
 
-#, php-format
-msgid "FY %s"
+msgid "Failed"
 msgstr ""
 
-msgid "Failed"
+msgid "Failed Files"
 msgstr ""
 
 msgid "Failed Logins"
@@ -4500,7 +4706,13 @@ msgstr ""
 msgid "Failed to add group to cart"
 msgstr ""
 
+msgid "Failed to add link"
+msgstr ""
+
 msgid "Failed to add members to cart. Please try again."
+msgstr ""
+
+msgid "Failed to add option"
 msgstr ""
 
 msgid "Failed to add role. Please try again."
@@ -4521,6 +4733,9 @@ msgstr ""
 msgid "Failed to clear quarantine"
 msgstr ""
 
+msgid "Failed to close events. Please try again."
+msgstr ""
+
 msgid "Failed to connect to OpenLP server."
 msgstr ""
 
@@ -4534,6 +4749,9 @@ msgid "Failed to create backup."
 msgstr ""
 
 msgid "Failed to create class. Please try again."
+msgstr ""
+
+msgid "Failed to create deposit"
 msgstr ""
 
 msgid "Failed to create donation fund"
@@ -4561,6 +4779,12 @@ msgid "Failed to create property type"
 msgstr ""
 
 msgid "Failed to create volunteer opportunity"
+msgstr ""
+
+msgid "Failed to decode payment request"
+msgstr ""
+
+msgid "Failed to delete"
 msgstr ""
 
 msgid "Failed to delete class. Please try again."
@@ -4632,10 +4856,13 @@ msgstr ""
 msgid "Failed to empty cart to group"
 msgstr ""
 
+msgid "Failed to enable kiosk registration"
+msgstr ""
+
 msgid "Failed to enable plugin"
 msgstr ""
 
-msgid "Failed to encode payment response"
+msgid "Failed to export ChMeetings CSV"
 msgstr ""
 
 msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
@@ -4648,6 +4875,12 @@ msgid "Failed to generate QR code. Please try again."
 msgstr ""
 
 msgid "Failed to geocode"
+msgstr ""
+
+msgid "Failed to get deposit count"
+msgstr ""
+
+msgid "Failed to get fundraiser count"
 msgstr ""
 
 msgid "Failed to get plugin details"
@@ -4671,10 +4904,16 @@ msgstr ""
 msgid "Failed to load attendance history."
 msgstr ""
 
+msgid "Failed to load audit. Please try again."
+msgstr ""
+
 msgid "Failed to load calendar data. Please try again."
 msgstr ""
 
 msgid "Failed to load cart status."
+msgstr ""
+
+msgid "Failed to load email preview"
 msgstr ""
 
 msgid "Failed to load event editor. Please refresh and try again."
@@ -4684,6 +4923,9 @@ msgid "Failed to load event. Please try again."
 msgstr ""
 
 msgid "Failed to load groups. Please refresh the page."
+msgstr ""
+
+msgid "Failed to load neighbors."
 msgstr ""
 
 msgid "Failed to load recipients. Please try again."
@@ -4722,6 +4964,12 @@ msgstr ""
 msgid "Failed to remove group"
 msgstr ""
 
+msgid "Failed to rename kiosk"
+msgstr ""
+
+msgid "Failed to reorder donation fund"
+msgstr ""
+
 msgid "Failed to reset settings"
 msgstr ""
 
@@ -4738,6 +4986,9 @@ msgid "Failed to retrieve phone numbers"
 msgstr ""
 
 msgid "Failed to retrieve pledge"
+msgstr ""
+
+msgid "Failed to save changes"
 msgstr ""
 
 msgid "Failed to save event. Please try again."
@@ -4758,7 +5009,13 @@ msgstr ""
 msgid "Failed to uninstall plugin"
 msgstr ""
 
+msgid "Failed to update coordinates"
+msgstr ""
+
 msgid "Failed to update donation fund"
+msgstr ""
+
+msgid "Failed to update family coordinates"
 msgstr ""
 
 msgid "Failed to update fundraiser"
@@ -4768,6 +5025,9 @@ msgid "Failed to update group. Please try again."
 msgstr ""
 
 msgid "Failed to update pledge"
+msgstr ""
+
+msgid "Failed to update plugin"
 msgstr ""
 
 msgid "Failed to update properties. Please try again."
@@ -4807,6 +5067,15 @@ msgstr ""
 msgid "Families share an address and phone number."
 msgstr ""
 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr ""
+
+msgid "Families that could not be geocoded: {{total}}"
+msgstr ""
+
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr ""
+
 msgid "Family"
 msgstr ""
 
@@ -4834,13 +5103,10 @@ msgstr ""
 msgid "Family Email"
 msgstr ""
 
-msgid "Family Geographic"
-msgstr ""
-
-msgid "Family Geographic Utilities"
-msgstr ""
-
 msgid "Family Home Phone"
+msgstr ""
+
+msgid "Family Id"
 msgstr ""
 
 msgid "Family Info"
@@ -4912,9 +5178,6 @@ msgstr ""
 msgid "Family has no street address to geocode"
 msgstr ""
 
-msgid "Family is required"
-msgstr ""
-
 msgid "Family name is required"
 msgstr ""
 
@@ -4944,6 +5207,12 @@ msgstr ""
 
 #. Context: countries
 msgid "Faroe Islands (Føroyar)"
+msgstr ""
+
+msgid "Farther"
+msgstr ""
+
+msgid "Farthest"
 msgstr ""
 
 msgid "Fastest workflow"
@@ -5072,6 +5341,9 @@ msgstr ""
 msgid "Filters"
 msgstr ""
 
+msgid "Final Confirmation"
+msgstr ""
+
 msgid "Final Price"
 msgstr ""
 
@@ -5102,7 +5374,13 @@ msgstr ""
 msgid "Financials"
 msgstr ""
 
+msgid "Find Neighbors"
+msgstr ""
+
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr ""
+
+msgid "Find nearby families and add them to your cart"
 msgstr ""
 
 msgid "Find past events that are still active or have un-checked-out attendees"
@@ -5284,6 +5562,9 @@ msgstr ""
 msgid "From"
 msgstr ""
 
+msgid "From Date"
+msgstr ""
+
 msgid "From Phone Number"
 msgstr ""
 
@@ -5306,6 +5587,9 @@ msgid "Full access — grants all privileges."
 msgstr ""
 
 msgid "Full changelog"
+msgstr ""
+
+msgid "Full release notes"
 msgstr ""
 
 msgid "Full — all of the above plus page views"
@@ -5332,10 +5616,28 @@ msgstr ""
 msgid "Fund Summary"
 msgstr ""
 
+msgid "Fund Total"
+msgstr ""
+
+msgid "Fund added successfully."
+msgstr ""
+
 msgid "Fund contributor pledge summary by fiscal year"
 msgstr ""
 
-msgid "Fund deleted successfully"
+msgid "Fund deleted successfully."
+msgstr ""
+
+msgid "Fund name"
+msgstr ""
+
+msgid "Fund name is required."
+msgstr ""
+
+msgid "Fund order updated."
+msgstr ""
+
+msgid "Fund saved successfully."
 msgstr ""
 
 msgid "Fund(s)"
@@ -5348,6 +5650,9 @@ msgid "Fundraiser Listing"
 msgstr ""
 
 msgid "Fundraiser Overview"
+msgstr ""
+
+msgid "Fundraiser is disabled"
 msgstr ""
 
 msgid "Fundraiser not found"
@@ -5367,9 +5672,6 @@ msgstr ""
 
 #. plugin:google-analytics:link:1:label
 msgid "GA4 Setup Guide"
-msgstr ""
-
-msgid "GPS Visualizer"
 msgstr ""
 
 #. Context: countries
@@ -5404,7 +5706,7 @@ msgstr ""
 msgid "Generate Coordinates"
 msgstr ""
 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgid "Generate Labels"
 msgstr ""
 
 msgid "Generate Report"
@@ -5446,6 +5748,9 @@ msgstr ""
 msgid "Generate letters and mailing labels"
 msgstr ""
 
+msgid "Generate mailing labels"
+msgstr ""
+
 msgid "Generate mailing labels and form letters"
 msgstr ""
 
@@ -5476,7 +5781,19 @@ msgstr ""
 msgid "Geocoded"
 msgstr ""
 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr ""
+
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr ""
+
 msgid "Geocoding failed"
+msgstr ""
+
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr ""
+
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
 msgstr ""
 
 msgid "Geocoding request failed. Please try again."
@@ -5485,7 +5802,7 @@ msgstr ""
 msgid "Geocoding successful"
 msgstr ""
 
-msgid "Geographic Utilities"
+msgid "Geocoding…"
 msgstr ""
 
 #. Context: countries
@@ -5734,9 +6051,6 @@ msgstr ""
 msgid "GroupID for Cart must be numeric"
 msgstr ""
 
-msgid "GroupID required for role selection prompt"
-msgstr ""
-
 msgid "Grouped by Family"
 msgstr ""
 
@@ -5797,6 +6111,9 @@ msgstr ""
 msgid "Head Count"
 msgstr ""
 
+msgid "Head of Household Update Needed"
+msgstr ""
+
 #. Context: countries
 msgid "Heard & McDonald Islands"
 msgstr ""
@@ -5817,10 +6134,16 @@ msgstr ""
 msgid "Help on types.."
 msgstr ""
 
+msgid "Helpful Links"
+msgstr ""
+
 msgid "Here"
 msgstr ""
 
 msgid "Hide Age"
+msgstr ""
+
+msgid "Hide Deceased from Directory"
 msgstr ""
 
 msgid "Hide Latitude/Longitude"
@@ -5830,6 +6153,9 @@ msgid "Hide Person Address"
 msgstr ""
 
 msgid "Hide advanced options"
+msgstr ""
+
+msgid "Hide deceased members from the printed directory and CSV exports."
 msgstr ""
 
 msgid "Highest Sale"
@@ -5942,6 +6268,12 @@ msgstr ""
 
 #. Context: countries
 msgid "Iceland (Ísland)"
+msgstr ""
+
+msgid "Identify"
+msgstr ""
+
+msgid "Identify command sent"
 msgstr ""
 
 msgid "Identify members who have not made any donations within a date range."
@@ -6125,9 +6457,6 @@ msgstr ""
 msgid "Include events and calendars"
 msgstr ""
 
-msgid "Include families in the coordinate file"
-msgstr ""
-
 msgid "Include family custom properties in global search."
 msgstr ""
 
@@ -6163,6 +6492,9 @@ msgid "India (भारत)"
 msgstr ""
 
 msgid "Indigo"
+msgstr ""
+
+msgid "Individual"
 msgstr ""
 
 msgid "Individual Deposit Report"
@@ -6224,9 +6556,6 @@ msgstr ""
 msgid "Installed on Server"
 msgstr ""
 
-msgid "Installing next release"
-msgstr ""
-
 msgid "Installing…"
 msgstr ""
 
@@ -6236,13 +6565,13 @@ msgstr ""
 msgid "Interactive pledges-vs-payments summary by fund with sort, search, and export."
 msgstr ""
 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr ""
+
 msgid "Internal: last date birthday emails were sent (YYYY-MM-DD). Do not edit manually."
 msgstr ""
 
 msgid "Internationalization (I18n) support"
-msgstr ""
-
-msgid "Intersect with Cart"
 msgstr ""
 
 msgid "Invalid API credentials. Please verify your API Key and API Secret."
@@ -6302,17 +6631,10 @@ msgstr ""
 msgid "Invalid country name supplied"
 msgstr ""
 
-#, php-format
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr ""
-
 msgid "Invalid date format"
 msgstr ""
 
 msgid "Invalid date format for rangeStart or rangeEnd"
-msgstr ""
-
-msgid "Invalid date; expected format YYYY-MM-DD"
 msgstr ""
 
 msgid "Invalid endpoint URL. Must be a full URL starting with https://"
@@ -6343,6 +6665,9 @@ msgid "Invalid import request"
 msgstr ""
 
 msgid "Invalid login or password"
+msgstr ""
+
+msgid "Invalid payment data"
 msgstr ""
 
 msgid "Invalid person ID"
@@ -6416,13 +6741,16 @@ msgstr ""
 msgid "Item"
 msgstr ""
 
+msgid "Item deleted successfully"
+msgstr ""
+
 msgid "Items"
 msgstr ""
 
 msgid "Items Donated"
 msgstr ""
 
-msgid "Items Donated (This Year)"
+msgid "Items Donated (This Fiscal Year)"
 msgstr ""
 
 msgid "Items Sold"
@@ -6516,10 +6844,19 @@ msgstr ""
 msgid "Kiosk Manager"
 msgstr ""
 
+msgid "Kiosk Name"
+msgstr ""
+
 msgid "Kiosk Registration Disabled"
 msgstr ""
 
+msgid "Kiosk accepted"
+msgstr ""
+
 msgid "Kiosk check-in email notifications"
+msgstr ""
+
+msgid "Kiosk deleted successfully"
 msgstr ""
 
 msgid "Kiosk device has not been accepted by an administrator"
@@ -6528,7 +6865,13 @@ msgstr ""
 msgid "Kiosk device not found"
 msgstr ""
 
+msgid "Kiosk must be accepted"
+msgstr ""
+
 msgid "Kiosk not found"
+msgstr ""
+
+msgid "Kiosk renamed"
 msgstr ""
 
 msgid "KioskVisibilityTimestamp"
@@ -6558,6 +6901,9 @@ msgid "Label Grouping"
 msgstr ""
 
 msgid "Label Type"
+msgstr ""
+
+msgid "Labels"
 msgstr ""
 
 msgid "Language"
@@ -6622,6 +6968,9 @@ msgid "Last name is required"
 msgstr ""
 
 msgid "Last name must be at least 2 characters"
+msgstr ""
+
+msgid "Last seen"
 msgstr ""
 
 msgid "LastName FirstName"
@@ -6729,13 +7078,22 @@ msgstr ""
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr ""
 
+msgid "Link"
+msgstr ""
+
 msgid "Link Name"
+msgstr ""
+
+msgid "Link added successfully"
 msgstr ""
 
 msgid "Link address cannot contain HTML tags"
 msgstr ""
 
 msgid "Link address is required"
+msgstr ""
+
+msgid "Link deleted"
 msgstr ""
 
 msgid "Link events to a group for Kiosk check-in functionality."
@@ -6745,6 +7103,9 @@ msgid "Link must be a valid URL"
 msgstr ""
 
 msgid "Link must start with http:// or https://"
+msgstr ""
+
+msgid "Link name cannot contain HTML tags"
 msgstr ""
 
 msgid "Link not found"
@@ -6782,6 +7143,9 @@ msgid "Lithuania (Lietuva)"
 msgstr ""
 
 msgid "Live Preview"
+msgstr ""
+
+msgid "Living"
 msgstr ""
 
 msgid "Load Authorized"
@@ -6877,16 +7241,26 @@ msgstr ""
 msgid "Log level + message"
 msgstr ""
 
+msgid "Log settings saved"
+msgstr ""
+
 msgid "Login"
 msgstr ""
 
 msgid "Login Name"
 msgstr ""
 
+msgid "Login Name is Required"
+msgstr ""
+
 msgid "Login Name is required"
 msgstr ""
 
 msgid "Login already in use, please select a different login!"
+msgstr ""
+
+#, php-format
+msgid "Login must be %d characters or fewer!"
 msgstr ""
 
 msgid "Login must be at least 3 characters!"
@@ -6957,10 +7331,10 @@ msgstr ""
 msgid "Mailchimp is not active"
 msgstr ""
 
-msgid "Major"
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
 msgstr ""
 
-msgid "Make Data File"
+msgid "Major"
 msgstr ""
 
 msgid "Make Default"
@@ -7019,6 +7393,9 @@ msgid "Manage Envelopes"
 msgstr ""
 
 msgid "Manage Event Types"
+msgstr ""
+
+msgid "Manage Events"
 msgstr ""
 
 msgid "Manage Fundraisers"
@@ -7119,6 +7496,9 @@ msgstr ""
 msgid "Map cart items"
 msgstr ""
 
+msgid "Map centered on"
+msgstr ""
+
 msgid "Map to Field"
 msgstr ""
 
@@ -7132,6 +7512,12 @@ msgid "Marked the Family as Active"
 msgstr ""
 
 msgid "Marked the Family as Inactive"
+msgstr ""
+
+msgid "Marked the Person as Active"
+msgstr ""
+
+msgid "Marked the Person as Inactive"
 msgstr ""
 
 #. Context: countries
@@ -7172,7 +7558,10 @@ msgstr ""
 msgid "Max Upload Size"
 msgstr ""
 
-msgid "Maximum distance"
+msgid "Max distance"
+msgstr ""
+
+msgid "Max neighbors"
 msgstr ""
 
 msgid "Maximum length is"
@@ -7207,9 +7596,6 @@ msgid ""
 "Once the maximum has been reached, an administrator must re-enable the account.\n"
 "This feature helps to protect against automated password guessing attacks.\n"
 "Set to zero to disable this feature."
-msgstr ""
-
-msgid "Maximum number of neighbors"
 msgstr ""
 
 msgid "Maximum upload size"
@@ -7255,6 +7641,9 @@ msgid "Members"
 msgstr ""
 
 msgid "Members added to cart."
+msgstr ""
+
+msgid "Members copied: {{total}}"
 msgstr ""
 
 #. Context: query_qry
@@ -7339,13 +7728,16 @@ msgid ""
 msgstr ""
 
 #, php-format
-msgid "Minimum bid $%s."
+msgid "Minimum bid %s."
 msgstr ""
 
 msgid "Minimum length a user may set their password to"
 msgstr ""
 
 msgid "Minimum length is"
+msgstr ""
+
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
 msgstr ""
 
 msgid "Minutes"
@@ -7611,13 +8003,13 @@ msgstr ""
 msgid "Nauru"
 msgstr ""
 
+msgid "Near"
+msgstr ""
+
 msgid "Need to remove this data later?"
 msgstr ""
 
 msgid "Needs Configuration"
-msgstr ""
-
-msgid "Neighbor Families"
 msgstr ""
 
 msgid "Neighborhood"
@@ -7651,6 +8043,9 @@ msgid "New Caledonia (Nouvelle-Calédonie)"
 msgstr ""
 
 msgid "New Calendar"
+msgstr ""
+
+msgid "New Deposit"
 msgstr ""
 
 msgid "New Family"
@@ -7702,7 +8097,7 @@ msgstr ""
 msgid "New member notification emails"
 msgstr ""
 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
 msgstr ""
 
 msgid "Newsletter"
@@ -7734,6 +8129,10 @@ msgid "Niue"
 msgstr ""
 
 msgid "No"
+msgstr ""
+
+#, php-format
+msgid "No \"%s\" options are defined yet."
 msgstr ""
 
 #, php-format
@@ -7806,6 +8205,9 @@ msgstr ""
 msgid "No active funds configured."
 msgstr ""
 
+msgid "No address on file"
+msgstr ""
+
 msgid "No anniversaries in the past or next 7 days"
 msgstr ""
 
@@ -7824,7 +8226,13 @@ msgstr ""
 msgid "No cell phone on file"
 msgstr ""
 
+msgid "No changes to save"
+msgstr ""
+
 msgid "No community plugins installed"
+msgstr ""
+
+msgid "No contact info"
 msgstr ""
 
 msgid "No contributors found for this fund in the selected fiscal year"
@@ -7837,6 +8245,9 @@ msgid "No country is selected. Choose at least one country in the Holiday Calend
 msgstr ""
 
 msgid "No custom Family fields have been added yet"
+msgstr ""
+
+msgid "No custom links configured. Add one above!"
 msgstr ""
 
 msgid "No custom person fields have been added yet"
@@ -7857,6 +8268,9 @@ msgstr ""
 msgid "No donated items yet."
 msgstr ""
 
+msgid "No email"
+msgstr ""
+
 msgid "No email address on file"
 msgstr ""
 
@@ -7873,25 +8287,38 @@ msgid "No event types defined yet."
 msgstr ""
 
 #, php-format
+msgid "No events found for %s %d."
+msgstr ""
+
+#, php-format
 msgid "No events found for %s."
 msgstr ""
 
 msgid "No events linked to this class."
 msgstr ""
 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr ""
+
 msgid "No file uploaded"
+msgstr ""
+
+msgid "No files were deleted."
 msgstr ""
 
 msgid "No format"
 msgstr ""
 
-msgid "No funds have been added yet"
+msgid "No funds have been added yet. Use the form above to add the first fund."
 msgstr ""
 
 msgid "No group"
 msgstr ""
 
 msgid "No group assignments yet."
+msgstr ""
+
+msgid "No help available for this plugin."
 msgstr ""
 
 msgid "No issues found. You may proceed with the upgrade."
@@ -7904,6 +8331,9 @@ msgid "No log files found."
 msgstr ""
 
 msgid "No logged in user"
+msgstr ""
+
+msgid "No match found — check the street address, city, and ZIP"
 msgstr ""
 
 msgid "No match found — select a field or leave as Ignore."
@@ -7931,6 +8361,9 @@ msgstr ""
 msgid "No past events are still marked Active."
 msgstr ""
 
+msgid "No payments found for the selected deposits"
+msgstr ""
+
 msgid "No payments on this deposit"
 msgstr ""
 
@@ -7941,6 +8374,12 @@ msgid "No people found"
 msgstr ""
 
 msgid "No people match your current filters."
+msgstr ""
+
+msgid "No people to add - all are already in cart"
+msgstr ""
+
+msgid "No people to add - filter returned no results"
 msgstr ""
 
 msgid "No phone number on file"
@@ -7973,6 +8412,9 @@ msgstr ""
 msgid "No release notes available for this version."
 msgstr ""
 
+msgid "No release notes available."
+msgstr ""
+
 msgid "No results found"
 msgstr ""
 
@@ -7986,6 +8428,9 @@ msgid "No timeline events yet."
 msgstr ""
 
 msgid "No upgrades are available for your current version."
+msgstr ""
+
+msgid "No valid deposit IDs provided"
 msgstr ""
 
 msgid "No volunteer opportunities have been added yet"
@@ -8070,6 +8515,9 @@ msgstr ""
 msgid "Not a valid date"
 msgstr ""
 
+msgid "Not a valid date of death"
+msgstr ""
+
 msgid "Not a valid end date"
 msgstr ""
 
@@ -8086,6 +8534,9 @@ msgid "Not included"
 msgstr ""
 
 msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr ""
+
+msgid "Not listed here: {{total}} more"
 msgstr ""
 
 msgid "Not pinned to any calendar"
@@ -8146,6 +8597,9 @@ msgstr ""
 msgid "Number of checks for Deposit Slip Report"
 msgstr ""
 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr ""
+
 msgid "Number of lines to display"
 msgstr ""
 
@@ -8175,6 +8629,9 @@ msgid "October"
 msgstr ""
 
 msgid "Off"
+msgstr ""
+
+msgid "Offline"
 msgstr ""
 
 msgid "Old Password"
@@ -8223,6 +8680,9 @@ msgstr ""
 msgid "Only Payments with Pledges"
 msgstr ""
 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr ""
+
 msgid "Only the note author or an admin may delete this note"
 msgstr ""
 
@@ -8245,6 +8705,9 @@ msgid "Open MailChimp"
 msgstr ""
 
 msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr ""
+
+msgid "Open a family to fix its address, then run this again."
 msgstr ""
 
 msgid "Open in Apple Maps"
@@ -8308,6 +8771,9 @@ msgstr ""
 msgid "Optional Settings"
 msgstr ""
 
+msgid "Optional description"
+msgstr ""
+
 msgid "Optional detailed description of this property type"
 msgstr ""
 
@@ -8320,7 +8786,13 @@ msgstr ""
 msgid "Optional — sermon notes, materials, or other details copied to every generated event."
 msgstr ""
 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr ""
+
 msgid "Optional. URL for your church website."
+msgstr ""
+
+msgid "Options"
 msgstr ""
 
 msgid "Orange"
@@ -8373,20 +8845,19 @@ msgstr ""
 msgid "Owe"
 msgstr ""
 
-msgid "PDF"
-msgstr ""
-
 msgid ""
 "PDF handling mode.\n"
 "1 = Save File dialog\n"
 "2 = Open in current browser window"
 msgstr ""
 
-msgid "PDF successfully emailed to family members."
-msgstr ""
-
 #, php-format
-msgid "PDFs successfully emailed to %s families."
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "PDF successfully emailed to family members."
 msgstr ""
 
 msgid "PHP & Server Requirements"
@@ -8462,6 +8933,9 @@ msgid "Parents/Guardians"
 msgstr ""
 
 msgid "Part"
+msgstr ""
+
+msgid "Partial Send"
 msgstr ""
 
 msgid "Passed"
@@ -8606,7 +9080,15 @@ msgstr ""
 msgid "People with birthdays in a particular month"
 msgstr ""
 
+#. Context: query_qry
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr ""
+
 msgid "People with no personal or work email on record"
+msgstr ""
+
+#. Context: query_qry
+msgid "People with wedding anniversaries in a particular month"
 msgstr ""
 
 msgid "Percentage"
@@ -8832,9 +9314,6 @@ msgstr ""
 msgid "Please check everything looks right before submitting."
 msgstr ""
 
-msgid "Please check logs for more information"
-msgstr ""
-
 msgid "Please check the backup file and try again."
 msgstr ""
 
@@ -8856,7 +9335,13 @@ msgstr ""
 msgid "Please confirm activation of family"
 msgstr ""
 
+msgid "Please confirm activation of person"
+msgstr ""
+
 msgid "Please confirm deactivation of family"
+msgstr ""
+
+msgid "Please confirm deactivation of person"
 msgstr ""
 
 msgid "Please confirm deletion of"
@@ -8941,13 +9426,13 @@ msgstr ""
 msgid "Please proceed to the classroom as soon as possible."
 msgstr ""
 
+msgid "Please refresh the page or try again later."
+msgstr ""
+
 msgid "Please review your family information below and confirm or request changes."
 msgstr ""
 
 msgid "Please select a CSV file"
-msgstr ""
-
-msgid "Please select a Family."
 msgstr ""
 
 msgid "Please select a backup file to restore"
@@ -8956,11 +9441,11 @@ msgstr ""
 msgid "Please select a date"
 msgstr ""
 
-msgid "Please select a family"
-msgstr ""
-
 #, php-format
 msgid "Please select a family role for %s."
+msgstr ""
+
+msgid "Please select a family."
 msgstr ""
 
 msgid "Please select a fund for all rows"
@@ -8987,16 +9472,7 @@ msgstr ""
 msgid "Please select at least one buyer to generate statements."
 msgstr ""
 
-msgid "Please select both a group and a role."
-msgstr ""
-
 msgid "Please select rows to delete"
-msgstr ""
-
-msgid "Please select target Role for members"
-msgstr ""
-
-msgid "Please select target group for members"
 msgstr ""
 
 msgid "Please try again"
@@ -9127,6 +9603,9 @@ msgstr ""
 msgid "Plugin registry refreshed."
 msgstr ""
 
+msgid "Plugin status updated"
+msgstr ""
+
 msgid "Plugin uninstalled"
 msgstr ""
 
@@ -9219,6 +9698,9 @@ msgstr ""
 msgid "Private"
 msgstr ""
 
+msgid "Private Calendar"
+msgstr ""
+
 msgid "Profile"
 msgstr ""
 
@@ -9272,6 +9754,9 @@ msgid "Property type not found"
 msgstr ""
 
 msgid "Provide any corrections or additional information here..."
+msgstr ""
+
+msgid "Public Calendar"
 msgstr ""
 
 msgid "Public calendar"
@@ -9336,7 +9821,7 @@ msgstr ""
 msgid "Raised"
 msgstr ""
 
-msgid "Raised This Year"
+msgid "Raised This Fiscal Year"
 msgstr ""
 
 msgid "Range end date must be on or after range start date."
@@ -9386,6 +9871,9 @@ msgid "Recent friends"
 msgstr ""
 
 msgid "Recipient Naming Method"
+msgstr ""
+
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
 msgstr ""
 
 msgid "Recommended"
@@ -9476,6 +9964,9 @@ msgstr ""
 msgid "Register another family"
 msgstr ""
 
+msgid "Registered"
+msgstr ""
+
 msgid "Registration Error"
 msgstr ""
 
@@ -9487,6 +9978,12 @@ msgid "Regular Backups"
 msgstr ""
 
 msgid "Release Notes"
+msgstr ""
+
+msgid "Reload"
+msgstr ""
+
+msgid "Reload command sent"
 msgstr ""
 
 msgid "Remaining"
@@ -9541,6 +10038,12 @@ msgid "Remove {{personName}} from this class?"
 msgstr ""
 
 msgid "Removed from cart successfully"
+msgstr ""
+
+msgid "Rename"
+msgstr ""
+
+msgid "Rename Kiosk"
 msgstr ""
 
 msgid "Replicate item"
@@ -9609,6 +10112,9 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
+msgid "Reset Complete"
+msgstr ""
+
 msgid "Reset Database"
 msgstr ""
 
@@ -9624,10 +10130,16 @@ msgstr ""
 msgid "Reset Password via Email"
 msgstr ""
 
+msgid "Reset Settings"
+msgstr ""
+
 msgid "Reset your password"
 msgstr ""
 
 msgid "Resetting will permanently delete"
+msgstr ""
+
+msgid "Resetting..."
 msgstr ""
 
 msgid "Restore"
@@ -9667,6 +10179,12 @@ msgid "Restore in progress, please wait..."
 msgstr ""
 
 msgid "Restore your church database from a backup file"
+msgstr ""
+
+msgid "Results"
+msgstr ""
+
+msgid "Retry"
 msgstr ""
 
 msgid "Retry Download"
@@ -9904,6 +10422,9 @@ msgstr ""
 msgid "Salutation Utility"
 msgstr ""
 
+msgid "Same location"
+msgstr ""
+
 #. Context: countries
 msgid "Samoa"
 msgstr ""
@@ -9982,7 +10503,16 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
+msgid "Scheduled Tasks"
+msgstr ""
+
+msgid "Scheduled tasks are not running"
+msgstr ""
+
 msgid "Schema Version"
+msgstr ""
+
+msgid "Search"
 msgstr ""
 
 msgid "Search Addresses"
@@ -10000,6 +10530,9 @@ msgstr ""
 msgid "Search Groups"
 msgstr ""
 
+msgid "Search Neighbors"
+msgstr ""
+
 msgid "Search Payments"
 msgstr ""
 
@@ -10012,7 +10545,7 @@ msgstr ""
 msgid "Search across people, families, groups, addresses, and more."
 msgstr ""
 
-msgid "Search and view deposit slip records"
+msgid "Search and manage deposit slip records"
 msgstr ""
 
 msgid "Search by name or email..."
@@ -10071,7 +10604,13 @@ msgstr ""
 msgid "Security Recommendation"
 msgstr ""
 
+msgid "Security token missing. Please refresh the page."
+msgstr ""
+
 msgid "Select"
+msgstr ""
+
+msgid "Select All"
 msgstr ""
 
 msgid "Select Backup File"
@@ -10131,6 +10670,9 @@ msgstr ""
 msgid "Select a family"
 msgstr ""
 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr ""
+
 msgid "Select a fund"
 msgstr ""
 
@@ -10186,7 +10728,13 @@ msgstr ""
 msgid "Selected Language"
 msgstr ""
 
+msgid "Selected family"
+msgstr ""
+
 msgid "Selected record successfully removed from the Cart."
+msgstr ""
+
+msgid "Select…"
 msgstr ""
 
 msgid "Self Registration"
@@ -10216,6 +10764,12 @@ msgstr ""
 msgid "Send Again"
 msgstr ""
 
+msgid "Send Emails"
+msgstr ""
+
+msgid "Send Family Verification Emails"
+msgstr ""
+
 msgid "Send Newsletter"
 msgstr ""
 
@@ -10240,8 +10794,18 @@ msgstr ""
 msgid "Sending to"
 msgstr ""
 
+msgid "Sending..."
+msgstr ""
+
+msgid "Sending…"
+msgstr ""
+
 #. Context: countries
 msgid "Senegal (Sénégal)"
+msgstr ""
+
+#, php-format
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
 msgstr ""
 
 msgid "Sep"
@@ -10331,6 +10895,9 @@ msgstr ""
 msgid "Set up a new fundraiser campaign or event"
 msgstr ""
 
+msgid "Set up now"
+msgstr ""
+
 msgid "Set your church name, address, and contact details"
 msgstr ""
 
@@ -10353,10 +10920,19 @@ msgstr ""
 msgid "Settings Valid"
 msgstr ""
 
+msgid "Settings reset"
+msgstr ""
+
 msgid "Settings reset successfully"
 msgstr ""
 
+msgid "Settings saved"
+msgstr ""
+
 msgid "Settings saved successfully"
+msgstr ""
+
+msgid "Settings saved. Refreshing upgrade info..."
 msgstr ""
 
 #. plugin:openlp:section:2:title
@@ -10395,25 +10971,16 @@ msgstr ""
 msgid "Show Family Head of House Names"
 msgstr ""
 
-msgid "Show Neighbors"
-msgstr ""
-
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr ""
 
 msgid "Show all"
 msgstr ""
 
-msgid "Show full upgrade path"
-msgstr ""
-
 msgid "Show in Profile"
 msgstr ""
 
 msgid "Show more options"
-msgstr ""
-
-msgid "Show neighbors with these classifications"
 msgstr ""
 
 msgid "Show or hide the Events menu in the main navigation."
@@ -10428,8 +10995,14 @@ msgstr ""
 msgid "Show/Hide Lost Password Link on the login screen"
 msgstr ""
 
+msgid "Showing active persons only."
+msgstr ""
+
 #. plugin:holidays:section:2:title
 msgid "Showing and hiding individual countries"
+msgstr ""
+
+msgid "Showing inactive persons only."
 msgstr ""
 
 #, php-format
@@ -10437,6 +11010,9 @@ msgid "Showing members of: %s"
 msgstr ""
 
 msgid "Showing students with birthdays in"
+msgstr ""
+
+msgid "Showing total for selected fund only"
 msgstr ""
 
 #. Context: countries
@@ -10733,6 +11309,9 @@ msgstr ""
 msgid "Subscribers Not in CRM"
 msgstr ""
 
+msgid "Successfully deleted"
+msgstr ""
+
 #. Context: countries
 msgid "Sudan (‫السودان‬‎)"
 msgstr ""
@@ -10949,6 +11528,9 @@ msgstr ""
 msgid "Tell us about your family"
 msgstr ""
 
+msgid "Teller"
+msgstr ""
+
 #. Context: locales
 msgid "Telugu - India"
 msgstr ""
@@ -10973,6 +11555,9 @@ msgstr ""
 
 #. plugin:external-backup:section:4:title
 msgid "Testing Connection"
+msgstr ""
+
+msgid "Testing..."
 msgstr ""
 
 msgid "Text"
@@ -11019,13 +11604,10 @@ msgstr ""
 msgid "That field name already exists."
 msgstr ""
 
-msgid "That fund name already exists."
-msgstr ""
-
 msgid "That name already exists."
 msgstr ""
 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr ""
 
 #. plugin:custom-links:section:0:content
@@ -11055,6 +11637,9 @@ msgstr ""
 msgid "The database has been cleared."
 msgstr ""
 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr ""
+
 #. plugin:openlp:section:3:content
 msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
 msgstr ""
@@ -11069,6 +11654,10 @@ msgstr ""
 msgid "The membership anniversary month for which you would like records returned."
 msgstr ""
 
+#. Context: queryparameters_qrp
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr ""
+
 msgid "The month that starts your organization's fiscal year"
 msgstr ""
 
@@ -11076,6 +11665,10 @@ msgid "The note you are trying to edit no longer exists."
 msgstr ""
 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr ""
+
+#, php-format
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
 msgstr ""
 
 #, php-format
@@ -11152,6 +11745,10 @@ msgstr ""
 msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
 msgstr ""
 
+#. Context: queryparameters_qrp
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr ""
+
 msgid "Theme Mode"
 msgstr ""
 
@@ -11203,6 +11800,9 @@ msgstr ""
 msgid "This Family is Inactive"
 msgstr ""
 
+msgid "This Person is Inactive"
+msgstr ""
+
 msgid "This account is locked because of too many failed login attempts."
 msgstr ""
 
@@ -11230,6 +11830,9 @@ msgstr ""
 msgid "This field is required"
 msgstr ""
 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr ""
+
 msgid "This group currently has no properties!  You can add them in the Group Editor."
 msgstr ""
 
@@ -11245,15 +11848,10 @@ msgstr ""
 msgid "This is how your church information will appear on reports and directories."
 msgstr ""
 
+msgid "This is the only role in this group."
+msgstr ""
+
 msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
-msgstr ""
-
-msgctxt "one"
-msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
-msgstr ""
-
-msgctxt "other"
-msgid "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead."
 msgstr ""
 
 msgid "This may take a few minutes for large databases."
@@ -11272,6 +11870,9 @@ msgid "This page allows you to permanently erase all data in the ChurchCRM datab
 msgstr ""
 
 msgid "This person already has a user account."
+msgstr ""
+
+msgid "This person is deceased"
 msgstr ""
 
 msgid "This plugin does not support connection testing."
@@ -11301,6 +11902,9 @@ msgstr ""
 msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
 msgstr ""
 
+msgid "This role cannot be deleted."
+msgstr ""
+
 msgid "This title will be used for all generated events."
 msgstr ""
 
@@ -11325,6 +11929,9 @@ msgstr ""
 msgid "This value is required."
 msgstr ""
 
+msgid "This value must be a valid field name."
+msgstr ""
+
 #, php-format
 msgid "This value must be at least %s"
 msgstr ""
@@ -11338,10 +11945,16 @@ msgstr ""
 msgid "This will also delete all payments associated with this deposit"
 msgstr ""
 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr ""
+
 msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
 msgstr ""
 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr ""
+
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
 msgstr ""
 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
@@ -11421,6 +12034,9 @@ msgid "Title page"
 msgstr ""
 
 msgid "To"
+msgstr ""
+
+msgid "To Date"
 msgstr ""
 
 msgid "To Family"
@@ -11510,12 +12126,7 @@ msgstr ""
 msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
 msgstr ""
 
-msgctxt "one"
-msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
-msgstr ""
-
-msgctxt "other"
-msgid "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead."
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
 msgstr ""
 
 msgid "Total"
@@ -11566,10 +12177,12 @@ msgstr ""
 msgid "Total Users"
 msgstr ""
 
-msgid "Total of all purchases: $"
+#, php-format
+msgid "Total of all purchases: %s"
 msgstr ""
 
-msgid "Total purchases: $"
+#, php-format
+msgid "Total purchases: %s"
 msgstr ""
 
 msgid "Total raised (no goal set)"
@@ -11638,7 +12251,7 @@ msgstr ""
 msgid "Try Again"
 msgstr ""
 
-msgid "Try selecting a different event type or year."
+msgid "Try selecting a different event type, month, or year."
 msgstr ""
 
 msgid "Tuesdays"
@@ -11683,6 +12296,12 @@ msgstr ""
 msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
 msgstr ""
 
+#, php-format
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Type"
 msgstr ""
 
@@ -11703,7 +12322,7 @@ msgstr ""
 msgid "U.S. Virgin Islands"
 msgstr ""
 
-msgid "URL"
+msgid "URL cannot contain HTML tags"
 msgstr ""
 
 msgid "URL does not contain a valid hostname"
@@ -11787,10 +12406,19 @@ msgstr ""
 msgid "Unexpected Person Id"
 msgstr ""
 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr ""
+
+msgid "Unexpected error. Please try again."
+msgstr ""
+
 msgid "Unfocus"
 msgstr ""
 
 msgid "Uninstall (delete from disk)"
+msgstr ""
+
+msgid "Uninstall Plugin"
 msgstr ""
 
 msgid "Unit used to measure distance, miles or km."
@@ -11823,6 +12451,9 @@ msgstr ""
 msgid "Unknown error"
 msgstr ""
 
+msgid "Unknown family"
+msgstr ""
+
 msgid "Unmapped"
 msgstr ""
 
@@ -11853,6 +12484,9 @@ msgstr ""
 msgid "Up to Date"
 msgstr ""
 
+msgid "Upcoming"
+msgstr ""
+
 msgid "Upcoming Birthdays"
 msgstr ""
 
@@ -11865,7 +12499,16 @@ msgstr ""
 msgid "Update Admin Contact"
 msgstr ""
 
+msgid "Update All Coordinates"
+msgstr ""
+
+msgid "Update All Family Coordinates"
+msgstr ""
+
 msgid "Update Available"
+msgstr ""
+
+msgid "Update Coordinates"
 msgstr ""
 
 msgid "Update Envelopes"
@@ -12102,6 +12745,9 @@ msgstr ""
 msgid "Valid Examples"
 msgstr ""
 
+msgid "Valid Until"
+msgstr ""
+
 msgid "Valid startDate and endDate are required"
 msgstr ""
 
@@ -12289,6 +12935,15 @@ msgstr ""
 msgid "View User"
 msgstr ""
 
+msgid "View active only"
+msgstr ""
+
+msgid "View all"
+msgstr ""
+
+msgid "View all (including inactive)"
+msgstr ""
+
 msgid "View all families on an interactive map"
 msgstr ""
 
@@ -12299,9 +12954,6 @@ msgid "View and manage all groups in your congregation"
 msgstr ""
 
 msgid "View and manage deposit slip payments"
-msgstr ""
-
-msgid "View and manage family location data"
 msgstr ""
 
 msgid "View and manage system log files for debugging"
@@ -12329,6 +12981,9 @@ msgid "View full photo"
 msgstr ""
 
 msgid "View group members, roles, and properties"
+msgstr ""
+
+msgid "View inactive only"
 msgstr ""
 
 msgid "View pledge or payment details"
@@ -12435,7 +13090,13 @@ msgstr ""
 msgid "Wallis and Futuna"
 msgstr ""
 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr ""
+
 msgid "Warning"
+msgstr ""
+
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
 msgstr ""
 
 msgid "Warnings"
@@ -12499,6 +13160,10 @@ msgid "Website"
 msgstr ""
 
 msgid "Wedding"
+msgstr ""
+
+#. Context: query_qry
+msgid "Wedding Anniversaries"
 msgstr ""
 
 msgid "Wedding Date"
@@ -12566,10 +13231,10 @@ msgstr ""
 msgid "What went wrong? What did you expect to happen?"
 msgstr ""
 
-msgid "What's New"
+msgid "What you'll gain"
 msgstr ""
 
-msgid "What's New in {{version}}"
+msgid "What's New"
 msgstr ""
 
 #. plugin:mailchimp:section:3:content
@@ -12660,6 +13325,9 @@ msgstr ""
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr ""
 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr ""
+
 msgid "Work"
 msgstr ""
 
@@ -12725,9 +13393,6 @@ msgid "You are about to email copy of the family information to the following em
 msgstr ""
 
 msgid "You are running a pre-release version."
-msgstr ""
-
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
 msgstr ""
 
 #. plugin:external-backup:section:3:content
@@ -12964,6 +13629,9 @@ msgstr ""
 msgid "ZipArchive extension required for upgrades"
 msgstr ""
 
+msgid "[Family Name]"
+msgstr ""
+
 msgid "active"
 msgstr ""
 
@@ -13004,6 +13672,9 @@ msgstr ""
 msgid "characters in length."
 msgstr ""
 
+msgid "check-outs"
+msgstr ""
+
 msgid "checked in"
 msgstr ""
 
@@ -13020,6 +13691,9 @@ msgid "day"
 msgstr ""
 
 msgid "days"
+msgstr ""
+
+msgid "deceased"
 msgstr ""
 
 msgid "deposit(s) with no payments"
@@ -13055,6 +13729,9 @@ msgstr ""
 msgid "errors+"
 msgstr ""
 
+msgid "event"
+msgstr ""
+
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr ""
 
@@ -13064,10 +13741,16 @@ msgstr ""
 msgid "events"
 msgstr ""
 
+msgid "events?"
+msgstr ""
+
 msgid "families"
 msgstr ""
 
 msgid "fields"
+msgstr ""
+
+msgid "files"
 msgstr ""
 
 msgid "for all funds"
@@ -13116,9 +13799,6 @@ msgid "invalid export value"
 msgstr ""
 
 msgid "invalid group request"
-msgstr ""
-
-msgid "invalid recurrence type"
 msgstr ""
 
 msgid "invalid status value"
@@ -13241,6 +13921,9 @@ msgstr ""
 msgid "people from cart"
 msgstr ""
 
+msgid "people from cart?"
+msgstr ""
+
 msgid "people removed from cart"
 msgstr ""
 
@@ -13276,6 +13959,12 @@ msgstr ""
 msgid "risk"
 msgstr ""
 
+msgid "row selected"
+msgstr ""
+
+msgid "rows selected"
+msgstr ""
+
 msgid "s"
 msgstr ""
 
@@ -13286,6 +13975,9 @@ msgid "select an option"
 msgstr ""
 
 msgid "selected family has no coordinates"
+msgstr ""
+
+msgid "skip must be zero or a positive integer"
 msgstr ""
 
 msgid "subscribers"
@@ -13331,6 +14023,9 @@ msgstr ""
 msgid "user"
 msgstr ""
 
+msgid "view families missing an email"
+msgstr ""
+
 msgid "with at least one"
 msgstr ""
 
@@ -13346,15 +14041,10 @@ msgstr ""
 msgid "yrs"
 msgstr ""
 
-msgctxt "one"
-msgid "{{count}} min left"
-msgstr ""
-
-msgctxt "other"
-msgid "{{count}} min left"
-msgstr ""
-
 msgid "{{hours}}h {{mins}}m left"
+msgstr ""
+
+msgid "{{minutes}} min left"
 msgstr ""
 
 #. Context: countries

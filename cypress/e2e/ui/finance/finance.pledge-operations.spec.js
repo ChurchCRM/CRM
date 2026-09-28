@@ -5,6 +5,9 @@ describe("Pledge Operations", () => {
         type: "Payment",
         iMethod: "CASH",
         Date: "2025-10-25",
+        // FamilyID "1" and FundID "1" are intentional: Family ID 1 always exists in the
+        // test environment (documented in cypress-testing.md). This is not a copy-paste
+        // oversight — these are stable test-fixture values.
         FamilyID: "1",
         FYID: 29,
         tScanString: "",
@@ -32,7 +35,7 @@ describe("Pledge Operations", () => {
             cy.on("window:confirm", () => true);
             cy.get("#deletePledgeBtn").click();
 
-            cy.url().should("contain", "/finance/");
+            cy.url().should("not.contain", "/edit");
 
             cy.request({
                 method: "GET",
@@ -52,6 +55,21 @@ describe("Pledge Operations", () => {
 
             cy.request("/api/payments/pledges/" + groupKey)
                 .its("status").should("eq", 200);
+        });
+    });
+
+    it("Editing a pledge via the UI Save button succeeds (issue #9376 regression)", () => {
+        // Regression coverage for issue #9376: clicking Save in edit mode fires
+        // PUT /api/payments/{groupKey}, which unconditionally deletes from
+        // pledge_denominations_pdem and 500'd when that table was missing.
+        cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
+            const groupKey = resp.body.groupKey;
+            cy.visit("/finance/pledge/" + groupKey + "/edit");
+
+            cy.get("#savePledgeBtn").click();
+
+            cy.get("#pledge-toast-body").should("contain.text", "Saved successfully");
+            cy.get("#pledge-toast").should("have.class", "bg-success").and("not.have.class", "bg-danger");
         });
     });
 

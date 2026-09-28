@@ -70,7 +70,7 @@ class DemoDataService
         $this->logger = LoggerUtils::getAppLogger();
     }
 
-    public function importDemoData(bool $includeFinancial = false, bool $includeEvents = false, bool $includeSundaySchool = false): array
+    public function importDemoData(bool $includeFinancial = false, bool $includeEvents = false, bool $includeSundaySchool = false, bool $force = false): array
     {
         $this->importResult['startTime'] = microtime(true);
 
@@ -82,7 +82,7 @@ class DemoDataService
             ]);
 
             // Load demo system configuration (if present) before importing data
-            $this->importSystemConfig($includeSundaySchool, $includeFinancial);
+            $this->importSystemConfig($includeSundaySchool, $includeFinancial, $force);
 
             $emailMap = $this->importCongregation();
 
@@ -138,8 +138,11 @@ class DemoDataService
     /**
      * Load `config.json` from the demo data path and write values into SystemConfig.
      * The `bEnabledSundaySchool` value will be set according to the flag passed to the API.
+     * `sTelemetryLevel` is only applied when `$force` is set: ordinary onboarding imports
+     * (fresh installs, no `force`) must not silently opt a real self-hosted install into
+     * telemetry — only the controlled, `force`-driven reseed used by demo.churchcrm.io does.
      */
-    private function importSystemConfig(bool $includeSundaySchool, bool $includeFinancial): void
+    private function importSystemConfig(bool $includeSundaySchool, bool $includeFinancial, bool $force = false): void
     {
         $logger = LoggerUtils::getAppLogger();
         $filePath = self::DATA_PATH . '/config.json';
@@ -149,7 +152,7 @@ class DemoDataService
         }
 
         try {
-            $json = json_decode(file_get_contents($filePath), true, 512, JSON_THROW_ON_ERROR);
+            $json = json_decode(file_get_contents($filePath), true, 512);
         } catch (JsonException $e) {
             $this->addWarning('Demo config.json parse failed', ['error' => $e->getMessage()]);
             $logger->error('Demo config.json parse failed', ['error' => $e->getMessage(), 'file' => $filePath]);
@@ -163,8 +166,9 @@ class DemoDataService
         }
 
         foreach ($json as $key => $value) {
-            // Skip bEnabledSundaySchool and bEnabledFinance here; we'll set them explicitly from the API flags
-            if ($key === 'bEnabledSundaySchool' || $key === 'bEnabledFinance') {
+            // Skip bEnabledSundaySchool and bEnabledFinance here; we'll set them explicitly from the API flags.
+            // Skip sTelemetryLevel here too; it's only ever applied below, and only when $force is set.
+            if ($key === 'bEnabledSundaySchool' || $key === 'bEnabledFinance' || $key === 'sTelemetryLevel') {
                 continue;
             }
 
@@ -191,6 +195,18 @@ class DemoDataService
             $logger->warning('Failed to set bEnabledFinance from API flag', ['error' => $e->getMessage()]);
         }
 
+        // sTelemetryLevel from config.json is only ever applied on a forced reseed (e.g. the
+        // demo.churchcrm.io reimport job). Ordinary onboarding ("Explore Demo Data" on a fresh,
+        // real self-hosted install) must not silently opt the install into telemetry.
+        if ($force && array_key_exists('sTelemetryLevel', $json)) {
+            try {
+                SystemConfig::setValue('sTelemetryLevel', $json['sTelemetryLevel']);
+            } catch (Exception $e) {
+                $this->addWarning("Failed to set SystemConfig 'sTelemetryLevel' from demo config: {$e->getMessage()}", ['error' => $e->getMessage()]);
+                $logger->warning('Failed to set SystemConfig sTelemetryLevel from demo config', ['error' => $e->getMessage()]);
+            }
+        }
+
         $logger->info('Demo system config import complete', ['file' => $filePath]);
     }
 
@@ -205,7 +221,7 @@ class DemoDataService
 
         $filePath = self::DATA_PATH . '/people.json';
         try {
-            $json = json_decode(file_get_contents($filePath), true, 512, JSON_THROW_ON_ERROR);
+            $json = json_decode(file_get_contents($filePath), true, 512);
         } catch (JsonException $e) {
             $msg = 'Invalid demo JSON: ' . $e->getMessage();
             $this->addWarning($msg, ['exception' => $e->getMessage()]);
@@ -312,6 +328,9 @@ class DemoDataService
                 if ($familySelfRegistered) {
                     $family->setEnteredBy(Person::SELF_REGISTER);
                 }
+                if (($famData['active'] ?? true) === false) {
+                    $family->setDateDeactivated($today);
+                }
                 $family->save();
 
                 $this->familyMap[$family->getId()] = $family;
@@ -374,6 +393,7 @@ class DemoDataService
                         if ($familySelfRegistered) {
                             $person->setEnteredBy(Person::SELF_REGISTER);
                         }
+                        $this->applyDemoPersonStatus($person, $m, $today);
                         $person->save();
                         $this->personMap[$person->getId()] = $person;
                         $this->importResult['imported']['people']++;
@@ -491,6 +511,7 @@ class DemoDataService
                 if (!empty($m['selfRegistered'])) {
                     $person->setEnteredBy(Person::SELF_REGISTER);
                 }
+                $this->applyDemoPersonStatus($person, $m, $today);
                 $person->save();
                 $this->personMap[$person->getId()] = $person;
                 $this->importResult['imported']['people']++;
@@ -539,6 +560,24 @@ class DemoDataService
         }
         
         return $emailMap;
+    }
+
+    private function applyDemoPersonStatus(Person $person, array $m, DateTime $today): void
+    {
+        if (($m['active'] ?? true) === false) {
+            $person->setDateDeactivated($today);
+        }
+        if (!empty($m['dateDeceased'])) {
+            try {
+                $person->setDateDeceased(new DateTime($m['dateDeceased']));
+            } catch (Exception $e) {
+                $this->addWarning("Invalid dateDeceased for person '{$person->getFirstName()} {$person->getLastName()}': {$e->getMessage()}");
+                LoggerUtils::getAppLogger()->warning('Person dateDeceased parse failed', [
+                    'dateDeceased' => $m['dateDeceased'],
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        }
     }
 
     /**
@@ -1072,7 +1111,7 @@ class DemoDataService
 
         try {
             $json = file_get_contents($filepath);
-            $data = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+            $data = json_decode($json, true, 512);
 
             if (!is_array($data)) {
                 $this->importResult['errors'][] = "Invalid JSON in file: {$filename}";

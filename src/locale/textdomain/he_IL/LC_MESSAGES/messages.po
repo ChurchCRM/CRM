@@ -559,16 +559,8 @@ msgid "Picture URL"
 msgstr "כתובת האתר של התמונה"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "עורך קרן תרומות"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "שדות או בחירות לא חוקיים. השינויים לא נשמרו ! אנא תקן ונסה שוב !"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "טרם נוספו קרנות"
 
 #: 
 msgid "Active"
@@ -1094,25 +1086,9 @@ msgid "Create Report"
 msgstr "צור דוח"
 
 #: 
-msgid "Deposit Listing"
-msgstr "רשימת הפקדות"
-
-#: 
 #, fuzzy
 msgid "Deposits"
 msgstr "הפקדות: "
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "מחק שורות נבחרות"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "יצא שורות נבחרות (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "יצא שורות נבחרות (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1180,48 +1156,9 @@ msgid "Minimum Price"
 msgstr "מחיר מינימלי"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "כלי עזר גאוגרפיים למשפחה"
-
-#: 
 #, fuzzy
 msgid "Select Family"
 msgstr "בחר משפחה"
-
-#: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "מספר שכנים מקסימלי:"
-
-#: 
-msgid "Maximum distance"
-msgstr "מרחק מקסימלי"
-
-#: 
-#, fuzzy
-msgid "Data file format"
-msgstr "פורמט קובץ נתונים"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualizer"
-
-#: 
-#, fuzzy
-msgid "Include families in the coordinate file"
-msgstr "כלול משפחות בקובץ קואורדינטות"
-
-#: 
-msgid "Neighbor Families"
-msgstr "משפחות שכנות"
-
-#: 
-msgid "Make Data File"
-msgstr "צור קובץ נתונים"
-
-#: 
-msgid "Show Neighbors"
-msgstr "הצג שכנים"
 
 #: 
 msgid "Distance"
@@ -1242,10 +1179,6 @@ msgstr "קו אורך"
 #: 
 msgid "Add to Cart"
 msgstr "הוסף לעגלה"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "הצטלב עם העגלה"
 
 #: 
 msgid "Remove from Cart"
@@ -1275,10 +1208,6 @@ msgstr "מאפיינים ספציפיים לקבוצה"
 #: 
 msgid "Enabled"
 msgstr "מאופשר"
-
-#: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "ערוך טופס מאפיינים ספציפיים לקבוצה"
 
 #: 
 msgid "Disabled"
@@ -1332,14 +1261,6 @@ msgstr "עורך טופס מאפיינים ספציפיים לקבוצה"
 #: 
 msgid "No properties have been added yet"
 msgstr "עדיין לא נוספו מאפיינים"
-
-#: 
-msgid "Show in"
-msgstr "הצג ב"
-
-#: 
-msgid "Person View"
-msgstr "תצוגת אדם"
 
 #: 
 msgid "Other Email"
@@ -1436,10 +1357,6 @@ msgstr "שלח אימייל לכולם"
 #: 
 msgid "Family Roles"
 msgstr "תפקידי משפחה"
-
-#: 
-msgid "Family Geographic"
-msgstr "מיקום גיאוגרפי משפחתי"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -2196,14 +2113,6 @@ msgstr "פריטים שנתרמו"
 #, fuzzy
 msgid "Purchased Items"
 msgstr "פריטים שנרכשו"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "סך כל הרכישות: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "סך הרכישות: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4299,26 +4208,8 @@ msgid "Profile Image uploaded"
 msgstr "תמונת פרופיל הועלתה"
 
 #: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "הצג שכנים עם סיווגים אלה"
-
-#: 
-msgid "Please select a Family."
-msgstr "אנא בחר משפחה."
-
-#: 
-#, fuzzy
-msgid "Coordinate database file name"
-msgstr "שם קובץ מסד נתוני קואורדינטות"
-
-#: 
 msgid "select an option"
 msgstr "בחר אפשרות"
-
-#: 
-msgid "Direct me"
-msgstr "נווט אותי"
 
 #: 
 msgid "Your cart is empty"
@@ -4873,10 +4764,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "הגדר את מערכת ההצפנה לשימוש - SSL (מיושן) או TLS"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "צור שובר הפקדה עבור השורות הנבחרות (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "הוסף הכל לעגלה"
 
@@ -5162,20 +5049,8 @@ msgid "Verification URL created"
 msgstr "נוצר URL לאישור"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "שגיאה בשליחת אימייל/ים"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "לקבלת מידע נוסף - אנא בדוק רישומי מערכת"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5565,10 +5440,6 @@ msgstr "המשפחה הוסרה מהסל"
 #: 
 msgid "Add Group"
 msgstr "הוסף קבוצה"
-
-#: 
-msgid "Back to Group List"
-msgstr "חזרה לרשימת הקבוצות"
 
 #: 
 msgid "Edit Group"
@@ -7349,10 +7220,6 @@ msgid "Order"
 msgstr "סדר"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "קבצי PDF נשלחו בהצלחה ל-%s משפחות."
-
-#: 
 msgid "Percentage"
 msgstr "אחוז"
 
@@ -7391,10 +7258,6 @@ msgstr "הוסף את סוג המאפיין הראשון שלך"
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "מחיקת שדה זה תגרום לאובדן בלתי הפיך של כל נתוני חברי הקבוצה שהוקצו לשדה זה!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "מחיקת קרן זו עלולה להשפיע על רשומות תרומות היסטוריות!"
 
 #: 
 msgid "Category Name"
@@ -7449,10 +7312,6 @@ msgid "Filter by Class"
 msgstr "סנן לפי כיתה"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "הקרן נמחקה בהצלחה"
-
-#: 
 msgid "In Use"
 msgstr "בשימוש"
 
@@ -7499,10 +7358,6 @@ msgstr "להסיר ספירת נוכחות זו?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "בחר את סוג הרשומה שאליה מאפיין זה חל"
-
-#: 
-msgid "That fund name already exists."
-msgstr "שם קרן זה כבר קיים."
 
 #: 
 msgid "Total Pledges"
@@ -8586,10 +8441,6 @@ msgid "selected family has no coordinates"
 msgstr "למשפחה שנבחרה אין קואורדינטות"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "דרוש מכל המשתמשים להירשם לאימות דו-שלבי"
 
@@ -9388,10 +9239,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "הרחיבו את ChurchCRM עם MailChimp, גיבויים ועוד"
 
 #: 
-msgid "FY %s"
-msgstr "שנת כספים %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "משפחות חולקות כתובת ומספר טלפון."
 
@@ -9474,10 +9321,6 @@ msgstr "יצירת דוחות על חברות בקבוצות ופעילויות"
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "יצירת מסמכי דוח מס לתורמים"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "כלים גיאוגרפיים"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -9994,10 +9837,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "חיפוש באנשים, משפחות, קבוצות, כתובות ועוד."
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "חיפוש וצפייה ברשומות שוברי הפקדה"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "חיפוש אנשים, משפחות, קבוצות…"
 
@@ -10212,10 +10051,6 @@ msgstr "צפייה וניהול כל הקבוצות בקהילה שלכם"
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "צפייה וניהול תשלומי שוברי הפקדה"
-
-#: 
-msgid "View and manage family location data"
-msgstr "צפייה וניהול נתוני מיקום משפחות"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -10558,10 +10393,6 @@ msgid "Total Check-ins"
 msgstr "סך כל רישומי הנוכחות"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "נסו לבחור סוג אירוע או שנה אחרת."
-
-#: 
 msgid "Up to Date"
 msgstr "מעודכן"
 
@@ -10650,11 +10481,6 @@ msgstr "העתק ללוח הגזירים"
 msgid "Custom field"
 msgstr "שדה מותאם אישית"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "חיפוש מותאם אישית"
-
 #: 
 msgid "Default Country"
 msgstr "מדינה ברירת מחדל"
@@ -10716,11 +10542,6 @@ msgstr "ערך שדה"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "מצא אנשים שהתחייבו בשנה אחת אך לא בשנייה"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "מצא אנשים עם ערך שדה מותאם"
 
 #. Context: query_qry
 #: 
@@ -11983,10 +11804,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "השינויים ייכנסו לתוקף בכניסה הבאה."
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "בחר בין ערכת צבעים בהירה לכהה"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "התאם אישית את מראה היישום ותחושתו"
 
@@ -12379,10 +12196,6 @@ msgid "Database dump only (.sql)"
 msgstr "ייצוא מסד נתונים בלבד (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "טווח התאריכים אינו יכול לעלות על שנה אחת"
-
-#: 
 msgid "Destructive Operation"
 msgstr "פעולה הרסנית"
 
@@ -12479,16 +12292,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "כיצד בית ספר ראשון לשבוע + אירועים + קיוסקים עובדים יחד"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "תאריך לא תקין עבור %s — נדרש YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "פורמט תאריך לא תקין עבור rangeStart או rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "תאריך לא תקין; פורמט נדרש YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12719,10 +12524,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds חייב להיות מערך לא ריק"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "סוג חזרתיות לא תקין"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds חייב להיות מערך לא ריק"
 
@@ -12741,10 +12542,6 @@ msgstr "יש לספק גם קו רוחב וגם קו אורך יחד (או לה�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "מידע הקהילה נשמר, אך לא ניתן לאתר את הכתובת אוטומטית. אנא הזן קו רוחב ואורך ידנית תחת קואורדינטות מפה."
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "קואורדינטות מזוהות אוטומטית מהכתובת בשמירה (דרך OpenStreetMap). ניתן גם להזין אותן ידנית למטה — ערכים ידניים תמיד גוברים על זיהוי אוטומטי. השאר שניהם ריקים כדי לאפשר למערכת לקודד גיאוגרפית מהכתובת."
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -12981,10 +12778,6 @@ msgstr "הקבוצה לא נמצאה עבור רשימת תפקידים זו"
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "ניתן לשנות סטטוס לא פעיל רק עבור רשימת הסיווגים"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "משתמשים חדשים לא יקבלו דואר אלקטרוני של ברוכים הבאים עם פרטי הגישה שלהם. שתפו איתם את הסיסמה באופן ידני, או הגדרו תחילה דואר אלקטרוני."
 
 #: 
 msgid "Option name is required"
@@ -13691,7 +13484,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 חייב להיות מחרוזת הקסדצימלית באורך 64 תווים."
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "מתחזקי ChurchCRM לא בדקו תוסף זה. אתה אחראי לאבטחה ולהתנהגות של כל מה שאתה מתקין כאן. העדף את תהליך עיין במאושרים בכל עת שאפשר."
 
 #: 
@@ -14003,10 +13797,6 @@ msgid "Are you sure you want to continue?"
 msgstr "האם אתה בטוח שאתה רוצה להמשיך?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "האם אתם בטוחים שברצונכם למחוק הפקדת תרומות זו?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "האם אתה בטוח שברצונך למחוק סוג אירוע זה? לא ניתן לבטל פעולה זו."
 
@@ -14257,10 +14047,6 @@ msgstr "נתוני הדגמה נטענים בדרך כלל רק בהתקנות �
 #: 
 msgid "Deposit ID"
 msgstr "מזהה ההפקדה"
-
-#: 
-msgid "Deposit Total"
-msgstr "סך ההפקדה"
 
 #: 
 msgid "Deposit Value"
@@ -14574,10 +14360,6 @@ msgstr "הקבוצה נמחקה בהצלחה."
 #: 
 msgid "Group removed from cart"
 msgstr "הקבוצה הוסרה מהסל"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "נדרש GroupID עבור בחירת תפקיד"
 
 #: 
 msgid "HTML URL"
@@ -14957,20 +14739,8 @@ msgid "Please select a role."
 msgstr "אנא בחר תפקיד."
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "אנא בחר גם קבוצה וגם תפקיד."
-
-#: 
 msgid "Please select rows to delete"
 msgstr "אנא בחר שורות למחיקה"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "אנא בחר תפקיד יעד עבור החברים"
-
-#: 
-msgid "Please select target group for members"
-msgstr "אנא בחר קבוצת יעד עבור החברים"
 
 #: 
 msgid "Please try again"
@@ -15866,24 +15636,12 @@ msgid "Account status"
 msgstr "סטטוס חשבון"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "מתקדם: בחר גרסת יעד ספציפית"
-
-#: 
 msgid "Bug Fix"
 msgstr "תיקון באג"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "כברירת מחדל, האשף מוריד את הגרסה המומלצת הבאה. באפשרותך לבחור כל גרסה זמינה מהרשימה למטה."
-
-#: 
 msgid "Change required"
 msgstr "נדרש שינוי"
-
-#: 
-msgid "Changelog"
-msgstr "יומן שינויים"
 
 #: 
 msgid "Continue Anyway"
@@ -15892,10 +15650,6 @@ msgstr "המשך בכל זאת"
 #: 
 msgid "Could not load release information."
 msgstr "לא ניתן לטעון את פרטי הגרסה."
-
-#: 
-msgid "Download & Install"
-msgstr "הורד והתקן"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15924,10 +15678,6 @@ msgstr "יומן שינויים מלא"
 #: 
 msgid "Install stable {{version}}"
 msgstr "התקן גרסה יציבה {{version}}"
-
-#: 
-msgid "Installing next release"
-msgstr "מתקין את הגרסה הבאה"
 
 #: 
 msgid "Invalid file path"
@@ -15998,10 +15748,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "הצג נתיב שדרוג מלא"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "הגרסה היציבה האחרונה היא {{version}}. באפשרותך להתקין אותה מחדש למטה."
 
@@ -16028,10 +15774,6 @@ msgstr "צפה בהערות הגרסה"
 #: 
 msgid "What's New"
 msgstr "מה חדש"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "מה חדש ב-{{version}}"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16246,10 +15988,6 @@ msgid "Buyers Registered"
 msgstr "קונים רשומים"
 
 #: 
-msgid "Buyers This Year"
-msgstr "קונים השנה"
-
-#: 
 msgid "Catalog"
 msgstr "קטלוג"
 
@@ -16398,10 +16136,6 @@ msgid "Items Donated"
 msgstr "פריטים שנתרמו"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "פריטים שנתרמו (השנה)"
-
-#: 
 msgid "Items Sold"
 msgstr "פריטים שנמכרו"
 
@@ -16480,10 +16214,6 @@ msgstr "הגדרות מהירות מוגדרות מראש"
 #: 
 msgid "Raised"
 msgstr "גויס"
-
-#: 
-msgid "Raised This Year"
-msgstr "גויס השנה"
 
 #: 
 msgid "Sample Amount"
@@ -16650,10 +16380,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "פונקציית הדואר האלקטרוני מושבתת כרגע. התכונות הבאות לא יפעלו עד שהדואר האלקטרוני יופעל"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "ערך משוער $%s."
-
-#: 
 msgid "Fastest workflow"
 msgstr "תהליך עבודה מהיר ביותר"
 
@@ -16696,10 +16422,6 @@ msgstr "פיתוח מקומי"
 #: 
 msgid "Minimum Total Amount"
 msgstr "סכום כולל מינימלי"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "הצעת מחיר מינימלית $%s."
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -17002,10 +16724,6 @@ msgid "Working..."
 msgstr "עובד..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "אתה {{releaseCount}} גרסאות מאחור. הנה מה שתרוויח"
-
-#: 
 msgid "click to expand"
 msgstr "לחץ להרחבה"
 
@@ -17218,10 +16936,6 @@ msgid "Deleted successfully"
 msgstr "נמחק בהצלחה"
 
 #: 
-msgid "Deposit #"
-msgstr "מספר פיקדון"
-
-#: 
 msgid "Deposit Slip"
 msgstr "תלוש פיקדון"
 
@@ -17262,20 +16976,12 @@ msgid "Failed to delete pledge"
 msgstr "מחיקת ההתחייבות נכשלה"
 
 #: 
-msgid "Failed to encode payment response"
-msgstr "קידוד תגובת התשלום נכשל"
-
-#: 
 msgid "Failed to retrieve pledge"
 msgstr "אחזור ההתחייבות נכשל"
 
 #: 
 msgid "Failed to update pledge"
 msgstr "עדכון ההתחייבות נכשל"
-
-#: 
-msgid "Family is required"
-msgstr "משפחה נדרשת"
 
 #: 
 msgid "Financial data"
@@ -17406,10 +17112,6 @@ msgid "Please enter a date"
 msgstr "אנא הזן תאריך"
 
 #: 
-msgid "Please select a family"
-msgstr "אנא בחר משפחה"
-
-#: 
 msgid "Please select a fund for all rows"
 msgstr "אנא בחר קרן עבור כל השורות"
 
@@ -17536,4 +17238,1308 @@ msgstr "חושב עליך היום."
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "נתיבי דפים, לוקאל פעיל, גרסת CRM, גרסת PHP, משפחת מערכת הפעלה ומזהה התקנה אקראי. שום דבר אחר. הנתונים מאוחסנים באיחוד האירופי."
+
+#: 
+msgid "% Paid"
+msgstr "% שולם"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: אנא אמת את פרטי משפחתך"
+
+#: 
+msgid "Add Role"
+msgstr "הוסף תפקיד"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "הוסף מאפיינים מותאמים אישית לקבוצה זו"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "הכתובת השתנתה מאז שהקואורדינטות הוגדרו לאחרונה."
+
+#: 
+msgid "All Tellers"
+msgstr "כל הגזברים"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "שליחת כל הדוא\"ל נכשלה. אנא בדוק את הגדרות ה-SMTP בהגדרות המערכת."
+
+#: 
+msgid "Amount Max"
+msgstr "סכום מקסימלי"
+
+#: 
+msgid "Amount Min"
+msgstr "סכום מינימלי"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "אירעה שגיאה בלתי צפויה בעת שליחת הדוא\"ל. אנא בדוק את הגדרות ה-SMTP ויומני השרת."
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "האם אתה בטוח שברצונך להסיר את התפקיד '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "אוטומטי"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "אוטומטי עוקב אחר הגדרות מערכת ההפעלה או הדפדפן; בהיר וכהה דורסים אותן"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "חזרה ללוח ההתחייבויות"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "לחץ על \"צור קואורדינטות\" כדי לחפש את מיקום המפה לכתובת לעיל, או הזן קו רוחב/אורך ידנית. אם יישאר ריק, הקואורדינטות יזוהו אוטומטית בעת שמירת הטופס."
+
+#: 
+msgid "Contributor"
+msgstr "תורם"
+
+#: 
+msgid "Contributors"
+msgstr "תורמים"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "לא ניתן היה למצוא קואורדינטות לכתובת זו. נסה להזין אותן ידנית."
+
+#: 
+msgid "Custom properties for this group"
+msgstr "מאפיינים מותאמים אישית לקבוצה זו"
+
+#: 
+msgid "Delete role"
+msgstr "מחק תפקיד"
+
+#: 
+msgid "Email Error"
+msgstr "שגיאת דוא\"ל"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "הדוא\"ל אינו מוגדר. אנא הגדר את הגדרות ה-SMTP בהגדרות המערכת."
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "אימייל נשלח למשפחה אחת."
+msgstr[1] "אימייל נשלח ל-%d משפחות."
+
+#: 
+msgid "Enter a street address first."
+msgstr "הזן כתובת רחוב תחילה."
+
+#: 
+msgid "Enter role name"
+msgstr "הזן שם תפקיד"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "יצירת הפקדון נכשלה"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "טעינת תצוגה מקדימה של הדוא\"ל נכשלה"
+
+#: 
+msgid "From Date"
+msgstr "מתאריך"
+
+#: 
+msgid "Fund Total"
+msgstr "סך הקרן"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "סיכום התחייבויות תורמי הקרן לפי שנת כספים"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "גיוס הכספים מושבת"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "צור קואורדינטות"
+
+#: 
+msgid "Generating..."
+msgstr "יוצר..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "בקשת הגיאו-קידוד נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Manage Events"
+msgstr "נהל אירועים"
+
+#: 
+msgid "N/A"
+msgstr "לא רלוונטי"
+
+#: 
+msgid "New Deposit"
+msgstr "הפקדון חדש"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "לא נמצאו תורמים לקרן זו בשנת הכספים שנבחרה"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "לא נמצאו משפחות עם כתובת דוא\"ל. לא נשלח דבר."
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "לא נמצאו תשלומים עבור ההפקדות שנבחרו"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "לא סופקו מזהי הפקדון תקינים"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "קובץ PDF נשלח בהצלחה במייל למשפחה אחת."
+msgstr[1] "קובץ PDF נשלח בהצלחה במייל ל-%d משפחות."
+
+#: 
+msgid "Partial Send"
+msgstr "שליחה חלקית"
+
+#: 
+msgid "Payments only"
+msgstr "תשלומים בלבד"
+
+#: 
+msgid "Pledged Amount"
+msgstr "סכום ההתחייבות"
+
+#: 
+msgid "Preview"
+msgstr "תצוגה מקדימה"
+
+#: 
+msgid "Retry"
+msgstr "נסה שוב"
+
+#: 
+msgid "Search"
+msgstr "חיפוש"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "חפש ונהל רשומות תלושי הפקדה"
+
+#: 
+msgid "Select All"
+msgstr "בחר הכול"
+
+#: 
+msgid "Send Emails"
+msgstr "שלח הודעות דוא\"ל"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "שלח הודעות אימות משפחה"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "נשלח %1$d מתוך %2$d — לא ניתן היה להגיע ל-%3$d משפחות."
+
+#: 
+msgid "Show in Profile"
+msgstr "הצג בפרופיל"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "מציג סך הכול עבור הקרן שנבחרה בלבד"
+
+#: 
+msgid "Teller"
+msgstr "גזבר"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "זהו התפקיד היחיד בקבוצה זו."
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "לא ניתן למחוק תפקיד זה."
+
+#: 
+msgid "To Date"
+msgstr "עד תאריך"
+
+#: 
+msgid "Total Pledged"
+msgstr "סך ההתחייבויות"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "שגיאה בלתי צפויה בעת שליחת הדוא\"ל. אנא בדוק את היומנים."
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "משתמש בכתובת הרחוב לעיל כדי לחפש קואורדינטות דרך OpenStreetMap."
+
+#: 
+msgid "View Payment"
+msgstr "הצג תשלום"
+
+#: 
+msgid "View Pledge"
+msgstr "הצג התחייבות"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "כאשר מסומן, מאפיין זה יוצג לצד הקבוצה ברשימת הקבוצות של האדם בדף הפרופיל שלו."
+
+#: 
+msgid "[Family Name]"
+msgstr "[שם משפחה]"
+
+#: 
+msgid "row selected"
+msgstr "שורה נבחרה"
+
+#: 
+msgid "rows selected"
+msgstr "שורות נבחרו"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "ימי הולדת ויובלים"
+
+#: 
+msgid "Estimated value %s."
+msgstr "ערך משוער %s."
+
+#: 
+msgid "Minimum bid %s."
+msgstr "הצעת מחיר מינימלית %s."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "אנשים עם ימי הולדת או יובלי נישואין בחודש מסוים"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "החודש שעבורו תרצה לקבל ימי הולדת ויובלים."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "חודש יובל הנישואין שעבורו תרצה לקבל רשומות."
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "סך כל הרכישות: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "סך רכישות: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "יובלי נישואין"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "אנשים עם יובלי נישואין בחודש מסוים"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "אירעה שגיאה. אנא נסה שנית."
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "האם אתה בטוח שברצונך למחוק קרן זו?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "לא ניתן למחוק: לקרן יש התחייבויות תרומה מקושרות"
+
+#: 
+msgid "Delete Fund"
+msgstr "מחק קרן"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "הכיוון חייב להיות 'למעלה' או 'למטה'."
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "ערוך קרן תרומות"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "שינוי סדר קרן התרומות נכשל"
+
+#: 
+msgid "Fund added successfully."
+msgstr "הקרן נוספה בהצלחה."
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "הקרן נמחקה בהצלחה."
+
+#: 
+msgid "Fund name"
+msgstr "שם הקרן"
+
+#: 
+msgid "Fund name is required."
+msgstr "שם הקרן הוא שדה חובה."
+
+#: 
+msgid "Fund order updated."
+msgstr "סדר הקרנות עודכן."
+
+#: 
+msgid "Fund saved successfully."
+msgstr "הקרן נשמרה בהצלחה."
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "טרם נוספו קרנות. השתמש בטופס למעלה כדי להוסיף את הקרן הראשונה."
+
+#: 
+msgid "Optional description"
+msgstr "תיאור אופציונלי"
+
+#: 
+msgid "Private Calendar"
+msgstr "לוח שנה פרטי"
+
+#: 
+msgid "Public Calendar"
+msgstr "לוח שנה ציבורי"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "מתקדם: התקן גרסה ספציפית במקום זאת"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "כברירת מחדל, האשף משדרג לגרסה האחרונה. באפשרותך לבחור גרסה ספציפית למטה."
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "לא ניתן לערוך תשלום בהפקדה סגורה"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "הורד והחל {{version}}"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "כל גרסה של ChurchCRM כוללת תיקוני אבטחה. אנו ממליצים בחום לשדרג תמיד לגרסה האחרונה."
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "פענוח בקשת התשלום נכשל"
+
+#: 
+msgid "Full release notes"
+msgstr "הערות גרסה מלאות"
+
+#: 
+msgid "Invalid payment data"
+msgstr "נתוני תשלום לא חוקיים"
+
+#: 
+msgid "No release notes available."
+msgstr "אין הערות גרסה זמינות."
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "אזהרה: {{chosen}} חסר תיקוני אבטחה הכלולים ב-{{latest}}. המשך רק אם יש לך סיבה ספציפית."
+
+#: 
+msgid "What you'll gain"
+msgstr "מה תרוויח"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "כשל בקבלת ספירת הפיקדונות"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "יום השנה: %s"
+
+#: 
+msgid "Church"
+msgstr "כנסייה"
+
+#: 
+msgid "Classifications"
+msgstr "סיווגים"
+
+#: 
+msgid "Closest"
+msgstr "הקרוב ביותר"
+
+#: 
+msgid "Deposit #%d"
+msgstr "פיקדון מספר %d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "נכשל בקבלת מספר הגיוס"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "נכשל בטעינת השכנים."
+
+#: 
+msgid "Farther"
+msgstr "יותר רחוק"
+
+#: 
+msgid "Farthest"
+msgstr "הרחוק ביותר"
+
+#: 
+msgid "Find Neighbors"
+msgstr "מצא שכנים"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "מצא משפחות סמוכות והוסף אותן לסל שלך"
+
+#: 
+msgid "Map centered on"
+msgstr "מפה ממורכזת על"
+
+#: 
+msgid "Max distance"
+msgstr "מרחק מקסימלי"
+
+#: 
+msgid "Max neighbors"
+msgstr "מספר שכנים מרבי"
+
+#: 
+msgid "Near"
+msgstr "קרוב"
+
+#: 
+msgid "Please select a family."
+msgstr "אנא בחר משפחה."
+
+#: 
+msgid "Results"
+msgstr "תוצאות"
+
+#: 
+msgid "Same location"
+msgstr "אותו מיקום"
+
+#: 
+msgid "Search Neighbors"
+msgstr "חפש שכנים"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "בחר משפחה ולחץ על מצא שכנים כדי לראות תוצאות."
+
+#: 
+msgid "Selected family"
+msgstr "משפחה שנבחרה"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "ערך זה חייב להיות שם שדה חוקי."
+
+#: 
+msgid "Could not load data"
+msgstr "לא ניתן לטעון נתונים"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "אנא רענן את הדף או נסה שוב מאוחר יותר."
+
+#: 
+msgid "Add the relevant records first."
+msgstr "הוסף תחילה את הרשומות הרלוונטיות."
+
+#: 
+msgid "All Months"
+msgstr "כל החודשים"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "טרם הוגדרו אפשרויות \"%s\"."
+
+#: 
+msgid "No events found for %s %d."
+msgstr "לא נמצאו אירועים עבור %s %d."
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "נסה לבחור סוג אירוע, חודש או שנה שונים."
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "אירעה שגיאת מיקום גיאוגרפי — נסה שוב מאוחר יותר"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "הכתובת אינה שלמה (חסרים עיר, מדינה ומיקוד)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "לכל המשפחות כבר יש קואורדינטות."
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "עדכון הקואורדינטות נכשל"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "עדכון קואורדינטות המשפחה נכשל"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "בוצע מיקום גיאוגרפי לכל {{geocoded}} המשפחות. המפה מעודכנת כעת."
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "בוצע מיקום גיאוגרפי ל-{{geocoded}} משפחות. {{failed}} לא ניתן היה לפתור — ראה פרטים למטה."
+
+#: 
+msgid "Geocoding…"
+msgstr "מבצע מיקום גיאוגרפי…"
+
+#: 
+msgid "No address on file"
+msgstr "אין כתובת רשומה"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "לא נמצאה התאמה — בדוק את הרחוב, העיר והמיקוד"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "פתח משפחה כדי לתקן את כתובתה, ולאחר מכן הרץ זאת שוב."
+
+#: 
+msgid "Set up now"
+msgstr "הגדר כעת"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "נדרש אימות דו-שלבי. יש לך %d יום להירשם."
+msgstr[1] "נדרש אימות דו-שלבי. יש לך %d ימים להירשם."
+
+#: 
+msgid "Unknown family"
+msgstr "משפחה לא ידועה"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "עדכן את כל הקואורדינטות"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "עדכן את כל קואורדינטות המשפחות"
+
+#: 
+msgid "Update Coordinates"
+msgstr "עדכן קואורדינטות"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s היה ראש המשפחה הזו וסומן כנפטר. יש להקצות ראש משפחה חדש."
+
+#: 
+msgid "Accept"
+msgstr "אישור"
+
+#: 
+msgid "Active Now"
+msgstr "פעיל כעת"
+
+#: 
+msgid "Adding..."
+msgstr "מוסיף..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "כל האנשים במערכת בעלי כתובת דוא\"ל רשומים לרשימת תפוצה זו!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "כל המנויים ב-MailChimp נמצאים ב-ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "אירעה שגיאה במחיקת הקבצים."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "האם אתה בטוח לחלוטין? פעולה זו תמחק את כל הנתונים ותשחזר את הגדרות ברירת המחדל של היצרן."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "האם אתה בטוח שברצונך למחוק את כל קובצי היומן? לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "האם אתה בטוח שברצונך למחוק את העמדה"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "האם אתה בטוח שברצונך למחוק את הקישור"
+
+#: 
+msgid "Assignment"
+msgstr "הקצאה"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "משימות רקע (הודעות ימי הולדת וכל משימה מתוזמנת של תוספים) מעולם לא רצו בהתקנה זו."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "משימות הרקע (הודעות ימי הולדת וכל משימה מתוזמנת של תוספים) רצו לאחרונה בתאריך %s."
+
+#: 
+msgid "Backing up..."
+msgstr "מגבה..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "הגיבוי הורד בהצלחה."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "הגיבוי הועלה בהצלחה"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "לא ניתן לשנות את סטטוס הפעילות של עצמך"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "הייצוא ל-ChMeetings הושלם בהצלחה"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "השינויים נשמרו בהצלחה"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "בצע יציאה לכולם והשבת את כולם"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "לבצע יציאה לכולם ולהשבית את האירוע?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "בדוק את תיבת הדוא\"ל שלך לקבלת קישור לאיפוס סיסמה"
+
+#: 
+msgid "Close stuck events?"
+msgstr "לסגור אירועים תקועים?"
+
+#: 
+msgid "Comments"
+msgstr "הערות"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "לא ניתן היה לטעון את תצוגת הדוא\"ל המקדימה. יש לסגור ולנסות שוב."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "יוצר ומעלה גיבוי. פעולה זו עשויה להימשך מספר דקות..."
+
+#: 
+msgid "Database reset failed."
+msgstr "איפוס מסד הנתונים נכשל."
+
+#: 
+msgid "Deceased"
+msgstr "נפטר"
+
+#: 
+msgid "Default admin credentials"
+msgstr "פרטי כניסה של מנהל ברירת מחדל"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "מחיקת עמדה"
+
+#: 
+msgid "Deleted Files"
+msgstr "קבצים שנמחקו"
+
+#: 
+msgid "Deleting..."
+msgstr "מוחק..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "ההורדה הוחזרה ללא כותרות קובץ מצורף."
+
+#: 
+msgid "Error deleting log file."
+msgstr "שגיאה במחיקת קובץ היומן."
+
+#: 
+msgid "Error deleting log files."
+msgstr "שגיאה במחיקת קובצי היומן."
+
+#: 
+msgid "Error downloading log file."
+msgstr "שגיאה בהורדת קובץ היומן."
+
+#: 
+msgid "Error initiating download."
+msgstr "שגיאה בהתחלת ההורדה."
+
+#: 
+msgid "Error loading log file."
+msgstr "שגיאה בטעינת קובץ היומן."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "שגיאה בטעינת הרשומות שנרשמו עצמאית"
+
+#: 
+msgid "Errors"
+msgstr "שגיאות"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "החרג חברים נפטרים מהמדריך המודפס ומייצוא ה-CSV."
+
+#: 
+msgid "Failed Files"
+msgstr "קבצים שנכשלו"
+
+#: 
+msgid "Failed to add link"
+msgstr "הוספת הקישור נכשלה"
+
+#: 
+msgid "Failed to add option"
+msgstr "הוספת האפשרות נכשלה"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "סגירת האירועים נכשלה. יש לנסות שוב."
+
+#: 
+msgid "Failed to delete"
+msgstr "המחיקה נכשלה"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "הפעלת הרשמה בעמדה נכשלה"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ייצוא קובץ ה-CSV ל-ChMeetings נכשל"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "טעינת יומן הביקורת נכשלה. יש לנסות שוב."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "שינוי שם העמדה נכשל"
+
+#: 
+msgid "Failed to save changes"
+msgstr "שמירת השינויים נכשלה"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "עדכון התוסף נכשל"
+
+#: 
+msgid "Family Id"
+msgstr "מזהה משפחה"
+
+#: 
+msgid "Final Confirmation"
+msgstr "אישור סופי"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "מאתר קואורדינטות למשפחות… פעולה זו עשויה להימשך מספר דקות. ניתן להשאיר דף זה פתוח."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "מאתר קואורדינטות למשפחות… עובדו {{done}} מתוך {{total}}, {{geocoded}} אותרו."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "נדרש עדכון ראש משפחה"
+
+#: 
+msgid "Helpful Links"
+msgstr "קישורים שימושיים"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "הסתר נפטרים מהמדריך"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "הסתר חברים נפטרים מהמדריך המודפס ומייצוא ה-CSV."
+
+#: 
+msgid "Identify"
+msgstr "זהה"
+
+#: 
+msgid "Identify command sent"
+msgstr "פקודת הזיהוי נשלחה"
+
+#: 
+msgid "Individual"
+msgstr "יחיד"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "פנימי: התאריך והשעה האחרונים שבהם הושלמו משימות הטיימר ברקע (YYYY-MM-DD HH:MM:SS). אין לערוך ידנית."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "הפריט נמחק בהצלחה"
+
+#: 
+msgid "Kiosk Name"
+msgstr "שם העמדה"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "העמדה אושרה"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "העמדה נמחקה בהצלחה"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "יש לאשר את העמדה"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "שם העמדה שונה"
+
+#: 
+msgid "Last seen"
+msgstr "נראה לאחרונה"
+
+#: 
+msgid "Link"
+msgstr "קישור"
+
+#: 
+msgid "Link added successfully"
+msgstr "הקישור נוסף בהצלחה"
+
+#: 
+msgid "Link deleted"
+msgstr "הקישור נמחק"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "שם הקישור אינו יכול להכיל תגי HTML"
+
+#: 
+msgid "Living"
+msgstr "חי"
+
+#: 
+msgid "Log settings saved"
+msgstr "הגדרות היומן נשמרו"
+
+#: 
+msgid "Login Name is Required"
+msgstr "שם המשתמש הוא שדה חובה"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "האדם סומן כפעיל"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "האדם סומן כלא פעיל"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "מספר הדקות המינימלי בין הרצות של משימות טיימר ברקע המופעלות על ידי טעינת דף. מונע הרצה חוזרת של המשימות בכל צפייה בדף בבוקר עמוס. אינו חל על ההרצה משורת הפקודה. הגדר ל-0 כדי להריץ בכל טעינת דף."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "משתמשים חדשים לא יקבלו הודעת ברוכים הבאים, והסיסמה שנוצרה לעולם לא תוצג. לאחר יצירת החשבון, יש להגדיר סיסמה דרך משתמשי המערכת באמצעות שינוי סיסמה — או להגדיר תחילה דוא\"ל."
+
+#: 
+msgid "No changes to save"
+msgstr "אין שינויים לשמירה"
+
+#: 
+msgid "No contact info"
+msgstr "אין פרטי יצירת קשר"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "לא הוגדרו קישורים מותאמים אישית. הוסף אחד למעלה!"
+
+#: 
+msgid "No email"
+msgstr "אין דוא\"ל"
+
+#: 
+msgid "No files were deleted."
+msgstr "לא נמחקו קבצים."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "אין עזרה זמינה לתוסף זה."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "אין אנשים להוספה - כולם כבר נמצאים בעגלה"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "אין אנשים להוספה - המסנן לא החזיר תוצאות"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "תאריך פטירה אינו תקין"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "מספר הימים שיש למשתמשים כדי להירשם לאימות דו-שלבי (2FA) לאחר שהוא הופך לחובה. הגדר ל-0 כדי לאכוף מיידית. קיצור תקופת חסד פעילה עלול לחסום משתמשים באופן מיידי."
+
+#: 
+msgid "Offline"
+msgstr "לא מקוון"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "יש לבצע פעולה זו רק לאחר תיקון הבעיה הבסיסית. עדיין יהיה עליך ללחוץ על הפעל כדי שהתוסף ירוץ שוב."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "אנא אשר הפעלה של האדם"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "אנא אשר השבתה של האדם"
+
+#: 
+msgid "Plugin status updated"
+msgstr "סטטוס התוסף עודכן"
+
+#: 
+msgid "Registered"
+msgstr "רשום"
+
+#: 
+msgid "Reload"
+msgstr "טען מחדש"
+
+#: 
+msgid "Reload command sent"
+msgstr "פקודת הטעינה מחדש נשלחה"
+
+#: 
+msgid "Rename"
+msgstr "שנה שם"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "שינוי שם עמדה"
+
+#: 
+msgid "Reset Complete"
+msgstr "האיפוס הושלם"
+
+#: 
+msgid "Reset Settings"
+msgstr "אפס הגדרות"
+
+#: 
+msgid "Resetting..."
+msgstr "מאפס..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "המשימות המתוזמנות אינן פועלות"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "אסימון האבטחה חסר. יש לרענן את הדף."
+
+#: 
+msgid "Select…"
+msgstr "בחר…"
+
+#: 
+msgid "Sending..."
+msgstr "שולח..."
+
+#: 
+msgid "Sending…"
+msgstr "שולח…"
+
+#: 
+msgid "Settings reset"
+msgstr "ההגדרות אופסו"
+
+#: 
+msgid "Settings saved"
+msgstr "ההגדרות נשמרו"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "ההגדרות נשמרו. מרענן מידע שדרוג..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "מציג אנשים פעילים בלבד."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "מציג אנשים לא פעילים בלבד."
+
+#: 
+msgid "Successfully deleted"
+msgstr "נמחק בהצלחה"
+
+#: 
+msgid "Testing..."
+msgstr "בודק..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "מסד הנתונים נוקה. המערכת מוכנה להתחלה חדשה."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "מנגנון הגיבוי המבוסס על טעינת דף ממשיך לפעול בינתיים. ניתן לשנות את משך הזמן ש-ChurchCRM ממתין לפני הצגת אזהרה זו באמצעות ההגדרה %1$s, או להגדיר אותה ל-0 כדי להסתיר אותה."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "אדם זה אינו פעיל"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "פעולה זו מאתרת קואורדינטות מפה עבור כל משפחה שחסרות לה, באמצעות OpenStreetMap. התהליך מעבד את המשפחות באצוות של 50, כדקה לאצווה. ניתן להשאיר דף זה פתוח בזמן הריצה. להמשיך?"
+
+#: 
+msgid "This person is deceased"
+msgstr "אדם זה נפטר"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "פעולה זו תנקה את כל הערכים המוגדרים עבור תוסף זה. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "פעולה זו תמחק לצמיתות את קובצי התוסף מהדיסק ותנקה את הגדרותיו. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "כתובת ה-URL אינה יכולה להכיל תגי HTML"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "שגיאה בלתי צפויה. יש לנסות שוב."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "הסר התקנת תוסף"
+
+#: 
+msgid "Upcoming"
+msgstr "קרוב"
+
+#: 
+msgid "Valid Until"
+msgstr "תקף עד"
+
+#: 
+msgid "View active only"
+msgstr "הצג פעילים בלבד"
+
+#: 
+msgid "View all"
+msgstr "הצג הכל"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "הצג הכל (כולל לא פעילים)"
+
+#: 
+msgid "View inactive only"
+msgstr "הצג לא פעילים בלבד"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "הצג אזהרה בלוח הבקרה של המנהל כאשר משימות הטיימר ברקע לא רצו במשך מספר שעות זה. הערך 26 מאפשר cron יומי בתוספת סטייה מסוימת. הגדר ל-0 כדי להשבית את האזהרה."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "ללא מתזמן, משימות אלו רצות רק כאשר מישהו טוען דף, כך שביום חול שקט לא תישלח כלל דואר מתוזמן. הוסף רשומת cron שמריצה את מריץ המשימות מדי שעה, תחת אותו משתמש שבו פועל שרת האינטרנט שלך"
+
+#: 
+msgid "check-outs"
+msgstr "יציאות"
+
+#: 
+msgid "deceased"
+msgstr "נפטר"
+
+#: 
+msgid "event"
+msgstr "אירוע"
+
+#: 
+msgid "events?"
+msgstr "אירועים?"
+
+#: 
+msgid "files"
+msgstr "קבצים"
+
+#: 
+msgid "people from cart?"
+msgstr "אנשים מהעגלה?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "הערך skip חייב להיות אפס או מספר שלם חיובי"
+
+#: 
+msgid "view families missing an email"
+msgstr "הצג משפחות ללא כתובת דוא\"ל"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "קונים בשנת הכספים הנוכחית"
+
+#: 
+msgid "Current"
+msgstr "נוכחי"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "פריטים שנתרמו (בשנת הכספים הנוכחית)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "שם המשתמש חייב להכיל %d תווים או פחות!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "נאסף בשנת הכספים הנוכחית"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s חייב להיות כתובת אינטרנט מלאה בפורמט https://, לדוגמה https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "לחשבון יש הרשאות מוגבלות. יש לפנות למנהל המערכת."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "אירעה שגיאה בעת הצגת דף השגיאה."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "כל כתובת חייבת להתחיל ב-https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "צור מדבקות"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "צור מדבקות דיוור"
+
+#: 
+msgid "Labels"
+msgstr "מדבקות"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "מדבקות דיוור עבור האנשים בעגלה שלך. אדם ללא כתובת משלו יקבל מדבקה לפי כתובת המשפחה שלו."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "אופציונלי. קישורים לחשבונות הקהילה עצמה, המוצגים לחברים בדפים כגון כותרת התחתונה של הפורטל. השאר שדה ריק כדי להסתיר את אותה רשת."
+
+#: 
+msgid "Options"
+msgstr "אפשרויות"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "משימות מתוזמנות"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "פעיל, נותרו {{seconds}} שניות"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "המרווח הצפוי בין הרצות (בשעות): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "משפחות שדולגו (אין כתובת דוא\"ל רשומה): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "משפחות שלא ניתן היה לאתר עבורן קואורדינטות: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "משפחות שיקבלו הודעות אישור בדוא\"ל: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "חברים שהועתקו: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "לא רשומים כאן: עוד {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "נמענים: {{total}} — יותר מדי עבור קישור mailto:. השתמש בהעתקת כתובות במקום."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "יותר מדי נמענים עבור תוכנת הדוא\"ל ({{total}} > {{max}}). השתמש בהעתקת כתובות במקום."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "נותרו {{minutes}} דקות"
 

@@ -13,7 +13,13 @@ use ChurchCRM\Utils\GeoUtils;
  */
 class ChurchMetaData
 {
-    /** Read a SystemConfig key as a trimmed string, coalescing null. */
+    private const SOCIAL_NETWORKS = [
+        ['id' => 'x', 'label' => 'X', 'config' => 'sChurchX', 'icon' => 'fa-brands fa-x-twitter'],
+        ['id' => 'youtube', 'label' => 'YouTube', 'config' => 'sChurchYouTube', 'icon' => 'fa-brands fa-youtube'],
+        ['id' => 'facebook', 'label' => 'Facebook', 'config' => 'sChurchFacebook', 'icon' => 'fa-brands fa-facebook'],
+        ['id' => 'instagram', 'label' => 'Instagram', 'config' => 'sChurchInstagram', 'icon' => 'fa-brands fa-instagram'],
+    ];
+
     private static function readString(string $key): string
     {
         return trim((string) SystemConfig::getValue($key));
@@ -89,13 +95,52 @@ class ChurchMetaData
         return self::readString('sChurchWebSite');
     }
 
-    /**
-     * Absolute URL of the church logo for use in email templates (and
-     * eventually other external-facing surfaces like letters or reports).
-     * Falls back to the bundled ChurchCRM logo if the admin-configured
-     * value is empty or not a valid http(s) URL — this way external
-     * email clients always see a working image.
-     */
+    public static function getChurchSocialLinks(): array
+    {
+        $links = [];
+        foreach (self::SOCIAL_NETWORKS as $network) {
+            $url = self::readString($network['config']);
+            if ($url === '') {
+                continue;
+            }
+
+            $links[] = [
+                'id'    => $network['id'],
+                'label' => $network['label'],
+                'url'   => $url,
+                'icon'  => $network['icon'],
+            ];
+        }
+
+        return $links;
+    }
+
+    public static function getChurchSocialNetworkFields(): array
+    {
+        $fields = [];
+        foreach (self::SOCIAL_NETWORKS as $network) {
+            $fields[] = $network + ['url' => self::readString($network['config'])];
+        }
+
+        return $fields;
+    }
+
+    public static function isValidSocialUrl(string $url): bool
+    {
+        if ($url === '') {
+            return true;
+        }
+
+        if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+            return false;
+        }
+
+        $scheme = parse_url($url, PHP_URL_SCHEME);
+        $host   = parse_url($url, PHP_URL_HOST);
+
+        return strtolower((string) $scheme) === 'https' && !empty($host);
+    }
+
     public static function getChurchLogoURL(): string
     {
         $configured = self::readString('sChurchLogoURL');
@@ -103,13 +148,9 @@ class ChurchMetaData
             return $configured;
         }
 
-        return SystemURLs::getURL() . '/Images/logo-churchcrm-350.jpg';
+        return SystemURLs::getURL() . '/Images/churchcrm-logo-ink-blue.svg';
     }
 
-    /**
-     * Church latitude as a float; `0.0` when unset. Triggers a geocode
-     * against the configured full address on first read if missing.
-     */
     public static function getChurchLatitude(): float
     {
         if (self::readString('iChurchLatitude') === '') {
@@ -128,7 +169,6 @@ class ChurchMetaData
         return (float) SystemConfig::getValue('iChurchLongitude');
     }
 
-    /** True when a geocoded latitude is stored; use in place of the old `!== ''` check. */
     public static function hasChurchLocation(): bool
     {
         return self::readString('iChurchLatitude') !== '' && self::readString('iChurchLongitude') !== '';

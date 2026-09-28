@@ -19,6 +19,11 @@ use Propel\Runtime\Collection\ObjectCollection;
 class UserService
 {
     /**
+     * Matches the usr_UserName column width in orm/schema.xml / Install.sql.
+     */
+    public const MAX_USERNAME_LENGTH = 50;
+
+    /**
      * Get all users
      * @return User[]|ObjectCollection
      */
@@ -125,6 +130,7 @@ class UserService
             'iMinPasswordChange',
             'aDisallowedPasswords',
             'bRequire2FA',
+            'i2FAGracePeriodDays',
             's2FAApplicationName'
         ];
 
@@ -218,13 +224,14 @@ class UserService
             'finance'           => $allow && isset($body['Finance'])           ? 1 : 0,
             'manageFundraisers' => $allow && isset($body['ManageFundraisers']) ? 1 : 0,
             'notes'             => $allow && isset($body['Notes'])             ? 1 : 0,
+            'addEvent'          => $allow && isset($body['AddEvent'])          ? 1 : 0,
         ];
     }
 
     /**
      * Create a new user account for the given person.
      *
-     * Validates username length (>= 3 chars) and uniqueness, then creates the
+     * Validates username length (3-50 chars) and uniqueness, then creates the
      * account with a random password. Sends a NewAccountEmail when email is
      * configured.
      *
@@ -232,7 +239,7 @@ class UserService
      * @param array  $perms    Normalized perms from normalizeAccessMode()
      * @param string $userName Desired login name
      * @return User The newly created user
-     * @throws \RuntimeException on validation failure (duplicate username, too short)
+     * @throws \RuntimeException on validation failure (duplicate username, too short/long)
      */
     public function createUser(int $personId, array $perms, string $userName): User
     {
@@ -250,6 +257,10 @@ class UserService
 
         if (strlen($userName) < 3) {
             throw new \RuntimeException(gettext('Login must be at least 3 characters!'));
+        }
+
+        if (strlen($userName) > self::MAX_USERNAME_LENGTH) {
+            throw new \RuntimeException(sprintf(gettext('Login must be %d characters or fewer!'), self::MAX_USERNAME_LENGTH));
         }
 
         $dupCount = UserQuery::create()
@@ -285,6 +296,9 @@ class UserService
                 ->setEditSelf($perms['editSelf']);
             $newUser->updatePassword($rawPassword);
             $newUser->save();
+            // Always write an explicit TRUE/FALSE bAddEvent row for the new user
+            // so they never silently inherit the shared default (peronId=0) value.
+            $this->saveAddEventPermission($personId, (bool) ($perms['addEvent'] ?? false));
             $newUser->createTimeLineNote('created');
             $con->commit();
         } catch (\Throwable $e) {
@@ -334,6 +348,9 @@ class UserService
             if ($types !== []) {
                 $this->saveUserConfig($personId, $newValue, $newPermission, $types);
             }
+            // Write bAddEvent last so the Permissions-card checkbox always wins
+            // over the raw User Config table permission dropdown for the same row.
+            $this->saveAddEventPermission($personId, (bool) ($perms['addEvent'] ?? false));
             $con->commit();
         } catch (\Throwable $e) {
             $con->rollBack();
@@ -357,6 +374,10 @@ class UserService
     {
         if (strlen($userName) < 3) {
             throw new \RuntimeException(gettext('Login must be at least 3 characters!'));
+        }
+
+        if (strlen($userName) > self::MAX_USERNAME_LENGTH) {
+            throw new \RuntimeException(sprintf(gettext('Login must be %d characters or fewer!'), self::MAX_USERNAME_LENGTH));
         }
 
         $dupCount = UserQuery::create()
@@ -389,6 +410,66 @@ class UserService
         $user->createTimeLineNote('updated');
 
         return $user;
+    }
+
+    /**
+     * Get the raw bAddEvent (Manage Events) permission for a user.
+     *
+     * Reads the per-user UserConfig row directly — no admin bypass — so the
+     * Permissions-card checkbox reflects the stored grant, not the effective
+     * computed value (which always returns true for admins).
+     *
+     * @param int $personId Person ID of the user to query
+     * @return bool True if the bAddEvent permission row is set to 'TRUE'
+     */
+    public function getAddEventPermission(int $personId): bool
+    {
+        $row = UserConfigQuery::create()
+            ->filterByPeronId($personId)
+            ->filterByName('bAddEvent')
+            ->findOne();
+        return $row !== null && $row->getPermission() === 'TRUE';
+    }
+
+    /**
+     * Upsert the per-user bAddEvent (Manage Events) UserConfig permission row.
+     *
+     * No-op when the Events module is disabled system-wide or when the default
+     * (peronId=0) seed row is missing. Clones field metadata from the default
+     * row on first write — identical to the saveUserConfig() clone pattern.
+     *
+     * @param int  $personId Person ID of the user
+     * @param bool $enabled  Whether to grant (TRUE) or deny (FALSE) the permission
+     */
+    private function saveAddEventPermission(int $personId, bool $enabled): void
+    {
+        // No early-return on isEventsEnabled() — always write the explicit row
+        // so the user never inherits the shared default (peronId=0) value later
+        // when the Events module is re-enabled.
+        $default = UserConfigQuery::create()
+            ->filterByPeronId(0)
+            ->filterByName('bAddEvent')
+            ->findOne();
+        if ($default === null) {
+            return;
+        }
+        $permission = $enabled ? 'TRUE' : 'FALSE';
+        $row = UserConfigQuery::create()
+            ->filterByPeronId($personId)
+            ->filterById($default->getId())
+            ->findOne();
+        if ($row === null) {
+            $row = new UserConfig();
+            $row->setPeronId($personId)
+                ->setId($default->getId())
+                ->setName($default->getName())
+                ->setValue($default->getValue())
+                ->setType($default->getType())
+                ->setTooltip($default->getTooltip())
+                ->setCat($default->getCat());
+        }
+        $row->setPermission($permission);
+        $row->save();
     }
 
     /**

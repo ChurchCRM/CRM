@@ -1,5 +1,20 @@
 /// <reference types="cypress" />
 
+/**
+ * FullCalendar v7 no longer uses stable .fc-* class names — all class names
+ * are hashed (e.g. .fc-classic-0Bj). Use stable alternatives:
+ *
+ *  - Toolbar nav buttons: aria-label partial match (English defaults):
+ *      Previous \u2192 [aria-label*="Previous"]
+ *      Next     \u2192 [aria-label*="Next"]
+ *      Today    \u2192 [aria-label*="Today"], [aria-label*="This"] (month view: "This Month")
+ *      Month view button \u2192 [aria-label="Month view"]
+ *
+ *  - Footer toolbar: .crm-fc-footer-toolbar (injected via footerToolbarClass option
+ *      added to the Calendar constructor in event-calendars.js for FC v7 compat).
+ *
+ *  - Day cell clicks: window.showNewEventForm() global (selector-independent).
+ */
 describe("Mobile Calendar", () => {
     beforeEach(() => cy.setupStandardSession());
 
@@ -17,14 +32,17 @@ describe("Mobile Calendar", () => {
             expect(width).to.be.greaterThan(0);
         });
 
-        // Mobile: simplified header with prev/next/today
-        cy.get(".fc-prev-button").should("be.visible");
-        cy.get(".fc-next-button").should("be.visible");
-        cy.get(".fc-today-button").should("be.visible");
+        // Mobile: simplified header with prev/next/today navigation buttons.
+        // Use aria-label partial match — stable across FullCalendar v7 theme changes.
+        cy.get("#calendar [aria-label*='Previous']").should("be.visible");
+        cy.get("#calendar [aria-label*='Next']").should("be.visible");
+        // Today button: "This Month" in month view, "Today" in day view.
+        cy.get("#calendar [aria-label*='Today'], #calendar [aria-label*='This']").should("be.visible");
 
-        // View-switcher buttons should be in the footer toolbar on mobile
-        cy.get(".fc-footer-toolbar").should("be.visible");
-        cy.get(".fc-dayGridMonth-button").should("be.visible");
+        // View-switcher buttons should be in the footer toolbar on mobile.
+        // .crm-fc-footer-toolbar is set via footerToolbarClass option in event-calendars.js.
+        cy.get(".crm-fc-footer-toolbar").should("be.visible");
+        cy.get("#calendar [aria-label='Month view']").should("be.visible");
     });
 
     it("Should show Calendars offcanvas button on mobile", () => {
@@ -56,21 +74,23 @@ describe("Mobile Calendar", () => {
         cy.get('[data-bs-target="#calendarSidebar"]').should("be.visible");
 
         // Desktop toolbar should be active (view-switcher in header, no footer toolbar)
-        cy.get(".fc-dayGridMonth-button").should("be.visible");
-        cy.get(".fc-footer-toolbar").should("not.exist");
+        cy.get("#calendar [aria-label='Month view']").should("be.visible");
+        cy.get(".crm-fc-footer-toolbar").should("not.exist");
     });
 
     it("Should switch to desktop toolbar after rotating to landscape", () => {
         cy.viewport(375, 812); // portrait — mobile toolbar
         cy.visit("event/calendars");
-        cy.get(".fc-footer-toolbar").should("be.visible");
+        cy.get(".crm-fc-footer-toolbar").should("be.visible");
 
-        // Rotate to landscape past the 768px breakpoint
+        // Rotate to landscape past the 768px breakpoint.
+        // The native window resize listener (200ms debounce) calls
+        // fullcalendar.setOption("footerToolbar", false), removing the footer toolbar.
         cy.viewport(812, 375);
 
-        // After resize, footer toolbar should be gone and view buttons in header
-        cy.get(".fc-footer-toolbar").should("not.exist");
-        cy.get(".fc-dayGridMonth-button").should("be.visible");
+        // After resize + debounce, footer toolbar should be gone and view buttons in header
+        cy.get(".crm-fc-footer-toolbar").should("not.exist");
+        cy.get("#calendar [aria-label='Month view']").should("be.visible");
     });
 
     it("Should open event creation modal on mobile", () => {
@@ -78,7 +98,12 @@ describe("Mobile Calendar", () => {
         cy.viewport(375, 812);
         cy.visit("event/calendars");
 
-        cy.get(".fc-daygrid-day").first().click();
+        // Open modal via the stable global function (avoids FullCalendar v7 hashed class names)
+        cy.window().should("have.property", "showNewEventForm");
+        cy.window().then((win) => {
+            const today = new Date().toISOString().split("T")[0];
+            win.showNewEventForm({ startStr: today, endStr: today, allDay: true });
+        });
 
         // Modal should appear and be properly sized for mobile.
         // Assert the modal exists, then scroll the title input into view and type.

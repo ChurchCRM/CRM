@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\SystemCalendars;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
@@ -11,7 +12,7 @@ class FundraisersCalendar implements SystemCalendar
 {
     public static function isAvailable(): bool
     {
-        return true;
+        return SystemConfig::getBooleanValue('bEnabledFundraiser');
     }
 
     public function getAccessToken(): bool

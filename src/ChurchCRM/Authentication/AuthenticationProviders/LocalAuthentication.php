@@ -153,16 +153,33 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->bPendingTwoFactorAuth = true;
                 LoggerUtils::getAuthLogger()->info('User partially authenticated, pending 2FA', $logCtx);
             } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled()) {
-                // Allow login but force enrollment — user will be redirected on every request until enrolled
+                // Mandate is active but user has not enrolled. Stamp the grace period start (if not already
+                // set) as a side-effect of getTwoFactorGraceStatus(), then let the user log in.
+                // validateUserSessionIsActive() handles blocking once the window has expired.
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
-                LoggerUtils::getAuthLogger()->info('User logged in, redirecting to mandatory 2FA enrollment', $logCtx);
+                $this->currentUser->getTwoFactorGraceStatus(); // side-effect: lazy-stamps start timestamp
+                LoggerUtils::getAuthLogger()->info('User logged in under 2FA mandate; grace period check applied', $logCtx);
             } else {
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
                 LoggerUtils::getAuthLogger()->info('User successfully logged in without 2FA', $logCtx);
             }
         } elseif ($AuthenticationRequest instanceof LocalTwoFactorTokenRequest && $this->bPendingTwoFactorAuth) {
+            // Guard: if the account is already locked (e.g. from a prior OTP failure in
+            // this session), reject without incrementing the counter or re-sending email.
+            if ($this->currentUser->isLocked()) {
+                // Clear the pending-2FA state so the session cannot resume OTP
+                // brute-forcing after an admin resets usr_FailedLogins.
+                // validateUserSessionIsActive() calls currentUser->reload(), which
+                // would pick up the fresh DB state and make isLocked() return false
+                // again — clearing these flags closes that re-entry window.
+                $this->bPendingTwoFactorAuth = false;
+                $this->currentUser = null;
+                $authenticationResult->isAuthenticated = false;
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                return $authenticationResult;
+            }
             if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
@@ -174,10 +191,29 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->bPendingTwoFactorAuth = false;
                 LoggerUtils::getAuthLogger()->info('User successfully logged in with 2FA Recovery Code', $logCtx);
             } else {
+                // Count OTP failures toward account lockout, mirroring the wrong-password branch.
+                // Without this, an attacker with a valid password can brute-force the 6-digit
+                // TOTP space without limit (GHSA-f2fq-4rmp-9x8c).
+                $this->currentUser->setFailedLogins($this->currentUser->getFailedLogins() + 1);
+                $this->currentUser->save();
+                if (!empty($this->currentUser->getEmail()) && $this->currentUser->isLocked()) {
+                    LoggerUtils::getAuthLogger()->warning('Too many failed 2FA attempts. The account has been locked', $logCtx);
+                    $lockedEmail = new LockedEmail($this->currentUser);
+                    $lockedEmail->send();
+                }
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
-                $recoveryParam = $AuthenticationRequest->isRecoveryMode ? '&recovery' : '';
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1' . $recoveryParam;
+                if ($this->currentUser->isLocked()) {
+                    // Account is now locked — clear the pending-2FA state so the session
+                    // cannot resume OTP brute-forcing after an admin counter reset,
+                    // then redirect back to login.
+                    $this->bPendingTwoFactorAuth = false;
+                    $this->currentUser = null;
+                    $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                } else {
+                    $recoveryParam = $AuthenticationRequest->isRecoveryMode ? '&recovery' : '';
+                    $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1' . $recoveryParam;
+                }
             }
         }
 
@@ -247,14 +283,25 @@ class LocalAuthentication implements IAuthenticationProvider
             $authenticationResult->nextStepURL = $this->getPasswordChangeURL();
         }
 
-        // If 2FA is required and user hasn't enrolled, redirect to enrollment on every request
-        // but don't redirect if they're already on the enrollment page
+        // If 2FA is required and user hasn't enrolled, check grace period status.
+        // block only when the grace window has expired or no grace period is configured.
         $enrollmentURL = SystemURLs::getRootPath() . '/v2/user/current/manage2fa';
-        $isOnEnrollmentPage = str_contains($_SERVER['REQUEST_URI'], '/v2/user/current/manage2fa')
-            || str_contains($_SERVER['REQUEST_URI'], '/v2/user/current/enroll2fa');
+        $requestUri = $_SERVER['REQUEST_URI'] ?? '';
+        $isOnEnrollmentPage = str_contains($requestUri, '/v2/user/current/manage2fa')
+            || str_contains($requestUri, '/v2/user/current/enroll2fa');
         if (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
-            LoggerUtils::getAuthLogger()->info('User must enroll in mandatory 2FA before accessing system', $logCtx);
-            $authenticationResult->nextStepURL = $enrollmentURL;
+            $graceStatus = $this->currentUser->getTwoFactorGraceStatus();
+            if ($graceStatus === 'expired' || $graceStatus === 'immediate') {
+                LoggerUtils::getAuthLogger()->info('2FA grace period expired or immediate; redirecting to enrollment', $logCtx);
+                $authenticationResult->nextStepURL = $enrollmentURL;
+                // NOTE (pre-existing limitation): setting nextStepURL here does NOT block API or
+                // API-key-authenticated requests.  AuthMiddleware only enforces nextStepURL for
+                // browser requests (inside the `isBrowserRequest` branch); session-based API
+                // calls see isAuthenticated=true and are passed straight to the handler.
+                // A follow-up issue should add 403 enforcement in AuthMiddleware for non-browser
+                // requests when nextStepURL signals mandatory 2FA enrollment.
+            }
+            // 'within-grace' → allow through; the banner in Header.php handles the warning.
         }
 
         // Finally, if the above tests pass, this user "is authenticated"

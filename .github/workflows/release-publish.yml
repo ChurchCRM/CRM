@@ -2,18 +2,26 @@ name: Release & Start Next
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # Never cancel a release half-way: a cancelled run can leave a deleted tag
+  # or a draft without its next-version PR. A second dispatch waits instead.
+  cancel-in-progress: false
 
 
 # End-of-cycle one-click flow:
 #
-#   1. publish    — finds the latest successful master Build/Test/Package run,
+#   1. publish    — finds the latest successful master Build/Test/Package run
+#                   whose package.json version matches the expected version,
 #                   downloads its ChurchCRM-<version>.zip, and creates a
 #                   GitHub Release (draft by default). The tag is auto-
 #                   detected from package.json on that build's commit, so you
 #                   don't retype the version.
 #
-#   2. start_next — chains into release-prepare.yml (reusable) to bump master
+#   2. notes      — writes release-notes-context-<tag>.md (every PR in the
+#                   release with its full description, bucketed by the files
+#                   it touched) as a run artifact. The release-notes skill
+#                   reads it instead of opening each PR by hand.
+#
+#   3. start_next — chains into release-prepare.yml (reusable) to bump master
 #                   to the version you typed in `next_version` and open the
 #                   "Start <next> release" PR.
 #
@@ -42,20 +50,29 @@ on:
         type: boolean
         default: true
       run_id:
-        description: 'Optional: specific Build/Test/Package run ID to release from. Leave blank for the latest successful master build.'
+        description: 'Optional: specific Build/Test/Package run ID to release from. Leave blank for the latest successful master build matching the expected version.'
         required: false
         type: string
       release_version_override:
-        description: 'Optional: override the auto-detected release tag. Leave blank to use package.json on the source build commit.'
+        description: 'Optional: override the auto-detected release tag. Leave blank to use package.json on the source build commit. Note: providing this bypasses the version guard introduced in this workflow — use only as an explicit escape hatch.'
         required: false
         type: string
+      expected_version:
+        description: 'Optional: the version you expect to release (e.g. 7.6.3). Leave blank to derive from package.json on the dispatch commit (master HEAD). Used to reject a build whose package.json version does not match.'
+        required: false
+        type: string
+      replace_existing:
+        description: 'Delete and recreate the release and tag if this version already exists. Leave off: an existing release stops the run instead of being silently replaced.'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   # ───────────────────────────────────────────────────────────────────
   # Publish the CURRENT version as a GitHub Release.
   # ───────────────────────────────────────────────────────────────────
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
       actions: read
@@ -69,30 +86,113 @@ jobs:
     outputs:
       release_tag: ${{ steps.tag.outputs.tag }}
       release_url: ${{ steps.release.outputs.release_url }}
+      previous_tag: ${{ steps.previous.outputs.tag }}
+      target_commit: ${{ steps.run.outputs.commit }}
     steps:
+      - name: Determine expected version
+        id: expected
+        env:
+          INPUT_EXPECTED: ${{ inputs.expected_version }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if [ -n "$INPUT_EXPECTED" ]; then
+            expected="$INPUT_EXPECTED"
+            if ! [[ "$expected" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+              echo "::error::expected_version '$expected' does not look like a semantic version (expected X.Y.Z…). Fix the input."
+              exit 1
+            fi
+            echo "Using explicit expected_version=$expected from workflow input."
+          else
+            pkg_b64=$(gh api "repos/$GH_REPO/contents/package.json?ref=$HEAD_SHA" --jq '.content')
+            expected=$(echo "$pkg_b64" | base64 -d | jq -r '.version' 2>/dev/null) || expected=""
+            if [ -z "$expected" ] || [ "$expected" = "null" ]; then
+              echo "::error::Could not read version from package.json at HEAD ($HEAD_SHA). Pass expected_version explicitly."
+              exit 1
+            fi
+            echo "Derived expected version $expected from package.json at HEAD ($HEAD_SHA)."
+          fi
+          echo "expected=$expected" >> "$GITHUB_OUTPUT"
+
       - name: Resolve source build run
         id: run
         env:
           INPUT_RUN_ID: ${{ inputs.run_id }}
+          EXPECTED: ${{ steps.expected.outputs.expected }}
         run: |
           set -euo pipefail
+
+          # Helper: read the package.json version at a given commit SHA.
+          # Returns empty string on any error so the caller can handle it.
+          pkg_version() {
+            local sha="$1"
+            gh api "repos/$GH_REPO/contents/package.json?ref=$sha" \
+              --jq '.content' 2>/dev/null \
+              | base64 -d \
+              | jq -r '.version' 2>/dev/null \
+              || echo ""
+          }
+
           if [ -n "$INPUT_RUN_ID" ]; then
             run_id="$INPUT_RUN_ID"
             echo "Using explicit run_id=$run_id from workflow input."
           else
-            run_id=$(gh run list \
+            echo "Auto-resolving latest successful master build for version $EXPECTED..."
+
+            # Belt-and-suspenders: EXPECTED should always be set here because
+            # the Determine expected version step exits non-zero when it cannot
+            # produce a version, which skips all later steps. Guard anyway so
+            # an empty EXPECTED never silently matches an unreadable build.
+            if [ -z "$EXPECTED" ]; then
+              echo "::error::BUG: EXPECTED is empty; Determine expected version step should have caught this."
+              exit 1
+            fi
+
+            # Fetch the N most recent successful push-to-master builds and scan
+            # them newest-first, stopping at the first whose package.json version
+            # matches EXPECTED. This avoids silently picking a stale run that
+            # happened to be the only one with status=success at query time.
+            # 20 covers many release cycles of typical build cadence; raise
+            # this limit if your team ships more frequently.
+            candidates_json=$(gh run list \
               --workflow=build-test-package.yml \
               --branch=master \
               --event=push \
               --status=success \
-              --limit=1 \
-              --json databaseId \
-              --jq '.[0].databaseId // empty')
-            if [ -z "$run_id" ]; then
-              echo "::error::No successful master build found. Merge to master and wait for a green build, or pass a run_id explicitly."
+              --limit=20 \
+              --json databaseId,headSha,createdAt)
+
+            if [ "$(echo "$candidates_json" | jq 'length')" -eq 0 ]; then
+              echo "::error::No successful master builds found. Merge to master and wait for a green build, or pass a run_id explicitly."
               exit 1
             fi
-            echo "Auto-resolved latest successful master build: run_id=$run_id"
+
+            run_id=""
+            selected_created_at=""
+
+            echo "Scanning up to 20 recent candidates for version $EXPECTED:"
+            while IFS=$'\t' read -r candidate_id candidate_sha candidate_created; do
+              candidate_ver=$(pkg_version "$candidate_sha")
+              echo "  run #$candidate_id  commit ${candidate_sha:0:12}  created $candidate_created  version=${candidate_ver:-<unreadable>}"
+              if [ "$candidate_ver" = "$EXPECTED" ]; then
+                run_id="$candidate_id"
+                selected_created_at="$candidate_created"
+                echo "  ✓ Matched: run #$run_id (version $candidate_ver)"
+                break
+              fi
+            done < <(echo "$candidates_json" | jq -r '.[] | "\(.databaseId)\t\(.headSha)\t\(.createdAt)"')
+
+            if [ -z "$run_id" ]; then
+              echo "::error::No successful master build found with package.json version $EXPECTED in the last 20 runs. Either push a build that bumps package.json to $EXPECTED, pass an explicit run_id, or pass expected_version to override the version guard."
+              exit 1
+            fi
+
+            # Warn operators when the winning build is unexpectedly old.
+            MAX_AGE_DAYS=30
+            run_age_days=$(( ( $(date -u +%s) - $(date -u -d "$selected_created_at" +%s) ) / 86400 ))
+            if [ "$run_age_days" -gt "$MAX_AGE_DAYS" ]; then
+              echo "::warning::Selected build run #$run_id is $run_age_days days old (threshold: $MAX_AGE_DAYS days). Consider passing an explicit run_id from a more recent build to avoid releasing from a stale artifact."
+            fi
           fi
 
           commit=$(gh run view "$run_id" --json headSha --jq .headSha)
@@ -110,6 +210,7 @@ jobs:
           INPUT_OVERRIDE: ${{ inputs.release_version_override }}
           NEXT_VERSION: ${{ inputs.next_version }}
           COMMIT: ${{ steps.run.outputs.commit }}
+          EXPECTED: ${{ steps.expected.outputs.expected }}
         run: |
           set -euo pipefail
 
@@ -126,6 +227,14 @@ jobs:
               exit 1
             fi
             echo "Auto-detected tag=$tag from package.json at $COMMIT."
+
+            # Guard: the resolved build must carry the expected version.
+            # This catches silent mismatches (e.g. stale build run picked up by
+            # auto-resolve, or an explicit run_id pointing at the wrong release).
+            if [ "$tag" != "$EXPECTED" ]; then
+              echo "::error::Version mismatch: package.json at build commit $COMMIT contains version '$tag', but expected '$EXPECTED' (derived from master HEAD or expected_version input). The selected build run does not match the current release. Pass an explicit run_id for the correct build, or pass release_version_override to force a tag."
+              exit 1
+            fi
           fi
 
           # Sanity: next_version must differ from the tag we're about to release.
@@ -155,6 +264,24 @@ jobs:
 
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
 
+      - name: Resolve previous release
+        id: previous
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          set -euo pipefail
+          # Latest published, non-prerelease release that is not the one being
+          # created. Passed to --notes-start-tag so the generated draft always
+          # compares against the last public release, not the nearest tag.
+          prev=$(gh release list --exclude-drafts --exclude-pre-releases --limit 20 --json tagName --jq '.[].tagName' \
+            | grep -vFx -- "$TAG" | head -n 1 || true)
+          if [ -z "$prev" ]; then
+            echo "::error::Could not find a previous published release to compare against."
+            exit 1
+          fi
+          echo "Previous release: $prev"
+          echo "tag=$prev" >> "$GITHUB_OUTPUT"
+
       - name: Download release artifact
         id: artifact
         env:
@@ -180,18 +307,27 @@ jobs:
           echo "zip_name=$zip_name" >> "$GITHUB_OUTPUT"
           echo "Found release asset: $zip_name"
 
-      - name: Create GitHub Release (delete and recreate if exists)
+      - name: Create GitHub Release
         id: release
         env:
           TAG: ${{ steps.tag.outputs.tag }}
+          PREVIOUS_TAG: ${{ steps.previous.outputs.tag }}
           TARGET_COMMIT: ${{ steps.run.outputs.commit }}
           ZIP_NAME: ${{ steps.artifact.outputs.zip_name }}
           IS_DRAFT: ${{ inputs.draft }}
           IS_PRERELEASE: ${{ inputs.prerelease }}
+          REPLACE_EXISTING: ${{ inputs.replace_existing }}
         run: |
           set -euo pipefail
 
-          # Check if release exists
+          if gh release view "$TAG" >/dev/null 2>&1 \
+            || gh api "repos/$GH_REPO/git/refs/tags/$TAG" >/dev/null 2>&1; then
+            if [ "$REPLACE_EXISTING" != "true" ]; then
+              echo "::error::Release or tag $TAG already exists. Edit it on GitHub, or re-run with replace_existing=true to delete and recreate it (this discards its notes)."
+              exit 1
+            fi
+          fi
+
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "Release $TAG already exists — deleting it and recreating from scratch."
             gh release delete "$TAG" --yes || {
@@ -221,6 +357,7 @@ jobs:
             --title "$TAG" \
             --target "$TARGET_COMMIT" \
             --generate-notes \
+            --notes-start-tag "$PREVIOUS_TAG" \
             --draft="$IS_DRAFT" \
             --prerelease="$IS_PRERELEASE" || {
             echo "::error::Failed to create release. Check token permissions and ensure tag $TAG is fully deleted."
@@ -257,6 +394,54 @@ jobs:
               echo ""
               echo "### [Open release page]($RELEASE_URL)"
             fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # ───────────────────────────────────────────────────────────────────
+  # Gather every PR in the release for the release-notes skill.
+  # Deterministic — no model call. A failure here never blocks the release.
+  # ───────────────────────────────────────────────────────────────────
+  notes_context:
+    needs: publish
+    if: success()
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    continue-on-error: true
+    permissions:
+      contents: read
+      pull-requests: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ needs.publish.outputs.release_tag }}
+      PREVIOUS_TAG: ${{ needs.publish.outputs.previous_tag }}
+      TARGET_COMMIT: ${{ needs.publish.outputs.target_commit }}
+    steps:
+      # Pinned to commit SHAs (v7); the other workflows move with #10006.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          sparse-checkout: scripts
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Build release-notes context
+        run: node scripts/release-notes-context.js "$PREVIOUS_TAG" "$TARGET_COMMIT" > "release-notes-context-$TAG.md"
+
+      - name: Upload context
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: release-notes-context-${{ needs.publish.outputs.release_tag }}
+          path: release-notes-context-${{ needs.publish.outputs.release_tag }}.md
+          retention-days: 30
+
+      - name: Summary
+        run: |
+          {
+            echo "## Release notes context"
+            echo ""
+            echo "Artifact \`release-notes-context-$TAG\` covers $PREVIOUS_TAG → ${TARGET_COMMIT:0:12}."
+            echo "Next: ask an agent to \"write the $TAG release notes\" (\`.agents/skills/churchcrm/release-notes.md\`)."
           } >> "$GITHUB_STEP_SUMMARY"
 
   # ───────────────────────────────────────────────────────────────────

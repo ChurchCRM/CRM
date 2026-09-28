@@ -447,22 +447,19 @@ if (isset($_POST['SaveChanges'])) {
                                 echo '<td class="w-1">';
                                 echo '<div class="dropdown">';
                                 echo '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">';
-                                echo '<i class="ti ti-dots-vertical"></i>';
+                                echo '<i class="fa-solid fa-ellipsis-vertical"></i>';
                                 echo '</button>';
                                 echo '<div class="dropdown-menu dropdown-menu-end">';
                                 if ($row !== 1) {
-                                    echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                    echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . '" class="dropdown-item"><i class="fa-solid fa-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
                                 }
                                 if ($row !== $numRows) {
-                                    echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                    echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="dropdown-item"><i class="fa-solid fa-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
                                 }
                                 if ($row !== 1 || $row !== $numRows) {
                                     echo '<div class="dropdown-divider"></div>';
                                 }
-                                // False positive: $aIDFields[$row] is an ORM integer ID (not user input) and this constructs HTML, not SQL.
-                                // The tainted-sql-string rule mis-classifies this HTML href as a SQL sink.
-                                // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
-                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
+                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="fa-solid fa-trash me-2"></i>' . gettext('Delete') . '</a>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</td>';

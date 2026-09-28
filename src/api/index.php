@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
@@ -27,6 +29,10 @@ SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 $app->add(new CorsMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
+
+// Initialize plugin system so hook-based plugins (e.g. HookManager::doAction(Hooks::CRON_RUN)
+// from the background timer job endpoint) have their listeners registered
+PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
 
 // Group routes for better organization
 require __DIR__ . '/routes/calendar/events.php';

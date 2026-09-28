@@ -35,7 +35,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
                             <i class="fa fa-trash me-2"></i><?= gettext('Delete All Orphaned Files') ?>
                         </button>
                         <button type="button" class="btn btn-secondary ms-2" id="refreshOrphanedFiles">
-                            <i class="fa fa-sync me-2"></i><?= gettext('Refresh List') ?>
+                            <i class="fa fa-arrows-rotate me-2"></i><?= gettext('Refresh List') ?>
                         </button>
                     </div>
 
@@ -61,7 +61,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
                         </table>
 
                     <div class="alert alert-warning mt-3">
-                        <strong><i class="fa fa-shield-alt me-2"></i><?= gettext('Security Recommendation') ?></strong>
+                        <strong><i class="fa fa-shield-halved me-2"></i><?= gettext('Security Recommendation') ?></strong>
                         <p class="mb-0"><?= gettext('These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security.') ?></p>
                     </div>
                 <?php else: ?>

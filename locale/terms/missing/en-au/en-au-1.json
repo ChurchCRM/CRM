@@ -1,0 +1,20 @@
+{
+  "Failed to cancel enrollment. Please try again.": "Failed to cancel enrolment. Please try again.",
+  "Failed to load neighbors.": "Failed to load neighbours.",
+  "Find Neighbors": "Find Neighbours",
+  "Search Neighbors": "Search Neighbours",
+  "Max neighbors": "Max neighbours",
+  "Neighborhood": "Neighbourhood",
+  "Select a family and click Find Neighbors to see results.": "Select a family and click Find Neighbours to see results.",
+  "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM.": "Gravatar (Globally Recognised Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM.",
+  "Include Sunday School classes and enrollments": "Include Sunday School classes and enrolments",
+  "Map centered on": "Map centred on",
+  "Require all users to enroll in two-factor authentication": "Require all users to enrol in two-factor authentication",
+  "Two Factor Enrollment Error": "Two Factor Enrolment Error",
+  "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behavior). Shortening an active grace period may lock users out immediately.": "Number of days users have to enrol in 2FA after it is mandated. Set to 0 to enforce immediately (legacy behaviour). Shortening an active grace period may lock users out immediately.",
+  "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible.": "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible.",
+  "Two-factor authentication is required. You have %d day to enroll.": {
+    "one": "Two-factor authentication is required. You have %d day to enrol.",
+    "other": "Two-factor authentication is required. You have %d days to enrol."
+  }
+}

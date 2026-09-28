@@ -49,7 +49,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-body-secondary"><?= gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.') ?></small>
                                 </div>
-                                <span class="badge bg-green-lt text-green"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-green-lt text-green">PDF</span>
                             </div>
                         </a>
                         
@@ -63,7 +63,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-body-secondary"><?= gettext('Identify members who have not made any donations within a date range.') ?></small>
                                 </div>
-                                <span class="badge bg-warning text-dark rounded-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-warning text-dark rounded-pill">PDF</span>
                             </div>
                         </a>
                     </div>
@@ -110,7 +110,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-body-secondary"><?= gettext('Detailed breakdown of pledges and payments by family.') ?></small>
                                 </div>
-                                <span class="badge bg-info rounded-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-info rounded-pill">PDF</span>
                             </div>
                         </a>
                         
@@ -124,7 +124,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-body-secondary"><?= gettext('Generate reminder letters for families with outstanding pledges.') ?></small>
                                 </div>
-                                <span class="badge bg-warning text-dark rounded-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-warning text-dark rounded-pill">PDF</span>
                             </div>
                         </a>
                     </div>
@@ -203,7 +203,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-body-secondary"><?= gettext('List members eligible to vote based on giving history and membership criteria.') ?></small>
                                 </div>
-                                <span class="badge bg-dark rounded-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-dark rounded-pill">PDF</span>
                             </div>
                         </a>
                     </div>

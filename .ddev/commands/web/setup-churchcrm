@@ -17,7 +17,7 @@ echo "========================================================"
 echo ""
 echo "Installing Node.js dependencies..."
 cd /var/www/html
-npm ci
+npm install
 echo "✓ Node.js dependencies installed"
 echo ""
 echo "Building frontend assets (JS/CSS)..."
@@ -30,7 +30,7 @@ echo "========================================================"
 echo ""
 echo "ChurchCRM is ready at: https://churchcrm.ddev.site"
 echo "  Login:    admin / changeme"
-echo "  Mailpit:  https://churchcrm.ddev.site:8025"
+echo "  Mailpit:  run 'ddev mailpit'"
 echo ""
 echo "Useful commands:"
 echo "  ddev describe        — show service URLs and status"

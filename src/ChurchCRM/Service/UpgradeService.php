@@ -73,7 +73,7 @@ class UpgradeService
             $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/mysql/upgrade.json');
             MiscUtils::throwIfFailed($dbUpdatesFile);
 
-            $dbUpdates = json_decode($dbUpdatesFile, true, 512, JSON_THROW_ON_ERROR);
+            $dbUpdates = json_decode($dbUpdatesFile, true, 512);
 
             $errorFlag = false;
             $upgradeScriptsExecuted = 0;

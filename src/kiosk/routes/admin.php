@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -29,4 +29,4 @@ $app->group('/admin', function (RouteCollectorProxy $group): void {
 
     $group->get('', $handler);
     $group->get('/', $handler);
-})->add(AdminRoleAuthMiddleware::class)->add(AuthMiddleware::class);
+})->add(ManageGroupRoleAuthMiddleware::class)->add(AuthMiddleware::class);

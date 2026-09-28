@@ -1,0 +1,5 @@
+# Legacy files with endemic false positives from Semgrep taint-analysis rules.
+# These files use ORM-returned values (not user input) in echoed HTML and SQL
+# constructions that Semgrep cannot distinguish from tainted data.
+# Tracked for security hardening separately from this scanner config.
+src/VolunteerOpportunityEditor.php

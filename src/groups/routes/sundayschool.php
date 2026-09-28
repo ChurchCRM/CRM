@@ -199,7 +199,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             LoggerUtils::getAppLogger()->error('SundaySchool ClassView: Error getting birthday months', ['exception' => $e->getMessage()]);
         }
 
-        $birthDayMonthChartJSON = json_encode($birthDayMonthChartArray, JSON_THROW_ON_ERROR);
+        $birthDayMonthChartJSON = json_encode($birthDayMonthChartArray);
 
         try {
             $rsTeachers = $sundaySchoolService->getClassByRole($iGroupId, 'Teacher');

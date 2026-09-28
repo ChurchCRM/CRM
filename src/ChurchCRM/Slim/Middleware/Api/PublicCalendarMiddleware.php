@@ -34,7 +34,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 403,
                 gettext('External calendar sharing is disabled'),
                 gettext('The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error.'),
-                'ti-lock',
+                'fa-lock',
             );
         }
 
@@ -46,7 +46,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 400,
                 gettext('Missing calendar access token'),
                 gettext('The calendar link is incomplete. Please check the URL with the person who sent it to you.'),
-                'ti-link-off',
+                'fa-link-slash',
             );
         }
 
@@ -60,7 +60,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 404,
                 gettext('Calendar not found'),
                 gettext('This calendar link is invalid or has been revoked. Ask the church for a current link.'),
-                'ti-calendar-off',
+                'fa-calendar-xmark',
             );
         }
 
@@ -73,7 +73,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 400,
                 gettext('Invalid date format'),
                 gettext('The start or end date in the link could not be understood. Try the base calendar link without date parameters.'),
-                'ti-calendar-question',
+                'fa-circle-question',
             );
         }
         $request = $request->withAttribute('events', $events);
@@ -94,7 +94,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
         int $status,
         string $title,
         string $message,
-        string $icon = 'ti-calendar-off',
+        string $icon = 'fa-calendar-xmark',
     ): ResponseInterface {
         if ($this->prefersJson($request)) {
             return SlimUtils::renderJSON(
@@ -175,8 +175,18 @@ class PublicCalendarMiddleware implements MiddlewareInterface
             ->orderBy(EventTableMap::COL_EVENT_START);
 
         if ($start_date !== null) {
-            // Keep events that overlap the view: event ends after view starts, or has no end (all-day/open)
-            $events->where('events_event.event_end IS NULL OR events_event.event_end >= ?', $start_date->format('Y-m-d H:i:s'));
+            // Keep events that overlap the view: event ends after view starts, or has no end (all-day/open).
+            //
+            // This MUST be built with condition()/combine() rather than a raw
+            // where('... IS NULL OR ... >= ?'). Propel ANDs every criterion onto the WHERE
+            // clause verbatim, without wrapping it in parentheses, so a raw top-level OR
+            // escapes the calendar filter above (`cal AND end IS NULL OR end >= ?` — OR binds
+            // looser than AND) and the query returns every calendar's events. Combined
+            // criteria, by contrast, are parenthesised when the statement is built.
+            $events->condition('noEnd', EventTableMap::COL_EVENT_END . ' IS NULL');
+            $events->condition('endsAfterViewStart', EventTableMap::COL_EVENT_END . ' >= ?', $start_date->format('Y-m-d H:i:s'));
+            $events->combine(['noEnd', 'endsAfterViewStart'], 'or', 'overlapsView');
+            $events->where(['overlapsView']);
         }
 
         if ($end_date !== null) {

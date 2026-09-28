@@ -127,7 +127,7 @@ class ApprovedPluginRegistry
 
                 return;
             }
-            $data = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
+            $data = json_decode($contents, true, 512);
             $entries = $data['plugins'] ?? [];
             if (!is_array($entries)) {
                 $_SESSION['RemotePluginRegistry'] = [];

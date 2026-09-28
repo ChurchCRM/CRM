@@ -509,10 +509,24 @@ $errorMiddleware->setDefaultErrorHandler(function (Request $request, Throwable $
 Defined in `src/ChurchCRM/Plugin/Hooks.php`:
 
 **Person**
-- `PERSON_CREATED`, `PERSON_UPDATED`, `PERSON_DELETED`
+
+| Hook | Receives | Dispatched from |
+|------|----------|-----------------|
+| `PERSON_CREATED` | `Person $person` | `Person::postInsert()` |
+| `PERSON_UPDATED` | `Person $person, array $oldData` | `Person::postUpdate()` |
+| `PERSON_DELETED` | `int $personId, array $personData` | `Person::postDelete()` |
 
 **Family**
-- `FAMILY_CREATED`, `FAMILY_UPDATED`, `FAMILY_DELETED`
+
+| Hook | Receives | Dispatched from |
+|------|----------|-----------------|
+| `FAMILY_CREATED` | `Family $family` | `Family::postInsert()` |
+| `FAMILY_UPDATED` | `Family $family, array $oldData` | `Family::postUpdate()` |
+| `FAMILY_DELETED` | `int $familyId, array $familyData` | `Family::postDelete()` |
+
+The `array` payloads are keyed by Propel **phpName** (`FirstName`, `Email`),
+not by column name and not lowercased — see `plugin-system.md` → "Hook Payloads
+Are Propel phpName Arrays".
 
 **Financial**
 - `DONATION_RECEIVED`, `DEPOSIT_CLOSED`

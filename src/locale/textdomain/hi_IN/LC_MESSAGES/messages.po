@@ -555,16 +555,8 @@ msgid "Picture URL"
 msgstr "चित्र URL"
 
 #: 
-msgid "Donation Fund Editor"
-msgstr "दान निधि संपादक"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "अमान्य फ़ील्ड या चयन। परिवर्तन सहेजे नहीं गए! कृपया सुधारें और पुनः प्रयास करें!"
-
-#: 
-msgid "No funds have been added yet"
-msgstr "अभी तक कोई निधि नहीं जोड़ी गई है"
 
 #: 
 msgid "Active"
@@ -1084,24 +1076,8 @@ msgid "Create Report"
 msgstr "रिपोर्ट बनाएँ"
 
 #: 
-msgid "Deposit Listing"
-msgstr "जमा सूची"
-
-#: 
 msgid "Deposits"
 msgstr "जमा"
-
-#: 
-msgid "Delete Selected Rows"
-msgstr "चयनित पंक्तियाँ हटाएँ"
-
-#: 
-msgid "Export Selected Rows (OFX)"
-msgstr "चयनित पंक्तियाँ निर्यात करें (OFX)"
-
-#: 
-msgid "Export Selected Rows (CSV)"
-msgstr "चयनित पंक्तियाँ निर्यात करें (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1168,44 +1144,8 @@ msgid "Minimum Price"
 msgstr "न्यूनतम मूल्य"
 
 #: 
-msgid "Family Geographic Utilities"
-msgstr "पारिवारिक भौगोलिक उपयोगिताएँ"
-
-#: 
 msgid "Select Family"
 msgstr "परिवार चुनें"
-
-#: 
-msgid "Maximum number of neighbors"
-msgstr "पड़ोसियों की अधिकतम संख्या"
-
-#: 
-msgid "Maximum distance"
-msgstr "अधिकतम दूरी"
-
-#: 
-msgid "Data file format"
-msgstr "डेटा फ़ाइल स्वरूप"
-
-#: 
-msgid "GPS Visualizer"
-msgstr "GPS विज़ुअलाइज़र"
-
-#: 
-msgid "Include families in the coordinate file"
-msgstr "निर्देशांक फ़ाइल में परिवारों को शामिल करें"
-
-#: 
-msgid "Neighbor Families"
-msgstr "पड़ोसी परिवार"
-
-#: 
-msgid "Make Data File"
-msgstr "डेटा फ़ाइल बनाएँ"
-
-#: 
-msgid "Show Neighbors"
-msgstr "पड़ोसी दिखाएं"
 
 #: 
 msgid "Distance"
@@ -1226,10 +1166,6 @@ msgstr "देशांतर"
 #: 
 msgid "Add to Cart"
 msgstr "कार्ट में जोड़ें"
-
-#: 
-msgid "Intersect with Cart"
-msgstr "कार्ट के साथ इंटरसेक्ट करें"
 
 #: 
 msgid "Remove from Cart"
@@ -1258,10 +1194,6 @@ msgstr "समूह विशिष्ट गुण"
 #: 
 msgid "Enabled"
 msgstr "सक्षम"
-
-#: 
-msgid "Edit Group-Specific Properties Form"
-msgstr "समूह-विशिष्ट गुण फ़ॉर्म संपादित करें"
 
 #: 
 msgid "Disabled"
@@ -1314,14 +1246,6 @@ msgstr "समूह-विशिष्ट गुण फ़ॉर्म सं�
 #: 
 msgid "No properties have been added yet"
 msgstr "अभी तक कोई गुण नहीं जोड़ा गया है"
-
-#: 
-msgid "Show in"
-msgstr "इसमें दिखाएं"
-
-#: 
-msgid "Person View"
-msgstr "व्यक्ति दृश्य"
 
 #: 
 msgid "Other Email"
@@ -1418,10 +1342,6 @@ msgstr "सभी को ईमेल करें"
 #: 
 msgid "Family Roles"
 msgstr "पारिवारिक भूमिकाएँ"
-
-#: 
-msgid "Family Geographic"
-msgstr "पारिवारिक भौगोलिक"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -2176,14 +2096,6 @@ msgstr "दान की गई वस्तुएं"
 #: 
 msgid "Purchased Items"
 msgstr "खरीदी गई वस्तुएं"
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "कुल खरीदारी: $"
-
-#: 
-msgid "Total purchases: $"
-msgstr "कुल खरीदारी: $"
 
 #: 
 msgid "Amount paid: ________________"
@@ -4270,24 +4182,8 @@ msgid "Profile Image uploaded"
 msgstr "प्रोफ़ाइल छवि अपलोड की गई"
 
 #: 
-msgid "Show neighbors with these classifications"
-msgstr "इन वर्गीकरणों वाले पड़ोसियों को दिखाएं"
-
-#: 
-msgid "Please select a Family."
-msgstr "कृपया एक परिवार चुनें।"
-
-#: 
-msgid "Coordinate database file name"
-msgstr "समन्वय डेटाबेस फ़ाइल का नाम"
-
-#: 
 msgid "select an option"
 msgstr "एक विकल्प चुनें"
-
-#: 
-msgid "Direct me"
-msgstr "मुझे निर्देशित करें"
 
 #: 
 msgid "Your cart is empty"
@@ -4842,10 +4738,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "उपयोग करने के लिए एन्क्रिप्शन सिस्टम सेट करें - ssl या tls"
 
 #: 
-msgid "Generate Deposit Slip for Selected Rows (PDF)"
-msgstr "चयनित पंक्तियों के लिए जमा पर्ची जनरेट करें (PDF)"
-
-#: 
 msgid "Add All to Cart"
 msgstr "सभी को कार्ट में जोड़ें"
 
@@ -5123,20 +5015,8 @@ msgid "Verification URL created"
 msgstr "सत्यापन URL बनाया गया"
 
 #: 
-msgid "URL"
-msgstr "URL"
-
-#: 
-msgid "PDF"
-msgstr "PDF"
-
-#: 
 msgid "Error sending email(s)"
 msgstr "ईमेल भेजने में त्रुटि"
-
-#: 
-msgid "Please check logs for more information"
-msgstr "अधिक जानकारी के लिए कृपया लॉग देखें"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5526,10 +5406,6 @@ msgstr "परिवार को कार्ट से हटा दिया 
 #: 
 msgid "Add Group"
 msgstr "समूह जोड़ें"
-
-#: 
-msgid "Back to Group List"
-msgstr "समूह सूची पर वापस जाएँ"
 
 #: 
 msgid "Edit Group"
@@ -7310,10 +7186,6 @@ msgid "Order"
 msgstr "क्रम"
 
 #: 
-msgid "PDFs successfully emailed to %s families."
-msgstr "PDF सफलतापूर्वक %s परिवारों को ईमेल किए गए।"
-
-#: 
 msgid "Percentage"
 msgstr "प्रतिशत"
 
@@ -7352,10 +7224,6 @@ msgstr "अपना पहला संपत्ति प्रकार ज�
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "इस फ़ील्ड को हटाकर, आप इस फ़ील्ड के लिए असाइन किए गए सभी ग्रुप सदस्य डेटा को अपरिवर्तनीय रूप से खो देंगे!"
-
-#: 
-msgid "By deleting this fund, you may affect historical donation records!"
-msgstr "इस फंड को हटाकर, आप ऐतिहासिक दान रिकॉर्ड को प्रभावित कर सकते हैं!"
 
 #: 
 msgid "Category Name"
@@ -7410,10 +7278,6 @@ msgid "Filter by Class"
 msgstr "कक्षा द्वारा फ़िल्टर करें"
 
 #: 
-msgid "Fund deleted successfully"
-msgstr "फंड सफलतापूर्वक हटाया गया"
-
-#: 
 msgid "In Use"
 msgstr "उपयोग में"
 
@@ -7460,10 +7324,6 @@ msgstr "यह उपस्थिति गणना हटाएं?"
 #: 
 msgid "Select the type of record this property applies to"
 msgstr "इस संपत्ति पर लागू होने वाले रिकॉर्ड का प्रकार चुनें"
-
-#: 
-msgid "That fund name already exists."
-msgstr "वह फंड नाम पहले से मौजूद है।"
 
 #: 
 msgid "Total Pledges"
@@ -8547,10 +8407,6 @@ msgid "selected family has no coordinates"
 msgstr "चयनित परिवार के पास कोई निर्देशांक नहीं है"
 
 #: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "सभी उपयोगकर्ताओं को दो-कारक प्रमाणीकरण में नामांकन की आवश्यकता है"
 
@@ -9349,10 +9205,6 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "MailChimp, बैकअप और अन्य के साथ ChurchCRM का विस्तार करें"
 
 #: 
-msgid "FY %s"
-msgstr "वित्तीय वर्ष %s"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "परिवार एक पता और फ़ोन नंबर साझा करते हैं।"
 
@@ -9435,10 +9287,6 @@ msgstr "समूह सदस्यता और गतिविधियों
 #: 
 msgid "Generate tax statement documents for donors"
 msgstr "दानदाताओं के लिए कर विवरण दस्तावेज़ तैयार करें"
-
-#: 
-msgid "Geographic Utilities"
-msgstr "भौगोलिक उपकरण"
 
 #: 
 msgid "Get Your Data Into ChurchCRM"
@@ -9955,10 +9803,6 @@ msgid "Search across people, families, groups, addresses, and more."
 msgstr "लोगों, परिवारों, समूहों, पतों और अधिक में खोजें।"
 
 #: 
-msgid "Search and view deposit slip records"
-msgstr "चढ़ावा जमा पर्ची रिकॉर्ड खोजें और देखें"
-
-#: 
 msgid "Search people, families, groups…"
 msgstr "लोग, परिवार, समूह खोजें…"
 
@@ -10173,10 +10017,6 @@ msgstr "अपनी मण्डली के सभी समूह देख�
 #: 
 msgid "View and manage deposit slip payments"
 msgstr "चढ़ावा जमा पर्ची भुगतान देखें और प्रबंधित करें"
-
-#: 
-msgid "View and manage family location data"
-msgstr "परिवार स्थान डेटा देखें और प्रबंधित करें"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -10519,10 +10359,6 @@ msgid "Total Check-ins"
 msgstr "कुल चेक-इन"
 
 #: 
-msgid "Try selecting a different event type or year."
-msgstr "कोई भिन्न कार्यक्रम प्रकार या वर्ष चुनने का प्रयास करें।"
-
-#: 
 msgid "Up to Date"
 msgstr "अप टू डेट"
 
@@ -10611,11 +10447,6 @@ msgstr "क्लिपबोर्ड में कॉपी करें"
 msgid "Custom field"
 msgstr "कस्टम फ़ील्ड"
 
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "कस्टम खोज"
-
 #: 
 msgid "Default Country"
 msgstr "डिफ़ॉल्ट देश"
@@ -10677,11 +10508,6 @@ msgstr "फ़ील्ड मान"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "उन लोगों को खोजें जिन्होंने एक साल प्रतिज्ञा की लेकिन दूसरे साल नहीं"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "कस्टम फील्ड वैल्यू वाले लोगों को खोजें"
 
 #. Context: query_qry
 #: 
@@ -11944,10 +11770,6 @@ msgid "Changes will not take effect until next logon."
 msgstr "परिवर्तन अगले लॉगऑन तक प्रभावी नहीं होंगे।"
 
 #: 
-msgid "Choose between light and dark color scheme"
-msgstr "हल्की और गहरी रंग योजना के बीच चुनें"
-
-#: 
 msgid "Customize the look and feel of the application"
 msgstr "एप्लिकेशन का रूप और अनुभव अनुकूलित करें"
 
@@ -12340,10 +12162,6 @@ msgid "Database dump only (.sql)"
 msgstr "केवल डेटाबेस डंप (.sql)"
 
 #: 
-msgid "Date range cannot exceed 1 year"
-msgstr "तारीख सीमा 1 वर्ष से अधिक नहीं हो सकती"
-
-#: 
 msgid "Destructive Operation"
 msgstr "विनाशकारी क्रिया"
 
@@ -12440,16 +12258,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "संडे स्कूल + कार्यक्रम + कियोस्क कैसे एक साथ काम करते हैं"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "%s के लिए अमान्य तारीख — YYYY-MM-DD अपेक्षित"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart या rangeEnd के लिए अमान्य तारीख प्रारूप"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "अमान्य तारीख; अपेक्षित प्रारूप YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12680,10 +12490,6 @@ msgid "eventIds must be a non-empty array"
 msgstr "eventIds एक गैर-रिक्त सरणी होनी चाहिए"
 
 #: 
-msgid "invalid recurrence type"
-msgstr "अमान्य आवर्तन प्रकार"
-
-#: 
 msgid "personIds must be a non-empty array"
 msgstr "personIds एक गैर-रिक्त सरणी होनी चाहिए"
 
@@ -12702,10 +12508,6 @@ msgstr "अक्षांश और देशांतर दोनों क�
 #: 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
 msgstr "कलीसिया की जानकारी सहेजी गई, लेकिन पता स्वतः नहीं मिल सका। कृपया मानचित्र निर्देशांक के अंतर्गत अक्षांश और देशांतर मैन्युअल रूप से दर्ज करें।"
-
-#: 
-msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
-msgstr "सहेजते समय आपके पते से निर्देशांक स्वतः पहचाने जाते हैं (OpenStreetMap के माध्यम से)। आप उन्हें नीचे मैन्युअल रूप से भी दर्ज कर सकते हैं — मैन्युअल मान हमेशा स्वतः पहचान से प्राथमिकता लेते हैं। पते से जियोकोड करने के लिए दोनों को रिक्त छोड़ें।"
 
 #: 
 msgid "Latitude must be a number between -90 and 90."
@@ -12942,10 +12744,6 @@ msgstr "इस भूमिका सूची के लिए मंत्र�
 #: 
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr "निष्क्रिय स्थिति केवल वर्गीकरण सूची के लिए बदली जा सकती है"
-
-#: 
-msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
-msgstr "नए उपयोगकर्ताओं को उनके क्रेडेंशियल के साथ स्वागत ईमेल नहीं मिलेगा। पासवर्ड मैन्युअल रूप से साझा करें, या पहले ईमेल कॉन्फ़िगर करें।"
 
 #: 
 msgid "Option name is required"
@@ -13652,7 +13450,8 @@ msgid "SHA-256 must be a 64-character hex string."
 msgstr "SHA-256 एक 64-अक्षर की hex स्ट्रिंग होनी चाहिए।"
 
 #: 
-msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+#, fuzzy
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr "ChurchCRM अनुरक्षकों ने इसकी समीक्षा नहीं की है। यहाँ आप जो भी स्थापित करते हैं उसकी सुरक्षा और व्यवहार के लिए आप स्वयं जिम्मेदार हैं। जब भी संभव हो अनुमोदित ब्राउज़ प्रवाह को प्राथमिकता दें।"
 
 #: 
@@ -13964,10 +13763,6 @@ msgid "Are you sure you want to continue?"
 msgstr "क्या आप आगे बढ़ना सुनिश्चित हैं?"
 
 #: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "क्या आप वाकई इस चढ़ावा जमा को हटाना चाहते हैं?"
-
-#: 
 msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr "क्या आप वाकई इस ईवेंट प्रकार को हटाना चाहते हैं? इसे पूर्ववत नहीं किया जा सकता।"
 
@@ -14218,10 +14013,6 @@ msgstr "डेमो डेटा सामान्यतः केवल न�
 #: 
 msgid "Deposit ID"
 msgstr "जमा आईडी"
-
-#: 
-msgid "Deposit Total"
-msgstr "जमा कुल"
 
 #: 
 msgid "Deposit Value"
@@ -14535,10 +14326,6 @@ msgstr "समूह सफलतापूर्वक हटाया गया
 #: 
 msgid "Group removed from cart"
 msgstr "समूह को कार्ट से हटाया गया"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "भूमिका चयन प्रॉम्प्ट के लिए GroupID आवश्यक है"
 
 #: 
 msgid "HTML URL"
@@ -14918,20 +14705,8 @@ msgid "Please select a role."
 msgstr "कृपया एक भूमिका चुनें।"
 
 #: 
-msgid "Please select both a group and a role."
-msgstr "कृपया एक समूह और एक भूमिका दोनों चुनें।"
-
-#: 
 msgid "Please select rows to delete"
 msgstr "कृपया हटाने के लिए पंक्तियाँ चुनें"
-
-#: 
-msgid "Please select target Role for members"
-msgstr "कृपया सदस्यों के लिए लक्षित भूमिका चुनें"
-
-#: 
-msgid "Please select target group for members"
-msgstr "कृपया सदस्यों के लिए लक्ष्य समूह चुनें"
 
 #: 
 msgid "Please try again"
@@ -15827,24 +15602,12 @@ msgid "Account status"
 msgstr "खाता स्थिति"
 
 #: 
-msgid "Advanced: choose a specific target version"
-msgstr "उन्नत: एक विशिष्ट लक्ष्य संस्करण चुनें"
-
-#: 
 msgid "Bug Fix"
 msgstr "बग सुधार"
 
 #: 
-msgid "By default the wizard downloads the next recommended release. You may instead choose any available version below."
-msgstr "डिफ़ॉल्ट रूप से विज़ार्ड अगला अनुशंसित रिलीज़ डाउनलोड करता है। आप नीचे से कोई भी उपलब्ध संस्करण चुन सकते हैं।"
-
-#: 
 msgid "Change required"
 msgstr "परिवर्तन आवश्यक है"
-
-#: 
-msgid "Changelog"
-msgstr "परिवर्तन लॉग"
 
 #: 
 msgid "Continue Anyway"
@@ -15853,10 +15616,6 @@ msgstr "फिर भी जारी रखें"
 #: 
 msgid "Could not load release information."
 msgstr "रिलीज़ जानकारी लोड नहीं हो सकी।"
-
-#: 
-msgid "Download & Install"
-msgstr "डाउनलोड करें और इंस्टॉल करें"
 
 #: 
 msgid "Download version {{version}} and apply it to your installation."
@@ -15885,10 +15644,6 @@ msgstr "पूर्ण परिवर्तन लॉग"
 #: 
 msgid "Install stable {{version}}"
 msgstr "स्थिर {{version}} इंस्टॉल करें"
-
-#: 
-msgid "Installing next release"
-msgstr "अगली रिलीज़ इंस्टॉल हो रही है"
 
 #: 
 msgid "Invalid file path"
@@ -15959,10 +15714,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Hash"
 
 #: 
-msgid "Show full upgrade path"
-msgstr "पूर्ण अपग्रेड पथ दिखाएं"
-
-#: 
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr "नवीनतम स्थिर रिलीज़ {{version}} है। आप इसे नीचे पुनः इंस्टॉल कर सकते हैं।"
 
@@ -15989,10 +15740,6 @@ msgstr "रिलीज़ नोट देखें"
 #: 
 msgid "What's New"
 msgstr "नया क्या है"
-
-#: 
-msgid "What's New in {{version}}"
-msgstr "{{version}} में नया क्या है"
 
 #: 
 msgid "You are running a pre-release version."
@@ -16207,10 +15954,6 @@ msgid "Buyers Registered"
 msgstr "पंजीकृत क्रेता"
 
 #: 
-msgid "Buyers This Year"
-msgstr "इस वर्ष के क्रेता"
-
-#: 
 msgid "Catalog"
 msgstr "सूचीपत्र"
 
@@ -16359,10 +16102,6 @@ msgid "Items Donated"
 msgstr "दान की गई वस्तुएँ"
 
 #: 
-msgid "Items Donated (This Year)"
-msgstr "दान की गई वस्तुएँ (इस वर्ष)"
-
-#: 
 msgid "Items Sold"
 msgstr "बेची गई वस्तुएँ"
 
@@ -16441,10 +16180,6 @@ msgstr "त्वरित प्रीसेट"
 #: 
 msgid "Raised"
 msgstr "एकत्रित"
-
-#: 
-msgid "Raised This Year"
-msgstr "इस वर्ष एकत्रित"
 
 #: 
 msgid "Sample Amount"
@@ -16611,10 +16346,6 @@ msgid "Email functionality is currently disabled. The following features will no
 msgstr "ईमेल कार्यक्षमता अभी अक्षम है। जब तक ईमेल सक्षम नहीं होता।"
 
 #: 
-msgid "Estimated value $%s."
-msgstr "अनुमानित मूल्य $%s।"
-
-#: 
 msgid "Fastest workflow"
 msgstr "सबसे तेज़ कार्यप्रवाह"
 
@@ -16657,10 +16388,6 @@ msgstr "स्थानीय विकास"
 #: 
 msgid "Minimum Total Amount"
 msgstr "न्यूनतम कुल राशि"
-
-#: 
-msgid "Minimum bid $%s."
-msgstr "न्यूनतम बोली $%s।"
 
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject"
@@ -16963,10 +16690,6 @@ msgid "Working..."
 msgstr "काम हो रहा है..."
 
 #: 
-msgid "You are {{releaseCount}} releases behind. Here's what you'll gain"
-msgstr "आप {{releaseCount}} रिलीज़ पीछे हैं। यहाँ बताया गया है कि आपको क्या मिलेगा"
-
-#: 
 msgid "click to expand"
 msgstr "विस्तार के लिए क्लिक करें"
 
@@ -17179,10 +16902,6 @@ msgid "Deleted successfully"
 msgstr "सफलतापूर्वक हटाया गया"
 
 #: 
-msgid "Deposit #"
-msgstr "जमा #"
-
-#: 
 msgid "Deposit Slip"
 msgstr "जमा पर्ची"
 
@@ -17223,20 +16942,12 @@ msgid "Failed to delete pledge"
 msgstr "प्रतिज्ञा हटाने में विफल"
 
 #: 
-msgid "Failed to encode payment response"
-msgstr "भुगतान प्रतिक्रिया एन्कोड करने में विफल"
-
-#: 
 msgid "Failed to retrieve pledge"
 msgstr "प्रतिज्ञा प्राप्त करने में विफल"
 
 #: 
 msgid "Failed to update pledge"
 msgstr "प्रतिज्ञा अपडेट करने में विफल"
-
-#: 
-msgid "Family is required"
-msgstr "परिवार आवश्यक है"
 
 #: 
 msgid "Financial data"
@@ -17367,10 +17078,6 @@ msgid "Please enter a date"
 msgstr "कृपया एक तारीख दर्ज करें"
 
 #: 
-msgid "Please select a family"
-msgstr "कृपया एक परिवार चुनें"
-
-#: 
 msgid "Please select a fund for all rows"
 msgstr "कृपया सभी पंक्तियों के लिए एक निधि चुनें"
 
@@ -17497,4 +17204,1308 @@ msgstr "आज आपके बारे में सोच रहा है।
 #: 
 msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr "पृष्ठ मार्ग, सक्रिय लोकेल, CRM संस्करण, PHP संस्करण, OS परिवार और एक यादृच्छिक इंस्टॉलेशन ID। कुछ और नहीं। डेटा EU में संग्रहीत है।"
+
+#: 
+msgid "% Paid"
+msgstr "% भुगतान"
+
+#: 
+msgid "%s: Please verify your family's information"
+msgstr "%s: कृपया अपने परिवार की जानकारी सत्यापित करें"
+
+#: 
+msgid "Add Role"
+msgstr "भूमिका जोड़ें"
+
+#: 
+msgid "Add custom properties specific to this group"
+msgstr "इस समूह के लिए विशिष्ट कस्टम गुण जोड़ें"
+
+#: 
+msgid "Address changed since coordinates were last set."
+msgstr "निर्देशांक अंतिम बार सेट किए जाने के बाद से पता बदल गया है।"
+
+#: 
+msgid "All Tellers"
+msgstr "सभी कोषाध्यक्ष"
+
+#: 
+msgid "All email sends failed. Please check your SMTP settings in System Settings."
+msgstr "सभी ईमेल भेजने में विफल रहे। कृपया सिस्टम सेटिंग्स में अपनी SMTP सेटिंग्स जांचें।"
+
+#: 
+msgid "Amount Max"
+msgstr "अधिकतम राशि"
+
+#: 
+msgid "Amount Min"
+msgstr "न्यूनतम राशि"
+
+#: 
+msgid "An unexpected error occurred while sending emails. Please check your SMTP settings and server logs."
+msgstr "ईमेल भेजते समय एक अप्रत्याशित त्रुटि हुई। कृपया अपनी SMTP सेटिंग्स और सर्वर लॉग जांचें।"
+
+#: 
+msgid "Are you sure you want to remove the role '{{name}}'?"
+msgstr "क्या आप वाकई '{{name}}' भूमिका हटाना चाहते हैं?"
+
+#: 
+msgid "Auto"
+msgstr "स्वचालित"
+
+#: 
+msgid "Auto follows your OS or browser setting; Light and Dark override it"
+msgstr "स्वचालित आपके OS या ब्राउज़र सेटिंग का अनुसरण करता है; लाइट और डार्क इसे ओवरराइड करते हैं"
+
+#: 
+msgid "Back to Pledge Dashboard"
+msgstr "प्रतिज्ञा डैशबोर्ड पर वापस जाएं"
+
+#: 
+msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
+msgstr "ऊपर दिए गए पते के लिए मानचित्र स्थान देखने हेतु \"निर्देशांक उत्पन्न करें\" पर क्लिक करें, या अक्षांश/देशांतर मैन्युअल रूप से दर्ज करें। यदि रिक्त छोड़ा गया, तो फॉर्म सहेजने पर निर्देशांक स्वतः पता चल जाएंगे।"
+
+#: 
+msgid "Contributor"
+msgstr "अंशदाता"
+
+#: 
+msgid "Contributors"
+msgstr "अंशदाता"
+
+#: 
+msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr "उस पते के लिए निर्देशांक नहीं मिल सके। उन्हें मैन्युअल रूप से दर्ज करने का प्रयास करें।"
+
+#: 
+msgid "Custom properties for this group"
+msgstr "इस समूह के लिए कस्टम गुण"
+
+#: 
+msgid "Delete role"
+msgstr "भूमिका हटाएं"
+
+#: 
+msgid "Email Error"
+msgstr "ईमेल त्रुटि"
+
+#: 
+msgid "Email is not configured. Please configure SMTP settings in System Settings."
+msgstr "ईमेल कॉन्फ़िगर नहीं किया गया है। कृपया सिस्टम सेटिंग्स में SMTP सेटिंग्स कॉन्फ़िगर करें।"
+
+#: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "%d परिवार को ईमेल भेजा गया।"
+msgstr[1] "%d परिवारों को ईमेल भेजा गया।"
+
+#: 
+msgid "Enter a street address first."
+msgstr "पहले सड़क का पता दर्ज करें."
+
+#: 
+msgid "Enter role name"
+msgstr "भूमिका का नाम दर्ज करें"
+
+#: 
+msgid "Failed to create deposit"
+msgstr "जमा बनाने में विफल"
+
+#: 
+msgid "Failed to load email preview"
+msgstr "ईमेल पूर्वावलोकन लोड करने में विफल"
+
+#: 
+msgid "From Date"
+msgstr "तारीख से"
+
+#: 
+msgid "Fund Total"
+msgstr "कोष कुल"
+
+#: 
+msgid "Fund contributor pledge summary by fiscal year"
+msgstr "वित्तीय वर्ष के अनुसार कोष अंशदाता प्रतिज्ञा सारांश"
+
+#: 
+msgid "Fundraiser is disabled"
+msgstr "फंडरेज़र अक्षम है"
+
+#: 
+msgid "Generate Coordinates"
+msgstr "निर्देशांक उत्पन्न करें"
+
+#: 
+msgid "Generating..."
+msgstr "उत्पन्न हो रहा है..."
+
+#: 
+msgid "Geocoding request failed. Please try again."
+msgstr "जियोकोडिंग अनुरोध विफल हुआ। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Manage Events"
+msgstr "आयोजन प्रबंधित करें"
+
+#: 
+msgid "N/A"
+msgstr "लागू नहीं"
+
+#: 
+msgid "New Deposit"
+msgstr "नई जमा"
+
+#: 
+msgid "No contributors found for this fund in the selected fiscal year"
+msgstr "चयनित वित्तीय वर्ष में इस कोष के लिए कोई अंशदाता नहीं मिला"
+
+#: 
+msgid "No families with an email address were found. Nothing was sent."
+msgstr "ईमेल पते वाला कोई परिवार नहीं मिला। कुछ भी नहीं भेजा गया।"
+
+#: 
+msgid "No payments found for the selected deposits"
+msgstr "चयनित जमाओं के लिए कोई भुगतान नहीं मिला"
+
+#: 
+msgid "No valid deposit IDs provided"
+msgstr "कोई वैध जमा आईडी नहीं दी गई"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF सफलतापूर्वक %d परिवार को ईमेल किया गया।"
+msgstr[1] "PDF सफलतापूर्वक %d परिवारों को ईमेल किया गया।"
+
+#: 
+msgid "Partial Send"
+msgstr "आंशिक भेजना"
+
+#: 
+msgid "Payments only"
+msgstr "केवल भुगतान"
+
+#: 
+msgid "Pledged Amount"
+msgstr "प्रतिज्ञा राशि"
+
+#: 
+msgid "Preview"
+msgstr "पूर्वावलोकन"
+
+#: 
+msgid "Retry"
+msgstr "पुनः प्रयास करें"
+
+#: 
+msgid "Search"
+msgstr "खोज"
+
+#: 
+msgid "Search and manage deposit slip records"
+msgstr "जमा पर्ची रिकॉर्ड खोजें और प्रबंधित करें"
+
+#: 
+msgid "Select All"
+msgstr "सभी चुनें"
+
+#: 
+msgid "Send Emails"
+msgstr "ईमेल भेजें"
+
+#: 
+msgid "Send Family Verification Emails"
+msgstr "परिवार सत्यापन ईमेल भेजें"
+
+#: 
+msgid "Sent %1$d of %2$d — %3$d families could not be reached."
+msgstr "%2$d में से %1$d भेजे गए — %3$d परिवारों तक नहीं पहुंचा जा सका।"
+
+#: 
+msgid "Show in Profile"
+msgstr "प्रोफ़ाइल में दिखाएं"
+
+#: 
+msgid "Showing total for selected fund only"
+msgstr "केवल चयनित कोष के लिए कुल दिखाया जा रहा है"
+
+#: 
+msgid "Teller"
+msgstr "कोषाध्यक्ष"
+
+#: 
+msgid "This is the only role in this group."
+msgstr "यह इस समूह की एकमात्र भूमिका है।"
+
+#: 
+msgid "This role cannot be deleted."
+msgstr "इस भूमिका को हटाया नहीं जा सकता।"
+
+#: 
+msgid "To Date"
+msgstr "तारीख तक"
+
+#: 
+msgid "Total Pledged"
+msgstr "कुल प्रतिज्ञा"
+
+#: 
+msgid "Unexpected error while sending emails. Please check logs."
+msgstr "ईमेल भेजते समय अप्रत्याशित त्रुटि। कृपया लॉग जांचें।"
+
+#: 
+msgid "Uses your street address above to look up coordinates via OpenStreetMap."
+msgstr "OpenStreetMap के माध्यम से निर्देशांक देखने के लिए ऊपर दिए गए आपके सड़क पते का उपयोग करता है।"
+
+#: 
+msgid "View Payment"
+msgstr "भुगतान देखें"
+
+#: 
+msgid "View Pledge"
+msgstr "प्रतिज्ञा देखें"
+
+#: 
+msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
+msgstr "चेक करने पर, यह गुण उनकी प्रोफ़ाइल पेज पर व्यक्ति की समूह सूची में समूह के साथ प्रदर्शित होगा।"
+
+#: 
+msgid "[Family Name]"
+msgstr "[परिवार का नाम]"
+
+#: 
+msgid "row selected"
+msgstr "पंक्ति चयनित"
+
+#: 
+msgid "rows selected"
+msgstr "पंक्तियाँ चयनित"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays & Anniversaries"
+msgstr "जन्मदिन और वर्षगाँठें"
+
+#: 
+msgid "Estimated value %s."
+msgstr "अनुमानित मूल्य %s।"
+
+#: 
+msgid "Minimum bid %s."
+msgstr "न्यूनतम बोली %s।"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays or wedding anniversaries in a particular month"
+msgstr "किसी विशेष महीने में जन्मदिन या विवाह वर्षगाँठ वाले लोग"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The month for which you would like birthdays and anniversaries returned."
+msgstr "वह महीना जिसके लिए आप जन्मदिन और वर्षगाँठें प्राप्त करना चाहते हैं।"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The wedding anniversary month for which you would like records returned."
+msgstr "वह विवाह वर्षगाँठ का महीना जिसके लिए आप रिकॉर्ड प्राप्त करना चाहते हैं।"
+
+#: 
+msgid "Total of all purchases: %s"
+msgstr "सभी खरीदों का कुल: %s"
+
+#: 
+msgid "Total purchases: %s"
+msgstr "कुल खरीद: %s"
+
+#. Context: query_qry
+#: 
+msgid "Wedding Anniversaries"
+msgstr "विवाह वर्षगाँठें"
+
+#. Context: query_qry
+#: 
+msgid "People with wedding anniversaries in a particular month"
+msgstr "किसी विशेष महीने में विवाह वर्षगाँठ वाले लोग"
+
+#: 
+msgid "An error occurred. Please try again."
+msgstr "एक त्रुटि हुई। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "क्या आप वाकई इस निधि को हटाना चाहते हैं?"
+
+#: 
+msgid "Cannot delete: fund has associated pledges"
+msgstr "हटाया नहीं जा सकता: निधि से संबंधित प्रतिज्ञाएँ हैं"
+
+#: 
+msgid "Delete Fund"
+msgstr "निधि हटाएँ"
+
+#: 
+msgid "Direction must be 'up' or 'down'."
+msgstr "दिशा 'up' या 'down' होनी चाहिए।"
+
+#: 
+msgid "Edit Donation Fund"
+msgstr "दान निधि संपादित करें"
+
+#: 
+msgid "Failed to reorder donation fund"
+msgstr "दान निधि को पुनः क्रमबद्ध करने में विफल"
+
+#: 
+msgid "Fund added successfully."
+msgstr "निधि सफलतापूर्वक जोड़ी गई।"
+
+#: 
+msgid "Fund deleted successfully."
+msgstr "निधि सफलतापूर्वक हटाई गई।"
+
+#: 
+msgid "Fund name"
+msgstr "निधि का नाम"
+
+#: 
+msgid "Fund name is required."
+msgstr "निधि का नाम आवश्यक है।"
+
+#: 
+msgid "Fund order updated."
+msgstr "निधि क्रम अपडेट किया गया।"
+
+#: 
+msgid "Fund saved successfully."
+msgstr "निधि सफलतापूर्वक सहेजी गई।"
+
+#: 
+msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr "अभी तक कोई निधि नहीं जोड़ी गई है। पहली निधि जोड़ने के लिए ऊपर दिए गए फ़ॉर्म का उपयोग करें।"
+
+#: 
+msgid "Optional description"
+msgstr "वैकल्पिक विवरण"
+
+#: 
+msgid "Private Calendar"
+msgstr "निजी कैलेंडर"
+
+#: 
+msgid "Public Calendar"
+msgstr "सार्वजनिक कैलेंडर"
+
+#: 
+msgid "Advanced: Install a specific version instead"
+msgstr "उन्नत: इसके बजाय एक विशिष्ट संस्करण स्थापित करें"
+
+#: 
+msgid "By default the wizard upgrades to the latest version. You may instead choose a specific version below."
+msgstr "डिफ़ॉल्ट रूप से विज़ार्ड नवीनतम संस्करण में अपग्रेड करता है। आप नीचे एक विशिष्ट संस्करण चुन सकते हैं।"
+
+#: 
+msgid "Cannot edit a payment in a closed deposit"
+msgstr "बंद जमा में भुगतान संपादित नहीं किया जा सकता"
+
+#: 
+msgid "Download & Apply {{version}}"
+msgstr "{{version}} डाउनलोड करें और लागू करें"
+
+#: 
+msgid "Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version."
+msgstr "ChurchCRM के हर रिलीज़ में सुरक्षा सुधार शामिल हैं। हम हमेशा नवीनतम संस्करण में अपग्रेड करने की दृढ़ता से अनुशंसा करते हैं।"
+
+#: 
+msgid "Failed to decode payment request"
+msgstr "भुगतान अनुरोध को डीकोड करने में विफल"
+
+#: 
+msgid "Full release notes"
+msgstr "पूर्ण रिलीज़ नोट्स"
+
+#: 
+msgid "Invalid payment data"
+msgstr "अमान्य भुगतान डेटा"
+
+#: 
+msgid "No release notes available."
+msgstr "कोई रिलीज़ नोट्स उपलब्ध नहीं हैं।"
+
+#: 
+msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Only proceed if you have a specific reason."
+msgstr "चेतावनी: {{chosen}} में {{latest}} में शामिल सुरक्षा सुधार नहीं हैं। केवल तभी आगे बढ़ें जब आपके पास कोई विशेष कारण हो।"
+
+#: 
+msgid "What you'll gain"
+msgstr "आपको क्या मिलेगा"
+
+#: 
+msgid "Failed to get deposit count"
+msgstr "जमा राशि की गणना प्राप्त करने में विफल"
+
+#: 
+msgid "Anniversary: %s"
+msgstr "वर्षगांठ: %s"
+
+#: 
+msgid "Church"
+msgstr "चर्च"
+
+#: 
+msgid "Classifications"
+msgstr "वर्गीकरण"
+
+#: 
+msgid "Closest"
+msgstr "सबसे नज़दीक"
+
+#: 
+msgid "Deposit #%d"
+msgstr "जमा #%d"
+
+#: 
+msgid "Failed to get fundraiser count"
+msgstr "धन संग्रह की संख्या प्राप्त करने में विफल"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "पड़ोसियों को लोड करने में विफल।"
+
+#: 
+msgid "Farther"
+msgstr "और दूर"
+
+#: 
+msgid "Farthest"
+msgstr "सबसे दूर"
+
+#: 
+msgid "Find Neighbors"
+msgstr "पड़ोसी खोजें"
+
+#: 
+msgid "Find nearby families and add them to your cart"
+msgstr "पास के परिवारों को खोजें और कार्ट में जोड़ें"
+
+#: 
+msgid "Map centered on"
+msgstr "मानचित्र केंद्रित:"
+
+#: 
+msgid "Max distance"
+msgstr "अधिकतम दूरी"
+
+#: 
+msgid "Max neighbors"
+msgstr "अधिकतम पड़ोसी"
+
+#: 
+msgid "Near"
+msgstr "नज़दीक"
+
+#: 
+msgid "Please select a family."
+msgstr "कृपया एक परिवार चुनें।"
+
+#: 
+msgid "Results"
+msgstr "परिणाम"
+
+#: 
+msgid "Same location"
+msgstr "समान स्थान"
+
+#: 
+msgid "Search Neighbors"
+msgstr "पड़ोसी खोजें"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "एक परिवार चुनें और परिणाम देखने के लिए पड़ोसी खोजें पर क्लिक करें।"
+
+#: 
+msgid "Selected family"
+msgstr "चुना गया परिवार"
+
+#: 
+msgid "This value must be a valid field name."
+msgstr "यह मान एक वैध फ़ील्ड नाम होना चाहिए।"
+
+#: 
+msgid "Could not load data"
+msgstr "डेटा लोड नहीं हो सका"
+
+#: 
+msgid "Please refresh the page or try again later."
+msgstr "कृपया पृष्ठ रीफ़्रेश करें या बाद में पुनः प्रयास करें।"
+
+#: 
+msgid "Add the relevant records first."
+msgstr "पहले संबंधित रिकॉर्ड जोड़ें।"
+
+#: 
+msgid "All Months"
+msgstr "सभी महीने"
+
+#: 
+msgid "No \"%s\" options are defined yet."
+msgstr "अभी तक कोई \"%s\" विकल्प परिभाषित नहीं है।"
+
+#: 
+msgid "No events found for %s %d."
+msgstr "%s %d के लिए कोई इवेंट नहीं मिला।"
+
+#: 
+msgid "Try selecting a different event type, month, or year."
+msgstr "कोई अलग इवेंट प्रकार, महीना या वर्ष चुनने का प्रयास करें।"
+
+#: 
+msgid "A geocoding error occurred — try again later"
+msgstr "जियोकोडिंग में त्रुटि हुई — बाद में पुनः प्रयास करें"
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "पता अधूरा है (शहर, राज्य और ZIP कोड गायब है)"
+
+#: 
+msgid "All families already have coordinates."
+msgstr "सभी परिवारों के पास पहले से ही निर्देशांक मौजूद हैं।"
+
+#: 
+msgid "Failed to update coordinates"
+msgstr "निर्देशांक अपडेट करने में विफल"
+
+#: 
+msgid "Failed to update family coordinates"
+msgstr "परिवार के निर्देशांक अपडेट करने में विफल"
+
+#: 
+msgid "Geocoded all {{geocoded}} families. The map is now up to date."
+msgstr "सभी {{geocoded}} परिवारों को जियोकोड किया गया। मानचित्र अब अद्यतित है।"
+
+#: 
+msgid "Geocoded {{geocoded}} families. {{failed}} could not be resolved — see details below."
+msgstr "{{geocoded}} परिवारों को जियोकोड किया गया। {{failed}} को हल नहीं किया जा सका — नीचे विवरण देखें।"
+
+#: 
+msgid "Geocoding…"
+msgstr "जियोकोडिंग हो रही है…"
+
+#: 
+msgid "No address on file"
+msgstr "कोई पता दर्ज नहीं है"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "कोई मिलान नहीं मिला — सड़क का पता, शहर और ZIP कोड जांचें"
+
+#: 
+msgid "Open a family to fix its address, then run this again."
+msgstr "पता ठीक करने के लिए परिवार को खोलें, फिर इसे फिर से चलाएं।"
+
+#: 
+msgid "Set up now"
+msgstr "अभी सेट अप करें"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "द्विकारक प्रमाणीकरण (2FA) आवश्यक है। आपके पास नामांकन करने के लिए %d दिन है।"
+msgstr[1] "द्विकारक प्रमाणीकरण (2FA) आवश्यक है। आपके पास नामांकन करने के लिए %d दिन हैं।"
+
+#: 
+msgid "Unknown family"
+msgstr "अज्ञात परिवार"
+
+#: 
+msgid "Update All Coordinates"
+msgstr "सभी निर्देशांक अपडेट करें"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "सभी परिवार के निर्देशांक अपडेट करें"
+
+#: 
+msgid "Update Coordinates"
+msgstr "निर्देशांक अपडेट करें"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s इस परिवार के मुखिया थे/थीं और उन्हें दिवंगत के रूप में चिह्नित किया गया है। कृपया परिवार के लिए एक नया मुखिया नियुक्त करें।"
+
+#: 
+msgid "Accept"
+msgstr "स्वीकार करें"
+
+#: 
+msgid "Active Now"
+msgstr "अभी सक्रिय"
+
+#: 
+msgid "Adding..."
+msgstr "जोड़ा जा रहा है..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "ईमेल वाले सभी CRM सदस्य इस सूची की सदस्यता ले चुके हैं!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "सभी MailChimp सब्सक्राइबर ChurchCRM में मौजूद हैं!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "फ़ाइलें हटाते समय एक त्रुटि हुई।"
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "क्या आप पूरी तरह आश्वस्त हैं? इससे सारा डेटा मिट जाएगा और फ़ैक्टरी डिफ़ॉल्ट सेटिंग्स बहाल हो जाएंगी।"
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "क्या आप सभी लॉग फ़ाइलें हटाना चाहते हैं? यह कार्रवाई पूर्ववत नहीं की जा सकती।"
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "क्या आप कियोस्क हटाना चाहते हैं"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "क्या आप यह लिंक हटाना चाहते हैं"
+
+#: 
+msgid "Assignment"
+msgstr "असाइनमेंट"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "बैकग्राउंड जॉब्स (जन्मदिन ईमेल और हर प्लगइन का निर्धारित कार्य) इस इंस्टॉलेशन पर कभी नहीं चलीं।"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "बैकग्राउंड जॉब्स (जन्मदिन ईमेल और हर प्लगइन का निर्धारित कार्य) अंतिम बार %s को चलीं।"
+
+#: 
+msgid "Backing up..."
+msgstr "बैकअप लिया जा रहा है..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "बैकअप डाउनलोड हो गया।"
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "बैकअप सफलतापूर्वक अपलोड हुआ"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "आप अपनी स्वयं की सक्रिय स्थिति नहीं बदल सकते"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings एक्सपोर्ट सफलतापूर्वक पूर्ण हुआ"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "परिवर्तन सफलतापूर्वक सहेजे गए"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "सभी को चेक-आउट करें और सबको निष्क्रिय करें"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "सभी को चेक-आउट करें और इस इवेंट को निष्क्रिय करें?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "पासवर्ड रीसेट लिंक के लिए अपना ईमेल जाँचें"
+
+#: 
+msgid "Close stuck events?"
+msgstr "अटके हुए इवेंट बंद करें?"
+
+#: 
+msgid "Comments"
+msgstr "टिप्पणियाँ"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "ईमेल पूर्वावलोकन लोड नहीं हो सका। कृपया बंद करके पुनः प्रयास करें।"
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "बैकअप बनाया और अपलोड किया जा रहा है। इसमें कई मिनट लग सकते हैं..."
+
+#: 
+msgid "Database reset failed."
+msgstr "डेटाबेस रीसेट विफल हुआ।"
+
+#: 
+msgid "Deceased"
+msgstr "दिवंगत"
+
+#: 
+msgid "Default admin credentials"
+msgstr "डिफ़ॉल्ट एडमिन क्रेडेंशियल"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "कियोस्क हटाएं"
+
+#: 
+msgid "Deleted Files"
+msgstr "हटाई गई फ़ाइलें"
+
+#: 
+msgid "Deleting..."
+msgstr "हटाया जा रहा है..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "डाउनलोड बिना अटैचमेंट हेडर के प्राप्त हुआ।"
+
+#: 
+msgid "Error deleting log file."
+msgstr "लॉग फ़ाइल हटाने में त्रुटि।"
+
+#: 
+msgid "Error deleting log files."
+msgstr "लॉग फ़ाइलें हटाने में त्रुटि।"
+
+#: 
+msgid "Error downloading log file."
+msgstr "लॉग फ़ाइल डाउनलोड करने में त्रुटि।"
+
+#: 
+msgid "Error initiating download."
+msgstr "डाउनलोड शुरू करने में त्रुटि।"
+
+#: 
+msgid "Error loading log file."
+msgstr "लॉग फ़ाइल लोड करने में त्रुटि।"
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "स्व-पंजीकृत प्रविष्टियाँ लोड करने में त्रुटि"
+
+#: 
+msgid "Errors"
+msgstr "त्रुटियाँ"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "मुद्रित निर्देशिका और CSV एक्सपोर्ट से दिवंगत सदस्यों को बाहर रखें।"
+
+#: 
+msgid "Failed Files"
+msgstr "विफल फ़ाइलें"
+
+#: 
+msgid "Failed to add link"
+msgstr "लिंक जोड़ने में विफल"
+
+#: 
+msgid "Failed to add option"
+msgstr "विकल्प जोड़ने में विफल"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "इवेंट बंद करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to delete"
+msgstr "हटाने में विफल"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "कियोस्क पंजीकरण सक्षम करने में विफल"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV एक्सपोर्ट करने में विफल"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "ऑडिट लोड करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "कियोस्क का नाम बदलने में विफल"
+
+#: 
+msgid "Failed to save changes"
+msgstr "परिवर्तन सहेजने में विफल"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "प्लगइन अपडेट करने में विफल"
+
+#: 
+msgid "Family Id"
+msgstr "परिवार आईडी"
+
+#: 
+msgid "Final Confirmation"
+msgstr "अंतिम पुष्टि"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "परिवारों की जियोकोडिंग की जा रही है… इसमें कुछ मिनट लग सकते हैं। आप यह पेज खुला रख सकते हैं।"
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "परिवारों की जियोकोडिंग की जा रही है… {{total}} में से {{done}} संसाधित, {{geocoded}} का स्थान मिला।"
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "परिवार के मुखिया को अपडेट करने की आवश्यकता है"
+
+#: 
+msgid "Helpful Links"
+msgstr "उपयोगी लिंक"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "निर्देशिका से दिवंगत को छिपाएं"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "मुद्रित निर्देशिका और CSV एक्सपोर्ट से दिवंगत सदस्यों को छिपाएं।"
+
+#: 
+msgid "Identify"
+msgstr "पहचानें"
+
+#: 
+msgid "Identify command sent"
+msgstr "पहचान कमांड भेजा गया"
+
+#: 
+msgid "Individual"
+msgstr "व्यक्तिगत"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "आंतरिक: बैकग्राउंड टाइमर जॉब्स के पूर्ण होने की अंतिम तिथि और समय (YYYY-MM-DD HH:MM:SS)। इसे स्वयं संपादित न करें।"
+
+#: 
+msgid "Item deleted successfully"
+msgstr "आइटम सफलतापूर्वक हटाया गया"
+
+#: 
+msgid "Kiosk Name"
+msgstr "कियोस्क का नाम"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "कियोस्क स्वीकार किया गया"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "कियोस्क सफलतापूर्वक हटाया गया"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "कियोस्क को स्वीकार किया जाना चाहिए"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "कियोस्क का नाम बदला गया"
+
+#: 
+msgid "Last seen"
+msgstr "अंतिम बार देखा गया"
+
+#: 
+msgid "Link"
+msgstr "लिंक"
+
+#: 
+msgid "Link added successfully"
+msgstr "लिंक सफलतापूर्वक जोड़ा गया"
+
+#: 
+msgid "Link deleted"
+msgstr "लिंक हटाया गया"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "लिंक के नाम में HTML टैग नहीं हो सकते"
+
+#: 
+msgid "Living"
+msgstr "जीवित"
+
+#: 
+msgid "Log settings saved"
+msgstr "लॉग सेटिंग्स सहेजी गईं"
+
+#: 
+msgid "Login Name is Required"
+msgstr "लॉगिन नाम आवश्यक है"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "व्यक्ति को सक्रिय के रूप में चिह्नित किया गया"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "व्यक्ति को निष्क्रिय के रूप में चिह्नित किया गया"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "पेज लोड द्वारा ट्रिगर होने वाले बैकग्राउंड टाइमर-जॉब रन के बीच न्यूनतम मिनटों की संख्या। यह व्यस्त रविवार की सुबह हर पेज व्यू पर जॉब्स को चलने से रोकता है। यह कमांड-लाइन रनर पर लागू नहीं होता। हर पेज लोड पर चलाने के लिए इसे 0 पर सेट करें।"
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "नए उपयोगकर्ताओं को स्वागत ईमेल नहीं मिलेगा, और जनरेट किया गया पासवर्ड कभी प्रदर्शित नहीं होता। खाता बनाने के बाद, System Users से Change Password का उपयोग करके एक पासवर्ड सेट करें — या पहले ईमेल कॉन्फ़िगर करें।"
+
+#: 
+msgid "No changes to save"
+msgstr "सहेजने के लिए कोई परिवर्तन नहीं"
+
+#: 
+msgid "No contact info"
+msgstr "कोई संपर्क जानकारी नहीं"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "कोई कस्टम लिंक कॉन्फ़िगर नहीं किया गया है। ऊपर एक जोड़ें!"
+
+#: 
+msgid "No email"
+msgstr "कोई ईमेल नहीं"
+
+#: 
+msgid "No files were deleted."
+msgstr "कोई फ़ाइल हटाई नहीं गई।"
+
+#: 
+msgid "No help available for this plugin."
+msgstr "इस प्लगइन के लिए कोई सहायता उपलब्ध नहीं है।"
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "जोड़ने के लिए कोई व्यक्ति नहीं - सभी पहले से कार्ट में हैं"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "जोड़ने के लिए कोई व्यक्ति नहीं - फ़िल्टर से कोई परिणाम नहीं मिला"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "मृत्यु की तिथि मान्य नहीं है"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "2FA अनिवार्य होने के बाद उपयोगकर्ताओं के पास नामांकन के लिए दिनों की संख्या। तुरंत लागू करने के लिए 0 पर सेट करें। सक्रिय छूट अवधि को छोटा करने से उपयोगकर्ता तुरंत लॉक आउट हो सकते हैं।"
+
+#: 
+msgid "Offline"
+msgstr "ऑफ़लाइन"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "यह तभी करें जब अंतर्निहित समस्या ठीक हो चुकी हो। प्लगइन को फिर से चलाने के लिए आपको फिर भी Enable पर क्लिक करना होगा।"
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "कृपया व्यक्ति को सक्रिय करने की पुष्टि करें"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "कृपया व्यक्ति को निष्क्रिय करने की पुष्टि करें"
+
+#: 
+msgid "Plugin status updated"
+msgstr "प्लगइन की स्थिति अपडेट की गई"
+
+#: 
+msgid "Registered"
+msgstr "पंजीकृत"
+
+#: 
+msgid "Reload"
+msgstr "पुनः लोड करें"
+
+#: 
+msgid "Reload command sent"
+msgstr "पुनः लोड कमांड भेजा गया"
+
+#: 
+msgid "Rename"
+msgstr "नाम बदलें"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "कियोस्क का नाम बदलें"
+
+#: 
+msgid "Reset Complete"
+msgstr "रीसेट पूर्ण"
+
+#: 
+msgid "Reset Settings"
+msgstr "सेटिंग्स रीसेट करें"
+
+#: 
+msgid "Resetting..."
+msgstr "रीसेट किया जा रहा है..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "निर्धारित कार्य नहीं चल रहे हैं"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "सुरक्षा टोकन गायब है। कृपया पेज रीफ़्रेश करें।"
+
+#: 
+msgid "Select…"
+msgstr "चुनें…"
+
+#: 
+msgid "Sending..."
+msgstr "भेजा जा रहा है..."
+
+#: 
+msgid "Sending…"
+msgstr "भेजा जा रहा है…"
+
+#: 
+msgid "Settings reset"
+msgstr "सेटिंग्स रीसेट हुईं"
+
+#: 
+msgid "Settings saved"
+msgstr "सेटिंग्स सहेजी गईं"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "सेटिंग्स सहेजी गईं। अपग्रेड जानकारी रीफ़्रेश की जा रही है..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "केवल सक्रिय व्यक्ति दिखाए जा रहे हैं।"
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "केवल निष्क्रिय व्यक्ति दिखाए जा रहे हैं।"
+
+#: 
+msgid "Successfully deleted"
+msgstr "सफलतापूर्वक हटाया गया"
+
+#: 
+msgid "Testing..."
+msgstr "परीक्षण किया जा रहा है..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "डेटाबेस साफ़ कर दिया गया है। सिस्टम एक नई शुरुआत के लिए तैयार है।"
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "इस बीच पेज-लोड फ़ॉलबैक काम करता रहता है। %1$s सेटिंग से बदलें कि यह चेतावनी दिखाने से पहले ChurchCRM कितनी देर प्रतीक्षा करे, या इसे छिपाने के लिए 0 पर सेट करें।"
+
+#: 
+msgid "This Person is Inactive"
+msgstr "यह व्यक्ति निष्क्रिय है"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "यह OpenStreetMap का उपयोग करके उन सभी परिवारों के लिए मैप निर्देशांक ढूंढता है जिनके पास ये नहीं हैं। यह 50 के बैचों में परिवारों को संसाधित करता है, प्रति बैच लगभग एक मिनट। चलने के दौरान आप यह पेज खुला रख सकते हैं। जारी रखें?"
+
+#: 
+msgid "This person is deceased"
+msgstr "यह व्यक्ति दिवंगत है"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "इससे इस प्लगइन के सभी कॉन्फ़िगर किए गए मान साफ़ हो जाएंगे। यह पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "इससे प्लगइन फ़ाइलें डिस्क से स्थायी रूप से हट जाएंगी और इसकी सेटिंग्स साफ़ हो जाएंगी। यह पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL में HTML टैग नहीं हो सकते"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "अप्रत्याशित त्रुटि। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "प्लगइन अनइंस्टॉल करें"
+
+#: 
+msgid "Upcoming"
+msgstr "आगामी"
+
+#: 
+msgid "Valid Until"
+msgstr "तक मान्य"
+
+#: 
+msgid "View active only"
+msgstr "केवल सक्रिय देखें"
+
+#: 
+msgid "View all"
+msgstr "सभी देखें"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "सभी देखें (निष्क्रिय सहित)"
+
+#: 
+msgid "View inactive only"
+msgstr "केवल निष्क्रिय देखें"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "एडमिन डैशबोर्ड पर चेतावनी दें जब बैकग्राउंड टाइमर जॉब्स इतने घंटों से नहीं चली हों। 26 एक दैनिक क्रॉन के साथ कुछ बहाव की अनुमति देता है। चेतावनी अक्षम करने के लिए इसे 0 पर सेट करें।"
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "शेड्यूलर के बिना ये जॉब्स तभी चलती हैं जब कोई पेज लोड करता है, इसलिए एक शांत सप्ताह के दिन कोई निर्धारित मेल बिल्कुल नहीं भेजी जाती। एक क्रॉन एंट्री जोड़ें जो टास्क रनर को हर घंटे चलाए, उसी उपयोगकर्ता के रूप में जिसके रूप में आपका वेब सर्वर चलता है"
+
+#: 
+msgid "check-outs"
+msgstr "चेक-आउट"
+
+#: 
+msgid "deceased"
+msgstr "दिवंगत"
+
+#: 
+msgid "event"
+msgstr "इवेंट"
+
+#: 
+msgid "events?"
+msgstr "इवेंट?"
+
+#: 
+msgid "files"
+msgstr "फ़ाइलें"
+
+#: 
+msgid "people from cart?"
+msgstr "कार्ट से लोग?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip शून्य या एक धनात्मक पूर्णांक होना चाहिए"
+
+#: 
+msgid "view families missing an email"
+msgstr "उन परिवारों को देखें जिनके पास ईमेल नहीं है"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "इस वित्तीय वर्ष के खरीदार"
+
+#: 
+msgid "Current"
+msgstr "वर्तमान"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "दान की गई वस्तुएं (इस वित्तीय वर्ष)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "लॉगिन %d वर्णों या उससे कम का होना चाहिए!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "इस वित्तीय वर्ष में जुटाई गई राशि"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s एक पूर्ण https:// वेब पता होना चाहिए, उदाहरण के लिए https://example.org/yourchurch।"
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "खाते की अनुमतियाँ सीमित हैं। किसी एडमिनिस्ट्रेटर से संपर्क करें।"
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "त्रुटि पेज प्रस्तुत करते समय एक त्रुटि हुई।"
+
+#: 
+msgid "Each address must start with https://"
+msgstr "प्रत्येक पता https:// से शुरू होना चाहिए"
+
+#: 
+msgid "Generate Labels"
+msgstr "लेबल जनरेट करें"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "मेलिंग लेबल जनरेट करें"
+
+#: 
+msgid "Labels"
+msgstr "लेबल"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "आपके कार्ट में मौजूद लोगों के लिए मेलिंग लेबल। जिस व्यक्ति का अपना पता नहीं है, उसे उसके परिवार के पते पर संबोधित किया जाता है।"
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "वैकल्पिक। चर्च के अपने खातों के लिंक, जो सदस्यों को पोर्टल फ़ुटर जैसे पृष्ठों पर दिखाए जाते हैं। उस नेटवर्क को छिपाने के लिए फ़ील्ड को खाली छोड़ें।"
+
+#: 
+msgid "Options"
+msgstr "विकल्प"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "निर्धारित कार्य"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "सक्रिय, शेष सेकंड: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "रन के बीच अपेक्षित अंतराल (घंटे): %d।"
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "छोड़े गए परिवार (कोई ईमेल पता दर्ज नहीं): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "वे परिवार जिनकी जियोकोडिंग नहीं हो सकी: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "पुष्टिकरण ईमेल प्राप्त करने वाले परिवार: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "कॉपी किए गए सदस्य: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "यहां सूचीबद्ध नहीं: {{total}} और"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "प्राप्तकर्ता: {{total}} — mailto: लिंक के लिए बहुत अधिक। इसके बजाय Copy Addresses का उपयोग करें।"
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "ईमेल क्लाइंट के लिए बहुत अधिक प्राप्तकर्ता ({{total}} > {{max}})। इसके बजाय Copy Addresses का उपयोग करें।"
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} मिनट शेष"
 

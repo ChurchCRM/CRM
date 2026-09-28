@@ -54,6 +54,7 @@ class EventsMenuItems
         return PersonQuery::create()
             ->filterByBirthMonth($today->format('m'))
             ->filterByBirthDay($today->format('d'))
+            ->filterByLiving()
             ->count();
     }
 

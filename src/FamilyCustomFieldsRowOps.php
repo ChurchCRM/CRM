@@ -90,7 +90,7 @@ switch ($sAction) {
             ListOptionQuery::create()->filterById((int)$customField->getCustomSpecial())->delete();
         }
 
-        // Drop the column from the family_custom table first (DDL-first order matches original behaviour).
+        // Drop the column from the family_custom table first (DDL-first order matches original behavior).
         // If the ORM delete ran first and ALTER TABLE failed, the master record would be gone
         // while the physical column with user data remained — an unrecoverable orphan.
         // $sField is regex-validated (^c\d+$) above; DDL identifiers cannot be parameterised.

@@ -71,19 +71,6 @@ msgid "Generate Catalog"
 msgstr "Generate Catalogue"
 
 #: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maximum number of neighbours"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Neighbour Families"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Show Neighbours"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Non-deductible amount can't be greater than total amount."
 
@@ -110,14 +97,6 @@ msgstr "Cellphone"
 #: 
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr "This option requires at least MySQL version 3.22!  Hit browser back button to return to ChurchCRM."
-
-#: 
-msgid "Total of all purchases: $"
-msgstr "Total of all purchases: R"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Total purchases: R"
 
 #: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
@@ -168,11 +147,6 @@ msgstr "Make user-entered zip/postcodes in UPPER-CASE when saving to the databas
 #: 
 msgid "Church Checking Account Number"
 msgstr "Church Chequeing Account Number"
-
-#: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Show neighbours with these classifications"
 
 #: 
 msgid "KioskVisibilityTimestamp"
@@ -236,10 +210,6 @@ msgstr "MailChimp Integration enables synchronisation between ChurchCRM contacts
 #: 
 msgid "The month that starts your organization's fiscal year"
 msgstr "The month that starts your organisation's fiscal year"
-
-#: 
-msgid "Choose between light and dark color scheme"
-msgstr "Choose between light and dark colour scheme"
 
 #: 
 msgid "Customize the look and feel of the application"

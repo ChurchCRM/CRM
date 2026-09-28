@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -18,6 +19,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <label for="fyid" class="fw-bold"><?= gettext('Fiscal Year') ?></label>
                 <form method="GET" class="d-inline">
                     <select name="fyid" id="fyid" class="form-select d-inline-block" style="width: auto;">
+                        <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
                         <?php foreach ($availableYears as $year): ?>
                             <option value="<?= $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
                                 <?= InputUtils::escapeHTML($year['label']) ?>
@@ -53,7 +55,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= CurrencyFormatter::formatHtml($totalPledges) ?></div>
-                            <div class="text-body-secondary"><?= gettext('Total Pledges') ?> — <?= FinancialService::formatFiscalYear($selectedFyid) ?></div>
+                            <div class="text-body-secondary"><?= gettext('Total Pledges') ?> — <?= FiscalYearUtils::formatFiscalYearLabel($selectedFyid) ?></div>
                         </div>
                     </div>
                 </div>
@@ -292,10 +294,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Currency config for footerCallback — mirrors PHP CurrencyFormatter::format()
     var _crmCur = {
-        sym: <?= json_encode(CurrencyFormatter::symbol()) ?>,
-        pos: <?= json_encode(CurrencyFormatter::position()) ?>,
-        th:  <?= json_encode(SystemConfig::getValue('sThousandsSeparator')) ?>,
-        dec: <?= json_encode(SystemConfig::getValue('sDecimalSeparator')) ?>
+        sym: <?= InputUtils::jsonEncodeForScript(CurrencyFormatter::symbol()) ?>,
+        pos: <?= InputUtils::jsonEncodeForScript(CurrencyFormatter::position()) ?>,
+        th:  <?= InputUtils::jsonEncodeForScript(SystemConfig::getValue('sThousandsSeparator')) ?>,
+        dec: <?= InputUtils::jsonEncodeForScript(SystemConfig::getValue('sDecimalSeparator')) ?>
     };
     function _fmtCur(n) {
         if (n < 0) { return '-' + _fmtCur(-n); }

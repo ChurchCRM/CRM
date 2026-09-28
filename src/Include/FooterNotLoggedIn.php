@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
 
+use ChurchCRM\Utils\InputUtils;
 ?>
 
 <div class="auth-footer">
@@ -46,7 +47,7 @@ use ChurchCRM\Service\SystemService;
   <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     // Load locale files dynamically
     (function() {
-        const localeConfig = <?= json_encode(Bootstrapper::getCurrentLocale()->getLocaleConfigArray()) ?>;
+        const localeConfig = <?= InputUtils::jsonEncodeForScript(Bootstrapper::getCurrentLocale()->getLocaleConfigArray()) ?>;
         if (window.CRM && window.CRM.loadLocaleFiles) {
             window.CRM.loadLocaleFiles(localeConfig);
         }
