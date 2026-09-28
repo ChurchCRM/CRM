@@ -6,6 +6,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\SystemService;
@@ -223,7 +224,26 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
             throw new HttpForbiddenException($request, gettext('You do not have permission to view this person'));
         }
-        return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
+
+        // Filter custom fields by field-level permissions (GHSA-p6xx-xx98-f323)
+        $personJSON = $person->exportTo('JSON');
+        $personData = json_decode($personJSON, true);
+
+        if (isset($personData['singlePersonCustom']) && is_array($personData['singlePersonCustom'])) {
+            $filteredCustom = [];
+            foreach ($personData['singlePersonCustom'] as $customField) {
+                $fieldId = $customField['id'] ?? null;
+                if ($fieldId) {
+                    $fieldDef = PersonCustomMasterQuery::create()->findPk($fieldId);
+                    if ($fieldDef && $currentUser->isEnabledSecurity($fieldDef->getFieldSecurity())) {
+                        $filteredCustom[] = $customField;
+                    }
+                }
+            }
+            $personData['singlePersonCustom'] = $filteredCustom;
+        }
+
+        return SlimUtils::renderStringJSON($response, json_encode($personData));
     });
 
     // Delete person

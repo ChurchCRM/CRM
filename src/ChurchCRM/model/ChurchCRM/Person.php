@@ -1046,4 +1046,17 @@ class Person extends BasePerson implements PhotoInterface
         $family = $this->getFamily();
         return $family?->getHomePhone() ?? '';
     }
+
+    public function getVisibleCustomFieldDefinitions(): array
+    {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $allFields = PersonCustomMasterQuery::create()->orderByOrder()->find();
+        $visibleFields = [];
+        foreach ($allFields as $field) {
+            if ($currentUser->isEnabledSecurity($field->getFieldSecurity())) {
+                $visibleFields[] = $field;
+            }
+        }
+        return $visibleFields;
+    }
 }
