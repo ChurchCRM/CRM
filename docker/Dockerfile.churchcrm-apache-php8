@@ -17,7 +17,9 @@ LABEL maintainer="ChurchCRM"
 EXPOSE 80
 
 # Install common PHP dependencies and Apache
-RUN apt-get update && \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
     apt-get install -y --no-install-recommends \
         libxml2-dev \
         libcurl4-openssl-dev \
@@ -30,8 +32,7 @@ RUN apt-get update && \
         libzip-dev \
         libfreetype6-dev \
         libjpeg-dev \
-        git \
-    && rm -rf /var/lib/apt/lists/*
+        git
 
 # Install and configure PHP extensions (compiled against this image's PHP
 # build — do NOT install php-* packages via apt, which pull in a separate
@@ -81,7 +82,9 @@ LABEL maintainer="ChurchCRM" \
 EXPOSE 8080
 
 # Install only runtime libraries (no dev headers, no build toolchain)
-RUN apt-get update && \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
     apt-get install -y --no-install-recommends \
         libcurl4t64 \
         libfreetype6 \
@@ -95,21 +98,23 @@ RUN apt-get update && \
         locales \
         locales-all \
     && apt-get purge -y --auto-remove $PHPIZE_DEPS libc6-dev libc-dev-bin libcrypt-dev linux-libc-dev rpcsvc-proto && \
-    rm -rf /var/lib/apt/lists/* /usr/src/php.tar.xz /usr/local/include/php
+    rm -rf /usr/src/php.tar.xz /usr/local/include/php
 
 RUN a2enmod rewrite && mkdir -p /run/apache2 /var/www/html
 
 # Copy compiled PHP extensions and php.ini from the base stage (avoids
 # hardcoding the PHP build's internal extension-ABI directory name here)
-COPY --from=base /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
-COPY --from=base /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
-COPY --from=base /usr/local/etc/php/php.ini /usr/local/etc/php/php.ini
-COPY apache/default.conf /etc/apache2/apache2.conf
+COPY --link --from=base /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --link --from=base /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
+COPY --link --from=base /usr/local/etc/php/php.ini /usr/local/etc/php/php.ini
+COPY --link apache/default.conf /etc/apache2/apache2.conf
 
 WORKDIR /var/www/html
 
 # Copy ChurchCRM release code (provided from release artifact during docker build)
-COPY --chown=www-data:www-data . .
+# --link requires a numeric --chown (www-data is uid:gid 33:33 in this image) —
+# a named owner fails to resolve when the linked layer is applied independently.
+COPY --link --chown=33:33 . .
 
 # The build context also carries docker/apache/default.conf (already consumed
 # above into /etc/apache2/apache2.conf) — strip it so it can't be served out
@@ -127,11 +132,12 @@ USER www-data
 FROM base AS test
 
 # Install development dependencies
-RUN apt-get update && \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
     apt-get install -y \
         make \
-        python3 \
-    && rm -rf /var/lib/apt/lists/*
+        python3
 
 # Install Xdebug for testing
 RUN pecl install xdebug && docker-php-ext-enable xdebug
@@ -156,11 +162,12 @@ WORKDIR /var/www/html
 FROM base AS dev
 
 # Install development dependencies
-RUN apt-get update && \
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
     apt-get install -y \
         make \
-        python3 \
-    && rm -rf /var/lib/apt/lists/*
+        python3
 
 # Install Xdebug for debugging
 RUN pecl install xdebug && docker-php-ext-enable xdebug
