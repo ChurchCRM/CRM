@@ -76,9 +76,10 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 - [Observability, Logging & Metrics](./churchcrm/observability-logging-metrics.md)
 
 ### Development Process
+- [Maintainer Review Gates](./churchcrm/maintainer-review-gates.md) — product/process gates; agents never approve or merge
+- [PR Review](./churchcrm/pr-review.md) — fetch the PR and run the standards checklist after the gates file
 - [Git Workflow](./churchcrm/git-workflow.md)
 - [GitHub Interaction](./churchcrm/github-interaction.md)
-- [PR Review](./churchcrm/pr-review.md)
 - [Development Workflows](./churchcrm/development-workflows.md)
 - [Code Standards](./churchcrm/code-standards.md)
 - [Wiki Documentation](./churchcrm/wiki-documentation.md)
@@ -88,7 +89,9 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 - Read `churchcrm/SKILL.md` first. That index is the source of truth.
 - Also in this folder (not under `churchcrm/`): `milestone-sweep.md`, `pr-description-guidelines.md`, `pr-review-fix.md`.
 - Product floor is **PHP 8.4+**. Do not document older PHP as supported.
+- UI stack is **Tabler + Bootstrap 5**. Do not enforce Bootstrap 4 class names.
 - Never invent install counts, SaaS hosting, native apps, payment processing, or endpoints that are not in `src/`.
+- Locale count is **49** from `locales.json`. Wrap new UI strings; do not run `locale:build` in a feature PR.
 - Push only after the maintainer approves the diff. See `churchcrm/git-workflow.md`.
 - Community plugins are current product, not future work.
 - Approved plugin registry: bundled `src/plugins/approved-plugins.json` plus remote `https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/approved-plugins.json`. Do not use the dead `External` branch URL.
@@ -106,7 +109,7 @@ Generic language skills may live on a developer's own machine. ChurchCRM overrid
 
 **Example workflows:**
 
-- **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
+- **Review a PR**: `maintainer-review-gates.md` → `pr-review.md` → `code-standards.md` → `security-best-practices.md`. Draft only. Never approve or merge.
 - **New API endpoint**: `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` → `cypress-testing.md` → `git-workflow.md`
 - **Migrate legacy page**: `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` → `database-operations.md` → `git-workflow.md`
 - **Fix security issue**: `security-best-practices.md` → `authorization-security.md` → `php-best-practices.md` → `git-workflow.md`
@@ -121,7 +124,7 @@ Generic language skills may live on a developer's own machine. ChurchCRM overrid
 - **Quick reference** — Jump to the skill in `churchcrm/` covering your current task
 - **Learning guide** — Read skills to understand ChurchCRM patterns
 - **Quality check** — Use skills to verify your code follows standards
-- **Pre-commit review** — Check relevant skills before submitting PRs
+- **Pre-commit review** — Check relevant skills before submitting PRs. Contributors should also read [What maintainers look for](../../docs/contributing-pr-review.md).
 
 ## Maintaining These Skills
 

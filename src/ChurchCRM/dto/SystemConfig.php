@@ -229,7 +229,16 @@ class   SystemConfig
             'sKioskVisibilityTimestamp'            => new ConfigItem('sKioskVisibilityTimestamp', 'text', '', gettext('KioskVisibilityTimestamp')),
             'bEnableLostPassword'                  => new ConfigItem('bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem('sChurchWebSite', 'text', '', ''),
-            'sChurchLogoURL'                       => new ConfigItem('sChurchLogoURL', 'text', '', gettext('Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo.')),
+            // Church social media accounts. Like the other church-identity
+            // items above, these are deliberately absent from
+            // buildCategories() so they never appear on the System Settings
+            // page — they are edited on Admin -> System -> Church Info and
+            // read back through ChurchMetaData::getChurchSocialLinks().
+            'sChurchX'                             => new ConfigItem('sChurchX', 'text', '', ''),
+            'sChurchYouTube'                       => new ConfigItem('sChurchYouTube', 'text', '', ''),
+            'sChurchFacebook'                      => new ConfigItem('sChurchFacebook', 'text', '', ''),
+            'sChurchInstagram'                     => new ConfigItem('sChurchInstagram', 'text', '', ''),
+            'sChurchLogoURL'                     => new ConfigItem('sChurchLogoURL', 'text', '', gettext('Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo.')),
             'bEnableExternalCalendarAPI'           => new ConfigItem('bEnableExternalCalendarAPI', 'boolean', '0', gettext('Allow unauthenticated reads of events from the external calendar API')),
             'sCalendarEmbedOrigins'                => new ConfigItem('sCalendarEmbedOrigins', 'text', '*', gettext('Space-separated list of origins allowed to embed the public external calendar page in an <iframe> (CSP frame-ancestors). Default "*" allows any origin. Restrict to specific origins for tighter security, e.g. "https://mysite.org https://embed.example.com".')),
             
