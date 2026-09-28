@@ -43,5 +43,9 @@
   "Map centered on": "Map centred on",
   "Max neighbors": "Max neighbours",
   "Search Neighbors": "Search Neighbours",
-  "Select a family and click Find Neighbors to see results.": "Select a family and click Find Neighbours to see results."
+  "Select a family and click Find Neighbors to see results.": "Select a family and click Find Neighbours to see results.",
+  "Two-factor authentication is required. You have %d day to enroll.": {
+    "one": "Two-factor authentication is required. You have %d day to enrol.",
+    "other": "Two-factor authentication is required. You have %d days to enrol."
+  }
 }

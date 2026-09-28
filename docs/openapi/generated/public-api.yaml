@@ -28,163 +28,6 @@ servers:
     url: 'http://localhost/churchcrm/api'
     description: 'Local development (localhost)'
 paths:
-  /public/user/login:
-    post:
-      tags:
-        - Auth
-      summary: 'Log in and retrieve an API key'
-      description: 'Authenticates a user by username and password and returns their API key for use in subsequent authenticated requests.'
-      operationId: userLogin
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              required:
-                - userName
-                - password
-              properties:
-                userName:
-                  type: string
-                  example: admin
-                password:
-                  type: string
-                  format: password
-                  example: secret
-                otp:
-                  description: 'One-time password or recovery code for 2FA (required when 202 is returned)'
-                  type: string
-                  example: '123456'
-              type: object
-      responses:
-        '200':
-          description: 'Login successful'
-          content:
-            application/json:
-              schema:
-                properties:
-                  apiKey: { type: string, example: abc123xyz }
-                type: object
-        '401':
-          description: 'Invalid username or password'
-        '202':
-          description: 'Password valid but 2FA verification required'
-          content:
-            application/json:
-              schema:
-                properties:
-                  requiresOTP: { type: boolean, example: true }
-                type: object
-  /public/user/password-reset:
-    post:
-      tags:
-        - Auth
-      summary: 'Request a password reset email'
-      description: 'Sends a password reset link to the email address associated with the given username. Always returns success to avoid user enumeration.'
-      operationId: passwordResetRequest
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              required:
-                - userName
-              properties:
-                userName:
-                  type: string
-                  example: admin
-              type: object
-      responses:
-        '200':
-          description: 'Request accepted (email sent if account exists)'
-          content:
-            application/json:
-              schema:
-                properties:
-                  success: { type: boolean, example: true }
-                type: object
-        '400':
-          description: 'userName field is required'
-  '/public/calendar/{CalendarAccessToken}/events':
-    get:
-      tags:
-        - Calendar
-      summary: 'Get public calendar events as JSON'
-      description: 'Returns events for a publicly shared calendar using its access token.'
-      operationId: getPublicCalendarEvents
-      parameters:
-        -
-          name: CalendarAccessToken
-          in: path
-          description: "The calendar's public access token (found in calendar settings)"
-          required: true
-          schema:
-            type: string
-            example: abc123token
-      responses:
-        '200':
-          description: 'Array of event objects'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { Id: { type: integer }, Title: { type: string }, Start: { type: string, format: date-time }, End: { type: string, format: date-time } }
-                  type: object
-        '404':
-          description: 'Invalid or expired access token'
-  '/public/calendar/{CalendarAccessToken}/ics':
-    get:
-      tags:
-        - Calendar
-      summary: 'Download public calendar as ICS file'
-      description: 'Returns an iCalendar (.ics) file for the publicly shared calendar, suitable for import into calendar apps.'
-      operationId: getPublicCalendarICS
-      parameters:
-        -
-          name: CalendarAccessToken
-          in: path
-          required: true
-          schema:
-            type: string
-            example: abc123token
-      responses:
-        '200':
-          description: 'iCalendar file'
-          content:
-            text/calendar:
-              schema:
-                type: string
-                format: binary
-        '404':
-          description: 'Invalid or expired access token'
-  '/public/calendar/{CalendarAccessToken}/fullcalendar':
-    get:
-      tags:
-        - Calendar
-      summary: 'Get public calendar events in FullCalendar format'
-      description: 'Returns events formatted for the FullCalendar JavaScript library.'
-      operationId: getPublicCalendarFullCalendarEvents
-      parameters:
-        -
-          name: CalendarAccessToken
-          in: path
-          required: true
-          schema:
-            type: string
-            example: abc123token
-      responses:
-        '200':
-          description: 'FullCalendar-compatible event array'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { id: { type: integer }, title: { type: string }, start: { type: string, format: date-time }, end: { type: string, format: date-time } }
-                  type: object
-        '404':
-          description: 'Invalid or expired access token'
   /public/register/family:
     post:
       tags:
@@ -345,6 +188,200 @@ paths:
                   error: { type: string, example: 'Validation Error' }
                   failures: { type: array, items: { type: string } }
                 type: object
+  '/public/calendar/{CalendarAccessToken}/events':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get public calendar events as JSON'
+      description: 'Returns events for a publicly shared calendar using its access token.'
+      operationId: getPublicCalendarEvents
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          description: "The calendar's public access token (found in calendar settings)"
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'Array of event objects'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { Id: { type: integer }, Title: { type: string }, Start: { type: string, format: date-time }, End: { type: string, format: date-time } }
+                  type: object
+        '404':
+          description: 'Invalid or expired access token'
+  '/public/calendar/{CalendarAccessToken}/ics':
+    get:
+      tags:
+        - Calendar
+      summary: 'Download public calendar as ICS file'
+      description: 'Returns an iCalendar (.ics) file for the publicly shared calendar, suitable for import into calendar apps.'
+      operationId: getPublicCalendarICS
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'iCalendar file'
+          content:
+            text/calendar:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: 'Invalid or expired access token'
+  '/public/calendar/{CalendarAccessToken}/fullcalendar':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get public calendar events in FullCalendar format'
+      description: 'Returns events formatted for the FullCalendar JavaScript library.'
+      operationId: getPublicCalendarFullCalendarEvents
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'FullCalendar-compatible event array'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, title: { type: string }, start: { type: string, format: date-time }, end: { type: string, format: date-time } }
+                  type: object
+        '404':
+          description: 'Invalid or expired access token'
+  /public/echo:
+    get:
+      tags:
+        - Utility
+      summary: 'Health check / echo'
+      description: 'Returns a simple echo response. Useful for verifying the API is reachable.'
+      operationId: getEcho
+      responses:
+        '200':
+          description: 'Echo response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { type: string, example: echo }
+                type: object
+  /public/csp-report:
+    post:
+      tags:
+        - Utility
+      summary: 'Log a Content Security Policy violation report'
+      description: 'Receives browser-generated CSP violation reports and logs them server-side.'
+      operationId: logCSPReport
+      requestBody:
+        description: 'CSP violation report object (browser-generated)'
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              csp-report:
+                document-uri: 'https://example.com'
+                violated-directive: script-src
+      responses:
+        '204':
+          description: 'Report logged successfully (no content)'
+  /public/user/login:
+    post:
+      tags:
+        - Auth
+      summary: 'Log in and retrieve an API key'
+      description: 'Authenticates a user by username and password and returns their API key for use in subsequent authenticated requests.'
+      operationId: userLogin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - userName
+                - password
+              properties:
+                userName:
+                  type: string
+                  example: admin
+                password:
+                  type: string
+                  format: password
+                  example: secret
+                otp:
+                  description: 'One-time password or recovery code for 2FA (required when 202 is returned)'
+                  type: string
+                  example: '123456'
+              type: object
+      responses:
+        '200':
+          description: 'Login successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  apiKey: { type: string, example: abc123xyz }
+                type: object
+        '401':
+          description: 'Invalid username or password'
+        '202':
+          description: 'Password valid but 2FA verification required'
+          content:
+            application/json:
+              schema:
+                properties:
+                  requiresOTP: { type: boolean, example: true }
+                type: object
+  /public/user/password-reset:
+    post:
+      tags:
+        - Auth
+      summary: 'Request a password reset email'
+      description: 'Sends a password reset link to the email address associated with the given username. Always returns success to avoid user enumeration.'
+      operationId: passwordResetRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - userName
+              properties:
+                userName:
+                  type: string
+                  example: admin
+              type: object
+      responses:
+        '200':
+          description: 'Request accepted (email sent if account exists)'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '400':
+          description: 'userName field is required'
   /public/data/countries:
     get:
       tags:
@@ -388,43 +425,6 @@ paths:
                 items:
                   properties: { code: { type: string, example: WA }, name: { type: string, example: Washington } }
                   type: object
-  /public/echo:
-    get:
-      tags:
-        - Utility
-      summary: 'Health check / echo'
-      description: 'Returns a simple echo response. Useful for verifying the API is reachable.'
-      operationId: getEcho
-      responses:
-        '200':
-          description: 'Echo response'
-          content:
-            application/json:
-              schema:
-                properties:
-                  message: { type: string, example: echo }
-                type: object
-  /public/csp-report:
-    post:
-      tags:
-        - Utility
-      summary: 'Log a Content Security Policy violation report'
-      description: 'Receives browser-generated CSP violation reports and logs them server-side.'
-      operationId: logCSPReport
-      requestBody:
-        description: 'CSP violation report object (browser-generated)'
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-            example:
-              csp-report:
-                document-uri: 'https://example.com'
-                violated-directive: script-src
-      responses:
-        '204':
-          description: 'Report logged successfully (no content)'
 tags:
   -
     name: Utility
