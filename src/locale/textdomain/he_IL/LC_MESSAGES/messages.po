@@ -17842,6 +17842,12 @@ msgid "Set up now"
 msgstr "הגדר כעת"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "נדרש אימות דו-שלבי. יש לך %d יום להירשם."
+msgstr[1] "נדרש אימות דו-שלבי. יש לך %d ימים להירשם."
+
+#: 
 msgid "Unknown family"
 msgstr "משפחה לא ידועה"
 
@@ -17856,4 +17862,684 @@ msgstr "עדכן את כל קואורדינטות המשפחות"
 #: 
 msgid "Update Coordinates"
 msgstr "עדכן קואורדינטות"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s היה ראש המשפחה הזו וסומן כנפטר. יש להקצות ראש משפחה חדש."
+
+#: 
+msgid "Accept"
+msgstr "אישור"
+
+#: 
+msgid "Active Now"
+msgstr "פעיל כעת"
+
+#: 
+msgid "Adding..."
+msgstr "מוסיף..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "כל האנשים במערכת בעלי כתובת דוא\"ל רשומים לרשימת תפוצה זו!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "כל המנויים ב-MailChimp נמצאים ב-ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "אירעה שגיאה במחיקת הקבצים."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "האם אתה בטוח לחלוטין? פעולה זו תמחק את כל הנתונים ותשחזר את הגדרות ברירת המחדל של היצרן."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "האם אתה בטוח שברצונך למחוק את כל קובצי היומן? לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "האם אתה בטוח שברצונך למחוק את העמדה"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "האם אתה בטוח שברצונך למחוק את הקישור"
+
+#: 
+msgid "Assignment"
+msgstr "הקצאה"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "משימות רקע (הודעות ימי הולדת וכל משימה מתוזמנת של תוספים) מעולם לא רצו בהתקנה זו."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "משימות הרקע (הודעות ימי הולדת וכל משימה מתוזמנת של תוספים) רצו לאחרונה בתאריך %s."
+
+#: 
+msgid "Backing up..."
+msgstr "מגבה..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "הגיבוי הורד בהצלחה."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "הגיבוי הועלה בהצלחה"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "לא ניתן לשנות את סטטוס הפעילות של עצמך"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "הייצוא ל-ChMeetings הושלם בהצלחה"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "השינויים נשמרו בהצלחה"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "בצע יציאה לכולם והשבת את כולם"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "לבצע יציאה לכולם ולהשבית את האירוע?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "בדוק את תיבת הדוא\"ל שלך לקבלת קישור לאיפוס סיסמה"
+
+#: 
+msgid "Close stuck events?"
+msgstr "לסגור אירועים תקועים?"
+
+#: 
+msgid "Comments"
+msgstr "הערות"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "לא ניתן היה לטעון את תצוגת הדוא\"ל המקדימה. יש לסגור ולנסות שוב."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "יוצר ומעלה גיבוי. פעולה זו עשויה להימשך מספר דקות..."
+
+#: 
+msgid "Database reset failed."
+msgstr "איפוס מסד הנתונים נכשל."
+
+#: 
+msgid "Deceased"
+msgstr "נפטר"
+
+#: 
+msgid "Default admin credentials"
+msgstr "פרטי כניסה של מנהל ברירת מחדל"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "מחיקת עמדה"
+
+#: 
+msgid "Deleted Files"
+msgstr "קבצים שנמחקו"
+
+#: 
+msgid "Deleting..."
+msgstr "מוחק..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "ההורדה הוחזרה ללא כותרות קובץ מצורף."
+
+#: 
+msgid "Error deleting log file."
+msgstr "שגיאה במחיקת קובץ היומן."
+
+#: 
+msgid "Error deleting log files."
+msgstr "שגיאה במחיקת קובצי היומן."
+
+#: 
+msgid "Error downloading log file."
+msgstr "שגיאה בהורדת קובץ היומן."
+
+#: 
+msgid "Error initiating download."
+msgstr "שגיאה בהתחלת ההורדה."
+
+#: 
+msgid "Error loading log file."
+msgstr "שגיאה בטעינת קובץ היומן."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "שגיאה בטעינת הרשומות שנרשמו עצמאית"
+
+#: 
+msgid "Errors"
+msgstr "שגיאות"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "החרג חברים נפטרים מהמדריך המודפס ומייצוא ה-CSV."
+
+#: 
+msgid "Failed Files"
+msgstr "קבצים שנכשלו"
+
+#: 
+msgid "Failed to add link"
+msgstr "הוספת הקישור נכשלה"
+
+#: 
+msgid "Failed to add option"
+msgstr "הוספת האפשרות נכשלה"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "סגירת האירועים נכשלה. יש לנסות שוב."
+
+#: 
+msgid "Failed to delete"
+msgstr "המחיקה נכשלה"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "הפעלת הרשמה בעמדה נכשלה"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ייצוא קובץ ה-CSV ל-ChMeetings נכשל"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "טעינת יומן הביקורת נכשלה. יש לנסות שוב."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "שינוי שם העמדה נכשל"
+
+#: 
+msgid "Failed to save changes"
+msgstr "שמירת השינויים נכשלה"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "עדכון התוסף נכשל"
+
+#: 
+msgid "Family Id"
+msgstr "מזהה משפחה"
+
+#: 
+msgid "Final Confirmation"
+msgstr "אישור סופי"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "מאתר קואורדינטות למשפחות… פעולה זו עשויה להימשך מספר דקות. ניתן להשאיר דף זה פתוח."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "מאתר קואורדינטות למשפחות… עובדו {{done}} מתוך {{total}}, {{geocoded}} אותרו."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "נדרש עדכון ראש משפחה"
+
+#: 
+msgid "Helpful Links"
+msgstr "קישורים שימושיים"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "הסתר נפטרים מהמדריך"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "הסתר חברים נפטרים מהמדריך המודפס ומייצוא ה-CSV."
+
+#: 
+msgid "Identify"
+msgstr "זהה"
+
+#: 
+msgid "Identify command sent"
+msgstr "פקודת הזיהוי נשלחה"
+
+#: 
+msgid "Individual"
+msgstr "יחיד"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "פנימי: התאריך והשעה האחרונים שבהם הושלמו משימות הטיימר ברקע (YYYY-MM-DD HH:MM:SS). אין לערוך ידנית."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "הפריט נמחק בהצלחה"
+
+#: 
+msgid "Kiosk Name"
+msgstr "שם העמדה"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "העמדה אושרה"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "העמדה נמחקה בהצלחה"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "יש לאשר את העמדה"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "שם העמדה שונה"
+
+#: 
+msgid "Last seen"
+msgstr "נראה לאחרונה"
+
+#: 
+msgid "Link"
+msgstr "קישור"
+
+#: 
+msgid "Link added successfully"
+msgstr "הקישור נוסף בהצלחה"
+
+#: 
+msgid "Link deleted"
+msgstr "הקישור נמחק"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "שם הקישור אינו יכול להכיל תגי HTML"
+
+#: 
+msgid "Living"
+msgstr "חי"
+
+#: 
+msgid "Log settings saved"
+msgstr "הגדרות היומן נשמרו"
+
+#: 
+msgid "Login Name is Required"
+msgstr "שם המשתמש הוא שדה חובה"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "האדם סומן כפעיל"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "האדם סומן כלא פעיל"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "מספר הדקות המינימלי בין הרצות של משימות טיימר ברקע המופעלות על ידי טעינת דף. מונע הרצה חוזרת של המשימות בכל צפייה בדף בבוקר עמוס. אינו חל על ההרצה משורת הפקודה. הגדר ל-0 כדי להריץ בכל טעינת דף."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "משתמשים חדשים לא יקבלו הודעת ברוכים הבאים, והסיסמה שנוצרה לעולם לא תוצג. לאחר יצירת החשבון, יש להגדיר סיסמה דרך משתמשי המערכת באמצעות שינוי סיסמה — או להגדיר תחילה דוא\"ל."
+
+#: 
+msgid "No changes to save"
+msgstr "אין שינויים לשמירה"
+
+#: 
+msgid "No contact info"
+msgstr "אין פרטי יצירת קשר"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "לא הוגדרו קישורים מותאמים אישית. הוסף אחד למעלה!"
+
+#: 
+msgid "No email"
+msgstr "אין דוא\"ל"
+
+#: 
+msgid "No files were deleted."
+msgstr "לא נמחקו קבצים."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "אין עזרה זמינה לתוסף זה."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "אין אנשים להוספה - כולם כבר נמצאים בעגלה"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "אין אנשים להוספה - המסנן לא החזיר תוצאות"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "תאריך פטירה אינו תקין"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "מספר הימים שיש למשתמשים כדי להירשם לאימות דו-שלבי (2FA) לאחר שהוא הופך לחובה. הגדר ל-0 כדי לאכוף מיידית. קיצור תקופת חסד פעילה עלול לחסום משתמשים באופן מיידי."
+
+#: 
+msgid "Offline"
+msgstr "לא מקוון"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "יש לבצע פעולה זו רק לאחר תיקון הבעיה הבסיסית. עדיין יהיה עליך ללחוץ על הפעל כדי שהתוסף ירוץ שוב."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "אנא אשר הפעלה של האדם"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "אנא אשר השבתה של האדם"
+
+#: 
+msgid "Plugin status updated"
+msgstr "סטטוס התוסף עודכן"
+
+#: 
+msgid "Registered"
+msgstr "רשום"
+
+#: 
+msgid "Reload"
+msgstr "טען מחדש"
+
+#: 
+msgid "Reload command sent"
+msgstr "פקודת הטעינה מחדש נשלחה"
+
+#: 
+msgid "Rename"
+msgstr "שנה שם"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "שינוי שם עמדה"
+
+#: 
+msgid "Reset Complete"
+msgstr "האיפוס הושלם"
+
+#: 
+msgid "Reset Settings"
+msgstr "אפס הגדרות"
+
+#: 
+msgid "Resetting..."
+msgstr "מאפס..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "המשימות המתוזמנות אינן פועלות"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "אסימון האבטחה חסר. יש לרענן את הדף."
+
+#: 
+msgid "Select…"
+msgstr "בחר…"
+
+#: 
+msgid "Sending..."
+msgstr "שולח..."
+
+#: 
+msgid "Sending…"
+msgstr "שולח…"
+
+#: 
+msgid "Settings reset"
+msgstr "ההגדרות אופסו"
+
+#: 
+msgid "Settings saved"
+msgstr "ההגדרות נשמרו"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "ההגדרות נשמרו. מרענן מידע שדרוג..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "מציג אנשים פעילים בלבד."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "מציג אנשים לא פעילים בלבד."
+
+#: 
+msgid "Successfully deleted"
+msgstr "נמחק בהצלחה"
+
+#: 
+msgid "Testing..."
+msgstr "בודק..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "מסד הנתונים נוקה. המערכת מוכנה להתחלה חדשה."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "מנגנון הגיבוי המבוסס על טעינת דף ממשיך לפעול בינתיים. ניתן לשנות את משך הזמן ש-ChurchCRM ממתין לפני הצגת אזהרה זו באמצעות ההגדרה %1$s, או להגדיר אותה ל-0 כדי להסתיר אותה."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "אדם זה אינו פעיל"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "פעולה זו מאתרת קואורדינטות מפה עבור כל משפחה שחסרות לה, באמצעות OpenStreetMap. התהליך מעבד את המשפחות באצוות של 50, כדקה לאצווה. ניתן להשאיר דף זה פתוח בזמן הריצה. להמשיך?"
+
+#: 
+msgid "This person is deceased"
+msgstr "אדם זה נפטר"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "פעולה זו תנקה את כל הערכים המוגדרים עבור תוסף זה. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "פעולה זו תמחק לצמיתות את קובצי התוסף מהדיסק ותנקה את הגדרותיו. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "כתובת ה-URL אינה יכולה להכיל תגי HTML"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "שגיאה בלתי צפויה. יש לנסות שוב."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "הסר התקנת תוסף"
+
+#: 
+msgid "Upcoming"
+msgstr "קרוב"
+
+#: 
+msgid "Valid Until"
+msgstr "תקף עד"
+
+#: 
+msgid "View active only"
+msgstr "הצג פעילים בלבד"
+
+#: 
+msgid "View all"
+msgstr "הצג הכל"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "הצג הכל (כולל לא פעילים)"
+
+#: 
+msgid "View inactive only"
+msgstr "הצג לא פעילים בלבד"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "הצג אזהרה בלוח הבקרה של המנהל כאשר משימות הטיימר ברקע לא רצו במשך מספר שעות זה. הערך 26 מאפשר cron יומי בתוספת סטייה מסוימת. הגדר ל-0 כדי להשבית את האזהרה."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "ללא מתזמן, משימות אלו רצות רק כאשר מישהו טוען דף, כך שביום חול שקט לא תישלח כלל דואר מתוזמן. הוסף רשומת cron שמריצה את מריץ המשימות מדי שעה, תחת אותו משתמש שבו פועל שרת האינטרנט שלך"
+
+#: 
+msgid "check-outs"
+msgstr "יציאות"
+
+#: 
+msgid "deceased"
+msgstr "נפטר"
+
+#: 
+msgid "event"
+msgstr "אירוע"
+
+#: 
+msgid "events?"
+msgstr "אירועים?"
+
+#: 
+msgid "files"
+msgstr "קבצים"
+
+#: 
+msgid "people from cart?"
+msgstr "אנשים מהעגלה?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "הערך skip חייב להיות אפס או מספר שלם חיובי"
+
+#: 
+msgid "view families missing an email"
+msgstr "הצג משפחות ללא כתובת דוא\"ל"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "קונים בשנת הכספים הנוכחית"
+
+#: 
+msgid "Current"
+msgstr "נוכחי"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "פריטים שנתרמו (בשנת הכספים הנוכחית)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "שם המשתמש חייב להכיל %d תווים או פחות!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "נאסף בשנת הכספים הנוכחית"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s חייב להיות כתובת אינטרנט מלאה בפורמט https://, לדוגמה https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "לחשבון יש הרשאות מוגבלות. יש לפנות למנהל המערכת."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "אירעה שגיאה בעת הצגת דף השגיאה."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "כל כתובת חייבת להתחיל ב-https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "צור מדבקות"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "צור מדבקות דיוור"
+
+#: 
+msgid "Labels"
+msgstr "מדבקות"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "מדבקות דיוור עבור האנשים בעגלה שלך. אדם ללא כתובת משלו יקבל מדבקה לפי כתובת המשפחה שלו."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "אופציונלי. קישורים לחשבונות הקהילה עצמה, המוצגים לחברים בדפים כגון כותרת התחתונה של הפורטל. השאר שדה ריק כדי להסתיר את אותה רשת."
+
+#: 
+msgid "Options"
+msgstr "אפשרויות"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "משימות מתוזמנות"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "פעיל, נותרו {{seconds}} שניות"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "המרווח הצפוי בין הרצות (בשעות): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "משפחות שדולגו (אין כתובת דוא\"ל רשומה): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "משפחות שלא ניתן היה לאתר עבורן קואורדינטות: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "משפחות שיקבלו הודעות אישור בדוא\"ל: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "חברים שהועתקו: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "לא רשומים כאן: עוד {{total}}"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "נמענים: {{total}} — יותר מדי עבור קישור mailto:. השתמש בהעתקת כתובות במקום."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "יותר מדי נמענים עבור תוכנת הדוא\"ל ({{total}} > {{max}}). השתמש בהעתקת כתובות במקום."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "נותרו {{minutes}} דקות"
 

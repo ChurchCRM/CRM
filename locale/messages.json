@@ -3988,28 +3988,6 @@
     "Church email — configured on the %s page.": "",
     "Closing": "",
     "Coordinates Updated": "",
-    "one": {
-        "Copied {{count}} members": "",
-        "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-        "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-        "{{count}} min left": "",
-        "{{count}} families could not be geocoded": "",
-        "Active for {{count}} seconds": "",
-        "You are about to send confirmation emails to {{count}} families.": "",
-        "{{count}} families have no email address on file and will be skipped": "",
-        "…and {{count}} more not listed here.": ""
-    },
-    "other": {
-        "Copied {{count}} members": "",
-        "This list has {{count}} recipients — too many for a mailto: link. Use Copy Addresses instead.": "",
-        "Too many recipients for email client ({{count}} > {{max}}). Use Copy Addresses instead.": "",
-        "{{count}} min left": "",
-        "{{count}} families could not be geocoded": "",
-        "Active for {{count}} seconds": "",
-        "You are about to send confirmation emails to {{count}} families.": "",
-        "{{count}} families have no email address on file and will be skipped": "",
-        "…and {{count}} more not listed here.": ""
-    },
     "Copy Addresses": "",
     "Copy Church Email": "",
     "Email All Members": "",
@@ -4453,10 +4431,6 @@
     "Testing...": "",
     "The database has been cleared. The system is ready for a fresh start.": "",
     "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it.": "",
-    "They are expected at least once every %d hour.": {
-        "one": "",
-        "other": ""
-    },
     "This Person is Inactive": "",
     "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?": "",
     "This person is deceased": "",
@@ -4496,5 +4470,15 @@
     "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address.": "",
     "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network.": "",
     "Options": "",
-    "Scheduled Tasks": ""
+    "Scheduled Tasks": "",
+    "Active, seconds left: {{seconds}}": "",
+    "Expected interval between runs (hours): %d.": "",
+    "Families skipped (no email address on file): {{total}}": "",
+    "Families that could not be geocoded: {{total}}": "",
+    "Families to receive confirmation emails: {{total}}": "",
+    "Members copied: {{total}}": "",
+    "Not listed here: {{total}} more": "",
+    "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead.": "",
+    "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead.": "",
+    "{{minutes}} min left": ""
 }

@@ -32,6 +32,25 @@ Every push runs the full GitHub CI matrix. A `PreToolUse` hook in `.claude/setti
 
 Agents run `npm run lint` themselves before asking to push. Never `git push --no-verify` unless the maintainer authorizes a hotfix and the PR names the bypass.
 
+### Pre-Push Checkpoint Owns Local Deterministic Validation
+
+Before adding a check to a push/PR GitHub Actions workflow, ask whether the same
+failure can be detected deterministically in the developer checkout without a
+GitHub-only service, clean-room environment, or multi-runtime matrix.
+
+- If **yes**, put it in the local commit/pre-push checkpoint first. Do not make
+  push CI the first place contributors learn about it.
+- If **no**, it belongs in CI (examples: clean install, Docker integration,
+  multiple PHP/database versions, packaging, artifact/release behavior).
+- Expensive exhaustive/regression sweeps that are not appropriate on every
+  developer push belong in the nightly workflow.
+- CI may retain a cheap defense-in-depth copy of a local check when bypassed
+  hooks or external contributors make that necessary, but the local checkpoint
+  remains the primary/earliest enforcement point.
+
+When changing CI, the PR description must state why each newly added CI-only
+check cannot run meaningfully before push.
+
 ## After push
 
 Do not approve or merge. Do not close issues unless the maintainer answers yes to a direct question.

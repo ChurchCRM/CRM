@@ -3,7 +3,7 @@
 /**
  * @OA\Info(
  *     title="ChurchCRM Public API",
- *     version="7.0.1",
+ *     version="__CHURCHCRM_VERSION__",
  *     description="Publicly accessible endpoints requiring no authentication. Used for self-registration, public calendar access, country/state lookups, and login.",
  *     @OA\Contact(name="ChurchCRM", email="info@churchcrm.io", url="https://churchcrm.io"),
  *     @OA\License(name="MIT", url="https://opensource.org/licenses/MIT")

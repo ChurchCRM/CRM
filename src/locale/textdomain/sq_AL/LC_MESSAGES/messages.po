@@ -17320,6 +17320,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Email-i nuk eshte konfiguruar. Ju lutemi konfiguroni cilesimet SMTP ne Cilesimet e Sistemit."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Email-i u dërgua te %d familje."
+msgstr[1] "Email-i u dërgua te %d familje."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Vendosni fillimisht nje adrese rruge."
 
@@ -17386,6 +17392,12 @@ msgstr "Nuk u gjeten pagesa per depozitat e zgjedhura"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nuk u dhan ID-te e vlefshme te depozitave"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF-ja u dërgua me sukses te %d familje."
+msgstr[1] "PDF-ja u dërgua me sukses te %d familje."
 
 #: 
 msgid "Partial Send"
@@ -17818,6 +17830,12 @@ msgid "Set up now"
 msgstr "Konfiguro tani"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Kërkohet vërtetimi dyfaktorësh. Keni %d ditë për t'u regjistruar."
+msgstr[1] "Kërkohet vërtetimi dyfaktorësh. Keni %d ditë për t'u regjistruar."
+
+#: 
 msgid "Unknown family"
 msgstr "Familje e panjohur"
 
@@ -17832,4 +17850,684 @@ msgstr "Përditëso të Gjitha Koordinatat e Familjeve"
 #: 
 msgid "Update Coordinates"
 msgstr "Përditëso Koordinatat"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s ishte Kryefamiljari i kësaj familjeje dhe është shënuar si i/e ndjerë. Ju lutemi caktoni një Kryefamiljar të ri."
+
+#: 
+msgid "Accept"
+msgstr "Prano"
+
+#: 
+msgid "Active Now"
+msgstr "Aktiv Tani"
+
+#: 
+msgid "Adding..."
+msgstr "Duke shtuar..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Të gjithë anëtarët e CRM-së me email janë të abonuar në këtë listë!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Të gjithë abonentët e MailChimp janë në ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Ndodhi një gabim gjatë fshirjes së skedarëve."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "A jeni plotësisht i/e sigurt? Kjo do të fshijë të gjitha të dhënat dhe do të rikthejë cilësimet e fabrikës."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "A jeni i/e sigurt që doni të fshini TË GJITHË skedarët e regjistrit? Ky veprim nuk mund të zhbëhet."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "A jeni i/e sigurt që doni të fshini kioskun"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "A jeni i/e sigurt që doni të fshini lidhjen"
+
+#: 
+msgid "Assignment"
+msgstr "Caktim"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Detyrat në sfond (emailet e ditëlindjes dhe çdo detyrë e planifikuar e shtojcave) nuk kanë funksionuar asnjëherë në këtë instalim."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Detyrat në sfond (emailet e ditëlindjes dhe çdo detyrë e planifikuar e shtojcave) funksionuan për herë të fundit më %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Duke krijuar kopje rezervë..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Kopja rezervë u shkarkua."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Kopja rezervë u ngarkua me sukses"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Nuk mund të ndryshoni statusin tuaj aktiv"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Eksportimi i ChMeetings u krye me sukses"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Ndryshimet u ruajtën me sukses"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Regjistro daljen e të gjithëve dhe çaktivizo të gjithë"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Të regjistrohet dalja e të gjithëve dhe të çaktivizohet ky event?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Kontrolloni emailin tuaj për lidhjen e rivendosjes së fjalëkalimit"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Të mbyllen eventet e bllokuara?"
+
+#: 
+msgid "Comments"
+msgstr "Komente"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Nuk mund të ngarkohet parashikimi i emailit. Ju lutemi mbyllni dhe provoni përsëri."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Duke krijuar dhe ngarkuar kopjen rezervë. Kjo mund të zgjasë disa minuta..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Rivendosja e bazës së të dhënave dështoi."
+
+#: 
+msgid "Deceased"
+msgstr "I/E Ndjerë"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Kredencialet e parazgjedhura të administratorit"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Fshi Kioskun"
+
+#: 
+msgid "Deleted Files"
+msgstr "Skedarë të Fshirë"
+
+#: 
+msgid "Deleting..."
+msgstr "Duke fshirë..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Shkarkimi u kthye pa kokat (headers) e bashkëngjitjes."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Gabim gjatë fshirjes së skedarit të regjistrit."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Gabim gjatë fshirjes së skedarëve të regjistrit."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Gabim gjatë shkarkimit të skedarit të regjistrit."
+
+#: 
+msgid "Error initiating download."
+msgstr "Gabim gjatë fillimit të shkarkimit."
+
+#: 
+msgid "Error loading log file."
+msgstr "Gabim gjatë ngarkimit të skedarit të regjistrit."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Gabim gjatë ngarkimit të regjistrimeve vetë-regjistruara"
+
+#: 
+msgid "Errors"
+msgstr "Gabime"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Përjashto anëtarët e ndjerë nga direktoria e shtypur dhe eksportet CSV."
+
+#: 
+msgid "Failed Files"
+msgstr "Skedarë të Dështuar"
+
+#: 
+msgid "Failed to add link"
+msgstr "Shtimi i lidhjes dështoi"
+
+#: 
+msgid "Failed to add option"
+msgstr "Shtimi i opsionit dështoi"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Mbyllja e eventeve dështoi. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Failed to delete"
+msgstr "Fshirja dështoi"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Aktivizimi i regjistrimit me kiosk dështoi"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Eksportimi i CSV-së së ChMeetings dështoi"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Ngarkimi i auditimit dështoi. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Riemërtimi i kioskut dështoi"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Ruajtja e ndryshimeve dështoi"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Përditësimi i shtojcës dështoi"
+
+#: 
+msgid "Family Id"
+msgstr "ID e Familjes"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Konfirmimi Përfundimtar"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Duke gjeokoduar familjet… kjo mund të zgjasë disa minuta. Mund ta mbani këtë faqe të hapur."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Duke gjeokoduar familjet… {{done}} nga {{total}} u përpunuan, {{geocoded}} u lokalizuan."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Kërkohet Përditësimi i Kryefamiljarit"
+
+#: 
+msgid "Helpful Links"
+msgstr "Lidhje të Dobishme"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Fshih të Ndjerët nga Direktoria"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Fshih anëtarët e ndjerë nga direktoria e shtypur dhe eksportet CSV."
+
+#: 
+msgid "Identify"
+msgstr "Identifiko"
+
+#: 
+msgid "Identify command sent"
+msgstr "Komanda e identifikimit u dërgua"
+
+#: 
+msgid "Individual"
+msgstr "Individ"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "E brendshme: data dhe ora e fundit kur detyrat e sfondit me kohëmatës u përfunduan (YYYY-MM-DD HH:MM:SS). Mos e ndryshoni manualisht."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Elementi u fshi me sukses"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Emri i Kioskut"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Kioski u pranua"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Kioski u fshi me sukses"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Kioski duhet të pranohet"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Kioski u riemërtua"
+
+#: 
+msgid "Last seen"
+msgstr "Parë së fundmi"
+
+#: 
+msgid "Link"
+msgstr "Lidhje"
+
+#: 
+msgid "Link added successfully"
+msgstr "Lidhja u shtua me sukses"
+
+#: 
+msgid "Link deleted"
+msgstr "Lidhja u fshi"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Emri i lidhjes nuk mund të përmbajë etiketa HTML"
+
+#: 
+msgid "Living"
+msgstr "Gjallë"
+
+#: 
+msgid "Log settings saved"
+msgstr "Cilësimet e regjistrit u ruajtën"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Emri i Hyrjes është i Detyrueshëm"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Personi u shënua si Aktiv"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Personi u shënua si Joaktiv"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Numri minimal i minutave midis ekzekutimeve të detyrave të sfondit me kohëmatës, të shkaktuara nga ngarkimi i një faqeje. Parandalon që një të diel të mbushur me vizita të ekzekutojë detyrat një herë për çdo shikim faqeje. Nuk aplikohet për ekzekutuesin nga rreshti i komandës. Vendoseni në 0 për t'u ekzekutuar në çdo ngarkim faqeje."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Përdoruesit e rinj nuk do të marrin email mirëseardhjeje, dhe fjalëkalimi i gjeneruar nuk shfaqet asnjëherë. Pas krijimit të llogarisë, vendosni një fjalëkalim nga Përdoruesit e Sistemit duke përdorur Ndrysho Fjalëkalimin — ose konfiguroni emailin fillimisht."
+
+#: 
+msgid "No changes to save"
+msgstr "Nuk ka ndryshime për t'u ruajtur"
+
+#: 
+msgid "No contact info"
+msgstr "Nuk ka informacion kontakti"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Nuk ka lidhje të personalizuara të konfiguruara. Shtoni një më sipër!"
+
+#: 
+msgid "No email"
+msgstr "Pa email"
+
+#: 
+msgid "No files were deleted."
+msgstr "Nuk u fshi asnjë skedar."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Nuk ka ndihmë të disponueshme për këtë shtojcë."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Nuk ka persona për të shtuar - të gjithë janë tashmë në shportë"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Nuk ka persona për të shtuar - filtri nuk ktheu asnjë rezultat"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Nuk është një datë vdekjeje e vlefshme"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Numri i ditëve që përdoruesit kanë për t'u regjistruar në 2FA pasi bëhet i detyrueshëm. Vendoseni në 0 për ta zbatuar menjëherë. Shkurtimi i një periudhe hiri aktive mund t'i bllokojë përdoruesit menjëherë."
+
+#: 
+msgid "Offline"
+msgstr "Jashtë Linje"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Bëjeni këtë vetëm pasi problemi themelor të jetë zgjidhur. Do t'ju duhet ende të klikoni Aktivizo që shtojca të funksionojë përsëri."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Ju lutemi konfirmoni aktivizimin e personit"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Ju lutemi konfirmoni çaktivizimin e personit"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Statusi i shtojcës u përditësua"
+
+#: 
+msgid "Registered"
+msgstr "I/E Regjistruar"
+
+#: 
+msgid "Reload"
+msgstr "Ringarko"
+
+#: 
+msgid "Reload command sent"
+msgstr "Komanda e ringarkimit u dërgua"
+
+#: 
+msgid "Rename"
+msgstr "Riemërto"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Riemërto Kioskun"
+
+#: 
+msgid "Reset Complete"
+msgstr "Rivendosja u Krye"
+
+#: 
+msgid "Reset Settings"
+msgstr "Rivendos Cilësimet"
+
+#: 
+msgid "Resetting..."
+msgstr "Duke rivendosur..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Detyrat e planifikuara nuk po ekzekutohen"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Mungon shenja e sigurisë. Ju lutemi rifreskoni faqen."
+
+#: 
+msgid "Select…"
+msgstr "Zgjidh…"
+
+#: 
+msgid "Sending..."
+msgstr "Duke dërguar..."
+
+#: 
+msgid "Sending…"
+msgstr "Duke dërguar…"
+
+#: 
+msgid "Settings reset"
+msgstr "Cilësimet u rivendosën"
+
+#: 
+msgid "Settings saved"
+msgstr "Cilësimet u ruajtën"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Cilësimet u ruajtën. Duke rifreskuar informacionin e përditësimit..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Duke shfaqur vetëm personat aktivë."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Duke shfaqur vetëm personat joaktivë."
+
+#: 
+msgid "Successfully deleted"
+msgstr "U fshi me sukses"
+
+#: 
+msgid "Testing..."
+msgstr "Duke testuar..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Baza e të dhënave u pastrua. Sistemi është gati për një fillim të ri."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Ndërkohë, alternativa e ngarkimit të faqes vazhdon të funksionojë. Ndryshoni sa kohë pret ChurchCRM përpara se ta shfaqë këtë paralajmërim me cilësimin %1$s, ose vendoseni në 0 për ta fshehur."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Ky Person është Joaktiv"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Kjo gjen koordinatat e hartës për çdo familje që nuk i ka ato, duke përdorur OpenStreetMap. Kalon nëpër familjet në grupe nga 50, rreth një minutë për grup. Mund ta mbani këtë faqe të hapur ndërsa ekzekutohet. Të vazhdohet?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Ky person është i/e ndjerë"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Kjo do të pastrojë të gjitha vlerat e konfiguruara për këtë shtojcë. Ky veprim nuk mund të zhbëhet."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Kjo do të fshijë përgjithmonë skedarët e shtojcës nga disku dhe do të pastrojë cilësimet e saj. Ky veprim nuk mund të zhbëhet."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL-ja nuk mund të përmbajë etiketa HTML"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Gabim i papritur. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Çinstalo Shtojcën"
+
+#: 
+msgid "Upcoming"
+msgstr "Së Shpejti"
+
+#: 
+msgid "Valid Until"
+msgstr "I/E Vlefshme Deri"
+
+#: 
+msgid "View active only"
+msgstr "Shiko vetëm aktivët"
+
+#: 
+msgid "View all"
+msgstr "Shiko të gjithë"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Shiko të gjithë (duke përfshirë joaktivët)"
+
+#: 
+msgid "View inactive only"
+msgstr "Shiko vetëm joaktivët"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Paralajmëro në panelin e administratorit kur detyrat e sfondit me kohëmatës nuk kanë funksionuar për kaq shumë orë. 26 lejon një cron ditor plus pak devijim. Vendoseni në 0 për të çaktivizuar paralajmërimin."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Pa një planifikues, këto detyra ekzekutohen vetëm kur dikush ngarkon një faqe, kështu që një ditë pune e qetë nuk dërgon fare email të planifikuar. Shtoni një hyrje cron që ekzekuton ekzekutuesin e detyrave çdo orë, si i njëjti përdorues me të cilin funksionon serveri juaj web"
+
+#: 
+msgid "check-outs"
+msgstr "daljet"
+
+#: 
+msgid "deceased"
+msgstr "i/e ndjerë"
+
+#: 
+msgid "event"
+msgstr "eventi"
+
+#: 
+msgid "events?"
+msgstr "eventet?"
+
+#: 
+msgid "files"
+msgstr "skedarë"
+
+#: 
+msgid "people from cart?"
+msgstr "persona nga shporta?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip duhet të jetë zero ose një numër i plotë pozitiv"
+
+#: 
+msgid "view families missing an email"
+msgstr "shiko familjet pa email"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Blerësit Këtë Vit Fiskal"
+
+#: 
+msgid "Current"
+msgstr "Aktual"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Artikuj të Dhuruar (Këtë Vit Fiskal)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Emri i hyrjes duhet të jetë %d karaktere ose më pak!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Mbledhur Këtë Vit Fiskal"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s duhet të jetë një adresë e plotë web https://, për shembull https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Llogaria ka leje të kufizuara. Kontaktoni një administrator."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Ndodhi një gabim gjatë shfaqjes së faqes së gabimit."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Çdo adresë duhet të fillojë me https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Gjenero Etiketa"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Gjenero etiketa postare"
+
+#: 
+msgid "Labels"
+msgstr "Etiketa"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Etiketa postare për personat në shportën tuaj. Një person pa adresë të vetën adresohet në adresën e familjes së tij/saj."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Opsionale. Lidhje me llogaritë e vetë kishës, të shfaqura te anëtarët në faqe si fundi i portalit. Lëreni një fushë bosh për ta fshehur atë rrjet."
+
+#: 
+msgid "Options"
+msgstr "Opsione"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Detyra të Planifikuara"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktive, sekonda të mbetura: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Intervali i pritur midis ekzekutimeve (orë): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Familje të kapërcyera (pa adresë email në dosje): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Familje që nuk mund të gjeokodoheshin: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Familje që do të marrin emaile konfirmimi: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Anëtarë të kopjuar: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Nuk janë listuar këtu: {{total}} të tjerë"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Marrës: {{total}} — shumë për një lidhje mailto:. Përdorni Kopjo Adresat në vend të kësaj."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Shumë marrës për klientin e emailit ({{total}} > {{max}}). Përdorni Kopjo Adresat në vend të kësaj."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} min të mbetura"
 
