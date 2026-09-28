@@ -166,7 +166,16 @@ $srcDir = __DIR__ . '/../../src';
 
 // The OpenAPI info files use a token so their version always comes from the
 // application metadata instead of becoming stale after a release.
-$composer = json_decode((string) file_get_contents($srcDir . '/composer.json'), true, flags: JSON_THROW_ON_ERROR);
+$composerJsonPath = $srcDir . '/composer.json';
+$composerJsonContents = file_get_contents($composerJsonPath);
+if ($composerJsonContents === false) {
+    $fail("could not read $composerJsonPath");
+}
+try {
+    $composer = json_decode($composerJsonContents, true, flags: JSON_THROW_ON_ERROR);
+} catch (\JsonException $e) {
+    $fail("$composerJsonPath is not valid JSON: {$e->getMessage()}");
+}
 $applicationVersion = $composer['version'] ?? null;
 if (!is_string($applicationVersion) || $applicationVersion === '') {
     $fail('src/composer.json does not contain a valid application version');
