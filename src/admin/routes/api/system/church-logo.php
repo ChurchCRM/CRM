@@ -4,7 +4,6 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -12,11 +11,11 @@ use Slim\Routing\RouteCollectorProxy;
 
 /**
  * @OA\Get(
- *     path="/system/church-logo",
+ *     path="/admin/api/system/church-logo",
  *     operationId="getChurchLogo",
  *     summary="Get the current church logo status",
  *     description="Reports whether an administrator has uploaded a church logo and the URL currently resolved for it.",
- *     tags={"System"},
+ *     tags={"Admin"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Church logo status",
  *         @OA\JsonContent(
@@ -24,14 +23,15 @@ use Slim\Routing\RouteCollectorProxy;
  *             @OA\Property(property="url", type="string", example="/Images/church-logo.png?v=3f2a9c1e8b7d6a54")
  *         )
  *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Admin role required")
  * )
  * @OA\Post(
- *     path="/system/church-logo",
+ *     path="/admin/api/system/church-logo",
  *     operationId="uploadChurchLogo",
  *     summary="Upload the church logo (base64 encoded)",
  *     description="Accepts a base64 data URI (JPEG, PNG, GIF or WebP), downscales it to fit 1200x400 and stores it as Images/church-logo.png.",
- *     tags={"System"},
+ *     tags={"Admin"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=true,
  *         @OA\JsonContent(
@@ -46,15 +46,16 @@ use Slim\Routing\RouteCollectorProxy;
  *         )
  *     ),
  *     @OA\Response(response=400, description="Missing or unsupported image data"),
+ *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Admin role required"),
  *     @OA\Response(response=413, description="Image exceeds the server upload limit or the decode pixel budget")
  * )
  * @OA\Delete(
- *     path="/system/church-logo",
+ *     path="/admin/api/system/church-logo",
  *     operationId="deleteChurchLogo",
  *     summary="Remove the uploaded church logo",
  *     description="Deletes Images/church-logo.png. Idempotent — succeeds even when no logo is stored.",
- *     tags={"System"},
+ *     tags={"Admin"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Logo removed",
  *         @OA\JsonContent(
@@ -63,19 +64,22 @@ use Slim\Routing\RouteCollectorProxy;
  *             @OA\Property(property="url", type="string", example="/Images/churchcrm-logo-ink-blue.svg")
  *         )
  *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Admin role required"),
  *     @OA\Response(response=500, description="The stored logo could not be removed")
  * )
  */
-$app->group('/system/church-logo', function (RouteCollectorProxy $group): void {
-    $group->get('', function (Request $request, Response $response, array $args): Response {
-        return SlimUtils::renderJSON($response, [
-            'hasCustomLogo' => ChurchMetaData::hasCustomLogo(),
-            'url'           => ChurchMetaData::getChurchLogoPath(),
-        ]);
+$app->group('/api/system/church-logo', function (RouteCollectorProxy $group): void {
+    $logoState = static fn (): array => [
+        'hasCustomLogo' => ChurchLogoService::hasCustomLogo(),
+        'url'           => ChurchMetaData::getChurchLogoPath(),
+    ];
+
+    $group->get('', function (Request $request, Response $response, array $args) use ($logoState): Response {
+        return SlimUtils::renderJSON($response, $logoState());
     });
 
-    $group->post('', function (Request $request, Response $response, array $args): Response {
+    $group->post('', function (Request $request, Response $response, array $args) use ($logoState): Response {
         $input = $request->getParsedBody();
 
         if (empty($input) || !isset($input['imgBase64'])) {
@@ -109,11 +113,7 @@ $app->group('/system/church-logo', function (RouteCollectorProxy $group): void {
         try {
             ChurchLogoService::setImageFromBase64((string) $input['imgBase64']);
 
-            return SlimUtils::renderJSON($response, [
-                'success'       => true,
-                'hasCustomLogo' => ChurchMetaData::hasCustomLogo(),
-                'url'           => ChurchMetaData::getChurchLogoPath(),
-            ]);
+            return SlimUtils::renderJSON($response, ['success' => true] + $logoState());
         } catch (PhotoSizeException $e) {
             return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 413, $e, $request);
         } catch (\Throwable $e) {
@@ -121,7 +121,7 @@ $app->group('/system/church-logo', function (RouteCollectorProxy $group): void {
         }
     });
 
-    $group->delete('', function (Request $request, Response $response, array $args): Response {
+    $group->delete('', function (Request $request, Response $response, array $args) use ($logoState): Response {
         // delete() is idempotent: it returns true when there is no logo to remove,
         // so false means unlink() genuinely failed (permissions, read-only mount)
         // and the logo is still being served. Reporting that as 200 lies to the UI.
@@ -129,10 +129,6 @@ $app->group('/system/church-logo', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to remove church logo'), [], 500);
         }
 
-        return SlimUtils::renderJSON($response, [
-            'success'       => true,
-            'hasCustomLogo' => ChurchMetaData::hasCustomLogo(),
-            'url'           => ChurchMetaData::getChurchLogoPath(),
-        ]);
+        return SlimUtils::renderJSON($response, ['success' => true] + $logoState());
     });
-})->add(AdminRoleAuthMiddleware::class);
+});

@@ -21,6 +21,8 @@ class ChurchMetaData
         ['id' => 'instagram', 'label' => 'Instagram', 'config' => 'sChurchInstagram', 'icon' => 'fa-brands fa-instagram'],
     ];
 
+    private const BUNDLED_LOGO = '/Images/churchcrm-logo-ink-blue.svg';
+
     private static function readString(string $key): string
     {
         return trim((string) SystemConfig::getValue($key));
@@ -143,64 +145,30 @@ class ChurchMetaData
     }
 
     /**
-     * True when an administrator has uploaded a church logo through
-     * Admin -> Church Information.
-     */
-    public static function hasCustomLogo(): bool
-    {
-        return ChurchLogoService::hasCustomLogo();
-    }
-
-    /**
-     * Absolute URL of the church logo for use in email templates (and
-     * eventually other external-facing surfaces like letters or reports).
-     *
-     * Precedence: the uploaded `Images/church-logo.png` -> the `sChurchLogoURL`
-     * setting (when it is a valid http(s) URL) -> the bundled ChurchCRM logo,
-     * so external email clients always see a working image.
+     * Absolute URL of the church logo for email templates: the uploaded logo,
+     * else a valid `sChurchLogoURL`, else the bundled ChurchCRM logo.
      */
     public static function getChurchLogoURL(): string
     {
-        return self::resolveLogo(SystemURLs::getURL(), true);
-    }
-
-    /**
-     * Root-path-relative URL of the church logo, for use in the application's
-     * own templates (sidebar brand, login and auth pages).
-     *
-     * Precedence: the uploaded `Images/church-logo.png` -> the bundled
-     * ChurchCRM logo. The configured `sChurchLogoURL` is deliberately skipped
-     * because in-app pages are served with a Content-Security-Policy whose
-     * `img-src` is `'self'`, so a remote logo would be blocked and render broken.
-     */
-    public static function getChurchLogoPath(): string
-    {
-        return self::resolveLogo(SystemURLs::getRootPath(), false);
-    }
-
-    /**
-     * Shared logo precedence. $prefix is prepended to locally served images.
-     * When $allowConfiguredUrl is true a valid remote `sChurchLogoURL` is
-     * returned unchanged; callers rendering in-app pages must pass false so the
-     * CSP `img-src 'self'` policy cannot block the logo.
-     */
-    private static function resolveLogo(string $prefix, bool $allowConfiguredUrl): string
-    {
-        if (ChurchLogoService::hasCustomLogo()) {
-            // Content-hash cache-buster: the URL changes whenever the bytes do,
-            // so a re-upload is picked up immediately, even seconds apart.
-            return $prefix . '/Images/' . ChurchLogoService::LOGO_FILENAME
-                . '?v=' . ChurchLogoService::getVersion();
-        }
-
-        if ($allowConfiguredUrl) {
+        $uploaded = ChurchLogoService::getUrlPath();
+        if ($uploaded === null) {
             $configured = self::readString('sChurchLogoURL');
             if ($configured !== '' && filter_var($configured, FILTER_VALIDATE_URL) !== false) {
                 return $configured;
             }
         }
 
-        return $prefix . '/Images/churchcrm-logo-ink-blue.svg';
+        return SystemURLs::getURL() . ($uploaded ?? self::BUNDLED_LOGO);
+    }
+
+    /**
+     * Root-relative URL of the church logo for the application's own pages:
+     * the uploaded logo, else the bundled ChurchCRM logo. Never the remote
+     * `sChurchLogoURL`, which the CSP `img-src 'self'` would block.
+     */
+    public static function getChurchLogoPath(): string
+    {
+        return SystemURLs::getRootPath() . (ChurchLogoService::getUrlPath() ?? self::BUNDLED_LOGO);
     }
 
     public static function getChurchLatitude(): float

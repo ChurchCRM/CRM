@@ -18,9 +18,7 @@ import { escapeHtml } from "./utils/escape-html";
  * @property {number} [maxFileSize=5000000] - Maximum file size in bytes (default: 5MB)
  * @property {number} [photoWidth=800] - Target photo width in pixels
  * @property {number} [photoHeight=800] - Target photo height in pixels
- * @property {('free'|'1:1'|'16:9'|'9:16')} [aspectRatio='1:1'] - Crop aspect ratio the image
- *   editor locks to. Defaults to the square crop person/family/user photos use; pass 'free'
- *   for non-square targets such as a banner-shaped church logo.
+ * @property {('1:1'|'free')} [aspectRatio='1:1'] - Crop ratio; 'free' for a banner such as the church logo
  * @property {string} [title='Upload Photo'] - Heading shown on the Uppy dashboard modal
  * @property {Function} [onComplete] - Callback function(result) after successful upload
  */
@@ -56,14 +54,8 @@ export function createPhotoUploader(config) {
   const photoHeight =
     typeof config.photoHeight === "string" ? parseInt(config.photoHeight, 10) : config.photoHeight || 800;
 
-  // Crop presets understood by @uppy/image-editor's setAspectRatio(), mapped to the
-  // cropperjs value. NaN is cropperjs's documented "free" ratio.
-  const CROPPER_RATIOS = { free: Number.NaN, "1:1": 1, "16:9": 16 / 9, "9:16": 9 / 16 };
-  const aspectRatio = config.aspectRatio in CROPPER_RATIOS ? config.aspectRatio : "1:1";
-  const isFixedAspectRatio = aspectRatio !== "free";
-
-  const dashboardTitle =
-    typeof config.title === "string" && config.title.trim().length > 0 ? config.title.trim() : "Upload Photo";
+  const freeCrop = config.aspectRatio === "free";
+  const dashboardTitle = config.title || "Upload Photo";
 
   const uppy = new Uppy({
     id: "photo-uploader",
@@ -79,11 +71,7 @@ export function createPhotoUploader(config) {
       trigger: null, // Don't auto-bind to a trigger
       proudlyDisplayPoweredByUppy: false,
       note: `Max file size: ${displayMaxSizeMB}MB`,
-      // Dashboard defaults its thumbnail generator to 'image/jpeg', which has no alpha
-      // channel — transparent PNGs (typically a church logo) come back with every
-      // transparent pixel painted black in the file-card preview. PNG thumbnails are
-      // slightly larger but preserve transparency. Display-only: the uploaded bytes are
-      // unaffected.
+      // The default JPEG thumbnail has no alpha, so a transparent logo previews on black.
       thumbnailType: "image/png",
       closeModalOnClickOutside: true,
       autoOpen: "imageEditor",
@@ -109,7 +97,8 @@ export function createPhotoUploader(config) {
       quality: 0.9,
       cropperOptions: {
         viewMode: 1,
-        aspectRatio: CROPPER_RATIOS[aspectRatio],
+        // NaN is cropperjs's "free" ratio
+        aspectRatio: freeCrop ? Number.NaN : 1,
         autoCropArea: 1,
         responsive: true,
         croppedCanvasOptions: {},
@@ -121,22 +110,21 @@ export function createPhotoUploader(config) {
         zoomIn: true,
         zoomOut: true,
         cropSquare: true,
-        // Widescreen presets are only useful when the target is not locked to a square.
-        cropWidescreen: !isFixedAspectRatio,
-        cropWidescreenVertical: !isFixedAspectRatio,
+        cropWidescreen: freeCrop,
+        cropWidescreenVertical: freeCrop,
       },
     });
 
-  // Enforce the configured ratio every time the editor opens (including after cancel +
-  // re-edit). resetEditorState() resets plugin state to aspectRatio:'free' on each start,
-  // which causes cropperjs and the UI to fall out of sync. Calling setAspectRatio() via
+  // Enforce the crop ratio every time the editor opens (including after cancel + re-edit).
+  // resetEditorState() resets plugin state to aspectRatio:'free' on each start, which
+  // causes cropperjs and the UI to fall out of sync. Calling setAspectRatio() via
   // rAF (after initCropper runs in componentDidMount) keeps both in sync.
   uppy.on("file-editor:start", () => {
     const editor = uppy.getPlugin("ImageEditor");
     if (!editor) return;
     const enforce = () => {
       if (editor.cropper) {
-        editor.setAspectRatio(aspectRatio);
+        editor.setAspectRatio(freeCrop ? "free" : "1:1");
       } else {
         requestAnimationFrame(enforce);
       }

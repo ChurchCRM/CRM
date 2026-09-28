@@ -55,6 +55,15 @@ describe("Person Attendance History Tab", () => {
         // makePrivateAdminAPICall() authenticates via x-api-key alone — it needs no
         // browser session, so no login call here (see file header).
         cy.makePrivateAdminAPICall("POST", `/api/events/${EVENT_ID}/checkout`, { personId: PERSON_WITH_ATTENDANCE }, 200);
+        // Checking out only stamps a checkout date — the event_attend row
+        // stays, which used to leave one behind per run (#9769). This is what
+        // actually removes it.
+        cy.makePrivateAdminAPICall(
+            "DELETE",
+            `/api/events/${EVENT_ID}/attendance/${PERSON_WITH_ATTENDANCE}`,
+            null,
+            [200, 404],
+        );
     });
 
     context("Tab navigation", () => {

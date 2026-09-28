@@ -1,6 +1,24 @@
 /// <reference types="cypress" />
 
 describe('Repeat Event Editor', () => {
+    // Titles the two generating tests use, so after() can look the generated
+    // occurrences up and remove them (#9769). Each submit creates several
+    // events sharing one title, and the form gives back no ids.
+    const createdEventTitles = [];
+
+    after(() => {
+        if (createdEventTitles.length === 0) {
+            return;
+        }
+        cy.makePrivateAdminAPICall('GET', '/api/events', null, 200).then((resp) => {
+            cy.cleanupEvents(
+                (resp.body.Events || [])
+                    .filter((e) => createdEventTitles.includes(e.Title))
+                    .map((e) => e.Id),
+            );
+        });
+    });
+
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -69,6 +87,7 @@ describe('Repeat Event Editor', () => {
             cy.visit('/event/repeat-editor/' + typeId);
 
             const uniqueTitle = 'WeeklyRepeat' + Date.now();
+            createdEventTitles.push(uniqueTitle);
 
             cy.get('input[name="EventTitle"]').clear().type(uniqueTitle);
             cy.get('#StartTime').clear().type('09:00');
@@ -105,6 +124,7 @@ describe('Repeat Event Editor', () => {
             cy.visit('/event/repeat-editor/' + typeId);
 
             const uniqueTitle = 'AdditionalInfoRepeat' + Date.now();
+            createdEventTitles.push(uniqueTitle);
             const descBody = 'Weekly description body for Quill';
             const textBody = 'Sermon notes body for Quill';
 

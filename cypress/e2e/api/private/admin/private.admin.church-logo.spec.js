@@ -6,9 +6,9 @@ import { buildBlankPng } from "../../../../support/synthetic-png";
  * API tests for the church logo endpoints (issue #9717)
  *
  * Covers:
- *   GET    /api/system/church-logo
- *   POST   /api/system/church-logo
- *   DELETE /api/system/church-logo
+ *   GET    /admin/api/system/church-logo
+ *   POST   /admin/api/system/church-logo
+ *   DELETE /admin/api/system/church-logo
  *
  * The logo is global state (a file at src/Images/church-logo.png), so every
  * test deletes it up front, and whatever logo the instance had before the suite
@@ -22,7 +22,7 @@ import { buildBlankPng } from "../../../../support/synthetic-png";
 const VALID_PNG_DATA_URI =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
 
-const LOGO_URL = "/api/system/church-logo";
+const LOGO_URL = "/admin/api/system/church-logo";
 const LOGO_CONFIG_URL = "/admin/api/system/config/sChurchLogoURL";
 
 // Source-pixel budget the server enforces before decoding
@@ -95,7 +95,7 @@ describe("API Private Admin Church Logo", () => {
         }
     });
 
-    describe("GET /api/system/church-logo", () => {
+    describe("GET /admin/api/system/church-logo", () => {
         it("Reports no custom logo and the bundled default URL", () => {
             cy.makePrivateAdminAPICall("GET", LOGO_URL, null, 200).then(
                 (response) => {
@@ -158,7 +158,7 @@ describe("API Private Admin Church Logo", () => {
         });
     });
 
-    describe("POST /api/system/church-logo", () => {
+    describe("POST /admin/api/system/church-logo", () => {
         it("Stores an uploaded PNG and reports it through GET", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -459,7 +459,7 @@ describe("API Private Admin Church Logo", () => {
         });
     });
 
-    describe("DELETE /api/system/church-logo", () => {
+    describe("DELETE /admin/api/system/church-logo", () => {
         it("Removes an uploaded logo and falls back to the default", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
