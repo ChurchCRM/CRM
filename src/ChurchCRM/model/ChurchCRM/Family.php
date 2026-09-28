@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\verify\FamilyVerificationEmail;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Family as BaseFamily;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
@@ -634,5 +635,18 @@ class Family extends BaseFamily implements PhotoInterface
         }
 
         return true; // All members are in cart
+    }
+
+    public function getVisibleCustomFieldDefinitions(): array
+    {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $allFields = FamilyCustomMasterQuery::create()->orderByOrder()->find();
+        $visibleFields = [];
+        foreach ($allFields as $field) {
+            if ($currentUser->isEnabledSecurity($field->getFieldSecurity())) {
+                $visibleFields[] = $field;
+            }
+        }
+        return $visibleFields;
     }
 }
