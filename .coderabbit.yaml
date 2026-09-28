@@ -1,6 +1,9 @@
 # CodeRabbit repository configuration
 # Review PRs targeting any branch, including stacked PRs whose base is not master.
+# Generated locale synchronization PRs are mechanical and do not benefit from AI review.
 reviews:
   auto_review:
     base_branches:
       - ".*"
+    ignore_title_keywords:
+      - "locale: update translations"
