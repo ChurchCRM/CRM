@@ -142,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
       method: "POST",
       path: "events/quick-create",
       data: JSON.stringify({ groupId: groupId }),
+      suppressErrorDialog: true,
     })
       .done((resp) => {
         const eventId = resp?.eventId;
