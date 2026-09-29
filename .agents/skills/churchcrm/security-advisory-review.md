@@ -145,13 +145,17 @@ Brief explanation of the vulnerability and fix.
 Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>
 ```
 
-## Creating a Pull Request
+## Merging to Master
 
-### PR Requirements
-- Descriptive title: `security: fix {GHSA_ID} — {brief description}`
-- Summary of what was vulnerable and how it's fixed
-- Test coverage verification
-- All checks passing (lint, build, tests)
+Security fixes commit directly to `master` via `git merge` (no separate PR needed):
+
+```bash
+git checkout master
+git merge --no-ff security/fix-{GHSA_ID} -m "merge: security fix {GHSA_ID} — {description}"
+git push origin master
+```
+
+**Note:** Git commits are publicly visible, which is fine. What stays private until release is the advisory metadata (description, severity, CVE details).
 
 ## Advisory Lifecycle: From Fix to Publication
 
