@@ -31,7 +31,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                            min="<?= (int) $param['min'] ?>" max="<?= (int) $param['max'] ?>" value="<?= (int) $value ?>">
                     <?php elseif ($param['type'] === 'classification' || $param['type'] === 'events') : ?>
                     <select class="form-select<?= $invalid ?>" id="<?= $id ?>" name="<?= $id ?>[]" multiple
-                            data-placeholder="<?= $param['type'] === 'classification' ? gettext('All classifications') : gettext('Choose events') ?>">
+                            data-placeholder="<?= InputUtils::escapeAttribute($param['type'] === 'classification' ? gettext('All classifications') : gettext('Choose events')) ?>">
                         <?php foreach ($options[$key] as $optionId => $label) : ?>
                         <option value="<?= (int) $optionId ?>"<?= in_array((int) $optionId, (array) $value, true) ? ' selected' : '' ?>><?= InputUtils::escapeHTML($label) ?></option>
                         <?php endforeach; ?>
@@ -135,8 +135,8 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                                         class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
                                         data-cart-id="<?= $personId ?>"
                                         data-cart-type="person"
-                                        data-label-add="<?= gettext('Add to Cart') ?>"
-                                        data-label-remove="<?= gettext('Remove from Cart') ?>">
+                                        data-label-add="<?= InputUtils::escapeAttribute(gettext('Add to Cart')) ?>"
+                                        data-label-remove="<?= InputUtils::escapeAttribute(gettext('Remove from Cart')) ?>">
                                     <i class="<?= $inCart ? 'fa-solid fa-box-open' : 'fa-solid fa-cart-shopping' ?> me-2"></i>
                                     <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                                 </button>
