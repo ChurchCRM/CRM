@@ -13,7 +13,9 @@ import { humanClick, humanPause } from './human';
 export async function gotoFirstActiveGroup(page: Page): Promise<void> {
   await page.goto('/groups/dashboard');
 
-  const rows = page.locator('#groupsTable tbody tr');
+  // Only rows with a link are real data: while DataTables loads its locale
+  // file and the group list, tbody holds a single placeholder row.
+  const rows = page.locator('#groupsTable tbody tr').filter({ has: page.locator('a') });
   await expect(rows.first()).toBeVisible({ timeout: 15000 });
   await humanPause(page, 500);
 

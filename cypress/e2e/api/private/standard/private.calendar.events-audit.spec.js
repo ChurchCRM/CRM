@@ -10,6 +10,34 @@ describe("API Event Audit Endpoints", () => {
     // No browser login — these are pure API tests using x-api-key auth
     // (cy.makePrivateAdminAPICall sets the header for us).
 
+    // The event this spec quick-creates, so after() can remove it again
+    // (#9769). Deleting the event also removes its event_attend rows.
+    const createdEventIds = [];
+
+    // Checking a person in writes a timeline note on that person
+    // (Event::addTimelineNote()) and nothing removes it when the event goes —
+    // that note is the person's attendance history. note_nte is therefore only
+    // reported by the row-count guard, not failed on (#9769).
+
+    after(() => {
+        cy.cleanupEvents(createdEventIds);
+    });
+
+    /**
+     * Record an event for cleanup, but only when the API actually created one:
+     * POST /events/quick-create returns `created: false` and the existing
+     * event's id when one already exists for that date+type, and deleting that
+     * would destroy a row the spec did not create.
+     */
+    const trackQuickCreated = (response) => {
+        if (
+            response?.body?.created !== false &&
+            typeof response?.body?.eventId === "number"
+        ) {
+            createdEventIds.push(response.body.eventId);
+        }
+    };
+
     describe("GET /api/events/audit/stuck", () => {
         it("returns a count + events array", () => {
             cy.makePrivateAdminAPICall("GET", "/api/events/audit/stuck", null, 200).then(
@@ -70,6 +98,7 @@ describe("API Event Audit Endpoints", () => {
             ).then((createResp) => {
                 const eventId = createResp.body.eventId;
                 expect(eventId).to.be.a("number");
+                trackQuickCreated(createResp);
 
                 // 2. Check person 1 in (no checkout). The event is active by
                 // default so the inactive guard does NOT apply.

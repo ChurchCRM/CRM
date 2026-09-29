@@ -31,7 +31,7 @@ concurrency:
 jobs:
   download:
     timeout-minutes: 30
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
@@ -104,7 +104,7 @@ jobs:
     - name: Upload missing translations to POEditor
       run: |
         echo "📤 Uploading missing translations to POEditor..."
-        node locale/scripts/poeditor-upload-missing.js
+        node locale/scripts/poeditor-upload-missing.js --yes --no-download
         echo "✅ Upload completed successfully"
 
     - name: "⬇️ Stage 4: Download Locales from POEditor"

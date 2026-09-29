@@ -1,0 +1,84 @@
+name: Run Cypress Tests & Report
+description: Run Cypress tests with JUnit reporting and debug artifact upload
+inputs:
+  config-file:
+    description: Path to Cypress config
+    required: true
+  spec:
+    description: Cypress spec glob
+    required: true
+  test-name:
+    description: Test name for artifacts and reports
+    required: true
+  php-version:
+    description: PHP version for artifact naming
+    required: true
+  deployment:
+    description: Deployment type for artifact naming
+    required: true
+  shard-total:
+    description: Total number of test shards
+    required: false
+    default: ''
+  shard-index:
+    description: Zero-based test shard index
+    required: false
+    default: ''
+  base-url:
+    description: Optional CYPRESS_BASE_URL override
+    required: false
+    default: ''
+runs:
+  using: composite
+  steps:
+    - name: Run Cypress
+      id: cypress
+      shell: bash
+      run: |
+        report_file="cypress/reports/junit-php${PHP_VERSION}-${DEPLOYMENT}-${TEST_NAME}-[suiteName]-[hash].xml"
+        spec_args=()
+        if [[ -z "$SPLIT" ]]; then
+          spec_args+=(--spec "$TEST_SPEC")
+        fi
+        npx cypress run \
+          --config-file "$CONFIG_FILE" \
+          "${spec_args[@]}" \
+          --headless --browser electron \
+          --reporter junit \
+          --reporter-options "mochaFile=$report_file"
+      env:
+        CONFIG_FILE: ${{ inputs.config-file }}
+        # SPEC is consumed by cypress-split relative to the config working directory.
+        TEST_SPEC: ${{ inputs.spec }}
+        PHP_VERSION: ${{ inputs.php-version }}
+        DEPLOYMENT: ${{ inputs.deployment }}
+        TEST_NAME: ${{ inputs.test-name }}
+        SPLIT: ${{ inputs.shard-total }}
+        SPLIT_INDEX: ${{ inputs.shard-index }}
+        CYPRESS_BASE_URL: ${{ inputs.base-url }}
+
+    - name: Upload debug artifacts
+      if: failure()
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+      with:
+        name: cypress-artifacts-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 15
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@1cc81a5edf733718d4850df304aaa21c05cd7280 # v3
+      if: always()
+      with:
+        name: 'PHP ${{ inputs.php-version }}: ${{ inputs.deployment }} (${{ inputs.test-name }})'
+        path: cypress/reports/junit-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true

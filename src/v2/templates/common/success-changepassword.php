@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\view\ChurchLogo;
 
 $isForced = $isForced ?? false;
 $sPageTitle = gettext("Change Password") .":" . $user->getFullName();
@@ -17,7 +18,7 @@ if ($isForced) {
     <div class="card border border-success">
         <div class="card-header text-center">
             <a href="<?= SystemURLs::getRootPath() ?>" class="h1">
-                <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" style="max-width:280px; height:auto;" />
+                <?= ChurchLogo::img(['style' => 'max-width:280px; height:auto;']) ?>
             </a>
         </div>
         <div class="card-body text-center">
