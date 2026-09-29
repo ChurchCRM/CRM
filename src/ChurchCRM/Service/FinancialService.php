@@ -212,6 +212,7 @@ class FinancialService
             if ($header === null) {
                 $family = $pledge->getFamily();
                 $header = [
+                    'pledgeId'        => (int) $pledge->getId(),
                     'groupKey'        => $pledge->getGroupKey(),
                     'familyId'        => (int) $pledge->getFamId(),
                     'familyName'      => $family ? $family->getFamilyString() : '',
@@ -230,6 +231,7 @@ class FinancialService
             $total += $amount;
 
             $funds[] = [
+                'pledgeId'             => (int) $pledge->getId(),
                 'fundId'               => (int) $pledge->getFundId(),
                 'fundName'             => $fund ? $fund->getName() : '',
                 'amount'               => $amount,
@@ -260,12 +262,17 @@ class FinancialService
     {
         AuthService::requireUserGroupMembership('bFinance');
 
-        $count = PledgeQuery::create()
+        $pledges = PledgeQuery::create()
             ->filterByGroupKey($groupKey)
-            ->delete();
+            ->find();
 
-        if ($count === 0) {
+        if ($pledges->count() === 0) {
             throw new \InvalidArgumentException('Pledge group not found');
+        }
+
+        foreach ($pledges as $pledge) {
+            PersonPledgeService::deleteMappingForPledge((int) $pledge->getId());
+            $pledge->delete();
         }
     }
 
@@ -545,6 +552,10 @@ class FinancialService
                     throw $e;
                 }
             }
+            $existingPledges = PledgeQuery::create()->filterByGroupKey($groupKey)->find($con);
+            foreach ($existingPledges as $existingPledge) {
+                PersonPledgeService::deleteMappingForPledge((int) $existingPledge->getId());
+            }
             PledgeQuery::create()->filterByGroupKey($groupKey)->delete($con);
             $this->insertPledgeorPayment($payment, $groupKey);
             $con->commit();
@@ -570,6 +581,7 @@ class FinancialService
             $payment->FYID = $row->getFyId();
             $payment->iMethod = $row->getMethod();
             $fund = [];
+            $fund['PledgeId'] = (int) $row->getId();
             $fund['FundID'] = $row->getFundId();
             $fund['Amount'] = $row->getAmount();
             $fund['amount_formatted'] = CurrencyFormatter::format($row->getAmount());

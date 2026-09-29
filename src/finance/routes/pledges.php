@@ -248,8 +248,8 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         $enableNonDeductible = SystemConfig::getBooleanValue('bEnableNonDeductible');
 
         $personId = 0;
-        if (!empty($pledge['items'][0]['id'])) {
-            $personId = \ChurchCRM\Service\PersonPledgeService::getPersonForPledge((int)$pledge['items'][0]['id']);
+        if (!empty($pledge['pledgeId'])) {
+            $personId = \ChurchCRM\Service\PersonPledgeService::getPersonForPledge((int) $pledge['pledgeId']);
         }
 
         $pageArgs = [

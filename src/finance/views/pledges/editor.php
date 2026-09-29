@@ -405,6 +405,28 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             },
             onChange: function (value) {
                 document.getElementById('FamilyID').value = value;
+                // Refresh the PersonID dropdown with new family members
+                var personSelect = document.getElementById('PersonID');
+                if (personSelect && value) {
+                    fetch(ROOT + '/api/payments/family/' + encodeURIComponent(value) + '/members')
+                        .then(function (res) { return res.json(); })
+                        .then(function (members) {
+                            personSelect.innerHTML = '<option value="0"><?= gettext("Entire Family / Unassigned") ?></option>';
+                            if (members && typeof members === 'object') {
+                                Object.keys(members).forEach(function (id) {
+                                    var opt = document.createElement('option');
+                                    opt.value = id;
+                                    opt.textContent = members[id];
+                                    personSelect.appendChild(opt);
+                                });
+                            }
+                        })
+                        .catch(function () {
+                            personSelect.innerHTML = '<option value="0"><?= gettext("Entire Family / Unassigned") ?></option>';
+                        });
+                } else if (personSelect) {
+                    personSelect.innerHTML = '<option value="0"><?= gettext("Entire Family / Unassigned") ?></option>';
+                }
             }
         });
         if (!GROUP_KEY && !familyNameEl.value) {
@@ -555,8 +577,12 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             return null;
         }
 
+        const personEl = document.getElementById('PersonID');
+        const personId = personEl ? parseInt(personEl.value, 10) || 0 : 0;
+
         return {
             FamilyID:  familyId || null,
+            PersonId:  personId,
             Date:      date,
             FYID:      fyid,
             type:      PLEDGE_TYPE,

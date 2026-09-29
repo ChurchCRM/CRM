@@ -58,14 +58,43 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         $financialService = new FinancialService();
         $result = $financialService->submitPledgeOrPayment($payment);
 
-        if (isset($payment->PersonId) && is_numeric($payment->PersonId) && isset($result->Id)) {
-            PersonPledgeService::setPersonForPledge((int)$result->Id, (int)$payment->PersonId);
+        $decodedResult = json_decode($result, true);
+        if (isset($payment->PersonId) && is_numeric($payment->PersonId) && is_array($decodedResult)) {
+            $personId = (int) $payment->PersonId;
+            $groupKey = $decodedResult['GroupKey'] ?? '';
+            if ($groupKey !== '') {
+                $pledges = PledgeQuery::create()->filterByGroupKey($groupKey)->find();
+                foreach ($pledges as $plg) {
+                    PersonPledgeService::setPersonForPledge((int) $plg->getId(), $personId);
+                }
+            }
         }
 
         return SlimUtils::renderJSON(
             $response,
             ['payment' => $result]
         );
+    });
+
+    /**
+     * @OA\Get(
+     *     path="/payments/family/{familyId}/members",
+     *     summary="Get family members for pledge attribution (Finance role required)",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="List of family members for dropdown",
+     *         @OA\JsonContent(@OA\Property(property="members", type="object"))
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
+    $group->get('/family/{familyId:[0-9]+}/members', function (Request $request, Response $response, array $args): Response {
+        $familyId = (int) SlimUtils::getRouteArgument($request, 'familyId');
+        $members = PersonPledgeService::getFamilyMembers($familyId);
+
+        return SlimUtils::renderJSON($response, ['members' => $members]);
     });
 
     /**
@@ -101,8 +130,8 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         $query = PledgeQuery::create()->filterByFamId($familyId);
 
         // Three distinct states, not two: a specific FY, an explicit "All Time"
-        // (fyid=0 — no date filter of any kind, not even ShowSince), and no
-        // fyid param at all (legacy/default — fall back to ShowSince). Treating
+        // (fyid=0: no date filter of any kind, not even ShowSince), and no
+        // fyid param at all (legacy/default: fall back to ShowSince). Treating
         // "fyid=0" and "no fyid param" the same would make the All-Time pill a
         // lie for any user with a ShowSince preference configured.
         if ($fyid !== null && $fyid > 0) {
@@ -114,7 +143,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
                 $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
             }
         }
-        // $fyid === 0 (explicit All Time): no filter of any kind — every record.
+        // $fyid === 0 (explicit All Time): no filter of any kind: every record.
 
         if (!AuthenticationManager::getCurrentUser()->isShowPayments()) {
             $query->filterByPledgeOrPayment('Payment', Criteria::NOT_EQUAL);
@@ -125,8 +154,15 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         $query->joinWithDonationFund();
         $data = $query->find();
 
+        $pledgeIds = [];
+        foreach ($data as $row) {
+            $pledgeIds[] = (int) $row->getId();
+        }
+        $personMap = PersonPledgeService::getPersonsForPledges($pledgeIds);
+
         $rows = [];
         foreach ($data as $row) {
+            $newRow = [];
             $newRow['FormattedFY'] = $row->getFormattedFY();
             $newRow['GroupKey'] = $row->getGroupKey();
             $newRow['Amount'] = $row->getAmount();
@@ -141,7 +177,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
             $newRow['EditedBy'] = $row->getPerson() ? $row->getPerson()->getFullName() : '';
             $newRow['Fund'] = $row->getDonationFund() ? $row->getDonationFund()->getName() : '';
-            $newRow['PersonId'] = PersonPledgeService::getPersonForPledge($row->getId());
+            $newRow['PersonId'] = $personMap[$row->getId()] ?? 0;
             $rows[] = $newRow;
         }
 
@@ -278,6 +314,18 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         } catch (\JsonException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
         }
+
+        if (isset($payment->PersonId) && is_numeric($payment->PersonId) && is_array($paymentObj)) {
+            $personId = (int) $payment->PersonId;
+            $groupKey = $paymentObj['GroupKey'] ?? '';
+            if ($groupKey !== '') {
+                $pledges = PledgeQuery::create()->filterByGroupKey($groupKey)->find();
+                foreach ($pledges as $plg) {
+                    PersonPledgeService::setPersonForPledge((int) $plg->getId(), $personId);
+                }
+            }
+        }
+
         return SlimUtils::renderJSON($response, [
             'groupKey' => $paymentObj['GroupKey'] ?? '',
             'payment'  => $paymentObj,
@@ -302,7 +350,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *         required=true,
      *         @OA\JsonContent(
      *             required={"Date","FYID","type","FundSplit","iMethod"},
-     *             @OA\Property(property="FamilyID", type="integer", nullable=true, description="Family ID — omit or pass null for anonymous/cash donations with no associated family", example=42),
+     *             @OA\Property(property="FamilyID", type="integer", nullable=true, description="Family ID: omit or pass null for anonymous/cash donations with no associated family", example=42),
      *             @OA\Property(property="Date", type="string", format="date", description="Pledge/payment date", example="2025-01-15"),
      *             @OA\Property(property="FYID", type="integer", description="Fiscal year ID", example=29),
      *             @OA\Property(property="type", type="string", enum={"Pledge","Payment"}, description="Record type", example="Payment"),
@@ -385,6 +433,17 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $paymentObj = json_decode($groupPayment, true, 512);
         } catch (\JsonException $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to decode payment request'), [], 500, $e, $request);
+        }
+
+        if (isset($payment->PersonId) && is_numeric($payment->PersonId) && is_array($paymentObj)) {
+            $personId = (int) $payment->PersonId;
+            $targetGroupKey = $paymentObj['GroupKey'] ?? $groupKey;
+            if ($targetGroupKey !== '') {
+                $pledges = PledgeQuery::create()->filterByGroupKey($targetGroupKey)->find();
+                foreach ($pledges as $plg) {
+                    PersonPledgeService::setPersonForPledge((int) $plg->getId(), $personId);
+                }
+            }
         }
 
         return SlimUtils::renderJSON($response, [

@@ -1111,4 +1111,15 @@ CREATE TABLE `pledge_denominations_pdem` (
   UNIQUE KEY `pdem_groupkey_denom_uidx` (`pdem_plg_GroupKey`, `pdem_denominationID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Table structure for table `person_pledge_map`
+--
+
+CREATE TABLE IF NOT EXISTS `person_pledge_map` (
+  `ppm_plg_id` mediumint(9) NOT NULL,
+  `ppm_per_id` mediumint(9) NOT NULL,
+  PRIMARY KEY (`ppm_plg_id`),
+  KEY `idx_person` (`ppm_per_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 update version_ver set ver_update_end = now();
