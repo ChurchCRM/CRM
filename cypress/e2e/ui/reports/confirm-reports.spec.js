@@ -264,9 +264,8 @@ describe("Confirmation Reports - MVC Routes", () => {
             cy.get('[data-cy="email-result-alert"]').should("exist");
             // Dismiss the alert with the bootstrap btn-close
             cy.get('[data-cy="email-result-alert"] .btn-close').click();
-            // After clicking close the alert fades out — just assert it no longer has 'show'
-            // (do NOT assert not.exist because of BS5 async fade transition)
-            cy.get('[data-cy="email-result-alert"]').should("not.have.class", "show");
+            // BS5 removes the alert from the DOM after its fade; not.exist retries through it.
+            cy.get('[data-cy="email-result-alert"]').should("not.exist");
         });
 
         it("Retry button is present and triggers the confirmation modal", () => {

@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Service\ImpersonationService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\SystemService;
@@ -17,6 +18,7 @@ use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\ChurchLogo;
 use ChurchCRM\view\MenuRenderer;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
@@ -280,13 +282,19 @@ $_isImpersonating = ImpersonationService::isActive();
         <span class="navbar-toggler-icon"></span>
       </button>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
-        <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png"
+        <?php if (ChurchLogoService::hasCustomLogo()): ?>
+        <?= ChurchLogo::img(['class' => 'navbar-brand-image crm-brand-logo']) ?>
+        <?php else: ?>
+        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-ink-blue.svg"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image rounded"
-             style="height: 42px; width: auto;">
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-light">
+        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-paper-blue.svg"
+             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark">
         <span class="navbar-brand-text ps-2 fs-4 fw-bold">
           <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>
         </span>
+        <?php endif; ?>
       </a>
       <div class="collapse navbar-collapse" id="sidebar-menu">
         <ul class="navbar-nav pt-xl-3">

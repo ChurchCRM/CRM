@@ -12290,16 +12290,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jinsi Shule ya Jumapili + Matukio + Vioski unavyofanya kazi pamoja"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Tarehe batili kwa %s — inatarajiwa YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Muundo batili wa tarehe kwa rangeStart au rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Tarehe batili; muundo unaotarajiwa YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12528,10 +12520,6 @@ msgstr "endDate lazima iwe baada ya startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "eventIds lazima iwe safu isiyokuwa tupu"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "aina batili ya kurudia"
 
 #: 
 msgid "personIds must be a non-empty array"
@@ -17334,6 +17322,12 @@ msgid "Email is not configured. Please configure SMTP settings in System Setting
 msgstr "Barua pepe haijasanidiwa. Tafadhali sanidi mipangilio ya SMTP katika Mipangilio ya Mfumo."
 
 #: 
+msgid "Email sent to %d family."
+msgid_plural "Emails sent to %d families."
+msgstr[0] "Barua pepe imetumwa kwa familia %d."
+msgstr[1] "Barua pepe zimetumwa kwa familia %d."
+
+#: 
 msgid "Enter a street address first."
 msgstr "Ingiza anwani ya mtaa kwanza."
 
@@ -17404,6 +17398,12 @@ msgstr "Hakuna malipo yaliyopatikana kwa amana zilizochaguliwa"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Hakuna vitambulisho sahihi vya amana vilivyotolewa"
+
+#: 
+msgid "PDF successfully emailed to %d family."
+msgid_plural "PDFs successfully emailed to %d families."
+msgstr[0] "PDF imetumwa kwa mafanikio kwa barua pepe kwa familia %d."
+msgstr[1] "PDF zimetumwa kwa mafanikio kwa barua pepe kwa familia %d."
 
 #: 
 msgid "Partial Send"
@@ -17836,6 +17836,12 @@ msgid "Set up now"
 msgstr "Sanidi sasa"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Uthibitishaji wa hatua mbili unahitajika. Una siku %d ya kujiandikisha."
+msgstr[1] "Uthibitishaji wa hatua mbili unahitajika. Una siku %d za kujiandikisha."
+
+#: 
 msgid "Unknown family"
 msgstr "Familia isiyojulikana"
 
@@ -17850,4 +17856,684 @@ msgstr "Sasisha Kuratibu Zote za Familia"
 #: 
 msgid "Update Coordinates"
 msgstr "Sasisha Kuratibu"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "%s alikuwa Mkuu wa familia hii na amewekwa kama marehemu. Tafadhali mteue Mkuu mpya wa Kaya."
+
+#: 
+msgid "Accept"
+msgstr "Kubali"
+
+#: 
+msgid "Active Now"
+msgstr "Anatumika Sasa"
+
+#: 
+msgid "Adding..."
+msgstr "Inaongeza..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Wanachama wote wa CRM wenye barua pepe wamejiunga na orodha hii!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Waliojisajili wote wa MailChimp wapo katika ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "Hitilafu imetokea wakati wa kufuta faili."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Je, una uhakika kabisa? Hatua hii itafuta data zote na kurejesha mipangilio chaguomsingi ya kiwandani."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Je, una uhakika unataka kufuta faili ZOTE za kumbukumbu? Hatua hii haiwezi kutenduliwa."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Je, una uhakika unataka kufuta kiosk"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Je, una uhakika unataka kufuta kiungo"
+
+#: 
+msgid "Assignment"
+msgstr "Mgawo"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Kazi za nyuma (barua pepe za siku za kuzaliwa na kazi zote zilizopangwa za programu-jalizi) hazijawahi kuendeshwa kwenye usakinishaji huu."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Kazi za nyuma (barua pepe za siku za kuzaliwa na kazi zote zilizopangwa za programu-jalizi) ziliendeshwa mara ya mwisho tarehe %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Inahifadhi nakala rudufu..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Nakala rudufu imepakuliwa."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Nakala rudufu imepakiwa kwa mafanikio"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Huwezi kubadilisha hali yako mwenyewe ya kuwa hai"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Uhamishaji wa ChMeetings umekamilika kwa mafanikio"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Mabadiliko yamehifadhiwa kwa mafanikio"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "Watoe wote nje na uzime yote"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "Je, uwatoe wote nje na uzime tukio hili?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Angalia barua pepe yako kwa kiungo cha kuweka upya nenosiri"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Funga matukio yaliyokwama?"
+
+#: 
+msgid "Comments"
+msgstr "Maoni"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Imeshindwa kupakia hakikisho la barua pepe. Tafadhali funga na ujaribu tena."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Inaunda na kupakia nakala rudufu. Hii inaweza kuchukua dakika kadhaa..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Kuweka upya hifadhidata kumeshindwa."
+
+#: 
+msgid "Deceased"
+msgstr "Marehemu"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Vitambulisho chaguomsingi vya msimamizi"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Futa Kiosk"
+
+#: 
+msgid "Deleted Files"
+msgstr "Faili Zilizofutwa"
+
+#: 
+msgid "Deleting..."
+msgstr "Inafuta..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Upakuaji umerejea bila vichwa vya kiambatisho."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Hitilafu wakati wa kufuta faili la kumbukumbu."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Hitilafu wakati wa kufuta faili za kumbukumbu."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Hitilafu wakati wa kupakua faili la kumbukumbu."
+
+#: 
+msgid "Error initiating download."
+msgstr "Hitilafu wakati wa kuanzisha upakuaji."
+
+#: 
+msgid "Error loading log file."
+msgstr "Hitilafu wakati wa kupakia faili la kumbukumbu."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Hitilafu wakati wa kupakia maingizo yaliyojisajili wenyewe"
+
+#: 
+msgid "Errors"
+msgstr "Hitilafu"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Ondoa wanachama waliofariki kutoka kwenye orodha iliyochapishwa na uhamishaji wa CSV."
+
+#: 
+msgid "Failed Files"
+msgstr "Faili Zilizoshindwa"
+
+#: 
+msgid "Failed to add link"
+msgstr "Imeshindwa kuongeza kiungo"
+
+#: 
+msgid "Failed to add option"
+msgstr "Imeshindwa kuongeza chaguo"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Imeshindwa kufunga matukio. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to delete"
+msgstr "Imeshindwa kufuta"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Imeshindwa kuwezesha usajili wa kiosk"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Imeshindwa kuhamisha CSV ya ChMeetings"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Imeshindwa kupakia ukaguzi. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Imeshindwa kubadilisha jina la kiosk"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Imeshindwa kuhifadhi mabadiliko"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Imeshindwa kusasisha programu-jalizi"
+
+#: 
+msgid "Family Id"
+msgstr "Kitambulisho cha Familia"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Uthibitisho wa Mwisho"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Inatafuta viwianishi vya kijiografia vya familia… hii inaweza kuchukua dakika chache. Unaweza kuacha ukurasa huu ukiwa wazi."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Inatafuta viwianishi vya kijiografia vya familia… {{done}} kati ya {{total}} zimechakatwa, {{geocoded}} zimepatikana."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Sasisho la Mkuu wa Kaya Linahitajika"
+
+#: 
+msgid "Helpful Links"
+msgstr "Viungo Muhimu"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Ficha Waliofariki kutoka Orodha"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Ficha wanachama waliofariki kutoka kwenye orodha iliyochapishwa na uhamishaji wa CSV."
+
+#: 
+msgid "Identify"
+msgstr "Tambua"
+
+#: 
+msgid "Identify command sent"
+msgstr "Amri ya kutambua imetumwa"
+
+#: 
+msgid "Individual"
+msgstr "Mtu Binafsi"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Ndani: tarehe na saa ya mwisho kazi za muda wa nyuma zilipokamilika (YYYY-MM-DD HH:MM:SS). Usihariri kwa mkono."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Kipengele kimefutwa kwa mafanikio"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Jina la Kiosk"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Kiosk imekubaliwa"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Kiosk imefutwa kwa mafanikio"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Kiosk lazima ikubaliwe"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Jina la kiosk limebadilishwa"
+
+#: 
+msgid "Last seen"
+msgstr "Alionekana Mwisho"
+
+#: 
+msgid "Link"
+msgstr "Kiungo"
+
+#: 
+msgid "Link added successfully"
+msgstr "Kiungo kimeongezwa kwa mafanikio"
+
+#: 
+msgid "Link deleted"
+msgstr "Kiungo kimefutwa"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Jina la kiungo haliwezi kuwa na lebo za HTML"
+
+#: 
+msgid "Living"
+msgstr "Hai"
+
+#: 
+msgid "Log settings saved"
+msgstr "Mipangilio ya kumbukumbu imehifadhiwa"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Jina la Kuingia Linahitajika"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Amemweka Mtu kuwa Anayetumika"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Amemweka Mtu kuwa Asiyetumika"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Idadi ya chini ya dakika kati ya uendeshaji wa kazi za muda wa nyuma zinazoanzishwa na upakiaji wa ukurasa. Huzuia asubuhi ya Jumapili yenye shughuli nyingi kuendesha kazi hizo kila ukurasa unapoonekana. Haitumiki kwa kiendeshaji cha amri (command-line). Weka 0 ili ziendeshwe kila upakiaji wa ukurasa."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Watumiaji wapya hawatapokea barua pepe ya karibu, na nenosiri linalotengenezwa halionyeshwi kamwe. Baada ya kuunda akaunti, weka nenosiri kutoka kwa Watumiaji wa Mfumo kwa kutumia Badilisha Nenosiri — au sanidi barua pepe kwanza."
+
+#: 
+msgid "No changes to save"
+msgstr "Hakuna mabadiliko ya kuhifadhi"
+
+#: 
+msgid "No contact info"
+msgstr "Hakuna taarifa za mawasiliano"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Hakuna viungo maalum vilivyosanidiwa. Ongeza kimoja hapo juu!"
+
+#: 
+msgid "No email"
+msgstr "Hakuna barua pepe"
+
+#: 
+msgid "No files were deleted."
+msgstr "Hakuna faili zilizofutwa."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Hakuna msaada unaopatikana kwa programu-jalizi hii."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Hakuna watu wa kuongeza - wote tayari wapo kwenye kikapu"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Hakuna watu wa kuongeza - kichujio hakikuleta matokeo yoyote"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Sio tarehe sahihi ya kifo"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Idadi ya siku ambazo watumiaji wanapaswa kujiandikisha kwa 2FA baada ya kuamriwa kutumika. Weka 0 ili kutekeleza mara moja. Kupunguza muda wa neema unaoendelea kunaweza kuwafungia watumiaji nje mara moja."
+
+#: 
+msgid "Offline"
+msgstr "Haipo Mtandaoni"
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Fanya hivi tu baada ya tatizo la msingi kutatuliwa. Bado utahitaji kubofya Wezesha kabla programu-jalizi haijaanza kufanya kazi tena."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Tafadhali thibitisha uwezeshaji wa mtu"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Tafadhali thibitisha uzimaji wa mtu"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Hali ya programu-jalizi imesasishwa"
+
+#: 
+msgid "Registered"
+msgstr "Imesajiliwa"
+
+#: 
+msgid "Reload"
+msgstr "Pakia Upya"
+
+#: 
+msgid "Reload command sent"
+msgstr "Amri ya kupakia upya imetumwa"
+
+#: 
+msgid "Rename"
+msgstr "Badilisha Jina"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Badilisha Jina la Kiosk"
+
+#: 
+msgid "Reset Complete"
+msgstr "Kuweka Upya Kumekamilika"
+
+#: 
+msgid "Reset Settings"
+msgstr "Weka Upya Mipangilio"
+
+#: 
+msgid "Resetting..."
+msgstr "Inaweka Upya..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Kazi zilizopangwa hazifanyi kazi"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Alama ya usalama haipo. Tafadhali onyesha upya ukurasa."
+
+#: 
+msgid "Select…"
+msgstr "Chagua…"
+
+#: 
+msgid "Sending..."
+msgstr "Inatuma..."
+
+#: 
+msgid "Sending…"
+msgstr "Inatuma…"
+
+#: 
+msgid "Settings reset"
+msgstr "Mipangilio imewekwa upya"
+
+#: 
+msgid "Settings saved"
+msgstr "Mipangilio imehifadhiwa"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Mipangilio imehifadhiwa. Inaonyesha upya taarifa za usasishaji..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Inaonyesha watu wanaotumika pekee."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Inaonyesha watu wasiotumika pekee."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Imefutwa kwa mafanikio"
+
+#: 
+msgid "Testing..."
+msgstr "Inajaribu..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Hifadhidata imefutwa. Mfumo uko tayari kwa mwanzo mpya."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Suluhisho mbadala la upakiaji wa ukurasa linaendelea kufanya kazi wakati huo huo. Badilisha muda ambao ChurchCRM inasubiri kabla ya kuonyesha onyo hili kwa kutumia mpangilio wa %1$s, au weka 0 ili kulificha."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Mtu Huyu Hatumiki"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Hii hutafuta viwianishi vya ramani kwa kila familia ambayo haina, kwa kutumia OpenStreetMap. Inachakata familia kwa makundi ya 50, takribani dakika moja kwa kila kundi. Unaweza kuacha ukurasa huu ukiwa wazi wakati inaendesha. Endelea?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Mtu huyu amefariki"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Hii itafuta thamani zote zilizosanidiwa za programu-jalizi hii. Hatua hii haiwezi kutenduliwa."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Hii itafuta kabisa faili za programu-jalizi kutoka kwenye hifadhi na kufuta mipangilio yake. Hatua hii haiwezi kutenduliwa."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "URL haiwezi kuwa na lebo za HTML"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Hitilafu isiyotarajiwa. Tafadhali jaribu tena."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "Ondoa Programu-jalizi"
+
+#: 
+msgid "Upcoming"
+msgstr "Zinazokuja"
+
+#: 
+msgid "Valid Until"
+msgstr "Sahihi Hadi"
+
+#: 
+msgid "View active only"
+msgstr "Onyesha zinazotumika pekee"
+
+#: 
+msgid "View all"
+msgstr "Onyesha zote"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Onyesha zote (zikiwemo zisizotumika)"
+
+#: 
+msgid "View inactive only"
+msgstr "Onyesha zisizotumika pekee"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Onya kwenye dashibodi ya msimamizi wakati kazi za muda wa nyuma hazijaendeshwa kwa muda wa masaa haya. 26 inaruhusu cron ya kila siku pamoja na mchepuko kidogo. Weka 0 ili kuzima onyo."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Bila kipanga-ratiba, kazi hizi huendeshwa tu wakati mtu anapakia ukurasa, hivyo siku ya wiki yenye shughuli chache haitatuma barua pepe zilizopangwa kabisa. Ongeza kipengele cha cron kinachoendesha kiendeshaji cha kazi kila saa, kama mtumiaji yule yule anayeendesha seva yako ya wavuti"
+
+#: 
+msgid "check-outs"
+msgstr "kuondoka"
+
+#: 
+msgid "deceased"
+msgstr "waliofariki"
+
+#: 
+msgid "event"
+msgstr "tukio"
+
+#: 
+msgid "events?"
+msgstr "matukio?"
+
+#: 
+msgid "files"
+msgstr "faili"
+
+#: 
+msgid "people from cart?"
+msgstr "watu kutoka kwenye kikapu?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "skip lazima iwe sifuri au nambari kamili chanya"
+
+#: 
+msgid "view families missing an email"
+msgstr "onyesha familia zisizo na barua pepe"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Wanunuzi wa Mwaka huu wa Fedha"
+
+#: 
+msgid "Current"
+msgstr "Ya Sasa"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Vitu Vilivyotolewa (Mwaka huu wa Fedha)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Jina la kuingia lazima liwe na herufi %d au chini!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Kiasi Kilichokusanywa Mwaka huu wa Fedha"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "%s lazima iwe anwani kamili ya wavuti ya https://, kwa mfano https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "Akaunti ina ruhusa chache. Wasiliana na msimamizi."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "Hitilafu imetokea wakati wa kuonyesha ukurasa wa hitilafu."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Kila anwani lazima ianze na https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Tengeneza Lebo"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Tengeneza lebo za posta"
+
+#: 
+msgid "Labels"
+msgstr "Lebo"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Lebo za posta kwa watu walio kwenye kikapu chako. Mtu asiye na anwani yake mwenyewe atatumia anwani ya familia yake."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Si lazima. Viungo vya akaunti za kanisa lenyewe, vinavyoonyeshwa kwa wanachama kwenye kurasa kama sehemu ya chini ya lango. Acha sehemu iwe wazi ili kuficha mtandao huo."
+
+#: 
+msgid "Options"
+msgstr "Chaguo"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Kazi Zilizopangwa"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Inaendelea, sekunde zilizobaki: {{seconds}}"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Muda unaotarajiwa kati ya uendeshaji (masaa): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Familia zilizorukwa (hazina anwani ya barua pepe kwenye rekodi): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Familia ambazo hazikuweza kupatiwa viwianishi vya kijiografia: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Familia zitakazopokea barua pepe za uthibitisho: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Wanachama walionakiliwa: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Haijaorodheshwa hapa: {{total}} zaidi"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Wapokeaji: {{total}} — ni wengi mno kwa kiungo cha mailto:. Tumia Nakili Anwani badala yake."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Wapokeaji ni wengi mno kwa programu ya barua pepe ({{total}} > {{max}}). Tumia Nakili Anwani badala yake."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "dakika {{minutes}} zimebaki"
 

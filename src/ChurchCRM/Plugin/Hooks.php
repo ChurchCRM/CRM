@@ -80,6 +80,28 @@ final class Hooks
     public const EVENT_CREATED = 'event.created';
 
     /**
+     * Action: Called after an event is updated.
+     * Receives: Event $event, array $oldData
+     *
+     * $oldData is the event row as it was before this save, keyed by Propel
+     * phpName (Id, Title, Type, Start, End, Desc, Text, InActive, ...). It is
+     * only populated when a listener is registered for this hook — when
+     * nothing listens, the snapshot query is skipped entirely.
+     */
+    public const EVENT_UPDATED = 'event.updated';
+
+    /**
+     * Action: Called after an event is deleted.
+     * Receives: int $eventId, array $eventData
+     *
+     * $eventData is the event row as it was immediately before deletion
+     * (Event::toArray(), including PinnedCalendars), captured before the
+     * child rows are cascade-deleted. Only populated when a listener is
+     * registered for this hook.
+     */
+    public const EVENT_DELETED = 'event.deleted';
+
+    /**
      * Filter: Allow plugins to contribute additional system calendars.
      * Receives: SystemCalendar[] $calendars
      * Returns: SystemCalendar[] Modified array of system calendars
