@@ -9,6 +9,42 @@ complexity: "advanced"
 
 This skill documents how to access, analyze, and respond to GitHub security advisories for ChurchCRM.
 
+## Advisory Audit & Prioritization Workflow
+
+When tasked with reviewing multiple GHSA advisories:
+
+### 1. Gather All Advisories
+Visit: https://github.com/ChurchCRM/CRM/security/advisories
+- Filter by state (triage, draft, published)
+- Note count and severity distribution
+
+### 2. Categorize by Fix Complexity
+For each advisory:
+- **1-line fix** (output escaping, config validation) — fix immediately
+- **Moderate fix** (add middleware, refactor endpoint) — plan for feature release
+- **Heavy refactor** (modernize legacy code) — defer to modernization ticket
+
+### 3. Prioritize by Risk
+- **Critical/High severity** (external attack) — fix before next release
+- **Medium severity** (requires user interaction) — fix in current cycle
+- **Low severity** (admin-only) — defer to modernization ticket
+
+### 4. Batch Fixes by Category
+- Group similar fixes (e.g., all escapeHtml → escapeAttribute replacements)
+- Create branches for each batch
+- Each batch = one commit + one PR
+
+### Example Audit Results (7.8.0 cycle)
+
+| Advisory | Severity | Type | Action |
+|----------|----------|------|--------|
+| GHSA-p6xx-xx98-f323 | High | Custom field filtering | ✅ Fixed, merged, draft v7.8.0 |
+| GHSA-vmh4-p9q5-cc9q | Medium | XSS pattern fix | ✅ Fixed, merged, draft v7.8.0 |
+| GHSA-hrfr-xg9w-hjm4 | Medium | SSRF validation | ✅ Fixed, merged, draft v7.8.0 |
+| GHSA-68xh-3jh8-3wvq | Low | CSRF (admin-only) | 📋 Modernization ticket #10138 |
+| GHSA-9wm3-73f3-j8hf | Medium | Calendar UX | ✅ Already fixed in 7.6.1 |
+| GHSA-f23p-c43w-x76w | Medium | Calendar filtering | ✅ Already fixed in 7.6.1 |
+
 ## Accessing Unpublished Advisories
 
 ### Via GitHub CLI (Recommended)
@@ -250,18 +286,76 @@ gh pr create \
   --label "7.3.1"
 ```
 
-## Publishing the Advisory
+## Advisory Lifecycle: From Fix to Publication
 
-After merging the fix:
+### Step 1: Fix Merged to Master
+Once the fix is committed and merged to `master`:
 
-1. **Wait for version release** — Advisory should be published with the patched version (7.3.1)
-2. **Update CVSS/CVE details** — Add final severity, CVE ID, etc.
-3. **Publish via GitHub UI** — Navigate to Security → Advisories → Draft → Publish
-4. **Or use CLI** (if supported):
-   ```bash
-   gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
-     -X PATCH -f state=published
-   ```
+### Step 2: Mark Advisory as Draft with Patched Version
+**DO NOT publish yet.** Instead:
+1. Set advisory **state** to `draft` (keep private)
+2. Set **patched version** to the next unreleased version (e.g., 7.8.0)
+3. Request CVE ID if not already assigned
+
+This ensures users have time to upgrade before the vulnerability is publicly disclosed.
+
+### Step 3: Advisory Stays Private Until Release
+- Advisory remains **draft** on the repository
+- Vulnerability details are not visible to the public
+- Only ChurchCRM maintainers and GitHub can see it
+
+### Step 4: Publish on Release Day
+When the patched version (7.8.0) is released:
+- Advisory transitions to **published** state (may auto-publish or require manual update)
+- GitHub sends security alerts to all repositories watching ChurchCRM
+- Admins see upgrade notifications in-app
+
+### Example: GHSA-vmh4-p9q5-cc9q (escapeHtml XSS)
+```
+Merged: 2026-09-28
+Advisory state: Draft
+Patched version: 7.8.0 (unreleased)
+CVE: Requested, pending assignment
+Publication: When 7.8.0 releases (TBD)
+```
+
+### Publishing via GitHub UI
+Navigate to: https://github.com/ChurchCRM/CRM/security/advisories/{GHSA_ID}
+1. Verify **Patched version** matches the released version
+2. Verify **State** shows `Published`
+3. If still in Draft, manually transition to Published
+
+## Severity Assessment: Admin-Only Vulnerabilities
+
+When analyzing an advisory, consider **practical risk**, not just technical exploitability.
+
+### Admin-Only = Low Severity
+
+If a vulnerability can **only be exploited by authenticated admins**:
+- Admins already have broad database access
+- They can modify records, export data, change settings
+- A vulnerability adds no new external attack surface
+- Risk is insider abuse, not external compromise
+
+**Mark as Low severity** with this rationale in comments:
+```
+Marked as Low severity: Only authenticated admins can exploit this 
+(admin-only fundraiser functions). Admins already have broad database 
+access, so this adds no new external attack surface.
+```
+
+### Examples of Admin-Only Issues
+- CSRF on admin-only forms (admins can already modify that data)
+- IDOR in admin editors (admins can already view any record)
+- Session fixation on admin login (admins already have system access)
+
+### NOT Admin-Only (Still High Risk)
+- Vulnerabilities accessible to non-admin users
+- Privilege escalation from user → admin
+- Public-facing features with auth bypass
+- Stored XSS affecting any authenticated user
+
+See `SECURITY.md` § "Severity Assessment" for full policy.
 
 ## Best Practices
 
@@ -273,12 +367,61 @@ After merging the fix:
 - Update OpenAPI/API docs when endpoint behavior changes
 - Create a skill/wiki entry to prevent future regressions
 
+## Modernization Strategy for Legacy Code Issues
+
+When a vulnerability is in legacy code and the fix would require substantial refactoring:
+
+### Decision Criteria
+- Is the affected code pre-ORM (legacy PHP procedural code)?
+- Would a proper fix require moving to Slim/ORM patterns?
+- Is the risk low (e.g., admin-only) or moderate (user-facing)?
+
+### Strategy: Defer to Modernization Ticket
+Instead of patching legacy code:
+
+1. **Create a GitHub Issue** titled: `modernize: {feature} to use {pattern}`
+   - Description: What needs updating and why
+   - Reference the GHSA ID
+   - Label: `modernization`, `security`
+   
+2. **Example Issue:**
+   ```
+   Title: modernize: fundraiser routes to use CSRF middleware
+   
+   Body:
+   Migrate legacy fundraiser routes (donated-items, donors, paddle-numbers) 
+   to use Slim's built-in CSRF protection instead of manual validation.
+   
+   Currently lacking CSRF token checks. While impact is limited to 
+   authenticated admins only, modernizing to framework patterns would 
+   provide consistent protection and improve maintainability.
+   
+   Routes affected:
+   - src/fundraiser/routes/donated-item.php
+   - src/fundraiser/routes/donors.php
+   - src/fundraiser/routes/paddle-num.php
+   - src/fundraiser/routes/batch-winner.php
+   
+   Relates to GHSA-68xh-3jh8-3wvq (admin-only CSRF)
+   ```
+
+3. **Why This Works:**
+   - Avoids patching legacy code multiple times
+   - Fixes all similar issues in one modernization PR
+   - Improves code quality beyond just the security issue
+   - Clear scope and timeline for the maintainer
+
+### Examples
+- GHSA-68xh-3jh8-3wvq (CSRF donations) → #10138 (fundraiser modernization)
+- GHSA-nnnn-xxxx-xxxx (IDOR in legacy editor) → #10136 (WhyCame/WhyLeft modernization)
+
 ❌ **DON'T:**
 - Commit security fixes directly to `master` without review
 - Merge without running full test suite
 - Reveal whether a username/email exists in error messages
 - Skip test coverage for "obvious" security code
 - Leave OpenAPI docs out of sync with code
+- Patch legacy code when a modernization approach would be cleaner
 
 ## Related Skills
 
