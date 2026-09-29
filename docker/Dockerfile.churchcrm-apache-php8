@@ -131,6 +131,10 @@ USER www-data
 # Test stage: includes dev tools for CI testing
 FROM base AS test
 
+# The base stage ships the 256M production limit; the church-logo specs need the
+# 50 MP decode budget, which scales with memory_limit.
+RUN sed -i 's/^memory_limit.*$/memory_limit = 2G/g' $PHP_INI_DIR/php.ini
+
 # Install development dependencies
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
@@ -160,6 +164,10 @@ WORKDIR /var/www/html
 
 # Dev stage: includes build tools (for developers, not production)
 FROM base AS dev
+
+# The base stage ships the 256M production limit; the church-logo specs need the
+# 50 MP decode budget, which scales with memory_limit.
+RUN sed -i 's/^memory_limit.*$/memory_limit = 2G/g' $PHP_INI_DIR/php.ini
 
 # Install development dependencies
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
