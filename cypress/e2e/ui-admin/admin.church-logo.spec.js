@@ -47,7 +47,9 @@ function uploadLogoThroughUppy(
 
     cy.get(".uppy-Dashboard-input").first().selectFile(file, { force: true });
 
-    cy.get(".uppy-DashboardContent-save", { timeout: 10000 }).click();
+    cy.get(".uppy-DashboardContent-save", { timeout: 10000 })
+        .should("not.be.disabled")
+        .click();
     cy.get(".uppy-StatusBar-actionBtn--upload", { timeout: 10000 }).click();
 }
 

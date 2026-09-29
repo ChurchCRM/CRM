@@ -182,6 +182,28 @@ export function createPhotoUploader(config) {
     requestAnimationFrame(enforce);
   });
 
+  // Uppy's Save calls cropper.getCroppedCanvas(), which is null until cropperjs has
+  // decoded the image, and then reads .width from it. A large phone photo stays "not
+  // ready" for seconds, so Save has to wait for it.
+  const cropperIsReady = () => Boolean(uppy.getPlugin("ImageEditor")?.getPluginState().cropperReady);
+  const syncSaveButton = () =>
+    requestAnimationFrame(() => {
+      const saveButton = document.querySelector(".uppy-DashboardContent-save");
+      if (saveButton) saveButton.disabled = !cropperIsReady();
+    });
+  uppy.on("state-update", syncSaveButton);
+  uppy.on("file-editor:start", syncSaveButton);
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (event.target.closest?.(".uppy-DashboardContent-save") && !cropperIsReady()) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    },
+    true,
+  );
+
   // Handle all restriction failures (size, type, count) — use Uppy's own message so
   // the persistent alert accurately describes the actual failure reason.
   uppy.on("restriction-failed", (_file, error) => {
