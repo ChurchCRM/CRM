@@ -25,6 +25,25 @@ describe("API Recurring Event Parity (#9735)", () => {
         endTime: "11:30", // the engine's default duration is one hour
     };
 
+    // Every event either endpoint creates, so after() can remove them again
+    // (#9769). Both endpoints return the ids they created — `events[].id` from
+    // /generate-recurring and `eventIds` from /repeat — and the over-cap tests
+    // create nothing (400), so tracking the two success shapes is enough.
+    // Deleting an event cascades its calendar_events rows.
+    const createdEventIds = [];
+    const trackGenerated = (response) => {
+        createdEventIds.push(...(response?.body?.events || []).map((e) => e.id));
+        return response;
+    };
+    const trackRepeated = (response) => {
+        createdEventIds.push(...(response?.body?.eventIds || []));
+        return response;
+    };
+
+    after(() => {
+        cy.cleanupEvents(createdEventIds);
+    });
+
     // Each test claims its own future window so re-running the suite against a
     // database that was not reset still starts from an empty date range.
     let windowSeq = 0;
@@ -63,7 +82,7 @@ describe("API Recurring Event Parity (#9735)", () => {
             "/api/events/generate-recurring",
             { eventTypeId, startDate, endDate, skipExisting: false },
             200,
-        ).then((generated) => {
+        ).then(trackGenerated).then((generated) => {
             const generatedDates = generated.body.events.map((e) => e.date);
             expect(generatedDates.length).to.be.greaterThan(0);
 
@@ -82,7 +101,7 @@ describe("API Recurring Event Parity (#9735)", () => {
                     PinnedCalendars: [],
                 },
                 200,
-            ).then((repeated) => {
+            ).then(trackRepeated).then((repeated) => {
                 // Same number of occurrences from the same recurrence + range.
                 expect(repeated.body.count).to.equal(generated.body.created);
 
@@ -115,7 +134,7 @@ describe("API Recurring Event Parity (#9735)", () => {
             "/api/events/generate-recurring",
             { eventTypeId, startDate, endDate, skipExisting: true },
             200,
-        ).then((first) => {
+        ).then(trackGenerated).then((first) => {
             expect(first.body.created).to.be.greaterThan(0);
 
             cy.makePrivateAdminAPICall(
@@ -123,7 +142,7 @@ describe("API Recurring Event Parity (#9735)", () => {
                 "/api/events/generate-recurring",
                 { eventTypeId, startDate, endDate, skipExisting: true },
                 200,
-            ).then((second) => {
+            ).then(trackGenerated).then((second) => {
                 expect(second.body.created).to.equal(0);
                 expect(second.body.skipped).to.equal(first.body.created);
             });
@@ -145,8 +164,9 @@ describe("API Recurring Event Parity (#9735)", () => {
             PinnedCalendars: [],
         };
 
-        cy.makePrivateAdminAPICall("POST", "/api/events/repeat", body, 200).then(
-            (first) => {
+        cy.makePrivateAdminAPICall("POST", "/api/events/repeat", body, 200)
+            .then(trackRepeated)
+            .then((first) => {
                 expect(first.body.count).to.be.greaterThan(0);
                 expect(first.body.skipped).to.equal(0);
 
@@ -155,7 +175,7 @@ describe("API Recurring Event Parity (#9735)", () => {
                     "/api/events/repeat",
                     body,
                     200,
-                ).then((second) => {
+                ).then(trackRepeated).then((second) => {
                     expect(second.body.count).to.equal(0);
                     expect(second.body.eventIds).to.deep.equal([]);
                     expect(second.body.skipped).to.equal(first.body.count);
@@ -178,8 +198,9 @@ describe("API Recurring Event Parity (#9735)", () => {
             PinnedCalendars: [],
         };
 
-        cy.makePrivateAdminAPICall("POST", "/api/events/repeat", body, 200).then(
-            (first) => {
+        cy.makePrivateAdminAPICall("POST", "/api/events/repeat", body, 200)
+            .then(trackRepeated)
+            .then((first) => {
                 expect(first.body.success).to.be.true;
                 expect(first.body.count).to.be.greaterThan(0);
                 expect(first.body.eventIds).to.be.an("array");
@@ -190,7 +211,7 @@ describe("API Recurring Event Parity (#9735)", () => {
                     "/api/events/repeat",
                     body,
                     200,
-                ).then((second) => {
+                ).then(trackRepeated).then((second) => {
                     // Backward compatible: without SkipExisting the endpoint
                     // still creates the whole series again.
                     expect(second.body.count).to.equal(first.body.count);
@@ -257,7 +278,7 @@ describe("API Recurring Event Parity (#9735)", () => {
                     skipExisting: true,
                 },
                 200,
-            ).then((resp) => {
+            ).then(trackGenerated).then((resp) => {
                 expect(resp.body.created + resp.body.skipped).to.be.greaterThan(
                     60,
                 );

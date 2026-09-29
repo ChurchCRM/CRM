@@ -71,16 +71,34 @@ Write headings and lists. One line at the top for the maintainer only:
 
 Then the body that would go on GitHub:
 
+**When no hard blocks:**
+
 ```markdown
 Thanks @author. One short paragraph of what the PR does.
 
+**Verified:**
+- ✓ [specific item]
+- ✓ [specific item]
+
+No hard blocks.
+```
+
+**When there are issues:**
+
+```markdown
+Thanks @author. One short paragraph of what the PR does.
+
+## Hard blocks
+
+- [specific issue that requires changes]
+
 ## Still open
 
-- [ ] …
+- [ ] [specific item to verify]
 
 ## Not blocking
 
-- …
+- [minor item or note]
 ```
 
-If there is a hard block, say so in a **Hard blocks** heading before **Still open**. Ask George in chat whether to post. Do not approve.
+If there is a hard block, post with "Request changes" event. Ask George in chat whether to post. Do not approve.

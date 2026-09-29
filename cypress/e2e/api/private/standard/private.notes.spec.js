@@ -17,6 +17,12 @@ describe("API Private Notes", () => {
         cy.setupAdminSession();
     });
 
+    // Every note this spec creates is deleted again. DELETE /api/note/{id}
+    // still writes a `delete-note` audit row onto the same timeline in its
+    // place, so note_nte does not come back to its seed count — that is the
+    // application's audit trail, not spec litter, which is why the row-count
+    // guard only reports note_nte rather than failing on it (#9769).
+
     // -----------------------------------------------------------------------
     // Person notes
     // -----------------------------------------------------------------------
