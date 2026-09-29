@@ -1,0 +1,48 @@
+name: Validate production Docker images
+
+on:
+  pull_request:
+    paths:
+      - 'docker/**'
+      - '.github/workflows/docker-release*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        flavor: [apache, fpm]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Test archive validation
+        run: python3 docker/test-release-context.py
+      - name: Prepare a known release fixture
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download 7.7.0 --repo ChurchCRM/CRM --pattern ChurchCRM-7.7.0.zip
+          echo '46a06cb130335187696e205afe37b6abbdaa74ad4d2d465bb0b3691c3041c4a5  ChurchCRM-7.7.0.zip' | sha256sum --check
+          python3 docker/prepare-release-context.py ChurchCRM-7.7.0.zip build-context
+          mkdir -p build-context/apache
+          cp docker/apache/default.conf build-context/apache/default.conf
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
+      - uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6
+        with:
+          context: build-context
+          file: docker/Dockerfile.churchcrm-${{ matrix.flavor }}-php8
+          target: prod
+          load: true
+          tags: churchcrm-check:${{ matrix.flavor }}
+          cache-from: type=gha,scope=release-${{ matrix.flavor }}
+          cache-to: type=gha,mode=max,scope=release-${{ matrix.flavor }}
+      - name: Test non-root startup and runtime dependencies
+        env:
+          FLAVOR: ${{ matrix.flavor }}
+        run: bash docker/test-production-image.sh "churchcrm-check:$FLAVOR" "$FLAVOR"
