@@ -105,7 +105,7 @@ class Countries
             'GM' => new Country('GM', 'Gambia'),
             'GE' => new Country('GE', 'Georgia (საქართველო)'),
             'DE' => new Country('DE', 'Germany (Deutschland)', 'Germany'),
-            'GH' => new Country('GH', 'Ghana (Gaana)'),
+            'GH' => new Country('GH', 'Ghana (Gaana)', 'Ghana'),
             'GI' => new Country('GI', 'Gibraltar'),
             'GR' => new Country('GR', 'Greece (Ελλάδα)', 'Greece'),
             'GL' => new Country('GL', 'Greenland (Kalaallit Nunaat)'),
