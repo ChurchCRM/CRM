@@ -230,22 +230,15 @@ jobs:
         test-name: ${{ matrix.test-type.name }}
         php-version: ${{ matrix.php-version }}
         deployment: root
-        shard-total: ${{ matrix.shard-total || '' }}
-        shard-index: ${{ matrix.split-index || '' }}
+        shard-total: ${{ matrix.shard-total || 1 }}
+        shard-index: ${{ matrix.split-index || '0' }}
+        docker-compose-profile: ci-root
       env:
         # Test-database drift guard (#9769): the ci-root database is published on
         # 3306 (docker-compose.parallel.yaml). Required, so a guard that cannot
         # reach the database fails the job instead of silently switching off.
         ROW_GUARD_DB_PORT: "3306"
         ROW_GUARD_REQUIRED: "1"
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Stop Docker
       if: always()
@@ -309,66 +302,28 @@ jobs:
         docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir up -d
 
     - name: Wait for server (subdirectory path)
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -sf http://127.0.0.1:8080/churchcrm/api/public/echo; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: 'http://127.0.0.1:8080/churchcrm/api/public/echo'
+        docker-compose-profile: 'ci-subdir'
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (subdir, PHP ${{ matrix.php-version }})
-      run: npx cypress run --config-file "${{ matrix.test-type.config }}" --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}-[suiteName]-[hash].xml
+      uses: ./.github/actions/run-cypress-tests
+      with:
+        config-file: ${{ matrix.test-type.config }}
+        spec: ${{ matrix.test-type.spec }}
+        test-name: ${{ matrix.test-type.name }}
+        php-version: ${{ matrix.php-version }}
+        deployment: subdir
+        shard-total: ${{ matrix.shard-total || 1 }}
+        shard-index: ${{ matrix.split-index || '0' }}
+        base-url: http://127.0.0.1:8080/churchcrm/
+        docker-compose-profile: ci-subdir
       env:
-        CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
         # Test-database drift guard (#9769): the ci-subdir database is published on
         # DATABASE_SUBDIR_PORT (3307), not the 3306 default the guard would try.
         ROW_GUARD_DB_PORT: "3307"
         ROW_GUARD_REQUIRED: "1"
-        SPLIT: ${{ matrix.shard-total || '' }}
-        SPLIT_INDEX: ${{ matrix.split-index }}
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: actions/upload-artifact@v7
-      with:
-        name: cypress-artifacts-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: dorny/test-reporter@v3
-      if: always()
-      with:
-        name: 'PHP ${{ matrix.php-version }}: Subdirectory (${{ matrix.test-type.name }})'
-        path: cypress/reports/junit-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -390,6 +345,8 @@ jobs:
       uses: actions/checkout@v7
 
     - uses: ./.github/actions/checkout-node-npm
+      with:
+        cache-cypress: 'true'
 
     - name: Download build artifact
       uses: actions/download-artifact@v8.0.1
@@ -412,60 +369,22 @@ jobs:
       run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system up -d
 
     - name: Wait for server (new system)
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: 'http://127.0.0.1:8081/'
+        docker-compose-profile: 'ci-new-system'
 
     - name: Run Cypress tests (setup wizard, PHP ${{ matrix.php-version }})
-      uses: cypress-io/github-action@v7
+      uses: ./.github/actions/run-cypress-tests
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-new-system-[suiteName]-[hash].xml
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: actions/upload-artifact@v7
-      with:
-        name: cypress-artifacts-php${{ matrix.php-version }}-new-system-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: dorny/test-reporter@v3
-      if: always()
-      with:
-        name: 'PHP ${{ matrix.php-version }}: New System Setup (Root)'
-        path: cypress/reports/junit-php${{ matrix.php-version }}-new-system-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
+        config-file: cypress/configs/new-system.config.ts
+        spec: cypress/e2e/new-system/**/*.spec.js
+        test-name: setup
+        php-version: ${{ matrix.php-version }}
+        deployment: new-system
+        shard-total: 1
+        shard-index: '0'
+        docker-compose-profile: ci-new-system
 
     - name: Stop Docker
       if: always()
@@ -487,6 +406,8 @@ jobs:
       uses: actions/checkout@v7
 
     - uses: ./.github/actions/checkout-node-npm
+      with:
+        cache-cypress: 'true'
 
     - name: Download build artifact
       uses: actions/download-artifact@v8.0.1
@@ -509,62 +430,25 @@ jobs:
       run: npm run docker:ci:new-system:subdir:start
 
     - name: Wait for server (new system subdirectory)
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/churchcrm/ | grep -q "302\|200"; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: 'http://127.0.0.1:8081/churchcrm/'
+        docker-compose-profile: 'ci-new-system'
+        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.subdir.yaml'
 
     - name: Run Cypress tests (setup wizard subdir, PHP ${{ matrix.php-version }})
-      uses: cypress-io/github-action@v7
+      uses: ./.github/actions/run-cypress-tests
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-new-system-subdir-[suiteName]-[hash].xml
-      env:
-        CYPRESS_BASE_URL: http://127.0.0.1:8081/churchcrm/
-
-    - name: Collect Docker logs on failure
-      if: failure()
-      run: |
-        mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system-subdir.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system-subdir.log 2>&1 || true
-        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
-
-    - name: Upload debug artifacts
-      if: failure()
-      uses: actions/upload-artifact@v7
-      with:
-        name: cypress-artifacts-php${{ matrix.php-version }}-new-system-subdir-${{ github.run_id }}
-        path: |
-          cypress/logs
-          cypress/screenshots
-          cypress/videos
-        retention-days: 15
-        if-no-files-found: ignore
-
-    - name: Test Report
-      uses: dorny/test-reporter@v3
-      if: always()
-      with:
-        name: 'PHP ${{ matrix.php-version }}: New System Setup (Subdirectory)'
-        path: cypress/reports/junit-php${{ matrix.php-version }}-new-system-subdir-*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
+        config-file: cypress/configs/new-system.config.ts
+        spec: cypress/e2e/new-system/**/*.spec.js
+        test-name: setup
+        php-version: ${{ matrix.php-version }}
+        deployment: new-system-subdir
+        shard-total: 1
+        shard-index: '0'
+        base-url: http://127.0.0.1:8081/churchcrm/
+        docker-compose-profile: ci-new-system
+        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.subdir.yaml'
 
     - name: Stop Docker
       if: always()

@@ -61,6 +61,12 @@ export default defineConfig({
     // this directory so both suites can run as parallel CI matrix legs.
     specPattern: ['cypress/e2e/ui-admin/**/*.spec.js'],
     setupNodeEvents(on, config) {
+      // No-op unless SPLIT is set; CI runs this suite as a single chunk so its
+      // job summary matches the sharded UI jobs.
+      if (process.env.SPLIT) {
+        const cypressSplit = require('cypress-split');
+        cypressSplit(on, config);
+      }
       const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
       installLogsPrinter(on, {
         outputRoot: 'cypress/logs',
