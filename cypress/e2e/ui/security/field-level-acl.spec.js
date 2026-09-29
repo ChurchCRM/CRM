@@ -11,13 +11,6 @@ describe('Field-Level ACL on Person Custom Fields', () => {
   const lowPrivilegeUser = { username: 'lowpriv_user', password: 'password' }; // No Finance/Notes
   const adminUser = { username: 'admin_user', password: 'password' }; // Has all permissions
 
-  // Helper: Setup custom field with specific security level
-  const setupCustomField = (fieldName, securityLevel) => {
-    // This would be set up in fixtures or beforeAll
-    // We assume test fixtures create these fields
-    cy.log(`Custom field '${fieldName}' has security level: ${securityLevel}`);
-  };
-
   describe('Person View Display (Web UI)', () => {
     it('should hide Finance-restricted custom fields from users without Finance permission', () => {
       cy.login(lowPrivilegeUser.username, lowPrivilegeUser.password);
