@@ -293,15 +293,24 @@ function initializeGroupView() {
   // ------------------------------------------------------------------ //
   // Toggle Active / Email Export from Actions dropdown
   // ------------------------------------------------------------------ //
+  const notifyGroupUpdateFailed = (xhr) => {
+    window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update group. Please try again."), {
+      type: "danger",
+      delay: 5000,
+    });
+  };
+
   $("#toggleGroupActive").on("click", (e) => {
     e.preventDefault();
     $.ajax({
       type: "POST",
       url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/settings/active/" + !window.CRM.groupIsActive,
       dataType: "json",
-    }).done(() => {
-      location.reload();
-    });
+    })
+      .done(() => {
+        location.reload();
+      })
+      .fail(notifyGroupUpdateFailed);
   });
 
   $("#toggleGroupEmailExport").on("click", (e) => {
@@ -315,9 +324,11 @@ function initializeGroupView() {
         "/settings/email/export/" +
         !window.CRM.groupEmailExport,
       dataType: "json",
-    }).done(() => {
-      location.reload();
-    });
+    })
+      .done(() => {
+        location.reload();
+      })
+      .fail(notifyGroupUpdateFailed);
   });
 
   // Note: email action is handled by the email-composer.min.js bundle
