@@ -236,7 +236,12 @@ jobs:
         # run every matching spec (api + ui) in this single job instead of
         # just the api ones, so api keeps shard-total empty and relies on the
         # explicit --spec filter in run-cypress-tests/action.yml instead.
-        shard-total: ${{ matrix.test-type.name == 'api' && '' || (matrix.shard-total || 1) }}
+        # NOTE: written as `name != 'api' && (...) || ''`, not
+        # `name == 'api' && '' || (...)` — with GitHub Actions' left-to-right
+        # &&/|| evaluation, `true && ''` is itself falsy, so an `== 'api'`
+        # form would fall through to the `|| (matrix.shard-total || 1)`
+        # fallback instead of returning ''.
+        shard-total: ${{ matrix.test-type.name != 'api' && (matrix.shard-total || 1) || '' }}
         shard-index: ${{ matrix.split-index || '0' }}
         docker-compose-profile: ci-root
       env:
@@ -327,7 +332,12 @@ jobs:
         # run every matching spec (api + ui) in this single job instead of
         # just the api ones, so api keeps shard-total empty and relies on the
         # explicit --spec filter in run-cypress-tests/action.yml instead.
-        shard-total: ${{ matrix.test-type.name == 'api' && '' || (matrix.shard-total || 1) }}
+        # NOTE: written as `name != 'api' && (...) || ''`, not
+        # `name == 'api' && '' || (...)` — with GitHub Actions' left-to-right
+        # &&/|| evaluation, `true && ''` is itself falsy, so an `== 'api'`
+        # form would fall through to the `|| (matrix.shard-total || 1)`
+        # fallback instead of returning ''.
+        shard-total: ${{ matrix.test-type.name != 'api' && (matrix.shard-total || 1) || '' }}
         shard-index: ${{ matrix.split-index || '0' }}
         base-url: http://127.0.0.1:8080/churchcrm/
         docker-compose-profile: ci-subdir
