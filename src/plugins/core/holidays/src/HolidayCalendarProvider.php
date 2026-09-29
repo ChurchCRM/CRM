@@ -106,7 +106,7 @@ class HolidayCalendarProvider implements SystemCalendar
             for ($year = $startYear; $year <= $endYear; $year++) {
                 $customProviderClass = "ChurchCRM\\Plugins\\Holidays\\Provider\\" . $this->yasumiCountry;
                 if (class_exists($customProviderClass)) {
-                    $holidays = $customProviderClass::create($this->yasumiCountry, $year);
+                    $holidays = new $customProviderClass($year);
                 } else {
                     $holidays = Yasumi::create($this->yasumiCountry, $year);
                 }
