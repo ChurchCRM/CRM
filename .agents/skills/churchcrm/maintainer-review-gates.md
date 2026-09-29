@@ -18,6 +18,27 @@ Do not mention CI status in the review. Failed CI is never merged; branch protec
 
 The author is a volunteer. Be thankful. Be specific. Do not nitpick.
 
+## Comment Resolution
+
+**Always resolve addressed comments as part of PR review.** If a comment's concern is addressed in the current PR code (question answered, bug fixed, design decision made), mark/resolve that comment. This keeps threads clean and shows progress.
+
+## Review Format: No Hard Blocks
+
+When a PR has no hard blocks, use this clear format instead of checkbox lists:
+
+```markdown
+Thanks @author. One short paragraph of what the PR does.
+
+**Verified:**
+- ✓ [specific item]
+- ✓ [specific item]
+- ✓ [specific item]
+
+No hard blocks.
+```
+
+**Why:** Checkboxes with all items checked causes confusion ("are these still open?"). The "Verified" + "No hard blocks" signal is unambiguous and actionable.
+
 ## Hard blocks — Request changes
 
 1. Security — XSS, injection, auth gaps, CSRF, open redirect, data leak, unsafe URL rendered to members.
