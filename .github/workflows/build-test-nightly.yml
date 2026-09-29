@@ -92,11 +92,24 @@ jobs:
           sleep 5
         done
 
-        docker run --rm \
-          -v ${{ github.workspace }}:/app \
-          -w /app/src \
-          "$COMPOSER_IMAGE" \
-          composer install --no-dev --no-interaction --prefer-dist --ignore-platform-reqs
+        # Retry composer install: transient GitHub API 500s on package zipball
+        # downloads are common and --no-interaction disables composer's own
+        # source-fallback retry.
+        for attempt in 1 2 3; do
+          if docker run --rm \
+            -v ${{ github.workspace }}:/app \
+            -w /app/src \
+            "$COMPOSER_IMAGE" \
+            composer install --no-dev --no-interaction --prefer-dist --ignore-platform-reqs; then
+            break
+          fi
+          if [ "$attempt" -eq 3 ]; then
+            echo "::error::composer install failed after 3 attempts"
+            exit 1
+          fi
+          echo "::warning::composer install failed (attempt $attempt/3); retrying in 5s"
+          sleep 5
+        done
       env:
         COMPOSER_MEMORY_LIMIT: -1
 
