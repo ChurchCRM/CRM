@@ -162,6 +162,49 @@ class OpenLPPlugin extends AbstractPlugin
     }
 
     /**
+     * Validate that a URL is not pointing to an internal/reserved IP address (SSRF mitigation).
+     *
+     * @param string $url The URL to validate
+     * @return string|null Error message if URL is invalid, null if valid
+     */
+    private function validateServerUrl(string $url): ?string
+    {
+        $parsed = parse_url($url);
+        if (!$parsed || !isset($parsed['host'])) {
+            return gettext('Invalid server URL format.');
+        }
+
+        $host = $parsed['host'];
+        $scheme = $parsed['scheme'] ?? '';
+
+        // Only allow http and https
+        if (!in_array($scheme, ['http', 'https'], true)) {
+            return gettext('Only http and https schemes are allowed.');
+        }
+
+        // Resolve hostname to IP
+        $ip = @gethostbyname($host);
+
+        // Check if hostname resolution failed
+        if ($ip === $host && !filter_var($host, FILTER_VALIDATE_IP)) {
+            return gettext('Unable to resolve server hostname.');
+        }
+
+        // If already an IP, validate it directly
+        if (filter_var($host, FILTER_VALIDATE_IP)) {
+            $ip = $host;
+        }
+
+        // Reject private/reserved IP addresses to prevent SSRF
+        // Check for loopback (127.0.0.0/8)
+        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+            return gettext('Cannot connect to private or reserved network addresses. Please configure a public OpenLP server address.');
+        }
+
+        return null;
+    }
+
+    /**
      * Test OpenLP connectivity using the provided settings.
      *
      * Makes a lightweight GET request to /api/v2/core/version without
@@ -195,6 +238,12 @@ class OpenLPPlugin extends AbstractPlugin
 
         if (!filter_var($serverUrl, FILTER_VALIDATE_URL)) {
             return ['success' => false, 'message' => gettext('Invalid server URL format.')];
+        }
+
+        // Validate URL does not point to internal/reserved IP addresses (GHSA-hrfr-xg9w-hjm4)
+        $urlValidationError = $this->validateServerUrl($serverUrl);
+        if ($urlValidationError !== null) {
+            return ['success' => false, 'message' => $urlValidationError];
         }
 
         try {

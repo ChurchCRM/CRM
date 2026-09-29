@@ -28,6 +28,48 @@ class OpenLPNotification
         $this->username = $username;
         $this->password = $password;
         $this->allowSelfSigned = $allowSelfSigned;
+
+        // Validate URL to prevent SSRF (GHSA-hrfr-xg9w-hjm4)
+        $this->validateServerUrl($this->serverUrl);
+    }
+
+    /**
+     * Validate that a URL is not pointing to an internal/reserved IP address (SSRF mitigation).
+     *
+     * @param string $url The URL to validate
+     * @throws \RuntimeException If URL points to internal/reserved address
+     */
+    private function validateServerUrl(string $url): void
+    {
+        $parsed = parse_url($url);
+        if (!$parsed || !isset($parsed['host'])) {
+            throw new \RuntimeException('Invalid OpenLP server URL format');
+        }
+
+        $host = $parsed['host'];
+        $scheme = $parsed['scheme'] ?? '';
+
+        // Only allow http and https
+        if (!in_array($scheme, ['http', 'https'], true)) {
+            throw new \RuntimeException('Invalid OpenLP server URL scheme (only http/https allowed)');
+        }
+
+        // Check if host is an IP address
+        if (filter_var($host, FILTER_VALIDATE_IP)) {
+            $ip = $host;
+        } else {
+            // Resolve hostname to IP for validation
+            $ip = @gethostbyname($host);
+            // If resolution failed, throw error
+            if ($ip === $host) {
+                throw new \RuntimeException('Unable to resolve OpenLP server hostname');
+            }
+        }
+
+        // Reject private/reserved IP addresses to prevent SSRF
+        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+            throw new \RuntimeException('Cannot connect to private or reserved network addresses');
+        }
     }
 
     public function setAlertText(string $text): void
