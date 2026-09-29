@@ -46,7 +46,7 @@ function initializeGroupList() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to create group:", error);
-        window.CRM.notify(i18next.t("Failed to create group. Please try again."), {
+        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to create group. Please try again."), {
           type: "danger",
           delay: 5000,
         });
@@ -176,7 +176,8 @@ function initializeGroupList() {
           })
           .fail((xhr) => {
             console.error("Failed to delete group:", xhr);
-            window.CRM.notify(i18next.t("Failed to delete group. Please try again."), { type: "danger", delay: 5000 });
+            const msg = xhr.responseJSON?.message || i18next.t("Failed to delete group. Please try again.");
+            window.CRM.notify(msg, { type: "danger", delay: 5000 });
           });
       },
     });
