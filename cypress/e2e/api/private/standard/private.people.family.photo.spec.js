@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { buildBlankPng } from "../../../../support/synthetic-png";
+
 describe("API Private Photo and Avatar - Family", () => {
     // Family 6 deliberately has no file under cypress/data/images/family,
     // which the dev and test compose profiles bind-mount as Images/Family.
@@ -202,6 +204,33 @@ describe("API Private Photo and Avatar - Family", () => {
             ).then((response) => {
                 expect(response.body.success).to.eq(false);
                 expect(response.body.message).to.include("Failed to upload family photo");
+            });
+        });
+
+        it("should reject an image over the decode pixel budget with 413 before decoding it", () => {
+            // Same shared helper as the person photo and church logo uploads:
+            // a valid 12000x12000 PNG of ~18 KB carries 144 million pixels and
+            // must be refused from its header, never handed to GD.
+            cy.wrap(buildBlankPng(12000, 12000)).then((hugePng) => {
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/family/${testFamilyId}/photo`,
+                    JSON.stringify({ imgBase64: hugePng }),
+                    413
+                ).then((response) => {
+                    expect(response.body.success).to.eq(false);
+                    expect(response.body.message).to.include("12000x12000");
+                    expect(response.body.message).to.include("pixels");
+                });
+            });
+
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/family/${testFamilyId}/avatar`,
+                null,
+                200
+            ).then((response) => {
+                expect(response.body.hasPhoto).to.eq(false);
             });
         });
 

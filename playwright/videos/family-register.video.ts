@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanSelect, humanType } from '../support/human';
+import { humanClick, humanPause, humanSelect, humanType, settle } from '../support/human';
 
 /**
  * A visitor self-registering their family — no login, no staff involvement.
@@ -48,7 +48,7 @@ test('family-self-register', async ({ page }, testInfo) => {
   await page.getByText('Welcome to the Family!').first().waitFor({ state: 'visible', timeout: 10000 });
   // Let the confirmation dialog sit on screen long enough for a viewer to
   // actually read it before the video ends.
-  await humanPause(page, 2500);
+  await settle(page, 2500);
 
   await captureScreen(page, testInfo, {
     name: 'family-self-register',

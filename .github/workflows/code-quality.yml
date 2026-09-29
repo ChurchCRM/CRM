@@ -30,12 +30,12 @@ jobs:
     timeout-minutes: 15
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v7
         with:
-          fetch-depth: 0
+          fetch-depth: 1
       - name: Use Node.js (from .nvmrc)
         uses: actions/setup-node@v7
         with:
@@ -49,6 +49,8 @@ jobs:
         run: npx biome format .
       - name: Lint check (biome)
         run: npx biome check webpack/
+      - name: Locale script unit tests
+        run: npm run locale:test
       - name: Seed schema charset check
         run: npm run validate:seed-charsets
       - name: MySQL upgrade script syntax check (no MariaDB-only column IF EXISTS)
@@ -63,41 +65,3 @@ jobs:
         run: npm run lint:cypress-commands
       - name: Cypress spec coverage (every spec is reachable by a config)
         run: npm run lint:cypress-spec-coverage
-
-  format-fix:
-    name: Apply format fixes
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
-    timeout-minutes: 15
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-          ref: ${{ github.head_ref }}
-          persist-credentials: true
-      - name: Use Node.js (from .nvmrc)
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-      - name: Install dependencies
-        run: npm ci
-      - name: Apply Biome format
-        run: npx biome format --write .
-      - name: Apply Biome lint fixes
-        run: npx biome check --write webpack/
-      - name: Commit format changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No formatting changes to commit"
-          else
-            git commit -m "style: apply Biome format and lint fixes"
-            # Try to push to the PR branch; if it fails (branch missing or protected), warn but don't fail the job
-            git push origin "HEAD:${{ github.head_ref }}" || true
-          fi

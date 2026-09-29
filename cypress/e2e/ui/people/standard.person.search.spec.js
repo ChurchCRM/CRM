@@ -2,7 +2,15 @@
 
 describe("Standard Person", () => {
     const uniqueSeed = Date.now().toString();
-    
+
+    // People this spec adds through PersonEditor, removed again in after()
+    // so the seeded database does not grow with every run (#9769).
+    const createdPersonIds = [];
+
+    after(() => {
+        cy.cleanupPeople(createdPersonIds);
+    });
+
     beforeEach(() => cy.setupStandardSession());
     
     it("Add Person only first and last name", () => {
@@ -14,6 +22,7 @@ describe("Standard Person", () => {
         cy.get('button[name="PersonSubmit"]').click();
 
         cy.url().should("contain", "people/view/");
+        cy.trackPersonFromUrl(createdPersonIds);
         cy.contains(name).should("be.visible");
     });
 
@@ -26,6 +35,7 @@ describe("Standard Person", () => {
         // Click FAB save button
         cy.get('button[name="PersonSubmit"]').click();
         cy.url().should("contain", "people/view/");
+        cy.trackPersonFromUrl(createdPersonIds);
         cy.contains(firstName).should("be.visible");
     });
 

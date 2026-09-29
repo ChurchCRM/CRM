@@ -12259,16 +12259,8 @@ msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Paano Magkasya ang Sunday School + Mga Kaganapan + Mga Kiosk"
 
 #: 
-msgid "Invalid date for %s — expected YYYY-MM-DD"
-msgstr "Hindi wastong petsa para sa %s — inaasahang YYYY-MM-DD"
-
-#: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Hindi wastong format ng petsa para sa rangeStart o rangeEnd"
-
-#: 
-msgid "Invalid date; expected format YYYY-MM-DD"
-msgstr "Hindi wastong petsa; inaasahang format na YYYY-MM-DD"
 
 #: 
 msgid "Invalid event type ID"
@@ -12497,10 +12489,6 @@ msgstr "Ang endDate ay dapat pagkatapos ng startDate"
 #: 
 msgid "eventIds must be a non-empty array"
 msgstr "Ang eventIds ay dapat na hindi walang laman na array"
-
-#: 
-msgid "invalid recurrence type"
-msgstr "hindi wastong uri ng paulit-ulit"
 
 #: 
 msgid "personIds must be a non-empty array"
@@ -16543,6 +16531,10 @@ msgid "Are you sure you want to remove this person from"
 msgstr "Sigurado ka bang gusto mong alisin ang taong ito mula sa"
 
 #: 
+msgid "BCC Mode"
+msgstr "Mode ng BCC"
+
+#: 
 msgid "Checked in {{count}} people."
 msgstr "Nag-check in ng {{count}} na tao."
 
@@ -17793,6 +17785,12 @@ msgid "Set up now"
 msgstr "I-set up na ngayon"
 
 #: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Kinakailangan ang two-factor authentication. Mayroon kang %d araw upang mag-enroll."
+msgstr[1] "Kinakailangan ang two-factor authentication. Mayroon kang %d araw upang mag-enroll."
+
+#: 
 msgid "Unknown family"
 msgstr "Hindi kilalang pamilya"
 
@@ -17807,4 +17805,672 @@ msgstr "I-update ang Lahat ng Coordinates ng Pamilya"
 #: 
 msgid "Update Coordinates"
 msgstr "I-update ang Coordinates"
+
+#: 
+msgid "%s was the Head of this family and has been marked deceased. Please assign a new Head of Household."
+msgstr "Si %s ang Pinuno ng pamilyang ito at minarkahan bilang yumao. Mangyaring magtalaga ng bagong Pinuno ng Sambahayan."
+
+#: 
+msgid "Accept"
+msgstr "Tanggapin"
+
+#: 
+msgid "Active Now"
+msgstr "Aktibo Ngayon"
+
+#: 
+msgid "Adding..."
+msgstr "Nagdaragdag..."
+
+#: 
+msgid "All CRM members with email are subscribed to this list!"
+msgstr "Lahat ng miyembro ng CRM na may email ay naka-subscribe sa listahang ito!"
+
+#: 
+msgid "All MailChimp subscribers are in ChurchCRM!"
+msgstr "Lahat ng subscriber ng MailChimp ay nasa ChurchCRM!"
+
+#: 
+msgid "An error occurred while deleting files."
+msgstr "May naganap na error habang binubura ang mga file."
+
+#: 
+msgid "Are you absolutely sure? This will erase all data and restore factory defaults."
+msgstr "Sigurado ka ba talaga? Buburahin nito ang lahat ng data at ibabalik sa orihinal na factory settings."
+
+#: 
+msgid "Are you sure you want to delete ALL log files? This action cannot be undone."
+msgstr "Sigurado ka bang gusto mong burahin ang LAHAT ng log file? Hindi na maaaring bawiin ang aksyong ito."
+
+#: 
+msgid "Are you sure you want to delete kiosk"
+msgstr "Sigurado ka bang gusto mong burahin ang kiosk"
+
+#: 
+msgid "Are you sure you want to delete the link"
+msgstr "Sigurado ka bang gusto mong burahin ang link"
+
+#: 
+msgid "Assignment"
+msgstr "Pagtatalaga"
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) have never run on this installation."
+msgstr "Ang mga background job (mga email sa kaarawan at bawat naka-iskedyul na gawain ng plugin) ay hindi pa kailanman tumakbo sa installation na ito."
+
+#: 
+msgid "Background jobs (birthday emails and every plugin scheduled task) last ran on %s."
+msgstr "Ang mga background job (mga email sa kaarawan at bawat naka-iskedyul na gawain ng plugin) ay huling tumakbo noong %s."
+
+#: 
+msgid "Backing up..."
+msgstr "Gumagawa ng Backup..."
+
+#: 
+msgid "Backup downloaded."
+msgstr "Na-download ang backup."
+
+#: 
+msgid "Backup uploaded successfully"
+msgstr "Matagumpay na na-upload ang backup"
+
+#: 
+msgid "Can't change your own active status"
+msgstr "Hindi mo mababago ang sarili mong active status"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Matagumpay na natapos ang pag-export sa ChMeetings"
+
+#: 
+msgid "Changes saved successfully"
+msgstr "Matagumpay na na-save ang mga pagbabago"
+
+#: 
+msgid "Check everyone out and deactivate all"
+msgstr "I-check-out ang lahat at i-deactivate ang lahat"
+
+#: 
+msgid "Check everyone out and deactivate this event?"
+msgstr "I-check-out ang lahat at i-deactivate ang event na ito?"
+
+#: 
+msgid "Check your email for a password reset link"
+msgstr "Tingnan ang iyong email para sa link ng pag-reset ng password"
+
+#: 
+msgid "Close stuck events?"
+msgstr "Isara ang mga hindi natapos na event?"
+
+#: 
+msgid "Comments"
+msgstr "Mga Komento"
+
+#: 
+msgid "Could not load email preview. Please close and try again."
+msgstr "Hindi ma-load ang preview ng email. Isara at subukang muli."
+
+#: 
+msgid "Creating and uploading backup. This may take several minutes..."
+msgstr "Gumagawa at nag-a-upload ng backup. Maaaring tumagal ito ng ilang minuto..."
+
+#: 
+msgid "Database reset failed."
+msgstr "Nabigo ang pag-reset ng database."
+
+#: 
+msgid "Deceased"
+msgstr "Yumao"
+
+#: 
+msgid "Default admin credentials"
+msgstr "Mga default na kredensyal ng admin"
+
+#: 
+msgid "Delete Kiosk"
+msgstr "Burahin ang Kiosk"
+
+#: 
+msgid "Deleted Files"
+msgstr "Mga Nabura na File"
+
+#: 
+msgid "Deleting..."
+msgstr "Binubura..."
+
+#: 
+msgid "Download returned without attachment headers."
+msgstr "Nagbalik ang pag-download nang walang mga header ng attachment."
+
+#: 
+msgid "Error deleting log file."
+msgstr "Error sa pagbura ng log file."
+
+#: 
+msgid "Error deleting log files."
+msgstr "Error sa pagbura ng mga log file."
+
+#: 
+msgid "Error downloading log file."
+msgstr "Error sa pag-download ng log file."
+
+#: 
+msgid "Error initiating download."
+msgstr "Error sa pagsisimula ng pag-download."
+
+#: 
+msgid "Error loading log file."
+msgstr "Error sa pag-load ng log file."
+
+#: 
+msgid "Error loading self-registered entries"
+msgstr "Error sa pag-load ng mga self-registered na entry"
+
+#: 
+msgid "Errors"
+msgstr "Mga Error"
+
+#: 
+msgid "Exclude deceased members from the printed directory and CSV exports."
+msgstr "Ibukod ang mga yumaong miyembro sa naka-print na directory at CSV export."
+
+#: 
+msgid "Failed Files"
+msgstr "Mga Nabigong File"
+
+#: 
+msgid "Failed to add link"
+msgstr "Nabigong magdagdag ng link"
+
+#: 
+msgid "Failed to add option"
+msgstr "Nabigong magdagdag ng option"
+
+#: 
+msgid "Failed to close events. Please try again."
+msgstr "Nabigong isara ang mga event. Subukang muli."
+
+#: 
+msgid "Failed to delete"
+msgstr "Nabigong burahin"
+
+#: 
+msgid "Failed to enable kiosk registration"
+msgstr "Nabigong i-enable ang pagpaparehistro sa kiosk"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Nabigong i-export ang CSV ng ChMeetings"
+
+#: 
+msgid "Failed to load audit. Please try again."
+msgstr "Nabigong i-load ang audit. Subukang muli."
+
+#: 
+msgid "Failed to rename kiosk"
+msgstr "Nabigong palitan ang pangalan ng kiosk"
+
+#: 
+msgid "Failed to save changes"
+msgstr "Nabigong i-save ang mga pagbabago"
+
+#: 
+msgid "Failed to update plugin"
+msgstr "Nabigong i-update ang plugin"
+
+#: 
+msgid "Family Id"
+msgstr "ID ng Pamilya"
+
+#: 
+msgid "Final Confirmation"
+msgstr "Huling Kumpirmasyon"
+
+#: 
+msgid "Geocoding families… this can take a few minutes. You can keep this page open."
+msgstr "Ginagawang geocode ang mga pamilya… maaaring tumagal ito ng ilang minuto. Maaari mong iwanang bukas ang pahinang ito."
+
+#: 
+msgid "Geocoding families… {{done}} of {{total}} processed, {{geocoded}} located."
+msgstr "Ginagawang geocode ang mga pamilya… {{done}} sa {{total}} ang naproseso, {{geocoded}} ang nahanap."
+
+#: 
+msgid "Head of Household Update Needed"
+msgstr "Kailangan ng Update sa Pinuno ng Sambahayan"
+
+#: 
+msgid "Helpful Links"
+msgstr "Mga Kapaki-pakinabang na Link"
+
+#: 
+msgid "Hide Deceased from Directory"
+msgstr "Itago ang mga Yumao sa Directory"
+
+#: 
+msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr "Itago ang mga yumaong miyembro sa naka-print na directory at CSV export."
+
+#: 
+msgid "Identify"
+msgstr "Kilalanin"
+
+#: 
+msgid "Identify command sent"
+msgstr "Naipadala ang utos na Kilalanin"
+
+#: 
+msgid "Individual"
+msgstr "Indibidwal"
+
+#: 
+msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
+msgstr "Panloob: huling petsa at oras na natapos ang mga background timer job (YYYY-MM-DD HH:MM:SS). Huwag i-edit nang manu-mano."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Matagumpay na nabura ang item"
+
+#: 
+msgid "Kiosk Name"
+msgstr "Pangalan ng Kiosk"
+
+#: 
+msgid "Kiosk accepted"
+msgstr "Tinanggap ang kiosk"
+
+#: 
+msgid "Kiosk deleted successfully"
+msgstr "Matagumpay na nabura ang kiosk"
+
+#: 
+msgid "Kiosk must be accepted"
+msgstr "Dapat tanggapin ang kiosk"
+
+#: 
+msgid "Kiosk renamed"
+msgstr "Napalitan ang pangalan ng kiosk"
+
+#: 
+msgid "Last seen"
+msgstr "Huling Nakita"
+
+#: 
+msgid "Link added successfully"
+msgstr "Matagumpay na naidagdag ang link"
+
+#: 
+msgid "Link deleted"
+msgstr "Nabura ang link"
+
+#: 
+msgid "Link name cannot contain HTML tags"
+msgstr "Hindi maaaring maglaman ng HTML tag ang pangalan ng link"
+
+#: 
+msgid "Living"
+msgstr "Buhay"
+
+#: 
+msgid "Log settings saved"
+msgstr "Na-save ang mga setting ng log"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Kailangan ang Login Name"
+
+#: 
+msgid "Marked the Person as Active"
+msgstr "Minarkahan ang Tao bilang Aktibo"
+
+#: 
+msgid "Marked the Person as Inactive"
+msgstr "Minarkahan ang Tao bilang Hindi Aktibo"
+
+#: 
+msgid "Minimum number of minutes between background timer-job runs triggered by a page load. Stops a busy Sunday morning from running the jobs once per page view. Does not apply to the command-line runner. Set to 0 to run on every page load."
+msgstr "Ang pinakamababang bilang ng minuto sa pagitan ng mga pagtakbo ng background timer-job na na-trigger ng pag-load ng pahina. Pumipigil ito sa isang abalang umaga ng Linggo na patakbuhin ang mga job sa bawat pagtingin ng pahina. Hindi ito naaangkop sa command-line runner. Itakda sa 0 para tumakbo sa bawat pag-load ng pahina."
+
+#: 
+msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
+msgstr "Ang mga bagong user ay hindi makakatanggap ng welcome email, at hindi kailanman ipinapakita ang nabuong password. Pagkatapos gumawa ng account, magtakda ng isa mula sa System Users gamit ang Change Password — o i-configure muna ang email."
+
+#: 
+msgid "No changes to save"
+msgstr "Walang pagbabagong i-save"
+
+#: 
+msgid "No contact info"
+msgstr "Walang impormasyon sa pakikipag-ugnayan"
+
+#: 
+msgid "No custom links configured. Add one above!"
+msgstr "Walang naka-configure na custom na link. Magdagdag ng isa sa itaas!"
+
+#: 
+msgid "No email"
+msgstr "Walang email"
+
+#: 
+msgid "No files were deleted."
+msgstr "Walang na-buraang file."
+
+#: 
+msgid "No help available for this plugin."
+msgstr "Walang available na tulong para sa plugin na ito."
+
+#: 
+msgid "No people to add - all are already in cart"
+msgstr "Walang taong maidaragdag - nasa cart na ang lahat"
+
+#: 
+msgid "No people to add - filter returned no results"
+msgstr "Walang taong maidaragdag - walang resulta ang filter"
+
+#: 
+msgid "Not a valid date of death"
+msgstr "Hindi wastong petsa ng kamatayan"
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Bilang ng mga araw na mayroon ang mga user para mag-enroll sa 2FA kapag ito ay ipinag-utos. Itakda sa 0 para ipatupad kaagad. Ang pagpapaikli ng aktibong grace period ay maaaring agad na maglock-out sa mga user."
+
+#: 
+msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
+msgstr "Gawin lamang ito matapos maayos ang pangunahing isyu. Kakailanganin mo pa ring i-click ang Enable bago muling tumakbo ang plugin."
+
+#: 
+msgid "Please confirm activation of person"
+msgstr "Pakumpirma ang pag-activate ng tao"
+
+#: 
+msgid "Please confirm deactivation of person"
+msgstr "Pakumpirma ang pag-deactivate ng tao"
+
+#: 
+msgid "Plugin status updated"
+msgstr "Na-update ang status ng plugin"
+
+#: 
+msgid "Registered"
+msgstr "Nakarehistro"
+
+#: 
+msgid "Reload"
+msgstr "I-reload"
+
+#: 
+msgid "Reload command sent"
+msgstr "Naipadala ang utos na I-reload"
+
+#: 
+msgid "Rename"
+msgstr "Palitan ang Pangalan"
+
+#: 
+msgid "Rename Kiosk"
+msgstr "Palitan ang Pangalan ng Kiosk"
+
+#: 
+msgid "Reset Complete"
+msgstr "Tapos na ang Pag-reset"
+
+#: 
+msgid "Reset Settings"
+msgstr "I-reset ang mga Setting"
+
+#: 
+msgid "Resetting..."
+msgstr "Nire-reset..."
+
+#: 
+msgid "Scheduled tasks are not running"
+msgstr "Hindi tumatakbo ang mga naka-iskedyul na gawain"
+
+#: 
+msgid "Security token missing. Please refresh the page."
+msgstr "Nawawala ang security token. Pakiusap i-refresh ang pahina."
+
+#: 
+msgid "Select…"
+msgstr "Pumili…"
+
+#: 
+msgid "Sending..."
+msgstr "Ipinapadala..."
+
+#: 
+msgid "Sending…"
+msgstr "Ipinapadala…"
+
+#: 
+msgid "Settings reset"
+msgstr "Na-reset ang mga setting"
+
+#: 
+msgid "Settings saved"
+msgstr "Na-save ang mga setting"
+
+#: 
+msgid "Settings saved. Refreshing upgrade info..."
+msgstr "Na-save ang mga setting. Ni-refresh ang impormasyon ng upgrade..."
+
+#: 
+msgid "Showing active persons only."
+msgstr "Ipinapakita lamang ang mga aktibong tao."
+
+#: 
+msgid "Showing inactive persons only."
+msgstr "Ipinapakita lamang ang mga hindi aktibong tao."
+
+#: 
+msgid "Successfully deleted"
+msgstr "Matagumpay na nabura"
+
+#: 
+msgid "Testing..."
+msgstr "Sinusubok..."
+
+#: 
+msgid "The database has been cleared. The system is ready for a fresh start."
+msgstr "Nalinis na ang database. Handa na ang sistema para sa panibagong simula."
+
+#: 
+msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
+msgstr "Patuloy na gumagana ang page-load fallback samantala. Baguhin kung gaano katagal maghihintay ang ChurchCRM bago ipakita ang babalang ito gamit ang setting na %1$s, o itakda sa 0 para itago ito."
+
+#: 
+msgid "This Person is Inactive"
+msgstr "Hindi Aktibo ang Taong Ito"
+
+#: 
+msgid "This finds map coordinates for every family that is missing them, using OpenStreetMap. It works through the families in batches of 50, about a minute per batch. You can keep this page open while it runs. Continue?"
+msgstr "Hinahanap nito ang mga koordinada sa mapa para sa bawat pamilyang kulang nito, gamit ang OpenStreetMap. Pinoproseso nito ang mga pamilya sa mga batch na 50, humigit-kumulang isang minuto bawat batch. Maaari mong iwanang bukas ang pahinang ito habang tumatakbo ito. Magpatuloy?"
+
+#: 
+msgid "This person is deceased"
+msgstr "Yumao na ang taong ito"
+
+#: 
+msgid "This will clear all configured values for this plugin. This cannot be undone."
+msgstr "Buburahin nito ang lahat ng naka-configure na value para sa plugin na ito. Hindi na ito maaaring bawiin."
+
+#: 
+msgid "This will permanently delete the plugin files from disk and clear its settings. This cannot be undone."
+msgstr "Permanenteng buburahin nito ang mga file ng plugin mula sa disk at buburahin ang mga setting nito. Hindi na ito maaaring bawiin."
+
+#: 
+msgid "URL cannot contain HTML tags"
+msgstr "Hindi maaaring maglaman ng HTML tag ang URL"
+
+#: 
+msgid "Unexpected error. Please try again."
+msgstr "Hindi inaasahang error. Subukang muli."
+
+#: 
+msgid "Uninstall Plugin"
+msgstr "I-uninstall ang Plugin"
+
+#: 
+msgid "Upcoming"
+msgstr "Paparating"
+
+#: 
+msgid "Valid Until"
+msgstr "Wasto Hanggang"
+
+#: 
+msgid "View active only"
+msgstr "Tingnan lang ang aktibo"
+
+#: 
+msgid "View all"
+msgstr "Tingnan Lahat"
+
+#: 
+msgid "View all (including inactive)"
+msgstr "Tingnan Lahat (kasama ang hindi aktibo)"
+
+#: 
+msgid "View inactive only"
+msgstr "Tingnan lang ang hindi aktibo"
+
+#: 
+msgid "Warn on the admin dashboard when the background timer jobs have not run for this many hours. 26 allows for a daily cron plus some drift. Set to 0 to disable the warning."
+msgstr "Magbabala sa admin dashboard kapag hindi tumakbo ang mga background timer job sa loob ng ganitong bilang ng oras. Ang 26 ay nagbibigay-luwag para sa pang-araw-araw na cron kasama ang kaunting drift. Itakda sa 0 para huwag paganahin ang babala."
+
+#: 
+msgid "Without a scheduler these jobs only run when somebody loads a page, so a quiet weekday sends no scheduled mail at all. Add a cron entry that runs the task runner hourly, as the same user your web server runs as"
+msgstr "Kung walang scheduler, tumatakbo lamang ang mga job na ito kapag may nag-load ng pahina, kaya sa isang tahimik na araw ng trabaho ay walang naipapadalang naka-iskedyul na mail. Magdagdag ng cron entry na nagpapatakbo sa task runner bawat oras, gamit ang parehong user na pinagtatakbuhan ng iyong web server"
+
+#: 
+msgid "check-outs"
+msgstr "mga check-out"
+
+#: 
+msgid "deceased"
+msgstr "yumao"
+
+#: 
+msgid "events?"
+msgstr "mga event?"
+
+#: 
+msgid "files"
+msgstr "mga file"
+
+#: 
+msgid "people from cart?"
+msgstr "mga tao mula sa cart?"
+
+#: 
+msgid "skip must be zero or a positive integer"
+msgstr "Ang skip ay dapat zero o isang positibong integer"
+
+#: 
+msgid "view families missing an email"
+msgstr "tingnan ang mga pamilyang walang email"
+
+#: 
+msgid "Buyers This Fiscal Year"
+msgstr "Mga Bumili Ngayong Fiscal Year"
+
+#: 
+msgid "Current"
+msgstr "Kasalukuyan"
+
+#: 
+msgid "Items Donated (This Fiscal Year)"
+msgstr "Mga Item na Idinonasyon (Ngayong Fiscal Year)"
+
+#: 
+msgid "Login must be %d characters or fewer!"
+msgstr "Ang Login ay dapat %d character o mas kaunti!"
+
+#: 
+msgid "Raised This Fiscal Year"
+msgstr "Naipong Halaga Ngayong Fiscal Year"
+
+#: 
+msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
+msgstr "Ang %s ay dapat kumpletong https:// web address, halimbawa https://example.org/yourchurch."
+
+#: 
+msgid "Account has limited permissions. Contact an administrator."
+msgstr "May limitadong pahintulot ang account. Makipag-ugnayan sa isang administrator."
+
+#: 
+msgid "An error occurred while rendering the error page."
+msgstr "May naganap na error habang ini-render ang error page."
+
+#: 
+msgid "Each address must start with https://"
+msgstr "Ang bawat address ay dapat magsimula sa https://"
+
+#: 
+msgid "Generate Labels"
+msgstr "Bumuo ng mga Label"
+
+#: 
+msgid "Generate mailing labels"
+msgstr "Bumuo ng mga mailing label"
+
+#: 
+msgid "Labels"
+msgstr "Mga Label"
+
+#: 
+msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
+msgstr "Mga mailing label para sa mga taong nasa iyong cart. Ang taong walang sariling address ay gagamit ng address ng kanilang pamilya."
+
+#: 
+msgid "Optional. Links to the church's own accounts, shown to members on pages such as the portal footer. Leave a field blank to hide that network."
+msgstr "Opsyonal. Mga link sa sariling account ng simbahan, ipinapakita sa mga miyembro sa mga pahina tulad ng footer ng portal. Iwanang blangko ang isang field para itago ang network na iyon."
+
+#: 
+msgid "Options"
+msgstr "Mga Opsyon"
+
+#: 
+msgid "Scheduled Tasks"
+msgstr "Mga Naka-iskedyul na Gawain"
+
+#: 
+msgid "Active, seconds left: {{seconds}}"
+msgstr "Aktibo, {{seconds}} segundo na lang"
+
+#: 
+msgid "Expected interval between runs (hours): %d."
+msgstr "Inaasahang agwat sa pagitan ng mga pagtakbo (oras): %d."
+
+#: 
+msgid "Families skipped (no email address on file): {{total}}"
+msgstr "Mga pamilyang nilaktawan (walang naitalang email address): {{total}}"
+
+#: 
+msgid "Families that could not be geocoded: {{total}}"
+msgstr "Mga pamilyang hindi na-geocode: {{total}}"
+
+#: 
+msgid "Families to receive confirmation emails: {{total}}"
+msgstr "Mga pamilyang tatanggap ng confirmation email: {{total}}"
+
+#: 
+msgid "Members copied: {{total}}"
+msgstr "Mga miyembrong kinopya: {{total}}"
+
+#: 
+msgid "Not listed here: {{total}} more"
+msgstr "Hindi nakalista dito: {{total}} pa"
+
+#: 
+msgid "Recipients: {{total}} — too many for a mailto: link. Use Copy Addresses instead."
+msgstr "Mga tatanggap: {{total}} — masyadong marami para sa isang mailto: link. Gamitin na lang ang Copy Addresses."
+
+#: 
+msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr "Masyadong maraming tatanggap para sa email client ({{total}} > {{max}}). Gamitin na lang ang Copy Addresses."
+
+#: 
+msgid "{{minutes}} min left"
+msgstr "{{minutes}} min na lang"
 
