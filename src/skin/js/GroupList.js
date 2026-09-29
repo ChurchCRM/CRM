@@ -131,7 +131,7 @@ function initializeGroupList() {
               ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="fa-solid fa-cart-arrow-down me-2"></i><span class="cart-label">${i18next.t("Remove all from Cart")}</span></button>`
               : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add all to Cart")}</span></button>`
             : "";
-          const escapedName = window.CRM.escapeHtml(full.Name || "");
+          const escapedName = window.CRM.escapeAttribute(full.Name || "");
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
