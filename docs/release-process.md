@@ -192,12 +192,12 @@ Goal: the exact commit being released is built, fully tested, and its scope is c
 | 4.5 | Milestones: closes `<version>`, creates the next milestone (from `master`'s `package.json`) if missing, and moves every still-open issue/PR into it. Skipped for pre-releases | same workflow, job `manage-milestones` | 🤖 |
 | 4.6 | Docs milestones: makes sure `<version>` and next exist in `ChurchCRM/docs.churchcrm.io`, keeping held docs PRs on the released one | same workflow, job `sync-docs-milestones`; needs the `DOCS_RELEASE_TOKEN` secret | 🤖 |
 | 4.7 | Post-release nightly: the full nightly suite, including the upgrade matrix, runs against the published release | [`build-test-nightly.yml`](../.github/workflows/build-test-nightly.yml) on `release: published` | 🤖 |
-| 4.8 | Publish draft GHSA advisories: any draft security advisories that were fixed in this release are now published with the patched version. | https://github.com/ChurchCRM/CRM/security/advisories — find all drafts with `patched_version` = the released version, set state to `published` | ✋ (manual, same-day) |
+| 4.8 | Verify draft advisories are published: any draft GHSA advisories with `patched_version` = the released version should now be public (they may auto-publish on release, or may need manual publish) | https://github.com/ChurchCRM/CRM/security/advisories — verify all fixed advisories show `published` state | ✋ (verify, same-day) |
 
 ### Automation notes
 
 - 4.2/4.3: the release notes from 3.2 are what every admin reads in-app, so they are the widest-reaching copy in the release, more than social posts. That's one more reason to keep them user-facing.
-- 4.8: Could be automated as a post-publish workflow job that queries the GitHub API for draft advisories with `patched_version` matching the published release, then publishes each one. This ensures advisories are disclosed as soon as patches are released, following responsible disclosure practice.
+- 4.8: Advisories are kept in draft until the release is published, then made public. GitHub may auto-publish them; if not, a job could query the API for draft advisories with `patched_version` matching the published release and transition them to published state. This ensures responsible disclosure: vulnerability details are not public until users can upgrade.
 - 4.3: the changelog link is dead until `release-bookkeeping.yml` finishes and pushes `changelog/<version>.md` to `master`. If that job fails, the wizard links a 404. Add a post-publish check that the file exists.
 - 4.2: pre-releases are skipped, so `prerelease=true` in 3.1 is a safe way to ship an RC without notifying admins.
 - 4.4–4.6 first ran for 7.7.1 and failed (see Status). #10086 sets `TAG` once for all jobs, rejects non-version tags, and stops if `master` wasn't bumped; the docs job needs `DOCS_RELEASE_TOKEN` (#10097). Re-run by hand with `workflow_dispatch` (`tag`).
