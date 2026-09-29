@@ -8,13 +8,13 @@ ChurchCRM is open-source and self-hosted, so a church can choose where its infor
 
 ## Use Cases & Current Features
 
-ChurchCRM in the Holy Family workspace (`https://crm.icgchft.com`) provides full featured management for administrators, pastors, and church leaders:
+ChurchCRM provides full featured management for administrators, pastors, and church leaders:
 
 * **Member & Family Directory**: Centralized management of member profiles, family groupings, contact information, addresses, and demographic attributes.
 * **Sunday Attendance Check-in**: Fast service check-in routines optimized for Sunday morning services and mid-week Bible study tracking.
 * **Ministry & Group Rosters**: Management of departmental teams (Men, Women, Youth, Media), cell groups, and leadership roles.
 * **Financial & Contribution Tracking**: Secure logging of member tithes, offerings, pledges, and automatic tax/annual statement generation.
-* **Production Deployment & Security**: Configured on Hetzner Cloud with HTTPS via Apache reverse proxy, MariaDB database, and daily automated backup rotation.
+* **Deployment & Security**: Configured for HTTPS via reverse proxy, MariaDB database, and automated backup rotation.
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![GitHub All Releases](https://img.shields.io/github/downloads/ChurchCRM/CRM/total?color=blue&logo=github)](https://github.com/ChurchCRM/CRM/releases)
@@ -25,9 +25,9 @@ ChurchCRM in the Holy Family workspace (`https://crm.icgchft.com`) provides full
 
 See the real product before you decide:
 
-- **[Try the live demo](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_demo)** — Softaculous creates a private, temporary ChurchCRM instance for you. It expires automatically; use fictional data only.
-- **[Install ChurchCRM](https://churchcrm.io/install.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_install)** — run it on your own hosting with the official installation guidance.
-- **[Read the documentation](https://docs.churchcrm.io/)** — installation, configuration, administration, and user guides.
+- **[Try the live demo](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_demo)**: Softaculous creates a private, temporary ChurchCRM instance for you. It expires automatically; use fictional data only.
+- **[Install ChurchCRM](https://churchcrm.io/install.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_readme_install)**: run it on your own hosting with the official installation guidance.
+- **[Read the documentation](https://docs.churchcrm.io/)**: installation, configuration, administration, and user guides.
 
 ## What churches use it for
 

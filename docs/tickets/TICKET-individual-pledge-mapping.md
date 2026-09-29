@@ -5,7 +5,7 @@
 **Priority**: Medium  
 **Created**: 2026-09-29  
 
----
+***
 
 ## 1. Requirement & Background
 In standard ChurchCRM / HolyFamily CRM, pledges and payments are associated exclusively with a `Family` entity (`plg_FamID` in table `pledge_plg`). 
@@ -15,7 +15,7 @@ Users needed the ability to attribute pledges to **specific individual family me
 2. Upstream CRM upgrades and database migrations continue running with zero schema conflicts or merge friction.
 3. Standard household reporting and tax summaries (`FamilyPledgeSummary`) remain 100% operational.
 
----
+***
 
 ## 2. Architecture & Design
 
@@ -35,30 +35,36 @@ A non-invasive **sidecar mapping table** approach was implemented.
 * **Upgrade-Safe**: Upstream migrations (`mysql/upgrade/*.sql`) will execute cleanly without column conflicts.
 * **High Performance**: $O(1)$ indexed lookup on `ppm_plg_id` with sub-millisecond overhead.
 
----
+***
 
 ## 3. Files Created & Modified
 
 ### New Files
-1. **[custom_person_pledge_map.sql](file:///c:/Users/HP/source/work/HolyFamily/hf-crm/src/mysql/upgrade/custom_person_pledge_map.sql)**
+1. **[custom_person_pledge_map.sql](../../src/mysql/upgrade/custom_person_pledge_map.sql)**
    * DDL script establishing the `person_pledge_map` table (`ppm_plg_id`, `ppm_per_id`).
-2. **[PersonPledgeService.php](file:///c:/Users/HP/source/work/HolyFamily/hf-crm/src/ChurchCRM/Service/PersonPledgeService.php)**
-   * Service class managing table auto-creation, mapping persistence, lookup, and cleanup methods (`setPersonForPledge`, `getPersonForPledge`, `deleteMappingForPledge`, `getFamilyMembers`).
+2. **[PersonPledgeService.php](../../src/ChurchCRM/Service/PersonPledgeService.php)**
+   * Service class managing table mapping persistence, lookup, and cleanup methods (`setPersonForPledge`, `getPersonForPledge`, `getPersonsForPledges`, `deleteMappingForPledge`, `getFamilyMembers`).
 
 ### Modified Files
-1. **[PledgeEditor.php](file:///c:/Users/HP/source/work/HolyFamily/hf-crm/src/PledgeEditor.php#L560)**
+1. **[editor.php](../../src/finance/views/pledges/editor.php)**
    * Added `Pledged By (Individual)` selection dropdown populated with family members.
-   * Saved individual attribution to `person_pledge_map` upon pledge submission or edit.
-2. **[PledgeDelete.php](file:///c:/Users/HP/source/work/HolyFamily/hf-crm/src/PledgeDelete.php#L48)**
-   * Cleaned up `person_pledge_map` rows when a pledge or pledge group key is deleted.
-3. **[finance-payments.php](file:///c:/Users/HP/source/work/HolyFamily/hf-crm/src/api/routes/finance/finance-payments.php#L54)**
-   * Updated `POST /api/payments` endpoint to accept optional `PersonId`.
-   * Updated `GET /api/payments/family/{familyId}/list` endpoint to return `PersonId` in payment history payload.
+   * Dynamic loading of family members when family selection changes.
+   * Saved individual attribution (`PersonId`) in `collectPayload()` upon pledge submission or edit.
+2. **[pledges.php](../../src/finance/routes/pledges.php)**
+   * Hydrated `personId` for existing pledges using `pledgeId` from the pledge details header.
+3. **[finance-payments.php](../../src/api/routes/finance/finance-payments.php)**
+   * Updated `POST /api/payments/`, `POST /api/payments/pledges`, and `PUT /api/payments/{groupKey}` endpoints to persist individual pledge attribution.
+   * Updated `GET /api/payments/family/{familyId}/list` endpoint with batched lookup to return `PersonId` in payment history without N+1 queries.
+   * Added `GET /api/payments/family/{familyId}/members` endpoint for dynamic family member retrieval in the editor.
+   * Handled cleanup of `person_pledge_map` on pledge group deletion.
+4. **[FinancialService.php](../../src/ChurchCRM/Service/FinancialService.php)**
+   * Added `pledgeId` to the header and funds returned by `getPledgesByGroupKey()`.
+   * Ensured `person_pledge_map` entries are cleaned up when updating or deleting pledge groups.
 
----
+***
 
 ## 4. Verification & Testing
-* **Database Creation**: Verified `person_pledge_map` schema initialization.
-* **Form & UI Test**: Verified member dropdown population and state persistence on `PledgeEditor.php`.
+* **Database Migration**: Verified `person_pledge_map` schema registration in `upgrade.json` and `Install.sql`.
+* **Form & UI Test**: Verified member dropdown population and state persistence on `editor.php`.
 * **API Test**: Verified `PersonId` submission and extraction in finance API endpoints.
 * **Deletion Cleanup Test**: Verified removal of map entries upon pledge deletion.
