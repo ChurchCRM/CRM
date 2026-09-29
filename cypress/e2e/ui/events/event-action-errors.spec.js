@@ -104,6 +104,7 @@ describe("Event actions show the server's reason (#10131)", () => {
         fromPage("POST", `events/${rosterEventId}/status`, { active: false });
         cy.get('.roster-action-btn[data-action="checkin"][data-person-id="3"]').click();
         expectServerReason("@rosterCheckin");
+        fromPage("POST", `events/${rosterEventId}/status`, { active: true });
     });
 
     it("Check-in: Check In All on an event deactivated elsewhere", () => {
