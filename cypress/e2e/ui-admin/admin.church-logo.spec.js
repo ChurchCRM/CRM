@@ -191,7 +191,7 @@ describe("Admin - Church Logo", () => {
         });
 
         cy.wait("@uploadLogo").then(({ request, response }) => {
-            expect(request.body.length).to.be.lessThan(2 * 1024 * 1024);
+            expect(JSON.stringify(request.body).length).to.be.lessThan(2 * 1024 * 1024);
             expect(response.statusCode).to.equal(200);
         });
         cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
