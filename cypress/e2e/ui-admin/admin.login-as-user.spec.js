@@ -178,8 +178,8 @@ describe("Admin Login as User (masquerade)", () => {
             .and("contain.text", `You are logged in as ${MUST_CHANGE_USER_NAME}.`);
 
         // Another page of theirs, and still no password screen.
-        cy.visit("/v2/cart");
-        cy.url().should("include", "/v2/cart").and("not.include", "changepassword");
+        cy.visit("/people/cart");
+        cy.url().should("include", "/people/cart").and("not.include", "changepassword");
         cy.get("#impersonationBanner").should("be.visible");
 
         cy.get("#impersonationExit").should("be.visible").click();
