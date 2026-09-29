@@ -136,6 +136,7 @@ Goal: the exact commit being released is built, fully tested, and its scope is c
 - [ ] Latest green nightly SHA = `master` HEAD (2.1)
 - [ ] Build/Test/Package green on `master` HEAD, ZIP artifact present (2.2)
 - [ ] Milestone `<version>` has no open issue or PR that should ship (2.3)
+- [ ] No GHSA advisories with High severity are in unpublished/draft state (2.4 — blocks release)
 
 **Wall-clock:** 2.1 and 2.2 run in parallel, so about **48 min P90** when the nightly must be run by hand, plus the milestone review.
 
@@ -144,10 +145,12 @@ Goal: the exact commit being released is built, fully tested, and its scope is c
 | 2.1 | Compare the latest successful nightly run's SHA with `master` HEAD. If they differ, run the nightly manually and wait for green | [`build-test-nightly.yml`](../.github/workflows/build-test-nightly.yml): build, root and subdir suites, setup wizard, locale smoke, upgrade matrix (PHP 8.4/8.5 × MySQL/MariaDB). Manual runs: P50 29 min, **P90 47.5 min** (8 runs); scheduled: P50 21 min, P90 23 min (29 runs); Aug 17 – Sep 25 2026 | ✋ check & trigger / 🤖 run |
 | 2.2 | Confirm `Build, Test and Package` on `master` HEAD is completed and green. Its `ChurchCRM-<version>.zip` artifact is the file that gets released | [`build-test-package.yml`](../.github/workflows/build-test-package.yml) runs on every push to `master`. Master pushes: P50 26 min, **P90 36 min** (30 successful runs, Sep 23–26 2026) | 🤖 run / ✋ check |
 | 2.3 | Review the GitHub milestone matching `package.json` version on `master`; take off any open issue or PR (it will not ship). Double-check of automation | Milestones → `<version>`. Anything blocking gets fixed first; the rest is removed | ✋ (judgment) |
+| 2.4 | Check for unpublished High-severity GHSA advisories — these block the release | Visit https://github.com/ChurchCRM/CRM/security/advisories and filter by state=draft, severity=High. If any exist, fix and publish first (or defer to next release) | ✋ (judgment) |
 
 ### Automation notes
 
 - 2.1 (**#10095**): run after Phase 1 finishes, because every locale PR merge moves HEAD and invalidates the nightly SHA. The SHA comparison is scriptable. A `release-readiness` workflow could compare HEAD against the last green nightly and dispatch the nightly itself when they differ.
+- 2.4: The GHSA advisory list can be queried via GitHub API (GraphQL or REST). A readiness report could check for unpublished High-severity advisories and fail the gate automatically, listing which advisories block the release (title, ID, severity). This prevents accidental releases with unpatched security issues.
 - The cron is `0 3 * * *` but scheduled runs start at ~08:00–08:30 UTC (GitHub queue delay). Don't count on the 03:00 run being done by morning in US time zones.
 - Reliability: 10 of the last 53 runs failed (8 of the last 30), most recently #48 on 2026-09-22. A red nightly blocks the release until it's root-caused.
 - Check, 2026-09-26: last green nightly #53 is on `43a3f32`, `master` HEAD is `f87e3b9` (#10061 merged). They differ (12 commits: locale files, marketing pipeline, CI runner pin, one Cypress fix), so 2.1 requires a run.
@@ -189,10 +192,12 @@ Goal: the exact commit being released is built, fully tested, and its scope is c
 | 4.5 | Milestones: closes `<version>`, creates the next milestone (from `master`'s `package.json`) if missing, and moves every still-open issue/PR into it. Skipped for pre-releases | same workflow, job `manage-milestones` | 🤖 |
 | 4.6 | Docs milestones: makes sure `<version>` and next exist in `ChurchCRM/docs.churchcrm.io`, keeping held docs PRs on the released one | same workflow, job `sync-docs-milestones`; needs the `DOCS_RELEASE_TOKEN` secret | 🤖 |
 | 4.7 | Post-release nightly: the full nightly suite, including the upgrade matrix, runs against the published release | [`build-test-nightly.yml`](../.github/workflows/build-test-nightly.yml) on `release: published` | 🤖 |
+| 4.8 | Publish draft GHSA advisories: any draft security advisories that were fixed in this release are now published with the patched version. | https://github.com/ChurchCRM/CRM/security/advisories — find all drafts with `patched_version` = the released version, set state to `published` | ✋ (manual, same-day) |
 
 ### Automation notes
 
 - 4.2/4.3: the release notes from 3.2 are what every admin reads in-app, so they are the widest-reaching copy in the release, more than social posts. That's one more reason to keep them user-facing.
+- 4.8: Could be automated as a post-publish workflow job that queries the GitHub API for draft advisories with `patched_version` matching the published release, then publishes each one. This ensures advisories are disclosed as soon as patches are released, following responsible disclosure practice.
 - 4.3: the changelog link is dead until `release-bookkeeping.yml` finishes and pushes `changelog/<version>.md` to `master`. If that job fails, the wizard links a 404. Add a post-publish check that the file exists.
 - 4.2: pre-releases are skipped, so `prerelease=true` in 3.1 is a safe way to ship an RC without notifying admins.
 - 4.4–4.6 first ran for 7.7.1 and failed (see Status). #10086 sets `TAG` once for all jobs, rejects non-version tags, and stops if `master` wasn't bumped; the docs job needs `DOCS_RELEASE_TOKEN` (#10097). Re-run by hand with `workflow_dispatch` (`tag`).
