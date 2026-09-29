@@ -9,14 +9,12 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
-use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\view\ChurchLogo;
 use ChurchCRM\view\MenuRenderer;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
@@ -135,6 +133,14 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-body-secondary fw-normal">(<?= gettext('optional') ?>)</span></label>
               <textarea id="issueDescription" class="form-control" rows="4" placeholder="<?= gettext('What went wrong? What did you expect to happen?') ?>"></textarea>
             </div>
+            <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
+            <div class="alert alert-warning mb-0">
+              <i class="fa-solid fa-file-lines me-1"></i>
+              <?= gettext('As an admin, please also review the') ?>
+              <a href="<?= SystemURLs::getRootPath() ?>/admin/system/logs" target="_blank" rel="noopener"><?= gettext('system logs') ?></a>
+              <?= gettext('for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.') ?>
+            </div>
+            <?php } ?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
@@ -276,19 +282,13 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         <span class="navbar-toggler-icon"></span>
       </button>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
-        <?php if (ChurchLogoService::hasCustomLogo()): ?>
-        <?= ChurchLogo::img(['class' => 'navbar-brand-image crm-brand-logo']) ?>
-        <?php else: ?>
-        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-ink-blue.svg"
+        <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png"
              alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-light">
-        <img src="<?= SystemURLs::getRootPath() ?>/Images/churchcrm-symbol-paper-blue.svg"
-             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image crm-brand-logo crm-brand-logo-dark">
+             class="navbar-brand-image rounded"
+             style="height: 42px; width: auto;">
         <span class="navbar-brand-text ps-2 fs-4 fw-bold">
           <?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>
         </span>
-        <?php endif; ?>
       </a>
       <div class="collapse navbar-collapse" id="sidebar-menu">
         <ul class="navbar-nav pt-xl-3">
