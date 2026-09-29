@@ -230,7 +230,13 @@ jobs:
         test-name: ${{ matrix.test-type.name }}
         php-version: ${{ matrix.php-version }}
         deployment: root
-        shard-total: ${{ matrix.shard-total || 1 }}
+        # api uses docker.config.ts, whose specPattern also matches ui/**
+        # specs (see cypress/configs/docker.config.ts). Forcing SPLIT via the
+        # default shard-total fallback would make cypress-split discover and
+        # run every matching spec (api + ui) in this single job instead of
+        # just the api ones, so api keeps shard-total empty and relies on the
+        # explicit --spec filter in run-cypress-tests/action.yml instead.
+        shard-total: ${{ matrix.test-type.name == 'api' && '' || (matrix.shard-total || 1) }}
         shard-index: ${{ matrix.split-index || '0' }}
         docker-compose-profile: ci-root
       env:
@@ -315,7 +321,13 @@ jobs:
         test-name: ${{ matrix.test-type.name }}
         php-version: ${{ matrix.php-version }}
         deployment: subdir
-        shard-total: ${{ matrix.shard-total || 1 }}
+        # api uses docker.config.ts, whose specPattern also matches ui/**
+        # specs (see cypress/configs/docker.config.ts). Forcing SPLIT via the
+        # default shard-total fallback would make cypress-split discover and
+        # run every matching spec (api + ui) in this single job instead of
+        # just the api ones, so api keeps shard-total empty and relies on the
+        # explicit --spec filter in run-cypress-tests/action.yml instead.
+        shard-total: ${{ matrix.test-type.name == 'api' && '' || (matrix.shard-total || 1) }}
         shard-index: ${{ matrix.split-index || '0' }}
         base-url: http://127.0.0.1:8080/churchcrm/
         docker-compose-profile: ci-subdir
