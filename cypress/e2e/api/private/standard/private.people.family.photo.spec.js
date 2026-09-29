@@ -1,6 +1,12 @@
 /// <reference types="cypress" />
 
+import { buildBlankPng } from "../../../../support/synthetic-png";
+
 describe("API Private Photo and Avatar - Family", () => {
+    // Family 6 deliberately has no file under cypress/data/images/family,
+    // which the dev and test compose profiles bind-mount as Images/Family.
+    // Pointing these upload/delete tests at family 42 would delete a tracked
+    // fixture from the working tree — see issue #9777.
     const testFamilyId = 6; // Test family from demo database
     const invalidFamilyId = 99999;
 
@@ -149,16 +155,14 @@ describe("API Private Photo and Avatar - Family", () => {
         });
 
         it("should handle invalid family ID gracefully", () => {
+            // FamilyMiddleware performs an existence check before the handler runs,
+            // so a nonexistent familyId now correctly returns 404.
             cy.makePrivateAdminAPICall(
                 "GET",
                 `/api/family/${invalidFamilyId}/avatar`,
                 null,
-                200
-            ).then((response) => {
-                // Should return 200 with fallback data
-                expect(response.body).to.have.property("hasPhoto");
-                expect(response.body).to.have.property("initials");
-            });
+                404
+            );
         });
     });
 
@@ -203,6 +207,33 @@ describe("API Private Photo and Avatar - Family", () => {
             });
         });
 
+        it("should reject an image over the decode pixel budget with 413 before decoding it", () => {
+            // Same shared helper as the person photo and church logo uploads:
+            // a valid 12000x12000 PNG of ~18 KB carries 144 million pixels and
+            // must be refused from its header, never handed to GD.
+            cy.wrap(buildBlankPng(12000, 12000)).then((hugePng) => {
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/family/${testFamilyId}/photo`,
+                    JSON.stringify({ imgBase64: hugePng }),
+                    413
+                ).then((response) => {
+                    expect(response.body.success).to.eq(false);
+                    expect(response.body.message).to.include("12000x12000");
+                    expect(response.body.message).to.include("pixels");
+                });
+            });
+
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/family/${testFamilyId}/avatar`,
+                null,
+                200
+            ).then((response) => {
+                expect(response.body.hasPhoto).to.eq(false);
+            });
+        });
+
         it("should reject uploads that exceed the server size limit", () => {
             // Repeat a valid 1×1 PNG base64 payload to produce a body larger than most
             // configured limits. The server rejects it with 413 (size) or 400 (invalid image).
@@ -217,6 +248,45 @@ describe("API Private Photo and Avatar - Family", () => {
             ).then((response) => {
                 expect(response.body.success).to.eq(false);
                 expect(response.body).to.have.property("message");
+            });
+        });
+
+        it("should reject an oversized body with no image data with 400, not 413", () => {
+            // Regression for #9771. The 413 branch is only for a body PHP threw
+            // away for being larger than the server accepts. This body arrives
+            // complete and simply has no imgBase64, so it is a malformed request.
+            // 3 MB is well over the 2 MB upload_max_filesize the project's PHP
+            // images set — the value the handler compared Content-Length against —
+            // and far under their 2 GB post_max_size, so PHP receives and parses
+            // it in full.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/family/${testFamilyId}/photo`,
+                JSON.stringify({ notImgBase64: "a".repeat(3 * 1024 * 1024) }),
+                400
+            ).then((response) => {
+                expect(response.body.success).to.eq(false);
+                expect(response.body.message).to.include("Missing image data");
+            });
+        });
+
+        it("should reject an oversized unparseable body with 400, not 413", () => {
+            // Regression for #9771, second path: the body arrives in full but
+            // BodyParsingMiddleware cannot decode it, so getParsedBody() is null
+            // and the decision falls to the raw body. slim/psr7 caches
+            // php://input, so the bytes are still readable after the middleware
+            // consumed them and the handler can tell "arrived but unparseable"
+            // (400) from "never arrived" (413). Sent as invalid JSON under
+            // Content-Type: application/json, over 2 MB so Content-Length alone
+            // would have produced a 413.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/family/${testFamilyId}/photo`,
+                '{"notImgBase64": "' + "a".repeat(3 * 1024 * 1024),
+                400
+            ).then((response) => {
+                expect(response.body.success).to.eq(false);
+                expect(response.body.message).to.include("Missing image data");
             });
         });
     });

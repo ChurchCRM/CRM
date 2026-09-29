@@ -17,9 +17,12 @@ $systemService = new SystemService();
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
 
-    // Block users with no admin permissions (GHSA-5w59-32c8-933v / #8617)
+    // Confine EditSelf-only users to the self-service flow. Zero-permission users
+    // are NOT blocked here — they keep read-only access to people and family
+    // records (read-default policy, #9003). Writes are denied by the per-page
+    // permission guards.
     $currentUser = AuthenticationManager::getCurrentUser();
-    if ($currentUser->hasNoAdminPermissions()) {
+    if ($currentUser->isEditSelfExclusive()) {
         RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
     }
 
@@ -99,4 +102,15 @@ if (isset($_POST['BulkAddToCart'])) {
 function RunQuery(string $sSQL, bool $bStopOnError = true)
 {
     return FunctionsUtils::runQuery($sSQL, $bStopOnError);
+}
+
+//
+// Global function shim for parameterized prepared statements.
+// Use in place of RunQuery() when user-supplied values must be bound as parameters
+// rather than string-concatenated into the SQL. Returns a mysqli_result for SELECTs
+// and true for write queries, preserving compatibility with mysqli_fetch_array().
+//
+function RunPreparedQuery(string $sSQL, string $types = '', array $params = [], bool $bStopOnError = true)
+{
+    return FunctionsUtils::runPreparedQuery($sSQL, $types, $params, $bStopOnError);
 }

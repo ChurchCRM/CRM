@@ -75,7 +75,6 @@ if ($sReportType === '') {
         <label class="form-label" for="FinancialReportTypes"><?= gettext('Report Type') ?>:</label>
         <select class="form-select" name="ReportType" id="FinancialReportTypes">
           <option selected disabled value="0"><?= gettext('Select Report Type') ?></option>
-          <option value="Pledge Summary"><?= gettext('Pledge Summary') ?></option>
           <option value="Pledge Family Summary"><?= gettext('Pledge Family Summary') ?></option>
           <option value="Pledge Reminders"><?= gettext('Pledge Reminders') ?></option>
           <option value="Voting Members"><?= gettext('Voting Members') ?></option>
@@ -98,7 +97,6 @@ if ($sReportType === '') {
     switch ($sReportType) {
         case 'Giving Report':           $action = 'Reports/TaxReport.php'; break;
         case 'Zero Givers':             $action = 'Reports/ZeroGivers.php'; break;
-        case 'Pledge Summary':          $action = 'Reports/PledgeSummary.php'; break;
         case 'Pledge Family Summary':   $action = 'Reports/FamilyPledgeSummary.php'; break;
         case 'Pledge Reminders':        $action = 'Reports/ReminderReport.php'; break;
         case 'Voting Members':          $action = 'Reports/VotingMembers.php'; break;
@@ -206,7 +204,7 @@ if ($sReportType === '') {
       <?php endif; ?>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Pledge Summary', 'Pledge Reminders', 'Pledge Family Summary', 'Voting Members'])) : ?>
+    <?php if (in_array($sReportType, ['Pledge Reminders', 'Pledge Family Summary', 'Voting Members'])) : ?>
       <div class="mb-3">
         <label class="form-label" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
         <?php FiscalYearUtils::renderYearSelect('FYID', $iFYID); ?>
@@ -233,7 +231,7 @@ if ($sReportType === '') {
       </div>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Pledge Summary', 'Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) :
+    <?php if (in_array($sReportType, ['Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) :
         $sSQL = 'SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name';
         $rsFunds = RunQuery($sSQL); ?>
       <div class="mb-3">
@@ -271,7 +269,7 @@ if ($sReportType === '') {
 
     <?php if ($sReportType === 'Giving Report') : ?>
       <div class="mb-3">
-        <label class="form-label" for="minimum"><?= gettext('Minimum Total Amount:') ?></label>
+        <label class="form-label" for="minimum"><?= gettext('Minimum Total Amount') ?>:</label>
         <small class="text-secondary d-block mb-1"><?= gettext('0 - No Minimum') ?></small>
         <input class="form-control" style="width:120px" name="minimum" id="minimum" type="text" value="0">
       </div>
@@ -310,7 +308,7 @@ if ($sReportType === '') {
 
     <?php if (in_array($sReportType, ['Giving Report', 'Zero Givers'])) : ?>
       <div class="mb-3">
-        <label class="form-label"><?= gettext('Report Heading:') ?></label>
+        <label class="form-label"><?= gettext('Report Heading') ?>:</label>
         <div class="d-flex gap-3">
           <?php foreach (['graphic' => gettext('Graphic'), 'address' => gettext('Church Address'), 'none' => gettext('Blank')] as $val => $label) : ?>
             <div class="form-check">
@@ -321,7 +319,7 @@ if ($sReportType === '') {
         </div>
       </div>
       <div class="mb-3">
-        <label class="form-label"><?= gettext('Remittance Slip:') ?></label>
+        <label class="form-label"><?= gettext('Remittance Slip') ?>:</label>
         <div class="d-flex gap-3">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="remittance" value="yes" id="remittanceYes">
@@ -337,7 +335,7 @@ if ($sReportType === '') {
 
     <?php if ($sReportType === 'Advanced Deposit Report') : ?>
       <div class="mb-3">
-        <label class="form-label"><?= gettext('Sort Data by:') ?></label>
+        <label class="form-label"><?= gettext('Sort Data by') ?>:</label>
         <div class="d-flex gap-3">
           <?php foreach (['deposit' => gettext('Deposit'), 'fund' => gettext('Fund'), 'family' => gettext('Family')] as $val => $label) : ?>
             <div class="form-check">
@@ -367,9 +365,9 @@ if ($sReportType === '') {
       </div>
     <?php endif; ?>
 
-    <?php if (in_array($sReportType, ['Pledge Summary', 'Giving Report', 'Individual Deposit Report', 'Advanced Deposit Report', 'Zero Givers'])) : ?>
+    <?php if (in_array($sReportType, ['Giving Report', 'Individual Deposit Report', 'Advanced Deposit Report', 'Zero Givers'])) : ?>
       <div class="mb-3">
-        <label class="form-label"><?= gettext('Output Method:') ?></label>
+        <label class="form-label"><?= gettext('Output Method') ?>:</label>
         <div class="d-flex gap-3">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="output" value="pdf" id="outputPdf" checked>

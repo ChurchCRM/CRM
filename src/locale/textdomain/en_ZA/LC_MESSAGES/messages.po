@@ -30,10 +30,6 @@ msgid "Mobile Phone"
 msgstr "Cellphone"
 
 #: 
-msgid "Select the group to which you would like to add your cart"
-msgstr "Select the group which you would like to add to your cart"
-
-#: 
 #, fuzzy
 msgid "Load Authorized"
 msgstr "Load Authorised Transactions"
@@ -75,37 +71,12 @@ msgid "Generate Catalog"
 msgstr "Generate Catalogue"
 
 #: 
-#, fuzzy
-msgid "Maximum number of neighbors"
-msgstr "Maximum number of neighbours"
-
-#: 
-msgid "Neighbor Families"
-msgstr "Neighbour Families"
-
-#: 
-msgid "Show Neighbors"
-msgstr "Show Neighbours"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Non-deductible amount can't be greater than total amount."
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Cheque number not valid for 'CASH' payment"
-
-#: 
-msgid "Scan check"
-msgstr "Scan cheque"
-
-#: 
-msgid "find family from check account #"
-msgstr "find family from cheque account #"
-
-#: 
-msgid "Set default check account number for family"
-msgstr "Set default cheque account number for family"
 
 #: 
 msgid "Fall"
@@ -128,14 +99,6 @@ msgid "This option requires at least version 3.22 of MySQL!  Hit browser back bu
 msgstr "This option requires at least MySQL version 3.22!  Hit browser back button to return to ChurchCRM."
 
 #: 
-msgid "Total of all purchases: $"
-msgstr "Total of all purchases: R"
-
-#: 
-msgid "Total purchases: $"
-msgstr "Total purchases: R"
-
-#: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Paid by (  ) Cash    (  ) Cheque    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 
@@ -144,8 +107,8 @@ msgid "Mobile"
 msgstr "Cell"
 
 #: 
-msgid "Total $"
-msgstr "Total R"
+msgid "Localization"
+msgstr "Localisation"
 
 #: 
 #, fuzzy
@@ -159,6 +122,10 @@ msgstr "These are the family role numbers designated as head of household"
 #: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Default Province - Must be 2-letter abbreviation!"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "Internationalisation (I18n) support"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -180,11 +147,6 @@ msgstr "Make user-entered zip/postcodes in UPPER-CASE when saving to the databas
 #: 
 msgid "Church Checking Account Number"
 msgstr "Church Chequeing Account Number"
-
-#: 
-#, fuzzy
-msgid "Show neighbors with these classifications"
-msgstr "Show neighbours with these classifications"
 
 #: 
 msgid "KioskVisibilityTimestamp"
@@ -222,4 +184,70 @@ msgstr "Invalid List ID"
 #: 
 msgid "Default Zip"
 msgstr "Default Postcode"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "Customisable report with filtering by date, fund, family, and payment method."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Customise the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "Reports related to member voting eligibility and organisation governance."
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics collects anonymised usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp Integration enables synchronisation between ChurchCRM contacts and your MailChimp email marketing lists."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "The month that starts your organisation's fiscal year"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Customise the look and feel of the application"
+
+#: 
+msgid "Primary Color"
+msgstr "Primary Colour"
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Set the accent colour used for buttons, links, and active elements"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Invalid colour format. Use hex colours like #FF0000."
+
+#: 
+msgid "Background Color"
+msgstr "Background Colour"
+
+#: 
+msgid "Foreground Color"
+msgstr "Foreground Colour"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Localisation & Formats"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Localisation settings saved successfully"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Save Localisation Settings"
+
+#: 
+msgid "Catalog"
+msgstr "Catalogue"
 

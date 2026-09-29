@@ -15,9 +15,8 @@ require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/user.php';
 require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/text.php';
-require __DIR__ . '/routes/cart.php';
+require __DIR__ . '/routes/reports.php';
 require __DIR__ . '/routes/user-current.php';
 require __DIR__ . '/routes/root.php';
-require __DIR__ . '/routes/map.php';
 
 $app->run();

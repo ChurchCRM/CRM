@@ -10,6 +10,39 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.7.1](./changelog/7.7.1.md) | September 2026 | Cart Mailing Labels, Refreshed Branding, Clearer Translations, Smoother Admin Settings |
+| [7.7.0](./changelog/7.7.0.md) | September 2026 | Exciting New Features, 🛠️ Enhancements & Improvements, Global Language Polish |
+| [7.6.4](./changelog/7.6.4.md) | September 2026 | ChurchCRM 7.6.4 adds event dashboard filtering and anonymous giving support
+
+Event Dashboard month filtering, Anonymous donations without Family records, Zero-padded date field fixes, Alphabetical waiting list sorting, Dashboard error suppression and stability improvements |
+| [7.6.3](./changelog/7.6.3.md) | August 2026 | ChurchCRM 7.6.3 fixes backup automation, adds interactive maps and neighbor finder, improves photo resolution, enhances date importing, optimizes database performance |
+| [7.6.2](./changelog/7.6.2.md) | August 2026 | ChurchCRM 7.6.2 boosts performance and expands role autonomy for faster workflows
+
+Expanded role autonomy for Finance and Group Management staff, Database indexing optimization for faster page loads, Custom search query fixes for reliable directory filtering, Security library updates and code safety controls, Complete localization across 45+ languages |
+| [7.6.1](./changelog/7.6.1.md) | August 2026 | ChurchCRM 7.6.1 enhances upgrade experience and financial precision
+
+Redesigned Upgrade Wizard with modern release insights, Universal Currency Formatter across all financial screens, Open Deposit Indicators on Finance menu, Cart to Group tool fixes, Improved badge layouts and navigation icons |
+| [7.6.0](./changelog/7.6.0.md) | August 2026 | ChurchCRM 7.6.0 automates member care and streamlines daily ministry workflows
+
+Automated birthday emails, auto light/dark theme mode, flexible pledge splits, enhanced group role management, improved financial tables and contributor drill-down views |
+| [7.5.1](./changelog/7.5.1.md) | July 2026 | ChurchCRM 7.5.1 adds built-in email composer, universal currency formatting, and global language fixes
+
+Built-in email composer with no character limits, Universal local currency formatting across all reports, Revamped fundraiser dashboard with campaign tracking, SOV and RTL language grammar fixes, Fixed member classification filtering accuracy |
+| [7.5.0](./changelog/7.5.0.md) | July 2026 | ChurchCRM 7.5.0 adds smarter attendance tracking and group management
+
+Did Not Attend follow-up lists, Cart to Group utility, Custom currency formatting, Per-person attendance history, Improved kiosk check-ins |
+| [7.4.3](./changelog/7.4.3.md) | July 2026 | ChurchCRM 7.4.3 streamlines privacy, settings, and performance for faster ministry operations
+
+Locked profile media privacy, removed redundant user permission checkboxes, modernized user editor backend, faster fundraiser page loads, improved translations for 42 languages |
+| [7.4.2](./changelog/7.4.2.md) | July 2026 | ChurchCRM 7.4.2 modernizes legacy migrations and tightens user permissions
+
+Flawless ChurchInfo 1.3.1 imports with auto MD5 password upgrades, consolidated upgrade wizard with 29 steps reduced to one, permission-aware UI hiding unauthorized menu items, strict finance page access controls, new user status and password audit column for admins |
+| [7.4.1](./changelog/7.4.1.md) | July 2026 | ChurchCRM 7.4.1 enhances security and simplifies user management with clearer permissions
+
+Clearer permission labels, intelligent button hiding based on user access, EditSelf mode disabled by default, fixed user deletion bugs, airtight notes protection, Croatian language support added |
+| [7.4.0](./changelog/7.4.0.md) | June 2026 | ChurchCRM 7.4.0 refines security and improves user experience with UI enhancements
+
+Redesigned single-card login interface, enhanced password reset security with cryptographic tokens, export controls limited to administrators, Slovak language support added, Docker images now run as non-root user |
 | [7.3.3](./changelog/7.3.3.md) | May 2026 | ChurchCRM 7.3.3 strengthens stability with security hardening and installation fixes
 
 Subdirectory navigation fixes, automatic database port defaults, configuration file access blocking, safe event/group deletions, CSV country auto-detection |

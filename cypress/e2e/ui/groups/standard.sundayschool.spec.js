@@ -99,6 +99,12 @@ describe("Standard Sunday School", () => {
         // Core overview elements that should be stable across styling changes
         cy.contains('Sunday School').should('exist');
         cy.get('#bar-chart').should('exist');
+        // ApexCharts must actually render into the container, not just
+        // leave an empty div — catches chart-library regressions (e.g.
+        // major version bumps) that a container-existence check alone
+        // would miss.
+        cy.get('#bar-chart .apexcharts-canvas').should('exist');
+        cy.get('#bar-chart svg.apexcharts-svg').should('exist');
         cy.contains('Enrolled').should('exist');
         cy.contains('Boys').should('exist');
         cy.contains('Girls').should('exist');
@@ -237,5 +243,41 @@ describe("Standard Sunday School", () => {
         cy.get('a[href*="/groups/sundayschool/reports"]').should("exist").and("contain", "Reports");
         cy.get('a[href*="/api/groups/sundayschool/export/classlist"]').should("exist").and("contain", "Class List Export");
         cy.get('a[href*="/api/groups/sundayschool/export/email"]').should("exist").and("contain", "Email Export");
+    });
+
+    describe("Delete a class that is an event's audience (#10126)", () => {
+        const className = `Audience Class ${Date.now()}`;
+        let groupId;
+        let eventId;
+
+        before(() => {
+            cy.makePrivateAdminAPICall("POST", "/api/groups/", { groupName: className, isSundaySchool: true })
+                .then((resp) => {
+                    groupId = resp.body.Id;
+                    return cy.makePrivateAdminAPICall("POST", "/api/events/quick-create", { groupId });
+                })
+                .then((resp) => {
+                    eventId = resp.body.eventId;
+                });
+        });
+
+        after(() => {
+            if (eventId) cy.makePrivateAdminAPICall("DELETE", `/api/events/${eventId}`);
+            if (groupId) cy.makePrivateAdminAPICall("DELETE", `/api/groups/${groupId}`);
+        });
+
+        it("shows the server's reason instead of a generic error", () => {
+            cy.intercept("DELETE", `**/api/groups/${groupId}`).as("deleteClass");
+            cy.visit("/groups/sundayschool/dashboard");
+            cy.get("#sundayschoolClasses_wrapper input[type='search']").type(className);
+            cy.contains("#sundayschoolClasses tbody tr", className).find('[data-bs-toggle="dropdown"]').click();
+            cy.get(`.delete-ss-class[data-group-id="${groupId}"]`).click();
+            cy.get(".bootbox .btn-danger").click();
+
+            cy.wait("@deleteClass").then(({ response }) => {
+                expect(response.statusCode).to.eq(409);
+                cy.waitForNotification(response.body.message);
+            });
+        });
     });
 });

@@ -1,6 +1,13 @@
+---
+title: "Plugin Development"
+intent: "Building a ChurchCRM plugin end-to-end — allowed/forbidden capabilities, hooks, sandboxed config, and plugin-local translations"
+tags: ["plugins", "security", "i18n"]
+prereqs: ["[[plugin-system]]", "[[plugin-security-scan]]"]
+complexity: "intermediate"
+---
 # Skill: Plugin Development
 
-> ## ⚠️ Before you write a single line of plugin code — read this <!-- learned: 2026-04-13 -->
+> [!IMPORTANT] Before you write a single line of plugin code — read this <!-- learned: 2026-04-13 -->
 >
 > **Every community plugin must pass [`plugin-security-scan.md`](./plugin-security-scan.md) before it can be approved for the URL installer.** That checklist is not a post-hoc review — it's the spec you are building against. Read it first, then come back here.
 >
@@ -237,6 +244,7 @@ this list, open an issue before shipping.
 | Inject HTML/JS/CSS into core pages via `getHeadContent()` / `getFooterContent()` | `ui.inject` |
 | Register a cron handler on `Hooks::CRON_RUN` | `cron` |
 | Subscribe to `PERSON_*` or `FAMILY_*` hooks | `hooks.person` / `hooks.family` |
+| Subscribe to `EVENT_*` hooks | `hooks.event` |
 | Subscribe to `DONATION_*` or `DEPOSIT_*` hooks | `hooks.financial` |
 | Subscribe to `EMAIL_*` hooks | `hooks.email` |
 | Send email through ChurchCRM's mailer | `email.send` |
@@ -464,7 +472,8 @@ PluginManager::disablePlugin('mailchimp');
 
 Plugin entry points create their own Slim app instance.
 
-> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+> [!NOTE] Full reference
+> [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
 
 **TL;DR:** `addErrorMiddleware()` MUST be called AFTER `addRoutingMiddleware()`. Wrong order → raw 500 on 404s.
 
@@ -501,16 +510,39 @@ $errorMiddleware->setDefaultErrorHandler(function (Request $request, Throwable $
 Defined in `src/ChurchCRM/Plugin/Hooks.php`:
 
 **Person**
-- `PERSON_CREATED`, `PERSON_UPDATED`, `PERSON_DELETED`
+
+| Hook | Receives | Dispatched from |
+|------|----------|-----------------|
+| `PERSON_CREATED` | `Person $person` | `Person::postInsert()` |
+| `PERSON_UPDATED` | `Person $person, array $oldData` | `Person::postUpdate()` |
+| `PERSON_DELETED` | `int $personId, array $personData` | `Person::postDelete()` |
 
 **Family**
-- `FAMILY_CREATED`, `FAMILY_UPDATED`, `FAMILY_DELETED`
+
+| Hook | Receives | Dispatched from |
+|------|----------|-----------------|
+| `FAMILY_CREATED` | `Family $family` | `Family::postInsert()` |
+| `FAMILY_UPDATED` | `Family $family, array $oldData` | `Family::postUpdate()` |
+| `FAMILY_DELETED` | `int $familyId, array $familyData` | `Family::postDelete()` |
+
+The `array` payloads are keyed by Propel **phpName** (`FirstName`, `Email`),
+not by column name and not lowercased — see `plugin-system.md` → "Hook Payloads
+Are Propel phpName Arrays".
 
 **Financial**
 - `DONATION_RECEIVED`, `DEPOSIT_CLOSED`
 
 **Events**
-- `EVENT_CREATED`, `EVENT_CHECKIN`, `EVENT_CHECKOUT`, `SYSTEM_CALENDARS_REGISTER`
+- `EVENT_CREATED`, `EVENT_UPDATED`, `EVENT_DELETED`, `EVENT_CHECKIN`, `EVENT_CHECKOUT`, `SYSTEM_CALENDARS_REGISTER`
+
+  `EVENT_UPDATED` receives `Event $event, array $oldData`; `EVENT_DELETED` receives
+  `int $eventId, array $eventData`. Both are dispatched from `Event::postUpdate()` /
+  `Event::postDelete()`, so they fire once for every path that edits or removes an
+  event — the events API, the `/event/dashboard` MVC action and the kiosk flows
+  alike. The `$oldData` / `$eventData` snapshot is only taken when a listener is
+  registered, so it is always populated for your callback but costs nothing on
+  installs with no plugins. `EVENT_CREATED` now also fires for the bulk creation
+  paths (`POST /events/repeat`, `POST /events/generate-recurring`) — see #9734.
 
 **Groups**
 - `GROUP_MEMBER_ADDED`, `GROUP_MEMBER_REMOVED`

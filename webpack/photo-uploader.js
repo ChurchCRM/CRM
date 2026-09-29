@@ -9,6 +9,7 @@ import Uppy from "@uppy/core";
 import Dashboard from "@uppy/dashboard";
 import ImageEditor from "@uppy/image-editor";
 import Webcam from "@uppy/webcam";
+import { escapeHtml } from "./utils/escape-html";
 
 /**
  * Configuration for photo uploader
@@ -17,6 +18,8 @@ import Webcam from "@uppy/webcam";
  * @property {number} [maxFileSize=5000000] - Maximum file size in bytes (default: 5MB)
  * @property {number} [photoWidth=800] - Target photo width in pixels
  * @property {number} [photoHeight=800] - Target photo height in pixels
+ * @property {('1:1'|'free')} [aspectRatio='1:1'] - Crop ratio; 'free' for a banner such as the church logo
+ * @property {string} [title='Upload Photo'] - Heading shown on the Uppy dashboard modal
  * @property {Function} [onComplete] - Callback function(result) after successful upload
  */
 
@@ -51,6 +54,9 @@ export function createPhotoUploader(config) {
   const photoHeight =
     typeof config.photoHeight === "string" ? parseInt(config.photoHeight, 10) : config.photoHeight || 800;
 
+  const freeCrop = config.aspectRatio === "free";
+  const dashboardTitle = config.title || "Upload Photo";
+
   const uppy = new Uppy({
     id: "photo-uploader",
     autoProceed: false,
@@ -65,12 +71,14 @@ export function createPhotoUploader(config) {
       trigger: null, // Don't auto-bind to a trigger
       proudlyDisplayPoweredByUppy: false,
       note: `Max file size: ${displayMaxSizeMB}MB`,
+      // The default JPEG thumbnail has no alpha, so a transparent logo previews on black.
+      thumbnailType: "image/png",
       closeModalOnClickOutside: true,
       autoOpen: "imageEditor",
       locale: {
         strings: {
-          dashboardWindowTitle: "Upload Photo",
-          dashboardTitle: "Upload Photo",
+          dashboardWindowTitle: dashboardTitle,
+          dashboardTitle: dashboardTitle,
         },
       },
     })
@@ -89,7 +97,8 @@ export function createPhotoUploader(config) {
       quality: 0.9,
       cropperOptions: {
         viewMode: 1,
-        aspectRatio: 1,
+        // NaN is cropperjs's "free" ratio
+        aspectRatio: freeCrop ? Number.NaN : 1,
         autoCropArea: 1,
         responsive: true,
         croppedCanvasOptions: {},
@@ -101,21 +110,21 @@ export function createPhotoUploader(config) {
         zoomIn: true,
         zoomOut: true,
         cropSquare: true,
-        cropWidescreen: false,
-        cropWidescreenVertical: false,
+        cropWidescreen: freeCrop,
+        cropWidescreenVertical: freeCrop,
       },
     });
 
-  // Enforce 1:1 ratio every time the editor opens (including after cancel + re-edit).
+  // Enforce the crop ratio every time the editor opens (including after cancel + re-edit).
   // resetEditorState() resets plugin state to aspectRatio:'free' on each start, which
-  // causes cropperjs and the UI to fall out of sync. Calling setAspectRatio('1:1') via
+  // causes cropperjs and the UI to fall out of sync. Calling setAspectRatio() via
   // rAF (after initCropper runs in componentDidMount) keeps both in sync.
   uppy.on("file-editor:start", () => {
     const editor = uppy.getPlugin("ImageEditor");
     if (!editor) return;
     const enforce = () => {
       if (editor.cropper) {
-        editor.setAspectRatio("1:1");
+        editor.setAspectRatio(freeCrop ? "free" : "1:1");
       } else {
         requestAnimationFrame(enforce);
       }
@@ -302,8 +311,4 @@ function showPersistentError(message) {
 function clearPersistentError() {
   const el = document.getElementById("uppy-error-container");
   if (el) el.innerHTML = "";
-}
-
-function escapeHtml(text) {
-  return text.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[c]);
 }

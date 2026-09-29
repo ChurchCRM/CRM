@@ -66,10 +66,11 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $enddate .= '-' . SystemConfig::getValue('iFYMonth') . '-' . '01';
 
         // Get payments only
-        $sSQL = 'SELECT COUNT(plg_plgID) AS count FROM pledge_plg
-            WHERE plg_FamID = ' . $fam_ID ." AND plg_PledgeOrPayment = 'Payment' AND
-                 plg_date >= '$startdate' AND plg_date < '$enddate'";
-        $rsPledges = RunQuery($sSQL);
+        $rsPledges = RunPreparedQuery(
+            'SELECT COUNT(plg_plgID) AS count FROM pledge_plg WHERE plg_FamID = ? AND plg_PledgeOrPayment = ? AND plg_date >= ? AND plg_date < ?',
+            'isss',
+            [(int) $fam_ID, 'Payment', $startdate, $enddate]
+        );
         [$count] = mysqli_fetch_row($rsPledges);
         if ($count > 0) {
             $donation = 'yes';
@@ -79,11 +80,11 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     if (($iRequireDonationYears === 0) || $donation === 'yes') {
         $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Name);
 
-        //Get the family members for this family
+        //Get the family members for this family (exclude deceased - they cannot vote)
         $sSQL = 'SELECT per_FirstName, per_LastName, cls.lst_OptionName AS sClassName
                 FROM person_per
                 INNER JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-                WHERE per_fam_ID = ' . $fam_ID ." AND cls.lst_OptionName='" . gettext('Member') ."'";
+                WHERE per_fam_ID = ' . $fam_ID ." AND cls.lst_OptionName='" . gettext('Member') ."' AND per_DateDeceased IS NULL";
 
         $rsFamilyMembers = RunQuery($sSQL);
 

@@ -12,8 +12,8 @@ class FullCalendarEvent
 
     public string $title;
     public string $start; // date-string
-    public ?string $backgroundColor = null;
-    public ?string $textColor = null;
+    public ?string $color = null;
+    public ?string $contrastColor = null;
     public ?string $end = null; // date-string
     public bool $allDay;
     public ?string $url = null;
@@ -40,8 +40,8 @@ class FullCalendarEvent
         }
         
         $fce->id = $CRMEvent->getId();
-        $fce->backgroundColor = '#' . $CRMCalendar->getBackgroundColor();
-        $fce->textColor = '#' . $CRMCalendar->getForegroundColor();
+        $fce->color = '#' . $CRMCalendar->getBackgroundColor();
+        $fce->contrastColor = '#' . $CRMCalendar->getForegroundColor();
         $fce->editable = $CRMEvent->isEditable();
 
         $url = $CRMEvent->getURL();
@@ -49,17 +49,29 @@ class FullCalendarEvent
             $fce->url = $url;
         }
 
+        // Build extendedProps from description and holiday metadata
+        $extendedProps = [];
+
+        $desc = $CRMEvent->getDesc();
+        if ($desc) {
+            $extendedProps['description'] = strip_tags($desc);
+        }
+
         try {
             $country = $CRMEvent->getVirtualColumn('holidayCountry');
             $type    = $CRMEvent->getVirtualColumn('holidayType');
-            if ($country !== null || $type !== null) {
-                $fce->extendedProps = array_filter([
-                    'country' => $country,
-                    'type'    => $type,
-                ]);
+            if ($country !== null) {
+                $extendedProps['country'] = $country;
+            }
+            if ($type !== null) {
+                $extendedProps['type'] = $type;
             }
         } catch (\Throwable $e) {
             // not a holiday event — virtual columns absent
+        }
+
+        if (!empty($extendedProps)) {
+            $fce->extendedProps = $extendedProps;
         }
 
         return $fce;

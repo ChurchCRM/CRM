@@ -52,7 +52,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         if (type !== 'display') {
                             return data;
                         }
-                        return "<a href='" + window.CRM.root + "/PersonEditor.php?PersonID=" + row.Id + "'>" +
+                        return "<a href='" + window.CRM.root + (window.CRM.permissions && window.CRM.permissions.editRecords
+                               ? "/PersonEditor.php?PersonID=" + row.Id
+                               : "/people/view/" + row.Id) + "'>" +
                                window.CRM.escapeHtml(data) + "</a>";
                     },
                     searchable: true

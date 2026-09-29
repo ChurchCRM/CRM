@@ -23,9 +23,10 @@ ChurchCRM uses PHP 8.4+ with modern development patterns. This skill covers esse
 - **Dynamic properties**: Need `#[\AllowDynamicProperties]` attribute if accessing undefined properties
 - **String formatting**: Use `IntlDateFormatter` instead of deprecated `strftime()`
 - **Imports**: Add `use` statements at top of file (never inline fully-qualified names)
-- **Global functions**: In namespaced code, use backslash prefix: `\MakeFYString($id)`
+- **Global functions**: mostly gone — `Functions.php` was migrated to `ChurchCRM\Utils\*`. Use `\` only for survivors like `\getQuillEditorContainer()`
 - **Version checks**: Use `version_compare(phpversion(), '8.3.0', '<')`
 - **Constants**: Use public constants for shared values: `public const PHOTO_WIDTH = 200;`
+- **`mb_internal_encoding('UTF-8')` is a no-op — don't add it** <!-- learned: 2026-08-03 --> — the `mbstring.internal_encoding` ini directive it used to influence was removed in PHP 8.0; mbstring functions already default to UTF-8 (`default_charset`) with no config anywhere in this repo overriding it. Found while removing a dead call in `src/index.php`.
 
 ### File Structure Order
 
@@ -90,78 +91,84 @@ class MyService {
 ```php
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Service\FinancialService;
+
 class MyService {
     public function getCurrencyYear() {
-        return \MakeFYString(date('Y'));  // Global function - use backslash
+        return FinancialService::formatFiscalYear($iFYID);  // Functions.php is gone
     }
 }
 ```
 
 ---
 
-## Global Functions Reference
+## Global Functions Reference — REMOVED, use the Utils classes <!-- learned: 2026-07-11 -->
 
-ChurchCRM defines utility functions in `src/Include/Functions.php` and `src/Include/QuillEditorHelper.php` for common operations. All require `\` prefix when called from namespaced code.
+> ⚠️ **`src/Include/Functions.php` no longer exists.** Every global helper it defined was
+> migrated to a namespaced `ChurchCRM\Utils\*` class. If you are about to call `\MakeFYString()`,
+> `\FormatDate()`, `\FormatFullName()` or any other bare global, **stop** — it is a fatal
+> `Call to undefined function`. Import the replacement instead.
 
-### Formatting Functions
+### Migration map (old global → replacement)
 
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `\MakeFYString($iFYID)` | Format fiscal year ID as string | `echo \MakeFYString(2024);` → `"2024-2025"` |
-| `\FormatDate($date, $withTime)` | Format date with i18n locale | `\FormatDate($person->getDateOfBirth(), false)` |
-| `\FormatFullName($title, $first, $middle, $last, $suffix, $style)` | Format person name | `\FormatFullName($per_Title, ..., $style)` |
-| `\FormatAddressLine($address, $city, $state)` | Format address single line | `\FormatAddressLine($adr_Address1, $adr_City, ...)` |
-| `\FilenameToFontname($filename, $family)` | Convert filename to font name | For font path handling |
+| Old global (gone) | Replacement |
+|-------------------|-------------|
+| `\MakeFYString($iFYID)` | `FinancialService::formatFiscalYear($iFYID)` |
+| `\FormatDate($date, $withTime)` | `DateTimeUtils::formatDate($dDate, bool $bWithTime = false)` |
+| `\parseAndValidateDate(...)` | `DateTimeUtils::parseAndValidate($data, $locale, $pasfut)` |
+| `\assembleYearMonthDay(...)` | `DateTimeUtils::formatDateFromComponents(int $y, int $m, int $d)` |
+| `\change_date_for_place_holder($s)` | `DateTimeUtils::formatForDatePicker(?string $s)` |
+| `\FormatFullName(...)` | `MiscUtils::formatFullName($title, $first, $middle, $last, $suffix, $style)` |
+| `\FormatAddressLine(...)` | `MiscUtils::formatAddressLine($address, $city, $state)` |
+| `\checkEmail(...)` | `MiscUtils::checkEmail($email, ...)` |
+| `\FilenameToFontname(...)` / `\FontFromName(...)` | `MiscUtils::filenameToFontname()` / `MiscUtils::fontFromName()` |
+| `\PrintFYIDSelect($name, $iFYID)` | `FiscalYearUtils::renderYearSelect($selectName, ?int $iFYID)` |
+| `\validateCustomField(...)` | `CustomFieldUtils::validate($type, $data, $colName, $aErrors)` |
+| `\displayCustomField(...)` | `CustomFieldUtils::display($type, $data, $special)` |
+| `\formCustomField(...)` | `CustomFieldUtils::renderForm(...)` |
+| `\sqlCustomField(...)` | `CustomFieldUtils::buildSql(...)` |
+| `\genGroupKey(...)` | `FunctionsUtils::genGroupKey(...)` |
+| `\RunQuery($sSQL)` | ❌ Still avoid — use Propel ORM. (`FunctionsUtils::runQuery()` exists for DDL only.) |
+| `\generateGroupRoleEmailDropdown()`, `\convertCartToString()`, `\random_color()`, `\FindMemberClassID()` | **Deleted outright** — no replacement; do not reference. |
 
-### Data Conversion Functions
+Canonical usage — import, never `\`-prefix:
 
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `\convertCartToString($aCartArray)` | Convert cart array to string | `$cartStr = \convertCartToString($_SESSION['aPeopleCart']);` |
-| `\assembleYearMonthDay($year, $month, $day, $pasfut)` | Assemble date from components | `\assembleYearMonthDay('2024', '02', '15')` |
-| `\parseAndValidateDate($data, $locale, $pasfut)` | Parse and validate date string | `$date = \parseAndValidateDate($_POST['dateField']);` |
-| `\change_date_for_place_holder($string)` | Convert date for placeholder | Internal date conversion |
+```php
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\MiscUtils;
 
-### Validation Functions
+$dob  = DateTimeUtils::formatDate($person->getBirthDate());
+$name = MiscUtils::formatFullName($title, $first, $middle, $last, $suffix, $style);
+```
 
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `\validateCustomField($type, &$data, $colName, &$aErrors)` | Validate custom field data | `if (!\validateCustomField($type, $data, ...)) { /* handle error */ }` |
-| `\checkEmail($email, $domainCheck, $verify, $returnErrors)` | Validate email address | `if (\checkEmail($email)) { /* valid */ }` |
+### `src/ChurchCRM/utils/` directory is lowercase on disk — this is not a bug <!-- learned: 2026-08-03 -->
 
-### Custom Field Functions
+`git ls-files` / `ls` show the physical directory as `src/ChurchCRM/utils/` (lowercase), even
+though every `use ChurchCRM\Utils\SomeClass;` statement in the codebase capitalizes it. This
+resolves correctly because `composer.json`'s autoload config uses `"classmap": ["ChurchCRM/"]`
+for this tree, not strict PSR-4 — the classmap indexes files by their declared
+`namespace`/`class` text, not by matching directory casing. Don't "fix" the casing and don't
+be confused when a file you just wrote to `ChurchCRM/Utils/Foo.php` shows up under
+`ChurchCRM/utils/Foo.php` in `git status` on a case-insensitive filesystem (macOS/Windows) —
+that's the pre-existing lowercase directory, not a duplicate. New classes must still run
+`composer dump-autoload` (or `npm run build:php`, which runs `composer install`) before the
+class resolves.
 
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `\displayCustomField($type, $data, $special)` | Render custom field for display | Echo HTML for field value |
-| `\formCustomField($type, $fieldname, $data, $special, $bFirstPass)` | Render custom field for form editing | Echo HTML form input |
-| `\sqlCustomField(&$sSQL, $type, $data, $colName, $special)` | Build SQL for custom field query | Modifies $sSQL by reference |
-
-### UI Helper Functions
-
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `\PrintFYIDSelect($selectName, $iFYID)` | Render fiscal year dropdown | `\PrintFYIDSelect('SelectedYear', 2024)` |
-| `\generateGroupRoleEmailDropdown($roleEmails, $href)` | Render group role email dropdown | For group management pages |
-| `\random_color()` | Generate random hex color | `$color = \random_color();` |
+**`PathUtils`** (`src/ChurchCRM/utils/PathUtils.php`) is a good example — added to hold
+`resolveSafeRequirePath()` (the `index.php` traversal guard) and `resolveRealPathWithin()`
+(the general path-containment primitive, see `security-best-practices.md` → "Path Traversal
+& Directory Containment Checks").
 
 ### Quill Rich Text Editor Functions
 
-Located in `src/Include/QuillEditorHelper.php`:
+`src/Include/QuillEditorHelper.php` **does still exist**, and its helpers remain global
+(so they *do* need the `\` prefix from namespaced code):
 
 | Function | Purpose |
 |----------|---------|
 | `\getQuillEditorContainer($editorId, $inputId, $content, $cssClasses, $minHeight)` | Render Quill editor HTML container |
 | `\getQuillEditorInitScript($editorId, $inputId, $placeholder, $includeScriptTag)` | Render Quill initialization JavaScript |
 | `\getQuillEditorContent($inputId)` | Extract Quill editor content from DOM |
-
-### Deprecated Functions (AVOID)
-
-| Function | Status | Replacement |
-|----------|--------|-------------|
-| `\RunQuery($sSQL, $bStopOnError)` | ❌ DEPRECATED | Use Perpl ORM Query classes instead |
-| `\FindMemberClassID()` | ⚠️ Legacy | Use `Group` or `GroupQuery` with ORM |
-| `\FontFromName($fontname)` | ⚠️ Internal | For font rendering only |
 | `\genGroupKey(...)` | ⚠️ Internal | For group sync operations |
 
 ### Usage Pattern
@@ -187,9 +194,9 @@ class PersonService {
     }
     
     public function getDatesAsString() {
-        // ✅ CORRECT - Multiple global function calls
-        $fyString = \MakeFYString(date('Y'));
-        $dateString = \FormatDate(new \DateTime());
+        // ✅ CORRECT - imported Utils / Service classes, no globals
+        $fyString   = FinancialService::formatFiscalYear($iFYID);
+        $dateString = DateTimeUtils::formatDate(DateTimeUtils::getToday());
         return "$dateString (FY: $fyString)";
     }
 }
@@ -685,6 +692,44 @@ if (!mail($to, $subject, $body)) {
     throw new Exception("Email failed");  // Returns 500
 }
 ```
+
+### Outbound Email: `BaseEmail` and `Reply-To` <!-- learned: 2026-09-11 -->
+
+Every transactional email extends `ChurchCRM\Emails\BaseEmail`
+(`src/ChurchCRM/Emails/`), which wraps PHPMailer, applies the SMTP settings,
+and sets **`From` = the church address** (`ChurchMetaData::getChurchEmail()` /
+`getChurchName()`). `From` is deliberately the church address on every message
+so SPF/DKIM stay aligned — **never override it per-sender.**
+
+To make a reply reach the person or role that actually triggered the mail, set
+a `Reply-To` instead (issue #9733):
+
+```php
+$email = new VolunteerAssignmentEmail([$volunteer->getEmail()]);
+$email->setReplyTo($coordinator->getEmail(), $coordinator->getFullName());
+if (!$email->send()) {
+    LoggerUtils::getAppLogger()->warning('Assignment email failed', ['error' => $email->getError()]);
+}
+```
+
+Semantics worth knowing before you use it:
+
+- **Opt-in.** An email that never calls `setReplyTo()` sends exactly the message
+  it sent before — no `Reply-To` header at all. No existing subclass sets one.
+- **Applied in `send()`, not in the setter.** Calling `setReplyTo()` twice
+  replaces the address (last call wins) and the sent message carries exactly
+  one `Reply-To`; resending the same instance does not accumulate headers.
+- **An invalid address is ignored, not fatal.** `setReplyTo()` validates with
+  `filter_var(..., FILTER_VALIDATE_EMAIL)` and logs a warning
+  (`Ignoring invalid Reply-To address`) if it fails, so a bad coordinator
+  address never stops the mail going out. `getReplyTo()` returns `null` in that
+  case — assert on it if you need to know whether the address took.
+
+**Verifying mail locally:** the dev profile captures SMTP in Mailpit
+(`http://localhost:8025`). `curl -sS 'http://localhost:8025/api/v1/messages?limit=50'`
+returns a `ReplyTo` array per message. Note Mailpit is in the compose `test`
+profile only, **not** the `ci-root` / `ci-subdir` profiles — CI has no SMTP
+capture, so header-level email assertions cannot live in a Cypress spec.
 
 ### Algorithm Performance
 

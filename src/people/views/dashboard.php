@@ -91,61 +91,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="d-flex flex-wrap" style="gap: .5rem;">
-                <a href="<?= $sRootPath ?>/PersonEditor.php" class="btn btn-primary">
-                    <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Person') ?>
-                </a>
-                <a href="<?= $sRootPath ?>/FamilyEditor.php" class="btn btn-secondary">
-                    <i class="fa-solid fa-house-user me-1"></i><?= gettext('Add Family') ?>
-                </a>
-                <a href="<?= $sRootPath ?>/people/list" class="btn btn-outline-secondary">
-                    <i class="fa-solid fa-list me-1"></i><?= gettext('People List') ?>
-                </a>
-                <a href="<?= $sRootPath ?>/people/family" class="btn btn-outline-secondary">
-                    <i class="fa-solid fa-home me-1"></i><?= gettext('Family List') ?>
-                </a>
                 <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
-                <?php if ($sEmailLink && $canEmail):
-                    $emailHref    = 'mailto:' . mb_substr($sEmailLink, 0, -3);
-                    $emailBccHref = 'mailto:?bcc=' . mb_substr($sEmailLink, 0, -3);
-                    ?>
-                    <div class="dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($emailHref) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
-                            <div class="dropdown-divider"></div>
-                            <?php foreach ($roleEmails as $role => $roleEmail):
-                                $defaultTo = SystemConfig::getValue('sToEmailAddress');
-                                if ($defaultTo !== '' && !stristr($roleEmail, $defaultTo)) {
-                                    $roleEmail .= $sMailtoDelimiter . $defaultTo;
-                                }
-                                $encoded = urlencode($roleEmail);
-                                ?>
-                                <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute(mb_substr($encoded, 0, -3)) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-user-secret me-1"></i><?= gettext('Email BCC') ?>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($emailBccHref) ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
-                            <div class="dropdown-divider"></div>
-                            <?php foreach ($roleEmails as $role => $roleEmail):
-                                $defaultTo = SystemConfig::getValue('sToEmailAddress');
-                                if ($defaultTo !== '' && !stristr($roleEmail, $defaultTo)) {
-                                    $roleEmail .= $sMailtoDelimiter . $defaultTo;
-                                }
-                                $encoded = urlencode($roleEmail);
-                                ?>
-                                <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute(mb_substr($encoded, 0, -3)) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($role) ?></a>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
+                <a href="<?= $sRootPath ?>/people/self-register" class="btn btn-outline-info">
+                    <i class="fa-solid fa-user-clock me-1"></i><?= gettext('New Self-Registrations') ?>
+                </a>
+                <?php if ($canEmail): ?>
+                    <button type="button" class="btn btn-outline-primary"
+                            data-email-composer
+                            data-email-endpoint="people/emails"
+                            data-email-title="<?= InputUtils::escapeAttribute(gettext('Email All Members')) ?>">
+                        <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
+                    </button>
                 <?php endif; ?>
             </div>
         </div>
@@ -256,15 +214,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <h3 class="card-title"><i class="fa-solid fa-file-lines me-2"></i><?= gettext('Reports') ?></h3>
                 </div>
                 <div class="list-group list-group-flush">
-                    <a href="<?= $sRootPath ?>/members/self-register.php" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-user-clock fa-fw text-body-secondary me-3"></i>
-                        <div>
-                            <div class="fw-medium"><?= gettext('Self Registration Report') ?></div>
-                            <div class="text-body-secondary small"><?= gettext('List families created via self registration') ?></div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
-                    </a>
-
                     <a href="<?= $sRootPath ?>/DirectoryReports.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-address-book fa-fw text-body-secondary me-3"></i>
                         <div>
@@ -345,8 +294,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        var ageGroupLabels = <?= json_encode(array_keys($ageGroupStats)) ?>;
-        var ageGroupValues = <?= json_encode(array_values($ageGroupStats)) ?>;
+        var ageGroupLabels = <?= InputUtils::jsonEncodeForScript(array_keys($ageGroupStats)) ?>;
+        var ageGroupValues = <?= InputUtils::jsonEncodeForScript(array_values($ageGroupStats)) ?>;
 
         var ageChartElement = document.getElementById('age-stats-bar');
         if (ageChartElement && window.ApexCharts) {
@@ -370,14 +319,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $(document).ready(function () {
     window.CRM.settingsPanel.init({
         container: '#peopleSettings',
-        title: <?= json_encode(gettext('People Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        title: <?= InputUtils::jsonEncodeForScript(gettext('People Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
             {
                 name: 'bEnableSelfRegistration',
                 type: 'boolean',
-                label: <?= json_encode(gettext('Self Registration'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                tooltip: <?= json_encode(gettext('Allow visitors to self-register as new families.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Self Registration')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Allow visitors to self-register as new families.')) ?>
+            },
+            {
+                name: 'bHideDeceasedFromDirectory',
+                type: 'boolean',
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Deceased from Directory')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Exclude deceased members from the printed directory and CSV exports.')) ?>
             }
         ],
         onSave: function () {
@@ -386,6 +341,10 @@ $(document).ready(function () {
     });
 });
 </script>
+<?php endif; ?>
+
+<?php if ($canEmail): ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php endif; ?>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

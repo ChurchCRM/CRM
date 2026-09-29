@@ -5,6 +5,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\SystemService;
@@ -12,6 +13,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpForbiddenException;
@@ -47,7 +49,10 @@ use Slim\HttpCache\Cache;
  *         @OA\JsonContent(type="object",
  *             @OA\Property(property="hasPhoto", type="boolean"),
  *             @OA\Property(property="initials", type="string", example="JS"),
- *             @OA\Property(property="gravatarUrl", type="string", nullable=true)
+ *             @OA\Property(property="gravatarUrl", type="string", nullable=true),
+ *             @OA\Property(property="photoUrl", type="string", nullable=true),
+ *             @OA\Property(property="email", type="string", nullable=true),
+ *             @OA\Property(property="photoVersion", type="integer", example=1718000000, description="Unix mtime of the uploaded photo file; 0 when hasPhoto is false. Append as ?v=<photoVersion> to the /photo URL to bust the 2-hour public Cache-Control header after an upload.")
  *         )
  *     ),
  *     @OA\Response(response=401, description="Unauthorized")
@@ -75,7 +80,8 @@ use Slim\HttpCache\Cache;
  *     @OA\Response(response=400, description="Invalid image data or upload failed"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="EditRecords role required"),
- *     @OA\Response(response=404, description="Person not found")
+ *     @OA\Response(response=404, description="Person not found"),
+ *     @OA\Response(response=413, description="PHP discarded the request body because it exceeded the server upload limit")
  * )
  * @OA\Delete(
  *     path="/person/{personId}/photo",
@@ -123,11 +129,11 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $person = $request->getAttribute('person');
         $input = $request->getParsedBody();
 
-        // Detect when PHP discarded the request body because post_max_size was exceeded
         if (empty($input) || !isset($input['imgBase64'])) {
-            $contentLength = (int)($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
-            $maxSize = SystemService::getMaxUploadFileSize(false);
-            if ($contentLength > 0 && $contentLength > $maxSize) {
+            // 413 only when PHP genuinely threw the body away for size; a body
+            // that arrived without imgBase64 is a malformed request whatever its
+            // Content-Length claims (issue #9771).
+            if (SlimUtils::isBodyDiscardedForSize($request)) {
                 return SlimUtils::renderErrorJSON(
                     $response,
                     sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
@@ -209,14 +215,28 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
-    // Get person by ID — IDOR check via canEditPerson (GHSA-5w59-32c8-933v)
+    // Get person by ID — read-baseline check via canReadPerson (all authenticated users)
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
-        if (!$currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId())) {
+        $personFamilyId = (int) $person->getFamId();
+        if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
             throw new HttpForbiddenException($request, gettext('You do not have permission to view this person'));
         }
-        return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
+
+        // Filter custom fields by field-level permissions (GHSA-p6xx-xx98-f323)
+        //
+        // NOTE: `person_custom` stores per-field values in dynamically-added columns
+        // that are not part of the generated Propel schema, so exportTo()/toArray()
+        // never actually surfaces real custom field data under `singlePersonCustom`
+        // (only the table's one real Propel column, `per_ID`). Discard whatever
+        // exportTo() produced for that key and replace it with the properly
+        // security-filtered custom field values.
+        $personJSON = $person->exportTo('JSON');
+        $personData = json_decode($personJSON, true);
+        $personData['singlePersonCustom'] = $person->getVisibleCustomFieldValues();
+
+        return SlimUtils::renderStringJSON($response, json_encode($personData));
     });
 
     // Delete person
@@ -225,12 +245,79 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         if (AuthenticationManager::getCurrentUser()->getId() === (int) $person->getId()) {
             throw new HttpForbiddenException($request, gettext("Can't delete yourself"));
         }
-        $personId = $person->getId();
+        // PERSON_DELETED is dispatched from Person::postDelete() so that the
+        // family-member cascade in DELETE /family/{id}?deleteMembers=true
+        // fires it too. See #9768.
         $person->delete();
-        HookManager::doAction(Hooks::PERSON_DELETED, $personId);
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);
+
+
+    /**
+     * @OA\Post(
+     *     path="/person/{personId}/activate/{status}",
+     *     operationId="activatePerson",
+     *     summary="Activate or deactivate a person (EditRecords role required)",
+     *     description="Pass status=true to activate or status=false to deactivate the person. Cannot deactivate yourself.",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+     *     @OA\Parameter(name="status", in="path", required=true, description="true to activate, false to deactivate", @OA\Schema(type="string", enum={"true","false"})),
+     *     @OA\Response(response=200, description="Person activation status updated",
+     *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
+     *     ),
+     *     @OA\Response(response=400, description="Invalid status value"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Cannot deactivate yourself or EditRecords role required"),
+     *     @OA\Response(response=404, description="Person not found")
+     * )
+     */
+    $group->post('/activate/{status}', function (Request $request, Response $response, array $args): Response {
+        /** @var \ChurchCRM\model\ChurchCRM\Person $person */
+        $person = $request->getAttribute('person');
+        $currentUser = AuthenticationManager::getCurrentUser();
+
+        // Guard: cannot deactivate yourself (parity with delete-self guard)
+        if ($currentUser->getId() === (int) $person->getId()) {
+            return SlimUtils::renderErrorJSON($response, gettext("Can't change your own active status"), [], 403);
+        }
+
+        // Normalize incoming status to boolean (true = activate, false = deactivate)
+        $newStatus = filter_var($args['status'], FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+        if ($newStatus === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid status'), [], 400);
+        }
+
+        $currentStatus = $person->isActive();
+
+        // Update only if the value is different
+        if ($currentStatus !== $newStatus) {
+            $currentDate = DateTimeUtils::getToday();
+            if ($newStatus === false) {
+                // Deactivating: set DateDeactivated to now
+                $person->setDateDeactivated($currentDate);
+            } else {
+                // Activating: clear DateDeactivated
+                $person->setDateDeactivated(null);
+            }
+
+            // Create a note to record the status change
+            $note = new Note();
+            $note->setPerId($person->getId());
+            $note->setText($newStatus === false ? gettext('Marked the Person as Inactive') : gettext('Marked the Person as Active'));
+            $note->setType('edit');
+            $note->setEntered($currentUser->getId());
+            $note->save();
+
+            // Update last edited metadata (save without auto-note — the explicit note above is sufficient)
+            $person->setDateLastEdited($currentDate);
+            $person->setEditedBy($currentUser->getId());
+            $person->saveWithoutUpdateNote();
+        }
+
+        return SlimUtils::renderJSON($response, ['success' => true]);
+    })->add(EditRecordsRoleAuthMiddleware::class);
 
     // Set person role
     $group->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
@@ -239,7 +326,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/addToCart', function (Request $request, Response $response, array $args): Response {
         Cart::addPerson($args['personId']);
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(new EditRecordsRoleAuthMiddleware());
 })->add(new PersonMiddleware());
 
 /**

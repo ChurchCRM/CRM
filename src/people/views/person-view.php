@@ -29,54 +29,66 @@ $fam_Latitude       = (float) ($personData['fam_Latitude'] ?? 0);
 $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
 ?>
 
+<?php $currentUserId = AuthenticationManager::getCurrentUser()->getId(); ?>
+
+<div id="person-deactivated" class="alert alert-warning d-none">
+    <strong><?= gettext("This Person is Inactive") ?> </strong>
+</div>
+
 <div class="row">
     <div class="col-lg-4">
         <!-- Photo & Info Card -->
         <div class="card mb-3">
-            <div class="card-body p-0">
-                <div class="d-flex">
-                    <!-- Photo (left) — click to upload -->
-                    <div class="flex-shrink-0 position-relative" style="width: 120px; aspect-ratio: 1 / 1;">
-                        <a href="#" id="uploadImageButton" class="d-block w-100 h-100" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
-                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" alt="" class="photo-profile w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
-                        </a>
-                        <button type="button"
-                                class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-1 d-none"
-                                data-entity-type="person"
-                                data-entity-id="<?= $person->getId() ?>"
-                                title="<?= gettext('View full photo') ?>"
-                                aria-label="<?= gettext('View full photo') ?>">
-                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
-                        </button>
-                    </div>
-                    <!-- Attributes (right) -->
-                    <div class="p-3 flex-grow-1">
-                        <?php
-                        $genderClass = "fa-question";
-                        $genderText = gettext('Unknown');
-                        if ($person->isMale()) {
-                            $genderClass = "fa-person";
-                            $genderText = gettext('Male');
-                        } elseif ($person->isFemale()) {
-                            $genderClass = "fa-person-dress";
-                            $genderText = gettext('Female');
-                        }
-                        ?>
-                        <ul class="list-unstyled mb-0">
-                            <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
-                            <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
-                            <?php if (!empty($sFamRole)) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-users me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
+            <!-- Photo (top) — full card width, responsive square; click to upload -->
+            <div class="position-relative">
+                <a href="#" id="uploadImageButton" class="d-block" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
+                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" alt="" class="photo-profile card-img-top w-100 object-fit-cover" style="aspect-ratio: 1 / 1; max-height: 400px;">
+                </a>
+                <button type="button"
+                        class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-2 d-none"
+                        data-entity-type="person"
+                        data-entity-id="<?= $person->getId() ?>"
+                        title="<?= gettext('View full photo') ?>"
+                        aria-label="<?= gettext('View full photo') ?>">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
+                </button>
+            </div>
+            <!-- Attributes (below photo) -->
+            <div class="card-body">
+                <?php
+                $genderClass = "fa-question";
+                $genderText = gettext('Unknown');
+                if ($person->isMale()) {
+                    $genderClass = "fa-person";
+                    $genderText = gettext('Male');
+                } elseif ($person->isFemale()) {
+                    $genderClass = "fa-person-dress";
+                    $genderText = gettext('Female');
+                }
+                ?>
+                <ul class="list-unstyled mb-0">
+                    <?php if ($person->isDeceased()) : ?>
+                    <li class="mb-1">
+                        <span class="badge bg-secondary text-white">
+                            <i class="fa-solid fa-cross me-1"></i><?= gettext('Deceased') ?>
+                            <?php if ($person->getDateDeceased()) : ?>
+                                &middot; <?= InputUtils::escapeHTML($person->getDateDeceased()->format(SystemConfig::getValue('sDateFormatLong') ?: 'Y-m-d')) ?>
                             <?php endif; ?>
-                            <?php if ($per_MembershipDate) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
-                            <?php endif; ?>
-                            <?php if ($sEnvelope !== gettext('Not assigned')) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
-                            <?php endif; ?>
-                        </ul>
-                    </div>
-                </div>
+                        </span>
+                    </li>
+                    <?php endif; ?>
+                    <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
+                    <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
+                    <?php if (!empty($sFamRole)) : ?>
+                    <li class="mb-1"><i class="fa-solid fa-users me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
+                    <?php endif; ?>
+                    <?php if ($per_MembershipDate) : ?>
+                    <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
+                    <?php endif; ?>
+                    <?php if ($sEnvelope !== gettext('Not assigned')) : ?>
+                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
+                    <?php endif; ?>
+                </ul>
             </div>
         </div>
 
@@ -119,7 +131,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         <?php if ($sCellPhone) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-mobile-screen me-2 text-body-secondary"></i>
-                            <a href="tel:<?= InputUtils::escapeAttribute($sCellPhoneUnformatted) ?>"><?= $sCellPhone ?></a>
+                            <a href="tel:<?= InputUtils::escapeAttribute($sCellPhoneUnformatted) ?>"><?= InputUtils::escapeHTML($sCellPhone) ?></a>
                             <a href="sms:<?= InputUtils::escapeAttribute(preg_replace('/[^\d+]/', '', $sCellPhoneUnformatted)) ?>"
                                class="ms-1 text-body-secondary" title="<?= gettext('Send text message') ?>">
                                 <i class="fa-solid fa-comment-sms"></i>
@@ -135,7 +147,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         <?php if ($sHomePhone) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-house me-2 text-body-secondary"></i>
-                            <a href="tel:<?= InputUtils::escapeAttribute($sHomePhoneUnformatted) ?>"><?= $sHomePhone ?></a>
+                            <a href="tel:<?= InputUtils::escapeAttribute($sHomePhoneUnformatted) ?>"><?= InputUtils::escapeHTML($sHomePhone) ?></a>
                             <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
                                     data-phone="<?= InputUtils::escapeAttribute($sHomePhone) ?>"
                                     title="<?= gettext('Copy to clipboard') ?>">
@@ -147,7 +159,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         <?php if ($sWorkPhone) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-briefcase me-2 text-body-secondary"></i>
-                            <a href="tel:<?= InputUtils::escapeAttribute($sWorkPhoneUnformatted) ?>"><?= $sWorkPhone ?></a>
+                            <a href="tel:<?= InputUtils::escapeAttribute($sWorkPhoneUnformatted) ?>"><?= InputUtils::escapeHTML($sWorkPhone) ?></a>
                             <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
                                     data-phone="<?= InputUtils::escapeAttribute($sWorkPhone) ?>"
                                     title="<?= gettext('Copy to clipboard') ?>">
@@ -168,7 +180,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         <?php if (!empty($sEmail)) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-at me-2 text-body-secondary"></i>
-                            <a href="mailto:<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>" target="_blank" rel="noopener noreferrer"><?= $sEmail ?></a>
+                            <a href="mailto:<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($sEmail) ?></a>
                             <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
                                     data-email="<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>"
                                     title="<?= gettext('Copy to clipboard') ?>">
@@ -242,13 +254,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         } elseif ((int)$type_ID === 11) {
                             $custom_Special = null;
                             $displayIcon = "fa-solid fa-phone";
-                            // Sanitize phone number for tel: URI
-                            $sanitizedPhone = preg_replace('/[^0-9+\-()e]/', '', $currentData);
+                            // Sanitize phone number for tel: URI (aligned with GHSA-frj8-mpcx-44g9 allowlist)
+                            $sanitizedPhone = preg_replace('/[^0-9+\-().\sxX#*]/', '', $currentData);
                             $displayLink = "tel:" . $sanitizedPhone;
                         }
                         $customFieldsHtml .= '<li class="mb-2">';
                         $customFieldsHtml .= '<i class="' . $displayIcon . ' me-2 text-body-secondary"></i>';
-                        $temp_string = nl2br(CustomFieldUtils::display($type_ID, $currentData, $custom_Special));
+                        $temp_string = nl2br(InputUtils::escapeHTML(CustomFieldUtils::display($type_ID, $currentData, $custom_Special)));
                         if ($displayLink) {
                             $customFieldsHtml .= '<strong>' . InputUtils::escapeHTML($custom_Name) . ':</strong> <a href="' . InputUtils::escapeAttribute($displayLink) . '">' . $temp_string . '</a>';
                         } else {
@@ -371,10 +383,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <?php } ?>
                     <?php if ($bOkToEdit && $fam_ID !== '') { ?>
                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Edit Family") ?></a>
-                        <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
+                        <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= InputUtils::escapeAttribute($person->getFamilyRoleName()) ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
                         <a class="dropdown-item" id="addGroup"><i class="fa-solid fa-users me-2"></i><?= gettext("Assign New Group") ?></a>
+                    <?php } ?>
+                    <?php if ($fam_ID !== '' && $familyHasCoords) { ?>
+                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Find Neighbors") ?></a>
                     <?php } ?>
                     <?php if ($bOkToEdit) { ?>
                         <div class="dropdown-divider"></div>
@@ -385,9 +400,15 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             <a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#confirm-delete-image"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Photo") ?></a>
                         <?php } ?>
                     <?php } ?>
+                    <?php if ($bOkToEdit && $currentUserId !== (int)$iPersonID) { ?>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="activateDeactivatePerson">
+                            <i class="fa-solid fa-power-off me-2"></i><?= ($person->isActive() ? gettext('Set Inactive') : gettext('Set Active')) ?>
+                        </a>
+                    <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
+                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -405,7 +426,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <a href="<?= $person->getFamily()->getViewURI() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
                 </div>
             </div>
-            <div class="table-responsive">
+            <div style="overflow-x: clip; overflow-y: visible;">
                 <table class="table table-vcenter card-table">
                     <thead>
                         <tr>
@@ -426,15 +447,15 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     <div class="d-flex align-items-center">
                                         <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2">
                                         <?php if ($isSelf) { ?>
-                                            <span class="fw-bold"><?= $familyMember->getFullName() ?></span>
+                                            <span class="fw-bold"><?= InputUtils::escapeHTML($familyMember->getFullName()) ?></span>
                                             <i class="fa-solid fa-circle-user text-primary ms-2" title="<?= gettext('Current person') ?>"></i>
                                         <?php } else { ?>
-                                            <a href="<?= $familyMember->getViewURI() ?>"><?= $familyMember->getFullName() ?></a>
+                                            <a href="<?= $familyMember->getViewURI() ?>"><?= InputUtils::escapeHTML($familyMember->getFullName()) ?></a>
                                         <?php } ?>
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <span class="badge bg-secondary-lt text-secondary"><?= $familyMember->getFamilyRoleName() ?></span>
+                                    <span class="badge bg-secondary-lt text-secondary"><?= InputUtils::escapeHTML($familyMember->getFamilyRoleName()) ?></span>
                                 </td>
                                 <td><?= $familyMember->getFormattedBirthDate(); ?></td>
                                 <td>
@@ -448,11 +469,13 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     <div class="dropdown">
                                         <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                         <div class="dropdown-menu dropdown-menu-end">
+                                            <?php if ($bOkToEdit) { ?>
                                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
+                                            <?php } ?>
                                             <button class="dropdown-item AddToCart" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                                             <?php if ($bOkToEdit) { ?>
                                             <div class="dropdown-divider"></div>
-                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= InputUtils::escapeAttribute($familyMember->getFullName()) ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -463,61 +486,94 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     </tbody>
                 </table>
             </div>
-            <?php if (!empty($formattedMailingAddress)) : ?>
-            <div class="card-footer">
-                <div class="d-flex align-items-start gap-3">
-                    <div>
-                        <i class="fa-solid fa-location-dot me-1 text-body-secondary"></i>
-                        <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
-                        <?php
-                        $personDirectionsUrl = $person->getDirectionsUrl();
-                        $personAppleDirectionsUrl = $person->getAppleMapsDirectionsUrl();
-                        ?>
-                        <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
-                            <div class="btn-group ms-2 directions-btn-group">
-                                <?php if (!empty($personDirectionsUrl)) : ?>
-                                    <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Directions') ?></a>
-                                <?php endif; ?>
-                                <?php if (!empty($personAppleDirectionsUrl)) : ?>
-                                <button type="button" class="btn btn-sm btn-ghost-primary dropdown-toggle dropdown-toggle-split directions-provider-toggle d-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    <span class="visually-hidden"><?= gettext('Choose map provider') ?></span>
-                                </button>
-                                <div class="dropdown-menu directions-provider-menu d-none">
-                                    <?php if (!empty($personDirectionsUrl)) : ?>
-                                        <a class="dropdown-item" href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
-                                            <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
-                                        </a>
-                                    <?php endif; ?>
-                                    <a class="dropdown-item apple-maps-option" href="<?= $personAppleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
-                                        <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
-                                    </a>
-                                </div>
-                                <?php endif; ?>
-                            </div>
+        </div>
+        <?php } ?>
+
+        <?php
+        // Address card — mirrors the family-view Address card. Renders when the
+        // person has a mailing address OR a map config (family-less person with
+        // their own address). The #person-map element must exist whenever
+        // $personMapConfig is set, or person-view.js's L.map() call throws.
+        $personDirectionsUrl = $person->getDirectionsUrl();
+        $personAppleDirectionsUrl = $person->getAppleMapsDirectionsUrl();
+        ?>
+        <?php if (!empty($formattedMailingAddress) || $personMapConfig !== null) : ?>
+        <div class="card mb-3">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= gettext('Address') ?>
+                    <?php if ($familyHasCoords) : ?>
+                    <span class="badge bg-green-lt text-green ms-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
+                        <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
+                    </span>
+                    <?php elseif (!empty($formattedMailingAddress)) : ?>
+                    <span class="badge bg-warning text-dark ms-2" title="<?= gettext('Address entered but coordinates not yet set') ?>">
+                        <i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Unverified') ?>
+                    </span>
+                    <?php endif; ?>
+                </h3>
+            </div>
+            <div class="card-body">
+                <?php if (!empty($formattedMailingAddress)) : ?>
+                <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
+                <div class="mt-2 d-flex flex-wrap gap-1">
+                    <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
+                    <div class="btn-group directions-btn-group">
+                        <?php if (!empty($personDirectionsUrl)) : ?>
+                        <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?></a>
                         <?php endif; ?>
-                        <?php if (!empty($fam_ID) && !$familyHasCoords) : ?>
-                            <button type="button" class="btn btn-sm btn-ghost-success ms-1" id="refresh-coordinates-btn" data-family-id="<?= $fam_ID ?>" title="<?= gettext('Refresh Coordinates') ?>">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </button>
+                        <?php if (!empty($personAppleDirectionsUrl)) : ?>
+                        <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split directions-provider-toggle d-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            <span class="visually-hidden"><?= gettext('Choose map provider') ?></span>
+                        </button>
+                        <div class="dropdown-menu directions-provider-menu d-none">
+                            <?php if (!empty($personDirectionsUrl)) : ?>
+                            <a class="dropdown-item" href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
+                            </a>
+                            <?php endif; ?>
+                            <a class="dropdown-item apple-maps-option" href="<?= $personAppleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
+                            </a>
+                        </div>
                         <?php endif; ?>
                     </div>
+                    <?php endif; ?>
+                    <?php if (!empty($fam_ID) && $familyHasCoords) : ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/people/map/neighbors?familyId=<?= $fam_ID ?>" class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-people-roof me-1"></i><?= gettext('Find Neighbors') ?>
+                    </a>
+                    <?php endif; ?>
+                    <?php if (!empty($fam_ID) && !$familyHasCoords) : ?>
+                    <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn" data-family-id="<?= $fam_ID ?>" title="<?= gettext('Automatically detect coordinates using address') ?>">
+                        <i class="fa-solid fa-location-dot me-1"></i><?= gettext('Refresh Coordinates') ?>
+                    </button>
+                    <?php endif; ?>
                 </div>
-                <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+                <?php endif; ?>
                 <?php if ($personMapConfig !== null) : ?>
-                <div class="mt-2">
-                    <div id="person-map" style="height: 150px; border-radius: 4px;"></div>
+                <div class="mt-2 rounded overflow-hidden">
+                    <div id="person-map" style="height: 200px;"></div>
                 </div>
                 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                     window.CRM = window.CRM || {};
-                    window.CRM.personMapConfig = <?= json_encode($personMapConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+                    window.CRM.personMapConfig = <?= InputUtils::jsonEncodeForScript($personMapConfig) ?>;
                 </script>
                 <?php endif; ?>
-                <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
-                <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
             </div>
-            <?php endif; ?>
         </div>
-        <?php } ?>
+        <?php endif; ?>
+
+        <!--
+            person-view.js bundle (map, refresh-coordinates, group manager, timeline
+            filter, attendance history) — loaded unconditionally. It must NOT be
+            nested inside the "has family" / "has mailing address" blocks above:
+            group management, the timeline filter, and the attendance history tab
+            are all needed regardless of whether the person has a family or address
+            (e.g. the admin's own "Church Admin" placeholder person has neither).
+        -->
+        <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+        <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+        <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
 
         <!-- Tabbed Content -->
         <div class="card">
@@ -536,6 +592,11 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
                             <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('Volunteer') ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-attendance" href="#attendance" data-bs-toggle="tab">
+                            <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Attendance') ?>
                         </a>
                     </li>
                     <!-- Plugin tabs will be dynamically added here by JavaScript -->
@@ -603,7 +664,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                             if ((int)$type_ID === 11) {
                                                                 $prop_Special = null;
                                                             }
-                                                            echo '<br><small class="text-body-secondary"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . CustomFieldUtils::display($type_ID, $currentData, $prop_Special) . '</small>';
+                                                            echo '<br><small class="text-body-secondary"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . InputUtils::escapeHTML(CustomFieldUtils::display($type_ID, $currentData, $prop_Special)) . '</small>';
                                                         }
                                                     }
                                                 } ?>
@@ -615,7 +676,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/groups/view/<?= $grp_ID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View Group') ?></a>
                                                     <a class="dropdown-item changeRole" data-groupid="<?= $grp_ID ?>" data-current-role-id="<?= (int)$roleId ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext('Change Role') ?></a>
                                                     <?php if ($grp_hasSpecialProps) { ?>
-                                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>
+                                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/groups/<?= $grp_ID ?>/members/<?= $iPersonID ?>/properties"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>
                                                     <?php } ?>
                                                     <div class="dropdown-divider"></div>
                                                     <button class="dropdown-item text-danger groupRemove" data-groupid="<?= (int)$grp_ID ?>" data-groupname="<?= InputUtils::escapeAttribute($grp_Name) ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Remove') ?></button>
@@ -735,6 +796,11 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         </table>
                     </div>
                     <?php endif; ?>
+
+                    <div class="tab-pane" id="attendance">
+                        <?php include __DIR__ . '/partials/attendance-tab.php'; ?>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -764,6 +830,8 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
         <script src="<?= SystemURLs::assetVersioned('/skin/js/PersonView.js') ?>"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             window.CRM.currentPersonID = <?= $iPersonID ?>;
+            window.CRM.currentPersonActive = <?= $person->isActive() ? "true" : "false" ?>;
+            window.CRM.currentPersonName = <?= InputUtils::jsonEncodeForScript($person->getFullName()) ?>;
 
             $("#deletePhoto").click(function() {
                 window.CRM.deletePhoto("person", window.CRM.currentPersonID);

@@ -25,7 +25,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?= gettext('Group') ?> <span class="text-danger">*</span>
                             </label>
                             <select id="GroupID" name="GroupID" class="form-select" onchange="UpdateRoles();">
-                                <option value="0"><?= gettext('— Select a group —') ?></option>
+                                <option value="0">— <?= gettext('Select a group') ?> —</option>
                                 <?php foreach ($groups as $group): ?>
                                     <option value="<?= (int) $group->getId() ?>">
                                         <?= InputUtils::escapeHTML($group->getName()) ?>

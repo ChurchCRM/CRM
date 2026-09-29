@@ -37,7 +37,7 @@ if (isset($_GET['CancelFamily'])) {
 $DonationMessage = '';
 
 //Set the Page Title
-$sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Family');
+$sPageTitle = gettext('Family Delete Confirmation');
 
 // Delete and MoveDonations are now handled by API endpoints:
 // DELETE /api/family/{familyId} and POST /api/family/{familyId}/donations/move
@@ -75,8 +75,8 @@ require_once __DIR__ . '/Include/Header.php';
             echo '<p class="lead">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
             echo '<form name=SelectFamily method=get action=SelectDelete.php>';
             echo '<div class="card-body">';
-            echo '<div class="card-header"><strong>' . gettext('Family Name') . ':' ." $fam_Name</strong></div>";
-            echo '<p>' . gettext('Please select another family with whom to associate these donations:');
+            echo '<div class="card-header"><strong>' . gettext('Family Name') . ':' . ' ' . InputUtils::escapeHTML($fam_Name) . '</strong></div>';
+            echo '<p>' . gettext('Please select another family with whom to associate these donations') . ':';
             echo '<br><b>' . gettext('WARNING: This action can not be undone and may have legal implications!') . '</b></p>';
             echo"<input name=FamilyID value=$iFamilyID type=hidden>";
             echo '<select name=DonationFamilyID><option value=0 selected>' . gettext('Unassigned') . '</option>';
@@ -130,7 +130,7 @@ require_once __DIR__ . '/Include/Header.php';
             function moveDonations() {
                 var targetFamilyId = document.querySelector('select[name=DonationFamilyID]').value;
                 if (!targetFamilyId || targetFamilyId == '0') {
-                    bootbox.alert(<?= json_encode(gettext('Please select a target family.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                    bootbox.alert(<?= InputUtils::jsonEncodeForScript(gettext('Please select a target family.')) ?>);
                     return;
                 }
                 fetch(window.CRM.root + '/api/family/<?= (int)$iFamilyID ?>/donations/move', {
@@ -141,10 +141,10 @@ require_once __DIR__ . '/Include/Header.php';
                 .then(function(r) { return r.json(); })
                 .then(function(data) {
                     if (data.success) { window.location.reload(); }
-                    else { bootbox.alert(data.message || <?= json_encode(gettext('Failed to move donations.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>); }
+                    else { bootbox.alert(data.message || <?= InputUtils::jsonEncodeForScript(gettext('Failed to move donations.')) ?>); }
                 })
                 .catch(function() {
-                    bootbox.alert(<?= json_encode(gettext('An error occurred while moving donations.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                    bootbox.alert(<?= InputUtils::jsonEncodeForScript(gettext('An error occurred while moving donations.')) ?>);
                 });
             }
             </script>
@@ -154,13 +154,15 @@ require_once __DIR__ . '/Include/Header.php';
             // -----------------------------------
             echo '<br><br>';
             //Get the pledges for this family
-            $sSQL = 'SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
+            $rsPledges = RunPreparedQuery(
+                'SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
                  plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName
                  FROM pledge_plg
                  LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
                  LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-                 WHERE plg_famID = ' . (int) $iFamilyID . ' ORDER BY pledge_plg.plg_date';
-            $rsPledges = RunQuery($sSQL); ?>
+                 WHERE plg_famID = ? ORDER BY pledge_plg.plg_date',
+                'i', [(int) $iFamilyID]
+            ); ?>
             <table class="table w-100">
                 <tr class="TableHeader">
                     <td><?= gettext('Type') ?></td>
@@ -209,14 +211,14 @@ require_once __DIR__ . '/Include/Header.php';
             } else {
                 // No Donations from family.  Normal delete confirmation
                 echo $DonationMessage;
-                echo"<div class='alert alert-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
+                echo"<div class='alert alert-warning'><b>" . gettext('Please confirm deletion of this family record') . ':</b><br/>';
                 echo gettext('Note: This will also delete all Notes associated with this Family record.');
                 echo gettext('(this action cannot be undone)') . '</div>';
                 echo '<div>';
                 echo '<strong>' . gettext('Family Name') . ':</strong>';
                 echo '&nbsp;' . InputUtils::escapeHTML($fam_Name);
                 echo '</div><br/>';
-                echo '<div><strong>' . gettext('Family Members:') . '</strong><ul>';
+                echo '<div><strong>' . gettext('Family Members') . ':</strong><ul>';
                 //List Family Members
                 $familyMembers = PersonQuery::create()->filterByFamId((int) $iFamilyID)->find();
                 foreach ($familyMembers as $person) {
@@ -238,11 +240,11 @@ require_once __DIR__ . '/Include/Header.php';
                         if (data.success) {
                             window.location.href = window.CRM.root + '/people/family';
                         } else {
-                            bootbox.alert(data.message || <?= json_encode(gettext('Delete failed'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                            bootbox.alert(data.message || <?= InputUtils::jsonEncodeForScript(gettext('Delete failed')) ?>);
                         }
                     })
                     .catch(function() {
-                        bootbox.alert(<?= json_encode(gettext('An error occurred while deleting the family.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                        bootbox.alert(<?= InputUtils::jsonEncodeForScript(gettext('An error occurred while deleting the family.')) ?>);
                     });
                 }
                 </script>

@@ -38,7 +38,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  * )
  */
 $app->post('/issues', function (Request $request, Response $response, array $args): Response {
-    $data = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
+    $data = json_decode($request->getBody(), null, 512);
     $issueDescription =
         "Collected Value Title |  Data \r\n" .
         "----------------------|----------------\r\n" .

@@ -1,58 +1,6 @@
-/**
- * Family Verification Page
- * Handles avatar display, form interactions, and verify submission
- */
-
 import "./family-verify.css";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Handle avatar display - show/hide initials based on photo presence
-  document.querySelectorAll(".avatar-placeholder").forEach((container) => {
-    const img = container.querySelector(".avatar-img");
-    const initials = container.querySelector(".initials");
-
-    if (img?.src) {
-      img.addEventListener("load", () => {
-        if (initials) {
-          initials.style.display = "none";
-        }
-        img.style.display = "block";
-      });
-
-      img.addEventListener("error", () => {
-        img.style.display = "none";
-        if (initials) {
-          initials.style.display = "block";
-        }
-      });
-    }
-  });
-
-  // Photo viewer click handlers
-  document.addEventListener("click", (e) => {
-    const photoElement = e.target.closest(".view-person-photo");
-    if (photoElement) {
-      const personId = photoElement.getAttribute("data-person-id");
-      if (window.CRM?.showPhotoLightbox) {
-        window.CRM.showPhotoLightbox("person", personId);
-      }
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-
-    const familyPhotoElement = e.target.closest(".view-family-photo");
-    if (familyPhotoElement) {
-      const familyId = familyPhotoElement.getAttribute("data-family-id");
-      if (window.CRM?.showPhotoLightbox) {
-        window.CRM.showPhotoLightbox("family", familyId);
-      }
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  });
-
-  // --- Verify form submission ---
   const verifyBtn = document.getElementById("onlineVerifyBtn");
   const cancelBtn = document.getElementById("onlineVerifyCancelBtn");
   const siteBtn = document.getElementById("onlineVerifySiteBtn");
@@ -74,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         message = "Changes requested (no details provided)";
       }
 
-      // Determine the base URL for the external verify endpoint
       const root = window.CRM ? window.CRM.root : "";
 
       fetch(`${root}/external/verify/${window.token}`, {
@@ -84,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
       })
         .then((resp) => {
           if (resp.ok) {
-            // Show success
             if (collectSection) collectSection.classList.add("d-none");
             if (doneSection) doneSection.classList.remove("d-none");
             if (errorSection) errorSection.classList.add("d-none");
@@ -96,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         })
         .catch(() => {
-          // Show error
           if (collectSection) collectSection.classList.add("d-none");
           if (doneSection) doneSection.classList.add("d-none");
           if (errorSection) errorSection.classList.remove("d-none");

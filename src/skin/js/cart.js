@@ -402,7 +402,7 @@ export class CartManager {
    * @private
    */
   performEmptyCart(options) {
-    const reloadPage = options.reloadPage !== false && window.location.pathname.includes("/v2/cart");
+    const reloadPage = options.reloadPage !== false && window.location.pathname.includes("/people/cart");
     const reloadDelay = options.reloadDelay || 1500;
 
     return window.CRM.APIRequest({
@@ -436,11 +436,11 @@ export class CartManager {
         Type: window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role,
       },
       (selectedRole) => {
-        // Defensive — promptSelection should already validate, but the API
-        // requires both fields and JSON.stringify silently drops `undefined`,
-        // so a missing value would otherwise yield a confusing 400.
-        if (!selectedRole?.GroupID || !selectedRole?.RoleID) {
-          this.showNotification("danger", i18next.t("Please select both a group and a role."));
+        // Defensive — promptSelection should already validate the group selection.
+        // RoleID may be null when a group has no configured roles; pass 0 in that
+        // case so the API receives a numeric value and uses the group's default role.
+        if (!selectedRole?.GroupID) {
+          this.showNotification("danger", i18next.t("Please select a group."));
           return;
         }
         window.CRM.APIRequest({
@@ -448,7 +448,7 @@ export class CartManager {
           path: "cart/emptyToGroup",
           data: JSON.stringify({
             groupID: selectedRole.GroupID,
-            groupRoleID: selectedRole.RoleID,
+            groupRoleID: selectedRole.RoleID ?? 0,
           }),
         })
           .done((data) => {
@@ -482,7 +482,7 @@ export class CartManager {
    */
   updateButtonState(cartId, inCart, cartType = "person") {
     // First try to find the container with the data attributes
-    let $element = $(`[data-cart-id="${cartId}"][data-cart-type="${cartType}"]`);
+    const $element = $(`[data-cart-id="${cartId}"][data-cart-type="${cartType}"]`);
 
     if (!$element.length) return;
 
@@ -498,13 +498,13 @@ export class CartManager {
       $element.removeClass("AddToCart").addClass("RemoveFromCart");
 
       if (isDropdownItem) {
-        // Dropdown item: swap Tabler icon and label text
+        // Dropdown item: swap Font Awesome icon and label text
         $button.addClass("text-danger");
-        $icon.attr("class", "ti ti-trash me-2");
+        $icon.attr("class", "fa-solid fa-box-open me-2");
         $button.find(".cart-label").text($button.data("label-remove") || "");
       } else {
         $button.removeClass("btn-primary").addClass("btn-danger");
-        $icon.removeClass("fa-cart-plus").addClass("fa-shopping-cart");
+        $icon.removeClass("fa-cart-shopping").addClass("fa-box-open");
       }
     } else {
       $element.removeClass("RemoveFromCart").addClass("AddToCart");
@@ -512,11 +512,11 @@ export class CartManager {
       if (isDropdownItem) {
         // Dropdown item: swap Tabler icon and label text
         $button.removeClass("text-danger");
-        $icon.attr("class", "ti ti-shopping-cart-plus me-2");
+        $icon.attr("class", "fa-solid fa-cart-shopping me-2");
         $button.find(".cart-label").text($button.data("label-add") || "");
       } else {
         $button.removeClass("btn-danger").addClass("btn-primary");
-        $icon.removeClass("fa-shopping-cart").addClass("fa-cart-plus");
+        $icon.removeClass("fa-box-open").addClass("fa-cart-shopping");
       }
     }
   }
@@ -594,7 +594,7 @@ export class CartManager {
   }
 
   animateCartIcon() {
-    const $cartIcon = $(".fa-shopping-cart").parent();
+    const $cartIcon = $(".fa-cart-shopping").parent();
     $cartIcon.addClass("cart-pulse");
     setTimeout(() => $cartIcon.removeClass("cart-pulse"), 600);
   }
@@ -609,7 +609,7 @@ export class CartManager {
     if (cartPeople.length > 0) {
       menuHtml = `
                 <li>
-                    <a class="dropdown-item" href="${window.CRM.root}/v2/cart">
+                    <a class="dropdown-item" href="${window.CRM.root}/people/cart">
                         <i class="fa-solid fa-eye text-primary"></i> ${i18next.t("View Cart")}
                     </a>
                     <a class="dropdown-item emptyCart">
@@ -618,13 +618,13 @@ export class CartManager {
                     <a id="emptyCartToGroup" class="dropdown-item">
                         <i class="fa-solid fa-object-ungroup text-info"></i> ${i18next.t("Empty Cart to Group")}
                     </a>
-                    <a href="${window.CRM.root}/CartToFamily.php" class="dropdown-item">
+                    <a href="${window.CRM.root}/people/cart/to-family" class="dropdown-item">
                         <i class="fa-solid fa-users text-info"></i> ${i18next.t("Empty Cart to Family")}
                     </a>
                     <a href="${window.CRM.root}/event/cart-to-event" class="dropdown-item">
                         <i class="fa-solid fa-clipboard-list text-info"></i> ${i18next.t("Check In to Event")}
                     </a>
-                    <a href="${window.CRM.root}/MapUsingGoogle.php?GroupID=0" class="dropdown-item">
+                    <a href="${window.CRM.root}/people/map?groupId=0" class="dropdown-item">
                         <i class="fa-solid fa-map-marker text-info"></i> ${i18next.t("Map Cart")}
                     </a>
                 </li>`;

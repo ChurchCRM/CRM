@@ -58,7 +58,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     }
 
     // GHSA-fcw7-mmfh-7vjm: Prevent IDOR - verify user has permission to view this person
-    if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
+    if (!$currentUser->canReadPerson($iPersonID)) {
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
     }
 
@@ -85,9 +85,9 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $headerButtons = [];
     if ($currentUser->isAdmin()) {
         if (!$person->isUser()) {
-            $headerButtons[] = ['label' => gettext('Make User'), 'url' => '/UserEditor.php?NewPersonID=' . $iPersonID, 'icon' => 'fa-person-chalkboard'];
+            $headerButtons[] = ['label' => gettext('Make User'), 'url' => '/admin/system/users/new?personId=' . $iPersonID, 'icon' => 'fa-person-chalkboard'];
         } else {
-            $headerButtons[] = ['label' => gettext('Edit User'), 'url' => '/UserEditor.php?PersonID=' . $iPersonID, 'icon' => 'fa-user-secret'];
+            $headerButtons[] = ['label' => gettext('Edit User'), 'url' => '/admin/system/users/' . $iPersonID . '/edit', 'icon' => 'fa-user-secret'];
             $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye'];
         }
     } elseif ($person->isUser() && $person->getId() === $currentUser->getId()) {
@@ -111,7 +111,8 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $personData = mysqli_fetch_array($rsPerson, MYSQLI_ASSOC);
 
     // ── Custom fields master (definitions) ───────────────────────────────────
-    $customFieldsMaster = PersonCustomMasterQuery::create()->orderByOrder()->find();
+    // Filter custom fields by field-level permissions (GHSA-p6xx-xx98-f323)
+    $visibleCustomFields = $person->getVisibleCustomFieldDefinitions();
 
     $sSQL       = 'SELECT * FROM person_custom WHERE per_ID = ' . $iPersonID;
     $rsCustomData = RunQuery($sSQL);
@@ -162,7 +163,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         ->orderByOrder()
         ->find();
 
-    // ── Properties (ORM via PropertyService — mirrors master's PersonView.php) ─
+    // ── Properties (ORM via PropertyService) ─
     $assignedPersonProperties = PropertyService::getAssigned($person);
     $allPersonProperties      = PropertyService::getAll($person);
 
@@ -237,8 +238,8 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'plaintextMailingAddress' => $plaintextMailingAddress,
         'formattedMailingAddress' => $formattedMailingAddress,
         'bOkToEdit'              => $bOkToEdit,
-        // Custom fields
-        'customFieldsMaster'     => $customFieldsMaster,
+        // Custom fields (filtered by user's field-level permissions)
+        'customFieldsMaster'     => $visibleCustomFields,
         'aCustomData'            => $aCustomData,
         // Groups
         'assignedGroupsData'     => $assignedGroupsData,

@@ -90,17 +90,17 @@ document.addEventListener("DOMContentLoaded", () => {
     birthDayFilter.classList.add("d-none");
   }
 
-  birthDayFilter.querySelector("i.fa-times")?.addEventListener("click", hideBirthdayFilter);
+  birthDayFilter.querySelector("i.fa-xmark")?.addEventListener("click", hideBirthdayFilter);
 
   // Remove student from class
   $(document).on("click", ".remove-from-class", function () {
     const $btn = $(this);
     const groupId = $btn.data("group-id");
     const personId = $btn.data("person-id");
-    const personName = window.CRM.escapeHtml(String($btn.data("person-name") || ""));
+    const personName = String($btn.data("person-name") || "");
 
     bootbox.confirm({
-      message: `${i18next.t("Remove")} <strong>${personName}</strong> ${i18next.t("from this class?")}`,
+      message: i18next.t("Remove {{personName}} from this class?", { personName }),
       buttons: {
         confirm: { label: i18next.t("Remove"), className: "btn-warning" },
         cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
@@ -116,11 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
             window.CRM.notify(i18next.t("Person removed from class."), { type: "success", delay: 3000 });
             dataTable.row($btn.closest("tr")).remove().draw();
           })
-          .fail(() => {
-            window.CRM.notify(i18next.t("Failed to remove from class. Please try again."), {
-              type: "danger",
-              delay: 5000,
-            });
+          .fail((jqXHR) => {
+            const msg = jqXHR.responseJSON?.message || i18next.t("Failed to remove from class. Please try again.");
+            window.CRM.notify(msg, { type: "danger", delay: 5000 });
           });
       },
     });
@@ -144,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
       method: "POST",
       path: "events/quick-create",
       data: JSON.stringify({ groupId: groupId }),
+      suppressErrorDialog: true,
     })
       .done((resp) => {
         const eventId = resp?.eventId;
@@ -153,7 +152,9 @@ document.addEventListener("DOMContentLoaded", () => {
             type: "danger",
             delay: 5000,
           });
-          $btn.prop("disabled", false).html(`<i class="ti ti-plus me-1"></i>${i18next.t("Create Today's Event")}`);
+          $btn
+            .prop("disabled", false)
+            .html(`<i class="fa-solid fa-plus me-1"></i>${i18next.t("Create Today's Event")}`);
           return;
         }
         window.CRM.notify(
@@ -170,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .fail((jqXHR) => {
         const msg = jqXHR.responseJSON?.message || i18next.t("Failed to create event.");
         window.CRM.notify(msg, { type: "danger", delay: 5000 });
-        $btn.prop("disabled", false).html(`<i class="ti ti-plus me-1"></i>${i18next.t("Create Today's Event")}`);
+        $btn.prop("disabled", false).html(`<i class="fa-solid fa-plus me-1"></i>${i18next.t("Create Today's Event")}`);
       });
   });
 });

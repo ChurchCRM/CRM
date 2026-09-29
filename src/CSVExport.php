@@ -334,7 +334,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header d-flex align-items-center">
-          <h3 class="card-title"><?= gettext('Output Method:') ?></h3>
+          <h3 class="card-title"><?= gettext('Output Method') ?>:</h3>
         </div>
         <div class="card-body">
           <div class="mb-3">

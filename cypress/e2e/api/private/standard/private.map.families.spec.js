@@ -3,13 +3,9 @@
 /**
  * API tests for the Map families endpoint
  * GET /api/map/families — returns geocoded families / group members / cart persons
- * as map marker items for the Leaflet congregation map at /v2/map.
+ * as map marker items for the Leaflet congregation map at /people/map.
  */
 describe("API Private Map", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     describe("GET /api/map/families — all geocoded families (default)", () => {
         it("Returns 200 with an array", () => {
             cy.makePrivateAdminAPICall("GET", "/api/map/families", null, 200).then(

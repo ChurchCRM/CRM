@@ -1,316 +1,50 @@
 ---
-title: "Authorization & Security"
-intent: "Authorization patterns, RedirectUtils, input sanitization, and security guidance"
-tags: ["security","auth","redirects","xss"]
-prereqs: ["php-best-practices.md"]
-complexity: "intermediate"
+title: Authorization & Security
+intent: Role checks and EditSelf / family-read traps. Read User.php and the middleware for APIs.
 ---
 
-# Skill: Authorization & Security
+# Authorization
 
-## Context
-This skill covers user authorization, authentication patterns, security redirects, and XSS protection in ChurchCRM.
+Code: `src/ChurchCRM/model/ChurchCRM/User.php`, `AuthMiddleware.php`, `PageInit.php`, `src/ChurchCRM/Slim/Middleware/Request/Auth/`.
 
-## User Authorization Methods
+`isAdmin()` makes every `isXxxEnabled()` true, except EditSelf-exclusive users (those getters return false).
 
-The `User` class provides permission checking methods located in `src/ChurchCRM/model/ChurchCRM/User.php`
+`hasNoAdminPermissions()` was removed in #9121. Not a rename. Use `isEditSelfExclusive()`: not admin AND EditSelf.
 
-### Role-based methods (check generic permission type)
+## Who gets in
 
-- `isAdmin()` - Super admin access
-- `isEditRecordsEnabled()` - Can edit any person/family record
-- `isEditSelfEnabled()` - Can edit own record and family members
-- `isEditRecords()` / `isDeleteRecords()` / `isAddRecords()` - Specific record permissions
-- `isManageGroupsEnabled()` - Can manage groups
-- `isFinanceEnabled()` - Can access finance module
-- `isNotesEnabled()` - Can add/edit notes
+| User | Entry gate | Effect |
+|------|------------|--------|
+| Admin | pass | full |
+| Any module flag (Notes, Finance, …) | pass | read all; write per flag |
+| All flags 0 | pass | read-only people/family |
+| EditSelf only | blocked | `/external/limited-access` |
 
-### Object-level method (check permission for specific person)
+Gate must run in **both** `PageInit.php` and `AuthMiddleware` (`isAuthFlowExemptPath()` so login still works). `MvcAppFactory` always adds `AuthMiddleware`.
 
-**`canEditPerson(int $personId, int $personFamilyId = 0): bool`** - Check if user can edit a specific person
+Read is default: `canReadFamily` / `canReadPerson` return true. Keep passing the real IDs — they are reserved ABAC hooks. Do not delete the unused parameters.
 
-- Returns `true` if user has EditRecords permission, OR
-- Returns `true` if user has EditSelf permission AND it's their own record or a family member
-- Use this method to prevent privilege escalation (broken access control)
+`usr_EditSelf` defaults to 0. Grant it on purpose in `UserService::normalizeAccessMode()`.
 
-**Example:**
+## Object scope
 
-```php
-$currentUser = AuthenticationManager::getCurrentUser();
-if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
-    RedirectUtils::securityRedirect('PropertyAssign');
-}
-```
+- Sensitive family routes (profile, geolocation, notes, writes): `FamilyMiddleware` + `canViewFamily()` — GHSA-jjcj-h3cm-p7x7.
+- Avatar / nav / photo: `FamilyReadMiddleware`. Do not add a constructor flag to `FamilyMiddleware` (Slim resolves `::class` with no args → 500).
+- `PersonMiddleware` only loads the entity. Put `canEditPerson($id, $famId)` in the **handler**. Do not add it to the middleware — ManageGroups member routes share it.
+- Notes: `NotesRoleAuthMiddleware` is the door. Non-admin non-author private notes are omitted from the timeline, not 403. Admin sees full note content.
 
-## MVC Module Middleware: View vs Add Split <!-- learned: 2026-04-09 -->
+## MVC + menu
 
-When wrapping an MVC module with role middleware via `MvcAppFactory::create([... 'roleMiddleware' => ...])`, choose **the lowest permission tier the module's *read* routes need**, then add the higher tier per write route.
+App-level middleware = lowest **read** role. Add the write middleware on POST routes. A module-level AddEvents gate 403s the calendar for View-only users.
 
-```php
-// ❌ WRONG — module-level AddEvents middleware 403s the dashboard, calendar,
-// and read-only check-in pages for users who only have View permission.
-$app = MvcAppFactory::create('/event', [
-    'roleMiddleware' => AddEventsRoleAuthMiddleware::class,
-]);
+`Menu.php` visibility must match the route middleware. Hidden menu + open route is a hole. Visible menu + 403 is a bug.
 
-// ✅ CORRECT — module-level View gate, Add gate per write route
-$app = MvcAppFactory::create('/event', [
-    'roleMiddleware' => ViewEventsRoleAuthMiddleware::class,
-]);
+## PR Permission Audit — required before merge
 
-$app->get('/dashboard', $listEventsHandler);                     // View only
-$app->post('/editor', $saveEventHandler)
-    ->add(new AddEventsRoleAuthMiddleware());                    // requires Add
-$app->post('/types/{id}', $saveTypeHandler)
-    ->add(new AddEventsRoleAuthMiddleware());                    // requires Add
-```
+If the diff touches `User.php`, `AuthMiddleware`, `PageInit.php`, `Menu.php`, family/person/notes middleware or routes, or any `*RoleAuthMiddleware`:
 
-**Why it matters**: menu items linking to read-only routes (`Calendar`, `Check-in`, `Events Dashboard`) are visible to all logged-in users. If the module middleware demands the elevated write permission, every click 403s — defeats the menu and looks like a regression.
-
-**Defense in depth**: it's still fine for `AddEventsRoleAuthMiddleware` to additionally enforce the system-wide feature flag (`bEnabledEvents`), so writes are blocked even if a route is missing the per-route middleware.
-
-## Authorization Redirect Pattern
-
-**For permission checks, use this pattern:**
-
-```php
-// Check role-based permission
-if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-    RedirectUtils::securityRedirect('EditRecords');
-}
-
-// Check object-level permission (use User::canEditPerson for person records)
-$currentUser = AuthenticationManager::getCurrentUser();
-if (!$currentUser->canEditPerson($personId, $personFamilyId)) {
-    RedirectUtils::securityRedirect('PropertyAssign');
-}
-
-// Check if resource exists, redirect to not-found page
-$person = PersonQuery::create()->findOneById($personId);
-if ($person === null) {
-    RedirectUtils::redirect('v2/person/not-found?id=' . $personId);
-}
-```
-
-**Pattern for authorization checks:**
-1. **First check**: General permission (`isEditRecordsEnabled()`, `isManageGroupsEnabled()`, etc.)
-2. **Second check**: Object-level permission (use `canEditPerson()` for person records)
-3. **Third**: Redirect with appropriate method (`securityRedirect()` for auth failures, `redirect()` for "not found")
-
-## RedirectUtils (Security & Navigation)
-
-**Use RedirectUtils for all redirects** - Located in `src/ChurchCRM/Utils/RedirectUtils.php`
-
-### Three core methods
-
-**1. `redirect($sRelativeURL)` - Safe relative redirects**
-
-- Use for: Normal page navigation, error pages, "not found" pages
-- Example: `RedirectUtils::redirect('v2/dashboard')` or `RedirectUtils::redirect('v2/person/not-found?id=' . $iPersonID)`
-- Automatically prepends `SystemURLs::getRootPath()` and handles URL normalization
-
-**2. `securityRedirect($missingRole)` - Permission-denied redirects**
-
-- Use for: Access denied due to missing permissions/roles
-- Example: `RedirectUtils::securityRedirect('PersonView')` when user lacks required permission
-- Logs warning via `LoggerUtils` and redirects to `v2/access-denied?role=[missingRole]`
-- Pass a descriptive string indicating what permission was missing
-
-**3. `absoluteRedirect($sTargetURL)` - Absolute URL redirects**
-
-- Use for: External URLs or already-complete internal URLs
-- Example: `RedirectUtils::absoluteRedirect('https://example.com')` or `RedirectUtils::absoluteRedirect($completePath)`
-- Does NOT prepend root path, used as-is
-
-### DO NOT use
-
-- ❌ `header('Location: ...')` directly (bypasses root path handling)
-- ❌ `header('Location: ' . SystemURLs::getRootPath() . ...)` (RedirectUtils does this automatically)
-- ❌ Unhandled exception throws for access denied (use security redirects)
-
-## Kiosk Device Routes — Cookie + Roster Check <!-- learned: 2026-04-09 -->
-
-Routes under `/kiosk/device/*` are NOT user-authenticated — they identify the caller via a kiosk device cookie, not a `User` session. Every device route must:
-
-1. Validate the kiosk cookie via `$getKioskFromCookie()` and 401 if missing
-2. **For routes that take a `PersonId` argument**: verify that person belongs to the kiosk's active assignment roster, otherwise the endpoint becomes a person-id enumeration oracle disclosing names and photo flags
-
-```php
-$group->get('/activeClassMember/{PersonId}/family', function (Request $req, Response $res, array $args) use ($getKioskFromCookie): Response {
-    $kiosk = $getKioskFromCookie();
-    if ($kiosk === null) {
-        return SlimUtils::renderErrorJSON($res, gettext('Kiosk device not found'), [], 401);
-    }
-
-    $personId = InputUtils::filterInt($args['PersonId'] ?? 0);
-    if ($personId <= 0) {
-        return SlimUtils::renderErrorJSON($res, gettext('Invalid person ID'), [], 400);
-    }
-
-    // Roster membership check — prevents enumeration outside assigned group
-    $assignment = $kiosk->getActiveAssignment();
-    if ($assignment === null) {
-        return SlimUtils::renderErrorJSON($res, gettext('No active assignment'), [], 403);
-    }
-    $rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
-    if (!in_array($personId, $rosterIds, true)) {
-        return SlimUtils::renderErrorJSON($res, gettext('Person not in active class roster'), [], 403);
-    }
-
-    // ... safe to fetch + return person data
-});
-```
-
-**Related**: `Event::checkInPerson()` / `Event::checkOutPerson()` are called from kiosk routes with no `User` session. Any code path they touch must guard `AuthenticationManager::getCurrentUser()` with `isUserAuthenticated()` first — see `Event::addTimelineNote()` in `src/ChurchCRM/model/ChurchCRM/Event.php` for the fallback pattern.
-
-## HTML Sanitization & XSS Protection
-
-**Use `InputUtils` for all HTML/text handling** - Located in `src/ChurchCRM/Utils/InputUtils.php`
-
-### Four core methods for security
-
-**1. `sanitizeText($input)` - Plain text, removes ALL HTML tags**
-
-- Use for: Names, descriptions, social media handles
-- Example: `$person->setFirstName(InputUtils::sanitizeText($_POST['firstName']))`
-
-**2. `sanitizeHTML($input)` - Rich text with XSS protection (HTML Purifier)**
-
-- Use for: User-provided HTML content (event descriptions, Quill editor)
-- Allows safe tags: `<a><b><i><u><h1-h6><pre><img><table><p><blockquote><div><code>` etc.
-- Blocks dangerous: `<script><iframe><embed><form><style><meta>`
-- Example: `$event->setDesc(InputUtils::sanitizeHTML($sEventDesc))`
-
-**3. `escapeHTML($input)` - Output escaping for HTML body content**
-
-- Automatically handles `stripslashes()` for magic quotes
-- Use for: Displaying database/user values in HTML
-- Example: `<?= InputUtils::escapeHTML($person->getFirstName()) ?>`
-
-**4. `escapeAttribute($input)` - Output escaping for HTML attributes**
-
-- Same security as `escapeHTML()` (uses `ENT_QUOTES`)
-- Use for: Values in HTML attributes or form fields
-- Example: `<input value="<?= InputUtils::escapeAttribute($address) ?>">`
-
-**5. `sanitizeAndEscapeText($input)` - Combined plain text sanitization + output escape**
-
-- Use for: Untrusted user input that must be plain text and escaped
-- Example: `$data[$key] = InputUtils::sanitizeAndEscapeText($userSubmittedValue)`
-
-### CRITICAL Security Rules
-
-- ❌ NEVER use `htmlspecialchars()` or `htmlentities()` directly
-- ❌ NEVER use `ENT_NOQUOTES` flag (doesn't escape quotes in attributes)
-- ❌ NEVER use `stripslashes()` directly (let InputUtils handle it)
-- ✅ ALWAYS use InputUtils methods for all HTML/text handling
-- ✅ ALWAYS use `escapeAttribute()` for form input values
-- ✅ ALWAYS use `sanitizeHTML()` for rich text editors (Quill)
-
-## TLS/SSL Verification (Network Requests)
-
-When making HTTPS requests (cURL, Guzzle, etc.), **always enable TLS verification by default**:
-
-```php
-// CORRECT - Secure by default with optional override for self-signed certs
-public function sendRequest(string $url, bool $allowSelfSigned = false): void
-{
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    
-    if ($allowSelfSigned) {
-        // Only disable for explicitly configured local network servers
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    } else {
-        // Default: verify SSL certificates (secure)
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-    }
-    curl_exec($ch);
-}
-
-// WRONG - Disables security by default (allows MITM attacks)
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  // ❌ Never hardcode false
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);      // ❌ Security vulnerability
-```
-
-**Guidelines:**
-- **Default to secure**: Always verify TLS certificates by default
-- **Make insecure behavior opt-in**: Add explicit config option (e.g., `allowSelfSigned`)
-- **Document the risk**: Add setting description explaining when to use (local networks only)
-- **Use case**: Self-signed certs are common in home/church networks for local servers (OpenLP, etc.)
-
-## Security Vulnerability (CVE) Handling
-
-### Reviewing CVE Issues
-
-When asked to review a CVE issue:
-1. **Fetch the issue** using `github-pull-request_issue_fetch`
-2. **Check if the vulnerable file still exists** - use `file_search` or `read_file`
-3. **Verify the specific vulnerability** - check if input sanitization is in place
-4. **Focus on security fixes only** - ignore code style issues unless explicitly requested
-
-### Common Security Fixes
-
-**SQL Injection Prevention:**
-
-```php
-// CORRECT - Use InputUtils::filterInt() for integer parameters
-$iCurrentFundraiser = InputUtils::filterInt($_GET['CurrentFundraiser']);
-$tyid = InputUtils::filterInt($_POST['EN_tyid']);
-
-// CORRECT - Use Propel ORM (parameterized queries)
-$event = EventQuery::create()->findOneById((int)$eventId);
-
-// WRONG - Raw SQL with unsanitized input
-$sSQL = "SELECT * FROM table WHERE id = " . $_GET['id'];
-RunQuery($sSQL);
-```
-
-**XSS Prevention:**
-
-```php
-// CORRECT - Escape output
-<?= htmlspecialchars($value, ENT_QUOTES, 'UTF-8') ?>
-<?= htmlentities($value, ENT_QUOTES, 'UTF-8') ?>
-
-// WRONG - Unescaped output
-<?= $value ?>
-```
-
-### CVE Issue Response Format
-
-When a CVE issue is confirmed fixed, provide this response:
-
-```markdown
-**Issue #XXXX (CVE-YYYY-ZZZZZ) - [Brief Description]:**
-
-[Explanation of how the vulnerability was fixed - 1-2 sentences]
-
-We are deleting this issue to ensure the software's safety. Please refer to the new https://github.com/ChurchCRM/CRM/security/policy for reporting CVE issues. Thank you again for reporting it and helping keep our software secure. Happy to accept the CVE via the new process.
-```
-
-### Automated CVE Detection Workflow
-
-The repository has an automated GitHub Actions workflow (`.github/workflows/issue-comment.yml`) that:
-1. Detects CVE mentions in issue titles or bodies (patterns: `CVE-`, `CVE-YYYY-NNNNN`, or `GHSA-xxxx-xxxx-xxxx`)
-2. Posts a security comment from `.github/issue-comments/security.md`
-3. Adds `security` and `security-delete-required` labels
-4. Closes the issue automatically
-
-This ensures security vulnerabilities are not publicly disclosed and directs reporters to use GitHub Security Advisories instead.
-
-## Files
-
-**Authorization:** `src/ChurchCRM/model/ChurchCRM/User.php`
-**Redirects:** `src/ChurchCRM/Utils/RedirectUtils.php`
-**Input Sanitization:** `src/ChurchCRM/Utils/InputUtils.php`
-**Security Policy:** `SECURITY.md`
-**Issue Templates:** `.github/issue-comments/security.md`
-
-## Related Skills
-
-- [Security Best Practices](./security-best-practices.md) - HTML sanitization, XSS protection, TLS/SSL verification, API error handling, CVE vulnerability handling
-- [Code Standards](./code-standards.md) - General code quality and standards
-- [API Development](./api-development.md) - API error handling and security response patterns
+1. EditSelf-exclusive cannot reach internal pages.
+2. Zero-permission user can read people/family and cannot write.
+3. Family profile / geolocation / notes stay behind `canViewFamily()`.
+4. Menu and middleware agree.
+5. Do not reintroduce `hasNoAdminPermissions()`.

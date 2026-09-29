@@ -19,15 +19,17 @@ describe("People Tools", () => {
     });
 
     it("self-register", () => {
-        cy.visit("members/self-register.php");
+        cy.visit("people/self-register");
         cy.contains("Self Registrations");
-        cy.contains("People");
+        cy.contains("New Self-Registrations");
         cy.contains("Families");
+        cy.contains("Individuals (no family)");
+        cy.get("#selfRegistrations tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
     });
 
-    it("Geo Page", () => {
-        cy.visit("GeoPage.php");
-        cy.contains("Family Geographic Utilities");
+    it("Find Neighbors", () => {
+        cy.visit("people/map/neighbors");
+        cy.contains("Find Neighbors");
     });
 
 });

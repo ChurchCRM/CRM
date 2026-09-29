@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+const fullScan = process.argv.includes('--all');
+
 console.log('🔍 PHP Syntax Validation');
 console.log('========================\n');
 
@@ -35,14 +37,59 @@ if (!signatures.files || !Array.isArray(signatures.files)) {
 
 console.log(`📋 Found ${signatures.files.length} files in signatures\n`);
 
-const phpFiles = signatures.files
+let phpFiles = signatures.files
     .map((f) => (typeof f === 'string' ? f : f.filename))
     .filter((f) => f.endsWith('.php') && !f.includes('/vendor/') && !f.startsWith('vendor/'))
     .map((f) => path.join(srcDir, f.replace(/\//g, path.sep)));
 
+// By default, only validate files that actually changed (staged, unstaged, or
+// committed-but-unmerged vs the base branch). Full-repo scans belong in CI
+// (`npm run build:php:validate:all`) — running php -l on 700+ files on every
+// local build/commit is overkill for a diff touching a handful of files.
+if (!fullScan) {
+    const repoRoot = path.join(__dirname, '..');
+    const runGit = (args) => {
+        try {
+            return execSync(`git ${args}`, { cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
+                .split('\n')
+                .map((l) => l.trim())
+                .filter(Boolean);
+        } catch {
+            return null;
+        }
+    };
+
+    const mergeBase =
+        runGit('merge-base HEAD origin/master')?.[0] || runGit('merge-base HEAD master')?.[0] || null;
+
+    const changedLists = [
+        mergeBase ? runGit(`diff --name-only ${mergeBase} HEAD`) : null,
+        runGit('diff --name-only HEAD'),
+        runGit('ls-files --others --exclude-standard'),
+    ];
+
+    if (changedLists.every((l) => l === null)) {
+        console.log('⚠️  Not a git repo (or git unavailable) — falling back to full scan.\n');
+    } else {
+        const changedSet = new Set(
+            changedLists
+                .filter(Boolean)
+                .flat()
+                .map((f) => path.join(repoRoot, f))
+        );
+        phpFiles = phpFiles.filter((f) => changedSet.has(f));
+        console.log(`🔎 Scoped run: checking ${phpFiles.length} changed PHP file(s) (use --all for a full scan)\n`);
+    }
+}
+
 let errors = 0;
 let validated = 0;
 let notFound = 0;
+
+if (phpFiles.length === 0) {
+    console.log('✨ No changed PHP files to validate.');
+    process.exit(0);
+}
 
 for (const filePath of phpFiles) {
     if (!fs.existsSync(filePath)) {

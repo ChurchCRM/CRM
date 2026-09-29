@@ -107,11 +107,11 @@ if ($bCanManageGroups) {
         <!-- Action Toolbar (ghost buttons, family-view pattern) -->
         <div id="group-view-toolbar" class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
             <?php if ($bCanManageGroups): ?>
-            <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupID ?>">
+            <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/groups/editor/<?= $iGroupID ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
             </a>
             <?php endif; ?>
-            <button class="btn btn-ghost-secondary" id="printGroup" title="<?= gettext('Print') ?>">
+            <button type="button" class="btn btn-ghost-secondary" id="printGroup" title="<?= gettext('Print') ?>">
                 <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
             </button>
             <div class="dropdown">
@@ -126,7 +126,7 @@ if ($bCanManageGroups) {
                     <!-- Role-specific cart items injected by JS -->
                 </div>
             </div>
-            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/v2/map?groupId=<?= $iGroupID ?>">
+            <a class="btn btn-ghost-info" href="<?= $sRootPath ?>/people/map?groupId=<?= $iGroupID ?>">
                 <i class="fa-solid fa-map-location-dot me-1"></i><?= gettext('Map') ?>
             </a>
             <?php if ($thisGroup->isSundaySchool()): ?>
@@ -135,14 +135,12 @@ if ($bCanManageGroups) {
             </a>
             <?php endif; ?>
             <?php if ($bEmailEnabled): ?>
-            <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="emailDropdownBtn">
-                    <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
-                </button>
-                <div class="dropdown-menu" id="emailDropdownMenu">
-                    <div class="text-center py-2 text-body-secondary"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
-                </div>
-            </div>
+            <button type="button" class="btn btn-ghost-secondary"
+                    data-email-composer
+                    data-email-endpoint="groups/<?= (int) $iGroupID ?>/emails"
+                    data-email-title="<?= InputUtils::escapeAttribute(gettext('Email') . ' ' . $thisGroup->getName()) ?>">
+                <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
+            </button>
             <?php endif; ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="textDropdownBtn">
@@ -159,7 +157,7 @@ if ($bCanManageGroups) {
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <?php if ($thisGroup->getHasSpecialProps()): ?>
-                    <a class="dropdown-item" href="<?= $sRootPath ?>/GroupPropsFormEditor.php?GroupID=<?= $iGroupID ?>">
+                    <a class="dropdown-item" href="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form">
                         <i class="fa-solid fa-rectangle-list me-2"></i><?= gettext('Edit Member Properties Form') ?>
                     </a>
                     <div class="dropdown-divider"></div>
@@ -209,7 +207,7 @@ if ($bCanManageGroups) {
                 <?php endif; ?>
 
                 <!-- DataTable -->
-                <div class="table-responsive">
+                <div style="overflow: visible;">
                     <table class="table table-hover table-vcenter table-sm" id="membersTable"></table>
                 </div>
             </div>
@@ -289,7 +287,7 @@ if ($bCanManageGroups) {
                                 data-pro-id="<?= (int) $aRow['pro_ID'] ?>"
                                 data-pro-name="<?= InputUtils::escapeAttribute($aRow['pro_Name']) ?>"
                                 title="<?= gettext('Remove') ?>">
-                                <i class="fa-solid fa-times"></i>
+                                <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
                         <?php endif; ?>
@@ -325,7 +323,7 @@ if ($bCanManageGroups) {
                 <h3 class="card-title m-0"><i class="fa-solid fa-sliders me-1"></i> <?= gettext('Member Properties') ?></h3>
                 <span class="badge bg-info-lt text-info ms-2"><?= $groupSpecificProps->count() ?></span>
                 <?php if ($bCanManageGroups): ?>
-                <a href="<?= $sRootPath ?>/GroupPropsFormEditor.php?GroupID=<?= $iGroupID ?>" class="btn btn-sm btn-ghost-secondary ms-auto" title="<?= gettext('Edit Form') ?>">
+                <a href="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form" class="btn btn-sm btn-ghost-secondary ms-auto" title="<?= gettext('Edit Form') ?>">
                     <i class="fa-solid fa-pen"></i>
                 </a>
                 <?php endif; ?>
@@ -356,12 +354,15 @@ if ($bCanManageGroups) {
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentGroup      = <?= (int) $iGroupID ?>;
-    window.CRM.currentGroupName  = <?= json_encode($thisGroup->getName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+    window.CRM.currentGroupName  = <?= InputUtils::jsonEncodeForScript($thisGroup->getName()) ?>;
     window.CRM.groupIsActive     = <?= $thisGroup->isActive() ? 'true' : 'false' ?>;
     window.CRM.groupEmailExport  = <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>;
-    window.CRM.groupPhoneNumbers = <?= json_encode($sPhoneLink, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+    window.CRM.groupPhoneNumbers = <?= InputUtils::jsonEncodeForScript($sPhoneLink) ?>;
 </script>
 <script src="<?= $sRootPath ?>/skin/js/GroupView.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/GroupView.js') ?>"></script>
+<?php if ($bEmailEnabled): ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

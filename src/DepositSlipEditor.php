@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\view\PageHeader;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -40,7 +41,7 @@ if ($iDepositSlipID) {
 }
 
 if ($noDeposit) {
-    RedirectUtils::redirect('FindDepositSlip.php');
+    RedirectUtils::redirect('finance/deposit/search');
 }
 
 $sPageTitle = $thisDeposit->getType() . ' ' . gettext('Deposit Slip Number') . ': ' . $iDepositSlipID;
@@ -66,7 +67,7 @@ $currentUser->save();
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Finance'), '/finance/'],
-    [gettext('Deposits'), '/FindDepositSlip.php'],
+    [gettext('Deposits'), '/finance/deposit/search'],
     [gettext('Edit Deposit')],
 ]);
 require_once __DIR__ . '/Include/Header.php';
@@ -75,7 +76,7 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="row mb-3">
   <div class="col-12">
     <div class="d-flex justify-content-between align-items-center">
-      <a href="FindDepositSlip.php" class="btn btn-outline-secondary">
+      <a href="<?= SystemURLs::getRootPath() ?>/finance/deposit/search" class="btn btn-outline-secondary">
         <i class="fa-solid fa-arrow-left"></i><?= gettext('Back to Deposits'); ?>
       </a>
       <div class="btn-group" role="group" aria-label="<?= gettext('Deposit Navigation'); ?>">
@@ -145,7 +146,11 @@ require_once __DIR__ . '/Include/Header.php';
                     <i class="fa-solid fa-floppy-disk"></i><?= gettext('Save'); ?>
                   </button>
                   <?php if (!$thisDeposit->getClosed()): ?>
-                  <a href="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>&PledgeOrPayment=Payment&CurrentDeposit=<?= $iDepositSlipID ?>" class="btn btn-success me-2">
+                  <?php
+                  $addPaymentLinkBack = '/DepositSlipEditor.php?DepositSlipID=' . $iDepositSlipID;
+                  $addPaymentUrl = SystemURLs::getRootPath() . '/finance/pledge/new?type=Payment&depositId=' . $iDepositSlipID . '&linkBack=' . urlencode($addPaymentLinkBack);
+                  ?>
+                  <a href="<?= InputUtils::escapeAttribute($addPaymentUrl) ?>" class="btn btn-success me-2">
                     <i class="fa-solid fa-circle-plus"></i><?= gettext('Add Payment'); ?>
                   </a>
                   <?php endif; ?>
@@ -170,7 +175,7 @@ require_once __DIR__ . '/Include/Header.php';
         <div class="col-12 mb-3">
           <div class="stat-card text-center py-4 border-0 shadow-sm" style="background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);">
             <div style="font-size: 3rem; font-weight: 700; color: white; letter-spacing: -1px;">
-              $<?= number_format($thisDeposit->getVirtualColumn('totalAmount'), 2); ?>
+              <?= CurrencyFormatter::formatHtml($thisDeposit->getVirtualColumn('totalAmount') ?? 0); ?>
             </div>
             <div class="text-white-50 text-uppercase small fw-bold mt-2" style="letter-spacing: 1px;"><?= gettext('Total Deposit'); ?></div>
           </div>
@@ -182,7 +187,7 @@ require_once __DIR__ . '/Include/Header.php';
             <?php if ($thisDeposit->getCountCash()): ?>
             <div class="mb-3">
               <i class="fa-solid fa-money-bill fa-2x text-success mb-2"></i>
-              <div class="fw-bold h5 text-success">$<?= number_format($thisDeposit->getTotalCash(), 2); ?></div>
+              <div class="fw-bold h5 text-success"><?= CurrencyFormatter::formatHtml($thisDeposit->getTotalCash()); ?></div>
               <div class="small text-body-secondary"><?= gettext('Cash'); ?> (<?= $thisDeposit->getCountCash(); ?>)</div>
             </div>
             <?php endif; ?>
@@ -200,7 +205,7 @@ require_once __DIR__ . '/Include/Header.php';
             <?php if ($thisDeposit->getCountChecks()): ?>
             <div class="mb-3">
               <i class="fa-solid fa-money-check fa-2x text-info mb-2"></i>
-              <div class="fw-bold h5 text-info">$<?= number_format($thisDeposit->getTotalChecks(), 2); ?></div>
+              <div class="fw-bold h5 text-info"><?= CurrencyFormatter::formatHtml($thisDeposit->getTotalChecks()); ?></div>
               <div class="small text-body-secondary"><?= gettext('Checks'); ?> (<?= $thisDeposit->getCountChecks(); ?>)</div>
             </div>
             <?php endif; ?>
@@ -237,7 +242,7 @@ require_once __DIR__ . '/Include/Header.php';
           <small class="text-body-secondary ms-2"><?= gettext('Click a bar to filter payments'); ?></small>
         </h5>
         <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="clearFundFilter">
-          <i class="fa-solid fa-times"></i><?= gettext('Clear Filter'); ?>
+          <i class="fa-solid fa-xmark"></i><?= gettext('Clear Filter'); ?>
         </button>
       </div>
       <div class="card-body" style="padding: 1rem 0.75rem 1rem 1.5rem;">
@@ -251,40 +256,31 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="card-status-top bg-secondary"></div>
   <div class="card-header d-flex justify-content-between align-items-center">
     <h3 class="card-title mb-0">
-      <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?> 
-      <span class="badge bg-light text-dark text-dark" id="payment-count">0</span>
+      <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?>
+      <span class="badge bg-blue-lt text-blue" id="payment-count">0</span>
     </h3>
-    <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
-    <div class="btn-group" role="group">
-      <button type="submit" class="btn btn-sm btn-primary" name="DepositSlipLoadAuthorized">
-        <i class="fa-solid fa-sync"></i><?= gettext('Load Authorized'); ?>
-      </button>
-      <button type="submit" class="btn btn-sm btn-warning" name="DepositSlipRunTransactions">
-        <i class="fa-solid fa-play-circle"></i><?= gettext('Run Transactions'); ?>
-      </button>
+    <div class="d-flex gap-2">
+      <?php if ($iDepositSlipID && $thisDeposit->getType() === 'Bank' && !$thisDeposit->getClosed()): ?>
+        <button type="button" id="deleteSelectedRows" class="btn btn-sm btn-danger" disabled>
+          <i class="fa-solid fa-trash-can"></i><?php echo gettext('Delete Selected'); ?>
+        </button>
+      <?php endif; ?>
+      <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
+      <div class="btn-group" role="group">
+        <button type="submit" class="btn btn-sm btn-primary" name="DepositSlipLoadAuthorized">
+          <i class="fa-solid fa-arrows-rotate"></i><?= gettext('Load Authorized'); ?>
+        </button>
+        <button type="submit" class="btn btn-sm btn-warning" name="DepositSlipRunTransactions">
+          <i class="fa-solid fa-play-circle"></i><?= gettext('Run Transactions'); ?>
+        </button>
+      </div>
+      <?php endif; ?>
     </div>
-    <?php endif; ?>
   </div>
   <div class="card-body p-0">
-    <div class="px-3 py-3 border-bottom bg-light">
-      <!-- Subtle spacing -->
-    </div>
-    <div class="table-responsive">
+    <div style="overflow-x: clip; overflow-y: visible;">
       <table class="table table-hover mb-0" id="paymentsTable"></table>
     </div>
-    <?php
-    if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed()) {
-        if ($thisDeposit->getType() == 'Bank') {
-            ?>
-    <div class="card-footer">
-      <button type="button" id="deleteSelectedRows" class="btn btn-sm btn-danger" disabled>
-        <i class="fa-solid fa-trash-can"></i><?php echo gettext('Delete Selected'); ?>
-      </button>
-    </div>
-            <?php
-        }
-    }
-    ?>
   </div>
 </div>
 
@@ -311,12 +307,12 @@ require_once __DIR__ . '/Include/Header.php';
 #paymentsTable {
     margin-bottom: 0;
 }
-#paymentsTable_wrapper .dataTables_length,
-#paymentsTable_wrapper .dataTables_filter {
+.dt-length,
+.dt-search {
     padding: 1rem 0.75rem;
 }
-#paymentsTable_wrapper .dataTables_info,
-#paymentsTable_wrapper .dataTables_paginate {
+.dt-info,
+.dt-paging {
     padding: 1rem 0.75rem;
 }
 .dt-buttons {
@@ -353,6 +349,12 @@ require_once __DIR__ . '/Include/Header.php';
     font-size: 0.75rem;
     padding: 0.35rem 0.65rem;
     font-weight: 500;
+}
+#paymentsTable .dropdown {
+    display: inline-block;
+}
+#paymentsTable .dropdown-menu {
+    min-width: auto;
 }
 .stat-card {
     padding: 1.25rem 1rem;
@@ -432,8 +434,8 @@ code {
   var depositType = '<?php echo $thisDeposit->getType(); ?>';
   var depositSlipID = <?php echo $iDepositSlipID; ?>;
   var isDepositClosed = Boolean(<?=  $thisDeposit->getClosed(); ?>);
-  var fundLabels = <?= json_encode(array_values($fundLabels)) ?>;
-  var fundData = <?= json_encode(array_values($fundData)) ?>;
+  var fundLabels = <?= InputUtils::jsonEncodeForScript(array_values($fundLabels)) ?>;
+  var fundData = <?= InputUtils::jsonEncodeForScript(array_values($fundData)) ?>;
   $(document).ready(function() {
     window.CRM.onLocalesReady(function() {
       initPaymentTable();

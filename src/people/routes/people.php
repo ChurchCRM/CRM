@@ -1,10 +1,16 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\ConfirmReportEmailResult;
+use ChurchCRM\Service\ConfirmReportService;
+use ChurchCRM\Service\PersonService;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
@@ -21,32 +27,156 @@ $app->group('/list', function (RouteCollectorProxy $group): void {
 
 $app->get('/verify', 'viewPeopleVerify');
 $app->get('/photos', 'viewPeoplePhotoGallery');
+$app->get('/report/verify', 'generateVerifyReport');
+$app->post('/report/verify/email', 'sendVerifyReportEmail')->add(new CSRFMiddleware('people_report_verify_email'));
 
 function viewPeopleVerify(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
+    $queryParams = $request->getQueryParams();
+
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
     ];
 
-    if ($request->getQueryParams()['EmailsError'] ?? false) {
-        $errorArgs = [
-            'sGlobalMessage' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
-            'sGlobalMessageClass' => 'danger'
-        ];
-        $pageArgs = array_merge($pageArgs, $errorArgs);
+    // Structured email-error alert (replaces generic ?EmailsError=true toast)
+    if (!empty($queryParams['EmailsError'])) {
+        $reason     = $queryParams['reason']     ?? 'unknown';
+        $sentCount  = isset($queryParams['sent'])    ? (int) $queryParams['sent']    : 0;
+        $failedCount = isset($queryParams['failed']) ? (int) $queryParams['failed']  : 0;
+
+        $pageArgs['emailErrorReason']  = $reason;
+        $pageArgs['emailErrorSent']    = $sentCount;
+        $pageArgs['emailErrorFailed']  = $failedCount;
     }
 
-    $queryParam = $request->getQueryParams()['AllPDFsEmailed'] ?? null;
-    if ($queryParam) {
-        $headerArgs = ['sGlobalMessage' => sprintf(gettext('PDFs successfully emailed to %s families.'), $queryParam),
-            'sGlobalMessageClass'       => 'success'];
-        $pageArgs = array_merge($pageArgs, $headerArgs);
+    // Success: keep existing AllPDFsEmailed handling (shown via toast + inline)
+    if (!empty($queryParams['AllPDFsEmailed'])) {
+        $pageArgs['emailSuccessCount'] = (int) $queryParams['AllPDFsEmailed'];
     }
 
     return $renderer->render($response, 'people-verify-view.php', $pageArgs);
 }
+
+/**
+ * Generate and stream a confirmation report PDF for download.
+ *
+ * Route: GET /people/report/verify[?familyId=<int>]
+ *
+ * Requires the "Create Directory" permission.
+ */
+function generateVerifyReport(Request $request, Response $response, array $args): Response
+{
+    AuthenticationManager::redirectHomeIfFalse(
+        AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(),
+        'MenuOptions'
+    );
+
+    $queryParams = $request->getQueryParams();
+    $familyId = isset($queryParams['familyId']) && $queryParams['familyId'] !== ''
+        ? InputUtils::filterInt($queryParams['familyId'])
+        : null;
+
+    try {
+        $service = new ConfirmReportService();
+        $result = $service->generateDownloadPDF($familyId);
+
+        $disposition = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
+        $response->getBody()->write($result['bytes']);
+        return $response
+            ->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Content-Disposition', $disposition . '; filename="' . $result['filename'] . '"');
+    } catch (\Throwable $e) {
+        LoggerUtils::getAppLogger()->error('generateVerifyReport error: ' . $e->getMessage(), ['exception' => $e]);
+        $response->getBody()->write('An error occurred while generating the PDF. Please check the application logs.');
+        return $response->withStatus(500)->withHeader('Content-Type', 'text/plain');
+    }
+}
+
+/**
+ * Generate per-family confirmation PDFs and email them, then redirect.
+ *
+ * Route: POST /people/report/verify/email (CSRF-protected state-changing action)
+ *
+ * Requires the "Create Directory" permission.
+ */
+function sendVerifyReportEmail(Request $request, Response $response, array $args): Response
+{
+    AuthenticationManager::redirectHomeIfFalse(
+        AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(),
+        'MenuOptions'
+    );
+
+    // Detect AJAX requests — these get a JSON response instead of a redirect
+    $isAjax = $request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest'
+        || str_contains(strtolower($request->getHeaderLine('Accept')), 'application/json');
+
+    if (!SystemConfig::isEmailEnabled()) {
+        if ($isAjax) {
+            return SlimUtils::renderErrorJSON($response, gettext('Email is not configured. Please configure SMTP settings in System Settings.'), [], 400);
+        }
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=1&reason=' . ConfirmReportEmailResult::STATUS_EMAIL_DISABLED);
+    }
+
+    $params = array_merge($request->getQueryParams(), (array) ($request->getParsedBody() ?? []));
+    $familyId = isset($params['familyId']) && $params['familyId'] !== ''
+        ? InputUtils::filterInt($params['familyId'])
+        : null;
+    $updated = !empty($params['updated']);
+
+    try {
+        $service = new ConfirmReportService();
+        $result  = $service->sendFamilyEmails($familyId, $updated);
+    } catch (\Throwable $e) {
+        LoggerUtils::getAppLogger()->error('sendVerifyReportEmail error: ' . $e->getMessage(), ['exception' => $e]);
+        if ($isAjax) {
+            return SlimUtils::renderErrorJSON($response, gettext('Unexpected error while sending emails. Please check logs.'), [], 500, $e, $request);
+        }
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?EmailsError=1&reason=unexpected');
+    }
+
+    // Single-family path: on success redirect to the family page; on failure redirect to
+    // /people/verify which already handles all EmailsError display logic.
+    if ($familyId !== null) {
+        if (!$result->isSuccess()) {
+            $query = http_build_query([
+                'EmailsError' => '1',
+                'reason'      => $result->status,
+                'sent'        => $result->sentCount,
+                'failed'      => $result->failedCount,
+            ]);
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?' . $query);
+        }
+        return SlimUtils::renderRedirect(
+            $response,
+            SystemURLs::getRootPath() . '/people/family/' . $familyId . '?PDFEmailed=' . $result->sentCount
+        );
+    }
+
+    if ($isAjax) {
+        // toMessage() centralises all status→text logic on the value object
+        $message = $result->toMessage();
+        return SlimUtils::renderJSON($response, array_merge($result->toArray(), ['message' => $message]));
+    }
+
+    // Full-page redirect — encode enough info to render a specific inline alert
+    if ($result->isSuccess()) {
+        return SlimUtils::renderRedirect(
+            $response,
+            SystemURLs::getRootPath() . '/people/verify?AllPDFsEmailed=' . $result->sentCount
+        );
+    }
+
+    $query = http_build_query([
+        'EmailsError' => '1',
+        'reason'      => $result->status,
+        'sent'        => $result->sentCount,
+        'failed'      => $result->failedCount,
+    ]);
+    return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/verify?' . $query);
+}
+
 
 function listPeople(Request $request, Response $response, array $args): Response
 {
@@ -59,6 +189,14 @@ function listPeople(Request $request, Response $response, array $args): Response
         $familyActiveStatus = 'inactive';
     } elseif (($_GET['familyActiveStatus'] ?? '') === 'all') {
         $familyActiveStatus = 'all';
+    }
+
+    // Person active/inactive status filter (default: show only active persons)
+    $personActiveStatus = 'active';
+    if (($_GET['personActiveStatus'] ?? '') === 'inactive') {
+        $personActiveStatus = 'inactive';
+    } elseif (($_GET['personActiveStatus'] ?? '') === 'all') {
+        $personActiveStatus = 'all';
     }
 
     $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
@@ -75,6 +213,14 @@ function listPeople(Request $request, Response $response, array $args): Response
     }
 
     $members->leftJoinFamily();
+
+    // Apply person active status filter
+    if ($personActiveStatus === 'active') {
+        $members->filterByDateDeactivated(null);
+    } elseif ($personActiveStatus === 'inactive') {
+        $members->filterByDateDeactivated(null, Criteria::ISNOTNULL);
+    }
+
     $members->find();
 
     $filterByClsId = '';
@@ -128,6 +274,8 @@ function listPeople(Request $request, Response $response, array $args): Response
         }
     }
 
+    $personService = new PersonService();
+
     $pageArgs = [
         'sMode'                           => $sMode,
         'sRootPath'                       => SystemURLs::getRootPath(),
@@ -138,12 +286,16 @@ function listPeople(Request $request, Response $response, array $args): Response
             [gettext('Person Listing')],
         ]),
         'members'                         => $members,
+        'personActiveStatus'              => $personActiveStatus,
         'filterByClsId'                   => $filterByClsId,
         'filterByClsOptionId'             => $filterByClsOptionId,
         'filterByFmrId'                   => $filterByFmrId,
         'filterByFmrOptionId'             => $filterByFmrOptionId,
         'filterByGender'                  => $filterByGender,
         'familyActiveStatus'              => $familyActiveStatus,
+        'genderDataCheckCount'            => $personService->getMissingGenderDataCount(),
+        'roleDataCheckCount'              => $personService->getMissingRoleDataCount(),
+        'classificationDataCheckCount'    => $personService->getMissingClassificationDataCount(),
     ];
 
     return $renderer->render($response, 'person-list.php', $pageArgs);
@@ -241,3 +393,4 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
 
     return $renderer->render($response, 'photo-gallery.php', $pageArgs);
 }
+

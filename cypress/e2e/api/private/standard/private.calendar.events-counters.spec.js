@@ -6,10 +6,6 @@
  * today's birthdays, anniversaries, and events counts for menu badges
  */
 describe("API Private Calendar Events Counters", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     describe("GET /api/calendar/events-counters", () => {
         it("Returns 200 with event counter data", () => {
             cy.makePrivateAdminAPICall(

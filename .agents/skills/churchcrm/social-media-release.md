@@ -1,3 +1,10 @@
+---
+title: "Social Media Release Posts"
+intent: "Generate platform-optimized social media posts for every ChurchCRM release"
+tags: ["release", "social-media", "workflow"]
+prereqs: ["[[release-notes]]"]
+complexity: "beginner"
+---
 # Skill: Social Media Release Posts
 
 ## Purpose

@@ -126,6 +126,7 @@ $app->group('/mailchimp/api', function (RouteCollectorProxy $group) use ($mailch
             ->filterByEmail(null, Criteria::NOT_EQUAL)
             ->_or()
             ->filterByWorkEmail(null, Criteria::NOT_EQUAL)
+            ->filterByLiving()
             ->find();
 
         foreach ($peopleWithEmails as $person) {
@@ -171,6 +172,7 @@ $app->group('/mailchimp/api', function (RouteCollectorProxy $group) use ($mailch
             ->filterByEmail(null, Criteria::NOT_EQUAL)
             ->_or()
             ->filterByWorkEmail(null, Criteria::NOT_EQUAL)
+            ->filterByLiving()
             ->find();
 
         foreach ($peopleWithEmails as $person) {

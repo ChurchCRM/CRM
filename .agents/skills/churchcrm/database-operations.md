@@ -1,3 +1,10 @@
+---
+title: "Database Operations"
+intent: "Core patterns for database access using Perpl ORM (actively maintained fork of Propel2)"
+tags: ["database", "perpl", "orm", "php"]
+prereqs: ["[[php-best-practices]]"]
+complexity: "beginner"
+---
 # Skill: Database Operations with Perpl ORM
 
 ## Context
@@ -604,6 +611,8 @@ EventQuery::create()
 Always use full `HH:MM:SS` timestamps on the boundaries — see "Datetime Year-Range Filters"
 above for why a bare `YYYY-MM-DD` max silently drops same-day afternoon records.
 
+When the year must not matter (birthdays, anniversaries in any year) a date range cannot express it; bind the month into a raw clause on the TableMap constant: `->where('MONTH(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') = ?', $month, \PDO::PARAM_INT)` (`PeopleReportService`). The phpName form `Family.WeddingDate` is not rewritten inside a SQL function and fails with "Unknown column 'family_fam.WeddingDate'".
+
 ### Shared Date Parser — `DateTimeUtils::parsePartialDate()` <!-- learned: 2026-04-21 -->
 
 `src/ChurchCRM/utils/DateTimeUtils.php` contains a static helper for parsing the partial-date formats accepted by CSV imports and person/family edit forms:
@@ -616,3 +625,61 @@ $dt = DateTimeUtils::parsePartialDate($rawString); // returns DateTime|null
 ```
 
 Returns `null` for blank/unparseable input — always null-guard before calling ORM setters. Use this instead of `new \DateTime($userInput)` anywhere user-supplied date strings are accepted; it handles the year-less `0000-MM-DD` format that standard PHP date functions reject.
+
+### Always call `joinWith*()` at top level before `useXxxQuery()` with nested joins <!-- learned: 2026-06-11 -->
+
+`useEventQuery()` only adds a JOIN clause — it does NOT add the related table's columns to the SELECT.
+If you call `leftJoinWithYyy()` inside `useEventQuery()` without first calling `joinWithEvent()` at
+the top level, Yyy's columns are added to SELECT BEFORE the primary table's own columns, corrupting
+Propel's numeric hydration offsets (e.g. `type_defrecurtype = 'weekly'` lands at a TIMESTAMP offset
+→ `PropelException: Error parsing date/time value 'weekly'`).
+
+**Always prefix with `->joinWithRelated(Criteria::LEFT_JOIN)` at the top level:**
+
+```php
+// ✅ CORRECT — joinWithEvent at top ensures EventAttend cols come first
+EventAttendQuery::create()
+    ->joinWithEvent(Criteria::LEFT_JOIN)          // registers Event cols after EventAttend cols
+    ->useEventQuery(null, Criteria::LEFT_JOIN)
+        ->leftJoinWithEventType()                 // EventType cols come last
+        ->orderByStart(Criteria::DESC)            // orderBy inside is fine here
+    ->endUse()
+    ->find();
+
+// ❌ WRONG — no top-level joinWithEvent; EventType cols inserted BEFORE EventAttend cols
+EventAttendQuery::create()
+    ->useEventQuery(null, Criteria::LEFT_JOIN)
+        ->leftJoinWithEventType()                 // corrupts hydration offsets → PropelException
+    ->endUse()
+    ->find();
+```
+
+This affects any `EventAttendQuery` (or similar) where `useXxxQuery()` contains a nested
+`leftJoinWithYyy()`. The bug only surfaces at runtime when the joined records exist.
+
+### Raw `where()` with `OR` — always parenthesise or use `condition()`/`combine()` <!-- learned: 2026-09-16 -->
+
+Propel appends every criterion to the `WHERE` clause joined by `AND` and does **not** wrap a raw
+`where('...')` string in parentheses. Because `OR` binds looser than `AND`, a top-level `OR` inside a
+raw clause escapes every other filter on the query and silently widens the result set — a security
+bug when the escaped filter was the access-control one (this is how a public calendar access token
+came to return every calendar's events, including private ones).
+
+```php
+// ❌ WRONG — becomes: calendar_id = ? AND event_end IS NULL OR event_end >= ?
+//            every event in the DB whose end is after the window start matches
+$events->where('events_event.event_end IS NULL OR events_event.event_end >= ?', $start);
+
+// ✅ CORRECT — combined criteria ARE parenthesised when the statement is built
+$events->condition('noEnd', EventTableMap::COL_EVENT_END . ' IS NULL');
+$events->condition('endsAfter', EventTableMap::COL_EVENT_END . ' >= ?', $start);
+$events->combine(['noEnd', 'endsAfter'], 'or', 'overlapsView');
+$events->where(['overlapsView']);
+
+// ✅ ALSO CORRECT — parenthesise the raw clause yourself when the parts are generated
+$families->where('(' . implode(' OR ', $conditions) . ')');
+```
+
+`where($namedConditions, 'or')` (the array form) is safe for the same reason — Propel builds a
+combined criterion. The trap is only the single raw SQL string. Audit with:
+`grep -rn --include="*.php" -e "->where(" src | grep -i " or "`.

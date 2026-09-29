@@ -8,6 +8,7 @@ require_once __DIR__ . '/../Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
@@ -117,23 +118,29 @@ $sSQL .= $criteria;
 $rsFamilies = RunQuery($sSQL);
 
 $sSQLFundCriteria = '';
+$fundParams = [];
+$fundTypes = '';
+// No fund selected means every fund in the chosen fiscal year: the fund
+// criteria stays empty and the letter text carries no fund clause.
+$fundCount = 0;
+$fundOnlyString = '';
 
-// Build criteria string for funds
+// Build parameterized criteria for funds (? placeholders bound in $fundParams)
 if (!empty($_POST['funds'])) {
-    $fundCount = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$fundCount++] = InputUtils::legacyFilterInput($fundID, 'int');
+        $fund[$fundCount++] = (int) InputUtils::legacyFilterInput($fundID, 'int');
     }
     if ($fundCount === 1) {
         if ($fund[0]) {
-            $sSQLFundCriteria .=" AND plg_fundID='$fund[0]'";
+            $sSQLFundCriteria = ' AND plg_fundID = ?';
+            $fundParams = [$fund[0]];
+            $fundTypes = 'i';
         }
-    } else {
-        $sSQLFundCriteria .=" AND (plg_fundID ='$fund[0]'";
-        for ($i = 1; $i < $fundCount; $i++) {
-            $sSQLFundCriteria .=" OR plg_fundID='$fund[$i]'";
-        }
-        $sSQLFundCriteria .= ') ';
+    } elseif ($fundCount > 1) {
+        $placeholders = implode(',', array_fill(0, $fundCount, '?'));
+        $sSQLFundCriteria = ' AND plg_fundID IN (' . $placeholders . ')';
+        $fundParams = $fund;
+        $fundTypes = str_repeat('i', $fundCount);
     }
 }
 
@@ -141,16 +148,15 @@ if (!empty($_POST['funds'])) {
 if ($fundCount > 0) {
     if ($fundCount === 1) {
         if ($fund[0] === gettext('All Funds')) {
-            $fundOnlyString = gettext(' for all funds');
+            $fundOnlyString = ' ' . gettext('for all funds');
         } else {
-            $fundOnlyString = gettext(' for fund ');
+            $fundOnlyString = ' ' . gettext('for fund') . ' ';
         }
     } else {
-        $fundOnlyString = gettext('for funds ');
+        $fundOnlyString = gettext('for funds') . ' ';
     }
     for ($i = 0; $i < $fundCount; $i++) {
-        $sSQL = 'SELECT fun_Name FROM donationfund_fun WHERE fun_ID=' . $fund[$i];
-        $rsOneFund = RunQuery($sSQL);
+        $rsOneFund = RunPreparedQuery('SELECT fun_Name FROM donationfund_fun WHERE fun_ID = ?', 'i', [(int) $fund[$i]]);
         $aFundName = mysqli_fetch_array($rsOneFund);
         $fundOnlyString .= $aFundName['fun_Name'];
         if ($i < $fundCount - 1) {
@@ -205,20 +211,22 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     // Check for pledges if filtering by pledges
     if ($pledge_filter === 'pledge') {
-        $temp ="SELECT plg_plgID FROM pledge_plg
-            WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID" . $sSQLFundCriteria;
-        $rsPledgeCheck = RunQuery($temp);
+        $rsPledgeCheck = RunPreparedQuery(
+            "SELECT plg_plgID FROM pledge_plg WHERE plg_FamID = ? AND plg_PledgeOrPayment = 'Pledge' AND plg_FYID = ?" . $sSQLFundCriteria,
+            'ii' . $fundTypes,
+            array_merge([(int) $fam_ID, $iFYID], $fundParams)
+        );
         if (mysqli_num_rows($rsPledgeCheck) === 0) {
             continue;
         }
     }
 
     // Get pledges and payments for this family and this fiscal year
-    $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
-             LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-             WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria . ' ORDER BY plg_date';
-
-    $rsPledges = RunQuery($sSQL);
+    $rsPledges = RunPreparedQuery(
+        'SELECT *, b.fun_Name AS fundName FROM pledge_plg LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID WHERE plg_FamID = ? AND plg_FYID = ?' . $sSQLFundCriteria . ' ORDER BY plg_date',
+        'ii' . $fundTypes,
+        array_merge([(int) $fam_ID, $iFYID], $fundParams)
+    );
 
     // If there is no pledge or a payment go to next family
     if (mysqli_num_rows($rsPledges) === 0) {
@@ -259,10 +267,11 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fundOnlyString, $iFYID);
 
     // Get pledges only
-    $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
-             LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-             WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria ." AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
-    $rsPledges = RunQuery($sSQL);
+    $rsPledges = RunPreparedQuery(
+        "SELECT *, b.fun_Name AS fundName FROM pledge_plg LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID WHERE plg_FamID = ? AND plg_FYID = ?" . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date",
+        'ii' . $fundTypes,
+        array_merge([(int) $fam_ID, $iFYID], $fundParams)
+    );
 
     $totalAmountPledges = 0;
     $fundPledgeTotal = [];
@@ -273,13 +282,16 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     $summaryDateWid = $summaryFundX - $summaryDateX;
     $summaryFundWid = $summaryAmountX - $summaryFundX;
-    $summaryAmountWid = 15;
+    $summaryAmountWid = 20; // widened from 15 to fit CurrencyFormatter output (e.g. "$ 1,234.56" = 10 chars at Courier 8pt ≈ 16.9 mm)
 
     $summaryIntervalY = 4;
 
     if (mysqli_num_rows($rsPledges) === 0) {
         $curY += $summaryIntervalY;
-        $noPledgeString = SystemConfig::getValue('sReminderNoPledge') . '(' . $fundOnlyString . ')';
+        $noPledgeString = SystemConfig::getValue('sReminderNoPledge');
+        if ($fundOnlyString !== '') {
+            $noPledgeString .= '(' . $fundOnlyString . ')';
+        }
         $pdf->writeAt($summaryDateX, $curY, $noPledgeString);
         $curY += 2 * $summaryIntervalY;
     } else {
@@ -329,7 +341,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         if ($cnt > 1) {
             $pdf->writeAtCell($summaryFundX, $curY, $summaryFundWid, 'Total pledges');
             $pdf->SetFont('Courier', '', 8);
-            $totalAmountStr = sprintf('%.2f', $totalAmount);
+            $totalAmountStr = CurrencyFormatter::format($totalAmount);
             $pdf->printRightJustifiedCell($summaryAmountX, $curY, $summaryAmountWid, $totalAmountStr);
             $curY += $summaryIntervalY;
         }
@@ -337,10 +349,11 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     }
 
     // Get payments only
-    $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
-             LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-             WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria ." AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
-    $rsPledges = RunQuery($sSQL);
+    $rsPledges = RunPreparedQuery(
+        "SELECT *, b.fun_Name AS fundName FROM pledge_plg LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID WHERE plg_FamID = ? AND plg_FYID = ?" . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date",
+        'ii' . $fundTypes,
+        array_merge([(int) $fam_ID, $iFYID], $fundParams)
+    );
 
     $totalAmountPayments = 0;
     $fundPaymentTotal = [];
@@ -362,7 +375,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $summaryMethodWid = $summaryFundX - $summaryMethodX;
         $summaryFundWid = $summaryMemoX - $summaryFundX;
         $summaryMemoWid = $summaryAmountX - $summaryMemoX;
-        $summaryAmountWid = 15;
+        $summaryAmountWid = 20; // widened from 15 to fit CurrencyFormatter output (e.g. "$ 1,234.56" = 10 chars at Courier 8pt ≈ 16.9 mm)
 
         $curY += $summaryIntervalY;
         $pdf->SetFont('Times', 'B', 10);
@@ -427,7 +440,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         if ($cnt > 1) {
             $pdf->writeAtCell($summaryMemoX, $curY, $summaryMemoWid, 'Total payments');
             $pdf->SetFont('Courier', '', 8);
-            $totalAmountString = sprintf('%.2f', $totalAmount);
+            $totalAmountString = CurrencyFormatter::format($totalAmount);
             $pdf->printRightJustifiedCell($summaryAmountX, $curY, $summaryAmountWid, $totalAmountString);
             $curY += $summaryIntervalY;
         }
@@ -450,7 +463,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
                 if ($amountDue < 0) {
                     $amountDue = 0;
                 }
-                $amountStr = sprintf('Amount due for %s: %.2f', $fun_name, $amountDue);
+                $amountStr = sprintf('Amount due for %s: %s', $fun_name, CurrencyFormatter::format($amountDue));
                 $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $amountStr);
                 $curY += $summaryIntervalY;
             }

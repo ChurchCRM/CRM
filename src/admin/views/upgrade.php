@@ -27,6 +27,9 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                             <?php if ($isUpdateAvailable): ?>
                                 <span class="badge bg-success-lt fs-5"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
                                 <span class="badge bg-success"><?= gettext('Update Available') ?></span>
+                            <?php elseif (isset($isAheadOfStable) && $isAheadOfStable): ?>
+                                <span class="badge bg-primary-lt fs-5"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
+                                <span class="badge bg-warning-lt text-warning"><?= gettext('Running Pre-release') ?></span>
                             <?php else: ?>
                                 <span class="badge bg-primary-lt fs-5"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
                                 <span class="badge bg-success-lt text-success"><?= gettext('Up to Date') ?></span>
@@ -35,9 +38,14 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                     <?php else: ?>
                         <span class="badge bg-secondary-lt"><?= gettext('Latest version unknown') ?></span>
                     <?php endif; ?>
-                    <div class="ms-auto">
+                    <div class="ms-auto d-flex align-items-center gap-2">
+                        <?php if (!$isUpdateAvailable && $latestGitHubVersion !== null): ?>
+                        <button type="button" class="btn btn-outline-warning btn-sm" id="forceReinstallCurrent">
+                            <i class="fa fa-arrow-rotate-right me-1"></i><?= gettext('Force Re-install') ?>
+                        </button>
+                        <?php endif; ?>
                         <button type="button" class="btn btn-ghost-primary btn-sm" id="refreshFromGitHub">
-                            <i class="fa fa-sync me-1"></i><?= gettext('Refresh') ?>
+                            <i class="fa fa-arrows-rotate me-1"></i><?= gettext('Refresh') ?>
                         </button>
                     </div>
                 </div>
@@ -74,6 +82,13 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                             </button>
                         </div>
                         <div class="line"></div>
+                        <div class="step" data-target="#step-whats-new">
+                            <button type="button" class="step-trigger" role="tab" aria-controls="step-whats-new" id="step-whats-new-trigger">
+                                <span class="bs-stepper-circle"><i class="fa fa-newspaper"></i></span>
+                                <span class="bs-stepper-label"><?= gettext("What's New") ?></span>
+                            </button>
+                        </div>
+                        <div class="line"></div>
                         <div class="step" data-target="#step-apply">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-apply" id="step-apply-trigger">
                                 <span class="bs-stepper-circle"><i class="fa fa-cloud-arrow-down"></i></span>
@@ -105,7 +120,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-outline-warning btn-sm ms-3 text-nowrap" id="forceReinstall">
-                                            <i class="fa fa-redo me-1"></i><?= gettext('Force Re-install') ?>
+                                            <i class="fa fa-arrow-rotate-right me-1"></i><?= gettext('Force Re-install') ?>
                                         </button>
                                     </div>
                                 </div>
@@ -141,7 +156,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                             — <?= gettext("Files not part of the official release were found on your server.") ?>
                                         </div>
                                         <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-outline-danger btn-sm ms-3 text-nowrap">
-                                            <i class="fa fa-external-link me-1"></i><?= gettext('Review & Delete') ?>
+                                            <i class="fa fa-arrow-up-right-from-square me-1"></i><?= gettext('Review & Delete') ?>
                                         </a>
                                     </div>
                                 </div>
@@ -184,9 +199,79 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                             </div>
                         </div>
 
-                        <!-- Step 3: Download and Apply Update -->
+                        <!-- Step 3: What's New -->
+                        <div id="step-whats-new" class="content p-4" role="tabpanel" aria-labelledby="step-whats-new-trigger">
+                            <div id="whatsNewLoading" class="text-center py-4">
+                                <span class="spinner-border spinner-border-sm me-2"></span><?= gettext('Loading release information...') ?>
+                            </div>
+
+                            <div id="whatsNewContent" class="d-none">
+                                <!-- Advanced: install a specific version (collapsed by default, JS hides entirely when not applicable) -->
+                                <div class="mb-3 d-none" id="advancedVersionPanel">
+                                    <a href="#advancedVersionCollapse" class="collapse-toggle d-inline-flex align-items-center gap-1 text-warning text-decoration-none small fw-medium"
+                                        data-bs-toggle="collapse" aria-expanded="false">
+                                        <i class="fa fa-chevron-down"></i>
+                                        <i class="fa fa-triangle-exclamation ms-1 me-1"></i>
+                                        <?= gettext('Advanced: Install a specific version instead') ?>
+                                    </a>
+                                    <div id="advancedVersionCollapse" class="collapse mt-2">
+                                        <div class="card card-sm">
+                                            <div class="card-body">
+                                                <p class="text-secondary small mb-2"><?= gettext('By default the wizard upgrades to the latest version. You may instead choose a specific version below.') ?></p>
+                                                <select class="form-select form-select-sm mb-2" id="targetVersionSelect" style="max-width: 280px;"></select>
+                                                <div id="advancedWarningBanner" class="alert alert-danger d-none mb-0 py-2">
+                                                    <i class="fa fa-shield-halved me-1"></i>
+                                                    <span id="advancedWarningText"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Security recommendation callout (shown by JS when upgrade is available) -->
+                                <div id="securityRecommendationCallout" class="alert alert-warning d-none mb-3">
+                                    <div class="d-flex align-items-start gap-2">
+                                        <i class="fa fa-shield-halved fa-lg mt-1 flex-shrink-0"></i>
+                                        <span><?= gettext('Every ChurchCRM release includes security fixes. We strongly recommend always upgrading to the latest version.') ?></span>
+                                    </div>
+                                </div>
+
+                                <!-- What you'll gain heading -->
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <h4 class="mb-0">
+                                        <i class="fa fa-arrow-up me-1 text-success"></i>
+                                        <?= gettext("What you'll gain") ?> &mdash;
+                                        <span id="whatsNewVersion" class="text-primary fw-semibold"></span>
+                                        <span id="recommendedBadge" class="badge bg-success-lt text-success ms-1 d-none"><?= gettext('Recommended') ?></span>
+                                    </h4>
+                                    <a id="whatsNewChangelogLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm d-none">
+                                        <i class="fa fa-arrow-up-right-from-square me-1"></i><?= gettext('Full changelog') ?>
+                                    </a>
+                                </div>
+
+                                <!-- Release notes container: stacked blocks (upgrade) or single note (up-to-date/prerelease), JS-rendered -->
+                                <div id="whatsNewNotes" class="mb-4"></div>
+
+                                <button class="btn btn-primary" id="proceedToDownload">
+                                    <i class="fa fa-cloud-arrow-down me-1"></i><?= gettext('Download & Apply') ?>
+                                </button>
+                            </div>
+
+                            <div id="whatsNewError" class="d-none">
+                                <div class="alert alert-warning">
+                                    <i class="fa fa-triangle-exclamation me-2"></i>
+                                    <span id="whatsNewErrorMsg"></span>
+                                </div>
+                                <p class="text-secondary small mb-2"><?= gettext('You can still proceed with the upgrade without viewing release notes.') ?></p>
+                                <button class="btn btn-primary" id="skipWhatsNew">
+                                    <?= gettext('Continue Anyway') ?> <i class="fa fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Download and Apply Update -->
                         <div id="step-apply" class="content p-4" role="tabpanel" aria-labelledby="step-apply-trigger">
-                            <p class="text-secondary mb-3"><?= gettext('Download the latest release and apply it to your installation.') ?></p>
+                            <p class="text-secondary mb-3" id="downloadStepDescription"><?= gettext('Download the latest release and apply it to your installation.') ?></p>
 
                             <div id="downloadStatus"></div>
 
@@ -197,7 +282,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                         <div class="datagrid-content" id="updateFileName"></div>
                                     </div>
                                     <div class="datagrid-item">
-                                        <div class="datagrid-title">SHA1 Hash</div>
+                                        <div class="datagrid-title"><?= gettext('SHA1 Hash') ?></div>
                                         <div class="datagrid-content"><code id="updateSHA1"></code></div>
                                     </div>
                                     <div class="datagrid-item">
@@ -220,7 +305,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                             </div>
                         </div>
 
-                        <!-- Step 4: Complete -->
+                        <!-- Step 5: Complete -->
                         <div id="step-complete" class="content p-4" role="tabpanel" aria-labelledby="step-complete-trigger">
                             <div class="empty py-5">
                                 <div class="empty-icon"><i class="fa fa-circle-check text-success fa-4x"></i></div>
@@ -233,9 +318,14 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                         <li><?= gettext('Orphaned files from previous versions cleaned up') ?></li>
                                     </ul>
                                 </div>
+                                <div class="mt-3">
+                                    <a id="completionChangelogLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-primary btn-sm d-none">
+                                        <i class="fa fa-book-open me-1"></i><?= gettext('View release notes') ?>
+                                    </a>
+                                </div>
                                 <div class="mt-4 text-secondary">
                                     <div class="spinner-border spinner-border-sm me-1" role="status"></div>
-                                    <span id="upgradeRedirectCountdown"><?= gettext('Redirecting in') ?> <strong>5</strong> <?= gettext('seconds...') ?></span>
+                                    <span id="upgradeRedirectCountdown"><?= sprintf(gettext('Redirecting in %s seconds...'), '<strong>5</strong>') ?></span>
                                 </div>
                             </div>
                         </div>
@@ -292,9 +382,9 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#upgradeSettingsPanel',
-        title: <?= json_encode(gettext('Upgrade Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        title: <?= InputUtils::jsonEncodeForScript(gettext('Upgrade Settings')) ?>,
         icon: 'fa-solid fa-sliders',
-        settings: [{ name: 'bAllowPrereleaseUpgrade', type: 'boolean', label: <?= json_encode(gettext('Allow Pre-release Upgrades'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, tooltip: <?= json_encode(gettext("Allow system upgrades to releases marked as 'pre release' on GitHub"), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> }],
+        settings: [{ name: 'bAllowPrereleaseUpgrade', type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Allow Pre-release Upgrades')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(gettext("Allow system upgrades to releases marked as 'pre release' on GitHub")) ?> }],
         onSave: function() {
             window.CRM.notify(i18next.t('Settings saved. Refreshing upgrade info...'), { type: 'success', delay: 2000 });
             window.CRM.AdminAPIRequest({

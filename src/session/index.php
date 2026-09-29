@@ -91,11 +91,16 @@ function beginSession(Request $request, Response $response, array $args): Respon
     ];
 
     if ($request->getMethod() === 'POST') {
-        $loginRequestBody = $request->getParsedBody();
+        // getParsedBody() returns null when the body is absent or its media type
+        // has no registered parser, and a malformed form post can omit either
+        // field. LocalUsernamePasswordRequest is strictly typed, so passing null
+        // raised an uncaught TypeError (HTTP 500) instead of failing the login.
+        // Matches the ?? '' already used for TwoFACode above.
+        $loginRequestBody = $request->getParsedBody() ?? [];
 
         $userPassRequest = new LocalUsernamePasswordRequest(
-            $loginRequestBody['User'],
-            $loginRequestBody['Password']
+            (string) ($loginRequestBody['User'] ?? ''),
+            (string) ($loginRequestBody['Password'] ?? '')
         );
         $authenticationResult = AuthenticationManager::authenticate($userPassRequest);
         $pageArgs['sErrorText'] = $authenticationResult->message;

@@ -1,3 +1,10 @@
+---
+title: "Plugin Security Scan"
+intent: "Required review checklist before approving a community plugin for approved-plugins.json — intake, static analysis, risk classification"
+tags: ["plugins", "security", "audit", "compliance"]
+prereqs: ["[[plugin-system]]"]
+complexity: "intermediate"
+---
 # Plugin Security Scan <!-- learned: 2026-04-13 -->
 
 Use this skill every time a new community plugin is proposed for
@@ -5,7 +12,8 @@ Use this skill every time a new community plugin is proposed for
 zip before it is published to end users. No plugin enters the approved list
 until every section below is signed off and documented in the PR.
 
-> **Why this exists:** ChurchCRM now supports URL-based plugin installs
+> [!NOTE] Why this exists
+> ChurchCRM now supports URL-based plugin installs
 > (see `PluginInstaller::installFromUrl`). The installer refuses anything
 > that isn't in `approved-plugins.json`, so that file is the only supply
 > chain gate between third-party code and a production parish server. Treat

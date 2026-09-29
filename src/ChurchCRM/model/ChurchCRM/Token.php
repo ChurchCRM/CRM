@@ -21,7 +21,7 @@ class Token extends BaseToken
     public function build($type, $referenceId): void
     {
         $this->setReferenceId($referenceId);
-        $this->setToken(uniqid());
+        $this->setToken(bin2hex(random_bytes(32)));
         switch ($type) {
             case 'verifyFamily':
                 $this->setValidUntilDate(strtotime('+1 week'));

@@ -23,7 +23,7 @@ class GroupQuery extends BaseGroupQuery
     public function preSelect(ConnectionInterface $con): void
     {
         $this->leftJoinPerson2group2roleP2g2r();
-        $this->withColumn('COUNT(' . Person2group2roleP2g2rTableMap::COL_P2G2R_PER_ID . ')', 'memberCount');
+        $this->addAsColumn('memberCount', 'COUNT(' . Person2group2roleP2g2rTableMap::COL_P2G2R_PER_ID . ')');
         $this->groupBy('Group.Id');
         $groupTypeJoin = new Join();
         $groupTypeJoin->addCondition('Group.Type', ListOptionTableMap::COL_LST_OPTIONID, self::EQUAL);
@@ -31,7 +31,7 @@ class GroupQuery extends BaseGroupQuery
         $groupTypeJoin->addForeignValueCondition(ListOptionTableMap::TABLE_NAME, 'lst_ID', '', 3, self::EQUAL);
         $groupTypeJoin->setJoinType(Criteria::LEFT_JOIN);
         $this->addJoinObject($groupTypeJoin);
-        $this->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME, 'groupType');
+        $this->addAsColumn('groupType', ListOptionTableMap::COL_LST_OPTIONNAME);
         parent::preSelect($con);
     }
 }

@@ -3,16 +3,12 @@
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/PageInit.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfDirectory;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
-
-// Check for Create Directory user permission.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(), 'CreateDirectory');
 
 // Get and filter the classifications selected
 $aClasses = [];
@@ -71,6 +67,11 @@ $bDirUseTitlePage = isset($_POST['bDirUseTitlePage']);
 
 $bNumberofColumns = InputUtils::legacyFilterInput($_POST['NumCols'] ?? '1', 'int');
 $sPageSize = InputUtils::legacyFilterInput($_POST['PageSize']);
+// Page layout: single portrait pages (default) or a folded booklet (#8958)
+$sDirLayout = InputUtils::legacyFilterInput($_POST['sDirLayout'] ?? 'pages');
+if ($sDirLayout !== 'booklet') {
+    $sDirLayout = 'pages';
+}
 $bFontSz = InputUtils::legacyFilterInput($_POST['FSize'] ?? '8', 'int');
 $bLineSp = $bFontSz / 3;
 
@@ -78,11 +79,11 @@ if ($sPageSize != 'letter' && $sPageSize != 'a4') {
     $sPageSize = 'legal';
 }
 
-LoggerUtils::getAppLogger()->debug("ncols = {$bNumberofColumns} page size = {$sPageSize}");
+LoggerUtils::getAppLogger()->debug("ncols = {$bNumberofColumns} page size = {$sPageSize} layout = {$sDirLayout}");
 
 // Instantiate the directory class and build the report
 LoggerUtils::getAppLogger()->debug("font sz = {$bFontSz} and line sp = {$bLineSp}");
-$pdf = new PdfDirectory($bNumberofColumns, $sPageSize, $bFontSz, $bLineSp);
+$pdf = new PdfDirectory($bNumberofColumns, $sPageSize, $bFontSz, $bLineSp, $sDirLayout === 'booklet');
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
@@ -126,8 +127,12 @@ if (!empty($_POST['GroupID'])) {
 } else {
     $sGroupTable = 'person_per';
     $sGroupsList = '';
-    $sWhereExt = '';
     $sGroupBy = '';
+}
+// Apply deceased filter AFTER the group if/else so it cannot be wiped
+// by the else branch. Matches the CSVCreateFile.php pattern.
+if (SystemConfig::getBooleanValue('bHideDeceasedFromDirectory')) {
+    $sWhereExt .= 'AND per_DateDeceased IS NULL ';
 }
 
 //Exclude inactive families

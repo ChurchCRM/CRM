@@ -45,15 +45,13 @@ $("#regenApiKey").on("click", () => {
     .fail(notifyError);
 });
 
-// ── Theme Mode (Light / Dark) ────────────────────────────────────
+// ── Theme Mode (Light / Dark / Auto) ────────────────────────────
 $('input[name="themeMode"]').on("change", function () {
   const value = $(this).val();
   saveUserSetting("ui.style", value)
     .done(() => {
-      if (value === "dark") {
-        document.documentElement.setAttribute("data-bs-theme", "dark");
-      } else {
-        document.documentElement.removeAttribute("data-bs-theme");
+      if (window.CRM.viewIsOwnProfile && window.CRM.theme) {
+        window.CRM.theme.setMode(value);
       }
       notifySuccess();
     })
@@ -69,10 +67,12 @@ $("#primaryColorPicker .btn-color-swatch").on("click", function () {
     .done(() => {
       $("#primaryColorPicker .btn-color-swatch").removeClass("active");
       swatch.addClass("active");
-      if (color) {
-        document.documentElement.setAttribute("data-bs-theme-primary", color);
-      } else {
-        document.documentElement.removeAttribute("data-bs-theme-primary");
+      if (window.CRM.viewIsOwnProfile) {
+        if (color) {
+          document.documentElement.setAttribute("data-bs-theme-primary", color);
+        } else {
+          document.documentElement.removeAttribute("data-bs-theme-primary");
+        }
       }
       notifySuccess();
     })

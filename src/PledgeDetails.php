@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\model\ChurchCRM\ResultResQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -30,8 +31,7 @@ if ($pledge === null) {
     RedirectUtils::redirect($linkBack);
 }
 
-$sSQL = 'SELECT * FROM result_res WHERE res_ID=' . (int) $pledge->getAutResultId();
-$rsResultRec = RunQuery($sSQL);
+$result = ResultResQuery::create()->findPk((int) $pledge->getAutResultId());
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Finance'), '/finance/'],
@@ -39,17 +39,15 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 ]);
 require_once __DIR__ . '/Include/Header.php';
 
-$resArr = mysqli_fetch_array($rsResultRec);
-if ($resArr) {
-    extract($resArr);
-    echo $res_echotype2;
+if ($result !== null) {
+    echo htmlspecialchars($result->getResEchotype2(), ENT_QUOTES, 'UTF-8');
 }
 
 ?>
 
 <div class="card">
   <div class="card-body">
-    <form method="post" action="PledgeDetails.php?<?= 'PledgeID=' . $iPledgeID . '&linkBack=' . $linkBack ?>" name="PledgeDelete">
+    <form method="post" action="PledgeDetails.php?<?= 'PledgeID=' . $iPledgeID . '&linkBack=' . InputUtils::escapeAttribute($linkBack) ?>" name="PledgeDelete">
       <input type="submit" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="Back">
     </form>
   </div>

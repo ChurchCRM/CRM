@@ -6,6 +6,7 @@
  */
 
 import { deleteEvent, renderEventEditor, saveEvent } from "./event-form.js";
+import { escapeHtml } from "./utils/escape-html";
 
 const CRMRoot = window.CRM.root;
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
@@ -20,17 +21,10 @@ function fetchJSON(url, fallback = null) {
     .catch(() => fallback);
 }
 
-function escapeHtml(str) {
-  if (!str) return "";
-  const div = document.createElement("div");
-  div.textContent = str;
-  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-}
-
 function showError(message) {
   const mount = document.getElementById("event-editor-mount");
   if (!mount) return;
-  mount.innerHTML = `<div class="alert alert-danger mb-0"><i class="ti ti-alert-triangle me-1"></i>${escapeHtml(message)}</div>`;
+  mount.innerHTML = `<div class="alert alert-danger mb-0"><i class="fa-solid fa-triangle-exclamation me-1"></i>${escapeHtml(message)}</div>`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -114,10 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(() => {
               window.location.href = cfg.redirectUrl;
             })
-            .catch(() => {
+            .catch((err) => {
               saveBtn.disabled = false;
               if (window.CRM?.notify) {
-                window.CRM.notify(t("Failed to save event. Please try again."), { type: "danger" });
+                window.CRM.notify(err.serverMessage || t("Failed to save event. Please try again."), {
+                  type: "danger",
+                });
               }
             });
         });
@@ -131,8 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
               t("Deleting this event will also delete all attendance records. This cannot be undone.") +
               ` <strong>${escapeHtml(event.Title || "")}</strong>`,
             buttons: {
-              cancel: { label: `<i class="ti ti-x"></i> ${t("Cancel")}` },
-              confirm: { label: `<i class="ti ti-trash"></i> ${t("Delete")}`, className: "btn-danger" },
+              cancel: { label: `<i class="fa-solid fa-xmark"></i> ${t("Cancel")}` },
+              confirm: { label: `<i class="fa-solid fa-trash"></i> ${t("Delete")}`, className: "btn-danger" },
             },
             callback: (confirmed) => {
               if (!confirmed) return;
@@ -140,9 +136,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(() => {
                   window.location.href = cfg.redirectUrl;
                 })
-                .catch(() => {
+                .catch((err) => {
                   if (window.CRM?.notify) {
-                    window.CRM.notify(t("Failed to delete event. Please try again."), { type: "danger" });
+                    window.CRM.notify(err.serverMessage || t("Failed to delete event. Please try again."), {
+                      type: "danger",
+                    });
                   }
                 });
             },

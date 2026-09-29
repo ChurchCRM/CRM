@@ -1,0 +1,6 @@
+# Deny direct HTTP access to uploaded family photos.
+# Photos must be served exclusively through the authenticated API endpoint:
+#   GET /api/family/{familyId}/photo
+# See: GHSA-r286-h493-ppwj
+
+Require all denied

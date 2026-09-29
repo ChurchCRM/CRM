@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
@@ -28,11 +30,16 @@ $app->add(new CorsMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
 
+// Initialize plugin system so hook-based plugins (e.g. HookManager::doAction(Hooks::CRON_RUN)
+// from the background timer job endpoint) have their listeners registered
+PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
+
 // Group routes for better organization
 require __DIR__ . '/routes/calendar/events.php';
 require __DIR__ . '/routes/calendar/calendar.php';
 require __DIR__ . '/routes/finance/finance-deposits.php';
 require __DIR__ . '/routes/finance/finance-donation-funds.php';
+require __DIR__ . '/routes/finance/finance-fiscalyear.php';
 require __DIR__ . '/routes/finance/finance-fundraisers.php';
 require __DIR__ . '/routes/finance/finance-payments.php';
 require __DIR__ . '/routes/people/people-family.php';
@@ -45,6 +52,7 @@ require __DIR__ . '/routes/people/people-persons.php';
 require __DIR__ . '/routes/people/people-properties.php';
 require __DIR__ . '/routes/people/notes.php';
 require __DIR__ . '/routes/people/timeline.php';
+require __DIR__ . '/routes/people/people-attendance.php';
 require __DIR__ . '/routes/public/public.php';
 require __DIR__ . '/routes/public/public-data.php';
 require __DIR__ . '/routes/public/public-calendar.php';
@@ -53,6 +61,7 @@ require __DIR__ . '/routes/public/public-register.php';
 require __DIR__ . '/routes/system/property-types.php';
 require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-issues.php';
+require __DIR__ . '/routes/system/telemetry-consent.php';
 require __DIR__ . '/routes/system/volunteer-opportunities.php';
 require __DIR__ . '/routes/cart.php';
 require __DIR__ . '/routes/background.php';

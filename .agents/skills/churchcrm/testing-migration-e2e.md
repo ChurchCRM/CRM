@@ -2,7 +2,7 @@
 title: "Testing Migration & E2E"
 intent: "Testing strategy for migrating endpoints and UI flows (Cypress + integration tests)"
 tags: ["testing","cypress","e2e","migration"]
-prereqs: ["testing.md","cypress-testing.md","api-development.md"]
+prereqs: ["[[testing]]","[[cypress-testing]]","[[api-development]]"]
 complexity: "intermediate"
 ---
 
@@ -11,7 +11,7 @@ complexity: "intermediate"
 Goals: Ensure feature parity and permission coverage when moving endpoints/UI to new MVCs.
 
 Checklist:
-- Add unit tests for any extracted service logic (`GroupService`).
+- Add unit tests for any extracted service logic (the service you actually moved, not a generic GroupService example).
 - Add integration tests for API shims to ensure identical responses.
 - Add Cypress scenarios covering:
   - Group creation, enrollment, and removal
@@ -22,4 +22,4 @@ Test data:
 - Use fixtures for people, families, and groups; reset DB between runs.
 
 CI:
-- Run migration tests in a staging pipeline before merging migration PRs.
+- Run the relevant Cypress and PHP tests in CI. There is no separate "staging pipeline" required beyond GitHub Actions on the PR.

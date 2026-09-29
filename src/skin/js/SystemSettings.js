@@ -70,3 +70,28 @@ $(".setting-tip").click(function () {
     className: "setting-tip-box",
   });
 });
+
+$("#sendTestBirthdayEmail").on("click", function (event) {
+  event.preventDefault();
+  var $btn = $(this);
+  var $result = $("#birthdayEmailTestResult");
+
+  $btn.prop("disabled", true);
+  $result.removeClass("text-success text-danger").text("Sending...");
+
+  $.ajax({
+    method: "POST",
+    url: window.CRM.root + "/admin/api/admin/birthday-emails/test",
+    dataType: "json",
+  })
+    .done(function (data) {
+      $result.addClass("text-success").text(data.message);
+    })
+    .fail(function (jqXHR) {
+      var msg = (jqXHR.responseJSON && jqXHR.responseJSON.message) || "Failed to send test email.";
+      $result.addClass("text-danger").text(msg);
+    })
+    .always(function () {
+      $btn.prop("disabled", false);
+    });
+});

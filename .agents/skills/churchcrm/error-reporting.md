@@ -1,3 +1,10 @@
+---
+title: "Error Reporting & Issue Filing"
+intent: "Shared Tabler-styled error pages wired to the Issue Reporter workflow for consistent UX and GitHub issue pre-fill"
+tags: ["frontend", "tabler", "error-handling", "testing"]
+prereqs: ["[[tabler-components]]"]
+complexity: "intermediate"
+---
 # Error Reporting & Issue Filing
 
 This skill documents the new shared Tabler-styled error pages and how to wire them to the existing Issue Reporter workflow so error pages across the app are consistent and can open a GitHub issue pre-filled with the current page URL and system info.

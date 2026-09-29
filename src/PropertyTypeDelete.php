@@ -13,7 +13,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have property and classification editing permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
 
-$sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Property Type');
+$sPageTitle = gettext('Property Type Delete Confirmation');
 
 // Get the PersonID from the querystring
 $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');
@@ -67,7 +67,7 @@ require_once __DIR__ . '/Include/Header.php';
         <p class="lead"><?= gettext('Please confirm deletion of this Property Type') ?>: <strong><?= InputUtils::escapeHTML($prt_Name) ?></strong></p>
 
         <div>
-            <a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?= $iPropertyTypeID ?>" class="btn btn-danger"><?= gettext('Yes, delete this record') ?></a>
+            <a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?= $iPropertyTypeID ?>" class="btn btn-danger"><?= gettext('Yes, delete') ?></a>
             <a href="PropertyTypeList.php?Type=<?= $sType ?>" class="btn btn-secondary ms-2"><?= gettext('No, cancel this deletion') ?></a>
         </div>
     </div>

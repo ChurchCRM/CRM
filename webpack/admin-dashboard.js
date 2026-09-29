@@ -3,6 +3,7 @@
  */
 
 import "./admin-dashboard.css";
+import "./telemetry-consent";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize tooltips if jQuery is available

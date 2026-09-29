@@ -99,7 +99,7 @@ class LocaleService
             throw new \RuntimeException('Failed to read locales.json at ' . $localesFile . '.');
         }
 
-        return json_decode($localesContent, true, 512, JSON_THROW_ON_ERROR) ?? [];
+        return json_decode($localesContent, true, 512) ?? [];
     }
 
     /**

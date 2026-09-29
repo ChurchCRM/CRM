@@ -12,6 +12,7 @@ use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
@@ -31,6 +32,17 @@ class Person extends BasePerson implements PhotoInterface
     public const SELF_VERIFY = -2;
     private ?Photo $photo = null;
     private bool $skipPostUpdateNote = false;
+
+    /**
+     * Snapshot of the persisted row, taken in preUpdate()/preDelete() and
+     * handed to the PERSON_UPDATED / PERSON_DELETED listeners afterwards.
+     *
+     * Null means "nothing listening" — the snapshot is skipped when no plugin
+     * has registered for the hook, so installs with no plugins pay nothing.
+     *
+     * @var array<string, mixed>|null
+     */
+    private ?array $hookDataSnapshot = null;
 
     public function getFullName(): string
     {
@@ -62,6 +74,11 @@ class Person extends BasePerson implements PhotoInterface
     public function hideAge(): bool
     {
         return $this->getFlags() === 1 || empty($this->getBirthYear());
+    }
+
+    public function isDeceased(): bool
+    {
+        return !empty($this->getDateDeceased());
     }
 
     public function getBirthDate(): ?\DateTimeImmutable
@@ -160,13 +177,58 @@ class Person extends BasePerson implements PhotoInterface
         HookManager::doAction(Hooks::PERSON_CREATED, $this);
     }
 
+    /**
+     * Capture the pre-update state so PERSON_UPDATED can report what changed.
+     *
+     * select() is used rather than a normal find so the read bypasses object
+     * hydration and the instance pool — findPk() would just hand back $this,
+     * which already holds the new values. Runs on the save connection, inside
+     * the same transaction, before doSave() writes the new row.
+     */
+    public function preUpdate(?ConnectionInterface $con = null): bool
+    {
+        $this->hookDataSnapshot = null;
+
+        if (HookManager::hasAction(Hooks::PERSON_UPDATED)) {
+            $row = PersonQuery::create()
+                ->filterById((int) $this->getId())
+                ->select('*')
+                ->findOne($con);
+
+            $this->hookDataSnapshot = is_array($row) ? self::toPhpNameKeys($row) : [];
+        }
+
+        return parent::preUpdate($con);
+    }
+
+    /**
+     * Re-key a select('*') row from "Fully\Qualified\Model.PhpName" to just
+     * "PhpName", so PERSON_UPDATED's $oldData matches the shape of
+     * PERSON_DELETED's $personData (which comes from toArray(TYPE_PHPNAME)).
+     *
+     * @param array<string, mixed> $row
+     *
+     * @return array<string, mixed>
+     */
+    private static function toPhpNameKeys(array $row): array
+    {
+        $keyed = [];
+        foreach ($row as $column => $value) {
+            $lastDot = strrpos((string) $column, '.');
+            $keyed[$lastDot === false ? $column : substr((string) $column, $lastDot + 1)] = $value;
+        }
+
+        return $keyed;
+    }
+
     public function postUpdate(?ConnectionInterface $con = null): void
     {
         if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
 
-        HookManager::doAction(Hooks::PERSON_UPDATED, $this);
+        HookManager::doAction(Hooks::PERSON_UPDATED, $this, $this->hookDataSnapshot ?? []);
+        $this->hookDataSnapshot = null;
     }
 
     private function createTimeLineNote(string $type): void
@@ -409,6 +471,22 @@ class Person extends BasePerson implements PhotoInterface
         return $this->photo;
     }
 
+    /**
+     * Save the record without generating the automatic 'Updated' timeline note.
+     * Use when the caller creates a more specific note (e.g. status change) to
+     * avoid a duplicate generic entry. Mirrors the private pattern used by
+     * setImageFromBase64().
+     */
+    public function saveWithoutUpdateNote(\Propel\Runtime\Connection\ConnectionInterface $con = null): void
+    {
+        $this->skipPostUpdateNote = true;
+        try {
+            $this->save($con);
+        } finally {
+            $this->skipPostUpdateNote = false;
+        }
+    }
+
     public function setImageFromBase64($base64): void
     {
         $note = new Note();
@@ -574,6 +652,13 @@ class Person extends BasePerson implements PhotoInterface
 
     public function preDelete(?ConnectionInterface $con = null): bool
     {
+        // Snapshot before the cleanup below removes the rows toArray() reads
+        // (the photo behind HasPhoto), so PERSON_DELETED listeners see the
+        // person as they actually were.
+        $this->hookDataSnapshot = HookManager::hasAction(Hooks::PERSON_DELETED)
+            ? $this->toArray()
+            : null;
+
         // Remove the uploaded image from disk. Call Photo::delete() directly
         // rather than $this->deletePhoto(), which gates on the current user's
         // delete-records permission and writes a Note that NoteQuery below
@@ -611,6 +696,22 @@ class Person extends BasePerson implements PhotoInterface
         return parent::preDelete($con);
     }
 
+    /**
+     * Fire PERSON_DELETED for every path that removes a person.
+     *
+     * This lives on the model rather than in the API route because people are
+     * deleted from more than one place — DELETE /api/person/{id} and the
+     * member cascade in DELETE /api/family/{id}?deleteMembers=true, which
+     * never reached the route-level dispatch at all. Propel calls postDelete()
+     * exactly once per delete(), so every path fires the hook exactly once and
+     * no future caller can forget to.
+     */
+    public function postDelete(?ConnectionInterface $con = null): void
+    {
+        HookManager::doAction(Hooks::PERSON_DELETED, (int) $this->getId(), $this->hookDataSnapshot ?? []);
+        $this->hookDataSnapshot = null;
+    }
+
     public function getProperties()
     {
         return PropertyQuery::create()
@@ -641,42 +742,75 @@ class Person extends BasePerson implements PhotoInterface
         return $PropertiesList;
     }
 
-    // return array of person custom fields
-    // created for the person-list.php datatable
     /**
-     * @return string[]
+     * Combined replacement for getCustomFields + getCustomFieldExportValues.
+     *
+     * Runs a single PersonCustomQuery per person instead of two, eliminating
+     * the duplicate N+1 round-trip that would otherwise occur when person-list.php
+     * needs both the filter-name list (for the hidden 'Custom' column JSON) and the
+     * per-field formatted export values.
+     *
+     * @param mixed  $allPersonCustomFields  All PersonCustomMaster records (Propel collection)
+     * @param array  $customMapping          {fieldId => ['Name'=>string,'Elements'=>[...]]}
+     * @param array  $CustomList             Counter map mutated in place (same as getCustomFields)
+     * @param mixed  $name_func              Callable producing 'FieldName:OptionName' composite key
+     * @param PersonCustomMaster[] $exportCustomDefs  Ordered, security-filtered defs for export cols
+     *
+     * @return array{filterNames: string[], exportValues: array<string,string>}
      */
-    public function getCustomFields($allPersonCustomFields, array $customMapping, array &$CustomList, $name_func): array
-    {
-        // add custom fields to person_custom table since they are not defined in the propel schema
+    public function getCustomFieldsAll(
+        $allPersonCustomFields,
+        array $customMapping,
+        array &$CustomList,
+        $name_func,
+        array $exportCustomDefs
+    ): array {
         $rawQry = PersonCustomQuery::create();
         foreach ($allPersonCustomFields as $customfield) {
             if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
-                $rawQry->withColumn($customfield->getId());
+                $rawQry->addAsColumn(
+                    str_replace(['.', '(', ')'], '', $customfield->getId()),
+                    $customfield->getId()
+                );
             }
         }
         $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
 
-        // get custom column names and values
-        $personCustom = [];
+        // Build filter name list (replicates getCustomFields logic)
+        $filterNames = [];
         if ($thisPersonCustomFields) {
-            //Lets use the map created instead of querying the column name
             foreach ($thisPersonCustomFields->getVirtualColumns() as $column => $value) {
                 if (!empty($value)) {
                     $temp = $customMapping[$column]['Name'];
-                    $personCustom[] = $temp;
+                    $filterNames[] = $temp;
                     $CustomList[$temp] += 1;
-
                     if (array_key_exists($value, $customMapping[$column]['Elements'])) {
                         $temp = $name_func($customMapping[$column]['Name'], $customMapping[$column]['Elements'][$value]);
-                        $personCustom[] = $temp;
+                        $filterNames[] = $temp;
                         $CustomList[$temp] += 1;
                     }
                 }
             }
         }
 
-        return $personCustom;
+        // Build per-field export values (replicates getCustomFieldExportValues logic)
+        $exportValues = [];
+        if ($thisPersonCustomFields) {
+            $vcols = $thisPersonCustomFields->getVirtualColumns();
+            foreach ($exportCustomDefs as $def) {
+                $alias = str_replace(['.', '(', ')'], '', $def->getId());
+                $raw   = $vcols[$alias] ?? null;
+                $exportValues[$def->getId()] = ($raw === null || $raw === '')
+                    ? ''
+                    : CustomFieldUtils::display($def->getTypeId(), (string) $raw, $def->getSpecial());
+            }
+        } else {
+            foreach ($exportCustomDefs as $def) {
+                $exportValues[$def->getId()] = '';
+            }
+        }
+
+        return ['filterNames' => $filterNames, 'exportValues' => $exportValues];
     }
 
     // return array of person groups
@@ -732,13 +866,30 @@ class Person extends BasePerson implements PhotoInterface
             return false;
         }
         $now = $date === null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+
+        if (!$now instanceof \DateTimeImmutable) {
+            return false;
+        }
+
         $age = date_diff($now, $birthDate);
 
         if ($age->y < 1) {
-            return sprintf(ngettext('%d month old', '%d months old', $age->m), $age->m);
+            $monthStr = ngettext('%d month old', '%d months old', $age->m);
+            try {
+                return sprintf($monthStr, $age->m);
+            } catch (\Throwable $e) {
+                error_log('Age formatting failed for locale string "' . $monthStr . '": ' . $e->getMessage());
+                return $age->m . ' ' . trim(preg_replace('/%\d*\$?[sdifuoxX]\s*/u', '', $monthStr) ?? $monthStr);
+            }
         }
 
-        return sprintf(ngettext('%d year old', '%d years old', $age->y), $age->y);
+        $yearStr = ngettext('%d year old', '%d years old', $age->y);
+        try {
+            return sprintf($yearStr, $age->y);
+        } catch (\Throwable $e) {
+            error_log('Age formatting failed for locale string "' . $yearStr . '": ' . $e->getMessage());
+            return $age->y . ' ' . trim(preg_replace('/%\d*\$?[sdifuoxX]\s*/u', '', $yearStr) ?? $yearStr);
+        }
     }
 
     public function getNumericAge(): int
@@ -772,6 +923,23 @@ class Person extends BasePerson implements PhotoInterface
         $array['HasPhoto'] = $this->getPhoto()->hasUploadedPhoto();
 
         return $array;
+    }
+
+    /**
+     * Returns true when the person has not been deactivated.
+     * An empty/null per_DateDeactivated means the person is active.
+     */
+    public function isActive(): bool
+    {
+        return empty($this->getDateDeactivated());
+    }
+
+    /**
+     * Return the person's status as text ('Active' or 'Inactive').
+     */
+    public function getStatusText(): string
+    {
+        return $this->isActive() ? gettext('Active') : gettext('Inactive');
     }
 
     public function getEmail(): ?string
@@ -877,5 +1045,62 @@ class Person extends BasePerson implements PhotoInterface
         }
         $family = $this->getFamily();
         return $family?->getHomePhone() ?? '';
+    }
+
+    public function getVisibleCustomFieldDefinitions(): array
+    {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $allFields = PersonCustomMasterQuery::create()->orderByOrder()->find();
+        $visibleFields = [];
+        foreach ($allFields as $field) {
+            if ($currentUser->isEnabledSecurity($field->getFieldSecurity())) {
+                $visibleFields[] = $field;
+            }
+        }
+        return $visibleFields;
+    }
+
+    /**
+     * Returns this person's custom field values, filtered to only the fields the
+     * current user is permitted to view (GHSA-p6xx-xx98-f323).
+     *
+     * `person_custom` stores each custom field as a dynamically-added column keyed
+     * by the field's short code (PersonCustomMaster::getId()); it is not part of the
+     * generated Propel schema, so these values are never present in
+     * Person::exportTo()/toArray() output (that only surfaces the table's real
+     * Propel column, `per_ID`, under the one-to-one `singlePersonCustom` key).
+     * Callers that need per-field custom data — e.g. the JSON API — must use this
+     * method instead of relying on `singlePersonCustom` from exportTo().
+     *
+     * @return array<int, array{id: string, name: string, value: string}>
+     */
+    public function getVisibleCustomFieldValues(): array
+    {
+        $visibleFields = $this->getVisibleCustomFieldDefinitions();
+        if (empty($visibleFields)) {
+            return [];
+        }
+
+        $rawQry = PersonCustomQuery::create();
+        foreach ($visibleFields as $field) {
+            $rawQry->addAsColumn(str_replace(['.', '(', ')'], '', $field->getId()), $field->getId());
+        }
+        $personCustomData = $rawQry->findOneByPerId($this->getId());
+
+        $result = [];
+        if ($personCustomData) {
+            foreach ($visibleFields as $field) {
+                $value = trim((string) $personCustomData->getVirtualColumn(str_replace(['.', '(', ')'], '', $field->getId())));
+                if ($value !== '') {
+                    $result[] = [
+                        'id'    => $field->getId(),
+                        'name'  => $field->getName(),
+                        'value' => $value,
+                    ];
+                }
+            }
+        }
+
+        return $result;
     }
 }

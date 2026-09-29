@@ -4,19 +4,19 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
-use ChurchCRM\Plugin\Hook\HookManager;
-use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
+use ChurchCRM\Slim\Middleware\Api\FamilyReadMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -26,7 +26,18 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
 
-// Photo and avatar routes (no FamilyMiddleware to speed up page loads)
+// ── Low-sensitivity family read endpoints ────────────────────────────────────
+// Photo, avatar, and nav are considered non-sensitive metadata. They use
+// FamilyReadMiddleware which enforces entity existence (404 if family not
+// found) but applies the read-default baseline (canReadFamily) instead of the
+// family-scope restriction. This makes them accessible to any authenticated
+// user who has passed the isEditSelfExclusive() check in AuthMiddleware —
+// including zero-permission users, who retain read-only access to people and
+// family records under the read-default policy (#9003).
+//
+// Sensitive endpoints (full profile, geolocation, write ops, notes, timeline)
+// remain in the FamilyMiddleware group below which enforces canViewFamily()
+// per GHSA-jjcj-h3cm-p7x7.
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
@@ -36,12 +47,15 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Binary image data"),
-     *     @OA\Response(response=404, description="No uploaded photo exists for this family")
+     *     @OA\Response(response=404, description="No uploaded photo exists for this family or family not found")
      * )
      */
     // Returns uploaded photo only - 404 if no uploaded photo
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
-        $photo = new Photo('Family', (int)$args['familyId']);
+        /** @var \ChurchCRM\model\ChurchCRM\Family $family */
+        $family = $request->getAttribute('family');
+
+        $photo = new Photo('Family', $family->getId());
 
         if (!$photo->hasUploadedPhoto()) {
             throw new HttpNotFoundException($request, 'No uploaded photo exists for this family');
@@ -57,18 +71,67 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Avatar info object (type, url, initials, color, etc.)")
+     *     @OA\Response(response=200, description="Avatar info object (type, url, initials, color, etc.)"),
+     *     @OA\Response(response=404, description="Family not found")
      * )
      */
-    // Returns avatar info JSON for client-side rendering
-    // No cache middleware - needs to reflect immediate photo upload changes
+    // Returns avatar info JSON for client-side rendering.
+    // No cache middleware - needs to reflect immediate photo upload changes.
     $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
-        $avatarInfo = Photo::getAvatarInfo('Family', (int)$args['familyId']);
+        /** @var \ChurchCRM\model\ChurchCRM\Family $family */
+        $family = $request->getAttribute('family');
+
+        $avatarInfo = Photo::getAvatarInfo('Family', $family->getId());
         return SlimUtils::renderJSON($response, $avatarInfo);
     });
-});
 
-// Routes that require FamilyMiddleware
+    /**
+     * @OA\Get(
+     *     path="/family/{familyId}/nav",
+     *     summary="Get previous and next family IDs for navigation",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Navigation IDs",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="PreFamilyId", type="integer"),
+     *             @OA\Property(property="NextFamilyId", type="integer")
+     *         )
+     *     )
+     * )
+     */
+    $group->get('/nav', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
+        $family = $request->getAttribute('family');
+
+        $familyNav = [];
+        $familyNav['PreFamilyId'] = 0;
+        $familyNav['NextFamilyId'] = 0;
+
+        $tempFamily = FamilyQuery::create()
+            ->filterById($family->getId(), Criteria::LESS_THAN)
+            ->orderById(Criteria::DESC)->findOne();
+        if ($tempFamily) {
+            $familyNav['PreFamilyId'] = $tempFamily->getId();
+        }
+
+        $tempFamily = FamilyQuery::create()
+            ->filterById($family->getId(), Criteria::GREATER_THAN)
+            ->orderById()
+            ->findOne();
+        if ($tempFamily) {
+            $familyNav['NextFamilyId'] = $tempFamily->getId();
+        }
+
+        return SlimUtils::renderJSON($response, $familyNav);
+    });
+})->add(FamilyReadMiddleware::class);
+
+// ── Sensitive / write family endpoints ───────────────────────────────────────
+// All routes here use FamilyMiddleware (the scope-enforcing version),
+// which applies canViewFamily() and restricts EditSelf-scoped users to their own
+// family per GHSA-jjcj-h3cm-p7x7. Write routes additionally carry per-route
+// EditRecords / DeleteRecord middleware.
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Post(
@@ -87,7 +150,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *         )
      *     ),
      *     @OA\Response(response=400, description="Failed to upload photo"),
-     *     @OA\Response(response=403, description="EditRecords role required")
+     *     @OA\Response(response=403, description="EditRecords role required"),
+     *     @OA\Response(response=413, description="PHP discarded the request body because it exceeded the server upload limit")
      * )
      */
     $group->post('/photo', function (Request $request, Response $response): Response {
@@ -95,11 +159,11 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family = $request->getAttribute('family');
         $input = $request->getParsedBody();
 
-        // Detect when PHP discarded the request body because post_max_size was exceeded
         if (empty($input) || !isset($input['imgBase64'])) {
-            $contentLength = (int)($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
-            $maxSize = SystemService::getMaxUploadFileSize(false);
-            if ($contentLength > 0 && $contentLength > $maxSize) {
+            // 413 only when PHP genuinely threw the body away for size; a body
+            // that arrived without imgBase64 is a malformed request whatever its
+            // Content-Length claims (issue #9771).
+            if (SlimUtils::isBodyDiscardedForSize($request)) {
                 return SlimUtils::renderErrorJSON(
                     $response,
                     sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
@@ -153,6 +217,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Family object"),
+     *     @OA\Response(response=403, description="Access denied"),
      *     @OA\Response(response=404, description="Family not found")
      * )
      */
@@ -189,47 +254,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     });
 
     /**
-     * @OA\Get(
-     *     path="/family/{familyId}/nav",
-     *     summary="Get previous and next family IDs for navigation",
-     *     tags={"Families"},
-     *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Navigation IDs",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="PreFamilyId", type="integer"),
-     *             @OA\Property(property="NextFamilyId", type="integer")
-     *         )
-     *     )
-     * )
-     */
-    $group->get('/nav', function (Request $request, Response $response, array $args): Response {
-        /** @var Family $family */
-        $family = $request->getAttribute('family');
-
-        $familyNav = [];
-        $familyNav['PreFamilyId'] = 0;
-        $familyNav['NextFamilyId'] = 0;
-
-        $tempFamily = FamilyQuery::create()
-            ->filterById($family->getId(), Criteria::LESS_THAN)
-            ->orderById(Criteria::DESC)->findOne();
-        if ($tempFamily) {
-            $familyNav['PreFamilyId'] = $tempFamily->getId();
-        }
-
-        $tempFamily = FamilyQuery::create()
-            ->filterById($family->getId(), Criteria::GREATER_THAN)
-            ->orderById()
-            ->findOne();
-        if ($tempFamily) {
-            $familyNav['NextFamilyId'] = $tempFamily->getId();
-        }
-
-        return SlimUtils::renderJSON($response, $familyNav);
-    });
-
-    /**
      * @OA\Post(
      *     path="/family/{familyId}/verify",
      *     summary="Send a verification email to the family",
@@ -243,6 +267,15 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/verify', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
+
+        if (!SystemConfig::isEmailEnabled()) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Email is not configured. Please configure SMTP settings in System Settings.'),
+                [],
+                400
+            );
+        }
 
         try {
             $family->sendVerifyEmail();
@@ -351,10 +384,10 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             $note->setEntered($currentUserId);
             $note->save();
 
-            // Update last edited metadata
+            // Update last edited metadata (save without auto-note — the explicit note above is sufficient)
             $family->setDateLastEdited($currentDate);
             $family->setEditedBy($currentUserId);
-            $family->save();
+            $family->saveWithoutUpdateNote();
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);
@@ -478,8 +511,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         // Delete the family record itself. Family::preDelete() removes the
         // photo file from disk; member deletion above triggers Person::preDelete
         // for each member, which cleans up their photos too (#1697).
+        // FAMILY_DELETED is dispatched from Family::postDelete(). See #9768.
         $family->delete();
-        HookManager::doAction(Hooks::FAMILY_DELETED, $familyId);
 
         return SlimUtils::renderJSON($response, ['success' => true]);
     })->add(DeleteRecordRoleAuthMiddleware::class);

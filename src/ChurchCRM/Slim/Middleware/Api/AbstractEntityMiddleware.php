@@ -22,6 +22,23 @@ abstract class AbstractEntityMiddleware implements MiddlewareInterface
         return ucfirst($this->getAttributeName()) . ' ' . gettext('not found');
     }
 
+    /**
+     * Optional authorisation hook called after the entity has been loaded.
+     *
+     * Override this method instead of overriding process() when the only
+     * customisation needed is an extra permission check after the entity exists.
+     * Return a ResponseInterface to short-circuit the chain (deny access), or
+     * null to continue to the route handler.
+     *
+     * This ensures that any future cross-cutting change to process() — audit
+     * logging, rate-limiting, stricter guards — automatically applies to all
+     * subclasses without requiring them each to be updated.
+     */
+    protected function postEntityLoad(ServerRequestInterface $request, mixed $entity): ?ResponseInterface
+    {
+        return null;
+    }
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = new Response();
@@ -35,6 +52,11 @@ abstract class AbstractEntityMiddleware implements MiddlewareInterface
 
         if (empty($entity)) {
             return SlimUtils::renderErrorJSON($response, $this->getNotFoundMessage(), [], 404);
+        }
+
+        $authResponse = $this->postEntityLoad($request, $entity);
+        if ($authResponse !== null) {
+            return $authResponse;
         }
 
         return $handler->handle($request->withAttribute($this->getAttributeName(), $entity));

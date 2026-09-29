@@ -89,10 +89,16 @@ class Bootstrapper
 
         try {
             SystemURLs::init($sRootPath, $URL, dirname(__DIR__));
-            // Debug: Output document root and log path
-            $docRoot = SystemURLs::getDocumentRoot();
-            $logPath = LoggerUtils::buildLogFilePath('debug');
-            error_log("[Bootstrap Debug] DocumentRoot: $docRoot, LogPath: $logPath");
+            // Report where the application thinks its document root and log file
+            // are. Only emitted when $debugBootstrapper is enabled in Config.php:
+            // the application logger is not configured yet at this point (and the
+            // whole purpose of the line is to find out where that log would go),
+            // so this diagnostic has to use error_log().
+            if (!empty($debugBootstrapper)) {
+                $docRoot = SystemURLs::getDocumentRoot();
+                $logPath = LoggerUtils::buildLogFilePath('debug');
+                error_log("[Bootstrap Debug] DocumentRoot: $docRoot, LogPath: $logPath");
+            }
         } catch (\Exception $e) {
             self::handleBootstrapFailure($e, 'SystemURLs initialization failed');
         }
@@ -118,15 +124,6 @@ class Bootstrapper
             SystemConfig::init(ConfigQuery::create()->find());
         }
 
-        // Auto-generate a stable anonymous installation UUID on first boot.
-        // A very narrow race window exists if two requests arrive simultaneously
-        // on a brand-new install, but the last writer wins in the DB and every
-        // subsequent request reads the persisted value — identical to the
-        // sTwoFASecretKey auto-generation pattern in LoadConfigs.php.
-        if (empty(SystemConfig::getValue('sSystemID'))) {
-            SystemConfig::setValue('sSystemID', Uuid::uuid4()->toString());
-        }
-        
         self::configureLogging();
         self::configureUserEnvironment();
         self::configureLocale();
@@ -169,8 +166,21 @@ class Bootstrapper
                 }
             }
         }
+
+        // Auto-generate a stable anonymous installation UUID on first boot.
+        // A very narrow race window exists if two requests arrive simultaneously
+        // on a brand-new install, but the last writer wins in the DB and every
+        // subsequent request reads the persisted value — identical to the
+        // sTwoFASecretKey auto-generation pattern in LoadConfigs.php.
+        // Runs AFTER the DB-upgrade check above: writing to config_cfg before the
+        // schema is current fatals when a restored/older database's config_cfg is
+        // missing a column default the current Propel model expects on INSERT.
+        if (empty(SystemConfig::getValue('sSystemID'))) {
+            SystemConfig::setValue('sSystemID', Uuid::uuid4()->toString());
+        }
+
         LoggerUtils::resetAppLoggerLevel();
-        
+
         // Mark as initialized
         self::$initialized = true;
     }

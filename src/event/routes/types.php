@@ -93,7 +93,7 @@ $app->get('/types/new', function (Request $request, Response $response) {
 
     return $renderer->render($response, 'types-new.php', [
         'sRootPath'     => SystemURLs::getRootPath(),
-        'sPageTitle'    => gettext('Add New') . ' ' . gettext('Event Type'),
+        'sPageTitle'    => gettext('Add New Event Type'),
         'sPageSubtitle' => gettext('Create a new event type with recurrence and attendance settings'),
         'aBreadcrumbs'  => PageHeader::breadcrumbs([
             [gettext('Events'), '/event/dashboard'],

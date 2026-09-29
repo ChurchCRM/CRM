@@ -2,7 +2,7 @@
 title: "Responsive Design Guidelines"
 intent: "Canonical guidance for mobile, tablet, and laptop/desktop layouts across ChurchCRM"
 tags: ["frontend","responsive","bootstrap","tabler","mobile","tablet"]
-prereqs: ["frontend-development.md","bootstrap-5-migration.md","tabler-components.md"]
+prereqs: ["[[frontend-development]]","[[bootstrap-5-migration]]","[[tabler-components]]"]
 complexity: "intermediate"
 ---
 
@@ -30,7 +30,8 @@ codebase:
 | **Tablet** | 768px | 1199.98px | `md`, `lg` | Tablets, small laptops, split-screen windows |
 | **Laptop/Desktop** | 1200px | ∞ | `xl`, `xxl` | Laptops, desktop monitors, kiosks |
 
-> **Why the split is at 768 and 1200 and not 576/992:** The vertical Tabler
+> [!NOTE] Why the split is at 768 and 1200 and not 576/992
+> The vertical Tabler
 > sidebar in `src/Include/Header.php:176` is `navbar-vertical navbar-expand-xl`,
 > which means the **permanent left sidebar only appears at ≥1200px**. Below that
 > the nav collapses to a hamburger. The 768px boundary is where column layouts
@@ -49,7 +50,7 @@ codebase:
 - Stat cards: `col-6` (two-up, never stack to one-up — looks empty on 375px)
 - Main columns: `col-12` (stack everything)
 - Form fields: `col-12`
-- Tables: **must** be wrapped in `.table-responsive`. If rows have action dropdowns, ensure button has `data-bs-display="static"` to prevent clipping (see [`table-action-menu.md`](./table-action-menu.md))
+- Tables: **must** be wrapped in `.table-responsive` — UNLESS rows have action dropdowns, in which case [`table-action-menu.md`](./table-action-menu.md) → "Overflow / Dropdown Clipping" owns the rule (`overflow-x: clip; overflow-y: visible`; `data-bs-display="static"` alone does NOT prevent clipping)
 - Touch targets: minimum **44×44px** (Apple HIG)
 - Page headers: use icon-only buttons (`font-size: 0` trick, see `_tabler-bridge.scss`)
 - Labels on multi-step forms: hide under 400px (`d-none d-sm-inline`)
@@ -69,7 +70,7 @@ codebase:
   balanced two-column layouts. Do NOT use the 8/4 split at md — it cramps the
   narrow column.
 - Form fields: `col-md-6` for paired fields (name/email, date range)
-- Tables: wrap in `.table-responsive`; if rows have action dropdowns, use `data-bs-display="static"` on button (see `table-action-menu.md`)
+- Tables: wrap in `.table-responsive` — UNLESS rows have action dropdowns, in which case follow [`table-action-menu.md`](./table-action-menu.md) → "Overflow / Dropdown Clipping"
 - Card header tabs: keep visible but consider shorter labels
   (`<span class="d-none d-xl-inline">Latest Families</span><span class="d-xl-none">New</span>`)
 
@@ -86,7 +87,8 @@ codebase:
 - Dense card tabs become full labels (`d-none d-xl-inline`)
 - Multi-column forms OK: `col-lg-4` or `col-lg-3`
 
-> **Note:** We use `col-lg-*` at 992px (not 1200px) for the 8/4 split because
+> [!NOTE]
+> We use `col-lg-*` at 992px (not 1200px) for the 8/4 split because
 > the 992–1199 band still benefits from side-by-side content even though the
 > sidebar hasn't appeared yet. `col-lg-*` = "start being wide at 992px".
 
@@ -97,7 +99,8 @@ codebase:
 The project standard is **`col-6 col-lg-3`** for 4 stat cards, or **`col-6 col-lg`**
 (auto-equal) for 5+ stat cards.
 
-> **Heads-up on the breakpoint vs the form-factor model:** Bootstrap's `lg`
+> [!WARNING] Heads-up on the breakpoint vs the form-factor model
+> Bootstrap's `lg`
 > breakpoint activates at **992px**, which sits *inside* the Tablet form
 > factor (768–1199.98px) defined above — it is not the same as the 1200px
 > Laptop boundary. So `col-6 col-lg-3` actually goes:
@@ -173,30 +176,32 @@ On mobile and tablet they stack automatically (both become `col-12`).
 
 ### Tables must be wrapped — but NOT with `.table-responsive` if the rows have action dropdowns <!-- learned: 2026-04-09 -->
 
-> **⚠️ Critical conflict with [`table-action-menu.md`](./table-action-menu.md):**
+> [!NOTE] The wrapper rule lives in [`table-action-menu.md`](./table-action-menu.md)
 > `.table-responsive` sets `overflow-x: auto`, which (per CSS spec) forces
 > `overflow-y: auto` as well — and that **clips absolutely-positioned row
-> dropdowns on their last rows**. For tables that have per-row action menus
-> (the `ti-dots-vertical` dropdown pattern), you **must** use
-> `<div style="overflow: visible;">` as the wrapper instead. See the Overflow
-> section of `table-action-menu.md` for the full root cause.
+> dropdowns on their last rows**. Tables with per-row action menus therefore need a
+> different wrapper. [`table-action-menu.md`](./table-action-menu.md) →
+> "Overflow / Dropdown Clipping" is the single source of truth for that wrapper, the
+> root cause, and the trigger markup. The summary below repeats its conclusion only —
+> if the two ever disagree, `table-action-menu.md` wins.
 
 **Decision flow for every table in a card:**
 
 ```
 Does the table have per-row action dropdowns?
-├── YES → Use <div style="overflow: visible;"> (dropdowns can escape)
-│         Accept horizontal overflow on phones — it's the lesser evil
-│         compared to broken action menus.
+├── YES → Use <div style="overflow-x: clip; overflow-y: visible;">
+│         Horizontal overflow stays clipped; the dropdown can still escape
+│         downward. (The older <div style="overflow: visible;"> also stops the
+│         clipping but drops horizontal containment — see table-action-menu.md.)
 └── NO  → Use .table-responsive (proper mobile horizontal scroll)
 ```
 
 ```html
 <!-- ✅ CORRECT — table with row action dropdowns -->
-<div class="card-body" style="overflow: visible;">
-    <div style="overflow: visible;">
+<div class="card-body">
+    <div style="overflow-x: clip; overflow-y: visible;">
         <table class="table table-vcenter table-hover card-table">
-            <!-- rows with ti-dots-vertical dropdown in last <td> -->
+            <!-- rows whose last <td> holds the fa-ellipsis-vertical dropdown -->
         </table>
     </div>
 </div>
@@ -239,7 +244,7 @@ and long labels on desktop:
 
 ```html
 <a class="nav-link" ...>
-    <i class="ti ti-home-plus me-1"></i>
+    <i class="fa-solid fa-house-plus me-1"></i>
     <span class="d-none d-xl-inline"><?= gettext('Latest Families') ?></span>
     <span class="d-xl-none"><?= gettext('New') ?></span>
 </a>
@@ -308,7 +313,7 @@ there when introducing a new page or fixing a responsive bug.
 | `col-lg-8 col-md-8` main content | Use `col-lg-8` only; stack on md |
 | Inline `width: 300px` on inputs | Use `col-md-*` wrappers + `w-100` |
 | Bare `<table class="table">` in card (no row dropdowns) | Wrap in `.table-responsive` |
-| Bare `<table class="table">` in card (WITH row dropdowns) | Wrap in `<div style="overflow: visible;">` — `.table-responsive` clips dropdowns (see `table-action-menu.md`) |
+| Bare `<table class="table">` in card (WITH row dropdowns) | Wrap in `<div style="overflow-x: clip; overflow-y: visible;">` — `.table-responsive` clips dropdowns (see [`table-action-menu.md`](./table-action-menu.md)) |
 | `navbar-expand-lg` on vertical navbar | The canonical Tabler sidebar is `navbar-expand-xl` |
 | Hardcoded icon `font-size: 12px` on touch targets | Default (≥16px) or bigger for mobile |
 | Long labels crammed into card tabs | Use `d-none d-xl-inline` + `d-xl-none` short label pair |
@@ -365,9 +370,9 @@ at the back of the room):
 | Page | File | Issue found | Fix |
 |---|---|---|---|
 | Event Editor | `src/event/views/editor.php` | Form built as `<table>` with 9× `style="width:180px"` on `<td>` labels — broke mobile entirely | Converted to Bootstrap `row`/`col-md-3`+`col-md-9` form pattern 2026-04-09 |
-| Event Types List | `src/event/views/types-list.php` | Has row action dropdowns — `overflow:visible` wrapper is correct | ✅ (no change; must stay `overflow:visible` for dropdowns) |
+| Event Types List | `src/event/views/types-list.php` | Row action dropdowns hardcoded in PHP were wrapped in `table-responsive`, clipping them — doc previously claimed this was already `overflow:visible` (it wasn't) | Fixed to `overflow:visible` 2026-07-26 |
 | Event Type Edit | `src/event/views/types-edit.php` | `<th style="width: 200px;">` on Actions column | Replaced with `w-1` utility class 2026-04-09 |
-| Group View | `src/groups/views/group-view.php` | `#membersTable` populated by GroupView.js with row dropdowns — `overflow:visible` wrapper is correct | ✅ (no change; must stay `overflow:visible` for dropdowns) |
+| Group View | `src/groups/views/group-view.php` | `#membersTable`'s hand-rolled dropdown (built in GroupView.js, not the shared `render*ActionMenu()` helper) was wrapped in `table-responsive` — doc previously claimed this was already `overflow:visible` (it wasn't) | Fixed to `overflow:visible` 2026-07-26 |
 | Sunday School Class View | `src/groups/views/sundayschool/class-view.php` | Student roster has row action dropdowns — `overflow:visible` wrapper is correct | ✅ (no change; must stay `overflow:visible` for dropdowns) |
 | Event Repeat Editor | `src/event/views/repeat-editor.php` | Small fixed-width inline selects (`w:auto`, `w:100px`) inside `flex-wrap` rows | ✅ (wraps cleanly, intentionally small) |
 | Event Types New | `src/event/views/types-new.php` | Narrow time-picker widths (70/100/150px) | ✅ (inline time-pickers, acceptable sizing) |

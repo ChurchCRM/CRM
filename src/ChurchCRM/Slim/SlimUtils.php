@@ -3,8 +3,10 @@ namespace ChurchCRM\Slim;
 
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\LoggerUtils;
 use Exception;
+use Propel\Runtime\Exception\PropelException;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
@@ -20,6 +22,103 @@ use Throwable;
 
 class SlimUtils
 {
+    /**
+     * Patterns that indicate a message carries a secret *value*, rather than
+     * merely containing an English word like "user", "host" or "token".
+     *
+     * The previous rule was a bare word list (`/(password|...|user|host|\d{1,3}\.\d{1,3})/i`),
+     * unanchored, so it discarded ordinary messages: `User not found`,
+     * `Ghostwriter field is required`, `Value must be between 1.5 and 3.5`.
+     * Each pattern here requires credential-like *context* — an assignment, a
+     * connection string, key material, or a full address (#9737).
+     */
+    private const SENSITIVE_VALUE_PATTERNS = [
+        // password=…, api_key: …, Authorization: Bearer …, {"password":"…"},
+        // ['token' => '…'] — a credential name, optionally quoted as a JSON or
+        // map key, followed by a separator and a value, with whitespace
+        // allowed on either side of the separator. Prose such as "password
+        // must be at least 8 characters" has no separator and is left alone.
+        '/\\b(?:pass(?:word|wd)?|pwd|secret|credentials?|api[_-]?key|(?:access|refresh|auth|bearer|csrf|session)[_-]?token|token|authorization|private[_-]?key|client[_-]?secret)\\b["\']?\\s*[:=]\\s*\\S/i',
+        // DSN / connection-string fragments: mysql:host=db;dbname=x;user=y
+        '/\\b(?:host|hostname|dbname|unix_socket|user|username|uid)\\s*=\\s*\\S/i',
+        // Credentials embedded in a URL: scheme://user:pass@host
+        '#\\b[a-z][a-z0-9+.-]*://[^\\s/@]+:[^\\s/@]+@#i',
+        // PEM key material
+        '/-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----/',
+        // JSON Web Token
+        '/\\beyJ[A-Za-z0-9_-]{8,}\\.[A-Za-z0-9_-]{8,}\\.[A-Za-z0-9_-]+/',
+        // A long opaque run — API keys, session ids, base64 blobs — in the
+        // URL-safe *or* the standard base64 alphabet, so an unlabelled
+        // credential such as an AWS secret access key
+        // (`wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`) is caught even though
+        // `/` splits it into short segments. No word-boundary anchors: `+`,
+        // `/` and `=` are not word characters, so `\b` would fail beside them.
+        // No user-facing message legitimately contains a 40-character
+        // unbroken token. A server path or slug that long is an internal
+        // detail the caller should not see either, so it is collapsed rather
+        // than exempted — there is no lexical test ("looks like prose") that
+        // a generated secret cannot also pass. A message that must show such
+        // a value belongs in a dedicated payload field, not in free text.
+        '#[A-Za-z0-9+/=_-]{40,}#',
+        // A complete IPv4 address (the old rule matched any two decimals,
+        // so it redacted "between 1.5 and 3.5").
+        '/\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b/',
+    ];
+
+    /**
+     * True when the message looks like it carries a secret value and must not
+     * be shown to the caller.
+     *
+     * Regression coverage for both directions — values that must be redacted
+     * and ordinary messages that must stay readable — lives in
+     * `scripts/test-error-redaction.php` (`npm run test:php`).
+     */
+    public static function containsSensitiveValue(string $message): bool
+    {
+        foreach (self::SENSITIVE_VALUE_PATTERNS as $pattern) {
+            if (preg_match($pattern, $message) === 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Build the canonical /api error payload.
+     *
+     * One shape for every error response (#9737). It is a superset of the
+     * three shapes that used to be produced, so existing consumers keep
+     * working: `message` for the `responseJSON.message` readers (the majority,
+     * plus CRMJSOM's `message || error || msg` fallback), `error` for
+     * `responseJSON.error` readers (DepositSlipEditor), `code` for anything
+     * branching on the status, and `success: false` so a response can be
+     * tested without inspecting the HTTP status.
+     *
+     * New code should read `message`.
+     *
+     * The canonical keys are merged **last** on purpose: `error` is an alias of
+     * `message` and must never carry a different value, or a
+     * `responseJSON.error` consumer and a `responseJSON.message` consumer would
+     * see two different errors for the same response. A colliding key in
+     * `$extra` is therefore dropped rather than allowed to break the alias.
+     *
+     * @param array<string, mixed> $extra additional keys merged into the payload
+     * @return array<string, mixed>
+     */
+    public static function buildErrorPayload(string $message, int $code, array $extra = []): array
+    {
+        return array_merge(
+            $extra,
+            [
+                'success' => false,
+                'message' => $message,
+                'error'   => $message,
+                'code'    => $code,
+            ]
+        );
+    }
+
     /**
      * Render a standard success JSON response
      */
@@ -37,8 +136,10 @@ class SlimUtils
         $default = gettext('An error occurred. Please contact your system administrator.');
         $msg = $message ?: $default;
 
-        // Sanitize the provided message to avoid leaking credentials
-        if (preg_match('/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i', $msg)) {
+        // Sanitize the provided message to avoid leaking credential values.
+        // Only value-shaped secrets are redacted — an ordinary message such as
+        // "User not found" must reach the caller intact (#9737).
+        if (self::containsSensitiveValue($msg)) {
             $msg = $default;
         }
 
@@ -65,8 +166,7 @@ class SlimUtils
             // If logging fails, do not expose details to the client; fail silently
         }
 
-        $payload = array_merge(['success' => false, 'message' => $msg], $extra);
-        return self::renderJSON($response, $payload, $status);
+        return self::renderJSON($response, self::buildErrorPayload($msg, $status, $extra), $status);
     }
 
     /**
@@ -87,7 +187,7 @@ class SlimUtils
             ];
             return $container->get('response')->withStatus(500)
                 ->withHeader('Content-Type', 'application/json')
-                ->write(json_encode($data, JSON_THROW_ON_ERROR));
+                ->write(json_encode($data));
         });
 
         // Not found handler: returns HTML 404
@@ -200,14 +300,12 @@ class SlimUtils
 
             if (self::isApiRequest($request)) {
                 // Include HTTP method and path in error response for debugging
-                $errorResponse = [
-                    'error' => $sanitizedMessage,
-                    'code' => $exception->getCode(),
+                $errorResponse = self::buildErrorPayload($sanitizedMessage, $statusCode, [
                     'request' => [
                         'method' => $request->getMethod(),
                         'path' => $path
                     ]
-                ];
+                ]);
 
                 $response->getBody()->write(json_encode($errorResponse));
                 return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
@@ -222,6 +320,11 @@ class SlimUtils
                 $returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
                 $returnText = gettext('Return to Dashboard');
                 $extraHtml = '';
+                // This handler never requires Header.php/Footer.php (it serves
+                // apps like session/index.php that can't safely assume an
+                // authenticated header renders), so the partial must supply
+                // its own <html>/<head>/CSS or the page renders unstyled.
+                $bStandalone = true;
 
                 ob_start();
                 // Include the shared error partial (path relative to src/ChurchCRM/Slim)
@@ -232,12 +335,12 @@ class SlimUtils
                 return $response->withStatus($statusCode)->withHeader('Content-Type', 'text/html');
             } catch (Throwable $e) {
                 // If rendering the HTML page fails, fallback to JSON to ensure client receives an error
-                $errorResponse = [
-                    'error' => 'An error occurred while rendering the error page.',
-                    'code' => $exception->getCode(),
-                ];
+                $errorResponse = self::buildErrorPayload(
+                    gettext('An error occurred while rendering the error page.'),
+                    $statusCode
+                );
                 $response->getBody()->write(json_encode($errorResponse));
-                return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
             }
         });
     }
@@ -316,14 +419,12 @@ class SlimUtils
 
             // API / AJAX requests get JSON
             if (self::isApiRequest($request)) {
-                $errorResponse = [
-                    'error' => self::sanitizeErrorMessage($exception),
-                    'code' => $statusCode,
+                $errorResponse = self::buildErrorPayload(self::sanitizeErrorMessage($exception), $statusCode, [
                     'request' => [
                         'method' => $request->getMethod(),
                         'path' => $request->getUri()->getPath(),
                     ],
-                ];
+                ]);
                 $response->getBody()->write(json_encode($errorResponse));
                 return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
             }
@@ -349,9 +450,9 @@ class SlimUtils
                     $nonce = SystemURLs::getCSPNonce();
                     $extraHtml = '<div class="mb-4"><details class="card card-outline border-secondary">'
                         . '<summary class="card-header cursor-pointer d-flex justify-content-between align-items-center">'
-                        . '<span><i class="ti ti-code"></i> ' . gettext('Technical Details') . ' (Development Mode)</span>'
+                        . '<span><i class="fa-solid fa-code"></i> ' . gettext('Technical Details') . ' (Development Mode)</span>'
                         . '<button type="button" class="btn btn-sm btn-outline-secondary copy-error-btn" style="border: none; padding: 0.25rem 0.5rem;" title="' . gettext('Copy error message') . '">'
-                        . '<i class="ti ti-copy"></i></button></summary>'
+                        . '<i class="fa-solid fa-copy"></i></button></summary>'
                         . '<div class="card-body"><pre class="mb-0"><code id="errorMessage">' . $escaped . '</code></pre></div>'
                         . '</details></div>'
                         . '<script nonce="' . $nonce . '">'
@@ -361,7 +462,7 @@ class SlimUtils
                         . 'navigator.clipboard.writeText(errorText).then(() => {'
                         . 'const btn = this;'
                         . 'const originalHTML = btn.innerHTML;'
-                        . 'btn.innerHTML = \'<i class="ti ti-check"></i>\';'
+                        . 'btn.innerHTML = \'<i class="fa-solid fa-check"></i>\';'
                         . 'setTimeout(() => {btn.innerHTML = originalHTML;}, 2000);'
                         . '}).catch(() => { /* clipboard unavailable — no-op */ });'
                         . '});'
@@ -384,7 +485,7 @@ class SlimUtils
                     'render_error' => $renderEx->getMessage(),
                     'original_error' => $exception->getMessage(),
                 ]);
-                $fallback = ['error' => gettext('An error occurred.'), 'code' => $statusCode];
+                $fallback = self::buildErrorPayload(gettext('An error occurred.'), $statusCode);
                 $response->getBody()->write(json_encode($fallback));
                 return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
             }
@@ -396,7 +497,7 @@ class SlimUtils
      */
     public static function renderJSON(Response $response, array $obj, int $status = 200): Response
     {
-        return self::renderStringJSON($response, json_encode($obj, JSON_THROW_ON_ERROR), $status);
+        return self::renderStringJSON($response, json_encode($obj), $status);
     }
 
     /**
@@ -426,16 +527,25 @@ class SlimUtils
 
         $message = $exception->getMessage();
 
-        // For database-related exceptions, return generic message
+        // For database-related exceptions, return generic message.
+        // The ORM exception class is the reliable signal: the vendor directory
+        // is `perplorm/perpl`, so the old `stripos($file, 'propel')` check never
+        // fired, and a failing INSERT is thrown from the generated model under
+        // src/ChurchCRM/model/. That let Propel leak the raw statement to the
+        // client (#9737, seen via #9736).
         if ($exception instanceof \PDOException ||
+            $exception instanceof PropelException ||
             stripos($exception->getFile(), 'propel') !== false ||
+            stripos($exception->getFile(), 'perpl') !== false ||
+            preg_match('/\\b(SQLSTATE|INSERT INTO|UPDATE .+ SET|DELETE FROM|SELECT .+ FROM)\\b/i', $message) === 1 ||
             stripos($message, 'sql') !== false ||
             stripos($message, 'database') !== false) {
             return 'A database error occurred. Please contact your system administrator.';
         }
 
-        // For unexpected exceptions, redact messages that may contain credentials or internal details
-        if (preg_match('/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i', $message)) {
+        // For unexpected exceptions, redact only messages that carry a secret
+        // value — not every message containing the word "user" (#9737).
+        if (self::containsSensitiveValue($message)) {
             return 'An error occurred. Please contact your system administrator.';
         }
 
@@ -475,6 +585,56 @@ class SlimUtils
         }
 
         return $route->getArgument($name);
+    }
+
+    /**
+     * Whether PHP discarded this request's body because it was larger than the
+     * server accepts, which is the only case that justifies answering 413.
+     *
+     * PHP throws the *whole* body away when it exceeds the accepted size, so
+     * "nothing arrived at all" is the only honest signal: an empty parsed body,
+     * a raw body reporting size 0 (or unknown), and no raw bytes. A body that
+     * did arrive but is missing an expected field is a malformed request (400)
+     * no matter what its Content-Length claims — the limit here is
+     * `min(upload_max_filesize, post_max_size, memory_limit)`, which on a stock
+     * config is upload_max_filesize (2M) and sits far below post_max_size, so
+     * judging on the header alone turns every complete body over 2 MB into a
+     * misleading size error (issues #9719, #9771).
+     *
+     * Re-reading the body here is safe even though `BodyParsingMiddleware`
+     * already consumed it: slim/psr7's `ServerRequestFactory` wraps
+     * `php://input` in a `Stream` backed by a `php://temp` cache
+     * (`ServerRequestFactory::createFromGlobals()`), and `Stream::__toString()`
+     * replays that cache once the stream is finished, ahead of its
+     * `isSeekable()` branch. So `(string) $body` returns the original bytes
+     * for a body that arrived but could not be parsed — invalid JSON, or a
+     * content type with no registered parser — and only returns '' when
+     * nothing arrived at all. `getSize()` is null for `php://input`, which is
+     * why it cannot carry this check on its own.
+     *
+     * Residual, and not fixable from here: a short body sent with a huge,
+     * lying Content-Length truncates the request, PHP receives nothing, and
+     * that is indistinguishable from a body discarded for size.
+     */
+    public static function isBodyDiscardedForSize(Request $request): bool
+    {
+        if (!empty($request->getParsedBody())) {
+            return false;
+        }
+
+        $body = $request->getBody();
+        $bodySize = $body->getSize();
+        if ($bodySize !== null && $bodySize !== 0) {
+            return false;
+        }
+
+        if ((string) $body !== '') {
+            return false;
+        }
+
+        $contentLength = (int) ($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
+
+        return $contentLength > SystemService::getMaxUploadFileSize(false);
     }
 
     /**

@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use ChurchCRM\Reports\PdfDepositReport;
 use ChurchCRM\Service\AuthService;
+use ChurchCRM\Utils\CurrencyFormatter;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 
@@ -128,11 +129,11 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->Write(8, 'Checks: ');
         $thisReport->pdf->write(8, '(' . $this->getCountChecks() . ')');
-        $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf('%.2f', $this->getTotalChecks()));
+        $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, CurrencyFormatter::formatForPdf($this->getTotalChecks() ?? 0));
         $thisReport->curY += 4;
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->Write(8, 'Cash: ');
-        $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf('%.2f', $this->getTotalCash()));
+        $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, CurrencyFormatter::formatForPdf($this->getTotalCash() ?? 0));
     }
 
     private function generateTotalsByFund(\stdClass $thisReport): void
@@ -147,7 +148,7 @@ class Deposit extends BaseDeposit
         foreach ($this->getFundTotals() as $fund) { //iterate through the defined funds
             $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
             $thisReport->pdf->Write(8, $fund['Name']);
-            $amountStr = sprintf('%.2f', $fund['Total']);
+            $amountStr = CurrencyFormatter::formatForPdf($fund['Total'] ?? 0);
             $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
             $thisReport->curY += 4;
         }
@@ -157,14 +158,14 @@ class Deposit extends BaseDeposit
     {
         $thisReport->pdf->addPage();
 
-        $thisReport->QBDepositTicketParameters = json_decode(SystemConfig::getValue('sQBDTSettings'), null, 512, JSON_THROW_ON_ERROR);
+        $thisReport->QBDepositTicketParameters = json_decode(SystemConfig::getValue('sQBDTSettings'), null, 512);
         $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
         $thisReport->pdf->Write(8, $this->getDate()->format('Y-m-d'));
 
         //print_r($thisReport->QBDepositTicketParameters);
         //logically, we print the cash in the first possible key=value pair column
         if ($this->getTotalCash() > 0) {
-            $totalCashStr = sprintf('%.2f', $this->getTotalCash());
+            $totalCashStr = CurrencyFormatter::formatForPdf($this->getTotalCash() ?? 0);
             $thisReport->pdf->printRightJustified($thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->QBDepositTicketParameters->topY, $totalCashStr);
         }
         $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
@@ -173,15 +174,18 @@ class Deposit extends BaseDeposit
         $pledges = PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->groupByGroupKey()
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->addAsColumn('sumAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->joinFamily(null, Criteria::LEFT_JOIN)
-            ->withColumn(FamilyTableMap::COL_FAM_NAME)
+            ->addAsColumn(
+                str_replace(['.', '(', ')'], '', FamilyTableMap::COL_FAM_NAME),
+                FamilyTableMap::COL_FAM_NAME
+            )
             ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
             if ($pledge->getMethod() === 'CHECK') {
                 $thisReport->pdf->printRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckNo());
-                $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
+                $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, CurrencyFormatter::formatForPdf($pledge->getsumAmount() ?? 0));
 
                 $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
                 if ($thisReport->curX > $thisReport->QBDepositTicketParameters->max->x) {
@@ -191,7 +195,7 @@ class Deposit extends BaseDeposit
             }
         }
 
-        $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
+        $grandTotalStr = CurrencyFormatter::formatForPdf($this->getTotalAmount() ?? 0);
         $thisReport->pdf->printRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
         $thisReport->pdf->printRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
         $numItemsString = sprintf('%d', ($this->getCountCash() > 0 ? 1 : 0) + $this->getCountChecks());
@@ -223,7 +227,7 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->SetFont('Times', 'B', 10);
         $thisReport->pdf->Write(8, 'Deposit total');
-        $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
+        $grandTotalStr = CurrencyFormatter::formatForPdf($this->getTotalAmount() ?? 0);
         $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, $grandTotalStr);
         $thisReport->pdf->SetFont('Courier', '', 8);
     }
@@ -329,7 +333,7 @@ class Deposit extends BaseDeposit
 
             $thisReport->pdf->SetFont('Courier', '', 8);
 
-            $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->getAmount());
+            $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, CurrencyFormatter::formatForPdf($payment->getAmount() ?? 0));
 
             $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
@@ -344,7 +348,7 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->MemoX, $thisReport->curY);
         $thisReport->pdf->Write(8, 'Deposit total');
 
-        $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
+        $grandTotalStr = CurrencyFormatter::formatForPdf($this->getTotalAmount() ?? 0);
         $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
         $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
 
@@ -431,7 +435,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CHECK')
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->addAsColumn('sumAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
@@ -441,7 +445,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CASH')
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->addAsColumn('sumAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
@@ -471,9 +475,9 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
         ->filterByDepId($this->getId())
         ->groupByFundId()
-        ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'Total')
+        ->addAsColumn('Total', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
         ->joinDonationFund()
-        ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
+        ->addAsColumn('Name', DonationFundTableMap::COL_FUN_NAME)
         ->orderBy(DonationFundTableMap::COL_FUN_NAME)
         ->select(['Name', 'Total'])
         ->find();

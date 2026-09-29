@@ -21,7 +21,7 @@
  * - photo-small: 85px (maps, lists)
  * - photo-medium: 100px (standard cards)
  * - photo-large: 200px (main family photo)
- * - photo-profile: 200px (profile pages)
+ * - photo-profile: responsive (full card width, up to 600 px stored; profile pages)
  */
 
 import Avatar, { type AvatarOptions } from "avatar-initials";
@@ -32,6 +32,7 @@ interface AvatarInfo {
   photoUrl: string | null;
   initials: string;
   email: string | null;
+  photoVersion?: number;
 }
 
 interface AvatarConfig {
@@ -124,11 +125,14 @@ class AvatarLoader {
   }
 
   /**
-   * Build the API URL for the actual photo (uploaded photos only)
+   * Build the API URL for the actual photo (uploaded photos only).
+   * Appends ?v=<photoVersion> when provided to bust the 2-hour
+   * Cache-Control on the /photo endpoint after an upload. See #8662.
    */
-  private buildPhotoUrl(config: AvatarConfig): string {
+  private buildPhotoUrl(config: AvatarConfig, photoVersion?: number): string {
     const { entityType, entityId } = config;
-    return buildAPIUrl(`${entityType}/${entityId}/photo`);
+    const base = buildAPIUrl(`${entityType}/${entityId}/photo`);
+    return photoVersion && photoVersion > 0 ? `${base}?v=${photoVersion}` : base;
   }
 
   /**
@@ -286,7 +290,7 @@ class AvatarLoader {
    * Load an uploaded photo
    */
   private loadUploadedPhoto(img: HTMLImageElement, config: AvatarConfig, avatarInfo: AvatarInfo): void {
-    const photoUrl = this.buildPhotoUrl(config);
+    const photoUrl = this.buildPhotoUrl(config, avatarInfo.photoVersion);
 
     // Load the image directly - browser will send authentication cookies automatically
     img.onload = () => {
@@ -298,14 +302,22 @@ class AvatarLoader {
       const isProfilePhoto = img.classList.contains("photo-large") || img.classList.contains("photo-profile");
 
       if (isProfilePhoto) {
-        // For main profile photos, switch to rectangular style (not circular avatar)
-        img.classList.remove("photo-large", "photo-medium", "photo-small", "photo-tiny", "photo-profile");
-        img.classList.add("img-fluid", "rounded", "uploaded-photo");
-        img.style.maxWidth = "100%";
-        img.style.maxHeight = "300px";
-        img.style.borderRadius = "8px";
-        img.style.width = "auto";
-        img.style.height = "auto";
+        if (img.classList.contains("card-img-top")) {
+          // Card layout: sizing is handled by HTML/CSS (w-100, aspect-ratio, max-height).
+          // Only remove the photo-profile class and mark as loaded; do NOT override width,
+          // height, max-height, or border-radius — card-img-top handles rounding.
+          img.classList.remove("photo-large", "photo-medium", "photo-small", "photo-tiny", "photo-profile");
+          img.classList.add("uploaded-photo");
+        } else {
+          // Legacy / non-card profile photos: switch to rectangular style (not circular avatar)
+          img.classList.remove("photo-large", "photo-medium", "photo-small", "photo-tiny", "photo-profile");
+          img.classList.add("img-fluid", "rounded", "uploaded-photo");
+          img.style.maxWidth = "100%";
+          img.style.maxHeight = "300px";
+          img.style.borderRadius = "8px";
+          img.style.width = "auto";
+          img.style.height = "auto";
+        }
       } else {
         // For inline/list photos, keep as circular avatar but use the uploaded photo
         img.classList.add("uploaded-photo");

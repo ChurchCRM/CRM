@@ -32,11 +32,7 @@ class SystemURLs
 
     public static function getRootPath()
     {
-        if (self::isValidRootPath()) {
-            return self::$rootPath;
-        }
-
-        throw new \Exception("Please check the value for '\$sRootPath' in <b>`Include\\Config.php`</b>, the following is not valid [" . self::$rootPath . ']');
+        return self::$rootPath;
     }
 
     public static function getDocumentRoot()
@@ -85,14 +81,6 @@ class SystemURLs
         }
 
         return $URL;
-    }
-
-    private static function isValidRootPath(): bool
-    {
-        //if (stripos(self::$rootPath, "http") !== true ) {
-        //    return false;
-        //}
-        return true;
     }
 
     // check if bLockURL is set and if so if the current page is accessed via an allowed URL

@@ -40,12 +40,15 @@ switch ($sType) {
 $sPageTitle = $sTypeName . ' ' . gettext('Property List');
 
 // Get the properties, grouped by type
-$sSQL = "SELECT pro_ID, pro_Name, pro_Description, pro_Prompt, prt_ID, prt_Name
-         FROM property_pro
-         JOIN propertytype_prt ON prt_ID = pro_prt_ID
-         WHERE pro_Class = '" . $sType . "'
-         ORDER BY prt_Name, pro_Name";
-$rsProperties = RunQuery($sSQL);
+$rsProperties = RunPreparedQuery(
+    'SELECT pro_ID, pro_Name, pro_Description, pro_Prompt, prt_ID, prt_Name
+     FROM property_pro
+     JOIN propertytype_prt ON prt_ID = pro_prt_ID
+     WHERE pro_Class = ?
+     ORDER BY prt_Name, pro_Name',
+    's',
+    [$sType]
+);
 
 // Pre-process into groups
 $groups = [];
@@ -162,17 +165,17 @@ require_once __DIR__ . '/Include/Header.php';
                         <td class="text-center w-1">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a class="dropdown-item" href="PropertyEditor.php?PropertyID=<?= InputUtils::escapeAttribute($prop['pro_ID']) ?>&Type=<?= InputUtils::escapeAttribute($sType) ?>">
-                                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                        <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <button class="dropdown-item text-danger delete-property-btn"
                                         data-property-id="<?= InputUtils::escapeAttribute($prop['pro_ID']) ?>"
                                         data-property-name="<?= InputUtils::escapeAttribute($prop['pro_Name']) ?>">
-                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                        <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>
                             </div>
@@ -196,7 +199,7 @@ $(document).ready(function () {
             var propertyName = btn.data('property-name');
             bootbox.confirm({
                 title: '<?= gettext("Confirm Property Deletion") ?>',
-                message: '<p class="text-warning"><strong><?= gettext("Warning:") ?></strong> ' +
+                message: '<p class="text-warning"><strong><?= gettext("Warning") ?>:</strong> ' +
                     '<?= gettext("Deleting this property will also remove all its assignments from any People, Family, or Group records.") ?>' +
                     '</p><p><?= gettext("Delete") ?>: <strong>' + window.CRM.escapeHtml(propertyName) + '</strong></p>',
                 buttons: {

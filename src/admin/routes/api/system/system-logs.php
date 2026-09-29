@@ -2,7 +2,10 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\PathUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -29,15 +32,10 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         return $primaryLogsDir;
     };
     
-    // Set log level
+    // Set log level — InputSanitizationMiddleware converts 'value' to integer
     $group->post('/loglevel', function (Request $request, Response $response, array $args): Response {
         $input = $request->getParsedBody();
-        $logLevel = $input['value'] ?? null;
-
-        if (!$logLevel || !is_numeric($logLevel)) {
-            $response->getBody()->write(json_encode(['error' => 'Invalid log level']));
-            return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
-        }
+        $logLevel = (int) ($input['value'] ?? 0);
 
         // Set the configuration
         SystemConfig::setValue('sLogLevel', $logLevel);
@@ -49,9 +47,8 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
             // Logger might not be initialized yet, which is fine
         }
 
-        $response->getBody()->write(json_encode(['success' => true, 'level' => $logLevel]));
-        return $response->withHeader('Content-Type', 'application/json');
-    });
+        return SlimUtils::renderJSON($response, ['success' => true, 'level' => $logLevel]);
+    })->add(new InputSanitizationMiddleware(['value' => 'int']));
 
     // Delete all log files
     $group->delete('', function (Request $request, Response $response, array $args): Response {
@@ -100,15 +97,14 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         }
 
         // Security: Verify the file is inside the logs directory (prevent directory traversal)
-        $resolvedPath = realpath($logPath);
-        $resolvedDir = realpath($logsDir);
-        if (!$resolvedPath || !$resolvedDir || strpos($resolvedPath, $resolvedDir) !== 0) {
+        $resolvedPath = PathUtils::resolveRealPathWithin($logPath, $logsDir);
+        if ($resolvedPath === null) {
             $response->getBody()->write('Invalid file path');
             return $response->withStatus(400);
         }
 
         $content = file_get_contents($resolvedPath);
-        
+
         // Parse log lines and return as JSON array
         // Split by newline and filter empty lines, then reindex array for proper JSON output
         $allLines = explode("\n", $content);
@@ -151,9 +147,8 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         }
 
         // Security: Verify the file is inside the logs directory (prevent directory traversal)
-        $resolvedPath = realpath($logPath);
-        $resolvedDir = realpath($logsDir);
-        if (!$resolvedPath || !$resolvedDir || strpos($resolvedPath, $resolvedDir) !== 0) {
+        $resolvedPath = PathUtils::resolveRealPathWithin($logPath, $logsDir);
+        if ($resolvedPath === null) {
             return $response->withStatus(400);
         }
 
@@ -200,9 +195,8 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         }
 
         // Security: Verify the file is inside the logs directory (prevent directory traversal)
-        $resolvedPath = realpath($logPath);
-        $resolvedDir = realpath($logsDir);
-        if (!$resolvedPath || !$resolvedDir || strpos($resolvedPath, $resolvedDir) !== 0) {
+        $resolvedPath = PathUtils::resolveRealPathWithin($logPath, $logsDir);
+        if ($resolvedPath === null) {
             $response->getBody()->write('Invalid file path');
             return $response->withStatus(400);
         }

@@ -20,22 +20,6 @@ import type {
 // Declare moment as global (loaded via CDN in header)
 declare const moment: typeof import("moment");
 
-// Declare i18next as global (loaded via skin-core.js)
-declare const i18next: { t(key: string, options?: Record<string, unknown>): string };
-
-// Declare bootstrap on window (set by skin-core.js via @tabler/core)
-declare global {
-  interface Window {
-    bootstrap: {
-      Modal: {
-        getOrCreateInstance(el: Element): { show(): void; hide(): void };
-        getInstance(el: Element): { show(): void; hide(): void } | null;
-        new (el: Element, options?: Record<string, unknown>): { show(): void; hide(): void };
-      };
-    };
-  }
-}
-
 // Helper to access window.CRM safely
 function getCRM(): CRMNamespace {
   return window.CRM ?? {};
@@ -606,7 +590,7 @@ function heartbeat(): void {
           if (minutesLeft < 1) {
             label = i18next.t("Closing");
           } else if (minutesLeft < 60) {
-            label = i18next.t("{{count}} min left", { count: minutesLeft });
+            label = i18next.t("{{minutes}} min left", { minutes: minutesLeft });
           } else {
             const hours = Math.floor(minutesLeft / 60);
             const mins = minutesLeft % 60;

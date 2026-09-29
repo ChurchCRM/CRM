@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\PersonCustomMaster;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -148,20 +149,23 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             ->setOptionName(gettext('Default Option'));
                         $listOption->save();
 
-                        $newSpecial ="'$newListID'";
-                    } else {
-                        $newSpecial = 'NULL';
-                    }
+                    } // end if ($newFieldType == 12)
 
-                    // Insert into the master table
+                    // Insert into the master table via ORM (avoids SQL injection from user-supplied field name/type)
                     $newOrderID = $last + 1;
-                    $sSQL ="INSERT INTO person_custom_master
-                        (custom_Order , custom_Field , custom_Name ,  custom_Special , custom_FieldSec, type_ID)
-                        VALUES ('" . $newOrderID ."', 'c" . $newFieldNum ."', '" . $newFieldName ."'," . $newSpecial .", '" . $newFieldSec ."', '" . $newFieldType ."');";
-                    RunQuery($sSQL);
+                    $personCustomMaster = new PersonCustomMaster();
+                    $personCustomMaster
+                        ->setOrder($newOrderID)
+                        ->setId('c' . $newFieldNum)
+                        ->setName($newFieldName)
+                        ->setSpecial($newFieldType == 12 ? $newListID : null)
+                        ->setFieldSecurity($newFieldSec)
+                        ->setTypeId($newFieldType);
+                    $personCustomMaster->save();
 
-                    // Insert into the custom fields table
-                    $sSQL = 'ALTER TABLE person_custom ADD c' . $newFieldNum . ' ';
+                        // Insert into the custom fields table
+                    // $newFieldNum is (int)-cast from a DB column count; DDL identifiers cannot be parameterised.
+                    $sSQL = 'ALTER TABLE person_custom ADD c' . $newFieldNum . ' '; // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
                     switch ($newFieldType) {
                         case 1:
@@ -202,7 +206,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     }
 
                     $sSQL .= ' DEFAULT NULL ;';
-                    RunQuery($sSQL);
+                    RunQuery($sSQL); // nosemgrep: php.lang.security.injection.tainted-sql-string.tainted-sql-string
 
                     $bNewNameError = false;
                 }
@@ -262,15 +266,15 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteField(fieldName, fieldId) {
-            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
-            msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
-            msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all person data assigned for this field!')) ?>;
+            var msg = <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
+            msg += '<br><br><strong>' + <?= InputUtils::jsonEncodeForScript(gettext('Warning')) ?> + ':</strong> ';
+            msg += <?= InputUtils::jsonEncodeForScript(gettext('By deleting this field, you will irrevocably lose all person data assigned for this field!')) ?>;
             bootbox.confirm({
-                title: <?= json_encode(gettext('Delete Confirmation')) ?>,
+                title: <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
                 message: msg,
                 buttons: {
-                    cancel: { label: <?= json_encode(gettext('Cancel')) ?>, className: 'btn-secondary' },
-                    confirm: { label: <?= json_encode(gettext('Delete')) ?>, className: 'btn-danger' }
+                    cancel: { label: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?>, className: 'btn-secondary' },
+                    confirm: { label: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, className: 'btn-danger' }
                 },
                 callback: function(result) {
                     if (result) {
@@ -294,7 +298,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         var csrfInput = document.createElement('input');
                         csrfInput.type = 'hidden';
                         csrfInput.name = 'csrf_token';
-                        csrfInput.value = <?= json_encode(CSRFUtils::generateToken('deletePersonCustomField')) ?>;
+                        csrfInput.value = <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken('personCustomFieldsAction')) ?>;
                         form.appendChild(csrfInput);
 
                         document.body.appendChild(form);
@@ -310,10 +314,27 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             confirmDeleteField(btn.data('field-name'), btn.data('field-id'));
         });
 
+        // Reorder (up/down) — POST with CSRF so the 405 guard in RowOps is satisfied.
+        $(document).on('click', '.js-reorder-field', function () {
+            var btn = $(this);
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'PersonCustomFieldsRowOps.php';
+            [['OrderID', btn.data('order-id')], ['Field', btn.data('field-id')],
+             ['Action', btn.data('direction')], ['csrf_token', <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken('personCustomFieldsAction')) ?>]]
+            .forEach(function (p) {
+                var inp = document.createElement('input');
+                inp.type = 'hidden'; inp.name = p[0]; inp.value = p[1];
+                form.appendChild(inp);
+            });
+            document.body.appendChild(form);
+            form.submit();
+        });
+
         <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
         $(document).ready(function() {
             window.CRM.notify(
-                <?= json_encode(gettext('Field deleted successfully')) ?>,
+                <?= InputUtils::jsonEncodeForScript(gettext('Field deleted successfully')) ?>,
                 { type: 'success' }
             );
         });
@@ -326,7 +347,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <div class="card-header">
                 <h5 class="mb-0">
                     <i class="fa-solid fa-plus"></i>
-                    <?= gettext('Add New') . ' ' . gettext('Field') ?>
+                    <?= gettext('Add New Field') ?>
                 </h5>
             </div>
             <div class="card-body">
@@ -362,7 +383,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     <div class="col-md-3 d-flex align-items-end">
                         <button type="submit" class="btn btn-success w-100" name="AddField">
                             <i class="fa-solid fa-plus"></i>
-                            <?= gettext('Add New') . ' ' . gettext('Field') ?>
+                            <?= gettext('Add New Field') ?>
                         </button>
                     </div>
                 </div>
@@ -470,15 +491,15 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             <td class="w-1">
                                 <div class="dropdown">
                                     <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                        <i class="ti ti-dots-vertical"></i>
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <?php
                                         if ($row != 1) {
-                                            echo '<a class="dropdown-item" href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                            echo '<button type="button" class="dropdown-item js-reorder-field" data-order-id="' . $row . '" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="up"><i class="fa-solid fa-arrow-up me-2"></i>' . gettext('Move up') . '</button>';
                                         }
                                         if ($row < $numRows) {
-                                            echo '<a class="dropdown-item" href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                            echo '<button type="button" class="dropdown-item js-reorder-field" data-order-id="' . $row . '" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="down"><i class="fa-solid fa-arrow-down me-2"></i>' . gettext('Move down') . '</button>';
                                         }
                                         if ($row != 1 || $row < $numRows) {
                                             echo '<div class="dropdown-divider"></div>';
@@ -487,7 +508,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                         <button type="button" class="dropdown-item text-danger js-delete-field"
                                             data-field-name="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>"
                                             data-field-id="<?= InputUtils::escapeAttribute($aFieldFields[$row]) ?>">
-                                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                            <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                         </button>
                                     </div>
                                 </div>

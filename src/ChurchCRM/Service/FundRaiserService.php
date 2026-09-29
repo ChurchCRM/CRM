@@ -1,0 +1,402 @@
+<?php
+
+namespace ChurchCRM\Service;
+
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
+use ChurchCRM\model\ChurchCRM\FundRaiser;
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\model\ChurchCRM\Map\DonatedItemTableMap;
+use ChurchCRM\model\ChurchCRM\Map\PaddleNumTableMap;
+use ChurchCRM\model\ChurchCRM\PaddleNumQuery;
+use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\LoggerUtils;
+
+/**
+ * Service class for Fundraiser module aggregations.
+ *
+ * All queries use Perpl ORM (Query classes + TableMap constants).
+ * Raw SQL / Propel::getConnection() is intentionally absent — every
+ * access goes through the ORM layer for consistency and type safety.
+ */
+class FundRaiserService
+{
+    private \Psr\Log\LoggerInterface $logger;
+
+    public function __construct()
+    {
+        $this->logger = LoggerUtils::getAppLogger();
+    }
+
+    /**
+     * Returns an associative array keyed by fundraiser ID, with per-fundraiser
+     * aggregates needed by the landing-page DataTable.
+     *
+     * Each value is:
+     *   [
+     *     'items'   => int,    // donated item count
+     *     'raised'  => float,  // SUM of sell-price for sold items (buyer > 0 AND sell > 0)
+     *     'est'     => float,  // SUM di_estprice
+     *     'buyers'  => int,    // paddle number count
+     *   ]
+     *
+     * Two batched ORM GROUP BY queries, zero per-row N+1.
+     *
+     * @param  int[] $fundraiserIds When provided and non-empty, limits the aggregation
+     *                              to only these fundraiser IDs (avoids full-table scans
+     *                              on large installs when the listing is filtered).
+     * @return array<int, array{items:int, raised:float, est:float, buyers:int}>
+     */
+    public function getListSummaries(array $fundraiserIds = []): array
+    {
+        if (empty($fundraiserIds)) {
+            return [];
+        }
+
+        $this->logger->debug('FundRaiserService::getListSummaries — fetching aggregates');
+
+        // -- Items aggregates ------------------------------------------------
+        // "Raised" mirrors getViewModel(): only sold items (buyer_ID > 0 AND sellprice > 0).
+        $itemQuery = DonatedItemQuery::create();
+        if (!empty($fundraiserIds)) {
+            $itemQuery->filterByFrId($fundraiserIds);
+        }
+        $itemRows = $itemQuery
+            ->addAsColumn('frId', DonatedItemTableMap::COL_DI_FR_ID)
+            ->addAsColumn('items', 'COUNT(*)')
+            ->addAsColumn(
+                'raised',
+                'COALESCE(SUM(CASE WHEN ' . DonatedItemTableMap::COL_DI_BUYER_ID . ' > 0 AND '
+                . DonatedItemTableMap::COL_DI_SELLPRICE . ' > 0 THEN '
+                . DonatedItemTableMap::COL_DI_SELLPRICE . ' ELSE 0 END), 0)'
+            )
+            ->addAsColumn('est', 'COALESCE(SUM(' . DonatedItemTableMap::COL_DI_ESTPRICE . '), 0)')
+            ->groupBy('FrId')
+            ->select(['frId', 'items', 'raised', 'est'])
+            ->find();
+
+        $summaries = [];
+        foreach ($itemRows as $row) {
+            $id             = (int) $row['frId'];
+            $summaries[$id] = [
+                'items'  => (int)   $row['items'],
+                'raised' => (float) $row['raised'],
+                'est'    => (float) $row['est'],
+                'buyers' => 0,
+            ];
+        }
+
+        // -- Buyer aggregates ------------------------------------------------
+        $buyerQuery = PaddleNumQuery::create();
+        if (!empty($fundraiserIds)) {
+            $buyerQuery->filterByPnFrId($fundraiserIds);
+        }
+        $buyerRows = $buyerQuery
+            ->addAsColumn('frId', PaddleNumTableMap::COL_PN_FR_ID)
+            ->addAsColumn('buyers', 'COUNT(*)')
+            ->groupBy('PnFrId')
+            ->select(['frId', 'buyers'])
+            ->find();
+
+        foreach ($buyerRows as $row) {
+            $id = (int) $row['frId'];
+            if (!isset($summaries[$id])) {
+                $summaries[$id] = ['items' => 0, 'raised' => 0.0, 'est' => 0.0, 'buyers' => 0];
+            }
+            $summaries[$id]['buyers'] = (int) $row['buyers'];
+        }
+
+        $this->logger->debug('FundRaiserService::getListSummaries — done', ['count' => count($summaries)]);
+
+        return $summaries;
+    }
+
+    /**
+     * Returns aggregate statistics for a single fundraiser view page.
+     *
+     * Loads item and paddle-number data via ORM and computes aggregates in PHP —
+     * avoids complex sub-queries while keeping zero per-row N+1.
+     *
+     * @return array{
+     *   items: int,
+     *   itemsSold: int,
+     *   sellThroughPct: float,
+     *   totalRaised: float,
+     *   avgSalePrice: float,
+     *   highestSale: float,
+     *   totalEstValue: float,
+     *   totalMaterialValue: float,
+     *   buyers: int,
+     *   totalRaised_formatted: string,
+     *   avgSalePrice_formatted: string,
+     *   highestSale_formatted: string,
+     *   totalEstValue_formatted: string,
+     *   totalMaterialValue_formatted: string,
+     * }
+     */
+    public function getViewModel(int $id): array
+    {
+        $this->logger->debug('FundRaiserService::getViewModel', ['id' => $id]);
+
+        // -- Item stats via ORM object iteration (no raw SQL) -----------------
+        $items = DonatedItemQuery::create()
+            ->filterByFrId($id)
+            ->find();
+
+        $itemsTotal    = count($items);
+        $itemsSold     = 0;
+        $totalRaised   = 0.0;
+        $highestSale   = 0.0;
+        $totalEstValue = 0.0;
+        $totalMatValue = 0.0;
+
+        foreach ($items as $item) {
+            $sell = (float) $item->getSellprice();
+            $est  = (float) $item->getEstprice();
+            $mat  = (float) $item->getMaterialValue();
+            $totalEstValue += $est;
+            $totalMatValue += $mat;
+            if ($sell > 0 && (int) $item->getBuyerId() > 0) {
+                $itemsSold++;
+                $totalRaised += $sell;
+                if ($sell > $highestSale) {
+                    $highestSale = $sell;
+                }
+            }
+        }
+
+        $sellThroughPct = $itemsTotal > 0
+            ? round(($itemsSold / $itemsTotal) * 100, 1)
+            : 0.0;
+        $avgSalePrice = $itemsSold > 0
+            ? round($totalRaised / $itemsSold, 2)
+            : 0.0;
+
+        // -- Buyer count via ORM ----------------------------------------------
+        $buyers = PaddleNumQuery::create()
+            ->filterByPnFrId($id)
+            ->count();
+
+        return [
+            'items'                        => $itemsTotal,
+            'itemsSold'                    => $itemsSold,
+            'sellThroughPct'               => $sellThroughPct,
+            'totalRaised'                  => $totalRaised,
+            'avgSalePrice'                 => $avgSalePrice,
+            'highestSale'                  => $highestSale,
+            'totalEstValue'                => $totalEstValue,
+            'totalMaterialValue'           => $totalMatValue,
+            'buyers'                       => $buyers,
+            'totalRaised_formatted'        => CurrencyFormatter::format($totalRaised),
+            'avgSalePrice_formatted'       => CurrencyFormatter::format($avgSalePrice),
+            'highestSale_formatted'        => CurrencyFormatter::format($highestSale),
+            'totalEstValue_formatted'      => CurrencyFormatter::format($totalEstValue),
+            'totalMaterialValue_formatted' => CurrencyFormatter::format($totalMatValue),
+        ];
+    }
+
+    /**
+     * Returns this-fiscal-year aggregates for the landing-page stat widgets.
+     *
+     * "This fiscal year" means fundraisers whose fr_date falls within the current fiscal year
+     * as determined by FiscalYearUtils (respects the iFYMonth system configuration).
+     * Previously used a calendar year (Jan 1–Dec 31); this was updated in issue #9378.
+     *
+     * @return array{activeCount:int, raisedThisYear:float, itemsThisYear:int, buyersThisYear:int}
+     */
+    public function getWidgetStats(): array
+    {
+        $this->logger->debug('FundRaiserService::getWidgetStats');
+
+        // Use fiscal year boundaries instead of calendar year
+        $fyDates   = FiscalYearUtils::getFiscalYearDatesById(FiscalYearUtils::getCurrentFiscalYearId());
+        $yearStart = $fyDates['startDate'];
+        $yearEnd   = $fyDates['endDate'];
+
+        $activeCount = count($this->getActiveFundraiserCollection());
+
+        // This-fiscal-year fundraiser IDs (step 1 of 2-step approach)
+        $yearIds = FundRaiserQuery::create()
+            ->filterByDate(['min' => $yearStart, 'max' => $yearEnd])
+            ->select(['Id'])
+            ->find()
+            ->toArray();
+
+        $raisedThisYear = 0.0;
+        $itemsThisYear  = 0;
+        $buyersThisYear = 0;
+
+        if (!empty($yearIds)) {
+            // Item stats for this fiscal year's fundraisers
+            $itemRow = DonatedItemQuery::create()
+                ->filterByFrId($yearIds)
+                ->addAsColumn('items', 'COUNT(*)')
+                ->addAsColumn(
+                    'raised',
+                    'COALESCE(SUM(CASE WHEN ' . DonatedItemTableMap::COL_DI_BUYER_ID . ' > 0 AND '
+                    . DonatedItemTableMap::COL_DI_SELLPRICE . ' > 0 THEN '
+                    . DonatedItemTableMap::COL_DI_SELLPRICE . ' ELSE 0 END), 0)'
+                )
+                ->select(['items', 'raised'])
+                ->findOne();
+
+            $raisedThisYear = (float) ($itemRow['raised'] ?? 0);
+            $itemsThisYear  = (int)   ($itemRow['items']  ?? 0);
+
+            // Buyer count for this fiscal year's fundraisers
+            $buyersThisYear = PaddleNumQuery::create()
+                ->filterByPnFrId($yearIds)
+                ->count();
+        }
+
+        return [
+            'activeCount'    => $activeCount,
+            'raisedThisYear' => $raisedThisYear,
+            'itemsThisYear'  => $itemsThisYear,
+            'buyersThisYear' => $buyersThisYear,
+        ];
+    }
+
+    /**
+     * Returns the count of fundraisers not Closed AND not archived by end date.
+     *
+     * Used by the navigation menu counter. Callers are responsible for any
+     * session-level caching (e.g. storing in $_SESSION['iFundraiserActiveCount']
+     * and invalidating on state changes).
+     *
+     * Mirrors getWidgetStats() and fundraiser.php active/archived split logic
+     * so the sidebar badge matches the stat card and table.
+     */
+    public function getActiveFundraiserCount(): int
+    {
+        $this->logger->debug('FundRaiserService::getActiveFundraiserCount');
+        return count($this->getActiveFundraiserCollection());
+    }
+
+    /**
+     * Returns scalar rows for fundraisers that are not Closed AND not past their end date.
+     * Used by both getWidgetStats() and getActiveFundraiserCount() to avoid code duplication.
+     * Mirrors the active/archived split logic in fundraiser.php.
+     *
+     * Uses a DB-level status filter and column projection to avoid full ORM hydration —
+     * returns lightweight associative rows instead of hydrated FundRaiser objects.
+     *
+     * @return array<int, array{Id:string, Date:string|null, EndDate:string|null, Status:string|null}>
+     */
+    private function getActiveFundraiserCollection(): array
+    {
+        $todayDate = DateTimeUtils::getTodayDate();
+        $activeFundraisers = [];
+
+        // Filter Closed fundraisers at the DB level; project only the columns we need
+        // to avoid fully hydrating every row as a Propel object.
+        $candidates = FundRaiserQuery::create()
+            ->filterByStatus('Closed', \Propel\Runtime\ActiveQuery\Criteria::NOT_EQUAL)
+            ->_or()->filterByStatus(null)  // MySQL: NULL != 'Closed' is UNKNOWN, not TRUE — include NULL-status rows explicitly
+            ->select(['Id', 'Date', 'EndDate', 'Status'])
+            ->find();
+
+        foreach ($candidates as $row) {
+            $status  = $row['Status'] ?? 'Active';
+            $endDate = $row['EndDate'];
+
+            // Fundraisers with Active or Planning status and no explicit end date are
+            // open-ended — always count them as active. Falling back to the start date
+            // (Date) would silently archive such fundraisers the day after they started.
+            if ($endDate === null && in_array($status, ['Active', 'Planning'], true)) {
+                $activeFundraisers[] = $row;
+                continue;
+            }
+
+            $effectiveEnd = $endDate ?? $row['Date'];
+            if ($effectiveEnd !== null && $effectiveEnd < $todayDate) {
+                continue;
+            }
+
+            $activeFundraisers[] = $row;
+        }
+
+        return $activeFundraisers;
+    }
+
+    /**
+     * Applies optional Tier-1 fields (endDate, status, goalAmount, type, fundId) from an
+     * input array to a FundRaiser model. Shared by the REST API and the legacy MVC editor
+     * form so both surfaces validate identically instead of duplicating the rules.
+     *
+     * Callers only pass the fields they received; all guards use array_key_exists() so
+     * omitted fields are never touched. $fr->getDate() (the start date) must already be
+     * set before calling this, since the end-date check compares against it.
+     *
+     * @param  array<string, mixed> $input
+     * @return string|null Gettext error message on validation failure, or null on success.
+     */
+    public function applyFields(FundRaiser $fr, array $input): ?string
+    {
+        if (array_key_exists('endDate', $input)) {
+            $endDate = trim((string) ($input['endDate'] ?? ''));
+            if ($endDate !== '') {
+                $dateFmt   = SystemConfig::getValue('sDatePickerFormat');
+                $parsedEnd = \DateTime::createFromFormat($dateFmt, $endDate, DateTimeUtils::getConfiguredTimezone());
+                if ($parsedEnd === false || $parsedEnd->format($dateFmt) !== $endDate) {
+                    return gettext('Not a valid end date');
+                }
+                // End date must not precede start date. Compare Y-m-d strings (not DateTime
+                // instants) so this holds regardless of what timezone Propel hydrated onto
+                // the stored start date.
+                $startDate = $fr->getDate();
+                if ($startDate !== null && $parsedEnd->format('Y-m-d') < $startDate->format('Y-m-d')) {
+                    return gettext('End date must be on or after the start date');
+                }
+                $fr->setEndDate($parsedEnd); // pass DateTime object; Propel normalises to ISO for storage
+            } else {
+                $fr->setEndDate(null);
+            }
+        }
+        if (array_key_exists('status', $input)) {
+            $status = (string) ($input['status'] ?? 'Active');
+            if (!in_array($status, ['Planning', 'Active', 'Closed'], true)) {
+                return gettext('Invalid status value');
+            }
+            $fr->setStatus($status);
+        }
+        if (array_key_exists('goalAmount', $input)) {
+            $goal = $input['goalAmount'];
+            if ($goal !== null && $goal !== '') {
+                if (!is_numeric($goal)) {
+                    return gettext('goalAmount must be a non-negative number');
+                }
+                $goalFloat = (float) $goal;
+                if ($goalFloat < 0) {
+                    return gettext('goalAmount must be non-negative');
+                }
+                $fr->setGoalAmount($goalFloat);
+            } else {
+                $fr->setGoalAmount(null);
+            }
+        }
+        if (array_key_exists('type', $input)) {
+            $type         = (string) ($input['type'] ?? 'Auction');
+            $allowedTypes = ['Silent Auction', 'Live Auction', 'Raffle', 'Gala', 'Mixed', 'Auction'];
+            if (!in_array($type, $allowedTypes, true)) {
+                return gettext('Invalid type value');
+            }
+            $fr->setType($type);
+        }
+        if (array_key_exists('fundId', $input)) {
+            $fundId = $input['fundId'];
+            if ($fundId !== null && $fundId !== '') {
+                $fundIdInt = (int) $fundId;
+                // Coerce invalid (non-positive) values to null rather than storing
+                // a 0 that would incorrectly mark the fundraiser as "linked".
+                $fr->setFundId($fundIdInt > 0 ? $fundIdInt : null);
+            } else {
+                $fr->setFundId(null);
+            }
+        }
+
+        return null;
+    }
+}

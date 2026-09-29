@@ -1,3 +1,10 @@
+---
+title: "Configuration Management"
+intent: "Guide to managing SystemConfig, asset paths, settings panels, and configuration best practices"
+tags: ["configuration", "settings", "systemconfig", "admin"]
+prereqs: ["[[php-best-practices]]"]
+complexity: "beginner"
+---
 # Configuration Management
 
 Guide to managing SystemConfig, asset paths, settings panels, and configuration best practices.
@@ -14,32 +21,72 @@ ChurchCRM uses a centralized `SystemConfig` class for:
 
 ---
 
+## HARD RULE — no new keys on the System Settings page <!-- learned: 2026-09-10 -->
+
+**Do not add a new key to `SystemConfig::buildCategories()`.** The big
+`/SystemSettings.php` list is frozen — it is already an overwhelming wall of
+toggles, and every addition makes it worse. New admin-editable settings go on
+the **dashboard `settingsPanel`** for the area they belong to, next to the
+data they affect:
+
+| Area | Dashboard | Settings container |
+|------|-----------|--------------------|
+| People / directory / self-registration | `/people/dashboard` | `#peopleSettings` |
+| Groups | `/groups/dashboard` | `#groupsSettings` |
+| Finance | `/finance/dashboard` | (add a panel if none) |
+| System-wide only (SSL, session timeout, updates) | `/admin` | still the System Settings page |
+
+**How to add a dashboard setting:**
+
+1. Define the `ConfigItem` in `SystemConfig::buildConfigs()` as usual — this
+   is what makes the value persist. **Do NOT** list its key in
+   `buildCategories()`.
+2. Add an entry to that dashboard view's `window.CRM.settingsPanel.init({ settings: [...] })`
+   array (`{ name, type: 'boolean'|'text'|'number'|'choice', label, tooltip }`).
+   The panel saves through `POST /admin/api/system/config/{key}` automatically.
+3. `label`/`tooltip` live in the JS config (wrapped in `gettext()` via
+   `InputUtils::jsonEncodeForScript()`), not in the `ConfigItem`.
+
+`bEnableSelfRegistration` and `bHideDeceasedFromDirectory` are the reference
+examples — both are `ConfigItem`s absent from `buildCategories()`, surfaced on
+`#peopleSettings`.
+
+**Moving an existing key off the System Settings page:** delete it from its
+`buildCategories()` array and add it to the relevant dashboard panel. The
+`ConfigItem` and every `getBooleanValue()` / `getValue()` call site stay
+untouched.
+
+---
+
 ## SystemConfig Basics
 
 ### Location
 
 ```
-src/ChurchCRM/Utils/SystemConfig.php
+src/ChurchCRM/dto/SystemConfig.php
 ```
 
 ### Common Methods
 
 | Method | Purpose | Example |
 |--------|---------|---------|
-| `getValue($key)` | Get string value | `SystemConfig::getValue('churchName')` |
-| `getBooleanValue($key)` | Get boolean (truthy/falsey) | `SystemConfig::getBooleanValue('enableEmails')` |
-| `integerValue($key)` | Get integer | `SystemConfig::integerValue('sessionTimeout')` |
-| `setValue($key, $value)` | Set value | `SystemConfig::setValue('churchName', 'My Church')` |
+| `getValue($key)` | Get string value | `SystemConfig::getValue('sChurchName')` |
+| `getBooleanValue($key)` | Get boolean | `SystemConfig::getBooleanValue('bEnabledEmail')` |
+| `getIntValue($key)` | Get integer | `SystemConfig::getIntValue('iSessionTimeout')` |
+| `setValue($key, $value)` | Set value | `SystemConfig::setValue('sChurchName', 'My Church')` |
 | `getSettingsConfig($keys)` | Get structured config | `SystemConfig::getSettingsConfig(['timeout', 'maxFailed'])` |
 | `debugEnabled()` | Is debug mode on? | `SystemConfig::debugEnabled()` |
-| `getAllSettings()` | Get all settings | `SystemConfig::getAllSettings()` |
+| `getValueForHtml/Attr/Js($key)` | **Escaped** output getters — prefer these whenever emitting a config value | `SystemConfig::getValueForHtml('sChurchName')` |
+
+> ⚠️ There is **no** `integerValue()` and **no** `getAllSettings()` — the real methods are
+> `getIntValue()` and `getSettingsConfig()`. Calling the former names is a fatal.
 
 ### Basic Usage
 
 ```php
 // ✅ CORRECT - Access settings through SystemConfig
 $churchName = SystemConfig::getValue('churchName', 'Default Church');
-$sessionTimeout = SystemConfig::integerValue('iSessionTimeout');
+$sessionTimeout = SystemConfig::getIntValue('iSessionTimeout');
 
 if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
     // Show password recovery option
@@ -111,8 +158,13 @@ src/ChurchCRM/dto/SystemURLs.php
 |--------|---------|---------|
 | `getRootPath()` | Relative root URL | `/churchcrm/` or `/` |
 | `getDocumentRoot()` | File system root | `/var/www/html/` |
-| `getImagePath()` | Image URL | `/churchcrm/images/` |
-| `getSkinPath()` | CSS/JS URL | `/churchcrm/skin/v2/` |
+| `getImagesRoot()` | Image **filesystem** root | `/var/www/html/Images` |
+| `assetVersioned($path)` | Cache-busted asset URL | `SystemURLs::assetVersioned('skin/v2/app.min.js')` |
+| `getCSPNonce()` | Nonce for inline `<script>` | `SystemURLs::getCSPNonce()` |
+
+> ⚠️ There is **no** `getImagePath()` and **no** `getSkinPath()`. For image and skin **URLs**,
+> build them from `getRootPath()` (see the usage pattern below). `getImagesRoot()` is a
+> filesystem path, not a URL — do not emit it into HTML.
 
 ### Usage Pattern
 
@@ -356,8 +408,9 @@ class AdminDashboardService
 <?php
 // src/admin/routes/system.php
 
-$app->get('/admin/system/settings', function (Request $request, Response $response) use ($container) {
-    $service = $container->get('AdminDashboardService');
+// Path is relative to the /admin base path set by MvcAppFactory::create()
+$app->get('/system/settings', function (Request $request, Response $response) {
+    $service = new AdminDashboardService();   // no DI container — see service-layer.md
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
     
     return $renderer->render($response, 'settings.php', [
@@ -511,3 +564,11 @@ When adding or removing entries near `buildCategories()`, verify every key liste
 # Quick grep to cross-check
 grep -o "'[a-zA-Z_]*'" src/ChurchCRM/dto/SystemConfig.php | sort | uniq -d
 ```
+
+### SystemSettings.php is deprecated — do not add new settings to it <!-- learned: 2026-05-13 -->
+
+`src/SystemSettings.php` is a legacy page that is being phased out. **Nothing new should be added to it.** New configuration UI belongs in the admin MVC app:
+
+- Per-feature settings → relevant admin MVC page or debug card (e.g. `/admin/system/debug`)
+- `buildCategories()` in `SystemConfig.php` drives the settings tabs on `SystemSettings.php` — omit new config items from that array so they never appear there
+- Internal / non-UI state keys (e.g. `sTelemetryAskedVersion`) must also be excluded from `buildCategories()`

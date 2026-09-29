@@ -10,7 +10,7 @@
  * - Group 23 must exist with grp_hasSpecialProps = 1 and a groupprop_master entry
  * - Person 2 must exist (standard test user)
  *
- * Design rule: API setup runs BEFORE freshAdminLogin(); all UI assertions
+ * Design rule: API setup runs BEFORE cy.setupAdminSession(); all UI assertions
  * happen after login. Teardown runs in afterEach() to ensure cleanup even
  * when assertions fail mid-test.
  */
@@ -18,6 +18,10 @@
 const personId = 2;
 const multiRoleGroupId = 1; // Angels class — has Teacher (1) + Student (2)
 const specialPropsGroupId = 23; // has grp_hasSpecialProps = 1
+
+// API-based data setup runs BEFORE freshAdminLogin(). Despite withCredentials:false
+// on makePrivateAPICall, CI confirmed that cy.setupAdminSession() is not sufficient —
+// the PHP session is still killed by cy.request(). freshAdminLogin() is required.
 
 /**
  * Direct login — bypasses cy.session() cache so that earlier
@@ -70,7 +74,7 @@ describe("PersonView: Add to group with multiple roles", () => {
 
         // Select the multi-role group ("Angels class") via TomSelect
         cy.get("#personGroupModal .ts-control").should("be.visible").click();
-        cy.get("#personGroupModal .ts-dropdown .option")
+        cy.get("body > .ts-dropdown .option")
             .contains("Angels class")
             .click();
 
@@ -104,14 +108,14 @@ describe("PersonView: Add to group with multiple roles", () => {
 
         // Select the multi-role group
         cy.get("#personGroupModal .ts-control").should("be.visible").click();
-        cy.get("#personGroupModal .ts-dropdown .option")
+        cy.get("body > .ts-dropdown .option")
             .contains("Angels class")
             .click();
 
         // Role picker visible — select "Teacher" explicitly
         cy.get("#pgm-role-wrapper").should("be.visible");
         cy.get("#pgm-role-wrapper .ts-control").click();
-        cy.get("#pgm-role-wrapper .ts-dropdown .option")
+        cy.get("body > .ts-dropdown .option")
             .contains("Teacher")
             .click();
 
@@ -164,10 +168,8 @@ describe("PersonView: Update Properties for group with special props", () => {
                 cy.contains("Update Properties").click();
             });
 
-        // Should land on GroupPropsEditor without fatal PHP error
-        cy.url().should("include", "GroupPropsEditor.php");
-        cy.url().should("include", `GroupID=${specialPropsGroupId}`);
-        cy.url().should("include", `PersonID=${personId}`);
+        // Should land on member properties page without fatal PHP error
+        cy.url().should("include", `/groups/${specialPropsGroupId}/members/${personId}/properties`);
 
         // The page should NOT show a PHP error or blank page
         cy.get("body").should("not.contain.text", "Fatal error");
@@ -193,9 +195,9 @@ describe("PersonView: Update Properties for group with special props", () => {
         // Login
         freshAdminLogin();
 
-        // Navigate directly to GroupPropsEditor
+        // Navigate directly to member properties page
         cy.visit(
-            `/GroupPropsEditor.php?GroupID=${specialPropsGroupId}&PersonID=${personId}`,
+            `/groups/${specialPropsGroupId}/members/${personId}/properties`,
         );
 
         // Page should load without errors

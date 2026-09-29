@@ -44,6 +44,23 @@ describe("Main Dashboard - Deposits widget authorization", () => {
         beforeEach(() => cy.setupAdminSession());
 
         it("renders the deposit chart and calls the deposits API", () => {
+            // Deposit #1 is the only fixture deposit with pledges attached, so
+            // it's the only one with real chart data (the others sum to
+            // null). The fixture ships a static date that inevitably ages
+            // past the API's 90-day window, starving the chart of data —
+            // refreshing it to today here keeps the test stable regardless
+            // of when it runs.
+            cy.request({
+                method: "POST",
+                url: "/api/deposits/1",
+                body: {
+                    depositType: "Bank",
+                    depositComment: "Updated Test Deposit",
+                    depositDate: new Date().toISOString().slice(0, 10),
+                    depositClosed: false,
+                },
+            });
+
             cy.intercept("GET", "**/api/deposits/dashboard").as("depositsApi");
 
             cy.visit("v2/dashboard");
@@ -55,6 +72,13 @@ describe("Main Dashboard - Deposits widget authorization", () => {
 
             // The JS guard should trigger the deposits API call.
             cy.wait("@depositsApi").its("response.statusCode").should("eq", 200);
+
+            // ApexCharts must actually render into the container, not just
+            // leave an empty div — catches chart-library regressions
+            // (e.g. major version bumps) that a container-existence check
+            // alone would miss.
+            cy.get("#deposit-lineGraph .apexcharts-canvas").should("exist");
+            cy.get("#deposit-lineGraph svg.apexcharts-svg").should("exist");
         });
     });
 

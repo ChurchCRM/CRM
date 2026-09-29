@@ -1,3 +1,10 @@
+---
+title: "GitHub Interaction — Concise Checklist"
+intent: "Practical, step-by-step actions for handling reviews, commits, and PRs — companion to git-workflow.md"
+tags: ["workflow", "pr", "review", "github"]
+prereqs: ["[[git-workflow]]"]
+complexity: "beginner"
+---
 # Skill: GitHub Interaction — concise checklist
 
 Purpose: practical, step-by-step actions for handling reviews, commits, and PRs. This file is an actionable companion to the canonical `git-workflow.md` (policy) and the `gh-cli` skill (commands).

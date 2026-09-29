@@ -32,7 +32,7 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
 
     <script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment.min.js') ?>"></script>
 
-    <title>ChurchCRM: <?= $sPageTitle ?></title>
+    <title>ChurchCRM: <?= InputUtils::escapeHTML($sPageTitle) ?></title>
 
     <?= PluginManager::getPluginHeadContent() ?>
 
@@ -48,6 +48,11 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     // Extend window.CRM with server-side configuration (preserving existing properties like notify)
     Object.assign(window.CRM, {
       root:"<?= SystemURLs::getRootPath() ?>",
-      churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>
+      churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
+      lang:<?= InputUtils::jsonEncodeForScript($localeInfo->getLanguageCode()) ?>,
+      isRTL:<?= $localeInfo->isRTL() ? 'true' : 'false' ?>,
+      systemLocale:<?= InputUtils::jsonEncodeForScript($localeInfo->getSystemLocale()) ?>,
+      locale:<?= InputUtils::jsonEncodeForScript($localeInfo->getLocale()) ?>,
+      shortLocale:<?= InputUtils::jsonEncodeForScript($localeInfo->getShortLocale()) ?>
     });
   </script>

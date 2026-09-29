@@ -34,7 +34,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 403,
                 gettext('External calendar sharing is disabled'),
                 gettext('The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error.'),
-                'ti-lock',
+                'fa-lock',
             );
         }
 
@@ -46,7 +46,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 400,
                 gettext('Missing calendar access token'),
                 gettext('The calendar link is incomplete. Please check the URL with the person who sent it to you.'),
-                'ti-link-off',
+                'fa-link-slash',
             );
         }
 
@@ -60,7 +60,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 404,
                 gettext('Calendar not found'),
                 gettext('This calendar link is invalid or has been revoked. Ask the church for a current link.'),
-                'ti-calendar-off',
+                'fa-calendar-xmark',
             );
         }
 
@@ -73,7 +73,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
                 400,
                 gettext('Invalid date format'),
                 gettext('The start or end date in the link could not be understood. Try the base calendar link without date parameters.'),
-                'ti-calendar-question',
+                'fa-circle-question',
             );
         }
         $request = $request->withAttribute('events', $events);
@@ -94,7 +94,7 @@ class PublicCalendarMiddleware implements MiddlewareInterface
         int $status,
         string $title,
         string $message,
-        string $icon = 'ti-calendar-off',
+        string $icon = 'fa-calendar-xmark',
     ): ResponseInterface {
         if ($this->prefersJson($request)) {
             return SlimUtils::renderJSON(
@@ -136,24 +136,32 @@ class PublicCalendarMiddleware implements MiddlewareInterface
     {
         $params = $request->getQueryParams();
 
-        // Parse start param — accepts both Y-m-d (plain JSON endpoint) and ISO 8601 (FullCalendar)
+        // Note: FullCalendar also sends a `timeZone` query param when using a named timezone.
+        // We intentionally ignore it — all dates are stored and served in the church timezone
+        // (sTimeZone / DateTimeUtils::getConfiguredTimezone()), which is what we told FullCalendar
+        // to use in the first place. Reading it from the client would open a spoofing vector.
+
+        // Uses ?: (not ??) because DateTime::createFromFormat() returns false (not null) on failure.
+        // ATOM format includes timezone in the string (P specifier), so $churchTz is only needed
+        // for the fallback formats where FullCalendar omits the offset.
+        $churchTz = DateTimeUtils::getConfiguredTimezone();
+
         $start_date = null;
         if (isset($params['start'])) {
-            $start_date = DateTime::createFromFormat(DateTime::ATOM, $params['start'], DateTimeUtils::getConfiguredTimezone())
-                ?? DateTime::createFromFormat('Y-m-d\TH:i:s', $params['start'], DateTimeUtils::getConfiguredTimezone())
-                ?? DateTime::createFromFormat('Y-m-d', $params['start'], DateTimeUtils::getConfiguredTimezone());
+            $start_date = DateTime::createFromFormat(DateTime::ATOM, $params['start'])
+                ?: DateTime::createFromFormat('Y-m-d\TH:i:s', $params['start'], $churchTz)
+                ?: DateTime::createFromFormat('Y-m-d', $params['start'], $churchTz);
             if ($start_date === false || $start_date === null) {
                 return null;
             }
             $start_date->setTime(0, 0, 0);
         }
 
-        // Parse end param — accepts both Y-m-d and ISO 8601 (FullCalendar sends ISO)
         $end_date = null;
         if (isset($params['end'])) {
-            $end_date = DateTime::createFromFormat(DateTime::ATOM, $params['end'], DateTimeUtils::getConfiguredTimezone())
-                ?? DateTime::createFromFormat('Y-m-d\TH:i:s', $params['end'], DateTimeUtils::getConfiguredTimezone())
-                ?? DateTime::createFromFormat('Y-m-d', $params['end'], DateTimeUtils::getConfiguredTimezone());
+            $end_date = DateTime::createFromFormat(DateTime::ATOM, $params['end'])
+                ?: DateTime::createFromFormat('Y-m-d\TH:i:s', $params['end'], $churchTz)
+                ?: DateTime::createFromFormat('Y-m-d', $params['end'], $churchTz);
             if ($end_date === false || $end_date === null) {
                 return null;
             }
@@ -167,14 +175,26 @@ class PublicCalendarMiddleware implements MiddlewareInterface
             ->orderBy(EventTableMap::COL_EVENT_START);
 
         if ($start_date !== null) {
-            $events->filterByStart($start_date, Criteria::GREATER_EQUAL);
+            // Keep events that overlap the view: event ends after view starts, or has no end (all-day/open).
+            //
+            // This MUST be built with condition()/combine() rather than a raw
+            // where('... IS NULL OR ... >= ?'). Propel ANDs every criterion onto the WHERE
+            // clause verbatim, without wrapping it in parentheses, so a raw top-level OR
+            // escapes the calendar filter above (`cal AND end IS NULL OR end >= ?` — OR binds
+            // looser than AND) and the query returns every calendar's events. Combined
+            // criteria, by contrast, are parenthesised when the statement is built.
+            $events->condition('noEnd', EventTableMap::COL_EVENT_END . ' IS NULL');
+            $events->condition('endsAfterViewStart', EventTableMap::COL_EVENT_END . ' >= ?', $start_date->format('Y-m-d H:i:s'));
+            $events->combine(['noEnd', 'endsAfterViewStart'], 'or', 'overlapsView');
+            $events->where(['overlapsView']);
         }
 
         if ($end_date !== null) {
-            $events->filterByEnd($end_date, Criteria::LESS_EQUAL);
+            // Keep events that start before the view ends
+            $events->filterByStart($end_date, Criteria::LESS_THAN);
         }
 
-        if (array_key_exists('max', $params)) {
+        if (\array_key_exists('max', $params)) {
             $max_events = InputUtils::filterInt($params['max']);
             $events->limit($max_events);
         }

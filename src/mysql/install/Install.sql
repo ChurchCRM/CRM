@@ -55,7 +55,8 @@ CREATE TABLE `donationfund_fun` (
   `fun_Name` varchar(30) default NULL,
   `fun_Description` varchar(100) default NULL,
   `fun_Order` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY  (`fun_ID`)
+  PRIMARY KEY  (`fun_ID`),
+  UNIQUE KEY `fun_Name_unique` (`fun_Name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -128,7 +129,7 @@ CREATE TABLE `events_event` (
   `secondary_contact_person_id` INT DEFAULT NULL,
   `event_url` text,
   PRIMARY KEY  (`event_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1;
 
 --
 -- Dumping data for table `events_event`
@@ -184,7 +185,7 @@ CREATE TABLE `event_types` (
   `type_grpid` mediumint(9),
 
   PRIMARY KEY  (`type_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci  AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `event_types`
@@ -340,7 +341,8 @@ CREATE TABLE `list_lst` (
   `lst_ID` mediumint(8) unsigned NOT NULL default '0',
   `lst_OptionID` mediumint(8) unsigned NOT NULL default '0',
   `lst_OptionSequence` tinyint(3) unsigned NOT NULL default '0',
-  `lst_OptionName` varchar(50) NOT NULL default ''
+  `lst_OptionName` varchar(50) NOT NULL default '',
+  PRIMARY KEY (`lst_ID`, `lst_OptionID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
@@ -405,7 +407,9 @@ CREATE TABLE `note_nte` (
   `nte_EnteredBy` mediumint(8) NOT NULL default '0',
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
   `nte_Type` varchar(50) DEFAULT NULL,
-  PRIMARY KEY  (`nte_ID`)
+  PRIMARY KEY  (`nte_ID`),
+  INDEX `idx_nte_per_ID` (`nte_per_ID`),
+  INDEX `idx_nte_fam_ID` (`nte_fam_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -510,6 +514,7 @@ CREATE TABLE `person_per` (
   `per_BirthDay` tinyint(3) unsigned NOT NULL default '0',
   `per_BirthYear` smallint(4) unsigned default NULL,
   `per_MembershipDate` date default NULL,
+  `per_DateDeceased` date default NULL,
   `per_Gender` tinyint(1) unsigned NOT NULL default '0',
   `per_fmr_ID` tinyint(3) unsigned NOT NULL default '0',
   `per_cls_ID` tinyint(3) unsigned NOT NULL default '0',
@@ -524,7 +529,11 @@ CREATE TABLE `person_per` (
   `per_Facebook` varchar(50) default NULL,
   `per_Twitter` varchar(50) default NULL,
   `per_LinkedIn` varchar(50) default NULL,
-  PRIMARY KEY  (`per_ID`)
+  `per_DateDeactivated` date DEFAULT NULL,
+  PRIMARY KEY  (`per_ID`),
+  INDEX `idx_per_fam_ID` (`per_fam_ID`),
+  INDEX `idx_per_cls_ID` (`per_cls_ID`),
+  INDEX `idx_per_fmr_ID` (`per_fmr_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -562,7 +571,11 @@ CREATE TABLE `pledge_plg` (
   `plg_aut_ResultID` mediumint(9) NOT NULL default '0',
   `plg_NonDeductible` decimal(8,2) NOT NULL,
   `plg_GroupKey` VARCHAR( 64 ) NOT NULL,
-  PRIMARY KEY  (`plg_plgID`)
+  PRIMARY KEY  (`plg_plgID`),
+  INDEX `idx_plg_FamID` (`plg_FamID`),
+  INDEX `idx_plg_FYID` (`plg_FYID`),
+  INDEX `idx_plg_fundID` (`plg_fundID`),
+  INDEX `idx_plg_depID` (`plg_depID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -636,15 +649,6 @@ CREATE TABLE `queryparameteroptions_qpo` (
 --
 
 INSERT INTO `queryparameteroptions_qpo` (`qpo_qrp_ID`, `qpo_Display`, `qpo_Value`) VALUES
-  (4, 'Male', '1'),
-  (4, 'Female', '2'),
-  (6, 'Male', '1'),
-  (6, 'Female', '2'),
-  (15, 'Name', 'CONCAT(COALESCE(`per_FirstName`,''''),COALESCE(`per_MiddleName`,''''),COALESCE(`per_LastName`,''''))'),
-  (15, 'Zip Code', 'fam_Zip'),
-  (15, 'State', 'fam_State'),
-  (15, 'City', 'fam_City'),
-  (15, 'Home Phone', 'per_HomePhone'),
   (27, '2012/2013', '17'),
   (27, '2013/2014', '18'),
   (27, '2014/2015', '19'),
@@ -689,8 +693,6 @@ INSERT INTO `queryparameteroptions_qpo` (`qpo_qrp_ID`, `qpo_Display`, `qpo_Value
   (31, '2020/2021', '25'),
   (31, '2021/2022', '26'),
   (31, '2022/2023', '27'),
-  (15, 'Email', 'per_Email'),
-  (15, 'WorkEmail', 'per_WorkEmail'),
   (33, 'Member', '1'),
   (33, 'Regular Attender', '2'),
   (33, 'Guest', '3'),
@@ -728,21 +730,8 @@ CREATE TABLE `queryparameters_qrp` (
 --
 
 INSERT INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_OptionSQL`, `qrp_Name`, `qrp_Description`, `qrp_Alias`, `qrp_Default`, `qrp_Required`, `qrp_InputBoxSize`, `qrp_Validation`, `qrp_NumericMax`, `qrp_NumericMin`, `qrp_AlphaMinLength`, `qrp_AlphaMaxLength`) VALUES
-  (1, 4, 0, NULL, 'Minimum Age', 'The minimum age for which you want records returned.', 'min', '0', 0, 5, 'n', 120, 0, NULL, NULL),
-  (2, 4, 0, NULL, 'Maximum Age', 'The maximum age for which you want records returned.', 'max', '120', 1, 5, 'n', 120, 0, NULL, NULL),
-  (4, 6, 1, '', 'Gender', 'The desired gender to search the database for.', 'gender', '1', 1, 0, '', 0, 0, 0, 0),
-  (5, 7, 2, 'SELECT lst_OptionID as Value, lst_OptionName as Display FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence', 'Family Role', 'Select the desired family role.', 'role', '1', 0, 0, '', 0, 0, 0, 0),
-  (6, 7, 1, '', 'Gender', 'The gender for which you would like records returned.', 'gender', '1', 1, 0, '', 0, 0, 0, 0),
   (8, 9, 2, 'SELECT pro_ID AS Value, pro_Name as Display \r\nFROM property_pro\r\nWHERE pro_Class= ''p'' \r\nORDER BY pro_Name ', 'Property', 'The property for which you would like person records returned.', 'PropertyID', '0', 1, 0, '', 0, 0, 0, 0),
-  (9, 10, 2, 'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC', 'Beginning Date', 'Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations.', 'startdate', '1', 1, 0, '0', 0, 0, 0, 0),
-  (10, 10, 2, 'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC', 'Ending Date', 'Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).', 'enddate', '1', 1, 0, '', 0, 0, 0, 0),
-  (14, 15, 0, '', 'Search', 'Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email.', 'searchstring', '', 1, 0, '', 0, 0, 0, 0),
-  (15, 15, 1, '', 'Field', 'Select field to search for.', 'searchwhat', '1', 1, 0, '', 0, 0, 0, 0),
-  (16, 11, 2, 'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC', 'Beginning Date', 'Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations.', 'startdate', '1', 1, 0, '0', 0, 0, 0, 0),
-  (17, 11, 2, 'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC', 'Ending Date', 'Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).', 'enddate', '1', 1, 0, '', 0, 0, 0, 0),
   (18, 18, 0, '', 'Month', 'The birthday month for which you would like records returned.', 'birthmonth', '1', 1, 0, '', 12, 1, 1, 2),
-  (19, 19, 2, 'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type', 'Class', 'The sunday school class for which you would like records returned.', 'group', '1', 1, 0, '', 12, 1, 1, 2),
-  (20, 20, 2, 'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type', 'Class', 'The sunday school class for which you would like records returned.', 'group', '1', 1, 0, '', 12, 1, 1, 2),
   (22, 22, 0, '', 'Month', 'The membership anniversary month for which you would like records returned.', 'membermonth', '1', 1, 0, '', 12, 1, 1, 2),
   (25, 25, 2, 'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name', 'Volunteer opportunities', 'Choose a volunteer opportunity', 'volopp', '1', 1, 0, '', 12, 1, 1, 2),
   (26, 26, 0, '', 'Months', 'Number of months since becoming a friend', 'friendmonths', '1', 1, 0, '', 24, 1, 1, 2),
@@ -755,7 +744,9 @@ INSERT INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_Opti
   (101, 100, 2, 'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name', 'Volunteer opportunities', 'Second volunteer opportunity choice', 'volopp2', '1', 1, 0, '', 12, 1, 1, 2),
   (200, 200, 2, 'SELECT custom_field as Value, custom_Name as Display FROM person_custom_master', 'Custom field', 'Choose customer person field', 'custom', '1', 0, 0, '', 0, 0, 0, 0),
   (201, 200, 0, '', 'Field value', 'Match custom field to this value', 'value', '1', 0, 0, '', 0, 0, 0, 0),
-  (202, 201, 3, 'SELECT event_id as Value, event_title as Display FROM events_event ORDER BY event_start DESC', 'Event', 'Select the desired event', 'event', '', 1, 0, '', 0, 0, 0, 0);
+  (202, 201, 3, 'SELECT event_id as Value, event_title as Display FROM events_event ORDER BY event_start DESC', 'Event', 'Select the desired event', 'event', '', 1, 0, '', 0, 0, 0, 0),
+  (300, 300, 0, '', 'Month', 'The wedding anniversary month for which you would like records returned.', 'weddingmonth', '1', 1, 0, 'n', 12, 1, 1, 2),
+  (301, 301, 0, '', 'Month', 'The month for which you would like birthdays and anniversaries returned.', 'month', '1', 1, 0, 'n', 12, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -785,8 +776,9 @@ INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qr
   (28, 'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=''Pledge'' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=''Pledge'' order by fam_Name', 'Pledge comparison', 'Compare pledges between two fiscal years', 1),
   (30, 'SELECT per_ID as AddToCart, CONCAT(per_FirstName,'' '',per_LastName) AS Name, fam_address1, fam_city, fam_state, fam_zip FROM person_per join family_fam on per_fam_id=fam_id where per_fmr_id<>3 and per_fam_id in (select fam_id from family_fam inner join pledge_plg a on a.plg_famID=fam_ID and a.plg_FYID=~fyid1~ and a.plg_amount>0) and per_fam_id not in (select fam_id from family_fam inner join pledge_plg b on b.plg_famID=fam_ID and b.plg_FYID=~fyid2~ and b.plg_amount>0)', 'Missing pledges', 'Find people who pledged one year but not another', 1),
   (100, 'SELECT a.per_ID as AddToCart, CONCAT(''<a href=/people/view/'',a.per_ID,''>'',a.per_FirstName,'' '',a.per_LastName,''</a>'') AS Name FROM person_per AS a LEFT JOIN person2volunteeropp_p2vo p2v1 ON (a.per_id = p2v1.p2vo_per_ID AND p2v1.p2vo_vol_ID = ~volopp1~) LEFT JOIN person2volunteeropp_p2vo p2v2 ON (a.per_id = p2v2.p2vo_per_ID AND p2v2.p2vo_vol_ID = ~volopp2~) WHERE p2v1.p2vo_per_ID=p2v2.p2vo_per_ID ORDER BY per_LastName', 'Volunteers', 'Find volunteers for who match two specific opportunity codes', 1),
-  (200, 'SELECT a.per_ID as AddToCart, CONCAT(''<a href=/people/view/'',a.per_ID,''>'',a.per_FirstName,'' '',a.per_LastName,''</a>'') AS Name FROM person_per AS a LEFT JOIN person_custom pc ON a.per_id = pc.per_ID WHERE pc.~custom~=''~value~'' ORDER BY per_LastName', 'CustomSearch', 'Find people with a custom field value', 1),
-  (201, 'SELECT per_ID as AddToCart, CONCAT(''<a href=/people/view/'',per_ID,''>'',per_FirstName,'',per_LastName,''</a>'') AS Name, per_LastName AS Lastname FROM person_per LEFT OUTER JOIN (SELECT event_attend.attend_id, event_attend.person_id FROM event_attend WHERE event_attend.event_id IN (~event~)) a ON person_per.per_ID = a.person_id WHERE a.attend_id is NULL ORDER BY person_per.per_LastName, person_per.per_FirstName', 'Missing people', 'Find people who didn''t attend an event', 1);
+  (201, 'SELECT per_ID as AddToCart, CONCAT(''<a href=/people/view/'',per_ID,''>'',per_FirstName,'',per_LastName,''</a>'') AS Name, per_LastName AS Lastname FROM person_per LEFT OUTER JOIN (SELECT event_attend.attend_id, event_attend.person_id FROM event_attend WHERE event_attend.event_id IN (~event~)) a ON person_per.per_ID = a.person_id WHERE a.attend_id is NULL ORDER BY person_per.per_LastName, person_per.per_FirstName', 'Missing people', 'Find people who didn''t attend an event', 1),
+  (300, 'SELECT per_ID as AddToCart, DAYOFMONTH(fam_WeddingDate) as Day, DATE_FORMAT(fam_WeddingDate, ''%Y-%m-%d'') as Date, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per JOIN family_fam ON per_fam_ID=fam_ID WHERE per_fmr_ID IN (1,2) AND fam_WeddingDate IS NOT NULL AND MONTH(fam_WeddingDate)=~weddingmonth~ ORDER BY DAYOFMONTH(fam_WeddingDate), per_LastName', 'Wedding Anniversaries', 'People with wedding anniversaries in a particular month', 0),
+  (301, 'SELECT per_ID as AddToCart, ''Birthday'' as Type, per_BirthDay as Day, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per WHERE per_BirthMonth=~month~ AND per_BirthDay>0 UNION ALL SELECT per_ID as AddToCart, ''Anniversary'' as Type, DAYOFMONTH(fam_WeddingDate) as Day, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per JOIN family_fam ON per_fam_ID=fam_ID WHERE per_fmr_ID IN (1,2) AND fam_WeddingDate IS NOT NULL AND MONTH(fam_WeddingDate)=~month~ ORDER BY Day', 'Birthdays & Anniversaries', 'People with birthdays or wedding anniversaries in a particular month', 0);
 
 -- --------------------------------------------------------
 
@@ -859,12 +851,8 @@ CREATE TABLE `userconfig_ucfg` (
 INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`, `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`, `ucfg_cat`) VALUES
 
   (0, 0, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', ''),
-  (0, 1, 'sMailtoDelimiter', ',', 'text', 'Delimiter to separate emails in mailto: links', 'TRUE', ''),
-  (0, 5, 'bCreateDirectory', '0', 'boolean', 'User permission to create directories', 'FALSE', 'SECURITY'),
   (0, 10, 'bAddEvent', '0', 'boolean', 'Allow user to add new event', 'FALSE', 'SECURITY'),
-  (1, 0, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', ''),
-  (1, 1, 'sMailtoDelimiter', ',', 'text', 'user permission to send email via mailto: links', 'TRUE', ''),
-  (1, 5, 'bCreateDirectory', '1', 'boolean', 'User permission to create directories', 'TRUE', '');
+  (1, 0, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', '');
 
 -- --------------------------------------------------------
 
@@ -885,6 +873,7 @@ CREATE TABLE `user_usr` (
   `usr_MenuOptions` tinyint(1) unsigned NOT NULL default '0',
   `usr_ManageGroups` tinyint(1) unsigned NOT NULL default '0',
   `usr_Finance` tinyint(1) unsigned NOT NULL default '0',
+  `usr_ManageFundraisers` tinyint(1) unsigned NOT NULL default '0',
   `usr_Notes` tinyint(1) unsigned NOT NULL default '0',
   `usr_Admin` tinyint(1) unsigned NOT NULL default '0',
   `usr_SearchLimit` tinyint(4) default '10',
@@ -911,6 +900,7 @@ CREATE TABLE `user_usr` (
   `usr_TwoFactorAuthSecret` VARCHAR(255) NULL,
   `usr_TwoFactorAuthLastKeyTimestamp` INT NULL,
   `usr_TwoFactorAuthRecoveryCodes` TEXT NULL,
+  `usr_TwoFactorAuthGracePeriodStart` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
   UNIQUE KEY `usr_apiKey` (`usr_apiKey`)
@@ -939,6 +929,13 @@ CREATE TABLE `user_settings` (
   `setting_name` varchar(50) NOT NULL,
   `setting_value` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_settings`
+--
+
+INSERT INTO `user_settings` (`user_id`, `setting_name`, `setting_value`) VALUES
+(1, 'ui.style', 'auto');
 
 --
 -- Indexes for dumped tables
@@ -1004,6 +1001,11 @@ CREATE TABLE `fundraiser_fr` (
   `fr_description` text,
   `fr_EnteredBy` smallint(5) unsigned NOT NULL default '0',
   `fr_EnteredDate` date NOT NULL,
+  `fr_EndDate` date NULL,
+  `fr_Status` varchar(15) default 'Active',
+  `fr_GoalAmount` decimal(10,2) NULL,
+  `fr_Type` varchar(20) default 'Auction',
+  `fr_fund_ID` mediumint(8) unsigned NULL,
   PRIMARY KEY  (`fr_ID`),
   UNIQUE KEY `fr_ID` (`fr_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
@@ -1092,5 +1094,21 @@ CREATE TABLE `menu_links` (
   `linkOrder` INT NOT NULL,
   PRIMARY KEY (`linkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `pledge_denominations_pdem`
+--
+
+CREATE TABLE `pledge_denominations_pdem` (
+  `pdem_id`                   mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `pdem_plg_GroupKey`         varchar(64)           NOT NULL,
+  `plg_depID`                 mediumint(9) unsigned DEFAULT NULL,
+  `pdem_denominationID`       mediumint(9) unsigned NOT NULL DEFAULT '0',
+  `pdem_denominationQuantity` int(11)               DEFAULT NULL,
+  PRIMARY KEY (`pdem_id`),
+  KEY `pdem_groupkey_idx`           (`pdem_plg_GroupKey`),
+  KEY `pdem_deposit_denom_idx`      (`plg_depID`, `pdem_denominationID`),
+  UNIQUE KEY `pdem_groupkey_denom_uidx` (`pdem_plg_GroupKey`, `pdem_denominationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 update version_ver set ver_update_end = now();

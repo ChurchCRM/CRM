@@ -1,15 +1,20 @@
+---
+title: "Webpack & TypeScript Development"
+intent: "Entry points, API utilities, type safety, and best practices for building modern webpack modules"
+tags: ["frontend", "webpack", "javascript"]
+prereqs: []
+complexity: "intermediate"
+---
 # Skill: Webpack & TypeScript Development
 
 ## Context
 ChurchCRM uses Webpack to bundle frontend JavaScript/TypeScript and CSS. This skill covers entry points, API utilities, type safety, and best practices for building modern webpack modules.
 
-**Verified versions in this repo (package.json):**
-- `typescript` 5.9.3
-- `webpack` 5.105.4
-- `webpack-cli` 7.0.2
-- `ts-loader` 9.5.4
+**Exact versions drift — check `package.json` directly** (`devDependencies.typescript`,
+`webpack`, `webpack-cli`, `ts-loader`) rather than trusting a pinned number here.
 
-> **Note:** React was removed in 7.2.0. All interactive UI uses vanilla JS + Bootstrap 5.
+> [!NOTE]
+> React was removed in 7.2.0. All interactive UI uses vanilla JS + Bootstrap 5.
 
 ---
 
@@ -75,17 +80,12 @@ const response = await fetchAPI('person/123/photo', {
 });
 ```
 
-### Available Functions in api-utils.ts
+### Functions in api-utils.ts
 
-| Function | Purpose | Returns |
-|----------|---------|---------|
-| `getRootPath()` | Get `window.CRM.root` dynamically | `string` (e.g., `/churchcrm`) |
-| `buildAPIUrl(path)` | Build `/api/` endpoint URL | `string` |
-| `buildAdminAPIUrl(path)` | Build `/admin/api/` endpoint URL | `string` |
-| `fetchAPI(path, options)` | Generic fetch wrapper | `Promise<Response>` |
-| `fetchAPIJSON<T>(path, options)` | Fetch and parse JSON | `Promise<T>` |
-| `fetchAdminAPI(path, options)` | Admin API fetch variant | `Promise<Response>` |
-| `fetchAdminAPIJSON<T>(path, options)` | Admin API JSON variant | `Promise<T>` |
+`webpack/api-utils.ts` is short and every export is JSDoc'd — read it directly rather
+than trusting a transcribed table here. The one non-obvious behavior: `fetchAPIJSON`
+throws on a non-OK response rather than returning a `{ success, data }` envelope, so
+wrap the call in `try`/`catch`.
 
 ## Skin Bundle Architecture (LTR + RTL) <!-- learned: 2026-03-28 -->
 
@@ -195,54 +195,77 @@ import './my-feature.css';  // In webpack/my-feature.ts
 ```
 
 **Output Configuration (webpack.config.js):**
+
+> ⚠️ **Entry keys are flat — never prefix them with `skin/v2/`.**
+> `output.path` is already `src/skin/v2` and `output.filename` is `[name].min.js`
+> (`webpack.config.js:115-119`), so the key **is** the bundle's basename. A key of
+> `'skin/v2/my-feature'` emits `src/skin/v2/skin/v2/my-feature.min.js` — one directory too
+> deep, and no page can load it.
+
+See webpack.config.js's `entry` object directly for the current, complete list — don't
+transcribe it here, it changes often and a copy just goes stale. One example showing the
+pattern (a directory source resolves via `resolve.extensions: ['.ts', '.tsx', '.js']`,
+and a source may sit in a subdirectory — only the **key** must stay flat):
+
 ```javascript
 entry: {
-    'skin/v2/my-feature': './webpack/my-feature.js',  // → src/skin/v2/my-feature.js
-    'skin/v2/my-component-app': './webpack/my-component-app.ts',
-}
+    kiosk: './webpack/kiosk',                          // → webpack/kiosk/index.ts
+    'people-list': './webpack/people/person-list',
+    'my-feature': './webpack/my-feature.js',           // → src/skin/v2/my-feature.min.js
+},
+```
+
+Load the result from a view with the emitted name:
+
+```php
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/my-feature.min.js') ?>"></script>
 ```
 
 ## Type Definitions & Reuse
 
 ### Shared Types File
 
+`webpack/types/` holds **ambient declaration files only** — `window.d.ts` (the global
+`window.CRM` namespace injected by PHP templates) and `avatar-initials.d.ts`. They are not
+importable modules; they declare globals. Do not add exported interfaces there.
+
+Put exported interfaces in a `types.ts` next to the feature that owns them, the way the kiosk
+entry does:
+
 ```typescript
-// webpack/types/api-models.ts
-export interface Person {
-    id: number;
+// webpack/kiosk/types.ts (trimmed)
+export interface ClassMember {
+    displayName: string;
     firstName: string;
-    lastName: string;
-    familyId: number;
+    classRole: string;
+    personId: number;
+    familyId: number | null;
 }
 
-export interface Family {
-    id: number;
-    name: string;
-    address: string;
-}
-
-export interface ApiResponse<T> {
-    success: boolean;
-    data?: T;
-    message?: string;
-    errors?: Record<string, string>;
+export interface PersonApiData {
+    Id: number;
+    FirstName: string;
 }
 ```
 
 ### Using Shared Types
 
 ```typescript
-// webpack/person-viewer.ts
-import type { Person, ApiResponse } from './types/api-models';
-import { fetchAPIJSON } from './api-utils';
+// webpack/kiosk/kiosk-jsom.ts:8-18 — sibling import of the feature's own types
+import type { ClassMember, PersonApiData } from './types';
+// webpack/people/geo-refresh.js:9 — the shared typed fetch helper
+import { fetchAPIJSON } from '../api-utils';
 
 async function viewPerson(id: number): Promise<void> {
-    const response = await fetchAPIJSON<ApiResponse<Person>>(`person/${id}`);
-    if (response.success && response.data) {
-        console.log(`${response.data.firstName} ${response.data.lastName}`);
-    }
+    // fetchAPIJSON<T>() is generic — pass the interface as T, it returns Promise<T>
+    const person = await fetchAPIJSON<PersonApiData>(`person/${id}`);
+    console.log(`${person.FirstName} (#${person.Id})`);
 }
 ```
+
+`fetchAPIJSON` (`webpack/api-utils.ts:109`) throws on a non-OK response rather than returning
+a `{ success, data }` envelope, so wrap the call in `try`/`catch` — there is no `.success`
+flag to test.
 
 ## Best Practices
 
@@ -329,16 +352,21 @@ window.CRM.notify('Settings saved', { type: 'success' });
 ```
 
 ### 8. Code Splitting
-Separate concerns into different entry points:
+Separate concerns into different entry points — one per page or feature, with a **flat** key
+(see "Output Configuration" above; a `skin/v2/` prefix would double the output path):
 
 ```javascript
-// webpack.config.js
+// illustrative — see webpack.config.js's entry object for the real, current list
 entry: {
-    'skin/v2/admin': './webpack/admin-dashboard.js',     // Admin pages
-    'skin/v2/photo-uploader': './webpack/photo-uploader.js',  // Photo upload
-    'skin/v2/kiosk': './webpack/kiosk/registration.tsx', // Kiosk app
+    'admin-dashboard': './webpack/admin-dashboard',      // Admin dashboard page
+    'photo-uploader': './webpack/photo-uploader-entry',  // Photo upload
+    kiosk: './webpack/kiosk',                            // Kiosk app (TypeScript)
+    'event-checkin': './webpack/event-checkin',          // Event check-in page
 }
 ```
+
+There are no `.tsx` files in the repository — React was removed in #8513. TypeScript entries
+are plain `.ts` modules.
 
 ---
 

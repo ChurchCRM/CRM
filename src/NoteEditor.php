@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -64,27 +65,59 @@ if (isset($_POST['Submit'])) {
 
     // Were there any errors?
     if (!$bErrorFlag) {
+        $currentUser = AuthenticationManager::getCurrentUser();
         // Are we adding or editing?
         if ($iNoteID <= 0) {
-            $note = new Note();
-            $note->setPerId($iPersonID);
-            $note->setFamId($iFamilyID);
-            $note->setPrivate($bPrivate);
-            $note->setText($sNoteText);
-            $note->setType('note');
-            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-            $note->save();
+            // Write gate for new person note: canEditPerson() (EditRecords/Admin=any person;
+            // EditSelf=own family only). Notes=1 alone is not sufficient for person notes.
+            // The redirectHomeIfFalse(isNotesEnabled()) at the top already ensures the user
+            // has Notes=1; canEditPerson() is the additional object-level scope check.
+            if ($iPersonID > 0) {
+                $targetPerson = PersonQuery::create()->findPk($iPersonID);
+                $targetFamId  = $targetPerson !== null ? (int) $targetPerson->getFamId() : 0;
+                if (!$currentUser->canEditPerson($iPersonID, $targetFamId)) {
+                    $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to add a note for this person.') . '</span>';
+                    $bErrorFlag = true;
+                }
+            } elseif ($iFamilyID > 0 && !$currentUser->canWriteNoteOnFamily($iFamilyID)) {
+                $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to add a note for this family.') . '</span>';
+                $bErrorFlag = true;
+            }
+
+            if (!$bErrorFlag) {
+                $note = new Note();
+                $note->setPerId($iPersonID);
+                $note->setFamId($iFamilyID);
+                $note->setPrivate($bPrivate);
+                $note->setText($sNoteText);
+                $note->setType('note');
+                $note->setEntered($currentUser->getId());
+                $note->save();
+            }
         } else {
+            // Fix #A: guard against stale/invalid NoteID in the POST (edit) path.
+            // If the note was deleted between page load and submit, findPk() returns
+            // null and calling getEnteredBy() on it would be a fatal error.
             $note = NoteQuery::create()->findPk($iNoteID);
-            // Only the creator can edit their note
-            if ($note->getEnteredBy() !== AuthenticationManager::getCurrentUser()->getId()) {
+            if ($note === null) {
+                $_SESSION['sGlobalMessage'] = gettext('The note you are trying to edit no longer exists.');
+                $_SESSION['sGlobalMessageClass'] = 'danger';
+                RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');
+            }
+
+            // Author can edit their own note (public or private). An admin can edit
+            // any note, including another user's private note (admin sees full content
+            // via canReadPrivateNotes() → isAdmin()).
+            $isAuthor = $note->getEnteredBy() === $currentUser->getId();
+            $adminMayEdit = $currentUser->isAdmin();
+            if (!$isAuthor && !$adminMayEdit) {
                 $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to edit this note.') . '</span>';
                 $bErrorFlag = true;
             } else {
                 $note->setPrivate($bPrivate);
                 $note->setText($sNoteText);
                 $note->setDateLastEdited(new DateTime());
-                $note->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+                $note->setEditedBy($currentUser->getId());
                 $note->save();
             }
         }
@@ -93,14 +126,27 @@ if (isset($_POST['Submit'])) {
         RedirectUtils::redirect($sBackPage);
     }
 } else {
-    // Are we adding or editing?
+    // Are we loading an existing note for editing?
     if (isset($_GET['NoteID'])) {
         // Get the NoteID from the querystring
         $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
         $dbNote = NoteQuery::create()->findPk($iNoteID);
 
-        // Only the creator can edit a private note
-        if ($dbNote && $dbNote->isPrivate() && $dbNote->getEnteredBy() !== AuthenticationManager::getCurrentUser()->getId()) {
+        // Fix (load path): guard against non-existent NoteID.
+        // Without this check, calling getText() / getPrivate() etc. on null is a fatal error.
+        if ($dbNote === null) {
+            $_SESSION['sGlobalMessage'] = gettext('Note not found.');
+            $_SESSION['sGlobalMessageClass'] = 'danger';
+            RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');
+        }
+
+        $currentUser = AuthenticationManager::getCurrentUser();
+        // Author can edit their own note (public or private). An admin can edit any
+        // note, including private notes by other users (admin sees full content via
+        // canReadPrivateNotes() → isAdmin()).
+        $isAuthor = $dbNote->getEnteredBy() === $currentUser->getId();
+        $adminMayEdit = $currentUser->isAdmin();
+        if (!$isAuthor && !$adminMayEdit) {
             $_SESSION['sGlobalMessage'] = gettext('You do not have permission to edit this note.');
             $_SESSION['sGlobalMessageClass'] = 'danger';
             RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');

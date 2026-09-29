@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.0.1
+  version: 7.8.0
 servers:
   -
     url: '{scheme}://{host}/api'
@@ -28,129 +28,6 @@ servers:
     url: 'http://localhost/churchcrm/api'
     description: 'Local development (localhost)'
 paths:
-  '/public/calendar/{CalendarAccessToken}/events':
-    get:
-      tags:
-        - Calendar
-      summary: 'Get public calendar events as JSON'
-      description: 'Returns events for a publicly shared calendar using its access token.'
-      operationId: getPublicCalendarEvents
-      parameters:
-        -
-          name: CalendarAccessToken
-          in: path
-          description: "The calendar's public access token (found in calendar settings)"
-          required: true
-          schema:
-            type: string
-            example: abc123token
-      responses:
-        '200':
-          description: 'Array of event objects'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { Id: { type: integer }, Title: { type: string }, Start: { type: string, format: date-time }, End: { type: string, format: date-time } }
-                  type: object
-        '404':
-          description: 'Invalid or expired access token'
-  '/public/calendar/{CalendarAccessToken}/ics':
-    get:
-      tags:
-        - Calendar
-      summary: 'Download public calendar as ICS file'
-      description: 'Returns an iCalendar (.ics) file for the publicly shared calendar, suitable for import into calendar apps.'
-      operationId: getPublicCalendarICS
-      parameters:
-        -
-          name: CalendarAccessToken
-          in: path
-          required: true
-          schema:
-            type: string
-            example: abc123token
-      responses:
-        '200':
-          description: 'iCalendar file'
-          content:
-            text/calendar:
-              schema:
-                type: string
-                format: binary
-        '404':
-          description: 'Invalid or expired access token'
-  '/public/calendar/{CalendarAccessToken}/fullcalendar':
-    get:
-      tags:
-        - Calendar
-      summary: 'Get public calendar events in FullCalendar format'
-      description: 'Returns events formatted for the FullCalendar JavaScript library.'
-      operationId: getPublicCalendarFullCalendarEvents
-      parameters:
-        -
-          name: CalendarAccessToken
-          in: path
-          required: true
-          schema:
-            type: string
-            example: abc123token
-      responses:
-        '200':
-          description: 'FullCalendar-compatible event array'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { id: { type: integer }, title: { type: string }, start: { type: string, format: date-time }, end: { type: string, format: date-time } }
-                  type: object
-        '404':
-          description: 'Invalid or expired access token'
-  /public/data/countries:
-    get:
-      tags:
-        - Lookups
-      summary: 'List all countries'
-      description: 'Returns the full list of countries used in address fields.'
-      operationId: getCountries
-      responses:
-        '200':
-          description: 'Array of country objects'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { code: { type: string, example: US }, name: { type: string, example: 'United States' } }
-                  type: object
-  '/public/data/countries/{countryCode}/states':
-    get:
-      tags:
-        - Lookups
-      summary: 'List states/provinces for a country'
-      description: 'Returns all states or provinces for the given ISO country code.'
-      operationId: getStates
-      parameters:
-        -
-          name: countryCode
-          in: path
-          description: 'ISO 3166-1 alpha-2 country code'
-          required: true
-          schema:
-            type: string
-            example: US
-      responses:
-        '200':
-          description: 'Array of state/province objects'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { code: { type: string, example: WA }, name: { type: string, example: Washington } }
-                  type: object
   /public/register/family:
     post:
       tags:
@@ -311,6 +188,123 @@ paths:
                   error: { type: string, example: 'Validation Error' }
                   failures: { type: array, items: { type: string } }
                 type: object
+  '/public/calendar/{CalendarAccessToken}/events':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get public calendar events as JSON'
+      description: 'Returns events for a publicly shared calendar using its access token.'
+      operationId: getPublicCalendarEvents
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          description: "The calendar's public access token (found in calendar settings)"
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'Array of event objects'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { Id: { type: integer }, Title: { type: string }, Start: { type: string, format: date-time }, End: { type: string, format: date-time } }
+                  type: object
+        '404':
+          description: 'Invalid or expired access token'
+  '/public/calendar/{CalendarAccessToken}/ics':
+    get:
+      tags:
+        - Calendar
+      summary: 'Download public calendar as ICS file'
+      description: 'Returns an iCalendar (.ics) file for the publicly shared calendar, suitable for import into calendar apps.'
+      operationId: getPublicCalendarICS
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'iCalendar file'
+          content:
+            text/calendar:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: 'Invalid or expired access token'
+  '/public/calendar/{CalendarAccessToken}/fullcalendar':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get public calendar events in FullCalendar format'
+      description: 'Returns events formatted for the FullCalendar JavaScript library.'
+      operationId: getPublicCalendarFullCalendarEvents
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'FullCalendar-compatible event array'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, title: { type: string }, start: { type: string, format: date-time }, end: { type: string, format: date-time } }
+                  type: object
+        '404':
+          description: 'Invalid or expired access token'
+  /public/echo:
+    get:
+      tags:
+        - Utility
+      summary: 'Health check / echo'
+      description: 'Returns a simple echo response. Useful for verifying the API is reachable.'
+      operationId: getEcho
+      responses:
+        '200':
+          description: 'Echo response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { type: string, example: echo }
+                type: object
+  /public/csp-report:
+    post:
+      tags:
+        - Utility
+      summary: 'Log a Content Security Policy violation report'
+      description: 'Receives browser-generated CSP violation reports and logs them server-side.'
+      operationId: logCSPReport
+      requestBody:
+        description: 'CSP violation report object (browser-generated)'
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              csp-report:
+                document-uri: 'https://example.com'
+                violated-directive: script-src
+      responses:
+        '204':
+          description: 'Report logged successfully (no content)'
   /public/user/login:
     post:
       tags:
@@ -388,43 +382,49 @@ paths:
                 type: object
         '400':
           description: 'userName field is required'
-  /public/echo:
+  /public/data/countries:
     get:
       tags:
-        - Utility
-      summary: 'Health check / echo'
-      description: 'Returns a simple echo response. Useful for verifying the API is reachable.'
-      operationId: getEcho
+        - Lookups
+      summary: 'List all countries'
+      description: 'Returns the full list of countries used in address fields.'
+      operationId: getCountries
       responses:
         '200':
-          description: 'Echo response'
+          description: 'Array of country objects'
           content:
             application/json:
               schema:
-                properties:
-                  message: { type: string, example: echo }
-                type: object
-  /public/csp-report:
-    post:
+                type: array
+                items:
+                  properties: { code: { type: string, example: US }, name: { type: string, example: 'United States' } }
+                  type: object
+  '/public/data/countries/{countryCode}/states':
+    get:
       tags:
-        - Utility
-      summary: 'Log a Content Security Policy violation report'
-      description: 'Receives browser-generated CSP violation reports and logs them server-side.'
-      operationId: logCSPReport
-      requestBody:
-        description: 'CSP violation report object (browser-generated)'
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-            example:
-              csp-report:
-                document-uri: 'https://example.com'
-                violated-directive: script-src
+        - Lookups
+      summary: 'List states/provinces for a country'
+      description: 'Returns all states or provinces for the given ISO country code.'
+      operationId: getStates
+      parameters:
+        -
+          name: countryCode
+          in: path
+          description: 'ISO 3166-1 alpha-2 country code'
+          required: true
+          schema:
+            type: string
+            example: US
       responses:
-        '204':
-          description: 'Report logged successfully (no content)'
+        '200':
+          description: 'Array of state/province objects'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { code: { type: string, example: WA }, name: { type: string, example: Washington } }
+                  type: object
 tags:
   -
     name: Utility

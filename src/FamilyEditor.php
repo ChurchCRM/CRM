@@ -279,13 +279,11 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //If the user added a new record, we need to key back to the route to the FamilyView page
         if ($iFamilyID < 1) {
             $iFamilyID = $family->getId();
-            $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('$iFamilyID')";
-            RunQuery($sSQL);
+            RunPreparedQuery('INSERT INTO `family_custom` (`fam_ID`) VALUES (?)', 'i', [$iFamilyID]);
 
             // Add property if assigned
             if ($iPropertyID) {
-                $sSQL ="INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID) VALUES ($iPropertyID, $iFamilyID)";
-                RunQuery($sSQL);
+                RunPreparedQuery('INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID) VALUES (?, ?)', 'ii', [$iPropertyID, $iFamilyID]);
             }
 
             //Run through the family member arrays...
@@ -396,8 +394,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     if ($family) {
         //Editing....
         //Get the information on this family
-        $sSQL = "SELECT * FROM family_fam WHERE fam_ID = $iFamilyID";
-        $rsFamily = RunQuery($sSQL);
+        $rsFamily = RunPreparedQuery('SELECT * FROM family_fam WHERE fam_ID = ?', 'i', [$iFamilyID]);
         extract(mysqli_fetch_array($rsFamily));
 
         $iFamilyID = $family->getId();
@@ -422,8 +419,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         // If field is empty: checkbox unchecked, mask applied
         $bNoFormat_HomePhone = !empty($sHomePhone);
 
-        $sSQL = "SELECT * FROM family_custom WHERE fam_ID = $iFamilyID";
-        $rsCustomData = RunQuery($sSQL);
+        $rsCustomData = RunPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [$iFamilyID]);
         $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
         $aCustomErrors = [];
@@ -435,8 +431,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             }
         }
 
-        $sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = $iFamilyID ORDER BY per_fmr_ID";
-        $rsMembers = RunQuery($sSQL);
+        $rsMembers = RunPreparedQuery('SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = ? ORDER BY per_fmr_ID', 'i', [$iFamilyID]);
         $iCount = 0;
         $iFamilyMemberRows = 0;
         while ($aRow = mysqli_fetch_array($rsMembers)) {
@@ -792,19 +787,19 @@ require_once __DIR__ . '/Include/Header.php';
                                             <tr>
                                                 <td>
                                                     <input type="hidden" name="PersonID<?= $iCount ?>" value="<?= $aPersonIDs[$iCount] ?>">
-                                                    <input name="FirstName<?= $iCount ?>" type="text" value="<?= $aFirstNames[$iCount] ?>" class="form-control form-control-sm">
+                                                    <input name="FirstName<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aFirstNames[$iCount]) ?>" class="form-control form-control-sm">
                                                     <?php if (array_key_exists($iCount, $aFirstNameError)) { ?>
                                                     <span class="text-danger small"><?= $aFirstNameError[$iCount] ?></span>
                                                     <?php } ?>
                                                 </td>
                                                 <td>
-                                                    <input name="MiddleName<?= $iCount ?>" type="text" value="<?= $aMiddleNames[$iCount] ?>" class="form-control form-control-sm">
+                                                    <input name="MiddleName<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aMiddleNames[$iCount]) ?>" class="form-control form-control-sm">
                                                 </td>
                                                 <td>
-                                                    <input name="LastName<?= $iCount ?>" type="text" value="<?= $aLastNames[$iCount] ?>" class="form-control form-control-sm">
+                                                    <input name="LastName<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aLastNames[$iCount]) ?>" class="form-control form-control-sm">
                                                 </td>
                                                 <td>
-                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" class="form-control form-control-sm" maxlength="50">
+                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= InputUtils::escapeAttribute($aSuffix[$iCount]) ?>" class="form-control form-control-sm" maxlength="50">
                                                 </td>
                                                 <td>
                                                     <select name="Gender<?= $iCount ?>" class="form-select form-select-sm">
@@ -951,30 +946,30 @@ require_once __DIR__ . '/Include/Header.php';
     }
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM.familyRoles = <?= json_encode($familyRolesJS) ?>;
-    window.CRM.classifications = <?= json_encode($classificationsJS) ?>;
-    window.CRM.customPhoneFields = <?= json_encode($customPhoneFields ?? []) ?>;
+    window.CRM.familyRoles = <?= InputUtils::jsonEncodeForScript($familyRolesJS) ?>;
+    window.CRM.classifications = <?= InputUtils::jsonEncodeForScript($classificationsJS) ?>;
+    window.CRM.customPhoneFields = <?= InputUtils::jsonEncodeForScript($customPhoneFields ?? []) ?>;
     window.CRM.initialFamilyMemberCount = <?= $iFamilyMemberRows ?>;
     window.CRM.i18n = {
-        selectGender: <?= json_encode(gettext('Select Gender')) ?>,
-        male: <?= json_encode(gettext('Male')) ?>,
-        female: <?= json_encode(gettext('Female')) ?>,
-        selectRole: <?= json_encode(gettext('Select Role')) ?>,
-        unknown: <?= json_encode(gettext('Unknown')) ?>,
-        unassigned: <?= json_encode(gettext('Unassigned')) ?>,
+        selectGender: <?= InputUtils::jsonEncodeForScript(gettext('Select Gender')) ?>,
+        male: <?= InputUtils::jsonEncodeForScript(gettext('Male')) ?>,
+        female: <?= InputUtils::jsonEncodeForScript(gettext('Female')) ?>,
+        selectRole: <?= InputUtils::jsonEncodeForScript(gettext('Select Role')) ?>,
+        unknown: <?= InputUtils::jsonEncodeForScript(gettext('Unknown')) ?>,
+        unassigned: <?= InputUtils::jsonEncodeForScript(gettext('Unassigned')) ?>,
         months: [
-            <?= json_encode(gettext('January')) ?>,
-            <?= json_encode(gettext('February')) ?>,
-            <?= json_encode(gettext('March')) ?>,
-            <?= json_encode(gettext('April')) ?>,
-            <?= json_encode(gettext('May')) ?>,
-            <?= json_encode(gettext('June')) ?>,
-            <?= json_encode(gettext('July')) ?>,
-            <?= json_encode(gettext('August')) ?>,
-            <?= json_encode(gettext('September')) ?>,
-            <?= json_encode(gettext('October')) ?>,
-            <?= json_encode(gettext('November')) ?>,
-            <?= json_encode(gettext('December')) ?>
+            <?= InputUtils::jsonEncodeForScript(gettext('January')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('February')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('March')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('April')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('May')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('June')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('July')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('August')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('September')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('October')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('November')) ?>,
+            <?= InputUtils::jsonEncodeForScript(gettext('December')) ?>
         ]
     };
 </script>

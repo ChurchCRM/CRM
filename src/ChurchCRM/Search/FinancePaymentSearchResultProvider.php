@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -42,9 +43,9 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
 
         try {
             $Payments = PledgeQuery::create()
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'GroupAmount')
-            ->withColumn('CONCAT("#",' . PledgeTableMap::COL_PLG_PLGID . ')', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . PledgeTableMap::COL_PLG_DEPID . ')', 'uri')
+            ->addAsColumn('GroupAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
+            ->addAsColumn('displayName', 'CONCAT("#",' . PledgeTableMap::COL_PLG_PLGID . ')')
+            ->addAsColumn('uri', 'CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . PledgeTableMap::COL_PLG_DEPID . ')')
             //->limit(SystemConfig::getValue("bSearchIncludePaymentsMax")) // this can't be limited here due to how Propel ORM doesn't handle HAVING clause nicely, so we do it in PHP
             ->groupByGroupKey()
             ->find();
@@ -55,7 +56,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
                     // I can't seem to get the SQL HAVING clause to work through Propel ORM to use
                     // both MIN and MAX value.  Just filter it in PHP
                     if ($Payment->getVirtualColumn('GroupAmount') >= $min && $Payment->getVirtualColumn('GroupAmount') <= $max) {
-                        $searchResults[] = new SearchResult('finance-payment-' . $id, '$' . $Payment->getVirtualColumn('GroupAmount') . ' Payment on Deposit ' . $Payment->getDepid(), $Payment->getVirtualColumn('uri'));
+                        $searchResults[] = new SearchResult('finance-payment-' . $id, CurrencyFormatter::format($Payment->getVirtualColumn('GroupAmount') ?? 0.0) . ' Payment on Deposit ' . $Payment->getDepid(), $Payment->getVirtualColumn('uri'));
                     }
                 }
             }
@@ -77,8 +78,8 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
         try {
             $Payments = PledgeQuery::create()
             ->filterByCheckNo("$SearchQuery", Criteria::EQUAL)
-            ->withColumn('CONCAT("#",' . PledgeTableMap::COL_PLG_PLGID . ')', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . PledgeTableMap::COL_PLG_DEPID . ')', 'uri')
+            ->addAsColumn('displayName', 'CONCAT("#",' . PledgeTableMap::COL_PLG_PLGID . ')')
+            ->addAsColumn('uri', 'CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . PledgeTableMap::COL_PLG_DEPID . ')')
             ->limit(SystemConfig::getIntValue('bSearchIncludePaymentsMax'))
             ->groupByGroupKey()
             ->find();

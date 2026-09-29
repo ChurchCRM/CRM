@@ -11,9 +11,9 @@ $statusTitle = match ($statusCode) {
 };
 
 $statusIcon = match ($statusCode) {
-    404     => 'ti-map-pin-off',
-    403     => 'ti-lock',
-    default => 'ti-alert-circle',
+    404     => 'fa-map-location-dot',
+    403     => 'fa-lock',
+    default => 'fa-circle-exclamation',
 };
 
 $statusColor = match (true) {
@@ -36,7 +36,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <span class="h1 fw-bold <?= $statusColor ?>"><?= htmlspecialchars((string) $statusCode) ?></span>
             </div>
             <div class="mb-3">
-              <i class="ti <?= $statusIcon ?>" style="font-size:3rem;"></i>
+              <i class="fa-solid <?= $statusIcon ?>" style="font-size:3rem;"></i>
             </div>
             <h3 class="mb-2"><?= htmlspecialchars($statusTitle) ?></h3>
             <p class="text-body-secondary mb-4"><?= gettext('An unexpected error occurred while processing your request. Please contact your administrator for assistance.') ?></p>
@@ -45,7 +45,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="mb-4">
               <details class="card card-outline border-secondary">
                 <summary class="card-header cursor-pointer">
-                  <i class="ti ti-code"></i>
+                  <i class="fa-solid fa-code"></i>
                   <?= gettext('Technical Details') ?> (Development Mode)
                 </summary>
                 <div class="card-body">

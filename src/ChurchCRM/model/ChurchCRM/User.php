@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
 use PragmaRX\Google2FA\Google2FA;
@@ -56,38 +57,115 @@ class User extends BaseUser
     // The naming convention is `isXxxEnabled()` for all permissions,
     // regardless of which storage layer backs the raw flag.
     //
-    // See #8667, #8458 for the consolidation rationale.
+    // ── Two-tier storage architecture ───────────────────────────────
+    //
+    // Permissions are stored in two places:
+    //
+    //   TIER 1 — user_usr boolean columns (fast, indexed, ORM-generated getters):
+    //     usr_Admin, usr_EditSelf, usr_AddRecords, usr_EditRecords,
+    //     usr_DeleteRecords, usr_MenuOptions, usr_ManageGroups,
+    //     usr_Finance, usr_ManageFundraisers, usr_Notes.
+    //     These are the "core" record permissions accessible via isXxx() getters
+    //     (e.g. isAddRecords(), isFinance()) or the corresponding isXxxEnabled()
+    //     helper that applies the admin bypass and the EditSelf-exclusive guard.
+    //
+    //   TIER 2 — userconfig_ucfg rows (per-user config table, name/value pairs):
+    //     bAddEvent    → isAddEventEnabled() / canManageEvents()
+    //     bEmailMailto → isEmailEnabled()
+    //     These are read via isEnabledSecurity('bXxx') which scans the user's
+    //     UserConfig collection. They appear in the UserEditor under the
+    //     Permissions card (AddEvent) or the User Config table (bEmailMailto).
+    //
+    // ── EditSelf-exclusive invariant ────────────────────────────────
+    //
+    // EditSelf is an exclusive mode. When isEditSelfExclusive() is true
+    // (non-admin + EditSelf=1), ALL module permissions — both Tier 1 and
+    // Tier 2 — evaluate to false, regardless of stored flags. This invariant
+    // is enforced at three layers:
+    //   1. DB write-time: UserService::normalizeAccessMode() (server) and
+    //      user-editor.js (client) zero all module perms before saving.
+    //   2. Read-time: every isXxxEnabled() method short-circuits on
+    //      isEditSelfExclusive() before checking the stored flag.
+    //   3. Entry gate: AuthMiddleware and PageInit redirect EditSelf-exclusive
+    //      users to /external/limited-access before any route runs.
+    //
+    // Zero-permission users (all flags 0, EditSelf=0) are NOT blocked at the
+    // entry gate — they retain read-only access under the read-default policy
+    // (#9003). Writes are denied by per-page/per-route role middleware.
+    //
+    // See #8667, #8458 for the consolidation rationale; #9003 for read-default;
+    // #9079 for the EditSelf-exclusive enforcement.
     // ─────────────────────────────────────────────────────────────────
 
     // -- Per-user permissions (backed by user_usr columns) --
+    //
+    // EditSelf is an exclusive mode: when a non-admin user has EditSelf=1,
+    // all module permissions (AddRecords, EditRecords, …, Notes, Finance) are
+    // treated as false regardless of what is stored in the database, so every
+    // consumer sees a consistent view.
+
+    /**
+     * True when the user is confined to the self-service flow.
+     *
+     * A non-admin user with EditSelf=1 has no module permissions and cannot use
+     * the CRM interface — PageInit and AuthMiddleware redirect them to
+     * /external/limited-access.
+     *
+     * Deliberately NOT true for a zero-permission user (all flags 0). Those users
+     * retain read-only access to people and family records under the read-default
+     * policy (#9003); writes are denied by the per-page and per-route permission
+     * checks.
+     */
+    public function isEditSelfExclusive(): bool
+    {
+        return !$this->isAdmin() && $this->isEditSelf();
+    }
 
     public function isAddRecordsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isAddRecords();
     }
 
     public function isEditRecordsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEditRecords();
     }
 
     public function isDeleteRecordsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isDeleteRecords();
     }
 
     public function isMenuOptionsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isMenuOptions();
     }
 
     public function isManageGroupsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isManageGroups();
     }
 
     public function isNotesEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isNotes();
     }
 
@@ -97,27 +175,39 @@ class User extends BaseUser
     }
 
     // -- Module-gated permissions (backed by userconfig_ucfg) --
-    //    These additionally require a system-wide feature flag to be ON
-    //    for non-admin users. Admins bypass the feature flag.
+    //    These require a system-wide feature flag to be ON for all users,
+    //    regardless of role or admin status. The flag gates access; permissions gate specific features.
 
     public function isFinanceEnabled(): bool
     {
-        return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFinance') && $this->isFinance());
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
+        return SystemConfig::getBooleanValue('bEnabledFinance') && ($this->isAdmin() || $this->isFinance());
+    }
+
+    public function isManageFundraisersEnabled(): bool
+    {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
+        return SystemConfig::getBooleanValue('bEnabledFundraiser') && ($this->isAdmin() || $this->isManageFundraisers());
     }
 
     public function isAddEventEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
     }
 
     public function isEmailEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
-    }
-
-    public function isCreateDirectoryEnabled(): bool
-    {
-        return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
     }
 
     // -- Module view/manage permissions (combine feature flag + per-user) --
@@ -141,58 +231,36 @@ class User extends BaseUser
         return SystemConfig::getBooleanValue('bEnabledEvents');
     }
 
-    // -- Consolidated permission map for API/UI consumption --
-
     /**
-     * Return a structured map of all permissions for this user.
-     * Useful for the UserEditor UI and the user settings API.
-     * Every value reflects the effective permission (with admin bypass applied).
+     * Returns true if the current user may read basic metadata for any family.
+     * All authenticated users have this capability by default (read-default policy).
      *
-     * @return array<string, bool>
+     * $familyId is reserved for future row-level security (e.g. pastoral-confidentiality
+     * holds or per-family privacy flags). Pass the family ID at every call site so that
+     * adding ABAC checks later requires no call-site changes.
+     *
+     * @param int $familyId The ID of the family to potentially read
+     * @return bool True if user can read this family's record
      */
-    public function getAllPermissions(): array
+    public function canReadFamily(int $familyId = 0): bool
     {
-        return [
-            // Core record permissions (user_usr columns)
-            'isAdmin'             => $this->isAdmin(),
-            'addRecords'          => $this->isAddRecordsEnabled(),
-            'editRecords'         => $this->isEditRecordsEnabled(),
-            'deleteRecords'       => $this->isDeleteRecordsEnabled(),
-            'menuOptions'         => $this->isMenuOptionsEnabled(),
-            'manageGroups'        => $this->isManageGroupsEnabled(),
-            'finance'             => $this->isFinanceEnabled(),
-            'notes'               => $this->isNotesEnabled(),
-            'editSelf'            => $this->isEditSelfEnabled(),
-            // Module permissions (userconfig_ucfg rows)
-            'addEvent'            => $this->isAddEventEnabled(),
-            'emailMailto'         => $this->isEmailEnabled(),
-            'createDirectory'     => $this->isCreateDirectoryEnabled(),
-            // Computed module-level gates
-            'canViewEvents'       => $this->canViewEvents(),
-            'canManageEvents'     => $this->canManageEvents(),
-        ];
+        return true; // read is a default capability for all authenticated users
     }
 
     /**
-     * Check if the user lacks all functional admin permissions.
-     * Users with no permissions (or only EditSelf) cannot use the admin interface
-     * and should be redirected to a self-service flow or blocked.
+     * Returns true if the current user may read basic metadata for any person.
+     * All authenticated users have this capability by default (read-default policy).
      *
-     * @see https://github.com/ChurchCRM/CRM/issues/8617
+     * $personId is reserved for future row-level security (e.g. pastoral-confidentiality
+     * holds or per-person privacy flags). Pass the person ID at every call site so that
+     * adding ABAC checks later requires no call-site changes.
+     *
+     * @param int $personId The ID of the person to potentially read
+     * @return bool True if user can read this person's record
      */
-    public function hasNoAdminPermissions(): bool
+    public function canReadPerson(int $personId): bool
     {
-        if ($this->isAdmin()) {
-            return false;
-        }
-
-        return !$this->isAddRecords()
-            && !$this->isEditRecords()
-            && !$this->isDeleteRecords()
-            && !$this->isMenuOptions()
-            && !$this->isManageGroups()
-            && !$this->isFinance()
-            && !$this->isNotes();
+        return true; // read is a default capability for all authenticated users
     }
 
     /**
@@ -218,7 +286,11 @@ class User extends BaseUser
             }
 
             // Can edit family members (if person has a family)
-            if ($personFamilyId > 0 && $personFamilyId === $this->getPerson()->getFamId()) {
+            $person = $this->getPerson();
+            if ($person === null) {
+                return false; // orphaned user — deny access
+            }
+            if ($personFamilyId > 0 && $personFamilyId === (int) $person->getFamId()) {
                 return true;
             }
         }
@@ -227,17 +299,89 @@ class User extends BaseUser
     }
 
     /**
+     * Check if the user can view/access a specific family's record.
+     * All authenticated users can read any family by default (canReadFamily()).
+     * EditSelf-only users are further restricted to their own family.
+     *
+     * @param int $familyId The ID of the family to potentially view
+     * @return bool True if user can view this family's record
+     */
+    public function canViewFamily(int $familyId): bool
+    {
+        if ($this->isEditSelfEnabled() && !$this->isAdmin() && !$this->isEditRecordsEnabled()) {
+            $person = $this->getPerson();
+            if ($person === null) {
+                return false;
+            }
+            return $familyId > 0 && $familyId === (int) $person->getFamId();
+        }
+        return true;
+    }
+
+    /**
+     * Returns true if the current user may read non-private notes on the given object.
+     * Requires the Notes role (or Admin via isNotesEnabled()).
+     *
+     * $personId / $familyId are reserved for future row-level security (e.g.
+     * pastoral-confidentiality flags). Pass them at every call site so that
+     * adding ABAC checks later requires no call-site changes.
+     *
+     * @param int|null $personId Reserved for future ABAC use
+     * @param int|null $familyId Reserved for future ABAC use
+     */
+    public function canReadNotes(?int $personId = null, ?int $familyId = null): bool
+    {
+        return $this->isNotesEnabled();
+    }
+
+    /**
+     * Returns true if the current user may read private notes authored by other users.
+     *
+     * Policy: admins may read any private note (full content visible in timeline,
+     * API, and NoteEditor). Non-admin users may only read their own private notes;
+     * that author-equality check is handled in Note::isVisibleTo(), so this method
+     * governs only the "read someone else's private note" case.
+     *
+     * $personId / $familyId are reserved for future ABAC extensions (e.g. a future
+     * per-record delegate granted read access to specific private notes).
+     *
+     * @param int|null $personId Reserved for future ABAC use
+     * @param int|null $familyId Reserved for future ABAC use
+     */
+    public function canReadPrivateNotes(?int $personId = null, ?int $familyId = null): bool
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * Returns true if the current user may create a note on the given family.
+     * Notes=1 or Admin currently grants cross-family write (intentional, see #9036/#9003).
+     * Parameter is reserved as the ABAC hook for future per-family privacy holds.
+     *
+     * @param int|null $familyId Reserved for future ABAC use
+     */
+    public function canWriteNoteOnFamily(?int $familyId = null): bool
+    {
+        return $this->isNotesEnabled();
+    }
+
+    /**
      * Update password using secure bcrypt hashing.
+     * Also rotates the API key so that any previously-stolen key is revoked
+     * (GHSA-f2fq-4rmp-9x8c: password reset must invalidate compromised API keys).
+     * Callers are responsible for calling save() to persist both changes.
      */
     public function updatePassword(string $password): void
     {
         $this->setPassword($this->hashPassword($password));
+        $this->setApiKey(self::randomApiKey());
     }
 
     /**
      * Validate password against stored hash.
-     * Supports both legacy SHA-256 and new bcrypt formats for migration.
-     * If legacy hash matches, upgrades to bcrypt on successful validation.
+     * Supports bcrypt (current), legacy SHA-256 (6.x migration), and legacy MD5
+     * (pre-6.x / ChurchInfo 1.x migration) formats.
+     * On any legacy match, the stored hash is transparently upgraded to bcrypt.
      */
     public function isPasswordValid(string $password): bool
     {
@@ -246,6 +390,18 @@ class User extends BaseUser
         // Check if this is a bcrypt hash (starts with $2y$)
         if ($this->isBcryptHash($storedHash)) {
             return password_verify($password, $storedHash);
+        }
+
+        // Legacy MD5 check — pre-6.x / ChurchInfo 1.x stored passwords as unsalted
+        // md5(password). MD5 is cryptographically weak and unsalted MD5 plaintexts are
+        // in public rainbow tables, so we accept it here only to let migrated accounts
+        // log in once, immediately re-hash to bcrypt, and force a new password — the
+        // weak plaintext must not remain in use just because the hash got stronger.
+        if ($this->isMd5Hash($storedHash) && hash_equals($storedHash, md5($password))) {
+            $this->setPassword($this->hashPassword($password));
+            $this->setNeedPasswordChange(true);
+            $this->save();
+            return true;
         }
 
         // Legacy SHA-256 check for migration period
@@ -284,6 +440,15 @@ class User extends BaseUser
     private function isBcryptHash(string $hash): bool
     {
         return str_starts_with($hash, '$2y$') || str_starts_with($hash, '$2b$') || str_starts_with($hash, '$2a$');
+    }
+
+    /**
+     * Check if a hash looks like an unsalted MD5 digest (32 lowercase hex chars).
+     * Used during the ChurchInfo → ChurchCRM upgrade migration path.
+     */
+    private function isMd5Hash(string $hash): bool
+    {
+        return (bool) preg_match('/^[a-f0-9]{32}$/', $hash);
     }
 
     // isAddEvent() is kept as an alias for isAddEventEnabled() since it's
@@ -463,6 +628,30 @@ class User extends BaseUser
         return null;
     }
 
+    /**
+     * Returns the effective theme mode for this user.
+     *
+     * Maps the raw ui.style setting to a canonical value:
+     *   '' (unset) => 'auto'  — users who never chose a theme default to system preference
+     *   'auto'     => 'auto'
+     *   'default'  => 'default' (explicit light)
+     *   'dark'     => 'dark'
+     *
+     * @return string 'auto' | 'default' | 'dark'
+     */
+    public function getThemeMode(): string
+    {
+        $raw = $this->getSettingValue(UserSetting::UI_STYLE);
+        if ($raw === null || $raw === '' || $raw === 'auto') {
+            return 'auto';
+        }
+        if ($raw === 'dark') {
+            return 'dark';
+        }
+
+        return 'default';
+    }
+
     public function getStyle(): string
     {
         $skin = $this->getSetting(UserSetting::UI_STYLE) ?? 'skin-red';
@@ -518,6 +707,8 @@ class User extends BaseUser
         $isKeyValid = $google2fa->verifyKey($pw, $twoFACode, $window);
         if ($isKeyValid) {
             $this->setTwoFactorAuthSecret($this->provisional2FAKey);
+            // Clear grace period start: enrollment completed, fresh window on any future re-enroll
+            $this->setTwoFactorAuthGracePeriodStart(null);
             $this->save();
 
             return true;
@@ -539,19 +730,114 @@ class User extends BaseUser
 
     private function getDecryptedTwoFactorAuthRecoveryCodes(): array
     {
-        return explode(',', Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManagerUtils::getTwoFASecretKey()));
+        $encrypted = $this->getTwoFactorAuthRecoveryCodes();
+        if (empty($encrypted)) {
+            return [];
+        }
+        try {
+            return explode(',', Crypto::decryptWithPassword($encrypted, KeyManagerUtils::getTwoFASecretKey()));
+        } catch (\Exception $e) {
+            return [];
+        }
     }
 
     public function disableTwoFactorAuthentication(): void
     {
         $this->setTwoFactorAuthRecoveryCodes(null);
         $this->setTwoFactorAuthSecret(null);
+        // If the 2FA mandate is active, stamp a fresh grace period start so the user
+        // gets a new window rather than being instantly locked out after disabling.
+        if (SystemConfig::getBooleanValue('bRequire2FA')) {
+            $this->setTwoFactorAuthGracePeriodStart(DateTimeUtils::getToday());
+        }
         $this->save();
     }
 
     public function is2FactorAuthEnabled(): bool
     {
         return !empty($this->getTwoFactorAuthSecret());
+    }
+
+    /**
+     * Returns the mandatory-2FA grace status for this user.
+     *
+     * Possible values:
+     *   'enrolled'     — user already has 2FA set up
+     *   'not-required' — bRequire2FA is off
+     *   'immediate'    — mandate active, grace period is 0 (legacy hard-block)
+     *   'within-grace' — mandate active, deadline not yet reached
+     *   'expired'      — mandate active, deadline has passed
+     *
+     * Side-effect: lazy-stamps usr_TwoFactorAuthGracePeriodStart on the first
+     * call for a user who has not yet been marked under the mandate.
+     */
+    public function getTwoFactorGraceStatus(): string
+    {
+        if ($this->is2FactorAuthEnabled()) {
+            return 'enrolled';
+        }
+
+        if (!SystemConfig::getBooleanValue('bRequire2FA')) {
+            return 'not-required';
+        }
+
+        $graceDays = SystemConfig::getIntValue('i2FAGracePeriodDays');
+        if ($graceDays <= 0) {
+            return 'immediate';
+        }
+
+        // Lazy-stamp: record when this user first encountered the active mandate.
+        $start = $this->getTwoFactorAuthGracePeriodStart();
+        if ($start === null) {
+            $now = DateTimeUtils::getToday();
+            $this->setTwoFactorAuthGracePeriodStart($now);
+            $this->save();
+
+            return 'within-grace';
+        }
+
+        $deadline = (clone $start)->modify('+' . $graceDays . ' days');
+        $now = DateTimeUtils::getToday();
+
+        return $now >= $deadline ? 'expired' : 'within-grace';
+    }
+
+    /**
+     * Returns the absolute DateTime at which this user's grace window closes,
+     * or null if the grace period has not been started yet.
+     */
+    public function getTwoFactorGraceDeadline(): ?\DateTimeInterface
+    {
+        $start = $this->getTwoFactorAuthGracePeriodStart();
+        if ($start === null) {
+            return null;
+        }
+        $graceDays = SystemConfig::getIntValue('i2FAGracePeriodDays');
+
+        return (clone $start)->modify('+' . max($graceDays, 0) . ' days');
+    }
+
+    /**
+     * Returns the number of whole days remaining in this user's grace window,
+     * rounded UP so that any partial day (even <24 h) counts as 1.
+     * Returns 0 when the deadline has passed or no deadline has been set.
+     */
+    public function getTwoFactorGraceDaysRemaining(): int
+    {
+        $deadline = $this->getTwoFactorGraceDeadline();
+        if ($deadline === null) {
+            return 0;
+        }
+        $now = DateTimeUtils::getToday();
+        if ($deadline <= $now) {
+            return 0;
+        }
+        $diff = $now->diff($deadline);
+        // $diff->days is a floor value; add 1 whenever any sub-day component
+        // remains so that, e.g., "23 h 59 m" shows as 1 day, not 0.
+        $hasSubDayRemainder = $diff->h > 0 || $diff->i > 0 || $diff->s > 0;
+
+        return $diff->days + ($hasSubDayRemainder ? 1 : 0);
     }
 
     public function getNewTwoFARecoveryCodes(): array
@@ -573,15 +859,24 @@ class User extends BaseUser
 
     public function isTwoFACodeValid(string $twoFACode): bool
     {
-        $google2fa = new Google2FA();
-        $window = 2;
-        $timestamp = $google2fa->verifyKeyNewer($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $this->getTwoFactorAuthLastKeyTimestamp(), $window);
-        if ($timestamp !== false) {
-            $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
-            $this->save();
+        try {
+            $google2fa = new Google2FA();
+            $window = 2;
+            $timestamp = $google2fa->verifyKeyNewer(
+                $this->getDecryptedTwoFactorAuthSecret(),
+                $twoFACode,
+                $this->getTwoFactorAuthLastKeyTimestamp(),
+                $window
+            );
+            if ($timestamp !== false) {
+                $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
+                $this->save();
 
-            return true;
-        } else {
+                return true;
+            }
+
+            return false;
+        } catch (\Exception $e) {
             return false;
         }
     }

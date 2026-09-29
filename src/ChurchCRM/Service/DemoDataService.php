@@ -6,16 +6,19 @@ use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\Group;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
@@ -24,6 +27,7 @@ use ChurchCRM\dto\SystemURLs;
 use DateTime;
 use Exception;
 use JsonException;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
 
 class DemoDataService
@@ -39,6 +43,8 @@ class DemoDataService
             'notes' => 0,
             'events' => 0,
             'event_types' => 0,
+            'event_audience' => 0,
+            'event_attendance' => 0,
             'funds' => 0,
             'fundraisers' => 0,
             'pledges' => 0,
@@ -64,7 +70,7 @@ class DemoDataService
         $this->logger = LoggerUtils::getAppLogger();
     }
 
-    public function importDemoData(bool $includeFinancial = false, bool $includeEvents = false, bool $includeSundaySchool = false): array
+    public function importDemoData(bool $includeFinancial = false, bool $includeEvents = false, bool $includeSundaySchool = false, bool $force = false): array
     {
         $this->importResult['startTime'] = microtime(true);
 
@@ -76,7 +82,7 @@ class DemoDataService
             ]);
 
             // Load demo system configuration (if present) before importing data
-            $this->importSystemConfig($includeSundaySchool, $includeFinancial);
+            $this->importSystemConfig($includeSundaySchool, $includeFinancial, $force);
 
             $emailMap = $this->importCongregation();
 
@@ -132,8 +138,11 @@ class DemoDataService
     /**
      * Load `config.json` from the demo data path and write values into SystemConfig.
      * The `bEnabledSundaySchool` value will be set according to the flag passed to the API.
+     * `sTelemetryLevel` is only applied when `$force` is set: ordinary onboarding imports
+     * (fresh installs, no `force`) must not silently opt a real self-hosted install into
+     * telemetry — only the controlled, `force`-driven reseed used by demo.churchcrm.io does.
      */
-    private function importSystemConfig(bool $includeSundaySchool, bool $includeFinancial): void
+    private function importSystemConfig(bool $includeSundaySchool, bool $includeFinancial, bool $force = false): void
     {
         $logger = LoggerUtils::getAppLogger();
         $filePath = self::DATA_PATH . '/config.json';
@@ -143,7 +152,7 @@ class DemoDataService
         }
 
         try {
-            $json = json_decode(file_get_contents($filePath), true, 512, JSON_THROW_ON_ERROR);
+            $json = json_decode(file_get_contents($filePath), true, 512);
         } catch (JsonException $e) {
             $this->addWarning('Demo config.json parse failed', ['error' => $e->getMessage()]);
             $logger->error('Demo config.json parse failed', ['error' => $e->getMessage(), 'file' => $filePath]);
@@ -157,8 +166,9 @@ class DemoDataService
         }
 
         foreach ($json as $key => $value) {
-            // Skip bEnabledSundaySchool and bEnabledFinance here; we'll set them explicitly from the API flags
-            if ($key === 'bEnabledSundaySchool' || $key === 'bEnabledFinance') {
+            // Skip bEnabledSundaySchool and bEnabledFinance here; we'll set them explicitly from the API flags.
+            // Skip sTelemetryLevel here too; it's only ever applied below, and only when $force is set.
+            if ($key === 'bEnabledSundaySchool' || $key === 'bEnabledFinance' || $key === 'sTelemetryLevel') {
                 continue;
             }
 
@@ -185,6 +195,18 @@ class DemoDataService
             $logger->warning('Failed to set bEnabledFinance from API flag', ['error' => $e->getMessage()]);
         }
 
+        // sTelemetryLevel from config.json is only ever applied on a forced reseed (e.g. the
+        // demo.churchcrm.io reimport job). Ordinary onboarding ("Explore Demo Data" on a fresh,
+        // real self-hosted install) must not silently opt the install into telemetry.
+        if ($force && array_key_exists('sTelemetryLevel', $json)) {
+            try {
+                SystemConfig::setValue('sTelemetryLevel', $json['sTelemetryLevel']);
+            } catch (Exception $e) {
+                $this->addWarning("Failed to set SystemConfig 'sTelemetryLevel' from demo config: {$e->getMessage()}", ['error' => $e->getMessage()]);
+                $logger->warning('Failed to set SystemConfig sTelemetryLevel from demo config', ['error' => $e->getMessage()]);
+            }
+        }
+
         $logger->info('Demo system config import complete', ['file' => $filePath]);
     }
 
@@ -199,7 +221,7 @@ class DemoDataService
 
         $filePath = self::DATA_PATH . '/people.json';
         try {
-            $json = json_decode(file_get_contents($filePath), true, 512, JSON_THROW_ON_ERROR);
+            $json = json_decode(file_get_contents($filePath), true, 512);
         } catch (JsonException $e) {
             $msg = 'Invalid demo JSON: ' . $e->getMessage();
             $this->addWarning($msg, ['exception' => $e->getMessage()]);
@@ -302,6 +324,13 @@ class DemoDataService
                 }
 
                 $family->setSendNewsletter((isset($famData['sendNewsletter']) && $famData['sendNewsletter']) ? 'TRUE' : 'FALSE');
+                $familySelfRegistered = !empty($famData['selfRegistered']);
+                if ($familySelfRegistered) {
+                    $family->setEnteredBy(Person::SELF_REGISTER);
+                }
+                if (($famData['active'] ?? true) === false) {
+                    $family->setDateDeactivated($today);
+                }
                 $family->save();
 
                 $this->familyMap[$family->getId()] = $family;
@@ -318,7 +347,7 @@ class DemoDataService
                     $basename = basename($famData['photo']);
                     $src = self::DATA_PATH . '/images/families/' . $basename;
 
-                    if (!$this->importDemoPhotoForEntity($src, $family, 'family')) {
+                    if (!$this->importDemoPhotoForEntity($src, $family, 'Family')) {
                         $this->addWarning("Failed to import family photo for family '{$family->getName()}'", ['src' => $src, 'family_id' => $family->getId()]);
                     }
                 }
@@ -361,6 +390,10 @@ class DemoDataService
                         if (!empty($m['createdAt'])) {
                             try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
                         }
+                        if ($familySelfRegistered) {
+                            $person->setEnteredBy(Person::SELF_REGISTER);
+                        }
+                        $this->applyDemoPersonStatus($person, $m, $today);
                         $person->save();
                         $this->personMap[$person->getId()] = $person;
                         $this->importResult['imported']['people']++;
@@ -370,7 +403,7 @@ class DemoDataService
                             $basename = basename($m['photo']);
                             $src = self::DATA_PATH . '/images/people/' . $basename;
 
-                            if (!$this->importDemoPhotoForEntity($src, $person, 'person')) {
+                            if (!$this->importDemoPhotoForEntity($src, $person, 'Person')) {
                                 $this->addWarning("Failed to import person photo for {$person->getFirstName()} {$person->getLastName()}", ['src' => $src, 'person_id' => $person->getId()]);
                             }
                         }
@@ -475,6 +508,10 @@ class DemoDataService
                 if (!empty($m['createdAt'])) {
                     try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
                 }
+                if (!empty($m['selfRegistered'])) {
+                    $person->setEnteredBy(Person::SELF_REGISTER);
+                }
+                $this->applyDemoPersonStatus($person, $m, $today);
                 $person->save();
                 $this->personMap[$person->getId()] = $person;
                 $this->importResult['imported']['people']++;
@@ -523,6 +560,24 @@ class DemoDataService
         }
         
         return $emailMap;
+    }
+
+    private function applyDemoPersonStatus(Person $person, array $m, DateTime $today): void
+    {
+        if (($m['active'] ?? true) === false) {
+            $person->setDateDeactivated($today);
+        }
+        if (!empty($m['dateDeceased'])) {
+            try {
+                $person->setDateDeceased(new DateTime($m['dateDeceased']));
+            } catch (Exception $e) {
+                $this->addWarning("Invalid dateDeceased for person '{$person->getFirstName()} {$person->getLastName()}': {$e->getMessage()}");
+                LoggerUtils::getAppLogger()->warning('Person dateDeceased parse failed', [
+                    'dateDeceased' => $m['dateDeceased'],
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        }
     }
 
     /**
@@ -828,9 +883,6 @@ class DemoDataService
             return;
         }
 
-        // Build column index
-        $cols = array_flip($header);
-
         // Category → EventType ID cache (reuse existing types by name)
         $typeMap = [];
         $existingTypes = EventTypeQuery::create()->find();
@@ -860,11 +912,40 @@ class DemoDataService
                     $typeId = $typeMap[$category];
                 }
 
-                // Parse start/end dates
-                $startStr = $data['start'] ?? '';
-                $endStr = $data['end'] ?? '';
-                $start = new DateTime($startStr);
-                $end = new DateTime($endStr);
+                // Compute start and end datetimes.
+                // Prefer relative columns (start_offset_days + start_time + duration_minutes)
+                // when start_offset_days is present and numeric; fall back to absolute start/end.
+                $offsetStr = trim($data['start_offset_days'] ?? '');
+                if ($offsetStr !== '' && is_numeric($offsetStr)) {
+                    $offsetDays  = (int) $offsetStr;
+                    $startTime   = trim($data['start_time'] ?? '') ?: '09:00:00';
+                    $durationMin = max(0, (int) ($data['duration_minutes'] ?? 0));
+
+                    $start = new DateTime('today');
+                    if ($offsetDays !== 0) {
+                        $start->modify(($offsetDays > 0 ? '+' : '') . $offsetDays . ' days');
+                    }
+                    // Parse HH:MM:SS (or HH:MM) start time
+                    $timeParts = array_pad(explode(':', $startTime), 3, '0');
+                    $start->setTime((int) $timeParts[0], (int) $timeParts[1], (int) $timeParts[2]);
+
+                    $end = clone $start;
+                    if ($durationMin > 0) {
+                        $end->modify("+{$durationMin} minutes");
+                    }
+                } else {
+                    // Absolute date fallback for backwards-compatible CSV rows
+                    $startStr = $data['start'] ?? '';
+                    $endStr   = $data['end'] ?? '';
+                    $start = new DateTime($startStr);
+                    $end   = new DateTime($endStr);
+                }
+
+                $linkGroupNames  = array_values(array_unique(array_filter(
+                    array_map('trim', explode(';', $data['link_groups'] ?? '')),
+                    fn (string $s) => $s !== ''
+                )));
+                $attendedFraction = (float) ($data['attended_fraction'] ?? 0);
 
                 $event = new Event();
                 $event->setType($typeId);
@@ -877,6 +958,25 @@ class DemoDataService
                 $event->setURL($data['external_url'] ?? '');
                 $event->save();
 
+                // Wire group links (event_audience) and seed attendance
+                if (!empty($linkGroupNames)) {
+                    $this->linkEventGroups($event, $linkGroupNames);
+                    $event->save(); // persist cross-ref rows
+                }
+
+                // Collect the IDs of groups successfully linked to this event
+                // (only when link_groups was specified — avoids an unnecessary SELECT)
+                $linkedGroupIds = [];
+                if (!empty($linkGroupNames)) {
+                    foreach ($event->getGroups() as $grp) {
+                        $linkedGroupIds[] = (int) $grp->getId();
+                    }
+                }
+
+                if ($attendedFraction > 0 && !empty($linkedGroupIds)) {
+                    $this->seedEventAttendance($event, $linkedGroupIds, $attendedFraction);
+                }
+
                 $this->importResult['imported']['events']++;
             } catch (Exception $e) {
                 $this->addWarning("Event import failed for '{$data['title']}': {$e->getMessage()}");
@@ -885,9 +985,119 @@ class DemoDataService
 
         fclose($handle);
         $this->logger->info('Demo events import complete', [
-            'events' => $this->importResult['imported']['events'],
-            'event_types' => $this->importResult['imported']['event_types'],
+            'events'           => $this->importResult['imported']['events'],
+            'event_types'      => $this->importResult['imported']['event_types'],
+            'event_audience'   => $this->importResult['imported']['event_audience'],
+            'event_attendance' => $this->importResult['imported']['event_attendance'],
         ]);
+    }
+
+    /**
+     * Link an event to demo groups via the event_audience cross-ref table.
+     *
+     * For each group name, looks up the group in the in-memory map built by
+     * importGroups(). Emits a warning (not an error) and skips gracefully when
+     * a group was not imported (e.g. Sunday-School group when includeSundaySchool
+     * is false).
+     *
+     * @param string[] $groupNames Trimmed group name strings from the CSV
+     */
+    private function linkEventGroups(Event $event, array $groupNames): void
+    {
+        foreach ($groupNames as $gname) {
+            $gname = trim($gname);
+            if ($gname === '') {
+                continue;
+            }
+
+            $gid = $this->groupNameToId[$gname] ?? null;
+            if ($gid === null) {
+                $this->addWarning(
+                    "Event '{$event->getTitle()}': linked group '{$gname}' not found — skipping (import it or enable Sunday School)"
+                );
+                continue;
+            }
+
+            /** @var Group|null $group */
+            $group = $this->groupMap[$gid] ?? GroupQuery::create()->findPk($gid);
+            if ($group === null) {
+                $this->addWarning(
+                    "Event '{$event->getTitle()}': group '{$gname}' (id:{$gid}) could not be loaded — skipping"
+                );
+                continue;
+            }
+
+            $event->addGroup($group);
+            $this->importResult['imported']['event_audience']++;
+        }
+    }
+
+    /**
+     * Seed realistic mixed attendance for a past event.
+     *
+     * Only runs when:
+     *  - the event has already ended (event_end < now)
+     *  - $fraction > 0
+     *  - at least one linked group ID was provided
+     *
+     * Checks in the first ceil($fraction × memberCount) distinct members
+     * (ordered by person ID) via EventAttend rows with checkin_date set.
+     * The remaining members receive NO event_attend row — they appear in
+     * PR #8994's "Did Not Attend" query (event_attend.event_id IS NULL).
+     *
+     * @param int[]  $linkedGroupIds Group IDs whose members are the candidate pool
+     * @param float  $fraction       0.0–1.0 fraction to check in
+     */
+    private function seedEventAttendance(Event $event, array $linkedGroupIds, float $fraction): void
+    {
+        $eventEnd = $event->getEnd();
+        if ($eventEnd === null || $eventEnd >= new DateTime() || $fraction <= 0 || empty($linkedGroupIds)) {
+            return;
+        }
+
+        // Fetch distinct person IDs for all linked groups, ordered deterministically
+        $memberships = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId($linkedGroupIds, Criteria::IN)
+            ->orderByPersonId()
+            ->find();
+
+        // Deduplicate person IDs (a person may be in multiple linked groups)
+        $seenIds   = [];
+        $memberIds = [];
+        foreach ($memberships as $m) {
+            $pid = (int) $m->getPersonId();
+            if (!isset($seenIds[$pid])) {
+                $seenIds[$pid] = true;
+                $memberIds[]   = $pid;
+            }
+        }
+
+        if (empty($memberIds)) {
+            return;
+        }
+
+        $checkInCount = (int) ceil($fraction * count($memberIds));
+
+        foreach (array_slice($memberIds, 0, $checkInCount) as $pid) {
+            try {
+                // findOneOrCreate upserts on (event_id, person_id) unique key,
+                // making repeated demo imports idempotent.
+                $att = EventAttendQuery::create()
+                    ->filterByEvent($event)
+                    ->filterByPersonId($pid)
+                    ->findOneOrCreate();
+                $att->setCheckinDate($eventEnd);
+                // checkin_id / checkout_* intentionally left null
+                $att->save();
+                $this->importResult['imported']['event_attendance']++;
+            } catch (Exception $e) {
+                $this->addWarning(
+                    "Attendance for person {$pid} on event '{$event->getTitle()}' could not be saved: {$e->getMessage()}"
+                );
+            }
+        }
+        // Remaining members: intentionally NO event_attend row
+        // → they surface as "Did Not Attend" in PR #8994's IS NULL query
     }
 
     private function loadJsonFile(string $filename): ?array
@@ -901,7 +1111,7 @@ class DemoDataService
 
         try {
             $json = file_get_contents($filepath);
-            $data = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+            $data = json_decode($json, true, 512);
 
             if (!is_array($data)) {
                 $this->importResult['errors'][] = "Invalid JSON in file: {$filename}";

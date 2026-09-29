@@ -2,7 +2,7 @@
 title: "API Development"
 intent: "Patterns for creating and maintaining API endpoints using Slim and service layer"
 tags: ["api","slim","routes","security"]
-prereqs: ["slim-4-best-practices.md","php-best-practices.md"]
+prereqs: ["[[slim-4-best-practices]]","[[php-best-practices]]"]
 complexity: "intermediate"
 ---
 
@@ -77,12 +77,82 @@ $group->post('/endpoint', function (Request $request, Response $response, array 
 });
 ```
 
+### Canonical API Error Shape <!-- learned: 2026-09-11 -->
+
+**Every `/api` error response uses one shape**, built by
+`SlimUtils::buildErrorPayload()` and emitted by `renderErrorJSON()`, the role
+and auth middleware, and the Slim error handlers (#9737):
+
+```json
+{
+  "success": false,
+  "message": "User not found",
+  "error":   "User not found",
+  "code":    404
+}
+```
+
+- **`message` is canonical** — read it in new client code.
+- **`error` is an alias** of `message`, kept so the pre-existing
+  `responseJSON.error` consumers (e.g. `DepositSlipEditor.js`) keep working.
+  Do not give it a different value.
+- **`code`** mirrors the HTTP status.
+- **`success: false`** lets a caller branch without inspecting the status.
+- Extra keys are merged on top: the Slim error handlers add
+  `request: {method, path}`; a route may pass `['errors' => [...]]` via the
+  `$extra` argument.
+
+Emit it from anywhere that hand-rolls a JSON error:
+
+```php
+use ChurchCRM\Slim\SlimUtils;
+
+$response->getBody()->write(json_encode(
+    SlimUtils::buildErrorPayload(gettext('Invalid API key'), 401)
+));
+```
+
+Known outliers still emitting `{"error": …}` only —
+`RequestParameterValidationMiddleware`, `InputSanitizationMiddleware`,
+`PublicCalendarMiddleware`. They call `renderJSON` directly (so they also skip
+redaction and error logging); convert them when you next touch them.
+
 ### renderErrorJSON Behavior
 
 - **Server-side logs**: exception class, message, file, line, trace, request method/path/IP/user-agent
 - **Client receives**: sanitized message only (no traces, file paths, or credentials)
-- **Sanitizes messages automatically**: detects and masks password/token/host patterns
+- **Redacts secret *values*, not words**: see below
 - **Status passed as parameter**: `int $status` parameter (NOT via `response->withStatus(...)`)
+
+### Redaction: Value-Shaped, Not Word-Shaped <!-- learned: 2026-09-11 -->
+
+`SlimUtils::containsSensitiveValue()` decides whether a message is replaced by
+the generic "An error occurred…". It matches credential-like **context** only —
+`name=value` / `name: value` assignments for credential names, DSN fragments
+(`host=`, `dbname=`, `user=`), credentials in a URL (`scheme://user:pass@host`),
+PEM key material, JWTs, opaque runs of 40+ characters, and complete IPv4
+addresses.
+
+It deliberately does **not** match bare English words. The previous rule was an
+unanchored word list, so `User not found` came back as "An error occurred…",
+`Ghostwriter field is required` was redacted for containing "host", and
+`Value must be between 1.5 and 3.5` for containing "1.5" (#9737).
+
+Regression coverage for both directions lives in
+`scripts/test-error-redaction.php` (`npm run test:php`, also run in CI). It
+calls the real `containsSensitiveValue()`, `sanitizeErrorMessage()`,
+`buildErrorPayload()` and `renderErrorJSON()` and asserts that quoted JSON keys
+(`{"password":"hunter2"}`), standard base64 with `/`, `+`, `=` and lowercase
+runs, DSNs, JWTs and PEM blocks are redacted while `User not found` and
+`password must be at least 8 characters` stay readable. Add a case there
+whenever you touch `SENSITIVE_VALUE_PATTERNS`.
+
+`sanitizeErrorMessage()` additionally collapses ORM/PDO failures to
+"A database error occurred…". Detect them by **exception class**
+(`PropelException`, `PDOException`) — the vendor directory is `perplorm/perpl`
+and a failing write is thrown from the generated model under
+`src/ChurchCRM/model/`, so a `stripos($file, 'propel')` check never fires and
+Propel leaks the whole `INSERT INTO … VALUES (:p0, …)` statement to the client.
 
 ### Signature
 
@@ -139,7 +209,7 @@ throw new HttpBadRequestException($request, gettext('invalid event type id'));
 
 **Key Pattern:**
 - **Success responses**: `{'success': true, 'data': ...}` or `{'success': true, 'message': ...}`
-- **Error responses**: ALWAYS use `message` field (not `error`, `msg`, or other variations)
+- **Error responses**: build with `SlimUtils::buildErrorPayload()` / `renderErrorJSON()`; read `message` (see [Canonical API Error Shape](#canonical-api-error-shape))
 - **Security**: Return generic error messages to users, not specific validation details
 
 **Example:**
@@ -155,7 +225,8 @@ var errorText = error.message || error.error || error.msg || i18next.t("Unknown 
 
 ## Middleware Order (CRITICAL - Slim 4 uses LIFO) <!-- learned: 2026-04-07 -->
 
-> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+> [!NOTE] Full reference
+> [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
 
 **TL;DR:** `addErrorMiddleware()` MUST be called AFTER `addRoutingMiddleware()`. Wrong order → raw 500 on 404s.
 
@@ -317,9 +388,37 @@ const data = await fetchAPIJSON<AvatarInfo>('person/123/avatar');
 
 **Do NOT create API endpoints** if a service method is only called from a legacy page - call the service directly instead.
 
+## Cypress API Spec (REQUIRED for every new endpoint) <!-- learned: 2026-07-18 -->
+
+**Every new API endpoint MUST ship with a Cypress API spec in the same PR.** A PR
+adding an endpoint without a spec is incomplete — reviewers must request one.
+
+Why this is mandatory: PR #8985 shipped `GET /api/attendance/person/{id}` with a
+Propel hydration bug that 500'd on every real record. The spec that would have
+caught it existed in the PR but had never been executed — an endpoint is only as
+tested as the spec that *runs* against it. Seed real data in the spec so the
+happy path exercises actual hydration, not just an empty result set.
+
+Minimum coverage per endpoint (see
+`cypress/e2e/api/private/people/people.attendance.spec.js` as the template):
+
+- **Happy path with seeded data** — seed via existing APIs in `before()`, clean up
+  in `after()`; assert status 200 AND response shape/values (an empty-DB 200 can
+  hide hydration bugs)
+- **Empty/zero-data path** — e.g. person with no records
+- **401** — no API key / no session
+- **403** — a role-restricted caller (use `limited.user` inline-key pattern when
+  standard seeded users are too privileged)
+- **404** — nonexistent entity ID
+
+Run it before pushing: `npx cypress run --config-file cypress/configs/docker.config.ts --spec "<path>"` —
+never rely on CI to execute it first (bot-authored PRs may not trigger e2e jobs).
+
 ## OpenAPI Documentation (REQUIRED for all API changes)
 
-ChurchCRM uses `zircote/swagger-php` 4.x to generate OpenAPI 3.0 specs from DocBlock annotations. The generated specs power the public API reference in the Documentation.
+ChurchCRM uses `zircote/swagger-php` 6.x to generate OpenAPI 3.0 specs from DocBlock annotations. The generated specs power the public API reference in the Documentation. <!-- learned: 2026-07-26 -->
+
+v6 kept full support for the legacy `@OA\*` DocBlock annotation style used throughout this codebase (it only *added* PHP 8 attribute syntax as an alternative) — no annotation rewrite was needed when upgrading from 4.x. See `.github/workflows/docs.yml` for the CI job that regenerates and validates the spec on every API-touching PR.
 
 **When adding or updating any API endpoint, you MUST add/update the `@OA\*` annotation.**
 
@@ -371,12 +470,33 @@ Public spec: `Utility`, `Auth`, `Registration`, `Calendar`, `Lookups`
 
 Private spec: `Calendar`, `People`, `Families`, `Groups`, `Properties`, `Finance`, `Users`, `2FA`, `System`, `Admin`, `Cart`, `Search`, `Map`
 
-### Regenerating the spec
+### Regenerating the spec <!-- learned: 2026-09-12 -->
 
-After annotating, run from `CRM/src/`:
+`zircote/swagger-php` is a **dev dependency** (`require-dev` in `src/composer.json`) and
+`npm run build` runs `composer install --no-dev`, which removes it. On a freshly built tree the
+generator fatals on the missing class, so install the dev dependencies first:
+
 ```bash
+cd src
+composer install              # NOT --no-dev; swagger-php is require-dev
 composer run openapi:public   # → CRM/docs/openapi/generated/public-api.yaml
 composer run openapi:private  # → CRM/docs/openapi/generated/private-api.yaml
+```
+
+Each command prints `✓ OpenAPI spec written to: <path> (<bytes>, <n> file(s) scanned)` on
+stderr. **If the whole spec scrolls past on stdout instead, no file was written** — that was
+issue #9824: `generate.php` used `getopt()`, which stops at the first non-option argument, so the
+`--output` / `--format` / `--exclude` flags that came after the scan paths were discarded. The
+script now parses `$argv` itself and accepts flags anywhere (`--output=FILE`, `--output FILE`,
+`-o FILE`), and a missing info file, scan path or `--exclude` path is a hard error instead of a
+warning. Running it by hand:
+
+```bash
+cd src
+php ../docs/openapi/generate.php --output=../docs/openapi/generated/private-api.yaml \
+    --format=yaml --exclude=api/routes/public \
+    ../docs/openapi/openapi-private-info.php api/routes/ admin/routes/api/ \
+    finance/routes/api/ kiosk/routes/api/ plugins/routes/api/
 ```
 
 Commit the updated YAML files to the CRM repo. The rest is automated:
@@ -506,6 +626,15 @@ PUT    /note/{noteId}             — update text/private (author or admin only)
 DELETE /note/{noteId}             — delete + write type=delete-note audit entry
 ```
 
+**Permission model (confirmed 2026-07-06):**
+- All routes require `NotesRoleAuthMiddleware` → `isNotesEnabled()` must be true.
+- `isAdmin()` → `isNotesEnabled()` always returns `true` (admin purity), so admins pass the middleware.
+- Notes=1 (non-admin): can view public notes and own private notes. Cannot view private notes authored by others (returns 404 to avoid existence leak).
+- Admin: can view all notes but private notes authored by others show full content via `canReadPrivateNotes()` = `isAdmin()`. The TimelineService still renders `[Private Note]` placeholders in the timeline view.
+- DELETE: checked by `isAdmin() OR note.getEnteredBy() === currentUser.getId()`. Admin can delete any note, non-admin can only delete their own. This works without a separate admin-bypass because admin purity already passes NotesRoleAuthMiddleware.
+- PUT: author or admin only (`isAdmin() OR isAuthor`).
+- **Without Notes permission**: zero access to Note API routes — all blocked at middleware.
+
 **Delete audit trail pattern** — capture author name BEFORE deleting, then write a `type='delete-note'` Note so the timeline stays auditable:
 
 ```php
@@ -630,10 +759,12 @@ $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, a
 
 **Do not** leak the service's raw exception message to the client — localize via
 `gettext()` and log the exception via `renderErrorJSON`'s 5th/6th arguments.
-`SlimUtils::renderErrorJSON` sanitizes messages matching
-`/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i`
-back to a default, and the service message `"Cannot delete fund 'X': it has N associated pledge(s)."`
-will be sanitized if the fund name contains `user` / `host` / etc.
+`SlimUtils::renderErrorJSON` redacts messages that carry a secret *value* —
+see [Redaction: Value-Shaped, Not Word-Shaped](#redaction-value-shaped-not-word-shaped).
+A service message such as `"Cannot delete fund 'X': it has N associated pledge(s)."`
+survives even when the fund name contains the words `user` or `host`; it is
+redacted only if the name looks like a credential (`api_key=…`, a 40+ character
+opaque token, an IPv4 address).
 
 ### Reference implementations in-tree
 
@@ -691,7 +822,7 @@ private function renderError(
     int $status,
     string $title,
     string $message,
-    string $icon = 'ti-calendar-off',
+    string $icon = 'fa-calendar-slash',
 ): ResponseInterface {
     if ($this->prefersJson($request)) {
         return SlimUtils::renderJSON($response, [

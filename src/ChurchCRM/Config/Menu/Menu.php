@@ -5,6 +5,7 @@ namespace ChurchCRM\Config\Menu;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
@@ -39,12 +40,12 @@ class Menu
             'Calendar'     => self::getCalendarMenu($canViewEvents),
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
-            'SundaySchool' => self::getSundaySchoolMenu($isAdmin),
-            'Communication' => self::getCommunicationMenu(),
+            'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
+            'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled()),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled(), $canViewEvents),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
-            'Fundraiser'   => self::getFundraisersMenu($isAdmin),
-            'Reports'      => self::getReportsMenu(),
+            'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
+            'Reports'      => self::getReportsMenu($isAdmin),
         ];
         
         // Backward compatibility: plugins that declare parent 'Email' still attach to Communication
@@ -52,7 +53,13 @@ class Menu
             $menus['Email'] = $menus['Communication'];
         }
 
-        // Add plugin menu items to their parent menus
+        // Admin menu is always last (at bottom of nav)
+        if ($isAdmin) {
+            $menus['Admin'] = self::getAdminMenu($isAdmin);
+        }
+
+        // Add plugin menu items to their parent menus (must run after Admin menu is set,
+        // so plugins can attach submenu items to the Admin menu)
         self::addPluginMenuItems($menus);
 
         // Remove the backward-compat alias so it doesn't appear as a duplicate menu
@@ -60,12 +67,14 @@ class Menu
         
         // Allow plugins to add top-level menus via the MENU_BUILDING hook
         $menus = HookManager::applyFilters(Hooks::MENU_BUILDING, $menus);
-        
-        // Admin menu is always last (at bottom of nav)
-        if ($isAdmin) {
-            $menus['Admin'] = self::getAdminMenu($isAdmin);
+
+        // Ensure Admin is always last (at bottom of nav) by moving it to the end
+        if ($isAdmin && isset($menus['Admin'])) {
+            $admin = $menus['Admin'];
+            unset($menus['Admin']);
+            $menus['Admin'] = $admin;
         }
-        
+
         return $menus;
 
     }
@@ -87,12 +96,12 @@ class Menu
     {
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-people-group');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'people/dashboard', true, 'fa-gauge'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New') . ' ' . gettext('Person'), 'PersonEditor.php', $isAddRecordsEnabled, 'fa-user-plus'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Person'), 'PersonEditor.php', $isAddRecordsEnabled, 'fa-user-plus'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Person Listing'), 'people/list', true, 'fa-person-half-dress'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Photo Directory'), 'people/photos', true, 'fa-images'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New') . ' ' . gettext('Family'), 'FamilyEditor.php', $isAddRecordsEnabled, 'fa-people-roof'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'FamilyEditor.php', $isAddRecordsEnabled, 'fa-people-roof'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'people/family', true, 'fa-people-roof'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Family Map'), 'v2/map', true, 'fa-map'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Family Map'), 'people/map', true, 'fa-map'));
 
         if ($isAdmin || $isMenuOptions) {
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
@@ -112,7 +121,12 @@ class Menu
 
     private static function getGroupMenu(bool $isAdmin, bool $isMenuOptions, bool $isManageGroups): MenuItem
     {
-        $groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-users');
+        $groupMenu = new MenuItem(gettext('Groups'), '', $isManageGroups, 'fa-users');
+        if (!$isManageGroups) {
+            // Every /groups route is behind ManageGroupRoleAuthMiddleware; skip the lookups.
+            return $groupMenu;
+        }
+
         $groupMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/dashboard', true, 'fa-gauge'));
         // fetch list options lightweight (only name/id)
         $listOptions = ListOptionQuery::create()
@@ -162,22 +176,26 @@ class Menu
             $groupMenu->addSubMenu($tmpMenu);
         }
 
-        $canSeeGroupAdmin = $isAdmin || $isMenuOptions || $isManageGroups;
-        if ($canSeeGroupAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-users'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isAdmin, 'fa-desktop'));
-
-            $groupMenu->addSubMenu($adminMenu);
-        }
+        // Each entry mirrors its route's permission: PropertyList.php requires MenuOptions,
+        // group types require Admin, the kiosk manager requires ManageGroups.
+        $adminMenu = new MenuItem(gettext('Admin'), '', true);
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isMenuOptions, 'fa-users'));
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
+        $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
+        $groupMenu->addSubMenu($adminMenu);
 
         return $groupMenu;
     }
 
-    private static function getSundaySchoolMenu(bool $isAdmin): MenuItem
+    private static function getSundaySchoolMenu(bool $isAdmin, bool $isManageGroups): MenuItem
     {
-        $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-school');
+        $isEnabled = $isManageGroups && ($isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'));
+        $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isEnabled, 'fa-school');
+        if (!$isEnabled) {
+            // Sunday School pages live under /groups/sundayschool, behind ManageGroupRoleAuthMiddleware.
+            return $sundaySchoolMenu;
+        }
+
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/sundayschool/dashboard', true, 'fa-gauge'));
         $classes = GroupQuery::create()->filterByType(4)->orderByName()->select(['Id','Name'])->find()->toArray();
         if (!empty($classes)) {
@@ -189,11 +207,11 @@ class Menu
         return $sundaySchoolMenu;
     }
 
-    private static function getCommunicationMenu(): MenuItem
+    private static function getCommunicationMenu(bool $isEmailEnabled): MenuItem
     {
-        $commMenu = new MenuItem(gettext('Communication'), '', true, 'fa-comments');
-        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', true, 'fa-envelope'));
-        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', true, 'fa-comment-sms'));
+        $commMenu = new MenuItem(gettext('Communication'), '', $isEmailEnabled, 'fa-comments');
+        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', $isEmailEnabled, 'fa-envelope'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', $isEmailEnabled, 'fa-comment-sms'));
 
         return $commMenu;
     }
@@ -263,42 +281,58 @@ class Menu
     {
         // $isFinanceEnabled already includes admin bypass and checks bEnabledFinance
         $depositsMenu = new MenuItem(gettext('Finance'), '', $isFinanceEnabled, 'fa-cash-register');
+
+        // Open-deposit count badge — initialized to 0, loaded dynamically via JavaScript
+        // on page load (matches Fundraiser badge pattern). See CRMJSOM.js loadOpenDepositCount().
+        $depositsMenu->addCounter(new MenuCounter(
+            'openDeposits',
+            'bg-blue',
+            0,
+            gettext('Open Deposits')
+        ));
+
         $depositsMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'finance/', $isFinanceEnabled, 'fa-gauge'));
-        $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'FindDepositSlip.php', $isFinanceEnabled, 'fa-list'));
+        $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'finance/deposit/search', $isFinanceEnabled, 'fa-list'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'finance/reports', $isFinanceEnabled, 'fa-file-invoice'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Pledge Dashboard'), 'finance/pledge/dashboard', $isFinanceEnabled, 'fa-handshake'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'DepositSlipEditor.php?DepositSlipID=' . $_SESSION['iCurrentDeposit'], $isFinanceEnabled, 'fa-pen-to-square'));
 
-        if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isAdmin, 'fa-envelope'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'DonationFundEditor.php', $isAdmin, 'fa-piggy-bank'));
+        if ($isFinanceEnabled) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isFinanceEnabled, 'fa-envelope'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isFinanceEnabled, 'fa-piggy-bank'));
 
             $depositsMenu->addSubMenu($adminMenu);
         }
         return $depositsMenu;
     }
 
-    private static function getFundraisersMenu(bool $isAdmin): MenuItem
+    private static function getFundraisersMenu(bool $canManageFundraisers): MenuItem
     {
-        $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', $isAdmin || SystemConfig::getBooleanValue('bEnabledFundraiser'), 'fa-money-bill-1');
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'FindFundRaiser.php', true, 'fa-list'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'FundRaiserEditor.php?FundRaiserID=-1', true, 'fa-circle-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), 'AddDonors.php', true, 'fa-user-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('View Buyers'), 'PaddleNumList.php', true, 'fa-users'));
-        $iCurrentFundraiser = 0;
-        if (array_key_exists('iCurrentFundraiser', $_SESSION)) {
-            $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
-        }
-        $fundraiserMenu->addCounter(new MenuCounter('iCurrentFundraiser', 'bg-blue', $iCurrentFundraiser));
+        // Menu shows clean dashboard-style links; no single "current fundraiser" context.
+        // The Fundraiser Dashboard lets users navigate to any specific fundraiser from there.
+        $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', $canManageFundraisers, 'fa-money-bill-1');
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'fundraiser/', true, 'fa-list'));
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'fundraiser/editor', true, 'fa-circle-plus'));
+
+        // Active-fundraiser count badge — initialized to 0, loaded dynamically via JavaScript
+        // on page load (matches Calendar badge pattern). See CRMJSOM.js loadFundraiserCount().
+        $fundraiserMenu->addCounter(new MenuCounter(
+            'activeFundraisers',
+            'bg-blue',
+            0,
+            gettext('Active Fundraisers')
+        ));
 
         return $fundraiserMenu;
     }
 
-    private static function getReportsMenu(): MenuItem
+    private static function getReportsMenu(bool $isAdmin): MenuItem
     {
-        $reportsMenu = new MenuItem(gettext('Data/Reports'), '', true, 'fa-database');
-        $reportsMenu->addSubMenu(new MenuItem(gettext('Query Menu'), 'QueryList.php', true, 'fa-magnifying-glass'));
+        // GHSA-6rgg-mrx3-92w7: QueryList.php requires isAdmin(); hide the whole menu from non-admins.
+        $reportsMenu = new MenuItem(gettext('Data/Reports'), '', $isAdmin, 'fa-database');
+        $reportsMenu->addSubMenu(new MenuItem(gettext('Queries'), 'QueryList.php', $isAdmin, 'fa-database'));
+        $reportsMenu->addSubMenu(new MenuItem(gettext('People Reports'), 'v2/reports/people', $isAdmin, 'fa-table-list'));
 
         return $reportsMenu;
     }
@@ -333,6 +367,7 @@ class Menu
         $menu = new MenuItem(gettext('Admin'), '', true, 'fa-screwdriver-wrench');
         $menu->addSubMenu(new MenuItem(gettext('Admin Dashboard'), 'admin/', $isAdmin, 'fa-gauge'));
         $menu->addSubMenu(new MenuItem(gettext('Church Information'), 'admin/system/church-info', $isAdmin, 'fa-church'));
+        $menu->addSubMenu(new MenuItem(gettext('Localization & Formats'), 'admin/system/localization', $isAdmin, 'fa-globe'));
         $menu->addSubMenu(new MenuItem(gettext('Get Started'), 'admin/get-started', $isAdmin, 'fa-rocket'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-gear'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-gear'));

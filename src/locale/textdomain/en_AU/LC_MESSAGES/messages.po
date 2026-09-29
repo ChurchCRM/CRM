@@ -90,8 +90,8 @@ msgid "Check"
 msgstr "Cheque"
 
 #: 
-msgid "GPS Visualizer"
-msgstr "GPS Visualiser"
+msgid "Generate Catalog"
+msgstr "Generate Catalogue"
 
 #: 
 msgid "City, State, Zip"
@@ -121,4 +121,129 @@ msgstr "Postcode"
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Make user-entered postcodes UPPERCASE when saving to the database."
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "Customisable report with filtering by date, fund, family, and payment method."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Customise the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "Reports related to member voting eligibility and organisation governance."
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Require all users to enrol in two-factor authentication"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics collects anonymised usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Globally Recognised Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp Integration enables synchronisation between ChurchCRM contacts and your MailChimp email marketing lists."
+
+#: 
+msgid "Neighborhood"
+msgstr "Neighbourhood"
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "The month that starts your organisation's fiscal year"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Customise the look and feel of the application"
+
+#: 
+msgid "Primary Color"
+msgstr "Primary Colour"
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Set the accent colour used for buttons, links, and active elements"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Invalid colour format. Use hex colours like #FF0000."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+
+#: 
+msgid "Background Color"
+msgstr "Background Colour"
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Failed to cancel enrolment. Please try again."
+
+#: 
+msgid "Foreground Color"
+msgstr "Foreground Colour"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "Include Sunday School classes and enrolments"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Two Factor Enrolment Error"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Localisation & Formats"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Localisation settings saved successfully"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Save Localisation Settings"
+
+#: 
+msgid "Catalog"
+msgstr "Catalogue"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Failed to load neighbours."
+
+#: 
+msgid "Find Neighbors"
+msgstr "Find Neighbours"
+
+#: 
+msgid "Map centered on"
+msgstr "Map centred on"
+
+#: 
+msgid "Max neighbors"
+msgstr "Max neighbours"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Search Neighbours"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Select a family and click Find Neighbours to see results."
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Two-factor authentication is required. You have %d day to enrol."
+msgstr[1] "Two-factor authentication is required. You have %d days to enrol."
 

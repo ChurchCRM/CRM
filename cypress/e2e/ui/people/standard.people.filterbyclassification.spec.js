@@ -31,6 +31,23 @@ describe("People classification filters", () => {
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
     });
 
+    // Regression test for issue #9182: OptionId 5 (Non-Attender) was previously mapped
+    // by positional index, causing it to select the wrong option when OptionId != position.
+    it("correctly selects Non-Attender (OptionId=5) from URL param — regression #9182", () => {
+        cy.visit("people/list?Classification=5&familyActiveStatus=all");
+
+        cy.url().should("include", "Classification=5");
+
+        // TomSelect must show "Non-Attender", NOT the 5th positional entry "Non-Attender (staff)".
+        // Note: remove_button plugin appends × inside .item, so have.text won't match — use contain.
+        // The .and("not.contain", "(staff)") guard is what catches the wrong-option bug.
+        cy.get(".filter-Classification")
+            .siblings(".ts-wrapper")
+            .find(".ts-control .item")
+            .should("contain", "Non-Attender")
+            .and("not.contain", "(staff)");
+    });
+
     it("filter-by-dropdown-choice filters table to matching row", () => {
         cy.visit("people/list?familyActiveStatus=all");
 

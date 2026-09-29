@@ -6,45 +6,239 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
         iMethod: "CASH",
         Date: "2025-10-25",
         FamilyID: "1",
+        FYID: 29,
+        tScanString: "",
         FundSplit: JSON.stringify([
             {
                 FundID: "1",
                 Amount: 100.00,
+                NonDeductible: 0,
+                Comment: "",
             },
         ]),
         ...overrides,
     });
 
     describe("POST /api/payments/ - Type casting fix validation", () => {
-        it("POST /api/payments/ - No type mismatch errors", () => {
-            // FundSplit is sent as a JSON string (as the frontend does via JSON.stringify).
-            // validateFund receives it as a string; count($string) throws TypeError in PHP 8.
-            // The error middleware catches it and returns a clean 500 — no raw PHP type errors.
+        it("POST /api/payments/ - No type mismatch errors after normalizeFundSplit fix", () => {
+            // normalizeFundSplit() decodes the JSON-string FundSplit before validateFund()
+            // runs, eliminating the PHP 8 TypeError from count($string). The request may
+            // now succeed (200) or fail with a data/DB error — any of these is acceptable
+            // here. What matters is the absence of PHP type-error strings.
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/payments/",
                 getPaymentPayload(),
-                500
+                [200, 400, 422, 500]
             ).then((resp) => {
-                const bodyStr = JSON.stringify(resp).toLowerCase();
+                const bodyStr = JSON.stringify(resp.body).toLowerCase();
                 expect(bodyStr).to.not.include("call to a member function on array");
                 expect(bodyStr).to.not.include("trying to get property");
+                expect(bodyStr).to.not.include("typeerror");
             });
         });
 
         it("POST /api/payments/ with CHECK method - Null safety validation", () => {
-            // CHECK without iCheckNo: validateFund still runs first (FundSplit string → TypeError → 500).
-            // If validateFund ever gets fixed to accept strings, validateChecks throws
-            // "Must specify non-zero check number" — also a clean 500.
+            // After normalizeFundSplit fixes the FundSplit TypeError, validateChecks now
+            // runs and throws "Must specify non-zero check number" when iCheckNo is absent.
+            // The legacy route has no try/catch, so Slim's error middleware returns 500.
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/payments/",
                 getPaymentPayload({ iMethod: "CHECK" }),
-                500
+                [400, 422, 500]
             ).then((resp) => {
-                const bodyStr = JSON.stringify(resp).toLowerCase();
+                const bodyStr = JSON.stringify(resp.body).toLowerCase();
                 expect(bodyStr).to.not.include("call to a member function on array");
                 expect(bodyStr).to.not.include("undefined property");
+                expect(bodyStr).to.not.include("typeerror");
+            });
+        });
+    });
+
+    describe("POST /api/payments/pledges - New MVC endpoint validation", () => {
+        it("POST /api/payments/pledges - Returns 400 when FundSplit is missing", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                { type: "Payment", iMethod: "CASH", Date: "2025-10-25", FamilyID: "1", FYID: 29 },
+                400
+            ).then((resp) => {
+                // renderErrorJSON returns { success: false, message: '...' }
+                expect(resp.body).to.have.property("message");
+                expect(resp.body.success).to.equal(false);
+            });
+        });
+
+        it("POST /api/payments/pledges - Valid CASH payload returns payment with GroupKey", () => {
+            // Verifies that the post-save redirect in the JS editor receives a GroupKey.
+            // Seed data has FamilyID 1 and FundID 1, so this request should succeed.
+            // Note: the /api/payments/pledges endpoint returns `payment` as a decoded JSON
+            // object (not a double-encoded string), so resp.body.payment is already parsed.
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getPaymentPayload(),
+                200
+            ).then((resp) => {
+                expect(resp.body).to.have.property("payment");
+                const parsed = resp.body.payment;
+                expect(parsed).to.have.property("GroupKey");
+                expect(parsed.GroupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+                expect(parsed).to.have.property("total");
+                expect(parsed.total).to.be.closeTo(100.00, 0.01);
+                expect(parsed).to.have.property("total_formatted");
+                expect(parsed.total_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                // Phase 4: fund-level *_formatted siblings (from getPledgeorPayment)
+                expect(parsed.funds).to.be.an("array").with.length.greaterThan(0);
+                const fund = parsed.funds[0];
+                expect(fund).to.have.property("amount_formatted");
+                expect(fund.amount_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                expect(fund).to.have.property("nonDeductible_formatted");
+                expect(fund.nonDeductible_formatted).to.be.a("string");
+            });
+        });
+
+        it("POST /api/payments/pledges - Multi-fund split saves all funds (smoke test)", () => {
+            // Verifies the core fix: multi-fund FundSplit no longer stops after the first row.
+            // Both rows use FundID 1 (the only fund in seed data); the pledge table has
+            // no unique constraint on (famId, fundId, date), so two rows are valid.
+            // Note: the /api/payments/pledges endpoint returns `payment` as a decoded JSON
+            // object (not a double-encoded string), so resp.body.payment is already parsed.
+            const multiSplit = JSON.stringify([
+                { FundID: "1", Amount: 75.00, NonDeductible: 0, Comment: "Fund split 1" },
+                { FundID: "1", Amount: 25.00, NonDeductible: 0, Comment: "Fund split 2" },
+            ]);
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getPaymentPayload({ FundSplit: multiSplit }),
+                200
+            ).then((resp) => {
+                expect(resp.body).to.have.property("payment");
+                const parsed = resp.body.payment;
+                expect(parsed).to.have.property("GroupKey");
+                // Both rows persisted — funds array should have 2 entries
+                expect(parsed.funds).to.be.an("array").with.length(2);
+                // Total reflects both allocations
+                expect(parsed.total).to.be.closeTo(100.00, 0.01);
+                expect(parsed).to.have.property("total_formatted");
+                expect(parsed.total_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                // Phase 4: fund-level *_formatted siblings on each fund entry
+                const firstFund = parsed.funds[0];
+                expect(firstFund).to.have.property("amount_formatted");
+                expect(firstFund.amount_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                expect(firstFund).to.have.property("nonDeductible_formatted");
+                expect(firstFund.nonDeductible_formatted).to.be.a("string");
+            });
+        });
+    });
+
+    describe("GET /api/payments/pledges/{groupKey} - Pledge group retrieval", () => {
+        it("GET /api/payments/pledges/{groupKey} - Returns full group details for an existing groupKey", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getPaymentPayload(),
+                200
+            ).then((createResp) => {
+                const groupKey = createResp.body.groupKey;
+                expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    "/api/payments/pledges/" + groupKey,
+                    null,
+                    200
+                ).then((getResp) => {
+                    expect(getResp.body.groupKey).to.equal(groupKey);
+                    expect(getResp.body.pledgeOrPayment).to.equal("Payment");
+                    expect(getResp.body.funds).to.be.an("array").with.length(1);
+                    expect(getResp.body.total).to.be.closeTo(100.00, 0.01);
+                    // Phase 4: *_formatted siblings must be present
+                    expect(getResp.body).to.have.property("total_formatted");
+                    expect(getResp.body.total_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                    const fund = getResp.body.funds[0];
+                    expect(fund).to.have.property("amount_formatted");
+                    expect(fund.amount_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                    expect(fund).to.have.property("nonDeductible_formatted");
+                    expect(fund.nonDeductible_formatted).to.be.a("string");
+                });
+            });
+        });
+
+        it("GET /api/payments/pledges/{groupKey} - Returns 404 for an unknown groupKey", () => {
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/payments/pledges/does-not-exist-groupkey",
+                null,
+                404
+            );
+        });
+    });
+
+    describe("DELETE /api/payments/{groupKey} - Multi-fund delete (deletePledgeGroup bug fix)", () => {
+        it("DELETE /api/payments/{groupKey} - Removes every fund row sharing the GroupKey, not just the first", () => {
+            // Regression test for the bug called out in #8482: the old
+            // deletePayment() only removed the first matching row. deletePledgeGroup()
+            // must delete all pledge_plg rows for a multi-fund GroupKey in one call.
+            const multiSplit = JSON.stringify([
+                { FundID: "1", Amount: 60.00, NonDeductible: 0, Comment: "Delete test fund 1" },
+                { FundID: "1", Amount: 40.00, NonDeductible: 0, Comment: "Delete test fund 2" },
+            ]);
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getPaymentPayload({ FundSplit: multiSplit }),
+                200
+            ).then((createResp) => {
+                const groupKey = createResp.body.groupKey;
+                expect(createResp.body.payment.funds).to.be.an("array").with.length(2);
+
+                cy.makePrivateAdminAPICall(
+                    "DELETE",
+                    "/api/payments/" + groupKey,
+                    null,
+                    200
+                ).then(() => {
+                    // If any row had survived the delete, this would still return 200
+                    // with leftover fund data instead of 404 — proving all rows were removed.
+                    cy.makePrivateAdminAPICall(
+                        "GET",
+                        "/api/payments/pledges/" + groupKey,
+                        null,
+                        404
+                    );
+                });
+            });
+        });
+    });
+
+    describe("GET /api/fiscalyear - Fiscal year resolution", () => {
+        it("GET /api/fiscalyear - Returns 200 with fyId and label", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/fiscalyear", null, 200).then((resp) => {
+                expect(resp.body).to.have.property("fyId");
+                expect(resp.body.fyId).to.be.a("number").and.to.be.at.least(1);
+                expect(resp.body).to.have.property("label");
+                expect(resp.body.label).to.match(/^\d{4}(\/\d{2})?$/);
+            });
+        });
+
+        it("GET /api/fiscalyear?date=2025-01-15 - Returns correct fyId for a specific date", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/fiscalyear?date=2025-01-15", null, 200).then((resp) => {
+                expect(resp.body).to.have.property("fyId");
+                expect(resp.body.fyId).to.be.a("number").and.to.be.at.least(1);
+                expect(resp.body).to.have.property("label");
+            });
+        });
+
+        it("GET /api/fiscalyear - Unauthenticated returns 401", () => {
+            cy.request({
+                method: "GET",
+                url: "/api/fiscalyear",
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.equal(401);
             });
         });
     });
@@ -78,6 +272,11 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
                     expect(payment).to.have.property("Fund");
                     expect(payment).to.have.property("Date");
                     expect(payment).to.have.property("Amount");
+                    // Phase 4: *_formatted siblings must be present
+                    expect(payment).to.have.property("Amount_formatted");
+                    expect(payment.Amount_formatted).to.be.a("string").and.to.have.length.greaterThan(0);
+                    expect(payment).to.have.property("Nondeductible_formatted");
+                    expect(payment.Nondeductible_formatted).to.be.a("string");
                     expect(payment).to.have.property("PledgeOrPayment");
                 }
             });
@@ -107,6 +306,208 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
             ).then((resp) => {
                 expect(resp.body).to.have.property("data");
                 expect(resp.body.data).to.be.an("array");
+            });
+        });
+    });
+});
+
+// ---------------------------------------------------------------------------
+// Regression tests for issue #9615 — anonymous donor (no Family) support
+// ---------------------------------------------------------------------------
+describe("API Finance Payments - Anonymous donor / no Family (#9615)", () => {
+    /**
+     * Payload factory for anonymous (no FamilyID) payments.
+     * FamilyID is explicitly null — mirrors what the pledge editor now sends
+     * when no family is selected.
+     */
+    const getAnonPayload = (overrides = {}) => ({
+        type: "Payment",
+        iMethod: "CASH",
+        Date: "2025-11-01",
+        FamilyID: null,   // ← anonymous / cash donation — no family
+        FYID: 29,
+        tScanString: "",
+        FundSplit: JSON.stringify([
+            {
+                FundID: "1",
+                Amount: 50.00,
+                NonDeductible: 0,
+                Comment: "anonymous donation #9615",
+            },
+        ]),
+        ...overrides,
+    });
+
+    /**
+     * Payload factory for payments WITH a family (regression guard).
+     */
+    const getFamilyPayload = (overrides = {}) => ({
+        type: "Payment",
+        iMethod: "CASH",
+        Date: "2025-11-02",
+        FamilyID: "1",
+        FYID: 29,
+        tScanString: "",
+        FundSplit: JSON.stringify([
+            {
+                FundID: "1",
+                Amount: 75.00,
+                NonDeductible: 0,
+                Comment: "family donation regression #9615",
+            },
+        ]),
+        ...overrides,
+    });
+
+    describe("POST /api/payments/pledges — anonymous donor (FamilyID null)", () => {
+        it("returns 200 and a GroupKey when FamilyID is null (regression fix for #9615)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getAnonPayload(),
+                200
+            ).then((resp) => {
+                expect(resp.body).to.have.property("payment");
+                const groupKey = resp.body.groupKey;
+                expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+                const payment = resp.body.payment;
+                expect(payment).to.have.property("total");
+                expect(payment.total).to.be.closeTo(50.00, 0.01);
+
+                // Verify the record was actually persisted by fetching via group key
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    "/api/payments/pledges/" + groupKey,
+                    null,
+                    200
+                ).then((getResp) => {
+                    expect(getResp.body.groupKey).to.equal(groupKey);
+                    expect(getResp.body.pledgeOrPayment).to.equal("Payment");
+                    expect(getResp.body.funds).to.be.an("array").with.length(1);
+                    expect(getResp.body.total).to.be.closeTo(50.00, 0.01);
+                    // familyId and familyName should be empty/null for anonymous donations
+                    expect(getResp.body.familyId).to.satisfy(
+                        (v) => v === null || v === 0 || v === undefined,
+                        "familyId should be absent/null/0 for anonymous donations"
+                    );
+
+                    // Clean up — delete the anonymous pledge we just created
+                    cy.makePrivateAdminAPICall(
+                        "DELETE",
+                        "/api/payments/" + groupKey,
+                        null,
+                        200
+                    );
+                });
+            });
+        });
+
+        it("saved anonymous record is removed after DELETE (verifies persistence)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getAnonPayload({ Date: "2025-11-03" }),
+                200
+            ).then((createResp) => {
+                const groupKey = createResp.body.groupKey;
+                expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+
+                // Verify the record exists before deleting (rules out a false positive 404)
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    "/api/payments/pledges/" + groupKey,
+                    null,
+                    200
+                ).then(() => {
+                    cy.makePrivateAdminAPICall(
+                        "DELETE",
+                        "/api/payments/" + groupKey,
+                        null,
+                        200
+                    ).then(() => {
+                        cy.makePrivateAdminAPICall(
+                            "GET",
+                            "/api/payments/pledges/" + groupKey,
+                            null,
+                            404
+                        );
+                    });
+                });
+            });
+        });
+
+        it("PUT /api/payments/{groupKey} updates anonymous pledge without requiring FamilyID", () => {
+            // Create an anonymous pledge first
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getAnonPayload({ Date: "2025-11-04" }),
+                200
+            ).then((createResp) => {
+                const groupKey = createResp.body.groupKey;
+
+                // Now PUT the same pledge with a different amount — still no FamilyID
+                const updatedFundSplit = JSON.stringify([{
+                    FundID: "1",
+                    Amount: 80.00,
+                    NonDeductible: 0,
+                    Comment: "updated anon donation #9615",
+                }]);
+                cy.makePrivateAdminAPICall(
+                    "PUT",
+                    "/api/payments/" + groupKey,
+                    getAnonPayload({
+                        Date: "2025-11-04",
+                        FundSplit: updatedFundSplit,
+                    }),
+                    200
+                ).then((putResp) => {
+                    expect(putResp.body.payment.total).to.be.closeTo(80.00, 0.01);
+
+                    // Clean up
+                    cy.makePrivateAdminAPICall(
+                        "DELETE",
+                        "/api/payments/" + groupKey,
+                        null,
+                        200
+                    );
+                });
+            });
+        });
+    });
+
+    describe("POST /api/payments/pledges — payment WITH a Family still works (regression guard)", () => {
+        it("returns 200 and a GroupKey when FamilyID is provided (regression guard for #9615)", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/payments/pledges",
+                getFamilyPayload(),
+                200
+            ).then((resp) => {
+                expect(resp.body).to.have.property("payment");
+                const groupKey = resp.body.groupKey;
+                expect(groupKey).to.be.a("string").and.to.have.length.greaterThan(0);
+                const payment = resp.body.payment;
+                expect(payment.total).to.be.closeTo(75.00, 0.01);
+
+                // Verify family data is returned correctly
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    "/api/payments/pledges/" + groupKey,
+                    null,
+                    200
+                ).then((getResp) => {
+                    expect(getResp.body.familyId).to.equal(1);
+                    expect(getResp.body.familyName).to.be.a("string").and.to.have.length.greaterThan(0);
+
+                    // Clean up
+                    cy.makePrivateAdminAPICall(
+                        "DELETE",
+                        "/api/payments/" + groupKey,
+                        null,
+                        200
+                    );
+                });
             });
         });
     });
