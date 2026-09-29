@@ -91,8 +91,8 @@ function restUserLoginCount(userId, userName) {
         window.CRM.AdminAPIRequest({
           path: "user/" + userId + "/login/reset",
           method: "POST",
-        }).done((data) => {
-          if (data.status === "success") window.location.href = window.CRM.root + "/admin/system/users";
+        }).done(() => {
+          window.location.href = window.CRM.root + "/admin/system/users";
         });
       }
     },
