@@ -6,7 +6,6 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
-use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\SystemService;
@@ -226,22 +225,16 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
 
         // Filter custom fields by field-level permissions (GHSA-p6xx-xx98-f323)
+        //
+        // NOTE: `person_custom` stores per-field values in dynamically-added columns
+        // that are not part of the generated Propel schema, so exportTo()/toArray()
+        // never actually surfaces real custom field data under `singlePersonCustom`
+        // (only the table's one real Propel column, `per_ID`). Discard whatever
+        // exportTo() produced for that key and replace it with the properly
+        // security-filtered custom field values.
         $personJSON = $person->exportTo('JSON');
         $personData = json_decode($personJSON, true);
-
-        if (isset($personData['singlePersonCustom']) && is_array($personData['singlePersonCustom'])) {
-            $filteredCustom = [];
-            foreach ($personData['singlePersonCustom'] as $customField) {
-                $fieldId = $customField['id'] ?? null;
-                if ($fieldId) {
-                    $fieldDef = PersonCustomMasterQuery::create()->findPk($fieldId);
-                    if ($fieldDef && $currentUser->isEnabledSecurity($fieldDef->getFieldSecurity())) {
-                        $filteredCustom[] = $customField;
-                    }
-                }
-            }
-            $personData['singlePersonCustom'] = $filteredCustom;
-        }
+        $personData['singlePersonCustom'] = $person->getVisibleCustomFieldValues();
 
         return SlimUtils::renderStringJSON($response, json_encode($personData));
     });

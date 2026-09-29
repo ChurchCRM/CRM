@@ -1059,4 +1059,48 @@ class Person extends BasePerson implements PhotoInterface
         }
         return $visibleFields;
     }
+
+    /**
+     * Returns this person's custom field values, filtered to only the fields the
+     * current user is permitted to view (GHSA-p6xx-xx98-f323).
+     *
+     * `person_custom` stores each custom field as a dynamically-added column keyed
+     * by the field's short code (PersonCustomMaster::getId()); it is not part of the
+     * generated Propel schema, so these values are never present in
+     * Person::exportTo()/toArray() output (that only surfaces the table's real
+     * Propel column, `per_ID`, under the one-to-one `singlePersonCustom` key).
+     * Callers that need per-field custom data — e.g. the JSON API — must use this
+     * method instead of relying on `singlePersonCustom` from exportTo().
+     *
+     * @return array<int, array{id: string, name: string, value: string}>
+     */
+    public function getVisibleCustomFieldValues(): array
+    {
+        $visibleFields = $this->getVisibleCustomFieldDefinitions();
+        if (empty($visibleFields)) {
+            return [];
+        }
+
+        $rawQry = PersonCustomQuery::create();
+        foreach ($visibleFields as $field) {
+            $rawQry->addAsColumn(str_replace(['.', '(', ')'], '', $field->getId()), $field->getId());
+        }
+        $personCustomData = $rawQry->findOneByPerId($this->getId());
+
+        $result = [];
+        if ($personCustomData) {
+            foreach ($visibleFields as $field) {
+                $value = trim((string) $personCustomData->getVirtualColumn(str_replace(['.', '(', ')'], '', $field->getId())));
+                if ($value !== '') {
+                    $result[] = [
+                        'id'    => $field->getId(),
+                        'name'  => $field->getName(),
+                        'value' => $value,
+                    ];
+                }
+            }
+        }
+
+        return $result;
+    }
 }
