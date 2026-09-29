@@ -286,94 +286,94 @@ describe("Events Dashboard (MVC)", () => {
             });
         });
 
-        beforeEach(() => {
-            // The Deactivate test flips the event's status — make sure every
-            // test starts from an active event.
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/events/${testEventId}/status`,
-                { active: true },
-                200,
-            );
-            // Both this call and the before() hook above leave a dead PHP
-            // session behind, so every test in this suite starts from a real
-            // login rather than a restored one.
-            freshAdminLogin();
-        });
+        describe("Active event", () => {
+            beforeEach(() => {
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/events/${testEventId}/status`,
+                    { active: true },
+                    200,
+                );
+                freshAdminLogin();
+            });
 
-        it("renders the standard action dropdown for each event row", () => {
-            cy.visit("event/dashboard");
-            // Wait for the action menu to be hydrated by JS
-            cy.get(".event-action-menu-placeholder .dropdown", { timeout: 10000 })
-                .should("have.length.at.least", 1);
-        });
+            it("renders the standard action dropdown for each event row", () => {
+                cy.visit("event/dashboard");
+                // Wait for the action menu to be hydrated by JS
+                cy.get(".event-action-menu-placeholder .dropdown", { timeout: 10000 })
+                    .should("have.length.at.least", 1);
+            });
 
-        it("event title link navigates to the read-only event view page", () => {
-            cy.visit("event/dashboard");
-            cy.contains("table tbody tr td:first-child a", eventTitle, { timeout: 10000 })
-                .should("have.attr", "href")
-                .and("include", `/event/view/${testEventId}`);
-        });
+            it("event title link navigates to the read-only event view page", () => {
+                cy.visit("event/dashboard");
+                cy.contains("table tbody tr td:first-child a", eventTitle, { timeout: 10000 })
+                    .should("have.attr", "href")
+                    .and("include", `/event/view/${testEventId}`);
+            });
 
-        it("dropdown menu has View, Edit, Check-in, Deactivate, Delete items", () => {
-            cy.visit("event/dashboard");
-            openEventActionMenu(testEventId);
+            it("dropdown menu has View, Edit, Check-in, Deactivate, Delete items", () => {
+                cy.visit("event/dashboard");
+                openEventActionMenu(testEventId);
 
-            cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`)
-                .find(".dropdown-menu.show")
-                .within(() => {
-                    cy.contains("View").should("exist");
-                    cy.contains("Edit").should("exist");
-                    cy.contains("Check-in").should("exist");
-                    // For an active event the toggle says Deactivate
-                    cy.contains(/Deactivate|Activate/).should("exist");
-                    cy.contains("Delete").should("exist");
+                cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`)
+                    .find(".dropdown-menu.show")
+                    .within(() => {
+                        cy.contains("View").should("exist");
+                        cy.contains("Edit").should("exist");
+                        cy.contains("Check-in").should("exist");
+                        // For an active event the toggle says Deactivate
+                        cy.contains(/Deactivate|Activate/).should("exist");
+                        cy.contains("Delete").should("exist");
+                    });
+            });
+
+            it("Deactivate POSTs /api/events/{id}/status with active=false", () => {
+                cy.intercept("POST", "**/api/events/*/status").as("status");
+                cy.visit("event/dashboard");
+
+                // Find the event we created for this suite and deactivate it via the menu
+                openEventActionMenu(testEventId);
+
+                cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`)
+                    .find(".dropdown-menu.show")
+                    .contains("Deactivate")
+                    .click();
+
+                cy.wait("@status").then(({ request, response }) => {
+                    expect(response.statusCode).to.eq(200);
+                    expect(request.body).to.deep.equal({ active: false });
                 });
-        });
-
-        it("Deactivate POSTs /api/events/{id}/status with active=false", () => {
-            cy.intercept("POST", "**/api/events/*/status").as("status");
-            cy.visit("event/dashboard");
-
-            // Find the event we created for this suite and deactivate it via the menu
-            openEventActionMenu(testEventId);
-
-            cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`)
-                .find(".dropdown-menu.show")
-                .contains("Deactivate")
-                .click();
-
-            cy.wait("@status").then(({ request, response }) => {
-                expect(response.statusCode).to.eq(200);
-                expect(request.body).to.deep.equal({ active: false });
             });
         });
 
-        it("Activate POSTs /api/events/{id}/status with active=true", () => {
-            // First deactivate the test event so the action menu shows "Activate"
-            cy.makePrivateAdminAPICall(
-                "POST",
-                `/api/events/${testEventId}/status`,
-                { active: false },
-                200,
-            );
-            freshAdminLogin();
+        describe("Inactive event", () => {
+            beforeEach(() => {
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/events/${testEventId}/status`,
+                    { active: false },
+                    200,
+                );
+                freshAdminLogin();
+            });
 
-            cy.intercept("POST", "**/api/events/*/status").as("status");
-            cy.visit("event/dashboard");
+            it("Activate POSTs /api/events/{id}/status with active=true", () => {
+                cy.intercept("POST", "**/api/events/*/status").as("status");
+                cy.visit("event/dashboard");
 
-            // A deactivated event is rendered as a "past" row, so its month
-            // group has to be expanded before the menu can be used.
-            openEventActionMenu(testEventId);
+                // A deactivated event is rendered as a "past" row, so its month
+                // group has to be expanded before the menu can be used.
+                openEventActionMenu(testEventId);
 
-            cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`)
-                .find(".dropdown-menu.show")
-                .contains("Activate")
-                .click();
+                cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`)
+                    .find(".dropdown-menu.show")
+                    .contains("Activate")
+                    .click();
 
-            cy.wait("@status").then(({ request, response }) => {
-                expect(response.statusCode).to.eq(200);
-                expect(request.body).to.deep.equal({ active: true });
+                cy.wait("@status").then(({ request, response }) => {
+                    expect(response.statusCode).to.eq(200);
+                    expect(request.body).to.deep.equal({ active: true });
+                });
             });
         });
     });
