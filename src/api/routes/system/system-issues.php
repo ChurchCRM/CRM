@@ -3,6 +3,7 @@
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\SlimUtils;
@@ -65,6 +66,7 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'System Timezone |' . ChurchMetaData::getChurchTimeZone() . "\r\n" .
         'Browser Timezone |' . ($data->browserTimezone ?? 'Unknown') . "\r\n" .
         'Person Custom Fields |' . PersonCustomMasterQuery::create()->count() . "\r\n" .
+        'Family Custom Fields |' . FamilyCustomMasterQuery::create()->count() . "\r\n" .
         'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
 
     return SlimUtils::renderJSON($response, ['issueBody' => $issueDescription]);

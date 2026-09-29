@@ -75,7 +75,8 @@ describe("API System Issues", () => {
             expect(resp.body.issueBody).to.contain("Church Country");
             expect(resp.body.issueBody).to.contain("System Timezone");
             expect(resp.body.issueBody).to.contain("Browser Timezone |Europe/Paris");
-            expect(resp.body.issueBody).to.contain("Person Custom Fields");
+            expect(resp.body.issueBody).to.match(/Person Custom Fields \|\d+\r\n/);
+            expect(resp.body.issueBody).to.match(/Family Custom Fields \|\d+\r\n/);
         });
     });
 
