@@ -56,8 +56,14 @@ runs:
           --reporter-options "mochaFile=$report_file"
       env:
         CONFIG_FILE: ${{ inputs.config-file }}
+        # Only set as TEST_SPEC (consumed by the --spec CLI flag above), never
+        # as SPEC: cypress-split treats a truthy env.SPEC as an explicit
+        # override list of spec files (see cypress-split/src/parse-inputs.js),
+        # bypassing its own specPattern-based discovery. Setting it here made
+        # cypress-split resolve 0 specs for every job once shard-total
+        # defaulted to 1 below (globby.sync() on the path.resolve()'d pattern
+        # found nothing), so every Cypress run failed against an empty spec.
         TEST_SPEC: ${{ inputs.spec }}
-        SPEC: ${{ inputs.spec }}
         PHP_VERSION: ${{ inputs.php-version }}
         DEPLOYMENT: ${{ inputs.deployment }}
         TEST_NAME: ${{ inputs.test-name }}
