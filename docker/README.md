@@ -200,18 +200,11 @@ Reference configurations for production-like deployments are in `examples/`:
 
 See `examples/README.md` for details.
 
-## Development network boundaries
+---
 
-Development and test services publish ports on `127.0.0.1` by default, including
-MariaDB and Mailpit. For access from another device, set `DOCKER_BIND_ADDRESS`
-to a specific host interface address. `0.0.0.0` exposes all published services
-on every IPv4 interface; use it only on a trusted network with host firewall rules.
-The demo database credentials and Mailpit inbox are for local development.
-Database seed files are mounted read-only. Source mounts remain writable for
-development builds; do not use these profiles for production.
+Official Release Images
+---
 
-Production reference examples require `MYSQL_ROOT_PASSWORD` and `MYSQL_PASSWORD`
-to be set explicitly. They are starting points, not verified release deployment
-recipes; review image contents, web-server configuration and persistence first.
-No ChurchCRM service needs a Docker socket mount. A read-only socket mount does
-not restrict Docker API operations.
+Pre-built, versioned images (Apache and PHP-FPM) are published to DockerHub automatically on every
+GitHub release. See [`DOCKER_RELEASE.md`](DOCKER_RELEASE.md) for available tags, quick start, and
+the one-time DockerHub credentials setup.
