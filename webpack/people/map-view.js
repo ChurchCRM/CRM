@@ -135,7 +135,7 @@ if (geocodeAllBtn) {
 
     const title = document.createElement("h4");
     title.className = "alert-title mb-1";
-    title.textContent = t(`{{count}} families could not be geocoded`, { count: data.failed });
+    title.textContent = t(`Families that could not be geocoded: {{total}}`, { total: data.failed });
     body.appendChild(title);
 
     const hint = document.createElement("div");
@@ -191,8 +191,8 @@ if (geocodeAllBtn) {
     if (data.failuresTruncated) {
       const more = document.createElement("div");
       more.className = "text-secondary small mt-2";
-      more.textContent = t(`…and {{count}} more not listed here.`, {
-        count: data.failed - data.failures.length,
+      more.textContent = t(`Not listed here: {{total}} more`, {
+        total: data.failed - data.failures.length,
       });
       body.appendChild(more);
     }

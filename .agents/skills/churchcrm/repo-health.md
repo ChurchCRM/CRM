@@ -115,21 +115,24 @@ Order checks worst-first when running all three. Findings about the Discord comm
 
 Branches nobody ever opened a PR for pile up from bot automation, abandoned drafts, and old feature work. Report and act on **PR-less** branches only — a branch with an open or merged PR is that PR's business, not this check's.
 
+**Hard exclude: `External` and `Notifications`.** These are hosted-config branches (`approved-plugins.json`, `notifications.json`) consumed by every running install via `CentralServices`. They will never have a PR into master. Do not list them as delete candidates. Deleting `External` 404s the plugin registry and fails UI shard 2 (#9969). Ruleset 23858586 blocks deletion; a 422 means stop. See [`hosted-remote-config.md`](./hosted-remote-config.md).
+
 ```bash
 git fetch -q origin
-git branch -r | grep -v "origin/HEAD\|origin/$(gh api "repos/$REPO" --jq .default_branch)$" | sed 's#.*origin/##' | sort > /tmp/remote_branches.txt
+git branch -r | grep -v "origin/HEAD\\|origin/$(gh api \"repos/$REPO\" --jq .default_branch)$" | sed 's#.*origin/##' | sort > /tmp/remote_branches.txt
 gh pr list -R "$REPO" --state all --limit 500 --json headRefName -q '.[].headRefName' | sort -u > /tmp/pr_branches.txt
 comm -23 /tmp/remote_branches.txt /tmp/pr_branches.txt > /tmp/no_pr_branches.txt
 while read -r b; do
   printf '%s\t%s\t%s\t%s\n' "$b" \
-    "$(git log -1 --format=%cd --date=short "origin/$b")" \
-    "$(git log -1 --format=%an "origin/$b")" \
-    "$(git log -1 --format=%s "origin/$b")"
+    "$(git log -1 --format=%cd --date=short \"origin/$b\")" \
+    "$(git log -1 --format=%an \"origin/$b\")" \
+    "$(git log -1 --format=%s \"origin/$b\")"
 done < /tmp/no_pr_branches.txt
 ```
 
 ### Classify before touching anything
 
+- **Never delete hosted-config branches: `External` and `Notifications`.** No PR is expected. Live remote config for every install. See [`hosted-remote-config.md`](./hosted-remote-config.md).
 - **Dead by age — default rule: no commit in the last 30 days.** A branch nobody opened a PR for in a month was abandoned, not forgotten. Delete by default.
 - **Always-safe patterns, regardless of age** — these regenerate from their source, so losing the branch loses nothing:
   - `locale/*` and `locales/*-YYYY-MM-DD-*` — dated snapshots from the POEditor sync automation. Translations are cumulative; a later sync always supersedes an earlier one, and the source of truth is POEditor, not the branch. **All locale branches can be rebuilt — always safe to delete**, no age check needed.
@@ -148,7 +151,7 @@ done < /tmp/no_pr_branches.txt
 - **Deleting a branch is a destructive action outside a PR's own lifecycle — always confirm with the maintainer before deleting anything, even a branch that matches an "always-safe" pattern**, by listing what you are about to delete first. The one exception a maintainer can grant in advance: a standing instruction to auto-delete a specific always-safe pattern (e.g. "all locale snapshot branches can always be deleted, don't ask each time").
 - Delete via the API, not `git push --delete` — a local pre-push hook (lint, etc.) has nothing to do with deleting a remote ref and will only get in the way:
   ```bash
-  gh api -X DELETE "repos/$REPO/git/refs/heads/$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "$BRANCH")"
+  gh api -X DELETE "repos/$REPO/git/refs/heads/$(python3 -c \"import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))\" \"$BRANCH\")"
   ```
 - A branch protection rule can refuse the delete (`422 Cannot delete this branch`) — that is deliberate, leave it and move on, don't fight the protection.
 
@@ -156,3 +159,4 @@ done < /tmp/no_pr_branches.txt
 
 - [GitHub Interaction](./github-interaction.md) — `gh` review/PR mechanics
 - [PR Review](./pr-review.md) — what to do once an approved PR is picked up
+- [Hosted remote config](./hosted-remote-config.md) — `External` / `Notifications` must never be pruned
