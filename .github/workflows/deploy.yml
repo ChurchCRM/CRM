@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+
 jobs:
   test:
     name: Verify PHP & Application Syntax
@@ -12,17 +15,20 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.2.2
 
       - name: Setup PHP 8.4
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: '8.4'
           extensions: mbstring, pdo, pdo_mysql, xml, zip, curl
 
       - name: Validate Code Syntax
         run: |
-          find src/ -type f -name "*.php" -exec php -l {} \; | grep -v "No syntax errors detected" || echo "All PHP files passed syntax check."
+          while IFS= read -r -d '' file; do
+            php -l "$file" || exit 1
+          done < <(find src/ -type f -name "*.php" -print0)
+          echo "All PHP files passed syntax check."
 
   deploy:
     name: Deploy Church CRM to Production
@@ -31,10 +37,10 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.2.2
 
       - name: Deploy to Server via SSH
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@7eaf766725f0578687a602c118129cc61ab20966 # v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
@@ -42,13 +48,16 @@ jobs:
           script: |
             set -e
             WEB_ROOT="/var/www/html/churchcrm"
-            echo "[CI/CD] Deploying Church CRM to $WEB_ROOT..."
+            echo "[CI/CD] Deploying Church CRM commit ${{ github.sha }} to $WEB_ROOT..."
             
-            cd "$WEB_ROOT"
-            if [ -d ".git" ]; then
-              sudo git fetch origin
-              sudo git pull origin master || sudo git pull origin main
+            if [ ! -d "$WEB_ROOT/.git" ]; then
+              echo "[CI/CD] Error: $WEB_ROOT/.git not found" >&2
+              exit 1
             fi
+
+            cd "$WEB_ROOT"
+            sudo git fetch origin
+            sudo git checkout ${{ github.sha }}
             
             sudo chown -R www-data:www-data "$WEB_ROOT"
             sudo chmod -R 755 "$WEB_ROOT"
