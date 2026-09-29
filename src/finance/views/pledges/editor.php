@@ -83,13 +83,31 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
             <div class="row g-3">
 
                 <!-- Family Selector -->
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <label class="form-label" for="FamilyName"><?= gettext('Family') ?></label>
                     <input type="hidden" id="FamilyID" name="FamilyID" value="<?= (int) $familyId ?>">
                     <select class="form-select" id="FamilyName" name="FamilyName">
                         <?php if ($familyId && $familyName): ?>
                             <option value="<?= (int) $familyId ?>" selected><?= InputUtils::escapeHTML($familyName) ?></option>
                         <?php endif; ?>
+                    </select>
+                </div>
+
+                <!-- Individual Person Selector -->
+                <div class="col-lg-4">
+                    <label class="form-label" for="PersonID"><?= gettext('Pledged By (Individual)') ?></label>
+                    <select class="form-select" id="PersonID" name="PersonID">
+                        <option value="0"><?= gettext('Entire Family / Unassigned') ?></option>
+                        <?php
+                        if ($familyId) {
+                            $familyMembers = \ChurchCRM\Service\PersonPledgeService::getFamilyMembers((int)$familyId);
+                            $selectedPersonId = $personId ?? 0;
+                            foreach ($familyMembers as $perId => $perName) {
+                                $selected = ($perId == $selectedPersonId) ? 'selected' : '';
+                                echo '<option value="' . (int)$perId . '" ' . $selected . '>' . InputUtils::escapeHTML($perName) . '</option>';
+                            }
+                        }
+                        ?>
                     </select>
                 </div>
 

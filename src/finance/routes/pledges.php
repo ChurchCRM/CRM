@@ -150,6 +150,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
             'fiscalYears'        => $fiscalYears,
             'currentFyId'        => $currentFyId,
             'enableNonDeductible' => $enableNonDeductible,
+            'personId'           => 0,
             'isEdit'             => false,
             'pledge'             => null,
             'linkBack'           => $linkBack,
@@ -246,6 +247,11 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
 
         $enableNonDeductible = SystemConfig::getBooleanValue('bEnableNonDeductible');
 
+        $personId = 0;
+        if (!empty($pledge['items'][0]['id'])) {
+            $personId = \ChurchCRM\Service\PersonPledgeService::getPersonForPledge((int)$pledge['items'][0]['id']);
+        }
+
         $pageArgs = [
             'sRootPath'          => SystemURLs::getRootPath(),
             'sPageTitle'         => $type === 'Pledge' ? gettext('Edit Pledge') : gettext('Edit Payment'),
@@ -265,6 +271,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
             'fiscalYears'        => $fiscalYears,
             'currentFyId'        => $currentFyId,
             'enableNonDeductible' => $enableNonDeductible,
+            'personId'           => $personId,
             'isEdit'             => true,
             'pledge'             => $pledge,
             'linkBack'           => $linkBack,

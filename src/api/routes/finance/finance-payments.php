@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\PersonPledgeService;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
@@ -55,10 +56,15 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
     $group->post('/', function (Request $request, Response $response, array $args): Response {
         $payment = (object) $request->getParsedBody();
         $financialService = new FinancialService();
+        $result = $financialService->submitPledgeOrPayment($payment);
+
+        if (isset($payment->PersonId) && is_numeric($payment->PersonId) && isset($result->Id)) {
+            PersonPledgeService::setPersonForPledge((int)$result->Id, (int)$payment->PersonId);
+        }
 
         return SlimUtils::renderJSON(
             $response,
-            ['payment' => $financialService->submitPledgeOrPayment($payment)]
+            ['payment' => $result]
         );
     });
 
@@ -135,6 +141,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
             $newRow['EditedBy'] = $row->getPerson() ? $row->getPerson()->getFullName() : '';
             $newRow['Fund'] = $row->getDonationFund() ? $row->getDonationFund()->getName() : '';
+            $newRow['PersonId'] = PersonPledgeService::getPersonForPledge($row->getId());
             $rows[] = $newRow;
         }
 
