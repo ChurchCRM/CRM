@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 00:20+0000\n"
+"POT-Creation-Date: 2026-09-29 15:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -854,6 +854,9 @@ msgid "All Types"
 msgstr ""
 
 msgid "All checks passing"
+msgstr ""
+
+msgid "All classifications"
 msgstr ""
 
 msgid "All clear!"
@@ -1731,6 +1734,9 @@ msgstr ""
 msgid "Birthdays by Month"
 msgstr ""
 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr ""
+
 msgid "Blank"
 msgstr ""
 
@@ -2302,6 +2308,10 @@ msgstr ""
 msgid "Chinese - Taiwan"
 msgstr ""
 
+#, php-format
+msgid "Choose %s to run this report."
+msgstr ""
+
 msgid "Choose a group..."
 msgstr ""
 
@@ -2317,6 +2327,9 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "Choose customer person field"
+msgstr ""
+
+msgid "Choose events"
 msgstr ""
 
 msgid "Choose family"
@@ -2344,6 +2357,9 @@ msgid ""
 "• Retro - 8-bit arcade-style pixel art\n"
 "• RoboHash - Unique generated robot\n"
 "• Blank - Transparent (falls back to initials)"
+msgstr ""
+
+msgid "Choose..."
 msgstr ""
 
 #. Context: countries
@@ -3840,6 +3856,9 @@ msgid "Download & Apply {{version}}"
 msgstr ""
 
 msgid "Download Backup & Continue"
+msgstr ""
+
+msgid "Download CSV"
 msgstr ""
 
 msgid "Download CSV Template"
@@ -5395,6 +5414,9 @@ msgstr ""
 msgid "Find past events that are still active or have un-checked-out attendees"
 msgstr ""
 
+msgid "Find people who did not attend an event"
+msgstr ""
+
 #. Context: query_qry
 msgid "Find people who didn't attend an event"
 msgstr ""
@@ -5412,6 +5434,9 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Find volunteers for who match two specific opportunity codes"
+msgstr ""
+
+msgid "Find volunteers who match two specific opportunity codes"
 msgstr ""
 
 #. plugin:openlp:section:3:title
@@ -5437,6 +5462,9 @@ msgid "First Name"
 msgstr ""
 
 msgid "First Sunday"
+msgstr ""
+
+msgid "First Volunteer Opportunity"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -7031,6 +7059,9 @@ msgstr ""
 msgid "Leave blank to keep existing password"
 msgstr ""
 
+msgid "Leave empty for all classifications."
+msgstr ""
+
 #. Context: countries
 msgid "Lebanon (‫لبنان‬‎)"
 msgstr ""
@@ -7662,6 +7693,9 @@ msgstr ""
 msgid "Members, Visitors, Children"
 msgstr ""
 
+msgid "Membership Anniversaries"
+msgstr ""
+
 msgid "Membership Date"
 msgstr ""
 
@@ -7759,6 +7793,9 @@ msgid "Missing"
 msgstr ""
 
 msgid "Missing PHP ZipArchive"
+msgstr ""
+
+msgid "Missing People"
 msgstr ""
 
 msgid "Missing calendar access token"
@@ -8380,6 +8417,9 @@ msgid "No payments yet. Click \"Add Payment\" to get started."
 msgstr ""
 
 msgid "No people found"
+msgstr ""
+
+msgid "No people match these filters."
 msgstr ""
 
 msgid "No people match your current filters."
@@ -9091,6 +9131,9 @@ msgstr ""
 msgid "People to assign"
 msgstr ""
 
+msgid "People who joined in a particular month"
+msgstr ""
+
 #. Context: query_qry
 msgid "People with birthdays in a particular month"
 msgstr ""
@@ -9800,6 +9843,9 @@ msgstr ""
 msgid "Quarterly"
 msgstr ""
 
+msgid "Queries"
+msgstr ""
+
 msgid "Query Listing"
 msgstr ""
 
@@ -9879,6 +9925,9 @@ msgid "Ready to restore"
 msgstr ""
 
 msgid "Recent Deposits"
+msgstr ""
+
+msgid "Recent Friends"
 msgstr ""
 
 #. Context: query_qry
@@ -10089,6 +10138,9 @@ msgid "Report an Issue"
 msgstr ""
 
 msgid "Report an issue"
+msgstr ""
+
+msgid "Report not found"
 msgstr ""
 
 msgid "Reports"
@@ -10308,6 +10360,9 @@ msgid "Run"
 msgstr ""
 
 msgid "Run Query Again"
+msgstr ""
+
+msgid "Run Report"
 msgstr ""
 
 msgid "Run Transactions"
@@ -10583,6 +10638,9 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "Second Fiscal Year"
+msgstr ""
+
+msgid "Second Volunteer Opportunity"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -13034,6 +13092,9 @@ msgstr ""
 msgid "Volunteer Opportunities"
 msgstr ""
 
+msgid "Volunteer Opportunity"
+msgstr ""
+
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr ""
 
@@ -13052,6 +13113,9 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Volunteers"
+msgstr ""
+
+msgid "Volunteers for Two Opportunities"
 msgstr ""
 
 msgid "Vonage API Key"
