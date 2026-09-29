@@ -138,7 +138,7 @@ Fix bugs, add features, improve performance, and expand test coverage in the mai
 
 **Using Claude Code?** If you're using [Claude Code](https://claude.com/claude-code), start with [ONBOARDING.md](ONBOARDING.md) for a guided setup and workflow tailored to this project.
 
-**All PRs must be linked to an open issue.** If the issue doesn't exist yet, open it first.
+**PRs that change user-visible behavior (features, bug fixes) must link an open issue.** CI, docs, tooling, dependency, and trivial PRs don't; say why in the description.
 
 Read [What maintainers look for](docs/contributing-pr-review.md) before you open a PR. That page lists hard blocks (security, performance, existing installs, tests, gettext wrappers, non-trivial UI screenshots) versus follow-ups (demo data, user-manual issues, marketing). Matching the list does not guarantee merge. Approve and merge are always a human maintainer decision.
 
