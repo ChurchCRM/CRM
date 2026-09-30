@@ -2,10 +2,14 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerNotification;
 use ChurchCRM\model\ChurchCRM\VolunteerNotificationQuery;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Volunteer\Service\VolunteerEventService;
+use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
+use ChurchCRM\Volunteer\Service\VolunteerScheduleTopUp;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -16,7 +20,8 @@ use Slim\Views\PhpRenderer;
 // this page is administrators-only without any check of its own.
 //
 // The one home of the Volunteer Management settings (product-owner decision,
-// 2026-09-18, following the Member Portal precedent): the rollout state and the
+// 2026-09-18, following the Member Portal precedent; the scheduling horizon and
+// the default event type joined them with D31): the rollout state and the
 // reminder lead time used to sit in an admin-only strip on the Ministry
 // Dashboard, which only exists once V2 is on — so the switch that turns V2 on
 // could not be reached from the page that held it. They are deliberately in no
@@ -54,6 +59,23 @@ $ministrySettingsHandler = function (Request $request, Response $response): Resp
         ];
     }
 
+    // D31: the choices for the ministry events' default type. Empty means "the type named
+    // Other", which the label says only when there is one.
+    $otherTypeId = null;
+    $eventTypeChoices = [];
+    foreach (EventTypeQuery::create()->filterByActive(1)->orderByName()->find() as $type) {
+        $eventTypeChoices[] = ['value' => (string) $type->getId(), 'label' => (string) $type->getName()];
+        if (strcasecmp((string) $type->getName(), VolunteerEventService::OTHER_EVENT_TYPE_NAME) === 0) {
+            $otherTypeId ??= (int) $type->getId();
+        }
+    }
+    array_unshift($eventTypeChoices, [
+        'value' => '',
+        'label' => $otherTypeId === null
+            ? gettext('None: the event type is chosen for each event')
+            : sprintf(gettext('Not set: use "%s"'), VolunteerEventService::OTHER_EVENT_TYPE_NAME),
+    ]);
+
     $headerButtons = $v2Enabled
         ? PageHeader::buttons([
             ['label' => gettext('Open the Ministry Dashboard'), 'url' => '/ministries/dashboard', 'icon' => 'fa-arrow-up-right-from-square'],
@@ -63,7 +85,7 @@ $ministrySettingsHandler = function (Request $request, Response $response): Resp
     return $renderer->render($response, 'ministry-settings.php', [
         'sRootPath' => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Ministry Settings'),
-        'sPageSubtitle' => gettext('Choose which volunteer experience this church uses, set the reminder lead time, and check that notifications are going out.'),
+        'sPageSubtitle' => gettext('Choose which volunteer experience this church uses, how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
             [gettext('Admin'), '/admin/'],
             [gettext('Ministry Settings')],
@@ -72,6 +94,11 @@ $ministrySettingsHandler = function (Request $request, Response $response): Resp
         'sVersion' => $version,
         'bV2Enabled' => $v2Enabled,
         'iLeadHours' => (int) SystemConfig::getValue('iVolunteerReminderLeadHours'),
+        'iHorizonWeeks' => VolunteerScheduleService::horizonWeeks(),
+        'iMinHorizonWeeks' => VolunteerScheduleService::MIN_HORIZON_WEEKS,
+        'iMaxHorizonWeeks' => VolunteerScheduleService::MAX_HORIZON_WEEKS,
+        'aEventTypeChoices' => $eventTypeChoices,
+        'aLastTopUp' => VolunteerScheduleTopUp::lastResult(),
         'iFailedCount' => $failedCount,
         'iPendingCount' => $pendingCount,
         'aRecentFailures' => $recentFailures,

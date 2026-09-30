@@ -4,10 +4,11 @@
  * Admin → Ministry Settings — the one home of the Volunteer Management settings
  * (product-owner decision, 2026-09-18; the Member Portal admin page is the
  * precedent). Three cards: the settings panel, an explanation of what the
- * rollout choices mean, and delivery health for the notification outbox.
+ * rollout choices mean, and the health of the background jobs — the daily
+ * schedule top-up (D31) and the notification outbox.
  *
  * Markup only: the settings panel (`window.CRM.settingsPanel`, U8) renders and
- * saves the two ConfigItems through POST /admin/api/system/config/{name}.
+ * saves the four ConfigItems through POST /admin/api/system/config/{name}.
  */
 
 use ChurchCRM\dto\SystemURLs;
@@ -17,6 +18,11 @@ use ChurchCRM\Utils\InputUtils;
 /** @var string $sVersion */
 /** @var bool $bV2Enabled */
 /** @var int $iLeadHours */
+/** @var int $iHorizonWeeks */
+/** @var int $iMinHorizonWeeks */
+/** @var int $iMaxHorizonWeeks */
+/** @var array<int, array{value: string, label: string}> $aEventTypeChoices */
+/** @var array{ranAt: string, schedules: int, created: int, failed: int}|null $aLastTopUp */
 /** @var int $iFailedCount */
 /** @var int $iPendingCount */
 /** @var array<int, array{type: string, person: string, lastAttempt: string, error: string}> $aRecentFailures */
@@ -30,13 +36,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   <div class="row">
     <div class="col-12 col-xl-6">
 
-      <!-- The Settings Panel component renders and saves these two ConfigItems. -->
+      <!-- The Settings Panel component renders and saves these four ConfigItems. -->
       <div id="ministrySettingsPanel"></div>
 
       <div class="card mb-3" id="ministry-delivery-card">
         <div class="card-header">
           <h3 class="card-title mb-0">
-            <i class="fa-solid fa-envelope-circle-check me-2"></i><?= gettext('Notification delivery') ?>
+            <i class="fa-solid fa-envelope-circle-check me-2"></i><?= gettext('Background jobs and delivery') ?>
           </h3>
         </div>
         <div class="card-body">
@@ -55,11 +61,32 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <?= gettext('Background jobs last ran') ?>:
             <strong id="ministry-last-run"><?= $sLastTimerJobsRun === '' ? gettext('never') : InputUtils::escapeHTML($sLastTimerJobsRun) ?></strong>
           </p>
+          <p class="mb-2" id="ministry-topup">
+            <i class="fa-solid fa-calendar-plus me-1"></i>
+            <?= gettext('Schedules last topped up') ?>:
+            <strong id="ministry-topup-last-run"><?= $aLastTopUp === null ? gettext('never') : InputUtils::escapeHTML($aLastTopUp['ranAt']) ?></strong>
+            <?php if ($aLastTopUp !== null): ?>
+              <span class="text-body-secondary" id="ministry-topup-created">— <?= InputUtils::escapeHTML(sprintf(
+                  ngettext('%d new occurrence', '%d new occurrences', $aLastTopUp['created']),
+                  $aLastTopUp['created']
+              )) ?></span>
+            <?php endif; ?>
+          </p>
+          <p class="text-body-secondary small mb-2" id="ministry-topup-hint">
+            <?= InputUtils::escapeHTML(sprintf(
+                ngettext(
+                    'Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead. Nobody is assigned and no email is sent.',
+                    'Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead. Nobody is assigned and no email is sent.',
+                    $iHorizonWeeks
+                ),
+                $iHorizonWeeks
+            )) ?>
+          </p>
           <p class="mb-2">
             <button type="button" class="btn btn-sm btn-outline-primary" id="ministry-run-jobs-btn">
               <i class="fa-solid fa-play me-1"></i><?= gettext('Run background jobs now') ?>
             </button>
-            <span class="text-body-secondary small ms-2"><?= gettext('Sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run.') ?></span>
+            <span class="text-body-secondary small ms-2"><?= gettext('Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run.') ?></span>
           </p>
           <p class="text-body-secondary small mb-0" id="ministry-cron-hint">
             <i class="fa-solid fa-clock me-1"></i>
@@ -149,8 +176,8 @@ $(document).ready(function () {
         title: <?= InputUtils::jsonEncodeForScript(gettext('Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         headerClass: 'bg-info-lt',
-        // These two items deliberately carry no System Settings category, so a
-        // link to that page would be a dead end.
+        // These items deliberately carry no System Settings category, so a link
+        // to that page would be a dead end.
         showAllSettingsLink: false,
         settings: [
             {
@@ -171,6 +198,21 @@ $(document).ready(function () {
                 max: 720,
                 label: <?= InputUtils::jsonEncodeForScript(gettext('Reminder lead time (hours)')) ?>,
                 tooltip: <?= InputUtils::jsonEncodeForScript(gettext('How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all.')) ?>
+            },
+            {
+                name: 'iVolunteerSchedulingHorizonWeeks',
+                type: 'number',
+                min: <?= (int) $iMinHorizonWeeks ?>,
+                max: <?= (int) $iMaxHorizonWeeks ?>,
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Scheduling horizon (weeks)')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('How far ahead occurrences are created for the events each schedule follows. A daily background job keeps every schedule filled up to this point.')) ?>
+            },
+            {
+                name: 'iVolunteerDefaultEventTypeId',
+                type: 'choice',
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Default event type for ministry events')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('The type a new event on a ministry\'s Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories.')) ?>,
+                choices: <?= InputUtils::jsonEncodeForScript($aEventTypeChoices) ?>
             }
         ],
         onSave: function () {
