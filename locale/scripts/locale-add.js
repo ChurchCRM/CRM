@@ -18,6 +18,7 @@
  *   --locale <locale>      Full locale code (e.g., "ko_KR", "fr_FR")
  *   --country <country>    Country code (e.g., "KR", "FR")
  *   --datatables <name>    DataTables locale name (e.g., "Korean", "French")
+ *   --scripts <list>       Unicode scripts the language is written in, comma-separated (default: Latin; e.g., "Han,Hiragana,Katakana")
  *   --interactive          Interactive mode (prompts for all values)
  *   --dry-run              Show what would be created without making changes
  */
@@ -59,6 +60,9 @@ class LanguageSetup {
                 case '--datatables':
                     config.datatables = args[++i];
                     break;
+                case '--scripts':
+                    config.scripts = args[++i];
+                    break;
                 case '--interactive':
                     this.interactive = true;
                     break;
@@ -96,6 +100,7 @@ Options:
   --locale <locale>      Full locale code (e.g., "ko_KR", "fr_FR")
   --country <country>    Country code (e.g., "KR", "FR")
   --datatables <name>    DataTables locale name (e.g., "Korean", "French")
+  --scripts <list>       Unicode scripts the language is written in, comma-separated (default: Latin; e.g., "Han,Hiragana,Katakana")
   --interactive          Interactive mode (prompts for all values)
   --dry-run              Show what would be created without making changes
   --help, -h             Show this help message
@@ -224,6 +229,7 @@ Examples:
             languageCode: config.code,
             countryCode: config.country,
             dataTables: config.datatables,
+            scripts: (config.scripts || 'Latin').split(',').map(script => script.trim()).filter(Boolean),
             fullCalendar: true,
             fullCalendarLocale: config.code,
             datePicker: true,

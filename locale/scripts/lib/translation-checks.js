@@ -1,32 +1,11 @@
 'use strict';
 
-const LATIN_ONLY = [
-    'af', 'cs', 'de', 'en', 'en-au', 'en-ca', 'en-jm', 'en-us', 'en-za', 'es', 'es-ar', 'es-co', 'es-mx', 'es-sv',
-    'et', 'fi', 'fil', 'fr', 'hr', 'hu', 'id', 'it', 'nb', 'nl', 'pl', 'pt', 'pt-br', 'ro', 'sk', 'sq', 'sv', 'sw',
-    'tr', 'vi',
-];
-
-const NON_LATIN_SCRIPTS = {
-    am: ['Ethiopic'],
-    ar: ['Arabic'],
-    el: ['Greek'],
-    he: ['Hebrew'],
-    hi: ['Devanagari'],
-    ja: ['Han', 'Hiragana', 'Katakana'],
-    ko: ['Hangul', 'Han'],
-    ml: ['Malayalam'],
-    ru: ['Cyrillic'],
-    ta: ['Tamil'],
-    te: ['Telugu'],
-    th: ['Thai'],
-    uk: ['Cyrillic'],
-    'zh-cn': ['Han'],
-    'zh-tw': ['Han'],
-};
-
-const SCRIPT_TESTS = {};
-for (const script of ['Latin', 'Ethiopic', 'Arabic', 'Greek', 'Hebrew', 'Devanagari', 'Han', 'Hiragana', 'Katakana', 'Hangul', 'Malayalam', 'Cyrillic', 'Tamil', 'Telugu', 'Thai']) {
-    SCRIPT_TESTS[script] = new RegExp(`\\p{Script=${script}}`, 'u');
+function scriptTest(name) {
+    try {
+        return new RegExp(`\\p{Script=${name}}`, 'u');
+    } catch {
+        return null;
+    }
 }
 
 const PLACEHOLDER_RE = /%(\d+\$)?([sdfu])|\{\{\s*(\w+)\s*\}\}/g;
@@ -71,42 +50,36 @@ function placeholderProblems(key, value) {
     return [];
 }
 
-function allowedScripts(code) {
-    const key = String(code).toLowerCase();
-    if (NON_LATIN_SCRIPTS[key]) return ['Latin', ...NON_LATIN_SCRIPTS[key]];
-    if (LATIN_ONLY.includes(key)) return ['Latin'];
-    return null;
-}
-
-function scriptProblems(code, value) {
-    const allowed = allowedScripts(code);
-    if (!allowed) return [];
-    const tests = allowed.map(s => SCRIPT_TESTS[s]);
+/**
+ * `scripts` is the locale's "scripts" array from src/locale/locales.json; Latin is always allowed for
+ * brand names. A locale without the property is not script-checked.
+ */
+function scriptProblems(scripts, value) {
+    if (!Array.isArray(scripts) || scripts.length === 0) return [];
+    const tests = ['Latin', ...scripts].map(scriptTest).filter(Boolean);
     const stray = new Set();
     for (const ch of String(value)) {
-        if (!/\p{L}/u.test(ch) || tests.some(t => t.test(ch))) continue;
-        const script = Object.keys(SCRIPT_TESTS).find(s => SCRIPT_TESTS[s].test(ch)) || 'unknown';
-        stray.add(script);
+        if (/\p{L}/u.test(ch) && !tests.some(t => t.test(ch))) stray.add(ch);
     }
-    return stray.size ? [`contains ${[...stray].join(', ')} letters that do not belong in ${code}`] : [];
+    return stray.size ? [`contains letters outside this locale's scripts (${scripts.join(', ')}): ${[...stray].slice(0, 4).join(' ')}`] : [];
 }
 
 /**
  * Problems with one incoming translation. Empty means acceptable.
  * Plural objects are checked slot by slot for script only: a "one" form may drop %d.
  */
-function validateTranslation(code, key, value) {
+function validateTranslation(scripts, key, value) {
     if (value && typeof value === 'object') {
         const slots = Object.entries(value);
         const problems = slots.filter(([, v]) => !v).map(([slot]) => `plural form "${slot}" is empty`);
         for (const [slot, v] of slots) {
-            for (const p of scriptProblems(code, v)) problems.push(`form "${slot}" ${p}`);
+            for (const p of scriptProblems(scripts, v)) problems.push(`form "${slot}" ${p}`);
         }
         return problems;
     }
     if (typeof value !== 'string' || value === '') return ['empty'];
     if (value === key) return [];
-    return [...placeholderProblems(key, value), ...scriptProblems(code, value)];
+    return [...placeholderProblems(key, value), ...scriptProblems(scripts, value)];
 }
 
 function firstLetterCase(text) {
@@ -161,4 +134,4 @@ function prefill(batch, translated, englishOk = new Set()) {
     return { filled, fromMemory, fromAllowlist };
 }
 
-module.exports = { placeholders, validateTranslation, normalizeKey, prefill, allowedScripts };
+module.exports = { placeholders, validateTranslation, normalizeKey, prefill, scriptTest };

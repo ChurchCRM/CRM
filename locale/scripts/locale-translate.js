@@ -174,8 +174,14 @@ function pluralShapeProblems(existing, value) {
     return value && typeof value === 'object' ? ['this term has no plural forms; send a string'] : [];
 }
 
+function scriptsFor(code) {
+    const locales = loadJSON(config.localesJson) || {};
+    return Object.values(locales).find(entry => String(entry.poEditor).toLowerCase() === code.toLowerCase())?.scripts;
+}
+
 function applyToBatch(code, absPath, incoming, { write = true } = {}) {
     const batch = loadJSON(absPath) || {};
+    const scripts = scriptsFor(code);
     const result = { applied: [], blank: [], rejected: [], identical: [] };
     for (const [key, value] of Object.entries(incoming)) {
         if (!(key in batch)) {
@@ -183,7 +189,7 @@ function applyToBatch(code, absPath, incoming, { write = true } = {}) {
         } else if (value === '') {
             result.blank.push(key);
         } else {
-            const problems = [...pluralShapeProblems(batch[key], value), ...validateTranslation(code, key, value)];
+            const problems = [...pluralShapeProblems(batch[key], value), ...validateTranslation(scripts, key, value)];
             if (problems.length > 0) {
                 result.rejected.push({ key, problems });
             } else {
