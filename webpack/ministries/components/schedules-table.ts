@@ -795,6 +795,10 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       return tText("Occurrences are created for events through {{date}}, when this schedule ends.", { date: through });
     }
 
+    if (schedule.horizonWeeks === 1) {
+      return tText("Occurrences are created for events in the next week (through {{date}}).", { date: through });
+    }
+
     return tText("Occurrences are created for events in the next {{count}} weeks (through {{date}}).", {
       count: schedule.horizonWeeks,
       date: through,
