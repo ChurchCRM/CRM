@@ -569,6 +569,7 @@ describe("Volunteer v2 — removing a volunteer from a ministry (#9701)", () => 
             expect(resp.body.qualifications, "both qualifications").to.eq(2);
             expect(resp.body.assignments, "only the upcoming one").to.eq(1);
             expect(resp.body.removedFromPool).to.eq(true);
+            expect(resp.body.defaults, "no schedule names them as a default").to.eq(0);
         });
 
         // Qualifications: kept as rows, deactivated — §2.7's "revocation is
@@ -630,6 +631,7 @@ describe("Volunteer v2 — removing a volunteer from a ministry (#9701)", () => 
             expect(resp.body.qualifications).to.eq(0);
             expect(resp.body.assignments).to.eq(0);
             expect(resp.body.removedFromPool).to.eq(false);
+            expect(resp.body.defaults).to.eq(0);
         });
     });
 

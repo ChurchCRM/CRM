@@ -682,6 +682,140 @@ describe("Volunteer v2 D32 — Staff these events saves its defaults on the sche
     });
 });
 
+// ── Remove Volunteer ───────────────────────────────────────────────────────
+
+describe("Volunteer v2 D32 — Remove Volunteer clears the person's defaults on the ministry's schedules", () => {
+    let removalId = 0;
+    let pausedId = 0;
+    const other = {};
+
+    function defaultCount(id, personId) {
+        return dbOk(
+            `SELECT COUNT(*) AS n FROM volunteer_requirement_vreq vreq
+               JOIN volunteer_schedule_vsch vsch ON vsch.vsch_ID = vreq.vreq_vsch_ID
+              WHERE vsch.vsch_vmin_ID = ? AND vreq.vreq_Default_per_ID = ?`,
+            [id, personId],
+        ).then((rows) => Number(rows[0].n));
+    }
+
+    before(() => {
+        createSchedule("Removal", "Service", {
+            requirements: [
+                { positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B, defaultAccepted: true },
+                { positionId: position.usher, minCount: 0, maxCount: 1, defaultPersonId: USHER },
+            ],
+        }).then((resp) => {
+            removalId = resp.body.schedule.id;
+        });
+        createSchedule("Removal Paused", "Service", {
+            active: false,
+            requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B }],
+        }).then((resp) => {
+            pausedId = resp.body.schedule.id;
+        });
+
+        api("POST", `${URL}/ministries`, { name: `${PREFIX} Hospitality`, description: "D32 removal fixture" }, 201).then((resp) => {
+            other.ministryId = resp.body.ministry.id;
+            api("GET", `${URL}/ministries/${other.ministryId}`).then((detail) => {
+                other.teamId = detail.body.teams[0].id;
+            });
+        });
+        cy.then(() => {
+            api("POST", `${URL}/ministries/${other.ministryId}/positions`, { name: `${PREFIX} Greeter`, teamId: other.teamId }, 201).then(
+                (resp) => {
+                    other.positionId = resp.body.position.id;
+                },
+            );
+        });
+        cy.then(() => {
+            api("POST", `${URL}/positions/${other.positionId}/qualifications`, { personId: LEADER_B }, [200, 201]);
+            api(
+                "POST",
+                `${URL}/ministries/${other.ministryId}/events`,
+                weekly("Greeting", 1, 30, {
+                    staff: {
+                        teamId: other.teamId,
+                        requirements: [{ positionId: other.positionId, minCount: 1, maxCount: 1 }],
+                        defaults: [{ positionId: other.positionId, personId: LEADER_B, accepted: true }],
+                    },
+                }),
+                201,
+            ).then((resp) => {
+                other.scheduleId = resp.body.schedule.id;
+            });
+        });
+    });
+
+    it("keeps the default when only one qualification is revoked", () => {
+        dbOk("SELECT vqal_ID AS id FROM volunteer_qualification_vqal WHERE vqal_per_ID = ? AND vqal_vpos_ID = ?", [
+            LEADER_B,
+            position.lead,
+        ]).then((rows) => {
+            api("DELETE", `${URL}/qualifications/${rows[0].id}`);
+        });
+        requirementsOf(removalId).then((rows) => {
+            expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_B, defaultAccepted: true, defaultQualified: false });
+        });
+        qualify("lead", LEADER_B);
+    });
+
+    it("clears their defaults on every schedule of the ministry, keeps the needs, and leaves other people and ministries alone", () => {
+        let stored = 0;
+        let reported;
+        defaultCount(ministryId, LEADER_B).then((n) => {
+            stored = n;
+            expect(stored, "the two fixture schedules at least").to.be.at.least(2);
+        });
+        cy.then(() => {
+            api("DELETE", `${URL}/ministries/${ministryId}/volunteers/${LEADER_B}`).then((resp) => {
+                reported = resp.body.defaults;
+            });
+        });
+        defaultCount(ministryId, LEADER_B).then((left) => expect(left, "their defaults left in this ministry").to.eq(0));
+
+        dbOk(
+            `SELECT vreq_vsch_ID AS scheduleId, vreq_Default_per_ID AS person, vreq_DefaultAccepted AS accepted,
+                    vreq_DefaultSetBy_per_ID AS setBy, vreq_MinCount AS minCount
+               FROM volunteer_requirement_vreq WHERE vreq_vsch_ID IN (?, ?) AND vreq_vpos_ID = ?`,
+            [removalId, pausedId, position.lead],
+        ).then((rows) => {
+            expect(rows.map((row) => Number(row.scheduleId)), "the staffing need stays, inactive schedule too").to.have.members([
+                removalId,
+                pausedId,
+            ]);
+            for (const row of rows) {
+                expect(row.person).to.eq(null);
+                expect(Number(row.accepted)).to.eq(0);
+                expect(row.setBy).to.eq(null);
+                expect(Number(row.minCount)).to.eq(1);
+            }
+        });
+
+        requirementsOf(removalId).then((rows) => {
+            expect(rows[position.usher], "someone else's default").to.include({ defaultPersonId: USHER });
+        });
+        requirementsOf(other.scheduleId).then((rows) => {
+            expect(rows[other.positionId], "another ministry's schedule").to.include({
+                defaultPersonId: LEADER_B,
+                defaultAccepted: true,
+                defaultQualified: true,
+            });
+        });
+        staffingOf(other.scheduleId).then((occurrences) => {
+            const assignments = occurrences.flatMap((occurrence) => occurrence.assignments);
+            expect(assignments).to.not.be.empty;
+            expect(assignments.every((a) => a.personId === LEADER_B && a.status === "accepted")).to.eq(true);
+        });
+        cy.then(() => expect(reported, "the response counts the cleared defaults").to.eq(stored));
+    });
+
+    it("reports no defaults on a second removal", () => {
+        api("DELETE", `${URL}/ministries/${ministryId}/volunteers/${LEADER_B}`).then((resp) => {
+            expect(resp.body.defaults).to.eq(0);
+        });
+    });
+});
+
 // ── Ministry Settings ──────────────────────────────────────────────────────
 
 describe("Volunteer v2 D32 — the server refuses a blank number setting", () => {
