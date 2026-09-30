@@ -402,13 +402,13 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             extract($aRow);
 
             // Format Data
-            if (strlen($plg_CheckNo) > 8) {
+            if (strlen((string) $plg_CheckNo) > 8) {
                 $plg_CheckNo = '...' . mb_substr($plg_CheckNo, -8, 8);
             }
             if (strlen($fundName) > 19) {
                 $fundName = mb_substr($fundName, 0, 18) . '...';
             }
-            if (strlen($plg_comment) > 30) {
+            if (strlen((string) $plg_comment) > 30) {
                 $plg_comment = mb_substr($plg_comment, 0, 30) . '...';
             }
 
