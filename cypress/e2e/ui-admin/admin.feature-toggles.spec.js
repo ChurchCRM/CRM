@@ -14,10 +14,26 @@ describe("Admin Feature Toggles page", () => {
         });
     });
 
-    it("is reachable from the admin dashboard", () => {
+    it("shows a Feature Toggles card on the dashboard linking to the full page", () => {
         cy.visit("admin/");
-        cy.get('a[href*="/admin/system/feature-toggles"]').first().click();
+        cy.get(".dashboard-feature-toggle").should("have.length.greaterThan", 0);
+        cy.contains("a", "Manage All Features").click();
         cy.url().should("include", "/admin/system/feature-toggles");
+    });
+
+    it("saves a toggle from the dashboard card", () => {
+        cy.visit("admin/");
+        cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').then(($cb) => {
+            const wasChecked = $cb.prop("checked");
+            cy.wrap($cb).click();
+            cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').should(
+                wasChecked ? "not.be.checked" : "be.checked",
+            );
+            cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').click();
+            cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').should(
+                wasChecked ? "be.checked" : "not.be.checked",
+            );
+        });
     });
 
     it("saves a toggle and persists it after reload", () => {
