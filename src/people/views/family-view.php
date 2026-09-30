@@ -703,10 +703,10 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 <div class="row" id="giving-history">
     <div class="col-12">
         <div class="card mb-3">
-            <div class="card-header d-flex align-items-center flex-wrap gap-2">
+            <div class="card-header d-flex align-items-center flex-wrap gap-3">
                 <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot me-1"></i> <?= gettext("Giving History") ?></h3>
                 <span id="ytd-total-badge" class="badge bg-green-lt text-green ms-1 d-none"></span>
-                <div class="ms-auto d-flex align-items-center gap-2">
+                <div class="ms-auto d-flex align-items-center gap-3">
                     <ul class="nav nav-pills" role="tablist">
                         <li class="nav-item"><a class="nav-link active pledge-type-pill" href="#" data-filter=""><?= gettext("All") ?></a></li>
                         <li class="nav-item"><a class="nav-link pledge-type-pill" href="#" data-filter="Pledge"><?= gettext("Pledges") ?></a></li>
@@ -734,13 +734,13 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     </ul>
                 </div>
             </div>
-            <div style="overflow-x: clip; overflow-y: visible;">
+            <div style="overflow-x: clip; overflow-y: visible;" class="px-3 pt-2">
                 <table id="pledge-payment-v2-table" class="table table-vcenter card-table" style="width: 100%;">
                     <tbody></tbody>
                     <tfoot>
                         <tr id="giving-summary-row" class="d-none">
                             <td colspan="7" class="border-top">
-                                <div class="d-flex gap-4 justify-content-end py-1 pe-2">
+                                <div class="d-flex gap-4 justify-content-end py-3 pe-2">
                                     <span><strong><?= gettext("Pledged") ?>:</strong> <span id="giving-total-pledged" class="text-primary fw-bold">$0.00</span></span>
                                     <span><strong><?= gettext("Paid") ?>:</strong> <span id="giving-total-paid" class="text-success fw-bold">$0.00</span></span>
                                 </div>
