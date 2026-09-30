@@ -346,7 +346,7 @@ abstract class AbstractPlugin implements PluginInterface
      * - 'label': Display text (use gettext() for i18n)
      * - 'url': Relative URL path
      * - 'icon': Optional FontAwesome icon class
-     * - 'permission': Optional. Any non-empty value (e.g., 'bAdmin') limits the item to administrators
+     * - 'permission': Optional permission required (e.g., 'bAdmin')
      *
      * @return array<int, array{parent: string, label: string, url: string, icon?: string, permission?: string}>
      */

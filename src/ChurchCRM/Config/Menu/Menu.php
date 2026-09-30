@@ -220,8 +220,7 @@ class Menu
      * Add plugin menu items to their parent menus.
      *
      * Plugins can register menu items via getMenuItems() which specify a 'parent' key.
-     * This method merges those items into the appropriate parent menu. An item that
-     * declares a 'permission' is shown to administrators only.
+     * This method merges those items into the appropriate parent menu.
      *
      * @param array<string, MenuItem> $menus The main menu array to modify
      */
@@ -229,8 +228,7 @@ class Menu
     {
         try {
             $pluginMenuItems = PluginManager::getPluginMenuItems();
-            $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
-
+            
             foreach ($pluginMenuItems as $parentKey => $items) {
                 // Find the parent menu (case-insensitive match)
                 $parentMenu = null;
@@ -248,10 +246,6 @@ class Menu
                 
                 // Add each plugin menu item as a submenu
                 foreach ($items as $item) {
-                    if (!empty($item['permission']) && !$isAdmin) {
-                        continue;
-                    }
-
                     $label = $item['label'] ?? '';
                     $url = $item['url'] ?? '';
                     $icon = $item['icon'] ?? 'fa-plug';

@@ -161,7 +161,7 @@ interface PluginInterface
      * - 'label': Display text
      * - 'url': Relative URL path
      * - 'icon': Optional FontAwesome icon class
-     * - 'permission': Optional. Any non-empty value (e.g., 'bAdmin') limits the item to administrators
+     * - 'permission': Optional permission required
      *
      * @return array<int, array{parent: string, label: string, url: string, icon?: string, permission?: string}>
      */
