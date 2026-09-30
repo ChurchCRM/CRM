@@ -18,6 +18,42 @@ $(document).ready(function () {
     }
   });
 
+  // Optional second address (#9743) — same country/state cascade as the primary
+  // address. The country select has no blank option, so it falls back to the
+  // installation default; FamilyEditor.php discards the whole block on save when
+  // no street line or city was entered, so a blank second address stays blank.
+  DropdownManager.initializeCountryState("SecondCountry", "SecondState", {
+    userSelected: $("#SecondCountry").data("user-selected"),
+    systemDefault: $("#SecondCountry").data("system-default"),
+    stateOptionDivId: "secondStateOptionDiv",
+    stateInputDivId: "secondStateInputDiv",
+    stateTextboxId: "SecondStateTextbox",
+  });
+
+  $(document).on("change", "#SecondState", function () {
+    const secondStateSelect = $("#SecondState");
+    if (secondStateSelect.find("option").length > 1) {
+      $("#secondStateType").val("dropDown");
+    } else {
+      $("#secondStateType").val("input");
+    }
+  });
+
+  // Convenience only — the server enforces the same rule. The flag is meaningless
+  // until a second address line or city has been entered.
+  const syncSecondIsMailingState = function () {
+    const hasSecondAddress = $("#SecondAddress1").val().trim().length > 0 || $("#SecondCity").val().trim().length > 0;
+    const $flag = $("#SecondIsMailing");
+    $flag.prop("disabled", !hasSecondAddress);
+    if (!hasSecondAddress) {
+      $flag.prop("checked", false);
+    }
+  };
+  if ($("#SecondIsMailing").length > 0) {
+    $(document).on("input change", "#SecondAddress1, #SecondCity", syncSecondIsMailingState);
+    syncSecondIsMailingState();
+  }
+
   // Initialize phone mask toggles FIRST, before applying masks globally
   // This ensures phone fields with "No format" checked don't get masked
   if (window.CRM.formUtils && window.CRM.formUtils.initializeAllPhoneMaskToggles) {

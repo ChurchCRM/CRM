@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -74,6 +75,231 @@ class Family extends BaseFamily implements PhotoInterface
         return implode(' ', $address);
     }
 
+    /**
+     * The family's primary (physical) address, part by part. Both this and
+     * {@see self::getSecondaryAddressParts()} use the same six keys — Address1,
+     * Address2, City, State, Zip, Country — so callers can treat them alike.
+     */
+    public function getPrimaryAddressParts(): array
+    {
+        return [
+            'Address1' => trim($this->getAddress1() ?? ''),
+            'Address2' => trim($this->getAddress2() ?? ''),
+            'City'     => trim($this->getCity() ?? ''),
+            'State'    => trim($this->getState() ?? ''),
+            'Zip'      => trim($this->getZip() ?? ''),
+            'Country'  => trim($this->getCountry() ?? ''),
+        ];
+    }
+
+    /**
+     * The family's optional second address, part by part.
+     */
+    public function getSecondaryAddressParts(): array
+    {
+        return [
+            'Address1' => trim($this->getSecondAddress1() ?? ''),
+            'Address2' => trim($this->getSecondAddress2() ?? ''),
+            'City'     => trim($this->getSecondCity() ?? ''),
+            'State'    => trim($this->getSecondState() ?? ''),
+            'Zip'      => trim($this->getSecondZip() ?? ''),
+            'Country'  => trim($this->getSecondCountry() ?? ''),
+        ];
+    }
+
+    /**
+     * True when the family has entered a second address. A street line or a city
+     * is enough — the same tolerance the primary address gets.
+     */
+    public function hasSecondAddress(): bool
+    {
+        $parts = $this->getSecondaryAddressParts();
+
+        return $parts['Address1'] !== '' || $parts['City'] !== '';
+    }
+
+    /**
+     * True when the second address exists and is flagged as where mail goes.
+     * The flag alone is never enough — an empty second address can't receive mail.
+     */
+    public function isSecondAddressMailing(): bool
+    {
+        return $this->hasSecondAddress() && (bool) $this->getSecondIsMailing();
+    }
+
+    /**
+     * The address mail should be sent to: the flagged second address when there is
+     * one, the primary address otherwise. Labels, letters and the directory call
+     * this rather than reading the columns themselves.
+     */
+    public function getMailingAddressParts(): array
+    {
+        return $this->isSecondAddressMailing()
+            ? $this->getSecondaryAddressParts()
+            : $this->getPrimaryAddressParts();
+    }
+
+    /**
+     * True only when a flagged mailing address actually differs from the primary
+     * one, so callers can avoid printing the same address twice.
+     */
+    public function hasDistinctMailingAddress(): bool
+    {
+        if (!$this->isSecondAddressMailing()) {
+            return false;
+        }
+
+        $primary = array_map('mb_strtolower', $this->getPrimaryAddressParts());
+        $second = array_map('mb_strtolower', $this->getSecondaryAddressParts());
+
+        return $primary !== $second;
+    }
+
+    /**
+     * The one postal-block formatter. Reproduces the layout the label reports have
+     * always produced: street lines, then "City, State  Zip", then the country only
+     * when it is foreign to this installation.
+     */
+    public static function formatAddressBlock(array $parts, string $separator = "\n"): string
+    {
+        $lines = [];
+
+        foreach (['Address1', 'Address2'] as $key) {
+            $line = trim((string) ($parts[$key] ?? ''));
+            if ($line !== '') {
+                $lines[] = $line;
+            }
+        }
+
+        $city = trim((string) ($parts['City'] ?? ''));
+        $state = trim((string) ($parts['State'] ?? ''));
+        $zip = trim((string) ($parts['Zip'] ?? ''));
+        if ($city !== '') {
+            // The historical label layout: the comma follows the city and two spaces
+            // set the ZIP off from the state.
+            $stateZip = trim($state . '  ' . $zip);
+            $cityStateZip = $stateZip !== '' ? $city . ', ' . $stateZip : $city;
+        } else {
+            // A city-less address (a PO Box with only a state and ZIP on record) has
+            // nothing for a comma to follow, so the line is just "State Zip".
+            $cityStateZip = trim($state . ' ' . $zip);
+        }
+        if ($cityStateZip !== '') {
+            $lines[] = $cityStateZip;
+        }
+
+        $country = trim((string) ($parts['Country'] ?? ''));
+        if ($country !== '' && Countries::isForeign($country)) {
+            $lines[] = $country;
+        }
+
+        return implode($separator, $lines);
+    }
+
+    /**
+     * The resolved mailing address as a formatted postal block.
+     */
+    public function getMailingAddressLines(string $separator = "\n"): string
+    {
+        return self::formatAddressBlock($this->getMailingAddressParts(), $separator);
+    }
+
+    /**
+     * The second address as a single line, mirroring {@see self::getAddress()}.
+     */
+    public function getSecondaryAddress(): string
+    {
+        $parts = $this->getSecondaryAddressParts();
+        $address = [];
+
+        if ($parts['Address1'] !== '') {
+            $address[] = $parts['Address1'];
+        }
+        if ($parts['Address2'] !== '') {
+            $address[] = $parts['Address2'];
+        }
+        if ($parts['City'] !== '') {
+            $address[] = $parts['City'] . ',';
+        }
+        if ($parts['State'] !== '') {
+            $address[] = $parts['State'];
+        }
+        if ($parts['Zip'] !== '') {
+            $address[] = $parts['Zip'];
+        }
+        if ($parts['Country'] !== '') {
+            $address[] = $parts['Country'];
+        }
+
+        return implode(' ', $address);
+    }
+
+    /**
+     * Order families by the ZIP code their mail is actually addressed to.
+     *
+     * Mailing labels are printed in ZIP order so a bundle can be presorted for the
+     * post office, which only works when the sort key is the ZIP that gets printed
+     * — the flagged second address when a family has one. Callers pass a set that
+     * the database already ordered by the primary ZIP; when no family in that set
+     * has a mailing ZIP of its own the collection is handed back in exactly the
+     * order it arrived, so label ordering is unchanged for every existing install.
+     *
+     * @param iterable<self> $families families ordered by primary ZIP
+     *
+     * @return self[]
+     */
+    public static function sortByMailingZip(iterable $families): array
+    {
+        $sorted = [];
+        $mailingZips = [];
+        $needsResort = false;
+
+        // getMailingAddressParts() is derived, not a cached column, so the sort key
+        // is resolved once per family here rather than on every comparison below.
+        foreach ($families as $family) {
+            $sorted[] = $family;
+            $mailingZip = $family->getMailingAddressParts()['Zip'];
+            $mailingZips[spl_object_id($family)] = $mailingZip;
+            if ($mailingZip !== trim((string) $family->getZip())) {
+                $needsResort = true;
+            }
+        }
+
+        if (!$needsResort) {
+            return $sorted;
+        }
+
+        // usort has been stable since PHP 8.0, so families sharing a ZIP keep the
+        // relative order the database returned them in.
+        usort(
+            $sorted,
+            static fn (self $a, self $b): int => strcasecmp(
+                $mailingZips[spl_object_id($a)],
+                $mailingZips[spl_object_id($b)]
+            )
+        );
+
+        return $sorted;
+    }
+
+    /**
+     * A Family built from a row that a report's own SQL already fetched with
+     * every family_fam column (`SELECT * ... family_fam`), so the report can use
+     * the address methods above without a query per row.
+     *
+     * It is hydrated the way a FamilyQuery result is, but kept out of the
+     * instance pool. Read from it only: never save or delete it.
+     *
+     * @param array<string, mixed> $row keyed by column name (fam_ID, fam_Address1, ...)
+     */
+    public static function readOnlyFromRow(array $row): self
+    {
+        $family = new self();
+        $family->hydrate($row, 0, false, TableMap::TYPE_FIELDNAME);
+
+        return $family;
+    }
+
     public static function getFamilyViewURIForId(int $id): string
     {
         return SystemURLs::getRootPath() . '/people/family/' . $id;
@@ -100,6 +326,22 @@ class Family extends BaseFamily implements PhotoInterface
         }
 
         return '';
+    }
+
+    /**
+     * Enforce the one invariant the second address carries: the "this is the
+     * mailing address" flag is meaningless without an address to send mail to,
+     * so it is cleared whenever the second address is empty. Applied here rather
+     * than only in the editor so every write path (editor, CSV import, API
+     * consumers) stores a consistent row.
+     */
+    public function preSave(?ConnectionInterface $con = null): bool
+    {
+        if ($this->getSecondIsMailing() && !$this->hasSecondAddress()) {
+            $this->setSecondIsMailing(false);
+        }
+
+        return parent::preSave($con);
     }
 
     public function postInsert(?ConnectionInterface $con = null): void
@@ -527,6 +769,13 @@ class Family extends BaseFamily implements PhotoInterface
         $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
         $array['Address'] = $this->getAddress();
         $array['FamilyString'] = $this->getFamilyString();
+        // Additive, read-only mailing-address resolution (#9743). `Address` stays the
+        // primary/physical address so maps, search and the cart are unaffected.
+        $array['HasSecondAddress'] = $this->hasSecondAddress();
+        $array['SecondAddressIsMailing'] = $this->isSecondAddressMailing();
+        $array['SecondAddress'] = $this->getSecondaryAddress();
+        $array['MailingAddress'] = $this->getMailingAddressParts();
+        $array['MailingAddressLines'] = $this->getMailingAddressLines(', ');
 
         return $array;
     }
