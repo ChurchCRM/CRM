@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 03:33+0000\n"
+"POT-Creation-Date: 2026-09-30 04:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1442,6 +1442,9 @@ msgstr ""
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr ""
 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr ""
+
 msgid "Available after the event is saved."
 msgstr ""
 
@@ -1729,6 +1732,9 @@ msgid "Birth Year"
 msgstr ""
 
 msgid "Birthday"
+msgstr ""
+
+msgid "Birthday Emails"
 msgstr ""
 
 #. Context: query_qry
@@ -4239,6 +4245,12 @@ msgstr ""
 msgid "Enable non-deductible payments"
 msgstr ""
 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr ""
+
+msgid "Enable or disable the Fundraiser module."
+msgstr ""
+
 msgid "Enable or disable the Sunday School module and sidebar menu."
 msgstr ""
 
@@ -5410,6 +5422,9 @@ msgstr ""
 msgid "Finance Dashboard"
 msgstr ""
 
+msgid "Finance Module"
+msgstr ""
+
 msgid "Finance access"
 msgstr ""
 
@@ -5716,6 +5731,9 @@ msgid "Fundraiser"
 msgstr ""
 
 msgid "Fundraiser Listing"
+msgstr ""
+
+msgid "Fundraiser Module"
 msgstr ""
 
 msgid "Fundraiser Overview"
