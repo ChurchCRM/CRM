@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 15:04+0000\n"
+"POT-Creation-Date: 2026-09-30 02:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1258,6 +1258,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Aruba"
+msgstr ""
+
+msgid "As an admin, please also review the"
 msgstr ""
 
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
@@ -2603,6 +2606,9 @@ msgid "Colombia"
 msgstr ""
 
 msgid "Column was automatically matched to a ChurchCRM field."
+msgstr ""
+
+msgid "Columns per Page"
 msgstr ""
 
 msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
@@ -5506,6 +5512,9 @@ msgid "Flexible field selection"
 msgstr ""
 
 msgid "Focus"
+msgstr ""
+
+msgid "Folded Booklet"
 msgstr ""
 
 msgid "Follow these two steps to add your church members quickly and correctly."
@@ -8640,9 +8649,6 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-msgid "Number of Columns"
-msgstr ""
-
 msgid "Number of checks for Deposit Slip Report"
 msgstr ""
 
@@ -8706,6 +8712,9 @@ msgid "Once you submit, our team will receive your registration and reach out to
 msgstr ""
 
 msgid "One character from FirstName and one character from LastName"
+msgstr ""
+
+msgid "One directory page per sheet, portrait."
 msgstr ""
 
 msgid "One or more files failed signature validation"
@@ -8937,6 +8946,9 @@ msgid "Paddle"
 msgstr ""
 
 msgid "Page"
+msgstr ""
+
+msgid "Page Layout"
 msgstr ""
 
 msgid "Page Not Found"
@@ -11130,6 +11142,9 @@ msgstr ""
 msgid "Singapore"
 msgstr ""
 
+msgid "Single Pages"
+msgstr ""
+
 msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
 msgstr ""
 
@@ -12361,6 +12376,9 @@ msgid "Two Factor Enrollment Error"
 msgstr ""
 
 msgid "Two characters from FirstName"
+msgstr ""
+
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
 msgstr ""
 
 msgid "Two-Factor Authentication"
@@ -13847,6 +13865,9 @@ msgstr ""
 msgid "for all funds"
 msgstr ""
 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr ""
+
 msgid "for fund"
 msgstr ""
 
@@ -14072,6 +14093,9 @@ msgid "skip must be zero or a positive integer"
 msgstr ""
 
 msgid "subscribers"
+msgstr ""
+
+msgid "system logs"
 msgstr ""
 
 msgid "system user changed password"

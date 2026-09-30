@@ -6140,7 +6140,7 @@ paths:
         '403':
           description: 'Admin role required'
         '413':
-          description: 'Image exceeds the server upload limit or the decode pixel budget'
+          description: 'Image exceeds the server upload limit or the source image size limit'
       security:
         -
           ApiKeyAuth: []
