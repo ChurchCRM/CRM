@@ -24,3 +24,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 `mysqli_fetch_array()` / `extract()` / raw `$_GET` values are **strings**.
 When you change `==` to `===`, cast first: `(int)$type_ID === 11`.
 Do not `(int)` a string slug getter.
+
+## SystemConfig Settings (Frozen)
+
+**Do not add new settings to `SystemConfig::buildConfigs()`.** The old-style settings system is frozen. All new admin settings belong in their respective feature area **dashboards** (`settingsPanel` divs like `#peopleSettings`, `#financialSettings`) with explicit `ConfigItem` definitions **omitted** from `buildCategories()`. See `configuration-management.md` and examples: `bEnableSelfRegistration`, `bHideDeceasedFromDirectory`.
