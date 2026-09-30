@@ -27,7 +27,7 @@ App under test: `DEVELOPING.md` (`npm run docker:test:start`).
 
 ## PDF reports
 
-- Assert report text with the `pdfText` helper in `cypress/e2e/ui/reports/mailing-address-reports.spec.js`: `cy.request({ encoding: "binary" })`, inflate each FlateDecode stream with `DecompressionStream("deflate")`, collect the `(text) Tj` operands. No PDF parser dependency needed
+- Assert report text with `pdfText()` from `cypress/support/pdf-text.js`: `cy.request({ encoding: "binary" })`, inflate each FlateDecode stream with `DecompressionStream("deflate")`, collect the `(text) Tj` operands. No PDF parser dependency needed
 - Assert a sequence after a unique marker, not `includes` alone, so the test proves which record printed what
 - The directory report pre-selects classifications (Unassigned people never print); `DELETE /api/family/{id}` only unlinks members, use `?deleteMembers=true` when the test created people
 
