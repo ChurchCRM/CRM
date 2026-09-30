@@ -528,13 +528,18 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
 
         <?php
         // Address card — mirrors the family-view Address card. Renders when the
-        // person has a mailing address OR a map config (family-less person with
-        // their own address). The #person-map element must exist whenever
-        // $personMapConfig is set, or person-view.js's L.map() call throws.
+        // person has a mailing address, the family has a distinct mailing address
+        // (#9743), OR a map config (family-less person with their own address).
+        // The #person-map element must exist whenever $personMapConfig is set, or
+        // person-view.js's L.map() call throws.
         $personDirectionsUrl = $person->getDirectionsUrl();
         $personAppleDirectionsUrl = $person->getAppleMapsDirectionsUrl();
+        $personFamily = $person->getFamily();
+        $familyMailingAddress = $personFamily !== null && $personFamily->hasDistinctMailingAddress()
+            ? $personFamily->getSecondaryAddress()
+            : '';
         ?>
-        <?php if (!empty($formattedMailingAddress) || $personMapConfig !== null) : ?>
+        <?php if (!empty($formattedMailingAddress) || $familyMailingAddress !== '' || $personMapConfig !== null) : ?>
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map me-1"></i> <?= gettext('Address') ?>
@@ -552,6 +557,18 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             <div class="card-body">
                 <?php if (!empty($formattedMailingAddress)) : ?>
                 <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
+                <?php endif; ?>
+                <?php
+                // The address above stays the person's own / inherited primary
+                // address. The family's distinct mailing address goes underneath,
+                // even when there is no primary address, so it is clear where mail goes.
+                if ($familyMailingAddress !== '') : ?>
+                <div class="mt-2 text-body-secondary small" id="person-family-mailing-address">
+                    <i class="fa-solid fa-envelope me-1"></i><strong><?= gettext('Mailing Address') ?></strong>:
+                    <?= InputUtils::escapeHTML($familyMailingAddress) ?>
+                </div>
+                <?php endif; ?>
+                <?php if (!empty($formattedMailingAddress)) : ?>
                 <div class="mt-2 d-flex flex-wrap gap-1">
                     <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
                     <div class="btn-group directions-btn-group">
