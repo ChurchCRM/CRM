@@ -154,6 +154,7 @@ class   SystemConfig
             'sSMTPPass'                            => new ConfigItem('sSMTPPass', 'password', '', gettext('SMTP Password')),
             'sLanguage'                            => new ConfigItem('sLanguage', 'choice', 'en_US', gettext('Internationalization (I18n) support'), 'https://poeditor.com/join/project?hash=RABdnDSqAt', json_encode(SystemConfig::getSupportedLocales())),
             'iFYMonth'                             => new ConfigItem('iFYMonth', 'choice', '1', gettext('The month that starts your organization\'s fiscal year'), '', json_encode(SystemConfig::getMonthChoices())),
+            'iMaxTaxYears'                         => new ConfigItem('iMaxTaxYears', 'number', '5', gettext('Maximum number of tax year documents to show per family profile (0 = no limit)')),
             'iMapZoom'                             => new ConfigItem('iMapZoom', 'choice', '10', gettext('Initial zoom level when opening the map'), '', json_encode(SystemConfig::getMapZoomChoices())),
             'iChurchLatitude'                      => new ConfigItem('iChurchLatitude', 'number', '', ''),
             'iChurchLongitude'                     => new ConfigItem('iChurchLongitude', 'number', '', ''),

@@ -18,6 +18,20 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
+// Support direct GET links from family profile: ?familyId=X&year=YYYY
+if (isset($_GET['familyId']) && isset($_GET['year'])) {
+    $gFamId = (int) InputUtils::legacyFilterInput($_GET['familyId'], 'int');
+    $gYear  = (int) InputUtils::legacyFilterInput($_GET['year'], 'int');
+    if ($gFamId > 0 && $gYear > 1990 && $gYear <= (int) date('Y')) {
+        $_POST['family']     = [$gFamId];
+        $_POST['DateStart']  = $gYear . '-01-01';
+        $_POST['DateEnd']    = $gYear . '-12-31';
+        $_POST['output']     = 'pdf';
+        $_POST['letterhead'] = 'address';
+        $_POST['remittance'] = 'no';
+    }
+}
+
 // Filter values
 $letterhead = InputUtils::legacyFilterInput($_POST['letterhead']);
 $remittance = InputUtils::legacyFilterInput($_POST['remittance']);
@@ -133,7 +147,9 @@ if ($output === 'pdf') {
 
     class PdfTaxReport extends ChurchInfoReport
     {
-        // Constructor
+        /**
+         * Initialize the PDF document for tax report output.
+         */
         public function __construct()
         {
             parent::__construct('P', 'mm', $this->paperFormat);
@@ -143,6 +159,20 @@ if ($output === 'pdf') {
             $this->SetAutoPageBreak(false);
         }
 
+        /**
+         * Start a new page for a family's tax statement with letterhead and date range.
+         *
+         * @param int|string $fam_ID Family ID
+         * @param string $fam_Name Family name
+         * @param string $fam_Address1 Primary address line
+         * @param string $fam_Address2 Secondary address line
+         * @param string $fam_City City
+         * @param string $fam_State State/province
+         * @param string $fam_Zip Postal code
+         * @param string|null $fam_Country Country
+         * @param string $fam_envelope Envelope number if applicable
+         * @return float Current Y position after header
+         */
         public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, string $fam_envelope): float
         {
             global $letterhead, $sDateStart, $sDateEnd, $iDepID;
@@ -168,6 +198,19 @@ if ($output === 'pdf') {
             return $curY + 2 * SystemConfig::getValue('incrementY');
         }
 
+        /**
+         * Finish the family's tax statement page with closing message, signature line, and optional remittance slip.
+         *
+         * @param float $curY Current Y position on the page
+         * @param int|string $fam_ID Family ID
+         * @param string $fam_Name Family name
+         * @param string $fam_Address1 Primary address line
+         * @param string $fam_Address2 Secondary address line
+         * @param string $fam_City City
+         * @param string $fam_State State/province
+         * @param string $fam_Zip Postal code
+         * @param string|null $fam_Country Country
+         */
         public function finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country): void
         {
             global $remittance;

@@ -16,7 +16,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - JSON in `<script>`: `InputUtils::jsonEncodeForScript()`
 - Redirects: `RedirectUtils` — not raw `header('Location')`
 - UI: Tabler + Bootstrap 5. Wrap `gettext()` / `i18next.t()`
-- Tests with behavior changes. Linked issue on every PR
+- Tests with behavior changes
 - Comments are rare. Names and tests carry intent. Do not restate the next line. Comment only a *why* that the code cannot say (CI trap, security invariant, deliberate deviation). Do not add paragraph comments in specs.
 
 ## Strict vs Loose Comparisons
@@ -24,3 +24,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 `mysqli_fetch_array()` / `extract()` / raw `$_GET` values are **strings**.
 When you change `==` to `===`, cast first: `(int)$type_ID === 11`.
 Do not `(int)` a string slug getter.
+
+## SystemConfig Settings (Frozen)
+
+**Do not add new settings to `SystemConfig::buildConfigs()`.** The old-style settings system is frozen. All new admin settings belong in their respective feature area **dashboards** (`settingsPanel` divs like `#peopleSettings`, `#financialSettings`) with explicit `ConfigItem` definitions **omitted** from `buildCategories()`. See `configuration-management.md` and examples: `bEnableSelfRegistration`, `bHideDeceasedFromDirectory`.

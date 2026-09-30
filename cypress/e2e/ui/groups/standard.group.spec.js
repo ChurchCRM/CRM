@@ -141,6 +141,10 @@ describe("Standard Groups", () => {
                 });
         });
 
+        // The #10129 block's API-key `after` hook leaves the cached standard session
+        // unusable (visit redirects to login); a fresh login sidesteps the cache.
+        beforeEach(() => cy.setupStandardSession({ forceLogin: true }));
+
         after(() => {
             if (eventId) cy.makePrivateAdminAPICall("DELETE", `/api/events/${eventId}`);
             if (groupId) cy.makePrivateAdminAPICall("DELETE", `/api/groups/${groupId}`);

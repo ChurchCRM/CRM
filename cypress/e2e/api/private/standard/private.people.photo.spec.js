@@ -196,7 +196,7 @@ describe("API Private Photo and Avatar - Person", () => {
             });
         });
 
-        it("should reject an image over the decode pixel budget with 413 before decoding it", () => {
+        it("should reject an image over the source image size limit with 413 before decoding it", () => {
             // A valid 12000x12000 PNG is ~18 KB on the wire but 144 million
             // pixels once decoded, so the byte-size limit alone would let GD
             // allocate a raster of several hundred MB. The shared upload helper

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 15:04+0000\n"
+"POT-Creation-Date: 2026-09-30 03:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,6 +141,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
+msgid "%d tax document emailed to the family successfully."
+msgstr ""
+
+#, php-format
 msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] ""
@@ -148,6 +152,10 @@ msgstr[1] ""
 
 #, php-format
 msgid "%d% of interface text is translated for this language."
+msgstr ""
+
+#, php-format
+msgid "%s %d Giving Statement"
 msgstr ""
 
 #, php-format
@@ -1258,6 +1266,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Aruba"
+msgstr ""
+
+msgid "As an admin, please also review the"
 msgstr ""
 
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
@@ -2605,6 +2616,9 @@ msgstr ""
 msgid "Column was automatically matched to a ChurchCRM field."
 msgstr ""
 
+msgid "Columns per Page"
+msgstr ""
+
 msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
 msgstr ""
 
@@ -3363,6 +3377,17 @@ msgstr ""
 msgid "Deactivate"
 msgstr ""
 
+#, php-format
+msgid ""
+"Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr ""
+
 msgid "Dear Friend"
 msgstr ""
 
@@ -4049,6 +4074,10 @@ msgid "Electronic Transaction Details"
 msgstr ""
 
 msgid "Email"
+msgstr ""
+
+#, php-format
+msgid "Email %d Tax Doc"
 msgstr ""
 
 msgid "Email Address"
@@ -5508,6 +5537,9 @@ msgstr ""
 msgid "Focus"
 msgstr ""
 
+msgid "Folded Booklet"
+msgstr ""
+
 msgid "Follow these two steps to add your church members quickly and correctly."
 msgstr ""
 
@@ -5892,6 +5924,9 @@ msgid "Gift Designation"
 msgstr ""
 
 msgid "Girls"
+msgstr ""
+
+msgid "Giving History"
 msgstr ""
 
 msgid "Giving Report (Tax Statements)"
@@ -6974,6 +7009,9 @@ msgstr ""
 msgid "Last Campaign"
 msgstr ""
 
+msgid "Last Gift"
+msgstr ""
+
 msgid "Last Login"
 msgstr ""
 
@@ -7636,6 +7674,12 @@ msgid ""
 "Once the maximum has been reached, an administrator must re-enable the account.\n"
 "This feature helps to protect against automated password guessing attacks.\n"
 "Set to zero to disable this feature."
+msgstr ""
+
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr ""
+
+msgid "Maximum tax years shown per family"
 msgstr ""
 
 msgid "Maximum upload size"
@@ -8358,6 +8402,9 @@ msgstr ""
 msgid "No funds have been added yet. Use the form above to add the first fund."
 msgstr ""
 
+msgid "No giving history found."
+msgstr ""
+
 msgid "No group"
 msgstr ""
 
@@ -8640,9 +8687,6 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-msgid "Number of Columns"
-msgstr ""
-
 msgid "Number of checks for Deposit Slip Report"
 msgstr ""
 
@@ -8706,6 +8750,9 @@ msgid "Once you submit, our team will receive your registration and reach out to
 msgstr ""
 
 msgid "One character from FirstName and one character from LastName"
+msgstr ""
+
+msgid "One directory page per sheet, portrait."
 msgstr ""
 
 msgid "One or more files failed signature validation"
@@ -8937,6 +8984,9 @@ msgid "Paddle"
 msgstr ""
 
 msgid "Page"
+msgstr ""
+
+msgid "Page Layout"
 msgstr ""
 
 msgid "Page Not Found"
@@ -9588,6 +9638,9 @@ msgstr ""
 msgid "Pledge group not found"
 msgstr ""
 
+msgid "Pledged"
+msgstr ""
+
 msgid "Pledged Amount"
 msgstr ""
 
@@ -9599,9 +9652,6 @@ msgid "Pledges"
 msgstr ""
 
 msgid "Pledges & Payments"
-msgstr ""
-
-msgid "Pledges and Payments"
 msgstr ""
 
 msgid "Plugin Development"
@@ -9727,6 +9777,10 @@ msgid "Primary Color"
 msgstr ""
 
 msgid "Print"
+msgstr ""
+
+#, php-format
+msgid "Print %d Tax Doc"
 msgstr ""
 
 msgid "Print name tags"
@@ -11130,6 +11184,9 @@ msgstr ""
 msgid "Singapore"
 msgstr ""
 
+msgid "Single Pages"
+msgstr ""
+
 msgid "Single character used as the decimal point (e.g. . or ,). Default: ."
 msgstr ""
 
@@ -11571,6 +11628,9 @@ msgstr ""
 msgid "Tax & Giving Reports"
 msgstr ""
 
+msgid "Tax Documents"
+msgstr ""
+
 msgid "Tax Report"
 msgstr ""
 
@@ -11587,6 +11647,9 @@ msgid "Tax Statements (Giving Report)"
 msgstr ""
 
 msgid "Tax Year Reporting Checklist"
+msgstr ""
+
+msgid "Tax document email failed to send. Please check your email server settings."
 msgstr ""
 
 msgid "Teacher"
@@ -12363,6 +12426,9 @@ msgstr ""
 msgid "Two characters from FirstName"
 msgstr ""
 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr ""
+
 msgid "Two-Factor Authentication"
 msgstr ""
 
@@ -12444,6 +12510,12 @@ msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr ""
 
 msgid "Unable to display map: church address has not been geocoded yet."
+msgstr ""
+
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr ""
+
+msgid "Unable to email tax document: this family has no email address on file."
 msgstr ""
 
 msgid "Unable to list web server modules (non-Apache SAPI)."
@@ -12987,6 +13059,9 @@ msgstr ""
 msgid "View Family Page"
 msgstr ""
 
+msgid "View Full Family Giving"
+msgstr ""
+
 msgid "View Group"
 msgstr ""
 
@@ -13437,6 +13512,12 @@ msgstr ""
 msgid "Working..."
 msgstr ""
 
+msgid "YTD"
+msgstr ""
+
+msgid "YTD Paid"
+msgstr ""
+
 msgid "YTD Payments"
 msgstr ""
 
@@ -13847,6 +13928,9 @@ msgstr ""
 msgid "for all funds"
 msgstr ""
 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr ""
+
 msgid "for fund"
 msgstr ""
 
@@ -14072,6 +14156,9 @@ msgid "skip must be zero or a positive integer"
 msgstr ""
 
 msgid "subscribers"
+msgstr ""
+
+msgid "system logs"
 msgstr ""
 
 msgid "system user changed password"
