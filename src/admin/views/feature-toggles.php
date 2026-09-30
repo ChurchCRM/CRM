@@ -95,24 +95,6 @@ $featureGroups = [
 ];
 ?>
 
-<div class="page-wrapper">
-    <div class="page-header d-print-none">
-        <div class="container-xl">
-            <div class="row align-items-center">
-                <div class="col">
-                    <?php if (isset($aBreadcrumbs)): ?>
-                        <div class="page-pretitle"><?= $aBreadcrumbs ?></div>
-                    <?php endif; ?>
-                    <h2 class="page-title"><?= $sPageTitle ?? gettext('Feature Toggles') ?></h2>
-                    <?php if (isset($sPageSubtitle)): ?>
-                        <div class="page-subtitle"><?= $sPageSubtitle ?></div>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="page-body">
     <div class="container-xl">
         <div class="alert alert-info">

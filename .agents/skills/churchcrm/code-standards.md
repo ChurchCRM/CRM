@@ -31,10 +31,18 @@ Do not `(int)` a string slug getter.
 
 ## Admin Page Headers
 
-All new admin pages must follow this pattern for consistent navigation and styling. No duplicate titles; single source: the page header.
+All new admin pages must follow this pattern for consistent navigation and styling. `Header.php` renders the page header; pass variables only.
 
-**Route handler:** Pass breadcrumbs, title, subtitle via `PageHeader::breadcrumbs([...])` and `$pageArgs`.
+**Route handler:** Pass breadcrumbs, title, subtitle via `$pageArgs`:
+```php
+'aBreadcrumbs' => PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('Page Name')],
+]),
+'sPageTitle' => gettext('Page Title'),
+'sPageSubtitle' => gettext('Optional subtitle'),
+```
 
-**View:** Render page-header with breadcrumbs, single title, subtitle. Use `$aBreadcrumbs`, `$sPageTitle`, `$sPageSubtitle` variables.
+**View:** Include `Header.php` at the top (it renders breadcrumbs, title, subtitle automatically). Do NOT duplicate the header in the view—`Header.php` handles it.
 
 See `src/admin/views/feature-toggles.php` and `src/admin/routes/system.php` (Feature Toggles page) for pattern example.
