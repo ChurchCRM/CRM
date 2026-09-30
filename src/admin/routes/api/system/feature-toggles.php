@@ -6,9 +6,9 @@ use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-// POST /system/feature-toggles
+// POST /api/system/feature-toggles
 // Save feature toggle settings
-$app->post('/system/feature-toggles', function (Request $request, Response $response): Response {
+$app->post('/api/system/feature-toggles', function (Request $request, Response $response): Response {
     $data = $request->getParsedBody();
 
     if (empty($data) || !is_array($data)) {
