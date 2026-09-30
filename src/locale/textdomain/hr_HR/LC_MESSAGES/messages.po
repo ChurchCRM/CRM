@@ -472,10 +472,6 @@ msgid "Photos"
 msgstr "Fotografije"
 
 #: 
-msgid "Number of Columns"
-msgstr "Broj stupaca"
-
-#: 
 msgid "Paper Size"
 msgstr "Veličina papira"
 
@@ -839,10 +835,6 @@ msgstr "Obriši fotografiju"
 #: 
 msgid "Timeline"
 msgstr "Vremenski trak"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Zavjeti i uplate"
 
 #: 
 msgid "Value"
@@ -12702,10 +12694,6 @@ msgid "Upcoming Events"
 msgstr "Nadolazeći događaji"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Apsolutni http(s) URL logotipa župe prikazan u predlošcima e-pošte. Za najbolji prikaz u klijentima e-pošte koristite široku banner sliku u omjeru cca 3,5:1 (npr. 350×100 px), PNG ili JPG, servirana putem HTTPS-a. Ostavite prazno za korištenje zadanog logotipa ChurchCRM-a."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "Opcija s tim nazivom već postoji"
 
@@ -18522,4 +18510,272 @@ msgstr "Previše primatelja za klijent e-pošte ({{total}} > {{max}}). Umjesto t
 #: 
 msgid "{{minutes}} min left"
 msgstr "Preostalo {{minutes}} min"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d porezni dokument uspješno poslan po e-pošti obitelji."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "Izjava o darivanju %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "Sve klasifikacije"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Kao administrator, molimo vas da također pregledajte"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Automatski pošalji e-poštu za rođendan ljudima na njihov rođendan."
+
+#: 
+msgid "Birthday Emails"
+msgstr "E-pošte za rođendan"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Rođendani, godišnjice, volonteri i drugi popisi ljudí s filtrom klasifikacije"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Odaberite %s da pokrenete ovaj izvještaj."
+
+#: 
+msgid "Choose events"
+msgstr "Odaberite događaje"
+
+#: 
+msgid "Choose..."
+msgstr "Odaberite..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logo crkve"
+
+#: 
+msgid "Columns per Page"
+msgstr "Stupci po stranici"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Poštovana obitelj %s,\n"
+"\n"
+"Molimo vas pronađite vašu izjavu o darivanju %d od %s u prilogu ovog e-maila.\n"
+"\n"
+"Ako imate bilo kakvih pitanja, molimo vas kontaktirajte ured crkve.\n"
+"\n"
+"Hvala vam na vašoj velikodušnosti."
+
+#: 
+msgid "Download CSV"
+msgstr "Preuzmite CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Pošalji e-mail %d porezni dokument"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Omogućite ili onemogućite modul Financije i bočni izbornik."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Omogućite ili onemogućite modul Skupljač sredstava."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Neuspješno uklanjanje loga crkve"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Neuspješan upload loga crkve"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL loga za e-poštu kao zamjena, koristi se samo kada nijedan logo crkve nije učitan na stranici Informacije o crkvi. Vlastite stranice aplikacije zanemaruju ovu postavku i uvijek koriste učitani logo ili standardni logo ChurchCRM. Mora biti apsolutni URL http(s). Za najbolji prikaz u svim e-poštnim klijentima, koristite široku baner sliku s omjerom od oko 3.5:1 (primjerice 350×100 px), PNG ili JPG, dostavljenu preko HTTPS-a. Ostavite prazno ili unesite nevaljanu vrijednost za povratak na standardni logo ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Modul Financije"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Pronađite ljude koji nisu sudjelovali na događaju"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Pronađite volontere koji odgovaraju dvama specifičnim kodovima mogućnosti"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Prva mogućnost volontiranja"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Savijena brošura"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Modul Skupljač sredstava"
+
+#: 
+msgid "Giving History"
+msgstr "Povijest darivanja"
+
+#: 
+msgid "Last Gift"
+msgstr "Zadnji dar"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Ostavite prazno za sve klasifikacije."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Maksimalan broj poreznih dokumenata godišta koji se prikazuju po profilu obitelji (0 = bez ograničenja)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Maksimalne porezne godine prikazane po obitelji"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Godišnjice članstva"
+
+#: 
+msgid "Missing People"
+msgstr "Nedostaju ljudi"
+
+#: 
+msgid "No giving history found."
+msgstr "Nije pronađena povijest darivanja."
+
+#: 
+msgid "No people match these filters."
+msgstr "Nema ljudi koji se podudaraju s ovim filtrima."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Jedna stranica direktorija po listu, portret."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Dozvoljene su samo http i https sheme."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF ili WebP. Široka baner od oko 3.5:1 (primjerice 700x200) radi najbolje; prozirni PNG je poželjniji."
+
+#: 
+msgid "Page Layout"
+msgstr "Izgled stranice"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Ljudi koji su se pridružili u određenom mjesecu"
+
+#: 
+msgid "Pledged"
+msgstr "Obećano"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Ispis %d porezni dokument"
+
+#: 
+msgid "Queries"
+msgstr "Upiti"
+
+#: 
+msgid "Recent Friends"
+msgstr "Nedavni prijatelji"
+
+#: 
+msgid "Report not found"
+msgstr "Izvještaj nije pronađen"
+
+#: 
+msgid "Run Report"
+msgstr "Pokreni izvještaj"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Druga mogućnost volontiranja"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Prikazano u bočnoj traci, na stranici za prijavu i u e-poštama. Učitavanje loga zamjenjuje branding ChurchCRM-a gdje god se pojavljuje."
+
+#: 
+msgid "Single Pages"
+msgstr "Pojedinostalne stranice"
+
+#: 
+msgid "Tax Documents"
+msgstr "Porezni dokumenti"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Neuspješan prijenos e-pošte s poreznim dokumentom. Molimo provjerite postavke e-poštnog poslužitelja."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Dvije stranice polovične veličine jedna do druge na svakom listu u širokom formatu, redoslijed brošure. Ispis na obje strane s \"prebacivanjem na kratkom rubu\", zatim presavijte grupu na pola. Stupci se broje po pola stranice."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Nemoguće poslati porezni dokument e-poštom: nisu pronađeni podaci o plaćanju za tu godinu."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Nemoguće poslati porezni dokument e-poštom: ova obitelj nema e-mail adresu u datoteci."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Nemoguće razriješiti naziv domaćina OpenLP poslužitelja. Provjerite adresu i vašu mrežnu vezu."
+
+#: 
+msgid "Upload"
+msgstr "Učitaj"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Korištenje standardnog loga ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Pogledaj potpuno obiteljsko darivanje"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Mogućnost volontiranja"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Volonteri za dvije mogućnosti"
+
+#: 
+msgid "YTD"
+msgstr "Od početka godine"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD Plaćeno"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "za greške oko vremena kada se to dogodilo, te preuzmite i priložite odgovarajuću log datoteku na vašu GitHub problemu — pomaže nam da riješimo problem bez postavljanja dodatnih pitanja."
+
+#: 
+msgid "system logs"
+msgstr "sustavi logovi"
 

@@ -109,6 +109,10 @@ require_once __DIR__ . '/Include/Header.php';
               <span class="form-selectgroup-label"><?= gettext('Country') ?></span>
             </label>
             <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="SecondAddress" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Second Address') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
               <input type="checkbox" class="form-selectgroup-input" name="HomePhone" value="1">
               <span class="form-selectgroup-label"><?= gettext('Home Phone') ?></span>
             </label>

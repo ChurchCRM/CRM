@@ -484,10 +484,6 @@ msgid "Photos"
 msgstr "รูปภาพ"
 
 #: 
-msgid "Number of Columns"
-msgstr "จำนวนคอลัมน์"
-
-#: 
 msgid "Paper Size"
 msgstr "ขนาดกระดาษ"
 
@@ -851,10 +847,6 @@ msgstr "ลบรูปภาพ"
 #: 
 msgid "Timeline"
 msgstr "ไทม์ไลน์"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "คำมั่นสัญญาและการชำระเงิน"
 
 #: 
 msgid "Value"
@@ -12697,10 +12689,6 @@ msgid "Upcoming Events"
 msgstr "กิจกรรมที่กำลังจะมาถึง"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL http(s) แบบสมบูรณ์ของโลโก้คริสตจักรที่แสดงในเทมเพลตอีเมล (และนำมาใช้ซ้ำในที่อื่นในอนาคต) เพื่อการแสดงผลที่ดีที่สุดในโปรแกรมอีเมลต่างๆ ใช้ภาพแบนเนอร์แนวนอนที่มีอัตราส่วนประมาณ 3.5:1 (เช่น 350×100 px) รูปแบบ PNG หรือ JPG ผ่าน HTTPS เว้นว่างหรือป้อนค่าที่ไม่ถูกต้องเพื่อใช้โลโก้ ChurchCRM เริ่มต้น"
-
-#: 
 msgid "An option with that name already exists"
 msgstr "มีตัวเลือกที่มีชื่อนั้นอยู่แล้ว"
 
@@ -18505,4 +18493,272 @@ msgstr "ผู้รับมากเกินไปสำหรับโปร
 #: 
 msgid "{{minutes}} min left"
 msgstr "เหลือเวลา {{minutes}} นาที"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "ส่งเอกสารภาษีจำนวน %d ไปยังครอบครัวทางอีเมลสำเร็จแล้ว"
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "แถลงการบริจาค %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "การจำแนกทั้งหมด"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "ในฐานะผู้ดูแลระบบ โปรดตรวจสอบด้วย"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "ส่งอีเมลอวยพรวันเกิดไปยังผู้คนโดยอัตโนมัติในวันเกิดของพวกเขา"
+
+#: 
+msgid "Birthday Emails"
+msgstr "อีเมลวันเกิด"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "วันเกิด วันครบรอบ อาสาสมัคร และรายชื่อคนอื่นๆ ที่มีตัวกรองการจำแนก"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "เลือก %s เพื่อรันรายงานนี้"
+
+#: 
+msgid "Choose events"
+msgstr "เลือกกิจกรรม"
+
+#: 
+msgid "Choose..."
+msgstr "เลือก..."
+
+#: 
+msgid "Church Logo"
+msgstr "โลโก้โบสถ์"
+
+#: 
+msgid "Columns per Page"
+msgstr "คอลัมน์ต่อหน้า"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "ครอบครัว %s ที่เคารพ\n"
+"\n"
+"โปรดดูแถลงการบริจาคจำนวน %d จาก %s ที่แนบมากับอีเมลนี้\n"
+"\n"
+"หากคุณมีคำถามใดๆ โปรดติดต่อสำนักงานโบสถ์\n"
+"\n"
+"ขอบคุณสำหรับความมีน้ำใจของคุณ"
+
+#: 
+msgid "Download CSV"
+msgstr "ดาวน์โหลด CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "อีเมลเอกสารภาษี %d ฉบับ"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "เปิดหรือปิดใช้งานโมดูลการเงินและเมนูแถบด้านข้าง"
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "เปิดหรือปิดใช้งานโมดูลระดมทุน"
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "ล้มเหลวในการลบโลโก้โบสถ์"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "ล้มเหลวในการอัปโหลดโลโก้โบสถ์"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL โลโก้ทางเลือกสำหรับเทมเพลตอีเมล ใช้เฉพาะเมื่อไม่มีการอัปโหลดโลโก้โบสถ์บนหน้าข้อมูลโบสถ์ หน้าของแอปพลิเคชันจะละเว้นการตั้งค่านี้และใช้โลโก้ที่อัปโหลดหรือโลโก้ ChurchCRM เริ่มต้นเสมอ ต้องเป็น URL http(s) แบบสัมบูรณ์ สำหรับการแสดงผลที่ดีที่สุดในไคลเอนต์อีเมล ให้ใช้ภาพแบนเนอร์กว้างที่มีอัตราส่วนกว้างยาวประมาณ 3.5:1 (เช่น 350×100 px) PNG หรือ JPG บนเซิร์ฟเวอร์ HTTPS ปล่อยให้ว่างหรือป้อนค่าที่ไม่ถูกต้องเพื่อกลับไปใช้โลโก้ ChurchCRM เริ่มต้น"
+
+#: 
+msgid "Finance Module"
+msgstr "โมดูลการเงิน"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "ค้นหาคนที่ไม่ได้เข้าร่วมกิจกรรม"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "ค้นหาอาสาสมัครที่ตรงกับรหัสโอกาสเฉพาะสองรหัส"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "โอกาสการเป็นอาสาสมัครครั้งแรก"
+
+#: 
+msgid "Folded Booklet"
+msgstr "小冊子แบบพับ"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "โมดูลระดมทุน"
+
+#: 
+msgid "Giving History"
+msgstr "ประวัติการบริจาค"
+
+#: 
+msgid "Last Gift"
+msgstr "การบริจาคครั้งล่าสุด"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "ปล่อยให้ว่างสำหรับการจำแนกทั้งหมด"
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "จำนวนเอกสารปีภาษีสูงสุดที่จะแสดงต่อโปรไฟล์ครอบครัว (0 = ไม่มีขีดจำกัด)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "ปีภาษีสูงสุดที่แสดงต่อครอบครัว"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "วันครบรอบการเป็นสมาชิก"
+
+#: 
+msgid "Missing People"
+msgstr "คนที่หายไป"
+
+#: 
+msgid "No giving history found."
+msgstr "ไม่พบประวัติการบริจาค"
+
+#: 
+msgid "No people match these filters."
+msgstr "ไม่มีคนที่ตรงกับตัวกรองเหล่านี้"
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "หน้าไดเรกทอรีหนึ่งหน้าต่อแผ่น แนวตั้ง"
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "อนุญาตเฉพาะสคีม http และ https"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF หรือ WebP แบนเนอร์กว้างประมาณ 3.5:1 (เช่น 700x200) ใช้ได้ดีที่สุด PNG โปร่งใส ได้รับความนิยมมากกว่า"
+
+#: 
+msgid "Page Layout"
+msgstr "เค้าโครงหน้า"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "คนที่เข้าร่วมในเดือนใดเดือนหนึ่ง"
+
+#: 
+msgid "Pledged"
+msgstr "สัญญา"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "พิมพ์เอกสารภาษี %d ฉบับ"
+
+#: 
+msgid "Queries"
+msgstr "แบบสอบถาม"
+
+#: 
+msgid "Recent Friends"
+msgstr "เพื่อนล่าสุด"
+
+#: 
+msgid "Report not found"
+msgstr "ไม่พบรายงาน"
+
+#: 
+msgid "Run Report"
+msgstr "รันรายงาน"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "โอกาสการเป็นอาสาสมัครครั้งที่สอง"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "แสดงในแถบด้านข้าง บนหน้าลงชื่อเข้า และในอีเมล การอัปโหลดโลโก้จะแทนที่แบรนด์ ChurchCRM ทุกที่ที่ปรากฏ"
+
+#: 
+msgid "Single Pages"
+msgstr "หน้าเดี่ยว"
+
+#: 
+msgid "Tax Documents"
+msgstr "เอกสารภาษี"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "การส่งอีเมลเอกสารภาษีล้มเหลว โปรดตรวจสอบการตั้งค่าเซิร์ฟเวอร์อีเมลของคุณ"
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "หน้ากระดาษขนาดครึ่งสองหน้าเคียงข้างกันบนแผ่นแนวนอนแต่ละแผ่น ตามลำดับของสมุดเล่ม พิมพ์สองด้านด้วย \"พลิกขอบสั้น\" จากนั้นพับสแต็กครึ่งหนึ่ง คอลัมน์คำนวณต่อครึ่งหน้า"
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "ไม่สามารถส่งอีเมลเอกสารภาษี: ไม่พบข้อมูลการชำระเงินสำหรับปีนั้น"
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "ไม่สามารถส่งอีเมลเอกสารภาษี: ครอบครัวนี้ไม่มีที่อยู่อีเมลในไฟล์"
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "ไม่สามารถแก้ไขชื่อโฮสต์เซิร์ฟเวอร์ OpenLP ตรวจสอบที่อยู่และการเชื่อมต่อเครือข่าย"
+
+#: 
+msgid "Upload"
+msgstr "อัปโหลด"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "ใช้โลโก้ ChurchCRM เริ่มต้น"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "ดูการบริจาคของครอบครัวทั้งหมด"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "โอกาสการเป็นอาสาสมัคร"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "อาสาสมัครสำหรับโอกาสสองประการ"
+
+#: 
+msgid "YTD"
+msgstr "ตั้งแต่ต้นปี"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD ชำระเงิน"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "สำหรับข้อผิดพลาดในเวลาที่เกิดเหตุการณ์นี้ ดาวน์โหลดและแนบไฟล์บันทึกที่เกี่ยวข้องกับปัญหา GitHub ของคุณ - สิ่งนี้ช่วยให้เราแก้ไขปัญหาได้โดยไม่ต้องถามคำถามติดตามผล"
+
+#: 
+msgid "system logs"
+msgstr "บันทึกระบบ"
 
