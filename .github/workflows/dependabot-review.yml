@@ -29,6 +29,9 @@ on:
         required: true
         type: number
 
+permissions:
+  contents: read
+
 concurrency:
   group: dependabot-review-${{ github.event.pull_request.number || inputs.pr }}
   cancel-in-progress: true
