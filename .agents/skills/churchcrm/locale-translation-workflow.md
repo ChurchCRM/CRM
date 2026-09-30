@@ -59,7 +59,7 @@ Branch format: `locale/translate/{VERSION}-{YYYY-MM-DD}-{HHMMSS}` (e.g., `locale
 
 **Why:** Unique timestamps prevent collisions when running multiple sessions per day.
 
-### Rule 2: Commit after EVERY locale
+### Rule 2: Commit after EVERY locale (or language-family batch)
 ```bash
 # Translations are secure locally after commit
 git add locale/terms/missing/<CODE>/ locale/terms/english-ok.json
@@ -166,7 +166,7 @@ et
 
 1. **Claude reads** untranslated terms from `locale/terms/missing/{LOCALE}/{LOCALE}-N.json` batch files
 2. **Apply church-appropriate vocabulary** (see Church Vocabulary table below)
-3. **Commit immediately** — one commit per locale, never batched
+3. **Commit immediately** — one commit per locale, or one per language-family batch (see Batching Strategy). Never accumulate across families or tiers
 4. **Push immediately** — work is on remote, safe from session timeout
 5. **The push uploads it** — `locale-upload-missing.yml` sends the locale to POEditor
 
@@ -175,7 +175,7 @@ et
 locale: translate fr (French - France, 154 terms)
 ```
 
-**Key principle:** Each locale gets commit + push + upload before the next locale starts. If interrupted mid-`--all`, all completed locales are safe on remote AND in POEditor.
+**Key principle:** Each locale (or family batch) gets commit + push + upload before the next starts. If interrupted mid-`--all`, all completed locales are safe on remote AND in POEditor.
 
 ### Church Vocabulary (Denomination-Aware)
 
@@ -216,9 +216,9 @@ N/A, name@example.com, @, SMS, SMTP, API, HTTP, HTTPS, JSON, XML, HTML, CSS, E.1
 **Tested:** 28 locales / 665 terms in ~30 minutes (April 2026)
 
 1. **Small locales (≤10 terms):** Handle inline — all at once, one commit per locale
-2. **Large locales (>10 terms):** Dispatch 4 parallel `general-purpose` sub-agents
+2. **Large locales (>10 terms) or 10+ locales total:** Dispatch parallel `general-purpose` sub-agents, one per language family (see Batching Strategy)
 3. **Each sub-agent:** Reads → translates → **applies before returning** (this step is critical)
-4. **One locale per large-locale agent** (limits context pressure)
+4. **One family per agent:** 2–5 closely related locales. A large standalone locale is its own family (limits context pressure)
 5. **MANDATORY after each agent completes:** commit → push → upload to POEditor
 
 **Batch size:** Run 4 sub-agents in parallel max. More than 4 can cause context pressure.
@@ -241,31 +241,22 @@ N/A, name@example.com, @, SMS, SMTP, API, HTTP, HTTPS, JSON, XML, HTML, CSS, E.1
 
 **Recommendation:** Use **Haiku 4.5** for all locale translation work — < 10 locales to 40+ with language-family batching.
 
-### Proven Session Results (43 locales, 2811 terms, Sept 2026)
+### Session Results (19 locales, Sept 2026)
 
-**Execution:**
-- **13 agents** (batched by language family: Spanish ×5, Portuguese ×2, Chinese ×2, Romance ×2, Balkan ×2, Nordic ×2, Uralic ×3, S.Asian ×3, E.Asian ×5, Germanic ×5, Slavic ×4)
-- **52k–66k tokens per agent** (large language groups reuse context)
-- **~35 min total runtime** (parallel execution in background)
-- **Completion: 97.6%** (2745 / 2811 terms translated)
+From `locale/translate/7.8.0-2026-09-29-052249` (PR #10176). Term counts change every run, so none are recorded here.
 
-**Cost:**
-- **Sequential (43 agents × 60k):** 2.58M tokens = ~$6.14
-- **Batched (13 agents × 60k avg):** 780k tokens = ~$1.86
-- **Savings: 70% cost reduction** via language-family grouping
+- **TIER-1, 16 locales:** Spanish ×5 (es, es-AR, es-CO, es-MX, es-SV), Portuguese ×2 (pt, pt-br), Chinese ×2 (zh-CN, zh-TW), big singles ×7 (hi, fr, ru, id, de, ja, ar)
+- **TIER-2, 3 locales:** ml, ta, te
+- Reviewers caught 8 translation errors after the first pass. Check these before committing: church rendered as temple (hi), "Upload" translated as "Download" (fr), `%s`/`%d` reordered without positional indexes (hi, ja, ml, te), mixed scripts (ta, te), "email" rendered as physical post (zh-CN, zh-TW)
+- Plan mode can block `/tmp` writes mid-execution; recoverable via `SendMessage` resume
 
-**Reliability:**
-- ✅ All 13 agents completed successfully with proper `--apply` before returning
-- ✅ No lost work — each batch committed + pushed before next tier started
-- ⚠️ Plan mode can block `/tmp` writes mid-execution; recoverable via `SendMessage` resume
-- ✅ Parallel background execution confirmed stable for 5–8 agents simultaneously
-
-### Batching Strategy (0-token arch)
+### Batching Strategy
 
 1. **Group by language family** (not per-locale): Romance, Slavic, Uralic, Asian, etc.
-2. **Dispatch 1 agent per family** — each handles 2–5 related locales
+2. **One agent per family** — 2–5 related locales, max 4 agents in parallel (see Parallel Sub-Agents)
 3. **Each agent:** reads all batch files → translates → **applies all before returning** (critical)
-4. **Commit family batches as they complete** (don't accumulate)
+4. **One commit + push per family batch** as each completes (don't accumulate across families)
+5. **Reorder placeholders only with positional indexes** (`%1$s`, `%3$s`, `%2$d`), and keep one script per locale
 
 ### Success Factor: Apply Before Return
 

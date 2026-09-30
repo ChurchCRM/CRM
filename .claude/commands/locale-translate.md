@@ -52,7 +52,7 @@ node locale/scripts/locale-translate.js --list
 
 ## Step 3: Choose strategy & dispatch agents
 
-**For 10+ locales:** Use language-family batching to reduce token cost by 70%. See skill file [`locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md#model-selection--cost-efficiency) for proven metrics (43 locales in 35 min, $1.86 cost).
+**For 10+ locales:** Use language-family batching to reduce token cost by 70%. See [`locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md#batching-strategy) for the procedure: one agent per family, max 4 in parallel, one commit + push per family.
 
 **For < 10 locales:** Process inline with direct git, or dispatch sub-agents per locale.
 
@@ -99,7 +99,7 @@ For locales with multiple batch files (Telugu has 2 files), repeat for each file
 
 **⛔ NEVER skip this step. NEVER accumulate multiple locales without committing.**
 
-After each locale (or small batch of ≤3 trivial locales), commit and push:
+After each locale (or each language-family batch), commit and push:
 
 **Option A — `report_progress` tool** (GitHub Copilot / remote agents):
 Use the `report_progress` tool which runs `git add . && git commit && git push`.
@@ -255,7 +255,7 @@ print(f\"fil: {len(d.get('fil', []))} terms\")
 
 ## Model selection & cost optimization
 
-**Use Haiku 4.5 for all runs.** See [`locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md#model-selection--cost-efficiency) for cross-provider comparison, cost matrix, and session results (43 locales, 97.6% coverage, $1.86 cost via batching).
+**Use Haiku 4.5 for all runs.** See [`locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md#model-selection--cost-efficiency) for cross-provider comparison, cost matrix, and the Sept 2026 session results.
 
 ---
 

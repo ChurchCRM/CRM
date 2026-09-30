@@ -16,7 +16,9 @@
     "SHA1 Hash",
     "Server",
     "Test",
-    "am / pm"
+    "am / pm",
+    "Data",
+    "Offline"
   ],
   "el": [
     "Azure",
@@ -29,7 +31,8 @@
     "Manual",
     "Material",
     "SHA1 Hash",
-    "am / pm"
+    "am / pm",
+    "Individual"
   ],
   "es-AR": [
     "AM / PM",
@@ -49,7 +52,8 @@
     "Manual",
     "Material",
     "SHA1 Hash",
-    "am / pm"
+    "am / pm",
+    "Individual"
   ],
   "es-MX": [
     "AM / PM",
@@ -59,7 +63,8 @@
     "Manual",
     "Material",
     "SHA1 Hash",
-    "am / pm"
+    "am / pm",
+    "Individual"
   ],
   "es-SV": [
     "AM / PM",
@@ -69,7 +74,8 @@
     "Manual",
     "Material",
     "SHA1 Hash",
-    "am / pm"
+    "am / pm",
+    "Individual"
   ],
   "et": [
     "Audit",
@@ -77,7 +83,8 @@
     "SHA1 Hash",
     "Server",
     "Test",
-    "risk"
+    "risk",
+    "Link"
   ],
   "fi": [
     "Azure",
@@ -482,7 +489,14 @@
     "page",
     "s",
     "user:",
-    "Åland Islands (Åland)"
+    "Åland Islands (Åland)",
+    "Data",
+    "Offline",
+    "Link",
+    "Access",
+    "Check-out",
+    "Preview",
+    "Teller"
   ],
   "fr": [
     "AM / PM",
@@ -505,7 +519,11 @@
     "Test",
     "am / pm",
     "page",
-    "page."
+    "page.",
+    "Code",
+    "Signature",
+    "Classifications",
+    "Options"
   ],
   "hi": [
     "HTML URL",
@@ -526,7 +544,8 @@
     "Online",
     "SHA1 Hash",
     "Server",
-    "am / pm"
+    "am / pm",
+    "Data"
   ],
   "ja": [
     "Azure",
@@ -558,7 +577,13 @@
     "Test",
     "Vonage Dashboard",
     "am / pm",
-    "in"
+    "in",
+    "Code",
+    "Offline",
+    "Link",
+    "Items",
+    "Planning",
+    "Labels"
   ],
   "pt": [
     "AM / PM",
@@ -568,7 +593,9 @@
     "Material",
     "Online",
     "SHA1 Hash",
-    "am / pm"
+    "am / pm",
+    "Offline",
+    "Individual"
   ],
   "pt-BR": [
     "Azure"
@@ -580,7 +607,10 @@
     "Manual",
     "Online",
     "SHA1 Hash",
-    "am / pm"
+    "am / pm",
+    "Offline",
+    "Individual",
+    "Link"
   ],
   "ru": [
     "Azure",
@@ -624,7 +654,8 @@
     "HTML URL",
     "ICS URL",
     "Online",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "Offline"
   ],
   "it": [
     "AM / PM",
@@ -644,7 +675,8 @@
     "Test",
     "Timeout",
     "am / pm",
-    "in"
+    "in",
+    "Offline"
   ],
   "ml": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
@@ -680,7 +712,9 @@
     "Server",
     "System",
     "Test",
-    "Vonage Dashboard"
+    "Vonage Dashboard",
+    "Data",
+    "Auto"
   ],
   "pl": [
     "4. Kiosk",
@@ -695,7 +729,9 @@
     "SHA1 Hash",
     "System",
     "Test",
-    "am / pm"
+    "am / pm",
+    "Offline",
+    "Link"
   ],
   "ro": [
     "AM / PM",
@@ -712,7 +748,11 @@
     "SHA1 Hash",
     "Server",
     "Test",
-    "am / pm"
+    "am / pm",
+    "Individual",
+    "Important",
+    "Major",
+    "Catalog"
   ],
   "sv": [
     "4. Kiosk",
@@ -729,14 +769,18 @@
     "System",
     "Test",
     "Vonage Dashboard",
-    "risk"
+    "risk",
+    "Offline",
+    "Data",
+    "Auto"
   ],
   "sw": [
     "AM / PM",
     "Azure",
     "Indigo",
     "SHA1 Hash",
-    "am / pm"
+    "am / pm",
+    "Data"
   ],
   "ta": [
     "Azure",
@@ -793,7 +837,9 @@
     "System",
     "Test",
     "am / pm",
-    "in"
+    "in",
+    "Code",
+    "Offline"
   ],
   "hr": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
@@ -875,6 +921,7 @@
     "SHA1 Hash"
   ],
   "sk": [
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "Offline"
   ]
 }
