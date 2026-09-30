@@ -2371,16 +2371,25 @@ CREATE TABLE `volunteer_requirement_vreq` (
   `vreq_MinCount` int(11)      NOT NULL DEFAULT 1,
   `vreq_MaxCount` int(11)               DEFAULT NULL,
   `vreq_Notes`    varchar(255)          DEFAULT NULL,
+  `vreq_Default_per_ID`      mediumint(9) unsigned          DEFAULT NULL,
+  `vreq_DefaultAccepted`     tinyint(1) unsigned   NOT NULL DEFAULT 0,
+  `vreq_DefaultSetBy_per_ID` mediumint(9) unsigned          DEFAULT NULL,
   PRIMARY KEY (`vreq_ID`),
   UNIQUE KEY `vreq_schedule_position_uidx`   (`vreq_vsch_ID`, `vreq_vpos_ID`),
   UNIQUE KEY `vreq_occurrence_position_uidx` (`vreq_vocc_ID`, `vreq_vpos_ID`),
   KEY `vreq_position_idx`                    (`vreq_vpos_ID`),
+  KEY `vreq_default_person_idx`              (`vreq_Default_per_ID`),
+  KEY `vreq_default_set_by_idx`              (`vreq_DefaultSetBy_per_ID`),
   CONSTRAINT `fk_vreq_schedule` FOREIGN KEY (`vreq_vsch_ID`)
       REFERENCES `volunteer_schedule_vsch` (`vsch_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vreq_occurrence` FOREIGN KEY (`vreq_vocc_ID`)
       REFERENCES `volunteer_occurrence_vocc` (`vocc_ID`) ON DELETE CASCADE,
   CONSTRAINT `fk_vreq_position` FOREIGN KEY (`vreq_vpos_ID`)
       REFERENCES `volunteer_position_vpos` (`vpos_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_vreq_default_person` FOREIGN KEY (`vreq_Default_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL,
+  CONSTRAINT `fk_vreq_default_set_by` FOREIGN KEY (`vreq_DefaultSetBy_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE SET NULL,
   -- Exactly one parent: a template requirement belongs to a schedule, an
   -- override to an occurrence, never both and never neither. Enforced on
   -- MariaDB 10.2.1+ / MySQL 8.0.16+; parsed and ignored by MySQL 5.7.
