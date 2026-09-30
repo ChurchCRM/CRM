@@ -138,7 +138,7 @@ node locale/scripts/locale-branch-manager.js --commit-and-push \
 
 ### 4e. The push uploads it
 
-Every push to a `locale/translate/**` branch runs [`Locale: upload missing terms`](../../.github/workflows/locale-upload-missing.yml). It uploads the locales that push changed to POEditor, then starts `Locale Sync POEditor`, which brings the translations back to `master` as a PR. Do not upload by hand, and do not commit refreshed batch files: the translation branch is never merged.
+Every push to a `locale/translate/**` branch runs [`Locale: upload translations`](../../.github/workflows/locale-upload-missing.yml). It uploads the locales that push changed to POEditor, then starts `Locale: sync`, which brings the translations back to `master` as a PR. Do not upload by hand, and do not commit refreshed batch files: the translation branch is never merged.
 
 Upload by hand only when that run cannot happen or failed:
 

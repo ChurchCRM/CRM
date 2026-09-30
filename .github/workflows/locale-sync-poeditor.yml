@@ -1,8 +1,31 @@
-name: Locale Sync POEditor
+name: "Locale: sync"
+
+# Upload terms, then download (docs/locale-pipeline.md). No translation happens here:
+#   1. upload terms   locale/messages.po -> POEditor, deleting terms that are no longer in the file
+#   2. download       POEditor -> src/locale + locale/terms/missing, opened as a PR on branch
+#                     locale/download/<version>
+#
+# Two flows end here:
+#   terms flow      merged terms PR -> (30 minute settle) -> upload terms -> download
+#   translate flow  translation agent -> Locale: upload translations -> download only
+#                   (dispatched with upload_terms=false)
+#
+# Every step is idempotent, so the trigger only decides when the run happens, not what it does:
+#   - push to master touching locale/messages.po (a merged terms PR, branch locale/terms/*).
+#     It first waits 30 minutes (job `settle`); a newer push cancels the wait and starts it again,
+#     so a burst of terms merges becomes one upload and one download
+#   - locale-upload-missing.yml dispatches it with upload_terms=false after a translate branch uploads (no wait)
+#   - daily schedule and manual run (no wait)
+# The sync PR itself never retriggers this workflow: it does not touch locale/messages.po.
 permissions:
   contents: read
 
 on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'locale/messages.po'
   schedule:
     # Run daily at midnight UTC
     - cron: "0 0 * * *"
@@ -22,10 +45,19 @@ on:
         required: false
         type: boolean
         default: false
+      upload_terms:
+        description: 'Upload locale/messages.po to POEditor before downloading'
+        required: false
+        type: boolean
+        default: true
+      max_term_deletions:
+        description: 'Let the terms upload delete up to this many POEditor terms (blank = default guard)'
+        required: false
+        type: string
+        default: ''
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+# Concurrency is per job, not per workflow: `settle` restarts its wait on every new push, and `download`
+# queues so a manual, scheduled or dispatched run never overlaps a settled push run.
 
 jobs:
   setup:
@@ -34,6 +66,7 @@ jobs:
     outputs:
       version: ${{ steps.package-version.outputs.current-version }}
       date: ${{ steps.date.outputs.date }}
+      trigger: ${{ steps.trigger.outputs.trigger }}
     env:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
@@ -53,6 +86,17 @@ jobs:
       id: date
       run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
+    - name: Describe trigger
+      id: trigger
+      env:
+        EVENT: ${{ github.event_name }}
+      run: |
+        case "$EVENT" in
+          push) echo "trigger=Merged terms PR (locale/messages.po changed on master, after a 30 minute settle)" >> $GITHUB_OUTPUT ;;
+          workflow_dispatch) echo "trigger=Manual or dispatched run" >> $GITHUB_OUTPUT ;;
+          *) echo "trigger=Scheduled daily run" >> $GITHUB_OUTPUT ;;
+        esac
+
     - name: Check POEditor Token
       run: |
         if [ -z "$POEDITOR_TOKEN" ]; then
@@ -62,8 +106,25 @@ jobs:
         fi
         echo "✅ POEditor token is configured"
 
-  download:
+  settle:
+    # Merge-storm guard. A newer push cancels this job; the run it belonged to then ends without syncing.
+    if: github.event_name == 'push'
     needs: setup
+    concurrency:
+      group: locale-sync-settle
+      cancel-in-progress: true
+    timeout-minutes: 40
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Wait 30 minutes for more terms merges
+      run: sleep 1800
+
+  download:
+    needs: [setup, settle]
+    if: ${{ !cancelled() && needs.setup.result == 'success' && (needs.settle.result == 'success' || needs.settle.result == 'skipped') }}
+    concurrency:
+      group: locale-sync-work
+      cancel-in-progress: false
     timeout-minutes: 30
     runs-on: ubuntu-24.04
     outputs:
@@ -74,15 +135,26 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v7
       with:
+        # after the settle wait, sync from the newest master, not the commit that started the run
+        ref: ${{ github.event_name == 'push' && github.ref || github.sha }}
         # regression check compares against HEAD~1
         fetch-depth: 2
 
     - uses: ./.github/actions/checkout-node-npm
 
-    - name: Upload missing translations to POEditor
-      run: node locale/scripts/poeditor-upload-missing.js --yes --no-download
+    - name: "1. Upload terms to POEditor"
+      if: inputs.operation_mode != 'audit-only' && (github.event_name != 'workflow_dispatch' || inputs.upload_terms)
+      env:
+        MAX_TERM_DELETIONS: ${{ inputs.max_term_deletions }}
+      run: |
+        if [ -n "$MAX_TERM_DELETIONS" ]; then
+          [[ "$MAX_TERM_DELETIONS" =~ ^[0-9]+$ ]] || { echo "::error::max_term_deletions must be a whole number"; exit 1; }
+          node locale/scripts/poeditor-upload-terms.js --max-deletions "$MAX_TERM_DELETIONS"
+        else
+          node locale/scripts/poeditor-upload-terms.js
+        fi
 
-    - name: Download locales from POEditor
+    - name: "2. Download locales from POEditor"
       if: inputs.operation_mode != 'audit-only'
       run: npm run locale:download
 
@@ -230,6 +302,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v7
       with:
+        ref: ${{ github.event_name == 'push' && github.ref || github.sha }}
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Replace locale files with downloaded changes
@@ -244,7 +317,7 @@ jobs:
       uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: 'locale/${{ needs.setup.outputs.version }}'
+        branch: 'locale/download/${{ needs.setup.outputs.version }}'
         delete-branch: true
         labels: |
           localization
@@ -255,7 +328,7 @@ jobs:
           
           - Updated translations from POEditor
           - Version: ${{ needs.setup.outputs.version }}
-          - Triggered: ${{ github.event_name == 'workflow_dispatch' && 'Manual' || 'Scheduled' }}
+          - Triggered: ${{ needs.setup.outputs.trigger }}
         body: |
           ## 🌍 Automatic Locale Update
           
@@ -264,7 +337,7 @@ jobs:
           **Details:**
           - 📅 **Date**: ${{ needs.setup.outputs.date }}
           - 🏷️ **Version**: ${{ needs.setup.outputs.version }}
-          - 🚀 **Trigger**: ${{ github.event_name == 'workflow_dispatch' && 'Manual run' || 'Scheduled daily run' }}
+          - 🚀 **Trigger**: ${{ needs.setup.outputs.trigger }}
           
           **What's included:**
           - Updated translation files from POEditor

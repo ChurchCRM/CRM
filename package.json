@@ -50,6 +50,7 @@
         "locale:translate:list": "node locale/scripts/locale-translate.js --list",
         "locale:test": "node --test locale/scripts/lib/*.test.js",
         "locale:upload:missing": "node locale/scripts/poeditor-upload-missing.js",
+        "locale:upload:terms": "node locale/scripts/poeditor-upload-terms.js",
         "lint": "run-s lint:biome lint:icons",
         "lint:biome": "node scripts/ensure-biome.js && biome check webpack/",
         "lint:icons": "run-s lint:icons:tabler lint:icons:fa",
