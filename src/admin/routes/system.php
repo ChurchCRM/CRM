@@ -913,6 +913,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Feature Toggles'),
+            'sPageSubtitle' => gettext('Enable or disable features for your organization'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Feature Toggles')],
+            ]),
         ];
 
         return $renderer->render($response, 'feature-toggles.php', $pageArgs);
