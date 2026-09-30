@@ -333,6 +333,12 @@ $(document).ready(function () {
                 type: 'boolean',
                 label: <?= InputUtils::jsonEncodeForScript(gettext('Hide Deceased from Directory')) ?>,
                 tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Exclude deceased members from the printed directory and CSV exports.')) ?>
+            },
+            {
+                name: 'bEnableBirthdayEmails',
+                type: 'boolean',
+                label: <?= InputUtils::jsonEncodeForScript(gettext('Birthday Emails')) ?>,
+                tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Automatically send a birthday greeting email to people on their birthday.')) ?>
             }
         ],
         onSave: function () {
