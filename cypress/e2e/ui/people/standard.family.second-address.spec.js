@@ -56,12 +56,12 @@ describe("Family Second Address", () => {
         cy.get('button[name="FamilySubmit"]').click();
 
         cy.location("pathname").should("include", "/people/family/");
-        cy.get("#second-address-card").contains("Mailing Address");
-        cy.get("#second-address-card").contains("PO Box 4242 Suite B");
-        // The primary card is relabelled once a second address exists.
-        cy.contains("Primary Address").should("exist");
-
         rememberFamilyIdFromUrl().then((familyId) => {
+            cy.get("#second-address-card").contains("Mailing Address");
+            cy.get("#second-address-card").contains("PO Box 4242 Suite B");
+            // The primary card is relabelled once a second address exists.
+            cy.contains("Primary Address").should("exist");
+
             // Unflag → the card becomes "Second Home".
             cy.visit(`/FamilyEditor.php?FamilyID=${familyId}`);
             cy.get("#secondAddressSection").should("have.class", "show");

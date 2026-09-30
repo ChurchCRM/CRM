@@ -112,7 +112,7 @@ describe("CSV Export Page", () => {
         // member with no membership date. The browser's UTC calendar day can be
         // ahead of the server's time zone (CI at 03:00 UTC is still yesterday in
         // America/Detroit), so read the dates off the form the way a submit would.
-        cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).as("serverToday");
+        cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).as("serverToday", { type: "static" });
 
         cy.visit("/FamilyEditor.php");
         cy.contains("Family Info");
