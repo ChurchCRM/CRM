@@ -334,6 +334,19 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                                 </div>
                             </a>
                         </div>
+
+                        <!-- 6. Feature Toggles -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/feature-toggles" class="quick-start-card">
+                                <div class="quick-start-icon bg-danger">
+                                    <i class="fa-solid fa-toggle-on"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('Feature Toggles') ?></h6>
+                                    <small><?= gettext('Enable/disable modules and features') ?></small>
+                                </div>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="alert alert-light border mb-0 py-2">
