@@ -18586,3 +18586,271 @@ msgstr "收件人数量超出邮件客户端限制（{{total}} > {{max}}），�
 msgid "{{minutes}} min left"
 msgstr "剩余 {{minutes}} 分钟"
 
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d 份税单已成功邮寄给家庭"
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d 捐献声明"
+
+#: 
+msgid "All classifications"
+msgstr "所有分类"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "作为管理员，请同时查看"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "在人们生日时自动发送生日问候邮件"
+
+#: 
+msgid "Birthday Emails"
+msgstr "生日邮件"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "生日、纪念日、志愿者和其他带有分类筛选的人员列表"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "选择 %s 来运行此报告"
+
+#: 
+msgid "Choose events"
+msgstr "选择事件"
+
+#: 
+msgid "Choose..."
+msgstr "选择..."
+
+#: 
+msgid "Church Logo"
+msgstr "教堂标志"
+
+#: 
+msgid "Columns per Page"
+msgstr "每页列数"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "亲爱的 %s 一家，\n"
+"\n"
+"请查收本邮件附件中的 %d 份来自 %s 的捐献声明。\n"
+"\n"
+"如有任何问题，请联系教堂办公室。\n"
+"\n"
+"感谢您的慷慨奉献。"
+
+#: 
+msgid "Download CSV"
+msgstr "下载 CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "邮寄 %d 份税单"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "启用或禁用财务模块和侧边栏菜单"
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "启用或禁用筹款模块"
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "移除教堂标志失败"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "上传教堂标志失败"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "邮件模板的备用标志 URL，仅在教堂信息页面未上传教堂标志时使用。应用程序的自己的页面忽略此设置，始终使用已上传的标志或默认的 ChurchCRM 标志。必须是绝对的 http(s) URL。为了在电子邮件客户端中获得最佳呈现效果，请使用宽横幅图像，宽高比大约为 3.5:1（例如 350×100 px），PNG 或 JPG 格式，通过 HTTPS 提供。留空或输入无效值以回退到默认的 ChurchCRM 标志。"
+
+#: 
+msgid "Finance Module"
+msgstr "财务模块"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "查找未参加活动的人员"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "查找与两个特定机会代码相匹配的志愿者"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "首个志愿者机会"
+
+#: 
+msgid "Folded Booklet"
+msgstr "折叠小册子"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "筹款模块"
+
+#: 
+msgid "Giving History"
+msgstr "捐献历史"
+
+#: 
+msgid "Last Gift"
+msgstr "最后的捐献"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "留空以包含所有分类"
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "每个家庭档案中显示的最大税年文件数（0 = 无限制）"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "每个家庭显示的最大税务年度"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "成员纪念日"
+
+#: 
+msgid "Missing People"
+msgstr "缺失人员"
+
+#: 
+msgid "No giving history found."
+msgstr "未发现捐献历史"
+
+#: 
+msgid "No people match these filters."
+msgstr "没有人员符合这些过滤器"
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "每页一个目录页，纵向"
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "仅允许 http 和 https 方案"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG、JPG、GIF 或 WebP。宽度约为 3.5:1 的宽横幅（例如 700x200）效果最佳；首选透明 PNG"
+
+#: 
+msgid "Page Layout"
+msgstr "页面布局"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "在特定月份加入的人员"
+
+#: 
+msgid "Pledged"
+msgstr "承诺"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "打印 %d 份税单"
+
+#: 
+msgid "Queries"
+msgstr "查询"
+
+#: 
+msgid "Recent Friends"
+msgstr "最近的朋友"
+
+#: 
+msgid "Report not found"
+msgstr "未找到报告"
+
+#: 
+msgid "Run Report"
+msgstr "运行报告"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "第二个志愿者机会"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "显示在侧边栏、登录页面和电子邮件中。上传标志会在其出现的任何地方替换 ChurchCRM 品牌"
+
+#: 
+msgid "Single Pages"
+msgstr "单个页面"
+
+#: 
+msgid "Tax Documents"
+msgstr "税单"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "税单邮件发送失败。请检查您的电子邮件服务器设置"
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "在每个横向页上并排放置两个半尺寸页面，按小册子顺序排列。双面打印，使用 flip on short edge，然后将堆栈对折。每个半页统计列数"
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "无法邮寄税单：未发现该年份的付款数据"
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "无法邮寄税单：该家庭在文件中没有电子邮件地址"
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "无法解析 OpenLP 服务器主机名。请检查地址和您的网络连接"
+
+#: 
+msgid "Upload"
+msgstr "上传"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "使用默认的 ChurchCRM 标志"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "查看完整的家庭捐献"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "志愿者机会"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "两个机会的志愿者"
+
+#: 
+msgid "YTD"
+msgstr "年初至今"
+
+#: 
+msgid "YTD Paid"
+msgstr "年初至今已付"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "查找发生此错误时周围的错误，并下载相关日志文件并将其附加到您的 GitHub 问题中——这有助于我们修复问题，而无需提出后续问题"
+
+#: 
+msgid "system logs"
+msgstr "系统日志"
+

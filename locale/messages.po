@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 04:52+0000\n"
+"POT-Creation-Date: 2026-09-30 06:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -347,6 +347,9 @@ msgid "Accepted format: .csv"
 msgstr ""
 
 msgid "Access"
+msgstr ""
+
+msgid "Access Control & Security"
 msgstr ""
 
 msgid "Access Denied"
@@ -955,6 +958,9 @@ msgstr ""
 msgid "Allow Self-Signed Certificates"
 msgstr ""
 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr ""
+
 msgid "Allow recording of non-tax-deductible payments in the finance module"
 msgstr ""
 
@@ -967,6 +973,9 @@ msgstr ""
 msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
 msgstr ""
 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr ""
+
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr ""
 
@@ -975,6 +984,9 @@ msgid "Allow user to add new event"
 msgstr ""
 
 msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr ""
+
+msgid "Allow visitors to create their own family records via public registration page"
 msgstr ""
 
 msgid "Allow visitors to self-register as new families."
@@ -1445,6 +1457,9 @@ msgstr ""
 msgid "Automatically send a birthday greeting email to people on their birthday."
 msgstr ""
 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr ""
+
 msgid "Available after the event is saved."
 msgstr ""
 
@@ -1735,6 +1750,9 @@ msgid "Birthday"
 msgstr ""
 
 msgid "Birthday Emails"
+msgstr ""
+
+msgid "Birthday Greeting Emails"
 msgstr ""
 
 #. Context: query_qry
@@ -2658,6 +2676,9 @@ msgstr ""
 msgid "Communication"
 msgstr ""
 
+msgid "Communication & Email"
+msgstr ""
+
 msgid "Community Management Platform"
 msgstr ""
 
@@ -2847,6 +2868,9 @@ msgid "Contact an administrator to change your permissions."
 msgstr ""
 
 msgid "Contact info, family roles, and key dates"
+msgstr ""
+
+msgid "Content Security Policy"
 msgstr ""
 
 msgid "Continent"
@@ -4125,6 +4149,9 @@ msgstr ""
 msgid "Email Settings"
 msgstr ""
 
+msgid "Email System"
+msgstr ""
+
 msgid "Email Tools"
 msgstr ""
 
@@ -4245,6 +4272,9 @@ msgstr ""
 msgid "Enable non-deductible payments"
 msgstr ""
 
+msgid "Enable or disable features for your organization"
+msgstr ""
+
 msgid "Enable or disable the Finance module and sidebar menu."
 msgstr ""
 
@@ -4267,6 +4297,15 @@ msgid "Enable use of donation envelopes"
 msgstr ""
 
 msgid "Enable use of scanned checks"
+msgstr ""
+
+msgid "Enable/disable the Events section in main navigation"
+msgstr ""
+
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr ""
+
+msgid "Enable/disable the Fundraiser menu"
 msgstr ""
 
 msgid "Enabled"
@@ -4303,6 +4342,9 @@ msgid "Ends with a trailing slash (/)"
 msgstr ""
 
 msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr ""
+
+msgid "Enforce strict CSP headers to protect against XSS attacks"
 msgstr ""
 
 #. Context: locales
@@ -4598,6 +4640,9 @@ msgid "Events"
 msgstr ""
 
 msgid "Events Dashboard"
+msgstr ""
+
+msgid "Events Module"
 msgstr ""
 
 msgid "Events This Year"
@@ -5293,6 +5338,12 @@ msgstr ""
 msgid "Feature"
 msgstr ""
 
+msgid "Feature Toggles"
+msgstr ""
+
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr ""
+
 #. plugin:mailchimp:section:1:title
 msgid "Features"
 msgstr ""
@@ -5420,6 +5471,9 @@ msgid "Finance"
 msgstr ""
 
 msgid "Finance Dashboard"
+msgstr ""
+
+msgid "Finance Features"
 msgstr ""
 
 msgid "Finance Module"
@@ -6538,13 +6592,28 @@ msgstr ""
 msgid "Include Sunday School classes and enrollments"
 msgstr ""
 
+msgid "Include addresses in quick global search"
+msgstr ""
+
+msgid "Include calendar events in quick global search"
+msgstr ""
+
 msgid "Include contact and demographic data in new member email notification body"
 msgstr ""
 
 msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
 msgstr ""
 
+msgid "Include custom family properties in quick global search"
+msgstr ""
+
+msgid "Include deposits in quick global search"
+msgstr ""
+
 msgid "Include events and calendars"
+msgstr ""
+
+msgid "Include families in quick global search"
 msgstr ""
 
 msgid "Include family custom properties in global search."
@@ -6553,10 +6622,19 @@ msgstr ""
 msgid "Include financial data (donation funds, pledges)"
 msgstr ""
 
+msgid "Include groups in quick global search"
+msgstr ""
+
 msgid "Include in Email Export"
 msgstr ""
 
 msgid "Include only these classifications in the directory, comma separated"
+msgstr ""
+
+msgid "Include payments in quick global search"
+msgstr ""
+
+msgid "Include people in quick global search"
 msgstr ""
 
 msgid "Include your API key in requests using the x-api-key header"
@@ -6767,6 +6845,9 @@ msgid "Invalid request data"
 msgstr ""
 
 msgid "Invalid server URL format."
+msgstr ""
+
+msgid "Invalid setting"
 msgstr ""
 
 msgid "Invalid status"
@@ -7377,6 +7458,9 @@ msgstr ""
 msgid "Looking for stuck events..."
 msgstr ""
 
+msgid "Lost Password Link"
+msgstr ""
+
 #. Context: countries
 msgid "Luxembourg"
 msgstr ""
@@ -7477,6 +7561,9 @@ msgid "Manage %s options"
 msgstr ""
 
 msgid "Manage 2FA"
+msgstr ""
+
+msgid "Manage All Features"
 msgstr ""
 
 msgid "Manage Check-ins"
@@ -7622,6 +7709,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Martinique"
+msgstr ""
+
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -8568,6 +8658,9 @@ msgid "Non-Deductible"
 msgstr ""
 
 msgid "Non-Deductible ($)"
+msgstr ""
+
+msgid "Non-Deductible Payments"
 msgstr ""
 
 msgid "Non-deductible amount can't exceed fund amount"
@@ -9794,6 +9887,9 @@ msgstr ""
 msgid "Primary Color"
 msgstr ""
 
+msgid "Primary Modules"
+msgstr ""
+
 msgid "Print"
 msgstr ""
 
@@ -9887,6 +9983,9 @@ msgid "Provide any corrections or additional information here..."
 msgstr ""
 
 msgid "Public Calendar"
+msgstr ""
+
+msgid "Public Calendar API"
 msgstr ""
 
 msgid "Public calendar"
@@ -10633,6 +10732,9 @@ msgstr ""
 msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
 msgstr ""
 
+msgid "Saved"
+msgstr ""
+
 msgid "Saved successfully"
 msgstr ""
 
@@ -10666,7 +10768,13 @@ msgstr ""
 msgid "Search Deposits"
 msgstr ""
 
+msgid "Search Families"
+msgstr ""
+
 msgid "Search Family"
+msgstr ""
+
+msgid "Search Family Custom Properties"
 msgstr ""
 
 msgid "Search Groups"
@@ -10682,6 +10790,9 @@ msgid "Search People"
 msgstr ""
 
 msgid "Search Results"
+msgstr ""
+
+msgid "Search Settings"
 msgstr ""
 
 msgid "Search across people, families, groups, addresses, and more."
@@ -10892,6 +11003,9 @@ msgid "Self Verification"
 msgstr ""
 
 msgid "Self Verify"
+msgstr ""
+
+msgid "Self-Registration"
 msgstr ""
 
 msgid "Self-service"
@@ -11113,6 +11227,9 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr ""
+
 msgid "Show Family Head of House Names"
 msgstr ""
 
@@ -11138,6 +11255,9 @@ msgid "Show or hide the Sunday School module in the sidebar navigation"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
+msgstr ""
+
+msgid "Show/hide the Sunday School module in sidebar"
 msgstr ""
 
 msgid "Showing active persons only."

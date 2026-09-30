@@ -18619,3 +18619,267 @@ msgstr "Слишком много получателей для почтовог
 msgid "{{minutes}} min left"
 msgstr "Осталось {{minutes}} мин"
 
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d налоговый документ успешно отправлен семье по электронной почте."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Отчет о благотворительных взносах"
+
+#: 
+msgid "All classifications"
+msgstr "Все классификации"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Пожалуйста, в качестве администратора также проверьте"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Автоматически отправлять приветственное письмо на день рождения людям в день их рождения."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Письма на день рождения"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Дни рождения, годовщины, волонтеры и другие списки людей с фильтром классификации"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Выберите %s для запуска этого отчета."
+
+#: 
+msgid "Choose events"
+msgstr "Выберите события"
+
+#: 
+msgid "Choose..."
+msgstr "Выберите..."
+
+#: 
+msgid "Church Logo"
+msgstr "Логотип Церкви"
+
+#: 
+msgid "Columns per Page"
+msgstr "Столбцов на странице"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Дорогая семья %s,\n"
+"\n"
+"Пожалуйста, найдите вложенную в это письмо выписку о ваших %d благотворительных взносах от %s.\n"
+"\n"
+"Если у вас есть вопросы, пожалуйста, свяжитесь с офисом церкви.\n"
+"\n"
+"Спасибо за вашу щедрость."
+
+#: 
+msgid "Download CSV"
+msgstr "Загрузить CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Отправить %d налоговый документ по электронной почте"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Включить или отключить модуль Финансы и меню боковой панели."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Включить или отключить модуль сбора средств."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Ошибка при удалении логотипа Церкви"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Ошибка при загрузке логотипа Церкви"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL логотипа-заместителя для шаблонов электронной почты, используется только если логотип Церкви не был загружен на странице Информация о Церкви. Собственные страницы приложения игнорируют этот параметр и всегда используют загруженный логотип или логотип ChurchCRM по умолчанию. Должен быть абсолютный URL http(s). Для оптимального отображения в почтовых клиентах используйте широкий баннер с соотношением сторон примерно 3,5:1 (например, 350×100 px) в формате PNG или JPG, поданный через HTTPS. Оставьте пустым или введите неверное значение, чтобы вернуться к логотипу ChurchCRM по умолчанию."
+
+#: 
+msgid "Finance Module"
+msgstr "Модуль Финансы"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Найти людей, которые не присутствовали на мероприятии"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Найти волонтеров, соответствующих двум конкретным кодам возможностей"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Первая возможность для волонтеров"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Сложенный буклет"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Модуль сбора средств"
+
+#: 
+msgid "Giving History"
+msgstr "История благотворительных взносов"
+
+#: 
+msgid "Last Gift"
+msgstr "Последний подарок"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Оставьте пусто для всех классификаций."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Максимальное количество документов налогового года, отображаемых в профиле семьи (0 = без ограничений)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Максимальное количество налоговых лет, показанных на семью"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Годовщины членства"
+
+#: 
+msgid "Missing People"
+msgstr "Отсутствующие люди"
+
+#: 
+msgid "No giving history found."
+msgstr "История благотворительных взносов не найдена."
+
+#: 
+msgid "No people match these filters."
+msgstr "Никто не соответствует этим фильтрам."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Одна страница каталога на лист, книжная ориентация."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Допускаются только схемы http и https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF или WebP. Широкий баннер примерно 3,5:1 (например, 700x200) работает лучше всего; предпочтительно прозрачный PNG."
+
+#: 
+msgid "Page Layout"
+msgstr "Макет страницы"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Люди, присоединившиеся в определенный месяц"
+
+#: 
+msgid "Pledged"
+msgstr "Обещано"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Распечатать %d налоговый документ"
+
+#: 
+msgid "Queries"
+msgstr "Запросы"
+
+#: 
+msgid "Recent Friends"
+msgstr "Недавние друзья"
+
+#: 
+msgid "Report not found"
+msgstr "Отчет не найден"
+
+#: 
+msgid "Run Report"
+msgstr "Запустить отчет"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Вторая возможность для волонтеров"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Отображается в боковой панели, на странице входа и в письмах. Загрузка логотипа заменяет логотип ChurchCRM везде, где он появляется."
+
+#: 
+msgid "Single Pages"
+msgstr "Отдельные страницы"
+
+#: 
+msgid "Tax Documents"
+msgstr "Налоговые документы"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Ошибка при отправке налогового документа по электронной почте. Пожалуйста, проверьте параметры сервера электронной почты."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Две страницы половинного размера рядом на каждом листе в альбомной ориентации в порядке буклета. Печатать двусторонний формат с \"перелистыванием на коротком краю\", затем сложить стопку пополам. Столбцы считаются за половину страницы."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Невозможно отправить налоговый документ по электронной почте: для этого года не найдены данные платежа."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Невозможно отправить налоговый документ по электронной почте: у этой семьи нет адреса электронной почты в файле."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Не удается разрешить имя хоста сервера OpenLP. Проверьте адрес и соединение с сетью."
+
+#: 
+msgid "Upload"
+msgstr "Загрузить"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Использование логотипа ChurchCRM по умолчанию"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Просмотреть полные благотворительные взносы семьи"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Возможность для волонтеров"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Волонтеры для двух возможностей"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD выплачено"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "для ошибок около момента, когда это произошло, и загрузите и прикрепите соответствующий файл журнала к вашей проблеме GitHub - это помогает нам исправить проблему, не задавая уточняющих вопросов."
+
+#: 
+msgid "system logs"
+msgstr "системные журналы"
+

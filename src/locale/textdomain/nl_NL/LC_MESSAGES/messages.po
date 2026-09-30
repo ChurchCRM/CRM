@@ -18478,3 +18478,267 @@ msgstr "Te veel ontvangers voor de e-mailclient ({{total}} > {{max}}). Gebruik i
 msgid "{{minutes}} min left"
 msgstr "{{minutes}} min resterend"
 
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d belastingdocument succesvol naar het gezin gemaild."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Givingverklaring"
+
+#: 
+msgid "All classifications"
+msgstr "Alle classificaties"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Als beheerder, controleer ook de"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Automatisch een verjaardagsgroet per e-mail naar mensen sturen op hun verjaardag."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Verjaardage-mails"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Verjaardagen, jubilea, vrijwilligers en andere persoonlijsten met een classificatiefilter"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Kies %s om dit rapport uit te voeren."
+
+#: 
+msgid "Choose events"
+msgstr "Kies evenementen"
+
+#: 
+msgid "Choose..."
+msgstr "Kies..."
+
+#: 
+msgid "Church Logo"
+msgstr "Kerklogo"
+
+#: 
+msgid "Columns per Page"
+msgstr "Kolommen per pagina"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Geachte %s Familie,\n"
+"\n"
+"U vindt uw %d givingverklaring van %s als bijlage bij deze e-mail.\n"
+"\n"
+"Heb je vragen, neem dan contact op met het kerkbureau.\n"
+"\n"
+"Bedankt voor uw vrijgevigheid."
+
+#: 
+msgid "Download CSV"
+msgstr "CSV downloaden"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "E-mail %d belastingdocument"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "De Finance module en zijbalkenu in- of uitschakelen."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "De Fundraiser-module in- of uitschakelen."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Het verwijderen van het kerklogo is mislukt"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Het uploaden van het kerklogo is mislukt"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Terugval logo URL voor e-mailsjablonen, alleen gebruikt wanneer geen kerklogo op de Church Information-pagina is geüpload. De eigen pagina's van de applicatie negeren deze instelling en gebruiken altijd het geüploade logo of het standaard ChurchCRM-logo. Moet een absolute http(s) URL zijn. Voor het beste uiterlijk in e-mailclients, gebruikt u een brede bannerafbeelding met ongeveer 3,5:1 beeldverhouding (bijvoorbeeld 350×100 px), PNG of JPG, bediend via HTTPS. Laat leeg of voer een ongeldige waarde in om terug te vallen op het standaard ChurchCRM-logo."
+
+#: 
+msgid "Finance Module"
+msgstr "Finance module"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Zoek mensen die niet aan een evenement hebben deelgenomen"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Vind vrijwilligers die overeenkomen met twee specifieke opportuniteitscodes"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Eerste vrijwilligersgelegenheid"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Gevouwen boekje"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Fundraiser-module"
+
+#: 
+msgid "Giving History"
+msgstr "Givinggeschiedenis"
+
+#: 
+msgid "Last Gift"
+msgstr "Laatste geschenk"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Laat leeg voor alle classificaties."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Maximum aantal belastingjaar documenten dat per gezinsprofiel moet worden weergegeven (0 = geen limiet)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Maximale belastingjaren per gezin weergegeven"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Lidmaatschapcummingen"
+
+#: 
+msgid "Missing People"
+msgstr "Vermiste personen"
+
+#: 
+msgid "No giving history found."
+msgstr "Geen givinggeschiedenis gevonden."
+
+#: 
+msgid "No people match these filters."
+msgstr "Geen personen stemmen met deze filters overeen."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Eén adrespagina per vel, portret."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Alleen http en https schema's zijn toegestaan."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF of WebP. Een brede banner van ongeveer 3,5:1 (bijvoorbeeld 700x200) werkt het beste; transparante PNG aanbevolen."
+
+#: 
+msgid "Page Layout"
+msgstr "Pagina-indeling"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Mensen die in een bepaalde maand zijn toegetreden"
+
+#: 
+msgid "Pledged"
+msgstr "Beloofd"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Print %d belastingdocument"
+
+#: 
+msgid "Queries"
+msgstr "Vragen"
+
+#: 
+msgid "Recent Friends"
+msgstr "Recente vrienden"
+
+#: 
+msgid "Report not found"
+msgstr "Rapport niet gevonden"
+
+#: 
+msgid "Run Report"
+msgstr "Rapport uitvoeren"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Tweede vrijwilligersgelegenheid"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Weergegeven in de zijbalk, op de aanmeldingspagina en in e-mails. Het uploaden van een logo vervangt de ChurchCRM-branding overal waar deze verschijnt."
+
+#: 
+msgid "Single Pages"
+msgstr "Enkele pagina's"
+
+#: 
+msgid "Tax Documents"
+msgstr "Belastingdocumenten"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "E-mail met belastingdocument kon niet worden verzonden. Controleer uw e-mailserverinstellingen."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Twee halve pagina's naast elkaar op elk landschapvel, in boekjesvolgorde. Print dubbelzijdig met \"flip on short edge\", vouw de stapel dan in tweeën. Kolommen worden per halve pagina geteld."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Kan belastingdocument niet e-mailen: geen betalingsgegevens voor dat jaar gevonden."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Kan belastingdocument niet e-mailen: dit gezin heeft geen e-mailadres op bestand."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Kan OpenLP-serverhostnaam niet omzetten. Controleer het adres en uw netwerkverbinding."
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Standaard ChurchCRM-logo gebruiken"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Volledige gezinsgiving weergeven"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Vrijwilligersgelegenheid"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Vrijwilligers voor twee gelegenheden"
+
+#: 
+msgid "YTD"
+msgstr "JTD"
+
+#: 
+msgid "YTD Paid"
+msgstr "JTD betaald"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "voor fouten rond het moment dat dit gebeurde, en download en voeg het relevante logbestand toe aan uw GitHub-probleem — het helpt ons het probleem op te lossen zonder vervolgvragen te stellen."
+
+#: 
+msgid "system logs"
+msgstr "systeemlogboeken"
+
