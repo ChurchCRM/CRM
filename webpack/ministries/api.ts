@@ -514,6 +514,11 @@ export function notifyWarning(message: string): void {
   window.CRM?.notify?.(message, { type: "warning" });
 }
 
+/** Toast helper for a neutral outcome that is neither a success nor a problem. */
+export function notifyInfo(message: string): void {
+  window.CRM?.notify?.(message, { type: "info" });
+}
+
 // ─── Coordinator and team-leader scope (#9706, design §2.15 / §4.4) ──────────
 
 /**
@@ -1256,14 +1261,33 @@ export interface VolunteerGenerateDefault {
   accepted: boolean;
 }
 
+/** What a schedule looks for on the calendar, with names (D30); the keys of other modes are null. */
+export interface VolunteerEventSource {
+  linkMode: VolunteerLinkMode;
+  groupId: number | null;
+  groupName: string | null;
+  eventTypeId: number | null;
+  eventTypeName: string | null;
+  titleFilter: string | null;
+  ministryId: number;
+  ministryName: string | null;
+  eventId: number | null;
+  eventTitle: string | null;
+}
+
 export interface VolunteerGenerateResult {
   created: number;
   existing: number;
+  /** The first date looked at; after `through` when the schedule's window has ended or not begun. */
+  from: string;
   through: string;
   /** Default assignments written on the occurrences this run created. */
   assigned: number;
   /** Default assignments the server refused on one occurrence (full, cancelled). */
   skipped: number;
+  /** No event at all was found between `from` and `through` (D30). */
+  noEvents: boolean;
+  searched: VolunteerEventSource;
 }
 
 export function generateOccurrences(
@@ -1434,9 +1458,10 @@ export interface VolunteerMinistryEventInput {
   rangeEnd?: string;
   staff?: {
     teamId: number;
-    requirements: VolunteerRequirementInput[];
-    startOffsetMinutes: number;
-    endOffsetMinutes: number;
+    /** Left out when the events go to a schedule that already follows them, whose own plan applies (D30). */
+    requirements?: VolunteerRequirementInput[];
+    startOffsetMinutes?: number;
+    endOffsetMinutes?: number;
     defaults: VolunteerGenerateDefault[];
   };
 }
@@ -1447,6 +1472,8 @@ export function createMinistryEvents(
 ): Promise<{
   events: Array<{ id: number; title: string; start: string; end: string }>;
   schedule?: VolunteerSchedule;
+  /** The events went to the team's schedule that already follows them (D30). */
+  reusedSchedule?: boolean;
   occurrences?: Array<{ id: number; eventId: number; occurrenceDate: string }>;
   assigned?: number;
   skipped?: number;
