@@ -141,6 +141,19 @@ describe("Family Second Address", () => {
         cy.get("#person-family-mailing-address").should("contain", "PO Box 5150");
     });
 
+    it("keeps the second street line on the card when the first one is empty", () => {
+        startNewFamily("MailingLine2" + Cypress._.random(0, 1e6));
+
+        cy.get("#secondAddressToggle").click();
+        cy.get("#SecondAddress2").type("Apt 7");
+        cy.get("#SecondCity").type("Othertown");
+        cy.get('button[name="FamilySubmit"]').click();
+
+        cy.location("pathname").should("include", "/people/family/");
+        rememberFamilyIdFromUrl();
+        cy.get("#second-address-card").should("contain", "Apt 7 Othertown,");
+    });
+
     // Keep last: the API-key request below invalidates the browser session.
     it("exposes the flagged second address and resolved MailingAddress over the API", () => {
         startNewFamily("MailingApi" + Cypress._.random(0, 1e6));

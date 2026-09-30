@@ -213,9 +213,10 @@ class Family extends BaseFamily implements PhotoInterface
         $address = [];
 
         if ($parts['Address1'] !== '') {
-            $address[] = $parts['Address2'] !== ''
-                ? $parts['Address1'] . ' ' . $parts['Address2']
-                : $parts['Address1'];
+            $address[] = $parts['Address1'];
+        }
+        if ($parts['Address2'] !== '') {
+            $address[] = $parts['Address2'];
         }
         if ($parts['City'] !== '') {
             $address[] = $parts['City'] . ',';
