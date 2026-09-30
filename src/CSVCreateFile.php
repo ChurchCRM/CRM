@@ -511,18 +511,19 @@ if ($sFormat === 'addtocart') {
                 }
                 if (!empty($_POST['SecondAddress'])) {
                     // The export query already LEFT JOINs family_fam, so the
-                    // fam_Second* columns are on this row: no per-person family
+                    // family is built from this row: no per-person family
                     // query. The second address lives on the family only (no
                     // person-level override), and a person with no family has
                     // NULL family columns, which export as blank cells.
-                    $secondParts = Family::secondaryAddressPartsFromRow($aRow);
+                    $rowFamily = Family::readOnlyFromRow($aRow);
+                    $secondParts = $rowFamily->getSecondaryAddressParts();
                     $row[] = $secondParts['Address1'];
                     $row[] = $secondParts['Address2'];
                     $row[] = $secondParts['City'];
                     $row[] = $secondParts['State'];
                     $row[] = $secondParts['Zip'];
                     $row[] = $secondParts['Country'];
-                    $row[] = Family::rowSecondAddressIsMailing($aRow) ? 'Yes' : 'No';
+                    $row[] = $rowFamily->isSecondAddressMailing() ? 'Yes' : 'No';
                 }
                 if (isset($_POST['HomePhone'])) {
                     $row[] = $sHomePhone;

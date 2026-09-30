@@ -282,73 +282,21 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
-     * Row-based counterpart of {@see self::getSecondaryAddressParts()} for the
-     * report paths that read `SELECT * ... LEFT JOIN family_fam` rows.
+     * A Family built from a row that a report's own SQL already fetched with
+     * every family_fam column (`SELECT * ... family_fam`), so the report can use
+     * the address methods above without a query per row.
+     *
+     * It is hydrated the way a FamilyQuery result is, but kept out of the
+     * instance pool. Read from it only: never save or delete it.
+     *
+     * @param array<string, mixed> $row keyed by column name (fam_ID, fam_Address1, ...)
      */
-    public static function secondaryAddressPartsFromRow(array $row): array
+    public static function readOnlyFromRow(array $row): self
     {
-        return [
-            'Address1' => trim((string) ($row['fam_SecondAddress1'] ?? '')),
-            'Address2' => trim((string) ($row['fam_SecondAddress2'] ?? '')),
-            'City'     => trim((string) ($row['fam_SecondCity'] ?? '')),
-            'State'    => trim((string) ($row['fam_SecondState'] ?? '')),
-            'Zip'      => trim((string) ($row['fam_SecondZip'] ?? '')),
-            'Country'  => trim((string) ($row['fam_SecondCountry'] ?? '')),
-        ];
-    }
+        $family = new self();
+        $family->hydrate($row, 0, false, TableMap::TYPE_FIELDNAME);
 
-    /**
-     * Row-based counterpart of {@see self::getPrimaryAddressParts()}.
-     */
-    public static function primaryAddressPartsFromRow(array $row): array
-    {
-        return [
-            'Address1' => trim((string) ($row['fam_Address1'] ?? '')),
-            'Address2' => trim((string) ($row['fam_Address2'] ?? '')),
-            'City'     => trim((string) ($row['fam_City'] ?? '')),
-            'State'    => trim((string) ($row['fam_State'] ?? '')),
-            'Zip'      => trim((string) ($row['fam_Zip'] ?? '')),
-            'Country'  => trim((string) ($row['fam_Country'] ?? '')),
-        ];
-    }
-
-    /**
-     * Row-based counterpart of {@see self::getMailingAddressParts()}.
-     */
-    public static function mailingAddressPartsFromRow(array $row): array
-    {
-        $second = self::secondaryAddressPartsFromRow($row);
-        $hasSecond = $second['Address1'] !== '' || $second['City'] !== '';
-
-        return $hasSecond && (int) ($row['fam_SecondIsMailing'] ?? 0) === 1
-            ? $second
-            : self::primaryAddressPartsFromRow($row);
-    }
-
-    /**
-     * Row-based counterpart of {@see self::isSecondAddressMailing()}: the flag is
-     * set and there is a second address to send mail to.
-     */
-    public static function rowSecondAddressIsMailing(array $row): bool
-    {
-        $second = self::secondaryAddressPartsFromRow($row);
-        $hasSecond = $second['Address1'] !== '' || $second['City'] !== '';
-
-        return $hasSecond && (int) ($row['fam_SecondIsMailing'] ?? 0) === 1;
-    }
-
-    /**
-     * Row-based counterpart of {@see self::hasDistinctMailingAddress()}.
-     */
-    public static function rowHasDistinctMailingAddress(array $row): bool
-    {
-        $second = self::secondaryAddressPartsFromRow($row);
-        $hasSecond = $second['Address1'] !== '' || $second['City'] !== '';
-        if (!$hasSecond || (int) ($row['fam_SecondIsMailing'] ?? 0) !== 1) {
-            return false;
-        }
-
-        return array_map('mb_strtolower', self::primaryAddressPartsFromRow($row)) !== array_map('mb_strtolower', $second);
+        return $family;
     }
 
     public static function getFamilyViewURIForId(int $id): string

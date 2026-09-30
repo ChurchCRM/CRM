@@ -353,10 +353,10 @@ class PdfDirectory extends ChurchInfoReport
             }
             // Only families that actually mail somewhere other than their primary
             // address get a second block, and only when the reader asked for it (#9743).
-            if ($bDirMailingAddress && Family::rowHasDistinctMailingAddress($aRow)) {
-                $mailingBlock = Family::formatAddressBlock(Family::mailingAddressPartsFromRow($aRow));
-                if ($mailingBlock !== '') {
-                    $sFamilyStr .= '   ' . gettext('Mailing Address') . ': ' . str_replace("\n", "\n   ", $mailingBlock) . "\n";
+            if ($bDirMailingAddress) {
+                $family = Family::readOnlyFromRow($aRow);
+                if ($family->hasDistinctMailingAddress()) {
+                    $sFamilyStr .= '   ' . gettext('Mailing Address') . ': ' . str_replace("\n", "\n   ", $family->getMailingAddressLines()) . "\n";
                 }
             }
         }

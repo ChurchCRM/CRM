@@ -281,10 +281,10 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             }
             // The mailing address is a family attribute, so it is printed only when the
             // family this person belongs to actually mails somewhere else (#9743).
-            if ($bDirMailingAddress && Family::rowHasDistinctMailingAddress($aRow)) {
-                $mailingBlock = Family::formatAddressBlock(Family::mailingAddressPartsFromRow($aRow));
-                if ($mailingBlock !== '') {
-                    $OutStr .= '   ' . gettext('Mailing Address') . ': ' . str_replace("\n", "\n   ", $mailingBlock) . "\n";
+            if ($bDirMailingAddress) {
+                $family = Family::readOnlyFromRow($aRow);
+                if ($family->hasDistinctMailingAddress()) {
+                    $OutStr .= '   ' . gettext('Mailing Address') . ': ' . str_replace("\n", "\n   ", $family->getMailingAddressLines()) . "\n";
                 }
             }
         }

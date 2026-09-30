@@ -120,8 +120,7 @@ foreach ($pledgeObjects as $pledge) {
         'plg_PledgeOrPayment' => $pledge['PledgeOrPayment'],
         'plg_NonDeductible' => $pledge['Nondeductible'] ?? 0,
     ];
-    $famMailingParts[$row['fam_ID']] ??= $pledge['Family']['MailingAddress']
-        ?? Family::primaryAddressPartsFromRow($row);
+    $famMailingParts[$row['fam_ID']] ??= $pledge['Family']['MailingAddress'] ?? [];
     $rsReport[] = $row;
 }
 
@@ -281,7 +280,7 @@ if ($output === 'pdf') {
     foreach ($rsReport as $row) {
         extract($row);
         // The statement is mailed, so every address block on it is the mailing address.
-        $famMailing = $famMailingParts[$fam_ID] ?? Family::primaryAddressPartsFromRow($row);
+        $famMailing = $famMailingParts[$fam_ID];
 
         // Minimum amount filtering is now handled in FinancialService
         // No need to re-query for minimum amount check

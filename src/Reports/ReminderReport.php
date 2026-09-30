@@ -266,8 +266,8 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     // Add a page for this reminder report
     // The reminder is mailed, so it is addressed to the family's mailing address.
-    // $aFam comes from SELECT * FROM family_fam, so it already carries fam_Second*.
-    $curY = $pdf->startNewPage($fam_ID, $fam_Name, Family::mailingAddressPartsFromRow($aFam), $fundOnlyString, $iFYID);
+    // $aFam comes from SELECT * FROM family_fam, so it carries every family column.
+    $curY = $pdf->startNewPage($fam_ID, $fam_Name, Family::readOnlyFromRow($aFam)->getMailingAddressParts(), $fundOnlyString, $iFYID);
 
     // Get pledges only
     $rsPledges = RunPreparedQuery(

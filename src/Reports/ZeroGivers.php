@@ -7,7 +7,6 @@ require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -63,8 +62,7 @@ foreach ($familyObjects as $family) {
         'fam_Zip' => $family['Zip'] ?? '',
         'fam_Country' => $family['Country'] ?? '',
     ];
-    $famMailingParts[$row['fam_ID']] = $family['MailingAddress']
-        ?? Family::primaryAddressPartsFromRow($row);
+    $famMailingParts[$row['fam_ID']] = $family['MailingAddress'];
     $rsReport[] = $row;
 }
 
@@ -136,8 +134,7 @@ if ($output === 'pdf') {
     // Loop through result array
     foreach ($rsReport as $row) {
         extract($row);
-        $famMailing = $famMailingParts[$fam_ID] ?? Family::primaryAddressPartsFromRow($row);
-        $curY = $pdf->startNewPage($fam_ID, $fam_Name, $famMailing);
+        $curY = $pdf->startNewPage($fam_ID, $fam_Name, $famMailingParts[$fam_ID]);
 
         $pdf->finishPage($curY);
     }
