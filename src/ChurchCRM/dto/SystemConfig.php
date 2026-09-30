@@ -154,6 +154,7 @@ class   SystemConfig
             'sSMTPPass'                            => new ConfigItem('sSMTPPass', 'password', '', gettext('SMTP Password')),
             'sLanguage'                            => new ConfigItem('sLanguage', 'choice', 'en_US', gettext('Internationalization (I18n) support'), 'https://poeditor.com/join/project?hash=RABdnDSqAt', json_encode(SystemConfig::getSupportedLocales())),
             'iFYMonth'                             => new ConfigItem('iFYMonth', 'choice', '1', gettext('The month that starts your organization\'s fiscal year'), '', json_encode(SystemConfig::getMonthChoices())),
+            'iMaxTaxYears'                         => new ConfigItem('iMaxTaxYears', 'number', '5', gettext('Maximum number of tax year documents to show per family profile (0 = no limit)')),
             'iMapZoom'                             => new ConfigItem('iMapZoom', 'choice', '10', gettext('Initial zoom level when opening the map'), '', json_encode(SystemConfig::getMapZoomChoices())),
             'iChurchLatitude'                      => new ConfigItem('iChurchLatitude', 'number', '', ''),
             'iChurchLongitude'                     => new ConfigItem('iChurchLongitude', 'number', '', ''),
@@ -301,8 +302,8 @@ class   SystemConfig
         return [
             gettext('New Members & Greeting') => ['sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'bEnableBirthdayEmails'],
             gettext('People')              => ['sDirClassifications', 'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideWeddingDate', 'bForceUppercaseZip', 'sInactiveClassification'],
-            gettext('Families')            => ['sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHideFamilyNewsletter'],
-            gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser', 'sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts', 'bUseScannedChecks', 'bEnableNonDeductible', 'iFYMonth', 'bUseDonationEnvelopes', 'aFinanceQueries', 'sCurrencySymbol', 'sCurrencyPosition', 'sThousandsSeparator', 'sDecimalSeparator'],
+            gettext('Families')            => ['sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'bHideFamilyNewsletter'],
+            gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser'],
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Scheduled Tasks')    => ['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'],

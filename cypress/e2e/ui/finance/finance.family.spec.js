@@ -5,7 +5,7 @@ describe("Finance Family", () => {
         cy.setupAdminSession();
     });
 
-    it("View a Family with Pledges and Payments section", () => {
+    it("View a Family with Giving History section", () => {
         // Intercept the pledge API so we can wait for the initial load
         cy.intercept("GET", "**/api/payments/family/1/list*").as("pledgeLoad");
         cy.visit("people/family/1");
@@ -15,7 +15,7 @@ describe("Finance Family", () => {
         cy.contains("Darren Campbell");
 
         // Finance section should be visible with pill filters
-        cy.contains("Pledges and Payments");
+        cy.contains("Giving History");
         cy.get(".pledge-type-pill").should("have.length", 3);
         // FY pills: at minimum All Time + current FY pill (may include historical years too)
         cy.get(".pledge-fy-pill").should("have.length.at.least", 2);
@@ -49,7 +49,7 @@ describe("Finance Family", () => {
         cy.contains("Family Profile");
 
         // Wait for finance section and table to be ready
-        cy.contains("Pledges and Payments");
+        cy.contains("Giving History");
         cy.get("#pledge-payment-v2-table").should("be.visible");
         cy.wait("@pledgeLoad");
 
