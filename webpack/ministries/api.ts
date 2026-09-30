@@ -438,14 +438,21 @@ export function removePoolMember(ministryId: number, personId: number): Promise<
 
 /**
  * Take one person out of a ministry entirely: qualifications revoked, upcoming
- * assignments cancelled, pool membership removed — one transaction server-side.
+ * assignments cancelled, pool membership removed, schedule defaults cleared — one
+ * transaction server-side.
  *
  * Ministry-level authority; a team leader is refused with 403.
  */
 export function removeVolunteerFromMinistry(
   ministryId: number,
   personId: number,
-): Promise<{ personId: number; qualifications: number; assignments: number; removedFromPool: boolean }> {
+): Promise<{
+  personId: number;
+  qualifications: number;
+  assignments: number;
+  removedFromPool: boolean;
+  defaults: number;
+}> {
   return request(`/ministries/${ministryId}/volunteers/${personId}`, { method: "DELETE" });
 }
 
