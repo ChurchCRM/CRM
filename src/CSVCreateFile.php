@@ -509,7 +509,7 @@ if ($sFormat === 'addtocart') {
                 if (isset($_POST['Country'])) {
                     $row[] = $sCountry;
                 }
-                if (isset($_POST['SecondAddress'])) {
+                if (!empty($_POST['SecondAddress'])) {
                     // The export query already LEFT JOINs family_fam, so the
                     // fam_Second* columns are on this row: no per-person family
                     // query. The second address lives on the family only (no
