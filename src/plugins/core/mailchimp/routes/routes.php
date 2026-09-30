@@ -6,12 +6,14 @@
  * These routes are registered by the plugin system when the plugin is enabled.
  * The plugin system only loads routes for active plugins, providing system-wide security.
  * No middleware is needed to check if the plugin is enabled - if routes are loaded, the plugin is active.
+ * Every route is admin-only.
  */
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Plugins\MailChimp\MailChimpPlugin;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -44,7 +46,7 @@ $app->get('/mailchimp/dashboard', function (Request $request, Response $response
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
-});
+})->add(AdminRoleAuthMiddleware::class);
 
 // ============================================================================
 // MVC List Detail Routes
@@ -66,7 +68,7 @@ $app->get('/mailchimp/list/{listId}/unsubscribed', function (Request $request, R
     ];
 
     return $renderer->render($response, 'list-unsubscribed.php', $pageArgs);
-});
+})->add(AdminRoleAuthMiddleware::class);
 
 // People in MailChimp list but not in CRM
 $app->get('/mailchimp/list/{listId}/missing', function (Request $request, Response $response, array $args) use ($mailchimpPlugin): Response {
@@ -84,7 +86,7 @@ $app->get('/mailchimp/list/{listId}/missing', function (Request $request, Respon
     ];
 
     return $renderer->render($response, 'list-missing.php', $pageArgs);
-});
+})->add(AdminRoleAuthMiddleware::class);
 
 // ============================================================================
 // API Routes - All JSON endpoints are under /mailchimp/api/
@@ -258,4 +260,4 @@ $app->group('/mailchimp/api', function (RouteCollectorProxy $group) use ($mailch
 
         return SlimUtils::renderJSON($response, $emailToLists);
     });
-});
+})->add(AdminRoleAuthMiddleware::class);

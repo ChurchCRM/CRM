@@ -164,6 +164,7 @@ class MailChimpPlugin extends AbstractPlugin
                 'label' => gettext('MailChimp Dashboard'),
                 'url' => 'plugins/mailchimp/dashboard',
                 'icon' => 'fa-brands fa-mailchimp',
+                'permission' => 'bAdmin',
             ],
         ];
     }

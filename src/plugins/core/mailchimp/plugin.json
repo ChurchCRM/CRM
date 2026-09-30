@@ -33,7 +33,7 @@
       "label": "MailChimp Dashboard",
       "url": "/plugins/mailchimp/dashboard",
       "icon": "fa-brands fa-mailchimp",
-      "permission": "bEmailMailto"
+      "permission": "bAdmin"
     }
   ],
   "hooks": [
