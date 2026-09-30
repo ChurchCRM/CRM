@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 06:12+0000\n"
+"POT-Creation-Date: 2026-09-30 17:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4389,6 +4389,9 @@ msgstr ""
 msgid "Enter a search term"
 msgstr ""
 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr ""
+
 msgid "Enter a street address first."
 msgstr ""
 
@@ -7483,6 +7486,12 @@ msgstr ""
 msgid "Madagascar (Madagasikara)"
 msgstr ""
 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr ""
+
+msgid "Mail is sent to this address instead of the primary address"
+msgstr ""
+
 msgid "MailChimp API Key"
 msgstr ""
 
@@ -7509,6 +7518,12 @@ msgid "Mailchimp Not Configured"
 msgstr ""
 
 msgid "Mailchimp is not active"
+msgstr ""
+
+msgid "Mailing Address"
+msgstr ""
+
+msgid "Mailing Address if Different"
 msgstr ""
 
 msgid "Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address."
@@ -9884,6 +9899,9 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
+msgid "Primary Address"
+msgstr ""
+
 msgid "Primary Color"
 msgstr ""
 
@@ -10093,6 +10111,9 @@ msgid "Ready to back up"
 msgstr ""
 
 msgid "Ready to restore"
+msgstr ""
+
+msgid "Receives Mail"
 msgstr ""
 
 msgid "Recent Deposits"
@@ -10819,8 +10840,14 @@ msgstr ""
 msgid "Season"
 msgstr ""
 
+msgid "Second Address"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Second Fiscal Year"
+msgstr ""
+
+msgid "Second Home"
 msgstr ""
 
 msgid "Second Volunteer Opportunity"
@@ -12123,6 +12150,9 @@ msgid "This is how dates, currency amounts, and phone numbers will appear throug
 msgstr ""
 
 msgid "This is how your church information will appear on reports and directories."
+msgstr ""
+
+msgid "This is the mailing address"
 msgstr ""
 
 msgid "This is the only role in this group."
