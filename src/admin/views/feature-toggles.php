@@ -175,7 +175,7 @@ document.querySelectorAll('.feature-toggle').forEach(toggle => {
         badge.style.display = 'inline';
         badge.className = 'status-badge badge bg-info';
 
-        fetch('/api/system/feature-toggles', {
+        fetch('/admin/api/system/feature-toggles', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
