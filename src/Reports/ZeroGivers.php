@@ -62,7 +62,7 @@ foreach ($familyObjects as $family) {
         'fam_Zip' => $family['Zip'] ?? '',
         'fam_Country' => $family['Country'] ?? '',
     ];
-    $famMailingParts[$row['fam_ID']] = $family['MailingAddress'];
+    $famMailingParts[$row['fam_ID']] = $family['MailingAddress'] ?? [];
     $rsReport[] = $row;
 }
 
