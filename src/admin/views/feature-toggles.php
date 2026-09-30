@@ -188,8 +188,8 @@ document.querySelectorAll('.feature-toggle').forEach(toggle => {
                 badge.textContent = '<?= gettext('Saved') ?>';
                 badge.className = 'status-badge badge bg-success';
                 setTimeout(() => {
-                    badge.style.display = 'none';
-                }, 2000);
+                    location.reload();
+                }, 1500);
             } else {
                 badge.textContent = '<?= gettext('Error') ?>';
                 badge.className = 'status-badge badge bg-danger';
