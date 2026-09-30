@@ -321,7 +321,7 @@ if ($output === 'pdf') {
                 }
             }
             $pdf->SetFont('Times', '', 10);
-            $pdf->finishPage($curY, $fam_ID, $fam_Name, $famMailing);
+            $pdf->finishPage($curY, $prev_fam_ID, $prev_fam_Name, $famMailingParts[$prev_fam_ID]);
         }
 
         // Start Page for New Family

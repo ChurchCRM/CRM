@@ -192,6 +192,43 @@ describe("Mailing address on mailed reports (#9743)", () => {
         });
     });
 
+    it("addresses each giving statement's remittance slip to that statement's family", () => {
+        // Seed families 1 and 6 both gave on 2018-03-04; statements run in family order.
+        cy.visit("/FinancialReports.php");
+        cy.get("#FinancialReportTypes").select("Giving Report");
+        cy.get("#FinancialReports").submit();
+        cy.get("#DateStart").clear().type("2018-01-01");
+        cy.get("#DateEnd").clear().type("2018-12-31");
+        cy.get("#remittanceYes").check();
+        cy.get("#createReport")
+            .closest("form")
+            .then(($form) => {
+                const body = new URLSearchParams(new FormData($form[0]));
+                body.append("family[]", "1");
+                body.append("family[]", "6");
+                return cy
+                    .request({
+                        method: "POST",
+                        url: $form.attr("action"),
+                        headers: { "content-type": "application/x-www-form-urlencoded" },
+                        body: body.toString(),
+                        encoding: "binary",
+                    })
+                    .then((response) => pdfText(response.body));
+            })
+            .then((lines) => {
+                const slip = lines.indexOf("Please detach this slip and mail with your next gift.");
+                expect(slip, "the first statement's remittance slip").to.be.greaterThan(-1);
+                const slipAddress = lines
+                    .slice(slip)
+                    .find((line) => line === "3259 Daisy Dr" || line === "6730 Mockingbird Hill");
+                expect(slipAddress).to.equal("3259 Daisy Dr");
+                // Same salutation on the slip as at the head of the statement it closes.
+                const header = lines.indexOf("3259 Daisy Dr");
+                expect(lines[lines.indexOf(slipAddress, slip) - 1]).to.equal(lines[header - 1]);
+            });
+    });
+
     // Keep these last: the API-key call replaces the browser's CRM session server-side.
     it("resolves the printed address to the flagged second address", () => {
         createFamilyWithMailingAddress("MailLabelData" + Cypress._.random(0, 1e6)).then((familyId) => {
