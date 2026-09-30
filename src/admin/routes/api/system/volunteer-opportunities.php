@@ -4,7 +4,6 @@ use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -34,10 +33,10 @@ function volunteerOpportunityToArray(VolunteerOpportunity $opp): array
     ];
 }
 
-$app->group('/api/system/volunteer-opportunities', function (RouteCollectorProxy $group): void {
+$app->group('/api/volunteer-opportunities', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
-     *     path="/api/system/volunteer-opportunities",
+     *     path="/api/volunteer-opportunities",
      *     summary="List all volunteer opportunities (Admin role required)",
      *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
@@ -262,4 +261,4 @@ $app->group('/api/system/volunteer-opportunities', function (RouteCollectorProxy
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete volunteer opportunity'), [], 500, $e, $request);
         }
     });
-})->add(AdminRoleAuthMiddleware::class);
+});

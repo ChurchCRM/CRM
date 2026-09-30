@@ -2,7 +2,6 @@
 
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -11,12 +10,12 @@ use Slim\Routing\RouteCollectorProxy;
 $app->group('/api/system/custom-fields', function (RouteCollectorProxy $group): void {
     $group->get('/person', 'getPersonFieldsByType');
     $group->get('/person/', 'getPersonFieldsByType');
-})->add(AdminRoleAuthMiddleware::class);
+});
 
 $app->group('/api/system/properties', function (RouteCollectorProxy $group): void {
     $group->get('/person', 'getPersonPropertyOptions');
     $group->get('/person/', 'getPersonPropertyOptions');
-})->add(AdminRoleAuthMiddleware::class);
+});
 
 /**
  * @OA\Get(

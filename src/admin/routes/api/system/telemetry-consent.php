@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\TelemetryService;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -50,4 +49,4 @@ $app->post('/api/system/telemetry-consent', function (Request $request, Response
     }
 
     return SlimUtils::renderJSON($response, ['status' => 'ok']);
-})->add(AdminRoleAuthMiddleware::class);
+});

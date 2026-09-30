@@ -20,7 +20,6 @@ require __DIR__ . '/routes/api/birthday-emails.php';
 require __DIR__ . '/routes/api/orphaned-files.php';
 require __DIR__ . '/routes/api/options.php';
 require __DIR__ . '/routes/api/system/church-logo.php';
-require __DIR__ . '/routes/api/system/property-types.php';
 require __DIR__ . '/routes/api/system/system-config.php';
 require __DIR__ . '/routes/api/system/system-custom-fields.php';
 require __DIR__ . '/routes/api/system/system-logs.php';

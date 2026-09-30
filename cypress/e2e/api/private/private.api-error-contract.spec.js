@@ -45,7 +45,7 @@ function expectCanonicalErrorShape(body, expectedCode) {
 
 describe("API error contract — one JSON shape (#9737)", () => {
     it("entity middleware 404 (renderErrorJSON)", () => {
-        cy.makePrivateAdminAPICall("GET", "/api/volunteer-opportunities/999999", null, 404).then(
+        cy.makePrivateAdminAPICall("GET", "/admin/api/volunteer-opportunities/999999", null, 404).then(
             (response) => {
                 expectCanonicalErrorShape(response.body, 404);
                 expect(response.body.message).to.eq("Volunteer opportunity not found");
@@ -65,7 +65,7 @@ describe("API error contract — one JSON shape (#9737)", () => {
     });
 
     it("auth middleware 401", () => {
-        cy.makePrivateAPICall("not-a-real-api-key", "GET", "/api/volunteer-opportunities/1", null, 401).then(
+        cy.makePrivateAPICall("not-a-real-api-key", "GET", "/admin/api/volunteer-opportunities/1", null, 401).then(
             (response) => {
                 expectCanonicalErrorShape(response.body, 401);
                 expect(response.body.message).to.eq("Invalid API key");

@@ -112,7 +112,7 @@ describe("API System Properties Endpoint", () => {
     it("GET /system/properties/person returns id/value pairs", () => {
         cy.makePrivateAdminAPICall(
             "GET",
-            `/api/system/properties/person`,
+            `/admin/api/system/properties/person`,
             null,
             200,
         ).then((resp) => {
@@ -129,7 +129,7 @@ describe("API System Properties Endpoint", () => {
     it("non-admin is denied access", () => {
         cy.makePrivateUserAPICall(
             "GET",
-            `/api/system/properties/person`,
+            `/admin/api/system/properties/person`,
             null,
             [401, 403],
         );
