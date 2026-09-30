@@ -1521,11 +1521,15 @@ INSERT INTO `person_per` VALUES (905,'Mr','Kyle','','Kioskonly','','','','','','
 -- Locale-admin: dedicated admin user for locale smoke tests (per_ID 906)
 -- Locale preference set per-test via POST /api/user/906/setting/ui.locale; never mutates system-wide sLanguage
 INSERT INTO `person_per` VALUES (906,'Mr','Locale','','Admin','','','','','','','USA','','','','locale-admin@churchcrm.test',NULL,1,1,1980,NULL,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL,NULL);
+-- Sign-in block fixtures (issue #10193): 910 deceased, 911 inactive, 912 active user deactivated mid-spec by session-ends spec. Password: changeme.
+INSERT INTO `person_per` VALUES (910,'Mr','Deceased','','Signin','','','','','','','USA','','','','deceased.user@example.com',NULL,1,1,1980,NULL,'2024-03-01',1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL,NULL);
+INSERT INTO `person_per` VALUES (911,'Mr','Inactive','','Signin','','','','','','','USA','','','','inactive.user@example.com',NULL,1,1,1980,NULL,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL,'2024-03-01');
+INSERT INTO `person_per` VALUES (912,'Mr','Deactivate','','Target','','','','','','','USA','','','','deactivate.target@example.com',NULL,1,1,1980,NULL,NULL,1,1,0,0,NULL,NULL,'2024-01-01 00:00:00',1,0,NULL,0,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `person_per` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `person_per` with 222 row(s)
+-- Dumped table `person_per` with 225 row(s)
 --
 
 --
@@ -1995,11 +1999,15 @@ INSERT INTO `user_usr` VALUES (905,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB
 -- Locale-admin: dedicated admin user for locale smoke tests (usr_per_ID 906)
 -- Password: changeme (shared test hash). Locale changed per-test; never touches system-wide sLanguage.
 INSERT INTO `user_usr` VALUES (906,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,1,10,'skin-blue',0,0,'2016-01-01',10,0,'locale-admin@churchcrm.test','localeAdminApiKeyForTesting1234567890',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+-- Sign-in block fixtures (issue #10193): non-admin, zero permissions; the person rows carry the deceased / inactive dates.
+INSERT INTO `user_usr` VALUES (910,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'deceased.user','deceasedUserApiKeyForTesting1234567890123',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (911,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'inactive.user','inactiveUserApiKeyForTesting1234567890123',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (912,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2024-01-01 00:00:00',0,0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'deactivate.target',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `user_usr` with 9 row(s)
+-- Dumped table `user_usr` with 12 row(s)
 --
 
 --

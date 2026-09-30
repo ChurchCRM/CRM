@@ -78,6 +78,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             $failedLogins   = $user->getFailedLogins();
             $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
             ?>
+            <?php $signInBlockedLabel = $user->getSignInBlockedLabel(); ?>
+            <?php if ($signInBlockedLabel !== null): ?>
+            <div class="alert alert-secondary d-flex align-items-center mb-3" role="alert" data-cy="sign-in-blocked-alert">
+              <i class="fa-solid fa-user-slash me-2 flex-shrink-0 fs-3"></i>
+              <div>
+                <strong><?= InputUtils::escapeHTML($signInBlockedLabel) ?></strong>
+                <div class="small"><?= gettext('The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again.') ?></div>
+              </div>
+            </div>
+            <?php endif; ?>
             <?php if ($isLocked): ?>
             <div class="alert alert-danger d-flex align-items-center mb-3" role="alert">
               <i class="fa-solid fa-lock me-2 flex-shrink-0 fs-3"></i>
