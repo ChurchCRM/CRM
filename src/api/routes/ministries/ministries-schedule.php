@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
@@ -320,6 +321,8 @@ function volunteerOccurrenceGapList(array $counts): array
 function volunteerRequirementToArray(VolunteerRequirement $requirement, array $counts = []): array
 {
     $position = VolunteerPositionQuery::create()->findPk((int) $requirement->getPositionId());
+    $defaultPersonId = $requirement->getDefaultPersonId() === null ? null : (int) $requirement->getDefaultPersonId();
+    $defaultPerson = $defaultPersonId === null ? null : PersonQuery::create()->findPk($defaultPersonId);
 
     return [
         'id' => (int) $requirement->getId(),
@@ -331,6 +334,14 @@ function volunteerRequirementToArray(VolunteerRequirement $requirement, array $c
         'maxCount' => $requirement->getMaxCount() === null ? null : (int) $requirement->getMaxCount(),
         'notes' => $requirement->getNotes(),
         'source' => $requirement->getOccurrenceId() === null ? 'schedule' : 'occurrence',
+        // D32: the schedule's default volunteer for this position; `defaultQualified` is false
+        // while their qualification is revoked, when generation leaves the position open.
+        'defaultPersonId' => $defaultPersonId,
+        'defaultPersonName' => $defaultPerson?->getFullName(),
+        'defaultAccepted' => $defaultPersonId !== null && (bool) $requirement->getDefaultAccepted(),
+        'defaultQualified' => $defaultPersonId === null
+            ? null
+            : VolunteerScheduleService::holdsQualification($defaultPersonId, (int) $requirement->getPositionId()),
         // Same rule as the occurrence shape: the counts arrive from getGaps(), they are
         // never derived here (#9709, §2.11.3).
         'liveCount' => (int) ($counts['liveCount'] ?? 0),
@@ -715,7 +726,7 @@ function listVolunteerScheduleEligiblePeople(Request $request, Response $respons
  *     path="/ministries/schedules/{scheduleId}/generate",
  *     operationId="generateVolunteerOccurrences",
  *     summary="Materialise this schedule's occurrences up to a date",
- *     description="Idempotent. Attaches one occurrence to each active event the schedule follows (by type, class, ministry or the one event) inside the window, from today up to the scheduling horizon (D31; a Staff this event schedule is not capped by it). No calendar event is ever created or changed. `defaults` names a person per position to assign on every occurrence THIS run creates (never on ones an earlier run made); with accepted=true they are recorded as having accepted and are not asked to respond.",
+ *     description="Idempotent. Attaches one occurrence to each active event the schedule follows (by type, class, ministry or the one event) inside the window, from today up to the scheduling horizon (D31; a Staff this event schedule is not capped by it). No calendar event is ever created or changed. `defaults` (D32) is saved on the schedule's staffing needs first — one entry per position, a blank personId clearing that position's default — and then every saved default is assigned on the occurrences THIS run creates (never on ones an earlier run made), while its person holds an active qualification; with accepted=true they are recorded as having accepted and are not asked to respond. Without `defaults` the saved ones are assigned unchanged.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="scheduleId", in="path", required=true, @OA\Schema(type="integer")),
@@ -724,11 +735,11 @@ function listVolunteerScheduleEligiblePeople(Request $request, Response $respons
  *             description="Defaults to, and may not go past, today plus the scheduling horizon (iVolunteerSchedulingHorizonWeeks); the schedule's last date caps it too"),
  *         @OA\Property(property="defaults", type="array", @OA\Items(type="object",
  *             @OA\Property(property="positionId", type="integer"),
- *             @OA\Property(property="personId", type="integer"),
+ *             @OA\Property(property="personId", type="integer", nullable=true, description="Blank or null: no default for this position"),
  *             @OA\Property(property="accepted", type="boolean")
  *         ))
  *     )),
- *     @OA\Response(response=400, description="Malformed date, the run would exceed the occurrence cap, or a default names a position outside this schedule's team"),
+ *     @OA\Response(response=400, description="Malformed date, the run would exceed the occurrence cap, or a default names a position this schedule's staffing needs do not ask for"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this schedule, a default is not qualified, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such schedule, or a default names an unknown person"),
@@ -739,7 +750,8 @@ function listVolunteerScheduleEligiblePeople(Request $request, Response $respons
  *             @OA\Property(property="from", type="string", format="date", description="First date looked at: the later of today and the window start; after through when the window has ended or not started"),
  *             @OA\Property(property="through", type="string", format="date"),
  *             @OA\Property(property="assigned", type="integer", description="Default assignments written"),
- *             @OA\Property(property="skipped", type="integer", description="Default assignments the server refused on one occurrence"),
+ *             @OA\Property(property="skipped", type="integer", description="Default assignments the assignment rules refused on one occurrence (over, cancelled, no room)"),
+ *             @OA\Property(property="unqualified", type="integer", description="Default assignments left open because the default no longer holds an active qualification (D32)"),
  *             @OA\Property(property="noEvents", type="boolean", description="No event at all was found between from and through (D30)"),
  *             @OA\Property(property="searched", type="object", description="What the schedule looks for, with names (D30)",
  *                 @OA\Property(property="linkMode", type="string", enum={"event_type","class","ministry","event"}),
@@ -769,38 +781,22 @@ function generateVolunteerOccurrences(Request $request, Response $response): Res
         $through = DateTimeUtils::createDateTime((string) $input['through']);
     }
 
-    $defaults = isset($input['defaults']) && is_array($input['defaults']) ? $input['defaults'] : [];
+    $defaults = isset($input['defaults']) && is_array($input['defaults']) ? array_values($input['defaults']) : null;
     $assignments = new VolunteerAssignmentService();
-    $actor = AuthenticationManager::getCurrentUser();
 
-    // The defaults are checked before a single occurrence is written, so a bad one is
-    // a clean 4xx and not a generated-but-unstaffed run.
     try {
-        $assignments->assignDefaults($schedule, [], $defaults, $actor);
+        $result = $assignments->generateWithDefaults($schedule, $through, $defaults, AuthenticationManager::getCurrentUser());
     } catch (VolunteerException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
-    }
-
-    $schedules = new VolunteerScheduleService();
-    try {
-        $result = $schedules->generateOccurrences($schedule, $through);
     } catch (\RuntimeException | \InvalidArgumentException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }
 
-    $staffed = ['assigned' => 0, 'skipped' => 0];
-    if ($defaults !== [] && $result['createdIds'] !== []) {
-        try {
-            $staffed = $assignments->assignDefaults($schedule, $result['createdIds'], $defaults, $actor);
-        } catch (VolunteerException $e) {
-            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
-        }
-    }
-
     unset($result['createdIds']);
+    $schedules = $assignments->getScheduleService();
 
     // D30: an empty run says what it looked for, so the screen can say why nothing came.
-    return SlimUtils::renderJSON($response, $result + $staffed + [
+    return SlimUtils::renderJSON($response, $result + [
         'noEvents' => $result['created'] + $result['existing'] === 0,
         'searched' => $schedules->describeEventSource($schedule),
     ]);

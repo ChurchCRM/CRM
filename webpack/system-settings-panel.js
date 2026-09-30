@@ -208,6 +208,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       this.options = {};
       this.settingValues = {};
       this.initialized = false;
+      this.valuesLoaded = false;
     }
 
     /**
@@ -265,7 +266,10 @@ import "../src/skin/scss/system-settings-panel.scss";
       this.fetchAndApplyValues();
     }
 
-    // Fetch current values from API and update each input individually
+    // Fetch current values from API and update each input individually. Save
+    // saves every field, so the form stays disabled until every value is in: a
+    // Save before then would store the blanks the inputs start with, and a
+    // field changed before then would be overwritten by the value arriving.
     fetchAndApplyValues() {
       // Password fields never show their current value
       const settingsToFetch = this.options.settings.filter((s) => {
@@ -273,33 +277,64 @@ import "../src/skin/scss/system-settings-panel.scss";
         return cfg.type !== "password";
       });
 
-      settingsToFetch.forEach((s) => {
+      const loads = settingsToFetch.map((s) => {
         const name = typeof s === "string" ? s : s.name;
         const cfg = this.getSettingConfig(s);
 
-        fetch(`${window.CRM.root}${this.options.configApiPath}/${name}`)
-          .then((response) => response.json())
+        return fetch(`${window.CRM.root}${this.options.configApiPath}/${name}`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`${name}: ${response.status}`);
+            }
+            return response.json();
+          })
           .then((data) => {
             // For ajax selects, load options from the remote URL first
             if (cfg.type === "ajax" && cfg.ajaxUrl) {
-              this.loadAjaxOptions(name, cfg.ajaxUrl, data.value);
-            } else {
-              this.applyValue(name, data.value);
+              return this.loadAjaxOptions(name, cfg.ajaxUrl, data.value);
             }
-          })
-          .catch(() => {
-            console.warn("Could not load setting:", name);
+            this.applyValue(name, data.value);
+            return undefined;
           });
       });
+
+      return Promise.all(loads)
+        .then(() => {
+          this.valuesLoaded = true;
+          this.unlock();
+        })
+        .catch((error) => {
+          console.warn("Could not load the settings:", error);
+          const notice = this.container.querySelector(".settings-panel-load-error");
+          if (notice) {
+            notice.classList.remove("d-none");
+          }
+        });
+    }
+
+    unlock() {
+      const fields = this.container.querySelector(".settings-panel-fields");
+      if (fields) {
+        fields.disabled = false;
+      }
+      const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
+      if (saveBtn) {
+        saveBtn.disabled = false;
+      }
     }
 
     // Load options for an ajax-type select from a remote URL, then set the value
     loadAjaxOptions(name, url, currentValue) {
       const select = this.container.querySelector(`select[name="${name}"]`);
-      if (!select) return;
+      if (!select) return Promise.resolve();
 
-      fetch(window.CRM.root + url)
-        .then((response) => response.json())
+      return fetch(window.CRM.root + url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`${name}: ${response.status}`);
+          }
+          return response.json();
+        })
         .then((options) => {
           options.forEach((opt) => {
             const option = document.createElement("option");
@@ -310,9 +345,6 @@ import "../src/skin/scss/system-settings-panel.scss";
             }
             select.appendChild(option);
           });
-        })
-        .catch(() => {
-          console.warn("Could not load ajax options for:", name);
         });
     }
 
@@ -380,11 +412,16 @@ import "../src/skin/scss/system-settings-panel.scss";
                     </div>
                     <div class="card-body">
                         <form id="settingsPanelForm">
-                            ${presetsHtml}
-                            <div class="row">
-                                ${settingsHtml}
-                            </div>
+                            <fieldset class="settings-panel-fields" disabled>
+                                ${presetsHtml}
+                                <div class="row">
+                                    ${settingsHtml}
+                                </div>
+                            </fieldset>
                             <hr class="my-3">
+                            <div class="alert alert-danger d-none settings-panel-load-error" role="alert">
+                                <i class="fa-solid fa-circle-exclamation me-1"></i>${t("The current settings could not be loaded, so they cannot be saved. Reload the page to try again.")}
+                            </div>
                             <div class="d-flex justify-content-between align-items-center">
                                 ${
                                   this.options.showAllSettingsLink
@@ -395,7 +432,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                 `
                                     : "<div></div>"
                                 }
-                                <button type="button" id="settingsPanelSaveBtn" class="btn btn-primary">
+                                <button type="button" id="settingsPanelSaveBtn" class="btn btn-primary" disabled>
                                     <i class="fa-solid fa-save me-1"></i> ${t("Save Settings")}
                                 </button>
                             </div>
@@ -480,6 +517,9 @@ import "../src/skin/scss/system-settings-panel.scss";
 
     // Save all settings
     save() {
+      if (!this.valuesLoaded) {
+        return;
+      }
       const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
       const originalHtml = saveBtn.innerHTML;
 

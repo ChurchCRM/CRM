@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\VolunteerOccurrenceTableMap;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
@@ -17,6 +18,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPosition;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerQualificationQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerRequirement;
 use ChurchCRM\model\ChurchCRM\VolunteerRequirementQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSchedule;
@@ -98,9 +100,9 @@ class VolunteerScheduleService
 
     /**
      * How many weeks ahead occurrences are made (D31): one church-wide setting. The config
-     * API stores whatever it is sent — the settings panel can save a blank field it has not
-     * filled in yet — so the value is read defensively: blank or not a number is the
-     * default, anything else is held within the bounds.
+     * API refuses a blank or a non-number (D32), but the row can still be written other ways
+     * (System Settings, the database), so the value is read defensively: blank or not a
+     * number is the default, anything else is held within the bounds.
      */
     public static function horizonWeeks(): int
     {
@@ -186,7 +188,7 @@ class VolunteerScheduleService
             $schedule->save();
 
             if (array_key_exists('requirements', $fields)) {
-                $this->replaceRequirements($schedule, null, $fields['requirements']);
+                $this->replaceRequirements($schedule, null, $fields['requirements'], $actor);
             }
 
             $con->commit();
@@ -281,7 +283,7 @@ class VolunteerScheduleService
             $schedule->save();
 
             if (array_key_exists('requirements', $fields)) {
-                $this->replaceRequirements($schedule, null, $fields['requirements']);
+                $this->replaceRequirements($schedule, null, $fields['requirements'], $actor);
             }
 
             $con->commit();
@@ -1420,7 +1422,10 @@ class VolunteerScheduleService
      * An empty `$rows` is legal and means "nothing is needed here" — the schedule form
      * warns about it, the service does not refuse it.
      *
-     * @param mixed $rows list of {positionId, minCount, maxCount?, notes?}
+     * A schedule's rows may also carry its default volunteer (D32): `defaultPersonId` (null
+     * clears it; absent keeps the stored one) and `defaultAccepted`. An occurrence's may not.
+     *
+     * @param mixed $rows list of {positionId, minCount, maxCount?, notes?, defaultPersonId?, defaultAccepted?}
      *
      * @return VolunteerRequirement[] the resulting rows, in the order they were given
      *
@@ -1429,7 +1434,8 @@ class VolunteerScheduleService
     public function replaceRequirements(
         ?VolunteerSchedule $schedule,
         ?VolunteerOccurrence $occurrence,
-        mixed $rows
+        mixed $rows,
+        ?User $actor = null
     ): array {
         if (($schedule === null) === ($occurrence === null)) {
             throw new \RuntimeException(gettext('A staffing requirement belongs to exactly one of a schedule or an occurrence'));
@@ -1465,6 +1471,10 @@ class VolunteerScheduleService
                 ? (int) $row['maxCount']
                 : null;
 
+            if ($occurrence !== null && !empty($row['defaultPersonId'])) {
+                throw VolunteerException::invalid(gettext('A default volunteer belongs to the schedule\'s staffing needs, not to one occurrence'));
+            }
+
             $wanted[$positionId] = [
                 'position' => $position,
                 'minCount' => (int) $row['minCount'],
@@ -1472,12 +1482,13 @@ class VolunteerScheduleService
                 // The route sanitizer is declarative and per-field; a nested array never
                 // passes through it, so the notes of a nested row are sanitized here.
                 'notes' => isset($row['notes']) ? InputUtils::sanitizeText((string) $row['notes']) : null,
+                'default' => $schedule === null ? null : $this->readDefault($row, $positionId, $this->templateRequirement($schedule, $positionId)),
             ];
         }
 
         $result = [];
         foreach ($wanted as $entry) {
-            $result[] = $this->upsertRequirement(
+            $requirement = $this->upsertRequirement(
                 $schedule,
                 $occurrence,
                 $entry['position'],
@@ -1485,6 +1496,10 @@ class VolunteerScheduleService
                 $entry['maxCount'],
                 $entry['notes']
             );
+            if ($entry['default'] !== null) {
+                $this->writeDefault($requirement, $entry['default'], $actor);
+            }
+            $result[] = $requirement;
         }
 
         $removed = $this->clearRequirements($schedule, $occurrence, array_keys($wanted));
@@ -1497,6 +1512,138 @@ class VolunteerScheduleService
         ]);
 
         return $result;
+    }
+
+    /**
+     * D32: the default volunteers the Generate dialog and Staff these events name, saved on
+     * the schedule's staffing needs — a blank person clears that position's. Each position
+     * must be one the needs ask for, because the default lives on that need. Nothing is
+     * written unless every entry is valid.
+     *
+     * @param array<int, mixed> $defaults list of {positionId, personId, accepted?}
+     *
+     * @throws VolunteerException
+     */
+    public function saveDefaults(VolunteerSchedule $schedule, array $defaults, User $actor): void
+    {
+        $plan = [];
+        foreach ($defaults as $default) {
+            if (!is_array($default)) {
+                throw VolunteerException::invalid(gettext('Each default volunteer must name a position'));
+            }
+            $positionId = (int) ($default['positionId'] ?? 0);
+            $requirement = $this->templateRequirement($schedule, $positionId);
+            if ($requirement === null) {
+                throw VolunteerException::invalid(gettext('A default volunteer can only be chosen for a position this schedule\'s staffing needs ask for'));
+            }
+            $plan[] = [$requirement, $this->readDefault(
+                ['defaultPersonId' => $default['personId'] ?? null, 'defaultAccepted' => $default['accepted'] ?? false],
+                $positionId,
+                $requirement
+            )];
+        }
+
+        foreach ($plan as [$requirement, $choice]) {
+            $this->writeDefault($requirement, $choice, $actor);
+        }
+    }
+
+    /** Whether a person may be assigned to a position at all (I2): an active qualification. */
+    public static function holdsQualification(int $personId, int $positionId): bool
+    {
+        return VolunteerQualificationQuery::create()
+            ->filterByPersonId($personId)
+            ->filterByPositionId($positionId)
+            ->filterByActive(true)
+            ->exists();
+    }
+
+    private function templateRequirement(VolunteerSchedule $schedule, int $positionId): ?VolunteerRequirement
+    {
+        if ($schedule->isNew()) {
+            return null;
+        }
+
+        return VolunteerRequirementQuery::create()
+            ->filterByScheduleId((int) $schedule->getId())
+            ->filterByOccurrenceId(null)
+            ->filterByPositionId($positionId)
+            ->findOne();
+    }
+
+    /**
+     * One row's default as asked for, or null when the row does not mention it. A NEW choice
+     * must be a person holding an active qualification for the position; the stored default,
+     * named again, is kept as it is even after that qualification was revoked — it is not a
+     * new choice, and generation leaves it open until they qualify again.
+     *
+     * @param array<string, mixed> $row
+     *
+     * @return array{personId: ?int, accepted: bool}|null
+     *
+     * @throws VolunteerException
+     */
+    private function readDefault(array $row, int $positionId, ?VolunteerRequirement $stored): ?array
+    {
+        if (!array_key_exists('defaultPersonId', $row)) {
+            return null;
+        }
+
+        $raw = $row['defaultPersonId'];
+        $personId = null;
+        if ($raw !== null && $raw !== '' && (string) $raw !== '0') {
+            if (!is_numeric($raw) || (int) $raw <= 0) {
+                throw VolunteerException::invalid(gettext('The default volunteer must be a person'));
+            }
+            $personId = (int) $raw;
+        }
+
+        $unchanged = $personId !== null
+            && $stored !== null
+            && $stored->getDefaultPersonId() !== null
+            && (int) $stored->getDefaultPersonId() === $personId;
+
+        if ($personId !== null && !$unchanged) {
+            if (PersonQuery::create()->findPk($personId) === null) {
+                throw VolunteerException::notFound(gettext('Person not found'));
+            }
+            if (!self::holdsQualification($personId, $positionId)) {
+                throw VolunteerException::forbidden(gettext('That person is not qualified for this position'));
+            }
+        }
+
+        $accepted = false;
+        if ($personId !== null) {
+            $accepted = array_key_exists('defaultAccepted', $row)
+                ? filter_var($row['defaultAccepted'], FILTER_VALIDATE_BOOLEAN)
+                : $unchanged && (bool) $stored->getDefaultAccepted();
+        }
+
+        return ['personId' => $personId, 'accepted' => $accepted];
+    }
+
+    /**
+     * @param array{personId: ?int, accepted: bool} $choice
+     */
+    private function writeDefault(VolunteerRequirement $requirement, array $choice, ?User $actor): void
+    {
+        $storedPerson = $requirement->getDefaultPersonId() === null ? null : (int) $requirement->getDefaultPersonId();
+        if ($storedPerson === $choice['personId'] && (bool) $requirement->getDefaultAccepted() === $choice['accepted']) {
+            return;
+        }
+
+        $requirement->setDefaultPersonId($choice['personId']);
+        $requirement->setDefaultAccepted($choice['accepted']);
+        $requirement->setDefaultSetByPersonId($choice['personId'] === null || $actor === null ? null : (int) $actor->getId());
+        $requirement->save();
+
+        $this->logger->info('Volunteer schedule default set', [
+            'scheduleId' => $requirement->getScheduleId(),
+            'positionId' => $requirement->getPositionId(),
+            'personId' => $choice['personId'],
+            'accepted' => $choice['accepted'],
+            'actorPersonId' => $actor?->getId(),
+        ]);
     }
 
     /**

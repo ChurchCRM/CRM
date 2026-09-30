@@ -712,6 +712,9 @@ export interface VolunteerRequirementInput {
   positionId: number;
   minCount: number;
   maxCount: number | null;
+  /** D32, a schedule's needs only: null clears the default; absent keeps the stored one. */
+  defaultPersonId?: number | null;
+  defaultAccepted?: boolean;
 }
 
 /** A requirement as `volunteerRequirementToArray()` shapes it. */
@@ -725,6 +728,12 @@ export interface VolunteerRequirementRow {
   maxCount: number | null;
   notes: string | null;
   source: "schedule" | "occurrence";
+  /** D32: the schedule's default volunteer for this position. */
+  defaultPersonId: number | null;
+  defaultPersonName: string | null;
+  defaultAccepted: boolean;
+  /** False while the default's qualification is revoked (the position is then left open); null with no default. */
+  defaultQualified: boolean | null;
 }
 
 export interface VolunteerOccurrenceRequirements {
@@ -1265,7 +1274,8 @@ export function listUpcomingEvents(params: {
 /** One "Fill by default with" answer of the Generate Occurrences dialog. */
 export interface VolunteerGenerateDefault {
   positionId: number;
-  personId: number;
+  /** Null: no default for this position (D32 saves it on the schedule as none). */
+  personId: number | null;
   /** Record them as having accepted every occurrence, so they are not asked to respond. */
   accepted: boolean;
 }
@@ -1292,8 +1302,10 @@ export interface VolunteerGenerateResult {
   through: string;
   /** Default assignments written on the occurrences this run created. */
   assigned: number;
-  /** Default assignments the server refused on one occurrence (full, cancelled). */
+  /** Default assignments the server refused on one occurrence (over, cancelled, full). */
   skipped: number;
+  /** Default assignments left open because the default is no longer qualified (D32). */
+  unqualified: number;
   /** No event at all was found between `from` and `through` (D30). */
   noEvents: boolean;
   searched: VolunteerEventSource;
@@ -1486,6 +1498,7 @@ export function createMinistryEvents(
   occurrences?: Array<{ id: number; eventId: number; occurrenceDate: string }>;
   assigned?: number;
   skipped?: number;
+  unqualified?: number;
 }> {
   return request(`/ministries/${ministryId}/events`, { method: "POST", body: JSON.stringify(payload) });
 }

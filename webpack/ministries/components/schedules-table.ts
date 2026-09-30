@@ -19,6 +19,10 @@
  * "Set as Accepted" box. The chosen people are assigned on every occurrence the run
  * creates, never on ones an earlier run made.
  *
+ * D32: those defaults belong to the schedule. The schedule dialog's staffing needs show and
+ * edit one per position, the Generate dialog opens on them and saves what it runs with, and
+ * the daily top-up assigns them on the occurrences it creates.
+ *
  * D30: a run that finds no events keeps the dialog open with a warning saying what it
  * looked for, and — where the viewer may create the ministry's events — a button to the
  * New recurring event dialog; a run whose occurrences all existed is an info toast.
@@ -37,6 +41,7 @@ import {
   listClasses,
   listEventSeries,
   listEventTypes,
+  listPositionEligiblePeople,
   listScheduleEligiblePeople,
   listScheduleRequirements,
   notifyError,
@@ -58,6 +63,7 @@ import {
   mountDefaultFillPickers,
   readDefaultFills,
   renderDefaultFillRow,
+  savedDefaultOf,
   wireDefaultFillRows,
 } from "./default-fill";
 import { offsetSummary, readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
@@ -142,6 +148,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   let classModeOption: HTMLOptionElement | null = null;
   /** The upcoming count of every title the Event picker offers, for its warning (D30). */
   let seriesCounts = new Map<string, number>();
+  /** Who may be each position's default (D32), fetched once per position per open. */
+  let eligibleByPosition = new Map<number, VolunteerEligiblePerson[]>();
+  let needsSequence = 0;
 
   function render(rows: VolunteerSchedule[]): void {
     const body = byId("volunteerSchedulesTable")?.querySelector("tbody");
@@ -539,19 +548,39 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       }));
   }
 
+  async function loadEligible(positions: VolunteerCandidatePosition[]): Promise<void> {
+    await Promise.all(
+      positions
+        .filter((position) => !eligibleByPosition.has(position.id))
+        .map(async (position) => {
+          try {
+            eligibleByPosition.set(position.id, (await listPositionEligiblePeople(position.id)).people);
+          } catch {
+            eligibleByPosition.set(position.id, []);
+          }
+        }),
+    );
+  }
+
   /** Re-draw the needs rows for whichever team the form currently names. */
-  function renderNeeds(): void {
+  async function renderNeeds(): Promise<void> {
     const container = byId("schedule-form-needs");
     if (!container) {
       return;
     }
 
     const teamId = Number(byId<HTMLSelectElement>("schedule-form-team")?.value ?? 0);
+    const positions = candidatePositionsForTeam(teamId);
+    const sequence = ++needsSequence;
+    await loadEligible(positions);
+    if (sequence !== needsSequence) {
+      return;
+    }
 
     // A new schedule starts with every position checked — "I just made a team with one
     // position, of course I need one of them" — while an edit reflects the rows that exist,
     // so a position with no requirement shows unchecked, which is what its absence means.
-    renderStaffingNeeds(container, candidatePositionsForTeam(teamId), scheduleRequirements, editingScheduleId === 0);
+    renderStaffingNeeds(container, positions, scheduleRequirements, editingScheduleId === 0, eligibleByPosition);
   }
 
   function openModal(schedule?: VolunteerSchedule): void {
@@ -562,6 +591,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     // Refetched on every open: a class's meeting count changes as events are added (D30).
     classes = null;
     seriesCounts = new Map();
+    eligibleByPosition = new Map();
     show(byId("schedule-form-title-warning"), false);
 
     // The schedule's stored plan, fetched alongside the event types so the modal opens
@@ -578,7 +608,10 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
               scheduleRequirements = [];
             });
 
-    void Promise.all([loadEventTypes(), loadClasses(), requirements]).then(() => {
+    const firstTeamId = schedule?.teamId ?? options.teams()[0]?.id ?? 0;
+    const eligible = loadEligible(candidatePositionsForTeam(firstTeamId));
+
+    void Promise.all([loadEventTypes(), loadClasses(), requirements, eligible]).then(async () => {
       fillSelects(schedule);
       syncClassMode(schedule);
       renderOffsetFields("schedule-form");
@@ -616,7 +649,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       syncMode();
       applyTeamClassDefault();
       void fillEventSeries(schedule?.titleFilter ?? "");
-      renderNeeds();
+      await renderNeeds();
       modal("scheduleModal")?.show();
     });
   }
@@ -759,7 +792,17 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
           } catch {
             people = [];
           }
-          html.push(renderDefaultFillRow("generate-default", row.positionId, name, row.minCount, row.maxCount, people));
+          html.push(
+            renderDefaultFillRow(
+              "generate-default",
+              row.positionId,
+              name,
+              row.minCount,
+              row.maxCount,
+              people,
+              savedDefaultOf(row),
+            ),
+          );
         }
 
         if (generatingScheduleId !== schedule.id) {
@@ -815,6 +858,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     }
 
     const defaults = readDefaultFills(byId("generate-form-rows"));
+    const anyDefault = defaults.some((row) => row.personId !== null);
     generateOccurrences(scheduleId, { defaults })
       .then((result) => {
         // Nothing to anchor to is not a success: the dialog stays open and says why (D30).
@@ -834,8 +878,10 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
               through: shortDate(result.through),
             }),
           ];
-          if (defaults.length > 0) {
-            parts.push(i18next.t("Default volunteers are only assigned on new occurrences."));
+          if (anyDefault) {
+            parts.push(
+              i18next.t("The default volunteers are saved on the schedule and go on the occurrences made from now on."),
+            );
           }
           notifyInfo(parts.join(" "));
 
@@ -853,6 +899,11 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         }
         if (result.skipped > 0) {
           parts.push(i18next.t("{{count}} could not be assigned", { count: result.skipped }));
+        }
+        if (result.unqualified > 0) {
+          parts.push(
+            i18next.t("{{count}} left open because the default is no longer qualified", { count: result.unqualified }),
+          );
         }
         notifySuccess(parts.join(". "));
         options.invalidateOccurrences();
@@ -1070,7 +1121,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     // team. Re-rendering discards whatever was typed for the old team's positions, which is
     // correct: those rows are no longer part of this schedule's plan.
     byId("schedule-form-team")?.addEventListener("change", () => {
-      renderNeeds();
+      void renderNeeds();
       if (applyTeamClassDefault()) {
         void fillEventSeries("");
       }

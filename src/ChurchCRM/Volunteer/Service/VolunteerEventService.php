@@ -114,7 +114,7 @@ class VolunteerEventService
      *
      * @param array<string, mixed> $input the request body (design §3.3.2)
      *
-     * @return array{events: Event[], schedule: ?VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int}
+     * @return array{events: Event[], schedule: ?VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int, unqualified: int}
      *
      * @throws VolunteerException        403 for a caller who is not a coordinator of the ministry or
      *                                   a refused calendar, 400 for a malformed request
@@ -142,7 +142,7 @@ class VolunteerEventService
                 : $this->createSeries($plan, $ministryId);
 
             $staffed = $staff === null
-                ? ['schedule' => null, 'reusedSchedule' => false, 'occurrenceIds' => [], 'assigned' => 0, 'skipped' => 0]
+                ? ['schedule' => null, 'reusedSchedule' => false, 'occurrenceIds' => [], 'assigned' => 0, 'skipped' => 0, 'unqualified' => 0]
                 : $this->staffNewEvents($ministry, $plan, $staff, $events, $actor);
 
             $con->commit();
@@ -453,7 +453,7 @@ class VolunteerEventService
      * @param array{fields: array<string, mixed>, defaults: array<int, mixed>} $staff
      * @param Event[]                                                      $events
      *
-     * @return array{schedule: VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int}
+     * @return array{schedule: VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int, unqualified: int}
      */
     private function staffNewEvents(VolunteerMinistry $ministry, array $plan, array $staff, array $events, User $actor): array
     {
@@ -494,7 +494,7 @@ class VolunteerEventService
         }
 
         return ['schedule' => $schedule, 'reusedSchedule' => false, 'occurrenceIds' => $occurrenceIds]
-            + $this->assignNewOccurrences($schedule, $occurrenceIds, $staff['defaults'], $actor);
+            + $this->staffWithDefaults($schedule, $occurrenceIds, $staff['defaults'], $actor);
     }
 
     /**
@@ -528,12 +528,12 @@ class VolunteerEventService
      * widened to take them in — the first date moved back to the first new event, a last
      * date moved on to the last one, an open end left open — and it is generated through the
      * last new event. Its staffing needs and offsets stay as they are; the request's are not
-     * applied. The defaults go on the occurrences this run created.
+     * applied. The defaults are saved on it and go on the occurrences this run created.
      *
      * @param array<string, mixed> $plan
      * @param array<int, mixed>    $defaults
      *
-     * @return array{schedule: VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int}
+     * @return array{schedule: VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int, unqualified: int}
      *
      * @throws VolunteerException 400 for a single event that has already happened, as Staff this event refuses it
      */
@@ -567,20 +567,24 @@ class VolunteerEventService
         ]);
 
         return ['schedule' => $schedule, 'reusedSchedule' => true, 'occurrenceIds' => $result['createdIds']]
-            + $this->assignNewOccurrences($schedule, $result['createdIds'], $defaults, $actor);
+            + $this->staffWithDefaults($schedule, $result['createdIds'], $defaults, $actor);
     }
 
     /**
+     * D32: "Fill by default with" is saved on the schedule the events went to, and the
+     * schedule's saved defaults go on the occurrences this run created, as a Generate run
+     * assigns them.
+     *
      * @param int[]             $occurrenceIds
      * @param array<int, mixed> $defaults
      *
-     * @return array{assigned: int, skipped: int}
+     * @return array{assigned: int, skipped: int, unqualified: int}
      */
-    private function assignNewOccurrences(VolunteerSchedule $schedule, array $occurrenceIds, array $defaults, User $actor): array
+    private function staffWithDefaults(VolunteerSchedule $schedule, array $occurrenceIds, array $defaults, User $actor): array
     {
-        return $defaults === []
-            ? ['assigned' => 0, 'skipped' => 0]
-            : $this->assignments()->assignDefaults($schedule, $occurrenceIds, $defaults, $actor);
+        $this->schedules->saveDefaults($schedule, $defaults, $actor);
+
+        return $this->assignments()->assignScheduleDefaults($schedule, $occurrenceIds, $actor);
     }
 
     // ── The Calendar tab (D24) ─────────────────────────────────────────────

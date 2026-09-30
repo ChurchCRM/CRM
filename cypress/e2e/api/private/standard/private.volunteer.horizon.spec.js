@@ -306,8 +306,9 @@ describe("Volunteer v2 D31 — generation stops at the church-wide scheduling ho
         generate(schedule.id).its("through").should("eq", isoDate(14));
         setConfig(HORIZON, "0");
         api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 1);
-        // A blank the settings panel saved before it had loaded the value is the default, not 1.
-        setConfig(HORIZON, "");
+        // The config API refuses a blank (D32); one stored another way reads as the default, not 1.
+        cy.makePrivateAdminAPICall("POST", configUrl(HORIZON), { value: "" }, 400);
+        dbOk("UPDATE config_cfg SET cfg_value = '' WHERE cfg_name = ?", [HORIZON]);
         api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 8);
         setConfig(HORIZON, "99");
         api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 52);

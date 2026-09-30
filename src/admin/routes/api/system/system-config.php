@@ -47,6 +47,24 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
         return SlimUtils::renderJSON($response, ['value' => '']);
     }
 
+    // A settings panel saved before it had loaded its values sends blanks; for a number that
+    // ships with a value, a blank is never meant (a reminder lead time of blank reads as 0).
+    if ($configItem->getType() === 'number') {
+        $trimmed = trim((string) $value);
+        $blankAllowed = $trimmed === '' && (string) $configItem->getDefault() === '';
+        if (!$blankAllowed && !is_numeric($trimmed)) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                sprintf(gettext('%s must be a number'), $configName),
+                [],
+                400,
+                null,
+                $request
+            );
+        }
+        $value = $trimmed;
+    }
+
     // Sanitization is applied centrally in SystemConfig::setValue() — no duplicate call here.
     SystemConfig::setValue($configName, $value);
 

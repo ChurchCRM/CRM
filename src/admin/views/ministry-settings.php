@@ -22,7 +22,7 @@ use ChurchCRM\Utils\InputUtils;
 /** @var int $iMinHorizonWeeks */
 /** @var int $iMaxHorizonWeeks */
 /** @var array<int, array{value: string, label: string}> $aEventTypeChoices */
-/** @var array{ranAt: string, schedules: int, created: int, failed: int}|null $aLastTopUp */
+/** @var array{ranAt: string, schedules: int, created: int, failed: int, assigned: int, skipped: int, unqualified: int}|null $aLastTopUp */
 /** @var int $iFailedCount */
 /** @var int $iPendingCount */
 /** @var array<int, array{type: string, person: string, lastAttempt: string, error: string}> $aRecentFailures */
@@ -72,11 +72,33 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               )) ?></span>
             <?php endif; ?>
           </p>
+          <?php if ($aLastTopUp !== null && $aLastTopUp['assigned'] + $aLastTopUp['unqualified'] + $aLastTopUp['skipped'] > 0): ?>
+            <ul class="list-unstyled small ms-4 mb-2" id="ministry-topup-defaults">
+              <li id="ministry-topup-assigned"><?= InputUtils::escapeHTML(sprintf(
+                  ngettext('%d default volunteer assigned', '%d default volunteers assigned', $aLastTopUp['assigned']),
+                  $aLastTopUp['assigned']
+              )) ?></li>
+              <?php if ($aLastTopUp['unqualified'] > 0): ?>
+                <li class="text-warning" id="ministry-topup-unqualified">
+                  <i class="fa-solid fa-triangle-exclamation me-1" aria-hidden="true"></i><?= InputUtils::escapeHTML(sprintf(
+                      ngettext('%d default skipped: qualification revoked', '%d defaults skipped: qualification revoked', $aLastTopUp['unqualified']),
+                      $aLastTopUp['unqualified']
+                  )) ?>
+                </li>
+              <?php endif; ?>
+              <?php if ($aLastTopUp['skipped'] > 0): ?>
+                <li class="text-body-secondary" id="ministry-topup-skipped"><?= InputUtils::escapeHTML(sprintf(
+                    ngettext('%d default skipped for another reason (the occurrence is over, cancelled or full)', '%d defaults skipped for another reason (the occurrence is over, cancelled or full)', $aLastTopUp['skipped']),
+                    $aLastTopUp['skipped']
+                )) ?></li>
+              <?php endif; ?>
+            </ul>
+          <?php endif; ?>
           <p class="text-body-secondary small mb-2" id="ministry-topup-hint">
             <?= InputUtils::escapeHTML(sprintf(
                 ngettext(
-                    'Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead. Nobody is assigned and no email is sent.',
-                    'Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead. Nobody is assigned and no email is sent.',
+                    'Once a day every active schedule gets occurrences for the events it follows, up to %d week ahead, and each position\'s default volunteer is assigned on the new ones while they stay qualified.',
+                    'Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position\'s default volunteer is assigned on the new ones while they stay qualified.',
                     $iHorizonWeeks
                 ),
                 $iHorizonWeeks
