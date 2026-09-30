@@ -678,8 +678,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     const needs = byId("schedule-form-needs");
     const offsets = readOffsets("schedule-form");
     const invalid =
-      missingSource() ??
-      (typeof offsets === "string" ? offsets : needs === null ? null : validateStaffingNeeds(needs));
+      missingSource() ?? (typeof offsets === "string" ? offsets : needs === null ? null : validateStaffingNeeds(needs));
     if (invalid !== null) {
       showModalError("schedule", invalid, notifyError);
 
