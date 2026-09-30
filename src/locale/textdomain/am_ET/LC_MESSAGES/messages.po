@@ -18541,3 +18541,267 @@ msgstr "ለኢሜይል ደንበኛ በጣም ብዙ ተቀባዮች አሉ ({{
 msgid "{{minutes}} min left"
 msgstr "{{minutes}} ደቂቃ ቀርቷል"
 
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d የግብር ሰነድ ለቤተሰብ በተሳካ ሁኔታ በኢሜል ተላልፏል።"
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d የለገና መግለጫ"
+
+#: 
+msgid "All classifications"
+msgstr "ሁሉም ምድቦች"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "እንደ አስተዳዳሪ እባክዎ እንዲሁም ይገምግሙ"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "በቀልደ ውስጥ በሰዎች ልደት በተሳካ ሁኔታ በ ሌላ የተወለደ ሰው ተመሪት ኢሜል ይላኩ።"
+
+#: 
+msgid "Birthday Emails"
+msgstr "የተወለደ ሰው ኢሜሎች"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "ልደቶች፣ ዓመታዊ አደራሮች፣ በስ volunteers ታች እና ሌሎች ሰዎች ዝርዝሮች ከምድብ ማጣሪያ ጋር"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "ይህን ሪፖርት ለማስኬድ %s ይምረጡ።"
+
+#: 
+msgid "Choose events"
+msgstr "ክስተቶች ይምረጡ"
+
+#: 
+msgid "Choose..."
+msgstr "ይምረጡ..."
+
+#: 
+msgid "Church Logo"
+msgstr "የቤተክርስቲያን ሎጎ"
+
+#: 
+msgid "Columns per Page"
+msgstr "በጠፍጣፊ ስቱ"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "ውድ %s ቤተሰብ,\n"
+"\n"
+"እባክዎ ከ%s የተወሰደ %d የለገና መግለጫ በዚህ ኢሜል ውስጥ ተያያዥ ይፈልጉ።\n"
+"\n"
+"ቢሆንም ፍርሒ ካላችሁ እባክዎን ወደ ቤተክርስቲያን ቢሮ ያገኙን።\n"
+"\n"
+"ለምግባርዎ 感謝します።"
+
+#: 
+msgid "Download CSV"
+msgstr "CSV አውርድ"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "%d የግብር ሰነድ ኢሜል"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "የፋይናንስ ሞጁል እና ጎን አሞሌ ምግባር ምርጥ ወይም ካሰቅል።"
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "ሳቅላ ሞጁል ምርጥ ወይም ካሰቅል።"
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "የቤተክርስቲያን ሎጎ ማስወገድ ሳቅሏል"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "የቤተክርስቲያን ሎጎ መላክ ሳቅሏል"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "ለኢሜል ቴምፕሌቶች ተጠቀማወቁ ሎጎ URL፣ በቤተክርስቲያን መረጃ ገጽ ላይ ምንም የቤተክርስቲያን ሎጎ ሲሰቅል ብቻ። በተዛማች አፕሊኬሽን ገጽታ ይህንን ቅንብር ችላ ይላሉ እና ሁልጊዜ የወደቀ ሎጎ ወይም ነባር ChurchCRM ሎጎ ይጠቀሙ። የሰፈነ http(s) URL መሆን አለበት። በኢሜል ወገንት አባላት ውስጥ ምርጥ አቀናበር ለ, ሰፊ ባነር ምስል በተለይ 3.5:1 ገጽታ ሬሾ (ለምሳሌ 350×100 px), PNG ወይም JPG, በHTTPS ላይ ሊያገለግል ይቻላል። ነባር ChurchCRM ሎጎ ለመቀለብ ባዶ ሆን ወይም ክ valid ገልገሳውን ገቢ ያስገቡ።"
+
+#: 
+msgid "Finance Module"
+msgstr "የፋይናንስ ሞጁል"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "ክስተትን ያልተሳተፉ ሰዎችን ያግኙ"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "ሁለት ውስን ዕድል ኮዶች ተቆራኝተው በስ volunteers ታች ያግኙ"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "የመጀመሪያ በስ volunteers ታች ዕድል"
+
+#: 
+msgid "Folded Booklet"
+msgstr "ታጠፈ የመጽሐፍ"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "ሳቅላ ሞጁል"
+
+#: 
+msgid "Giving History"
+msgstr "የለገና ታሪክ"
+
+#: 
+msgid "Last Gift"
+msgstr "የመጨረሻ ሁለት"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "ሁሉም ምድቦች ባዶ ሆኑ።"
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "ከ ቤተሰብ ገፅ እንደገና ያሳውቁ ከፍተኛ ቁጥር የ ግብር ዘመን ሰነዶች (0 = ገደብ አይደለም)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "ከ ቤተሰብ ታይተው ከፍተኛ ግብር ዘመናት"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "ጸሀፍ አደራሮች"
+
+#: 
+msgid "Missing People"
+msgstr "ጠፍቷል ሰዎች"
+
+#: 
+msgid "No giving history found."
+msgstr "ምንም የለገና ታሪክ አልተገኘም።"
+
+#: 
+msgid "No people match these filters."
+msgstr "ምንም ሰዎች እነዚህ ማጣሪያዎች ተጣጥለዋል አልደለም."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "ስትት ከ አንድ እንደገና ገጽ, ሙል."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "ዊ http እና https ሕቅ ብቻ ፍቅድ."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF ወይም WebP. ሰፊ ባነር በግምት 3.5:1 (ለምሳሌ 700x200) ምርጥ ይሰራል; ግልፅ PNG ምርጫ ።"
+
+#: 
+msgid "Page Layout"
+msgstr "ገጽ ዕቅድ"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "አንድ በተወሰነ ወር ውስጥ ተጋብዘው ሰዎች"
+
+#: 
+msgid "Pledged"
+msgstr "ቃል ገብተሪያ"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "%d የግብር ሰነድ ሞተር"
+
+#: 
+msgid "Queries"
+msgstr "ጥያቄዎች"
+
+#: 
+msgid "Recent Friends"
+msgstr "ወላጅ ወገኖች"
+
+#: 
+msgid "Report not found"
+msgstr "ሪፖርት አልተገኘም"
+
+#: 
+msgid "Run Report"
+msgstr "ሪፖርት ማስኬድ"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "ሁለተኛ በስ volunteers ታች ዕድል"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "በጎን ዘሪ, በ ግብዓት ገጽ ላይ እና በ ኢሜሎች ውስጥ ሊሰጥ. ሎጎ መላክ ChurchCRM ማርክ በ ሁሉም ስፍራ መቀየር."
+
+#: 
+msgid "Single Pages"
+msgstr "አንድ ቀሎ ገጾች"
+
+#: 
+msgid "Tax Documents"
+msgstr "የግብር ሰነዶች"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "የግብር ሰነድ ኢሜል ምላሽ ይስጥ ሳቅሏል። እባክዎ ኢሜል አገልግሎት ቅንብር ይለካ።"
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "ሁለት ግማሽ-ዓዝ ገጾች በ ዩነስኮ ላይ በ አንድ ሳር ሉሰ ምሊት በ ሳቅላ ዝርዝር.ሞተር-በ ሁለት ገጽታ ከ \"ፍ በ ሸ ጠርዝ\", ከዚያ የ ዛ ክምር ውስጥ በግማሽ fold. አምዶች በግማሽ ገጽ ለእያንዳንዱ ይቆራሙ."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "የግብር ሰነድ ኢሜል መስጠት ተችሏል: ምንም ክፍያ ሂሳብ ለ ደርሶ ዘመን አልተገኘም."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "የግብር ሰነድ ኢሜል መስጠት ተችሏል: ይህ ቤተሰብ በ ፋይል ላይ ምንም ኢሜል አድራሻ ስ."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "OpenLP አገልግሎት ኩባንያ ስም ጠና ተችሏል። ስ ያ ካሊ ና ኔ እንጋገር ግንኙነት."
+
+#: 
+msgid "Upload"
+msgstr "መላክ"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "ነባር ChurchCRM ሎጎ ማስተቀማት"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "ሙሉ ቤተሰብ ለገና ተመልከት"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "በስ volunteers ታች ዕድል"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "ሁለት ዕድለ ለ በስ volunteers ታች"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD ክፍያ"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "በ ይህ ተስኖ አጋዥ ጊዜ አስህተት ለ, አውርድ ና አሟሙ ተዛማች ዝርዝር ፋይል ወደ ነ GitHub ጉዳይ — ለ ጊዜ ይህ ሂሳብ ድስት ገጥሞ ጠይቅ እንደገና ጥያቄ."
+
+#: 
+msgid "system logs"
+msgstr "ስርዓት ዝርዝሮች"
+

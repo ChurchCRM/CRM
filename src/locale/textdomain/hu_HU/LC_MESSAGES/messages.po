@@ -18551,3 +18551,271 @@ msgstr "Túl sok címzett az e-mail klienshez ({{total}} > {{max}}). Használja 
 msgid "{{minutes}} min left"
 msgstr "{{minutes}} perc van hátra"
 
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d adóbevallási dokumentum sikeresen elküldve a családnak."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d adományi kimutatás"
+
+#: 
+msgid "All classifications"
+msgstr "Összes besorolás"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Adminisztrátorként kérjük, tekintse meg a következőket is:"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Születésnapi üdvözlő e-mail automatikus küldése embereknek születésnapjukon."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Születésnapi e-mailek"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Születésnapok, évfordulók, önkéntesek és egyéb emberek listája besorolás szűrővel"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Válassza a %s elemet a jelentés futtatásához."
+
+#: 
+msgid "Choose events"
+msgstr "Válassza az eseményeket"
+
+#: 
+msgid "Choose..."
+msgstr "Válasszon..."
+
+#: 
+msgid "Church Logo"
+msgstr "Templomi logó"
+
+#: 
+msgid "Columns per Page"
+msgstr "Oszlopok oldalanként"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Kedves %s család,\n"
+"\n"
+"Kérjük, keresse meg az Ön %d adományi kimutatását a %s dátumból ebben az e-mailben csatolva.\n"
+"\n"
+"Ha bármilyen kérdésे van, kérjük forduljon a templom irodájához.\n"
+"\n"
+"Köszönjük nagylelkűségéért."
+
+#: 
+msgid "Download CSV"
+msgstr "CSV letöltése"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "%d adóbevallási dokumentum elküldése"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "A Pénzügyi modul és az oldalsáv menü engedélyezése vagy letiltása."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Az Adománygyűjtő modul engedélyezése vagy letiltása."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "A templom logójának eltávolítása sikertelen"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "A templom logójának feltöltése sikertelen"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Tartalék logó URL e-mail sablonokhoz, csak akkor használatos, ha a Templomi információ oldalon nem lett feltöltve templom logó. Az alkalmazás saját oldalai figyelmen kívül hagyják ezt a beállítást, és mindig a feltöltött logót vagy az alapértelmezett ChurchCRM logót használják. Abszolút http(s) URL-nek kell lennie. Az e-mail kliensek közötti legjobb megjelenítéshez használjon kb. 3,5:1 képarányú széles banner képet (például 350×100 px), PNG vagy JPG formátumot, HTTPS-en keresztül kiszolgálva. Hagyja üresen vagy adjon meg érvénytelen értéket az alapértelmezett ChurchCRM logóra való visszatéréshez."
+
+#: 
+msgid "Finance Module"
+msgstr "Pénzügyi modul"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Keresse meg azokat az embereket, akik nem vettek részt egy eseményen"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Keresse meg azokat az önkénteseket, akik két meghatározott lehetőségkódnak felelnek meg"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Első önkéntes lehetőség"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Összehajtott füzet"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Adománygyűjtő modul"
+
+#: 
+msgid "Giving History"
+msgstr "Adományi előzmények"
+
+#: 
+msgid "Last Gift"
+msgstr "Utolsó adomány"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Hagyja üresen az összes besorolás esetén."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Az adóévhez kapcsolódó dokumentumok maximális száma családi profil szerint (0 = korlátlan)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Az adóévenek maximális száma családonként"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Tagságnak évfordulói"
+
+#: 
+msgid "Missing People"
+msgstr "Hiányzó emberek"
+
+#: 
+msgid "No giving history found."
+msgstr "Nincs adományi előzmény."
+
+#: 
+msgid "No people match these filters."
+msgstr "Nem találunk olyan embereket, akik megfelnének ezeknek a szűrőknek."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Egy könyvtároldalak egy lapon, álló tájolás."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Csak a http és https schemákat engedélyezzük."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF vagy WebP. Egy kb. 3,5:1 képarányú széles banner (például 700x200) működik a legjobban; transzparens PNG előnyben részesített."
+
+#: 
+msgid "Page Layout"
+msgstr "Oldal elrendezése"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Emberek, akik egy adott hónapban csatlakoztak"
+
+#: 
+msgid "Pledged"
+msgstr "Megígérve"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "%d adóbevallási dokumentum nyomtatása"
+
+#: 
+msgid "Queries"
+msgstr "Lekérdezések"
+
+#: 
+msgid "Recent Friends"
+msgstr "Közelmúltbeli barátok"
+
+#: 
+msgid "Report not found"
+msgstr "A jelentés nem található"
+
+#: 
+msgid "Run Report"
+msgstr "Jelentés futtatása"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Második önkéntes lehetőség"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Az oldalsávban, a bejelentkezési oldalon és az e-mailekben jelenik meg. A logó feltöltése helyettesíti a ChurchCRM márkákat mindenhol, ahol megjelenik."
+
+#: 
+msgid "Single Pages"
+msgstr "Egyes oldalak"
+
+#: 
+msgid "Tax Documents"
+msgstr "Adóbevallási dokumentumok"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Az adóbevallási dokumentum e-mail küldése sikertelen. Kérjük, ellenőrizze az e-mail kiszolgáló beállításait."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Két fél méretű lap egymás mellett minden fekvő lapon, füzet sorrendben. Kétoldalas nyomtatás \"billen a rövid szélén\", majd hajtsa be az rakást a felére. Az oszlopokat fél oldalanként számoljuk."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Nem lehet e-mailben elküldeni az adóbevallási dokumentumot: nem találtunk kifizetési adatokat erre az évre."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Nem lehet e-mailben elküldeni az adóbevallási dokumentumot: ennek a családnak nincs e-mail cím a fájlban."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Az OpenLP kiszolgáló gazdagépneve nem megoldható. Ellenőrizze a címet és a hálózati kapcsolatot."
+
+#: 
+msgid "Upload"
+msgstr "Feltöltés"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Az alapértelmezett ChurchCRM logó használata"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Teljes családi adományok megtekintése"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Önkéntes lehetőség"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Önkéntesek két lehetőséghez"
+
+#: 
+msgid "YTD"
+msgstr "Év kezdetétől"
+
+#: 
+msgid "YTD Paid"
+msgstr "Év kezdetétől kifizetett"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "hibákat keressen az adott időponti körül, és töltse le valamint csatolja a megfelelő naplófájlt a GitHub problémasorához – segít nekünk a probléma megoldásában anélkül, hogy további kérdéseket tennénk fel."
+
+#: 
+msgid "system logs"
+msgstr "rendszer naplók"
+
