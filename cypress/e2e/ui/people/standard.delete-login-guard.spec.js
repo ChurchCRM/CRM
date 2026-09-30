@@ -51,7 +51,7 @@ describe("Standard user - delete controls for people who have a login", () => {
     });
 
     it("disables deleting a family with its members when a member has a login", () => {
-        cy.visit("/SelectDelete.php?FamilyID=20");
+        cy.visit("/SelectDelete.php?FamilyID=2");
         cy.get("#deleteFamilyAndMembersBtn").should("be.disabled");
         cy.get("#deleteFamilyAndMembersBlockedReason").should("contain", "administrator");
         cy.get("#deleteFamilyOnlyBtn").should("be.enabled");
