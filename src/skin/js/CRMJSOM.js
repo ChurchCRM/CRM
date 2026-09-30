@@ -737,6 +737,14 @@ window.CRM.dashboard = {
     options = options || {};
     const root = window.CRM.root;
     return window.CRM.buildActionMenu([
+      options.needsReview && {
+        type: "button",
+        className: "approve-review",
+        icon: "fa-solid fa-check",
+        label: i18next.t("Approve"),
+        data: { "entity-type": "person", "entity-id": personId },
+      },
+      options.needsReview && { type: "divider" },
       {
         type: "link",
         href: `${root}/people/view/${personId}`,
@@ -782,6 +790,14 @@ window.CRM.dashboard = {
     options = options || {};
     const root = window.CRM.root;
     return window.CRM.buildActionMenu([
+      options.needsReview && {
+        type: "button",
+        className: "approve-review",
+        icon: "fa-solid fa-check",
+        label: i18next.t("Approve"),
+        data: { "entity-type": "family", "entity-id": familyId },
+      },
+      options.needsReview && { type: "divider" },
       {
         type: "link",
         href: `${root}/people/family/${familyId}`,
