@@ -453,4 +453,30 @@ describe("Kiosk Device Endpoint - Acceptance Enforcement", () => {
             expect(response.status).to.not.equal(500);
         });
     });
+
+    it("unaccepted kiosk is denied the guardian photo endpoint", () => {
+        cy.setupAdminSession();
+        cy.request({ method: "POST", url: "/kiosk/api/allowRegistration" });
+        cy.clearCookies();
+        cy.visit("/kiosk/", { failOnStatusCode: false });
+
+        cy.request({
+            method: "GET",
+            url: "/kiosk/device/activeClassMember/1/family/2/photo",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.equal(403);
+        });
+    });
+
+    it("request without a kiosk cookie is denied the guardian photo endpoint", () => {
+        cy.clearCookies();
+        cy.request({
+            method: "GET",
+            url: "/kiosk/device/activeClassMember/1/family/2/photo",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.be.oneOf([401, 403]);
+        });
+    });
 });

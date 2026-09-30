@@ -7,11 +7,11 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Plugin\PluginManager;
-use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -379,50 +379,30 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
             $attendByPersonId[(int) $attendRecord->getPersonId()] = $attendRecord;
         }
 
-        // Cache checker Person objects keyed by CheckinId to avoid re-fetching
-        // the same guardian who checked in multiple children.
-        /** @var array<int, array{Id:int, FirstName:string, LastName:string, hasPhoto:bool}|null> $checkerCache */
-        $checkerCache = [];
+        $checkerIds = [];
+        foreach ($attendByPersonId as $attend) {
+            $checkinId = (int) $attend->getCheckinId();
+            if ($checkinId > 0) {
+                $checkerIds[$checkinId] = $checkinId;
+            }
+        }
+
+        /** @var array<int, array{Id:int, FirstName:string, LastName:string, hasPhoto:bool}> $checkerData */
+        $checkerData = [];
+        if ($checkerIds !== []) {
+            foreach (PersonQuery::create()->filterById($checkerIds, Criteria::IN)->find() as $checker) {
+                $checkerData[(int) $checker->getId()] = [
+                    'Id'        => (int) $checker->getId(),
+                    'FirstName' => $checker->getFirstName(),
+                    'LastName'  => $checker->getLastName(),
+                    'hasPhoto'  => (new Photo('Person', $checker->getId()))->hasUploadedPhoto(),
+                ];
+            }
+        }
 
         foreach ($peopleData as &$personEntry) {
-            $personEntry['checkedInBy'] = null;
-
-            if ((int) $personEntry['status'] !== 1) {
-                // Not currently checked in — no checker to show.
-                continue;
-            }
-
-            $attendRecord = $attendByPersonId[$personEntry['Id']] ?? null;
-
-            if ($attendRecord === null) {
-                continue;
-            }
-
-            $checkinId = $attendRecord->getCheckinId();
-            if ($checkinId === null || $checkinId <= 0) {
-                continue;
-            }
-
-            if (array_key_exists($checkinId, $checkerCache)) {
-                $personEntry['checkedInBy'] = $checkerCache[$checkinId];
-                continue;
-            }
-
-            $checker = PersonQuery::create()->findOneById($checkinId);
-            if ($checker === null) {
-                $checkerCache[$checkinId] = null;
-                continue;
-            }
-
-            $checkerPhoto = new Photo('Person', $checker->getId());
-            $checkerData = [
-                'Id'        => (int) $checker->getId(),
-                'FirstName' => $checker->getFirstName(),
-                'LastName'  => $checker->getLastName(),
-                'hasPhoto'  => $checkerPhoto->hasUploadedPhoto(),
-            ];
-            $checkerCache[$checkinId] = $checkerData;
-            $personEntry['checkedInBy'] = $checkerData;
+            $attendRecord = (int) $personEntry['status'] === 1 ? ($attendByPersonId[$personEntry['Id']] ?? null) : null;
+            $personEntry['checkedInBy'] = $attendRecord !== null ? ($checkerData[(int) $attendRecord->getCheckinId()] ?? null) : null;
         }
         unset($personEntry); // break the reference from the foreach
 
