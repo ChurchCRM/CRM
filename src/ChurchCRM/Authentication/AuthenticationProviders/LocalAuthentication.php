@@ -21,6 +21,7 @@ class LocalAuthentication implements IAuthenticationProvider
 {
     private ?User $currentUser = null;
     private ?bool $bPendingTwoFactorAuth = null;
+    private bool $authenticated = false;
     private ?int $tLastOperationTimestamp = null;
 
     public function __serialize(): array
@@ -29,6 +30,7 @@ class LocalAuthentication implements IAuthenticationProvider
         return [
             'currentUser' => $this->currentUser,
             'bPendingTwoFactorAuth' => $this->bPendingTwoFactorAuth,
+            'authenticated' => $this->authenticated,
             'tLastOperationTimestamp' => $this->tLastOperationTimestamp,
         ];
     }
@@ -38,6 +40,7 @@ class LocalAuthentication implements IAuthenticationProvider
         // Restore the properties from serialized data
         $this->currentUser = $data['currentUser'] ?? null;
         $this->bPendingTwoFactorAuth = $data['bPendingTwoFactorAuth'] ?? null;
+        $this->authenticated = $data['authenticated'] ?? false;
         $this->tLastOperationTimestamp = $data['tLastOperationTimestamp'] ?? null;
     }
 
@@ -78,6 +81,8 @@ class LocalAuthentication implements IAuthenticationProvider
             }
             $this->currentUser = null;
         }
+        $this->authenticated = false;
+        $this->bPendingTwoFactorAuth = false;
     }
 
     private function prepareSuccessfulLoginOperations(): void
@@ -87,6 +92,8 @@ class LocalAuthentication implements IAuthenticationProvider
         if (session_status() === PHP_SESSION_ACTIVE) {
             session_regenerate_id(true);
         }
+
+        $this->authenticated = true;
 
         // Set the LastLogin and Increment the LoginCount
         $date = new \DateTimeImmutable('now', DateTimeUtils::getConfiguredTimezone());
@@ -121,51 +128,58 @@ class LocalAuthentication implements IAuthenticationProvider
         $logCtx = ['username' => $AuthenticationRequest->username];
         if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
             LoggerUtils::getAuthLogger()->debug('Processing local login', $logCtx);
-            // Get the information for the selected user
-            $this->currentUser = UserQuery::create()->findOneByUserName($AuthenticationRequest->username);
-            if ($this->currentUser === null) {
+            // Only a completed login may leave a user on the provider. A failed or
+            // pending attempt must not, or validateUserSessionIsActive() could treat
+            // the half-authenticated session as a logged-in one.
+            $this->currentUser = null;
+            $this->authenticated = false;
+            $this->bPendingTwoFactorAuth = false;
+            $user = UserQuery::create()->findOneByUserName($AuthenticationRequest->username);
+            if ($user === null) {
                 // Set the error text
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
-            } elseif ($this->currentUser->isLocked()) {
+            } elseif ($user->isLocked()) {
                 // Block the login if a maximum login failure count has been reached
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
                 LoggerUtils::getAuthLogger()->warning('Authentication attempt for locked account', $logCtx);
-            } elseif (!$this->currentUser->isPasswordValid($AuthenticationRequest->password)) {
+            } elseif (!$user->isPasswordValid($AuthenticationRequest->password)) {
                 // Does the password match?
 
                 // Increment the FailedLogins
-                $this->currentUser->setFailedLogins($this->currentUser->getFailedLogins() + 1);
-                $this->currentUser->save();
-                if (!empty($this->currentUser->getEmail()) && $this->currentUser->isLocked()) {
+                $user->setFailedLogins($user->getFailedLogins() + 1);
+                $user->save();
+                if (!empty($user->getEmail()) && $user->isLocked()) {
                     LoggerUtils::getAuthLogger()->warning('Too many failed logins. The account has been locked', $logCtx);
-                    $lockedEmail = new LockedEmail($this->currentUser);
+                    $lockedEmail = new LockedEmail($user);
                     $lockedEmail->send();
                 }
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
                 LoggerUtils::getAuthLogger()->warning('Invalid login attempt', $logCtx);
-            } elseif (($blockedReason = $this->currentUser->getSignInBlockedReason()) !== null) {
+            } elseif (($blockedReason = $user->getSignInBlockedReason()) !== null) {
                 LoggerUtils::getAuthLogger()->warning('Login refused: account cannot sign in', $logCtx + ['reason' => $blockedReason]);
-                $this->currentUser = null;
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
-            } elseif ($this->currentUser->is2FactorAuthEnabled()) {
+            } elseif ($user->is2FactorAuthEnabled()) {
                 // User has enrolled in 2FA — redirect to verification step
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
+                $this->currentUser = $user;
                 $this->bPendingTwoFactorAuth = true;
                 LoggerUtils::getAuthLogger()->info('User partially authenticated, pending 2FA', $logCtx);
-            } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled()) {
+            } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled()) {
                 // Mandate is active but user has not enrolled. Stamp the grace period start (if not already
                 // set) as a side-effect of getTwoFactorGraceStatus(), then let the user log in.
                 // validateUserSessionIsActive() handles blocking once the window has expired.
+                $this->currentUser = $user;
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
                 $this->currentUser->getTwoFactorGraceStatus(); // side-effect: lazy-stamps start timestamp
                 LoggerUtils::getAuthLogger()->info('User logged in under 2FA mandate; grace period check applied', $logCtx);
             } else {
+                $this->currentUser = $user;
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
                 LoggerUtils::getAuthLogger()->info('User successfully logged in without 2FA', $logCtx);
@@ -238,8 +252,10 @@ class LocalAuthentication implements IAuthenticationProvider
     {
         $authenticationResult = new AuthenticationResult();
 
-        // First check to see if a `user` key exists on the session.
-        if (!$this->currentUser instanceof User) {
+        // A session is only authenticated once a login fully completed. Holding a
+        // user is not enough: a failed password or a pending 2FA step leaves the
+        // provider in the session too.
+        if (!$this->authenticated || !$this->currentUser instanceof User) {
             $authenticationResult->isAuthenticated = false;
             LoggerUtils::getAuthLogger()->debug('No active user session.');
 
