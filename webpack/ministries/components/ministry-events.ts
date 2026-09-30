@@ -48,6 +48,8 @@ import {
   readDefaultFills,
   renderDefaultFillRow,
   restoreDefaultFills,
+  type SavedDefault,
+  savedDefaultOf,
   wireDefaultFillRows,
 } from "./default-fill";
 import { readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
@@ -611,7 +613,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
 
   /** The needs "Fill by default with" offers: the schedule's own when the events go to one, else the editor's. */
   async function plannedNeeds(): Promise<
-    Array<{ positionId: number; name: string; minCount: number; maxCount: number | null }>
+    Array<{ positionId: number; name: string; minCount: number; maxCount: number | null; saved: SavedDefault | null }>
   > {
     const names = new Map(teamPositions().map((position) => [position.id, position.name]));
     const scheduleId = reuseScheduleId;
@@ -629,6 +631,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
         name: row.positionName ?? names.get(row.positionId) ?? "",
         minCount: row.minCount,
         maxCount: row.maxCount,
+        saved: savedDefaultOf(row),
       }));
     }
 
@@ -641,6 +644,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
           name: names.get(need.positionId) ?? "",
           minCount: need.minCount,
           maxCount: need.maxCount ?? null,
+          saved: null,
         }));
   }
 
@@ -670,6 +674,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
           need.minCount,
           need.maxCount,
           eligible.get(need.positionId) ?? [],
+          need.saved,
         ),
       );
     }
@@ -954,6 +959,11 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
         }
         if ((result.assigned ?? 0) > 0) {
           parts.push(tText("Volunteers assigned: {{total}}", { total: result.assigned }));
+        }
+        if ((result.unqualified ?? 0) > 0) {
+          parts.push(
+            i18next.t("{{count}} left open because the default is no longer qualified", { count: result.unqualified }),
+          );
         }
         if (!result.schedule && prefillScheduleName !== null) {
           parts.push(i18next.t('Generate occurrences on "{{name}}" to staff them', { name: prefillScheduleName }));

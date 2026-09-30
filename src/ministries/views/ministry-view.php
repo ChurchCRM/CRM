@@ -1075,7 +1075,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="modal-body">
         <p class="text-body-secondary" id="generate-form-intro"></p>
         <p class="text-body-secondary">
-          <?= gettext('Choose who fills each position by default. They are assigned on every occurrence made now, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week.') ?>
+          <?= gettext('Choose who fills each position by default. The choice is saved on the schedule: they are assigned on every occurrence made now and on those the daily top-up makes later, while they stay qualified, and asked to respond unless you set them as accepted. Leave a position open to assign it week by week.') ?>
         </p>
         <div class="volunteer-loading text-center py-3" id="generate-form-loading">
           <span class="spinner-border spinner-border-sm text-secondary me-2" role="status" aria-hidden="true"></span>
@@ -1184,7 +1184,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="mb-2">
           <h6 class="mb-1"><i class="fa-solid fa-list-check me-2"></i><?= gettext('Staffing needs') ?></h6>
           <div class="form-text" id="schedule-form-needs-hint">
-            <?= gettext('How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses.') ?>
+            <?= gettext('How many volunteers each occurrence of this schedule needs. Uncheck a position this schedule never uses. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist.') ?>
           </div>
         </div>
         <div id="schedule-form-needs"></div>

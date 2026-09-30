@@ -25,10 +25,12 @@
 import {
   positionLabel,
   type VolunteerCandidatePosition,
+  type VolunteerEligiblePerson,
   type VolunteerRequirementInput,
   type VolunteerRequirementRow,
 } from "./api";
-import { tText } from "./components/ui";
+import { defaultCandidateOptions, savedDefaultOf } from "./components/default-fill";
+import { show, tText } from "./components/ui";
 
 /** Hard ceiling on a count, matching the `number` inputs' own `max`. */
 const MAX_COUNT = 99;
@@ -49,12 +51,16 @@ function escapeAttribute(value: string): string {
  * of course I need one of them" case the defect report was written about. On an edit, a
  * position with no requirement row renders unchecked, because that is exactly what the
  * absence of the row means.
+ *
+ * `eligible` adds the schedule's default volunteer to every row (D32): who may fill the
+ * position, per position. Only a schedule's plan has defaults; an occurrence's does not.
  */
 export function renderStaffingNeeds(
   container: HTMLElement,
   positions: VolunteerCandidatePosition[],
   current: VolunteerRequirementRow[],
   checkByDefault: boolean,
+  eligible: Map<number, VolunteerEligiblePerson[]> | null = null,
 ): void {
   if (positions.length === 0) {
     container.innerHTML = `
@@ -117,12 +123,48 @@ export function renderStaffingNeeds(
                    aria-label="${escapeAttribute(tText("Maximum allowed for {{position}}", { position: label(position) }))}"
                    ${checked ? "" : "disabled"}>
           </div>
+          ${eligible === null ? "" : defaultCells(rowId, label(position), eligible.get(position.id) ?? [], existing, checked)}
         </div>`;
     })
     .join("");
 
   wire(container);
   refreshWarning(container);
+}
+
+/** The row's default volunteer (D32): a picker with "None", and "Set as Accepted" once somebody is chosen. */
+function defaultCells(
+  rowId: string,
+  positionName: string,
+  people: VolunteerEligiblePerson[],
+  existing: VolunteerRequirementRow | undefined,
+  checked: boolean,
+): string {
+  const saved = savedDefaultOf(existing);
+
+  return `
+          <div class="col-12 col-sm-8">
+            <label class="form-label small mb-1" for="${rowId}-default">${escapeHtml(i18next.t("Default volunteer"))}</label>
+            <select class="form-select form-select-sm volunteer-need-default" id="${rowId}-default"
+                    aria-label="${escapeAttribute(tText("Default volunteer for {{position}}", { position: positionName }))}"
+                    ${checked ? "" : "disabled"}>
+              ${defaultCandidateOptions(people, i18next.t("None"), saved)}
+            </select>
+            ${
+              saved !== null && !saved.qualified
+                ? `<div class="form-hint text-warning volunteer-need-default-unqualified">${escapeHtml(
+                    i18next.t("No longer qualified: this position is left open on new occurrences."),
+                  )}</div>`
+                : ""
+            }
+          </div>
+          <div class="col-12 col-sm-4 pb-sm-1">
+            <label class="form-check mb-0 volunteer-need-default-accepted-wrap${saved === null ? " d-none" : ""}">
+              <input class="form-check-input volunteer-need-default-accepted" type="checkbox"
+                     ${saved?.accepted ? "checked" : ""} ${checked ? "" : "disabled"}>
+              <span class="form-check-label">${escapeHtml(i18next.t("Set as Accepted"))}</span>
+            </label>
+          </div>`;
 }
 
 /**
@@ -143,10 +185,21 @@ function wire(container: HTMLElement): void {
     if (target?.classList.contains("volunteer-need-check")) {
       const row = target.closest<HTMLElement>(".volunteer-need-row");
       const checked = (target as HTMLInputElement).checked;
-      for (const input of row?.querySelectorAll<HTMLInputElement>(".volunteer-need-min, .volunteer-need-max") ?? []) {
+      for (const input of row?.querySelectorAll<HTMLInputElement | HTMLSelectElement>(
+        ".volunteer-need-min, .volunteer-need-max, .volunteer-need-default, .volunteer-need-default-accepted",
+      ) ?? []) {
         input.disabled = !checked;
       }
       refreshWarning(container);
+    }
+    if (target?.classList.contains("volunteer-need-default")) {
+      const row = target.closest<HTMLElement>(".volunteer-need-row");
+      const chosen = (target as HTMLSelectElement).value !== "";
+      show(row?.querySelector<HTMLElement>(".volunteer-need-default-accepted-wrap") ?? null, chosen);
+      const accepted = row?.querySelector<HTMLInputElement>(".volunteer-need-default-accepted");
+      if (accepted && !chosen) {
+        accepted.checked = false;
+      }
     }
   });
 
@@ -181,12 +234,21 @@ export function readStaffingNeeds(container: HTMLElement): VolunteerRequirementI
 
     const min = numberIn(row, ".volunteer-need-min");
     const max = numberIn(row, ".volunteer-need-max");
-
-    rows.push({
+    const need: VolunteerRequirementInput = {
       positionId: Number(row.dataset.positionId ?? 0),
       minCount: min,
       maxCount: max,
-    });
+    };
+
+    const picker = row.querySelector<HTMLSelectElement>(".volunteer-need-default");
+    if (picker) {
+      const personId = Number(picker.value || 0);
+      need.defaultPersonId = personId > 0 ? personId : null;
+      need.defaultAccepted =
+        personId > 0 && (row.querySelector<HTMLInputElement>(".volunteer-need-default-accepted")?.checked ?? false);
+    }
+
+    rows.push(need);
   }
 
   return rows;
