@@ -48,7 +48,7 @@ use Slim\Routing\RouteCollectorProxy;
  *     @OA\Response(response=400, description="Missing or unsupported image data"),
  *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Admin role required"),
- *     @OA\Response(response=413, description="Image exceeds the server upload limit or the decode pixel budget")
+ *     @OA\Response(response=413, description="Image exceeds the server upload limit or the source image size limit")
  * )
  * @OA\Delete(
  *     path="/admin/api/system/church-logo",
