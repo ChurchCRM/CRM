@@ -123,7 +123,7 @@ $featureGroups = [
             </div>
         </div>
 
-        <form id="featureTogglesForm">
+        <div id="featureTogglesContainer">
             <?php foreach ($featureGroups as $groupName => $features): ?>
                 <div class="card mb-3">
                     <div class="card-header">
@@ -134,18 +134,20 @@ $featureGroups = [
                             <tbody>
                                 <?php foreach ($features as $settingKey => $settingInfo): ?>
                                     <?php $isEnabled = SystemConfig::getBooleanValue($settingKey); ?>
-                                    <tr>
+                                    <tr data-setting="<?= $settingKey ?>">
                                         <td style="width: 100%;">
                                             <div class="font-weight-medium"><?= $settingInfo['label'] ?></div>
                                             <small class="text-muted"><?= $settingInfo['description'] ?></small>
                                         </td>
                                         <td class="text-end">
-                                            <label class="form-check form-switch form-check-single m-0">
-                                                <input class="form-check-input feature-toggle" type="checkbox"
-                                                    name="<?= $settingKey ?>" value="1"
-                                                    data-setting="<?= $settingKey ?>"
-                                                    <?= $isEnabled ? 'checked' : '' ?>>
-                                            </label>
+                                            <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: flex-end;">
+                                                <span class="status-badge" style="font-size: 0.75rem; display: none;"></span>
+                                                <label class="form-check form-switch form-check-single m-0">
+                                                    <input class="form-check-input feature-toggle" type="checkbox"
+                                                        data-setting="<?= $settingKey ?>"
+                                                        <?= $isEnabled ? 'checked' : '' ?>>
+                                                </label>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -154,51 +156,58 @@ $featureGroups = [
                     </div>
                 </div>
             <?php endforeach; ?>
-
-            <div class="form-footer">
-                <a href="/admin/" class="btn btn-link"><?= gettext('Cancel') ?></a>
-                <button type="submit" class="btn btn-primary"><?= gettext('Save Changes') ?></button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
 <script>
-document.getElementById('featureTogglesForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.querySelectorAll('.feature-toggle').forEach(toggle => {
+    toggle.addEventListener('change', function() {
+        const setting = this.dataset.setting;
+        const isChecked = this.checked;
+        const row = this.closest('tr');
+        const badge = row.querySelector('.status-badge');
 
-    const updates = {};
-    document.querySelectorAll('.feature-toggle').forEach(checkbox => {
-        updates[checkbox.name] = checkbox.checked ? '1' : '0';
-    });
+        const updates = {};
+        updates[setting] = isChecked ? '1' : '0';
 
-    const submitBtn = this.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i><?= gettext('Saving...') ?>';
+        badge.textContent = '<?= gettext('Saving...') ?>';
+        badge.style.display = 'inline';
+        badge.className = 'status-badge badge bg-info';
 
-    fetch('/api/system/feature-toggles', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updates)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            showAlert('<?= gettext('Feature settings saved successfully') ?>', 'success');
-            setTimeout(() => location.reload(), 1000);
-        } else {
-            showAlert(data.error || '<?= gettext('Error saving settings') ?>', 'danger');
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<?= gettext('Save Changes') ?>';
-        }
-    })
-    .catch(error => {
-        showAlert('<?= gettext('Error saving settings') ?>', 'danger');
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<?= gettext('Save Changes') ?>';
-        console.error('Error:', error);
+        fetch('/api/system/feature-toggles', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updates)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                badge.textContent = '<?= gettext('Saved') ?>';
+                badge.className = 'status-badge badge bg-success';
+                setTimeout(() => {
+                    badge.style.display = 'none';
+                }, 2000);
+            } else {
+                badge.textContent = '<?= gettext('Error') ?>';
+                badge.className = 'status-badge badge bg-danger';
+                this.checked = !isChecked;
+                setTimeout(() => {
+                    badge.style.display = 'none';
+                }, 3000);
+            }
+        })
+        .catch(error => {
+            badge.textContent = '<?= gettext('Error') ?>';
+            badge.className = 'status-badge badge bg-danger';
+            this.checked = !isChecked;
+            console.error('Error:', error);
+            setTimeout(() => {
+                badge.style.display = 'none';
+            }, 3000);
+        });
     });
 });
 </script>
