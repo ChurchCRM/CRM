@@ -240,7 +240,7 @@ $statusClasses = [
                                         </div>
                                     </div>
                                     <?php else: ?>
-                                    <span class="text-body-secondary small"><?= gettext('N/A') ?></span>
+                                    <span class="text-body-secondary small">N/A</span>
                                     <?php endif; ?>
                                 </td>
                             </tr>
