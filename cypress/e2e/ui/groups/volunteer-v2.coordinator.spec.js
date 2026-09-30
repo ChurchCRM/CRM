@@ -517,6 +517,7 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
             // Waiting for the fetched value is what makes `clear()` mean anything.
             cy.get('#ministrySettingsPanel input[name="iVolunteerReminderLeadHours"]')
                 .should("have.value", originalLeadHours)
+                .and("be.enabled")
                 .clear()
                 .type("12");
             cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();

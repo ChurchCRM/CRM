@@ -371,7 +371,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             // positions are its own.
             cy.get("#schedule-form-team").select(DEFAULT_TEAM_NAME);
             cy.get("#schedule-form-needs .volunteer-need-row").should("have.length", 0);
-            cy.get("#schedule-form-needs [data-role=no-positions]").should("be.visible");
+            cy.get("#schedule-form-needs [data-role=no-positions]").scrollIntoView().should("be.visible");
 
             cy.get("#schedule-form-team").select(TEAM_NAME);
             cy.get("#schedule-form-needs .volunteer-need-row").should("have.length", 2);
@@ -734,7 +734,8 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.intercept("POST", `**/api/ministries/schedules/${scheduleId}/generate`).as("generate");
             cy.get("#generate-form-save").click();
             cy.wait("@generate").then(({ request, response }) => {
-                expect(request.body.defaults).to.eq(undefined);
+                // D32: every row is sent, a blank one as "no default for this position".
+                expect(request.body.defaults).to.deep.eq([{ positionId: posLead, personId: null, accepted: false }]);
                 expect(response.body.created).to.be.greaterThan(0);
                 expect(response.body.assigned).to.eq(0);
             });

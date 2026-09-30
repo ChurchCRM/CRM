@@ -136,7 +136,7 @@ describe("Admin → Ministry Settings", () => {
         cy.get("#ministry-topup-last-run").should("have.text", "never");
         cy.get("#ministry-topup-hint").should("contain", "up to 8 weeks ahead").and("contain", "default volunteer");
 
-        cy.get("#ministrySettingsPanel input[name='iVolunteerSchedulingHorizonWeeks']").clear().type("10");
+        cy.get("#ministrySettingsPanel input[name='iVolunteerSchedulingHorizonWeeks']").should("be.enabled").clear().type("10");
         cy.get("#ministrySettingsPanel select[name='iVolunteerDefaultEventTypeId']").select("Church Service");
         cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();
         cy.get("#ministry-topup-hint", { timeout: 10000 }).should("contain", "up to 10 weeks ahead");
