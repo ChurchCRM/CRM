@@ -236,7 +236,7 @@ function initializeFamilyView() {
       });
       if (ytdTotal > 0) {
         $("#ytd-total-badge")
-          .text(i18next.t("YTD") + " " + window.CRM.currency.format(ytdTotal))
+          .text(`${i18next.t("YTD")} ${window.CRM.currency.format(ytdTotal)}`)
           .removeClass("d-none");
       }
     }
