@@ -17,6 +17,9 @@
  *     alerts and substitution updates are queued the moment they are decided and
  *     actually delivered here, with failed sends retried on later runs;
  *   - volunteer assignments whose occurrence has finished are marked completed;
+ *   - **volunteer schedules are topped up** once a day: each gets occurrences for
+ *     the events it follows up to the scheduling horizon on Admin → Ministry
+ *     Settings (`iVolunteerSchedulingHorizonWeeks`, default 8 weeks);
  *   - every plugin listening on the CRON_RUN hook.
  *
  * Install a cron entry that runs it hourly, as the same user your web server

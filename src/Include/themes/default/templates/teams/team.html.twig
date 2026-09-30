@@ -488,12 +488,13 @@
                     <label class="form-label" for="schedule-form-group">{{ gettext('Class') }}</label>
                     <select class="form-select" id="schedule-form-group"></select>
                     <div class="form-text">{{ gettext('One occurrence is made for each calendar event whose Linked Group is this class.') }}</div>
+                    <div class="form-text d-none" id="schedule-form-group-hint"></div>
                     <div class="alert alert-warning py-2 mt-2 mb-0 d-none" role="status" id="schedule-form-group-warning"></div>
                 </div>
                 <div class="mb-3 d-none" id="schedule-form-title-filter-row">
                     <label class="form-label" for="schedule-form-title-filter">{{ gettext('Event') }}</label>
                     <select class="form-select" id="schedule-form-title-filter"></select>
-                    <div class="form-text">{{ gettext('One occurrence is made for each date of this event. Choosing any event follows them all, which can be several on the same day.') }}</div>
+                    <div class="form-text">{{ gettext('One occurrence is made for each date of this event. Only events already on the calendar can be chosen.') }}</div>
                     <div class="alert alert-warning py-2 mt-2 mb-0 d-none" role="status" id="schedule-form-title-warning"></div>
                 </div>
                 <div class="mb-3" id="schedule-form-offsets"></div>

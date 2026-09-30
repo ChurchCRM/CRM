@@ -217,7 +217,7 @@ describe("Volunteer v2 — where a schedule's dates come from, and Staff an even
         cy.get("#schedule-form-link-mode").select("ministry");
         cy.get("#schedule-form-event-type-row").should("not.be.visible");
         cy.get("#schedule-form-title-filter-row").should("be.visible");
-        cy.get("#schedule-form-title-filter option").first().should("contain", "Any of this ministry's events");
+        cy.get("#schedule-form-title-filter option").first().should("be.disabled").and("contain", "Choose an event");
         cy.get(`#schedule-form-title-filter option[value="${MINISTRY_EVENT}"]`).should("contain", "(1 upcoming)");
         cy.get("#schedule-form-title-filter").select(MINISTRY_EVENT);
 

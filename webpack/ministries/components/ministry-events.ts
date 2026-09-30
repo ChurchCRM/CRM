@@ -104,6 +104,8 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
   let events: VolunteerMinistryEvent[] | null = null;
   /** The lists the dialog's selects are filled from, fetched on first open. */
   let eventTypes: Array<{ id: number; name: string }> | null = null;
+  /** The type a new event starts with (D31): Ministry Settings' choice, else "Other". */
+  let defaultEventTypeId: number | null = null;
   let classes: Array<{ groupId: number; name: string }> | null = null;
   let calendars: Array<{ id: number; name: string; own: boolean }> | null = null;
   /** The class field was set by the staffing team's class (D23), not by hand. */
@@ -374,7 +376,13 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
   async function loadChoices(): Promise<void> {
     const ministryId = options.ministryId();
     const [types, classList, calendarList] = await Promise.all([
-      eventTypes === null ? listEventTypes().then((data) => data.eventTypes) : Promise.resolve(eventTypes),
+      eventTypes === null
+        ? listEventTypes().then((data) => {
+            defaultEventTypeId = data.defaultEventTypeId;
+
+            return data.eventTypes;
+          })
+        : Promise.resolve(eventTypes),
       classes === null ? listClasses().then((data) => data.classes) : Promise.resolve(classes),
       calendars === null
         ? Promise.all([listCalendars(), listPinnableCalendars(ministryId)]).then(([all, pinnable]) =>
@@ -795,6 +803,9 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
         input.value = text;
       }
     };
+    if (defaultEventTypeId !== null && (eventTypes ?? []).some((type) => type.id === defaultEventTypeId)) {
+      set("type", String(defaultEventTypeId));
+    }
     set("date", isoDate(1));
     set("range-start", isoDate(1));
     set("start-time", "09:00");

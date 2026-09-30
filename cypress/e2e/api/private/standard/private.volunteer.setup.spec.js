@@ -97,7 +97,6 @@ const EXPECTED_COLUMNS = {
         "vsch_EndOffsetMinutes",
         "vsch_WindowStart",
         "vsch_WindowEnd",
-        "vsch_GenerateAheadDays",
         "vsch_OneOff",
         "vsch_Active",
     ],
@@ -590,8 +589,8 @@ describe("API Private Volunteer v2 core schema", () => {
                 insertReturningId(
                     `INSERT INTO volunteer_schedule_vsch
                         (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_event_type_id,
-                         vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
-                     VALUES (?, ?, 'Coffee Bar — Sunday', 'event_type', ?, '2026-09-13', 56, 1)`,
+                         vsch_WindowStart, vsch_Active)
+                     VALUES (?, ?, 'Coffee Bar — Sunday', 'event_type', ?, '2026-09-13', 1)`,
                     [f.ministryCoffee, f.teamCoffee, EVENT_TYPE_CHURCH_SERVICE],
                 ).then((id) => {
                     f.schedCoffee = id;

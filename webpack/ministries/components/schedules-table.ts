@@ -21,8 +21,12 @@
  *
  * D30: a run that finds no events keeps the dialog open with a warning saying what it
  * looked for, and — where the viewer may create the ministry's events — a button to the
- * New recurring event dialog; a run whose occurrences all existed is an info toast. The
- * schedule dialog warns before that, when the chosen class or title has nothing upcoming.
+ * New recurring event dialog; a run whose occurrences all existed is an info toast.
+ *
+ * D31: a schedule follows events that already exist. The dialog offers only titles with
+ * upcoming events and shows a class with none disabled ("add its meetings first"); there
+ * is no "any event" choice, and the server refuses a schedule that would follow nothing.
+ * Generation reaches the church-wide scheduling horizon, in weeks.
  */
 
 import {
@@ -219,7 +223,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       case "ministry":
         return schedule.titleFilter
           ? tText("This ministry's events titled {{title}}", { title: schedule.titleFilter })
-          : i18next.t("All of this ministry's events");
+          : i18next.t("This ministry's events (no event chosen yet)");
       case "event":
         return tText("One event: {{title}}", { title: schedule.eventTitle ?? "" });
       default:
@@ -229,7 +233,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
         return schedule.titleFilter
           ? tText("{{type}} events titled {{title}}", { type: schedule.eventTypeName, title: schedule.titleFilter })
-          : tText("All {{type}} events", { type: schedule.eventTypeName });
+          : tText("{{type}} events (no event chosen yet)", { type: schedule.eventTypeName });
     }
   }
 
@@ -305,6 +309,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
     // The class picker, keeping a stored class the list no longer offers (it lost its
     // upcoming events, or stopped being a Sunday School class) rather than dropping it.
+    // A class with no meetings to come cannot be chosen (D31) — except the stored one, so
+    // an edit of anything else still saves.
     const groupSelect = byId<HTMLSelectElement>("schedule-form-group");
     if (groupSelect) {
       const rows = [...(classes ?? [])];
@@ -317,17 +323,34 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
           nextStart: null,
         });
       }
+      const selectable = (row: VolunteerClassGroup): boolean =>
+        row.upcomingCount > 0 || (schedule?.linkMode === "class" && row.groupId === schedule.groupId);
       groupSelect.innerHTML = [
         `<option value="">${escapeHtml(i18next.t("Choose a class"))}</option>`,
         ...rows.map(
           (row) =>
-            `<option value="${row.groupId}">${escapeHtml(
+            `<option value="${row.groupId}"${selectable(row) ? "" : " disabled"}>${escapeHtml(
               row.upcomingCount > 0
                 ? tText("{{name}} ({{count}} upcoming)", { name: row.name, count: row.upcomingCount })
-                : tText("{{name}} (no upcoming meetings)", { name: row.name }),
+                : selectable(row)
+                  ? tText("{{name}} (no upcoming meetings)", { name: row.name })
+                  : tText("{{name}} (no upcoming meetings — add its meetings first)", { name: row.name }),
             )}</option>`,
         ),
       ].join("");
+
+      const hint = byId("schedule-form-group-hint");
+      const anyDisabled = rows.some((row) => !selectable(row));
+      if (hint && anyDisabled) {
+        hint.textContent = options.addEvents
+          ? i18next.t(
+              "A class with no meetings on the calendar cannot be chosen yet. Add its meetings first with New recurring event on the Calendar tab, giving the class as the event's class.",
+            )
+          : i18next.t(
+              "A class with no meetings on the calendar cannot be chosen yet. A coordinator of the ministry adds its meetings on the ministry's Calendar tab.",
+            );
+      }
+      show(hint, anyDisabled);
     }
   }
 
@@ -335,8 +358,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
    * The Event picker: the distinct upcoming titles of the chosen type's events, or of
    * this ministry's, so a schedule follows ONE event series (review, 2026-09-18 — a type
    * alone matched every event of that type on a Sunday and made an occurrence for
-   * each). The current value is kept, and an unlisted one (an edit of a schedule whose
-   * events have passed) is offered as its own option rather than silently dropped.
+   * each). There is no "any event" choice (D31): a title is required. The current value
+   * is kept, and an unlisted one (an edit of a schedule whose events have passed) is
+   * offered as its own option rather than silently dropped.
    */
   async function fillEventSeries(keep?: string): Promise<void> {
     const select = byId<HTMLSelectElement>("schedule-form-title-filter");
@@ -362,8 +386,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     }
     seriesCounts = new Map(series.map((row) => [row.title, row.count]));
     select.innerHTML = [
-      `<option value="">${escapeHtml(
-        byMinistry ? i18next.t("Any of this ministry's events") : i18next.t("Any event of this type"),
+      `<option value="" disabled>${escapeHtml(
+        series.length === 0 ? i18next.t("No upcoming events to choose from") : i18next.t("Choose an event"),
       )}</option>`,
       ...series.map(
         (row) =>
@@ -419,7 +443,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     if (mode === "event_type" || mode === "ministry") {
       if (title !== "" && (seriesCounts.get(title) ?? 0) === 0) {
         text = tText("No upcoming events titled {{title}} are on the calendar.", { title });
-      } else if (title === "" && !Array.from(seriesCounts.values()).some((count) => count > 0)) {
+      } else if (!Array.from(seriesCounts.values()).some((count) => count > 0)) {
         text =
           mode === "ministry"
             ? i18next.t("This ministry has no upcoming events on the calendar.")
@@ -638,10 +662,23 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     return payload;
   }
 
+  /** D31: every schedule names the events it follows; the server says the same with a 400. */
+  function missingSource(): string | null {
+    const mode = byId<HTMLSelectElement>("schedule-form-link-mode")?.value;
+    if (mode === "class") {
+      return (byId<HTMLSelectElement>("schedule-form-group")?.value ?? "") === "" ? i18next.t("Choose a class") : null;
+    }
+
+    return (byId<HTMLSelectElement>("schedule-form-title-filter")?.value ?? "") === ""
+      ? i18next.t("Choose the event this schedule follows")
+      : null;
+  }
+
   function save(): void {
     const needs = byId("schedule-form-needs");
     const offsets = readOffsets("schedule-form");
-    const invalid = typeof offsets === "string" ? offsets : needs === null ? null : validateStaffingNeeds(needs);
+    const invalid =
+      missingSource() ?? (typeof offsets === "string" ? offsets : needs === null ? null : validateStaffingNeeds(needs));
     if (invalid !== null) {
       showModalError("schedule", invalid, notifyError);
 
@@ -690,10 +727,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
     const intro = byId("generate-form-intro");
     if (intro) {
-      intro.textContent = tText("{{name}}: the occurrences are built for the next {{days}} days.", {
-        name: schedule.name,
-        days: schedule.generateAheadDays,
-      });
+      intro.textContent = generateIntro(schedule);
     }
     const rows = byId("generate-form-rows");
     if (rows) {
@@ -751,6 +785,23 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
           save.disabled = false;
         }
       });
+  }
+
+  /** D31: how far this run reaches, in the horizon's weeks, or the schedule's own last date. */
+  function generateIntro(schedule: VolunteerSchedule): string {
+    const through = shortDate(schedule.generateThrough);
+    if (schedule.windowEnd !== null && schedule.windowEnd <= schedule.generateThrough) {
+      return tText("Occurrences are created for events through {{date}}, when this schedule ends.", { date: through });
+    }
+
+    if (schedule.horizonWeeks === 1) {
+      return tText("Occurrences are created for events in the next week (through {{date}}).", { date: through });
+    }
+
+    return tText("Occurrences are created for events in the next {{count}} weeks (through {{date}}).", {
+      count: schedule.horizonWeeks,
+      date: through,
+    });
   }
 
   function runGenerate(): void {
@@ -891,6 +942,15 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     const coordinatorAdds = i18next.t(
       "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.",
     );
+
+    // Saved before D31 without a title: it follows nothing until one is chosen.
+    if ((source.linkMode === "event_type" || source.linkMode === "ministry") && !source.titleFilter) {
+      return {
+        ...noButton,
+        text: tText("{{name}} does not name the event it follows, so it has nothing to staff.", { name }),
+        hint: i18next.t("Edit the schedule and choose the event it follows."),
+      };
+    }
 
     switch (source.linkMode) {
       case "class": {

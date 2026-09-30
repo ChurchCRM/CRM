@@ -40,6 +40,7 @@
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
+const HORIZON_URL = "/admin/api/system/config/iVolunteerSchedulingHorizonWeeks";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const PLAINAUTH_KEY = "plainauth.api.key";
@@ -310,7 +311,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         it("creates a linked schedule and echoes the stored row", () => {
             createSchedule(
                 ministryA,
-                linkedScheduleBody({ teamId: teamA1, titleFilter: "Worship" }),
+                linkedScheduleBody({ teamId: teamA1, titleFilter: WEDNESDAY_TITLE }),
             ).then((id) => {
                 api(ADMIN_KEY, "GET", `/api/ministries/schedules/${id}`).then(
                     (resp) => {
@@ -319,7 +320,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                         expect(s.teamId).to.eq(teamA1);
                         expect(s.linkMode).to.eq("event_type");
                         expect(s.eventTypeId).to.eq(CHURCH_SERVICE_TYPE);
-                        expect(s.titleFilter).to.eq("Worship");
+                        expect(s.titleFilter).to.eq(WEDNESDAY_TITLE);
                         expect(s.groupId).to.eq(null);
                         expect(s.eventId).to.eq(null);
                         expect(s.startOffsetMinutes).to.eq(0);
@@ -327,7 +328,10 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                         // No recurrence or times of its own (D20).
                         expect(s).to.not.have.property("recurType");
                         expect(s).to.not.have.property("startTime");
-                        expect(s.generateAheadDays).to.eq(56);
+                        // How far ahead is the church-wide horizon, not the schedule's (D31).
+                        expect(s).to.not.have.property("generateAheadDays");
+                        expect(s.horizonWeeks).to.eq(8);
+                        expect(s.generateThrough).to.eq(isoDate(56));
                         expect(s.active).to.eq(true);
                     },
                 );
@@ -868,27 +872,20 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
 
         it("honours the title filter", () => {
-            // A schedule on the same event type with a filter nothing matches
-            // finds no events at all — proving the filter, not just the type,
-            // is part of the binding (§2.8, F7/F8).
-            createSchedule(
-                ministryA,
+            // The same event type with a title no upcoming event has is refused
+            // outright — the title, not just the type, is part of the binding
+            // (§2.8, F7/F8), and a schedule follows events that exist (D31).
+            api(
+                ADMIN_KEY,
+                "POST",
+                `/api/ministries/ministries/${ministryA}/schedules`,
                 linkedScheduleBody({
                     name: `${FIXTURE_PREFIX} Linked Nothing`,
                     titleFilter: `${FIXTURE_PREFIX} NoSuchTitle`,
                     windowStart: seriesStart,
                 }),
-            ).then((id) => {
-                api(
-                    ADMIN_KEY,
-                    "POST",
-                    `/api/ministries/schedules/${id}/generate`,
-                    { through: seriesEnd },
-                ).then((resp) => {
-                    expect(resp.body.created).to.eq(0);
-                });
-                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
-            });
+                400,
+            );
         });
 
         it("cancels a single occurrence without touching the schedule", () => {
@@ -921,16 +918,18 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
     });
 
-    // ── The generation range: window, generate-ahead, cap ──────────────────
+    // ── The generation range: window, horizon, cap ─────────────────────────
 
     describe("the generation range", () => {
-        it("defaults `through` to today + generateAheadDays", () => {
+        after(() => {
+            cy.makePrivateAdminAPICall("POST", HORIZON_URL, { value: "8" }, 200);
+        });
+
+        it("defaults `through` to today + the scheduling horizon (D31)", () => {
+            cy.makePrivateAdminAPICall("POST", HORIZON_URL, { value: "2" }, 200);
             createSchedule(
                 ministryA,
-                wednesdayScheduleBody({
-                    name: `${FIXTURE_PREFIX} Default Through`,
-                    generateAheadDays: 14,
-                }),
+                wednesdayScheduleBody({ name: `${FIXTURE_PREFIX} Default Through` }),
             ).then((id) => {
                 api(
                     ADMIN_KEY,
@@ -943,6 +942,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 });
                 api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
             });
+            cy.makePrivateAdminAPICall("POST", HORIZON_URL, { value: "8" }, 200);
         });
 
         it("never generates outside the schedule's own window", () => {
@@ -970,10 +970,11 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
 
         it("rejects a generation run that would blow the occurrence cap", () => {
             const title = `${FIXTURE_PREFIX} Daily`;
-            // 367 daily events, one more than MAX_GENERATED_OCCURRENCES.
+            // 367 events, one more than MAX_GENERATED_OCCURRENCES, packed into the next 50
+            // days so every one of them is inside the default 8-week horizon (D31).
             dbOk(
                 `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
-                 SELECT ?, ?, '', '', CURDATE() + INTERVAL n DAY + INTERVAL 18 HOUR, CURDATE() + INTERVAL n DAY + INTERVAL 19 HOUR, 0
+                 SELECT ?, ?, '', '', CURDATE() + INTERVAL (n MOD 50) + 1 DAY + INTERVAL 18 HOUR, CURDATE() + INTERVAL (n MOD 50) + 1 DAY + INTERVAL 19 HOUR, 0
                    FROM (SELECT a.d + b.d * 10 + c.d * 100 AS n
                            FROM (SELECT 0 d UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4
                                  UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) a

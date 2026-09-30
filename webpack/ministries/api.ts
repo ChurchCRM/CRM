@@ -1113,7 +1113,10 @@ export interface VolunteerSchedule {
   oneOff: boolean;
   windowStart: string | null;
   windowEnd: string | null;
-  generateAheadDays: number;
+  /** The church-wide scheduling horizon (D31), in weeks. */
+  horizonWeeks: number;
+  /** The last date a Generate run reaches: the horizon, or `windowEnd` when that comes first. */
+  generateThrough: string;
   active: boolean;
   /** Cheap "has this been generated yet?" signal — a COUNT, never a hydration. */
   occurrenceCount: number;
@@ -1205,8 +1208,14 @@ export function listEventSeries(
   return request(`/event-series?${query.toString()}`);
 }
 
-/** The active calendar event types, on the ministries surface a portal team leader can reach. */
-export function listEventTypes(): Promise<{ eventTypes: Array<{ id: number; name: string }> }> {
+/**
+ * The active calendar event types, on the ministries surface a portal team leader can reach,
+ * with the type a ministry's new event starts with (D31).
+ */
+export function listEventTypes(): Promise<{
+  eventTypes: Array<{ id: number; name: string }>;
+  defaultEventTypeId: number | null;
+}> {
   return request("/event-types");
 }
 

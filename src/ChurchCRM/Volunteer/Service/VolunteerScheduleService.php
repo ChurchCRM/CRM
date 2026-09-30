@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Volunteer\Service;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
@@ -39,12 +40,15 @@ use Psr\Log\LoggerInterface;
  * each, and it never creates, edits or deletes an event. A schedule's link mode says how
  * its events are found (D22):
  *
- *   event_type  events of one type, optionally narrowed by title (church-wide services)
+ *   event_type  events of one type with exactly one title (church-wide services)
  *   class       events whose Linked Group (`event_audience`) is the schedule's group
- *   ministry    events the schedule's ministry owns (`event_ministry_id`), optionally by title
+ *   ministry    events the schedule's ministry owns (`event_ministry_id`) with exactly one title
  *   event       exactly one event — the hidden schedule behind Staff this event
  *
  * Anchoring is a read-only reference: any event may be anchored, not only the ministry's.
+ * A schedule follows events that already exist (D31): it is created, or re-pointed, only
+ * while at least one upcoming event matches, and generation stops at the church-wide
+ * scheduling horizon, which a daily timer job keeps every schedule filled up to.
  *
  * The occurrence stores no times. resolveOccurrenceWindow() reads them lazily from the
  * event and adds the schedule's offsets (D21), so moving the event moves the shift.
@@ -80,11 +84,32 @@ class VolunteerScheduleService
     /** The removed standalone mode's fields. A payload naming one is refused, never ignored (D20). */
     private const RETIRED_FIELDS = ['recurType', 'recurDow', 'recurDom', 'startTime', 'endTime'];
 
+    /** Admin → Ministry Settings bounds and default for the scheduling horizon (D31). */
+    public const MIN_HORIZON_WEEKS = 1;
+    public const MAX_HORIZON_WEEKS = 52;
+    public const DEFAULT_HORIZON_WEEKS = 8;
+
     private LoggerInterface $logger;
 
     public function __construct()
     {
         $this->logger = LoggerUtils::getAppLogger();
+    }
+
+    /**
+     * How many weeks ahead occurrences are made (D31): one church-wide setting. The config
+     * API stores whatever it is sent — the settings panel can save a blank field it has not
+     * filled in yet — so the value is read defensively: blank or not a number is the
+     * default, anything else is held within the bounds.
+     */
+    public static function horizonWeeks(): int
+    {
+        $raw = trim((string) SystemConfig::getValue('iVolunteerSchedulingHorizonWeeks'));
+        if (!is_numeric($raw)) {
+            return self::DEFAULT_HORIZON_WEEKS;
+        }
+
+        return max(self::MIN_HORIZON_WEEKS, min(self::MAX_HORIZON_WEEKS, (int) $raw));
     }
 
     // ── Schedule CRUD ──────────────────────────────────────────────────────
@@ -311,6 +336,7 @@ class VolunteerScheduleService
 
         $storedMode = $isCreate ? null : (string) $schedule->getLinkMode();
         $storedGroupId = $isCreate ? null : $schedule->getGroupId();
+        $storedSource = $isCreate ? null : $this->eventSourceKey($schedule);
         $linkMode = $this->resolveLinkMode($schedule, $fields, $isCreate, $allowEventMode);
         $schedule->setLinkMode($linkMode);
 
@@ -353,14 +379,6 @@ class VolunteerScheduleService
             throw new \RuntimeException(gettext('The schedule window ends before it starts'));
         }
 
-        if ($has('generateAheadDays')) {
-            $ahead = (int) $value('generateAheadDays');
-            if ($ahead < 1 || $ahead > 730) {
-                throw new \RuntimeException(gettext('Generate-ahead days must be between 1 and 730'));
-            }
-            $schedule->setGenerateAheadDays($ahead);
-        }
-
         if ($has('active')) {
             $schedule->setActive((bool) filter_var($value('active'), FILTER_VALIDATE_BOOLEAN));
         }
@@ -385,6 +403,75 @@ class VolunteerScheduleService
             && ($storedMode !== VolunteerSchedule::LINK_MODE_CLASS || (int) $storedGroupId !== (int) $schedule->getGroupId())) {
             VolunteerClassLinkService::assertMinistryTeaches((int) $schedule->getMinistryId());
         }
+
+        $this->assertFollowsExistingEvents($schedule, $storedSource);
+    }
+
+    /**
+     * D31: a schedule names the events it follows, and they exist. `event_type` and
+     * `ministry` schedules name one title — a schedule saved without one before D31 must
+     * be given one when it is next edited. Creating a schedule, or changing what it
+     * follows, needs at least one upcoming active event to match; editing anything else
+     * (name, needs, offsets, dates) is never refused for it, so a series that ran out can
+     * still be tidied up.
+     *
+     * @param array{mode: string, eventTypeId: ?int, groupId: ?int, title: string}|null $storedSource
+     *
+     * @throws \RuntimeException
+     */
+    private function assertFollowsExistingEvents(VolunteerSchedule $schedule, ?array $storedSource): void
+    {
+        $mode = (string) $schedule->getLinkMode();
+        if ($mode === VolunteerSchedule::LINK_MODE_EVENT) {
+            return;
+        }
+
+        if (in_array($mode, [VolunteerSchedule::LINK_MODE_EVENT_TYPE, VolunteerSchedule::LINK_MODE_MINISTRY], true)
+            && !self::namesTitle($schedule)) {
+            throw new \RuntimeException(gettext('Choose the event this schedule follows'));
+        }
+
+        if ($storedSource === $this->eventSourceKey($schedule) || $this->hasUpcomingEvents($schedule)) {
+            return;
+        }
+
+        $source = $this->describeEventSource($schedule);
+        throw new \RuntimeException(match ($mode) {
+            VolunteerSchedule::LINK_MODE_CLASS => sprintf(
+                gettext('%s has no upcoming meetings on the calendar. A schedule follows events that already exist: add the class\'s meetings first, with New recurring event on the ministry\'s Calendar tab.'),
+                (string) $source['groupName']
+            ),
+            VolunteerSchedule::LINK_MODE_MINISTRY => sprintf(
+                gettext('This ministry has no upcoming events titled "%s". A schedule follows events that already exist: add them first on the ministry\'s Calendar tab.'),
+                (string) $source['titleFilter']
+            ),
+            default => sprintf(
+                gettext('No upcoming %1$s events titled "%2$s" are on the calendar. A schedule follows events that already exist.'),
+                (string) $source['eventTypeName'],
+                (string) $source['titleFilter']
+            ),
+        });
+    }
+
+    /**
+     * What a schedule follows, compared across an edit. Titles compare as generation
+     * matches them: case-insensitively.
+     *
+     * @return array{mode: string, eventTypeId: ?int, groupId: ?int, title: string}
+     */
+    private function eventSourceKey(VolunteerSchedule $schedule): array
+    {
+        return [
+            'mode' => (string) $schedule->getLinkMode(),
+            'eventTypeId' => $schedule->getEventTypeId() === null ? null : (int) $schedule->getEventTypeId(),
+            'groupId' => $schedule->getGroupId() === null ? null : (int) $schedule->getGroupId(),
+            'title' => mb_strtolower(trim((string) $schedule->getTitleFilter())),
+        ];
+    }
+
+    private static function namesTitle(VolunteerSchedule $schedule): bool
+    {
+        return trim((string) $schedule->getTitleFilter()) !== '';
     }
 
     /**
@@ -400,6 +487,10 @@ class VolunteerScheduleService
                 gettext('Schedules no longer carry their own recurrence or times; every occurrence follows a calendar event. Remove: %s'),
                 implode(', ', $sent)
             ));
+        }
+
+        if (array_key_exists('generateAheadDays', $fields)) {
+            throw new \RuntimeException(gettext('Schedules no longer set how far ahead they are generated: the scheduling horizon on Admin → Ministry Settings applies to every schedule. Remove: generateAheadDays'));
         }
     }
 
@@ -698,11 +789,22 @@ class VolunteerScheduleService
     }
 
     /**
+     * The last date a run with no `through` of its own materialises (D31): the horizon, or
+     * the schedule's last date when that comes first.
+     */
+    public function generationThrough(VolunteerSchedule $schedule): string
+    {
+        return $this->resolveGenerationRange($schedule, null)['end']->format('Y-m-d');
+    }
+
+    /**
      * The inclusive date range one run materialises.
      *
      * Start is the later of the schedule's window start and today: historical occurrences
-     * are immutable (§2.9). End is the earliest of the caller's `through`, the schedule's
-     * window end, and — when the caller named nothing — today plus GenerateAheadDays.
+     * are immutable (§2.9). End is the earliest of the caller's `through` (today plus the
+     * scheduling horizon when it names none), the horizon itself and the schedule's window
+     * end (D31). The horizon does not cap a Staff this event schedule: its one event was
+     * picked by hand, however far ahead it is.
      *
      * @return array{start: \DateTime, end: \DateTime}
      */
@@ -719,13 +821,14 @@ class VolunteerScheduleService
             $start = clone $today;
         }
 
-        if ($through !== null) {
-            $end = DateTimeUtils::createDateTime($through->format('Y-m-d'));
-        } else {
-            $end = clone $today;
-            $end->modify('+' . max(1, (int) $schedule->getGenerateAheadDays()) . ' days');
-        }
+        $horizon = clone $today;
+        $horizon->modify('+' . (self::horizonWeeks() * 7) . ' days');
+
+        $end = $through === null ? clone $horizon : DateTimeUtils::createDateTime($through->format('Y-m-d'));
         $end->setTime(0, 0, 0);
+        if ((string) $schedule->getLinkMode() !== VolunteerSchedule::LINK_MODE_EVENT && $end > $horizon) {
+            $end = clone $horizon;
+        }
 
         $windowEnd = $schedule->getWindowEnd();
         if ($windowEnd instanceof \DateTimeInterface) {
@@ -741,57 +844,72 @@ class VolunteerScheduleService
 
     /**
      * The active events a schedule follows inside a date range, per link mode (D22). A
-     * binding whose target was deleted (the FK set it to NULL) finds nothing.
+     * binding whose target was deleted (the FK set it to NULL), and a type or ministry
+     * schedule saved without a title before D31, find nothing.
      *
      * @return Event[]
      */
     public function findEvents(VolunteerSchedule $schedule, \DateTimeInterface $start, \DateTimeInterface $end): array
     {
+        $query = $this->eventQuery($schedule, $start, $end);
+
+        return $query === null ? [] : iterator_to_array($query->orderByStart()->find(), false);
+    }
+
+    /** D31: whether any active event the schedule follows is still to come, today included. */
+    public function hasUpcomingEvents(VolunteerSchedule $schedule): bool
+    {
+        $query = $this->eventQuery($schedule, DateTimeUtils::getStartOfToday(), null);
+
+        return $query !== null && $query->exists();
+    }
+
+    private function eventQuery(VolunteerSchedule $schedule, \DateTimeInterface $start, ?\DateTimeInterface $end): ?EventQuery
+    {
         $query = EventQuery::create()
             ->filterByInActive(0)
-            ->filterByStart($start->format('Y-m-d') . ' 00:00:00', Criteria::GREATER_EQUAL)
-            ->filterByStart($end->format('Y-m-d') . ' 23:59:59', Criteria::LESS_EQUAL);
+            ->filterByStart($start->format('Y-m-d') . ' 00:00:00', Criteria::GREATER_EQUAL);
+        if ($end !== null) {
+            $query->filterByStart($end->format('Y-m-d') . ' 23:59:59', Criteria::LESS_EQUAL);
+        }
 
         switch ((string) $schedule->getLinkMode()) {
             case VolunteerSchedule::LINK_MODE_EVENT_TYPE:
-                if ($schedule->getEventTypeId() === null) {
-                    return [];
+                if ($schedule->getEventTypeId() === null || !self::namesTitle($schedule)) {
+                    return null;
                 }
-                $query->filterByType((int) $schedule->getEventTypeId());
-                $this->applyTitleFilter($query, $schedule->getTitleFilter());
-                break;
+
+                return self::filterByExactTitle($query->filterByType((int) $schedule->getEventTypeId()), (string) $schedule->getTitleFilter());
 
             case VolunteerSchedule::LINK_MODE_CLASS:
                 if ($schedule->getGroupId() === null) {
-                    return [];
+                    return null;
                 }
-                $query->useEventAudienceQuery()->filterByGroupId((int) $schedule->getGroupId())->endUse();
-                break;
+
+                return $query->useEventAudienceQuery()->filterByGroupId((int) $schedule->getGroupId())->endUse();
 
             case VolunteerSchedule::LINK_MODE_MINISTRY:
-                $query->filterByMinistryId((int) $schedule->getMinistryId());
-                $this->applyTitleFilter($query, $schedule->getTitleFilter());
-                break;
+                if (!self::namesTitle($schedule)) {
+                    return null;
+                }
+
+                return self::filterByExactTitle($query->filterByMinistryId((int) $schedule->getMinistryId()), (string) $schedule->getTitleFilter());
 
             case VolunteerSchedule::LINK_MODE_EVENT:
-                if ($schedule->getEventId() === null) {
-                    return [];
-                }
-                $query->filterById((int) $schedule->getEventId());
-                break;
+                return $schedule->getEventId() === null ? null : $query->filterById((int) $schedule->getEventId());
 
             default:
-                return [];
+                return null;
         }
-
-        return iterator_to_array($query->orderByStart()->find(), false);
     }
 
-    private function applyTitleFilter(EventQuery $query, ?string $titleFilter): void
+    /**
+     * D31: a title names one series exactly, ignoring case — "VBS" must not pick up
+     * "VBS Day 2", which the `LIKE %title%` narrowing this replaced did.
+     */
+    public static function filterByExactTitle(EventQuery $query, string $title): EventQuery
     {
-        if ($titleFilter !== null && $titleFilter !== '') {
-            $query->filterByTitle('%' . $titleFilter . '%', Criteria::LIKE);
-        }
+        return $query->where('LOWER(Event.Title) = LOWER(?)', trim($title), \PDO::PARAM_STR);
     }
 
     /**
@@ -1037,13 +1155,15 @@ class VolunteerScheduleService
             $query->filterByMinistryId($ministryId);
         }
 
+        // Keyed as generation matches titles (D31), so "VBS" and "vbs" are one series.
         $series = [];
         foreach ($query->orderByStart()->select(['Title', 'Start'])->find() as $row) {
             $title = (string) $row['Title'];
-            if (!isset($series[$title])) {
-                $series[$title] = ['title' => $title, 'nextStart' => (string) $row['Start'], 'count' => 0];
+            $key = mb_strtolower(trim($title));
+            if (!isset($series[$key])) {
+                $series[$key] = ['title' => $title, 'nextStart' => (string) $row['Start'], 'count' => 0];
             }
-            $series[$title]['count']++;
+            $series[$key]['count']++;
         }
 
         return array_values($series);

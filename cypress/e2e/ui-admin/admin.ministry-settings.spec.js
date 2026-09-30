@@ -14,7 +14,9 @@
  *   3. the two settings are no longer on the System Settings page;
  *   4. the Ministry Dashboard has no settings strip any more, only the
  *      notification card with a link back here;
- *   5. a non-administrator is turned away (the admin app's own gate).
+ *   5. a non-administrator is turned away (the admin app's own gate);
+ *   6. D31: the scheduling horizon and the default event type are set here,
+ *      and the last schedule top-up is shown with what it made.
  *
  * Order inside every hook is API setup → fresh login → cy.visit(), because
  * cy.request() rotates the PHP session cookie (cypress-testing.md).
@@ -22,6 +24,8 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const LEAD_URL = "/admin/api/system/config/iVolunteerReminderLeadHours";
+const HORIZON_URL = "/admin/api/system/config/iVolunteerSchedulingHorizonWeeks";
+const DEFAULT_TYPE_URL = "/admin/api/system/config/iVolunteerDefaultEventTypeId";
 const PAGE_URL = "/admin/ministry-settings";
 
 let originalVersion = "v1";
@@ -76,6 +80,8 @@ describe("Admin → Ministry Settings", () => {
     after(() => {
         adminApi("POST", SETTING_URL, { value: originalVersion }, 200);
         adminApi("POST", LEAD_URL, { value: originalLead }, 200);
+        adminApi("POST", HORIZON_URL, { value: "8" }, 200);
+        adminApi("POST", DEFAULT_TYPE_URL, { value: "" }, 200);
     });
 
     it("is in the Admin menu and renders the settings, the explanation and delivery health", () => {
@@ -107,6 +113,48 @@ describe("Admin → Ministry Settings", () => {
         cy.get("#ministry-last-run", { timeout: 10000 }).should("not.contain", "never");
         // V2 is on, so the header offers the dashboard.
         cy.get('a[href$="/ministries/dashboard"]').should("exist");
+    });
+
+    it("sets the scheduling horizon and the default event type, and shows the last top-up (D31)", () => {
+        adminApi("POST", SETTING_URL, { value: "v2" }, 200);
+        adminApi("POST", HORIZON_URL, { value: "8" }, 200);
+        adminApi("POST", DEFAULT_TYPE_URL, { value: "" }, 200);
+        cy.dbQuery("DELETE FROM config_cfg WHERE cfg_name IN ('sLastVolunteerTopUpRunDate', 'sLastVolunteerTopUpResult')");
+        freshAdminLogin();
+        cy.visit(PAGE_URL);
+
+        cy.get("#ministrySettingsPanel input[name='iVolunteerSchedulingHorizonWeeks']")
+            .should("have.value", "8")
+            .and("have.attr", "min", "1")
+            .and("have.attr", "max", "52");
+        cy.get("#ministrySettingsPanel select[name='iVolunteerDefaultEventTypeId']").should("have.value", "");
+        cy.get("#ministrySettingsPanel select[name='iVolunteerDefaultEventTypeId'] option").first().should("have.text", 'Not set: use "Other"');
+        cy.get("#ministrySettingsPanel select[name='iVolunteerDefaultEventTypeId']")
+            .should("contain", "Church Service")
+            .and("contain", "Other")
+            .and("contain", "Sunday School");
+        cy.get("#ministry-topup-last-run").should("have.text", "never");
+        cy.get("#ministry-topup-hint").should("contain", "up to 8 weeks ahead").and("contain", "Nobody is assigned");
+
+        cy.get("#ministrySettingsPanel input[name='iVolunteerSchedulingHorizonWeeks']").clear().type("10");
+        cy.get("#ministrySettingsPanel select[name='iVolunteerDefaultEventTypeId']").select("Church Service");
+        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();
+        cy.get("#ministry-topup-hint", { timeout: 10000 }).should("contain", "up to 10 weeks ahead");
+        adminApi("GET", HORIZON_URL, null, 200).its("body.value").should("eq", "10");
+        adminApi("GET", DEFAULT_TYPE_URL, null, 200).its("body.value").should("eq", "1");
+
+        freshAdminLogin();
+        // The page's own footer posts the same endpoint on load, rate limited; wait for the button's.
+        cy.intercept("POST", "**/api/background/timerjobs", (req) => {
+            if (JSON.stringify(req.body ?? "").includes("force")) {
+                req.alias = "forcedRun";
+            }
+        });
+        cy.visit(PAGE_URL);
+        cy.get("#ministry-run-jobs-btn").click();
+        cy.wait("@forcedRun").its("response.body.ran").should("eq", true);
+        cy.get("#ministry-topup-last-run", { timeout: 10000 }).should("not.have.text", "never");
+        cy.get("#ministry-topup-created").invoke("text").should("match", /— \d+ new occurrences?$/);
     });
 
     it("is reachable while V1 is active, and switching to V2 here makes Ministries appear", () => {

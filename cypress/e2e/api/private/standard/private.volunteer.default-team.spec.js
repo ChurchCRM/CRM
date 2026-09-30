@@ -39,6 +39,8 @@ const PERSON_COORDINATOR = 3; // tony.wade — user.api.key
 const EVENT_TYPE_CHURCH_SERVICE = 1; // "Church Service" in the seed
 
 const PREFIX = "DEFTEAM9701";
+/** A schedule follows events that already exist (D31): one upcoming service it can name. */
+const SERVICE_TITLE = `${PREFIX} Sunday Service`;
 
 function setVersion(value) {
     cy.makePrivateAdminAPICall("POST", SETTING_URL, { value }, 200);
@@ -70,6 +72,18 @@ function cleanupFixtures() {
     dbOk(`DELETE FROM volunteer_ministry_vmin WHERE vmin_Name LIKE ?`, [
         `${PREFIX}%`,
     ]);
+    dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${PREFIX}%`]);
+}
+
+function makeUpcomingService() {
+    const d = new Date();
+    d.setDate(d.getDate() + 10);
+    const day = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    return dbOk(
+        `INSERT INTO events_event (event_type, event_title, event_desc, event_text, event_start, event_end, inactive)
+         VALUES (?, ?, '', '', ?, ?, 0)`,
+        [EVENT_TYPE_CHURCH_SERVICE, SERVICE_TITLE, `${day} 10:30:00`, `${day} 11:30:00`],
+    );
 }
 
 function createMinistry(name) {
@@ -99,6 +113,7 @@ function scheduleBody(teamId, name) {
         teamId,
         linkMode: "event_type",
         eventTypeId: EVENT_TYPE_CHURCH_SERVICE,
+        titleFilter: SERVICE_TITLE,
         windowStart: "2026-09-13",
     };
 }
@@ -277,6 +292,7 @@ describe("Volunteer v2 — every ministry has at least one team (#9701)", () => 
         let teamId = 0;
 
         before(() => {
+            makeUpcomingService();
             createMinistry("Schedules").then((ministry) => {
                 ministryId = ministry.id;
                 defaultTeamOf(ministryId).then((team) => {
@@ -322,11 +338,12 @@ describe("Volunteer v2 — every ministry has at least one team (#9701)", () => 
             cy.dbQuery(
                 `INSERT INTO volunteer_schedule_vsch
                     (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_event_type_id,
-                     vsch_WindowStart, vsch_GenerateAheadDays, vsch_Active)
-                 VALUES (?, NULL, ?, 'event_type', ?, '2026-09-13', 56, 1)`,
+                     vsch_WindowStart, vsch_Active)
+                 VALUES (?, NULL, ?, 'event_type', ?, '2026-09-13', 1)`,
                 [ministryId, `${PREFIX} Direct Insert`, EVENT_TYPE_CHURCH_SERVICE],
             ).then((result) => {
                 expect(result.error, "vsch_vtem_ID is NOT NULL").to.not.eq(null);
+                expect(result.error.message).to.contain("vsch_vtem_ID");
             });
         });
     });
