@@ -480,7 +480,10 @@ $(document).ready(function() {
         title: <?= InputUtils::jsonEncodeForScript(gettext('Financial Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
+            { name: 'bEnabledFinance',    type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Finance Module')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Enable or disable the Finance module and sidebar menu.')) ?> },
+            { name: 'bEnabledFundraiser', type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Fundraiser Module')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Enable or disable the Fundraiser module.')) ?> },
             { name: 'iFYMonth',          type: 'choice', label: <?= InputUtils::jsonEncodeForScript(gettext('First month of the fiscal year')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('iFYMonth')) ?> },
+            { name: 'iMaxTaxYears',      type: 'number', label: <?= InputUtils::jsonEncodeForScript(gettext('Maximum tax years shown per family')) ?>, min: 0, placeholder: '5' },
             { name: 'sDepositSlipType',  type: 'choice', label: <?= InputUtils::jsonEncodeForScript(gettext('Deposit ticket type')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sDepositSlipType')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('sDepositSlipType')) ?> },
             { name: 'iChecksPerDepositForm', type: 'number',  label: <?= InputUtils::jsonEncodeForScript(gettext('Number of checks for Deposit Slip Report')) ?>, min: 1, max: 100 },
             { name: 'bDisplayBillCounts',    type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Display bill counts on deposit slip')) ?> },

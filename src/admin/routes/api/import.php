@@ -738,8 +738,17 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         if (!empty($data['SecondCountry']))  $family->setSecondCountry($data['SecondCountry']);
                         // Family::preSave() clears the flag when no second address
                         // was supplied, so a stray "Yes" can never orphan it.
+                        // Only recognised Yes/No values set the flag; anything else (e.g. a
+                        // street address in a column headed "Mailing Address") is ignored.
                         if (!empty($data['MailingAddress'])) {
-                            $family->setSecondIsMailing(in_array(strtolower(trim((string) $data['MailingAddress'])), ['1', 'true', 'yes', 'y', 't'], true));
+                            $isMailing = match (strtolower(trim((string) $data['MailingAddress']))) {
+                                '1', 'true', 'yes', 'y', 't'  => true,
+                                '0', 'false', 'no', 'n', 'f' => false,
+                                default                      => null,
+                            };
+                            if ($isMailing !== null) {
+                                $family->setSecondIsMailing($isMailing);
+                            }
                         }
                         if (!empty($data['HomePhone'])) $family->setHomePhone($data['HomePhone']);
                         if (!empty($data['Email']))    $family->setEmail($data['Email']);

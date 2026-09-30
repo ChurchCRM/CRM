@@ -490,10 +490,6 @@ msgid "Photos"
 msgstr "Ảnh"
 
 #: 
-msgid "Number of Columns"
-msgstr "Số lượng các cột"
-
-#: 
 msgid "Paper Size"
 msgstr "Kích thước trang giấy"
 
@@ -857,10 +853,6 @@ msgstr "Xóa hình ảnh"
 #: 
 msgid "Timeline"
 msgstr "Dòng thời gian"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Cam kết và Thanh toán"
 
 #: 
 msgid "Value"
@@ -12724,10 +12716,6 @@ msgid "Upcoming Events"
 msgstr "Sự kiện sắp tới"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL tuyệt đối http(s) của logo nhà thờ được hiển thị trong các mẫu email (và sẽ được sử dụng lại ở nơi khác trong tương lai). Để hiển thị tốt nhất trên các ứng dụng email, hãy dùng hình ảnh biểu ngữ rộng với tỷ lệ khoảng 3,5:1 (ví dụ 350×100 px), định dạng PNG hoặc JPG, phục vụ qua HTTPS. Để trống hoặc nhập giá trị không hợp lệ để sử dụng logo ChurchCRM mặc định."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "Đã có một tùy chọn với tên đó"
 
@@ -18532,4 +18520,268 @@ msgstr "Quá nhiều người nhận cho ứng dụng email ({{total}} > {{max}}
 #: 
 msgid "{{minutes}} min left"
 msgstr "còn lại {{minutes}} phút"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d tài liệu thuế đã được gửi qua email cho gia đình thành công."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "Bảng kê quỹ %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "Tất cả các phân loại"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Là quản trị viên, vui lòng cũng xem xét"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Tự động gửi email lời chúc sinh nhật đến mọi người vào ngày sinh nhật của họ."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Email Sinh Nhật"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Danh sách sinh nhật, kỷ niệm, tình nguyện viên và những người khác với bộ lọc phân loại"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Chọn %s để chạy báo cáo này."
+
+#: 
+msgid "Choose events"
+msgstr "Chọn sự kiện"
+
+#: 
+msgid "Choose..."
+msgstr "Chọn..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logo Nhà Thờ"
+
+#: 
+msgid "Columns per Page"
+msgstr "Cột Trên Mỗi Trang"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Thân mến %s Gia đình,\n"
+"\n"
+"Vui lòng tìm bảng kê quỹ %d của bạn từ %s được đính kèm trong email này.\n"
+"\n"
+"Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với văn phòng nhà thờ.\n"
+"\n"
+"Cảm ơn vì sự hào phóng của bạn."
+
+#: 
+msgid "Download CSV"
+msgstr "Tải xuống CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Email %d Tài Liệu Thuế"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Bật hoặc tắt mô-đun Tài chính và menu thanh bên."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Bật hoặc tắt mô-đun Huy động quỹ."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Không thể xóa logo nhà thờ"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Không thể tải lên logo nhà thờ"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL logo dự phòng cho các mẫu email, chỉ được sử dụng khi chưa tải lên logo nhà thờ trên trang Thông tin nhà thờ. Các trang riêng của ứng dụng bỏ qua cài đặt này và luôn sử dụng logo đã tải lên hoặc logo ChurchCRM mặc định. Phải là URL http(s) tuyệt đối. Để hiển thị tốt nhất trên các ứng dụng email, hãy sử dụng hình ảnh banner rộng với tỷ lệ khung hình xấp xỉ 3.5:1 (ví dụ: 350×100 px), PNG hoặc JPG, được phục vụ qua HTTPS. Để trở về logo ChurchCRM mặc định, hãy để trống hoặc nhập giá trị không hợp lệ."
+
+#: 
+msgid "Finance Module"
+msgstr "Mô-đun Tài chính"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Tìm những người không tham dự sự kiện"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Tìm những tình nguyện viên khớp với hai mã cơ hội cụ thể"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Cơ hội Tình nguyện Đầu tiên"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Tờ rơi Gấp"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Mô-đun Huy động quỹ"
+
+#: 
+msgid "Giving History"
+msgstr "Lịch sử Quy"
+
+#: 
+msgid "Last Gift"
+msgstr "Quà Tặng Cuối cùng"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Để trống cho tất cả các phân loại."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Số lượng tối đa các tài liệu năm thuế để hiển thị trên mỗi hồ sơ gia đình (0 = không giới hạn)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Số năm thuế tối đa được hiển thị cho mỗi gia đình"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Kỷ niệm Thành viên"
+
+#: 
+msgid "Missing People"
+msgstr "Những Người Mất Tích"
+
+#: 
+msgid "No giving history found."
+msgstr "Không tìm thấy lịch sử quy."
+
+#: 
+msgid "No people match these filters."
+msgstr "Không có người nào khớp với các bộ lọc này."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Một trang thư mục trên mỗi tờ, ở định hướng dọc."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Chỉ cho phép các lược đồ http và https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF hoặc WebP. Banner rộng khoảng 3.5:1 (ví dụ: 700x200) hoạt động tốt nhất; PNG trong suốt được ưa thích."
+
+#: 
+msgid "Page Layout"
+msgstr "Bố Cục Trang"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Những người tham gia trong một tháng cụ thể"
+
+#: 
+msgid "Pledged"
+msgstr "Cam Kết"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "In %d Tài Liệu Thuế"
+
+#: 
+msgid "Queries"
+msgstr "Truy Vấn"
+
+#: 
+msgid "Recent Friends"
+msgstr "Bạn Gần Đây"
+
+#: 
+msgid "Report not found"
+msgstr "Không tìm thấy báo cáo"
+
+#: 
+msgid "Run Report"
+msgstr "Chạy Báo Cáo"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Cơ hội Tình nguyện Thứ hai"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Được hiển thị ở thanh bên, trên trang đăng nhập và trong email. Tải lên logo thay thế thương hiệu ChurchCRM ở mọi nơi nó xuất hiện."
+
+#: 
+msgid "Single Pages"
+msgstr "Các Trang Duy Nhất"
+
+#: 
+msgid "Tax Documents"
+msgstr "Tài liệu Thuế"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Không thể gửi email tài liệu thuế. Vui lòng kiểm tra cài đặt máy chủ email của bạn."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Hai trang nửa kích thước cạnh nhau trên mỗi tờ ngang, theo thứ tự sách. In hai mặt với \"lật trên cạnh ngắn\", sau đó gập đống làm đôi. Các cột được tính trên mỗi nửa trang."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Không thể gửi email tài liệu thuế: không tìm thấy dữ liệu thanh toán cho năm đó."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Không thể gửi email tài liệu thuế: gia đình này không có địa chỉ email trong hồ sơ."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Không thể phân giải tên máy chủ OpenLP. Kiểm tra địa chỉ và kết nối mạng của bạn."
+
+#: 
+msgid "Upload"
+msgstr "Tải Lên"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Sử dụng logo ChurchCRM mặc định"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Xem Quy Đầy Đủ Gia Đình"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Cơ hội Tình nguyện"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Tình nguyện viên cho Hai Cơ hội"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD Đã Thanh Toán"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "để kiểm tra lỗi xung quanh thời gian sự cố này, tải xuống và đính kèm tệp nhật ký liên quan vào vấn đề GitHub của bạn - điều này giúp chúng tôi sửa chữa sự cố mà không cần đặt câu hỏi tiếp theo."
+
+#: 
+msgid "system logs"
+msgstr "nhật ký hệ thống"
 

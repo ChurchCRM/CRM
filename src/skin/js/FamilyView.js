@@ -10,7 +10,7 @@ function initializeFamilyView() {
 
   // Check if family has a photo (uploaded or gravatar) and show/hide view button accordingly
   // Query the avatar info endpoint to see if there's an actual photo to display
-  fetch(window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/avatar")
+  fetch(`${window.CRM.root}/api/family/${window.CRM.currentFamily}/avatar`)
     .then((response) => response.json())
     .then((data) => {
       // Show view button only if there's an actual uploaded photo (hasPhoto=true)
@@ -102,8 +102,8 @@ function initializeFamilyView() {
     // or an explicit All-Time selection would silently be reinterpreted
     // server-side as "nothing selected, use ShowSince".
     function getPledgeAjaxUrl(fyid) {
-      var base = window.CRM.root + "/api/payments/family/" + window.CRM.currentFamily + "/list";
-      return base + "?fyid=" + fyid;
+      const base = `${window.CRM.root}/api/payments/family/${window.CRM.currentFamily}/list`;
+      return `${base}?fyid=${fyid}`;
     }
 
     // Determine initial FY from URL param, falling back to the active pill's data-fy
@@ -112,13 +112,13 @@ function initializeFamilyView() {
     // EXPLICIT fyid=0 (All Time) — `parseInt(...) || activePillFy` treated 0 as
     // falsy and silently reverted an explicit All-Time selection back to the
     // current FY on refresh or when opening a copied/bookmarked URL.
-    var urlParams = new URLSearchParams(window.location.search);
-    var activePillFy = parseInt($(".pledge-fy-pill.active").data("fy") || "0", 10) || 0;
+    const urlParams = new URLSearchParams(window.location.search);
+    const activePillFy = parseInt($(".pledge-fy-pill.active").data("fy") || "0", 10) || 0;
     // Use rawFyid-null check rather than parseInt()|| to correctly preserve
     // an explicit fyid=0 (All Time): parseInt("0") is falsy and would
     // incorrectly revert to activePillFy on refresh.
-    var rawFyid = urlParams.get("fyid");
-    var initialFyid = rawFyid !== null ? parseInt(rawFyid, 10) : activePillFy;
+    const rawFyid = urlParams.get("fyid");
+    let initialFyid = rawFyid !== null ? parseInt(rawFyid, 10) : activePillFy;
 
     // If the resolved FY doesn't correspond to any rendered pill (e.g. a
     // stale bookmark for a fiscal year this family has no history in), fall
@@ -127,15 +127,15 @@ function initializeFamilyView() {
     // a different pill (previously: whichever pill happened to be first,
     // i.e. All Time) lit up as if it were active.
     // Also fix the browser URL so a refresh doesn't loop the same mismatch.
-    if (initialFyid !== 0 && !$(".pledge-fy-pill[data-fy='" + initialFyid + "']").length) {
+    if (initialFyid !== 0 && !$(`.pledge-fy-pill[data-fy='${initialFyid}']`).length) {
       initialFyid = activePillFy;
       // Correct the URL so refreshing/sharing doesn't loop the same mismatch.
-      var fixParams = new URLSearchParams(window.location.search);
+      const fixParams = new URLSearchParams(window.location.search);
       fixParams.set("fyid", String(initialFyid));
-      window.history.replaceState({}, "", window.location.pathname + "?" + fixParams.toString());
+      window.history.replaceState({}, "", `${window.location.pathname}?${fixParams.toString()}`);
     }
 
-    var dataTableConfig = {
+    const dataTableConfig = {
       ajax: {
         url: getPledgeAjaxUrl(initialFyid),
         dataSrc: "data",
@@ -173,8 +173,8 @@ function initializeFamilyView() {
           title: "",
           data: "GroupKey",
           className: "all no-export",
-          render: (data, type, row) => {
-            const editUrl = window.CRM.root + "/finance/pledge/" + encodeURIComponent(row.GroupKey) + "/edit";
+          render: (_data, _type, row) => {
+            const editUrl = `${window.CRM.root}/finance/pledge/${encodeURIComponent(row.GroupKey)}/edit`;
             return (
               '<div class="dropdown">' +
               '<button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>' +
@@ -199,6 +199,48 @@ function initializeFamilyView() {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
+    // Update the YTD badge and summary row from current DataTable rows
+    function updateGivingSummary(table) {
+      let totalPledged = 0;
+      let totalPaid = 0;
+      table
+        .rows({ filter: "applied" })
+        .data()
+        .each((row) => {
+          const amt = parseFloat(row.Amount) || 0;
+          if (row.PledgeOrPayment === "Pledge") {
+            totalPledged += amt;
+          } else {
+            totalPaid += amt;
+          }
+        });
+
+      // Summary row
+      const hasSomeData = totalPledged > 0 || totalPaid > 0;
+      if (hasSomeData) {
+        $("#giving-total-pledged").text(window.CRM.currency.format(totalPledged));
+        $("#giving-total-paid").text(window.CRM.currency.format(totalPaid));
+        $("#giving-summary-row").removeClass("d-none");
+      } else {
+        $("#giving-summary-row").addClass("d-none");
+      }
+    }
+
+    // Update YTD badge from full dataset (always current-FY payments)
+    function updateYTDBadge(allData, currentFY) {
+      let ytdTotal = 0;
+      allData.each((row) => {
+        if (row.PledgeOrPayment === "Payment" && row.FormattedFY === currentFY) {
+          ytdTotal += parseFloat(row.Amount) || 0;
+        }
+      });
+      if (ytdTotal > 0) {
+        $("#ytd-total-badge")
+          .text(`${i18next.t("YTD")} ${window.CRM.currency.format(ytdTotal)}`)
+          .removeClass("d-none");
+      }
+    }
+
     // Force both types visible in API, then init DataTable
     Promise.all([
       window.CRM.APIRequest({
@@ -216,11 +258,25 @@ function initializeFamilyView() {
     ])
       .catch(() => {}) // ignore errors
       .then(() => {
+        // FY pills hold numeric IDs; payment rows expose the formatted fiscal year.
+        const currentFY = window.CRM.currentFY || "";
+
+        dataTableConfig.initComplete = () => {
+          const table = $("#pledge-payment-v2-table").DataTable();
+          updateYTDBadge(table.rows().data(), currentFY);
+          updateGivingSummary(table);
+        };
+
         const pledgeTable = $("#pledge-payment-v2-table").DataTable(dataTableConfig);
+
+        // Re-calculate summary on every draw (filter/sort change)
+        pledgeTable.on("draw", () => {
+          updateGivingSummary(pledgeTable);
+        });
 
         // Set the active FY pill based on the initial fyid
         $(".pledge-fy-pill").removeClass("active");
-        $(".pledge-fy-pill[data-fy='" + (initialFyid || 0) + "']").addClass("active");
+        $(`.pledge-fy-pill[data-fy='${initialFyid || 0}']`).addClass("active");
         if (!$(".pledge-fy-pill.active").length) {
           // If no pill matched (e.g. initialFyid not in list), default to first pill
           $(".pledge-fy-pill").first().addClass("active");
@@ -253,7 +309,7 @@ function initializeFamilyView() {
           window.history.replaceState(
             {},
             "",
-            window.location.pathname + (params.toString() ? "?" + params.toString() : ""),
+            window.location.pathname + (params.toString() ? `?${params.toString()}` : ""),
           );
           // Reload DataTable with the new server-side fyid
           pledgeTable.ajax.url(getPledgeAjaxUrl(fy)).load();
@@ -264,7 +320,7 @@ function initializeFamilyView() {
   $("#onlineVerify").on("click", () => {
     window.CRM.APIRequest({
       method: "POST",
-      path: "family/" + window.CRM.currentFamily + "/verify",
+      path: `family/${window.CRM.currentFamily}/verify`,
     }).then(() => {
       $("#confirm-verify").modal("hide");
       showGlobalMessage(i18next.t("Verification email sent"), "success");
@@ -274,7 +330,7 @@ function initializeFamilyView() {
   $("#verifyNow").on("click", () => {
     window.CRM.APIRequest({
       method: "POST",
-      path: "family/" + window.CRM.currentFamily + "/verify/now",
+      path: `family/${window.CRM.currentFamily}/verify/now`,
     }).then(() => {
       $("#confirm-verify").modal("hide");
       showGlobalMessage(i18next.t("Verification recorded"), "success");
@@ -283,7 +339,7 @@ function initializeFamilyView() {
 
   $("#verifyURL").on("click", () => {
     window.CRM.APIRequest({
-      path: "family/" + window.CRM.currentFamily + "/verify/url",
+      path: `family/${window.CRM.currentFamily}/verify/url`,
     }).then((data) => {
       $("#confirm-verify").modal("hide");
 
@@ -338,7 +394,7 @@ function initializeFamilyView() {
             const btn = document.getElementById("copyVerifyUrlBtn");
             const originalHtml = btn.innerHTML;
 
-            btn.innerHTML = '<i class="fa-solid fa-check me-2"></i>' + i18next.t("Copied!");
+            btn.innerHTML = `<i class="fa-solid fa-check me-2"></i>${i18next.t("Copied!")}`;
             btn.classList.add("btn-success");
             btn.classList.remove("btn-info");
 
@@ -430,7 +486,7 @@ function initializeFamilyView() {
     $.ajax({
       type: "GET",
       dataType: "json",
-      url: window.CRM.root + "/plugins/status/mailchimp",
+      url: `${window.CRM.root}/plugins/status/mailchimp`,
       success: (pluginData) => {
         if (pluginData.success && pluginData.isActive && pluginData.isConfigured) {
           // Show the MailChimp status container
@@ -440,7 +496,7 @@ function initializeFamilyView() {
           $.ajax({
             type: "GET",
             dataType: "json",
-            url: window.CRM.root + "/plugins/mailchimp/api/family/" + window.CRM.currentFamily,
+            url: `${window.CRM.root}/plugins/mailchimp/api/family/${window.CRM.currentFamily}`,
             success: (data) => {
               if (!data || data.length === 0) {
                 $("#mailchimp-status").html(i18next.t("Not Subscribed"));
@@ -448,12 +504,12 @@ function initializeFamilyView() {
               }
               for (const emailData of data) {
                 let textVal = "";
-                const lists = emailData["list"] || [];
+                const lists = emailData.list || [];
                 for (const list of lists) {
-                  const listName = window.CRM.escapeHtml(list["name"] || "");
-                  const listStatus = window.CRM.escapeHtml(String(list["status"] || ""));
-                  const listOpenRate = list["stats"]?.["avg_open_rate"] || 0;
-                  if (list["status"] !== 404) {
+                  const listName = window.CRM.escapeHtml(list.name || "");
+                  const listStatus = window.CRM.escapeHtml(String(list.status || ""));
+                  const listOpenRate = list.stats?.avg_open_rate || 0;
+                  if (list.status !== 404) {
                     textVal += `${listName} (${listStatus}) - ${(listOpenRate * 100).toFixed(2)}% ${i18next.t("open rate")}`;
                   }
                 }
@@ -464,7 +520,7 @@ function initializeFamilyView() {
               }
             },
             error: () => {
-              $("#mailchimp-status").html('<span class="text-muted">' + i18next.t("Unable to load") + "</span>");
+              $("#mailchimp-status").html(`<span class="text-muted">${i18next.t("Unable to load")}</span>`);
             },
           });
         }
@@ -477,7 +533,7 @@ function initializeFamilyView() {
       if (!confirm(i18next.t("Are you sure you want to permanently delete this pledge record?"))) {
         return;
       }
-      fetch(window.CRM.root + "/api/payments/" + encodeURIComponent(groupKey), {
+      fetch(`${window.CRM.root}/api/payments/${encodeURIComponent(groupKey)}`, {
         method: "DELETE",
       })
         .then((res) => {

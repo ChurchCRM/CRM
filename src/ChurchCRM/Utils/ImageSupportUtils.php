@@ -68,42 +68,30 @@ class ImageSupportUtils
     public const FPDF_SUPPORTED_TYPES = ['JPG', 'JPEG', 'PNG'];
 
     /**
-     * Hard ceiling on the number of source pixels an upload may carry,
-     * whatever the server's memory limit. 50 megapixels covers every mainstream
-     * camera (a 24 MP body shoots 6000x4000; a 50 MP body 8192x6144 is just
-     * over and needs a resize first) while keeping the decoded raster in the
-     * hundreds of megabytes at most.
+     * Largest upload accepted, in source pixels: 16 megapixels (4000x4000).
+     * That covers a 12 MP phone photo (4032x3024) and a 16 MP camera; anything
+     * larger is resized before uploading. Stored photos are 600x600 and the
+     * church logo 1200x400, so nothing larger is ever kept.
      *
      * The compressed byte limit alone does not bound decoded memory: a valid
      * 12000x12000 PNG is about 140 KB on disk but 144 million pixels once GD
      * has decoded it. See createResizedImage().
      */
-    public const MAX_SOURCE_PIXELS = 50_000_000;
+    public const MAX_SOURCE_PIXELS = 16_000_000;
 
     /**
-     * Rough peak bytes GD needs per source pixel while decoding, by format.
-     * The truecolor raster imagecreatefromstring() builds is 4 bytes/pixel.
-     * libjpeg feeds it scanline by scanline, so JPEG peaks at about that.
-     * libpng and libwebp first decode the whole image into their own buffer
-     * (up to 4 bytes/pixel) and GD copies it into the raster, so those peak
-     * at roughly twice. GIF decodes into a palette image (1 byte/pixel).
+     * Worst-case bytes GD holds per source pixel while decoding (PNG and WebP:
+     * the codec's own buffer plus GD's 4-byte raster). One figure for every
+     * format keeps the limit the same whatever the file type.
      */
-    private const DECODE_BYTES_PER_PIXEL = [
-        IMAGETYPE_JPEG => 4,
-        IMAGETYPE_GIF  => 2,
-        IMAGETYPE_PNG  => 8,
-        IMAGETYPE_WEBP => 8,
-    ];
-
-    /** Bytes per pixel assumed for a format not listed above. */
-    private const DEFAULT_DECODE_BYTES_PER_PIXEL = 8;
+    private const DECODE_BYTES_PER_PIXEL = 8;
 
     /**
-     * Share of the remaining memory_limit the source raster may take. The rest
-     * is left for the resized copy, the PNG encoder and the remainder of the
-     * request.
+     * Share of memory_limit a decode may use; the rest is left for the resized
+     * copy, the PNG encoder and the rest of the request. At the 256M shipped
+     * default this allows 16.7 MP, so MAX_SOURCE_PIXELS is the binding limit.
      */
-    private const DECODE_MEMORY_HEADROOM = 0.8;
+    private const DECODE_MEMORY_SHARE = 0.5;
 
     /**
      * Check if a file extension is allowed.
@@ -234,36 +222,33 @@ class ImageSupportUtils
     }
 
     /**
-     * Number of source pixels an upload of the given type may carry on this
-     * server: MAX_SOURCE_PIXELS, lowered when the memory left under
-     * memory_limit could not hold the decoded raster. An unlimited
-     * memory_limit (-1) leaves only the hard ceiling.
-     *
-     * @param int $imageType One of the IMAGETYPE_* constants from getimagesize()
+     * Source pixels an upload may carry: MAX_SOURCE_PIXELS, lowered only when
+     * memory_limit is too small to decode that many. Depends on the configured
+     * limit alone, never on the memory in use, so the same image gets the same
+     * answer on every request. An unlimited memory_limit (-1) leaves the fixed
+     * limit.
      */
-    public static function getDecodePixelBudget(int $imageType): int
+    public static function getDecodePixelBudget(): int
     {
         $memoryLimit = self::parseIniBytes((string) ini_get('memory_limit'));
         if ($memoryLimit <= 0) {
             return self::MAX_SOURCE_PIXELS;
         }
 
-        $bytesPerPixel = self::DECODE_BYTES_PER_PIXEL[$imageType] ?? self::DEFAULT_DECODE_BYTES_PER_PIXEL;
-        $available = $memoryLimit - memory_get_usage(true);
-        $memoryBudget = (int) floor($available * self::DECODE_MEMORY_HEADROOM / $bytesPerPixel);
+        $memoryBudget = (int) floor($memoryLimit * self::DECODE_MEMORY_SHARE / self::DECODE_BYTES_PER_PIXEL);
 
-        return max(0, min(self::MAX_SOURCE_PIXELS, $memoryBudget));
+        return min(self::MAX_SOURCE_PIXELS, $memoryBudget);
     }
 
     /**
      * Read the dimensions from the image header and refuse anything GD could
-     * not decode within budget, before a single pixel is allocated.
+     * not decode within the size limit, before a single pixel is allocated.
      * getimagesizefromstring() only parses the header, so this costs nothing
      * for the 144-million-pixel PNG that would otherwise exhaust the worker.
      *
      * @return array{0:int,1:int,2:int} width, height and IMAGETYPE_* constant
      * @throws \Exception when the header cannot be read
-     * @throws PhotoSizeException when the image is over the pixel budget
+     * @throws PhotoSizeException when the image is over the size limit
      */
     public static function assertWithinDecodeBudget(string $fileData): array
     {
@@ -276,7 +261,7 @@ class ImageSupportUtils
         $height = (int) $info[1];
         $type = (int) $info[2];
         $pixels = $width * $height;
-        $budget = self::getDecodePixelBudget($type);
+        $budget = self::getDecodePixelBudget();
 
         if ($pixels > $budget) {
             // Whole pixel counts, not "144.0 megapixels": SlimUtils::renderErrorJSON()
@@ -300,12 +285,12 @@ class ImageSupportUtils
      * than the box are never upscaled. Alpha is preserved so transparent
      * PNG/GIF sources survive the re-encode.
      *
-     * The source dimensions are checked against the decode budget first:
+     * The source dimensions are checked against the size limit first:
      * the output box bounds the stored image, not the memory needed to decode
-     * the source, so an over-budget image is rejected before GD allocates.
+     * the source, so an over-limit image is rejected before GD allocates.
      *
      * @throws \Exception when the bytes are not a decodable image or GD fails
-     * @throws PhotoSizeException when the source is over the pixel budget
+     * @throws PhotoSizeException when the source is over the size limit
      */
     public static function createResizedImage(string $fileData, int $maxWidth, int $maxHeight): \GdImage
     {

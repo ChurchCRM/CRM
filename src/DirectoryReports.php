@@ -186,9 +186,23 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
         </div>
       </div>
 
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Page Layout') ?>:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sDirLayout" value="pages" id="sDirLayoutPages" checked>
+          <label class="form-check-label" for="sDirLayoutPages"><?= gettext('Single Pages') ?></label>
+          <div class="form-text"><?= gettext('One directory page per sheet, portrait.') ?></div>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sDirLayout" value="booklet" id="sDirLayoutBooklet">
+          <label class="form-check-label" for="sDirLayoutBooklet"><?= gettext('Folded Booklet') ?></label>
+          <div class="form-text"><?= gettext('Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with "flip on short edge", then fold the stack in half. Columns are counted per half page.') ?></div>
+        </div>
+      </div>
+
       <div class="row g-3 mb-3">
         <div class="col-md-4">
-          <label class="form-label"><?= gettext('Number of Columns') ?>:</label>
+          <label class="form-label"><?= gettext('Columns per Page') ?>:</label>
           <div class="d-flex gap-3">
             <?php foreach ([1 => '1 col', 2 => '2 cols', 3 => '3 cols'] as $val => $label) : ?>
               <div class="form-check">

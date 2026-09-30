@@ -167,7 +167,7 @@ class Photo
 
         // Scale down to fit within PHOTO_WIDTH x PHOTO_HEIGHT, preserving aspect
         // ratio and alpha. Never upscales. Rejects sources over the decode
-        // pixel budget before GD allocates anything.
+        // size limit before GD allocates anything.
         $resizedImage = ImageSupportUtils::createResizedImage($fileData, self::PHOTO_WIDTH, self::PHOTO_HEIGHT);
 
         // Delete any existing photo first
