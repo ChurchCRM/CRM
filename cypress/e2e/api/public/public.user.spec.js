@@ -179,10 +179,10 @@ describe("API Public User", () => {
     });
 
     // Lockout tests
-    // Uses `limited.user` (seeded, password "changeme") so admin credentials are not affected.
-    // The DB is reset between Cypress runs so lockout state does not persist across suites.
+    // Uses the dedicated `login_lockout_user` (seeded, password "changeme"): this test locks it by
+    // design, so no other spec may sign in as it. The DB is reset between Cypress runs.
     describe("Account Lockout", () => {
-        const LOCKOUT_USER = "limited.user";
+        const LOCKOUT_USER = "login_lockout_user";
         const LOCKOUT_PASS = "changeme";
         const MAX_FAILURES = 5; // matches iMaxFailedLogins default in SystemConfig
 

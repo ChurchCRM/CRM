@@ -41,13 +41,9 @@ class AuthService
     }
 
     /**
-     * $_SESSION['bManageGroups'] / ['bFinance'] are only ever populated by
-     * LocalAuthentication at browser login (see LocalAuthentication::authenticate()).
-     * API-key callers (APITokenAuthentication) never populate them, so checking
-     * $_SESSION alone denies every non-admin API-key user regardless of their
-     * actual permissions (issue #9830). Resolve known role names against the
-     * live permission state on the authenticated user instead; fall back to the
-     * legacy $_SESSION flag for any role name not in the map below.
+     * Roles are resolved against the live permission state of the authenticated
+     * user, so a permission change takes effect on the next request for browser
+     * sessions and API keys alike (issue #9830).
      */
     private static function currentUserHasRole(User $currentUser, string $role): bool
     {
@@ -58,6 +54,6 @@ class AuthService
             default => false,
         };
 
-        return $liveCheck || ($_SESSION[$role] ?? false) || $currentUser->isAdmin();
+        return $liveCheck || $currentUser->isAdmin();
     }
 }
