@@ -157,6 +157,63 @@ describe("Admin → Ministry Settings", () => {
         cy.get("#ministry-topup-created").invoke("text").should("match", /— \d+ new occurrences?$/);
     });
 
+    /** The reminder lead time arrives late, as on a slow connection. */
+    function slowLeadTime() {
+        cy.intercept("GET", "**/admin/api/system/config/iVolunteerReminderLeadHours", (req) => {
+            req.on("response", (res) => {
+                res.setDelay(2500);
+            });
+        }).as("leadValue");
+    }
+
+    it("sends nothing when Save is pressed before the current values have loaded (D32)", () => {
+        adminApi("POST", SETTING_URL, { value: "v2" }, 200);
+        adminApi("POST", LEAD_URL, { value: "36" }, 200);
+        freshAdminLogin();
+        slowLeadTime();
+        cy.intercept("POST", "**/admin/api/system/config/*").as("saveSetting");
+        cy.visit(PAGE_URL);
+
+        // An early press, while the lead time field is still empty.
+        cy.get("#ministrySettingsPanel input[name='iVolunteerReminderLeadHours']").should("have.value", "");
+        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click({ force: true });
+
+        cy.wait("@leadValue");
+        cy.get("#ministrySettingsPanel input[name='iVolunteerReminderLeadHours']").should("have.value", "36");
+        cy.then(() => {
+            adminApi("GET", LEAD_URL, null, 200).its("body.value").should("eq", "36");
+        });
+        cy.get("@saveSetting.all").should("have.length", 0);
+    });
+
+    it("keeps Save disabled until the current values have loaded (D32)", () => {
+        adminApi("POST", SETTING_URL, { value: "v2" }, 200);
+        freshAdminLogin();
+        slowLeadTime();
+        cy.visit(PAGE_URL);
+
+        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").should("be.disabled");
+        // A field changed now would be overwritten by the value on its way.
+        cy.get("#ministrySettingsPanel input[name='iVolunteerSchedulingHorizonWeeks']").should("be.disabled");
+        cy.wait("@leadValue");
+        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").should("be.enabled");
+        cy.get("#ministrySettingsPanel input[name='iVolunteerSchedulingHorizonWeeks']").should("be.enabled");
+    });
+
+    it("keeps Save disabled and says so when a current value cannot be loaded (D32)", () => {
+        adminApi("POST", SETTING_URL, { value: "v2" }, 200);
+        freshAdminLogin();
+        cy.intercept("GET", "**/admin/api/system/config/iVolunteerSchedulingHorizonWeeks", {
+            statusCode: 500,
+            body: { message: "boom" },
+        }).as("horizonValue");
+        cy.visit(PAGE_URL);
+
+        cy.wait("@horizonValue");
+        cy.get("#ministrySettingsPanel .settings-panel-load-error").should("be.visible");
+        cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").should("be.disabled");
+    });
+
     it("is reachable while V1 is active, and switching to V2 here makes Ministries appear", () => {
         adminApi("POST", SETTING_URL, { value: "v1" }, 200);
         freshAdminLogin();
@@ -164,7 +221,7 @@ describe("Admin → Ministry Settings", () => {
 
         // No Ministries heading and no dashboard button in V1 — this page is the way in.
         cy.get('a[href$="/ministries/dashboard"]').should("not.exist");
-        cy.get("#ministrySettingsPanel select[name='sVolunteerVersion']").should("have.value", "v1").select("v2");
+        cy.get("#ministrySettingsPanel select[name='sVolunteerVersion']").should("be.enabled").and("have.value", "v1").select("v2");
         cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();
 
         // onSave reloads the page; the sidebar and the header button follow.

@@ -49,6 +49,8 @@ describe("People Dashboard — Settings Panel", () => {
         cy.contains("button", "People Settings").click();
         cy.get("#peopleSettings.show", { timeout: 10000 }).should("be.visible");
         cy.wait("@loadSelfReg");
+        // The panel unlocks its fields once every current value has loaded.
+        cy.get("#peopleSettings #settingsPanelSaveBtn").should("not.be.disabled");
 
         const yesRadio = "#peopleSettings input[name='bEnableSelfRegistration'][value='1']";
         const noRadio = "#peopleSettings input[name='bEnableSelfRegistration'][value='0']";

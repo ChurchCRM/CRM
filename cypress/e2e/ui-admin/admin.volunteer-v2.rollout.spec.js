@@ -132,7 +132,7 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
             // which exists in every rollout state — the dashboard it used to sit
             // on does not exist until V2 is on.
             cy.visit("/admin/ministry-settings");
-            cy.get('#ministrySettingsPanel select[name="sVolunteerVersion"]').should("have.value", "v1").select("v2");
+            cy.get('#ministrySettingsPanel select[name="sVolunteerVersion"]').should("be.enabled").and("have.value", "v1").select("v2");
             cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").click();
             cy.get(".notyf__toast, .alert-success", { timeout: 10000 }).should("exist");
 
