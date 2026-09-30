@@ -6,7 +6,9 @@
  * dialog's class and title warnings, and the Staff these events hint. Design §0.8 D30, §5.4.
  *
  * Fixtures go in through the admin API. Order in every hook is fixture → login → visit, because
- * cy.request() rotates the PHP session cookie.
+ * cy.request() rotates the PHP session cookie. Since D31 a schedule is only created while an event
+ * it follows is upcoming, so the "found nothing" fixtures follow events beyond the scheduling
+ * horizon, or events moved into the past after the schedule was made.
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
@@ -125,6 +127,17 @@ describe("Volunteer v2 D30 — why nothing was generated, and one schedule per c
         });
         cy.then(() => {
             admin("POST", `/api/ministries/teams/${teamId}`, { classGroupId: classId });
+            const single = (title, offset, linkedGroupId = null) => ({
+                title,
+                eventTypeId: 1,
+                linkedGroupId,
+                date: isoDate(offset),
+                startTime: "09:30",
+                endTime: "10:30",
+            });
+            admin("POST", `${MINISTRIES_URL}/${ministryId}/events`, single(`${PREFIX} Faith City Far Picnic`, 70, classId), 201);
+            admin("POST", `${MINISTRIES_URL}/${ministryId}/events`, single(GONE_TITLE, 3), 201);
+            admin("POST", `${MINISTRIES_URL}/${ministryId}/events`, single(`${PREFIX} Empty Class Last`, 3, emptyClassId), 201);
             admin(
                 "POST",
                 `${MINISTRIES_URL}/${ministryId}/events`,
@@ -172,6 +185,14 @@ describe("Volunteer v2 D30 — why nothing was generated, and one schedule per c
                 emptyScheduleId = resp.body.schedule.id;
             });
         });
+        cy.then(() => {
+            cy.dbQuery("UPDATE events_event SET event_start = ?, event_end = ? WHERE event_title IN (?, ?)", [
+                `${isoDate(-3)} 09:30:00`,
+                `${isoDate(-3)} 10:30:00`,
+                GONE_TITLE,
+                `${PREFIX} Empty Class Last`,
+            ]);
+        });
     });
 
     after(() => {
@@ -183,25 +204,44 @@ describe("Volunteer v2 D30 — why nothing was generated, and one schedule per c
         freshAdminLogin();
     });
 
-    it("shows each class's upcoming meetings in the schedule dialog and warns at none", () => {
+    it("shows each class's upcoming meetings in the schedule dialog, a class with none disabled", () => {
         openSchedulesTab();
         cy.get("#schedule-add-btn").click();
         cy.get("#scheduleModal").should("be.visible");
         cy.get("#schedule-form-link-mode").should("have.value", "class");
         cy.get("#schedule-form-group").should("have.value", String(classId));
-        cy.get(`#schedule-form-group option[value="${classId}"]`).should("have.text", `${CLASS_NAME} (no upcoming meetings)`);
+        cy.get(`#schedule-form-group option[value="${classId}"]`).should("have.text", `${CLASS_NAME} (1 upcoming)`);
         cy.get(`#schedule-form-group option[value="${busyClassId}"]`)
             .invoke("text")
             .should("match", new RegExp(`^${BUSY_CLASS} \\(\\d+ upcoming\\)$`));
-        cy.get("#schedule-form-group-warning")
-            .should("be.visible")
-            .and("contain", `${CLASS_NAME} has no upcoming meetings on the calendar`)
-            .and("contain", "Calendar tab");
+        cy.get(`#schedule-form-group option[value="${emptyClassId}"]`)
+            .should("be.disabled")
+            .and("have.text", `${EMPTY_CLASS} (no upcoming meetings — add its meetings first)`);
+        cy.get("#schedule-form-group-hint").should("be.visible").and("contain", "Calendar tab");
+        cy.get("#schedule-form-group-warning").should("not.be.visible");
 
         cy.get("#schedule-form-group").select(String(busyClassId));
         cy.get("#schedule-form-group-warning").should("not.be.visible");
         cy.get("#schedule-form-link-mode").select("event_type");
         cy.get("#schedule-form-group-warning").should("not.be.visible");
+    });
+
+    it("warns at none for a stored class whose meetings have run out, and keeps it selectable", () => {
+        openSchedulesTab();
+        cy.get(`.volunteer-schedule-edit[data-schedule-id="${emptyScheduleId}"]`, { timeout: 15000 })
+            .closest("tr")
+            .find("[data-bs-toggle='dropdown']")
+            .click();
+        cy.get(`.volunteer-schedule-edit[data-schedule-id="${emptyScheduleId}"]`).should("be.visible").click();
+        cy.get("#scheduleModal").should("be.visible");
+        cy.get("#schedule-form-group").should("have.value", String(emptyClassId));
+        cy.get(`#schedule-form-group option[value="${emptyClassId}"]`)
+            .should("not.be.disabled")
+            .and("have.text", `${EMPTY_CLASS} (no upcoming meetings)`);
+        cy.get("#schedule-form-group-warning")
+            .should("be.visible")
+            .and("contain", `${EMPTY_CLASS} has no upcoming meetings on the calendar`)
+            .and("contain", "Calendar tab");
     });
 
     it("warns when the schedule's event title has nothing upcoming", () => {

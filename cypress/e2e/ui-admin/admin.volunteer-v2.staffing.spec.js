@@ -172,9 +172,9 @@ function fillScheduleBasics(name) {
     cy.get("#schedule-form-event-type").should("contain", "Church Service").and("contain", "Sunday School");
     cy.get("#schedule-form-event-type").select("Church Service");
     // The Event picker (2026-09-18): a schedule follows ONE event series of the
-    // type; "Any event of this type" is the explicit opt-out.
+    // type, and there is no "any event of this type" to opt out with (D31).
     cy.get("#schedule-form-title-filter").should("be.visible");
-    cy.get("#schedule-form-title-filter option").first().should("have.value", "").and("contain", "Any event of this type");
+    cy.get("#schedule-form-title-filter option").first().should("have.value", "").and("be.disabled").and("contain", "Choose an event");
     cy.get(`#schedule-form-title-filter option[value="${WEDNESDAY_EVENTS}"]`).should("exist");
     cy.get("#schedule-form-title-filter").select(WEDNESDAY_EVENTS);
 }
