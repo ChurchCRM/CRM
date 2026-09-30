@@ -258,10 +258,10 @@ class   SystemConfig
             'bSearchIncludeDepositsMax'            => new ConfigItem('bSearchIncludeDepositsMax', 'text', '5', gettext('Maximum number of Deposits')),
             'bSearchIncludePaymentsMax'            => new ConfigItem('bSearchIncludePaymentsMax', 'text', '5', gettext('Maximum number of Payments')),
             'bSearchIncludeAddressesMax'           => new ConfigItem('bSearchIncludeAddressesMax', 'text', '15', gettext('Maximum number of Addresses')),
-            'iPersonConfessionFatherCustomField'   => new ConfigItem('iPersonConfessionFatherCustomField', 'ajax', '', gettext('Field where Father Of Confession is listed, must be a people of group type'), '', '/api/system/custom-fields/person/?typeId=9'),
-            'iPersonConfessionDateCustomField'     => new ConfigItem('iPersonConfessionDateCustomField', 'ajax', '', gettext('Field where last Confession is stored, must be a date type'), '', '/api/system/custom-fields/person/?typeId=2'),
-            'iDoNotEmailPropertyId'                => new ConfigItem('iDoNotEmailPropertyId', 'ajax', '', gettext('Person property used to exclude members from email lists'), '', '/api/system/properties/person'),
-            'iDoNotSmsPropertyId'                  => new ConfigItem('iDoNotSmsPropertyId', 'ajax', '', gettext('Person property used to exclude members from SMS/text lists'), '', '/api/system/properties/person'),
+            'iPersonConfessionFatherCustomField'   => new ConfigItem('iPersonConfessionFatherCustomField', 'ajax', '', gettext('Field where Father Of Confession is listed, must be a people of group type'), '', '/admin/api/system/custom-fields/person/?typeId=9'),
+            'iPersonConfessionDateCustomField'     => new ConfigItem('iPersonConfessionDateCustomField', 'ajax', '', gettext('Field where last Confession is stored, must be a date type'), '', '/admin/api/system/custom-fields/person/?typeId=2'),
+            'iDoNotEmailPropertyId'                => new ConfigItem('iDoNotEmailPropertyId', 'ajax', '', gettext('Person property used to exclude members from email lists'), '', '/admin/api/system/properties/person'),
+            'iDoNotSmsPropertyId'                  => new ConfigItem('iDoNotSmsPropertyId', 'ajax', '', gettext('Person property used to exclude members from SMS/text lists'), '', '/admin/api/system/properties/person'),
             'bEnforceCSP'                          => new ConfigItem('bEnforceCSP', 'boolean', '0', gettext('Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.')),
             'bPHPMailerAutoTLS'                    => new ConfigItem('bPHPMailerAutoTLS', 'boolean', '0', gettext('Automatically enable SMTP encryption if offered by the relaying server.')),
             'sPHPMailerSMTPSecure'                 => new ConfigItem('sPHPMailerSMTPSecure', 'choice', ' ', gettext('Set the encryption system to use - ssl (deprecated) or tls'), '', json_encode(SystemConfig::getSmtpEncryptionChoices())),
@@ -300,10 +300,9 @@ class   SystemConfig
     private static function buildCategories(): array
     {
         return [
-            gettext('New Members & Greeting') => ['sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'bEnableBirthdayEmails'],
+            gettext('New Members & Greeting') => ['sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2'],
             gettext('People')              => ['sDirClassifications', 'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideWeddingDate', 'bForceUppercaseZip', 'sInactiveClassification'],
             gettext('Families')            => ['sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'bHideFamilyNewsletter'],
-            gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser'],
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Scheduled Tasks')    => ['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'],

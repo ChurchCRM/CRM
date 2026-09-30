@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\TelemetryService;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -10,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
  * @OA\Post(
- *     path="/system/telemetry-consent",
+ *     path="/admin/api/system/telemetry-consent",
  *     summary="Record admin consent decision for anonymous telemetry",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},
@@ -27,7 +26,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  *     )
  * )
  */
-$app->post('/system/telemetry-consent', function (Request $request, Response $response, array $args): Response {
+$app->post('/api/system/telemetry-consent', function (Request $request, Response $response, array $args): Response {
     $data  = json_decode((string) $request->getBody(), true);
     $level = $data['level'] ?? TelemetryService::LEVEL_NONE;
 
@@ -50,4 +49,4 @@ $app->post('/system/telemetry-consent', function (Request $request, Response $re
     }
 
     return SlimUtils::renderJSON($response, ['status' => 'ok']);
-})->add(AdminRoleAuthMiddleware::class);
+});

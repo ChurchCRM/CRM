@@ -741,8 +741,8 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                         <tr id="giving-summary-row" class="d-none">
                             <td colspan="7" class="border-top">
                                 <div class="d-flex gap-4 justify-content-end py-3 pe-2">
-                                    <span><strong><?= gettext("Pledged") ?>:</strong> <span id="giving-total-pledged" class="text-primary fw-bold">$0.00</span></span>
-                                    <span><strong><?= gettext("Paid") ?>:</strong> <span id="giving-total-paid" class="text-success fw-bold">$0.00</span></span>
+                                    <span><strong><?= gettext("Pledged") ?>:</strong> <span id="giving-total-pledged" class="text-primary fw-bold">—</span></span>
+                                    <span><strong><?= gettext("Paid") ?>:</strong> <span id="giving-total-paid" class="text-success fw-bold">—</span></span>
                                 </div>
                             </td>
                         </tr>

@@ -218,8 +218,8 @@ function initializeFamilyView() {
       // Summary row
       const hasSomeData = totalPledged > 0 || totalPaid > 0;
       if (hasSomeData) {
-        $("#giving-total-pledged").text(`$${totalPledged.toFixed(2)}`);
-        $("#giving-total-paid").text(`$${totalPaid.toFixed(2)}`);
+        $("#giving-total-pledged").text(window.CRM.currency.format(totalPledged));
+        $("#giving-total-paid").text(window.CRM.currency.format(totalPaid));
         $("#giving-summary-row").removeClass("d-none");
       } else {
         $("#giving-summary-row").addClass("d-none");
@@ -236,7 +236,7 @@ function initializeFamilyView() {
       });
       if (ytdTotal > 0) {
         $("#ytd-total-badge")
-          .text(`${i18next.t("YTD")} $${ytdTotal.toFixed(2)}`)
+          .text(i18next.t("YTD") + " " + window.CRM.currency.format(ytdTotal))
           .removeClass("d-none");
       }
     }
