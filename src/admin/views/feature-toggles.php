@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\view\PageHeader;
 
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -101,8 +100,13 @@ $featureGroups = [
         <div class="container-xl">
             <div class="row align-items-center">
                 <div class="col">
-                    <h2 class="page-title"><?= gettext('Feature Toggles') ?></h2>
-                    <div class="page-subtitle"><?= gettext('Enable or disable features for your organization') ?></div>
+                    <?php if (isset($aBreadcrumbs)): ?>
+                        <div class="page-pretitle"><?= $aBreadcrumbs ?></div>
+                    <?php endif; ?>
+                    <h2 class="page-title"><?= $sPageTitle ?? gettext('Feature Toggles') ?></h2>
+                    <?php if (isset($sPageSubtitle)): ?>
+                        <div class="page-subtitle"><?= $sPageSubtitle ?></div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -117,8 +121,7 @@ $featureGroups = [
                     <i class="fa-solid fa-circle-info me-2"></i>
                 </div>
                 <div>
-                    <strong><?= gettext('Feature toggles') ?></strong>
-                    <?= gettext('control which modules and features are available in ChurchCRM. Changes take effect immediately.') ?>
+                    <?= gettext('Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately.') ?>
                 </div>
             </div>
         </div>
