@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
  * @OA\Post(
- *     path="/system/telemetry-consent",
+ *     path="/admin/api/system/telemetry-consent",
  *     summary="Record admin consent decision for anonymous telemetry",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},

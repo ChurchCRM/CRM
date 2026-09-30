@@ -19,7 +19,7 @@ $app->group('/api/system/properties', function (RouteCollectorProxy $group): voi
 
 /**
  * @OA\Get(
- *     path="/system/custom-fields/person",
+ *     path="/admin/api/system/custom-fields/person",
  *     summary="Get custom person fields filtered by type ID (Admin role required)",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},
@@ -57,7 +57,7 @@ function getPersonFieldsByType(Request $request, Response $response, array $args
 
 /**
  * @OA\Get(
- *     path="/system/properties/person",
+ *     path="/admin/api/system/properties/person",
  *     summary="Get person property definitions as id/value pairs for settings dropdowns (Admin role required)",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},

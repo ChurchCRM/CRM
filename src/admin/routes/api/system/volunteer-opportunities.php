@@ -36,7 +36,7 @@ function volunteerOpportunityToArray(VolunteerOpportunity $opp): array
 $app->group('/api/volunteer-opportunities', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
-     *     path="/api/volunteer-opportunities",
+     *     path="/admin/api/volunteer-opportunities",
      *     summary="List all volunteer opportunities (Admin role required)",
      *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
@@ -67,7 +67,7 @@ $app->group('/api/volunteer-opportunities', function (RouteCollectorProxy $group
 
     /**
      * @OA\Post(
-     *     path="/volunteer-opportunities",
+     *     path="/admin/api/volunteer-opportunities",
      *     summary="Create a new volunteer opportunity (Admin role required)",
      *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
@@ -128,7 +128,7 @@ $app->group('/api/volunteer-opportunities', function (RouteCollectorProxy $group
 
     /**
      * @OA\Get(
-     *     path="/volunteer-opportunities/{id}",
+     *     path="/admin/api/volunteer-opportunities/{id}",
      *     summary="Get a single volunteer opportunity (Admin role required)",
      *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
@@ -150,7 +150,7 @@ $app->group('/api/volunteer-opportunities', function (RouteCollectorProxy $group
 
     /**
      * @OA\Put(
-     *     path="/volunteer-opportunities/{id}",
+     *     path="/admin/api/volunteer-opportunities/{id}",
      *     summary="Update a volunteer opportunity (Admin role required)",
      *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
@@ -216,7 +216,7 @@ $app->group('/api/volunteer-opportunities', function (RouteCollectorProxy $group
 
     /**
      * @OA\Delete(
-     *     path="/volunteer-opportunities/{id}",
+     *     path="/admin/api/volunteer-opportunities/{id}",
      *     summary="Delete a volunteer opportunity (Admin role required)",
      *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
