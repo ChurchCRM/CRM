@@ -1,7 +1,7 @@
-name: "Locale: upload missing terms"
+name: "Locale: upload translations"
 
 # Uploads translated missing-term batches (locale/terms/missing/<locale>/) to
-# POEditor, then starts "Locale Sync POEditor" so the translations come back
+# POEditor, then starts "Locale: sync" in download-only mode so the translations come back
 # to master as a PR. Replaces running poeditor-upload-missing.js by hand.
 #
 # Triggers:
@@ -25,7 +25,7 @@ on:
         required: false
         type: string
       sync:
-        description: 'Start "Locale Sync POEditor" afterwards'
+        description: 'Start "Locale: sync" afterwards'
         required: false
         type: boolean
         default: true
@@ -116,9 +116,9 @@ jobs:
           if [ -n "$LOCALES" ]; then args+=(--locale "$LOCALES"); fi
           node locale/scripts/poeditor-upload-missing.js "${args[@]}"
 
-      - name: Start POEditor sync
+      - name: Start download
         if: (github.event_name == 'push' && steps.locales.outputs.locales != '') || (github.event_name == 'workflow_dispatch' && inputs.sync)
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-        run: gh workflow run locale-sync-poeditor.yml --ref master
+        run: gh workflow run locale-sync-poeditor.yml --ref master -f upload_terms=false
