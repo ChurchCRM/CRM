@@ -229,7 +229,7 @@ if ($sFormat === 'addtocart') {
         extract($aRow);
         Cart::addPerson($per_ID);
     }
-    RedirectUtils::redirect('v2/cart');
+    RedirectUtils::redirect('people/cart');
 } else {
     // Build the complete SQL statement
 

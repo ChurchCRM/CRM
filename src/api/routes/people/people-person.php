@@ -223,7 +223,20 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
             throw new HttpForbiddenException($request, gettext('You do not have permission to view this person'));
         }
-        return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
+
+        // Filter custom fields by field-level permissions (GHSA-p6xx-xx98-f323)
+        //
+        // NOTE: `person_custom` stores per-field values in dynamically-added columns
+        // that are not part of the generated Propel schema, so exportTo()/toArray()
+        // never actually surfaces real custom field data under `singlePersonCustom`
+        // (only the table's one real Propel column, `per_ID`). Discard whatever
+        // exportTo() produced for that key and replace it with the properly
+        // security-filtered custom field values.
+        $personJSON = $person->exportTo('JSON');
+        $personData = json_decode($personJSON, true);
+        $personData['singlePersonCustom'] = $person->getVisibleCustomFieldValues();
+
+        return SlimUtils::renderStringJSON($response, json_encode($personData));
     });
 
     // Delete person

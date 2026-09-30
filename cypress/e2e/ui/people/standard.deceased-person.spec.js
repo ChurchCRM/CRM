@@ -13,17 +13,18 @@
  */
 
 describe("Deceased Person Flag", () => {
-    // Track created person IDs for deterministic cleanup (cannot search deceased via API)
+    // Track created person and family IDs for deterministic cleanup (deceased
+    // people cannot be found through the living-only search API).
     const createdPersonIds = [];
+    const createdFamilyIds = [];
 
     after(() => {
-        // Delete all persons created by this suite by ID (bypass living-only search filter)
-        createdPersonIds.forEach((personId) => {
-            cy.apiRequest({
-                method: "DELETE",
-                url: `/api/persons/${personId}`,
-            });
-        });
+        // Families first, so their members go with them; then any unaffiliated
+        // person left over. The previous cleanup posted to /api/persons/{id},
+        // which is not a route — every delete 404ed unnoticed and the whole
+        // suite's people stayed in the database (#9769).
+        cy.cleanupFamilies(createdFamilyIds);
+        cy.cleanupPeople(createdPersonIds);
     });
 
     beforeEach(() => cy.setupStandardSession());
@@ -248,6 +249,7 @@ describe("Deceased Person Flag", () => {
         cy.location("pathname")
             .then((p) => parseInt(p.match(/family\/(\d+)/)[1], 10))
             .then((familyId) => {
+                createdFamilyIds.push(familyId);
                 // family-view.php uses .card-table tables (not #members which is person-list.php)
                 cy.get("table.card-table tbody a[href*='/people/view/']", { timeout: 10000 }).then(($links) => {
                     [...$links].forEach((a) =>
