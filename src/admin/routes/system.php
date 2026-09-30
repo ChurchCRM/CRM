@@ -906,6 +906,23 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         // trims, which would strip a space separator. The handler caps them to one char.
     ]));
 
+    // Feature Toggles page
+    $group->get('/feature-toggles', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        $pageArgs = [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Feature Toggles'),
+            'sPageSubtitle' => gettext('Enable or disable features for your organization'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Feature Toggles')],
+            ]),
+        ];
+
+        return $renderer->render($response, 'feature-toggles.php', $pageArgs);
+    });
+
     // User editor — create new user (GET shows form, POST processes it)
     $group->get('/users/new', 'adminUserEditorNew');
     $group->post('/users/new', 'adminUserEditorNew')->add(new CSRFMiddleware('user_editor'));

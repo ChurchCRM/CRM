@@ -207,7 +207,7 @@ describe("API Private Photo and Avatar - Family", () => {
             });
         });
 
-        it("should reject an image over the decode pixel budget with 413 before decoding it", () => {
+        it("should reject an image over the source image size limit with 413 before decoding it", () => {
             // Same shared helper as the person photo and church logo uploads:
             // a valid 12000x12000 PNG of ~18 KB carries 144 million pixels and
             // must be refused from its header, never handed to GD.

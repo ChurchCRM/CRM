@@ -402,6 +402,7 @@ describe("Standard Calendar — save (admin-session)", () => {
 
     it("Create New Calendar", () => {
         const title = "Calendar: " + new Date().getTime();
+        cy.intercept("POST", "**/api/calendars").as("createCalendar");
         createdCalendarNames.push(title);
 
         cy.visit("event/calendars");
@@ -410,11 +411,22 @@ describe("Standard Calendar — save (admin-session)", () => {
         cy.get('[data-bs-target="#calendarSidebar"]').click();
         cy.get("#calendarSidebar").should("be.visible");
         cy.get("#addCalendarBtn").click();
-        cy.get("#calendarName").should("be.visible").click().type(title);
-        cy.get("#ForegroundColor").invoke("val", "#FA8072").trigger("change");
-        cy.get("#BackgroundColor").invoke("val", "#212F3D").trigger("change");
+        cy.get("#calendarName").should("be.visible").invoke("val", title);
+        cy.get("#ForegroundColor").invoke("val", "#fa8072").trigger("change");
+        cy.get("#BackgroundColor").invoke("val", "#212f3d").trigger("change");
 
         cy.get(".modal-footer .btn-primary.float-end").click();
+
+        cy.wait("@createCalendar").then(({ response }) => {
+            expect(response.statusCode).to.eq(200);
+            const id = response.body.Id;
+
+            cy.makePrivateAdminAPICall("GET", `/api/calendars/${id}`, null, 200).as("savedCalendar");
+            cy.makePrivateAdminAPICall("DELETE", `/api/calendars/${id}`, null, 200);
+            cy.get("@savedCalendar")
+                .its("body.Calendars.0")
+                .should("include", { Name: title, ForegroundColor: "fa8072", BackgroundColor: "212f3d" });
+        });
     });
 
     it("InActive and LinkedGroupId flow into the POST /api/events payload", () => {
