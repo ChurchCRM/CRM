@@ -29,6 +29,14 @@ $app->group('/family', function (RouteCollectorProxy $group): void {
     $group->get('', 'listFamilies');
 });
 
+/**
+ * List families with filtering options (active, inactive, by city/state, geocoded status).
+ *
+ * @param Request $request HTTP request
+ * @param Response $response HTTP response
+ * @param array $args Route arguments
+ * @return Response Rendered family list page
+ */
 function listFamilies(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -116,6 +124,14 @@ function listFamilies(Request $request, Response $response, array $args): Respon
     return $renderer->render($response, 'family-list.php', $pageArgs);
 }
 
+/**
+ * Display a "family not found" error page for an invalid family ID.
+ *
+ * @param Request $request HTTP request
+ * @param Response $response HTTP response
+ * @param array $args Route arguments
+ * @return Response Rendered error page
+ */
 function viewFamilyNotFound(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -129,6 +145,14 @@ function viewFamilyNotFound(Request $request, Response $response, array $args): 
     return $renderer->render($response, 'not-found-view.php', $pageArgs);
 }
 
+/**
+ * Display the family profile page with custom fields, timeline, properties, and finance options.
+ *
+ * @param Request $request HTTP request
+ * @param Response $response HTTP response
+ * @param array $args Route arguments (id = family ID)
+ * @return Response Rendered family profile page or redirect if not found
+ */
 function viewFamily(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
