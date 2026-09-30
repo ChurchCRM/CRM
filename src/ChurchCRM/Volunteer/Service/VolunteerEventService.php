@@ -474,9 +474,9 @@ class VolunteerEventService
 
     /**
      * D30: the team's active schedule that already follows these events — `class` mode on
-     * the Linked Group when there is one, otherwise `ministry` mode narrowed to exactly this
-     * title (the column's collation makes the match case-insensitive). A second schedule
-     * would put a second occurrence for the same team on every event.
+     * the Linked Group when there is one, otherwise `ministry` mode with exactly this title,
+     * ignoring case, as generation matches it (D31). A second schedule would put a second
+     * occurrence for the same team on every event.
      *
      * @param array<string, mixed> $plan
      */
@@ -491,7 +491,8 @@ class VolunteerEventService
         if ($plan['linkedGroupId'] > 0) {
             $query->filterByLinkMode(VolunteerSchedule::LINK_MODE_CLASS)->filterByGroupId($plan['linkedGroupId']);
         } else {
-            $query->filterByLinkMode(VolunteerSchedule::LINK_MODE_MINISTRY)->filterByTitleFilter($plan['title']);
+            $query->filterByLinkMode(VolunteerSchedule::LINK_MODE_MINISTRY)
+                ->where('LOWER(VolunteerSchedule.TitleFilter) = LOWER(?)', $plan['title'], \PDO::PARAM_STR);
         }
 
         return $query->orderById()->findOne();

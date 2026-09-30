@@ -1272,8 +1272,6 @@
         <column name="vsch_WindowStart" phpName="WindowStart" type="DATE" required="true"
                 description="No occurrence is ever generated before this date"/>
         <column name="vsch_WindowEnd" phpName="WindowEnd" type="DATE" description="NULL means open ended"/>
-        <column name="vsch_GenerateAheadDays" phpName="GenerateAheadDays" type="INTEGER" required="true"
-                defaultValue="56" description="How far ahead a generation run materialises occurrences"/>
         <column name="vsch_Active" phpName="Active" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"
                 required="true" defaultValue="1"/>
         <column name="vsch_OneOff" phpName="OneOff" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned"

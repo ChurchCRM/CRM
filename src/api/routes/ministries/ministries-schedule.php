@@ -173,6 +173,8 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
 /**
  * One schedule for the wire. `occurrenceCount` is the cheap "has this been generated yet?"
  * signal a list screen needs; it is a COUNT, not a hydration of the occurrences.
+ * `generateThrough` is the last date a Generate run reaches: today plus `horizonWeeks`, or
+ * the schedule's last date when that comes first (D31).
  */
 function volunteerScheduleToArray(VolunteerSchedule $schedule): array
 {
@@ -206,7 +208,8 @@ function volunteerScheduleToArray(VolunteerSchedule $schedule): array
         'endOffsetMinutes' => (int) $schedule->getEndOffsetMinutes(),
         'windowStart' => $schedule->getWindowStart('Y-m-d'),
         'windowEnd' => $schedule->getWindowEnd('Y-m-d'),
-        'generateAheadDays' => (int) $schedule->getGenerateAheadDays(),
+        'horizonWeeks' => VolunteerScheduleService::horizonWeeks(),
+        'generateThrough' => (new VolunteerScheduleService())->generationThrough($schedule),
         'active' => (bool) $schedule->getActive(),
         'occurrenceCount' => VolunteerOccurrenceQuery::create()
             ->filterByScheduleId((int) $schedule->getId())
@@ -470,23 +473,22 @@ function listVolunteerTeamSchedules(Request $request, Response $response): Respo
  *     path="/ministries/ministries/{ministryId}/schedules",
  *     operationId="createVolunteerSchedule",
  *     summary="Create a volunteer schedule: which calendar events a team staffs",
- *     description="Every occurrence is anchored to a calendar event (D20); the link mode says how the events are found (D22). A single event is staffed through POST /ministries/ministries/{ministryId}/staffed-events instead. The removed recurrence fields (recurType, recurDow, recurDom, startTime, endTime) are refused with 400.",
+ *     description="Every occurrence is anchored to a calendar event (D20); the link mode says how the events are found (D22). A schedule follows events that already exist (D31): it is refused unless at least one upcoming active event matches. A single event is staffed through POST /ministries/ministries/{ministryId}/staffed-events instead. The removed fields (recurType, recurDow, recurDom, startTime, endTime, generateAheadDays) are refused with 400.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=true, @OA\JsonContent(
  *         required={"name","linkMode","teamId","windowStart"},
  *         @OA\Property(property="name", type="string"),
- *         @OA\Property(property="linkMode", type="string", enum={"event_type","class","ministry"}, description="event_type: events of a type, optionally narrowed by title. class: events whose Linked Group is groupId. ministry: events this ministry owns, optionally narrowed by title."),
+ *         @OA\Property(property="linkMode", type="string", enum={"event_type","class","ministry"}, description="event_type: events of a type with exactly the title titleFilter. class: events whose Linked Group is groupId. ministry: events this ministry owns with exactly the title titleFilter."),
  *         @OA\Property(property="teamId", type="integer", description="Required: a schedule always belongs to one of the ministry's teams. A team leader may only name a team they lead (design section 4.6)."),
  *         @OA\Property(property="eventTypeId", type="integer", nullable=true, description="Required when linkMode is event_type"),
- *         @OA\Property(property="titleFilter", type="string", nullable=true, description="Optional LIKE narrowing on the event title (event_type and ministry modes)"),
+ *         @OA\Property(property="titleFilter", type="string", nullable=true, description="Required in the event_type and ministry modes: the events' exact title, compared ignoring case (D31)"),
  *         @OA\Property(property="groupId", type="integer", nullable=true, description="Required when linkMode is class: an existing group"),
  *         @OA\Property(property="startOffsetMinutes", type="integer", example=-45, description="Added to the event's start to give the volunteers' start; within +/-720. Default 0."),
  *         @OA\Property(property="endOffsetMinutes", type="integer", example=15, description="Added to the event's end to give the volunteers' end; within +/-720. Default 0."),
  *         @OA\Property(property="windowStart", type="string", format="date"),
  *         @OA\Property(property="windowEnd", type="string", format="date", nullable=true),
- *         @OA\Property(property="generateAheadDays", type="integer", nullable=true, example=56),
  *         @OA\Property(property="requirements", type="array", nullable=true,
  *             description="The schedule's whole staffing plan, set in one request. Omit the field to leave the plan alone; send an empty array to clear it. Positions not listed are removed. The schedule row and its plan are written in one transaction.",
  *             @OA\Items(type="object",
@@ -498,7 +500,7 @@ function listVolunteerTeamSchedules(Request $request, Response $response): Respo
  *             )
  *         )
  *     )),
- *     @OA\Response(response=400, description="A design section 2.8 invariant was violated: a missing or unknown event type or group, an offset outside +/-720, an eventId, or a removed recurrence field"),
+ *     @OA\Response(response=400, description="A design section 2.8 invariant was violated: a missing or unknown event type or group, a missing title, no upcoming event that matches (D31), an offset outside +/-720, an eventId, or a removed field"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized: you neither administer this ministry nor lead the team named by teamId (design section 4.6), or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
@@ -609,8 +611,8 @@ function getVolunteerSchedule(Request $request, Response $response): Response
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="scheduleId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=true, @OA\JsonContent(type="object",
- *         description="Any subset of the create payload; omitted fields keep their stored value, and the columns the link mode does not use are cleared. A `requirements` array replaces the whole staffing plan — positions not listed are removed, an empty array clears it, and an absent field leaves it untouched. A Staff this event schedule keeps its link mode and its event.")),
- *     @OA\Response(response=400, description="A design section 2.8 invariant was violated"),
+ *         description="Any subset of the create payload; omitted fields keep their stored value, and the columns the link mode does not use are cleared. A `requirements` array replaces the whole staffing plan — positions not listed are removed, an empty array clears it, and an absent field leaves it untouched. A Staff this event schedule keeps its link mode and its event. Changing what the schedule follows (mode, type, title, class) needs an upcoming event that matches (D31); other edits never do, but a type or ministry schedule with no title must be given one.")),
+ *     @OA\Response(response=400, description="A design section 2.8 invariant was violated, or the new events it would follow have no upcoming date (D31)"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized for this schedule, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such schedule"),
@@ -712,13 +714,13 @@ function listVolunteerScheduleEligiblePeople(Request $request, Response $respons
  *     path="/ministries/schedules/{scheduleId}/generate",
  *     operationId="generateVolunteerOccurrences",
  *     summary="Materialise this schedule's occurrences up to a date",
- *     description="Idempotent. Attaches one occurrence to each active event the schedule follows (by type, class, ministry or the one event) inside the window. No calendar event is ever created or changed. `defaults` names a person per position to assign on every occurrence THIS run creates (never on ones an earlier run made); with accepted=true they are recorded as having accepted and are not asked to respond.",
+ *     description="Idempotent. Attaches one occurrence to each active event the schedule follows (by type, class, ministry or the one event) inside the window, from today up to the scheduling horizon (D31; a Staff this event schedule is not capped by it). No calendar event is ever created or changed. `defaults` names a person per position to assign on every occurrence THIS run creates (never on ones an earlier run made); with accepted=true they are recorded as having accepted and are not asked to respond.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="scheduleId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=false, @OA\JsonContent(
  *         @OA\Property(property="through", type="string", format="date", nullable=true,
- *             description="Defaults to today plus the schedule's generateAheadDays"),
+ *             description="Defaults to, and may not go past, today plus the scheduling horizon (iVolunteerSchedulingHorizonWeeks); the schedule's last date caps it too"),
  *         @OA\Property(property="defaults", type="array", @OA\Items(type="object",
  *             @OA\Property(property="positionId", type="integer"),
  *             @OA\Property(property="personId", type="integer"),

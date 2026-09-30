@@ -1113,7 +1113,10 @@ export interface VolunteerSchedule {
   oneOff: boolean;
   windowStart: string | null;
   windowEnd: string | null;
-  generateAheadDays: number;
+  /** The church-wide scheduling horizon (D31), in weeks. */
+  horizonWeeks: number;
+  /** The last date a Generate run reaches: the horizon, or `windowEnd` when that comes first. */
+  generateThrough: string;
   active: boolean;
   /** Cheap "has this been generated yet?" signal — a COUNT, never a hydration. */
   occurrenceCount: number;
