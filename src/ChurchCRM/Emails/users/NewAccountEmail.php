@@ -24,6 +24,11 @@ class NewAccountEmail extends BaseUserEmail
         return gettext('A ChurchCRM account was created for you') . ':';
     }
 
+    protected function getLogKind(): string
+    {
+        return 'account.new';
+    }
+
     public function getTokens(): array
     {
         $parentTokens = parent::getTokens();

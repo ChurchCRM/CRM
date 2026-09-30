@@ -13,4 +13,9 @@ class LockedEmail extends BaseUserEmail
     {
         return gettext('Your ChurchCRM account was locked.');
     }
+
+    protected function getLogKind(): string
+    {
+        return 'account.locked';
+    }
 }

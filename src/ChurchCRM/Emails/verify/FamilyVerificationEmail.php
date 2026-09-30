@@ -53,4 +53,9 @@ class FamilyVerificationEmail extends BaseEmail
     {
         return gettext("Please verify your family's information");
     }
+
+    protected function getLogKind(): string
+    {
+        return 'verify';
+    }
 }

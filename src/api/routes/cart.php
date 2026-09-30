@@ -16,7 +16,13 @@ use Slim\Routing\RouteCollectorProxy;
  *     @OA\Response(response=200, description="Email list for the current cart",
  *         @OA\JsonContent(
  *             @OA\Property(property="emails", type="array", @OA\Items(type="string"),
- *                 description="Unique cart member email addresses (does not include sToEmailAddress, which the composer adds from the setting)")
+ *                 description="Unique cart member email addresses (does not include sToEmailAddress, which the composer adds from the setting)"),
+ *             @OA\Property(property="recipients", type="array", description="The same people with ids, for POST /api/email/send",
+ *                 @OA\Items(type="object",
+ *                     @OA\Property(property="personId", type="integer"),
+ *                     @OA\Property(property="familyId", type="integer", nullable=true),
+ *                     @OA\Property(property="name", type="string"),
+ *                     @OA\Property(property="email", type="string")))
  *         )
  *     ),
  *     @OA\Response(response=401, description="Unauthorized"),
@@ -25,7 +31,12 @@ use Slim\Routing\RouteCollectorProxy;
  */
 $app->get('/cart/emails', function (Request $request, Response $response): Response {
     try {
-        return SlimUtils::renderJSON($response, ['emails' => Cart::getEmails()]);
+        $recipients = Cart::getEmailRecipients();
+
+        return SlimUtils::renderJSON($response, [
+            'emails'     => array_column($recipients, 'email'),
+            'recipients' => $recipients,
+        ]);
     } catch (\Throwable $e) {
         return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve cart email addresses'), [], 500, $e, $request);
     }

@@ -3,6 +3,8 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\EmailLogQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
@@ -149,10 +151,49 @@ class TimelineService
     {
         $timeline = array_merge(
             $this->notesForPerson($personID, null),
-            $this->eventsForPerson($personID)
+            $this->eventsForPerson($personID),
+            $this->emailsForPerson($personID)
         );
 
         return $this->sortTimeline($timeline);
+    }
+
+    /**
+     * Email history rows (email_log_eml) as timeline items, category "email".
+     *
+     * @return array<string, array<string, mixed>>
+     */
+    private function emailsForPerson(int $personID): array
+    {
+        $timeline = [];
+        $rows = EmailLogQuery::create()
+            ->filterByPerId($personID)
+            ->orderByDateSent(Criteria::DESC)
+            ->limit(200)
+            ->find();
+        foreach ($rows as $row) {
+            $label = EmailLogService::kindLabel((string) $row->getKind());
+            $status = (string) $row->getStatus();
+            $header = $status === EmailLogService::STATUS_SENT
+                ? sprintf('%s: %s', $label, $row->getSubject())
+                : sprintf(gettext('%s not sent (%s): %s'), $label, $status, $row->getSubject());
+            $item = $this->createTimeLineItem(
+                'email-' . $row->getId(),
+                'email',
+                (string) $row->getDateSent('Y-m-d H:i:s'),
+                (string) $row->getDateSent('Y'),
+                $header,
+                '',
+                '',
+                '',
+                ''
+            );
+            $item['emailLogId'] = (int) $row->getId();
+            $item['emailStatus'] = $status;
+            $timeline[$item['key']] = $item;
+        }
+
+        return $timeline;
     }
 
     /**
@@ -240,6 +281,7 @@ class TimelineService
         'verify-URL'  => 'system',
         'user'        => 'system',
         'delete-note' => 'system',
+        'email'       => 'email',
     ];
 
     /**
@@ -269,6 +311,10 @@ class TimelineService
             case 'photo':
                 $item['style'] = 'fa-camera';
                 $item['color'] = 'success';
+                break;
+            case 'email':
+                $item['style'] = 'fa-envelope-open-text';
+                $item['color'] = 'info';
                 break;
             case 'group':
                 $item['style'] = 'fa-users';

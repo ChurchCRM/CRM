@@ -13,4 +13,9 @@ class AccountDeletedEmail extends BaseUserEmail
     {
         return gettext('Your ChurchCRM Account was Deleted.');
     }
+
+    protected function getLogKind(): string
+    {
+        return 'account.deleted';
+    }
 }
