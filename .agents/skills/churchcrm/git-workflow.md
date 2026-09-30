@@ -7,8 +7,8 @@ intent: How agents commit and push on ChurchCRM.
 
 ## Must
 
-- Branch from current `master`. `fix/issue-N-short` or `feature/short`
-- Every PR links an open issue
+- Branch from current `master`. `fix/issue-N-short` (or `fix/short`, `ci/short` with no issue) or `feature/short`
+- Link an open issue when the PR changes user-visible behavior (feature or bug fix). CI, docs, tooling, dependency, and trivial PRs need none; say why in the PR body
 - Imperative subject, under 72 chars
 - `npm run lint` and the matching build before you ask to commit
 - Show the diff. Wait for yes before commit
