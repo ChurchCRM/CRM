@@ -1,6 +1,10 @@
 <?php
 
+use ChurchCRM\Bootstrapper;
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
+use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -29,7 +33,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  *             @OA\Property(property="pageSize", type="object",
  *                 @OA\Property(property="height", type="integer"),
  *                 @OA\Property(property="width", type="integer")
- *             )
+ *             ),
+ *             @OA\Property(property="browserLocale", type="string"),
+ *             @OA\Property(property="browserTimezone", type="string")
  *         )
  *     ),
  *     @OA\Response(response=200, description="Pre-formatted issue body string for GitHub",
@@ -39,6 +45,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  */
 $app->post('/issues', function (Request $request, Response $response, array $args): Response {
     $data = json_decode($request->getBody(), null, 512);
+    $localeInfo = Bootstrapper::getCurrentLocale();
     $issueDescription =
         "Collected Value Title |  Data \r\n" .
         "----------------------|----------------\r\n" .
@@ -52,6 +59,14 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'ChurchCRM Version |' . VersionUtils::getInstalledVersion() . "\r\n" .
         'Installation ID |' . SystemConfig::getValue('sSystemID') . "\r\n" .
         'Reporting Browser |' . ($_SERVER['HTTP_USER_AGENT'] ?? 'API') . "\r\n" .
+        'System Locale |' . $localeInfo->getSystemLocale() . "\r\n" .
+        'User Locale |' . $localeInfo->getLocale() . "\r\n" .
+        'Browser Locale |' . ($data->browserLocale ?? 'Unknown') . "\r\n" .
+        'Church Country |' . ChurchMetaData::getChurchCountry() . "\r\n" .
+        'System Timezone |' . ChurchMetaData::getChurchTimeZone() . "\r\n" .
+        'Browser Timezone |' . ($data->browserTimezone ?? 'Unknown') . "\r\n" .
+        'Person Custom Fields |' . PersonCustomMasterQuery::create()->count() . "\r\n" .
+        'Family Custom Fields |' . FamilyCustomMasterQuery::create()->count() . "\r\n" .
         'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
 
     return SlimUtils::renderJSON($response, ['issueBody' => $issueDescription]);

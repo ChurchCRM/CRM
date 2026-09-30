@@ -135,6 +135,14 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-body-secondary fw-normal">(<?= gettext('optional') ?>)</span></label>
               <textarea id="issueDescription" class="form-control" rows="4" placeholder="<?= gettext('What went wrong? What did you expect to happen?') ?>"></textarea>
             </div>
+            <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
+            <div class="alert alert-warning mb-0">
+              <i class="fa-solid fa-file-lines me-1"></i>
+              <?= gettext('As an admin, please also review the') ?>
+              <a href="<?= SystemURLs::getRootPath() ?>/admin/system/logs" target="_blank" rel="noopener"><?= gettext('system logs') ?></a>
+              <?= gettext('for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.') ?>
+            </div>
+            <?php } ?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
