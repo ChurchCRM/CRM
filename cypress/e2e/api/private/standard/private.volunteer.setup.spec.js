@@ -117,6 +117,9 @@ const EXPECTED_COLUMNS = {
         "vreq_MinCount",
         "vreq_MaxCount",
         "vreq_Notes",
+        "vreq_Default_per_ID",
+        "vreq_DefaultAccepted",
+        "vreq_DefaultSetBy_per_ID",
     ],
     volunteer_assignment_vasg: [
         "vasg_ID",
@@ -205,6 +208,8 @@ const EXPECTED_DELETE_RULES = {
     "volunteer_requirement_vreq.vreq_vsch_ID": "CASCADE",
     "volunteer_requirement_vreq.vreq_vocc_ID": "CASCADE",
     "volunteer_requirement_vreq.vreq_vpos_ID": "CASCADE",
+    "volunteer_requirement_vreq.vreq_Default_per_ID": "SET NULL",
+    "volunteer_requirement_vreq.vreq_DefaultSetBy_per_ID": "SET NULL",
     "volunteer_assignment_vasg.vasg_vocc_ID": "CASCADE",
     "volunteer_assignment_vasg.vasg_vpos_ID": "RESTRICT",
     "volunteer_assignment_vasg.vasg_per_ID": "CASCADE",
