@@ -189,7 +189,7 @@ class Menu
 
     private static function getSundaySchoolMenu(bool $isAdmin, bool $isManageGroups): MenuItem
     {
-        $isEnabled = $isManageGroups && ($isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'));
+        $isEnabled = SystemConfig::getBooleanValue('bEnabledSundaySchool') && ($isAdmin || $isManageGroups);
         $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isEnabled, 'fa-school');
         if (!$isEnabled) {
             // Sunday School pages live under /groups/sundayschool, behind ManageGroupRoleAuthMiddleware.
