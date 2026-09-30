@@ -297,7 +297,7 @@ describe("Volunteer v2 D31 — generation stops at the church-wide scheduling ho
         );
     });
 
-    it("follows a new horizon at once, within 1 to 52 weeks", () => {
+    it("follows a new horizon at once, within 1 to 52 weeks, and 8 when it is blank", () => {
         setConfig(HORIZON, "2");
         api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule").should("include", {
             horizonWeeks: 2,
@@ -306,6 +306,9 @@ describe("Volunteer v2 D31 — generation stops at the church-wide scheduling ho
         generate(schedule.id).its("through").should("eq", isoDate(14));
         setConfig(HORIZON, "0");
         api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 1);
+        // A blank the settings panel saved before it had loaded the value is the default, not 1.
+        setConfig(HORIZON, "");
+        api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 8);
         setConfig(HORIZON, "99");
         api("GET", `${URL}/schedules/${schedule.id}`).its("body.schedule.horizonWeeks").should("eq", 52);
         setConfig(HORIZON, "8");

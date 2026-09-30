@@ -84,9 +84,10 @@ class VolunteerScheduleService
     /** The removed standalone mode's fields. A payload naming one is refused, never ignored (D20). */
     private const RETIRED_FIELDS = ['recurType', 'recurDow', 'recurDom', 'startTime', 'endTime'];
 
-    /** Admin → Ministry Settings bounds for the scheduling horizon (D31). */
+    /** Admin → Ministry Settings bounds and default for the scheduling horizon (D31). */
     public const MIN_HORIZON_WEEKS = 1;
     public const MAX_HORIZON_WEEKS = 52;
+    public const DEFAULT_HORIZON_WEEKS = 8;
 
     private LoggerInterface $logger;
 
@@ -97,14 +98,18 @@ class VolunteerScheduleService
 
     /**
      * How many weeks ahead occurrences are made (D31): one church-wide setting. The config
-     * API stores whatever it is sent, so the bounds are applied where it is read.
+     * API stores whatever it is sent — the settings panel can save a blank field it has not
+     * filled in yet — so the value is read defensively: blank or not a number is the
+     * default, anything else is held within the bounds.
      */
     public static function horizonWeeks(): int
     {
-        return max(
-            self::MIN_HORIZON_WEEKS,
-            min(self::MAX_HORIZON_WEEKS, SystemConfig::getIntValue('iVolunteerSchedulingHorizonWeeks'))
-        );
+        $raw = trim((string) SystemConfig::getValue('iVolunteerSchedulingHorizonWeeks'));
+        if (!is_numeric($raw)) {
+            return self::DEFAULT_HORIZON_WEEKS;
+        }
+
+        return max(self::MIN_HORIZON_WEEKS, min(self::MAX_HORIZON_WEEKS, (int) $raw));
     }
 
     // ── Schedule CRUD ──────────────────────────────────────────────────────
