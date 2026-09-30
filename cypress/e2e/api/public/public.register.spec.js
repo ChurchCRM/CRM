@@ -1,6 +1,22 @@
 /// <reference types="cypress" />
 
 describe("API Public Registration", () => {
+    // The family the happy-path test registers, so after() can remove it and
+    // its member again (#9769) — a public registration is a real family+person
+    // write and used to be left behind on every run.
+    let registeredFamilyId;
+
+    after(() => {
+        if (registeredFamilyId) {
+            cy.makePrivateAdminAPICall(
+                "DELETE",
+                `/api/family/${registeredFamilyId}?deleteMembers=true`,
+                null,
+                [200, 404],
+            );
+        }
+    });
+
     it("Should allow family registration without authentication", () => {
         const testFamily = {
             Name: "Cypress Test Family",
@@ -35,6 +51,7 @@ describe("API Public Registration", () => {
         }).then((resp) => {
             expect(resp.status).to.eq(200);
             expect(resp.body).to.have.property('Id');
+            registeredFamilyId = resp.body.Id;
             expect(resp.body.Name).to.eq(testFamily.Name);
             expect(resp.body.Address1).to.eq(testFamily.Address1);
             expect(resp.body.Email).to.eq(testFamily.Email);

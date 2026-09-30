@@ -64,6 +64,42 @@ If marketing claims don't match product reality:
 
 ---
 
+## Hosted remote config — never prune External <!-- learned: 2026-09-22 -->
+
+`CentralServices` on master and shipped 7.7.0 fetches:
+
+- `https://raw.githubusercontent.com/ChurchCRM/CRM/External/approved-plugins.json`
+- `https://raw.githubusercontent.com/ChurchCRM/CRM/External/notifications.json`
+
+`External` is an orphan hosting branch (root JSON only). It will never have a PR into master. Repo-health Check 4 deleted it on 21 Sep 2026 (#9961). The registry 404'd, `ApprovedPluginRegistry` stored `[]`, and UI shard 2 timed out waiting for `#approvedPluginsList .btn-install-approved` (#9969).
+
+**Rules:**
+- Never delete `External` or `Notifications`.
+- Ruleset [23858586](https://github.com/ChurchCRM/CRM/rules/23858586) blocks deletion and force-push. A 422 on delete is success — stop.
+- Registry changes: PR with base `External`, edit root `approved-plugins.json`.
+- Keep `hello-world` on the allowlist until `community-plugin-lifecycle.spec.js` is retargeted.
+- Current allowlist: hello-world 1.0.1, meeting-outlines 1.0.2.
+- Last historical file before the prune: commit `d5902d02` / PR #8928.
+
+Agent skills: `.agents/skills/churchcrm/hosted-remote-config.md`, `plugin-registry.md`, `repo-health.md`.
+
+---
+
+## Release notes and publishing <!-- learned: 2026-09-27 -->
+
+Lessons from 7.7.1. The how-to is in `.agents/skills/churchcrm/release-notes.md`; these are the traps.
+
+- **Never edit a draft release without `--tag`.** A draft has no git tag yet. `gh release edit <tag> --notes-file …` on the draft left it on GitHub's placeholder `untagged-<hash>`, and publishing shipped that as the version. Installs read the version from `tag_name` (`ChurchCRMRelease.php`), so every update check saw `untagged-…`. Always pass `--tag <version>`, then check `gh release view <version> --json tagName` before publishing.
+- **Recover in this order:** create the real tag on the release commit, move the release onto it with `gh release edit untagged-… --tag <version>`, verify, and only then delete the stray tag. Deleting the tag first turns the release back into a draft. Then re-run `release-bookkeeping.yml` with `tag=<version>`.
+- **Merge "Start <next> release" before publishing.** Bookkeeping reads the next version from master's `package.json`. If master still carries the released version, the milestone job now stops.
+- **Apply notes from the approved branch,** with `git show origin/<branch>:changelog/<tag>.md`, not the local checkout.
+- **Weight notes by reach, not PR size.** A brand change seen on every screen is a feature. A capability nobody uses yet (7.7.1's social links) gets one line.
+- **Work in other repos is FYI.** Thank people for it only when it directly helps users of the release (artwork shipped in the app, a docs guide for a shipped feature). Add one "Documentation Caught Up" line when the docs were trued up.
+- **Screenshots and videos are refreshed after publishing, never before,** so they always match the downloadable version.
+- **The Actions token can't read `ChurchCRM/marketing`** (private) or write docs milestones. Set `DOCS_RELEASE_TOKEN`, and re-run the context script locally for marketing contributors.
+
+---
+
 ## Related Skills
 
 - [Plugin System](https://github.com/ChurchCRM/CRM/blob/master/.agents/skills/churchcrm/plugin-system.md) — How plugins define features
@@ -72,4 +108,4 @@ If marketing claims don't match product reality:
 
 ---
 
-Last updated: 2026-09-05
+Last updated: 2026-09-22

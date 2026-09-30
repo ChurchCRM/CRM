@@ -6,6 +6,8 @@
  * - States:    GET /api/public/data/countries/{code}/states
  */
 
+import { buildAdminAPIUrl } from "./api-utils";
+
 // Holds the active Leaflet map instance so it can be torn down and recreated
 // when coordinates are regenerated (Leaflet does not support re-centering a
 // destroyed/re-initialized container without a fresh L.map() call).
@@ -476,10 +478,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  initChurchLogoUploader();
+
   // ── Live Display Preview ────────────────────────────────────────────────
 
   initChurchInfoPreview();
 });
+
+const CHURCH_LOGO_API_PATH = "system/church-logo";
+
+/**
+ * Church Logo card: the shared photo uploader, used the way the person and
+ * family pages use it. The server renders the logo state, so an upload or a
+ * removal just reloads the page.
+ */
+function initChurchLogoUploader() {
+  const uploadBtn = document.getElementById("church-logo-upload-btn");
+  if (!uploadBtn || typeof window._CRM_createPhotoUploader !== "function") {
+    return;
+  }
+
+  window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+  window.CRM.photoUploader = window.CRM.createPhotoUploader({
+    uploadUrl: buildAdminAPIUrl(CHURCH_LOGO_API_PATH),
+    maxFileSize: window.CRM.maxUploadSizeBytes,
+    aspectRatio: "free",
+    photoWidth: 1200,
+    photoHeight: 400,
+    webcam: false,
+    title: window.i18next ? i18next.t("Church Logo") : "Church Logo",
+    onComplete: () => window.location.reload(),
+  });
+  uploadBtn.addEventListener("click", () => window.CRM.photoUploader.show());
+
+  document.getElementById("church-logo-remove-btn")?.addEventListener("click", () => {
+    window.CRM.AdminAPIRequest({ method: "DELETE", path: CHURCH_LOGO_API_PATH }).done(() => window.location.reload());
+  });
+}
 
 function initChurchInfoPreview() {
   const textFieldIds = [

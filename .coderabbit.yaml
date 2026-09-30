@@ -1,0 +1,22 @@
+# CodeRabbit repository configuration
+#
+# Review PRs targeting any branch, including stacked PRs whose base is not master.
+#
+# Locale automation contract:
+# - `locale/<release>` is the release-scoped synchronization branch used by the
+#   POEditor download workflow.
+# - POEditor synchronization PRs are generated/mechanical and do not benefit
+#   from AI review.
+# - Human/agent translation work and changes to locale tooling/workflows should
+#   still be reviewed.
+#
+# CodeRabbit currently supports filtering automatic reviews by PR title, label,
+# author, and base branch, but not by head/source branch. Therefore the precise
+# POEditor-generated PR title is used below rather than excluding all locale
+# changes or all GitHub Actions-authored PRs.
+reviews:
+  auto_review:
+    base_branches:
+      - ".*"
+    ignore_title_keywords:
+      - "locale: update translations from POEditor"

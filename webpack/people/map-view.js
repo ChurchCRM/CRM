@@ -8,7 +8,6 @@
  * (see webpack externals: { leaflet: 'L' }). No Google Maps API key required.
  */
 import L from "leaflet";
-import { buildAPIUrl } from "../api-utils";
 
 // Resolve i18next lazily on every call — this module can load before the
 // global i18next is ready, so capturing t at module load would freeze it to a
@@ -135,7 +134,7 @@ if (geocodeAllBtn) {
 
     const title = document.createElement("h4");
     title.className = "alert-title mb-1";
-    title.textContent = t(`{{count}} families could not be geocoded`, { count: data.failed });
+    title.textContent = t(`Families that could not be geocoded: {{total}}`, { total: data.failed });
     body.appendChild(title);
 
     const hint = document.createElement("div");
@@ -191,8 +190,8 @@ if (geocodeAllBtn) {
     if (data.failuresTruncated) {
       const more = document.createElement("div");
       more.className = "text-secondary small mt-2";
-      more.textContent = t(`…and {{count}} more not listed here.`, {
-        count: data.failed - data.failures.length,
+      more.textContent = t(`Not listed here: {{total}} more`, {
+        total: data.failed - data.failures.length,
       });
       body.appendChild(more);
     }
@@ -222,7 +221,7 @@ if (geocodeAllBtn) {
   // call therefore skips the number of families that already failed in this
   // run, and the loop stops once nothing but known failures is left.
   const runAllBatches = (acc) =>
-    fetch(buildAPIUrl("map/geocode-all"), {
+    fetch(`${window.CRM.root}/admin/api/map/geocode-all`, {
       method: "POST",
       credentials: "same-origin",
       headers: { "Content-Type": "application/json" },

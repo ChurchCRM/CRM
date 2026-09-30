@@ -176,15 +176,13 @@ class Menu
             $groupMenu->addSubMenu($tmpMenu);
         }
 
-        $canSeeGroupAdmin = $isAdmin || $isMenuOptions || $isManageGroups;
-        if ($canSeeGroupAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', true);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-users'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
-
-            $groupMenu->addSubMenu($adminMenu);
-        }
+        // Each entry mirrors its route's permission: PropertyList.php requires MenuOptions,
+        // group types require Admin, the kiosk manager requires ManageGroups.
+        $adminMenu = new MenuItem(gettext('Admin'), '', true);
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isMenuOptions, 'fa-users'));
+        $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
+        $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isManageGroups, 'fa-desktop'));
+        $groupMenu->addSubMenu($adminMenu);
 
         return $groupMenu;
     }
@@ -331,9 +329,12 @@ class Menu
 
     private static function getReportsMenu(bool $isAdmin): MenuItem
     {
-        // Query Menu is the only entry, so link straight to it rather than nesting a single child.
-        // GHSA-6rgg-mrx3-92w7: QueryList.php now requires isAdmin(); hide from non-admins.
-        return new MenuItem(gettext('Data/Reports'), 'QueryList.php', $isAdmin, 'fa-database');
+        // GHSA-6rgg-mrx3-92w7: QueryList.php requires isAdmin(); hide the whole menu from non-admins.
+        $reportsMenu = new MenuItem(gettext('Data/Reports'), '', $isAdmin, 'fa-database');
+        $reportsMenu->addSubMenu(new MenuItem(gettext('Queries'), 'QueryList.php', $isAdmin, 'fa-database'));
+        $reportsMenu->addSubMenu(new MenuItem(gettext('People Reports'), 'v2/reports/people', $isAdmin, 'fa-table-list'));
+
+        return $reportsMenu;
     }
 
     private static function addGroupSubMenus($menuName, $groupId, string $viewURl, ?array $groupsByType = null): ?MenuItem

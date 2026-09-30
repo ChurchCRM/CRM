@@ -199,6 +199,42 @@ describe("Standard Calendar", () => {
  * admin session instead of the standard one used above.
  */
 describe("Standard Calendar — save (admin-session)", () => {
+    // The events and calendars these tests create through the UI, tracked by
+    // the unique titles they use so after() can look their ids up and remove
+    // them (#9769). The saves happen in the browser, so there is no response
+    // body to read an id out of.
+    const createdEventTitles = [];
+    const createdCalendarNames = [];
+
+    after(() => {
+        if (createdEventTitles.length > 0) {
+            cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((resp) => {
+                const ids = (resp.body.Events || [])
+                    .filter((e) => createdEventTitles.includes(e.Title))
+                    .map((e) => e.Id);
+                cy.cleanupEvents(ids);
+            });
+        }
+
+        if (createdCalendarNames.length > 0) {
+            cy.makePrivateAdminAPICall("GET", "/api/calendars", null, 200).then((resp) => {
+                const calendars = Array.isArray(resp.body)
+                    ? resp.body
+                    : resp.body.Calendars || [];
+                calendars
+                    .filter((c) => createdCalendarNames.includes(c.Name))
+                    .forEach((c) => {
+                        cy.makePrivateAdminAPICall(
+                            "DELETE",
+                            `/api/calendars/${c.Id}`,
+                            null,
+                            [200, 404],
+                        );
+                    });
+            });
+        }
+    });
+
     beforeEach(() => {
         // Suppress Bootstrap/FullCalendar's null.focus() race: when the previous
         // test's closeModal() fires refreshAllFullCalendarSources(), FullCalendar
@@ -227,6 +263,7 @@ describe("Standard Calendar — save (admin-session)", () => {
      */
     it("New event saves successfully with a pinned calendar + default Event Type", () => {
         const title = "Default Type Test - " + Cypress._.random(0, 1e6);
+        createdEventTitles.push(title);
         cy.intercept("POST", "**/api/events").as("createEvent");
 
         cy.visit("event/calendars");
@@ -277,6 +314,7 @@ describe("Standard Calendar — save (admin-session)", () => {
      */
     it("New event saves without a pinned calendar (empty PinnedCalendars array)", () => {
         const title = "No Calendar Test - " + Cypress._.random(0, 1e6);
+        createdEventTitles.push(title);
         cy.intercept("POST", "**/api/events").as("createEvent");
 
         cy.visit("event/calendars");
@@ -319,6 +357,7 @@ describe("Standard Calendar — save (admin-session)", () => {
      */
     it("Additional Information is visible in the event viewer overlay", () => {
         const title = `TextViewTest ${Date.now()}`;
+        createdEventTitles.push(title);
         const descBody = "Service description body";
         const textBody = "Sermon notes body for Easter Sunday";
 
@@ -363,6 +402,8 @@ describe("Standard Calendar — save (admin-session)", () => {
 
     it("Create New Calendar", () => {
         const title = "Calendar: " + new Date().getTime();
+        cy.intercept("POST", "**/api/calendars").as("createCalendar");
+        createdCalendarNames.push(title);
 
         cy.visit("event/calendars");
         cy.contains("Calendar");
@@ -370,14 +411,27 @@ describe("Standard Calendar — save (admin-session)", () => {
         cy.get('[data-bs-target="#calendarSidebar"]').click();
         cy.get("#calendarSidebar").should("be.visible");
         cy.get("#addCalendarBtn").click();
-        cy.get("#calendarName").should("be.visible").click().type(title);
-        cy.get("#ForegroundColor").invoke("val", "#FA8072").trigger("change");
-        cy.get("#BackgroundColor").invoke("val", "#212F3D").trigger("change");
+        cy.get("#calendarName").should("be.visible").invoke("val", title);
+        cy.get("#ForegroundColor").invoke("val", "#fa8072").trigger("change");
+        cy.get("#BackgroundColor").invoke("val", "#212f3d").trigger("change");
 
         cy.get(".modal-footer .btn-primary.float-end").click();
+
+        cy.wait("@createCalendar").then(({ response }) => {
+            expect(response.statusCode).to.eq(200);
+            const id = response.body.Id;
+
+            cy.makePrivateAdminAPICall("GET", `/api/calendars/${id}`, null, 200).as("savedCalendar");
+            cy.makePrivateAdminAPICall("DELETE", `/api/calendars/${id}`, null, 200);
+            cy.get("@savedCalendar")
+                .its("body.Calendars.0")
+                .should("include", { Name: title, ForegroundColor: "fa8072", BackgroundColor: "212f3d" });
+        });
     });
 
     it("InActive and LinkedGroupId flow into the POST /api/events payload", () => {
+        const title = `Modal Advanced ${Date.now()}`;
+        createdEventTitles.push(title);
         cy.intercept("POST", "**/api/events").as("createEvent");
 
         cy.visit("event/calendars");
@@ -387,7 +441,7 @@ describe("Standard Calendar — save (admin-session)", () => {
         // and cause input events to land on the wrong element, leaving event.Title
         // empty and the save button permanently disabled. trigger("input") fires the
         // input event listener that updates event.Title and calls fireValidity().
-        cy.get("#event-title-input").should("be.visible").invoke("val", `Modal Advanced ${Date.now()}`).trigger("input");
+        cy.get("#event-title-input").should("be.visible").invoke("val", title).trigger("input");
         cy.tomSelectByValue("#pinnedCalendarsSelect", "1");
 
         cy.get('[data-bs-target="#eventAdvancedFields"]').click();

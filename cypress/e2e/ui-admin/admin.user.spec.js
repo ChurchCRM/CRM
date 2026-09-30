@@ -43,8 +43,12 @@ describe("Admin User Password", () => {
 
 
     it("Create System Users", () => {
-        // Ensure clean start: if Peyton Ray already exists as a user, remove that user first
-        cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 404]);
+        // Ensure clean start: if Peyton Ray already exists as a user, remove that user first.
+        // The route is declared as $group->delete('/') inside $app->group('/api/user/{userId}'),
+        // so the real path carries a trailing slash — without it Slim 4 returns 404 and the
+        // cleanup silently no-ops (issue #9782). 404 is allowed here only because the user
+        // genuinely may not exist yet.
+        cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25/", null, [200, 404]);
         // Re-login after API call to restore session (necessary after makePrivateAdminAPICall)
         cy.setupAdminSession({ forceLogin: true });
         
@@ -69,8 +73,10 @@ describe("Admin User Password", () => {
         cy.get('.dt-search input').type('Peyton Ray');
         cy.get('#user-listing-table tbody').should('contain.text', 'Peyton Ray');
 
-        // Clean up: remove user status for PersonID=25 via API so test can be re-run
-        cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 204, 404]);
+        // Clean up: remove user status for PersonID=25 via API so test can be re-run.
+        // The user was just created, so this must return 200 — accepting 404 here would
+        // hide a cleanup that never ran and leak a user_usr row (issue #9782).
+        cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25/", null, 200);
         // Re-login after API call to restore session
         cy.setupAdminSession({ forceLogin: true });
     });
@@ -106,5 +112,36 @@ describe("Admin User Password", () => {
         cy.get("@deleteLink").invoke("attr", "data-user_id").should("match", /^\d+$/);
         cy.get("@deleteLink").should("have.attr", "data-user_name");
         cy.get("@deleteLink").should("not.have.attr", "onclick");
+    });
+
+    describe("Reset Failed Logins (#10129)", () => {
+        const userName = "noperm.user";
+        const userId = 901;
+
+        before(() => {
+            cy.clearCookies();
+            cy.request({
+                method: "POST",
+                url: "/session/begin",
+                form: true,
+                body: { User: userName, Password: "not-the-password" },
+                failOnStatusCode: false,
+            });
+        });
+
+        after(() => {
+            cy.makePrivateAdminAPICall("POST", `/admin/api/user/${userId}/login/reset`, null, 200);
+        });
+
+        it("reloads the users list after the reset", () => {
+            cy.intercept("POST", `**/admin/api/user/${userId}/login/reset`).as("resetLogins");
+            cy.visit("admin/system/users");
+            cy.get(".dt-search input").type(userName);
+            cy.contains("#user-listing-table tbody tr", userName).find('[data-bs-toggle="dropdown"]').click();
+            cy.get(`.js-reset-login-count[data-user_id="${userId}"]`).click();
+            cy.get(".bootbox-accept").click();
+            cy.wait("@resetLogins").its("response.statusCode").should("eq", 200);
+            cy.get(`.js-reset-login-count[data-user_id="${userId}"]`).should("not.exist");
+        });
     });
 });

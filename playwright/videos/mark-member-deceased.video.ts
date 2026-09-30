@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanType } from '../support/human';
+import { humanClick, humanPause, humanType, settle } from '../support/human';
 
 /**
  * Record a member as deceased (date = one week before the run) via the
@@ -12,9 +12,9 @@ import { humanClick, humanPause, humanType } from '../support/human';
  * safely inside the accepted range.
  *
  * "Matthew Davis" (src/admin/demo/people.json's Davis family, Lenexa) is
- * used deliberately — not Scott/Garcia/Baker/Clark/Whitfield/Anderson,
- * which other specs in this pipeline depend on staying in their original
- * demo state.
+ * used deliberately — not Scott/Garcia/Baker/Clark/Whitfield/Hall, which
+ * other specs in this pipeline depend on staying in their original demo
+ * state.
  */
 test('mark-member-deceased', async ({ page }, testInfo) => {
   await page.goto('/people/list');
@@ -50,8 +50,9 @@ test('mark-member-deceased', async ({ page }, testInfo) => {
   // One week before the run — a realistic recent date, and safely in the
   // past for the server's date-not-in-the-future validation.
   const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-  const dateString = `${String(weekAgo.getMonth() + 1).padStart(2, '0')}/${String(weekAgo.getDate()).padStart(2, '0')}/${weekAgo.getFullYear()}`;
+  const dateString = `${weekAgo.getFullYear()}-${String(weekAgo.getMonth() + 1).padStart(2, '0')}-${String(weekAgo.getDate()).padStart(2, '0')}`;
   await humanType(dateField, dateString);
+  await expect(dateField).toHaveValue(dateString);
   await humanPause(page, 800);
 
   await humanClick(page.locator('button[name="PersonSubmit"]'));
@@ -59,7 +60,7 @@ test('mark-member-deceased', async ({ page }, testInfo) => {
   // PersonEditor.php redirects to Person::getViewURIForId() on success.
   await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
   await expect(page.getByText('Deceased', { exact: false }).first()).toBeVisible({ timeout: 10000 });
-  await humanPause(page, 2000);
+  await settle(page, 2000);
 
   await captureScreen(page, testInfo, {
     name: 'mark-member-deceased',
