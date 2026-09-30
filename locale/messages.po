@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 15:20+0000\n"
+"POT-Creation-Date: 2026-09-30 02:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1258,6 +1258,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Aruba"
+msgstr ""
+
+msgid "As an admin, please also review the"
 msgstr ""
 
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
@@ -13862,6 +13865,9 @@ msgstr ""
 msgid "for all funds"
 msgstr ""
 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr ""
+
 msgid "for fund"
 msgstr ""
 
@@ -14087,6 +14093,9 @@ msgid "skip must be zero or a positive integer"
 msgstr ""
 
 msgid "subscribers"
+msgstr ""
+
+msgid "system logs"
 msgstr ""
 
 msgid "system user changed password"
