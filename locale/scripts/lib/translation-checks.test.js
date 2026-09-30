@@ -75,6 +75,14 @@ test('plural forms that carry the number must keep the placeholders', () => {
     assert.match(validateTranslation(LATIN, 'Copied {{count}} members', { one: 'Un membre copié', other: 'Membres copiés' })[0], /form "other"/);
 });
 
+test('scriptTest accepts script names and rejects anything that could alter the pattern', () => {
+    assert.ok(scriptTest('Katakana'));
+    assert.ok(scriptTest('Old_Italic'));
+    for (const bad of ['', 'Han}|.*', 'Han}.{', 'Hangull', '.*', 'Latin\\', null, 42]) {
+        assert.equal(scriptTest(bad), null, `${String(bad)} must be rejected`);
+    }
+});
+
 test('accepts marks shared between scripts', () => {
     assert.deepEqual(validateTranslation(['Han', 'Hiragana', 'Katakana'], 'Server', 'サーバー'), []);
     assert.deepEqual(validateTranslation(['Han', 'Hiragana', 'Katakana'], 'Email', 'メール'), []);

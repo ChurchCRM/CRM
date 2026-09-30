@@ -1,9 +1,15 @@
 'use strict';
 
+const SCRIPT_NAME = /^[A-Za-z_]{2,32}$/;
+
 // Script_Extensions, not Script: marks shared between scripts (katakana ー, Arabic tatweel) have Script=Common.
+// `name` can come from the command line (locale-add.js --scripts): accept plain script names only and escape
+// the value anyway, so it can never change the pattern it is placed in.
 function scriptTest(name) {
+    if (typeof name !== 'string' || !SCRIPT_NAME.test(name)) return null;
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     try {
-        return new RegExp(`\\p{Script_Extensions=${name}}`, 'u');
+        return new RegExp(`\\p{Script_Extensions=${escaped}}`, 'u');
     } catch {
         return null;
     }
