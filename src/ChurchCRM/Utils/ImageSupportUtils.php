@@ -2,6 +2,9 @@
 
 namespace ChurchCRM\Utils;
 
+use ChurchCRM\Exceptions\PhotoSizeException;
+use ChurchCRM\Service\SystemService;
+
 /**
  * ImageSupportUtils — Centralized image type support constants and utilities
  *
@@ -63,6 +66,32 @@ class ImageSupportUtils
      * FPDF does not support GIF or WebP, so we downgrade those to PNG.
      */
     public const FPDF_SUPPORTED_TYPES = ['JPG', 'JPEG', 'PNG'];
+
+    /**
+     * Largest upload accepted, in source pixels: 16 megapixels (4000x4000).
+     * That covers a 12 MP phone photo (4032x3024) and a 16 MP camera; anything
+     * larger is resized before uploading. Stored photos are 600x600 and the
+     * church logo 1200x400, so nothing larger is ever kept.
+     *
+     * The compressed byte limit alone does not bound decoded memory: a valid
+     * 12000x12000 PNG is about 140 KB on disk but 144 million pixels once GD
+     * has decoded it. See createResizedImage().
+     */
+    public const MAX_SOURCE_PIXELS = 16_000_000;
+
+    /**
+     * Worst-case bytes GD holds per source pixel while decoding (PNG and WebP:
+     * the codec's own buffer plus GD's 4-byte raster). One figure for every
+     * format keeps the limit the same whatever the file type.
+     */
+    private const DECODE_BYTES_PER_PIXEL = 8;
+
+    /**
+     * Share of memory_limit a decode may use; the rest is left for the resized
+     * copy, the PNG encoder and the rest of the request. At the 256M shipped
+     * default this allows 16.7 MP, so MAX_SOURCE_PIXELS is the binding limit.
+     */
+    private const DECODE_MEMORY_SHARE = 0.5;
 
     /**
      * Check if a file extension is allowed.
@@ -137,5 +166,252 @@ class ImageSupportUtils
         ];
 
         return $typeMap[$mimeType] ?? 'png';
+    }
+
+    /**
+     * Decode a base64 image data URI and validate it against the allowed MIME
+     * types and the effective server upload-size limit.
+     *
+     * Shared by every uploader that accepts an `imgBase64` body (person/family
+     * photos, the church logo) so the allow-list, the SVG exclusion and the
+     * size cap stay in one place.
+     *
+     * @param string $base64 A `data:<mime>;base64,<payload>` URI
+     * @return string The decoded, validated raw image bytes
+     * @throws \Exception when the URI, the base64 payload or the MIME type is invalid
+     * @throws PhotoSizeException when the decoded image exceeds the server upload limit
+     */
+    public static function decodeBase64Image(string $base64): string
+    {
+        // Parse data URI with a single consistent pattern — handles all valid MIME subtypes
+        // (including those with +, -, . such as image/svg+xml or image/vnd.ms-photo)
+        if (!preg_match('/^data:([\w+.\/-]+);base64,(.+)$/s', $base64, $uriParts)) {
+            throw new \Exception('Invalid image data: expected a base64-encoded data URI');
+        }
+
+        $uriMimeType = $uriParts[1];
+        $fileData = base64_decode($uriParts[2], true);
+
+        if ($fileData === false) {
+            throw new \Exception('Invalid base64 data');
+        }
+
+        // Validate MIME type from binary content when fileinfo is available (preferred);
+        // otherwise trust the data URI prefix — imagecreatefromstring() still enforces
+        // the actual binary format, so non-images are rejected regardless.
+        if (function_exists('finfo_open')) {
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mimeType = $finfo->buffer($fileData);
+        } else {
+            $mimeType = $uriMimeType;
+        }
+
+        if (!self::isAllowedMimeType($mimeType)) {
+            throw new \Exception('Invalid image type. Only JPEG, PNG, GIF, and WebP images are allowed.');
+        }
+
+        // Validate file size against the effective server limit (min of upload/post/memory)
+        $maxSize = SystemService::getMaxUploadFileSize(false);
+        if (strlen($fileData) > $maxSize) {
+            throw new PhotoSizeException(
+                sprintf('Image file size exceeds maximum allowed size of %s', SystemService::getMaxUploadFileSize(true))
+            );
+        }
+
+        return $fileData;
+    }
+
+    /**
+     * Source pixels an upload may carry: MAX_SOURCE_PIXELS, lowered only when
+     * memory_limit is too small to decode that many. Depends on the configured
+     * limit alone, never on the memory in use, so the same image gets the same
+     * answer on every request. An unlimited memory_limit (-1) leaves the fixed
+     * limit.
+     */
+    public static function getDecodePixelBudget(): int
+    {
+        $memoryLimit = self::parseIniBytes((string) ini_get('memory_limit'));
+        if ($memoryLimit <= 0) {
+            return self::MAX_SOURCE_PIXELS;
+        }
+
+        $memoryBudget = (int) floor($memoryLimit * self::DECODE_MEMORY_SHARE / self::DECODE_BYTES_PER_PIXEL);
+
+        return min(self::MAX_SOURCE_PIXELS, $memoryBudget);
+    }
+
+    /**
+     * Read the dimensions from the image header and refuse anything GD could
+     * not decode within the size limit, before a single pixel is allocated.
+     * getimagesizefromstring() only parses the header, so this costs nothing
+     * for the 144-million-pixel PNG that would otherwise exhaust the worker.
+     *
+     * @return array{0:int,1:int,2:int} width, height and IMAGETYPE_* constant
+     * @throws \Exception when the header cannot be read
+     * @throws PhotoSizeException when the image is over the size limit
+     */
+    public static function assertWithinDecodeBudget(string $fileData): array
+    {
+        $info = @getimagesizefromstring($fileData);
+        if ($info === false || $info[0] < 1 || $info[1] < 1) {
+            throw new \Exception('Failed to read the image dimensions from the uploaded data');
+        }
+
+        $width = (int) $info[0];
+        $height = (int) $info[1];
+        $type = (int) $info[2];
+        $pixels = $width * $height;
+        $budget = self::getDecodePixelBudget();
+
+        if ($pixels > $budget) {
+            // Whole pixel counts, not "144.0 megapixels": SlimUtils::renderErrorJSON()
+            // replaces any message containing a dotted number (it looks like an IP
+            // address to its credential filter) with a generic error.
+            throw new PhotoSizeException(sprintf(
+                'Image dimensions %dx%d (%s pixels) exceed the limit of %s pixels for uploads. Resize the image before uploading.',
+                $width,
+                $height,
+                number_format($pixels),
+                number_format($budget)
+            ));
+        }
+
+        return [$width, $height, $type];
+    }
+
+    /**
+     * Build a GD image from raw bytes, scaled down to fit within
+     * $maxWidth x $maxHeight. Aspect ratio is preserved and images smaller
+     * than the box are never upscaled. Alpha is preserved so transparent
+     * PNG/GIF sources survive the re-encode.
+     *
+     * The source dimensions are checked against the size limit first:
+     * the output box bounds the stored image, not the memory needed to decode
+     * the source, so an over-limit image is rejected before GD allocates.
+     *
+     * @throws \Exception when the bytes are not a decodable image or GD fails
+     * @throws PhotoSizeException when the source is over the size limit
+     */
+    public static function createResizedImage(string $fileData, int $maxWidth, int $maxHeight): \GdImage
+    {
+        self::assertWithinDecodeBudget($fileData);
+
+        $sourceImage = imagecreatefromstring($fileData);
+        if ($sourceImage === false) {
+            throw new \Exception('Failed to create image from uploaded data');
+        }
+
+        $sourceWidth = imagesx($sourceImage);
+        $sourceHeight = imagesy($sourceImage);
+
+        // Scale down to fit within the box, preserving aspect ratio.
+        // Never upscale — images smaller than the max are stored at their natural size.
+        $scale = min(1.0, $maxWidth / $sourceWidth, $maxHeight / $sourceHeight);
+        $destWidth = (int) round($sourceWidth * $scale);
+        $destHeight = (int) round($sourceHeight * $scale);
+
+        $resizedImage = imagecreatetruecolor($destWidth, $destHeight);
+        if ($resizedImage === false) {
+            throw new \Exception('Failed to create resized image');
+        }
+
+        // Preserve transparency for PNG/GIF
+        imagealphablending($resizedImage, false);
+        imagesavealpha($resizedImage, true);
+
+        if (!imagecopyresampled(
+            $resizedImage,
+            $sourceImage,
+            0, 0, 0, 0,
+            $destWidth,
+            $destHeight,
+            $sourceWidth,
+            $sourceHeight
+        )) {
+            throw new \Exception('Failed to resize image');
+        }
+
+        return $resizedImage;
+    }
+
+    /**
+     * Encode $image as PNG at $targetPath without ever exposing a partial file.
+     *
+     * The PNG is written to a unique temporary file in the same directory,
+     * checked, then rename()d over the target, which is atomic on the same
+     * filesystem. A reader (the web server, a browser fetching the logo)
+     * therefore sees either the previous file or the complete new one, and a
+     * failed encode or write leaves the previous file untouched. The temporary
+     * file is removed on any failure.
+     *
+     * @throws \Exception when the temporary file cannot be created, the encode
+     *                    fails, or the rename fails
+     */
+    public static function savePngAtomically(\GdImage $image, string $targetPath): void
+    {
+        $directory = dirname($targetPath);
+        $tempPath = @tempnam($directory, basename($targetPath) . '.');
+
+        // tempnam() silently falls back to the system temp dir when $directory
+        // is not writable; a rename from there would not be atomic (and would
+        // fail anyway), so treat it as the failure it is.
+        if ($tempPath === false || realpath(dirname($tempPath)) !== realpath($directory)) {
+            if ($tempPath !== false) {
+                @unlink($tempPath);
+            }
+            throw new \Exception('Failed to create a temporary file in the image directory');
+        }
+
+        $replaced = false;
+        try {
+            if (!imagepng($image, $tempPath)) {
+                throw new \Exception('Failed to encode the image as PNG');
+            }
+
+            clearstatcache(true, $tempPath);
+            if ((int) @filesize($tempPath) === 0) {
+                throw new \Exception('The encoded image is empty');
+            }
+
+            // tempnam() creates the file 0600; give it the permissions a plain
+            // imagepng() write would have so the web server can serve it.
+            @chmod($tempPath, 0644);
+
+            if (!@rename($tempPath, $targetPath)) {
+                throw new \Exception('Failed to replace the stored image');
+            }
+            $replaced = true;
+        } finally {
+            if (!$replaced) {
+                @unlink($tempPath);
+            }
+            clearstatcache(true, $targetPath);
+        }
+    }
+
+    /**
+     * Parse a php.ini shorthand size ("128M", "2G", "-1") into bytes.
+     * Returns a non-positive number for "unlimited" values.
+     */
+    private static function parseIniBytes(string $size): int
+    {
+        $size = trim($size);
+        if ($size === '') {
+            return 0;
+        }
+
+        $value = (int) $size;
+        switch (strtolower(substr($size, -1))) {
+            case 'g':
+                $value *= 1024;
+                // fallthrough
+            case 'm':
+                $value *= 1024;
+                // fallthrough
+            case 'k':
+                $value *= 1024;
+        }
+
+        return $value;
     }
 }

@@ -4,18 +4,18 @@
  * API tests for VolunteerOpportunity CRUD endpoints
  *
  * Covers:
- *   GET    /api/volunteer-opportunities
- *   POST   /api/volunteer-opportunities
- *   GET    /api/volunteer-opportunities/{id}
- *   PUT    /api/volunteer-opportunities/{id}
- *   DELETE /api/volunteer-opportunities/{id}
+ *   GET    /admin/api/volunteer-opportunities
+ *   POST   /admin/api/volunteer-opportunities
+ *   GET    /admin/api/volunteer-opportunities/{id}
+ *   PUT    /admin/api/volunteer-opportunities/{id}
+ *   DELETE /admin/api/volunteer-opportunities/{id}
  */
 describe("API Private Volunteer Opportunities", () => {
-    describe("GET /api/volunteer-opportunities", () => {
+    describe("GET /admin/api/volunteer-opportunities", () => {
         it("Returns 200 with volunteerOpportunities array", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
-                "/api/volunteer-opportunities",
+                "/admin/api/volunteer-opportunities",
                 null,
                 200,
             ).then((response) => {
@@ -29,7 +29,7 @@ describe("API Private Volunteer Opportunities", () => {
         it("Filters by activeOnly", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
-                "/api/volunteer-opportunities?activeOnly=true",
+                "/admin/api/volunteer-opportunities?activeOnly=true",
                 null,
                 200,
             ).then((response) => {
@@ -40,12 +40,12 @@ describe("API Private Volunteer Opportunities", () => {
         });
     });
 
-    describe("POST /api/volunteer-opportunities", () => {
+    describe("POST /admin/api/volunteer-opportunities", () => {
         it("Creates a volunteer opportunity and returns 201", () => {
             const name = `Vol ${Date.now()}`;
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/volunteer-opportunities",
+                "/admin/api/volunteer-opportunities",
                 { name, description: "Test opp", active: true },
                 201,
             ).then((response) => {
@@ -57,7 +57,7 @@ describe("API Private Volunteer Opportunities", () => {
 
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer-opportunities/${opp.id}`,
+                    `/admin/api/volunteer-opportunities/${opp.id}`,
                     null,
                     200,
                 );
@@ -67,7 +67,7 @@ describe("API Private Volunteer Opportunities", () => {
         it("Returns 400 when name is empty", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/volunteer-opportunities",
+                "/admin/api/volunteer-opportunities",
                 { name: "" },
                 400,
             );
@@ -77,20 +77,20 @@ describe("API Private Volunteer Opportunities", () => {
             const name = `Cypress Dup Vol ${Date.now()}`;
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/volunteer-opportunities",
+                "/admin/api/volunteer-opportunities",
                 { name },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.volunteerOpportunity.id;
                 cy.makePrivateAdminAPICall(
                     "POST",
-                    "/api/volunteer-opportunities",
+                    "/admin/api/volunteer-opportunities",
                     { name },
                     400,
                 );
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer-opportunities/${id}`,
+                    `/admin/api/volunteer-opportunities/${id}`,
                     null,
                     200,
                 );
@@ -98,11 +98,11 @@ describe("API Private Volunteer Opportunities", () => {
         });
     });
 
-    describe("GET /api/volunteer-opportunities/{id}", () => {
+    describe("GET /admin/api/volunteer-opportunities/{id}", () => {
         it("Returns 404 for non-existent opportunity", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
-                "/api/volunteer-opportunities/999999",
+                "/admin/api/volunteer-opportunities/999999",
                 null,
                 404,
             );
@@ -111,14 +111,14 @@ describe("API Private Volunteer Opportunities", () => {
         it("Returns 200 with object for existing opportunity", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/volunteer-opportunities",
+                "/admin/api/volunteer-opportunities",
                 { name: `GET ${Date.now()}` },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.volunteerOpportunity.id;
                 cy.makePrivateAdminAPICall(
                     "GET",
-                    `/api/volunteer-opportunities/${id}`,
+                    `/admin/api/volunteer-opportunities/${id}`,
                     null,
                     200,
                 ).then((getResp) => {
@@ -126,7 +126,7 @@ describe("API Private Volunteer Opportunities", () => {
                 });
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer-opportunities/${id}`,
+                    `/admin/api/volunteer-opportunities/${id}`,
                     null,
                     200,
                 );
@@ -134,11 +134,11 @@ describe("API Private Volunteer Opportunities", () => {
         });
     });
 
-    describe("PUT /api/volunteer-opportunities/{id}", () => {
+    describe("PUT /admin/api/volunteer-opportunities/{id}", () => {
         it("Returns 404 for non-existent opportunity", () => {
             cy.makePrivateAdminAPICall(
                 "PUT",
-                "/api/volunteer-opportunities/999999",
+                "/admin/api/volunteer-opportunities/999999",
                 { name: "nope" },
                 404,
             );
@@ -149,14 +149,14 @@ describe("API Private Volunteer Opportunities", () => {
             const updated = `Upd ${Date.now()}`;
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/volunteer-opportunities",
+                "/admin/api/volunteer-opportunities",
                 { name: orig, active: true },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.volunteerOpportunity.id;
                 cy.makePrivateAdminAPICall(
                     "PUT",
-                    `/api/volunteer-opportunities/${id}`,
+                    `/admin/api/volunteer-opportunities/${id}`,
                     { name: updated, description: "desc2", active: false },
                     200,
                 ).then((updateResp) => {
@@ -172,7 +172,7 @@ describe("API Private Volunteer Opportunities", () => {
                 });
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer-opportunities/${id}`,
+                    `/admin/api/volunteer-opportunities/${id}`,
                     null,
                     200,
                 );
@@ -182,20 +182,20 @@ describe("API Private Volunteer Opportunities", () => {
         it("Returns 400 when name is blank", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/volunteer-opportunities",
+                "/admin/api/volunteer-opportunities",
                 { name: `Blank ${Date.now()}` },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.volunteerOpportunity.id;
                 cy.makePrivateAdminAPICall(
                     "PUT",
-                    `/api/volunteer-opportunities/${id}`,
+                    `/admin/api/volunteer-opportunities/${id}`,
                     { name: "" },
                     400,
                 );
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer-opportunities/${id}`,
+                    `/admin/api/volunteer-opportunities/${id}`,
                     null,
                     200,
                 );
@@ -203,7 +203,7 @@ describe("API Private Volunteer Opportunities", () => {
         });
     });
 
-    describe("DELETE /api/volunteer-opportunities/{id}", () => {
+    describe("DELETE /admin/api/volunteer-opportunities/{id}", () => {
         // TODO: add 409 coverage for "opportunity has person assignments" once
         // a PersonVolunteerOpportunity REST API exists to seed the dependency.
         // Seed data has zero rows in both volunteeropportunity_vol and
@@ -214,7 +214,7 @@ describe("API Private Volunteer Opportunities", () => {
         it("Returns 404 for non-existent opportunity", () => {
             cy.makePrivateAdminAPICall(
                 "DELETE",
-                "/api/volunteer-opportunities/999999",
+                "/admin/api/volunteer-opportunities/999999",
                 null,
                 404,
             );
@@ -223,14 +223,14 @@ describe("API Private Volunteer Opportunities", () => {
         it("Deletes an existing opportunity", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/volunteer-opportunities",
+                "/admin/api/volunteer-opportunities",
                 { name: `Del ${Date.now()}` },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.volunteerOpportunity.id;
                 cy.makePrivateAdminAPICall(
                     "DELETE",
-                    `/api/volunteer-opportunities/${id}`,
+                    `/admin/api/volunteer-opportunities/${id}`,
                     null,
                     200,
                 ).then((delResp) => {
@@ -238,7 +238,7 @@ describe("API Private Volunteer Opportunities", () => {
                 });
                 cy.makePrivateAdminAPICall(
                     "GET",
-                    `/api/volunteer-opportunities/${id}`,
+                    `/admin/api/volunteer-opportunities/${id}`,
                     null,
                     404,
                 );
@@ -255,7 +255,7 @@ describe("API Private Volunteer Opportunities", () => {
             cy.clearCookies();
             cy.request({
                 method: "GET",
-                url: "/api/volunteer-opportunities",
+                url: "/admin/api/volunteer-opportunities",
                 failOnStatusCode: false,
                 headers: { "content-type": "application/json" },
             }).then((response) => {
@@ -266,7 +266,7 @@ describe("API Private Volunteer Opportunities", () => {
         it("Returns 403 for non-admin user", () => {
             cy.makePrivateUserAPICall(
                 "GET",
-                "/api/volunteer-opportunities",
+                "/admin/api/volunteer-opportunities",
                 null,
                 403,
             );

@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Photos"
 
 #: 
-msgid "Number of Columns"
-msgstr "Numri i Columns"
-
-#: 
 msgid "Paper Size"
 msgstr "Madhësia e letrës"
 
@@ -846,10 +842,6 @@ msgstr "Fshij Foto"
 #: 
 msgid "Timeline"
 msgstr "Linja kohore"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Premton dhe Pagesat"
 
 #: 
 msgid "Value"
@@ -12720,10 +12712,6 @@ msgid "Upcoming Events"
 msgstr "Ngjarjet e ardhshme"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL absolut http(s) i logos së kishës që shfaqet në shablonet e emailit (dhe ripërdoret gjetkë në të ardhmen). Për renderim më të mirë në klientët e emailit, përdorni një imazh baner të gjerë me raport pamjeje rreth 3.5:1 (p.sh. 350×100 px), PNG ose JPG, të shërbyer mbi HTTPS. Lini bosh ose vendosni një vlerë të pavlefshme për t'u rikthyer te logoja e parazgjedhur e ChurchCRM."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "Tashmë ekziston një opsion me atë emër"
 
@@ -18530,4 +18518,268 @@ msgstr "Shumë marrës për klientin e emailit ({{total}} > {{max}}). Përdorni 
 #: 
 msgid "{{minutes}} min left"
 msgstr "{{minutes}} min të mbetura"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d dokument tatimor i dërguar me sukses në familje me email."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "Deklarata e dhurimit %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "Të gjitha klasifikimet"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Si administrator, ju lutemi rishikoni edhe"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Dërgoni automatikisht një email përshëndetje ditëlindjeje për njerëzit në ditën e tyre të lindjes."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Emailet e ditëlindjes"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Ditëlindjet, jubileumet, vullnetarët dhe listat e tjera të njerëzve me një filtër klasifikimi"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Zgjidhni %s për të drejtuar këtë raport."
+
+#: 
+msgid "Choose events"
+msgstr "Zgjidhni ngjarje"
+
+#: 
+msgid "Choose..."
+msgstr "Zgjidhni..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logoja e kishës"
+
+#: 
+msgid "Columns per Page"
+msgstr "Kolona për faqe"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "I nderuar %s Familje,\n"
+"\n"
+"Ju lutemi gjeni deklaratën tuaj të dhurimit %d nga %s në bashkëlidhje me këtë email.\n"
+"\n"
+"Nëse keni ndonjë pyetje, ju lutemi kontaktoni zyrën e kishës.\n"
+"\n"
+"Faleminderit për bamirësinë tuaj."
+
+#: 
+msgid "Download CSV"
+msgstr "Shkarko CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Dërgo me email %d Dokument tatimor"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Aktivizo ose çaktivizo modulin e Financës dhe menynë anësore."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Aktivizo ose çaktivizo modulin e Mbledhësit të Fondeve."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Dështoi heqja e logos s kishës"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Dështoi ngarkimi i logos s kishës"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL-ja e logos zëvendësuese për shabllonet e email-it, përdoret vetëm kur asnjë logo kishe nuk është ngarkuar në faqen e Informacionit të Kishës. Faqet e vetë aplikacionit e injorojnë këtë rregullim dhe gjithmonë përdorin logon e ngarkuar ose logon parazgjedhur të ChurchCRM. Duhet të jetë një URL absolute http(s). Për paraqitjen më të mirë në të gjithë klientët e email-it, përdorni një imazh të gjerë baner me përafërsisht raportin 3.5:1 (për shembull 350×100 px), PNG ose JPG, i shërbyer mbi HTTPS. Lini bosh ose futni një vlerë të pavlefshme për të kthyer logon parazgjedhur të ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Moduli i Financës"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Gjeni njerëzit që nuk morën pjesë në një ngjarje"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Gjeni vullnetarë që përputhen me dy kodet specifike të mundësisë"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Mundësia e parë e vullnetarizmit"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Broshurë e palosur"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Moduli i Mbledhësit të Fondeve"
+
+#: 
+msgid "Giving History"
+msgstr "Historiku i dhurimit"
+
+#: 
+msgid "Last Gift"
+msgstr "Dhurata e fundit"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Leni bosh për të gjitha klasifikimet."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Numri maksimal i dokumenteve të vitit tatimor për të shfaqur për profilin familjar (0 = pa limit)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Vitet maksimale të tatimit të shfaqura për familje"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Jubileumet e anëtarësimit"
+
+#: 
+msgid "Missing People"
+msgstr "Njerëzit që mungojnë"
+
+#: 
+msgid "No giving history found."
+msgstr "Nuk u gjet ndonjë historik dhurimi."
+
+#: 
+msgid "No people match these filters."
+msgstr "Asnjë person nuk përputhet me këta filtra."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Një faqe direktoriumi për fletë, portret."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Vetëm skemat http dhe https janë të lejuara."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF ose WebP. Një banner i gjerë me përafërsisht 3.5:1 (për shembull 700x200) funksionon më mirë; PNG transparent është i preferuar."
+
+#: 
+msgid "Page Layout"
+msgstr "Paraqitja e faqes"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Njerëzit që u bashkuan në një muaj të veçantë"
+
+#: 
+msgid "Pledged"
+msgstr "Premtuar"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Shtyp %d Dokument tatimor"
+
+#: 
+msgid "Queries"
+msgstr "Pyetje"
+
+#: 
+msgid "Recent Friends"
+msgstr "Miqtë e fundit"
+
+#: 
+msgid "Report not found"
+msgstr "Raporti nuk u gjet"
+
+#: 
+msgid "Run Report"
+msgstr "Ekzekuto raportin"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Mundësia e dytë e vullnetarizmit"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Shfaqur në shiritin anësor, në faqen e hyrjes dhe në emailet. Ngarkimi i një loge zëvendëson shënjimin e markës ChurchCRM kudo që shfaqet."
+
+#: 
+msgid "Single Pages"
+msgstr "Faqe të vetme"
+
+#: 
+msgid "Tax Documents"
+msgstr "Dokumentet tatimore"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Dështoi dërgimi i emailit të dokumentit tatimor. Ju lutemi kontrolloni cilësimet e serverit të email-it."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Dy faqe të gjysëm madhësie krah për krah në secilin fletë të gjerë, në rendin e broshurës. Shtypni me të dyja anët me \"flip në skajin e shkurtër\", pastaj palosni grumbullin në gjysmë. Kolonat numërohen për çdo gjysmë faqeje."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Nuk është e mundur të dërgohet dokumenti tatimor me email: nuk u gjet ndonjë të dhënë pagese për atë vit."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Nuk është e mundur të dërgohet dokumenti tatimor me email: kjo familje nuk ka adresë emaili në dosje."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Nuk është e mundur të zgjidhet emri i host-it të serverit OpenLP. Kontrolloni adresën dhe lidhjen tuaj të rrjetit."
+
+#: 
+msgid "Upload"
+msgstr "Ngarko"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Përdorimi i logos parazgjedhur të ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Shiko dhurimin e plotë të familjes"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Mundësia e vullnetarizmit"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Vullnetarë për dy mundësi"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD Paguar"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "për gabimet rreth kohës kur ndodhi kjo, dhe shkarkoni dhe bashkangjitni skedarin e log-ut përkatës në çështjen tuaj në GitHub — na ndihmon të rregullojmë problemin pa bërë pyetje ndjekese."
+
+#: 
+msgid "system logs"
+msgstr "regjistra sistemi"
 

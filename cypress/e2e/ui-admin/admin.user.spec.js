@@ -113,4 +113,35 @@ describe("Admin User Password", () => {
         cy.get("@deleteLink").should("have.attr", "data-user_name");
         cy.get("@deleteLink").should("not.have.attr", "onclick");
     });
+
+    describe("Reset Failed Logins (#10129)", () => {
+        const userName = "noperm.user";
+        const userId = 901;
+
+        before(() => {
+            cy.clearCookies();
+            cy.request({
+                method: "POST",
+                url: "/session/begin",
+                form: true,
+                body: { User: userName, Password: "not-the-password" },
+                failOnStatusCode: false,
+            });
+        });
+
+        after(() => {
+            cy.makePrivateAdminAPICall("POST", `/admin/api/user/${userId}/login/reset`, null, 200);
+        });
+
+        it("reloads the users list after the reset", () => {
+            cy.intercept("POST", `**/admin/api/user/${userId}/login/reset`).as("resetLogins");
+            cy.visit("admin/system/users");
+            cy.get(".dt-search input").type(userName);
+            cy.contains("#user-listing-table tbody tr", userName).find('[data-bs-toggle="dropdown"]').click();
+            cy.get(`.js-reset-login-count[data-user_id="${userId}"]`).click();
+            cy.get(".bootbox-accept").click();
+            cy.wait("@resetLogins").its("response.statusCode").should("eq", 200);
+            cy.get(`.js-reset-login-count[data-user_id="${userId}"]`).should("not.exist");
+        });
+    });
 });
