@@ -73,7 +73,11 @@ import { createMinistryEventsTab, type MinistryEventsHandle } from "./components
 import { createOccurrencesTable, type OccurrencesTableHandle } from "./components/occurrences-table";
 import { createPositionsTable, type PositionsTableHandle } from "./components/positions-table";
 import { createQualificationMatrix, type QualificationMatrixHandle } from "./components/qualification-matrix";
-import { createSchedulesTable, type SchedulesTableHandle } from "./components/schedules-table";
+import {
+  createSchedulesTable,
+  type MinistryEventPrefill,
+  type SchedulesTableHandle,
+} from "./components/schedules-table";
 import {
   actionMenu,
   byId,
@@ -209,6 +213,15 @@ function buildComponents(): void {
     fetch: () => listSchedules(ministryId),
     invalidateOccurrences: () => occurrencesTable.invalidate(),
     classesAllowed: sundaySchool,
+    // D30: creating the ministry's events is a coordinator's, like the Calendar tab's own buttons.
+    ...(isMinistryCoordinator
+      ? {
+          addEvents: (prefill: MinistryEventPrefill) => {
+            byId("nav-item-calendar")?.click();
+            void ministryEvents.openNew(true, prefill);
+          },
+        }
+      : {}),
   });
 
   ministryEvents = createMinistryEventsTab({
