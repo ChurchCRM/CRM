@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Foto"
 
 #: 
-msgid "Number of Columns"
-msgstr "Numero di Colonne"
-
-#: 
 msgid "Paper Size"
 msgstr "Formato carta"
 
@@ -848,10 +844,6 @@ msgstr "Elimina foto"
 #: 
 msgid "Timeline"
 msgstr "Cronologia degli eventi"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Impegni e pagamenti"
 
 #: 
 msgid "Value"
@@ -12749,10 +12741,6 @@ msgid "Upcoming Events"
 msgstr "Prossimi eventi"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL http(s) assoluto del logo della parrocchia mostrato nei modelli email (e riutilizzato altrove in futuro). Per una migliore resa tra i client email, utilizzare un’immagine banner orizzontale con un rapporto di circa 3,5:1 (ad esempio 350×100 px), PNG o JPG, servita tramite HTTPS. Lasciare vuoto o inserire un valore non valido per utilizzare il logo predefinito di ChurchCRM."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "Esiste già un’opzione con quel nome"
 
@@ -16025,6 +16013,10 @@ msgid "Character used to separate thousands in monetary amounts (e.g. , or .)"
 msgstr "Carattere usato per separare le migliaia negli importi monetari (es. , o .)"
 
 #: 
+msgid "Check-out"
+msgstr "Accedi"
+
+#: 
 msgid "Choose a group..."
 msgstr "Scegli un gruppo..."
 
@@ -18169,6 +18161,10 @@ msgid "Last seen"
 msgstr "Ultimo accesso"
 
 #: 
+msgid "Link"
+msgstr "Collegamento"
+
+#: 
 msgid "Link added successfully"
 msgstr "Link aggiunto con successo"
 
@@ -18551,4 +18547,272 @@ msgstr "Troppi destinatari per il client email ({{total}} > {{max}}). Usa invece
 #: 
 msgid "{{minutes}} min left"
 msgstr "{{minutes}} min rimanenti"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d documento fiscale inviato con successo alla famiglia."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "Dichiarazione di donazione %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "Tutte le classificazioni"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Come amministratore, si prega di consultare anche il"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Invia automaticamente un'email di auguri di compleanno alle persone nel loro compleanno."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Email di compleanno"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Compleanni, anniversari, volontari e altri elenchi di persone con filtro di classificazione"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Scegli %s per eseguire questo report."
+
+#: 
+msgid "Choose events"
+msgstr "Scegli eventi"
+
+#: 
+msgid "Choose..."
+msgstr "Scegli..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logo della chiesa"
+
+#: 
+msgid "Columns per Page"
+msgstr "Colonne per pagina"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Caro/a %s Famiglia,\n"
+"\n"
+"Troverai la tua dichiarazione di donazione %d da %s allegata a questa email.\n"
+"\n"
+"Se hai domande, contatta l'ufficio della chiesa.\n"
+"\n"
+"Grazie per la tua generosità."
+
+#: 
+msgid "Download CSV"
+msgstr "Scarica CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Invia %d documento fiscale per email"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Abilita o disabilita il modulo Finanza e il menu della barra laterale."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Abilita o disabilita il modulo Raccolta fondi."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Impossibile rimuovere il logo della chiesa"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Impossibile caricare il logo della chiesa"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL del logo di fallback per i modelli di email, utilizzato solo quando nessun logo della chiesa è stato caricato nella pagina Informazioni sulla chiesa. Le pagine dell'applicazione ignorano questa impostazione e utilizzano sempre il logo caricato o il logo predefinito di ChurchCRM. Deve essere un URL http(s) assoluto. Per un rendering ottimale tra i client di posta, utilizza un'immagine banner ampia con rapporto di aspetto circa 3,5:1 (ad esempio 350×100 px), PNG o JPG, servita su HTTPS. Lascia vuoto o inserisci un valore non valido per tornare al logo predefinito di ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Modulo Finanza"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Trova persone che non hanno partecipato a un evento"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Trova volontari che corrispondono a due codici opportunità specifici"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Prima opportunità di volontariato"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Opuscolo piegato"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Modulo Raccolta fondi"
+
+#: 
+msgid "Giving History"
+msgstr "Cronologia donazioni"
+
+#: 
+msgid "Last Gift"
+msgstr "Ultimo dono"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Lascia vuoto per tutte le classificazioni."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Numero massimo di documenti dell'anno fiscale da visualizzare per profilo familiare (0 = nessun limite)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Numero massimo di anni fiscali visualizzati per famiglia"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Anniversari di iscrizione"
+
+#: 
+msgid "Missing People"
+msgstr "Persone mancanti"
+
+#: 
+msgid "No giving history found."
+msgstr "Nessuna cronologia di donazioni trovata."
+
+#: 
+msgid "No people match these filters."
+msgstr "Nessuna persona corrisponde a questi filtri."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Una pagina di directory per foglio, verticale."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Solo gli schemi http e https sono consentiti."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF o WebP. Un banner ampio di circa 3,5:1 (ad esempio 700x200) funziona meglio; PNG trasparente preferito."
+
+#: 
+msgid "Page Layout"
+msgstr "Layout della pagina"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Persone che si sono iscritte in un determinato mese"
+
+#: 
+msgid "Pledged"
+msgstr "Promesso"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Stampa %d documento fiscale"
+
+#: 
+msgid "Queries"
+msgstr "Query"
+
+#: 
+msgid "Recent Friends"
+msgstr "Amici recenti"
+
+#: 
+msgid "Report not found"
+msgstr "Report non trovato"
+
+#: 
+msgid "Run Report"
+msgstr "Esegui report"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Seconda opportunità di volontariato"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Visualizzato nella barra laterale, nella pagina di accesso e nelle email. Il caricamento di un logo sostituisce il marchio ChurchCRM ovunque appaia."
+
+#: 
+msgid "Single Pages"
+msgstr "Pagine singole"
+
+#: 
+msgid "Tax Documents"
+msgstr "Documenti fiscali"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Impossibile inviare l'email del documento fiscale. Controlla le impostazioni del server di posta."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Due pagine di mezza dimensione affiancate su ogni foglio in orizzontale, in ordine di opuscolo. Stampa fronte-retro con \"capovolgimento sul bordo corto\", quindi piega lo stack a metà. Le colonne vengono conteggiate per mezza pagina."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Impossibile inviare il documento fiscale per email: nessun dato di pagamento trovato per quell'anno."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Impossibile inviare il documento fiscale per email: questa famiglia non ha un indirizzo email registrato."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Impossibile risolvere il nome host del server OpenLP. Controlla l'indirizzo e la tua connessione di rete."
+
+#: 
+msgid "Upload"
+msgstr "Carica"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Utilizzo del logo predefinito di ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Visualizza donazioni complete della famiglia"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Opportunità di volontariato"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Volontari per due opportunità"
+
+#: 
+msgid "YTD"
+msgstr "Da inizio anno"
+
+#: 
+msgid "YTD Paid"
+msgstr "Pagato da inizio anno"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "per errori intorno al momento in cui ciò è accaduto, e scarica e allega il file di registro pertinente al tuo problema GitHub: ci aiuta a risolvere il problema senza fare domande di follow-up."
+
+#: 
+msgid "system logs"
+msgstr "registri di sistema"
 

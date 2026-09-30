@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "사진"
 
 #: 
-msgid "Number of Columns"
-msgstr "열 개수"
-
-#: 
 msgid "Paper Size"
 msgstr "용지 크기"
 
@@ -846,10 +842,6 @@ msgstr "사진 삭제"
 #: 
 msgid "Timeline"
 msgstr "타임라인"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "서약 및 헌금"
 
 #: 
 msgid "Value"
@@ -12715,10 +12707,6 @@ msgid "Upcoming Events"
 msgstr "예정된 이벤트"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "이메일 템플릿에 표시되는 교회 로고의 절대 http(s) URL입니다(향후 다른 곳에서도 재사용됨). 이메일 클라이언트 간 최적 렌더링을 위해 약 3.5:1 비율(예: 350×100 px)의 넓은 배너 이미지를 PNG 또는 JPG 형식으로 HTTPS로 제공하세요. 비워 두거나 잘못된 값을 입력하면 기본 ChurchCRM 로고가 사용됩니다."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "같은 이름의 옵션이 이미 존재합니다"
 
@@ -18523,4 +18511,268 @@ msgstr "이메일 클라이언트가 처리하기에 수신자가 너무 많습�
 #: 
 msgid "{{minutes}} min left"
 msgstr "{{minutes}}분 남음"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d개의 세금 문서가 가족에게 성공적으로 이메일로 전송되었습니다."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d 기부 명세서"
+
+#: 
+msgid "All classifications"
+msgstr "모든 분류"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "관리자로서 다음을 검토해주세요."
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "생일에 사람들에게 자동으로 생일 인사말 이메일을 보냅니다."
+
+#: 
+msgid "Birthday Emails"
+msgstr "생일 이메일"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "생일, 기념일, 자원봉사자 및 분류 필터가 있는 기타 사람 목록"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "이 보고서를 실행하려면 %s를 선택하세요."
+
+#: 
+msgid "Choose events"
+msgstr "이벤트 선택"
+
+#: 
+msgid "Choose..."
+msgstr "선택..."
+
+#: 
+msgid "Church Logo"
+msgstr "교회 로고"
+
+#: 
+msgid "Columns per Page"
+msgstr "페이지당 열 수"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "친애하는 %s 가족께,\n"
+"\n"
+"이 이메일에 %s의 %d 기부 명세서를 첨부합니다.\n"
+"\n"
+"질문이 있으시면 교회 사무실에 문의하시기 바랍니다.\n"
+"\n"
+"관대함에 감사드립니다."
+
+#: 
+msgid "Download CSV"
+msgstr "CSV 다운로드"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "%d개 세금 문서 이메일"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "재무 모듈 및 사이드바 메뉴를 활성화하거나 비활성화합니다."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "모금 모듈을 활성화하거나 비활성화합니다."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "교회 로고 제거 실패"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "교회 로고 업로드 실패"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "이메일 템플릿의 대체 로고 URL. 교회 정보 페이지에 교회 로고가 업로드되지 않은 경우에만 사용됩니다. 애플리케이션 자체 페이지는 이 설정을 무시하고 항상 업로드된 로고 또는 기본 ChurchCRM 로고를 사용합니다. 절대 http(s) URL이어야 합니다. 이메일 클라이언트에서 최적의 렌더링을 위해 약 3.5:1 종횡비(예: 350×100px)의 넓은 배너 이미지를 PNG 또는 JPG로 HTTPS를 통해 제공하세요. 기본 ChurchCRM 로고로 돌아가려면 비워두거나 잘못된 값을 입력하세요."
+
+#: 
+msgid "Finance Module"
+msgstr "재무 모듈"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "이벤트에 참석하지 않은 사람 찾기"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "두 가지 특정 기회 코드와 일치하는 자원봉사자 찾기"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "첫 번째 자원봉사 기회"
+
+#: 
+msgid "Folded Booklet"
+msgstr "접힌 책자"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "모금 모듈"
+
+#: 
+msgid "Giving History"
+msgstr "기부 내역"
+
+#: 
+msgid "Last Gift"
+msgstr "마지막 기부금"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "모든 분류의 경우 비워둡니다."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "가족 프로필당 표시할 최대 세금 연도 문서 수(0 = 제한 없음)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "가족당 표시되는 최대 세금 연도"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "멤버십 기념일"
+
+#: 
+msgid "Missing People"
+msgstr "누락된 사람"
+
+#: 
+msgid "No giving history found."
+msgstr "기부 내역이 없습니다."
+
+#: 
+msgid "No people match these filters."
+msgstr "이 필터와 일치하는 사람이 없습니다."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "시트당 하나의 디렉토리 페이지, 세로 방향."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "http 및 https 구성표만 허용됩니다."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF 또는 WebP. 대략 3.5:1(예: 700x200)의 넓은 배너가 가장 잘 작동하며, 투명 PNG가 선호됩니다."
+
+#: 
+msgid "Page Layout"
+msgstr "페이지 레이아웃"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "특정 월에 가입한 사람"
+
+#: 
+msgid "Pledged"
+msgstr "서약함"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "%d개 세금 문서 인쇄"
+
+#: 
+msgid "Queries"
+msgstr "쿼리"
+
+#: 
+msgid "Recent Friends"
+msgstr "최근 친구"
+
+#: 
+msgid "Report not found"
+msgstr "보고서를 찾을 수 없습니다."
+
+#: 
+msgid "Run Report"
+msgstr "보고서 실행"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "두 번째 자원봉사 기회"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "사이드바, 로그인 페이지 및 이메일에 표시됩니다. 로고를 업로드하면 ChurchCRM 브랜딩이 나타나는 모든 곳에서 대체됩니다."
+
+#: 
+msgid "Single Pages"
+msgstr "단일 페이지"
+
+#: 
+msgid "Tax Documents"
+msgstr "세금 문서"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "세금 문서 이메일 전송 실패. 이메일 서버 설정을 확인하세요."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "각 가로 시트에 나란히 반 크기 페이지 두 개, 소책자 순서로. \"짧은 가장자리에서 뒤집기\"를 사용하여 양면 인쇄한 다음 스택을 반으로 접습니다. 열은 페이지당 절반으로 계산됩니다."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "세금 문서를 이메일할 수 없습니다: 해당 연도에 대한 결제 데이터를 찾을 수 없습니다."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "세금 문서를 이메일할 수 없습니다: 이 가족은 기록된 이메일 주소가 없습니다."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "OpenLP 서버 호스트 이름을 확인할 수 없습니다. 주소와 네트워크 연결을 확인하세요."
+
+#: 
+msgid "Upload"
+msgstr "업로드"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "기본 ChurchCRM 로고 사용"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "전체 가족 기부금 보기"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "자원봉사 기회"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "두 가지 기회의 자원봉사자"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD 지불됨"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "이것이 발생한 시간 주변의 오류를 확인하고 관련 로그 파일을 GitHub 문제에 다운로드하여 첨부하세요. 이는 후속 질문 없이 문제를 해결하는 데 도움이 됩니다."
+
+#: 
+msgid "system logs"
+msgstr "시스템 로그"
 

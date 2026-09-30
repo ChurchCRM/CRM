@@ -1,5 +1,6 @@
 import { defineConfig } from 'cypress'
 import base from './base.config'
+import { setupCommonNodeEvents } from './_shared'
 
 export default defineConfig({
   ...base,
@@ -20,6 +21,13 @@ export default defineConfig({
   e2e: {
     ...base.e2e,
     baseUrl: process.env.CYPRESS_BASE_URL || 'http://localhost:8081/',
-    specPattern: ['cypress/e2e/new-system/**/*.spec.js']
+    specPattern: ['cypress/e2e/new-system/**/*.spec.js'],
+    setupNodeEvents(on, config) {
+      if (process.env.SPLIT) {
+        const cypressSplit = require('cypress-split');
+        cypressSplit(on, config);
+      }
+      return setupCommonNodeEvents(on, config);
+    }
   }
 })

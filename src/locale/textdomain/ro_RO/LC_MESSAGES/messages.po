@@ -495,11 +495,6 @@ msgstr "Fotografii"
 
 #: 
 #, fuzzy
-msgid "Number of Columns"
-msgstr "Număr de coloane"
-
-#: 
-#, fuzzy
 msgid "Paper Size"
 msgstr "Dimensiune hartie"
 
@@ -871,10 +866,6 @@ msgstr "Ștergeți Foto"
 #: 
 msgid "Timeline"
 msgstr "Linie de timp"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Angajamente și plăți"
 
 #: 
 msgid "Value"
@@ -12799,10 +12790,6 @@ msgid "Upcoming Events"
 msgstr "Evenimente viitoare"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL absolut http(s) al logo-ului bisericii afișat în șabloanele de e-mail (și reutilizat în altă parte în viitor). Pentru cea mai bună redare în clienții de e-mail, utilizați o imagine banner largă cu un raport de aspect de aproximativ 3,5:1 (de exemplu 350×100 px), PNG sau JPG, servit prin HTTPS. Lăsați necompletat sau introduceți o valoare invalidă pentru a reveni la logo-ul implicit ChurchCRM."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "Există deja o opțiune cu acel nume"
 
@@ -18209,6 +18196,10 @@ msgid "Last seen"
 msgstr "Ultima activitate"
 
 #: 
+msgid "Link"
+msgstr "Legătură"
+
+#: 
 msgid "Link added successfully"
 msgstr "Linkul a fost adăugat cu succes"
 
@@ -18595,4 +18586,272 @@ msgstr "Prea mulți destinatari pentru clientul de e-mail ({{total}} > {{max}}).
 #: 
 msgid "{{minutes}} min left"
 msgstr "{{minutes}} min rămase"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d document fiscal trimis cu succes familiei."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "Declarație de donație %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "Toate clasificările"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Ca administrator, vă rugăm să consultați și"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Trimite automat un email de felicitare de ziua onomastică persoanelor în ziua lor de naștere."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Email-uri de ziua onomastică"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Zile de naștere, aniversări, voluntari și alte liste de persoane cu filtru de clasificare"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Alegeți %s pentru a executa acest raport."
+
+#: 
+msgid "Choose events"
+msgstr "Alegeți evenimente"
+
+#: 
+msgid "Choose..."
+msgstr "Alegeți..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logo-ul bisericii"
+
+#: 
+msgid "Columns per Page"
+msgstr "Coloane pe pagină"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Dragi %s Familie,\n"
+"\n"
+"Ve rugăm să găsiți anexată la acest email declarația dumneavoastră de donație %d din %s.\n"
+"\n"
+"Dacă aveți întrebări, vă rugăm să contactați biroul bisericii.\n"
+"\n"
+"Vă mulțumim pentru generozitate."
+
+#: 
+msgid "Download CSV"
+msgstr "Descarcă CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Trimite %d document fiscal prin email"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Activează sau dezactivează modulul Finanțe și meniul barei laterale."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Activează sau dezactivează modulul Strângere de fonduri."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Eșec la eliminarea logo-ului bisericii"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Eșec la încărcarea logo-ului bisericii"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL logo-ul de rezervă pentru șabloane de email, utilizat doar atunci când niciun logo de biserică nu a fost încărcat pe pagina Informații din biserică. Paginile proprii ale aplicației ignoră această setare și utilizează întotdeauna logo-ul încărcat sau logo-ul implicit al ChurchCRM. Trebuie să fie o adresă URL http(s) absolută. Pentru o redare optimă în clienții de email, utilizați o imagine banner largă cu un raport de aspect aproximativ 3,5:1 (de exemplu 350×100 px), PNG sau JPG, servit prin HTTPS. Lăsați gol sau introduceți o valoare nevalidă pentru a reveni la logo-ul implicit al ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Modulul Finanțe"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Găsiți persoane care nu au participat la un eveniment"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Găsiți voluntari care corespund cu două coduri de oportunitate specifice"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Prima oportunitate de voluntariat"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Bro șură pliantă"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Modulul Strângere de fonduri"
+
+#: 
+msgid "Giving History"
+msgstr "Istoric donații"
+
+#: 
+msgid "Last Gift"
+msgstr "Ultima ofertă"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Lăsați gol pentru toate clasificările."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Numărul maxim de documente ale anului fiscal de afișat pe profilul familiei (0 = fără limită)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Numărul maxim de ani fiscali afișați pe familie"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Aniversări de membru"
+
+#: 
+msgid "Missing People"
+msgstr "Persoane lipsă"
+
+#: 
+msgid "No giving history found."
+msgstr "Niciun istoric de donații găsit."
+
+#: 
+msgid "No people match these filters."
+msgstr "Niciun person nu se potrivește acelor filtre."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "O pagină de director pe foaie, portret."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Doar schemele http și https sunt permise."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF sau WebP. Un banner larg de aproximativ 3,5:1 (de exemplu 700x200) funcționează cel mai bine; PNG transparent preferat."
+
+#: 
+msgid "Page Layout"
+msgstr "Aspect pagină"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Persoane care s-au alăturat într-o anumită lună"
+
+#: 
+msgid "Pledged"
+msgstr "Promis"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Tipărește %d document fiscal"
+
+#: 
+msgid "Queries"
+msgstr "Interogări"
+
+#: 
+msgid "Recent Friends"
+msgstr "Prieteni recenți"
+
+#: 
+msgid "Report not found"
+msgstr "Raportul nu a fost găsit"
+
+#: 
+msgid "Run Report"
+msgstr "Executați raportul"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "A doua oportunitate de voluntariat"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Afișat în bara laterală, pe pagina de login și în email-uri. Încărcarea unui logo înlocuiește branding-ul ChurchCRM peste tot unde apare."
+
+#: 
+msgid "Single Pages"
+msgstr "Pagini unice"
+
+#: 
+msgid "Tax Documents"
+msgstr "Documente fiscale"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Eșec la trimiterea email-ului cu document fiscal. Vă rugăm să verificați setările serverului de email."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Două pagini de jumătate de mărime, una lângă alta, pe fiecare foaie în peisaj, în ordine de broșură. Tipăriți pe ambele fețe cu \"flip pe marginea scurtă\", apoi pliați stiva în jumătate. Coloanele sunt numărate pe jumătate de pagină."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Imposibil de trimis documentul fiscal prin email: niciun date de plată găsit pentru acel an."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Imposibil de trimis documentul fiscal prin email: această familie nu are o adresă de email înregistrată."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Imposibil de rezolvat numele de gazdă al serverului OpenLP. Verificați adresa și conexiunea de rețea."
+
+#: 
+msgid "Upload"
+msgstr "Încarcă"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Utilizarea logo-ului implicit al ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Vizualizați donațiile complete ale familiei"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Oportunitate de voluntariat"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Voluntari pentru două oportunități"
+
+#: 
+msgid "YTD"
+msgstr "De la începutul anului"
+
+#: 
+msgid "YTD Paid"
+msgstr "Plătit de la începutul anului"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "pentru erori în jurul momentului în care s-a întâmplat acest lucru, și descărcați și atașați fișierul jurnal relevant la problema GitHub - ne ajută să reparăm problema fără a pune întrebări de follow-up."
+
+#: 
+msgid "system logs"
+msgstr "jurnale de sistem"
 

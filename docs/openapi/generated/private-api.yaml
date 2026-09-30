@@ -2514,77 +2514,6 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /map/geocode-all:
-    post:
-      tags:
-        - Map
-      summary: 'Geocode all active families missing coordinates'
-      description: "Iterates active families that have a street address but no usable coordinates, geocoding each via Nominatim at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Admin-only."
-      requestBody:
-        required: false
-        content:
-          application/json:
-            schema:
-              properties:
-                skip:
-                  description: 'Families (in ID order) to skip before the batch — the running count of failures from previous calls'
-                  type: integer
-                  default: 0
-                  minimum: 0
-              type: object
-      responses:
-        '200':
-          description: 'Geocoding batch summary'
-          content:
-            application/json:
-              schema:
-                properties:
-                  total: { description: 'Total families missing coordinates before this run', type: integer }
-                  skip: { description: 'Offset applied to this batch (echoed back)', type: integer }
-                  processed: { description: 'Families examined in this batch (0 when skip >= total)', type: integer }
-                  geocoded: { description: 'Families successfully geocoded in this batch', type: integer }
-                  failed: { description: 'Families that could not be geocoded', type: integer }
-                  remaining: { description: 'Families still missing coordinates after this batch, including the ones that failed (run again while remaining > failures so far)', type: integer }
-                  failures: { description: 'Per-family failure details (capped at 20 entries). Empty array when all families were geocoded.', type: array, items: { properties: { id: { description: 'Family ID', type: integer }, name: { description: 'Family name', type: string }, address: { description: 'Full street address', type: string }, editUrl: { description: 'URL to the family editor page', type: string }, reason: { description: "Machine code: 'incomplete_address' | 'no_result' | 'error'", type: string } }, type: object } }
-                  failuresTruncated: { description: 'True when failed > 20 and some failures are omitted from the array', type: boolean }
-                type: object
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  /system/telemetry-consent:
-    post:
-      tags:
-        - System
-      summary: 'Record admin consent decision for anonymous telemetry'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                level:
-                  description: "Telemetry collection level. 'none' declines and suppresses prompt for this version."
-                  type: string
-                  enum: [none, errors, warnings, full]
-              type: object
-      responses:
-        '403':
-          description: 'Admin role required'
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                properties:
-                  status: { type: string }
-                type: object
-      security:
-        -
-          ApiKeyAuth: []
   /issues:
     post:
       tags:
@@ -2607,6 +2536,10 @@ paths:
                 pageSize:
                   properties: { height: { type: integer }, width: { type: integer } }
                   type: object
+                browserLocale:
+                  type: string
+                browserTimezone:
+                  type: string
               type: object
       responses:
         '200':
@@ -2617,198 +2550,6 @@ paths:
                 properties:
                   issueBody: { type: string }
                 type: object
-      security:
-        -
-          ApiKeyAuth: []
-  /volunteer-opportunities:
-    get:
-      tags:
-        - Admin
-      summary: 'List all volunteer opportunities (Admin role required)'
-      parameters:
-        -
-          name: activeOnly
-          in: query
-          required: false
-          schema:
-            type: boolean
-      responses:
-        '200':
-          description: 'Array of volunteer opportunities'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-    post:
-      tags:
-        - Admin
-      summary: 'Create a new volunteer opportunity (Admin role required)'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              required:
-                - name
-              properties:
-                name:
-                  type: string
-                  maxLength: 30
-                description:
-                  type: string
-                  maxLength: 100
-                active:
-                  type: boolean
-              type: object
-      responses:
-        '201':
-          description: 'Newly created volunteer opportunity'
-        '400':
-          description: 'Validation error'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  '/volunteer-opportunities/{id}':
-    get:
-      tags:
-        - Admin
-      summary: 'Get a single volunteer opportunity (Admin role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: 'Volunteer opportunity object'
-        '404':
-          description: 'Volunteer opportunity not found'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-    put:
-      tags:
-        - Admin
-      summary: 'Update a volunteer opportunity (Admin role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                name:
-                  type: string
-                  maxLength: 30
-                description:
-                  type: string
-                  maxLength: 100
-                active:
-                  type: boolean
-              type: object
-      responses:
-        '200':
-          description: 'Updated volunteer opportunity'
-        '400':
-          description: 'Validation error'
-        '404':
-          description: 'Volunteer opportunity not found'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-    delete:
-      tags:
-        - Admin
-      summary: 'Delete a volunteer opportunity (Admin role required)'
-      parameters:
-        -
-          name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Deleted
-        '404':
-          description: 'Volunteer opportunity not found'
-        '409':
-          description: 'Volunteer opportunity is still assigned to one or more people'
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  /system/custom-fields/person:
-    get:
-      tags:
-        - System
-      summary: 'Get custom person fields filtered by type ID (Admin role required)'
-      parameters:
-        -
-          name: typeId
-          in: query
-          description: 'Person type ID to filter custom fields by'
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: 'Array of id/value pairs for matching custom fields'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { id: { type: integer }, value: { type: string } }
-                  type: object
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  /system/properties/person:
-    get:
-      tags:
-        - System
-      summary: 'Get person property definitions as id/value pairs for settings dropdowns (Admin role required)'
-      responses:
-        '200':
-          description: 'Array of id/value pairs for person properties'
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  properties: { id: { type: integer }, value: { type: string } }
-                  type: object
-        '403':
-          description: 'Admin role required'
       security:
         -
           ApiKeyAuth: []
@@ -6082,6 +5823,221 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /admin/api/map/geocode-all:
+    post:
+      tags:
+        - Map
+      summary: 'Geocode all active families missing coordinates'
+      description: "Iterates active families that have a street address but no usable coordinates, geocoding each via Nominatim at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Admin-only."
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                skip:
+                  description: 'Families (in ID order) to skip before the batch — the running count of failures from previous calls'
+                  type: integer
+                  default: 0
+                  minimum: 0
+              type: object
+      responses:
+        '200':
+          description: 'Geocoding batch summary'
+          content:
+            application/json:
+              schema:
+                properties:
+                  total: { description: 'Total families missing coordinates before this run', type: integer }
+                  skip: { description: 'Offset applied to this batch (echoed back)', type: integer }
+                  processed: { description: 'Families examined in this batch (0 when skip >= total)', type: integer }
+                  geocoded: { description: 'Families successfully geocoded in this batch', type: integer }
+                  failed: { description: 'Families that could not be geocoded', type: integer }
+                  remaining: { description: 'Families still missing coordinates after this batch, including the ones that failed (run again while remaining > failures so far)', type: integer }
+                  failures: { description: 'Per-family failure details (capped at 20 entries). Empty array when all families were geocoded.', type: array, items: { properties: { id: { description: 'Family ID', type: integer }, name: { description: 'Family name', type: string }, address: { description: 'Full street address', type: string }, editUrl: { description: 'URL to the family editor page', type: string }, reason: { description: "Machine code: 'incomplete_address' | 'no_result' | 'error'", type: string } }, type: object } }
+                  failuresTruncated: { description: 'True when failed > 20 and some failures are omitted from the array', type: boolean }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/system/telemetry-consent:
+    post:
+      tags:
+        - System
+      summary: 'Record admin consent decision for anonymous telemetry'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                level:
+                  description: "Telemetry collection level. 'none' declines and suppresses prompt for this version."
+                  type: string
+                  enum: [none, errors, warnings, full]
+              type: object
+      responses:
+        '403':
+          description: 'Admin role required'
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  status: { type: string }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/volunteer-opportunities:
+    get:
+      tags:
+        - Admin
+      summary: 'List all volunteer opportunities (Admin role required)'
+      parameters:
+        -
+          name: activeOnly
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: 'Array of volunteer opportunities'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Admin
+      summary: 'Create a new volunteer opportunity (Admin role required)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  maxLength: 30
+                description:
+                  type: string
+                  maxLength: 100
+                active:
+                  type: boolean
+              type: object
+      responses:
+        '201':
+          description: 'Newly created volunteer opportunity'
+        '400':
+          description: 'Validation error'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/volunteer-opportunities/{id}':
+    get:
+      tags:
+        - Admin
+      summary: 'Get a single volunteer opportunity (Admin role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Volunteer opportunity object'
+        '404':
+          description: 'Volunteer opportunity not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+    put:
+      tags:
+        - Admin
+      summary: 'Update a volunteer opportunity (Admin role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  maxLength: 30
+                description:
+                  type: string
+                  maxLength: 100
+                active:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: 'Updated volunteer opportunity'
+        '400':
+          description: 'Validation error'
+        '404':
+          description: 'Volunteer opportunity not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Admin
+      summary: 'Delete a volunteer opportunity (Admin role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          description: 'Volunteer opportunity not found'
+        '409':
+          description: 'Volunteer opportunity is still assigned to one or more people'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
   /admin/api/system/church-logo:
     get:
       tags:
@@ -6140,7 +6096,7 @@ paths:
         '403':
           description: 'Admin role required'
         '413':
-          description: 'Image exceeds the server upload limit or the decode pixel budget'
+          description: 'Image exceeds the server upload limit or the source image size limit'
       security:
         -
           ApiKeyAuth: []
@@ -6167,6 +6123,54 @@ paths:
           description: 'Admin role required'
         '500':
           description: 'The stored logo could not be removed'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/system/custom-fields/person:
+    get:
+      tags:
+        - System
+      summary: 'Get custom person fields filtered by type ID (Admin role required)'
+      parameters:
+        -
+          name: typeId
+          in: query
+          description: 'Person type ID to filter custom fields by'
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Array of id/value pairs for matching custom fields'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, value: { type: string } }
+                  type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/system/properties/person:
+    get:
+      tags:
+        - System
+      summary: 'Get person property definitions as id/value pairs for settings dropdowns (Admin role required)'
+      responses:
+        '200':
+          description: 'Array of id/value pairs for person properties'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, value: { type: string } }
+                  type: object
+        '403':
+          description: 'Admin role required'
       security:
         -
           ApiKeyAuth: []

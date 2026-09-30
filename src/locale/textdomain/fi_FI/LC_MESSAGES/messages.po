@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Valokuvat"
 
 #: 
-msgid "Number of Columns"
-msgstr "Sarakkeiden määrä"
-
-#: 
 msgid "Paper Size"
 msgstr "Paperikoko"
 
@@ -846,10 +842,6 @@ msgstr "Poista kuva"
 #: 
 msgid "Timeline"
 msgstr "Aikajana"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Sitoumukset ja maksut"
 
 #: 
 msgid "Value"
@@ -12697,10 +12689,6 @@ msgid "Upcoming Events"
 msgstr "Tulevat tapahtumat"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "Seurakunnan logon absoluuttinen http(s)-URL, joka näkyy sähköpostipohjissa (ja jota käytetään tulevaisuudessa muuallakin). Parasta näyttämistä sähköpostiohjelmissa varten käytä leveää bannerikuvaa noin 3,5:1-kuvasuhteella (esim. 350×100 px), PNG tai JPG, HTTPS:n kautta. Jätä tyhjäksi tai anna virheellinen arvo palataksesi ChurchCRM-oletuslogoon."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "Vaihtoehto tällä nimellä on jo olemassa"
 
@@ -18511,4 +18499,272 @@ msgstr "Liikaa vastaanottajia sähköpostiohjelmalle ({{total}} > {{max}}). Käy
 #: 
 msgid "{{minutes}} min left"
 msgstr "{{minutes}} min jäljellä"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d veroasiakirja lähetetty perheelle onnistuneesti."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d lahjoitussillan osalta"
+
+#: 
+msgid "All classifications"
+msgstr "Kaikki luokittelut"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Järjestelmänvalvojana tarkista myös"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Lähetä synttäriterveiset automaattisesti ihmisille heidän syntymäpäivänään."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Syntymäpäiväsähköpostit"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Syntymäpäivät, vuosipäivät, vapaaehtoiset ja muut henkilölistat, joissa on luokitussuodatin"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Valitse %s, jos haluat suorittaa tämän raportin."
+
+#: 
+msgid "Choose events"
+msgstr "Valitse tapahtumat"
+
+#: 
+msgid "Choose..."
+msgstr "Valitse..."
+
+#: 
+msgid "Church Logo"
+msgstr "Seurakunnan logo"
+
+#: 
+msgid "Columns per Page"
+msgstr "Sarakkeet sivulla"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Hyvä %s-perhe,\n"
+"\n"
+"Liitteenä on lahjoitussilta vuodelta %s.\n"
+"\n"
+"Jos sinulla on kysymyksiä, ota yhteyttä seurakunnan toimistoon.\n"
+"\n"
+"Kiitos anteliaisuudestasi."
+
+#: 
+msgid "Download CSV"
+msgstr "Lataa CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Lähetä %d veroasiakirja"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Ota talousmoduuli ja sivupalkin valikko käyttöön tai poista käytöstä."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Ota varainhankintamoduuli käyttöön tai poista käytöstä."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Seurakunnan logon poistaminen epäonnistui"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Seurakunnan logon lataaminen epäonnistui"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Varalogo-URL sähköpostimalleille, käytetään vain silloin, kun Seurakunnan tiedot -sivulle ei ole ladattu seurakunnan logoa. Sovelluksen omat sivut ohittavat tämän asetuksen ja käyttävät aina ladattua logoa tai oletusarvoista ChurchCRM-logoa. Tulee olla absoluuttinen http(s)-URL. Parhaiden tulosten saamiseksi sähköpostiohjelmissa käytä kuvaa, jonka kuvasuhde on noin 3,5:1 (esimerkiksi 350×100 pikseliä), PNG tai JPG, joka toimitetaan HTTPS:n yli. Jätä tyhjäksi tai anna virheellinen arvo käyttääksesi oletusarvoista ChurchCRM-logoa."
+
+#: 
+msgid "Finance Module"
+msgstr "Talousmoduuli"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Etsi ihmiset, jotka eivät osallistuneet tapahtumaan"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Etsi vapaaehtoiset, jotka vastaavat kahta tiettyä mahdollisuuskoodia"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Ensimmäinen vapaaehtoismahdollisuus"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Taitettu kirja"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Varainhankintamoduuli"
+
+#: 
+msgid "Giving History"
+msgstr "Lahjoitushistoria"
+
+#: 
+msgid "Last Gift"
+msgstr "Viimeisin lahja"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Jätä tyhjäksi kaikille luokitteluille."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Näytettävien verovuosidokumenttien enimmäismäärä perheen profiilia kohti (0 = ei rajaa)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Perhettä kohti näytettävien verovuosien enimmäismäärä"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Jäsenyyden vuosipäivät"
+
+#: 
+msgid "Missing People"
+msgstr "Puuttuvat henkilöt"
+
+#: 
+msgid "No giving history found."
+msgstr "Lahjoitushistoriaa ei löytynyt."
+
+#: 
+msgid "No people match these filters."
+msgstr "Yksikään henkilö ei vastaa näitä suodattimia."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Yksi hakemistosivu per arkki, pystysuunta."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Vain http ja https -järjestelmät ovat sallittuja."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF tai WebP. Laajakaista suhteella noin 3,5:1 (esimerkiksi 700x200) toimii parhaiten; läpinäkyvä PNG on parempi."
+
+#: 
+msgid "Page Layout"
+msgstr "Sivun asettelu"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Ihmiset, jotka liittyivät tietyssä kuussa"
+
+#: 
+msgid "Pledged"
+msgstr "Luvattuna"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Tulosta %d veroasiakirja"
+
+#: 
+msgid "Queries"
+msgstr "Kyselyt"
+
+#: 
+msgid "Recent Friends"
+msgstr "Viimeaikaiset ystävät"
+
+#: 
+msgid "Report not found"
+msgstr "Raporttia ei löytynyt"
+
+#: 
+msgid "Run Report"
+msgstr "Suorita raportti"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Toinen vapaaehtoismahdollisuus"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Näytetään sivupalkissa, kirjautumissivulla ja sähköposteissa. Logon lataaminen korvaa ChurchCRM-tuotemerkin kaikkialla, missä se esiintyy."
+
+#: 
+msgid "Single Pages"
+msgstr "Yksittäiset sivut"
+
+#: 
+msgid "Tax Documents"
+msgstr "Veroasiakirjat"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Veroasiakirjan lähettäminen sähköpostitse epäonnistui. Tarkista sähköpostipalvelimen asetukset."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Kaksi puolikokoa olevaa sivua vierekkäin kullakin vaaka-arkilla, kirjastojen järjestyksessä. Tulosta kaksipuolisesti \"käännä lyhyellä reunalla\", sitten taita pino puoliksi. Sarakkeet lasketaan puoli sivulla."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Veroasiakirjaa ei voi lähettää sähköpostitse: kyseiselle vuodelle ei löytynyt maksutietoja."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Veroasiakirjaa ei voi lähettää sähköpostitse: tällä perheellä ei ole sähköpostiosoitetta tiedostoissa."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "OpenLP-palvelimen isäntänimeä ei voi ratkaista. Tarkista osoite ja verkkoyhteys."
+
+#: 
+msgid "Upload"
+msgstr "Lataa"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Käytetään oletusarvoista ChurchCRM-logoa"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Näytä koko perheen lahjoitus"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Vapaaehtoismahdollisuus"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Vapaaehtoiset kahdelle mahdollisuudelle"
+
+#: 
+msgid "YTD"
+msgstr "Vuoden alusta"
+
+#: 
+msgid "YTD Paid"
+msgstr "Vuoden alusta maksettu"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "etsiäksesi virheitä tämän tapahtuman aikaan ja lataa relevantit lokitiedostot GitHub-numeroihisi – se auttaa meitä ratkaisemaan ongelman ilman seuraavia kysymyksiä."
+
+#: 
+msgid "system logs"
+msgstr "järjestelmälokit"
 

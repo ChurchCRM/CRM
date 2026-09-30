@@ -493,11 +493,6 @@ msgstr "Fotos"
 
 #: 
 #, fuzzy
-msgid "Number of Columns"
-msgstr "Número de colunas"
-
-#: 
-#, fuzzy
 msgid "Paper Size"
 msgstr "Tamanho do papel"
 
@@ -870,10 +865,6 @@ msgstr "apagar foto"
 #: 
 msgid "Timeline"
 msgstr "Linha do Tempo"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Promessas e Pagamentos"
 
 #: 
 msgid "Value"
@@ -12850,10 +12841,6 @@ msgid "Upcoming Events"
 msgstr "Próximos eventos"
 
 #: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL absoluta http(s) do logótipo da igreja apresentado nos modelos de e-mail (e reutilizado noutros locais no futuro). Para melhor renderização em clientes de e-mail, utilize uma imagem em banner largo com proporção aproximada de 3,5:1 (por exemplo, 350×100 px), PNG ou JPG, servida via HTTPS. Deixe em branco ou introduza um valor inválido para utilizar o logótipo predefinido do ChurchCRM."
-
-#: 
 msgid "An option with that name already exists"
 msgstr "Já existe uma opção com esse nome"
 
@@ -18656,4 +18643,268 @@ msgstr "Demasiados destinatários para o cliente de email ({{total}} > {{max}}).
 #: 
 msgid "{{minutes}} min left"
 msgstr "faltam {{minutes}} min"
+
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d documentos fiscais enviados com sucesso à família."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "Extracto de Ofertas %s %d"
+
+#: 
+msgid "All classifications"
+msgstr "Todas as classificações"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Como administrador, revise também o"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Enviar automaticamente um email de felicitações de aniversário no dia do aniversário das pessoas."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Emails de Aniversário"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Aniversários, aniversários de filiação, voluntários e outras listas de pessoas com filtro de classificação"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Escolha %s para executar este relatório."
+
+#: 
+msgid "Choose events"
+msgstr "Escolha eventos"
+
+#: 
+msgid "Choose..."
+msgstr "Escolha..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logótipo da Igreja"
+
+#: 
+msgid "Columns per Page"
+msgstr "Colunas por Página"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Cara Família %s,\n"
+"\n"
+"Encontre em anexo o seu extracto de ofertas %d de %s.\n"
+"\n"
+"Se tiver dúvidas, contacte o escritório da igreja.\n"
+"\n"
+"Obrigado pela sua generosidade."
+
+#: 
+msgid "Download CSV"
+msgstr "Descarregar CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Email %d Documento Fiscal"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Activar ou desactivar o módulo Finanças e menu da barra lateral."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Activar ou desactivar o módulo Campanhas de Angariação de Fundos."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Falha ao remover logótipo da igreja"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Falha ao carregar logótipo da igreja"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL de logótipo de contingência para modelos de email, utilizado apenas quando nenhum logótipo da igreja foi carregado na página Informações da Igreja. As próprias páginas da aplicação ignoram esta definição e utilizam sempre o logótipo carregado ou o logótipo ChurchCRM padrão. Deve ser um URL http(s) absoluto. Para melhor renderização em clientes de email, utilize uma imagem de banner largo com proporção aproximada de 3,5:1 (por exemplo 350×100 px), PNG ou JPG, servido através de HTTPS. Deixe em branco ou introduza um valor inválido para reverter para o logótipo ChurchCRM predefinido."
+
+#: 
+msgid "Finance Module"
+msgstr "Módulo de Finanças"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Encontre pessoas que não compareceram a um evento"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Encontre voluntários que correspondam a dois códigos de oportunidade específicos"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Primeira Oportunidade de Voluntariado"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Livreto Dobrado"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Módulo de Campanhas de Angariação de Fundos"
+
+#: 
+msgid "Giving History"
+msgstr "Histórico de Ofertas"
+
+#: 
+msgid "Last Gift"
+msgstr "Última Oferta"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Deixe em branco para todas as classificações."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Número máximo de documentos por ano fiscal para mostrar por perfil de família (0 = sem limite)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Anos fiscais máximos mostrados por família"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Aniversários de Filiação"
+
+#: 
+msgid "Missing People"
+msgstr "Pessoas Desaparecidas"
+
+#: 
+msgid "No giving history found."
+msgstr "Nenhum histórico de ofertas encontrado."
+
+#: 
+msgid "No people match these filters."
+msgstr "Nenhuma pessoa corresponde a estes filtros."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Uma página de directório por folha, retrato."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Apenas os esquemas http e https são permitidos."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF ou WebP. Um banner largo com proporção aproximada de 3,5:1 (por exemplo 700x200) funciona melhor; PNG transparente preferido."
+
+#: 
+msgid "Page Layout"
+msgstr "Esquema de Página"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Pessoas que se filiaram num mês particular"
+
+#: 
+msgid "Pledged"
+msgstr "Prometido"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Imprimir %d Documento Fiscal"
+
+#: 
+msgid "Queries"
+msgstr "Consultas"
+
+#: 
+msgid "Recent Friends"
+msgstr "Amigos Recentes"
+
+#: 
+msgid "Report not found"
+msgstr "Relatório não encontrado"
+
+#: 
+msgid "Run Report"
+msgstr "Executar Relatório"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Segunda Oportunidade de Voluntariado"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Mostrado na barra lateral, na página de login e em emails. Carregar um logótipo substitui a marca ChurchCRM em qualquer lugar onde apareça."
+
+#: 
+msgid "Single Pages"
+msgstr "Páginas Simples"
+
+#: 
+msgid "Tax Documents"
+msgstr "Documentos Fiscais"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Falha ao enviar email de documento fiscal. Verifique as definições do servidor de email."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Duas páginas de meia dimensão lado a lado em cada folha em modo paisagem, em ordem de livreto. Imprima frente e verso com \"virar na borda curta\", depois dobre a pilha ao meio. As colunas são contadas por meia página."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Não é possível enviar documento fiscal por email: não foram encontrados dados de pagamento para esse ano."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Não é possível enviar documento fiscal por email: esta família não tem endereço de email registado."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Não é possível resolver o nome de host do servidor OpenLP. Verifique o endereço e a sua ligação de rede."
+
+#: 
+msgid "Upload"
+msgstr "Carregar"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Usando logótipo ChurchCRM padrão"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Ver Ofertas Completas da Família"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Oportunidade de Voluntariado"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Voluntários para Duas Oportunidades"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD Pago"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "para erros à volta do momento em que isto aconteceu, e descarregue e anexe o ficheiro de registo relevante ao seu problema do GitHub — ajuda-nos a resolver o problema sem fazer perguntas de seguimento."
+
+#: 
+msgid "system logs"
+msgstr "registos do sistema"
 
