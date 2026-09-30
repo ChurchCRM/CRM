@@ -177,14 +177,21 @@ function initBranch(version) {
 }
 
 /**
- * Commit and push translations for a locale
+ * Commit and push translations for one locale or a comma-separated family of locales.
+ * Stages explicit paths only: each locale's batch folder plus the english-ok allowlist.
  */
-function commitAndPush(localeCode, languageName, termCount) {
+function commitAndPush(localeCodes, label, termCount) {
+    const codes = String(localeCodes).split(',').map(c => c.trim()).filter(Boolean);
+    const invalid = codes.find(c => !/^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,4})?$/.test(c));
+    if (codes.length === 0 || invalid) {
+        throw new Error(`Invalid locale code: ${sanitize(invalid ?? localeCodes)}`);
+    }
+
     const branch = getCurrentBranch();
-    const message = `locale: translate ${localeCode} (${languageName}, ${termCount} terms)`;
+    const message = `locale: translate ${codes.join(', ')} (${label}, ${termCount} terms)`;
 
     console.log(`\n  📝 Committing to ${branch}...`);
-    run('git', ['add', `locale/terms/missing/${localeCode}/`]);
+    run('git', ['add', ...codes.map(c => `locale/terms/missing/${c}/`), 'locale/terms/english-ok.json']);
     run('git', ['commit', '-m', message]);
 
     console.log(`  ⬆️  Pushing to origin/${branch}...`);
@@ -209,12 +216,12 @@ function getTranslatedLocales() {
     if (!commits) return [];
 
     // Extract locale codes from commit messages
-    // Format: "locale: translate xx (Language Name, NNN terms)"
-    const regex = /locale: translate (\w+(-\w+)?)/g;
+    // Format: "locale: translate xx (Language Name, NNN terms)" or "locale: translate xx, yy (Family, NNN terms)"
+    const regex = /locale: translate ([^(\n]+) \(/g;
     const locales = [];
     let match;
     while ((match = regex.exec(commits)) !== null) {
-        locales.push(match[1]);
+        locales.push(...match[1].split(',').map(code => code.trim()).filter(Boolean));
     }
     return [...new Set(locales)]; // dedupe
 }
@@ -282,9 +289,11 @@ Usage:
     Extract version from current locale branch (e.g., 7.1.0)
 
   node locale/scripts/locale-branch-manager.js --commit-and-push \\
-    --locale <code> --language "<name>" --terms <count>
-    Commit and push translations for one locale
+    --locale <code[,code...]> --language "<name>" --terms <count>
+    Commit and push translations for one locale or a language family
+    Stages only the locales' batch folders and locale/terms/english-ok.json
     Example: --commit-and-push --locale fr --language "French - France" --terms 154
+    Example: --commit-and-push --locale es,es-MX,es-AR --language "Spanish" --terms 190
 
   node locale/scripts/locale-branch-manager.js --get-translated
     List locale codes that have been translated on current branch

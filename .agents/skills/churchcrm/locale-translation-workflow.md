@@ -460,29 +460,9 @@ The upload script (`poeditor-upload-missing.js`) treats terms where `value === k
 }
 ```
 
-### MANDATORY: Always add to english-ok.json when translation equals English key
+### Identical-to-English values are recorded automatically
 
-**During every translation session, the orchestrator automatically handles this.** If you are a Claude Code agent translating manually:
-
-1. When you translate a term and the correct translation IS the same as the English key (e.g. `"SHA1 Hash": "SHA1 Hash"`), that is a VALID translation — not a mistake.
-2. Immediately add that term to `locale/terms/english-ok.json` for that locale.
-3. Always include `locale/terms/english-ok.json` in every `git add` and `git commit`.
-
-```bash
-# Add same-as-English terms to the allowlist for a locale
-python3 -c "
-import json
-ok = json.load(open('locale/terms/english-ok.json'))
-locale = 'LOCALE_CODE'  # replace with actual locale
-for term in ['SHA1 Hash', 'AM / PM', 'am / pm']:  # replace with actual terms
-    existing = set(ok.get(locale, []))
-    existing.add(term)
-    ok[locale] = sorted(existing)
-json.dump(ok, open('locale/terms/english-ok.json','w'), indent=2, ensure_ascii=False)
-open('locale/terms/english-ok.json','a').write('\n')
-print(f'Added terms to english-ok.json for {locale}')
-"
-```
+`locale-translate.js --apply` and `--apply-bulk` add any value identical to its key to `locale/terms/english-ok.json`, and `--prefill` fills terms already on the list without a model. Do not edit the file by hand. `locale-branch-manager.js --commit-and-push` stages it with the locale batches; if you commit with plain git, include it in the `git add`.
 
 ### Common terms that stay English across ALL locales
 
