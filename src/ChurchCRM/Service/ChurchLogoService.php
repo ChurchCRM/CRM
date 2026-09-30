@@ -69,11 +69,11 @@ class ChurchLogoService
      *
      * The logo is site-wide and served while this runs, so the new PNG is
      * encoded to a temporary file and renamed over the live one: a failed
-     * upload (bad image, over budget, disk full) leaves the current logo
+     * upload (bad image, over the size limit, disk full) leaves the current logo
      * exactly as it was, and readers never see a half-written file.
      *
      * @throws \Exception when the payload is not a supported image
-     * @throws PhotoSizeException when it exceeds the server upload limit or the decode pixel budget
+     * @throws PhotoSizeException when it exceeds the server upload limit or the source image size limit
      */
     public static function setImageFromBase64(string $base64): void
     {
@@ -82,7 +82,7 @@ class ChurchLogoService
         // Shared decode + MIME allow-list + upload-size validation
         $fileData = ImageSupportUtils::decodeBase64Image($base64);
 
-        // Also checks the source dimensions against the decode budget first
+        // Also checks the source dimensions against the size limit first
         $resizedImage = ImageSupportUtils::createResizedImage(
             $fileData,
             self::LOGO_MAX_WIDTH,

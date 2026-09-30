@@ -5,7 +5,7 @@
  * every pixel black, so the raw scanline stream is all zeros and deflates to
  * roughly a thousandth of its size. A 12000x12000 image comes out under
  * 20 KB, which sails through the 2 MB upload limit while carrying 144 million
- * source pixels: exactly the shape of file the decode pixel budget in
+ * source pixels: exactly the shape of file the source image size limit in
  * ImageSupportUtils::assertWithinDecodeBudget() exists to refuse before GD
  * allocates anything.
  *
