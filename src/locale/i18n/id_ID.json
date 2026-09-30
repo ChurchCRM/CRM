@@ -4053,6 +4053,7 @@
   "ChurchCRM version": "Versi ChurchCRM",
   "Collection level": "Tingkat pengumpulan",
   "Count unique installs": "Hitung instalasi unik",
+  "Data": "Data",
   "Data is processed by PostHog on EU infrastructure.": "Data diproses oleh PostHog pada infrastruktur EU.",
   "Date is required": "Tanggal wajib diisi",
   "Deleted successfully": "Berhasil dihapus",
@@ -4521,6 +4522,7 @@
   "View Full Family Giving": "Lihat Pemberian Keluarga Lengkap",
   "Volunteer Opportunity": "Peluang Relawan",
   "Volunteers for Two Opportunities": "Relawan untuk Dua Peluang",
+  "YTD": "Sejak awal tahun",
   "YTD Paid": "YTD Dibayar",
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "untuk kesalahan sekitar waktu ini terjadi, dan unduh serta lampirkan file log yang relevan ke masalah GitHub Anda - ini membantu kami memperbaiki masalah tanpa mengajukan pertanyaan lanjutan.",
   "system logs": "log sistem"

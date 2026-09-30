@@ -17000,6 +17000,10 @@ msgid "Count unique installs"
 msgstr "Räkna unika installationer"
 
 #: 
+msgid "Data"
+msgstr "Data"
+
+#: 
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr "Data behandlas av PostHog på EU-infrastruktur."
 
@@ -17358,6 +17362,10 @@ msgstr "Ett ovantat fel intradde vid utskick av e-post. Kontrollera dina SMTP-in
 #: 
 msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr "Ar du saker pa att du vill ta bort rollen '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Auto"
 
 #: 
 msgid "Auto follows your OS or browser setting; Light and Dark override it"
@@ -18306,6 +18314,10 @@ msgstr "Inte ett giltigt dödsdatum"
 #: 
 msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
 msgstr "Antal dagar användare har på sig att aktivera tvåfaktorsautentisering efter att det gjorts obligatoriskt. Ange 0 för att kräva det omedelbart. Att förkorta en pågående respittid kan låsa ute användare omedelbart."
+
+#: 
+msgid "Offline"
+msgstr "Offline"
 
 #: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."

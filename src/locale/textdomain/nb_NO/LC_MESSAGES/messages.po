@@ -16980,6 +16980,10 @@ msgid "Count unique installs"
 msgstr "Tell unike installasjoner"
 
 #: 
+msgid "Data"
+msgstr "Data"
+
+#: 
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr "Data behandles av PostHog på EU-infrastruktur."
 
@@ -17338,6 +17342,10 @@ msgstr "En uventet feil oppsto under sending av e-post. Kontroller SMTP-innstill
 #: 
 msgid "Are you sure you want to remove the role '{{name}}'?"
 msgstr "Er du sikker pa at du vil fjerne rollen '{{name}}'?"
+
+#: 
+msgid "Auto"
+msgstr "Auto"
 
 #: 
 msgid "Auto follows your OS or browser setting; Light and Dark override it"

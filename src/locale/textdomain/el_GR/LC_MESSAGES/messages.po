@@ -18786,6 +18786,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "Εθελοντές για Δύο Ευκαιρίες"
 
 #: 
+msgid "YTD"
+msgstr "Από αρχής έτους"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD Πληρώθηκε"
 

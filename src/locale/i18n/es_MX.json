@@ -4371,6 +4371,7 @@
   "Hide deceased members from the printed directory and CSV exports.": "Ocultar a los miembros fallecidos del directorio impreso y de las exportaciones CSV.",
   "Identify": "Identificar",
   "Identify command sent": "Comando de identificación enviado",
+  "Individual": "Individual",
   "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually.": "Interno: fecha y hora en que se completaron por última vez las tareas programadas en segundo plano (AAAA-MM-DD HH:MM:SS). No editar manualmente.",
   "Item deleted successfully": "El elemento se eliminó correctamente",
   "Kiosk Name": "Nombre del kiosco",
@@ -4537,6 +4538,7 @@
   "View Full Family Giving": "Ver Historial Completo de Contribuciones de la Familia",
   "Volunteer Opportunity": "Oportunidad de Voluntariado",
   "Volunteers for Two Opportunities": "Voluntarios para Dos Oportunidades",
+  "YTD": "Acumulado anual",
   "YTD Paid": "YTD Pagado",
   "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "para errores alrededor del momento en que sucedió, descargue y adjunte el archivo de registro relevante a su problema de GitHub: nos ayuda a resolver el problema sin hacer preguntas de seguimiento.",
   "system logs": "registros del sistema"

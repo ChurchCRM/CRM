@@ -4556,5 +4556,22 @@
   "Recent Friends": "Недавні друзі",
   "Report not found": "Звіт не знайдено",
   "Run Report": "Запустити звіт",
-  "Second Volunteer Opportunity": "Друга можливість для волонтера"
+  "Second Volunteer Opportunity": "Друга можливість для волонтера",
+  "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears.": "Відображається на бічній панелі, на сторінці входу та в електронних листах. Завантаження логотипа замінює брендинг ChurchCRM скрізь, де він з’являється.",
+  "Single Pages": "Окремі сторінки",
+  "Tax Documents": "Податкові документи",
+  "Tax document email failed to send. Please check your email server settings.": "Не вдалося надіслати лист із податковим документом. Перевірте налаштування поштового сервера.",
+  "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page.": "Дві сторінки половинного розміру поруч на кожному аркуші в альбомній орієнтації в порядку буклета. Друкуйте з обох боків із перегортанням по короткому краю, потім складіть стос навпіл. Стовпці рахуються на півсторінки.",
+  "Unable to email tax document: no payment data found for that year.": "Неможливо надіслати податковий документ електронною поштою: за цей рік не знайдено даних про платежі.",
+  "Unable to email tax document: this family has no email address on file.": "Неможливо надіслати податковий документ електронною поштою: для цієї родини не вказано адресу електронної пошти.",
+  "Unable to resolve OpenLP server hostname. Check the address and your network connection.": "Не вдалося визначити ім’я хоста сервера OpenLP. Перевірте адресу та мережеве з’єднання.",
+  "Upload": "Вивантажити",
+  "Using default ChurchCRM logo": "Використовується стандартний логотип ChurchCRM",
+  "View Full Family Giving": "Переглянути всі пожертви родини",
+  "Volunteer Opportunity": "Можливість служіння",
+  "Volunteers for Two Opportunities": "Волонтери для двох можливостей служіння",
+  "YTD": "З початку року",
+  "YTD Paid": "Сплачено з початку року",
+  "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions.": "на наявність помилок у той час, коли це сталося, а також завантажте й додайте відповідний файл журналу до вашого звіту на GitHub — це допоможе нам виправити проблему без додаткових запитань.",
+  "system logs": "системні журнали"
 }

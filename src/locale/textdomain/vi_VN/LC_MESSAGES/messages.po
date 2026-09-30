@@ -18774,6 +18774,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "Tình nguyện viên cho Hai Cơ hội"
 
 #: 
+msgid "YTD"
+msgstr "Từ đầu năm"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD Đã Thanh Toán"
 
