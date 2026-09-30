@@ -503,6 +503,9 @@ function initChurchLogoUploader() {
     uploadUrl: buildAdminAPIUrl(CHURCH_LOGO_API_PATH),
     maxFileSize: window.CRM.maxUploadSizeBytes,
     aspectRatio: "free",
+    photoWidth: 1200,
+    photoHeight: 400,
+    webcam: false,
     title: window.i18next ? i18next.t("Church Logo") : "Church Logo",
     onComplete: () => window.location.reload(),
   });

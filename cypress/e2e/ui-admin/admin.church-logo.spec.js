@@ -35,23 +35,62 @@ function freshAdminLogin() {
  * Drive the shared Uppy dashboard end to end: open it, hand the file to Uppy's
  * own hidden <input>, accept the auto-opened image editor, then press Upload.
  */
-function uploadLogoThroughUppy() {
+function uploadLogoThroughUppy(
+    file = {
+        contents: Cypress.Buffer.from(LOGO_PNG_BASE64, "base64"),
+        fileName: "church-logo-test.png",
+        mimeType: "image/png",
+    },
+) {
     cy.get("#church-logo-upload-btn").click();
     cy.get(".uppy-Dashboard--modal", { timeout: 10000 }).should("be.visible");
 
-    cy.get(".uppy-Dashboard-input")
-        .first()
-        .selectFile(
-            {
-                contents: Cypress.Buffer.from(LOGO_PNG_BASE64, "base64"),
-                fileName: "church-logo-test.png",
-                mimeType: "image/png",
-            },
-            { force: true },
-        );
+    cy.get(".uppy-Dashboard-input").first().selectFile(file, { force: true });
 
-    cy.get(".uppy-DashboardContent-save", { timeout: 10000 }).click();
+    cy.get(".uppy-DashboardContent-save", { timeout: 10000 })
+        .should("not.be.disabled")
+        .click();
     cy.get(".uppy-StatusBar-actionBtn--upload", { timeout: 10000 }).click();
+}
+
+/**
+ * A 4032x3024 JPEG of random noise, drawn in the browser. Noise does not
+ * compress, so the file is well over the 2 MB the server accepts in one
+ * request: the size of a real phone photo, which the uploader has to shrink
+ * before sending.
+ */
+function buildPhonePhoto() {
+    return cy.window().then(
+        (win) =>
+            new Cypress.Promise((resolve) => {
+                const canvas = win.document.createElement("canvas");
+                canvas.width = 4032;
+                canvas.height = 3024;
+                const context = canvas.getContext("2d");
+                const pixels = context.createImageData(canvas.width, canvas.height);
+                for (let offset = 0; offset < pixels.data.length; offset += 65536) {
+                    win.crypto.getRandomValues(
+                        pixels.data.subarray(offset, offset + 65536),
+                    );
+                }
+                for (let i = 3; i < pixels.data.length; i += 4) {
+                    pixels.data[i] = 255;
+                }
+                context.putImageData(pixels, 0, 0);
+                canvas.toBlob(
+                    (blob) =>
+                        blob.arrayBuffer().then((buffer) =>
+                            resolve({
+                                contents: Cypress.Buffer.from(buffer),
+                                fileName: "phone-photo.jpg",
+                                mimeType: "image/jpeg",
+                            }),
+                        ),
+                    "image/jpeg",
+                    0.95,
+                );
+            }),
+    );
 }
 
 function sidebarBrandImages() {
@@ -109,6 +148,9 @@ describe("Admin - Church Logo", () => {
 
         cy.get("#church-logo-upload-btn").click();
         cy.get(".uppy-Dashboard--modal", { timeout: 10000 }).should("be.visible");
+        cy.get('.uppy-DashboardTab[data-uppy-acquirer-id="Webcam"]').should(
+            "not.exist",
+        );
 
         cy.get(".uppy-Dashboard-close").click();
         cy.get(".uppy-Dashboard--modal").should("not.be.visible");
@@ -136,6 +178,23 @@ describe("Admin - Church Logo", () => {
             .and("have.attr", "src")
             .and("include", "church-logo.png");
         cy.get("#sidebar .navbar-brand-text").should("not.exist");
+    });
+
+    it("Accepts a phone photo larger than the server upload limit", () => {
+        cy.visit("/admin/system/church-info");
+
+        buildPhonePhoto().then((photo) => {
+            expect(photo.contents.length).to.be.greaterThan(2 * 1024 * 1024);
+
+            cy.intercept("POST", `**${LOGO_API_URL}`).as("uploadLogo");
+            uploadLogoThroughUppy(photo);
+        });
+
+        cy.wait("@uploadLogo").then(({ request, response }) => {
+            expect(JSON.stringify(request.body).length).to.be.lessThan(2 * 1024 * 1024);
+            expect(response.statusCode).to.equal(200);
+        });
+        cy.get("#church-logo-remove-btn", { timeout: 10000 }).should("be.visible");
     });
 
     it("Removes the logo and restores the bundled brand assets", () => {

@@ -25,12 +25,12 @@ const VALID_PNG_DATA_URI =
 const LOGO_URL = "/admin/api/system/church-logo";
 const LOGO_CONFIG_URL = "/admin/api/system/config/sChurchLogoURL";
 
-// Source-pixel budget the server enforces before decoding
-// (ImageSupportUtils::MAX_SOURCE_PIXELS = 50 000 000). The boundary images
-// below are 1-bit PNGs of a few KB, so only their dimensions are in play.
-const AT_PIXEL_BUDGET = [10000, 5000]; // exactly 50 000 000 pixels
-const ONE_ROW_OVER_PIXEL_BUDGET = [10000, 5001]; // 50 010 000 pixels
-const FAR_OVER_PIXEL_BUDGET = [12000, 12000]; // 144 000 000 pixels, ~18 KB on the wire
+// Uploads are limited to 16 megapixels of source image
+// (ImageSupportUtils::MAX_SOURCE_PIXELS = 16 000 000). The images below are
+// 1-bit PNGs of a few KB, so only their dimensions are in play.
+const PHONE_PHOTO = [4032, 3024]; // 12.2 MP, a typical phone photo
+const JUST_OVER_LIMIT = [4000, 4001]; // 16 004 000 pixels
+const FAR_OVER_LIMIT = [12000, 12000]; // 144 000 000 pixels, ~18 KB on the wire
 
 /**
  * The API returns a root-relative URL that already carries the install's base
@@ -292,13 +292,13 @@ describe("API Private Admin Church Logo", () => {
         });
     });
 
-    describe("Decode pixel budget", () => {
+    describe("Source image size limit", () => {
         it("Rejects a small file with huge dimensions with 413 before decoding it", () => {
             // ~18 KB on the wire but 144 million pixels once decoded: the
             // compressed-size limit alone would let this through and GD would
             // allocate a raster of several hundred MB. The server must read the
             // header, refuse, and never reach imagecreatefromstring().
-            cy.wrap(buildBlankPng(...FAR_OVER_PIXEL_BUDGET)).then((hugePng) => {
+            cy.wrap(buildBlankPng(...FAR_OVER_LIMIT)).then((hugePng) => {
                 expect(hugePng.length).to.be.lessThan(64 * 1024);
 
                 cy.makePrivateAdminAPICall(
@@ -323,15 +323,12 @@ describe("API Private Admin Church Logo", () => {
             );
         });
 
-        it("Accepts an image exactly at the budget and rejects one a single row over", () => {
-            // Ordinary large camera images (24 MP is 6000x4000) sit well inside
-            // the budget; this pins the exact edge so a change to the constant
-            // is a deliberate one.
-            cy.wrap(buildBlankPng(...AT_PIXEL_BUDGET)).then((atBudgetPng) => {
+        it("Accepts a typical phone photo and rejects one just over the limit", () => {
+            cy.wrap(buildBlankPng(...PHONE_PHOTO)).then((phonePhotoPng) => {
                 cy.makePrivateAdminAPICall(
                     "POST",
                     LOGO_URL,
-                    { imgBase64: atBudgetPng },
+                    { imgBase64: phonePhotoPng },
                     200,
                 ).then((response) => {
                     expect(response.body).to.have.property("success", true);
@@ -342,12 +339,12 @@ describe("API Private Admin Church Logo", () => {
                 });
             });
 
-            cy.wrap(buildBlankPng(...ONE_ROW_OVER_PIXEL_BUDGET)).then(
-                (overBudgetPng) => {
+            cy.wrap(buildBlankPng(...JUST_OVER_LIMIT)).then(
+                (overLimitPng) => {
                     cy.makePrivateAdminAPICall(
                         "POST",
                         LOGO_URL,
-                        { imgBase64: overBudgetPng },
+                        { imgBase64: overLimitPng },
                         413,
                     ).then((response) => {
                         expect(response.body).to.have.property(
@@ -355,7 +352,7 @@ describe("API Private Admin Church Logo", () => {
                             false,
                         );
                         expect(response.body.message).to.include(
-                            "10000x5001",
+                            "4000x4001",
                         );
                     });
                 },
@@ -380,8 +377,8 @@ describe("API Private Admin Church Logo", () => {
                 });
             });
 
-            // Over the pixel budget: refused before decoding.
-            cy.wrap(buildBlankPng(...FAR_OVER_PIXEL_BUDGET)).then((hugePng) => {
+            // Over the size limit: refused before decoding.
+            cy.wrap(buildBlankPng(...FAR_OVER_LIMIT)).then((hugePng) => {
                 cy.makePrivateAdminAPICall(
                     "POST",
                     LOGO_URL,
