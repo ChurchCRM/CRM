@@ -68,7 +68,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
  *     path="/ministries/ministries/{ministryId}/events",
  *     operationId="createVolunteerMinistryEvents",
  *     summary="Create a ministry's event or event series through core, optionally staffed (D24)",
- *     description="One event (date, startTime, endTime) through the same code as POST /events, or a series (recurrence, rangeStart, rangeEnd, startTime, endTime) through the repeat engine, capped at 366 events. Every event carries this ministry's id and the Linked Group when given, and is pinned to calendarIds (default: the ministry's own calendar), each of which must be the ministry's own calendar or a church calendar opened to it unless the caller holds Add Events (D25). With staff, the schedule is created in the same transaction: class mode for a series with a Linked Group, ministry mode narrowed to the title for one without, Staff this event for a single event; its occurrences are generated and the defaults assigned. Nothing is written when any part is refused. Fires event.created for each event after the commit.",
+ *     description="One event (date, startTime, endTime) through the same code as POST /events, or a series (recurrence, rangeStart, rangeEnd, startTime, endTime) through the repeat engine, capped at 366 events. Every event carries this ministry's id and the Linked Group when given, and is pinned to calendarIds (default: the ministry's own calendar), each of which must be the ministry's own calendar or a church calendar opened to it unless the caller holds Add Events (D25). With staff, the schedule is created in the same transaction: class mode for a series with a Linked Group, ministry mode narrowed to the title for one without, Staff this event for a single event; its occurrences are generated and the defaults assigned. When the team already has an active schedule following the events (class mode on the same class, or ministry mode with exactly this title), the events go to that schedule instead (D30): its window is widened to take them in, it is generated, the defaults go on the occurrences this run created, and its own staffing needs and offsets are kept. Nothing is written when any part is refused. Fires event.created for each event after the commit.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
@@ -115,6 +115,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
  *                 @OA\Property(property="end", type="string")
  *             )),
  *             @OA\Property(property="schedule", type="object", description="Present when staff was given"),
+ *             @OA\Property(property="reusedSchedule", type="boolean", description="Present when staff was given: the events were added to the team's existing schedule (D30)"),
  *             @OA\Property(property="occurrences", type="array", @OA\Items(type="object",
  *                 @OA\Property(property="id", type="integer"),
  *                 @OA\Property(property="eventId", type="integer"),
@@ -163,6 +164,7 @@ function createVolunteerMinistryEvents(Request $request, Response $response): Re
             ->find();
 
         $payload['schedule'] = volunteerScheduleToArray($result['schedule']);
+        $payload['reusedSchedule'] = $result['reusedSchedule'];
         $payload['occurrences'] = [];
         foreach ($occurrences as $occurrence) {
             $payload['occurrences'][] = [

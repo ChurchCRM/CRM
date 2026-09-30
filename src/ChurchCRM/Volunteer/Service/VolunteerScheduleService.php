@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Map\VolunteerOccurrenceTableMap;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
+use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPosition;
@@ -119,7 +120,7 @@ class VolunteerScheduleService
      *
      * @param array<string, mixed> $fields
      *
-     * @return array{schedule: VolunteerSchedule, created: int, existing: int, through: string, createdIds: int[]}
+     * @return array{schedule: VolunteerSchedule, created: int, existing: int, from: string, through: string, createdIds: int[]}
      *
      * @throws \RuntimeException
      */
@@ -632,10 +633,12 @@ class VolunteerScheduleService
      * inside the range (active ones only) and attach one occurrence to each. Never writes
      * to `events_event`, and never touches an occurrence that already exists.
      *
-     * @return array{created: int, existing: int, through: string, createdIds: int[]}
-     *         `through` is the date actually generated to, after the schedule's own window
-     *         has clamped it; `createdIds` are the rows THIS run inserted, so a caller can
-     *         act on the new occurrences only (the Generate dialog's default assignments)
+     * @return array{created: int, existing: int, from: string, through: string, createdIds: int[]}
+     *         `from` and `through` are the dates actually looked at, after today and the
+     *         schedule's own window have clamped them (`from` is after `through` when the
+     *         window has ended or has not started yet); `createdIds` are the rows THIS run
+     *         inserted, so a caller can act on the new occurrences only (the Generate
+     *         dialog's default assignments)
      *
      * @throws \RuntimeException when the run would exceed MAX_GENERATED_OCCURRENCES
      */
@@ -643,11 +646,12 @@ class VolunteerScheduleService
     {
         $range = $this->resolveGenerationRange($schedule, $through);
         $reportedThrough = $range['end']->format('Y-m-d');
+        $reportedFrom = $range['start']->format('Y-m-d');
 
         if ($range['start'] > $range['end']) {
             // A window entirely in the past, or one that closed before it opened: nothing
             // to materialise, and explicitly not an error.
-            return ['created' => 0, 'existing' => 0, 'through' => $reportedThrough, 'createdIds' => []];
+            return ['created' => 0, 'existing' => 0, 'from' => $reportedFrom, 'through' => $reportedThrough, 'createdIds' => []];
         }
 
         $events = $this->findEvents($schedule, $range['start'], $range['end']);
@@ -663,7 +667,34 @@ class VolunteerScheduleService
             'existing' => $result['existing'],
         ]);
 
-        return $result + ['through' => $reportedThrough];
+        return $result + ['from' => $reportedFrom, 'through' => $reportedThrough];
+    }
+
+    /**
+     * What a schedule looks for on the calendar, with the names a person reads (D30): the
+     * Generate result explains an empty run with it.
+     *
+     * @return array{linkMode: string, groupId: ?int, groupName: ?string, eventTypeId: ?int, eventTypeName: ?string, titleFilter: ?string, ministryId: int, ministryName: ?string, eventId: ?int, eventTitle: ?string}
+     */
+    public function describeEventSource(VolunteerSchedule $schedule): array
+    {
+        $group = $schedule->getGroupId() === null ? null : GroupQuery::create()->findPk((int) $schedule->getGroupId());
+        $type = $schedule->getEventTypeId() === null ? null : EventTypeQuery::create()->findPk((int) $schedule->getEventTypeId());
+        $event = $schedule->getEventId() === null ? null : EventQuery::create()->findPk((int) $schedule->getEventId());
+        $ministry = VolunteerMinistryQuery::create()->findPk((int) $schedule->getMinistryId());
+
+        return [
+            'linkMode' => (string) $schedule->getLinkMode(),
+            'groupId' => $group === null ? null : (int) $group->getId(),
+            'groupName' => $group === null ? null : (string) $group->getName(),
+            'eventTypeId' => $type === null ? null : (int) $type->getId(),
+            'eventTypeName' => $type === null ? null : (string) $type->getName(),
+            'titleFilter' => $schedule->getTitleFilter(),
+            'ministryId' => (int) $schedule->getMinistryId(),
+            'ministryName' => $ministry === null ? null : (string) $ministry->getName(),
+            'eventId' => $event === null ? null : (int) $event->getId(),
+            'eventTitle' => $event === null ? null : (string) $event->getTitle(),
+        ];
     }
 
     /**

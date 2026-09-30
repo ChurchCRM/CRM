@@ -1088,6 +1088,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </p>
         </div>
         <div id="generate-form-rows"></div>
+        <!-- D30: a run that found no events says why, instead of a success toast. -->
+        <div class="alert alert-warning d-none mt-3" role="status" id="generate-form-warning">
+          <div class="d-flex">
+            <i class="fa-solid fa-triangle-exclamation me-2 mt-1" aria-hidden="true"></i>
+            <div>
+              <div class="fw-medium" id="generate-form-warning-text"></div>
+              <div class="mt-1" id="generate-form-warning-hint"></div>
+              <button type="button" class="btn btn-sm btn-warning mt-2 d-none" id="generate-form-add-events"></button>
+            </div>
+          </div>
+        </div>
         <div class="alert alert-danger d-none mt-3" role="alert" id="generate-form-error">
           <i class="fa-solid fa-circle-exclamation me-1"></i>
           <span class="volunteer-error-text"></span>
@@ -1136,11 +1147,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <label class="form-label" for="schedule-form-group"><?= gettext('Class') ?></label>
           <select class="form-select" id="schedule-form-group"></select>
           <div class="form-text"><?= gettext('One occurrence is made for each calendar event whose Linked Group is this class.') ?></div>
+          <div class="alert alert-warning py-2 mt-2 mb-0 d-none" role="status" id="schedule-form-group-warning"></div>
         </div>
         <div class="mb-3 d-none" id="schedule-form-title-filter-row">
           <label class="form-label" for="schedule-form-title-filter"><?= gettext('Event') ?></label>
           <select class="form-select" id="schedule-form-title-filter"></select>
           <div class="form-text"><?= gettext('One occurrence is made for each date of this event. Choosing any event follows them all, which can be several on the same day.') ?></div>
+          <div class="alert alert-warning py-2 mt-2 mb-0 d-none" role="status" id="schedule-form-title-warning"></div>
         </div>
         <div class="mb-3" id="schedule-form-offsets"></div>
         <div class="row g-2">
@@ -1296,12 +1309,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <label class="form-label" for="ministry-event-form-team"><?= gettext('Team') ?></label>
             <select class="form-select" id="ministry-event-form-team"></select>
           </div>
+          <!-- D30: the team's schedule that already follows these events takes them, with its own needs. -->
+          <div class="alert alert-info py-2 d-none" role="status" id="ministry-event-form-reuse"></div>
           <div class="mb-3" id="ministry-event-form-offsets"></div>
-          <div class="mb-2">
-            <h6 class="mb-1"><i class="fa-solid fa-list-check me-2"></i><?= gettext('Staffing needs') ?></h6>
-            <div class="form-text"><?= gettext('How many volunteers each event needs. Uncheck a position these events do not use.') ?></div>
+          <div id="ministry-event-form-plan">
+            <div class="mb-2">
+              <h6 class="mb-1"><i class="fa-solid fa-list-check me-2"></i><?= gettext('Staffing needs') ?></h6>
+              <div class="form-text"><?= gettext('How many volunteers each event needs. Uncheck a position these events do not use.') ?></div>
+            </div>
+            <div id="ministry-event-form-needs"></div>
           </div>
-          <div id="ministry-event-form-needs"></div>
           <p class="text-body-secondary mt-3 mb-2">
             <?= gettext('Choose who fills each position by default. They are assigned on every event made now, and asked to respond unless you set them as accepted.') ?>
           </p>

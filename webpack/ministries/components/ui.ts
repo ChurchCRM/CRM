@@ -355,3 +355,17 @@ export function formatIsoDate(date: Date): string {
 export function tText(key: string, vars?: Record<string, unknown>): string {
   return i18next.t(key, { ...(vars ?? {}), interpolation: { escapeValue: false } });
 }
+
+/** A `YYYY-MM-DD` date as the reader's short month and day, with the year when it is not this year. */
+export function shortDate(iso: string): string {
+  const date = new Date(`${iso.slice(0, 10)}T12:00:00`);
+  if (Number.isNaN(date.getTime())) {
+    return iso;
+  }
+
+  return date.toLocaleDateString(undefined, {
+    month: "short",
+    day: "numeric",
+    year: date.getFullYear() === new Date().getFullYear() ? undefined : "numeric",
+  });
+}

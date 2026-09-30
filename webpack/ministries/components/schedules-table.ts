@@ -18,6 +18,11 @@
  * rotation-ordered list the Assign dialog uses, and — once somebody is chosen — a
  * "Set as Accepted" box. The chosen people are assigned on every occurrence the run
  * creates, never on ones an earlier run made.
+ *
+ * D30: a run that finds no events keeps the dialog open with a warning saying what it
+ * looked for, and — where the viewer may create the ministry's events — a button to the
+ * New recurring event dialog; a run whose occurrences all existed is an info toast. The
+ * schedule dialog warns before that, when the chosen class or title has nothing upcoming.
  */
 
 import {
@@ -31,11 +36,13 @@ import {
   listScheduleEligiblePeople,
   listScheduleRequirements,
   notifyError,
+  notifyInfo,
   notifySuccess,
   updateSchedule,
   type VolunteerCandidatePosition,
   type VolunteerClassGroup,
   type VolunteerEligiblePerson,
+  type VolunteerGenerateResult,
   type VolunteerPosition,
   type VolunteerRequirementRow,
   type VolunteerSchedule,
@@ -62,12 +69,22 @@ import {
   isoDate,
   modal,
   renderState,
+  shortDate,
   show,
   showModalError,
   statusBadge,
   tText,
   wireModalFadeGuard,
 } from "./ui";
+
+/** What the ministry's New recurring event dialog starts with when a schedule found nothing (D30). */
+export interface MinistryEventPrefill {
+  groupId: number | null;
+  groupName: string | null;
+  title: string | null;
+  /** The schedule to generate again once the events exist. */
+  scheduleName: string;
+}
 
 export interface SchedulesTableOptions {
   /** The ministry a new schedule is created under. */
@@ -85,6 +102,12 @@ export interface SchedulesTableOptions {
    * meetings" is offered only to a schedule that already follows a class.
    */
   classesAllowed?(): boolean;
+  /**
+   * D30: open the ministry's New recurring event dialog, pre-filled for a schedule that found
+   * no events. Absent where the viewer may not create the ministry's events (the portal, a
+   * team leader), and the warnings then say who adds them instead.
+   */
+  addEvents?(prefill: MinistryEventPrefill): void;
 }
 
 export interface SchedulesTableHandle {
@@ -113,6 +136,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
   let modeFromTeamClass = false;
   /** "A class's meetings", kept while it is taken out of the select (D29). */
   let classModeOption: HTMLOptionElement | null = null;
+  /** The upcoming count of every title the Event picker offers, for its warning (D30). */
+  let seriesCounts = new Map<string, number>();
 
   function render(rows: VolunteerSchedule[]): void {
     const body = byId("volunteerSchedulesTable")?.querySelector("tbody");
@@ -299,7 +324,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
             `<option value="${row.groupId}">${escapeHtml(
               row.upcomingCount > 0
                 ? tText("{{name}} ({{count}} upcoming)", { name: row.name, count: row.upcomingCount })
-                : row.name,
+                : tText("{{name}} (no upcoming meetings)", { name: row.name }),
             )}</option>`,
         ),
       ].join("");
@@ -335,6 +360,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     if (wanted !== "" && !series.some((row) => row.title === wanted)) {
       series = [{ title: wanted, count: 0 }, ...series];
     }
+    seriesCounts = new Map(series.map((row) => [row.title, row.count]));
     select.innerHTML = [
       `<option value="">${escapeHtml(
         byMinistry ? i18next.t("Any of this ministry's events") : i18next.t("Any event of this type"),
@@ -350,6 +376,63 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     if (select.value !== wanted) {
       select.value = "";
     }
+    syncTitleWarning();
+  }
+
+  /** Where the viewer's events come from, for the D30 warnings: the Calendar tab, or a coordinator. */
+  function whereToAddEvents(className?: string): string {
+    if (!options.addEvents) {
+      return i18next.t("A coordinator of the ministry can add them on the ministry's Calendar tab.");
+    }
+
+    return className
+      ? tText("Add them on the Calendar tab as a recurring event with {{name}} as its class.", { name: className })
+      : i18next.t("Add them on the Calendar tab.");
+  }
+
+  /** D30: the chosen class has no meetings on the calendar from today on, so the schedule would find nothing. */
+  function syncClassWarning(): void {
+    const warning = byId("schedule-form-group-warning");
+    const select = byId<HTMLSelectElement>("schedule-form-group");
+    const groupId = Number(select?.value ?? 0);
+    const chosen = (classes ?? []).find((row) => row.groupId === groupId);
+    const empty =
+      byId<HTMLSelectElement>("schedule-form-link-mode")?.value === "class" &&
+      groupId > 0 &&
+      (chosen?.upcomingCount ?? 0) === 0;
+    if (warning && empty) {
+      const name = chosen?.name ?? select?.selectedOptions[0]?.text ?? "";
+      warning.textContent = `${tText(
+        "{{name}} has no upcoming meetings on the calendar, so this schedule has nothing to staff.",
+        { name },
+      )} ${whereToAddEvents(name)}`;
+    }
+    show(warning, empty);
+  }
+
+  /** D30: the Event picker's choice has no upcoming events, or there are none to choose from. */
+  function syncTitleWarning(): void {
+    const warning = byId("schedule-form-title-warning");
+    const mode = byId<HTMLSelectElement>("schedule-form-link-mode")?.value;
+    const title = byId<HTMLSelectElement>("schedule-form-title-filter")?.value ?? "";
+    let text = "";
+    if (mode === "event_type" || mode === "ministry") {
+      if (title !== "" && (seriesCounts.get(title) ?? 0) === 0) {
+        text = tText("No upcoming events titled {{title}} are on the calendar.", { title });
+      } else if (title === "" && !Array.from(seriesCounts.values()).some((count) => count > 0)) {
+        text =
+          mode === "ministry"
+            ? i18next.t("This ministry has no upcoming events on the calendar.")
+            : i18next.t("No upcoming events of this type are on the calendar.");
+      }
+      if (text !== "" && mode === "ministry") {
+        text = `${text} ${whereToAddEvents()}`;
+      }
+    }
+    if (warning) {
+      warning.textContent = text;
+    }
+    show(warning, text !== "");
   }
 
   /**
@@ -406,6 +489,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     show(byId("schedule-form-event-type-row"), mode === "event_type");
     show(byId("schedule-form-group-row"), mode === "class");
     show(byId("schedule-form-title-filter-row"), mode === "event_type" || mode === "ministry");
+    syncClassWarning();
   }
 
   /**
@@ -451,6 +535,10 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     modeFromTeamClass = false;
     show(byId("schedule-form-error"), false);
     scheduleRequirements = [];
+    // Refetched on every open: a class's meeting count changes as events are added (D30).
+    classes = null;
+    seriesCounts = new Map();
+    show(byId("schedule-form-title-warning"), false);
 
     // The schedule's stored plan, fetched alongside the event types so the modal opens
     // once, filled. A failure is not fatal: the rows fall back to the new-schedule
@@ -582,6 +670,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
   /** The schedule the Generate dialog is open for; 0 when it is closed. */
   let generatingScheduleId = 0;
+  let generatingSchedule: VolunteerSchedule | null = null;
+  /** What the warning's New recurring event button opens with, after a run found nothing (D30). */
+  let nothingFoundPrefill: MinistryEventPrefill | null = null;
   /** One TomSelect per position row, torn down when the dialog closes. */
   let generateSelects: TomSelectInstance[] = [];
 
@@ -592,6 +683,9 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
 
   function openGenerateModal(schedule: VolunteerSchedule): void {
     generatingScheduleId = schedule.id;
+    generatingSchedule = schedule;
+    nothingFoundPrefill = null;
+    show(byId("generate-form-warning"), false);
     destroyGenerateSelects();
 
     const intro = byId("generate-form-intro");
@@ -669,11 +763,34 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       save.disabled = true;
     }
 
-    generateOccurrences(scheduleId, { defaults: readDefaultFills(byId("generate-form-rows")) })
+    const defaults = readDefaultFills(byId("generate-form-rows"));
+    generateOccurrences(scheduleId, { defaults })
       .then((result) => {
+        // Nothing to anchor to is not a success: the dialog stays open and says why (D30).
+        if (result.noEvents) {
+          showNothingFound(result);
+
+          return;
+        }
+
         hideModal("generateOccurrencesModal");
-        // The server's own numbers, not an assumption: generation is idempotent,
-        // so "created 0, 8 already there" is a perfectly good outcome to report.
+        // The server's own numbers, not an assumption: generation is idempotent, so a
+        // run whose occurrences were all there already is reported as such, neutrally.
+        if (result.created === 0) {
+          const parts = [
+            i18next.t("No new occurrences. All {{count}} events through {{through}} already have one.", {
+              count: result.existing,
+              through: shortDate(result.through),
+            }),
+          ];
+          if (defaults.length > 0) {
+            parts.push(i18next.t("Default volunteers are only assigned on new occurrences."));
+          }
+          notifyInfo(parts.join(" "));
+
+          return;
+        }
+
         const parts = [
           i18next.t("{{created}} occurrences created, {{existing}} were already there", {
             created: result.created,
@@ -705,10 +822,168 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       });
   }
 
+  /** D30: the warning that replaces the success toast when a run found no events at all. */
+  function showNothingFound(result: VolunteerGenerateResult): void {
+    const found = describeNothingFound(result);
+    const text = byId("generate-form-warning-text");
+    if (text) {
+      text.textContent = found.text;
+    }
+    const hint = byId("generate-form-warning-hint");
+    if (hint) {
+      hint.textContent = found.hint;
+    }
+    show(hint, found.hint !== "");
+
+    nothingFoundPrefill = options.addEvents ? found.prefill : null;
+    const button = byId<HTMLButtonElement>("generate-form-add-events");
+    if (button) {
+      button.textContent = "";
+      button.insertAdjacentHTML(
+        "beforeend",
+        `<i class="fa-solid fa-repeat me-1" aria-hidden="true"></i>${escapeHtml(found.button)}`,
+      );
+    }
+    show(button, nothingFoundPrefill !== null);
+
+    const box = byId("generate-form-warning");
+    show(box, true);
+    box?.scrollIntoView({ block: "nearest" });
+  }
+
+  /** Why a run found nothing, in the schedule's own terms, and what would fix it. */
+  function describeNothingFound(result: VolunteerGenerateResult): {
+    text: string;
+    hint: string;
+    button: string;
+    prefill: MinistryEventPrefill | null;
+  } {
+    const name = generatingSchedule?.name ?? "";
+    const from = shortDate(result.from);
+    const to = shortDate(result.through);
+    const source = result.searched;
+    const noButton = { button: "", prefill: null };
+
+    if (result.from > result.through) {
+      const windowEnd = generatingSchedule?.windowEnd ?? null;
+      if (windowEnd !== null && windowEnd < result.from) {
+        return {
+          ...noButton,
+          text: tText("{{name}} ended on {{date}}, so there are no dates left to generate.", {
+            name,
+            date: shortDate(windowEnd),
+          }),
+          hint: i18next.t("Edit the schedule and move its last date to follow more events."),
+        };
+      }
+
+      return {
+        ...noButton,
+        text: tText("{{name}} starts on {{date}}, after the dates generated now (through {{through}}).", {
+          name,
+          date: shortDate(generatingSchedule?.windowStart ?? result.from),
+          through: to,
+        }),
+        hint: i18next.t("Generate again closer to its first date."),
+      };
+    }
+
+    const coordinatorAdds = i18next.t(
+      "A coordinator of the ministry can add them on the ministry's Calendar tab. Then generate again.",
+    );
+
+    switch (source.linkMode) {
+      case "class": {
+        if (source.groupName === null) {
+          return {
+            ...noButton,
+            text: i18next.t("The class this schedule follows no longer exists."),
+            hint: i18next.t("Edit the schedule and choose another class."),
+          };
+        }
+        const className = source.groupName;
+
+        return {
+          text: tText("No events on the calendar use {{name}} as their class between {{from}} and {{to}}.", {
+            name: className,
+            from,
+            to,
+          }),
+          hint: options.addEvents
+            ? tText("Add the class's meetings as a recurring event with {{name}} as its class, then generate again.", {
+                name: className,
+              })
+            : coordinatorAdds,
+          button: tText("New recurring event for {{name}}", { name: className }),
+          prefill: { groupId: source.groupId, groupName: className, title: null, scheduleName: name },
+        };
+      }
+      case "ministry": {
+        const ministry = source.ministryName ?? "";
+        const title = source.titleFilter;
+
+        return {
+          text: title
+            ? tText("{{ministry}} has no events titled {{title}} between {{from}} and {{to}}.", {
+                ministry,
+                title,
+                from,
+                to,
+              })
+            : tText("{{ministry}} has no events between {{from}} and {{to}}.", { ministry, from, to }),
+          hint: options.addEvents ? i18next.t("Add them on the Calendar tab, then generate again.") : coordinatorAdds,
+          button: title ? tText("New recurring event titled {{title}}", { title }) : i18next.t("New recurring event"),
+          prefill: { groupId: null, groupName: null, title, scheduleName: name },
+        };
+      }
+      case "event_type": {
+        if (source.eventTypeName === null) {
+          return {
+            ...noButton,
+            text: i18next.t("The event type this schedule follows no longer exists."),
+            hint: i18next.t("Edit the schedule and choose another event type."),
+          };
+        }
+        const type = source.eventTypeName;
+
+        return {
+          ...noButton,
+          text: source.titleFilter
+            ? tText("No {{type}} events titled {{title}} between {{from}} and {{to}}.", {
+                type,
+                title: source.titleFilter,
+                from,
+                to,
+              })
+            : tText("No {{type}} events between {{from}} and {{to}}.", { type, from, to }),
+          hint: i18next.t(
+            "Church events of a type are added on the church calendar. Check the schedule's event type, title and dates.",
+          ),
+        };
+      }
+      default:
+        return {
+          ...noButton,
+          text: tText("No event was found between {{from}} and {{to}}.", { from, to }),
+          hint: "",
+        };
+    }
+  }
+
   function wire(): void {
     wireModalFadeGuard("scheduleModal");
     wireModalFadeGuard("generateOccurrencesModal");
     byId("generate-form-save")?.addEventListener("click", runGenerate);
+    byId("generate-form-add-events")?.addEventListener("click", () => {
+      const prefill = nothingFoundPrefill;
+      if (prefill === null || !options.addEvents) {
+        return;
+      }
+      byId("generateOccurrencesModal")?.addEventListener("hidden.bs.modal", () => options.addEvents?.(prefill), {
+        once: true,
+      });
+      hideModal("generateOccurrencesModal");
+    });
     byId("generateOccurrencesModal")?.addEventListener("hidden.bs.modal", destroyGenerateSelects);
     wireDefaultFillRows(byId("generate-form-rows"));
 
@@ -729,6 +1004,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
     byId("schedule-form-event-type")?.addEventListener("change", () => {
       void fillEventSeries("");
     });
+    byId("schedule-form-group")?.addEventListener("change", syncClassWarning);
+    byId("schedule-form-title-filter")?.addEventListener("change", syncTitleWarning);
     // Positions are team-scoped, so the list of things that can be needed changes with the
     // team. Re-rendering discards whatever was typed for the old team's positions, which is
     // correct: those rows are no longer part of this schedule's plan.

@@ -733,9 +733,23 @@ function listVolunteerScheduleEligiblePeople(Request $request, Response $respons
  *         @OA\JsonContent(
  *             @OA\Property(property="created", type="integer"),
  *             @OA\Property(property="existing", type="integer"),
+ *             @OA\Property(property="from", type="string", format="date", description="First date looked at: the later of today and the window start; after through when the window has ended or not started"),
  *             @OA\Property(property="through", type="string", format="date"),
  *             @OA\Property(property="assigned", type="integer", description="Default assignments written"),
- *             @OA\Property(property="skipped", type="integer", description="Default assignments the server refused on one occurrence")
+ *             @OA\Property(property="skipped", type="integer", description="Default assignments the server refused on one occurrence"),
+ *             @OA\Property(property="noEvents", type="boolean", description="No event at all was found between from and through (D30)"),
+ *             @OA\Property(property="searched", type="object", description="What the schedule looks for, with names (D30)",
+ *                 @OA\Property(property="linkMode", type="string", enum={"event_type","class","ministry","event"}),
+ *                 @OA\Property(property="groupId", type="integer", nullable=true),
+ *                 @OA\Property(property="groupName", type="string", nullable=true),
+ *                 @OA\Property(property="eventTypeId", type="integer", nullable=true),
+ *                 @OA\Property(property="eventTypeName", type="string", nullable=true),
+ *                 @OA\Property(property="titleFilter", type="string", nullable=true),
+ *                 @OA\Property(property="ministryId", type="integer"),
+ *                 @OA\Property(property="ministryName", type="string", nullable=true),
+ *                 @OA\Property(property="eventId", type="integer", nullable=true),
+ *                 @OA\Property(property="eventTitle", type="string", nullable=true)
+ *             )
  *         )
  *     )
  * )
@@ -764,8 +778,9 @@ function generateVolunteerOccurrences(Request $request, Response $response): Res
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
     }
 
+    $schedules = new VolunteerScheduleService();
     try {
-        $result = (new VolunteerScheduleService())->generateOccurrences($schedule, $through);
+        $result = $schedules->generateOccurrences($schedule, $through);
     } catch (\RuntimeException | \InvalidArgumentException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }
@@ -781,7 +796,11 @@ function generateVolunteerOccurrences(Request $request, Response $response): Res
 
     unset($result['createdIds']);
 
-    return SlimUtils::renderJSON($response, $result + $staffed);
+    // D30: an empty run says what it looked for, so the screen can say why nothing came.
+    return SlimUtils::renderJSON($response, $result + $staffed + [
+        'noEvents' => $result['created'] + $result['existing'] === 0,
+        'searched' => $schedules->describeEventSource($schedule),
+    ]);
 }
 
 // ── Requirements ────────────────────────────────────────────────────────────

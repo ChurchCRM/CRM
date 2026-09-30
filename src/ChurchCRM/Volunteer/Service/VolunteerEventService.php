@@ -83,11 +83,13 @@ class VolunteerEventService
      * its occurrences and default assignments, all in one transaction.
      *
      * A series with a Linked Group is staffed in `class` mode, one without in `ministry` mode
-     * narrowed to the title; a single event through Staff this event (`event` mode, D22).
+     * narrowed to the title; a single event through Staff this event (`event` mode, D22). When
+     * the team already has an active schedule that follows these events, the events are added
+     * to it instead (D30, `reusedSchedule`).
      *
      * @param array<string, mixed> $input the request body (design §3.3.2)
      *
-     * @return array{events: Event[], schedule: ?VolunteerSchedule, occurrenceIds: int[], assigned: int, skipped: int}
+     * @return array{events: Event[], schedule: ?VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int}
      *
      * @throws VolunteerException        403 for a caller who is not a coordinator of the ministry or
      *                                   a refused calendar, 400 for a malformed request
@@ -115,7 +117,7 @@ class VolunteerEventService
                 : $this->createSeries($plan, $ministryId);
 
             $staffed = $staff === null
-                ? ['schedule' => null, 'occurrenceIds' => [], 'assigned' => 0, 'skipped' => 0]
+                ? ['schedule' => null, 'reusedSchedule' => false, 'occurrenceIds' => [], 'assigned' => 0, 'skipped' => 0]
                 : $this->staffNewEvents($ministry, $plan, $staff, $events, $actor);
 
             $con->commit();
@@ -426,11 +428,16 @@ class VolunteerEventService
      * @param array{fields: array<string, mixed>, defaults: array<int, mixed>} $staff
      * @param Event[]                                                      $events
      *
-     * @return array{schedule: VolunteerSchedule, occurrenceIds: int[], assigned: int, skipped: int}
+     * @return array{schedule: VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int}
      */
     private function staffNewEvents(VolunteerMinistry $ministry, array $plan, array $staff, array $events, User $actor): array
     {
         $fields = $staff['fields'];
+
+        $reusable = $this->findFollowingSchedule((int) $ministry->getId(), (int) $fields['teamId'], $plan);
+        if ($reusable !== null) {
+            return $this->staffWithSchedule($reusable, $plan, $staff['defaults'], $actor);
+        }
 
         if ($plan['series'] === null) {
             $occurrence = $this->schedules->staffEvent($ministry, $fields + ['eventId' => (int) $events[0]->getId()], $actor);
@@ -461,11 +468,93 @@ class VolunteerEventService
             $occurrenceIds = $result['createdIds'];
         }
 
-        $staffed = $staff['defaults'] === []
-            ? ['assigned' => 0, 'skipped' => 0]
-            : $this->assignments()->assignDefaults($schedule, $occurrenceIds, $staff['defaults'], $actor);
+        return ['schedule' => $schedule, 'reusedSchedule' => false, 'occurrenceIds' => $occurrenceIds]
+            + $this->assignNewOccurrences($schedule, $occurrenceIds, $staff['defaults'], $actor);
+    }
 
-        return ['schedule' => $schedule, 'occurrenceIds' => $occurrenceIds] + $staffed;
+    /**
+     * D30: the team's active schedule that already follows these events — `class` mode on
+     * the Linked Group when there is one, otherwise `ministry` mode narrowed to exactly this
+     * title (the column's collation makes the match case-insensitive). A second schedule
+     * would put a second occurrence for the same team on every event.
+     *
+     * @param array<string, mixed> $plan
+     */
+    private function findFollowingSchedule(int $ministryId, int $teamId, array $plan): ?VolunteerSchedule
+    {
+        $query = VolunteerScheduleQuery::create()
+            ->filterByMinistryId($ministryId)
+            ->filterByTeamId($teamId)
+            ->filterByActive(true)
+            ->filterByOneOff(false);
+
+        if ($plan['linkedGroupId'] > 0) {
+            $query->filterByLinkMode(VolunteerSchedule::LINK_MODE_CLASS)->filterByGroupId($plan['linkedGroupId']);
+        } else {
+            $query->filterByLinkMode(VolunteerSchedule::LINK_MODE_MINISTRY)->filterByTitleFilter($plan['title']);
+        }
+
+        return $query->orderById()->findOne();
+    }
+
+    /**
+     * Staff the new events on a schedule that already follows them (D30): its window is
+     * widened to take them in — the first date moved back to the first new event, a last
+     * date moved on to the last one, an open end left open — and it is generated through the
+     * last new event. Its staffing needs and offsets stay as they are; the request's are not
+     * applied. The defaults go on the occurrences this run created.
+     *
+     * @param array<string, mixed> $plan
+     * @param array<int, mixed>    $defaults
+     *
+     * @return array{schedule: VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int}
+     *
+     * @throws VolunteerException 400 for a single event that has already happened, as Staff this event refuses it
+     */
+    private function staffWithSchedule(VolunteerSchedule $schedule, array $plan, array $defaults, User $actor): array
+    {
+        $first = $plan['series'] === null ? $plan['date'] : $plan['series']['rangeStart'];
+        $last = $plan['series'] === null ? $plan['date'] : $plan['series']['rangeEnd'];
+        if ($plan['series'] === null && $last < DateTimeUtils::getTodayDate()) {
+            throw VolunteerException::invalid(gettext('This event has already happened'));
+        }
+
+        $widen = [];
+        if ($first < (string) $schedule->getWindowStart('Y-m-d')) {
+            $widen['windowStart'] = $first;
+        }
+        $windowEnd = $schedule->getWindowEnd('Y-m-d');
+        if ($windowEnd !== null && $last > $windowEnd) {
+            $widen['windowEnd'] = $last;
+        }
+        if ($widen !== []) {
+            $this->schedules->updateSchedule($schedule, $widen, $actor);
+        }
+
+        $result = $this->schedules->generateOccurrences($schedule, DateTimeUtils::createDateTime($last));
+
+        $this->logger->info('Volunteer ministry events added to a schedule', [
+            'scheduleId' => $schedule->getId(),
+            'widened' => $widen,
+            'created' => $result['created'],
+            'actorPersonId' => $actor->getId(),
+        ]);
+
+        return ['schedule' => $schedule, 'reusedSchedule' => true, 'occurrenceIds' => $result['createdIds']]
+            + $this->assignNewOccurrences($schedule, $result['createdIds'], $defaults, $actor);
+    }
+
+    /**
+     * @param int[]             $occurrenceIds
+     * @param array<int, mixed> $defaults
+     *
+     * @return array{assigned: int, skipped: int}
+     */
+    private function assignNewOccurrences(VolunteerSchedule $schedule, array $occurrenceIds, array $defaults, User $actor): array
+    {
+        return $defaults === []
+            ? ['assigned' => 0, 'skipped' => 0]
+            : $this->assignments()->assignDefaults($schedule, $occurrenceIds, $defaults, $actor);
     }
 
     // ── The Calendar tab (D24) ─────────────────────────────────────────────
