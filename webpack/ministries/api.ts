@@ -1208,8 +1208,14 @@ export function listEventSeries(
   return request(`/event-series?${query.toString()}`);
 }
 
-/** The active calendar event types, on the ministries surface a portal team leader can reach. */
-export function listEventTypes(): Promise<{ eventTypes: Array<{ id: number; name: string }> }> {
+/**
+ * The active calendar event types, on the ministries surface a portal team leader can reach,
+ * with the type a ministry's new event starts with (D31).
+ */
+export function listEventTypes(): Promise<{
+  eventTypes: Array<{ id: number; name: string }>;
+  defaultEventTypeId: number | null;
+}> {
   return request("/event-types");
 }
 

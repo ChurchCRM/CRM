@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Volunteer\Service;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Exceptions\EventDeleteRefusedException;
 use ChurchCRM\model\ChurchCRM\CalendarEventQuery;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
@@ -54,6 +55,9 @@ class VolunteerEventService
 
     private const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+    /** The event type the 7.8.0 script and the install seed add for a ministry's own events (D31). */
+    public const OTHER_EVENT_TYPE_NAME = 'Other';
+
     /** D28: what happens to a ministry's own events of a class its team stops staffing. */
     public const CLASS_EVENTS_KEEP = 'keep';
     public const CLASS_EVENTS_REMOVE = 'remove';
@@ -76,6 +80,27 @@ class VolunteerEventService
     }
 
     // ── Creating a ministry's events (D24) ─────────────────────────────────
+
+    /**
+     * The event type a ministry's new event starts with (D31): the one Admin → Ministry
+     * Settings names, else the type called "Other", else none. Only an active type counts,
+     * so renaming, retiring or deleting the chosen one falls back instead of preselecting
+     * nothing.
+     */
+    public static function defaultEventTypeId(): ?int
+    {
+        $configured = SystemConfig::getIntValue('iVolunteerDefaultEventTypeId');
+        $type = $configured > 0
+            ? EventTypeQuery::create()->filterById($configured)->filterByActive(1)->findOne()
+            : null;
+        $type ??= EventTypeQuery::create()
+            ->filterByName(self::OTHER_EVENT_TYPE_NAME)
+            ->filterByActive(1)
+            ->orderById()
+            ->findOne();
+
+        return $type === null ? null : (int) $type->getId();
+    }
 
     /**
      * Create one event or a series for this ministry through core, pinned to calendars the

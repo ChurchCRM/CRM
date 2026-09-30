@@ -15,6 +15,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerEventService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
 use ChurchCRM\Volunteer\VolunteerException;
 use ChurchCRM\Volunteer\Middleware\VolunteerMinistryMiddleware;
@@ -1521,16 +1522,19 @@ function listVolunteerEventSeries(Request $request, Response $response): Respons
  *     path="/ministries/event-types",
  *     operationId="listVolunteerEventTypes",
  *     summary="The active calendar event types a schedule may follow",
- *     description="Served on the ministries surface because a portal team leader (a self-service login) cannot reach /api/events/types.",
+ *     description="Served on the ministries surface because a portal team leader (a self-service login) cannot reach /api/events/types. defaultEventTypeId is the type a ministry's new event starts with (D31): the one Admin → Ministry Settings names, else the type named Other, else null.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="No ministry or team to manage, or V2 is not enabled"),
  *     @OA\Response(response=200, description="OK",
- *         @OA\JsonContent(@OA\Property(property="eventTypes", type="array", @OA\Items(type="object",
- *             @OA\Property(property="id", type="integer"),
- *             @OA\Property(property="name", type="string")
- *         )))
+ *         @OA\JsonContent(
+ *             @OA\Property(property="eventTypes", type="array", @OA\Items(type="object",
+ *                 @OA\Property(property="id", type="integer"),
+ *                 @OA\Property(property="name", type="string")
+ *             )),
+ *             @OA\Property(property="defaultEventTypeId", type="integer", nullable=true)
+ *         )
  *     )
  * )
  */
@@ -1541,7 +1545,10 @@ function listVolunteerEventTypes(Request $request, Response $response): Response
         $types[] = ['id' => (int) $type->getId(), 'name' => (string) $type->getName()];
     }
 
-    return SlimUtils::renderJSON($response, ['eventTypes' => $types]);
+    return SlimUtils::renderJSON($response, [
+        'eventTypes' => $types,
+        'defaultEventTypeId' => VolunteerEventService::defaultEventTypeId(),
+    ]);
 }
 
 /**

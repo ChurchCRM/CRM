@@ -418,12 +418,12 @@ CREATE TABLE `event_types` (
 LOCK TABLES `event_types` WRITE;
 /*!40000 ALTER TABLE `event_types` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `event_types` VALUES (1,'Church Service','10:30:00','weekly','Sunday','','2016-01-01',1,NULL),(2,'Sunday School','09:30:00','weekly','Sunday','','2016-01-01',1,NULL);
+INSERT INTO `event_types` VALUES (1,'Church Service','10:30:00','weekly','Sunday','','2016-01-01',1,NULL),(2,'Sunday School','09:30:00','weekly','Sunday','','2016-01-01',1,NULL),(3,'Other','00:00:00','none','Sunday','','2016-01-01',1,NULL);
 /*!40000 ALTER TABLE `event_types` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `event_types` with 2 row(s)
+-- Dumped table `event_types` with 3 row(s)
 --
 
 --
