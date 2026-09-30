@@ -18215,6 +18215,10 @@ msgid "Last seen"
 msgstr "Ostatnio widziany"
 
 #: 
+msgid "Link"
+msgstr "Link"
+
+#: 
 msgid "Link added successfully"
 msgstr "Link został pomyślnie dodany"
 
@@ -18293,6 +18297,10 @@ msgstr "Nieprawidłowa data śmierci"
 #: 
 msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
 msgstr "Liczba dni, jakie użytkownicy mają na włączenie 2FA po jego wprowadzeniu jako obowiązkowe. Ustaw na 0, aby wymusić natychmiast. Skrócenie aktywnego okresu karencji może natychmiast zablokować dostęp użytkownikom."
+
+#: 
+msgid "Offline"
+msgstr "Offline"
 
 #: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
@@ -18797,4 +18805,72 @@ msgstr "Uruchom raport"
 #: 
 msgid "Second Volunteer Opportunity"
 msgstr "Druga okazja dla wolontariusza"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Wyświetlane na pasku bocznym, na stronie logowania i w wiadomościach e-mail. Przesłanie logo zastępuje branding ChurchCRM wszędzie, gdzie się on pojawia."
+
+#: 
+msgid "Single Pages"
+msgstr "Pojedyncze strony"
+
+#: 
+msgid "Tax Documents"
+msgstr "Dokumenty podatkowe"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Nie udało się wysłać wiadomości e-mail z dokumentem podatkowym. Sprawdź ustawienia serwera poczty."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Dwie strony o połowie rozmiaru obok siebie na każdym arkuszu poziomym, w kolejności broszury. Drukuj dwustronnie z odwracaniem wzdłuż krótszej krawędzi, a następnie złóż stos na pół. Kolumny są liczone na połowę strony."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Nie można wysłać dokumentu podatkowego e-mailem: nie znaleziono danych o wpłatach za ten rok."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Nie można wysłać dokumentu podatkowego e-mailem: ta rodzina nie ma zapisanego adresu e-mail."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Nie można rozpoznać nazwy hosta serwera OpenLP. Sprawdź adres i połączenie sieciowe."
+
+#: 
+msgid "Upload"
+msgstr "Prześlij"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Używane jest domyślne logo ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Pokaż pełne ofiary rodziny"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Możliwość wolontariatu"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Wolontariusze dla dwóch możliwości"
+
+#: 
+msgid "YTD"
+msgstr "Od początku roku"
+
+#: 
+msgid "YTD Paid"
+msgstr "Wpłacono od początku roku"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "pod kątem błędów z czasu, gdy do tego doszło, oraz pobierz i dołącz odpowiedni plik dziennika do zgłoszenia na GitHubie — pomoże nam to rozwiązać problem bez dodatkowych pytań."
+
+#: 
+msgid "system logs"
+msgstr "dzienniki systemowe"
 

@@ -16083,6 +16083,10 @@ msgid "Choose family"
 msgstr "Familie auswählen"
 
 #: 
+msgid "Code"
+msgstr "Code"
+
+#: 
 msgid "Configure how monetary amounts are displayed throughout the system. As finance pages are updated to use these settings (epic #8459), the symbol, position, and separators configured here will apply system-wide."
 msgstr "Legen Sie fest, wie Geldbeträge im gesamten System angezeigt werden. Sobald die Finanzseiten auf diese Einstellungen aktualisiert werden (Epic #8459), gelten das hier konfigurierte Symbol, die Position und die Trennzeichen systemweit."
 
@@ -18297,6 +18301,10 @@ msgstr "Kein gültiges Sterbedatum"
 #: 
 msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
 msgstr "Anzahl der Tage, die Benutzern zur Registrierung für 2FA zur Verfügung stehen, nachdem diese verpflichtend wurde. Auf 0 setzen, um sie sofort zu erzwingen. Das Verkürzen einer aktiven Übergangsfrist kann Benutzer sofort aussperren."
+
+#: 
+msgid "Offline"
+msgstr "Offline"
 
 #: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."

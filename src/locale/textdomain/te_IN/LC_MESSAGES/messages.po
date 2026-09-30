@@ -18763,6 +18763,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "రెండు అవకాశాల కోసం స్వచ్ఛందసేవకులు"
 
 #: 
+msgid "YTD"
+msgstr "సంవత్సరం ప్రారంభం నుండి"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD చెల్లించిన"
 

@@ -18750,6 +18750,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "दो अवसरों के लिए स्वयंसेवक"
 
 #: 
+msgid "YTD"
+msgstr "वर्ष-से-अब तक"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD भुगतान"
 

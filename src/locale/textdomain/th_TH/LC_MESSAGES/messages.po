@@ -18747,6 +18747,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "อาสาสมัครสำหรับโอกาสสองประการ"
 
 #: 
+msgid "YTD"
+msgstr "ตั้งแต่ต้นปี"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD ชำระเงิน"
 
