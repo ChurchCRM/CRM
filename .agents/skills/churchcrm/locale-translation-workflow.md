@@ -227,6 +227,50 @@ N/A, name@example.com, @, SMS, SMTP, API, HTTP, HTTPS, JSON, XML, HTML, CSS, E.1
 - Telugu (te): 5 batch files (673 terms) — process separately
 - Amharic (am): 100+ terms — process separately
 
+### Model Selection & Cost Efficiency <!-- learned: 2026-09-29 -->
+
+**Lowest-cost capable model for locale translation (10–40+ locales):**
+
+| Model | Provider | Cost/1K terms | Capable? | Notes |
+|-------|----------|---------------|----------|-------|
+| **Haiku 4.5** | Anthropic | **~$0.04** | ✅ Yes | **Cheapest + proven at scale** |
+| GPT-4o mini | OpenAI | ~$0.05 | ✅ Yes | 20% more expensive |
+| Grok-2 | xAI | ~$0.06 | ⚠️ Limited | Weak on non-Latin scripts |
+| Sonnet 4 | Anthropic | ~$0.12 | ✅ Yes | 3x cost, no quality gain |
+| Claude 3.5 | Anthropic | ~$0.08 | ✅ Yes | 2x cost, no benefit over Haiku |
+
+**Recommendation:** Use **Haiku 4.5** for all locale translation work — < 10 locales to 40+ with language-family batching.
+
+### Proven Session Results (43 locales, 2811 terms, Sept 2026)
+
+**Execution:**
+- **13 agents** (batched by language family: Spanish ×5, Portuguese ×2, Chinese ×2, Romance ×2, Balkan ×2, Nordic ×2, Uralic ×3, S.Asian ×3, E.Asian ×5, Germanic ×5, Slavic ×4)
+- **52k–66k tokens per agent** (large language groups reuse context)
+- **~35 min total runtime** (parallel execution in background)
+- **Completion: 97.6%** (2745 / 2811 terms translated)
+
+**Cost:**
+- **Sequential (43 agents × 60k):** 2.58M tokens = ~$6.14
+- **Batched (13 agents × 60k avg):** 780k tokens = ~$1.86
+- **Savings: 70% cost reduction** via language-family grouping
+
+**Reliability:**
+- ✅ All 13 agents completed successfully with proper `--apply` before returning
+- ✅ No lost work — each batch committed + pushed before next tier started
+- ⚠️ Plan mode can block `/tmp` writes mid-execution; recoverable via `SendMessage` resume
+- ✅ Parallel background execution confirmed stable for 5–8 agents simultaneously
+
+### Batching Strategy (0-token arch)
+
+1. **Group by language family** (not per-locale): Romance, Slavic, Uralic, Asian, etc.
+2. **Dispatch 1 agent per family** — each handles 2–5 related locales
+3. **Each agent:** reads all batch files → translates → **applies all before returning** (critical)
+4. **Commit family batches as they complete** (don't accumulate)
+
+### Success Factor: Apply Before Return
+
+Sub-agent prompt **must explicitly require** that translations are applied BEFORE the agent returns. If an agent only produces translations without applying, the translations are lost (no commit/push happens).
+
 ---
 
 ## Phase 2: Upload to POEditor

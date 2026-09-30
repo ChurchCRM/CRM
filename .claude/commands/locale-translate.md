@@ -50,17 +50,13 @@ node locale/scripts/locale-translate.js --list
 
 ---
 
-## Step 3: Strategy — small vs. large locales <!-- learned: 2026-04-04 -->
+## Step 3: Choose strategy & dispatch agents
 
-**Split the work based on term count:**
+**For 10+ locales:** Use language-family batching to reduce token cost by 70%. See skill file [`locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md#model-selection--cost-efficiency) for proven metrics (43 locales in 35 min, $1.86 cost).
 
-- **Small locales (≤ 10 terms):** Process ALL of them directly in one pass. Read each file, produce translations inline, apply with temp files. Batch the `report_progress` commit at the end covering all small locales.
-- **Large locales (> 10 terms):** Dispatch parallel `general-purpose` sub-agents — one per locale (or small groups of 2). Each sub-agent reads, translates, AND applies before returning. Then commit with `report_progress`.
+**For < 10 locales:** Process inline with direct git, or dispatch sub-agents per locale.
 
-**Why this split works:**
-- Small locales are often just `N/A`, `BCC`, `name@example.com` — trivial to handle inline
-- Large locales (60+ terms) each benefit from a dedicated sub-agent with full language context
-- Parallel sub-agents for large locales = 4-6x throughput
+**Critical:** Each sub-agent MUST apply translations before returning (see template below). If an agent only produces translations without applying, the work is lost.
 
 ---
 
@@ -254,6 +250,12 @@ d = json.load(open('locale/terms/english-ok.json'))
 print(f\"fil: {len(d.get('fil', []))} terms\")
 "
 ```
+
+---
+
+## Model selection & cost optimization
+
+**Use Haiku 4.5 for all runs.** See [`locale-translation-workflow.md`](../../.agents/skills/churchcrm/locale-translation-workflow.md#model-selection--cost-efficiency) for cross-provider comparison, cost matrix, and session results (43 locales, 97.6% coverage, $1.86 cost via batching).
 
 ---
 
