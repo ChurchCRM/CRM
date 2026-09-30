@@ -479,10 +479,6 @@ msgid "Photos"
 msgstr "Fotos"
 
 #: 
-msgid "Number of Columns"
-msgstr "Número de Columnas"
-
-#: 
 msgid "Paper Size"
 msgstr "Tamaño del Papel"
 
@@ -846,10 +842,6 @@ msgstr "Borrar foto"
 #: 
 msgid "Timeline"
 msgstr "Línea de Tiempo"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Promesas y pagos"
 
 #: 
 msgid "Value"
@@ -12752,10 +12744,6 @@ msgstr "Total de quioscos"
 #: 
 msgid "Upcoming Events"
 msgstr "Próximos eventos"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL http(s) absoluta del logotipo de la parroquia que se muestra en las plantillas de correo electrónico (y se reutilizará en otros lugares en el futuro). Para una mejor visualización en los distintos clientes de correo, utilice una imagen de banner amplia con una proporción aproximada de 3,5:1 (por ejemplo, 350×100 px), PNG o JPG, servida mediante HTTPS. Déjelo en blanco o introduzca un valor no válido para utilizar el logotipo predeterminado de ChurchCRM."
 
 #: 
 msgid "An option with that name already exists"

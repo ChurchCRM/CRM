@@ -70,9 +70,5 @@ test-results
 .claude/settings.json
 cy.log
 
-# Obsidian machine-local workspace state (not shared config)
-knowledge-vault/.obsidian/workspace.json
-knowledge-vault/.obsidian/workspace-mobile.json
-knowledge-vault/.obsidian/plugins/
 /.obsidian
 .claude/settings.local.json

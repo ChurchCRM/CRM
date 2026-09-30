@@ -495,11 +495,6 @@ msgstr "Fotografii"
 
 #: 
 #, fuzzy
-msgid "Number of Columns"
-msgstr "Număr de coloane"
-
-#: 
-#, fuzzy
 msgid "Paper Size"
 msgstr "Dimensiune hartie"
 
@@ -871,10 +866,6 @@ msgstr "Ștergeți Foto"
 #: 
 msgid "Timeline"
 msgstr "Linie de timp"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Angajamente și plăți"
 
 #: 
 msgid "Value"
@@ -12797,10 +12788,6 @@ msgstr "Total chioșcuri"
 #: 
 msgid "Upcoming Events"
 msgstr "Evenimente viitoare"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL absolut http(s) al logo-ului bisericii afișat în șabloanele de e-mail (și reutilizat în altă parte în viitor). Pentru cea mai bună redare în clienții de e-mail, utilizați o imagine banner largă cu un raport de aspect de aproximativ 3,5:1 (de exemplu 350×100 px), PNG sau JPG, servit prin HTTPS. Lăsați necompletat sau introduceți o valoare invalidă pentru a reveni la logo-ul implicit ChurchCRM."
 
 #: 
 msgid "An option with that name already exists"

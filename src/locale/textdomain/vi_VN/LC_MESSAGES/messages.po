@@ -490,10 +490,6 @@ msgid "Photos"
 msgstr "Ảnh"
 
 #: 
-msgid "Number of Columns"
-msgstr "Số lượng các cột"
-
-#: 
 msgid "Paper Size"
 msgstr "Kích thước trang giấy"
 
@@ -857,10 +853,6 @@ msgstr "Xóa hình ảnh"
 #: 
 msgid "Timeline"
 msgstr "Dòng thời gian"
-
-#: 
-msgid "Pledges and Payments"
-msgstr "Cam kết và Thanh toán"
 
 #: 
 msgid "Value"
@@ -12722,10 +12714,6 @@ msgstr "Tổng số Kiosk"
 #: 
 msgid "Upcoming Events"
 msgstr "Sự kiện sắp tới"
-
-#: 
-msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
-msgstr "URL tuyệt đối http(s) của logo nhà thờ được hiển thị trong các mẫu email (và sẽ được sử dụng lại ở nơi khác trong tương lai). Để hiển thị tốt nhất trên các ứng dụng email, hãy dùng hình ảnh biểu ngữ rộng với tỷ lệ khoảng 3,5:1 (ví dụ 350×100 px), định dạng PNG hoặc JPG, phục vụ qua HTTPS. Để trống hoặc nhập giá trị không hợp lệ để sử dụng logo ChurchCRM mặc định."
 
 #: 
 msgid "An option with that name already exists"
