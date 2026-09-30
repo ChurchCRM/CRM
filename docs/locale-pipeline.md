@@ -2,8 +2,6 @@
 
 How new UI strings become translations in every supported language before a release.
 
-All workflows, branches and the rules they follow: [github-actions.md](github-actions.md).
-
 **Goal:** every locale in `src/locale/locales.json` is fully translated for every release. The marketing site's languages do not rank or exclude CRM locales.
 
 ## Two flows

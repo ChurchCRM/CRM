@@ -10,9 +10,6 @@ on:
         required: true
         type: string
 
-permissions:
-  contents: read
-
 concurrency:
   group: docker-release
   cancel-in-progress: false
