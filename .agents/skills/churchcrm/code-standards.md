@@ -28,3 +28,13 @@ Do not `(int)` a string slug getter.
 ## SystemConfig Settings (Frozen)
 
 **Do not add new settings to `SystemConfig::buildConfigs()`.** The old-style settings system is frozen. All new admin settings belong in their respective feature area **dashboards** (`settingsPanel` divs like `#peopleSettings`, `#financialSettings`) with explicit `ConfigItem` definitions **omitted** from `buildCategories()`. See `configuration-management.md` and examples: `bEnableSelfRegistration`, `bHideDeceasedFromDirectory`.
+
+## Admin Page Headers
+
+All new admin pages must follow this pattern for consistent navigation and styling. No duplicate titles; single source: the page header.
+
+**Route handler:** Pass breadcrumbs, title, subtitle via `PageHeader::breadcrumbs([...])` and `$pageArgs`.
+
+**View:** Render page-header with breadcrumbs, single title, subtitle. Use `$aBreadcrumbs`, `$sPageTitle`, `$sPageSubtitle` variables.
+
+See `src/admin/views/feature-toggles.php` and `src/admin/routes/system.php` (Feature Toggles page) for pattern example.
