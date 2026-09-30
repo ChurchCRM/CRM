@@ -18765,6 +18765,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "두 가지 기회의 자원봉사자"
 
 #: 
+msgid "YTD"
+msgstr "연초 누계"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD 지불됨"
 

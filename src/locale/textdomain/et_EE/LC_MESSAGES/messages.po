@@ -18141,6 +18141,10 @@ msgid "Last seen"
 msgstr "Viimati nähtud"
 
 #: 
+msgid "Link"
+msgstr "Link"
+
+#: 
 msgid "Link added successfully"
 msgstr "Link lisatud edukalt"
 

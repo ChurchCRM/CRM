@@ -18245,6 +18245,10 @@ msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0
 msgstr "Numero di giorni a disposizione degli utenti per attivare l'autenticazione a due fattori dopo che diventa obbligatoria. Impostare a 0 per renderla obbligatoria immediatamente. Ridurre un periodo di tolleranza già attivo può bloccare immediatamente l'accesso agli utenti."
 
 #: 
+msgid "Offline"
+msgstr "Offline"
+
+#: 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
 msgstr "Esegui questa operazione solo dopo aver risolto il problema di fondo. Dovrai comunque fare clic su Abilita prima che il plugin torni a funzionare."
 

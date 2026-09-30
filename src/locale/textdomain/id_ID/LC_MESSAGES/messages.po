@@ -16891,6 +16891,10 @@ msgid "Count unique installs"
 msgstr "Hitung instalasi unik"
 
 #: 
+msgid "Data"
+msgstr "Data"
+
+#: 
 msgid "Data is processed by PostHog on EU infrastructure."
 msgstr "Data diproses oleh PostHog pada infrastruktur EU."
 
@@ -18758,6 +18762,10 @@ msgstr "Peluang Relawan"
 #: 
 msgid "Volunteers for Two Opportunities"
 msgstr "Relawan untuk Dua Peluang"
+
+#: 
+msgid "YTD"
+msgstr "Sejak awal tahun"
 
 #: 
 msgid "YTD Paid"

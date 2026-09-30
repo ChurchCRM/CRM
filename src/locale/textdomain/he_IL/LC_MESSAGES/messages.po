@@ -18784,6 +18784,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "מתנדבים לשתי הזדמנויות"
 
 #: 
+msgid "YTD"
+msgstr "מתחילת השנה"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD שולם"
 

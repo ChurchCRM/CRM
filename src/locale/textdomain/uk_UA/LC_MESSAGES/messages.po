@@ -18765,3 +18765,71 @@ msgstr "Запустити звіт"
 msgid "Second Volunteer Opportunity"
 msgstr "Друга можливість для волонтера"
 
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "Відображається на бічній панелі, на сторінці входу та в електронних листах. Завантаження логотипа замінює брендинг ChurchCRM скрізь, де він з’являється."
+
+#: 
+msgid "Single Pages"
+msgstr "Окремі сторінки"
+
+#: 
+msgid "Tax Documents"
+msgstr "Податкові документи"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "Не вдалося надіслати лист із податковим документом. Перевірте налаштування поштового сервера."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "Дві сторінки половинного розміру поруч на кожному аркуші в альбомній орієнтації в порядку буклета. Друкуйте з обох боків із перегортанням по короткому краю, потім складіть стос навпіл. Стовпці рахуються на півсторінки."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "Неможливо надіслати податковий документ електронною поштою: за цей рік не знайдено даних про платежі."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "Неможливо надіслати податковий документ електронною поштою: для цієї родини не вказано адресу електронної пошти."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "Не вдалося визначити ім’я хоста сервера OpenLP. Перевірте адресу та мережеве з’єднання."
+
+#: 
+msgid "Upload"
+msgstr "Вивантажити"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "Використовується стандартний логотип ChurchCRM"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "Переглянути всі пожертви родини"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Можливість служіння"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "Волонтери для двох можливостей служіння"
+
+#: 
+msgid "YTD"
+msgstr "З початку року"
+
+#: 
+msgid "YTD Paid"
+msgstr "Сплачено з початку року"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "на наявність помилок у той час, коли це сталося, а також завантажте й додайте відповідний файл журналу до вашого звіту на GitHub — це допоможе нам виправити проблему без додаткових запитань."
+
+#: 
+msgid "system logs"
+msgstr "системні журнали"
+

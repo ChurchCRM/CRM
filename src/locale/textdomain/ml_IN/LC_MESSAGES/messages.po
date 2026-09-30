@@ -18751,6 +18751,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "രണ്ട് അവസരങ്ങൾക്കായി സന്നദ്ധപരിചാരകർ"
 
 #: 
+msgid "YTD"
+msgstr "വർഷാരംഭം മുതൽ"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD നിരക്കിടപ്പ്"
 

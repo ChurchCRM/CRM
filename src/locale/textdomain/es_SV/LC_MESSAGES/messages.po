@@ -18072,6 +18072,10 @@ msgid "Identify command sent"
 msgstr "Comando de identificación enviado"
 
 #: 
+msgid "Individual"
+msgstr "Individual"
+
+#: 
 msgid "Internal: last date and time the background timer jobs completed (YYYY-MM-DD HH:MM:SS). Do not edit manually."
 msgstr "Interno: fecha y hora en que se completaron por última vez las tareas programadas en segundo plano (AAAA-MM-DD HH:MM:SS). No editar manualmente."
 
@@ -18746,6 +18750,10 @@ msgstr "Oportunidad de Voluntariado"
 #: 
 msgid "Volunteers for Two Opportunities"
 msgstr "Voluntarios para Dos Oportunidades"
+
+#: 
+msgid "YTD"
+msgstr "Acumulado anual"
 
 #: 
 msgid "YTD Paid"

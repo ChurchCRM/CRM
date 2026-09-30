@@ -18794,6 +18794,10 @@ msgid "Volunteers for Two Opportunities"
 msgstr "ሁለት ዕድለ ለ በስ volunteers ታች"
 
 #: 
+msgid "YTD"
+msgstr "ከዓመቱ መጀመሪያ እስከ አሁን"
+
+#: 
 msgid "YTD Paid"
 msgstr "YTD ክፍያ"
 
