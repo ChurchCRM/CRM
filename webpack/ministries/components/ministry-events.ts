@@ -118,6 +118,8 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
   const reuseNeeds = new Map<number, VolunteerRequirementRow[]>();
   /** The schedule that found no events, when the dialog was opened from its warning (D30). */
   let prefillScheduleName: string | null = null;
+  /** Which open the schedules fetched for the hint belong to. */
+  let openSequence = 0;
 
   const root = (): string => window.CRM?.root ?? "";
   const pastShown = (): boolean => byId<HTMLInputElement>("ministry-events-past")?.checked ?? false;
@@ -758,6 +760,12 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
   // ── Open and save ─────────────────────────────────────────────────────────
 
   async function openModal(series: boolean, prefill?: MinistryEventPrefill): Promise<void> {
+    // Only for the hint, so the dialog does not wait for it: the server reuses a following
+    // schedule whether or not the hint was shown.
+    const opening = ++openSequence;
+    const schedulesRequest = listSchedules(options.ministryId())
+      .then((data) => data.schedules)
+      .catch((): VolunteerSchedule[] => []);
     try {
       await options.ensureContext();
       await loadChoices();
@@ -766,10 +774,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
 
       return;
     }
-    // Only for the hint: without them the server still reuses a following schedule.
-    ministrySchedules = await listSchedules(options.ministryId())
-      .then((data) => data.schedules)
-      .catch(() => []);
+    ministrySchedules = [];
     reuseNeeds.clear();
     reuseScheduleId = 0;
 
@@ -837,6 +842,13 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       { once: true },
     );
     modal("ministryEventModal")?.show();
+
+    void schedulesRequest.then((rows) => {
+      if (opening === openSequence) {
+        ministrySchedules = rows;
+        syncReuse();
+      }
+    });
   }
 
   function payload(): VolunteerMinistryEventInput | string {
