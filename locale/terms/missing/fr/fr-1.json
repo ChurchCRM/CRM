@@ -59,7 +59,7 @@
   "Unable to email tax document: no payment data found for that year.": "Impossible d'envoyer par courrier électronique le document fiscal : aucune donnée de paiement trouvée pour cette année.",
   "Unable to email tax document: this family has no email address on file.": "Impossible d'envoyer par courrier électronique le document fiscal : cette famille n'a pas d'adresse e-mail dans le dossier.",
   "Unable to resolve OpenLP server hostname. Check the address and your network connection.": "Impossible de résoudre le nom d'hôte du serveur OpenLP. Vérifiez l'adresse et votre connexion réseau.",
-  "Upload": "Télécharger",
+  "Upload": "Téléverser",
   "Using default ChurchCRM logo": "Utilisation du logo par défaut de ChurchCRM",
   "View Full Family Giving": "Voir les dons complets de la famille",
   "Volunteer Opportunity": "Opportunité de bénévolat",

@@ -11,7 +11,7 @@
   "Choose...": "選択してください...",
   "Church Logo": "教会ロゴ",
   "Columns per Page": "ページあたりの列",
-  "Dear %s Family,\n\nPlease find your %d giving statement from %s attached to this email.\n\nIf you have any questions, please contact the church office.\n\nThank you for your generosity.": "親愛なる%s家族へ、\n\n%sからの%d件の献金報告書をこのメールに添付してありますので、ご確認ください。\n\nご質問がある場合は、教会事務所にお問い合わせください。\n\nご寄付ありがとうございました。",
+  "Dear %s Family,\n\nPlease find your %d giving statement from %s attached to this email.\n\nIf you have any questions, please contact the church office.\n\nThank you for your generosity.": "親愛なる%1$s家族へ、\n\n%3$sからの%2$d件の献金報告書をこのメールに添付してありますので、ご確認ください。\n\nご質問がある場合は、教会事務所にお問い合わせください。\n\nご寄付ありがとうございました。",
   "Download CSV": "CSVをダウンロード",
   "Email %d Tax Doc": "%d件の税務文書をメール送信",
   "Enable or disable the Finance module and sidebar menu.": "財務モジュールとサイドバーメニューを有効または無効にします。",
