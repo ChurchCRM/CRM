@@ -198,8 +198,8 @@ describe("Volunteer v2 D29 — the Sunday School switch", () => {
         admin("POST", `${URL}/teams/${teamId}`, { classGroupId: classA }).then((resp) => {
             expect(resp.body.team.classGroupId).to.eq(classA);
         });
-        admin("POST", `${URL}/ministries/${ministryId}/schedules`, classSchedule("Class A meetings", classA), 201);
         admin("POST", `${URL}/ministries/${ministryId}/events`, classEvent("Class A", classA), 201);
+        admin("POST", `${URL}/ministries/${ministryId}/schedules`, classSchedule("Class A meetings", classA), 201);
 
         admin("POST", `${URL}/ministries/${ministryId}`, { sundaySchool: false }, 409).then((resp) => {
             expect(resp.body.message).to.contain(`${PREFIX} Adult Ministry Team`);
@@ -219,7 +219,7 @@ describe("Volunteer v2 D29 — the Sunday School switch", () => {
                 const scheduleId = rows[0].id;
                 admin("POST", `${URL}/schedules/${scheduleId}`, { name: `${PREFIX} Class A meetings (renamed)` });
                 admin("POST", `${URL}/schedules/${scheduleId}`, { groupId: classB }, 400);
-                admin("POST", `${URL}/schedules/${scheduleId}`, { linkMode: "ministry" });
+                admin("POST", `${URL}/schedules/${scheduleId}`, { linkMode: "ministry", titleFilter: `${PREFIX} No class` });
                 admin("POST", `${URL}/schedules/${scheduleId}`, { linkMode: "class", groupId: classA }, 400);
             },
         );
@@ -227,7 +227,8 @@ describe("Volunteer v2 D29 — the Sunday School switch", () => {
 
     it("turns the switch on in the upgrade for a ministry that already staffs a class", () => {
         cy.readFile(UPGRADE_SCRIPT).then((script) => {
-            const update = script.slice(script.lastIndexOf("UPDATE `volunteer_ministry_vmin`")).trim().replace(/;$/, "");
+            const start = script.lastIndexOf("UPDATE `volunteer_ministry_vmin`");
+            const update = script.slice(start, script.indexOf(";", start)).trim();
             admin("POST", `${URL}/ministries/${ministryId}`, { sundaySchool: true });
             admin("POST", `${URL}/teams/${teamId}`, { classGroupId: classA });
             dbOk("UPDATE volunteer_ministry_vmin SET vmin_SundaySchool = 0 WHERE vmin_ID = ?", [ministryId]);

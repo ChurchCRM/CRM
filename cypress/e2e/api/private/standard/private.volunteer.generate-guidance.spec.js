@@ -7,6 +7,10 @@
  *
  * Personas (seed.sql): `admin.api.key` (administrator). The ministry comes from the real create
  * API with the Sunday School switch on, so its schedules may follow a class.
+ *
+ * Since D31 a schedule is only created while an upcoming event matches, so every empty run here
+ * is one whose events lie beyond the dates it looks at — the scheduling horizon, a `through`, or
+ * a window that has ended.
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
@@ -14,7 +18,8 @@ const ADMIN_KEY = "admin.api.key";
 const POOL_MEMBER = 8;
 const CHURCH_SERVICE_TYPE = 1;
 const SUNDAY_SCHOOL_GROUP_TYPE = 4;
-const GENERATE_AHEAD_DAYS = 56;
+/** The default scheduling horizon, 8 weeks (D31): no run looks further ahead. */
+const HORIZON_DAYS = 56;
 
 const PREFIX = "VGEN30";
 const URL = "/api/ministries";
@@ -216,12 +221,13 @@ after(() => {
 // ── Generate explains an empty run ─────────────────────────────────────────
 
 describe("Volunteer v2 D30 — a Generate run that finds no events says what it looked for", () => {
-    it("names the class, and the dates looked at, when no event uses the class", () => {
+    it("names the class, and the dates looked at, when its meetings lie beyond the horizon", () => {
+        createEvents(oneEvent("Empty Class Later", HORIZON_DAYS + 14, { linkedGroupId: classes["Empty Class"] }));
         createSchedule({ name: "Empty Class", linkMode: "class", groupId: classes["Empty Class"] }).then((schedule) => {
             generate(schedule.id).then((result) => {
                 expect(result).to.include({ created: 0, existing: 0, noEvents: true });
                 expect(result.from).to.eq(isoDate(0));
-                expect(result.through).to.eq(isoDate(GENERATE_AHEAD_DAYS));
+                expect(result.through).to.eq(isoDate(HORIZON_DAYS));
                 expect(result.searched).to.include({
                     linkMode: "class",
                     groupId: classes["Empty Class"],
@@ -233,11 +239,12 @@ describe("Volunteer v2 D30 — a Generate run that finds no events says what it 
     });
 
     it("names the event type and title in event-type mode", () => {
+        createEvents(oneEvent("Later Service", 40));
         createSchedule({
             name: "Nothing Titled",
             linkMode: "event_type",
             eventTypeId: CHURCH_SERVICE_TYPE,
-            titleFilter: `${PREFIX} No Such Service`,
+            titleFilter: `${PREFIX} Later Service`,
         }).then((schedule) => {
             generate(schedule.id, { through: isoDate(30) }).then((result) => {
                 expect(result).to.include({ created: 0, existing: 0, noEvents: true, through: isoDate(30) });
@@ -245,7 +252,7 @@ describe("Volunteer v2 D30 — a Generate run that finds no events says what it 
                     linkMode: "event_type",
                     eventTypeId: CHURCH_SERVICE_TYPE,
                     eventTypeName: "Church Service",
-                    titleFilter: `${PREFIX} No Such Service`,
+                    titleFilter: `${PREFIX} Later Service`,
                     groupId: null,
                 });
             });
@@ -253,6 +260,7 @@ describe("Volunteer v2 D30 — a Generate run that finds no events says what it 
     });
 
     it("names the ministry and title in ministry mode", () => {
+        createEvents(oneEvent("VBS", HORIZON_DAYS + 14));
         createSchedule({ name: "No VBS", linkMode: "ministry", titleFilter: `${PREFIX} VBS` }).then((schedule) => {
             generate(schedule.id).then((result) => {
                 expect(result.noEvents).to.eq(true);
@@ -304,6 +312,7 @@ describe("Volunteer v2 D30 — Staff these events adds the events to the team's 
     let earlierOccurrenceId = 0;
 
     before(() => {
+        createEvents(oneEvent("Faith City Picnic", 12, { linkedGroupId: classes["Faith City"] }));
         createSchedule({
             name: "Faith City Teachers",
             linkMode: "class",
@@ -314,14 +323,10 @@ describe("Volunteer v2 D30 — Staff these events adds the events to the team's 
             requirements: [{ positionId: position, minCount: 2, maxCount: 2 }],
         }).then((schedule) => {
             classSchedule = schedule;
-            createEvents(oneEvent("Faith City Picnic", 12, { linkedGroupId: classes["Faith City"] })).then(() => {
-                generate(schedule.id).then((result) => {
-                    expect(result.created).to.eq(1);
-                    dbOk(`SELECT vocc_ID AS id FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?`, [schedule.id]).then(
-                        (rows) => {
-                            earlierOccurrenceId = Number(rows[0].id);
-                        },
-                    );
+            generate(schedule.id).then((result) => {
+                expect(result.created).to.eq(1);
+                dbOk(`SELECT vocc_ID AS id FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ?`, [schedule.id]).then((rows) => {
+                    earlierOccurrenceId = Number(rows[0].id);
                 });
             });
         });
@@ -392,6 +397,7 @@ describe("Volunteer v2 D30 — Staff these events adds the events to the team's 
     });
 
     it("adds a series with no class to the team's ministry schedule with exactly that title, leaving an open end open", () => {
+        createEvents(oneEvent("Workday", 1));
         createSchedule({ name: "Workday Crew", linkMode: "ministry", titleFilter: `${PREFIX} Workday` }).then((schedule) => {
             createEvents(weekly("Workday", 2, 30, { staff: { teamId: teamA } })).then((made) => {
                 expect(made.reusedSchedule).to.eq(true);
@@ -432,6 +438,7 @@ describe("Volunteer v2 D30 — Staff these events adds the events to the team's 
     });
 
     it("never reuses an inactive schedule", () => {
+        createEvents(oneEvent("Resting First", 1, { linkedGroupId: classes["Resting Class"] }));
         createSchedule({ name: "Resting", linkMode: "class", groupId: classes["Resting Class"], active: false }).then((resting) => {
             createEvents(weekly("Resting", 3, 30, { linkedGroupId: classes["Resting Class"], staff: { teamId: teamA } })).then(
                 (made) => {

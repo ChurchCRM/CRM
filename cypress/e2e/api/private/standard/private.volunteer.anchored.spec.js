@@ -414,15 +414,12 @@ describe("Volunteer v2 — this ministry's events (ministry mode, D22)", () => {
         );
     });
 
-    it("follows every active event the ministry owns when no title is chosen", () => {
-        createSchedule(scheduleBody({ name: `${PREFIX} Everything`, linkMode: "ministry" })).then((created) => {
-            generate(created.id).then((result) => {
-                expect(result.created).to.eq(3);
-            });
-            occurrencesOf(created.id).then((rows) => {
-                expect(rows.map((row) => row.eventId)).to.include(events.picnicA);
-            });
-        });
+    it("refuses a schedule that names no title: there is no 'any of this ministry's events' (D31)", () => {
+        api(ADMIN_KEY, "POST", `${URL}/ministries/${ministryA}/schedules`, scheduleBody({ name: `${PREFIX} Everything`, linkMode: "ministry" }), 400).then(
+            (resp) => {
+                expect(resp.body.message).to.eq("Choose the event this schedule follows");
+            },
+        );
     });
 
     it("lists the ministry's upcoming titles for the title picker", () => {
@@ -537,13 +534,15 @@ describe("Volunteer v2 — the volunteers' times move with the event (D21)", () 
     });
 
     it("accepts offsets up to 720 minutes either way and refuses anything else", () => {
-        createSchedule(scheduleBody({ name: `${PREFIX} Far`, linkMode: "ministry", startOffsetMinutes: -720, endOffsetMinutes: 720 }));
+        createSchedule(
+            scheduleBody({ name: `${PREFIX} Far`, linkMode: "ministry", titleFilter: WORKDAY_TITLE, startOffsetMinutes: -720, endOffsetMinutes: 720 }),
+        );
         [721, -721, 1.5, "abc", true].forEach((bad) => {
             api(
                 ADMIN_KEY,
                 "POST",
                 `${URL}/ministries/${ministryA}/schedules`,
-                scheduleBody({ name: `${PREFIX} Bad Offset`, linkMode: "ministry", startOffsetMinutes: bad }),
+                scheduleBody({ name: `${PREFIX} Bad Offset`, linkMode: "ministry", titleFilter: WORKDAY_TITLE, startOffsetMinutes: bad }),
                 400,
             );
         });
@@ -551,7 +550,7 @@ describe("Volunteer v2 — the volunteers' times move with the event (D21)", () 
             ADMIN_KEY,
             "POST",
             `${URL}/ministries/${ministryA}/schedules`,
-            scheduleBody({ name: `${PREFIX} Bad Offset`, linkMode: "ministry", endOffsetMinutes: -800 }),
+            scheduleBody({ name: `${PREFIX} Bad Offset`, linkMode: "ministry", titleFilter: WORKDAY_TITLE, endOffsetMinutes: -800 }),
             400,
         );
     });
@@ -579,7 +578,7 @@ describe("Volunteer v2 — the retired standalone fields are refused (D20)", () 
     });
 
     it("refuses them on an update as well", () => {
-        createSchedule(scheduleBody({ name: `${PREFIX} Updatable`, linkMode: "ministry" })).then((created) => {
+        createSchedule(scheduleBody({ name: `${PREFIX} Updatable`, linkMode: "ministry", titleFilter: WORKDAY_TITLE })).then((created) => {
             api(ADMIN_KEY, "POST", `${URL}/schedules/${created.id}`, { startTime: "10:00" }, 400);
             api(ADMIN_KEY, "POST", `${URL}/schedules/${created.id}`, { linkMode: "event" }, 400);
             // Switching between the three editable modes is fine, and clears what the old one used.
