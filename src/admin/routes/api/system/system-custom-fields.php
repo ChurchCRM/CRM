@@ -2,25 +2,24 @@
 
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/system/custom-fields', function (RouteCollectorProxy $group): void {
+$app->group('/api/system/custom-fields', function (RouteCollectorProxy $group): void {
     $group->get('/person', 'getPersonFieldsByType');
     $group->get('/person/', 'getPersonFieldsByType');
-})->add(AdminRoleAuthMiddleware::class);
+});
 
-$app->group('/system/properties', function (RouteCollectorProxy $group): void {
+$app->group('/api/system/properties', function (RouteCollectorProxy $group): void {
     $group->get('/person', 'getPersonPropertyOptions');
     $group->get('/person/', 'getPersonPropertyOptions');
-})->add(AdminRoleAuthMiddleware::class);
+});
 
 /**
  * @OA\Get(
- *     path="/system/custom-fields/person",
+ *     path="/admin/api/system/custom-fields/person",
  *     summary="Get custom person fields filtered by type ID (Admin role required)",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},
@@ -58,7 +57,7 @@ function getPersonFieldsByType(Request $request, Response $response, array $args
 
 /**
  * @OA\Get(
- *     path="/system/properties/person",
+ *     path="/admin/api/system/properties/person",
  *     summary="Get person property definitions as id/value pairs for settings dropdowns (Admin role required)",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},
