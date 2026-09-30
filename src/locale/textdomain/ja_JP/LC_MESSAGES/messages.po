@@ -18482,3 +18482,271 @@ msgstr "メールクライアントに対して宛先が多すぎます({{total}
 msgid "{{minutes}} min left"
 msgstr "残り{{minutes}}分"
 
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d件の税務文書が家族に正常にメール送信されました。"
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d 献金報告書"
+
+#: 
+msgid "All classifications"
+msgstr "すべての分類"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "管理者の方は、以下もご確認ください:"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "誕生日に人々に自動的に誕生日お祝いメールを送信します。"
+
+#: 
+msgid "Birthday Emails"
+msgstr "誕生日メール"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "誕生日、記念日、ボランティア、および分類フィルター付きの他の人物リスト"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "このレポートを実行するために%sを選択してください。"
+
+#: 
+msgid "Choose events"
+msgstr "イベントを選択"
+
+#: 
+msgid "Choose..."
+msgstr "選択してください..."
+
+#: 
+msgid "Church Logo"
+msgstr "教会ロゴ"
+
+#: 
+msgid "Columns per Page"
+msgstr "ページあたりの列"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "親愛なる%1$s家族へ、\n"
+"\n"
+"%3$sからの%2$d件の献金報告書をこのメールに添付してありますので、ご確認ください。\n"
+"\n"
+"ご質問がある場合は、教会事務所にお問い合わせください。\n"
+"\n"
+"ご寄付ありがとうございました。"
+
+#: 
+msgid "Download CSV"
+msgstr "CSVをダウンロード"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "%d件の税務文書をメール送信"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "財務モジュールとサイドバーメニューを有効または無効にします。"
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "募金活動モジュールを有効または無効にします。"
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "教会ロゴの削除に失敗しました"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "教会ロゴのアップロードに失敗しました"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "メールテンプレートのフォールバックロゴURL。教会情報ページでチャーチロゴがアップロードされていない場合にのみ使用されます。アプリケーション自体のページはこの設定を無視し、常にアップロードされたロゴまたはデフォルトのChurchCRMロゴを使用します。絶対http(s)URLである必要があります。メールクライアント全体での最適なレンダリングのため、約3.5:1のアスペクト比（たとえば350×100 px）の幅広いバナー画像をPNGまたはJPGで使用し、HTTPSで提供してください。空白のままにするか、無効な値を入力してデフォルトのChurchCRMロゴにフォールバックしてください。"
+
+#: 
+msgid "Finance Module"
+msgstr "財務モジュール"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "イベントに参加しなかった人を検索"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "2つの特定のボランティア機会コードに一致するボランティアを検索"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "第1ボランティア機会"
+
+#: 
+msgid "Folded Booklet"
+msgstr "折り畳みパンフレット"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "募金活動モジュール"
+
+#: 
+msgid "Giving History"
+msgstr "献金履歴"
+
+#: 
+msgid "Last Gift"
+msgstr "最後の贈り物"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "すべての分類で空白のままにします。"
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "家族プロフィールごとに表示する税務年度文書の最大数（0 =制限なし）"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "家族ごとに表示される最大税務年数"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "会員記念日"
+
+#: 
+msgid "Missing People"
+msgstr "行方不明者"
+
+#: 
+msgid "No giving history found."
+msgstr "献金履歴が見つかりません。"
+
+#: 
+msgid "No people match these filters."
+msgstr "これらのフィルターに一致する人がいません。"
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "1ページの1シート、縦向き。"
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "httpおよびhttpsスキームのみが許可されます。"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG、JPG、GIF、またはWebP。約3.5:1の幅広いバナー（たとえば700×200）が最適です。透明なPNGが推奨されます。"
+
+#: 
+msgid "Page Layout"
+msgstr "ページレイアウト"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "特定の月に参加した人々"
+
+#: 
+msgid "Pledged"
+msgstr "誓約された"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "%d件の税務文書を印刷"
+
+#: 
+msgid "Queries"
+msgstr "クエリー"
+
+#: 
+msgid "Recent Friends"
+msgstr "最近の友人"
+
+#: 
+msgid "Report not found"
+msgstr "レポートが見つかりません"
+
+#: 
+msgid "Run Report"
+msgstr "レポートを実行"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "第2ボランティア機会"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "サイドバー、ログインページ、メールに表示されます。ロゴをアップロードすると、表示されるすべての場所でChurchCRMブランディングが置き換わります。"
+
+#: 
+msgid "Single Pages"
+msgstr "個別ページ"
+
+#: 
+msgid "Tax Documents"
+msgstr "税務文書"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "税務文書のメール送信に失敗しました。メールサーバーの設定を確認してください。"
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "各横向きシートで2つの半ページを並べて、パンフレット順に配置します。「短辺を反転」して両面印刷してから、スタックを半分に折ります。列は半ページごとにカウントされます。"
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "税務文書をメール送信できません：その年の支払いデータが見つかりません。"
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "税務文書をメール送信できません：この家族のファイルにメールアドレスがありません。"
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "OpenLPサーバーのホスト名を解決できません。アドレスとネットワーク接続を確認してください。"
+
+#: 
+msgid "Upload"
+msgstr "アップロード"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "デフォルトのChurchCRMロゴを使用"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "完全な家族献金を表示"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "ボランティア機会"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "2つの機会のためのボランティア"
+
+#: 
+msgid "YTD"
+msgstr "年初来"
+
+#: 
+msgid "YTD Paid"
+msgstr "年初来支払済み"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "これが発生した時期のエラーについては、関連するログファイルをダウンロードしてGitHubの問題に添付してください。フォローアップの質問をせずに問題を修正するのに役立ちます。"
+
+#: 
+msgid "system logs"
+msgstr "システムログ"
+

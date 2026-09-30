@@ -18497,3 +18497,267 @@ msgstr "ईमेल क्लाइंट के लिए बहुत अध�
 msgid "{{minutes}} min left"
 msgstr "{{minutes}} मिनट शेष"
 
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d कर दस्तावेज़ परिवार को सफलतापूर्वक ईमेल किए गए।"
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d दान विवरण"
+
+#: 
+msgid "All classifications"
+msgstr "सभी वर्गीकरण"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "प्रशासक के रूप में, कृपया की भी समीक्षा करें"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "जन्मदिन पर लोगों को स्वचालित रूप से जन्मदिन की बधाई वाला ईमेल भेजें।"
+
+#: 
+msgid "Birthday Emails"
+msgstr "जन्मदिन ईमेल"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "जन्मदिन, वर्षगांठ, स्वयंसेवक और अन्य लोगों की सूची वर्गीकरण फ़िल्टर के साथ"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "इस रिपोर्ट को चलाने के लिए %s चुनें।"
+
+#: 
+msgid "Choose events"
+msgstr "ईवेंट चुनें"
+
+#: 
+msgid "Choose..."
+msgstr "चुनें..."
+
+#: 
+msgid "Church Logo"
+msgstr "चर्च लोगो"
+
+#: 
+msgid "Columns per Page"
+msgstr "प्रति पृष्ठ स्तंभ"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "प्रिय %1$s परिवार,\n"
+"\n"
+"कृपया इस ईमेल में %3$s से आपके %2$d दान विवरण को संलग्न पाएं।\n"
+"\n"
+"यदि आपके कोई प्रश्न हैं, तो कृपया चर्च कार्यालय से संपर्क करें।\n"
+"\n"
+"आपकी उदारता के लिए धन्यवाद।"
+
+#: 
+msgid "Download CSV"
+msgstr "CSV डाउनलोड करें"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "%d कर दस्तावेज़ ईमेल करें"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "वित्त मॉड्यूल और साइडबार मेनू को सक्षम या अक्षम करें।"
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "धनराशि संग्रह मॉड्यूल को सक्षम या अक्षम करें।"
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "चर्च लोगो को हटाने में विफल"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "चर्च लोगो अपलोड करने में विफल"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "ईमेल टेम्पलेट के लिए फ़ॉलबैक लोगो URL, केवल तभी उपयोग किया जाता है जब चर्च की जानकारी पृष्ठ पर कोई चर्च लोगो अपलोड नहीं किया गया हो। एप्लिकेशन के अपने पृष्ठ इस सेटिंग को अनदेखा करते हैं और हमेशा अपलोड किए गए लोगो या डिफ़ॉल्ट ChurchCRM लोगो का उपयोग करते हैं। एक निरपेक्ष http(s) URL होना चाहिए। ईमेल क्लाइंट्स में सर्वोत्तम प्रतिपादन के लिए, लगभग 3.5:1 पहलू अनुपात (उदाहरण के लिए 350×100 px) पर एक विस्तृत बैनर छवि का उपयोग करें, HTTPS पर परोसी गई PNG या JPG। डिफ़ॉल्ट ChurchCRM लोगो पर वापस जाने के लिए खाली छोड़ें या एक अमान्य मान दर्ज करें।"
+
+#: 
+msgid "Finance Module"
+msgstr "वित्त मॉड्यूल"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "उन लोगों को खोजें जो किसी ईवेंट में नहीं आए"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "दो विशिष्ट अवसर कोड से मेल खाने वाले स्वयंसेवकों को खोजें"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "पहला स्वयंसेवक अवसर"
+
+#: 
+msgid "Folded Booklet"
+msgstr "तह की गई पुस्तिका"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "धनराशि संग्रह मॉड्यूल"
+
+#: 
+msgid "Giving History"
+msgstr "दान का इतिहास"
+
+#: 
+msgid "Last Gift"
+msgstr "अंतिम उपहार"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "सभी वर्गीकरण के लिए खाली छोड़ें।"
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "प्रति परिवार प्रोफ़ाइल दिखाने के लिए कर वर्ष दस्तावेज़ों की अधिकतम संख्या (0 = कोई सीमा नहीं)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "प्रति परिवार दिखाए गए अधिकतम कर वर्ष"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "सदस्यता वर्षगांठ"
+
+#: 
+msgid "Missing People"
+msgstr "लापता लोग"
+
+#: 
+msgid "No giving history found."
+msgstr "कोई दान का इतिहास नहीं मिला।"
+
+#: 
+msgid "No people match these filters."
+msgstr "कोई भी व्यक्ति इन फ़िल्टर से मेल नहीं खाता।"
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "प्रति शीट एक निर्देशिका पृष्ठ, पोर्ट्रेट।"
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "केवल http और https योजनाएं अनुमति हैं।"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF या WebP। लगभग 3.5:1 (उदाहरण के लिए 700x200) का एक विस्तृत बैनर सर्वोत्तम काम करता है; पारदर्शी PNG पसंदीदा।"
+
+#: 
+msgid "Page Layout"
+msgstr "पृष्ठ लेआउट"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "जो लोग किसी विशेष महीने में शामिल हुए"
+
+#: 
+msgid "Pledged"
+msgstr "प्रतिज्ञा की गई"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "%d कर दस्तावेज़ प्रिंट करें"
+
+#: 
+msgid "Queries"
+msgstr "क्वेरी"
+
+#: 
+msgid "Recent Friends"
+msgstr "हाल के मित्र"
+
+#: 
+msgid "Report not found"
+msgstr "रिपोर्ट नहीं मिली"
+
+#: 
+msgid "Run Report"
+msgstr "रिपोर्ट चलाएं"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "दूसरा स्वयंसेवक अवसर"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "साइडबार में, लॉगिन पृष्ठ पर और ईमेल में दिखाया गया। एक लोगो अपलोड करना ChurchCRM ब्रांडिंग को हर जगह बदल देता है।"
+
+#: 
+msgid "Single Pages"
+msgstr "एकल पृष्ठ"
+
+#: 
+msgid "Tax Documents"
+msgstr "कर दस्तावेज़"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "कर दस्तावेज़ ईमेल भेजने में विफल। कृपया अपनी ईमेल सर्वर सेटिंग की जांच करें।"
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "प्रत्येक लैंडस्केप शीट पर एक दूसरे के बगल में दो आधे आकार के पृष्ठ, पुस्तिका क्रम में। \"छोटी किनारे पर फ़्लिप\" के साथ दोनों ओर प्रिंट करें, फिर स्टैक को आधा में मोड़ें। स्तंभ प्रति आधे पृष्ठ की गणना की जाती है।"
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "कर दस्तावेज़ ईमेल करने में असमर्थ: उस वर्ष के लिए कोई भुगतान डेटा नहीं मिला।"
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "कर दस्तावेज़ ईमेल करने में असमर्थ: इस परिवार के पास फ़ाइल में कोई ईमेल पता नहीं है।"
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "OpenLP सर्वर होस्टनाम को हल करने में असमर्थ। पता और अपने नेटवर्क कनेक्शन की जांच करें।"
+
+#: 
+msgid "Upload"
+msgstr "अपलोड"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "डिफ़ॉल्ट ChurchCRM लोगो का उपयोग करते हुए"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "पूर्ण परिवार दान देखें"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "स्वयंसेवक अवसर"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "दो अवसरों के लिए स्वयंसेवक"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD भुगतान"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "इस समय के आसपास त्रुटियों के लिए, और अपने GitHub समस्या में प्रासंगिक लॉग फ़ाइल को डाउनलोड और संलग्न करें - यह हमें अनुवर्ती प्रश्नों के बिना समस्या को ठीक करने में मदद करता है।"
+
+#: 
+msgid "system logs"
+msgstr "सिस्टम लॉग"
+

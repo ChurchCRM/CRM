@@ -18531,3 +18531,267 @@ msgstr "יותר מדי נמענים עבור תוכנת הדוא\"ל ({{total}}
 msgid "{{minutes}} min left"
 msgstr "נותרו {{minutes}} דקות"
 
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d מסמכי מס נשלחו למשפחה בהצלחה."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d הצהרת תרומה"
+
+#: 
+msgid "All classifications"
+msgstr "כל הסיווגים"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "כמנהל, אנא בדוק גם את"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "שלח באופן אוטומטי דוא\"ל ברכת יום הולדת לאנשים ביום הולדתם."
+
+#: 
+msgid "Birthday Emails"
+msgstr "דוא\"ל יום הולדת"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "ימי הולדת, יום שנה, מתנדבים וכן רשימות אנשים אחרות עם מסנן סיווג"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "בחר %s כדי להריץ דוח זה."
+
+#: 
+msgid "Choose events"
+msgstr "בחר אירועים"
+
+#: 
+msgid "Choose..."
+msgstr "בחר..."
+
+#: 
+msgid "Church Logo"
+msgstr "לוגו כנסיה"
+
+#: 
+msgid "Columns per Page"
+msgstr "עמודות לכל עמוד"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "משפחה %s יקרה,\n"
+"\n"
+"אנא מצא את הצהרת התרומה %d שלך מ-%s המצורפת לדוא\"ל זה.\n"
+"\n"
+"אם יש לך שאלות כלשהן, אנא פנה למשרד הכנסיה.\n"
+"\n"
+"תודה על הנדיבות שלך."
+
+#: 
+msgid "Download CSV"
+msgstr "הורד CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "דוא\"ל %d מסמך מס"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "הפוך או כבה את מודול הפיננסים ותפריט הסרגל הצדדי."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "הפוך או כבה את מודול הגיוס כספים."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "נכשל בהסרת לוגו כנסיה"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "נכשל בהעלאת לוגו כנסיה"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "כתובת URL של לוגו גיבוי לתבניות דוא\"ל, משמשת רק כאשר לא הועלה לוגו כנסיה בדף מידע כנסיה. העמודים שלהם של היישום מתעלמים מהגדרה זו ותמיד משתמשים ללוגו העלוי או לוגו ChurchCRM ברירת המחדל. חייב להיות כתובת URL http(s) מוחלטת. להצגה הטובה ביותר בכל לקוחות הדוא\"ל, השתמש בתמונת באנר רחבה בעלת יחס גובה-רוחב של כ-3.5:1 (למשל 350×100 px), PNG או JPG, המוגשת על פני HTTPS. השאר ריק או הזן ערך שגוי כדי לחזור ללוגו ChurchCRM ברירת המחדל."
+
+#: 
+msgid "Finance Module"
+msgstr "מודול פיננסי"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "מצא אנשים שלא השתתפו באירוע"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "מצא מתנדבים התואמים לשני קודי הזדמנות ספציפיים"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "הזדמנות מתנדב ראשונה"
+
+#: 
+msgid "Folded Booklet"
+msgstr "חוברת מקופלת"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "מודול הגיוס כספים"
+
+#: 
+msgid "Giving History"
+msgstr "היסטוריית תרומה"
+
+#: 
+msgid "Last Gift"
+msgstr "מתנה אחרונה"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "השאר ריק לכל הסיווגים."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "המספר המרבי של מסמכי שנת מס להצגה לכל פרופיל משפחה (0 = ללא מגבלה)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "שנות מס מקסימום המוצגות לכל משפחה"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "ימי שנה לחברות"
+
+#: 
+msgid "Missing People"
+msgstr "אנשים חסרים"
+
+#: 
+msgid "No giving history found."
+msgstr "לא נמצאה היסטוריית תרומה."
+
+#: 
+msgid "No people match these filters."
+msgstr "אין אנשים התואמים לסיננים אלה."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "עמוד ספרייה אחד לכל דף, דיוקן."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "רק סכימות http ו-https מותרות."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF או WebP. באנר רחב של כ-3.5:1 (למשל 700x200) עובד הכי טוב; PNG שקוף מועדף."
+
+#: 
+msgid "Page Layout"
+msgstr "פריסת עמוד"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "אנשים שהצטרפו בחודש מסוים"
+
+#: 
+msgid "Pledged"
+msgstr "התחייבות"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "הדפס %d מסמך מס"
+
+#: 
+msgid "Queries"
+msgstr "שאילתות"
+
+#: 
+msgid "Recent Friends"
+msgstr "חברים עדכניים"
+
+#: 
+msgid "Report not found"
+msgstr "דוח לא נמצא"
+
+#: 
+msgid "Run Report"
+msgstr "הריץ דוח"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "הזדמנות מתנדב שנייה"
+
+#: 
+msgid "Shown in the sidebar, on the login page and in emails. Uploading a logo replaces the ChurchCRM branding everywhere it appears."
+msgstr "מוצג בסרגל הצדדי, בדף ההתחברות ובדוא\"ל. העלאת לוגו מחליפה את הברנדינג של ChurchCRM בכל מקום שהיא מופיעה."
+
+#: 
+msgid "Single Pages"
+msgstr "עמודים בודדים"
+
+#: 
+msgid "Tax Documents"
+msgstr "מסמכי מס"
+
+#: 
+msgid "Tax document email failed to send. Please check your email server settings."
+msgstr "הדוא\"ל של מסמך המס נכשל בשליחה. אנא בדוק את הגדרות שרת הדוא\"ל שלך."
+
+#: 
+msgid "Two half-size pages side by side on each landscape sheet, in booklet order. Print double-sided with \"flip on short edge\", then fold the stack in half. Columns are counted per half page."
+msgstr "שני עמודים בגודל חצי זה לצד זה בכל דף נוף, בסדר חוברת. הדפס דו-צדדי עם \"flip on short edge\", ואז קפל את הערמה לחצי. עמודות נספרות לכל חצי עמוד."
+
+#: 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr "לא יכול לשלוח דוא\"ל מסמך מס: לא נמצאו נתוני תשלום לשנה זו."
+
+#: 
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr "לא יכול לשלוח דוא\"ל מסמך מס: למשפחה זו אין כתובת דוא\"ל בקובץ."
+
+#: 
+msgid "Unable to resolve OpenLP server hostname. Check the address and your network connection."
+msgstr "לא ניתן להתייחס לשם הערכן של שרת OpenLP. בדוק את הכתובת וחיבור הרשת שלך."
+
+#: 
+msgid "Upload"
+msgstr "העלה"
+
+#: 
+msgid "Using default ChurchCRM logo"
+msgstr "שימוש בלוגו ChurchCRM ברירת המחדל"
+
+#: 
+msgid "View Full Family Giving"
+msgstr "צפה בתרומה משפחתית מלאה"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "הזדמנות מתנדב"
+
+#: 
+msgid "Volunteers for Two Opportunities"
+msgstr "מתנדבים לשתי הזדמנויות"
+
+#: 
+msgid "YTD Paid"
+msgstr "YTD שולם"
+
+#: 
+msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
+msgstr "לשגיאות סביב הזמן שזה קרה, ולהורדה ולהצמדת קובץ הרישום הרלוונטי לבעיה ב-GitHub שלך - זה עוזר לנו לתקן את הבעיה ללא הצעת שאלות ממשך."
+
+#: 
+msgid "system logs"
+msgstr "רישומי מערכת"
+

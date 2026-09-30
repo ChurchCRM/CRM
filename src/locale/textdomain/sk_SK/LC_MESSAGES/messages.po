@@ -18527,3 +18527,203 @@ msgstr "Príliš veľa príjemcov pre e-mailového klienta ({{total}} > {{max}})
 msgid "{{minutes}} min left"
 msgstr "Zostáva {{minutes}} min"
 
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d daňový dokument bol úspešne zaslané rodine."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Výkaz darov"
+
+#: 
+msgid "All classifications"
+msgstr "Všetky klasifikácie"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Ako správca si prosím prehliadnite aj"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Automaticky posielať gratulačný email k narodeninám ľuďom v deň ich narodenia."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Emaily k narodeninám"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Zoznamy narodenín, výročí, dobrovoľníkov a ďalších ľudí s filtrom klasifikácie"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Vyberte %s na spustenie tejto správy."
+
+#: 
+msgid "Choose events"
+msgstr "Vyberte podujatia"
+
+#: 
+msgid "Choose..."
+msgstr "Vyberte..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logo kostola"
+
+#: 
+msgid "Columns per Page"
+msgstr "Stĺpce na stránku"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Milovaná rodina %s,\n"
+"\n"
+"Nájdete v prílohe svojho výkazu darov číslo %d z dňa %s.\n"
+"\n"
+"Ak máte akékoľvek otázky, kontaktujte prosím kostol.\n"
+"\n"
+"Ďakujeme za vašu štedrosť."
+
+#: 
+msgid "Download CSV"
+msgstr "Stiahnuť CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Poslať email %d daňový dokument"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Povoľte alebo zakážte modul Financie a bočné menu."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Povoľte alebo zakážte modul Fundraiser."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Nepodarilo sa odstrániť logo kostola"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Nepodarilo sa nahrať logo kostola"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Záložný URL logo pre emailové šablóny, používaný iba ak nebolo na stránke Church Information nahraté žiadne logo kostola. Vlastné stránky aplikácie ignorujú toto nastavenie a vždy používajú nahrané logo alebo predvolené logo ChurchCRM. Musí byť absolútny URL http(s). Pre najlepšie vykresľovanie v rôznych emailových klientoch použite širokú grafiku zhruba v pomere 3.5:1 (napríklad 350×100 px), PNG alebo JPG, servírované cez HTTPS. Ponechajte prázdne alebo zadajte neplatnú hodnotu pre vrátenie sa na predvolené logo ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Modul Financie"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Nájdite ľudí, ktorí sa neúčastnili podujatia"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Nájdite dobrovoľníkov, ktorí spĺňajú dva špecifické kódy príležitostí"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Prvá príležitosť pre dobrovoľníka"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Skladaná brožúra"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Modul Fundraiser"
+
+#: 
+msgid "Giving History"
+msgstr "História darov"
+
+#: 
+msgid "Last Gift"
+msgstr "Posledný dar"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Ponechajte prázdne pre všetky klasifikácie."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Maximálny počet daňových dokumentov roku na zobrazenie na profil rodiny (0 = bez obmedzenia)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Maximálne daňové roky zobrazené na rodinu"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Výročia členstva"
+
+#: 
+msgid "Missing People"
+msgstr "Chýbajúci ľudia"
+
+#: 
+msgid "No giving history found."
+msgstr "Nebola nájdená žiadna história darov."
+
+#: 
+msgid "No people match these filters."
+msgstr "Žiadni ľudia sa nezhodujú s týmito filtrami."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Jedna stránka adresára na list, portrét."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Sú povolené iba schémy http a https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF alebo WebP. Najlepšie funguje širokosť grafiky zhruba 3.5:1 (napríklad 700x200); preferuje sa priehľadný PNG."
+
+#: 
+msgid "Page Layout"
+msgstr "Rozloženie stránky"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Ľudia, ktorí sa pripojili v určitom mesiaci"
+
+#: 
+msgid "Pledged"
+msgstr "Zaväzujem sa"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Tlač %d daňový dokument"
+
+#: 
+msgid "Queries"
+msgstr "Dotazy"
+
+#: 
+msgid "Recent Friends"
+msgstr "Nedávní priatelia"
+
+#: 
+msgid "Report not found"
+msgstr "Správa nebola nájdená"
+
+#: 
+msgid "Run Report"
+msgstr "Spustiť správu"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Druhá príležitosť pre dobrovoľníka"
+

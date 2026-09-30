@@ -18598,3 +18598,203 @@ msgstr "Zbyt wielu odbiorców dla klienta poczty e-mail ({{total}} > {{max}}). Z
 msgid "{{minutes}} min left"
 msgstr "Pozostało {{minutes}} min"
 
+#: 
+msgid "%d tax document emailed to the family successfully."
+msgstr "%d dokument podatkowy został pomyślnie wysłany do rodziny."
+
+#: 
+msgid "%s %d Giving Statement"
+msgstr "%s %d Poświadczenie darowizny"
+
+#: 
+msgid "All classifications"
+msgstr "Wszystkie klasyfikacje"
+
+#: 
+msgid "As an admin, please also review the"
+msgstr "Jako administrator, proszę także przejrzeć"
+
+#: 
+msgid "Automatically send a birthday greeting email to people on their birthday."
+msgstr "Automatycznie wysyłaj wiadomość email z życzeniami urodzinowymi osobom w dniu ich urodzin."
+
+#: 
+msgid "Birthday Emails"
+msgstr "Emaile urodzinowe"
+
+#: 
+msgid "Birthdays, anniversaries, volunteers and other people lists with a classification filter"
+msgstr "Listy urodzin, rocznic, wolontariuszy i innych osób z filtrem klasyfikacji"
+
+#: 
+msgid "Choose %s to run this report."
+msgstr "Wybierz %s, aby uruchomić ten raport."
+
+#: 
+msgid "Choose events"
+msgstr "Wybierz zdarzenia"
+
+#: 
+msgid "Choose..."
+msgstr "Wybierz..."
+
+#: 
+msgid "Church Logo"
+msgstr "Logo kościoła"
+
+#: 
+msgid "Columns per Page"
+msgstr "Kolumny na stronę"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Kochana Rodzino %s,\n"
+"\n"
+"W załączniku znajduje się Twoje poświadczenie darowizny nr %d z dnia %s.\n"
+"\n"
+"Jeśli masz jakiekolwiek pytania, skontaktuj się z biurem kościoła.\n"
+"\n"
+"Dziękujemy za Twoją hojność."
+
+#: 
+msgid "Download CSV"
+msgstr "Pobierz CSV"
+
+#: 
+msgid "Email %d Tax Doc"
+msgstr "Wyślij email %d dokument podatkowy"
+
+#: 
+msgid "Enable or disable the Finance module and sidebar menu."
+msgstr "Włącz lub wyłącz moduł Finanse i menu boczne."
+
+#: 
+msgid "Enable or disable the Fundraiser module."
+msgstr "Włącz lub wyłącz moduł Fundraiser."
+
+#: 
+msgid "Failed to remove church logo"
+msgstr "Nie udało się usunąć logo kościoła"
+
+#: 
+msgid "Failed to upload church logo"
+msgstr "Nie udało się przesłać logo kościoła"
+
+#: 
+msgid "Fallback logo URL for email templates, used only when no church logo has been uploaded on the Church Information page. The application's own pages ignore this setting and always use the uploaded logo or the default ChurchCRM logo. Must be an absolute http(s) URL. For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Zapasowy URL logo dla szablonów poczty e-mail, używany tylko gdy żadne logo kościoła nie zostało przesłane na stronie Church Information. Własne strony aplikacji ignorują to ustawienie i zawsze używają przesłanego logo lub domyślnego logo ChurchCRM. Musi być bezwzględnym adresem URL http(s). Aby uzyskać najlepsze renderowanie na różnych klientach poczty e-mail, użyj szerokiego banneru o proporcjach około 3.5:1 (na przykład 350×100 px), PNG lub JPG, obsługiwanego przez HTTPS. Pozostaw puste lub wprowadź nieprawidłową wartość, aby powrócić do domyślnego logo ChurchCRM."
+
+#: 
+msgid "Finance Module"
+msgstr "Moduł Finanse"
+
+#: 
+msgid "Find people who did not attend an event"
+msgstr "Znajdź osoby, które nie uczestniczyły w zdarzeniu"
+
+#: 
+msgid "Find volunteers who match two specific opportunity codes"
+msgstr "Znajdź wolontariuszy, którzy pasują do dwóch określonych kodów okazji"
+
+#: 
+msgid "First Volunteer Opportunity"
+msgstr "Pierwsza okazja dla wolontariusza"
+
+#: 
+msgid "Folded Booklet"
+msgstr "Złożona broszura"
+
+#: 
+msgid "Fundraiser Module"
+msgstr "Moduł Fundraiser"
+
+#: 
+msgid "Giving History"
+msgstr "Historia darowizn"
+
+#: 
+msgid "Last Gift"
+msgstr "Ostatni dar"
+
+#: 
+msgid "Leave empty for all classifications."
+msgstr "Pozostaw puste dla wszystkich klasyfikacji."
+
+#: 
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr "Maksymalna liczba dokumentów roku podatkowego do wyświetlenia na profilu rodziny (0 = bez limitu)"
+
+#: 
+msgid "Maximum tax years shown per family"
+msgstr "Maksymalnie lat podatkowych wyświetlanych na rodzinę"
+
+#: 
+msgid "Membership Anniversaries"
+msgstr "Rocznice członkowskie"
+
+#: 
+msgid "Missing People"
+msgstr "Brakujące osoby"
+
+#: 
+msgid "No giving history found."
+msgstr "Nie znaleziono historii darowizn."
+
+#: 
+msgid "No people match these filters."
+msgstr "Żadne osoby nie spełniają tych filtrów."
+
+#: 
+msgid "One directory page per sheet, portrait."
+msgstr "Jedna strona katalogu na arkusz, portret."
+
+#: 
+msgid "Only http and https schemes are allowed."
+msgstr "Dozwolone są tylko schematy http i https."
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr "PNG, JPG, GIF lub WebP. Najlepiej sprawdza się szeroki baner około 3.5:1 (na przykład 700x200); preferowany jest przezroczysty PNG."
+
+#: 
+msgid "Page Layout"
+msgstr "Układ strony"
+
+#: 
+msgid "People who joined in a particular month"
+msgstr "Osoby, które dołączyły w określonym miesiącu"
+
+#: 
+msgid "Pledged"
+msgstr "Zaangażowany"
+
+#: 
+msgid "Print %d Tax Doc"
+msgstr "Drukuj %d dokument podatkowy"
+
+#: 
+msgid "Queries"
+msgstr "Zapytania"
+
+#: 
+msgid "Recent Friends"
+msgstr "Ostatni przyjaciele"
+
+#: 
+msgid "Report not found"
+msgstr "Raport nie znaleziony"
+
+#: 
+msgid "Run Report"
+msgstr "Uruchom raport"
+
+#: 
+msgid "Second Volunteer Opportunity"
+msgstr "Druga okazja dla wolontariusza"
+
