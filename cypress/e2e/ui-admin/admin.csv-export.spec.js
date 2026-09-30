@@ -168,11 +168,7 @@ describe("CSV Export Page", () => {
                 });
             });
 
-            cy.request({
-                method: "DELETE",
-                url: `/api/family/${familyId}?deleteMembers=true`,
-                failOnStatusCode: false,
-            });
+            cy.makePrivateAdminAPICall("DELETE", `/api/family/${familyId}?deleteMembers=true`, null, 200);
         });
     });
 
