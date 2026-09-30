@@ -271,7 +271,7 @@ describe("Admin Login as User (masquerade)", () => {
                     failOnStatusCode: false,
                 }).then((response) => {
                     expect(response.status).to.equal(403);
-                    expect(response.body.error).to.equal("You cannot log in as another administrator.");
+                    expect(response.body.message).to.equal("You cannot log in as another administrator.");
                 });
             });
         });
@@ -356,6 +356,82 @@ describe("Admin Login as User (masquerade)", () => {
                     expect(response.status).to.equal(403);
                 });
             });
+        });
+    });
+});
+
+// CodeRabbit finding on #9844: the masquerade record must not outlive the session
+// it was started in. Each test logs in afresh (forceLogin) because a real login
+// rotates the session id, which would strand the shared cached admin session.
+describe("Masquerade record does not survive its session", () => {
+    /** Start a masquerade as the target through the UI and wait for the dashboard. */
+    function startMasquerade() {
+        cy.visit(`/v2/user/${TARGET_USER_ID}`);
+        cy.get("#loginAsUser").click();
+        cy.get(".bootbox.modal .btn-warning").click();
+        cy.url().should("include", "/v2/dashboard");
+        cy.get("#impersonationBanner").should("be.visible");
+    }
+
+    it("a real login in the same browser discards the record", () => {
+        cy.setupAdminSession({ forceLogin: true });
+        startMasquerade();
+
+        // Sign in as the impersonated user without signing out first
+        cy.request({
+            method: "POST",
+            url: "/session/begin",
+            form: true,
+            body: {
+                User: Cypress.env("standard.username"),
+                Password: Cypress.env("standard.password"),
+            },
+        });
+
+        cy.visit("/v2/dashboard");
+        cy.get("#impersonationBanner").should("not.exist");
+        cy.get("body").should("not.have.class", "impersonating");
+
+        // Signing out now ends the session; it must not restore the administrator
+        cy.visit("/session/end");
+        cy.url().should("include", "/session/begin");
+        cy.visit("/v2/dashboard");
+        cy.url().should("include", "/session/begin");
+    });
+
+    describe("after a session timeout", () => {
+        let savedTimeout;
+
+        // Config calls authenticate by API key; clear cookies first so they do
+        // not touch a browser session.
+        before(() => {
+            cy.clearCookies();
+            cy.getSystemConfig("iSessionTimeout").then((value) => {
+                savedTimeout = value;
+            });
+            cy.makePrivateAdminAPICall("POST", "admin/api/system/config/iSessionTimeout", { value: "3" }, 200);
+        });
+
+        after(() => {
+            cy.clearCookies();
+            cy.restoreSystemConfig("iSessionTimeout", savedTimeout);
+        });
+
+        it("signing out does not restore the administrator", () => {
+            cy.setupAdminSession({ forceLogin: true });
+            startMasquerade();
+
+            // Leave the dashboard (its polling requests keep the session alive)
+            // for the login page, which makes none, then let the 3-second
+            // session timeout lapse.
+            cy.visit("/session/begin");
+            cy.wait(5000);
+
+            cy.visit("/session/end");
+            cy.url().should("include", "/session/begin");
+            cy.get("#impersonationBanner").should("not.exist");
+            cy.visit("/v2/dashboard");
+            cy.url().should("include", "/session/begin");
         });
     });
 });

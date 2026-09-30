@@ -44,7 +44,40 @@ class ImpersonationService
      */
     public static function isActive(): bool
     {
-        return isset($_SESSION[self::SESSION_KEY]['userId']);
+        $record = $_SESSION[self::SESSION_KEY] ?? null;
+        if ($record === null) {
+            return false;
+        }
+
+        // A record only counts while the session still belongs to the user it
+        // was started for. Anything else (an incomplete record, no current user,
+        // or a different user) is stale and is discarded, so it can never be
+        // used to restore the stored administrator.
+        try {
+            $currentUserId = AuthenticationManager::getCurrentUser()->getId();
+        } catch (\Throwable $e) {
+            $currentUserId = null;
+        }
+        if (
+            !isset($record['userId'], $record['targetUserId'])
+            || (int) $record['targetUserId'] !== $currentUserId
+        ) {
+            self::clear();
+
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Discard any masquerade record without restoring the administrator. Called
+     * when a real login begins and when the session times out, so a record can
+     * never outlive the session it was started in.
+     */
+    public static function clear(): void
+    {
+        unset($_SESSION[self::SESSION_KEY]);
     }
 
     /**
@@ -78,9 +111,10 @@ class ImpersonationService
         $admin = AuthenticationManager::getCurrentUser();
 
         $record = [
-            'userId'    => $admin->getId(),
-            'startedAt' => (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
-            'stashed'   => self::stashSessionKeys(),
+            'userId'       => $admin->getId(),
+            'targetUserId' => $target->getId(),
+            'startedAt'    => (new \DateTimeImmutable())->format(\DateTimeInterface::ATOM),
+            'stashed'      => self::stashSessionKeys(),
         ];
 
         // Establish the session as the target user exactly the way a successful

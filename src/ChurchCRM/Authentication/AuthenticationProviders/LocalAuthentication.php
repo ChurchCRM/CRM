@@ -175,6 +175,10 @@ class LocalAuthentication implements IAuthenticationProvider
         $logCtx = ['username' => $AuthenticationRequest->username];
         if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
             LoggerUtils::getAuthLogger()->debug('Processing local login', $logCtx);
+            // A real login starts a new identity in this session: drop any masquerade
+            // record left behind by an earlier session (e.g. one that timed out),
+            // otherwise exiting it would restore the stored administrator (#9843).
+            ImpersonationService::clear();
             // Get the information for the selected user
             $this->currentUser = UserQuery::create()->findOneByUserName($AuthenticationRequest->username);
             if ($this->currentUser === null) {
@@ -309,6 +313,8 @@ class LocalAuthentication implements IAuthenticationProvider
         if (SystemConfig::getIntValue('iSessionTimeout') > 0) {
             if ((time() - $this->tLastOperationTimestamp) > SystemConfig::getIntValue('iSessionTimeout')) {
                 LoggerUtils::getAuthLogger()->debug('User session timed out', $logCtx);
+                // A timed-out masquerade must not be resumable as the administrator.
+                ImpersonationService::clear();
                 $authenticationResult->isAuthenticated = false;
 
                 return $authenticationResult;

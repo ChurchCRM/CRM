@@ -4,6 +4,7 @@ namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
@@ -45,10 +46,10 @@ class SessionOnlyMiddleware implements MiddlewareInterface
             ]);
 
             $response = new Response();
-            $response->getBody()->write(json_encode([
-                'error' => gettext('This action requires an interactive session.'),
-                'code'  => 403,
-            ]));
+            $response->getBody()->write(json_encode(SlimUtils::buildErrorPayload(
+                gettext('This action requires an interactive session.'),
+                403
+            )));
 
             return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
         }

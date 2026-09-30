@@ -77,7 +77,9 @@ function processTwoFactorPost(Request $request, Response $response, array $args)
  */
 function endSession(Request $request, Response $response, array $args): Response
 {
-    if (ImpersonationService::isActive()) {
+    // Only a live masquerade is exited back to the administrator; a timed-out
+    // one ends the whole session like any other logout.
+    if (ImpersonationService::isActive() && AuthenticationManager::validateUserSessionIsActive(false)) {
         $targetId = ImpersonationService::end();
         if ($targetId !== null) {
             return $response
