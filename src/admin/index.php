@@ -22,6 +22,7 @@ require __DIR__ . '/routes/api/options.php';
 require __DIR__ . '/routes/api/system/church-logo.php';
 require __DIR__ . '/routes/api/system/system-config.php';
 require __DIR__ . '/routes/api/system/system-logs.php';
+require __DIR__ . '/routes/api/system/feature-toggles.php';
 require __DIR__ . '/routes/api/upgrade.php';
 require __DIR__ . '/routes/api/user-admin.php';
 require __DIR__ . '/routes/api/import.php';
