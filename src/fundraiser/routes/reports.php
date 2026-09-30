@@ -106,11 +106,11 @@ class PdfFundRaiserStatement extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
     }
 
-    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country): float
+    public function startNewPage($fam_ID, $fam_Name, array $mailingParts): float
     {
         global $letterhead;
 
-        return $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
+        return $this->startLetterPageForParts($fam_ID, $fam_Name, $mailingParts, $letterhead);
     }
 
     public function finishPage($curY): void
@@ -426,16 +426,12 @@ $app->map(['GET', 'POST'], '/{fundraiserId}/reports/statement', function (Reques
         $paddleFamily    = $paddleBuyer?->getFamily();
         $fam_ID          = $paddleFamily?->getId() ?? 0;
         $fam_Name        = $paddleFamily?->getName() ?? '';
-        $fam_Address1    = $paddleFamily?->getAddress1() ?? '';
-        $fam_Address2    = $paddleFamily?->getAddress2() ?? '';
-        $fam_City        = (string) ($paddleFamily?->getCity() ?? '');
-        $fam_State       = (string) ($paddleFamily?->getState() ?? '');
-        $fam_Zip         = $paddleFamily?->getZip() ?? '';
-        $fam_Country     = $paddleFamily?->getCountry() ?? '';
+        // The statement is mailed, so it is addressed to the family's mailing address.
+        $famMailing      = $paddleFamily?->getMailingAddressParts() ?? [];
 
         // If running for a specific paddle, always include; otherwise check POST checkboxes
         if ($iPaddleNumId || isset($body["Chk$pn_ID"])) {
-            $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+            $curY = $pdf->startNewPage($fam_ID, $fam_Name, $famMailing);
 
             $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Donated Items') . ':');
             $curY += 2 * SystemConfig::getValue('incrementY');

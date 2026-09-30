@@ -7,6 +7,7 @@ require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -48,6 +49,9 @@ $familyObjects = $financialService->getZeroGiversReportData($sDateStart, $sDateE
 
 // Convert Propel objects to array format for backward compatibility with existing PDF/CSV code
 $rsReport = [];
+// These letters are mailed, so they are addressed to each family's mailing address.
+// Kept out of $rsReport on purpose: its keys become the CSV export's column headers.
+$famMailingParts = [];
 foreach ($familyObjects as $family) {
     $row = [
         'fam_ID' => $family['Id'],
@@ -59,6 +63,8 @@ foreach ($familyObjects as $family) {
         'fam_Zip' => $family['Zip'] ?? '',
         'fam_Country' => $family['Country'] ?? '',
     ];
+    $famMailingParts[$row['fam_ID']] = $family['MailingAddress']
+        ?? Family::primaryAddressPartsFromRow($row);
     $rsReport[] = $row;
 }
 
@@ -91,10 +97,10 @@ if ($output === 'pdf') {
             $this->SetAutoPageBreak(false);
         }
 
-        public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country): float
+        public function startNewPage($fam_ID, $fam_Name, array $mailingParts): float
         {
             global $letterhead, $sDateStart, $sDateEnd;
-            $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
+            $curY = $this->startLetterPageForParts($fam_ID, $fam_Name, $mailingParts, $letterhead);
             $curY += 2 * SystemConfig::getValue('incrementY');
             if ($sDateStart == $sDateEnd) {
                 $DateString = date('F j, Y', strtotime($sDateStart));
@@ -108,7 +114,7 @@ if ($output === 'pdf') {
             return $curY + 30 * SystemConfig::getValue('incrementY');
         }
 
-        public function finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country): void
+        public function finishPage($curY): void
         {
             global $remittance;
             $curY += 2 * SystemConfig::getValue('incrementY');
@@ -130,9 +136,10 @@ if ($output === 'pdf') {
     // Loop through result array
     foreach ($rsReport as $row) {
         extract($row);
-        $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+        $famMailing = $famMailingParts[$fam_ID] ?? Family::primaryAddressPartsFromRow($row);
+        $curY = $pdf->startNewPage($fam_ID, $fam_Name, $famMailing);
 
-        $pdf->finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+        $pdf->finishPage($curY);
     }
 
     if (SystemConfig::getIntValue('iPDFOutputType') === 1) {

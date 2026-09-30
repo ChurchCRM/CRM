@@ -117,19 +117,14 @@ class PdfFamilyTaxEmail extends ChurchInfoReport
      *
      * @param int|string $fam_ID Family ID
      * @param string $fam_Name Family name
-     * @param string $fam_Address1 Primary address line
-     * @param string $fam_Address2 Secondary address line
-     * @param string $fam_City City
-     * @param string $fam_State State/province
-     * @param string $fam_Zip Postal code
-     * @param string|null $fam_Country Country
+     * @param array $mailingParts Mailing address parts (from Family::getMailingAddressParts())
      * @param string $fam_envelope Envelope number if applicable
      * @return float Current Y position after header
      */
-    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, string $fam_envelope): float
+    public function startNewPage($fam_ID, $fam_Name, array $mailingParts, string $fam_envelope): float
     {
         global $sDateStart, $sDateEnd;
-        $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, 'address');
+        $curY = $this->startLetterPageForParts($fam_ID, $fam_Name, $mailingParts, 'address');
         if (SystemConfig::getValue('bUseDonationEnvelopes')) {
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Envelope') . ': ' . $fam_envelope);
             $curY += SystemConfig::getValue('incrementY');
@@ -231,7 +226,8 @@ foreach ($rsReport as $row) {
     }
 
     if ($fam_ID != $currentFamilyID) {
-        $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fam_envelope);
+        // The statement is addressed like a mailed one: to the family's mailing address.
+        $curY = $pdf->startNewPage($fam_ID, $fam_Name, $family->getMailingAddressParts(), $fam_envelope);
         $summaryDateX     = SystemConfig::getValue('leftX');
         $summaryIntervalY = 4;
         $curY += 2 * $summaryIntervalY;

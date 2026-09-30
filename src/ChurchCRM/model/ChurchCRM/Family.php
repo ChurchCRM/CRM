@@ -174,7 +174,16 @@ class Family extends BaseFamily implements PhotoInterface
         $city = trim((string) ($parts['City'] ?? ''));
         $state = trim((string) ($parts['State'] ?? ''));
         $zip = trim((string) ($parts['Zip'] ?? ''));
-        $cityStateZip = trim($city . ($city !== '' && ($state !== '' || $zip !== '') ? ',' : '') . ' ' . trim($state . '  ' . $zip));
+        if ($city !== '') {
+            // The historical label layout: the comma follows the city and two spaces
+            // set the ZIP off from the state.
+            $stateZip = trim($state . '  ' . $zip);
+            $cityStateZip = $stateZip !== '' ? $city . ', ' . $stateZip : $city;
+        } else {
+            // A city-less address (a PO Box with only a state and ZIP on record) has
+            // nothing for a comma to follow, so the line is just "State Zip".
+            $cityStateZip = trim($state . ' ' . $zip);
+        }
         if ($cityStateZip !== '') {
             $lines[] = $cityStateZip;
         }
@@ -222,6 +231,54 @@ class Family extends BaseFamily implements PhotoInterface
         }
 
         return implode(' ', $address);
+    }
+
+    /**
+     * Order families by the ZIP code their mail is actually addressed to.
+     *
+     * Mailing labels are printed in ZIP order so a bundle can be presorted for the
+     * post office, which only works when the sort key is the ZIP that gets printed
+     * — the flagged second address when a family has one. Callers pass a set that
+     * the database already ordered by the primary ZIP; when no family in that set
+     * has a mailing ZIP of its own the collection is handed back in exactly the
+     * order it arrived, so label ordering is unchanged for every existing install.
+     *
+     * @param iterable<self> $families families ordered by primary ZIP
+     *
+     * @return self[]
+     */
+    public static function sortByMailingZip(iterable $families): array
+    {
+        $sorted = [];
+        $mailingZips = [];
+        $needsResort = false;
+
+        // getMailingAddressParts() is derived, not a cached column, so the sort key
+        // is resolved once per family here rather than on every comparison below.
+        foreach ($families as $family) {
+            $sorted[] = $family;
+            $mailingZip = $family->getMailingAddressParts()['Zip'];
+            $mailingZips[spl_object_id($family)] = $mailingZip;
+            if ($mailingZip !== trim((string) $family->getZip())) {
+                $needsResort = true;
+            }
+        }
+
+        if (!$needsResort) {
+            return $sorted;
+        }
+
+        // usort has been stable since PHP 8.0, so families sharing a ZIP keep the
+        // relative order the database returned them in.
+        usort(
+            $sorted,
+            static fn (self $a, self $b): int => strcasecmp(
+                $mailingZips[spl_object_id($a)],
+                $mailingZips[spl_object_id($b)]
+            )
+        );
+
+        return $sorted;
     }
 
     /**
