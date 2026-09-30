@@ -481,6 +481,7 @@ $(document).ready(function() {
         icon: 'fa-solid fa-sliders',
         settings: [
             { name: 'iFYMonth',          type: 'choice', label: <?= InputUtils::jsonEncodeForScript(gettext('First month of the fiscal year')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('iFYMonth')) ?> },
+            { name: 'iMaxTaxYears',      type: 'number', label: <?= InputUtils::jsonEncodeForScript(gettext('Maximum tax years shown per family')) ?>, min: 0, placeholder: '5' },
             { name: 'sDepositSlipType',  type: 'choice', label: <?= InputUtils::jsonEncodeForScript(gettext('Deposit ticket type')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sDepositSlipType')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('sDepositSlipType')) ?> },
             { name: 'iChecksPerDepositForm', type: 'number',  label: <?= InputUtils::jsonEncodeForScript(gettext('Number of checks for Deposit Slip Report')) ?>, min: 1, max: 100 },
             { name: 'bDisplayBillCounts',    type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Display bill counts on deposit slip')) ?> },
