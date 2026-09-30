@@ -302,7 +302,7 @@ class   SystemConfig
         return [
             gettext('New Members & Greeting') => ['sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'bEnableBirthdayEmails'],
             gettext('People')              => ['sDirClassifications', 'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideWeddingDate', 'bForceUppercaseZip', 'sInactiveClassification'],
-            gettext('Families')            => ['sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHideFamilyNewsletter'],
+            gettext('Families')            => ['sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'bHideFamilyNewsletter'],
             gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser'],
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
