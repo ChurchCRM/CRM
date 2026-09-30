@@ -32,9 +32,9 @@ describe("Family Second Address", () => {
         });
 
     after(() => {
-        // Row-count discipline: remove everything this spec created.
+        // Row-count discipline: remove everything this spec created, members included.
         createdFamilyIds.forEach((id) => {
-            cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}`, null, 200);
+            cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}?deleteMembers=true`, null, 200);
         });
     });
 
@@ -101,6 +101,44 @@ describe("Family Second Address", () => {
             "Enter a second address before marking it as the mailing address",
         );
         cy.get("#secondAddressSection").should("have.class", "show");
+    });
+
+    it("shows the mailing address on a member's page when the family has no primary address", () => {
+        const familyName = "MailingOnly" + Cypress._.random(0, 1e6);
+        cy.visit("/FamilyEditor.php");
+        cy.contains("Family Info");
+        cy.get("#FamilyName").type(familyName);
+        cy.get('input[name="FirstName1"]').type("Mia");
+        cy.get("#secondAddressToggle").click();
+        cy.get("#SecondAddress1").type("PO Box 5150");
+        cy.get("#SecondCity").type("Othertown");
+        cy.get("#SecondIsMailing").check();
+
+        // Imported and older families can have no primary address at all, country
+        // included. The editor's country list has no blank entry, so the form is
+        // posted with the primary address emptied.
+        cy.get("#familyEditor")
+            .then(($form) => {
+                const body = new URLSearchParams(new FormData($form[0]));
+                ["Address1", "Address2", "City", "State", "StateTextbox", "Zip", "Country"].forEach((key) =>
+                    body.set(key, "")
+                );
+                body.set("FamilySubmit", "");
+                return cy.request({
+                    method: "POST",
+                    url: $form.attr("action"),
+                    headers: { "content-type": "application/x-www-form-urlencoded" },
+                    body: body.toString(),
+                });
+            })
+            .then((response) => {
+                createdFamilyIds.push(Number(response.redirects.pop().split("/").pop()));
+            });
+
+        cy.request(`/api/persons/search/${familyName}`).then(({ body }) => {
+            cy.visit(`/people/view/${body[0].objid}`);
+        });
+        cy.get("#person-family-mailing-address").should("contain", "PO Box 5150");
     });
 
     // Keep last: the API-key request below invalidates the browser session.
