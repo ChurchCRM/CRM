@@ -33,12 +33,21 @@ describe("Mailing address on mailed reports (#9743)", () => {
 
     /**
      * Creates a family whose flagged second address is in a different ZIP.
-     * Pass `secondCity: ""` for a PO Box that has only a state and ZIP on record.
+     * Pass `secondCity: ""` for a PO Box that has only a state and ZIP on record,
+     * and `members` (first names) when the family has to appear in the directory,
+     * which lists people, not families.
      */
-    const createFamilyWithMailingAddress = (familyName, { secondCity = "Othertown" } = {}) => {
+    const createFamilyWithMailingAddress = (familyName, { secondCity = "Othertown", members = [] } = {}) => {
         cy.visit("/FamilyEditor.php");
         cy.contains("Family Info");
         cy.get("#FamilyName").type(familyName);
+        members.forEach((firstName, index) => {
+            // Last name left blank: the editor fills in the family name. The
+            // directory form pre-selects the member classifications, so each
+            // member is a Member (1) rather than Unassigned (0).
+            cy.get(`input[name="FirstName${index + 1}"]`).type(firstName);
+            cy.get(`select[name="Classification${index + 1}"]`).select("1", { force: true });
+        });
         cy.get('input[name="Address1"]').type("742 Evergreen Terrace");
         cy.get('input[name="City"]').clear().type("Springfield");
         cy.get('select[name="State"]').select("IL", { force: true });
@@ -136,8 +145,10 @@ describe("Mailing address on mailed reports (#9743)", () => {
     });
 
     after(() => {
+        // deleteMembers: without it the family delete only unlinks the members,
+        // which would leave the directory suite's people behind as orphans.
         createdFamilyIds.forEach((id) => {
-            cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}`, null, 200);
+            cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}?deleteMembers=true`, null, 200);
         });
     });
 
@@ -202,5 +213,103 @@ describe("Mailing address on mailed reports (#9743)", () => {
                 });
             }
         );
+    });
+
+    /**
+     * The church directory report (#9743): "Address" is relabelled "Primary
+     * Address" and a new "Mailing Address if Different" sub-option, off by
+     * default, prints the flagged second address under a "Mailing Address:" label.
+     *
+     * Mocha runs a nested suite after its parent's own tests, so these start from
+     * the parent's freshAdminLogin() and are unaffected by the API-key calls above.
+     * Families created here land in the same createdFamilyIds list, so the shared
+     * `after` hook still returns family_fam to the row count it started with.
+     */
+    describe("Church directory report", () => {
+        /**
+         * Posts the directory form exactly as the browser serialises it, so the
+         * option keys under test are the real ones and the defaults are honest.
+         * The form target is a PDF, which cy.visit() cannot follow, so the POST is
+         * replayed with cy.request() over the session the visit established and
+         * the PDF's text lines are handed back.
+         */
+        const submitDirectoryForm = () =>
+            cy.get('form[action="Reports/DirectoryReport.php"]').then(($form) =>
+                cy
+                    .request({
+                        method: "POST",
+                        url: "Reports/DirectoryReport.php",
+                        headers: { "content-type": "application/x-www-form-urlencoded" },
+                        body: new URLSearchParams(new FormData($form[0])).toString(),
+                        encoding: "binary",
+                        failOnStatusCode: false,
+                    })
+                    .then((response) => {
+                        expect(response.status, "no server error").to.equal(200);
+                        expect(response.headers["content-type"] || "").to.include("application/pdf");
+                        return pdfText(response.body);
+                    })
+            );
+
+        beforeEach(() => {
+            cy.visit("/DirectoryReports.php");
+        });
+
+        it("relabels the address option and offers an indented mailing-address sub-option", () => {
+            cy.get('label[for="bDirAddress"]').should("have.text", "Primary Address");
+            // Same POST key, same default — only the wording changed.
+            cy.get("#bDirAddress").should("be.checked");
+
+            cy.get('label[for="bDirMailingAddress"]').should(
+                "have.text",
+                "Mailing Address if Different"
+            );
+            // Off by default, so existing directories render exactly as before.
+            cy.get("#bDirMailingAddress").should("not.be.checked").and("be.enabled");
+            // Indented so it reads as a sub-option of "Primary Address" in the grid.
+            cy.get("#bDirMailingAddress").parent().should("have.class", "ms-4");
+        });
+
+        it("disables and clears the sub-option while the primary address is off", () => {
+            // The mailing address prints beneath the primary one, so the report
+            // ignores the sub-option when the primary address is off; the form
+            // says so instead of letting the choice vanish silently.
+            cy.get("#bDirMailingAddress").check();
+            cy.get("#bDirAddress").uncheck();
+            cy.get("#bDirMailingAddress").should("be.disabled").and("not.be.checked");
+            cy.get("#bDirAddress").check();
+            cy.get("#bDirMailingAddress").should("be.enabled").and("not.be.checked");
+        });
+
+        it("generates a directory with the mailing address option off", () => {
+            const familyName = "MailDirOff" + Cypress._.random(0, 1e6);
+            createFamilyWithMailingAddress(familyName, { members: ["Ann", "Ben"] }).then(() => {
+                cy.visit("/DirectoryReports.php");
+                submitDirectoryForm().then((lines) => {
+                    const at = lines.findIndex((line) => line.includes(familyName));
+                    expect(at, `the ${familyName} entry`).to.be.greaterThan(-1);
+                    expect(lines).to.include("742 Evergreen Terrace");
+                    // The default output is the directory exactly as it printed before.
+                    expect(lines.some((line) => line.includes("Mailing Address"))).to.equal(false);
+                    expect(lines).to.not.include("PO Box 1204");
+                });
+            });
+        });
+
+        it("prints the mailing address under the primary one when the option is on", () => {
+            const familyName = "MailDirOn" + Cypress._.random(0, 1e6);
+            createFamilyWithMailingAddress(familyName, { members: ["Ann", "Ben"] }).then(() => {
+                cy.visit("/DirectoryReports.php");
+                cy.get("#bDirMailingAddress").check();
+                submitDirectoryForm().then((lines) => {
+                    const at = lines.findIndex((line) => /Mailing Address: PO Box 1204$/.test(line));
+                    expect(at, "the family's Mailing Address line").to.be.greaterThan(-1);
+                    expect(lines[at + 1]).to.match(/Othertown, IL {2}62998$/);
+                    // Beneath the primary address, which still prints.
+                    const primary = lines.findIndex((line) => line.includes("742 Evergreen Terrace"));
+                    expect(primary).to.be.greaterThan(-1).and.to.be.lessThan(at);
+                });
+            });
+        });
     });
 });
