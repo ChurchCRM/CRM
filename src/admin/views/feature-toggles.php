@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -95,24 +96,6 @@ $featureGroups = [
 ];
 ?>
 
-<div class="page-wrapper">
-    <div class="page-header d-print-none">
-        <div class="container-xl">
-            <div class="row align-items-center">
-                <div class="col">
-                    <?php if (isset($aBreadcrumbs)): ?>
-                        <div class="page-pretitle"><?= $aBreadcrumbs ?></div>
-                    <?php endif; ?>
-                    <h2 class="page-title"><?= $sPageTitle ?? gettext('Feature Toggles') ?></h2>
-                    <?php if (isset($sPageSubtitle)): ?>
-                        <div class="page-subtitle"><?= $sPageSubtitle ?></div>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="page-body">
     <div class="container-xl">
         <div class="alert alert-info">
@@ -147,6 +130,7 @@ $featureGroups = [
                                                 <span class="status-badge" style="font-size: 0.75rem; display: none;"></span>
                                                 <label class="form-check form-switch form-check-single m-0">
                                                     <input class="form-check-input feature-toggle" type="checkbox"
+                                                        aria-label="<?= InputUtils::escapeAttribute($settingInfo['label']) ?>"
                                                         data-setting="<?= $settingKey ?>"
                                                         <?= $isEnabled ? 'checked' : '' ?>>
                                                 </label>
@@ -163,7 +147,7 @@ $featureGroups = [
     </div>
 </div>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 document.querySelectorAll('.feature-toggle').forEach(toggle => {
     toggle.addEventListener('change', function() {
         const setting = this.dataset.setting;
@@ -178,7 +162,7 @@ document.querySelectorAll('.feature-toggle').forEach(toggle => {
         badge.style.display = 'inline';
         badge.className = 'status-badge badge bg-info';
 
-        fetch('/admin/api/system/feature-toggles', {
+        fetch('<?= SystemURLs::getRootPath() ?>/admin/api/system/feature-toggles', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
