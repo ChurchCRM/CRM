@@ -2843,7 +2843,27 @@ paths:
             type: integer
       responses:
         '200':
-          description: 'Family object'
+          description: "Family object. `Address` is the primary/physical address.\n     *         The optional second address (#9743) is exposed additively as `SecondAddress1`, `SecondAddress2`,\n     *         `SecondCity`, `SecondState`, `SecondZip`, `SecondCountry` and `SecondIsMailing`, alongside the\n     *         resolved `MailingAddress` object (the flagged second address when set, the primary otherwise)."
+          content:
+            application/json:
+              schema:
+                properties:
+                  Id: { type: integer }
+                  Name: { type: string }
+                  Address: { description: 'Primary address, one line', type: string }
+                  SecondAddress1: { type: string, nullable: true }
+                  SecondAddress2: { type: string, nullable: true }
+                  SecondCity: { type: string, nullable: true }
+                  SecondState: { type: string, nullable: true }
+                  SecondZip: { type: string, nullable: true }
+                  SecondCountry: { type: string, nullable: true }
+                  SecondIsMailing: { type: boolean }
+                  HasSecondAddress: { type: boolean }
+                  SecondAddressIsMailing: { type: boolean }
+                  SecondAddress: { description: 'Second address, one line', type: string }
+                  MailingAddressLines: { description: 'Resolved mailing address, one line', type: string }
+                  MailingAddress: { description: 'Resolved mailing address parts', properties: { Address1: { type: string }, Address2: { type: string }, City: { type: string }, State: { type: string }, Zip: { type: string }, Country: { type: string } }, type: object }
+                type: object
         '403':
           description: 'Access denied'
         '404':
