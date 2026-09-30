@@ -34,10 +34,10 @@ function propertyTypeToArray(PropertyType $pt): array
     ];
 }
 
-$app->group('/property-types', function (RouteCollectorProxy $group): void {
+$app->group('/api/system/property-types', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
-     *     path="/property-types",
+     *     path="/api/system/property-types",
      *     summary="List all property types (MenuOptions role required)",
      *     tags={"System"},
      *     security={{"ApiKeyAuth":{}}},

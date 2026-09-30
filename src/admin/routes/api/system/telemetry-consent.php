@@ -27,7 +27,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  *     )
  * )
  */
-$app->post('/system/telemetry-consent', function (Request $request, Response $response, array $args): Response {
+$app->post('/api/system/telemetry-consent', function (Request $request, Response $response, array $args): Response {
     $data  = json_decode((string) $request->getBody(), true);
     $level = $data['level'] ?? TelemetryService::LEVEL_NONE;
 

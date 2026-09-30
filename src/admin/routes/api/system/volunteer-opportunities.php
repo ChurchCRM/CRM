@@ -34,10 +34,10 @@ function volunteerOpportunityToArray(VolunteerOpportunity $opp): array
     ];
 }
 
-$app->group('/volunteer-opportunities', function (RouteCollectorProxy $group): void {
+$app->group('/api/system/volunteer-opportunities', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
-     *     path="/volunteer-opportunities",
+     *     path="/api/system/volunteer-opportunities",
      *     summary="List all volunteer opportunities (Admin role required)",
      *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
