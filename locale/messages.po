@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 02:13+0000\n"
+"POT-Creation-Date: 2026-09-30 03:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,6 +141,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
+msgid "%d tax document emailed to the family successfully."
+msgstr ""
+
+#, php-format
 msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] ""
@@ -148,6 +152,10 @@ msgstr[1] ""
 
 #, php-format
 msgid "%d% of interface text is translated for this language."
+msgstr ""
+
+#, php-format
+msgid "%s %d Giving Statement"
 msgstr ""
 
 #, php-format
@@ -3369,6 +3377,17 @@ msgstr ""
 msgid "Deactivate"
 msgstr ""
 
+#, php-format
+msgid ""
+"Dear %s Family,\n"
+"\n"
+"Please find your %d giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr ""
+
 msgid "Dear Friend"
 msgstr ""
 
@@ -4055,6 +4074,10 @@ msgid "Electronic Transaction Details"
 msgstr ""
 
 msgid "Email"
+msgstr ""
+
+#, php-format
+msgid "Email %d Tax Doc"
 msgstr ""
 
 msgid "Email Address"
@@ -5903,6 +5926,9 @@ msgstr ""
 msgid "Girls"
 msgstr ""
 
+msgid "Giving History"
+msgstr ""
+
 msgid "Giving Report (Tax Statements)"
 msgstr ""
 
@@ -6983,6 +7009,9 @@ msgstr ""
 msgid "Last Campaign"
 msgstr ""
 
+msgid "Last Gift"
+msgstr ""
+
 msgid "Last Login"
 msgstr ""
 
@@ -7645,6 +7674,12 @@ msgid ""
 "Once the maximum has been reached, an administrator must re-enable the account.\n"
 "This feature helps to protect against automated password guessing attacks.\n"
 "Set to zero to disable this feature."
+msgstr ""
+
+msgid "Maximum number of tax year documents to show per family profile (0 = no limit)"
+msgstr ""
+
+msgid "Maximum tax years shown per family"
 msgstr ""
 
 msgid "Maximum upload size"
@@ -8365,6 +8400,9 @@ msgid "No format"
 msgstr ""
 
 msgid "No funds have been added yet. Use the form above to add the first fund."
+msgstr ""
+
+msgid "No giving history found."
 msgstr ""
 
 msgid "No group"
@@ -9600,6 +9638,9 @@ msgstr ""
 msgid "Pledge group not found"
 msgstr ""
 
+msgid "Pledged"
+msgstr ""
+
 msgid "Pledged Amount"
 msgstr ""
 
@@ -9611,9 +9652,6 @@ msgid "Pledges"
 msgstr ""
 
 msgid "Pledges & Payments"
-msgstr ""
-
-msgid "Pledges and Payments"
 msgstr ""
 
 msgid "Plugin Development"
@@ -9739,6 +9777,10 @@ msgid "Primary Color"
 msgstr ""
 
 msgid "Print"
+msgstr ""
+
+#, php-format
+msgid "Print %d Tax Doc"
 msgstr ""
 
 msgid "Print name tags"
@@ -11586,6 +11628,9 @@ msgstr ""
 msgid "Tax & Giving Reports"
 msgstr ""
 
+msgid "Tax Documents"
+msgstr ""
+
 msgid "Tax Report"
 msgstr ""
 
@@ -11602,6 +11647,9 @@ msgid "Tax Statements (Giving Report)"
 msgstr ""
 
 msgid "Tax Year Reporting Checklist"
+msgstr ""
+
+msgid "Tax document email failed to send. Please check your email server settings."
 msgstr ""
 
 msgid "Teacher"
@@ -12464,6 +12512,12 @@ msgstr ""
 msgid "Unable to display map: church address has not been geocoded yet."
 msgstr ""
 
+msgid "Unable to email tax document: no payment data found for that year."
+msgstr ""
+
+msgid "Unable to email tax document: this family has no email address on file."
+msgstr ""
+
 msgid "Unable to list web server modules (non-Apache SAPI)."
 msgstr ""
 
@@ -13005,6 +13059,9 @@ msgstr ""
 msgid "View Family Page"
 msgstr ""
 
+msgid "View Full Family Giving"
+msgstr ""
+
 msgid "View Group"
 msgstr ""
 
@@ -13453,6 +13510,12 @@ msgid "Work/Other Email"
 msgstr ""
 
 msgid "Working..."
+msgstr ""
+
+msgid "YTD"
+msgstr ""
+
+msgid "YTD Paid"
 msgstr ""
 
 msgid "YTD Payments"
