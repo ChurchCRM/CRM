@@ -99,9 +99,9 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
  *             )),
  *             @OA\Property(property="startOffsetMinutes", type="integer"),
  *             @OA\Property(property="endOffsetMinutes", type="integer"),
- *             @OA\Property(property="defaults", type="array", @OA\Items(type="object",
+ *             @OA\Property(property="defaults", type="array", description="D32: saved on the schedule the events go to (a blank personId clears that position's default); its saved defaults are then assigned on the new occurrences", @OA\Items(type="object",
  *                 @OA\Property(property="positionId", type="integer"),
- *                 @OA\Property(property="personId", type="integer"),
+ *                 @OA\Property(property="personId", type="integer", nullable=true),
  *                 @OA\Property(property="accepted", type="boolean")
  *             ))
  *         )
@@ -122,7 +122,8 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
  *                 @OA\Property(property="occurrenceDate", type="string", format="date")
  *             )),
  *             @OA\Property(property="assigned", type="integer"),
- *             @OA\Property(property="skipped", type="integer")
+ *             @OA\Property(property="skipped", type="integer"),
+ *             @OA\Property(property="unqualified", type="integer", description="D32: default assignments left open because the default is no longer qualified")
  *         )
  *     ),
  *     @OA\Response(response=400, description="A missing or malformed field, an unknown type, class or calendar, a recurrence with no date in the range or over the cap, or a staffing plan the schedule refuses"),
@@ -175,6 +176,7 @@ function createVolunteerMinistryEvents(Request $request, Response $response): Re
         }
         $payload['assigned'] = $result['assigned'];
         $payload['skipped'] = $result['skipped'];
+        $payload['unqualified'] = $result['unqualified'];
     }
 
     return SlimUtils::renderJSON($response, $payload, 201);

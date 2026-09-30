@@ -134,7 +134,7 @@ describe("Admin → Ministry Settings", () => {
             .and("contain", "Other")
             .and("contain", "Sunday School");
         cy.get("#ministry-topup-last-run").should("have.text", "never");
-        cy.get("#ministry-topup-hint").should("contain", "up to 8 weeks ahead").and("contain", "Nobody is assigned");
+        cy.get("#ministry-topup-hint").should("contain", "up to 8 weeks ahead").and("contain", "default volunteer");
 
         cy.get("#ministrySettingsPanel input[name='iVolunteerSchedulingHorizonWeeks']").clear().type("10");
         cy.get("#ministrySettingsPanel select[name='iVolunteerDefaultEventTypeId']").select("Church Service");
@@ -212,6 +212,22 @@ describe("Admin → Ministry Settings", () => {
         cy.wait("@horizonValue");
         cy.get("#ministrySettingsPanel .settings-panel-load-error").should("be.visible");
         cy.get("#ministrySettingsPanel #settingsPanelSaveBtn").should("be.disabled");
+    });
+
+    it("shows what the last top-up assigned and the defaults it skipped (D32)", () => {
+        adminApi("POST", SETTING_URL, { value: "v2" }, 200);
+        cy.dbQuery("REPLACE INTO config_cfg (cfg_name, cfg_value) VALUES ('sLastVolunteerTopUpResult', ?)", [
+            JSON.stringify({ ranAt: "2026-09-30 06:00:00", schedules: 3, created: 5, failed: 0, assigned: 4, skipped: 1, unqualified: 2 }),
+        ]);
+        freshAdminLogin();
+        cy.visit(PAGE_URL);
+
+        cy.get("#ministry-topup-created").should("contain", "5 new occurrences");
+        cy.get("#ministry-topup-assigned").should("contain", "4 default volunteers assigned");
+        cy.get("#ministry-topup-unqualified").should("contain", "2 defaults skipped: qualification revoked");
+        cy.get("#ministry-topup-skipped").should("contain", "1 default skipped for another reason");
+        cy.get("#ministry-topup-hint").should("contain", "default volunteer");
+        cy.dbQuery("DELETE FROM config_cfg WHERE cfg_name = 'sLastVolunteerTopUpResult'");
     });
 
     it("is reachable while V1 is active, and switching to V2 here makes Ministries appear", () => {
