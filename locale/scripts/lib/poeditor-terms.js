@@ -13,7 +13,7 @@ function sourceTerms(poText) {
     const terms = new Map();
     for (const entry of parsePoEntries(poText)) {
         if (entry.msgid === '') continue;
-        terms.set(termKey(entry.msgid, entry.msgctxt), { term: entry.msgid, context: entry.msgctxt ?? '' });
+        terms.set(termKey(entry.msgid, entry.msgctxt), { term: entry.msgid, context: entry.msgctxt ?? '', plural: entry.msgidPlural ?? '' });
     }
     return terms;
 }
@@ -29,15 +29,18 @@ function defaultDeletionLimit(remoteCount) {
  * when the file is empty or would delete more than `maxDeletions` terms.
  *
  * @param {string} poText contents of locale/messages.po
- * @param {{term: string, context?: string}[]} remoteTerms POEditor terms/list result
+ * @param {{term: string, context?: string, plural?: string}[]} remoteTerms POEditor terms/list result
  * @param {number} [maxDeletions] override for an intentional large cleanup
  */
 function planTermSync(poText, remoteTerms, maxDeletions) {
     const local = sourceTerms(poText);
-    const remote = new Map(remoteTerms.map(t => [termKey(t.term, t.context), { term: t.term, context: t.context ?? '' }]));
+    const remote = new Map(remoteTerms.map(t => [termKey(t.term, t.context), { term: t.term, context: t.context ?? '', plural: t.plural ?? '' }]));
 
     const added = [...local].filter(([key]) => !remote.has(key)).map(([, t]) => t);
     const removed = [...remote].filter(([key]) => !local.has(key)).map(([, t]) => t);
+    const updated = [...local]
+        .filter(([key, t]) => remote.has(key) && remote.get(key).plural !== t.plural)
+        .map(([key, t]) => ({ ...t, previousPlural: remote.get(key).plural }));
     const limit = Number.isInteger(maxDeletions) ? maxDeletions : defaultDeletionLimit(remote.size);
 
     let blockedReason = null;
@@ -47,7 +50,7 @@ function planTermSync(poText, remoteTerms, maxDeletions) {
         blockedReason = `would delete ${removed.length} terms (limit ${limit})`;
     }
 
-    return { added, removed, unchanged: local.size - added.length, limit, blockedReason };
+    return { added, removed, updated, unchanged: local.size - added.length - updated.length, limit, blockedReason };
 }
 
 module.exports = { planTermSync, sourceTerms, defaultDeletionLimit };

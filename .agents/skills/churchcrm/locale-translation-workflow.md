@@ -478,7 +478,7 @@ Some terms have `value = key` intentionally — they are the same in the target 
 - **Universal brand/tech names:** `GitHub`, `ChurchCRM`, `POEditor`, `API`, `URL`, `SMS`, `CSV`
 - **Words identical in target language:** e.g. `"in"` in German/Italian/Dutch, `"Minutes"` in French, `"Important"` in Romanian, `"Manual"` in Portuguese (Brazil)
 
-The upload script (`poeditor-upload-missing.js`) treats terms where `value === key` as "suspect" (possibly untranslated) and will skip them. To mark them as intentionally identical to English, add them to `locale/terms/english-ok.json`:
+The upload script (`poeditor-upload-missing.js`) treats terms where `value === key` as "suspect" (possibly untranslated) and will skip them. `--apply` records them in `locale/terms/english-ok.json` so the uploader accepts them (see "Identical-to-English values are recorded automatically" below). The generated file looks like this, abbreviated:
 
 ```json
 {
@@ -501,7 +501,7 @@ The upload script (`poeditor-upload-missing.js`) treats terms where `value === k
 
 ### Common terms that stay English across ALL locales
 
-These are always safe to add to `english-ok.json` when they appear as a term in any locale:
+These are always safe to keep identical to English (the script records them in `english-ok.json`) when they appear as a term in any locale:
 
 | Term | Reason |
 |------|--------|

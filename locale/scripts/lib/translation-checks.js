@@ -1,8 +1,9 @@
 'use strict';
 
+// Script_Extensions, not Script: marks shared between scripts (katakana ー, Arabic tatweel) have Script=Common.
 function scriptTest(name) {
     try {
-        return new RegExp(`\\p{Script=${name}}`, 'u');
+        return new RegExp(`\\p{Script_Extensions=${name}}`, 'u');
     } catch {
         return null;
     }
@@ -64,16 +65,23 @@ function scriptProblems(scripts, value) {
     return stray.size ? [`contains letters outside this locale's scripts (${scripts.join(', ')}): ${[...stray].slice(0, 4).join(' ')}`] : [];
 }
 
+// Forms that may spell the number out ("One family", "no families") instead of repeating the placeholder.
+const FORMS_WITHOUT_PLACEHOLDER = new Set(['zero', 'one', 'two']);
+
 /**
  * Problems with one incoming translation. Empty means acceptable.
- * Plural objects are checked slot by slot for script only: a "one" form may drop %d.
+ * Plural objects are checked slot by slot: script for every form, placeholders for the forms that must carry the number.
  */
 function validateTranslation(scripts, key, value) {
     if (value && typeof value === 'object') {
         const slots = Object.entries(value);
         const problems = slots.filter(([, v]) => !v).map(([slot]) => `plural form "${slot}" is empty`);
         for (const [slot, v] of slots) {
+            if (!v) continue;
             for (const p of scriptProblems(scripts, v)) problems.push(`form "${slot}" ${p}`);
+            if (v !== key && !FORMS_WITHOUT_PLACEHOLDER.has(slot)) {
+                for (const p of placeholderProblems(key, v)) problems.push(`form "${slot}" ${p}`);
+            }
         }
         return problems;
     }

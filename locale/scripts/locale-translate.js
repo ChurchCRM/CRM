@@ -217,12 +217,30 @@ function report(label, result) {
     }
 }
 
+function exitWith(message) {
+    console.error(`❌ ${message}`);
+    process.exit(1);
+}
+
 function parseTranslations(json) {
+    let parsed;
     try {
-        return JSON.parse(json);
+        parsed = JSON.parse(json);
     } catch (err) {
-        console.error(`Invalid translations JSON: ${err.message}`);
-        process.exit(1);
+        exitWith(`Invalid translations JSON: ${err.message}`);
+    }
+    if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+        exitWith('Translations must be a JSON object of term: translation pairs');
+    }
+    return parsed;
+}
+
+function readTranslationsFile(filePath) {
+    if (!filePath || filePath.startsWith('--')) exitWith('--translations-file needs a path');
+    try {
+        return fs.readFileSync(filePath, 'utf8');
+    } catch (err) {
+        exitWith(`Cannot read translations file: ${err.message}`);
     }
 }
 
@@ -243,6 +261,9 @@ function cmdApply(batchFilePath, translationsJson) {
 
 function cmdApplyBulk(translationsJson) {
     for (const [code, incoming] of Object.entries(parseTranslations(translationsJson))) {
+        if (incoming === null || typeof incoming !== 'object' || Array.isArray(incoming)) {
+            exitWith(`${code}: expected an object of term: translation pairs`);
+        }
         const files = getBatchFiles(code);
         if (files.length === 0) {
             console.error(`❌ ${code}: no batch files with untranslated terms`);
@@ -287,9 +308,15 @@ function cmdPrefill(localeMap, localeArg, dryRun) {
             const { filled, fromMemory, fromAllowlist } = prefill(loadJSON(file) || {}, translated, okSet);
             const result = applyToBatch(code, file, filled, { write: !dryRun });
             total += result.applied.length;
+            for (const { key, problems } of result.rejected) {
+                console.error(`❌ ${code}: not filled "${key.slice(0, 60)}": ${problems.join('; ')}`);
+                process.exitCode = 1;
+            }
             if (result.applied.length === 0) continue;
-            console.log(`${dryRun ? '🔍' : '✅'} ${code}: ${fromAllowlist.length} from english-ok, ${fromMemory.length} from existing translations`);
-            for (const key of fromMemory) console.log(`     ${key.slice(0, 60)} → ${String(filled[key]).slice(0, 60)}`);
+            const applied = new Set(result.applied);
+            const memoryFilled = fromMemory.filter(key => applied.has(key));
+            console.log(`${dryRun ? '🔍' : '✅'} ${code}: ${fromAllowlist.filter(key => applied.has(key)).length} from english-ok, ${memoryFilled.length} from existing translations`);
+            for (const key of memoryFilled) console.log(`     ${key.slice(0, 60)} → ${String(filled[key]).slice(0, 60)}`);
         }
     }
     console.log(`\n${dryRun ? 'Would fill' : 'Filled'} ${total} terms without a model. Review the existing-translation matches above.`);
@@ -329,7 +356,7 @@ function parseArgs() {
             case '--export':       opts.command = 'export';    break;
             case '--dry-run':      opts.dryRun = true;         break;
             case '--translations-file':
-                opts.translations = fs.readFileSync(args[++i], 'utf8');
+                opts.translations = readTranslationsFile(args[++i]);
                 break;
             case '--locale':       opts.locale       = args[++i]; break;
             case '--file':         opts.file         = args[++i]; break;

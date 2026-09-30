@@ -23,10 +23,10 @@ msgid "Copied {{count}} members"
 msgstr ""
 `;
 
-const remote = (...terms) => terms.map(([term, context = '']) => ({ term, context }));
+const remote = (...terms) => terms.map(([term, context = '', plural = '']) => ({ term, context, plural }));
 
 test('plans nothing when POEditor already matches messages.po', () => {
-    const plan = planTermSync(PO, remote(['Save'], ['Cancel'], ['Family'], ['Copied {{count}} members', 'one']));
+    const plan = planTermSync(PO, remote(['Save'], ['Cancel'], ['Family', '', 'Families'], ['Copied {{count}} members', 'one']));
     assert.deepEqual(plan.added, []);
     assert.deepEqual(plan.removed, []);
     assert.equal(plan.blockedReason, null);
@@ -63,4 +63,15 @@ test('the limit grows with the project and can be overridden for a deliberate cl
     const many = Array.from({ length: 40 }, (_, i) => [`Old ${i}`]);
     assert.equal(planTermSync(PO, remote(['Save'], ...many), 50).blockedReason, null);
     assert.match(planTermSync(PO, remote(['Save'], ...many), 10).blockedReason, /limit 10/);
+});
+
+test('a term that gains, changes or loses its plural is an update, not a no-op', () => {
+    const gained = planTermSync(PO, remote(['Save'], ['Cancel'], ['Family'], ['Copied {{count}} members', 'one']));
+    assert.deepEqual(gained.updated.map(t => [t.term, t.plural, t.previousPlural]), [['Family', 'Families', '']]);
+    const changed = planTermSync(PO, remote(['Save'], ['Cancel'], ['Family', '', 'Kin'], ['Copied {{count}} members', 'one']));
+    assert.deepEqual(changed.updated.map(t => t.previousPlural), ['Kin']);
+    const lost = planTermSync(PO.replace('msgid_plural "Families"\n', '').replace('msgstr[1] ""\n', ''),
+        remote(['Save'], ['Cancel'], ['Family', '', 'Families'], ['Copied {{count}} members', 'one']));
+    assert.deepEqual(lost.updated.map(t => [t.plural, t.previousPlural]), [['', 'Families']]);
+    assert.equal(gained.added.length + gained.removed.length, 0);
 });

@@ -103,8 +103,10 @@ Every key with `""` value needs a translation.
 ```bash
 node locale/scripts/locale-translate.js --apply \
   --file locale/terms/missing/<LOCALE>/<LOCALE>-1.json \
-  --translations '<json>'
+  --translations-file <path-to-translations.json>
 ```
+
+Write the JSON to a file (for example with a heredoc) instead of passing it inline: an apostrophe inside a translation would end a single-quoted shell argument.
 
 Several locales at once: `--apply-bulk --translations-file <path>` with `{"fr": {...}, "de": {...}}`.
 
@@ -138,7 +140,7 @@ node locale/scripts/locale-branch-manager.js --commit-and-push \
 
 ### 4e. The push uploads it
 
-Every push to a `locale/translate/**` branch runs [`Locale: upload translations`](../../.github/workflows/locale-upload-missing.yml). It uploads the locales that push changed to POEditor, then starts `Locale: sync`, which brings the translations back to `master` as a PR. Do not upload by hand, and do not commit refreshed batch files: the translation branch is never merged.
+Every push to a `locale/translate/**` branch that starts Actions (a push made with `GITHUB_TOKEN` does not) runs [`Locale: upload translations`](../../.github/workflows/locale-upload-missing.yml). It uploads the locales that push changed to POEditor, then starts `Locale: sync` (download only), which brings the translations back to `master` as a PR. Do not upload by hand, and do not commit refreshed batch files: the translation branch is never merged.
 
 Upload by hand only when that run cannot happen or failed:
 

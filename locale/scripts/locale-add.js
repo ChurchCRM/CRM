@@ -26,6 +26,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const { scriptTest } = require('./lib/translation-checks');
 
 class LanguageSetup {
     constructor() {
@@ -157,6 +158,10 @@ Examples:
     /**
      * Validate configuration
      */
+    parseScripts(value) {
+        return (value || 'Latin').split(',').map(script => script.trim()).filter(Boolean);
+    }
+
     validateConfig(config) {
         const required = ['name', 'code', 'locale', 'country', 'datatables'];
         const missing = required.filter(field => !config[field]);
@@ -169,6 +174,13 @@ Examples:
         }
 
         // Validate format
+        const scripts = this.parseScripts(config.scripts);
+        const unknown = scripts.filter(script => !scriptTest(script));
+        if (scripts.length === 0 || unknown.length > 0) {
+            console.error(`❌ Invalid --scripts: ${config.scripts}. Give one or more Unicode script names, comma-separated (e.g., Latin or Han,Hiragana,Katakana)${unknown.length ? `; unknown: ${unknown.join(', ')}` : ''}`);
+            return false;
+        }
+
         if (!/^[a-z]{2,3}$/.test(config.code)) {
             console.error(`❌ Invalid language code: ${config.code}. Should be 2-3 lowercase letters (e.g., ko, fr, zh)`);
             return false;
@@ -229,7 +241,7 @@ Examples:
             languageCode: config.code,
             countryCode: config.country,
             dataTables: config.datatables,
-            scripts: (config.scripts || 'Latin').split(',').map(script => script.trim()).filter(Boolean),
+            scripts: this.parseScripts(config.scripts),
             fullCalendar: true,
             fullCalendarLocale: config.code,
             datePicker: true,

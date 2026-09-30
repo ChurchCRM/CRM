@@ -15,7 +15,7 @@
  *   node locale/scripts/poeditor-upload-terms.js --dry-run           # show the plan only
  *   node locale/scripts/poeditor-upload-terms.js --max-deletions 120 # allow a deliberate larger cleanup
  *
- * Requires POEDITOR_TOKEN (from .env or the environment), allowed to edit terms.
+ * Requires POEDITOR_TOKEN (from .env or the environment): the same key the download and translation upload use.
  */
 
 const fs = require('fs');
@@ -99,10 +99,10 @@ async function verifyInSync(token, poText) {
     let plan;
     for (let attempt = 1; attempt <= VERIFY_ATTEMPTS; attempt++) {
         plan = planTermSync(poText, await listRemoteTerms(token));
-        if (plan.added.length === 0 && plan.removed.length === 0) return;
+        if (plan.added.length === 0 && plan.removed.length === 0 && plan.updated.length === 0) return;
         if (attempt < VERIFY_ATTEMPTS) await new Promise(resolve => setTimeout(resolve, VERIFY_WAIT_MS));
     }
-    fail(`POEditor still differs from locale/messages.po after the upload: ${plan.added.length} missing, ${plan.removed.length} not deleted`);
+    fail(`POEditor still differs from locale/messages.po after the upload: ${plan.added.length} missing, ${plan.removed.length} not deleted, ${plan.updated.length} with a different plural`);
 }
 
 function sample(terms) {
@@ -117,14 +117,14 @@ async function main() {
     const poText = fs.readFileSync(config.messagesPo, 'utf8');
     const plan = planTermSync(poText, await listRemoteTerms(token), opts.maxDeletions);
 
-    console.log(`📋 messages.po vs POEditor: ${plan.added.length} to add, ${plan.removed.length} to delete, ${plan.unchanged} unchanged (deletion limit ${plan.limit})`);
+    console.log(`📋 messages.po vs POEditor: ${plan.added.length} to add, ${plan.removed.length} to delete, ${plan.updated.length} plural changes, ${plan.unchanged} unchanged (deletion limit ${plan.limit})`);
     if (plan.added.length) console.log(`   Adding:\n${sample(plan.added)}`);
     if (plan.removed.length) console.log(`   Deleting:\n${sample(plan.removed)}`);
 
     if (plan.blockedReason) {
         fail(`${plan.blockedReason}. Nothing was uploaded. If the deletion is intended, rerun with --max-deletions ${plan.removed.length}.`);
     }
-    if (plan.added.length === 0 && plan.removed.length === 0) {
+    if (plan.added.length === 0 && plan.removed.length === 0 && plan.updated.length === 0) {
         console.log('✅ POEditor terms already match locale/messages.po; nothing to upload');
         return;
     }

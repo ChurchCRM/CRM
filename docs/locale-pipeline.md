@@ -68,14 +68,14 @@ Legacy branches `locale/update-<timestamp>`, `locale/<version>` and `locales/<ve
 | Workflow | Trigger | Does | Needs |
 |---|---|---|---|
 | `locale-generate-terms.yml` | push to `master` touching `src/**` except `src/locale/i18n/**` and `src/locale/textdomain/**`, manual | runs `npm run locale:build`, opens the terms PR | — |
-| `locale-sync-poeditor.yml` | push to `master` touching `locale/messages.po` (after a 30 minute settle), daily 00:00 UTC, manual, dispatched by the upload workflow with `upload_terms=false` | 1. `poeditor-upload-terms.js` (skips when POEditor matches; verifies after; refuses a large deletion), 2. downloads JSON/PO/MO + missing batches and opens the download PR | `POEDITOR_TOKEN` (allowed to edit terms) |
+| `locale-sync-poeditor.yml` | push to `master` touching `locale/messages.po` (after a 30 minute settle), daily 00:00 UTC, manual, dispatched by the upload workflow with `upload_terms=false` | 1. `poeditor-upload-terms.js` (skips when POEditor matches; verifies after; refuses a large deletion), 2. downloads JSON/PO/MO + missing batches and opens the download PR | `POEDITOR_TOKEN` (the one secret for download, upload and terms) |
 | `locale-upload-missing.yml` | push to `locale/translate/**` (`locale/terms/missing/**`), manual (`locales`, `sync` inputs) | runs `poeditor-upload-missing.js --yes --no-download` for the changed locales, then dispatches the sync | `POEDITOR_TOKEN`, `actions: write` |
 
 The upload workflow runs one at a time (`concurrency: locale-upload-missing`) because POEditor accepts one upload per ~20 seconds. Each push starts its own download, which queues behind any download already running.
 
 ## Merge bursts
 
-A merged terms PR does not sync at once. The sync run first waits 30 minutes (job `settle`), and every newer push to `master` touching `locale/messages.po` cancels that wait and starts it again. Several terms merges in a row therefore produce one upload and one download, from the newest `master`. Manual, scheduled and dispatched runs skip the wait; to sync immediately after a merge, run `Locale: sync` by hand. The download job queues behind any run already syncing, so two syncs never overlap.
+A merged terms PR does not sync at once. The sync run first waits 30 minutes (job `settle`), and every newer push to `master` touching `locale/messages.po` cancels that wait and starts it again. Several terms merges in a row therefore produce one upload and one download, from the newest `master`. Manual, scheduled and dispatched runs skip the wait; to sync immediately after a merge, run `Locale: sync` by hand. The download job queues behind any run already syncing, so two syncs never overlap. A run always works from the newest `master` once it holds that lock, and refuses to start from any other branch or tag, because the terms upload deletes POEditor terms that are missing from `locale/messages.po`. The publish step skips when the download branch already holds a newer download, so an older run can never overwrite a newer one.
 
 ## Terms upload guard
 

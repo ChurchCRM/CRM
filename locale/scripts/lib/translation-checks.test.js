@@ -67,6 +67,20 @@ test('checks plural objects slot by slot and lets "one" drop %d', () => {
     assert.deepEqual(validateTranslation(LATIN, 'Sent %d email', { one: '', other: '%d e-mails envoyés' }), ['plural form "one" is empty']);
 });
 
+test('plural forms that carry the number must keep the placeholders', () => {
+    const problems = validateTranslation(LATIN, '%d Members', { one: 'Un membre', other: 'Membres' });
+    assert.match(problems[0], /form "other" printf placeholder count differs/);
+    assert.deepEqual(validateTranslation(LATIN, '%d Members', { one: 'Un membre', other: '%d membres' }), []);
+    assert.deepEqual(validateTranslation(LATIN, 'Copied {{count}} members', { one: 'Un membre copié', other: '{{count}} membres copiés' }), []);
+    assert.match(validateTranslation(LATIN, 'Copied {{count}} members', { one: 'Un membre copié', other: 'Membres copiés' })[0], /form "other"/);
+});
+
+test('accepts marks shared between scripts', () => {
+    assert.deepEqual(validateTranslation(['Han', 'Hiragana', 'Katakana'], 'Server', 'サーバー'), []);
+    assert.deepEqual(validateTranslation(['Han', 'Hiragana', 'Katakana'], 'Email', 'メール'), []);
+    assert.deepEqual(validateTranslation(['Arabic'], 'Email', 'بريــد'), []);
+});
+
 test('normalizeKey ignores case and trailing punctuation', () => {
     assert.equal(normalizeKey('Missing People:'), normalizeKey('missing people'));
 });

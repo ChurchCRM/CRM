@@ -4,13 +4,13 @@ What each workflow in `.github/workflows/` does, what starts it, and what it sta
 
 ## Rules every workflow follows
 
-- **No model calls.** Actions logs on a public repo are world-readable and a model API key would be exposed to every job, so AI agents (translation, reviews, release notes) run outside Actions with their own credentials. Workflows only do deterministic work.
+- **No model calls.** Actions logs on a public repo are world-readable, and a model API key has to be handed to the job or action that calls it, where its steps, forked-PR runs and any leaked log could reach it. So AI agents (translation, reviews, release notes) run outside Actions with their own credentials. Workflows only do deterministic work.
 - **Name the stage.** A workflow's display name is `<Area>: <what>` (`Locale: sync`). Its file name is `<area>-<what>.yml`. Rename the older names below when you next touch them.
-- **Least privilege.** Every workflow sets a top-level `permissions:` (default `contents: read`) and raises it per job only where needed.
+- **Least privilege.** Every workflow except `marketing-capture-assets.yml` (see [Still to do](#still-to-do)) sets a top-level `permissions:` (default `contents: read`) and raises it per job only where needed.
 - **One chain, no loops.** A workflow may start the next stage; nothing may start an earlier one. Triggers are scoped by `paths:` to what only the previous stage produces (see [Chains](#chains-and-why-they-do-not-loop)).
 - **Settle bursts.** A run started by a merge waits 30 minutes and restarts the wait on each newer merge, so several merges become one run (`Locale: sync`).
 - **Idempotent steps.** A re-run, a manual run and a scheduled run must be safe. A trigger decides *when* a workflow runs, not *what* it does.
-- **Events from `GITHUB_TOKEN` do not chain.** A push, PR or merge made with `GITHUB_TOKEN` starts no other workflow (only `workflow_dispatch` / `repository_dispatch` do). Stages that must chain are started by a person's merge, a GitHub App, or an explicit `gh workflow run`.
+- **Events from `GITHUB_TOKEN` do not chain.** A push, PR or merge made with `GITHUB_TOKEN` starts no other workflow (only `workflow_dispatch` / `repository_dispatch` do). One exception: `pull_request` events (`opened`, `synchronize`, `reopened`) on a PR that `GITHUB_TOKEN` opened or updated create runs that wait for approval instead of starting. Stages that must chain are started by a person's merge, a GitHub App, or an explicit `gh workflow run`.
 - **Queue what publishes, cancel what is superseded.** Builds and checks cancel an older run when a newer one starts. `Locale: sync` cancels only its settle wait and queues the work itself. Release, bookkeeping, Docker publish and `Locale: upload translations` queue instead (`cancel-in-progress: false`).
 
 ## Branches
@@ -53,7 +53,7 @@ The prefix says who made the branch and what it is for.
 | Workflow (file) | Starts on | Does | Needs |
 |---|---|---|---|
 | `Locale: terms` (`locale-generate-terms.yml`) | push to `master` touching `src/**` except `src/locale/i18n/**` and `src/locale/textdomain/**`; manual | Extracts new strings into `locale/messages.po` and opens the terms PR | — |
-| `Locale: sync` (`locale-sync-poeditor.yml`) | push to `master` touching `locale/messages.po`, after a 30 minute settle that restarts on each new push; 00:00 UTC daily; manual; dispatched by `Locale: upload translations` with `upload_terms=false` (neither waits) | 1. upload terms, delete terms no longer in the file and verify POEditor matches, 2. download and open the download PR. No translation happens here | `POEDITOR_TOKEN` |
+| `Locale: sync` (`locale-sync-poeditor.yml`) | push to `master` touching `locale/messages.po`, after a 30 minute settle that restarts on each new push; 00:00 UTC daily; manual; dispatched by `Locale: upload translations` with `upload_terms=false` (neither waits) | 1. upload terms, delete terms no longer in the file and verify POEditor matches, 2. download and open the download PR. No translation happens here. Runs from `master` only, because the terms upload deletes terms missing from the file | `POEDITOR_TOKEN` |
 | `Locale: upload translations` (`locale-upload-missing.yml`) | push to `locale/translate/**` touching `locale/terms/missing/**`; manual | Uploads the locales that push changed, then starts `Locale: sync` download-only | `POEDITOR_TOKEN`, `actions: write` |
 
 ### Release

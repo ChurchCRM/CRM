@@ -70,8 +70,18 @@ jobs:
     env:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
+    - name: Require master
+      # sync_terms deletes POEditor terms that are missing from locale/messages.po, so an older branch or
+      # tag must never be the source of that file
+      if: github.ref != 'refs/heads/master'
+      run: |
+        echo "::error::Locale: sync must run from master (this run is on $GITHUB_REF)"
+        exit 1
+
     - name: Checkout repository
       uses: actions/checkout@v7
+      with:
+        ref: master
 
     - name: Display operation mode
       run: |
@@ -129,16 +139,24 @@ jobs:
     runs-on: ubuntu-24.04
     outputs:
       has_changes: ${{ steps.changes.outputs.has_changes }}
+      ref_sha: ${{ steps.snapshot.outputs.sha }}
+      downloaded_at: ${{ steps.snapshot.outputs.at }}
     env:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v7
       with:
-        # after the settle wait, sync from the newest master, not the commit that started the run
-        ref: ${{ github.event_name == 'push' && github.ref || github.sha }}
+        # the newest master once this job holds the work lock, not the commit that started the run
+        ref: master
         # regression check compares against HEAD~1
         fetch-depth: 2
+
+    - name: Record the master commit and time this sync is based on
+      id: snapshot
+      run: |
+        echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+        echo "at=$(date -u +%s)" >> "$GITHUB_OUTPUT"
 
     - uses: ./.github/actions/checkout-node-npm
 
@@ -293,6 +311,11 @@ jobs:
     needs: [setup, download]
     # audit failure after the artifact upload must not block the PR
     if: ${{ !cancelled() && needs.download.outputs.has_changes == 'true' }}
+    # One publisher at a time. This job is kept separate from `download` so the write token never reaches the
+    # POEditor token or npm; the freshness step below keeps an older snapshot from replacing a newer one.
+    concurrency:
+      group: locale-sync-publish
+      cancel-in-progress: false
     timeout-minutes: 10
     runs-on: ubuntu-24.04
     permissions:
@@ -302,18 +325,39 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v7
       with:
-        ref: ${{ github.event_name == 'push' && github.ref || github.sha }}
+        # the master commit the download was based on
+        ref: ${{ needs.download.outputs.ref_sha }}
         token: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Skip when a newer sync already published
+      id: fresh
+      env:
+        VERSION: ${{ needs.setup.outputs.version }}
+        DOWNLOADED_AT: ${{ needs.download.outputs.downloaded_at }}
+      run: |
+        published=""
+        if git fetch --depth=1 origin "locale/download/$VERSION" 2>/dev/null; then
+          published=$(git log -1 --format=%B FETCH_HEAD | sed -n 's/^Downloaded-at: //p' | head -n 1)
+        fi
+        if [[ "$published" =~ ^[0-9]+$ ]] && [ "$published" -gt "$DOWNLOADED_AT" ]; then
+          echo "The branch already holds a newer download ($published > $DOWNLOADED_AT); not replacing it with an older one"
+          echo "stale=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "stale=false" >> "$GITHUB_OUTPUT"
+        fi
+
     - name: Replace locale files with downloaded changes
+      if: steps.fresh.outputs.stale != 'true'
       run: rm -rf src/locale/i18n src/locale/textdomain locale/terms/missing
 
     - name: Download locale changes
+      if: steps.fresh.outputs.stale != 'true'
       uses: actions/download-artifact@v8.0.1
       with:
         name: locale-changes
 
     - name: Create Pull Request
+      if: steps.fresh.outputs.stale != 'true'
       uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -329,6 +373,8 @@ jobs:
           - Updated translations from POEditor
           - Version: ${{ needs.setup.outputs.version }}
           - Triggered: ${{ needs.setup.outputs.trigger }}
+
+          Downloaded-at: ${{ needs.download.outputs.downloaded_at }}
         body: |
           ## 🌍 Automatic Locale Update
           
