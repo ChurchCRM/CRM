@@ -501,7 +501,8 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         group.append(new Option(team.classGroupName ?? "", String(team.classGroupId)));
       }
       mode.value = "class";
-      group.value = String(team.classGroupId);
+      const upcoming = (classes ?? []).find((row) => row.groupId === team.classGroupId)?.upcomingCount ?? 0;
+      group.value = upcoming > 0 ? String(team.classGroupId) : "";
       modeFromTeamClass = true;
     } else if (modeFromTeamClass) {
       mode.value = "event_type";
