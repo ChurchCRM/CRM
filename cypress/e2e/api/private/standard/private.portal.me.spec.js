@@ -346,9 +346,12 @@ describe("Member Portal API — /api/portal/me and /api/portal/family", () => {
             getPhoto("/api/portal/me/photo").its("status").should("eq", 404);
         });
 
-        it("serves the photo of somebody in the member's own family", () => {
+        it("serves the photo of somebody in the member's own family, never from the browser cache", () => {
             portalLogin(adultUser);
-            getPhoto(`/api/portal/family/members/${FAMILY_MEMBER_WITH_PHOTO}/photo`).then(expectImage);
+            getPhoto(`/api/portal/family/members/${FAMILY_MEMBER_WITH_PHOTO}/photo`).then((response) => {
+                expectImage(response);
+                expect(response.headers["cache-control"]).to.contain("no-store");
+            });
         });
 
         it("hands out family photo URLs the member's own session can fetch", () => {

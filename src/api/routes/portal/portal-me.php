@@ -400,8 +400,10 @@ $app->group('/portal', function (RouteCollectorProxy $group) use (
             return SlimUtils::renderErrorJSON($response, gettext('No photo has been uploaded for this person.'), [], 404);
         }
 
-        return $portalPhoto($response, (int) $member->getId());
-    })->add(new Cache('private', Photo::CACHE_DURATION_SECONDS));
+        // Not cached: on a shared browser the next member signed in could be served it
+        // without the family check running again.
+        return $portalPhoto($response, (int) $member->getId())->withHeader('Cache-Control', 'private, no-store');
+    });
 
     /**
      * @OA\Post(
