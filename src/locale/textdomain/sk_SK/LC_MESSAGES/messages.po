@@ -14908,10 +14908,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Vybraný súbor prekračuje maximálnu veľkosť nahrávania tohto servera"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Na dnes nie sú naplánované žiadne udalosti"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Pri získavaní požadovaného objektu nastala chyba"
 

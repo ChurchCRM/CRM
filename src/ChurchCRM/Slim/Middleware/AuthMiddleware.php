@@ -20,6 +20,10 @@ class AuthMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        // An API-key provider must never outlive its own request, even under a
+        // long-running PHP worker that reuses the process.
+        AuthenticationManager::clearRequestProvider();
+
         // Construct the full public API path including any subdirectory installation
         // Examples: '/api/public' (root install), '/crm/api/public' (subdirectory install)
         $publicApiPath = SystemURLs::getRootPath() . '/api/public';

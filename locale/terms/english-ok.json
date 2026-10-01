@@ -6,7 +6,8 @@
     "Kiosk",
     "Minimum",
     "SHA1 Hash",
-    "in"
+    "in",
+    "Content Security Policy"
   ],
   "cs": [
     "AM / PM",
@@ -84,11 +85,13 @@
     "Server",
     "Test",
     "risk",
-    "Link"
+    "Link",
+    "Content Security Policy"
   ],
   "fi": [
     "Azure",
-    "SHA1 Hash"
+    "SHA1 Hash",
+    "Content Security Policy"
   ],
   "fil": [
     "(PHP default)",
@@ -496,7 +499,8 @@
     "Access",
     "Check-out",
     "Preview",
-    "Teller"
+    "Teller",
+    "Mailing Address"
   ],
   "fr": [
     "AM / PM",
@@ -583,7 +587,8 @@
     "Link",
     "Items",
     "Planning",
-    "Labels"
+    "Labels",
+    "Content Security Policy"
   ],
   "pt": [
     "AM / PM",
@@ -714,7 +719,8 @@
     "Test",
     "Vonage Dashboard",
     "Data",
-    "Auto"
+    "Auto",
+    "Content Security Policy"
   ],
   "pl": [
     "4. Kiosk",
@@ -772,7 +778,8 @@
     "risk",
     "Offline",
     "Data",
-    "Auto"
+    "Auto",
+    "Content Security Policy"
   ],
   "sw": [
     "AM / PM",
@@ -839,7 +846,8 @@
     "am / pm",
     "in",
     "Code",
-    "Offline"
+    "Offline",
+    "Content Security Policy"
   ],
   "hr": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",

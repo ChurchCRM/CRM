@@ -12,14 +12,21 @@ use ChurchCRM\Utils\InputUtils;
  * @var string $sPageTitle
  * @var string $sPageSubtitle
  * @var array  $aBreadcrumbs
- * @var array  $fundsData    Array of fund rows: id, name, description, active,
+ * @var array  $fundsData    Array of fund rows: id, name, description, category, active,
  *                            order, hasPledges, isFirst, isLast
+ * @var string[] $categories Distinct existing category labels
  */
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="container-xl">
+
+    <datalist id="fundCategoryOptions">
+        <?php foreach ($categories as $category): ?>
+            <option value="<?= InputUtils::escapeAttribute($category) ?>"></option>
+        <?php endforeach; ?>
+    </datalist>
 
     <!-- Edit Fund Modal -->
     <div class="modal fade" id="editFundModal" tabindex="-1" aria-labelledby="editFundModalLabel" aria-hidden="true">
@@ -39,6 +46,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="mb-3">
                         <label for="editFundDesc" class="form-label"><?= gettext('Description') ?></label>
                         <input type="text" class="form-control" id="editFundDesc" maxlength="100">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editFundCategory" class="form-label"><?= gettext('Category') ?></label>
+                        <input type="text" class="form-control" id="editFundCategory" maxlength="50" list="fundCategoryOptions"
+                               placeholder="<?= InputUtils::escapeAttribute(gettext('Optional — pick or type a new category')) ?>">
                     </div>
                     <div class="mb-3">
                         <div class="form-check form-switch">
@@ -68,15 +80,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="row g-3 align-items-end">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="newFundName" class="form-label"><?= gettext('Name') ?> <span class="text-danger">*</span></label>
                     <input type="text" id="newFundName" class="form-control" maxlength="30"
                            placeholder="<?= InputUtils::escapeAttribute(gettext('Fund name')) ?>">
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-3">
                     <label for="newFundDesc" class="form-label"><?= gettext('Description') ?></label>
                     <input type="text" id="newFundDesc" class="form-control" maxlength="100"
                            placeholder="<?= InputUtils::escapeAttribute(gettext('Optional description')) ?>">
+                </div>
+                <div class="col-md-3">
+                    <label for="newFundCategory" class="form-label"><?= gettext('Category') ?></label>
+                    <input type="text" id="newFundCategory" class="form-control" maxlength="50" list="fundCategoryOptions"
+                           placeholder="<?= InputUtils::escapeAttribute(gettext('Optional')) ?>">
                 </div>
                 <div class="col-md-3">
                     <button type="button" class="btn btn-success w-100" id="addNewFund">
@@ -87,6 +104,32 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div id="addFundError" class="alert alert-danger mt-3 d-none"></div>
         </div>
     </div>
+
+    <?php if (!empty($categories)): ?>
+    <!-- Manage Categories Card -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="card-title"><i class="fa-solid fa-tags me-2"></i><?= gettext('Fund Categories') ?></h3>
+        </div>
+        <div class="list-group list-group-flush">
+            <?php foreach ($categories as $category): ?>
+                <div class="list-group-item d-flex align-items-center">
+                    <span><?= InputUtils::escapeHTML($category) ?></span>
+                    <span class="ms-auto">
+                        <button type="button" class="btn btn-sm btn-ghost-secondary category-rename-btn"
+                                data-category="<?= InputUtils::escapeAttribute($category) ?>">
+                            <i class="fa-solid fa-pencil me-1"></i><?= gettext('Rename') ?>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-ghost-danger category-delete-btn"
+                                data-category="<?= InputUtils::escapeAttribute($category) ?>">
+                            <i class="fa-solid fa-trash me-1"></i><?= gettext('Delete') ?>
+                        </button>
+                    </span>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <!-- Existing Funds Card -->
     <div class="card">
@@ -114,6 +157,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <tr>
                                 <th><?= gettext('Name') ?></th>
                                 <th><?= gettext('Description') ?></th>
+                                <th><?= gettext('Category') ?></th>
                                 <th><?= gettext('Active') ?></th>
                                 <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                             </tr>
@@ -132,10 +176,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     // Escape for data-* attribute JSON embedding
                                     $nameAttr     = InputUtils::escapeAttribute($fund['name']);
                                     $descAttr     = InputUtils::escapeAttribute($fund['description']);
+                                    $catHtml      = InputUtils::escapeHTML($fund['category']);
+                                    $catAttr      = InputUtils::escapeAttribute($fund['category']);
                                 ?>
                                 <tr>
                                     <td><?= $fundName ?></td>
                                     <td><?= $fundDesc !== '' ? $fundDesc : '<span class="text-muted">—</span>' ?></td>
+                                    <td><?= $catHtml !== '' ? $catHtml : '<span class="text-muted">—</span>' ?></td>
                                     <td>
                                         <?php if ($isActive): ?>
                                             <span class="badge bg-success-lt text-success">
@@ -160,8 +207,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                         data-fund-id="<?= $fundId ?>"
                                                         data-fund-name="<?= $nameAttr ?>"
                                                         data-fund-desc="<?= $descAttr ?>"
+                                                        data-fund-category="<?= $catAttr ?>"
                                                         data-fund-active="<?= $isActive ? 'true' : 'false' ?>">
                                                     <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
+                                                </button>
+                                                <button type="button" class="dropdown-item fund-toggle-active-btn"
+                                                        data-fund-id="<?= $fundId ?>"
+                                                        data-fund-active="<?= $isActive ? 'true' : 'false' ?>">
+                                                    <?php if ($isActive): ?>
+                                                        <i class="fa-solid fa-circle-xmark me-2"></i><?= gettext('Deactivate') ?>
+                                                    <?php else: ?>
+                                                        <i class="fa-solid fa-circle-check me-2"></i><?= gettext('Activate') ?>
+                                                    <?php endif; ?>
                                                 </button>
                                                 <a href="<?= SystemURLs::getRootPath() ?>/finance/fund/<?= $fundId ?>/contributors" class="dropdown-item">
                                                     <i class="fa-solid fa-rectangle-list me-2"></i><?= gettext('View Details') ?>
@@ -226,6 +283,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             savedOk:          <?= InputUtils::jsonEncodeForScript(gettext('Fund saved successfully.')) ?>,
             addedOk:          <?= InputUtils::jsonEncodeForScript(gettext('Fund added successfully.')) ?>,
             reorderedOk:      <?= InputUtils::jsonEncodeForScript(gettext('Fund order updated.')) ?>,
+            activatedOk:      <?= InputUtils::jsonEncodeForScript(gettext('Fund activated.')) ?>,
+            deactivatedOk:    <?= InputUtils::jsonEncodeForScript(gettext('Fund deactivated.')) ?>,
+            renameLabel: <?= InputUtils::jsonEncodeForScript(gettext('Rename')) ?>,
+            renameCategoryTitle: <?= InputUtils::jsonEncodeForScript(gettext('Rename Category')) ?>,
+            renameCategoryPrompt: <?= InputUtils::jsonEncodeForScript(gettext('New category name (an existing name merges the two)')) ?>,
+            deleteCategoryTitle: <?= InputUtils::jsonEncodeForScript(gettext('Delete Category')) ?>,
+            deleteCategoryConfirm: <?= InputUtils::jsonEncodeForScript(gettext('Funds in this category will become uncategorized. The funds themselves are not deleted.')) ?>,
+            categoryUpdatedOk: <?= InputUtils::jsonEncodeForScript(gettext('Category updated.')) ?>,
             errRequired:      <?= InputUtils::jsonEncodeForScript(gettext('Fund name is required.')) ?>,
             errServer:        <?= InputUtils::jsonEncodeForScript(gettext('An error occurred. Please try again.')) ?>
         }

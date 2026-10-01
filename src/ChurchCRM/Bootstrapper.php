@@ -125,7 +125,6 @@ class Bootstrapper
         }
 
         self::configureLogging();
-        self::configureUserEnvironment();
         self::configureLocale();
         if (!self::isDBCurrent()) {
             $dbVersion = VersionUtils::getDBVersion();
@@ -475,12 +474,20 @@ class Bootstrapper
         // for root-level installs where getRootPath() returns an empty string.
         $cookiePath = SystemURLs::getRootPath() ?: '/';
 
+        // A session id the server did not issue is refused, not adopted (session fixation).
+        ini_set('session.use_strict_mode', '1');
+        ini_set('session.use_only_cookies', '1');
+
         session_set_cookie_params([
             'httponly' => true,
             'samesite' => 'Lax',
             'secure'   => $isHttps,
             'path'     => $cookiePath,
         ]);
+
+        // iSessionTimeout is enforced by the app but SystemConfig is not loaded yet; PHP's 1440s default
+        // would delete idle sessions first (#8959).
+        ini_set('session.gc_maxlifetime', (string) (7 * 24 * 3600));
 
         // Initialize the session
         $sessionName = self::SESSION_PREFIX . hash("md5", SystemURLs::getDocumentRoot());
@@ -564,30 +571,6 @@ class Bootstrapper
                 1 => 'vendor',
             ],
         ];
-    }
-
-    private static function configureUserEnvironment(): void
-    {
-        global $cnInfoCentral;
-        if (AuthenticationManager::validateUserSessionIsActive(false)) { // set on POST to /session/begin
-            // Load user variables from user config table.
-            $sSQL = 'SELECT ucfg_name, ucfg_value AS value '
-            . "FROM userconfig_ucfg WHERE ucfg_per_ID='" . AuthenticationManager::getCurrentUser()->getId() . "'";
-            $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
-            if ($rsConfig) {
-                // Initialize user config array if not exists
-                if (!isset($_SESSION['user_config'])) {
-                    $_SESSION['user_config'] = [];
-                }
-                
-                while ([$ucfg_name, $value] = mysqli_fetch_row($rsConfig)) {
-                    // Store user configuration safely in session array
-                    // This replaces the dangerous variable-variables pattern
-                    $_SESSION['user_config'][$ucfg_name] = $value;
-                    $_SESSION[$ucfg_name] = $value; // Keep for backward compatibility until all references are updated
-                }
-            }
-        }
     }
 
     public static function systemFailure($message, $header = 'Setup failure'): void

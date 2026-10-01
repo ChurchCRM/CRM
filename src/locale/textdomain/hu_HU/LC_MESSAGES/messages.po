@@ -14948,10 +14948,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "A kiválasztott fájl meghaladja a szerver maximális feltöltési korlátját:"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Ma nincs tervezett esemény"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Probléma merült fel a kért objektum lekérésekor"
 

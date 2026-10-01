@@ -14981,10 +14981,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "所选文件超过此服务器的最大上载大小"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "今日没有安排活动"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "检索请求对象时出现问题"
 
@@ -18853,4 +18849,236 @@ msgstr "查找发生此错误时周围的错误，并下载相关日志文件并
 #: 
 msgid "system logs"
 msgstr "系统日志"
+
+#: 
+msgid "Access Control & Security"
+msgstr "访问控制和安全"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "允许记录不可税收抵扣的款项（例如商品销售）"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "允许未认证访问公共事件（用于嵌入日历）"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "允许访客通过公开注册页面创建自己的家庭记录"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "自动发送生日电子邮件（需要后台作业调度程序）"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "生日问候电子邮件"
+
+#: 
+msgid "Communication & Email"
+msgstr "通信和电子邮件"
+
+#: 
+msgid "Content Security Policy"
+msgstr "内容安全策略"
+
+#: 
+msgid "Email System"
+msgstr "电子邮件系统"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "为您的组织启用或禁用功能"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "启用/禁用主导航中的事件部分"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "启用/禁用财务菜单和所有财务功能（存款、付款、报告）"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "启用/禁用筹款菜单"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "强制执行严格的CSP标头以防止XSS攻击"
+
+#: 
+msgid "Events Module"
+msgstr "事件模块"
+
+#: 
+msgid "Feature Toggles"
+msgstr "功能开关"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "功能开关控制ChurchCRM中哪些模块和功能可用。更改立即生效。"
+
+#: 
+msgid "Finance Features"
+msgstr "财务功能"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "在快速全局搜索中包含地址"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "在快速全局搜索中包含日历事件"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "在快速全局搜索中包含自定义家庭属性"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "在快速全局搜索中包含存款"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "在快速全局搜索中包含家庭"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "在快速全局搜索中包含事工"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "在快速全局搜索中包含付款"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "在快速全局搜索中包含人员"
+
+#: 
+msgid "Invalid setting"
+msgstr "无效设置"
+
+#: 
+msgid "Lost Password Link"
+msgstr "丢失密码链接"
+
+#: 
+msgid "Manage All Features"
+msgstr "管理所有功能"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "电子邮件发送的主开关。密码重置和通知需要。"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "不可抵扣的款项"
+
+#: 
+msgid "Primary Modules"
+msgstr "主要模块"
+
+#: 
+msgid "Public Calendar API"
+msgstr "公共日历API"
+
+#: 
+msgid "Saved"
+msgstr "已保存"
+
+#: 
+msgid "Search Families"
+msgstr "搜索家庭"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "搜索家庭自定义属性"
+
+#: 
+msgid "Search Settings"
+msgstr "搜索设置"
+
+#: 
+msgid "Self-Registration"
+msgstr "自助注册"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "在登录屏幕上显示\"忘记密码\"选项（允许用户自行重置）"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "在侧边栏中显示/隐藏主日学模块"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "无法停用唯一可以登录的管理员"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "无法将唯一可以登录的管理员标记为已故"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "已故——无法登录"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "输入第二个地址后再将其标记为邮寄地址"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "不活跃——无法登录"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "邮件发送到第二个地址；主地址仍然是用于地图和方向的物理位置。"
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "邮件发送到此地址而不是主地址"
+
+#: 
+msgid "Mailing Address"
+msgstr "邮寄地址"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "如果不同，邮寄地址"
+
+#: 
+msgid "Primary Address"
+msgstr "主地址"
+
+#: 
+msgid "Receives Mail"
+msgstr "接收邮件"
+
+#: 
+msgid "Second Address"
+msgstr "第二地址"
+
+#: 
+msgid "Second Home"
+msgstr "第二住所"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "关联的人已故或不活跃。登录、会话和API密钥被阻止，直到该人重新激活。"
+
+#: 
+msgid "This is the mailing address"
+msgstr "这是邮寄地址"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "此人已故或不活跃，因此此帐户无法登录"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "只有管理员可以删除有登录名的人。"
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "最后一个管理员无法删除。"
 

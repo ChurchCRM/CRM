@@ -47,6 +47,7 @@ $app->get('/funds', function (Request $request, Response $response): Response {
             'id'          => $id,
             'name'        => $fund->getName(),
             'description' => $fund->getDescription(),
+            'category'    => (string) $fund->getCategory(),
             'active'      => $fund->getActive() === 'true',
             'order'       => (int) $fund->getOrder(),
             'hasPledges'  => isset($pledgedFundIds[$id]),
@@ -67,6 +68,7 @@ $app->get('/funds', function (Request $request, Response $response): Response {
             [gettext('Donation Funds')],
         ]),
         'fundsData'     => $fundsData,
+        'categories'    => $service->getCategories(),
     ];
 
     return $renderer->render($response, 'funds/index.php', $pageArgs);

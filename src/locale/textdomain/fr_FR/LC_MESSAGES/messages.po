@@ -14919,10 +14919,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Le fichier sélectionné dépasse la capacité de téléchargement du serveur de"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "Aucun événement n'est prévu aujourd'hui"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Il y a eu un problème lors de la récupération de l'objet demandé"
 

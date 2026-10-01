@@ -14887,10 +14887,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "തിരഞ്ഞെടുത്ത ഫയൽ ഈ സർവ്വറിന്റെ പരമാവധി അപ്‌ലോഡ് വലുപ്പം കവിഞ്ഞു"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "ഇന്ന് ഷെഡ്യൂൾ ചെയ്ത പരിപാടികൾ ഒന്നുമില്ല"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "അഭ്യർത്ഥിച്ച ഒബ്ജക്ട് ലഭ്യമാക്കുന്നതിൽ ഒരു പ്രശ്‌നം ഉണ്ടായി"
 
@@ -18765,4 +18761,236 @@ msgstr "ഇത് സംഭവിച്ച സമയത്തിന് ചുറ
 #: 
 msgid "system logs"
 msgstr "സിസ്റ്റം ലോഗുകൾ"
+
+#: 
+msgid "Access Control & Security"
+msgstr "പ്രവേശന നിയന്ത്രണവും സുരക്ഷയും"
+
+#: 
+msgid "Allow recording non-tax-deductible payments (e.g., merchandise sales)"
+msgstr "നികുതി കിഴിവില്ലാത്ത പേയ്‌മെന്റുകൾ രേഖപ്പെടുത്താൻ അനുവദിക്കുക (ഉദാ., ചരക്ക് വിൽപ്പനം)"
+
+#: 
+msgid "Allow unauthenticated access to public events (for embedding calendars)"
+msgstr "പൊതു ഇവന്റുകളിലേക്ക് ലോഗിൻ ചെയ്യാതെയുള്ള പ്രവേശനം അനുവദിക്കുക (കലണ്ടറുകൾ എംബെഡ് ചെയ്യാൻ)"
+
+#: 
+msgid "Allow visitors to create their own family records via public registration page"
+msgstr "സന്ദർശകരെ പൊതു രജിസ്ട്രേഷൻ പേജിലൂടെ സ്വന്തം കുടുംബ റെക്കോർഡുകൾ സൃഷ്ടിക്കാൻ അനുവദിക്കുക"
+
+#: 
+msgid "Automatically send birthday emails (requires background job scheduler)"
+msgstr "ജന്മദിന ഇമെയിലുകൾ സ്വയമായി അയയ്ക്കുക (പശ്ചാത്തല ജോബ് ഷെഡ്യൂലർ ആവശ്യമാണ്)"
+
+#: 
+msgid "Birthday Greeting Emails"
+msgstr "ജന്മദിന ആശംസ ഇമെയിലുകൾ"
+
+#: 
+msgid "Communication & Email"
+msgstr "ആശയവിനിമയവും ഇമെയിലും"
+
+#: 
+msgid "Content Security Policy"
+msgstr "ഉള്ളടക്ക സുരക്ഷാ നയം"
+
+#: 
+msgid "Email System"
+msgstr "ഇമെയിൽ സിസ്റ്റം"
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "നിങ്ങളുടെ സംഘടനയ്‌ക്കായി ഫീച്ചറുകൾ സജ്ജമാക്കുക അല്ലെങ്കിൽ പ്രവർത്തനരഹിതമാക്കുക"
+
+#: 
+msgid "Enable/disable the Events section in main navigation"
+msgstr "പ്രധാന നാവിഗേഷനിൽ ഇവന്റുകൾ വിഭാഗം സജ്ജമാക്കുക/പ്രവർത്തനരഹിതമാക്കുക"
+
+#: 
+msgid "Enable/disable the Finance menu and all finance features (deposits, payments, reports)"
+msgstr "ധനകാര്യ മെനു കൾ എല്ലാ ധനകാര്യ ഫീച്ചറുകൾ സജ്ജമാക്കുക/പ്രവർത്തനരഹിതമാക്കുക (നിക്ഷേപം, പേയ്‌മെന്റുകൾ, റിപ്പോർട്ടുകൾ)"
+
+#: 
+msgid "Enable/disable the Fundraiser menu"
+msgstr "ധനസമ്പാദന മെനു സജ്ജമാക്കുക/പ്രവർത്തനരഹിതമാക്കുക"
+
+#: 
+msgid "Enforce strict CSP headers to protect against XSS attacks"
+msgstr "XSS ആക്രമണങ്ങളിൽ നിന്ന് സുരക്ഷിതമാകാൻ കർശനമായ CSP ഹെഡറുകൾ പ്രയോഗിക്കുക"
+
+#: 
+msgid "Events Module"
+msgstr "ഇവന്റുകൾ മൊഡ്യൂൾ"
+
+#: 
+msgid "Feature Toggles"
+msgstr "ഫീച്ചർ ടോഗിൾ"
+
+#: 
+msgid "Feature toggles control which modules and features are available in ChurchCRM. Changes take effect immediately."
+msgstr "ഫീച്ചർ ടോഗിൽ ChurchCRM-ൽ ഏതൊരു മൊഡ്യൂൾ കൂടാതെ ഫീച്ചറുകൾ ലഭ്യമാണ് എന്ന് നിയന്ത്രിക്കുന്നു. മാറ്റങ്ങൾ ഉടനെ സ്വീകരിക്കുന്നു."
+
+#: 
+msgid "Finance Features"
+msgstr "ധനകാര്യ ഫീച്ചറുകൾ"
+
+#: 
+msgid "Include addresses in quick global search"
+msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ വിലാസങ്ങൾ ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Include calendar events in quick global search"
+msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ കലണ്ടർ ഇവന്റുകൾ ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Include custom family properties in quick global search"
+msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ കസ്റ്റം കുടുംബ സ്വത്തുകൾ ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Include deposits in quick global search"
+msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ നിക്ഷേപം ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Include families in quick global search"
+msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ കുടുംബങ്ങൾ ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Include groups in quick global search"
+msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ സേവകരെ ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Include payments in quick global search"
+msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ പേയ്‌മെന്റുകൾ ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Include people in quick global search"
+msgstr "വേഗത്തിലുള്ള ആഗോള തിരയലിൽ ആളുകൾ ഉൾപ്പെടുത്തുക"
+
+#: 
+msgid "Invalid setting"
+msgstr "അസാധുവായ സെറ്റിംഗ്"
+
+#: 
+msgid "Lost Password Link"
+msgstr "നഷ്ടപ്പെട്ട പാസ്‌വേഡ് ലിങ്ക്"
+
+#: 
+msgid "Manage All Features"
+msgstr "എല്ലാ ഫീച്ചറുകൾ കൈകാര്യം ചെയ്യുക"
+
+#: 
+msgid "Master toggle for email sending. REQUIRED for password resets and notifications"
+msgstr "ഇമെയിൽ അയയ്‌ക്കുന്നതിനുള്ള പ്രധാന ടോഗിൾ. പാസ്‌വേഡ് പുനഃസജ്ജീകരണ കൂടാതെ അറിയിപ്പുകൾക്കായി ആവശ്യമാണ്"
+
+#: 
+msgid "Non-Deductible Payments"
+msgstr "നികുതി കിഴിവില്ലാത്ത പേയ്‌മെന്റുകൾ"
+
+#: 
+msgid "Primary Modules"
+msgstr "പ്രാഥമിക മൊഡ്യൂലുകൾ"
+
+#: 
+msgid "Public Calendar API"
+msgstr "പൊതു കലണ്ടർ API"
+
+#: 
+msgid "Saved"
+msgstr "സൂക്ഷിപ്പിച്ചത്"
+
+#: 
+msgid "Search Families"
+msgstr "കുടുംബങ്ങൾ തിരയുക"
+
+#: 
+msgid "Search Family Custom Properties"
+msgstr "കുടുംബ കസ്റ്റം സ്വത്തുകൾ തിരയുക"
+
+#: 
+msgid "Search Settings"
+msgstr "തിരയുവാനുള്ള സജ്ജീകരണങ്ങൾ"
+
+#: 
+msgid "Self-Registration"
+msgstr "സ്വയം രജിസ്ട്രേഷൻ"
+
+#: 
+msgid "Show \"Lost Password\" option on login screen (allows user self-reset)"
+msgstr "ലോഗിൻ സ്ക്രീനിൽ \"നഷ്ടപ്പെട്ട പാസ്‌വേഡ്\" ഓപ്ഷൻ പ്രദർശിപ്പിക്കുക (ഉപയോക്താവ് സ്വയം-പുനഃസജ്ജീകരണം അനുവദിക്കുന്നു)"
+
+#: 
+msgid "Show/hide the Sunday School module in sidebar"
+msgstr "സൈഡ്‌ബാറിൽ ഞായറാഴ്ച സ്കൂൾ മൊഡ്യൂൾ പ്രദർശിപ്പിക്കുക/ഇരുപ്പിക്കുക"
+
+#: 
+msgid "Can't deactivate the only administrator who can sign in"
+msgstr "സൈൻ ഇൻ ചെയ്യാൻ കഴിയുന്ന ഏക ഭരണാധികാരിയെ നിഷ്‍ക്രിയമാക്കാൻ കഴിയില്ല"
+
+#: 
+msgid "Can't mark the only administrator who can sign in as deceased"
+msgstr "സൈൻ ഇൻ ചെയ്യാൻ കഴിയുന്ന ഏക ഭരണാധികാരിയെ മരിച്ച എന്നാണ് മുദ്രയിടാൻ കഴിയില്ല"
+
+#: 
+msgid "Deceased — cannot sign in"
+msgstr "മരിച്ച — സൈൻ ഇൻ ചെയ്യാൻ കഴിയില്ല"
+
+#: 
+msgid "Enter a second address before marking it as the mailing address"
+msgstr "മെയിലിംഗ് അഡ്രസ് എന്ന് അടയാളപ്പെടുത്തുന്നതിന് മുമ്പ് രണ്ടാം വിലാസം നൽകുക"
+
+#: 
+msgid "Inactive — cannot sign in"
+msgstr "നിഷ്‍ക്രിയം — സൈൻ ഇൻ ചെയ്യാൻ കഴിയില്ല"
+
+#: 
+msgid "Mail goes to the second address; the primary address stays the physical location used for maps and directions."
+msgstr "മെയിൽ രണ്ടാം വിലാസത്തിലേക്ക് പോകുന്നു; പ്രാഥമിക വിലാസം മാപ്പുകൾ കൂടാതെ ദിശകൾക്കായി ഉപയോഗിച്ച ശാരീരിക സ്ഥാനം ആയിരിക്കുന്നു."
+
+#: 
+msgid "Mail is sent to this address instead of the primary address"
+msgstr "പ്രാഥമിക വിലാസത്തിന് പകരം മെയിൽ ഈ വിലാസത്തിലേക്ക് അയക്കപ്പെടുന്നു"
+
+#: 
+msgid "Mailing Address"
+msgstr "മെയിലിംഗ് അഡ്രസ്"
+
+#: 
+msgid "Mailing Address if Different"
+msgstr "വ്യത്യസ്തമാണെങ്കിൽ മെയിലിംഗ് അഡ്രസ്"
+
+#: 
+msgid "Primary Address"
+msgstr "പ്രാഥമിക വിലാസം"
+
+#: 
+msgid "Receives Mail"
+msgstr "മെയിൽ സ്വീകരിക്കുന്നു"
+
+#: 
+msgid "Second Address"
+msgstr "രണ്ടാം വിലാസം"
+
+#: 
+msgid "Second Home"
+msgstr "രണ്ടാം വീട്"
+
+#: 
+msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgstr "ബന്ധപ്പെട്ട വ്യക്തി മരിച്ച അല്ലെങ്കിൽ നിഷ്‍ക്രിയമാണ്. വ്യക്തിയെ പുനരാരംഭിക്കുവര കൂടെ സൈൻ-ഇൻ, സെഷനുകൾ കൂടാതെ API കീ തടസ്സപ്പെട്ടിരിക്കുന്നു."
+
+#: 
+msgid "This is the mailing address"
+msgstr "ഇത് മെയിലിംഗ് വിലാസമാണ്"
+
+#: 
+msgid "This person is deceased or inactive, so this account cannot sign in"
+msgstr "ഈ വ്യക്തി മരിച്ച അല്ലെങ്കിൽ നിഷ്‍ക്രിയമാണ്, അതിനാൽ ഈ ഖാതകൾ സൈൻ ഇൻ ചെയ്യാൻ കഴിയില്ല"
+
+#: 
+msgid "Only an administrator can delete a person who has a login."
+msgstr "ലോഗിൻ കഴിയുന്ന വ്യക്തിയെ ഏകമെ ഒരു ഭരണാധികാരി വെട്ടിപ്പഴിക്കാൻ കഴിയും."
+
+#: 
+msgid "The last administrator cannot be deleted."
+msgstr "അവസാന ഭരണാധികാരിയെ വെട്ടിപ്പഴിക്കാൻ കഴിയില്ല."
 

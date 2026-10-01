@@ -37,12 +37,16 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Pledge Dashboard'),
             'sPageSubtitle' => gettext('Track family pledges and fund contributions by fiscal year'),
+            'sPageHeaderButtons' => PageHeader::buttons([
+                ['label' => gettext('Manage Funds'), 'url' => '/finance/funds', 'icon' => 'fa-piggy-bank'],
+            ]),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
                 [gettext('Finance'), '/finance/'],
                 [gettext('Pledge Dashboard')],
             ]),
             'familyPledges' => $pledgeData['families'],
             'fundTotals' => $pledgeData['fund_totals'],
+            'categoryTotals' => $pledgeData['category_totals'],
             'totalPledges' => $pledgeData['total_pledges'],
             'totalPayments' => $pledgeData['total_payments'],
             'overallTotals' => $pledgeData['overall_totals'],

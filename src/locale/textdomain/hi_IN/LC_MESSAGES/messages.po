@@ -14886,10 +14886,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "चयनित फ़ाइल इस सर्वर के अधिकतम अपलोड आकार से अधिक है"
 
 #: 
-msgid "There are no events scheduled for today"
-msgstr "आज के लिए कोई कार्यक्रम निर्धारित नहीं है"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "अनुरोधित वस्तु प्राप्त करने में समस्या हुई"
 
