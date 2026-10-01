@@ -1,9 +1,11 @@
 /// <reference types="cypress" />
 
 /**
- * Volunteer v2 D24 — a ministry's events created through core from the ministry page, pinned
- * by the D25 rule, optionally staffed in the same transaction; and the Calendar tab's list with
- * staffing and headcount (D26). Design §0.8, §2.16, §3.3.2, §4.6.
+ * Volunteer v2 D24 — a ministry's events created through core from the ministry page, pinned by the
+ * D25 rule; and the Calendar tab's list with staffing and headcount (D26). Design §0.8, §2.16,
+ * §3.3.2, §4.6. Creating events never staffs them (D33): the staffing the list shows is made here
+ * with a schedule and with Staff this event, and "Staff them" is
+ * `private.volunteer.staff-after-create.spec.js`.
  *
  * Personas (seed.sql): `admin.api.key` (administrator, Add Events); `user.api.key` = person 3,
  * tony.wade, no Add Events, made coordinator of ministry A here; `selfedit.api.key` = person 99,
@@ -192,7 +194,7 @@ function cleanupFixtures() {
 
 // ── fixture ────────────────────────────────────────────────────────────────
 
-describe("Volunteer v2 D24 — a ministry's events created through core from the ministry page, pinned by the D25 rule, optionally staffed in the same transaction; and the Calendar tab's list with staffing and headcount (D26)", () => {
+describe("Volunteer v2 D24 — a ministry's events created through core from the ministry page, pinned by the D25 rule; and the Calendar tab's list with staffing and headcount (D26)", () => {
     before(() => {
         cy.makePrivateAdminAPICall("GET", SETTING_URL, null, 200).then((resp) => {
             originalVersion = resp.body.value ?? resp.body.data ?? "v1";
@@ -256,7 +258,7 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
                 expect(resp.body.events).to.have.length(1);
                 expect(resp.body.events[0].start).to.eq(`${isoDate(5)} 09:00:00`);
                 expect(resp.body.events[0].end).to.eq(`${isoDate(5)} 12:00:00`);
-                expect(resp.body, "no staffing was asked for").not.to.have.property("schedule");
+                expect(resp.body, "creating events never staffs them (D33)").to.have.all.keys("events");
 
                 const eventId = resp.body.events[0].id;
                 rowsTitled("Workday").then((rows) => {
@@ -357,104 +359,6 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
         });
     });
 
-    // ── staffing in the same transaction ───────────────────────────────────────
-
-    describe("Volunteer v2 D24 — staffing the new events", () => {
-        const staff = (overrides = {}) => ({
-            teamId: firstTeam.A,
-            requirements: [{ positionId: position, minCount: 1, maxCount: 1 }],
-            ...overrides,
-        });
-
-        it("staffs a class-linked series in class mode, generates its occurrences and assigns the defaults", () => {
-            createEvents(
-                weekly("Faith City", "Sunday", 1, 45, {
-                    linkedGroupId: faithCity,
-                    staff: staff({
-                        startOffsetMinutes: -30,
-                        defaults: [{ positionId: position, personId: POOL_MEMBER, accepted: true }],
-                    }),
-                }),
-                COORDINATOR_KEY,
-            ).then((resp) => {
-                const eventIds = resp.body.events.map((e) => e.id);
-                const schedule = resp.body.schedule;
-                expect(schedule.linkMode).to.eq("class");
-                expect(schedule.groupId).to.eq(faithCity);
-                expect(schedule.teamId).to.eq(firstTeam.A);
-                expect(schedule.startOffsetMinutes).to.eq(-30);
-                expect(schedule.windowStart).to.eq(isoDate(1));
-                expect(schedule.windowEnd).to.eq(isoDate(45));
-                expect(resp.body.occurrences.map((o) => o.eventId)).to.have.members(eventIds);
-                expect(resp.body.assigned).to.eq(eventIds.length);
-
-                dbOk(
-                    `SELECT vasg_Status AS status FROM volunteer_assignment_vasg vasg
-                   JOIN volunteer_occurrence_vocc vocc ON vocc.vocc_ID = vasg.vasg_vocc_ID
-                  WHERE vocc.vocc_vsch_ID = ? AND vasg.vasg_per_ID = ?`,
-                    [schedule.id, POOL_MEMBER],
-                ).then((rows) => {
-                    expect(rows).to.have.length(eventIds.length);
-                    expect(rows.every((r) => r.status === "accepted")).to.eq(true);
-                });
-            });
-        });
-
-        it("staffs a series with no class in ministry mode narrowed to its title", () => {
-            createEvents(
-                weekly("Mowing", "Saturday", 1, 30, {
-                    staff: staff({ defaults: [{ positionId: position, personId: POOL_MEMBER, accepted: false }] }),
-                }),
-                COORDINATOR_KEY,
-            ).then((resp) => {
-                expect(resp.body.schedule.linkMode).to.eq("ministry");
-                expect(resp.body.schedule.titleFilter).to.eq(`${PREFIX} Mowing`);
-                expect(resp.body.occurrences).to.have.length(resp.body.events.length);
-                expect(resp.body.assigned).to.eq(resp.body.events.length);
-            });
-        });
-
-        it("staffs one event through Staff this event", () => {
-            createEvents(oneEvent("Single Staffed", { date: isoDate(6), staff: staff() }), COORDINATOR_KEY).then((resp) => {
-                expect(resp.body.schedule.linkMode).to.eq("event");
-                expect(resp.body.schedule.oneOff).to.eq(true);
-                expect(resp.body.schedule.eventId).to.eq(resp.body.events[0].id);
-                expect(resp.body.occurrences).to.have.length(1);
-                expect(resp.body.occurrences[0].eventId).to.eq(resp.body.events[0].id);
-            });
-        });
-
-        it("leaves no event behind when the staffing is refused", () => {
-            createEvents(weekly("Rollback Team", "Sunday", 1, 30, { staff: staff({ teamId: firstTeam.B }) }), COORDINATOR_KEY, 400);
-            rowsTitled("Rollback Team").should("have.length", 0);
-
-            createEvents(
-                weekly("Rollback Position", "Sunday", 1, 30, {
-                    staff: staff({ requirements: [{ positionId: 999999, minCount: 1 }] }),
-                }),
-                COORDINATOR_KEY,
-                400,
-            );
-            rowsTitled("Rollback Position").should("have.length", 0);
-
-            createEvents(
-                weekly("Rollback Default", "Sunday", 1, 30, {
-                    staff: staff({ defaults: [{ positionId: position, personId: PERSON_COORDINATOR, accepted: true }] }),
-                }),
-                COORDINATOR_KEY,
-                [400, 403],
-            );
-            rowsTitled("Rollback Default").should("have.length", 0);
-
-            createEvents(oneEvent("Rollback Past", { date: isoDate(-2), staff: staff() }), COORDINATOR_KEY, 400);
-            rowsTitled("Rollback Past").should("have.length", 0);
-            dbOk(
-                `SELECT COUNT(*) AS n FROM volunteer_schedule_vsch WHERE vsch_Name LIKE ?`,
-                [`${PREFIX} Rollback%`],
-            ).then((rows) => expect(Number(rows[0].n), "no schedule either").to.eq(0));
-        });
-    });
-
     // ── authorization ──────────────────────────────────────────────────────────
 
     describe("Volunteer v2 D24 — who may create a ministry's events", () => {
@@ -511,14 +415,14 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
             ["calendarIds that are not a list", { calendarIds: "1" }],
             ["an unknown calendar", { calendarIds: [999999] }],
             ["an unknown class", { linkedGroupId: 999999 }],
-            ["a malformed staffing section", { staff: "yes" }],
-            ["staffing without a team", { staff: { requirements: [] } }],
+            ["a staff key: staffing is set up after the events are created (D33)", { staff: { teamId: 1 } }],
             ["an unknown recurrence", { date: undefined, recurrence: { type: "daily" }, rangeStart: isoDate(1), rangeEnd: isoDate(9) }],
             ["weekly without a day", { date: undefined, recurrence: { type: "weekly" }, rangeStart: isoDate(1), rangeEnd: isoDate(9) }],
             ["monthly on day 32", { date: undefined, recurrence: { type: "monthly", dom: 32 }, rangeStart: isoDate(1), rangeEnd: isoDate(90) }],
             ["yearly on a day that never exists", { date: undefined, recurrence: { type: "yearly", doy: "02-30" }, rangeStart: isoDate(1), rangeEnd: isoDate(400) }],
             ["a range that ends before it starts", { date: undefined, recurrence: { type: "weekly", dow: "Sunday" }, rangeStart: isoDate(9), rangeEnd: isoDate(1) }],
             ["a series with no range", { date: undefined, recurrence: { type: "weekly", dow: "Sunday" } }],
+            ["a series with no last date", { date: undefined, recurrence: { type: "weekly", dow: "Sunday" }, rangeStart: isoDate(1) }],
         ];
 
         for (const [label, overrides] of cases) {
@@ -548,20 +452,42 @@ describe("Volunteer v2 D24 — a ministry's events created through core from the
         let gapEventId = 0;
         let unplannedEventId = 0;
 
-        before(() => {
-            createEvents(
-                oneEvent("Gap", {
-                    date: isoDate(8),
-                    staff: { teamId: firstTeam.A, requirements: [{ positionId: position, minCount: 2, maxCount: 2 }] },
-                }),
-            ).then((resp) => {
-                gapEventId = resp.body.events[0].id;
-            });
-            createEvents(oneEvent("Unplanned", { date: isoDate(9), staff: { teamId: firstTeam.A, requirements: [] } })).then(
-                (resp) => {
-                    unplannedEventId = resp.body.events[0].id;
-                },
+        const scheduleFor = (fields) =>
+            api(
+                ADMIN_KEY,
+                "POST",
+                `${URL}/ministries/${ministry.A}/schedules`,
+                { teamId: firstTeam.A, windowStart: isoDate(0), ...fields },
+                201,
             );
+        const staffOne = (eventId, requirements) =>
+            api(ADMIN_KEY, "POST", `${URL}/ministries/${ministry.A}/staffed-events`, { eventId, teamId: firstTeam.A, requirements }, 201);
+
+        before(() => {
+            createEvents(weekly("Faith City", "Sunday", 1, 45, { linkedGroupId: faithCity })).then(() => {
+                scheduleFor({
+                    name: `${PREFIX} Faith City Teachers`,
+                    linkMode: "class",
+                    groupId: faithCity,
+                    requirements: [{ positionId: position, minCount: 1, maxCount: 1, defaultPersonId: POOL_MEMBER, defaultAccepted: true }],
+                });
+            });
+            createEvents(weekly("Mowing", "Saturday", 1, 30)).then(() => {
+                scheduleFor({
+                    name: `${PREFIX} Mowing Crew`,
+                    linkMode: "ministry",
+                    titleFilter: `${PREFIX} Mowing`,
+                    requirements: [{ positionId: position, minCount: 1, maxCount: 1, defaultPersonId: POOL_MEMBER, defaultAccepted: false }],
+                });
+            });
+            createEvents(oneEvent("Gap", { date: isoDate(8) })).then((resp) => {
+                gapEventId = resp.body.events[0].id;
+                staffOne(gapEventId, [{ positionId: position, minCount: 2, maxCount: 2 }]);
+            });
+            createEvents(oneEvent("Unplanned", { date: isoDate(9) })).then((resp) => {
+                unplannedEventId = resp.body.events[0].id;
+                staffOne(unplannedEventId, []);
+            });
             createEvents(oneEvent("Past", { date: isoDate(-3), linkedGroupId: adultClass })).then((resp) => {
                 pastEventId = resp.body.events[0].id;
                 dbOk(

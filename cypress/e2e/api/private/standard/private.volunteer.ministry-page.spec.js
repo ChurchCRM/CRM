@@ -119,8 +119,8 @@ function makeEvent(title, offsetDays) {
 
 /**
  * One schedule following one event of its own, three days out, with a window of
- * exactly the next week — so it generates EXACTLY ONE occurrence, comfortably in
- * the future whatever time of day the suite runs.
+ * exactly the next week — so its Save generates EXACTLY ONE occurrence (D33),
+ * comfortably in the future whatever time of day the suite runs.
  */
 function makeSchedule(name, teamId, positionId, minCount) {
     makeEvent(name, 3);
@@ -141,6 +141,7 @@ function makeSchedule(name, teamId, positionId, minCount) {
         201,
     ).then((resp) => {
         const scheduleId = resp.body.schedule.id;
+        expect(resp.body.generated.created, `${name} generated exactly one date`).to.eq(1);
         api(
             ADMIN_KEY,
             "POST",
@@ -148,11 +149,6 @@ function makeSchedule(name, teamId, positionId, minCount) {
             { positionId, minCount, maxCount: minCount },
             [200, 201],
         );
-        api(ADMIN_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`, {
-            through: isoDate(6),
-        }).then((gen) => {
-            expect(gen.body.created, `${name} generated exactly one date`).to.eq(1);
-        });
         return cy.wrap(scheduleId);
     });
 }

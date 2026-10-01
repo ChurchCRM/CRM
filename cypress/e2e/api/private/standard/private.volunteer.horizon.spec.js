@@ -123,10 +123,12 @@ function scheduleBody(overrides) {
     return { teamId: teamA, windowStart: isoDate(0), ...overrides, name: `${PREFIX} ${overrides.name}` };
 }
 
+/** The new schedule, carrying the run its Save made (D33) as `generated`. */
 function createSchedule(overrides, forMinistry = ministryId) {
-    return api("POST", `${URL}/ministries/${forMinistry}/schedules`, scheduleBody(overrides), 201).then(
-        (resp) => resp.body.schedule,
-    );
+    return api("POST", `${URL}/ministries/${forMinistry}/schedules`, scheduleBody(overrides), 201).then((resp) => ({
+        ...resp.body.schedule,
+        generated: resp.body.generated,
+    }));
 }
 
 function refuseSchedule(overrides) {
@@ -270,14 +272,15 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
             expect(schedule).to.include({ horizonWeeks: 8, generateThrough: isoDate(HORIZON_DAYS) });
         });
 
-        it("makes occurrences from today through today + the horizon, and no further", () => {
+        it("makes occurrences on Save from today through today + the horizon, and no further", () => {
+            const inside = throughDay(service, HORIZON_DAYS);
+            expect(service.length, "the series runs past the horizon").to.be.greaterThan(inside.length);
+            expect(schedule.generated).to.include({ from: isoDate(0), through: isoDate(HORIZON_DAYS), created: inside.length });
+            occurrencesOf(schedule.id).then((rows) => {
+                expect(rows.map((row) => row.eventId)).to.have.members(inside.map((event) => event.id));
+            });
             generate(schedule.id).then((result) => {
-                const inside = throughDay(service, HORIZON_DAYS);
-                expect(service.length, "the series runs past the horizon").to.be.greaterThan(inside.length);
-                expect(result).to.include({ from: isoDate(0), through: isoDate(HORIZON_DAYS), created: inside.length });
-                occurrencesOf(schedule.id).then((rows) => {
-                    expect(rows.map((row) => row.eventId)).to.have.members(inside.map((event) => event.id));
-                });
+                expect(result).to.include({ through: isoDate(HORIZON_DAYS), created: 0, existing: inside.length });
             });
         });
 
@@ -291,9 +294,7 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
             createSchedule({ name: "Short", teamId: teamB, linkMode: "ministry", titleFilter: `${PREFIX} Service`, windowEnd: isoDate(20) }).then(
                 (short) => {
                     expect(short.generateThrough).to.eq(isoDate(20));
-                    generate(short.id).then((result) => {
-                        expect(result).to.include({ through: isoDate(20), created: throughDay(service, 20).length });
-                    });
+                    expect(short.generated).to.include({ through: isoDate(20), created: throughDay(service, 20).length });
                 },
             );
         });
@@ -393,6 +394,12 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
                 );
             });
             cy.then(() => {
+                // Their Save made occurrences (D33); cleared, so the top-up has the horizon to fill.
+                dbOk("DELETE FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID IN (?, ?, ?)", [
+                    schedules.rehearsal,
+                    schedules.endsSoon,
+                    schedules.closed,
+                ]);
                 api("POST", `${URL}/ministries/${closedMinistryId}`, { active: false });
                 dbOk("DELETE FROM config_cfg WHERE cfg_name IN (?, ?)", [TOP_UP_DATE, TOP_UP_RESULT]);
                 count("SELECT COUNT(*) AS n FROM volunteer_notification_vntf").then((n) => {
@@ -608,21 +615,15 @@ describe("Volunteer v2 D31 — schedules follow events that already exist, up to
             });
         });
 
-        it("adds new events only to the schedule with exactly their title (D30)", () => {
+        it("sends a new series only to the schedule with exactly its title, whatever the case (D33)", () => {
             createSchedule({ name: "Day Two Crew", teamId: teamB, linkMode: "ministry", titleFilter: `${PREFIX} VBS Day 2` }).then((dayTwo) => {
-                api("POST", `${URL}/ministries/${ministryId}/events`, weekly("VBS", 31, 45, { staff: { teamId: teamB } }), 201).then((resp) => {
-                    expect(resp.body.reusedSchedule, "VBS is not VBS Day 2").to.eq(false);
-                    expect(resp.body.schedule.id).not.to.eq(dayTwo.id);
+                createEvents(weekly("VBS", 31, 45)).then((events) => {
+                    api("POST", `${URL}/ministries/${ministryId}/events/staff`, { eventIds: events.map((e) => e.id) }).then((resp) => {
+                        const ids = resp.body.schedules.map((run) => run.schedule.id);
+                        expect(ids, "the vbs schedule").to.deep.eq([made.vbsSchedule]);
+                        expect(ids, "VBS is not VBS Day 2").not.to.include(dayTwo.id);
+                    });
                 });
-            });
-            api(
-                "POST",
-                `${URL}/ministries/${ministryId}/events`,
-                { ...weekly("VBS", 46, 55), title: `${PREFIX} VBS`, staff: { teamId: teamA } },
-                201,
-            ).then((resp) => {
-                expect(resp.body.reusedSchedule, "the vbs schedule, whatever the case").to.eq(true);
-                expect(resp.body.schedule.id).to.eq(made.vbsSchedule);
             });
         });
 

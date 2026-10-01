@@ -339,6 +339,7 @@ describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epi
                     201,
                 ).then((resp) => {
                     expect(resp.body.schedule.teamId).to.eq(teamLed);
+                    expect(resp.body.generated.created, "its Save generates it (D33)").to.be.greaterThan(0);
                     scheduleLed = resp.body.schedule.id;
                 });
             });
@@ -386,7 +387,8 @@ describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epi
                 api(LEADER_KEY, "POST", `${VOLUNTEER_URL}/schedules/${scheduleLed}/generate`, {
                     through: windowEnd,
                 }, 200).then((resp) => {
-                    expect(resp.body.created).to.be.greaterThan(0);
+                    expect(resp.body.created, "its Save made them").to.eq(0);
+                    expect(resp.body.existing).to.be.greaterThan(0);
                 });
             });
         });

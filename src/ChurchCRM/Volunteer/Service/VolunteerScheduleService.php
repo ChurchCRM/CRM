@@ -141,28 +141,26 @@ class VolunteerScheduleService
     }
 
     /**
-     * Create a schedule and materialise its occurrences in one transaction — the entry
-     * point for another service that creates events and wants them staffed at once
-     * (D24's ministry Calendar tab). A caller already inside a transaction nests into it.
+     * Create a schedule and materialise its occurrences up to the scheduling horizon in one
+     * transaction (D33: every new schedule generates on Save), so a run over the cap leaves
+     * no schedule behind. A schedule saved inactive is paused, so it makes none — as the daily
+     * top-up leaves it alone — and `generated` is null. A caller already inside a transaction
+     * nests into it.
      *
      * @param array<string, mixed> $fields
      *
-     * @return array{schedule: VolunteerSchedule, created: int, existing: int, from: string, through: string, createdIds: int[]}
+     * @return array{schedule: VolunteerSchedule, generated: array{created: int, existing: int, from: string, through: string, createdIds: int[]}|null}
      *
      * @throws \RuntimeException
      */
-    public function createScheduleAndGenerate(
-        VolunteerMinistry $ministry,
-        array $fields,
-        User $actor,
-        ?\DateTimeInterface $through = null
-    ): array {
+    public function createScheduleAndGenerate(VolunteerMinistry $ministry, array $fields, User $actor): array
+    {
         $con = Propel::getWriteConnection(VolunteerOccurrenceTableMap::DATABASE_NAME);
         $con->beginTransaction();
 
         try {
             $schedule = $this->createSchedule($ministry, $fields, $actor);
-            $result = $this->generateOccurrences($schedule, $through);
+            $generated = $schedule->getActive() ? $this->generateOccurrences($schedule) : null;
             $con->commit();
         } catch (\Throwable $e) {
             $con->rollBack();
@@ -170,7 +168,7 @@ class VolunteerScheduleService
             throw $e;
         }
 
-        return ['schedule' => $schedule] + $result;
+        return ['schedule' => $schedule, 'generated' => $generated];
     }
 
     /**
@@ -906,6 +904,46 @@ class VolunteerScheduleService
     }
 
     /**
+     * The active, non-one-off schedules of a ministry that follow events with this title,
+     * type and Linked Groups (D33): `class` mode on one of the groups, `ministry` mode with
+     * exactly the title, `event_type` mode with the type and exactly the title — the rules
+     * eventQuery() finds events by. Core has no event series id (F7), so this is how a new
+     * series is recognised as one a schedule already follows.
+     *
+     * @param int[] $groupIds
+     *
+     * @return VolunteerSchedule[] ordered by id
+     */
+    public function findSchedulesFollowing(int $ministryId, string $title, int $eventTypeId, array $groupIds): array
+    {
+        $base = static fn (string $mode): VolunteerScheduleQuery => VolunteerScheduleQuery::create()
+            ->filterByMinistryId($ministryId)
+            ->filterByActive(true)
+            ->filterByOneOff(false)
+            ->filterByLinkMode($mode);
+        $titled = static fn (VolunteerScheduleQuery $query): VolunteerScheduleQuery => $query
+            ->where('LOWER(VolunteerSchedule.TitleFilter) = LOWER(?)', trim($title), \PDO::PARAM_STR);
+
+        $queries = [
+            $titled($base(VolunteerSchedule::LINK_MODE_MINISTRY)),
+            $titled($base(VolunteerSchedule::LINK_MODE_EVENT_TYPE)->filterByEventTypeId($eventTypeId)),
+        ];
+        if ($groupIds !== []) {
+            $queries[] = $base(VolunteerSchedule::LINK_MODE_CLASS)->filterByGroupId($groupIds, Criteria::IN);
+        }
+
+        $found = [];
+        foreach ($queries as $query) {
+            foreach ($query->find() as $schedule) {
+                $found[(int) $schedule->getId()] = $schedule;
+            }
+        }
+        ksort($found);
+
+        return array_values($found);
+    }
+
+    /**
      * D31: a title names one series exactly, ignoring case — "VBS" must not pick up
      * "VBS Day 2", which the `LIKE %title%` narrowing this replaced did.
      */
@@ -1515,7 +1553,7 @@ class VolunteerScheduleService
     }
 
     /**
-     * D32: the default volunteers the Generate dialog and Staff these events name, saved on
+     * D32: the default volunteers the Generate dialog names, saved on
      * the schedule's staffing needs — a blank person clears that position's. Each position
      * must be one the needs ask for, because the default lives on that need. Nothing is
      * written unless every entry is valid.

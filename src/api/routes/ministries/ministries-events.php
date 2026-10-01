@@ -3,7 +3,6 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistry;
-use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPosition;
 use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
@@ -18,7 +17,6 @@ use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerEventService;
 use ChurchCRM\Volunteer\VolunteerException;
-use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -28,8 +26,9 @@ use Slim\Routing\RouteCollectorProxy;
  *
  * The events are core's: they are created through `EventService` with `event_ministry_id` set
  * and are edited and deleted in the core event editor. These routes add the ministry page's
- * Calendar tab: create one event or a series (optionally staffed in the same transaction) and
- * list what the ministry owns with each event's staffing and headcount.
+ * Calendar tab: create one event or a series, staff a new series on the schedules that already
+ * follow it ("Staff them", D33 — creating and staffing are separate steps), and list what the
+ * ministry owns with each event's staffing and headcount.
  *
  * Gated like the other V2 groups — rollout, then the coordinator role, then the ministry (or
  * position) entity middleware — and `VolunteerEventService` asks again from the resolved rows.
@@ -38,8 +37,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     $group->get('/ministries/{ministryId:[0-9]+}/events', 'listVolunteerMinistryEvents')
         ->add(new VolunteerMinistryMiddleware());
 
-    // `recurrence` and `staff` are nested objects the sanitizer has no type for; the service
-    // validates them.
+    // `recurrence` is a nested object the sanitizer has no type for; the service validates it.
     $group->post('/ministries/{ministryId:[0-9]+}/events', 'createVolunteerMinistryEvents')
         ->add(new InputSanitizationMiddleware([
             'title' => 'text',
@@ -50,6 +48,10 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
         ]))
         ->add(new VolunteerMinistryMiddleware());
 
+    // D33: "Staff them" — new events go to the ministry's schedules that already follow them.
+    $group->post('/ministries/{ministryId:[0-9]+}/events/staff', 'staffVolunteerMinistryEvents')
+        ->add(new VolunteerMinistryMiddleware());
+
     // D28: the Calendar tab's Delete events — owned events only, through core's delete path.
     $group->delete('/ministries/{ministryId:[0-9]+}/events', 'deleteVolunteerMinistryEvents')
         ->add(new VolunteerMinistryMiddleware());
@@ -58,7 +60,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
     $group->get('/teams/{teamId:[0-9]+}/class-events', 'getVolunteerTeamClassEvents')
         ->add(new VolunteerTeamMiddleware());
 
-    // The new-event dialog's "Fill by default with": the schedule it would ask does not exist yet.
+    // The schedule dialog's Default volunteer (D32): the schedule it would ask may not exist yet.
     $group->get('/positions/{positionId:[0-9]+}/eligible', 'listVolunteerPositionEligiblePeople')
         ->add(new VolunteerPositionMiddleware());
 })->add(VolunteerCoordinatorRoleAuthMiddleware::class)->add(new VolunteerV2EnabledMiddleware());
@@ -67,8 +69,8 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
  * @OA\Post(
  *     path="/ministries/ministries/{ministryId}/events",
  *     operationId="createVolunteerMinistryEvents",
- *     summary="Create a ministry's event or event series through core, optionally staffed (D24)",
- *     description="One event (date, startTime, endTime) through the same code as POST /events, or a series (recurrence, rangeStart, rangeEnd, startTime, endTime) through the repeat engine, capped at 366 events. Every event carries this ministry's id and the Linked Group when given, and is pinned to calendarIds (default: the ministry's own calendar), each of which must be the ministry's own calendar or a church calendar opened to it unless the caller holds Add Events (D25). With staff, the schedule is created in the same transaction: class mode for a series with a Linked Group, ministry mode narrowed to the title for one without, Staff this event for a single event; its occurrences are generated and the defaults assigned. When the team already has an active schedule following the events (class mode on the same class, or ministry mode with exactly this title), the events go to that schedule instead (D30): its window is widened to take them in, it is generated, the defaults go on the occurrences this run created, and its own staffing needs and offsets are kept. Nothing is written when any part is refused. Fires event.created for each event after the commit.",
+ *     summary="Create a ministry's event or event series through core (D24)",
+ *     description="One event (date, startTime, endTime) through the same code as POST /events, or a series (recurrence, rangeStart, rangeEnd, startTime, endTime) through the repeat engine, capped at 366 events; rangeEnd is required. Every event carries this ministry's id and the Linked Group when given, and is pinned to calendarIds (default: the ministry's own calendar), each of which must be the ministry's own calendar or a church calendar opened to it unless the caller holds Add Events (D25). Nothing is written when any part is refused. Staffing is a separate step (D33): a staff key is refused; a series is staffed with POST /ministries/ministries/{ministryId}/events/staff, one event with Staff this event. Fires event.created for each event after the commit.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
@@ -89,22 +91,7 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="doy", type="string", example="04-12")
  *         ),
  *         @OA\Property(property="rangeStart", type="string", format="date"),
- *         @OA\Property(property="rangeEnd", type="string", format="date"),
- *         @OA\Property(property="staff", type="object", nullable=true,
- *             @OA\Property(property="teamId", type="integer"),
- *             @OA\Property(property="requirements", type="array", @OA\Items(type="object",
- *                 @OA\Property(property="positionId", type="integer"),
- *                 @OA\Property(property="minCount", type="integer"),
- *                 @OA\Property(property="maxCount", type="integer", nullable=true)
- *             )),
- *             @OA\Property(property="startOffsetMinutes", type="integer"),
- *             @OA\Property(property="endOffsetMinutes", type="integer"),
- *             @OA\Property(property="defaults", type="array", description="D32: saved on the schedule the events go to (a blank personId clears that position's default); its saved defaults are then assigned on the new occurrences", @OA\Items(type="object",
- *                 @OA\Property(property="positionId", type="integer"),
- *                 @OA\Property(property="personId", type="integer", nullable=true),
- *                 @OA\Property(property="accepted", type="boolean")
- *             ))
- *         )
+ *         @OA\Property(property="rangeEnd", type="string", format="date", description="Required for a series")
  *     )),
  *     @OA\Response(response=201, description="Created",
  *         @OA\JsonContent(
@@ -113,20 +100,10 @@ $app->group('/ministries', function (RouteCollectorProxy $group): void {
  *                 @OA\Property(property="title", type="string"),
  *                 @OA\Property(property="start", type="string"),
  *                 @OA\Property(property="end", type="string")
- *             )),
- *             @OA\Property(property="schedule", type="object", description="Present when staff was given"),
- *             @OA\Property(property="reusedSchedule", type="boolean", description="Present when staff was given: the events were added to the team's existing schedule (D30)"),
- *             @OA\Property(property="occurrences", type="array", @OA\Items(type="object",
- *                 @OA\Property(property="id", type="integer"),
- *                 @OA\Property(property="eventId", type="integer"),
- *                 @OA\Property(property="occurrenceDate", type="string", format="date")
- *             )),
- *             @OA\Property(property="assigned", type="integer"),
- *             @OA\Property(property="skipped", type="integer"),
- *             @OA\Property(property="unqualified", type="integer", description="D32: default assignments left open because the default is no longer qualified")
+ *             ))
  *         )
  *     ),
- *     @OA\Response(response=400, description="A missing or malformed field, an unknown type, class or calendar, a recurrence with no date in the range or over the cap, or a staffing plan the schedule refuses"),
+ *     @OA\Response(response=400, description="A missing or malformed field, a staff key (D33), an unknown type, class or calendar, or a recurrence with no date in the range or over the cap"),
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not a coordinator of this ministry (team leaders and self-service logins included), a calendar the ministry may not pin to, or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry")
@@ -138,48 +115,104 @@ function createVolunteerMinistryEvents(Request $request, Response $response): Re
     $input = (array) $request->getParsedBody();
 
     try {
-        $result = (new VolunteerEventService())->createMinistryEvents(
-            $ministry,
-            $input,
-            AuthenticationManager::getCurrentUser()
-        );
+        $events = (new VolunteerEventService())->createMinistryEvents($ministry, $input, AuthenticationManager::getCurrentUser());
     } catch (VolunteerException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
     } catch (\RuntimeException | \InvalidArgumentException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }
 
-    $payload = [
+    return SlimUtils::renderJSON($response, [
         'events' => array_map(static fn (Event $event): array => [
             'id' => (int) $event->getId(),
             'title' => (string) $event->getTitle(),
             'start' => $event->getStart('Y-m-d H:i:s'),
             'end' => $event->getEnd('Y-m-d H:i:s'),
-        ], $result['events']),
-    ];
+        ], $events),
+    ], 201);
+}
 
-    if ($result['schedule'] !== null) {
-        $occurrences = VolunteerOccurrenceQuery::create()
-            ->filterById($result['occurrenceIds'], Criteria::IN)
-            ->orderByOccurrenceDate()
-            ->find();
-
-        $payload['schedule'] = volunteerScheduleToArray($result['schedule']);
-        $payload['reusedSchedule'] = $result['reusedSchedule'];
-        $payload['occurrences'] = [];
-        foreach ($occurrences as $occurrence) {
-            $payload['occurrences'][] = [
-                'id' => (int) $occurrence->getId(),
-                'eventId' => (int) $occurrence->getEventId(),
-                'occurrenceDate' => $occurrence->getOccurrenceDate('Y-m-d'),
-            ];
-        }
-        $payload['assigned'] = $result['assigned'];
-        $payload['skipped'] = $result['skipped'];
-        $payload['unqualified'] = $result['unqualified'];
+/**
+ * @OA\Post(
+ *     path="/ministries/ministries/{ministryId}/events/staff",
+ *     operationId="staffVolunteerMinistryEvents",
+ *     summary="Staff new events on the ministry's schedules that already follow them (D33)",
+ *     description="The Staff them answer after a series was created. The events must be this ministry's and one series (one title, type and class). Every active schedule of the ministry that is not a Staff this event schedule and follows them - class mode on their class, ministry mode with exactly their title, or event_type mode with their type and exactly their title, titles ignoring case - takes them: its window is widened to cover them (the first date moved back, a set last date moved on, an open end left open), it is generated through the last event but never past the scheduling horizon, and its saved default volunteers are assigned on the occurrences that run created. An empty list means no schedule follows them: nothing was made. Matching is by class and title because core events carry no series id.",
+ *     tags={"Volunteer"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"eventIds"},
+ *         @OA\Property(property="eventIds", type="array", @OA\Items(type="integer"))
+ *     )),
+ *     @OA\Response(response=200, description="The schedules that took the events, each with its run",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="schedules", type="array", @OA\Items(type="object",
+ *                 @OA\Property(property="schedule", type="object"),
+ *                 @OA\Property(property="widened", type="boolean", description="Its first or last date moved to cover the events"),
+ *                 @OA\Property(property="created", type="integer"),
+ *                 @OA\Property(property="existing", type="integer"),
+ *                 @OA\Property(property="from", type="string", format="date"),
+ *                 @OA\Property(property="through", type="string", format="date"),
+ *                 @OA\Property(property="assigned", type="integer"),
+ *                 @OA\Property(property="skipped", type="integer"),
+ *                 @OA\Property(property="unqualified", type="integer")
+ *             ))
+ *         )
+ *     ),
+ *     @OA\Response(response=400, description="eventIds is missing, empty or not a list of ids, the events are not one series, or a run would exceed the occurrence cap"),
+ *     @OA\Response(response=401, description="Not authenticated"),
+ *     @OA\Response(response=403, description="Not a coordinator of this ministry (team leaders and self-service logins included), an event the ministry does not own, or V2 is not enabled"),
+ *     @OA\Response(response=404, description="No such ministry or event")
+ * )
+ */
+function staffVolunteerMinistryEvents(Request $request, Response $response): Response
+{
+    /** @var VolunteerMinistry $ministry */
+    $ministry = $request->getAttribute('volunteerMinistry');
+    $eventIds = volunteerEventIdList(((array) $request->getParsedBody())['eventIds'] ?? null);
+    if ($eventIds === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('eventIds must be a list of event ids'), [], 400, null, $request);
     }
 
-    return SlimUtils::renderJSON($response, $payload, 201);
+    try {
+        $runs = (new VolunteerEventService())->staffOnFollowingSchedules($ministry, $eventIds, AuthenticationManager::getCurrentUser());
+    } catch (VolunteerException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), $e->getExtra(), $e->getStatusCode(), null, $request);
+    } catch (\RuntimeException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'schedules' => array_map(
+            static fn (array $run): array => ['schedule' => volunteerScheduleToArray($run['schedule'])] + array_diff_key($run, ['schedule' => true]),
+            $runs
+        ),
+    ]);
+}
+
+/**
+ * A request's `eventIds` as positive ids, or null when it is not a list of them. An empty
+ * list comes back empty, for the service to refuse in its own words.
+ *
+ * @return int[]|null
+ */
+function volunteerEventIdList(mixed $raw): ?array
+{
+    if (!is_array($raw)) {
+        return null;
+    }
+
+    $eventIds = [];
+    foreach ($raw as $value) {
+        $id = filter_var($value, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+        if ($id === false) {
+            return null;
+        }
+        $eventIds[] = $id;
+    }
+
+    return $eventIds;
 }
 
 /**
@@ -281,7 +314,7 @@ function listVolunteerMinistryEvents(Request $request, Response $response): Resp
  *     path="/ministries/positions/{positionId}/eligible",
  *     operationId="listVolunteerPositionEligiblePeople",
  *     summary="Who may fill a position on a schedule that is about to be created",
- *     description="The new-event dialog's Fill by default with picker (D24): the same rotation-ordered list as /schedules/{id}/eligible, for the position's own team.",
+ *     description="The schedule dialog's Default volunteer picker (D32), which may run before the schedule exists: the same rotation-ordered list as /schedules/{id}/eligible, for the position's own team.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="positionId", in="path", required=true, @OA\Schema(type="integer")),
@@ -331,15 +364,9 @@ function deleteVolunteerMinistryEvents(Request $request, Response $response): Re
 {
     /** @var VolunteerMinistry $ministry */
     $ministry = $request->getAttribute('volunteerMinistry');
-    $raw = ((array) $request->getParsedBody())['eventIds'] ?? null;
-
-    $eventIds = [];
-    foreach (is_array($raw) ? $raw : [null] as $value) {
-        $id = filter_var($value, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
-        if ($id === false) {
-            return SlimUtils::renderErrorJSON($response, gettext('eventIds must be a list of event ids'), [], 400, null, $request);
-        }
-        $eventIds[] = $id;
+    $eventIds = volunteerEventIdList(((array) $request->getParsedBody())['eventIds'] ?? null);
+    if ($eventIds === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('eventIds must be a list of event ids'), [], 400, null, $request);
     }
 
     try {

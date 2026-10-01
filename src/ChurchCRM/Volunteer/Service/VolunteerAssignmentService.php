@@ -1490,6 +1490,30 @@ class VolunteerAssignmentService
     }
 
     /**
+     * A new schedule makes its occurrences on Save (D33): created and generated up to the
+     * scheduling horizon in one transaction, then the defaults its staffing needs carry are
+     * assigned on them, as a Generate run assigns them. `generated` is null for a schedule
+     * saved inactive, which makes none.
+     *
+     * @param array<string, mixed> $fields the schedule create payload (§3.3.2)
+     *
+     * @return array{schedule: VolunteerSchedule, generated: array{created: int, existing: int, from: string, through: string, createdIds: int[], assigned: int, skipped: int, unqualified: int}|null}
+     *
+     * @throws VolunteerException 403 when the actor may not create for the team
+     * @throws \RuntimeException  when a §2.8 invariant fails or the run would exceed the cap
+     */
+    public function createScheduleWithOccurrences(VolunteerMinistry $ministry, array $fields, User $actor): array
+    {
+        $result = $this->schedules->createScheduleAndGenerate($ministry, $fields, $actor);
+        $run = $result['generated'];
+
+        return [
+            'schedule' => $result['schedule'],
+            'generated' => $run === null ? null : $run + $this->assignScheduleDefaults($result['schedule'], $run['createdIds'], $actor),
+        ];
+    }
+
+    /**
      * Each position's saved default (D32), on occurrences a run has just created — never on
      * older ones, so changing a default reassigns nobody. A person who no longer holds an
      * active qualification for the position leaves it open and is counted `unqualified`;
@@ -1497,7 +1521,7 @@ class VolunteerAssignmentService
      * already assigned) is counted `skipped`. The people came from the qualified list, so
      * the out-of-pool override is carried as the Assign dialog carries it (I3).
      *
-     * With an actor (Generate, Staff these events) the assignments are theirs. Without one —
+     * With an actor (Generate, a new schedule, Staff them) the assignments are theirs. Without one —
      * the daily top-up — whoever chose the default is the assigner and, for an accepted
      * default, the one recorded as answering on the volunteer's behalf.
      *

@@ -485,7 +485,7 @@ function listVolunteerTeamSchedules(Request $request, Response $response): Respo
  *     path="/ministries/ministries/{ministryId}/schedules",
  *     operationId="createVolunteerSchedule",
  *     summary="Create a volunteer schedule: which calendar events a team staffs",
- *     description="Every occurrence is anchored to a calendar event (D20); the link mode says how the events are found (D22). A schedule follows events that already exist (D31): it is refused unless at least one upcoming active event matches. A single event is staffed through POST /ministries/ministries/{ministryId}/staffed-events instead. The removed fields (recurType, recurDow, recurDom, startTime, endTime, generateAheadDays) are refused with 400.",
+ *     description="Every occurrence is anchored to a calendar event (D20); the link mode says how the events are found (D22). A schedule follows events that already exist (D31): it is refused unless at least one upcoming active event matches. A new schedule generates its occurrences at once, up to the scheduling horizon, and assigns the default volunteers its staffing needs carry on them (D33, D32); `generated` is that run, shaped as POST /ministries/schedules/{scheduleId}/generate answers, and null for a schedule saved inactive, which makes none. A single event is staffed through POST /ministries/ministries/{ministryId}/staffed-events instead. The removed fields (recurType, recurDow, recurDom, startTime, endTime, generateAheadDays) are refused with 400.",
  *     tags={"Volunteer"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="ministryId", in="path", required=true, @OA\Schema(type="integer")),
@@ -516,7 +516,12 @@ function listVolunteerTeamSchedules(Request $request, Response $response): Respo
  *     @OA\Response(response=401, description="Not authenticated"),
  *     @OA\Response(response=403, description="Not authorized: you neither administer this ministry nor lead the team named by teamId (design section 4.6), or V2 is not enabled"),
  *     @OA\Response(response=404, description="No such ministry"),
- *     @OA\Response(response=201, description="Created")
+ *     @OA\Response(response=201, description="Created, with its occurrences generated",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="schedule", type="object"),
+ *             @OA\Property(property="generated", type="object", nullable=true, description="The run Save made (D33): created, existing, from, through, assigned, skipped, unqualified, noEvents, searched; null when saved inactive")
+ *         )
+ *     )
  * )
  */
 function createVolunteerSchedule(Request $request, Response $response): Response
@@ -525,7 +530,7 @@ function createVolunteerSchedule(Request $request, Response $response): Response
     $input = (array) $request->getParsedBody();
 
     try {
-        $schedule = (new VolunteerScheduleService())->createSchedule(
+        $result = (new VolunteerAssignmentService())->createScheduleWithOccurrences(
             $ministry,
             $input,
             AuthenticationManager::getCurrentUser()
@@ -536,7 +541,10 @@ function createVolunteerSchedule(Request $request, Response $response): Response
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }
 
-    return SlimUtils::renderJSON($response, ['schedule' => volunteerScheduleToArray($schedule)], 201);
+    return SlimUtils::renderJSON($response, [
+        'schedule' => volunteerScheduleToArray($result['schedule']),
+        'generated' => $result['generated'] === null ? null : volunteerGenerateResultToArray($result['generated'], $result['schedule']),
+    ], 201);
 }
 
 /**
@@ -782,24 +790,34 @@ function generateVolunteerOccurrences(Request $request, Response $response): Res
     }
 
     $defaults = isset($input['defaults']) && is_array($input['defaults']) ? array_values($input['defaults']) : null;
-    $assignments = new VolunteerAssignmentService();
 
     try {
-        $result = $assignments->generateWithDefaults($schedule, $through, $defaults, AuthenticationManager::getCurrentUser());
+        $result = (new VolunteerAssignmentService())->generateWithDefaults($schedule, $through, $defaults, AuthenticationManager::getCurrentUser());
     } catch (VolunteerException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], $e->getStatusCode(), null, $request);
     } catch (\RuntimeException | \InvalidArgumentException $e) {
         return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400, null, $request);
     }
 
-    unset($result['createdIds']);
-    $schedules = $assignments->getScheduleService();
+    return SlimUtils::renderJSON($response, volunteerGenerateResultToArray($result, $schedule));
+}
 
-    // D30: an empty run says what it looked for, so the screen can say why nothing came.
-    return SlimUtils::renderJSON($response, $result + [
+/**
+ * One generation run for the wire: its counts and dates, and — D30 — whether it found no
+ * event at all and what it looked for, so the screen can say why nothing came.
+ *
+ * @param array<string, mixed> $result a run's result (`created`, `existing`, `from`, `through`, the default counts)
+ *
+ * @return array<string, mixed>
+ */
+function volunteerGenerateResultToArray(array $result, VolunteerSchedule $schedule): array
+{
+    unset($result['createdIds'], $result['schedule']);
+
+    return $result + [
         'noEvents' => $result['created'] + $result['existing'] === 0,
-        'searched' => $schedules->describeEventSource($schedule),
-    ]);
+        'searched' => (new VolunteerScheduleService())->describeEventSource($schedule),
+    ];
 }
 
 // ── Requirements ────────────────────────────────────────────────────────────

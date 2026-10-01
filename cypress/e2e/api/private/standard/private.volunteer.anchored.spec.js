@@ -329,14 +329,12 @@ describe("Volunteer v2 — every occurrence anchored to a calendar event (D20), 
                     expect(created.groupSundaySchool).to.eq(true);
                     expect(created.eventTypeId).to.eq(null);
                     expect(created.titleFilter, "a class schedule has no title filter").to.eq(null);
+                    expect(created.occurrenceCount, "generated on Save (D33)").to.eq(3);
                 },
             );
         });
 
         it("anchors one occurrence to each active event whose Linked Group is the class", () => {
-            generate(schedule.id).then((result) => {
-                expect(result.created).to.eq(3);
-            });
             occurrencesOf(schedule.id).then((rows) => {
                 expect(rows.map((row) => row.eventId).sort()).to.deep.eq([...events.classLinked].sort());
                 expect(rows.map((row) => row.eventId), "not the unlinked one").to.not.include(events.classUnlinked);
@@ -358,9 +356,9 @@ describe("Volunteer v2 — every occurrence anchored to a calendar event (D20), 
             createSchedule(
                 scheduleBody({ name: `${PREFIX} Faith City Windowed`, linkMode: "class", groupId: classGroupId, windowEnd: isoDate(12) }),
             ).then((windowed) => {
+                expect(windowed.occurrenceCount, "only the meetings on or before the window end").to.eq(2);
                 generate(windowed.id).then((result) => {
-                    expect(result.created, "only the meetings on or before the window end").to.eq(2);
-                    expect(result.through).to.eq(isoDate(12));
+                    expect(result).to.include({ created: 0, existing: 2, through: isoDate(12) });
                 });
             });
         });
@@ -402,9 +400,7 @@ describe("Volunteer v2 — every occurrence anchored to a calendar event (D20), 
                 (created) => {
                     expect(created.linkMode).to.eq("ministry");
                     expect(created.titleFilter).to.eq(WORKDAY_TITLE);
-                    generate(created.id).then((result) => {
-                        expect(result.created).to.eq(2);
-                    });
+                    expect(created.occurrenceCount).to.eq(2);
                     occurrencesOf(created.id).then((rows) => {
                         const ids = rows.map((row) => row.eventId);
                         expect(ids.sort()).to.deep.eq([...events.workdayA].sort());
@@ -444,10 +440,8 @@ describe("Volunteer v2 — every occurrence anchored to a calendar event (D20), 
                     titleFilter: CLASS_TITLE,
                 }),
             ).then((created) => {
-                generate(created.id).then((result) => {
-                    // The three linked meetings and the unlinked one; never the inactive one.
-                    expect(result.created).to.eq(4);
-                });
+                // The three linked meetings and the unlinked one; never the inactive one.
+                expect(created.occurrenceCount).to.eq(4);
                 occurrencesOf(created.id).then((rows) => {
                     expect(rows.map((row) => row.eventId)).to.not.include(events.classInactive);
                 });

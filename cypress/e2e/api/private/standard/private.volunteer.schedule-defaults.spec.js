@@ -2,12 +2,15 @@
 
 /**
  * Volunteer v2 D32 — default volunteers belong to the schedule. A schedule's staffing needs keep
- * a default person per position (and whether they are set as accepted); the schedule dialog, the
- * Generate dialog and Staff these events save them; every run that creates occurrences — Generate
- * and the daily top-up — assigns each saved default on the occurrences it creates while that
- * person still holds an active qualification, and counts the ones it skips. Plus the Ministry
- * Settings half of D32: the server refuses a blank for a number setting. Design §0.8 D32, §2.10,
- * §3.3.2, §3.6, Appendix B.
+ * a default person per position (and whether they are set as accepted); the schedule dialog and
+ * the Generate dialog save them; every run that creates occurrences — a new schedule's Save (D33),
+ * Generate, Staff them and the daily top-up — assigns each saved default on the occurrences it
+ * creates while that person still holds an active qualification, and counts the ones it skips.
+ * Plus the Ministry Settings half of D32: the server refuses a blank for a number setting. Design
+ * §0.8 D32, D33, §2.10, §3.3.2, §3.6, Appendix B.
+ *
+ * Where a test is about Generate or the top-up, its schedule is saved inactive — a paused schedule's
+ * Save makes nothing (D33) — and then switched on, which generates nothing either.
  *
  * Personas (seed.sql): `admin.api.key` (administrator, person 1). Ministries, positions,
  * qualifications and events come from the real APIs; an event that must already be over today is
@@ -134,6 +137,17 @@ function requirementsOf(scheduleId) {
     return api("GET", `${URL}/schedules/${scheduleId}/requirements`).then((resp) =>
         Object.fromEntries(resp.body.requirements.map((row) => [row.positionId, row])),
     );
+}
+
+/** A schedule whose occurrences are left for Generate or the top-up to make: saved paused, then switched on. */
+function createPausedThenActive(name, title, overrides = {}) {
+    return createSchedule(name, title, { ...overrides, active: false }).then((resp) => {
+        expect(resp.body.generated, "a paused schedule's Save makes nothing").to.eq(null);
+        const scheduleId = resp.body.schedule.id;
+        api("POST", `${URL}/schedules/${scheduleId}`, { active: true }).its("body.schedule.occurrenceCount").should("eq", 0);
+
+        return cy.wrap(scheduleId);
+    });
 }
 
 function generate(scheduleId, body = {}, expectedStatus = 200) {
@@ -381,9 +395,6 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
         });
 
         it("refuses a default on one occurrence's own needs: defaults belong to the schedule", () => {
-            generate(scheduleId, { through: isoDate(10) }).then((result) => {
-                expect(result.created).to.be.greaterThan(0);
-            });
             dbOk("SELECT vocc_ID AS id FROM volunteer_occurrence_vocc WHERE vocc_vsch_ID = ? LIMIT 1", [scheduleId]).then((rows) => {
                 api(
                     "POST",
@@ -402,22 +413,22 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
         let plainId = 0;
 
         before(() => {
-            createSchedule("Generate", "Service", {
+            createPausedThenActive("Generate", "Service", {
                 windowStart: isoDate(1),
                 windowEnd: isoDate(20),
                 requirements: [
                     { positionId: position.lead, minCount: 1, maxCount: 1 },
                     { positionId: position.reader, minCount: 1, maxCount: 1, defaultPersonId: READER },
                 ],
-            }).then((resp) => {
-                scheduleId = resp.body.schedule.id;
+            }).then((id) => {
+                scheduleId = id;
             });
-            createSchedule("Saved Only", "Service", {
+            createPausedThenActive("Saved Only", "Service", {
                 windowStart: isoDate(1),
                 windowEnd: isoDate(20),
                 requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B }],
-            }).then((resp) => {
-                plainId = resp.body.schedule.id;
+            }).then((id) => {
+                plainId = id;
             });
         });
 
@@ -507,15 +518,15 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
                 ).then((rows) => {
                     pastEventId = rows.insertId;
                 });
-                createSchedule("Rehearsal Crew", "Rehearsal", {
+                createPausedThenActive("Rehearsal Crew", "Rehearsal", {
                     requirements: [
                         { positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_A, defaultAccepted: true },
                         { positionId: position.reader, minCount: 1, maxCount: 1, defaultPersonId: READER, defaultAccepted: false },
                         // A position this schedule never takes anyone in: its default has no room.
                         { positionId: position.usher, minCount: 0, maxCount: 0, defaultPersonId: USHER },
                     ],
-                }).then((resp) => {
-                    scheduleId = resp.body.schedule.id;
+                }).then((id) => {
+                    scheduleId = id;
                 });
             });
             cy.then(() => {
@@ -621,64 +632,52 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
         });
     });
 
-    // ── Staff these events ─────────────────────────────────────────────────────
+    // ── Save and Staff them (D33) ──────────────────────────────────────────────
 
-    describe("Volunteer v2 D32 — Staff these events saves its defaults on the schedule", () => {
+    describe("Volunteer v2 D32 — a new schedule's Save and Staff them assign the saved defaults (D33)", () => {
         let scheduleId = 0;
 
-        it("saves them on the new schedule and assigns them on the occurrences up to the horizon", () => {
-            createEvents(
-                weekly("Workday", 1, 90, {
-                    staff: {
-                        teamId,
-                        requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1 }],
-                        defaults: [{ positionId: position.lead, personId: LEADER_A, accepted: true }],
-                    },
-                }),
-            ).then((resp) => {
-                scheduleId = resp.body.schedule.id;
-                expect(resp.body.reusedSchedule).to.eq(false);
-                const within = resp.body.events.filter((event) => event.start.slice(0, 10) <= isoDate(HORIZON_DAYS));
-                expect(resp.body.occurrences).to.have.length(within.length);
-                expect(resp.body.assigned).to.eq(within.length);
-            });
-            cy.then(() => {
-                requirementsOf(scheduleId).then((rows) => {
-                    expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_A, defaultAccepted: true });
+        it("assigns the defaults a new schedule is saved with on the occurrences its Save makes, up to the horizon", () => {
+            createEvents(weekly("Workday", 1, 90)).then((made) => {
+                const within = made.body.events.filter((event) => event.start.slice(0, 10) <= isoDate(HORIZON_DAYS));
+                createSchedule("Workday Crew", "Workday", {
+                    requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_A, defaultAccepted: true }],
+                }).then((resp) => {
+                    scheduleId = resp.body.schedule.id;
+                    expect(resp.body.generated).to.include({ created: within.length, assigned: within.length, skipped: 0, unqualified: 0 });
+                    staffingOf(scheduleId).then((occurrences) => {
+                        expect(occurrences.map((o) => o.eventId)).to.have.members(within.map((e) => e.id));
+                        for (const occurrence of occurrences) {
+                            expect(occurrence.assignments[0], occurrence.day).to.include({
+                                personId: LEADER_A,
+                                status: "accepted",
+                                coordinatorAccepts: 1,
+                                asks: 0,
+                            });
+                        }
+                    });
                 });
             });
         });
 
-        it("saves them on the schedule the events are added to (D30)", () => {
-            createEvents(
-                oneEvent("Workday", 4, {
-                    staff: { teamId, defaults: [{ positionId: position.lead, personId: LEADER_B, accepted: false }] },
-                }),
-            ).then((resp) => {
-                expect(resp.body.reusedSchedule).to.eq(true);
-                expect(resp.body.schedule.id).to.eq(scheduleId);
-                expect(resp.body.assigned).to.eq(1);
+        it("assigns the saved defaults of the schedule a new series goes to, on its new occurrences", () => {
+            api("POST", `${URL}/schedules/${scheduleId}`, {
+                requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B, defaultAccepted: false }],
             });
-            cy.then(() => {
-                requirementsOf(scheduleId).then((rows) => {
-                    expect(rows[position.lead]).to.include({ defaultPersonId: LEADER_B, defaultAccepted: false });
+            createEvents(weekly("Workday", 3, 24, { startTime: "13:00", endTime: "15:00" })).then((made) => {
+                const eventIds = made.body.events.map((event) => event.id);
+                api("POST", `${URL}/ministries/${ministryId}/events/staff`, { eventIds }).then((resp) => {
+                    expect(resp.body.schedules.map((run) => run.schedule.id)).to.deep.eq([scheduleId]);
+                    expect(resp.body.schedules[0]).to.include({ created: eventIds.length, assigned: eventIds.length });
                 });
-            });
-        });
-
-        it("refuses a default for a position the new schedule does not ask for, and leaves nothing behind", () => {
-            createEvents(
-                weekly("Refused Workday", 1, 20, {
-                    staff: {
-                        teamId,
-                        requirements: [{ positionId: position.lead, minCount: 1, maxCount: 1 }],
-                        defaults: [{ positionId: position.usher, personId: USHER, accepted: false }],
-                    },
-                }),
-                400,
-            );
-            dbOk("SELECT COUNT(*) AS n FROM events_event WHERE event_title = ?", [`${PREFIX} Refused Workday`]).then((rows) => {
-                expect(Number(rows[0].n)).to.eq(0);
+                staffingOf(scheduleId).then((occurrences) => {
+                    for (const occurrence of occurrences.filter((o) => eventIds.includes(o.eventId))) {
+                        expect(occurrence.assignments[0], occurrence.day).to.include({ personId: LEADER_B, status: "pending", asks: 1 });
+                    }
+                    for (const occurrence of occurrences.filter((o) => !eventIds.includes(o.eventId))) {
+                        expect(occurrence.assignments[0].personId, "older occurrences keep their volunteer").to.eq(LEADER_A);
+                    }
+                });
             });
         });
     });
@@ -730,16 +729,22 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
             });
             cy.then(() => {
                 api("POST", `${URL}/positions/${other.positionId}/qualifications`, { personId: LEADER_B }, [200, 201]);
+                api("POST", `${URL}/ministries/${other.ministryId}/events`, weekly("Greeting", 1, 30), 201);
+            });
+            cy.then(() => {
                 api(
                     "POST",
-                    `${URL}/ministries/${other.ministryId}/events`,
-                    weekly("Greeting", 1, 30, {
-                        staff: {
-                            teamId: other.teamId,
-                            requirements: [{ positionId: other.positionId, minCount: 1, maxCount: 1 }],
-                            defaults: [{ positionId: other.positionId, personId: LEADER_B, accepted: true }],
-                        },
-                    }),
+                    `${URL}/ministries/${other.ministryId}/schedules`,
+                    {
+                        name: `${PREFIX} Greeters`,
+                        teamId: other.teamId,
+                        linkMode: "ministry",
+                        titleFilter: `${PREFIX} Greeting`,
+                        windowStart: isoDate(0),
+                        requirements: [
+                            { positionId: other.positionId, minCount: 1, maxCount: 1, defaultPersonId: LEADER_B, defaultAccepted: true },
+                        ],
+                    },
                     201,
                 ).then((resp) => {
                     other.scheduleId = resp.body.schedule.id;

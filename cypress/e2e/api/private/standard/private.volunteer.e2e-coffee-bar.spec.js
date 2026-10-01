@@ -15,7 +15,7 @@
  *     15 people in the ministry's own pool Group
  *       → 5 positions, Min 1/Max 1 x2 plus an optional Min 0/Max 1 third
  *       → several qualifications per person
- *       → a schedule over an event TYPE, generated (twice — idempotency)
+ *       → a schedule over an event TYPE, generated on Save, then again (idempotency)
  *       → coordinator assigns            → outbox row appears
  *       → the volunteer declines         → gapCount becomes 1
  *       → a DIFFERENT volunteer signs up → gapCount returns to 0
@@ -446,6 +446,7 @@ describe("Volunteer v2 — #9714 scenario 1, \"Coffee Bar\", as ONE end-to-end r
                 201,
             ).then((resp) => {
                 scheduleId = resp.body.schedule.id;
+                expect(resp.body.generated.created, "Save generates the schedule (D33)").to.eq(seriesEventIds.length);
             });
         });
 
@@ -530,19 +531,8 @@ describe("Volunteer v2 — #9714 scenario 1, \"Coffee Bar\", as ONE end-to-end r
             });
         });
 
-        it("generates occurrences over the event type, and generating again creates nothing", () => {
-            api(
-                COORDINATOR_KEY,
-                "POST",
-                `${VOLUNTEER_URL}/schedules/${scheduleId}/generate`,
-                { through: seriesEnd },
-                200,
-            ).then((resp) => {
-                expect(resp.body.created).to.eq(seriesEventIds.length);
-                expect(resp.body.existing).to.eq(0);
-            });
-
-            // §6.6 — the second run reports `created: 0` AND the list is unchanged.
+        it("made its occurrences over the event type on Save, and generating again creates nothing", () => {
+            // §6.6 — a later run reports `created: 0` AND the list is unchanged.
             let firstCount = 0;
             api(
                 COORDINATOR_KEY,

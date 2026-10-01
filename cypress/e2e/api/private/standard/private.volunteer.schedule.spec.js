@@ -21,8 +21,9 @@
  *       → the same block counts `events_event` before and after generation.
  *
  *   "occurrences can be generated idempotently"
- *       → the same POST twice returns `created: 0` the second time and the
- *         occurrence count is unchanged (`vocc_schedule_event_uidx`, §2.9).
+ *       → a new schedule's Save generates it (D33); Generate after that returns
+ *         `created: 0` and the occurrence count is unchanged
+ *         (`vocc_schedule_event_uidx`, §2.9).
  *
  * Every occurrence is anchored to an event (D20), so there is no standalone
  * mode to prove here any more; the class, ministry and event modes, the
@@ -236,13 +237,31 @@ function wednesdayScheduleBody(overrides = {}) {
 }
 
 function createSchedule(ministryId, body, key = ADMIN_KEY) {
+    return createScheduleRun(ministryId, body, key).then((created) => created.schedule.id);
+}
+
+/** The new schedule and the run its Save made (D33). */
+function createScheduleRun(ministryId, body, key = ADMIN_KEY) {
     return api(
         key,
         "POST",
         `/api/ministries/ministries/${ministryId}/schedules`,
         body,
         201,
-    ).then((resp) => resp.body.schedule.id);
+    ).then((resp) => resp.body);
+}
+
+/**
+ * A schedule whose occurrences are left for Generate: saved paused, so its Save
+ * makes none (D33), then switched on, which generates nothing either.
+ */
+function createPausedThenActive(ministryId, body) {
+    return createScheduleRun(ministryId, { ...body, active: false }).then((created) => {
+        expect(created.generated, "a paused schedule's Save makes nothing").to.eq(null);
+        api(ADMIN_KEY, "POST", `/api/ministries/schedules/${created.schedule.id}`, { active: true });
+
+        return cy.wrap(created.schedule.id);
+    });
 }
 
 // ── suite ──────────────────────────────────────────────────────────────────
@@ -340,7 +359,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
 
         it("lists a ministry's schedules and reports the occurrence count", () => {
-            createSchedule(ministryA, wednesdayScheduleBody()).then((id) => {
+            createPausedThenActive(ministryA, wednesdayScheduleBody()).then((id) => {
                 api(
                     ADMIN_KEY,
                     "GET",
@@ -352,6 +371,22 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                     expect(mine.occurrenceCount).to.eq(0);
                 });
                 api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
+            });
+        });
+
+        it("generates a new schedule on Save, up to the horizon, and says so (D33)", () => {
+            createScheduleRun(ministryA, wednesdayScheduleBody()).then((created) => {
+                expect(created.generated).to.include({
+                    created: 5,
+                    existing: 0,
+                    from: isoDate(0),
+                    through: isoDate(56),
+                    assigned: 0,
+                    noEvents: false,
+                });
+                expect(created.generated.searched).to.include({ linkMode: "event_type", titleFilter: WEDNESDAY_TITLE });
+                expect(created.schedule.occurrenceCount).to.eq(5);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${created.schedule.id}`);
             });
         });
 
@@ -449,17 +484,10 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 scheduleId = id;
                 api(
                     ADMIN_KEY,
-                    "POST",
-                    `/api/ministries/schedules/${id}/generate`,
-                    { through: isoDate(14) },
-                ).then(() => {
-                    api(
-                        ADMIN_KEY,
-                        "GET",
-                        `/api/ministries/occurrences?from=${isoDate(0)}&to=${isoDate(14)}&ministryId=${ministryA}`,
-                    ).then((resp) => {
-                        occurrenceId = resp.body.occurrences[0].id;
-                    });
+                    "GET",
+                    `/api/ministries/occurrences?from=${isoDate(0)}&to=${isoDate(14)}&scheduleId=${id}`,
+                ).then((resp) => {
+                    occurrenceId = resp.body.occurrences[0].id;
                 });
             });
         });
@@ -654,6 +682,8 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         let scheduleId = 0;
         let seriesStart = "";
         let seriesEnd = "";
+        let eventsBeforeSave = 0;
+        let savedRun = null;
 
         before(() => {
             // The seed has three events, all in the past, so build a future
@@ -682,39 +712,38 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                 expect(seriesEventIds.length).to.eq(4);
             });
 
+            dbOk(`SELECT COUNT(*) AS c FROM events_event`).then((rows) => {
+                eventsBeforeSave = rows[0].c;
+            });
             cy.then(() => {
-                createSchedule(
+                createScheduleRun(
                     ministryA,
                     linkedScheduleBody({
                         name: `${FIXTURE_PREFIX} Linked Worship`,
                         titleFilter: EVENT_TITLE,
                         windowStart: seriesStart,
                     }),
-                ).then((id) => {
-                    scheduleId = id;
+                ).then((created) => {
+                    scheduleId = created.schedule.id;
+                    savedRun = created.generated;
                 });
             });
         });
 
         it("creates one occurrence per event, with no times of its own and no new event rows", () => {
-            dbOk(`SELECT COUNT(*) AS c FROM events_event`).then((before) => {
-                const eventsBefore = before[0].c;
-
-                api(
-                    ADMIN_KEY,
-                    "POST",
-                    `/api/ministries/schedules/${scheduleId}/generate`,
-                    { through: seriesEnd },
-                ).then((resp) => {
-                    expect(resp.body.created).to.eq(4);
-                    expect(resp.body.existing).to.eq(0);
-                    expect(resp.body.through).to.eq(seriesEnd);
-                });
-
-                dbOk(`SELECT COUNT(*) AS c FROM events_event`).then((after) => {
-                    // "No second competing event occurrence is created."
-                    expect(after[0].c).to.eq(eventsBefore);
-                });
+            // The schedule's Save generated it (D33).
+            expect(savedRun).to.include({ created: 4, existing: 0 });
+            dbOk(`SELECT COUNT(*) AS c FROM events_event`).then((after) => {
+                // "No second competing event occurrence is created."
+                expect(after[0].c).to.eq(eventsBeforeSave);
+            });
+            api(
+                ADMIN_KEY,
+                "POST",
+                `/api/ministries/schedules/${scheduleId}/generate`,
+                { through: seriesEnd },
+            ).then((resp) => {
+                expect(resp.body).to.include({ created: 0, existing: 4, through: seriesEnd });
             });
 
             api(
@@ -927,44 +956,47 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
 
         it("defaults `through` to today + the scheduling horizon (D31)", () => {
             cy.makePrivateAdminAPICall("POST", HORIZON_URL, { value: "2" }, 200);
-            createSchedule(
+            createScheduleRun(
                 ministryA,
                 wednesdayScheduleBody({ name: `${FIXTURE_PREFIX} Default Through` }),
-            ).then((id) => {
+            ).then((created) => {
+                expect(created.generated.through, "Save reaches the horizon").to.eq(isoDate(14));
+                expect(created.generated.created).to.be.within(1, 2);
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/ministries/schedules/${id}/generate`,
+                    `/api/ministries/schedules/${created.schedule.id}/generate`,
                     {},
                 ).then((resp) => {
                     expect(resp.body.through).to.eq(isoDate(14));
-                    expect(resp.body.created).to.be.within(1, 2);
+                    expect(resp.body.created).to.eq(0);
                 });
-                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${created.schedule.id}`);
             });
             cy.makePrivateAdminAPICall("POST", HORIZON_URL, { value: "8" }, 200);
         });
 
         it("never generates outside the schedule's own window", () => {
-            createSchedule(
+            createScheduleRun(
                 ministryA,
                 wednesdayScheduleBody({
                     name: `${FIXTURE_PREFIX} Windowed`,
                     windowStart: isoDate(0),
                     windowEnd: isoDate(10),
                 }),
-            ).then((id) => {
+            ).then((created) => {
+                // windowEnd clamps the run; at most two Wednesdays fit in 10 days.
+                expect(created.generated.created).to.be.within(1, 2);
+                expect(created.generated.through).to.eq(isoDate(10));
                 api(
                     ADMIN_KEY,
                     "POST",
-                    `/api/ministries/schedules/${id}/generate`,
+                    `/api/ministries/schedules/${created.schedule.id}/generate`,
                     { through: isoDate(90) },
                 ).then((resp) => {
-                    // windowEnd clamps the run; at most two Wednesdays fit in 10 days.
-                    expect(resp.body.created).to.be.within(1, 2);
-                    expect(resp.body.through).to.eq(isoDate(10));
+                    expect(resp.body).to.include({ created: 0, through: isoDate(10) });
                 });
-                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${id}`);
+                api(ADMIN_KEY, "DELETE", `/api/ministries/schedules/${created.schedule.id}`);
             });
         });
 
@@ -984,9 +1016,25 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
                   WHERE n BETWEEN 1 AND 367`,
                 [CHURCH_SERVICE_TYPE, title],
             );
-            createSchedule(
-                ministryA,
+            // A new schedule generates on Save (D33), so the cap refuses the schedule itself,
+            // and nothing is left behind.
+            api(
+                ADMIN_KEY,
+                "POST",
+                `/api/ministries/ministries/${ministryA}/schedules`,
                 linkedScheduleBody({ name: `${FIXTURE_PREFIX} Huge`, titleFilter: title }),
+                400,
+            ).then((resp) => {
+                expect(resp.body.message).to.contain("Too many occurrences");
+            });
+            dbOk(`SELECT COUNT(*) AS n FROM volunteer_schedule_vsch WHERE vsch_Name = ?`, [`${FIXTURE_PREFIX} Huge`]).then(
+                (rows) => expect(Number(rows[0].n)).to.eq(0),
+            );
+
+            // An existing schedule's Generate is refused the same way.
+            createPausedThenActive(
+                ministryA,
+                linkedScheduleBody({ name: `${FIXTURE_PREFIX} Huge Paused`, titleFilter: title }),
             ).then((id) => {
                 api(
                     ADMIN_KEY,
@@ -1037,7 +1085,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
             // From tomorrow: an occurrence of TODAY whose start time has passed is
             // "already happened" and refuses assignments, which would show up here
             // as skipped defaults late in the day.
-            createSchedule(
+            createPausedThenActive(
                 ministryA,
                 wednesdayScheduleBody({
                     name: `${FIXTURE_PREFIX} Defaults`,
@@ -1196,7 +1244,7 @@ describe("Volunteer v2 — schedules and occurrence generation (#9708)", () => {
         });
 
         it("accepts a blank default and generates with no assignments", () => {
-            createSchedule(
+            createPausedThenActive(
                 ministryA,
                 wednesdayScheduleBody({
                     name: `${FIXTURE_PREFIX} Blank Defaults`,

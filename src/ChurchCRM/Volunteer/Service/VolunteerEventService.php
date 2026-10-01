@@ -43,8 +43,9 @@ use Psr\Log\LoggerInterface;
  * Core owns the events. They are created by `EventService` — the single-event path behind
  * `POST /api/events` and the repeat engine behind the repeat editor — with `event_ministry_id`
  * set, and they are edited and deleted only in the core event editor, which authorizes by
- * that column (§2.16). What V2 adds is staffing the new events in the SAME transaction, through
- * `VolunteerScheduleService`, so a refused staffing plan leaves no event behind.
+ * that column (§2.16). Creating events and staffing them are separate steps (D33): what V2 adds
+ * after the create is "Staff them" — the new events go to the schedules that already follow
+ * them, through `VolunteerScheduleService`.
  *
  * Headcounts (`eventcounts_evtcnt`) and check-ins (`event_attend`) are core's and are only read.
  */
@@ -104,34 +105,28 @@ class VolunteerEventService
 
     /**
      * Create one event or a series for this ministry through core, pinned to calendars the
-     * pin rule allows (D25), and — when `staff` is given — the schedule that staffs them with
-     * its occurrences and default assignments, all in one transaction.
-     *
-     * A series with a Linked Group is staffed in `class` mode, one without in `ministry` mode
-     * narrowed to the title; a single event through Staff this event (`event` mode, D22). When
-     * the team already has an active schedule that follows these events, the events are added
-     * to it instead (D30, `reusedSchedule`).
+     * pin rule allows (D25), in one transaction. Staffing comes after, as its own step (D33):
+     * {@see self::staffOnFollowingSchedules()} or Staff this event.
      *
      * @param array<string, mixed> $input the request body (design §3.3.2)
      *
-     * @return array{events: Event[], schedule: ?VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int, unqualified: int}
+     * @return Event[]
      *
      * @throws VolunteerException        403 for a caller who is not a coordinator of the ministry or
-     *                                   a refused calendar, 400 for a malformed request
-     * @throws \RuntimeException         400: a staffing plan the schedule service refuses
+     *                                   a refused calendar, 400 for a malformed request or a `staff` key
      * @throws \InvalidArgumentException 400: a series the repeat engine refuses (the cap)
      */
     public function createMinistryEvents(VolunteerMinistry $ministry, array $input, User $actor): array
     {
         $ministryId = (int) $ministry->getId();
 
-        // A self-service login never writes church events, whatever scope it holds (§4.7).
-        if ($actor->isEditSelfExclusive() || !$this->authz->canManageMinistry($actor, $ministryId)) {
-            throw VolunteerException::forbidden(gettext('Only a coordinator of this ministry may create its events'));
+        $this->assertMayManageEvents($ministryId, $actor, gettext('Only a coordinator of this ministry may create its events'));
+
+        if (array_key_exists('staff', $input)) {
+            throw VolunteerException::invalid(gettext('Staffing is set up after the events are created'));
         }
 
         $plan = $this->readEventPlan($ministryId, $input, $actor);
-        $staff = $this->readStaffing($input);
 
         $con = Propel::getWriteConnection(EventTableMap::DATABASE_NAME);
         $con->beginTransaction();
@@ -140,10 +135,6 @@ class VolunteerEventService
             $events = $plan['series'] === null
                 ? [$this->createOneEvent($plan, $ministryId)]
                 : $this->createSeries($plan, $ministryId);
-
-            $staffed = $staff === null
-                ? ['schedule' => null, 'reusedSchedule' => false, 'occurrenceIds' => [], 'assigned' => 0, 'skipped' => 0, 'unqualified' => 0]
-                : $this->staffNewEvents($ministry, $plan, $staff, $events, $actor);
 
             $con->commit();
         } catch (\Throwable $e) {
@@ -159,12 +150,24 @@ class VolunteerEventService
 
         $this->logger->info('Volunteer ministry events created', [
             'ministryId' => $ministryId,
-            'eventIds' => array_map(static fn (Event $event): int => (int) $event->getId(), $events),
-            'scheduleId' => $staffed['schedule']?->getId(),
+            'eventIds' => $this->eventIds($events),
             'actorPersonId' => $actor->getId(),
         ]);
 
-        return ['events' => $events] + $staffed;
+        return $events;
+    }
+
+    /**
+     * A coordinator of the ministry or a global manager; a self-service login never writes
+     * church events, whatever scope it holds (§4.7).
+     *
+     * @throws VolunteerException 403
+     */
+    private function assertMayManageEvents(int $ministryId, User $actor, string $message): void
+    {
+        if ($actor->isEditSelfExclusive() || !$this->authz->canManageMinistry($actor, $ministryId)) {
+            throw VolunteerException::forbidden($message);
+        }
     }
 
     /**
@@ -344,50 +347,6 @@ class VolunteerEventService
     }
 
     /**
-     * The `staff` block's shape. What it names — the team, the positions, the people — is
-     * judged by the schedule and assignment services that write it.
-     *
-     * @param array<string, mixed> $input
-     *
-     * @return array{fields: array<string, mixed>, defaults: array<int, mixed>}|null
-     *
-     * @throws VolunteerException
-     */
-    private function readStaffing(array $input): ?array
-    {
-        if (!array_key_exists('staff', $input) || $input['staff'] === null) {
-            return null;
-        }
-
-        $staff = $input['staff'];
-        if (!is_array($staff)) {
-            throw VolunteerException::invalid(gettext('The staffing section is malformed'));
-        }
-
-        $teamId = $this->positiveInt($staff['teamId'] ?? null);
-        if ($teamId === null) {
-            throw VolunteerException::invalid(gettext('Choose the team that staffs these events'));
-        }
-
-        $fields = ['teamId' => $teamId];
-        foreach (['requirements', 'startOffsetMinutes', 'endOffsetMinutes'] as $key) {
-            if (array_key_exists($key, $staff)) {
-                $fields[$key] = $staff[$key];
-            }
-        }
-        if (array_key_exists('requirements', $fields) && !is_array($fields['requirements'])) {
-            throw VolunteerException::invalid(gettext('The staffing needs must be a list'));
-        }
-
-        $defaults = $staff['defaults'] ?? [];
-        if (!is_array($defaults)) {
-            throw VolunteerException::invalid(gettext('The default volunteers must be a list'));
-        }
-
-        return ['fields' => $fields, 'defaults' => array_values($defaults)];
-    }
-
-    /**
      * @param array<string, mixed> $plan
      */
     private function createOneEvent(array $plan, int $ministryId): Event
@@ -448,103 +407,117 @@ class VolunteerEventService
         );
     }
 
-    /**
-     * @param array<string, mixed>                                         $plan
-     * @param array{fields: array<string, mixed>, defaults: array<int, mixed>} $staff
-     * @param Event[]                                                      $events
-     *
-     * @return array{schedule: VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int, unqualified: int}
-     */
-    private function staffNewEvents(VolunteerMinistry $ministry, array $plan, array $staff, array $events, User $actor): array
-    {
-        $fields = $staff['fields'];
+    // ── Staff them: new events on the schedules that follow them (D33) ─────
 
-        $reusable = $this->findFollowingSchedule((int) $ministry->getId(), (int) $fields['teamId'], $plan);
-        if ($reusable !== null) {
-            return $this->staffWithSchedule($reusable, $plan, $staff['defaults'], $actor);
+    /**
+     * "Staff them" after a recurring event was created (D33). Every active, non-one-off
+     * schedule of this ministry that follows these events takes them — `class` mode on their
+     * class, `ministry` mode with exactly their title, `event_type` mode with their type and
+     * exactly their title. Each one's window is widened to cover them (D30: the first date
+     * moved back to the first event, a set last date moved on to the last one, an open end
+     * left open), it is generated through the last event, never past the scheduling horizon
+     * (D31), and its saved defaults are assigned on the occurrences that run created (D32).
+     * Its own staffing needs and offsets apply. When none follows them, nothing is made: the
+     * page offers Add schedule instead.
+     *
+     * @param int[] $eventIds the events just created, one series
+     *
+     * @return array<int, array{schedule: VolunteerSchedule, widened: bool, created: int, existing: int, from: string, through: string, assigned: int, skipped: int, unqualified: int}>
+     *
+     * @throws VolunteerException 400 for no ids or events that are not one series, 404 for an
+     *                            unknown event, 403 for a caller who may not manage the
+     *                            ministry or an event it does not own
+     * @throws \RuntimeException  400: a run over the occurrence cap
+     */
+    public function staffOnFollowingSchedules(VolunteerMinistry $ministry, array $eventIds, User $actor): array
+    {
+        $ministryId = (int) $ministry->getId();
+        $this->assertMayManageEvents($ministryId, $actor, gettext('Only a coordinator of this ministry may staff its events'));
+
+        $events = $this->ownedEvents($ministry, $eventIds, gettext('Choose the events to staff'));
+        $series = $this->seriesOf($events);
+        $schedules = $this->schedules->findSchedulesFollowing($ministryId, $series['title'], $series['eventTypeId'], $series['groupIds']);
+        if ($schedules === []) {
+            return [];
         }
 
-        if ($plan['series'] === null) {
-            $occurrence = $this->schedules->staffEvent($ministry, $fields + ['eventId' => (int) $events[0]->getId()], $actor);
-            $schedule = $this->schedules->requireSchedule($occurrence);
-            $occurrenceIds = [(int) $occurrence->getId()];
-        } else {
-            $fields += [
-                'name' => mb_substr($plan['title'], 0, 100),
-                'windowStart' => $plan['series']['rangeStart'],
-                'windowEnd' => $plan['series']['rangeEnd'],
-                'active' => true,
-            ];
-            if ($plan['linkedGroupId'] > 0) {
-                $fields['linkMode'] = VolunteerSchedule::LINK_MODE_CLASS;
-                $fields['groupId'] = $plan['linkedGroupId'];
-            } else {
-                $fields['linkMode'] = VolunteerSchedule::LINK_MODE_MINISTRY;
-                $fields['titleFilter'] = $plan['title'];
+        $first = (string) $events[0]->getStart('Y-m-d');
+        $last = (string) $events[count($events) - 1]->getStart('Y-m-d');
+
+        $con = Propel::getWriteConnection(EventTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+
+        try {
+            $runs = [];
+            foreach ($schedules as $schedule) {
+                $runs[] = ['schedule' => $schedule, 'widened' => $this->widenToCover($schedule, $first, $last, $actor)]
+                    + $this->schedules->generateOccurrences($schedule, DateTimeUtils::createDateTime($last));
             }
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
 
-            $result = $this->schedules->createScheduleAndGenerate(
-                $ministry,
-                $fields,
-                $actor,
-                DateTimeUtils::createDateTime($plan['series']['rangeEnd'])
-            );
-            $schedule = $result['schedule'];
-            $occurrenceIds = $result['createdIds'];
+            throw $e;
         }
 
-        return ['schedule' => $schedule, 'reusedSchedule' => false, 'occurrenceIds' => $occurrenceIds]
-            + $this->staffWithDefaults($schedule, $occurrenceIds, $staff['defaults'], $actor);
+        $results = [];
+        foreach ($runs as $run) {
+            $createdIds = $run['createdIds'];
+            unset($run['createdIds']);
+            $results[] = $run + $this->assignments()->assignScheduleDefaults($run['schedule'], $createdIds, $actor);
+        }
+
+        $this->logger->info('Volunteer ministry events staffed on the schedules that follow them', [
+            'ministryId' => $ministryId,
+            'eventIds' => $this->eventIds($events),
+            'scheduleIds' => array_map(static fn (VolunteerSchedule $schedule): int => (int) $schedule->getId(), $schedules),
+            'actorPersonId' => $actor->getId(),
+        ]);
+
+        return $results;
     }
 
     /**
-     * D30: the team's active schedule that already follows these events — `class` mode on
-     * the Linked Group when there is one, otherwise `ministry` mode with exactly this title,
-     * ignoring case, as generation matches it (D31). A second schedule would put a second
-     * occurrence for the same team on every event.
+     * What the events have in common, which is what a schedule follows: one title (ignoring
+     * case, as generation compares it), one type and one set of Linked Groups.
      *
-     * @param array<string, mixed> $plan
+     * @param Event[] $events
+     *
+     * @return array{title: string, eventTypeId: int, groupIds: int[]}
+     *
+     * @throws VolunteerException 400 when they differ
      */
-    private function findFollowingSchedule(int $ministryId, int $teamId, array $plan): ?VolunteerSchedule
+    private function seriesOf(array $events): array
     {
-        $query = VolunteerScheduleQuery::create()
-            ->filterByMinistryId($ministryId)
-            ->filterByTeamId($teamId)
-            ->filterByActive(true)
-            ->filterByOneOff(false);
+        $groups = $this->linkedGroupsByEvent($this->eventIds($events));
+        $key = static function (Event $event) use ($groups): string {
+            $groupIds = array_column($groups[(int) $event->getId()] ?? [], 'id');
+            sort($groupIds);
 
-        if ($plan['linkedGroupId'] > 0) {
-            $query->filterByLinkMode(VolunteerSchedule::LINK_MODE_CLASS)->filterByGroupId($plan['linkedGroupId']);
-        } else {
-            $query->filterByLinkMode(VolunteerSchedule::LINK_MODE_MINISTRY)
-                ->where('LOWER(VolunteerSchedule.TitleFilter) = LOWER(?)', $plan['title'], \PDO::PARAM_STR);
+            return json_encode([mb_strtolower(trim((string) $event->getTitle())), (int) $event->getType(), $groupIds]);
+        };
+
+        $first = $events[0];
+        foreach ($events as $event) {
+            if ($key($event) !== $key($first)) {
+                throw VolunteerException::invalid(gettext('These events are not one series: they differ in title, type or class'));
+            }
         }
 
-        return $query->orderById()->findOne();
+        return [
+            'title' => trim((string) $first->getTitle()),
+            'eventTypeId' => (int) $first->getType(),
+            'groupIds' => array_column($groups[(int) $first->getId()] ?? [], 'id'),
+        ];
     }
 
     /**
-     * Staff the new events on a schedule that already follows them (D30): its window is
-     * widened to take them in — the first date moved back to the first new event, a last
-     * date moved on to the last one, an open end left open — and it is generated through the
-     * last new event. Its staffing needs and offsets stay as they are; the request's are not
-     * applied. The defaults are saved on it and go on the occurrences this run created.
-     *
-     * @param array<string, mixed> $plan
-     * @param array<int, mixed>    $defaults
-     *
-     * @return array{schedule: VolunteerSchedule, reusedSchedule: bool, occurrenceIds: int[], assigned: int, skipped: int, unqualified: int}
-     *
-     * @throws VolunteerException 400 for a single event that has already happened, as Staff this event refuses it
+     * D30: a schedule that takes new events covers their dates — its first date moved back
+     * to the first event, a set last date moved on to the last one, an open end left open.
+     * Answers whether anything moved.
      */
-    private function staffWithSchedule(VolunteerSchedule $schedule, array $plan, array $defaults, User $actor): array
+    private function widenToCover(VolunteerSchedule $schedule, string $first, string $last, User $actor): bool
     {
-        $first = $plan['series'] === null ? $plan['date'] : $plan['series']['rangeStart'];
-        $last = $plan['series'] === null ? $plan['date'] : $plan['series']['rangeEnd'];
-        if ($plan['series'] === null && $last < DateTimeUtils::getTodayDate()) {
-            throw VolunteerException::invalid(gettext('This event has already happened'));
-        }
-
         $widen = [];
         if ($first < (string) $schedule->getWindowStart('Y-m-d')) {
             $widen['windowStart'] = $first;
@@ -557,36 +530,42 @@ class VolunteerEventService
             $this->schedules->updateSchedule($schedule, $widen, $actor);
         }
 
-        $result = $this->schedules->generateOccurrences($schedule, DateTimeUtils::createDateTime($last));
-
-        $this->logger->info('Volunteer ministry events added to a schedule', [
-            'scheduleId' => $schedule->getId(),
-            'widened' => $widen,
-            'created' => $result['created'],
-            'actorPersonId' => $actor->getId(),
-        ]);
-
-        return ['schedule' => $schedule, 'reusedSchedule' => true, 'occurrenceIds' => $result['createdIds']]
-            + $this->staffWithDefaults($schedule, $result['createdIds'], $defaults, $actor);
+        return $widen !== [];
     }
 
     /**
-     * D32: "Fill by default with" is saved on the schedule the events went to, and the
-     * schedule's saved defaults go on the occurrences this run created, as a Generate run
-     * assigns them.
+     * The events named, every one owned by this ministry, soonest first.
      *
-     * @param int[]             $occurrenceIds
-     * @param array<int, mixed> $defaults
+     * @param int[] $eventIds
      *
-     * @return array{assigned: int, skipped: int, unqualified: int}
+     * @return Event[]
+     *
+     * @throws VolunteerException 400 for no ids, 404 for an unknown event, 403 for one the
+     *                            ministry does not own
      */
-    private function staffWithDefaults(VolunteerSchedule $schedule, array $occurrenceIds, array $defaults, User $actor): array
+    private function ownedEvents(VolunteerMinistry $ministry, array $eventIds, string $noneMessage): array
     {
-        $this->schedules->saveDefaults($schedule, $defaults, $actor);
+        $eventIds = array_values(array_unique($eventIds));
+        if ($eventIds === []) {
+            throw VolunteerException::invalid($noneMessage);
+        }
 
-        return $this->assignments()->assignScheduleDefaults($schedule, $occurrenceIds, $actor);
+        $events = iterator_to_array(EventQuery::create()->filterById($eventIds, Criteria::IN)->orderByStart()->find(), false);
+        if (count($events) !== count($eventIds)) {
+            throw VolunteerException::notFound(gettext('One of the events does not exist'));
+        }
+        foreach ($events as $event) {
+            if ((int) $event->getMinistryId() !== (int) $ministry->getId()) {
+                throw VolunteerException::forbidden(sprintf(
+                    gettext('%1$s is not an event of %2$s'),
+                    $event->getTitle(),
+                    $ministry->getName()
+                ));
+            }
+        }
+
+        return $events;
     }
-
     // ── The Calendar tab (D24) ─────────────────────────────────────────────
 
     /**
@@ -1011,24 +990,7 @@ class VolunteerEventService
     public function deleteOwnedEvents(VolunteerMinistry $ministry, array $eventIds, User $actor): int
     {
         $ministryId = (int) $ministry->getId();
-        $eventIds = array_values(array_unique($eventIds));
-        if ($eventIds === []) {
-            throw VolunteerException::invalid(gettext('Choose the events to delete'));
-        }
-
-        $events = iterator_to_array(EventQuery::create()->filterById($eventIds, Criteria::IN)->orderByStart()->find(), false);
-        if (count($events) !== count($eventIds)) {
-            throw VolunteerException::notFound(gettext('One of the events does not exist'));
-        }
-        foreach ($events as $event) {
-            if ((int) $event->getMinistryId() !== $ministryId) {
-                throw VolunteerException::forbidden(sprintf(
-                    gettext('%1$s is not an event of %2$s'),
-                    $event->getTitle(),
-                    $ministry->getName()
-                ));
-            }
-        }
+        $events = $this->ownedEvents($ministry, $eventIds, gettext('Choose the events to delete'));
         $this->assertMayWriteEvents($events, $actor);
 
         $con = Propel::getWriteConnection(EventTableMap::DATABASE_NAME);
